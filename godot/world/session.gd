@@ -925,6 +925,9 @@ func _process(delta: float) -> void:
 	if trace_enabled and trace_count < native_trace_limit():
 		emit_native_trace(trace_input(controls, queue_result))
 	if queue_result != OK:
+		# Campaign flow control retains fresh action pulses until a source ACK
+		# opens room. A busy window is not a disconnected transport.
+		if queue_result == ERR_BUSY: return
 		# The client polls the close in its own process turn. A transport drop
 		# must reach its bounded ticket path, not the fatal session-error path.
 		if lobby_enabled and client.was_open and not client.reconnect_ticket.token.is_empty() and client.peer.get_ready_state() != WebSocketPeer.STATE_OPEN: return

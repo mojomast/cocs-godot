@@ -59,9 +59,28 @@ a lane holds the slot. No frozen-source or silent generated-core modifications.
   playtest observations, not automated-test conclusions.
 - Preserve original failures and publish only actual platform acceptance.
 
-## Prior unresolved limits
+## Confirmed Windows input-queue defect and parent repair
 
-The published Windows build passed all 67 package cases after two Crown startup
-disconnects. The cause remains unresolved; the corrected original-launcher
-transport-observation workflow is available for diagnosis. Full Blackwater chain
-and Warden acceptance and the cinematic trailer refresh are still open.
+Original-launcher workflow `36915750362` captured a Crown failure after roughly
+20 seconds of play: `Input queue limit` from campaign authority receive(), with
+zero outgoing buffered bytes. The prior outbound-backpressure hypothesis does
+not explain this captured failure. Logs are preserved under the earlier feel
+evidence root's `integrated-release/windows-original-trace-36915750362/`.
+
+Parent owns a campaign-only, source-ACK-bound four-sample input window in
+`godot/campaign/client.gd`, plus handling `ERR_BUSY` in the shared session send
+block. The existing action sampler retains fresh pulses and pending weapons until
+a send succeeds. Cancellation bypasses the window and clears it in transport
+order; authority epoch changes invalidate old credit. Source queue limit 16 and
+250 ms TTL remain unchanged. A native regression script exercises a sender four
+times faster than its consumer, fresh-action retention, cancellation, new epochs
+and actual connection errors. Native execution is pending the targeting lane's
+engine slot; parent does not run a competing engine. This repair must be included
+in the next targeting/variety build and verified on Windows before claiming the
+captured disconnect is fixed.
+
+## Other open work
+
+The published Windows build passed all 67 package cases after two Crown
+disconnects; it predates this repair. Full Blackwater chain/Warden acceptance and
+the cinematic trailer refresh are still open.
