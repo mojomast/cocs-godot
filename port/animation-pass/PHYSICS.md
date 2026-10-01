@@ -120,6 +120,40 @@ selects the base rig copied temporarily from `git show 4d41cdef:godot/first_pers
 Remove that temporary baseline after capture. Scripted source-shaped snapshots
 are isolated visual evidence, **not** an actual in-game input sample.
 
+### Supplemental native preparation after parent integration
+
+Parent integrated the implementation as `791d0e18`; parent hook commit
+`b52e0215` is included locally as `78dca04e` for upcoming native tests. Its
+WORKSTREAM document did not exist in this lane, so cherry-pick retained the
+parent version rather than dropping it. Do not re-integrate `78dca04e` upstream.
+
+`tests/animation/world_physics.gd` now exercises real workshop director rotor
+distance, lid pose, motor velocity and illumination at 30/60/144 Hz and irregular
+frames. It checks changing stages/choices during unfinished transitions, retired
+light targets, stable node/material identities through frame loops, settled
+colors, reduced-motion motor stop/resume and clear-round recreation.
+
+The test's detached campaign host subclasses **the actual campaign demo** and
+calls its unchanged `_process()` and `can_capture_pointer()` chain. Only startup
+and handshake are excluded. It freezes unfinished motor/lid/light state under
+source pause, application focus loss, action pending, dead actor and stale
+snapshots, then verifies resume consumes only newly supplied elapsed time.
+This is a deterministic native host-hook regression, not OS focus/input evidence.
+The helper test's reset assertion is now explicitly described as restart only.
+
+The same test exercises actual Puma renderer signed wheel lead/radius,
+30/60/144 equivalence, 100ms cap, reduced motion, teleport/respawn/gap resets,
+source root/turret invariance and clear-round. Static review identified the
+existing Puma test's immediate snapshot-angle contract; `observe_roll()` now
+publishes that angle immediately as well as supporting render-tick lead.
+Actual casing pool/advance tests compare its ballistic arc to the independent
+constant-gravity equation at three rates and irregular/hitch timings, verify
+velocity, lifetime expiry, node reuse and reset freeing.
+
+All supplemental native tests remain **unexecuted until engine grant**. Before
+capturing workshop restored colors, advance at least 2 seconds after source
+stage 2 so screenshots represent the intended settled illumination.
+
 Native before/after rendering must be captured and inspected after the slot
 grant. At this stage **0 clips / 0 native screenshots / no hardware-performance
 claim**. Evidence root:

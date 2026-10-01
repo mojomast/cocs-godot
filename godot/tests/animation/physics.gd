@@ -66,6 +66,6 @@ func _initialize() -> void:
 	var quiet: Dictionary = motion.advance(1.0/60.0,true)
 	check(quiet.position == Vector3.ZERO and quiet.rotation == Vector3.ZERO, "reduced motion suppresses secondary offsets")
 	motion.reset()
-	check(motion.look_x.value == 0.0 and motion.look_x.velocity == 0.0 and not motion.sampled, "pause/restart drains history")
+	check(motion.look_x.value == 0.0 and motion.look_x.velocity == 0.0 and not motion.sampled, "restart drains history")
 	print("ANIMATION_PHYSICS ",JSON.stringify({"checks":checks,"failures":failures}))
 	quit(0 if failures.is_empty() else 1)

@@ -15,6 +15,9 @@ func observe_roll(speed: float, elapsed: float, discontinuity: bool) -> void:
 		roll_angle = wrapf(roll_angle + speed * elapsed / 0.42, -PI, PI)
 	roll_speed = speed
 	roll_age = 0.0
+	# Publish the exact new source-sample angle immediately; the render tick
+	# only supplies the bounded between-sample visual lead.
+	for wheel: Node3D in wheels: wheel.rotation.x = roll_angle
 
 func _process(delta: float) -> void:
 	if not visible or not is_finite(delta): return
