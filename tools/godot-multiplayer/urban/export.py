@@ -35,8 +35,9 @@ def material(name, rgb, metal=0, rough=.75, emission=0, alpha=1):
     return mat
 
 def cube(name, x, y, z, w, h, d, mat, bevel=0):
-    # World uses Y up. Blender uses Z up; the GLB importer restores world Y.
-    bpy.ops.mesh.primitive_cube_add(size=1, location=(x,z,y))
+    # Godot glTF importer maps Blender (X,Y,Z) to (X,Z,-Y). Negate world Z
+    # here so asymmetrical collision/art landmarks coincide after import.
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(x,-z,y))
     obj = bpy.context.object
     obj.name = name
     obj.dimensions = (w,d,h)
@@ -52,7 +53,7 @@ def cube(name, x, y, z, w, h, d, mat, bevel=0):
 
 def disc(name, x, z, rx, rz, mat, height=.014):
     # Flush stain/puddle: no visual gameplay step, no phantom collision.
-    verts = [(x + rx*math.cos(i*math.tau/12),z + rz*math.sin(i*math.tau/12),height) for i in range(12)]
+    verts = [(x + rx*math.cos(i*math.tau/12),-z + rz*math.sin(i*math.tau/12),height) for i in range(12)]
     mesh = bpy.data.meshes.new(name)
     mesh.from_pydata(verts, [], [tuple(range(12))])
     mesh.materials.append(mat)
@@ -63,7 +64,7 @@ def disc(name, x, z, rx, rz, mat, height=.014):
 def sign(name, text, x, y, z, mat, size=.55, side='south'):
     # On a wall plane; letters are mesh and travel with the master/GLB.
     angle = math.pi/2 if side == 'south' else -math.pi/2
-    bpy.ops.object.text_add(location=(x,z,y), rotation=(angle,0,0))
+    bpy.ops.object.text_add(location=(x,-z,y), rotation=(angle,0,0))
     obj = bpy.context.object
     obj.name = name
     obj.data.body = text
@@ -156,8 +157,8 @@ def shop_details(arena,p,market):
     for name,x,z,w,d,entry in ([('west-toolshop',-18,0,11,9,'east'),('east-service',18,0,11,9,'west'),
                                 ('north-ticket',0,-24,10,9,'south'),('south-depot',0,24,10,9,'north')]
                                if not market else
-                               [('east-kiosk',26,19,13,11,'west'),('south-wharf',11,-25,12,10,'north'),
-                                ('north-bazaar',-25,20,12,10,'south'),('east-warehouse',28,-17,13,11,'west')]):
+                               [('east-kiosk',26,19,13,11,'west'),('west-foodhall',-25,20,12,9,'east'),
+                                ('north-station',11,-25,15,11,'south'),('east-warehouse',28,-17,12,11,'west')]):
         # Polished beam grid above player collision height, tied into side walls.
         for j in range(4):
             zz=z-d/2+.65+j*(d-1.3)/3

@@ -32,7 +32,7 @@ for map_id,views in VIEWS.items():
  bpy.ops.wm.open_mainfile(filepath=str(MASTERS/f'{map_id}.blend'))
  arena=json.loads((DATA/f'{map_id}.json').read_text())['arena']
  for surface in arena['terrain']['surfaces']:
-  vertices=[(x,z,y-.006) for x,y,z in surface['vertices']]
+  vertices=[(x,-z,y-.006) for x,y,z in surface['vertices']]
   mesh=bpy.data.meshes.new(surface['id'])
   mesh.from_pydata(vertices,[],surface['triangles'])
   mesh.update()
@@ -69,8 +69,8 @@ for map_id,views in VIEWS.items():
  camera_data.lens=27
  camera_data.clip_end=300
  for label,(position,target) in views.items():
-  camera.location=position
-  direction=Vector(target)-camera.location
+  camera.location=(position[0],-position[1],position[2])
+  direction=Vector((target[0],-target[1],target[2]))-camera.location
   camera.rotation_euler=direction.to_track_quat('-Z','Y').to_euler()
   path=OUT/f'{map_id}-{label}-blender.png'
   scene.render.filepath=str(path)

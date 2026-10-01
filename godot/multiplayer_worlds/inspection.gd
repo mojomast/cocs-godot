@@ -43,14 +43,14 @@ func _ready() -> void:
  add_child(world_env)
  var positions := {
   "switchyard-ward":{
-   "street":[Vector3(0,2.1,9),Vector3(0,1,-17)],
-   "interior":[Vector3(-17,1.8,0),Vector3(-8,1,0)],
-   "roof":[Vector3(-27,5.3,-19),Vector3(-8,1,-19)],
+   "street":[Vector3(0,2.7,-4),Vector3(-18,1.8,0)],
+   "interior":[Vector3(-13.6,1.9,0),Vector3(-21,1.5,0)],
+   "roof":[Vector3(-8,6.1,-18),Vector3(-27,3,-19)],
    "objective":[Vector3(15,10,18),Vector3(0,0,0)]},
   "rainmarket-exchange":{
-   "street":[Vector3(0,2.1,23),Vector3(0,1,-17)],
-   "interior":[Vector3(26,1.8,19),Vector3(18,1,19)],
-   "roof":[Vector3(-26,4.8,-4),Vector3(-8,1,-4)],
+   "street":[Vector3(14,2.8,7),Vector3(26,1.5,19)],
+   "interior":[Vector3(20.4,1.9,19),Vector3(31,1.4,19)],
+   "roof":[Vector3(-9,6.1,-10),Vector3(-27,2.5,-4)],
    "objective":[Vector3(16,12,28),Vector3(0,0,-7)]}}
  if not positions.has(id):
   var arena: Dictionary = catalog.recipes[id].arena

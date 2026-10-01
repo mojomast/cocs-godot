@@ -18,9 +18,37 @@ var startup_error := ""
 var auto_start := true
 var fixture_retreat_elapsed := 0.0
 var fixture_retreat_send := 0.0
+var urban_guest_control_elapsed := 0.0
+var urban_guest_control_send := 0.0
+var urban_guest_control_count := 0
+var urban_capture_path := ""
+var urban_capture_queued := false
+
+func urban_capture_objective() -> void:
+ var review := Camera3D.new()
+ review.fov = 74
+ review.far = 300
+ add_child(review)
+ review.global_position = Vector3(14,10,18) if selected_mode == "ctf" else Vector3(-27,9,-17)
+ review.look_at(Vector3(31,1,0) if selected_mode == "ctf" else Vector3(-34,0,-27))
+ review.make_current()
+ await RenderingServer.frame_post_draw
+ await RenderingServer.frame_post_draw
+ var result := get_viewport().get_texture().get_image().save_png(urban_capture_path)
+ if result != OK: push_error("Urban live objective screenshot failed: " + str(result))
+ else: print("URBAN_NATIVE_CAPTURE ",urban_capture_path," ",expected_hash)
+ review.queue_free()
 
 func _process(delta: float) -> void:
  super._process(delta)
+ if "--urban-fixture-move-guest" in OS.get_cmdline_user_args() and phase == 3:
+  urban_guest_control_elapsed += delta
+  urban_guest_control_send += delta
+  if urban_guest_control_elapsed < 2.5 and urban_guest_control_send >= .05:
+   urban_guest_control_send = 0.0
+   if client.send_input({"x":-1.0 if selected_mode == "ctf" else 0.0,"z":0.0 if selected_mode == "ctf" else -1.0,"sprint":true}) == OK:
+    urban_guest_control_count += 1
+    if urban_guest_control_count in [1,30]: print("URBAN_NATIVE_CONTROL ",JSON.stringify({"map":current_id,"mode":selected_mode,"sent":urban_guest_control_count,"actor":client.actor_id}))
  if "--world-fixture-retreat" not in OS.get_cmdline_user_args() or phase != 3: return
  fixture_retreat_elapsed += delta
  fixture_retreat_send += delta
@@ -73,6 +101,7 @@ func _ready() -> void:
   if arg.begins_with("--join-room="): join_room_id = arg.trim_prefix("--join-room=")
   if arg.begins_with("--bots="): selected_bot_count = arg.trim_prefix("--bots=").to_int()
   if arg == "--world-evidence": evidence = true
+  if arg.begins_with("--urban-fixture-capture="): urban_capture_path = arg.trim_prefix("--urban-fixture-capture=")
   if arg == "--wait-for-peer": auto_start = false
  if not catalog.entries.has(chosen) or selected_mode not in catalog.entries[chosen].modes:
   on_error("Unsupported multiplayer world/mode")
@@ -154,6 +183,9 @@ func on_snapshot(frame: Dictionary) -> void:
    objective_text.text = "%s / %s | score %s" % [current_id,selected_mode,str(zones.projection.scores)]
  if evidence:
   print("WORLD_NATIVE ",JSON.stringify({"map":current_id,"mode":selected_mode,"hash":expected_hash,"round":round_starts,"peer":client.peer_id,"actor":client.actor_id,"ack":client.last_ack,"phase":phase,"state":frame.state.get("objectives",{})}))
+ if not urban_capture_path.is_empty() and not urban_capture_queued:
+  urban_capture_queued = true
+  urban_capture_objective()
 
 func on_results(frame: Dictionary) -> void:
  if evidence: print("WORLD_NATIVE_RESULTS ",JSON.stringify({"map":current_id,"mode":selected_mode,"hash":expected_hash,"peer":client.peer_id,"winner":frame.state.get("winner"),"state":frame.state.get("objectives",{})}))
@@ -166,6 +198,8 @@ func on_results(frame: Dictionary) -> void:
  objective_renderer.apply_state(frame.state,client.actor_id)
  release_pointer()
  label.text = "Round ended · Enter: restart as host"
+ if "--urban-fixture-restart" in OS.get_cmdline_user_args() and join_room_id.is_empty() and round_results == 1:
+  get_tree().create_timer(2.0).timeout.connect(func() -> void: debug_restart())
 
 func on_error(message: String) -> void:
  startup_error = message
