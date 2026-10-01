@@ -7,7 +7,7 @@ const BloodWire = preload("res://blood_fx/wire.gd")
 const ActorVisual = preload("res://source_operators/operator_visual.gd")
 const RobotVisual = preload("res://campaign/robot_visual.gd")
 const RobotVoices = preload("res://campaign/robot_voices.gd")
-const RobotTells = preload("res://campaign/telegraphs.gd")
+const RobotTells = preload("res://horde/ground_tells.gd")
 const LOOK_GAIN := 0.002 # default source mouse sensitivity, app/page.tsx
 const MAPS := ["meridian-exchange", "verdant-reliquary", "ember-crucible"]
 ## Source HORDE_UPGRADES offers exactly three rows; the number keys are the
@@ -126,13 +126,7 @@ func _ready() -> void:
 	if not load_selected_map(selected):
 		on_error(catalog.error)
 		return
-	var tell_ground: Node3D = world
-	if not tell_ground.has_method("height_at"):
-		for child: Node in world.get_children():
-			if child is Node3D and child.has_method("height_at"):
-				tell_ground = child
-				break
-	robot_tells.bind_terrain(tell_ground)
+	robot_tells.bind_terrain(robot_tells)
 	av_ensure() # This composition does not call session._ready().
 	world.get_node("StaticPickupMarkers").hide()
 	client.connection_error.connect(on_error)
