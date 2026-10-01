@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "rainmarket-exchange",
   "name": "Rainmarket Exchange",
-  "geometryHash": "d018073ee1ac4db525456630fbd81395c8afd01030ed3c39b5845eefa2c8ef60",
+  "geometryHash": "1915800c641672c6403f9251d16827c45a8638473b0653cdc177fdbfe6313771",
   "arena": {
     "id": "rainmarket-exchange",
     "name": "Rainmarket Exchange",
@@ -2499,6 +2499,39 @@
         "material": "brick"
       },
       {
+        "id": "arcade-guard-n",
+        "kind": "structure",
+        "x": -26.5,
+        "z": -9.87,
+        "w": 15,
+        "d": 0.25,
+        "h": 3.4,
+        "baseY": 2.7,
+        "material": "steel"
+      },
+      {
+        "id": "arcade-guard-s",
+        "kind": "structure",
+        "x": -26.5,
+        "z": 0.87,
+        "w": 15,
+        "d": 0.25,
+        "h": 3.4,
+        "baseY": 2.7,
+        "material": "steel"
+      },
+      {
+        "id": "arcade-guard-w",
+        "kind": "structure",
+        "x": -33.87,
+        "z": -4.5,
+        "w": 0.25,
+        "d": 10.5,
+        "h": 3.4,
+        "baseY": 2.7,
+        "material": "steel"
+      },
+      {
         "id": "east-kiosk-north",
         "kind": "structure",
         "x": 26,
@@ -2550,6 +2583,28 @@
         "w": 0.55,
         "d": 3.4,
         "h": 3.8,
+        "baseY": 0,
+        "material": "concrete"
+      },
+      {
+        "id": "east-kiosk-counter-n",
+        "kind": "structure",
+        "x": 31.25,
+        "z": 16.25,
+        "w": 0.9,
+        "d": 2,
+        "h": 1.05,
+        "baseY": 0,
+        "material": "concrete"
+      },
+      {
+        "id": "east-kiosk-counter-s",
+        "kind": "structure",
+        "x": 31.25,
+        "z": 21.75,
+        "w": 0.9,
+        "d": 2,
+        "h": 1.05,
         "baseY": 0,
         "material": "concrete"
       },
@@ -2609,6 +2664,28 @@
         "material": "brick"
       },
       {
+        "id": "west-foodhall-counter-n",
+        "kind": "structure",
+        "x": -29.75,
+        "z": 17.75,
+        "w": 0.9,
+        "d": 2,
+        "h": 1.05,
+        "baseY": 0,
+        "material": "brick"
+      },
+      {
+        "id": "west-foodhall-counter-s",
+        "kind": "structure",
+        "x": -29.75,
+        "z": 22.25,
+        "w": 0.9,
+        "d": 2,
+        "h": 1.05,
+        "baseY": 0,
+        "material": "brick"
+      },
+      {
         "id": "north-station-north",
         "kind": "structure",
         "x": 11,
@@ -2664,6 +2741,28 @@
         "material": "steel"
       },
       {
+        "id": "north-station-counter-l",
+        "kind": "structure",
+        "x": 7.25,
+        "z": -20.75,
+        "w": 2.1,
+        "d": 0.9,
+        "h": 1.05,
+        "baseY": 0,
+        "material": "steel"
+      },
+      {
+        "id": "north-station-counter-r",
+        "kind": "structure",
+        "x": 14.75,
+        "z": -20.75,
+        "w": 2.1,
+        "d": 0.9,
+        "h": 1.05,
+        "baseY": 0,
+        "material": "steel"
+      },
+      {
         "id": "east-warehouse-north",
         "kind": "structure",
         "x": 28,
@@ -2715,6 +2814,28 @@
         "w": 0.55,
         "d": 3.4,
         "h": 3.8,
+        "baseY": 0,
+        "material": "brick"
+      },
+      {
+        "id": "east-warehouse-counter-n",
+        "kind": "structure",
+        "x": 32.75,
+        "z": -19.75,
+        "w": 0.9,
+        "d": 2,
+        "h": 1.05,
+        "baseY": 0,
+        "material": "brick"
+      },
+      {
+        "id": "east-warehouse-counter-s",
+        "kind": "structure",
+        "x": 32.75,
+        "z": -14.25,
+        "w": 0.9,
+        "d": 2,
+        "h": 1.05,
         "baseY": 0,
         "material": "brick"
       },
@@ -2912,6 +3033,396 @@
               -9,
               0,
               -8
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              2,
+              3
+            ]
+          ]
+        },
+        {
+          "id": "east-kiosk-front-sidewalk",
+          "material": "paving",
+          "walkable": true,
+          "vertices": [
+            [
+              17.7,
+              0.12,
+              11.5
+            ],
+            [
+              17.7,
+              0.12,
+              12.95
+            ],
+            [
+              34.3,
+              0.12,
+              12.95
+            ],
+            [
+              34.3,
+              0.12,
+              11.5
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              2,
+              3
+            ]
+          ]
+        },
+        {
+          "id": "east-kiosk-back-sidewalk",
+          "material": "paving",
+          "walkable": true,
+          "vertices": [
+            [
+              17.7,
+              0.12,
+              25.05
+            ],
+            [
+              17.7,
+              0.12,
+              26.5
+            ],
+            [
+              34.3,
+              0.12,
+              26.5
+            ],
+            [
+              34.3,
+              0.12,
+              25.05
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              2,
+              3
+            ]
+          ]
+        },
+        {
+          "id": "west-foodhall-front-sidewalk",
+          "material": "paving",
+          "walkable": true,
+          "vertices": [
+            [
+              -32.8,
+              0.12,
+              13.5
+            ],
+            [
+              -32.8,
+              0.12,
+              14.95
+            ],
+            [
+              -17.2,
+              0.12,
+              14.95
+            ],
+            [
+              -17.2,
+              0.12,
+              13.5
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              2,
+              3
+            ]
+          ]
+        },
+        {
+          "id": "west-foodhall-back-sidewalk",
+          "material": "paving",
+          "walkable": true,
+          "vertices": [
+            [
+              -32.8,
+              0.12,
+              25.05
+            ],
+            [
+              -32.8,
+              0.12,
+              26.5
+            ],
+            [
+              -17.2,
+              0.12,
+              26.5
+            ],
+            [
+              -17.2,
+              0.12,
+              25.05
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              2,
+              3
+            ]
+          ]
+        },
+        {
+          "id": "north-station-front-sidewalk",
+          "material": "paving",
+          "walkable": true,
+          "vertices": [
+            [
+              1.7,
+              0.12,
+              -32.5
+            ],
+            [
+              1.7,
+              0.12,
+              -31.05
+            ],
+            [
+              20.3,
+              0.12,
+              -31.05
+            ],
+            [
+              20.3,
+              0.12,
+              -32.5
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              2,
+              3
+            ]
+          ]
+        },
+        {
+          "id": "north-station-back-sidewalk",
+          "material": "paving",
+          "walkable": true,
+          "vertices": [
+            [
+              1.7,
+              0.12,
+              -18.95
+            ],
+            [
+              1.7,
+              0.12,
+              -17.5
+            ],
+            [
+              20.3,
+              0.12,
+              -17.5
+            ],
+            [
+              20.3,
+              0.12,
+              -18.95
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              2,
+              3
+            ]
+          ]
+        },
+        {
+          "id": "east-warehouse-front-sidewalk",
+          "material": "paving",
+          "walkable": true,
+          "vertices": [
+            [
+              20.2,
+              0.12,
+              -24.5
+            ],
+            [
+              20.2,
+              0.12,
+              -23.05
+            ],
+            [
+              35.8,
+              0.12,
+              -23.05
+            ],
+            [
+              35.8,
+              0.12,
+              -24.5
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              2,
+              3
+            ]
+          ]
+        },
+        {
+          "id": "east-warehouse-back-sidewalk",
+          "material": "paving",
+          "walkable": true,
+          "vertices": [
+            [
+              20.2,
+              0.12,
+              -10.95
+            ],
+            [
+              20.2,
+              0.12,
+              -9.5
+            ],
+            [
+              35.8,
+              0.12,
+              -9.5
+            ],
+            [
+              35.8,
+              0.12,
+              -10.95
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              2,
+              3
+            ]
+          ]
+        },
+        {
+          "id": "tram-boardwalk-west-sidewalk",
+          "material": "paving",
+          "walkable": true,
+          "vertices": [
+            [
+              -39,
+              0.12,
+              -35
+            ],
+            [
+              -39,
+              0.12,
+              35
+            ],
+            [
+              -36,
+              0.12,
+              35
+            ],
+            [
+              -36,
+              0.12,
+              -35
+            ]
+          ],
+          "triangles": [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              2,
+              3
+            ]
+          ]
+        },
+        {
+          "id": "tram-boardwalk-east-sidewalk",
+          "material": "paving",
+          "walkable": true,
+          "vertices": [
+            [
+              36,
+              0.12,
+              -35
+            ],
+            [
+              36,
+              0.12,
+              35
+            ],
+            [
+              39,
+              0.12,
+              35
+            ],
+            [
+              39,
+              0.12,
+              -35
             ]
           ],
           "triangles": [
