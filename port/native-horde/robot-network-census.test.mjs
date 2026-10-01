@@ -123,5 +123,12 @@ test('Blackwater feeder can be armed and restored by actual loopback movement + 
    assert(client.frames.some(f=>f.type==='events'&&f.items.some(e=>e.type==='blackwater-station-armed')));
    assert(client.frames.some(f=>f.type==='events'&&f.items.some(e=>e.type==='blackwater-station-restored')));
    assert(done.hordeInput.appliedSeq>0,'input went through the authority FIFO');
+   const priorEpoch=done.inputEpoch;
+   clearInterval(timer);timer=null;
+   await client.close();
+   client=await connect(authority,'blackwater-reclamation');
+   const restarted=await client.wait(f=>f.type==='snapshot');
+   assert.deepEqual(restarted.state.blackwater.completed,[],'confirmed repair cannot leak into a new solo session');
+   assert(restarted.inputEpoch>priorEpoch);
   }finally{if(timer)clearInterval(timer);if(client)await client.close();await authority.close();}
 });
