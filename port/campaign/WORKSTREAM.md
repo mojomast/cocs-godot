@@ -434,3 +434,10 @@ contracts pass 970/970 and visible replay/lifecycle passes 56/56 again. Evidence
 `live-menu-lifetime/run-1/` and `run-2/`. The new lifetime gate is registered.
 Parent owns the heavy slot and is running the corrected source transport test and
 the original Horde upgrade fixture before deciding whether further fixes are needed.
+
+Focused source transport suite now passes **88/88** tests. The Horde upgrade
+fixture reproduces its timeout: nine input resets occur before the synthetic key
+is delivered, and the observer remains in its readiness stage. Both failures are
+preserved (`canonical-5d724abd/`, `repair-4e2d8483/`). Astra now owns the exclusive
+engine slot for a bounded diagnosis and repair of this final failing gate,
+retaining actual engine input, authority acknowledgement and unchanged input TTL.
