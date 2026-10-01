@@ -65,3 +65,20 @@ Parent also corrected the lifecycle test's file-URL conversion for Windows and
 registered this package-contract gate in the canonical verifier. Its six Node
 tests pass locally, including actual normal/hung authority subprocesses and a
 Blackwater wire/hash exchange. Actual Linux/Windows artifact runs remain pending.
+
+## Urban roof correction awaiting native acceptance
+
+Roof commit `41027018` is integrated as `9bae914c`. All eight enclosed shops now
+have matching closed Blender roofs and authoritative ceiling slabs (underside,
+top and four sides). The new slabs do not add nav routes; existing upper routes
+remain connected. Urban-specific lighting adds four interior lights per map.
+
+- Switchyard hash: `9152ef1cfe7204e7c2f6a5e704d75ccd7a57d37596b0818938647c82ad3808e9`.
+- Rainmarket hash: `3d2cbb9a8d59b8534a2f476ad01f24632ddd5f16a9e7ca7e4bcc6441e8808587`.
+
+Lane source slab/door/navigation, 43-pair and two-WebSocket checks pass. Parent's
+post-integration generated-scene check and urban navigation audit pass. Fresh
+native import/ceiling/capsule/lighting/peer evidence is still required at these
+new hashes. Previous post-art native evidence applies only to the prior hashes.
+Astra currently owns Godot for the higher-priority campaign feel/cheat work;
+urban roof native acceptance follows its explicit release.
