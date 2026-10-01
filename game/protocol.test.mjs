@@ -171,7 +171,14 @@ test('snapshotDelta v2 cuts a real combat frame by at least 80%', async () => {
  }
  assert.ok(fullBytes > 0 && deltaBytes > 0);
  assert.ok(deltaBytes < fullBytes * 0.2, `delta (${deltaBytes}) should be under 20% of full (${fullBytes})`);
- assert.deepEqual(applySnapshotDelta(frames[frames.length - 2], snapshotDelta(frames[frames.length - 2], frames[frames.length - 1])), frames[frames.length - 1], 'the real frame round-trips exactly');
+ // Exercise the actual JSON transport boundary: JSON has no signed zero, while
+ // quantization can produce -0 and the delta intentionally treats it as 0.
+ const wire = value => JSON.parse(JSON.stringify(value));
+ let received = wire(frames[0]);
+ for (let i = 1; i < frames.length; i++) {
+  received = applySnapshotDelta(received, wire(snapshotDelta(frames[i - 1], frames[i]) ?? {}));
+  assert.deepEqual(received, wire(frames[i]), `real frame ${i} round-trips exactly over JSON`);
+ }
 });
 
 test('wireSize and BandwidthMeter report bytes and a sliding rate', () => {

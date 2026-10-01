@@ -11,7 +11,7 @@ test('campaign authority closure includes reviewed adapters and all four runtime
   const data = maps.map(id => `godot/campaign/generated/${id}.json`);
   assert.deepEqual(closure.campaignDataFiles, data);
   assert.deepEqual(closure.dataReads['port/native-campaign/maps.mjs'], data);
-  for (const name of ['authority','maps','match','missions','enemies','core.generated']) {
+  for (const name of ['authority','maps','match','missions','enemies','story','core.generated']) {
     assert.ok(Object.hasOwn(closure.adapterModules, `port/native-campaign/${name}.mjs`), name);
     assert.ok(closure.routes.campaign.includes(`port/native-campaign/${name}.mjs`), name);
   }
@@ -21,5 +21,6 @@ test('both export entry points include campaign JSON data', () => {
   for (const path of ['build.py','../../godot/export_presets.cfg']) {
     const text = readFileSync(new URL(path,import.meta.url),'utf8');
     assert.match(text, /include_filter="[^"\n]*campaign\/generated\/\*\.json/);
+    assert.match(text, /include_filter="[^"\n]*ui\/attract\/\*\.json/);
   }
 });

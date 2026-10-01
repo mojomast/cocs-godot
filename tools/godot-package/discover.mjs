@@ -23,7 +23,7 @@ const localRosterAdapters = ['port/native-menu-debug-bots/debug-frame.mjs',
 // adapter and static catalog, exactly like the native-arena family.
 const identityZoneAdapters = ['port/native-identity-zones/authority.mjs',
   'port/native-identity-zones/match.mjs', 'port/native-identity-zones/catalog.mjs'];
-const campaignAdapters = ['authority','maps','match','missions','enemies','schema','core.generated']
+const campaignAdapters = ['authority','maps','match','missions','enemies','story','schema','core.generated']
   .map(name => `port/native-campaign/${name}.mjs`);
 const adapters = [...hordeAdapters, ...nativeArenaAdapters, ...debugAdapters,
   ...localRosterAdapters, ...identityZoneAdapters, ...campaignAdapters];

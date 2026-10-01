@@ -410,3 +410,18 @@ MP4: 15,661,031 bytes, SHA-256
 -16.03 LUFS / -2.20 dBTP, unchanged audio stream. Evidence is
 `/home/mojo/.tmp-on-disk/cocs-trailer-evidence-20260930-r2/`.
 The heavy slot has returned to parent for complete integrated verification.
+
+Canonical run at `5d724abd` executed **300/300** gates: **293 passed, seven
+failed**. Full before/after reports are archived in `canonical-5d724abd/`.
+Three closure failures share a missing reviewed `story.mjs` packaging entry;
+parent added that exact adapter and explicit replay/orchestral JSON export paths.
+All ten focused closure tests now pass with the selected source derivative.
+The protocol failure was solely `-0` versus `0` in an in-memory comparison;
+the regression now checks every combat frame through the real JSON transport
+boundary (test-only change, runtime/provenance bytes untouched), pending rerun.
+
+The Sol lane owns the exclusive heavy slot to fix actual async terrain teardown
+(`_build_terrain` resumed after its node was freed) and investigate two resources
+remaining at campaign-environment exit. The Horde accelerated upgrade fixture
+also timed out amid stale-input resets; parent will investigate after slot release.
+No packaging/release acceptance is claimed while these gates remain unresolved.
