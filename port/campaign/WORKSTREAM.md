@@ -321,3 +321,13 @@ Menu follow-up `1e55bfaa` is integrated as `c4e33142`: only the headless mock
 media seam bypasses the virtual minimized-window state. Real minimized/unfocused
 windows remain paused. The menu runtime contracts must be rerun once the trailer
 releases the slot; actual Theora-under-interface acceptance waits for its media.
+
+## Corrected menu requirement: live engine rendering
+
+The owner clarified that the menu demo must be a scripted scene rendered in
+Godot, **not a video**; the trailer remains MP4. Both lanes received the override.
+The trailer lane retains the exclusive heavy slot for video production and will
+export compact verified authority replay data instead of Theora. The Sol menu
+lane replaces VideoStream playback with isolated real 3D rendering behind the
+usable interface. `ATTRACT_DEMO.md` defines their shared replay contract. Earlier
+Theora plans are historical and superseded; no menu video will be installed.
