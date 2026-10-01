@@ -59,9 +59,13 @@ func run() -> void:
 			push_error("Shield block has no visible confirmation"); quit(1); return
 		robot.free()
 	print(JSON.stringify(rows))
-	var file := FileAccess.open("res://tests/campaign/targeting-points.json", FileAccess.WRITE)
-	file.store_string(JSON.stringify(points) + "\n")
-	file.close()
+	var points_path := OS.get_environment("CAMPAIGN_TARGETING_POINTS")
+	if not points_path.is_empty():
+		var file := FileAccess.open(points_path, FileAccess.WRITE)
+		if file == null:
+			push_error("Cannot write native targeting samples: " + points_path); quit(1); return
+		file.store_string(JSON.stringify(points) + "\n")
+		file.close()
 	var presentation := Presentation.new()
 	presentation.actor_visual_factory = func(_a: Dictionary, _id: int) -> Node3D: return Robot.new()
 	presentation.interpolate_remote = true

@@ -59,10 +59,13 @@ ACTOR_ANIMATION_CAPTURE="$EVIDENCE/after" LP_NUM_THREADS=1 python3 tools/godot-d
 COCS_ATTRACT_EVIDENCE="$EVIDENCE/menu-sequence" LP_NUM_THREADS=1 python3 tools/godot-dev/xvfb_run.py "$GODOT" --path godot --rendering-method gl_compatibility --fixed-fps 30 --script res://tests/animation_pass/menu_sequence.gd
 ```
 
-`geometry.gd` writes only when `ACTOR_ANIMATION_POINTS` is set. The separate old
-`campaign/targeting_geometry.gd` in this base writes its fixture unconditionally;
-acceptance preserves original bytes, tests the newly extracted points, then
-restores them. No generated source/game-core edit is involved.
+`geometry.gd` writes only when `ACTOR_ANIMATION_POINTS` is set. During lane
+acceptance the separate old `campaign/targeting_geometry.gd` wrote its fixture
+unconditionally; the lane preserved and restored those bytes. Parent integration
+now makes that extractor opt-in through `CAMPAIGN_TARGETING_POINTS`, and its Node
+fire test consumes that path when set. Canonical verification uses fresh unique
+paths for both geometry-to-fire chains. No generated source/game-core edit is
+involved, and ordinary native checks no longer modify tracked fixtures.
 
 For before capture, temporarily extract robot/puppy/operator/locomotion/gesture
 scripts from `4d41cdef` to `godot/tests/animation_pass/reference_<name>.gd`; change

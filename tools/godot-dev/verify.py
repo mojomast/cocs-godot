@@ -42,6 +42,8 @@ derivative_path = os.environ.get('COCS_SOURCE_DERIVATIVE')
 os.environ['COCS_CAREER_ROOT'] = tempfile.mkdtemp(prefix='verification-career-', dir=root / '.port-runtime')
 os.environ['CAREER_EQUIPPED_OUT'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'equipped-journey')
 os.environ['CAREER_CLARITY_OUT'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'clarity-journey')
+os.environ['ACTOR_ANIMATION_POINTS'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'animated-body-points.json')
+os.environ['CAMPAIGN_TARGETING_POINTS'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'targeting-body-points.json')
 # Verification-owned loopback authorities must not inherit a user's fixed server
 # port. The launchers resolve and pass the actual ephemeral endpoint to Godot.
 os.environ['PORT'] = '0'
@@ -213,8 +215,11 @@ commands = [
     ("campaign-input-flow", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/input_flow.gd"]),
     ("animation-physics", [binary, "--headless", "--path", "godot", "--script", "res://tests/animation/physics.gd"]),
     ("animation-world-physics", [binary, "--headless", "--path", "godot", "--script", "res://tests/animation/world_physics.gd"]),
-    ("campaign-targeting-authority", ["node", "--test", "port/native-campaign/targeting.test.mjs"]),
     ("campaign-targeting-geometry", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/targeting_geometry.gd"]),
+    ("campaign-targeting-authority", ["node", "--test", "port/native-campaign/targeting.test.mjs"]),
+    ("animation-actors", [binary, "--headless", "--path", "godot", "--script", "res://tests/animation_pass/actors.gd"]),
+    ("animation-actor-geometry", [binary, "--headless", "--path", "godot", "--script", "res://tests/animation_pass/geometry.gd"]),
+    ("animation-actor-fire", ["node", "--test", "port/animation-pass/actors-fire.test.mjs"]),
     ("campaign-interludes-authority", ["node", "--test", "port/native-campaign/interludes.test.mjs"]),
     ("campaign-interludes-fixtures", ["node", "tools/godot-campaign/interlude-fixtures.mjs", str(root / ".port-runtime" / "interlude-fixtures.json")]),
     ("campaign-interludes-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/interludes.gd", "--", "--fixtures=" + str(root / ".port-runtime" / "interlude-fixtures.json")]),

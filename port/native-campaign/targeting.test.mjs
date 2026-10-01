@@ -25,7 +25,7 @@ function setup(m,e,p,row,side,weapon=0) {
   p.ammo[weapon]=100;m.over=false;m.rockets=[];
 }
 test('native Blender solid body samples register actual primary fire from four sides at terrain height',()=>{
-  const rows=JSON.parse(readFileSync(new URL('../../godot/tests/campaign/targeting-points.json',import.meta.url)));
+  const rows=JSON.parse(readFileSync(process.env.CAMPAIGN_TARGETING_POINTS || new URL('../../godot/tests/campaign/targeting-points.json',import.meta.url)));
   const {m,e,p}=fixture();let fired=0;
   for(const row of rows)for(const side of [0,Math.PI/2,Math.PI,Math.PI*1.5]) {
     setup(m,e,p,row,side);

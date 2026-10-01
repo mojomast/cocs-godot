@@ -34,6 +34,21 @@ Both agents use `openai/gpt-6.1-sol`, explicitly selected for the owner's reques
 
 ## Acceptance
 
+Actor commit `d4d23766` is integrated as `c37224e2`. Parent reviewed the overview
+and close cast contact sheets. Operator/robot/gesture/Patch locomotion now uses
+contact-aware procedural motion and bounded springs; source-fire acceptance
+covered 18,468 native samples and 73,872 shots without enlarging hit regions.
+Actor Sol explicitly released Godot. **Physics Sol now owns the exclusive engine
+slot** for combined semantic/native checks, paired captures and a connected
+gameplay journey. Parent remains engine-idle.
+
+The package builder already includes all tracked non-test Godot scripts via its
+reviewed native-file inventory (`build.py: native_files`), so both new actor
+helpers and both physics helpers enter exported resources automatically. Added
+actor native and geometry-to-source-fire canonical gates. Extracted geometry uses
+fresh verification-owned paths; canonical tests no longer overwrite the tracked
+targeting point fixture.
+
 Physics lane code/research checkpoint `ed0bdbc8` is integrated as `791d0e18`.
 It implements exact critically damped cosmetic dynamics, source-driven weapon
 inertia/recoil/landing, eased workshop mechanisms and bounded wheel/casing
