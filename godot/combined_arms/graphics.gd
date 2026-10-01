@@ -3,6 +3,7 @@ extends Node3D
 const Rig = preload("res://first_person/rig.gd")
 const Feedback = preload("res://world/combat_feedback.gd")
 const VehicleShots = preload("res://vehicles/shot_fx.gd")
+const SettingsAccess = preload("res://ui/settings_access.gd")
 var session: Node
 var rig := Rig.new()
 var feedback := Feedback.new()
@@ -27,6 +28,9 @@ func refresh(focused: bool, captured: bool) -> void:
 		vehicle_shots.clear_round()
 	if allowed and not public_active: feedback.apply_state(session.state)
 	public_active = allowed
+	rig.flight_mode = session.state.get("soloCheats", {}).get("flight", false) == true
+	var settings := SettingsAccess.service()
+	if settings != null: rig.reduced_motion = settings.values.get("reduced_motion", false) == true
 	rig.apply_actor(session.actor, allowed and captured and session.controls.engaged and session.vehicle.is_empty())
 	if rig.has_method("apply_aim"): rig.call("apply_aim", session.aim_requested())
 	session.world.camera.fov = float(rig.get_aim_state(base_fov).fov)

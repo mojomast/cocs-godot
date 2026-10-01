@@ -306,6 +306,9 @@ func smoke_controls(controls: Dictionary) -> Dictionary:
 
 func _process(delta: float) -> void:
 	super._process(delta)
+	interlude_director.animation_suspended = not can_capture_pointer()
+	if is_instance_valid(solo_cheats):
+		interlude_director.animation_suspended = interlude_director.animation_suspended or solo_cheats.state.get("paused", false) == true
 	robot_voices.set_active(campaign.playing() and vehicle_shots_allowed() and not action_pending)
 	for visual: Node3D in presentation.actors.values():
 		if visual.has_method("select_distance"):

@@ -211,6 +211,7 @@ commands = [
     ("campaign-feel-authority", ["node", "--test", "port/singleplayer-feel/feel.test.mjs"]),
     ("campaign-feel-motion", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/feel_motion.gd"]),
     ("campaign-input-flow", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/input_flow.gd"]),
+    ("animation-physics", [binary, "--headless", "--path", "godot", "--script", "res://tests/animation/physics.gd"]),
     ("campaign-targeting-authority", ["node", "--test", "port/native-campaign/targeting.test.mjs"]),
     ("campaign-targeting-geometry", [binary, "--headless", "--path", "godot", "--script", "res://tests/campaign/targeting_geometry.gd"]),
     ("campaign-interludes-authority", ["node", "--test", "port/native-campaign/interludes.test.mjs"]),

@@ -34,6 +34,15 @@ Both agents use `openai/gpt-6.1-sol`, explicitly selected for the owner's reques
 
 ## Acceptance
 
+Physics lane code/research checkpoint `ed0bdbc8` is integrated as `791d0e18`.
+It implements exact critically damped cosmetic dynamics, source-driven weapon
+inertia/recoil/landing, eased workshop mechanisms and bounded wheel/casing
+presentation. Parent added campaign focus/source-pause and direct-rig flight /
+reduced-motion hooks and its native verification gate. Syntax and six authority
+tests passed in the lane; semantic/native/capture acceptance is **pending**.
+Actor Sol still owns the exclusive engine slot; physics Sol is READYFORENGINE
+and has not launched any engine process. See `PHYSICS.md` for sources and scope.
+
 Use primary developer/documentation sources with precise citations. Implement a
 practical form of physics-informed animation where supported by the research and
 current architecture. Distinguish cosmetic response from authoritative movement.
