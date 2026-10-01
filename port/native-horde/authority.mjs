@@ -13,6 +13,7 @@ import {applyRobotHitVolume,hordeRobotState} from './robot-roles.mjs';
 import {readCinderwake} from './cinderwake-schema.mjs';
 import {BLACKWATER_ID,readBlackwater} from './blackwater-schema.mjs';
 import {BlackwaterDirector} from './blackwater-director.mjs';
+import {attachSoloCheats, parseSoloCheat, soloCheatPreferences} from '../native-debug/solo_cheats.mjs';
 import {applyDebugFrame, applyLiveOverrides, createDebugState, debugEcho, installHumanGuard,
   parseDebugFrame, reconcileHuman, restoreSpawnAmmo, HUMAN_SEAT} from '../native-debug/debug.mjs';
 export const MAPS = ['meridian-exchange','verdant-reliquary','ember-crucible'];
@@ -403,6 +404,7 @@ export function createAuthority({observe=()=>{}, debug} = {}) {
  const inputs = new InputBuffer();
   let socket=null, config=null, mapId=null, match=null, created=false, finished=false;
   let loadout={character:'chatgpt',harness:'openclaw'};
+ let cheats=null, cheatPreferences=soloCheatPreferences();
  let baseConfig=null;
  let round=0, seq=0, epoch=0, eventCursor=null, wall=performance.now(), accumulator=0, closing=false, closePromise;
  let tokens=LIMITS.burst, tokenAt=wall;
@@ -429,6 +431,7 @@ export function createAuthority({observe=()=>{}, debug} = {}) {
  function detach(ws) {
   if (socket !== ws) return;
   socket=null; match=null; config=null; mapId=null; created=false; finished=false;
+  cheats=null;cheatPreferences=soloCheatPreferences();
    inputs.reset(); accumulator=0; eventCursor=null;
    loadout={character:'chatgpt',harness:'openclaw'};
   debugReset();
@@ -493,6 +496,7 @@ export function createAuthority({observe=()=>{}, debug} = {}) {
      // Round boundary: god mode is round-scoped and always clears here.
      debugState.live.godMode=false;
      applyDebugToMatch(match);
+     cheats=attachSoloCheats(match,cheatPreferences);
      round++; seq=0; epoch++; eventCursor=new EventCursor(); finished=false; inputs.reset();
      // Consume construction's ring before any step can shift it. The supported
      // solo preset constructs one spawn event; no historical events are inferred.
@@ -508,6 +512,10 @@ export function createAuthority({observe=()=>{}, debug} = {}) {
      inputs.receive(f.seq,parsed,now,f.cancel === true);
      // A dying actor's queued actions must not execute on a later respawn.
      if (match.actors[0].health <= 0) inputs.cancel();
+    } else if (f.type === 'solo-cheat' && match && cheats) {
+     const command=parseSoloCheat(f);
+     if(command.inputEpoch!==epoch)return;
+     if(cheats.apply(command)&&command.action==='pause')cancelControls('cheat-menu');
     } else if (f.type === UPGRADE_FRAME) {
      // Additive local-only upgrade intent, never a lifecycle command: every
      // refusal is answered and the session continues. The offer window, the
@@ -566,7 +574,7 @@ export function createAuthority({observe=()=>{}, debug} = {}) {
   try {
    for (let steps=0; accumulator>=1/60 && steps<5 && match && !finished; steps++) {
     accumulator-=1/60;
-    if (inputs.expired(now)) cancelControls('stale-input');
+    if (!cheats?.state.paused && inputs.expired(now)) cancelControls('stale-input');
     const sample=inputs.take(), active=match;
     const alive=active.actors[0].health > 0;
     active.step(1/60,{inputs:{0:sample.input}});

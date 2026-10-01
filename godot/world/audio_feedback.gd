@@ -215,6 +215,8 @@ func apply_events(items: Array, local_id: int) -> void:
 					_play_cue("hit", _last_weapon)
 			"pickup":
 				if actor == local_id: _play_cue("pickup")
+			"campaign-salvage":
+				if actor == local_id and float(item.get("health", 0)) + float(item.get("armor", 0)) > 0: _play_cue("pickup")
 
 func _melee_damage(damage: Dictionary, events: Array) -> bool:
 	# An accepted strike already has its own thump/crack, independent of the gun
@@ -481,6 +483,13 @@ func _synth_weapon(raw: PackedFloat32Array, count: int, cue: String, weapon: int
 			sample += tone * tone_gain * tone_env
 			sample += sub * sub_scale * sub_env * 0.55
 			sample += mid * tail_mix * tail_env * 0.12
+			# A delayed bolt/slide click separates the initial crack from its
+			# mechanical return. Energy weapons retain their rising electrical tail.
+			if not zap and style != "plasma":
+				var mechanical_time := float(index) / SAMPLE_RATE - (0.055 if heavy else 0.028)
+				if mechanical_time >= 0.0:
+					var mechanical_env := exp(-mechanical_time / (0.022 if heavy else 0.012))
+					sample += (high * 0.34 + sin(mechanical_time * TAU * (1450.0 if heavy else 2350.0)) * 0.12) * mechanical_env
 		elif cue == "launch":
 			sample += low * (0.42 if heavy else 0.32) * body_env
 			sample += mid * body_scale * body_env * 0.18

@@ -74,7 +74,9 @@ func handle_event(event: InputEvent, active: bool, actor: Dictionary) -> bool:
 
 func advance(delta: float, active: bool, actor: Dictionary, ack: int) -> void:
 	if pending < 0: return
-	remaining -= delta
+	# Start the acknowledgment deadline only after the request was sent. A slow
+	# rendered frame must not consume a fresh key press before its first packet.
+	if first_sequence >= 0: remaining -= delta
 	if not active or remaining <= 0.0 or not available(actor, pending) or (not require_ack and actor.get("weapon", -1) == pending) or (first_sequence >= 0 and ack >= first_sequence):
 		clear()
 

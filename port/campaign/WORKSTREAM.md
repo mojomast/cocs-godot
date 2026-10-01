@@ -714,3 +714,65 @@ crossed the TTL before the proof frame. Final passing evidence:
 Parent is proceeding with a fresh complete canonical run, then serialized Linux
 and Windows exports and extracted-package checks. Final source/art identity must
 remain fixed across those steps; report outputs are archived/restored separately.
+
+## Playtest exports and next expansion
+
+Final identity `614e11ad` completed **306 canonical gates, 305 passed**. The only
+remaining failure is the intermittent llvmpipe Horde upgrade post-delivery input
+timeout; selection was accepted and the prior focused rerun passed. All campaign
+gates pass. To deliver the requested testing build, that limitation is explicitly
+recorded rather than representing the aggregate as all-green.
+
+Both Linux/Windows exports succeeded from that exact identity. Extracted manifests
+and file hashes pass; generated resource hash matches across platforms. Linux's
+23 native launch/cleanup cases and all eight release-PCK campaign map/profile
+captures pass. Evidence is in
+`/home/mojo/.tmp-on-disk/cocs-campaign-evidence-20261001/exports-614e11ad/`.
+Archives/checksums/manifests/screenshots are uploaded to draft
+`quiet-relay-playtest-2026-10-01`; Windows runner `36819034670` is pending.
+Final acceptance JSON and publication follow that result. The trailer refresh
+remains deferred. Parent reviewed packaged Rootfall gameplay and compact Crown UI.
+
+While these artifacts were building, the owner requested a new expansion:
+Blender multiplayer maps for every mode, varied settings and complex playable
+geometry including an urban map, plus new robot enemies throughout Horde and a
+sprawling scripted survival map. Three parallel Sol lanes start from `614e11ad`
+in isolated worktrees, with details and resource ownership recorded at
+`/home/mojo/.tmp-on-disk/cocs-multiplayer-evidence-20261001/WORKSTREAM.md`:
+
+- Urban/shared map integration: `ses_f0a216563ffecU5AKK7LRnpjbG`,
+  `expansion/mp-urban`, `/home/mojo/.tmp-on-disk/cocs-mp-urban-20261001`.
+- Nonurban worlds: `ses_f0a20dbd6ffessvYoMnKoRaK5B`, `expansion/mp-worlds`,
+  `/home/mojo/.tmp-on-disk/cocs-mp-worlds-20261001`.
+- Robot Horde: `ses_f0a2032a7ffeXurQGXEp7rPDw6`, `expansion/horde-robots`,
+  `/home/mojo/.tmp-on-disk/cocs-horde-robots-20261001`.
+
+Urban now owns the Godot slot and one Blender export slot; worlds owns the
+second Blender slot and waits for Godot; Horde continues code/static work until
+explicit permission. These changes target a later build, preserving this campaign
+playtest identity. Parent must relay the shared map contract once the urban lane
+delivers it, and review genuine mode-specific gameplay/collision/network coverage.
+
+## Campaign playtest published
+
+Public prerelease:
+https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-playtest-2026-10-01
+
+- Windows: `cocs-native-windows.zip`, 109,471,360 bytes, SHA-256
+  `65e8e7ba1503c289f1e86e56ab6342a9451832034834072b6d09e70d3bfbb45d`.
+- Linux: `cocs-native-linux.tar.gz`, 69,312,028 bytes, SHA-256
+  `98a760df0e3cb928eeeb98308425d0695fe41e56676a5ffae4e6715aa4f4bc65`.
+- Both packages remain exact runtime identity `614e11ad`; later documentation
+  commits do not imply rebuilt binaries. Checksums, manifests, acceptance JSON,
+  platform smoke reports and four actual release-PCK gameplay fixtures accompany
+  the downloads.
+
+Windows run `36819034670` attempt 1 passed fourteen cases (including the first
+three chapters) then disconnected during Crown startup. Attempt 2 passed all
+23 cases with the unchanged archive. Both results are preserved under the export
+evidence root; the initial failure's cause is unconfirmed and disclosed publicly.
+Linux passed 23 cases and all eight release-PCK graphical map/profile captures.
+Full source suite remains accurately reported as 305/306, with the intermittent
+Horde input fixture failure retained. Human campaign timing/balance and real-GPU
+performance remain for the requested owner playtest. The parallel multiplayer/
+robot-Horde expansion continues separately with the previously assigned slots.

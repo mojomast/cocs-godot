@@ -4,12 +4,35 @@ var expected_next := ""
 var campaign_phase := ""
 var action_pending := false
 var last_start_epoch := 0
+var draining_snapshots := false
+var pending_snapshot: Dictionary = {}
+var coalesced_snapshots := 0
+
+# Validate and acknowledge every wire packet, but pose/terrain/HUD work only
+# needs the newest snapshot in a drained render-frame batch. Events retain their
+# original ordered delivery; results and lifecycle boundaries are never delayed.
+func deliver_snapshot(frame: Dictionary) -> void:
+	if draining_snapshots and frame.get("type") == "snapshot":
+		if not pending_snapshot.is_empty(): coalesced_snapshots += 1
+		pending_snapshot = frame
+		return
+	super.deliver_snapshot(frame)
+
+func _process(delta: float) -> void:
+	draining_snapshots = true
+	super._process(delta)
+	draining_snapshots = false
+	var frame := pending_snapshot
+	pending_snapshot = {}
+	if not frame.is_empty() and error.is_empty() and peer.get_ready_state() == WebSocketPeer.STATE_OPEN and not round_finished:
+		super.deliver_snapshot(frame)
 
 func create_room(player_name: String = "Operator", character: String = "chatgpt", harness: String = "openclaw") -> Error:
 	if character != "chatgpt" or harness != "openclaw": return ERR_UNAUTHORIZED
 	return send_frame({"type":"create", "name":"The Quiet Relay", "playerName":player_name, "v":3, "delta":0, "nativeArenaInput":1})
 
 func disconnect_server() -> void:
+	pending_snapshot.clear()
 	expected_next = ""
 	campaign_phase = ""
 	action_pending = false
@@ -30,6 +53,7 @@ func decode_text(text: String) -> bool:
 	var frame: Variant = JSON.parse_string(text)
 	if frame is Dictionary:
 		if frame.get("type") == "start":
+			pending_snapshot.clear()
 			if not wire_integer(frame.get("inputEpoch")) or int(frame.inputEpoch) < input_epoch or int(frame.inputEpoch) <= last_start_epoch: return fail("Campaign start epoch did not advance")
 			var id: String = str(frame.get("mapId", ""))
 			if id not in CampaignCatalog.MAP_IDS or not allowlist.has(id): return fail("Unknown campaign map")
@@ -41,6 +65,7 @@ func decode_text(text: String) -> bool:
 			campaign_phase = ""
 			action_pending = false
 		if frame.get("type") in ["snapshot", "results"] and frame.get("state") is Dictionary:
+			if frame.type == "results": pending_snapshot.clear()
 			var campaign: Variant = frame.state.get("campaign")
 			if campaign is Dictionary and campaign.get("mapId") == requested_map and not round_finished and (frame.type == "results" or int(frame.get("seq", -1)) > last_snapshot_seq):
 				campaign_phase = str(campaign.get("phase", ""))

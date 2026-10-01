@@ -59,5 +59,19 @@ func _initialize() -> void:
 	assert(final_client.decode_text(JSON.stringify(ending)) and ending_phases.size() == 2, "duplicate ending cannot re-emit results")
 	assert(final_client.campaign_action("continue") == ERR_UNAUTHORIZED, "ending cannot loop the final chapter")
 	final_client.free()
+	var batch := RecordingClient.new()
+	batch.allowlist = {"rootfall-verge":{"geometryHash":"one"}}
+	batch.requested_map = "rootfall-verge"
+	var emitted: Array[Dictionary] = []
+	batch.snapshot.connect(func(frame: Dictionary) -> void: emitted.append(frame))
+	batch.results.connect(func(frame: Dictionary) -> void: emitted.append(frame))
+	assert(batch.decode_text(JSON.stringify({"type":"start","mapId":"rootfall-verge","geometryHash":"one","inputEpoch":1})))
+	batch.draining_snapshots = true
+	for seq: int in [1,2,3]:
+		assert(batch.decode_text(JSON.stringify({"type":"snapshot","seq":seq,"inputEpoch":1,"state":{"mapId":"rootfall-verge","campaign":{"mapId":"rootfall-verge","phase":"playing"}}})))
+	assert(emitted.is_empty() and batch.pending_snapshot.seq == 3 and batch.last_snapshot_seq == 3 and batch.coalesced_snapshots == 2, "all packets validate while only the newest awaits presentation")
+	assert(batch.decode_text(JSON.stringify({"type":"results","seq":4,"inputEpoch":2,"state":{"mapId":"rootfall-verge","campaign":{"mapId":"rootfall-verge","phase":"dead"}}})))
+	assert(batch.pending_snapshot.is_empty() and emitted.size() == 1 and emitted[0].type == "results", "terminal lifecycle bypasses batching and cannot replay stale poses")
+	batch.free()
 	print("CAMPAIGN_CLIENT_OK")
 	quit()

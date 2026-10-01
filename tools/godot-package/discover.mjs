@@ -13,7 +13,7 @@ const nativeArenaAdapters = ['port/native-arenas/authority.mjs', 'port/native-ar
 // Debug reconciliation is imported by BOTH local authorities and by nothing on
 // the ordinary/multi-human route. One reviewed adapter module, listed here so
 // the shipped closure stays explicit.
-const debugAdapters = ['port/native-debug/debug.mjs'];
+const debugAdapters = ['port/native-debug/debug.mjs', 'port/native-debug/solo_cheats.mjs'];
 // Local 24-seat construction and route-scoped debug parsing are imported only
 // by the two native authorities. Include these exact reviewed helpers in the
 // packaged runtime closure, never by a wildcard directory scan.
@@ -23,7 +23,7 @@ const localRosterAdapters = ['port/native-menu-debug-bots/debug-frame.mjs',
 // adapter and static catalog, exactly like the native-arena family.
 const identityZoneAdapters = ['port/native-identity-zones/authority.mjs',
   'port/native-identity-zones/match.mjs', 'port/native-identity-zones/catalog.mjs'];
-const campaignAdapters = ['authority','maps','match','missions','enemies','story','schema','core.generated']
+const campaignAdapters = ['authority','maps','match','missions','enemies','story','schema','core.generated','feel']
   .map(name => `port/native-campaign/${name}.mjs`);
 const worldAdapters = ['catalog','match','derived/core','derived/payload','derived/room','derived/rooms','derived/game-server']
   .map(name => `port/multiplayer-worlds/${name}.mjs`);

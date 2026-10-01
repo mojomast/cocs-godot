@@ -6,6 +6,7 @@ import {EventCursor} from '../native-arenas/event-cursor.mjs';
 import {loadCampaignMap} from './maps.mjs';
 import {missionForCampaign} from './missions.mjs';
 import {createCampaignMatch} from './match.mjs';
+import {attachSoloCheats, parseSoloCheat, soloCheatPreferences} from '../native-debug/solo_cheats.mjs';
 
 export const LIMITS=Object.freeze({payload:16384,frame:1048576,outbound:2097152,messagesPerSecond:120,burst:128});
 const loopback = address => ['127.0.0.1','::1','::ffff:127.0.0.1'].includes(address);
@@ -38,6 +39,7 @@ export function createAuthority(options={}) {
    let epoch=0,seq=0,round=0,cursor=null,closing=false,closePromise,finished=false,playerName='Operator',chapterKills=0,storyCarry={};
   let wall=performance.now(),accumulator=0,tokens=LIMITS.burst,tokenAt=wall;
   const inputs=new InputBuffer();
+  let cheats=null, cheatPreferences=soloCheatPreferences();
   const report=value=>observe({...value,round,observedMs:performance.now()});
   function detach(ws) {if(socket===ws){socket=null;match=null;created=false;selected=false;finished=false;inputs.reset();accumulator=0;}}
   function terminate(reason) {report({direction:'transport-error',reason});const ws=socket;if(ws){detach(ws);ws.terminate();}}
@@ -67,6 +69,7 @@ export function createAuthority(options={}) {
     nativeArenaInput:inputs.status(),state:match.snapshot()});}
   function start(resume={}) {
     match=matchFactory({...resume,mapId:data.id,difficulty,random,mapData:data});
+    cheats=attachSoloCheats(match,cheatPreferences);
     match.actors[0].name=playerName;
     inputs.reset();epoch++;seq=0;round++;finished=false;cursor=new EventCursor();
     wall=performance.now();accumulator=0;
@@ -80,7 +83,7 @@ export function createAuthority(options={}) {
   server.on('clientError',(_error,stream)=>stream.destroy());
   wss.on('error',()=>terminate('WebSocket server error'));
   wss.on('connection',ws=>{
-     socket=ws;tokens=LIMITS.burst;tokenAt=performance.now();data=mapLoader(mapId);chapterKills=0;storyCarry={};
+     socket=ws;tokens=LIMITS.burst;tokenAt=performance.now();data=mapLoader(mapId);chapterKills=0;storyCarry={};cheatPreferences=soloCheatPreferences();cheats=null;
     ws.on('error',()=>{detach(ws);ws.terminate();});ws.on('close',()=>detach(ws));
     ws.on('message',(bytes,binary)=>{
       if(socket!==ws||closing)return;
@@ -106,6 +109,13 @@ export function createAuthority(options={}) {
           if((epochRequired||f.inputEpoch!==undefined)&&f.inputEpoch!==epoch)return;
           if(match.over)return;
           inputs.receive(f.seq,parsed,now,f.cancel===true);
+        }else if(f.type==='solo-cheat'&&match&&cheats){
+          const command=parseSoloCheat(f);
+          if(command.inputEpoch!==epoch)return;
+          if(cheats.apply(command)){
+            if(command.action==='pause')reset('cheat-menu');
+            snapshot();
+          }
         }else if(f.type==='campaign-action'&&match){
           keys(f,['type','action','inputEpoch']);
           if(!integer(f.inputEpoch)||!['retry','restart','continue'].includes(f.action))throw new TypeError('Invalid campaign action');
@@ -143,7 +153,7 @@ export function createAuthority(options={}) {
     accumulator=Math.min(accumulator+elapsed,5/60);
     try{
       for(let ticks=0;accumulator>=1/60&&ticks<5&&!finished;ticks++){
-        accumulator-=1/60;if(inputs.expired(now))reset('stale-input');
+        accumulator-=1/60;if(!cheats?.state.paused&&inputs.expired(now))reset('stale-input');
         const sample=inputs.take();match.step(1/60,{inputs:{0:sample.input}});inputs.stepped(sample.seq);
         report({direction:'step',inputEpoch:epoch,inputSeq:sample.seq,controls:{...sample.input},sourceTime:match.time,...inputs.status()});
         const events=cursor.take(match);if(events.length)send({type:'events',items:events});

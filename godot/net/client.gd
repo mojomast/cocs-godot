@@ -441,7 +441,7 @@ func decode_text(text: String) -> bool:
 				last_ack = maxi(last_ack, int(frame.get("acks", {}).get(str(actor_id), 0)))
 			snapshots.append(frame)
 			if snapshots.size() > 32: snapshots.pop_front()
-			snapshot.emit(frame)
+			deliver_snapshot(frame)
 		"events":
 			if round_finished: return true
 			var fresh: Array = []
@@ -488,6 +488,9 @@ func decode_text(text: String) -> bool:
 				return true
 			return fail(message)
 	return true
+
+func deliver_snapshot(frame: Dictionary) -> void:
+	snapshot.emit(frame)
 
 func _process(_delta: float) -> void:
 	peer.poll()
