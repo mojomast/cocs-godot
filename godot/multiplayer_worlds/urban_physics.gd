@@ -60,7 +60,7 @@ func _ready() -> void:
     probe(space,center+Vector3(0,1,0),center-Vector3(0,1,0),.12,id + " curb " + surface.id)
     clearance(space,center,id + " curb walk " + surface.id)
     curbs+=1
-   if "roof" in surface.id or "overlook" in surface.id:
+   if surface.walkable and ("roof" in surface.id or "overlook" in surface.id):
     probe(space,center+Vector3(0,2,0),center-Vector3(0,2,0),center.y,id + " roof " + surface.id)
     roofs+=1
    if "ramp" in surface.id:
@@ -69,6 +69,7 @@ func _ready() -> void:
     ramps+=1
   var counters := 0
   var guards := 0
+  var ceilings := 0
   var doors := 0
   var actor_points := 0
   var entries := {"switchyard-ward":[[-18.0,0.0,5.5,0.0],[18.0,0.0,-5.5,0.0],[0.0,-24.0,0.0,-4.5],[0.0,24.0,0.0,4.5]],
@@ -85,11 +86,19 @@ func _ready() -> void:
     actor_points+=1
    doors+=1
   for surface: Dictionary in arena.terrain.surfaces:
-   if "roof" in surface.id or "overlook" in surface.id:
+   if surface.walkable and ("roof" in surface.id or "overlook" in surface.id):
     var v: Array = surface.vertices
     var middle := (Vector3(v[0][0],v[0][1],v[0][2])+Vector3(v[2][0],v[2][1],v[2][2]))/2
     clearance(space,middle,id + " accessible roof " + surface.id)
     actor_points+=1
+  for slab: Dictionary in arena.overhead:
+   var x: float = float(slab.x)
+   var z: float = float(slab.z)
+   probe(space,Vector3(x,2,z),Vector3(x,-1,z),0,id + " shop interior floor " + slab.id)
+   probe(space,Vector3(x,1,z),Vector3(x,5,z),float(slab.minY),id + " sealed underside " + slab.id)
+   probe(space,Vector3(x,6,z),Vector3(x,3,z),float(slab.maxY),id + " sealed roof top " + slab.id)
+   clearance(space,Vector3(x,0,z),id + " standing inside " + slab.id)
+   ceilings+=1
   for block: Dictionary in arena.blocks:
    if "-counter-" in block.id:
     probe(space,Vector3(block.x,block.h+1,block.z),Vector3(block.x,block.h-.5,block.z),block.h,id + " counter " + block.id)
@@ -104,7 +113,7 @@ func _ready() -> void:
      get_tree().quit(2)
      return
     guards+=1
-  rows.append({"id":id,"hash":world.geometry_hash,"ground":ground,"curbs":curbs,"roofs":roofs,"ramps":ramps,"counters":counters,"guards":guards,"doors":doors,"actorClearancePoints":actor_points})
+  rows.append({"id":id,"hash":world.geometry_hash,"ground":ground,"curbs":curbs,"roofs":roofs,"ramps":ramps,"counters":counters,"guards":guards,"doors":doors,"sealedShopCeilings":ceilings,"actorClearancePoints":actor_points})
   remove_child(world)
   world.free()
   await get_tree().physics_frame

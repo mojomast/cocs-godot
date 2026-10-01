@@ -11,6 +11,19 @@ const rect = (id,x0,x1,z0,z1,y0,y1,material='concrete') => ({id,material,walkabl
   vertices:[[x0,y0,z0],[x0,y0,z1],[x1,y1,z1],[x1,y1,z0]],triangles:[[0,1,2],[0,2,3]]});
 const box = (id,x,z,w,d,h,material='concrete',baseY=0) => ({id,kind:'structure',x,z,w,d,h,baseY,material});
 const wall = (id,x0,z0,x1,z1,y0=0,y1=4,material='concrete') => ({id,material,vertices:[[x0,y0,z0],[x1,y0,z1],[x1,y1,z1],[x0,y1,z0]]});
+const shopCeiling = (overhead,surfaces,walls,{id,x,z,w,d,accent}) => {
+ // Four real walls carry one sealed, NON-walkable slab. Above it is no
+ // supported player floor: no stair/ramp reaches these shop roofs.
+ const minY=3.78,maxY=4.02,x0=x-w/2,x1=x+w/2,z0=z-d/2,z1=z+d/2;
+ overhead.push({id:`${id}-ceiling`,x,z,w,d,minY,maxY});
+ const quad=[[x0,minY,z0],[x0,minY,z1],[x1,minY,z1],[x1,minY,z0]];
+ surfaces.push({id:`${id}-ceiling-underside`,material:accent,walkable:false,vertices:quad,triangles:[[0,2,1],[0,3,2]]});
+ surfaces.push({id:`${id}-roof-top`,material:'roof',walkable:false,vertices:quad.map(([xx,,zz])=>[xx,maxY,zz]),triangles:[[0,1,2],[0,2,3]]});
+ walls.push(wall(`${id}-roof-north`,x0,z0,x1,z0,minY,maxY,accent));
+ walls.push(wall(`${id}-roof-south`,x1,z1,x0,z1,minY,maxY,accent));
+ walls.push(wall(`${id}-roof-west`,x0,z1,x0,z0,minY,maxY,accent));
+ walls.push(wall(`${id}-roof-east`,x1,z0,x1,z1,minY,maxY,accent));
+};
 const perimeter = (blocks,spec) => {
   const {id,x,z,w,d,open='south',accent='concrete'}=spec, left=x-w/2,right=x+w/2,near=z-d/2,far=z+d/2;
   const side = .55, door=2.1;
@@ -47,7 +60,7 @@ const roofRailing=(blocks,id,x,z,w,d,entry)=>{
 };
 const sidewalk=(surfaces,id,x0,x1,z0,z1)=>surfaces.push(rect(`${id}-sidewalk`,x0,x1,z0,z1,.12,.12,'paving'));
 function switchyard(){
-  const id='switchyard-ward',name='Switchyard Ward',surfaces=[rect('asphalt-city-grid',-38,38,-34,34,0,0,'asphalt')],blocks=[];
+  const id='switchyard-ward',name='Switchyard Ward',surfaces=[rect('asphalt-city-grid',-38,38,-34,34,0,0,'asphalt')],blocks=[],walls=[],overhead=[];
   // Four accessible roofs are SOLID roof decks, not an upper floor over an
   // enterable shop: source floorAt deliberately chooses highest support in XZ.
   for(const [n,side,z] of [['nw',-1,-19],['sw',-1,19],['ne',1,-19],['se',1,19]]){
@@ -63,8 +76,8 @@ function switchyard(){
     blocks.push(box(`${n}-roof-cover-b`,x+3,z+3.8,2.2,1.1,4.4,'steel',3.2));
     roofRailing(blocks,n,x,z,14,12,side<0?'east':'west');
   }
-  // Shops are single floor, truly enterable through their 4.2m doorway;
-  // architectural canopy/upper trim is decoration, never phantom support.
+  // Enclosed single-floor shops remain enterable through 4.2m doors. Each
+  // ceiling is an overhead slab, never a full-height block or an upper route.
   for(const spec of [
     {id:'west-toolshop',x:-18,z:0,w:11,d:9,open:'east',accent:'brick'},
     {id:'east-service',x:18,z:0,w:11,d:9,open:'west',accent:'concrete'},
@@ -72,6 +85,7 @@ function switchyard(){
     {id:'south-depot',x:0,z:24,w:10,d:9,open:'north',accent:'concrete'}
   ]){
     perimeter(blocks,spec);
+    shopCeiling(overhead,surfaces,walls,spec);
     sidewalk(surfaces,spec.id+'-front',spec.x-spec.w/2-1.7,spec.x+spec.w/2+1.7,spec.z-spec.d/2-1.8,spec.z-spec.d/2-.55);
     sidewalk(surfaces,spec.id+'-back',spec.x-spec.w/2-1.7,spec.x+spec.w/2+1.7,spec.z+spec.d/2+.55,spec.z+spec.d/2+1.8);
   }
@@ -88,11 +102,11 @@ function switchyard(){
   const spawns=west.flatMap((p,i)=>[p,east[i]]);
   const zones=[{id:'west-arch',x:-11,z:0,y:0,radius:3.5},{id:'station',x:0,z:0,y:0,radius:4},{id:'east-arch',x:11,z:0,y:0,radius:3.5}];
   return {id,name,arena:{id,name,description:'Roof circuits, four enterable service bays and a readable street/rail intersection.',tag:'URBAN / ROOF FLANKS',color:'#d6a87d',background:'#162432',bounds:{minX:-38,maxX:38,minZ:-34,maxZ:34},spawns,teamSpawns:{0:west,1:east},flagSpawns:{0:{x:-31,z:0},1:{x:31,z:0}},objectiveZones:zones,
-    pickups:[['health',-22,0],['health',22,0],['armor',0,16],['rail',0,-18],['rocket',0,0],['scatter',-10,0],['plasma',10,0],['haste',-27,19],['overcharge',27,-19]],navNodes:nav,blocks,terrain:{maxSlope:.48,surfaces,walls:[]},voidY:-20,ceilingY:32,raised:false,nextGen:true},
+    pickups:[['health',-22,0],['health',22,0],['armor',0,16],['rail',0,-18],['rocket',0,0],['scatter',-10,0],['plasma',10,0],['haste',-27,19],['overcharge',27,-19]],navNodes:nav,blocks,overhead,terrain:{maxSlope:.48,surfaces,walls},voidY:-20,ceilingY:32,raised:false,nextGen:true},
     palette:['4f5860','94664f','b4aba0','d9ac5e'], art:[]};
 }
 function rainmarket(){
-  const id='rainmarket-exchange',name='Rainmarket Exchange',surfaces=[rect('rainmarket-pavement',-39,39,-35,35,0,0,'wet-stone')],blocks=[];
+  const id='rainmarket-exchange',name='Rainmarket Exchange',surfaces=[rect('rainmarket-pavement',-39,39,-35,35,0,0,'wet-stone')],blocks=[],walls=[],overhead=[];
   // Diagonal-feeling zigzag through broad offset transit plazas; only the
   // west arcade is raised. Opposite underpass is ground-level and traversable.
   surfaces.push(rect('arcade-overlook',-34,-19,-10,1,2.7,2.7,'roof'));
@@ -108,6 +122,7 @@ function rainmarket(){
     {id:'east-warehouse',x:28,z:-17,w:12,d:11,open:'west',accent:'brick'}
   ]){
     perimeter(blocks,spec);
+    shopCeiling(overhead,surfaces,walls,spec);
     sidewalk(surfaces,spec.id+'-front',spec.x-spec.w/2-1.8,spec.x+spec.w/2+1.8,spec.z-spec.d/2-2,spec.z-spec.d/2-.55);
     sidewalk(surfaces,spec.id+'-back',spec.x-spec.w/2-1.8,spec.x+spec.w/2+1.8,spec.z+spec.d/2+.55,spec.z+spec.d/2+2);
   }
@@ -123,7 +138,7 @@ function rainmarket(){
   const nav=[];for(let x=-36;x<=36;x+=3)for(let z=-33;z<=33;z+=3)nav.push([x,z]);
   const zones=[{id:'tram',x:-8,z:-22,y:0,radius:4},{id:'exchange',x:0,z:0,y:0,radius:4},{id:'bazaar',x:13,z:17,y:0,radius:4}];
   return {id,name,arena:{id,name,description:'Asymmetric market lanes connect covered shops, a transit spine and an elevated western overlook.',tag:'URBAN / TRANSIT',color:'#78b8be',background:'#111e2b',bounds:{minX:-39,maxX:39,minZ:-35,maxZ:35},spawns:west.flatMap((p,i)=>[p,east[i]]),teamSpawns:{0:west,1:east},flagSpawns:{0:{x:-34,z:-19},1:{x:34,z:19}},objectiveZones:zones,
-    pickups:[['health',-25,20],['health',26,19],['armor',-16,-15],['armor',17,13],['rail',-4,-25],['rocket',7,4],['scatter',-8,8],['plasma',13,-17],['haste',-30,-13]],navNodes:nav,blocks,terrain:{maxSlope:.5,surfaces,walls:[]},voidY:-20,ceilingY:32,raised:false,nextGen:true},
+    pickups:[['health',-25,20],['health',26,19],['armor',-16,-15],['armor',17,13],['rail',-4,-25],['rocket',7,4],['scatter',-8,8],['plasma',13,-17],['haste',-30,-13]],navNodes:nav,blocks,overhead,terrain:{maxSlope:.5,surfaces,walls},voidY:-20,ceilingY:32,raised:false,nextGen:true},
     palette:['3f5662','817566','5ba3aa','e3aa67'], art:[]};
 }
 for(const item of [switchyard(),rainmarket()]){

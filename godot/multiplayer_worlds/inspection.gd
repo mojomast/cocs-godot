@@ -1,6 +1,7 @@
 extends Node3D
 const Catalog = preload("res://multiplayer_worlds/catalog.gd")
 const WorldMap = preload("res://multiplayer_worlds/map.gd")
+const UrbanLighting = preload("res://multiplayer_worlds/urban_lighting.gd")
 
 func _ready() -> void:
  var catalog := Catalog.new()
@@ -23,6 +24,11 @@ func _ready() -> void:
   push_error("World build failed")
   get_tree().quit(1)
   return
+ if id in ["switchyard-ward","rainmarket-exchange"]:
+  var room_lights := UrbanLighting.new()
+  room_lights.name = "AuthoredInteriorLighting"
+  world.add_child(room_lights)
+  room_lights.build(catalog.recipes[id].arena,id == "rainmarket-exchange")
  var camera := Camera3D.new()
  camera.fov = 76
  camera.far = 300
