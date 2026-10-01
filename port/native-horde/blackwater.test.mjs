@@ -51,3 +51,22 @@ test('distance, death, stage availability and restart do not leak objective prog
  assert.equal(director.progress['north-feeder'],1);
  assert.deepEqual(new BlackwaterDirector().snapshot(match).completed,[]);
 });
+
+test('ordered feeder/repair/valve chain executes actual source resupply only after hold',()=>{
+ const events=[];
+ const player={x:0,z:0,grounded:true,health:25,maxHealth:100,armor:0,ammo:[12],weapon:0};
+ const match={over:false,actors:[player],modeState:{kind:'horde',wave:1,upgrades:[]},pickups:[],
+  emit:(kind,row)=>events.push({kind,...row})};
+ const director=new BlackwaterDirector();
+ for(const station of BLACKWATER_STATIONS){
+  match.modeState.wave=station.wave;
+  player.x=station.x;player.z=station.z;
+  director.step(match,{interact:true},1);
+  for(let i=1;i<station.seconds;i++)director.step(match,{},1);
+  assert(director.done.includes(station.id),station.id);
+ }
+ assert.equal(events.filter(e=>e.kind==='horde-resupply').length,2);
+ assert.equal(player.health,100);
+ assert.equal(player.armor,100);
+ assert.equal(events.filter(e=>e.kind==='blackwater-station-restored').length,4);
+});
