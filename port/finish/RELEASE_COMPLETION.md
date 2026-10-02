@@ -19,7 +19,7 @@ boundaries.
 | Parallax interior production | Astra `ses_f055a6b41ffe42yCL8AxbOL676` | Exclusive heavy grant C: build/reopen refined interiors, native geometry/art review and current Moth mount revalidation |
 | Fighting camera readability | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Source-only correction of oversized fixed jump envelope; actual-bounds framing with safe airborne transitions |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | Source-only correction of authored ceiling lights becoming dull under refined finish; preserve localized emission |
-| Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Source-only campaign input-chain diagnosis and control-texture ownership repairs or targeted native diagnostics; preserve pending native gates |
+| Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
 | Queued asset integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Implement missing test-only candidate admission/hosted journey harnesses; reconcile every builder/receipt with refined material semantics before serial production |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Extension already integrated; fresh exact-input ledger required after production candidate stabilizes; no current engine grant |
 | Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Extend required queued-asset resource/provenance closure and negative tests; preserve strict final preflight and historical release validation |
@@ -256,3 +256,21 @@ scenery, Vesper, Abyssal and Stormglass remain queued after its explicit release
 Packaging received the real fighter inputs and critical import settings; source
 asset integration received the new anchor and grant transition. No Windows build
 or new release publication has occurred.
+
+## Baseline attribution ready for native execution
+
+Integration diagnostics `79d82039` / `08d90f21` are merged as `2f43fdf9` /
+`f4ea6d5f`. Source inspection did not justify a campaign control-field mismatch.
+The next movement receipt links ordinary key events and input gates to sent,
+received and applied sequence IDs and authoritative pose; the prior evidence
+discarded the received/applied records. Controls gain an opt-in weak-reference
+probe reporting texture owner-reference paths, dimensions and native handles
+across allocation/free boundaries. All 90 existing assertions remain; no extra
+sleep, global teardown or filtered leak scan was added.
+
+Parent reran both diagnostic Node tests successfully. Native typing/execution and
+actual root-cause attribution remain pending. Exact commands and output limits:
+`godot/tests/combat_actions/DIAGNOSTICS.md`. The probe must be recorded explicitly
+in the next invocation, and native texture-handle queries may allocate lazy
+resources, so compare its result with the original unprobed receipt. Grant C
+continues exclusively with Parallax; no gameplay-native regrant is implied.
