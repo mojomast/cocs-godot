@@ -78,6 +78,20 @@ func visible_enemy(actor: Dictionary) -> bool:
 	var query := PhysicsRayQueryParameters3D.create(session.camera.position,target,1)
 	return session.get_world_3d().direct_space_state.intersect_ray(query).is_empty()
 
+func aim_at(target: Dictionary, player: Dictionary) -> void:
+	# Match controller.mjs's visibility/aim point. The inherited +0.9 aim
+	# could fire below cover that the +1.2 visibility test had just cleared.
+	var offset := Vector3(float(target.x)-float(player.x),
+		float(target.get("y",player.y))+1.2-(float(player.y)+1.45),
+		float(target.z)-float(player.z))
+	var desired_yaw := atan2(-offset.x,-offset.z)
+	var desired_pitch := atan2(offset.y,Vector2(offset.x,offset.z).length())
+	var motion := InputEventMouseMotion.new()
+	var gain := LOOK_GAIN * preload("res://ui/settings_access.gd").sensitivity()
+	motion.relative = Vector2(-wrapf(desired_yaw-session.yaw,-PI,PI),-(desired_pitch-session.pitch))/gain
+	motion.screen_relative = motion.relative
+	Input.parse_input_event(motion)
+
 func nearest_enemy(player: Dictionary) -> Dictionary:
 	var best: Dictionary = {}
 	var best_distance := INF
@@ -97,7 +111,11 @@ func move_towards(target: Vector2, player: Dictionary, enemy: Dictionary = {}) -
 			aim_at(enemy,player)
 			for code: int in [KEY_W,KEY_S,KEY_A,KEY_D,KEY_SHIFT]: key(code,false)
 			return 0.0
-	return super(target,player,enemy)
+	var remaining := super(target,player,enemy)
+	# Same 30m sprint cutoff as the source fixture, retaining ordinary WASD.
+	if not enemy.is_empty() and Vector2(float(enemy.x)-float(player.x),float(enemy.z)-float(player.z)).length()<=30:
+		key(KEY_SHIFT,false)
+	return remaining
 
 func _process(delta: float) -> void:
 	if done: return
