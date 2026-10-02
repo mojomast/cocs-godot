@@ -79,7 +79,7 @@ def build(asset):
         joined = bpy.context.object
         joined.name = asset["id"] + "_LOD" + str(lod)
         bpy.ops.export_scene.gltf(filepath=str(output / (asset["id"] + "-" + str(lod) + ".glb")),
-                                  export_format="GLB", use_selection=True, export_yup=True,
+                                  export_format="GLB", use_selection=True, export_yup=True, export_extras=True,
                                   export_animations=False, export_cameras=False, export_lights=False)
         glb = output / (asset["id"] + "-" + str(lod) + ".glb")
         source = "res://biomes/expansion/art/" + glb.name

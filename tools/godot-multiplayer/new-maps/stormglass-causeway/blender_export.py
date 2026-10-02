@@ -93,7 +93,7 @@ else:
     for obj in export.objects:
         obj.select_set(True)
     bpy.ops.export_scene.gltf(filepath=str(ART), export_format='GLB', use_selection=True,
-                              export_yup=True, export_apply=True)
+                              export_yup=True, export_apply=True, export_extras=True)
     report = {'id': ID, 'master': str(MASTER), 'glb': str(ART),
               'glbSha256': hashlib.sha256(ART.read_bytes()).hexdigest(),
               'editableMeshes': len(editable.objects), 'materialBatches': len(batches),

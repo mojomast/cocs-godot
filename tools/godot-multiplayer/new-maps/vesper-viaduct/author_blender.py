@@ -183,6 +183,7 @@ def main():
             obj = bpy.context.object
             obj.name = 'batch-' + material_name
             export_objects.append(obj)
+        finish_scene(ROOT, ID)
         bpy.ops.object.select_all(action='DESELECT')
         for obj in export_objects:
             obj.select_set(True)

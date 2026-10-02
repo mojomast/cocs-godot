@@ -46,6 +46,11 @@ def uv_project(obj, coordinate_scale):
 
 def finish_scene(root, unit, coordinate_scale=(1, 1, 1)):
     root = Path(root)
+    plan = json.loads((root / 'port/finish/ASSET_PRODUCTION.json').read_text())
+    record = next(entry for entry in plan['units'] if entry['id'] == unit)
+    source_hashes = {path: hashlib.sha256((root/path).read_bytes()).hexdigest()
+                     for path in record['recipePaths'] + [plan['common']['finishScript']]}
+    fingerprint = hashlib.sha256(json.dumps(source_hashes, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
     manifest = json.loads((root / 'godot/moth/generated/manifest.json').read_text())
     objects = [obj for obj in bpy.context.scene.objects if obj.type == 'MESH']
     used = {mat.name: mat for obj in objects for mat in obj.data.materials if mat}
@@ -53,6 +58,7 @@ def finish_scene(root, unit, coordinate_scale=(1, 1, 1)):
         raise ValueError('Bounded finish refuses more than 64 source materials')
     for obj in objects:
         uv_project(obj, coordinate_scale)
+        obj['asset_source_fingerprint'] = fingerprint
     for mat in used.values():
         if mat.get('moth_finish_version') == 1:
             continue
@@ -111,4 +117,5 @@ def finish_scene(root, unit, coordinate_scale=(1, 1, 1)):
         mat['moth_resource_sha256'] = json.dumps({str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}, sort_keys=True)
     bpy.context.scene['asset_production_unit'] = unit
     bpy.context.scene['moth_finish_version'] = 1
+    bpy.context.scene['asset_source_fingerprint'] = fingerprint
     bpy.context.scene['moth_finish_review'] = 'PENDING native texture/UV/material/readability acceptance'
