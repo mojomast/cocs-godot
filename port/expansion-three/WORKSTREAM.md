@@ -24,6 +24,27 @@ Their candidate modes are design targets until source/native journeys pass.
 
 ## Source/code checkpoints
 
+- **Horde — `b56cfbd1` + `f4437002`, native work queued.** Production guidance
+  prioritizes active repairs, exposes station prerequisites and upgrade details,
+  adds defend-area rings, and stops promising a cache when the actual restoration
+  receipt has `pickupId:null`. Compact HUD and two new runtime helpers need parent
+  package closure and native visual acceptance.
+- **Source chain passed:** all four stations and B/C arrivals by wave seven at
+  399.52 source seconds using ordinary input and offered upgrades. The extended
+  source run defeated the actual Warden at 898.35 seconds, then **lost on time at
+  900 seconds with six enemies remaining**. This is not full mission victory.
+  Runs use normal 1/60 simulation steps with accelerated wall time and no
+  post-setup actor/stat/objective writes. No special Warden weak-point multiplier
+  exists in the inspected source; no such damage claim is made.
+- **27/27 Node regressions and a bounded transport replay passed.** ACK-bounded
+  fixture pacing fixed an overproduction failure; the accepted ten-second replay
+  reached ACK 601 with an 83.12 ms maximum gap and no resets/errors. Original
+  rules, map, authority and 250 ms TTL remain intact. These are not native proofs.
+- Parent requested a source-only time-budget diagnosis and, only if a concrete
+  controller issue is found, one additional same-setup bounded completion attempt.
+  Full native victory, chain/upgrade-hotkey execution and inspected wide/compact
+  views remain pending. No Horde engine slot is granted.
+
 - **LATTICE — `dabf5b9c` + `9f944afb`, ready for engine.** Latest-command HUD
   feedback replaces stale BUY receipts with current HOLD/recruitment responses;
   source rejection/recovery instructions and received objective progress/contest/
