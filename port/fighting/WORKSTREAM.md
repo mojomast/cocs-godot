@@ -53,6 +53,32 @@ Implementation models resolved from the model catalog:
 interfaces: Sol for bounded implementation/content work, Astra for combat/animation
 architecture, integration and complex correctness. Implementation has not launched.
 
+## Received research and parent review
+
+- Engine report `87b7fc4f` (parent `98064fb4`) received. Parent independently
+  verified Castagne's v0.58 Godot-3 release and Sakuga's Godot-4.7/.NET README.
+  An isolated local fixed-tick Godot fighter is the leading recommendation;
+  architecture is finalized after the roster/stage research also arrives.
+- Animation report `512e7716` (parent `afa1c714`) received. Existing nine
+  operator GLBs have zero skins and zero animation clips; current motion is
+  runtime procedural. A new authored animation pipeline is substantive work.
+- Parent fetched the Quaternius Universal Animation Library 2 and KayKit Character
+  Animations primary pages: both advertise CC0. KayKit provides free FBX/glTF;
+  its editable Blender sources are a paid tier. Quaternius's advertised complete
+  library and source tier must not be confused with its free downloadable subset.
+  Inspect the actual downloaded free inventory before promising specific clips.
+- CMU's primary FAQ could not be fetched by the parent. Its reported permission
+  text remains secondary-source evidence; it is not the selected acquisition path.
+- Implementation correction to animation research proposal: Blender edit bones
+  must have nonzero length. Add meaningful rest bones/attachments as required;
+  do not implement the report's proposed zero-length filler bones. Humanoid
+  profile mapping should use the supported required/optional bone set rather
+  than inventing degenerate bones solely to populate every profile entry.
+- Base animation reuse accelerates locomotion and reactions; unique per-operator
+  combat poses, trajectories, timing and throw choreography still require actual
+  authoring and native side-on review. Merely having hundreds of named clips is
+  not evidence of distinct motion quality.
+
 ## Existing work and resource ownership
 
 The finishing agents remain active under `port/finish/WORKSTREAM.md`. Helix
