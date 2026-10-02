@@ -892,6 +892,131 @@
       }
     },
     {
+      "id": "mode-expansion",
+      "category": "modes",
+      "label": "Competitive Modes",
+      "description": "Full Arsenal, Juggernaut, shared-ticket Team Elimination and VIP Escort with source-owned rules",
+      "flags": [
+        "--experience=mode-expansion"
+      ],
+      "params": [
+        {
+          "key": "map",
+          "kind": "choice",
+          "label": "Map",
+          "values": [
+            "meridian-exchange",
+            "verdant-reliquary",
+            "ember-crucible",
+            "tidal-citadel",
+            "sunscar-convoy"
+          ],
+          "default": "meridian-exchange"
+        },
+        {
+          "key": "mode",
+          "kind": "choice",
+          "label": "Mode",
+          "values_by_map": {
+            "meridian-exchange": [
+              "arsenal",
+              "juggernaut"
+            ],
+            "verdant-reliquary": [
+              "arsenal",
+              "juggernaut"
+            ],
+            "ember-crucible": [
+              "arsenal",
+              "juggernaut"
+            ],
+            "tidal-citadel": [
+              "team-elimination"
+            ],
+            "sunscar-convoy": [
+              "vip-escort"
+            ]
+          },
+          "default": "arsenal"
+        },
+        {
+          "key": "bots",
+          "kind": "range",
+          "label": "Bots",
+          "min": 0,
+          "max": 8,
+          "default": 2,
+          "step": 1
+        },
+        {
+          "key": "time-limit",
+          "kind": "range",
+          "label": "Round seconds",
+          "min": 60,
+          "max": 900,
+          "default": 180,
+          "step": 30
+        },
+        {
+          "key": "wait-for-players",
+          "kind": "range",
+          "label": "Wait for players",
+          "min": 1,
+          "max": 8,
+          "default": 1,
+          "step": 1
+        }
+      ],
+      "toggles": [
+        {
+          "key": "diagnostics",
+          "flag": "--diagnostics",
+          "label": "Diagnostics overlay (F11)",
+          "default": false
+        }
+      ],
+      "capability": {
+        "authority": {
+          "offline": false,
+          "local": true,
+          "external": true
+        },
+        "scope": {
+          "maps": [
+            "ember-crucible",
+            "meridian-exchange",
+            "sunscar-convoy",
+            "tidal-citadel",
+            "verdant-reliquary"
+          ],
+          "modes_by_map": {
+            "ember-crucible": [
+              "arsenal",
+              "juggernaut"
+            ],
+            "meridian-exchange": [
+              "arsenal",
+              "juggernaut"
+            ],
+            "sunscar-convoy": [
+              "vip-escort"
+            ],
+            "tidal-citadel": [
+              "team-elimination"
+            ],
+            "verdant-reliquary": [
+              "arsenal",
+              "juggernaut"
+            ]
+          }
+        },
+        "defaults": {
+          "map": "meridian-exchange",
+          "mode": "arsenal"
+        }
+      }
+    },
+    {
       "id": "arms-race",
       "category": "modes",
       "label": "Arms Race",

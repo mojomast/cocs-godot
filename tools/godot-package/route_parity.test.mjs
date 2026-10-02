@@ -38,7 +38,7 @@ const EXPECTED_IDS = [
   // native
   'native-dm', 'identity-zones', 'horde',
   // modes
-  'arms-race', 'zones', 'assault', 'objectives', 'combined-arms', 'sports', 'lattice', 'lattice-world',
+  'mode-expansion', 'arms-race', 'zones', 'assault', 'objectives', 'combined-arms', 'sports', 'lattice', 'lattice-world',
   // lab
   'viewer', 'operator-preview', 'showcase', 'aurora-basin', 'cinder-array',
   'particle-lab', 'shader-lab',
@@ -69,14 +69,14 @@ test('registry preserves the existing 23 routes and adds Campaign, covering ever
   assert.equal(registry.generated_by, 'tools/godot-package/gen_routes.mjs');
   assert.deepEqual(registry.categories, META_CATEGORIES);
   const ids = registry.routes.map(route => route.id);
-  assert.equal(ids.length, 25);
+  assert.equal(ids.length, 26);
   assert.deepEqual([...ids].sort(), [...EXPECTED_IDS].sort());
   // Menu order matches the hand-written metadata order.
   assert.deepEqual(ids, META_ROUTES.map(route => route.id));
-  assert.equal(new Set(ids).size, 25, 'route ids must be unique');
+  assert.equal(new Set(ids).size, 26, 'route ids must be unique');
 
   // Assault adds one source-backed experience; five offline labs unchanged.
-  assert.equal(Object.keys(EXPERIENCES).length, 13);
+  assert.equal(Object.keys(EXPERIENCES).length, 14);
   assert.equal(Object.keys(NATIVE_EXPERIENCES).length, 5);
   for (const key of Object.keys(EXPERIENCES)) assert.ok(ids.includes(key), `EXPERIENCES.${key} uncovered`);
   for (const key of Object.keys(NATIVE_EXPERIENCES)) assert.ok(ids.includes(key), `NATIVE_EXPERIENCES.${key} uncovered`);
@@ -252,7 +252,7 @@ test('authority ownership is derived, bounded and identical across dev/package p
     }
   }
   const external = registry.routes.filter(route => route.capability.authority.external).map(route => route.id);
-  assert.deepEqual([...new Set(external)].sort(), ['combined-arms', 'lattice', 'lattice-world', 'lobby', 'multiplayer-worlds']);
+  assert.deepEqual([...new Set(external)].sort(), ['combined-arms', 'lattice', 'lattice-world', 'lobby', 'mode-expansion', 'multiplayer-worlds']);
 });
 
 test('external authority reuse can never construct a local authority', () => {

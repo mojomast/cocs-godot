@@ -5,6 +5,7 @@ import {lobbyEndpoint} from '../godot-package/endpoint.mjs';
 const HORDE_OPERATORS = ['chatgpt','claude','grok','meta','gemini','deepseek','mistral','kimi','qwen'];
 const HORDE_HARNESSES = ['openclaw','hermes','opencode','claudecode','codex','cline','roo'];
 export const EXPERIENCES = {
+  'mode-expansion': {scene:'res://mode_expansion/demo.tscn',map:'meridian-exchange',modes:{'meridian-exchange':['arsenal','juggernaut'],'verdant-reliquary':['arsenal','juggernaut'],'ember-crucible':['arsenal','juggernaut'],'tidal-citadel':['team-elimination'],'sunscar-convoy':['vip-escort']}},
   'multiplayer-worlds': {scene:'res://multiplayer_worlds/demo.tscn',map:'switchyard-ward',modes:{
     'switchyard-ward':['deathmatch','teamdeathmatch','instagib','rockets','armsrace','ctf','domination','koth','uplink','holdout','assault'],
     'rainmarket-exchange':['deathmatch','teamdeathmatch','instagib','rockets','armsrace','domination','koth','uplink','holdout','assault','payload'],
@@ -105,7 +106,7 @@ export function launchOptions(argv, catalog) {
       sessionOptions:[`--map=${map}`,`--mode=${mode}`,`--difficulty=${difficulty}`,...diagnostics,...(smoke ? [smoke] : [])],
       args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),...(diagnostics.length ? ['--verbose'] : []),'--path','godot',EXPERIENCES.campaign.scene]};
   }
-  if (!['lattice', 'lattice-world', 'combined-arms', 'multiplayer-worlds'].includes(experience) && values['join-room'] !== undefined) throw Error('--join-room requires lattice-world, combined-arms or multiplayer-worlds');
+  if (!['lattice', 'lattice-world', 'combined-arms', 'multiplayer-worlds', 'mode-expansion'].includes(experience) && values['join-room'] !== undefined) throw Error('--join-room requires a multiplayer experience');
   if (!['lattice', 'lattice-world'].includes(experience) && values.rung !== undefined) throw Error('--rung requires lattice-world');
   if (experience === 'native-dm') {
     for (const key of Object.keys(values)) if (!['experience','map','mode','bots','round-seconds'].includes(key)) throw Error(`--${key} is not supported by native-dm`);
@@ -140,6 +141,16 @@ export function launchOptions(argv, catalog) {
     return {experience, identityZone:true, map, mode, bots, roundSeconds, scoreLimit, endpoint:null, smoke,
       sessionOptions:[`--map=${map}`,`--mode=${mode}`,`--bots=${bots}`,`--round-seconds=${roundSeconds}`,`--score-limit=${scoreLimit}`,...cheats,...diagnostics,...(smoke ? [smoke] : [])],
       args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),...(diagnostics.length ? ['--verbose'] : []),'--path','godot','res://native_arenas/identity_zone_demo.tscn']};
+  }
+  if (experience === 'mode-expansion') {
+    for (const flag of flags) if (flag !== '--diagnostics') throw Error(`${flag} is not supported by mode-expansion`);
+    for (const key of Object.keys(values)) if (!['experience','map','mode','bots','endpoint','join-room','time-limit','round-target','wait-for-players'].includes(key)) throw Error(`--${key} is not supported by mode-expansion`);
+    const map=values.map??'meridian-exchange',allowed=EXPERIENCES[experience].modes[map],mode=values.mode??allowed?.[0];
+    if (!allowed?.includes(mode) || !catalog.maps.find(m=>m.id===map)?.supported_modes.includes(mode)) throw Error(`Unsupported ${map}/${mode}`);
+    for (const [key,min,max] of [['bots',0,8],['time-limit',60,900],['round-target',mode==='arsenal'?5:1,mode==='vip-escort'?1:mode==='arsenal'?50:99],['wait-for-players',1,8]]) if (values[key]!==undefined && (!/^\d+$/.test(values[key]) || Number(values[key])<min || Number(values[key])>max)) throw Error(`--${key} must be ${min}..${max}`);
+    const endpoint=lobbyEndpoint(values.endpoint,experience);
+    if (values['join-room']!==undefined && (!endpoint || !values['join-room'].trim() || ['bots','time-limit','round-target','wait-for-players'].some(key=>values[key]!==undefined))) throw Error('Guest requires endpoint and room without host settings');
+    return {experience,map,mode,endpoint,smoke:null,sessionOptions:[`--map=${map}`,`--mode=${mode}`,...(values['join-room']===undefined?[`--bots=${values.bots??2}`,...['time-limit','round-target','wait-for-players'].filter(key=>values[key]!==undefined).map(key=>`--${key}=${values[key]}`)]:[`--join-room=${values['join-room']}`]),...diagnostics],args:[...(diagnostics.length?['--verbose']:[]),'--path','godot',EXPERIENCES[experience].scene]};
   }
   if (experience === 'multiplayer-worlds') {
     for (const key of Object.keys(values)) if (!['experience','map','mode','endpoint','join-room','bots','time-limit','round-target'].includes(key)) throw Error(`--${key} is not supported by multiplayer-worlds`);

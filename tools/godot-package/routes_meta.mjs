@@ -165,6 +165,17 @@ export const ROUTES = [
   },
   // --- modes ---
   {
+    id:'mode-expansion',category:'modes',label:'Competitive Modes',
+    description:'Full Arsenal, Juggernaut, shared-ticket Team Elimination and VIP Escort with source-owned rules',
+    params:[
+      {key:'map',kind:'choice',label:'Map',values:['meridian-exchange','verdant-reliquary','ember-crucible','tidal-citadel','sunscar-convoy'],default:'meridian-exchange'},
+      {key:'mode',kind:'choice',label:'Mode',values_by_map:{'meridian-exchange':['arsenal','juggernaut'],'verdant-reliquary':['arsenal','juggernaut'],'ember-crucible':['arsenal','juggernaut'],'tidal-citadel':['team-elimination'],'sunscar-convoy':['vip-escort']},default:'arsenal'},
+      {key:'bots',kind:'range',label:'Bots',min:0,max:8,default:2,step:1},
+      {key:'time-limit',kind:'range',label:'Round seconds',min:60,max:900,default:180,step:30},
+      {key:'wait-for-players',kind:'range',label:'Wait for players',min:1,max:8,default:1,step:1},
+    ],
+  },
+  {
     id: 'arms-race', category: 'modes',
     label: 'Arms Race',
     description: 'Ten-weapon scramble across the three combat arenas',

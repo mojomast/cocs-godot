@@ -42,12 +42,12 @@ test('each standalone map/mode reaches its actual scene and reviewed identity',(
     for(const [map,modes]of Object.entries(entry.modes??{}))for(const mode of modes){
       const plan=launchOptions([`--experience=${experience}`,`--map=${map}`,`--mode=${mode}`],catalog);
       assert.ok(plan.args.includes(entry.identity?.[map]?.scene ?? entry.scene));
-      assert.deepEqual(plan.sessionOptions,experience.startsWith('lattice') ? [`--map=${map}`,`--mode=${mode}`,'--time-limit=900','--bots=2','--operator=chatgpt','--harness=openclaw'] : [`--map=${map}`,`--mode=${mode}`,...(experience==='lobby'?['--lobby-menu']:[]),...(experience==='campaign'?['--difficulty=normal']:[]),...(experience==='multiplayer-worlds'?['--bots=2']:[])]);
+      assert.deepEqual(plan.sessionOptions,experience.startsWith('lattice') ? [`--map=${map}`,`--mode=${mode}`,'--time-limit=900','--bots=2','--operator=chatgpt','--harness=openclaw'] : [`--map=${map}`,`--mode=${mode}`,...(experience==='lobby'?['--lobby-menu']:[]),...(experience==='campaign'?['--difficulty=normal']:[]),...(['multiplayer-worlds','mode-expansion'].includes(experience)?['--bots=2']:[])]);
       assert.equal(plan.smoke,null);
       assert.ok(!plan.args.includes('--headless'));
     }
     if(entry.modes)assert.deepEqual(launchOptions([`--experience=${experience}`],catalog).sessionOptions,
-      (experience.startsWith('lattice') ? [`--map=${entry.map}`,`--mode=${entry.modes[entry.map][0]}`,'--time-limit=900','--bots=2','--operator=chatgpt','--harness=openclaw'] : [`--map=${entry.map}`,`--mode=${entry.modes[entry.map][0]}`,...(experience==='lobby'?['--lobby-menu']:[]),...(experience==='campaign'?['--difficulty=normal']:[]),...(experience==='multiplayer-worlds'?['--bots=2']:[])]));
+      (experience.startsWith('lattice') ? [`--map=${entry.map}`,`--mode=${entry.modes[entry.map][0]}`,'--time-limit=900','--bots=2','--operator=chatgpt','--harness=openclaw'] : [`--map=${entry.map}`,`--mode=${entry.modes[entry.map][0]}`,...(experience==='lobby'?['--lobby-menu']:[]),...(experience==='campaign'?['--difficulty=normal']:[]),...(['multiplayer-worlds','mode-expansion'].includes(experience)?['--bots=2']:[])]));
   }
 });
 

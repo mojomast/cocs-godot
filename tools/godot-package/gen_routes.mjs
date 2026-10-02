@@ -135,8 +135,8 @@ const buildParams = route => {
 };
 
 const buildRegistry = () => {
-  assert.equal(ROUTES.length, 25, 'existing destinations plus multiplayer worlds');
-  assert.equal(new Set(ROUTES.map(route => route.id)).size, 25, 'route ids must be unique');
+  assert.equal(ROUTES.length, 26, 'existing destinations plus competitive modes');
+  assert.equal(new Set(ROUTES.map(route => route.id)).size, 26, 'route ids must be unique');
   const categoryIds = new Set(CATEGORIES.map(category => category.id));
   const mapIds = new Set(catalog.maps.map(map => map.id));
 

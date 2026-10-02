@@ -6,6 +6,7 @@ export const HORDE_OPERATORS = Object.freeze(['chatgpt','claude','grok','meta','
 export const HORDE_HARNESSES = Object.freeze(['openclaw','hermes','opencode','claudecode','codex','cline','roo']);
 const validHordeLoadout = (character,harness) => HORDE_OPERATORS.includes(character) && HORDE_HARNESSES.includes(harness) && (character !== 'claude' || harness === 'claudecode');
 export const EXPERIENCES = {
+  'mode-expansion': {scene:'res://mode_expansion/demo.tscn',maps:{'meridian-exchange':['arsenal','juggernaut'],'verdant-reliquary':['arsenal','juggernaut'],'ember-crucible':['arsenal','juggernaut'],'tidal-citadel':['team-elimination'],'sunscar-convoy':['vip-escort']}},
   'multiplayer-worlds': {scene:'res://multiplayer_worlds/demo.tscn',maps:{
     'switchyard-ward':['deathmatch','teamdeathmatch','instagib','rockets','armsrace','ctf','domination','koth','uplink','holdout','assault'],
     'rainmarket-exchange':['deathmatch','teamdeathmatch','instagib','rockets','armsrace','domination','koth','uplink','holdout','assault','payload'],
@@ -64,7 +65,7 @@ export function options(argv, catalog) {
   // Default boot (no arguments at all) opens the main menu; any explicit
   // argument keeps today's combat default.
   const experience = argv.length === 0 ? 'menu' : (values.experience ?? 'combat');
-  if (!['lattice', 'lattice-world', 'combined-arms', 'multiplayer-worlds'].includes(experience) && values['join-room'] !== undefined) throw Error('--join-room requires lattice-world, combined-arms or multiplayer-worlds');
+  if (!['lattice', 'lattice-world', 'combined-arms', 'multiplayer-worlds', 'mode-expansion'].includes(experience) && values['join-room'] !== undefined) throw Error('--join-room requires a multiplayer experience');
   if (!['lattice', 'lattice-world'].includes(experience) && values.rung !== undefined) throw Error('--rung requires lattice-world');
   const diagnostics = flags.has('--diagnostics') ? ['--diagnostics'] : [];
   if (values.difficulty !== undefined && experience !== 'campaign') throw Error('--difficulty requires campaign');
@@ -118,7 +119,7 @@ export function options(argv, catalog) {
       userArgs: [...diagnostics, ...(flags.has('--smoke') ? ['--smoke'] : [])]};
   }
   if (values.bots !== undefined) {
-    if (!['combat','zones','assault','combined-arms','lattice','lattice-world','multiplayer-worlds'].includes(experience)) throw Error('--bots requires combat, zones, assault, combined-arms, lattice, lattice-world, multiplayer-worlds, native-dm or identity-zones');
+    if (!['combat','zones','assault','combined-arms','lattice','lattice-world','multiplayer-worlds','mode-expansion'].includes(experience)) throw Error('--bots requires a combat experience');
     const cap = experience.startsWith('lattice') || experience === 'combined-arms' || experience === 'multiplayer-worlds' && values.map === 'tern-archipelago' ? 16 : 8;
     if (!/^\d+$/.test(values.bots) || Number(values.bots) > cap) throw Error(`--bots must be 0..${cap}`);
   }
@@ -165,6 +166,13 @@ export function options(argv, catalog) {
   // entry above is their allowlist and carries its own scene.
   if (!allowed.includes(mode) || (!identity && !catalog.maps.find(m => m.id === map)?.supported_modes.includes(mode))) throw Error(`Unsupported ${map} / ${mode}`);
   const scene = identity?.scene ?? selected.scene;
+  if (experience === 'mode-expansion') {
+    for (const flag of flags) if (flag !== '--diagnostics') throw Error(`${flag} is not supported by mode-expansion`);
+    for (const key of supplied) if (!['experience','map','mode','bots','endpoint','join-room','time-limit','round-target','wait-for-players'].includes(key)) throw Error(`--${key} is not supported by mode-expansion`);
+    for (const [key,min,max] of [['time-limit',60,900],['round-target',mode==='arsenal'?5:1,mode==='vip-escort'?1:mode==='arsenal'?50:99],['wait-for-players',1,8]]) if (values[key]!==undefined && (!/^\d+$/.test(values[key]) || Number(values[key])<min || Number(values[key])>max)) throw Error(`--${key} must be ${min}..${max}`);
+    if (values['join-room'] !== undefined && (!endpoint || !values['join-room'].trim() || ['bots','time-limit','round-target','wait-for-players'].some(key=>supplied.has(key)))) throw Error('Guest requires endpoint and room without host settings');
+    return {experience,map,mode,scene,endpoint,userArgs:[`--map=${map}`,`--mode=${mode}`,...(values['join-room']===undefined?[`--bots=${values.bots??2}`,...['time-limit','round-target','wait-for-players'].filter(key=>values[key]!==undefined).map(key=>`--${key}=${values[key]}`)]:[`--join-room=${values['join-room']}`]),...diagnostics]};
+  }
   if (experience === 'multiplayer-worlds') {
     for (const flag of flags) if (flag !== '--diagnostics') throw Error(`${flag} is not supported by multiplayer-worlds`);
     for (const key of supplied) if (!['experience','map','mode','bots','endpoint','join-room','time-limit','round-target'].includes(key)) throw Error(`--${key} is not supported by multiplayer-worlds`);

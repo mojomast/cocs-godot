@@ -11,7 +11,7 @@ const nativeMaps = ['prism-foundry', 'aurora-basin', 'cinder-array'];
 // reviewed local 1..24 roster and must test that contract directly instead of
 // changing expectations for the independent standalone launcher.
 test('package Native DM accepts real local 1..24 bot launches on reviewed arenas', () => {
-  assert.deepEqual(Object.keys(EXPERIENCES).sort(), ['combat','lobby','arms-race','horde','zones','assault','combined-arms','sports','objectives','lattice','lattice-world','campaign','multiplayer-worlds'].sort());
+  assert.deepEqual(Object.keys(EXPERIENCES).sort(), ['combat','lobby','arms-race','horde','zones','assault','combined-arms','sports','objectives','lattice','lattice-world','campaign','multiplayer-worlds','mode-expansion'].sort());
   assert.deepEqual(Object.keys(NATIVE_EXPERIENCES).sort(), ['showcase','aurora-basin','cinder-array','particle-lab','shader-lab'].sort());
   const defaults = options(['--experience=native-dm'], catalog);
   assert.deepEqual([defaults.map, defaults.mode, defaults.bots, defaults.roundSeconds],
@@ -50,7 +50,7 @@ test('package Native DM rejects unreviewed options and malformed or excessive bo
   // The three source-owned combat families have their own 0..8 option; no
   // other scene inherits the native adapter's 24-seat capability.
   for (const experience of [...Object.keys(EXPERIENCES), ...Object.keys(NATIVE_EXPERIENCES)]) {
-    if (!['combat', 'zones', 'assault', 'combined-arms', 'lattice', 'lattice-world', 'multiplayer-worlds'].includes(experience)) {
+    if (!['combat', 'zones', 'assault', 'combined-arms', 'lattice', 'lattice-world', 'multiplayer-worlds', 'mode-expansion'].includes(experience)) {
       assert.throws(() => options([`--experience=${experience}`, '--bots=2'], catalog), Error, experience);
     }
     if (!['zones', 'assault'].includes(experience)) assert.throws(() => options([`--experience=${experience}`, '--round-seconds=120'], catalog), Error, experience);
