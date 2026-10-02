@@ -26,6 +26,7 @@ export const CATEGORIES = [
 // native arenas (which include the three identity maps). Catalog maps resolve
 // their `name` field directly and must never be duplicated here.
 export const MAP_NAMES = {
+  'parallax-observatory': 'Parallax Observatory',
   'rootfall-verge': 'Rootfall Verge',
   'siltwake-crossing': 'Siltwake Crossing',
   'emberline-ascent': 'Emberline Ascent',
@@ -136,8 +137,9 @@ export const ROUTES = [
     id: 'multiplayer-worlds', category: 'play', label: 'Multiplayer Worlds',
     description: 'Seven authored source-backed worlds: urban infantry, freight, alpine, Puma sports and LATTICE',
     params: [
-      {key:'map',kind:'choice',label:'Map',values:['switchyard-ward','rainmarket-exchange','breakwater-exchange','thermal-divide','sirocco-circuit','copper-bowl','tern-archipelago','helix-conservatory','gravemill-foundry'],default:'switchyard-ward'},
+      {key:'map',kind:'choice',label:'Map',values:['switchyard-ward','rainmarket-exchange','breakwater-exchange','thermal-divide','sirocco-circuit','copper-bowl','tern-archipelago','helix-conservatory','gravemill-foundry','parallax-observatory'],default:'switchyard-ward'},
       {key:'mode',kind:'choice',label:'Mode',values_by_map:{
+        'parallax-observatory':['deathmatch','teamdeathmatch','ctf','koth','uplink','holdout'],
         'switchyard-ward':['deathmatch','teamdeathmatch','instagib','rockets','armsrace','ctf','domination','koth','uplink','holdout','assault'],
         'rainmarket-exchange':['deathmatch','teamdeathmatch','instagib','rockets','armsrace','domination','koth','uplink','holdout','assault','payload'],
         'breakwater-exchange':['deathmatch','teamdeathmatch','domination','assault','payload','combined-arms'],

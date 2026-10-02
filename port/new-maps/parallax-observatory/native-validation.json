@@ -1,0 +1,569 @@
+{
+  "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+  "physics": {
+    "collisionShapes": 3563,
+    "contacts": [
+      {
+        "frames": 120,
+        "gap": 0.42021980881691,
+        "isolatedNativeTriangle": true,
+        "side": -1,
+        "wall": "ramped-parapet"
+      },
+      {
+        "frames": 120,
+        "gap": 0.420214265584946,
+        "isolatedNativeTriangle": true,
+        "side": 1,
+        "wall": "ramped-parapet"
+      },
+      {
+        "frames": 120,
+        "gap": 0.420226991176605,
+        "isolatedNativeTriangle": true,
+        "side": -1,
+        "wall": "upper-parapet"
+      },
+      {
+        "frames": 120,
+        "gap": 0.420215278863907,
+        "isolatedNativeTriangle": true,
+        "side": 1,
+        "wall": "upper-parapet"
+      },
+      {
+        "frames": 120,
+        "gap": 0.42022842168808,
+        "isolatedNativeTriangle": true,
+        "side": -1,
+        "wall": "ground-parapet"
+      },
+      {
+        "frames": 120,
+        "gap": 0.420222580432892,
+        "isolatedNativeTriangle": true,
+        "side": 1,
+        "wall": "ground-parapet"
+      },
+      {
+        "frames": 120,
+        "gap": 0.420221996307373,
+        "gravityDisabledToIsolateOutsideVoidContact": true,
+        "isolatedSourceBlockLayer": 8,
+        "side": -1,
+        "wall": "[-36.0, 0.0, 12.0]"
+      },
+      {
+        "frames": 120,
+        "gap": 0.420221328735352,
+        "gravityDisabledToIsolateOutsideVoidContact": true,
+        "isolatedSourceBlockLayer": 8,
+        "side": 1,
+        "wall": "[-36.0, 0.0, 12.0]"
+      },
+      {
+        "frames": 120,
+        "gap": 0.420031738281244,
+        "gravityDisabledToIsolateOutsideVoidContact": true,
+        "isolatedSourceBlockLayer": 8,
+        "side": -1,
+        "wall": "[24.0, 78.0, 0.0]"
+      },
+      {
+        "frames": 120,
+        "gap": 0.420028686523443,
+        "gravityDisabledToIsolateOutsideVoidContact": true,
+        "isolatedSourceBlockLayer": 8,
+        "side": 1,
+        "wall": "[24.0, 78.0, 0.0]"
+      },
+      {
+        "ceilingY": 16.8,
+        "frames": 90,
+        "maxFeetY": 14.9989328384399,
+        "roof": "ephemeris-vault-ceiling"
+      },
+      {
+        "ceilingY": 4.8,
+        "frames": 90,
+        "maxFeetY": 2.99893260002136,
+        "roof": "tidal-pump-vault-ceiling"
+      },
+      {
+        "ceilingY": 18,
+        "frames": 90,
+        "maxFeetY": 16.199779510498,
+        "roof": "meridian-service-gallery"
+      },
+      {
+        "ceilingY": 32,
+        "frames": 90,
+        "maxFeetY": 30.1994781494141,
+        "roof": "polar-hall-ceiling"
+      },
+      {
+        "ceilingY": 19,
+        "frames": 90,
+        "maxFeetY": 17.1995830535889,
+        "roof": "optical-arcade-ceiling"
+      }
+    ],
+    "failures": [],
+    "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+    "glbSha256": "b3ea4ec57f57f6db83e1acab40dc95135562347ef884cc8f33ba067af8521bb1",
+    "meshNodes": 7,
+    "meshSurfaces": 7,
+    "metrics": {
+      "art": "res://multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb",
+      "gameplayTriangles": 4686,
+      "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554"
+    },
+    "routeCapsules": 859,
+    "routeSupportRays": 859,
+    "sourceBlockBounds": 60,
+    "visualFloat32Seams": [
+      {
+        "offset": "(0.01, 0.0, 0.01)",
+        "point": "(-81.0, 12.0, 0.0)"
+      },
+      {
+        "offset": "(0.01, 0.0, 0.01)",
+        "point": "(-45.0, 12.0, 0.0)"
+      },
+      {
+        "offset": "(0.01, 0.0, 0.01)",
+        "point": "(-9.0, 12.0, 0.0)"
+      },
+      {
+        "offset": "(0.01, 0.0, 0.01)",
+        "point": "(27.0, 12.0, 0.0)"
+      },
+      {
+        "offset": "(0.01, 0.0, 0.01)",
+        "point": "(63.0, 12.0, 0.0)"
+      },
+      {
+        "offset": "(0.01, 0.0, 0.01)",
+        "point": "(99.0, 12.0, 0.0)"
+      }
+    ],
+    "visualTriangles": 148239
+  },
+  "rounds": [
+    {
+      "mode": "deathmatch",
+      "seconds": 91.68333333332941,
+      "endReason": "frag",
+      "wireFrames": 3128,
+      "stats": [
+        {
+          "id": 0,
+          "frags": 5,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 11,
+            "hits": 10,
+            "damage": 525
+          }
+        },
+        {
+          "id": 1,
+          "frags": 0,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 0,
+            "hits": 0,
+            "damage": 0
+          }
+        }
+      ],
+      "native": {
+        "captures": [],
+        "drawCalls": 16,
+        "failures": [],
+        "frameMsP50": 55.675,
+        "frameMsP95": 66.6666666666667,
+        "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+        "guideFrames": 252,
+        "inputEvents": 2520,
+        "lastAck": 1515,
+        "map": "parallax-observatory",
+        "mode": "deathmatch",
+        "nativeEvents": {
+          "damage": 10,
+          "death": 5,
+          "killstreak": 2,
+          "move-blocked": 476,
+          "pickup": 5,
+          "shot": 11,
+          "spawn": 6
+        },
+        "objectiveText": "",
+        "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "roundResults": 1
+      }
+    },
+    {
+      "mode": "teamdeathmatch",
+      "seconds": 87.06666666666301,
+      "endReason": "frag",
+      "wireFrames": 3057,
+      "stats": [
+        {
+          "id": 0,
+          "frags": 5,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 11,
+            "hits": 10,
+            "damage": 525
+          }
+        },
+        {
+          "id": 1,
+          "frags": 0,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 0,
+            "hits": 0,
+            "damage": 0
+          }
+        }
+      ],
+      "native": {
+        "captures": [],
+        "drawCalls": 16,
+        "failures": [],
+        "frameMsP50": 51.3888888888889,
+        "frameMsP95": 65.2777777777778,
+        "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+        "guideFrames": 255,
+        "inputEvents": 2555,
+        "lastAck": 1533,
+        "map": "parallax-observatory",
+        "mode": "teamdeathmatch",
+        "nativeEvents": {
+          "damage": 10,
+          "death": 5,
+          "killstreak": 2,
+          "move-blocked": 441,
+          "pickup": 5,
+          "shot": 11,
+          "spawn": 6
+        },
+        "objectiveText": "",
+        "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "roundResults": 1
+      }
+    },
+    {
+      "mode": "ctf",
+      "seconds": 95.91666666666251,
+      "endReason": "capture",
+      "wireFrames": 1879,
+      "stats": [
+        {
+          "id": 0,
+          "frags": 0,
+          "scoreStats": {
+            "captures": 1,
+            "flagPickups": 1,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 1,
+            "hits": 0,
+            "damage": 0
+          }
+        },
+        {
+          "id": 1,
+          "frags": 0,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 0,
+            "hits": 0,
+            "damage": 0
+          }
+        }
+      ],
+      "native": {
+        "captures": [],
+        "drawCalls": 25,
+        "failures": [],
+        "frameMsP50": 47.9166666666667,
+        "frameMsP95": 56.824,
+        "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+        "guideFrames": 312,
+        "inputEvents": 2281,
+        "lastAck": 1878,
+        "map": "parallax-observatory",
+        "mode": "ctf",
+        "nativeEvents": {
+          "capture": 1,
+          "flag-pickup": 1,
+          "move-blocked": 6,
+          "pickup": 1,
+          "shot": 1,
+          "spawn": 2
+        },
+        "objectiveText": "CTF  |  YOU: RED [1]  |  1 : 0\nRED [1] / at-base\nBLUE [2] / at-base\nTouch enemy flag to carry; E: nearby teammate pass, otherwise drop.\nTouch friendly dropped flag to return. Capture at uncontested home flag.\nROUND OVER / authoritative winner: 0.0",
+        "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "roundResults": 1
+      }
+    },
+    {
+      "mode": "koth",
+      "seconds": 47.33333333333193,
+      "endReason": "objective",
+      "wireFrames": 793,
+      "stats": [
+        {
+          "id": 0,
+          "frags": 0,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 5.016666666666654,
+            "objectiveCaptures": 2,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 1,
+            "hits": 0,
+            "damage": 0
+          }
+        },
+        {
+          "id": 1,
+          "frags": 0,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 0,
+            "hits": 0,
+            "damage": 0
+          }
+        }
+      ],
+      "native": {
+        "captures": [],
+        "drawCalls": 19,
+        "failures": [],
+        "frameMsP50": 56.6666666666667,
+        "frameMsP95": 67.71,
+        "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+        "guideFrames": 132,
+        "inputEvents": 1184,
+        "lastAck": 792,
+        "map": "parallax-observatory",
+        "mode": "koth",
+        "nativeEvents": {
+          "hill-rotate": 1,
+          "move-blocked": 6,
+          "objective-win": 1,
+          "pickup": 1,
+          "powerup": 2,
+          "shot": 1,
+          "spawn": 2,
+          "zone-capture": 2,
+          "zone-progress": 204,
+          "zone-score": 7
+        },
+        "objectiveText": "koth · Round complete · [5.01666666666665, 0.0]",
+        "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "roundResults": 1,
+        "uiChecks": []
+      }
+    },
+    {
+      "mode": "uplink",
+      "seconds": 75.0166666666637,
+      "endReason": "objective",
+      "wireFrames": 1267,
+      "stats": [
+        {
+          "id": 0,
+          "frags": 0,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 3,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 1,
+            "hits": 0,
+            "damage": 0
+          }
+        },
+        {
+          "id": 1,
+          "frags": 0,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 0,
+            "hits": 0,
+            "damage": 0
+          }
+        }
+      ],
+      "native": {
+        "captures": [],
+        "drawCalls": 16,
+        "failures": [],
+        "frameMsP50": 56.25,
+        "frameMsP95": 70,
+        "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+        "guideFrames": 210,
+        "inputEvents": 1713,
+        "lastAck": 1266,
+        "map": "parallax-observatory",
+        "mode": "uplink",
+        "nativeEvents": {
+          "move-blocked": 5,
+          "objective-win": 1,
+          "pickup": 2,
+          "shot": 1,
+          "spawn": 2,
+          "uplink-capture": 3,
+          "uplink-stage": 2,
+          "uplink-win": 1,
+          "zone-capture": 3,
+          "zone-progress": 306
+        },
+        "objectiveText": "uplink · Round complete · [3.0, 0.0]",
+        "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "roundResults": 1,
+        "uiChecks": []
+      }
+    },
+    {
+      "mode": "holdout",
+      "seconds": 76.09999999999697,
+      "endReason": "objective",
+      "wireFrames": 1304,
+      "stats": [
+        {
+          "id": 0,
+          "frags": 0,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 5.516666666666652,
+            "objectiveCaptures": 3,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 1,
+            "hits": 0,
+            "damage": 0
+          }
+        },
+        {
+          "id": 1,
+          "frags": 0,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 0,
+            "hits": 0,
+            "damage": 0
+          }
+        }
+      ],
+      "native": {
+        "captures": [],
+        "drawCalls": 21,
+        "failures": [],
+        "frameMsP50": 53.7037037037037,
+        "frameMsP95": 70,
+        "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+        "guideFrames": 217,
+        "inputEvents": 1814,
+        "lastAck": 1303,
+        "map": "parallax-observatory",
+        "mode": "holdout",
+        "nativeEvents": {
+          "holdout-progress": 7,
+          "holdout-win": 1,
+          "move-blocked": 5,
+          "objective-win": 1,
+          "pickup": 2,
+          "powerup": 4,
+          "shot": 1,
+          "spawn": 2,
+          "zone-capture": 3,
+          "zone-progress": 306,
+          "zone-score": 9
+        },
+        "objectiveText": "holdout · Round complete · [5.51666666666665, 0.0]",
+        "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "roundResults": 1,
+        "uiChecks": []
+      }
+    }
+  ],
+  "fixtureLimit": "Controlled ordinary native key/mouse input against a passive wire peer. Autonomous source bots are a separate bounded observation."
+}
