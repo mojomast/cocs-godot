@@ -103,7 +103,10 @@ def main(argv=None):
                 env = finish.isolated_environment(run / 'user')
                 env['FIGHTING_ACCEPTANCE_OUTPUT'] = str(run / 'native.json')
                 env['FIGHTING_ACCEPTANCE_EVIDENCE'] = str(run)
-                command = [str(args.godot.resolve()), '--headless', '--path', str(root / 'godot'), '--script', job['script']]
+                command = [str(args.godot.resolve())]
+                if not job.get('rendered', False):
+                    command.append('--headless')
+                command += ['--path', str(root / 'godot'), '--script', job['script']]
                 report['grant'] = args.heavy_grant
                 report['binary_sha256'] = hashlib.sha256(args.godot.read_bytes()).hexdigest()
                 save_report(run / 'manifest.json', report)

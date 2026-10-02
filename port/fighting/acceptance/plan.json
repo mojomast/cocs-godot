@@ -4,6 +4,16 @@
   "claim": "prepared independent gates; no native acceptance before real execution",
   "jobs": [
     {
+      "id": "native-slice",
+      "resource": "gpu-exclusive",
+      "timeout_seconds": 300,
+      "rendered": true,
+      "script": "res://tests/fighting/acceptance/slice.gd",
+      "marker": "FIGHTING_ACCEPTANCE_SLICE_OK",
+      "requires": ["godot/fighting/core/simulation.gd", "godot/fighting/visuals/fighter_visual.gd", "godot/fighting/assets/operators/meta.glb", "godot/fighting/assets/operators/mistral.glb", "godot/fighting/effects/director.gd", "godot/fighting/assets/effects/catalog.json", "godot/fighting/stages/backdrop.gd", "godot/fighting/presentation/camera.gd", "godot/fighting/data/roster.json", "godot/fighting/data/rules.json", "godot/tests/fighting/acceptance/slice.gd"],
+      "reason": "First native integration gate before any full visual matrix. Uses one actual Basalt stage, real Meta/Mistral rigs, real strike/throw-tech events, measured FX and timestamped native frames."
+    },
+    {
       "id": "journeys",
       "resource": "godot-exclusive",
       "timeout_seconds": 240,
@@ -23,8 +33,10 @@
       "id": "mechanics-extended",
       "resource": "godot-exclusive",
       "timeout_seconds": 240,
-      "requires": ["godot/fighting/core/simulation.gd", "godot/fighting/data/roster.json", "port/fighting/acceptance/mechanics-fixtures.json"],
-      "reason": "Requires approved mechanics fields, timeline indexing and independent expected outcomes; cannot manufacture fixture passes."
+      "script": "res://tests/fighting/acceptance/mechanics.gd",
+      "marker": "FIGHTING_ACCEPTANCE_MECHANICS_OK",
+      "requires": ["godot/fighting/core/simulation.gd", "godot/fighting/data/roster.json", "godot/fighting/data/rules.json", "godot/tests/fighting/acceptance/mechanics.gd"],
+      "reason": "Prepared family/guard/throw-tech/charge probes. Remaining critical mechanics explicitly defer the report until implemented and actually executed."
     },
     {
       "id": "shell-fx-capture",
@@ -46,7 +58,7 @@
     "combos": {"per_operator": 3, "operators": 9, "both_facings": true, "no_hitstun_gaps": true},
     "mechanics": ["15 move families per operator", "guard high-low-overhead-unblockable", "buffer frame 6 accepted and frame 7 rejected", "queued input through hitstop", "held no repeat", "negative edge disabled", "SOCD horizontal and vertical neutral", "relative-facing motion and facing lock", "normal throw tech frames 1-10 and late rejection", "throw whiff and wakeup/hitstun invulnerability", "command throw escape and trade", "paired sideflip damage once and victim cleanup on KO", "simultaneous contact actor-order parity", "projectile finite life/range/count and swept contact", "clash strengths and reflection owner reassignment", "meter gain and super exactly 1000", "juggle cap, floor, deterioration, bounce/OTG finite", "resource reset and finite-state bounds", "malformed inputs and unknown mechanics rejection"],
     "serialization": ["full field inventory", "deep detached snapshot and save", "JSON round trip", "fresh instances deterministic all later frames", "hitstop", "airborne", "projectiles", "paired throws", "input history and buffered edges", "AI RNG and decisions", "phase transitions and rematch", "event IDs unique within match; reset only on new match"],
-    "presentation": ["ResourceLoader loads every script/class and nine GLBs", "weighted meshes and finite animation curves", "native sampled rest/bones/pose finite", "real animation names and victim clips", "nine side-on native contact sheets at 1000 units/metre", "contact and plant measured against authored anatomy tolerances", "three stages max separation and jump framing", "wide/compact/UI150", "FX dedup/reset/malformed/budget measurement", "low/reduced motion", "focus/device-loss release two actors", "AI inactive/pause/resume exact tick count", "live Home teardown", "FPS authority/store isolation and optional runner PID inventory", "human feel/balance", "real GPU frame cadence", "Windows/Linux exported closure"]
+    "presentation": ["FIRST one Meta/Mistral actual-stage combat/throw-tech native slice", "ResourceLoader loads every script/class and nine GLBs", "weighted meshes and finite animation curves", "native sampled rest/bones/pose finite", "configured AnimationPlayer resolves shared libraries and 25 victim timeline aliases for all nine actors; no requirement for 225 duplicate stored clips", "nine representative side-on native contact sheets at 1000 units/metre", "contact and plant measured against authored anatomy tolerances for each mesh despite common rest skeleton", "four stages including Helix lightwell: max separation and jump framing", "wide/compact/UI150", "FX dedup/reset/malformed/budget measurement", "low/reduced motion", "focus/device-loss release two actors", "AI inactive/pause/resume exact tick count", "live Home teardown", "FPS authority/store isolation and optional runner PID inventory", "human feel/balance", "real GPU frame cadence", "Windows/Linux exported closure"]
   },
   "package_proposal_only": {
     "parent_owned": true,

@@ -6,7 +6,7 @@ import tempfile
 import unittest
 
 from run import dependencies, judge
-from source import IDS, MOVES, accessor, inspect, read_glb, validate_data, validate_glb
+from source import IDS, MOVES, accessor, expand_trace, inspect, validate_data, validate_glb
 
 
 def data_fixture():
@@ -160,6 +160,27 @@ class EvidenceTests(unittest.TestCase):
             root = Path(directory)
             (root / 'present').touch()
             self.assertEqual(dependencies(root, {'requires': ['present', 'absent']}), ['absent'])
+
+
+class SparseInputTests(unittest.TestCase):
+    def test_omission_releases_and_duration_does_not_repeat_edge(self):
+        combo = {'setup_inputs': [dict(tick=0, axis_x=-1, axis_y=0, held=0, pressed=0, duration=36)],
+                 'inputs': [dict(tick=36, axis_x=-1, axis_y=-1, held=1, pressed=1, duration=2),
+                            dict(tick=40, axis_x=1, axis_y=0, held=8, pressed=8)]}
+        trace = expand_trace(combo, -1)
+        self.assertEqual(len(trace), 41)
+        self.assertTrue(all(c['axis_x'] == 1 for c in trace[:36]))
+        self.assertEqual(trace[36], dict(axis_x=1, axis_y=-1, held=1, pressed=1))
+        self.assertEqual(trace[37], dict(axis_x=1, axis_y=-1, held=1, pressed=0))
+        self.assertEqual(trace[38], dict(axis_x=0, axis_y=0, held=0, pressed=0))
+        self.assertEqual(trace[40]['axis_x'], -1)
+
+    def test_overlap_and_impossible_edge_refused(self):
+        sample = dict(tick=0, axis_x=0, axis_y=0, held=1, pressed=1, duration=2)
+        with self.assertRaisesRegex(ValueError, 'overlapping'):
+            expand_trace({'inputs': [sample, {**sample, 'tick': 1}]})
+        with self.assertRaisesRegex(ValueError, 'masks'):
+            expand_trace({'inputs': [{**sample, 'held': 0}]})
 
 
 if __name__ == '__main__':
