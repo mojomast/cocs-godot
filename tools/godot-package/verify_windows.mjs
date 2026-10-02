@@ -9,6 +9,7 @@ import {tmpdir} from 'node:os';
 import {createConnection} from 'node:net';
 import {verify as verifyExpansion} from './verify_expansion.mjs';
 import {verifyFeatures} from './verify_features.mjs';
+import {verifyFinal} from './verify_final.mjs';
 const exec = promisify(execFile);
 const root = resolve(process.argv[2]);
 const output = resolve(process.argv[3]);
@@ -202,6 +203,7 @@ try {
   if (Object.keys(manifest.feature_resource_sha256 ?? {}).length || Object.keys(manifest.replay_runtime_sha256 ?? {}).length)
     report.features = await verifyFeatures(root,join(output,'features'));
   report.status = 'passed';
+  if (manifest.final_resource_sha256?.['godot/fighting/data/roster.json']) report.final_content = await verifyFinal(root,join(output,'final-content'));
 } catch (error) {
   report.status = 'failed'; report.error = error.stack; process.exitCode = 1;
 } finally {

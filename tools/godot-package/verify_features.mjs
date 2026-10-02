@@ -53,7 +53,7 @@ export async function verifyFeatures(root,output,{replayOnly=false}={}) {
   if(Object.keys(manifest.replay_runtime_sha256??{}).length)report.replay=await verifyReplayExtracted(root,output);
   if(!replayOnly) {
     const list=join(output,'feature-resources.json');
-    writeFileSync(list,JSON.stringify(manifest.feature_resource_sha256??{}));
+    writeFileSync(list,JSON.stringify({...manifest.feature_resource_sha256,...manifest.dressing_resource_sha256}));
     const sandbox=mkdtempSync(join(tmpdir(),'cocs features fresh cwd '));
     let child,log='';
     try {
