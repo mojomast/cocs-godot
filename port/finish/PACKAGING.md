@@ -106,11 +106,18 @@ checks and full native movement/round/art inspection must pass before registrati
    prepared branch. `replay-package/replay-runtime` was copied from recorded
    `9794575a` using the new builder helper, and `replay-check/replay-result.json`
    records a passing actual extracted helper process/authentication/library test.
+   Separate actual-helper corrupt/missing copies both failed before process
+   startup; their package copies and failed reports are retained under
+   `replay-{corrupt,missing}` and `replay-{corrupt,missing}-check`.
 5. `audio-closure.json`, `controls-closure.json`, `experience-closure.json`:
    successful actual feature-branch resource inventory. `audio-generator-check.log`
    records deterministic 160-file PCM reproduction. `base-discovery.json` and
    `world-resources.json` retain the base runtime/accepted-world closure.
 6. Python 3 AST parse of `build.py` and `git diff --check` passed.
+7. Actual committed-object closure re-derivation at implementation commit
+   `8522dcde` passed: 85 source modules, 38 port adapters and seven original world
+   files. `committed-discovery.json` records the result; no checkout runtime was
+   used for that re-derivation.
 
 `package-tests.log` retains the broader initial attempt: 218/226 passed. Four
 synthetic discovery failures were fixed by deferring world-catalog loading until
