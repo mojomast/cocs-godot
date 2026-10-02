@@ -1,8 +1,8 @@
 {
   "source": {
     "status": "source-checks-passed-native-pending",
-    "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e",
-    "milliseconds": 11853.983686,
+    "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+    "milliseconds": 14739.304122,
     "results": [
       {
         "name": "schema-and-markers",
@@ -113,9 +113,35 @@
         }
       },
       {
+        "name": "moveActor-crusher-covered-aisle",
+        "forward": {
+          "steps": 643,
+          "distance": 135.6186990612136,
+          "maxFloorError": 0
+        },
+        "reverse": {
+          "steps": 642,
+          "distance": 135.5415406642536,
+          "maxFloorError": 0
+        }
+      },
+      {
+        "name": "moveActor-diagonal-service-cut",
+        "forward": {
+          "steps": 353,
+          "distance": 74.52634277475128,
+          "maxFloorError": 0
+        },
+        "reverse": {
+          "steps": 353,
+          "distance": 74.4867405907363,
+          "maxFloorError": 0
+        }
+      },
+      {
         "name": "source-navigation",
-        "nodes": 3626,
-        "connected": 3626,
+        "nodes": 3698,
+        "connected": 3698,
         "markers": 22
       },
       {
@@ -184,8 +210,8 @@
     ]
   },
   "rounds": {
-    "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e",
-    "milliseconds": 12967.008711,
+    "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+    "milliseconds": 15617.477203000002,
     "results": [
       {
         "mode": "payload",
@@ -213,9 +239,9 @@
       {
         "mode": "assault",
         "label": "two-seat source full-round normal-input fixture; passive opponent",
-        "seconds": 65.1999999999977,
-        "steps": 2608,
-        "distance": 425.3163245295481,
+        "seconds": 64.42499999999752,
+        "steps": 2577,
+        "distance": 418.6600608837649,
         "initial": {
           "x": -178,
           "z": -102.92
@@ -275,9 +301,9 @@
       {
         "mode": "deathmatch",
         "label": "two-seat source full-round normal-input fixture; passive opponent",
-        "seconds": 180.900000000024,
-        "steps": 7236,
-        "distance": 1390.9502874853436,
+        "seconds": 147.00000000001629,
+        "steps": 5880,
+        "distance": 1091.0504641718317,
         "initial": {
           "x": -178,
           "z": -102.92
@@ -295,9 +321,9 @@
       {
         "mode": "teamdeathmatch",
         "label": "two-seat source full-round normal-input fixture; passive opponent",
-        "seconds": 75.42500000000003,
-        "steps": 3017,
-        "distance": 458.4763204426542,
+        "seconds": 75.67500000000008,
+        "steps": 3027,
+        "distance": 460.9061009452926,
         "initial": {
           "x": -178,
           "z": -102.92

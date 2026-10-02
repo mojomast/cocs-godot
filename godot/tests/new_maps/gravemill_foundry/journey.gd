@@ -12,6 +12,7 @@ var capture_busy := false
 var capture_enabled := false
 var captured_labels := {}
 var role := "host"
+var vehicle_event_ids := {}
 
 func _ready() -> void:
  for arg: String in OS.get_cmdline_user_args():
@@ -19,13 +20,12 @@ func _ready() -> void:
   if arg.begins_with("--foundry-capture="): capture_root = arg.trim_prefix("--foundry-capture=")
   if arg.begins_with("--foundry-role="): role = arg.trim_prefix("--foundry-role=")
  super._ready()
- objective_text.custom_minimum_size.x = 700
- for item: Label in [label, combat_label, objective_text]:
-  item.add_theme_font_size_override("font_size", 18)
-  item.add_theme_color_override("font_color", Color("fff4d6"))
-  item.add_theme_color_override("font_shadow_color", Color.BLACK)
-  item.add_theme_constant_override("shadow_offset_x", 2)
-  item.add_theme_constant_override("shadow_offset_y", 2)
+ client.events.connect(func(items: Array) -> void:
+  for event: Dictionary in items:
+   if event.get("type") == "vehicle-shot": vehicle_event_ids[event.id] = true
+ )
+ var settings := SettingsAccess.service()
+ if settings != null: settings.set_value("ui_scale",150 if "--foundry-compact" in OS.get_cmdline_user_args() else 100,false)
  if not capture_root.is_empty():
   DirAccess.make_dir_recursive_absolute(capture_root)
   # Bounded software capture preset. Keep 1280x800 UI, reduce 3D raster work;
@@ -43,6 +43,7 @@ func on_lobby(frame: Dictionary) -> void:
  super.on_lobby(frame)
 
 func _process(delta: float) -> void:
+ if has_method("foundry_hud_layout"): call("foundry_hud_layout")
  if phase != 3:
   super._process(delta)
   return
@@ -69,18 +70,18 @@ func _process(delta: float) -> void:
   frames += 1
  if receipt_elapsed >= 1:
   receipt_elapsed = 0
-  print("FOUNDRY_NATIVE_INPUT ", JSON.stringify({"role":role,"actor":client.actor_id,"hash":expected_hash,"sent":sent,"ack":client.last_ack,"pose":presentation.local_actor,"camera":str(camera.global_position),"frames":frames,"engineFrames":Engine.get_frames_drawn(),"ticksMs":Time.get_ticks_msec()}))
+  print("FOUNDRY_NATIVE_INPUT ", JSON.stringify({"role":role,"actor":client.actor_id,"hash":expected_hash,"sent":sent,"ack":client.last_ack,"pose":presentation.local_actor,"camera":str(camera.global_position),"frames":frames,"engineFrames":Engine.get_frames_drawn(),"ticksMs":Time.get_ticks_msec(),"vehicleShotEvents":vehicle_event_ids.size()}))
 
 func capture(label_name: String) -> void:
  if capture_root.is_empty() or capture_busy: return
  capture_busy = true
  await RenderingServer.frame_post_draw
  var error := get_viewport().get_texture().get_image().save_png(capture_root.path_join(label_name + ".png"))
- print("FOUNDRY_NATIVE_CAPTURE ", JSON.stringify({"label":label_name,"error":error,"hash":expected_hash,"camera":str(camera.global_position),"ticksMs":Time.get_ticks_msec()}))
+ print("FOUNDRY_NATIVE_CAPTURE ", JSON.stringify({"label":label_name,"error":error,"hash":expected_hash,"camera":str(camera.global_position),"actor":presentation.local_actor,"ticksMs":Time.get_ticks_msec(),"viewport":str(get_viewport().get_visible_rect().size),"uiScale":get_window().content_scale_factor,"hudBounds":[str(label.get_global_rect()),str(combat_label.get_global_rect()),str(objective_text.get_global_rect())]}))
  capture_busy = false
 
 func on_results(frame: Dictionary) -> void:
- print("FOUNDRY_NATIVE_RESULTS ", JSON.stringify({"role":role,"hash":expected_hash,"mode":selected_mode,"sent":sent,"ack":client.last_ack,"state":frame.state}))
+ print("FOUNDRY_NATIVE_RESULTS ", JSON.stringify({"role":role,"hash":expected_hash,"mode":selected_mode,"sent":sent,"ack":client.last_ack,"vehicleShotEvents":vehicle_event_ids.size(),"state":frame.state}))
  super.on_results(frame)
 
 func on_error(message: String) -> void:

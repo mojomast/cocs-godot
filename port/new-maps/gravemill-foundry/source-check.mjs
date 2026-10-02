@@ -10,7 +10,7 @@ import {createVehicle,PUMA,stepVehicle,takeVehicleSeat,leaveVehicleSeat} from '.
 import {payloadTemplate,stepPayload} from '../../multiplayer-worlds/derived/payload.mjs';
 const {recipe}=await import(process.env.FOUNDRY_CANDIDATE ? '../../../tools/godot-multiplayer/new-maps/gravemill-foundry/revision3/recipe.mjs' : '../../../tools/godot-multiplayer/new-maps/gravemill-foundry/recipe.mjs');
 const started=performance.now(),arena=recipe(),results=[];
-const ceilingShotLimit=process.env.FOUNDRY_CANDIDATE?20:12;
+const ceilingShotLimit=arena.art.revision3?20:12;
 const record=(name,details)=>{results.push({name,...details});console.log(name,JSON.stringify(details));};
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x)),wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
 export function follower(arena,points,onStep=()=>{},actor=null){

@@ -36,11 +36,16 @@ func run() -> void:
  var views := [
   ["overview",Vector3(275,230,-290),Vector3(0,12,0)],
   ["reverse",Vector3(-270,160,220),Vector3(0,12,0)],
-  ["crusher-eye",Vector3(-117,1.65,-60),Vector3(-59,14,-10)],
-  ["cooling-eye",Vector3(-95,13.65,22.7),Vector3(-45,17,29.7)],
-  ["assay-eye",Vector3(37,13.65,41.18),Vector3(86,17,48.04)],
-  ["crown-eye",Vector3(-101,25.65,94.86),Vector3(55,25,116.7)],
-  ["furnace-eye",Vector3(113,1.65,-22.18),Vector3(65,20,1.1)]
+  ["crusher-eye",Vector3(-94,1.45,-51.16),Vector3(-49,8,-27)],
+  ["crusher-maintenance",Vector3(-88,11.53,4.68),Vector3(-65,14,-8)],
+  ["cooling-eye",Vector3(-82,13.45,24.52),Vector3(-46,16,29.56)],
+  ["cooling-cross-aisle",Vector3(-66,13.45,26.76),Vector3(-82,17,17.52)],
+  ["assay-eye",Vector3(48,13.45,42.72),Vector3(85,17,47.9)],
+  ["assay-inspection",Vector3(66,13.45,45.24),Vector3(72,14.5,51)],
+  ["assay-room-centered",Vector3(66,13.45,45.24),Vector3(80,19,48)],
+  ["crown-eye",Vector3(-101,25.45,94.86),Vector3(55,25,116.7)],
+  ["furnace-eye",Vector3(88,1.45,-25.68),Vector3(64,10,-10)],
+  ["transfer-eye",Vector3(0,1.45,-64),Vector3(27,5,-58)]
  ]
  for view: Array in views:
   camera.fov = 45 if view[0] in ["overview", "reverse"] else 74

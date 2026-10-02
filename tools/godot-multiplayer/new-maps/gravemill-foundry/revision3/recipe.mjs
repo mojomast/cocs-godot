@@ -1,5 +1,5 @@
 // Staged authority. Never written into the accepted runtime by this module.
-import {recipe as checkpoint,height,ID,SEED} from '../recipe.mjs';
+import {recipe as checkpoint,height,ID,SEED} from '../checkpoint-recipe.mjs';
 export {ID,SEED};
 export function recipe(){
  const m=checkpoint();

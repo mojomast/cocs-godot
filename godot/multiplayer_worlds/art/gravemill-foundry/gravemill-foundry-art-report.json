@@ -1,32 +1,36 @@
 {
   "id": "gravemill-foundry",
-  "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e",
-  "recipeHash": "8c065b4f47c5fa67937338367cf030e4e0ff95fdc6a743483cc9127aa5ca1678",
+  "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+  "recipeHash": "3c7f9242bb7c98000871b27d58d14c719a4867e1a9fc625b106c97f7c1c608eb",
   "seed": 1196573014,
   "materials": 8,
   "exportNodes": 8,
-  "editableObjects": 6441,
-  "triangles": 66284,
-  "glbBytes": 3556916,
-  "masterBytes": 37091764,
-  "generationSeconds": 1.23763797711581,
+  "editableObjects": 7086,
+  "triangles": 69870,
+  "glbBytes": 3744260,
+  "masterBytes": 40527432,
+  "generationSeconds": 0.8878309717401862,
   "renders": [
     {
       "camera": "01-overview",
-      "seconds": 32.258988478221
+      "seconds": 30.948213778436184
     },
     {
       "camera": "03-crusher-throat-eye",
-      "seconds": 36.82913999632001
+      "seconds": 81.34054363612086
     },
     {
       "camera": "04-cooling-nave-eye",
-      "seconds": 79.57477017398924
+      "seconds": 78.44448960386217
+    },
+    {
+      "camera": "05-assay-vault-eye",
+      "seconds": 77.70874016080052
     },
     {
       "camera": "07-furnace-apron-eye",
-      "seconds": 40.13721005897969
+      "seconds": 63.97600820288062
     }
   ],
-  "totalSeconds": 190.03797656483948
+  "totalSeconds": 333.30599265452474
 }

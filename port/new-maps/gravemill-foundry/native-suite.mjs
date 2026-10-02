@@ -1,6 +1,6 @@
 import {spawn} from 'node:child_process';
 import fs from 'node:fs';
-const root='/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/native-final';
+const root=process.env.FOUNDRY_EVIDENCE??'/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/native';
 fs.mkdirSync(root,{recursive:true});
 for(const mode of (process.argv.slice(2).length?process.argv.slice(2):['payload','combined-arms','deathmatch','assault','domination','teamdeathmatch'])){
  const log=fs.openSync(`${root}/${mode}-run.log`,'w');

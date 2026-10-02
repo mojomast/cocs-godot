@@ -1,90 +1,96 @@
-# Gravemill Foundry — source and native acceptance
+# Gravemill Foundry — revision 3 production acceptance
 
-**Accepted map/mode pairs:** `gravemill-foundry` × `deathmatch`, `teamdeathmatch`, `domination`, `assault`, `payload`, `combined-arms`. Shared package/manifest closure remains the parent's integration responsibility.
+Map ID: **`gravemill-foundry`**. Native pairs: **deathmatch, teamdeathmatch, payload, assault, combined-arms, domination**. Parent retains final architectural review and combined package/catalog closure. The source/authority rules and the original seven maps are unchanged.
 
-## Identity and assets
+## Identity and deliverables
 
 ```text
-recipe SHA-256  8c065b4f47c5fa67937338367cf030e4e0ff95fdc6a743483cc9127aa5ca1678
-geometry hash  357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e
-seed           0x47524156
+geometry  8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f
+recipe    3c7f9242bb7c98000871b27d58d14c719a4867e1a9fc625b106c97f7c1c608eb
+seed      0x47524156
 ```
 
-* Recipe: `tools/godot-multiplayer/new-maps/gravemill-foundry/recipe.mjs`.
-* Source JSON: `port/native-multiplayer-worlds/worlds/gravemill-foundry.json`.
-* Complete derived authority: `godot/multiplayer_worlds/generated/gravemill-foundry.json`.
-* Native source-contact probes: `godot/multiplayer_worlds/generated/gravemill-foundry-probes.json`.
-* Editable reopened master: `tools/godot-multiplayer/new-maps/gravemill-foundry/gravemill-foundry.blend`.
-* Runtime art: `godot/multiplayer_worlds/art/worlds/gravemill-foundry.glb`.
-* Receipts: `source-validation.json`, `native-validation.json`, `bot-validation.json`, `provenance.json`, `capabilities.json` in this directory; exact artifact digests are in provenance.
+* Editable master: `tools/godot-multiplayer/new-maps/gravemill-foundry/gravemill-foundry.blend`.
+* Runtime GLB: `godot/multiplayer_worlds/art/worlds/gravemill-foundry.glb`.
+* Runtime wrapper: `godot/multiplayer_worlds/generated/gravemill-foundry.json`.
+* Current recipe: `tools/godot-multiplayer/new-maps/gravemill-foundry/recipe.mjs`, delegating to `revision3/recipe.mjs`.
+* Author: `tools/godot-multiplayer/new-maps/gravemill-foundry/revision3/author.py`.
+* Test drivers and 1,026 probes: `godot/tests/new_maps/gravemill_foundry/`.
+* Compact proof records: `source-validation.json`, `native-validation.json`, `visual-validation.json`, `bot-validation.json`, `provenance.json`, `capabilities.json` in this directory.
 
-The verified runtime `e731fd536d31d16a7014402afe6670fca644f9c1` was merged before engine work. Frozen game/server implementations are unmodified; `game/core.mjs` remains SHA-256 `58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9`.
+Prototype commits `afbe57dc` / `ec041aee` are preserved. Their assets have an additional read-only, SHA-256-verified external archive, including original proof/author files. The archive manifest and exact final asset hashes are recorded in `provenance.json`. No prototype evidence directory is overwritten.
 
-## Actual source and production-native checks
+## Architectural revision
 
-* 384×288 m, 35 m terrain relief; 309 terrain surfaces, 2,020 wall triangles; **3,626 connected source navigation nodes**, including all 22 mandatory markers.
-* All eight authored routes traverse both directions with real source movement. Terrain support error is zero in the route followers. Source wall triangles block continuous movement; vaults, headers and conveyors stop shots while portals/windows remain open.
-* Actual Puma physics completes a **767.64 m / 13-segment service loop** with zero wall contacts and seat release.
-* Payload source path is **363.60 m**, all nine authored anchors included, three source-native checkpoint thirds and movement-driven delivery.
-* Production `multiplayer_worlds/map.gd` passes **908 support rays + 908 standing capsules**, eight gallery/window/ceiling shot probes, **160 wall-contact moves**, and the 13 m conveyor underside. **2,808 collision triangles**, matching geometry hash.
+The crusher drums now inhabit a folded-roof process house with hopper/chutes, clear-span trusses, a covered freight threshold and maintenance aisle. A separate angled transfer passage gives the middle payload segment cover. The furnace district combines kiln arches, buttresses, service enclosure and a loading canopy around the towers. Cooling retains its barrel vault but gains enclosure and machinery recesses; assay becomes an asymmetric pitched control building with partitioned rooms and public inspection apertures. Unequal faceted geological benches replace the repeated outer teeth.
 
-### Hosted native full rounds
+Actual native overview, crusher passage/maintenance, cooling, assay and furnace views were inspected; additional cross-aisle/room views supplement long corridor perspectives. Native eye views use source standing head height, 1.45 m above support. Blender Cycles interior views are darker than the production native ambient environment; native images are the gameplay appearance reference. Full design/iteration history: [REVISION3-PRODUCTION.md](REVISION3-PRODUCTION.md).
 
-Two production-native clients participate in each fixture. A scoped test controller supplies directional/action stimuli to the native clients; their normal client serializer sends ordinary input over the source server's wire. Node reads authority telemetry for steering/assertions. No actor position, health, objective, score, clock or physics state is injected. Opponent behavior is deliberately passive/retreating. These are **controlled native outcome proofs**, not competitive-balance trials.
+## Source and native geometry
 
-| Mode | Actual native/source outcome | Simulation time | Input updates |
-|---|---|---:|---:|
-| Payload | Delivered, three checkpoints, 3–0 | 150.000 s | 2,856 |
-| Combined arms | Puma mount, **76.88 m drive with bend**, dismount, zone capture, 50-point win | 71.733 s | 1,349 |
-| Deathmatch | Five source kills, round ended | 132.217 s | 2,514 |
-| Assault | All three sectors, attacker win | 66.700 s | 1,251 |
-| Domination | Capture and 10-point victory | 26.200 s | 471 |
-| Team deathmatch | Five source kills, 5–0 victory | 67.833 s | 1,273 |
+* 384×288 m envelope, 35 m terrain relief; **334 surfaces and 2,320 wall triangles**.
+* **Ten authored routes**, each tested in both directions; **3,698 connected navigation nodes**, all 22 markers reachable.
+* Source mounted Puma completes **767.64 m / 13 segments**, zero collisions, seat released.
+* Payload path remains **363.60 m**, with all anchors supported and all three checkpoints delivered.
+* All six controlled source rounds pass. New building walls are tested through continuous actor input from both sides, blocking rays, four district ceilings and clear inspection apertures versus solid lintels.
+* Production binder: **1,026 floor rays + 1,026 standing capsules**, 160 original wall-contact steps, **600 new-building contact steps**, eight gallery/window rays, four district ceilings, two assay inspection rays and conveyor underside.
+* Imported art comparison: **2,312 architecture wall triangles and 824 overhead triangles** match source coordinates at 1 mm precision. Eight outer containment triangles are deliberately excluded from visual art comparison. Art remains non-colliding in production.
+* A further **1,026 rays against imported GLB triangles** verify visual floor/support agreement; maximum discrepancy is **0.035 m** from shallow cosmetic trim/sleepers.
+* **3,158 authoritative collision triangles**. Overheads remain non-walkable, preserving source support selection and tunnel/deck behavior.
 
-Both native peers receive matching-hash result receipts for every row. `native-validation.json` contains the compact records; the evidence directory retains complete logs and authority route samples.
+Foundry's GLB import disables mesh compression and generated LODs after an actual comparison exposed millimetre-scale import quantization. No global import or renderer rule changes.
 
-### Autonomous bots, separately labeled
+## Hosted native gameplay
 
-Six unmodified source bots with a stationary human seat: domination completed at 63 s with one captured zone and a blue 50-point victory. In 120 s, payload bots advanced **144.41 m**, reached checkpoint one, and recorded eight kills. The bounded autonomous payload round **did not complete**. There is no claim of balanced natural full rounds or universal bot delivery.
+The fixture launches two production native clients against the ordinary source-authority server. Native clients serialize the directional/action inputs; Node only reads source telemetry to steer and assert outcomes. Configuration limits and passive/retreating opposition are controlled and documented. No actor position, health, score, objective or clock state is injected.
 
-## Visual acceptance and measured budgets
+`native-validation.json` records the final six mode outcomes, native result acknowledgements, movement distances and source shots. Payload requires full three-checkpoint delivery. Combined arms requires real mount, >60 m drive with a bend, authority vehicle-shot events received by both native peers, dismount, zone capture and victory. DM/TDM require five source kills and completed rounds; assault and domination require objective victories.
 
-The first Blender/native views prompted an architectural/material refinement. A later compatibility-renderer review found pavement shimmer; final art partitions the original planar terrain into disjoint material inlays, removing raised/coplananr pavement overlays **without changing authority geometry or hash**.
+Autonomous bots are reported separately: domination ends at 64.8 s with a captured zone and 50-point victory; payload advances **156.17 m and checkpoint one**, with five kills in 120 s, but does **not** finish that bounded round. These observations are not competitive-balance or universal bot-completion claims.
 
-Final asset: **66,284 triangles, eight mesh/material batches, 6,441 editable components**; GLB **3,556,916 bytes**; master **37,091,764 bytes**. Eight authored cameras are retained. Four final-build 1440×900 CPU renders were inspected (overview, crusher, cooling interior, furnace), after all eight prior-revision views had been inspected. Seven final default-lighting native views include both interiors and upper gantry. Master reopened successfully with the same hash.
+## Measured asset budget and visual scope
 
-Final generation/export: **1.24 s** inside Blender. Four CPU Cycles views: **190.04 s total**, 32.26–79.57 s per view, one thread / 16 samples. Source checks: 11.85 s; six source round fixtures: 12.97 s; autonomous bot observations: 15.64 s. Software-native static inspection and capture costs are recorded in `PRODUCTION.md`; these are not GPU or human-playtesting measurements.
+**69,870 triangles, eight mesh/material batches, 7,086 editable source/detail objects**. GLB: **3,744,260 bytes**; master: **40,527,432 bytes**. Master reopen reports 7,103 total objects, including export/review objects, and eight retained cameras. Nine material datablocks include an unused default; eight are exported.
 
-## Evidence and reproducible commands
+Final Blender generation/export: **0.888 s** inside the process. Five 1440×900 CPU Cycles reviews: **333.31 s total**, 30.95–81.34 s individually, one thread / 16 samples. Native scene counts and software capture metrics are recorded in `visual-validation.json`. No GPU-performance or fabricated PBR claim is made.
 
-Evidence root: `/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/`.
+Full UI gates use **1280×800 at 100%** and **760×520 at 150%**. A map-scoped production hook wraps the existing labels at available width; the test fixture uses those actual labels. The continuous walkthrough retains per-frame monotonic timestamps, reports real cadence and maximum/percentile gaps, and is encoded at 15 fps by timestamp resampling. Encoded fps is not capture performance. Parent owns the separately requested trailer.
 
-* `revision-02/`: final authority source and autonomous-bot receipts.
-* `blender-inlay-final/`: final Blender imagery and exporter budget.
-* `native-final/`: all six hosted native round receipts.
-* `native-reviewed/`: final production overview and six architectural eye/reverse views.
-* `native-visual-final/`: normal-input multi-district walkthrough and clip evidence.
-* Initial/failed attempts are preserved, including the first import's shutdown abort, the wall-quad movement discovery, initial spawn sightline and baffle failures, and superseded pavement captures. Subsequent imports pass cleanly.
+Final clip: **53.229 seconds, 518 captured frames, 9.713 captures/s**; median/p95/max gaps **99/128/243 ms**, no gap over 250 ms. Both district walkthrough sizes and a further compact rendered payload full round pass. Actual screenshots and decoded clip contact sheet were inspected. The existing ability card remains scrollable at compact size.
+
+## Evidence and reproducibility
+
+Root: `/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/`.
+
+* `checkpoint-afbe57dc/`: read-only original assets and proof archive.
+* `blender-01/`, `blender-02/`: preserved initial/final architectural render attempts.
+* `source/`: final source/round/bot receipts.
+* `native/`: hosted native round logs/results.
+* `native-final-views/`: default-lighting overview and architectural perspectives.
+* `wide/`, `compact/`: actual native-input walkthrough/HUD evidence; `wide/walkthrough.mp4` is the continuous three-district clip.
+* `physics-final.log`, `reopen-final.log`, `inspection-final.log`: production evidence. Failed physics and fixture attempts are retained and explained in the production record.
 
 ```sh
 node tools/godot-multiplayer/new-maps/gravemill-foundry/build.mjs --check
 node port/new-maps/gravemill-foundry/source-check.mjs
 node port/new-maps/gravemill-foundry/round-check.mjs
-node port/new-maps/gravemill-foundry/bot-check.mjs
+node tools/godot-multiplayer/new-maps/gravemill-foundry/revision3/architecture-check.mjs
 ```
 
-Engine/Blender repro requires ownership of the exclusive heavy slot:
+Heavy repro requires a new exclusive grant; use unique evidence directories:
 
 ```sh
-LP_NUM_THREADS=1 OMP_NUM_THREADS=1 /home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python tools/godot-multiplayer/new-maps/gravemill-foundry/blender.py -- --render
-LP_NUM_THREADS=1 /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --editor --import
-LP_NUM_THREADS=1 /home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script /home/mojo/.tmp-on-disk/cocs-new-map-foundry-20261002/tools/godot-multiplayer/new-maps/gravemill-foundry/physics_probe.gd
-node port/new-maps/gravemill-foundry/native-suite.mjs
-LP_NUM_THREADS=1 LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a node port/new-maps/gravemill-foundry/native-journey.mjs walkthrough
+LP_NUM_THREADS=1 OMP_NUM_THREADS=1 "$BLENDER" -b -t 1 --python tools/godot-multiplayer/new-maps/gravemill-foundry/revision3/author.py -- --render --evidence="$NEW_EVIDENCE/blender"
+node tools/godot-multiplayer/new-maps/gravemill-foundry/revision3/promote.mjs
+node tools/godot-multiplayer/new-maps/gravemill-foundry/build.mjs
+LP_NUM_THREADS=1 "$GODOT" --headless --path godot --editor --import
+LP_NUM_THREADS=1 "$GODOT" --headless --path godot --script res://tests/new_maps/gravemill_foundry/physics_probe.gd
+LP_NUM_THREADS=1 FOUNDRY_EVIDENCE="$NEW_EVIDENCE/native" node port/new-maps/gravemill-foundry/native-suite.mjs
+LP_NUM_THREADS=1 LIBGL_ALWAYS_SOFTWARE=1 FOUNDRY_EVIDENCE="$NEW_EVIDENCE/wide" xvfb-run -a node port/new-maps/gravemill-foundry/native-journey.mjs walkthrough
+LP_NUM_THREADS=1 LIBGL_ALWAYS_SOFTWARE=1 FOUNDRY_COMPACT=1 FOUNDRY_EVIDENCE="$NEW_EVIDENCE/compact" xvfb-run -a node port/new-maps/gravemill-foundry/native-journey.mjs walkthrough
+node port/new-maps/gravemill-foundry/encode-clip.mjs "$NEW_EVIDENCE/wide" walkthrough
 ```
 
-## Parent integration contract
+`BLENDER`: pinned 4.5.14 toolchain; `GODOT`: pinned 4.5.2. Frozen game/server files, original-map assets, shared package allowlists and manifest verifiers are unmodified. Parent integrates the isolated Foundry asset/proof and map-only HUD commits, then performs combined native/package closure.
 
-The asset/proof commit and minimal shared map-bindings commit are separate. Shared changes are limited to Node `WORLDS`, native `MODES`, launch/package options, route metadata and generated route JSON. No shared package allowlist or manifest verifier is edited. The existing production art-path/surface-coverage convention already supports this asset; no `map.gd` change is required.
-
-Invoke the scoped standalone generator for reproducibility. Its JSON already contains all overhead geometry; `overhead` is empty, so there is no second expansion pass to apply. Integrate alongside Helix/Parallax without dropping their catalog entries. Parent owns combined package closure, route counts/descriptions and released Windows/Linux matrix expansion.
+**EXPLICIT ENGINE/BLENDER SLOT RELEASED — all owned jobs stopped.** Parent combined-native work has priority next; no additional Foundry heavy process will start without another explicit grant.

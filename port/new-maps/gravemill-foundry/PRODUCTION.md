@@ -1,5 +1,7 @@
 # Gravemill production proof
 
+**Historical functional checkpoint.** This records `afbe57dc` / `ec041aee` and the prior asset identities. Current revision-three production, exact triangle matching and new evidence are documented in [REVISION3-PRODUCTION.md](REVISION3-PRODUCTION.md); current capabilities/provenance JSON refers to that revision after collection.
+
 Follow-up to source-ready commit `32cbf30f`, after explicitly granted exclusive engine/Blender access. Verified runtime `e731fd536d31d16a7014402afe6670fca644f9c1` was merged before engine work. No frozen game/server implementation was changed.
 
 ## Reviewed geometry revision

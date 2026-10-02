@@ -1,6 +1,6 @@
 # GRAVEMILL FOUNDRY
 
-Revision 3 architectural candidate: see [REVISION3.md](REVISION3.md). The description below records the preserved functional checkpoint; staged building-mass changes have source proof and await an explicit Blender/native grant.
+Revision 3 architectural design: see [REVISION3.md](REVISION3.md) and [REVISION3-PRODUCTION.md](REVISION3-PRODUCTION.md). The description below records the original functional topology; the production revision adds distinct process buildings while retaining the freight/Puma loop and all gameplay markers.
 
 Stable ID: `gravemill-foundry`. Seed: `0x47524156`. Authored map, not a procedural remix of another arena. Dimensions: **384 × 288 m**, **35 m terrain relief**. All distances are source metres.
 

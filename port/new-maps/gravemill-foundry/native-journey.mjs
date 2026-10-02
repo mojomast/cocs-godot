@@ -10,7 +10,8 @@ import {visible} from '../../../game/core.mjs';
 
 const requested=process.argv[2]??'payload',walk=requested==='walkthrough',mode=walk?'deathmatch':requested;
 const visual=walk||process.env.FOUNDRY_VISUAL==='1';
-const root=process.env.FOUNDRY_EVIDENCE??'/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/native';
+const compact=process.env.FOUNDRY_COMPACT==='1';
+const root=process.env.FOUNDRY_EVIDENCE??'/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/native';
 fs.mkdirSync(root,{recursive:true});
 const godot='/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64';
 const geometryHash=readWorld('gravemill-foundry').geometryHash;
@@ -24,7 +25,12 @@ const game=createGameServer({historyPath:null,progressionPath:null,tickMs:1000/6
 await new Promise(r=>game.server.listen(0,'127.0.0.1',r));
 const endpoint=`ws://127.0.0.1:${game.server.address().port}`;
 const stimulus=(role,command)=>{const path=`${root}/${requested}-${role}-controls.json`;fs.writeFileSync(path+'.tmp',JSON.stringify(command));fs.renameSync(path+'.tmp',path);};
-function launch(role,extra=[]){stimulus(role,{input:{}});const args=[...(visual&&role==='host'?['--rendering-method','gl_compatibility','--resolution','1280x800']:['--headless']),'--path','godot','--audio-driver','Dummy','res://tests/new_maps/gravemill_foundry/journey.tscn','--',`--endpoint=${endpoint}`,'--map=gravemill-foundry',`--mode=${mode}`,'--bots=0',`--foundry-role=${role}`,`--foundry-controls=${root}/${requested}-${role}-controls.json`,...(visual&&role==='host'?[`--foundry-capture=${root}/${requested}-frames`]:[]),...extra];const child=spawn(godot,args,{env:{...process.env,LP_NUM_THREADS:'1',OMP_NUM_THREADS:'1',LIBGL_ALWAYS_SOFTWARE:'1'}});const n={role,child,output:'',code:null};child.stdout.on('data',b=>n.output+=b);child.stderr.on('data',b=>n.output+=b);child.on('exit',code=>n.code=code);native.push(n);return n;}
+function launch(role,extra=[]){
+ stimulus(role,{input:{}});
+ const args=[...(visual&&role==='host'?['--rendering-method','gl_compatibility','--resolution',compact?'760x520':'1280x800']:['--headless']),'--path','godot','--audio-driver','Dummy','res://tests/new_maps/gravemill_foundry/journey.tscn','--',`--endpoint=${endpoint}`,'--map=gravemill-foundry',`--mode=${mode}`,'--bots=0',`--foundry-role=${role}`,`--foundry-controls=${root}/${requested}-${role}-controls.json`,...(visual&&role==='host'?[`--foundry-capture=${root}/${requested}-frames`]:[]),...(compact?['--foundry-compact']:[]),...extra];
+ const child=spawn(godot,args,{env:{...process.env,LP_NUM_THREADS:'1',OMP_NUM_THREADS:'1',LIBGL_ALWAYS_SOFTWARE:'1'}});
+ const n={role,child,output:'',code:null};child.stdout.on('data',b=>n.output+=b);child.stderr.on('data',b=>n.output+=b);child.on('exit',code=>n.code=code);native.push(n);return n;
+}
 let debug={},match=null,result=null;
 try{
  const host=launch('host');const room=await until('native room',()=>[...game.registry.rooms.values()].find(r=>r.peers.size===1));const guest=launch('guest',[`--join-room=${room.id}`]);
@@ -32,30 +38,39 @@ try{
  const a=match.actors[0],enemy=match.actors[1],retreat=follow(match,enemy,{x:166,y:12,z:25+.14*166});
  const vehicle=match.vehicles.find(v=>v.kind==='puma'&&v.position.x<0),driveLine=match.arena.payloadPath.slice(0,3);
  let mounted=false,exited=false,driveDistance=0,driveSector=0,key='',controller=null,controls=0,distanceMoved=0,last={x:a.x,z:a.z},stage=0,walkDone=false,shotAt=0;
- const stages=[],positions=[],events=[],walkTargets=[[-112,-38,'crusher',[-60,15,-15]],[-80,36,'cooling-entry',[-48,16,29]],[-52,36,'cooling-nave',[-78,17,25]],[66,36,'assay-vault',[90,17,48]],[0,109,'crown-gantry',[80,24,20]],[88,-38,'furnace-apron',[66,20,1]]].map(([x,q,id,look])=>({x,z:q+.14*x,id,look}));
+  const stages=[],positions=[],walkTargets=[[-112,-38,'crusher-approach',[-60,12,-30]],[-90,-38,'crusher-interior',[-52,8,-24]],[-88,17,'crusher-aisle',[-65,14,-8]],[-80,36,'cooling-entry',[-48,15,29]],[-52,36,'cooling-room',[-78,15,25]],[66,36,'assay-control',[88,16,48]],[0,109,'crown-gantry',[80,24,20]],[88,-38,'furnace-handoff',[66,10,-10]]].map(([x,q,id,look])=>({x,z:q+.14*x,id,look}));
  const tick=()=>{
   if(match.over||walkDone)return;let input={},target=null,nextKey='',shot='',clip=false;
   const moved=distance(a,last);distanceMoved+=moved;if(a.vehicleId!==null)driveDistance+=moved;last={x:a.x,z:a.z};
-  if(walk){target=walkTargets[stage];nextKey=`walk-${stage}`;if(distance(a,target)<1.5){shotAt++;if(shotAt>20)shot=target.id;const [x,y,z]=target.look,dx=x-a.x,dz=z-a.z;input={yaw:Math.atan2(-dx,-dz),pitch:Math.atan2(y-a.y-1.45,Math.hypot(dx,dz))};target=null;if(shotAt>30){stages.push({stage:nextKey,x:a.x,y:a.y,z:a.z});stage++;shotAt=0;key='';if(stage>=walkTargets.length)walkDone=true;}}clip=stage===2;}
+  if(walk){target=walkTargets[stage];nextKey=`walk-${stage}`;if(distance(a,target)<1.5){shotAt++;if(shotAt>20)shot=target.id;const [x,y,z]=target.look,dx=x-a.x,dz=z-a.z;input={yaw:Math.atan2(-dx,-dz),pitch:Math.atan2(y-a.y-1.45,Math.hypot(dx,dz))};target=null;if(shotAt>45){stages.push({stage:nextKey,label:walkTargets[stage].id,x:a.x,y:a.y,z:a.z});stage++;shotAt=0;key='';if(stage>=walkTargets.length)walkDone=true;}}clip=stage>=1&&stage<=5&&!compact;}
   else if(mode==='combined-arms'&&!exited){
    if(!mounted){target=vehicle.position;nextKey='mount-approach';if(distance(a,target)<2.15){input={interact:true};target=null;}}
-   else if(a.vehicleId!==null){const v=match.vehicleById(a.vehicleId),p=driveLine[driveSector+1],dx=p.x-v.position.x,dz=p.z-v.position.z;if(Math.hypot(dx,dz)<5){driveSector++;if(driveSector>=driveLine.length-1)input={interact:true};}if(!input.interact){const error=Math.atan2(Math.sin(Math.atan2(dx,dz)-v.heading),Math.cos(Math.atan2(dx,dz)-v.heading)),steer=Math.max(-1,Math.min(1,error*1.5)),throttle=v.speed<7?1:0,yaw=v.heading-Math.PI,x=-Math.sin(yaw)*throttle-Math.cos(yaw)*steer,z=-Math.cos(yaw)*throttle+Math.sin(yaw)*steer,k=Math.max(1,Math.abs(x),Math.abs(z));input={x:x/k,z:z/k,yaw,jump:v.speed>9};}}
+   else if(a.vehicleId!==null){
+    if(driveSector>=driveLine.length-1)input={interact:true};
+    else{const v=match.vehicleById(a.vehicleId),p=driveLine[driveSector+1],dx=p.x-v.position.x,dz=p.z-v.position.z;
+     if(Math.hypot(dx,dz)<5){driveSector++;if(driveSector>=driveLine.length-1)input={interact:true};}
+     if(!input.interact){const error=Math.atan2(Math.sin(Math.atan2(dx,dz)-v.heading),Math.cos(Math.atan2(dx,dz)-v.heading)),steer=Math.max(-1,Math.min(1,error*1.5)),throttle=v.speed<7?1:0,yaw=v.heading-Math.PI,x=-Math.sin(yaw)*throttle-Math.cos(yaw)*steer,z=-Math.cos(yaw)*throttle+Math.sin(yaw)*steer,k=Math.max(1,Math.abs(x),Math.abs(z));input={x:x/k,z:z/k,yaw,jump:v.speed>9};}
+    }
+   }
    else{exited=true;key='';stages.push({stage:'dismounted',driveDistance});}
-  }else if(mode==='payload'){target=match.objectiveState.position;nextKey=distance(a,target)>5?'cart-approach':'cart-follow';if(visual){clip=match.objectiveState.distance>30&&match.objectiveState.distance<40;if(match.objectiveState.distance>35)shot='payload-push';}}
+  }else if(mode==='payload'){target=match.objectiveState.position;nextKey=distance(a,target)>5?'cart-approach':'cart-follow';if(visual){clip=!compact&&match.objectiveState.distance>30&&match.objectiveState.distance<40;if(match.objectiveState.distance>35)shot=`payload-checkpoint-${match.objectiveState.checkpointsReached}`;}}
   else if(mode==='assault'){target=match.objectiveState.zones[match.objectiveState.active]??match.objectiveState.zones.at(-1);nextKey=`sector-${match.objectiveState.active}`;}
   else if(mode==='domination'||mode==='combined-arms'){target=match.objectiveState.zones[0];nextKey='capture-zone';}
   else{target=enemy;nextKey=`combat-${enemy.health>0}`;}
   if(target){if(mode==='payload'&&nextKey==='cart-follow'){const dx=target.x-a.x,dz=target.z-a.z,d=Math.hypot(dx,dz);input=d>(visual?2.3:.65)?{x:dx/d,z:dz/d,yaw:Math.atan2(-dx,-dz)}:{};}else{if(key!==nextKey){key=nextKey;controller=follow(match,a,target);stages.push({stage:key,x:a.x,y:a.y,z:a.z});}input=controller();}
    if(!walk&&['deathmatch','teamdeathmatch'].includes(mode)&&distance(a,enemy)<25&&visible({x:a.x,y:a.y+1.45,z:a.z},{x:enemy.x,y:enemy.y+1,z:enemy.z},match.arena)){const dx=enemy.x-a.x,dz=enemy.z-a.z;input={yaw:Math.atan2(-dx,-dz),pitch:Math.atan2(enemy.y-a.y-.45,Math.hypot(dx,dz)),fire:true,reload:a.ammo[a.weapon]===0};}}
   if(a.vehicleId!==null)mounted=true;
+  if(mode==='combined-arms'&&a.vehicleId!==null&&!input.interact&&driveDistance>15&&driveDistance<45)input.fire=true;
   stimulus('host',{input,shot,clip});stimulus('guest',{input:walk||!['deathmatch','teamdeathmatch'].includes(mode)?retreat():{}});controls++;
   if(controls%20===0)positions.push({t:match.time,x:a.x,y:a.y,z:a.z,health:a.health,vehicle:a.vehicleId,stage:key,cart:match.objectiveState?.distance});
   debug={mode,walk,controls,key,stage,actor:{x:a.x,y:a.y,z:a.z,health:a.health,team:a.team},driveSector,driveDistance,mounted,exited,position:match.objectiveState?.position,over:match.over};
  };
- timers.push(setInterval(tick,50));await until('native controlled journey',()=>walk?walkDone:match.over,walk?300000:mode==='payload'?260000:300000);
- if(!walk){await until('both native result receipts',()=>native.every(n=>n.output.includes('FOUNDRY_NATIVE_RESULTS ')),15000);if(mode==='payload')assert.ok(match.objectiveState.delivered&&match.objectiveState.checkpointsReached===3);if(mode==='assault')assert.equal(match.objectiveState.winner,a.team);if(mode==='combined-arms')assert.ok(mounted&&exited&&driveDistance>60&&match.objectiveState.zones.some(z=>z.owner===a.team));if(mode==='domination')assert.ok(match.objectiveState.zones.some(z=>z.owner===a.team));if(['deathmatch','teamdeathmatch'].includes(mode))assert.ok(match.stats.kills>=5);}
+ let tickError=null;
+ timers.push(setInterval(()=>{try{if(!tickError)tick();}catch(error){tickError=error;}},50));
+ await until('native controlled journey',()=>{if(tickError)throw tickError;return walk?walkDone:match.over;},walk?300000:mode==='payload'?260000:300000);
+  if(!walk){await until('both native result receipts',()=>native.every(n=>n.output.includes('FOUNDRY_NATIVE_RESULTS ')),15000);if(mode==='payload')assert.ok(match.objectiveState.delivered&&match.objectiveState.checkpointsReached===3);if(mode==='assault')assert.equal(match.objectiveState.winner,a.team);if(mode==='combined-arms'){assert.ok(mounted&&exited&&driveDistance>60&&match.objectiveState.zones.some(z=>z.owner===a.team));assert.ok(match.stats.shots>0);for(const n of native){const receipt=JSON.parse(n.output.split('\n').find(s=>s.startsWith('FOUNDRY_NATIVE_RESULTS ')).slice('FOUNDRY_NATIVE_RESULTS '.length));assert.ok(receipt.vehicleShotEvents>0,'native peer must receive authority vehicle-shot events');}}if(mode==='domination')assert.ok(match.objectiveState.zones.some(z=>z.owner===a.team));if(['deathmatch','teamdeathmatch'].includes(mode))assert.ok(match.stats.kills>=5);}
  for(const n of native){assert.ok(!n.output.includes('SCRIPT ERROR:')&&!n.output.includes('FOUNDRY_NATIVE_ERROR'));assert.ok(n.output.includes(geometryHash));}
- result={id:'gravemill-foundry',mode:requested,geometryHash,label:'controlled two-production-native-peer fixture; ordinary client input only; passive opponent',seconds:match.time,wallSeconds:(performance.now()-started)/1000,controls,distanceMoved,mounted,exited,driveDistance,stages,positions,teamScores:match.teamScores,kills:match.stats.kills,objective:match.snapshot().objectives,nativeReceipts:native.map(n=>({role:n.role,inputs:n.output.split('FOUNDRY_NATIVE_INPUT ').length-1,results:n.output.includes('FOUNDRY_NATIVE_RESULTS ')}))};
+  result={id:'gravemill-foundry',mode:requested,geometryHash,label:'controlled two-production-native-peer fixture; ordinary client input only; passive opponent',seconds:match.time,wallSeconds:(performance.now()-started)/1000,controls,distanceMoved,mounted,exited,driveDistance,stages,positions,teamScores:match.teamScores,kills:match.stats.kills,shots:match.stats.shots,objective:match.snapshot().objectives,nativeReceipts:native.map(n=>({role:n.role,inputs:n.output.split('FOUNDRY_NATIVE_INPUT ').length-1,results:n.output.includes('FOUNDRY_NATIVE_RESULTS ')}))};
  fs.writeFileSync(`${root}/${requested}-result.json`,JSON.stringify(result,null,2)+'\n');console.log('FOUNDRY_NATIVE_PASSED',JSON.stringify({...result,positions:positions.length,objective:result.objective?.kind}));
 }finally{
  for(const timer of timers)clearInterval(timer);fs.writeFileSync(`${root}/${requested}-debug.json`,JSON.stringify(debug,null,2)+'\n');

@@ -1,6 +1,6 @@
-# Architectural revision 3 — READY FOR NEXT BLENDER PASS
+# Architectural revision 3 — staging design record
 
-**Staged source candidate, not accepted final art.** Functional checkpoint commits `afbe57dc` / `ec041aee` and their runtime wrappers, editable master, GLB, capabilities and evidence remain intact. Parent accepted their functional proof but requested greater architectural depth. No Blender, Godot, importer, renderer or other heavy process ran for this revision. No slot is held; Parallax owns the current slot and Helix revision 2 is ahead in the queue.
+This records source-only staging at `8d248904`. A subsequent explicit heavy-slot grant authorized production; see [REVISION3-PRODUCTION.md](REVISION3-PRODUCTION.md) and current acceptance receipts. The prototype from `afbe57dc` / `ec041aee` is retained in Git and an immutable external asset archive. Runtime paths now hold the promoted revision-three candidate.
 
 ## Candidate design
 
@@ -40,4 +40,4 @@ Native test drivers now live in `godot/tests/new_maps/gravemill_foundry/`; the N
 4. Activate candidate only through a separately reviewed promotion; revalidate production native candidate probe positions, new contacts/apertures, hosted DM/payload/Puma-zone and affected six-mode proofs. Source-only receipts are not native acceptance.
 5. Check wide native HUD and **760×520 at UI 150%**. Capture a continuous representative three-district segment ≥20 seconds if feasible and report actual capture cadence. The old walkthrough was **4.46 seconds**, not 43 seconds; 43 was its captured-frame count. A requested trailer is parent-owned.
 
-**Status: READY FOR NEXT BLENDER PASS. All owned heavy jobs remain stopped.**
+The historical next-pass gates above are fulfilled or explicitly qualified by the production record; they are not a claim that staged source proof alone establishes native acceptance.
