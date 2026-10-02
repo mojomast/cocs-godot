@@ -200,6 +200,10 @@ def main():
     production_content = json.loads(run(["node", ROOT / "tools/godot-package/production_resources.mjs", ROOT]))
     input_paths.update(production_content["resources"])
     input_paths.update(production_content["provenance"])
+    import_sensitive = {**fighter_imports, **{
+        p: h for p, h in {**production_content["resources"], **production_content["provenance"]}.items()
+        if p.startswith("godot/") and p.endswith((".import", ".png"))
+    }}
     if edge_data:
         run(["node", "port/edge-effects/bake-structures.mjs", "--check"])
         input_paths.add("port/edge-effects/bake-structures.mjs")
@@ -403,16 +407,16 @@ ssh_remote_deploy/enabled=false
         preset += '\ncodesign/enable=false\napplication/modify_resources=false\ndebug/export_console_wrapper=0\n'
     (project / "export_presets.cfg").write_text(preset)
     run([editor, "--headless", "--path", project, "--editor", "--import"], env=env, log=logs / "import.log")
-    for path, expected_hash in fighter_imports.items():
+    for path, expected_hash in import_sensitive.items():
         if digest(project / Path(path).relative_to("godot")) != expected_hash:
-            raise RuntimeError(f"Editor changed committed fighter import settings: {path}")
+            raise RuntimeError(f"Editor changed committed import input: {path}")
     package = work / ("cocs-native-" + args.target)
     package.mkdir()
     replay_hashes = json.loads(run(["node", ROOT / "tools/godot-package/replay_runtime.mjs", ROOT, package / "replay-runtime", port_commit])) if replay_files else {}
     run([editor, "--headless", "--path", project, "--export-release", preset_name, package / executable], env=env, log=logs / "export.log")
-    for path, expected_hash in fighter_imports.items():
+    for path, expected_hash in import_sensitive.items():
         if digest(project / Path(path).relative_to("godot")) != expected_hash:
-            raise RuntimeError(f"Export changed committed fighter import settings: {path}")
+            raise RuntimeError(f"Export changed committed import input: {path}")
     if not (package / "cocs.pck").is_file():
         raise RuntimeError("Expected separate PCK")
     if not windows and run([package / executable, "--version"], env=env) != EXACT:
