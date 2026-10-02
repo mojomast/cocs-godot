@@ -4,6 +4,12 @@ The owner requested Astra subagents to **finish up**. This workstream consolidat
 the prepared features, completes queued production, and carries accepted content
 through native and package verification to a new release.
 
+The owner's latest directive is to **continue using subagents until the requested
+work is finished, then build a Windows release**. Current completion ownership,
+heavy-grant scope and the complete remaining production sequence are maintained in
+[RELEASE_COMPLETION.md](RELEASE_COMPLETION.md). That document supersedes historical
+queue-owner statements below; it does not supersede source locks or evidence gates.
+
 ## Active ownership
 
 | Agent | Session | Branch/worktree | Deliverable |
