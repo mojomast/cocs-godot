@@ -59,6 +59,8 @@ func spawn_helper(node: String, arguments: PackedStringArray) -> int:
 
 func _ready() -> void:
 	add_child(http)
+	# Loopback transport must keep progressing while the renderer is busy.
+	http.use_threads = true
 	http.timeout = 8.0
 	http.body_size_limit = 2 * 1024 * 1024
 	http.request_completed.connect(_completed)
