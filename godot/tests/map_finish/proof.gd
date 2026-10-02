@@ -70,8 +70,8 @@ func _run() -> void:
 	camera.position = _coordinates(args.get("camera", "55,35,55"))
 	camera.look_at(_coordinates(args.get("target", "0,3,0")))
 	var sun := DirectionalLight3D.new()
-	sun.rotation_degrees = Vector3(-48, -30, 0)
-	sun.light_energy = 1.0
+	sun.rotation_degrees = Vector3(-44, -30, 0)
+	sun.light_energy = 1.25
 	stage.add_child(sun)
 	var environment := WorldEnvironment.new()
 	var env := Environment.new()
