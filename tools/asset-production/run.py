@@ -52,14 +52,13 @@ def preflight(plan):
     diff = subprocess.check_output(['git','diff',plan['canonicalBase'],'--','game/','port/contracts/source-lock.json'],cwd=ROOT,text=True)
     assert not diff, 'Frozen authority/source pin differs from canonical base'
     report['frozenDiffEmpty'] = True
-    manifest = json.loads((ROOT/'godot/moth/generated/manifest.json').read_text())
-    for bucket, names in {'textures':['brushed_metal','hex_paneling','weathered_concrete','rough_stucco'], 'normals':['metal','hex_paneling','weathered_concrete','rough_stucco']}.items():
-        for name in names:
-            relative = 'godot/'+manifest[bucket][name]['path'].removeprefix('res://')
-            path = ROOT/relative
-            if not path.is_file(): report['missing'].append(relative)
-            else: report['moth'][relative] = {'sha256':sha(path),'bytes':path.stat().st_size}
-    pending = {plan['common']['finishScript'], 'tools/asset-production/reopen.py', 'tools/asset-production/run.py'}
+    from material_contract import contract
+    materials = contract()
+    report['materialContract'] = materials
+    for relative, digest in {**materials['resources'], **materials['master']}.items():
+        path = ROOT/relative
+        report['moth'][relative] = {'sha256':digest,'bytes':path.stat().st_size}
+    pending = {plan['common']['finishScript'], 'tools/asset-production/reopen.py', 'tools/asset-production/run.py', 'tools/asset-production/material_contract.py', 'tools/asset-production/receipt.mjs'}
     for unit in plan['units']:
         if unit.get('external'):
             report['units'].append({'id':unit['id'],'status':'parent/original-worktree-owned; no external polling'})
@@ -133,6 +132,9 @@ def main():
     parser.add_argument('--unit')
     parser.add_argument('--stage',default='preflight')
     parser.add_argument('--granted',action='store_true')
+    parser.add_argument('--compact',action='store_true',help='760x520 UI150 hosted profile')
+    parser.add_argument('--receipt-file',help='Actual generic receipt for post-native package-receipt stage')
+    parser.add_argument('--runtime-hook',action='append',default=[],help='Actual production hook path; repeat as needed')
     args = parser.parse_args()
     plan = load_plan()
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ')
@@ -149,7 +151,16 @@ def main():
     # Same advisory lock as FINISHCOMBINED-A. Never wait/poll another owner.
     with open('/tmp/opencode/cocs-finish-acceptance.lock','a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-        for command in commands(plan,unit,args.stage): execute(command,plan,output)
+        if args.stage == 'package-receipt':
+            if not args.receipt_file or not args.runtime_hook: raise ValueError('package-receipt requires --receipt-file and explicit --runtime-hook paths')
+            selected = [{'id':'package-receipt','argv':['node','tools/asset-production/package-receipt.mjs',unit['id'],args.receipt_file] + ['--runtime-hook='+p for p in args.runtime_hook], 'timeoutSeconds':60}]
+        else:
+            selected = commands(plan,unit,args.stage)
+        for command in selected:
+            if args.compact:
+                if not args.stage.startswith('hosted-'): raise ValueError('--compact requires hosted stage')
+                command = {**command, 'argv': command['argv'] + ['--compact']}
+            execute(command,plan,output)
     (output/'stage.json').write_text(json.dumps({'unit':unit['id'],'stage':args.stage,'commandCompleted':True,'productionAccepted':False},indent=2)+'\n')
     return 0
 

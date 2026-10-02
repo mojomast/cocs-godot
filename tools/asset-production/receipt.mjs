@@ -3,6 +3,9 @@ import {readFileSync,readdirSync,mkdirSync,writeFileSync,existsSync} from 'node:
 import {createHash} from 'node:crypto';
 import {dirname,basename,resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
+import {materialRule as ruleFor,validateSurface} from './material-validation.mjs';
+import {inventory,inputSnapshot} from './package-receipt.mjs';
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const plan=JSON.parse(readFileSync(resolve(root,'port/finish/ASSET_PRODUCTION.json')));
 const unit=plan.units.find(u=>u.id===process.argv[2]);
@@ -10,6 +13,10 @@ if(!unit||unit.external)throw Error('Specify a local production unit');
 const sha=b=>createHash('sha256').update(b).digest('hex');
 const sourceHashes=Object.fromEntries([...unit.recipePaths,plan.common.finishScript].sort().map(p=>[p,sha(readFileSync(resolve(root,p)))]));
 const sourceFingerprint=sha(JSON.stringify(sourceHashes));
+const materialContract=JSON.parse(execFileSync('python3',['tools/asset-production/material_contract.py'],{cwd:root,encoding:'utf8',timeout:15000}));
+function materialRule(mat){
+  return ruleFor(materialContract,unit.id,mat);
+}
 function files(spec){const dir=resolve(root,dirname(spec.glob)),pattern=new RegExp('^'+basename(spec.glob).replaceAll('.','\\.').replaceAll('*','.*')+'$');
   const out=existsSync(dir)?readdirSync(dir).filter(f=>pattern.test(f)).map(f=>resolve(dir,f)):[];
   if(out.length!==spec.count)throw Error(`${spec.glob}: ${out.length}/${spec.count} actual files`);return out.sort();}
@@ -26,18 +33,13 @@ for(const path of exports){
   }
   let triangles=0,surfaces=0,texturedSurfaces=0;
   for(const node of doc.nodes??[])if(node.mesh!==undefined){
-    const needsFinish=doc.meshes[node.mesh].primitives.some(p=>!plan.common.texturePreserveNames.includes((materials[p.material]?.name??'').split('.')[0]));
+    const needsFinish=doc.meshes[node.mesh].primitives.some(p=>materialRule(materials[p.material]).role!=='preserve');
     if(needsFinish&&node.extras?.asset_source_fingerprint!==sourceFingerprint)throw Error('Stale or unproven asset source fingerprint: '+path+'/'+node.name);
   }
   for(const mesh of doc.meshes??[])for(const p of mesh.primitives){
     if((p.mode??4)!==4)throw Error('Unsupported primitive topology');
     triangles+=(p.indices===undefined?doc.accessors[p.attributes.POSITION].count:doc.accessors[p.indices].count)/3;surfaces++;
-    const mat=materials[p.material],name=(mat?.name??'').split('.')[0];
-    const preserved=plan.common.texturePreserveNames.includes(name);
-    if(!preserved){
-      if(p.attributes.TEXCOORD_0===undefined||!mat?.pbrMetallicRoughness?.baseColorTexture||!mat.normalTexture)throw Error(`Flat/untextured material or missing UV: ${path}/${name}`);
-      texturedSurfaces++;
-    }
+    if(validateSurface(materialContract,unit.id,materials[p.material],p))texturedSurfaces++;
   }
   if(!textures.length||!texturedSurfaces)throw Error('Flat-only asset rejected: '+path);
   rows.push({path:path.slice(root.length),bytes:bytes.length,sha256:sha(bytes),triangles,surfaces,texturedSurfaces,textures});
@@ -45,6 +47,9 @@ for(const path of exports){
 const measuredTriangles=rows.reduce((n,r)=>n+r.triangles,0);
 if(measuredTriangles>unit.configuredTriangleCap)throw Error(`${unit.id}: ${measuredTriangles} exceeds configured cap ${unit.configuredTriangleCap}`);
 const report={unit:unit.id,sourceCommits:unit.sourceCommits,sourceHashes,sourceFingerprint,masters:masters.map(p=>({path:p.slice(root.length),sha256:sha(readFileSync(p))})),exports:rows,measuredGLBTriangles:measuredTriangles,configuredTriangleCap:unit.configuredTriangleCap,accepted:false,pending:unit.gates};
+const packageSpec=inventory(root)[unit.id];
+if(packageSpec.missing.length)throw Error('Missing exact package production inputs: '+packageSpec.missing.join(', '));
+report.packageInputHashes=inputSnapshot(packageSpec.expected,p=>readFileSync(resolve(root,p)));
 const out=resolve(plan.evidenceRoot,'receipts',new Date().toISOString().replaceAll(':','-'));
 mkdirSync(out,{recursive:true});writeFileSync(resolve(out,unit.id+'.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({unit:unit.id,measuredTriangles,report:resolve(out,unit.id+'.json'),accepted:false}));

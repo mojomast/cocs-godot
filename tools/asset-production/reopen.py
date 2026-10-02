@@ -4,6 +4,8 @@ import hashlib
 from pathlib import Path
 import sys
 import bpy
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from moth_finish import family, FAMILIES
 
 ROOT = Path(__file__).resolve().parents[2]
 plan = json.loads((ROOT/'port/finish/ASSET_PRODUCTION.json').read_text())
@@ -27,8 +29,16 @@ for kind in ('masters','exports'):
         assert meshes
         for obj in meshes:
             assert obj.data.vertices and obj.data.polygons
-            needs_uv = any(mat and mat.name.split('.')[0] not in plan['common']['texturePreserveNames'] for mat in obj.data.materials)
+            needs_uv = any(mat and family(mat.name, id_) != 'preserve' for mat in obj.data.materials)
             assert not needs_uv or obj.data.uv_layers, 'Missing attachment-local UV on '+obj.name
+            for mat in obj.data.materials:
+                role = family(mat.name, id_)
+                if role == 'preserve': continue
+                assert mat.get('moth_finish_revision') == 2, 'Stale refined finish'
+                assert mat.get('moth_family') == role
+                if kind == 'masters':
+                    assert obj.data.uv_layers.get('MothLocal'), 'Component phase UV lost'
+                if id_ == 'robots': assert obj.data.color_attributes, 'Robot palette lost'
         textured = [mat for obj in meshes for mat in obj.data.materials if mat and mat.use_nodes and any(n.type=='TEX_IMAGE' and n.image for n in mat.node_tree.nodes)]
         assert textured, 'Flat-only export/master is not production ready'
         print('ASSET_REOPEN',kind,str(path.relative_to(ROOT)),len(meshes),len(textured))

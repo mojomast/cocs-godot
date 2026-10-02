@@ -1,0 +1,164 @@
+{
+  "id": "parallax-observatory",
+  "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+  "recipeHash": "e949e43d5546ec8b0c9024810f1da6229152e370ad640ecf27ecb54c05f2e23d",
+  "verifiedRuntimeMerge": "e731fd536d31d16a7014402afe6670fca644f9c1",
+  "frozenCoreSha256": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+  "originalWorlds": [
+    {
+      "path": "godot/multiplayer_worlds/generated/switchyard-ward.json",
+      "sha256": "04deb12d34a6be9ab820dcdbc69516b14f8cb00ff096d29b621cea9a28ef2e2c",
+      "unchanged": true
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/switchyard-ward.glb",
+      "sha256": "a7d122be269e056b749ab74c0819cf97a1f518c39e5d91d7a56320803daa9f5e",
+      "unchanged": true
+    },
+    {
+      "path": "godot/multiplayer_worlds/generated/rainmarket-exchange.json",
+      "sha256": "c19a9018b14644f2d531169bee89e045b46762bdedd354c1b52018a2782de5a5",
+      "unchanged": true
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/rainmarket-exchange.glb",
+      "sha256": "00ef587848303ba5ad15ba98f39eec4b802ad1770796a26140dd971222ad6b94",
+      "unchanged": true
+    },
+    {
+      "path": "godot/multiplayer_worlds/generated/breakwater-exchange.json",
+      "sha256": "228b4f6773498db677d1cd237d26f0740b67b685d91f37b14b310d387dd0fc4f",
+      "unchanged": true
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/breakwater-exchange.glb",
+      "sha256": "fcce21923b5bc12fe7fe9316fa953ae250e47550bbc9f72e60f84a478270143c",
+      "unchanged": true
+    },
+    {
+      "path": "godot/multiplayer_worlds/generated/thermal-divide.json",
+      "sha256": "f51f2b2666f09db4094251a929567cf58fc085ed0b668bf73726cc7b12cf0745",
+      "unchanged": true
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/thermal-divide.glb",
+      "sha256": "354c403124042fed83f1594d422fae480b24e80b5a9804bef0487cf0bfa13e8b",
+      "unchanged": true
+    },
+    {
+      "path": "godot/multiplayer_worlds/generated/sirocco-circuit.json",
+      "sha256": "95714479bda9276978ed9b5d6ab886c2909d693260a1e86380c5fa8e2589ac1d",
+      "unchanged": true
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/sirocco-circuit.glb",
+      "sha256": "4c754342c51f7db2613d76216513f66a48115cdf380b6da7e71e5a73ae6dac25",
+      "unchanged": true
+    },
+    {
+      "path": "godot/multiplayer_worlds/generated/copper-bowl.json",
+      "sha256": "c6b36c8509815fc3c0fa7da827f9e28dedf9874009cee77a3d976a3211e5b35f",
+      "unchanged": true
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/copper-bowl.glb",
+      "sha256": "af1163817407c69210bea8abf1a5f58144bf7dfe3b14bb7890f963c3d73ac89a",
+      "unchanged": true
+    },
+    {
+      "path": "godot/multiplayer_worlds/generated/tern-archipelago.json",
+      "sha256": "5698f426099181300876c6b87ba4a7bc632f8382a225f02ef88bb99d2b47f9ab",
+      "unchanged": true
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/tern-archipelago.glb",
+      "sha256": "f215c7f6b72252018176b07efe7fa597c8986a5e9582a8c965cd39fb061dae85",
+      "unchanged": true
+    },
+    {
+      "path": "game/core.mjs",
+      "sha256": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+      "unchanged": true
+    },
+    {
+      "path": "port/multiplayer-worlds/derived/core.mjs",
+      "sha256": "090d353ed616b1edbbd3053734bc092ed24444bdd1abfdca02293cab4aacf841",
+      "unchanged": true
+    }
+  ],
+  "master": {
+    "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+    "recipeHash": "e949e43d5546ec8b0c9024810f1da6229152e370ad640ecf27ecb54c05f2e23d",
+    "editableObjects": 24619,
+    "exportBatches": 7,
+    "cameras": 8,
+    "reopened": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-20261002/tools/godot-multiplayer/new-maps/parallax-observatory/parallax-observatory.blend"
+  },
+  "art": {
+    "id": "parallax-observatory",
+    "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+    "recipeHash": "e949e43d5546ec8b0c9024810f1da6229152e370ad640ecf27ecb54c05f2e23d",
+    "seed": 20261002,
+    "triangles": 148239,
+    "materialBatches": 7,
+    "editableObjects": 24619,
+    "glbBytes": 8646208,
+    "glbSha256": "b3ea4ec57f57f6db83e1acab40dc95135562347ef884cc8f33ba067af8521bb1",
+    "blendSha256": "fcd7f284443c45d08177837a23af530b1667deb106bddb8822d507f5655ca090",
+    "nativeAcceptance": "pending"
+  },
+  "artAudit": {
+    "id": "parallax-observatory",
+    "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+    "triangles": 148239,
+    "glbBytes": 8646208,
+    "materialBatches": 7,
+    "glbSupportSamples": 859,
+    "maxSupportError": 7.892456146407767e-7,
+    "glbSha256": "b3ea4ec57f57f6db83e1acab40dc95135562347ef884cc8f33ba067af8521bb1",
+    "blendSha256": "fcd7f284443c45d08177837a23af530b1667deb106bddb8822d507f5655ca090"
+  },
+  "files": [
+    {
+      "path": "tools/godot-multiplayer/new-maps/parallax-observatory/parallax-observatory.blend",
+      "bytes": 7441985,
+      "sha256": "fcd7f284443c45d08177837a23af530b1667deb106bddb8822d507f5655ca090"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb",
+      "bytes": 8646208,
+      "sha256": "b3ea4ec57f57f6db83e1acab40dc95135562347ef884cc8f33ba067af8521bb1"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/parallax-observatory/presentation.gd",
+      "bytes": 4489,
+      "sha256": "25acc40297d8f3ec7bc59b7bce313f5e4abe7a649973e38b1e0f98c026db484a"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/parallax-observatory/generate.mjs",
+      "bytes": 10735,
+      "sha256": "56e7d228051b7112fe0c510f8a72ec91e617fd47a4a0ca97cea58cf453b13119"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/parallax-observatory/blender_author.py",
+      "bytes": 27112,
+      "sha256": "9cec1edaab54477d9999eb7888c921d527f0ee3f1248f2adf9c2a6a7cf5897cc"
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_observatory/physics.gd",
+      "bytes": 10577,
+      "sha256": "8f261cd5fa5f3a0b66901d4802364f99b98c60a75de0ebb4b40bc542c43b6e44"
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_observatory/journey.gd",
+      "bytes": 7500,
+      "sha256": "fa239ee5cc615f73771ac7e852884a28c5f186b0da4f6b40fed94c2069ff51a3"
+    },
+    {
+      "path": "port/new-maps/parallax-observatory/native-journey.mjs",
+      "bytes": 8621,
+      "sha256": "ab63e962b07175ec6701432d92fe9180776b01696f8e9cd9378e5dd23a91909c"
+    }
+  ],
+  "evidence": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002"
+}

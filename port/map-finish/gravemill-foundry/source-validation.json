@@ -1,9 +1,314 @@
 {
   "geometry_hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
   "glb_sha256": "46bf1648b32d23e337cd11b2c639a47f17d36c41361aab9434e1e621361e5935",
-  "profile_sha256": "8f5131886a3c1c8e4cc4a3aecd271980fd64bc93239b1ac3719c1936ac13c46d",
+  "profile_sha256": "8d7f94f29f15e336fb1c9141b707a43718ce4c5a463eb03a13412e593eaa51e5",
   "variation_contract": "BRIEF.md; local bounds checked; shared validator must pass after rendering-owner integration",
-  "material_coverage": "8/8",
+  "material_coverage": "7 dressed + 1 authored emissive preserved / 8",
+  "emission_preservation": {
+    "selector": "GM / orange",
+    "emissive_factor": [
+      1,
+      0.23749999348074208,
+      0.03125
+    ],
+    "emissive_strength": 1.600000023841858,
+    "triangles": 328,
+    "primitives": 1,
+    "authored_roles": {
+      "cooling_roof_lights": 8,
+      "furnace_sight_glasses": 8,
+      "assay_status_lamps": 6
+    },
+    "binding": "existing preserve_materials branch leaves imported material and all emission properties untouched",
+    "decoded_components": [
+      {
+        "role": "assay_status_lamp",
+        "minimum": [
+          47.09,
+          16.66,
+          38.6516
+        ],
+        "maximum": [
+          47.21,
+          16.94,
+          38.6884
+        ]
+      },
+      {
+        "role": "assay_status_lamp",
+        "minimum": [
+          47.09,
+          16.66,
+          46.6516
+        ],
+        "maximum": [
+          47.21,
+          16.94,
+          46.6884
+        ]
+      },
+      {
+        "role": "assay_status_lamp",
+        "minimum": [
+          65.09,
+          16.66,
+          41.1716
+        ],
+        "maximum": [
+          65.21,
+          16.94,
+          41.2084
+        ]
+      },
+      {
+        "role": "assay_status_lamp",
+        "minimum": [
+          65.09,
+          16.66,
+          49.1716
+        ],
+        "maximum": [
+          65.21,
+          16.94,
+          49.2084
+        ]
+      },
+      {
+        "role": "assay_status_lamp",
+        "minimum": [
+          83.09,
+          16.66,
+          43.6916
+        ],
+        "maximum": [
+          83.21,
+          16.94,
+          43.7284
+        ]
+      },
+      {
+        "role": "assay_status_lamp",
+        "minimum": [
+          83.09,
+          16.66,
+          51.6916
+        ],
+        "maximum": [
+          83.21,
+          16.94,
+          51.7284
+        ]
+      },
+      {
+        "role": "cooling_roof_light",
+        "minimum": [
+          -89.4,
+          23.45,
+          22.884
+        ],
+        "maximum": [
+          -88.6,
+          23.55,
+          24.196
+        ]
+      },
+      {
+        "role": "cooling_roof_light",
+        "minimum": [
+          -82.9,
+          23.45,
+          23.794
+        ],
+        "maximum": [
+          -82.1,
+          23.55,
+          25.106
+        ]
+      },
+      {
+        "role": "cooling_roof_light",
+        "minimum": [
+          -76.4,
+          23.45,
+          24.704
+        ],
+        "maximum": [
+          -75.6,
+          23.55,
+          26.016
+        ]
+      },
+      {
+        "role": "cooling_roof_light",
+        "minimum": [
+          -69.9,
+          23.45,
+          25.614
+        ],
+        "maximum": [
+          -69.1,
+          23.55,
+          26.926
+        ]
+      },
+      {
+        "role": "cooling_roof_light",
+        "minimum": [
+          -63.4,
+          23.45,
+          26.524
+        ],
+        "maximum": [
+          -62.6,
+          23.55,
+          27.836
+        ]
+      },
+      {
+        "role": "cooling_roof_light",
+        "minimum": [
+          -56.9,
+          23.45,
+          27.434
+        ],
+        "maximum": [
+          -56.1,
+          23.55,
+          28.746
+        ]
+      },
+      {
+        "role": "cooling_roof_light",
+        "minimum": [
+          -50.4,
+          23.45,
+          28.344
+        ],
+        "maximum": [
+          -49.6,
+          23.55,
+          29.656
+        ]
+      },
+      {
+        "role": "cooling_roof_light",
+        "minimum": [
+          -43.9,
+          23.45,
+          29.254
+        ],
+        "maximum": [
+          -43.1,
+          23.55,
+          30.566
+        ]
+      },
+      {
+        "role": "furnace_sight_glass",
+        "minimum": [
+          53.69818,
+          5.44,
+          -4.82741
+        ],
+        "maximum": [
+          53.95799,
+          7.44,
+          -4.52741
+        ]
+      },
+      {
+        "role": "furnace_sight_glass",
+        "minimum": [
+          59.65675,
+          5.44,
+          10.39205
+        ],
+        "maximum": [
+          59.91656,
+          7.44,
+          10.69205
+        ]
+      },
+      {
+        "role": "furnace_sight_glass",
+        "minimum": [
+          68.08344,
+          5.44,
+          -8.77205
+        ],
+        "maximum": [
+          68.34325,
+          7.44,
+          -8.47205
+        ]
+      },
+      {
+        "role": "furnace_sight_glass",
+        "minimum": [
+          74.04201,
+          5.44,
+          6.44741
+        ],
+        "maximum": [
+          74.30182,
+          7.44,
+          6.74741
+        ]
+      },
+      {
+        "role": "furnace_sight_glass",
+        "minimum": [
+          86.46982,
+          10.0,
+          16.90867
+        ],
+        "maximum": [
+          86.72963,
+          12.0,
+          17.20867
+        ]
+      },
+      {
+        "role": "furnace_sight_glass",
+        "minimum": [
+          90.8048,
+          10.0,
+          27.98113
+        ],
+        "maximum": [
+          91.06461,
+          12.0,
+          28.28113
+        ]
+      },
+      {
+        "role": "furnace_sight_glass",
+        "minimum": [
+          96.93539,
+          10.0,
+          14.03887
+        ],
+        "maximum": [
+          97.1952,
+          12.0,
+          14.33887
+        ]
+      },
+      {
+        "role": "furnace_sight_glass",
+        "minimum": [
+          101.27037,
+          10.0,
+          25.11133
+        ],
+        "maximum": [
+          101.53018,
+          12.0,
+          25.41133
+        ]
+      }
+    ]
+  },
   "embedded_source_textures": 0,
   "panels": 37,
   "signs": 20,

@@ -124,6 +124,9 @@
     },
     "gravemill-foundry": {
       "name": "Gravemill Foundry"
+    },
+    "parallax-observatory": {
+      "name": "Parallax Observatory"
     }
   },
   "routes": [
@@ -428,7 +431,8 @@
             "copper-bowl",
             "tern-archipelago",
             "helix-conservatory",
-            "gravemill-foundry"
+            "gravemill-foundry",
+            "parallax-observatory"
           ],
           "default": "switchyard-ward"
         },
@@ -508,6 +512,14 @@
               "assault",
               "payload",
               "combined-arms"
+            ],
+            "parallax-observatory": [
+              "deathmatch",
+              "teamdeathmatch",
+              "ctf",
+              "koth",
+              "uplink",
+              "holdout"
             ]
           },
           "default": "deathmatch"
@@ -542,6 +554,7 @@
             "copper-bowl",
             "gravemill-foundry",
             "helix-conservatory",
+            "parallax-observatory",
             "rainmarket-exchange",
             "sirocco-circuit",
             "switchyard-ward",
@@ -574,6 +587,14 @@
               "domination",
               "koth",
               "teamdeathmatch"
+            ],
+            "parallax-observatory": [
+              "ctf",
+              "deathmatch",
+              "holdout",
+              "koth",
+              "teamdeathmatch",
+              "uplink"
             ],
             "rainmarket-exchange": [
               "armsrace",
