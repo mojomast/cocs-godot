@@ -21,7 +21,7 @@ boundaries.
 | Fighting camera readability | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing correction merged at `1bff0281`; six parent source checks pass, native four-stage comparison still pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
-| Scenery integration development | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Source-only atomic installation/failure bookkeeping fixes and connected four-chapter walk/shot/workshop verification fixtures |
+| Scenery integration development | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Atomic installer and four-chapter connected journeys integrated at `cf0e8def`; nine parent source checks pass; awaits production/native grant after vehicles |
 | Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Exclusive grant E: complete source journey work, then actual nine masters/exports, native drive/crew/fire/repair/wreck and visual review |
 | Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Source-only executable local/AI/training, throw/tech, input-release and four-stage presentation coverage using actual produced rigs |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Six new gates integrated at `0ffc853c`/`f70355d5`, preserving all original 135 jobs; fresh exact-input ledger required after candidate stabilizes |
@@ -523,3 +523,24 @@ Grant E now belongs to the vehicle owner. It extends that owner's source journey
 work into actual production at a safe committed boundary; fighting and scenery
 development remain source-only. No Windows export or final release attestation
 follows from the robot integration.
+
+## Scenery source integration complete
+
+Scenery `fa2e5fd8` is merged as `cf0e8def`. A chapter now publishes its installed
+groups, three asset IDs and recipe hash only after all six LOD instances validate.
+Failure frees pending nodes synchronously and leaves consistent empty bookkeeping;
+invalid resource/root/mesh/transform/collision/script cases produce explicit
+required-failure or optional-fallback diagnostics. Materials are instance-owned;
+clear/rebuild/detail switching retain their own resource ownership.
+
+Four connected chapter fixtures now require actual imported assets, ordinary
+input, shots, public workshop completion, acknowledgements, return travel and
+Leave/Home cleanup. The separate injected atomic-lifecycle fixture is labeled as
+a fixture, not proof of real art. Parent ran nine new/existing source and geometry
+contracts successfully. Godot compilation, real lifecycle/journeys and native
+performance remain unrun until the next scenery grant.
+
+Terrain, robot visual, all nine robot outputs and shared activation hooks remain
+unchanged. Packaging received the exact scenery adapter revision to reconcile
+robot supporting-input closure transparently; it must not reattribute D native
+evidence to this newer source. Vehicle E remains the exclusive heavy owner.
