@@ -117,6 +117,24 @@ promotion, new AI ability or authority edit occurred in this unit. Full-depth
 free-standing prop placement is not installed; production deliberately uses
 shallow existing-cover service mounts with unchanged source collision.
 
+### Immutable handoff and grant release
+
+- Assets/source/native fixtures: `3b6a3e79`.
+- Minimal shared activation hooks: `93622961` (four files, nine added lines).
+  **Integrate both together**: the asset contract pins the reviewed hook hash.
+- Package receipt SHA-256:
+  `e0e5bf6defc6bc8dacb0093070089aea1953554f1a72af26ba2d333c7d4a3f94`.
+- `tools/godot-robots/production-d.json` hashes actual evidence, references all
+  final stage receipts and records owned groups. Test-only `finalize.py` checked
+  all 100 package input hashes and all six runtime hook hashes against real files.
+- Grant **ROBOT-ASSET-PRODUCTION-20261002-D explicitly released** at
+  **2026-10-02T23:24:34.512076Z**. All **44** recorded owned process groups had
+  **zero remaining processes**, including zombies. Permanent release receipt:
+  `production-d/HEAVY_GRANT_RELEASE.json` under the evidence root above.
+- 757 incidental untracked import sidecars from the full-project import were
+  archived with hashes in `production-d/incidental-import-sidecars.tar.gz` and
+  removed from this lane's working tree. No tracked unrelated resource changed.
+
 ## Historical source-only checkpoint (superseded by production above)
 
 ## Source gates
