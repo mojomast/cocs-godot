@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 [ext_resource type="Script" path="res://tests/horde/blackwater_headless.gd" id="1"]
-[ext_resource type="PackedScene" path="res://horde_maps/blackwater_demo.tscn" id="2"]
+[ext_resource type="Script" path="res://horde/compact_hud.gd" id="2"]
 [ext_resource type="Script" path="res://tests/horde/blackwater_headless_client.gd" id="3"]
+[ext_resource type="Script" path="res://horde/scoreboard.gd" id="4"]
 [node name="BlackwaterHeadless" type="Node"]
 script = ExtResource("1")
-[node name="NativeHorde" parent="." instance=ExtResource("2")]
+[node name="NativeHorde" type="Node3D" parent="."]
 script = ExtResource("3")
+[node name="GameHUD" type="CanvasLayer" parent="NativeHorde"]
+script = ExtResource("2")
+[node name="Scoreboard" type="CanvasLayer" parent="NativeHorde"]
+script = ExtResource("4")

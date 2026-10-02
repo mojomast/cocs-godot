@@ -52,31 +52,31 @@ func ingest(event: InputEvent) -> void:
 		for p: int in 2:
 			if devices[p] != -1: continue
 			for action: String in bindings[p]:
-				if bindings[p][action] == event.physical_keycode: _set(p,action,event.pressed,token)
+				if bindings[p][action] == event.physical_keycode: _set_action(p,action,event.pressed,token)
 	elif event is InputEventJoypadButton:
 		var token := "b:%d:%d" % [event.device,event.button_index]
 		_update_token(token,event.pressed)
 		for p: int in 2:
 			if devices[p] != event.device: continue
 			for action: String in PAD:
-				if PAD[action] == event.button_index: _set(p,action,event.pressed,token)
+				if PAD[action] == event.button_index: _set_action(p,action,event.pressed,token)
 			var directions := {JOY_BUTTON_DPAD_LEFT:"left",JOY_BUTTON_DPAD_RIGHT:"right",JOY_BUTTON_DPAD_UP:"up",JOY_BUTTON_DPAD_DOWN:"down"}
-			if directions.has(event.button_index): _set(p,directions[event.button_index],event.pressed,token)
+			if directions.has(event.button_index): _set_action(p,directions[event.button_index],event.pressed,token)
 	elif event is InputEventJoypadMotion:
 		for p: int in 2:
 			if devices[p] != event.device: continue
 			var pair: Array = ["left","right"] if event.axis == JOY_AXIS_LEFT_X else ["up","down"] if event.axis == JOY_AXIS_LEFT_Y else []
 			for i: int in pair.size():
 				var token := "a:%d:%d:%d" % [event.device,event.axis,i]
-				var active := event.axis_value < -deadzone if i == 0 else event.axis_value > deadzone
+				var active: bool = event.axis_value < -deadzone if i == 0 else event.axis_value > deadzone
 				_update_token(token,active)
-				_set(p,pair[i],active,token)
+				_set_action(p,pair[i],active,token)
 
 func _update_token(token: String, active: bool) -> void:
 	if not active: blocked.erase(token)
 	elif modal: blocked[token] = true
 
-func _set(player: int, action: String, active: bool, token: String) -> void:
+func _set_action(player: int, action: String, active: bool, token: String) -> void:
 	var key := action + "|" + token
 	var was: bool = down[player].get(key,false)
 	active = active and not modal and not blocked.has(token)

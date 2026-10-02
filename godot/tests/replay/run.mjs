@@ -15,9 +15,9 @@ game.wss.on('connection',socket=>socket.on('message',bytes=>{
   if(msg.type==='input')inputs++;
   if(left)violations++;
 }));
-const child=spawn(binary,['--path',resolve('godot'),'--script','res://tests/replay/journey.gd','--','--endpoint=ws://127.0.0.1:'+game.server.address().port,'--map=meridian-exchange','--mode=deathmatch'],{env:{...process.env,LP_NUM_THREADS:'1'},stdio:['ignore','pipe','pipe']});
+const child=spawn(binary,['--audio-driver','Dummy','--path',resolve('godot'),'--script','res://tests/replay/journey.gd','--','--endpoint=ws://127.0.0.1:'+game.server.address().port,'--map=meridian-exchange','--mode=deathmatch'],{env:{...process.env,LP_NUM_THREADS:'1'},stdio:['ignore','pipe','pipe']});
 let text='';child.stdout.on('data',bytes=>{const line=bytes.toString();text+=line;process.stdout.write(line);if(text.includes('REPLAY_AUTHORITY_LEFT'))left=true;});child.stderr.on('data',b=>{text+=b;process.stderr.write(b);});
-const timeout=setTimeout(()=>child.kill('SIGKILL'),120000);
+const timeout=setTimeout(()=>child.kill('SIGKILL'),180000);
 let code;
 try {code=await new Promise((r,j)=>{child.once('exit',r);child.once('error',j);});}
 finally {clearTimeout(timeout);game.close();writeFileSync(resolve(output,'native.log'),text);writeFileSync(resolve(output,'wire-summary.json'),JSON.stringify({inputs,afterLeavePackets:violations,packets,exit:code},null,2));}

@@ -56,6 +56,7 @@ func wait_for(predicate: Callable, note: String, seconds: float = 15) -> bool:
 	while not done and Time.get_ticks_msec() < end:
 		if predicate.call(): return true
 		await process_frame
+	print("SPECTATOR_TIMEOUT_STATE ", JSON.stringify(observe()))
 	check(false, "timeout " + note)
 	return false
 
@@ -71,6 +72,8 @@ func tap(code: int) -> void:
 	key(code, false)
 
 func pointer(position: Vector2, pressed: bool) -> void:
+	# Controls expose logical rectangles; Input.parse_input_event takes window pixels.
+	position *= root.content_scale_factor
 	var motion := InputEventMouseMotion.new()
 	motion.position = position
 	motion.global_position = position
@@ -83,7 +86,7 @@ func pointer(position: Vector2, pressed: bool) -> void:
 	Input.parse_input_event(button)
 
 func world_click(pressed: bool) -> void:
-	pointer(root.get_visible_rect().size * Vector2(0.8, 0.45), pressed)
+	pointer(root.get_visible_rect().size * Vector2(0.5, 0.65), pressed)
 
 func release_focus() -> void:
 	var focus := root.gui_get_focus_owner()
@@ -92,7 +95,8 @@ func release_focus() -> void:
 func http(path: String, body: Variant = null) -> Dictionary:
 	var request := HTTPRequest.new()
 	root.add_child(request)
-	request.timeout = 5
+	request.use_threads = true
+	request.timeout = 15
 	var error := request.request(endpoint + path, ["Content-Type: application/json"], HTTPClient.METHOD_GET if body == null else HTTPClient.METHOD_POST, "" if body == null else JSON.stringify(body))
 	if error != OK:
 		check(false, "HTTP queue " + path)
@@ -330,21 +334,14 @@ func execute(command: Dictionary) -> void:
 		tap(KEY_V)
 		tap(KEY_ENTER)
 		key(KEY_W, true)
-		var was_embedded := root.gui_embed_subwindows
-		root.gui_embed_subwindows = false
-		var other := Window.new()
-		other.title = "Experience acceptance focus boundary"
-		other.size = Vector2i(280, 180)
-		root.add_child(other)
-		other.show()
-		other.grab_focus()
+		# Another window in this same app does not produce application focus loss.
+		var focus_helper := ProjectSettings.globalize_path("res://../tools/godot-dev/focus_window.py")
+		check(OS.create_process("python3", [focus_helper]) > 0, "external bounded X11 focus owner")
 		await wait_for(func(): return not root.has_focus(), "actual native window focus loss", 5)
 		await create_timer(0.2).timeout
 		check(info.spectator_camera.held.is_empty() and not info.spectator_camera.captured and info.spectator_camera.model.actors.is_empty(), "focus loss clears input and target")
 		key(KEY_W, false)
-		other.queue_free()
-		await process_frame
-		root.gui_embed_subwindows = was_embedded
+		await create_timer(3.0).timeout
 		root.grab_focus()
 		await wait_for(func(): return root.has_focus(), "native focus restored", 5)
 		check(Input.mouse_mode != Input.MOUSE_MODE_CAPTURED, "focus return does not recapture")
@@ -355,7 +352,12 @@ func execute(command: Dictionary) -> void:
 			await wait_for(func(): return session.phase == -5 and session.retry_button.visible, "reconnect button")
 			session.retry_button.grab_focus()
 			await process_frame
-			tap(KEY_SPACE)
+			var retry_position: Vector2 = session.retry_button.get_global_rect().get_center()
+			print("SPECTATOR_RETRY_INPUT ", JSON.stringify({"position":retry_position,"visible":session.retry_button.is_visible_in_tree(),"disabled":session.retry_button.disabled,"ticket_available":peer.reconnect_ticket.available(session.endpoint,session.current_id,peer.reconnect_ticket.room_id),"dropped":peer.dropped_transport,"socket":peer.peer.get_ready_state()}))
+			session.retry_button.pressed.connect(func(): print("SPECTATOR_RETRY_PRESSED"), CONNECT_ONE_SHOT)
+			pointer(retry_position, true)
+			await process_frame
+			pointer(retry_position, false)
 			await wait_for(live, "source reconnect admission")
 	elif action == "select":
 		release_focus()

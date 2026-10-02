@@ -24,6 +24,7 @@ func _initialize() -> void:
 func begin() -> void:
 	session = load("res://world/session.tscn").instantiate()
 	root.add_child(session)
+	current_scene = session
 
 func key(code: int, pressed: bool) -> void:
 	var event := InputEventKey.new()
@@ -35,6 +36,8 @@ func key(code: int, pressed: bool) -> void:
 func click(pressed: bool) -> void:
 	var event := InputEventMouseButton.new()
 	event.button_index = MOUSE_BUTTON_LEFT
+	event.position = root.get_visible_rect().size * Vector2(0.5, 0.65)
+	event.global_position = event.position
 	event.pressed = pressed
 	Input.parse_input_event(event)
 
@@ -77,7 +80,7 @@ func _process(delta: float) -> bool:
 			capture("ride")
 			stage = 2
 		elif waypoint < route.size():
-			var direction := route[waypoint] - Vector2(actor.x, actor.z)
+			var direction: Vector2 = route[waypoint] - Vector2(actor.x, actor.z)
 			if direction.length() < 0.4: waypoint += 1
 			else:
 				aim(atan2(-direction.x, -direction.y), 0)

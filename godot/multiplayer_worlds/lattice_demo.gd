@@ -330,7 +330,7 @@ func on_started(frame: Dictionary) -> void:
 		on_error("LATTICE geometry differs from authority")
 		return
 	if "--world-evidence" in OS.get_cmdline_user_args(): print("WORLD_LATTICE_START ",JSON.stringify({"map":current_id,"mode":selected_mode,"hash":catalog.entries[current_id].geometryHash,"peer":client.peer_id,"actor":client.actor_id}))
-	if client.revision < 1 or client.actor_id < 0: return
+	if client.revision < 1 or (client.actor_id < 0 and not client.spectating): return
 	if not session_flow.observe_start(frame, current_id, selected_mode):
 		on_error(session_flow.reason)
 		return
@@ -367,6 +367,10 @@ func advance_handshake(delta: float) -> bool:
 
 func on_snapshot(frame: Dictionary) -> void:
 	if phase != 3: return
+	if client.spectating:
+		# Public spectators have no private actor projection.
+		super.on_snapshot(frame)
+		return
 	if client.projection.is_empty() or client.projection_actor != client.actor_id:
 		snapshot_watch.observe()
 		if is_instance_valid(audiovisual): audiovisual.suspend("missing_projection")

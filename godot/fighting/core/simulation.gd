@@ -14,11 +14,15 @@ func configure(roster: Dictionary, rules: Dictionary) -> void:
 	if not Codec.valid_tree(roster) or not Codec.valid_tree(rules):
 		last_error = "configuration must be a finite integral JSON tree"
 		return
-	last_error = Schema.validate(roster, rules)
+	# Validate semantic enums after the exact integral JSON conversion: Array.has
+	# treats 1.0 and 1 as distinct even though the source JSON number is integral.
+	var decoded_roster: Dictionary = Codec.decode(roster)
+	var decoded_rules: Dictionary = Codec.decode(rules)
+	last_error = Schema.validate(decoded_roster, decoded_rules)
 	if not last_error.is_empty():
 		return
-	_roster = Codec.decode(roster)
-	_rules = Codec.decode(rules)
+	_roster = decoded_roster
+	_rules = decoded_rules
 	_catalog = {}
 	for operator in _roster.operators:
 		_catalog[operator.id] = operator.duplicate(true)
@@ -120,7 +124,12 @@ func step(inputs: Array) -> Dictionary:
 			if f.move_id.is_empty() and f.stun == 0 and f.down == 0:
 				f.facing = 1 if _state.fighters[1 - id].x >= f.x else -1
 		for id in range(2):
-			_advance(_state.fighters[id], _state.fighters[1 - id])
+			var fighter: Dictionary = _state.fighters[id]
+			var landing_before := int(fighter.landing_left)
+			_advance(fighter, _state.fighters[1 - id])
+			# Recovery belongs to the combat clock, including committed attacks.
+			# A newly landed actor keeps its full interval; hitstop never enters here.
+			if landing_before > 0: fighter.landing_left = maxi(0, int(fighter.landing_left) - 1)
 		_anchors()
 		_push()
 		_projectiles_advance()
@@ -130,7 +139,18 @@ func step(inputs: Array) -> Dictionary:
 			f.x = clampi(int(f.x), -int(_rules.stage_half_width) + 350, int(_rules.stage_half_width) - 350)
 		_projectiles_cleanup()
 	_round_result()
+	_sync_animation_pairs()
 	return snapshot()
+
+func _sync_animation_pairs() -> void:
+	for f in _state.fighters:
+		var phase: Dictionary = f.get("animation_pair_phase", {})
+		if phase.is_empty(): continue
+		if _state.phase != "fight" or f.animation != phase.move_id or f.state not in ["throw", "attack", "idle"] or f.animation_frame > phase.end_frame:
+			f.erase("animation_pair_phase")
+			continue
+		phase.frame = int(f.animation_frame)
+		phase.elapsed = phase.frame - phase.caught_move_frame
 
 func snapshot() -> Dictionary:
 	if _state.is_empty():
@@ -198,6 +218,7 @@ func load_state(saved: Dictionary) -> void:
 	if not Codec.valid_tree(saved):
 		last_error = "save contains nonintegral/nonfinite/non-JSON value"
 		return
+	saved = Codec.decode(saved)
 	if saved.get("version") != 1 or saved.get("roster") != _roster or saved.get("rules") != _rules or not saved.get("state") is Dictionary:
 		last_error = "saved configuration/version mismatch"
 		return
@@ -379,6 +400,7 @@ func _try_move(f: Dictionary) -> void:
 	f.armor_used = 0
 	f.state = "attack"
 	f.animation = move.animation
+	f.erase("animation_pair_phase")
 	f.animation_frame = 0
 	f.buffer = {}
 	f.vx = 0
@@ -392,7 +414,6 @@ func _locomotion(f: Dictionary) -> void:
 	var input: Dictionary = f.input
 	var stats: Dictionary = _catalog[f.operator_id].stats
 	if f.landing_left > 0:
-		f.landing_left -= 1
 		f.vx = 0
 		f.animation = "land"
 		return
@@ -467,8 +488,8 @@ func _resources(f: Dictionary) -> void:
 	var policy: Dictionary = _catalog[f.operator_id].resource
 	for axis in ["back", "down"]:
 		var held: bool = int(f.input.axis_x) * int(f.facing) < 0 if axis == "back" else f.input.axis_y < 0
-		var field := "charge_" + axis
-		var release := axis + "_release"
+		var field: String = "charge_" + axis
+		var release: String = axis + "_release"
 		if held:
 			f[field] = mini(180, int(f[field]) + 1)
 			f[release] = 6
@@ -804,6 +825,10 @@ func _begin_pair(c: Dictionary) -> void:
 		"origin_x": a.x, "side_swap": bool(data.get("side_swap", c.move_id == "throw_b"))}
 	_state.pair.duration = maxi(int(_state.pair.duration), int(_state.pair.damage_frame) + 1)
 	_state.pair.end_frame = maxi(int(_state.pair.end_frame), int(_state.pair.duration) + 1)
+	a.animation_pair_phase = {"actor": a.id, "target": b.id, "move_id": c.move_id,
+		"caught_move_frame": _state.pair.caught_move_frame, "elapsed": 0,
+		"damage_frame": _state.pair.damage_frame, "release_frame": _state.pair.duration,
+		"end_frame": _state.pair.end_frame, "frame": _state.pair.frame}
 	a.hit_ledger.append(b.id)
 	a.state = "throw"
 	b.state = "thrown"

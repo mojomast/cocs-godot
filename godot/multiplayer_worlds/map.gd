@@ -104,6 +104,7 @@ func build(data: Dictionary) -> bool:
    var art: Node3D = scene.instantiate()
    art.name = "BlenderArtNoGameplayCollision"
    add_child(art)
+   if str(data.id) == "helix-conservatory": Dressing.orient_helix_wayfinding(art)
  metrics = {"geometryHash":geometry_hash,"gameplayTriangles":count,"art":art_path}
  metrics["dressing"] = Dressing.apply(self, str(data.id), geometry_hash)
  return true

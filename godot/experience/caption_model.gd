@@ -65,7 +65,7 @@ static func event_allowed(event: Dictionary, actor_id: int, team: Variant = null
 	# Keep the spectator allowlist and reject foreign private team events before
 	# formatting. Team comes only from the current confirmed local snapshot.
 	if actor_id < 0 and not SpectatorEvents.public_event(event): return false
-	if event.get("team") in [0, 1] and event.get("team") != team and not SpectatorEvents.public_event(event): return false
+	if (event.get("team") == 0 or event.get("team") == 1) and event.get("team") != team and not SpectatorEvents.public_event(event): return false
 	# Source latticeSoundCue eligibility, independent of audio mute/volume.
 	if kind in ["cocs-buy", "cocs-device-use"]: return actor_id >= 0 and event.get("actor") == actor_id
 	if kind in TEAM_CAPTIONS and (team == null or event.get("team") != team): return false

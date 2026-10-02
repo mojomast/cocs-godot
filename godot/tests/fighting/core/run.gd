@@ -28,7 +28,7 @@ func check(ok: bool, label: String) -> void:
 func sim(a: String = "chatgpt", b: String = "grok", training: bool = true):
 	var s = Simulation.new()
 	s.configure(F.roster(), F.rules())
-	check(s.last_error.is_empty(), "fixture schema accepted")
+	check(s.last_error.is_empty(), "fixture schema accepted: " + s.last_error)
 	s.start_match({"operators": [a, b], "stage_id": "fixture", "seed": 7, "training": training})
 	s.step([F.input(), F.input()])
 	return s
@@ -106,7 +106,22 @@ func _charge_and_policy() -> void:
 	check(s.snapshot().fighters[1].move_id == "special2", "Grok requires and consumes down charge")
 
 func _pair_clocks() -> void:
+	_landing_attack()
 	var s = sim()
+	s.step([F.input(32), F.input()])
+	var release_seen := false
+	for tick in range(40):
+		var pose: Dictionary = s.step([F.input(), F.input()])
+		var phase: Dictionary = pose.fighters[0].get("animation_pair_phase", {})
+		if not phase.is_empty() and pose.pair.is_empty():
+			release_seen = true
+			check(phase.frame == pose.fighters[0].animation_frame and phase.elapsed == phase.frame - phase.caught_move_frame, "recovery phase uses authoritative animation clock")
+			var restored = sim()
+			restored.load_state(JSON.parse_string(JSON.stringify(s.save_state())))
+			check(restored.last_error.is_empty() and restored.snapshot() == pose, "release/recovery JSON restore preserves phase")
+	check(release_seen, "release snapshot retains attacker pair projection")
+	check(not s.snapshot().fighters[0].has("animation_pair_phase"), "animation transition clears recovery phase")
+	s = sim()
 	s.training_place({"fighters": [{"x": -550}, {"x": 550}]})
 	s.step([F.input(32), F.input()])
 	idle(s, 2)
@@ -121,6 +136,36 @@ func _pair_clocks() -> void:
 	idle(s, 2)
 	view = s.snapshot()
 	check(not view.pair.is_empty() and view.fighters[0].animation_frame == view.fighters[1].animation_frame, "delayed Claude counter becomes shared pair")
+
+func _landing_attack() -> void:
+	var roster := F.roster()
+	var rules := F.rules()
+	rules.landing_recovery = 4
+	for operator in roster.operators:
+		operator.moves.air_m.recovery = 30
+		operator.moves.air_m.cancels = [{"to":"stand_l", "from":2, "until":30, "on":["hit", "block"]}]
+	var s := Simulation.new()
+	s.configure(roster, rules)
+	check(s.last_error.is_empty(), "landing fixture schema")
+	s.start_match({"operators":["chatgpt", "claude"], "stage_id":"landing", "seed":7, "training":true})
+	s.training_reset({"fighters":[{"x":-420,"y":1},{"x":420}]})
+	s.step([F.input(2), F.input()])
+	var saw_landing := false
+	var saw_frozen := false
+	for tick in range(20):
+		var before: Dictionary = s.snapshot()
+		var after: Dictionary = s.step([F.input(), F.input()])
+		var old := int(before.fighters[0].landing_left)
+		if old > 0:
+			var expected := old if before.freeze > 0 else old - 1
+			check(after.fighters[0].landing_left == expected, "landing recovery advances once and freezes with hitstop")
+			saw_frozen = saw_frozen or before.freeze > 0
+		if after.fighters[0].landing_left == 4: saw_landing = true
+		if saw_landing and after.fighters[0].landing_left == 0 and after.freeze == 0: break
+	check(saw_landing and saw_frozen, "committed air attack lands and encounters real hitstop")
+	check(s.snapshot().fighters[0].move_id == "air_m", "landing timer expires during committed recovery")
+	s.step([F.input(1), F.input()])
+	check(s.snapshot().fighters[0].move_id == "stand_l", "legal grounded cancel after landing recovery")
 
 func _hits_and_guard() -> void:
 	var s = sim()
