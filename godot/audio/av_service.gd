@@ -75,6 +75,7 @@ func bind_session(owner: Node, eye: Camera3D, arena: Dictionary, match_mode: Str
 func start_round(identity: Variant) -> void:
 	if router.round_key == identity: return
 	router.start_round(identity)
+	weather.reset_transients()
 	scene = "explore"
 	music.set_outcome("")
 	music.reset()
@@ -90,6 +91,7 @@ func start_round(identity: Variant) -> void:
 
 func seek_reset(identity: Variant) -> void:
 	router.seek_reset(identity)
+	weather.reset_transients()
 	music.reset()
 	vehicle.stop_all()
 	motifs.stop_all()
@@ -241,7 +243,8 @@ func _observe_countdown(race: Dictionary) -> void:
 func tick(delta: float) -> void:
 	if not focused or not fresh: return
 	# Muting audio must not freeze the independent world-weather presentation.
-	weather.tick(delta)
+	# Round/seek clears contacts and waits for its first confirmed snapshot.
+	if context_ready: weather.tick(delta)
 	if settings.get("mute", false) == true: return
 	if moth_bed.stream != null:
 		if scene in ["menu", "explore"] and settings.get("ambience_enabled", true) == true and not moth_bed.playing: moth_bed.play()
