@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "operators": {
+    "chatgpt": {"hp": 1000, "walk_speed": 52, "weight": 100},
+    "claude": {"hp": 1060, "walk_speed": 44, "weight": 110},
+    "grok": {"hp": 980, "walk_speed": 57, "weight": 95},
+    "meta": {"hp": 1100, "walk_speed": 40, "weight": 120},
+    "gemini": {"hp": 960, "walk_speed": 56, "weight": 95},
+    "deepseek": {"hp": 1080, "walk_speed": 42, "weight": 115},
+    "mistral": {"hp": 920, "walk_speed": 62, "weight": 85},
+    "kimi": {"hp": 900, "walk_speed": 58, "weight": 85},
+    "qwen": {"hp": 1020, "walk_speed": 48, "weight": 105}
+  }
+}

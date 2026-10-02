@@ -4,16 +4,23 @@
   "balance": "authored initial targets; human balance pending",
   "combo_validation": "proposed; actual core/native pending",
   "provenance": "Original authored fighting frame data and move names; source operator identities imported unchanged. No downloaded motion or external fighter content.",
+  "source_boundary_base": "37dd3da4",
+  "historical_provenance": {
+    "initial_design_sha256": "52754c58c4c3b44b53450427e6ad73834a467c3d132e03e341952e1f338b10ca",
+    "note": "Informational historical source hash only; never compared to working prose."
+  },
   "source_files": {
     "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
-    "port/fighting/DESIGN.md": "52754c58c4c3b44b53450427e6ad73834a467c3d132e03e341952e1f338b10ca",
     "godot/fighting/data/roster.json": "2398099cacb5e6b4773d3aa3d9bdece56e005289aab94ecd776ce95b2bf59f2d",
     "godot/fighting/data/rules.json": "5a89f073c107d504b34b6cb58d00599009245533a92519610d92616a6e4cff4a",
+    "godot/fighting/data/schema.json": "1c54f6f4786127bb13afcd1c65e07e11244c774c28a58e72bca1e0ddab5c38d7",
     "port/fighting/content/ANIMATION_COVERAGE.json": "7681c7ffb3deec42eb411527b52bb47010ccbc90a04764768f45b78dddcda026",
     "port/fighting/content/COMBO_ESTIMATES.json": "c5abd988b48a43b046723c3fb3201b5b09ae18269dfe0dd8606c30d84d48f7b6",
-    "port/fighting/content/MOVE_LIST.md": "7b7879bc373990675f30176ed62e9314c4502a10c6de15bcc7c07f1dba922da3",
-    "port/fighting/content/CONTRACT_DETAILS.md": "1119c111c491370e5558ce9690fb13885cf995405d222b758850f98a31172b18",
-    "tools/fighting/content/author.mjs": "800a589c26a09fedc708f2221f9d684d5afb4ed172f5cb21c1656d2f8b0f356a",
-    "tools/fighting/content/validate.mjs": "1c126939cf395abfc0253fc29e34f8d69d9e46e693d5e01448ae211802a0ed18"
+    "tools/fighting/content/balance_targets.json": "801805f80c061b6a627d324c3712514001330e63f076dd59b9ec7e9dbad82c55",
+    "tools/fighting/content/state_keys.json": "4d75716ac9b32652d420a480e5153d903ab7d1f996972c9060699926e122f9f2",
+    "tools/fighting/content/schema.mjs": "6a943fa021545a422b2d0fac3a1c05743f65c9187a26072ffbd5b3dc24867cb0",
+    "tools/fighting/content/trace.mjs": "4bb284834086bf6312b123713d53ae8769a5a58bc58cf764fb58c7b83638236e",
+    "tools/fighting/content/author.mjs": "afaa7540b44bc9aabcdb067f1c669906a2f54425725515dd205ce6e3a100c04e",
+    "tools/fighting/content/validate.mjs": "16d144940d9e3020a034531956860ef4fe49cd04ddf5b010912bdf6be04defc1"
   }
 }
