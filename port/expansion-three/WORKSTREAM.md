@@ -24,6 +24,23 @@ Their candidate modes are design targets until source/native journeys pass.
 
 ## Source/code checkpoints
 
+- **LATTICE — `dabf5b9c` + `9f944afb`, ready for engine.** Latest-command HUD
+  feedback replaces stale BUY receipts with current HOLD/recruitment responses;
+  source rejection/recovery instructions and received objective progress/contest/
+  range information are exposed without conflating acceptance with settlement.
+  A standalone dynamic caption formatter is prepared, but its shared caption
+  integration hunk is deliberately unapplied pending parent privacy integration.
+- **46 source tests and 22 real-wire checks passed** using two players and a
+  spectator on Tern's existing derived authority. Coverage includes exact BUY
+  settlement/debit, refusals/no extra debit, recipient privacy and stale-round
+  rejection. Oracles cover 47 captions, four progress and thirteen recovery
+  vectors; core and all ten reviewed derivative runtime hashes remain intact.
+- The bounded three-native-client transport runner is prepared but unexecuted.
+  Its wallet setup is controlled, not earned-REQ proof. Native type checks,
+  graphical command/input/lifecycle journeys, wide/compact UI and shared dynamic
+  caption privacy/eligibility checks remain pending. Failed base-server Tern
+  resolution evidence was retained; the fixture now uses the proper derivative.
+
 - **Audio — ready for engine:** `22b95dba` adds eight source-event enemy windup
   motifs and a four-voice positional threat service; `0b5823a3` isolates shared
   AV hooks; `bf4d8865` adds source cooldown and boss-priority checks. Artillery/
