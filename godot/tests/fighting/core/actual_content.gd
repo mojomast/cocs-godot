@@ -72,7 +72,7 @@ func run_combo(roster: Dictionary, rules: Dictionary, operator: Dictionary, comb
 		for event in view.events:
 			if event.actor == attacker and event.target == defender and event.type in ["hit", "throw_hit"]:
 				contacts.append({"tick": tick, "move": event.move_id, "combo_hits": view.fighters[defender].combo_hits, "damage": event.damage})
-	var continuous := contacts.size() == combo.route.size()
+	var continuous: bool = contacts.size() == combo.route.size()
 	for index in range(mini(contacts.size(), combo.route.size())):
 		continuous = continuous and contacts[index].move == combo.route[index] and contacts[index].combo_hits == index + 1
 	s.load_state(JSON.parse_string(JSON.stringify(checkpoint)))

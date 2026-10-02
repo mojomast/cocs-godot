@@ -24,7 +24,9 @@ static func runtime_plan(editor: bool, executable_dir: String, development_root:
 		var manifest_file := FileAccess.open(base.path_join("manifest.json"), FileAccess.READ)
 		if manifest_file == null: return {"error":"Replay runtime manifest is missing from this installation."}
 		if manifest_file.get_length() > 65536: return {"error":"Replay runtime manifest is invalid."}
-		var manifest: Variant = JSON.parse_string(manifest_file.get_as_text())
+		var parser := JSON.new()
+		if parser.parse(manifest_file.get_as_text()) != OK: return {"error":"Replay runtime manifest is invalid."}
+		var manifest: Variant = parser.data
 		if not manifest is Dictionary or manifest.get("version") != 1 or manifest.get("kind") != RUNTIME_KIND or not manifest.get("files") is Dictionary:
 			return {"error":"Replay runtime manifest is invalid."}
 		var files: Dictionary = manifest.files

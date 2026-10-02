@@ -19,8 +19,8 @@ func run() -> void:
 	root.add_child(menu)
 	current_scene = menu
 	await process_frame
-	var old_menu := weakref(menu)
-	var old_attract := weakref(menu.attract_stage)
+	var old_menu: WeakRef = weakref(menu)
+	var old_attract: WeakRef = weakref(menu.attract_stage)
 	check(menu.replays_button.is_inside_tree(), "Home exposes Replay entry")
 	menu.replays_button.pressed.emit()
 	await process_frame

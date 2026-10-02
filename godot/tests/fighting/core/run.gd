@@ -28,7 +28,7 @@ func check(ok: bool, label: String) -> void:
 func sim(a: String = "chatgpt", b: String = "grok", training: bool = true):
 	var s = Simulation.new()
 	s.configure(F.roster(), F.rules())
-	check(s.last_error.is_empty(), "fixture schema accepted")
+	check(s.last_error.is_empty(), "fixture schema accepted: " + s.last_error)
 	s.start_match({"operators": [a, b], "stage_id": "fixture", "seed": 7, "training": training})
 	s.step([F.input(), F.input()])
 	return s

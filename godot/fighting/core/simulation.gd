@@ -14,11 +14,15 @@ func configure(roster: Dictionary, rules: Dictionary) -> void:
 	if not Codec.valid_tree(roster) or not Codec.valid_tree(rules):
 		last_error = "configuration must be a finite integral JSON tree"
 		return
-	last_error = Schema.validate(roster, rules)
+	# Validate semantic enums after the exact integral JSON conversion: Array.has
+	# treats 1.0 and 1 as distinct even though the source JSON number is integral.
+	var decoded_roster: Dictionary = Codec.decode(roster)
+	var decoded_rules: Dictionary = Codec.decode(rules)
+	last_error = Schema.validate(decoded_roster, decoded_rules)
 	if not last_error.is_empty():
 		return
-	_roster = Codec.decode(roster)
-	_rules = Codec.decode(rules)
+	_roster = decoded_roster
+	_rules = decoded_rules
 	_catalog = {}
 	for operator in _roster.operators:
 		_catalog[operator.id] = operator.duplicate(true)
@@ -467,8 +471,8 @@ func _resources(f: Dictionary) -> void:
 	var policy: Dictionary = _catalog[f.operator_id].resource
 	for axis in ["back", "down"]:
 		var held: bool = int(f.input.axis_x) * int(f.facing) < 0 if axis == "back" else f.input.axis_y < 0
-		var field := "charge_" + axis
-		var release := axis + "_release"
+		var field: String = "charge_" + axis
+		var release: String = axis + "_release"
 		if held:
 			f[field] = mini(180, int(f[field]) + 1)
 			f[release] = 6

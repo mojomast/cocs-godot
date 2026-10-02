@@ -69,13 +69,13 @@ static func valid_tree(value: Variant, depth: int = 0) -> bool:
 		return true
 	if value is Dictionary:
 		for key in value:
-			if not key is String or not valid_tree(value[key], depth + 1):
+			if not (key is String or key is StringName) or not valid_tree(value[key], depth + 1):
 				return false
 		return true
 	if value is Array:
 		for item in value:
 			if not valid_tree(item, depth + 1):
-			return false
+				return false
 		return true
 	return false
 
@@ -84,7 +84,7 @@ static func decode(value: Variant) -> Variant:
 	if value is Dictionary:
 		var result := {}
 		for key in value:
-			result[key] = decode(value[key])
+			result[str(key)] = decode(value[key])
 		return result
 	if value is Array:
 		var result: Array = []

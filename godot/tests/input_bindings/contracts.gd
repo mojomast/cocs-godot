@@ -42,7 +42,7 @@ func run() -> void:
 		for action: String in row.expected: check(actual[action] == row.expected[action], "source swap " + action)
 	for row: Dictionary in fixtures.samples:
 		for kind: String in ["world", "horde"]:
-			var sampler = Actions.new() if kind == "world" else Horde.new()
+			var sampler: Variant = Actions.new() if kind == "world" else Horde.new()
 			sampler.bindings.override_bindings = Model.normalize(row.bindings)
 			for step: Dictionary in row.timeline:
 				if step.has("event"):
