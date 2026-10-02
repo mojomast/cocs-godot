@@ -23,7 +23,7 @@ test('readable signs and local pocket budgets have meaningful negative cases', (
   p.signs=[];p.budgets.motes=1;p.pockets=[{id:'dust',position:[0,2,0],size:[2,2,2],kind:'dust',color:'ffffff',count:2}];
   assert.match(validate(p).errors.join('\n'),/mote budget/);
 });
-test('handed-off real profiles cover all 17 Helix/Foundry opaque selectors and preserve Helix glass', () => {
+test('real profiles dress 16 Helix/Foundry selectors and preserve glass plus authored Foundry luminaires', () => {
   let opaque=0;
   for (const [id,art] of [['helix-conservatory','helix-conservatory/helix-conservatory.glb'],['gravemill-foundry','worlds/gravemill-foundry.glb']]) {
     const p=JSON.parse(readFileSync(`godot/multiplayer_worlds/dressing/profiles/${id}.json`));
@@ -32,9 +32,22 @@ test('handed-off real profiles cover all 17 Helix/Foundry opaque selectors and p
     assert.deepEqual(result.errors,[],id);opaque+=p.materials.length;
     assert.ok(result.resources.length >= 3); // Family reuse is valid; counts are not visual quality.
   }
-  assert.equal(opaque,17);
+  assert.equal(opaque,16);
   const p=JSON.parse(readFileSync('godot/multiplayer_worlds/dressing/profiles/helix-conservatory.json'));
   assert.deepEqual(p.preserve_materials,['glass']);
+});
+test('Foundry exclusion is exactly the actual emissive GLB material; painted structure stays dressed', () => {
+  const p=JSON.parse(readFileSync('godot/multiplayer_worlds/dressing/profiles/gravemill-foundry.json'));
+  const raw=readFileSync('godot/multiplayer_worlds/art/worlds/gravemill-foundry.glb');
+  const glb=JSON.parse(raw.subarray(20,20+raw.readUInt32LE(12)).toString());
+  const emitting=glb.materials.filter(m=>(m.emissiveFactor??[]).some(v=>v>0));
+  assert.deepEqual(emitting.map(m=>m.name),['GM / orange']);
+  assert.deepEqual(p.preserve_materials,emitting.map(m=>m.name));
+  assert.ok(Math.abs(emitting[0].extensions.KHR_materials_emissive_strength.emissiveStrength-1.6)<1e-6);
+  assert.deepEqual(p.materials.map(m=>m.source).sort(),glb.materials.filter(m=>m!==emitting[0]).map(m=>m.name).sort());
+  // Reject a regression that tries to dress a preserved luminaire too.
+  const bad=structuredClone(p);bad.materials.push({...p.materials[0],source:'GM / orange'});
+  assert.ok(validate(bad,{materialNames:glb.materials.map(m=>m.name)}).errors.length);
 });
 test('four optional variation controls accept boundaries and reject invalid values independently', () => {
   for (const mode of ['none','organic','manufactured']) {

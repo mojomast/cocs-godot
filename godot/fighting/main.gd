@@ -56,6 +56,7 @@ var training_boxes
 var fx_session_serial := 0
 var fx_session_id := ""
 var fx_event_floor := 0
+var camera_hud_pixels := Vector2(155,78)
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -291,6 +292,7 @@ func start_match() -> void:
 			show_selection()
 			return
 		visuals.append(visual)
+	camera.configure(roster,rules,visuals)
 	effects = load(DEPENDENCIES[3]).new()
 	world.add_child(effects)
 	fx_session_serial += 1
@@ -353,6 +355,7 @@ func _tick() -> void:
 	var old_round := int(state.round_index)
 	state = simulation.step(commands)
 	if int(state.round_index) != old_round:
+		camera.reset()
 		effects.reset()
 		fx_event_floor = int(state.tick)
 		tech_until = [0,0]
@@ -387,7 +390,10 @@ func _process(delta: float) -> void:
 	for p: int in visuals.size():
 		visuals[p].present(state.fighters[p],0.0)
 		effects.present_fighter(state.fighters[p],visuals[p])
-	camera.present(state.fighters,get_viewport().get_visible_rect().size)
+	if is_instance_valid(hud):
+		camera_hud_pixels.x = maxf(155.0,hud.size.y+8.0)
+		if is_instance_valid(input_label): camera_hud_pixels.y = maxf(78.0,input_label.size.y+8.0)
+	camera.present(state.fighters,get_viewport().get_visible_rect().size,state,camera_hud_pixels)
 	training_boxes.visible = mode == "training" and box_display
 	if training_boxes.visible: training_boxes.present(state,roster)
 	if not paused and focused: effects.advance(delta)
@@ -538,6 +544,7 @@ func show_training() -> void:
 		recording = false
 		simulation.load_state(recording_state)
 		state = simulation.snapshot()
+		camera.reset()
 		effects.reset()
 		fx_event_floor = int(state.tick)+1
 		tech_until = [0,0]

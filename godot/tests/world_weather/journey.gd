@@ -49,6 +49,16 @@ func position() -> Vector3:
 	var actor: Dictionary = session.presentation.local_actor
 	return Vector3(actor.get("x",0), actor.get("y",0), actor.get("z",0))
 
+func movement_diagnostic(boundary: String) -> void:
+	if kind != "campaign": return
+	var at := position()
+	print("CAMPAIGN_MOVEMENT_WINDOW ",JSON.stringify({"boundary":boundary,
+		"source_time":latest.get("time"),"position":[at.x,at.y,at.z],
+		"epoch":session.client.input_epoch,"input_seq":session.client.input_seq,
+		"ack":session.client.last_ack,"fifo":session.client.input_status.duplicate(true),
+		"outstanding":session.client.outstanding_inputs.duplicate(),
+		"gates":session.trace_input_gates()}))
+
 func collision_signature() -> String:
 	var rows: Array = []
 	for node: Node in session.world.find_children("*", "CollisionObject3D", true, false):
@@ -149,10 +159,12 @@ func run() -> void:
 	var prior_trace: bool = session.trace_enabled
 	session.trace_enabled = true
 	receipt("movement-input-before")
+	movement_diagnostic("before-w-down")
 	key(KEY_W, true)
 	await create_timer(1.2).timeout
 	key(KEY_W, false)
 	await create_timer(0.3).timeout
+	movement_diagnostic("after-w-up")
 	session.trace_enabled = prior_trace
 	check(position().distance_to(before) > 0.15, "real input moves public actor")
 	receipt("moved")

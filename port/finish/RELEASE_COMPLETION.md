@@ -7,13 +7,22 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
+Current assignments below supersede the historical checkpoints later in this file.
+The owner renewed the execution directive: **use subagents to advance the missing
+production work**. Source workers start from committed parent `652b8f3c` in their
+existing checkouts; the active heavy worker adopts new inputs only at safe run
+boundaries.
+
 | Work | Existing owner/session | Current action |
 |---|---|---|
-| Native integration and visual finish | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Repair current engine failures; complete baseline gates; at a run boundary merge `e38b3662`, then native Moth map/operator checks and screenshots |
-| Actual fighting combos | Sol `ses_f026eedd8ffeCVNtizjJEn6vHg` | Repair 27 authored traces from actual native failure logs; preserve legitimate spacing/input rules and retain failed evidence |
-| Remaining asset source consolidation | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Consolidate committed Vesper, Abyssal, robots, vehicles, Stormglass and scenery recipes/hooks in existing checkout; prepare exact sequential production units |
-| Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Extend completion ledger for fighting, visual finishes, queued assets/cinematic and final packages using existing gates, with exact-input receipts |
-| Windows release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Close all dynamic resources and runtime dependencies, prepare actual Windows CI/extraction tests and versioned release commands |
+| Fighting production and native surface review | Astra `ses_f026e25e4ffezp2kvz5VGox7dz` | Complete and merged at `bb02e34b`; nine real rigs/masters and native comparisons; grant B released |
+| Parallax interior production | Astra `ses_f055a6b41ffe42yCL8AxbOL676` | Exclusive heavy grant C: build/reopen refined interiors, native geometry/art review and current Moth mount revalidation |
+| Fighting camera readability | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing correction merged at `1bff0281`; six parent source checks pass, native four-stage comparison still pending |
+| Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | Source correction merged at `91ad0ce5`; bounded native follow-up assigned to current grant-C owner after primary Parallax work |
+| Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
+| Queued asset integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Implement missing test-only candidate admission/hosted journey harnesses; reconcile every builder/receipt with refined material semantics before serial production |
+| Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Extension already integrated; fresh exact-input ledger required after production candidate stabilizes; no current engine grant |
+| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Extend required queued-asset resource/provenance closure and negative tests; preserve strict final preflight and historical release validation |
 
 All workers run in the background, using existing sessions/checkouts. Source work
 may run in parallel. The parent owns merges, stage transitions, explicit heavy
@@ -22,18 +31,22 @@ are introduced by this directive.
 
 ## Exclusive heavy ownership
 
-`FINISH-COMBINED-NATIVE-20261002-A` remains with the integration Astra. After the
-tool-server restart it resumed from retained receipts. Recovery fixes are at
-`1bbd3ea6`; the targeted run is
-`/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/run-1tdw_lph/`.
-No acceptance or release follows from a started run. No other agent may run
-Godot, Blender, imports, rendering, audio capture or encoding before explicit
-teardown/release and a new grant.
+**`PARALLAX-INTERIORS-PRODUCTION-20261002-C` belongs to Parallax Astra
+`ses_f055a6b41ffe42yCL8AxbOL676`.** Its scope includes actual revised-interior
+Blender production/reopen/export, native geometry and visual review, and refined
+Moth mount checks in the original observatory checkout. A bounded extension also
+permits five Foundry-emission/Helix-regression checks after primary Parallax work;
+see `port/surface-refinement/maps/EMISSION_FOLLOWUP.md`. Grant B was explicitly
+released at `2026-10-02T21:45:31.798193Z`, with all 83 owned process groups checked
+and none remaining. Prior grant A was also explicitly released; both closeouts
+are integrated.
 
-The current grant now also covers native Moth map/operator finishes after the
-baseline run reaches a stable checkpoint and `e38b3662` is merged once. It does
-not grant fighter Blender production. Preserve current evidence when inputs
-change; never attach old receipts to the new candidate as though unchanged.
+No other agent may run Godot, Blender, imports, rendering, audio capture or encoding
+before explicit teardown/release and a new grant. Asset integration, gameplay
+diagnosis and packaging preparation run source-only in parallel. The parent will
+sequence the asset production queue and remaining native gates after the current
+owner's immutable checkpoint and explicit release. Preserve current evidence when
+inputs change; never attach old receipts to new candidate identities.
 
 ## Required completion sequence
 
@@ -70,9 +83,12 @@ change; never attach old receipts to the new candidate as though unchanged.
 
 ## Remaining evidence distinctions
 
-The current fighting native core/invariant/pair-seek suites passed, but proposed
-combo cases passed only 16/54; all 54 replay comparisons matched. No production
-fighting GLBs exist yet. Source-complete animation recipes are not finished art.
+The native core/invariant/pair-seek suites and **54/54 combo cases** passed again
+against produced fighters. All nine masters/GLBs are merged, with **137,046 native
+animation checks** passing at the recorded production anchor. Earlier failures
+remain retained history. Final gameplay framing, complete versus/AI/training
+journeys and cross-stage presentation acceptance remain pending; historical native
+passes are not final-candidate release acceptance.
 
 Real audio is currently blocked by device permissions and the absent Pulse
 socket. Software-rendered capture does not establish real-GPU performance, and
@@ -211,3 +227,87 @@ has the exact candidate and a bounded matched-comparison task beginning with
 Foundry cooling and Helix archive. Only that owner may compile/render while grant
 B is active. Source completion does not close the owner's visual feedback; actual
 native review and a fresh screenshot gallery remain required.
+
+## Nine-fighter production and grant C
+
+Animation commits `ded21092`, `1b690f01`, `80cb466b` are integrated at `bb02e34b`.
+They deliver nine separately reopened Blender masters, nine animated GLBs and
+content-bound manifests. Preserve the committed `.glb.import` files: disabling
+node-level animation optimization prevents loss of back-throw contact keys.
+The native pass reports 137,046 animation checks, 194 core checks, 113,550
+invariants, all 54 combo cases and paired snapshot seeking passed. Parent reran
+strict fighter inventory successfully at the merged anchor; receipt:
+`/tmp/opencode/production-b-parent-resource-inventory.json`.
+
+The same pass compiled the refined shader and captured eleven matched district
+sets, two motion/grazing-light sets, all-nine operator comparisons and five actual
+stage combat clips. Parent inspected the two district overviews, full-resolution
+Foundry cooling and Helix archive, Meta finish comparison and extreme paired
+contact overview. Purple/repeating patterns are substantially quieter; archive
+sign text is readable in the full-resolution capture. Foundry ceiling lights and
+small gameplay fighter framing remain concrete assigned defects.
+
+Fresh gallery: **http://100.125.104.79:8796/native-production-b/**. Its 142 files
+(65,323,545 bytes) were copied without re-encoding and all HTTP-served SHA-256s
+verified. It labels inherited proof lighting, software capture and pending art/
+camera follow-up. Older galleries remain untouched. Publication script:
+`port/surface-refinement/publish_production_b.py`.
+
+Grant C now advances Parallax interiors in its original checkout. Robots, vehicles,
+scenery, Vesper, Abyssal and Stormglass remain queued after its explicit release.
+Packaging received the real fighter inputs and critical import settings; source
+asset integration received the new anchor and grant transition. No Windows build
+or new release publication has occurred.
+
+## Baseline attribution ready for native execution
+
+Integration diagnostics `79d82039` / `08d90f21` are merged as `2f43fdf9` /
+`f4ea6d5f`. Source inspection did not justify a campaign control-field mismatch.
+The next movement receipt links ordinary key events and input gates to sent,
+received and applied sequence IDs and authoritative pose; the prior evidence
+discarded the received/applied records. Controls gain an opt-in weak-reference
+probe reporting texture owner-reference paths, dimensions and native handles
+across allocation/free boundaries. All 90 existing assertions remain; no extra
+sleep, global teardown or filtered leak scan was added.
+
+Parent reran both diagnostic Node tests successfully. Native typing/execution and
+actual root-cause attribution remain pending. Exact commands and output limits:
+`godot/tests/combat_actions/DIAGNOSTICS.md`. The probe must be recorded explicitly
+in the next invocation, and native texture-handle queries may allocate lazy
+resources, so compare its result with the original unprobed receipt. Grant C
+continues exclusively with Parallax; no gameplay-native regrant is implied.
+
+## Foundry emission source correction
+
+Map-art `95c86892` is merged as `91ad0ce5`. Decoded GLB geometry demonstrates that
+`GM / orange` contains exactly 22 authored lights (328 triangles), with no painted
+structure sharing the selector. The profile now preserves that original imported
+material, retaining its authored emission through existing binder exclusions.
+The other seven finishes and all placements/seeds remain identical. No shader or
+runtime change is required. Parent reran eleven shared and two package-provenance
+tests successfully.
+
+The proof harness now checks actual emissive identity, color, energy, texture and
+operator across detail/reapply/cleanup/reload. Its native execution and post-fix
+appearance remain pending. Current grant C was explicitly extended for the five
+bounded checks after Parallax's primary production work at a safe input boundary;
+the existing owner received the exact commit and named commands. The B gallery
+still shows the pre-fix dull lights and remains accurately labeled.
+
+## Fighting camera correction integrated
+
+Presentation `7ee54db4` is merged as `1bff0281`. It replaces the always-reserved
+8m jump space with cached posed-skin bounds, actual fighter/projectile positions,
+snapshot-derived jump prediction, HUD-safe margins and tick-driven easing. It
+retains hard containment, floor visibility, four-stage horizontal center limits,
+hitstop freeze, reset on match/round/seek and the reduced-motion maximum-envelope
+lock. Animation assets/import settings and combat authority remain untouched.
+
+Parent reran six source camera tests successfully, including real nine-GLB bind/
+rest reconstruction. The lane also passed 918 source framing/extrema checks.
+These are source/mathematical results, not rendered size, smoothing-feel or cache
+performance measurements. Focused actual-shell baseline/responsive fixtures and
+the native gate are ready in `godot/tests/fighting/presentation/`; exact pending
+four-stage comparisons are documented in
+`port/fighting/presentation/CAMERA_FOLLOWUP.md`. No camera-native grant is implied
+by this merge; grant C retains its explicit Parallax/light-check scope.

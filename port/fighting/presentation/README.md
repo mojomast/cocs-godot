@@ -153,12 +153,16 @@ shadows target Compatibility budgets. Stage GPU cost/readability is **unmeasured
 Source vistas and the parent's accepted architectural images do not establish
 side-on fighting acceptance, particularly Crown's mixed-HUD research capture.
 
-Camera is side-on, +Z=24 facing −Z, orthographic KEEP_HEIGHT. It reserves vertical
-space for an 8m maximum feet jump plus 2.4m silhouette and safe UI regions,
-with horizontal fighter padding 1.6m each. Reduced motion locks maximum arena
-extent; normal camera midpoint/extent follow snapshot separation, bounded x ±4m.
-Projection math passed 918 requested-wide/compact extrema cases. Native silhouette
-scale and HUD150 fit still need direct inspection; projection math is not art proof.
+Camera is side-on, +Z=24 facing −Z, orthographic KEEP_HEIGHT. Normal framing now
+uses actual presented skin envelopes, current positions/velocities, committed
+jump/mobility startup and bounded ballistic apex prediction, plus measured HUD
+regions. Tick-driven easing, landing hold and hitstop freeze avoid continuous
+zoom pumping; a hard envelope fit always contains current fighters/projectiles.
+Only reduced motion retains the full-arena maximum-jump reserve. Center remains
+bounded x ±4m across all four existing source crops. See `CAMERA_FOLLOWUP.md` for
+the precise skin-bound/projection/smoothing contracts and prepared native A/B gate.
+Native silhouette scale and HUD150 fit still need direct inspection; projection
+math and the existing old-camera production captures are not new-camera art proof.
 
 ## Verification and next commands
 

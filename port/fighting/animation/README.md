@@ -1,10 +1,10 @@
-# Animation/rig implementation — source-ready checkpoint
+# Animation/rig implementation — native production
 
-Status: **READY FOR BLENDER, source only.** The integration worker owns
-`FINISH-COMBINED-NATIVE-20261002-A`; this lane has no heavy grant.
-No Blender, Godot, import, render, capture or encode has run in this
-lane. Generated fighting GLBs and `.blend` masters do not exist yet. Scripts
-below are prepared production paths, not native acceptance evidence.
+Status: **All nine masters and GLBs built, separately reopened and native tested**
+under exclusive grant `FIGHTING-ANIMATION-PRODUCTION-20261002-B`.
+See [PRODUCTION_B.md](PRODUCTION_B.md) for actual results, evidence and remaining
+presentation/art review limitations. Earlier source-only findings below are
+historical; native gates do not by themselves establish visual acceptance.
 
 ## Owned implementation
 

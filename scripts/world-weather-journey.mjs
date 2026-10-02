@@ -5,13 +5,16 @@ import {createAuthority} from '../port/native-campaign/authority.mjs';
 import {createGameServer} from '../port/multiplayer-worlds/derived/game-server.mjs';
 import {createGameServer as createSourceServer} from '../server/game-server.mjs';
 import {WebSocket} from 'ws';
+import {campaignInputDiagnostic} from './campaign-input-diagnostic.mjs';
 
 const [kind, map, directory] = process.argv.slice(2);
 if (!['campaign', 'mp', 'spectator', 'source'].includes(kind) || !map || !directory) throw Error('campaign|mp|spectator|source map absolute-output-dir');
 const output = resolve(directory); mkdirSync(output, {recursive: true});
 const observations = [];
+const inputDiagnostic = campaignInputDiagnostic();
 const authority = kind === 'campaign' ? createAuthority({mapId: map, difficulty: 'easy', observe: row => {
   // Record transport provenance and public state, never alter authority state.
+  inputDiagnostic.observe(row);
   if (row.direction === 'in' && row.frame.type !== 'input' || row.direction === 'out' && ['start', 'results'].includes(row.frame.type)) observations.push(row);
 }}) : (kind === 'source' ? createSourceServer : createGameServer)({random: () => .37});
 await new Promise(resolve => authority.server.listen(0, '127.0.0.1', resolve));
@@ -55,6 +58,7 @@ try {
 } finally {
   clearTimeout(timeout);
   writeFileSync(output + '/authority-boundaries.json', JSON.stringify({endpoint, kind, map, observations}, null, 2));
+  if(kind==='campaign')writeFileSync(output+'/campaign-input-diagnostic.json',JSON.stringify(inputDiagnostic.result(),null,2));
   for (const socket of authority.wss?.clients ?? []) socket.terminate();
   authority.server.closeAllConnections();
   await authority.close();

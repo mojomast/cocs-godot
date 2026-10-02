@@ -1,0 +1,146 @@
+{
+  "status": "all_nine_built_reopened_exported_native_checked",
+  "art_accepted": false,
+  "presentation_blocker": "fixed maximum-jump framing makes grounded fighters too small",
+  "assets": {
+    "godot/fighting/assets/operators/meta.glb": "842ea5ef399902425e59b3a08dbdc7eec70d5355da435d2b684ab3ac855bb0a1",
+    "godot/fighting/assets/operators/meta.json": "e11833ebf9a39ed357391bab993f13a77388c2fd9f9f49608835766bdbc57029",
+    "godot/fighting/assets/operators/mistral.glb": "f77495981be41541c54f91fc56b0af58141428010f02d3523235e7563605ab2f",
+    "godot/fighting/assets/operators/mistral.json": "6f79e1ae14518983c306b14a907d7d8a3db736ae1823e2a76f8525f03df2135a",
+    "godot/fighting/assets/operators/chatgpt.glb": "82e61be690fc154342e6850e8e5a90ebb32c95cadfc4444214997f6848197086",
+    "godot/fighting/assets/operators/chatgpt.json": "720186252e71a554ff383e416d3e2646c6e72315cf7010413ebe42bbf731b7d9",
+    "godot/fighting/assets/operators/claude.glb": "ef3897a93679c4c698e550eac1e4534a17463cf18321d97ee91f36a4d33a4d8a",
+    "godot/fighting/assets/operators/claude.json": "039f02635c2fc1f63c7a1b998125fa5bbd05fb227a97ca60a365f9cae02ba512",
+    "godot/fighting/assets/operators/grok.glb": "ec3f23b9c2389d0b7aa89358405fa075f8eb10eab2b051d24622fe3ec715be71",
+    "godot/fighting/assets/operators/grok.json": "4ea65ae24db6f76f22a62fe7c021cd0f5d54f9956e63ba96268e3e7f903d634f",
+    "godot/fighting/assets/operators/gemini.glb": "333eea6a966a596d472d9dd1c96aaadcb85ec43f7cdd87df7ec8c34b4b43ce22",
+    "godot/fighting/assets/operators/gemini.json": "22b78df9b492d63bfb92d720050f788253f857d4cda71de29d46a7c08c3edefb",
+    "godot/fighting/assets/operators/deepseek.glb": "666a5055f9fe3bc4b404dd0d777285ee0c252def8c2184fab8c0295fb3db42be",
+    "godot/fighting/assets/operators/deepseek.json": "ca3e505e599e0b83b68df83781de38e23d3bd1666cc37c2b9b33ff7d6ca6d695",
+    "godot/fighting/assets/operators/kimi.glb": "7a78c9098a644d28605f6027cf0972bd5fab1dfd9c79e0653edf350568a708be",
+    "godot/fighting/assets/operators/kimi.json": "861ae42ee736c7a678c7a6666be58619b3fd25ce96dd1e333c0884df017d85a5",
+    "godot/fighting/assets/operators/qwen.glb": "0a876a0c9a5a72a146832b155f15534b42266727e75dfa6e530498bc1fac8f19",
+    "godot/fighting/assets/operators/qwen.json": "b87d2781003bbf52b74660d35c9d12b9b7bb8fd949ecaeed40427c053a71255b",
+    "godot/fighting/assets/operators/meta.glb.import": "a2fe0de2138f4c5f3356a1603c83966afbc946f231c0ee8af445f73045d8f400",
+    "godot/fighting/assets/operators/mistral.glb.import": "7fda3f9a7f29f25269710390b8c4048ccca11e26c5e1b451171f4ce624f3987f",
+    "godot/fighting/assets/operators/chatgpt.glb.import": "abbb2b116e9a0cddcef0942852065974dd612227cffb7116cf646bf16bd2c1e1",
+    "godot/fighting/assets/operators/claude.glb.import": "ec4cc35d7a16c3319d8065f31d4dccb78ee3de0003747f42b55122c7382799c9",
+    "godot/fighting/assets/operators/deepseek.glb.import": "e7b33da71ba29a4aa39ec2e94be472dae601e6a5e12aeb648ed563a912bb1610",
+    "godot/fighting/assets/operators/gemini.glb.import": "398f24e914d018d1d3c1f33363c41935a1488c3567bd3d55cc1960165c0e077a",
+    "godot/fighting/assets/operators/grok.glb.import": "68f8f3e1811a22c40b253b86a4bca895ea3a75bedabacae0f3dd10f78c84ec3d",
+    "godot/fighting/assets/operators/kimi.glb.import": "800ef7b2769076c6f830d6b3e1910b787736303d9bc63d4028e8828dc77933af",
+    "godot/fighting/assets/operators/qwen.glb.import": "b7b1fddaac332c73cc03061fee08b796ded8c6fe31edf8cc9b6764df9c3ecb40",
+    "tools/fighting/animation/masters/meta.blend": "1e9d7a490cb42926ab68f6ff7e58a305141424ffbe0e084a1eef7f2c28a36590",
+    "tools/fighting/animation/masters/mistral.blend": "7a414eaae3e240eb594546e582d9c960d5de920b1355f0ebd027c8e63ce40e02",
+    "tools/fighting/animation/masters/chatgpt.blend": "8b2f45acc1798549ac764477891b8d54c72a309bd16b9ea8be8d25f25286059a",
+    "tools/fighting/animation/masters/claude.blend": "7dc4404bc84255a4c60a7ec02d2f51e598dce96119445612bf9b70a18ab222e2",
+    "tools/fighting/animation/masters/grok.blend": "a5de7a9979e03508c2a416e3b8ab46c97fb46d992c6a4c849f0764a16226fe6f",
+    "tools/fighting/animation/masters/gemini.blend": "18a076e9dcdc421c9c1e94c04fc7196088b51b4ab7830bda1dfede145dbcc8b5",
+    "tools/fighting/animation/masters/deepseek.blend": "68832e5aaf32def93e0ebd8e7c516ad9e04bddc2a3b4fcbd4f5292184d4a779b",
+    "tools/fighting/animation/masters/kimi.blend": "647c89969071428ba0c7e66bce92321b1ec31139eac5373ecec46fceed0eb91f",
+    "tools/fighting/animation/masters/qwen.blend": "032f2bdb014508f5b943ebd3e4cb9c9dbd4bdcc5db622746148a85f5e053a366"
+  },
+  "native": {
+    "art_accepted": false,
+    "checks": 137046,
+    "failures": [],
+    "operators": [
+      "chatgpt",
+      "claude",
+      "grok",
+      "meta",
+      "gemini",
+      "deepseek",
+      "mistral",
+      "kimi",
+      "qwen"
+    ],
+    "status": "passed"
+  },
+  "source_binary_evidence": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/production-b/all-nine-source-binary.json",
+  "package_resources": {
+    "pending": [],
+    "resources": 355,
+    "provenance": 25
+  },
+  "surface_receipts": [
+    {
+      "receipt": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-cooling/gravemill-foundry-refinement.json",
+      "failures": [],
+      "frames": 1,
+      "map": "gravemill-foundry"
+    },
+    {
+      "receipt": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-archive/helix-conservatory-refinement.json",
+      "failures": [],
+      "frames": 1,
+      "map": "helix-conservatory"
+    },
+    {
+      "receipt": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-assay/gravemill-foundry-refinement.json",
+      "failures": [],
+      "frames": 1,
+      "map": "gravemill-foundry"
+    },
+    {
+      "receipt": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-crown/gravemill-foundry-refinement.json",
+      "failures": [],
+      "frames": 1,
+      "map": "gravemill-foundry"
+    },
+    {
+      "receipt": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-crusher/gravemill-foundry-refinement.json",
+      "failures": [],
+      "frames": 1,
+      "map": "gravemill-foundry"
+    },
+    {
+      "receipt": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-furnace/gravemill-foundry-refinement.json",
+      "failures": [],
+      "frames": 1,
+      "map": "gravemill-foundry"
+    },
+    {
+      "receipt": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-transfer/gravemill-foundry-refinement.json",
+      "failures": [],
+      "frames": 1,
+      "map": "gravemill-foundry"
+    },
+    {
+      "receipt": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-botanical/helix-conservatory-refinement.json",
+      "failures": [],
+      "frames": 1,
+      "map": "helix-conservatory"
+    },
+    {
+      "receipt": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-irrigation/helix-conservatory-refinement.json",
+      "failures": [],
+      "frames": 1,
+      "map": "helix-conservatory"
+    },
+    {
+      "receipt": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-lightwell/helix-conservatory-refinement.json",
+      "failures": [],
+      "frames": 1,
+      "map": "helix-conservatory"
+    },
+    {
+      "receipt": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-pavilion/helix-conservatory-refinement.json",
+      "failures": [],
+      "frames": 1,
+      "map": "helix-conservatory"
+    },
+    {
+      "receipt": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-cooling-motion-grazing/gravemill-foundry-refinement.json",
+      "failures": [],
+      "frames": 12,
+      "map": "gravemill-foundry"
+    },
+    {
+      "receipt": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-archive-motion-grazing/helix-conservatory-refinement.json",
+      "failures": [],
+      "frames": 12,
+      "map": "helix-conservatory"
+    }
+  ]
+}

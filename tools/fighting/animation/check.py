@@ -9,7 +9,7 @@ from glb import GLB, source_rig
 from kinematics import solve
 from recipes import OPERATORS, STATES, MOVES, PAIRS, library, sample, timing
 from content import inputs
-from pairing import adapted_pose, grip
+from pairing import adapted_pose, grip, chest
 
 
 def audit(root,exported=False):
@@ -54,7 +54,7 @@ def audit(root,exported=False):
                     definition = pairs[(pair['attacker'],pair['move'])]
                     ah,at,_ = solve(rigs[pair['attacker']],sample(libraries[pair['attacker']][pair['move']]['keys'],frame/60))
                     contact = grip(ah,at)
-                    victim = heads['Chest']
+                    victim = chest(heads,pose)
                     victim = [-victim[0],definition['victim_x']/1000-victim[1],victim[2]+definition['victim_y']/1000]
                     error = math.dist(contact,victim)
                     assert error<=.060001,(operator,name,frame,error)
@@ -63,7 +63,7 @@ def audit(root,exported=False):
             assert worst<=.001,(operator,name,'unreachable authored target',worst)
             curves[operator][name] = trajectory
             keys = timing(clip)
-            assert keys[0]==[0,0] and keys[-1]==[60,1.0]
+            assert keys[0]==[0,0] and keys[-1]==[clip['frames'],1.0]
             move = roster[operator]['moves'].get(name)
             if 'pair' in clip:
                 move = roster[clip['pair']['attacker']]['moves'][clip['pair']['move']]
