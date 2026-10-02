@@ -72,5 +72,14 @@ failed attempts and earlier releases.
   vertical routes without incorrectly claiming overlapping playable decks.
 - Helix remains on its isolated map branch until Blender/native verification;
   its advertised `modeBindings` remains empty pending actual mode journeys.
+- **Parallax Observatory — `408ed002`, ready for Blender.** Three major routes
+  and three crosslinks over 0/12/24 m tiers, two through-interiors and a real
+  water void. All 689 navigation nodes and 21 gameplay targets are connected;
+  six routes passed source movement in both directions with zero measured
+  floor-height error. Physical CTF journeys and a three-capture round passed,
+  alongside controlled DM/TDM/KOTH/Uplink/Holdout fixtures. Blender/native art,
+  screenshots, footage and hosted native acceptance remain pending.
+- Parent is reviewing the shared [integration requirements](INTEGRATION.md).
+  Helix has resumed source-only objective journeys while waiting for its slot.
 
 No finished Blender asset or native map acceptance is claimed at this checkpoint.
