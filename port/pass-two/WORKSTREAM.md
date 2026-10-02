@@ -22,8 +22,9 @@ actual verification, remaining gaps and preserved failure evidence.
 
 ## Engine and integration
 
-**Helix Conservatory currently owns the exclusive local Blender/Godot slot.**
-Foundry and Parallax follow through explicit grants. Second-pass feature agents
+**Gravemill Foundry currently owns the exclusive local Blender/Godot slot.**
+Helix released after a functional native checkpoint and is preparing a further
+architectural revision. Parallax follows through an explicit grant. Feature agents
 may audit, code and run Node tests now; they return `READY FOR ENGINE` and wait
 for their grant before imports, native tests, baking or rendering.
 
@@ -51,7 +52,7 @@ coherent player-visible batch, then verify it through actual lifecycle journeys.
   pending. Vehicle exhaust/heat is deferred. No Godot/Blender/import/render ran.
 - World remains on its isolated branch pending its explicit engine grant and
   native type/shader, pixel, rendered, connected and resource-lifecycle acceptance.
-  Helix retains the heavy slot; this handoff does not advance the engine queue.
+  This source handoff did not advance the engine queue.
 - **Modes/progression — ready for engine:** `9e5d0dd4` adds source-owned
   `applyMatchAll → awardMatch` composition and read-only native Career projection;
   `8d7bf0c3` isolates owned-launcher/runtime discovery hooks and `e94b3da0` updates
@@ -80,7 +81,7 @@ coherent player-visible batch, then verify it through actual lifecycle journeys.
   modal transitions, seat/reconnect privacy, event-backed assists, and inspected
   wide/compact layouts across supported route families. New runtime data
   `godot/experience/public_event_types.json` needs parent package-closure review.
-  Implementation remains isolated and Helix retains the heavy slot.
+  Implementation remains isolated pending its native slot.
 
 ## Parent follow-up
 

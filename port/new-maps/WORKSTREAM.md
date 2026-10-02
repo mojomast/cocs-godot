@@ -46,11 +46,11 @@ Blender authoring scripts, editable master, GLB, native data and focused tests.
 
 ## Verification and resource queue
 
-**Helix now owns the exclusive Blender/Godot slot.** Parent completed the 359-gate
-combined suite, both exports, 75 Linux cases and three exported graphical checks;
-Windows execution runs remotely. Helix was explicitly granted local production
-and instructed to merge the verified `e731fd53` runtime before importing/rendering.
-Foundry and Parallax continue to wait for their explicit grants.
+**Gravemill Foundry now owns the exclusive Blender/Godot slot.** Helix released
+all owned processes after its functional native checkpoint. Foundry received an
+explicit production grant and must merge verified runtime `e731fd53` first.
+Parallax follows by explicit grant. Helix is preparing a source/code-only
+architectural revision and will need another production slot.
 Map agents must return `READY FOR BLENDER` and receive an explicit parent grant
 before Blender, import, bake, rendering or Godot runs. Use serial heavy processes
 and `LP_NUM_THREADS=1`; no nested agents.
@@ -117,5 +117,36 @@ failed attempts and earlier releases.
   rounds passed again with 689/689 connected nav nodes. New geometry hash:
   `916164f0417369f37506e3908e940c961ea142aa349dcda3226ca1f316a040eb`.
 
-Helix is now executing Blender/native production. No finished Blender asset or
-native map acceptance is claimed at this grant checkpoint.
+## Helix functional checkpoint and parent art review
+
+- `becef6b4` supplies the Blender master, GLB, source/native collision/mesh checks
+  and hosted mode evidence; `96174a63` separately supplies shared map bindings.
+  Accepted runtime `e731fd53` was merged before production. Five hosted native
+  modes completed: DM, TDM, CTF, Domination and KOTH, using ordinary sampled input
+  over production WebSockets without actor/score/flag injection. Arsenal and
+  Juggernaut remain source-only and unadvertised.
+- Functional-checkpoint geometry hash:
+  `6afb8d0f8f749b0318c31f5684e1f2a23117b7b7b3823ff2b84e2f38e375ee3c`.
+  Art: 40,462 triangles, eight materials, 22 mesh surfaces. Source/native visual
+  comparison found no missing/extra recipe triangles (maximum error 0.084381 mm).
+  All sixteen source checks and sixteen routing/options checks passed. Four-bot
+  Domination scored a victory; four-bot CTF timed out 0:0 despite objective use.
+- Parent inspected the overview, archive portal, lightwell and CTF result.
+  **Functional acceptance does not satisfy the owner's architectural brief yet.**
+  The large sparse concentric terraces, thin framing and two simple similar
+  interiors need substantial district/volume/interior/cover development. Helix
+  has been resumed for a code/source-only revision: distinct archive and irrigation
+  districts, a substantial conservatory volume, central landmark, structural
+  framing and purposeful planting/cover. Changes require new hashes and affected
+  acceptance; old evidence stays attached to its original geometry.
+- The inspected 640×400 gameplay clip is sampled at approximately one image per
+  second, not full-motion footage. Small-screen inherited help/kit clipping and
+  software-renderer steering cost remain documented. Future acceptance requires
+  the standard wide/compact UI views and improved footage where feasible.
+- These map commits remain on the isolated map branch pending architectural
+  revision and parent package acceptance. They are not in the published release.
+- Public checkpoint images: [overview](https://github.com/mojomast/cocs-godot/releases/download/quiet-relay-gallery-2026-09-30/helix-prototype-overview.png),
+  [archive](https://github.com/mojomast/cocs-godot/releases/download/quiet-relay-gallery-2026-09-30/helix-prototype-archive.png),
+  [CTF result](https://github.com/mojomast/cocs-godot/releases/download/quiet-relay-gallery-2026-09-30/helix-prototype-ctf-result.png).
+  The gallery's `helix-prototype-provenance.json` explicitly records the pending
+  art revision and the sampled cadence of `helix-prototype-sampled-gameplay.mp4`.
