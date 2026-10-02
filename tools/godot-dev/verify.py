@@ -48,6 +48,7 @@ os.environ['EDGE_SOURCE_EVENTS'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'e
 os.environ['EDGE_MAP_CASES'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'edge-map-cases.json')
 os.environ['EDGE_RENDER_OUT'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'edge-render')
 os.environ['PLAYER_GAMEPLAY_EVIDENCE'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'player-gameplay')
+os.environ['MODE_EVIDENCE'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'competitive-modes')
 # Verification-owned loopback authorities must not inherit a user's fixed server
 # port. The launchers resolve and pass the actual ephemeral endpoint to Godot.
 os.environ['PORT'] = '0'
@@ -347,14 +348,26 @@ commands = [
     ("weather-source-vectors", ["node", "port/native-audiovisual/weather-oracle.mjs", "--check"]),
     ("world-weather-source-look", ["node", "scripts/world-weather-oracle.mjs", "--check"]),
     ("world-weather-native-look", [binary, "--headless", "--path", "godot", "--script", "res://tests/world_weather/unit.gd"]),
+    ("world-weather-standalone", [binary, "--headless", "--path", "godot", "--script", "res://tests/world_weather/standalone.gd"]),
+    ("world-weather-source-journey", ["node", "scripts/world-weather-journey.mjs", "source", "tidal-citadel", str(Path(os.environ['COCS_CAREER_ROOT']) / 'weather-source')]),
+    ("world-weather-campaign-journey", ["node", "scripts/world-weather-journey.mjs", "campaign", "siltwake-crossing", str(Path(os.environ['COCS_CAREER_ROOT']) / 'weather-campaign')]),
     ("experience-source-captions", ["node", "tools/experience/extract.mjs", "--check"]),
     ("experience-native-information", [binary, "--headless", "--path", "godot", "--script", "res://tests/experience/contracts.gd"]),
     ("experience-combined-hud", [binary, "--headless", "--path", "godot", "--script", "res://tests/experience/combined.gd"]),
+    ("experience-mode-journey", ["node", "tools/experience/native-journey.mjs", "--mode=vip-escort", "--compact", "--output=" + str(Path(os.environ['COCS_CAREER_ROOT']) / 'experience-mode')]),
+    ("experience-campaign-journey", ["node", "tools/experience/native-journey.mjs", "--scenario=campaign", "--compact", "--output=" + str(Path(os.environ['COCS_CAREER_ROOT']) / 'experience-campaign')]),
+    ("experience-sports-journey", ["node", "tools/experience/native-journey.mjs", "--scenario=sports", "--compact", "--output=" + str(Path(os.environ['COCS_CAREER_ROOT']) / 'experience-sports')]),
+    ("experience-combined-arms-journey", ["node", "tools/experience/native-journey.mjs", "--scenario=combined_arms", "--compact", "--output=" + str(Path(os.environ['COCS_CAREER_ROOT']) / 'experience-combined-arms')]),
     ("player-gameplay-catalog", ["node", "port/next-port/gameplay/catalog.mjs", "--check"]),
     ("player-gameplay-source-fixtures", ["node", "port/next-port/gameplay/fixtures.mjs", "--check"]),
     ("player-gameplay-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_gameplay/test.gd"]),
     ("player-gameplay-live-input", ["node", "port/next-port/gameplay/live.mjs"]),
     ("competitive-source-modes", ["node", "--test", "port/next-port/modes/source-parity.test.mjs", "game/extra-modes.test.mjs"]),
+    ("competitive-native-contracts", [binary, "--headless", "--path", "godot", "--script", "res://tests/mode_expansion/contracts.gd"]),
+    ("competitive-native-arsenal", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "port/next-port/modes/native-proof.mjs", "--mode=arsenal"]),
+    ("competitive-native-juggernaut", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "port/next-port/modes/native-proof.mjs", "--mode=juggernaut"]),
+    ("competitive-native-elimination", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "port/next-port/modes/native-proof.mjs", "--mode=team-elimination"]),
+    ("competitive-native-vip", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "port/next-port/modes/native-proof.mjs", "--mode=vip-escort"]),
     ("audiovisual-event-router", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/event_router.gd"]),
     ("audiovisual-outcome", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/outcome.gd"]),
     ("audiovisual-settings", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/settings.gd"]),

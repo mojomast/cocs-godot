@@ -6,6 +6,17 @@ not an exhaustive claim that every product element is complete.
 
 ## Selected journeys
 
+Native follow-up (2026-10-02): see `ACCEPTANCE.md` for actual connected evidence
+and remaining gaps. Both native experience contracts pass, including all nine
+operator models. The source vocabulary/oracle remains unchanged. Native event
+ingestion additionally debounces interleaved recurring caption texts until a
+2.2-second quiet interval; this prevents per-tick blocked movement and gunfire
+from immediately erasing a pickup. It does not refresh the displayed TTL or
+change the source priority replacement helper. Campaign kit/comms and hit
+history have focused, event-consuming keyboard scroll navigation. New mode HUD
+composition uses the existing responsive objective region; independent caption
+placement admits readable narrow side slots around the reserved aim area.
+
 1. **Enable sound captions in Home/in-match F12 Settings, then play with a muted
    or audible mix.** New persisted preferences retain source defaults (off,
    100%, dim, bottom); text scale is 80–160%, with top/bottom and three background

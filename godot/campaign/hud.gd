@@ -56,6 +56,7 @@ func _ready() -> void:
 	objective_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	objective_scroll.focus_mode = Control.FOCUS_ALL
 	objective_scroll.follow_focus = true
+	preload("res://experience/scroll_keys.gd").bind(objective_scroll)
 	objective_scroll.add_child(top)
 	top.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.mouse_filter = MOUSE_FILTER_IGNORE
@@ -66,6 +67,7 @@ func _ready() -> void:
 	comms.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	comms.focus_mode = Control.FOCUS_ALL
 	comms.follow_focus = true
+	preload("res://experience/scroll_keys.gd").bind(comms)
 	comms.add_child(comms_stack)
 	comms_stack.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	comms_stack.add_theme_constant_override("separation", 0)
@@ -151,7 +153,7 @@ func detach_experience() -> void:
 		experience_story.comms_docked = false
 		experience_story.caption.custom_minimum_size.x = 0
 		experience_story.caption.reparent(experience_story)
-		experience_story.layout()
+		if experience_story.is_inside_tree(): experience_story.layout()
 	experience_story = null
 
 func resize() -> void:
@@ -177,14 +179,15 @@ func layout_live() -> void:
 	var width := minf(640, view.x - 32)
 	var top_width := minf(width, menu.position.x - 28) if menu.visible else width
 	objective_scroll.position = Vector2(16, 18)
-	objective_scroll.size = Vector2(top_width, minf(view.y * 0.30, maxf(30, top.get_combined_minimum_size().y)))
 	bottom.size.x = width
 	subtitle.custom_minimum_size.x = width - 16
 	var bottom_caption := is_instance_valid(experience_caption) and experience_caption.get_parent() == comms_stack and experience_caption.visible
-	var story_caption := is_instance_valid(experience_story) and experience_story.caption.visible
+	var story_caption: bool = is_instance_valid(experience_story) and experience_story.caption.visible
 	if is_instance_valid(experience_story): experience_story.caption.custom_minimum_size.x = width - 16
 	if is_instance_valid(experience_status): experience_status.custom_minimum_size.x = maxf(80, top_width - 16)
 	if is_instance_valid(experience_caption): experience_caption.custom_minimum_size.x = maxf(80, (width if bottom_caption else top_width) - 16)
+	top.size.x = top_width
+	objective_scroll.size = Vector2(top_width, minf(view.y * 0.38, maxf(30, top.get_combined_minimum_size().y)))
 	comms.visible = subtitle.visible or bottom_caption or story_caption
 	comms.custom_minimum_size.y = minf(view.y * 0.22, comms_stack.get_combined_minimum_size().y) if comms.visible else 0
 	bottom.size.y = bottom.get_combined_minimum_size().y
