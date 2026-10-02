@@ -1,0 +1,58 @@
+{
+  "status": "source-only-native-pending",
+  "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+  "results": [
+    {
+      "label": "crusher-front",
+      "side": -1,
+      "actorStopped": true,
+      "rayBlocked": true
+    },
+    {
+      "label": "crusher-front",
+      "side": 1,
+      "actorStopped": true,
+      "rayBlocked": true
+    },
+    {
+      "label": "assay-partition",
+      "side": -1,
+      "actorStopped": true,
+      "rayBlocked": true
+    },
+    {
+      "label": "assay-partition",
+      "side": 1,
+      "actorStopped": true,
+      "rayBlocked": true
+    },
+    {
+      "label": "transfer-south",
+      "side": -1,
+      "actorStopped": true,
+      "rayBlocked": true
+    },
+    {
+      "label": "transfer-south",
+      "side": 1,
+      "actorStopped": true,
+      "rayBlocked": true
+    },
+    {
+      "label": "crusher-roof",
+      "hit": 19.648148148148145
+    },
+    {
+      "label": "transfer-roof",
+      "hit": 15.462264150943398
+    },
+    {
+      "label": "assay-roof",
+      "hit": 14.357142857142858
+    },
+    {
+      "label": "cooling-roof",
+      "hit": 10.499999999999998
+    }
+  ]
+}

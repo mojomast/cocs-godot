@@ -1,0 +1,344 @@
+{
+  "source": {
+    "status": "source-checks-passed-native-pending",
+    "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+    "milliseconds": 14739.304122,
+    "results": [
+      {
+        "name": "schema-and-markers",
+        "markers": 22
+      },
+      {
+        "name": "moveActor-ore-procession",
+        "forward": {
+          "steps": 1706,
+          "distance": 363.3308352563343,
+          "maxFloorError": 0
+        },
+        "reverse": {
+          "steps": 1706,
+          "distance": 363.32713880113187,
+          "maxFloorError": 0
+        }
+      },
+      {
+        "name": "moveActor-service-return",
+        "forward": {
+          "steps": 1876,
+          "distance": 401.11496825191824,
+          "maxFloorError": 0
+        },
+        "reverse": {
+          "steps": 1876,
+          "distance": 401.1415239166062,
+          "maxFloorError": 0
+        }
+      },
+      {
+        "name": "moveActor-cooling-gallery",
+        "forward": {
+          "steps": 2327,
+          "distance": 496.500658534068,
+          "maxFloorError": 0
+        },
+        "reverse": {
+          "steps": 2327,
+          "distance": 496.4890067315324,
+          "maxFloorError": 0
+        }
+      },
+      {
+        "name": "moveActor-crown-gantry",
+        "forward": {
+          "steps": 1882,
+          "distance": 401.4164156538147,
+          "maxFloorError": 0
+        },
+        "reverse": {
+          "steps": 1881,
+          "distance": 401.3035014172165,
+          "maxFloorError": 0
+        }
+      },
+      {
+        "name": "moveActor-maintenance-incline--112",
+        "forward": {
+          "steps": 983,
+          "distance": 208.71258544861774,
+          "maxFloorError": 0
+        },
+        "reverse": {
+          "steps": 983,
+          "distance": 208.8041467064707,
+          "maxFloorError": 0
+        }
+      },
+      {
+        "name": "moveActor-maintenance-incline--34",
+        "forward": {
+          "steps": 983,
+          "distance": 208.71258544861774,
+          "maxFloorError": 0
+        },
+        "reverse": {
+          "steps": 983,
+          "distance": 208.8041467064707,
+          "maxFloorError": 0
+        }
+      },
+      {
+        "name": "moveActor-maintenance-incline-34",
+        "forward": {
+          "steps": 983,
+          "distance": 208.71258544861774,
+          "maxFloorError": 0
+        },
+        "reverse": {
+          "steps": 983,
+          "distance": 208.80414670647076,
+          "maxFloorError": 0
+        }
+      },
+      {
+        "name": "moveActor-maintenance-incline-112",
+        "forward": {
+          "steps": 983,
+          "distance": 208.7125854486177,
+          "maxFloorError": 0
+        },
+        "reverse": {
+          "steps": 983,
+          "distance": 208.8041467064707,
+          "maxFloorError": 0
+        }
+      },
+      {
+        "name": "moveActor-crusher-covered-aisle",
+        "forward": {
+          "steps": 643,
+          "distance": 135.6186990612136,
+          "maxFloorError": 0
+        },
+        "reverse": {
+          "steps": 642,
+          "distance": 135.5415406642536,
+          "maxFloorError": 0
+        }
+      },
+      {
+        "name": "moveActor-diagonal-service-cut",
+        "forward": {
+          "steps": 353,
+          "distance": 74.52634277475128,
+          "maxFloorError": 0
+        },
+        "reverse": {
+          "steps": 353,
+          "distance": 74.4867405907363,
+          "maxFloorError": 0
+        }
+      },
+      {
+        "name": "source-navigation",
+        "nodes": 3698,
+        "connected": 3698,
+        "markers": 22
+      },
+      {
+        "name": "source-Puma-mounted-service-lap",
+        "sector": 13,
+        "steps": 3818,
+        "distance": 767.6434375401761,
+        "collisions": 0,
+        "seatReleased": true
+      },
+      {
+        "name": "source-derived-payload-path",
+        "metres": 363.60023308338367,
+        "points": 3666,
+        "checkpoints": [
+          {
+            "id": "cp1",
+            "x": -55.503424369974134,
+            "z": -45.77047941179638,
+            "y": 0,
+            "radius": 4.5,
+            "owner": 0,
+            "captureTeam": null,
+            "progress": 100,
+            "distance": 121.20007769446121
+          },
+          {
+            "id": "cp2",
+            "x": 57.55402694324624,
+            "z": -49.73231871483547,
+            "y": 0,
+            "radius": 4.5,
+            "owner": 0,
+            "captureTeam": null,
+            "progress": 100,
+            "distance": 242.40015538892243
+          },
+          {
+            "id": "cp3",
+            "x": 166,
+            "z": -38.76,
+            "y": 0,
+            "radius": 4.5,
+            "owner": 0,
+            "captureTeam": null,
+            "progress": 100,
+            "distance": 363.60023308338367
+          }
+        ]
+      },
+      {
+        "name": "source-payload-delivery-movement-fixture",
+        "steps": 6000,
+        "seconds": 150,
+        "checkpointsReached": 3
+      },
+      {
+        "name": "vault-shot-support-and-sightline",
+        "vaults": 2,
+        "openPortals": 4,
+        "windowOpenings": 2,
+        "windowHeaders": 2,
+        "continuousWallContactSteps": 160,
+        "spawnSightlineBlocked": true
+      }
+    ]
+  },
+  "rounds": {
+    "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+    "milliseconds": 15617.477203000002,
+    "results": [
+      {
+        "mode": "payload",
+        "label": "two-seat source full-round normal-input fixture; passive opponent",
+        "seconds": 152.67500000001758,
+        "steps": 6107,
+        "distance": 389.19096046976176,
+        "initial": {
+          "x": -178,
+          "z": -102.92
+        },
+        "teamScores": {
+          "0": 3,
+          "1": 0
+        },
+        "kills": 0,
+        "mounted": false,
+        "exited": false,
+        "driveDistance": 0,
+        "objective": {
+          "delivered": true,
+          "checkpoints": 3
+        }
+      },
+      {
+        "mode": "assault",
+        "label": "two-seat source full-round normal-input fixture; passive opponent",
+        "seconds": 64.42499999999752,
+        "steps": 2577,
+        "distance": 418.6600608837649,
+        "initial": {
+          "x": -178,
+          "z": -102.92
+        },
+        "teamScores": {
+          "0": 3,
+          "1": 0
+        },
+        "kills": 0,
+        "mounted": false,
+        "exited": false,
+        "driveDistance": 0,
+        "objective": {
+          "winner": 0
+        }
+      },
+      {
+        "mode": "domination",
+        "label": "two-seat source full-round normal-input fixture; passive opponent",
+        "seconds": 27.474999999999508,
+        "steps": 1099,
+        "distance": 113.86832675765672,
+        "initial": {
+          "x": -178,
+          "z": -102.92
+        },
+        "teamScores": {
+          "0": 10.000000000000075,
+          "1": 0
+        },
+        "kills": 0,
+        "mounted": false,
+        "exited": false,
+        "driveDistance": 0,
+        "objective": null
+      },
+      {
+        "mode": "combined-arms",
+        "label": "two-seat source full-round normal-input fixture; passive opponent",
+        "seconds": 70.07499999999881,
+        "steps": 2803,
+        "distance": 115.42263603375493,
+        "initial": {
+          "x": -178,
+          "z": -102.92
+        },
+        "teamScores": {
+          "0": 50.02499999999823,
+          "1": 0
+        },
+        "kills": 0,
+        "mounted": true,
+        "exited": true,
+        "driveDistance": 77.29315363687394,
+        "objective": null
+      },
+      {
+        "mode": "deathmatch",
+        "label": "two-seat source full-round normal-input fixture; passive opponent",
+        "seconds": 147.00000000001629,
+        "steps": 5880,
+        "distance": 1091.0504641718317,
+        "initial": {
+          "x": -178,
+          "z": -102.92
+        },
+        "teamScores": {
+          "0": 0,
+          "1": 0
+        },
+        "kills": 5,
+        "mounted": false,
+        "exited": false,
+        "driveDistance": 0,
+        "objective": null
+      },
+      {
+        "mode": "teamdeathmatch",
+        "label": "two-seat source full-round normal-input fixture; passive opponent",
+        "seconds": 75.67500000000008,
+        "steps": 3027,
+        "distance": 460.9061009452926,
+        "initial": {
+          "x": -178,
+          "z": -102.92
+        },
+        "teamScores": {
+          "0": 5,
+          "1": 0
+        },
+        "kills": 5,
+        "mounted": false,
+        "exited": false,
+        "driveDistance": 0,
+        "objective": null
+      }
+    ],
+    "native": false
+  }
+}

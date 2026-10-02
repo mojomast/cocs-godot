@@ -1,0 +1,555 @@
+{
+  "version": 1,
+  "assumptions": "First-active-frame contact, shared hitstop, no pushback/landing/projectile travel simulation. Native core verification required.",
+  "combos": [
+    {
+      "operator": "chatgpt",
+      "name": "Basic confirm",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "stand_l",
+          "to": "stand_m",
+          "cancel_frame": 6,
+          "contact_delay": 9,
+          "available_hitstun": 20,
+          "estimated_slack": 11
+        }
+      ]
+    },
+    {
+      "operator": "chatgpt",
+      "name": "Signature special confirm",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "stand_l",
+          "to": "stand_m",
+          "cancel_frame": 6,
+          "contact_delay": 9,
+          "available_hitstun": 20,
+          "estimated_slack": 11
+        },
+        {
+          "from": "stand_m",
+          "to": "special1",
+          "cancel_frame": 9,
+          "contact_delay": 13,
+          "available_hitstun": 23,
+          "estimated_slack": 10
+        }
+      ]
+    },
+    {
+      "operator": "chatgpt",
+      "name": "Air corner chain",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "air_l",
+          "to": "air_m",
+          "cancel_frame": 6,
+          "contact_delay": 9,
+          "available_hitstun": 20,
+          "estimated_slack": 11
+        },
+        {
+          "from": "air_m",
+          "to": "special1",
+          "cancel_frame": 13,
+          "contact_delay": 17,
+          "available_hitstun": 24,
+          "estimated_slack": 7
+        }
+      ]
+    },
+    {
+      "operator": "claude",
+      "name": "Basic confirm",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "stand_l",
+          "to": "crouch_m",
+          "cancel_frame": 7,
+          "contact_delay": 11,
+          "available_hitstun": 22,
+          "estimated_slack": 11
+        }
+      ]
+    },
+    {
+      "operator": "claude",
+      "name": "Signature special confirm",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "stand_l",
+          "to": "crouch_m",
+          "cancel_frame": 7,
+          "contact_delay": 11,
+          "available_hitstun": 22,
+          "estimated_slack": 11
+        },
+        {
+          "from": "crouch_m",
+          "to": "special1",
+          "cancel_frame": 11,
+          "contact_delay": 15,
+          "available_hitstun": 27,
+          "estimated_slack": 12
+        }
+      ]
+    },
+    {
+      "operator": "claude",
+      "name": "Air corner chain",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "air_l",
+          "to": "air_m",
+          "cancel_frame": 7,
+          "contact_delay": 11,
+          "available_hitstun": 22,
+          "estimated_slack": 11
+        },
+        {
+          "from": "air_m",
+          "to": "air_h",
+          "cancel_frame": 11,
+          "contact_delay": 15,
+          "available_hitstun": 27,
+          "estimated_slack": 12
+        }
+      ]
+    },
+    {
+      "operator": "grok",
+      "name": "Basic confirm",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "stand_l",
+          "to": "stand_m",
+          "cancel_frame": 5,
+          "contact_delay": 8,
+          "available_hitstun": 21,
+          "estimated_slack": 13
+        }
+      ]
+    },
+    {
+      "operator": "grok",
+      "name": "Signature special confirm",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "stand_l",
+          "to": "stand_m",
+          "cancel_frame": 5,
+          "contact_delay": 8,
+          "available_hitstun": 21,
+          "estimated_slack": 13
+        },
+        {
+          "from": "stand_m",
+          "to": "special1",
+          "cancel_frame": 8,
+          "contact_delay": 17,
+          "available_hitstun": 25,
+          "estimated_slack": 8
+        }
+      ]
+    },
+    {
+      "operator": "grok",
+      "name": "Air corner chain",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "air_l",
+          "to": "air_m",
+          "cancel_frame": 5,
+          "contact_delay": 8,
+          "available_hitstun": 21,
+          "estimated_slack": 13
+        },
+        {
+          "from": "air_m",
+          "to": "air_h",
+          "cancel_frame": 8,
+          "contact_delay": 13,
+          "available_hitstun": 26,
+          "estimated_slack": 13
+        }
+      ]
+    },
+    {
+      "operator": "meta",
+      "name": "Basic confirm",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "crouch_l",
+          "to": "crouch_m",
+          "cancel_frame": 8,
+          "contact_delay": 13,
+          "available_hitstun": 23,
+          "estimated_slack": 10
+        }
+      ]
+    },
+    {
+      "operator": "meta",
+      "name": "Signature special confirm",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "crouch_l",
+          "to": "crouch_m",
+          "cancel_frame": 8,
+          "contact_delay": 13,
+          "available_hitstun": 23,
+          "estimated_slack": 10
+        },
+        {
+          "from": "crouch_m",
+          "to": "special1",
+          "cancel_frame": 13,
+          "contact_delay": 12,
+          "available_hitstun": 30,
+          "estimated_slack": 18
+        }
+      ]
+    },
+    {
+      "operator": "meta",
+      "name": "Air corner chain",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "air_l",
+          "to": "air_m",
+          "cancel_frame": 8,
+          "contact_delay": 12,
+          "available_hitstun": 24,
+          "estimated_slack": 12
+        },
+        {
+          "from": "air_m",
+          "to": "air_h",
+          "cancel_frame": 12,
+          "contact_delay": 17,
+          "available_hitstun": 30,
+          "estimated_slack": 13
+        }
+      ]
+    },
+    {
+      "operator": "gemini",
+      "name": "Basic confirm",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "stand_l",
+          "to": "stand_m",
+          "cancel_frame": 6,
+          "contact_delay": 9,
+          "available_hitstun": 20,
+          "estimated_slack": 11
+        }
+      ]
+    },
+    {
+      "operator": "gemini",
+      "name": "Signature special confirm",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "stand_l",
+          "to": "stand_m",
+          "cancel_frame": 6,
+          "contact_delay": 9,
+          "available_hitstun": 20,
+          "estimated_slack": 11
+        },
+        {
+          "from": "stand_m",
+          "to": "special1",
+          "cancel_frame": 9,
+          "contact_delay": 14,
+          "available_hitstun": 23,
+          "estimated_slack": 9
+        }
+      ]
+    },
+    {
+      "operator": "gemini",
+      "name": "Air corner chain",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "air_l",
+          "to": "air_m",
+          "cancel_frame": 6,
+          "contact_delay": 9,
+          "available_hitstun": 20,
+          "estimated_slack": 11
+        },
+        {
+          "from": "air_m",
+          "to": "special1",
+          "cancel_frame": 13,
+          "contact_delay": 18,
+          "available_hitstun": 24,
+          "estimated_slack": 6
+        }
+      ]
+    },
+    {
+      "operator": "deepseek",
+      "name": "Basic confirm",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "crouch_l",
+          "to": "stand_m",
+          "cancel_frame": 8,
+          "contact_delay": 12,
+          "available_hitstun": 22,
+          "estimated_slack": 10
+        }
+      ]
+    },
+    {
+      "operator": "deepseek",
+      "name": "Signature special confirm",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "crouch_l",
+          "to": "crouch_m",
+          "cancel_frame": 8,
+          "contact_delay": 12,
+          "available_hitstun": 22,
+          "estimated_slack": 10
+        },
+        {
+          "from": "crouch_m",
+          "to": "special1",
+          "cancel_frame": 12,
+          "contact_delay": 11,
+          "available_hitstun": 29,
+          "estimated_slack": 18
+        }
+      ]
+    },
+    {
+      "operator": "deepseek",
+      "name": "Air corner chain",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "air_l",
+          "to": "air_m",
+          "cancel_frame": 8,
+          "contact_delay": 12,
+          "available_hitstun": 23,
+          "estimated_slack": 11
+        },
+        {
+          "from": "air_m",
+          "to": "air_h",
+          "cancel_frame": 12,
+          "contact_delay": 16,
+          "available_hitstun": 29,
+          "estimated_slack": 13
+        }
+      ]
+    },
+    {
+      "operator": "mistral",
+      "name": "Basic confirm",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "stand_l",
+          "to": "crouch_m",
+          "cancel_frame": 5,
+          "contact_delay": 8,
+          "available_hitstun": 19,
+          "estimated_slack": 11
+        }
+      ]
+    },
+    {
+      "operator": "mistral",
+      "name": "Signature special confirm",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "stand_l",
+          "to": "crouch_m",
+          "cancel_frame": 5,
+          "contact_delay": 8,
+          "available_hitstun": 19,
+          "estimated_slack": 11
+        },
+        {
+          "from": "crouch_m",
+          "to": "special1",
+          "cancel_frame": 8,
+          "contact_delay": 11,
+          "available_hitstun": 23,
+          "estimated_slack": 12
+        }
+      ]
+    },
+    {
+      "operator": "mistral",
+      "name": "Air corner chain",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "air_l",
+          "to": "air_m",
+          "cancel_frame": 5,
+          "contact_delay": 8,
+          "available_hitstun": 19,
+          "estimated_slack": 11
+        },
+        {
+          "from": "air_m",
+          "to": "air_h",
+          "cancel_frame": 8,
+          "contact_delay": 11,
+          "available_hitstun": 23,
+          "estimated_slack": 12
+        }
+      ]
+    },
+    {
+      "operator": "kimi",
+      "name": "Basic confirm",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "stand_l",
+          "to": "stand_m",
+          "cancel_frame": 6,
+          "contact_delay": 10,
+          "available_hitstun": 21,
+          "estimated_slack": 11
+        }
+      ]
+    },
+    {
+      "operator": "kimi",
+      "name": "Signature special confirm",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "stand_l",
+          "to": "stand_m",
+          "cancel_frame": 6,
+          "contact_delay": 10,
+          "available_hitstun": 21,
+          "estimated_slack": 11
+        },
+        {
+          "from": "stand_m",
+          "to": "special1",
+          "cancel_frame": 10,
+          "contact_delay": 16,
+          "available_hitstun": 25,
+          "estimated_slack": 9
+        }
+      ]
+    },
+    {
+      "operator": "kimi",
+      "name": "Air corner chain",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "air_l",
+          "to": "air_m",
+          "cancel_frame": 6,
+          "contact_delay": 10,
+          "available_hitstun": 21,
+          "estimated_slack": 11
+        },
+        {
+          "from": "air_m",
+          "to": "special1",
+          "cancel_frame": 14,
+          "contact_delay": 20,
+          "available_hitstun": 26,
+          "estimated_slack": 6
+        }
+      ]
+    },
+    {
+      "operator": "qwen",
+      "name": "Basic confirm",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "crouch_l",
+          "to": "crouch_m",
+          "cancel_frame": 7,
+          "contact_delay": 11,
+          "available_hitstun": 21,
+          "estimated_slack": 10
+        }
+      ]
+    },
+    {
+      "operator": "qwen",
+      "name": "Signature special confirm",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "crouch_l",
+          "to": "crouch_m",
+          "cancel_frame": 7,
+          "contact_delay": 11,
+          "available_hitstun": 21,
+          "estimated_slack": 10
+        },
+        {
+          "from": "crouch_m",
+          "to": "special1",
+          "cancel_frame": 11,
+          "contact_delay": 15,
+          "available_hitstun": 27,
+          "estimated_slack": 12
+        }
+      ]
+    },
+    {
+      "operator": "qwen",
+      "name": "Air corner chain",
+      "status": "mathematical estimate only; not actual core proof",
+      "edges": [
+        {
+          "from": "air_l",
+          "to": "air_m",
+          "cancel_frame": 7,
+          "contact_delay": 10,
+          "available_hitstun": 22,
+          "estimated_slack": 12
+        },
+        {
+          "from": "air_m",
+          "to": "special1",
+          "cancel_frame": 14,
+          "contact_delay": 19,
+          "available_hitstun": 27,
+          "estimated_slack": 8
+        }
+      ]
+    }
+  ]
+}

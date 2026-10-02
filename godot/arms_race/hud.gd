@@ -20,7 +20,7 @@ func build_ui() -> void:
 
 func bind_session(target: Node) -> void:
 	super.bind_session(target)
-	controls.text = "WASD move · Mouse aim · Click fire · R reload · Space jump · Shift sprint\nEsc release · Tab ladder · Release held actions, then click to resume · Loadout locked"
+	preload("res://input_bindings/hints.gd").bind(controls, "WASD move · Mouse aim · LMB fire · R reload · Space jump · Shift sprint\nEsc release · Tab ladder · Release held actions, then click to resume · Loadout locked")
 
 func on_started(frame: Dictionary) -> void:
 	progress.clear()

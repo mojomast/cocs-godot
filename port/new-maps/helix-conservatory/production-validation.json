@@ -1,0 +1,529 @@
+{
+  "schemaVersion": 1,
+  "id": "helix-conservatory",
+  "geometryHash": "6afb8d0f8f749b0318c31f5684e1f2a23117b7b7b3823ff2b84e2f38e375ee3c",
+  "recipeHash": "87228c2f40262ccbd4dcea5bb50ba4fbbeb634462e54be11abf2499d4ede106a",
+  "acceptedNativeModes": [
+    "deathmatch",
+    "teamdeathmatch",
+    "ctf",
+    "domination",
+    "koth"
+  ],
+  "sourceOnlyModes": [
+    "arsenal",
+    "juggernaut"
+  ],
+  "classification": "scripted local hosted graphical scene acceptance; Mesa llvmpipe software rendering; not human/dedicated-GPU/package certification",
+  "art": {
+    "recipeSha256": "87228c2f40262ccbd4dcea5bb50ba4fbbeb634462e54be11abf2499d4ede106a",
+    "vertices": 52156,
+    "triangles": 39578,
+    "meshBatches": 16,
+    "materials": 8,
+    "files": {
+      "godot/multiplayer_worlds/art/helix-conservatory/helix-conservatory.glb": "c04a1c8904aad373636b87800352d5b8144f764661875cbdb436ef1753a2b22d",
+      "tools/godot-multiplayer/new-maps/helix-conservatory/masters/helix-conservatory.blend": "8fc355b529e97d57e3f4e7ab85dc3d84421673188ccb043c9126611cf98b6629"
+    }
+  },
+  "physics": {
+    "collisionShapes": 2330,
+    "contacts": [
+      {
+        "end": "(12.9278, -0.001967, 15.99999)",
+        "frames": 120,
+        "gap": 0.422202682495117,
+        "start": "(10.35, 0.0, 16.0)"
+      },
+      {
+        "end": "(15.07216, -0.001509, 15.99999)",
+        "frames": 120,
+        "gap": 0.422160720825195,
+        "start": "(17.65, 0.0, 16.0)"
+      },
+      {
+        "end": "(46.07906, 7.999799, 6.997503)",
+        "frames": 120,
+        "gap": 0.420940399169922,
+        "start": "(43.5, 7.633142, 7.0)"
+      },
+      {
+        "end": "(47.92196, 8.000063, 7.0)",
+        "frames": 120,
+        "gap": 0.421958923339844,
+        "start": "(50.5, 8.0, 7.0)"
+      },
+      {
+        "end": "(87.12949, 15.99897, 17.75322)",
+        "frames": 120,
+        "gap": 0.421973916015631,
+        "start": "(84.55146, 16.0, 17.75322)"
+      },
+      {
+        "end": "(91.37186, 16.00014, 17.74942)",
+        "frames": 120,
+        "gap": 0.420396689453128,
+        "start": "(93.95146, 16.72876, 17.75322)"
+      }
+    ],
+    "failures": [],
+    "geometryHash": "6afb8d0f8f749b0318c31f5684e1f2a23117b7b7b3823ff2b84e2f38e375ee3c",
+    "meshNodes": 22,
+    "meshSurfaces": 22,
+    "uniqueCollisionTriangles": 11532,
+    "visualParity": {
+      "extra": 0,
+      "maxVertexErrorMetres": 0.0000843803063617088,
+      "missing": 0
+    },
+    "visualTriangles": 40462
+  },
+  "inspection": {
+    "collision": {
+      "art": "res://multiplayer_worlds/art/helix-conservatory/helix-conservatory.glb",
+      "gameplayTriangles": 11532,
+      "geometryHash": "6afb8d0f8f749b0318c31f5684e1f2a23117b7b7b3823ff2b84e2f38e375ee3c"
+    },
+    "driver": "opengl3",
+    "geometryHash": "6afb8d0f8f749b0318c31f5684e1f2a23117b7b7b3823ff2b84e2f38e375ee3c",
+    "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+    "views": {
+      "archive-eye": {
+        "drawCalls": 82,
+        "primitives": 198168,
+        "visibleObjects": 83
+      },
+      "archive-portal-eye": {
+        "drawCalls": 87,
+        "primitives": 199103,
+        "visibleObjects": 88
+      },
+      "canopy-eye": {
+        "drawCalls": 89,
+        "primitives": 199138,
+        "visibleObjects": 90
+      },
+      "crown-eye": {
+        "drawCalls": 82,
+        "primitives": 198688,
+        "visibleObjects": 83
+      },
+      "irrigation-eye": {
+        "drawCalls": 87,
+        "primitives": 199351,
+        "visibleObjects": 88
+      },
+      "lightwell-eye": {
+        "drawCalls": 94,
+        "primitives": 199699,
+        "visibleObjects": 95
+      },
+      "overview": {
+        "drawCalls": 62,
+        "primitives": 145881,
+        "visibleObjects": 63
+      }
+    }
+  },
+  "journeys": [
+    {
+      "mode": "deathmatch",
+      "directory": "/home/mojo/.tmp-on-disk/cocs-new-map-conservatory-evidence-20261002/native-deathmatch-01",
+      "native": {
+        "captures": 71,
+        "drawCalls": 20,
+        "failures": [],
+        "frameMsP50": 50,
+        "frameMsP95": 60.308,
+        "geometryHash": "6afb8d0f8f749b0318c31f5684e1f2a23117b7b7b3823ff2b84e2f38e375ee3c",
+        "guideFrames": 236,
+        "inputEvents": 948,
+        "lastAck": 1420,
+        "map": "helix-conservatory",
+        "mode": "deathmatch",
+        "nativeEvents": {
+          "damage": 10,
+          "death": 5,
+          "killstreak": 2,
+          "move-blocked": 730,
+          "pickup": 2,
+          "shot": 15,
+          "spawn": 6
+        },
+        "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "roundResults": 1
+      },
+      "sourceSummary": {
+        "seconds": 76.93333333333025,
+        "wireInputs": 2750,
+        "endReason": "frag",
+        "events": {
+          "spawn": 6,
+          "pickup": 2,
+          "move-blocked": 730,
+          "shot": 15,
+          "damage": 10,
+          "death": 5,
+          "killstreak": 2
+        },
+        "stats": [
+          {
+            "id": 0,
+            "frags": 5,
+            "scoreStats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 0,
+              "objectiveCaptures": 0,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 15,
+              "hits": 10,
+              "damage": 565
+            }
+          },
+          {
+            "id": 1,
+            "frags": 0,
+            "scoreStats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 0,
+              "objectiveCaptures": 0,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 0,
+              "hits": 0,
+              "damage": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "mode": "teamdeathmatch",
+      "directory": "/home/mojo/.tmp-on-disk/cocs-new-map-conservatory-evidence-20261002/native-teamdeathmatch-01",
+      "native": {
+        "captures": 76,
+        "drawCalls": 21,
+        "failures": [],
+        "frameMsP50": 50,
+        "frameMsP95": 61.1111111111111,
+        "geometryHash": "6afb8d0f8f749b0318c31f5684e1f2a23117b7b7b3823ff2b84e2f38e375ee3c",
+        "guideFrames": 252,
+        "inputEvents": 1012,
+        "lastAck": 1516,
+        "map": "helix-conservatory",
+        "mode": "teamdeathmatch",
+        "nativeEvents": {
+          "damage": 10,
+          "death": 5,
+          "killstreak": 2,
+          "move-blocked": 516,
+          "shot": 12,
+          "spawn": 6
+        },
+        "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "roundResults": 1
+      },
+      "sourceSummary": {
+        "seconds": 82.23333333332995,
+        "wireInputs": 2948,
+        "endReason": "frag",
+        "events": {
+          "spawn": 6,
+          "move-blocked": 516,
+          "shot": 12,
+          "damage": 10,
+          "death": 5,
+          "killstreak": 2
+        },
+        "stats": [
+          {
+            "id": 0,
+            "frags": 5,
+            "scoreStats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 0,
+              "objectiveCaptures": 0,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 12,
+              "hits": 10,
+              "damage": 525
+            }
+          },
+          {
+            "id": 1,
+            "frags": 0,
+            "scoreStats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 0,
+              "objectiveCaptures": 0,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 0,
+              "hits": 0,
+              "damage": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "mode": "ctf",
+      "directory": "/home/mojo/.tmp-on-disk/cocs-new-map-conservatory-evidence-20261002/native-ctf-04",
+      "native": {
+        "captures": 64,
+        "drawCalls": 20,
+        "failures": [],
+        "frameMsP50": 48.1481481481481,
+        "frameMsP95": 55.5555555555556,
+        "geometryHash": "6afb8d0f8f749b0318c31f5684e1f2a23117b7b7b3823ff2b84e2f38e375ee3c",
+        "guideFrames": 230,
+        "inputEvents": 924,
+        "lastAck": 1383,
+        "map": "helix-conservatory",
+        "mode": "ctf",
+        "nativeEvents": {
+          "capture": 1,
+          "flag-pickup": 1,
+          "move-blocked": 3,
+          "shot": 1,
+          "spawn": 2
+        },
+        "objectiveText": "CTF  |  YOU: RED [1]  |  1 : 0\nRED [1] / at-base\nBLUE [2] / at-base\nTouch enemy flag to carry; E: nearby teammate pass, otherwise drop.\nTouch friendly dropped flag to return. Capture at uncontested home flag.\nROUND OVER / authoritative winner: 0.0",
+        "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "roundResults": 1
+      },
+      "sourceSummary": {
+        "seconds": 69.19999999999736,
+        "wireInputs": 1385,
+        "endReason": "capture",
+        "events": {
+          "spawn": 2,
+          "move-blocked": 3,
+          "shot": 1,
+          "flag-pickup": 1,
+          "capture": 1
+        },
+        "stats": [
+          {
+            "id": 0,
+            "frags": 0,
+            "scoreStats": {
+              "captures": 1,
+              "flagPickups": 1,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 0,
+              "objectiveCaptures": 0,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 1,
+              "hits": 0,
+              "damage": 0
+            }
+          },
+          {
+            "id": 1,
+            "frags": 0,
+            "scoreStats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 0,
+              "objectiveCaptures": 0,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 0,
+              "hits": 0,
+              "damage": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "mode": "domination",
+      "directory": "/home/mojo/.tmp-on-disk/cocs-new-map-conservatory-evidence-20261002/native-domination-01",
+      "native": {
+        "captures": 25,
+        "drawCalls": 23,
+        "failures": [],
+        "frameMsP50": 52.588,
+        "frameMsP95": 58.572,
+        "geometryHash": "6afb8d0f8f749b0318c31f5684e1f2a23117b7b7b3823ff2b84e2f38e375ee3c",
+        "guideFrames": 84,
+        "inputEvents": 340,
+        "lastAck": 508,
+        "map": "helix-conservatory",
+        "mode": "domination",
+        "nativeEvents": {
+          "move-blocked": 4,
+          "objective-win": 1,
+          "powerup": 1,
+          "shot": 1,
+          "spawn": 2,
+          "zone-capture": 1,
+          "zone-progress": 104,
+          "zone-score": 6
+        },
+        "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "roundResults": 1
+      },
+      "sourceSummary": {
+        "seconds": 28.033333333333022,
+        "wireInputs": 509,
+        "endReason": "objective",
+        "events": {
+          "spawn": 2,
+          "zone-progress": 104,
+          "move-blocked": 4,
+          "shot": 1,
+          "zone-capture": 1,
+          "powerup": 1,
+          "zone-score": 6,
+          "objective-win": 1
+        },
+        "stats": [
+          {
+            "id": 0,
+            "frags": 0,
+            "scoreStats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 5.016666666666654,
+              "objectiveCaptures": 1,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 1,
+              "hits": 0,
+              "damage": 0
+            }
+          },
+          {
+            "id": 1,
+            "frags": 0,
+            "scoreStats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 0,
+              "objectiveCaptures": 0,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 0,
+              "hits": 0,
+              "damage": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "mode": "koth",
+      "directory": "/home/mojo/.tmp-on-disk/cocs-new-map-conservatory-evidence-20261002/native-koth-01",
+      "native": {
+        "captures": 27,
+        "drawCalls": 23,
+        "failures": [],
+        "frameMsP50": 51.3888888888889,
+        "frameMsP95": 58.3333333333333,
+        "geometryHash": "6afb8d0f8f749b0318c31f5684e1f2a23117b7b7b3823ff2b84e2f38e375ee3c",
+        "guideFrames": 90,
+        "inputEvents": 364,
+        "lastAck": 543,
+        "map": "helix-conservatory",
+        "mode": "koth",
+        "nativeEvents": {
+          "move-blocked": 4,
+          "objective-win": 1,
+          "powerup": 1,
+          "shot": 1,
+          "spawn": 2,
+          "zone-capture": 1,
+          "zone-progress": 102,
+          "zone-score": 6
+        },
+        "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+        "roundResults": 1
+      },
+      "sourceSummary": {
+        "seconds": 29.583333333332934,
+        "wireInputs": 544,
+        "endReason": "objective",
+        "events": {
+          "spawn": 2,
+          "zone-progress": 102,
+          "move-blocked": 4,
+          "shot": 1,
+          "zone-capture": 1,
+          "powerup": 1,
+          "zone-score": 6,
+          "objective-win": 1
+        },
+        "stats": [
+          {
+            "id": 0,
+            "frags": 0,
+            "scoreStats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 5.016666666666654,
+              "objectiveCaptures": 1,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 1,
+              "hits": 0,
+              "damage": 0
+            }
+          },
+          {
+            "id": 1,
+            "frags": 0,
+            "scoreStats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 0,
+              "objectiveCaptures": 0,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 0,
+              "hits": 0,
+              "damage": 0
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "clip": {
+    "path": "/home/mojo/.tmp-on-disk/cocs-new-map-conservatory-evidence-20261002/helix-native-ctf-sampled.mp4",
+    "capture": "actual native framebuffer screenshots at approximately one-second intervals, encoded at 24fps by frame repetition; no claim of full-motion 24fps recording"
+  },
+  "remaining": [
+    "Parent package closure/manifests and exported-artifact acceptance",
+    "Human competitive balance and dedicated-GPU performance",
+    "Native Arsenal/Juggernaut ModeState/HUD bindings and journeys",
+    "Autonomous four-bot CTF capture completion: bounded test produced pickups/return but timed out 0-0"
+  ]
+}

@@ -1,0 +1,714 @@
+{
+  "base": "068e3ce2",
+  "helper_sha256": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
+  "materials": {
+    "abyssal-pressureworks": {
+      "copper": "alloy",
+      "coral": "coral",
+      "ivory": "coating",
+      "navy": "coating"
+    },
+    "robots": {
+      "switchyard_vertex_enamel": "coating"
+    },
+    "scenery": {
+      "biome4_bark": "bark",
+      "biome4_basalt": "mineral",
+      "biome4_ceramic": "coating",
+      "biome4_copper": "alloy",
+      "biome4_iron": "alloy",
+      "biome4_moss": "foliage",
+      "biome4_sandstone": "mineral",
+      "biome4_silt": "mineral"
+    },
+    "stormglass-causeway": {
+      "asphalt": "mineral",
+      "brick": "mineral",
+      "concrete": "mineral",
+      "salt": "mineral",
+      "steel": "alloy",
+      "teal": "coating"
+    },
+    "vehicles": {
+      "armor": "coating",
+      "edge": "alloy",
+      "lamp": "preserve",
+      "recess": "coating",
+      "red": "coating",
+      "rubber": "rubber",
+      "seat": "fabric",
+      "team_accent": "coating"
+    },
+    "vesper-viaduct": {
+      "asphalt": "mineral",
+      "brick": "mineral",
+      "cobbles": "mineral",
+      "iron": "alloy",
+      "plaster": "mineral",
+      "quay": "mineral",
+      "sandstone": "mineral",
+      "slate": "mineral"
+    }
+  },
+  "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2",
+  "moth_manifest_sha256": "c5589ff2f2ab68d982b2bb45c221c08d8e3f653953e5d5d446bfa4cd68380047",
+  "native_evidence": {
+    "capture_receipt_sha256": "b745d501c46c8d72e885b8105ac5d347afd4e58b078dd6dd0538ac1c5bad8c39",
+    "fixture_sha256": "3db95fcf66117bc42b982bf76a2afc7981f55299976ab43e11451804b48941eb",
+    "receipt": {
+      "captures": [
+        {
+          "clock": 2.01480015584416,
+          "fps": 12.0,
+          "height": 1000,
+          "name": "all-nine-four-team-finish-rows",
+          "phase": 0,
+          "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "width": 1600
+        },
+        {
+          "clock": 4.319148,
+          "fps": 13.0,
+          "height": 1000,
+          "name": "all-nine-motion-phase-1",
+          "phase": 1,
+          "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "width": 1600
+        },
+        {
+          "clock": 8.39629629629629,
+          "fps": 13.0,
+          "height": 1000,
+          "name": "all-nine-motion-phase-2",
+          "phase": 2,
+          "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "width": 1600
+        },
+        {
+          "clock": 12.3738393333333,
+          "fps": 13.0,
+          "height": 1000,
+          "name": "all-nine-motion-phase-3",
+          "phase": 3,
+          "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "width": 1600
+        },
+        {
+          "clock": 16.362851,
+          "fps": 13.0,
+          "height": 1000,
+          "name": "all-nine-motion-phase-4",
+          "phase": 4,
+          "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "width": 1600
+        },
+        {
+          "clock": 20.3431313333334,
+          "fps": 12.0,
+          "height": 1000,
+          "name": "all-nine-motion-phase-5",
+          "phase": 5,
+          "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "width": 1600
+        },
+        {
+          "clock": 24.3524176666667,
+          "fps": 13.0,
+          "height": 1000,
+          "name": "all-nine-motion-phase-6",
+          "phase": 6,
+          "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "width": 1600
+        },
+        {
+          "clock": 28.3726486666667,
+          "fps": 14.0,
+          "height": 1000,
+          "name": "all-nine-motion-phase-7",
+          "phase": 7,
+          "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "width": 1600
+        },
+        {
+          "clock": 28.3726486666667,
+          "fps": 14.0,
+          "height": 1000,
+          "name": "closeup-chatgpt",
+          "phase": 7,
+          "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "width": 1600
+        },
+        {
+          "clock": 28.3726486666667,
+          "fps": 14.0,
+          "height": 1000,
+          "name": "closeup-claude",
+          "phase": 7,
+          "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "width": 1600
+        },
+        {
+          "clock": 28.3726486666667,
+          "fps": 9.0,
+          "height": 1000,
+          "name": "closeup-grok",
+          "phase": 7,
+          "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "width": 1600
+        },
+        {
+          "clock": 28.3726486666667,
+          "fps": 9.0,
+          "height": 1000,
+          "name": "closeup-meta",
+          "phase": 7,
+          "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "width": 1600
+        },
+        {
+          "clock": 28.3726486666667,
+          "fps": 9.0,
+          "height": 1000,
+          "name": "closeup-gemini",
+          "phase": 7,
+          "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "width": 1600
+        },
+        {
+          "clock": 28.3726486666667,
+          "fps": 18.0,
+          "height": 1000,
+          "name": "closeup-deepseek",
+          "phase": 7,
+          "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "width": 1600
+        },
+        {
+          "clock": 28.3726486666667,
+          "fps": 18.0,
+          "height": 1000,
+          "name": "closeup-mistral",
+          "phase": 7,
+          "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "width": 1600
+        },
+        {
+          "clock": 28.3726486666667,
+          "fps": 18.0,
+          "height": 1000,
+          "name": "closeup-kimi",
+          "phase": 7,
+          "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "width": 1600
+        },
+        {
+          "clock": 28.3726486666667,
+          "fps": 19.0,
+          "height": 1000,
+          "name": "closeup-qwen",
+          "phase": 7,
+          "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+          "width": 1600
+        }
+      ],
+      "kind": "native staged gallery, not human gameplay or GPU performance",
+      "lighting": "production multiplayer demo -44/-30 sun1.25 ambient0.68 a0adb5"
+    },
+    "root": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/operator-captures-refined",
+    "row_order": [
+      "original SVG red",
+      "original SVG blue",
+      "rejected Moth red",
+      "rejected Moth blue"
+    ]
+  },
+  "operators": {
+    "chatgpt": {
+      "channels": {
+        "albedo": {
+          "after_mean": 245.65988,
+          "after_range": [
+            245,
+            246
+          ],
+          "before_mean": 244.84279,
+          "before_range": [
+            228,
+            252
+          ],
+          "new_png_sha256": "fa39e78e13fd4b5793528eabb848c98a02fbec6ed0464d51008c8de973660e49"
+        },
+        "normal": {
+          "after_mean": 170.14351,
+          "after_range": [
+            127,
+            255
+          ],
+          "before_mean": 170.09278,
+          "before_range": [
+            111,
+            255
+          ],
+          "new_png_sha256": "8d97ea355109d6f823d3f9ee5a16383b26964742c327405c8f71112718a1f90e"
+        },
+        "roughness": {
+          "after_mean": 145.31479,
+          "after_range": [
+            144,
+            146
+          ],
+          "before_mean": 145.94388,
+          "before_range": [
+            128,
+            159
+          ],
+          "new_png_sha256": "d040caf2912feff81b763a6ef75a374d0816fdf40be4795551ded0f878acb784"
+        }
+      },
+      "native_png_sha256": "97da8a86c872ebfcd86f0871683edf8203f0fa559aea00902bf4688f3ee8c618"
+    },
+    "claude": {
+      "channels": {
+        "albedo": {
+          "after_mean": 245.65988,
+          "after_range": [
+            245,
+            246
+          ],
+          "before_mean": 244.94107,
+          "before_range": [
+            228,
+            251
+          ],
+          "new_png_sha256": "fa39e78e13fd4b5793528eabb848c98a02fbec6ed0464d51008c8de973660e49"
+        },
+        "normal": {
+          "after_mean": 170.14351,
+          "after_range": [
+            127,
+            255
+          ],
+          "before_mean": 170.08518,
+          "before_range": [
+            111,
+            255
+          ],
+          "new_png_sha256": "8d97ea355109d6f823d3f9ee5a16383b26964742c327405c8f71112718a1f90e"
+        },
+        "roughness": {
+          "after_mean": 145.31479,
+          "after_range": [
+            144,
+            146
+          ],
+          "before_mean": 145.86432,
+          "before_range": [
+            127,
+            158
+          ],
+          "new_png_sha256": "d040caf2912feff81b763a6ef75a374d0816fdf40be4795551ded0f878acb784"
+        }
+      },
+      "native_png_sha256": "fad40fbab7055d8063f54722669051cf9632935afa33dfdc087da98e71063716"
+    },
+    "deepseek": {
+      "channels": {
+        "albedo": {
+          "after_mean": 245.62909,
+          "after_range": [
+            244,
+            247
+          ],
+          "before_mean": 244.52769,
+          "before_range": [
+            222,
+            251
+          ],
+          "new_png_sha256": "521778fd6134512bf5e4f4b5b1ba6313ef4723effc7e5a507334663db6541c08"
+        },
+        "normal": {
+          "after_mean": 170.05951,
+          "after_range": [
+            127,
+            255
+          ],
+          "before_mean": 170.02109,
+          "before_range": [
+            105,
+            255
+          ],
+          "new_png_sha256": "d7aa8059cbccbce1e1fe3892785805d81add76c19bd8a2bc8f3e03872b7e866b"
+        },
+        "roughness": {
+          "after_mean": 145.36967,
+          "after_range": [
+            144,
+            147
+          ],
+          "before_mean": 146.18776,
+          "before_range": [
+            127,
+            159
+          ],
+          "new_png_sha256": "0df0d589c8472110db8ff47766aacc67bb3ee0b9e84117ad25582d58589d56ce"
+        }
+      },
+      "native_png_sha256": "db6912e49c424a10f546dac653b145c23b2bf373d9b8e4ad19d320ada98aabd0"
+    },
+    "gemini": {
+      "channels": {
+        "albedo": {
+          "after_mean": 245.65988,
+          "after_range": [
+            245,
+            246
+          ],
+          "before_mean": 245.00394,
+          "before_range": [
+            228,
+            252
+          ],
+          "new_png_sha256": "fa39e78e13fd4b5793528eabb848c98a02fbec6ed0464d51008c8de973660e49"
+        },
+        "normal": {
+          "after_mean": 170.14351,
+          "after_range": [
+            127,
+            255
+          ],
+          "before_mean": 170.08604,
+          "before_range": [
+            111,
+            255
+          ],
+          "new_png_sha256": "8d97ea355109d6f823d3f9ee5a16383b26964742c327405c8f71112718a1f90e"
+        },
+        "roughness": {
+          "after_mean": 145.31479,
+          "after_range": [
+            144,
+            146
+          ],
+          "before_mean": 145.81425,
+          "before_range": [
+            127,
+            159
+          ],
+          "new_png_sha256": "d040caf2912feff81b763a6ef75a374d0816fdf40be4795551ded0f878acb784"
+        }
+      },
+      "native_png_sha256": "17569279c11149d70b8a0c6d3628cbf98bcb31f4c14b6445f13e344068e2d63b"
+    },
+    "grok": {
+      "channels": {
+        "albedo": {
+          "after_mean": 245.62909,
+          "after_range": [
+            244,
+            247
+          ],
+          "before_mean": 244.83455,
+          "before_range": [
+            229,
+            252
+          ],
+          "new_png_sha256": "521778fd6134512bf5e4f4b5b1ba6313ef4723effc7e5a507334663db6541c08"
+        },
+        "normal": {
+          "after_mean": 170.05951,
+          "after_range": [
+            127,
+            255
+          ],
+          "before_mean": 170.03405,
+          "before_range": [
+            111,
+            255
+          ],
+          "new_png_sha256": "d7aa8059cbccbce1e1fe3892785805d81add76c19bd8a2bc8f3e03872b7e866b"
+        },
+        "roughness": {
+          "after_mean": 145.36967,
+          "after_range": [
+            144,
+            147
+          ],
+          "before_mean": 145.94838,
+          "before_range": [
+            128,
+            159
+          ],
+          "new_png_sha256": "0df0d589c8472110db8ff47766aacc67bb3ee0b9e84117ad25582d58589d56ce"
+        }
+      },
+      "native_png_sha256": "742b9dbcca9d865cbc968df852192362f66223db72583b5f157dadd6ba694b5f"
+    },
+    "kimi": {
+      "channels": {
+        "albedo": {
+          "after_mean": 245.65988,
+          "after_range": [
+            245,
+            246
+          ],
+          "before_mean": 244.82634,
+          "before_range": [
+            228,
+            252
+          ],
+          "new_png_sha256": "fa39e78e13fd4b5793528eabb848c98a02fbec6ed0464d51008c8de973660e49"
+        },
+        "normal": {
+          "after_mean": 170.14351,
+          "after_range": [
+            127,
+            255
+          ],
+          "before_mean": 170.07364,
+          "before_range": [
+            111,
+            255
+          ],
+          "new_png_sha256": "8d97ea355109d6f823d3f9ee5a16383b26964742c327405c8f71112718a1f90e"
+        },
+        "roughness": {
+          "after_mean": 145.31479,
+          "after_range": [
+            144,
+            146
+          ],
+          "before_mean": 145.94896,
+          "before_range": [
+            128,
+            159
+          ],
+          "new_png_sha256": "d040caf2912feff81b763a6ef75a374d0816fdf40be4795551ded0f878acb784"
+        }
+      },
+      "native_png_sha256": "7d107b22254a384ee842b6c8691a5dc6fbf87fc3361d2843eabfe60d8f89413d"
+    },
+    "meta": {
+      "channels": {
+        "albedo": {
+          "after_mean": 245.62909,
+          "after_range": [
+            244,
+            247
+          ],
+          "before_mean": 244.57289,
+          "before_range": [
+            224,
+            252
+          ],
+          "new_png_sha256": "521778fd6134512bf5e4f4b5b1ba6313ef4723effc7e5a507334663db6541c08"
+        },
+        "normal": {
+          "after_mean": 170.05951,
+          "after_range": [
+            127,
+            255
+          ],
+          "before_mean": 170.05088,
+          "before_range": [
+            111,
+            255
+          ],
+          "new_png_sha256": "d7aa8059cbccbce1e1fe3892785805d81add76c19bd8a2bc8f3e03872b7e866b"
+        },
+        "roughness": {
+          "after_mean": 170.86877,
+          "after_range": [
+            169,
+            173
+          ],
+          "before_mean": 171.6458,
+          "before_range": [
+            155,
+            186
+          ],
+          "new_png_sha256": "2e35421df7285b316c57c38490ddf20289ef11dc8151d466a349934e75292927"
+        }
+      },
+      "native_png_sha256": "8195c1e10aa892182240844529d525011e4e1054a45e5282c2dbe11ec9e4c15a"
+    },
+    "mistral": {
+      "channels": {
+        "albedo": {
+          "after_mean": 245.61476,
+          "after_range": [
+            244,
+            247
+          ],
+          "before_mean": 245.00603,
+          "before_range": [
+            228,
+            251
+          ],
+          "new_png_sha256": "ec08755ddb0776974494779872c3c766b455a7a0719b42047e92fc9af07276bd"
+        },
+        "normal": {
+          "after_mean": 170.06007,
+          "after_range": [
+            127,
+            255
+          ],
+          "before_mean": 170.03964,
+          "before_range": [
+            111,
+            255
+          ],
+          "new_png_sha256": "6a2a8e68a2edaede498413cad5e1324eaa84148f28392802978658317dd22f39"
+        },
+        "roughness": {
+          "after_mean": 109.67596,
+          "after_range": [
+            108,
+            111
+          ],
+          "before_mean": 110.13156,
+          "before_range": [
+            92,
+            124
+          ],
+          "new_png_sha256": "ab8f8deb355b4ceedf48222f0f3aa13e28e22c5d65185b8715ff7ed07df98920"
+        }
+      },
+      "native_png_sha256": "4d226ca97e321914b594fe46f376ee0b08670fe606ff92b56fb657b0295756ea"
+    },
+    "qwen": {
+      "channels": {
+        "albedo": {
+          "after_mean": 245.62909,
+          "after_range": [
+            244,
+            247
+          ],
+          "before_mean": 244.72183,
+          "before_range": [
+            229,
+            252
+          ],
+          "new_png_sha256": "521778fd6134512bf5e4f4b5b1ba6313ef4723effc7e5a507334663db6541c08"
+        },
+        "normal": {
+          "after_mean": 170.05951,
+          "after_range": [
+            127,
+            255
+          ],
+          "before_mean": 170.02122,
+          "before_range": [
+            111,
+            255
+          ],
+          "new_png_sha256": "d7aa8059cbccbce1e1fe3892785805d81add76c19bd8a2bc8f3e03872b7e866b"
+        },
+        "roughness": {
+          "after_mean": 145.36967,
+          "after_range": [
+            144,
+            147
+          ],
+          "before_mean": 146.03833,
+          "before_range": [
+            128,
+            159
+          ],
+          "new_png_sha256": "0df0d589c8472110db8ff47766aacc67bb3ee0b9e84117ad25582d58589d56ce"
+        }
+      },
+      "native_png_sha256": "d07eb414cbca763be35337e4483208ab1de6e90e2fbd0e6eb8fe68ccc82e0eb9"
+    }
+  },
+  "queue_grain": {
+    "alloy": {
+      "derived_float_sha256": "b8f39ab463eaf2eafee4bfafcc306f80cd0ff6b220bd1f992caf53d5e52fa272",
+      "linear_multiplier_range": [
+        0.9731451500101662,
+        1.035
+      ],
+      "normal_strength": 0.08,
+      "source": "brushed_metal",
+      "source_png_sha256": "271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51",
+      "tiles_per_metre": 2.4
+    },
+    "bark": {
+      "derived_float_sha256": "6d9a02ffd8e8cfdc2546dc110df0c9b1169c7eff5169e7807763a5a6a287f0e8",
+      "linear_multiplier_range": [
+        0.9618874104817708,
+        1.0397147914341518
+      ],
+      "normal_strength": 0.06,
+      "source": "macro-organic",
+      "source_png_sha256": "de19687a5b14599a3e738f6006b08ad3380b023d6d19d4d2270b903350f5341a",
+      "tiles_per_metre": 1.2
+    },
+    "coating": {
+      "derived_float_sha256": "5a03c2a1706495135383f4d6862d658dc4dea627f6e4376927f47c163404d1cf",
+      "linear_multiplier_range": [
+        0.9812936434754493,
+        1.011842891732813
+      ],
+      "normal_strength": 0,
+      "source": "sand",
+      "source_png_sha256": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96",
+      "tiles_per_metre": 2.4
+    },
+    "coral": {
+      "derived_float_sha256": "f309f7fb70da35f6a67270bb56d604c67c62dbac192a266f531fb0bc05986043",
+      "linear_multiplier_range": [
+        0.9675872869508987,
+        1.0286857834656262
+      ],
+      "normal_strength": 0,
+      "source": "sand",
+      "source_png_sha256": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96",
+      "tiles_per_metre": 1.2
+    },
+    "fabric": {
+      "derived_float_sha256": "b7af69bf00ffd5501ef3ece00393bb2417e0ae53e347b5ee6fca81046b4d3d7b",
+      "linear_multiplier_range": [
+        0.977377541611292,
+        1.0166551465136169
+      ],
+      "normal_strength": 0,
+      "source": "sand",
+      "source_png_sha256": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96",
+      "tiles_per_metre": 2.4
+    },
+    "foliage": {
+      "derived_float_sha256": "94b6e42a23375316cd89c7a4bd8dd7064739df93863e44ed415b17b449423454",
+      "linear_multiplier_range": [
+        0.9640661901175591,
+        1.0319893646331646
+      ],
+      "normal_strength": 0,
+      "source": "grass",
+      "source_png_sha256": "b34ff20efcd0abad36323f9c6ffca4f30325dc91f7110a624ce7dac1d4f2fe64",
+      "tiles_per_metre": 1.2
+    },
+    "mineral": {
+      "derived_float_sha256": "44b752a08d54c860c147fc7358ca6b8369bd0ae4514d6475efcdc1817f0cecaa",
+      "linear_multiplier_range": [
+        0.9583192611687371,
+        1.045
+      ],
+      "normal_strength": 0.1,
+      "source": "weathered_concrete",
+      "source_png_sha256": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550",
+      "tiles_per_metre": 0.65
+    },
+    "rubber": {
+      "derived_float_sha256": "d38648f1329a54b1798a18867e7cd2634fa19c949249f1da686512b2dd875400",
+      "linear_multiplier_range": [
+        0.9852097453396067,
+        1.0070306369520095
+      ],
+      "normal_strength": 0,
+      "source": "sand",
+      "source_png_sha256": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96",
+      "tiles_per_metre": 2.4
+    }
+  },
+  "scope": "source-only; revised native acceptance pending"
+}

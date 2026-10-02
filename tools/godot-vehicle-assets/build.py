@@ -8,6 +8,9 @@ from pathlib import Path
 import sys
 import bpy
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'asset-production'))
+from moth_finish import finish_scene
+
 
 def build(root, kind, lod):
     recipe_path = root / 'tools/godot-vehicle-assets/generated' / f'{kind}-lod{lod}.json'
@@ -89,6 +92,7 @@ def build(root, kind, lod):
     output = root / 'godot/vehicle_assets/generated'
     masters.mkdir(parents=True, exist_ok=True)
     output.mkdir(parents=True, exist_ok=True)
+    finish_scene(root, 'vehicles')
     bpy.ops.wm.save_as_mainfile(filepath=str(masters / f'{kind}-lod{lod}.blend'))
     bpy.ops.export_scene.gltf(filepath=str(output / f'{kind}-lod{lod}.glb'),
                               export_format='GLB', export_yup=True,

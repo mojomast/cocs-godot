@@ -1,0 +1,57 @@
+{
+  "bindings": [
+    {
+      "finish": "qwen-trim",
+      "role": "metal",
+      "source_material": "sourceMaterial0"
+    },
+    {
+      "finish": "qwen-precision",
+      "role": "precision",
+      "source_material": "sourceMaterial3"
+    },
+    {
+      "finish": "qwen-shell",
+      "role": "armor",
+      "source_material": "sourceMaterial5"
+    },
+    {
+      "finish": "qwen-rubber",
+      "role": "rubber",
+      "source_material": "sourceMaterial6"
+    }
+  ],
+  "operator_id": "qwen",
+  "overlay_finishes": {
+    "board": "qwen-board",
+    "panel": "qwen-panel",
+    "vent": "qwen-vent"
+  },
+  "preserve_materials": [
+    {
+      "reason": "existing emissive optics / wing identity",
+      "source_material": "sourceMaterial1"
+    },
+    {
+      "reason": "dark chassis material shared with visor lens; retain optical surface",
+      "source_material": "sourceMaterial2"
+    },
+    {
+      "reason": "existing emissive optics / wing identity",
+      "source_material": "sourceMaterial4"
+    },
+    {
+      "reason": "material shared with held weapon",
+      "source_material": "sourceMaterial7"
+    },
+    {
+      "reason": "existing emissive optics / wing identity; material shared with held weapon",
+      "source_material": "sourceMaterial8"
+    },
+    {
+      "reason": "team identification / unlit markers",
+      "source_material": "sourceTeamIvory"
+    }
+  ],
+  "version": 1
+}

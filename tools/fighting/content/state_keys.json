@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "states": [
+    "idle", "walk_f", "walk_b", "crouch", "jump_rise", "jump_apex",
+    "jump_fall", "land", "dash_f", "dash_b", "guard_hi", "guard_lo",
+    "hit_hi", "hit_lo", "hit_air", "block_hi", "block_lo", "knockdown",
+    "wakeup", "throw_tech", "win", "lose"
+  ]
+}

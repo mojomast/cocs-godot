@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "sourceCommit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "derivativeCommit": "0326b435a2fdd88e6e7a01b8a7325feccc4d15cb",
+  "sourceContractSha256": "8697f2405250cd634664ed7030c57ad6db923baf860ee188460db0dfadd3c529",
+  "derivativeContractSha256": "8026224dadcb2f326171cf5cad7826f8d7b5f2f78b2beef8c8ac220c5706628f",
+  "coreSha256": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+  "demoSha256": "9aad7198eef983ac03293f1b7c07b8a0ea65693b256c2581216d0698577a931c",
+  "maps": {
+    "meridian-exchange": {
+      "semanticSha256": "e1332aa73fddbd75e2cd3fec87c157a515572a9a27a27f130b9cd605b70bf914",
+      "modes": ["deathmatch", "teamdeathmatch", "instagib", "rockets"]
+    }
+  }
+}

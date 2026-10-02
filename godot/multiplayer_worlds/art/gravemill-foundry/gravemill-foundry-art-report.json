@@ -1,0 +1,36 @@
+{
+  "id": "gravemill-foundry",
+  "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+  "recipeHash": "3c7f9242bb7c98000871b27d58d14c719a4867e1a9fc625b106c97f7c1c608eb",
+  "seed": 1196573014,
+  "materials": 8,
+  "exportNodes": 8,
+  "editableObjects": 7086,
+  "triangles": 69870,
+  "glbBytes": 3744260,
+  "masterBytes": 40527432,
+  "generationSeconds": 0.8878309717401862,
+  "renders": [
+    {
+      "camera": "01-overview",
+      "seconds": 30.948213778436184
+    },
+    {
+      "camera": "03-crusher-throat-eye",
+      "seconds": 81.34054363612086
+    },
+    {
+      "camera": "04-cooling-nave-eye",
+      "seconds": 78.44448960386217
+    },
+    {
+      "camera": "05-assay-vault-eye",
+      "seconds": 77.70874016080052
+    },
+    {
+      "camera": "07-furnace-apron-eye",
+      "seconds": 63.97600820288062
+    }
+  ],
+  "totalSeconds": 333.30599265452474
+}

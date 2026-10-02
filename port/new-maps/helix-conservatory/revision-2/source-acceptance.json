@@ -1,0 +1,29 @@
+{
+  "status": "source-only-ready-for-second-Blender-pass",
+  "geometryHash": "f068d1abe262907659f1f02205e2bf56b7c5dbe298191f66d008b420965fa9b2",
+  "passed": 15,
+  "failed": 0,
+  "authoredRoutes": 20,
+  "primaryRoutes": 15,
+  "interiorVariants": 5,
+  "actualMovementTicks": 29619,
+  "graphNodes": 2573,
+  "directedGraphEdges": 26618,
+  "sustainedWallContacts": 6,
+  "ticksPerWallContact": 720,
+  "sourceModes": ["deathmatch", "teamdeathmatch", "arsenal", "juggernaut", "ctf", "domination", "koth"],
+  "nativeAcceptedModes": [],
+  "heavyToolsRun": false,
+  "evidence": "/home/mojo/.tmp-on-disk/cocs-new-map-conservatory-evidence-20261002/revision-2-source-05.tap",
+  "retainedFailedEvidence": ["revision-2-layout-01.tap", "revision-2-layout-02.tap", "revision-2-source-03.tap", "revision-2-source-04.tap"],
+  "checkpointPatternDiagnosis": {
+    "masonryTriangleCentroids": 7296,
+    "masonryMinimumClearanceMetres": 0.008666666666657719,
+    "masonryMaximumClearanceMetres": 0.012000000000014666,
+    "masonryPenetratingCentroids": 0,
+    "inlayTriangleCentroids": 4480,
+    "inlayPenetratingCentroids": 49,
+    "inlayMinimumClearanceMetres": -0.21420714111308303,
+    "interpretation": "Fine masonry suggests distance/line aliasing; inlays have measured geometric penetration. Raster diagnosis awaits grant."
+  }
+}

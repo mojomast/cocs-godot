@@ -1,0 +1,39 @@
+{
+  "id": "parallax-observatory",
+  "sourceAnchor": "4ae4e5b786e6de0e3b1bc18e785e202e6cb95ad8",
+  "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+  "recipeHash": "e949e43d5546ec8b0c9024810f1da6229152e370ad640ecf27ecb54c05f2e23d",
+  "sha256": {
+    "tools/godot-multiplayer/new-maps/parallax-observatory/generate.mjs": "56e7d228051b7112fe0c510f8a72ec91e617fd47a4a0ca97cea58cf453b13119",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/blender_author.py": "9cec1edaab54477d9999eb7888c921d527f0ee3f1248f2adf9c2a6a7cf5897cc",
+    "port/native-multiplayer-worlds/worlds/parallax-observatory.json": "e949e43d5546ec8b0c9024810f1da6229152e370ad640ecf27ecb54c05f2e23d",
+    "godot/multiplayer_worlds/generated/parallax-observatory.json": "13c0b91156aaa2fd713dea7dfafe8f9f48d92b2b414ff9c4b583efb047bdabc4",
+    "game/core.mjs": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+    "port/multiplayer-worlds/derived/core.mjs": "090d353ed616b1edbbd3053734bc092ed24444bdd1abfdca02293cab4aacf841",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/parallax-observatory.blend": "fcd7f284443c45d08177837a23af530b1667deb106bddb8822d507f5655ca090",
+    "godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb": "b3ea4ec57f57f6db83e1acab40dc95135562347ef884cc8f33ba067af8521bb1",
+    "godot/multiplayer_worlds/art/parallax-observatory/presentation.gd": "25acc40297d8f3ec7bc59b7bce313f5e4abe7a649973e38b1e0f98c026db484a",
+    "godot/tests/new_maps/parallax_observatory/physics.gd": "8f261cd5fa5f3a0b66901d4802364f99b98c60a75de0ebb4b40bc542c43b6e44",
+    "godot/tests/new_maps/parallax_observatory/journey.gd": "fa239ee5cc615f73771ac7e852884a28c5f186b0da4f6b40fed94c2069ff51a3",
+    "port/new-maps/parallax-observatory/native-journey.mjs": "ab63e962b07175ec6701432d92fe9180776b01696f8e9cd9378e5dd23a91909c"
+  },
+  "generatedFrom": {
+    "port/native-multiplayer-worlds/worlds/parallax-observatory.json": [
+      "tools/godot-multiplayer/new-maps/parallax-observatory/generate.mjs"
+    ],
+    "godot/multiplayer_worlds/generated/parallax-observatory.json": [
+      "tools/godot-multiplayer/new-maps/parallax-observatory/generate.mjs"
+    ],
+    "godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb": [
+      "godot/multiplayer_worlds/generated/parallax-observatory.json",
+      "tools/godot-multiplayer/new-maps/parallax-observatory/blender_author.py"
+    ],
+    "tools/godot-multiplayer/new-maps/parallax-observatory/parallax-observatory.blend": [
+      "godot/multiplayer_worlds/generated/parallax-observatory.json",
+      "tools/godot-multiplayer/new-maps/parallax-observatory/blender_author.py"
+    ]
+  },
+  "pending": [
+    "parent package/export closure and extracted platform gates"
+  ]
+}
