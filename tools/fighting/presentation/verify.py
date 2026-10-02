@@ -129,13 +129,16 @@ def run():
             for right in range(left,9):
                 for locked in (False,True):
                     lo, hi = (-8,8) if locked else (left,right)
-                    extent = max((jump+2.4)/(1-top-bottom),(hi-lo+3.2)/aspect)
+                    # Compatibility framing retains fighter padding and clamps;
+                    # only reduced motion reserves the maximum jump envelope.
+                    lo, hi = min(lo,0)-1.6,max(hi,0)+1.6
                     cx = max(-4,min(4,(lo+hi)*0.5))
-                    cy = extent*(0.5-bottom)
+                    extent = max(((jump if locked else 0)+2.75)/(1-top-bottom),2*max(cx-lo,hi-cx)/aspect)
+                    cy = -0.15+extent*(0.5-bottom)
                     assert left-1.6 >= cx-extent*aspect*0.5-1e-6
                     assert right+1.6 <= cx+extent*aspect*0.5+1e-6
-                    assert math.isclose(cy-extent*0.5,-extent*bottom)
-                    assert jump+2.4 <= cy+extent*0.5-extent*top+1e-6
+                    assert math.isclose(cy-extent*0.5,-0.15-extent*bottom)
+                    assert (jump if locked else 0)+2.4 <= cy+extent*0.5-extent*top+1e-6
                     cases += 1
     router = (ROOT / "godot/fighting/presentation/input_router.gd").read_text()
     main = (ROOT / "godot/fighting/main.gd").read_text()
