@@ -100,5 +100,12 @@ failed attempts and earlier releases.
   despite blocking weapon rays. It emits individual wall triangles. Helix and
   Parallax agents are now checking actual movement contacts and updating their
   recipes/hashes where necessary before Blender production.
+- **Helix wall-contact audit — `a491c5a8`: four tests passed.** All 712 production
+  walls were already triangles. Twelve continuous-input contacts from both sides
+  over four elevations stopped 0.426150481 m from the face (actor radius 0.42 m).
+  Ramp, low-parapet, open-portal and underpass cases passed. A test-only merged-quad
+  negative control penetrated the same pier despite identical shot blocking,
+  proving the movement test detects the reported defect. Geometry hash and prior
+  route/full-round provenance remain unchanged.
 
 No finished Blender asset or native map acceptance is claimed at this checkpoint.
