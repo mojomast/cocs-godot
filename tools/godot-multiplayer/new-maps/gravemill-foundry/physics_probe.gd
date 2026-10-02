@@ -47,6 +47,20 @@ func run() -> void:
    b = Vector3(x, y, 29 + .14 * x)
    var empty: bool = space.intersect_ray(PhysicsRayQueryParameters3D.create(a, b)).is_empty()
    if not require_ok(empty == (y == 14.5), "Window/header shot contract mismatch"): return
- var result := {"id":"gravemill-foundry", "geometryHash":world.geometry_hash, "routeCapsules":checked, "routeSupportRays":checked, "galleryShotProbes":8, "metrics":world.metrics}
+ var body := CharacterBody3D.new()
+ var contact_shape := CollisionShape3D.new()
+ contact_shape.shape = capsule
+ body.add_child(contact_shape)
+ world.add_child(body)
+ body.global_position = Vector3(-81, .88, -73.34)
+ await physics_frame
+ for i in range(160): body.move_and_collide(Vector3(.12,0,0))
+ if not require_ok(body.global_position.x < -78.3, "Production capsule crossed mineral wall"): return
+ var wall_ray := PhysicsRayQueryParameters3D.create(Vector3(-81,1.4,-73.34),Vector3(-70,1.4,-73.34))
+ wall_ray.exclude = [body.get_rid()]
+ if not require_ok(not space.intersect_ray(wall_ray).is_empty(), "Production wall ray escaped"): return
+ var conveyor := space.intersect_ray(PhysicsRayQueryParameters3D.create(Vector3(-24,1.5,-71.36),Vector3(-24,20,-71.36)))
+ if not require_ok(not conveyor.is_empty() and absf(float(conveyor.position.y)-13.0)<.08, "Conveyor underside mismatch"): return
+ var result := {"id":"gravemill-foundry", "geometryHash":world.geometry_hash, "routeCapsules":checked, "routeSupportRays":checked, "galleryShotProbes":8, "wallContactSteps":160,"wallContactX":body.global_position.x,"conveyorUnderside":conveyor.position.y,"metrics":world.metrics}
  print("GRAVEMILL_PRODUCTION_PHYSICS_OK ", JSON.stringify(result))
  quit()

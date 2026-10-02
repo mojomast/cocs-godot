@@ -17,13 +17,14 @@ export function recipe(){
  const clip=(poly,axis,value,sign)=>{const out=[];for(let i=0;i<poly.length;i++){const a=poly[i],b=poly[(i+1)%poly.length],da=(a[axis]-value)*sign,db=(b[axis]-value)*sign;if(da>=0)out.push(a);if((da<0)!==(db<0)){const t=da/(da-db);out.push(a.map((v,k)=>v+(b[k]-v)*t));}}return out;};
  for(let i=1;i<bands.length;i++){const [q0,y0]=bands[i-1],[q1,y1]=bands[i];let p=[xyz(-192,q0,y0),xyz(-192,q1,y1),xyz(192,q1,y1),xyz(192,q0,y0)];p=clip(clip(p,2,-144,1),2,144,-1);if(p.length>=3)surf(`stratum-${i}`,p,Array.from({length:p.length-2},(_,j)=>[0,j+1,j+2]),i===3?'cooling-floor':i===5?'soot':'mineral',true);}
  const prism=(id,x,q,w,d,h,material='soot',base=null)=>{
-  const y=base??height(x,q+.14*x),v=[xyz(x-w/2,q-d/2,y),xyz(x-w/2,q+d/2,y),xyz(x+w/2,q+d/2,y),xyz(x+w/2,q-d/2,y)];
+  const y=base??Math.min(...[-1,1].flatMap(s=>[-1,1].map(t=>height(x+s*w/2,q+t*d/2+.14*(x+s*w/2))))),v=[xyz(x-w/2,q-d/2,y),xyz(x-w/2,q+d/2,y),xyz(x+w/2,q+d/2,y),xyz(x+w/2,q-d/2,y)];
   for(let i=0;i<4;i++){const a=v[i],b=v[(i+1)%4];wall(`${id}-side-${i}`,[a,b,[b[0],y+h,b[2]],[a[0],y+h,a[2]]],material);}
   surf(`${id}-top`,v.map(p=>[p[0],y+h,p[2]]),[[0,1,2],[0,2,3]],material);
   surf(`${id}-bottom`,v,[[2,1,0],[3,2,0]],material);
   return {x,q,y,w,d,h};
  };
- const cylinder=(id,x,q,r,h,material='copper',n=20)=>{const y=height(x,q+.14*x),v=Array.from({length:n},(_,i)=>xyz(x+r*Math.cos(i*2*Math.PI/n),q+r*Math.sin(i*2*Math.PI/n),y));for(let i=0;i<n;i++){const a=v[i],b=v[(i+1)%n];wall(`${id}-shell-${i}`,[a,b,[b[0],y+h,b[2]],[a[0],y+h,a[2]]],material);}surf(`${id}-cap`,v.map(p=>[p[0],y+h,p[2]]),Array.from({length:n-2},(_,i)=>[0,i+2,i+1]),material);m.art.landmarks.push({kind:'silo',id,x,y,z:q+.14*x,r,h,material});};
+ const cylinder=(id,x,q,r,h,material='copper',n=20)=>{const y=height(x,q-r+.14*x),profile=id.startsWith('furnace')?[[0,r],[h*.65,r],[h*.84,r*.5],[h,r*.5]]:[[0,r],[h-3,r],[h,r*.45]];let cap=[];for(let j=1;j<profile.length;j++){const ring=([dy,rr])=>Array.from({length:n},(_,i)=>xyz(x+rr*Math.cos(i*2*Math.PI/n),q+rr*Math.sin(i*2*Math.PI/n),y+dy));const a=ring(profile[j-1]),b=ring(profile[j]);for(let i=0;i<n;i++)wall(`${id}-shell-${j}-${i}`,[a[i],a[(i+1)%n],b[(i+1)%n],b[i]],material);cap=b;}surf(`${id}-cap`,cap,Array.from({length:n-2},(_,i)=>[0,i+2,i+1]),material);m.art.landmarks.push({kind:'silo',id,x,y,z:q+.14*x,r,h,material,profile});};
+ const rock=(id,x,q,w,d,h)=>{const outline=[[-.5,-.5],[-.5,.2],[-.25,.5],[.5,.34],[.5,-.34],[.1,-.5]],y=height(x,q-d/2+.14*x),base=outline.map(([a,b])=>xyz(x+a*w,q+b*d,y)),top=base.map((v,i)=>[v[0],y+h*[.82,1,.86,.94,.78,.92][i],v[2]]);for(let i=0;i<6;i++)wall(`${id}-facet-${i}`,[base[i],base[(i+1)%6],top[(i+1)%6],top[i]],'mineral');surf(`${id}-crest`,top,[[0,1,2],[0,2,3],[0,3,4],[0,4,5]],'mineral');m.art.landmarks.push({id,kind:'rock',x,y,z:q+.14*x,base,top});};
  const route=(id,width,points)=>{const converted=points.map(([x,q])=>[x,q+.14*x]);m.routes.push({id,width,points:converted});for(let i=1;i<converted.length;i++){const a=converted[i-1],b=converted[i],n=Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/3);for(let j=0;j<=n;j++)m.navNodes.push({x:a[0]+(b[0]-a[0])*j/n,z:a[1]+(b[1]-a[1])*j/n});}return converted;};
  const freight=[[-166,-62],[-126,-62],[-88,-38],[-40,-38],[0,-64],[48,-64],[88,-38],[126,-38],[166,-62]];
  m.payloadPath=route('ore-procession',18,freight).map(([x,z])=>({x,z}));
@@ -51,10 +52,12 @@ export function recipe(){
  // Process towers occupy islands BETWEEN the reserved routes, with exact
  // radial shell collisions. Heavy crusher drums have a solid machinery base.
  for(const [id,x,q,r,h] of [['furnace-a',64,-8,11,29],['furnace-b',94,8,8,23],['ore-silo-a',-76,76,9,20],['ore-silo-b',-54,80,7,17],['ore-silo-c',76,76,8,22]])cylinder(id,x,q,r,h);
+ for(const x of [-98,-82,-62,46,98,130]){const q=Math.abs(x)>110?63:64;cylinder(`filter-bank-${x}`,x,q,4.2,10,'soot',16);}
+ for(const x of [-132,-94,-50,22,96,134]){prism(`ore-hopper-${x}`,x,-94,9,8,3.5,'soot');m.art.landmarks.push({id:`hopper-detail-${x}`,kind:'hopper',x,y:0,z:-94+.14*x,w:9,d:8,h:3.5});}
  for(const [x,q] of [[-72,-7],[-48,0]]){const p=prism(`crusher-bed-${x}`,x,q,17,16,5,'soot');const cy=p.y+11,n=24;const ring=side=>Array.from({length:n},(_,i)=>xyz(x+side*8.5,q+7*Math.cos(i*2*Math.PI/n),cy+7*Math.sin(i*2*Math.PI/n)));const a=ring(-1),b=ring(1);for(let i=0;i<n;i++){const j=(i+1)%n;const v=[a[i],b[i],b[j],a[j]];surf(`crusher-drum-${x}-${i}`,v,[[0,1,2],[0,2,3]],'soot');wall(`crusher-drum-contact-${x}-${i}`,v,'soot');}wall(`crusher-cap-${x}-a`,a,'soot');wall(`crusher-cap-${x}-b`,b.toReversed(),'soot');m.art.landmarks.push({id:`crusher-drum-${x}`,kind:'crusher',x,y:cy,z:q+.14*x,r:7,length:17,material:'soot'});}
  // Broken geological buttresses screen base-to-base shots without enclosing
  // the layout in a square yard. Ends deliberately leave both reverse flanks.
- for(const [x,q,w,d,h] of [[-72,-82,14,24,9],[-72,-62,12,8,8],[64,-88,18,20,11],[-138,0,12,20,16],[132,4,12,20,19],[-14,5,12,20,17],[14,77,12,18,15],[-90,133,30,8,11],[72,132,35,8,12]])prism(`fracture-${x}-${q}`,x,q,w,d,h,'mineral');
+ for(const [x,q,w,d,h] of [[-72,-82,14,24,9],[-72,-62,12,8,8],[64,-88,18,20,11],[-138,0,12,20,16],[132,4,12,20,19],[-14,5,12,20,17],[14,77,12,18,15],[-90,133,30,8,11],[72,132,35,8,12]])rock(`fracture-${x}-${q}`,x,q,w,d,h);
  // Low counters at asymmetric offsets give sightline relief in every tier.
  for(const q of [-48,45,117])for(const x of [-130,-92,-54,-12,52,92,130]){if(q===45&&Math.abs(x)===92)continue;prism(`ore-bin-${x}-${q}`,x,q,5,3,1.5,q===117?'copper':'soot');}
  for(const s of [-1,1]){prism(`spawn-screen-${s}`,s*180,-60,3,20,5,'mineral');prism(`spawn-baffle-${s}`,s*151,-82,7,4,3,'soot');}

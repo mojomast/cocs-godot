@@ -1,0 +1,313 @@
+{
+  "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e",
+  "walkthrough": {
+    "seconds": 95.89999999999584,
+    "wallSeconds": 102.668912773,
+    "controls": 1790,
+    "distanceMoved": 724.8924071674923,
+    "stages": [
+      {
+        "stage": "walk-0",
+        "x": -70,
+        "y": 12,
+        "z": 26.2
+      },
+      {
+        "stage": "walk-0",
+        "x": -111.99163949207927,
+        "y": 0,
+        "z": -53.88949921008817
+      },
+      {
+        "stage": "walk-1",
+        "x": -111.99163949207927,
+        "y": 0,
+        "z": -53.88949921008817
+      },
+      {
+        "stage": "walk-1",
+        "x": -79.39040975195923,
+        "y": 12,
+        "z": 24.900085475283774
+      },
+      {
+        "stage": "walk-2",
+        "x": -79.39040975195923,
+        "y": 12,
+        "z": 24.900085475283774
+      },
+      {
+        "stage": "walk-2",
+        "x": -52.03349428844619,
+        "y": 12,
+        "z": 28.715310813960482
+      },
+      {
+        "stage": "walk-3",
+        "x": -52.03349428844619,
+        "y": 12,
+        "z": 28.715310813960482
+      },
+      {
+        "stage": "walk-3",
+        "x": 66.06101780286022,
+        "y": 12,
+        "z": 45.301732996221475
+      },
+      {
+        "stage": "walk-4",
+        "x": 66.06101780286022,
+        "y": 12,
+        "z": 45.301732996221475
+      },
+      {
+        "stage": "walk-4",
+        "x": -0.09263504158251362,
+        "y": 23.999999999999996,
+        "z": 108.98446135776291
+      },
+      {
+        "stage": "walk-5",
+        "x": -0.09263504158251362,
+        "y": 23.999999999999996,
+        "z": 108.98446135776291
+      },
+      {
+        "stage": "walk-5",
+        "x": 88.29305688967744,
+        "y": 0,
+        "z": -25.53209703789362
+      }
+    ]
+  },
+  "walkClip": {
+    "mode": "walkthrough",
+    "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e",
+    "frames": 43,
+    "actualCaptureSpanSeconds": 4.46,
+    "measuredCaptureCadence": 9.417040358744394,
+    "encodedFps": 15,
+    "resolution": "1280x800 UI; 0.75 3D scale",
+    "renderer": "Godot compatibility renderer / llvmpipe software CPU; capture preset disables sun shadows",
+    "method": "Production native camera follows authority pose; ordinary serialized native inputs. Frame timestamp durations preserved before 15fps resampling.",
+    "performanceLimit": "Capture cadence is not a GPU or interactive gameplay FPS benchmark",
+    "output": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/native-visual-final/walkthrough.mp4"
+  },
+  "views": [
+    {
+      "drawCalls": 8,
+      "elapsedMs": 516,
+      "hash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 2808,
+        "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e"
+      },
+      "nodes": 4914,
+      "renderObjects": 8,
+      "renderPrimitives": 66284,
+      "view": "overview"
+    },
+    {
+      "drawCalls": 9,
+      "elapsedMs": 970,
+      "hash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 2808,
+        "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e"
+      },
+      "nodes": 4914,
+      "renderObjects": 9,
+      "renderPrimitives": 68839,
+      "view": "reverse"
+    },
+    {
+      "drawCalls": 38,
+      "elapsedMs": 1563,
+      "hash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 2808,
+        "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e"
+      },
+      "nodes": 4914,
+      "renderObjects": 38,
+      "renderPrimitives": 330716,
+      "view": "crusher-eye"
+    },
+    {
+      "drawCalls": 40,
+      "elapsedMs": 2350,
+      "hash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 2808,
+        "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e"
+      },
+      "nodes": 4914,
+      "renderObjects": 40,
+      "renderPrimitives": 331420,
+      "view": "cooling-eye"
+    },
+    {
+      "drawCalls": 40,
+      "elapsedMs": 3044,
+      "hash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 2808,
+        "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e"
+      },
+      "nodes": 4914,
+      "renderObjects": 40,
+      "renderPrimitives": 331420,
+      "view": "assay-eye"
+    },
+    {
+      "drawCalls": 38,
+      "elapsedMs": 3622,
+      "hash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 2808,
+        "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e"
+      },
+      "nodes": 4914,
+      "renderObjects": 38,
+      "renderPrimitives": 330716,
+      "view": "crown-eye"
+    },
+    {
+      "drawCalls": 40,
+      "elapsedMs": 4255,
+      "hash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 2808,
+        "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e"
+      },
+      "nodes": 4914,
+      "renderObjects": 40,
+      "renderPrimitives": 331420,
+      "view": "furnace-eye"
+    }
+  ],
+  "inspectedStills": [
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/native-reviewed/overview.png",
+      "sha256": "e8f7b5c570e5ccbb3153b6015ee99f0a4a0342e92dca256b3139f45c7189d542"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/native-reviewed/crusher-eye.png",
+      "sha256": "548c6d6f79f3816d5cfeec0297ad7c81f15fa3bd079367f8604794beb1c3be34"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/native-reviewed/cooling-eye.png",
+      "sha256": "679ade085d76658177c7ae3f7a4c89b5ffe44af02899e6444c27be6c384daea6"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/native-reviewed/assay-eye.png",
+      "sha256": "7c8f7881edad07713db5f17333cf6c35030e0af067ffedbbe1ff806a34115138"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/native-reviewed/crown-eye.png",
+      "sha256": "cc5133565e49417cd1ecc4498e2b64905aa762cfbe326588fb8ba0f2046df080"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/native-reviewed/furnace-eye.png",
+      "sha256": "d22604556d3392e8f4023ca9d1070646d29c89e00f49e9b94f9180a8c3fcfca4"
+    }
+  ],
+  "payload": {
+    "seconds": 154.9833333333488,
+    "controls": 2943,
+    "nativeReceipts": [
+      {
+        "role": "host",
+        "inputs": 144,
+        "results": true
+      },
+      {
+        "role": "guest",
+        "inputs": 148,
+        "results": true
+      }
+    ],
+    "objective": {
+      "kind": "payload",
+      "zones": [
+        {
+          "id": "cp1",
+          "x": -55.503424369974134,
+          "z": -45.77047941179638,
+          "y": 0,
+          "radius": 4.5,
+          "owner": 0,
+          "captureTeam": null,
+          "progress": 100,
+          "distance": 121.20007769446121
+        },
+        {
+          "id": "cp2",
+          "x": 57.55402694324624,
+          "z": -49.73231871483547,
+          "y": 0,
+          "radius": 4.5,
+          "owner": 0,
+          "captureTeam": null,
+          "progress": 100,
+          "distance": 242.40015538892243
+        },
+        {
+          "id": "cp3",
+          "x": 166,
+          "z": -38.76,
+          "y": 0,
+          "radius": 4.5,
+          "owner": 0,
+          "captureTeam": null,
+          "progress": 100,
+          "distance": 363.60023308338367
+        }
+      ],
+      "active": 3,
+      "attacker": 0,
+      "defender": 1,
+      "winner": 0,
+      "leaders": [
+        0
+      ],
+      "payload": {
+        "position": {
+          "x": 166,
+          "y": 0,
+          "z": -38.76
+        },
+        "distance": 363.60023308338367,
+        "total": 363.60023308338367,
+        "speed": 2.4240015538892243,
+        "radius": 4.5,
+        "pushing": 0,
+        "contested": false,
+        "delivered": true,
+        "checkpointsReached": 3,
+        "checkpointCount": 3,
+        "progress": 100
+      }
+    },
+    "clip": {
+      "mode": "payload",
+      "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e",
+      "frames": 39,
+      "actualCaptureSpanSeconds": 3.891,
+      "measuredCaptureCadence": 9.766126959650476,
+      "encodedFps": 15,
+      "resolution": "1280x800 UI; 0.75 3D scale",
+      "renderer": "Godot compatibility renderer / llvmpipe software CPU; capture preset disables sun shadows",
+      "method": "Production native camera follows authority pose; ordinary serialized native inputs. Frame timestamp durations preserved before 15fps resampling.",
+      "performanceLimit": "Capture cadence is not a GPU or interactive gameplay FPS benchmark",
+      "output": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/native-payload-visual-final/payload.mp4"
+    }
+  }
+}

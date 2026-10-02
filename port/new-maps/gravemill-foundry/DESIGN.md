@@ -4,7 +4,7 @@ Stable ID: `gravemill-foundry`. Seed: `0x47524156`. Authored map, not a procedur
 
 ## Architectural intent
 
-The foundry is cut across oblique mineral strata (`q = z − 0.14x`). A procession of two horizontal crusher drums, five radial furnace/silo towers, two barrel-vaulted interior districts and a suspended conveyor lattice defines a geological amphitheatre. Pale mineral rock and soot-black structural metal dominate; oxidized copper vaults, brass machinery seams and small molten inspection ports supply hierarchy. The peripheral rock spurs extend the canyon beyond the playable rectangle.
+The foundry is cut across oblique mineral strata (`q = z − 0.14x`). A procession of two horizontal crusher drums, five radial furnace/silo towers, six filter banks, two barrel-vaulted interior districts and a suspended conveyor lattice defines a geological amphitheatre. Pale mineral rock and soot-black structural metal dominate; oxidized copper vaults, brass machinery seams and small molten inspection ports supply hierarchy. The peripheral rock spurs extend the canyon beyond the playable rectangle.
 
 Landmarks are useful bearings: **Crusher Throat** in the west, **Cooling Nave** at the middle terrace, **Furnace Apron** in the east, and the **Crown Gantry** above them. The two vaulted galleries are 52 m long, with distinct end portals, sheltered side bays and real window apertures. Machinery is static. Stopped cargo platforms are flush with the midlevel terrace. Four maintenance inclines are source-walkable routes, avoiding unsupported moving lifts or vertical decorative stairs presented as gameplay.
 
@@ -32,10 +32,10 @@ Checkpoint distances are the exact source-derived equal thirds: 121.20, 242.40, 
 
 All authoritative shapes are authored in the recipe. Source geometry and Blender use those exact vertices. Circular shells have radial wall faces; windows and arches have no enclosing collision box. A source wall quad does **not** provide standing-height movement collision: movement inspects its perimeter edges, and its horizontal edges have no vertical span. Every wall polygon is consequently emitted as triangles, preserving the low-to-high diagonal required by movement as well as the ray triangles. The real continuous-input wall-contact test caught this before art generation; failed logs are retained.
 
-The production Godot binder must consume the same terrain surfaces and wall triangles. GLB meshes remain presentation-only. The scoped production physics probe is prepared but has not been run before slot permission.
+The production Godot binder consumes the same terrain surfaces and wall triangles. GLB meshes remain presentation-only. The granted-slot production probe passes 908 standing capsules and support rays, wall-contact movement, open portals/windows, and blocking ceilings/headers; see `ACCEPTANCE.md` for the complete verified scope.
 
 ## Editable Blender deliverable
 
 `tools/godot-multiplayer/new-maps/gravemill-foundry/blender.py` creates individually named source and detail collections, eight material batches at most, editable master, GLB, embedded recipe/geometry hashes, eight authored review cameras and measured budget/timing JSON. Architectural detailing includes barrel-vault ribs, crusher end ribs and hoops, radial silo seams, furnace sight ports, conveyor rollers/chords, crown sleepers, flush static lift decks and fractured exterior strata. Generator seed is committed in the recipe.
 
-Budget gates: ≤8 exported mesh nodes/materials; <180,000 triangles. Actual totals and render costs are **pending Blender execution**. CPU-only review uses one thread and 16 Cycles samples. No GPU or human-playtesting claim.
+Budget gates: ≤8 exported mesh nodes/materials; <180,000 triangles. Final measured export: **8 batches/materials, 66,284 triangles, 6,441 editable pieces**. Ground-following roads and mineral seams are disjoint inlaid regions of the original planar support mesh, preventing depth shimmer without visual-only raised floors. CPU review uses one thread and 16 Cycles samples; production proof and timing are in `PRODUCTION.md`. No GPU or human-playtesting claim.

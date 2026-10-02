@@ -1,0 +1,53 @@
+{
+  "id": "gravemill-foundry",
+  "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e",
+  "recipeHash": "8c065b4f47c5fa67937338367cf030e4e0ff95fdc6a743483cc9127aa5ca1678",
+  "seed": 1196573014,
+  "masterReopen": {
+    "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e",
+    "objects": 6458,
+    "materials": 9,
+    "cameras": 8
+  },
+  "assets": [
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/gravemill-foundry.blend",
+      "sha256": "7127a15071532fdf33d02659a53cf5d0f5c86b888d0e71e68183fb2304d6269a",
+      "bytes": 37091764
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+      "sha256": "2e610753f2d88ef947a2257f3e6311f6c2999350cf41dbbd9020f9e459450eac",
+      "bytes": 3556916
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/recipe.mjs",
+      "sha256": "86ed24fd5ebf164b4a1e9301bfa29fa79b57c6aaea7e86ed341e7e01ffbfff5f",
+      "bytes": 11044
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/blender.py",
+      "sha256": "8fdeeff29e62bcce474ef5cf42fa5dbb6a4c47e8d4c750837bdc1fc6952d3cc4",
+      "bytes": 20243
+    }
+  ],
+  "sourceModules": [
+    {
+      "path": "game/core.mjs",
+      "sha256": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9"
+    },
+    {
+      "path": "game/terrain.mjs",
+      "sha256": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c"
+    },
+    {
+      "path": "game/vehicles.mjs",
+      "sha256": "e55dbed9969a9f4430b0471fefb4d294fddf0e75d8af853565c9361c106244db"
+    },
+    {
+      "path": "port/multiplayer-worlds/derived/core.mjs",
+      "sha256": "090d353ed616b1edbbd3053734bc092ed24444bdd1abfdca02293cab4aacf841"
+    }
+  ],
+  "evidence": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002"
+}

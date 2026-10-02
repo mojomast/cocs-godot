@@ -1,0 +1,190 @@
+{
+  "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e",
+  "physics": {
+    "conveyorUnderside": 13,
+    "galleryShotProbes": 8,
+    "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e",
+    "id": "gravemill-foundry",
+    "metrics": {
+      "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+      "gameplayTriangles": 2808,
+      "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e"
+    },
+    "routeCapsules": 908,
+    "routeSupportRays": 908,
+    "wallContactSteps": 160,
+    "wallContactX": -78.4099349975586
+  },
+  "rounds": [
+    {
+      "mode": "payload",
+      "label": "controlled two-production-native-peer fixture; ordinary client input only; passive opponent",
+      "seconds": 150.0000000000115,
+      "wallSeconds": 157.315427475,
+      "controls": 2856,
+      "distanceMoved": 382.0702720453957,
+      "mounted": false,
+      "exited": false,
+      "driveDistance": 0,
+      "teamScores": {
+        "0": 3,
+        "1": 0
+      },
+      "kills": 0,
+      "nativeReceipts": [
+        {
+          "role": "host",
+          "inputs": 143,
+          "results": true
+        },
+        {
+          "role": "guest",
+          "inputs": 143,
+          "results": true
+        }
+      ]
+    },
+    {
+      "mode": "assault",
+      "label": "controlled two-production-native-peer fixture; ordinary client input only; passive opponent",
+      "seconds": 66.6999999999975,
+      "wallSeconds": 74.04075145899999,
+      "controls": 1251,
+      "distanceMoved": 461.7861074864728,
+      "mounted": false,
+      "exited": false,
+      "driveDistance": 0,
+      "teamScores": {
+        "0": 3,
+        "1": 0
+      },
+      "kills": 0,
+      "nativeReceipts": [
+        {
+          "role": "host",
+          "inputs": 63,
+          "results": true
+        },
+        {
+          "role": "guest",
+          "inputs": 63,
+          "results": true
+        }
+      ]
+    },
+    {
+      "mode": "combined-arms",
+      "label": "controlled two-production-native-peer fixture; ordinary client input only; passive opponent",
+      "seconds": 71.73333333333055,
+      "wallSeconds": 79.767014297,
+      "controls": 1349,
+      "distanceMoved": 126.93216991499943,
+      "mounted": true,
+      "exited": true,
+      "driveDistance": 76.87829879113737,
+      "teamScores": {
+        "0": 50.01666666666511,
+        "1": 0
+      },
+      "kills": 0,
+      "nativeReceipts": [
+        {
+          "role": "host",
+          "inputs": 68,
+          "results": true
+        },
+        {
+          "role": "guest",
+          "inputs": 68,
+          "results": true
+        }
+      ]
+    },
+    {
+      "mode": "deathmatch",
+      "label": "controlled two-production-native-peer fixture; ordinary client input only; passive opponent",
+      "seconds": 132.21666666666403,
+      "wallSeconds": 139.12051511099997,
+      "controls": 2514,
+      "distanceMoved": 1005.7036975705118,
+      "mounted": false,
+      "exited": false,
+      "driveDistance": 0,
+      "teamScores": {
+        "0": 0,
+        "1": 0
+      },
+      "kills": 5,
+      "nativeReceipts": [
+        {
+          "role": "host",
+          "inputs": 126,
+          "results": true
+        },
+        {
+          "role": "guest",
+          "inputs": 126,
+          "results": true
+        }
+      ]
+    },
+    {
+      "mode": "teamdeathmatch",
+      "label": "controlled two-production-native-peer fixture; ordinary client input only; passive opponent",
+      "seconds": 67.83333333333077,
+      "wallSeconds": 76.447291465,
+      "controls": 1273,
+      "distanceMoved": 442.0526864605405,
+      "mounted": false,
+      "exited": false,
+      "driveDistance": 0,
+      "teamScores": {
+        "0": 5,
+        "1": 0
+      },
+      "kills": 5,
+      "nativeReceipts": [
+        {
+          "role": "host",
+          "inputs": 64,
+          "results": true
+        },
+        {
+          "role": "guest",
+          "inputs": 64,
+          "results": true
+        }
+      ]
+    },
+    {
+      "mode": "domination",
+      "label": "controlled two-production-native-peer fixture; ordinary client input only; passive opponent",
+      "seconds": 26.199999999999793,
+      "wallSeconds": 34.991613692,
+      "controls": 471,
+      "distanceMoved": 91.16636889095192,
+      "mounted": false,
+      "exited": false,
+      "driveDistance": 0,
+      "teamScores": {
+        "0": 10.000000000000076,
+        "1": 0
+      },
+      "kills": 0,
+      "nativeReceipts": [
+        {
+          "role": "host",
+          "inputs": 24,
+          "results": true
+        },
+        {
+          "role": "guest",
+          "inputs": 24,
+          "results": true
+        }
+      ]
+    }
+  ],
+  "fixtureLimit": "Controlled normal-input native peers with passive opponent; autonomous bot observations recorded separately",
+  "evidence": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002"
+}

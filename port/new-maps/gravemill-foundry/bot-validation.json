@@ -1,0 +1,146 @@
+{
+  "geometryHash": "357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e",
+  "milliseconds": 15643.417326,
+  "results": [
+    {
+      "mode": "domination",
+      "label": "autonomous source bots; no bot input override; stationary human seat; bounded 120 simulated seconds",
+      "seconds": 62.99999999999856,
+      "over": true,
+      "kills": 0,
+      "maxPayloadMetres": 0,
+      "maxOwnedZones": 1,
+      "teamScores": {
+        "0": 0,
+        "1": 50.049999999999294
+      },
+      "bots": [
+        {
+          "id": 1,
+          "team": 1,
+          "distanceExcludingRespawnJumps": 294.80856316097766,
+          "largestStep": 0.5882493500012009,
+          "x": 93.00250816082024,
+          "y": 0.9184999999999988,
+          "z": -21.73825008496274
+        },
+        {
+          "id": 2,
+          "team": 0,
+          "distanceExcludingRespawnJumps": 676.0394055779946,
+          "largestStep": 0.7018952375281439,
+          "x": -133.3897205210296,
+          "y": 0,
+          "z": -47.98816401767945
+        },
+        {
+          "id": 3,
+          "team": 1,
+          "distanceExcludingRespawnJumps": 602.9592163051756,
+          "largestStep": 0.591082033698605,
+          "x": 32.50393983231913,
+          "y": 0,
+          "z": -28.130050119988443
+        },
+        {
+          "id": 4,
+          "team": 0,
+          "distanceExcludingRespawnJumps": 702.919107357126,
+          "largestStep": 0.73079169152166,
+          "x": -101.94005225102325,
+          "y": 0,
+          "z": -60.75860822944096
+        },
+        {
+          "id": 5,
+          "team": 1,
+          "distanceExcludingRespawnJumps": 466.2881924413365,
+          "largestStep": 0.6576336257413564,
+          "x": 33.99999999993558,
+          "y": 7.109905729499962,
+          "z": 8.069384984047787
+        },
+        {
+          "id": 6,
+          "team": 0,
+          "distanceExcludingRespawnJumps": 724.8747779313497,
+          "largestStep": 0.7186315816896722,
+          "x": -102.99728904185531,
+          "y": 0,
+          "z": -62.47725069589453
+        }
+      ],
+      "objectiveObserved": true
+    },
+    {
+      "mode": "payload",
+      "label": "autonomous source bots; no bot input override; stationary human seat; bounded 120 simulated seconds",
+      "seconds": 119.99999999999532,
+      "over": false,
+      "kills": 8,
+      "maxPayloadMetres": 144.40989257295521,
+      "maxOwnedZones": 1,
+      "teamScores": {
+        "0": 1,
+        "1": 0
+      },
+      "bots": [
+        {
+          "id": 1,
+          "team": 1,
+          "distanceExcludingRespawnJumps": 962.8019361681309,
+          "largestStep": 0.7009220359839907,
+          "x": -52.77832842237495,
+          "y": 0,
+          "z": -59.966933201646384
+        },
+        {
+          "id": 2,
+          "team": 0,
+          "distanceExcludingRespawnJumps": 1092.3568676084483,
+          "largestStep": 129.5271191064679,
+          "x": -17.301381384732956,
+          "y": 0,
+          "z": -40.122918958134285
+        },
+        {
+          "id": 3,
+          "team": 1,
+          "distanceExcludingRespawnJumps": 978.5868821966748,
+          "largestStep": 259.93416687437883,
+          "x": -33.852858233597644,
+          "y": 0,
+          "z": -48.02792616342059
+        },
+        {
+          "id": 4,
+          "team": 0,
+          "distanceExcludingRespawnJumps": 867.1521339135329,
+          "largestStep": 75.67985680695388,
+          "x": -30.658888559637187,
+          "y": 0,
+          "z": -45.005436691792234
+        },
+        {
+          "id": 5,
+          "team": 1,
+          "distanceExcludingRespawnJumps": 1090.9156249998337,
+          "largestStep": 255.16160202618724,
+          "x": -18.16490397483127,
+          "y": 0,
+          "z": -53.02547014285689
+        },
+        {
+          "id": 6,
+          "team": 0,
+          "distanceExcludingRespawnJumps": 1165.115026199748,
+          "largestStep": 77.12337056031386,
+          "x": -26.332904955764548,
+          "y": 0,
+          "z": -36.627330195270474
+        }
+      ],
+      "objectiveObserved": true
+    }
+  ]
+}
