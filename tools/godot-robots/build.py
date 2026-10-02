@@ -45,7 +45,38 @@ def reset():
 
 
 def piece(spec, material):
-    if spec['shape'] == 'box':
+    if spec['shape'] == 'plate':
+        # A bent, tapered armour pressing: broad load-bearing bottom with a
+        # narrower crown and raked front. Kept within the recipe's exact AABB.
+        vertices = []
+        for y in [-.5,.5]:
+            for z in [-.5,.5]:
+                for x in [-.5,.5]:
+                    v = [x*(.82 if y > 0 else 1), y, z*(.88 if y > 0 else 1)]
+                    vertices.append(xyz([spec['p'][i]+v[i]*spec['size'][i] for i in range(3)]))
+        data = bpy.data.meshes.new(spec['name'])
+        data.from_pydata(vertices, [], [(0,1,3,2),(4,6,7,5),(0,4,5,1),(2,3,7,6),(0,2,6,4),(1,5,7,3)])
+        data.update()
+        obj = bpy.data.objects.new(spec['name'], data)
+        bpy.context.collection.objects.link(obj)
+        bpy.ops.object.select_all(action='DESELECT')
+        obj.select_set(True); bpy.context.view_layer.objects.active = obj
+    elif spec['shape'] == 'tube':
+        a, b = xyz(spec['a']), xyz(spec['b'])
+        length = (b-a).length
+        vertices = [(math.cos(i*math.tau/12)*spec['radius']*r,
+                     math.sin(i*math.tau/12)*spec['radius']*r, z)
+                    for z,r in [(-length/2,1),(length/2,1),(-length/2,.65),(length/2,.65)] for i in range(12)]
+        faces = []
+        for i in range(12):
+            n=(i+1)%12
+            faces.extend([(i,n,n+12,i+12),(i+24,i+36,n+36,n+24),
+                          (i,i+24,n+24,n),(i+12,n+12,n+36,i+36)])
+        data=bpy.data.meshes.new(spec['name']); data.from_pydata(vertices,[],faces); data.update()
+        obj=bpy.data.objects.new(spec['name'],data); bpy.context.collection.objects.link(obj)
+        obj.location=(a+b)/2; obj.rotation_euler=(b-a).to_track_quat('Z','Y').to_euler()
+        bpy.ops.object.select_all(action='DESELECT'); obj.select_set(True); bpy.context.view_layer.objects.active=obj
+    elif spec['shape'] == 'box':
         bpy.ops.mesh.primitive_cube_add(size=1, location=xyz(spec['p']))
         obj = bpy.context.object
         obj.dimensions = (spec['size'][0], spec['size'][2], spec['size'][1])
@@ -60,6 +91,10 @@ def piece(spec, material):
     bevel = obj.modifiers.new('machined_edge', 'BEVEL')
     bevel.width = spec['bevel']; bevel.segments = 2
     bpy.ops.object.modifier_apply(modifier=bevel.name)
+    # Primitive UVMap is unrelated to the component-local finish. A single UV
+    # stream keeps Blender/glTF/Godot material overrides on the same coordinates.
+    for uv in list(obj.data.uv_layers):
+        obj.data.uv_layers.remove(uv)
     obj.data.materials.append(material)
     colors = obj.data.color_attributes.new(name='Col', type='FLOAT_COLOR', domain='CORNER')
     for c in colors.data:
@@ -91,7 +126,8 @@ def export(path):
     finish_scene(ROOT, 'robots')
     bpy.ops.export_scene.gltf(filepath=str(path), export_format='GLB',
         export_yup=True, export_animations=True, export_extras=True,
-        export_materials='EXPORT', export_all_vertex_colors=True,
+        export_materials='EXPORT', export_vertex_color='NAME',
+        export_vertex_color_name='Col', export_all_vertex_colors=False,
         export_animation_mode='ACTIONS')
 
 

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "source-authored-awaiting-Blender-grant",
+  "status": "production-source-contract; acceptance and output identities live in production receipts",
   "seed": 31027,
   "skins": {"needle_surveyor": "skirmisher", "caisson_guard": "bulwark", "kiln_tender": "mortar"},
   "selection": "explicit-local-opt-in-after-configure; originals-default",
@@ -10,11 +10,13 @@
     "port/native-campaign/core.generated.mjs": "2800bec533c3810a94d61e2f7f20f93574e44b13346dee2085200a0467759cca",
     "port/native-campaign/enemies.mjs": "f3bed6afe31c3ee87f05cf3f02f162916785eedf64171ed7bb7058d6668b6b7e",
     "port/native-horde/robot-roles.mjs": "d61dfc281cfe71ab0525735a1a299d868394ffc5c1cff4e8b0c72f7e62f056a1",
-    "godot/campaign/robot_visual.gd": "ff8a41f5cb09fe1f1ffc5f6fcc60ce3107eb9ced5e01350149aac4bb2d295735",
+    "godot/campaign/robot_visual.gd": "34ae54e739b464bd01ca1beb2ca991038ce50aa7aca4cfc10942831dfc836f20",
     "godot/source_operators/motion_math.gd": "ef5133895e42a7b5e60e80bfc5e09da021566ab1e40ae12eee523d4c46d8b633",
     "godot/source_operators/ground_contact.gd": "566f0b43f3430593eff3e6a35a9841a4ed3a67e00b202c3153f5fab75fb5b4fd",
     "tools/godot-campaign/robot-art/build.py": "470a45d39dd24d13fac9f7bd5e1cffd395a8aa9f4de2f2ecddca365be908815e"
   },
+  "auditedBaselineRobotVisualSHA256": "ff8a41f5cb09fe1f1ffc5f6fcc60ce3107eb9ced5e01350149aac4bb2d295735",
+  "reviewedRobotVisualDelta": "three-line presentation-only identity-rebuild hook; rig/contact/event/authority code unchanged",
   "authority": {
     "actorCenterAboveFeet": 0.9,
     "feetOrigin": [0, -0.9, 0],
