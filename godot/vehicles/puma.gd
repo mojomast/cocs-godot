@@ -7,6 +7,7 @@ var roll_angle := 0.0
 var roll_speed := 0.0
 var roll_age := 0.0
 const SettingsAccess = preload("res://ui/settings_access.gd")
+const AssetAttachments = preload("res://vehicle_assets/attachment.gd")
 
 func observe_roll(speed: float, elapsed: float, discontinuity: bool) -> void:
 	if discontinuity:
@@ -89,6 +90,8 @@ func _init() -> void:
 	box(turret, Vector3(0.5, 0.32, 0.5), Vector3(0, 0.22, 0), olive)
 	for x: float in [-0.13, 0.13]:
 		box(turret, Vector3(0.1, 0.1, 0.85), Vector3(x, 0.25, 0.55), steel)
+	AssetAttachments.install(self, "puma")
 
 func set_team(team: int) -> void:
 	accent.albedo_color = Color("e56859") if team == 0 else (Color("58a7ed") if team == 1 else Color("dfc98d"))
+	AssetAttachments.set_team(self, accent.albedo_color)

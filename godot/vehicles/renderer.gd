@@ -1,6 +1,7 @@
 extends Node3D
 ## Consumes a complete decoded snapshot state, not its protocol envelope.
 const Puma = preload("res://vehicles/puma.gd")
+const VehicleArt = preload("res://vehicle_assets/attachment.gd")
 var nodes: Dictionary = {}
 var stamps: Dictionary = {}
 
@@ -46,6 +47,7 @@ func apply_state(state: Dictionary, local_actor_id: int = -1) -> bool:
 		n.rotation = Vector3(v.pitchBody, v.yaw, v.roll)
 		n.visible = v.health > 0 and v.respawnTimer <= 0
 		n.turret.rotation.y = v.turretYaw
+		VehicleArt.apply_source_pose(n, v)
 		var team := -1
 		for a: Variant in state.get("actors", []):
 			if a is Dictionary and a.get("id") == v.get("driver") and numeric(a.get("team")):
