@@ -231,7 +231,7 @@ export class LocalReplay {
       case 'frame':if(!this.capture) fail('No recording');return this.capture.frame(request);
       case 'frames':{
         if(!this.capture) fail('No recording');
-        list(request.frames,4,'capture batch');
+        list(request.frames,32,'capture batch');
         let result={frames:this.capture.recorder.frameCount,duration:this.capture.recorder.duration};
         for(const frame of request.frames) result=this.capture.frame(frame);
         return result;

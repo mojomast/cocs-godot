@@ -24,6 +24,14 @@ export function options(argv=process.argv.slice(2)) {
 }
 const publicKeys=new Set(['id','name','health','team','x','y','z','yaw','pitch','eyeHeight']);
 const cleanName=value=>typeof value==='string'?value.replace(/[\n\r\t]/g,' ').split(' ').filter(Boolean).join(' ').slice(0,36):'';
+// Keep the exact public wire scalars for the entire bounded journey. A native
+// report can arrive after >160 newer snapshots during software rendering.
+// Exhaustion fails rather than evicting a still-needed comparison frame.
+export function retainPublicSnapshot(history,state) {
+  assert.ok(history.length<16384,'bounded journey public snapshot history exhausted');
+  history.push({time:state.time,actors:state.actors.map(actor=>Object.fromEntries(
+    Object.entries(actor).filter(([key])=>publicKeys.has(key))))});
+}
 export function assertPublicObservation(observation,state) {
   assert.equal(observation.spectating,true);assert.equal(observation.actor,-1);
   for(const key of ['kit','marks'])assert.equal(Object.keys(observation[key]).length,0,key+' empty');
@@ -146,7 +154,7 @@ export async function run(plan) {
         if(frame.type==='results') {connection.phase='results';connection.results.push({time:frame.state.time,reason:frame.state.overReason});}
         if(frame.type==='events')connection.events.push(...frame.items);
         if(frame.type==='snapshot') {
-          connection.snapshots.push(frame.state);if(connection.snapshots.length>160)connection.snapshots.shift();
+          retainPublicSnapshot(connection.snapshots,frame.state);
           if(connection.spectating)try {assert.deepEqual(frame.state,filterCocsSnapshot(frame.state,null));}catch(error){fail(error);}
           record({direction:'source-to-native',peer:connection.peer,type:'snapshot',time:frame.state.time,spectating:connection.spectating,actors:frame.state.actors.map(a=>Object.fromEntries(Object.entries(a).filter(([key])=>publicKeys.has(key))))});
         } else record({direction:'source-to-native',peer:connection.peer,frame});

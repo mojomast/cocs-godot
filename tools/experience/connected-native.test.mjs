@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {existsSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
-import {options,ROUTES,assertPublicObservation} from './connected-native.mjs';
+import {options,ROUTES,assertPublicObservation,retainPublicSnapshot} from './connected-native.mjs';
 import {filterCocsSnapshot} from '../../game/cocs-intel.mjs';
 
 test('all four plans select existing native routes and appropriate isolated authority',()=>{
@@ -31,4 +31,18 @@ test('wire-vs-native privacy assertion rejects local context and private target 
   corrupt(o=>{o.targets[0].req=777;});
   corrupt(o=>{o.targets[0].x=999;});
   corrupt(o=>{o.targets[0].id=99;});
+});
+
+test('delayed report retains its exact immutable public frame beyond 160 newer sends',()=>{
+  const history=[],state={time:12.467,actors:[{id:0,health:100,x:4,req:777}]};
+  retainPublicSnapshot(history,state);
+  state.actors[0].x=999;
+  for(let i=0;i<216;i++)retainPublicSnapshot(history,{time:12.5+i/30,actors:[{id:0,health:100,x:i}]});
+  const frame=history.findLast(s=>s.time===12.467);
+  assert.deepEqual(frame,{time:12.467,actors:[{id:0,health:100,x:4}]});
+  const observed={spectating:true,actor:-1,kit:{},marks:{},hits:[],target:0,targets:[{id:0,health:100,x:4}]};
+  assertPublicObservation(observed,frame);
+  observed.targets[0].x=999;
+  assert.throws(()=>assertPublicObservation(observed,frame),/source-public scalar/);
+  assert.throws(()=>retainPublicSnapshot(Array(16384),state),/history exhausted/);
 });

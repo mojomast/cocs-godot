@@ -67,11 +67,13 @@ export function validate(p, {materialNames = null} = {}) {
         if (!text(e.source,128) || selectors.has(e.source)) fail('invalid/duplicate selector');
         selectors.add(e.source);
         const options = e.options ?? {};
-        if (!closed(options,[...Object.keys(bounds),'tint','variant','glow','wear_tint'],'options')) continue;
+        if (!closed(options,[...Object.keys(bounds),'tint','variant','glow','wear_tint','variation_mode','variation_seed'],'options')) continue;
         for (const [k,v] of Object.entries(options)) {
           if (bounds[k] && !number(v,...bounds[k])) fail(`invalid option ${k}`);
           if (['tint','wear_tint'].includes(k) && !color(v)) fail(`invalid color ${k}`);
           if (k === 'glow' && typeof v !== 'boolean') fail('invalid glow');
+          if (k === 'variation_mode' && !['none','organic','manufactured'].includes(v)) fail('invalid variation_mode');
+          if (k === 'variation_seed' && (!Number.isInteger(v) || !number(v,0,2147483647))) fail('invalid variation_seed');
         }
         if (options.wear_strength > 0 && (!color(options.wear_tint) || !number(options.wear_height_min,-100,100) || !number(options.wear_height_max,-100,100) || options.wear_height_max <= options.wear_height_min)) fail('invalid wear interval');
         const recipe = families[e.family]?.[options.variant ?? 'default'];

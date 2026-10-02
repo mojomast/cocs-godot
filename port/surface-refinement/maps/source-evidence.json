@@ -1,0 +1,796 @@
+{
+  "status": "source pixel and batch inspection; no refined native appearance claim",
+  "pixels": [
+    {
+      "key": "weathered_concrete",
+      "path": "res://moth/generated/textures/weathered_concrete.png",
+      "sha256": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550",
+      "size": [
+        64,
+        64
+      ],
+      "png_metadata": {
+        "srgb": 0
+      },
+      "mean_rgb": [
+        96.2742,
+        102.3845,
+        112.051
+      ]
+    },
+    {
+      "key": "weathered_concrete-worn",
+      "path": "res://moth/generated/textures/weathered_concrete-worn.png",
+      "sha256": "fc6707d6bf6ae6dc6dfec746100f83015ce74885976b20688280f29bcdf111cf",
+      "size": [
+        64,
+        64
+      ],
+      "png_metadata": {
+        "srgb": 0
+      },
+      "mean_rgb": [
+        95.6125,
+        101.7932,
+        111.175
+      ]
+    },
+    {
+      "key": "weathered_concrete-damp",
+      "path": "res://moth/generated/textures/weathered_concrete-damp.png",
+      "sha256": "8a143f57858a26d6ea5ab81badc60cb0ea154294b9fe180c505cb1b472bd0fab",
+      "size": [
+        64,
+        64
+      ],
+      "png_metadata": {
+        "srgb": 0
+      },
+      "mean_rgb": [
+        60.406,
+        64.3496,
+        70.2661
+      ]
+    },
+    {
+      "key": "rough_stucco-weathered",
+      "path": "res://moth/generated/textures/rough_stucco-weathered.png",
+      "sha256": "f74639c6eb1736a65e3eeda2705fcf55c3be1a6c21acd33b72cd76c4466ea593",
+      "size": [
+        64,
+        64
+      ],
+      "png_metadata": {
+        "srgb": 0
+      },
+      "mean_rgb": [
+        121.406,
+        115.3569,
+        110.1614
+      ]
+    },
+    {
+      "key": "rock",
+      "path": "res://moth/generated/textures/rock.png",
+      "sha256": "aad5e455978fdae96d8a6784908c0019e33083f809cfcf606c7c84b13ca35504",
+      "size": [
+        64,
+        64
+      ],
+      "png_metadata": {
+        "srgb": 0
+      },
+      "mean_rgb": [
+        4.7251,
+        4.2827,
+        3.6653
+      ]
+    },
+    {
+      "key": "rock-moss",
+      "path": "res://moth/generated/textures/rock-moss.png",
+      "sha256": "80c63f01502fa13b0deb309c9d90a38104cde1b6877075d00d273b8a80dfdbda",
+      "size": [
+        64,
+        64
+      ],
+      "png_metadata": {
+        "srgb": 0
+      },
+      "mean_rgb": [
+        79.6025,
+        75.8765,
+        63.9243
+      ]
+    },
+    {
+      "key": "sand",
+      "path": "res://moth/generated/textures/sand.png",
+      "sha256": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96",
+      "size": [
+        64,
+        64
+      ],
+      "png_metadata": {
+        "srgb": 0
+      },
+      "mean_rgb": [
+        126.1826,
+        112.8848,
+        78.3328
+      ]
+    },
+    {
+      "key": "grass",
+      "path": "res://moth/generated/textures/grass.png",
+      "sha256": "b34ff20efcd0abad36323f9c6ffca4f30325dc91f7110a624ce7dac1d4f2fe64",
+      "size": [
+        64,
+        64
+      ],
+      "png_metadata": {
+        "srgb": 0
+      },
+      "mean_rgb": [
+        52.0225,
+        82.696,
+        45.071
+      ]
+    },
+    {
+      "key": "macro-organic",
+      "path": "res://moth/generated/textures/macro-organic.png",
+      "sha256": "de19687a5b14599a3e738f6006b08ad3380b023d6d19d4d2270b903350f5341a",
+      "size": [
+        64,
+        64
+      ],
+      "png_metadata": {},
+      "mean_rgb": [
+        116.9766,
+        109.5933,
+        93.8093
+      ]
+    },
+    {
+      "key": "brushed_metal",
+      "path": "res://moth/generated/textures/brushed_metal.png",
+      "sha256": "271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51",
+      "size": [
+        64,
+        64
+      ],
+      "png_metadata": {
+        "srgb": 0
+      },
+      "mean_rgb": [
+        61.1084,
+        64.384,
+        68.6816
+      ]
+    },
+    {
+      "key": "metal",
+      "path": "res://moth/generated/textures/metal.png",
+      "sha256": "1edff202b4755b6d8bd84f6e2499d9052df804e40a17d30cd0ee68926e3a7f46",
+      "size": [
+        64,
+        64
+      ],
+      "png_metadata": {
+        "srgb": 0
+      },
+      "mean_rgb": [
+        98.8008,
+        103.9722,
+        112.1138
+      ]
+    },
+    {
+      "key": "metal-oxide",
+      "path": "res://moth/generated/textures/metal-oxide.png",
+      "sha256": "82ac59a91f7be9a0fd4182a8b83d7b2b7cf07d7bb6e98ae5b5ff006eedcb8257",
+      "size": [
+        64,
+        64
+      ],
+      "png_metadata": {
+        "srgb": 0
+      },
+      "mean_rgb": [
+        97.7456,
+        106.5425,
+        108.2402
+      ]
+    },
+    {
+      "key": "diamond_plate",
+      "path": "res://moth/generated/textures/diamond_plate.png",
+      "sha256": "73c360a156a11b7b13a99adfd33c5ee057f00cfa28e6c684d27fe032a8d601cf",
+      "size": [
+        48,
+        48
+      ],
+      "png_metadata": {
+        "srgb": 0
+      },
+      "mean_rgb": [
+        150.1107,
+        111.1233,
+        170.5126
+      ]
+    },
+    {
+      "key": "hex_paneling",
+      "path": "res://moth/generated/textures/hex_paneling.png",
+      "sha256": "725a587331a74d235254e64b7f5d9a605e2de8cc28f16eec3c92577c3ddeea40",
+      "size": [
+        48,
+        48
+      ],
+      "png_metadata": {
+        "srgb": 0
+      },
+      "mean_rgb": [
+        39.5278,
+        139.9861,
+        130.2956
+      ]
+    },
+    {
+      "key": "riveted_armor",
+      "path": "res://moth/generated/textures/riveted_armor.png",
+      "sha256": "2afc1402d3438a9ffdea671d8b40b3d97811408613402c4f66c228e8621efdb9",
+      "size": [
+        48,
+        48
+      ],
+      "png_metadata": {
+        "srgb": 0
+      },
+      "mean_rgb": [
+        85.7882,
+        126.9809,
+        92.1146
+      ]
+    },
+    {
+      "key": "riveted_armor-scorched",
+      "path": "res://moth/generated/textures/riveted_armor-scorched.png",
+      "sha256": "a7e8f11847cd2b402e9cc631039c28fd6d4e1d851e1555af58143fc820a511ec",
+      "size": [
+        64,
+        64
+      ],
+      "png_metadata": {
+        "srgb": 0
+      },
+      "mean_rgb": [
+        104.3977,
+        113.5076,
+        122.5398
+      ]
+    },
+    {
+      "key": "hazard_stripes",
+      "path": "res://moth/generated/textures/hazard_stripes.png",
+      "sha256": "4f2bfb3fd45f16c485749606ba7cfb49b32d86c28c3fd1b0d942d69d613cff44",
+      "size": [
+        48,
+        48
+      ],
+      "png_metadata": {
+        "srgb": 0
+      },
+      "mean_rgb": [
+        128.3954,
+        117.3898,
+        26.3863
+      ]
+    },
+    {
+      "key": "dust-field",
+      "path": "res://moth/generated/textures/dust-field.png",
+      "sha256": "91e45cbbabf25909d0adc3905de7cb5a736188ffd48c02a99caf8879a1749a9f",
+      "size": [
+        64,
+        64
+      ],
+      "png_metadata": {},
+      "mean_rgb": [
+        110.856,
+        110.856,
+        110.856
+      ]
+    },
+    {
+      "key": "circuit_board-etch",
+      "path": "res://moth/generated/textures/circuit_board-etch.png",
+      "sha256": "21a89925e0030d3fdb28c9194022c5941e07247ffaa1e6e0a8ff496e340955ff",
+      "size": [
+        64,
+        64
+      ],
+      "png_metadata": {
+        "srgb": 0
+      },
+      "mean_rgb": [
+        35.929,
+        92.1863,
+        66.6477
+      ]
+    }
+  ],
+  "accepted_geometry": [
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-surface-refinement-maps-20261002/godot/multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+      "sha256": "46bf1648b32d23e337cd11b2c639a47f17d36c41361aab9434e1e621361e5935",
+      "materials": [
+        {
+          "name": "GM / soot",
+          "primitives": 1,
+          "triangles": 12643,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.032999999821186066,
+              0.04399999976158142,
+              0.04699999839067459,
+              1
+            ],
+            "metallicFactor": 0.6499999761581421,
+            "roughnessFactor": 0.5299999713897705
+          }
+        },
+        {
+          "name": "GM / mineral",
+          "primitives": 1,
+          "triangles": 2704,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.1899999976158142,
+              0.18000000715255737,
+              0.15000000596046448,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8199999928474426
+          }
+        },
+        {
+          "name": "GM / copper",
+          "primitives": 1,
+          "triangles": 3834,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.09000000357627869,
+              0.20000000298023224,
+              0.1599999964237213,
+              1
+            ],
+            "metallicFactor": 0.6499999761581421,
+            "roughnessFactor": 0.5299999713897705
+          }
+        },
+        {
+          "name": "GM / brass",
+          "primitives": 1,
+          "triangles": 38568,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.23999999463558197,
+              0.11999999731779099,
+              0.03500000014901161,
+              1
+            ],
+            "metallicFactor": 0.6499999761581421,
+            "roughnessFactor": 0.5299999713897705
+          }
+        },
+        {
+          "name": "GM / ore",
+          "primitives": 1,
+          "triangles": 2526,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.23999999463558197,
+              0.11999999731779099,
+              0.06499999761581421,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8199999928474426
+          }
+        },
+        {
+          "name": "GM / orange",
+          "primitives": 1,
+          "triangles": 328,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.800000011920929,
+              0.1899999976158142,
+              0.02500000037252903,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.5299999713897705
+          }
+        },
+        {
+          "name": "GM / chalk",
+          "primitives": 1,
+          "triangles": 8624,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.30000001192092896,
+              0.28999999165534973,
+              0.23999999463558197,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8199999928474426
+          }
+        },
+        {
+          "name": "GM / cooling-floor",
+          "primitives": 1,
+          "triangles": 643,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.07500000298023224,
+              0.0949999988079071,
+              0.09000000357627869,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.5299999713897705
+          }
+        }
+      ],
+      "embedded_textures": 0
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-surface-refinement-maps-20261002/godot/multiplayer_worlds/art/helix-conservatory/helix-conservatory.glb",
+      "sha256": "0c462ffa475f02aa388101c38339d6d81eb3df9549a7d664ca65ec390c802d88",
+      "materials": [
+        {
+          "name": "verdigris",
+          "primitives": 3,
+          "triangles": 27712,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.02500000037252903,
+              0.18000000715255737,
+              0.15000000596046448,
+              1
+            ],
+            "metallicFactor": 0.6000000238418579,
+            "roughnessFactor": 0.3799999952316284
+          }
+        },
+        {
+          "name": "soil",
+          "primitives": 3,
+          "triangles": 2884,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.06499999761581421,
+              0.0430000014603138,
+              0.02199999988079071,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7200000286102295
+          }
+        },
+        {
+          "name": "stone",
+          "primitives": 3,
+          "triangles": 944,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.11999999731779099,
+              0.17000000178813934,
+              0.14000000059604645,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7200000286102295
+          }
+        },
+        {
+          "name": "ceramic",
+          "primitives": 3,
+          "triangles": 6824,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.2800000011920929,
+              0.30000001192092896,
+              0.23000000417232513,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7200000286102295
+          }
+        },
+        {
+          "name": "brick",
+          "primitives": 3,
+          "triangles": 836,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.27000001072883606,
+              0.10499999672174454,
+              0.04699999839067459,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7200000286102295
+          }
+        },
+        {
+          "name": "glass",
+          "primitives": 1,
+          "triangles": 902,
+          "alpha_mode": "BLEND",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.15000000596046448,
+              0.36000001430511475,
+              0.3199999928474426,
+              0.07999999821186066
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7200000286102295
+          }
+        },
+        {
+          "name": "gold",
+          "primitives": 6,
+          "triangles": 5166,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.5,
+              0.25999999046325684,
+              0.04500000178813934,
+              1
+            ],
+            "metallicFactor": 0.6000000238418579,
+            "roughnessFactor": 0.7200000286102295
+          }
+        },
+        {
+          "name": "solar",
+          "primitives": 1,
+          "triangles": 576,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.017999999225139618,
+              0.04699999839067459,
+              0.07500000298023224,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7200000286102295
+          }
+        },
+        {
+          "name": "leaflight",
+          "primitives": 1,
+          "triangles": 34748,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.11999999731779099,
+              0.2800000011920929,
+              0.04500000178813934,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7200000286102295
+          }
+        },
+        {
+          "name": "botanical",
+          "primitives": 1,
+          "triangles": 57988,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.02500000037252903,
+              0.12999999523162842,
+              0.017999999225139618,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7200000286102295
+          }
+        }
+      ],
+      "embedded_textures": 0
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-map-finish-parallax-20261002/godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb",
+      "sha256": "b3ea4ec57f57f6db83e1acab40dc95135562347ef884cc8f33ba067af8521bb1",
+      "materials": [
+        {
+          "name": "saltstone",
+          "primitives": 1,
+          "triangles": 13908,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.4936161935329437,
+              0.47044023871421814,
+              0.37867626547813416,
+              1
+            ],
+            "metallicFactor": 0.05000000074505806,
+            "roughnessFactor": 0.7799999713897705
+          }
+        },
+        {
+          "name": "cistern",
+          "primitives": 1,
+          "triangles": 303,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.0915183499455452,
+              0.10363409668207169,
+              0.17677432298660278,
+              1
+            ],
+            "metallicFactor": 0.05000000074505806,
+            "roughnessFactor": 0.7799999713897705
+          }
+        },
+        {
+          "name": "metal",
+          "primitives": 1,
+          "triangles": 18370,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.013473397120833397,
+              0.018912984058260918,
+              0.03561437129974365,
+              1
+            ],
+            "metallicFactor": 0.7200000286102295,
+            "roughnessFactor": 0.7799999713897705
+          }
+        },
+        {
+          "name": "mirror",
+          "primitives": 1,
+          "triangles": 8937,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.16364067792892456,
+              0.20835965871810913,
+              0.3250369727611542,
+              1
+            ],
+            "metallicFactor": 0.7200000286102295,
+            "roughnessFactor": 0.2800000011920929
+          }
+        },
+        {
+          "name": "paving",
+          "primitives": 1,
+          "triangles": 44533,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.2758328318595886,
+              0.288815975189209,
+              0.32972902059555054,
+              1
+            ],
+            "metallicFactor": 0.05000000074505806,
+            "roughnessFactor": 0.7799999713897705
+          }
+        },
+        {
+          "name": "ochre",
+          "primitives": 1,
+          "triangles": 62176,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.49950528144836426,
+              0.24279634654521942,
+              0.04298701137304306,
+              1
+            ],
+            "metallicFactor": 0.05000000074505806,
+            "roughnessFactor": 0.7799999713897705
+          }
+        },
+        {
+          "name": "sea",
+          "primitives": 1,
+          "triangles": 12,
+          "alpha_mode": "OPAQUE",
+          "source_pbr": {
+            "baseColorFactor": [
+              0.013473397120833397,
+              0.020951131358742714,
+              0.06381487101316452,
+              1
+            ],
+            "metallicFactor": 0.05000000074505806,
+            "roughnessFactor": 0.7799999713897705
+          }
+        }
+      ],
+      "embedded_textures": 0
+    }
+  ],
+  "parallax_original_views": [
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-review/arcade-eye.png",
+      "sha256": "602b28cfcce4376222f9b74c686205acbcae029d518ef9dac8883b08ae8036ff"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-review/archive-interior.png",
+      "sha256": "923deacb64469ac2097096bd02a233d042bbbbdc3413b34fbf18e7e5c88b1562"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-review/arrival-eye.png",
+      "sha256": "e9b785ebd00e6dc220403df8df889a2d8f17151e13bb5a66aff5b4fb9e28eed9"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-review/cistern-eye.png",
+      "sha256": "952a614205d1e4e0e1f37306aaa75d4820ebe9c21730fdbf5b7f625db0fb1f9e"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-review/lens-eye.png",
+      "sha256": "6eb1a603af7a736fc3dbb5ae3782165402ca8ab916897a091d90a5b971b57393"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-review/overview.png",
+      "sha256": "cc21267b96f5b1188a2e77d344203f535ca9fcd7faf7a866632f6bfb90df6192"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-review/polar-interior.png",
+      "sha256": "11fdfa8326f3e5dd0e6c790138e9a97313b5cd062d542b0a27e288869d2d24c3"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-review/pump-interior.png",
+      "sha256": "062e058502ac8ea3fbb5380cc45217ad38239d7c6241b6ed61c84266368c48ad"
+    }
+  ],
+  "shared_validation_at_base": {
+    "status": "blocked",
+    "errors": [
+      "options: unknown key variation_mode",
+      "options: unknown key variation_strength",
+      "options: unknown key variation_scale",
+      "options: unknown key variation_seed"
+    ],
+    "error_counts": {
+      "helix-conservatory": 36,
+      "gravemill-foundry": 32,
+      "parallax-observatory": 24
+    },
+    "dependency": "rendering owner additive variation contract"
+  }
+}

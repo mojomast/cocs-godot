@@ -2,6 +2,29 @@
 
 **READY FOR CORE/NATIVE COMBO VALIDATION**
 
+## Latest: actual native-03 follow-up
+
+- Actual engine baseline: **54 cases, 16 passes, 38 failures; 54/54 replay matches**.
+- Every original failure is mapped to contacts/starts/frame witnesses in
+  `NATIVE_03_DIAGNOSIS.json`; original integration evidence is untouched.
+- All 16 passing facing cases are preserved byte-for-byte. Revised candidates
+  correct the 19 failing routes through input/route/setup changes only.
+- Two-hit basic confirms, continuous Meta/Qwen crouch direction, Grok grounded
+  corner grenade practice and three paired ordinary-jump air routes are authored.
+  Four harder air-projectile finishers remain intact, with four-tick-later inputs
+  and an explicit dependency on Astra's landing-timer repair.
+  No single-hit replacement or signature removal; three routes/operator remain.
+- All move balance/boxes/timings, rules and animation coverage are unchanged.
+- Core landing timer latch is reported with exact committed code/frame witnesses
+  for Astra; this lane makes no core changes.
+- Source suite: **227/227 PASS**; fresh generation and frozen-source checks pass.
+  Revised candidates remain proposed pending an actual-engine rerun.
+
+Details: `NATIVE_03_FOLLOWUP.md`.
+Source evidence: `/home/mojo/.tmp-on-disk/cocs-fighting-content-evidence-20261002/native03-followup/`.
+
+The following sections retain earlier source-only checkpoints.
+
 ## Latest: legal grounded fixture correction
 
 - Verifier `9549da1c` found the original 550 mm fixture inside 660 mm pushboxes.

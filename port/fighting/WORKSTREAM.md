@@ -71,6 +71,28 @@ integration. No lane received a Blender/Godot grant at launch.
 
 ## Received research and parent review
 
+### Native combo follow-up
+
+Content correction `672c81a7` is merged as `208aa49a`. Its diagnosis accounts for
+all 38 failed native facing cases: pushback/reach misses, unintended down-down
+motion recognition, grenade timing and landing/air-state mismatch. All 16 passing
+cases remain byte-identical. Revised basic confirms use two hits; signature/air
+routes retain three attacks. Move stats, boxes, cancel graphs, resources, rules
+and animation coverage are unchanged. Source checks pass 227/227; revised routes
+remain proposed until rerun in the actual core.
+
+The integration Astra received the precise landing-recovery latch defect and
+owns its native fix: the counter currently decrements only in locomotion, leaving
+it latched during a committed aerial attack. Correct non-hitstop advancement once
+per tick and regress ordinary grounded follow-ups. Four retained air-projectile
+routes explicitly depend on that repair. See `content/NATIVE_03_FOLLOWUP.md`.
+
+New roster hash is `1cb28db7f34fefe3c37ccb8f4b5a54822465d2b28fa8a6401ab0fa8fd77e5e02`.
+Parent refreshed the FX contract/catalog provenance and passed its five source
+checks (`/tmp/opencode/fighting-effects-native03-resync.tap`); all 54 PCM bytes and
+138 move effect definitions are unchanged. Actual 54-case native rerun is pending
+at the integration owner's next completed-run boundary.
+
 ### Animation and independent acceptance checkpoints
 
 Core `ce3f603b` + `6be3b1ce` is merged as `4d4b952d` + `09160dc0`, completing

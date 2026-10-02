@@ -376,7 +376,7 @@ commands = [
     ("finish-gameplay-source", ["node", "tools/port/pass-two-gameplay/source.mjs", "--check"]),
     ("finish-gameplay-contract", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_gameplay/second_pass_test.gd"]),
     ("finish-world-source", ["node", "scripts/world-weather-spatial-oracle.mjs", "--check"]),
-    ("finish-world-contract", [binary, "--headless", "--path", "godot", "--script", "res://tests/world_weather/spatial.gd"]),
+    ("finish-world-contract", [sys.executable, "tools/godot-dev/xvfb_run.py", binary, "--audio-driver", "Dummy", "--path", "godot", "--script", "res://tests/world_weather/spatial.gd"]),
     ("finish-challenge-source", ["node", "--test", "port/pass-two/modes/challenges.test.mjs"]),
     ("finish-challenge-contract", [binary, "--headless", "--path", "godot", "--script", "res://tests/mode_expansion/challenges_contracts.gd"]),
     ("finish-spectator-source", ["node", "tools/experience/spectator-oracle.mjs", "--check"]),

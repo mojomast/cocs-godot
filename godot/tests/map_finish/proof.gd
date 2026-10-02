@@ -35,6 +35,19 @@ func _run() -> void:
 	var world := Map.new()
 	stage.add_child(world)
 	_check(world.build(raw), "map build")
+	if id == "helix-conservatory":
+		var signs := world.find_children("wayfinding-*", "MeshInstance3D", true, false)
+		_check(signs.size() == 3, "all three baked wayfinding faces")
+		for sign_node: MeshInstance3D in signs:
+			var normal := Vector3.ZERO
+			for surface in sign_node.mesh.get_surface_count():
+				var arrays := sign_node.mesh.surface_get_arrays(surface)
+				for value: Vector3 in arrays[Mesh.ARRAY_NORMAL]: normal += value
+				_check(sign_node.get_active_material(surface).cull_mode == BaseMaterial3D.CULL_BACK, "wayfinding backface culling " + sign_node.name)
+			var front := (sign_node.global_basis * normal).normalized()
+			var expected := Vector3.BACK if sign_node.name == "wayfinding-0" else Vector3.FORWARD
+			_check(front.dot(expected) > 0.99, "recipe-facing font normal " + sign_node.name)
+			print("WAYFINDING_FRONT ", sign_node.name, " ", front, " expected ", expected)
 	var hash: String = raw.geometryHash
 	var initial := Binder.apply(world, id, hash)
 	_check(initial.status == "ready", "profile/resource/selector coverage: " + str(initial))
@@ -70,8 +83,8 @@ func _run() -> void:
 	camera.position = _coordinates(args.get("camera", "55,35,55"))
 	camera.look_at(_coordinates(args.get("target", "0,3,0")))
 	var sun := DirectionalLight3D.new()
-	sun.rotation_degrees = Vector3(-48, -30, 0)
-	sun.light_energy = 1.0
+	sun.rotation_degrees = Vector3(-44, -30, 0)
+	sun.light_energy = 1.25
 	stage.add_child(sun)
 	var environment := WorldEnvironment.new()
 	var env := Environment.new()

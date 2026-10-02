@@ -24,9 +24,13 @@ func clear() -> void:
 	seen.clear()
 	serial = -1
 
+static func mark_key(id: Variant) -> String:
+	# JS String(0) and JSON-decoded numeric 0.0 address the same source key.
+	return str(int(id)) if id is float and is_finite(id) and id == floorf(id) else str(id)
+
 static func assist_credit(damage_marks: Dictionary, victim: Variant, when: float) -> bool:
-	if victim == null or not damage_marks.has(str(victim)): return false
-	var age := when - float(damage_marks[str(victim)])
+	if victim == null or not damage_marks.has(mark_key(victim)): return false
+	var age := when - float(damage_marks[mark_key(victim)])
 	return age >= 0 and age <= 5
 
 func snapshot(state: Dictionary, id: Variant) -> void:
@@ -67,7 +71,7 @@ func events(items: Array) -> void:
 		var when := Combat.number(value.get("time"), time)
 		if value.type == "damage":
 			if local_id != null and Identity.same_id(value.get("source"), local_id) and not Identity.same_id(value.get("actor"), local_id) and Combat.number(value.get("amount")) > 0:
-				marks[str(value.get("actor"))] = when
+				marks[mark_key(value.get("actor"))] = when
 			continue
 		var credited: bool = value.get("self") != true and value.get("killer") != null
 		var meta := {"time":when, "victim":actors.get(value.get("actor"), ""), "overkill":Combat.number(value.get("overkill")), "assist":local_id != null and credited and not Identity.same_id(value.get("killer"), local_id) and assist_credit(marks, value.get("actor"), when)}
@@ -75,7 +79,7 @@ func events(items: Array) -> void:
 			if value.has(key): meta[key] = value[key]
 		metadata.append(meta)
 		while metadata.size() > 12: metadata.pop_front()
-		marks.erase(str(value.get("actor")))
+		marks.erase(mark_key(value.get("actor")))
 
 func text() -> String:
 	var lines := PackedStringArray()

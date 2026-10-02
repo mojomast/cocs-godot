@@ -11,6 +11,7 @@ const FOLIAGE = preload("res://biomes/foliage.gdshader")
 const CONDUIT = preload("res://weapon_effects/conduit.gdshader")
 const StructureArt = preload("res://campaign/structure_art.gd")
 const EnvironmentArt = preload("res://campaign/environment_art.gd")
+const BiomeExpansion = preload("res://biomes/expansion/scenery_pack.gd")
 const Wreck = preload("res://campaign/art/landmarks/fallen-relay.glb")
 const CrownReceiver = preload("res://campaign/art/landmarks/crown-receiver.glb")
 var recipe: Dictionary = {}
@@ -93,6 +94,10 @@ func build(id: String) -> bool:
 	biome_art.name = "CampaignEnvironmentArt"
 	add_child(biome_art)
 	biome_art.build(self)
+	var expansion := BiomeExpansion.new()
+	expansion.name = "BiomeExpansionFour"
+	add_child(expansion)
+	expansion.build(self)
 	return true
 
 func height_at(x: float, z: float) -> float:

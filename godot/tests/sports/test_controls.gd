@@ -20,6 +20,9 @@ func _initialize() -> void:
 	check(not g.engaged, "countdown blocks engage")
 	for yaw in [0.0, PI/2, PI, -PI/2]:
 		key(g, KEY_ENTER, true)
+		# Engagement suppresses physical holds; each case starts with real releases.
+		key(g, KEY_W, false)
+		key(g, KEY_D, false)
 		key(g, KEY_W, true)
 		key(g, KEY_D, true)
 		var p: Dictionary = g.packet(yaw, true)
