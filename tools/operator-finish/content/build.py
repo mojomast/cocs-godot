@@ -135,13 +135,10 @@ def masks(index, style):
     # native fitted overlays; source maps have seam-safe, quiet macro treatments.
     if style in ('shell', 'trim', 'rubber', 'precision'):
         if style == 'shell':
-            # Shared local UV islands prevent identifying one chest face from
-            # material alone. Borrow the identity architecture at low contrast,
-            # without its pictograms, and fade away from the periodic seam.
-            s, w, _ = masks(index, 'panel')
-            yy, xx = np.mgrid[:256, :256]
-            safe = np.clip(np.minimum.reduce([xx, yy, 255-xx, 255-yy])/32, 0, 1)
-            return s*.32*safe, w*.60*safe, np.zeros_like(s)
+            # Native closeups show these shared islands cloning the same collar
+            # on head, pelvis and thighs. Let sculpted geometry own shell seams;
+            # unique panel architecture remains on the fitted overlays only.
+            return tuple(np.zeros((n, n)) for _ in range(3))
         elif style == 'trim':
             ds.line([(55, 62), (55, 198)], fill=45, width=2)
             dw.line([(66, 72), (105, 76)], fill=65, width=2)
@@ -215,12 +212,15 @@ def pixels(index, style):
     key = ('circuit_board-etch' if style == 'board' else 'metal_grating' if style == 'vent'
            else 'carbon_fiber' if style == 'rubber' else 'brushed_metal' if style in ('trim','precision')
            or index in (2,5,6,8) else 'riveted_armor' if index == 3 else 'hex_paneling')
+    if style == 'shell':
+        # Bounded fine coating grain, not enlarged hex/rivet plate boundaries.
+        key = 'brushed_metal' if index in (2,3,5,6,8) else 'sand'
     base = moth(key)
     if index == 6 and style in ('shell', 'panel'):
         # Aerofoil grain follows the swept layout rather than horizontal bands.
         base = np.asarray(Image.fromarray(base.astype('float32')).rotate(-38, resample=Image.Resampling.BILINEAR),dtype=float)
         base[base == 0] = float(base.mean())
-    # Baked microstructure contributes gently; authored macro layout dominates.
+    # Baked microstructure contributes gently; only fitted overlays carry layout.
     micro = base - base.mean()
     seam, wear, mark = masks(index, style)
     dark = np.asarray(Image.fromarray((seam*255).astype('uint8')).filter(ImageFilter.GaussianBlur(2)),dtype=float)/255
@@ -312,7 +312,7 @@ def generate(out):
                 'art_reference_sources':{p:sha((ROOT/p).read_bytes()) for p in
                     ('game/operator-anatomy.mjs','game/operator-detail.mjs','game/data.mjs','game/view.mjs')},
                 'moth_sources':SOURCES,'source_glbs':{o:a['glb_sha256'] for o,a in coverage.items()},
-                'recipe':'Moth luminance centered + authored UV1 seam/wear/mark masks; restrained neutral modulation; height gradient normal renormalized before RGB8 quantization',
+                'recipe':'Moth luminance centered; quiet shared-UV shell grain; authored seam/wear/mark masks only on fitted overlays and trim; neutral modulation; height gradient normal renormalized before RGB8 quantization',
                 'normal_convention':'N=normalize(-2*dH/dU,-2*dH/dV,1); image rows are +V. Native moving-light orientation verification pending.',
                 'dependencies':{'pillow':'12.3.0','numpy':'2.5.3'},'verification_scope':'source-only; native gallery and motion pending'}
     assert provenance['moth_baked_source']['sha256']==MOTH['provenance']['source_sha256']
