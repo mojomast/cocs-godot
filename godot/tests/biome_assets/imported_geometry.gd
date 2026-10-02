@@ -5,14 +5,14 @@ const Pack = preload("res://biomes/expansion/scenery_pack.gd")
 
 func _initialize() -> void: call_deferred("run")
 
-func key(triangle: Array) -> String:
+static func key(triangle: Array) -> String:
 	var points: Array[String] = []
 	for p: Vector3 in triangle:
 		points.append("%d,%d,%d" % [roundi(p.x*10000),roundi(p.y*10000),roundi(p.z*10000)])
 	points.sort()
 	return "|".join(points)
 
-func collect(node: Node, transform: Transform3D, triangles: Dictionary, counts: Dictionary) -> void:
+static func collect(node: Node, transform: Transform3D, triangles: Dictionary, counts: Dictionary) -> void:
 	if node is Node3D: transform = transform * node.transform
 	assert(not node is CollisionObject3D and not node is CollisionShape3D)
 	if node is MeshInstance3D:
