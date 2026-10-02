@@ -17,7 +17,7 @@ boundaries.
 |---|---|---|
 | Fighting production and native surface review | Astra `ses_f026e25e4ffezp2kvz5VGox7dz` | Complete and merged at `bb02e34b`; nine real rigs/masters and native comparisons; grant B released |
 | Parallax interior production | Astra `ses_f055a6b41ffe42yCL8AxbOL676` | Complete and reviewed at `b66f4ab3`; exact package promotion integrated at `5d33287a`; final-candidate regressions remain |
-| Robot/prop production | Astra `ses_f03a2843bffefDFoP3x1j1cxRO` | Produced and integrated through `2c39d1ad`; D released; parent art reviewed, package promotion/dependency audit assigned |
+| Robot/prop production | Astra `ses_f03a2843bffefDFoP3x1j1cxRO` | Produced and reviewed through `2c39d1ad`; D released; actual texture/import-bound package promotion integrated at `e4b311fa` |
 | Fighting camera readability | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing correction merged at `1bff0281`; six parent source checks pass, native four-stage comparison still pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
@@ -25,7 +25,7 @@ boundaries.
 | Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Exclusive grant E: complete source journey work, then actual nine masters/exports, native drive/crew/fire/repair/wreck and visual review |
 | Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Source-only executable local/AI/training, throw/tech, input-release and four-stage presentation coverage using actual produced rigs |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Six new gates integrated at `0ffc853c`/`f70355d5`, preserving all original 135 jobs; fresh exact-input ledger required after candidate stabilizes |
-| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Actual Parallax promoted; robot promotion and extracted image/import closure in progress under parent authorization; other five units still need production |
+| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Actual Parallax and robots promoted with reconciled import/image provenance; five other units still need production; final native/export/Windows CI remain pending |
 | Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | Prepared v3 pipeline integrated at `2902412b`; nine focused parent tests pass; real capture/edit/install awaits final assets and a later grant |
 
 All workers run in the background, using existing sessions/checkouts. Source work
@@ -544,3 +544,26 @@ Terrain, robot visual, all nine robot outputs and shared activation hooks remain
 unchanged. Packaging received the exact scenery adapter revision to reconcile
 robot supporting-input closure transparently; it must not reattribute D native
 evidence to this newer source. Vehicle E remains the exclusive heavy owner.
+
+## Two actual production units package-promoted
+
+Robot promotion follow-up `63ae35c8`, `bf9a46d0`, `ef5f18aa`, `784ddf84` is
+integrated through `0d45229c`. Robots bind 130 exact package inputs: nine extracted
+PNGs byte-identical to GLB embedded images, nine GLB and nine PNG import sidecars,
+actual tangent/source/vertex-color/local-UV policy, and the explicit scenery
+adapter revision. Original source fingerprints, masters, exports and activation
+hooks are unchanged. Prior receipt identities and each supporting-input advance
+remain recorded; no old native result is re-stamped.
+
+Current receipt hashes:
+- Robots: `e0667a6bc7295f30f337f571301f3e7747b84c265835e96c2a310b5ba5e00d85`.
+- Parallax: `3c7d26b851d031ff1509aa50e7aa81dc26df5f8836b5668e00ad7af2fef39ab5`.
+
+Parent reran nine focused real-asset/import/recorded-Git checks successfully;
+audit: `/tmp/opencode/parent-two-promoted-assets-audit.json`. The packaging lane
+passed 67 targeted tests and verified 29 retained robot evidence-file hashes.
+Strict export still rejects the five pending units: vehicles, scenery, Vesper,
+Abyssal and Stormglass. Robot D predates the scenery adapter correction; native
+compilation/runtime of that correction and full ordinary-input final acceptance
+remain pending. Details: `ROBOT_PACKAGE_PROMOTION.md`. No heavy tools, export or
+Windows CI ran in this packaging pass.
