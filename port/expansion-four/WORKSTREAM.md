@@ -22,6 +22,24 @@ actual ordinary-input lap and hosted native acceptance pass.
 
 ## Source/code checkpoints
 
+- **Scenery — `36358d96` + isolated composition hook `fe3f3b5a`, ready for
+  Blender.** Twelve biome-bound assemblies provide one hero and two supporting
+  modules per campaign chapter: root/canopy, layered waterworks, basalt/copper
+  shielding and faceted antenna/ceramic archive forms. Deterministic placement
+  metadata and build/reopen scripts are prepared; no master or GLB exists yet.
+- Six focused source checks and thirty existing regressions passed, including
+  8,337 swept route-clearance comparisons, 2,827 supported/clear source route
+  points and preservation of 10,117 previously clear approach rays. Original
+  chapter recipes, hashes, facade triangles and asset bytes remain unchanged.
+  These sampled prospective-geometry checks do not establish arbitrary-ray
+  equivalence or acceptance of the eventual imported art.
+- The prepared inspector uses real campaign authority and production scenes for
+  all four chapters, with matched old/new/reduced full-viewport captures, collider
+  identity, source-camera return and teardown checks. Native execution, actual
+  art review and ordinary connected walk/shot/workshop journeys remain pending.
+  Parent must review runtime catalog/GLB closure and the reduced-detail setting
+  hook; staged camera inspection alone will not satisfy gameplay acceptance.
+
 - **Vehicles — `91fb48e4` + isolated hooks `ce739609`, ready for Blender.**
   Source-audited Puma, Titan and Scout receive nine authored LOD recipes and an
   optional attachment adapter preserving procedural fallback and existing wheel
