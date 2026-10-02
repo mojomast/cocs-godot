@@ -2,6 +2,8 @@ extends Node
 ## No authority socket. Only the fixed source-demo presentation helper is launched.
 signal reply(op: String, value: Dictionary)
 signal failed(message: String)
+const RUNTIME_FILES := ["game/demo.mjs", "godot/replay/admission.json", "tools/port/replay/adapter.mjs", "tools/port/replay/service.mjs"]
+const RUNTIME_KIND := "read-only-source-demo-adapter"
 var http := HTTPRequest.new()
 var process_id := -1
 var port := 0
@@ -16,27 +18,57 @@ var startup_age := 0.0
 var idle_age := 0.0
 var stopped := false
 
+static func runtime_plan(editor: bool, executable_dir: String, development_root: String, platform: String) -> Dictionary:
+	var base := development_root if editor else executable_dir.path_join("replay-runtime")
+	if not editor:
+		var manifest_file := FileAccess.open(base.path_join("manifest.json"), FileAccess.READ)
+		if manifest_file == null: return {"error":"Replay runtime manifest is missing from this installation."}
+		if manifest_file.get_length() > 65536: return {"error":"Replay runtime manifest is invalid."}
+		var manifest: Variant = JSON.parse_string(manifest_file.get_as_text())
+		if not manifest is Dictionary or manifest.get("version") != 1 or manifest.get("kind") != RUNTIME_KIND or not manifest.get("files") is Dictionary:
+			return {"error":"Replay runtime manifest is invalid."}
+		var files: Dictionary = manifest.files
+		if files.size() != RUNTIME_FILES.size(): return {"error":"Replay runtime must contain the exact four reviewed manifest paths."}
+		var digest := RegEx.create_from_string("^[a-f0-9]{64}$")
+		for path: String in RUNTIME_FILES:
+			var expected: Variant = files.get(path)
+			if not expected is String or digest.search(expected) == null:
+				return {"error":"Replay runtime manifest hash is invalid: " + path}
+			var installed := base.path_join(path)
+			if not FileAccess.file_exists(installed): return {"error":"Replay runtime file is missing: " + path}
+			if FileAccess.get_sha256(installed) != expected: return {"error":"Replay runtime file is corrupt: " + path}
+	var helper := base.path_join("tools/port/replay/service.mjs")
+	if not FileAccess.file_exists(helper): return {"error":"Replay source runtime is missing from this installation."}
+	var bundled := executable_dir.path_join("node.exe" if platform == "Windows" else "node")
+	if not editor and platform == "Windows" and not FileAccess.file_exists(bundled):
+		return {"error":"Replay requires the bundled node.exe; reinstall this package."}
+	return {"helper":helper, "node":bundled if FileAccess.file_exists(bundled) else "node"}
+
+func startup_plan() -> Dictionary:
+	# Only an editor build may discover checkout sources. An export never falls
+	# back to res://../, its working directory, or an authority runtime.
+	var editor := OS.has_feature("editor")
+	var development_root := ProjectSettings.globalize_path("res://../") if editor else ""
+	return runtime_plan(editor, OS.get_executable_path().get_base_dir(), development_root, OS.get_name())
+
+func spawn_helper(node: String, arguments: PackedStringArray) -> int:
+	return OS.create_process(node, arguments, false)
+
 func _ready() -> void:
 	add_child(http)
 	http.timeout = 8.0
 	http.body_size_limit = 2 * 1024 * 1024
 	http.request_completed.connect(_completed)
-	var base := ProjectSettings.globalize_path("res://../")
-	var packaged := OS.get_executable_path().get_base_dir().path_join("replay-runtime")
-	if FileAccess.file_exists(packaged.path_join("tools/port/replay/service.mjs")): base = packaged
-	var helper := base.path_join("tools/port/replay/service.mjs")
-	if not FileAccess.file_exists(helper):
-		_abort("Replay source runtime is missing from this installation.")
+	var plan := startup_plan()
+	if plan.has("error"):
+		_abort(str(plan.error))
 		return
 	var crypto := Crypto.new()
 	capability = crypto.generate_random_bytes(32).hex_encode()
 	var root := ProjectSettings.globalize_path("user://replays")
 	DirAccess.make_dir_recursive_absolute(root.path_join("runtime"))
 	ready_path = root.path_join("runtime/ready-" + crypto.generate_random_bytes(16).hex_encode() + ".json")
-	var node := "node"
-	var bundled := OS.get_executable_path().get_base_dir().path_join("node.exe" if OS.get_name() == "Windows" else "node")
-	if FileAccess.file_exists(bundled): node = bundled
-	process_id = OS.create_process(node, [helper, root, ready_path, capability], false)
+	process_id = spawn_helper(str(plan.node), PackedStringArray([str(plan.helper), root, ready_path, capability]))
 	if process_id < 0: _abort("Could not start the local replay runtime.")
 
 func send(request: Dictionary) -> bool:
