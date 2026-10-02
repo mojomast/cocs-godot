@@ -10,7 +10,7 @@ Evidence directory:
 | `node tools/port/input-bindings/source-oracle.mjs` | PASS: 25 exact defaults, 9 malformed/duplicate normalization cases, **1,075 actual source swaps**, 14 actual page-handler input timelines / **98 source samples**, 4 source modal transitions |
 | `node --test game/keybinds.test.mjs game/input.test.mjs game/movement-input.test.mjs game/cursor-mode.test.mjs game/onboarding.test.mjs` | **53/53 passed**, zero failures |
 | `node --check tools/port/input-bindings/native-journey.mjs` | PASS, syntax only |
-| `gdtoolkit.parser` on changed/new `.gd` files | PASS, syntax only; not Godot type/runtime acceptance |
+| `gdtoolkit.parser` on 37 changed/new `.gd` files | PASS, syntax only; not Godot type/runtime acceptance |
 | `git diff --check` | PASS |
 
 The first source-oracle attempt failed because Node strict equality distinguishes

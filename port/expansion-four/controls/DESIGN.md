@@ -1,6 +1,9 @@
 # Keyboard/mouse binding parity — source/code checkpoint
 
 Status: **READY FOR ENGINE**. Base `e9d784a7`, branch `expansion-four/controls`.
+Implementation/source-contract commit: `def1e974`. Separate shared-hook commit:
+`a1b1c090`. Apply both in that order; the following owned-test/documentation
+checkpoint includes a fresh Enter keyup in the Combined Arms boundary fixture.
 Parallax retains the exclusive engine/Blender slot. No Godot, imports, renderer,
 Blender, capture or export ran in this lane.
 

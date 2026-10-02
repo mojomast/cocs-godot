@@ -157,6 +157,9 @@ func run() -> void:
 		enter.physical_keycode = KEY_ENTER
 		enter.pressed = true
 		sampler.accept(enter, true)
+		enter.pressed = false
+		sampler.accept(enter, true)
+		enter.pressed = true
 		sampler.accept(event("KeyW", true), true)
 		check(sampler.packet(0, true).z == 0, kind + " old forward inert")
 		sampler.accept(event("MouseX1", true), true)
