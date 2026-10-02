@@ -53,6 +53,24 @@ distinct evidence requirements.
 
 ## Integration boundaries
 
+### Combined candidate merged
+
+Integrator final `34726217` is merged into the parent at **`5a4bc82d`**. All 24
+prepared feature commits, both packaging commits and reconciled shared hooks are
+now present on `feature/relay-campaign`. The exported Replay fallback fix is
+implemented; native rejection/entry/caption contracts remain queued. The recorded
+source closure is 86 modules/39 adapters/166 feature resources (160 WAVs), seven
+original worlds and four separate replay-runtime files. Frozen game/server bytes
+are unchanged and new public map assets are not yet included.
+
+The parent verified runtime/package files match the integrator exactly and ran
+five closure/manifest tests successfully (`/tmp/opencode/finish-parent-merge-checks.tap`).
+Integrator evidence includes 640 distinct passing Node tests across retained runs,
+93-file grammar parsing, source/wire oracles and subsequent package checks; see
+`INTEGRATION.md` for exact failures, repairs and run boundaries. No native result
+or release acceptance follows from this merge. The acceptance worker received the
+actual merged anchor and the three additional integration gate paths.
+
 ### Packaging checkpoint
 
 Packaging returned `8522dcde` + `1466c861`, ready for integrated checks. The
