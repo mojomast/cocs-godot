@@ -22,6 +22,23 @@ Evidence: `/home/mojo/.tmp-on-disk/cocs-expansion-three-<lane>-evidence-20261002
 No nested agents. New map IDs are `vesper-viaduct` and `abyssal-pressureworks`.
 Their candidate modes are design targets until source/native journeys pass.
 
+## Source/code checkpoints
+
+- **Robots — `fb9715fb`, ready for Blender.** Three authored skin recipes:
+  Needle Surveyor (skirmisher), Caisson Guard (bulwark), and Kiln Tender (mortar),
+  each with three compatible LOD assemblies. Six workshop prop recipes and
+  Blender master/reference-animation/rigid-runtime export scripts are prepared.
+  The additive adapter validates complete assemblies and retains original meshes.
+- **25 source/regression tests passed**, including six new recipe contracts,
+  fifteen existing targeting/role tests and four Horde authority tests. Existing
+  targeting triangle samples are baseline regression evidence, not measurements
+  of the unbuilt skins. Three Python files passed syntax checks.
+- No robot GLB, master, render or native import exists yet. Runtime motion reuses
+  the existing robot pipeline; per-skin idle reference clips are not connected.
+  Factory selection, actual animated contact/targeting comparison, silhouette and
+  foot-plant review, gameplay captures and measured budgets remain pending.
+  The source handoff does not grant a heavy slot or install skins in the game.
+
 ## Queue and acceptance
 
 **Parallax retains the exclusive Blender/Godot slot.** The new agents may perform
