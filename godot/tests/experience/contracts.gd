@@ -3,13 +3,13 @@ const Captions = preload("res://experience/caption_model.gd")
 const Combat = preload("res://experience/combat_info.gd")
 const Settings = preload("res://ui/local_settings.gd")
 var checks := 0
+var failures := 0
 
 func check(ok: bool, message: String) -> void:
 	checks += 1
 	if not ok:
+		failures += 1
 		push_error("EXPERIENCE_FAIL " + message)
-		quit(1)
-		assert(ok, message)
 
 func _initialize() -> void:
 	call_deferred("run")
@@ -21,6 +21,8 @@ func run() -> void:
 		check(model.text_for(row.event) == row.expected, "source caption " + JSON.stringify(row.event))
 	for row: Dictionary in fixture.replacement:
 		var expected: Dictionary = row.expected if row.expected is Dictionary else {}
+		# JSON numeric fields decode as float; Dictionary equality is type-strict.
+		if expected.has("priority"): expected.priority = int(expected.priority)
 		check(Captions.accept(row.current, row.candidate, float(row.at)) == expected, "source replacement " + JSON.stringify(row))
 	for row: Dictionary in fixture.badges:
 		check(Array(Combat.badges(row.entry if row.entry is Dictionary else {})) == row.expected, "source badges " + JSON.stringify(row.entry))
@@ -29,6 +31,10 @@ func run() -> void:
 	model.consume([{"type":"shot","actor":0}], 2, 0, true)
 	check(model.line(2) == "Mission failed", "automatic fire cannot replace protected line")
 	check(model.line(3.3).is_empty(), "caption expires without repeat extension")
+	model.clear()
+	model.consume([{"type":"shot","actor":0}, {"type":"move-blocked","actor":0}], 10, 0, true)
+	model.consume([{"type":"pickup","kind":"health","actor":0}, {"type":"shot","actor":0}, {"type":"move-blocked","actor":0}], 10.1, 0, true)
+	check(model.line(10.1) == "Health acquired", "interleaved continuous chatter cannot immediately erase pickup")
 	model.clear()
 	model.consume([{"type":"damage","actor":1}, {"type":"shot","actor":1}], 4, 0, true)
 	check(model.line(4).is_empty(), "remote personal events are not local damage or gunfire captions")
@@ -60,5 +66,5 @@ func run() -> void:
 	check(info.latest_kill.contains("OVERKILL"), "received local kill overkill badge")
 	info.clear()
 	check(info.latest_kill.is_empty() and info.actors.is_empty(), "round/reconnect reset clears all cached attribution")
-	print("EXPERIENCE_CONTRACTS_OK checks=", checks)
-	quit()
+	print("EXPERIENCE_CONTRACTS checks=", checks, " failures=", failures)
+	quit(0 if failures == 0 else 1)

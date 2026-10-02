@@ -6,6 +6,7 @@ const LOCAL_TYPES := ["damage", "pickup", "powerup", "spawn", "reload", "dryfire
 const TELEGRAPHS := {"overseer":"overseer aura", "mender":"mender pulse", "flanker":"flanker push", "phalanx":"phalanx shield", "sapper":"sapper charge", "artillery":"artillery", "boss":"boss slam"}
 var catalog: Dictionary = {}
 var current: Dictionary = {}
+var repeated: Dictionary = {}
 
 func _init() -> void:
 	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(CATALOG_PATH))
@@ -62,8 +63,18 @@ func consume(events: Array, at: float, actor_id: int, enabled: bool) -> void:
 		# Global captions describe a received event, never its location or proximity.
 		if kind in LOCAL_TYPES and (actor_id < 0 or value.get("actor") != actor_id): continue
 		var candidate := {"text":text_for(value), "priority":catalog.get("captions", {}).get(kind, {}).get("priority", 80)}
+		# Repeated simulation tells may interleave with shots in the same batch.
+		# Dedupe by text as well as the currently showing line so a held blocked
+		# movement or automatic weapon cannot alternate away a pickup every tick.
+		var text: String = candidate.text
+		if text.is_empty(): continue
+		var recent: bool = repeated.has(text) and at >= float(repeated[text]) and at - float(repeated[text]) < TTL
+		repeated[text] = at
+		if repeated.size() > 128: repeated.erase(repeated.keys()[0])
+		if recent: continue
 		var next := accept(current, candidate, at)
-		if not next.is_empty(): current = next
+		if not next.is_empty():
+			current = next
 
 func line(at: float) -> String:
 	if current.is_empty(): return ""
@@ -72,3 +83,4 @@ func line(at: float) -> String:
 
 func clear() -> void:
 	current.clear()
+	repeated.clear()

@@ -38,6 +38,10 @@ func _ready() -> void:
 	environment.environment = env
 	var layer := CanvasLayer.new()
 	add_child(layer)
+	# The inherited selector owns a PopupMenu even while the scoped HUD hides it.
+	# Give it tree ownership so route teardown also releases its window/RIDs.
+	layer.add_child(selector)
+	selector.hide()
 	layer.add_child(mode_card)
 	mode_card.add_child(mode_panel)
 	mode_card.position = Vector2(16, 158)
