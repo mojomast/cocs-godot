@@ -5,7 +5,8 @@
 Cherry-pick this lane's commit and use the shared dressing binder with
 `gravemill-foundry` and geometry hash
 `8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f`.
-The profile uses only CONTRACT.md Initial Profile v1 fields.
+The profile uses CONTRACT.md v1 plus shared optional feathered-wear fields,
+documented in `port/map-finish/shared/README.md`.
 
 Run `python3 port/map-finish/gravemill-foundry/author.py` from the repository.
 This deterministically writes the map profile and `source-validation.json`.
@@ -36,6 +37,14 @@ Coverage is 8/8, with no preserved exclusions. All selector roles are necessaril
 shared because the accepted export batches geometry into eight material meshes.
 Localized panels establish additional district differences without replacing
 architecture, rebuilding UVs, or altering those batches.
+
+Shared integration follow-up: 16 authored grease, soot, waterline and kiln-heat
+patches now explicitly serialize `wear_mask=dust-field`, `feather=0.15`, bounded
+opacity (grease 0.28, soot 0.24, waterline 0.22, heat 0.26), and stable per-panel
+seeds `610024 + panel index`. Abrasion/access plates, grates, enamel and hazard
+strips remain opaque physical insets. The author generator and resource receipt
+include the new fields; no runtime ID guessing or stale hand-edited profile.
+Rendered alpha/normal/roughness response remains pending native review.
 
 ## District finish and placement proof
 

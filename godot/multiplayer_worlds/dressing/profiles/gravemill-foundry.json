@@ -227,7 +227,11 @@
       ],
       "texture": "metal-oxide",
       "tint": "555e55",
-      "essential": false
+      "essential": false,
+      "wear_mask": "dust-field",
+      "opacity": 0.28,
+      "feather": 0.15,
+      "seed": 610027
     },
     {
       "id": "crusher--72-hazard",
@@ -327,7 +331,11 @@
       ],
       "texture": "metal-oxide",
       "tint": "555e55",
-      "essential": false
+      "essential": false,
+      "wear_mask": "dust-field",
+      "opacity": 0.28,
+      "feather": 0.15,
+      "seed": 610032
     },
     {
       "id": "crusher--48-hazard",
@@ -367,7 +375,11 @@
       ],
       "texture": "riveted_armor-scorched",
       "tint": "8b8173",
-      "essential": false
+      "essential": false,
+      "wear_mask": "dust-field",
+      "opacity": 0.24,
+      "feather": 0.15,
+      "seed": 610034
     },
     {
       "id": "crusher-back-soot--81",
@@ -387,7 +399,11 @@
       ],
       "texture": "riveted_armor-scorched",
       "tint": "8b8173",
-      "essential": false
+      "essential": false,
+      "wear_mask": "dust-field",
+      "opacity": 0.24,
+      "feather": 0.15,
+      "seed": 610035
     },
     {
       "id": "crusher-back-soot--61",
@@ -407,7 +423,11 @@
       ],
       "texture": "riveted_armor-scorched",
       "tint": "8b8173",
-      "essential": false
+      "essential": false,
+      "wear_mask": "dust-field",
+      "opacity": 0.24,
+      "feather": 0.15,
+      "seed": 610036
     },
     {
       "id": "crusher-back-soot--44",
@@ -427,7 +447,11 @@
       ],
       "texture": "riveted_armor-scorched",
       "tint": "8b8173",
-      "essential": false
+      "essential": false,
+      "wear_mask": "dust-field",
+      "opacity": 0.24,
+      "feather": 0.15,
+      "seed": 610037
     },
     {
       "id": "cooling--84--1-waterline",
@@ -447,7 +471,11 @@
       ],
       "texture": "weathered_concrete-damp",
       "tint": "9eafa0",
-      "essential": false
+      "essential": false,
+      "wear_mask": "dust-field",
+      "opacity": 0.22,
+      "feather": 0.15,
+      "seed": 610038
     },
     {
       "id": "cooling--84--1-vent-grate",
@@ -487,7 +515,11 @@
       ],
       "texture": "weathered_concrete-damp",
       "tint": "9eafa0",
-      "essential": false
+      "essential": false,
+      "wear_mask": "dust-field",
+      "opacity": 0.22,
+      "feather": 0.15,
+      "seed": 610040
     },
     {
       "id": "cooling--84-1-vent-grate",
@@ -527,7 +559,11 @@
       ],
       "texture": "weathered_concrete-damp",
       "tint": "9eafa0",
-      "essential": false
+      "essential": false,
+      "wear_mask": "dust-field",
+      "opacity": 0.22,
+      "feather": 0.15,
+      "seed": 610042
     },
     {
       "id": "cooling--48--1-vent-grate",
@@ -567,7 +603,11 @@
       ],
       "texture": "weathered_concrete-damp",
       "tint": "9eafa0",
-      "essential": false
+      "essential": false,
+      "wear_mask": "dust-field",
+      "opacity": 0.22,
+      "feather": 0.15,
+      "seed": 610044
     },
     {
       "id": "cooling--48-1-vent-grate",
@@ -727,7 +767,11 @@
       ],
       "texture": "riveted_armor-scorched",
       "tint": "998473",
-      "essential": false
+      "essential": false,
+      "wear_mask": "dust-field",
+      "opacity": 0.26,
+      "feather": 0.15,
+      "seed": 610052
     },
     {
       "id": "kiln-44-hazard",
@@ -767,7 +811,11 @@
       ],
       "texture": "riveted_armor-scorched",
       "tint": "998473",
-      "essential": false
+      "essential": false,
+      "wear_mask": "dust-field",
+      "opacity": 0.26,
+      "feather": 0.15,
+      "seed": 610054
     },
     {
       "id": "kiln-80-hazard",
@@ -807,7 +855,11 @@
       ],
       "texture": "riveted_armor-scorched",
       "tint": "998473",
-      "essential": false
+      "essential": false,
+      "wear_mask": "dust-field",
+      "opacity": 0.26,
+      "feather": 0.15,
+      "seed": 610056
     },
     {
       "id": "kiln-104-hazard",
@@ -847,7 +899,11 @@
       ],
       "texture": "riveted_armor-scorched",
       "tint": "8b8277",
-      "essential": false
+      "essential": false,
+      "wear_mask": "dust-field",
+      "opacity": 0.24,
+      "feather": 0.15,
+      "seed": 610058
     },
     {
       "id": "kiln-rear-72-soot",
@@ -867,7 +923,11 @@
       ],
       "texture": "riveted_armor-scorched",
       "tint": "8b8277",
-      "essential": false
+      "essential": false,
+      "wear_mask": "dust-field",
+      "opacity": 0.24,
+      "feather": 0.15,
+      "seed": 610059
     },
     {
       "id": "kiln-rear-94-soot",
@@ -887,7 +947,11 @@
       ],
       "texture": "riveted_armor-scorched",
       "tint": "8b8277",
-      "essential": false
+      "essential": false,
+      "wear_mask": "dust-field",
+      "opacity": 0.24,
+      "feather": 0.15,
+      "seed": 610060
     }
   ],
   "signs": [

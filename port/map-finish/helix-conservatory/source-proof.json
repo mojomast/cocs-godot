@@ -56,7 +56,9 @@
     "res://moth/generated/textures/grass.png": "b34ff20efcd0abad36323f9c6ffca4f30325dc91f7110a624ce7dac1d4f2fe64",
     "res://moth/derived/data/grass.png": "c97abfe4504283f5e21477f9f4fdd95a90bcdf86937abb478bc603e1df83f651",
     "res://moth/generated/normals/grass.png": "75a3351ecf362141f4bcbf4c5fbcee8ecea908a7e08f6d852cf769791dc00b57",
-    "res://moth/generated/textures/weathered_concrete-damp.png": "8a143f57858a26d6ea5ab81badc60cb0ea154294b9fe180c505cb1b472bd0fab"
+    "res://moth/generated/textures/weathered_concrete-damp.png": "8a143f57858a26d6ea5ab81badc60cb0ea154294b9fe180c505cb1b472bd0fab",
+    "res://moth/derived/normals/weathered_concrete-damp.png": "12303dd906a6864ef854df189ff42d1ad3de65e7e6a9e05c0e889bbf14b64e0a",
+    "res://moth/generated/textures/dust-field.png": "91e45cbbabf25909d0adc3905de7cb5a736188ffd48c02a99caf8879a1749a9f"
   },
   "placements": [
     {

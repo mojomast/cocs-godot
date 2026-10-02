@@ -149,7 +149,11 @@
       ],
       "essential": false,
       "texture": "weathered_concrete-damp",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.22,
+      "feather": 0.15,
+      "seed": 610022
     },
     {
       "id": "archive-damp-foot-1",
@@ -169,7 +173,11 @@
       ],
       "essential": false,
       "texture": "weathered_concrete-damp",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.22,
+      "feather": 0.15,
+      "seed": 610023
     },
     {
       "id": "archive-damp-foot-2",
@@ -189,7 +197,11 @@
       ],
       "essential": false,
       "texture": "weathered_concrete-damp",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.22,
+      "feather": 0.15,
+      "seed": 610024
     },
     {
       "id": "archive-damp-foot-3",
@@ -209,7 +221,11 @@
       ],
       "essential": false,
       "texture": "weathered_concrete-damp",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.22,
+      "feather": 0.15,
+      "seed": 610025
     },
     {
       "id": "archive-damp-foot-4",
@@ -229,7 +245,11 @@
       ],
       "essential": false,
       "texture": "weathered_concrete-damp",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.22,
+      "feather": 0.15,
+      "seed": 610026
     },
     {
       "id": "archive-damp-foot-5",
@@ -249,7 +269,11 @@
       ],
       "essential": false,
       "texture": "weathered_concrete-damp",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.22,
+      "feather": 0.15,
+      "seed": 610027
     },
     {
       "id": "irrigation-damp-foot-0",
@@ -269,7 +293,11 @@
       ],
       "essential": false,
       "texture": "metal-oxide",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.18,
+      "feather": 0.15,
+      "seed": 610028
     },
     {
       "id": "irrigation-damp-foot-1",
@@ -289,7 +317,11 @@
       ],
       "essential": false,
       "texture": "metal-oxide",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.18,
+      "feather": 0.15,
+      "seed": 610029
     },
     {
       "id": "irrigation-damp-foot-2",
@@ -309,7 +341,11 @@
       ],
       "essential": false,
       "texture": "metal-oxide",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.18,
+      "feather": 0.15,
+      "seed": 610030
     },
     {
       "id": "irrigation-damp-foot-3",
@@ -329,7 +365,11 @@
       ],
       "essential": false,
       "texture": "metal-oxide",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.18,
+      "feather": 0.15,
+      "seed": 610031
     },
     {
       "id": "irrigation-damp-foot-4",
@@ -349,7 +389,11 @@
       ],
       "essential": false,
       "texture": "metal-oxide",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.18,
+      "feather": 0.15,
+      "seed": 610032
     },
     {
       "id": "irrigation-damp-foot-5",
@@ -369,7 +413,11 @@
       ],
       "essential": false,
       "texture": "metal-oxide",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.18,
+      "feather": 0.15,
+      "seed": 610033
     },
     {
       "id": "pavilion-damp-foot-0",
@@ -389,7 +437,11 @@
       ],
       "essential": false,
       "texture": "weathered_concrete-worn",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.22,
+      "feather": 0.15,
+      "seed": 610034
     },
     {
       "id": "pavilion-damp-foot-1",
@@ -409,7 +461,11 @@
       ],
       "essential": false,
       "texture": "weathered_concrete-worn",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.22,
+      "feather": 0.15,
+      "seed": 610035
     },
     {
       "id": "pavilion-damp-foot-2",
@@ -429,7 +485,11 @@
       ],
       "essential": false,
       "texture": "weathered_concrete-worn",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.22,
+      "feather": 0.15,
+      "seed": 610036
     },
     {
       "id": "pavilion-damp-foot-3",
@@ -449,7 +509,11 @@
       ],
       "essential": false,
       "texture": "weathered_concrete-worn",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.22,
+      "feather": 0.15,
+      "seed": 610037
     },
     {
       "id": "pavilion-damp-foot-4",
@@ -469,7 +533,11 @@
       ],
       "essential": false,
       "texture": "weathered_concrete-worn",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.22,
+      "feather": 0.15,
+      "seed": 610038
     },
     {
       "id": "pavilion-damp-foot-5",
@@ -489,7 +557,11 @@
       ],
       "essential": false,
       "texture": "weathered_concrete-worn",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.22,
+      "feather": 0.15,
+      "seed": 610039
     },
     {
       "id": "pump-access-0",
@@ -509,7 +581,8 @@
       ],
       "essential": false,
       "texture": "brushed_metal",
-      "tint": "81968b"
+      "tint": "81968b",
+      "normal": "baked:metal"
     },
     {
       "id": "pump-access-1",
@@ -529,7 +602,8 @@
       ],
       "essential": false,
       "texture": "brushed_metal",
-      "tint": "81968b"
+      "tint": "81968b",
+      "normal": "baked:metal"
     },
     {
       "id": "pump-access-2",
@@ -549,7 +623,8 @@
       ],
       "essential": false,
       "texture": "brushed_metal",
-      "tint": "81968b"
+      "tint": "81968b",
+      "normal": "baked:metal"
     },
     {
       "id": "settling-vault-waterline-7",
@@ -569,7 +644,11 @@
       ],
       "essential": false,
       "texture": "metal-oxide",
-      "tint": "81968b"
+      "tint": "81968b",
+      "wear_mask": "dust-field",
+      "opacity": 0.18,
+      "feather": 0.15,
+      "seed": 610043
     },
     {
       "id": "settling-vault-waterline-8",
@@ -589,7 +668,11 @@
       ],
       "essential": false,
       "texture": "metal-oxide",
-      "tint": "81968b"
+      "tint": "81968b",
+      "wear_mask": "dust-field",
+      "opacity": 0.18,
+      "feather": 0.15,
+      "seed": 610044
     },
     {
       "id": "settling-vault-waterline-9",
@@ -609,7 +692,11 @@
       ],
       "essential": false,
       "texture": "metal-oxide",
-      "tint": "81968b"
+      "tint": "81968b",
+      "wear_mask": "dust-field",
+      "opacity": 0.18,
+      "feather": 0.15,
+      "seed": 610045
     },
     {
       "id": "filter-vault-waterline-7",
@@ -629,7 +716,11 @@
       ],
       "essential": false,
       "texture": "metal-oxide",
-      "tint": "81968b"
+      "tint": "81968b",
+      "wear_mask": "dust-field",
+      "opacity": 0.18,
+      "feather": 0.15,
+      "seed": 610046
     },
     {
       "id": "filter-vault-waterline-8",
@@ -649,7 +740,11 @@
       ],
       "essential": false,
       "texture": "metal-oxide",
-      "tint": "81968b"
+      "tint": "81968b",
+      "wear_mask": "dust-field",
+      "opacity": 0.18,
+      "feather": 0.15,
+      "seed": 610047
     },
     {
       "id": "filter-vault-waterline-9",
@@ -669,7 +764,11 @@
       ],
       "essential": false,
       "texture": "metal-oxide",
-      "tint": "81968b"
+      "tint": "81968b",
+      "wear_mask": "dust-field",
+      "opacity": 0.18,
+      "feather": 0.15,
+      "seed": 610048
     },
     {
       "id": "water-pressure-tower-waterline-7",
@@ -689,7 +788,11 @@
       ],
       "essential": false,
       "texture": "metal-oxide",
-      "tint": "81968b"
+      "tint": "81968b",
+      "wear_mask": "dust-field",
+      "opacity": 0.18,
+      "feather": 0.15,
+      "seed": 610049
     },
     {
       "id": "water-pressure-tower-waterline-8",
@@ -709,7 +812,11 @@
       ],
       "essential": false,
       "texture": "metal-oxide",
-      "tint": "81968b"
+      "tint": "81968b",
+      "wear_mask": "dust-field",
+      "opacity": 0.18,
+      "feather": 0.15,
+      "seed": 610050
     },
     {
       "id": "water-pressure-tower-waterline-9",
@@ -729,7 +836,11 @@
       ],
       "essential": false,
       "texture": "metal-oxide",
-      "tint": "81968b"
+      "tint": "81968b",
+      "wear_mask": "dust-field",
+      "opacity": 0.18,
+      "feather": 0.15,
+      "seed": 610051
     },
     {
       "id": "root-stain-0",
@@ -749,7 +860,11 @@
       ],
       "essential": false,
       "texture": "rock-moss",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.3,
+      "feather": 0.15,
+      "seed": 610052
     },
     {
       "id": "root-stain-1",
@@ -769,7 +884,11 @@
       ],
       "essential": false,
       "texture": "rock-moss",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.3,
+      "feather": 0.15,
+      "seed": 610053
     },
     {
       "id": "root-stain-2",
@@ -789,7 +908,11 @@
       ],
       "essential": false,
       "texture": "rock-moss",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.3,
+      "feather": 0.15,
+      "seed": 610054
     },
     {
       "id": "root-stain-3",
@@ -809,7 +932,11 @@
       ],
       "essential": false,
       "texture": "rock-moss",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.3,
+      "feather": 0.15,
+      "seed": 610055
     },
     {
       "id": "root-stain-4",
@@ -829,7 +956,11 @@
       ],
       "essential": false,
       "texture": "rock-moss",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.3,
+      "feather": 0.15,
+      "seed": 610056
     },
     {
       "id": "root-stain-5",
@@ -849,7 +980,11 @@
       ],
       "essential": false,
       "texture": "rock-moss",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.3,
+      "feather": 0.15,
+      "seed": 610057
     },
     {
       "id": "root-stain-6",
@@ -869,7 +1004,11 @@
       ],
       "essential": false,
       "texture": "rock-moss",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.3,
+      "feather": 0.15,
+      "seed": 610058
     },
     {
       "id": "root-stain-7",
@@ -889,7 +1028,11 @@
       ],
       "essential": false,
       "texture": "rock-moss",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.3,
+      "feather": 0.15,
+      "seed": 610059
     },
     {
       "id": "root-stain-8",
@@ -909,7 +1052,11 @@
       ],
       "essential": false,
       "texture": "rock-moss",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.3,
+      "feather": 0.15,
+      "seed": 610060
     },
     {
       "id": "root-stain-9",
@@ -929,7 +1076,11 @@
       ],
       "essential": false,
       "texture": "rock-moss",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.3,
+      "feather": 0.15,
+      "seed": 610061
     },
     {
       "id": "root-stain-10",
@@ -949,7 +1100,11 @@
       ],
       "essential": false,
       "texture": "rock-moss",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.3,
+      "feather": 0.15,
+      "seed": 610062
     },
     {
       "id": "root-stain-11",
@@ -969,7 +1124,11 @@
       ],
       "essential": false,
       "texture": "rock-moss",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.3,
+      "feather": 0.15,
+      "seed": 610063
     },
     {
       "id": "root-stain-12",
@@ -989,7 +1148,11 @@
       ],
       "essential": false,
       "texture": "rock-moss",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.3,
+      "feather": 0.15,
+      "seed": 610064
     },
     {
       "id": "root-stain-13",
@@ -1009,7 +1172,11 @@
       ],
       "essential": false,
       "texture": "rock-moss",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.3,
+      "feather": 0.15,
+      "seed": 610065
     },
     {
       "id": "root-stain-14",
@@ -1029,7 +1196,11 @@
       ],
       "essential": false,
       "texture": "rock-moss",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.3,
+      "feather": 0.15,
+      "seed": 610066
     },
     {
       "id": "root-stain-15",
@@ -1049,7 +1220,11 @@
       ],
       "essential": false,
       "texture": "rock-moss",
-      "tint": "7c8e6a"
+      "tint": "7c8e6a",
+      "wear_mask": "dust-field",
+      "opacity": 0.3,
+      "feather": 0.15,
+      "seed": 610067
     }
   ],
   "signs": [

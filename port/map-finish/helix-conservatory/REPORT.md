@@ -1,12 +1,12 @@
 # Helix Conservatory surface finish — source lane
 
-Status: source-ready profile; shared binder integration and native appearance review pending.
+Status: source-ready profile with shared v1 wear extension; native appearance review pending.
 Base: `3d2a4901`, branch `map-finish/helix-20261002`. Authoring seed: `610022`.
 
 ## Implementation and coverage
 
 `godot/multiplayer_worlds/dressing/profiles/helix-conservatory.json` uses the
-contract's original v1 fields. Nine unique exact source-material assignments,
+contract's v1 fields plus documented shared optional wear/normal fields. Nine unique exact source-material assignments,
 46 supported texture insets/weather patches, 13 district/route/service signs,
 four plant-local pollen pockets (48 motes). Ceilings: 12 material variants,
 64 panels, 20 signs, 72 motes. These are authoring limits, not measured frame cost.
@@ -34,7 +34,7 @@ its palette is deliberately warm rather than cold maintenance grey.
 
 The native family binder resolves base PNG, packed AO/roughness/detail PNG,
 normal PNG, optional etched circuit mask, and LUT through the existing Moth
-registry. `source-proof.json` lists **32 actual PNG paths with hashes**, including
+registry. `source-proof.json` now lists **34 actual PNG paths with hashes**, including
 baked and derived normal families. No GLB re-UV/export or new embedded texture
 claim. Family world-space triplanar is the surface projection solution.
 
@@ -55,7 +55,7 @@ doors or foliage. Signs use real district names and existing route names, plus
 pump isolation records. They do not promise gameplay objectives. Motes occupy
 existing fern crowns, not map-wide fog.
 
-**Request to shared Sol:** the initial schema can render real texture patches,
+**Shared integration follow-up:** the initial schema can render real texture patches,
 but has no blend-mask controls. Please add/document a backwards-compatible panel
 extension for `wear_mask` (existing Moth texture key, suggested `dust-field`),
 `opacity` (0..1), `feather` (0..0.5 panel UV edge width), and `seed` (stable integer
@@ -63,9 +63,12 @@ UV offset). Wear panels should multiply texture mask luminance by edge feather
 and opacity; service insets remain opaque. Proposed local treatment: archive/
 pavilion patches opacity 0.22, planter moss 0.30, filtration oxide 0.18, feather
 0.15; seed `610022 + placement index`. Reject missing mask resources and bound
-inputs. This profile intentionally uses only the documented original schema
-until the shared owner publishes supported fields. **Soft blended wear masks
-are therefore a remaining integration request, not a completed visual claim.**
+inputs. The shared owner has now published these optional fields in
+`port/map-finish/shared/README.md`, and the generator serializes them explicitly:
+43 wear patches use the proposed treatment (including vessel waterlines at 0.18);
+three pump access insets stay opaque and select the actual `baked:metal` normal.
+The profile and source receipt were regenerated together. **Soft blended wear is
+source implemented; its rendered appearance remains unverified.**
 The textured base families already use their real packed data maps and circuit
 mask; these should not be confused with a localized wear-alpha mask.
 
