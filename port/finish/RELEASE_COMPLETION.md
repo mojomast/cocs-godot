@@ -200,3 +200,14 @@ leaks and spectator input variants remain unresolved. Exact bounded native retry
 selections and uncertainties are in `SOURCE_BASELINE_FOLLOWUP.md`. The animation
 grant remains exclusive; this source batch ran no heavy tools and inherits no
 native acceptance merely from being merged.
+
+## Natural-surface source candidate integrated
+
+All three Astra surface revisions are integrated through `bf20ad05`: restrained
+operator shell grain, corrected Helix/Foundry/Parallax material choices, and a
+private material-aware variation shader. The four-field profile dependency is now
+resolved; twelve combined shared/package checks pass. The native grant-B owner
+has the exact candidate and a bounded matched-comparison task beginning with
+Foundry cooling and Helix archive. Only that owner may compile/render while grant
+B is active. Source completion does not close the owner's visual feedback; actual
+native review and a fresh screenshot gallery remain required.

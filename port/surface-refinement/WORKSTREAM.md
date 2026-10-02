@@ -66,3 +66,24 @@ Existing shared validation rejects those fields until that dependency lands.
 Do not call the current parent a native-ready material candidate or export it.
 The rendering owner received the real profile commit for combined validation.
 Refined appearance is not accepted until three-state matched native review.
+
+## Combined source candidate
+
+Rendering correction `ddc0b0d2` is merged as `bf20ad05`, resolving the intermediate
+profile dependency above. The explicit private shader implements stable two-scale
+organic grain sampling with aligned data/normal coordinates and preserves original
+manufactured pattern directions. All four variation options are validated. The
+shared Moth library and native sign/culling correction remain intact.
+
+Parent reran the ten shared source tests and two dressing package-provenance tests
+successfully (`/tmp/opencode/refined-map-combined-tests.tap`). The lane validated
+all three actual profiles, including accepted read-only Parallax assets. Typical
+surface texture reads rise from nine to eighteen for active organic variation;
+source counts are documented in `RENDERING.md`, not treated as GPU measurements.
+
+The exclusive animation/native owner received the combined candidate and a bounded
+surface review task within grant B: compile and capture Foundry cooling and Helix
+archive first, then the eleven accepted districts, with matching flat/rejected/
+refined cameras and selected moving/grazing-light views. Refined operator PNGs are
+also provided. No second heavy owner was granted access. Native images, compilation
+and aesthetic acceptance are still pending; publication will retain old evidence.
