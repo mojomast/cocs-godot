@@ -35,6 +35,14 @@ service and advances its weather clock once per captured source frame. This is
 prepared code, not proof of rendered weather. The initial prepared evidence is
 retained; refreshed source-attempt-02 binds that renderer revision before capture.
 
+Final source checkpoint: `05f2a21664edce9f05054278c3e774bf6cf8ed5b`.
+`source-attempt-02/` preparation and its edit plan both completed successfully;
+`node-tests-final.tap` passes 6/6 and `plan-source-final.json` passes plan validation.
+An independent comparison of every candidate event with the original JSONL event
+stream confirmed all 210 events are retained once, in order, across 504 frames.
+No event formats or replay-browser code were changed. No native render/import or
+audio/FFmpeg process was launched. All processes owned by this lane have exited.
+
 ## Lightweight commands (permitted now)
 
 Run from the integrated checkout after committing the exact intended runtime:
