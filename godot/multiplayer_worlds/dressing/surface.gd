@@ -65,9 +65,14 @@ static func build(entry: Dictionary, root: Node3D) -> Dictionary:
 	var material := shared.duplicate() as ShaderMaterial
 	if float(options.get("macro_strength", 0)) > 0 or float(options.get("wear_strength", 0)) > 0:
 		if _wear_shader == null:
+			if FamilyShader.code.count("varying vec3 world_position;") != 1 or FamilyShader.code.count("\tMETALLIC = metallic;") != 1:
+				return {"error": "family shader extension integration point changed"}
 			_wear_shader = Shader.new()
 			_wear_shader.code = FamilyShader.code.replace("varying vec3 world_position;", UNIFORMS + "\nvarying vec3 world_position;").replace("\tMETALLIC = metallic;", FRAGMENT + "\n\tMETALLIC = metallic;")
 		material.shader = _wear_shader
+		# Preserve every verified family sampler/response across shader assignment.
+		for uniform: Dictionary in shared.shader.get_shader_uniform_list():
+			material.set_shader_parameter(str(uniform.name), shared.get_shader_parameter(str(uniform.name)))
 		material.set_shader_parameter("map_inverse", root.global_transform.affine_inverse())
 		for key: String in Profile.WEAR_BOUNDS:
 			if options.has(key): material.set_shader_parameter(key, options[key])

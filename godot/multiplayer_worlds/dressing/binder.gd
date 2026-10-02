@@ -14,6 +14,7 @@ var _bindings: Array[Dictionary] = []
 var _resources: Dictionary = {}
 var _diagnostics: Dictionary = {}
 var _detail := -1
+var _clock := -1.0
 
 static func apply(root: Node3D, map_id: String, geometry_hash: String) -> Dictionary:
 	cleanup(root)
@@ -31,6 +32,10 @@ static func apply(root: Node3D, map_id: String, geometry_hash: String) -> Dictio
 	if not report.errors.is_empty():
 		report.status = "invalid_profile"
 		return report
+	var art := root.get_node_or_null("BlenderArtNoGameplayCollision")
+	if art == null:
+		report.status = "missing_art"
+		return report
 	var node = load("res://multiplayer_worlds/dressing/binder.gd").new()
 	node.name = "NewMapDressing"
 	node.set_meta(OWNER, true)
@@ -40,11 +45,6 @@ static func apply(root: Node3D, map_id: String, geometry_hash: String) -> Dictio
 	node._prepare(root)
 	if not report.errors.is_empty():
 		report.status = "unresolved_resources"
-		node.free()
-		return report
-	var art := root.get_node_or_null("BlenderArtNoGameplayCollision")
-	if art == null:
-		report.status = "missing_art"
 		node.free()
 		return report
 	node._collect(art)
@@ -70,6 +70,16 @@ static func set_root_detail(root: Node3D, level: int) -> void:
 func diagnostics() -> Dictionary:
 	return _diagnostics.duplicate(true)
 
+func set_clock_for_capture(seconds: float = -1.0) -> void:
+	if not is_finite(seconds): return
+	_clock = clampf(seconds, -1.0, 3600.0)
+	for resource: Variant in _resources.values():
+		if resource is ShaderMaterial and resource.shader != WearPanelShader:
+			resource.set_shader_parameter("clock_override", _clock)
+	for child: Node in get_children():
+		if child is MultiMeshInstance3D:
+			child.material_override.set_shader_parameter("clock_override", _clock)
+
 func _prepare(root: Node3D) -> void:
 	for entry: Dictionary in _profile.materials:
 		var result := Surface.build(entry, root)
@@ -93,13 +103,14 @@ func _prepare(root: Node3D) -> void:
 		var material := ShaderMaterial.new()
 		material.shader = WearPanelShader if mask != null else PanelShader
 		material.set_shader_parameter("baked_tile", texture)
-		material.set_shader_parameter("circuit_tile", texture)
-		material.set_shader_parameter("housing_tile", housing)
 		material.set_shader_parameter("normal_tile", normal)
-		material.set_shader_parameter("has_normal", true)
-		material.set_shader_parameter("style", 2)
 		material.set_shader_parameter("tint", Color(entry.tint))
-		material.set_shader_parameter("emission_strength", 0.0)
+		if mask == null:
+			material.set_shader_parameter("circuit_tile", texture)
+			material.set_shader_parameter("housing_tile", housing)
+			material.set_shader_parameter("has_normal", true)
+			material.set_shader_parameter("style", 2)
+			material.set_shader_parameter("emission_strength", 0.0)
 		if mask != null:
 			material.set_shader_parameter("wear_mask", mask)
 			material.set_shader_parameter("opacity", entry.get("opacity", 1.0))
@@ -211,6 +222,7 @@ func _pocket(entry: Dictionary) -> void:
 	material.set_shader_parameter("size", 0.07 if entry.kind == "mist" else 0.045)
 	material.set_shader_parameter("opacity", 0.14 if entry.kind == "mist" else 0.28)
 	material.set_shader_parameter("fall_speed", -0.025 if entry.kind in ["ash", "vent"] else 0.024)
+	material.set_shader_parameter("clock_override", _clock)
 	var mm := MultiMesh.new()
 	mm.transform_format = MultiMesh.TRANSFORM_3D
 	mm.use_custom_data = true

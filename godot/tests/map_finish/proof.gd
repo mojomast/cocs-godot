@@ -1,6 +1,6 @@
 extends SceneTree
 ## Prepared native harness; run only under the exclusive native grant.
-## godot --path godot --script res://multiplayer_worlds/dressing/proof.gd --
+## godot --path godot --script res://tests/map_finish/proof.gd --
 ##   --map=helix-conservatory --proof-dir=/absolute/evidence
 ## Optional --camera=x,y,z --target=x,y,z for authored district closeups.
 const Binder = preload("res://multiplayer_worlds/dressing/binder.gd")
@@ -66,6 +66,7 @@ func _run() -> void:
 	stage.add_child(camera)
 	camera.current = true
 	camera.far = 2000
+	camera.fov = float(args.get("fov", "75"))
 	camera.position = _coordinates(args.get("camera", "55,35,55"))
 	camera.look_at(_coordinates(args.get("target", "0,3,0")))
 	var sun := DirectionalLight3D.new()
@@ -86,6 +87,8 @@ func _run() -> void:
 		DirAccess.make_dir_recursive_absolute(directory)
 		for level in [Binder.Detail.OFF, Binder.Detail.LOW, Binder.Detail.FULL]:
 			Binder.set_root_detail(world, level)
+			for child: Node in world.get_children():
+				if child.get_meta(Binder.OWNER, false): child.set_clock_for_capture(float(args.get("clock", "12")))
 			await process_frame
 			await RenderingServer.frame_post_draw
 			await RenderingServer.frame_post_draw
@@ -105,7 +108,7 @@ func _run() -> void:
 		_check(original.node.get_surface_override_material(original.index) == original.override, "restored original override")
 	var reloaded := Binder.apply(world, id, hash)
 	_check(reloaded.status == "ready", "reload coverage")
-	var result := {"map": id, "initial": initial, "reloaded": reloaded, "failures": _failures, "owned_max": owned_max, "frame_usec": frame_usec, "renderer": RenderingServer.get_video_adapter_name(), "rendering_method": ProjectSettings.get_setting("rendering/renderer/rendering_method"), "camera": str(camera.position), "evidence_note": "frame cadence is not a GPU FPS measurement; images require human route/district review"}
+	var result := {"map": id, "initial": initial, "reloaded": reloaded, "failures": _failures, "owned_max": owned_max, "frame_usec": frame_usec, "renderer": RenderingServer.get_video_adapter_name(), "rendering_method": ProjectSettings.get_setting("rendering/renderer/rendering_method"), "camera": str(camera.position), "fov": camera.fov, "viewport": str(root.size), "clock": float(args.get("clock", "12")), "evidence_note": "frame cadence is not a GPU FPS measurement; images require human route/district review"}
 	if directory != "":
 		var file := FileAccess.open(directory.path_join(id + "-diagnostics.json"), FileAccess.WRITE)
 		if file != null: file.store_string(JSON.stringify(result, "  "))
@@ -134,9 +137,8 @@ func _verify_mounts(world: Node3D, p: Dictionary) -> void:
 					var point := center + basis * Vector3(x * entry.size[0], y * entry.size[1], 0)
 					var mounted := false
 					for index in range(0, faces.size(), 3):
-						var closest := Geometry3D.get_closest_point_to_triangle(point, faces[index], faces[index + 1], faces[index + 2])
-						var delta := point - closest
-						if delta.length() >= 0.004 and delta.length() <= 0.101 and delta.normalized().dot(basis.z) >= 0.8:
+						var hit: Variant = Geometry3D.ray_intersects_triangle(point, -basis.z, faces[index], faces[index + 1], faces[index + 2])
+						if hit is Vector3 and point.distance_to(hit) >= 0.004 and point.distance_to(hit) <= 0.101:
 							mounted = true
 							break
 					_check(mounted, "unmounted face sample: " + entry.id + " " + str(point))

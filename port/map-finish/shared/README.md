@@ -14,6 +14,8 @@ exclusive grant**. No Godot/Blender/import/render/audio/encoding was run here.
   Off restores original art and releases detail geometry; Low textures surfaces
   and retains essential panels/signs; Full adds all authored details and pockets.
 - Created `NewMapDressing` nodes expose `set_detail(level)` and `diagnostics()`.
+  `set_clock_for_capture(seconds)` freezes only owned private material/mote clocks;
+  -1 resumes engine time, with a finite bounded 3600-second maximum.
 - `map.gd` calls apply after art instantiation and exposes `set_dressing_detail`.
   An optional `dressing/detail_control.gd` OptionButton binds a map via `bind_map`.
 
@@ -121,8 +123,9 @@ worker profiles. Map-owned source validators additionally prove backing faces.
 Parallax schema/resources can be checked here; its geometry validator requires
 the isolated accepted GLB and cannot be claimed passing in this checkout.
 
-Prepared native entry: `res://multiplayer_worlds/dressing/proof.gd`, with
+Prepared native entry: `res://tests/map_finish/proof.gd`, with
 `--map=<id> --proof-dir=<absolute dir> --camera=x,y,z --target=x,y,z` after the grant.
+Optional `--fov=75 --clock=12` pins projection and the private animation phase.
 It checks actual profile loading, selector/resource coverage, native negative
 schema cases, face mounting, Off/Low/Full budgets, reapply/cleanup/reload and
 immutable mesh/material restoration. It captures identical-camera detail pairs
@@ -143,3 +146,16 @@ Helix already has real articulated fronds; review species variety and grass-norm
 response, rather than inventing missing foliage. Foundry owns optional parapet
 bolts/valve handles; preserve aisles. Parallax's accepted archive/pump share an
 architectural rhythm; its separate interiors-v2 promotion must revalidate mounts.
+
+## Packaging closure
+
+The separately committed package changes discover optional profile JSON only
+for maps already registered in the production world catalog. They explicitly add
+those paths to the export include filter, build-input hashes and
+`dressing_resource_sha256` provenance; validation binds the inventory to recorded
+Git bytes and rejects omitted/refreshed dirty profiles. Missing optional profiles
+remain valid. No profile adds a route; isolated Parallax JSON is not exported
+until its catalog registration is accepted. The helper also corrects the existing
+package-only Foundry path assumption to the accepted runtime `art/worlds/` path.
+PCK inclusion/native rebuild remains a later grant-owned check. No engine was
+used for the closure/provenance tests.
