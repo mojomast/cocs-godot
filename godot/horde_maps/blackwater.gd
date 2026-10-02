@@ -5,6 +5,8 @@ const ID := "blackwater-reclamation"
 const PATH := "res://horde_maps/generated/blackwater-reclamation.json"
 const ART := "res://horde_maps/art/blackwater-reclamation.glb"
 var station_signs: Dictionary = {}
+var station_zones: Dictionary = {}
+const MissionGuidance = preload("res://horde/mission_guidance.gd")
 
 func height_at(x: float, z: float) -> float:
 	for center: float in [-170.0, -82.0, 0.0, 82.0, 170.0]:
@@ -43,6 +45,20 @@ func build(id: String = ID, gray: bool = false) -> bool:
 		sign.name = "Station_" + str(row[0])
 		sign.visible = false # Only received director state can activate a station.
 		station_signs[str(row[0])] = sign
+		var zone := MeshInstance3D.new()
+		var ring := TorusMesh.new()
+		ring.inner_radius = 6.35
+		ring.outer_radius = 6.5
+		ring.rings = 32
+		ring.ring_segments = 8
+		zone.mesh = ring
+		zone.position = Vector3(float(row[1]), 0.12, float(row[2]))
+		var material := StandardMaterial3D.new()
+		material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		zone.material_override = material
+		zone.visible = false
+		add_child(zone)
+		station_zones[str(row[0])] = zone
 	if not gray and ResourceLoader.exists(ART):
 		var authored: PackedScene = load(ART)
 		var art: Node = authored.instantiate()
@@ -61,18 +77,25 @@ func apply_station_state(mission: Dictionary) -> void:
 		var sign: Label3D = station_signs[id]
 		var done := id in completed
 		var available := bool(value.get("available", false))
-		sign.visible = done or available
-		if not sign.visible: continue
-		var title: String = str(value.get("caption", id)).to_upper()
+		sign.visible = true
+		var title: String = str(MissionGuidance.NAMES.get(id, id))
 		if done:
-			sign.text = title + "\nRESTORED · SUPPLY AVAILABLE"
+			sign.text = title + "\nRESTORED · SYSTEM ONLINE"
 			sign.modulate = Color("78ddaa")
 		elif id == active:
 			sign.text = "%s\nDEFEND · %.1f / %.1fs" % [title, float(value.get("progress", 0.0)), float(value.get("required", 1.0))]
 			sign.modulate = Color("ffd381")
-		else:
-			sign.text = title + "\n[E] ARM REPAIR"
+		elif available:
+			sign.text = title + "\nAVAILABLE · [E] WITHIN 5m"
 			sign.modulate = Color("9bd7de")
+		else:
+			sign.text = title + "\nLOCKED · " + MissionGuidance.lock_reason(id, completed, int(mission.get("wave", 0)))
+			sign.modulate = Color("a4acb4")
+		var zone: MeshInstance3D = station_zones.get(id)
+		if zone != null:
+			zone.visible = available and not done
+			var material: StandardMaterial3D = zone.material_override
+			material.albedo_color = sign.modulate
 
 func apply_source_stage(stage: Dictionary, round_id: String) -> void:
 	# Source geometryRevision is monotonically increasing within each epoch.
