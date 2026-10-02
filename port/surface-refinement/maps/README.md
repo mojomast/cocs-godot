@@ -4,6 +4,14 @@ Owner feedback: remove pale purple, repetition and inappropriate all-over plate.
 Base: `068e3ce2`. This directory supersedes the old material-story tables in
 `port/map-finish/*/` for this candidate. It is **not visual acceptance**.
 
+**Follow-up after parent `bb02e34b`:** reviewed the actual eleven native B
+comparisons; retain the improved palette. Foundry's authored light material is
+now excluded from dressing to restore its original emission. See
+[`EMISSION_FOLLOWUP.md`](EMISSION_FOLLOWUP.md) for root cause, exact source anatomy,
+source checks and pending native commands. Earlier `verification.json` and
+`source-evidence.json` retain the historical palette-pass snapshots; the current
+Foundry generator receipt and `emission-verification.json` cover this correction.
+
 ## Reference inspection and diagnosis
 
 Opened the actual native Off/Low/Full captures for all eleven districts, then
@@ -69,7 +77,7 @@ All values are explicit in deterministic authors and generated profiles. All
 LUT gains/pulses are zero. Grain remains nonzero. Normal, detail, AO and roughness
 variation are deliberately restrained so geometry carries the form.
 
-### Gravemill Foundry (8/8 material selectors)
+### Gravemill Foundry (7 dressed + 1 preserved / 8 material selectors)
 
 | Source (`GM / …`) | Physical uses / chosen appearance | Family / variant | Tint | Texture strength / normal | Variation |
 |---|---|---|---|---|---|
@@ -78,7 +86,7 @@ variation are deliberately restrained so geometry carries the form.
 | copper | Vessel/roof metal: quiet grey-green patinated copper, not green noise | oxidised-copper / default | 8b9682 | .22 / .10 | organic .30 |
 | brass | Ribs, rods, hopper stock: subdued warm metal; no riveted grid | brushed-alloy / default | a78a58 | .18 / .06 | manufactured .12 |
 | ore | Kiln masonry, arches, piers, strata and chutes: earthy refractory finish | pearl-ceramic / worn | a7856c | .32 / .10 | organic .30 |
-| orange | Small safety/identity-painted parts: ochre coating | pearl-ceramic / cast | c69243 | .14 / .06 | organic .30 |
+| orange | Eight cooling roof lights, eight furnace sight glasses, six assay status lamps: original source emission and energy | preserved imported material | source | source | none |
 | chalk | Mineral linework/trim: warm chalk, no cyan grid | pearl-ceramic / cast | c4bcaa | .22 / .10 | organic .30 |
 | cooling-floor | Quiet grey mineral floor, no flowing ice-like streak texture | pearl-ceramic / cast | 93948b | .30 / .10 | organic .30 |
 
