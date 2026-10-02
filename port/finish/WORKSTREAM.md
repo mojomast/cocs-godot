@@ -18,10 +18,18 @@ worktrees start at `6cefd9eb` and live under `/home/mojo/.tmp-on-disk/`.
 
 ## Heavy-tool ownership and completion sequence
 
-**Parallax retains the exclusive heavy slot.** Its existing session has been
-resumed with an instruction to complete the build/capture through final disposition
-and explicit teardown. Integration, packaging and acceptance agents have only
-source/static/Node permission until a later explicit grant.
+**Helix revision 2 now owns the exclusive heavy slot.** Parallax explicitly
+released all owned processes after its final production checkpoint, and the parent
+granted Helix its second Blender/native pass. Integration, packaging and acceptance
+agents have only source/static/Node permission until a later explicit grant.
+
+Parallax checkpoint: assets/tests `9a6372b4`, isolated bindings `277f379e`, geometry
+`906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554`.
+Six hosted modes passed: DM/TDM/CTF/KOTH/Uplink/Holdout. Parent inspected overview,
+archive, pump and polar-hall images: overall silhouette and polar hall are distinct;
+archive/pump interiors still share too much structure. Parallax has a bounded
+**source-only** differentiation task, preserving this checkpoint. No new heavy
+grant was issued to Parallax. Foundry revision 3 follows Helix's explicit release.
 
 1. Inspect final Parallax architectural and gameplay images and record the actual
    asset identity and proven pairs. Receive explicit slot release.
