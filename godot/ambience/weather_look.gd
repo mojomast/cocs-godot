@@ -6,12 +6,14 @@ const MATERIAL_CAP := 256
 const NODE_CAP := 16384
 const BINDING_CAP := 16384
 const SHADERS := ["res://moth/surface.gdshader", "res://material_language/family.gdshader"]
+const CAMPAIGN_GROUND := "res://campaign/materials/ground.gdshader"
 var _environment: WorldEnvironment
 var _sun: DirectionalLight3D
 var _original: Environment
 var _owned: Environment
 var _base := {}
 var _materials: Dictionary = {}
+var _shader_defaults: Dictionary = {}
 var _bindings: Array[Dictionary] = []
 var wetness := 0.0
 var visited := 0
@@ -65,13 +67,20 @@ func _bind_material(node: GeometryInstance3D, surface: int, original: Material) 
 		return
 	var roughness := 0.0
 	var metallic := 0.0
+	var ground := false
 	if original is StandardMaterial3D:
 		if original.shading_mode == BaseMaterial3D.SHADING_MODE_UNSHADED or original.transparency != BaseMaterial3D.TRANSPARENCY_DISABLED: return
 		roughness = original.roughness
 		metallic = original.metallic
+	elif original is ShaderMaterial and original.shader != null and original.shader.resource_path == CAMPAIGN_GROUND:
+		ground = true
 	elif original is ShaderMaterial and original.shader != null and original.shader.resource_path in SHADERS:
 		var r: Variant = original.get_shader_parameter("roughness")
 		var m: Variant = original.get_shader_parameter("metallic")
+		# An unset override is not an absent uniform. Terrain commonly relies on
+		# shader-declared defaults; headless's dummy renderer cannot report them.
+		if r == null: r = _scalar_default(original.shader, "roughness")
+		if m == null: m = _scalar_default(original.shader, "metallic")
 		if not (r is float or r is int) or not (m is float or m is int): return
 		roughness = float(r)
 		metallic = float(m)
@@ -80,12 +89,22 @@ func _bind_material(node: GeometryInstance3D, surface: int, original: Material) 
 		if _materials.size() >= MATERIAL_CAP:
 			capped = true
 			return
-		_materials[original] = {"material": original.duplicate(), "roughness": roughness, "metallic": metallic}
+		_materials[original] = {"material": original.duplicate(), "roughness": roughness, "metallic": metallic, "ground": ground}
 	var copy: Material = _materials[original].material
 	var prior: Material = node.material_override if surface < 0 else (node as MeshInstance3D).get_surface_override_material(surface)
 	_bindings.append({"node": weakref(node), "surface": surface, "prior": prior, "copy": copy})
 	if surface < 0: node.material_override = copy
 	else: (node as MeshInstance3D).set_surface_override_material(surface, copy)
+
+func _scalar_default(shader: Shader, uniform_name: String) -> Variant:
+	var key := shader.resource_path + "/" + uniform_name
+	if not _shader_defaults.has(key):
+		# Only the two allowlisted shaders and their literal scalar defaults enter
+		# here. No expression evaluation, arbitrary shader support or file reads.
+		var expression := RegEx.create_from_string("uniform\\s+float\\s+" + uniform_name + "\\s*(?::[^=;]+)?=\\s*([0-9]+(?:\\.[0-9]+)?)\\s*;")
+		var found := expression.search(shader.code)
+		_shader_defaults[key] = float(found.get_string(1)) if found != null else null
+	return _shader_defaults[key]
 
 func apply(kind: String, delta: float, immediate: bool = false) -> void:
 	if _owned == null or not is_instance_valid(_environment) or _environment.environment != _owned: return
@@ -107,6 +126,10 @@ func apply(kind: String, delta: float, immediate: bool = false) -> void:
 		_sun.light_color = _linear_mix(_base.key_color, Color.BLACK, wetness * 0.3 + dark * 0.55)
 	var look := Profile.wet_sheen(wetness)
 	for entry: Dictionary in _materials.values():
+		if entry.ground:
+			entry.material.set_shader_parameter("weather_wetness", wetness)
+			writes += 1
+			continue
 		var roughness := clampf(float(entry.roughness) * float(look.roughness), 0.0, 1.0)
 		var metallic := clampf(float(entry.metallic) + float(look.metalness), 0.0, 1.0)
 		if entry.material is StandardMaterial3D:
@@ -136,6 +159,7 @@ func clear() -> void:
 			_sun.light_color = _base.key_color
 	_bindings.clear()
 	_materials.clear()
+	_shader_defaults.clear()
 	_base.clear()
 	_owned = null
 	_original = null

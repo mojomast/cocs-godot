@@ -11,6 +11,12 @@ Windows/Linux release, then start another Astra pass using the evidence-linked
 remaining-gap inventories and any new playtest feedback. This authorizes one
 additional pass; retain separate revision, acceptance and release records.
 
+**Additional owner request:** three more Astra agents are building distinct,
+complex Blender maps in isolated branches. See the [new-map workstream](../new-maps/WORKSTREAM.md).
+Their design/code/source checks run in parallel; they join the explicit heavy
+tool queue after current feature acceptance. Shared map/package integration is
+parent-owned, with separate map acceptance records.
+
 ## Approach
 
 Compare actual source and native implementations before selecting work. Historical
@@ -41,11 +47,13 @@ its `port/next-port/<lane>/` directory, with actual source/native anchors.
 
 ## Shared-file and engine coordination
 
-- **World owns the exclusive Godot slot now.** Gameplay released the slot after
-  its accepted live-input journeys. Other lanes are research,
+- **Parent owns the exclusive Godot slot now for combined verification/exports.**
+  Experience released after `2571ff59`, integrated as `78ef1673`; its owned
+  Godot/Xvfb/authority processes are stopped. Other lanes are research,
   code and Node-only until explicitly granted the engine. Heavy native/Blender
   work is serialized with `LP_NUM_THREADS=1` and the pinned Godot 4.5.2 binary.
-- Current handoff: Gameplay → World → next ready Modes/Experience, adjusted only through
+- Current handoff: Gameplay → World → Modes → Experience → parent combined
+  verification/exports → Blender map queue, adjusted only through
   an explicit parent grant after the preceding owner releases its processes.
 - Modes owns generated route capabilities and mode allowlists; Experience
   consumes those without rewriting the same files.
@@ -92,6 +100,36 @@ its `port/next-port/<lane>/` directory, with actual source/native anchors.
   and `port/next-port/modes/source-parity.test.mjs`. This verifies source rules,
   generated selectors, packaged-case coverage and manifest validation, not native
   rendering or an exported build. Result is recorded in the session tool output.
+- World follow-up `e99ab7ca` integrated as `c290d24e`: map-owned light binding,
+  weather ticking while muted, standalone compositions, campaign wet ground and
+  shader-default handling. Native contracts/regressions pass; 51 matched images
+  across 17 maps and six actual-wire journeys passed lane review. Maximum observed
+  clones/bindings/scanned nodes: 57/588/2,836, no cap hits or static draw-count
+  increase. These remain lane results pending combined suite/platform acceptance.
+  Parent registers standalone and two isolated real-wire regression journeys.
+- Modes follow-up `eb3f2d10` integrated as `7950e8a4`: closing-transport reconnect
+  race, map selector initialization, repeated-start round accounting, compact
+  scoreboard/objective layout and read-only spectator presentation repaired.
+  All four modes passed normal-rate two-native-player + late-native-spectator
+  journeys through results, reconnect, restart and Home selection. Juggernaut
+  additionally showed source-bot crown transfer and a points win. Arsenal was a
+  draw, Elimination a time/ticket result, VIP a defender timeout; successful
+  ordinary-input VIP extraction remains unaccepted. Parent registers all four
+  native journeys and moves acceptance-only scripts under `godot/tests/`.
+- Experience's final grant requires the world and mode follow-ups in its own
+  test checkout so compact layout and lifecycle acceptance cover the combined
+  product. The next pass's evidence-driven candidates are in [PASS_TWO.md](PASS_TWO.md).
+- Experience follow-up `2571ff59` integrated as `78ef1673`: parser/teardown fixes,
+  recurring-caption suppression, scrollable incoming-hit history and keyboard
+  scrolling, compact mode placement and selector ownership. Lane acceptance:
+  488 experience + 127 combined-HUD + 50 settings + 614 campaign-input checks;
+  connected wide/compact mode, campaign, sports and combined-arms presentation
+  journeys; all three gameplay mobility journeys; multiplayer lifecycle and
+  Home flow. Presentation fixtures use explicitly recorded source-triggered
+  damage/pickup/death/story setup and are not natural combat completion proof.
+  Parent corrects relocated fixture references and registers four connected
+  presentation regression gates. See the lane acceptance for remaining privacy,
+  mission-priority, exhaustive text-bound and existing combined-arms layout gaps.
 
 Require real source inputs/events/results, lifecycle and privacy/control boundary
 checks, native visual/audio evidence appropriate to the feature, and wide/compact

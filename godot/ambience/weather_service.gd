@@ -121,8 +121,20 @@ func bind(arena: Dictionary, camera: Camera3D, mode: String = "playing", seed: i
 	_refresh()
 
 ## Production host supplies its static map only: excludes actors and pickups.
-func bind_presentation(world: Node3D, environment: WorldEnvironment, sun: DirectionalLight3D) -> void:
-	look.bind(world, environment, sun)
+func bind_presentation(world: Node3D, environment: Variant = null, sun: Variant = null) -> void:
+	# Campaign/native arenas free the inherited viewer nodes and own their
+	# persistent composition inside the map. Never pass freed instances to typed
+	# bindings or choose arbitrarily among multiple lighting owners.
+	if not is_instance_valid(world):
+		look.clear()
+		return
+	if not is_instance_valid(environment):
+		var environments := world.find_children("*", "WorldEnvironment", true, false)
+		environment = environments[0] if environments.size() == 1 else null
+	if not is_instance_valid(sun):
+		var lights := world.find_children("*", "DirectionalLight3D", true, false)
+		sun = lights[0] if lights.size() == 1 else null
+	look.bind(world, environment as WorldEnvironment, sun as DirectionalLight3D)
 	look.apply(_weather if _quality > 0.0 else "clear", 0.0, true)
 	_look_stamp = _elapsed
 
