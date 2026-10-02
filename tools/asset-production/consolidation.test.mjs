@@ -22,7 +22,11 @@ test('candidate registration is fail closed and wrapper hashes match the CURRENT
   }
 });
 test('frozen authority and accepted catalogs remain identical to canonical main',()=>{
-  assert.equal(execFileSync('git',['diff','652b8f3c','--','game/','port/contracts/source-lock.json','port/multiplayer-worlds/catalog.mjs','godot/source_operators/moth_finish/','godot/material_language/','godot/multiplayer_worlds/dressing/'],{encoding:'utf8'}),'');
+  const reviewedProfile='godot/multiplayer_worlds/dressing/profiles/gravemill-foundry.json';
+  // Only this exact reviewed profile advances. Authority, both admission
+  // catalogs, shared shaders and every other dressing file keep the old pin.
+  assert.equal(execFileSync('git',['diff','652b8f3c','--','game/','server/','port/contracts/source-lock.json','port/multiplayer-worlds/catalog.mjs','godot/multiplayer_worlds/catalog.gd','godot/source_operators/moth_finish/','godot/material_language/','godot/multiplayer_worlds/dressing/',':(exclude)'+reviewedProfile],{encoding:'utf8'}),'');
+  assert.equal(read(reviewedProfile),execFileSync('git',['show','91ad0ce5:'+reviewedProfile],{encoding:'utf8'}),'Foundry profile must match the reviewed 22-light preservation revision exactly');
 });
 test('complete bounded queue preserves every owner-requested asset unit and external Parallax ownership',()=>{
   assert.deepEqual(plan.units.map(u=>u.id),['parallax-interiors','robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);

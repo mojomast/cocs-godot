@@ -7,6 +7,7 @@ import {resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {ROOT,CANDIDATES,identity,prepare,sha} from './candidate-admission.mjs';
 import {controller,distance,drive,assertOutcome} from './candidate-guidance.mjs';
+import {observeChild,shutdownPeers,faultPattern} from './process-evidence.mjs';
 
 const [id,mode]=process.argv.slice(2);
 assert.ok(process.argv.includes('--granted'),'Explicit heavy grant required');
@@ -14,21 +15,14 @@ assert.ok(CANDIDATES[id]?.includes(mode),'Unknown candidate pair');
 const plan=JSON.parse(readFileSync(resolve(ROOT,'port/finish/ASSET_PRODUCTION.json')));
 const out=resolve(plan.evidenceRoot,'hosted',new Date().toISOString().replaceAll(':','-')+'-'+id+'-'+mode);
 mkdirSync(out,{recursive:true});
-const permit=identity(id,mode),art=resolve(ROOT,`godot/multiplayer_worlds/art/worlds/${id}.glb`);
-assert.ok(existsSync(art),'Build/reopen/receipt/import the actual candidate first');
-writeFileSync(resolve(out,'asset-receipt.log'),execFileSync(process.execPath,['tools/asset-production/receipt.mjs',id],{cwd:ROOT,timeout:60000,encoding:'utf8'}));
-const derived=prepare(resolve(out,'private-authority'),permit);
-const {createGameServer}=await import(pathToFileURL(derived.server));
-const {visible}=await import(pathToFileURL(resolve(ROOT,'game/core.mjs')));
-const game=createGameServer({historyPath:null,progressionPath:null,tickMs:1000/60});
-await new Promise(r=>game.server.listen(0,'127.0.0.1',r));
-const endpoint=`ws://127.0.0.1:${game.server.address().port}`,peers=[],wire=[],trace=[],respawn={};
+const art=resolve(ROOT,`godot/multiplayer_worlds/art/worlds/${id}.glb`),peers=[],wire=[],trace=[],respawn={};
+let permit,derived,visible,game,endpoint,state,artSha;
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-let timer,tickError,room,m,success=false;
+let timer,tickError,room,m,journeyPassed=false,failure=null,stage='startup';
 const until=async(label,predicate,ms=45000)=>{
  const end=Date.now()+ms;while(Date.now()<end){
   if(tickError)throw tickError;
-  for(const p of peers)if(p.closed||/SCRIPT ERROR|Parse Error|FOUNDRY_NATIVE_ERROR/.test(p.log))throw Error(`${p.role}: ${p.log.slice(-5000)}`);
+   for(const p of peers)if(p.closed||p.spawnError||faultPattern.test(p.log))throw Error(`process-failure ${p.role}: ${p.spawnError??''} ${p.log.slice(-5000)}`);
   const value=predicate();if(value)return value;await sleep(50);
  }throw Error('Timeout '+label);
 };
@@ -45,15 +39,24 @@ function launch(role,extra=[]){
   `--foundry-role=${role}`,`--foundry-controls=${resolve(out,role+'-controls.json')}`,
   ...(role==='host'?[`--foundry-capture=${resolve(out,'frames')}`]:[]),...(compact?['--foundry-compact']:[]),...extra];
  const child=spawn(plan.tools.godot,args,{cwd:ROOT,env:{...process.env,LP_NUM_THREADS:'1',COCS_SETTINGS_PATH:resolve(out,role+'-settings.json')},stdio:['ignore','pipe','pipe']});
- const peer={role,child,log:'',closed:false};peers.push(peer);
- child.on('error',e=>{tickError=e;});child.on('close',code=>{peer.closed=true;peer.code=code;});
- for(const stream of [child.stdout,child.stderr])stream.on('data',b=>{peer.log+=b;});
+  peers.push(observeChild(child,role));
 }
-game.wss.on('connection',socket=>socket.on('message',raw=>{const f=JSON.parse(raw);if(['input','host','join','start'].includes(f.type))wire.push({at:new Date().toISOString(),...f});}));
 try{
+ permit=identity(id,mode);
+ assert.ok(existsSync(art),'Build/reopen/receipt/import the actual candidate first');
+ artSha=sha(readFileSync(art));
+ writeFileSync(resolve(out,'asset-receipt.log'),execFileSync(process.execPath,['tools/asset-production/receipt.mjs',id],{cwd:ROOT,timeout:60000,encoding:'utf8'}));
+ derived=prepare(resolve(out,'private-authority'),permit);
+ const {createGameServer}=await import(pathToFileURL(derived.server));
+ ({visible}=await import(pathToFileURL(resolve(ROOT,'game/core.mjs'))));
+ game=createGameServer({historyPath:null,progressionPath:null,tickMs:1000/60});
+ await new Promise((resolve,reject)=>{game.server.once('error',reject);game.server.listen(0,'127.0.0.1',resolve);});
+ endpoint=`ws://127.0.0.1:${game.server.address().port}`;
+ game.wss.on('connection',socket=>socket.on('message',raw=>{try{const f=JSON.parse(raw);if(['input','host','join','start'].includes(f.type))wire.push({at:new Date().toISOString(),...f});}catch(e){tickError=e;}}));
  launch('host');room=await until('native host',()=>[...game.registry.rooms.values()].find(r=>r.mapId===id&&r.peers.size===1));
  launch('guest',[`--join-room=${room.id}`]);m=await until('native join and source start',()=>room.match);
- assert.equal(m.arena.id,id);assert.equal(m.config.mode,mode);assert.equal(m.actors.filter(a=>!a.bot).length,2);
+  assert.equal(m.arena.id,id);assert.equal(m.config.mode,mode);assert.equal(m.actors.filter(a=>!a.bot).length,2);
+ stage='gameplay';
  const follow=controller();let samples=0,resetSent=false;
  const avoid=[...Object.values(m.flags??{}),...(m.objectiveState?.zones??[])];
  const retreat=avoid.length?m.nav.reduce((best,p)=>Math.min(...avoid.map(q=>distance(p,q)))>Math.min(...avoid.map(q=>distance(best,q)))?p:best,m.nav[0]):null;
@@ -97,21 +100,38 @@ try{
  timer=setInterval(()=>{try{tick();}catch(e){tickError=e;}},50);
  await until('ordinary-input completed round',()=>m.over,720000);
  await until('both native results',()=>peers.every(p=>p.log.includes('CANDIDATE_RESULTS ')),20000);
- const state=assertOutcome(m,mode,respawn);
+  state=assertOutcome(m,mode,respawn);
  if(mode==='puma-race')assert.ok(respawn.countdownObserved,'Native clients must join before countdown completes');
  for(const peer of peers){
   const result=JSON.parse(peer.log.split('\n').find(l=>l.startsWith('CANDIDATE_RESULTS ')).slice('CANDIDATE_RESULTS '.length));
   assert.equal(result.hash,permit.data.geometryHash);assert.equal(result.state.overReason,state.overReason);assert.equal(result.state.winner,state.winner);assert.ok(result.sent>30&&result.ack>0);
  }
  assert.ok(wire.some(f=>f.type==='join'));assert.ok(wire.filter(f=>f.type==='input').length>60);
- success=true;
- writeFileSync(resolve(out,'outcome.json'),JSON.stringify({id,mode,success,accepted:false,geometryHash:permit.data.geometryHash,recipeSha:permit.expectedSha,artSha:sha(readFileSync(art)),derivation:derived.records,respawn,state,classification:'two real native peers; ordinary send_input; no actor/objective writes; public registration unchanged'},null,2));
- console.log('CANDIDATE_HOSTED_OK',id,mode,out);
+  journeyPassed=true;
+}catch(error){
+ failure={stage,kind:String(error).includes('process-failure')?'process-failure':stage==='gameplay'?'game-failed':'startup-failed',message:String(error),stack:error.stack};
 }finally{
- clearInterval(timer);
- for(const p of peers){writeFileSync(resolve(out,p.role+'.log'),p.log);if(!p.closed)p.child.kill('SIGTERM');}
- await Promise.all(peers.map(async p=>{for(let i=0;i<40&&!p.closed;i++)await sleep(50);if(!p.closed){p.child.kill('SIGKILL');await new Promise(r=>p.child.once('close',r));}}));
- for(const socket of game.wss.clients)socket.terminate();await game.close();
- writeFileSync(resolve(out,'wire.json'),JSON.stringify(wire));writeFileSync(resolve(out,'trace.json'),JSON.stringify(trace));
- writeFileSync(resolve(out,'teardown.json'),JSON.stringify({success,accepted:false,peers:peers.map(p=>({role:p.role,pid:p.child.pid,closed:p.closed,code:p.code})),at:new Date().toISOString()}));
+  clearInterval(timer);
+  const peerReports=await shutdownPeers(peers,p=>{
+   const path=resolve(out,p.role+'-controls.json');writeFileSync(path+'.tmp',JSON.stringify({input:{},quit:true}));renameSync(path+'.tmp',path);
+  });
+  let serverError=null;
+  if(game){
+   let timeout;
+   try{
+    const closed=game.server.listening?new Promise(r=>game.server.once('close',r)):Promise.resolve();
+    for(const socket of game.wss.clients)socket.terminate();
+    await Promise.race([Promise.all([game.close(),closed]),new Promise((_,reject)=>{timeout=setTimeout(()=>reject(Error('authority shutdown timeout')),5000);})]);
+   }catch(e){serverError=String(e);}finally{clearTimeout(timeout);}
+  }
+  // close, rather than exit, guarantees the final stdout/stderr chunks arrived.
+  for(const p of peers){writeFileSync(resolve(out,p.role+'.log'),p.log);writeFileSync(resolve(out,p.role+'-stdout.log'),p.stdout);writeFileSync(resolve(out,p.role+'-stderr.log'),p.stderr);}
+  const processFailed=peerReports.some(p=>!p.clean)||serverError!==null;
+  const success=journeyPassed&&!failure&&!processFailed&&peers.length===2;
+  const teardown={success,accepted:false,journeyPassed,processFailed,serverError,peers:peerReports,at:new Date().toISOString()};
+  writeFileSync(resolve(out,'wire.json'),JSON.stringify(wire));writeFileSync(resolve(out,'trace.json'),JSON.stringify(trace));
+  writeFileSync(resolve(out,'teardown.json'),JSON.stringify(teardown,null,2));
+  writeFileSync(resolve(out,'outcome.json'),JSON.stringify({id,mode,success,accepted:false,journeyPassed,processFailed,failure,teardown,geometryHash:permit?.data.geometryHash,recipeSha:permit?.expectedSha,artSha,derivation:derived?.records,respawn,state,classification:'two real native peers; ordinary send_input; no actor/objective writes; public registration unchanged'},null,2));
+  if(success)console.log('CANDIDATE_HOSTED_OK',id,mode,out);
+  else{console.error('CANDIDATE_HOSTED_FAILED',JSON.stringify({failure,teardown}),out);process.exitCode=1;}
 }
