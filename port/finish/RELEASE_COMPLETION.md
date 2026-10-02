@@ -17,15 +17,15 @@ boundaries.
 |---|---|---|
 | Fighting production and native surface review | Astra `ses_f026e25e4ffezp2kvz5VGox7dz` | Complete and merged at `bb02e34b`; nine real rigs/masters and native comparisons; grant B released |
 | Parallax interior production | Astra `ses_f055a6b41ffe42yCL8AxbOL676` | Complete and reviewed at `b66f4ab3`; exact package promotion integrated at `5d33287a`; final-candidate regressions remain |
-| Robot/prop production | Astra `ses_f03a2843bffefDFoP3x1j1cxRO` | Exclusive grant D: real three-skin/six-prop masters, exports, native animation/LOD/placement and package-ready receipts |
+| Robot/prop production | Astra `ses_f03a2843bffefDFoP3x1j1cxRO` | Produced and integrated through `2c39d1ad`; D released; parent art reviewed, package promotion/dependency audit assigned |
 | Fighting camera readability | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing correction merged at `1bff0281`; six parent source checks pass, native four-stage comparison still pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
 | Scenery integration development | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Source-only atomic installation/failure bookkeeping fixes and connected four-chapter walk/shot/workshop verification fixtures |
-| Vehicle integration development | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Source-only connected Puma/Titan/Scout drive/crew/fire/repair/wreck fixtures and evidence-backed attachment fixes |
+| Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Exclusive grant E: complete source journey work, then actual nine masters/exports, native drive/crew/fire/repair/wreck and visual review |
 | Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Source-only executable local/AI/training, throw/tech, input-release and four-stage presentation coverage using actual produced rigs |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Six new gates integrated at `0ffc853c`/`f70355d5`, preserving all original 135 jobs; fresh exact-input ledger required after candidate stabilizes |
-| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Actual Parallax receipt/promotion integrated; six other units still require production; native/export/Windows CI pending |
+| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Actual Parallax promoted; robot promotion and extracted image/import closure in progress under parent authorization; other five units still need production |
 | Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | Prepared v3 pipeline integrated at `2902412b`; nine focused parent tests pass; real capture/edit/install awaits final assets and a later grant |
 
 All workers run in the background, using existing sessions/checkouts. Source work
@@ -35,14 +35,14 @@ are introduced by this directive.
 
 ## Exclusive heavy ownership
 
-**`ROBOT-ASSET-PRODUCTION-20261002-D` belongs to robot Astra
-`ses_f03a2843bffefDFoP3x1j1cxRO`.** Its scope is the robots unit: real Blender
-masters/exports and independent reopen, native role/prop/LOD/animation/placement
-review, integration hooks and actual package-ready receipts. Grant C explicitly
-released at `2026-10-02T22:23:17.018270Z`, with zero remaining owned processes
-across sixteen groups. Its Parallax and five light checks are integrated. A and B
-also explicitly released. Vehicles/scenery/maps await later grants; D does not
-grant an unbounded multi-unit batch.
+**`VEHICLE-ASSET-PRODUCTION-20261002-E` belongs to vehicle Astra
+`ses_f03440966ffeBzmLZZ3UkR4Oi7`.** Its scope is the vehicles unit: pre-build
+fallback proof, nine real masters/exports and independent reopen, native source/
+attachment/LOD/team/weather checks, connected gameplay and visual review, plus
+actual package-ready receipts. Robot D explicitly released at
+`2026-10-02T23:24:34.512076Z`, with zero remaining owned processes across 44 groups.
+Its assets and hooks are integrated. A/B/C also explicitly released. Scenery/maps
+await later grants; E does not grant an unbounded multi-unit batch.
 
 No other agent may run Godot, Blender, imports, rendering, audio capture or encoding
 before explicit teardown/release and a new grant. Asset integration, gameplay
@@ -489,3 +489,37 @@ while D uses them. No engine, Blender, import, render, encoder or authority jour
 is authorized for these source tasks. Native fixtures remain unaccepted until
 later explicit execution. Robot D remains the sole heavy owner; source development
 reduces the work left for subsequent vehicle/scenery/fighting native passes.
+
+## Robots delivered; vehicle production E
+
+Robot `3b6a3e79`, shared `93622961`, and receipt `8aeb610b` are integrated as
+`591e7354`, `536bd357`, `2c39d1ad`. Nine runtime GLBs contain three articulated
+three-LOD skins and six props; nine editable masters and three skeletal references
+are committed. Aggregate runtime geometry is 75,056 triangles / 6,382,544 bytes.
+Campaign/Horde deterministically select the three role skins; identity rebuilds
+retain opt-in, and six shallow Emberline fixtures preserve existing collision.
+The shared hook commit is integrated together with its hash-pinned asset contract.
+
+Retained D native results: 60,593 checks, 4,320 stock/new joint comparisons,
+51,168 Campaign and 86,016 Horde actual imported-sample targeting probes. Three
+controlled production-authority replay captures show source damage/death/artillery
+events; these do not establish hosted ordinary-input completion. Parent reran six
+robot contracts, actual export receipt validation and exact recipe serialization.
+Parent inspected anatomy, six props and all six production mounts and accepts the
+bounded produced art for integration.
+
+Gallery: **http://100.125.104.79:8796/native-robots-d/** — nine byte-identical files
+(1,965,013 bytes), all HTTP/hash verified. The animation movie uses 120 captures
+over 21.637081s and is labeled llvmpipe/controlled evidence, not hardware performance.
+
+Robot package receipt exists but is not yet promoted. Its output/source/runtime
+identities match the parent; one supporting verifier hash changed legitimately
+with the earlier Parallax closure. Packaging is authorized to reconcile that
+input, audit the actual extracted PNG/import dependencies and promote only robots
+after strict validation, preserving previous receipt identity. Scenery's active
+source owner received the exact four-line terrain workshop hook to preserve.
+
+Grant E now belongs to the vehicle owner. It extends that owner's source journey
+work into actual production at a safe committed boundary; fighting and scenery
+development remain source-only. No Windows export or final release attestation
+follows from the robot integration.
