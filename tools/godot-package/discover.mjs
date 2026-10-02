@@ -4,6 +4,8 @@ import {SourceTextModule} from 'node:vm';
 import {readFileSync, existsSync} from 'node:fs';
 import {resolve, dirname, relative} from 'node:path';
 import {isBuiltin} from 'node:module';
+import {pathToFileURL} from 'node:url';
+import {worldClosure} from './world_closure.mjs';
 const root = resolve(process.argv[2]);
 const hordeAdapters = ['port/native-horde/authority.mjs', 'port/native-horde/input-buffer.mjs', 'port/native-horde/cinderwake-schema.mjs', 'port/native-horde/robot-roles.mjs', 'port/native-horde/blackwater-schema.mjs', 'port/native-horde/blackwater-director.mjs'];
 // Reviewed port-owned runtime inputs only. New helpers require a manifest edit.
@@ -38,7 +40,6 @@ const nativeArenaData = ['prism-foundry','aurora-basin','cinder-array']
   .map(id => `godot/native_arenas/generated/${id}.json`);
 const identityArenaData = ['lacuna-court','vermilion-fold','nacre-engine','canopy-divide','basalt-reach']
   .map(id => `godot/identity_maps/generated/${id}.json`);
-const worldData = ['switchyard-ward','rainmarket-exchange','breakwater-exchange','thermal-divide','sirocco-circuit','copper-bowl','tern-archipelago'].map(id => `godot/multiplayer_worlds/generated/${id}.json`);
 function discover(entry) {
   const pending = [entry], modules = {}, external = new Set();
   while (pending.length) {
@@ -70,6 +71,7 @@ const campaignEntry = campaignAdapters[0];
 const campaign = existsSync(resolve(root, campaignEntry)) ? discover(campaignEntry) : null;
 const worldEntry = 'port/multiplayer-worlds/derived/game-server.mjs';
 const worlds = existsSync(resolve(root, worldEntry)) ? discover(worldEntry) : null;
+const worldData = worlds ? worldClosure((await import(pathToFileURL(resolve(root, 'port/multiplayer-worlds/catalog.mjs')))).WORLDS) : [];
 const campaignDataFiles = campaign ? ['rootfall-verge','siltwake-crossing','emberline-ascent','crown-array']
   .map(id => `godot/campaign/generated/${id}.json`) : [];
 const all = {...ordinary.modules, ...horde.modules, ...nativeArena?.modules, ...identityZones?.modules, ...campaign?.modules, ...worlds?.modules};
