@@ -97,6 +97,18 @@ coherent player-visible batch, then verify it through actual lifecycle journeys.
   wide/compact layouts across supported route families. New runtime data
   `godot/experience/public_event_types.json` needs parent package-closure review.
   Implementation remains isolated pending its native slot.
+- **Experience runner — `84b91928`:** executable two-player/late-spectator
+  harness and native drivers now cover four route families, zero spectator
+  input packets (including neutral), public information, camera/modal/focus/seat
+  transitions and recorded source damage/death stages. Six Node process/cleanup
+  tests passed; all graphical commands remain unexecuted. Mode uses Retry-seat;
+  other routes use their supported Home/rejoin flow. Sports skips unsupported
+  infantry damage stages.
+- Parent confirmed the competitive subclass still assigns a fixed camera pose
+  after every spectator snapshot. Experience has resumed source/code-only work
+  to remove that ownership conflict and exercise the actual subclass callback
+  in its prepared native regression. This is a fix in progress, not accepted
+  native continuity. Foundry retains the heavy slot.
 
 ## Parent follow-up
 
