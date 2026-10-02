@@ -118,6 +118,10 @@ coherent player-visible batch, then verify it through actual lifecycle journeys.
 
 ## Parent follow-up
 
+The owner's later request launched [six additional Astra lanes](../expansion-three/WORKSTREAM.md).
+Blackwater mission-flow/completion work is now explicitly assigned to that Horde
+lane; current second-pass ownership and native acceptance obligations continue.
+
 Retain the full Blackwater machinery/Warden and cinematic-trailer gaps. They
 require explicit engine time after current production work; prior wave-one video
 and bounded losses do not prove mission-chain completion. Preserve previous

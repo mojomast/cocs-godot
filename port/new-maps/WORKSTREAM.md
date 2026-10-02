@@ -1,5 +1,9 @@
 # Three new Blender-authored complex multiplayer maps
 
+An additional owner-requested fan-out now includes **Vesper Viaduct**, **Abyssal
+Pressureworks**, and a robot/prop asset ensemble in a [separate workstream](../expansion-three/WORKSTREAM.md).
+The three original maps and their revision/acceptance queue below remain active.
+
 Owner requests another explicit Astra fan-out to design and build **brand-new,
 very complex and unique maps using Blender**. Three `openai/gpt-6-astra` agents
 start from `4ae4e5b7` in isolated worktrees. This map workstream runs alongside
