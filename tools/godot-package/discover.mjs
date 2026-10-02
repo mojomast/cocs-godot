@@ -4,6 +4,8 @@ import {SourceTextModule} from 'node:vm';
 import {readFileSync, existsSync} from 'node:fs';
 import {resolve, dirname, relative} from 'node:path';
 import {isBuiltin} from 'node:module';
+import {pathToFileURL} from 'node:url';
+import {worldClosure} from './world_closure.mjs';
 const root = resolve(process.argv[2]);
 const hordeAdapters = ['port/native-horde/authority.mjs', 'port/native-horde/input-buffer.mjs', 'port/native-horde/cinderwake-schema.mjs', 'port/native-horde/robot-roles.mjs', 'port/native-horde/blackwater-schema.mjs', 'port/native-horde/blackwater-director.mjs'];
 // Reviewed port-owned runtime inputs only. New helpers require a manifest edit.
@@ -28,7 +30,8 @@ const campaignAdapters = ['authority','maps','match','missions','enemies','story
 const worldAdapters = ['catalog','match','derived/core','derived/payload','derived/room','derived/rooms','derived/game-server']
   .map(name => `port/multiplayer-worlds/${name}.mjs`);
 const edgeAdapters = ['port/edge-effects/structure-rays.mjs'];
-const adapters = [...edgeAdapters, ...hordeAdapters, ...nativeArenaAdapters, ...debugAdapters,
+const challengeAdapters = ['port/pass-two/modes/challenge-authority.mjs'];
+const adapters = [...challengeAdapters, ...edgeAdapters, ...hordeAdapters, ...nativeArenaAdapters, ...debugAdapters,
   ...localRosterAdapters, ...identityZoneAdapters, ...campaignAdapters, ...worldAdapters];
 // Explicit dynamic data-read manifest: the builder hashes committed bytes and
 // copies these paths under runtime/, preserving catalog.mjs URL resolution.
@@ -38,7 +41,6 @@ const nativeArenaData = ['prism-foundry','aurora-basin','cinder-array']
   .map(id => `godot/native_arenas/generated/${id}.json`);
 const identityArenaData = ['lacuna-court','vermilion-fold','nacre-engine','canopy-divide','basalt-reach']
   .map(id => `godot/identity_maps/generated/${id}.json`);
-const worldData = ['switchyard-ward','rainmarket-exchange','breakwater-exchange','thermal-divide','sirocco-circuit','copper-bowl','tern-archipelago'].map(id => `godot/multiplayer_worlds/generated/${id}.json`);
 function discover(entry) {
   const pending = [entry], modules = {}, external = new Set();
   while (pending.length) {
@@ -60,6 +62,7 @@ function discover(entry) {
   return {modules, external:[...external].sort()};
 }
 const ordinary = discover('server/game-server.mjs'), horde = discover(hordeAdapters[0]);
+const challenges = existsSync(resolve(root, challengeAdapters[0])) ? discover(challengeAdapters[0]) : null;
 const nativeArenaEntry = nativeArenaAdapters[0];
 // During parallel implementation the entry may be absent; an existing entry
 // must have a complete static closure. Data existence is checked by the builder.
@@ -70,9 +73,10 @@ const campaignEntry = campaignAdapters[0];
 const campaign = existsSync(resolve(root, campaignEntry)) ? discover(campaignEntry) : null;
 const worldEntry = 'port/multiplayer-worlds/derived/game-server.mjs';
 const worlds = existsSync(resolve(root, worldEntry)) ? discover(worldEntry) : null;
+const worldData = worlds ? worldClosure((await import(pathToFileURL(resolve(root, 'port/multiplayer-worlds/catalog.mjs')))).WORLDS) : [];
 const campaignDataFiles = campaign ? ['rootfall-verge','siltwake-crossing','emberline-ascent','crown-array']
   .map(id => `godot/campaign/generated/${id}.json`) : [];
-const all = {...ordinary.modules, ...horde.modules, ...nativeArena?.modules, ...identityZones?.modules, ...campaign?.modules, ...worlds?.modules};
+const all = {...ordinary.modules, ...horde.modules, ...nativeArena?.modules, ...identityZones?.modules, ...campaign?.modules, ...worlds?.modules, ...challenges?.modules};
 const edgeDataFiles = Object.hasOwn(all, edgeAdapters[0]) ? ['port/edge-effects/structure-faces.json'] : [];
 const dataFiles = nativeArena ? nativeArenaData : [];
 const identityDataFiles = nativeArena || identityZones ? identityArenaData : [];
@@ -96,7 +100,7 @@ console.log(JSON.stringify({entry:'server/game-server.mjs', hordeEntry:hordeAdap
     ...(hordeDataFiles.includes('godot/horde_maps/generated/blackwater-reclamation.json') ? [['port/native-horde/blackwater-schema.mjs', ['godot/horde_maps/generated/blackwater-reclamation.json']]] : []),
     ...(worlds ? [['port/multiplayer-worlds/catalog.mjs',worldData]] : []),
   ]),
-  routes:{ordinary:Object.keys(ordinary.modules).sort(), horde:Object.keys(horde.modules).sort(), nativeArena:Object.keys(nativeArena?.modules ?? {}).sort(),
+  routes:{ordinary:Object.keys(ordinary.modules).sort(), challenges:Object.keys(challenges?.modules ?? {}).sort(), horde:Object.keys(horde.modules).sort(), nativeArena:Object.keys(nativeArena?.modules ?? {}).sort(),
     identityZones:Object.keys(identityZones?.modules ?? {}).sort(), campaign:Object.keys(campaign?.modules ?? {}).sort(), worlds:Object.keys(worlds?.modules ?? {}).sort()},
   nativeArenaAdditionalSource:Object.keys(nativeArena?.modules ?? {}).filter(p=>!adapters.includes(p) && !Object.hasOwn(ordinary.modules,p)).sort(),
   identityZoneAdditionalSource:Object.keys(identityZones?.modules ?? {}).filter(p=>!adapters.includes(p) && !Object.hasOwn(ordinary.modules,p) && !Object.hasOwn(horde.modules,p)).sort(),

@@ -1,0 +1,330 @@
+{
+  "schemaVersion": 1,
+  "pack": "campaign-biome-expansion-four",
+  "recipeSha256": "e8aea379d5d12de3b2566f2af5b5a0312bcc5db3f4847c258c19294a93a8f577",
+  "collision": "none; retain all original facade triangles, frames, props and IDs",
+  "materialAllowlist": [
+    "biome4_bark",
+    "biome4_moss",
+    "biome4_sandstone",
+    "biome4_silt",
+    "biome4_basalt",
+    "biome4_copper",
+    "biome4_ceramic",
+    "biome4_iron"
+  ],
+  "lodDistance": 85,
+  "chapters": {
+    "rootfall-verge": {
+      "geometryHash": "e45bf33d629e187b5679fc859451dcc18c35275ca93d8b25a5f77424cca0bddf",
+      "recipeSha256": "415d1c1aaee9ac7a7dbe486617e6b0bf174821c8ac83d4723de445ee52e95969",
+      "placements": [
+        {
+          "asset": "rootfall-canopy-relay",
+          "block": "interlude-canopy-nursery-rib-2",
+          "role": "hero",
+          "origin": [
+            -101.78779,
+            10.57388273055,
+            -21.13764
+          ],
+          "scale": [
+            2.5,
+            9.53278726945,
+            3
+          ],
+          "lodTriangles": [
+            404,
+            324
+          ],
+          "materials": [
+            "bark",
+            "copper",
+            "moss"
+          ]
+        },
+        {
+          "asset": "rootfall-root-archive",
+          "block": "landmark-2-Root archive",
+          "role": "support",
+          "origin": [
+            147.95716,
+            7.4022586468,
+            -22.62768
+          ],
+          "scale": [
+            5,
+            2.7856613532,
+            3
+          ],
+          "lodTriangles": [
+            608,
+            488
+          ],
+          "materials": [
+            "bark",
+            "copper"
+          ]
+        },
+        {
+          "asset": "rootfall-root-buttress",
+          "block": "interlude-nursery-nursery-rib-1",
+          "role": "support",
+          "origin": [
+            24.12277,
+            7.853951387799997,
+            -49.72377
+          ],
+          "scale": [
+            2.5,
+            8.520768612200003,
+            3
+          ],
+          "lodTriangles": [
+            484,
+            404
+          ],
+          "materials": [
+            "bark",
+            "copper"
+          ]
+        }
+      ]
+    },
+    "siltwake-crossing": {
+      "geometryHash": "3404e8bf56badeefe197351e9cb6f8d81146cbd96547026fa7209258093c62a7",
+      "recipeSha256": "7f9512a16b1006da79811177892b7ee289fdc28ab2040a4712a5cff5600c736e",
+      "placements": [
+        {
+          "asset": "siltwake-strata-wheelhouse",
+          "block": "interlude-waterwheel-wheel-house",
+          "role": "hero",
+          "origin": [
+            -8.9043,
+            23.88970528985,
+            57.74916
+          ],
+          "scale": [
+            8,
+            14.483384710149998,
+            5
+          ],
+          "lodTriangles": [
+            1776,
+            1132
+          ],
+          "materials": [
+            "sandstone",
+            "copper",
+            "iron",
+            "silt"
+          ]
+        },
+        {
+          "asset": "siltwake-sluice-bank",
+          "block": "interlude-waterwheel-dry-berth-left",
+          "role": "support",
+          "origin": [
+            -19.74086,
+            21.7120411964,
+            69.26302
+          ],
+          "scale": [
+            3,
+            5.182518803599997,
+            5
+          ],
+          "lodTriangles": [
+            684,
+            600
+          ],
+          "materials": [
+            "sandstone",
+            "iron",
+            "copper"
+          ]
+        },
+        {
+          "asset": "siltwake-flood-abutment",
+          "block": "interlude-waterwheel-dry-berth-right",
+          "role": "support",
+          "origin": [
+            6.67327,
+            16.732855063449996,
+            55.04002
+          ],
+          "scale": [
+            3,
+            6.481664936550004,
+            5
+          ],
+          "lodTriangles": [
+            544,
+            460
+          ],
+          "materials": [
+            "sandstone",
+            "silt",
+            "iron"
+          ]
+        }
+      ]
+    },
+    "emberline-ascent": {
+      "geometryHash": "7fa1666dc7d0a238a77eadf01db44574dd5bbf93f00154cd1252b103d08d6421",
+      "recipeSha256": "4cc4a3ab87bfeba1f5406cbc937bb73de553f31325e37471e32ca63e04812840",
+      "placements": [
+        {
+          "asset": "emberline-heatshield-tower",
+          "block": "interlude-condenser-cooling-fin-2",
+          "role": "hero",
+          "origin": [
+            -138,
+            47.20084000000001,
+            -73
+          ],
+          "scale": [
+            3,
+            15.057369999999992,
+            5
+          ],
+          "lodTriangles": [
+            576,
+            408
+          ],
+          "materials": [
+            "basalt",
+            "copper",
+            "iron"
+          ]
+        },
+        {
+          "asset": "emberline-basalt-terrace",
+          "block": "basalt-uplink-0-3",
+          "role": "support",
+          "origin": [
+            -126,
+            35.95624,
+            5
+          ],
+          "scale": [
+            3,
+            12.321579999999997,
+            3
+          ],
+          "lodTriangles": [
+            440,
+            272
+          ],
+          "materials": [
+            "basalt",
+            "copper",
+            "iron"
+          ]
+        },
+        {
+          "asset": "emberline-ceramic-exhaust",
+          "block": "interlude-foundry-cooling-fin-3",
+          "role": "support",
+          "origin": [
+            93.94019,
+            54.788191716899995,
+            46.83855
+          ],
+          "scale": [
+            3,
+            18.7985182831,
+            5
+          ],
+          "lodTriangles": [
+            588,
+            420
+          ],
+          "materials": [
+            "basalt",
+            "copper",
+            "iron",
+            "ceramic"
+          ]
+        }
+      ]
+    },
+    "crown-array": {
+      "geometryHash": "8d6ace0fcda6470d5e2fd656ee0eab3936fc2e6a5c273021a5116df4d2c62d3e",
+      "recipeSha256": "3dd834a233a400c8cfd6c48073bcae45a33de973ca63ceb87cac38f8f010b0e6",
+      "placements": [
+        {
+          "asset": "crown-faceted-antenna",
+          "block": "interlude-choir-choir-pier-2",
+          "role": "hero",
+          "origin": [
+            71.97725,
+            71.046267943275,
+            -57.56038
+          ],
+          "scale": [
+            2.5,
+            16.075352056724995,
+            3
+          ],
+          "lodTriangles": [
+            548,
+            508
+          ],
+          "materials": [
+            "ceramic",
+            "iron",
+            "copper"
+          ]
+        },
+        {
+          "asset": "crown-ceramic-lightwell",
+          "block": "interlude-garden-choir-pier-2",
+          "role": "support",
+          "origin": [
+            83.84082,
+            74.07402301652502,
+            66.96981
+          ],
+          "scale": [
+            2.5,
+            17.074366983474988,
+            3
+          ],
+          "lodTriangles": [
+            436,
+            396
+          ],
+          "materials": [
+            "ceramic",
+            "copper"
+          ]
+        },
+        {
+          "asset": "crown-folio-archive",
+          "block": "court-buttress-2--1",
+          "role": "support",
+          "origin": [
+            -73.56212,
+            64.2171953544,
+            90.25469
+          ],
+          "scale": [
+            3,
+            10.27347464559999,
+            5
+          ],
+          "lodTriangles": [
+            580,
+            372
+          ],
+          "materials": [
+            "ceramic",
+            "iron",
+            "copper"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "version": 1,
+  "geometry_hash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+  "mounts": [
+    {
+      "id": "polar-frost--1--12",
+      "host": "polar-hall-side--1--1",
+      "story": "Localized frost above the spectrometer, away from the supported floor."
+    },
+    {
+      "id": "polar-optics--1--12",
+      "host": "polar-hall-side--1--1",
+      "story": "Calibration readout inside the real radial spectrometer hub."
+    },
+    {
+      "id": "polar-frost--1-12",
+      "host": "polar-hall-side--1-1",
+      "story": "Localized frost above the spectrometer, away from the supported floor."
+    },
+    {
+      "id": "polar-optics--1-12",
+      "host": "polar-hall-side--1-1",
+      "story": "Calibration readout inside the real radial spectrometer hub."
+    },
+    {
+      "id": "polar-frost-1--12",
+      "host": "polar-hall-side-1--1",
+      "story": "Localized frost above the spectrometer, away from the supported floor."
+    },
+    {
+      "id": "polar-optics-1--12",
+      "host": "polar-hall-side-1--1",
+      "story": "Calibration readout inside the real radial spectrometer hub."
+    },
+    {
+      "id": "polar-frost-1-12",
+      "host": "polar-hall-side-1-1",
+      "story": "Localized frost above the spectrometer, away from the supported floor."
+    },
+    {
+      "id": "polar-optics-1-12",
+      "host": "polar-hall-side-1-1",
+      "story": "Calibration readout inside the real radial spectrometer hub."
+    },
+    {
+      "id": "polar-sector--12",
+      "host": "polar-hall-side--1--1",
+      "story": "Sector label below the data band, clear of the four actual portals."
+    },
+    {
+      "id": "polar-sector-12",
+      "host": "polar-hall-side--1-1",
+      "story": "Sector label below the data band, clear of the four actual portals."
+    },
+    {
+      "id": "calibrator--1--78",
+      "host": "meridian-calibrator--1--78",
+      "story": "Mounted diagnostic panel on the actual source-solid calibration pedestal."
+    },
+    {
+      "id": "calibrator--1--18",
+      "host": "meridian-calibrator--1--18",
+      "story": "Mounted diagnostic panel on the actual source-solid calibration pedestal."
+    },
+    {
+      "id": "calibrator--1-18",
+      "host": "meridian-calibrator--1-18",
+      "story": "Mounted diagnostic panel on the actual source-solid calibration pedestal."
+    },
+    {
+      "id": "calibrator--1-78",
+      "host": "meridian-calibrator--1-78",
+      "story": "Mounted diagnostic panel on the actual source-solid calibration pedestal."
+    },
+    {
+      "id": "calibrator-1--78",
+      "host": "meridian-calibrator-1--78",
+      "story": "Mounted diagnostic panel on the actual source-solid calibration pedestal."
+    },
+    {
+      "id": "calibrator-1--18",
+      "host": "meridian-calibrator-1--18",
+      "story": "Mounted diagnostic panel on the actual source-solid calibration pedestal."
+    },
+    {
+      "id": "calibrator-1-18",
+      "host": "meridian-calibrator-1-18",
+      "story": "Mounted diagnostic panel on the actual source-solid calibration pedestal."
+    },
+    {
+      "id": "calibrator-1-78",
+      "host": "meridian-calibrator-1-78",
+      "story": "Mounted diagnostic panel on the actual source-solid calibration pedestal."
+    },
+    {
+      "id": "coastal-salt--66",
+      "host": "institute-wing--66--10",
+      "story": "Salt-spray footing along the exposed institute facade."
+    },
+    {
+      "id": "coastal-salt--18",
+      "host": "institute-wing--18--10",
+      "story": "Salt-spray footing along the exposed institute facade."
+    },
+    {
+      "id": "coastal-salt-84",
+      "host": "institute-wing-84--10",
+      "story": "Salt-spray footing along the exposed institute facade."
+    },
+    {
+      "id": "coastal-salt-82",
+      "host": "institute-wing-82-10",
+      "story": "Salt-spray footing along the exposed institute facade."
+    },
+    {
+      "id": "archive-entry-west",
+      "host": "ephemeris-vault-jamb--1--1",
+      "story": "Approach label mounted entirely on a source-solid jamb; axial opening remains clear."
+    },
+    {
+      "id": "archive-entry-east",
+      "host": "ephemeris-vault-jamb--1-1",
+      "story": "Approach label mounted entirely on a source-solid jamb; axial opening remains clear."
+    },
+    {
+      "id": "pump-entry-west",
+      "host": "tidal-pump-vault-jamb--1--1",
+      "story": "Lower-tier pump identification on the outer approach jamb."
+    },
+    {
+      "id": "pump-entry-east",
+      "host": "tidal-pump-vault-jamb--1-1",
+      "story": "Lower-tier pump identification on the outer approach jamb."
+    },
+    {
+      "id": "arrival-route--114",
+      "host": "district-baffle--1",
+      "story": "Useful arrival route/altitude sign on the solid district baffle."
+    },
+    {
+      "id": "arrival-route-114",
+      "host": "district-baffle-1",
+      "story": "Useful arrival route/altitude sign on the solid district baffle."
+    },
+    {
+      "id": "north-wayfinding",
+      "host": "institute-wing--66--10",
+      "story": "Upper-tier wayfinding on the actual institute wing."
+    },
+    {
+      "id": "south-wayfinding",
+      "host": "institute-wing-82-10",
+      "story": "Lower-tier wayfinding on the actual institute wing."
+    },
+    {
+      "id": "pump-mineral-sill--1-0",
+      "host": "tidal-pump-vault-wall--1",
+      "story": "Localized mineral film on continuous source-solid pump sill."
+    },
+    {
+      "id": "pump-mineral-sill--1-1",
+      "host": "tidal-pump-vault-wall--1",
+      "story": "Localized mineral film on continuous source-solid pump sill."
+    },
+    {
+      "id": "pump-mineral-sill--1-2",
+      "host": "tidal-pump-vault-wall--1",
+      "story": "Localized mineral film on continuous source-solid pump sill."
+    },
+    {
+      "id": "pump-mineral-sill-1-0",
+      "host": "tidal-pump-vault-wall-1",
+      "story": "Localized mineral film on continuous source-solid pump sill."
+    },
+    {
+      "id": "pump-mineral-sill-1-1",
+      "host": "tidal-pump-vault-wall-1",
+      "story": "Localized mineral film on continuous source-solid pump sill."
+    },
+    {
+      "id": "pump-mineral-sill-1-2",
+      "host": "tidal-pump-vault-wall-1",
+      "story": "Localized mineral film on continuous source-solid pump sill."
+    }
+  ]
+}

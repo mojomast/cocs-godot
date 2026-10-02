@@ -112,6 +112,13 @@ func consume(items: Array, actor: int = -1, team: Variant = null, ready: bool = 
 		if not ready: continue
 		var kind := str(event.get("type", ""))
 		var local: bool = actor >= 0 and event.get("actor") == actor
+		if kind == "enemy-telegraph":
+			# Keep source kind/position and wire identity together. Captions remain
+			# owned by caption_model; this descriptor never invents an attack.
+			out.append({"id":id, "type":kind, "kind":event.get("kind", "generic"),
+				"actor":event.get("actor"), "from":event.get("from", event.get("pos", {"x":event.get("x"), "z":event.get("z")})),
+				"time":event.get("time"), "duration":event.get("duration"), "local":local})
+			continue
 		if kind == "vehicle-damage":
 			# Event actor is the ATTACKER, not the rider. Match the snapshot seat.
 			if local_vehicle == null or event.get("vehicle") != local_vehicle: continue

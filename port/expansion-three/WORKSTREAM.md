@@ -6,6 +6,10 @@ start from `27cfaa14` in isolated branches. Their common contract is [BRIEF.md](
 This expands ongoing work; it does not replace the second feature pass or the
 three original new maps.
 
+A subsequent owner request added [six further lanes](../expansion-four/WORKSTREAM.md)
+for vehicle/scenery assets, a racing map, replay, remappable controls and cinematic
+refresh. Ownership and acceptance obligations in this workstream continue.
+
 ## Active lanes
 
 | Lane | Agent | Branch | Deliverable |

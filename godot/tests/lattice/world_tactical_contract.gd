@@ -100,6 +100,11 @@ func run() -> void:
 	check(hud.objective_card.get_rect().end.x < hud.status_card.position.x and hud.status_card.get_rect().end.x <= 760, "compact cards fit without overlap")
 	# 150% interface scale shrinks the logical rect to ~507x347; the two cards
 	# must reflow into a stack and the ribbon must still fit.
+	client.projection.nodes = [{"id":"front","x":10,"z":0,"progress":[0.625,0.2],"contested":true}]
+	var failed_actions: Array = [{"cardId":"latest-hold","kind":"hold","target":"front-0","roundRev":2,"status":"rejected","reason":"target"}]
+	hud.present(client.projection, target, topology, state.actors[0], failed_actions, "", "engaged")
+	check(hud.objective.text.contains("CONTESTED · CAPTURE 63%") and hud.receipt.text.contains("REFUSED"), "source capture progress and latest HOLD failure appear together")
+	check(hud.control_hint.text.contains("PICK A LEGAL ADJACENT NODE"), "rejected order has source recovery instruction")
 	var logical: Vector2 = await resize_hud(Vector2i(760, 520), 1.5)
 	var left: Rect2 = hud.objective_card.get_rect()
 	var right: Rect2 = hud.status_card.get_rect()

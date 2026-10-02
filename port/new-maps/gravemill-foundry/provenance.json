@@ -1,0 +1,114 @@
+{
+  "id": "gravemill-foundry",
+  "revision": 3,
+  "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+  "recipeHash": "3c7f9242bb7c98000871b27d58d14c719a4867e1a9fc625b106c97f7c1c608eb",
+  "seed": 1196573014,
+  "masterReopen": {
+    "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+    "objects": 7103,
+    "materials": 9,
+    "cameras": 8
+  },
+  "assets": [
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/gravemill-foundry.blend",
+      "sha256": "c7a7551cd45bae86f3d1adf62744c4dfae96f9ad8dc6d3960ba1909e4a4dc3fa",
+      "bytes": 40527432
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+      "sha256": "46bf1648b32d23e337cd11b2c639a47f17d36c41361aab9434e1e621361e5935",
+      "bytes": 3744260
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/gravemill-foundry.glb.import",
+      "sha256": "bc801a8d95dfc118ed9e791b7b0294fa11839ff92aea06d8d80f7326acade720",
+      "bytes": 1087
+    },
+    {
+      "path": "godot/multiplayer_worlds/generated/gravemill-foundry.json",
+      "sha256": "172c94a271b49782f1a29ff89c4812a717ba6b4f9050ade8ea21546f0f875932",
+      "bytes": 540672
+    },
+    {
+      "path": "godot/tests/new_maps/gravemill_foundry/probes.json",
+      "sha256": "64c98db3af6d79db85ccca14613fc898b218bd2d5c55033d034812ebbdb0ebdb",
+      "bytes": 49029
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision3/recipe.mjs",
+      "sha256": "1d5edf7960dccf83599953c24fe269180e827aa9e3e4ee8b21f44afb25454391",
+      "bytes": 5569
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision3/author.py",
+      "sha256": "6d3f9ddfc26c20658c62e97cc8c2483cc55fd4bebc62b9a542e13c51827ed033",
+      "bytes": 5480
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/checkpoint-recipe.mjs",
+      "sha256": "86ed24fd5ebf164b4a1e9301bfa29fa79b57c6aaea7e86ed341e7e01ffbfff5f",
+      "bytes": 11044
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/checkpoint-blender.py",
+      "sha256": "8fdeeff29e62bcce474ef5cf42fa5dbb6a4c47e8d4c750837bdc1fc6952d3cc4",
+      "bytes": 20243
+    }
+  ],
+  "checkpoint": {
+    "commits": [
+      "afbe57dc",
+      "ec041aee"
+    ],
+    "archive": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/checkpoint-afbe57dc",
+    "manifest": [
+      {
+        "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/gravemill-foundry.blend",
+        "sha256": "7127a15071532fdf33d02659a53cf5d0f5c86b888d0e71e68183fb2304d6269a",
+        "bytes": 37091764
+      },
+      {
+        "path": "godot/multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "sha256": "2e610753f2d88ef947a2257f3e6311f6c2999350cf41dbbd9020f9e459450eac",
+        "bytes": 3556916
+      },
+      {
+        "path": "godot/multiplayer_worlds/generated/gravemill-foundry.json",
+        "sha256": "65c659a6ac9fda35917680402c8731622431a48be87efa5fa71a5f5b07376b33",
+        "bytes": 491937
+      },
+      {
+        "path": "godot/multiplayer_worlds/generated/gravemill-foundry-probes.json",
+        "sha256": "e54a4d64f606933a0c05dc98f72184a2a7158173077d082514d34d3231204a64",
+        "bytes": 68983
+      },
+      {
+        "path": "port/native-multiplayer-worlds/worlds/gravemill-foundry.json",
+        "sha256": "8c065b4f47c5fa67937338367cf030e4e0ff95fdc6a743483cc9127aa5ca1678",
+        "bytes": 491358
+      }
+    ],
+    "proofArchiveSha256": "8ab491fc71d4f25f254e2cabe0e6385a6dca8abffd223d26bb5a329c77f0bbd3"
+  },
+  "sourceModules": [
+    {
+      "path": "game/core.mjs",
+      "sha256": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9"
+    },
+    {
+      "path": "game/terrain.mjs",
+      "sha256": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c"
+    },
+    {
+      "path": "game/vehicles.mjs",
+      "sha256": "e55dbed9969a9f4430b0471fefb4d294fddf0e75d8af853565c9361c106244db"
+    },
+    {
+      "path": "port/multiplayer-worlds/derived/core.mjs",
+      "sha256": "090d353ed616b1edbbd3053734bc092ed24444bdd1abfdca02293cab4aacf841"
+    }
+  ],
+  "evidence": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production"
+}

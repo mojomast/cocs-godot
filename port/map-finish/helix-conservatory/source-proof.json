@@ -1,0 +1,2405 @@
+{
+  "status": "source-ready-native-review-pending",
+  "geometry_hash": "f068d1abe262907659f1f02205e2bf56b7c5dbe298191f66d008b420965fa9b2",
+  "glb_sha256": "0c462ffa475f02aa388101c38339d6d81eb3df9549a7d664ca65ec390c802d88",
+  "seed": 610022,
+  "profile_sha256": "87b7e80de33c0fcd4f589bf850f5b2684e1e4c8a493a489c520a7ae81ea05194",
+  "variation_contract": "BRIEF.md; local bounds checked; shared validator must pass after rendering-owner integration",
+  "counts": {
+    "material_variants": 9,
+    "panels": 46,
+    "signs": 13,
+    "motes": 48
+  },
+  "matched_materials": [
+    "verdigris",
+    "soil",
+    "stone",
+    "ceramic",
+    "brick",
+    "gold",
+    "solar",
+    "leaflight",
+    "botanical"
+  ],
+  "preserved_materials": [
+    "glass"
+  ],
+  "unmatched_materials": [],
+  "resources": {
+    "res://moth/generated/textures/metal-oxide.png": "82ac59a91f7be9a0fd4182a8b83d7b2b7cf07d7bb6e98ae5b5ff006eedcb8257",
+    "res://moth/derived/data/metal-oxide.png": "da3cd588f2f813ea41eff828feea084fb12b83fabff8ef6632b4f6583907cb08",
+    "res://moth/derived/normals/metal-oxide.png": "ea314cc8916d9e1734b8b7a17c40e2c2e28861385dd8db5e460dd7c9a47c3033",
+    "res://moth/generated/materials/entanglement-void-r.png": "cae2038e38c16d09daff4ca70ccdaf929cd1d343ff2ba26bc9430b13a4589757",
+    "res://moth/generated/materials/entanglement-void-t.png": "31e579b975d3f691455245c2140e8f911d2f5d0afc09de2c264c9c0f423a90c9",
+    "res://moth/generated/textures/sand.png": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96",
+    "res://moth/derived/data/sand.png": "d8cb046449243f2817c8771aec533ca70aafa0b26e7fde64ef3a04f98ac536ca",
+    "res://moth/generated/normals/sand.png": "f18caa13e18e025fffe0652a15746fb61a0f3ef7f6518dee34d40f56772893e0",
+    "res://moth/generated/textures/weathered_concrete.png": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550",
+    "res://moth/derived/data/weathered_concrete.png": "75af09daa0a49fb90419f9c23e68b1c8ebac0c082a7f90c5d84f2983b49a7951",
+    "res://moth/generated/normals/weathered_concrete.png": "97343f9f55fe9e00421cb91b754a0d7c564e2a4ac7a9edcd60d6226f106c210c",
+    "res://moth/generated/materials/entanglement-ceramic-r.png": "e5de4f53a1abec7ec724e406cc792dbb482e54a582447b3967751658ba31ae15",
+    "res://moth/generated/materials/entanglement-ceramic-t.png": "31e579b975d3f691455245c2140e8f911d2f5d0afc09de2c264c9c0f423a90c9",
+    "res://moth/generated/textures/weathered_concrete-worn.png": "fc6707d6bf6ae6dc6dfec746100f83015ce74885976b20688280f29bcdf111cf",
+    "res://moth/derived/data/weathered_concrete-worn.png": "9b7622f9280625dbb70ce45676c91b65214d443e84317ff1fd5ace7cc8fa1368",
+    "res://moth/derived/normals/weathered_concrete-worn.png": "2a76f240002c148f52cc9994683a43892ab21fe270d29f086422cb7a78e836fc",
+    "res://moth/generated/textures/brushed_metal.png": "271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51",
+    "res://moth/derived/data/brushed_metal.png": "30f483144c7aa89f45eb3856040929b9e2269da24b696bc5bc905d1bf07a4169",
+    "res://moth/generated/normals/metal.png": "0d10999c28fa55b0b37bbbd0bae4849a95835b01e6bd72e9148a5c9c53cf9341",
+    "res://moth/generated/materials/entanglement-r.png": "2c6d587cc75a3ca178c61c31eb820909db2070cb637622d1f84975422ba71d13",
+    "res://moth/generated/materials/entanglement-t.png": "7214592bdf129c0e147216d789c3b0d32cdd75311af2b4473f7be40825a72612",
+    "res://moth/generated/textures/circuit_board-etch.png": "21a89925e0030d3fdb28c9194022c5941e07247ffaa1e6e0a8ff496e340955ff",
+    "res://moth/derived/data/circuit_board-etch.png": "9a2943ff221bc54aaac1d4457a04419d76e5b777455bb09179b2313e1e4ddc1c",
+    "res://moth/derived/normals/circuit_board-etch.png": "4cccae68b875c8fe2647d466deba1aa65bf911b7b0ce0e5ae0566bae6e9ec3ae",
+    "res://moth/derived/masks/circuit_board.png": "4af14f7299d0763f6b6baeecba7e2b7a80fa3096300d4f192e646b1923d8c780",
+    "res://moth/generated/textures/grass.png": "b34ff20efcd0abad36323f9c6ffca4f30325dc91f7110a624ce7dac1d4f2fe64",
+    "res://moth/derived/data/grass.png": "c97abfe4504283f5e21477f9f4fdd95a90bcdf86937abb478bc603e1df83f651",
+    "res://moth/generated/normals/grass.png": "75a3351ecf362141f4bcbf4c5fbcee8ecea908a7e08f6d852cf769791dc00b57",
+    "res://moth/generated/textures/rock-moss.png": "80c63f01502fa13b0deb309c9d90a38104cde1b6877075d00d273b8a80dfdbda",
+    "res://moth/derived/normals/rock-moss.png": "28e4ee99927b6b8a1532328c5da5de9c3f58b6dba4f236bf72a65034397ad801"
+  },
+  "placements": [
+    {
+      "id": "archive-damp-foot-0",
+      "mesh": "archive-inner-retaining-0",
+      "material": "stone",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        -0.923576,
+        -0.0,
+        0.383416
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        -40.716562,
+        7.838969,
+        16.903208
+      ],
+      "axes": {
+        "x": [
+          0.383416,
+          0,
+          0.923576
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.567201,
+        0.24
+      ]
+    },
+    {
+      "id": "archive-route-0",
+      "mesh": "archive-inner-retaining-0",
+      "material": "stone",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        -0.923576,
+        -0.0,
+        0.383416
+      ],
+      "clearance_metres": 0.018,
+      "role": "wayfinding",
+      "support_center": [
+        -40.716562,
+        9.218969,
+        16.903208
+      ],
+      "axes": {
+        "x": [
+          0.383416,
+          0,
+          0.923576
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.567201,
+        0.66
+      ]
+    },
+    {
+      "id": "archive-damp-foot-1",
+      "mesh": "archive-inner-retaining-15",
+      "material": "stone",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        -0.933011,
+        -0.0,
+        -0.359849
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        -41.132511,
+        7.833637,
+        -15.864218
+      ],
+      "axes": {
+        "x": [
+          -0.359849,
+          0,
+          0.933011
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.567207,
+        0.24
+      ]
+    },
+    {
+      "id": "archive-route-1",
+      "mesh": "archive-inner-retaining-15",
+      "material": "stone",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        -0.933011,
+        -0.0,
+        -0.359849
+      ],
+      "clearance_metres": 0.018,
+      "role": "wayfinding",
+      "support_center": [
+        -41.132511,
+        9.213637,
+        -15.864218
+      ],
+      "axes": {
+        "x": [
+          -0.359849,
+          0,
+          0.933011
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.567207,
+        0.66
+      ]
+    },
+    {
+      "id": "archive-damp-foot-2",
+      "mesh": "archive-inner-retaining-18",
+      "material": "stone",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        -0.867608,
+        -0.0,
+        -0.497249
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        -38.249171,
+        7.838886,
+        -21.921628
+      ],
+      "axes": {
+        "x": [
+          -0.497249,
+          0,
+          0.867608
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.567201,
+        0.24
+      ]
+    },
+    {
+      "id": "archive-route-2",
+      "mesh": "archive-inner-retaining-18",
+      "material": "stone",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        -0.867608,
+        -0.0,
+        -0.497249
+      ],
+      "clearance_metres": 0.018,
+      "role": "wayfinding",
+      "support_center": [
+        -38.249171,
+        9.218886,
+        -21.921628
+      ],
+      "axes": {
+        "x": [
+          -0.497249,
+          0,
+          0.867608
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.567201,
+        0.66
+      ]
+    },
+    {
+      "id": "archive-damp-foot-3",
+      "mesh": "archive-inner-retaining-20",
+      "material": "stone",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        -0.812731,
+        -0.0,
+        -0.582639
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        -35.829895,
+        7.833762,
+        -25.686096
+      ],
+      "axes": {
+        "x": [
+          -0.582639,
+          0,
+          0.812731
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.567201,
+        0.24
+      ]
+    },
+    {
+      "id": "archive-damp-foot-4",
+      "mesh": "archive-inner-retaining-4",
+      "material": "stone",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        -0.981929,
+        -0.0,
+        0.189251
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        -43.289102,
+        7.838662,
+        8.343291
+      ],
+      "axes": {
+        "x": [
+          0.189251,
+          0,
+          0.981929
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.567201,
+        0.24
+      ]
+    },
+    {
+      "id": "archive-damp-foot-5",
+      "mesh": "archive-inner-retaining-7",
+      "material": "stone",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        -0.999275,
+        -0.0,
+        0.038071
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        -44.05383,
+        7.83351,
+        1.678377
+      ],
+      "axes": {
+        "x": [
+          0.038071,
+          0,
+          0.999275
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.567204,
+        0.24
+      ]
+    },
+    {
+      "id": "irrigation-damp-foot-0",
+      "mesh": "irrigation-inner-wall-0",
+      "material": "verdigris",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.923486,
+        -0.0,
+        -0.383632
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        40.712857,
+        7.838935,
+        -16.912808
+      ],
+      "axes": {
+        "x": [
+          -0.383632,
+          0,
+          -0.923486
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.552799,
+        0.24
+      ]
+    },
+    {
+      "id": "irrigation-route-0",
+      "mesh": "irrigation-inner-wall-0",
+      "material": "verdigris",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.923486,
+        -0.0,
+        -0.383632
+      ],
+      "clearance_metres": 0.018,
+      "role": "wayfinding",
+      "support_center": [
+        40.712857,
+        9.218935,
+        -16.912808
+      ],
+      "axes": {
+        "x": [
+          -0.383632,
+          0,
+          -0.923486
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.552799,
+        0.66
+      ]
+    },
+    {
+      "id": "irrigation-damp-foot-1",
+      "mesh": "irrigation-inner-wall-10",
+      "material": "verdigris",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.994028,
+        -0.0,
+        0.109122
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        43.822784,
+        7.834842,
+        4.810758
+      ],
+      "axes": {
+        "x": [
+          0.109122,
+          0,
+          -0.994028
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.552805,
+        0.24
+      ]
+    },
+    {
+      "id": "irrigation-route-1",
+      "mesh": "irrigation-inner-wall-10",
+      "material": "verdigris",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.994028,
+        -0.0,
+        0.109122
+      ],
+      "clearance_metres": 0.018,
+      "role": "wayfinding",
+      "support_center": [
+        43.822784,
+        9.214842,
+        4.810758
+      ],
+      "axes": {
+        "x": [
+          0.109122,
+          0,
+          -0.994028
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.552805,
+        0.66
+      ]
+    },
+    {
+      "id": "irrigation-damp-foot-2",
+      "mesh": "irrigation-inner-wall-2",
+      "material": "verdigris",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.957349,
+        -0.0,
+        -0.288934
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        42.205743,
+        7.833849,
+        -12.737937
+      ],
+      "axes": {
+        "x": [
+          -0.288934,
+          0,
+          -0.957349
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.5528,
+        0.24
+      ]
+    },
+    {
+      "id": "irrigation-route-2",
+      "mesh": "irrigation-inner-wall-2",
+      "material": "verdigris",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.957349,
+        -0.0,
+        -0.288934
+      ],
+      "clearance_metres": 0.018,
+      "role": "wayfinding",
+      "support_center": [
+        42.205743,
+        9.213849,
+        -12.737937
+      ],
+      "axes": {
+        "x": [
+          -0.288934,
+          0,
+          -0.957349
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.5528,
+        0.66
+      ]
+    },
+    {
+      "id": "irrigation-damp-foot-3",
+      "mesh": "irrigation-inner-wall-4",
+      "material": "verdigris",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.981529,
+        -0.0,
+        -0.191313
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        43.271741,
+        7.838813,
+        -8.434229
+      ],
+      "axes": {
+        "x": [
+          -0.191313,
+          0,
+          -0.981529
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.5528,
+        0.24
+      ]
+    },
+    {
+      "id": "irrigation-damp-foot-4",
+      "mesh": "irrigation-inner-wall-6",
+      "material": "verdigris",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.995781,
+        -0.0,
+        -0.091757
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        43.900069,
+        7.833518,
+        -4.045213
+      ],
+      "axes": {
+        "x": [
+          -0.091757,
+          0,
+          -0.995781
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.552804,
+        0.24
+      ]
+    },
+    {
+      "id": "irrigation-damp-foot-5",
+      "mesh": "irrigation-inner-wall-8",
+      "material": "verdigris",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.999962,
+        -0.0,
+        0.008727
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        44.084371,
+        7.838272,
+        0.384718
+      ],
+      "axes": {
+        "x": [
+          0.008727,
+          0,
+          -0.999962
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.5528,
+        0.24
+      ]
+    },
+    {
+      "id": "pavilion-damp-foot-0",
+      "mesh": "pavilion-inner-plinth-1",
+      "material": "brick",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.305695,
+        -0.0,
+        0.952129
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        24.333723,
+        16.051587,
+        75.790672
+      ],
+      "axes": {
+        "x": [
+          0.952129,
+          0,
+          -0.305695
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.8,
+        0.24
+      ]
+    },
+    {
+      "id": "pavilion-route-0",
+      "mesh": "pavilion-inner-plinth-1",
+      "material": "brick",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.305695,
+        -0.0,
+        0.952129
+      ],
+      "clearance_metres": 0.018,
+      "role": "wayfinding",
+      "support_center": [
+        24.333723,
+        17.431587,
+        75.790672
+      ],
+      "axes": {
+        "x": [
+          0.952129,
+          0,
+          -0.305695
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.8,
+        0.66
+      ]
+    },
+    {
+      "id": "pavilion-damp-foot-1",
+      "mesh": "pavilion-inner-plinth-2",
+      "material": "brick",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.258819,
+        -0.0,
+        0.965926
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        20.602315,
+        16.055967,
+        76.888885
+      ],
+      "axes": {
+        "x": [
+          0.965926,
+          0,
+          -0.258819
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.8,
+        0.24
+      ]
+    },
+    {
+      "id": "pavilion-route-1",
+      "mesh": "pavilion-inner-plinth-2",
+      "material": "brick",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.258819,
+        -0.0,
+        0.965926
+      ],
+      "clearance_metres": 0.018,
+      "role": "wayfinding",
+      "support_center": [
+        20.602315,
+        17.435967,
+        76.888885
+      ],
+      "axes": {
+        "x": [
+          0.965926,
+          0,
+          -0.258819
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.8,
+        0.66
+      ]
+    },
+    {
+      "id": "pavilion-damp-foot-2",
+      "mesh": "pavilion-inner-plinth-3",
+      "material": "brick",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.211325,
+        -0.0,
+        0.977416
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        16.821714,
+        16.051587,
+        77.803509
+      ],
+      "axes": {
+        "x": [
+          0.977416,
+          0,
+          -0.211325
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.8,
+        0.24
+      ]
+    },
+    {
+      "id": "pavilion-route-2",
+      "mesh": "pavilion-inner-plinth-3",
+      "material": "brick",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.211325,
+        -0.0,
+        0.977416
+      ],
+      "clearance_metres": 0.018,
+      "role": "wayfinding",
+      "support_center": [
+        16.821714,
+        17.431587,
+        77.803509
+      ],
+      "axes": {
+        "x": [
+          0.977416,
+          0,
+          -0.211325
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.8,
+        0.66
+      ]
+    },
+    {
+      "id": "pavilion-damp-foot-3",
+      "mesh": "pavilion-inner-plinth-4",
+      "material": "brick",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.163326,
+        -0.0,
+        0.986572
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        13.000948,
+        16.047546,
+        78.532359
+      ],
+      "axes": {
+        "x": [
+          0.986572,
+          0,
+          -0.163326
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.8,
+        0.24
+      ]
+    },
+    {
+      "id": "pavilion-damp-foot-4",
+      "mesh": "pavilion-inner-plinth-5",
+      "material": "brick",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.114937,
+        -0.0,
+        0.993373
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        9.149139,
+        16.052036,
+        79.073695
+      ],
+      "axes": {
+        "x": [
+          0.993373,
+          0,
+          -0.114937
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.8,
+        0.24
+      ]
+    },
+    {
+      "id": "pavilion-damp-foot-5",
+      "mesh": "pavilion-inner-plinth-6",
+      "material": "brick",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.066274,
+        -0.0,
+        0.997801
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        5.275484,
+        16.055955,
+        79.426225
+      ],
+      "axes": {
+        "x": [
+          0.997801,
+          0,
+          -0.066274
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.8,
+        0.24
+      ]
+    },
+    {
+      "id": "pump-access-0",
+      "mesh": "pump-bank-0",
+      "material": "gold",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        61.616308,
+        11.813577,
+        -24.752285
+      ],
+      "axes": {
+        "x": [
+          1.0,
+          0,
+          -0.0
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.4,
+        0.75
+      ]
+    },
+    {
+      "id": "pump-record-0",
+      "mesh": "pump-bank-0",
+      "material": "gold",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "clearance_metres": 0.018,
+      "role": "wayfinding",
+      "support_center": [
+        61.616308,
+        13.113577,
+        -24.752285
+      ],
+      "axes": {
+        "x": [
+          1.0,
+          0,
+          -0.0
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.4,
+        0.48
+      ]
+    },
+    {
+      "id": "pump-access-1",
+      "mesh": "pump-bank-1",
+      "material": "gold",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        64.557742,
+        11.809051,
+        -14.822172
+      ],
+      "axes": {
+        "x": [
+          1.0,
+          0,
+          -0.0
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.4,
+        0.75
+      ]
+    },
+    {
+      "id": "pump-record-1",
+      "mesh": "pump-bank-1",
+      "material": "gold",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "clearance_metres": 0.018,
+      "role": "wayfinding",
+      "support_center": [
+        64.557742,
+        13.109051,
+        -14.822172
+      ],
+      "axes": {
+        "x": [
+          1.0,
+          0,
+          -0.0
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.4,
+        0.48
+      ]
+    },
+    {
+      "id": "pump-access-2",
+      "mesh": "pump-bank-2",
+      "material": "gold",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        65.909549,
+        11.809051,
+        -4.554173
+      ],
+      "axes": {
+        "x": [
+          1.0,
+          0,
+          -0.0
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.4,
+        0.75
+      ]
+    },
+    {
+      "id": "pump-record-2",
+      "mesh": "pump-bank-2",
+      "material": "gold",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "clearance_metres": 0.018,
+      "role": "wayfinding",
+      "support_center": [
+        65.909549,
+        13.109051,
+        -4.554173
+      ],
+      "axes": {
+        "x": [
+          1.0,
+          0,
+          -0.0
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.4,
+        0.48
+      ]
+    },
+    {
+      "id": "settling-vault-waterline-7",
+      "mesh": "settling-vault-shell-7",
+      "material": "verdigris",
+      "face": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "normal": [
+        0.980785,
+        0.0,
+        -0.19509
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        62.329657,
+        12.71472,
+        -19.446549
+      ],
+      "axes": {
+        "x": [
+          -0.19509,
+          0,
+          -0.980785
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.186149,
+        0.18
+      ]
+    },
+    {
+      "id": "settling-vault-waterline-8",
+      "mesh": "settling-vault-shell-8",
+      "material": "verdigris",
+      "face": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "normal": [
+        0.980785,
+        0.0,
+        0.19509
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        62.329657,
+        12.71472,
+        -20.900746
+      ],
+      "axes": {
+        "x": [
+          0.19509,
+          0,
+          -0.980785
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.186149,
+        0.18
+      ]
+    },
+    {
+      "id": "settling-vault-waterline-9",
+      "mesh": "settling-vault-shell-9",
+      "material": "verdigris",
+      "face": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "normal": [
+        0.83147,
+        0.0,
+        0.55557
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        62.886154,
+        12.71472,
+        -22.244249
+      ],
+      "axes": {
+        "x": [
+          0.55557,
+          0,
+          -0.83147
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        1.186149,
+        0.18
+      ]
+    },
+    {
+      "id": "filter-vault-waterline-7",
+      "mesh": "filter-vault-shell-7",
+      "material": "verdigris",
+      "face": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "normal": [
+        0.980785,
+        0.0,
+        -0.19509
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        68.746404,
+        13.70384,
+        -4.410173
+      ],
+      "axes": {
+        "x": [
+          -0.19509,
+          0,
+          -0.980785
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.998862,
+        0.18
+      ]
+    },
+    {
+      "id": "filter-vault-waterline-8",
+      "mesh": "filter-vault-shell-8",
+      "material": "verdigris",
+      "face": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "normal": [
+        0.980785,
+        0.0,
+        0.19509
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        68.746404,
+        13.70384,
+        -5.63476
+      ],
+      "axes": {
+        "x": [
+          0.19509,
+          0,
+          -0.980785
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.998862,
+        0.18
+      ]
+    },
+    {
+      "id": "filter-vault-waterline-9",
+      "mesh": "filter-vault-shell-9",
+      "material": "verdigris",
+      "face": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "normal": [
+        0.83147,
+        0.0,
+        0.55557
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        69.215034,
+        13.70384,
+        -6.76613
+      ],
+      "axes": {
+        "x": [
+          0.55557,
+          0,
+          -0.83147
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.998862,
+        0.18
+      ]
+    },
+    {
+      "id": "water-pressure-tower-waterline-7",
+      "mesh": "water-pressure-tower-shell-7",
+      "material": "verdigris",
+      "face": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "normal": [
+        0.980785,
+        0.0,
+        -0.19509
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        65.432584,
+        12.012952,
+        6.385811
+      ],
+      "axes": {
+        "x": [
+          -0.19509,
+          0,
+          -0.980785
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.749147,
+        0.18
+      ]
+    },
+    {
+      "id": "water-pressure-tower-waterline-8",
+      "mesh": "water-pressure-tower-shell-8",
+      "material": "verdigris",
+      "face": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "normal": [
+        0.980785,
+        0.0,
+        0.19509
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        65.432584,
+        12.012952,
+        5.46737
+      ],
+      "axes": {
+        "x": [
+          0.19509,
+          0,
+          -0.980785
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.749147,
+        0.18
+      ]
+    },
+    {
+      "id": "water-pressure-tower-waterline-9",
+      "mesh": "water-pressure-tower-shell-9",
+      "material": "verdigris",
+      "face": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "normal": [
+        0.83147,
+        0.0,
+        0.55557
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        65.784056,
+        12.012952,
+        4.618842
+      ],
+      "axes": {
+        "x": [
+          0.55557,
+          0,
+          -0.83147
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.749147,
+        0.18
+      ]
+    },
+    {
+      "id": "root-stain-0",
+      "mesh": "botanical-bed-fern-0-28-40",
+      "material": "soil",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.743145,
+        -0.0,
+        0.669131
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        20.795379,
+        1.365013,
+        18.724244
+      ],
+      "axes": {
+        "x": [
+          0.669131,
+          0,
+          -0.743145
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.85,
+        0.23
+      ]
+    },
+    {
+      "id": "plant-pollen-0",
+      "mesh": "botanical-bed-fern-0-28-40",
+      "role": "pollen-inside-existing-fern-crown",
+      "bed_top": [
+        22.305993,
+        2.915365,
+        20.183026
+      ]
+    },
+    {
+      "id": "root-stain-1",
+      "mesh": "botanical-bed-fern-0-32.5-44",
+      "material": "soil",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.694658,
+        -0.0,
+        0.71934
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        22.562644,
+        3.164952,
+        23.364302
+      ],
+      "axes": {
+        "x": [
+          0.71934,
+          0,
+          -0.694658
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.85,
+        0.23
+      ]
+    },
+    {
+      "id": "root-stain-2",
+      "mesh": "botanical-bed-fern-2-107-28",
+      "material": "soil",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.866025,
+        -0.0,
+        0.5
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        92.608269,
+        21.96314,
+        53.467409
+      ],
+      "axes": {
+        "x": [
+          0.5,
+          0,
+          -0.866025
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.85,
+        0.23
+      ]
+    },
+    {
+      "id": "root-stain-3",
+      "mesh": "botanical-bed-fern-0-37-40",
+      "material": "soil",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.743145,
+        -0.0,
+        0.669131
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        27.479609,
+        4.966624,
+        24.742751
+      ],
+      "axes": {
+        "x": [
+          0.669131,
+          0,
+          -0.743145
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.85,
+        0.23
+      ]
+    },
+    {
+      "id": "root-stain-4",
+      "mesh": "botanical-bed-orchid-0-28-128",
+      "material": "soil",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        -0.642788,
+        -0.0,
+        0.766044
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        -17.987089,
+        1.363306,
+        21.436178
+      ],
+      "axes": {
+        "x": [
+          0.766044,
+          0,
+          0.642788
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.85,
+        0.23
+      ]
+    },
+    {
+      "id": "plant-pollen-1",
+      "mesh": "botanical-bed-orchid-0-28-128",
+      "role": "pollen-inside-existing-fern-crown",
+      "bed_top": [
+        -19.392263,
+        2.913594,
+        22.996782
+      ]
+    },
+    {
+      "id": "root-stain-5",
+      "mesh": "botanical-bed-orchid-1-64-124",
+      "material": "soil",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        -0.587785,
+        -0.0,
+        0.809017
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        -37.59534,
+        9.764876,
+        51.745546
+      ],
+      "axes": {
+        "x": [
+          0.809017,
+          0,
+          0.587785
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.85,
+        0.23
+      ]
+    },
+    {
+      "id": "root-stain-6",
+      "mesh": "botanical-bed-orchid-2-98-132",
+      "material": "soil",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        -0.694658,
+        -0.0,
+        0.71934
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        -68.03505,
+        17.954369,
+        70.452357
+      ],
+      "axes": {
+        "x": [
+          0.71934,
+          0,
+          0.694658
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.85,
+        0.23
+      ]
+    },
+    {
+      "id": "root-stain-7",
+      "mesh": "botanical-bed-orchid-1-64-132",
+      "material": "soil",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        -0.694658,
+        -0.0,
+        0.71934
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        -44.431053,
+        9.769752,
+        46.009702
+      ],
+      "axes": {
+        "x": [
+          0.71934,
+          0,
+          0.694658
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.85,
+        0.23
+      ]
+    },
+    {
+      "id": "root-stain-8",
+      "mesh": "botanical-bed-cycad-0-37-202",
+      "material": "soil",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        -0.913545,
+        -0.0,
+        -0.406737
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        -33.780591,
+        4.962819,
+        -15.040088
+      ],
+      "axes": {
+        "x": [
+          -0.406737,
+          0,
+          0.913545
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.85,
+        0.23
+      ]
+    },
+    {
+      "id": "plant-pollen-2",
+      "mesh": "botanical-bed-cycad-0-37-202",
+      "role": "pollen-inside-existing-fern-crown",
+      "bed_top": [
+        -35.668059,
+        6.512931,
+        -15.960668
+      ]
+    },
+    {
+      "id": "root-stain-9",
+      "mesh": "botanical-bed-cycad-0-41.5-210",
+      "material": "soil",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        -0.848048,
+        -0.0,
+        -0.529919
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        -35.172557,
+        6.761107,
+        -21.978253
+      ],
+      "axes": {
+        "x": [
+          -0.529919,
+          0,
+          0.848048
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.85,
+        0.23
+      ]
+    },
+    {
+      "id": "root-stain-10",
+      "mesh": "botanical-bed-cycad-2-98-222",
+      "material": "soil",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        -0.71934,
+        -0.0,
+        -0.694658
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        -70.452357,
+        17.954369,
+        -68.03505
+      ],
+      "axes": {
+        "x": [
+          -0.694658,
+          0,
+          0.71934
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.85,
+        0.23
+      ]
+    },
+    {
+      "id": "root-stain-11",
+      "mesh": "botanical-bed-cycad-0-41.5-206",
+      "material": "soil",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        -0.882948,
+        -0.0,
+        -0.469472
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        -36.620004,
+        6.761107,
+        -19.471201
+      ],
+      "axes": {
+        "x": [
+          -0.469472,
+          0,
+          0.882948
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.85,
+        0.23
+      ]
+    },
+    {
+      "id": "root-stain-12",
+      "mesh": "botanical-bed-reed-0-37-312",
+      "material": "soil",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.694658,
+        -0.0,
+        -0.71934
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        25.686703,
+        4.965638,
+        -26.599359
+      ],
+      "axes": {
+        "x": [
+          -0.71934,
+          0,
+          -0.694658
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.85,
+        0.23
+      ]
+    },
+    {
+      "id": "plant-pollen-3",
+      "mesh": "botanical-bed-reed-0-37-312",
+      "role": "pollen-inside-existing-fern-crown",
+      "bed_top": [
+        27.197316,
+        6.51599,
+        -28.058142
+      ]
+    },
+    {
+      "id": "root-stain-13",
+      "mesh": "botanical-bed-reed-2-102.5-300",
+      "material": "soil",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.529919,
+        -0.0,
+        -0.848048
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        54.283636,
+        19.940815,
+        -86.871978
+      ],
+      "axes": {
+        "x": [
+          -0.848048,
+          0,
+          -0.529919
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.85,
+        0.23
+      ]
+    },
+    {
+      "id": "root-stain-14",
+      "mesh": "botanical-bed-reed-1-68.5-312",
+      "material": "soil",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.694658,
+        -0.0,
+        -0.71934
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        47.555111,
+        11.570438,
+        -49.244759
+      ],
+      "axes": {
+        "x": [
+          -0.71934,
+          0,
+          -0.694658
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.85,
+        0.23
+      ]
+    },
+    {
+      "id": "root-stain-15",
+      "mesh": "botanical-bed-reed-1-73-296",
+      "material": "soil",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.469472,
+        -0.0,
+        -0.882948
+      ],
+      "clearance_metres": 0.018,
+      "role": "bounded-weather/service-inset",
+      "support_center": [
+        34.250547,
+        13.361946,
+        -64.41591
+      ],
+      "axes": {
+        "x": [
+          -0.882948,
+          0,
+          -0.469472
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.85,
+        0.23
+      ]
+    },
+    {
+      "id": "lightwell-specimen-record",
+      "mesh": "specimen-root-37.5",
+      "material": "brick",
+      "face": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "normal": [
+        0.793353,
+        -0.0,
+        0.608761
+      ],
+      "clearance_metres": 0.018,
+      "role": "wayfinding",
+      "support_center": [
+        6.422247,
+        1.8,
+        4.927964
+      ],
+      "axes": {
+        "x": [
+          0.608761,
+          0,
+          -0.793353
+        ],
+        "y": [
+          0,
+          1,
+          0
+        ]
+      },
+      "size": [
+        0.48,
+        0.75
+      ]
+    }
+  ],
+  "proof_scope": "All quad corners contained by recipe support faces; every support triangle decoded from accepted GLB. No rendered appearance claim."
+}

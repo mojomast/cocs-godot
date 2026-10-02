@@ -1,0 +1,3462 @@
+{
+  "finishes": {
+    "chatgpt-board": {
+      "albedo": "res://source_operators/moth_finish/assets/chatgpt-board-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.12,
+      "normal": "res://source_operators/moth_finish/assets/chatgpt-board-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/chatgpt-board-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "chatgpt-panel": {
+      "albedo": "res://source_operators/moth_finish/assets/chatgpt-panel-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.12,
+      "normal": "res://source_operators/moth_finish/assets/chatgpt-panel-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/chatgpt-panel-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "chatgpt-precision": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-precision-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.62,
+      "normal": "res://source_operators/moth_finish/assets/shared-precision-normal.png",
+      "normal_strength": 0.32,
+      "roughness": "res://source_operators/moth_finish/assets/shared-precision-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "chatgpt-rubber": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-rubber-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0,
+      "normal_strength": 0,
+      "roughness": "res://source_operators/moth_finish/assets/shared-rubber-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "chatgpt-shell": {
+      "albedo": "res://source_operators/moth_finish/assets/chatgpt-shell-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.08,
+      "normal": "res://source_operators/moth_finish/assets/chatgpt-shell-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/chatgpt-shell-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "chatgpt-trim": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-trim-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.78,
+      "normal": "res://source_operators/moth_finish/assets/shared-trim-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/shared-trim-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "chatgpt-vent": {
+      "albedo": "res://source_operators/moth_finish/assets/chatgpt-vent-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.72,
+      "normal": "res://source_operators/moth_finish/assets/chatgpt-vent-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/chatgpt-vent-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "claude-board": {
+      "albedo": "res://source_operators/moth_finish/assets/claude-board-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.12,
+      "normal": "res://source_operators/moth_finish/assets/claude-board-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/claude-board-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "claude-panel": {
+      "albedo": "res://source_operators/moth_finish/assets/claude-panel-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.12,
+      "normal": "res://source_operators/moth_finish/assets/claude-panel-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/claude-panel-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "claude-precision": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-precision-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.62,
+      "normal": "res://source_operators/moth_finish/assets/shared-precision-normal.png",
+      "normal_strength": 0.32,
+      "roughness": "res://source_operators/moth_finish/assets/shared-precision-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "claude-rubber": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-rubber-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0,
+      "normal_strength": 0,
+      "roughness": "res://source_operators/moth_finish/assets/shared-rubber-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "claude-shell": {
+      "albedo": "res://source_operators/moth_finish/assets/claude-shell-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.08,
+      "normal": "res://source_operators/moth_finish/assets/claude-shell-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/claude-shell-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "claude-trim": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-trim-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.78,
+      "normal": "res://source_operators/moth_finish/assets/shared-trim-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/shared-trim-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "claude-vent": {
+      "albedo": "res://source_operators/moth_finish/assets/claude-vent-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.72,
+      "normal": "res://source_operators/moth_finish/assets/claude-vent-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/claude-vent-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "deepseek-board": {
+      "albedo": "res://source_operators/moth_finish/assets/deepseek-board-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.12,
+      "normal": "res://source_operators/moth_finish/assets/deepseek-board-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/deepseek-board-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "deepseek-panel": {
+      "albedo": "res://source_operators/moth_finish/assets/deepseek-panel-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.52,
+      "normal": "res://source_operators/moth_finish/assets/deepseek-panel-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/deepseek-panel-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "deepseek-precision": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-precision-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.62,
+      "normal": "res://source_operators/moth_finish/assets/shared-precision-normal.png",
+      "normal_strength": 0.32,
+      "roughness": "res://source_operators/moth_finish/assets/shared-precision-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "deepseek-rubber": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-rubber-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0,
+      "normal_strength": 0,
+      "roughness": "res://source_operators/moth_finish/assets/shared-rubber-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "deepseek-shell": {
+      "albedo": "res://source_operators/moth_finish/assets/deepseek-shell-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.52,
+      "normal": "res://source_operators/moth_finish/assets/deepseek-shell-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/deepseek-shell-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "deepseek-trim": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-trim-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.78,
+      "normal": "res://source_operators/moth_finish/assets/shared-trim-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/shared-trim-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "deepseek-vent": {
+      "albedo": "res://source_operators/moth_finish/assets/deepseek-vent-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.72,
+      "normal": "res://source_operators/moth_finish/assets/deepseek-vent-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/deepseek-vent-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "gemini-board": {
+      "albedo": "res://source_operators/moth_finish/assets/gemini-board-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.12,
+      "normal": "res://source_operators/moth_finish/assets/gemini-board-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/gemini-board-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "gemini-panel": {
+      "albedo": "res://source_operators/moth_finish/assets/gemini-panel-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.12,
+      "normal": "res://source_operators/moth_finish/assets/gemini-panel-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/gemini-panel-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "gemini-precision": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-precision-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.62,
+      "normal": "res://source_operators/moth_finish/assets/shared-precision-normal.png",
+      "normal_strength": 0.32,
+      "roughness": "res://source_operators/moth_finish/assets/shared-precision-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "gemini-rubber": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-rubber-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0,
+      "normal_strength": 0,
+      "roughness": "res://source_operators/moth_finish/assets/shared-rubber-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "gemini-shell": {
+      "albedo": "res://source_operators/moth_finish/assets/gemini-shell-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.08,
+      "normal": "res://source_operators/moth_finish/assets/gemini-shell-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/gemini-shell-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "gemini-trim": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-trim-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.78,
+      "normal": "res://source_operators/moth_finish/assets/shared-trim-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/shared-trim-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "gemini-vent": {
+      "albedo": "res://source_operators/moth_finish/assets/gemini-vent-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.72,
+      "normal": "res://source_operators/moth_finish/assets/gemini-vent-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/gemini-vent-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "grok-board": {
+      "albedo": "res://source_operators/moth_finish/assets/grok-board-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.12,
+      "normal": "res://source_operators/moth_finish/assets/grok-board-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/grok-board-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "grok-panel": {
+      "albedo": "res://source_operators/moth_finish/assets/grok-panel-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.52,
+      "normal": "res://source_operators/moth_finish/assets/grok-panel-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/grok-panel-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "grok-precision": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-precision-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.62,
+      "normal": "res://source_operators/moth_finish/assets/shared-precision-normal.png",
+      "normal_strength": 0.32,
+      "roughness": "res://source_operators/moth_finish/assets/shared-precision-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "grok-rubber": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-rubber-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0,
+      "normal_strength": 0,
+      "roughness": "res://source_operators/moth_finish/assets/shared-rubber-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "grok-shell": {
+      "albedo": "res://source_operators/moth_finish/assets/grok-shell-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.52,
+      "normal": "res://source_operators/moth_finish/assets/grok-shell-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/grok-shell-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "grok-trim": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-trim-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.78,
+      "normal": "res://source_operators/moth_finish/assets/shared-trim-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/shared-trim-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "grok-vent": {
+      "albedo": "res://source_operators/moth_finish/assets/grok-vent-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.72,
+      "normal": "res://source_operators/moth_finish/assets/grok-vent-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/grok-vent-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "kimi-board": {
+      "albedo": "res://source_operators/moth_finish/assets/kimi-board-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.12,
+      "normal": "res://source_operators/moth_finish/assets/kimi-board-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/kimi-board-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "kimi-panel": {
+      "albedo": "res://source_operators/moth_finish/assets/kimi-panel-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.12,
+      "normal": "res://source_operators/moth_finish/assets/kimi-panel-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/kimi-panel-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "kimi-precision": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-precision-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.62,
+      "normal": "res://source_operators/moth_finish/assets/shared-precision-normal.png",
+      "normal_strength": 0.32,
+      "roughness": "res://source_operators/moth_finish/assets/shared-precision-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "kimi-rubber": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-rubber-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0,
+      "normal_strength": 0,
+      "roughness": "res://source_operators/moth_finish/assets/shared-rubber-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "kimi-shell": {
+      "albedo": "res://source_operators/moth_finish/assets/kimi-shell-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.08,
+      "normal": "res://source_operators/moth_finish/assets/kimi-shell-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/kimi-shell-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "kimi-trim": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-trim-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.78,
+      "normal": "res://source_operators/moth_finish/assets/shared-trim-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/shared-trim-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "kimi-vent": {
+      "albedo": "res://source_operators/moth_finish/assets/kimi-vent-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.72,
+      "normal": "res://source_operators/moth_finish/assets/kimi-vent-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/kimi-vent-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "meta-board": {
+      "albedo": "res://source_operators/moth_finish/assets/meta-board-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.12,
+      "normal": "res://source_operators/moth_finish/assets/meta-board-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/meta-board-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "meta-panel": {
+      "albedo": "res://source_operators/moth_finish/assets/meta-panel-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.52,
+      "normal": "res://source_operators/moth_finish/assets/meta-panel-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/meta-panel-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "meta-precision": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-precision-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.62,
+      "normal": "res://source_operators/moth_finish/assets/shared-precision-normal.png",
+      "normal_strength": 0.32,
+      "roughness": "res://source_operators/moth_finish/assets/shared-precision-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "meta-rubber": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-rubber-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0,
+      "normal_strength": 0,
+      "roughness": "res://source_operators/moth_finish/assets/shared-rubber-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "meta-shell": {
+      "albedo": "res://source_operators/moth_finish/assets/meta-shell-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.52,
+      "normal": "res://source_operators/moth_finish/assets/meta-shell-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/meta-shell-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "meta-trim": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-trim-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.78,
+      "normal": "res://source_operators/moth_finish/assets/shared-trim-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/shared-trim-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "meta-vent": {
+      "albedo": "res://source_operators/moth_finish/assets/meta-vent-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.72,
+      "normal": "res://source_operators/moth_finish/assets/meta-vent-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/meta-vent-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "mistral-board": {
+      "albedo": "res://source_operators/moth_finish/assets/mistral-board-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.12,
+      "normal": "res://source_operators/moth_finish/assets/mistral-board-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/mistral-board-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "mistral-panel": {
+      "albedo": "res://source_operators/moth_finish/assets/mistral-panel-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.52,
+      "normal": "res://source_operators/moth_finish/assets/mistral-panel-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/mistral-panel-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "mistral-precision": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-precision-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.62,
+      "normal": "res://source_operators/moth_finish/assets/shared-precision-normal.png",
+      "normal_strength": 0.32,
+      "roughness": "res://source_operators/moth_finish/assets/shared-precision-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "mistral-rubber": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-rubber-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0,
+      "normal_strength": 0,
+      "roughness": "res://source_operators/moth_finish/assets/shared-rubber-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "mistral-shell": {
+      "albedo": "res://source_operators/moth_finish/assets/mistral-shell-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.52,
+      "normal": "res://source_operators/moth_finish/assets/mistral-shell-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/mistral-shell-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "mistral-trim": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-trim-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.78,
+      "normal": "res://source_operators/moth_finish/assets/shared-trim-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/shared-trim-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "mistral-vent": {
+      "albedo": "res://source_operators/moth_finish/assets/mistral-vent-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.72,
+      "normal": "res://source_operators/moth_finish/assets/mistral-vent-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/mistral-vent-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "qwen-board": {
+      "albedo": "res://source_operators/moth_finish/assets/qwen-board-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.12,
+      "normal": "res://source_operators/moth_finish/assets/qwen-board-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/qwen-board-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "qwen-panel": {
+      "albedo": "res://source_operators/moth_finish/assets/qwen-panel-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.52,
+      "normal": "res://source_operators/moth_finish/assets/qwen-panel-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/qwen-panel-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "qwen-precision": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-precision-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.62,
+      "normal": "res://source_operators/moth_finish/assets/shared-precision-normal.png",
+      "normal_strength": 0.32,
+      "roughness": "res://source_operators/moth_finish/assets/shared-precision-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "qwen-rubber": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-rubber-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0,
+      "normal_strength": 0,
+      "roughness": "res://source_operators/moth_finish/assets/shared-rubber-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "qwen-shell": {
+      "albedo": "res://source_operators/moth_finish/assets/qwen-shell-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.52,
+      "normal": "res://source_operators/moth_finish/assets/qwen-shell-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/qwen-shell-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "qwen-trim": {
+      "albedo": "res://source_operators/moth_finish/assets/shared-trim-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.78,
+      "normal": "res://source_operators/moth_finish/assets/shared-trim-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/shared-trim-roughness.png",
+      "roughness_gain": 1.0
+    },
+    "qwen-vent": {
+      "albedo": "res://source_operators/moth_finish/assets/qwen-vent-albedo.png",
+      "albedo_mode": "modulate",
+      "metallic": 0.72,
+      "normal": "res://source_operators/moth_finish/assets/qwen-vent-normal.png",
+      "normal_strength": 0.55,
+      "roughness": "res://source_operators/moth_finish/assets/qwen-vent-roughness.png",
+      "roughness_gain": 1.0
+    }
+  },
+  "provenance": {
+    "art_reference_sources": {
+      "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+      "game/operator-anatomy.mjs": "72a2a5c6620f5e57f53c247d57eea5e4d9b36f86ae8c53e8efdfc693bfb5bca9",
+      "game/operator-detail.mjs": "7b6e8b1a0eb2ead87b0212e01b7d0bdddc672015c68d89d5b41c6387314c076a",
+      "game/view.mjs": "98f8aca46bece81a191760a253db68814bf4e768ee56f37be41eae09723af33d"
+    },
+    "dependencies": {
+      "numpy": "2.5.3",
+      "pillow": "12.3.0"
+    },
+    "generator": "tools/operator-finish/content/build.py",
+    "generator_sha256": "c155ac535172f482306501074526c0dc26cc348b281669f662101bea5a16da42",
+    "moth_baked_source": {
+      "path": "game/moth-baked.mjs",
+      "sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+    },
+    "moth_manifest_sha256": "c5589ff2f2ab68d982b2bb45c221c08d8e3f653953e5d5d446bfa4cd68380047",
+    "moth_sources": {
+      "brushed_metal": {
+        "dimensions": [
+          64,
+          64
+        ],
+        "path": "res://moth/generated/textures/brushed_metal.png",
+        "png_sha256": "271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51",
+        "registry_color_space": "srgb",
+        "registry_key": "textures/brushed_metal",
+        "rgba_pixel_sha256": "3abeb6cb89b6f5ce0a4595d6f099872212ad0b238dd799736672f447e674de31"
+      },
+      "carbon_fiber": {
+        "dimensions": [
+          48,
+          48
+        ],
+        "path": "res://moth/generated/textures/carbon_fiber.png",
+        "png_sha256": "b5fb0bacb31aa31edc99f2b44d57021183a9b8d5f3d763cfa34946bcc565dfb4",
+        "registry_color_space": "srgb",
+        "registry_key": "textures/carbon_fiber",
+        "rgba_pixel_sha256": "6b5cc23a99bbd541429f464411cf2180765cbf0388db41677c0d236c9d0f01bb"
+      },
+      "circuit_board-etch": {
+        "dimensions": [
+          64,
+          64
+        ],
+        "path": "res://moth/generated/textures/circuit_board-etch.png",
+        "png_sha256": "21a89925e0030d3fdb28c9194022c5941e07247ffaa1e6e0a8ff496e340955ff",
+        "registry_color_space": "srgb",
+        "registry_key": "textures/circuit_board-etch",
+        "rgba_pixel_sha256": "795a3651cee0f6ec92e7e1e71ea644d6e91e64991fa27a126501c237879fcf65"
+      },
+      "hex_paneling": {
+        "dimensions": [
+          48,
+          48
+        ],
+        "path": "res://moth/generated/textures/hex_paneling.png",
+        "png_sha256": "725a587331a74d235254e64b7f5d9a605e2de8cc28f16eec3c92577c3ddeea40",
+        "registry_color_space": "srgb",
+        "registry_key": "textures/hex_paneling",
+        "rgba_pixel_sha256": "651a713e6f7051134a0f2247b6679ed2426dd1489d409c8ece36165139a975d1"
+      },
+      "metal_grating": {
+        "dimensions": [
+          48,
+          48
+        ],
+        "path": "res://moth/generated/textures/metal_grating.png",
+        "png_sha256": "a9c19f1b0c7ebfb59a079a7a9780390baffcf5f0f593e2c6b5bc8c4977ab9372",
+        "registry_color_space": "srgb",
+        "registry_key": "textures/metal_grating",
+        "rgba_pixel_sha256": "e693a20eb8ee6ddccffe4ba89921ddbb868656242d6fec6a674099b25536a971"
+      },
+      "riveted_armor": {
+        "dimensions": [
+          48,
+          48
+        ],
+        "path": "res://moth/generated/textures/riveted_armor.png",
+        "png_sha256": "2afc1402d3438a9ffdea671d8b40b3d97811408613402c4f66c228e8621efdb9",
+        "registry_color_space": "srgb",
+        "registry_key": "textures/riveted_armor",
+        "rgba_pixel_sha256": "3df636ee97cd6569e880ff73d46e52527db3efa5840896fbd6a0f1b99e38bd80"
+      },
+      "sand": {
+        "dimensions": [
+          64,
+          64
+        ],
+        "path": "res://moth/generated/textures/sand.png",
+        "png_sha256": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96",
+        "registry_color_space": "srgb",
+        "registry_key": "textures/sand",
+        "rgba_pixel_sha256": "4c924f108fa5000306682b81fb47033a66b07b2a7ac520fd7bf6f20b2ef05de0"
+      }
+    },
+    "normal_convention": "N=normalize(-2*dH/dU,-2*dH/dV,1); image rows are +V. Native moving-light orientation verification pending.",
+    "operator_catalog_manifest_sha256": "8a55864d05880e720ab81e446aeb504c1fd151c0e5d2595446e60cd9112e35e6",
+    "recipe": "Moth luminance centered; quiet shared-UV shell grain; authored seam/wear/mark masks only on fitted overlays and trim; neutral modulation; height gradient normal renormalized before RGB8 quantization",
+    "source_glbs": {
+      "chatgpt": "38b5dcdb45160e81753cf783983cb1235df4fd96c9139fe6f06aebb59d9bc1d0",
+      "claude": "de246dec07441eb00078465856face34f782e75fb43372f3c42a36e42bb04087",
+      "deepseek": "09b05359dc06a31488e054f02b13a8b48de7f42528d1b13dd43712649d5587eb",
+      "gemini": "8e6cc62b305ec6f311441b720d189adaff26fff43df318156b8d4fa59c9c61c7",
+      "grok": "b020975998a9e238141e01f78a11d28f8942002f639d64ec2e1663ad0ba139f2",
+      "kimi": "afb5a59a32ca60c5f7ce90d1705823e37c51c2d78e5a33af50685dcfc48fc492",
+      "meta": "89485068d44b57680d499e13ce26c6be6b033e30b61da901b54a79c33a289a9c",
+      "mistral": "d075755b73382e3b8143d34cc12a5b0b8749b41fa45821240b7ccd8e7cea1a2f",
+      "qwen": "430c59b8df28d6b995bdf04d2f49f90d084bc3452c53a6090207f4914feb685c"
+    },
+    "verification_scope": "source-only; native gallery and motion pending"
+  },
+  "textures": {
+    "res://source_operators/moth_finish/assets/chatgpt-board-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "b0b7c5b8a3e40688a3d1c5381cd1a20f79fc71d13e7ad8864d00816172cff931",
+      "png_sha256": "8382c4edbcd7b23f28471b8df1afa472268a56b51692521c4d6ddfb9370c4a90",
+      "range": [
+        182,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/chatgpt-board-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "3f8bf6f6dbabac6b93580f8d5f97bf0c98812caa9eee6cc99c5b2e3774e22e8e",
+      "png_sha256": "a3fb27bc4307cbef285c081a37a2be447ea05c7154d6f05f5726899349e99a0e",
+      "range": [
+        79,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/chatgpt-board-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "0044d9bfb8d1a711b203dded7bc6debacd5613f2cc9fc77c6c4e3810ae1db347",
+      "png_sha256": "d86c97a2a91859ca40d6b636d83825417ec807a744f38ed7203c435e2d90e2ad",
+      "range": [
+        144,
+        215
+      ]
+    },
+    "res://source_operators/moth_finish/assets/chatgpt-panel-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/hex_paneling"
+      ],
+      "pixel_sha256": "fd3cdc9206c2ff653c25f2f1c357acbf5894ba2e5d55399905dccfd17b132ebf",
+      "png_sha256": "ab33e0dcdf2515ebb3f273ace6712e99c24d6c9026180c9de817b50a7283442c",
+      "range": [
+        194,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/chatgpt-panel-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/hex_paneling"
+      ],
+      "pixel_sha256": "ded2077cd3fe2c3df78c4ad198446c08fe0f5061f7b0184a613f8e7841baef36",
+      "png_sha256": "6b37d17690b2be3c50ee286dd0005aa6d1727c985912ca8a9a823e19565e634d",
+      "range": [
+        79,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/chatgpt-panel-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/hex_paneling"
+      ],
+      "pixel_sha256": "e5f0e4bee1fc2d48551448bbb8e0a5daa6a27c04f540c306ed7763224960264d",
+      "png_sha256": "64cedec9d2658e01d6f8ce0b820f15a8760c2c3d1edd7599521858bfa8d174a9",
+      "range": [
+        123,
+        193
+      ]
+    },
+    "res://source_operators/moth_finish/assets/chatgpt-shell-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/sand"
+      ],
+      "pixel_sha256": "2a63034e4fd384d0e1655836a15d3c77ca9fe8d7a4b70031e47250a59ce2326a",
+      "png_sha256": "fa39e78e13fd4b5793528eabb848c98a02fbec6ed0464d51008c8de973660e49",
+      "range": [
+        245,
+        246
+      ]
+    },
+    "res://source_operators/moth_finish/assets/chatgpt-shell-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/sand"
+      ],
+      "pixel_sha256": "3883fa22802920ec01a38df83a0a33e0f76ac7957ed2f728eda13b713f5f4a3c",
+      "png_sha256": "8d97ea355109d6f823d3f9ee5a16383b26964742c327405c8f71112718a1f90e",
+      "range": [
+        127,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/chatgpt-shell-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/sand"
+      ],
+      "pixel_sha256": "398a6c5cead9f70fa2e299504e212f3b5bbeec63c77fff42326d18fcd7e3cbd2",
+      "png_sha256": "d040caf2912feff81b763a6ef75a374d0816fdf40be4795551ded0f878acb784",
+      "range": [
+        144,
+        146
+      ]
+    },
+    "res://source_operators/moth_finish/assets/chatgpt-vent-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "5a31ad90d36d81dc7d6a59d5477afa8244cd36717ae7e01597f88135663eada6",
+      "png_sha256": "bb7d61066342bfa7d93e191928dc5a267d8058a549fbab6936f7a77b5b727601",
+      "range": [
+        185,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/chatgpt-vent-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "fa07850d92b1b6c7169b56d54f4dda5f5f7cfed4bbdbe77f4950fb2ed3681aab",
+      "png_sha256": "20da66d3e265fd88e6ff17e4cd55036a100f64149777015438aaecf782c56f61",
+      "range": [
+        76,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/chatgpt-vent-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "195c756d5f435723be5f86635c004c81423206a7da4affa06ea9901a5b59c152",
+      "png_sha256": "9abb8b644934701aae524cc5535ff39a6f5b29a66b61b7a1d343f92e2d80789b",
+      "range": [
+        153,
+        231
+      ]
+    },
+    "res://source_operators/moth_finish/assets/claude-board-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 1,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "668f8bc7cc1fbe243687ef6da84cb930ea9be6aa95a67a8966eb46dd45cf8cad",
+      "png_sha256": "cda20181b673a9a2fe78abdc3c2e45619c52372ba2f040bcabdc645c4f189acb",
+      "range": [
+        179,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/claude-board-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 1,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "50511f47cce56e1fa66e924d4c11aee1f5028231e80c0ef9b67bf8d43fd0ce72",
+      "png_sha256": "a55ec98a506faf7f2ca4ed5337ed6331e07209de118196b38bdb850f3cdfe5c2",
+      "range": [
+        79,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/claude-board-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 1,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "3dab0fc7dacb56c11e6a3ad2251e5f45daae479502adf2ee8717abe5a5305b87",
+      "png_sha256": "a1eae3de06c5be195de5c8e262132a5b588fad75e26085eb6171bdd62a5f04e3",
+      "range": [
+        144,
+        215
+      ]
+    },
+    "res://source_operators/moth_finish/assets/claude-panel-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 1,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/hex_paneling"
+      ],
+      "pixel_sha256": "ee3f24bce5d8746e94ffaac342a7a91658ecb11a0e2e5c85c7bbbfa17c5f0823",
+      "png_sha256": "804cd267ac4bace12d51ccdceb98d3dd3d5c0722832695eace9756ed95e5acd9",
+      "range": [
+        194,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/claude-panel-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 1,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/hex_paneling"
+      ],
+      "pixel_sha256": "e9eb2eefb02059f726571fc794a2dc6ffb9330a58025099b8498e2316c994ce0",
+      "png_sha256": "316a4d886cc21740fc741a6d97d8feb9b8c145ddaa27ffceffb184627f5593a1",
+      "range": [
+        79,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/claude-panel-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 1,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/hex_paneling"
+      ],
+      "pixel_sha256": "5c3b92f78a7dfe136d0ebf4f09b36c8eb3182aee55185c74181c8d6b42bb1258",
+      "png_sha256": "b7a458f8ffa896a39e291a98fff14880c3034110cef7c9454dae6027dd408024",
+      "range": [
+        123,
+        192
+      ]
+    },
+    "res://source_operators/moth_finish/assets/claude-shell-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 1,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/sand"
+      ],
+      "pixel_sha256": "2a63034e4fd384d0e1655836a15d3c77ca9fe8d7a4b70031e47250a59ce2326a",
+      "png_sha256": "fa39e78e13fd4b5793528eabb848c98a02fbec6ed0464d51008c8de973660e49",
+      "range": [
+        245,
+        246
+      ]
+    },
+    "res://source_operators/moth_finish/assets/claude-shell-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 1,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/sand"
+      ],
+      "pixel_sha256": "3883fa22802920ec01a38df83a0a33e0f76ac7957ed2f728eda13b713f5f4a3c",
+      "png_sha256": "8d97ea355109d6f823d3f9ee5a16383b26964742c327405c8f71112718a1f90e",
+      "range": [
+        127,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/claude-shell-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 1,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/sand"
+      ],
+      "pixel_sha256": "398a6c5cead9f70fa2e299504e212f3b5bbeec63c77fff42326d18fcd7e3cbd2",
+      "png_sha256": "d040caf2912feff81b763a6ef75a374d0816fdf40be4795551ded0f878acb784",
+      "range": [
+        144,
+        146
+      ]
+    },
+    "res://source_operators/moth_finish/assets/claude-vent-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 1,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "82cb7fa1bb2335c0d736d7f3419f0e89a15e0608711bacb865a43a060d528249",
+      "png_sha256": "b9ccd5e2baf4a6f018e5425eb45054e72137b45e5c7fa8567c780bd6e4e56d8a",
+      "range": [
+        185,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/claude-vent-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 1,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "7665e78e645fd19c13468c3bd8baeca6779c18c316d143e45abfc89600cf22a1",
+      "png_sha256": "c8fd3c39a711eaee18120f78d4d144bc2e366491102dd9ed65de77454304d9e5",
+      "range": [
+        75,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/claude-vent-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 1,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "ae477f15e53c97e5bddb500af9228c36cd419e2e30842d301a71ebe3f11c7095",
+      "png_sha256": "b0e0a17fd93ea1360a957da865ce36df2b181660dc3dc9053e5b3d3ecd544df3",
+      "range": [
+        155,
+        232
+      ]
+    },
+    "res://source_operators/moth_finish/assets/deepseek-board-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 5,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "833e8dc4e53acced0255184aeeee9a91192b9e1deb660b03399e27bc275b2cad",
+      "png_sha256": "ef62736cea3e5b4a554517bbc9a31e4c8d4db217617c43f49cf0a33596b0b85e",
+      "range": [
+        181,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/deepseek-board-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 5,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "3a28c8afe92f167b6a143a313904e2378011e860a1726aad5c8cb42ee191726b",
+      "png_sha256": "2d39d30250fb36d36b870d4dbe92ba8542d6fce20ae3e59b94c2e64ef40527fa",
+      "range": [
+        76,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/deepseek-board-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 5,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "90c0cc11099a4d2b3d5f2baeb373c6760677b0b1a69e627cf04bd78767843ff0",
+      "png_sha256": "d454b910e4fe968b8ca9309d52e17d8600593c9a119f206813582d5f44021229",
+      "range": [
+        144,
+        215
+      ]
+    },
+    "res://source_operators/moth_finish/assets/deepseek-panel-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 5,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "d5d8c5d5f4ef14bcc9b1a9a60f2853011103c09e51e79a956ea94ef835b1e83b",
+      "png_sha256": "a94ead7984118f2d81ccf8d4806b6f0a9de30fc7e85651ddd2d3041c2866204e",
+      "range": [
+        182,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/deepseek-panel-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 5,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "96020bbf741d597bca5e8acbcbf4c88c706667fb0205a97150dc5d2ac0804c3e",
+      "png_sha256": "f93e7aece64d8fa1fc4e2fea1d81e3d69de275312eeb5864853fcb72fe9c27dd",
+      "range": [
+        76,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/deepseek-panel-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 5,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "c261291caac727b1a29ef2236e1ddd4d0886eb0d4fd77160289c134e234fca2a",
+      "png_sha256": "fe996cd86ba848bd3f48315e7caec10448468ed09d27da8cecba9a87e0dd42ce",
+      "range": [
+        123,
+        193
+      ]
+    },
+    "res://source_operators/moth_finish/assets/deepseek-shell-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 5,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "0aaf074a98b6766cef2a0c86d595e621794d3195ac82817c6e75fc80d0df1c11",
+      "png_sha256": "521778fd6134512bf5e4f4b5b1ba6313ef4723effc7e5a507334663db6541c08",
+      "range": [
+        244,
+        247
+      ]
+    },
+    "res://source_operators/moth_finish/assets/deepseek-shell-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 5,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "30555666a8fa5c3b281479866229a34834bc091a4367a93dfe244322bd2e1fe8",
+      "png_sha256": "d7aa8059cbccbce1e1fe3892785805d81add76c19bd8a2bc8f3e03872b7e866b",
+      "range": [
+        127,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/deepseek-shell-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 5,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "7bb34d73160a06363a04e612a150772c7f0667c36d9406a0eea555b40ebe92b6",
+      "png_sha256": "0df0d589c8472110db8ff47766aacc67bb3ee0b9e84117ad25582d58589d56ce",
+      "range": [
+        144,
+        147
+      ]
+    },
+    "res://source_operators/moth_finish/assets/deepseek-vent-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 5,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "612d0f05382546accdc93a1dacab1044a2f37a4d0168a1b0506d2eb663fc610b",
+      "png_sha256": "054fa09a59d9f5400963dcd38c3bec126247749dddce78e182f8440faf22eae0",
+      "range": [
+        170,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/deepseek-vent-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 5,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "441aacbbea2010299a1baaae359bd9d2cc4e29dcf17f37f8090faf3d140eef33",
+      "png_sha256": "a62c1b5fe17bac274199ef86c00f93d02b3dc9ec56385639bcddb641d73ebfe8",
+      "range": [
+        74,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/deepseek-vent-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 5,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "fd84a2990287008d42bb2575afaa897e15a7bd24c07f6d817f37bbd9451c8e6b",
+      "png_sha256": "f6c16b83657f8bbea33ab2bb16eeeb6e70498a3bda18bff123f0d1a95906e70f",
+      "range": [
+        152,
+        232
+      ]
+    },
+    "res://source_operators/moth_finish/assets/gemini-board-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 4,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "db211e68e52270217568e3460beb841cc67fc65aa3e4689fbdf7fdfc433642d4",
+      "png_sha256": "4181f80763b8d503fa1ade6168e434af7ed3a4ba04620ec434c1c422299e0efc",
+      "range": [
+        183,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/gemini-board-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 4,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "791c6981af01b87b6c287afb655d857ffafd8a8bbe9b6837e969eda59d15c680",
+      "png_sha256": "a6fbc19a240839c18ea066b79a9bda308f9e2301b3138bfe2334c8711a41cd3e",
+      "range": [
+        79,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/gemini-board-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 4,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "d3ecdcca13b4cca7747ff6f7fa07e5b0f46b5fd70243365c49db11ef281eb45a",
+      "png_sha256": "15b3f4c4a3260ca9154c68a8f108cbc6856e55d6c8403c4181f2fcb46fa1a1b9",
+      "range": [
+        142,
+        217
+      ]
+    },
+    "res://source_operators/moth_finish/assets/gemini-panel-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 4,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/hex_paneling"
+      ],
+      "pixel_sha256": "fe9b323140402eeb11e6b0e3408c9d2f7a70133d44f1d6d0d1d7e51a8356bddc",
+      "png_sha256": "038c47266d052f37dd97ce6dbedd502c455e67b1b3e397f3cc57ef4e84317199",
+      "range": [
+        193,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/gemini-panel-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 4,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/hex_paneling"
+      ],
+      "pixel_sha256": "2012645c97a25967adff104595a3ae43cd9d4c4ba836cf9a9278305aa645d610",
+      "png_sha256": "83219f2831065fd02a116cf5d51a9913d957fc2b2eded586d8a4b69cf1aeeb54",
+      "range": [
+        79,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/gemini-panel-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 4,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/hex_paneling"
+      ],
+      "pixel_sha256": "9001a85c7ef97154e6365088be6e7576a4e1ed0efdc2af93e450bbda5406a44b",
+      "png_sha256": "c20d3d6cfe27bf62cfcf2dc4f51ca4e3138e603265f7c1e5c09ad5878a0adf92",
+      "range": [
+        123,
+        194
+      ]
+    },
+    "res://source_operators/moth_finish/assets/gemini-shell-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 4,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/sand"
+      ],
+      "pixel_sha256": "2a63034e4fd384d0e1655836a15d3c77ca9fe8d7a4b70031e47250a59ce2326a",
+      "png_sha256": "fa39e78e13fd4b5793528eabb848c98a02fbec6ed0464d51008c8de973660e49",
+      "range": [
+        245,
+        246
+      ]
+    },
+    "res://source_operators/moth_finish/assets/gemini-shell-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 4,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/sand"
+      ],
+      "pixel_sha256": "3883fa22802920ec01a38df83a0a33e0f76ac7957ed2f728eda13b713f5f4a3c",
+      "png_sha256": "8d97ea355109d6f823d3f9ee5a16383b26964742c327405c8f71112718a1f90e",
+      "range": [
+        127,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/gemini-shell-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 4,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/sand"
+      ],
+      "pixel_sha256": "398a6c5cead9f70fa2e299504e212f3b5bbeec63c77fff42326d18fcd7e3cbd2",
+      "png_sha256": "d040caf2912feff81b763a6ef75a374d0816fdf40be4795551ded0f878acb784",
+      "range": [
+        144,
+        146
+      ]
+    },
+    "res://source_operators/moth_finish/assets/gemini-vent-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 4,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "a28bca274afb452de381f43b9a0be009508faef026502ae62e9a4088f732725a",
+      "png_sha256": "4c88a5bf84917f359f25282857c2a3d0fb1e8b4288cf96f211a2d4a44ac18a75",
+      "range": [
+        170,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/gemini-vent-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 4,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "872828f8702141dcbf5544428ddc45c386193582003f4e1623a978c1ad547646",
+      "png_sha256": "13c3acc07a2111d6c828fb94a6cbaf01f5f67febf70791159fa07ad19c78f132",
+      "range": [
+        73,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/gemini-vent-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 4,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "e3ffd0e414539b2986f586d4662e934a87b8bbe0dc7a6b757f7cb8c3429756e5",
+      "png_sha256": "2f5bd5d2721accc3ee6a293173d7a063ae7816ccc55412d0cc8f82e7f2cfe1ee",
+      "range": [
+        152,
+        233
+      ]
+    },
+    "res://source_operators/moth_finish/assets/grok-board-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 2,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "a19f01bab49d75a2bf71a079f4916c823215f930497247ae1e425becff2a5582",
+      "png_sha256": "337771c80502b84741df74793a5f43d6e52ea98b19fbb646a5ae68f05714c7fb",
+      "range": [
+        181,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/grok-board-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 2,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "7d8d4867dda66a5402b5fd3f7cf9cf180f332d54e78819e6d539a3b65455f775",
+      "png_sha256": "600bd6e6df41d721372734af9607663bbd000dedea40a07e41206ccd0eda7403",
+      "range": [
+        79,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/grok-board-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 2,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "2db00aafb40b58be6f646cd69b8e2be67c2f9a41f0b56aefb3fc927afd42a01b",
+      "png_sha256": "981b05923cf42b8f2d49e188731f8170a57443b5fe11b6860129d4d0dce4b6bf",
+      "range": [
+        144,
+        215
+      ]
+    },
+    "res://source_operators/moth_finish/assets/grok-panel-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 2,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "f2cef58afbdba69cfc3765e4777b14410e8367b7b114b390a6d632e9c21bce2a",
+      "png_sha256": "6a0bc27de802c0d1e74e845954163548e50a2eeb67bbc6346cf41fca895bce98",
+      "range": [
+        194,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/grok-panel-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 2,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "845e7115f504f149870ee3bbba5f91deca9dd201018cbd4b1bddecb64145beca",
+      "png_sha256": "cefe3ad47db4c4c86eed1f95f761461d1a279fdb07571cc505c58f67405407d0",
+      "range": [
+        79,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/grok-panel-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 2,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "5baa9b8227bef289a2771e8bcd7f0ef306efa522707d71bd770df28c63d77aeb",
+      "png_sha256": "baff37887702b75bc2c50066b81768178e2e28017957cfca98af62326090f154",
+      "range": [
+        124,
+        194
+      ]
+    },
+    "res://source_operators/moth_finish/assets/grok-shell-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 2,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "0aaf074a98b6766cef2a0c86d595e621794d3195ac82817c6e75fc80d0df1c11",
+      "png_sha256": "521778fd6134512bf5e4f4b5b1ba6313ef4723effc7e5a507334663db6541c08",
+      "range": [
+        244,
+        247
+      ]
+    },
+    "res://source_operators/moth_finish/assets/grok-shell-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 2,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "30555666a8fa5c3b281479866229a34834bc091a4367a93dfe244322bd2e1fe8",
+      "png_sha256": "d7aa8059cbccbce1e1fe3892785805d81add76c19bd8a2bc8f3e03872b7e866b",
+      "range": [
+        127,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/grok-shell-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 2,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "7bb34d73160a06363a04e612a150772c7f0667c36d9406a0eea555b40ebe92b6",
+      "png_sha256": "0df0d589c8472110db8ff47766aacc67bb3ee0b9e84117ad25582d58589d56ce",
+      "range": [
+        144,
+        147
+      ]
+    },
+    "res://source_operators/moth_finish/assets/grok-vent-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 2,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "1d275d21eecda5fc5a4bad811e764309df17fe784ea7a6f9d91fb5704eae5401",
+      "png_sha256": "d91055e5ddb9d1cfde7562ccaaf42e382af572dbbba291357b0d006d7f16622e",
+      "range": [
+        169,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/grok-vent-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 2,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "d36e12f23abf15324cb929d3c3c7690e24ef14fbddf99f13174760fe277ef00a",
+      "png_sha256": "4d2e3dba783b3d3f36aebf9f18775391647fa369757ca68c6acf6c80773c5ecc",
+      "range": [
+        74,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/grok-vent-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 2,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "77b2e6fabc3976edc10d29fdc8bb398bf56dc52b44237f1bd709d490d0ce9eaa",
+      "png_sha256": "25a0fd0fb26f330eb592e23344f9e8a6b9f2beb954463d6303d1a1f91435a235",
+      "range": [
+        152,
+        234
+      ]
+    },
+    "res://source_operators/moth_finish/assets/kimi-board-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 7,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "6877cd8a941fad4050e6fa38bea171f3f8127b524cbebed93220e7aeeda72b3a",
+      "png_sha256": "438dd726fc1b1031e9e7220e7e546199cb89afa2603fbf54151a6c6b552a9a57",
+      "range": [
+        183,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/kimi-board-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 7,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "9480a8be3d899e7c2b500d71607c1998213b0ba63bfc8d02a27bff61465746ef",
+      "png_sha256": "de4b7761304239b09aa77a15dc92fcc9987614c1d702faa37a5d747dfe3101f2",
+      "range": [
+        79,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/kimi-board-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 7,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "9312f49808a87047a8e08d064431467fd69db1c1cae146a053cb04766391beed",
+      "png_sha256": "3a5f8dd988ebb1b13a7f7bb1b7db22d4e9d48ecc45257f79036bd384d557dddb",
+      "range": [
+        144,
+        215
+      ]
+    },
+    "res://source_operators/moth_finish/assets/kimi-panel-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 7,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/hex_paneling"
+      ],
+      "pixel_sha256": "0d0d0bdaf7bb88b674dc3658620e36d746b3319108c901ef066b87948b6fdf16",
+      "png_sha256": "cfd235f845b7cf72f6d9a92d67b89988e10a09eb11cb3fe2beadda2510458aa7",
+      "range": [
+        194,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/kimi-panel-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 7,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/hex_paneling"
+      ],
+      "pixel_sha256": "f2a2e737c404276dac316be5367dc3cbb695976d978d1ac2de1c347f346d002a",
+      "png_sha256": "347f4e585590f5f827ac02ea6dfabc88205919ba78f225014fe409296ba6efd6",
+      "range": [
+        79,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/kimi-panel-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 7,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/hex_paneling"
+      ],
+      "pixel_sha256": "da8cef2f947240acd59d586b3f288809d8e2c2af9b4068f2a4041629f672d7b9",
+      "png_sha256": "79f826714312f61743c94f2e116d242316f7174313babc31472714d4d534976a",
+      "range": [
+        123,
+        193
+      ]
+    },
+    "res://source_operators/moth_finish/assets/kimi-shell-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 7,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/sand"
+      ],
+      "pixel_sha256": "2a63034e4fd384d0e1655836a15d3c77ca9fe8d7a4b70031e47250a59ce2326a",
+      "png_sha256": "fa39e78e13fd4b5793528eabb848c98a02fbec6ed0464d51008c8de973660e49",
+      "range": [
+        245,
+        246
+      ]
+    },
+    "res://source_operators/moth_finish/assets/kimi-shell-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 7,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/sand"
+      ],
+      "pixel_sha256": "3883fa22802920ec01a38df83a0a33e0f76ac7957ed2f728eda13b713f5f4a3c",
+      "png_sha256": "8d97ea355109d6f823d3f9ee5a16383b26964742c327405c8f71112718a1f90e",
+      "range": [
+        127,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/kimi-shell-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 7,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/sand"
+      ],
+      "pixel_sha256": "398a6c5cead9f70fa2e299504e212f3b5bbeec63c77fff42326d18fcd7e3cbd2",
+      "png_sha256": "d040caf2912feff81b763a6ef75a374d0816fdf40be4795551ded0f878acb784",
+      "range": [
+        144,
+        146
+      ]
+    },
+    "res://source_operators/moth_finish/assets/kimi-vent-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 7,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "f128ad067641b9feb8d12fb6848571cce2bc1a80987c7d4b3d2ec04fd37f3dc0",
+      "png_sha256": "a63e96a10cc2a373d862affaff17ae37e15066a677632131aa9280797ef33bef",
+      "range": [
+        185,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/kimi-vent-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 7,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "853159aa0c0bc1de34b81543f2b1f9ca3e0c1f569e55a8c65343ef6a9c37ca20",
+      "png_sha256": "e1069432d561ed5ab35bbfa57ead75d60dfeab9d6238fe8e042821e03aa3f8a3",
+      "range": [
+        75,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/kimi-vent-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 7,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "d6dfc8ace347275728dd651e64a0a301755acf7bd01a91431f6af24dbc6c600b",
+      "png_sha256": "2da8d1eed427cc1285a9bdc2c5e6a17ae8eca46eaaa57ab974059e8b433ad02f",
+      "range": [
+        152,
+        231
+      ]
+    },
+    "res://source_operators/moth_finish/assets/meta-board-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 3,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "9e77b25c7cc0cc7aa6a181ae770967bd3b854a7caa3b9a1fef697aadab6568b9",
+      "png_sha256": "c2eed2065dac4223c6b3202e11aa8d4f9f69d02674db4397e6f6e5865d977ee8",
+      "range": [
+        181,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/meta-board-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 3,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "4c591504b7f26aa6e53117c463beb67ceed0049a6666b1bf7be17ea4b2ed1f80",
+      "png_sha256": "0b6bd56d6484801bda6dcc2d6111d4062d2ea82564705f148e808b77cee3ff36",
+      "range": [
+        78,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/meta-board-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 3,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "220cdb7d91afa884003ddb21696742e0b041e3d0a30ebce063b5ce4b1159c5a5",
+      "png_sha256": "4c8f0065ac838f65dfdd35d9cb80bef14071d883814f2c9705610b689bd00e16",
+      "range": [
+        144,
+        218
+      ]
+    },
+    "res://source_operators/moth_finish/assets/meta-panel-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 3,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/riveted_armor"
+      ],
+      "pixel_sha256": "6acce834b5073142226549884104a42abaea6624bf7735c5a0b8267e3cf8de98",
+      "png_sha256": "ccf8b71eac2c33cb79832a09798a9662858f9f8d52be7917c930fa2768f6aa81",
+      "range": [
+        183,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/meta-panel-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 3,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/riveted_armor"
+      ],
+      "pixel_sha256": "0d3d8fc41cfedd55427e185ceb2940ca953263c1046c9009835dcd0534d60890",
+      "png_sha256": "4f0e92734484d2ca40bf402f49fd88dfa9307f21dc3f0f3b094c63b0077f7a51",
+      "range": [
+        78,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/meta-panel-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 3,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/riveted_armor"
+      ],
+      "pixel_sha256": "fe0b8e2fb867e7555e24bd389a2092b8748d0130ba5f78c291f93b18f6f927aa",
+      "png_sha256": "23fede39fea10a5c8f59e69a5ccb90aadea9b48e523b4b5f525a282e20e99611",
+      "range": [
+        141,
+        217
+      ]
+    },
+    "res://source_operators/moth_finish/assets/meta-shell-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 3,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "0aaf074a98b6766cef2a0c86d595e621794d3195ac82817c6e75fc80d0df1c11",
+      "png_sha256": "521778fd6134512bf5e4f4b5b1ba6313ef4723effc7e5a507334663db6541c08",
+      "range": [
+        244,
+        247
+      ]
+    },
+    "res://source_operators/moth_finish/assets/meta-shell-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 3,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "30555666a8fa5c3b281479866229a34834bc091a4367a93dfe244322bd2e1fe8",
+      "png_sha256": "d7aa8059cbccbce1e1fe3892785805d81add76c19bd8a2bc8f3e03872b7e866b",
+      "range": [
+        127,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/meta-shell-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 3,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "b8e340b3e78b5775b305aa0272eab99229c3fd80485d0066562b905b54c25723",
+      "png_sha256": "2e35421df7285b316c57c38490ddf20289ef11dc8151d466a349934e75292927",
+      "range": [
+        169,
+        173
+      ]
+    },
+    "res://source_operators/moth_finish/assets/meta-vent-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 3,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "1d1fc3ff7817f9c472dea8da3afcc345a0630cb8b7bd4815eb2c17e701c8bd72",
+      "png_sha256": "eb2e64cf4ee5625fe86fbd4fbe6e3c3e07f4b20c2e68c8639610a5d75440c350",
+      "range": [
+        170,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/meta-vent-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 3,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "b733b34041fd97b8fee82040c1598c81d22ba91616566be8b732ecc61c24b5c1",
+      "png_sha256": "9b752dc9bb814daa3722a842dcca90e9e9bd08c8f6e17b38da652ada0d741247",
+      "range": [
+        75,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/meta-vent-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 3,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "794aec85d94c445e4e52c72b54a922463ebc04f72b80b5e359e841244fbd25fb",
+      "png_sha256": "f598cae70f17e77f19037746e4a65015fafd3a9162b7166c68696cc117f50bdf",
+      "range": [
+        153,
+        234
+      ]
+    },
+    "res://source_operators/moth_finish/assets/mistral-board-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 6,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "b0756d2f14a6995e1c76c9d785372b210ab4d81b0e6a73fe21b4f02f1436604e",
+      "png_sha256": "11060ce202fc52779b48a360e894844292c678a93c54a0ae3023de7312ac9649",
+      "range": [
+        172,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/mistral-board-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 6,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "0ab627a17a3757640bfd2af4fbd58ef1cdeb7f89f59f162c131e8828ca452b99",
+      "png_sha256": "9d277404492fdc1f9082f835cc09aa1e79e34cef6ef9588180b4dffab181de3b",
+      "range": [
+        77,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/mistral-board-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 6,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "eddd14239bf0bb02895db35c49bc150e9b81003627678cab44581d8417ea986b",
+      "png_sha256": "cd4bd10e7cc8e9237f507999653152fee98a6b5c6151e585d7eac5db3d09f3f7",
+      "range": [
+        143,
+        219
+      ]
+    },
+    "res://source_operators/moth_finish/assets/mistral-panel-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 6,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "af32a1afbbfb8e889a2468cbaaa673f3607d9e78092d72fde71e104d120f4e42",
+      "png_sha256": "90278a94dd3602be6b0c1c1cf271fe1ee2391b23f5736490749788dabce9a2be",
+      "range": [
+        193,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/mistral-panel-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 6,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "d8799d2c00c258a70329928db459be32f5ef95c9874cc13ead24be1951815c97",
+      "png_sha256": "87cb626706784dd15e5d4bdab4e9cbf42ccbf16c7036b3962870ed64a5caee6d",
+      "range": [
+        79,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/mistral-panel-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 6,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "31d517980d73fd55a6d2866a30a9dd652978f18be266cb0c189d28e48e30e11c",
+      "png_sha256": "d51fa70bd74377df40230185df43424e5c56dfd03ee91574ac705ea5f7cb9a14",
+      "range": [
+        80,
+        151
+      ]
+    },
+    "res://source_operators/moth_finish/assets/mistral-shell-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 6,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "c79408ae4a1ab9ea32ab9d8f4cb8e1b20a081b8ec94804607e3a68c3dcda3cd1",
+      "png_sha256": "ec08755ddb0776974494779872c3c766b455a7a0719b42047e92fc9af07276bd",
+      "range": [
+        244,
+        247
+      ]
+    },
+    "res://source_operators/moth_finish/assets/mistral-shell-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 6,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "07b00750e81c260a62752672a13cd6df3e2ecf78a970635b7700632b0e48c76b",
+      "png_sha256": "6a2a8e68a2edaede498413cad5e1324eaa84148f28392802978658317dd22f39",
+      "range": [
+        127,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/mistral-shell-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 6,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "17c63f605d45dc3e25e47398c0a175ba854c3d028e0aa1dc50cec39fa5dd2eed",
+      "png_sha256": "ab8f8deb355b4ceedf48222f0f3aa13e28e22c5d65185b8715ff7ed07df98920",
+      "range": [
+        108,
+        111
+      ]
+    },
+    "res://source_operators/moth_finish/assets/mistral-vent-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 6,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "789f71b7b0165d779ee09f31200256af705ea25e934f7e13d1dd33e061be2a0e",
+      "png_sha256": "c40582858529f61fd0b629116055fcda05263d53bba377bcc56ee78bbcedce2b",
+      "range": [
+        186,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/mistral-vent-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 6,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "262e91c52f3bbceac19eb6981a5319eab2e9481be383afef2c7598602104171e",
+      "png_sha256": "f9be708c302a873da715a0b127388a30f77c0cf3716b476a7600d7bfb1d7ed03",
+      "range": [
+        76,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/mistral-vent-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 6,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "64fd92dc4dee5b8749370d6e5fa161b2f3ec6434e66d0ce7dd1f70680de9105e",
+      "png_sha256": "816aa64ad25092a6d1411b36553a5fbf70fa53ad0b8f4262da3f743c30a6a5aa",
+      "range": [
+        152,
+        232
+      ]
+    },
+    "res://source_operators/moth_finish/assets/qwen-board-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 8,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "995dfa49548d69825016ced1c83c2b1f7d038252f2d3d08d464709108f08dc76",
+      "png_sha256": "dd000c40c9b28d8802abf0016c2ed717f46008fc7e338954111f2c5eec61f72b",
+      "range": [
+        183,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/qwen-board-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 8,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "c31445732e4b632bd4ca7f0763eb760c2763f596110936535c8b3f828a2253b9",
+      "png_sha256": "e20a62da1085641045685c44921965dffe580c92996e5ef645b94dfd86cd082e",
+      "range": [
+        79,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/qwen-board-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "board",
+        "operator_index": 8,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/circuit_board-etch"
+      ],
+      "pixel_sha256": "e062a7adf29db4a1aa7da94742d44c7872bbc3f21d2d011869fa917efda8f72e",
+      "png_sha256": "1ca6881722510848de6da7f70aa2b8bfabdfe0da1585006be5cc2226156df391",
+      "range": [
+        143,
+        215
+      ]
+    },
+    "res://source_operators/moth_finish/assets/qwen-panel-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 8,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "ba337c4b42b92242624c36f18b9843ded0cb04b5cc310139e2b11f93d32e432f",
+      "png_sha256": "8962b5eae92e7483d4a4a96840f9455790739aa20ea2eaaad5d63714d4ca7787",
+      "range": [
+        185,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/qwen-panel-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 8,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "931fe6ac1953a381bede8a4e40f2c3f7bbe13659025633745593239e4853d60f",
+      "png_sha256": "fefb05274dd78d67dc27e1c13faa395e7399b823d273e821f32704953aee79c7",
+      "range": [
+        79,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/qwen-panel-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "panel",
+        "operator_index": 8,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "9a399388053b29e9e20b5556c2e4efc224099236725c3922a5ec99af9eb94520",
+      "png_sha256": "3a40c5d1fd32bdddfd06e433751528bbfbdff3a2f8a4e67e5778076f42c5e0c4",
+      "range": [
+        124,
+        193
+      ]
+    },
+    "res://source_operators/moth_finish/assets/qwen-shell-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 8,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "0aaf074a98b6766cef2a0c86d595e621794d3195ac82817c6e75fc80d0df1c11",
+      "png_sha256": "521778fd6134512bf5e4f4b5b1ba6313ef4723effc7e5a507334663db6541c08",
+      "range": [
+        244,
+        247
+      ]
+    },
+    "res://source_operators/moth_finish/assets/qwen-shell-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 8,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "30555666a8fa5c3b281479866229a34834bc091a4367a93dfe244322bd2e1fe8",
+      "png_sha256": "d7aa8059cbccbce1e1fe3892785805d81add76c19bd8a2bc8f3e03872b7e866b",
+      "range": [
+        127,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/qwen-shell-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "shell",
+        "operator_index": 8,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "7bb34d73160a06363a04e612a150772c7f0667c36d9406a0eea555b40ebe92b6",
+      "png_sha256": "0df0d589c8472110db8ff47766aacc67bb3ee0b9e84117ad25582d58589d56ce",
+      "range": [
+        144,
+        147
+      ]
+    },
+    "res://source_operators/moth_finish/assets/qwen-vent-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 8,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "f5f7bb8a1e7740dc17c86b9e9c8777ae101cb967a60eca94cb823c6139b8327e",
+      "png_sha256": "b3a6a624e60b4372c00b3af91e513865cc4c142f527d0dd54abf4cbc27313efe",
+      "range": [
+        168,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/qwen-vent-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 8,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "4c6455307da8542ecdfc307abd3fe0c8bc16cf26fb1ce6d70d169232583b841b",
+      "png_sha256": "84b3387eff12aa156bd472111f34e242674216e3792920aa5105b33372616069",
+      "range": [
+        75,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/qwen-vent-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "vent",
+        "operator_index": 8,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/metal_grating"
+      ],
+      "pixel_sha256": "d64a7085ad1b37f9b9c05a4993393d4e9b33fdd9a3aa8aeea406194b4f664de2",
+      "png_sha256": "899792dbac5ff5dbdfd069f23d7855e416ce34cab17bda45413e626e1d160e41",
+      "range": [
+        152,
+        234
+      ]
+    },
+    "res://source_operators/moth_finish/assets/shared-precision-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "precision",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "0aaf074a98b6766cef2a0c86d595e621794d3195ac82817c6e75fc80d0df1c11",
+      "png_sha256": "521778fd6134512bf5e4f4b5b1ba6313ef4723effc7e5a507334663db6541c08",
+      "range": [
+        244,
+        247
+      ]
+    },
+    "res://source_operators/moth_finish/assets/shared-precision-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "precision",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "30555666a8fa5c3b281479866229a34834bc091a4367a93dfe244322bd2e1fe8",
+      "png_sha256": "d7aa8059cbccbce1e1fe3892785805d81add76c19bd8a2bc8f3e03872b7e866b",
+      "range": [
+        127,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/shared-precision-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "precision",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "1834c86f7d07ba9355397e1b7164bc946accd6055f63dcf836fa02b27b04f5ca",
+      "png_sha256": "a6212888552861ec2469b2f508a399112dfae440bf980337a194bcdd4882b623",
+      "range": [
+        120,
+        131
+      ]
+    },
+    "res://source_operators/moth_finish/assets/shared-rubber-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "rubber",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/carbon_fiber"
+      ],
+      "pixel_sha256": "59bea8edd887e243784c6ac39c4b02ad64bbf359733ef0749fb4a00da1aea6e7",
+      "png_sha256": "47cbeef4c2483339b4f0da3b7fd5981bc204257c4b07b6be93e71be794640103",
+      "range": [
+        244,
+        247
+      ]
+    },
+    "res://source_operators/moth_finish/assets/shared-rubber-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "rubber",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/carbon_fiber"
+      ],
+      "pixel_sha256": "f39f8eecd677feadd3adc4b21646ffc09c74666856a68037bf3ff83ce0bd8b10",
+      "png_sha256": "e31e94f0089cb3d7edd935e8efef819ff8ea84227634fd7c726f5d83fb50cf29",
+      "range": [
+        216,
+        233
+      ]
+    },
+    "res://source_operators/moth_finish/assets/shared-trim-albedo.png": {
+      "channels": 3,
+      "color_space": "srgb",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "trim",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "neutral RGB multiplier; opaque; no tint or emission",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "b93a771e50b01bf6afdcf4fb273d1048eeceed0723ee996ae1096feffb4ed526",
+      "png_sha256": "6def0d240b4b7b95abefacbb4241a96c0733af956883660469d47a8d075bb49e",
+      "range": [
+        233,
+        250
+      ]
+    },
+    "res://source_operators/moth_finish/assets/shared-trim-normal.png": {
+      "channels": 3,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "trim",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "98cdfc1c80494e7fe0332c1cc4a0d371d4af4352958fb3595420744761605c30",
+      "png_sha256": "2b476fdf4ea2c6b6f640cc90b79aa6b1765ff1848afbb62d27a4235669eccf6b",
+      "range": [
+        115,
+        255
+      ]
+    },
+    "res://source_operators/moth_finish/assets/shared-trim-roughness.png": {
+      "channels": 1,
+      "color_space": "linear",
+      "derivation": {
+        "function": "pixels(index, style)",
+        "layout": "trim",
+        "operator_index": 0,
+        "resolution": 256
+      },
+      "dimensions": [
+        256,
+        256
+      ],
+      "meaning": "R luminance = physical perceptual roughness; gain 1",
+      "moth_keys": [
+        "textures/brushed_metal"
+      ],
+      "pixel_sha256": "49fe74124ea4ef53eb8b5be05c31e982525ad5d0bed50bb1e57283dbd2a2e620",
+      "png_sha256": "ab83479ff4a9f14a91600f19f565232e929ef87afb50fc4a35a86301c991dd52",
+      "range": [
+        83,
+        104
+      ]
+    }
+  },
+  "version": 1
+}

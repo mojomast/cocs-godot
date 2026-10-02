@@ -1,0 +1,1483 @@
+{
+  "version": 1,
+  "map_id": "gravemill-foundry",
+  "geometry_hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+  "materials": [
+    {
+      "source": "GM / soot",
+      "family": "pearl-ceramic",
+      "options": {
+        "variant": "cast",
+        "tint": "777872",
+        "tiles_per_metre": 1.35,
+        "roughness": 0.79,
+        "albedo_gain": 1.25,
+        "texture_strength": 0.24,
+        "texture_saturation": 0,
+        "normal_strength": 0.1,
+        "metallic": 0.02,
+        "specular_strength": 0.22,
+        "detail_strength": 0.08,
+        "ao_strength": 0.16,
+        "roughness_variation": 0.1,
+        "glow": false,
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610240
+      }
+    },
+    {
+      "source": "GM / mineral",
+      "family": "pearl-ceramic",
+      "options": {
+        "variant": "worn",
+        "tint": "b5ab97",
+        "tiles_per_metre": 1.15,
+        "roughness": 0.91,
+        "albedo_gain": 1.35,
+        "texture_strength": 0.35,
+        "texture_saturation": 0,
+        "normal_strength": 0.1,
+        "metallic": 0.02,
+        "specular_strength": 0.22,
+        "detail_strength": 0.08,
+        "ao_strength": 0.16,
+        "roughness_variation": 0.1,
+        "glow": false,
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610241
+      }
+    },
+    {
+      "source": "GM / copper",
+      "family": "oxidised-copper",
+      "options": {
+        "variant": "default",
+        "tint": "8b9682",
+        "tiles_per_metre": 1.2,
+        "roughness": 0.67,
+        "albedo_gain": 1.35,
+        "texture_strength": 0.22,
+        "texture_saturation": 0.08,
+        "normal_strength": 0.1,
+        "metallic": 0.38,
+        "specular_strength": 0.22,
+        "detail_strength": 0.08,
+        "ao_strength": 0.16,
+        "roughness_variation": 0.1,
+        "glow": false,
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610242
+      }
+    },
+    {
+      "source": "GM / brass",
+      "family": "brushed-alloy",
+      "options": {
+        "variant": "default",
+        "tint": "a78a58",
+        "tiles_per_metre": 1.4,
+        "roughness": 0.55,
+        "albedo_gain": 1.3,
+        "texture_strength": 0.18,
+        "texture_saturation": 0,
+        "normal_strength": 0.06,
+        "metallic": 0.46,
+        "specular_strength": 0.22,
+        "detail_strength": 0.08,
+        "ao_strength": 0.16,
+        "roughness_variation": 0.1,
+        "glow": false,
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "variation_mode": "manufactured",
+        "variation_strength": 0.12,
+        "variation_scale": 0.07,
+        "variation_seed": 610243
+      }
+    },
+    {
+      "source": "GM / ore",
+      "family": "pearl-ceramic",
+      "options": {
+        "variant": "worn",
+        "tint": "a7856c",
+        "tiles_per_metre": 1.25,
+        "roughness": 0.89,
+        "albedo_gain": 1.35,
+        "texture_strength": 0.32,
+        "texture_saturation": 0,
+        "normal_strength": 0.1,
+        "metallic": 0.02,
+        "specular_strength": 0.22,
+        "detail_strength": 0.08,
+        "ao_strength": 0.16,
+        "roughness_variation": 0.1,
+        "glow": false,
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610244
+      }
+    },
+    {
+      "source": "GM / chalk",
+      "family": "pearl-ceramic",
+      "options": {
+        "variant": "cast",
+        "tint": "c4bcaa",
+        "tiles_per_metre": 1.4,
+        "roughness": 0.82,
+        "albedo_gain": 1.2,
+        "texture_strength": 0.22,
+        "texture_saturation": 0,
+        "normal_strength": 0.1,
+        "metallic": 0.02,
+        "specular_strength": 0.22,
+        "detail_strength": 0.08,
+        "ao_strength": 0.16,
+        "roughness_variation": 0.1,
+        "glow": false,
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610246
+      }
+    },
+    {
+      "source": "GM / cooling-floor",
+      "family": "pearl-ceramic",
+      "options": {
+        "variant": "cast",
+        "tint": "93948b",
+        "tiles_per_metre": 1.2,
+        "roughness": 0.78,
+        "albedo_gain": 1.3,
+        "texture_strength": 0.3,
+        "texture_saturation": 0,
+        "normal_strength": 0.1,
+        "metallic": 0.02,
+        "specular_strength": 0.22,
+        "detail_strength": 0.08,
+        "ao_strength": 0.16,
+        "roughness_variation": 0.1,
+        "glow": false,
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610247
+      }
+    }
+  ],
+  "panels": [
+    {
+      "id": "crusher--72-abrasion--5",
+      "position": [
+        -76.993761,
+        4.4,
+        -25.824565
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        3.5,
+        2.6
+      ],
+      "texture": "metal",
+      "tint": "9b9588",
+      "essential": false
+    },
+    {
+      "id": "crusher--72-abrasion-0",
+      "position": [
+        -71.993761,
+        4.4,
+        -25.124565
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        3.5,
+        2.6
+      ],
+      "texture": "metal",
+      "tint": "9b9588",
+      "essential": false
+    },
+    {
+      "id": "crusher--72-abrasion-5",
+      "position": [
+        -66.993761,
+        4.4,
+        -24.424565
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        3.5,
+        2.6
+      ],
+      "texture": "metal",
+      "tint": "9b9588",
+      "essential": false
+    },
+    {
+      "id": "crusher--72-grease",
+      "position": [
+        -72.006239,
+        3.6,
+        -9.035435
+      ],
+      "rotation_degrees": [
+        0,
+        -7.96961039432136,
+        0
+      ],
+      "size": [
+        8,
+        0.8
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "686158",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.154,
+      "feather": 0.4,
+      "seed": 610027
+    },
+    {
+      "id": "crusher--72-hazard",
+      "position": [
+        -71.993761,
+        5.4,
+        -25.124565
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        7,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "c6ae72",
+      "essential": false
+    },
+    {
+      "id": "crusher--48-abrasion--5",
+      "position": [
+        -52.993761,
+        6.08,
+        -15.464565
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        3.5,
+        2.6
+      ],
+      "texture": "metal",
+      "tint": "9b9588",
+      "essential": false
+    },
+    {
+      "id": "crusher--48-abrasion-0",
+      "position": [
+        -47.993761,
+        6.08,
+        -14.764565
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        3.5,
+        2.6
+      ],
+      "texture": "metal",
+      "tint": "9b9588",
+      "essential": false
+    },
+    {
+      "id": "crusher--48-abrasion-5",
+      "position": [
+        -42.993761,
+        6.08,
+        -14.064565
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        3.5,
+        2.6
+      ],
+      "texture": "metal",
+      "tint": "9b9588",
+      "essential": false
+    },
+    {
+      "id": "crusher--48-grease",
+      "position": [
+        -48.006239,
+        5.28,
+        1.324565
+      ],
+      "rotation_degrees": [
+        0,
+        -7.96961039432136,
+        0
+      ],
+      "size": [
+        8,
+        0.8
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "686158",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.154,
+      "feather": 0.4,
+      "seed": 610032
+    },
+    {
+      "id": "crusher--48-hazard",
+      "position": [
+        -47.993761,
+        7.08,
+        -14.764565
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        7,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "c6ae72",
+      "essential": false
+    },
+    {
+      "id": "crusher-back-soot--94",
+      "position": [
+        -93.993761,
+        3.0,
+        9.795435
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        5,
+        4
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "8b8173",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.132,
+      "feather": 0.4,
+      "seed": 610034
+    },
+    {
+      "id": "crusher-back-soot--81",
+      "position": [
+        -80.993761,
+        3.0,
+        11.615435
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        5,
+        4
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "8b8173",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.132,
+      "feather": 0.4,
+      "seed": 610035
+    },
+    {
+      "id": "crusher-back-soot--61",
+      "position": [
+        -60.993761,
+        3.0,
+        14.415435
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        5,
+        4
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "8b8173",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.132,
+      "feather": 0.4,
+      "seed": 610036
+    },
+    {
+      "id": "crusher-back-soot--44",
+      "position": [
+        -43.993761,
+        3.0,
+        16.795435
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        5,
+        4
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "8b8173",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.132,
+      "feather": 0.4,
+      "seed": 610037
+    },
+    {
+      "id": "cooling--84--1-waterline",
+      "position": [
+        -83.993761,
+        12.8,
+        17.595435
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        5.2,
+        1.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "aba798",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
+      "seed": 610038
+    },
+    {
+      "id": "cooling--84--1-vent-grate",
+      "position": [
+        -83.993761,
+        14.6,
+        17.595435
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        3,
+        1.3
+      ],
+      "texture": "metal_grating",
+      "tint": "9b9c95",
+      "essential": false
+    },
+    {
+      "id": "cooling--84-1-waterline",
+      "position": [
+        -84.006239,
+        12.8,
+        30.884565
+      ],
+      "rotation_degrees": [
+        0,
+        -7.96961039432136,
+        0
+      ],
+      "size": [
+        5.2,
+        1.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "aba798",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
+      "seed": 610040
+    },
+    {
+      "id": "cooling--84-1-vent-grate",
+      "position": [
+        -84.006239,
+        14.6,
+        30.884565
+      ],
+      "rotation_degrees": [
+        0,
+        -7.96961039432136,
+        0
+      ],
+      "size": [
+        3,
+        1.3
+      ],
+      "texture": "metal_grating",
+      "tint": "9b9c95",
+      "essential": false
+    },
+    {
+      "id": "cooling--48--1-waterline",
+      "position": [
+        -47.993761,
+        12.8,
+        22.635435
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        5.2,
+        1.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "aba798",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
+      "seed": 610042
+    },
+    {
+      "id": "cooling--48--1-vent-grate",
+      "position": [
+        -47.993761,
+        14.6,
+        22.635435
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        3,
+        1.3
+      ],
+      "texture": "metal_grating",
+      "tint": "9b9c95",
+      "essential": false
+    },
+    {
+      "id": "cooling--48-1-waterline",
+      "position": [
+        -48.006239,
+        12.8,
+        35.924565
+      ],
+      "rotation_degrees": [
+        0,
+        -7.96961039432136,
+        0
+      ],
+      "size": [
+        5.2,
+        1.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "aba798",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
+      "seed": 610044
+    },
+    {
+      "id": "cooling--48-1-vent-grate",
+      "position": [
+        -48.006239,
+        14.6,
+        35.924565
+      ],
+      "rotation_degrees": [
+        0,
+        -7.96961039432136,
+        0
+      ],
+      "size": [
+        3,
+        1.3
+      ],
+      "texture": "metal_grating",
+      "tint": "9b9c95",
+      "essential": false
+    },
+    {
+      "id": "assay-0-32-enamel",
+      "position": [
+        48.493761,
+        19.0,
+        38.834565
+      ],
+      "rotation_degrees": [
+        0,
+        -7.96961039432136,
+        0
+      ],
+      "size": [
+        12,
+        2
+      ],
+      "texture": "weathered_concrete",
+      "tint": "c5bdab",
+      "essential": false
+    },
+    {
+      "id": "assay-0-40-enamel",
+      "position": [
+        48.506239,
+        19.0,
+        46.745435
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        12,
+        2
+      ],
+      "texture": "weathered_concrete",
+      "tint": "c5bdab",
+      "essential": false
+    },
+    {
+      "id": "assay-1-32-enamel",
+      "position": [
+        66.993761,
+        19.0,
+        41.424565
+      ],
+      "rotation_degrees": [
+        0,
+        -7.96961039432136,
+        0
+      ],
+      "size": [
+        15,
+        2
+      ],
+      "texture": "weathered_concrete",
+      "tint": "c5bdab",
+      "essential": false
+    },
+    {
+      "id": "assay-1-40-enamel",
+      "position": [
+        67.006239,
+        19.0,
+        49.335435
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        15,
+        2
+      ],
+      "texture": "weathered_concrete",
+      "tint": "c5bdab",
+      "essential": false
+    },
+    {
+      "id": "assay-2-32-enamel",
+      "position": [
+        84.493761,
+        19.0,
+        43.874565
+      ],
+      "rotation_degrees": [
+        0,
+        -7.96961039432136,
+        0
+      ],
+      "size": [
+        10,
+        2
+      ],
+      "texture": "weathered_concrete",
+      "tint": "c5bdab",
+      "essential": false
+    },
+    {
+      "id": "assay-2-40-enamel",
+      "position": [
+        84.506239,
+        19.0,
+        51.785435
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        10,
+        2
+      ],
+      "texture": "weathered_concrete",
+      "tint": "c5bdab",
+      "essential": false
+    },
+    {
+      "id": "kiln-44-heat",
+      "position": [
+        44.006239,
+        6.0,
+        -15.384565
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        2.5,
+        9
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "998473",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.143,
+      "feather": 0.4,
+      "seed": 610052
+    },
+    {
+      "id": "kiln-44-hazard",
+      "position": [
+        44.006239,
+        1.5,
+        -15.384565
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        2.5,
+        0.65
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d4b578",
+      "essential": false
+    },
+    {
+      "id": "kiln-80-heat",
+      "position": [
+        80.006239,
+        6.0,
+        -10.344565
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        2.5,
+        9
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "998473",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.143,
+      "feather": 0.4,
+      "seed": 610054
+    },
+    {
+      "id": "kiln-80-hazard",
+      "position": [
+        80.006239,
+        1.5,
+        -10.344565
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        2.5,
+        0.65
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d4b578",
+      "essential": false
+    },
+    {
+      "id": "kiln-104-heat",
+      "position": [
+        104.006239,
+        6.0,
+        -6.984565
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        2.5,
+        9
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "998473",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.143,
+      "feather": 0.4,
+      "seed": 610056
+    },
+    {
+      "id": "kiln-104-hazard",
+      "position": [
+        104.006239,
+        1.5,
+        -6.984565
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        2.5,
+        0.65
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d4b578",
+      "essential": false
+    },
+    {
+      "id": "kiln-rear-52-soot",
+      "position": [
+        52.006239,
+        4.0,
+        29.235435
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        9,
+        6
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "8b8277",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.132,
+      "feather": 0.4,
+      "seed": 610058
+    },
+    {
+      "id": "kiln-rear-72-soot",
+      "position": [
+        72.006239,
+        4.0,
+        32.035435
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        9,
+        6
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "8b8277",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.132,
+      "feather": 0.4,
+      "seed": 610059
+    },
+    {
+      "id": "kiln-rear-94-soot",
+      "position": [
+        94.006239,
+        4.0,
+        35.115435
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        9,
+        6
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "8b8277",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.132,
+      "feather": 0.4,
+      "seed": 610060
+    }
+  ],
+  "signs": [
+    {
+      "id": "crusher--72-isolate",
+      "position": [
+        -71.990988,
+        6.4,
+        -25.144372
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        6,
+        0.9
+      ],
+      "text": "ISOLATE / PINCH",
+      "foreground": "e8e3cf",
+      "background": "554532",
+      "essential": true
+    },
+    {
+      "id": "crusher--48-isolate",
+      "position": [
+        -47.990988,
+        8.08,
+        -14.784372
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        6,
+        0.9
+      ],
+      "text": "ISOLATE / PINCH",
+      "foreground": "e8e3cf",
+      "background": "554532",
+      "essential": true
+    },
+    {
+      "id": "crusher-sector",
+      "position": [
+        -93.990988,
+        7.0,
+        -65.224372
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        9,
+        1.3
+      ],
+      "text": "CRUSHER / C1",
+      "foreground": "e8e3cf",
+      "background": "253239",
+      "essential": true
+    },
+    {
+      "id": "cooling--84--1-circuit",
+      "position": [
+        -83.990988,
+        15.65,
+        17.575628
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        4.8,
+        0.5
+      ],
+      "text": "C2 / RETURN",
+      "foreground": "e8e3cf",
+      "background": "253239",
+      "essential": true
+    },
+    {
+      "id": "cooling--84-1-circuit",
+      "position": [
+        -84.009012,
+        15.65,
+        30.904372
+      ],
+      "rotation_degrees": [
+        0,
+        -7.96961039432136,
+        0
+      ],
+      "size": [
+        4.8,
+        0.5
+      ],
+      "text": "C2 / RETURN",
+      "foreground": "e8e3cf",
+      "background": "253239",
+      "essential": true
+    },
+    {
+      "id": "cooling--48--1-circuit",
+      "position": [
+        -47.990988,
+        15.65,
+        22.615628
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        4.8,
+        0.5
+      ],
+      "text": "C2 / RETURN",
+      "foreground": "e8e3cf",
+      "background": "253239",
+      "essential": true
+    },
+    {
+      "id": "cooling--48-1-circuit",
+      "position": [
+        -48.009012,
+        15.65,
+        35.944372
+      ],
+      "rotation_degrees": [
+        0,
+        -7.96961039432136,
+        0
+      ],
+      "size": [
+        4.8,
+        0.5
+      ],
+      "text": "C2 / RETURN",
+      "foreground": "e8e3cf",
+      "background": "253239",
+      "essential": true
+    },
+    {
+      "id": "cooling-sector",
+      "position": [
+        -72.990988,
+        18.4,
+        15.715628
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        5,
+        1.0
+      ],
+      "text": "COOLING / C2",
+      "foreground": "e8e3cf",
+      "background": "253239",
+      "essential": true
+    },
+    {
+      "id": "assay-0-32-station",
+      "position": [
+        48.490988,
+        19.0,
+        38.854372
+      ],
+      "rotation_degrees": [
+        0,
+        -7.96961039432136,
+        0
+      ],
+      "size": [
+        7.5,
+        0.85
+      ],
+      "text": "A3 / SAMPLE 01",
+      "foreground": "e8e3cf",
+      "background": "365358",
+      "essential": true
+    },
+    {
+      "id": "assay-0-40-station",
+      "position": [
+        48.509012,
+        19.0,
+        46.725628
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        7.5,
+        0.85
+      ],
+      "text": "A3 / SAMPLE 01",
+      "foreground": "e8e3cf",
+      "background": "365358",
+      "essential": true
+    },
+    {
+      "id": "assay-1-32-station",
+      "position": [
+        66.990988,
+        19.0,
+        41.444372
+      ],
+      "rotation_degrees": [
+        0,
+        -7.96961039432136,
+        0
+      ],
+      "size": [
+        7.5,
+        0.85
+      ],
+      "text": "A3 / SAMPLE 02",
+      "foreground": "e8e3cf",
+      "background": "365358",
+      "essential": true
+    },
+    {
+      "id": "assay-1-40-station",
+      "position": [
+        67.009012,
+        19.0,
+        49.315628
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        7.5,
+        0.85
+      ],
+      "text": "A3 / SAMPLE 02",
+      "foreground": "e8e3cf",
+      "background": "365358",
+      "essential": true
+    },
+    {
+      "id": "assay-2-32-station",
+      "position": [
+        84.490988,
+        19.0,
+        43.894372
+      ],
+      "rotation_degrees": [
+        0,
+        -7.96961039432136,
+        0
+      ],
+      "size": [
+        7.5,
+        0.85
+      ],
+      "text": "A3 / SAMPLE 03",
+      "foreground": "e8e3cf",
+      "background": "365358",
+      "essential": true
+    },
+    {
+      "id": "assay-2-40-station",
+      "position": [
+        84.509012,
+        19.0,
+        51.765628
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        7.5,
+        0.85
+      ],
+      "text": "A3 / SAMPLE 03",
+      "foreground": "e8e3cf",
+      "background": "365358",
+      "essential": true
+    },
+    {
+      "id": "assay-sector",
+      "position": [
+        73.009012,
+        18.5,
+        36.155628
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        5,
+        1.0
+      ],
+      "text": "ASSAY / A3",
+      "foreground": "e8e3cf",
+      "background": "253239",
+      "essential": true
+    },
+    {
+      "id": "kiln-sector",
+      "position": [
+        74.009012,
+        11.0,
+        32.295628
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        10,
+        1.3
+      ],
+      "text": "FURNACE / F4",
+      "foreground": "e8e3cf",
+      "background": "253239",
+      "essential": true
+    },
+    {
+      "id": "kiln-danger",
+      "position": [
+        56.009012,
+        6.9,
+        29.775628
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        11,
+        1.0
+      ],
+      "text": "HOT STOCK / KEEP CLEAR",
+      "foreground": "e8e3cf",
+      "background": "554532",
+      "essential": true
+    },
+    {
+      "id": "transfer-sector",
+      "position": [
+        0.021339,
+        6.0,
+        -77.872718
+      ],
+      "rotation_degrees": [
+        0,
+        160.835249245064,
+        0
+      ],
+      "size": [
+        12,
+        1.0
+      ],
+      "text": "TRANSFER / T0",
+      "foreground": "e8e3cf",
+      "background": "253239",
+      "essential": true
+    },
+    {
+      "id": "service--132",
+      "position": [
+        -131.990988,
+        2.0,
+        -116.544372
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        7.5,
+        0.8
+      ],
+      "text": "SERVICE / LOOP",
+      "foreground": "e8e3cf",
+      "background": "253239",
+      "essential": true
+    },
+    {
+      "id": "service-134",
+      "position": [
+        134.009012,
+        2.0,
+        -79.304372
+      ],
+      "rotation_degrees": [
+        0,
+        172.03038960567864,
+        0
+      ],
+      "size": [
+        7.5,
+        0.8
+      ],
+      "text": "SERVICE / LOOP",
+      "foreground": "e8e3cf",
+      "background": "253239",
+      "essential": true
+    }
+  ],
+  "pockets": [
+    {
+      "id": "crusher-ore-dust",
+      "kind": "dust",
+      "position": [
+        -72,
+        25.3,
+        -17.08
+      ],
+      "size": [
+        3,
+        1,
+        2
+      ],
+      "color": "b1a58e",
+      "count": 12
+    },
+    {
+      "id": "kiln-hot-ash",
+      "kind": "ash",
+      "position": [
+        64,
+        33,
+        0.96
+      ],
+      "size": [
+        4,
+        2,
+        4
+      ],
+      "color": "bdb1a2",
+      "count": 12
+    },
+    {
+      "id": "cooling-return-vent",
+      "kind": "vent",
+      "position": [
+        -84,
+        18,
+        18.74
+      ],
+      "size": [
+        3,
+        2,
+        2
+      ],
+      "color": "bdcfcb",
+      "count": 8
+    }
+  ],
+  "preserve_materials": [
+    "GM / orange"
+  ],
+  "budgets": {
+    "material_variants": 8,
+    "panels": 64,
+    "signs": 20,
+    "motes": 64
+  }
+}

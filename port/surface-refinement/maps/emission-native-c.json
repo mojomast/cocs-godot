@@ -1,0 +1,127 @@
+{
+  "grant": "PARALLAX-INTERIORS-PRODUCTION-20261002-C",
+  "sourceCommit": "95c86892",
+  "adoptedCommit": "7e5f60fb",
+  "status": "five native checks pass; actual PNGs inspected",
+  "rejectedLabel": "pre-emission-fix REFINED bb02e34b profile, not old purple profile",
+  "cases": [
+    {
+      "receipt": {
+        "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/assay-status-lamp/gravemill-foundry-refinement.json",
+        "sha256": "28cc393d885f601b2bd52b0dfe737dcd18db8ffa47fb416077e9498f36d945f0"
+      },
+      "map": "gravemill-foundry",
+      "failures": []
+    },
+    {
+      "receipt": {
+        "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/cooling-lights/gravemill-foundry-refinement.json",
+        "sha256": "cd8890ca3c86aea2299e46627cd26d9547b128ae38267981e2a125226294b499"
+      },
+      "map": "gravemill-foundry",
+      "failures": []
+    },
+    {
+      "receipt": {
+        "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/foundry-emission-lifecycle/gravemill-foundry-diagnostics.json",
+        "sha256": "0d33aa47f8585586dd65397e937fd26bebce72ddc4c099bf6526944bea5500c1"
+      },
+      "map": "gravemill-foundry",
+      "failures": []
+    },
+    {
+      "receipt": {
+        "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/furnace-sight-glass/gravemill-foundry-refinement.json",
+        "sha256": "06288b8e977a332f86fc6e19512f25619caaeb2bc621ce95500685f7ff677dcd"
+      },
+      "map": "gravemill-foundry",
+      "failures": []
+    },
+    {
+      "receipt": {
+        "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/helix-exclusion-font-regression/helix-conservatory-diagnostics.json",
+        "sha256": "6281f7cec5e6a80bb58579c2d7387ce8e192d1707670a71cd1c43cb6402d75b1"
+      },
+      "map": "helix-conservatory",
+      "failures": []
+    }
+  ],
+  "inputs": {
+    "godot/tests/map_finish/proof.gd": "d3e79f754083efd13af1affcf8a2ca712507dce0ec4cedc6ffe724c5ee9402e9",
+    "godot/tests/map_finish/refinement.gd": "1e2c924f84503006264a5a9abe0928f57a272c1f156cf6445d745c625be7b0ef",
+    "godot/multiplayer_worlds/dressing/profiles/gravemill-foundry.json": "8d7f94f29f15e336fb1c9141b707a43718ce4c5a463eb03a13412e593eaa51e5",
+    "godot/multiplayer_worlds/dressing/profiles/helix-conservatory.json": "87b7e80de33c0fcd4f589bf850f5b2684e1e4c8a493a489c520a7ae81ea05194",
+    "godot/multiplayer_worlds/dressing/binder.gd": "b3e707af9da73f21b3c791c1d7deca9caad5472b422f263d9998ac961444a87d",
+    "godot/multiplayer_worlds/dressing/surface.gdshader": "8d77b5729585a3129009a0f67da64044181e7747c641c03c9b02dcd09206d3ff"
+  },
+  "images": [
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/assay-status-lamp/gravemill-foundry-flat-000.png",
+      "sha256": "9de2d89822f2ea79b3603b5792966cb6039b574c71b6491dd3fd3620dab013f1"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/assay-status-lamp/gravemill-foundry-refined-000.png",
+      "sha256": "7a91fd3abad98ee312316d3b1c84b3aaf5894411df0f309e339ed8b7cc7a60f6"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/assay-status-lamp/gravemill-foundry-rejected-000.png",
+      "sha256": "7707f5802f86893f30ee328f7ff0f6c64db21b42c53e6f9fdbcb8a94b4e0c1bb"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/cooling-lights/gravemill-foundry-flat-000.png",
+      "sha256": "adb2b4548009b6cf142315d234c29c2f818a7bf7dab210b180d6d2950fd8e3cc"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/cooling-lights/gravemill-foundry-refined-000.png",
+      "sha256": "4530de9722b04699437fb69ebf25f8f76fb975452ea519e82909b1d2316b2717"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/cooling-lights/gravemill-foundry-rejected-000.png",
+      "sha256": "3b0e54226be64d71a181e2f7a9952dd7d7a16badd58d8035b63f17473499c669"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/foundry-emission-lifecycle/gravemill-foundry-0.png",
+      "sha256": "3badf53519b457a5ed67b6946baa0d96b290ee26ff2b2c2bf291d0680f01d3fe"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/foundry-emission-lifecycle/gravemill-foundry-1.png",
+      "sha256": "2b14f83557bbbfacdb27b2064a3b5a67e0ab4eec33ed165b467924127104b83d"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/foundry-emission-lifecycle/gravemill-foundry-2.png",
+      "sha256": "9c45cd3e676fc1cbb57749f032daa85e3023790fe937b6d4ba251abcd55619d3"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/furnace-sight-glass/gravemill-foundry-flat-000.png",
+      "sha256": "84cf0ca794c52f2188f6ae3f304b37668331872c2c1d6415cb7ae9365dfef16e"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/furnace-sight-glass/gravemill-foundry-refined-000.png",
+      "sha256": "6d1bdd7c9ea7f352424b59268e0f6f0dd65fd6d971050773855ffae2994b7de7"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/furnace-sight-glass/gravemill-foundry-rejected-000.png",
+      "sha256": "931a5591b8b8f6540878e60fb83fd4d68e2be80f78fe5cf40d22b979e5dec9be"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/helix-exclusion-font-regression/helix-conservatory-0.png",
+      "sha256": "d9b92365eeba82bee810200d38d7996f2a4ceacd3c1af98d04917a55da775b53"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/helix-exclusion-font-regression/helix-conservatory-1.png",
+      "sha256": "cbcd4e0dab39e02a621967412cf38322f99072d1ecd080e077574973ca07bc5d"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/emission-followup/helix-exclusion-font-regression/helix-conservatory-2.png",
+      "sha256": "cbcd4e0dab39e02a621967412cf38322f99072d1ecd080e077574973ca07bc5d"
+    }
+  ],
+  "observations": {
+    "cooling": "Ceiling lamps recover source yellow intensity; vent/housing/floor remain non-emissive refined material.",
+    "furnace": "Near and distant sight strips recover source emission, vessel coating and kiln masonry stay muted.",
+    "assay": "Small yellow status indicator restored independently of broad brass backing.",
+    "foundryLifecycle": "Exact source emission reference/properties preserved through three Off/Low/Full cycles, reapply, cleanup, reload; owned maximum one.",
+    "helix": "Forward-readable SEED ARCHIVE text, glass exclusion and three font fronts preserved; no added emission."
+  },
+  "performance": "Static matched 1280x800 GL Compatibility llvmpipe captures; cadence is not GPU performance."
+}

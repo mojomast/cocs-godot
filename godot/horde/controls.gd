@@ -4,6 +4,7 @@ extends RefCounted
 const EDGE_KEYS := {KEY_SPACE:"jump", KEY_R:"reload", KEY_E:"interact", KEY_Q:"power", KEY_F:"melee", KEY_G:"grenade"}
 const Weapons = preload("res://world/weapon_selection.gd")
 const SettingsAccess = preload("res://ui/settings_access.gd")
+var bindings = preload("res://input_bindings/mapper.gd").new()
 var keys := {}
 var down := {} # Physical keys survive focus/modal clears until release.
 var mouse := {}
@@ -22,12 +23,15 @@ func focus(value: bool) -> void:
 	clear()
 
 func clear() -> void:
+	bindings.suppress()
 	keys.clear()
 	mouse.clear()
 	pulses.clear()
 	weapon = -1
 
 func record(event: InputEvent, active: bool, actor: Dictionary = {}) -> void:
+	event = bindings.translate(event, active)
+	if event == null: return
 	if event is InputEventKey:
 		var code: int = event.physical_keycode
 		if not event.pressed:

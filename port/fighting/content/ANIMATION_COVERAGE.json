@@ -1,0 +1,2918 @@
+{
+  "version": 1,
+  "status": "authoring requirements; assets not built or accepted",
+  "fps": 60,
+  "root_policy": "locked; simulation owns all travel",
+  "operators": [
+    {
+      "id": "chatgpt",
+      "glb": "res://fighting/assets/operators/chatgpt.glb",
+      "motion_brief": "all-rounder; neutral, gait, guard and reactions must preserve the posture vocabulary of square lead-hand snap; opposed shoulder cross; two-arm rising cage; kneeling fingertip probe; low cable-guided shin arc; wide scoop from crouch; tucked aerial hand; open hip side kick; both forearms descend. Fully author each clip; common names do not permit shared recolored libraries.",
+      "states": [
+        "idle",
+        "walk_f",
+        "walk_b",
+        "crouch",
+        "jump_rise",
+        "jump_apex",
+        "jump_fall",
+        "land",
+        "dash_f",
+        "dash_b",
+        "guard_hi",
+        "guard_lo",
+        "hit_hi",
+        "hit_lo",
+        "hit_air",
+        "block_hi",
+        "block_lo",
+        "knockdown",
+        "wakeup",
+        "throw_tech",
+        "win",
+        "lose"
+      ],
+      "combat": [
+        {
+          "clip": "stand_l",
+          "frames": 18,
+          "contact_windows": [
+            [
+              5,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "square lead-hand snap; standing space check.",
+          "effect": "chatgpt:stand_l"
+        },
+        {
+          "clip": "stand_m",
+          "frames": 27,
+          "contact_windows": [
+            [
+              8,
+              10
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "opposed shoulder cross; standing space check.",
+          "effect": "chatgpt:stand_m"
+        },
+        {
+          "clip": "stand_h",
+          "frames": 39,
+          "contact_windows": [
+            [
+              12,
+              15
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "two-arm rising cage; standing space check.",
+          "effect": "chatgpt:stand_h"
+        },
+        {
+          "clip": "crouch_l",
+          "frames": 18,
+          "contact_windows": [
+            [
+              5,
+              6
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "kneeling fingertip probe; low-line grounded strike.",
+          "effect": "chatgpt:crouch_l"
+        },
+        {
+          "clip": "crouch_m",
+          "frames": 30,
+          "contact_windows": [
+            [
+              9,
+              11
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "low cable-guided shin arc; low-line grounded strike.",
+          "effect": "chatgpt:crouch_m"
+        },
+        {
+          "clip": "crouch_h",
+          "frames": 39,
+          "contact_windows": [
+            [
+              11,
+              14
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "wide scoop from crouch; low-line grounded strike.",
+          "effect": "chatgpt:crouch_h"
+        },
+        {
+          "clip": "air_l",
+          "frames": 17,
+          "contact_windows": [
+            [
+              5,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "tucked aerial hand; airborne overhead.",
+          "effect": "chatgpt:air_l"
+        },
+        {
+          "clip": "air_m",
+          "frames": 26,
+          "contact_windows": [
+            [
+              8,
+              11
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "open hip side kick; airborne overhead.",
+          "effect": "chatgpt:air_m"
+        },
+        {
+          "clip": "air_h",
+          "frames": 36,
+          "contact_windows": [
+            [
+              11,
+              15
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "both forearms descend; airborne overhead.",
+          "effect": "chatgpt:air_h"
+        },
+        {
+          "clip": "throw_f",
+          "frames": 38,
+          "contact_windows": [
+            [
+              6,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Paired grip casts the victim forward.",
+          "effect": "chatgpt:throw_f"
+        },
+        {
+          "clip": "throw_b",
+          "frames": 40,
+          "contact_windows": [
+            [
+              6,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Paired pivot casts the victim behind the attacker.",
+          "effect": "chatgpt:throw_b"
+        },
+        {
+          "clip": "special1",
+          "frames": 37,
+          "contact_windows": [],
+          "projectile_spawn": 12,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Slow survey sphere controls 5 m; jump it or punish the release.",
+          "effect": "chatgpt:special1"
+        },
+        {
+          "clip": "special2",
+          "frames": 42,
+          "contact_windows": [
+            [
+              14,
+              17
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": [
+            14,
+            17
+          ],
+          "counter_window": null,
+          "authored_motion": "Articulated cable pulls on contact; crouch guard then punish its long recoil.",
+          "effect": "chatgpt:special2"
+        },
+        {
+          "clip": "special3",
+          "frames": 44,
+          "contact_windows": [
+            [
+              12,
+              13
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Telegraphed close command capture; jump during the cage opening.",
+          "effect": "chatgpt:special3"
+        },
+        {
+          "clip": "super",
+          "frames": 56,
+          "contact_windows": [
+            [
+              9,
+              13
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "all-rounder payoff: two-arm rising cage expands into a committed signature finish. Costs the full 1000 meter.",
+          "effect": "chatgpt:super"
+        }
+      ],
+      "victim_clips": [
+        "victim_chatgpt_throw_f",
+        "victim_chatgpt_throw_b",
+        "victim_chatgpt_special3",
+        "victim_claude_throw_f",
+        "victim_claude_throw_b",
+        "victim_claude_special3",
+        "victim_grok_throw_f",
+        "victim_grok_throw_b",
+        "victim_meta_throw_f",
+        "victim_meta_throw_b",
+        "victim_meta_special3",
+        "victim_gemini_throw_f",
+        "victim_gemini_throw_b",
+        "victim_gemini_special3",
+        "victim_deepseek_throw_f",
+        "victim_deepseek_throw_b",
+        "victim_deepseek_special3",
+        "victim_mistral_throw_f",
+        "victim_mistral_throw_b",
+        "victim_kimi_throw_f",
+        "victim_kimi_throw_b",
+        "victim_kimi_special3",
+        "victim_qwen_throw_f",
+        "victim_qwen_throw_b",
+        "victim_qwen_special3"
+      ]
+    },
+    {
+      "id": "claude",
+      "glb": "res://fighting/assets/operators/claude.glb",
+      "motion_brief": "ward footsies; neutral, gait, guard and reactions must preserve the posture vocabulary of crooked elbow jab behind ward; shield-first horizontal check; long braced palm lance; closed kneeling knuckle; shield edge skims shin; forearms rise as nested shields; one palm checks below gliding torso; two broad forearms spread; closed chevron falls shoulder-first. Fully author each clip; common names do not permit shared recolored libraries.",
+      "states": [
+        "idle",
+        "walk_f",
+        "walk_b",
+        "crouch",
+        "jump_rise",
+        "jump_apex",
+        "jump_fall",
+        "land",
+        "dash_f",
+        "dash_b",
+        "guard_hi",
+        "guard_lo",
+        "hit_hi",
+        "hit_lo",
+        "hit_air",
+        "block_hi",
+        "block_lo",
+        "knockdown",
+        "wakeup",
+        "throw_tech",
+        "win",
+        "lose"
+      ],
+      "combat": [
+        {
+          "clip": "stand_l",
+          "frames": 21,
+          "contact_windows": [
+            [
+              6,
+              8
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "crooked elbow jab behind ward; standing space check.",
+          "effect": "claude:stand_l"
+        },
+        {
+          "clip": "stand_m",
+          "frames": 32,
+          "contact_windows": [
+            [
+              10,
+              13
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "shield-first horizontal check; standing space check.",
+          "effect": "claude:stand_m"
+        },
+        {
+          "clip": "stand_h",
+          "frames": 44,
+          "contact_windows": [
+            [
+              15,
+              17
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "long braced palm lance; standing space check.",
+          "effect": "claude:stand_h"
+        },
+        {
+          "clip": "crouch_l",
+          "frames": 20,
+          "contact_windows": [
+            [
+              6,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "closed kneeling knuckle; low-line grounded strike.",
+          "effect": "claude:crouch_l"
+        },
+        {
+          "clip": "crouch_m",
+          "frames": 34,
+          "contact_windows": [
+            [
+              10,
+              13
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "shield edge skims shin; low-line grounded strike.",
+          "effect": "claude:crouch_m"
+        },
+        {
+          "clip": "crouch_h",
+          "frames": 43,
+          "contact_windows": [
+            [
+              13,
+              17
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "forearms rise as nested shields; low-line grounded strike.",
+          "effect": "claude:crouch_h"
+        },
+        {
+          "clip": "air_l",
+          "frames": 21,
+          "contact_windows": [
+            [
+              6,
+              9
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "one palm checks below gliding torso; airborne overhead.",
+          "effect": "claude:air_l"
+        },
+        {
+          "clip": "air_m",
+          "frames": 32,
+          "contact_windows": [
+            [
+              10,
+              14
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "two broad forearms spread; airborne overhead.",
+          "effect": "claude:air_m"
+        },
+        {
+          "clip": "air_h",
+          "frames": 41,
+          "contact_windows": [
+            [
+              14,
+              17
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "closed chevron falls shoulder-first; airborne overhead.",
+          "effect": "claude:air_h"
+        },
+        {
+          "clip": "throw_f",
+          "frames": 38,
+          "contact_windows": [
+            [
+              6,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Paired grip casts the victim forward.",
+          "effect": "claude:throw_f"
+        },
+        {
+          "clip": "throw_b",
+          "frames": 40,
+          "contact_windows": [
+            [
+              6,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Paired pivot casts the victim behind the attacker.",
+          "effect": "claude:throw_b"
+        },
+        {
+          "clip": "special1",
+          "frames": 44,
+          "contact_windows": [
+            [
+              14,
+              16
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Braced ceramic thrust reaches 3.1 m; crouch guard and whiff punish the planted recovery.",
+          "effect": "claude:special1"
+        },
+        {
+          "clip": "special2",
+          "frames": 38,
+          "contact_windows": [],
+          "projectile_spawn": null,
+          "movement_window": [
+            6,
+            23
+          ],
+          "counter_window": null,
+          "authored_motion": "Slow airborne retreat preserves spacing; intercept from below or meet the landing.",
+          "effect": "claude:special2"
+        },
+        {
+          "clip": "special3",
+          "frames": 47,
+          "contact_windows": [],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": [
+            5,
+            16
+          ],
+          "authored_motion": "Timed ward reflects projectiles and captures close strikes; throw it or wait for the ward to close.",
+          "effect": "claude:special3"
+        },
+        {
+          "clip": "super",
+          "frames": 57,
+          "contact_windows": [
+            [
+              10,
+              14
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "ward footsies payoff: long braced palm lance expands into a committed signature finish. Costs the full 1000 meter.",
+          "effect": "claude:super"
+        }
+      ],
+      "victim_clips": [
+        "victim_chatgpt_throw_f",
+        "victim_chatgpt_throw_b",
+        "victim_chatgpt_special3",
+        "victim_claude_throw_f",
+        "victim_claude_throw_b",
+        "victim_claude_special3",
+        "victim_grok_throw_f",
+        "victim_grok_throw_b",
+        "victim_meta_throw_f",
+        "victim_meta_throw_b",
+        "victim_meta_special3",
+        "victim_gemini_throw_f",
+        "victim_gemini_throw_b",
+        "victim_gemini_special3",
+        "victim_deepseek_throw_f",
+        "victim_deepseek_throw_b",
+        "victim_deepseek_special3",
+        "victim_mistral_throw_f",
+        "victim_mistral_throw_b",
+        "victim_kimi_throw_f",
+        "victim_kimi_throw_b",
+        "victim_kimi_special3",
+        "victim_qwen_throw_f",
+        "victim_qwen_throw_b",
+        "victim_qwen_special3"
+      ]
+    },
+    {
+      "id": "grok",
+      "glb": "res://fighting/assets/operators/grok.glb",
+      "motion_brief": "pressure brawler; neutral, gait, guard and reactions must preserve the posture vocabulary of short asymmetric hook; rear elbow drives hip-first; one heavy arm folds overhead; off-center knuckle below knee; heel scrapes in crooked arc; compressed rear arm bursts upward; one tucked hand hooks down; rear elbow leads airborne body; single arm slams with bent knees. Fully author each clip; common names do not permit shared recolored libraries.",
+      "states": [
+        "idle",
+        "walk_f",
+        "walk_b",
+        "crouch",
+        "jump_rise",
+        "jump_apex",
+        "jump_fall",
+        "land",
+        "dash_f",
+        "dash_b",
+        "guard_hi",
+        "guard_lo",
+        "hit_hi",
+        "hit_lo",
+        "hit_air",
+        "block_hi",
+        "block_lo",
+        "knockdown",
+        "wakeup",
+        "throw_tech",
+        "win",
+        "lose"
+      ],
+      "combat": [
+        {
+          "clip": "stand_l",
+          "frames": 19,
+          "contact_windows": [
+            [
+              4,
+              6
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "short asymmetric hook; standing space check.",
+          "effect": "grok:stand_l"
+        },
+        {
+          "clip": "stand_m",
+          "frames": 29,
+          "contact_windows": [
+            [
+              7,
+              10
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "rear elbow drives hip-first; standing space check.",
+          "effect": "grok:stand_m"
+        },
+        {
+          "clip": "stand_h",
+          "frames": 48,
+          "contact_windows": [
+            [
+              18,
+              20
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "one heavy arm folds overhead; standing space check.",
+          "effect": "grok:stand_h"
+        },
+        {
+          "clip": "crouch_l",
+          "frames": 19,
+          "contact_windows": [
+            [
+              5,
+              6
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "off-center knuckle below knee; low-line grounded strike.",
+          "effect": "grok:crouch_l"
+        },
+        {
+          "clip": "crouch_m",
+          "frames": 30,
+          "contact_windows": [
+            [
+              8,
+              10
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "heel scrapes in crooked arc; low-line grounded strike.",
+          "effect": "grok:crouch_m"
+        },
+        {
+          "clip": "crouch_h",
+          "frames": 39,
+          "contact_windows": [
+            [
+              10,
+              13
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "compressed rear arm bursts upward; low-line grounded strike.",
+          "effect": "grok:crouch_h"
+        },
+        {
+          "clip": "air_l",
+          "frames": 17,
+          "contact_windows": [
+            [
+              4,
+              6
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "one tucked hand hooks down; airborne overhead.",
+          "effect": "grok:air_l"
+        },
+        {
+          "clip": "air_m",
+          "frames": 27,
+          "contact_windows": [
+            [
+              7,
+              10
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "rear elbow leads airborne body; airborne overhead.",
+          "effect": "grok:air_m"
+        },
+        {
+          "clip": "air_h",
+          "frames": 38,
+          "contact_windows": [
+            [
+              12,
+              15
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "single arm slams with bent knees; airborne overhead.",
+          "effect": "grok:air_h"
+        },
+        {
+          "clip": "throw_f",
+          "frames": 38,
+          "contact_windows": [
+            [
+              6,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Paired grip casts the victim forward.",
+          "effect": "grok:throw_f"
+        },
+        {
+          "clip": "throw_b",
+          "frames": 40,
+          "contact_windows": [
+            [
+              6,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Paired pivot casts the victim behind the attacker.",
+          "effect": "grok:throw_b"
+        },
+        {
+          "clip": "special1",
+          "frames": 43,
+          "contact_windows": [],
+          "projectile_spawn": 16,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Arcing piston grenade pressures a landing; advance beneath it or challenge its startup.",
+          "effect": "grok:special1"
+        },
+        {
+          "clip": "special2",
+          "frames": 25,
+          "contact_windows": [],
+          "projectile_spawn": null,
+          "movement_window": [
+            8,
+            8
+          ],
+          "counter_window": null,
+          "authored_motion": "Hold down for 18 ticks before the compressed leap; anti-air its predictable rise.",
+          "effect": "grok:special2"
+        },
+        {
+          "clip": "special3",
+          "frames": 51,
+          "contact_windows": [
+            [
+              17,
+              21
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": [
+            8,
+            21
+          ],
+          "counter_window": null,
+          "authored_motion": "Armored piston rush ends in a shoulder impact; block then punish, or throw the startup.",
+          "effect": "grok:special3"
+        },
+        {
+          "clip": "super",
+          "frames": 58,
+          "contact_windows": [
+            [
+              11,
+              15
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "pressure brawler payoff: one heavy arm folds overhead expands into a committed signature finish. Costs the full 1000 meter.",
+          "effect": "grok:super"
+        }
+      ],
+      "victim_clips": [
+        "victim_chatgpt_throw_f",
+        "victim_chatgpt_throw_b",
+        "victim_chatgpt_special3",
+        "victim_claude_throw_f",
+        "victim_claude_throw_b",
+        "victim_claude_special3",
+        "victim_grok_throw_f",
+        "victim_grok_throw_b",
+        "victim_meta_throw_f",
+        "victim_meta_throw_b",
+        "victim_meta_special3",
+        "victim_gemini_throw_f",
+        "victim_gemini_throw_b",
+        "victim_gemini_special3",
+        "victim_deepseek_throw_f",
+        "victim_deepseek_throw_b",
+        "victim_deepseek_special3",
+        "victim_mistral_throw_f",
+        "victim_mistral_throw_b",
+        "victim_kimi_throw_f",
+        "victim_kimi_throw_b",
+        "victim_kimi_special3",
+        "victim_qwen_throw_f",
+        "victim_qwen_throw_b",
+        "victim_qwen_special3"
+      ]
+    },
+    {
+      "id": "meta",
+      "glb": "res://fighting/assets/operators/meta.glb",
+      "motion_brief": "armored grappler; neutral, gait, guard and reactions must preserve the posture vocabulary of broad planted fist; hip drives layered shoulder; two arms crush from raised brace; low rivet-hand tap; heavy low heel with planted hips; both turbines lift from squat; compact airborne fist; crossed arms brace a knee; both arms drop with tucked spine. Fully author each clip; common names do not permit shared recolored libraries.",
+      "states": [
+        "idle",
+        "walk_f",
+        "walk_b",
+        "crouch",
+        "jump_rise",
+        "jump_apex",
+        "jump_fall",
+        "land",
+        "dash_f",
+        "dash_b",
+        "guard_hi",
+        "guard_lo",
+        "hit_hi",
+        "hit_lo",
+        "hit_air",
+        "block_hi",
+        "block_lo",
+        "knockdown",
+        "wakeup",
+        "throw_tech",
+        "win",
+        "lose"
+      ],
+      "combat": [
+        {
+          "clip": "stand_l",
+          "frames": 24,
+          "contact_windows": [
+            [
+              7,
+              9
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "broad planted fist; standing space check.",
+          "effect": "meta:stand_l"
+        },
+        {
+          "clip": "stand_m",
+          "frames": 38,
+          "contact_windows": [
+            [
+              11,
+              14
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "hip drives layered shoulder; standing space check.",
+          "effect": "meta:stand_m"
+        },
+        {
+          "clip": "stand_h",
+          "frames": 53,
+          "contact_windows": [
+            [
+              17,
+              21
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "two arms crush from raised brace; standing space check.",
+          "effect": "meta:stand_h"
+        },
+        {
+          "clip": "crouch_l",
+          "frames": 23,
+          "contact_windows": [
+            [
+              7,
+              8
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "low rivet-hand tap; low-line grounded strike.",
+          "effect": "meta:crouch_l"
+        },
+        {
+          "clip": "crouch_m",
+          "frames": 40,
+          "contact_windows": [
+            [
+              12,
+              15
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "heavy low heel with planted hips; low-line grounded strike.",
+          "effect": "meta:crouch_m"
+        },
+        {
+          "clip": "crouch_h",
+          "frames": 50,
+          "contact_windows": [
+            [
+              15,
+              19
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "both turbines lift from squat; low-line grounded strike.",
+          "effect": "meta:crouch_h"
+        },
+        {
+          "clip": "air_l",
+          "frames": 22,
+          "contact_windows": [
+            [
+              7,
+              9
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "compact airborne fist; airborne overhead.",
+          "effect": "meta:air_l"
+        },
+        {
+          "clip": "air_m",
+          "frames": 36,
+          "contact_windows": [
+            [
+              11,
+              15
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "crossed arms brace a knee; airborne overhead.",
+          "effect": "meta:air_m"
+        },
+        {
+          "clip": "air_h",
+          "frames": 49,
+          "contact_windows": [
+            [
+              16,
+              21
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "both arms drop with tucked spine; airborne overhead.",
+          "effect": "meta:air_h"
+        },
+        {
+          "clip": "throw_f",
+          "frames": 40,
+          "contact_windows": [
+            [
+              8,
+              9
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Paired grip casts the victim forward.",
+          "effect": "meta:throw_f"
+        },
+        {
+          "clip": "throw_b",
+          "frames": 42,
+          "contact_windows": [
+            [
+              8,
+              9
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Paired pivot casts the victim behind the attacker.",
+          "effect": "meta:throw_b"
+        },
+        {
+          "clip": "special1",
+          "frames": 41,
+          "contact_windows": [
+            [
+              11,
+              15
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Short twin-sector cone stops approaches; bait the 2.2 m limit and punish recovery.",
+          "effect": "meta:special1"
+        },
+        {
+          "clip": "special2",
+          "frames": 48,
+          "contact_windows": [
+            [
+              12,
+              17
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": [
+            4,
+            17
+          ],
+          "counter_window": null,
+          "authored_motion": "Airborne braced drop controls a compact landing; move away then punish the deep squat.",
+          "effect": "meta:special2"
+        },
+        {
+          "clip": "special3",
+          "frames": 51,
+          "contact_windows": [
+            [
+              15,
+              16
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Longest heavy squeeze has visible turbine windup; jump or interrupt before armor.",
+          "effect": "meta:special3"
+        },
+        {
+          "clip": "super",
+          "frames": 59,
+          "contact_windows": [
+            [
+              12,
+              16
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "armored grappler payoff: two arms crush from raised brace expands into a committed signature finish. Costs the full 1000 meter.",
+          "effect": "meta:super"
+        }
+      ],
+      "victim_clips": [
+        "victim_chatgpt_throw_f",
+        "victim_chatgpt_throw_b",
+        "victim_chatgpt_special3",
+        "victim_claude_throw_f",
+        "victim_claude_throw_b",
+        "victim_claude_special3",
+        "victim_grok_throw_f",
+        "victim_grok_throw_b",
+        "victim_meta_throw_f",
+        "victim_meta_throw_b",
+        "victim_meta_special3",
+        "victim_gemini_throw_f",
+        "victim_gemini_throw_b",
+        "victim_gemini_special3",
+        "victim_deepseek_throw_f",
+        "victim_deepseek_throw_b",
+        "victim_deepseek_special3",
+        "victim_mistral_throw_f",
+        "victim_mistral_throw_b",
+        "victim_kimi_throw_f",
+        "victim_kimi_throw_b",
+        "victim_kimi_special3",
+        "victim_qwen_throw_f",
+        "victim_qwen_throw_b",
+        "victim_qwen_special3"
+      ]
+    },
+    {
+      "id": "gemini",
+      "glb": "res://fighting/assets/operators/gemini.glb",
+      "motion_brief": "two-stance duelist; neutral, gait, guard and reactions must preserve the posture vocabulary of split fingers lead alternate shoulders; crossed claw forearms; open palm drives bifurcated hips; two fingers reach from kneel; opposed low shin scissor; palms unfurl upward; one claw below tucked hips; mirrored heel extends from twist; two petals close downward. Fully author each clip; common names do not permit shared recolored libraries.",
+      "states": [
+        "idle",
+        "walk_f",
+        "walk_b",
+        "crouch",
+        "jump_rise",
+        "jump_apex",
+        "jump_fall",
+        "land",
+        "dash_f",
+        "dash_b",
+        "guard_hi",
+        "guard_lo",
+        "hit_hi",
+        "hit_lo",
+        "hit_air",
+        "block_hi",
+        "block_lo",
+        "knockdown",
+        "wakeup",
+        "throw_tech",
+        "win",
+        "lose"
+      ],
+      "combat": [
+        {
+          "clip": "stand_l",
+          "frames": 17,
+          "contact_windows": [
+            [
+              5,
+              6
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "split fingers lead alternate shoulders; standing space check.",
+          "effect": "gemini:stand_l"
+        },
+        {
+          "clip": "stand_m",
+          "frames": 26,
+          "contact_windows": [
+            [
+              8,
+              10
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "crossed claw forearms; standing space check.",
+          "effect": "gemini:stand_m"
+        },
+        {
+          "clip": "stand_h",
+          "frames": 38,
+          "contact_windows": [
+            [
+              12,
+              15
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "open palm drives bifurcated hips; standing space check.",
+          "effect": "gemini:stand_h"
+        },
+        {
+          "clip": "crouch_l",
+          "frames": 17,
+          "contact_windows": [
+            [
+              5,
+              6
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "two fingers reach from kneel; low-line grounded strike.",
+          "effect": "gemini:crouch_l"
+        },
+        {
+          "clip": "crouch_m",
+          "frames": 28,
+          "contact_windows": [
+            [
+              8,
+              10
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "opposed low shin scissor; low-line grounded strike.",
+          "effect": "gemini:crouch_m"
+        },
+        {
+          "clip": "crouch_h",
+          "frames": 38,
+          "contact_windows": [
+            [
+              11,
+              14
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "palms unfurl upward; low-line grounded strike.",
+          "effect": "gemini:crouch_h"
+        },
+        {
+          "clip": "air_l",
+          "frames": 17,
+          "contact_windows": [
+            [
+              5,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "one claw below tucked hips; airborne overhead.",
+          "effect": "gemini:air_l"
+        },
+        {
+          "clip": "air_m",
+          "frames": 25,
+          "contact_windows": [
+            [
+              8,
+              11
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "mirrored heel extends from twist; airborne overhead.",
+          "effect": "gemini:air_m"
+        },
+        {
+          "clip": "air_h",
+          "frames": 34,
+          "contact_windows": [
+            [
+              11,
+              14
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "two petals close downward; airborne overhead.",
+          "effect": "gemini:air_h"
+        },
+        {
+          "clip": "throw_f",
+          "frames": 38,
+          "contact_windows": [
+            [
+              6,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Paired grip casts the victim forward.",
+          "effect": "gemini:throw_f"
+        },
+        {
+          "clip": "throw_b",
+          "frames": 40,
+          "contact_windows": [
+            [
+              6,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Paired pivot casts the victim behind the attacker.",
+          "effect": "gemini:throw_b"
+        },
+        {
+          "clip": "special1",
+          "frames": 40,
+          "contact_windows": [],
+          "projectile_spawn": 13,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Narrow finite lance checks 5.7 m; crouch under its tall line or jump on anticipation.",
+          "effect": "gemini:special1"
+        },
+        {
+          "clip": "special2",
+          "frames": 18,
+          "contact_windows": [],
+          "projectile_spawn": null,
+          "movement_window": [
+            5,
+            5
+          ],
+          "counter_window": null,
+          "authored_motion": "One extra airborne impulse opens palm stance for 180 ticks; attack its visible ascent.",
+          "effect": "gemini:special2"
+        },
+        {
+          "clip": "special3",
+          "frames": 44,
+          "contact_windows": [
+            [
+              13,
+              14
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Petal capture sets palm stance; escape with jump before the petals close.",
+          "effect": "gemini:special3"
+        },
+        {
+          "clip": "super",
+          "frames": 60,
+          "contact_windows": [
+            [
+              13,
+              17
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "two-stance duelist payoff: open palm drives bifurcated hips expands into a committed signature finish. Costs the full 1000 meter.",
+          "effect": "gemini:super"
+        },
+        {
+          "clip": "palm_l",
+          "frames": 21,
+          "contact_windows": [
+            [
+              6,
+              8
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Open-palm stance replaces claw contraction with a long planted ceramic thrust.",
+          "effect": "gemini:palm_l"
+        },
+        {
+          "clip": "palm_m",
+          "frames": 32,
+          "contact_windows": [
+            [
+              10,
+              12
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Open-palm stance replaces claw contraction with a long planted ceramic thrust.",
+          "effect": "gemini:palm_m"
+        },
+        {
+          "clip": "palm_h",
+          "frames": 47,
+          "contact_windows": [
+            [
+              15,
+              18
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Open-palm stance replaces claw contraction with a long planted ceramic thrust.",
+          "effect": "gemini:palm_h"
+        }
+      ],
+      "victim_clips": [
+        "victim_chatgpt_throw_f",
+        "victim_chatgpt_throw_b",
+        "victim_chatgpt_special3",
+        "victim_claude_throw_f",
+        "victim_claude_throw_b",
+        "victim_claude_special3",
+        "victim_grok_throw_f",
+        "victim_grok_throw_b",
+        "victim_meta_throw_f",
+        "victim_meta_throw_b",
+        "victim_meta_special3",
+        "victim_gemini_throw_f",
+        "victim_gemini_throw_b",
+        "victim_gemini_special3",
+        "victim_deepseek_throw_f",
+        "victim_deepseek_throw_b",
+        "victim_deepseek_special3",
+        "victim_mistral_throw_f",
+        "victim_mistral_throw_b",
+        "victim_kimi_throw_f",
+        "victim_kimi_throw_b",
+        "victim_kimi_special3",
+        "victim_qwen_throw_f",
+        "victim_qwen_throw_b",
+        "victim_qwen_special3"
+      ]
+    },
+    {
+      "id": "deepseek",
+      "glb": "res://fighting/assets/operators/deepseek.glb",
+      "motion_brief": "charge hover zoner; neutral, gait, guard and reactions must preserve the posture vocabulary of compact sleeve-driven fist; palms vent from tucked ribs; diver elbow lifts pressure vessel; closed valve knuckle at ankle; weighted shin drags low; compressed arms open upward; tight fist beneath tucked chest; knee rises with vented hips; both elbows dive from compact tuck. Fully author each clip; common names do not permit shared recolored libraries.",
+      "states": [
+        "idle",
+        "walk_f",
+        "walk_b",
+        "crouch",
+        "jump_rise",
+        "jump_apex",
+        "jump_fall",
+        "land",
+        "dash_f",
+        "dash_b",
+        "guard_hi",
+        "guard_lo",
+        "hit_hi",
+        "hit_lo",
+        "hit_air",
+        "block_hi",
+        "block_lo",
+        "knockdown",
+        "wakeup",
+        "throw_tech",
+        "win",
+        "lose"
+      ],
+      "combat": [
+        {
+          "clip": "stand_l",
+          "frames": 23,
+          "contact_windows": [
+            [
+              7,
+              9
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "compact sleeve-driven fist; standing space check.",
+          "effect": "deepseek:stand_l"
+        },
+        {
+          "clip": "stand_m",
+          "frames": 36,
+          "contact_windows": [
+            [
+              11,
+              14
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "palms vent from tucked ribs; standing space check.",
+          "effect": "deepseek:stand_m"
+        },
+        {
+          "clip": "stand_h",
+          "frames": 49,
+          "contact_windows": [
+            [
+              16,
+              19
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "diver elbow lifts pressure vessel; standing space check.",
+          "effect": "deepseek:stand_h"
+        },
+        {
+          "clip": "crouch_l",
+          "frames": 22,
+          "contact_windows": [
+            [
+              7,
+              8
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "closed valve knuckle at ankle; low-line grounded strike.",
+          "effect": "deepseek:crouch_l"
+        },
+        {
+          "clip": "crouch_m",
+          "frames": 38,
+          "contact_windows": [
+            [
+              11,
+              14
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "weighted shin drags low; low-line grounded strike.",
+          "effect": "deepseek:crouch_m"
+        },
+        {
+          "clip": "crouch_h",
+          "frames": 47,
+          "contact_windows": [
+            [
+              14,
+              18
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "compressed arms open upward; low-line grounded strike.",
+          "effect": "deepseek:crouch_h"
+        },
+        {
+          "clip": "air_l",
+          "frames": 23,
+          "contact_windows": [
+            [
+              7,
+              10
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "tight fist beneath tucked chest; airborne overhead.",
+          "effect": "deepseek:air_l"
+        },
+        {
+          "clip": "air_m",
+          "frames": 35,
+          "contact_windows": [
+            [
+              11,
+              15
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "knee rises with vented hips; airborne overhead.",
+          "effect": "deepseek:air_m"
+        },
+        {
+          "clip": "air_h",
+          "frames": 45,
+          "contact_windows": [
+            [
+              15,
+              19
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "both elbows dive from compact tuck; airborne overhead.",
+          "effect": "deepseek:air_h"
+        },
+        {
+          "clip": "throw_f",
+          "frames": 38,
+          "contact_windows": [
+            [
+              6,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Paired grip casts the victim forward.",
+          "effect": "deepseek:throw_f"
+        },
+        {
+          "clip": "throw_b",
+          "frames": 40,
+          "contact_windows": [
+            [
+              6,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Paired pivot casts the victim behind the attacker.",
+          "effect": "deepseek:throw_b"
+        },
+        {
+          "clip": "special1",
+          "frames": 41,
+          "contact_windows": [],
+          "projectile_spawn": 10,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Requires 36 back-held ticks; large compression shell travels 6.2 m, so pressure before charge completes.",
+          "effect": "deepseek:special1"
+        },
+        {
+          "clip": "special2",
+          "frames": 53,
+          "contact_windows": [],
+          "projectile_spawn": null,
+          "movement_window": [
+            5,
+            34
+          ],
+          "counter_window": null,
+          "authored_motion": "Each hover spends 30 of 90 fuel and lasts 30 ticks; wait below and contest the fuel-limited landing.",
+          "effect": "deepseek:special2"
+        },
+        {
+          "clip": "special3",
+          "frames": 53,
+          "contact_windows": [
+            [
+              16,
+              17
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Armored pressure clamp is slow and grounded; jump it or strike before the vessel braces.",
+          "effect": "deepseek:special3"
+        },
+        {
+          "clip": "super",
+          "frames": 61,
+          "contact_windows": [
+            [
+              14,
+              18
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "charge hover zoner payoff: diver elbow lifts pressure vessel expands into a committed signature finish. Costs the full 1000 meter.",
+          "effect": "deepseek:super"
+        }
+      ],
+      "victim_clips": [
+        "victim_chatgpt_throw_f",
+        "victim_chatgpt_throw_b",
+        "victim_chatgpt_special3",
+        "victim_claude_throw_f",
+        "victim_claude_throw_b",
+        "victim_claude_special3",
+        "victim_grok_throw_f",
+        "victim_grok_throw_b",
+        "victim_meta_throw_f",
+        "victim_meta_throw_b",
+        "victim_meta_special3",
+        "victim_gemini_throw_f",
+        "victim_gemini_throw_b",
+        "victim_gemini_special3",
+        "victim_deepseek_throw_f",
+        "victim_deepseek_throw_b",
+        "victim_deepseek_special3",
+        "victim_mistral_throw_f",
+        "victim_mistral_throw_b",
+        "victim_kimi_throw_f",
+        "victim_kimi_throw_b",
+        "victim_kimi_special3",
+        "victim_qwen_throw_f",
+        "victim_qwen_throw_b",
+        "victim_qwen_special3"
+      ]
+    },
+    {
+      "id": "mistral",
+      "glb": "res://fighting/assets/operators/mistral.glb",
+      "motion_brief": "air-dash rushdown; neutral, gait, guard and reactions must preserve the posture vocabulary of lean fingertip snap; long swept roundhouse; whole-body spiral kick; low open-hand tap; shin traces aerofoil arc; rear heel rises with winged arms; narrow aerial jab; extended swept heel from lean; diagonal kick below trailing arms. Fully author each clip; common names do not permit shared recolored libraries.",
+      "states": [
+        "idle",
+        "walk_f",
+        "walk_b",
+        "crouch",
+        "jump_rise",
+        "jump_apex",
+        "jump_fall",
+        "land",
+        "dash_f",
+        "dash_b",
+        "guard_hi",
+        "guard_lo",
+        "hit_hi",
+        "hit_lo",
+        "hit_air",
+        "block_hi",
+        "block_lo",
+        "knockdown",
+        "wakeup",
+        "throw_tech",
+        "win",
+        "lose"
+      ],
+      "combat": [
+        {
+          "clip": "stand_l",
+          "frames": 15,
+          "contact_windows": [
+            [
+              4,
+              5
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "lean fingertip snap; standing space check.",
+          "effect": "mistral:stand_l"
+        },
+        {
+          "clip": "stand_m",
+          "frames": 24,
+          "contact_windows": [
+            [
+              7,
+              9
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "long swept roundhouse; standing space check.",
+          "effect": "mistral:stand_m"
+        },
+        {
+          "clip": "stand_h",
+          "frames": 36,
+          "contact_windows": [
+            [
+              10,
+              13
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "whole-body spiral kick; standing space check.",
+          "effect": "mistral:stand_h"
+        },
+        {
+          "clip": "crouch_l",
+          "frames": 16,
+          "contact_windows": [
+            [
+              4,
+              5
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "low open-hand tap; low-line grounded strike.",
+          "effect": "mistral:crouch_l"
+        },
+        {
+          "clip": "crouch_m",
+          "frames": 26,
+          "contact_windows": [
+            [
+              7,
+              9
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "shin traces aerofoil arc; low-line grounded strike.",
+          "effect": "mistral:crouch_m"
+        },
+        {
+          "clip": "crouch_h",
+          "frames": 36,
+          "contact_windows": [
+            [
+              10,
+              13
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "rear heel rises with winged arms; low-line grounded strike.",
+          "effect": "mistral:crouch_h"
+        },
+        {
+          "clip": "air_l",
+          "frames": 15,
+          "contact_windows": [
+            [
+              4,
+              6
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "narrow aerial jab; airborne overhead.",
+          "effect": "mistral:air_l"
+        },
+        {
+          "clip": "air_m",
+          "frames": 23,
+          "contact_windows": [
+            [
+              7,
+              10
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "extended swept heel from lean; airborne overhead.",
+          "effect": "mistral:air_m"
+        },
+        {
+          "clip": "air_h",
+          "frames": 32,
+          "contact_windows": [
+            [
+              10,
+              13
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "diagonal kick below trailing arms; airborne overhead.",
+          "effect": "mistral:air_h"
+        },
+        {
+          "clip": "throw_f",
+          "frames": 38,
+          "contact_windows": [
+            [
+              6,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Paired grip casts the victim forward.",
+          "effect": "mistral:throw_f"
+        },
+        {
+          "clip": "throw_b",
+          "frames": 40,
+          "contact_windows": [
+            [
+              6,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Paired pivot casts the victim behind the attacker.",
+          "effect": "mistral:throw_b"
+        },
+        {
+          "clip": "special1",
+          "frames": 34,
+          "contact_windows": [
+            [
+              10,
+              13
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Short aerofoil fan confirms close pressure; stay beyond 1.9 m and punish the sweep.",
+          "effect": "mistral:special1"
+        },
+        {
+          "clip": "special2",
+          "frames": 26,
+          "contact_windows": [],
+          "projectile_spawn": null,
+          "movement_window": [
+            3,
+            12
+          ],
+          "counter_window": null,
+          "authored_motion": "One 1.45 m airborne burst per landing; guard high and intercept its landing rather than chasing.",
+          "effect": "mistral:special2"
+        },
+        {
+          "clip": "special3",
+          "frames": 46,
+          "contact_windows": [
+            [
+              14,
+              18
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": [
+            5,
+            18
+          ],
+          "counter_window": null,
+          "authored_motion": "Low sliding heel sweeps into a hard fall; crouch guard and punish the extended finish.",
+          "effect": "mistral:special3"
+        },
+        {
+          "clip": "super",
+          "frames": 62,
+          "contact_windows": [
+            [
+              15,
+              19
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "air-dash rushdown payoff: whole-body spiral kick expands into a committed signature finish. Costs the full 1000 meter.",
+          "effect": "mistral:super"
+        }
+      ],
+      "victim_clips": [
+        "victim_chatgpt_throw_f",
+        "victim_chatgpt_throw_b",
+        "victim_chatgpt_special3",
+        "victim_claude_throw_f",
+        "victim_claude_throw_b",
+        "victim_claude_special3",
+        "victim_grok_throw_f",
+        "victim_grok_throw_b",
+        "victim_meta_throw_f",
+        "victim_meta_throw_b",
+        "victim_meta_special3",
+        "victim_gemini_throw_f",
+        "victim_gemini_throw_b",
+        "victim_gemini_special3",
+        "victim_deepseek_throw_f",
+        "victim_deepseek_throw_b",
+        "victim_deepseek_special3",
+        "victim_mistral_throw_f",
+        "victim_mistral_throw_b",
+        "victim_kimi_throw_f",
+        "victim_kimi_throw_b",
+        "victim_kimi_special3",
+        "victim_qwen_throw_f",
+        "victim_qwen_throw_b",
+        "victim_qwen_special3"
+      ]
+    },
+    {
+      "id": "kimi",
+      "glb": "res://fighting/assets/operators/kimi.glb",
+      "motion_brief": "blink mobile zoner; neutral, gait, guard and reactions must preserve the posture vocabulary of rotating wrist jab; full orbital backhand; high gimbal heel from torso rotation; wrist circles below knee; shin draws low orbit; both hands spiral upward; orbiting palm below hips; heel traces a horizontal ring; gimbal arm arcs down past bent knee. Fully author each clip; common names do not permit shared recolored libraries.",
+      "states": [
+        "idle",
+        "walk_f",
+        "walk_b",
+        "crouch",
+        "jump_rise",
+        "jump_apex",
+        "jump_fall",
+        "land",
+        "dash_f",
+        "dash_b",
+        "guard_hi",
+        "guard_lo",
+        "hit_hi",
+        "hit_lo",
+        "hit_air",
+        "block_hi",
+        "block_lo",
+        "knockdown",
+        "wakeup",
+        "throw_tech",
+        "win",
+        "lose"
+      ],
+      "combat": [
+        {
+          "clip": "stand_l",
+          "frames": 19,
+          "contact_windows": [
+            [
+              5,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "rotating wrist jab; standing space check.",
+          "effect": "kimi:stand_l"
+        },
+        {
+          "clip": "stand_m",
+          "frames": 30,
+          "contact_windows": [
+            [
+              9,
+              11
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "full orbital backhand; standing space check.",
+          "effect": "kimi:stand_m"
+        },
+        {
+          "clip": "stand_h",
+          "frames": 43,
+          "contact_windows": [
+            [
+              14,
+              17
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "high gimbal heel from torso rotation; standing space check.",
+          "effect": "kimi:stand_h"
+        },
+        {
+          "clip": "crouch_l",
+          "frames": 19,
+          "contact_windows": [
+            [
+              5,
+              6
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "wrist circles below knee; low-line grounded strike.",
+          "effect": "kimi:crouch_l"
+        },
+        {
+          "clip": "crouch_m",
+          "frames": 32,
+          "contact_windows": [
+            [
+              9,
+              11
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "shin draws low orbit; low-line grounded strike.",
+          "effect": "kimi:crouch_m"
+        },
+        {
+          "clip": "crouch_h",
+          "frames": 41,
+          "contact_windows": [
+            [
+              12,
+              15
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "both hands spiral upward; low-line grounded strike.",
+          "effect": "kimi:crouch_h"
+        },
+        {
+          "clip": "air_l",
+          "frames": 19,
+          "contact_windows": [
+            [
+              5,
+              8
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "orbiting palm below hips; airborne overhead.",
+          "effect": "kimi:air_l"
+        },
+        {
+          "clip": "air_m",
+          "frames": 29,
+          "contact_windows": [
+            [
+              9,
+              12
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "heel traces a horizontal ring; airborne overhead.",
+          "effect": "kimi:air_m"
+        },
+        {
+          "clip": "air_h",
+          "frames": 40,
+          "contact_windows": [
+            [
+              13,
+              17
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "gimbal arm arcs down past bent knee; airborne overhead.",
+          "effect": "kimi:air_h"
+        },
+        {
+          "clip": "throw_f",
+          "frames": 38,
+          "contact_windows": [
+            [
+              6,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Paired grip casts the victim forward.",
+          "effect": "kimi:throw_f"
+        },
+        {
+          "clip": "throw_b",
+          "frames": 40,
+          "contact_windows": [
+            [
+              6,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Paired pivot casts the victim behind the attacker.",
+          "effect": "kimi:throw_b"
+        },
+        {
+          "clip": "special1",
+          "frames": 44,
+          "contact_windows": [],
+          "projectile_spawn": 15,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Finite narrow rail pulse covers 6.6 m; duck its line or force recovery with a jump.",
+          "effect": "kimi:special1"
+        },
+        {
+          "clip": "special2",
+          "frames": 38,
+          "contact_windows": [],
+          "projectile_spawn": null,
+          "movement_window": [
+            15,
+            15
+          ],
+          "counter_window": null,
+          "authored_motion": "Visible 15-tick gimbal windup precedes a 1.8 m forward blink; attack the arrival, with no hidden invulnerability.",
+          "effect": "kimi:special2"
+        },
+        {
+          "clip": "special3",
+          "frames": 48,
+          "contact_windows": [
+            [
+              14,
+              15
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Orbital capture trades damage for repositioning; jump the open-ring windup.",
+          "effect": "kimi:special3"
+        },
+        {
+          "clip": "super",
+          "frames": 63,
+          "contact_windows": [
+            [
+              16,
+              20
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "blink mobile zoner payoff: high gimbal heel from torso rotation expands into a committed signature finish. Costs the full 1000 meter.",
+          "effect": "kimi:super"
+        }
+      ],
+      "victim_clips": [
+        "victim_chatgpt_throw_f",
+        "victim_chatgpt_throw_b",
+        "victim_chatgpt_special3",
+        "victim_claude_throw_f",
+        "victim_claude_throw_b",
+        "victim_claude_special3",
+        "victim_grok_throw_f",
+        "victim_grok_throw_b",
+        "victim_meta_throw_f",
+        "victim_meta_throw_b",
+        "victim_meta_special3",
+        "victim_gemini_throw_f",
+        "victim_gemini_throw_b",
+        "victim_gemini_special3",
+        "victim_deepseek_throw_f",
+        "victim_deepseek_throw_b",
+        "victim_deepseek_special3",
+        "victim_mistral_throw_f",
+        "victim_mistral_throw_b",
+        "victim_kimi_throw_f",
+        "victim_kimi_throw_b",
+        "victim_kimi_special3",
+        "victim_qwen_throw_f",
+        "victim_qwen_throw_b",
+        "victim_qwen_special3"
+      ]
+    },
+    {
+      "id": "qwen",
+      "glb": "res://fighting/assets/operators/qwen.glb",
+      "motion_brief": "anchor setplay grappler; neutral, gait, guard and reactions must preserve the posture vocabulary of sequential plate knuckle; rope guides open palm; layered forearms lift sentinel torso; small lockpin fist at shin; low segmented cable arm; stacked forearms unfold upward; measured airborne palm; grounded torso twists into heel; layers close into descending elbow. Fully author each clip; common names do not permit shared recolored libraries.",
+      "states": [
+        "idle",
+        "walk_f",
+        "walk_b",
+        "crouch",
+        "jump_rise",
+        "jump_apex",
+        "jump_fall",
+        "land",
+        "dash_f",
+        "dash_b",
+        "guard_hi",
+        "guard_lo",
+        "hit_hi",
+        "hit_lo",
+        "hit_air",
+        "block_hi",
+        "block_lo",
+        "knockdown",
+        "wakeup",
+        "throw_tech",
+        "win",
+        "lose"
+      ],
+      "combat": [
+        {
+          "clip": "stand_l",
+          "frames": 21,
+          "contact_windows": [
+            [
+              6,
+              8
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "sequential plate knuckle; standing space check.",
+          "effect": "qwen:stand_l"
+        },
+        {
+          "clip": "stand_m",
+          "frames": 32,
+          "contact_windows": [
+            [
+              9,
+              12
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "rope guides open palm; standing space check.",
+          "effect": "qwen:stand_m"
+        },
+        {
+          "clip": "stand_h",
+          "frames": 45,
+          "contact_windows": [
+            [
+              14,
+              17
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "layered forearms lift sentinel torso; standing space check.",
+          "effect": "qwen:stand_h"
+        },
+        {
+          "clip": "crouch_l",
+          "frames": 21,
+          "contact_windows": [
+            [
+              6,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "small lockpin fist at shin; low-line grounded strike.",
+          "effect": "qwen:crouch_l"
+        },
+        {
+          "clip": "crouch_m",
+          "frames": 35,
+          "contact_windows": [
+            [
+              10,
+              13
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "low segmented cable arm; low-line grounded strike.",
+          "effect": "qwen:crouch_m"
+        },
+        {
+          "clip": "crouch_h",
+          "frames": 44,
+          "contact_windows": [
+            [
+              13,
+              17
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "stacked forearms unfold upward; low-line grounded strike.",
+          "effect": "qwen:crouch_h"
+        },
+        {
+          "clip": "air_l",
+          "frames": 20,
+          "contact_windows": [
+            [
+              6,
+              8
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "measured airborne palm; airborne overhead.",
+          "effect": "qwen:air_l"
+        },
+        {
+          "clip": "air_m",
+          "frames": 31,
+          "contact_windows": [
+            [
+              9,
+              13
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "grounded torso twists into heel; airborne overhead.",
+          "effect": "qwen:air_m"
+        },
+        {
+          "clip": "air_h",
+          "frames": 41,
+          "contact_windows": [
+            [
+              13,
+              17
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "layers close into descending elbow; airborne overhead.",
+          "effect": "qwen:air_h"
+        },
+        {
+          "clip": "throw_f",
+          "frames": 38,
+          "contact_windows": [
+            [
+              6,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Paired grip casts the victim forward.",
+          "effect": "qwen:throw_f"
+        },
+        {
+          "clip": "throw_b",
+          "frames": 40,
+          "contact_windows": [
+            [
+              6,
+              7
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Paired pivot casts the victim behind the attacker.",
+          "effect": "qwen:throw_b"
+        },
+        {
+          "clip": "special1",
+          "frames": 41,
+          "contact_windows": [],
+          "projectile_spawn": 14,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Segmented tool pulse controls midrange; jump it and punish the sentinel release.",
+          "effect": "qwen:special1"
+        },
+        {
+          "clip": "special2",
+          "frames": 46,
+          "contact_windows": [],
+          "projectile_spawn": null,
+          "movement_window": [
+            20,
+            20
+          ],
+          "counter_window": null,
+          "authored_motion": "One visible anchor lasts 180 ticks and pulls once within 0.65 m; jump over its trigger or pressure the setup.",
+          "effect": "qwen:special2"
+        },
+        {
+          "clip": "special3",
+          "frames": 49,
+          "contact_windows": [
+            [
+              14,
+              15
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "Long cable capture has a 14-tick lock glyph; jump or interrupt while the cable unfolds.",
+          "effect": "qwen:special3"
+        },
+        {
+          "clip": "super",
+          "frames": 64,
+          "contact_windows": [
+            [
+              17,
+              21
+            ]
+          ],
+          "projectile_spawn": null,
+          "movement_window": null,
+          "counter_window": null,
+          "authored_motion": "anchor setplay grappler payoff: layered forearms lift sentinel torso expands into a committed signature finish. Costs the full 1000 meter.",
+          "effect": "qwen:super"
+        }
+      ],
+      "victim_clips": [
+        "victim_chatgpt_throw_f",
+        "victim_chatgpt_throw_b",
+        "victim_chatgpt_special3",
+        "victim_claude_throw_f",
+        "victim_claude_throw_b",
+        "victim_claude_special3",
+        "victim_grok_throw_f",
+        "victim_grok_throw_b",
+        "victim_meta_throw_f",
+        "victim_meta_throw_b",
+        "victim_meta_special3",
+        "victim_gemini_throw_f",
+        "victim_gemini_throw_b",
+        "victim_gemini_special3",
+        "victim_deepseek_throw_f",
+        "victim_deepseek_throw_b",
+        "victim_deepseek_special3",
+        "victim_mistral_throw_f",
+        "victim_mistral_throw_b",
+        "victim_kimi_throw_f",
+        "victim_kimi_throw_b",
+        "victim_kimi_special3",
+        "victim_qwen_throw_f",
+        "victim_qwen_throw_b",
+        "victim_qwen_special3"
+      ]
+    }
+  ],
+  "paired_timelines": [
+    {
+      "attacker": "chatgpt",
+      "move": "throw_f",
+      "clip": "victim_chatgpt_throw_f",
+      "contact": 6,
+      "damage": 18,
+      "release": 29,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": false,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "chatgpt",
+      "move": "throw_b",
+      "clip": "victim_chatgpt_throw_b",
+      "contact": 6,
+      "damage": 18,
+      "release": 29,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": true,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "chatgpt",
+      "move": "special3",
+      "clip": "victim_chatgpt_special3",
+      "contact": 12,
+      "damage": 20,
+      "release": 34,
+      "victim_x": 650,
+      "victim_y": 0,
+      "side_swap": false,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "claude",
+      "move": "throw_f",
+      "clip": "victim_claude_throw_f",
+      "contact": 6,
+      "damage": 18,
+      "release": 29,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": false,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "claude",
+      "move": "throw_b",
+      "clip": "victim_claude_throw_b",
+      "contact": 6,
+      "damage": 18,
+      "release": 29,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": true,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "claude",
+      "move": "special3",
+      "clip": "victim_claude_special3",
+      "contact": 5,
+      "damage": 25,
+      "release": 40,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": false,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "grok",
+      "move": "throw_f",
+      "clip": "victim_grok_throw_f",
+      "contact": 6,
+      "damage": 18,
+      "release": 29,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": false,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "grok",
+      "move": "throw_b",
+      "clip": "victim_grok_throw_b",
+      "contact": 6,
+      "damage": 18,
+      "release": 29,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": true,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "meta",
+      "move": "throw_f",
+      "clip": "victim_meta_throw_f",
+      "contact": 8,
+      "damage": 20,
+      "release": 31,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": false,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "meta",
+      "move": "throw_b",
+      "clip": "victim_meta_throw_b",
+      "contact": 8,
+      "damage": 20,
+      "release": 31,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": true,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "meta",
+      "move": "special3",
+      "clip": "victim_meta_special3",
+      "contact": 15,
+      "damage": 23,
+      "release": 37,
+      "victim_x": 650,
+      "victim_y": 0,
+      "side_swap": false,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "gemini",
+      "move": "throw_f",
+      "clip": "victim_gemini_throw_f",
+      "contact": 6,
+      "damage": 18,
+      "release": 29,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": false,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "gemini",
+      "move": "throw_b",
+      "clip": "victim_gemini_throw_b",
+      "contact": 6,
+      "damage": 18,
+      "release": 29,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": true,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "gemini",
+      "move": "special3",
+      "clip": "victim_gemini_special3",
+      "contact": 13,
+      "damage": 21,
+      "release": 35,
+      "victim_x": 650,
+      "victim_y": 0,
+      "side_swap": false,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "deepseek",
+      "move": "throw_f",
+      "clip": "victim_deepseek_throw_f",
+      "contact": 6,
+      "damage": 18,
+      "release": 29,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": false,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "deepseek",
+      "move": "throw_b",
+      "clip": "victim_deepseek_throw_b",
+      "contact": 6,
+      "damage": 18,
+      "release": 29,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": true,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "deepseek",
+      "move": "special3",
+      "clip": "victim_deepseek_special3",
+      "contact": 16,
+      "damage": 24,
+      "release": 38,
+      "victim_x": 650,
+      "victim_y": 0,
+      "side_swap": false,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "mistral",
+      "move": "throw_f",
+      "clip": "victim_mistral_throw_f",
+      "contact": 6,
+      "damage": 18,
+      "release": 29,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": false,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "mistral",
+      "move": "throw_b",
+      "clip": "victim_mistral_throw_b",
+      "contact": 6,
+      "damage": 18,
+      "release": 29,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": true,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "kimi",
+      "move": "throw_f",
+      "clip": "victim_kimi_throw_f",
+      "contact": 6,
+      "damage": 18,
+      "release": 29,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": false,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "kimi",
+      "move": "throw_b",
+      "clip": "victim_kimi_throw_b",
+      "contact": 6,
+      "damage": 18,
+      "release": 29,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": true,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "kimi",
+      "move": "special3",
+      "clip": "victim_kimi_special3",
+      "contact": 14,
+      "damage": 22,
+      "release": 36,
+      "victim_x": 650,
+      "victim_y": 0,
+      "side_swap": true,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "qwen",
+      "move": "throw_f",
+      "clip": "victim_qwen_throw_f",
+      "contact": 6,
+      "damage": 18,
+      "release": 29,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": false,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "qwen",
+      "move": "throw_b",
+      "clip": "victim_qwen_throw_b",
+      "contact": 6,
+      "damage": 18,
+      "release": 29,
+      "victim_x": 600,
+      "victim_y": 0,
+      "side_swap": true,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    },
+    {
+      "attacker": "qwen",
+      "move": "special3",
+      "clip": "victim_qwen_special3",
+      "contact": 14,
+      "damage": 22,
+      "release": 36,
+      "victim_x": 650,
+      "victim_y": 0,
+      "side_swap": false,
+      "socket_attacker": "Socket_GripR",
+      "socket_victim": "Socket_Chest",
+      "contact_tolerance_mm": 60
+    }
+  ]
+}

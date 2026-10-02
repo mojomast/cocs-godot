@@ -118,6 +118,15 @@
     },
     "tern-archipelago": {
       "name": "Tern Archipelago"
+    },
+    "helix-conservatory": {
+      "name": "Helix Conservatory"
+    },
+    "gravemill-foundry": {
+      "name": "Gravemill Foundry"
+    },
+    "parallax-observatory": {
+      "name": "Parallax Observatory"
     }
   },
   "routes": [
@@ -420,7 +429,10 @@
             "thermal-divide",
             "sirocco-circuit",
             "copper-bowl",
-            "tern-archipelago"
+            "tern-archipelago",
+            "helix-conservatory",
+            "gravemill-foundry",
+            "parallax-observatory"
           ],
           "default": "switchyard-ward"
         },
@@ -485,6 +497,29 @@
             "tern-archipelago": [
               "cocs",
               "cocs-coop"
+            ],
+            "helix-conservatory": [
+              "deathmatch",
+              "teamdeathmatch",
+              "ctf",
+              "domination",
+              "koth"
+            ],
+            "gravemill-foundry": [
+              "deathmatch",
+              "teamdeathmatch",
+              "domination",
+              "assault",
+              "payload",
+              "combined-arms"
+            ],
+            "parallax-observatory": [
+              "deathmatch",
+              "teamdeathmatch",
+              "ctf",
+              "koth",
+              "uplink",
+              "holdout"
             ]
           },
           "default": "deathmatch"
@@ -517,6 +552,9 @@
           "maps": [
             "breakwater-exchange",
             "copper-bowl",
+            "gravemill-foundry",
+            "helix-conservatory",
+            "parallax-observatory",
             "rainmarket-exchange",
             "sirocco-circuit",
             "switchyard-ward",
@@ -534,6 +572,29 @@
             ],
             "copper-bowl": [
               "puma-soccer"
+            ],
+            "gravemill-foundry": [
+              "assault",
+              "combined-arms",
+              "deathmatch",
+              "domination",
+              "payload",
+              "teamdeathmatch"
+            ],
+            "helix-conservatory": [
+              "ctf",
+              "deathmatch",
+              "domination",
+              "koth",
+              "teamdeathmatch"
+            ],
+            "parallax-observatory": [
+              "ctf",
+              "deathmatch",
+              "holdout",
+              "koth",
+              "teamdeathmatch",
+              "uplink"
             ],
             "rainmarket-exchange": [
               "armsrace",
