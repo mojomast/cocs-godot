@@ -107,5 +107,12 @@ failed attempts and earlier releases.
   negative control penetrated the same pier despite identical shot blocking,
   proving the movement test detects the reported defect. Geometry hash and prior
   route/full-round provenance remain unchanged.
+- **Parallax wall correction — `9107216d`:** 844 quads converted to 1,688 wall
+  triangles with identical rendered geometry. Tall-wall regression contacts
+  changed from crossing to stopping 0.4213 m from the face. Existing low parapets
+  already blocked correctly. Real vault-wall contacts, open passages, underpass
+  and three ceiling undersides pass; all routes, pickups, CTF and six source
+  rounds passed again with 689/689 connected nav nodes. New geometry hash:
+  `916164f0417369f37506e3908e940c961ea142aa349dcda3226ca1f316a040eb`.
 
 No finished Blender asset or native map acceptance is claimed at this checkpoint.
