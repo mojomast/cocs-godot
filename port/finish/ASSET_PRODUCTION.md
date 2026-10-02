@@ -1,7 +1,7 @@
 # Consolidated asset production queue
 
 **Source consolidation complete; READY FOR SERIAL BLENDER PRODUCTION after an
-explicit grant. FINISHCOMBINED-A owns the current heavy slot.** No Blender, Godot,
+explicit grant. Grant C belongs to the original Parallax owner.** No Blender, Godot,
 imports, rendering, baking, video encoding or nested agents ran in this task.
 
 The executable queue is [`ASSET_PRODUCTION.json`](ASSET_PRODUCTION.json). It keeps
@@ -33,10 +33,10 @@ commit README was inspected to record original-worktree commands in the queue.
 That unit must finish there, then parent reviews geometry/assets/hooks and
 revalidates Moth mounts on the revised interiors.
 
-Consolidation implementation is `0d502fba`, followed by exact export/master
-source-fingerprint enforcement at **`497fb565`**. That is the current recipe,
-builder and finishing-code revision recorded in the JSON queue; subsequent
-documentation-only handoff commits do not change those asset inputs.
+Original consolidation implementation is `0d502fba`, followed by exact
+export/master source-fingerprint enforcement at `497fb565`. The queue now pins
+the integrated refined helper/build inputs at **`652b8f3c`**. Actual per-file
+fingerprints, rather than this descriptive revision alone, govern acceptance.
 
 ### Minimal semantic corrections
 
@@ -92,8 +92,9 @@ Vesper candidates: **DM, TDM, CTF, Domination, KOTH, Uplink**. Abyssal's actual
 source candidates: **DM, TDM, CTF, KOTH, Domination, Holdout**. Stormglass:
 **Puma Race**. None is publicly registered. During native production, use a
 test-only admission seam, then parent registers only actually accepted pairs.
-The hosted candidate admission/journey harnesses still need completing; source
-fixtures and map probes are not substitutes for those gates.
+The hosted candidate admission/journey harnesses are now implemented (see the
+source-only follow-up below); their native execution and acceptance remain pending.
+Source fixtures and map probes are not substitutes for those gates.
 
 ## Preflight and bounded commands
 
@@ -153,13 +154,13 @@ timing is labeled hardware/GPU acceptance.
 
 ## Moth finish integration and remaining material review
 
-`tools/asset-production/moth_finish.py` uses four existing material-family image
-pairs: brushed metal/metal normal, hex paneling, weathered concrete and rough
-stucco. It generates restrained swatch-preserving albedo modulation from the
-**actual images**, connects their real tangent-space normals at strength .18,
-and authors fixed per-face attachment-local UVs at .65 tiles/metre. Scenery's
-normalized recipe gets its reviewed physical scale for UV density. Moving
-vehicles and rigid/skinned robot parts therefore carry their textures with them.
+`tools/asset-production/moth_finish.py` now uses the `cd12c1dc` refined finish:
+explicit reviewed material roles, actual baked brushed-metal/sand/concrete/
+organic/grass samples, restrained multiscale swatch modulation, and selective
+normals derived from the same mixed height. Coatings, foliage, coral, rubber and
+fabric retain geometry normals without a normal texture. Material-specific UV
+density and stable component-local phase survive batching and rigid motion.
+Scenery's normalized recipe gets its reviewed physical scale for UV density.
 Robot vertex colors remain a multiplicative palette input; COLOR_0 + texture
 export/import is a mandatory review gate, not assumed proven by Python syntax.
 
@@ -201,6 +202,96 @@ Evidence root:
 Each preflight hashes current recipe/builder inputs independently of HEAD, so
 uncommitted source-check snapshots are distinguishable from committed production.
 All new native/material/Blender checks are prepared and **unexecuted**.
+
+## Candidate hosted implementation — source-only follow-up
+
+Merged `652b8f3c` by clean fast-forward in the existing checkout. Grant B has
+since been released; **grant C is exclusive to the original Parallax worker**.
+The queued assets follow its explicit release and a new grant. This follow-up
+ran no engine, Blender, import, render, encoding, audio or authority simulation.
+
+Executable additions:
+
+- `tools/asset-production/candidate-admission.mjs`: private test admission with
+  exact wrapper-byte and canonical geometry hashes, explicit 6/6/1 candidate
+  allowlists, empty public bindings and rejection of changed identities.
+  A bounded temporary derivative rewrites only static import edges and the
+  private catalog table. Production room/transport/core/payload bodies and their
+  existing validation are retained byte-for-byte apart from those import edges.
+  Generated modules and original SHA-256s remain in each run's evidence directory.
+- `godot/tests/asset_production/candidate_catalog.gd`: direct-test-only catalog,
+  requiring explicit arguments, exact wrapper hash/geometry, and real imported
+  GLB. Public catalogs and shipping admission have no new switch.
+- `candidate-hosted.mjs`, `candidate-guidance.mjs` and native `hosted.tscn/.gd`:
+  two production native clients use ordinary `send_input` serialization, following
+  the existing Foundry native harness convention. Node observes source state and
+  writes input stimulus files; it never writes actor positions, health, score,
+  flags, objectives or race state. Both clients must join and acknowledge inputs
+  and receive matching native results.
+- Combat-map journeys first let the controlled opponent physically approach,
+  shoot and kill the host, then require actual source respawn. DM/TDM require a
+  frag-limit win; CTF requires physical pickup/carry/capture; zone modes require
+  objective completion and the correct team winner without timeout/tiebreak.
+  The passive opponent retreats away from flags/zones after the respawn check.
+- Stormglass drives both source vehicles through native inputs, observes the
+  countdown, performs a guest ordinary reset/recovery with unchanged gate credit,
+  and requires a real lap finisher and matching winner. Reset is explicitly part
+  of this journey, not mislabeled as a no-reset lap. Separate collision probes
+  and full visual/ordinary-lap acceptance remain required.
+- Every run retains native logs, input/join/start wire frames, time-stamped
+  progression, exact recipe/GLB/derivative hashes, source outcome and both process
+  teardown results. Host uses the existing bounded Foundry capture preset, with
+  actual capture timestamps; guest is headless. No GPU or normal-lighting art
+  acceptance follows from that preset. Renderer/quality review remains separate.
+
+The queue exposes **13 selectable `hosted-<mode>` stages**, each bounded to 960
+seconds including startup/receipt work, with a 720-second journey limit. After
+the corresponding build/reopen/receipt/import stages and an explicit grant:
+
+```sh
+python3 tools/asset-production/run.py --unit vesper-viaduct --stage hosted-ctf --granted
+python3 tools/asset-production/run.py --unit abyssal-pressureworks --stage hosted-holdout --granted
+python3 tools/asset-production/run.py --unit stormglass-causeway --stage hosted-puma-race --granted
+```
+
+Repeat for each candidate mode listed above. Add `--compact` for 760×520/UI150;
+default host profile is 1280×800/UI100. The runner retains the exclusive nonwaiting
+finish lock. Hosted stages rerun the strict actual-export receipt before starting
+an authority. Running the Node harness directly requires `--granted` but does
+not acquire the shared lock; production uses the queue wrapper shown here.
+
+`material_contract.py` reads **all six builders' actual material names**, asks
+the refined helper for their explicit roles, and verifies the actual baked-image
+and Moth master hashes. No unknown-name fallback or art-helper edit was needed.
+Preflight now uses these dependencies instead of the obsolete four texture pairs.
+Receipt/reopen now enforce revision-2 role/source metadata, retained robot
+COLOR_0, actual albedo UV binding, selective normal presence/absence and strength,
+normal/albedo phase-channel agreement, and source fingerprints. Masters retain
+`MothLocal`; imported GLB UV channel indices may differ without changing phase.
+The helper's existing component-local phase-preservation behavior is unchanged.
+
+Targeted source verification commands:
+
+```sh
+node --test tools/asset-production/candidate-contract.test.mjs tools/asset-production/consolidation.test.mjs
+python3 -m unittest discover -s tools/asset-production -p 'test_moth_finish.py' -v
+python3 tools/asset-production/run.py
+```
+
+These tests never construct an authority or start a native process. Negative
+contracts cover unauthorized/public admission, wrong pair/byte/geometry identity,
+wrong/time-limit wins, missing respawn, disconnected navigation and missing or
+incorrect material/normal/UV/COLOR_0/provenance data. Native parsing, actual client
+journeys, imported texture fidelity, art inspection and acceptance remain pending.
+No new map-mode pair is registered by a successful harness invocation; parent
+still reviews actual evidence and final resource/capture/Windows gates.
+
+Actual follow-up results: **10/10 Node contracts and 5/5 helper tests passed**;
+Node syntax and Python AST checks passed. Source preflight reports zero missing
+dependencies and about 75.6 GiB free. Evidence:
+`/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/consolidation/candidate-source-20261002T220229Z/`.
+Latest preflight: `consolidation/20261002T220230.634392Z/preflight.json` under the
+same evidence root. These are source results, not a native parse or journey pass.
 
 ## Windows release closure
 
