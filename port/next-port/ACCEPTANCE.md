@@ -1,7 +1,8 @@
-# First source-feature pass — combined acceptance
+# First source-feature pass — published playtest acceptance
 
 Runtime anchor: **`e731fd536d31d16a7014402afe6670fca644f9c1`**.
 Evidence root: `/home/mojo/.tmp-on-disk/cocs-first-port-pass-evidence-20261002/`.
+Release: https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-source-expansion-2026-10-02
 
 ## Completed
 
@@ -17,25 +18,25 @@ Evidence root: `/home/mojo/.tmp-on-disk/cocs-first-port-pass-evidence-20261002/`
   **1,672 shared build inputs match**, and generated resource inventories/digests
   match. Windows additionally records its platform-specific play instructions.
 - Both archives were checksum-verified and freshly extracted into paths with
-  spaces. Platform execution acceptance is in progress, not yet claimed.
+  spaces. Both platforms' execution acceptance passed.
 
 ## Platform and exported-game checks
 
 - Linux extracted package: **23 base + 52 expansion = 75/75 cases passed**.
 - Windows archive independently passed recorded-commit/source closure and all
-  file-integrity checks; actual Windows execution remains in progress below.
+  file-integrity checks.
 - Windows: [workflow 36972400600](https://github.com/mojomast/cocs-godot/actions/runs/36972400600),
-  expected the same 75 cases with transport observation.
+  **75/75 cases passed**, with **23 transport trace files** retained.
 - Package-only graphical journeys: **3/3 passed** — Full Arsenal wide, VIP
   compact, Campaign compact. External fixture loads production scenes/resources
   from `cocs.pck` and authorities only from extracted `runtime/`; per-run fixture
   and manifest hashes are retained. Parent inspected pickup/operator status,
   compact ability/caption and campaign story-comms captures. These are controlled
   presentation fixtures with recorded source setup, not natural completion proof.
-- Final public acceptance archive, release notes and publication are pending
-  actual Windows results.
+- Release evidence includes `playtest-acceptance.json`, the build comparison,
+  `source-pass-acceptance-evidence.tar.gz` and three packaged screenshots.
 
-Draft release tag: `quiet-relay-source-expansion-2026-10-02`.
+Release tag: `quiet-relay-source-expansion-2026-10-02`.
 
 ## Built archive SHA-256
 

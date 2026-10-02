@@ -2,8 +2,9 @@
 
 Owner requests a fan-out of Astra subagents to improve every area of the game
 and resume porting features from the Three.js version. Start from `29e242a0`;
-the published Windows/Linux runtime is `1c1f6e34`, with 67 package cases passing
-on each platform. Existing archives and evidence remain unchanged.
+the preceding Windows/Linux runtime was `1c1f6e34`, with 67 package cases passing
+on each platform. This pass is now published at **`e731fd53`**, with **75/75**
+package cases passing on each platform. Existing archives and evidence remain.
 
 **Follow-up authorization:** the owner requests a second pass immediately after
 this pass completes. Finish this pass's integration, combined checks and verified
@@ -49,7 +50,7 @@ its `port/next-port/<lane>/` directory, with actual source/native anchors.
 
 - **Helix Conservatory owns the exclusive local Blender/Godot slot now.**
   Parent completed local canonical, export, Linux package and three exported
-  graphical checks. Windows verification runs remotely. Other lanes are research,
+   graphical checks. Windows verification also passed. Other lanes are research,
   code and Node-only until explicitly granted the engine. Heavy native/Blender
   work is serialized with `LP_NUM_THREADS=1` and the pinned Godot 4.5.2 binary.
 - Current handoff: Gameplay → World → Modes → Experience → parent combined
@@ -66,8 +67,9 @@ its `port/next-port/<lane>/` directory, with actual source/native anchors.
 
 **Merged checkpoint:** `e731fd53` passed **359/359** canonical gates on its first
 run. Fresh Windows/Linux exports share all 1,672 common inputs and generated
-resources. Extracted platform verification is running; the release remains a
-draft. Current results and public screenshots: [ACCEPTANCE.md](ACCEPTANCE.md).
+resources. **75/75 extracted cases passed on both platforms**, alongside three
+exported graphical journeys. The release is published; the authorized second
+Astra pass is starting. Results and public screenshots: [ACCEPTANCE.md](ACCEPTANCE.md).
 
 ### First implementation integrations (native acceptance pending)
 

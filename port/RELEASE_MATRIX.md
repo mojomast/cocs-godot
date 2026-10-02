@@ -23,6 +23,17 @@ implementation and acceptance are in progress.
 
 ## Evidence levels and current acceptance
 
+### Source expansion, abilities and accessibility — October 2, 2026
+
+[Runtime `e731fd53`](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-source-expansion-2026-10-02)
+passed **359/359 canonical gates on the first run**, **75/75 extracted Linux
+cases**, **75/75 actual Windows cases** and three exported graphical journeys.
+Includes four source modes, short-tap mobility repair and rope/grapple cues,
+operator readouts, sound captions, compact information and weather lighting/wetness.
+See [combined acceptance](next-port/ACCEPTANCE.md) for receipts and limits.
+The owner authorized a second feature pass; three additional complex Blender maps
+have a [separate production workstream](new-maps/WORKSTREAM.md).
+
 ### Targeting, animation and effects — October 1, 2026
 
 [Published runtime `1c1f6e34`](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-targeting-animation-2026-10-01)

@@ -6,6 +6,12 @@ Upstream source repository is `mojomast/cocs` (remote `origin`).
 
 ## Decision in brief
 
+**2026-10-02 completed source-feature pass:** runtime `e731fd53` passed 359/359
+canonical gates, 75 package cases on each platform and three exported graphical
+journeys. [Release acceptance](next-port/ACCEPTANCE.md) covers the four modes,
+mobility/readouts, captions and weather response. The owner authorized the
+[next pass](next-port/PASS_TWO.md) and [three complex Blender maps](new-maps/WORKSTREAM.md).
+
 **2026-10-01 broad migration checkpoint:** runtime `1c1f6e34` is published with
 targeting, campaign-variety, animation and edge/effects improvements; both
 platforms passed 67 package cases. The owner now requests four parallel Astra
