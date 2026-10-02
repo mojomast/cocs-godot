@@ -33,3 +33,21 @@ Integration Astra now continues remaining baseline code fixes without heavy tool
 The new surface choices will require a fresh actual native review before Windows
 release. Matching hashes, source coverage, lower saturation or an anti-tiling
 shader alone cannot certify the user's aesthetic requirement.
+
+## First correction integrated
+
+Actor/queued-asset correction `cd12c1dc` is merged as `170a000c`. It replaces the
+27 operator shell albedo/normal/roughness PNGs' repeated anatomical stamps with
+quiet neutral Moth-derived grain; fitted panel/board/vent overlays and intentional
+identity colors remain. Nine profiles, 63 finishes, 116 PNG paths and 538 bound /
+476 preserved source primitives remain. Parent inspected the explicitly 2D before/
+after sheet; actual refined native appearance remains pending.
+
+Queued Blender finishing now uses explicit material semantics, stable local UV
+phases, aligned multiscale source sampling and selective normals; unknown material
+roles require review instead of becoming metal automatically. Source validation,
+regeneration and pixel/provenance audit passed on the lane. Parent reran runtime
+operator coverage, five asset-helper tests and four package resource tests
+successfully; logs use `/tmp/opencode/refined-*`. Animation producer received the
+exact commit for safe-boundary import, without unnecessary fighting rig re-export.
+Map material/art and anti-repetition rendering corrections are still active.
