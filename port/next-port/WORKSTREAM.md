@@ -47,8 +47,9 @@ its `port/next-port/<lane>/` directory, with actual source/native anchors.
 
 ## Shared-file and engine coordination
 
-- **Modes owns the exclusive Godot slot now.** World released after native
-  acceptance `e99ab7ca`, integrated as `c290d24e`. Other lanes are research,
+- **Experience owns the exclusive Godot slot now.** Modes released after native
+  acceptance `eb3f2d10`, integrated as `7950e8a4`; all 40 recorded lane processes
+  were reaped. Other lanes are research,
   code and Node-only until explicitly granted the engine. Heavy native/Blender
   work is serialized with `LP_NUM_THREADS=1` and the pinned Godot 4.5.2 binary.
 - Current handoff: Gameplay → World → Modes → Experience → parent combined
@@ -106,6 +107,18 @@ its `port/next-port/<lane>/` directory, with actual source/native anchors.
   clones/bindings/scanned nodes: 57/588/2,836, no cap hits or static draw-count
   increase. These remain lane results pending combined suite/platform acceptance.
   Parent registers standalone and two isolated real-wire regression journeys.
+- Modes follow-up `eb3f2d10` integrated as `7950e8a4`: closing-transport reconnect
+  race, map selector initialization, repeated-start round accounting, compact
+  scoreboard/objective layout and read-only spectator presentation repaired.
+  All four modes passed normal-rate two-native-player + late-native-spectator
+  journeys through results, reconnect, restart and Home selection. Juggernaut
+  additionally showed source-bot crown transfer and a points win. Arsenal was a
+  draw, Elimination a time/ticket result, VIP a defender timeout; successful
+  ordinary-input VIP extraction remains unaccepted. Parent registers all four
+  native journeys and moves acceptance-only scripts under `godot/tests/`.
+- Experience's final grant requires the world and mode follow-ups in its own
+  test checkout so compact layout and lifecycle acceptance cover the combined
+  product. The next pass's evidence-driven candidates are in [PASS_TWO.md](PASS_TWO.md).
 
 Require real source inputs/events/results, lifecycle and privacy/control boundary
 checks, native visual/audio evidence appropriate to the feature, and wide/compact

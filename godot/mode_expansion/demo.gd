@@ -241,7 +241,7 @@ func leave_home() -> void:
 	received_pose = false
 	release_pointer()
 	if evidence: print("MODE_NATIVE_BOUNDARY ", JSON.stringify({"kind":"leave","controls":can_capture_pointer(),"pointerReleased":Input.mouse_mode == Input.MOUSE_MODE_VISIBLE}))
-	if "--mode-fixture-leave" in OS.get_cmdline_user_args(): preload("res://mode_expansion/home_probe.gd").observe(get_tree(), fixture_capture + "-home.png", current_id, selected_mode)
+	if "--mode-fixture-leave" in OS.get_cmdline_user_args(): load("res://tests/mode_expansion/home_probe.gd").observe(get_tree(), fixture_capture + "-home.png", current_id, selected_mode)
 	get_tree().change_scene_to_file("res://ui/main_menu.tscn")
 
 func _process(delta: float) -> void:

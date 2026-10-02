@@ -103,6 +103,11 @@ class PlayableGatesTest(unittest.TestCase):
             "player-gameplay-native": "res://tests/player_gameplay/test.gd",
             "player-gameplay-live-input": "port/next-port/gameplay/live.mjs",
             "competitive-source-modes": "port/next-port/modes/source-parity.test.mjs",
+            "competitive-native-contracts": "res://tests/mode_expansion/contracts.gd",
+            "competitive-native-arsenal": "port/next-port/modes/native-proof.mjs",
+            "competitive-native-juggernaut": "port/next-port/modes/native-proof.mjs",
+            "competitive-native-elimination": "port/next-port/modes/native-proof.mjs",
+            "competitive-native-vip": "port/next-port/modes/native-proof.mjs",
         }
         for name, path in expected.items():
             with self.subTest(gate=name):

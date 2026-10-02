@@ -48,6 +48,7 @@ os.environ['EDGE_SOURCE_EVENTS'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'e
 os.environ['EDGE_MAP_CASES'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'edge-map-cases.json')
 os.environ['EDGE_RENDER_OUT'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'edge-render')
 os.environ['PLAYER_GAMEPLAY_EVIDENCE'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'player-gameplay')
+os.environ['MODE_EVIDENCE'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'competitive-modes')
 # Verification-owned loopback authorities must not inherit a user's fixed server
 # port. The launchers resolve and pass the actual ephemeral endpoint to Godot.
 os.environ['PORT'] = '0'
@@ -358,6 +359,11 @@ commands = [
     ("player-gameplay-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_gameplay/test.gd"]),
     ("player-gameplay-live-input", ["node", "port/next-port/gameplay/live.mjs"]),
     ("competitive-source-modes", ["node", "--test", "port/next-port/modes/source-parity.test.mjs", "game/extra-modes.test.mjs"]),
+    ("competitive-native-contracts", [binary, "--headless", "--path", "godot", "--script", "res://tests/mode_expansion/contracts.gd"]),
+    ("competitive-native-arsenal", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "port/next-port/modes/native-proof.mjs", "--mode=arsenal"]),
+    ("competitive-native-juggernaut", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "port/next-port/modes/native-proof.mjs", "--mode=juggernaut"]),
+    ("competitive-native-elimination", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "port/next-port/modes/native-proof.mjs", "--mode=team-elimination"]),
+    ("competitive-native-vip", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "port/next-port/modes/native-proof.mjs", "--mode=vip-escort"]),
     ("audiovisual-event-router", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/event_router.gd"]),
     ("audiovisual-outcome", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/outcome.gd"]),
     ("audiovisual-settings", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/settings.gd"]),

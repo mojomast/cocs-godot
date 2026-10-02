@@ -136,7 +136,7 @@ derivative contract; no frozen-source bypass):
 
 ```sh
 COCS_SOURCE_DERIVATIVE=port/contracts/lattice-catalog-derivative.json node tools/godot-export/semantic.mjs
-LP_NUM_THREADS=1 "$GODOT_BIN" --headless --path godot --script res://mode_expansion/contracts.gd
+LP_NUM_THREADS=1 "$GODOT_BIN" --headless --path godot --script res://tests/mode_expansion/contracts.gd
 # Run once per mode ID, sequentially under an available display or xvfb-run:
 GODOT_BIN=/path/to/pinned/godot LP_NUM_THREADS=1 MODE_EVIDENCE=/tmp/opencode/unique-run node port/next-port/modes/native-proof.mjs --mode=juggernaut
 ```
@@ -144,6 +144,11 @@ GODOT_BIN=/path/to/pinned/godot LP_NUM_THREADS=1 MODE_EVIDENCE=/tmp/opencode/uni
 Runner accepts `GODOT_BIN` with `GODOT` fallback, defaults evidence to a unique
 `/tmp/opencode/mode-proof-<timestamp>` directory, and accepts optional `MODE_BOTS=2`
 for additional real source combat. Canonical wiring remains parent-owned.
+
+Parent integration registers the native contract and all four graphical journeys.
+Contract and Home-probe scripts are moved into `godot/tests/mode_expansion/`,
+outside production exports; the explicit developer fixture flag dynamically loads
+the Home probe only during acceptance. Normal launches do not use that probe.
 
 ### Preserved native failures and corrections
 

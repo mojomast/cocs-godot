@@ -21,7 +21,7 @@ was used in this lane. See ACCEPTANCE.md for exact native outcomes and limits.
 - `port/contracts/map-selection.json` is the existing source map capability
   authority. The new route is its eight supported pairs, not new world claims.
 - `multiplayer-worlds` has its own port-owned map allowlist, not automatic
-  authorization for arbitrary source modes. Its existing 44 pairs stay intact.
+   authorization for arbitrary source modes. Its existing 43 pairs stay intact.
 
 ## Status matrix
 
@@ -77,7 +77,7 @@ Parent integration dependencies:
 4. Native lane checks passed after grant. Re-run the two new native gates below
    against the combined branch, including Experience HUD composition. Package
    build/release remains parent-owned; this is not release authorization.
-   - `godot --headless --path godot --script res://mode_expansion/contracts.gd`
+   - `godot --headless --path godot --script res://tests/mode_expansion/contracts.gd`
    - `GODOT_BIN=... MODE_EVIDENCE=<isolated-dir> node port/next-port/modes/native-proof.mjs --mode=<id>` (each of the four IDs, sequentially, a display/Xvfb required)
 
 ## Source details that must not be “fixed” in native
