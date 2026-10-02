@@ -1,8 +1,10 @@
 # Finish acceptance — source-only READY FOR ENGINE
 
-Owner: `finish/acceptance-20261002`, based on `6cefd9eb`. No nested agents.
+Owner: `finish/acceptance-20261002`, initially based on `6cefd9eb`, now merged with
+parent candidate `5a4bc82d04856d35fc06c58786bb9da4a35d6369` at `749c0e2e`.
+No nested agents. Parent coordination documents are preserved.
 **No engine grant was received. No native version probe, import, rendering,
-audio-driver capture, Blender or FFmpeg execution was performed.** Parallax owns
+audio-driver capture, Blender or FFmpeg execution was performed.** Helix owns
 the heavy slot. The integrator owns composition/Home Replays; Packaging owns
 runtime closure and extracted-package verification.
 
@@ -13,19 +15,21 @@ summary. Defaults are expanded by `tools/godot-dev/finish_runner.py`; each run
 report embeds the complete expanded queue with commands, environment overrides,
 evidence kind, criteria, prerequisites, timeout and actual skip reason.
 
-The current inventory is **90 unique jobs**: 17 source, 59 engine, 2 real-audio,
+The current inventory is **96 unique jobs**: 20 source, 62 engine, 2 real-audio,
 8 explicit human reviews and 4 separate-owner closures. Every job is critical.
 Every prepared command is queued once per distinct scenario/layout. A Node
 owner, controlled wallet/spawn, synthetic InputEvent, native player, real driver
 and human review are explicitly different evidence kinds.
 
-Canonical `verify.py` gains **18 focused registrations**. Static inventory is
-375 commands plus version/release guards = **377 planned gates**, against the
-359-gate published baseline. This is a count, **not a 377-pass result**. Existing
+Canonical `verify.py` gains **24 focused registrations**. Static inventory is
+381 commands plus version/release guards = **383 planned gates**, against the
+359-gate published baseline. This is a count, **not a 383-pass result**. Existing
 short canonical gates and first-pass journeys remain registered. Long acceptance
 jobs live in this separate runner rather than inheriting a 180-second timeout.
-New registrations intentionally require the feature commits to be integrated;
-registration tests do not substitute another worktree for missing native files.
+All feature commits are now integrated in this checkout. A registration test
+checks every declared entrypoint against actual local files, excluding only the
+explicit generated semantic-manifest prerequisite. It never substitutes another
+worktree or interprets file existence as native execution.
 
 | Family | Actual prepared coverage | External command deadline |
 |---|---|---:|
@@ -38,6 +42,7 @@ registration tests do not substitute another worktree for missing native files.
 | LATTICE | source caption/progress/recovery oracle and wire; native feedback, three native peers, tactical and command contracts | native peers 75s (internal 45s); contracts 90s |
 | Controls | source defaults/normalization/swaps/timelines; native four-sampler contract; combat/Horde/sports/CA, arms-race fixtures, Settings, input queue/stall; base-world wide/compact real wire | contract 60s; base world 110s (internal 80s); regressions 90s |
 | Replay | adapter/source tests; normal-rate record/save/discard/leave/library/exact seek; zero post-leave authority packets; external helper dependencies | 150s (internal 120s) |
+| Composed integration | 208 source caption vectors; native 212-check caption consume/privacy gate; six Home Replay entry/cleanup checks; 48 exported bridge refusal checks; source replay vocabulary and four package closure contracts | native 90s each; source 120s each |
 
 Graphical screenshots require actual inspection. The spectator eight jobs require
 zero spectator input packets **including neutral packets**, correct read-only
@@ -77,16 +82,19 @@ Tracked source/runtime files are also byte-hashed, including dirty files. Litera
 `new URL()` is deliberately not inferred as a required input: it also names the
 optional `server/history.json` and `server/progression.json` output stores.
 
-The lane's Horde launcher hardcodes its evidence root. Parent may adopt the
-minimal [`horde-evidence-hook.patch`](horde-evidence-hook.patch) after integration:
+The inherited Horde launcher hardcoded its evidence root. The isolated one-line
+launcher-only commit `52ce0963` now honors `HORDE_EVIDENCE_DIR`; no journey logic,
+deadline or production behavior was changed. The original adoption diff remains
+[`horde-evidence-hook.patch`](horde-evidence-hook.patch) for audit. Apply it only if
+not adopting `52ce0963` or the complete branch:
 
 ```sh
 git apply --check port/finish/horde-evidence-hook.patch
 git apply port/finish/horde-evidence-hook.patch
 ```
 
-This lane did not edit that owner’s harness. Horde jobs refuse to start until
-`process.env.HORDE_EVIDENCE_DIR` is present. They then write into this run’s scope.
+Horde jobs refuse to start if the environment hook is absent, and then write into
+this run’s scope. This is the only launcher-level change outside canonical tools.
 Every other inspected launcher already accepts `GODOT_BIN`; no engine wrapper or
 production changes were necessary. The finish runner supplies each lane's exact
 grant flag/environment only after its own explicit cohort grant.
@@ -199,24 +207,56 @@ processes and rejected hash changes in those tests are negative controls, not
 native attempts. `development-failures.json` retains earlier registration-order
 and zero-context patch failures and their narrow corrections.
 
+### Integrated-candidate follow-up
+
+After the parent steering update, `749c0e2e` merged the exact supplied candidate.
+`INTEGRATION.md`, `HOME_REPLAY_HOOK.md` and `PACKAGING.md` were read; all three new
+native contracts and their source checks are now critical entries in both the
+canonical list and full matrix. The coordinator's notes and fighting research
+documents were preserved; unbuilt fighting work is outside this acceptance scope.
+
+`run-cpharx0k/report.json` records **20/20 source jobs passed in the integrated
+checkout**, including **17 runner tests**, the 208-vector composed-caption oracle,
+one replay manifest-vocabulary test and four finishing-closure tests. All engine,
+audio, human and separate-owner jobs remain unrun/incomplete; exit 1 is correct.
+The report predates only the isolated Horde evidence-root hook and documentation
+follow-up, so a final engine run must start a fresh same-input ledger.
+
+Every direct required file and literal import/preload resolves in the integrated
+checkout except `godot/content/generated/manifest.json`, the explicitly declared
+parent preparation output. This was checked using actual files, with no mock or
+other-worktree fallback. The parent-provided committed closure is **86 source
+modules, 39 adapters, 166 feature resources including 160 WAVs, four replay-runtime
+files**; the source-only closure tests do not claim extracted native execution.
+
+`final-integrated-source-7dtzjfqb/` retains the final **17/17 runner, 2/2
+registration, 5/5 verifier-report, 6/6 existing watchdog** test logs, Horde
+launcher Node syntax check and every gate's resolved dependency inventory.
+`candidate-runtime-byte-parity.log` confirms this branch's `godot/`, `game/`,
+`server/` and `tools/godot-package/` bytes exactly match parent `5a4bc82d`.
+Whitespace, **96-job** matrix validation and **383 planned** canonical inventory
+also pass. The only unresolved declared file is the generated semantic manifest.
+
 ## Known missing completion work (critical, not silently waived)
 
 1. World close-ground contact/native sports representative, current contact
    diagnostics and measured material/draw/query/resource deltas need completion.
    Existing overview/style captures do not establish connected contact visibility;
    the old zero-extra-draw aggregator cannot certify the new contact pool.
-2. LATTICE shared-caption private-context integration and wide/compact graphical
-   command/consent journeys still need an executable composed-runtime gate or
-   explicit owner-inspected evidence. The three-peer headless fixture is narrower.
+2. LATTICE shared-caption private-context integration now has a real prepared
+   212-check composed-runtime contract, still unrun. Wide/compact live caption and
+   graphical command/consent journeys need inspected evidence beyond that contract
+   and the three-peer headless fixture.
 3. Physical OS side-button/modifier/assistive input and cross-route mapped held
    actions need real execution. Base-world synthetic input and its synthetic final
    spectator identity do not replace actual seat/privacy acceptance.
-4. Replay Home/attract integration, real-driver playback/audio clearing and native
-   disk-error UI need inspection. The current admitted scope is one map/four combat
+4. Replay Home/attract integration and exported startup repair are now implemented,
+   with six/48-check native gates queued. Real-driver playback/audio clearing and
+   native disk-error UI need inspection. The admitted scope is one map/four combat
    modes, not private-intel COCS. Extracted external runtime closure is Packaging’s.
 5. Listening, actual transport stall/focus audio behavior, animation/gameplay clips,
    inspected wide/compact layout and hardware GPU measurements remain open.
-6. Parent runs full integrated canonical **377 planned**, then Packaging’s baseline
+6. Parent runs full integrated canonical **383 planned**, then Packaging’s baseline
    **75/platform plus additions**, updating actual counts after integration.
 7. Production maps/art/masters/robots/vehicles/scenery/cinematic v3 are separately
    owned and unaccepted by this matrix. Sunscar VIP ordinary-input extraction

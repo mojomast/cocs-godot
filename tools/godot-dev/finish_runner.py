@@ -308,6 +308,11 @@ def main(argv=None):
             report_path = run_dir / 'report.json'
             report = {'schema': 1, 'input_identity': identity, 'root': str(args.root.resolve()),
                       'attempts': {}, 'queue': jobs, 'created': time.time()}
+            head = subprocess.run(['git', 'rev-parse', '--verify', 'HEAD'], cwd=args.root,
+                                  text=True, capture_output=True)
+            report['port_commit'] = head.stdout.strip() if head.returncode == 0 else None
+            report['port_worktree_dirty'] = bool(subprocess.check_output(
+                ['git', 'status', '--porcelain'], cwd=args.root, text=True).strip())
         started = time.monotonic()
         report.setdefault('invocations', []).append({'at': time.time(), 'run': args.run, 'grants': args.grant,
                                                    'budget_seconds': args.budget_seconds,

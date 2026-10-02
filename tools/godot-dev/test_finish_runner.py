@@ -95,6 +95,20 @@ class FinishRunnerTest(unittest.TestCase):
         self.assertEqual(result['missing'], ['missing.mjs'])
         self.assertEqual(result['node_packages'], ['ws'])
 
+    def test_integrated_entrypoints_exist_in_this_checkout(self):
+        root = Path(__file__).resolve().parents[2]
+        matrix = load_matrix()
+        generated = set(matrix['generated_prerequisites'])
+        for job in matrix['jobs']:
+            for path in job.get('requires', []):
+                if path not in generated:
+                    with self.subTest(gate=job['id'], path=path):
+                        self.assertTrue((root / path).is_file(), 'Missing integrated entrypoint; no other-worktree fallback')
+        by_id = {job['id']: job for job in matrix['jobs']}
+        for name in ('caption-integration-native', 'home-replays-native', 'replay-bridge-negative-native'):
+            self.assertEqual(by_id[name]['cohort'], 'engine')
+            self.assertIn('native-import', by_id[name]['after'])
+
     def test_private_stores_and_grants_do_not_leak(self):
         with patch.dict(os.environ, {'COCS_SETTINGS_PATH': '/user/settings', 'CHALLENGE_ENGINE_GRANT': '1',
                                     'OPERATORS': 'wrong', 'COCS_CAREER_ROOT': '/user/career'}):
