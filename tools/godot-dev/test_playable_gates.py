@@ -94,6 +94,7 @@ class PlayableGatesTest(unittest.TestCase):
             "world-weather-native-look": "res://tests/world_weather/unit.gd",
             "experience-source-captions": "tools/experience/extract.mjs",
             "experience-native-information": "res://tests/experience/contracts.gd",
+            "experience-combined-hud": "res://tests/experience/combined.gd",
             "player-gameplay-catalog": "port/next-port/gameplay/catalog.mjs",
             "player-gameplay-source-fixtures": "port/next-port/gameplay/fixtures.mjs",
             "player-gameplay-native": "res://tests/player_gameplay/test.gd",

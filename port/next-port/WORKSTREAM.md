@@ -81,6 +81,17 @@ its `port/next-port/<lane>/` directory, with actual source/native anchors.
   cases and explicit in-PCK caption/gameplay catalog checks. Expected platform
   total is 23 base + 52 expansion = **75**, pending actual exports/runs. All seven
   Node verifier tests pass, including real source objective shapes and cleanup.
+- Experience follow-up `50ea1fd3` integrated as `52de489b`: adopts the gameplay
+  status model, campaign objective/comms docking and measured free-space layout
+  for other HUDs. Audits integer-phase and independent string-phase route
+  families. Source docs are now under `port/next-port/experience/`. The new
+  combined-HUD contract is registered; native verification remains queued.
+- Parent integrated source/package check: **81/81** passed using sequential
+  `node --test --test-concurrency=1` over `manifest_validation.test.mjs`,
+  `route_parity.test.mjs`, `options.test.mjs`, `expansion_verification.test.mjs`
+  and `port/next-port/modes/source-parity.test.mjs`. This verifies source rules,
+  generated selectors, packaged-case coverage and manifest validation, not native
+  rendering or an exported build. Result is recorded in the session tool output.
 
 Require real source inputs/events/results, lifecycle and privacy/control boundary
 checks, native visual/audio evidence appropriate to the feature, and wide/compact

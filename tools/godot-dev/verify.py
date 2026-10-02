@@ -349,6 +349,7 @@ commands = [
     ("world-weather-native-look", [binary, "--headless", "--path", "godot", "--script", "res://tests/world_weather/unit.gd"]),
     ("experience-source-captions", ["node", "tools/experience/extract.mjs", "--check"]),
     ("experience-native-information", [binary, "--headless", "--path", "godot", "--script", "res://tests/experience/contracts.gd"]),
+    ("experience-combined-hud", [binary, "--headless", "--path", "godot", "--script", "res://tests/experience/combined.gd"]),
     ("player-gameplay-catalog", ["node", "port/next-port/gameplay/catalog.mjs", "--check"]),
     ("player-gameplay-source-fixtures", ["node", "port/next-port/gameplay/fixtures.mjs", "--check"]),
     ("player-gameplay-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_gameplay/test.gd"]),
