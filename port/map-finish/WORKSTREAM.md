@@ -62,3 +62,27 @@ does not advertise Parallax or establish parent native acceptance. Placements
 target the accepted production GLB and must be rechecked if interiors-v2 is built
 and promoted. Shared owner received this third profile; all map appearance review
 remains pending the serial engine grant.
+
+## Shared runtime merged
+
+Shared commits `76341350`, `999b9d6d`, `75553bf8`, `c32441ec` are merged as
+`b59af845`, `0e395035`, `f155325d`, `9f3d1354`. The loader now invokes the
+reversible per-instance binder; resource/identity/selector failures have explicit
+diagnostics. Private Moth triplanar materials, lit feathered wear, signs and
+bounded environment pockets support Off/Low/Full. Helix has 43 feathered patches
+and three explicit-normal opaque pump insets; Foundry has 16 feathered deposits.
+Their generators and backing receipts were updated together.
+
+Packaging discovers profiles only for registered maps, binds their hashes to
+recorded Git bytes and fixes the Foundry art path to `art/worlds/`. Parallax's
+profile does not register/export its isolated map. Native harness is
+`res://tests/map_finish/proof.gd`; compilation, appearance, gameplay/compact UI,
+lifecycle and PCK inclusion remain unrun.
+
+Parent corrected the stale seven-world/43-pair expansion assertion to retain the
+43 original pairs plus exactly five Helix and six Foundry pairs, with nine-map
+identity and uniqueness checks. Focused combined profile/package/expansion tests
+pass **16/16**: `/tmp/opencode/map-finish-parent-tests.tap`. Shared lane's broader
+58 source/package checks and six-file grammar pass remain separately recorded in
+`shared/source-results.json`. Current native matrix continues on its earlier
+checkpoint; these changes do not inherit that run's receipts or heavy grant.
