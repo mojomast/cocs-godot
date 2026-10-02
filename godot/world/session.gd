@@ -1,6 +1,7 @@
 extends "res://world/viewer.gd"
 
 const Client = preload("res://net/client.gd")
+const ReplayCapture = preload("res://replay/capture.gd")
 const SettingsAccess = preload("res://ui/settings_access.gd")
 const MouseMotion = preload("res://ui/mouse_motion.gd")
 const ControlMath = preload("res://world/control_math.gd")
@@ -471,6 +472,9 @@ func _ready() -> void:
 	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	label.get_parent().mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(client)
+	# Recipient-only recording; the child enables controls for its exact admission.
+	# Replay playback is a separate scene and never instantiates this live session.
+	add_child(ReplayCapture.new())
 	add_child(presentation)
 	add_child(combat)
 	label.get_parent().add_child(combat_label)
