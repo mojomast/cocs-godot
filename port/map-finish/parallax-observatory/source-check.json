@@ -1,9 +1,11 @@
 {
   "status": "source-ready; native pending",
   "geometry_hash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+  "variation_contract": "BRIEF.md; local bounds checked; shared validator must pass after rendering-owner integration",
+  "accepted_asset_source": "/home/mojo/.tmp-on-disk/cocs-map-finish-parallax-20261002",
   "accepted_glb_sha256": "b3ea4ec57f57f6db83e1acab40dc95135562347ef884cc8f33ba067af8521bb1",
   "accepted_master_sha256": "fcd7f284443c45d08177837a23af530b1667deb106bddb8822d507f5655ca090",
-  "profile_sha256": "563f0bd567efcec8714b955991d49b6f312c9fd6c004a8cc4e75df02dd4987be",
+  "profile_sha256": "e9632cb70f9b8485fb41bc609104cd5137206fab0a9e22ad22b343cfcb09dce0",
   "coverage": {
     "matched": [
       "saltstone",
@@ -43,16 +45,16 @@
       "base": "res://moth/generated/textures/weathered_concrete.png",
       "normal": "res://moth/generated/normals/weathered_concrete.png",
       "packed_ao_roughness_detail": "res://moth/derived/data/weathered_concrete.png",
-      "tiles_per_metre": 0.65
+      "tiles_per_metre": 1.3
     },
     {
       "source": "cistern",
-      "family": "enamel-glaze",
-      "variant": "damp",
-      "base": "res://moth/generated/textures/weathered_concrete-damp.png",
-      "normal": "res://moth/derived/normals/weathered_concrete-damp.png",
-      "packed_ao_roughness_detail": "res://moth/derived/data/weathered_concrete-damp.png",
-      "tiles_per_metre": 0.8
+      "family": "pearl-ceramic",
+      "variant": "cast",
+      "base": "res://moth/generated/textures/weathered_concrete.png",
+      "normal": "res://moth/generated/normals/weathered_concrete.png",
+      "packed_ao_roughness_detail": "res://moth/derived/data/weathered_concrete.png",
+      "tiles_per_metre": 1.2
     },
     {
       "source": "metal",
@@ -61,7 +63,7 @@
       "base": "res://moth/generated/textures/brushed_metal.png",
       "normal": "res://moth/generated/normals/metal.png",
       "packed_ao_roughness_detail": "res://moth/derived/data/brushed_metal.png",
-      "tiles_per_metre": 1.1
+      "tiles_per_metre": 1.4
     },
     {
       "source": "mirror",
@@ -70,25 +72,25 @@
       "base": "res://moth/generated/textures/brushed_metal.png",
       "normal": "res://moth/generated/normals/metal.png",
       "packed_ao_roughness_detail": "res://moth/derived/data/brushed_metal.png",
-      "tiles_per_metre": 0.65
+      "tiles_per_metre": 1.5
     },
     {
       "source": "paving",
-      "family": "regolith",
-      "variant": "scoured",
-      "base": "res://moth/generated/textures/rock.png",
-      "normal": "res://moth/generated/normals/rock.png",
-      "packed_ao_roughness_detail": "res://moth/derived/data/rock.png",
-      "tiles_per_metre": 0.85
+      "family": "pearl-ceramic",
+      "variant": "worn",
+      "base": "res://moth/generated/textures/weathered_concrete-worn.png",
+      "normal": "res://moth/derived/normals/weathered_concrete-worn.png",
+      "packed_ao_roughness_detail": "res://moth/derived/data/weathered_concrete-worn.png",
+      "tiles_per_metre": 1.25
     },
     {
       "source": "ochre",
-      "family": "oxidised-copper",
-      "variant": "default",
-      "base": "res://moth/generated/textures/metal-oxide.png",
-      "normal": "res://moth/derived/normals/metal-oxide.png",
-      "packed_ao_roughness_detail": "res://moth/derived/data/metal-oxide.png",
-      "tiles_per_metre": 0.75
+      "family": "pearl-ceramic",
+      "variant": "cast",
+      "base": "res://moth/generated/textures/weathered_concrete.png",
+      "normal": "res://moth/generated/normals/weathered_concrete.png",
+      "packed_ao_roughness_detail": "res://moth/derived/data/weathered_concrete.png",
+      "tiles_per_metre": 1.4
     }
   ],
   "resources": {
@@ -113,21 +115,6 @@
     "res://moth/generated/materials/entanglement-ceramic-t.png": {
       "sha256": "31e579b975d3f691455245c2140e8f911d2f5d0afc09de2c264c9c0f423a90c9"
     },
-    "res://moth/generated/textures/weathered_concrete-damp.png": {
-      "sha256": "8a143f57858a26d6ea5ab81badc60cb0ea154294b9fe180c505cb1b472bd0fab",
-      "width": 64,
-      "height": 64
-    },
-    "res://moth/derived/normals/weathered_concrete-damp.png": {
-      "sha256": "12303dd906a6864ef854df189ff42d1ad3de65e7e6a9e05c0e889bbf14b64e0a",
-      "width": 64,
-      "height": 64
-    },
-    "res://moth/derived/data/weathered_concrete-damp.png": {
-      "sha256": "bdcdde3249e6479c91253fa646185a8232e5995b724ab8fd953a78241371eb3f",
-      "width": 64,
-      "height": 64
-    },
     "res://moth/generated/textures/brushed_metal.png": {
       "sha256": "271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51",
       "width": 64,
@@ -149,26 +136,20 @@
     "res://moth/generated/materials/entanglement-t.png": {
       "sha256": "7214592bdf129c0e147216d789c3b0d32cdd75311af2b4473f7be40825a72612"
     },
-    "res://moth/generated/textures/rock.png": {
-      "sha256": "aad5e455978fdae96d8a6784908c0019e33083f809cfcf606c7c84b13ca35504",
+    "res://moth/generated/textures/weathered_concrete-worn.png": {
+      "sha256": "fc6707d6bf6ae6dc6dfec746100f83015ce74885976b20688280f29bcdf111cf",
       "width": 64,
       "height": 64
     },
-    "res://moth/generated/normals/rock.png": {
-      "sha256": "47523f76a4c62a937965cef38511f7743df4bc825f9acb5a30d0435701d4a849",
+    "res://moth/derived/normals/weathered_concrete-worn.png": {
+      "sha256": "2a76f240002c148f52cc9994683a43892ab21fe270d29f086422cb7a78e836fc",
       "width": 64,
       "height": 64
     },
-    "res://moth/derived/data/rock.png": {
-      "sha256": "8b400da2a0313be935baa99d9422d577b4bd28eac1e330971e061b97be40ed90",
+    "res://moth/derived/data/weathered_concrete-worn.png": {
+      "sha256": "9b7622f9280625dbb70ce45676c91b65214d443e84317ff1fd5ace7cc8fa1368",
       "width": 64,
       "height": 64
-    },
-    "res://moth/generated/materials/entanglement-void-r.png": {
-      "sha256": "cae2038e38c16d09daff4ca70ccdaf929cd1d343ff2ba26bc9430b13a4589757"
-    },
-    "res://moth/generated/materials/entanglement-void-t.png": {
-      "sha256": "31e579b975d3f691455245c2140e8f911d2f5d0afc09de2c264c9c0f423a90c9"
     },
     "res://moth/generated/textures/metal-oxide.png": {
       "sha256": "82ac59a91f7be9a0fd4182a8b83d7b2b7cf07d7bb6e98ae5b5ff006eedcb8257",
@@ -180,18 +161,13 @@
       "width": 64,
       "height": 64
     },
-    "res://moth/derived/data/metal-oxide.png": {
-      "sha256": "da3cd588f2f813ea41eff828feea084fb12b83fabff8ef6632b4f6583907cb08",
+    "res://moth/generated/textures/ice-cracked.png": {
+      "sha256": "2ebe487943a7835bef5ca43bf362d8ab8ed17ab656928ca1756ff2cb9738f945",
       "width": 64,
       "height": 64
     },
-    "res://moth/generated/textures/hex_paneling.png": {
-      "sha256": "725a587331a74d235254e64b7f5d9a605e2de8cc28f16eec3c92577c3ddeea40",
-      "width": 48,
-      "height": 48
-    },
-    "res://moth/generated/textures/ice-cracked.png": {
-      "sha256": "2ebe487943a7835bef5ca43bf362d8ab8ed17ab656928ca1756ff2cb9738f945",
+    "res://moth/derived/normals/ice-cracked.png": {
+      "sha256": "a0d4e78258a47bc17c1767c8559a6636f8da68aa3dff1586fb0598fce41e8978",
       "width": 64,
       "height": 64
     },
@@ -200,13 +176,18 @@
       "width": 48,
       "height": 48
     },
+    "res://moth/generated/normals/holographic_grid.png": {
+      "sha256": "7a98e3381f06b33e589ec97ab23a5cf9eac56ddd3508d75553e139a19425d4dd",
+      "width": 64,
+      "height": 64
+    },
     "res://moth/generated/textures/circuit_board-etch.png": {
       "sha256": "21a89925e0030d3fdb28c9194022c5941e07247ffaa1e6e0a8ff496e340955ff",
       "width": 64,
       "height": 64
     },
-    "res://moth/generated/textures/weathered_concrete-worn.png": {
-      "sha256": "fc6707d6bf6ae6dc6dfec746100f83015ce74885976b20688280f29bcdf111cf",
+    "res://moth/derived/normals/circuit_board-etch.png": {
+      "sha256": "4cccae68b875c8fe2647d466deba1aa65bf911b7b0ce0e5ae0566bae6e9ec3ae",
       "width": 64,
       "height": 64
     }
