@@ -79,3 +79,23 @@ socket. Software-rendered capture does not establish real-GPU performance, and
 scripted encounters do not establish human feel or natural completion times.
 Track these explicitly while completing all work executable in this environment.
 Do not alter existing critical acceptance requirements merely to obtain green.
+
+## Windows packaging checkpoint
+
+Package commits `97e95a4c` + `cbace9fa` are merged as `69ef0c88` + `30fc51f0`.
+They add final fighting/operator/Moth resource and provenance closure, reviewed raw
+resource export, an extracted Home Fighting probe and an exact-candidate Windows
+workflow using bundled x64 Node and a clean extraction path containing spaces.
+The workflow tests the artifact downloaded from the specified versioned release;
+checkout and manifest must match the explicit 40-hex candidate.
+
+Package lane passed 234 non-engine tests. Parent independently reran the four
+final-resource tests and audit after the latest combo/FX changes: 337 runtime
+resources, 16 provenance inputs and 55 required raw files are recorded. All nine
+fighting exports are still absent; strict final preflight rejects that incomplete
+release. Parent receipts: `/tmp/opencode/final-resources-parent-tests.tap` and
+`/tmp/opencode/final-resources-parent-audit.json`.
+
+No Windows build, new CI dispatch, archive or release has been produced by this
+checkpoint. Follow `RELEASE_PREP.md` after final assets/native review and explicit
+export grant; the prior published runtime and Windows result remain historical.
