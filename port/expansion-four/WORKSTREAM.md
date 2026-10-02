@@ -22,6 +22,24 @@ actual ordinary-input lap and hosted native acceptance pass.
 
 ## Source/code checkpoints
 
+- **Trailer — `1c65712b`, `05f2a216`, `44dafb18`, ready for capture.** Executable
+  v3 pipeline plans sixteen shots / 75 source seconds / 1,800 individually
+  rendered frames at 1280×720, with four chapter identities, six camera splines,
+  source traversal/combat/melee, Patch, Mara/Ivo captions and artillery. Staged
+  setup and ordinary scripted inputs are labeled separately. No footage exists.
+- **6/6 Node tests passed** and source preparation/edit planning completed.
+  Source receipts include 70.38 m Rootfall traversal, 51.19 m Emberline detour,
+  ten airborne output frames, sixteen positive active-AI combat damage events,
+  an accepted melee hit and Patch pet. The eight-clip menu candidate has 504
+  frames and 210 events, independently checked once-only/in-order after reduction.
+- Actual weather/event stepping is explicitly prepared for the render-only
+  session. Native parsing/rendering, decorative-art camera clearance, HUD/gesture
+  review, full trailer viewing/listening and menu lifecycle acceptance remain
+  pending. Capture is deterministic offline rendering; encoded frame rate will
+  not be presented as real-time performance. All captures/edits are hash-bound
+  to immutable attempts and retain failures. Parent installs accepted menu data
+  and publishes a new v3 without replacing v2; no engine/encoding grant yet.
+
 - **Scenery — `36358d96` + isolated composition hook `fe3f3b5a`, ready for
   Blender.** Twelve biome-bound assemblies provide one hero and two supporting
   modules per campaign chapter: root/canopy, layered waterworks, basalt/copper
