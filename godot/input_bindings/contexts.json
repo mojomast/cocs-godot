@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "editableGameplay": ["forward", "back", "left", "right", "jump", "sprint", "crouch", "reload", "melee", "grenade", "power", "mobility", "interact", "altFire", "fire", "ads"],
+  "sourceActionsWithoutNativeBindingAdapter": ["voice", "cursor", "commandScan", "commandGo", "commandAttack", "commandRoute", "command", "ping", "radial", "tacticalMap", "squads"],
+  "fixedAlternatePaths": {"KeyC": "crouch (LATTICE command modal owns C first)", "MouseMiddle": "altFire"},
+  "shell": {"Escape": "release pointer / close top modal", "F3": "diagnostics", "F12": "Settings", "Tab": "scores", "Enter": "route engage / restart / chat submit", "KeyT": "chat", "Digit0-Digit9": "weapons / route choices", "MouseWheel": "weapon selection", "MouseLeft": "pointer capture / UI selection"},
+  "sports": {"forward": "throttle", "back": "reverse", "left": "steer left", "right": "steer right", "jump": "brake", "sprint": "boost", "reload": "source interact/reset"},
+  "combinedArms": {"infantry": ["forward", "back", "left", "right", "jump", "sprint", "crouch", "reload", "melee", "grenade", "interact", "altFire", "fire", "ads"], "driver": "existing vehicle bridge restrictions, no invented power/mobility actions"},
+  "separateContexts": ["spectator follow/freecam (Experience owner)", "local exploration/showcase walker", "developer galleries", "menu / command-board navigation"],
+  "modifierSemantics": "Physical left/right modifier keys are individual inputs. Holding Ctrl plus a remapped jump continues to compose crouch and jump; multi-key shortcut strings are rejected."
+}

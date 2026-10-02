@@ -34,7 +34,7 @@ async function runRoute(plan, env) {
     ? (await import('./runtime/port/native-identity-zones/authority.mjs')).createIdentityZoneAuthority
     : plan.experience === 'horde'
     ? (await import('./runtime/port/native-horde/authority.mjs')).createAuthority
-    : (await import('./runtime/server/game-server.mjs')).createGameServer;
+     : (await import('./runtime/port/pass-two/modes/challenge-authority.mjs')).createGameServer;
   const runtime = mkdtempSync(join(tmpdir(), 'cocs-native-'));
    const childEnv = {...env};
   if (debug) childEnv.COCS_DEBUG = '1';

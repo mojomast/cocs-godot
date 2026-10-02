@@ -27,7 +27,7 @@ test('identity allowlist is a frozen static literal', () => {
   assert.ok(Object.isFrozen(IDENTITY_MAPS));
   assert.ok(Object.isFrozen(HORDE_MAPS));
   assert.deepEqual(HORDE_MAPS.slice(0, MAPS.length), MAPS);
-  assert.deepEqual([...HORDE_MAPS], [...MAPS, 'nacre-engine', 'cinderwake-drydock']);
+  assert.deepEqual([...HORDE_MAPS], [...MAPS, 'nacre-engine', 'cinderwake-drydock', 'blackwater-reclamation']);
 });
 
 test('host contract accepts the identity map and nothing path-like', () => {

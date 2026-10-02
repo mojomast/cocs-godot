@@ -23,6 +23,13 @@ var fixture_left := false
 var source_revision := -1
 var fixture_spectator_checked := false
 
+func _init() -> void:
+	# One initial view when no public target exists. Live spectator transforms
+	# belong to PlayerInformation's camera child, including released freecam.
+	# Use local angles here: construction does not require a scene-tree camera.
+	camera.position = Vector3(0, 18, 30)
+	camera.rotation = Vector3(-atan2(18.0, 30.0), 0, 0)
+
 func _ready() -> void:
 	for node: Node in [camera, sun, environment]: add_child(node)
 	camera.far = 2000
@@ -164,8 +171,6 @@ func on_snapshot(frame: Dictionary) -> void:
 	if phase != 3: return
 	super.on_snapshot(frame)
 	if client.spectating:
-		camera.position = Vector3(0, 18, 30)
-		camera.look_at(Vector3.ZERO)
 		if evidence and not fixture_spectator_checked:
 			fixture_spectator_checked = true
 			var denied := client.send_input({"fire":true}) == ERR_UNAUTHORIZED
