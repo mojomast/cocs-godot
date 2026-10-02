@@ -1,4 +1,5 @@
 extends Node3D
+const Dressing = preload("res://multiplayer_worlds/dressing/binder.gd")
 ## Only JSON gameplay geometry owns physics. GLB nodes are art-only.
 var geometry_hash := ""
 var metrics := {}
@@ -104,7 +105,11 @@ func build(data: Dictionary) -> bool:
    art.name = "BlenderArtNoGameplayCollision"
    add_child(art)
  metrics = {"geometryHash":geometry_hash,"gameplayTriangles":count,"art":art_path}
+ metrics["dressing"] = Dressing.apply(self, str(data.id), geometry_hash)
  return true
+
+func set_dressing_detail(level: int) -> void:
+ Dressing.set_root_detail(self, level)
 
 func _v(value: Array) -> Vector3:
  return Vector3(float(value[0]),float(value[1]),float(value[2]))

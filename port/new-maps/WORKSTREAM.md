@@ -52,7 +52,17 @@ Blender authoring scripts, editable master, GLB, native data and focused tests.
 
 ## Verification and resource queue
 
-**Current grant: Gravemill Foundry revision 3.** Helix completed revision 2 and
+**Current grant: combined native integration**, `FINISH-COMBINED-NATIVE-20261002-A`,
+owned by `ses_f0294303bffed6Fb8UJLKe4ZDz`. Foundry revision 3 explicitly released
+all owned processes. Parent accepted its revised architecture after reviewing
+overview, crusher, cooling/assay interiors, furnace and compact payload view.
+Branch through `32c156ea` merged at `4febce4d`; both new map registrations survive.
+Regenerated routing/closure/options checks pass 30/30 after retaining the initial
+ordering failures. Foundry's six hosted mode proofs remain scoped to its lane;
+combined feature/package acceptance is next. Production details and software
+capture cadence are in `gravemill-foundry/REVISION3-PRODUCTION.md`.
+
+Helix completed revision 2 and
 explicitly released all owned processes. Parent inspected its overview, four
 district views and compact CTF result, accepted the distinct architectural forms
 for integration, and merged `a2377512` + `63a6244d` with their prerequisites at
@@ -68,8 +78,8 @@ on llvmpipe. Historical bot-CTF timeout and source-only Arsenal/Juggernaut remai
 Parent reran package/options checks, world-resource closure and generated-scene
 consistency after merge. Exact reports: `helix-conservatory/revision-2/FINAL.md`.
 
-Foundry's existing Astra session now has the exclusive serial Blender/native
-production grant for `8d248904`. All fighting agents remain source/code-only.
+Foundry's revision-3 production grant is complete. Fighting art agents remain
+source-only; the integration owner may run asset-independent core engine gates.
 The following queue text records the earlier grants and prototype checkpoints.
 
 **Parallax Observatory now owns the exclusive Blender/Godot slot.** Foundry
