@@ -39,3 +39,16 @@ finish scope, with bounded additions rather than restarting map architecture.
 explicit serial grant. Real native before/after district views, player-height
 closeups, low/full detail, gameplay readability and teardown/reload are required
 before calling the finish accepted. Frame capture cadence is not GPU performance.
+
+## First source handoffs
+
+Helix `9a4f0033` is merged as `04a141e2`: nine opaque material assignments,
+intentional glass preservation, 46 face-mounted panels, 13 signs and 48 pollen
+motes. Its validator resolves 32 actual Moth PNG resources and checks quad corners
+against GLB triangles, plus six negative probes. Foundry `7ed49f44` is merged as
+`5894f0c9`: eight material assignments, 37 panels, 20 signs and 32 localized motes;
+1,425 footprint samples and exported-face mount checks passed on the lane.
+
+Both use v1 profiles and preserve accepted geometry/assets. Shared owner received
+the actual commits for binder integration and Helix's soft wear-mask extension
+request. Native finished appearance, detail switching and lifecycle remain unrun.
