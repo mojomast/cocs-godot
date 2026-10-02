@@ -52,6 +52,23 @@ coherent player-visible batch, then verify it through actual lifecycle journeys.
 - World remains on its isolated branch pending its explicit engine grant and
   native type/shader, pixel, rendered, connected and resource-lifecycle acceptance.
   Helix retains the heavy slot; this handoff does not advance the engine queue.
+- **Modes/progression — ready for engine:** `9e5d0dd4` adds source-owned
+  `applyMatchAll → awardMatch` composition and read-only native Career projection;
+  `8d7bf0c3` isolates owned-launcher/runtime discovery hooks and `e94b3da0` updates
+  their lifecycle fixtures. **124 checks passed**. Twelve source-scored rounds
+  across two authority lifetimes produced 2,960 XP (including 870 challenge XP)
+  and nine unlocks; reconnect, duplicate settlement, persistence, failed-write
+  retry and UTC rotation checks passed. These source rounds use accelerated
+  wall time; prepared native journeys will use normal-rate authority.
+- **VIP diagnosis:** the retained 180-source-second ordinary-input probe shows
+  Sunscar's bulkhead ejecting the VIP to x=-32.420001 while direct extraction
+  movement advances it back toward x=-32.353335. It ends in defender timeout,
+  with zero extraction progress. Frozen rules/geometry were preserved; successful
+  ordinary-input extraction remains unaccepted. Any future correction requires
+  explicit reviewed authority/geometry provenance.
+- Modes remains isolated pending native Career/settlement, wide/compact rendered,
+  reconnect/restart and fresh-process persistence acceptance. No heavy slot was
+  granted by this source-checkpoint handoff.
 
 ## Parent follow-up
 
