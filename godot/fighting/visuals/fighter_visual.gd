@@ -33,6 +33,10 @@ func configure(id: String) -> bool:
 	_manifest = parsed
 	if int(_manifest.get("version", 0)) != 1 or str(_manifest.get("operator_id", "")) != id:
 		return _unavailable("manifest_identity_mismatch")
+	for data_name: String in ["roster", "rules"]:
+		var data_path := "res://fighting/data/" + data_name + ".json"
+		if _manifest.get("content_hashes", {}).get(data_name, "") != FileAccess.get_sha256(data_path):
+			return _unavailable("stale_content_timing:" + data_name)
 	var scene: PackedScene = load(asset_path) as PackedScene
 	if scene == null:
 		return _unavailable("scene_load_failed")

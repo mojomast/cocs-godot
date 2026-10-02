@@ -1,0 +1,31 @@
+{
+  "status": "source_ready_native_unrun",
+  "heavy_owner": "Foundry revision 3",
+  "operators": 9,
+  "state_combat_clips": 336,
+  "shared_victim_actions": 25,
+  "unique_authored_curves": 361,
+  "resolved_clip_usages": 561,
+  "victim_body_usages_checked": 225,
+  "pose_samples_checked": 34221,
+  "pair_contact_samples_checked": 7425,
+  "pair_contact_tolerance_m": 0.06,
+  "pair_contact_max_error_upper_bound_m": 1e-12,
+  "max_requested_target_ik_clamp_m": 0,
+  "bones_per_rig": 20,
+  "minimum_rest_bone_length_m": 0.09,
+  "source_rests_identical": true,
+  "limb_length_tolerance_m": 1e-6,
+  "cross_operator_curve_rms_minimum_required": 0.025,
+  "same_operator_aliased_state_combat_curves": 0,
+  "content_hashes": {
+    "roster": "2398099cacb5e6b4773d3aa3d9bdece56e005289aab94ecd776ce95b2bf59f2d",
+    "rules": "5a89f073c107d504b34b6cb58d00599009245533a92519610d92616a6e4cff4a",
+    "coverage": "7681c7ffb3deec42eb411527b52bb47010ccbc90a04764768f45b78dddcda026"
+  },
+  "evidence": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/source-audit.json",
+  "executed": ["stdlib source oracle", "Python compileall", "git diff --check"],
+  "not_executed": ["Blender build", "master reopen", "GLB export", "Godot import", "native gates", "render/capture/encode"],
+  "remaining_contract": "Late-active catch and delayed counter must expose coherent paired animation phases from core.",
+  "remaining_art_gates": ["native rig axes and skin weights", "materials and colors", "per-body armor/hand intersections", "locomotion skating", "foot clearance and planted contacts", "paired landing/release", "side-on readability"]
+}
