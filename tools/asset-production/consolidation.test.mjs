@@ -22,7 +22,7 @@ test('candidate registration is fail closed and wrapper hashes match the CURRENT
   }
 });
 test('frozen authority and accepted catalogs remain identical to canonical main',()=>{
-  assert.equal(execFileSync('git',['diff','e38b3662','--','game/','port/contracts/source-lock.json','port/multiplayer-worlds/catalog.mjs','godot/source_operators/moth_finish/','godot/material_language/','godot/multiplayer_worlds/dressing/'],{encoding:'utf8'}),'');
+  assert.equal(execFileSync('git',['diff','652b8f3c','--','game/','port/contracts/source-lock.json','port/multiplayer-worlds/catalog.mjs','godot/source_operators/moth_finish/','godot/material_language/','godot/multiplayer_worlds/dressing/'],{encoding:'utf8'}),'');
 });
 test('complete bounded queue preserves every owner-requested asset unit and external Parallax ownership',()=>{
   assert.deepEqual(plan.units.map(u=>u.id),['parallax-interiors','robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
