@@ -1,6 +1,6 @@
 # Final completion acceptance
 
-Follow-up to candidate `b6ab6782`, merged into the original acceptance worktree.
+Follow-up to candidate `614a8a7f`, merged into the original acceptance worktree.
 Adopt only at the parent checkpoint boundary. Exclusive heavy grant E remains
 with vehicles `ses_f03440966ffeBzmLZZ3UkR4Oi7`. This is source preparation;
 no Godot, import, Blender, capture, encoding or Windows execution was performed.
@@ -43,9 +43,16 @@ these additive substitutions do not change its existing ledger binding semantics
 **Actual environment blocker:** parent reports `/dev/uinput` exists but is neither
 readable nor writable to its process. The fixture requires writable uinput and
 readable resulting event nodes; it fails closed without virtual-pad fallback.
-Xvfb, xdotool and libX11 are also required. Presentation Astra
-`ses_f026d6c45ffefUJ0hXFvdcTgG3` owns the concurrent device-choice/router correction;
-merge that committed correction before freezing a fresh execution candidate.
+Xvfb, xdotool and libX11 are also required. Presentation correction `1ca6f39e`
+is now integrated through `614a8a7f`. The existing `fighting-camera-source` job
+discovers `test_*.py`, covering the six camera and six device source tests.
+`device_choices.gd` is explicitly required by both that source job and the UI
+executable; production GDScript was already in dynamic input identity. No new job
+is added: the total remains 142.
+Independent fixture owner `ses_f026c14a5ffeK3WZVDmpQEEylH` is adapting ordinary
+P1-first/P2-second selection and single-activation keyboard recovery while the
+other pad stays assigned. That fixture follow-up remains a separate committed
+dependency before final native execution; source tests do not prove OS hotplug.
 This lane does not edit production presentation or UI journey/driver code.
 
 Parallax and robots are promoted through `b732c99b`; robot D's 60,593 checks remain
@@ -260,6 +267,12 @@ units `fighting-Home-and-nine-rigs`, `three-map-and-operator-finishes`,
 does not supply this graphical proof. All requested final units remain required.
 
 ## Outstanding ownership and evidence
+
+Device dependency follow-up at `614a8a7f`: **12 combined presentation source
+tests** and **15 receipt/registration tests** passed. All 142 IDs from owned
+registration `e5f98a63` remain present. Evidence:
+`/home/mojo/.tmp-on-disk/cocs-finish-acceptance-evidence-20261002/device-registration-614a8a7f-xyb53zu7/`.
+No native device or UI execution occurred.
 
 Latest UI integration source checks at `b6ab6782`: **20 runner tests**, **15 receipt
 tests**, **10 UI driver/source tests**, and **10 cinematic pipeline source tests**
