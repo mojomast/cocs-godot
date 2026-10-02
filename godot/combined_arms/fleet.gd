@@ -40,6 +40,13 @@ func apply_state(state: Dictionary, local_actor_id: int = -1) -> bool:
 		n.rotation = Vector3(v.pitchBody, v.yaw, v.roll)
 		n.visible = v.health > 0 and v.respawnTimer <= 0
 		n.turret.rotation.y = v.turretYaw
+		VehicleArt.apply_source_pose(n, v)
+		if n.has_meta("authored_vehicle"):
+			var team := -1
+			for actor: Variant in state.get("actors", []):
+				if actor is Dictionary and actor.get("id") == v.get("driver") and numeric(actor.get("team")):
+					team = int(actor.team)
+			VehicleArt.set_team(n, Color("e56859") if team == 0 else (Color("58a7ed") if team == 1 else Color("dfc98d")))
 		if numeric(state.get("time")):
 			var stamp: float = float(state.time)
 			var previous: float = float(secondary_stamps.get(v.id, stamp))
