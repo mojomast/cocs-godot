@@ -35,5 +35,25 @@ shield depth; corrected the grip, not authority. Analytic recipe bounds are not
 imported GLB bounds or full native animated pose acceptance. Those remain pending.
 
 Native skin selection is additive and explicit, retaining baseline meshes.
-No game/server, campaign factory, Horde controls, mission guidance, catalog,
-registry, package, exported release or source hit target was changed.
+No game/server, Horde controls, mission guidance, catalog, registry, exported
+release or source hit target was changed. Grant-D production adds only the
+reviewed cosmetic factory opt-ins, identity-rebuild hook and six terrain mounts.
+The contract retains the original robot-visual baseline hash and pins the new
+hooked hash. All rig, contact solver, pose and source event logic is unchanged.
+
+## Actual imported-body control comparison
+
+The final native contact probe extracted **12,792 actual imported triangle
+centroids** from both original and new bodies: all three LODs, two body yaws,
+three pitch values, idle/walk/attack/react. Campaign's actual primary fire
+registered damage in **51,168 four-side probes**. Horde's frozen scalar-hit source
+registered damage in **86,016 four-side probes**, covering lancer/spitter,
+brute/bulwark and mortar at each original mode-specific scale. No shape/scale was
+expanded to accommodate a mesh. Existing projectile, cover, ally and shield
+reduction control regressions also passed.
+
+Real native static-body floors exercised flat/slope/two-height-step and strafe.
+**4,320 stock-vs-skin joint comparisons** matched; maximum settled planted foot
+effector error was **0.000000123m**. This is deterministic solver precision, not
+a claim of submicron visual quality. Actual imported sole vertices also met the
+neutral contact tolerance. All animation keeps the actor root unchanged.

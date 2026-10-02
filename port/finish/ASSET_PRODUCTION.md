@@ -1,8 +1,11 @@
 # Consolidated asset production queue
 
-**Source consolidation complete; READY FOR SERIAL BLENDER PRODUCTION after an
-explicit grant. Grant C belongs to the original Parallax owner.** No Blender, Godot,
-imports, rendering, baking, video encoding or nested agents ran in this task.
+**Current production: grant D belongs to the original robot owner for the robots
+unit only.** Parallax C explicitly released after real build/reopen/native review;
+its revised assets are integrated at `b66f4ab3`. Vehicles, scenery and the remaining
+three maps await subsequent explicit grants. Source consolidation work described
+below launched no heavy tools; see `RELEASE_COMPLETION.md` for later production
+results and the current ownership table.
 
 The executable queue is [`ASSET_PRODUCTION.json`](ASSET_PRODUCTION.json). It keeps
 every requested unit pending until real production and acceptance; none is

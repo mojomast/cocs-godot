@@ -3,8 +3,8 @@
   "canonicalBase": "e38b3662",
   "consolidatedRecipeRevision": "652b8f3c",
   "archive": "archive/scenery-source-fe3f3b5a",
-  "slotOwnerAtHandoff": "C — Parallax original owner; explicit release and a new grant required",
-  "grant": "none; source consolidation only",
+  "slotOwnerAtHandoff": "D — original robot owner; C explicitly released 2026-10-02T22:23:17.018270Z",
+  "grant": "ROBOT-ASSET-PRODUCTION-20261002-D; robots unit only; other units await a new explicit grant",
   "tools": {
     "blender": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender",
     "godot": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64"
@@ -23,11 +23,11 @@
   "units": [
     {
       "id":"parallax-interiors", "owner":"original Parallax worktree; parent review only", "external":true,
-      "sourceCommits":["3e9bf9e5"], "status":"external-unit-pending; not merged by consolidation",
+      "sourceCommits":["3e9bf9e5","fd1aeefb","be16f060","bf0aaac9"], "status":"built/reopened/native reviewed; integrated b66f4ab3; actual package promotion 5d33287a",
       "originalWorktree":"/home/mojo/.tmp-on-disk/cocs-new-map-observatory-20261002",
       "recipePaths":["tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/build_recipe.py","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/author_candidate.py","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/candidate-meshes.json"],
-      "prerequisites":["FINISHCOMBINED-A releases slot", "parent resumes original worker"],
-      "commands":[], "configuredTriangleCap":160000,"measuredTriangles":null,
+      "prerequisites":["fresh explicit grant for any further heavy work", "rebuild from pinned pre-promotion inputs per PRODUCTION-C.md"],
+      "commands":[], "configuredTriangleCap":160000,"measuredTriangles":147103,
       "externalOnlyCommands":[
         {"argv":["python3","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/author_candidate.py","--prepare-only"],"timeoutSeconds":120},
         {"argv":["python3","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/prepare_native.py"],"timeoutSeconds":120},
@@ -37,8 +37,8 @@
         {"argv":["{godot}","--headless","--single-threaded-scene","--path","godot","--script","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/output/physics.gd"],"timeoutSeconds":300},
         {"argv":["{godot}","--single-threaded-scene","--path","godot","--audio-driver","Dummy","--script","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/output/inspection.gd"],"timeoutSeconds":600}
       ],
-      "externalTargets":["tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/output/parallax-observatory.blend","revision-local candidate GLB/GLTFDocument; accepted GLB not overwritten"],
-      "nextAssets":"finish original interior revision, preserve its assets/provenance", "nextCapture":"native interiors and revised source paths; then Moth face-mount revalidation",
+      "externalTargets":["tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/output/parallax-observatory.blend","godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb"],
+      "nextAssets":"actual package receipt committed; preserve original and revised masters through final export", "nextCapture":"final-candidate registered mode regressions; C images and current DM remain exact-anchor evidence",
       "gates":["parent-only integration of original geometry/assets/hooks", "Moth mounts revalidated against revised interior geometry", "hosted native accepted pairs before registration"],
       "docs":["port/map-finish/parallax-observatory/REVIEW.md"]
     },
@@ -50,7 +50,13 @@
         {"id":"build","argv":["{blender}","-b","-t","1","--python","tools/godot-robots/build.py"],"timeoutSeconds":600},
         {"id":"reopen-original","argv":["{blender}","-b","-t","1","--python","tools/godot-robots/verify_blender.py"],"timeoutSeconds":300},
         {"id":"receipt-original","argv":["node","godot/tests/robot_assets/verify_receipt.mjs"],"timeoutSeconds":60},
-        {"id":"native","argv":["{godot}","--headless","--path","godot","--script","res://tests/robot_assets/native_contract.gd"],"timeoutSeconds":180}
+        {"id":"native","argv":["{godot}","--headless","--path","godot","--script","res://tests/robot_assets/native_contract.gd"],"timeoutSeconds":180},
+        {"id":"contacts","argv":["{godot}","--headless","--path","godot","--script","res://tests/robot_assets/contact_probe.gd"],"timeoutSeconds":180},
+        {"id":"source-targeting","argv":["node","godot/tests/robot_assets/source_targeting.mjs"],"timeoutSeconds":90},
+        {"id":"production-capture","argv":["node","godot/tests/robot_assets/production_capture.mjs"],"timeoutSeconds":600},
+        {"id":"review","argv":["/home/mojo/.local/bin/uv","run","--with","pillow","--no-project","python3","godot/tests/robot_assets/review.py"],"timeoutSeconds":180},
+        {"id":"capture","argv":["xvfb-run","-a","-s","-screen 0 1280x800x24","{godot}","--path","godot","--rendering-method","gl_compatibility","--audio-driver","Dummy","--script","res://tests/robot_assets/inspection.gd"],"timeoutSeconds":600},
+        {"id":"capture-compact","argv":["xvfb-run","-a","-s","-screen 0 760x520x24","{godot}","--path","godot","--rendering-method","gl_compatibility","--audio-driver","Dummy","--script","res://tests/robot_assets/inspection.gd","--","--compact"],"timeoutSeconds":600}
       ],
       "masters":{"glob":"tools/godot-robots/masters/*.blend","count":9},
       "exports":{"glob":"godot/robot_assets/switchyard/generated/*.glb","count":9},
