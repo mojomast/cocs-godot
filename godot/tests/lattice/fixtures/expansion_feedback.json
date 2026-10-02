@@ -1,0 +1,707 @@
+{
+  "schema": 1,
+  "evidence": "direct frozen source function calls, not received events",
+  "hashes": {
+    "feedback": "2c0fa62dfa381849ed13672c511866177bb0a3b0e272f7ab7f892a38d9c57d50",
+    "hud": "e3f93556b9c71e0aa81da51a0e0266ebe61e70c84d0bac9d927f6bf26db171b2"
+  },
+  "captions": [
+    {
+      "event": {
+        "type": "cocs-terminal-shard",
+        "action": "collect",
+        "team": 0
+      },
+      "text": "Shard secured · return to your HQ vault",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-shard",
+        "action": "return",
+        "team": 0
+      },
+      "text": "Shard returned · recover it at the relay",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-capture",
+        "node": "relay-2",
+        "depot": "depot-0",
+        "item": "puma",
+        "team": 0
+      },
+      "text": "Node captured · RELAY 2",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-depot-capture",
+        "node": "relay-2",
+        "depot": "depot-0",
+        "item": "puma",
+        "team": 0
+      },
+      "text": "Depot captured · RELAY 2",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-depot-vehicle-spawn",
+        "node": "relay-2",
+        "depot": "depot-0",
+        "item": "puma",
+        "team": 0
+      },
+      "text": "LOANER READY · RELAY 2",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-depot-purchase",
+        "node": "relay-2",
+        "depot": "depot-0",
+        "item": "puma",
+        "team": 0
+      },
+      "text": "PUMA REQUISITIONED · RELAY 2",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-device-use",
+        "kind": "zipline",
+        "actor": 0
+      },
+      "text": "Route engaged · zipline",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "director-wave",
+        "wave": 4
+      },
+      "text": "Director wave 4 approaching",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "director-wave-cleared",
+        "wave": 4
+      },
+      "text": "Wave 4 cleared",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "director-spawn",
+        "wave": 4
+      },
+      "text": "Wave 4 contact",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "director-init",
+        "tier": "D2"
+      },
+      "text": "Operation online · tier D2",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "director-spawn-telegraph",
+        "kind": "boss"
+      },
+      "text": "Boss telegraph",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "director-spawn-telegraph",
+        "kind": "scout"
+      },
+      "text": "Spawn telegraph",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "director-modifier",
+        "name": "hard-shell"
+      },
+      "text": "Wave modifier · HARD SHELL",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "director-escalation",
+        "kind": "siege"
+      },
+      "text": "Director escalation · SIEGE",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "director-boss",
+        "phase": 2
+      },
+      "text": "Boss deployed · phase 2",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "director-phase",
+        "phase": 3
+      },
+      "text": "Boss phase 3",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "director-retarget",
+        "node": "front-1"
+      },
+      "text": "Director retarget · FRONT 1",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "director-denial",
+        "node": "front-1"
+      },
+      "text": "Denial field · FRONT 1",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "director-reinforce",
+        "node": "front-1"
+      },
+      "text": "Director reinforcement · FRONT 1",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "director-retire",
+        "count": 7
+      },
+      "text": "Director retires 7 units",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-order-complete",
+        "verb": "hold",
+        "team": 0
+      },
+      "text": "Order complete · HOLD",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-order-rejected",
+        "verb": "hold",
+        "team": 0
+      },
+      "text": "Order rejected · HOLD",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "coop-spend-rejected",
+        "verb": "hold",
+        "team": 0
+      },
+      "text": "Spend rejected · HOLD",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "coop-bonus",
+        "state": "done",
+        "label": "Convoy"
+      },
+      "text": "Bonus done · Convoy",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-sabotage",
+        "terminal": "terminal-1",
+        "team": 0
+      },
+      "text": "Terminal sabotage · TERMINAL 1",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-sapper",
+        "node": "relay-2",
+        "denied": 2,
+        "team": 0
+      },
+      "text": "Link cut · RELAY 2 · 2 DENIED",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-siphon",
+        "flux": 8.7,
+        "team": 0
+      },
+      "text": "Flux siphoned · 9 FLUX",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-scan",
+        "marked": 0,
+        "team": 0
+      },
+      "text": "Scan sweep",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-scan",
+        "marked": 3,
+        "team": 0
+      },
+      "text": "Scan sweep · 3 MARKED",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-role-spawn",
+        "role": "saboteur",
+        "refund": 8.7,
+        "team": 0
+      },
+      "text": "Role deployed · SABOTEUR",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-role-killed",
+        "role": "saboteur",
+        "refund": 8.7,
+        "team": 0
+      },
+      "text": "Role killed · SABOTEUR",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-role-expire",
+        "role": "saboteur",
+        "refund": 8.7,
+        "team": 0
+      },
+      "text": "Role retired · SABOTEUR · +9 FLUX",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-role-rally",
+        "targets": [
+          0,
+          1
+        ],
+        "actor": 0
+      },
+      "text": "Rally · 2 LINKED",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-role-repair",
+        "repaired": [
+          "device:a",
+          "terminal:b"
+        ],
+        "actor": 0
+      },
+      "text": "Repairs done · 2 RESTORED",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-role-spot",
+        "targets": [
+          3,
+          4,
+          5
+        ],
+        "actor": 0
+      },
+      "text": "Spot · 3 MARKED",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-prime-start",
+        "node": "siphon-0"
+      },
+      "text": "Prime started · SIPHON 0",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-prime",
+        "node": "siphon-0"
+      },
+      "text": "Node primed · SIPHON 0",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-prime-interrupt",
+        "node": "siphon-0"
+      },
+      "text": "Prime interrupted · SIPHON 0",
+      "sourceCue": {
+        "own": true,
+        "other": true
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-command",
+        "action": "take",
+        "team": 0
+      },
+      "text": "Command assumed",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-command",
+        "action": "release",
+        "team": 0
+      },
+      "text": "Command released",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-command",
+        "action": "mutiny-vote",
+        "votes": 2,
+        "needed": 3,
+        "seat": false,
+        "team": 0
+      },
+      "text": "Mutiny vote · 2/3",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-command",
+        "action": "mutiny-vote",
+        "seat": "0",
+        "team": 0
+      },
+      "text": "Mutiny carried · new commander",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-command",
+        "action": "policy",
+        "policy": "ASSAULT",
+        "team": 0
+      },
+      "text": "Stance · ASSAULT",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-command",
+        "action": "policy",
+        "policy": null,
+        "team": 0
+      },
+      "text": "Stance cleared",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-command",
+        "action": "set-route",
+        "value": "front-1",
+        "team": 0
+      },
+      "text": "Route set · FRONT 1",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    },
+    {
+      "event": {
+        "type": "cocs-command",
+        "action": "set-route",
+        "value": null,
+        "team": 0
+      },
+      "text": "Route cleared",
+      "sourceCue": {
+        "own": true,
+        "other": false
+      }
+    }
+  ],
+  "progress": [
+    {
+      "node": {
+        "id": "front-0",
+        "x": 3,
+        "z": 4,
+        "r": 10,
+        "owner": null,
+        "contested": false,
+        "live": true,
+        "progress": [
+          0,
+          0
+        ]
+      },
+      "percent": 0
+    },
+    {
+      "node": {
+        "id": "front-1",
+        "x": 3,
+        "z": 4,
+        "r": 10,
+        "owner": null,
+        "contested": false,
+        "live": true,
+        "progress": [
+          0.625,
+          0.2
+        ]
+      },
+      "percent": 63
+    },
+    {
+      "node": {
+        "id": "front-2",
+        "x": 3,
+        "z": 4,
+        "r": 10,
+        "owner": null,
+        "contested": true,
+        "live": true,
+        "progress": [
+          0.1,
+          0.83
+        ]
+      },
+      "percent": 83
+    },
+    {
+      "node": {
+        "id": "front-3",
+        "x": 3,
+        "z": 4,
+        "r": 10,
+        "owner": null,
+        "contested": false,
+        "live": true,
+        "progress": [
+          1.1,
+          -1
+        ]
+      },
+      "percent": 100
+    }
+  ],
+  "recovery": [
+    {
+      "reason": "contested",
+      "text": "CLEAR THE NODE, THEN ISSUE AGAIN"
+    },
+    {
+      "reason": "no-relay",
+      "text": "PICK A NODE NEXT TO GROUND YOU OWN"
+    },
+    {
+      "reason": "flux",
+      "text": "EARN FLUX OR HOLD THE LINE"
+    },
+    {
+      "reason": "out-of-flux",
+      "text": "EARN FLUX OR HOLD THE LINE"
+    },
+    {
+      "reason": "slice",
+      "text": "WAIT FOR THE NEXT SLICE OR LET THE CHIEF SPEND"
+    },
+    {
+      "reason": "executor",
+      "text": "TAKE THE COMMAND LEASE, THEN REISSUE"
+    },
+    {
+      "reason": "thread",
+      "text": "FREE A THREAD OR PICK A NODE WITHIN REACH"
+    },
+    {
+      "reason": "no-thread",
+      "text": "FREE A THREAD OR PICK A NODE WITHIN REACH"
+    },
+    {
+      "reason": "dependency",
+      "text": "PICK A LEGAL ADJACENT NODE"
+    },
+    {
+      "reason": "target",
+      "text": "PICK A LEGAL ADJACENT NODE"
+    },
+    {
+      "reason": "no-response",
+      "text": "RETRY OR PICK A NODE NEXT TO GROUND YOU OWN"
+    },
+    {
+      "reason": "blocked",
+      "text": "CHECK THE COMMAND BOARD FOR A LEGAL TARGET"
+    },
+    {
+      "reason": "wrong-team",
+      "text": "CHECK THE COMMAND BOARD FOR A LEGAL TARGET"
+    }
+  ]
+}

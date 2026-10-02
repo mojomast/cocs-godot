@@ -3,6 +3,7 @@ extends Control
 signal close_requested
 const Topology = preload("res://lattice/topology.gd")
 const Telemetry = preload("res://lattice/world_telemetry.gd")
+const Feedback = preload("res://lattice/world_feedback.gd")
 var session: Node
 var client: Node
 var selected := ""
@@ -481,6 +482,10 @@ func world_refresh() -> void:
 	var selected_cue: Dictionary = topology.guidance(model, selected)
 	var selected_heading := "No objective selected"
 	if not selected.is_empty(): selected_heading = str(node_rows.get(selected, selected))
+	for node: Dictionary in p.get("nodes", []):
+		if node.get("id") == selected:
+			selected_heading += "\n" + str(Feedback.objective(node, session.presentation.local_actor).text)
+			break
 	selection.text = "%s\n\n%s\n\n%s" % [selected_heading, hold_gate if not hold_gate.is_empty() else "Ready to issue HOLD · server decides", selected_cue.get("text", "")]
 	var command: Dictionary = p.get("command", {})
 	var recruitment: Dictionary = p.get("recruitment", {})
@@ -508,6 +513,8 @@ func world_refresh() -> void:
 			settlement = "order effect observed" if observed_effect else "card settled (effect unconfirmed)" if action.status == "confirmed" else "server accepted; effect unconfirmed" if action.status.begins_with("pending") else "local queue only" if action.status == "queued" else "card refused/expired"
 		if action.get("reason") == "replaced": settlement = "card replaced; no capture evidence"
 		lines.append("%s · %s · %s%s" % [action.cardId, action.kind, settlement, " — " + client.rejection_text(action.reason) if action.reason != null else ""])
+		if action.get("kind") == "hold" and action.get("status") == "rejected":
+			lines.append(Feedback.recovery(action.get("reason")))
 	if not lines.is_empty(): history.text = "\n".join(lines)
 	# On first show, a populated hidden tab can briefly enlarge the panel while
 	# its scroll content settles. A viewport resize does not follow that change,
