@@ -42,7 +42,11 @@
     "res://moth/derived/data/weathered_concrete-damp.png": "bdcdde3249e6479c91253fa646185a8232e5995b724ab8fd953a78241371eb3f",
     "res://moth/derived/normals/weathered_concrete-damp.png": "12303dd906a6864ef854df189ff42d1ad3de65e7e6a9e05c0e889bbf14b64e0a",
     "res://moth/generated/textures/metal.png": "1edff202b4755b6d8bd84f6e2499d9052df804e40a17d30cd0ee68926e3a7f46",
-    "res://moth/generated/textures/metal_grating.png": "a9c19f1b0c7ebfb59a079a7a9780390baffcf5f0f593e2c6b5bc8c4977ab9372"
+    "res://moth/generated/normals/metal.png": "0d10999c28fa55b0b37bbbd0bae4849a95835b01e6bd72e9148a5c9c53cf9341",
+    "res://moth/generated/textures/dust-field.png": "91e45cbbabf25909d0adc3905de7cb5a736188ffd48c02a99caf8879a1749a9f",
+    "res://moth/generated/textures/metal_grating.png": "a9c19f1b0c7ebfb59a079a7a9780390baffcf5f0f593e2c6b5bc8c4977ab9372",
+    "res://moth/generated/normals/metal_grating.png": "5b94f5752825c933dd832a08e64102889961b6e783a1e414ec06ad2112d17968",
+    "res://moth/generated/normals/hex_paneling.png": "81b507c81ab04f7cdf4c28acfb51e0fabe2c384192667bcb964b099394fd4971"
   },
   "mounts": [
     {

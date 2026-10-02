@@ -99,7 +99,7 @@ def build():
           'lut_gain':0.035 if source=='verdigris' else 0.0,'pulse_speed':0.0,'pulse_depth':0.0,
           'normal_strength':.18 if source in ['leaflight','botanical'] else .30}})
     proof=[]
-    def mount(id,mesh_id,face,width,height,lift,texture=None,text=None,side=1):
+    def mount(id,mesh_id,face,width,height,lift,texture=None,text=None,side=1,**finish_fields):
         m=meshes[mesh_id];v=[m['vertices'][i] for i in face]
         tangent=unit(sub(v[1],v[0]));require(abs(tangent[1])<.3,'nonvertical supporting edge')
         # Vertical sector/box face. +Z front deliberately points into its aisle.
@@ -111,23 +111,26 @@ def build():
         row={'id':id,'position':rounded(position),'rotation_degrees':[0,round(math.degrees(math.atan2(n[0],n[2])),6),0],
              'size':[round(width,6),round(height,6)],'essential':bool(text)}
         if text: row.update(text=text,foreground='e4ebd8',background='233e35');p['signs'].append(row)
-        else: row.update(texture=texture,tint='7c8e6a' if 'root' in id or 'damp' in id else '81968b');p['panels'].append(row)
+        else:
+            row.update(texture=texture,tint='7c8e6a' if 'root' in id or 'damp' in id else '81968b',**finish_fields)
+            p['panels'].append(row)
         proof.append({'id':id,'mesh':mesh_id,'material':m['material'],'face':face,'normal':rounded(n),
                       'clearance_metres':.018,'role':'wayfinding' if text else 'bounded-weather/service-inset',
                       'support_center':rounded(center),'axes':{'x':rounded(xaxis),'y':[0,1,0]},'size':row['size']})
     # Retaining faces already interrupted at route gaps. Never use clerestory glass.
-    groups=[('archive','archive-inner-retaining-','weathered_concrete-damp'),
-            ('irrigation','irrigation-inner-wall-','metal-oxide'),
-            ('pavilion','pavilion-inner-plinth-','weathered_concrete-worn')]
+    groups=[('archive','archive-inner-retaining-','weathered_concrete-damp',.22),
+            ('irrigation','irrigation-inner-wall-','metal-oxide',.18),
+            ('pavilion','pavilion-inner-plinth-','weathered_concrete-worn',.22)]
     sign_texts={'archive':['01 / SEED ARCHIVE','RESEARCH AISLE','SERVICE AISLE'],
                 'irrigation':['02 / FILTRATION','MAINTENANCE LOOP','ARCHIVE RING'],
                 'pavilion':['03 / GERMINATION','CANOPY RING','INNER CHAMBER']}
-    for district,prefix,texture in groups:
+    for district,prefix,texture,opacity in groups:
         candidates=[m for m in meshes.values() if m['id'].startswith(prefix) and m['collision']=='wall']
         candidates.sort(key=lambda m:m['id'])
         for i,m in enumerate(candidates[::max(1,len(candidates)//6)][:6]):
             length=math.dist(m['vertices'][0],m['vertices'][1]);w=min(length*.70,1.8)
-            mount(f'{district}-damp-foot-{i}',m['id'],[0,1,5,4],w,.24,.27,texture,side=-1)
+            mount(f'{district}-damp-foot-{i}',m['id'],[0,1,5,4],w,.24,.27,texture,side=-1,
+                  wear_mask='dust-field',opacity=opacity,feather=.15,seed=SEED+len(p['panels']))
             if i<3:
                 # Two lines fit narrow arc facets at human-readable letter height.
                 words=sign_texts[district][i];split=words.rfind(' ')
@@ -135,7 +138,7 @@ def build():
                 mount(f'{district}-route-{i}',m['id'],[0,1,5,4],w,.66,1.65,text=words,side=-1)
     for i in range(3):
         mesh=f'pump-bank-{i}'
-        mount(f'pump-access-{i}',mesh,[0,1,5,4],1.40,.75,1.8,'brushed_metal')
+        mount(f'pump-access-{i}',mesh,[0,1,5,4],1.40,.75,1.8,'brushed_metal',normal='baked:metal')
         mount(f'pump-record-{i}',mesh,[0,1,5,4],1.40,.48,3.1,text=f'PUMP 0{i+1}\nISOLATION')
     # Local mineral waterlines at vessel bases, each constrained to one actual
     # faceted shell. Inward-facing sides are visible from maintenance routes.
@@ -143,7 +146,8 @@ def build():
         for shell in [7,8,9]:
             mesh=f'{vessel}-shell-{shell}';m=meshes[mesh]
             width=math.dist(m['vertices'][0],m['vertices'][1])*.80
-            mount(f'{vessel}-waterline-{shell}',mesh,[0,1,2,3],width,.18,lift,'metal-oxide')
+            mount(f'{vessel}-waterline-{shell}',mesh,[0,1,2,3],width,.18,lift,'metal-oxide',
+                  wear_mask='dust-field',opacity=.18,feather=.15,seed=SEED+len(p['panels']))
     beds=[m for m in meshes.values() if m['id'].startswith('botanical-bed-') and m['collision']=='wall']
     # Seeded selection spread across all four plant districts and all three bands.
     selected=[]
@@ -151,7 +155,8 @@ def build():
         group=[m for m in beds if f'bed-{district}-' in m['id']];rng.shuffle(group);selected+=group[:4]
     for i,m in enumerate(selected):
         length=math.dist(m['vertices'][0],m['vertices'][1])
-        mount(f'root-stain-{i}',m['id'],[0,1,5,4],min(length*.58,.85),.23,.24,'rock-moss',side=-1)
+        mount(f'root-stain-{i}',m['id'],[0,1,5,4],min(length*.58,.85),.23,.24,'rock-moss',side=-1,
+              wear_mask='dust-field',opacity=.30,feather=.15,seed=SEED+len(p['panels']))
         if i%4==0:
             center=mul(add(m['vertices'][4],m['vertices'][6]),.5)
             # Bed-grown fern fronds are .9m above support, up to ~2.4m tall.
@@ -195,7 +200,15 @@ def audit(p,proof,recipe):
         resolve(derived,'normal--'+v['normal']) if v['normal_source']=='derived' else resolve(manifest['normals'],v['normal'])
         if v.get('mask'): resolve(derived,v['mask'])
         for channel in ['r','t']: resolve({channel:manifest['materials'][f['lut']][channel]},channel)
-    for row in p['panels']: resolve(manifest['textures'],row['texture'])
+    for row in p['panels']:
+        resolve(manifest['textures'],row['texture'])
+        normal=row.get('normal',row['texture'])
+        if normal.startswith('baked:'): resolve(manifest['normals'],normal.removeprefix('baked:'))
+        elif normal in manifest['normals']: resolve(manifest['normals'],normal)
+        else: resolve(derived,'normal--'+normal)
+        if 'wear_mask' in row:
+            resolve(manifest['textures'],row['wear_mask'])
+            require(0<=row['opacity']<=1 and 0<=row['feather']<=.5 and isinstance(row['seed'],int) and 0<=row['seed']<=2147483647,'invalid wear controls')
     meshes={m['id']:m for m in recipe['art']['meshes']};entries={r['id']:r for r in p['panels']+p['signs']+p['pockets']}
     require(len(entries)==len(proof),'duplicate IDs or missing placement proof')
     def inside(point,a,b,c):

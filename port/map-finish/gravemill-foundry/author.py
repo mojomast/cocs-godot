@@ -50,8 +50,11 @@ def mount(bucket, ident, x, q, y, size, support, side=1, axis='q', **fields):
     profile[bucket].append(record)
     mounts.append(dict(id=ident,support=support,face=face,normal=normal,offset=offset,
                        axis=axis,side=side,size=size))
-def panel(ident,x,q,y,size,support,texture,tint,side=1,axis='q'):
-    mount('panels',ident,x,q,y,size,support,side,axis,texture=texture,tint=tint,essential=False)
+def panel(ident,x,q,y,size,support,texture,tint,side=1,axis='q',**finish_fields):
+    mount('panels',ident,x,q,y,size,support,side,axis,texture=texture,tint=tint,essential=False,**finish_fields)
+def wear(opacity):
+    # Explicitly requested at each authored deposit, never inferred at runtime.
+    return dict(wear_mask='dust-field',opacity=opacity,feather=.15,seed=610024+len(profile['panels']))
 def sign(ident,text,x,q,y,size,support,side=1,axis='q',bg='253239'):
     mount('signs',ident,x,q,y,size,support,side,axis,text=text,
           foreground='e8e3cf',background=bg,essential=True)
@@ -63,7 +66,7 @@ for x,q in [(-72,-7),(-48,0)]:
         panel(f'crusher-{x}-abrasion-{dx}',x+dx,q-8,base+2,[3.5,2.6],
               f'crusher-bed-{x}-side-3','metal','9b9588',-1)
     panel(f'crusher-{x}-grease',x,q+8,base+1.2,[8,.8],f'crusher-bed-{x}-side-1',
-          'metal-oxide','555e55')
+          'metal-oxide','555e55',**wear(.28))
     sign(f'crusher-{x}-isolate','ISOLATE / PINCH',x,q-8,base+4,[6,.9],
          f'crusher-bed-{x}-side-3',-1,bg='554532')
     panel(f'crusher-{x}-hazard',x,q-8,base+3,[7,.45],f'crusher-bed-{x}-side-3',
@@ -71,7 +74,7 @@ for x,q in [(-72,-7),(-48,0)]:
 sign('crusher-sector','CRUSHER / C1',-94,-52,7,[9,1.3],'crusher-house-front',-1)
 for x in [-94,-81,-61,-44]:
     panel(f'crusher-back-soot-{x}',x,23,3,[5,4],'crusher-house-back',
-          'riveted_armor-scorched','8b8173',-1)
+          'riveted_armor-scorched','8b8173',-1,**wear(.24))
 
 # Cooling: damp/chalk bands on CLOSED recess bank faces, under window openings.
 for x in [-84,-48]:
@@ -79,7 +82,7 @@ for x in [-84,-48]:
         q=36+side*5.5+side*1.1
         support='cooling-recess-bank'
         panel(f'cooling-{x}-{side}-waterline',x,q,12.8,[5.2,1.2],support,
-              'weathered_concrete-damp','9eafa0',side)
+              'weathered_concrete-damp','9eafa0',side,**wear(.22))
         panel(f'cooling-{x}-{side}-vent-grate',x,q,14.6,[3,1.3],support,
               'metal_grating','a4b6b4',side)
         sign(f'cooling-{x}-{side}-circuit','C2 / RETURN',x,q,15.65,[4.8,.5],support,side)
@@ -96,12 +99,12 @@ sign('assay-sector','ASSAY / A3',73,26,18.5,[5,1.0],'assay-outer-wall',-1)
 # Furnace: heat-distressed stock at actual buttresses and the rear service wall.
 for x in [44,80,104]:
     panel(f'kiln-{x}-heat',x,-21.5,6,[2.5,9],'kiln-buttress',
-          'riveted_armor-scorched','998473',-1)
+          'riveted_armor-scorched','998473',-1,**wear(.26))
     panel(f'kiln-{x}-hazard',x,-21.5,1.5,[2.5,.65],'kiln-buttress',
           'hazard_stripes','d4b578',-1)
 for x in [52,72,94]:
     panel(f'kiln-rear-{x}-soot',x,22,4,[9,6],'kiln-service-back',
-          'riveted_armor-scorched','8b8277',-1)
+          'riveted_armor-scorched','8b8277',-1,**wear(.24))
 sign('kiln-sector','FURNACE / F4',74,22,11,[10,1.3],'kiln-service-back',-1)
 sign('kiln-danger','HOT STOCK / KEEP CLEAR',56,22,6.9,[11,1.0],'kiln-service-back',-1,bg='554532')
 sign('transfer-sector','TRANSFER / T0',0,-83+25*11/53,6,[12,1.0],
@@ -157,7 +160,15 @@ def validate():
         lut=re.search(r'"lut": "([^"]+)"',block)[1]
         for plane in ['r','t']:resource({plane:baked['materials'][lut][plane]},plane)
         if family=='hazard-industrial':resource(derived_bucket,'mask--hazard_stripes')
-    for panel in profile['panels']: resource(baked['textures'],panel['texture'])
+    for panel in profile['panels']:
+        resource(baked['textures'],panel['texture'])
+        normal=panel.get('normal',panel['texture'])
+        if normal.startswith('baked:'):resource(baked['normals'],normal.removeprefix('baked:'))
+        elif normal in baked['normals']:resource(baked['normals'],normal)
+        else:resource(derived_bucket,'normal--'+normal)
+        if 'wear_mask' in panel:
+            resource(baked['textures'],panel['wear_mask'])
+            assert 0<=panel['opacity']<=1 and 0<=panel['feather']<=.5 and isinstance(panel['seed'],int) and 0<=panel['seed']<=2147483647
     bounds=(ROOT/'godot/material_language/library.gd').read_text()
     shader=(ROOT/'godot/material_language/family.gdshader').read_text()
     assert 'derived_roughness = data.g' in shader
