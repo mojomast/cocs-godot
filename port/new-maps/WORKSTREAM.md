@@ -150,3 +150,29 @@ failed attempts and earlier releases.
   [CTF result](https://github.com/mojomast/cocs-godot/releases/download/quiet-relay-gallery-2026-09-30/helix-prototype-ctf-result.png).
   The gallery's `helix-prototype-provenance.json` explicitly records the pending
   art revision and the sampled cadence of `helix-prototype-sampled-gameplay.mp4`.
+
+## Helix architectural revision 2 — source candidate
+
+- **`4c486a9e`, ready for a second Blender pass.** Candidate architecture adds a
+  three-bay archive crescent with research/service aisles, asymmetric filtration
+  works with machinery and maintenance routes, glazed germination pavilion,
+  central double-helix specimen landmark, terraced botanical banks and deeper
+  structural crown. Four tiers and fifteen primary routes remain; five new
+  interior/service variants bring tested traversal to twenty routes.
+- **15/15 source checks passed:** 29,619 actual movement ticks, connected
+  2,573-node navigation graph, seven source-scored rounds, sustained body/ray wall
+  contacts, transparent facade/portal and terrain-following inlay checks. These
+  are candidate source results; historical native proof does not transfer.
+- Candidate hash:
+  `f068d1abe262907659f1f02205e2bf56b7c5dbe298191f66d008b420965fa9b2`.
+  Planned art is 137,928 recipe triangles, ten materials and 22 batches plus
+  labels; actual import, draw cost and rendered quality remain unmeasured.
+- Floor diagnosis found 49 old inlay triangles crossing the floor. Revision 2
+  clips broad inlays to terrain and removes the fine masonry lattice implicated
+  in distance aliasing. Source clearance passed; visual improvement is unverified.
+- Revision 2 is staged under `port/new-maps/helix-conservatory/revision-2/` and
+  leaves functional-checkpoint runtime geometry and evidence intact. Test probes
+  moved to `godot/tests/new_maps/helix_conservatory/`; they must be retargeted to
+  the candidate before new native acceptance. No Blender/Godot ran for this
+  revision. Foundry retains the slot, followed by Parallax; Helix awaits another
+  explicit grant for export, visual review and affected native revalidation.
