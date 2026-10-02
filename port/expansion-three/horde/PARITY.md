@@ -46,8 +46,10 @@ No actor position, health, stats, wave, gate, mission progress or objective
 completion was written after setup in the source completion runs. RNG is seeded
 at construction for reproducibility, with normal easy/ten-wave/900-second preset
 and dt=1/60. Wall time is accelerated only in the direct-source runner. There
-were no diagnostic seeded-completion runs and no core bug fix. Full victory is
-still unproved; the recorded loss is a timer loss, not evidence to rebalance.
+were no diagnostic seeded-completion runs and no core bug fix. The original
+timer loss is retained. `TARGETING_FOLLOWUP.md` now records a minimal fixture
+target-range fix and one same-seed/config full source victory; native victory is
+still unproved. Neither outcome is evidence to rebalance production gameplay.
 
 Core SHA-256 rechecked unchanged:
 `58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9`.

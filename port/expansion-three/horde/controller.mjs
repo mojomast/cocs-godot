@@ -38,7 +38,9 @@ export class JourneyController{
   const eye={x:player.x,y:player.y+1.45,z:player.z};
   const enemies=snapshot.actors.filter(a=>a.isNpc&&a.health>0).sort((a,b)=>distance(a,player)-distance(b,player));
   const canSee=a=>visible(eye,{x:a.x,y:a.y+1.2,z:a.z},arena);
-  const enemy=enemies.find(canSee)??enemies[0];
+  // Visibility is a combat preference only inside our existing fire window.
+  // A distant slit of visibility must not reverse a route toward nearer cover.
+  const enemy=enemies.find(a=>distance(a,player)<65&&canSee(a))??enemies[0];
   const station=mission.stations.find(s=>s.id===mission.active)??mission.stations.filter(s=>s.available&&!mission.completed.includes(s.id)).sort((a,b)=>distance(a,player)-distance(b,player))[0];
   let target=station,key=station?.id??'',interact=false;
   if(stage.transit){target={x:stage.transit.to==='B'?0:170,z:0};key='transit-'+stage.transit.to;}
@@ -78,6 +80,8 @@ export class JourneyController{
    intent={index:index+1,choice:choices[index].id,wave:state.upgradeWave};this.offered=state.upgradeWave;
   }
   const input=controlsFromState({keys,yaw:this.yaw,pitch:this.pitch,fire,interact,power,reload});
-  return {input,keys:[...keys],mouse:{yaw:this.yaw,pitch:this.pitch,fire},intent,route:key,position:[player.x,player.y,player.z]};
+  return {input,keys:[...keys],mouse:{yaw:this.yaw,pitch:this.pitch,fire},intent,route:key,position:[player.x,player.y,player.z],
+   decision:{target:enemy?.id??null,distance:enemy?distance(enemy,player):null,visible:enemy?canSee(enemy):false,
+    weapon:player.weapon,ammo:player.ammo?.[player.weapon],waypoint:move??null,transit:!!stage.transit,station:station?.id??null}};
  }
 }

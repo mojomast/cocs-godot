@@ -82,8 +82,11 @@ func nearest_enemy(player: Dictionary) -> Dictionary:
 	var best: Dictionary = {}
 	var best_distance := INF
 	for actor: Dictionary in session.latest.get("actors",[]):
-		if actor.get("isNpc") != true or float(actor.get("health",0))<=0 or not visible_enemy(actor): continue
+		if actor.get("isNpc") != true or float(actor.get("health",0))<=0: continue
 		var distance := Vector2(float(actor.x)-float(player.x),float(actor.z)-float(player.z)).length()
+		# Same existing 65m combat preference as the source fixture. Distant
+		# visible enemies remain ordinary navigation fallbacks, not distractions.
+		if distance>=65 or not visible_enemy(actor): continue
 		if distance < best_distance: best_distance = distance; best = actor
 	return best if not best.is_empty() else super(player)
 
