@@ -58,14 +58,15 @@ test('cadence rejects missing/dropped frames instead of calling encoded FPS capt
   const dir=await mkdtemp('/tmp/opencode/cinematic-cadence-');
   try {
     await mkdir(join(dir,'frames'));
-    const png=testPNG(),captureToken='a'.repeat(64),records=Array.from({length:3},(_,i)=>JSON.stringify({frame:i,state:{time:(i+1)/3}}));
+    const png=testPNG(),captureToken='a'.repeat(64),records=Array.from({length:3},(_,i)=>JSON.stringify({frame:i,input:{seq:i+1},acks:{0:i+1},state:{time:(i+1)/3}}));
     await writeFile(join(dir,'invocation.json'),JSON.stringify({captureToken}));
-    await writeFile(join(dir,'replay.jsonl'),'{}\n'+records.join('\n')+'\n');
+    await writeFile(join(dir,'replay.jsonl'),JSON.stringify({shot:{id:'test',seconds:1}})+'\n'+records.join('\n')+'\n');
     for(let i=0;i<3;i++)await writeFile(join(dir,'frames',`${String(i).padStart(6,'0')}.png`),png);
     const rows=Array.from({length:3},(_,i)=>({frame:i,sourceFrame:i,sourceTime:(i+1)/3,sourceRecordSHA256:sha256(records[i]),pngSHA256:sha256(png),captureToken,
       wallUsec:100000+i*500000,saveFinishedUsec:200000+i*500000,saveError:0,width:1280,height:720,engineProcessFrames:1}));
     await writeFile(join(dir,'cadence.jsonl'),rows.map(JSON.stringify).join('\n'));
     const r=await verifyFrames(dir,{id:'test',seconds:1},3);assert.equal(r.observedWallFPS,2);assert.equal(r.encodedFPS,3);assert.equal(r.realtimeCapture,false);
+    await assert.rejects(verifyFrames(dir,{id:'test',seconds:1},3,'b'.repeat(64)),/input identity/);
     rows[2].sourceFrame=4;await writeFile(join(dir,'cadence.jsonl'),rows.map(JSON.stringify).join('\n'));
     await assert.rejects(verifyFrames(dir,{id:'test',seconds:1},3),/cadence/);
     rows[2].sourceFrame=2;rows[2].captureToken='b'.repeat(64);await writeFile(join(dir,'cadence.jsonl'),rows.map(JSON.stringify).join('\n'));

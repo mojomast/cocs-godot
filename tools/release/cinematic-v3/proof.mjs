@@ -25,14 +25,16 @@ export async function readProof(path,kind) {
 }
 export async function productionProof(out,p) {
   for(const shot of p.shots){const proof=await readProof(join(out,shot.id,'capture-receipt.json'),'native-shot');
-    if(proof.manifestSHA256!==p.manifestSHA256||proof.assetSHA256!==p.assets.sha256||proof.frames!==shot.seconds*p.fps)throw Error('Shot capture identity mismatch');
-    await verifyFrames(join(out,shot.id),shot,p.fps);
-    for(const name of ['godot.log','cadence.jsonl','replay.jsonl','invocation.json','asset-inputs.json'])if(!proof.artifacts[name])throw Error('Missing original capture execution artifact');
+    if(proof.inputSHA256!==p.inputSHA256||proof.manifestSHA256!==p.manifestSHA256||proof.assetSHA256!==p.assets.sha256||proof.frames!==shot.seconds*p.fps)throw Error('Shot capture identity mismatch');
+    await verifyFrames(join(out,shot.id),shot,p.fps,p.inputSHA256);
+    for(const name of ['godot.log','godot.log.process.json','cadence.jsonl','replay.jsonl','invocation.json','asset-inputs.json'])if(!proof.artifacts[name])throw Error('Missing original capture execution artifact');
+    const execution=JSON.parse(await readFile(join(out,shot.id,'godot.log.process.json')));
+    if(execution.status!=='passed'||execution.code!==0||execution.descendantsAfterParentExit||execution.reason)throw Error('Native execution did not exit cleanly');
     const log=await readFile(join(out,shot.id,'godot.log'),'utf8');
     if(!log.includes(`CINEMATIC_V3_OK ${shot.id} frames=${shot.seconds*p.fps}`)||/SCRIPT ERROR|^ERROR:|resources still in use|ObjectDB instances leaked/m.test(log))throw Error('Native capture did not close cleanly');}
   const menu=await readProof(join(out,'menu-native','receipt.json'),'native-menu');
-  if(menu.manifestSHA256!==p.manifestSHA256||menu.assetSHA256!==p.assets.sha256)throw Error('Menu capture identity mismatch');
+  if(menu.inputSHA256!==p.inputSHA256||menu.manifestSHA256!==p.manifestSHA256||menu.assetSHA256!==p.assets.sha256)throw Error('Menu capture identity mismatch');
   const edit=await readProof(join(out,'edit','production-proof.json'),'encoded-master');
-  if(edit.manifestSHA256!==p.manifestSHA256||edit.assetSHA256!==p.assets.sha256)throw Error('Edit identity mismatch');
+  if(edit.inputSHA256!==p.inputSHA256||edit.manifestSHA256!==p.manifestSHA256||edit.assetSHA256!==p.assets.sha256)throw Error('Edit identity mismatch');
   return {menu,edit};
 }

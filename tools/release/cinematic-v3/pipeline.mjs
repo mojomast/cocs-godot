@@ -18,7 +18,7 @@ export async function prepare(out,p) {
   for(const shot of p.shots) {
     const directory=join(out,shot.id);await mkdir(directory);
     const fixture=createFixture(shot,p.seed),file=await open(join(directory,'replay.jsonl'),'wx');
-    const header={...fixture.header,shot,provenance:{revision:p.provenance.revision,runtimeIndexSHA256:p.provenance.runtimeIndexSHA256}};
+    const header={...fixture.header,shot,provenance:{revision:p.provenance.revision,runtimeIndexSHA256:p.provenance.runtimeIndexSHA256,inputSHA256:p.inputSHA256}};
     const summary={shot:shot.id,frames:0,eventCounts:{},damage:0,melee:0,pets:0,airborneFrames:0,distance:0,sourceClockHz:60,outputTimelineFPS:p.fps,
       networkCapture:false,humanInput:false,setup:header.setup,captions:[],status:'source records only; native rendering pending'};
     const {createHash}=await import('node:crypto');const hash=createHash('sha256');let previous;
@@ -82,6 +82,7 @@ export async function exportAttract(out,p) {
 
 export async function verifyPlan(out) {
   const saved=JSON.parse(await readFile(join(out,'plan.json'))),current=await plan(manifest);
+  if(saved.inputSHA256!==current.inputSHA256)throw Error('Exact cinematic inputs changed; prepare new evidence');
   if(saved.manifestSHA256!==current.manifestSHA256||saved.assets?.sha256!==current.assets.sha256||JSON.stringify(saved.assets?.pending)!==JSON.stringify(current.assets.pending)||saved.provenance.runtimeIndexSHA256!==current.provenance.runtimeIndexSHA256||JSON.stringify(saved.provenance.files)!==JSON.stringify(current.provenance.files))throw Error('Source/assets changed since preparation; use a new evidence directory');
   return saved;
 }
@@ -112,9 +113,9 @@ export async function capture(out,p,{shotID,godot,deadlineSeconds=1800,budgetSec
     if(!log.includes(`CINEMATIC_V3_OK ${shot.id} frames=${shot.seconds*p.fps}`)||/SCRIPT ERROR|^ERROR:|resources still in use|ObjectDB instances leaked/m.test(log))throw Error(`${shot.id}: native failure; retain logs`);
     assertAssetIdentity(p.assets,assetInputs({strict:true}));
     await checkBoundIdentity(p);
-    const paths=Object.fromEntries(['godot.log','cadence.jsonl','replay.jsonl','invocation.json','asset-inputs.json'].map(n=>[n,join(directory,n)]));
+    const paths=Object.fromEntries(['godot.log','godot.log.process.json','cadence.jsonl','replay.jsonl','invocation.json','asset-inputs.json'].map(n=>[n,join(directory,n)]));
     for(const name of await readdir(join(directory,'frames')))paths[`frames/${name}`]=join(directory,'frames',name);
-    await writeProof(join(directory,'capture-receipt.json'),{...await verifyFrames(directory,shot,p.fps),kind:'native-shot',executed:true,status:'passed',manifestSHA256:p.manifestSHA256,assetSHA256:p.assets.sha256},paths);
+    await writeProof(join(directory,'capture-receipt.json'),{...await verifyFrames(directory,shot,p.fps,p.inputSHA256),kind:'native-shot',executed:true,status:'passed',inputSHA256:p.inputSHA256,manifestSHA256:p.manifestSHA256,assetSHA256:p.assets.sha256},paths);
   }
 }
 export const defaultGodot=()=>process.env.GODOT_BIN??'/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64';
@@ -131,12 +132,12 @@ export async function menuCheck(out,p,{godot=defaultGodot(),installed=false,dire
     env:{COCS_ATTRACT_EVIDENCE:directory,COCS_ATTRACT_CANDIDATE:candidate,COCS_ATTRACT_INSTALLED:installed?'1':'0',COCS_CAPTURE_TOKEN:captureToken}});
   const log=await readFile(join(directory,'godot.log'),'utf8'),result=JSON.parse(await readFile(join(directory,'native-result.json')));
   if(!/CINEMATIC_V3_ATTRACT checks=\d+ failures=0/.test(log)||/SCRIPT ERROR|^ERROR:|resources still in use|ObjectDB instances leaked/m.test(log)||result.status!=='passed'||result.checks<30||result.failures!==0||result.installed!==installed||result.captureToken!==captureToken||result.candidateSHA256!==await digestFile(candidate))throw Error('Native menu candidate failed; preserve evidence');
-  const paths=Object.fromEntries(['godot.log','native-result.json','invocation.json'].map(n=>[n,join(directory,n)]));paths.candidate=candidate;
+  const paths=Object.fromEntries(['godot.log','godot.log.process.json','native-result.json','invocation.json'].map(n=>[n,join(directory,n)]));paths.candidate=candidate;
   for(const [index,shot]of p.shots.filter(s=>s.menu).entries())for(const suffix of ['a','b'])for(const type of ['','-stage']){
     const name=`${String(index).padStart(2,'0')}-${shot.id}-${suffix}${type}.png`;paths[name]=join(directory,name);}
   for(const name of ['compact-ui150.png','compact-ui150-stage.png'])paths[name]=join(directory,name);
   await checkBoundIdentity(p);
-  return writeProof(join(directory,'receipt.json'),{...result,kind:'native-menu',manifestSHA256:p.manifestSHA256,assetSHA256:p.assets.sha256},paths);
+  return writeProof(join(directory,'receipt.json'),{...result,kind:'native-menu',inputSHA256:p.inputSHA256,manifestSHA256:p.manifestSHA256,assetSHA256:p.assets.sha256},paths);
 }
 export async function main(args=process.argv.slice(2)) {
   const flags=new Set(['--plan','--prepare','--capture','--menu-check','--install-menu','--rollback-menu','--receipt','--installed','--edit-plan','--edit','--slot-granted']);

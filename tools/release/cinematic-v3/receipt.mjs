@@ -15,9 +15,9 @@ export async function closeReceipt(out,p) {
   await checkBoundIdentity(p);
   await productionProof(out,p);
   const installed=await readProof(join(out,'menu-installed','receipt.json'),'native-menu');
-  if(!installed.installed||installed.installedSHA256!==await digestFile(join(root,'godot/ui/attract/demo.json'))||installed.manifestSHA256!==p.manifestSHA256)throw Error('Actual installed-menu identity proof required');
+  if(!installed.installed||installed.inputSHA256!==p.inputSHA256||installed.installedSHA256!==await digestFile(join(root,'godot/ui/attract/demo.json'))||installed.manifestSHA256!==p.manifestSHA256)throw Error('Actual installed-menu identity proof required');
   const paths={plan:join(out,'plan.json'),installed:join(out,'menu-installed/receipt.json'),candidate:join(out,'attract-candidate.json'),edit:join(out,'edit/production-proof.json')};
-  for(const s of p.shots){await verifyFrames(join(out,s.id),s,p.fps);paths[s.id]=join(out,s.id,'capture-receipt.json');}
+  for(const s of p.shots){await verifyFrames(join(out,s.id),s,p.fps,p.inputSHA256);paths[s.id]=join(out,s.id,'capture-receipt.json');}
   const executionPath=join(out,'native-execution.json');
   await writeFile(executionPath,JSON.stringify({status:'passed',executed:true,checks:p.shots.map(s=>({shot:s.id,frames:s.seconds*p.fps,passed:true})).concat([{installedMenu:true,passed:true},{encodedMaster:true,passed:true}]),failures:[]},null,2),{flag:'wx'});
   paths.execution=executionPath;

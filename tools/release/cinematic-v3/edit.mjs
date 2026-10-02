@@ -23,8 +23,8 @@ export async function edit(out,p,execute=false) {
   const font='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf';
   for(const shot of p.shots) {
     const directory=join(out,shot.id);
-    if(execute){await verifyFrames(directory,shot,p.fps);const proof=await readProof(join(directory,'capture-receipt.json'),'native-shot');
-      if(proof.manifestSHA256!==p.manifestSHA256||proof.assetSHA256!==p.assets.sha256)throw Error('Native capture identity differs from edit');}
+    if(execute){await verifyFrames(directory,shot,p.fps,p.inputSHA256);const proof=await readProof(join(directory,'capture-receipt.json'),'native-shot');
+      if(proof.inputSHA256!==p.inputSHA256||proof.manifestSHA256!==p.manifestSHA256||proof.assetSHA256!==p.assets.sha256)throw Error('Native capture identity differs from edit');}
     const text=join(work,`${shot.id}-title.txt`),credit=join(work,`${shot.id}-credit.txt`);
     await writeFile(text,shot.text||'');
     await writeFile(credit,shot.kind==='traverse'||shot.kind==='played-combat'
@@ -87,7 +87,7 @@ export async function edit(out,p,execute=false) {
     await checkBoundIdentity(p);assertAssetIdentity(p.assets,assetInputs({strict:true}));
     const paths=Object.fromEntries((await readdir(work)).map(name=>[name,join(work,name)]));
     await writeProof(join(work,'production-proof.json'),{kind:'encoded-master',status:'passed',executed:true,
-      manifestSHA256:p.manifestSHA256,assetSHA256:p.assets.sha256,checks:['full-decode','dimensions','duration','loudness','true-peak','cut-sheet'],
+      inputSHA256:p.inputSHA256,manifestSHA256:p.manifestSHA256,assetSHA256:p.assets.sha256,checks:['full-decode','dimensions','duration','loudness','true-peak','cut-sheet'],
       pendingHumanReview:true},paths);
   }
   console.log(execute?'EDIT_RENDERED_REVIEW_PENDING':'EDIT_PLAN_ONLY',work);

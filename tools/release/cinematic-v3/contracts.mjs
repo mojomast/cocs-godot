@@ -57,7 +57,9 @@ export function cameraPath(shot,data) {
 }
 export async function plan(m) {
   const duration=validateManifest(m);
-  const runtimePaths=['godot','game','port/native-campaign','port/native-arenas','port/native-horde','port/source'];
+  const runtimePaths=['godot','game','port/native-campaign','port/native-arenas','port/native-horde','port/source',
+    'tools/release/cinematic-v3','tools/godot-campaign/trailer-fixture.mjs','tools/godot-package/production_resources.mjs',
+    'tools/godot-package/production_requirements.json','port/multiplayer-worlds/catalog.mjs'];
   if(git('diff','HEAD','--name-only','--',...runtimePaths))throw Error('Dirty runtime dependencies: commit before preparing evidence');
   const index=git('ls-files','-s','--',...runtimePaths);
   const chapters=m.chapters.map(c=>{const data=loadCampaignMap(c.id);if(data.geometryHash!==c.geometryHash)throw Error(`${c.id}: geometry revision changed`);return {...c,data};});
@@ -65,16 +67,19 @@ export async function plan(m) {
   const music=JSON.parse(await readFile(join(root,m.music.path,'manifest.json')));
   if(music.original_composition!==true||music.bpm!==m.music.bpm||music.sources.some(s=>s.license!=='CC0-1.0'))throw Error('Music provenance changed');
   for(const stem of music.stems)if(sha256(await readFile(join(root,m.music.path,stem.file)))!==stem.sha256)throw Error('Music bytes changed');
-  const dependencyFiles=(await readdir(join(root,'tools/release/cinematic-v3'))).filter(p=>/\.(mjs|py)$/.test(p)).map(p=>`tools/release/cinematic-v3/${p}`).concat([
+  const dependencyFiles=(await readdir(join(root,'tools/release/cinematic-v3'))).filter(p=>/\.(mjs|py)$/.test(p)).sort().map(p=>`tools/release/cinematic-v3/${p}`).concat([
     'tools/godot-campaign/trailer-fixture.mjs','godot/tests/cinematic_v3/capture.gd','godot/tests/cinematic_v3/attract_candidate.gd',
+    'tools/godot-package/production_resources.mjs','tools/godot-dev/finish_runner.py','tools/godot-dev/finish_receipts.py','tools/godot-dev/gate_runner.py',
     'godot/tests/campaign/trailer_session.gd','godot/ui/attract/demo.json',...m.chapters.map(c=>`godot/campaign/generated/${c.id}.json`)]);
   const files=Object.fromEntries(await Promise.all(dependencyFiles.map(async p=>[p,sha256(await readFile(join(root,p)))])));
   const {assetInputs}=await import('./assets.mjs');
-  return {...m,shots,duration,frames:duration*m.fps,manifestSHA256:sha256(JSON.stringify(m)),assets:assetInputs(),
+  const result={...m,shots,duration,frames:duration*m.fps,manifestSHA256:sha256(JSON.stringify(m)),assets:assetInputs(),
     provenance:{revision:git('rev-parse','HEAD'),runtimeIndexSHA256:sha256(index),runtimeIndex:index,files,music,
       status:'source plan only; native frames, cast visibility, art/weather motion and menu acceptance pending'}};
+  result.inputSHA256=sha256(JSON.stringify({manifest:result.manifestSHA256,shots,files,runtime:result.provenance.runtimeIndexSHA256,assets:result.assets.sha256}));
+  return result;
 }
-export async function verifyFrames(directory,shot,fps) {
+export async function verifyFrames(directory,shot,fps,inputSHA256=null) {
   const names=(await readdir(join(directory,'frames'))).filter(n=>n.endsWith('.png')).sort();
   const rows=(await readFile(join(directory,'cadence.jsonl'),'utf8')).trim().split('\n').map(JSON.parse);
   const expected=shot.seconds*fps;
@@ -82,13 +87,16 @@ export async function verifyFrames(directory,shot,fps) {
   const invocation=JSON.parse(await readFile(join(directory,'invocation.json')));
   if(!/^[a-f0-9]{64}$/.test(invocation.captureToken??''))throw Error('Missing native invocation nonce');
   const replay=(await readFile(join(directory,'replay.jsonl'),'utf8')).trimEnd().split('\n');
+  const header=JSON.parse(replay[0]);
+  if(inputSHA256&&header.provenance?.inputSHA256!==inputSHA256)throw Error('Source input identity mismatch');
+  if(header.shot?.id!==shot.id||header.shot?.map!==shot.map||header.shot?.seconds!==shot.seconds)throw Error('Replay shot identity mismatch');
   const records=replay.slice(1).map(JSON.parse);
   if(records.length!==expected)throw Error('Source replay length mismatch');
   rows.forEach((r,i)=>{if(names[i]!==`${String(i).padStart(6,'0')}.png`||r.frame!==i||r.saveError!==0||r.sourceFrame!==i||r.width!==1280||r.height!==720||!Number.isFinite(r.wallUsec)||i&&r.wallUsec<=rows[i-1].wallUsec)throw Error(`${shot.id}: cadence/sequence invalid`);});
   for(const [i,r]of rows.entries()) {
     const record=records[i],bytes=await readFile(join(directory,'frames',names[i]));
     if(bytes.length<33||bytes.subarray(0,8).toString('hex')!=='89504e470d0a1a0a'||bytes.toString('ascii',12,16)!=='IHDR'||bytes.readUInt32BE(16)!==1280||bytes.readUInt32BE(20)!==720||sha256(bytes)!==r.pngSHA256)throw Error('Actual PNG bytes/dimensions/hash mismatch');
-    if(r.captureToken!==invocation.captureToken||record.frame!==i||r.sourceRecordSHA256!==sha256(replay[i+1])||!Number.isFinite(r.sourceTime)||Math.abs(r.sourceTime-record.state.time)>1e-9||r.saveFinishedUsec<r.wallUsec||!Number.isFinite(r.saveFinishedUsec))throw Error('Native source-clock/nonce/hash mismatch');
+    if(r.captureToken!==invocation.captureToken||record.frame!==i||record.input?.seq!==i+1||record.acks?.[0]!==i+1||r.sourceRecordSHA256!==sha256(replay[i+1])||!Number.isFinite(r.sourceTime)||Math.abs(r.sourceTime-record.state.time)>1e-9||Math.abs(r.sourceTime-Math.floor((i+1)*60/fps)/60)>1e-9||r.saveFinishedUsec<r.wallUsec||!Number.isFinite(r.saveFinishedUsec))throw Error('Native source-clock/nonce/hash mismatch');
     if(i&&Math.abs((r.sourceTime-rows[i-1].sourceTime)-(Math.floor((i+1)*60/fps)-Math.floor(i*60/fps))/60)>1e-6)throw Error('Source clock does not advance at recorded 60 Hz ticks');
   }
   const seconds=(rows.at(-1).wallUsec-rows[0].wallUsec)/1e6;
