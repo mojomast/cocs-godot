@@ -49,6 +49,17 @@ its `port/next-port/<lane>/` directory, with actual source/native anchors.
 
 ## Acceptance and publication
 
+### First implementation integrations (native acceptance pending)
+
+- World implementation `656f0830` integrated as `8f602607`: source weather
+  lighting, wet-surface material response and linear-space sky luminance.
+  Source tests/oracle passed; native/rendered/connected checks await engine grant.
+- Experience implementation `58c6f623` integrated as `74361407`: priority sound
+  captions, persistent caption controls and passive incoming-hit/kill information.
+  Source tests/oracle passed; native/rendered/connected checks await engine grant.
+- Both lanes' oracle checks and native contracts are registered in the canonical
+  verifier. Registration is not a passing native result or release approval.
+
 Require real source inputs/events/results, lifecycle and privacy/control boundary
 checks, native visual/audio evidence appropriate to the feature, and wide/compact
 UI checks. Distinguish scripted fixtures, actual connected input, human feel and

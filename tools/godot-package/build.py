@@ -210,6 +210,12 @@ def main():
     if (ROOT / finish_catalog).is_file():
         input_paths.update([finish_catalog, "tools/godot-weapons/finishes.mjs"])
         run(["node", "tools/godot-weapons/finishes.mjs", "--check"], env=derivative_env)
+    caption_generator = "tools/experience/extract.mjs"
+    if (ROOT / caption_generator).is_file():
+        run(["node", caption_generator, "--check"], env=derivative_env)
+        input_paths.update([caption_generator, "game/hud.mjs", "game/data.mjs",
+                            "game/assistive-announce.mjs", "game/alt-fire.mjs",
+                            "game/lattice-feedback.mjs", "game/deaths.mjs"])
     audio_pack = ROOT / "tools/godot-audiovisual/music_pack.mjs"
     if audio_pack.is_file():
         run(["node", audio_pack, "--check"], env=derivative_env)
@@ -314,7 +320,7 @@ advanced_options=false
 dedicated_server=false
 custom_features="private_local_prototype"
 export_filter="all_resources"
-include_filter="content/generated/*.json,content/generated/maps/*/*.json,moth/generated/*.json,moth/derived/*.json,first_person/*.json,first_person/generated/*.json,native_arenas/generated/*.json,identity_maps/generated/*.json,horde_maps/generated/*.json,multiplayer_worlds/generated/*.json,multiplayer_worlds/generated/worlds/*.json,campaign/generated/*.json,career/*.json,ui/*.json,ui/attract/*.json,audio/music/*.json,audio/music/orchestral/*.json,audio/announcer/*.json,audio/moth/*.json"
+include_filter="content/generated/*.json,content/generated/maps/*/*.json,moth/generated/*.json,moth/derived/*.json,first_person/*.json,first_person/generated/*.json,native_arenas/generated/*.json,identity_maps/generated/*.json,horde_maps/generated/*.json,multiplayer_worlds/generated/*.json,multiplayer_worlds/generated/worlds/*.json,campaign/generated/*.json,career/*.json,experience/*.json,ui/*.json,ui/attract/*.json,audio/music/*.json,audio/music/orchestral/*.json,audio/announcer/*.json,audio/moth/*.json"
 exclude_filter="tests/*,content/probes/*"
 export_path=""
 script_export_mode=2

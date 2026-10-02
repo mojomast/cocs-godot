@@ -90,6 +90,10 @@ class PlayableGatesTest(unittest.TestCase):
             "audiovisual-weather-oracle": "res://tests/audio_new/weather_oracle.gd",
             "audiovisual-lifecycle": "res://tests/audio_new/lifecycle.gd",
             "audiovisual-soak": "res://tests/audio_new/soak.gd",
+            "world-weather-source-look": "scripts/world-weather-oracle.mjs",
+            "world-weather-native-look": "res://tests/world_weather/unit.gd",
+            "experience-source-captions": "tools/experience/extract.mjs",
+            "experience-native-information": "res://tests/experience/contracts.gd",
         }
         for name, path in expected.items():
             with self.subTest(gate=name):
