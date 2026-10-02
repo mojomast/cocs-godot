@@ -14,11 +14,15 @@ Optional typed dictionaries (all integer values unless stated):
   `life`, `range`, `max_count`, `clash_strength`, `pierce` (bool). Spawn exactly
   once; moving contacts use swept AABBs; hit ledger disallows repeated contact.
   Range is accumulated absolute travel, not distance from a moving owner.
-- `movement`: `type` enum reel/glide/super_jump/slam/double_jump/hover/air_dash/
+- `movement`: `type` enum reel/rush/glide/super_jump/slam/double_jump/hover/air_dash/
   blink/anchor; `from`, `to`, `vx`, `vy`, `distance`, `duration`, `air_only`,
   `ground_only` (bool), `cooldown`, `invulnerable_from`, `invulnerable_to`.
   Distance caps total displacement. Blink teleports once on `from`, respects stage
-  and pushboxes, and has no strike invulnerability. Anchor additionally has
+  and pushboxes, and has no strike invulnerability. Rush applies velocity to the
+  attacker; reel's `on:hit` applies `pull_speed` to the target, not the attacker.
+  Air dash/double jump specify `air_uses:1,reset_on_land:true`; this separate
+  serialized counter prevents Gemini's band resource granting endless jumps.
+  Anchor additionally has
   `anchor_life`, `trigger_range`, `pull_speed`, `max_count`; one trap, one trigger,
   lifetime expires even if never touched. Reel is a strike pull only on contact.
 - `throw`: `range`, `tech_frames`, `damage_frame`, `release_frame`, `victim_x`,
@@ -45,12 +49,24 @@ Simple S1=Special, S2=Mobility, S3=Special+Grab simultaneous chord (one edge),
 super=Super. Down chooses crouch normals, airborne chooses air normals. Back+Grab
 selects throw_b; otherwise throw_f. Independent Guard holds high, Down+Guard low;
 back alone walks backward. SOCD both axes neutral; negative edge disabled.
-DeepSeek S1 requires 36 back-held ticks even on simple controls; Grok S2 requires
+DeepSeek S1 requires 36 back-held ticks even on simple controls; completed charge
+is retained for six ticks after release (the ordinary input buffer). Grok S2 requires
 18 down-held ticks. Chords must be resolved before individual buttons.
 
 Combo inputs are sparse `{tick,axis_x,axis_y,held,pressed}` changes with absolute
 ticks; omitted ticks release all buttons/axes unless an explicit `duration` holds
-the sample. Facing-relative axis_x is converted using initial facing by harness.
+the sample. `setup_inputs` prepends real charge input samples; training fixtures
+place both actors at specified height/separation before playback. For charged
+traces, initial distance refers to the first attack tick, after setup walking.
+Facing-relative axis_x is converted using initial facing by harness.
 Trace tick scheduling uses startup/active plus authored hitstop estimates, not a
 second simulation. Preconditions specify positions/airborne/charge/resource.
 Only the native core can certify contacts, hitstop, stun continuity and scaling.
+
+Operator `resource` additionally declares `regen_ground_per_tick` (DeepSeek fuel
+one per grounded tick), `regen_interval` (Qwen gains one tool each 120 grounded
+ticks; zero disables), `reset_on_round`. Landing refills resources only where a
+move explicitly declares `reset_on_land`; all additions/spending clamp min/max.
+Rules include literal combo limits, scaling curve, fixed hurt/push rectangles,
+gravity, terminal speed, startup/landing/round timers and independent guard policy.
+The source validator establishes numeric bounds, not runtime clamp behavior.
