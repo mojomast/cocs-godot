@@ -86,11 +86,33 @@ damage, so sports omits ASSIST/death staging rather than fabricating such events
 Source `Room.leave()` retains a departed actor as a BOT; the harness records that
 takeover, checks the public snapshot, and does not invent actor removal.
 
-**Static integration concern awaiting native work:**
-`godot/mode_expansion/demo.gd:166–168` still resets spectator camera position on
-each snapshot. A new per-frame free-camera continuity assertion detects this
-route override; this harness-only follow-up does not silently change Modes-owned
-production code. It remains a likely native gate failure requiring integration.
+**Competitive callback ownership fix (code-complete; native proof pending):**
+`godot/mode_expansion/demo.gd` now initializes its no-target view once in `_init`
+and no longer overwrites the spectator transform in `on_snapshot`. The existing
+evidence branch still asserts denied player input and `can_capture_pointer() ==
+false`. Empty frames retain the initial or last safe pose; fresh public frames
+reacquire follow after modal/stale/reconnect boundaries. Unheld freecam keeps its
+transform across snapshots. The connected driver retains its per-frame motion
+bound and additionally waits for three real snapshot callbacks after release.
+
+`godot/tests/experience/competitive_camera.gd` instantiates the actual competitive
+subclass and calls its production snapshot, lobby, transport-drop, start and
+results callbacks, with only actor geometry substituted. It asserts the camera
+BEFORE the presenter tick, so late presenter work cannot conceal a subclass
+reset. This is an unexecuted native contract, not a model-only test or a claimed
+connected pass.
+
+Camera-write audit and narrow guards:
+
+| Route | Snapshot/results/render ownership |
+|---|---|
+| Competitive | Constructor fallback only; snapshot overwrite removed; actual read-only evidence retained. Results release input without repositioning. |
+| Shared world session / multiplayer infantry / objective and zone subclasses | Shared snapshot exits for spectator before actor pose application; shared render translation and process look already gate spectator. No additional post-super position write found in multiplayer infantry, objective or zone callbacks. |
+| LATTICE world / generated Tern route | No additional position/rotation writes in snapshot/results/render callbacks; lifecycle/modals may release input. Recipient admission/projection remains part of the pending connected matrix. |
+| Sports / generated world sports | Chase camera now explicitly excludes `net.spectating`, including a cached vehicle during seat handoff. `clear_round` resets the initial view only at lifecycle boundaries, not each snapshot. |
+| Combined arms | Actor/mounted render camera now explicitly excludes `net.spectating`, including a cached actor during handoff. |
+| Assault | Post-super mounted chase now excludes `client.spectating`, preventing a cached mounted lease from overriding the dedicated spectator camera. |
+| Campaign / Horde local authorities | Specialized actor camera loops remain solo-only; no spectator route is invented. |
 
 ## Required package closure addition
 

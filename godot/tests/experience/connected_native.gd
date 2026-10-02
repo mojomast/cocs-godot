@@ -16,6 +16,7 @@ var accepted: Dictionary = {}
 var received_events: Array = []
 var source_starts := 0
 var source_results := 0
+var source_snapshots := 0
 var began := 0
 var done := false
 var home_only := false
@@ -110,7 +111,9 @@ func connect_scene() -> void:
 	await scene_changed
 	session = current_scene
 	peer = session.client if "client" in session else session.net
-	peer.snapshot.connect(func(frame: Dictionary): accepted = frame.state.duplicate(true))
+	peer.snapshot.connect(func(frame: Dictionary):
+		accepted = frame.state.duplicate(true)
+		source_snapshots += 1)
 	peer.events.connect(func(items: Array):
 		received_events.append_array(items)
 		if received_events.size() > 512: received_events = received_events.slice(-512))
@@ -282,6 +285,11 @@ func execute(command: Dictionary) -> void:
 		tap(KEY_ESCAPE)
 		await process_frame
 		check(not info.spectator_camera.captured and info.spectator_camera.held.is_empty(), "Esc clears camera capture/held keys")
+		var released_pose: Transform3D = camera.transform
+		var received_before := source_snapshots
+		await wait_for(func(): return source_snapshots >= received_before + 3, "three actual subclass snapshot callbacks in released freecam", 5)
+		check(camera.transform == released_pose, "released freecam is not reset by actual subclass snapshots")
+		await capture("free-released")
 		tap(KEY_V)
 		await capture("follow")
 	elif action == "modal":

@@ -28,6 +28,13 @@ The actual CLI `--family=world --compact --plan` output is retained as
 `connected-world-plan.json`. Grammar parsing covers the new native driver and
 the two tests-only route subclasses. These are not native passes.
 
+Competitive ownership fix: `competitive-camera-gdparse.log` records successful
+grammar parsing of the five production route files, actual-subclass contract
+and updated connected driver. `competitive-camera-derivative-check.log` and
+`competitive-camera-source-check.log` record successful generated-scene and
+unchanged source-oracle checks. `git diff --check` also passes. No engine or
+authority process was invoked for this fix.
+
 The initial missing-`three` failure is retained in `source-oracle-attempt1.log`.
 Resolved using the authorized parent `node_modules` symlink. No failed native
 attempts exist because no native process was launched.
@@ -44,6 +51,10 @@ Use only after explicit grant, with `LP_NUM_THREADS=1` and pinned binary:
    same-batch assist, public spectator feed, backwards clocks, event-first seat
    handoff, modal/stale clearing, results/restart and unbind in both actual
    phase/transport shapes (`client`/3 and `net`/`active`).
+   Also run `res://tests/experience/competitive_camera.gd`: actual competitive
+   subclass callbacks must preserve released freecam before the presenter runs,
+   retain no-target fallback, preserve the original actor-input/capture denial,
+   and reacquire follow after modal/stale/reconnect/start transitions.
 2. Existing `tests/experience/{contracts,combined}.gd`, product-shell settings,
    relevant spectator/lobby, sports, combined-arms and gameplay input gates.
 3. The connected matrix below; these require actual native peers and wire
@@ -61,6 +72,7 @@ engine grant** and the normal native asset/import prerequisites are available:
 export GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64
 export LP_NUM_THREADS=1
 export EVIDENCE_DIR=/home/mojo/.tmp-on-disk/cocs-pass-two-experience-evidence-20261002
+"$GODOT_BIN" --headless --path godot --script res://tests/experience/competitive_camera.gd
 node tools/experience/connected-native.mjs --family=mode
 node tools/experience/connected-native.mjs --family=world
 node tools/experience/connected-native.mjs --family=sports
@@ -106,11 +118,14 @@ stages. The other routes compare real within/outside-five-second ASSIST metadata
 against `assistCredit`, and record watched-target death fallback. A departing
 player remains a public BOT actor in the source, so removal is not fabricated.
 
-The mode subclass's existing fixed-camera snapshot reset is a **known static
-integration concern** (`godot/mode_expansion/demo.gd:166–168`). The driver now
-checks free-camera continuity across callbacks and may fail there until the
-parent reconciles that override. All connected commands remain unexecuted;
-parsing and the synthetic tests do not waive this gate or screenshot review.
+The competitive fixed-camera snapshot reset is now **fixed in production code**:
+fallback is initialized once in the constructor, and `on_snapshot` retains its
+read-only evidence without moving the camera. Narrow spectator guards also
+protect sports/world-sports, combined-arms and Assault render-camera writes.
+The actual-subclass native contract and the connected driver's captured-motion
+and three-snapshot released-freecam assertions still require execution. All
+connected commands remain unexecuted; parsing and synthetic tests do not waive
+these gates or screenshot review. The camera-write audit is recorded in PARITY.
 
 **Package closure:** explicitly allowlist
 `godot/experience/public_event_types.json` for runtime shipping. It is loaded by

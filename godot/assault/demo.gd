@@ -198,7 +198,7 @@ func render_local_translation(now: float) -> void:
 
 func _process(delta: float) -> void:
 	super._process(delta)
-	if phase == 3 and not vehicle_bridge.vehicle.is_empty() and not snapshot_watch.stale():
+	if phase == 3 and not client.spectating and not vehicle_bridge.vehicle.is_empty() and not snapshot_watch.stale():
 		var pose := chase.mounted(vehicle_bridge.vehicle, vehicle_bridge.actor, yaw, pitch, delta)
 		camera.position = pose.eye
 		camera.look_at(pose.target)
