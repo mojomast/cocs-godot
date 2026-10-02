@@ -1,5 +1,10 @@
 # Required production assets and fighter import settings
 
+**Latest:** [Parallax package promotion](PARALLAX_PACKAGE_PROMOTION.md) records
+parent-authorized production-C promotion after `b66f4ab3`. The current inventory
+has one promoted unit and **six pending**, superseding the seven-pending checkpoint
+below. Native closure, final manual/audio acceptance and release remain pending.
+
 Source-only packaging follow-up after merging committed parent `652b8f3c`, then
 the actual nine-rig production parent `bb02e34b` (merge `af652afa`). No active
 worker's dirty files were copied. Parallax revision inspection used **Git objects
