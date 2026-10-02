@@ -18,12 +18,12 @@ boundaries.
 | Fighting production and native surface review | Astra `ses_f026e25e4ffezp2kvz5VGox7dz` | Complete and merged at `bb02e34b`; nine real rigs/masters and native comparisons; grant B released |
 | Parallax interior production | Astra `ses_f055a6b41ffe42yCL8AxbOL676` | Complete and reviewed at `b66f4ab3`; exact package promotion integrated at `5d33287a`; final-candidate regressions remain |
 | Robot/prop production | Astra `ses_f03a2843bffefDFoP3x1j1cxRO` | Produced and reviewed through `2c39d1ad`; D released; actual texture/import-bound package promotion integrated at `e4b311fa` |
-| Fighting presentation and controls | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing merged at `1bff0281`; source-only correction of disconnected-device labels/routing and occupied-controller cycling now active; native review pending |
+| Fighting presentation and controls | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing at `1bff0281`; controller recovery integrated at `614a8a7f`, all 12 parent presentation source tests pass; native review pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
 | Scenery integration development | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Atomic installer and four-chapter connected journeys integrated at `cf0e8def`; nine parent source checks pass; awaits production/native grant after vehicles |
 | Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Exclusive grant E: complete source journey work, then actual nine masters/exports, native drive/crew/fire/repair/wreck and visual review |
-| Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Integrated at `b6ab6782`; 26 parent Python checks and real-rig source audit pass; production UI/native execution awaits later grant and device access |
+| Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base integrated at `b6ab6782`; source-only follow-up exercises ordinary P1-first selection and one-activation recovery with other pad retained; native execution awaits later grant and device access |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Source-only registration of executable fighting UI journey and launch-bound finish anchor; preserve existing 141 jobs and all original criticals; fresh ledger still required |
 | Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Actual Parallax and robots promoted with reconciled import/image provenance; five other units still need production; final native/export/Windows CI remain pending |
 | Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | Prepared v3 pipeline integrated at `2902412b`; nine focused parent tests pass; real capture/edit/install awaits final assets and a later grant |
@@ -596,3 +596,23 @@ the parent. Real kernel virtual-device tests require accessible device/event nod
 there is no injected-signal substitute or claim of physical-controller coverage.
 Vehicle E remains exclusive. No fighting engine run, final-ledger pass or export
 has occurred in this integration.
+
+## Controller selection and recovery correction integrated
+
+Presentation `1ca6f39e` is integrated as `614a8a7f`. Disconnected assignments now
+display their actual missing pad ID; one explicit activation selects Keyboard.
+Controller cycling skips the other player's pad, enabling ordinary P1-first then
+P2-second selection. Choices are recalculated on activation and captions refresh
+on hotplug/focus without transferring ownership or automatically resuming play.
+The focused button survives cycling, and menu teardown clears stored references.
+Disconnect still releases both actors' held/queued input and blocks resume until
+the missing assignment is resolved.
+
+Parent ran all 12 presentation Python tests successfully (six camera, six device
+tests). The device tests execute the production pure helper through a narrow
+syntax/Array shim and inspect lifecycle wiring; they are not Godot or OS device
+evidence. The independent acceptance owner is replacing its prior P2-first
+workaround with ordinary assignment order and checking single-activation recovery
+while the other pad remains assigned. The final acceptance owner received the
+new helper/test dependencies. Native typing, hotplug, UI and responsive-camera
+execution remain pending under a later fighting grant and accessible uinput.
