@@ -16,6 +16,9 @@ func _exit_tree() -> void:
   session.label.visible=true
   session.combat_label.visible=true
   session.objective_text.visible=true
+  if is_instance_valid(session.combat.quality_controls):
+   session.combat.quality_controls.text.position=Vector2(20,70)
+   session.combat.quality_controls._layout()
   if not previous_look.is_empty() and is_instance_valid(session.sun) and is_instance_valid(session.environment):
    session.sun.light_energy=previous_look.sun
    session.environment.environment.background_color=previous_look.background
@@ -65,6 +68,12 @@ func _process(_delta: float) -> void:
  panel.size.y=panel.get_combined_minimum_size().y
  backdrop.position=panel.position-Vector2(8,6)
  backdrop.size=panel.size+Vector2(16,12)
+ # Parent's transient quality/telemetry hint originally occupied HUD row 3.
+ # Keep its shortcuts functional while laying it below this map's own panel.
+ if is_instance_valid(session.combat.quality_controls):
+  var hint: Label=session.combat.quality_controls.text
+  hint.position=Vector2(20,backdrop.position.y+backdrop.size.y+6)
+  hint.size=Vector2(maxf(200,get_viewport().get_visible_rect().size.x*.6-40),maxf(40,get_viewport().get_visible_rect().size.y-hint.position.y-16))
  if session.phase==4:
   if session.selected_mode=="ctf": session.objective_text.text=session.objective_renderer.hud_text
   elif session.selected_mode in ["koth","uplink","holdout"]: session.objective_text.text="%s · Round complete · %s" % [session.selected_mode, str(session.zones.projection.get("scores",{}))]

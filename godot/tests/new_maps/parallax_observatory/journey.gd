@@ -139,10 +139,22 @@ func finish() -> void:
    await capture("help-compact150" if compact else "help-wide")
    key(KEY_F1,true)
    key(KEY_F1,false)
- frame_times.sort()
+  frame_times.sort()
  var report := {"map":current_id,"mode":selected_mode,"geometryHash":expected_hash,"roundResults":round_results,"objectiveText":objective_text.text,"guideFrames":guide_frames,"inputEvents":input_events,"captures":capture_times,"nativeEvents":native_events,"lastAck":client.last_ack,"renderer":RenderingServer.get_video_adapter_name(),"drawCalls":RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_TOTAL_DRAW_CALLS_IN_FRAME),"frameMsP50":frame_times[frame_times.size()/2] if not frame_times.is_empty() else 0,"frameMsP95":frame_times[int(frame_times.size()*.95)] if not frame_times.is_empty() else 0,"uiChecks":ui_checks,"failures":[]}
  var file := FileAccess.open(out.path_join("native-journey.json"),FileAccess.WRITE)
  report["glbSha256"]=FileAccess.get_sha256("res://multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb")
+ var art := world.get_node("BlenderArtNoGameplayCollision")
+ var imported_triangles := 0
+ for mesh: MeshInstance3D in art.find_children("*","MeshInstance3D",true,false):
+  imported_triangles+=mesh.mesh.get_faces().size()/3
+ var manifest: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://multiplayer_worlds/art/parallax-observatory/asset-manifest.json"))
+ assert(imported_triangles==int(manifest.triangles))
+ assert(report.glbSha256==manifest.glbSha256)
+ assert(world.metrics.dressing.status=="ready" and world.metrics.dressing.errors.is_empty())
+ report["importedTriangles"]=imported_triangles
+ report["candidateHash"]=manifest.get("candidateHash","")
+ report["dressing"]=world.metrics.dressing
+ report["profileSha256"]=FileAccess.get_sha256("res://multiplayer_worlds/dressing/profiles/parallax-observatory.json")
  file.store_string(JSON.stringify(report,"  "))
  print("PARALLAX_NATIVE_OK ",JSON.stringify(report))
  client.disconnect_server()
