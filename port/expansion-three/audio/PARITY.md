@@ -53,7 +53,8 @@ Deliberate native realization differences (not waveform-exact WebAudio claims):
   are disabled. No occlusion or second distance filter is added.
 * Dry local Effects bus; source optional room convolution send is not reproduced.
 * Four reserved threat voices instead of competing with the browser's 30-token
-  mixed pool. Boss priority, 80 ms attack protection and .15 replacement margin
+  mixed pool. Boss priority, 80 ms attack protection (boss may preempt an ordinary
+  tell even inside that guard) and .15 replacement margin
   are explicit **port presentation enhancements**, not source rules.
 * Expired windups are discarded against the received snapshot time. There is
   no invented per-kind cooldown: source cooldowns remain authoritative.

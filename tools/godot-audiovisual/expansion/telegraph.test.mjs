@@ -4,6 +4,8 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import path from 'node:path';
 import {source,root,cues,themes,envelope,render,generate} from './telegraph_pack.mjs';
+import {updateEnemyRoles} from '../../../game/singleplayer.mjs';
+import {enemyById} from '../../../game/enemy-types.mjs';
 const fixtures=JSON.parse(fs.readFileSync(path.join(root,'godot/tests/audio_expansion/policy_cases.json')));
 test('generated source vectors and all 160 unnormalized PCM files reproduce exactly',()=>{
  const result=generate(true);
@@ -47,8 +49,27 @@ test('bounded priority policy reference: no queue, guarded attacks, steal hyster
  function slot(c) {
   const free=c.active.indexOf(false);if(free>=0)return free;
   let weak=-1;
-  for(let i=0;i<c.active.length;i++) if(c.now-c.starts[i]>=.08&&(weak<0||c.weights[i]<c.weights[weak]))weak=i;
+  for(let i=0;i<c.active.length;i++) if((c.now-c.starts[i]>=.08||(c.weight>1&&c.weights[i]<=1))&&(weak<0||c.weights[i]<c.weights[weak]))weak=i;
   return weak>=0&&c.weight>c.weights[weak]+.15?weak:-1;
  }
  for(const c of fixtures.slots) assert.equal(slot(c),c.expected);
+});
+test('actual source artillery cooldown emits one target-mark windup per attack cycle',()=>{
+ const artillery={...enemyById('mortar').artillery};
+ const player={id:0,x:3,z:4,health:100};
+ const mortar={id:1,x:23,z:4,health:100,npcArtillery:artillery};
+ const events=[];
+ const match={actors:[player,mortar],time:0,damage(){},emit(type,data){events.push({type,time:this.time,...data});}};
+ const state={enemies:[1]};
+ for(let i=0;i<900;i++){match.time=(i+1)/60;updateEnemyRoles(match,state,1/60);}
+ const tells=events.filter(e=>e.type==='enemy-telegraph');
+ assert.equal(tells.length,2);
+ for(const e of tells) {
+  assert.equal(e.kind,'artillery');assert.equal(e.actor,1);
+  assert.equal(e.x,player.x);assert.equal(e.z,player.z);
+  assert.equal(e.duration,artillery.telegraph);
+ }
+ assert.ok(tells[0].time>=artillery.cooldown);
+ assert.ok(tells[1].time-tells[0].time>=artillery.cooldown+artillery.telegraph);
+ assert.equal(events.filter(e=>e.type==='enemy-artillery').length,2);
 });
