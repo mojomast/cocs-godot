@@ -49,3 +49,14 @@ Parent combined validator exposed a provenance-record schema mismatch for
 commit for reconciliation; do not treat merged hooks as working native finishes.
 Imported tangent availability, final package closure, actual body/overlay binding
 and animated appearance remain native gates. No extra heavy grant was issued.
+
+Reconciliation `958697ff` is merged as `c574a176`. It consumes the actual keyed
+PNG/provenance records without removing hash checks and corrects roughness-R gain
+to avoid multiplying the authored response by the old scalar. Runtime lane passed
+14 tests, content validation/reproduction and changed-script grammar checks.
+Parent reran the combined validator successfully:
+`/tmp/opencode/operator-finish-merged-coverage.json` reports 63 finishes, 116 PNGs,
+1,014 primitives, 538 matched, 476 preserved and zero unmatched. Original failure
+is retained in `RECONCILIATION.md` and the lane log. All nine import configurations
+request tangent generation; actual imported tangents and rendered quality remain
+unverified. This correction does not authorize or establish native acceptance.
