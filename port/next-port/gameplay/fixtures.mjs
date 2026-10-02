@@ -1,6 +1,6 @@
 // Controlled source fixtures, deliberately separate from live wire journeys.
 import assert from 'node:assert/strict';
-import {writeFileSync} from 'node:fs';
+import {readFileSync,writeFileSync} from 'node:fs';
 import {Match} from '../../../game/core.mjs';
 import {CHARACTERS} from '../../../game/data.mjs';
 import {createMovementState,stepMovement,movementSnapshot} from '../../../game/movement.mjs';
@@ -20,5 +20,8 @@ const frame=stepMovement(movement,{mobility:true},{dt:1/60,x:0,y:0,z:0,eyeHeight
 assert.ok(frame.events.some(e=>e.type==='rope-place'));
 assert.equal(movement.charges,0);assert.equal(movement.cooldown,10);
 const rope={actors:[{id:0,character:'qwen',harness:'codex',health:100,x:0,y:0,z:0,eyeHeight:1.45,vehicleId:null,movement:movementSnapshot(movement)}]};
-writeFileSync(new URL('../../../godot/player_gameplay/fixtures.json',import.meta.url),JSON.stringify({label:'CONTROLLED SOURCE FIXTURES, NOT LIVE INPUT PROOF',states,rope},null,2)+'\n');
+const path=new URL('../../../godot/tests/player_gameplay/fixtures.json',import.meta.url);
+const bytes=JSON.stringify({label:'CONTROLLED SOURCE FIXTURES, NOT LIVE INPUT PROOF',states,rope},null,2)+'\n';
+if(process.argv.includes('--check'))assert.equal(readFileSync(path,'utf8'),bytes,'Player gameplay fixtures differ from source');
+else writeFileSync(path,bytes);
 console.log('SOURCE_FIXTURES_OK nine powers, exact heal, cooldown refusals, rope placement charge/cooldown');

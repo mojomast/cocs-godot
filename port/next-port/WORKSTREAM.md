@@ -35,10 +35,11 @@ its `port/next-port/<lane>/` directory, with actual source/native anchors.
 
 ## Shared-file and engine coordination
 
-- **Gameplay owns the exclusive Godot slot now.** Other lanes are research,
+- **World owns the exclusive Godot slot now.** Gameplay released the slot after
+  its accepted live-input journeys. Other lanes are research,
   code and Node-only until explicitly granted the engine. Heavy native/Blender
   work is serialized with `LP_NUM_THREADS=1` and the pinned Godot 4.5.2 binary.
-- Planned handoff: Gameplay → Modes → World → Experience, adjusted only through
+- Current handoff: Gameplay → World → next ready Modes/Experience, adjusted only through
   an explicit parent grant after the preceding owner releases its processes.
 - Modes owns generated route capabilities and mode allowlists; Experience
   consumes those without rewriting the same files.
@@ -50,6 +51,13 @@ its `port/next-port/<lane>/` directory, with actual source/native anchors.
 ## Acceptance and publication
 
 ### First implementation integrations (native acceptance pending)
+
+- Gameplay `4d1b8b69` integrated as `ffd5fad2`: reliable short X taps, bounded
+  source-backed ropes/grapple cues and ability/resource readouts. Native live
+  Kimi/Qwen/ChatGPT input journeys, 75 source tests and new native contracts pass.
+  The retained before-control produced zero X frames. Parent registers isolated
+  live evidence and packages the source catalog; Experience is integrating its
+  status model responsively. Combined/native platform acceptance remains pending.
 
 - World implementation `656f0830` integrated as `8f602607`: source weather
   lighting, wet-surface material response and linear-space sky luminance.

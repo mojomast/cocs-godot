@@ -32,7 +32,7 @@ func run() -> void:
 		check(input.sample(0, 0, true).mobility, boundary + " fresh press")
 		input.record(key(KEY_X, false), true)
 		input.queued()
-	var fixtures: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://player_gameplay/fixtures.json"))
+	var fixtures: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/player_gameplay/fixtures.json"))
 	var projector := Status.new()
 	for row: Dictionary in fixtures.states:
 		var actor: Dictionary = row.state.actors[0]

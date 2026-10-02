@@ -94,6 +94,10 @@ class PlayableGatesTest(unittest.TestCase):
             "world-weather-native-look": "res://tests/world_weather/unit.gd",
             "experience-source-captions": "tools/experience/extract.mjs",
             "experience-native-information": "res://tests/experience/contracts.gd",
+            "player-gameplay-catalog": "port/next-port/gameplay/catalog.mjs",
+            "player-gameplay-source-fixtures": "port/next-port/gameplay/fixtures.mjs",
+            "player-gameplay-native": "res://tests/player_gameplay/test.gd",
+            "player-gameplay-live-input": "port/next-port/gameplay/live.mjs",
         }
         for name, path in expected.items():
             with self.subTest(gate=name):

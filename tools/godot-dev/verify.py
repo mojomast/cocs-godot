@@ -47,6 +47,7 @@ os.environ['CAMPAIGN_TARGETING_POINTS'] = str(Path(os.environ['COCS_CAREER_ROOT'
 os.environ['EDGE_SOURCE_EVENTS'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'edge-source-events.json')
 os.environ['EDGE_MAP_CASES'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'edge-map-cases.json')
 os.environ['EDGE_RENDER_OUT'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'edge-render')
+os.environ['PLAYER_GAMEPLAY_EVIDENCE'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'player-gameplay')
 # Verification-owned loopback authorities must not inherit a user's fixed server
 # port. The launchers resolve and pass the actual ephemeral endpoint to Godot.
 os.environ['PORT'] = '0'
@@ -348,6 +349,10 @@ commands = [
     ("world-weather-native-look", [binary, "--headless", "--path", "godot", "--script", "res://tests/world_weather/unit.gd"]),
     ("experience-source-captions", ["node", "tools/experience/extract.mjs", "--check"]),
     ("experience-native-information", [binary, "--headless", "--path", "godot", "--script", "res://tests/experience/contracts.gd"]),
+    ("player-gameplay-catalog", ["node", "port/next-port/gameplay/catalog.mjs", "--check"]),
+    ("player-gameplay-source-fixtures", ["node", "port/next-port/gameplay/fixtures.mjs", "--check"]),
+    ("player-gameplay-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_gameplay/test.gd"]),
+    ("player-gameplay-live-input", ["node", "port/next-port/gameplay/live.mjs"]),
     ("audiovisual-event-router", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/event_router.gd"]),
     ("audiovisual-outcome", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/outcome.gd"]),
     ("audiovisual-settings", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/settings.gd"]),

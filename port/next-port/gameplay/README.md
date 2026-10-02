@@ -120,7 +120,7 @@ node port/next-port/gameplay/fixtures.mjs
 COCS_SOURCE_DERIVATIVE=port/contracts/lattice-catalog-derivative.json \
   node tools/godot-export/semantic.mjs godot/content/generated
 LP_NUM_THREADS=1 "$GODOT_BIN" --headless --path godot \
-  --script res://player_gameplay/test.gd
+  --script res://tests/player_gameplay/test.gd
 LP_NUM_THREADS=1 LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a "$GODOT_BIN" \
   --audio-driver Dummy --path godot --script res://tests/combat_actions/controls.gd
 LP_NUM_THREADS=1 LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a "$GODOT_BIN" \
@@ -151,6 +151,10 @@ llvmpipe through Xvfb. No Blender or nested agents were used.
 Parent gates: merge the scoped session hook, integrate EXPERIENCE's status model
 if desired, then run canonical/platform exports and the combined release suite.
 Current batch has no dependency on the sibling MODES or WORLD changes.
+
+Parent integration moves test/capture/live scripts and controlled fixtures into
+`godot/tests/player_gameplay/`, keeping them outside production export resources.
+Catalog and fixture generators now accept `--check` for reproducible verification.
 
 **ENGINE SLOT RELEASED** after the serial acceptance runs; remaining lane work
 was documentation and commit only.

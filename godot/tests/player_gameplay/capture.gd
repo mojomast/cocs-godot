@@ -11,7 +11,7 @@ func run() -> void:
 	camera.look_at(Vector3(0, 1, -3))
 	var cues := preload("res://player_gameplay/world_cues.gd").new()
 	scene.add_child(cues)
-	var fixtures: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://player_gameplay/fixtures.json"))
+	var fixtures: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/player_gameplay/fixtures.json"))
 	cues.apply_state(fixtures.rope)
 	var mesh := PlaneMesh.new()
 	mesh.size = Vector2(40, 40)

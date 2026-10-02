@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import {createGameServer} from '../../../server/game-server.mjs';
 const binary=process.env.GODOT_BIN;
 assert.ok(binary,'GODOT_BIN required');
-const out=resolve(process.env.EVIDENCE_DIR??'/home/mojo/.tmp-on-disk/cocs-port-gameplay-evidence-20261001/live');
+const out=resolve(process.env.PLAYER_GAMEPLAY_EVIDENCE??process.env.EVIDENCE_DIR??'/tmp/opencode/player-gameplay-live');
 mkdirSync(out,{recursive:true});
 const server=createGameServer({historyPath:null,progressionPath:null});
 await new Promise(r=>server.server.listen(0,'127.0.0.1',r));
@@ -25,10 +25,10 @@ try{
  for(const operator of (process.env.OPERATORS??'kimi,qwen,chatgpt').split(',')){
   const start=wire.length;
   const snapshotStart=snapshots.length;
-  const args=['-a',binary,'--audio-driver','Dummy','--path',resolve('godot'),'--script','res://player_gameplay/live.gd','--','--bots=0',`--operator=${operator}`,'--harness=codex',`--endpoint=ws://127.0.0.1:${server.server.address().port}`,`--evidence=${out}`];
-  const child=spawn('xvfb-run',args,{env:{...process.env,LP_NUM_THREADS:'1',LIBGL_ALWAYS_SOFTWARE:'1'},stdio:['ignore','pipe','pipe']});
+   const args=['-a',binary,'--audio-driver','Dummy','--path',resolve('godot'),'--script','res://tests/player_gameplay/live.gd','--','--bots=0',`--operator=${operator}`,'--harness=codex',`--endpoint=ws://127.0.0.1:${server.server.address().port}`,`--evidence=${out}`];
+   const child=spawn('xvfb-run',args,{detached:true,env:{...process.env,LP_NUM_THREADS:'1',LIBGL_ALWAYS_SOFTWARE:'1'},stdio:['ignore','pipe','pipe']});
   let stdout='',stderr='';child.stdout.on('data',x=>stdout+=x);child.stderr.on('data',x=>stderr+=x);
-  const timer=setTimeout(()=>child.kill('SIGKILL'),45000);
+   const timer=setTimeout(()=>{try{process.kill(-child.pid,'SIGKILL');}catch(error){if(error.code!=='ESRCH')throw error;}},45000);
   const code=await new Promise((r,j)=>{child.on('error',j);child.on('close',r);});clearTimeout(timer);
   writeFileSync(resolve(out,operator+'.log'),stdout+'\nSTDERR\n'+stderr);
   writeFileSync(resolve(out,operator+'-wire.json'),JSON.stringify(wire.slice(start),null,2));
@@ -37,7 +37,8 @@ try{
   const summary=stdout.split('\n').find(l=>l.startsWith('JOURNEY_RESULT '));
   results.push({operator,code,summary:summary?JSON.parse(summary.slice(15)):null});
   console.log(operator,code,summary??stderr.slice(-500));
-  assert.equal(code,0,operator+' native journey');
+   assert.equal(code,0,operator+' native journey');
+   assert.doesNotMatch(stdout+'\n'+stderr,/SCRIPT ERROR|ERROR:/,operator+' clean native runtime');
   assert.ok(wire.slice(start).some(f=>f.input.mobility===true),'wire accepted X pulse');
   assert.ok(observations.some(s=>s.actors[0].cooldown>0),'authority accepted power cooldown');
   assert.ok(observations.some(s=>s.actors[0].movement?.cooldown>0),'authority spent movement cooldown');
