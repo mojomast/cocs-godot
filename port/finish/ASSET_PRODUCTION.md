@@ -33,6 +33,11 @@ commit README was inspected to record original-worktree commands in the queue.
 That unit must finish there, then parent reviews geometry/assets/hooks and
 revalidates Moth mounts on the revised interiors.
 
+Consolidation implementation is `0d502fba`, followed by exact export/master
+source-fingerprint enforcement at **`497fb565`**. That is the current recipe,
+builder and finishing-code revision recorded in the JSON queue; subsequent
+documentation-only handoff commits do not change those asset inputs.
+
 ### Minimal semantic corrections
 
 1. Vesper's builder exported to a nested art directory, while current
@@ -137,6 +142,9 @@ then `capture`. Vesper/Stormglass have `reopen-original`; Abyssal uses generic
 Generic receipt rejects absent files, flat-only materials, missing UVs/normal
 maps, unsupported topology and over-budget geometry; it records actual master,
 GLB, embedded image and source SHA-256s plus measured GLB triangle/surface counts.
+Textured mesh nodes and master scenes also carry a fingerprint of their exact
+recipe/builder/finishing bytes. Receipt/reopen rejects stale fingerprints rather
+than attributing an older GLB to whichever scripts happen to be present later.
 
 The queue records finite per-stage limits (30–1560 seconds). Inspect/revise after
 each unit rather than spending one unbounded process on every asset. Capture
