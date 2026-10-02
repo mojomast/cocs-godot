@@ -3,18 +3,19 @@
 **READY FOR COMBINED ENGINE — native grant deferred.**
 
 Branch: `finish/integration-20261002`; base: `6cefd9eb`.
-Runtime/source candidate: `ff8a30fb` (the following documentation commit does not
+Runtime/source candidate: `76c6a9ec` (the following documentation commit does not
 change runtime files). The final handoff supplies the exact full branch HEAD.
 Parent can fast-forward this branch or cherry-pick `6cefd9eb..HEAD` in order.
 
-All **24 requested prepared commits**, covering **nine feature lanes**, are
-integrated. Published runtime remains `e731fd53`. Frozen source `515daf07589150dd3241f4ae1425cc1b093912f5`,
+All **24 prepared feature commits**, covering **nine feature lanes**, plus both
+requested packaging commits are integrated. Published runtime remains `e731fd53`. Frozen source `515daf07589150dd3241f4ae1425cc1b093912f5`,
 core SHA-256 `58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9`,
 and reviewed derivative `0326b435a2fdd88e6e7a01b8a7325feccc4d15cb` are preserved.
 There are no `game/` or `server/` edits. No new map recipes/art, empty robot/fleet/
 scenery preloads, old-art regeneration, or all-map regeneration was performed.
 No Godot, import, renderer, Blender, audio playback/capture or ffmpeg was run.
-Parallax/parent retain native scheduling ownership. This is not a finished release.
+Helix revision 2 is the sole heavy-slot owner following Parallax's release;
+parent retains native scheduling ownership. This is not a finished release.
 
 ## Original commit mapping
 
@@ -47,6 +48,8 @@ retained in its commit body. Abbreviated mapping below is unambiguous in this re
 | Controls handoff | `9aa752a8` | `46685921` |
 | Replay | `9120d991` | `9c36ac70` |
 | Replay capture hook | `9794575a` | `e6a5c48b` |
+| Packaging closure | `8522dcde` | `bd672ba5` |
+| Packaging evidence | `1466c861` | `92a29142` |
 
 Integrator commits:
 
@@ -57,6 +60,8 @@ Integrator commits:
   source eligibility oracle/native contract, stale Horde assertion repair.
 - `ff8a30fb`: direct Home Replay entry, packaging hook report and pending native
   Home/attract/helper teardown contract.
+- `76c6a9ec`: fail-closed exported Replay startup, prepared native negative
+  journey, cross-language manifest contract and reconciled factory/closure tests.
 
 ## Conflict and semantic decisions
 
@@ -103,8 +108,9 @@ Integrator commits:
    paths and packaging coordination in [HOME_REPLAY_HOOK.md](HOME_REPLAY_HOOK.md).
 7. **Persistence:** bindings retain their separate atomic device-local store,
    unknown binding/envelope fields and reset semantics. Shared settings schema
-   is unchanged. No package-worker-owned new closure logic was edited; only
-   explicitly requested baseline Modes hooks were cherry-picked.
+   is unchanged. Package-worker closure commits were cherry-picked after the
+   features, retaining Modes' challenge authority/discovery hooks. Acceptance
+   registration remains separately owned by the canonical acceptance worker.
 8. **Retained regression failure:** the existing identity-Horde test expected an
    allowlist lacking already-shipped `blackwater-reclamation`. The production
    allowlist was not changed. The assertion now includes that existing map.
@@ -165,6 +171,7 @@ canonical regressions and these prepared lane gates, serially under that grant:
 | LATTICE | `tests/lattice/expansion_feedback_contract.gd`, tactical/commands regressions; granted `tools/port/lattice/native-clients.mjs`; own/enemy/spectator dynamic caption privacy and command lifecycle |
 | Controls | `tests/input_bindings/contracts.gd`; granted `tools/port/input-bindings/native-journey.mjs` wide/compact; actual remapped cross-route lifecycle and OS side/modifier events |
 | Replay | `godot/tests/replay/run.mjs`; Home entry/attract teardown above; saved/reopened recording, seek poses, no authority packets/award path, listening and both extracted-platform runtime closures |
+| Exported Replay startup | `tests/finish/replay_bridge_negative.gd`: 48 prepared native checks, missing/corrupt runtime and Windows executable refusals before helper startup; unexecuted |
 
 Exact environment flags/limits, source provenance and unsatisfied graphical
 criteria remain in each original lane's `PARITY.md` / `ACCEPTANCE.md` under
@@ -174,3 +181,54 @@ Wide/compact layouts, real native typing, shader pixels, live UI/audio/resource
 lifecycle and extracted Linux/Windows packages are deliberately unclaimed.
 The known Sunscar VIP ordinary-input extraction obstruction remains documented
 in Modes; this integration does not change its frozen authority/geometry.
+
+## Packaging follow-up verification
+
+Steering added packaging `8522dcde` + `1466c861` after the feature integration.
+Production fixes and prepared tests are committed at
+`76c6a9ec4c7fffaaa086fac23498d2e52604480f`.
+
+- Exported Replay startup now anchors exclusively to the executable directory,
+  verifies manifest version/kind, exact four paths and every SHA-256, then checks
+  platform Node discovery before helper startup. Editor checkout discovery is
+  behind `OS.has_feature("editor")`. Windows requires the package's `node.exe`;
+  Linux uses its own bundled node or PATH node. Failures emit readable errors
+  without checkout/authority retry. The 48-check native rejection journey is
+  prepared, not executed; its instrumented spawn seam must remain untouched on
+  every negative case. Cross-language manifest vocabulary is source-tested.
+- Both native-arena launcher factory fixtures now retain valid 1/7/8 coverage,
+  add **24 bots / 25 actual source actors**, and preserve lower/upper refusals at
+  **0 and 25**. Both launcher option modules explicitly permit 1..24, matching
+  the reviewed port-owned authority/local-roster configuration. All **13** dev/
+  package factory tests passed, including direct authority bounds. These use a
+  synthetic geometry and Node protocol executable, not Godot.
+- `package-combined-tests-01.tap`: **249/250 passed**, one retained failure from
+  the existing Horde closure assertion expecting 85 source modules. Keeping the
+  challenge-authority hook adds the unchanged `game/challenges.mjs`, yielding 86.
+  The assertion now checks 86 plus named challenge adapter/module inclusion and
+  exclusion from the Horde route; no range or provenance checks were weakened.
+- `package-resolution-tests.tap`: **4/4 passed** (three closure tests plus the new
+  cross-language Replay manifest contract). Thus all 250 package/Replay/factory
+  tests have passing evidence, plus the new contract; the initial failure remains
+  on disk. The actual Replay adapter subset passed **15/15** in the combined run.
+- `package-static-final.log`: four additional/changed GDScript files passed
+  grammar parsing; sixteen Node modules passed syntax; `build.py` passed Python
+  AST parsing. Native type/resource/runtime acceptance is still unexecuted.
+- **Post-commit actual combined closure:** `combined-committed-closure.log` and
+  `combined-committed-discovery.json` are bound to `76c6a9ec…`. Discovery was
+  re-derived from committed Git objects and compared exactly to the checkout:
+  **86 source modules, 39 port adapters, seven original world data files**.
+  Challenge adapter and source challenge module are explicitly present.
+- `combined-feature-resources.json`: **166** feature resources checked against
+  committed provenance, including all **160** deterministic telegraph WAV hashes;
+  **14** original-world geometry/art resources validated read-only. No new public
+  map assets/catalog grants were merged.
+- `combined-replay-package-01/replay-runtime`: four files copied from the recorded
+  commit, then independently provenance-verified. `combined-replay-check-01/`
+  contains a passing actual extracted **Node-only** helper authentication/library/
+  unsupported-admission check, launched from a fresh working directory. It starts
+  no engine or authority and is not native bridge startup proof.
+
+Exact package-suite command is retained in `package-combined-command.txt`.
+The canonical acceptance worker still owns verify registration. Helix revision 2
+owns the heavy slot. **Native grant deferred; no native processes executed.**

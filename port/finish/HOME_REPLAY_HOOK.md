@@ -26,3 +26,24 @@ Native handoff/report: `port/finish/INTEGRATION.md`. Added pending contracts:
 `res://tests/finish/caption_integration.gd` and
 `res://tests/finish/home_replays.gd`. Existing end-to-end replay runner:
 `godot/tests/replay/run.mjs`. No native execution is authorized in this stage.
+
+## Exported bridge startup follow-up
+
+Packaging commits `8522dcde` / `1466c861` are now integrated. Production
+`godot/replay/bridge.gd` chooses checkout paths only when
+`OS.has_feature("editor")` is true. Exports use their own executable directory's
+`replay-runtime/`, validate manifest version/kind, the exact four paths from
+`tools/godot-package/replay_runtime.mjs`, and every SHA-256 before allocating a
+handshake or starting the helper. Missing/corrupt input emits a readable error;
+it never retries the checkout or starts authority. Windows exports require their
+own bundled `node.exe`; Linux uses its own bundled `node` if present, otherwise
+`node` on PATH.
+
+Additional prepared native gate:
+`res://tests/finish/replay_bridge_negative.gd` — **48 checks**, unexecuted. It
+drives the production `_ready` rejection path through an instrumented spawn seam
+and covers all four missing/corrupt files, missing/malformed/wrong-version/kind/
+path-set manifests, a discoverable checkout decoy and missing Windows node.
+Every rejection must leave helper launches at zero, PID at -1 and the handshake
+unallocated. Valid Linux/Windows/editor plans are inspected without executing
+fixture modules. Canonical registration remains owned by the acceptance worker.

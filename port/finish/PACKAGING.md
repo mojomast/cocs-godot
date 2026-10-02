@@ -126,6 +126,19 @@ One native test stopped at its missing `GODOT_BIN` prerequisite; no engine ran.
 Two existing factory expectations still assume max seven bots while the current
 launcher permits 24; these are outside the changed closure and remain reported.
 
+**Integrator follow-up:** `76c6a9ec` supersedes those remaining factory failures.
+The configured production bounds are explicitly 1..24 in both launchers and the
+native authority's reviewed local-roster adapter. Dev/package factory fixtures now
+retain 1/7/8 coverage, add an actual 24-bot source round, and reject both 0 and 25.
+The source-only combined package suite passed those factory cases. Its separate
+85-module Horde assertion was also reconciled to the integrated challenge route:
+86 frozen source modules, with named challenge adapter/module inclusion and Horde
+isolation assertions. The original packaging evidence above is retained.
+
+The required exported Replay bridge startup repair is implemented in that same
+integrator commit. See `HOME_REPLAY_HOOK.md` for exact paths and the prepared
+48-check native negative journey; native execution remains deferred.
+
 ## Integrated commands (native commands await parent grant)
 
 ```sh
