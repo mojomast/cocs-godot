@@ -11,6 +11,9 @@ export const BASE_WORLDS = Object.freeze({
 export const REVIEWED_CANDIDATES = Object.freeze(['helix-conservatory','gravemill-foundry','parallax-observatory','vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
 export function worldArt(id) {
   assert.ok(Object.hasOwn(BASE_WORLDS,id)||REVIEWED_CANDIDATES.includes(id),`Unreviewed world: ${id}`);
+  // Accepted rev3 Foundry retains its production worlds/ export path. Runtime
+  // map.gd already loads these bytes; candidate naming must not invent a path.
+  if (id==='gravemill-foundry') return 'res://multiplayer_worlds/art/worlds/gravemill-foundry.glb';
   return REVIEWED_CANDIDATES.includes(id) ? `res://multiplayer_worlds/art/${id}/${id}.glb`
     : `res://multiplayer_worlds/art/${['switchyard-ward','rainmarket-exchange'].includes(id)?'':'worlds/'}${id}.glb`;
 }

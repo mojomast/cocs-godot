@@ -1,0 +1,59 @@
+{
+  "status": "source-ready-native-pending",
+  "engine_executed": false,
+  "native_grant_owner": "integration Astra / FINISH-COMBINED-NATIVE-20261002-A",
+  "focused_node_suite": {
+    "command": "node --test port/map-finish/shared/validate.test.mjs tools/godot-package/dressing_resources.test.mjs tools/godot-package/finishing_closure.test.mjs tools/godot-package/manifest_validation.test.mjs",
+    "passed": 58,
+    "failed": 0
+  },
+  "gdscript_grammar": "gdtoolkit 4.5 gdparse; six production/harness/map scripts parsed; engine type-check and shader compilation pending",
+  "python_source": "ast.parse passed for package builder and both updated map authors",
+  "helix": {
+    "exact_opaque_selectors": 9,
+    "preserved": ["glass"],
+    "panels": 46,
+    "wear_panels": 43,
+    "signs": 13,
+    "motes": 48,
+    "author_resource_receipt": 34,
+    "author_backing_and_negative_cases": "passed; six negative probes rejected"
+  },
+  "foundry": {
+    "exact_opaque_selectors": 8,
+    "panels": 37,
+    "wear_panels": 16,
+    "signs": 20,
+    "motes": 32,
+    "author_backing_face_samples": 1425,
+    "author_backing_check": "passed against accepted production GLB"
+  },
+  "parallax": {
+    "schema_and_png_resource_check": "passed",
+    "authored_opaque_selectors": 6,
+    "preserved": ["sea"],
+    "parent_geometry_backing_check": "not executed: accepted GLB remains isolated",
+    "route_registered": false,
+    "profile_extended": false
+  },
+  "package_closure": {
+    "world_resources_command": "node tools/godot-package/world_resources.mjs .",
+    "result": "passed; 9 existing registered worlds, 20 input paths, 2 optional dressing JSONs",
+    "parallax_profile_exported": false,
+    "pck_inclusion": "pending native package rebuild"
+  },
+  "additional_expansion_suite": {
+    "passed": 6,
+    "failed": 1,
+    "failure": "pre-existing historical count assertion expects 43 pairs; current unchanged 9-world catalog has 54",
+    "owner_action": "package owner should update the historical seven-world fixture when accepting new-map integration; no authority/catalog changes made by shared finish"
+  },
+  "pending": [
+    "Godot native parsing/type checking and shader compilation",
+    "Actual runtime material resource-name and per-surface coverage diagnostics",
+    "Native alpha-mask appearance, sign raster legibility and grounded face proof",
+    "Comparable overview and player-height district closeups with identical lighting",
+    "Low/Full/Off lifecycle and actual measured frame cadence",
+    "Gameplay, compact UI, teardown/reload and PCK resource inclusion"
+  ]
+}

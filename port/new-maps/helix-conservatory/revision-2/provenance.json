@@ -1,0 +1,118 @@
+{
+  "id": "helix-conservatory",
+  "revision": 2,
+  "status": "ready-for-second-Blender-pass-source-only",
+  "recipeHash": "6ba9c6529568836ad4b3b69663c8160b6bc8cddc201b077294136441fe03484b",
+  "geometryHash": "f068d1abe262907659f1f02205e2bf56b7c5dbe298191f66d008b420965fa9b2",
+  "meshHash": "6f266357d9079abab63af95764311e058a2ca03d3f8e174877218f3d20d819d9",
+  "sourceLock": "515daf",
+  "reviewedDerivative": "0326",
+  "nativeAcceptedModes": [],
+  "supersedesVisualBriefOnly": "becef6b4 + 96174a63 preserved functional checkpoint",
+  "parts": 10331,
+  "triangles": 137928,
+  "bodyWallTriangles": 2864,
+  "plannedMeshBatches": 22,
+  "materials": [
+    "verdigris",
+    "soil",
+    "stone",
+    "ceramic",
+    "brick",
+    "glass",
+    "gold",
+    "solar",
+    "leaflight",
+    "botanical"
+  ],
+  "primaryRoutes": [
+    "lightwell-loop",
+    "archive-ring",
+    "canopy-ring",
+    "crown-ring",
+    "garden-ramp-0",
+    "garden-ramp-1",
+    "garden-ramp-2",
+    "garden-ramp-3",
+    "garden-ramp-4",
+    "garden-ramp-5",
+    "garden-ramp-6",
+    "garden-ramp-7",
+    "spiral-promenade--1",
+    "spiral-promenade-1",
+    "lightwell-axis"
+  ],
+  "interiorRoutes": [
+    "archive-inner-research-loop",
+    "archive-outer-service-loop",
+    "irrigation-maintenance-bypass",
+    "irrigation-external-service",
+    "pavilion-inner-chamber-aisle"
+  ],
+  "districts": [
+    {
+      "id": "seed-archive-crescent",
+      "type": "room",
+      "district": "archive",
+      "chambers": 3,
+      "innerRadius": 44.5,
+      "outerRadius": 70,
+      "angles": [
+        156,
+        220
+      ],
+      "routeIds": [
+        "archive-ring",
+        "archive-inner-research-loop",
+        "archive-outer-service-loop"
+      ],
+      "roofWalkable": false
+    },
+    {
+      "id": "irrigation-filtration-works",
+      "type": "room",
+      "district": "irrigation",
+      "chambers": 3,
+      "innerRadius": 44.5,
+      "outerRadius": 76,
+      "angles": [
+        -24,
+        25
+      ],
+      "routeIds": [
+        "archive-ring",
+        "irrigation-maintenance-bypass",
+        "irrigation-external-service"
+      ],
+      "roofWalkable": false
+    },
+    {
+      "id": "north-germination-pavilion",
+      "type": "room",
+      "district": "canopy",
+      "chambers": 3,
+      "innerRadius": 80,
+      "outerRadius": 94,
+      "angles": [
+        68,
+        96
+      ],
+      "routeIds": [
+        "canopy-ring",
+        "pavilion-inner-chamber-aisle"
+      ],
+      "roofWalkable": false
+    },
+    {
+      "id": "lightwell-specimen-lantern",
+      "type": "landmark",
+      "height": 25,
+      "openBelow": 5.8,
+      "routeIds": [
+        "lightwell-loop",
+        "lightwell-axis"
+      ],
+      "roofWalkable": false
+    }
+  ]
+}

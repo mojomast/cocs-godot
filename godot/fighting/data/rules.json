@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "tick_rate": 60,
+  "units_per_meter": 1000,
+  "round_seconds": 99,
+  "rounds_to_win": 2,
+  "stage_half_width": 8000,
+  "seed": 20261002,
+  "buffer_frames": 6,
+  "throw_tech_frames": 10,
+  "meter_max": 1000,
+  "gravity": 9,
+  "terminal_velocity": 300,
+  "jump_startup": 4,
+  "landing_recovery": 4,
+  "spawn_distance": 3000,
+  "round_intro_frames": 90,
+  "round_over_frames": 120,
+  "guard_release_frames": 0,
+  "air_guard": false,
+  "socd": "neutral_both_axes",
+  "negative_edge": false,
+  "wakeup_invulnerability_frames": 8,
+  "throw_invulnerability_frames": 12,
+  "combo_limits": {
+    "max_hits": 12,
+    "juggle_budget": 8,
+    "wall_bounces": 1,
+    "ground_bounces": 1,
+    "otg_hits": 1,
+    "damage_scaling_percent": [
+      100,
+      90,
+      80,
+      70,
+      60,
+      50,
+      40,
+      35,
+      30,
+      25,
+      20,
+      20
+    ],
+    "damage_floor_percent": 20,
+    "hitstun_deterioration_per_hit": 2,
+    "min_hitstun": 6
+  },
+  "hurtboxes": {
+    "stand": {
+      "x": -300,
+      "y": 0,
+      "w": 600,
+      "h": 1800
+    },
+    "crouch": {
+      "x": -340,
+      "y": 0,
+      "w": 680,
+      "h": 1050
+    },
+    "air": {
+      "x": -300,
+      "y": 100,
+      "w": 600,
+      "h": 1400
+    }
+  },
+  "pushbox": {
+    "x": -330,
+    "y": 0,
+    "w": 660,
+    "h": 1600
+  },
+  "input_help": {
+    "notation": "5 neutral, 2 down, 4 back, 6 forward, 8 up; j. airborne; xx cancel; [4] hold back. Directions mirror facing.",
+    "simple": "L/M/H normals; Special S1; Mobility S2; Special+Grab S3; Super costs 1000. Grab throw, Back+Grab back throw.",
+    "guard": "Independent Guard high; Down+Guard low. Back alone walks. No RMB tap/hold split."
+  }
+}

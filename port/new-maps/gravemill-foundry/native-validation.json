@@ -1,0 +1,678 @@
+{
+  "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+  "physics": {
+    "architectureContactSteps": 600,
+    "assayInspectionRays": 2,
+    "conveyorUnderside": 13,
+    "districtCeilings": 4,
+    "excludedBoundaryTriangles": 8,
+    "galleryShotProbes": 8,
+    "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+    "id": "gravemill-foundry",
+    "importedMeshBatches": 8,
+    "importedVisualOverheadTrianglesMatched": 824,
+    "importedVisualWallTrianglesMatched": 2312,
+    "maxVisualFloorError": 0.0349998474121094,
+    "metrics": {
+      "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+      "gameplayTriangles": 3158,
+      "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+    },
+    "routeCapsules": 1026,
+    "routeSupportRays": 1026,
+    "visualFloorRays": 1026,
+    "wallContactSteps": 160,
+    "wallContactX": -78.4099349975586
+  },
+  "rounds": [
+    {
+      "id": "gravemill-foundry",
+      "mode": "payload",
+      "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "label": "controlled two-production-native-peer fixture; ordinary client input only; passive opponent",
+      "seconds": 150.0000000000115,
+      "wallSeconds": 156.24467672599997,
+      "controls": 2853,
+      "distanceMoved": 376.56939111195356,
+      "mounted": false,
+      "exited": false,
+      "driveDistance": 0,
+      "stages": [],
+      "teamScores": {
+        "0": 3,
+        "1": 0
+      },
+      "kills": 0,
+      "shots": 0,
+      "objective": {
+        "kind": "payload",
+        "zones": [
+          {
+            "id": "cp1",
+            "x": -55.503424369974134,
+            "z": -45.77047941179638,
+            "y": 0,
+            "radius": 4.5,
+            "owner": 0,
+            "captureTeam": null,
+            "progress": 100,
+            "distance": 121.20007769446121
+          },
+          {
+            "id": "cp2",
+            "x": 57.55402694324624,
+            "z": -49.73231871483547,
+            "y": 0,
+            "radius": 4.5,
+            "owner": 0,
+            "captureTeam": null,
+            "progress": 100,
+            "distance": 242.40015538892243
+          },
+          {
+            "id": "cp3",
+            "x": 166,
+            "z": -38.76,
+            "y": 0,
+            "radius": 4.5,
+            "owner": 0,
+            "captureTeam": null,
+            "progress": 100,
+            "distance": 363.60023308338367
+          }
+        ],
+        "active": 3,
+        "attacker": 0,
+        "defender": 1,
+        "winner": 0,
+        "leaders": [
+          0
+        ],
+        "payload": {
+          "position": {
+            "x": 166,
+            "y": 0,
+            "z": -38.76
+          },
+          "distance": 363.60023308338367,
+          "total": 363.60023308338367,
+          "speed": 2.4240015538892243,
+          "radius": 4.5,
+          "pushing": 0,
+          "contested": false,
+          "delivered": true,
+          "checkpointsReached": 3,
+          "checkpointCount": 3,
+          "progress": 100
+        }
+      },
+      "nativeReceipts": [
+        {
+          "role": "host",
+          "inputs": 143,
+          "results": true
+        },
+        {
+          "role": "guest",
+          "inputs": 143,
+          "results": true
+        }
+      ],
+      "positionSamples": 142,
+      "nativeFinalReceipts": [
+        {
+          "role": "host",
+          "ack": 2606,
+          "sent": 2606,
+          "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+          "vehicleShotEvents": 0
+        },
+        {
+          "role": "guest",
+          "ack": 2606,
+          "sent": 2606,
+          "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+          "vehicleShotEvents": 0
+        }
+      ]
+    },
+    {
+      "id": "gravemill-foundry",
+      "mode": "combined-arms",
+      "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "label": "controlled two-production-native-peer fixture; ordinary client input only; passive opponent",
+      "seconds": 68.88333333333071,
+      "wallSeconds": 77.441087572,
+      "controls": 1294,
+      "distanceMoved": 97.4549346447431,
+      "mounted": true,
+      "exited": true,
+      "driveDistance": 77.16753399012113,
+      "stages": [
+        {
+          "stage": "mount-approach",
+          "x": -166,
+          "y": 0,
+          "z": -85.24000000000001
+        },
+        {
+          "stage": "dismounted",
+          "driveDistance": 77.16753399012113
+        },
+        {
+          "stage": "capture-zone",
+          "x": -90.55808177931183,
+          "y": 0,
+          "z": -54.452762044454026
+        }
+      ],
+      "teamScores": {
+        "0": 50.01666666666511,
+        "1": 0
+      },
+      "kills": 0,
+      "shots": 132,
+      "objective": {
+        "kind": "domination",
+        "zones": [
+          {
+            "id": "alpha",
+            "x": -88,
+            "z": -50.32,
+            "radius": 8,
+            "owner": 0,
+            "captureTeam": null,
+            "progress": 100,
+            "captureSeconds": 6,
+            "y": 0,
+            "contested": false
+          },
+          {
+            "id": "bravo",
+            "x": 0,
+            "z": 36,
+            "radius": 8,
+            "owner": null,
+            "captureTeam": null,
+            "progress": 0,
+            "captureSeconds": 6,
+            "y": 12,
+            "contested": false
+          },
+          {
+            "id": "charlie",
+            "x": 88,
+            "z": -25.68,
+            "radius": 8,
+            "owner": null,
+            "captureTeam": null,
+            "progress": 0,
+            "captureSeconds": 6,
+            "y": 0,
+            "contested": false
+          }
+        ],
+        "winner": 0,
+        "leaders": [
+          0
+        ]
+      },
+      "nativeReceipts": [
+        {
+          "role": "host",
+          "inputs": 65,
+          "results": true
+        },
+        {
+          "role": "guest",
+          "inputs": 65,
+          "results": true
+        }
+      ],
+      "positionSamples": 64,
+      "nativeFinalReceipts": [
+        {
+          "role": "host",
+          "ack": 1191,
+          "sent": 1191,
+          "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+          "vehicleShotEvents": 132
+        },
+        {
+          "role": "guest",
+          "ack": 1190,
+          "sent": 1190,
+          "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+          "vehicleShotEvents": 132
+        }
+      ]
+    },
+    {
+      "id": "gravemill-foundry",
+      "mode": "deathmatch",
+      "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "label": "controlled two-production-native-peer fixture; ordinary client input only; passive opponent",
+      "seconds": 110.89999999999499,
+      "wallSeconds": 117.98317001999999,
+      "controls": 2104,
+      "distanceMoved": 796.3643328960728,
+      "mounted": false,
+      "exited": false,
+      "driveDistance": 0,
+      "stages": [
+        {
+          "stage": "combat-true",
+          "x": -70,
+          "y": 12,
+          "z": 26.2
+        },
+        {
+          "stage": "combat-false",
+          "x": -168.2587565495622,
+          "y": 2.0785274161402576,
+          "z": -39.8956950163543
+        },
+        {
+          "stage": "combat-true",
+          "x": -168.2587565495622,
+          "y": 2.0785274161402576,
+          "z": -39.8956950163543
+        },
+        {
+          "stage": "combat-false",
+          "x": 49.080392636482806,
+          "y": 12,
+          "z": 41.99981095948999
+        },
+        {
+          "stage": "combat-true",
+          "x": 49.12767631570844,
+          "y": 12,
+          "z": 41.99981277640955
+        },
+        {
+          "stage": "combat-false",
+          "x": -49.14495322570782,
+          "y": 12,
+          "z": 29.99997653006188
+        },
+        {
+          "stage": "combat-true",
+          "x": -49.14495322570782,
+          "y": 12,
+          "z": 29.99997653006188
+        },
+        {
+          "stage": "combat-false",
+          "x": 153.02963255867834,
+          "y": 0,
+          "z": -12.000000238807566
+        },
+        {
+          "stage": "combat-true",
+          "x": 153.02963255867834,
+          "y": 0,
+          "z": -12.000000238807566
+        }
+      ],
+      "teamScores": {
+        "0": 0,
+        "1": 0
+      },
+      "kills": 5,
+      "shots": 47,
+      "objective": null,
+      "nativeReceipts": [
+        {
+          "role": "host",
+          "inputs": 105,
+          "results": true
+        },
+        {
+          "role": "guest",
+          "inputs": 105,
+          "results": true
+        }
+      ],
+      "positionSamples": 105,
+      "nativeFinalReceipts": [
+        {
+          "role": "host",
+          "ack": 1926,
+          "sent": 1927,
+          "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+          "vehicleShotEvents": 0
+        },
+        {
+          "role": "guest",
+          "ack": 1926,
+          "sent": 1927,
+          "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+          "vehicleShotEvents": 0
+        }
+      ]
+    },
+    {
+      "id": "gravemill-foundry",
+      "mode": "assault",
+      "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "label": "controlled two-production-native-peer fixture; ordinary client input only; passive opponent",
+      "seconds": 62.883333333331045,
+      "wallSeconds": 71.48566963600001,
+      "controls": 1178,
+      "distanceMoved": 431.5199562029688,
+      "mounted": false,
+      "exited": false,
+      "driveDistance": 0,
+      "stages": [
+        {
+          "stage": "sector-0",
+          "x": -166,
+          "y": 0,
+          "z": -85.24000000000001
+        },
+        {
+          "stage": "sector-1",
+          "x": -87.74986628040585,
+          "y": 0,
+          "z": -50.12700204037749
+        },
+        {
+          "stage": "sector-2",
+          "x": -1.74670730332475e-10,
+          "y": 12,
+          "z": 35.99969199591683
+        }
+      ],
+      "teamScores": {
+        "0": 3,
+        "1": 0
+      },
+      "kills": 0,
+      "shots": 0,
+      "objective": {
+        "kind": "assault",
+        "zones": [
+          {
+            "id": "alpha",
+            "x": -88,
+            "z": -50.32,
+            "radius": 8,
+            "y": 0,
+            "progress": 100,
+            "owner": 0,
+            "captureTeam": null,
+            "captureSeconds": 6
+          },
+          {
+            "id": "bravo",
+            "x": 0,
+            "z": 36,
+            "radius": 8,
+            "y": 12,
+            "progress": 100,
+            "owner": 0,
+            "captureTeam": null,
+            "captureSeconds": 6
+          },
+          {
+            "id": "charlie",
+            "x": 88,
+            "z": -25.68,
+            "radius": 8,
+            "y": 0,
+            "progress": 100,
+            "owner": 0,
+            "captureTeam": null,
+            "captureSeconds": 6
+          }
+        ],
+        "active": 3,
+        "attacker": 0,
+        "defender": 1,
+        "breached": true,
+        "winner": 0,
+        "leaders": [
+          0
+        ]
+      },
+      "nativeReceipts": [
+        {
+          "role": "host",
+          "inputs": 59,
+          "results": true
+        },
+        {
+          "role": "guest",
+          "inputs": 59,
+          "results": true
+        }
+      ],
+      "positionSamples": 58,
+      "nativeFinalReceipts": [
+        {
+          "role": "host",
+          "ack": 1085,
+          "sent": 1086,
+          "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+          "vehicleShotEvents": 0
+        },
+        {
+          "role": "guest",
+          "ack": 1085,
+          "sent": 1086,
+          "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+          "vehicleShotEvents": 0
+        }
+      ]
+    },
+    {
+      "id": "gravemill-foundry",
+      "mode": "domination",
+      "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "label": "controlled two-production-native-peer fixture; ordinary client input only; passive opponent",
+      "seconds": 28.799999999999645,
+      "wallSeconds": 38.46929101599999,
+      "controls": 521,
+      "distanceMoved": 113.38760452277212,
+      "mounted": false,
+      "exited": false,
+      "driveDistance": 0,
+      "stages": [
+        {
+          "stage": "capture-zone",
+          "x": -161,
+          "y": 0,
+          "z": -112.54
+        }
+      ],
+      "teamScores": {
+        "0": 10.000000000000076,
+        "1": 0
+      },
+      "kills": 0,
+      "shots": 0,
+      "objective": {
+        "kind": "domination",
+        "zones": [
+          {
+            "id": "alpha",
+            "x": -88,
+            "z": -50.32,
+            "radius": 8,
+            "owner": 0,
+            "captureTeam": null,
+            "progress": 100,
+            "captureSeconds": 5,
+            "y": 0,
+            "contested": false
+          },
+          {
+            "id": "bravo",
+            "x": 0,
+            "z": 36,
+            "radius": 8,
+            "owner": null,
+            "captureTeam": null,
+            "progress": 0,
+            "captureSeconds": 5,
+            "y": 12,
+            "contested": false
+          },
+          {
+            "id": "charlie",
+            "x": 88,
+            "z": -25.68,
+            "radius": 8,
+            "owner": null,
+            "captureTeam": null,
+            "progress": 0,
+            "captureSeconds": 5,
+            "y": 0,
+            "contested": false
+          }
+        ],
+        "winner": 0,
+        "leaders": [
+          0
+        ]
+      },
+      "nativeReceipts": [
+        {
+          "role": "host",
+          "inputs": 27,
+          "results": true
+        },
+        {
+          "role": "guest",
+          "inputs": 27,
+          "results": true
+        }
+      ],
+      "positionSamples": 26,
+      "nativeFinalReceipts": [
+        {
+          "role": "host",
+          "ack": 490,
+          "sent": 490,
+          "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+          "vehicleShotEvents": 0
+        },
+        {
+          "role": "guest",
+          "ack": 490,
+          "sent": 490,
+          "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+          "vehicleShotEvents": 0
+        }
+      ]
+    },
+    {
+      "id": "gravemill-foundry",
+      "mode": "teamdeathmatch",
+      "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "label": "controlled two-production-native-peer fixture; ordinary client input only; passive opponent",
+      "seconds": 67.09999999999748,
+      "wallSeconds": 75.737182984,
+      "controls": 1259,
+      "distanceMoved": 437.24879949874037,
+      "mounted": false,
+      "exited": false,
+      "driveDistance": 0,
+      "stages": [
+        {
+          "stage": "combat-true",
+          "x": -166,
+          "y": 0,
+          "z": -85.24000000000001
+        },
+        {
+          "stage": "combat-false",
+          "x": 150.99489683460658,
+          "y": 0,
+          "z": -11.998295680493408
+        },
+        {
+          "stage": "combat-true",
+          "x": 150.99489683460658,
+          "y": 0,
+          "z": -11.998295680493408
+        },
+        {
+          "stage": "combat-false",
+          "x": 150.00001987136636,
+          "y": 0,
+          "z": -46.99949252776339
+        },
+        {
+          "stage": "combat-true",
+          "x": 150.00001987136636,
+          "y": 0,
+          "z": -46.99949252776339
+        },
+        {
+          "stage": "combat-false",
+          "x": 150.00000000199557,
+          "y": 0,
+          "z": -18.733362856922792
+        },
+        {
+          "stage": "combat-true",
+          "x": 150.00000000199557,
+          "y": 0,
+          "z": -18.733362856922792
+        },
+        {
+          "stage": "combat-false",
+          "x": 161.16293375584013,
+          "y": 0,
+          "z": -36.48680009551642
+        },
+        {
+          "stage": "combat-true",
+          "x": 161.16293375584013,
+          "y": 0,
+          "z": -36.48680009551642
+        }
+      ],
+      "teamScores": {
+        "0": 5,
+        "1": 0
+      },
+      "kills": 5,
+      "shots": 129,
+      "objective": null,
+      "nativeReceipts": [
+        {
+          "role": "host",
+          "inputs": 63,
+          "results": true
+        },
+        {
+          "role": "guest",
+          "inputs": 63,
+          "results": true
+        }
+      ],
+      "positionSamples": 62,
+      "nativeFinalReceipts": [
+        {
+          "role": "host",
+          "ack": 1159,
+          "sent": 1159,
+          "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+          "vehicleShotEvents": 0
+        },
+        {
+          "role": "guest",
+          "ack": 1159,
+          "sent": 1159,
+          "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+          "vehicleShotEvents": 0
+        }
+      ]
+    }
+  ],
+  "fixtureLimit": "Two production native clients, ordinary source-authority wire input; controlled configuration and passive opposition. No actor/score/health injection.",
+  "evidence": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production"
+}

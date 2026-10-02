@@ -18,10 +18,23 @@ worktrees start at `6cefd9eb` and live under `/home/mojo/.tmp-on-disk/`.
 
 ## Heavy-tool ownership and completion sequence
 
-**Helix revision 2 now owns the exclusive heavy slot.** Parallax explicitly
-released all owned processes after its final production checkpoint, and the parent
-granted Helix its second Blender/native pass. Integration, packaging and acceptance
-agents have only source/static/Node permission until a later explicit grant.
+**Current exclusive grant: `FINISH-COMBINED-NATIVE-20261002-A`.** Integration
+owner `ses_f0294303bffed6Fb8UJLKe4ZDz` is reusing the existing
+`cocs-finish-integration-20261002` checkout/cache at parent `09160dc0`.
+Foundry explicitly stopped all owned processes and released its slot. Parent
+reviewed overview, crusher, cooling, assay, furnace and compact payload images,
+accepted revision 3 for integration and merged its branch at `4febce4d`.
+Both Helix and Foundry bindings are retained; regenerated routing and closure
+checks pass 30/30. Initial stale ordering failures remain in the evidence logs.
+
+Grant scope: import/native typing first, then bounded serial combined-feature
+engine gates, Horde chain before full victory, and asset-independent fighting
+core fixtures/27 actual combo traces. Fix actual integration failures and preserve
+exact-input receipts. No fighting Blender production yet; its adapter follow-up
+is source-only. Real audio runs only with an actual driver; manual/GPU/external
+acceptance remains separately pending. All other heavy work waits for explicit
+release. The live candidate now includes all six fighting source lanes, but no
+fighting GLBs exist and no playable/native fighting acceptance is implied.
 
 Parallax checkpoint: assets/tests `9a6372b4`, isolated bindings `277f379e`, geometry
 `906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554`.
@@ -29,7 +42,7 @@ Six hosted modes passed: DM/TDM/CTF/KOTH/Uplink/Holdout. Parent inspected overvi
 archive, pump and polar-hall images: overall silhouette and polar hall are distinct;
 archive/pump interiors still share too much structure. Parallax has a bounded
 **source-only** differentiation task, preserving this checkpoint. No new heavy
-grant was issued to Parallax. Foundry revision 3 follows Helix's explicit release.
+grant was issued to Parallax. Foundry revision 3 received the next explicit grant.
 
 1. Inspect final Parallax architectural and gameplay images and record the actual
    asset identity and proven pairs. Receive explicit slot release.
@@ -52,6 +65,30 @@ listening, assistive-technology behavior and real-GPU performance retain their
 distinct evidence requirements.
 
 ## Integration boundaries
+
+### Combined candidate merged
+
+Acceptance branch `ed404fa6` is now merged as well: 24 canonical additions
+produce **383 planned gates**, and a separate 96-job matrix has strict incomplete
+reporting, bounded serial execution and explicit grants. Its 20 source jobs and
+30 Python runner/registration/report/watchdog checks passed on the worker branch.
+No native jobs ran. See `ACCEPTANCE_PLAN.md`; Helix remains the heavy-slot owner.
+
+Integrator final `34726217` is merged into the parent at **`5a4bc82d`**. All 24
+prepared feature commits, both packaging commits and reconciled shared hooks are
+now present on `feature/relay-campaign`. The exported Replay fallback fix is
+implemented; native rejection/entry/caption contracts remain queued. The recorded
+source closure is 86 modules/39 adapters/166 feature resources (160 WAVs), seven
+original worlds and four separate replay-runtime files. Frozen game/server bytes
+are unchanged and new public map assets are not yet included.
+
+The parent verified runtime/package files match the integrator exactly and ran
+five closure/manifest tests successfully (`/tmp/opencode/finish-parent-merge-checks.tap`).
+Integrator evidence includes 640 distinct passing Node tests across retained runs,
+93-file grammar parsing, source/wire oracles and subsequent package checks; see
+`INTEGRATION.md` for exact failures, repairs and run boundaries. No native result
+or release acceptance follows from this merge. The acceptance worker received the
+actual merged anchor and the three additional integration gate paths.
 
 ### Packaging checkpoint
 
