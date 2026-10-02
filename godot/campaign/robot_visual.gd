@@ -66,6 +66,9 @@ func apply_identity(actor: Dictionary) -> void:
 	for level: int in range(3): _build(level)
 	reset_pose()
 	set_lod(lod_level)
+	# Factory opt-in survives an actor identity rebuild; stock-only callers stay stock.
+	if get_meta("switchyard_enabled", false):
+		preload("res://robot_assets/switchyard/skin_adapter.gd").install_role(self)
 
 func _joint(parent: Node3D, label: String, pos: Vector3) -> Node3D:
 	var joint := Node3D.new()

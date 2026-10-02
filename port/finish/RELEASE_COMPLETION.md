@@ -21,7 +21,9 @@ boundaries.
 | Fighting camera readability | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing correction merged at `1bff0281`; six parent source checks pass, native four-stage comparison still pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
-| Queued asset integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Hosted/finish/teardown and exact producer/package-receipt contracts integrated and passing; awaiting real serial asset-production grant |
+| Scenery integration development | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Source-only atomic installation/failure bookkeeping fixes and connected four-chapter walk/shot/workshop verification fixtures |
+| Vehicle integration development | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Source-only connected Puma/Titan/Scout drive/crew/fire/repair/wreck fixtures and evidence-backed attachment fixes |
+| Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Source-only executable local/AI/training, throw/tech, input-release and four-stage presentation coverage using actual produced rigs |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Six new gates integrated at `0ffc853c`/`f70355d5`, preserving all original 135 jobs; fresh exact-input ledger required after candidate stabilizes |
 | Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Actual Parallax receipt/promotion integrated; six other units still require production; native/export/Windows CI pending |
 | Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | Prepared v3 pipeline integrated at `2902412b`; nine focused parent tests pass; real capture/edit/install awaits final assets and a later grant |
@@ -463,3 +465,27 @@ authority-step test during the source-only phase. `--plan` passes and reports te
 registered worlds and the six genuinely pending production units; retained at
 `/tmp/opencode/parent-cinematic-v3-plan.json`. No capture, encoding, audio, menu
 installation or new native result occurred. Robot grant D remains exclusive.
+
+## Parallel development during robot production
+
+The owner explicitly requested additional subagent development while robot
+production runs. Three original Astra owners resume from `ce084d50` in separate
+existing checkouts, source-only:
+
+- Independent fighting acceptance completes executable production-scene local/
+  AI/training and four-stage journey coverage beyond the existing narrow default
+  AI/pause/rematch fixture. Real input and public UI only; physical controller
+  testing remains distinct from injected device/focus notifications.
+- Vehicle owner prepares actual connected drive/crew/fire/repair/wreck journeys
+  for Puma/Titan/Scout, requiring authored assets rather than silently accepting
+  fallback visuals, with team/weather/LOD and clean teardown checks.
+- Scenery owner fixes demonstrated partial `loaded_assets` publication and
+  unguarded scene/root loading in `scenery_pack.gd`, then completes connected
+  four-chapter ordinary walk/shot/workshop-path fixtures and lifecycle coverage.
+
+These lanes may change only their own runtime/test/tool files. Shared asset
+builders/receipts/finishing tools, robot files and package promotions are excluded
+while D uses them. No engine, Blender, import, render, encoder or authority journey
+is authorized for these source tasks. Native fixtures remain unaccepted until
+later explicit execution. Robot D remains the sole heavy owner; source development
+reduces the work left for subsequent vehicle/scenery/fighting native passes.
