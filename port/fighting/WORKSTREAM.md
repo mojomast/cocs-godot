@@ -71,6 +71,27 @@ integration. No lane received a Blender/Godot grant at launch.
 
 ## Received research and parent review
 
+### Effects and presentation source checkpoints
+
+FX `52c74a0c` is merged as `9fd6f74e`: nine form/motion vocabularies, 138 attack
+IDs, 99 named cues, bounded director and 54 reproducible original PCM files. Five
+source tests and grammar parsing passed on the lane; runtime/audio/visual quality
+is unverified. Pool limits are configuration, not measured GPU budgets.
+
+Presentation `c995ba66` + Home hook `53505568` are merged as `b0c23d43` +
+`dcc6aa4e`: JSON-driven nine-character selection, AI/local/training shell, private
+input, HUD/camera and four stage adapters. Lane source checks include 918 camera
+extrema and stage/resource checks; no native UI or rendering has run. Production
+start blocks visibly when the core/visual dependencies are absent. The mode is
+not complete or package-accepted merely because a Home route exists.
+
+Bounded follow-ups assigned: UI persistent-projectile/socket/pause-audio wiring,
+very-short-input latch, precise core contact event coordinates. The completed Flash
+efficiency audit also drives shared-rig/clip reuse and a Meta/Mistral native slice
+before bulk exports. See `port/efficiency/DECISIONS.md`; all-nine unique animations
+and effects remain required. Content schema/prose-free provenance changes and
+core input/math/hitstop/JSON corrections are in progress with existing owners.
+
 ### Fighting content checkpoint
 
 Content `827d24a8` + `79d98652` is merged as `0193f14a` + `b0669433`.

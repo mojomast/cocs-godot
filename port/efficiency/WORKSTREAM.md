@@ -34,3 +34,8 @@ counting source checks as rendered quality.
 
 Current heavy-tool owner remains **Foundry revision 3**. Research is lightweight;
 no Godot, Blender, import, render, audio capture or encoding is authorized here.
+
+All three reports are complete and merged. Parent decisions, factual corrections
+and assigned follow-ups are in [DECISIONS.md](DECISIONS.md). Existing Sol/Astra
+owners received the actionable changes; no extra implementation workstream or
+heavy grant was launched. Native performance improvements remain unmeasured.
