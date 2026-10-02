@@ -15,6 +15,7 @@ import time
 import uuid
 
 from gate_runner import save_report
+from finish_receipts import accept_reference, sha, validate_artifact_checks
 
 ROOT = Path(__file__).resolve().parents[2]
 MATRIX = ROOT / 'port/finish/matrix.json'
@@ -22,9 +23,54 @@ EVIDENCE = Path('/home/mojo/.tmp-on-disk/cocs-finish-acceptance-evidence-2026100
 COHORT_LOCK = Path('/tmp/opencode/cocs-finish-acceptance.lock')
 
 
-def load_matrix(path=MATRIX):
+def load_matrix(path=MATRIX, ancestors=(), root=ROOT):
+    path = Path(path).resolve()
+    if path in ancestors:
+        raise ValueError('Matrix inheritance cycle')
     data = json.loads(Path(path).read_text())
+    if data.get('extends'):
+        base = load_matrix(path.parent / data['extends'], (*ancestors, path), root)
+        data = {**base, **data, 'jobs': base['jobs'] + data['jobs'],
+                'defaults': {**base.get('defaults', {}), **data.get('defaults', {})},
+                'dynamic_dependencies': sorted(set(base['dynamic_dependencies'] + data.get('dynamic_dependencies', [])))}
+    for delegated in data.pop('delegated_plans', []):
+        plan_path = (path.parent / delegated['path']).resolve()
+        plan_relative = plan_path.relative_to(ROOT)
+        plan_path = root / plan_relative
+        plan = json.loads(plan_path.read_text())
+        for entry in plan['jobs']:
+            resource = entry['resource']
+            cohort = 'external' if resource == 'blender-exclusive' else 'audio' if 'audio' in resource else 'engine'
+            job = {'id': delegated['prefix'] + entry['id'], 'cohort': cohort,
+                   'owner': delegated['owner'], 'timeout': entry['timeout_seconds'] + 40,
+                   'requires': entry['requires'] + ['tools/fighting/acceptance/run.py'],
+                   'after': ['native-import'], 'units': [entry['id']],
+                   'evidence_kind': 'delegated-fighting-' + resource,
+                   'criteria': entry.get('reason', 'Existing independent fighting gate must pass all actual checks'),
+                   'next_action': 'Use existing fighting acceptance producer under explicit grant; inspect failed/unrun cases',
+                   'delegated_plan': str(plan_relative), 'delegated_job': entry}
+            if entry['id'] == 'native-assets':
+                roster_path = root / 'godot/fighting/data/roster.json'
+                if roster_path.is_file():
+                    job['units'] = [op['id'] for op in json.loads(roster_path.read_text())['operators']]
+            if entry.get('script'):
+                job['command'] = ['{python}', 'tools/fighting/acceptance/run.py', 'native', '--gate', entry['id'],
+                                  '--evidence', '{out}', '--godot', '{godot}', '--heavy-grant', '{grant_reference}']
+                if entry.get('rendered'):
+                    job['command'] = ['{python}', 'tools/godot-dev/xvfb_run.py'] + job['command']
+                job['needs_grant_reference'] = True
+                job['artifact_checks'] = [{'kind': 'fighting-manifest', 'path': '*/manifest.json'}]
+            else:
+                job['receipt_only'] = True
+                job['next_action'] = entry.get('reason', 'Owner must finish this producer before execution')
+            data['jobs'].append(job)
     for job in data['jobs']:
+        if job.get('units_from_roster') == 'combos':
+            roster_path = root / 'godot/fighting/data/roster.json'
+            if roster_path.is_file():
+                roster = json.loads(roster_path.read_text())
+                job['units'] = [f"{op['id']}/{combo['name']}/{facing}" for op in roster['operators']
+                                for combo in op['combos'] for facing in (1, -1)]
         defaults = data.get('defaults', {}).get(job['cohort'], {})
         for key, value in defaults.items():
             job.setdefault(key, value)
@@ -54,7 +100,8 @@ def input_identity(root, matrix, environment):
         if base.is_dir():
             paths.update(str(p.relative_to(root)) for p in base.rglob('*') if p.is_file())
     digest = hashlib.sha256()
-    for implementation in (Path(__file__), Path(__file__).with_name('gate_runner.py')):
+    for implementation in (Path(__file__), Path(__file__).with_name('gate_runner.py'),
+                           Path(__file__).with_name('finish_receipts.py')):
         digest.update(implementation.read_bytes())
     digest.update(json.dumps(matrix, sort_keys=True).encode())
     digest.update(json.dumps(environment, sort_keys=True).encode())
@@ -253,6 +300,22 @@ def summarize(report, jobs):
         if job.get('critical', True) and status != 'passed':
             blockers[job['cohort']]['failing' if status == 'failed' else 'unrun'].append(job['id'])
     report['blockers_by_cohort'] = blockers
+    report['completion_ledger'] = []
+    for job in jobs:
+        history = report['attempts'].get(job['id'], [])
+        attempt = history[-1] if history else {}
+        missing = attempt.get('dependencies', {}).get('missing', [])
+        dependencies = [dep for dep in job.get('after', []) if latest.get(dep) != 'passed']
+        status = latest.get(job['id'], 'unrun')
+        report['completion_ledger'].append({
+            'id': job['id'], 'owner': job.get('owner', 'combined acceptance / parent'),
+            'cohort': job['cohort'], 'critical': job.get('critical', True), 'execution_status': status,
+            'preparation': 'blocked' if missing or dependencies else
+                           'owner-receipt-required' if job.get('receipt_only') or not job.get('command') else 'ready-to-run',
+            'missing_inputs': missing, 'dependencies': job.get('after', []), 'incomplete_dependencies': dependencies,
+            'next_action': job.get('next_action', job.get('criteria', 'Complete the critical gate under its owner grant')),
+            'units': {unit: attempt.get('units', {}).get(unit, status) for unit in job.get('units', [job['id']])},
+            'skip_reason': attempt.get('skip_reason'), 'failure_reason': attempt.get('failure_reason')})
     # Feature acceptance is not packaging, production art, listening, or publication.
     report['release_ready'] = False
 
@@ -263,6 +326,8 @@ def accept_attestation(path, report, jobs):
     gate = next((j for j in jobs if j['id'] == receipt.get('gate')), None)
     if not gate or gate['cohort'] not in ('manual', 'external'):
         raise ValueError('Attestations cannot replace executable gates')
+    if gate.get('receipt_only'):
+        raise ValueError('This closure requires the typed exact-anchor receipt adapter')
     if receipt.get('input_sha256') != report['input_identity']['sha256']:
         raise ValueError('Attestation input hash mismatch')
     if receipt.get('verdict') != 'passed' or not receipt.get('reviewer') or not receipt.get('notes') or not receipt.get('evidence'):
@@ -290,12 +355,14 @@ def main(argv=None):
     parser.add_argument('--retry-failed', action='store_true', help='explicit new attempt, preserving all failures')
     parser.add_argument('--budget-seconds', type=float, default=1800, help='invocation budget; do not start a gate whose deadline will not fit (default 1800)')
     parser.add_argument('--attest', action='append', type=Path, default=[], help='same-hash explicit manual/external owner receipt; requires --resume')
+    parser.add_argument('--receipt', action='append', type=Path, default=[], help='verified existing exact-anchor producer reference; never runs producer')
+    parser.add_argument('--grant-reference', default='', help='actual parent grant identifier for delegated producers')
     args = parser.parse_args(argv)
     if args.budget_seconds <= 0:
         parser.error('--budget-seconds must be positive')
     if args.attest and not args.resume:
         parser.error('--attest requires an existing --resume report')
-    matrix = load_matrix(args.matrix)
+    matrix = load_matrix(args.matrix, root=args.root)
     jobs = matrix['jobs']
     unknown = set(args.select) - {j['id'] for j in jobs}
     if unknown:
@@ -327,10 +394,20 @@ def main(argv=None):
                 ['git', 'status', '--porcelain'], cwd=args.root, text=True).strip())
         started = time.monotonic()
         report.setdefault('invocations', []).append({'at': time.time(), 'run': args.run, 'grants': args.grant,
+                                                   'grant_reference': args.grant_reference,
                                                    'budget_seconds': args.budget_seconds,
                                                    'select': args.select, 'retry_failed': args.retry_failed})
         for receipt in args.attest:
             accept_attestation(receipt, report, jobs)
+        for receipt in args.receipt:
+            try:
+                accept_reference(receipt, report, jobs, args.root, run_dir / 'receipts')
+            except (ValueError, KeyError, OSError, TypeError, AttributeError) as error:
+                report.setdefault('rejected_receipts', []).append({'path': str(receipt), 'reason': str(error), 'at': time.time()})
+                summarize(report, jobs)
+                save_report(report_path, report)
+                print('Receipt rejected: ' + str(error), file=sys.stderr)
+                return 1
         selected = set(args.select) if args.select else {j['id'] for j in jobs}
         for job in jobs:
             history = report['attempts'].setdefault(job['id'], [])
@@ -355,6 +432,10 @@ def main(argv=None):
                 reason = 'requires integration/resources: ' + ', '.join(missing)
             elif missing_hooks:
                 reason = 'requires parent launcher/integration hook: ' + ', '.join(missing_hooks)
+            elif job.get('receipt_only') or not job.get('command'):
+                reason = 'owner execution and typed exact-anchor receipt required'
+            elif job.get('needs_grant_reference') and not args.grant_reference:
+                reason = 'actual parent grant reference required for delegated producer'
             elif job['cohort'] != 'source' and 'engine' not in args.grant:
                 reason = 'explicit parent engine grant absent'
             elif job['cohort'] == 'audio' and ('audio' not in args.grant or environment['AUDIO_DRIVER'] in ('', 'Dummy')):
@@ -377,7 +458,8 @@ def main(argv=None):
             directory.mkdir(parents=True)
             env = isolated_environment(directory)
             substitutions = {'out': str(directory / 'artifacts'), 'godot': environment['GODOT_BIN'],
-                             'audio_driver': environment['AUDIO_DRIVER'], 'python': sys.executable}
+                             'audio_driver': environment['AUDIO_DRIVER'], 'python': sys.executable,
+                             'grant_reference': args.grant_reference, 'root': str(args.root.resolve())}
             env.update({k: v for k, v in environment.items() if v and k not in ('PATH',)})
             env.update({key: value.format(**substitutions) for key, value in job.get('env', {}).items()})
             command = [arg.format(**substitutions) for arg in job['command']]
@@ -415,6 +497,26 @@ def main(argv=None):
                     bad_logs.append(str(log))
             if bad_logs:
                 attempt.update(status='failed', failure_reason='nested-engine-error', error_logs=bad_logs)
+            # Preserve per-route actual failures as well as successes, without
+            # letting a partial combo result turn the containing gate green.
+            if job.get('units_from_roster') == 'combos':
+                combo_report = directory / 'artifacts/actual-combos.json'
+                if combo_report.is_file():
+                    try:
+                        rows = json.loads(combo_report.read_text()).get('results', [])
+                        attempt['units'] = {f"{r['operator']}/{r['name']}/{r['facing']}":
+                                            'passed' if r.get('passed') is True else 'failed' for r in rows}
+                    except (ValueError, KeyError, TypeError, AttributeError):
+                        attempt.update(status='failed', failure_reason='invalid combo report')
+            if attempt['status'] == 'passed':
+                try:
+                    if job.get('success_marker') and job['success_marker'] not in (directory / 'output.log').read_text():
+                        raise ValueError('Missing required native success marker')
+                    attempt['units'] = validate_artifact_checks(job, directory / 'artifacts', args.root)
+                except (ValueError, KeyError, OSError, TypeError) as error:
+                    attempt.update(status='failed', failure_reason='producer-evidence: ' + str(error))
+            attempt['artifact_hashes'] = {str(p.relative_to(directory)): sha(p) for p in directory.rglob('*')
+                                          if p.is_file() and not p.is_symlink()}
             summarize(report, jobs)
             save_report(report_path, report)
             print(job['id'] + ': ' + attempt['status'], flush=True)
