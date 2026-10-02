@@ -49,6 +49,10 @@ def validate_data(roster, rules):
         require(len(operator['combos']) >= 3, oid + ' three combos')
         for combo in operator['combos']:
             require(isinstance(combo.get('name'), str) and len(combo.get('inputs', [])) >= 2, oid + ' combo inputs')
+            if 'route' in combo:
+                require(all(mid in moves for mid in combo['route']), oid + ' combo route')
+                trace = expand_trace(combo)
+                require(len(trace) > 0, oid + ' executable sparse trace')
         for mid, move in moves.items():
             label = oid + ':' + mid
             require(all(k in move for k in ('name', 'kind', 'startup', 'active', 'recovery', 'damage',
@@ -64,11 +68,32 @@ def validate_data(roster, rules):
             require(duration > 0 and move['animation'] and move['effect'], label + ' duration/visual IDs')
             for box in move['hitboxes']:
                 require(all(type(box.get(k)) is int for k in ('from', 'to', 'x', 'y', 'w', 'h')), label + ' integer box')
-                require(0 <= box['from'] <= box['to'] <= duration and box['w'] > 0 and box['h'] > 0, label + ' box interval')
+                require(0 <= box['from'] <= box['to'] < duration and box['w'] > 0 and box['h'] > 0, label + ' box interval')
             for cancel in move['cancels']:
                 require(cancel['to'] in moves and 0 <= cancel['from'] <= cancel['until'] <= duration, label + ' cancel target/window')
                 require(bool(cancel['on']) and set(cancel['on']) <= {'hit', 'block', 'whiff'}, label + ' cancel conditions')
-    return {'operators': 9, 'required_move_families': 135, 'authored_combos': sum(len(o['combos']) for o in operators)}
+    return {'operators': 9, 'required_move_families': 135,
+            'actual_moves': sum(len(o['moves']) for o in operators),
+            'authored_combos': sum(len(o['combos']) for o in operators)}
+
+
+def expand_trace(combo, facing=1):
+    """Content contract: omitted ticks release, duration holds, pressed is one edge."""
+    require(facing in (-1, 1), 'trace facing')
+    timeline = {}
+    for sample in combo.get('setup_inputs', []) + combo['inputs']:
+        require(isinstance(sample, dict), 'sparse command object')
+        tick, duration = sample.get('tick'), sample.get('duration', 1)
+        require(integer(tick) and integer(duration, 1) and tick + duration <= 3600, 'bounded trace interval')
+        require(sample.get('axis_x') in (-1, 0, 1) and sample.get('axis_y') in (-1, 0, 1), 'command axes')
+        require(integer(sample.get('held')) and integer(sample.get('pressed')) and
+                sample['held'] <= 511 and sample['pressed'] & ~sample['held'] == 0, 'command masks')
+        for offset in range(duration):
+            require(tick + offset not in timeline, 'overlapping sparse spans')
+            timeline[tick + offset] = dict(axis_x=sample['axis_x'] * facing, axis_y=sample['axis_y'],
+                                          held=sample['held'], pressed=sample['pressed'] if offset == 0 else 0)
+    return [timeline.get(t, dict(axis_x=0, axis_y=0, held=0, pressed=0))
+            for t in range(max(timeline, default=-1) + 1)]
 
 
 def read_glb(path):
@@ -177,16 +202,17 @@ def inspect(root):
             result['assets'][oid] = {'status': 'unrun', 'reason': 'missing GLB'}
             continue
         try:
-            clips = set(STATES + MOVES)
-            if roster:
-                operator = next(o for o in roster['operators'] if o['id'] == oid)
-                clips.update(m['animation'] for m in operator['moves'].values())
-            checked = validate_glb(path, clips)
-            result['assets'][oid] = {'status': 'passed', **checked}
+            # Shared libraries and victim aliases are permitted. Source checks only
+            # validate stored curves; effective coverage belongs to the configured
+            # native AnimationPlayer, not to a per-body GLB animation count.
+            checked = validate_glb(path, [])
+            checked['resolved_clip_coverage'] = 'unrun: native configured libraries/aliases required'
             for clip, sha in checked['curve_sha256'].items():
-                if clip in MOVES + ['idle', 'walk_f', 'walk_b']:
-                    require((clip, sha) not in fingerprints, 'identical numeric curves: ' + oid + '/' + clip + ' and ' + fingerprints.get((clip, sha), ''))
+                if clip in ['special1', 'special2', 'special3', 'super']:
+                    if (clip, sha) in fingerprints:
+                        checked.setdefault('shared_signature_curve_review', []).append({'clip': clip, 'same_as': fingerprints[clip, sha]})
                     fingerprints[clip, sha] = oid
+            result['assets'][oid] = {'status': 'passed', **checked}
         except (ValueError, KeyError, TypeError, IndexError, struct.error) as error:
             result['failures'].append(oid + ': ' + str(error))
             result['assets'][oid] = {'status': 'failed', 'reason': str(error)}

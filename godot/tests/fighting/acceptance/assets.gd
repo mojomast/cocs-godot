@@ -39,7 +39,6 @@ func run() -> void:
 		var players := nodes(body, "AnimationPlayer")
 		var meshes := nodes(body, "MeshInstance3D")
 		expect(not skeletons.is_empty(), oid + " native skeletons")
-		expect(not players.is_empty(), oid + " native animation library")
 		var skinned := 0
 		for mesh in meshes:
 			if mesh.mesh != null and mesh.skin != null and mesh.skin.get_bind_count() > 0:
@@ -62,12 +61,6 @@ func run() -> void:
 						for bone in skeleton.get_bone_count():
 							expect(finite_transform(skeleton.get_bone_rest(bone)), oid + " finite native bone rest")
 							expect(finite_transform(skeleton.get_bone_global_pose(bone)), oid + ":" + clip + " finite native pose")
-		for required in STATES:
-			expect(required in available, oid + " state clip " + required)
-		for operator in roster.operators:
-			if operator.id == oid:
-				for move in operator.moves.values():
-					expect(move.animation in available, oid + " data clip " + move.animation)
 		checks.append({"id": oid, "native_meshes": meshes.size(), "skinned_meshes": skinned, "skeletons": skeletons.size(), "animation_names": available})
 		body.free()
 	var visual: Variant = load("res://fighting/visuals/fighter_visual.gd")
@@ -77,6 +70,37 @@ func run() -> void:
 			var instance: Variant = visual.new()
 			root.add_child(instance)
 			expect(instance.configure(oid), oid + " real visual configure")
+			var configured_players := nodes(instance, "AnimationPlayer")
+			var configured_skeletons := nodes(instance, "Skeleton3D")
+			var resolved := {}
+			for player in configured_players:
+				player.callback_mode_process = AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_MANUAL
+				for qualified in player.get_animation_list():
+					var clip: String = str(qualified).get_file()
+					if not player.has_animation(qualified):
+						continue
+					var animation: Animation = player.get_animation(qualified)
+					expect(animation != null and animation.length > 0, oid + " resolved library resource " + qualified)
+					resolved[clip] = str(qualified)
+					player.play(qualified)
+					for fraction in [0.0, 0.25, 0.5, 0.75, 1.0]:
+						player.seek(animation.length * fraction, true)
+						player.advance(0.0)
+						for skeleton in configured_skeletons:
+							for bone in skeleton.get_bone_count():
+								expect(finite_transform(skeleton.get_bone_global_pose(bone)), oid + ":" + qualified + " configured finite native pose")
+			for required in STATES:
+				expect(resolved.has(required), oid + " resolved state clip " + required)
+			for operator in roster.operators:
+				if operator.id == oid:
+					for move in operator.moves.values():
+						expect(resolved.has(move.animation), oid + " resolved data clip " + move.animation)
+				for mid in operator.moves:
+					var move: Dictionary = operator.moves[mid]
+					if move.has("throw") or move.get("counter", {}).get("strike", false):
+						var victim_clip: String = "victim_" + operator.id + "_" + mid
+						expect(resolved.has(victim_clip), oid + " resolved paired alias " + victim_clip)
+			checks.append({"id": oid + "-configured-libraries", "resolved": resolved, "contact_anatomy": "unrun per mesh/socket"})
 			instance.reset()
 			instance.free()
 	finish()

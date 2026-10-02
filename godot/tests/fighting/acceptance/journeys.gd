@@ -10,7 +10,11 @@ var roster: Dictionary
 var rules: Dictionary
 var simulation_script: Variant
 var ai_script: Variant
+var success_marker := "FIGHTING_ACCEPTANCE_JOURNEYS_OK"
+var report_scope := "public API journeys only; extended mechanics/native art/UI gates separate"
 var observed := {"hitstop": false, "airborne": false, "projectiles": false, "paired_throws": false}
+var replay_checkpoints := {"hitstop": 0, "airborne": 0, "projectiles": 0, "paired_throws": 0}
+var saved_inventory := {}
 
 func _initialize() -> void:
 	call_deferred("_run")
@@ -117,6 +121,7 @@ func approach(sim: Variant, actor: int, separation: int = 700) -> bool:
 
 func detach_and_restore(sim: Variant, operators: Array) -> Variant:
 	var before: Dictionary = sim.save_state().duplicate(true)
+	record_inventory(before, "saved")
 	var saved: Dictionary = sim.save_state()
 	expect(json_safe(saved), "saved complete state JSON-safe")
 	var snapshot: Dictionary = sim.snapshot()
@@ -135,10 +140,20 @@ func detach_and_restore(sim: Variant, operators: Array) -> Variant:
 	restored.load_state(json_copy)
 	expect(equal(sim.save_state(), restored.save_state()), "JSON save/load complete state equality")
 	expect(equal(sim.snapshot(), restored.snapshot()), "JSON save/load snapshot equality")
+	validate_snapshot(restored.snapshot(), {}, "JSON authoritative integer restoration")
 	# load_state must detach from the caller too.
 	json_copy.clear()
 	expect(equal(before, restored.save_state()), "load_state caller ownership")
 	return restored
+
+func record_inventory(value: Variant, path: String) -> void:
+	saved_inventory[path] = type_string(typeof(value))
+	if value is Dictionary:
+		for key in value:
+			record_inventory(value[key], path + "." + str(key))
+	elif value is Array:
+		for item in value:
+			record_inventory(item, path + "[]")
 
 func scripted_input(tick: int, state: Dictionary, actor: int) -> Dictionary:
 	var phase_tick := tick % 150
@@ -166,13 +181,17 @@ func matrix_replay() -> void:
 				var sim: Variant = fresh(operators)
 				var twin: Variant = fresh(operators)
 				var mirrored: Variant = fresh([operators[1], operators[0]])
-				var restored: Variant = null
+				var restored := {}
 				var ledger := {}
 				var label := str(operators) + " side=" + str(side)
 				for tick in 720:
 					var state: Dictionary = sim.snapshot()
 					var inputs := [scripted_input(tick, state, 0), scripted_input(tick + 30, state, 1)]
 					var next: Dictionary = sim.step(inputs.duplicate(true))
+					for actor in 2:
+						if state.fighters[actor].hitstop > 1:
+							for key in ["x", "y", "vx", "vy", "move_frame", "stun"]:
+								expect(equal(state.fighters[actor][key], next.fighters[actor][key]), label + " hitstop freezes " + key)
 					twin.step(inputs.duplicate(true))
 					var mirror_inputs := [inputs[1].duplicate(true), inputs[0].duplicate(true)]
 					for input in mirror_inputs:
@@ -187,16 +206,20 @@ func matrix_replay() -> void:
 					for key in ["phase", "round_index", "round_ticks_left"]:
 						expect(equal(next[key], reflected[key]), label + " mirrored " + key)
 					expect(equal(sim.save_state(), twin.save_state()), label + " fresh-instance determinism tick " + str(tick))
-					if restored != null:
-						restored.step(inputs.duplicate(true))
-						expect(equal(sim.save_state(), restored.save_state()), label + " all later saved-state frames " + str(tick))
-					# Save in live combat, not only an idle tick; compare every subsequent frame.
-					if restored == null and tick > 200 and (next.fighters[0].hitstop > 0 or next.fighters[0].y > 0 or not next.projectiles.is_empty()):
-						restored = detach_and_restore(sim, operators)
+					for category in restored:
+						restored[category].step(inputs.duplicate(true))
+						expect(equal(sim.save_state(), restored[category].save_state()), label + " " + category + " all later saved-state frames " + str(tick))
+					# Distinct live checkpoints; every fork remains checked until journey end.
+					var conditions := {"hitstop": next.fighters[0].hitstop > 0,
+						"airborne": next.fighters[0].y > 0, "projectiles": not next.projectiles.is_empty()}
+					for category in conditions:
+						if tick > 200 and conditions[category] and not restored.has(category):
+							restored[category] = detach_and_restore(sim, operators)
+							replay_checkpoints[category] += 1
 					validate_snapshot(next, ledger, label)
 					if failures.size() >= 100:
 						return
-				if not expect(restored != null, label + " exercised live save checkpoint"):
+				if not expect(not restored.is_empty(), label + " exercised live save checkpoint"):
 					return
 				cases += 1
 	checks.append({"id": "roster-matrix-replay", "cases": cases, "mirrors": 9, "distinct": 36, "actor_orders": 2, "ticks_per_case": 720})
@@ -218,7 +241,42 @@ func held_and_release() -> void:
 		for _tick in 90:
 			var state: Dictionary = sim.step([neutral(), neutral()])
 			expect(state.fighters[0].move_id != "stand_l", oid + " negative edge disabled")
+		# Caller pressed is a hint, never authority: deliberately forge every tick.
+		var forged: Variant = fresh([oid, oid])
+		if not fight(forged):
+			return
+		activations = 0
+		prior_move = ""
+		for _tick in 240:
+			var state: Dictionary = forged.step([command(0, 0, 1, true), neutral()])
+			var mid := str(state.fighters[0].move_id)
+			if mid == "stand_l" and prior_move != mid:
+				activations += 1
+			prior_move = mid
+		expect(activations == 1, oid + " forged pressed while held cannot retrigger")
+		var hintless: Variant = fresh([oid, oid])
+		if not fight(hintless):
+			return
+		var derived: Dictionary = hintless.step([command(0, 0, 1, false), neutral()])
+		expect(derived.fighters[0].move_id == "stand_l", oid + " held rising edge recognized without pressed hint")
 	checks.append({"id": "held-and-negative-edge", "operators": 9})
+
+func axis_polarity() -> void:
+	for oid in IDS:
+		var down: Variant = fresh([oid, oid])
+		var up: Variant = fresh([oid, oid])
+		if not fight(down) or not fight(up):
+			return
+		var peak := 0
+		for tick in 30:
+			var crouching: Dictionary = down.step([command(0, -1), neutral()])
+			var jumping: Dictionary = up.step([command(0, 1), neutral()])
+			expect(crouching.fighters[0].y == 0, oid + " down -1 never jumps")
+			peak = maxi(peak, int(jumping.fighters[0].y))
+		var low: Dictionary = down.step([command(0, -1, 1), neutral()])
+		expect(low.fighters[0].move_id == "crouch_l", oid + " down -1 selects crouch normal")
+		expect(peak > 0, oid + " up +1 produces real jump")
+		checks.append({"id": "axis-polarity-" + oid, "jump_peak": peak})
 
 func move_command(mid: String, facing: int) -> Dictionary:
 	var button := 0
@@ -235,59 +293,78 @@ func move_command(mid: String, facing: int) -> Dictionary:
 func combos() -> void:
 	for operator in roster.operators:
 		for combo in operator.combos:
-			# Stable move IDs can be scheduled using the authored cancel windows.
-			# Unknown notation must be coordinated, never silently mapped to jab.
-			var sequence: Array = combo.inputs
-			var supported := sequence.size() >= 2
-			for item in sequence:
-				supported = supported and item is String and operator.moves.has(item)
-			if not supported:
-				unrun.append(operator.id + ":" + combo.name + ": combo input notation needs merged schema adapter")
-				continue
 			for actor in 2:
 				var sim: Variant = fresh([operator.id, operator.id])
-				if not fight(sim) or not approach(sim, actor):
+				if not fight(sim):
 					return
 				var victim := 1 - actor
-				var index := 0
+				var label: String = operator.id + ":" + combo.name + " actor=" + str(actor)
+				var fixture: Dictionary = sim.save_state()
+				if not fixture.has("fighters"):
+					unrun.append(label + " saved-state fixture inventory requires core coordination")
+					continue
+				var pre: Dictionary = combo.preconditions
+				var facing := 1 if actor == 0 else -1
+				# Sole fixture mutation, before the trace. No HP edits, no further writes.
+				# Defender follows charge walking through ordinary inputs during setup.
+				var victim_x := (int(rules.stage_half_width) - 330) * facing if pre.corner else int(pre.distance / 2) * facing
+				fixture.fighters[victim].x = victim_x
+				fixture.fighters[actor].x = victim_x - int(pre.distance) * facing
+				fixture.fighters[actor].y = int(pre.attacker_y)
+				fixture.fighters[victim].y = int(pre.defender_y)
+				fixture.fighters[actor].meter = int(pre.meter)
+				sim.load_state(fixture)
+				var samples: Array = combo.get("setup_inputs", []).duplicate(true)
+				samples.append_array(combo.inputs)
+				var first_attack := int(combo.inputs[0].tick)
+				var last_input := 0
+				for sample in samples:
+					last_input = maxi(last_input, int(sample.tick) + int(sample.get("duration", 1)))
 				var damage_ticks: Array = []
 				var executed := {}
+				var hit_moves: Array = []
+				var seen_events := {}
+				var trace: Array = []
 				var gap := false
 				var prior: Dictionary = sim.snapshot()
-				for tick in 600:
+				for tick in range(last_input + 180):
 					var inputs := [neutral(), neutral()]
-					var f: Dictionary = prior.fighters[actor]
-					if index < sequence.size():
-						var mid: String = sequence[index]
-						var eligible: bool = f.move_id == ""
-						if operator.moves.has(f.move_id):
-							for cancel in operator.moves[f.move_id].cancels:
-								if cancel.to == mid and f.move_frame >= cancel.from and f.move_frame <= cancel.until and "hit" in cancel.on and not damage_ticks.is_empty():
-									eligible = true
-						if eligible:
-							if mid.begins_with("air_") and f.y == 0:
-								inputs[actor] = command(0, 1)
-							else:
-								inputs[actor] = move_command(mid, int(f.facing))
-								index += 1
+					for sample in samples:
+						if tick >= sample.tick and tick < sample.tick + sample.get("duration", 1):
+							inputs[actor] = {"axis_x": int(sample.axis_x) * facing, "axis_y": int(sample.axis_y), "held": int(sample.held), "pressed": int(sample.pressed) if tick == sample.tick else 0}
+					if tick < first_attack:
+						inputs[victim] = command(int(inputs[actor].axis_x))
+					if tick == first_attack:
+						expect(abs(prior.fighters[actor].x - prior.fighters[victim].x) == pre.distance, label + " authored first-attack distance")
 					var next: Dictionary = sim.step(inputs)
 					var active := str(next.fighters[actor].move_id)
 					if not active.is_empty():
 						executed[active] = true
+					for event in next.events:
+						if seen_events.has(event.id):
+							continue
+						seen_events[event.id] = true
+						if event.actor == actor and event.target == victim and event.get("damage", 0) > 0 and not event.get("blocked", false):
+							hit_moves.append(event.move_id)
 					if next.fighters[victim].hp < prior.fighters[victim].hp:
 						if not damage_ticks.is_empty():
-							expect(not gap and (prior.fighters[victim].stun > 0 or prior.fighters[victim].hitstop > 0), operator.id + ":" + combo.name + " consecutive hitstun")
+							expect(not gap and prior.fighters[victim].stun > 0, label + " strictly positive consecutive hitstun")
 						damage_ticks.append(tick)
-					if not damage_ticks.is_empty() and next.fighters[victim].stun <= 0 and next.fighters[victim].hitstop <= 0:
+					if not damage_ticks.is_empty() and next.fighters[victim].stun <= 0:
 						gap = true
+					trace.append({"tick": tick, "inputs": inputs, "fighters": next.fighters, "events": next.events})
 					prior = next
-					if index == sequence.size() and f.move_id == "" and tick > 120:
-						break
-				var label: String = operator.id + ":" + combo.name + " actor=" + str(actor)
-				expect(damage_ticks.size() >= 2, label + " real multi-hit damage")
-				for mid in sequence:
+				expect(damage_ticks.size() >= combo.route.size(), label + " every proposed attack contacts")
+				for mid in combo.route:
 					expect(executed.has(mid), label + " intended move actually executed " + mid)
-				checks.append({"id": label, "damage_ticks": damage_ticks, "executed": executed.keys()})
+				expect(equal(hit_moves, combo.route), label + " actual damaging event sequence equals authored route")
+				var directory := OS.get_environment("FIGHTING_ACCEPTANCE_EVIDENCE")
+				if not directory.is_empty():
+					var filename: String = operator.id + "-" + combo.name.to_snake_case() + "-" + str(actor) + ".json"
+					var file := FileAccess.open(directory.path_join(filename), FileAccess.WRITE)
+					if file != null:
+						file.store_string(JSON.stringify({"fixture": fixture, "trace": trace}, "\t"))
+				checks.append({"id": label, "damage_ticks": damage_ticks, "hit_moves": hit_moves, "executed": executed.keys()})
 
 func ai_matches() -> void:
 	for oid in IDS:
@@ -356,6 +433,7 @@ func paired_throws() -> void:
 						observed.paired_throws = true
 						if clone == null:
 							clone = detach_and_restore(sim, operators)
+							replay_checkpoints.paired_throws += 1
 					if next.fighters[victim].hp < prior.fighters[victim].hp:
 						damage_frames += 1
 					prior = next
@@ -386,18 +464,22 @@ func _run() -> void:
 	matrix_replay()
 	if failures.size() < 100:
 		held_and_release()
+		axis_polarity()
 		paired_throws()
 		combos()
 		ai_matches()
 	for category in observed:
 		if not observed[category]:
 			unrun.append("not reached by input journeys: " + category)
+		if replay_checkpoints[category] == 0:
+			unrun.append("no real saved continuation checkpoint: " + category)
 	finish()
 
 func finish() -> void:
 	var status := "failed" if not failures.is_empty() else "deferred" if not unrun.is_empty() else "passed"
 	var report := {"status": status, "checks": checks, "failures": failures, "unrun": unrun, "observed": observed,
-		"scope": "public API journeys only; extended mechanics/native art/UI gates separate"}
+		"saved_inventory": saved_inventory, "replay_checkpoints": replay_checkpoints,
+		"scope": report_scope}
 	var path := OS.get_environment("FIGHTING_ACCEPTANCE_OUTPUT")
 	if not path.is_empty():
 		var file := FileAccess.open(path, FileAccess.WRITE)
@@ -405,5 +487,5 @@ func finish() -> void:
 			file.store_string(JSON.stringify(report, "\t"))
 	print(JSON.stringify(report))
 	if status == "passed":
-		print("FIGHTING_ACCEPTANCE_JOURNEYS_OK")
+		print(success_marker)
 	quit(0 if status == "passed" else 1)
