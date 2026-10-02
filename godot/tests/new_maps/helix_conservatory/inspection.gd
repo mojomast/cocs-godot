@@ -1,4 +1,5 @@
 extends SceneTree
+## Test-only architectural capture; excluded from production asset closure.
 const WorldMap = preload("res://multiplayer_worlds/map.gd")
 var out := ""
 func _initialize() -> void:

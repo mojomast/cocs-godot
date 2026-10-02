@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {recipe as m,makeRecipe,hash} from './recipe.mjs';
+import {recipe as m,makeRecipe,hash} from './candidate.mjs';
 import {floorAt,walkEdge,obstructed,navigation,moveActor,rayWorld} from '../../../../game/core.mjs';
 import {terrainSupportAt,terrainTriangles} from '../../../../game/terrain.mjs';
 import {validateMapSchema} from '../../../../game/map-schema.mjs';
@@ -27,9 +27,10 @@ test('real source moveActor follows every authored route without teleporting',()
 });
 test('source shots pass open archive portal, block side wall, pass glass, and hit ceiling',()=>{
  assert.ok(rayWorld({x:52,y:10,z:-12},{x:0,y:0,z:1},24,m)>=24);
- assert.ok(rayWorld({x:52,y:10,z:0},{x:1,y:0,z:0},10,m)<5);
- assert.ok(rayWorld({x:6,y:3,z:4},{x:0,y:0,z:1},4,m)>=4);
- assert.ok(rayWorld({x:52,y:10,z:0},{x:0,y:1,z:0},10,m)<6);
+ if(m.art.revision!==2)assert.ok(rayWorld({x:52,y:10,z:0},{x:1,y:0,z:0},10,m)<5);
+ if(m.art.revision===2)assert.ok(rayWorld({x:52,y:12,z:0},{x:1,y:0,z:0},10,m)>=10,'glazed lab facade has no invisible shot blocker');
+ else assert.ok(rayWorld({x:6,y:3,z:4},{x:0,y:0,z:1},4,m)>=4);
+ assert.ok(rayWorld({x:52,y:10,z:0},{x:0,y:1,z:0},15,m)<(m.art.revision===2?12:6));
  assert.equal(floorAt(52,0,m),8);assert.equal(floorAt(0,16,m),0);
 });
 test('source bot graph connects every spawn, flag, zone and pickup',()=>{

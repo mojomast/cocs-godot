@@ -5,9 +5,9 @@ import fs from 'node:fs';
 import {createHash} from 'node:crypto';
 import test,{after} from 'node:test';
 import assert from 'node:assert/strict';
-import {recipe,hash} from './recipe.mjs';
+import {recipe,hash} from './candidate.mjs';
 const mapsURL=new URL('../../../../game/maps.mjs',import.meta.url).href;
-const recipeURL=new URL('./recipe.mjs',import.meta.url).href;
+const recipeURL=new URL('./candidate.mjs',import.meta.url).href;
 const hook=registerHooks({load(url,context,next){const loaded=next(url,context);if(url!==mapsURL)return loaded;
  const old="export const getMap=id=>MAPS.find(m=>m.id===id)||MAPS[0];";
  const text=String(loaded.source);assert.ok(text.includes(old),'scoped map injection anchor changed');
@@ -103,7 +103,7 @@ for(const mode of ['domination','koth'])test(`controlled ${mode}: walk from cano
 after(()=>{
  if(results.length!==7)return;
  const report={schemaVersion:1,id:recipe.id,recipeContentHash:hash(recipe),classification:'scripted controlled source inputs; no native or human claim',validatedSourceModes:results.map(r=>r.mode),modeBindingsRemainPending:true,results};
- const dest=new URL('../../../../port/new-maps/helix-conservatory/source-validation.json',import.meta.url);
+ const dest=new URL(`../../../../port/new-maps/helix-conservatory/${recipe.art.revision===2?'revision-2/':''}source-validation.json`,import.meta.url);
  const bytes=JSON.stringify(report,null,2)+'\n';
- if(process.env.HELIX_WRITE_SOURCE_REPORT==='1')fs.writeFileSync(dest,bytes);
+ if(process.env.HELIX_WRITE_SOURCE_REPORT==='1'){fs.mkdirSync(new URL('.',dest),{recursive:true});fs.writeFileSync(dest,bytes);}
 });

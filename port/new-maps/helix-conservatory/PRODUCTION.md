@@ -1,5 +1,7 @@
 # Helix Conservatory — production scene acceptance, 2026-10-02
 
+**Historical functional checkpoint only.** Parent subsequently rejected this version's visual/spatial sufficiency and has not integrated it. [Revision 2](revision-2/DESIGN.md) stages a substantial architectural redesign; none of the native measurements below establishes acceptance of its changed geometry. Current status: READY FOR SECOND BLENDER PASS, awaiting explicit heavy-slot grant.
+
 This supersedes the READY FOR BLENDER status recorded in the historical source checkpoints. Accepted runtime `e731fd536d31d16a7014402afe6670fca644f9c1` was merged before any engine work. Blender 4.5.14 and Godot 4.5.2 ran serially under the explicitly granted exclusive slot with `LP_NUM_THREADS=1`.
 
 ## Accepted scope

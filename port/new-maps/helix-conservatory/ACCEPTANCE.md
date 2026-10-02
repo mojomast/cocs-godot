@@ -1,4 +1,6 @@
-# Acceptance — native scene accepted, parent packaging pending
+# Acceptance — revision 2 ready for second Blender pass
+
+**Parent accepted the old functional milestone, not final art.** See [revision-2/DESIGN.md](revision-2/DESIGN.md) for the new district architecture and passing source checks. New geometry has no native acceptance yet. The native results below and in PRODUCTION.md apply only to the preserved functional checkpoint.
 
 **Current production evidence and exact remaining gates: [PRODUCTION.md](PRODUCTION.md).** The sections below preserve the historical pre-engine checkpoints, hashes and initially pending work; their READY FOR BLENDER status is superseded by the 2026-10-02 production pass. Five native modes are accepted; Arsenal/Juggernaut remain source-only.
 

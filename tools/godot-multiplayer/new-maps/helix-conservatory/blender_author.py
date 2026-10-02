@@ -9,11 +9,19 @@ import math
 from pathlib import Path
 
 root = Path(sys.argv[sys.argv.index('--') + 1]).resolve()
+revision2 = '--revision=2' in sys.argv
 source = root / 'port/native-multiplayer-worlds/worlds/helix-conservatory.json'
+if revision2:
+    source = root / 'port/new-maps/helix-conservatory/revision-2/recipe.json'
 recipe = json.loads(source.read_text())
 out = root / 'godot/multiplayer_worlds/art/helix-conservatory'
 out.mkdir(parents=True, exist_ok=True)
 masters = root / 'tools/godot-multiplayer/new-maps/helix-conservatory/masters'
+if revision2:
+    # Staged authoring never silently replaces accepted runtime artifacts.
+    out = root / 'port/new-maps/helix-conservatory/revision-2/art'
+    masters = masters / 'revision-2'
+    out.mkdir(parents=True, exist_ok=True)
 masters.mkdir(parents=True, exist_ok=True)
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
@@ -22,6 +30,12 @@ colors = {'ceramic': (.28, .30, .23, 1), 'stone': (.12, .17, .14, 1),
           'botanical': (.025, .13, .018, 1), 'leaflight': (.12, .28, .045, 1),
           'joint': (.04, .065, .055, 1), 'glass': (.15, .36, .32, .08)}
 materials = {}
+if revision2:
+    colors.update({'brick': (.27, .105, .047, 1),
+                   'soil': (.065, .043, .022, 1),
+                   'solar': (.018, .047, .075, 1)})
+    colors = {name: color for name, color in colors.items()
+              if name in {part['material'] for part in recipe['art']['meshes']}}
 for name, color in colors.items():
     mat = bpy.data.materials.new(name)
     mat.diffuse_color = color

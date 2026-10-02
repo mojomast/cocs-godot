@@ -1,4 +1,5 @@
 extends SceneTree
+## Test-only collision/mesh probe; excluded from production asset closure.
 const WorldMap = preload("res://multiplayer_worlds/map.gd")
 var out := ""
 var failures: Array[String] = []

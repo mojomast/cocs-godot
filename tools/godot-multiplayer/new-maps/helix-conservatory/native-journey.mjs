@@ -26,7 +26,7 @@ function guide(){const m=room?.match;if(!m)return {move:false};const a=m.actors[
 const control=createServer((req,res)=>{try{assert.equal(req.url,'/guide');lastGuide=guide();res.setHeader('content-type','application/json');res.end(JSON.stringify(lastGuide));}catch(e){res.statusCode=500;res.end(String(e));}});await new Promise(r=>control.listen(0,'127.0.0.1',r));
 game.wss.on('connection',s=>s.on('message',raw=>{const f=JSON.parse(raw);if(f.type==='input')wire.push({peer:s.peerId??null,...f});}));
 try{
- const args=['-a',godot,'--path',path.join(root,'godot'),'--audio-driver','Dummy','res://multiplayer_worlds/art/helix-conservatory/journey.tscn','--',`--endpoint=ws://127.0.0.1:${game.server.address().port}`,'--map=helix-conservatory',`--mode=${mode}`,'--bots=0',`--helix-out=${out}`,`--helix-guide=http://127.0.0.1:${control.address().port}`];
+ const args=['-a',godot,'--path',path.join(root,'godot'),'--audio-driver','Dummy','res://tests/new_maps/helix_conservatory/journey.tscn','--',`--endpoint=ws://127.0.0.1:${game.server.address().port}`,'--map=helix-conservatory',`--mode=${mode}`,'--bots=0',`--helix-out=${out}`,`--helix-guide=http://127.0.0.1:${control.address().port}`];
  child=spawn('xvfb-run',args,{cwd:root,detached:true,env:{...process.env,LP_NUM_THREADS:'1',LIBGL_ALWAYS_SOFTWARE:'1',COCS_SETTINGS_PATH:path.join(out,'settings.json')},stdio:['ignore','pipe','pipe']});
  for(const stream of [child.stdout,child.stderr])stream.on('data',b=>logs+=b);
  const closed=new Promise((resolve,reject)=>{child.on('error',reject);child.on('close',resolve);});

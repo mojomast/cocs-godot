@@ -2,7 +2,7 @@
 
 Stable ID: `helix-conservatory`. Seed: `61002`. Source lock `515daf`; reviewed derivative `0326`.
 
-Production update: see [PRODUCTION.md](PRODUCTION.md) for the inspected Blender/native art, final hash, five accepted native modes and separate source-only modes. The editable master now lives at `tools/godot-multiplayer/new-maps/helix-conservatory/masters/helix-conservatory.blend`, outside Godot's automatic import tree. Historical initial planning below is retained for traceability.
+Current visual/spatial design: [architectural revision 2](revision-2/DESIGN.md), **READY FOR SECOND BLENDER PASS**, source-only. Parent accepted the functional milestone but rejected the checkpoint's visual/spatial sufficiency. [PRODUCTION.md](PRODUCTION.md) records historical native evidence only; its GLB does not represent revision 2. The editable master lives outside Godot's automatic import tree. Historical initial planning below is retained for traceability.
 
 ## Spatial design
 
