@@ -1,6 +1,7 @@
 extends Node3D
 ## Local shell. Only core.step advances authority; assets are required, never faked.
 const Router = preload("res://fighting/presentation/input_router.gd")
+const DeviceChoices = preload("res://fighting/presentation/device_choices.gd")
 const Camera = preload("res://fighting/presentation/camera.gd")
 const Backdrop = preload("res://fighting/stages/backdrop.gd")
 const Stages = preload("res://fighting/stages/catalog.gd")
@@ -57,6 +58,7 @@ var fx_session_serial := 0
 var fx_session_id := ""
 var fx_event_floor := 0
 var camera_hud_pixels := Vector2(155,78)
+var device_buttons: Dictionary = {}
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -80,6 +82,7 @@ func _notification(what: int) -> void:
 	elif what == NOTIFICATION_APPLICATION_FOCUS_IN:
 		focused = true
 		router.release_all()
+		_refresh_device_choices()
 
 func _input(event: InputEvent) -> void:
 	router.ingest(event)
@@ -109,9 +112,12 @@ func _input(event: InputEvent) -> void:
 func _device_changed(device: int, connected: bool) -> void:
 	if not connected and router.devices.has(device):
 		router.unplug(device)
-		if active: show_pause("Controller disconnected. Reconnect or select a device in Settings.")
+		if active: show_pause("Pad %d disconnected. Reconnect that ID, or open Settings and activate its disconnected entry to choose Keyboard. Resume explicitly when ready." % device)
+	# Connection changes refresh captions, never assign, transfer or resume.
+	_refresh_device_choices()
 
 func _clear_ui() -> void:
+	device_buttons.clear()
 	for child: Node in ui.get_children():
 		ui.remove_child(child)
 		child.queue_free()
@@ -206,17 +212,35 @@ func show_selection() -> void:
 	_button(box,"Bindings & fighting Settings",show_settings)
 	_button(box,"Home",go_home)
 
-func device_choice(box: Node, p: int, refresh: Callable) -> void:
-	var devices: Array = [-1]
-	var labels: Array = ["Keyboard %d" % (p+1)]
-	for id: int in Input.get_connected_joypads():
-		devices.append(id)
-		labels.append("Pad %d · %s" % [id,Input.get_joy_name(id)])
-	var selected := maxi(0,devices.find(router.devices[p]))
-	_choice(box,"Player %d device" % (p+1),labels,selected,func(i):
-		if not router.assign(p,devices[i]): error_text = "Each controller belongs to exactly one player."
-		else: error_text = ""
-		refresh.call())
+func device_choice(box: Node, p: int, _refresh: Callable) -> void:
+	var row := HBoxContainer.new()
+	box.add_child(row)
+	var label := _text(row,"Player %d device" % (p+1))
+	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var button := _button(row,"",func(): _cycle_device(p))
+	device_buttons[p] = button
+	_refresh_device_choices()
+
+func _refresh_device_choices() -> void:
+	var connected: Array = Array(Input.get_connected_joypads())
+	var names := {}
+	for device: int in connected: names[device] = Input.get_joy_name(device)
+	for p: int in device_buttons:
+		var button: Button = device_buttons[p]
+		if not is_instance_valid(button): continue
+		var model := DeviceChoices.model(router.devices,p,connected)
+		button.text = DeviceChoices.caption(model,p,names)
+		button.tooltip_text = "Activate to cycle Keyboard and free controllers. The other player's controller is skipped. Device selection never resumes a paused match."
+		if model.missing or model.occupied: button.tooltip_text = "Activate once to choose Keyboard. Then select another free controller if desired; Resume remains explicit."
+
+func _cycle_device(player: int) -> void:
+	# Recompute on activation: no captured connection-list index can go stale.
+	var model := DeviceChoices.model(router.devices,player,Array(Input.get_connected_joypads()))
+	if not router.assign(player,int(model.next)):
+		error_text = "Each controller belongs to exactly one player."
+	else: error_text = ""
+	# Preserve the focused button; do not rebuild the menu and move focus to Start.
+	_refresh_device_choices()
 
 func start_match() -> void:
 	error_text = ""
@@ -405,7 +429,7 @@ func resume_match() -> void:
 		return
 	for device: int in router.devices:
 		if device >= 0 and not Input.get_connected_joypads().has(device):
-			show_pause("Assigned controller is disconnected.")
+			show_pause("Pad %d is disconnected. Open Settings and activate its disconnected device entry for Keyboard, or reconnect that ID. Then choose Resume." % device)
 			return
 	_clear_ui()
 	binding_target.clear()

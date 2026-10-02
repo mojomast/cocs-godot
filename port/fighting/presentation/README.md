@@ -112,6 +112,12 @@ root fields survive load/save. Device IDs are selected live instead of persisted
 because enumeration can change. No launcher, Node authority, client or FPS award
 service is created.
 
+Controller selection now skips the other player's pad and preserves an explicitly
+labelled disconnected assignment until the user activates its one-click Keyboard
+recovery. Hotplug refresh never transfers ownership or resumes a match. See
+`CONTROLLER_RECOVERY.md` for six passing source tests and the still-pending real
+kernel-device/OS UI acceptance.
+
 ## Stage composition, geometry and bounds
 
 Every stage root is collision-free Node3D scenery, with an authored 20m × 5m flat
