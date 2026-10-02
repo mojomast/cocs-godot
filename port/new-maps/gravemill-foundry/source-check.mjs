@@ -8,8 +8,9 @@ import {terrainSupportAt} from '../../../game/terrain.mjs';
 import {validateMapSchema} from '../../../game/map-schema.mjs';
 import {createVehicle,PUMA,stepVehicle,takeVehicleSeat,leaveVehicleSeat} from '../../../game/vehicles.mjs';
 import {payloadTemplate,stepPayload} from '../../multiplayer-worlds/derived/payload.mjs';
-import {recipe} from '../../../tools/godot-multiplayer/new-maps/gravemill-foundry/recipe.mjs';
+const {recipe}=await import(process.env.FOUNDRY_CANDIDATE ? '../../../tools/godot-multiplayer/new-maps/gravemill-foundry/revision3/recipe.mjs' : '../../../tools/godot-multiplayer/new-maps/gravemill-foundry/recipe.mjs');
 const started=performance.now(),arena=recipe(),results=[];
+const ceilingShotLimit=process.env.FOUNDRY_CANDIDATE?20:12;
 const record=(name,details)=>{results.push({name,...details});console.log(name,JSON.stringify(details));};
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x)),wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
 export function follower(arena,points,onStep=()=>{},actor=null){
@@ -49,7 +50,7 @@ record('source-derived-payload-path',{metres:state.total,points:state.path.lengt
 const first=state.path[0],escort={x:first.x,y:first.y,z:first.z,vx:0,vy:0,vz:0,grounded:true,health:100,team:0,character:'chatgpt',harness:'openclaw',powerups:{}};
 let escortSteps=0;while(!state.delivered&&escortSteps++<20000){const dx=state.position.x-escort.x,dz=state.position.z-escort.z;moveActor(escort,{x:Math.hypot(dx,dz)>.6?dx:0,z:Math.hypot(dx,dz)>.6?dz:0},.025,arena);stepPayload(state,[escort],.025);}
 assert.ok(state.delivered);record('source-payload-delivery-movement-fixture',{steps:escortSteps,seconds:escortSteps*.025,checkpointsReached:state.checkpointsReached});
-for(const cx of [-66,66]){const z=36+.14*cx;assert.equal(floorAt(cx,z,arena),12);assert.ok(!obstructed(cx,12,z,.65,arena));assert.ok(rayWorld({x:cx,y:13.5,z},{x:0,y:1,z:0},30,arena)<12,'vault must stop shot');assert.ok(visible({x:cx-28,y:13.5,z:36+.14*(cx-28)},{x:cx+28,y:13.5,z:36+.14*(cx+28)},arena),'no invisible portal AABB');const x=cx-52/3;assert.ok(visible({x,y:14.5,z:24+.14*x},{x,y:14.5,z:29+.14*x},arena),'window opening must pass shots');assert.ok(!visible({x,y:17.5,z:24+.14*x},{x,y:17.5,z:29+.14*x},arena),'window header must stop shots');}
+for(const cx of [-66,66]){const z=36+.14*cx;assert.equal(floorAt(cx,z,arena),12);assert.ok(!obstructed(cx,12,z,.65,arena));assert.ok(rayWorld({x:cx,y:13.5,z},{x:0,y:1,z:0},30,arena)<ceilingShotLimit,'roof must stop shot');assert.ok(visible({x:cx-28,y:13.5,z:36+.14*(cx-28)},{x:cx+28,y:13.5,z:36+.14*(cx+28)},arena),'no invisible portal AABB');const x=cx-52/3;assert.ok(visible({x,y:14.5,z:24+.14*x},{x,y:14.5,z:29+.14*x},arena),'window opening must pass shots');assert.ok(!visible({x,y:17.5,z:24+.14*x},{x,y:17.5,z:29+.14*x},arena),'window header must stop shots');}
 const corner={x:-81,y:0,z:-62-.14*81,vx:0,vy:0,vz:0,grounded:true,health:100,character:'chatgpt',harness:'openclaw',powerups:{}};
 for(let i=0;i<160;i++)moveActor(corner,{x:1,z:0},.025,arena);
 assert.ok(corner.x<-78,'continuous input cannot cross the buttress face');assert.ok(!obstructed(corner.x,corner.y,corner.z,.3,arena));

@@ -6,7 +6,7 @@ import {performance} from 'node:perf_hooks';
 import {createHash} from 'node:crypto';
 import {canonical} from '../../multiplayer-worlds/catalog.mjs';
 import {Match,nearest,visible} from '../../multiplayer-worlds/derived/core.mjs';
-import {recipe} from '../../../tools/godot-multiplayer/new-maps/gravemill-foundry/recipe.mjs';
+const {recipe}=await import(process.env.FOUNDRY_CANDIDATE ? '../../../tools/godot-multiplayer/new-maps/gravemill-foundry/revision3/recipe.mjs' : '../../../tools/godot-multiplayer/new-maps/gravemill-foundry/recipe.mjs');
 const started=performance.now(),results=[];
 function make(mode){const arena=recipe();let assigned=false;class FoundryMatch extends Match{get arena(){return arena;}set arena(_){assert.ok(!assigned);assigned=true;}}let seed=193;const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};return new FoundryMatch('chatgpt','openclaw',random,arena.id,{mode,botCount:0,humanCount:2,fragLimit:mode==='payload'||mode==='assault'?3:mode==='combined-arms'?50:mode==='domination'?10:1,timeLimit:600});}
 function path(match,a,b){const from=nearest(a,match.nav),to=nearest(b,match.nav),queue=[from],prev=new Map([[from,-1]]);for(let i=0;i<queue.length&&!prev.has(to);i++)for(const n of match.edges[queue[i]])if(!prev.has(n)){prev.set(n,queue[i]);queue.push(n);}assert.ok(prev.has(to));const out=[b];for(let at=to;at!==-1;at=prev.get(at))out.push(match.nav[at]);return out.reverse();}
