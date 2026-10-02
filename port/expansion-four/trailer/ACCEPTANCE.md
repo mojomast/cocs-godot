@@ -12,6 +12,29 @@ optional route ending before the jump; the final chain continues through the
 connected condenser link and reverse exit. Native parser/visual acceptance is
 pending, not inferred from Node tests.
 
+## Executed source preparation
+
+External evidence root:
+`/home/mojo/.tmp-on-disk/cocs-expansion-four-trailer-evidence-20261002/`.
+The first complete source preparation at `source-attempt-01/` generated all
+**1,800 records / 16 shots / 75 source seconds**. Actual outcomes: Rootfall run
+70.38 m; Emberline detour 51.19 m and ten airborne output frames; Siltwake combat
+16 positive damage events against active AI; staged robot combat 16 damage
+events; one melee hit; one accepted Patch pet; actual Mara/Ivo arrival captions;
+one artillery telegraph and one artillery event. These are source-only results.
+
+All six splines found source-clear paths without height-lift fallback. The
+eight-clip menu candidate is 3,572,634 bytes and retains 210 original events across
+504 frames; it covers all four maps. `--edit-plan` produced 25 executable command
+specifications without starting FFmpeg. `plan-source.json`, `node-tests.tap`,
+`prepare-source-01.log` and `edit-plan-source-01.log` retain initial checks.
+
+Follow-up source audit found the inherited render-only session skips the live
+session tick. V3 now explicitly passes actual events to the production audiovisual
+service and advances its weather clock once per captured source frame. This is
+prepared code, not proof of rendered weather. The initial prepared evidence is
+retained; refreshed source-attempt-02 binds that renderer revision before capture.
+
 ## Lightweight commands (permitted now)
 
 Run from the integrated checkout after committing the exact intended runtime:

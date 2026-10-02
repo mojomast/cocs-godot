@@ -14,7 +14,7 @@ export async function runProcess(command,args,{cwd,log,timeoutMs=600000,env={}})
       process.on('SIGINT',interrupt);process.on('SIGTERM',interrupt);
       const cleanup=()=>{clearTimeout(timer);clearTimeout(killTimer);process.off('SIGINT',interrupt);process.off('SIGTERM',interrupt);};
       child.once('error',e=>{cleanup();reject(e);});
-      child.once('close',(code,signal)=>{cleanup();code===0&&!reason?resolve():reject(Error(`${command}: ${reason??`exit ${code}/${signal}`}; ${log}`));});
+      child.once('close',(code,signal)=>{kill('SIGKILL');cleanup();code===0&&!reason?resolve():reject(Error(`${command}: ${reason??`exit ${code}/${signal}`}; ${log}`));});
     });
   } finally {await file.close();}
 }

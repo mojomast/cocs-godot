@@ -63,6 +63,7 @@ func run() -> void:
 		session.on_snapshot({"state":record.state})
 		session.ground_tells.apply_events(record.events)
 		session.combat.apply_events(record.events, 0)
+		session.av_events(record.events)
 		if session.phase != 3:
 			push_error("CINEMATIC_V3 production session rejected snapshot")
 			await finish(1)
@@ -104,6 +105,9 @@ func run() -> void:
 			eye.y = maxf(eye.y, float(session.world.height_at(eye.x, eye.z)) + 1.2)
 			session.camera.position = eye
 			session.camera.look_at(focus + Vector3.UP * (0.5 if shot.kind == "pet" else 1.1))
+		# The rendering-only session skips live input/staleness processing. Advance
+		# its production audiovisual/weather service exactly once on the source clock.
+		session.av_tick(1.0 / 24.0)
 		root.get_node("LocalSettings").hint.hide()
 		await RenderingServer.frame_post_draw
 		var rendered_at := Time.get_ticks_usec()
@@ -117,7 +121,7 @@ func run() -> void:
 		var engine_frame := Engine.get_process_frames()
 		ledger.store_line(JSON.stringify({"frame":index,"sourceFrame":record.frame,"sourceTime":record.state.time,
 			"wallUsec":rendered_at,"saveFinishedUsec":Time.get_ticks_usec(),"saveError":error,
-			"engineProcessFrames":engine_frame - previous_process,"visualDelta":1.0 / 24.0,
+			"engineProcessFrames":engine_frame - previous_process,"requestedVisualDelta":1.0 / 24.0,
 			"camera":[session.camera.position.x,session.camera.position.y,session.camera.position.z],
 			"cast":cast,"eventCount":record.events.size(),"width":image.get_width(),"height":image.get_height()}))
 		ledger.flush()

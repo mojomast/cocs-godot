@@ -39,9 +39,12 @@ export async function prepare(out,p) {
     summary.sha256=hash.digest('hex');
     await json(join(directory,'receipt.json'),summary);
     if(shot.kind==='traverse'&&summary.distance<8)throw Error(`${shot.id}: traversal failed`);
+    if(shot.jump&&summary.airborneFrames<1)throw Error(`${shot.id}: jump did not leave terrain`);
     if(shot.kind==='pet'&&summary.pets<1)throw Error('Missing accepted Patch input');
+    if(shot.kind==='npc'&&!summary.captions.some(c=>c.speaker.toLowerCase()===shot.subject))throw Error(`${shot.id}: source comms missing`);
     if(['played-combat','combat','melee'].includes(shot.kind)&&summary.damage<1)throw Error(`${shot.id}: no source damage`);
     if(shot.kind==='melee'&&summary.melee<1)throw Error('Missing source melee hit');
+    if(shot.kind==='artillery'&&!(summary.eventCounts['enemy-telegraph']>0&&summary.eventCounts['enemy-artillery']>0))throw Error('Missing source artillery/tell');
     console.log('SOURCE_READY',shot.id,summary.frames,`damage=${summary.damage}`,`distance=${summary.distance.toFixed(2)}`);
   }
   await exportAttract(out,p);

@@ -24,6 +24,7 @@ test('reject changed geometry, unaccepted assets, hidden gameplay HUD and in-rep
 test('capture and encode cannot execute without explicit slot grant',async()=>{
   await assert.rejects(main(['--capture','--output=/tmp/opencode/no-render']),/grant/);
   await assert.rejects(main(['--edit','--output=/tmp/opencode/no-render']),/grant/);
+  await assert.rejects(main(['--menu-check','--output=/tmp/opencode/no-render']),/grant/);
 });
 test('ordinary source inputs walk, jump and damage active production opposition',()=>{
   for(const id of ['root-run','ember-run','silt-fire']) {
@@ -45,7 +46,7 @@ test('cadence rejects missing/dropped frames instead of calling encoded FPS capt
   try {
     await mkdir(join(dir,'frames'));
     for(let i=0;i<3;i++)await writeFile(join(dir,'frames',`${String(i).padStart(6,'0')}.png`),'test');
-    const rows=Array.from({length:3},(_,i)=>({frame:i,sourceFrame:i,wallUsec:100000+i*500000,saveError:0}));
+    const rows=Array.from({length:3},(_,i)=>({frame:i,sourceFrame:i,wallUsec:100000+i*500000,saveError:0,width:1280,height:720,engineProcessFrames:1}));
     await writeFile(join(dir,'cadence.jsonl'),rows.map(JSON.stringify).join('\n'));
     const r=await verifyFrames(dir,{id:'test',seconds:1},3);assert.equal(r.observedWallFPS,2);assert.equal(r.encodedFPS,3);assert.equal(r.realtimeCapture,false);
     rows[2].sourceFrame=4;await writeFile(join(dir,'cadence.jsonl'),rows.map(JSON.stringify).join('\n'));

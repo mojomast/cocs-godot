@@ -78,10 +78,12 @@ export async function verifyFrames(directory,shot,fps) {
   const rows=(await readFile(join(directory,'cadence.jsonl'),'utf8')).trim().split('\n').map(JSON.parse);
   const expected=shot.seconds*fps;
   if(names.length!==expected||rows.length!==expected)throw Error(`${shot.id}: incomplete capture`);
-  rows.forEach((r,i)=>{if(names[i]!==`${String(i).padStart(6,'0')}.png`||r.frame!==i||r.saveError!==0||r.sourceFrame!==i||!Number.isFinite(r.wallUsec)||i&&r.wallUsec<=rows[i-1].wallUsec)throw Error(`${shot.id}: cadence/sequence invalid`);});
+  rows.forEach((r,i)=>{if(names[i]!==`${String(i).padStart(6,'0')}.png`||r.frame!==i||r.saveError!==0||r.sourceFrame!==i||r.width!==1280||r.height!==720||!Number.isFinite(r.wallUsec)||i&&r.wallUsec<=rows[i-1].wallUsec)throw Error(`${shot.id}: cadence/sequence invalid`);});
   const seconds=(rows.at(-1).wallUsec-rows[0].wallUsec)/1e6;
   return {frames:expected,sourceSeconds:shot.seconds,wallSeconds:seconds,observedWallFPS:(expected-1)/seconds,
     missingOutputFrames:0,realtimeCapture:false,encodedFPS:fps,sourceRateHz:60,
+    framesOverRealtimeBudget:rows.slice(1).filter((r,i)=>r.wallUsec-rows[i].wallUsec>1e6/fps).length,
+    engineFrameIncrements:[...new Set(rows.slice(1).map(r=>r.engineProcessFrames))],
     note:'Each PNG rendered offline; encodedFPS is timeline sampling, not measured hardware frame rate',
     maxWallGapMs:Math.max(...rows.slice(1).map((r,i)=>(r.wallUsec-rows[i].wallUsec)/1000))};
 }
