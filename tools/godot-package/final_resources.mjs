@@ -38,6 +38,7 @@ export function finalResources({read,has,requireFighters=true}) {
   if(has('godot/source_operators/moth_finish/binder.gd')) {
     const base='godot/source_operators/moth_finish/';
     const m=json(base+'manifest.json');assert.equal(m.version,1);
+    assert.equal(Object.keys(m.finishes).length,63,'Reviewed operator finish identity count');
     assert.equal(Object.keys(m.textures).length,116,'Reviewed operator finish texture count');
     for(const [uri,entry] of Object.entries(m.textures)) {
       assert.match(uri,/^res:\/\/source_operators\/moth_finish\/assets\/[a-z0-9-]+\.png$/);

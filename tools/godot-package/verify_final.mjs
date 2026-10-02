@@ -10,9 +10,9 @@ export async function verifyFinal(root,output) {
   const manifest=JSON.parse(readFileSync(join(root,'manifest.json')));
   assert.equal(manifest.target,process.platform==='win32'?'windows':'linux','Final native proof requires the target host');
   const list=join(output,'final-inventory.json');
-  const resources=manifest.final_resource_sha256;
+  const resources={...manifest.final_resource_sha256,...manifest.production_resource_sha256};
   assert.ok(resources&&Object.hasOwn(resources,'godot/fighting/data/roster.json'),'Final fighting closure missing');
-  writeFileSync(list,JSON.stringify({resources,raw:manifest.raw_resource_sha256}));
+  writeFileSync(list,JSON.stringify({resources,raw:{...manifest.raw_resource_sha256,...manifest.production_raw_resource_sha256}}));
   const sandbox=mkdtempSync(join(tmpdir(),'cocs final clean cwd '));
   const env={...process.env,HOME:sandbox,USERPROFILE:sandbox,APPDATA:join(sandbox,'roaming'),LOCALAPPDATA:join(sandbox,'local'),XDG_CONFIG_HOME:join(sandbox,'config'),XDG_DATA_HOME:join(sandbox,'data'),XDG_CACHE_HOME:join(sandbox,'cache'),LP_NUM_THREADS:'1'};
   for(const p of ['roaming','local','config','data','cache'])mkdirSync(join(sandbox,p));

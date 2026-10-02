@@ -192,6 +192,14 @@ def main():
     final_content = json.loads(run(["node", ROOT / "tools/godot-package/final_resources.mjs", ROOT]))
     input_paths.update(final_content["resources"])
     input_paths.update(final_content["provenance"])
+    fighter_imports = json.loads(run(["node", ROOT / "tools/godot-package/fighter_imports.mjs", ROOT]))
+    input_paths.update(fighter_imports)
+    fighter_import_generator = "tools/fighting/animation/prepare_native.py"
+    if fighter_imports:
+        input_paths.add(fighter_import_generator)
+    production_content = json.loads(run(["node", ROOT / "tools/godot-package/production_resources.mjs", ROOT]))
+    input_paths.update(production_content["resources"])
+    input_paths.update(production_content["provenance"])
     if edge_data:
         run(["node", "port/edge-effects/bake-structures.mjs", "--check"])
         input_paths.add("port/edge-effects/bake-structures.mjs")
@@ -337,7 +345,7 @@ def main():
     for p in native_files:
         copy(ROOT / p, project / Path(p).relative_to("godot"))
     staged_overrides = {}
-    raw_resources = final_content["raw"]
+    raw_resources = {**final_content["raw"], **production_content["raw"]}
     if raw_resources:
         # Explicit export-only plugin preserves raw PCM/GLB FileAccess reads in
         # addition to Godot's normal imported resources. No production script edit.
@@ -381,7 +389,7 @@ ssh_remote_deploy/enabled=false
     # Explicit dynamically-read feature catalogs; imported WAV/GDScript resources
     # remain covered by all_resources. Never export tests or arbitrary JSON.
     preset = preset.replace('include_filter="', 'include_filter="input_bindings/contexts.json,replay/admission.json,audio/telegraphs/manifest.json,')
-    final_json = sorted(p.removeprefix("godot/") for p in final_content["resources"] if p.endswith(".json"))
+    final_json = sorted({p.removeprefix("godot/") for p in [*final_content["resources"], *production_content["resources"]] if p.endswith(".json")})
     if final_json:
         preset = preset.replace('include_filter="', 'include_filter="' + ",".join(final_json) + ',')
     preset = preset.replace('exclude_filter="', 'exclude_filter="addons/package_raw/*,')
@@ -395,10 +403,16 @@ ssh_remote_deploy/enabled=false
         preset += '\ncodesign/enable=false\napplication/modify_resources=false\ndebug/export_console_wrapper=0\n'
     (project / "export_presets.cfg").write_text(preset)
     run([editor, "--headless", "--path", project, "--editor", "--import"], env=env, log=logs / "import.log")
+    for path, expected_hash in fighter_imports.items():
+        if digest(project / Path(path).relative_to("godot")) != expected_hash:
+            raise RuntimeError(f"Editor changed committed fighter import settings: {path}")
     package = work / ("cocs-native-" + args.target)
     package.mkdir()
     replay_hashes = json.loads(run(["node", ROOT / "tools/godot-package/replay_runtime.mjs", ROOT, package / "replay-runtime", port_commit])) if replay_files else {}
     run([editor, "--headless", "--path", project, "--export-release", preset_name, package / executable], env=env, log=logs / "export.log")
+    for path, expected_hash in fighter_imports.items():
+        if digest(project / Path(path).relative_to("godot")) != expected_hash:
+            raise RuntimeError(f"Export changed committed fighter import settings: {path}")
     if not (package / "cocs.pck").is_file():
         raise RuntimeError("Expected separate PCK")
     if not windows and run([package / executable, "--version"], env=env) != EXACT:
@@ -516,7 +530,12 @@ ssh_remote_deploy/enabled=false
         "dressing_resource_sha256":{p:inputs[p] for p in dressing_resources},
         "final_resource_sha256":final_content["resources"],
         "final_provenance_sha256":final_content["provenance"],
-        "raw_resource_sha256":raw_resources,
+        "raw_resource_sha256":final_content["raw"],
+        "fighter_import_sha256":fighter_imports,
+        "fighter_import_generator_sha256":inputs.get(fighter_import_generator),
+        "production_resource_sha256":production_content["resources"],
+        "production_provenance_sha256":production_content["provenance"],
+        "production_raw_resource_sha256":production_content["raw"],
         "raw_export_plugin_sha256":inputs["tools/godot-package/raw_export_plugin.gd"] if raw_resources else None,
         "files":tree(package),
     }
