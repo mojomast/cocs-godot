@@ -8,6 +8,23 @@ recovery ends at S+A+R-1. Hitboxes are facing-local lower-left rectangles in mm.
 Standing reference height is 1800 mm. Animation equals the common move key inside
 each operator's unique GLB; effect is `operator:move`. No qualified animation names.
 
+## Strict machine shape (audit C2/C3/F9 correction)
+
+`godot/fighting/data/schema.json` exports the complete accepted authored shape as
+JSON Schema (draft 2020-12), generated from `tools/fighting/content/schema.mjs`.
+Every actual optional dictionary field is typed/bounded; unknown keys and unknown
+mechanic enums are errors. Missing required dictionary members are errors. All
+numeric authoring values must be finite safe integers, with no bool/string coercion.
+The existing literal mechanics below are retained; Astra owns their runtime handlers.
+Cross-field frame chronology, resource references/clamps, paired placement and
+motion-specific members are additionally checked by `validate.mjs`.
+
+Initial HP/walk/weight intent lives in `tools/fighting/content/balance_targets.json`;
+`roster.json` is authoritative runtime data. The validator never parses DESIGN prose.
+`tools/fighting/content/state_keys.json` pins the actual **22** universal clip keys
+listed in DESIGN, independently of the prose's approximate clip-count target.
+Neither state nor combat coverage permits shared/recolored operator libraries.
+
 Optional typed dictionaries (all integer values unless stated):
 
 - `projectile`: `spawn_frame`, `x`, `y`, `vx`, `vy`, `gravity`, `w`, `h`,
@@ -59,6 +76,14 @@ the sample. `setup_inputs` prepends real charge input samples; training fixtures
 place both actors at specified height/separation before playback. For charged
 traces, initial distance refers to the first attack tick, after setup walking.
 Facing-relative axis_x is converted using initial facing by harness.
+Canonical `axis_y` is down=-1, up=+1; canonical `axis_x` is world left=-1,
+right=+1. Core derives button press edges from each actor's saved held history.
+Caller `pressed` is a nonauthoritative hint and cannot initiate an attack without
+a held rising edge. `trace.mjs` expands sparse samples into canonical inputs and
+checks that author hints match the expected held edges. A duration holds buttons
+through its window; it emits one rising-edge hint on the first tick, then zero.
+Without duration, a sample occupies one tick and the next unspecified tick releases
+it naturally. The helper is input expansion only, not recognition/combat authority.
 Trace tick scheduling uses startup/active plus authored hitstop estimates, not a
 second simulation. Preconditions specify positions/airborne/charge/resource.
 Only the native core can certify contacts, hitstop, stun continuity and scaling.
@@ -70,3 +95,7 @@ move explicitly declares `reset_on_land`; all additions/spending clamp min/max.
 Rules include literal combo limits, scaling curve, fixed hurt/push rectangles,
 gravity, terminal speed, startup/landing/round timers and independent guard policy.
 The source validator establishes numeric bounds, not runtime clamp behavior.
+
+FREEZE enforces runtime JSON, machine schemas/oracles, generator and validation
+inputs. DESIGN, this document and generated move-list prose are excluded. Historical
+DESIGN hashes are informational provenance only and never gate working prose edits.

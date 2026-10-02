@@ -6,16 +6,18 @@ const root=fileURLToPath(new URL('../../../',import.meta.url));
 const directory=process.argv[2];
 if(!directory)throw new Error('Usage: node tools/fighting/content/evidence.mjs <evidence-directory>');
 mkdirSync(directory,{recursive:true});
-const runs=[['schema-validation',['tools/fighting/content/validate.mjs']],['content-tests',['--test','godot/tests/fighting/content/content.test.mjs']]].map(([name,args])=>{
+const runs=[['schema-validation',['tools/fighting/content/validate.mjs']],['content-tests',['--test','godot/tests/fighting/content/content.test.mjs','godot/tests/fighting/content/schema.test.mjs']]].map(([name,args])=>{
  const result=spawnSync(process.execPath,args,{cwd:root,encoding:'utf8'});
  writeFileSync(`${directory}/${name}.log`,result.stdout+result.stderr);
  if(result.status!==0)throw new Error(`${name} failed: ${result.stdout}${result.stderr}`);
- return {name,exit_code:result.status};
+ return {name,exit_code:result.status,...(name==='content-tests'?{tests:Number(result.stdout.match(/# tests (\d+)/)?.[1]),passed:Number(result.stdout.match(/# pass (\d+)/)?.[1])}:{} )};
 });
-const source=spawnSync('git',['diff','37dd3da4','--','game','server','port/contracts/source-lock.json'],{cwd:root,encoding:'utf8'});
+const freeze=readJSON('port/fighting/content/FREEZE.json');
+if(typeof freeze.source_boundary_base!=='string'||!freeze.source_boundary_base.match(/^[a-f0-9]{8,40}$/))throw new Error('Explicit source boundary base required');
+const source=spawnSync('git',['diff',freeze.source_boundary_base,'--','game','server','port/contracts/source-lock.json'],{cwd:root,encoding:'utf8'});
 if(source.status!==0||source.stdout.trim())throw new Error('Frozen source boundary changed or source audit failed');
-writeFileSync(`${directory}/source-boundary.log`,'git diff 37dd3da4 -- game server port/contracts/source-lock.json\nNo changes.\n');
+writeFileSync(`${directory}/source-boundary.log`,`git diff ${freeze.source_boundary_base} -- game server port/contracts/source-lock.json\nNo changes.\n`);
 const roster=readJSON('godot/fighting/data/roster.json'),manifest=readJSON('port/fighting/content/ANIMATION_COVERAGE.json');
-const summary={status:'READY FOR CORE/NATIVE COMBO VALIDATION',runs,operators:roster.operators.length,moves:roster.operators.reduce((n,o)=>n+Object.keys(o.moves).length,0),proposed_traces:roster.operators.reduce((n,o)=>n+o.combos.length,0),required_state_and_combat_clips:manifest.operators.reduce((n,o)=>n+o.states.length+o.combat.length,0),paired_timelines:manifest.paired_timelines.length,required_victim_clip_instances:manifest.operators.reduce((n,o)=>n+o.victim_clips.length,0),per_operator:roster.operators.map(o=>({id:o.id,moves:Object.keys(o.moves).length,traces:o.combos.length})),freeze:readJSON('port/fighting/content/FREEZE.json'),actual_core_combo_validation:'pending',native_animation_validation:'pending',human_balance:'pending',heavy_tools_run:0};
+const summary={status:'READY FOR CORE/NATIVE COMBO VALIDATION',runs,operators:roster.operators.length,moves:roster.operators.reduce((n,o)=>n+Object.keys(o.moves).length,0),proposed_traces:roster.operators.reduce((n,o)=>n+o.combos.length,0),required_state_and_combat_clips:manifest.operators.reduce((n,o)=>n+o.states.length+o.combat.length,0),paired_timelines:manifest.paired_timelines.length,required_victim_clip_instances:manifest.operators.reduce((n,o)=>n+o.victim_clips.length,0),per_operator:roster.operators.map(o=>({id:o.id,moves:Object.keys(o.moves).length,traces:o.combos.length})),freeze,actual_core_combo_validation:'pending',native_animation_validation:'pending',human_balance:'pending',heavy_tools_run:0};
 writeFileSync(`${directory}/summary.json`,JSON.stringify(summary,null,2)+'\n');
 console.log(JSON.stringify({...summary,freeze:undefined},null,2));

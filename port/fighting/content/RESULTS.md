@@ -2,6 +2,28 @@
 
 **READY FOR CORE/NATIVE COMBO VALIDATION**
 
+## C2/C3/F9 correction verification
+
+Evidence:
+`/home/mojo/.tmp-on-disk/cocs-fighting-content-evidence-20261002/correction-C2-C3-F9/`
+
+- Strict full-field schema and semantic validation: **PASS**.
+- Existing 14 tests plus 201 new focused negative/reproduction cases: **215/215 PASS**.
+- Fresh-directory generation equals all current generated artifacts: **PASS**.
+- Runtime roster/rules, animation requirements, estimates and move list compared
+  with `79d98652`: **byte-identical**.
+- Enforced freeze excludes every Markdown file; historical prose hash is
+  informational. Exact initial intent and state keys are machine-readable JSON.
+- Input expansion follows down=-1/up=+1, one edge per held transition and natural
+  release on unspecified sparse ticks; actual core remains edge authority.
+- Frozen source boundary diff and `git diff --check`: **PASS**.
+
+No native engine/heavy tools were run. All 27 actual core combo validations remain
+pending. Details and concrete integration contract: `AUDIT_CORRECTIONS.md` and
+`CONTRACT_DETAILS.md`.
+
+## Original authoring checkpoint
+
 Evidence directory:
 `/home/mojo/.tmp-on-disk/cocs-fighting-content-evidence-20261002`
 
