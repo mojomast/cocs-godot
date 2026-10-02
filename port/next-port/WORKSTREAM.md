@@ -69,7 +69,8 @@ its `port/next-port/<lane>/` directory, with actual source/native anchors.
 run. Fresh Windows/Linux exports share all 1,672 common inputs and generated
 resources. **75/75 extracted cases passed on both platforms**, alongside three
 exported graphical journeys. The release is published; the authorized second
-Astra pass is starting. Results and public screenshots: [ACCEPTANCE.md](ACCEPTANCE.md).
+Astra pass is now active in [four new lanes](../pass-two/WORKSTREAM.md).
+Results and public screenshots: [ACCEPTANCE.md](ACCEPTANCE.md).
 
 ### First implementation integrations (native acceptance pending)
 
