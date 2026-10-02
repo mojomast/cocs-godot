@@ -187,6 +187,9 @@ func _material_for(base: StandardMaterial3D, finish: Dictionary) -> StandardMate
 	material.metallic = float(finish.metallic)
 	material.roughness = base.roughness * float(finish.roughness_gain)
 	if finish.has("roughness"):
+		# Published L8 maps already encode perceptual roughness. Base multiplication
+		# would incorrectly polish them (e.g. 0.24 * 0.7 instead of 0.7).
+		material.roughness = float(finish.roughness_gain)
 		material.roughness_texture = _textures[finish.roughness]
 		material.roughness_texture_channel = BaseMaterial3D.TEXTURE_CHANNEL_RED
 	if finish.has("normal"):

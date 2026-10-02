@@ -17,17 +17,23 @@ Runtime requires the content lane's exact paths:
 
 Profile v1 / manifest v1 are as defined in `CONTRACT.md`. All three numeric finish
 fields are required finite numbers in `[0,1]`; optional normal/roughness maps are
-omitted if absent. `roughness_gain` multiplies the original scalar roughness;
-`metallic` supplies the finish scalar. Texture RGB modulates the original palette
+omitted if absent. For a roughness map, `roughness_gain` is its scalar multiplier:
+the actual L8 pixels already encode perceptual roughness, so gain 1 samples them
+directly without multiplying the original material scalar. Without a roughness map,
+the original scalar is multiplied by the gain. `metallic` supplies the finish scalar.
+Texture RGB modulates the original palette
 once. No runtime source-engine authority or provenance claims are made.
 
-The source-only closure validator recognizes nested texture/source records with
-`path`, `sha256`, `width`, `height`, or `source_path`/`source_sha256` and
-`moth_source_path`/`moth_source_sha256` pairs. Paths may be repository-relative or
-`res://`. Actual texture dimensions/hashes and existing Moth source file hashes
-must match. Run the content lane's deterministic reproduction command separately;
-hash matching alone does not prove derivation. If that lane publishes another
-record shape, reconcile this read-only validator with its documented schema.
+The source-only closure validator consumes the delivered top-level `textures`
+table keyed by resource path: `png_sha256`, `dimensions`, `channels`, `color_space`,
+`moth_keys`, `pixel_sha256` and `derivation`. It verifies every used resource and
+all 63 finish tokens, then follows each texture's real Moth input keys to
+`provenance.moth_sources` and the existing Moth registry. Source PNG hashes,
+dimensions, recorded pixel hashes/color spaces, generator, original catalog,
+GLBs, art references and baked registry source hashes must agree. Content's own
+validator additionally decodes pixel hashes and normal vectors; deterministic
+reproduction is a separate check. Both were run successfully after content merge.
+See `RECONCILIATION.md` for the preserved original failure and corrected results.
 
 ## Coverage and protective behavior
 
@@ -54,10 +60,14 @@ and material caches are capped at 128 each (eviction retains live actor referenc
 ## Source inspection result and native gates
 
 All primitives in **all nine** source GLBs contain UV0 with VEC2 accessor counts
-matching POSITION. GLBs have no explicit TANGENT attributes: native Godot import
-must produce tangents before installing a profile with a normal map. Binder tests
-the imported mesh format and fails atomically if tangents are unavailable. Fitted
+matching POSITION. GLBs have no explicit TANGENT attributes. All nine checked-in
+`.glb.import` files explicitly configure `meshes/ensure_tangents=true`; the imported
+result still needs native verification before accepting normal-map coverage. Binder tests
+the imported mesh arrays and fails atomically if tangents are unavailable. Fitted
 overlay tangents are generated once from their existing UV0 via SurfaceTool.
+The content's matte-hand/rubber finishes intentionally omit normal maps because
+their actual UV triangles include degeneracy. Runtime neither requires tangents
+for these omitted maps nor supplies a substitute normal texture.
 
 Material numbers differ by operator. SourceMaterial1 is emissive, while the team
 armor is sourceMaterial4 or sourceMaterial5 depending on identity. Other emissive,
