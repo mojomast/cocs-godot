@@ -12,6 +12,15 @@ game that preserves all nine DESTINATIONS maps and their gameplay identity.
 **Status: actively developed, playable prototype.** Combat is available through
 the native setup menu; Arms Race, local Horde, sports, objectives, zones, combined arms and LATTICE have
 standalone routes through the common launcher.
+
+**Latest playtest:** [Targeting, Animation & Effects — Windows / Linux](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-targeting-animation-2026-10-01),
+runtime `1c1f6e34`. Both platforms passed 67 extracted-package cases. It includes
+the four-chapter Quiet Relay campaign, seven multiplayer expansion maps,
+Blackwater robot Horde, in-game solo cheats, eight optional campaign activities,
+improved targeting/animation and corrected edge-hit/decal effects.
+Full-round/human-play limitations and retained test failures are in the release
+notes. [Active source-feature migration](port/next-port/WORKSTREAM.md) compares
+the Three.js implementation with the current native game through four Astra lanes.
 This repository includes the original source and development history so the
 simulation lock and verification evidence remain reproducible.
 
@@ -29,12 +38,14 @@ simulation lock and verification evidence remain reproducible.
 | Arena combat | Meridian Exchange, Verdant Reliquary and Ember Crucible; Deathmatch, Team Deathmatch, Instagib and Rocket Arena |
 | Multiplayer lobby | Popup-free host/join controls, selected-server room browser, source-echoed room chat, explicit same-room reconnect/Leave, host-only start/restart and read-only active-match spectators |
 | Arms Race | Three combat arenas, source-controlled ten-weapon ladder; independent kill-to-promotion and timed results/restart acceptance |
-| Local Horde | Three combat arenas, Nacre Engine and Cinderwake Drydock (Preview); source-owned waves/upgrades, with snapshot-driven Cinderwake transit and bulkheads; ten-wave default |
+| Local Horde | Three combat arenas, Nacre Engine, Cinderwake Drydock and Blackwater Reclamation; source-owned waves/upgrades, robot presentation and staged machinery/gates; ten-wave default, full Blackwater chain/Warden acceptance still open |
 | Zone-control demo | KOTH / Domination HUD, objective rings, source capture/scoring, results and restart; independently exercised on Verdant / Meridian |
-| Combined-arms demo | Sunscar infantry and Puma mount / drive / brake tap / exit, with fresh controls after seat changes |
+| Combined arms | Five source chassis, driver/gunner/passenger controls, visible crew and fresh controls after seat changes; bounded three-native-client Puma crew acceptance |
 | Native presentation | All nine map environments, 101 restored Moth texture planes, map-specific atmosphere, bounded scenery and ten first-person weapon models |
 | Terrain biomes and characters | [Canopy Divide and Basalt Reach](port/biome-upgrade/README.md): playable Deathmatch terrain, vegetation and structures; articulated armor and directional animation for all nine operators |
 | Single-player campaign | [The Quiet Relay](port/campaign/GAMEPLAY.md): four connected large biome chapters, six articulated robot enemies, authored objectives, checkpoint retry and a final ending; 5–10 minutes per chapter is a playtime target awaiting human timing |
+| Multiplayer expansion | Seven Blender-authored maps, including urban Switchyard Ward and Rainmarket Exchange, with 43 explicit map/mode pairs and matching authority/native geometry |
+| Optional campaign activities | Eight chapter-specific workshops across machinery reconnection, receiver alignment and resource choices; once-only rewards and visible restoration |
 | Native exploration maps | Prism Foundry reactor complex, Aurora Basin polar observatory and Cinder Array volcanic loop; local Godot collision and movement |
 | Shader and particle labs | Three interactive Moth materials; four particle effects, stateful GPU simulation and explicit analytic backend, selectable 8K–1M counts with measured frame cadence |
 | Combat feedback | Reticle, confirmed-hit and damage indicators, source-driven projectiles and explosion flashes, procedural sound cues |
@@ -44,13 +55,15 @@ simulation lock and verification evidence remain reproducible.
 | LATTICE command demo | Asterion Relay and Monsoon Foundry: synchronized objective list/map, own resources, HOLD orders, PvP Fighter and co-op REINFORCE purchases with explicit receipts |
 | LATTICE world demo | Authoritative first-person traversal on Asterion/Monsoon, public objective markers and a same-connection tactical HOLD/recruitment panel |
 | Session handling | Local server launcher, host setup, guest transport, stale-state handling, focus release, death/respawn and round-boundary control resets |
-| Menu continuity | Last activity and validated per-activity choices are remembered locally across menu restarts; local cheats must be enabled explicitly each time |
+| Menu continuity | Last activity and validated per-activity choices are remembered locally across menu restarts; Campaign and ordinary solo Horde expose the authoritative F3 cheat menu |
 | Device settings | Home Settings and F12 in a route: master volume/mute, fullscreen, mouse sensitivity and interface scale; Back releases controls and Leave returns to the supervisor menu |
 | Career / Arsenal | Home catalog browsing; F12 opens the connected source profile, equipment actions, results/award summary and recent server history. Owned local careers/history persist across launches; equipment changes wait for source confirmation and apply next match |
 
-Published build identities and acceptance are recorded in the
+Current play instructions and build identity are in [Campaign Play](port/campaign/PLAY.md)
+and the [combined update record](port/targeting-variety/NEXT_RELEASE.md).
+Earlier build identities and acceptance are recorded in the
 [consolidated expansion](port/THREE_STREAM_EXPANSION_2026-09-29.md) and
-[biome preview](port/biome-upgrade/RELEASE_2026-09-30.md). The new campaign is
+[biome preview](port/biome-upgrade/RELEASE_2026-09-30.md). Campaign history is
 tracked in its [implementation workstream](port/campaign/WORKSTREAM.md).
 Earlier [consolidation](port/CONSOLIDATION_BATCH_2026-09-28.md) and
 [Career/Arsenal expansion](port/NATIVE_EXPANSION_2026-09-28.md) records retain
@@ -96,10 +109,10 @@ the revisions described in their accompanying evidence directories.
 ### Windows demo download
 
 Download **cocs-native-windows.zip** from the
-[Native Graphics Demo release](https://github.com/mojomast/cocs-godot/releases/tag/graphics-demo-2026-09-22).
-Extract the entire ZIP and double-click **Play.cmd** for a bot match with the
-candidate operator models. **Graphics Showcase.cmd** opens the three new maps,
-shader gallery and particle lab. **Demo Menu.cmd** offers the other modes and viewer.
+[latest playtest release](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-targeting-animation-2026-10-01).
+Extract the entire ZIP and double-click **Campaign.cmd** for The Quiet Relay or
+**Play.cmd** for arena play. **Graphics Showcase.cmd** opens the native exploration
+maps, shader gallery and particle lab. **Demo Menu.cmd** offers the other routes.
 Node and the Godot runtime are bundled; no development tools are required.
 Windows 10/11 x64 and OpenGL 3.3-compatible graphics are required.
 See [Windows play instructions](port/native-windows-package/PLAY.md).

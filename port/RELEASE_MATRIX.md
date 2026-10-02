@@ -23,6 +23,22 @@ implementation and acceptance are in progress.
 
 ## Evidence levels and current acceptance
 
+### Targeting, animation and effects — October 1, 2026
+
+[Published runtime `1c1f6e34`](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-targeting-animation-2026-10-01)
+includes the current Quiet Relay campaign, eight optional workshops, seven
+multiplayer expansion maps, Blackwater robot Horde, F3 solo cheats, corrected
+robot/facade targeting and the animation/effects passes. Windows and Linux each
+passed 23 base + 44 expansion cases; Windows also passed three additional traced
+Crown starts. Combined canonical acceptance was 333/337 initially, followed by
+four passing focused fixture repairs. All failures and platform evidence remain
+public release assets. Natural full Blackwater chain/Warden acceptance, human
+chapter timing and hardware performance remain open.
+
+The [new four-lane source migration](next-port/WORKSTREAM.md) is in progress.
+Lane inventories will distinguish actual current gaps from dated entries below;
+no new feature from that batch is claimed complete yet.
+
 ### Consolidated expansion — September 29, 2026
 
 The owner authorized completing the three recommended feature streams and then

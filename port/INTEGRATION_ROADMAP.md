@@ -6,6 +6,14 @@ Upstream source repository is `mojomast/cocs` (remote `origin`).
 
 ## Decision in brief
 
+**2026-10-01 broad migration checkpoint:** runtime `1c1f6e34` is published with
+targeting, campaign-variety, animation and edge/effects improvements; both
+platforms passed 67 package cases. The owner now requests four parallel Astra
+lanes to improve the broader game and resume Three.js feature migration. See
+[the active workstream](next-port/WORKSTREAM.md) for current ownership, parity
+audits, selected feature implementations and engine grants. The older capability
+inventory below is historical and must not be used to label current features missing.
+
 **2026-09-30 campaign checkpoint:** the owner authorized four substantially larger
 connected biome levels, a varied robot roster, and campaign story/pacing design.
 Flash research preceded the Astra implementation lanes. **The Quiet Relay** is
