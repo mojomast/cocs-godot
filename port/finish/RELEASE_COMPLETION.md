@@ -121,3 +121,18 @@ Parent reran source-only preflight and all four consolidation contracts:
 complete; all new masters/GLBs and their native production acceptance remain
 pending explicit serial grants. Parallax's interior correction remains in its
 original map worktree and requires Moth mount revalidation when promoted.
+
+## Final acceptance extension prepared
+
+Acceptance owner completed `52e66abe` on `finish/acceptance-20261002`: an opt-in
+135-job final inventory retaining every original critical gate and referencing
+the existing fighting plan, plus exact-input receipt adapters and explicit
+Windows graphical/extracted-runtime closure. Its 19 runner and ten receipt tests
+passed; Helix's source adapter passed against real resources. These are source
+checks, not native acceptance.
+
+Hold adoption until the active native invocation reaches its completed checkpoint.
+Then cherry-pick `52e66abe`, read `FINAL_ACCEPTANCE.md`, and start a fresh ledger
+for the changed matrix/runner identity. Never resume the old report under changed
+contracts or convert historical combo/native receipts into new-candidate passes.
+Current integration owner retains the exclusive slot. No export grant is implied.
