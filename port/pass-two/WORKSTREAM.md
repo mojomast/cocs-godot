@@ -105,10 +105,16 @@ coherent player-visible batch, then verify it through actual lifecycle journeys.
   other routes use their supported Home/rejoin flow. Sports skips unsupported
   infantry damage stages.
 - Parent confirmed the competitive subclass still assigns a fixed camera pose
-  after every spectator snapshot. Experience has resumed source/code-only work
-  to remove that ownership conflict and exercise the actual subclass callback
-  in its prepared native regression. This is a fix in progress, not accepted
-  native continuity. Foundry retains the heavy slot.
+  after every spectator snapshot. **Fixed in source/code at `8d1efc60`:** the
+  fallback initializes once; snapshot callbacks no longer reset the spectator
+  camera. Narrow spectator guards also protect sports, generated world sports,
+  combined-arms and Assault camera updates. The original denied-input boundary
+  remains. A prepared native contract invokes actual competitive callbacks and
+  checks pose preservation before the presenter runs, alongside modal/stale,
+  reconnect/results and seat transitions. The connected runner additionally
+  checks released freecam across three real snapshots. Grammar, generated-scene,
+  oracle and whitespace checks passed; native continuity remains unexecuted.
+  Foundry retains the heavy slot.
 
 ## Parent follow-up
 
