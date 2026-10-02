@@ -47,8 +47,8 @@ Blender authoring scripts, editable master, GLB, native data and focused tests.
 ## Verification and resource queue
 
 **Current map state: design, code and Node checks only.** World-weather acceptance
-and Modes have released the slot; Experience now owns it, followed by parent
-combined verification/exports before the map queue.
+and Modes and Experience have released the slot; parent now owns combined
+verification/exports before the map queue.
 Map agents must return `READY FOR BLENDER` and receive an explicit parent grant
 before Blender, import, bake, rendering or Godot runs. Use serial heavy processes
 and `LP_NUM_THREADS=1`; no nested agents.

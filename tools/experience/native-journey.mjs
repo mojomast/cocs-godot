@@ -7,8 +7,10 @@ import {createGameServer} from '../../server/game-server.mjs';
 import {createAuthority} from '../../port/native-campaign/authority.mjs';
 import {createCampaignMatch} from '../../port/native-campaign/match.mjs';
 const binary=process.env.GODOT_BIN;assert.ok(binary);
-const scenario=process.env.SCENARIO??'mode',mode=process.env.MODE??'arsenal',operator=process.env.OPERATOR??'chatgpt',compact=process.env.COMPACT==='1';
-const out=resolve(process.env.EVIDENCE_DIR);mkdirSync(out,{recursive:true});
+const option=(name,fallback)=>process.argv.find(arg=>arg.startsWith(`--${name}=`))?.slice(name.length+3)??fallback;
+const scenario=option('scenario',process.env.SCENARIO??'mode'),mode=option('mode',process.env.MODE??'arsenal'),operator=option('operator',process.env.OPERATOR??'chatgpt'),compact=process.argv.includes('--compact')||process.env.COMPACT==='1';
+assert.ok(['mode','campaign','sports','combined_arms'].includes(scenario),'known experience scenario');
+const out=resolve(option('output',process.env.EVIDENCE_DIR??`/tmp/opencode/experience-${Date.now()}`));mkdirSync(out,{recursive:true});
 let campaignMatch;
 const game=scenario==='campaign'?createAuthority({mapId:'rootfall-verge',matchFactory:options=>(campaignMatch=createCampaignMatch(options))}):createGameServer({historyPath:null,progressionPath:null});
 await new Promise(r=>game.server.listen(0,'127.0.0.1',r));
@@ -67,9 +69,10 @@ if(scenario==='campaign')args.push('--map=rootfall-verge');
 if(scenario==='sports')args.push('--map=ion-speedway');
 if(scenario==='combined_arms')args.push('--map=sunscar-convoy');
 const child=spawn('xvfb-run',args,{detached:true,env:{...process.env,LP_NUM_THREADS:'1',LIBGL_ALWAYS_SOFTWARE:'1',COCS_SETTINGS_PATH:resolve(out,'settings.json')},stdio:['ignore','pipe','pipe']});
-const stop=()=>{try{process.kill(-child.pid,'SIGTERM');}catch{}};
+const stop=(signal='SIGTERM')=>{try{process.kill(-child.pid,signal);}catch{}};
 let text='';for(const s of [child.stdout,child.stderr])s.on('data',x=>{text+=x;if(text.includes('Parse Error:'))stop();});
-const timeout=setTimeout(stop,90000);
+let forceTimeout;
+const timeout=setTimeout(()=>{stop();forceTimeout=setTimeout(()=>stop('SIGKILL'),5000);},90000);
 try{
  const code=await new Promise((r,j)=>{child.on('error',j);child.on('close',r);});
  writeFileSync(resolve(out,'native.log'),text);
@@ -81,7 +84,7 @@ try{
  const report=JSON.parse(readFileSync(resolve(out,'native.json')));assert.equal(report.failures.length,0);
  console.log('EXPERIENCE_JOURNEY_OK',scenario,mode,operator,compact?'compact':'wide',out);
 }finally{
- clearTimeout(timeout);stop();for(const s of game.wss.clients)s.terminate();
+  clearTimeout(timeout);clearTimeout(forceTimeout);stop();for(const s of game.wss.clients)s.terminate();
  await game.close();await new Promise(r=>control.close(r));
  writeFileSync(resolve(out,'teardown.json'),JSON.stringify({pid:child.pid,exitCode:child.exitCode,signalCode:child.signalCode}));
 }
