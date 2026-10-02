@@ -22,6 +22,7 @@ import {fileURLToPath} from 'node:url';
 import {BASE_WORLDS, REVIEWED_CANDIDATES} from './world_closure.mjs';
 import {REPLAY_FILES, REPLAY_KIND} from './replay_runtime.mjs';
 import {FEATURE_JSON} from './feature_resources.mjs';
+import {DRESSING_IDS} from './dressing_resources.mjs';
 
 // The repository that contains this module, not the process working directory.
 export const REPO_ROOT = fileURLToPath(new URL('../../', import.meta.url));
@@ -593,6 +594,25 @@ export function verifyGitIdentity(repo, identity, packageDir) {
   verifyReplayRuntime(repo, identity, packageDir);
   verifyFeatureProvenance(repo, identity);
   verifyClosure(repo, identity, derivative);
+  verifyDressingProvenance(repo, identity);
+}
+
+// worldDataFiles is verified against committed discovery before this check.
+export function verifyDressingProvenance(repo, identity) {
+  const builder='tools/godot-package/build.py';
+  const exists=git(repo,['ls-tree','--name-only',identity.port_commit,'--',builder]);
+  const requires=exists && gitObjectBytes(repo,identity.port_commit,builder).includes(Buffer.from('"dressing_resource_sha256"'));
+  if (!requires && identity.manifest.dressing_resource_sha256===undefined) return;
+  const recorded=identity.manifest.dressing_resource_sha256;
+  require_(plainObject(recorded),'Dressing resource provenance missing');
+  const files=[];
+  for (const id of DRESSING_IDS) {
+    if (!(identity.worldDataFiles ?? []).includes(`godot/multiplayer_worlds/generated/${id}.json`)) continue;
+    const path=`godot/multiplayer_worlds/dressing/profiles/${id}.json`;
+    if (git(repo,['ls-tree','--name-only',identity.port_commit,'--',path])) files.push(path);
+  }
+  requireSortedEqual(Object.keys(recorded),files,'Committed dressing resource closure');
+  for (const path of files) require_(recorded[path]===gitObjectHash(repo,identity.port_commit,path),`Dressing resource differs from recorded commit: ${path}`);
 }
 
 export function verifyFeatureProvenance(repo, identity) {
