@@ -790,8 +790,7 @@
           "name": "Basic confirm",
           "route": [
             "stand_l",
-            "stand_m",
-            "stand_h"
+            "stand_m"
           ],
           "setup_inputs": [],
           "inputs": [
@@ -810,14 +809,6 @@
               "held": 2,
               "pressed": 2,
               "move": "stand_m"
-            },
-            {
-              "tick": 28,
-              "axis_x": 0,
-              "axis_y": 0,
-              "held": 4,
-              "pressed": 4,
-              "move": "stand_h"
             }
           ],
           "status": "proposed",
@@ -829,7 +820,7 @@
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes. Native-03 recorded the first two contacts for seven operators; the third normal missed or failed recognition. This basic confirm deliberately teaches two normals, not a single hit. Meta/Qwen additionally need continuous crouch direction to avoid the mobility motion."
         },
         {
           "name": "Signature special confirm",
@@ -902,7 +893,7 @@
               "move": "air_m"
             },
             {
-              "tick": 28,
+              "tick": 32,
               "axis_x": 0,
               "axis_y": 0,
               "held": 8,
@@ -919,7 +910,7 @@
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Native-03 recorded both aerial normals but landing_left latched at four during the committed second move, expiring the projectile buffer. Retain the harder projectile finisher and original physical fixture; delay its input four ticks to cover ordinary landing recovery. This candidate explicitly requires Astra’s landing-timer repair and actual native rerun; no teleport or substitute normal hides that core issue."
         }
       ]
     },
@@ -1708,8 +1699,7 @@
           "name": "Basic confirm",
           "route": [
             "stand_l",
-            "crouch_m",
-            "stand_h"
+            "crouch_m"
           ],
           "setup_inputs": [],
           "inputs": [
@@ -1728,14 +1718,6 @@
               "held": 2,
               "pressed": 2,
               "move": "crouch_m"
-            },
-            {
-              "tick": 31,
-              "axis_x": 0,
-              "axis_y": 0,
-              "held": 4,
-              "pressed": 4,
-              "move": "stand_h"
             }
           ],
           "status": "proposed",
@@ -1747,7 +1729,7 @@
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes. Native-03 recorded the first two contacts for seven operators; the third normal missed or failed recognition. This basic confirm deliberately teaches two normals, not a single hit. Meta/Qwen additionally need continuous crouch direction to avoid the mobility motion."
         },
         {
           "name": "Signature special confirm",
@@ -1801,10 +1783,18 @@
             "air_m",
             "air_h"
           ],
-          "setup_inputs": [],
-          "inputs": [
+          "setup_inputs": [
             {
               "tick": 0,
+              "axis_x": 0,
+              "axis_y": 1,
+              "held": 0,
+              "pressed": 0
+            }
+          ],
+          "inputs": [
+            {
+              "tick": 8,
               "axis_x": 0,
               "axis_y": 0,
               "held": 1,
@@ -1812,7 +1802,7 @@
               "move": "air_l"
             },
             {
-              "tick": 13,
+              "tick": 21,
               "axis_x": 0,
               "axis_y": 0,
               "held": 2,
@@ -1820,7 +1810,7 @@
               "move": "air_m"
             },
             {
-              "tick": 31,
+              "tick": 39,
               "axis_x": 0,
               "axis_y": 0,
               "held": 4,
@@ -1830,14 +1820,24 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 500,
-            "attacker_y": 1000,
-            "defender_y": 800,
+            "distance": 660,
+            "attacker_y": 0,
+            "defender_y": 0,
             "corner": true,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Native-03 descending fixtures landed before the third input. Start both actors grounded and jump through ordinary up inputs, then begin the three-air-normal route at tick8 during ascent. Projectile signature practice remains in the separate special route; this air route teaches three aerial normals. No initial vertical velocity is injected. Landing-lock behavior is separately reported to core. Actual rerun pending.",
+          "setup_kind": "paired_jump",
+          "defender_setup_inputs": [
+            {
+              "tick": 0,
+              "axis_x": 0,
+              "axis_y": 1,
+              "held": 0,
+              "pressed": 0
+            }
+          ]
         }
       ]
     },
@@ -2637,8 +2637,7 @@
           "name": "Basic confirm",
           "route": [
             "stand_l",
-            "stand_m",
-            "crouch_h"
+            "stand_m"
           ],
           "setup_inputs": [],
           "inputs": [
@@ -2657,14 +2656,6 @@
               "held": 2,
               "pressed": 2,
               "move": "stand_m"
-            },
-            {
-              "tick": 26,
-              "axis_x": 0,
-              "axis_y": -1,
-              "held": 4,
-              "pressed": 4,
-              "move": "crouch_h"
             }
           ],
           "status": "proposed",
@@ -2676,7 +2667,7 @@
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes. Native-03 recorded the first two contacts for seven operators; the third normal missed or failed recognition. This basic confirm deliberately teaches two normals, not a single hit. Meta/Qwen additionally need continuous crouch direction to avoid the mobility motion."
         },
         {
           "name": "Signature special confirm",
@@ -2717,11 +2708,11 @@
             "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
-            "corner": false,
+            "corner": true,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes. Native-03 midscreen grenade hit at tick54 with a reset combo counter. This explicit corner pressure route keeps the arcing projectile’s early travel below its apex; no projectile trajectory or stun values changed. Rerun pending."
         },
         {
           "name": "Air corner chain",
@@ -3565,8 +3556,7 @@
           "name": "Basic confirm",
           "route": [
             "crouch_l",
-            "crouch_m",
-            "stand_h"
+            "crouch_m"
           ],
           "setup_inputs": [],
           "inputs": [
@@ -3576,7 +3566,8 @@
               "axis_y": -1,
               "held": 1,
               "pressed": 1,
-              "move": "crouch_l"
+              "move": "crouch_l",
+              "duration": 14
             },
             {
               "tick": 14,
@@ -3585,14 +3576,6 @@
               "held": 2,
               "pressed": 2,
               "move": "crouch_m"
-            },
-            {
-              "tick": 35,
-              "axis_x": 0,
-              "axis_y": 0,
-              "held": 4,
-              "pressed": 4,
-              "move": "stand_h"
             }
           ],
           "status": "proposed",
@@ -3604,7 +3587,7 @@
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes. Native-03 recorded the first two contacts for seven operators; the third normal missed or failed recognition. This basic confirm deliberately teaches two normals, not a single hit. Meta/Qwen additionally need continuous crouch direction to avoid the mobility motion. Hold down continuously from crouch L through crouch M; releasing/repressing down formed the recognizer’s 22 mobility command in the original native failure."
         },
         {
           "name": "Signature special confirm",
@@ -3621,7 +3604,8 @@
               "axis_y": -1,
               "held": 1,
               "pressed": 1,
-              "move": "crouch_l"
+              "move": "crouch_l",
+              "duration": 14
             },
             {
               "tick": 14,
@@ -3649,7 +3633,7 @@
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes. Hold down continuously from crouch L through crouch M; releasing/repressing down formed the recognizer’s 22 mobility command in the original native failure."
         },
         {
           "name": "Air corner chain",
@@ -3658,10 +3642,18 @@
             "air_m",
             "air_h"
           ],
-          "setup_inputs": [],
-          "inputs": [
+          "setup_inputs": [
             {
               "tick": 0,
+              "axis_x": 0,
+              "axis_y": 1,
+              "held": 0,
+              "pressed": 0
+            }
+          ],
+          "inputs": [
+            {
+              "tick": 8,
               "axis_x": 0,
               "axis_y": 0,
               "held": 1,
@@ -3669,7 +3661,7 @@
               "move": "air_l"
             },
             {
-              "tick": 14,
+              "tick": 22,
               "axis_x": 0,
               "axis_y": 0,
               "held": 2,
@@ -3677,7 +3669,7 @@
               "move": "air_m"
             },
             {
-              "tick": 34,
+              "tick": 42,
               "axis_x": 0,
               "axis_y": 0,
               "held": 4,
@@ -3687,14 +3679,24 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 500,
-            "attacker_y": 1000,
-            "defender_y": 800,
+            "distance": 660,
+            "attacker_y": 0,
+            "defender_y": 0,
             "corner": true,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Native-03 descending fixtures landed before the third input. Start both actors grounded and jump through ordinary up inputs, then begin the three-air-normal route at tick8 during ascent. Projectile signature practice remains in the separate special route; this air route teaches three aerial normals. No initial vertical velocity is injected. Landing-lock behavior is separately reported to core. Actual rerun pending.",
+          "setup_kind": "paired_jump",
+          "defender_setup_inputs": [
+            {
+              "tick": 0,
+              "axis_x": 0,
+              "axis_y": 1,
+              "held": 0,
+              "pressed": 0
+            }
+          ]
         }
       ]
     },
@@ -4654,8 +4656,7 @@
           "name": "Basic confirm",
           "route": [
             "stand_l",
-            "stand_m",
-            "stand_h"
+            "stand_m"
           ],
           "setup_inputs": [],
           "inputs": [
@@ -4674,14 +4675,6 @@
               "held": 2,
               "pressed": 2,
               "move": "stand_m"
-            },
-            {
-              "tick": 28,
-              "axis_x": 0,
-              "axis_y": 0,
-              "held": 4,
-              "pressed": 4,
-              "move": "stand_h"
             }
           ],
           "status": "proposed",
@@ -4693,7 +4686,7 @@
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes. Native-03 recorded the first two contacts for seven operators; the third normal missed or failed recognition. This basic confirm deliberately teaches two normals, not a single hit. Meta/Qwen additionally need continuous crouch direction to avoid the mobility motion."
         },
         {
           "name": "Signature special confirm",
@@ -4766,7 +4759,7 @@
               "move": "air_m"
             },
             {
-              "tick": 28,
+              "tick": 32,
               "axis_x": 0,
               "axis_y": 0,
               "held": 8,
@@ -4783,7 +4776,7 @@
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Native-03 recorded both aerial normals but landing_left latched at four during the committed second move, expiring the projectile buffer. Retain the harder projectile finisher and original physical fixture; delay its input four ticks to cover ordinary landing recovery. This candidate explicitly requires Astra’s landing-timer repair and actual native rerun; no teleport or substitute normal hides that core issue."
         }
       ]
     },
@@ -5590,8 +5583,7 @@
           "name": "Basic confirm",
           "route": [
             "crouch_l",
-            "stand_m",
-            "stand_h"
+            "stand_m"
           ],
           "setup_inputs": [],
           "inputs": [
@@ -5610,14 +5602,6 @@
               "held": 2,
               "pressed": 2,
               "move": "stand_m"
-            },
-            {
-              "tick": 34,
-              "axis_x": 0,
-              "axis_y": 0,
-              "held": 4,
-              "pressed": 4,
-              "move": "stand_h"
             }
           ],
           "status": "proposed",
@@ -5629,7 +5613,7 @@
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes. Native-03 recorded the first two contacts for seven operators; the third normal missed or failed recognition. This basic confirm deliberately teaches two normals, not a single hit. Meta/Qwen additionally need continuous crouch direction to avoid the mobility motion."
         },
         {
           "name": "Signature special confirm",
@@ -5704,10 +5688,18 @@
             "air_m",
             "air_h"
           ],
-          "setup_inputs": [],
-          "inputs": [
+          "setup_inputs": [
             {
               "tick": 0,
+              "axis_x": 0,
+              "axis_y": 1,
+              "held": 0,
+              "pressed": 0
+            }
+          ],
+          "inputs": [
+            {
+              "tick": 8,
               "axis_x": 0,
               "axis_y": 0,
               "held": 1,
@@ -5715,7 +5707,7 @@
               "move": "air_l"
             },
             {
-              "tick": 14,
+              "tick": 22,
               "axis_x": 0,
               "axis_y": 0,
               "held": 2,
@@ -5723,7 +5715,7 @@
               "move": "air_m"
             },
             {
-              "tick": 34,
+              "tick": 42,
               "axis_x": 0,
               "axis_y": 0,
               "held": 4,
@@ -5733,14 +5725,24 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 500,
-            "attacker_y": 1000,
-            "defender_y": 800,
+            "distance": 660,
+            "attacker_y": 0,
+            "defender_y": 0,
             "corner": true,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Native-03 descending fixtures landed before the third input. Start both actors grounded and jump through ordinary up inputs, then begin the three-air-normal route at tick8 during ascent. Projectile signature practice remains in the separate special route; this air route teaches three aerial normals. No initial vertical velocity is injected. Landing-lock behavior is separately reported to core. Actual rerun pending.",
+          "setup_kind": "paired_jump",
+          "defender_setup_inputs": [
+            {
+              "tick": 0,
+              "axis_x": 0,
+              "axis_y": 1,
+              "held": 0,
+              "pressed": 0
+            }
+          ]
         }
       ]
     },
@@ -6538,8 +6540,7 @@
           "name": "Basic confirm",
           "route": [
             "stand_l",
-            "crouch_m",
-            "crouch_h"
+            "crouch_m"
           ],
           "setup_inputs": [],
           "inputs": [
@@ -6558,14 +6559,6 @@
               "held": 2,
               "pressed": 2,
               "move": "crouch_m"
-            },
-            {
-              "tick": 26,
-              "axis_x": 0,
-              "axis_y": -1,
-              "held": 4,
-              "pressed": 4,
-              "move": "crouch_h"
             }
           ],
           "status": "proposed",
@@ -6577,7 +6570,7 @@
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes. Native-03 recorded the first two contacts for seven operators; the third normal missed or failed recognition. This basic confirm deliberately teaches two normals, not a single hit. Meta/Qwen additionally need continuous crouch direction to avoid the mobility motion."
         },
         {
           "name": "Signature special confirm",
@@ -7457,8 +7450,7 @@
           "name": "Basic confirm",
           "route": [
             "stand_l",
-            "stand_m",
-            "crouch_h"
+            "stand_m"
           ],
           "setup_inputs": [],
           "inputs": [
@@ -7477,14 +7469,6 @@
               "held": 2,
               "pressed": 2,
               "move": "stand_m"
-            },
-            {
-              "tick": 29,
-              "axis_x": 0,
-              "axis_y": -1,
-              "held": 4,
-              "pressed": 4,
-              "move": "crouch_h"
             }
           ],
           "status": "proposed",
@@ -7496,7 +7480,7 @@
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes. Native-03 recorded the first two contacts for seven operators; the third normal missed or failed recognition. This basic confirm deliberately teaches two normals, not a single hit. Meta/Qwen additionally need continuous crouch direction to avoid the mobility motion."
         },
         {
           "name": "Signature special confirm",
@@ -7569,7 +7553,7 @@
               "move": "air_m"
             },
             {
-              "tick": 29,
+              "tick": 33,
               "axis_x": 0,
               "axis_y": 0,
               "held": 8,
@@ -7586,7 +7570,7 @@
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Native-03 recorded both aerial normals but landing_left latched at four during the committed second move, expiring the projectile buffer. Retain the harder projectile finisher and original physical fixture; delay its input four ticks to cover ordinary landing recovery. This candidate explicitly requires Astra’s landing-timer repair and actual native rerun; no teleport or substitute normal hides that core issue."
         }
       ]
     },
@@ -8380,8 +8364,7 @@
           "name": "Basic confirm",
           "route": [
             "crouch_l",
-            "crouch_m",
-            "stand_h"
+            "crouch_m"
           ],
           "setup_inputs": [],
           "inputs": [
@@ -8391,7 +8374,8 @@
               "axis_y": -1,
               "held": 1,
               "pressed": 1,
-              "move": "crouch_l"
+              "move": "crouch_l",
+              "duration": 13
             },
             {
               "tick": 13,
@@ -8400,14 +8384,6 @@
               "held": 2,
               "pressed": 2,
               "move": "crouch_m"
-            },
-            {
-              "tick": 31,
-              "axis_x": 0,
-              "axis_y": 0,
-              "held": 4,
-              "pressed": 4,
-              "move": "stand_h"
             }
           ],
           "status": "proposed",
@@ -8419,7 +8395,7 @@
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes. Native-03 recorded the first two contacts for seven operators; the third normal missed or failed recognition. This basic confirm deliberately teaches two normals, not a single hit. Meta/Qwen additionally need continuous crouch direction to avoid the mobility motion. Hold down continuously from crouch L through crouch M; releasing/repressing down formed the recognizer’s 22 mobility command in the original native failure."
         },
         {
           "name": "Signature special confirm",
@@ -8436,7 +8412,8 @@
               "axis_y": -1,
               "held": 1,
               "pressed": 1,
-              "move": "crouch_l"
+              "move": "crouch_l",
+              "duration": 13
             },
             {
               "tick": 13,
@@ -8464,7 +8441,7 @@
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes. Hold down continuously from crouch L through crouch M; releasing/repressing down formed the recognizer’s 22 mobility command in the original native failure."
         },
         {
           "name": "Air corner chain",
@@ -8492,7 +8469,7 @@
               "move": "air_m"
             },
             {
-              "tick": 30,
+              "tick": 34,
               "axis_x": 0,
               "axis_y": 0,
               "held": 8,
@@ -8509,7 +8486,7 @@
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Native-03 recorded both aerial normals but landing_left latched at four during the committed second move, expiring the projectile buffer. Retain the harder projectile finisher and original physical fixture; delay its input four ticks to cover ordinary landing recovery. This candidate explicitly requires Astra’s landing-timer repair and actual native rerun; no teleport or substitute normal hides that core issue."
         }
       ]
     }
