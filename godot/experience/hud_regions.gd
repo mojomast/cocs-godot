@@ -14,7 +14,7 @@ static func subtract(region: Rect2, obstacle: Rect2) -> Array[Rect2]:
 		if piece.size.x >= 40 and piece.size.y >= 18: result.append(piece)
 	return result
 
-static func choose(view: Vector2, obstacles: Array[Rect2], wanted: Vector2, bottom: bool = false) -> Rect2:
+static func choose(view: Vector2, obstacles: Array[Rect2], wanted: Vector2, bottom: bool = false, minimum_width: float = 220) -> Rect2:
 	var regions: Array[Rect2] = [Rect2(Vector2(12, 12), view - Vector2(24, 24))]
 	for obstacle: Rect2 in obstacles:
 		var next: Array[Rect2] = []
@@ -33,7 +33,7 @@ static func choose(view: Vector2, obstacles: Array[Rect2], wanted: Vector2, bott
 	var best := Rect2()
 	var score := -INF
 	for region: Rect2 in regions:
-		if region.size.x < minf(220, wanted.x) or region.size.y < 28: continue
+		if region.size.x < minf(minimum_width, wanted.x) or region.size.y < 28: continue
 		var size := Vector2(minf(region.size.x, wanted.x), minf(region.size.y, wanted.y))
 		var position := Vector2(region.end.x - size.x, region.end.y - size.y if bottom else region.position.y)
 		var candidate := Rect2(position, size)

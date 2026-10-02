@@ -15,6 +15,7 @@ var recap := Label.new()
 var kill := Label.new()
 var ability := Label.new()
 var ability_scroll := ScrollContainer.new()
+var recap_scroll := ScrollContainer.new()
 var gameplay: Node
 var gameplay_model: Dictionary = {}
 var campaign_hud: Control
@@ -39,6 +40,14 @@ func _ready() -> void:
 		label.add_theme_constant_override("shadow_offset_y", 1)
 		add_child(label)
 	add_child(ability_scroll)
+	preload("res://experience/scroll_keys.gd").bind(ability_scroll)
+	add_child(recap_scroll)
+	preload("res://experience/scroll_keys.gd").bind(recap_scroll)
+	recap.reparent(recap_scroll)
+	recap.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	recap_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	recap_scroll.follow_focus = true
+	recap_scroll.name = "IncomingHitHistory"
 	ability.reparent(ability_scroll)
 	ability.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	ability_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -155,6 +164,7 @@ func clear() -> void:
 	layout_dirty = true
 	desired_visibility.clear()
 	ability_scroll.hide()
+	recap_scroll.hide()
 	for label: Label in [caption, recap, kill, ability]:
 		label.text = ""
 		label.hide()
@@ -250,9 +260,10 @@ func refresh() -> void:
 	recap.text = combat.recap()
 	kill.text = combat.latest_kill
 	var show_ability := active and not spectator() and not gameplay_model.is_empty()
+	var show_recap: bool = active and not recap.text.is_empty() and settings.get("combat_readouts", true) == true and not is_instance_valid(campaign_hud)
 	var wanted := {
 		caption:active and not caption.text.is_empty() and settings.get("captions", false) == true,
-		recap:active and not recap.text.is_empty() and settings.get("combat_readouts", true) == true,
+		recap:show_recap, recap_scroll:show_recap,
 		kill:active and not combat.dead and clock - combat.kill_at >= 0 and clock - combat.kill_at < 2.2 and not kill.text.is_empty() and settings.get("combat_readouts", true) == true,
 		ability:show_ability, ability_scroll:show_ability and not is_instance_valid(campaign_hud)}
 	if wanted != desired_visibility:
@@ -261,6 +272,8 @@ func refresh() -> void:
 	var released := Input.mouse_mode != Input.MOUSE_MODE_CAPTURED
 	ability_scroll.mouse_filter = Control.MOUSE_FILTER_STOP if released else Control.MOUSE_FILTER_IGNORE
 	ability_scroll.focus_mode = Control.FOCUS_ALL if released else Control.FOCUS_NONE
+	recap_scroll.mouse_filter = Control.MOUSE_FILTER_STOP if released else Control.MOUSE_FILTER_IGNORE
+	recap_scroll.focus_mode = Control.FOCUS_ALL if released else Control.FOCUS_NONE
 	ability.mouse_filter = Control.MOUSE_FILTER_STOP if released else Control.MOUSE_FILTER_IGNORE
 	if layout_dirty: layout()
 
@@ -289,13 +302,17 @@ func layout() -> void:
 		recap.hide()
 		kill.hide()
 		return
-	var occupied: Array[Rect2] = Regions.occupied(session, [gameplay]) if is_instance_valid(session) else []
+	var occupied: Array[Rect2] = []
+	if is_instance_valid(session): occupied = Regions.occupied(session, [gameplay])
+	var preferences := Access.service()
+	if preferences != null and preferences.hint != null and preferences.hint.is_visible_in_tree(): occupied.append(preferences.hint.get_global_rect())
 	# Keep the actual aiming point free even if the route hides its reticle.
 	occupied.append(Rect2(view * 0.5 - Vector2(28, 28), Vector2(56, 56)))
-	for label: Label in [caption, recap, kill]:
+	for label: Label in [caption, kill]:
 		if not label.visible: continue
-		var desired := Vector2(minf(width, 520), float(font * (5 if label == recap else 3) + 12))
-		var rect := Regions.choose(view, occupied, desired, settings.get("caption_position", "bottom") == "bottom" if label == caption else false)
+		label.size = Vector2(minf(width, 520), 0)
+		var desired := Vector2(minf(width, 520), label.get_combined_minimum_size().y)
+		var rect := Regions.choose(view, occupied, desired, settings.get("caption_position", "bottom") == "bottom" if label == caption else false, 120)
 		# Caption/recap must fit fully: never clip a protected call mid-sentence.
 		label.size = Vector2(rect.size.x, 0)
 		var needed := label.get_combined_minimum_size().y
@@ -305,6 +322,17 @@ func layout() -> void:
 		label.position = rect.position
 		label.size.y = needed
 		occupied.append(Rect2(rect.position, Vector2(rect.size.x, needed)))
+	if recap_scroll.visible:
+		recap.custom_minimum_size.x = 0
+		recap.size.x = minf(width, 520)
+		var desired := Vector2(minf(width, 520), recap.get_combined_minimum_size().y)
+		var rect := Regions.choose(view, occupied, desired)
+		if rect.has_area():
+			recap_scroll.position = rect.position
+			recap_scroll.size = rect.size
+			recap.custom_minimum_size.x = maxf(80, rect.size.x - 16)
+			occupied.append(rect)
+		else: recap_scroll.hide()
 	if ability_scroll.visible:
 		var desired := Vector2(minf(view.x - 24, 390), 120 if compact else 220)
 		var rect := Regions.choose(view, occupied, desired)

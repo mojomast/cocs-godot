@@ -1,6 +1,7 @@
 extends Node3D
 ## Geometry-only campaign worlds own one persistent daylight composition.
-## AV/weather owns audio/particles, never this sky, ambient fill or sun.
+## This node owns the persistent sky/light baseline. The weather adapter may
+## lease a cloned Environment and modulate the sun, restoring both at teardown.
 const DAYLIGHT := {
 	"rootfall-verge":["789cb2", "becbc6"],
 	"siltwake-crossing":["829caf", "d9b89c"],

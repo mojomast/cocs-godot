@@ -57,7 +57,7 @@ func run() -> void:
 	for phase: Variant in [0, 1, 2, 4, "connecting", "waiting", "results", "3", null, true]:
 		check(not Info.phase_live(phase), "reject non-live phase " + str(phase))
 	check(Info.phase_live(3) and Info.phase_live("active"), "both audited live phase families")
-	var fixtures: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://player_gameplay/fixtures.json"))
+	var fixtures: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/player_gameplay/fixtures.json"))
 	var projector := Status.new()
 	var operators := {}
 	var info := TestInfo.new()

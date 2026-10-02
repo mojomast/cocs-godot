@@ -10,6 +10,7 @@ var connection_label := Label.new()
 var restart_button := Button.new()
 var retry_button := Button.new()
 var mode_panel := VBoxContainer.new()
+var mode_card := PanelContainer.new()
 var round_seconds := 180
 var round_target := -1
 var wait_players := 1
@@ -18,6 +19,9 @@ var fixture_input_elapsed := 0.0
 var fixture_capture := ""
 var fixture_captured := false
 var fixture_dropped := false
+var fixture_left := false
+var source_revision := -1
+var fixture_spectator_checked := false
 
 func _ready() -> void:
 	for node: Node in [camera, sun, environment]: add_child(node)
@@ -34,12 +38,23 @@ func _ready() -> void:
 	environment.environment = env
 	var layer := CanvasLayer.new()
 	add_child(layer)
-	layer.add_child(mode_panel)
-	mode_panel.position = Vector2(16, 76)
+	# The inherited selector owns a PopupMenu even while the scoped HUD hides it.
+	# Give it tree ownership so route teardown also releases its window/RIDs.
+	layer.add_child(selector)
+	selector.hide()
+	layer.add_child(mode_card)
+	mode_card.add_child(mode_panel)
+	mode_card.position = Vector2(16, 158)
+	var card_style := StyleBoxFlat.new()
+	card_style.bg_color = Color(0.025, 0.045, 0.065, 0.94)
+	for edge: String in ["left", "right", "top", "bottom"]: card_style.set("content_margin_" + edge, 10.0)
+	mode_card.add_theme_stylebox_override("panel", card_style)
+	mode_card.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	mode_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	for item: Label in [objective_label, connection_label, label, combat_label]:
 		item.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		item.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		item.add_theme_font_size_override("font_size", 14)
 		mode_panel.add_child(item)
 	# Common HUD owns vitals/controls; these inherited diagnostics remain bound.
 	label.hide()
@@ -64,6 +79,7 @@ func _ready() -> void:
 		on_error(catalog.error)
 		return
 	ids = catalog.entries.keys()
+	for id: String in ids: selector.add_item(catalog.entries[id].name)
 	var chosen := "meridian-exchange"
 	selected_mode = "arsenal"
 	for arg: String in OS.get_cmdline_user_args():
@@ -98,10 +114,12 @@ func _ready() -> void:
 	connect_selected_match()
 
 func resize_mode_panel() -> void:
-	var width := minf(720.0, get_viewport().get_visible_rect().size.x - 32.0)
+	var width := minf(680.0, get_viewport().get_visible_rect().size.x - 52.0)
 	for item: Label in [objective_label, connection_label]: item.custom_minimum_size.x = width
 	mode_panel.size.x = width
 	mode_panel.reset_size()
+	mode_card.size.x = width + 20.0
+	mode_card.reset_size()
 
 func advance_handshake(delta: float) -> bool:
 	# Waiting for invited humans is user-controlled, not a failed handshake.
@@ -129,7 +147,11 @@ func on_lobby(frame: Dictionary) -> void:
 
 func on_started(frame: Dictionary) -> void:
 	mode_markers.clear_round()
+	var revision := int(frame.get("roundRevision", -1))
+	var resumed_round := revision == source_revision and round_starts > 0
 	super.on_started(frame)
+	if resumed_round: round_starts -= 1
+	source_revision = revision
 
 func project_state(state: Dictionary) -> void:
 	projection.apply(state, client.actor_id)
@@ -141,7 +163,18 @@ func project_state(state: Dictionary) -> void:
 func on_snapshot(frame: Dictionary) -> void:
 	if phase != 3: return
 	super.on_snapshot(frame)
+	if client.spectating:
+		camera.position = Vector3(0, 18, 30)
+		camera.look_at(Vector3.ZERO)
+		if evidence and not fixture_spectator_checked:
+			fixture_spectator_checked = true
+			var denied := client.send_input({"fire":true}) == ERR_UNAUTHORIZED
+			assert(denied and not can_capture_pointer())
+			print("MODE_NATIVE_SPECTATOR_BOUNDARY ", JSON.stringify({"inputDenied":denied,"controls":can_capture_pointer()}))
 	project_state(frame.state)
+	if round_results >= 1 and not fixture_left and "--mode-fixture-leave" in OS.get_cmdline_user_args() and float(frame.state.get("time", 0)) >= 1.0:
+		fixture_left = true
+		call_deferred("leave_home")
 	if not fixture_capture.is_empty() and not fixture_captured and float(frame.state.get("time", 0)) >= 2.0:
 		fixture_captured = true
 		capture_mode(fixture_capture + ".png")
@@ -159,6 +192,7 @@ func on_results(frame: Dictionary) -> void:
 	combat.clear_round()
 	release_pointer()
 	project_state(frame.state)
+	if evidence: print("MODE_NATIVE_BOUNDARY ", JSON.stringify({"kind":"results","controls":can_capture_pointer(),"pointerReleased":Input.mouse_mode == Input.MOUSE_MODE_VISIBLE}))
 	connection_label.text = "Round complete · Enter / Restart" if join_room_id.is_empty() and not client.spectating else "Round complete · Waiting for host restart"
 	if not fixture_capture.is_empty(): capture_mode(fixture_capture + "-results.png")
 	if "--mode-fixture-restart" in OS.get_cmdline_user_args() and join_room_id.is_empty() and round_results == 1:
@@ -172,6 +206,7 @@ func capture_mode(path: String) -> void:
 	else: push_error("Mode screenshot failed: " + str(result))
 
 func on_transport_dropped(message: String) -> void:
+	if evidence: print("MODE_NATIVE_DROP ", message)
 	if is_instance_valid(audiovisual): audiovisual.suspend("transport")
 	disconnected_phase = phase
 	phase = -5
@@ -187,7 +222,9 @@ func on_transport_dropped(message: String) -> void:
 
 func retry_seat() -> void:
 	if phase != -5: return
-	if client.retry_reconnect(endpoint, catalog.entries, current_id, client.reconnect_ticket.room_id) == OK:
+	var result := client.retry_reconnect(endpoint, catalog.entries, current_id, client.reconnect_ticket.room_id)
+	if evidence: print("MODE_NATIVE_RETRY ", result)
+	if result == OK:
 		phase = -6
 		connection_label.text = "Reconnecting…"
 
@@ -197,16 +234,26 @@ func on_reconnect_outcome(resumed: bool, message: String) -> void:
 	if evidence: print("MODE_NATIVE_RECONNECT ", JSON.stringify({"resumed":resumed,"actor":client.actor_id,"spectating":client.spectating,"phase":phase}))
 
 func on_error(message: String) -> void:
+	if evidence: print("MODE_NATIVE_ERROR ", message)
 	super.on_error(message)
 	connection_label.text = message
 
 func leave_home() -> void:
 	client.send_frame({"type":"leave"})
 	client.disconnect_server()
+	phase = -3
+	received_pose = false
 	release_pointer()
+	if evidence: print("MODE_NATIVE_BOUNDARY ", JSON.stringify({"kind":"leave","controls":can_capture_pointer(),"pointerReleased":Input.mouse_mode == Input.MOUSE_MODE_VISIBLE}))
+	if "--mode-fixture-leave" in OS.get_cmdline_user_args(): load("res://tests/mode_expansion/home_probe.gd").observe(get_tree(), fixture_capture + "-home.png", current_id, selected_mode)
 	get_tree().change_scene_to_file("res://ui/main_menu.tscn")
 
 func _process(delta: float) -> void:
+	# Let Client observe a closing transport and preserve its reconnect ticket.
+	# The base live-input loop treats send failure as a terminal session error.
+	if phase == 3 and client.peer.get_ready_state() != WebSocketPeer.STATE_OPEN:
+		release_pointer()
+		return
 	super._process(delta)
 	restart_button.visible = phase == 4 and join_room_id.is_empty() and not client.spectating
 	retry_button.visible = phase == -5

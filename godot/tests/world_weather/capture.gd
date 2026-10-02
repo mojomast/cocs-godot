@@ -11,6 +11,11 @@ func capture() -> void:
 	assert(args.size() > 0, "Pass an existing absolute output directory")
 	var viewer = load("res://world/viewer.gd").new()
 	root.add_child(viewer)
+	if viewer.ids.size() != 9:
+		push_error("Expected all nine source worlds; verify generated semantic content before capture")
+		viewer.free()
+		quit(1)
+		return
 	viewer.set_process(false)
 	var look := Look.new()
 	var report: Array = []

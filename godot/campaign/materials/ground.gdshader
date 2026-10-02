@@ -5,6 +5,8 @@ uniform vec4 trail_color : source_color = vec4(.61,.66,.46,1.);
 uniform vec4 stone_color : source_color = vec4(.44,.51,.48,1.);
 uniform vec4 weather_color : source_color = vec4(.26,.34,.22,1.);
 uniform float moisture = 0.0;
+// Runtime source wetSheen response, independent of the authored biome moisture.
+uniform float weather_wetness : hint_range(0.0, 1.0) = 0.0;
 uniform int biome_index = 0;
 varying vec3 world_pos;
 varying vec2 blend_mask;
@@ -46,6 +48,6 @@ void fragment() {
  // Micro-aggregate variation and damp seams along slopes; continuous world-space mapping.
  base*=.86+coarse*.14+patches*.13+grains*.08;
  ALBEDO=base;
- ROUGHNESS=clamp(.92-moisture*.14-rock*.10+grains*.03,.65,1.);
- METALLIC=0.;
+ ROUGHNESS=clamp(.92-moisture*.14-rock*.10+grains*.03,.65,1.)*(1.-weather_wetness*.55);
+ METALLIC=min(.35,weather_wetness*.3);
 }
