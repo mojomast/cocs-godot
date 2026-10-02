@@ -62,10 +62,12 @@ node's current `asset_source_fingerprint`. A refreshed outer receipt cannot bles
 stale embedded fingerprints. Natural coatings are **not** forced to gain normal
 maps: material quality/native UV review remains with the producer.
 
-Producer-owned issue to reconcile before promotion: the current common finishing
-helper permits zero normal strength for some natural material roles, while the
-receipt generator still requires a normal texture on every non-preserved surface.
-The consolidator must align those contracts with the intended finish identities.
+Producer reconciliation integrated after this lane's base: `935e24a0` (parent
+`7c74b553`) updates preflight/reopen/receipts to the intended selective-normal
+contract, including retained robot COLOR_0 and bound UV channels. The old blanket
+normal-texture requirement is resolved in source; actual exported material/native
+UV acceptance remains required. Do not restore a blanket normal requirement for
+natural roles authored with zero normal strength.
 
 After real generation and native acceptance, commit a receipt at the fixed path
 `tools/godot-package/production_receipts/<unit>.json`. Extend the existing report

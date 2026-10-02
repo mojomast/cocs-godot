@@ -20,9 +20,9 @@ boundaries.
 | Fighting camera readability | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing correction merged at `1bff0281`; six parent source checks pass, native four-stage comparison still pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | Source correction merged at `91ad0ce5`; bounded native follow-up assigned to current grant-C owner after primary Parallax work |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
-| Queued asset integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | 13 private hosted journeys, refined builder contracts and strict shutdown receipts integrated; 15 Node + 5 helper checks pass; awaiting asset-production grant |
+| Queued asset integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Hosted/finish/teardown contracts integrated and passing; emitting exact robot recipe bytes and executable package-receipt conversion before real asset builds |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Extension already integrated; fresh exact-input ledger required after production candidate stabilizes; no current engine grant |
-| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Extend required queued-asset resource/provenance closure and negative tests; preserve strict final preflight and historical release validation |
+| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Seven-unit closure and fighter import-byte preservation integrated at `479ddd9f`; source tests pass; waiting for actual promotions/native acceptance before export |
 
 All workers run in the background, using existing sessions/checkouts. Source work
 may run in parallel. The parent owns merges, stage transitions, explicit heavy
@@ -339,3 +339,28 @@ failures retain failure receipts and cannot become successful outcomes. Parent
 ran all fifteen Node contracts and five helper tests successfully. No engine or
 authority simulation ran; actual build/reopen/import/hosted acceptance remains
 pending the serial asset-production grant after C.
+
+## Final package production requirements integrated
+
+Packaging `78826ea4` is merged as `479ddd9f`. New closure requires all seven
+queued units through explicit committed promotion receipts, exact masters/exports,
+embedded texture and source fingerprints, runtime hooks and recorded-Git input
+validation. The private dressing shader is included. Nine fighter import sidecars
+and their preparer are hash-bound; staged import/export must preserve the exact
+reviewed no-optimizer/no-compression bytes. Historical manifests keep their
+historical validation contract.
+
+Lane verification: 239 source package tests and 50 final targeted tests. Parent
+reran nine relevant import/production/closure tests and actual sidecar inventory
+successfully; `/tmp/opencode/parent-fighter-import-identities.json` and
+`/tmp/opencode/parent-production-assets-audit.json` retain the audit. All seven
+production promotions remain null, so release preflight correctly remains blocked.
+No export, archive, CI dispatch or publication ran.
+
+Producer handoff: `PACKAGING_ASSETS.md`. The material selective-normal mismatch
+noted at the packaging branch's base was already resolved by asset `935e24a0`.
+The asset owner now implements exact serialized robot recipe output and actual
+receipt conversion before builds. Parallax received the explicit revised-master/
+runtime paths and its correct exemption from common embedded-texture fingerprints.
+Promotion records await real outputs and native review; they are not filled from
+source-only inventories.
