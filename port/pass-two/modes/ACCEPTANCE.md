@@ -14,6 +14,15 @@ Evidence root:
 
 `node-final.tap`: **116 tests, 116 passed, zero failures**.
 
+`launcher-final.tap`: **8 additional process-boundary tests passed** (124 total
+across the two final runs). These use explicitly synthetic Node executables,
+not Godot: three menu/owned-route cycles in each launcher preserve settings,
+flush history and close listeners; external lobby never creates owned authority.
+
+```sh
+node --test tools/godot-package/menu_journey.test.mjs tools/godot-package/lobby_ownership.test.mjs
+```
+
 ```sh
 node --test port/pass-two/modes/challenges.test.mjs port/next-port/modes/source-parity.test.mjs game/challenges.test.mjs server/progression.test.mjs tools/godot-package/options.test.mjs tools/godot-package/route_parity.test.mjs tools/godot-package/manifest_validation.test.mjs tools/godot-package/career_path.test.mjs tools/godot-dev/launch_options.test.mjs
 ```
@@ -44,6 +53,10 @@ regressions also pass. `node --check` of the native runner and `git diff --check
 pass; neither executes the engine.
 
 Earlier passing files retained: `challenges-attempt1.tap` and `node-attempt2.tap`.
+`launcher-attempt1.tap` is retained too: the synthetic menu fixtures still supplied
+the old frozen-server entry path. They now supply the new owned-factory path;
+all lifecycle assertions remain intact. External-lobby fixtures explicitly reject
+construction of either factory.
 
 ## VIP failed attempts retained
 

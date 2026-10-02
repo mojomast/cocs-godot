@@ -31,6 +31,7 @@ for (const kind of ['package', 'dev']) {
         if (kind === 'package') {
           for (const name of ['run.mjs','options.mjs','endpoint.mjs','settings_path.mjs','career_path.mjs']) await copy(name,name);
           await put('runtime/server/game-server.mjs',server);
+          await put('runtime/port/pass-two/modes/challenge-authority.mjs',server);
           script = join(root,'run.mjs');
         } else {
           for (const name of ['launch.mjs','launch_options.mjs']) await copy('../godot-dev/'+name,'tools/godot-dev/'+name);
@@ -41,6 +42,7 @@ for (const kind of ['package', 'dev']) {
           await put('port/contracts/source-lock.json',JSON.stringify({godot_version:'test-pinned'}));
           await put('tools/godot-export/semantic.mjs','export function verifySource(){}\n');
           await put('server/game-server.mjs',server);
+          await put('port/pass-two/modes/challenge-authority.mjs',server);
           script = join(root,'tools/godot-dev/launch.mjs');
         }
         if (scenario === 'missing-native') await rm(fake);
