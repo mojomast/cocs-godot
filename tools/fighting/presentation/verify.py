@@ -144,6 +144,13 @@ def run():
     for forbidden in ("OS.create_process", "OS.execute", "PortNetwork", "MENU_ROUTE", "Career."):
         assert forbidden not in main
     assert "const IDS" not in main
+    assert "held |= pressed" in router, "subtick taps must reach held-history core"
+    assert "effects.present_projectiles(state.projectiles,state.fighters)" in main
+    assert "effects.present_fighter(state.fighters[p],visuals[p])" in main
+    assert "effects.set_paused(paused or not focused)" in main
+    for method in ("_process", "_tick", "_present_snapshot_effects"):
+        body = main.split(f"func {method}(",1)[1].split("\nfunc ",1)[0]
+        assert "effects.configure(" not in body, "FX pools cannot rebuild every frame/tick"
     report = {"status":"READY_FOR_ENGINE_DEPENDENCY_INTEGRATION","grammar_files":[str(p.relative_to(ROOT)) for p in files],"camera_cases":cases,"stages":stages,"mapper_behavior":"prepared real InputEvent gate; unrun without engine grant","native_journey":"prepared; unrun","render_acceptance":"unrun","gpu_profile":"unrun"}
     args.evidence.mkdir(parents=True,exist_ok=True)
     (args.evidence / "source-proof.json").write_text(json.dumps(report,indent=2)+"\n")

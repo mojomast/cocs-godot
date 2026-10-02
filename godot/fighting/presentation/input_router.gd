@@ -93,6 +93,9 @@ func command(player: int) -> Dictionary:
 	for action: String in BITS:
 		if _held(player,action): held |= int(BITS[action])
 	var pressed: int = queued[player]
+	# Core derives edges from held history. A complete press/release between
+	# ticks must therefore occupy one command's held mask, then clear next tick.
+	held |= pressed
 	queued[player] = 0
 	if devices[player] >= 0 and (held & 48) == 48:
 		held |= 256

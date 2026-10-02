@@ -42,7 +42,17 @@ Throw-event aliases currently recognized: `throw_start`, `throw_capture`,
 throw capture/tech event vocabulary before native cue acceptance.** An explicit
 remaining-tech-frame snapshot is preferable to elapsed tick inference.
 
-FX configuration sent is `{reduced_motion:bool, quality:"low"|"high"}`. Animation
+FX configuration sent is `{reduced_motion:bool, quality:"low"|"high",session_id}`.
+The concrete director from `52c74a0c` is integrated. Every accepted snapshot calls
+`present_projectiles(projectiles,fighters)`: owner transfer and removal come from
+snapshot presence. `present_fighter(fighter,visual)` runs after animation
+presentation for optional socket accents. Modal/Settings/pause/focus paths call
+`set_paused(true)` immediately, including local audio voices; resume clears it.
+New match allocates/configures once with a new session ID. Round change and seek
+call `reset()` and reset fighter sockets; an event tick floor excludes retained
+pre-boundary contact events. Settings explicitly reconfigure once per user change
+and restore pause/projectile presence without replaying old sound/contact events.
+No frame/tick/snapshot loop configures or recreates the pool. Animation
 is presented at exact current snapshot time (`alpha=0`); no autonomous combat
 clock or camera shake is introduced. Simulation steps exactly twice-player
 commands at project physics 60 Hz. AI/dummy commands use normal core input paths.
@@ -56,7 +66,15 @@ Public API: `ingest(InputEvent)`, `command(player)->Dictionary`,
 `load_settings()`, `save_settings()->Error`.
 
 `command()` returns exactly `{axis_x,axis_y,held,pressed}` and consumes queued edges
-once. Both opposite axes neutralize. Up is +1; down is -1. Keyboard echo is
+once. The C1 core derives pressed edges from **held history**, not caller hints.
+A button pressed and released entirely between simulation ticks is latched into
+one command's held mask, then releases on the following command. This includes
+short Guard taps and pad Super chords; it does not leave Guard held indefinitely.
+Modal/focus/unplug clears unconsumed latches and requires fresh physical presses.
+The tech dummy emits real separated held samples rather than repeating pressed
+hints while Grab remains continuously held. Pad Super keeps Mobility/Grab bits;
+the core's Super-first priority owns recognition. Both opposite axes neutralize.
+Up is +1; down is -1. Keyboard echo is
 ignored, physical codes are used, release does not generate negative edge.
 D-pad and analog sources are unioned per direction before SOCD cleaning.
 Deadzone defaults to .28, configurable .20/.28/.40 in the UI (disk values .1–.8).
@@ -144,7 +162,8 @@ scale and HUD150 fit still need direct inspection; projection math is not art pr
 
 ## Verification and next commands
 
-Completed: gdtoolkit 4.5 grammar parse on eight scripts; exact original recipe and
+Completed: gdtoolkit 4.5 grammar parse on eight owned scripts plus the two integrated
+FX scripts; exact original recipe and
 accepted Helix hashes; sampled floor support; real resource crop counts; 918
 camera extrema cases; source isolation checks. External evidence:
 `/home/mojo/.tmp-on-disk/cocs-fighting-presentation-evidence-20261002/source-proof.json`.
@@ -167,7 +186,8 @@ LP_NUM_THREADS=1 "$GODOT" --path godot res://fighting/main.tscn
 
 The mapper gate uses actual InputEventKey/JoypadButton/JoypadMotion events,
 including edge/held/SOCD, modal fresh-press, distinct devices, unplug, chord,
-deadzone, rebind/reserved/duplicate keys and unknown-field roundtrip. **Prepared,
+deadzone, rebind/reserved/duplicate keys, unknown-field roundtrip, short-tap held
+latches/next-tick release and clear-before-consumption. **Prepared,
 unrun.** `journey.gd` uses the real scene and Input.parse_input_event to navigate
 selection/start/play/guard/pause/move list/Settings/focus/results/rematch/select/Home.
 It uses no direct combat writes. Focus notification is a harness exercise rather
