@@ -50,6 +50,7 @@ func record(event: InputEvent, active: bool, actor: Dictionary = {}) -> void:
 	held[token] = true
 	if token == "m1": pulses.fire = true
 	if code == KEY_SPACE: pulses.jump = true
+	if code == KEY_X: pulses.mobility = true
 	if EDGE_KEYS.has(code): pulses[EDGE_KEYS[code]] = true
 	if code == KEY_R or actor.get("reloading", false): cancel_aim()
 
@@ -71,7 +72,7 @@ func sample(yaw: float, pitch: float, active: bool) -> Dictionary:
 	var direction := Motion.movement(yaw, float(key(KEY_W))-float(key(KEY_S)), float(key(KEY_D))-float(key(KEY_A)))
 	var value := {"x":direction.x, "z":direction.y, "yaw":yaw, "pitch":pitch,
 		"fire":held.has("m1") or pulses.has("fire"), "ads":aiming(),
-		"jump":key(KEY_SPACE) or pulses.has("jump"), "mobility":key(KEY_X),
+		"jump":key(KEY_SPACE) or pulses.has("jump"), "mobility":key(KEY_X) or pulses.has("mobility"),
 		"sprint":key(KEY_SHIFT), "crouch":key(KEY_CTRL) or key(KEY_C),
 		"altFire":key(KEY_Z) or held.has("m3")}
 	for action: String in EDGE_KEYS.values(): value[action] = pulses.has(action)

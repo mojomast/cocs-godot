@@ -718,6 +718,13 @@ func on_snapshot(frame: Dictionary) -> void:
 	pickups.apply_state(frame.state)
 	combat.apply_state(frame.state)
 	presentation.apply_state(frame.state, client.actor_id)
+	# Passive source-ability adapter; also reached by route-specific session roots.
+	if is_inside_tree() and not has_node("PlayerGameplay"):
+		var gameplay := preload("res://player_gameplay/session_binding.gd").new()
+		gameplay.name = "PlayerGameplay"
+		add_child(gameplay)
+		gameplay.bind_session(self)
+		gameplay.observe(frame)
 	av_snapshot(frame.state)
 	observe_vehicles(frame.state)
 	if phase != 3: return
