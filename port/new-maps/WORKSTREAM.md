@@ -46,11 +46,11 @@ Blender authoring scripts, editable master, GLB, native data and focused tests.
 
 ## Verification and resource queue
 
-**Gravemill Foundry now owns the exclusive Blender/Godot slot.** Helix released
-all owned processes after its functional native checkpoint. Foundry received an
-explicit production grant and must merge verified runtime `e731fd53` first.
-Parallax follows by explicit grant. Helix is preparing a source/code-only
-architectural revision and will need another production slot.
+**Parallax Observatory now owns the exclusive Blender/Godot slot.** Foundry
+released all owned processes after six hosted mode rounds and its production
+checkpoint. Parallax received an explicit grant and must merge verified runtime
+`e731fd53` first. Helix's architectural revision is ready for another production
+slot; Foundry is preparing its own deeper revision through code/source checks.
 Map agents must return `READY FOR BLENDER` and receive an explicit parent grant
 before Blender, import, bake, rendering or Godot runs. Use serial heavy processes
 and `LP_NUM_THREADS=1`; no nested agents.
@@ -174,5 +174,40 @@ failed attempts and earlier releases.
   leaves functional-checkpoint runtime geometry and evidence intact. Test probes
   moved to `godot/tests/new_maps/helix_conservatory/`; they must be retargeted to
   the candidate before new native acceptance. No Blender/Godot ran for this
-  revision. Foundry retains the slot, followed by Parallax; Helix awaits another
+  revision. Parallax now holds the slot; Helix awaits another
   explicit grant for export, visual review and affected native revalidation.
+
+## Foundry functional checkpoint and parent art review
+
+- **`afbe57dc` assets/proof + `ec041aee` shared bindings:** Blender master reopened,
+  GLB imported, six source fixtures and six hosted production-native rounds passed.
+  Payload delivered all three checkpoints; Combined Arms mounted, drove 76.88 m
+  through a bend, dismounted and captured a zone for a 50-point win. DM/TDM,
+  Assault and Domination also completed source-scored rounds. Setup and passive/
+  retreating opposition are controlled; no actor/score/position injection.
+- Production collision checks passed 908 support rays, 908 standing capsules,
+  160 wall-contact moves and window/gallery/ceiling/underside checks. Geometry:
+  `357e2ef998a52135d273a30e2638392a8dececf1fa15f0b17f33c612976d853e`.
+  Art: 66,284 triangles, eight batches; 2,808 authoritative collision triangles.
+  Static inspection counted 4,914 nodes and 8 base art draws (38–40 with shadows).
+- Autonomous observation is separate: Domination victory; payload advanced
+  144.41 m and one checkpoint in 120 seconds without completing delivery.
+  Walkthrough/payload clips contain roughly 9.42/9.77 captured frames per second,
+  timestamp-resampled to 15 fps. They are short samples (4.46/3.891 seconds), not
+  native-15fps capture, long full-round footage or dedicated-GPU measurements.
+- Parent inspected overview, crusher, cooling, assay and crown views. **Functional
+  proof is accepted; architectural sufficiency remains pending.** The large open
+  yard, isolated machines, regular grid and near-identical gallery interiors need
+  substantial district/building development. Foundry is preparing a staged
+  revision: crusher house, furnace district, differentiated cooling/assay interiors,
+  integrated fractured geology and distinct payload encounters, retaining tested
+  vehicle clearance and source-compatible traversal.
+- Existing checkpoint assets/results stay on the isolated branch. Revised
+  geometry will require new hashes, source checks, Blender review and native
+  acceptance; it must not inherit these results. Parent package acceptance is
+  pending and the published game does not yet contain Foundry.
+- Published prototype evidence: [overview](https://github.com/mojomast/cocs-godot/releases/download/quiet-relay-gallery-2026-09-30/foundry-prototype-overview.png),
+  [crusher approach](https://github.com/mojomast/cocs-godot/releases/download/quiet-relay-gallery-2026-09-30/foundry-prototype-crusher.png),
+  [cooling gallery](https://github.com/mojomast/cocs-godot/releases/download/quiet-relay-gallery-2026-09-30/foundry-prototype-cooling.png).
+  `foundry-prototype-provenance.json` labels the pending revision and the short
+  resampled cadence of `foundry-prototype-payload-sample.mp4`.

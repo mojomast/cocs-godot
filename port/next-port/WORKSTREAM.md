@@ -48,7 +48,7 @@ its `port/next-port/<lane>/` directory, with actual source/native anchors.
 
 ## Shared-file and engine coordination
 
-- **Gravemill Foundry owns the exclusive local Blender/Godot slot now.**
+- **Parallax Observatory owns the exclusive local Blender/Godot slot now.**
   Parent completed local canonical, export, Linux package and three exported
    graphical checks. Windows verification also passed. Other lanes are research,
   code and Node-only until explicitly granted the engine. Heavy native/Blender

@@ -22,9 +22,9 @@ actual verification, remaining gaps and preserved failure evidence.
 
 ## Engine and integration
 
-**Gravemill Foundry currently owns the exclusive local Blender/Godot slot.**
-Helix released after a functional native checkpoint and is preparing a further
-architectural revision. Parallax follows through an explicit grant. Feature agents
+**Parallax Observatory currently owns the exclusive local Blender/Godot slot.**
+Helix and Foundry released after functional native checkpoints and have further
+architectural revisions in the production queue. Feature agents
 may audit, code and run Node tests now; they return `READY FOR ENGINE` and wait
 for their grant before imports, native tests, baking or rendering.
 
@@ -114,7 +114,7 @@ coherent player-visible batch, then verify it through actual lifecycle journeys.
   reconnect/results and seat transitions. The connected runner additionally
   checks released freecam across three real snapshots. Grammar, generated-scene,
   oracle and whitespace checks passed; native continuity remains unexecuted.
-  Foundry retains the heavy slot.
+  Parallax now holds the heavy slot.
 
 ## Parent follow-up
 
