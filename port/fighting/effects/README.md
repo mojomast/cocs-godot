@@ -20,7 +20,8 @@ Foundry revision 3 now owns the exclusive Godot/Blender/import/render/audio/ffmp
 - `tools/fighting/effects/build.mjs`: deterministic geometry/audio source authoring;
   `--check` compares committed bytes rather than trusting recorded hashes.
 - `tools/fighting/effects/content_contract.json`: minimal effects-only projection
-  of the concrete content roster at `827d24a8` + `79d98652`, with its actual SHA-256,
+  of the concrete content roster at `827d24a8` + `79d98652`, reconciled with
+  `bcb1effe` + `242d5741`, with its actual SHA-256,
   exact effect IDs/levels and declared movement/throw/counter/stance windows.
   `sync_content.mjs` refreshes it from a roster path without writing content files.
 - `tools/fighting/effects/verify.test.mjs`: source coverage, structural uniqueness,

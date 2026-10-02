@@ -143,6 +143,21 @@ unchanged. `content/FREEZE.json` now records the reviewed updated DESIGN hash;
 runtime roster/rules, source identities and all other content hashes are unchanged.
 Initial failure is retained at `/tmp/opencode/fighting-parent-content-tests.tap`.
 
+Content audit corrections `bcb1effe` + `242d5741` are now merged as `1c19f1ca` +
+`70c1ce4b`. The enforced freeze now covers machine-readable balance/state/schema
+inputs rather than editable prose. Full optional-field validation and sparse
+trace expansion are implemented. All 18 grounded combo candidates use the legal
+660 mm pushbox width; nine airborne candidates remain unchanged. DeepSeek charge
+setup includes ordinary-input defender following. The lane passed 222 source
+tests, including clean-directory regeneration; actual-core combo proof remains
+pending. Original 550 mm fixture failure is documented, not erased.
+
+Roster hash is now `a736dcfe91d44a08b165e1f7191420617984a561972505b0dd53df1b22cd4748`.
+Parent resynchronized the effects-only contract/catalog and ran its five source
+tests successfully. Only roster hash/provenance fields changed in effect outputs;
+all 54 PCM files, moves/stats/resources/rules and animation timings are unchanged.
+Core owner received the exact corrections and final data contract.
+
 - Engine report `87b7fc4f` (parent `98064fb4`) received. Parent independently
   verified Castagne's v0.58 Godot-3 release and Sakuga's Godot-4.7/.NET README.
   An isolated local fixed-tick Godot fighter is the leading recommendation;

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "units_per_meter": 1000,
-  "content_roster_sha256": "2398099cacb5e6b4773d3aa3d9bdece56e005289aab94ecd776ce95b2bf59f2d",
+  "content_roster_sha256": "a736dcfe91d44a08b165e1f7191420617984a561972505b0dd53df1b22cd4748",
   "families": {
     "chatgpt": {
       "color": "#57e6cd",

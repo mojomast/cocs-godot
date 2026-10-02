@@ -20,5 +20,5 @@ for (const operator of roster.operators) {
   }
 }
 await writeFile(path.join(root,'tools/fighting/effects/content_contract.json'),JSON.stringify({version:1,
-  source_commits:['827d24a8','79d98652'],roster_sha256:createHash('sha256').update(bytes).digest('hex'),operators},null,2)+'\n');
+  source_commits:['827d24a8','79d98652','bcb1effe','242d5741'],roster_sha256:createHash('sha256').update(bytes).digest('hex'),operators},null,2)+'\n');
 console.log('Refreshed effects-only contract for '+Object.values(operators).reduce((n,o)=>n+Object.keys(o).length,0)+' actual moves');
