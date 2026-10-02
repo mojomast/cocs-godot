@@ -27,7 +27,7 @@ function floor(name,poly,material='saltstone'){
 }
 function disk(name,x,z,r,n=12,material='saltstone'){floor(name,Array.from({length:n},(_,i)=>[x+Math.cos(i*2*Math.PI/n)*r,z+Math.sin(i*2*Math.PI/n)*r]),material);}
 for(const route of routes){
- route.points.forEach(([x,z],i)=>disk(`${route.id}-joint-${i}`,x,z,route.width/2,12,'paving'));
+ route.points.forEach(([x,z],i)=>disk(`${route.id}-joint-${i}`,x,z,route.width/2,12,route.id==='tidal-cistern'?'cistern':'saltstone'));
  for(let i=1;i<route.points.length;i++){
   const a=route.points[i-1],b=route.points[i],dx=b[0]-a[0],dz=b[1]-a[1],l=Math.hypot(dx,dz),nx=-dz/l*route.width/2,nz=dx/l*route.width/2;
   floor(`${route.id}-span-${i}`,[[a[0]+nx,a[1]+nz],[b[0]+nx,b[1]+nz],[b[0]-nx,b[1]-nz],[a[0]-nx,a[1]-nz]],route.id==='tidal-cistern'?'cistern':'saltstone');
@@ -57,6 +57,25 @@ for(const [name,x,z,y] of [['ephemeris-vault',-36,0,12],['tidal-pump-vault',24,7
 // advertised stacked walkable routes (unsupported by highest-floor authority).
 slab('meridian-service-gallery',36,0,8,24,18,19);
 for(const z of [-11,11])box(`gallery-pier-${z}`,36,z,2,2,12,18,'saltstone');
+// Monumental polar instrument hall: four open axial mouths retain the upper
+// arc and central crosslink. This is a third real, walkable enclosed interior.
+floor('polar-hall-foundation',[[-19,-97],[19,-97],[19,-71],[-19,-71]],'paving');
+for(const side of [-1,1]){
+ for(const half of [-1,1]){
+  box(`polar-hall-end-${side}-${half}`,side*18, -84+half*9,1,8,24,32,'saltstone');
+  box(`polar-hall-side-${side}-${half}`,half*12,-84+side*12,12,1,24,32,'saltstone');
+ }
+}
+slab('polar-hall-ceiling',0,-84,37,25,32,33);
+// Public/instrument street wings: source-solid inhabited masses, recessed
+// mirror panels and roof machinery will be authored against these footprints.
+for(const [x,z,w,d,h] of [[-84,10,12,5,23],[-66,-10,10,5,25],[-18,-10,9,5,22],[18,10,9,5,24],[84,-10,12,5,25],[82,10,10,5,23]]){
+ box(`institute-wing-${x}-${z}`,x,z,w,d,-17,h,z<0?'saltstone':'metal');
+}
+// Deep eastern optical arcade; broad axial passage and open sides connect
+// the instrument district to the east crosslink without phantom openings.
+slab('optical-arcade-ceiling',69,0,30,17,19,20);
+for(const x of [56,64,72,80])for(const z of [-7.6,7.6])box(`arcade-column-${x}-${z}`,x,z,1,1,12,19,'saltstone');
 // Instrument masses and cover stay off the authored route center lines.
 for(const side of [-1,1]){
  box(`district-baffle-${side}`,side*114,10,9,2,12,15,'saltstone');
@@ -79,6 +98,7 @@ for(const surface of surfaces.filter(s=>s.walkable))for(let i=0;i<surface.vertic
   if(terrainSupportAt(x+nx*.8,z+nz*.8,arena.terrain))continue;
   const p=[a[0]+dx*j/n,height(a[2]+dz*j/n),a[2]+dz*j/n],q=[a[0]+dx*(j+1)/n,height(a[2]+dz*(j+1)/n),a[2]+dz*(j+1)/n];
   walls.push({id:`parapet-${surface.id}-${i}-${j}`,material:'saltstone',vertices:[p,q,[q[0],q[1]+1.1,q[2]],[p[0],p[1]+1.1,p[2]]]});
+  walls.push({id:`cliff-${surface.id}-${i}-${j}`,material:'saltstone',vertices:[[p[0],-17,p[2]],[q[0],-17,q[2]],q,p]});
  }
 }
 // terrainWallSegments consumes polygon perimeter edges, not face area. A quad
@@ -88,6 +108,7 @@ for(const surface of surfaces.filter(s=>s.walkable))for(let i=0;i<surface.vertic
 walls.splice(0,walls.length,...walls.flatMap(w=>Array.from({length:w.vertices.length-2},(_,i)=>({...w,id:`${w.id}-tri-${i}`,vertices:[w.vertices[0],w.vertices[i+1],w.vertices[i+2]]}))));
 const geometryHash=createHash('sha256').update(canonical(arena)).digest('hex');
 const art={seed:20261002,palette:{saltstone:'#b9b5a4',paving:'#8e919a',metal:'#242a38',ochre:'#ba863d',mirror:'#707d99',cistern:'#565b74',sea:'#242c49'},landmarks:[{id:'tilting-primary-dish',kind:'dish',x:-68,y:37,z:-94,r:27,tilt:.57},{id:'eastern-spectrograph',kind:'dish',x:79,y:29,z:-83,r:16,tilt:-.38},{id:'polar-armillary',kind:'armillary',x:0,y:42,z:-84,r:14},{id:'arrival-dome',kind:'dome',x:-116,y:19,z:19,r:14},{id:'instrument-dome',kind:'dome',x:115,y:19,z:18,r:12}],cameras:[{id:'arrival-eye',eye:[-111,13.65,-3],target:[0,20,-60]},{id:'lens-eye',eye:[8,13.65,5],target:[-50,30,-85]},{id:'cistern-eye',eye:[-10,1.65,78],target:[24,2,78]},{id:'overview',eye:[185,160,210],target:[0,10,0]}],budgets:{triangles:160000,materialBatches:7,glbBytes:16000000}};
+art.cameras.push({id:'archive-interior',eye:[-45,13.65,0],target:[-25,14,3]},{id:'polar-interior',eye:[-12,25.65,-84],target:[13,28,-80]},{id:'arcade-eye',eye:[54,13.65,0],target:[89,16,0]},{id:'pump-interior',eye:[15,1.65,78],target:[34,2.5,81]});
 const recipe={schemaVersion:1,...arena,art,routes:routes.map(r=>({...r,points:r.points.map(([x,z])=>({x,y:height(z),z}))}))};
 const recipeBytes=JSON.stringify(recipe,null,2)+'\n';
 const data={schemaVersion:1,id,name:arena.name,geometryHash,recipeHash:createHash('sha256').update(recipeBytes).digest('hex'),arena,spawnPoints:arena.spawns.map(([x,z])=>({x,y:terrainSupportAt(x,z,arena.terrain)?.y,z})),routes:recipe.routes,art};

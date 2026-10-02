@@ -1,0 +1,13 @@
+{
+  "id": "parallax-observatory",
+  "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+  "recipeHash": "e949e43d5546ec8b0c9024810f1da6229152e370ad640ecf27ecb54c05f2e23d",
+  "seed": 20261002,
+  "triangles": 148239,
+  "materialBatches": 7,
+  "editableObjects": 24619,
+  "glbBytes": 8646208,
+  "glbSha256": "b3ea4ec57f57f6db83e1acab40dc95135562347ef884cc8f33ba067af8521bb1",
+  "blendSha256": "fcd7f284443c45d08177837a23af530b1667deb106bddb8822d507f5655ca090",
+  "nativeAcceptance": "pending"
+}

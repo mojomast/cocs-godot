@@ -1,69 +1,67 @@
-# Acceptance — READY FOR BLENDER
+# Parallax Observatory — source and native acceptance
 
-## Completed in Node / static Python syntax only
+Geometry: `906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554`.
+Recipe: `e949e43d5546ec8b0c9024810f1da6229152e370ad640ecf27ecb54c05f2e23d`.
 
-Source geometry hash: `916164f0417369f37506e3908e940c961ea142aa349dcda3226ca1f316a040eb`.
+## Source authority
 
-- Deterministic generator `--check` passes.
-- 118 terrain surfaces, 1,688 individual source wall triangles (844 original quads), 38 source blocks, three fully modeled ceiling slabs.
-- Real frozen derivative `Match` factory intercepts only arena assignment, matching the world adapter pattern.
-- 689 source navigation nodes; all 689 in one connected component.
-- All 21 spawn/pickup/flag/objective locations supported, unobstructed and connected via a real `walkEdge` to that component.
-- Twelve real source movement journeys: six routes × both directions, no jump/teleport/lift, zero measured floor-height error.
-- CTF: upper and lower routes physically carry flags back; third middle-route capture completes the source round. Enemy pickup, dropped-flag return, score and terminal state asserted.
-- DM / team DM: source damage, respawn, five-kill scoring and terminal state fixtures pass.
-- KOTH / uplink / holdout: real zone progression and full source-round terminal states pass. Zone fixtures position actors deliberately; these are not native input journeys.
-- Real source health pickup is collected through `Match.step`.
-- Up/down ceiling rays, support beneath nonwalkable roofs, open arch LOS, solid wall LOS, slope ceiling and water-void queries pass.
-- Blender authoring script parses with Python AST; Blender/bpy has not run.
+- Deterministic standalone generation; no legacy overhead expansion.
+- 123 terrain surfaces, 60 source blocks, five complete nonwalkable ceiling slabs and 3,380 individual source wall/cliff triangles.
+- 688/688 source navigation nodes connected; all 21 gameplay targets supported, clear and reachable.
+- Six routes walked both directions with zero measured floor-height error. Real upper/lower flag-carrier journeys, flag return and health pickup pass.
+- Completed source DM, team DM, CTF, KOTH, uplink and holdout rounds. Source zone/damage fixtures include deliberate placement; they are distinct from the native normal-input evidence below.
+- Sustained movement verifies ground, upper and sloped parapets, both block faces, open vault passages and gallery clearance. Original quad-wall regression and its triangulation correction are retained in the evidence root.
+- Separate seeded built-in AI observations: a bot captured a CTF flag within 90 seconds; KOTH bots captured and scored. Human seat 0 is passive. Bot movement distances include respawn displacement and are not precise travelled-path measurements. This bounded observation is not a broad balance claim.
 
-Reproduce:
+## Actual Blender assets
+
+First actual images were rejected locally; the retained iterations document the architecture revision. The master retains 24,619 editable objects, seven export batches and eight cameras. The `.blend` is outside Godot; its fresh-process reopen receipt is in `provenance.json`.
+
+| Measurement | Actual | Limit |
+|---|---:|---:|
+| GLB triangles | 148,239 | 160,000 |
+| GLB bytes | 8,646,208 | 16,000,000 |
+| Material batches | 7 | 7 |
+
+Final GLB/master byte hashes are recorded in `provenance.json` and the asset manifest, and checked by `audit-art.mjs`.
+
+Overview and archive, polar-hall, pump-vault and arrival eye views were actually inspected. The revised map has three enclosed instrument interiors, a columned arcade, service gallery, six institute wings, faceted roof lanterns, dishes and armillary rings, source-colliding cliff masonry and readable tier crosslinks. Counts alone are not visual-quality evidence; retained images are the review artifact.
+
+## Native physics and production rounds
+
+Production `map.gd` loads the explicit nested GLB, with seven mesh/surface batches and no duplicate fallback floor rendering. All gameplay colliders come from the source arena: 3,563 shape nodes / 4,686 triangles.
+
+- Exact source/native terrain-wall triangle multisets match.
+- 859 route support rays and standing capsules pass.
+- Direct GLB barycentric checks cover all 859 exact center points with maximum floor error below 0.8 micrometres. Six temporary native art-ray seam cases use a documented 1 cm X/Z offset; authority center rays pass without offset.
+- Both-face capsule contacts stop approximately 0.4200–0.4203 m from ground/upper/ramped parapets and vault walls, matching the 0.42 m radius. Isolated collision layers distinguish target-wall contact from adjacent parapets.
+- All five ceilings stop upward capsules; real arch rays and traversable routes remain clear.
+
+Hosted fixtures use real native `Input.parse_input_event` key/mouse events, the unchanged production sampler, WebSocket, source `Match`, native snapshots and HUD. Node reads positions for navigation but injects no actor positions, health, flags, scores or objective state. Opposition is a controlled passive wire peer, moved by ordinary wire input to the duel site for DM/TDM.
+
+| Mode | Source seconds | Terminal condition |
+|---|---:|---|
+| Deathmatch | 91.68 | Five frags |
+| Team deathmatch | 87.07 | Five frags |
+| CTF | 95.92 | Upper outbound + lower flag-carry return, capture |
+| KOTH | 47.33 | Objective score |
+| Uplink | 75.02 | Objective score |
+| Holdout | 76.10 | Objective score |
+
+These six modes are the advertised capabilities. The table records the original 640×400 graphical, non-capturing fixtures. They are functional input fixtures, not autonomous native matchmaking or competitive-balance evidence. The later full-viewport visual fixtures use cautious crouched input and have different journey durations; their HUD, source outcomes and actual capture cadence are recorded separately in `VISUAL.md` and `visual-validation.json`.
+
+## Reproduction and evidence
 
 ```sh
 node tools/godot-multiplayer/new-maps/parallax-observatory/generate.mjs --check
 node port/new-maps/parallax-observatory/acceptance.mjs
 node port/new-maps/parallax-observatory/wall-contacts.mjs
-```
-
-Evidence directory: `/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/`.
-`node-acceptance-wallfix.json` contains the current measured results; `node-acceptance.json` retains the initial acceptance. `failures.md` retains corrected test failures.
-
-### Source movement wall correction (Gravemill finding)
-
-`terrainWallSegments` considers perimeter edges. Tall quad walls have no edge intersecting a standing actor's body span. All source walls now use individual triangles, whose diagonals provide that span; visual triangles are exactly identical. A comparison against commit `408ed002` verifies the arena is otherwise byte-structure equivalent. Blender emission accepts those triangles and emits each parapet cap only once.
-
-`wall-contacts.mjs` tests 180 consecutive input frames (3 s) from each side. Contact aprons are explicitly synthetic supported floors around exact production wall footprints so the sea does not invalidate outside contacts; none is added to the map. Ground/upper tall-wall regressions extend those footprints to 4 m and reproduce the reported source bug.
-
-| Contact | Quad signed stopping distance | Triangulated distance | Actor radius |
-|---|---:|---:|---:|
-| Ground 4 m regression, both sides | −22.335 m (crossed) | 0.4213 m | 0.42 m |
-| Upper 4 m regression, both sides | −22.335 m (crossed) | 0.4213 m | 0.42 m |
-| Exact ground/upper low parapets, both sides | 0.4213 m | 0.4213 m | 0.42 m |
-| Exact ramped parapet, both sides | 0.4311 m | 0.4311 m | 0.42 m |
-
-The existing low parapets were already movement-solid; this is not misreported as a production tall-wall failure. Vault walls use solid blocks and pass independent two-face source contact tests on supported aprons. Real map tests also push into vault side walls, move 33.935 m through each open arch/vault in both directions over 4 s, walk under the service gallery, and launch actors upward against all three real slab undersides. The recipe has no separate window passage to claim as tested.
-
-Evidence: `wall-contacts-before.json`, `wall-contacts-after.json`, `node-acceptance-wallfix.json`. All six routes in both directions, pickups, flag returns/captures and all six source full-round fixtures pass after triangulation. Navigation remains 689/689 connected.
-
-## Explicit slot boundary
-
-No Blender, Godot, engine import, bake or render has run in this workstream. No GLB, `.blend`, screenshots or walkthrough clip exists yet. Native menu/room registration is parent-owned and remains pending. No native acceptance, visual quality, FPS, asset-size result or HUD-readability result is claimed.
-
-After explicit parent grant, serial execution only, `LP_NUM_THREADS=1`:
-
-```sh
-/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python tools/godot-multiplayer/new-maps/parallax-observatory/blender_author.py -- --slot-granted --render
 node port/new-maps/parallax-observatory/audit-art.mjs
+node port/new-maps/parallax-observatory/native-journey.mjs ctf
 ```
 
-Verify binary path first. Use pinned native engine `/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64` only after parent integration and grant.
+Native tests require the exclusive heavy slot, pinned Godot 4.5.2 and `LP_NUM_THREADS=1`. Review uses CPU Cycles in Blender 4.5.14 and llvmpipe for Godot; there is no GPU performance claim.
 
-Still required:
-1. Inspect actual three eye-level frames and overview, revise art where needed, retain failures.
-2. Production GLB import, source geometryHash matching, material/collision parity and measured asset budgets.
-3. Actual native input journeys over upper/lower routes and flag pickup/return/capture; record walkthrough clip.
-4. Production CTF, zone and DM room acceptance, wide/compact HUD objective readability, readable sea hazards and cover sightlines.
-5. Check decorative dish/dome/armillary clearance in the engine and source parity at every apparent opening.
-6. Publish image/clip paths and explicitly release the engine/Blender slot after acceptance.
+Evidence root: `/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/`. Failed builds, import crashes and rejected input-driver attempts remain there. Headless pointer capture did not exercise keyboard movement; accepted input fixtures run under Xvfb. The editor import succeeded with `--headless --single-threaded-scene --recovery-mode --import` after earlier editor crashes.
 
-**Engine/Blender slot status: not acquired, not used. Waiting for explicit grant.**
+Parent retains package/export closure and extracted platform gates. Original seven map assets/data and frozen source cores were byte-compared unchanged. Shared bindings are delivered separately from owned map assets/tests.
