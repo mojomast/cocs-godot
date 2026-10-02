@@ -22,6 +22,11 @@ at `84868923`. The branch now includes the actual parent assets/finishes/catalog
   surfaces, legible district landmarks, actual luminous fixtures and useful
   framing. The old cinematic's images do not prove those revisions. Native
   inspection of the six prepared splines remains mandatory after final assets.
+  I read the actual retained production-C `archive-interior-full.png` and
+  `pump-interior-full.png`: the archive's storage/retrieval walls and ceiling
+  runners read differently from the pump's valves/duct trays, with restrained
+  warm structural accents and clear portal depth. This is useful camera/material
+  context, not new trailer footage or a reason to add Parallax to the campaign.
 
 ## Executable additions, not receipt promises
 
@@ -72,6 +77,16 @@ production menu installation or native receipt was manufactured. Robot grant
 robot producer. Historical source-attempt-01/02 and all v2 releases/captures remain
 preserved, but are stale for this changed candidate and cannot be reused as final
 production proof.
+
+Final resumed source checks at `d45e3b45` passed **9/9** with the same authority-test
+exclusion. `--plan` completed: 16 shots / 75 seconds / 1,800 planned frames, ten
+registered worlds, the six expected pending units above. Exact cinematic input
+digest: `3be828e57107e81dfec03801423e75fa048809b17e91d23607f937b2b50f3a8a`.
+The read-only Python identity adapter passed AST syntax checking. Retained outputs:
+`/home/mojo/.tmp-on-disk/cocs-expansion-four-trailer-evidence-20261002/resume-5d33287a/{source-tests.tap,plan.json}`.
+The complete registered source gate includes the pre-existing offline match-step
+test and was not rerun under this resume's stricter constraint; no native parser,
+installed-menu or video acceptance is claimed. No owned worker remains running.
 
 ## Parent integration
 
