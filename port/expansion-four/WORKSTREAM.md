@@ -22,6 +22,25 @@ actual ordinary-input lap and hosted native acceptance pass.
 
 ## Source/code checkpoints
 
+- **Vehicles — `91fb48e4` + isolated hooks `ce739609`, ready for Blender.**
+  Source-audited Puma, Titan and Scout receive nine authored LOD recipes and an
+  optional attachment adapter preserving procedural fallback and existing wheel
+  motion. All five fleet identities were audited; no new gameplay vehicle type
+  was invented. No master or GLB has been generated yet.
+- **66/66 Node checks passed** (ten new asset contracts plus 56 existing fleet
+  regressions), with ten asset checks repeated after the shared hooks. Python
+  syntax and frozen core identity passed. Recipe counts precede Blender modifiers;
+  material/draw/import/frame budgets remain unmeasured.
+- Native review must verify barrel mouths against source muzzle functions: source
+  turrets orbit the vehicle origin independently of cosmetic hull pitch/roll, so
+  the adapter compensates offset mounts. Scout's existing tire width exceeds its
+  source OBB by 1 cm per side, explicitly retained for review. The source bullet
+  collider remains a solid yaw-only OBB, including visually open cage spaces.
+- Required next gates: missing-asset fallback before generation, real Blender
+  build/reopen, native assembly/pose and weather isolation, source-wire driving/
+  crew/fire/repair/wreck journeys, silhouette/LOD review and wide/compact captures.
+  The four shared fleet-file hooks remain isolated pending parent integration.
+
 - **Stormglass — `e723b2fd`, ready for Blender.** A 1,191 m circuit with 21
   corners and 28 m clear road width links terminal, curved freight-vault and
   quay/surgeworks districts, with three seawall gates and 31 building modules.
