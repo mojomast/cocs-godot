@@ -136,3 +136,31 @@ Then cherry-pick `52e66abe`, read `FINAL_ACCEPTANCE.md`, and start a fresh ledge
 for the changed matrix/runner identity. Never resume the old report under changed
 contracts or convert historical combo/native receipts into new-candidate passes.
 Current integration owner retains the exclusive slot. No export grant is implied.
+
+## Latest native milestone and next handoff
+
+Parent inspected the integration owner's retained `NATIVE_CHECKPOINT_12.md` and
+`actual-content-54-route-summary.json`. At tested `c05ea057`, **all 54 authored
+combo/facing cases pass**, with uninterrupted required contacts and replay equality;
+core, invariants and pair-seek pass as well. Replay subsequently passes 17/17 at
+`cad1f411`. These integration commits have not yet been merged into the parent,
+and cross-candidate observations are not a final release attestation.
+
+All-nine operator lifecycle and both Helix/Foundry Moth map proofs passed. Eleven
+district Off/Low/Full capture runs and 17 operator captures are retained. Parent
+inspected the all-nine/Meta comparison and Helix archive; the archive sign is
+mirrored/backwards in the reviewed view. That is an actual visual defect still
+assigned to the integration owner, despite passing structural checks.
+
+The parent requested a bounded closeout of the current LATTICE/spectator work and
+sign correction, then immutable commits and **explicit heavy-slot release** so
+Meta/Mistral fighting production can proceed. Remaining baseline failures must be
+retained with concrete repros for the next integration pass, not silently waived.
+No fighting production grant has been issued before that release.
+
+Native inspection gallery (32 original-resolution images, HTTP/hash verified):
+`http://100.125.104.79:8796/native-moth-review/`. It explicitly labels ongoing
+visual review, software rendering, and the fact that these are FPS operator
+models rather than produced fighting rigs. The gallery now uses the transient
+user service `cocs-screenshot-gallery-8796.service` so tool-shell restarts do not
+take down the preview server. It remains bound only to `100.125.104.79:8796`.
