@@ -1,0 +1,210 @@
+{
+  "status": "source correction verified; native emission appearance/lifecycle pending",
+  "parent": "bb02e34b",
+  "change": "preserve exact imported GM / orange luminaire material using existing exclusion branch",
+  "profile_sha256": "8d7f94f29f15e336fb1c9141b707a43718ce4c5a463eb03a13412e593eaa51e5",
+  "source_receipt_sha256": "b7c2825cebcbe6f3ae29fb5c97a1953195baab532e3572a6f1dd68b55544b0b3",
+  "tests": {
+    "shared_node_suite": {
+      "passed": 11,
+      "failed": 0
+    },
+    "foundry_generator_resource_face_emission_audit": "passed",
+    "deterministic_regeneration": "passed",
+    "seven_retained_material_entries_and_all_placements_match_parent": "passed",
+    "gdparse_proof_gd": "passed grammar only; no native typecheck",
+    "native_emission_lifecycle": "prepared; not run",
+    "native_post_fix_captures": "not run"
+  },
+  "reviewed_native_B_districts": [
+    {
+      "district": "foundry-assay",
+      "reviewed_images": [
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-assay/gravemill-foundry-flat-000.png",
+          "sha256": "9de2d89822f2ea79b3603b5792966cb6039b574c71b6491dd3fd3620dab013f1"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-assay/gravemill-foundry-rejected-000.png",
+          "sha256": "1e656d04334575b72861e7f16308b187b3a1f2fa889018f90c61f47c05636e87"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-assay/gravemill-foundry-refined-000.png",
+          "sha256": "7707f5802f86893f30ee328f7ff0f6c64db21b42c53e6f9fdbcb8a94b4e0c1bb"
+        }
+      ]
+    },
+    {
+      "district": "foundry-cooling",
+      "reviewed_images": [
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-cooling/gravemill-foundry-flat-000.png",
+          "sha256": "adb2b4548009b6cf142315d234c29c2f818a7bf7dab210b180d6d2950fd8e3cc"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-cooling/gravemill-foundry-rejected-000.png",
+          "sha256": "bf2bac299b1323ceb73a76d090538c1d30bed8809c3b829b2005d2059f16eb8f"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-cooling/gravemill-foundry-refined-000.png",
+          "sha256": "0bafaece0f2126a9705f93f24ad05ee80a5099474625d69ae70c9fa20665658c"
+        }
+      ]
+    },
+    {
+      "district": "foundry-crown",
+      "reviewed_images": [
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-crown/gravemill-foundry-flat-000.png",
+          "sha256": "53ac35e459fcc8b2e9ccc78904b299c33e1eb739403f5b1d378d115e856d685f"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-crown/gravemill-foundry-rejected-000.png",
+          "sha256": "f380b3076259aa274e06a6d5549002354f896971771d72ac5c9a0f58cf754219"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-crown/gravemill-foundry-refined-000.png",
+          "sha256": "910d5e518d39a06c9b1762029bfb0ef8dda5139eb92f94096fc46f41a183490e"
+        }
+      ]
+    },
+    {
+      "district": "foundry-crusher",
+      "reviewed_images": [
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-crusher/gravemill-foundry-flat-000.png",
+          "sha256": "5c6c3173c84a66d73d920ca09fbb43756a6ef2cad7bb57c80d69b61d68e72055"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-crusher/gravemill-foundry-rejected-000.png",
+          "sha256": "0abea8f7d334d7804df23f9ac94f4b191723c61b8db9d8d0e3c553883cba9958"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-crusher/gravemill-foundry-refined-000.png",
+          "sha256": "7fb92f882ab6c4b650542aeb7e1062d71f1e81186e38e69d45bfd3a612a90f9a"
+        }
+      ]
+    },
+    {
+      "district": "foundry-furnace",
+      "reviewed_images": [
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-furnace/gravemill-foundry-flat-000.png",
+          "sha256": "84cf0ca794c52f2188f6ae3f304b37668331872c2c1d6415cb7ae9365dfef16e"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-furnace/gravemill-foundry-rejected-000.png",
+          "sha256": "1297589789d70527e94abdad3a1163c13709ba675b785a0bbcb469454d312b24"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-furnace/gravemill-foundry-refined-000.png",
+          "sha256": "193c61fb6b0f88bad84152932987298da2ebfb2448394e2499371cbfb51bdf42"
+        }
+      ]
+    },
+    {
+      "district": "foundry-transfer",
+      "reviewed_images": [
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-transfer/gravemill-foundry-flat-000.png",
+          "sha256": "0dee288bc478a9d87ea400b3d5ee6bb2ee69dfc346551dba49a224c4428e9961"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-transfer/gravemill-foundry-rejected-000.png",
+          "sha256": "5978d747524376afecc9bdfaa3fee50cee8deae1594333eb56b7c6fbc6702395"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/foundry-transfer/gravemill-foundry-refined-000.png",
+          "sha256": "b0222b9f7cfdb510d504e683af6ae915ad0b630900698f0efb410bf8a07160c8"
+        }
+      ]
+    },
+    {
+      "district": "helix-archive",
+      "reviewed_images": [
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-archive/helix-conservatory-flat-000.png",
+          "sha256": "a407b7829a400abdcb3d744067d63b8d8ba5005bbc5c653917870675077af83d"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-archive/helix-conservatory-rejected-000.png",
+          "sha256": "50b0c0385966d068b175244e849fac780e68e4d00ca5bbbb2ca5719ba65f0098"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-archive/helix-conservatory-refined-000.png",
+          "sha256": "ee6507df7cabcb0bca3d341709363a9243b3f4c09ac9cf6d3236639dd1a2c687"
+        }
+      ]
+    },
+    {
+      "district": "helix-botanical",
+      "reviewed_images": [
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-botanical/helix-conservatory-flat-000.png",
+          "sha256": "b34a1e9b414ce1d50e5e1b41f486029c7c57dd515af10972fb098a2b24b8e841"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-botanical/helix-conservatory-rejected-000.png",
+          "sha256": "b34a590972dacbcdf1f932072ce02088b461601749fe9e78738d69a77efbe45a"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-botanical/helix-conservatory-refined-000.png",
+          "sha256": "8250fb106e3f3e4ece4f3040322f85dbd084fa9ba0a8b03f0a21ca873ef1ec95"
+        }
+      ]
+    },
+    {
+      "district": "helix-irrigation",
+      "reviewed_images": [
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-irrigation/helix-conservatory-flat-000.png",
+          "sha256": "8ec48bc3b2c2d53a43137217e5873143e15a92fcada98d453ca56286e15c18ab"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-irrigation/helix-conservatory-rejected-000.png",
+          "sha256": "59d1ee3395ac16fc4f87da82fa7f70e71e3707f15afe0a76e9fd38296bd83d73"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-irrigation/helix-conservatory-refined-000.png",
+          "sha256": "e036bb1b5e9fe2419df22981114864779d0d391a0f5b288e3dbc6590d134a649"
+        }
+      ]
+    },
+    {
+      "district": "helix-lightwell",
+      "reviewed_images": [
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-lightwell/helix-conservatory-flat-000.png",
+          "sha256": "c64ec8ca40c94f2214596ab7e844a95a6e313821b923de28e8a01d1f0bc20fe1"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-lightwell/helix-conservatory-rejected-000.png",
+          "sha256": "363f585676cf3f14b7fea75eb92071f9f24542a79c9389d6ce18f2a249e22f08"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-lightwell/helix-conservatory-refined-000.png",
+          "sha256": "b77066c850d31eaedf24260205d3cffc38a611c8dc1a426d562ce2690f762e99"
+        }
+      ]
+    },
+    {
+      "district": "helix-pavilion",
+      "reviewed_images": [
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-pavilion/helix-conservatory-flat-000.png",
+          "sha256": "9d045de726f2d8ee3ad478a9746d5da9ddb7437f618750645be5f5e7efa11926"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-pavilion/helix-conservatory-rejected-000.png",
+          "sha256": "f64fa3d2680e4fca60533dfb43e812a75016f12bf51fccebafd1a616b01e6f86"
+        },
+        {
+          "path": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/surface-refinement-b/helix-pavilion/helix-conservatory-refined-000.png",
+          "sha256": "8bc85659aa3508791012397ee4c77a2c68dadc89bc59c67929bc1d5adcd8ddbf"
+        }
+      ]
+    }
+  ],
+  "native_heavy_work_executed": false,
+  "helix_authored_emissive_GLB_materials": 0
+}

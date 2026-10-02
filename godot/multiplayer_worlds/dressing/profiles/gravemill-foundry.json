@@ -139,33 +139,6 @@
       }
     },
     {
-      "source": "GM / orange",
-      "family": "pearl-ceramic",
-      "options": {
-        "variant": "cast",
-        "tint": "c69243",
-        "tiles_per_metre": 1.5,
-        "roughness": 0.69,
-        "albedo_gain": 1.15,
-        "texture_strength": 0.14,
-        "texture_saturation": 0,
-        "normal_strength": 0.06,
-        "metallic": 0.02,
-        "specular_strength": 0.22,
-        "detail_strength": 0.08,
-        "ao_strength": 0.16,
-        "roughness_variation": 0.1,
-        "glow": false,
-        "lut_gain": 0,
-        "pulse_speed": 0,
-        "pulse_depth": 0,
-        "variation_mode": "organic",
-        "variation_strength": 0.3,
-        "variation_scale": 0.07,
-        "variation_seed": 610245
-      }
-    },
-    {
       "source": "GM / chalk",
       "family": "pearl-ceramic",
       "options": {
@@ -1498,7 +1471,9 @@
       "count": 8
     }
   ],
-  "preserve_materials": [],
+  "preserve_materials": [
+    "GM / orange"
+  ],
   "budgets": {
     "material_variants": 8,
     "panels": 64,

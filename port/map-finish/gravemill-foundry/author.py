@@ -16,7 +16,7 @@ RECIPE = 'tools/godot-multiplayer/new-maps/gravemill-foundry/revision3/recipe.mj
 arena = json.loads(subprocess.check_output(['node', '--input-type=module', '-e',
     f"import {{recipe}} from './{RECIPE}'; console.log(JSON.stringify(recipe()));"], cwd=ROOT))
 profile = dict(version=1, map_id='gravemill-foundry', geometry_hash=HASH,
-               materials=[], panels=[], signs=[], pockets=[], preserve_materials=[],
+               materials=[], panels=[], signs=[], pockets=[], preserve_materials=['GM / orange'],
                budgets=dict(material_variants=8, panels=64, signs=20, motes=64))
 # Explicit resolved triples are checked against the actual family table below.
 specs = [
@@ -28,22 +28,25 @@ specs = [
     ('brass','brushed-alloy','default','brushed_metal','metal','baked','a78a58',1.4,.55,1.3),
     # Ore also owns kiln masonry, arches and stratified foundations, not armor.
     ('ore','pearl-ceramic','worn','weathered_concrete-worn','weathered_concrete-worn','derived','a7856c',1.25,.89,1.35),
-    ('orange','pearl-ceramic','cast','weathered_concrete','weathered_concrete','baked','c69243',1.5,.69,1.15),
+    # GM / orange is exclusively authored luminaires/sight-glass/status lamps.
+    # Preserve the imported material, including its emission/energy, via the
+    # existing binder exclusion rather than replacing it with matte paint.
     ('chalk','pearl-ceramic','cast','weathered_concrete','weathered_concrete','baked','c4bcaa',1.4,.82,1.2),
     ('cooling-floor','pearl-ceramic','cast','weathered_concrete','weathered_concrete','baked','93948b',1.2,.78,1.3),
 ]
 for index,(source,family,variant,base,normal,normal_source,tint,density,roughness,gain) in enumerate(specs):
-    strength={'soot':.24,'mineral':.35,'copper':.22,'brass':.18,'ore':.32,'orange':.14,'chalk':.22,'cooling-floor':.30}[source]
+    strength={'soot':.24,'mineral':.35,'copper':.22,'brass':.18,'ore':.32,'chalk':.22,'cooling-floor':.30}[source]
     profile['materials'].append(dict(source='GM / '+source, family=family, options=dict(
         variant=variant,tint=tint,tiles_per_metre=density,roughness=roughness,
         albedo_gain=gain,texture_strength=strength,texture_saturation=.08 if source=='copper' else 0,
-        normal_strength=.06 if source in ['brass','orange'] else .10,
+        normal_strength=.06 if source=='brass' else .10,
         metallic=.38 if source=='copper' else (.46 if source=='brass' else .02),
         specular_strength=.22,detail_strength=.08,ao_strength=.16,
         roughness_variation=.10,glow=False,lut_gain=0,pulse_speed=0,pulse_depth=0,
         variation_mode='manufactured' if source=='brass' else 'organic',
         variation_strength=.12 if source=='brass' else .30,
-        variation_scale=.07,variation_seed=610240+index)))
+        # Keep all surviving material seeds stable after excluding the lights.
+        variation_scale=.07,variation_seed=610240+index+(1 if source in ['chalk','cooling-floor'] else 0))))
 
 mounts = []
 angle = -math.degrees(math.atan(.14))
@@ -143,12 +146,59 @@ def inside(p,t):
     projected=[a[i]+s*u[i]+r*v[i] for i in range(3)]
     return s>=-1e-5 and r>=-1e-5 and s+r<=1.00001 and math.dist(p,projected)<1e-4
 
+def validate_emission_exclusion(glb,p):
+    # The accepted binary has one 328-triangle luminaire batch, not orange paint
+    # interleaved with lights. Refuse accidental rebinding or a broad exclusion.
+    emitting=[m for m in glb['materials'] if any(v>0 for v in m.get('emissiveFactor',[0,0,0]))]
+    assert [m['name'] for m in emitting]==['GM / orange'],'authored emissive coverage changed'
+    assert p['preserve_materials']==['GM / orange'],'preserve only the authored luminaire batch'
+    assert not any(m['source']=='GM / orange' for m in p['materials']),'luminaire rebound as paint'
+    m=emitting[0];factor=m['emissiveFactor']
+    energy=m['extensions']['KHR_materials_emissive_strength']['emissiveStrength']
+    assert all(math.isclose(a,b,abs_tol=1e-6) for a,b in zip(factor,[1,.2375,.03125]))
+    assert math.isclose(energy,1.6,abs_tol=1e-6)
+    index=glb['materials'].index(m)
+    primitives=[p for mesh in glb['meshes'] for p in mesh['primitives'] if p['material']==index]
+    triangles=sum(glb['accessors'][p['indices']]['count']//3 for p in primitives)
+    assert len(primitives)==1 and triangles==328,'luminaire batch anatomy changed'
+    return dict(selector=m['name'],emissive_factor=factor,emissive_strength=energy,
+                triangles=triangles,primitives=len(primitives),
+                authored_roles={'cooling_roof_lights':8,'furnace_sight_glasses':8,'assay_status_lamps':6},
+                binding='existing preserve_materials branch leaves imported material and all emission properties untouched')
+
+def validate_luminaire_components(triangles):
+    # Read-only weld for topology inspection: exported normals split vertices.
+    # This never rebatches or writes geometry. All 22 disconnected components
+    # must match the small source-authored light shapes, not wall/paint panels.
+    adjacent={}
+    for tri in triangles:
+        points=[tuple(round(v,5) for v in point) for point in tri]
+        for point in points:adjacent.setdefault(point,set()).update(points)
+    components=[]
+    roles={'cooling_roof_light':(.8,.1,1.312),'furnace_sight_glass':(.25981,2,.3),'assay_status_lamp':(.12,.28,.0368)}
+    while adjacent:
+        stack=[next(iter(adjacent))];points=[]
+        while stack:
+            point=stack.pop()
+            if point not in adjacent:continue
+            points.append(point);stack.extend(adjacent.pop(point))
+        lo=[min(p[i] for p in points) for i in range(3)]
+        hi=[max(p[i] for p in points) for i in range(3)]
+        size=[round(b-a,5) for a,b in zip(lo,hi)]
+        matches=[role for role,expected in roles.items() if all(abs(a-b)<.0001 for a,b in zip(size,expected))]
+        assert len(matches)==1,('non-luminaire geometry in emissive batch',lo,hi)
+        components.append(dict(role=matches[0],minimum=lo,maximum=hi))
+    counts={role:sum(c['role']==role for c in components) for role in roles}
+    assert counts=={'cooling_roof_light':8,'furnace_sight_glass':8,'assay_status_lamp':6},counts
+    return sorted(components,key=lambda c:(c['role'],c['minimum']))
+
 def validate():
     raw=(ROOT/'godot/multiplayer_worlds/art/worlds/gravemill-foundry.glb').read_bytes()
     n=struct.unpack_from('<I',raw,12)[0]; glb=json.loads(raw[20:20+n])
     assert len(glb['materials'])==8 and not glb.get('textures')
     assert hashlib.sha256(raw).hexdigest()=='46bf1648b32d23e337cd11b2c639a47f17d36c41361aab9434e1e621361e5935'
-    assert {m['name'] for m in glb['materials']}=={m['source'] for m in profile['materials']}
+    assert {m['name'] for m in glb['materials']}=={m['source'] for m in profile['materials']}|set(profile['preserve_materials'])
+    emission_proof=validate_emission_exclusion(glb,profile)
     assert json.loads((ROOT/'godot/multiplayer_worlds/art/gravemill-foundry/gravemill-foundry-art-report.json').read_text())['geometryHash']==HASH
     baked=json.loads((ROOT/'godot/moth/generated/manifest.json').read_text())
     derived=json.loads((ROOT/'godot/moth/derived/manifest.json').read_text())
@@ -209,12 +259,15 @@ def validate():
         size=struct.calcsize('<'+fmt*width)
         offset=binary_start+view.get('byteOffset',0)+a.get('byteOffset',0)
         return [struct.unpack_from('<'+fmt*width,raw,offset+i*view.get('byteStride',size)) for i in range(a['count'])]
-    actual=[]
+    actual=[];luminaire_triangles=[]
     for mesh in glb['meshes']:
         for primitive in mesh['primitives']:
             points=accessor(primitive['attributes']['POSITION'])
             indices=[i[0] for i in accessor(primitive['indices'])]
-            actual.extend([[points[indices[i+j]] for j in range(3)] for i in range(0,len(indices),3)])
+            triangles=[[points[indices[i+j]] for j in range(3)] for i in range(0,len(indices),3)]
+            actual.extend(triangles)
+            if glb['materials'][primitive['material']]['name']=='GM / orange':luminaire_triangles.extend(triangles)
+    emission_proof['decoded_components']=validate_luminaire_components(luminaire_triangles)
     for m in mounts:
         triangles=[w['vertices'] for w in walls if w['id']==m['support']]
         assert triangles,m
@@ -247,7 +300,8 @@ def validate():
     return dict(geometry_hash=HASH,glb_sha256=hashlib.sha256(raw).hexdigest(),
         profile_sha256=hashlib.sha256((json.dumps(profile,indent=2)+'\n').encode()).hexdigest(),
         variation_contract='BRIEF.md; local bounds checked; shared validator must pass after rendering-owner integration',
-        material_coverage='8/8',embedded_source_textures=0,panels=len(profile['panels']),
+        material_coverage='7 dressed + 1 authored emissive preserved / 8',emission_preservation=emission_proof,
+        embedded_source_textures=0,panels=len(profile['panels']),
         signs=len(profile['signs']),motes=sum(p['count'] for p in profile['pockets']),
         face_samples=len(mounts)*25,resources=resources,mounts=mounts,source_provenance=originals,
         native_render_validation='pending integration grant; source checks only')
