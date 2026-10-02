@@ -1,0 +1,121 @@
+{
+  "unit": "parallax-interiors",
+  "sourceHashes": {
+    "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/author_candidate.py": "5e373ec519fe35d337f3de8814c2570562b5c6bdf0bf7d999714b6e366459f64",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/build_recipe.py": "f0fbb141373871a7464635b7d543065c467f4387106064c2b039ceb1a275817d",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/candidate-meshes.json": "5da67cc66a997d7c25df8660fca413e730e5b773eb75054032607ced02ba0d1f"
+  },
+  "sourceFingerprint": "9df425067dbe25f654fb4eea17b4f381917f167064d089b38cd67e1edc2b2ba9",
+  "packageInputs": {
+    "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+    "game/moth-baked.mjs": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2",
+    "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+    "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+    "godot/assault/renderer.gd": "87cadc194fa314c022379d1bd96e1622422b16a77104a850f71c7fad89d2a176",
+    "godot/assault/state.gd": "5699b1cc2621b9f3967ba2ea0b61d489bcd0743f439166c5f8307890ba0e6b57",
+    "godot/material_language/families.gd": "a3351d2b1909b8258f9fb24ef61b91f9879f2d0aed694ac6fd1ad5aeef4d40db",
+    "godot/material_language/family.gdshader": "a7340a0c4b6856ed64ba5e4a6a3e3095efbe142f567aef4e641c5e56c518341a",
+    "godot/material_language/library.gd": "bad8d3c963405a5870c68861d43395281aa2beea7d5f4961df5796ebce26e136",
+    "godot/moth/derived/manifest.json": "5be9ad6493455138464dc059dd64a32dc5d837f6fc4e460957f606f6d2a79887",
+    "godot/moth/generated/manifest.json": "c5589ff2f2ab68d982b2bb45c221c08d8e3f653953e5d5d446bfa4cd68380047",
+    "godot/moth/library.gd": "807663e54afe3e0ff5275511772cffd50d749731b5c2719f096701063b01647d",
+    "godot/moth_scenery/motes.gdshader": "2f7cf8c3f658eb57781169bbee664e093c4cc4fb038c7097be750d7961d30807",
+    "godot/moth_scenery/panel.gdshader": "fb6c4f137d9ae83c37d492675aeabfd84ad2d06f7946b7a9cacdccb6c08d3d41",
+    "godot/multiplayer_worlds/art/parallax-observatory/asset-manifest.json": "80bc29748c55ed6d72d5c3e901e6edd66b80b0079efef452b4bb24499e91addb",
+    "godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb": "c1dffd357545206d3f70870f850e441c5be148e652830a4a69835185a75610bd",
+    "godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb.import": "f101be17a593768f5a7fcbae491e72de0e0fc0cf91d0ed6e2d7334b15f61c04c",
+    "godot/multiplayer_worlds/art/parallax-observatory/presentation.gd": "67e5a4c8dbf8b758a4f01f01395e83641edfd87978d5e37bed7f9fb85c284594",
+    "godot/multiplayer_worlds/catalog.gd": "a7d9a5c665ad1b13cfc378d0c37ff37f043f91ade326fae3b3886f0adf6274be",
+    "godot/multiplayer_worlds/demo.gd": "0acd5e67d1267595d3cc4080e73c12a01b8184ab49277b5357c55c5900f68d2c",
+    "godot/multiplayer_worlds/dressing/binder.gd": "b3e707af9da73f21b3c791c1d7deca9caad5472b422f263d9998ac961444a87d",
+    "godot/multiplayer_worlds/dressing/profile.gd": "ee41823e074ea8571e25d1671aedf5c3918ffa56af0427e24640a45a3662a59c",
+    "godot/multiplayer_worlds/dressing/profiles/parallax-observatory.json": "b2cdfa1da6c201b32df5af103a39ee7fbbc7490768bd9b2986f8f03c236e6701",
+    "godot/multiplayer_worlds/dressing/surface.gd": "70e88ee5b9d46e95f0ff8bc7a7b5876cf20a6b052d016efd69955fe72e35b5d0",
+    "godot/multiplayer_worlds/dressing/surface.gdshader": "8d77b5729585a3129009a0f67da64044181e7747c641c03c9b02dcd09206d3ff",
+    "godot/multiplayer_worlds/dressing/wear_panel.gdshader": "2628addabee8718df5801862c85407df9088feba17cfaec243e75bcffd4490e3",
+    "godot/multiplayer_worlds/generated/parallax-observatory.json": "13c0b91156aaa2fd713dea7dfafe8f9f48d92b2b414ff9c4b583efb047bdabc4",
+    "godot/multiplayer_worlds/map.gd": "c24d976d372b2ddaf636ae17ac6bc30d8d147a9ab993a3cd9b96cff8ff4a92db",
+    "godot/multiplayer_worlds/urban_lighting.gd": "aa02961ccd39d1655df7ba9619d6270b6751f1e6dd3742ec4daa7a60bba83674",
+    "godot/objectives/guidance.gd": "a288d3dc5e4002453171fbf975e03193fb4107d3230b6dd486156d1d4e9c3b8f",
+    "godot/objectives/renderer.gd": "18aeba6749d92325b7183d3465c7b8b0577226ac06a43abd6942476ded9df438",
+    "godot/zone_modes/adapter.gd": "7932e7694ad55fc0def0bee425a2563e22dec73fecf51abd77f8a4726602766f",
+    "godot/zone_modes/renderer.gd": "7c14b6d848feb161cc397d91571533fe2515f9e747c1411b2369e964bd8d39fb",
+    "port/map-finish/parallax-observatory/author.py": "0a20062f8564d5c43b14cfa989848313640ab08fec8fbcca0f6cb8b4952254d0",
+    "port/map-finish/parallax-observatory/interiors-v2-pins.json": "e5aea21bd1919e63602bf73017f709c849768ae4d9e1b6c29576e20fbc5210c4",
+    "port/map-finish/parallax-observatory/mounts.json": "c8fef78e4f3bbab45f7172619e2fc842290aa554d0f28eb7f293cdefac011b0d",
+    "port/map-finish/parallax-observatory/source-check.json": "dd734927a3ad0bfb4d6977c47c8e6aa1b28992a39c0ee8135feeaf081619ffe8",
+    "port/map-finish/parallax-observatory/validate.py": "61afa1dcd01881f024d6eb689167f99d02c7e4e04274427e080a3bc96f5db101",
+    "port/multiplayer-worlds/catalog.mjs": "e679c621c73987fed821850300ffdff2cb6dd4a1a8c1cfbf0d75ffcc874b9fd2",
+    "port/native-multiplayer-worlds/worlds/parallax-observatory.json": "e949e43d5546ec8b0c9024810f1da6229152e370ad640ecf27ecb54c05f2e23d",
+    "port/new-maps/parallax-observatory/audit-art.mjs": "4a334a3e4dd1b1bef8c5140e8a92df32e2e39e3702e23d791e48c04c989651bc",
+    "port/new-maps/parallax-observatory/production-c.json": "f369bc9d595dd84c08c791cb6a443aa7bbd06e37b65d080d85c7095a92050ec1",
+    "tools/asset-production/material-validation.mjs": "874e5d31c666a8af4a98b600bb182a4f4cb9c5e6b1488d80908f855b2584bb3d",
+    "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
+    "tools/asset-production/package-receipt.mjs": "e1917daa642b15e6e3290b537fbf9024ba72e6f5dfd18f4025d3e589d9702621",
+    "tools/asset-production/receipt.mjs": "9648c19d979b2486c78830628c2f2508a02b4b2874d1f64149966d88d7e5f9d8",
+    "tools/asset-production/reopen.py": "4628bc44122a690495766f3cc967a82d3ab7aeab52c272cca7a202be88e0f5de",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/blender_author.py": "9cec1edaab54477d9999eb7888c921d527f0ee3f1248f2adf9c2a6a7cf5897cc",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/parallax-observatory.blend": "fcd7f284443c45d08177837a23af530b1667deb106bddb8822d507f5655ca090",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/author_candidate.py": "5e373ec519fe35d337f3de8814c2570562b5c6bdf0bf7d999714b6e366459f64",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/build_recipe.py": "f0fbb141373871a7464635b7d543065c467f4387106064c2b039ceb1a275817d",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/candidate-meshes.json": "5da67cc66a997d7c25df8660fca413e730e5b773eb75054032607ced02ba0d1f",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/output/parallax-observatory.blend": "59946f15dd530ecc3f38d38aea41089e2e113b812060483e8ff92138c0d686b8",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/prepare_comparisons.py": "fb9bc14c1055039b44bf867a695cebcfd54fdfe9cd63454788312611c36c2184",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/prepare_native.py": "994a8324838b4a405c3aaa88e4c4081a6a2fbdec7083b726815d011646bbbdc2",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/reopen_candidate.py": "4ad9e40bdbe0e6d0321a259786f32b4ef14600b30ba4ebe0146091c7475b031a",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/source-check.json": "299a068f800667feff17baa952cdbe08c44786b75fc9173b1782ace37c882534",
+    "tools/godot-package/production_resources.mjs": "3dd106d42ffa298ff7ecbe501e7882e1f0017fcd86e12e1575b12d57c01146ea",
+    "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8"
+  },
+  "masters": [
+    {
+      "path": "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/output/parallax-observatory.blend",
+      "sha256": "59946f15dd530ecc3f38d38aea41089e2e113b812060483e8ff92138c0d686b8"
+    }
+  ],
+  "exports": [
+    {
+      "path": "godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb",
+      "sha256": "c1dffd357545206d3f70870f850e441c5be148e652830a4a69835185a75610bd",
+      "textures": []
+    }
+  ],
+  "runtimeHooks": {
+    "godot/multiplayer_worlds/art/parallax-observatory/presentation.gd": "67e5a4c8dbf8b758a4f01f01395e83641edfd87978d5e37bed7f9fb85c284594",
+    "godot/multiplayer_worlds/catalog.gd": "a7d9a5c665ad1b13cfc378d0c37ff37f043f91ade326fae3b3886f0adf6274be",
+    "godot/multiplayer_worlds/demo.gd": "0acd5e67d1267595d3cc4080e73c12a01b8184ab49277b5357c55c5900f68d2c",
+    "godot/multiplayer_worlds/dressing/binder.gd": "b3e707af9da73f21b3c791c1d7deca9caad5472b422f263d9998ac961444a87d",
+    "godot/multiplayer_worlds/dressing/profile.gd": "ee41823e074ea8571e25d1671aedf5c3918ffa56af0427e24640a45a3662a59c",
+    "godot/multiplayer_worlds/dressing/profiles/parallax-observatory.json": "b2cdfa1da6c201b32df5af103a39ee7fbbc7490768bd9b2986f8f03c236e6701",
+    "godot/multiplayer_worlds/dressing/surface.gd": "70e88ee5b9d46e95f0ff8bc7a7b5876cf20a6b052d016efd69955fe72e35b5d0",
+    "godot/multiplayer_worlds/dressing/surface.gdshader": "8d77b5729585a3129009a0f67da64044181e7747c641c03c9b02dcd09206d3ff",
+    "godot/multiplayer_worlds/map.gd": "c24d976d372b2ddaf636ae17ac6bc30d8d147a9ab993a3cd9b96cff8ff4a92db"
+  },
+  "rawFiles": [
+    "godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb"
+  ],
+  "promotionAuthorization": {
+    "sourceCommit": "b66f4ab3",
+    "review": "port/finish/PARALLAX_PACKAGE_PROMOTION.md",
+    "scope": "Parent-authorized bounded asset promotion only; no fresh six-mode or release attestation"
+  },
+  "packageReconciliation": {
+    "previousReceipt": {
+      "commit": "e59a762529bb4d76a92c363ab58fa4ca6bdfae55",
+      "path": "tools/godot-package/production_receipts/parallax-interiors.json",
+      "sha256": "f0d2b15ddb6c1d1609a2be5f1bc37cbf486b4b7034bf7fa6973577af9e79e6d0"
+    },
+    "changed": {
+      "tools/godot-package/production_resources.mjs": {
+        "before": "7e369d87cb8c50c27b6d8c0c3087d5dca6041caacadacdee1fae17263a3e6571",
+        "after": "3dd106d42ffa298ff7ecbe501e7882e1f0017fcd86e12e1575b12d57c01146ea"
+      }
+    },
+    "added": {
+      "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8"
+    },
+    "reason": "Parent-authorized verifier input advance and bounded robot import/extracted-image closure; no asset rebuild or new native attestation",
+    "review": "port/finish/ROBOT_PACKAGE_PROMOTION.md"
+  }
+}

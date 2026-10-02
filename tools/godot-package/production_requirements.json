@@ -2,12 +2,43 @@
   "version": 1,
   "plan": "port/finish/ASSET_PRODUCTION.json",
   "units": {
-    "parallax-interiors": {"required": true, "map": "parallax-observatory", "promotion": null},
-    "robots": {"required": true, "promotion": null},
-    "vehicles": {"required": true, "promotion": null},
-    "scenery": {"required": true, "promotion": null},
-    "vesper-viaduct": {"required": true, "map": "vesper-viaduct", "promotion": null},
-    "abyssal-pressureworks": {"required": true, "map": "abyssal-pressureworks", "promotion": null},
-    "stormglass-causeway": {"required": true, "map": "stormglass-causeway", "promotion": null}
+    "parallax-interiors": {
+      "required": true,
+      "map": "parallax-observatory",
+      "promotion": {
+        "receipt": "tools/godot-package/production_receipts/parallax-interiors.json",
+        "sha256": "3c7d26b851d031ff1509aa50e7aa81dc26df5f8836b5668e00ad7af2fef39ab5"
+      }
+    },
+    "robots": {
+      "required": true,
+      "promotion": {
+        "receipt": "tools/godot-package/production_receipts/robots.json",
+        "sha256": "e0667a6bc7295f30f337f571301f3e7747b84c265835e96c2a310b5ba5e00d85"
+      }
+    },
+    "vehicles": {
+      "required": true,
+      "promotion": null
+    },
+    "scenery": {
+      "required": true,
+      "promotion": null
+    },
+    "vesper-viaduct": {
+      "required": true,
+      "map": "vesper-viaduct",
+      "promotion": null
+    },
+    "abyssal-pressureworks": {
+      "required": true,
+      "map": "abyssal-pressureworks",
+      "promotion": null
+    },
+    "stormglass-causeway": {
+      "required": true,
+      "map": "stormglass-causeway",
+      "promotion": null
+    }
   }
 }
