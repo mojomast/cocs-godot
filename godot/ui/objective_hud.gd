@@ -33,7 +33,7 @@ func refresh_status() -> void:
 	if not is_instance_valid(session): return
 	var ordinary_pause := status_title.text in ["CLICK TO PLAY", "CONTROLS PAUSED"]
 	if compact():
-		controls.text = ("Click play" if ordinary_pause else "WASD move") + " · Esc release · Tab scores · E interact"
+		controls.text = preload("res://input_bindings/hints.gd").resolve(("Click play" if ordinary_pause else "WASD move") + " · Esc release · Tab scores · E interact")
 		if ordinary_pause: status_panel.hide()
 	else:
 		controls.text = full_controls

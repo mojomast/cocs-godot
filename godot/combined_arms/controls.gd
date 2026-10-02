@@ -21,6 +21,8 @@ func release() -> void:
 	cancel_aim()
 
 func accept(event: InputEvent, eligible: bool, infantry: bool = true) -> void:
+	event = bindings.translate(event, eligible and engaged and focused)
+	if event == null: return
 	if not infantry: cancel_aim()
 	if event is InputEventKey:
 		if event.echo: return
@@ -41,7 +43,7 @@ func accept(event: InputEvent, eligible: bool, infantry: bool = true) -> void:
 		if code == KEY_E:
 			if event.pressed and engaged and focused and eligible: interact_pending = true
 			return
-		super.accept(event, eligible)
+		super.accept_mapped(event, eligible)
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
 		if not event.pressed:
 			down.erase(MOUSE_BUTTON_RIGHT)

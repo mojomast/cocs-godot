@@ -1,0 +1,1168 @@
+{
+  "schemaVersion": 1,
+  "id": "helix-conservatory",
+  "recipeContentHash": "f96583eab927fc965c3f4ca736fba8d4fc7373ead33474f7a80345a69db27937",
+  "classification": "scripted controlled source inputs; no native or human claim",
+  "validatedSourceModes": [
+    "ctf",
+    "deathmatch",
+    "teamdeathmatch",
+    "arsenal",
+    "juggernaut",
+    "domination",
+    "koth"
+  ],
+  "modeBindingsRemainPending": true,
+  "results": [
+    {
+      "mode": "ctf",
+      "kind": "controlled-input-full-round",
+      "config": {
+        "mode": "ctf",
+        "botCount": 0,
+        "difficulty": "easy",
+        "fragLimit": 3,
+        "timeLimit": 900,
+        "respawn": 1,
+        "speed": 1,
+        "gravity": 1,
+        "damage": 1,
+        "fastPowers": false,
+        "lifeSteal": false,
+        "unlimitedAmmo": false,
+        "suddenDeath": false,
+        "randomLoadout": false,
+        "oneShot": false,
+        "instagib": false,
+        "mirrorLoadout": false,
+        "bounty": false,
+        "berserk": false,
+        "bigHead": false,
+        "noRecoil": false,
+        "endless": false,
+        "startingWeapon": 0,
+        "playerName": "",
+        "mission": "convoy-run",
+        "loadout": null,
+        "checkpoint": null,
+        "mutators": []
+      },
+      "frames": 13478,
+      "walkedMetres": 1590.846,
+      "maxLiveStep": 0.1456726580826311,
+      "minY": 0,
+      "maxY": 16,
+      "events": {
+        "threat-ping": 2,
+        "flag-pickup": 4,
+        "flag-drop": 1,
+        "flag-return": 1,
+        "capture": 3
+      },
+      "milestones": [
+        {
+          "type": "flag-pickup",
+          "frame": 1765,
+          "time": 29.433333333332943,
+          "data": {
+            "actor": 1,
+            "team": 0
+          },
+          "positions": [
+            {
+              "id": 0,
+              "x": -86,
+              "y": 16,
+              "z": -5
+            },
+            {
+              "id": 1,
+              "x": -85.63792292562432,
+              "y": 16,
+              "z": -0.9805780053081274
+            }
+          ]
+        },
+        {
+          "type": "flag-drop",
+          "frame": 1915,
+          "time": 31.9333333333328,
+          "data": {
+            "actor": 1,
+            "team": 0,
+            "pos": {
+              "x": -85.88716509893189,
+              "y": 16,
+              "z": 11.996164885409422
+            }
+          },
+          "positions": [
+            {
+              "id": 0,
+              "x": -86,
+              "y": 16,
+              "z": -5
+            },
+            {
+              "id": 1,
+              "x": -85.88716509893189,
+              "y": 16,
+              "z": 11.996164885409422
+            }
+          ]
+        },
+        {
+          "type": "flag-return",
+          "frame": 2109,
+          "time": 35.166666666665954,
+          "data": {
+            "actor": 0,
+            "team": 0,
+            "pos": {
+              "x": -86,
+              "y": 16,
+              "z": 0
+            }
+          },
+          "positions": [
+            {
+              "id": 0,
+              "x": -85.22262606677889,
+              "y": 16,
+              "z": 11.120084161761335
+            },
+            {
+              "id": 1,
+              "x": -86.00586522531492,
+              "y": 16,
+              "z": 18.541230666570804
+            }
+          ]
+        },
+        {
+          "type": "flag-pickup",
+          "frame": 5103,
+          "time": 85.06666666666312,
+          "data": {
+            "actor": 0,
+            "team": 1
+          },
+          "positions": [
+            {
+              "id": 0,
+              "x": 84.87994706959729,
+              "y": 16,
+              "z": -0.0000014218098713581234
+            },
+            {
+              "id": 1,
+              "x": 0.12104839159895585,
+              "y": 16,
+              "z": -86.0366424161447
+            }
+          ]
+        },
+        {
+          "type": "capture",
+          "frame": 6859,
+          "time": 114.33333333332813,
+          "data": {
+            "actor": 0,
+            "team": 0,
+            "score": 1
+          },
+          "positions": [
+            {
+              "id": 0,
+              "x": -85.57860885941133,
+              "y": 16,
+              "z": -1.1449728577723703
+            },
+            {
+              "id": 1,
+              "x": 0.12104839159895585,
+              "y": 16,
+              "z": -86.0366424161447
+            }
+          ]
+        },
+        {
+          "type": "flag-pickup",
+          "frame": 8412,
+          "time": 140.2166666666704,
+          "data": {
+            "actor": 0,
+            "team": 1
+          },
+          "positions": [
+            {
+              "id": 0,
+              "x": 84.87994660742197,
+              "y": 16,
+              "z": -0.000001418659642916959
+            },
+            {
+              "id": 1,
+              "x": 0.12104839159895585,
+              "y": 16,
+              "z": -86.0366424161447
+            }
+          ]
+        },
+        {
+          "type": "capture",
+          "frame": 10168,
+          "time": 169.48333333336035,
+          "data": {
+            "actor": 0,
+            "team": 0,
+            "score": 2
+          },
+          "positions": [
+            {
+              "id": 0,
+              "x": -85.57860885941133,
+              "y": 16,
+              "z": -1.1449728577723703
+            },
+            {
+              "id": 1,
+              "x": 0.12104839159895585,
+              "y": 16,
+              "z": -86.0366424161447
+            }
+          ]
+        },
+        {
+          "type": "flag-pickup",
+          "frame": 11721,
+          "time": 195.36666666671428,
+          "data": {
+            "actor": 0,
+            "team": 1
+          },
+          "positions": [
+            {
+              "id": 0,
+              "x": 84.87994660742197,
+              "y": 16,
+              "z": -0.000001418659642916959
+            },
+            {
+              "id": 1,
+              "x": 0.12104839159895585,
+              "y": 16,
+              "z": -86.0366424161447
+            }
+          ]
+        },
+        {
+          "type": "capture",
+          "frame": 13477,
+          "time": 224.63333333340424,
+          "data": {
+            "actor": 0,
+            "team": 0,
+            "score": 3
+          },
+          "positions": [
+            {
+              "id": 0,
+              "x": -85.57860885941133,
+              "y": 16,
+              "z": -1.1449728577723703
+            },
+            {
+              "id": 1,
+              "x": 0.12104839159895585,
+              "y": 16,
+              "z": -86.0366424161447
+            }
+          ]
+        }
+      ],
+      "setup": [
+        {
+          "id": 0,
+          "x": -86,
+          "y": 16,
+          "z": -5
+        },
+        {
+          "id": 1,
+          "x": 86,
+          "y": 16,
+          "z": 5
+        }
+      ],
+      "endReason": "capture",
+      "seconds": 224.63333333340424,
+      "trajectoryHash": "fe96b0fc180ff6aa31a734298d19d11257f19b4dd4636cf514a7a7871f1cbb78",
+      "falls": 0,
+      "teamScores": {
+        "0": 3,
+        "1": 0
+      },
+      "actors": [
+        {
+          "id": 0,
+          "frags": 0,
+          "deaths": 0,
+          "scoreStats": {
+            "captures": 3,
+            "flagPickups": 3,
+            "flagReturns": 1,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 0,
+            "hits": 0,
+            "damage": 0
+          }
+        },
+        {
+          "id": 1,
+          "frags": 0,
+          "deaths": 0,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 1,
+            "flagReturns": 0,
+            "flagDrops": 1,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 0,
+            "hits": 0,
+            "damage": 0
+          }
+        }
+      ]
+    },
+    {
+      "mode": "deathmatch",
+      "kind": "controlled-input-full-round",
+      "config": {
+        "mode": "deathmatch",
+        "botCount": 0,
+        "difficulty": "easy",
+        "fragLimit": 5,
+        "timeLimit": 900,
+        "respawn": 1,
+        "speed": 1,
+        "gravity": 1,
+        "damage": 1,
+        "fastPowers": false,
+        "lifeSteal": false,
+        "unlimitedAmmo": true,
+        "suddenDeath": false,
+        "randomLoadout": false,
+        "oneShot": false,
+        "instagib": false,
+        "mirrorLoadout": false,
+        "bounty": false,
+        "berserk": false,
+        "bigHead": false,
+        "noRecoil": false,
+        "endless": false,
+        "startingWeapon": 2,
+        "playerName": "",
+        "mission": "convoy-run",
+        "loadout": null,
+        "checkpoint": null,
+        "mutators": [
+          "unlimitedAmmo"
+        ]
+      },
+      "frames": 4663,
+      "walkedMetres": 407.315,
+      "maxLiveStep": 0.13143903575526325,
+      "minY": 0,
+      "maxY": 16,
+      "events": {
+        "move-blocked": 812,
+        "threat-ping": 7,
+        "shot": 16,
+        "damage": 14,
+        "death": 5,
+        "spawn": 4,
+        "killstreak": 2
+      },
+      "milestones": [],
+      "setup": [
+        {
+          "id": 0,
+          "x": -3,
+          "y": 0,
+          "z": 0
+        },
+        {
+          "id": 1,
+          "x": 3,
+          "y": 0,
+          "z": 0
+        }
+      ],
+      "endReason": "frag",
+      "loadout": "source config startingWeapon=2, unlimitedAmmo=true; Full Arsenal keeps its native all-weapons loadout",
+      "seconds": 77.71666666666354,
+      "trajectoryHash": "b4d19b78a8544ae176b2578a5cf80ebee79e2c117529f85f2681d2d32d201729",
+      "falls": 0,
+      "teamScores": {
+        "0": 0,
+        "1": 0
+      },
+      "actors": [
+        {
+          "id": 0,
+          "frags": 5,
+          "deaths": 0,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 16,
+            "hits": 14,
+            "damage": 650
+          }
+        },
+        {
+          "id": 1,
+          "frags": 0,
+          "deaths": 5,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 0,
+            "hits": 0,
+            "damage": 0
+          }
+        }
+      ]
+    },
+    {
+      "mode": "teamdeathmatch",
+      "kind": "controlled-input-full-round",
+      "config": {
+        "mode": "teamdeathmatch",
+        "botCount": 0,
+        "difficulty": "easy",
+        "fragLimit": 5,
+        "timeLimit": 900,
+        "respawn": 1,
+        "speed": 1,
+        "gravity": 1,
+        "damage": 1,
+        "fastPowers": false,
+        "lifeSteal": false,
+        "unlimitedAmmo": true,
+        "suddenDeath": false,
+        "randomLoadout": false,
+        "oneShot": false,
+        "instagib": false,
+        "mirrorLoadout": false,
+        "bounty": false,
+        "berserk": false,
+        "bigHead": false,
+        "noRecoil": false,
+        "endless": false,
+        "startingWeapon": 2,
+        "playerName": "",
+        "mission": "convoy-run",
+        "loadout": null,
+        "checkpoint": null,
+        "mutators": [
+          "unlimitedAmmo"
+        ]
+      },
+      "frames": 4175,
+      "walkedMetres": 374.549,
+      "maxLiveStep": 0.13134679958738218,
+      "minY": 0,
+      "maxY": 16,
+      "events": {
+        "move-blocked": 596,
+        "threat-ping": 6,
+        "shot": 13,
+        "damage": 11,
+        "death": 5,
+        "spawn": 4,
+        "killstreak": 2
+      },
+      "milestones": [],
+      "setup": [
+        {
+          "id": 0,
+          "x": -3,
+          "y": 0,
+          "z": 0
+        },
+        {
+          "id": 1,
+          "x": 3,
+          "y": 0,
+          "z": 0
+        }
+      ],
+      "endReason": "frag",
+      "loadout": "source config startingWeapon=2, unlimitedAmmo=true; Full Arsenal keeps its native all-weapons loadout",
+      "seconds": 69.58333333333067,
+      "trajectoryHash": "760d051b31c4b7b6742a9903d94aa1202ec701cb688561b9ae4c19dd793f2ba2",
+      "falls": 0,
+      "teamScores": {
+        "0": 5,
+        "1": 0
+      },
+      "actors": [
+        {
+          "id": 0,
+          "frags": 5,
+          "deaths": 0,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 13,
+            "hits": 11,
+            "damage": 650
+          }
+        },
+        {
+          "id": 1,
+          "frags": 0,
+          "deaths": 5,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 0,
+            "hits": 0,
+            "damage": 0
+          }
+        }
+      ]
+    },
+    {
+      "mode": "arsenal",
+      "kind": "controlled-input-full-round",
+      "config": {
+        "mode": "arsenal",
+        "botCount": 0,
+        "difficulty": "easy",
+        "fragLimit": 5,
+        "timeLimit": 900,
+        "respawn": 1,
+        "speed": 1,
+        "gravity": 1,
+        "damage": 1,
+        "fastPowers": false,
+        "lifeSteal": false,
+        "unlimitedAmmo": true,
+        "suddenDeath": false,
+        "randomLoadout": false,
+        "oneShot": false,
+        "instagib": false,
+        "mirrorLoadout": false,
+        "bounty": false,
+        "berserk": false,
+        "bigHead": false,
+        "noRecoil": false,
+        "endless": false,
+        "startingWeapon": 2,
+        "playerName": "",
+        "mission": "convoy-run",
+        "loadout": null,
+        "checkpoint": null,
+        "mutators": [
+          "unlimitedAmmo"
+        ]
+      },
+      "frames": 4643,
+      "walkedMetres": 407.315,
+      "maxLiveStep": 0.13143903575526325,
+      "minY": 0,
+      "maxY": 16,
+      "events": {
+        "weapon-switch": 1,
+        "move-blocked": 792,
+        "threat-ping": 7,
+        "shot": 16,
+        "damage": 14,
+        "death": 5,
+        "spawn": 4,
+        "killstreak": 2
+      },
+      "milestones": [],
+      "setup": [
+        {
+          "id": 0,
+          "x": -3,
+          "y": 0,
+          "z": 0
+        },
+        {
+          "id": 1,
+          "x": 3,
+          "y": 0,
+          "z": 0
+        }
+      ],
+      "endReason": "frag",
+      "loadout": "source config startingWeapon=2, unlimitedAmmo=true; Full Arsenal keeps its native all-weapons loadout",
+      "seconds": 77.38333333333023,
+      "trajectoryHash": "e65a68c601a127ecfb447deea1e9a37ea3023dd0f29d52e7c5b0f67b7f663eb1",
+      "falls": 0,
+      "teamScores": {
+        "0": 0,
+        "1": 0
+      },
+      "actors": [
+        {
+          "id": 0,
+          "frags": 5,
+          "deaths": 0,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 16,
+            "hits": 14,
+            "damage": 650
+          }
+        },
+        {
+          "id": 1,
+          "frags": 0,
+          "deaths": 5,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 0,
+            "hits": 0,
+            "damage": 0
+          }
+        }
+      ]
+    },
+    {
+      "mode": "juggernaut",
+      "kind": "controlled-input-full-round",
+      "config": {
+        "mode": "juggernaut",
+        "botCount": 0,
+        "difficulty": "easy",
+        "fragLimit": 15,
+        "timeLimit": 900,
+        "respawn": 1,
+        "speed": 1,
+        "gravity": 1,
+        "damage": 1,
+        "fastPowers": false,
+        "lifeSteal": false,
+        "unlimitedAmmo": true,
+        "suddenDeath": false,
+        "randomLoadout": false,
+        "oneShot": false,
+        "instagib": false,
+        "mirrorLoadout": false,
+        "bounty": false,
+        "berserk": false,
+        "bigHead": false,
+        "noRecoil": false,
+        "endless": false,
+        "startingWeapon": 2,
+        "playerName": "",
+        "mission": "convoy-run",
+        "loadout": null,
+        "checkpoint": null,
+        "mutators": [
+          "unlimitedAmmo"
+        ]
+      },
+      "frames": 1201,
+      "walkedMetres": 13.752,
+      "maxLiveStep": 0.13102383162447898,
+      "minY": 0,
+      "maxY": 16,
+      "events": {
+        "move-blocked": 241,
+        "shot": 4,
+        "damage": 3,
+        "juggernaut-transfer": 1,
+        "death": 1,
+        "spawn": 1,
+        "juggernaut-win": 1,
+        "objective-win": 1
+      },
+      "milestones": [
+        {
+          "type": "juggernaut-transfer",
+          "frame": 240,
+          "time": 4.016666666666658,
+          "data": {
+            "actor": 1,
+            "from": 0,
+            "to": 1,
+            "points": 3
+          },
+          "positions": [
+            {
+              "id": 0,
+              "x": -3,
+              "y": 0,
+              "z": 0
+            },
+            {
+              "id": 1,
+              "x": 3,
+              "y": 0,
+              "z": 0
+            }
+          ]
+        },
+        {
+          "type": "objective-win",
+          "frame": 1200,
+          "time": 20.01666666666681,
+          "data": {
+            "actor": 1,
+            "score": 15.012499999999672
+          },
+          "positions": [
+            {
+              "id": 0,
+              "x": -85,
+              "y": 16,
+              "z": -5
+            },
+            {
+              "id": 1,
+              "x": -0.008849076583882126,
+              "y": 0,
+              "z": 12.149099015605154
+            }
+          ]
+        }
+      ],
+      "setup": [
+        {
+          "id": 0,
+          "x": -3,
+          "y": 0,
+          "z": 0
+        },
+        {
+          "id": 1,
+          "x": 3,
+          "y": 0,
+          "z": 0
+        }
+      ],
+      "endReason": "objective",
+      "seconds": 20.01666666666681,
+      "trajectoryHash": "a5f3915ce698bf8409a164e181cc1cad708a58514629149c3679753bd1799ea2",
+      "falls": 0,
+      "teamScores": {
+        "0": 0,
+        "1": 0
+      },
+      "actors": [
+        {
+          "id": 0,
+          "frags": 0,
+          "deaths": 1,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 0,
+            "hits": 0,
+            "damage": 0,
+            "points": 3.000000000000009
+          }
+        },
+        {
+          "id": 1,
+          "frags": 1,
+          "deaths": 0,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 4,
+            "hits": 3,
+            "damage": 230,
+            "points": 15.012499999999672
+          }
+        }
+      ]
+    },
+    {
+      "mode": "domination",
+      "kind": "controlled-input-full-round",
+      "config": {
+        "mode": "domination",
+        "botCount": 0,
+        "difficulty": "easy",
+        "fragLimit": 5,
+        "timeLimit": 900,
+        "respawn": 1,
+        "speed": 1,
+        "gravity": 1,
+        "damage": 1,
+        "fastPowers": false,
+        "lifeSteal": false,
+        "unlimitedAmmo": false,
+        "suddenDeath": false,
+        "randomLoadout": false,
+        "oneShot": false,
+        "instagib": false,
+        "mirrorLoadout": false,
+        "bounty": false,
+        "berserk": false,
+        "bigHead": false,
+        "noRecoil": false,
+        "endless": false,
+        "startingWeapon": 0,
+        "playerName": "",
+        "mission": "convoy-run",
+        "loadout": null,
+        "checkpoint": null,
+        "mutators": []
+      },
+      "frames": 1337,
+      "walkedMetres": 101.787,
+      "maxLiveStep": 0.14552012031217557,
+      "minY": 0,
+      "maxY": 16,
+      "events": {
+        "zone-progress": 104,
+        "zone-capture": 1,
+        "powerup": 1,
+        "zone-score": 6,
+        "objective-win": 1
+      },
+      "milestones": [
+        {
+          "type": "zone-capture",
+          "frame": 1035,
+          "time": 17.266666666666968,
+          "data": {
+            "zone": "alpha",
+            "team": 0,
+            "score": 0
+          },
+          "positions": [
+            {
+              "id": 0,
+              "x": 0.27673952071718455,
+              "y": 0,
+              "z": 0.0029919413876415496
+            },
+            {
+              "id": 1,
+              "x": 86,
+              "y": 16,
+              "z": 5
+            }
+          ]
+        },
+        {
+          "type": "objective-win",
+          "frame": 1336,
+          "time": 22.28333333333335,
+          "data": {
+            "team": 0,
+            "score": 5.016666666666654
+          },
+          "positions": [
+            {
+              "id": 0,
+              "x": 0.27673952071718455,
+              "y": 0,
+              "z": 0.0029919413876415496
+            },
+            {
+              "id": 1,
+              "x": 86,
+              "y": 16,
+              "z": 5
+            }
+          ]
+        }
+      ],
+      "setup": [
+        {
+          "id": 0,
+          "x": -86,
+          "y": 16,
+          "z": 0
+        },
+        {
+          "id": 1,
+          "x": 86,
+          "y": 16,
+          "z": 5
+        }
+      ],
+      "endReason": "objective",
+      "zone": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "radius": 7
+      },
+      "seconds": 22.28333333333335,
+      "trajectoryHash": "f39d20662ac89d8593e181ce76bca0cd65edaab28042e097a0de010212f1a620",
+      "falls": 0,
+      "teamScores": {
+        "0": 5.016666666666654,
+        "1": 0
+      },
+      "actors": [
+        {
+          "id": 0,
+          "frags": 0,
+          "deaths": 0,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 5.016666666666654,
+            "objectiveCaptures": 1,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 0,
+            "hits": 0,
+            "damage": 0
+          }
+        },
+        {
+          "id": 1,
+          "frags": 0,
+          "deaths": 0,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 0,
+            "hits": 0,
+            "damage": 0
+          }
+        }
+      ]
+    },
+    {
+      "mode": "koth",
+      "kind": "controlled-input-full-round",
+      "config": {
+        "mode": "koth",
+        "botCount": 0,
+        "difficulty": "easy",
+        "fragLimit": 5,
+        "timeLimit": 900,
+        "respawn": 1,
+        "speed": 1,
+        "gravity": 1,
+        "damage": 1,
+        "fastPowers": false,
+        "lifeSteal": false,
+        "unlimitedAmmo": false,
+        "suddenDeath": false,
+        "randomLoadout": false,
+        "oneShot": false,
+        "instagib": false,
+        "mirrorLoadout": false,
+        "bounty": false,
+        "berserk": false,
+        "bigHead": false,
+        "noRecoil": false,
+        "endless": false,
+        "startingWeapon": 0,
+        "playerName": "",
+        "mission": "convoy-run",
+        "loadout": null,
+        "checkpoint": null,
+        "mutators": []
+      },
+      "frames": 1337,
+      "walkedMetres": 101.787,
+      "maxLiveStep": 0.14552012031217557,
+      "minY": 0,
+      "maxY": 16,
+      "events": {
+        "zone-progress": 102,
+        "zone-capture": 1,
+        "powerup": 1,
+        "zone-score": 6,
+        "objective-win": 1
+      },
+      "milestones": [
+        {
+          "type": "zone-capture",
+          "frame": 1035,
+          "time": 17.266666666666968,
+          "data": {
+            "zone": "alpha",
+            "team": 0,
+            "score": 0
+          },
+          "positions": [
+            {
+              "id": 0,
+              "x": 0.27673952071718455,
+              "y": 0,
+              "z": 0.0029919413876415496
+            },
+            {
+              "id": 1,
+              "x": 86,
+              "y": 16,
+              "z": 5
+            }
+          ]
+        },
+        {
+          "type": "objective-win",
+          "frame": 1336,
+          "time": 22.28333333333335,
+          "data": {
+            "team": 0,
+            "score": 5.016666666666654
+          },
+          "positions": [
+            {
+              "id": 0,
+              "x": 0.27673952071718455,
+              "y": 0,
+              "z": 0.0029919413876415496
+            },
+            {
+              "id": 1,
+              "x": 86,
+              "y": 16,
+              "z": 5
+            }
+          ]
+        }
+      ],
+      "setup": [
+        {
+          "id": 0,
+          "x": -86,
+          "y": 16,
+          "z": 0
+        },
+        {
+          "id": 1,
+          "x": 86,
+          "y": 16,
+          "z": 5
+        }
+      ],
+      "endReason": "objective",
+      "zone": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "radius": 7
+      },
+      "seconds": 22.28333333333335,
+      "trajectoryHash": "f39d20662ac89d8593e181ce76bca0cd65edaab28042e097a0de010212f1a620",
+      "falls": 0,
+      "teamScores": {
+        "0": 5.016666666666654,
+        "1": 0
+      },
+      "actors": [
+        {
+          "id": 0,
+          "frags": 0,
+          "deaths": 0,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 5.016666666666654,
+            "objectiveCaptures": 1,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 0,
+            "hits": 0,
+            "damage": 0
+          }
+        },
+        {
+          "id": 1,
+          "frags": 0,
+          "deaths": 0,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 0,
+            "hits": 0,
+            "damage": 0
+          }
+        }
+      ]
+    }
+  ]
+}

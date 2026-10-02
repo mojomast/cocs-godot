@@ -6,20 +6,20 @@ var held: Dictionary = {}
 var blocked: Dictionary = {}
 
 func observe(event: InputEvent) -> void:
-	var code := 0
-	if event is InputEventKey and event.physical_keycode in KEYS: code = event.physical_keycode
-	if event is InputEventMouseButton and event.button_index in [MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT]: code = -event.button_index
-	if code == 0: return
-	if event.pressed: held[code] = true
+	var physical := preload("res://input_bindings/model.gd").physical(event)
+	var codes := preload("res://input_bindings/access.gd").gameplay_codes()
+	if physical.is_empty(): return
+	if event.pressed and not codes.has(physical) and physical not in ["KeyC", "MouseLeft", "MouseMiddle"]: return
+	if event.pressed: held[physical] = true
 	else:
-		held.erase(code)
-		blocked.erase(code)
+		held.erase(physical)
+		blocked.erase(physical)
 
 func boundary() -> void:
 	blocked.merge(held)
 
 func capture_allowed() -> bool:
 	if not blocked.is_empty(): return false
-	for code: int in held:
-		if code != -MOUSE_BUTTON_LEFT: return false
+	for code: String in held:
+		if code != "MouseLeft": return false
 	return true

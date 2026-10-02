@@ -2,6 +2,7 @@ extends RefCounted
 ## Source desktop defaults. Press actions survive a tap between network samples;
 ## held actions require a recorded fresh press, never global synthetic key state.
 const Motion = preload("res://world/control_math.gd")
+var bindings = preload("res://input_bindings/mapper.gd").new()
 const EDGE_KEYS := {KEY_R:"reload", KEY_E:"interact", KEY_Q:"power", KEY_F:"melee", KEY_G:"grenade"}
 var down := {}
 var held := {}
@@ -10,6 +11,7 @@ var capture_press := false
 var actor_weapon := -1
 
 func clear() -> void:
+	bindings.suppress()
 	held.clear()
 	pulses.clear()
 	capture_press = false
@@ -24,6 +26,9 @@ func observe_actor(actor: Dictionary) -> void:
 	actor_weapon = weapon
 
 func record(event: InputEvent, active: bool, actor: Dictionary = {}) -> void:
+	var physical_capture: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT
+	event = bindings.translate(event, active)
+	if event == null: return
 	observe_actor(actor)
 	var token := ""
 	var pressed := false
@@ -45,7 +50,7 @@ func record(event: InputEvent, active: bool, actor: Dictionary = {}) -> void:
 		return
 	if down.has(token): return
 	down[token] = true
-	if token == "m1": capture_press = not active
+	if token == "m1": capture_press = not active and physical_capture
 	if not active: return
 	held[token] = true
 	if token == "m1": pulses.fire = true

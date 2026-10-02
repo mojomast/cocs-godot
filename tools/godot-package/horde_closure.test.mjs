@@ -22,7 +22,10 @@ test('actual Horde transitive closure is classified separately and source-byte l
     'authority','catalog','event-cursor','input-buffer','match','schema',
   ].map(name=>`port/native-arenas/${name}.mjs`).sort());
   assert.deepEqual(closure.dataFiles, ['prism-foundry','aurora-basin','cinder-array'].map(id=>`godot/native_arenas/generated/${id}.json`));
-  assert.equal(Object.keys(closure.modules).length,85);
+  assert.equal(Object.keys(closure.modules).length,86);
+  assert.ok(closure.routes.challenges.includes('port/pass-two/modes/challenge-authority.mjs'));
+  assert.ok(closure.routes.challenges.includes('game/challenges.mjs'));
+  assert.ok(!closure.routes.horde.includes('game/challenges.mjs'), 'challenge settlement remains on its owned ordinary route');
   assert.deepEqual(closure.hordeAdditionalSource,[]);
   assert.ok(closure.routes.horde.includes('game/singleplayer.mjs'));
   assert.ok(!closure.routes.horde.includes('server/room.mjs'));

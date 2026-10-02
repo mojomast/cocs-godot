@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+const local='port/new-maps/parallax-observatory',evidence='/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002';
+const read=p=>JSON.parse(fs.readFileSync(p)),write=(p,d)=>fs.writeFileSync(p,JSON.stringify(d,null,2)+'\n'),sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const data=read('godot/multiplayer_worlds/generated/parallax-observatory.json'),geometryHash=data.geometryHash;
+const source=read(evidence+'/source-final.json'),walls=read(evidence+'/walls-final.json'),physics=read(evidence+'/native-physics.json'),bots=read(evidence+'/bots.json'),master=read(evidence+'/master-reopen.json'),art=read('godot/multiplayer_worlds/art/parallax-observatory/asset-manifest.json');
+for(const proof of [source,walls,physics,bots,master,art])if(proof.geometryHash!==geometryHash)throw Error('Stale proof hash');
+if(physics.failures.length)throw Error('Native physics failures');
+const modes=['deathmatch','teamdeathmatch','ctf','koth','uplink','holdout'];
+const artAudit=read(evidence+'/art-validation.json');
+const rounds=modes.map(mode=>{const source=read(`${evidence}/native-${mode}/source-outcome.json`),native=read(`${evidence}/native-${mode}/native-journey.json`);if(source.geometryHash!==geometryHash||native.geometryHash!==geometryHash||native.roundResults!==1)throw Error('Stale native '+mode);return {mode,seconds:source.seconds,endReason:source.endReason,wireFrames:source.wireFrames,stats:source.stats,native};});
+write(local+'/source-validation.json',{geometryHash,source,walls,bots});
+write(local+'/native-validation.json',{geometryHash,physics,rounds,fixtureLimit:'Controlled ordinary native key/mouse input against a passive wire peer. Autonomous source bots are a separate bounded observation.'});
+const files=['tools/godot-multiplayer/new-maps/parallax-observatory/parallax-observatory.blend','godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb','godot/multiplayer_worlds/art/parallax-observatory/presentation.gd','tools/godot-multiplayer/new-maps/parallax-observatory/generate.mjs','tools/godot-multiplayer/new-maps/parallax-observatory/blender_author.py','godot/tests/new_maps/parallax_observatory/physics.gd','godot/tests/new_maps/parallax_observatory/journey.gd','port/new-maps/parallax-observatory/native-journey.mjs'];
+write(local+'/provenance.json',{id:data.id,geometryHash,recipeHash:data.recipeHash,verifiedRuntimeMerge:'e731fd536d31d16a7014402afe6670fca644f9c1',frozenCoreSha256:sha('game/core.mjs'),originalWorlds:read(evidence+'/original-worlds-unchanged.json'),master,art,artAudit,files:files.map(path=>({path,bytes:fs.statSync(path).size,sha256:sha(path)})),evidence});
+const deps=read(local+'/dependencies.json');deps.geometryHash=geometryHash;deps.recipeHash=data.recipeHash;for(const p of Object.keys(deps.sha256))deps.sha256[p]=sha(p);for(const p of files)deps.sha256[p]=sha(p);deps.pending=['parent package/export closure and extracted platform gates'];write(local+'/dependencies.json',deps);
+write(local+'/capabilities.json',{id:data.id,name:data.name,geometryHash,acceptedNativeModes:modes,sourceAuthority:'port/multiplayer-worlds/derived/core.mjs',fixtureLimit:'Controlled normal-input native full rounds, not an autonomous/native matchmaking balance claim',evidence});
+console.log(JSON.stringify({geometryHash,modes,triangles:art.triangles,bytes:art.glbBytes}));

@@ -1,4 +1,5 @@
 extends Node3D
+const AssetAttachments = preload("res://vehicle_assets/attachment.gd")
 ## Source vehicle dimensions and +Z nose; seats/crew are rendered by Astra.
 var turret := Node3D.new()
 var wheels: Array[Node3D] = []
@@ -96,3 +97,4 @@ func _init(vehicle_kind: String = "titan") -> void:
 				box(Vector3(0.34, 0.34, 0.12), Vector3(x, 0.35, 1.9), Color("ff794b"))
 				box(Vector3(0.13, 0.13, 1.55), Vector3(x * 1.45, 0.22, -0.65), steel)
 			box(Vector3(1.8, 0.12, 0.65), Vector3(0, 0.6, 2.15), hull)
+	AssetAttachments.install(self, kind)

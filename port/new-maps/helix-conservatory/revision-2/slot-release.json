@@ -1,0 +1,77 @@
+{
+  "status": "RELEASED",
+  "ownedNativeProcesses": [
+    {
+      "dir": "revision-2-ctf-01",
+      "pid": 2501434,
+      "exitCode": 1,
+      "signal": null,
+      "alive": false
+    },
+    {
+      "dir": "revision-2-ctf-02",
+      "pid": 2530807,
+      "exitCode": 1,
+      "signal": null,
+      "alive": false
+    },
+    {
+      "dir": "revision-2-ctf-03",
+      "pid": 2558484,
+      "exitCode": 0,
+      "signal": null,
+      "alive": false
+    },
+    {
+      "dir": "revision-2-deathmatch-01",
+      "pid": 2570660,
+      "exitCode": 1,
+      "signal": null,
+      "alive": false
+    },
+    {
+      "dir": "revision-2-deathmatch-02",
+      "pid": 2603853,
+      "exitCode": 0,
+      "signal": null,
+      "alive": false
+    },
+    {
+      "dir": "revision-2-domination-01",
+      "pid": 2633192,
+      "exitCode": 0,
+      "signal": null,
+      "alive": false
+    },
+    {
+      "dir": "revision-2-domination-02",
+      "pid": 2676449,
+      "exitCode": 0,
+      "signal": null,
+      "alive": false
+    },
+    {
+      "dir": "revision-2-koth-01",
+      "pid": 2639813,
+      "exitCode": 0,
+      "signal": null,
+      "alive": false
+    },
+    {
+      "dir": "revision-2-teamdeathmatch-01",
+      "pid": 2618899,
+      "exitCode": 0,
+      "signal": null,
+      "alive": false
+    }
+  ],
+  "blender": "foreground jobs exited",
+  "godotImportsAndProbes": "foreground jobs exited",
+  "encoding": "foreground jobs exited",
+  "authorities": "closed in runner finally blocks",
+  "oldSevenGeneratedWorlds": "byte-identical to e731fd53",
+  "sourcePins": [
+    "515daf",
+    "0326"
+  ]
+}

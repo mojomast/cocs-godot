@@ -1,0 +1,1044 @@
+{
+  "version": 1,
+  "map_id": "parallax-observatory",
+  "geometry_hash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+  "materials": [
+    {
+      "source": "saltstone",
+      "family": "pearl-ceramic",
+      "options": {
+        "variant": "cast",
+        "tint": "bcb29d",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "variation_mode": "organic",
+        "variation_strength": 0.32,
+        "variation_scale": 0.07,
+        "variation_seed": 610260,
+        "tiles_per_metre": 1.3,
+        "roughness": 0.88,
+        "roughness_variation": 0.1,
+        "normal_strength": 0.1,
+        "texture_strength": 0.32,
+        "texture_saturation": 0,
+        "albedo_gain": 1.35,
+        "metallic": 0,
+        "specular_strength": 0.18
+      }
+    },
+    {
+      "source": "cistern",
+      "family": "pearl-ceramic",
+      "options": {
+        "variant": "cast",
+        "tint": "808b88",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "variation_mode": "organic",
+        "variation_strength": 0.32,
+        "variation_scale": 0.07,
+        "variation_seed": 610261,
+        "tiles_per_metre": 1.2,
+        "roughness": 0.76,
+        "roughness_variation": 0.1,
+        "normal_strength": 0.1,
+        "texture_strength": 0.28,
+        "texture_saturation": 0,
+        "albedo_gain": 1.3,
+        "metallic": 0,
+        "specular_strength": 0.2
+      }
+    },
+    {
+      "source": "metal",
+      "family": "brushed-alloy",
+      "options": {
+        "variant": "default",
+        "tint": "747873",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "variation_mode": "manufactured",
+        "variation_strength": 0.1,
+        "variation_scale": 0.07,
+        "variation_seed": 610262,
+        "tiles_per_metre": 1.4,
+        "roughness": 0.7,
+        "roughness_variation": 0.08,
+        "normal_strength": 0.06,
+        "texture_strength": 0.2,
+        "texture_saturation": 0,
+        "albedo_gain": 1.3,
+        "metallic": 0.42,
+        "specular_strength": 0.18
+      }
+    },
+    {
+      "source": "mirror",
+      "family": "brushed-alloy",
+      "options": {
+        "variant": "default",
+        "tint": "afb2a9",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "variation_mode": "manufactured",
+        "variation_strength": 0.1,
+        "variation_scale": 0.07,
+        "variation_seed": 610263,
+        "tiles_per_metre": 1.5,
+        "roughness": 0.4,
+        "roughness_variation": 0.06,
+        "normal_strength": 0.035,
+        "texture_strength": 0.12,
+        "texture_saturation": 0,
+        "albedo_gain": 1.2,
+        "metallic": 0.55,
+        "specular_strength": 0.2
+      }
+    },
+    {
+      "source": "paving",
+      "family": "pearl-ceramic",
+      "options": {
+        "variant": "worn",
+        "tint": "999787",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "variation_mode": "organic",
+        "variation_strength": 0.32,
+        "variation_scale": 0.07,
+        "variation_seed": 610264,
+        "tiles_per_metre": 1.25,
+        "roughness": 0.92,
+        "roughness_variation": 0.12,
+        "normal_strength": 0.12,
+        "texture_strength": 0.36,
+        "texture_saturation": 0,
+        "albedo_gain": 1.35,
+        "metallic": 0,
+        "specular_strength": 0.18
+      }
+    },
+    {
+      "source": "ochre",
+      "family": "pearl-ceramic",
+      "options": {
+        "variant": "cast",
+        "tint": "aa925f",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "variation_mode": "organic",
+        "variation_strength": 0.32,
+        "variation_scale": 0.07,
+        "variation_seed": 610265,
+        "tiles_per_metre": 1.4,
+        "roughness": 0.68,
+        "roughness_variation": 0.1,
+        "normal_strength": 0.06,
+        "texture_strength": 0.18,
+        "texture_saturation": 0,
+        "albedo_gain": 1.3,
+        "metallic": 0.03,
+        "specular_strength": 0.2
+      }
+    }
+  ],
+  "panels": [
+    {
+      "id": "polar-frost--1--12",
+      "position": [
+        -12,
+        31.25,
+        -95.47
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4.2,
+        0.6
+      ],
+      "texture": "ice-cracked",
+      "tint": "a6c1ca",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610312
+    },
+    {
+      "id": "polar-optics--1--12",
+      "position": [
+        -12,
+        28,
+        -95.4
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fbdc9",
+      "essential": false
+    },
+    {
+      "id": "polar-frost--1-12",
+      "position": [
+        12,
+        31.25,
+        -95.47
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4.2,
+        0.6
+      ],
+      "texture": "ice-cracked",
+      "tint": "a6c1ca",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610314
+    },
+    {
+      "id": "polar-optics--1-12",
+      "position": [
+        12,
+        28,
+        -95.4
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fbdc9",
+      "essential": false
+    },
+    {
+      "id": "polar-frost-1--12",
+      "position": [
+        -12,
+        31.25,
+        -72.53
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        4.2,
+        0.6
+      ],
+      "texture": "ice-cracked",
+      "tint": "a6c1ca",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610316
+    },
+    {
+      "id": "polar-optics-1--12",
+      "position": [
+        -12,
+        28,
+        -72.6
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fbdc9",
+      "essential": false
+    },
+    {
+      "id": "polar-frost-1-12",
+      "position": [
+        12,
+        31.25,
+        -72.53
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        4.2,
+        0.6
+      ],
+      "texture": "ice-cracked",
+      "tint": "a6c1ca",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610318
+    },
+    {
+      "id": "polar-optics-1-12",
+      "position": [
+        12,
+        28,
+        -72.6
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fbdc9",
+      "essential": false
+    },
+    {
+      "id": "calibrator--1--78",
+      "position": [
+        -78,
+        13.1,
+        -5.475
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        1.8,
+        0.72
+      ],
+      "texture": "holographic_grid",
+      "tint": "91b4bf",
+      "essential": false
+    },
+    {
+      "id": "calibrator--1--18",
+      "position": [
+        -18,
+        13.1,
+        -5.475
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        1.8,
+        0.72
+      ],
+      "texture": "holographic_grid",
+      "tint": "91b4bf",
+      "essential": false
+    },
+    {
+      "id": "calibrator--1-18",
+      "position": [
+        18,
+        13.1,
+        -5.475
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        1.8,
+        0.72
+      ],
+      "texture": "holographic_grid",
+      "tint": "91b4bf",
+      "essential": false
+    },
+    {
+      "id": "calibrator--1-78",
+      "position": [
+        78,
+        13.1,
+        -5.475
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        1.8,
+        0.72
+      ],
+      "texture": "holographic_grid",
+      "tint": "91b4bf",
+      "essential": false
+    },
+    {
+      "id": "calibrator-1--78",
+      "position": [
+        -78,
+        13.1,
+        5.475
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        1.8,
+        0.72
+      ],
+      "texture": "circuit_board-etch",
+      "tint": "95a992",
+      "essential": false
+    },
+    {
+      "id": "calibrator-1--18",
+      "position": [
+        -18,
+        13.1,
+        5.475
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        1.8,
+        0.72
+      ],
+      "texture": "circuit_board-etch",
+      "tint": "95a992",
+      "essential": false
+    },
+    {
+      "id": "calibrator-1-18",
+      "position": [
+        18,
+        13.1,
+        5.475
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        1.8,
+        0.72
+      ],
+      "texture": "circuit_board-etch",
+      "tint": "95a992",
+      "essential": false
+    },
+    {
+      "id": "calibrator-1-78",
+      "position": [
+        78,
+        13.1,
+        5.475
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        1.8,
+        0.72
+      ],
+      "texture": "circuit_board-etch",
+      "tint": "95a992",
+      "essential": false
+    },
+    {
+      "id": "coastal-salt--66",
+      "position": [
+        -66,
+        12.65,
+        -7.475
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        6.5,
+        0.45
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "a6b0a4",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610328
+    },
+    {
+      "id": "coastal-salt--18",
+      "position": [
+        -18,
+        12.65,
+        -7.475
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        5.8500000000000005,
+        0.45
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "a6b0a4",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610329
+    },
+    {
+      "id": "coastal-salt-84",
+      "position": [
+        84,
+        12.65,
+        -7.475
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        7.800000000000001,
+        0.45
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "a6b0a4",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610330
+    },
+    {
+      "id": "coastal-salt-82",
+      "position": [
+        82,
+        12.65,
+        7.475
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        6.5,
+        0.45
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "a6b0a4",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610331
+    },
+    {
+      "id": "pump-mineral-sill--1-0",
+      "position": [
+        15,
+        0.09,
+        70.83
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        2,
+        0.12
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "a6a18f",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610300
+    },
+    {
+      "id": "pump-mineral-sill--1-1",
+      "position": [
+        23,
+        0.09,
+        70.83
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        2,
+        0.12
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "a6a18f",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610301
+    },
+    {
+      "id": "pump-mineral-sill--1-2",
+      "position": [
+        32,
+        0.09,
+        70.83
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        2,
+        0.12
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "a6a18f",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610302
+    },
+    {
+      "id": "pump-mineral-sill-1-0",
+      "position": [
+        15,
+        0.09,
+        85.17
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        2,
+        0.12
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "a6a18f",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610303
+    },
+    {
+      "id": "pump-mineral-sill-1-1",
+      "position": [
+        23,
+        0.09,
+        85.17
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        2,
+        0.12
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "a6a18f",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610304
+    },
+    {
+      "id": "pump-mineral-sill-1-2",
+      "position": [
+        32,
+        0.09,
+        85.17
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        2,
+        0.12
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "a6a18f",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610305
+    }
+  ],
+  "signs": [
+    {
+      "id": "polar-sector--12",
+      "position": [
+        -12,
+        24.92,
+        -95.47
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        3.5,
+        0.36
+      ],
+      "text": "POLAR / S01",
+      "foreground": "dce5e6",
+      "background": "263239",
+      "essential": true
+    },
+    {
+      "id": "polar-sector-12",
+      "position": [
+        12,
+        24.92,
+        -95.47
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        3.5,
+        0.36
+      ],
+      "text": "POLAR / S02",
+      "foreground": "dce5e6",
+      "background": "263239",
+      "essential": true
+    },
+    {
+      "id": "archive-entry-west",
+      "position": [
+        -49.03,
+        14.5,
+        -5.4
+      ],
+      "rotation_degrees": [
+        0,
+        -90,
+        0
+      ],
+      "size": [
+        3.8,
+        0.65
+      ],
+      "text": "E1 / PLATE ARCHIVE",
+      "foreground": "dce5e6",
+      "background": "263239",
+      "essential": true
+    },
+    {
+      "id": "archive-entry-east",
+      "position": [
+        -22.97,
+        14.5,
+        -5.4
+      ],
+      "rotation_degrees": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        3.8,
+        0.65
+      ],
+      "text": "E1 / PLATE ARCHIVE",
+      "foreground": "dce5e6",
+      "background": "263239",
+      "essential": true
+    },
+    {
+      "id": "pump-entry-west",
+      "position": [
+        10.97,
+        2.5,
+        72.6
+      ],
+      "rotation_degrees": [
+        0,
+        -90,
+        0
+      ],
+      "size": [
+        3.4,
+        0.65
+      ],
+      "text": "T3 / TIDAL PUMP",
+      "foreground": "e5dab5",
+      "background": "354039",
+      "essential": true
+    },
+    {
+      "id": "pump-entry-east",
+      "position": [
+        37.03,
+        2.5,
+        72.6
+      ],
+      "rotation_degrees": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        3.4,
+        0.65
+      ],
+      "text": "T3 / TIDAL PUMP",
+      "foreground": "e5dab5",
+      "background": "354039",
+      "essential": true
+    },
+    {
+      "id": "arrival-route--114",
+      "position": [
+        -114,
+        13.8,
+        8.97
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        5.6,
+        0.65
+      ],
+      "text": "E1 ARCHIVE / MID +12",
+      "foreground": "dce5e6",
+      "background": "263239",
+      "essential": true
+    },
+    {
+      "id": "arrival-route-114",
+      "position": [
+        114,
+        13.8,
+        8.97
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        5.6,
+        0.65
+      ],
+      "text": "O2 OPTICS / MID +12",
+      "foreground": "dce5e6",
+      "background": "263239",
+      "essential": true
+    },
+    {
+      "id": "north-wayfinding",
+      "position": [
+        -66,
+        13.8,
+        -7.47
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        5.2,
+        0.65
+      ],
+      "text": "POLAR / NORTH +24",
+      "foreground": "dce5e6",
+      "background": "263239",
+      "essential": true
+    },
+    {
+      "id": "south-wayfinding",
+      "position": [
+        82,
+        13.8,
+        7.47
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        5.2,
+        0.65
+      ],
+      "text": "TIDAL / SOUTH +0",
+      "foreground": "dce5e6",
+      "background": "263239",
+      "essential": true
+    }
+  ],
+  "pockets": [
+    {
+      "id": "pump-header-vent",
+      "kind": "vent",
+      "position": [
+        20,
+        4.1,
+        71.08
+      ],
+      "size": [
+        0.5,
+        0.4,
+        0.35
+      ],
+      "color": "a9c5bd",
+      "count": 8
+    },
+    {
+      "id": "pump-return-mist",
+      "kind": "mist",
+      "position": [
+        28,
+        4.1,
+        84.92
+      ],
+      "size": [
+        0.5,
+        0.4,
+        0.35
+      ],
+      "color": "a9c5bd",
+      "count": 8
+    },
+    {
+      "id": "archive-shelf-dust",
+      "kind": "dust",
+      "position": [
+        -44,
+        15.35,
+        6.65
+      ],
+      "size": [
+        0.6,
+        0.3,
+        0.4
+      ],
+      "color": "c5cbbb",
+      "count": 4
+    },
+    {
+      "id": "polar-cold-vent-west",
+      "kind": "mist",
+      "position": [
+        -12,
+        31.15,
+        -95.1
+      ],
+      "size": [
+        0.6,
+        0.4,
+        0.3
+      ],
+      "color": "b6d1db",
+      "count": 6
+    },
+    {
+      "id": "polar-cold-vent-east",
+      "kind": "mist",
+      "position": [
+        12,
+        31.15,
+        -95.1
+      ],
+      "size": [
+        0.6,
+        0.4,
+        0.3
+      ],
+      "color": "b6d1db",
+      "count": 6
+    }
+  ],
+  "preserve_materials": [
+    "sea"
+  ],
+  "budgets": {
+    "material_variants": 6,
+    "panels": 64,
+    "signs": 24,
+    "motes": 40
+  }
+}

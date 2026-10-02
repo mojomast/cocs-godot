@@ -1,0 +1,181 @@
+{
+  "status": "planned-not-rendered",
+  "renderer": "record actual native renderer and cadence",
+  "districts": [
+    {
+      "district": "archive",
+      "closeup": {
+        "position": [
+          -46.671552,
+          9.65,
+          1.629806
+        ],
+        "look_at": [
+          -50,
+          11,
+          -8
+        ],
+        "floor_mesh": "terrace-3-47",
+        "eye_height": 1.65
+      },
+      "overview": {
+        "position": [
+          -36.40381,
+          30.0,
+          1.271249
+        ],
+        "look_at": [
+          -50,
+          11,
+          -8
+        ]
+      },
+      "review": [
+        "same-camera before/after",
+        "full/low/off",
+        "normal gameplay and compact HUD",
+        "reload/teardown counts"
+      ]
+    },
+    {
+      "district": "irrigation",
+      "closeup": {
+        "position": [
+          55.057772,
+          9.65,
+          -14.752686
+        ],
+        "look_at": [
+          64,
+          13,
+          -17
+        ],
+        "floor_mesh": "terrace-3-91",
+        "eye_height": 1.65
+      },
+      "overview": {
+        "position": [
+          42.945062,
+          30.0,
+          -11.507095
+        ],
+        "look_at": [
+          64,
+          13,
+          -17
+        ]
+      },
+      "review": [
+        "same-camera before/after",
+        "full/low/off",
+        "normal gameplay and compact HUD",
+        "reload/teardown counts"
+      ]
+    },
+    {
+      "district": "pavilion",
+      "closeup": {
+        "position": [
+          11.551367,
+          17.65,
+          82.19225
+        ],
+        "look_at": [
+          15,
+          18,
+          86
+        ],
+        "floor_mesh": "terrace-5-21",
+        "eye_height": 1.65
+      },
+      "overview": {
+        "position": [
+          9.010067,
+          38.0,
+          64.109955
+        ],
+        "look_at": [
+          15,
+          18,
+          86
+        ]
+      },
+      "review": [
+        "same-camera before/after",
+        "full/low/off",
+        "normal gameplay and compact HUD",
+        "reload/teardown counts"
+      ]
+    },
+    {
+      "district": "lightwell",
+      "closeup": {
+        "position": [
+          9.52024,
+          1.65,
+          7.305137
+        ],
+        "look_at": [
+          0,
+          13,
+          0
+        ],
+        "floor_mesh": "lightwell-9",
+        "eye_height": 1.65
+      },
+      "overview": {
+        "position": [
+          7.425787,
+          22.0,
+          5.698007
+        ],
+        "look_at": [
+          0,
+          13,
+          0
+        ]
+      },
+      "review": [
+        "same-camera before/after",
+        "full/low/off",
+        "normal gameplay and compact HUD",
+        "reload/teardown counts"
+      ]
+    },
+    {
+      "district": "botanical",
+      "closeup": {
+        "position": [
+          20.48828,
+          2.052575,
+          16.007198
+        ],
+        "look_at": [
+          28,
+          5,
+          22
+        ],
+        "floor_mesh": "terrace-2-10",
+        "eye_height": 1.65
+      },
+      "overview": {
+        "position": [
+          15.980858,
+          22.402575,
+          12.485615
+        ],
+        "look_at": [
+          28,
+          5,
+          22
+        ]
+      },
+      "review": [
+        "same-camera before/after",
+        "full/low/off",
+        "normal gameplay and compact HUD",
+        "reload/teardown counts"
+      ]
+    }
+  ]
+}
