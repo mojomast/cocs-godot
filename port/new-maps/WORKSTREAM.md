@@ -89,5 +89,16 @@ failed attempts and earlier releases.
   rail-start/unlimited-ammunition settings and shortened targets. These are
   scripted source fixtures; native, autonomous-bot and human acceptance remain
   pending. Geometry is unchanged and `modeBindings` is still pending.
+- **Gravemill Foundry — `32cbf30f`, ready for Blender.** All eight routes passed
+  movement in both directions; 3,711 navigation nodes connect 22 gameplay
+  targets. A mounted Puma completed a 767.64 m service loop with zero observed
+  collisions. Payload traversed 363.60 m through three checkpoints and delivery;
+  all six controlled source rounds passed, including mount/drive/dismount/zone
+  capture in Combined Arms. Blender assets and native checks remain pending.
+- **Cross-map collision follow-up:** Foundry proved that untriangulated vertical
+  wall quads can fail standing-player movement collision in the frozen source,
+  despite blocking weapon rays. It emits individual wall triangles. Helix and
+  Parallax agents are now checking actual movement contacts and updating their
+  recipes/hashes where necessary before Blender production.
 
 No finished Blender asset or native map acceptance is claimed at this checkpoint.

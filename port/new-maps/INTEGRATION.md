@@ -19,6 +19,16 @@ Check glass and foliage collision separately from solid architecture.
 
 ## Geometry generation and registration
 
+**Confirmed movement constraint:** `terrainWallSegments` uses polygon perimeter
+edges and drops edges with zero X/Z length. For a tall vertical quad, its remaining
+horizontal edges can both lie outside a standing actor's vertical span. Such a
+quad can block rays/native physics yet permit authoritative actor movement.
+Foundry uses individual wall triangles, whose diagonals provide full-height
+blocking spans; Helix/Parallax are auditing this before export. Verify solid-wall
+contact through continuous player movement from both sides, on multiple tiers,
+as well as clear portals. Do not use shot checks as a substitute for movement
+checks, and do not silently modify locked source geometry behavior.
+
 - Both standalone generators already deliver complete authority triangles.
   Parallax retains three `overhead` descriptions **and their generated slabs**;
   rerunning the legacy overhead-expansion loop would duplicate those surfaces.
