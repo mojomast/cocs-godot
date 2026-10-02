@@ -17,8 +17,8 @@ boundaries.
 |---|---|---|
 | Fighting production and native surface review | Astra `ses_f026e25e4ffezp2kvz5VGox7dz` | Complete and merged at `bb02e34b`; nine real rigs/masters and native comparisons; grant B released |
 | Parallax interior production | Astra `ses_f055a6b41ffe42yCL8AxbOL676` | Exclusive heavy grant C: build/reopen refined interiors, native geometry/art review and current Moth mount revalidation |
-| Fighting camera readability | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Source-only correction of oversized fixed jump envelope; actual-bounds framing with safe airborne transitions |
-| Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | Source-only correction of authored ceiling lights becoming dull under refined finish; preserve localized emission |
+| Fighting camera readability | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing correction merged at `1bff0281`; six parent source checks pass, native four-stage comparison still pending |
+| Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | Source correction merged at `91ad0ce5`; bounded native follow-up assigned to current grant-C owner after primary Parallax work |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
 | Queued asset integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Implement missing test-only candidate admission/hosted journey harnesses; reconcile every builder/receipt with refined material semantics before serial production |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Extension already integrated; fresh exact-input ledger required after production candidate stabilizes; no current engine grant |
@@ -34,7 +34,9 @@ are introduced by this directive.
 **`PARALLAX-INTERIORS-PRODUCTION-20261002-C` belongs to Parallax Astra
 `ses_f055a6b41ffe42yCL8AxbOL676`.** Its scope includes actual revised-interior
 Blender production/reopen/export, native geometry and visual review, and refined
-Moth mount checks in the original observatory checkout. Grant B was explicitly
+Moth mount checks in the original observatory checkout. A bounded extension also
+permits five Foundry-emission/Helix-regression checks after primary Parallax work;
+see `port/surface-refinement/maps/EMISSION_FOLLOWUP.md`. Grant B was explicitly
 released at `2026-10-02T21:45:31.798193Z`, with all 83 owned process groups checked
 and none remaining. Prior grant A was also explicitly released; both closeouts
 are integrated.
@@ -274,3 +276,38 @@ actual root-cause attribution remain pending. Exact commands and output limits:
 in the next invocation, and native texture-handle queries may allocate lazy
 resources, so compare its result with the original unprobed receipt. Grant C
 continues exclusively with Parallax; no gameplay-native regrant is implied.
+
+## Foundry emission source correction
+
+Map-art `95c86892` is merged as `91ad0ce5`. Decoded GLB geometry demonstrates that
+`GM / orange` contains exactly 22 authored lights (328 triangles), with no painted
+structure sharing the selector. The profile now preserves that original imported
+material, retaining its authored emission through existing binder exclusions.
+The other seven finishes and all placements/seeds remain identical. No shader or
+runtime change is required. Parent reran eleven shared and two package-provenance
+tests successfully.
+
+The proof harness now checks actual emissive identity, color, energy, texture and
+operator across detail/reapply/cleanup/reload. Its native execution and post-fix
+appearance remain pending. Current grant C was explicitly extended for the five
+bounded checks after Parallax's primary production work at a safe input boundary;
+the existing owner received the exact commit and named commands. The B gallery
+still shows the pre-fix dull lights and remains accurately labeled.
+
+## Fighting camera correction integrated
+
+Presentation `7ee54db4` is merged as `1bff0281`. It replaces the always-reserved
+8m jump space with cached posed-skin bounds, actual fighter/projectile positions,
+snapshot-derived jump prediction, HUD-safe margins and tick-driven easing. It
+retains hard containment, floor visibility, four-stage horizontal center limits,
+hitstop freeze, reset on match/round/seek and the reduced-motion maximum-envelope
+lock. Animation assets/import settings and combat authority remain untouched.
+
+Parent reran six source camera tests successfully, including real nine-GLB bind/
+rest reconstruction. The lane also passed 918 source framing/extrema checks.
+These are source/mathematical results, not rendered size, smoothing-feel or cache
+performance measurements. Focused actual-shell baseline/responsive fixtures and
+the native gate are ready in `godot/tests/fighting/presentation/`; exact pending
+four-stage comparisons are documented in
+`port/fighting/presentation/CAMERA_FOLLOWUP.md`. No camera-native grant is implied
+by this merge; grant C retains its explicit Parallax/light-check scope.

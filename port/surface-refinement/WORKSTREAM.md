@@ -109,3 +109,12 @@ Grant B explicitly released; **grant C belongs to Parallax's original owner**
 `ses_f055a6b41ffe42yCL8AxbOL676` for real revised-interior production and mount/
 surface review. That owner now owns any necessary Parallax-local profile/mount
 updates; the Foundry follow-up must not edit those files concurrently.
+
+Foundry emission correction `95c86892` is integrated as `91ad0ce5`. The original
+`GM / orange` selector is exclusively 22 light components, so its imported
+emissive material is now preserved rather than replaced by paint. All other
+Foundry finish/placement data remain unchanged. Parent's thirteen shared/package
+checks pass. Native lifecycle and three named light views, plus the Helix font/
+exclusion regression, are assigned as a bounded extension of current grant C
+after primary Parallax work. No fresh light screenshot or native pass is claimed
+yet; see `maps/EMISSION_FOLLOWUP.md`.
