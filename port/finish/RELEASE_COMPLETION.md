@@ -23,7 +23,7 @@ boundaries.
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
 | Scenery integration development | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Atomic installer and four-chapter connected journeys integrated at `cf0e8def`; nine parent source checks pass; awaits production/native grant after vehicles |
 | Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Exclusive grant E: complete source journey work, then actual nine masters/exports, native drive/crew/fire/repair/wreck and visual review |
-| Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base integrated at `b6ab6782`; source-only follow-up exercises ordinary P1-first selection and one-activation recovery with other pad retained; native execution awaits later grant and device access |
+| Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base `b6ab6782` and ordinary-controller follow-up `da259d19` integrated; 26 parent acceptance tests and grammar pass; native execution awaits later grant and device access |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Source-only registration of executable fighting UI journey and launch-bound finish anchor; preserve existing 141 jobs and all original criticals; fresh ledger still required |
 | Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Actual Parallax and robots promoted with reconciled import/image provenance; five other units still need production; final native/export/Windows CI remain pending |
 | Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | Prepared v3 pipeline integrated at `2902412b`; nine focused parent tests pass; real capture/edit/install awaits final assets and a later grant |
@@ -616,3 +616,12 @@ workaround with ordinary assignment order and checking single-activation recover
 while the other pad remains assigned. The final acceptance owner received the
 new helper/test dependencies. Native typing, hotplug, UI and responsive-camera
 execution remain pending under a later fighting grant and accessible uinput.
+
+Controller fixture follow-up `68bbe292` is integrated as `da259d19`. It now selects
+P1 before P2, checks exact exclusive routes, requires the truthful disconnected
+caption and recovers with exactly one GUI activation while retaining the other
+pad. It asserts button/focus preservation, both actors' released held/queued
+inputs, an unchanged paused clock and explicit Resume into mixed keyboard/pad
+routing before returning both players to keyboards. Only the fixture and its
+handoff documentation changed. Parent reran 26 acceptance tests and GDScript
+grammar parsing successfully; no native device or engine execution occurred.
