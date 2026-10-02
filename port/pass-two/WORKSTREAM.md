@@ -42,6 +42,21 @@ coherent player-visible batch, then verify it through actual lifecycle journeys.
 
 ## Source/code checkpoints
 
+- **Gameplay — ready for engine:** `77e7684f` and `f747c3ef` improve Grok's
+  hold/release charge hint, held-X grapple instructions, shared-rope boarding
+  guidance, bounded passive/channel cues and transport/cable cleanup. Seven
+  actual-source movement journeys and seven negative controls passed, including
+  a grounded arrival on Meridian's five-metre roof. Another-player rope tests
+  cover boarding, ride, expiration and no-X refusal. A real-wire Node owner/guest
+  journey covers owner reconnect and ordinary-fire death/anchor cleanup; it is
+  not native-client proof. Existing source regressions passed **75/75**.
+- Gameplay's native runners are prepared for seven movement journeys and guest
+  rope death/expiration/reconnect scenarios. Their owner is a scripted Node peer,
+  explicitly labeled. No engine ran; type checks, active-Experience HUD/cue
+  inspection, rendered clip, settings/lifecycle and native wire acceptance remain
+  pending. Production changes stay within `godot/player_gameplay/`; no shared
+  session/combat hook or frozen-source edit is needed.
+
 - **World — ready for engine:** `f93f71b2` implements source-derived seeded
   wet-roughness textures, restoration of original texture/channel ownership and
   pooled ground-supported rain contacts. `12f0aa1b` separately integrates
