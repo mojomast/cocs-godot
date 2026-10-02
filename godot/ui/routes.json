@@ -118,6 +118,12 @@
     },
     "tern-archipelago": {
       "name": "Tern Archipelago"
+    },
+    "helix-conservatory": {
+      "name": "Helix Conservatory"
+    },
+    "gravemill-foundry": {
+      "name": "Gravemill Foundry"
     }
   },
   "routes": [
@@ -420,7 +426,9 @@
             "thermal-divide",
             "sirocco-circuit",
             "copper-bowl",
-            "tern-archipelago"
+            "tern-archipelago",
+            "helix-conservatory",
+            "gravemill-foundry"
           ],
           "default": "switchyard-ward"
         },
@@ -485,6 +493,21 @@
             "tern-archipelago": [
               "cocs",
               "cocs-coop"
+            ],
+            "helix-conservatory": [
+              "deathmatch",
+              "teamdeathmatch",
+              "ctf",
+              "domination",
+              "koth"
+            ],
+            "gravemill-foundry": [
+              "deathmatch",
+              "teamdeathmatch",
+              "domination",
+              "assault",
+              "payload",
+              "combined-arms"
             ]
           },
           "default": "deathmatch"
@@ -517,6 +540,8 @@
           "maps": [
             "breakwater-exchange",
             "copper-bowl",
+            "gravemill-foundry",
+            "helix-conservatory",
             "rainmarket-exchange",
             "sirocco-circuit",
             "switchyard-ward",
@@ -534,6 +559,21 @@
             ],
             "copper-bowl": [
               "puma-soccer"
+            ],
+            "gravemill-foundry": [
+              "assault",
+              "combined-arms",
+              "deathmatch",
+              "domination",
+              "payload",
+              "teamdeathmatch"
+            ],
+            "helix-conservatory": [
+              "ctf",
+              "deathmatch",
+              "domination",
+              "koth",
+              "teamdeathmatch"
             ],
             "rainmarket-exchange": [
               "armsrace",

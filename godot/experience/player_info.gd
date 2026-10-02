@@ -168,7 +168,7 @@ func unbind() -> void:
 
 func clear() -> void:
 	# A new spectator seat must not inherit the previous actor's mouse capture.
-	if spectator(): Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if is_instance_valid(client) and spectator(): Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	spectator_camera.clear()
 	public_feed.clear()
 	captions.clear()

@@ -3,6 +3,12 @@
 **READY FOR CORE/NATIVE COMBO VALIDATION.** This is authored source content, with
 human balance, actual core combo proof and native animation acceptance pending.
 
+Actual native-03 now provides 16 passing and 38 failing facing cases, with all
+54 replay comparisons equal. `NATIVE_03_DIAGNOSIS.json` preserves frame/contact
+witnesses and maps every failure; `NATIVE_03_FOLLOWUP.md` documents corrected
+candidates and a precise core landing-timer issue. All native-passing candidates
+remain unchanged; revised ones await native rerun. No move balance values change.
+
 ## Deliverables
 
 - `godot/fighting/data/roster.json`: nine source-identity operators, 138 explicit
@@ -19,7 +25,12 @@ human balance, actual core combo proof and native animation acceptance pending.
 - `ANIMATION_COVERAGE.json`: complete unique-GLB clip requirements, move-local
   contact/mobility/counter windows and paired attacker/victim timelines. This is
   an authoring manifest, not an assertion that GLBs or clips already exist.
-- `FREEZE.json`: SHA-256 provenance and authored-data freeze. Source identities
+- `godot/fighting/data/schema.json`: complete strict authored-field shape, including
+  optional mechanic dictionaries; unknown keys/enums and unsafe integers fail.
+- `tools/fighting/content/balance_targets.json`: machine-readable initial intent;
+  roster remains authoritative runtime data. `state_keys.json` pins universal clips.
+- `FREEZE.json`: SHA-256 machine-input/data freeze and informational provenance.
+  Human prose is excluded from enforced hashes. Source identities
   are imported from `game/data.mjs` CHARACTERS, never edited. Seven harnesses are
   source-audited metadata, not 63 fighters or a second loadout move system.
 
@@ -27,12 +38,14 @@ human balance, actual core combo proof and native animation acceptance pending.
 
 ```sh
 node tools/fighting/content/validate.mjs
-node --test godot/tests/fighting/content/content.test.mjs
+node --test godot/tests/fighting/content/*.test.mjs
 ```
 
 `tools/fighting/content/author.mjs` is the explicit-table authoring recipe. Running
 it regenerates roster/rules, move reference, manifest, estimates and freeze.
-Regenerate only for an intentional content revision: validation checks the current
+An optional output-directory argument writes a fresh isolated output tree for
+byte-for-byte reproduction checks. Regenerate only for an intentional content
+revision: validation checks the current
 freeze without rewriting it. Node validation is a data/schema invariant check;
 it contains no authoritative combat simulation.
 
@@ -49,9 +62,19 @@ it contains no authoritative combat simulation.
    fighters using each trace's fixture preconditions; air-corner traces begin
    with both actors already airborne. DeepSeek includes a real 36-tick back-charge
    setup; maintain its back hold through normals and forward release for S1.
+   Grounded fixtures start at the rules' legal pushbox width (660 mm). During
+   DeepSeek's charge, replay its explicit `defender_setup_inputs` using the same
+   initial attacker-facing conversion, so the same-operator dummy walks alongside
+   the attacker through ordinary inputs. Release the dummy at first attack.
+   Place the actors once before playback; never teleport them per step.
+   For `setup_kind:paired_jump`, start both actors grounded at the corner and
+   replay both Up samples at tick0; begin the attacker air route at tick8. Native
+   fixtures for already-passing Grok/Mistral air routes remain unchanged.
 3. Expand sparse trace samples to two canonical input dictionaries each tick.
-   A duration holds axes/buttons, while `pressed` is emitted only on the first
-   tick; unspecified ticks are neutral. Mirror facing-relative horizontal axes.
+   Use `trace.mjs`: a duration holds axes/buttons, while a rising-edge `pressed`
+   hint is emitted only on the first tick; unspecified ticks are neutral. Core
+   derives actual edges from held history. Down=-1, up=+1; mirror facing-relative
+   horizontal axes into canonical world-left/right values.
 4. Execute `step` and record contact events, attacker move/frame, victim stun,
    combo count, damage, resources and landing. Assert each intended contact
    lands before stun release, with no unrecorded neutral gap and all intended
@@ -69,7 +92,7 @@ The authored routes are candidates rather than promises of unavoidable damage.
 
 ## Acceptance record
 
-Source validation checks exact imported roster identity and DESIGN stat targets;
+Source validation checks exact imported roster identity and machine balance targets;
 all move fields, common animation/effect keys, explicit variants, bounded windows,
 acyclic cancels, finite projectiles/traps/resources and mathematical trace gaps.
 Mutation tests demonstrate rejection of missing specials, copied fingerprints,

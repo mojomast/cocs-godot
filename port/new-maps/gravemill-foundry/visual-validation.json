@@ -1,0 +1,699 @@
+{
+  "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+  "views": [
+    {
+      "drawCalls": 8,
+      "elapsedMs": 582,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 8,
+      "renderPrimitives": 69870,
+      "view": "overview"
+    },
+    {
+      "drawCalls": 11,
+      "elapsedMs": 1064,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 11,
+      "renderPrimitives": 83724,
+      "view": "reverse"
+    },
+    {
+      "drawCalls": 38,
+      "elapsedMs": 1897,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 38,
+      "renderPrimitives": 348694,
+      "view": "crusher-eye"
+    },
+    {
+      "drawCalls": 40,
+      "elapsedMs": 2727,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 40,
+      "renderPrimitives": 349350,
+      "view": "crusher-maintenance"
+    },
+    {
+      "drawCalls": 40,
+      "elapsedMs": 3508,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 40,
+      "renderPrimitives": 349350,
+      "view": "cooling-eye"
+    },
+    {
+      "drawCalls": 40,
+      "elapsedMs": 4176,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 40,
+      "renderPrimitives": 349350,
+      "view": "assay-eye"
+    },
+    {
+      "drawCalls": 40,
+      "elapsedMs": 4807,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 40,
+      "renderPrimitives": 349350,
+      "view": "assay-inspection"
+    },
+    {
+      "drawCalls": 38,
+      "elapsedMs": 5406,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 38,
+      "renderPrimitives": 348694,
+      "view": "crown-eye"
+    },
+    {
+      "drawCalls": 40,
+      "elapsedMs": 6105,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 40,
+      "renderPrimitives": 349350,
+      "view": "furnace-eye"
+    },
+    {
+      "drawCalls": 40,
+      "elapsedMs": 6700,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 40,
+      "renderPrimitives": 349350,
+      "view": "transfer-eye"
+    }
+  ],
+  "centeredViews": [
+    {
+      "drawCalls": 8,
+      "elapsedMs": 525,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 8,
+      "renderPrimitives": 69870,
+      "view": "overview"
+    },
+    {
+      "drawCalls": 11,
+      "elapsedMs": 1028,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 11,
+      "renderPrimitives": 83724,
+      "view": "reverse"
+    },
+    {
+      "drawCalls": 38,
+      "elapsedMs": 1876,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 38,
+      "renderPrimitives": 348694,
+      "view": "crusher-eye"
+    },
+    {
+      "drawCalls": 40,
+      "elapsedMs": 2726,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 40,
+      "renderPrimitives": 349350,
+      "view": "crusher-maintenance"
+    },
+    {
+      "drawCalls": 40,
+      "elapsedMs": 3525,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 40,
+      "renderPrimitives": 349350,
+      "view": "cooling-eye"
+    },
+    {
+      "drawCalls": 39,
+      "elapsedMs": 4207,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 39,
+      "renderPrimitives": 349022,
+      "view": "cooling-cross-aisle"
+    },
+    {
+      "drawCalls": 40,
+      "elapsedMs": 4876,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 40,
+      "renderPrimitives": 349350,
+      "view": "assay-eye"
+    },
+    {
+      "drawCalls": 40,
+      "elapsedMs": 5490,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 40,
+      "renderPrimitives": 349350,
+      "view": "assay-inspection"
+    },
+    {
+      "drawCalls": 40,
+      "elapsedMs": 6115,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 40,
+      "renderPrimitives": 349350,
+      "view": "assay-room-centered"
+    },
+    {
+      "drawCalls": 38,
+      "elapsedMs": 6707,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 38,
+      "renderPrimitives": 348694,
+      "view": "crown-eye"
+    },
+    {
+      "drawCalls": 40,
+      "elapsedMs": 7409,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 40,
+      "renderPrimitives": 349350,
+      "view": "furnace-eye"
+    },
+    {
+      "drawCalls": 40,
+      "elapsedMs": 8005,
+      "hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+      "metrics": {
+        "art": "res://multiplayer_worlds/art/worlds/gravemill-foundry.glb",
+        "gameplayTriangles": 3158,
+        "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+      },
+      "nodes": 5564,
+      "renderObjects": 40,
+      "renderPrimitives": 349350,
+      "view": "transfer-eye"
+    }
+  ],
+  "walkthrough": {
+    "seconds": 114.1999999999948,
+    "wallSeconds": 121.40552989100001,
+    "controls": 2158,
+    "stages": [
+      {
+        "stage": "walk-0",
+        "x": -174,
+        "y": 0,
+        "z": -62.36
+      },
+      {
+        "stage": "walk-0",
+        "label": "crusher-approach",
+        "x": -111.83071377484411,
+        "y": 0,
+        "z": -53.82343411188434
+      },
+      {
+        "stage": "walk-1",
+        "x": -111.83071377484411,
+        "y": 0,
+        "z": -53.82343411188434
+      },
+      {
+        "stage": "walk-1",
+        "label": "crusher-interior",
+        "x": -89.05646283109985,
+        "y": 0,
+        "z": -50.856755482397794
+      },
+      {
+        "stage": "walk-2",
+        "x": -89.05646283109985,
+        "y": 0,
+        "z": -50.856755482397794
+      },
+      {
+        "stage": "walk-2",
+        "label": "crusher-aisle",
+        "x": -88.0000223338248,
+        "y": 10.278515888306563,
+        "z": 5.507146407875208
+      },
+      {
+        "stage": "walk-3",
+        "x": -88.0000223338248,
+        "y": 10.278515888306563,
+        "z": 5.507146407875208
+      },
+      {
+        "stage": "walk-3",
+        "label": "cooling-entry",
+        "x": -79.39538388487814,
+        "y": 12,
+        "z": 24.8703285136735
+      },
+      {
+        "stage": "walk-4",
+        "x": -79.39538388487814,
+        "y": 12,
+        "z": 24.8703285136735
+      },
+      {
+        "stage": "walk-4",
+        "label": "cooling-room",
+        "x": -51.75855923234541,
+        "y": 12,
+        "z": 28.75380413652055
+      },
+      {
+        "stage": "walk-5",
+        "x": -51.75855923234541,
+        "y": 12,
+        "z": 28.75380413652055
+      },
+      {
+        "stage": "walk-5",
+        "label": "assay-control",
+        "x": 66.6336008491854,
+        "y": 12.000000000000002,
+        "z": 45.308313367233765
+      },
+      {
+        "stage": "walk-6",
+        "x": 66.6336008491854,
+        "y": 12.000000000000002,
+        "z": 45.308313367233765
+      },
+      {
+        "stage": "walk-6",
+        "label": "crown-gantry",
+        "x": -0.1922373677393016,
+        "y": 24.000000000000004,
+        "z": 109.0043409722538
+      },
+      {
+        "stage": "walk-7",
+        "x": -0.1922373677393016,
+        "y": 24.000000000000004,
+        "z": 109.0043409722538
+      },
+      {
+        "stage": "walk-7",
+        "label": "furnace-handoff",
+        "x": 88.68201321397984,
+        "y": 0,
+        "z": -25.882124789733968
+      }
+    ],
+    "distanceMoved": 808.4788701462758
+  },
+  "compact": {
+    "seconds": 113.93333333332815,
+    "controls": 2161,
+    "stages": [
+      {
+        "stage": "walk-0",
+        "x": -166,
+        "y": 0,
+        "z": -85.24000000000001
+      },
+      {
+        "stage": "walk-0",
+        "label": "crusher-approach",
+        "x": -112.01673267836006,
+        "y": 0,
+        "z": -53.55369270833017
+      },
+      {
+        "stage": "walk-1",
+        "x": -112.01673267836006,
+        "y": 0,
+        "z": -53.55369270833017
+      },
+      {
+        "stage": "walk-1",
+        "label": "crusher-interior",
+        "x": -89.0047368412164,
+        "y": 0,
+        "z": -50.778212384055074
+      },
+      {
+        "stage": "walk-2",
+        "x": -89.0047368412164,
+        "y": 0,
+        "z": -50.778212384055074
+      },
+      {
+        "stage": "walk-2",
+        "label": "crusher-aisle",
+        "x": -88.00012973871497,
+        "y": 10.07076358657125,
+        "z": 4.641496780626776
+      },
+      {
+        "stage": "walk-3",
+        "x": -88.00012973871497,
+        "y": 10.07076358657125,
+        "z": 4.641496780626776
+      },
+      {
+        "stage": "walk-3",
+        "label": "cooling-entry",
+        "x": -79.62355618773363,
+        "y": 12,
+        "z": 24.84561754093182
+      },
+      {
+        "stage": "walk-4",
+        "x": -79.62355618773363,
+        "y": 12,
+        "z": 24.84561754093182
+      },
+      {
+        "stage": "walk-4",
+        "label": "cooling-room",
+        "x": -52.12767136697194,
+        "y": 12,
+        "z": 28.70211149300039
+      },
+      {
+        "stage": "walk-5",
+        "x": -52.12767136697194,
+        "y": 12,
+        "z": 28.70211149300039
+      },
+      {
+        "stage": "walk-5",
+        "label": "assay-control",
+        "x": 65.90943777710169,
+        "y": 12,
+        "z": 45.296808580376
+      },
+      {
+        "stage": "walk-6",
+        "x": 65.90943777710169,
+        "y": 12,
+        "z": 45.296808580376
+      },
+      {
+        "stage": "walk-6",
+        "label": "crown-gantry",
+        "x": -0.06603923556817042,
+        "y": 24,
+        "z": 108.95782424259785
+      },
+      {
+        "stage": "walk-7",
+        "x": -0.06603923556817042,
+        "y": 24,
+        "z": 108.95782424259785
+      },
+      {
+        "stage": "walk-7",
+        "label": "furnace-handoff",
+        "x": 88.32925430459692,
+        "y": 0,
+        "z": -25.6157011791879
+      }
+    ],
+    "window": "760x520",
+    "uiScale": 150,
+    "payload": {
+      "seconds": 154.816666666682,
+      "controls": 2946,
+      "objective": {
+        "kind": "payload",
+        "zones": [
+          {
+            "id": "cp1",
+            "x": -55.503424369974134,
+            "z": -45.77047941179638,
+            "y": 0,
+            "radius": 4.5,
+            "owner": 0,
+            "captureTeam": null,
+            "progress": 100,
+            "distance": 121.20007769446121
+          },
+          {
+            "id": "cp2",
+            "x": 57.55402694324624,
+            "z": -49.73231871483547,
+            "y": 0,
+            "radius": 4.5,
+            "owner": 0,
+            "captureTeam": null,
+            "progress": 100,
+            "distance": 242.40015538892243
+          },
+          {
+            "id": "cp3",
+            "x": 166,
+            "z": -38.76,
+            "y": 0,
+            "radius": 4.5,
+            "owner": 0,
+            "captureTeam": null,
+            "progress": 100,
+            "distance": 363.60023308338367
+          }
+        ],
+        "active": 3,
+        "attacker": 0,
+        "defender": 1,
+        "winner": 0,
+        "leaders": [
+          0
+        ],
+        "payload": {
+          "position": {
+            "x": 166,
+            "y": 0,
+            "z": -38.76
+          },
+          "distance": 363.60023308338367,
+          "total": 363.60023308338367,
+          "speed": 2.4240015538892243,
+          "radius": 4.5,
+          "pushing": 0,
+          "contested": false,
+          "delivered": true,
+          "checkpointsReached": 3,
+          "checkpointCount": 3,
+          "progress": 100
+        }
+      },
+      "nativeReceipts": [
+        {
+          "role": "host",
+          "inputs": 146,
+          "results": true
+        },
+        {
+          "role": "guest",
+          "inputs": 147,
+          "results": true
+        }
+      ]
+    }
+  },
+  "wide": {
+    "window": "1280x800",
+    "uiScale": 100
+  },
+  "clip": {
+    "mode": "walkthrough",
+    "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+    "frames": 518,
+    "actualCaptureSpanSeconds": 53.229,
+    "measuredCaptureCadence": 9.712750568299235,
+    "gapsMs": {
+      "median": 99,
+      "p95": 128,
+      "max": 243,
+      "over250": 0
+    },
+    "encodedFps": 15,
+    "resolution": "1280x800 UI; 0.75 3D scale",
+    "renderer": "Godot compatibility renderer / llvmpipe software CPU; capture preset disables sun shadows",
+    "method": "Production native camera follows authority pose; ordinary serialized native inputs. Frame timestamp durations preserved before 15fps resampling.",
+    "performanceLimit": "Capture cadence is not a GPU or interactive gameplay FPS benchmark",
+    "output": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/wide/walkthrough.mp4"
+  },
+  "images": [
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/native-final-views/overview.png",
+      "sha256": "d3c57923339ae3d427c1fd1472fe82a46bd32ba7649ce161f3e99b15a36eea92"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/native-final-views/crusher-eye.png",
+      "sha256": "a35e137b771d2321617552393b4e49401f87ffb36734d58099654438d837c515"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/native-final-views/crusher-maintenance.png",
+      "sha256": "46be908c2dfc5d5c1612f5b12ead31cc69f01b016e3b216945ac171ee00722fe"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/native-final-views/cooling-eye.png",
+      "sha256": "2dbc60358f34235c8866d7cc9fe4d3ff05cce25cf170dea09590c14335a766b7"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/native-final-views/assay-eye.png",
+      "sha256": "bb050187a43095fd4be57aec343c4160b90ef7a9e7518a6ca1dd7e12ddc22d2d"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/native-final-views/assay-inspection.png",
+      "sha256": "2371c5fce1b2613d26fce0135a60391366051c95b738f5ffbc73c16a842837f8"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/native-final-views/furnace-eye.png",
+      "sha256": "6066db0ec8a7e1715c12dc442afe903d0005603277d6ffeabb4b7abbb1368315"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/native-final-views/transfer-eye.png",
+      "sha256": "6124936dd1a76b849338baaaa7e8d6e1ff23f79f5d3828566ac3b3fae300117a"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/native-final-views/crown-eye.png",
+      "sha256": "b4656358fd2e325dce0f70b8bdbfa063929a56285c52418eb8de13be01f53163"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/native-centered-views/cooling-cross-aisle.png",
+      "sha256": "49e321a0bd91c90117eb0419d975501893508aedf6412dcb1a861fa7afea033a"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/native-centered-views/assay-room-centered.png",
+      "sha256": "b83c0a22c01b5a7e39fee4dfd06a8e330224717cba73c26319967a695bff8182"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/compact-payload/payload-frames/payload-checkpoint-2.png",
+      "sha256": "b8434c326a38e4841759e538a70045e34aaf6c72c52b93a79bad2fb8d132559c"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/compact/walkthrough-frames/assay-control.png",
+      "sha256": "3c5b5a1eb73f681a870b9140189790d965669f904fad9e02c57fbf3b782fff50"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production/wide/walkthrough-frames/crusher-interior.png",
+      "sha256": "5162336ae48bc25dc6922767c8d8cdbce57ff833825fe9bc20fed58eb3c4379f"
+    }
+  ],
+  "clipSha256": "e5840154350cc32406f040658e703c25d8030a6caacc7bf408763e4a07cf03a9"
+}

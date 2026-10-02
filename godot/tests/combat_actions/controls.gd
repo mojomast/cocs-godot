@@ -36,6 +36,9 @@ func prepare(s: Node) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _initialize() -> void:
+	call_deferred("run")
+
+func run() -> void:
 	var a := Actions.new()
 	for code: int in Actions.EDGE_KEYS:
 		var field: String = Actions.EDGE_KEYS[code]
@@ -148,4 +151,6 @@ func _initialize() -> void:
 	check(not c.command(0,0,true,false).ads, "mounted press cannot latch infantry ADS")
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	print("NATIVE_COMBAT_ACTIONS checks=",checks," failures=",failures," synthetic=true")
+	await RenderingServer.frame_post_draw
+	await process_frame
 	quit(1 if failures else 0)

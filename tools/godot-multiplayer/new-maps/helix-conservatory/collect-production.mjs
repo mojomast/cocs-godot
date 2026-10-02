@@ -1,0 +1,24 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+const root=path.resolve(new URL('../../../../',import.meta.url).pathname);
+const evidence=path.resolve(process.argv[2]);
+const read=p=>JSON.parse(fs.readFileSync(p));
+const authority=read(path.join(root,'godot/multiplayer_worlds/generated/helix-conservatory.json'));
+const physics=read(path.join(evidence,'native-physics.json'));
+assert.equal(physics.geometryHash,authority.geometryHash);assert.deepEqual(physics.failures,[]);
+const modes={deathmatch:'native-deathmatch-01',teamdeathmatch:'native-teamdeathmatch-01',ctf:'native-ctf-04',domination:'native-domination-01',koth:'native-koth-01'};
+const journeys=Object.entries(modes).map(([mode,dir])=>{
+ const native=read(path.join(evidence,dir,'native-journey.json')),source=read(path.join(evidence,dir,'source-outcome.json')),teardown=read(path.join(evidence,dir,'teardown.json'));
+ assert.equal(native.geometryHash,authority.geometryHash);assert.deepEqual(native.failures,[]);assert.equal(teardown.exitCode,0);assert.ok(native.inputEvents>100&&native.lastAck>100);assert.notEqual(source.endReason,'time');
+ if(mode==='ctf')assert.ok(native.objectiveText.includes('1 : 0')&&native.objectiveText.includes('ROUND OVER'));
+ return {mode,directory:path.join(evidence,dir),native,sourceSummary:{seconds:source.seconds,wireInputs:source.frames,endReason:source.endReason,events:source.events,stats:source.stats}};
+});
+const art=read(path.join(root,'godot/multiplayer_worlds/art/helix-conservatory/helix-conservatory-art-report.json'));
+for(const [file,hash]of Object.entries(art.files))assert.equal(createHash('sha256').update(fs.readFileSync(path.join(root,file))).digest('hex'),hash);
+const inspection=read(path.join(evidence,'inspection-final/inspection.json'));
+assert.equal(inspection.geometryHash,authority.geometryHash);
+const report={schemaVersion:1,id:authority.id,geometryHash:authority.geometryHash,recipeHash:authority.recipeHash,acceptedNativeModes:Object.keys(modes),sourceOnlyModes:['arsenal','juggernaut'],classification:'scripted local hosted graphical scene acceptance; Mesa llvmpipe software rendering; not human/dedicated-GPU/package certification',art,physics,inspection,journeys,clip:{path:path.join(evidence,'helix-native-ctf-sampled.mp4'),capture:'actual native framebuffer screenshots at approximately one-second intervals, encoded at 24fps by frame repetition; no claim of full-motion 24fps recording'},remaining:['Parent package closure/manifests and exported-artifact acceptance','Human competitive balance and dedicated-GPU performance','Native Arsenal/Juggernaut ModeState/HUD bindings and journeys','Autonomous four-bot CTF capture completion: bounded test produced pickups/return but timed out 0-0']};
+fs.writeFileSync(path.join(root,'port/new-maps/helix-conservatory/production-validation.json'),JSON.stringify(report,null,2)+'\n');
+console.log('HELIX_PRODUCTION_EVIDENCE_OK',authority.geometryHash,journeys.map(j=>j.mode));

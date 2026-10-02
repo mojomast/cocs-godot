@@ -90,10 +90,13 @@ def main():
     parser.add_argument("--state", type=Path, required=True, help="owned /tmp/opencode directory outside any checkout")
     parser.add_argument("--archive-directory", type=Path, help="optional read-only source of editor.zip/templates.tpz; official hashes required")
     parser.add_argument("--target", choices=["linux", "windows"], default="linux")
+    parser.add_argument("--candidate", help="optional exact 40-hex frozen commit; release preparation should always supply it")
     parser.add_argument("--source-derivative", action="store_true", help="opt into the reviewed combined LATTICE/Horde source derivative; the original source lock stays unchanged")
     parser.add_argument("--operator-models", choices=["source-operators", "baseline", "candidate"], default="source-operators",
                         help="source-operators (default) ships the released presentation.gd source-operator preload; baseline is an accepted alias; candidate is retired")
     args = parser.parse_args()
+    if args.candidate and (not re.fullmatch(r"[0-9a-f]{40}", args.candidate) or git("rev-parse", "HEAD") != args.candidate):
+        raise RuntimeError("--candidate must equal the exact current committed revision")
     if args.operator_models == "candidate":
         raise RuntimeError("--operator-models candidate is retired: godot/world/presentation.gd now defaults to "
                            "res://source_operators/operator_visual.gd; there is no staging patch to apply")
@@ -119,6 +122,8 @@ def main():
     logs.mkdir()
     lock = json.loads((ROOT / "port/contracts/source-lock.json").read_text())
     port_commit = git("rev-parse", "HEAD")
+    if args.candidate and port_commit != args.candidate:
+        raise RuntimeError("Frozen candidate changed before input discovery")
     derivative_path = ROOT / "port/contracts/lattice-catalog-derivative.json"
     derivative = json.loads(derivative_path.read_text()) if args.source_derivative else None
     if lock["godot_version"] != EXACT or git("rev-parse", "--is-shallow-repository") != "false":
@@ -182,6 +187,11 @@ def main():
     input_paths.update(replay_files)
     feature_files = json.loads(run(["node", ROOT / "tools/godot-package/feature_resources.mjs", ROOT]))
     input_paths.update(feature_files)
+    # Final player-facing content must be complete before any engine/download work.
+    # --audit on the helper reports pending rigs; release builds never bypass them.
+    final_content = json.loads(run(["node", ROOT / "tools/godot-package/final_resources.mjs", ROOT]))
+    input_paths.update(final_content["resources"])
+    input_paths.update(final_content["provenance"])
     if edge_data:
         run(["node", "port/edge-effects/bake-structures.mjs", "--check"])
         input_paths.add("port/edge-effects/bake-structures.mjs")
@@ -202,8 +212,9 @@ def main():
         # Editable masters, recipe generators and Blender scripts are part of
         # the reviewed build provenance even though only GLBs ship in the PCK.
         input_paths.update(git("ls-files", "tools/godot-multiplayer").splitlines())
-    if world_data:
-        input_paths.update(json.loads(run(["node", ROOT / "tools/godot-package/world_resources.mjs", ROOT])))
+    world_resource_files = json.loads(run(["node", ROOT / "tools/godot-package/world_resources.mjs", ROOT])) if world_data else []
+    input_paths.update(world_resource_files)
+    dressing_resources = [p for p in world_resource_files if p.startswith("godot/multiplayer_worlds/dressing/profiles/")]
     if derivative:
         input_paths.add("port/contracts/lattice-catalog-derivative.json")
     # The Career catalog and its generator arrive with a later lane; include them
@@ -276,6 +287,7 @@ def main():
     # Port-owned adapters and data have separate provenance, never source-lock
     # exemptions. Require committed reviewed bytes; record exact hashes.
     port_owned = [*closure["adapterModules"], *arena_data, *identity_data, *horde_data, *campaign_data, *world_data, *edge_data]
+    port_owned.extend(dressing_resources)
     if career_catalog in input_paths:
         port_owned.append(career_catalog)
     if finish_catalog in input_paths:
@@ -325,6 +337,19 @@ def main():
     for p in native_files:
         copy(ROOT / p, project / Path(p).relative_to("godot"))
     staged_overrides = {}
+    raw_resources = final_content["raw"]
+    if raw_resources:
+        # Explicit export-only plugin preserves raw PCM/GLB FileAccess reads in
+        # addition to Godot's normal imported resources. No production script edit.
+        addon = project / "addons/package_raw"
+        addon.mkdir(parents=True)
+        copy(ROOT / "tools/godot-package/raw_export_plugin.gd", addon / "plugin.gd")
+        (addon / "plugin.cfg").write_text('[plugin]\nname="Recorded raw resources"\ndescription="Committed byte closure"\nauthor="COCS"\nversion="1"\nscript="plugin.gd"\n')
+        write_json(addon / "files.json", {"res://" + p.removeprefix("godot/"): h for p, h in raw_resources.items()})
+        config = project / "project.godot"
+        if "[editor_plugins]" in config.read_text():
+            raise RuntimeError("Review existing editor plugins before composing raw-resource export")
+        config.write_text(config.read_text() + '\n[editor_plugins]\nenabled=PackedStringArray("res://addons/package_raw/plugin.cfg")\n')
     # The shipped composition already preloads the source operators; any future
     # staged operator override must be explicit and hashed, never silent.
     generated = project / "content/generated"
@@ -356,6 +381,15 @@ ssh_remote_deploy/enabled=false
     # Explicit dynamically-read feature catalogs; imported WAV/GDScript resources
     # remain covered by all_resources. Never export tests or arbitrary JSON.
     preset = preset.replace('include_filter="', 'include_filter="input_bindings/contexts.json,replay/admission.json,audio/telegraphs/manifest.json,')
+    final_json = sorted(p.removeprefix("godot/") for p in final_content["resources"] if p.endswith(".json"))
+    if final_json:
+        preset = preset.replace('include_filter="', 'include_filter="' + ",".join(final_json) + ',')
+    preset = preset.replace('exclude_filter="', 'exclude_filter="addons/package_raw/*,')
+    # FileAccess cannot infer finish profiles. world_resources grants only existing
+    # optional profiles of registered worlds; each exact JSON path is hashed above.
+    dressing_files = sorted(p.removeprefix("godot/") for p in dressing_resources)
+    if dressing_files:
+        preset = preset.replace('include_filter="', 'include_filter="' + ",".join(dressing_files) + ",")
     if windows:
         preset = preset.replace('name="Private Linux Prototype"', f'name="{preset_name}"').replace('platform="Linux"', 'platform="Windows Desktop"')
         preset += '\ncodesign/enable=false\napplication/modify_resources=false\ndebug/export_console_wrapper=0\n'
@@ -479,6 +513,11 @@ ssh_remote_deploy/enabled=false
         "launchers":launchers,
         "replay_runtime_sha256":replay_hashes,
         "feature_resource_sha256":{p:inputs[p] for p in feature_files},
+        "dressing_resource_sha256":{p:inputs[p] for p in dressing_resources},
+        "final_resource_sha256":final_content["resources"],
+        "final_provenance_sha256":final_content["provenance"],
+        "raw_resource_sha256":raw_resources,
+        "raw_export_plugin_sha256":inputs["tools/godot-package/raw_export_plugin.gd"] if raw_resources else None,
         "files":tree(package),
     }
     write_json(package / "manifest.json", manifest)

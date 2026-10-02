@@ -8,6 +8,23 @@ recovery ends at S+A+R-1. Hitboxes are facing-local lower-left rectangles in mm.
 Standing reference height is 1800 mm. Animation equals the common move key inside
 each operator's unique GLB; effect is `operator:move`. No qualified animation names.
 
+## Strict machine shape (audit C2/C3/F9 correction)
+
+`godot/fighting/data/schema.json` exports the complete accepted authored shape as
+JSON Schema (draft 2020-12), generated from `tools/fighting/content/schema.mjs`.
+Every actual optional dictionary field is typed/bounded; unknown keys and unknown
+mechanic enums are errors. Missing required dictionary members are errors. All
+numeric authoring values must be finite safe integers, with no bool/string coercion.
+The existing literal mechanics below are retained; Astra owns their runtime handlers.
+Cross-field frame chronology, resource references/clamps, paired placement and
+motion-specific members are additionally checked by `validate.mjs`.
+
+Initial HP/walk/weight intent lives in `tools/fighting/content/balance_targets.json`;
+`roster.json` is authoritative runtime data. The validator never parses DESIGN prose.
+`tools/fighting/content/state_keys.json` pins the actual **22** universal clip keys
+listed in DESIGN, independently of the prose's approximate clip-count target.
+Neither state nor combat coverage permits shared/recolored operator libraries.
+
 Optional typed dictionaries (all integer values unless stated):
 
 - `projectile`: `spawn_frame`, `x`, `y`, `vx`, `vy`, `gravity`, `w`, `h`,
@@ -59,6 +76,42 @@ the sample. `setup_inputs` prepends real charge input samples; training fixtures
 place both actors at specified height/separation before playback. For charged
 traces, initial distance refers to the first attack tick, after setup walking.
 Facing-relative axis_x is converted using initial facing by harness.
+Canonical `axis_y` is down=-1, up=+1; canonical `axis_x` is world left=-1,
+right=+1. Core derives button press edges from each actor's saved held history.
+Caller `pressed` is a nonauthoritative hint and cannot initiate an attack without
+a held rising edge. `trace.mjs` expands sparse samples into canonical inputs and
+checks that author hints match the expected held edges. A duration holds buttons
+through its window; it emits one rising-edge hint on the first tick, then zero.
+Without duration, a sample occupies one tick and the next unspecified tick releases
+it naturally. The helper is input expansion only, not recognition/combat authority.
+
+Ground combo fixtures use `distance >= rules.pushbox.w` (current exact-touch
+minimum 660 mm). This predicate applies only when both initial feet heights are
+zero; airborne fixtures retain their separate authored separation. First-contact
+horizontal reach is checked against the defender hurtbox as a candidate bound,
+not a substitute for movement/collision execution.
+DeepSeek's optional `defender_setup_inputs` gives the dummy an explicit 36-tick
+same-world-direction walk during charge setup. All horizontal samples are relative
+to the **attacker's** initial facing, including these defender samples; pass that
+same facing to `expandTrace(combo,facing,'defender')`. Native fixtures are mirrors
+of the same operator, so both walk with the same authored speed. Defender follows
+using canonical inputs only and releases on the first attack tick. Place actors
+once at initial legal separation; there are no per-step position assignments.
+The independent verifier `9549da1c` found the original 550 mm grounded fixtures
+inside the 660 mm pushboxes; those fixture candidates were invalid. Correcting
+spacing does not establish native combo validity or erase the original failure.
+
+Native-03 follow-up adds optional combo metadata `setup_kind:paired_jump`: both
+actors begin grounded at legal corner spacing, receive one ordinary Up edge at
+tick0, and the attacker begins air normals at tick8. Existing `setup_inputs` and
+`defender_setup_inputs` contain the actual canonical command samples; the marker
+does not authorize any state/velocity injection or require a new core handler.
+Both streams mirror from the initial attacker facing. The source gate recognizes
+this setup as ordinary jump input rather than applying the charge-walk-only rule.
+Basic confirms may contain two attacks; signature/air routes must retain at least
+three. No one-hit route is accepted. All move frame data and boxes are unchanged.
+Actual native results/causes and the separately identified landing timer latch are
+recorded in `NATIVE_03_DIAGNOSIS.json` and `NATIVE_03_FOLLOWUP.md`.
 Trace tick scheduling uses startup/active plus authored hitstop estimates, not a
 second simulation. Preconditions specify positions/airborne/charge/resource.
 Only the native core can certify contacts, hitstop, stun continuity and scaling.
@@ -70,3 +123,7 @@ move explicitly declares `reset_on_land`; all additions/spending clamp min/max.
 Rules include literal combo limits, scaling curve, fixed hurt/push rectangles,
 gravity, terminal speed, startup/landing/round timers and independent guard policy.
 The source validator establishes numeric bounds, not runtime clamp behavior.
+
+FREEZE enforces runtime JSON, machine schemas/oracles, generator and validation
+inputs. DESIGN, this document and generated move-list prose are excluded. Historical
+DESIGN hashes are informational provenance only and never gate working prose edits.

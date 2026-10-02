@@ -3,51 +3,56 @@ import { CHARACTERS } from '../../../game/data.mjs';
 import { mkdirSync, writeFileSync, readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
+import { schema } from './schema.mjs';
 const root = fileURLToPath(new URL('../../../', import.meta.url));
+const outputRoot=process.argv[2]?resolve(process.argv[2])+'/':root;
+const targets=JSON.parse(readFileSync(root+'tools/fighting/content/balance_targets.json','utf8')).operators;
+const priorFreeze=JSON.parse(readFileSync(root+'port/fighting/content/FREEZE.json','utf8'));
 const keys = ['stand_l','stand_m','stand_h','crouch_l','crouch_m','crouch_h','air_l','air_m','air_h'];
 // Per normal: startup, active, recovery, damage, hitstun, blockstun, forward reach(mm).
 const profiles = {
- chatgpt: {stats:[1000,52,100,185], archetype:'all-rounder', resource:['adaptation',0,3,0],
+ chatgpt: {jump_velocity:185, archetype:'all-rounder', resource:['adaptation',0,3,0],
   names:['Survey Tap','Cage Cross','Plasma Lift','Floor Probe','Cable Sweep','Survey Scoop','Bracket Peck','Open-Cage Kick','Descending Frame'],
   poses:['square lead-hand snap','opposed shoulder cross','two-arm rising cage','kneeling fingertip probe','low cable-guided shin arc','wide scoop from crouch','tucked aerial hand','open hip side kick','both forearms descend'],
   n:[[5,3,10,48,20,12,660],[8,3,16,78,25,16,930],[12,4,23,112,31,19,1100],[5,2,11,45,19,11,590],[9,3,18,74,26,15,1020],[11,4,24,105,33,18,880],[5,3,9,47,20,12,600],[8,4,14,76,26,16,900],[11,5,20,110,32,19,1050]],
   throws:['Adaptive Turn','Cable Exchange'], super:'Closed-Loop Verdict'},
- claude: {stats:[1060,44,110,170], archetype:'ward footsies', resource:['review',0,4,0],
+ claude: {jump_velocity:170, archetype:'ward footsies', resource:['review',0,4,0],
   names:['Crook Jab','Chevron Check','Ceramic Lance','Ward Knuckle','Shin Gate','Shield Rise','Glide Palm','Winged Ward','Descending Chevron'],
   poses:['crooked elbow jab behind ward','shield-first horizontal check','long braced palm lance','closed kneeling knuckle','shield edge skims shin','forearms rise as nested shields','one palm checks below gliding torso','two broad forearms spread','closed chevron falls shoulder-first'],
   n:[[6,3,12,51,22,14,760],[10,4,18,84,29,18,1150],[15,3,26,120,35,20,1480],[6,2,12,49,21,12,660],[10,4,20,80,29,17,1170],[13,5,25,114,35,20,1000],[6,4,11,50,22,14,700],[10,5,17,83,29,18,1050],[14,4,23,118,35,20,1230]],
   throws:['Ward Pivot','Review Reversal'], super:'Layered Injunction'},
- grok: {stats:[980,57,95,205], archetype:'pressure brawler', resource:['heat',0,6,0],
+ grok: {jump_velocity:205, archetype:'pressure brawler', resource:['heat',0,6,0],
   names:['Offset Hook','Piston Elbow','Outrider Hammer','Oil-Rig Tap','Raking Boot','Furnace Upper','Crooked Peck','Flying Piston','Falling Anvil'],
   poses:['short asymmetric hook','rear elbow drives hip-first','one heavy arm folds overhead','off-center knuckle below knee','heel scrapes in crooked arc','compressed rear arm bursts upward','one tucked hand hooks down','rear elbow leads airborne body','single arm slams with bent knees'],
   n:[[4,3,12,50,21,11,610],[7,4,18,86,27,15,900],[18,3,27,128,36,20,1050],[5,2,12,47,20,11,560],[8,3,19,82,28,15,950],[10,4,25,118,34,18,810],[4,3,10,49,21,11,570],[7,4,16,85,28,16,850],[12,4,22,125,35,19,960]],
   throws:['Heat Hitch','Outrider Spin'], super:'Redline Pileup'},
- meta: {stats:[1100,40,120,165], archetype:'armored grappler', resource:['brace',0,3,3],
+ meta: {jump_velocity:165, archetype:'armored grappler', resource:['brace',0,3,3],
   names:['Turbine Jab','Plating Shoulder','Twin-Piston Crush','Rivet Tap','Foundation Kick','Anchor Lift','Turbine Peck','Cross-Brace Knee','Two-Drum Drop'],
   poses:['broad planted fist','hip drives layered shoulder','two arms crush from raised brace','low rivet-hand tap','heavy low heel with planted hips','both turbines lift from squat','compact airborne fist','crossed arms brace a knee','both arms drop with tucked spine'],
   n:[[7,3,14,58,24,14,690],[11,4,23,98,32,18,1040],[17,5,31,130,39,23,1180],[7,2,14,54,23,13,620],[12,4,24,92,32,18,1110],[15,5,30,126,39,22,970],[7,3,12,56,24,14,650],[11,5,20,96,32,18,980],[16,6,27,129,39,23,1120]],
   throws:['Turbine Fold','Counterweight Cast'], super:'Twin-Core Collapse'},
- gemini: {stats:[960,56,95,192], archetype:'two-stance duelist', resource:['band',0,1,0],
+ gemini: {jump_velocity:192, archetype:'two-stance duelist', resource:['band',0,1,0],
   names:['Petal Jab','Twin-Claw Cross','Rail Palm Lift','Split Tap','Petal Scissor','Bifurcate Rise','Claw Peck','Mirror Heel','Petal Guillotine'],
   poses:['split fingers lead alternate shoulders','crossed claw forearms','open palm drives bifurcated hips','two fingers reach from kneel','opposed low shin scissor','palms unfurl upward','one claw below tucked hips','mirrored heel extends from twist','two petals close downward'],
   n:[[5,2,10,46,20,12,670],[8,3,15,75,25,16,990],[12,4,22,108,32,19,1130],[5,2,10,45,19,11,610],[8,3,17,72,26,15,1040],[11,4,23,104,33,18,900],[5,3,9,46,20,12,620],[8,4,13,74,26,16,940],[11,4,19,107,32,19,1040]],
   throws:['Petal Exchange','Mirror Revision'], super:'Bifurcated Horizon'},
- deepseek: {stats:[1080,42,115,175], archetype:'charge hover zoner', resource:['fuel',0,90,90],
+ deepseek: {jump_velocity:175, archetype:'charge hover zoner', resource:['fuel',0,90,90],
   names:['Sleeve Jab','Pressure Palm','Vessel Elbow','Valve Tap','Ballast Sweep','Compression Lift','Diver Peck','Pressure Knee','Salvage Dive'],
   poses:['compact sleeve-driven fist','palms vent from tucked ribs','diver elbow lifts pressure vessel','closed valve knuckle at ankle','weighted shin drags low','compressed arms open upward','tight fist beneath tucked chest','knee rises with vented hips','both elbows dive from compact tuck'],
   n:[[7,3,13,55,23,13,720],[11,4,21,91,31,18,1130],[16,4,29,126,38,22,1250],[7,2,13,52,22,12,650],[11,4,23,88,31,17,1190],[14,5,28,121,38,21,1020],[7,4,12,53,23,13,680],[11,5,19,90,31,18,1080],[15,5,25,124,38,22,1180]],
   throws:['Ballast Clamp','Vessel Inversion'], super:'Critical Compression'},
- mistral: {stats:[920,62,85,198], archetype:'air-dash rushdown', resource:['air_dash',0,1,1],
+ mistral: {jump_velocity:198, archetype:'air-dash rushdown', resource:['air_dash',0,1,1],
   names:['Scatter Snap','Aerofoil Heel','Rising Cyclone','Slip Tap','Wing Sweep','Tailfin Rise','Slipstream Peck','Swept Heel','Sirocco Dive'],
   poses:['lean fingertip snap','long swept roundhouse','whole-body spiral kick','low open-hand tap','shin traces aerofoil arc','rear heel rises with winged arms','narrow aerial jab','extended swept heel from lean','diagonal kick below trailing arms'],
   n:[[4,2,9,45,19,11,580],[7,3,14,72,24,15,970],[10,4,22,105,31,18,1060],[4,2,10,45,19,10,530],[7,3,16,70,25,14,1030],[10,4,22,101,32,17,840],[4,3,8,45,19,11,550],[7,4,12,71,25,15,920],[10,4,18,104,31,18,1020]],
   throws:['Slipstream Fold','Leeward Cast'], super:'Nine-Gust Break'},
- kimi: {stats:[900,58,85,190], archetype:'blink mobile zoner', resource:['context',0,3,0],
+ kimi: {jump_velocity:190, archetype:'blink mobile zoner', resource:['context',0,3,0],
   names:['Gimbal Jab','Orbital Backhand','Apogee Kick','Orbit Tap','Perigee Sweep','Axis Rise','Satellite Peck','Orbit Heel','Falling Meridian'],
   poses:['rotating wrist jab','full orbital backhand','high gimbal heel from torso rotation','wrist circles below knee','shin draws low orbit','both hands spiral upward','orbiting palm below hips','heel traces a horizontal ring','gimbal arm arcs down past bent knee'],
   n:[[5,3,11,46,21,12,710],[9,3,18,77,27,17,1190],[14,4,25,111,34,20,1400],[5,2,12,45,20,11,640],[9,3,20,74,28,16,1240],[12,4,25,107,35,19,980],[5,4,10,46,21,12,670],[9,4,16,76,28,17,1110],[13,5,22,110,34,20,1300]],
   throws:['Context Orbit','Gimbal Exchange'], super:'Closed Context Eclipse'},
- qwen: {stats:[1020,48,105,180], archetype:'anchor setplay grappler', resource:['tools',0,3,3],
+ qwen: {jump_velocity:180, archetype:'anchor setplay grappler', resource:['tools',0,3,3],
   names:['Lamellar Tap','Cable-Guided Palm','Sentinel Lift','Lockpin Tap','Segment Sweep','Layered Rise','Glyph Peck','Locking Heel','Falling Lamella'],
   poses:['sequential plate knuckle','rope guides open palm','layered forearms lift sentinel torso','small lockpin fist at shin','low segmented cable arm','stacked forearms unfold upward','measured airborne palm','grounded torso twists into heel','layers close into descending elbow'],
   n:[[6,3,12,52,22,13,780],[9,4,19,85,29,17,1180],[14,4,27,119,36,21,1310],[6,2,13,50,21,12,700],[10,4,21,82,29,16,1250],[13,5,26,115,37,20,1060],[6,3,11,51,22,13,730],[9,5,17,84,29,17,1120],[13,5,23,117,36,21,1230]],
@@ -72,7 +77,7 @@ function strike(name,kind,s,a,r,d,hs,bs,reach,id,key,extra={}) {
  return {name,kind,startup:s,active:a,recovery:r,damage:d,hitstun:hs,blockstun:bs,hitstop:d?Math.min(12,5+Math.floor(d/30)):0,level,animation:key,effect:`${id}:${key}`,hitboxes:reach&&kind!=='projectile'&&kind!=='counter'?[{from:s,to:s+a-1,x:250,y:key.startsWith('crouch_')?150:air?-450:900,w:reach-250,h:key.startsWith('crouch_')?420:air?750:600}]:[],cancels:[],meter_cost:kind==='super'?1000:0,meter_gain:d?Math.min(90,Math.floor(d/2)):0,chip:kind==='projectile'?8:0,pushback:Math.round(d*2),launch_velocity:0,juggle_cost:1,air_ok:air,ground_ok:!air,...extra};
 }
 function cancel(move,target,on=['hit','block'],offset=0) {move.cancels.push({to:target,from:move.startup+offset,until:move.startup+move.active+Math.min(move.recovery,8)-1,on});}
-const operators = CHARACTERS.map(source=>{
+function authorOperators(){return CHARACTERS.map(source=>{
  const id=source.id,p=profiles[id],moves={};
  keys.forEach((key,i)=>{
   moves[key]=strike(p.names[i],'strike',...p.n[i],id,key);
@@ -86,7 +91,7 @@ const operators = CHARACTERS.map(source=>{
  });
  if(id==='meta')moves.stand_h.armor={from:8,to:16,hits:1,damage_percent:100};
  ['throw_f','throw_b'].forEach((key,i)=>{
-  const s=6+(id==='meta'?2:0),damage=120+Math.floor((p.stats[0]-900)/10)+(i?8:0);
+  const s=6+(id==='meta'?2:0),damage=120+Math.floor((targets[id].hp-900)/10)+(i?8:0);
   moves[key]=strike(p.throws[i],'throw',s,2,30+i*2,damage,0,0,750,id,key,{throw:{range:750,tech_frames:10,damage_frame:s+12,release_frame:s+23,victim_x:600,victim_y:0,side_swap:!!i,command:false,ground_only:true,knockdown_frames:36},input:{simple:i?'BACK_GRAB':'GRAB',motion:i?'4+Grab':'Grab'},description:i?'Paired pivot casts the victim behind the attacker.':'Paired grip casts the victim forward.',counterplay:'Press Grab within ten ticks to tech, or jump before capture.'});
  });
  specialRows[id].forEach((row,i)=>{
@@ -117,25 +122,44 @@ const operators = CHARACTERS.map(source=>{
  const routes=[basicRoutes[id],specialRoutes[id],['air_l','air_m',airProjectile?'special1':'air_h']];
  if(airProjectile)moves.special1.air_ok=true;
  for(const route of routes)route.slice(1).forEach((to,i)=>{const from=moves[route[i]];if(!from.cancels.some(c=>c.to===to))cancel(from,to,['hit']);});
- return {id,name:source.name,archetype:p.archetype,stats:{hp:p.stats[0],walk_speed:p.stats[1],weight:p.stats[2],jump_velocity:p.stats[3],height:1800},resource:{id:p.resource[0],min:p.resource[1],max:p.resource[2],initial:p.resource[3],regen_ground_per_tick:id==='deepseek'?1:0,regen_interval:id==='qwen'?120:0,reset_on_round:true},moves,combos:routes.map((route,i)=>{
+ return {id,name:source.name,archetype:p.archetype,stats:{...targets[id],jump_velocity:p.jump_velocity,height:1800},resource:{id:p.resource[0],min:p.resource[1],max:p.resource[2],initial:p.resource[3],regen_ground_per_tick:id==='deepseek'?1:0,regen_interval:id==='qwen'?120:0,reset_on_round:true},moves,combos:routes.map((route,i)=>{
+  // Native-03: two-hit basic confirms retain observed L/M contacts, without an
+  // out-of-range third normal. All three-hit signature/air candidates remain.
+  if(i===0)route=route.slice(0,2);
+  const jumpSetup=i===2&&['claude','meta','deepseek'].includes(id);
+  const landingProjectile=i===2&&['chatgpt','gemini','kimi','qwen'].includes(id);
+  if(jumpSetup)route=['air_l','air_m','air_h'];
   const inputs=trace(route),charged=id==='deepseek'&&i===1;
   if(charged){inputs.forEach(sample=>{sample.tick+=36;});inputs.forEach((sample,j)=>{sample.axis_x=j===2?1:-1;if(j<2)sample.duration=inputs[j+1].tick-sample.tick;});}
-  return {name:['Basic confirm','Signature special confirm','Air corner chain'][i],route,setup_inputs:charged?[{tick:0,axis_x:-1,axis_y:0,held:0,pressed:0,duration:36}]:[],inputs,status:'proposed',preconditions:{distance:i===2?500:550,attacker_y:i===2?1000:0,defender_y:i===2?800:0,corner:i===2,meter:0,charge_back_ticks:0},notes:'Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof.'};
+  const combo={name:['Basic confirm','Signature special confirm','Air corner chain'][i],route,setup_inputs:charged?[{tick:0,axis_x:-1,axis_y:0,held:0,pressed:0,duration:36}]:[],...(charged?{defender_setup_inputs:[{tick:0,axis_x:-1,axis_y:0,held:0,pressed:0,duration:36}]}:{}),inputs,status:'proposed',preconditions:{distance:i===2?500:rules.pushbox.w,attacker_y:i===2?1000:0,defender_y:i===2?800:0,corner:i===2,meter:0,charge_back_ticks:0},notes:'Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof.'+(i===2?'':` Original ground fixture was 550 mm, below the ${rules.pushbox.w} mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes.`)};
+  if(i===0)combo.notes+=' Native-03 recorded the first two contacts for seven operators; the third normal missed or failed recognition. This basic confirm deliberately teaches two normals, not a single hit. Meta/Qwen additionally need continuous crouch direction to avoid the mobility motion.';
+  if(['meta','qwen'].includes(id)&&i!==2){combo.inputs[0].duration=combo.inputs[1].tick-combo.inputs[0].tick;combo.notes+=' Hold down continuously from crouch L through crouch M; releasing/repressing down formed the recognizer’s 22 mobility command in the original native failure.';}
+  if(id==='grok'&&i===1){combo.preconditions.corner=true;combo.notes+=' Native-03 midscreen grenade hit at tick54 with a reset combo counter. This explicit corner pressure route keeps the arcing projectile’s early travel below its apex; no projectile trajectory or stun values changed. Rerun pending.';}
+  if(jumpSetup){combo.setup_kind='paired_jump';combo.preconditions={...combo.preconditions,distance:rules.pushbox.w,attacker_y:0,defender_y:0};combo.setup_inputs=[{tick:0,axis_x:0,axis_y:1,held:0,pressed:0}];combo.defender_setup_inputs=[{tick:0,axis_x:0,axis_y:1,held:0,pressed:0}];combo.inputs.forEach(sample=>{sample.tick+=8;});combo.notes+=' Native-03 descending fixtures landed before the third input. Start both actors grounded and jump through ordinary up inputs, then begin the three-air-normal route at tick8 during ascent. Projectile signature practice remains in the separate special route; this air route teaches three aerial normals. No initial vertical velocity is injected. Landing-lock behavior is separately reported to core. Actual rerun pending.';}
+  if(landingProjectile){combo.inputs[2].tick+=4;combo.notes+=' Native-03 recorded both aerial normals but landing_left latched at four during the committed second move, expiring the projectile buffer. Retain the harder projectile finisher and original physical fixture; delay its input four ticks to cover ordinary landing recovery. This candidate explicitly requires Astra’s landing-timer repair and actual native rerun; no teleport or substitute normal hides that core issue.';}
+  return combo;
  })};
-});
+});}
 const rules={version:1,tick_rate:60,units_per_meter:1000,round_seconds:99,rounds_to_win:2,stage_half_width:8000,seed:20261002,buffer_frames:6,throw_tech_frames:10,meter_max:1000,gravity:9,terminal_velocity:300,jump_startup:4,landing_recovery:4,spawn_distance:3000,round_intro_frames:90,round_over_frames:120,guard_release_frames:0,air_guard:false,socd:'neutral_both_axes',negative_edge:false,wakeup_invulnerability_frames:8,throw_invulnerability_frames:12,combo_limits:{max_hits:12,juggle_budget:8,wall_bounces:1,ground_bounces:1,otg_hits:1,damage_scaling_percent:[100,90,80,70,60,50,40,35,30,25,20,20],damage_floor_percent:20,hitstun_deterioration_per_hit:2,min_hitstun:6},hurtboxes:{stand:{x:-300,y:0,w:600,h:1800},crouch:{x:-340,y:0,w:680,h:1050},air:{x:-300,y:100,w:600,h:1400}},pushbox:{x:-330,y:0,w:660,h:1600},input_help:{notation:'5 neutral, 2 down, 4 back, 6 forward, 8 up; j. airborne; xx cancel; [4] hold back. Directions mirror facing.',simple:'L/M/H normals; Special S1; Mobility S2; Special+Grab S3; Super costs 1000. Grab throw, Back+Grab back throw.',guard:'Independent Guard high; Down+Guard low. Back alone walks. No RMB tap/hold split.'}};
-const states='idle walk_f walk_b crouch jump_rise jump_apex jump_fall land dash_f dash_b guard_hi guard_lo hit_hi hit_lo hit_air block_hi block_lo knockdown wakeup throw_tech win lose'.split(' ');
+const operators=authorOperators();
+const states=JSON.parse(readFileSync(root+'tools/fighting/content/state_keys.json','utf8')).states;
 const pairs=operators.flatMap(op=>Object.entries(op.moves).filter(([,m])=>m.throw||m.counter).map(([key,m])=>({attacker:op.id,move:key,clip:`victim_${op.id}_${key}`,contact:m.startup,damage:m.throw?.damage_frame??m.counter.damage_frame,release:m.throw?.release_frame??m.counter.release_frame,victim_x:m.throw?.victim_x??600,victim_y:0,side_swap:m.throw?.side_swap??false,socket_attacker:'Socket_GripR',socket_victim:'Socket_Chest',contact_tolerance_mm:60})));
 const manifest={version:1,status:'authoring requirements; assets not built or accepted',fps:60,root_policy:'locked; simulation owns all travel',operators:operators.map(op=>({id:op.id,glb:`res://fighting/assets/operators/${op.id}.glb`,motion_brief:`${op.archetype}; neutral, gait, guard and reactions must preserve the posture vocabulary of ${profiles[op.id].poses.join('; ')}. Fully author each clip; common names do not permit shared recolored libraries.`,states,combat:Object.entries(op.moves).map(([key,m])=>({clip:key,frames:m.startup+m.active+m.recovery,contact_windows:m.hitboxes.map(b=>[b.from,b.to]),projectile_spawn:m.projectile?.spawn_frame??null,movement_window:m.movement?[m.movement.from,m.movement.to]:null,counter_window:m.counter?[m.counter.from,m.counter.to]:null,authored_motion:m.description,effect:m.effect})),victim_clips:pairs.map(p=>p.clip)})),paired_timelines:pairs};
 const estimateRows=operators.flatMap(op=>op.combos.map(combo=>{
  const edges=combo.route.slice(1).map((key,i)=>{const a=op.moves[combo.route[i]],b=op.moves[key],elapsed=combo.inputs[i+1].tick-combo.inputs[i].tick-a.hitstop;return {from:combo.route[i],to:key,cancel_frame:elapsed,contact_delay:elapsed-a.startup+b.startup,available_hitstun:a.hitstun-rules.combo_limits.hitstun_deterioration_per_hit*i,estimated_slack:a.hitstun-rules.combo_limits.hitstun_deterioration_per_hit*i-(elapsed-a.startup+b.startup)};});
  return {operator:op.id,name:combo.name,status:'mathematical estimate only; not actual core proof',edges};
 }));
-const output={'godot/fighting/data/roster.json':{version:1,operators},'godot/fighting/data/rules.json':rules,'port/fighting/content/ANIMATION_COVERAGE.json':manifest,'port/fighting/content/COMBO_ESTIMATES.json':{version:1,assumptions:'First-active-frame contact, shared hitstop, no pushback/landing/projectile travel simulation. Native core verification required.',combos:estimateRows}};
-for(const [path,value] of Object.entries(output)){mkdirSync(root+path.slice(0,path.lastIndexOf('/')),{recursive:true});writeFileSync(root+path,JSON.stringify(value,null,2)+'\n');}
-const hash=path=>createHash('sha256').update(readFileSync(root+path)).digest('hex');
+const output={'godot/fighting/data/roster.json':{version:1,operators},'godot/fighting/data/rules.json':rules,'godot/fighting/data/schema.json':schema,'port/fighting/content/ANIMATION_COVERAGE.json':manifest,'port/fighting/content/COMBO_ESTIMATES.json':{version:1,assumptions:'First-active-frame contact, shared hitstop, no pushback/landing/projectile travel simulation. Native core verification required.',combos:estimateRows}};
+for(const [path,value] of Object.entries(output)){mkdirSync(outputRoot+path.slice(0,path.lastIndexOf('/')),{recursive:true});writeFileSync(outputRoot+path,JSON.stringify(value,null,2)+'\n');}
+const hash=path=>createHash('sha256').update(readFileSync((Object.hasOwn(output,path)?outputRoot:root)+path)).digest('hex');
 const moveList=['# Operator Clash — authored move reference','',rules.input_help.notation,'',rules.input_help.simple,'',rules.input_help.guard,'','Frame columns are startup / active / recovery at 60 Hz. Reach is melee box outer edge or maximum projectile travel in metres; mobility rows give displacement cap. Damage is unscaled. These are initial authored targets; human balance and native contacts remain pending.',''];
 for(const op of operators){moveList.push(`## ${op.name} (${op.id}) — ${op.archetype}`,'',`HP ${op.stats.hp}; walk ${op.stats.walk_speed} mm/tick; weight ${op.stats.weight}%; jump ${op.stats.jump_velocity} mm/tick. Resource ${op.resource.id}: ${op.resource.initial}/${op.resource.max}.`,'','| Key / input | Original move | S/A/R | Damage | Hit/block stun | Reach m |','|---|---|---:|---:|---:|---:|');for(const [key,m]of Object.entries(op.moves)){const reach=m.projectile?.range??m.throw?.range??m.movement?.distance??Math.max(0,...m.hitboxes.map(b=>b.x+b.w));moveList.push(`| ${key} / ${m.input.simple} | ${m.name} | ${m.startup}/${m.active}/${m.recovery} | ${m.damage} | ${m.hitstun}/${m.blockstun} | ${(reach/1000).toFixed(2)} |`);}moveList.push('');for(const [key,m]of Object.entries(op.moves))moveList.push(`- **${m.name}** (${key}): ${m.description} Counterplay: ${m.counterplay}`);moveList.push('','### Proposed input traces','');for(const combo of op.combos)moveList.push(`- **${combo.name}**: ${combo.route.map(key=>op.moves[key].name).join(' xx ')}. Inputs at ticks ${combo.inputs.map(s=>s.tick).join(', ')}${combo.setup_inputs.length?'; 36-tick back-charge setup from tick 0':''}. ${combo.preconditions.corner?'Airborne corner fixture.':'Grounded close fixture.'} **Pending actual core verification.**`);moveList.push('');}
-writeFileSync(root+'port/fighting/content/MOVE_LIST.md',moveList.join('\n')+'\n');
-writeFileSync(root+'port/fighting/content/FREEZE.json',JSON.stringify({version:1,date:'2026-10-02',balance:'authored initial targets; human balance pending',combo_validation:'proposed; actual core/native pending',provenance:'Original authored fighting frame data and move names; source operator identities imported unchanged. No downloaded motion or external fighter content.',source_files:Object.fromEntries(['game/data.mjs','port/fighting/DESIGN.md',...Object.keys(output),'port/fighting/content/MOVE_LIST.md','port/fighting/content/CONTRACT_DETAILS.md','tools/fighting/content/author.mjs','tools/fighting/content/validate.mjs'].map(path=>[path,hash(path)]))},null,2)+'\n');
+moveList.push('## Native-03 candidate follow-up','',
+ 'Basic confirms now teach two consecutive normals; signature and air practice retain three attacks. Original native failures and all passing candidates are recorded in NATIVE_03_DIAGNOSIS.json. Revised candidates need actual-core rerun.',
+ 'Meta/Qwen: hold down continuously through crouch L and crouch M; a down-neutral-down sequence selects Mobility instead.',
+ 'Grok signature grenade practice is now a grounded corner-pressure route; its original midscreen third hit arrived after hitstun expired.',
+ 'Claude, Meta and DeepSeek air practice: start grounded at the corner, tap Up for both actors at tick0, then begin the listed aerial normals at tick8. Their new setup uses ordinary jumps, with no initial velocity injection. Grok/Mistral retain the native-passing airborne fixtures unchanged.',
+ 'ChatGPT, Gemini, Kimi and Qwen retain their harder air-normal into projectile routes. The third input is four ticks later to cover ordinary landing recovery; Astra must repair the observed landing-timer latch before these candidates can be certified. No projectile finisher is replaced to hide the core issue.','');
+writeFileSync(outputRoot+'port/fighting/content/MOVE_LIST.md',moveList.join('\n')+'\n');
+writeFileSync(outputRoot+'port/fighting/content/FREEZE.json',JSON.stringify({version:1,date:'2026-10-02',balance:'authored initial targets; human balance pending',combo_validation:'proposed; actual core/native pending',provenance:'Original authored fighting frame data and move names; source operator identities imported unchanged. No downloaded motion or external fighter content.',source_boundary_base:'37dd3da4',historical_provenance:priorFreeze.historical_provenance??{initial_design_sha256:priorFreeze.source_files['port/fighting/DESIGN.md'],note:'Informational historical source hash only; never compared to working prose.'},source_files:Object.fromEntries(['game/data.mjs',...Object.keys(output),'tools/fighting/content/balance_targets.json','tools/fighting/content/state_keys.json','tools/fighting/content/schema.mjs','tools/fighting/content/trace.mjs','tools/fighting/content/author.mjs','tools/fighting/content/validate.mjs'].map(path=>[path,hash(path)]))},null,2)+'\n');
 console.log(`Authored ${operators.length} operators, ${operators.reduce((n,op)=>n+Object.keys(op.moves).length,0)} moves, 27 proposed traces.`);

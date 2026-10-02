@@ -42,6 +42,17 @@ func urban_capture_objective() -> void:
 
 func _process(delta: float) -> void:
  super._process(delta)
+ if current_id == "helix-conservatory":
+  var panel: Control = objective_text.get_parent()
+  panel.size.x = maxf(240,get_viewport().get_visible_rect().size.x-32)
+  for text: Label in [label,combat_label,objective_text]:
+   text.custom_minimum_size.x = 0
+   text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+   text.add_theme_font_size_override("font_size",12)
+  label.max_lines_visible = 2
+  combat_label.max_lines_visible = 3
+  objective_text.max_lines_visible = 5
+ foundry_hud_layout()
  if "--urban-fixture-move-guest" in OS.get_cmdline_user_args() and phase == 3:
   urban_guest_control_elapsed += delta
   urban_guest_control_send += delta
@@ -60,6 +71,16 @@ func _process(delta: float) -> void:
  if fixture_retreat_elapsed < 14.0 and fixture_retreat_send >= 0.05:
   fixture_retreat_send = 0.0
   client.send_input({"x":0.0,"z":1.0,"sprint":true})
+
+func foundry_hud_layout() -> void:
+ if current_id != "gravemill-foundry" or not is_instance_valid(objective_text.get_parent()): return
+ var width := get_viewport().get_visible_rect().size.x - 32
+ var panel: Control = objective_text.get_parent()
+ panel.size.x = maxf(240, width)
+ for text: Label in [label,combat_label,objective_text]:
+  text.custom_minimum_size.x = 0
+  text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+  text.add_theme_font_size_override("font_size",12 if width < 700 else 16)
 
 func _init() -> void:
  catalog = WorldCatalog.new()
@@ -207,6 +228,8 @@ func on_results(frame: Dictionary) -> void:
  presentation.apply_state(frame.state,client.actor_id)
  pickups.apply_state(frame.state)
  objective_renderer.apply_state(frame.state,client.actor_id)
+ if current_id == "helix-conservatory" and selected_mode == "ctf":
+  objective_text.text = objective_renderer.hud_text
  release_pointer()
  label.text = "Round ended · Enter: restart as host"
  if "--urban-fixture-restart" in OS.get_cmdline_user_args() and join_room_id.is_empty() and round_results == 1:

@@ -56,7 +56,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	row.visible = not Access.overlay_open() and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED
 	badge.visible = recording and not Access.overlay_open()
-	var admitted := last_state.get("mapId") == "meridian-exchange" and last_state.get("config", {}).get("mode") in ["deathmatch", "teamdeathmatch", "instagib", "rockets"]
+	var admitted: bool = last_state.get("mapId") == "meridian-exchange" and last_state.get("config", {}).get("mode") in ["deathmatch", "teamdeathmatch", "instagib", "rockets"]
 	record_button.disabled = recording or opening or has_capture or not admitted
 	save_button.disabled = not has_capture or opening
 	discard_button.disabled = not has_capture or opening

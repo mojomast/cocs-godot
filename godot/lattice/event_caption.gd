@@ -72,7 +72,7 @@ static func text_for(event: Dictionary) -> String:
 				"release": return "Command released"
 				"mutiny-vote":
 					var seat: Variant = event.get("seat")
-					if seat == true or (seat is String and not seat.is_empty()): return "Mutiny carried · new commander"
+					if (seat is bool and seat) or (seat is String and not seat.is_empty()): return "Mutiny carried · new commander"
 					var votes := maxf(0.0, float(numeric(event.get("votes"), "0")))
 					var needed := maxf(1.0, float(numeric(event.get("needed"), "1")))
 					return "Mutiny vote · %s/%s" % [numeric(votes), numeric(needed)]
