@@ -1,5 +1,13 @@
 # Parallax Observatory — source-ready surface and environment finish
 
+**Current interiors-v2 promotion:** see
+`port/new-maps/parallax-observatory/PRODUCTION-C.md` and `production-c.json` for
+actual built/reopened/native evidence under grant C. `interiors-v2-pins.json`
+is the current asset identity contract. The initial profile-v1 baseline and grant
+notes below are historical; its removed flat-wall overlays are superseded by
+900 actual GLB mount-support samples for 26 panels and 10 signs. Parent refined
+material entries remain unchanged. Parent visual approval is still required.
+
 Runtime profile: `godot/multiplayer_worlds/dressing/profiles/parallax-observatory.json`.
 This is **profile v1 source, not native visual acceptance**. The shared binder is
 owned by Sol `ses_f022e500bffebtq1Cb9LHX7oqY`; native execution belongs to Astra's

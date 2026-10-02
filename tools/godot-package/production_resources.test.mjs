@@ -5,12 +5,13 @@ import {fileURLToPath} from 'node:url';
 import {join} from 'node:path';
 import {createHash} from 'node:crypto';
 import {productionResources,inspectProductionGlb,REQUIREMENTS,REQUIRED_UNITS} from './production_resources.mjs';
+import {WORLDS} from '../../port/multiplayer-worlds/catalog.mjs';
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const sha=b=>createHash('sha256').update(b).digest('hex');
 const disk=p=>readFileSync(join(root,p)),exists=p=>existsSync(join(root,p));
 const worldIds=['helix-conservatory','gravemill-foundry'];
 
-test('real queue remains required and pending; no optional world is silently promoted',()=>{
+test('all seven units remain required; a promotion without registry membership stays pending',()=>{
   const result=productionResources({read:disk,has:exists,worldIds,strict:false});
   assert.deepEqual([...result.pending].sort(),[...REQUIRED_UNITS].sort());
   assert.equal(result.units.robots.expected.exports.length,9);
@@ -25,6 +26,25 @@ test('real queue remains required and pending; no optional world is silently pro
   }
   const plan=JSON.parse(disk('port/finish/ASSET_PRODUCTION.json'));plan.units.find(u=>u.id==='vehicles').recipePaths.pop();
   assert.throws(()=>productionResources({read:p=>p==='port/finish/ASSET_PRODUCTION.json'?Buffer.from(JSON.stringify(plan)):disk(p),has:exists,strict:false}),/builder\/recipe dropped/);
+});
+
+test('real Parallax promotion binds actual production bytes; six units remain pending',()=>{
+  const options={read:disk,has:exists,worldIds:Object.keys(WORLDS),strict:false};
+  const result=productionResources(options);
+  assert.equal(Object.keys(WORLDS).length,10);
+  assert.deepEqual(result.pending,REQUIRED_UNITS.filter(id=>id!=='parallax-interiors'));
+  const glb='godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb';
+  assert.equal(result.raw[glb],'c1dffd357545206d3f70870f850e441c5be148e652830a4a69835185a75610bd');
+  assert.ok(!Object.hasOwn(result.resources,glb+'.import'));
+  assert.ok(Object.hasOwn(result.provenance,glb+'.import'));
+  for(const path of [glb,'godot/multiplayer_worlds/dressing/profiles/parallax-observatory.json'])
+    assert.throws(()=>productionResources({...options,read:p=>p===path?Buffer.from('tampered'):disk(p)}),/content hash mismatch/);
+  const receiptPath='tools/godot-package/production_receipts/parallax-interiors.json';
+  const receipt=JSON.parse(disk(receiptPath));receipt.rawFiles=[];
+  const bytes=Buffer.from(JSON.stringify(receipt)),req=JSON.parse(disk(REQUIREMENTS));
+  req.units['parallax-interiors'].promotion.sha256=sha(bytes);
+  assert.throws(()=>productionResources({...options,read:p=>p===receiptPath?bytes:p===REQUIREMENTS?Buffer.from(JSON.stringify(req)):disk(p)}),/requires raw GLB/);
+  assert.throws(()=>productionResources({...options,strict:true}),/remain pending/);
 });
 
 // Synthetic binary/metadata fixture uses a real committed PNG. It proves closure

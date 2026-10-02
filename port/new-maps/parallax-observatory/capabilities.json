@@ -1,0 +1,16 @@
+{
+  "id": "parallax-observatory",
+  "name": "Parallax Observatory",
+  "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+  "acceptedNativeModes": [
+    "deathmatch",
+    "teamdeathmatch",
+    "ctf",
+    "koth",
+    "uplink",
+    "holdout"
+  ],
+  "sourceAuthority": "port/multiplayer-worlds/derived/core.mjs",
+  "fixtureLimit": "Controlled normal-input native full rounds, not an autonomous/native matchmaking balance claim",
+  "evidence": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002"
+}

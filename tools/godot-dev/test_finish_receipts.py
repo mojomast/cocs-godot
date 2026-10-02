@@ -5,7 +5,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from finish_receipts import accept_reference, sha, validate_artifact_checks
+from finish_receipts import accept_reference, sha, validate_artifact_checks, validate_output_checks, validate_map_journeys
 from finish_runner import ROOT, load_matrix, summarize
 
 
@@ -215,6 +215,77 @@ class FinalReceiptTest(unittest.TestCase):
         self.assertEqual(rows['production-robots-native']['execution_status'], 'unrun')
         self.assertEqual(rows['production-robots-native']['preparation'], 'blocked')
         self.assertIn('final-windows-release-proof', report['incomplete_critical'])
+
+    def test_camera_result_requires_one_complete_passing_json_record(self):
+        job = {'output_checks': [{'prefix': 'FIGHTING_CAMERA_GATE'}]}
+        good = 'FIGHTING_CAMERA_GATE {"passed":true,"failures":[]}'
+        validate_output_checks(job, good)
+        for output in ('', 'FIGHTING_CAMERA_GATE', 'FIGHTING_CAMERA_GATE null', good + '\n' + good,
+                       'FIGHTING_CAMERA_GATE {"passed":false,"failures":[]}',
+                       'FIGHTING_CAMERA_GATE {"passed":true}',
+                       'FIGHTING_CAMERA_GATE {"passed":true,"failures":["clipped"]}'):
+            with self.subTest(output=output), self.assertRaises(ValueError):
+                validate_output_checks(job, output)
+
+    def test_map_journey_requires_all_modes_current_bytes_and_clean_native_peers(self):
+        recipe = self.put('map.json', {'geometryHash': 'geometry-fixture'})
+        art = self.root / 'map.glb'
+        art.write_bytes(b'synthetic identity fixture')
+        job = {'map_journeys': {'id': 'map', 'recipe': 'map.json', 'art': 'map.glb',
+                               'modes': ['deathmatch', 'ctf']}}
+        data = {'map_journeys': {m: {'stage': 'private-production', 'artifact': m}
+                                for m in ('deathmatch', 'ctf')}}
+        artifacts = {}
+        for mode in ('deathmatch', 'ctf'):
+            artifacts[mode] = self.put(mode + '.json', {'id': 'map', 'mode': mode,
+                'recipeSha': sha(recipe), 'artSha': sha(art), 'geometryHash': 'geometry-fixture',
+                'success': True, 'journeyPassed': True, 'processFailed': False, 'accepted': False,
+                'teardown': {'success': True, 'processFailed': False, 'serverError': None,
+                             'peers': [{'clean': True}, {'clean': True}]}})
+        validate_map_journeys(data, job, artifacts, self.root)
+        # Production acceptance is supplied by the exact-anchor owner envelope;
+        # the private producer correctly never sets public acceptance itself.
+        incomplete = copy.deepcopy(data)
+        incomplete['map_journeys'].pop('ctf')
+        with self.assertRaisesRegex(ValueError, 'Every accepted'):
+            validate_map_journeys(incomplete, job, artifacts, self.root)
+        outcome = json.loads(artifacts['ctf'].read_text())
+        outcome['teardown']['peers'][1]['clean'] = False
+        artifacts['ctf'].write_text(json.dumps(outcome))
+        with self.assertRaisesRegex(ValueError, 'teardown incomplete'):
+            validate_map_journeys(data, job, artifacts, self.root)
+        art.write_bytes(b'changed actual export')
+        with self.assertRaisesRegex(ValueError, 'identity differs'):
+            validate_map_journeys(data, job, artifacts, self.root)
+
+    def test_foundry_preserved_luminaire_does_not_require_all_selectors_dressed(self):
+        job = {'artifact_checks': [{'kind': 'map-finish', 'path': 'foundry.json', 'map': 'gravemill-foundry'}]}
+        data = {'map': 'gravemill-foundry', 'failures': [], 'owned_max': 1, 'frame_usec': [16000],
+                'initial': {'status': 'ready', 'surfaces': 7, 'preserved': 1},
+                'reloaded': {'status': 'ready', 'surfaces': 7, 'preserved': 1}}
+        self.put('foundry.json', data)
+        validate_artifact_checks(job, self.root, self.root)
+        data['failures'] = ['preserved luminaire emission changed']
+        self.put('foundry.json', data)
+        with self.assertRaisesRegex(ValueError, 'lifecycle proof incomplete'):
+            validate_artifact_checks(job, self.root, self.root)
+
+    def test_registration_uses_strict_closure_and_never_postpromotion_private_host(self):
+        jobs = {j['id']: j for j in load_matrix(ROOT / 'port/finish/final_matrix.json')['jobs']}
+        for name in ('final-seven-unit-production-closure', 'final-fighter-resource-closure'):
+            self.assertNotIn('--audit', jobs[name]['command'])
+            self.assertEqual(jobs[name]['cohort'], 'source')
+        self.assertEqual(len(jobs['final-seven-unit-production-closure']['units']), 7)
+        self.assertIn('fighting-camera-native', jobs['fighting-four-stage-training-review']['after'])
+        for job in jobs.values():
+            self.assertNotIn('tools/asset-production/candidate-hosted.mjs', job.get('command', []))
+        self.assertEqual(sum(len(j.get('map_journeys', {}).get('modes', [])) for j in jobs.values()), 13)
+
+    def test_package_conversion_is_not_an_owner_execution_receipt(self):
+        producer = self.owner()
+        producer.update(accepted=False, status='ready', executed=False)
+        with self.assertRaisesRegex(ValueError, 'not acceptance'):
+            accept_reference(self.reference(producer, 'owner-closure'), self.report, [self.job], self.root)
 
 
 if __name__ == '__main__':

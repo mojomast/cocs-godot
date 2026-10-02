@@ -76,6 +76,11 @@ function specification(unit,read) {
     masters.push(base+'revisions/interiors-v2/output/parallax-observatory.blend');
     exports.push('godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb');
     inputs.push(base+'blender_author.py',base+'parallax-observatory.blend',base+'revisions/interiors-v2/reopen_candidate.py',base+'revisions/interiors-v2/source-check.json','godot/multiplayer_worlds/generated/parallax-observatory.json',...['binder.gd','profile.gd','surface.gd','surface.gdshader','profiles/parallax-observatory.json'].map(p=>'godot/multiplayer_worlds/dressing/'+p));
+    const evidencePath='port/new-maps/parallax-observatory/production-c.json';
+    const evidence=JSON.parse(read(evidencePath));
+    inputs.push(evidencePath,...Object.keys(evidence.inputHashes),...Object.keys(evidence.runtimeHooks).filter(p=>!p.startsWith('godot/tests/')),
+      'godot/multiplayer_worlds/catalog.gd','port/multiplayer-worlds/catalog.mjs',
+      'godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb.import');
   } else {
     const base=`tools/godot-multiplayer/new-maps/${id}/`;
     masters.push(base+(id==='stormglass-causeway'?'':'masters/')+id+'.blend');
@@ -102,7 +107,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
   const add=(path,expected=null)=>{
     safe(path);const bytes=read(path),sha=hash(bytes);
     if(expected!==null){digest(expected);assert.equal(sha,expected,`Production content hash mismatch: ${path}`);}
-    (path.startsWith('godot/')?resources:provenance)[path]=sha;return bytes;
+    (path.startsWith('godot/')&&!path.endsWith('.import')?resources:provenance)[path]=sha;return bytes;
   };
   const requirements=JSON.parse(add(REQUIREMENTS));assert.equal(requirements.version,1);
   assert.equal(requirements.plan,'port/finish/ASSET_PRODUCTION.json');
@@ -130,6 +135,14 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     if(!promotion||!registered||missing.length){pending.push(unit.id);continue;}
     assert.equal(promotion.receipt,`tools/godot-package/production_receipts/${unit.id}.json`,'Promotion receipt must have its fixed committed path');
     const receipt=JSON.parse(add(promotion.receipt,promotion.sha256));assert.equal(receipt.unit,unit.id);
+    if(unit.id==='parallax-interiors') {
+      const evidence=JSON.parse(read('port/new-maps/parallax-observatory/production-c.json'));
+      for(const [path,sha]of Object.entries(evidence.inputHashes))add(path,sha);
+      for(const [path,sha]of Object.entries(evidence.runtimeHooks))if(!path.startsWith('godot/tests/'))add(path,sha);
+      assert.deepEqual(receipt.masters,evidence.masters,'Parallax production master identity');
+      assert.deepEqual(receipt.exports,evidence.exports,'Parallax production export identity');
+      assert.ok(receipt.rawFiles?.includes(spec.exports[0]),'Parallax native audit requires raw GLB bytes');
+    }
     equal(Object.keys(receipt.packageInputs??{}),inputs,'Incomplete production packageInputs');
     for(const path of inputs)add(path,receipt.packageInputs[path]);
     const fingerprintInputs=Object.fromEntries([...unit.recipePaths,plan.common.finishScript].sort().map(p=>[p,hash(read(p))]));

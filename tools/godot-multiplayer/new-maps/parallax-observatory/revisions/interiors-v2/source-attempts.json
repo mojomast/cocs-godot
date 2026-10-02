@@ -1,0 +1,24 @@
+{
+  "scope": "Source-only interior mesh generation; no engine jobs",
+  "attempts": [
+    {
+      "status": "rejected",
+      "stage": "addition budget assertion",
+      "addedTriangles": 12620,
+      "additionCap": 11000,
+      "error": "AssertionError: 12620",
+      "response": "Reduce storage to six cassettes per rack tier and use planar index tabs; keep the budget."
+    },
+    {
+      "status": "source checks passed",
+      "addedTriangles": 10772,
+      "note": "Subsequently connected each volute to its riser with an explicit suction branch."
+    },
+    {
+      "status": "source checks passed",
+      "addedTriangles": 10988,
+      "additionCap": 11000,
+      "note": "Final source candidate; actual visual and native validation pending grant."
+    }
+  ]
+}

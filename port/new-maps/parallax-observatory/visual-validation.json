@@ -1,0 +1,903 @@
+{
+  "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+  "asset": {
+    "id": "parallax-observatory",
+    "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+    "recipeHash": "e949e43d5546ec8b0c9024810f1da6229152e370ad640ecf27ecb54c05f2e23d",
+    "seed": 20261002,
+    "triangles": 148239,
+    "materialBatches": 7,
+    "editableObjects": 24619,
+    "glbBytes": 8646208,
+    "glbSha256": "b3ea4ec57f57f6db83e1acab40dc95135562347ef884cc8f33ba067af8521bb1",
+    "blendSha256": "fcd7f284443c45d08177837a23af530b1667deb106bddb8822d507f5655ca090",
+    "nativeAcceptance": "pending"
+  },
+  "inspection": {
+    "collision": {
+      "art": "res://multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb",
+      "gameplayTriangles": 4686,
+      "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554"
+    },
+    "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+    "glbSha256": "b3ea4ec57f57f6db83e1acab40dc95135562347ef884cc8f33ba067af8521bb1",
+    "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+    "views": {
+      "arcade-eye": {
+        "drawCalls": 35,
+        "objects": 35,
+        "primitives": 741195
+      },
+      "archive-interior": {
+        "drawCalls": 35,
+        "objects": 35,
+        "primitives": 741195
+      },
+      "arrival-eye": {
+        "drawCalls": 35,
+        "objects": 35,
+        "primitives": 741195
+      },
+      "cistern-eye": {
+        "drawCalls": 35,
+        "objects": 35,
+        "primitives": 741195
+      },
+      "lens-eye": {
+        "drawCalls": 35,
+        "objects": 35,
+        "primitives": 741195
+      },
+      "overview": {
+        "drawCalls": 17,
+        "objects": 17,
+        "primitives": 305148
+      },
+      "polar-interior": {
+        "drawCalls": 33,
+        "objects": 33,
+        "primitives": 740589
+      },
+      "pump-interior": {
+        "drawCalls": 35,
+        "objects": 35,
+        "primitives": 741195
+      }
+    }
+  },
+  "sessions": [
+    {
+      "dir": "native-walkthrough",
+      "frameMsP50": 133.333333333333,
+      "frameMsP95": 144.444444444444,
+      "drawCalls": 68,
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "roundResults": 0,
+      "uiChecks": [
+        {
+          "label": "gameplay-wide",
+          "logicalViewport": "[P: (0.0, 0.0), S: (1280.0, 800.0)]",
+          "rows": [
+            {
+              "fits": true,
+              "rect": "[P: (1070.0, 773.0), S: (198.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F12 · Settings / Leave",
+              "visibleRect": "[P: (1070.0, 773.0), S: (198.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (878.0, 120.0), S: (390.0, 212.0)]",
+              "scrollClipped": true,
+              "text": "Q · Claw Burst · READY\nX · Grapple · READY\nAdaptive · HANDLING 0.0s\nFastest weapon swap; after a swap, the first magazine keeps a small handling bonus.\nG · FRAG READY",
+              "visibleRect": "[P: (878.0, 120.0), S: (390.0, 212.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 12.0), S: (1248.0, 75.0)]",
+              "scrollClipped": false,
+              "text": "PARALLAX OBSERVATORY · deathmatch\nParallax Observatory | HP 100.0 | Armor 45.0 | Weapon 2 | Ammo ∞\nFrags 0.0 · Deaths 0.0 | LIVE",
+              "visibleRect": "[P: (16.0, 12.0), S: (1248.0, 75.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 91.0), S: (1248.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F1 · Observatory route guide",
+              "visibleRect": "[P: (16.0, 91.0), S: (1248.0, 23.0)]"
+            }
+          ],
+          "window": "(1280, 800)"
+        },
+        {
+          "label": "help-wide",
+          "logicalViewport": "[P: (0.0, 0.0), S: (1280.0, 800.0)]",
+          "rows": [
+            {
+              "fits": true,
+              "rect": "[P: (1070.0, 773.0), S: (198.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F12 · Settings / Leave",
+              "visibleRect": "[P: (1070.0, 773.0), S: (198.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (878.0, 171.0), S: (390.0, 212.0)]",
+              "scrollClipped": true,
+              "text": "Q · Claw Burst · READY\nX · Grapple · READY\nAdaptive · HANDLING 0.0s\nFastest weapon swap; after a swap, the first magazine keeps a small handling bonus.\nG · FRAG READY",
+              "visibleRect": "[P: (878.0, 171.0), S: (390.0, 212.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 12.0), S: (1248.0, 153.0)]",
+              "scrollClipped": false,
+              "text": "PARALLAX OBSERVATORY\nWASD move · Mouse aim/fire · Shift sprint · Space jump\nOchre meridian → lens dais / flags\nNorth: armillary hall +24 m · South: tidal cistern +0 m\nThree crosslinks reconnect the tiers. Sea beyond parapets is lethal.\nF1 closes guide · F12 settings",
+              "visibleRect": "[P: (16.0, 12.0), S: (1248.0, 153.0)]"
+            }
+          ],
+          "window": "(1280, 800)"
+        },
+        {
+          "label": "gameplay-compact150",
+          "logicalViewport": "[P: (0.0, 0.0), S: (506.6667, 346.6667)]",
+          "rows": [
+            {
+              "fits": true,
+              "rect": "[P: (296.6667, 319.6667), S: (198.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F12 · Settings / Leave",
+              "visibleRect": "[P: (296.6667, 319.6667), S: (198.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (12.0, 207.3333), S: (270.6667, 170.0)]",
+              "scrollClipped": true,
+              "text": "Q · Claw Burst · READY\nX · Grapple · READY\nAdaptive · HANDLING 0.0s\nFastest weapon swap; after a swap, the first magazine keeps a small handling bonus.\nG · FRAG READY",
+              "visibleRect": "[P: (12.0, 207.3333), S: (270.6667, 120.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 12.0), S: (474.0, 101.0)]",
+              "scrollClipped": false,
+              "text": "PARALLAX OBSERVATORY · deathmatch\nParallax Observatory | HP 100.0 | Armor 45.0 | Weapon 2 | Ammo ∞\nFrags 0.0 · Deaths 0.0 | LIVE",
+              "visibleRect": "[P: (16.0, 12.0), S: (474.0, 101.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 117.0), S: (474.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F1 · Observatory route guide",
+              "visibleRect": "[P: (16.0, 117.0), S: (474.0, 23.0)]"
+            }
+          ],
+          "window": "(760, 520)"
+        },
+        {
+          "label": "help-compact150",
+          "logicalViewport": "[P: (0.0, 0.0), S: (506.6667, 346.6667)]",
+          "rows": [
+            {
+              "fits": true,
+              "rect": "[P: (296.6667, 319.6667), S: (198.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F12 · Settings / Leave",
+              "visibleRect": "[P: (296.6667, 319.6667), S: (198.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (12.0, 207.3333), S: (270.6667, 170.0)]",
+              "scrollClipped": true,
+              "text": "Q · Claw Burst · READY\nX · Grapple · READY\nAdaptive · HANDLING 0.0s\nFastest weapon swap; after a swap, the first magazine keeps a small handling bonus.\nG · FRAG READY",
+              "visibleRect": "[P: (12.0, 207.3333), S: (270.6667, 120.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 12.0), S: (474.0, 179.0)]",
+              "scrollClipped": false,
+              "text": "PARALLAX OBSERVATORY\nWASD move · Mouse aim/fire · Shift sprint · Space jump\nOchre meridian → lens dais / flags\nNorth: armillary hall +24 m · South: tidal cistern +0 m\nThree crosslinks reconnect the tiers. Sea beyond parapets is lethal.\nF1 closes guide · F12 settings",
+              "visibleRect": "[P: (16.0, 12.0), S: (474.0, 179.0)]"
+            }
+          ],
+          "window": "(760, 520)"
+        }
+      ],
+      "clip": {
+        "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+        "frames": 1567,
+        "capturedSeconds": 257.848,
+        "actualCapturedFps": 6.073345536905463,
+        "medianGapMs": 162,
+        "maxGapMs": 382,
+        "encodedFps": 15,
+        "classification": "Actual native viewport PNG sequence timed from capture timestamps; encoded at 15 fps with duplication, not a 15 fps performance claim",
+        "output": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-walkthrough/walkthrough.mp4",
+        "bytes": 10639434
+      }
+    },
+    {
+      "dir": "visual-ctf-final",
+      "frameMsP50": 118.414333333333,
+      "frameMsP95": 138.888888888889,
+      "drawCalls": 28,
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "roundResults": 1,
+      "uiChecks": [
+        {
+          "label": "results-wide",
+          "logicalViewport": "[P: (0.0, 0.0), S: (1280.0, 800.0)]",
+          "rows": [
+            {
+              "fits": true,
+              "rect": "[P: (1070.0, 773.0), S: (198.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F12 · Settings / Leave",
+              "visibleRect": "[P: (1070.0, 773.0), S: (198.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 12.0), S: (1248.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "Round ended · Enter: restart as host",
+              "visibleRect": "[P: (16.0, 12.0), S: (1248.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 39.0), S: (1248.0, 153.0)]",
+              "scrollClipped": false,
+              "text": "CTF  |  YOU: RED [1]  |  1 : 0\nRED [1] / at-base\nBLUE [2] / at-base\nTouch enemy flag to carry; E: nearby teammate pass, otherwise drop.\nTouch friendly dropped flag to return. Capture at uncontested home flag.\nROUND OVER / authoritative winner: 0.0",
+              "visibleRect": "[P: (16.0, 39.0), S: (1248.0, 153.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 196.0), S: (1248.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F1 · Observatory route guide",
+              "visibleRect": "[P: (16.0, 196.0), S: (1248.0, 23.0)]"
+            }
+          ],
+          "window": "(1280, 800)"
+        },
+        {
+          "label": "help-wide",
+          "logicalViewport": "[P: (0.0, 0.0), S: (1280.0, 800.0)]",
+          "rows": [
+            {
+              "fits": true,
+              "rect": "[P: (1070.0, 773.0), S: (198.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F12 · Settings / Leave",
+              "visibleRect": "[P: (1070.0, 773.0), S: (198.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 12.0), S: (1248.0, 153.0)]",
+              "scrollClipped": false,
+              "text": "PARALLAX OBSERVATORY\nWASD move · Mouse aim/fire · Shift sprint · Space jump\nOchre meridian → lens dais / flags\nNorth: armillary hall +24 m · South: tidal cistern +0 m\nThree crosslinks reconnect the tiers. Sea beyond parapets is lethal.\nF1 closes guide · F12 settings",
+              "visibleRect": "[P: (16.0, 12.0), S: (1248.0, 153.0)]"
+            }
+          ],
+          "window": "(1280, 800)"
+        },
+        {
+          "label": "results-compact150",
+          "logicalViewport": "[P: (0.0, 0.0), S: (506.6667, 346.6667)]",
+          "rows": [
+            {
+              "fits": true,
+              "rect": "[P: (296.6667, 319.6667), S: (198.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F12 · Settings / Leave",
+              "visibleRect": "[P: (296.6667, 319.6667), S: (198.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 12.0), S: (474.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "Round ended · Enter: restart as host",
+              "visibleRect": "[P: (16.0, 12.0), S: (474.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 39.0), S: (474.0, 205.0)]",
+              "scrollClipped": false,
+              "text": "CTF  |  YOU: RED [1]  |  1 : 0\nRED [1] / at-base\nBLUE [2] / at-base\nTouch enemy flag to carry; E: nearby teammate pass, otherwise drop.\nTouch friendly dropped flag to return. Capture at uncontested home flag.\nROUND OVER / authoritative winner: 0.0",
+              "visibleRect": "[P: (16.0, 39.0), S: (474.0, 205.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 248.0), S: (474.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F1 · Observatory route guide",
+              "visibleRect": "[P: (16.0, 248.0), S: (474.0, 23.0)]"
+            }
+          ],
+          "window": "(760, 520)"
+        },
+        {
+          "label": "help-compact150",
+          "logicalViewport": "[P: (0.0, 0.0), S: (506.6667, 346.6667)]",
+          "rows": [
+            {
+              "fits": true,
+              "rect": "[P: (296.6667, 319.6667), S: (198.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F12 · Settings / Leave",
+              "visibleRect": "[P: (296.6667, 319.6667), S: (198.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 12.0), S: (474.0, 179.0)]",
+              "scrollClipped": false,
+              "text": "PARALLAX OBSERVATORY\nWASD move · Mouse aim/fire · Shift sprint · Space jump\nOchre meridian → lens dais / flags\nNorth: armillary hall +24 m · South: tidal cistern +0 m\nThree crosslinks reconnect the tiers. Sea beyond parapets is lethal.\nF1 closes guide · F12 settings",
+              "visibleRect": "[P: (16.0, 12.0), S: (474.0, 179.0)]"
+            }
+          ],
+          "window": "(760, 520)"
+        }
+      ],
+      "clip": {
+        "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+        "frames": 444,
+        "capturedSeconds": 69.698,
+        "actualCapturedFps": 6.355992998364373,
+        "medianGapMs": 155,
+        "maxGapMs": 196,
+        "encodedFps": 15,
+        "classification": "Actual native viewport PNG sequence timed from capture timestamps; encoded at 15 fps with duplication, not a 15 fps performance claim",
+        "output": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/visual-ctf-final/walkthrough.mp4",
+        "bytes": 2776113
+      }
+    },
+    {
+      "dir": "visual-koth",
+      "frameMsP50": 125,
+      "frameMsP95": 138.406333333332,
+      "drawCalls": 33,
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "roundResults": 1,
+      "uiChecks": [
+        {
+          "label": "results-wide",
+          "logicalViewport": "[P: (0.0, 0.0), S: (1280.0, 800.0)]",
+          "rows": [
+            {
+              "fits": true,
+              "rect": "[P: (1070.0, 773.0), S: (198.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F12 · Settings / Leave",
+              "visibleRect": "[P: (1070.0, 773.0), S: (198.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 12.0), S: (1248.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "Round ended · Enter: restart as host",
+              "visibleRect": "[P: (16.0, 12.0), S: (1248.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 39.0), S: (1248.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "koth · Round complete · [5.01666666666665, 0.0]",
+              "visibleRect": "[P: (16.0, 39.0), S: (1248.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 66.0), S: (1248.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F1 · Observatory route guide",
+              "visibleRect": "[P: (16.0, 66.0), S: (1248.0, 23.0)]"
+            }
+          ],
+          "window": "(1280, 800)"
+        },
+        {
+          "label": "help-wide",
+          "logicalViewport": "[P: (0.0, 0.0), S: (1280.0, 800.0)]",
+          "rows": [
+            {
+              "fits": true,
+              "rect": "[P: (1070.0, 773.0), S: (198.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F12 · Settings / Leave",
+              "visibleRect": "[P: (1070.0, 773.0), S: (198.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 12.0), S: (1248.0, 153.0)]",
+              "scrollClipped": false,
+              "text": "PARALLAX OBSERVATORY\nWASD move · Mouse aim/fire · Shift sprint · Space jump\nOchre meridian → lens dais / flags\nNorth: armillary hall +24 m · South: tidal cistern +0 m\nThree crosslinks reconnect the tiers. Sea beyond parapets is lethal.\nF1 closes guide · F12 settings",
+              "visibleRect": "[P: (16.0, 12.0), S: (1248.0, 153.0)]"
+            }
+          ],
+          "window": "(1280, 800)"
+        },
+        {
+          "label": "results-compact150",
+          "logicalViewport": "[P: (0.0, 0.0), S: (506.6667, 346.6667)]",
+          "rows": [
+            {
+              "fits": true,
+              "rect": "[P: (296.6667, 319.6667), S: (198.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F12 · Settings / Leave",
+              "visibleRect": "[P: (296.6667, 319.6667), S: (198.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 12.0), S: (474.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "Round ended · Enter: restart as host",
+              "visibleRect": "[P: (16.0, 12.0), S: (474.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 39.0), S: (474.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "koth · Round complete · [5.01666666666665, 0.0]",
+              "visibleRect": "[P: (16.0, 39.0), S: (474.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 66.0), S: (474.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F1 · Observatory route guide",
+              "visibleRect": "[P: (16.0, 66.0), S: (474.0, 23.0)]"
+            }
+          ],
+          "window": "(760, 520)"
+        },
+        {
+          "label": "help-compact150",
+          "logicalViewport": "[P: (0.0, 0.0), S: (506.6667, 346.6667)]",
+          "rows": [
+            {
+              "fits": true,
+              "rect": "[P: (296.6667, 319.6667), S: (198.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F12 · Settings / Leave",
+              "visibleRect": "[P: (296.6667, 319.6667), S: (198.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 12.0), S: (474.0, 179.0)]",
+              "scrollClipped": false,
+              "text": "PARALLAX OBSERVATORY\nWASD move · Mouse aim/fire · Shift sprint · Space jump\nOchre meridian → lens dais / flags\nNorth: armillary hall +24 m · South: tidal cistern +0 m\nThree crosslinks reconnect the tiers. Sea beyond parapets is lethal.\nF1 closes guide · F12 settings",
+              "visibleRect": "[P: (16.0, 12.0), S: (474.0, 179.0)]"
+            }
+          ],
+          "window": "(760, 520)"
+        }
+      ],
+      "clip": {
+        "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+        "frames": 98,
+        "capturedSeconds": 72.943,
+        "actualCapturedFps": 1.329805464540806,
+        "medianGapMs": 168,
+        "maxGapMs": 29051,
+        "encodedFps": 15,
+        "classification": "Actual native viewport PNG sequence timed from capture timestamps; encoded at 15 fps with duplication, not a 15 fps performance claim",
+        "output": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/visual-koth/walkthrough.mp4",
+        "bytes": 1234066
+      }
+    },
+    {
+      "dir": "visual-deathmatch",
+      "frameMsP50": 129.62962962963,
+      "frameMsP95": 140.894333333333,
+      "drawCalls": 33,
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "roundResults": 1,
+      "uiChecks": [
+        {
+          "label": "results-wide",
+          "logicalViewport": "[P: (0.0, 0.0), S: (1280.0, 800.0)]",
+          "rows": [
+            {
+              "fits": true,
+              "rect": "[P: (1070.0, 773.0), S: (198.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F12 · Settings / Leave",
+              "visibleRect": "[P: (1070.0, 773.0), S: (198.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 12.0), S: (1248.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "Round ended · Enter: restart as host",
+              "visibleRect": "[P: (16.0, 12.0), S: (1248.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 39.0), S: (1248.0, 49.0)]",
+              "scrollClipped": false,
+              "text": "Parallax Observatory | HP 100.0 | Armor 5.0 | Weapon 2 | Ammo ∞\nFrags 5.0 · Deaths 0.0 | RESULTS",
+              "visibleRect": "[P: (16.0, 39.0), S: (1248.0, 49.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 92.0), S: (1248.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F1 · Observatory route guide",
+              "visibleRect": "[P: (16.0, 92.0), S: (1248.0, 23.0)]"
+            }
+          ],
+          "window": "(1280, 800)"
+        },
+        {
+          "label": "help-wide",
+          "logicalViewport": "[P: (0.0, 0.0), S: (1280.0, 800.0)]",
+          "rows": [
+            {
+              "fits": true,
+              "rect": "[P: (1070.0, 773.0), S: (198.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F12 · Settings / Leave",
+              "visibleRect": "[P: (1070.0, 773.0), S: (198.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 12.0), S: (1248.0, 153.0)]",
+              "scrollClipped": false,
+              "text": "PARALLAX OBSERVATORY\nWASD move · Mouse aim/fire · Shift sprint · Space jump\nOchre meridian → lens dais / flags\nNorth: armillary hall +24 m · South: tidal cistern +0 m\nThree crosslinks reconnect the tiers. Sea beyond parapets is lethal.\nF1 closes guide · F12 settings",
+              "visibleRect": "[P: (16.0, 12.0), S: (1248.0, 153.0)]"
+            }
+          ],
+          "window": "(1280, 800)"
+        },
+        {
+          "label": "results-compact150",
+          "logicalViewport": "[P: (0.0, 0.0), S: (506.6667, 346.6667)]",
+          "rows": [
+            {
+              "fits": true,
+              "rect": "[P: (296.6667, 319.6667), S: (198.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F12 · Settings / Leave",
+              "visibleRect": "[P: (296.6667, 319.6667), S: (198.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 12.0), S: (474.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "Round ended · Enter: restart as host",
+              "visibleRect": "[P: (16.0, 12.0), S: (474.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 39.0), S: (474.0, 75.0)]",
+              "scrollClipped": false,
+              "text": "Parallax Observatory | HP 100.0 | Armor 5.0 | Weapon 2 | Ammo ∞\nFrags 5.0 · Deaths 0.0 | RESULTS",
+              "visibleRect": "[P: (16.0, 39.0), S: (474.0, 75.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 118.0), S: (474.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F1 · Observatory route guide",
+              "visibleRect": "[P: (16.0, 118.0), S: (474.0, 23.0)]"
+            }
+          ],
+          "window": "(760, 520)"
+        },
+        {
+          "label": "help-compact150",
+          "logicalViewport": "[P: (0.0, 0.0), S: (506.6667, 346.6667)]",
+          "rows": [
+            {
+              "fits": true,
+              "rect": "[P: (296.6667, 319.6667), S: (198.0, 23.0)]",
+              "scrollClipped": false,
+              "text": "F12 · Settings / Leave",
+              "visibleRect": "[P: (296.6667, 319.6667), S: (198.0, 23.0)]"
+            },
+            {
+              "fits": true,
+              "rect": "[P: (16.0, 12.0), S: (474.0, 179.0)]",
+              "scrollClipped": false,
+              "text": "PARALLAX OBSERVATORY\nWASD move · Mouse aim/fire · Shift sprint · Space jump\nOchre meridian → lens dais / flags\nNorth: armillary hall +24 m · South: tidal cistern +0 m\nThree crosslinks reconnect the tiers. Sea beyond parapets is lethal.\nF1 closes guide · F12 settings",
+              "visibleRect": "[P: (16.0, 12.0), S: (474.0, 179.0)]"
+            }
+          ],
+          "window": "(760, 520)"
+        }
+      ],
+      "clip": {
+        "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+        "frames": 55,
+        "capturedSeconds": 64.946,
+        "actualCapturedFps": 0.8314599821390078,
+        "medianGapMs": 178,
+        "maxGapMs": 15821,
+        "encodedFps": 15,
+        "classification": "Actual native viewport PNG sequence timed from capture timestamps; encoded at 15 fps with duplication, not a 15 fps performance claim",
+        "output": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/visual-deathmatch/walkthrough.mp4",
+        "bytes": 531433
+      }
+    }
+  ],
+  "images": [
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/blender-review/arcade-eye.png",
+      "bytes": 1720738,
+      "sha256": "7830e15ed22a509af0dd678a4c7977de60c50079cac41d4ebef672d46079f2e8",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/blender-review/archive-interior.png",
+      "bytes": 1791161,
+      "sha256": "81c56b3cd47d2f93f4f2d3f3f586995ad53a30a81833fd9e7e835669b8abe373",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/blender-review/arrival-eye.png",
+      "bytes": 1769035,
+      "sha256": "4ba2c9f9d9c8e42e2132513e8a38b92c5281c4141b8ca4a5fceb9be8735559b9",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/blender-review/cistern-eye.png",
+      "bytes": 1702800,
+      "sha256": "04df70d7af61a838aadeefd8979ab28fcef28def5ba108ede24a329e0376ff84",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/blender-review/lens-eye.png",
+      "bytes": 1803627,
+      "sha256": "c4bbe65aeca7488952b0bb8def18b93c95714dedf24801d405becf0bd67f5a23",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/blender-review/overview.png",
+      "bytes": 2066330,
+      "sha256": "34ff07c28fd60f051b1631773bf7ee22a1bfce44abbf989b8c768863beccad99",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/blender-review/polar-interior.png",
+      "bytes": 1901473,
+      "sha256": "c661b40f1d1c5ddfaf51606e71bbd824c7e6515d9acbc2fa4063980c202602d0",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/blender-review/pump-interior.png",
+      "bytes": 1766733,
+      "sha256": "80d8ba9e148542da6ef54fcf7b13eb53c3ece2d8e50e845949fb87672eee9fe9",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-review/arcade-eye.png",
+      "bytes": 127419,
+      "sha256": "602b28cfcce4376222f9b74c686205acbcae029d518ef9dac8883b08ae8036ff",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-review/archive-interior.png",
+      "bytes": 134423,
+      "sha256": "923deacb64469ac2097096bd02a233d042bbbbdc3413b34fbf18e7e5c88b1562",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-review/arrival-eye.png",
+      "bytes": 157209,
+      "sha256": "e9b785ebd00e6dc220403df8df889a2d8f17151e13bb5a66aff5b4fb9e28eed9",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-review/cistern-eye.png",
+      "bytes": 141085,
+      "sha256": "952a614205d1e4e0e1f37306aaa75d4820ebe9c21730fdbf5b7f625db0fb1f9e",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-review/lens-eye.png",
+      "bytes": 169228,
+      "sha256": "6eb1a603af7a736fc3dbb5ae3782165402ca8ab916897a091d90a5b971b57393",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-review/overview.png",
+      "bytes": 151620,
+      "sha256": "cc21267b96f5b1188a2e77d344203f535ca9fcd7faf7a866632f6bfb90df6192",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-review/polar-interior.png",
+      "bytes": 145452,
+      "sha256": "11fdfa8326f3e5dd0e6c790138e9a97313b5cd062d542b0a27e288869d2d24c3",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-review/pump-interior.png",
+      "bytes": 121220,
+      "sha256": "062e058502ac8ea3fbb5380cc45217ad38239d7c6241b6ed61c84266368c48ad",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-walkthrough/arcade.png",
+      "bytes": 205053,
+      "sha256": "aaded2cf70bc304b7bbc1d98f0d78be43f00ba485290db676092e6cc6d635a3c",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-walkthrough/archive.png",
+      "bytes": 232355,
+      "sha256": "13d8537ed6809fd5f2950d833c2c65bdccb07b0f082cc65a17a00fe1aa95f79f",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-walkthrough/gameplay-compact150.png",
+      "bytes": 219633,
+      "sha256": "4064356ea7e02e6ac1e918fc4f6b40862ef2058defd3dc4df7c467f5fc6fc177",
+      "width": 760,
+      "height": 520
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-walkthrough/gameplay-wide.png",
+      "bytes": 289784,
+      "sha256": "d86096cc76cfef5fac32c2052a6fe6f9a224dc9a91206b6daa473af8ca326641",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-walkthrough/help-compact150.png",
+      "bytes": 244419,
+      "sha256": "b672ce8dcd8df213cd62a6768c4fa8d7e9b40c649f1e69e945909b715248fbc5",
+      "width": 760,
+      "height": 520
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-walkthrough/help-wide.png",
+      "bytes": 304501,
+      "sha256": "26fd604faae6c932d6a95d30861dcb72983a8d1f9a5394935f5023d908e1035f",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-walkthrough/lens.png",
+      "bytes": 291063,
+      "sha256": "0a45698d2196c73391a26a1b10279c4cd7f24238fab619dbb9d927224cee0dbb",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-walkthrough/polar.png",
+      "bytes": 289806,
+      "sha256": "a7be94deabfec20d23f94edee42689c38db8eb8f17879c27780bb047688fa1d1",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/native-walkthrough/pump.png",
+      "bytes": 314581,
+      "sha256": "73d2dcc95528baa80017d9052e4029099266ddfda6f14bba18f5f209cd7c24f4",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/visual-ctf-final/flag-carried.png",
+      "bytes": 248120,
+      "sha256": "b56a5688fb93ea7b266274d719693b2b61153367742554edad66879134f0e23f",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/visual-ctf-final/help-compact150.png",
+      "bytes": 136202,
+      "sha256": "5d9879bf15f126737b67362e1678488fb9393f3bd6db94f9e7233d2cb8719df6",
+      "width": 760,
+      "height": 520
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/visual-ctf-final/help-wide.png",
+      "bytes": 123462,
+      "sha256": "4fccd896c1cc30aca36dde5067c8755fdc147eba2de7d1de1da25ae4c0036d45",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/visual-ctf-final/results-compact150.png",
+      "bytes": 159067,
+      "sha256": "3d8ab402ad66a7ceafb3285d8e7db3893e128b3c8dee0e0badc7bdbb16496050",
+      "width": 760,
+      "height": 520
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/visual-ctf-final/results-wide.png",
+      "bytes": 129685,
+      "sha256": "ee027c60a43b4edc839c4ff61b906c4b5d95bd51b2c2392a5a7ea3e5e88ad88b",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/visual-koth/help-compact150.png",
+      "bytes": 168519,
+      "sha256": "9836fedafd82bb3605e0b0f7539798be386ecf2f5d388e44f27e46951181571f",
+      "width": 760,
+      "height": 520
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/visual-koth/help-wide.png",
+      "bytes": 233916,
+      "sha256": "ab0369b156cc992d7f2fbe0c575052c384a69b866a3041bcbd96d012d21f2503",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/visual-koth/objective-live.png",
+      "bytes": 248336,
+      "sha256": "65452eeb2227a25f275fca1d9ce4fc918163c49bffd31f434af4b9d0451ae694",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/visual-koth/results-compact150.png",
+      "bytes": 143425,
+      "sha256": "3f17410b6ac12694f071ef7906571ca26fd1eb8524e2f3155f66cfff45d911b5",
+      "width": 760,
+      "height": 520
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/visual-koth/results-wide.png",
+      "bytes": 208248,
+      "sha256": "0f18bd52d5b966901bcf7b81d99f3b46a3f770f56019d1e757dcec2e1288f2f2",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/visual-deathmatch/combat-live.png",
+      "bytes": 252658,
+      "sha256": "123145d9de16c7b492fc636f9c61f47a1aa8821f46baa9066178238d3959ff88",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/visual-deathmatch/help-compact150.png",
+      "bytes": 154873,
+      "sha256": "3e3f685f549acdc02ee17021eff5197e93db96710e2946271206068fb3ee69c9",
+      "width": 760,
+      "height": 520
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/visual-deathmatch/help-wide.png",
+      "bytes": 184408,
+      "sha256": "f0c348f6b244c0c66c8755ed7f493c10d88d27ded7e113969afc6668563e6057",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/visual-deathmatch/results-compact150.png",
+      "bytes": 133083,
+      "sha256": "a7ad7dc0b425a7e2410af956206e50b19ff06bd37c4f9065960d069a767b653d",
+      "width": 760,
+      "height": 520
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/visual-deathmatch/results-wide.png",
+      "bytes": 168782,
+      "sha256": "4b33ef15ecf48fdeda971e55dfde2519094edd696713cdc3af7ec3b2f4a10870",
+      "width": 1280,
+      "height": 800
+    }
+  ],
+  "limits": "llvmpipe software renderer; shadow-disabled gameplay, 0.65 3D scale; encoded 15 fps duplicates frames and is not a 15 fps rendering claim. Controlled native Input-event steering, passive opposition. Human visual inspection is documented in VISUAL.md."
+}

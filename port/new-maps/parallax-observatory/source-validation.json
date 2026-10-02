@@ -1,0 +1,804 @@
+{
+  "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+  "source": {
+    "id": "parallax-observatory",
+    "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+    "source": "port/multiplayer-worlds/derived/core.mjs",
+    "navNodes": 688,
+    "connected": 688,
+    "targets": 21,
+    "travel": [
+      {
+        "zone": "lens-dais",
+        "teams": [
+          [
+            116,
+            112.06055692103266,
+            107.0990195135928,
+            122.40312423743285
+          ],
+          [
+            116,
+            112.06055692103266,
+            107.0990195135928,
+            121
+          ]
+        ]
+      },
+      {
+        "zone": "armillary",
+        "teams": [
+          [
+            153.61708982456116,
+            139.6545768179403,
+            151.64239908619743,
+            160.02021406199398
+          ],
+          [
+            153.61708982456116,
+            139.65457681794032,
+            151.64239908619743,
+            158.61708982456113
+          ]
+        ]
+      },
+      {
+        "zone": "cistern",
+        "teams": [
+          [
+            152.32541073921996,
+            152.07676309904446,
+            135.29032900034215,
+            152.4051619175028
+          ],
+          [
+            154.29643001314352,
+            154.04778237296802,
+            137.26134827426574,
+            157.29341866112816
+          ]
+        ]
+      }
+    ],
+    "journeys": [
+      {
+        "route": "meridian-lens",
+        "reverse": false,
+        "frames": 1531,
+        "seconds": 25.516666666666666,
+        "maxFloorError": 0
+      },
+      {
+        "route": "meridian-lens",
+        "reverse": true,
+        "frames": 1531,
+        "seconds": 25.516666666666666,
+        "maxFloorError": 0
+      },
+      {
+        "route": "armillary-arc",
+        "reverse": false,
+        "frames": 2051,
+        "seconds": 34.18333333333333,
+        "maxFloorError": 0
+      },
+      {
+        "route": "armillary-arc",
+        "reverse": true,
+        "frames": 2051,
+        "seconds": 34.18333333333333,
+        "maxFloorError": 0
+      },
+      {
+        "route": "tidal-cistern",
+        "reverse": false,
+        "frames": 2052,
+        "seconds": 34.2,
+        "maxFloorError": 0
+      },
+      {
+        "route": "tidal-cistern",
+        "reverse": true,
+        "frames": 2052,
+        "seconds": 34.2,
+        "maxFloorError": 0
+      },
+      {
+        "route": "west-calibration",
+        "reverse": false,
+        "frames": 945,
+        "seconds": 15.75,
+        "maxFloorError": 0
+      },
+      {
+        "route": "west-calibration",
+        "reverse": true,
+        "frames": 945,
+        "seconds": 15.75,
+        "maxFloorError": 0
+      },
+      {
+        "route": "east-instrument",
+        "reverse": false,
+        "frames": 945,
+        "seconds": 15.75,
+        "maxFloorError": 0
+      },
+      {
+        "route": "east-instrument",
+        "reverse": true,
+        "frames": 945,
+        "seconds": 15.75,
+        "maxFloorError": 0
+      },
+      {
+        "route": "polar-crosslink",
+        "reverse": false,
+        "frames": 1147,
+        "seconds": 19.116666666666667,
+        "maxFloorError": 0
+      },
+      {
+        "route": "polar-crosslink",
+        "reverse": true,
+        "frames": 1147,
+        "seconds": 19.116666666666667,
+        "maxFloorError": 0
+      }
+    ],
+    "captures": [
+      {
+        "route": "armillary-arc",
+        "frames": 2286,
+        "seconds": 38.1,
+        "maxFloorError": 0
+      },
+      {
+        "route": "tidal-cistern",
+        "frames": 2285,
+        "seconds": 38.083333333333336,
+        "maxFloorError": 0
+      }
+    ],
+    "flagReturns": 1,
+    "healthPickup": 1,
+    "modes": [
+      {
+        "mode": "deathmatch",
+        "nav": 688,
+        "objective": "combat"
+      },
+      {
+        "mode": "teamdeathmatch",
+        "nav": 688,
+        "objective": "combat"
+      },
+      {
+        "mode": "koth",
+        "nav": 688,
+        "objective": "koth"
+      },
+      {
+        "mode": "uplink",
+        "nav": 688,
+        "objective": "koth"
+      },
+      {
+        "mode": "holdout",
+        "nav": 688,
+        "objective": "domination"
+      }
+    ],
+    "rounds": [
+      {
+        "mode": "ctf",
+        "winner": 0,
+        "score": 3,
+        "reason": "capture"
+      },
+      {
+        "mode": "deathmatch",
+        "kills": 5,
+        "reason": "frag"
+      },
+      {
+        "mode": "teamdeathmatch",
+        "kills": 5,
+        "reason": "frag"
+      },
+      {
+        "mode": "koth",
+        "seconds": 8.033333333333333,
+        "reason": "objective",
+        "score": 3.016666666666661
+      },
+      {
+        "mode": "uplink",
+        "seconds": 12,
+        "reason": "objective",
+        "score": 3
+      },
+      {
+        "mode": "holdout",
+        "seconds": 36.016666666666666,
+        "reason": "objective",
+        "score": 59.999999999997875
+      }
+    ],
+    "nativeStatus": "This report is source-only; see native-validation.json and VISUAL.md for separately executed native evidence."
+  },
+  "walls": {
+    "id": "parallax-observatory",
+    "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+    "radius": 0.42,
+    "records": [
+      {
+        "name": "ground-parapet",
+        "wall": "parapet-tidal-cistern-span-2-60-0-0",
+        "fixture": "exact production wall on supported apron",
+        "before": [
+          {
+            "side": -1,
+            "seconds": 3,
+            "stopDistance": 0.42129883287792796,
+            "requiredRadius": 0.42,
+            "crossed": false
+          },
+          {
+            "side": 1,
+            "seconds": 3,
+            "stopDistance": 0.42129883287792796,
+            "requiredRadius": 0.42,
+            "crossed": false
+          }
+        ],
+        "after": [
+          {
+            "side": -1,
+            "seconds": 3,
+            "stopDistance": 0.42129883287792796,
+            "requiredRadius": 0.42,
+            "crossed": false
+          },
+          {
+            "side": 1,
+            "seconds": 3,
+            "stopDistance": 0.42129883287792796,
+            "requiredRadius": 0.42,
+            "crossed": false
+          }
+        ]
+      },
+      {
+        "name": "upper-parapet",
+        "wall": "parapet-armillary-arc-span-2--200-1-0",
+        "fixture": "exact production wall on supported apron",
+        "before": [
+          {
+            "side": -1,
+            "seconds": 3,
+            "stopDistance": 0.42129883287792796,
+            "requiredRadius": 0.42,
+            "crossed": false
+          },
+          {
+            "side": 1,
+            "seconds": 3,
+            "stopDistance": 0.42129883287789616,
+            "requiredRadius": 0.42,
+            "crossed": false
+          }
+        ],
+        "after": [
+          {
+            "side": -1,
+            "seconds": 3,
+            "stopDistance": 0.42129883287792796,
+            "requiredRadius": 0.42,
+            "crossed": false
+          },
+          {
+            "side": 1,
+            "seconds": 3,
+            "stopDistance": 0.42129883287789616,
+            "requiredRadius": 0.42,
+            "crossed": false
+          }
+        ]
+      },
+      {
+        "name": "ramped-parapet",
+        "wall": "parapet-armillary-arc-joint-1--60-3-0",
+        "fixture": "exact production wall on supported apron",
+        "before": [
+          {
+            "side": -1,
+            "seconds": 3,
+            "stopDistance": 0.4310893611110752,
+            "requiredRadius": 0.42,
+            "crossed": false
+          },
+          {
+            "side": 1,
+            "seconds": 3,
+            "stopDistance": 0.4310893611110752,
+            "requiredRadius": 0.42,
+            "crossed": false
+          }
+        ],
+        "after": [
+          {
+            "side": -1,
+            "seconds": 3,
+            "stopDistance": 0.4310893611110752,
+            "requiredRadius": 0.42,
+            "crossed": false
+          },
+          {
+            "side": 1,
+            "seconds": 3,
+            "stopDistance": 0.4310893611110752,
+            "requiredRadius": 0.42,
+            "crossed": false
+          }
+        ]
+      },
+      {
+        "name": "ground-tall-wall-regression",
+        "wall": "parapet-tidal-cistern-span-2-60-0-0",
+        "fixture": "same wall footprint extended to 4m height on supported apron",
+        "before": [
+          {
+            "side": -1,
+            "seconds": 3,
+            "stopDistance": -22.335021750000912,
+            "requiredRadius": 0.42,
+            "crossed": true
+          },
+          {
+            "side": 1,
+            "seconds": 3,
+            "stopDistance": -22.335021749999953,
+            "requiredRadius": 0.42,
+            "crossed": true
+          }
+        ],
+        "after": [
+          {
+            "side": -1,
+            "seconds": 3,
+            "stopDistance": 0.42129883287792796,
+            "requiredRadius": 0.42,
+            "crossed": false
+          },
+          {
+            "side": 1,
+            "seconds": 3,
+            "stopDistance": 0.42129883287792796,
+            "requiredRadius": 0.42,
+            "crossed": false
+          }
+        ]
+      },
+      {
+        "name": "upper-tall-wall-regression",
+        "wall": "parapet-armillary-arc-span-2--200-1-0",
+        "fixture": "same wall footprint extended to 4m height on supported apron",
+        "before": [
+          {
+            "side": -1,
+            "seconds": 3,
+            "stopDistance": -22.33502175000102,
+            "requiredRadius": 0.42,
+            "crossed": true
+          },
+          {
+            "side": 1,
+            "seconds": 3,
+            "stopDistance": -22.33502174999994,
+            "requiredRadius": 0.42,
+            "crossed": true
+          }
+        ],
+        "after": [
+          {
+            "side": -1,
+            "seconds": 3,
+            "stopDistance": 0.42129883287792796,
+            "requiredRadius": 0.42,
+            "crossed": false
+          },
+          {
+            "side": 1,
+            "seconds": 3,
+            "stopDistance": 0.42129883287789616,
+            "requiredRadius": 0.42,
+            "crossed": false
+          }
+        ]
+      }
+    ],
+    "production": [
+      {
+        "name": "ephemeris-vault-wall-1",
+        "kind": "exact-production-solid-block-both-faces-supported-apron",
+        "contacts": [
+          {
+            "side": -1,
+            "seconds": 3,
+            "stopDistance": 0.8372004722222197,
+            "requiredRadius": 0.42,
+            "crossed": false,
+            "faceStopDistance": 0.4372004722222197
+          },
+          {
+            "side": 1,
+            "seconds": 3,
+            "stopDistance": 0.8372004722222304,
+            "requiredRadius": 0.42,
+            "crossed": false,
+            "faceStopDistance": 0.43720047222223035
+          }
+        ]
+      },
+      {
+        "name": "tidal-pump-vault-wall-1",
+        "kind": "exact-production-solid-block-both-faces-supported-apron",
+        "contacts": [
+          {
+            "side": -1,
+            "seconds": 3,
+            "stopDistance": 0.8372004722222215,
+            "requiredRadius": 0.42,
+            "crossed": false,
+            "faceStopDistance": 0.43720047222222147
+          },
+          {
+            "side": 1,
+            "seconds": 3,
+            "stopDistance": 0.8372004722222215,
+            "requiredRadius": 0.42,
+            "crossed": false,
+            "faceStopDistance": 0.43720047222222147
+          }
+        ]
+      },
+      {
+        "name": "ephemeris",
+        "kind": "arch-and-vault-through",
+        "side": -1,
+        "seconds": 4,
+        "travel": 33.93502174999977
+      },
+      {
+        "name": "ephemeris",
+        "kind": "arch-and-vault-through",
+        "side": 1,
+        "seconds": 4,
+        "travel": 33.935021749999706
+      },
+      {
+        "name": "ephemeris",
+        "kind": "vault-side-wall",
+        "side": -1,
+        "seconds": 3,
+        "stopDistance": 0.4399782499999967
+      },
+      {
+        "name": "ephemeris",
+        "kind": "vault-side-wall",
+        "side": 1,
+        "seconds": 3,
+        "stopDistance": 0.4399782499999967
+      },
+      {
+        "name": "cistern",
+        "kind": "arch-and-vault-through",
+        "side": -1,
+        "seconds": 4,
+        "travel": 33.93502174999991
+      },
+      {
+        "name": "cistern",
+        "kind": "arch-and-vault-through",
+        "side": 1,
+        "seconds": 4,
+        "travel": 33.935021749999954
+      },
+      {
+        "name": "cistern",
+        "kind": "vault-side-wall",
+        "side": -1,
+        "seconds": 3,
+        "stopDistance": 0.43997825000002155
+      },
+      {
+        "name": "cistern",
+        "kind": "vault-side-wall",
+        "side": 1,
+        "seconds": 3,
+        "stopDistance": 0.43997825000002155
+      },
+      {
+        "name": "meridian-service-gallery",
+        "kind": "continuous-walk-under",
+        "seconds": 4,
+        "travel": 33.935021749999706
+      },
+      {
+        "name": "ephemeris-vault-ceiling",
+        "kind": "upward-ceiling-contact",
+        "maxFeetY": 15,
+        "headLimit": 16.8
+      },
+      {
+        "name": "tidal-pump-vault-ceiling",
+        "kind": "upward-ceiling-contact",
+        "maxFeetY": 3,
+        "headLimit": 4.8
+      },
+      {
+        "name": "meridian-service-gallery",
+        "kind": "upward-ceiling-contact",
+        "maxFeetY": 16.2,
+        "headLimit": 18
+      },
+      {
+        "name": "polar-hall-ceiling",
+        "kind": "upward-ceiling-contact",
+        "maxFeetY": 28.871916666666664,
+        "headLimit": 32
+      },
+      {
+        "name": "optical-arcade-ceiling",
+        "kind": "upward-ceiling-contact",
+        "maxFeetY": 16.871916666666664,
+        "headLimit": 19
+      }
+    ]
+  },
+  "bots": {
+    "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+    "rows": [
+      {
+        "mode": "ctf",
+        "seconds": 89.99999999999618,
+        "scores": {
+          "0": 0,
+          "1": 1
+        },
+        "actors": [
+          {
+            "id": 0,
+            "distance": 16.55294535724685,
+            "minY": 12,
+            "maxY": 12,
+            "last": {
+              "x": -108,
+              "z": -8
+            },
+            "stalledSeconds": 56,
+            "maxStalledSeconds": 56,
+            "health": 100,
+            "frags": 0,
+            "stats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 0,
+              "objectiveCaptures": 0,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 0,
+              "hits": 0,
+              "damage": 0
+            }
+          },
+          {
+            "id": 1,
+            "distance": 814.9336767271986,
+            "minY": 10.782547685424818,
+            "maxY": 15.446546417612776,
+            "last": {
+              "x": 57.21484523207854,
+              "z": -2.840486326644723
+            },
+            "stalledSeconds": 0,
+            "maxStalledSeconds": 1,
+            "health": 52.77176335490863,
+            "frags": 0,
+            "stats": {
+              "captures": 1,
+              "flagPickups": 1,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 0,
+              "objectiveCaptures": 0,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 28,
+              "hits": 7,
+              "damage": 108.37661436913747
+            }
+          },
+          {
+            "id": 2,
+            "distance": 835.0861131595778,
+            "minY": 8.765144519489594,
+            "maxY": 12.000000000000002,
+            "last": {
+              "x": 53.78259378542618,
+              "z": 19.465172661693316
+            },
+            "stalledSeconds": 0,
+            "maxStalledSeconds": 1,
+            "health": 12.123385630862533,
+            "frags": 0,
+            "stats": {
+              "captures": 0,
+              "flagPickups": 2,
+              "flagReturns": 0,
+              "flagDrops": 1,
+              "objectiveTime": 0,
+              "objectiveCaptures": 0,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 14,
+              "hits": 7,
+              "damage": 168.53173446419638
+            }
+          },
+          {
+            "id": 3,
+            "distance": 831.1753646599445,
+            "minY": 1.4441489997423516,
+            "maxY": 23.166798046638096,
+            "last": {
+              "x": 49.69222586570156,
+              "z": 0.6448013306786372
+            },
+            "stalledSeconds": 0,
+            "maxStalledSeconds": 1,
+            "health": 101.678600872358,
+            "frags": 2,
+            "stats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 1,
+              "flagDrops": 0,
+              "objectiveTime": 0,
+              "objectiveCaptures": 0,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 19,
+              "hits": 15,
+              "damage": 204.5
+            }
+          }
+        ],
+        "classification": "Unscripted built-in source bot AI; seeded 90-second bounded observation, no route/actor/objective writes"
+      },
+      {
+        "mode": "koth",
+        "seconds": 17.616666666666948,
+        "reason": "objective",
+        "scores": {
+          "0": 0,
+          "1": 3.016666666666661
+        },
+        "actors": [
+          {
+            "id": 0,
+            "distance": 0,
+            "minY": 12,
+            "maxY": 12,
+            "last": {
+              "x": -101,
+              "z": 7
+            },
+            "stalledSeconds": 18,
+            "maxStalledSeconds": 18,
+            "health": 100,
+            "frags": 0,
+            "stats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 0,
+              "objectiveCaptures": 0,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 0,
+              "hits": 0,
+              "damage": 0
+            }
+          },
+          {
+            "id": 1,
+            "distance": 129.11566937859425,
+            "minY": 12,
+            "maxY": 12.631666666666666,
+            "last": {
+              "x": 1.7044953846263127,
+              "z": 3.5985942295556566
+            },
+            "stalledSeconds": 0,
+            "maxStalledSeconds": 2,
+            "health": 120,
+            "frags": 0,
+            "stats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 1.5083333333333304,
+              "objectiveCaptures": 1,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 0,
+              "hits": 0,
+              "damage": 0
+            }
+          },
+          {
+            "id": 2,
+            "distance": 127.94609354986744,
+            "minY": 11.999999999999998,
+            "maxY": 12.000000000000002,
+            "last": {
+              "x": -55.05442545580344,
+              "z": -2.37140280692967e-23
+            },
+            "stalledSeconds": 0,
+            "maxStalledSeconds": 1,
+            "health": 110,
+            "frags": 0,
+            "stats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 0,
+              "objectiveCaptures": 0,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 0,
+              "hits": 0,
+              "damage": 0
+            }
+          },
+          {
+            "id": 3,
+            "distance": 109.18496230681731,
+            "minY": 12,
+            "maxY": 12.265,
+            "last": {
+              "x": -2.7257051213553463,
+              "z": 2.9087226213220316
+            },
+            "stalledSeconds": 1,
+            "maxStalledSeconds": 2,
+            "health": 104,
+            "frags": 0,
+            "stats": {
+              "captures": 0,
+              "flagPickups": 0,
+              "flagReturns": 0,
+              "flagDrops": 0,
+              "objectiveTime": 1.5083333333333304,
+              "objectiveCaptures": 1,
+              "objectiveNeutralizations": 0,
+              "objectiveContests": 0,
+              "shots": 0,
+              "hits": 0,
+              "damage": 0
+            }
+          }
+        ],
+        "classification": "Unscripted built-in source bot AI; seeded 90-second bounded observation, no route/actor/objective writes"
+      }
+    ]
+  }
+}

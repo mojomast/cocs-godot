@@ -183,6 +183,8 @@ def accept_reference(reference_path, report, jobs, root, archive=None):
                 or any(execution.get(key) for key in ('failures', 'unrun', 'missing'))):
             raise ValueError('Actual nonempty executed producer report is required, not only an owner summary')
         check_resource_outputs(producer, job, root)
+        if job.get('map_journeys'):
+            validate_map_journeys(producer, job, artifacts, root)
         if job.get('receipt_policy') == 'windows-release':
             windows_result(producer, artifacts, root)
         accepted = {'status': 'passed', 'executed': True, 'units': producer['units'],
@@ -202,6 +204,46 @@ def accept_reference(reference_path, report, jobs, root, archive=None):
                 stream.write(producer_bytes)
         accepted['receipt_reference']['archived_report'] = str(destination)
     report['attempts'].setdefault(job['id'], []).append(accepted)
+
+
+def validate_output_checks(job, output):
+    """Validate the native camera's actual single-line JSON, not a loose marker."""
+    for check in job.get('output_checks', []):
+        prefix = check['prefix'] + ' '
+        rows = [line[len(prefix):] for line in output.splitlines() if line.startswith(prefix)]
+        if len(rows) != 1:
+            raise ValueError('Expected one native result: ' + check['prefix'])
+        data = json.loads(rows[0])
+        if not isinstance(data, dict) or data.get('passed') is not True or data.get('failures') != []:
+            raise ValueError('Native result failed or incomplete: ' + check['prefix'])
+
+
+def validate_map_journeys(data, job, artifacts, root):
+    """Bind private production-stage or later public journey outcomes to real bytes."""
+    policy = job['map_journeys']
+    recipe = root / policy['recipe']
+    art = root / policy['art']
+    world = json.loads(recipe.read_text())
+    records = data.get('map_journeys', {})
+    if set(records) != set(policy['modes']):
+        raise ValueError('Every accepted map/mode pair needs executed evidence')
+    for mode, reference in records.items():
+        if reference.get('stage') not in ('private-production', 'public-current'):
+            raise ValueError('Explicit journey stage required')
+        if reference.get('artifact') not in artifacts:
+            raise ValueError('Retained map journey outcome required')
+        outcome = json.loads(artifacts[reference['artifact']].read_text())
+        if (outcome.get('id') != policy['id'] or outcome.get('mode') != mode
+                or outcome.get('recipeSha') != sha(recipe) or outcome.get('artSha') != sha(art)
+                or outcome.get('geometryHash') != world.get('geometryHash')):
+            raise ValueError('Map journey source/GLB identity differs')
+        teardown = outcome.get('teardown', {})
+        if (outcome.get('success') is not True or outcome.get('journeyPassed') is not True
+                or outcome.get('processFailed') is not False or outcome.get('failure')
+                or teardown.get('success') is not True or teardown.get('processFailed') is not False
+                or teardown.get('serverError') or len(teardown.get('peers', [])) != 2
+                or any(peer.get('clean') is not True for peer in teardown['peers'])):
+            raise ValueError('Map journey or native teardown incomplete')
 
 
 def validate_artifact_checks(job, directory, root):

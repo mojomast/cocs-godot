@@ -155,6 +155,21 @@ def build():
         dict(id='polar-cold-vent-west',kind='mist',position=[-12,31.15,-95.1],size=[.6,.4,.3],color='b6d1db',count=6),
         dict(id='polar-cold-vent-east',kind='mist',position=[12,31.15,-95.1],size=[.6,.4,.3],color='b6d1db',count=6),
     ]
+    # Interiors v2 replaces the old flat panel backs with recessed machinery.
+    # Retire those floating overlays; place labels and wear on the retained
+    # continuous front cap/sill, leaving cassettes and hydraulic anatomy exposed.
+    retired = {m['id'] for m in mounts if m['host'].startswith(('ephemeris-vault-wall-', 'tidal-pump-vault-wall-'))}
+    for kind in ('panels', 'signs'):
+        p[kind] = [item for item in p[kind] if item['id'] not in retired]
+    mounts = [m for m in mounts if m['id'] not in retired]
+    for side in (-1,1):
+        yaw = 0 if side == -1 else 180
+        # The 18 cm cap is too short for readable native text. Existing large
+        # source-solid entry-jamb signs identify these rooms instead.
+        for j,x in enumerate((15,23,32)):
+            panel(f'pump-mineral-sill-{side}-{j}','weathered_concrete-worn',
+                  [x,.09,78+side*7.17],yaw,[2,.12],f'tidal-pump-vault-wall-{side}',
+                  'Localized mineral film on continuous source-solid pump sill.','a6a18f')
     return p, dict(version=1, geometry_hash=HASH, mounts=mounts)
 
 

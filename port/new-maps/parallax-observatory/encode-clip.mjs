@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {spawnSync} from 'node:child_process';
+const dir=path.resolve(process.argv[2]),report=JSON.parse(fs.readFileSync(path.join(dir,'native-journey.json'))),frames=report.captures.filter(f=>f.label.startsWith('frame-')&&f.error===0);
+if(frames.length<2)throw Error('No real captured sequence');
+const spans=frames.slice(1).map((f,i)=>(f.ticksMs-frames[i].ticksMs)/1000),seconds=(frames.at(-1).ticksMs-frames[0].ticksMs)/1000;
+const list=frames.map((f,i)=>`file '${path.join(dir,f.label+'.png')}'\nduration ${spans[i]??spans.at(-1)}`).join('\n')+'\n';
+fs.writeFileSync(path.join(dir,'frames.ffconcat'),list);
+const output=path.join(dir,'walkthrough.mp4'),result=spawnSync('ffmpeg',['-y','-loglevel','warning','-threads','1','-filter_threads','1','-safe','0','-f','concat','-i',path.join(dir,'frames.ffconcat'),'-vf','fps=15,scale=960:-2','-c:v','libx264','-threads','1','-preset','fast','-crf','24','-pix_fmt','yuv420p',output],{encoding:'utf8'});
+fs.writeFileSync(path.join(dir,'encode.log'),result.stderr);if(result.status!==0)throw Error(result.stderr);
+const receipt={geometryHash:report.geometryHash,frames:frames.length,capturedSeconds:seconds,actualCapturedFps:(frames.length-1)/seconds,medianGapMs:[...spans].sort((a,b)=>a-b)[Math.floor(spans.length/2)]*1000,maxGapMs:Math.max(...spans)*1000,encodedFps:15,classification:'Actual native viewport PNG sequence timed from capture timestamps; encoded at 15 fps with duplication, not a 15 fps performance claim',output,bytes:fs.statSync(output).size};
+fs.writeFileSync(path.join(dir,'clip.json'),JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(receipt));

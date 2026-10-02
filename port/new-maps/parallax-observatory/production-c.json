@@ -1,0 +1,511 @@
+{
+  "unit": "parallax-interiors",
+  "status": "built/reopened/native locally reviewed; parent visual acceptance and package promotion pending",
+  "grant": "PARALLAX-INTERIORS-PRODUCTION-20261002-C",
+  "parentAnchor": "bb02e34b",
+  "mergeCommit": "ec364095",
+  "historicalSixModeAnchors": [
+    "9a6372b4",
+    "277f379e"
+  ],
+  "registeredPairs": {
+    "parallax-observatory": [
+      "deathmatch",
+      "teamdeathmatch",
+      "ctf",
+      "koth",
+      "uplink",
+      "holdout"
+    ]
+  },
+  "sourceGeometryChanged": false,
+  "asset": {
+    "id": "parallax-observatory",
+    "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+    "recipeHash": "e949e43d5546ec8b0c9024810f1da6229152e370ad640ecf27ecb54c05f2e23d",
+    "seed": 20261002,
+    "triangles": 147103,
+    "materialBatches": 7,
+    "editableObjects": 24290,
+    "glbBytes": 8621072,
+    "glbSha256": "c1dffd357545206d3f70870f850e441c5be148e652830a4a69835185a75610bd",
+    "blendSha256": "59946f15dd530ecc3f38d38aea41089e2e113b812060483e8ff92138c0d686b8",
+    "nativeAcceptance": "pending bounded visual pass",
+    "candidateHash": "c0354fb7f7b30c7cbb44b80757bf10914dc6ff349eb54139e176d1e5ebe17a22"
+  },
+  "originalMasterRetained": true,
+  "inputHashes": {
+    "godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb": "c1dffd357545206d3f70870f850e441c5be148e652830a4a69835185a75610bd",
+    "godot/multiplayer_worlds/art/parallax-observatory/asset-manifest.json": "80bc29748c55ed6d72d5c3e901e6edd66b80b0079efef452b4bb24499e91addb",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/parallax-observatory.blend": "fcd7f284443c45d08177837a23af530b1667deb106bddb8822d507f5655ca090",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/output/parallax-observatory.blend": "59946f15dd530ecc3f38d38aea41089e2e113b812060483e8ff92138c0d686b8",
+    "godot/multiplayer_worlds/generated/parallax-observatory.json": "13c0b91156aaa2fd713dea7dfafe8f9f48d92b2b414ff9c4b583efb047bdabc4",
+    "port/native-multiplayer-worlds/worlds/parallax-observatory.json": "e949e43d5546ec8b0c9024810f1da6229152e370ad640ecf27ecb54c05f2e23d",
+    "port/map-finish/parallax-observatory/author.py": "0a20062f8564d5c43b14cfa989848313640ab08fec8fbcca0f6cb8b4952254d0",
+    "port/map-finish/parallax-observatory/validate.py": "61afa1dcd01881f024d6eb689167f99d02c7e4e04274427e080a3bc96f5db101",
+    "port/map-finish/parallax-observatory/mounts.json": "c8fef78e4f3bbab45f7172619e2fc842290aa554d0f28eb7f293cdefac011b0d",
+    "port/map-finish/parallax-observatory/interiors-v2-pins.json": "e5aea21bd1919e63602bf73017f709c849768ae4d9e1b6c29576e20fbc5210c4",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/build_recipe.py": "f0fbb141373871a7464635b7d543065c467f4387106064c2b039ceb1a275817d",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/author_candidate.py": "5e373ec519fe35d337f3de8814c2570562b5c6bdf0bf7d999714b6e366459f64",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/candidate-meshes.json": "5da67cc66a997d7c25df8660fca413e730e5b773eb75054032607ced02ba0d1f",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/source-check.json": "299a068f800667feff17baa952cdbe08c44786b75fc9173b1782ace37c882534",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/prepare_native.py": "994a8324838b4a405c3aaa88e4c4081a6a2fbdec7083b726815d011646bbbdc2",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/prepare_comparisons.py": "fb9bc14c1055039b44bf867a695cebcfd54fdfe9cd63454788312611c36c2184",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/reopen_candidate.py": "4ad9e40bdbe0e6d0321a259786f32b4ef14600b30ba4ebe0146091c7475b031a",
+    "port/map-finish/parallax-observatory/source-check.json": "dd734927a3ad0bfb4d6977c47c8e6aa1b28992a39c0ee8135feeaf081619ffe8",
+    "port/new-maps/parallax-observatory/audit-art.mjs": "4a334a3e4dd1b1bef8c5140e8a92df32e2e39e3702e23d791e48c04c989651bc"
+  },
+  "runtimeHooks": {
+    "godot/multiplayer_worlds/art/parallax-observatory/presentation.gd": "67e5a4c8dbf8b758a4f01f01395e83641edfd87978d5e37bed7f9fb85c284594",
+    "godot/multiplayer_worlds/dressing/profiles/parallax-observatory.json": "b2cdfa1da6c201b32df5af103a39ee7fbbc7490768bd9b2986f8f03c236e6701",
+    "godot/multiplayer_worlds/dressing/binder.gd": "b3e707af9da73f21b3c791c1d7deca9caad5472b422f263d9998ac961444a87d",
+    "godot/multiplayer_worlds/dressing/profile.gd": "ee41823e074ea8571e25d1671aedf5c3918ffa56af0427e24640a45a3662a59c",
+    "godot/multiplayer_worlds/dressing/surface.gd": "70e88ee5b9d46e95f0ff8bc7a7b5876cf20a6b052d016efd69955fe72e35b5d0",
+    "godot/multiplayer_worlds/dressing/surface.gdshader": "8d77b5729585a3129009a0f67da64044181e7747c641c03c9b02dcd09206d3ff",
+    "godot/multiplayer_worlds/map.gd": "c24d976d372b2ddaf636ae17ac6bc30d8d147a9ab993a3cd9b96cff8ff4a92db",
+    "godot/multiplayer_worlds/demo.gd": "0acd5e67d1267595d3cc4080e73c12a01b8184ab49277b5357c55c5900f68d2c",
+    "godot/tests/new_maps/parallax_observatory/journey.gd": "0eaecb2af7e339045efd6ddefbc5dd9aee8529f5227a405dc5fa5f26f78f028c"
+  },
+  "masters": [
+    {
+      "path": "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/output/parallax-observatory.blend",
+      "sha256": "59946f15dd530ecc3f38d38aea41089e2e113b812060483e8ff92138c0d686b8"
+    }
+  ],
+  "exports": [
+    {
+      "path": "godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb",
+      "sha256": "c1dffd357545206d3f70870f850e441c5be148e652830a4a69835185a75610bd",
+      "textures": []
+    }
+  ],
+  "reopen": {
+    "candidateHash": "c0354fb7f7b30c7cbb44b80757bf10914dc6ff349eb54139e176d1e5ebe17a22",
+    "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+    "blendSha256": "59946f15dd530ecc3f38d38aea41089e2e113b812060483e8ff92138c0d686b8",
+    "editableObjects": 24290,
+    "reopened": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-20261002/tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/output/parallax-observatory.blend",
+    "reexportSha256": "c1dffd357545206d3f70870f850e441c5be148e652830a4a69835185a75610bd",
+    "reexportBytes": 8621072,
+    "status": "fresh candidate master reopened and exported"
+  },
+  "physics": {
+    "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-physics.json",
+    "sha256": "72f89dce8ce31e6027685f3b2b0c3af1449f879c842a141fd8002bff14498bea"
+  },
+  "dressingMounts": {
+    "panels": 26,
+    "signs": 10,
+    "samples": 900,
+    "failures": []
+  },
+  "images": [
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/arrival-eye-off.png",
+      "sha256": "18589a33c4f69b4af5e265f9b5b2589d275315b6542d0d873c15ac6ddbb898dd"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/lens-eye-off.png",
+      "sha256": "0e4b768dc1adf6f8555aed1939678fca513cbe095c2064836e7231308af9b4c7"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/cistern-eye-off.png",
+      "sha256": "3e220fe3d628fe6ce0b990784b1dba942abaa604a5c4097f74afe16fc52348a2"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/overview-off.png",
+      "sha256": "0fbf0885e9b4c733f5021979652190457be80499d7cf2bd6a00706f80b7891a7"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/archive-interior-off.png",
+      "sha256": "26a4d82ee75100c5d88b19fb3b155942aaff17c7edc2367bf2024a941628cbed"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/polar-interior-off.png",
+      "sha256": "ba9e02fd04d91a4f30052a5b32cab0fe5253ded8642c5ad768171ff1e0d2a6a1"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/arcade-eye-off.png",
+      "sha256": "e82abb5302d53a6a844f87a8a62335c41bd3ada95741f8109a4b7547233b6eb5"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/pump-interior-off.png",
+      "sha256": "1ea656dc21830aab0d497ee9fcee0b19c369ce67a463d2b5d59333203dedd475"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/archive-retrieval-off.png",
+      "sha256": "a02b9f1d0ea3ac31c8eb2b71e8f00cf9df8cc772378425041d6e45034dcf7602"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/archive-storage-off.png",
+      "sha256": "d38b4496b23a52fda1fd60114ba14b9d27bf13ea97659e9c1739e357eda43b97"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/pump-hydraulics-off.png",
+      "sha256": "b194c148fb3681d7212ddfee503a1bd84df43d7448d04890795ddc1b4d6efd05"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/archive-portal-off.png",
+      "sha256": "330e00f3557ddd500285022a29a449a5a52c2d696ec89bde2b2411a9cd052912"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/pump-portal-off.png",
+      "sha256": "18df287ac899d7970eecfd87e9c8bfcef1c50b7f9f6ad2d0d2855581907552ef"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/arrival-eye-full.png",
+      "sha256": "11476ff2917854f80707b652da7bd6cafc0d2ed5d5d061dd8658ee0c05ad82b0"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/lens-eye-full.png",
+      "sha256": "45f1d0eac1663c23e3953a54411b2dd1fcf912fe2878c539009c71a80f02ae93"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/cistern-eye-full.png",
+      "sha256": "ae0195d804a4230a2d9d0c5f6335a83b5f0c99ad34781273a60e64935aa582b5"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/overview-full.png",
+      "sha256": "d696c27e0a567c449cd7e6ad828c6dd10f18f7758eeecfda863c3e9438183716"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/archive-interior-full.png",
+      "sha256": "c04ecf684c980fb81ac01e34c4d8605a1648713bdbb7561e29f8402f92a376ca"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/polar-interior-full.png",
+      "sha256": "6b588c13324b06d6c1b6b71af712f870c5dc166562809e535940bb4392db419c"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/arcade-eye-full.png",
+      "sha256": "6769326b4d65bbdb1f5ff08edd4c6ba0400ad7a90415cc569ad7918c5fd116b5"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/pump-interior-full.png",
+      "sha256": "e9aaeb7ebc0a369d27db030522df477bc27fa3bb274563d925c6809c53b7d7e6"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/archive-retrieval-full.png",
+      "sha256": "99b090a2d8613141c369bf9a4912e07309e42fb785dd926f4bd6729a252a365e"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/archive-storage-full.png",
+      "sha256": "5db64400b75ed549c09c28fde8121d49db153ee00fe9391832a705e8da07adcb"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/pump-hydraulics-full.png",
+      "sha256": "48709dca5bf11af73624482491e29b9b0e4505285095bde0b37a83c648f368a5"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/archive-portal-full.png",
+      "sha256": "839dc2ab28429f1e1704b78d6f54d26446a9fa12063d957a44f76ab5dd0fd029"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-review/pump-portal-full.png",
+      "sha256": "489a8b49553c03abe39dcf72daa8706af79e9608343c325485e1b8e77180afcd"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/blender-review/arrival-eye.png",
+      "sha256": "209b33dc61baed85edf8eab8658bef3596574200693dc09944b0b3bd97670573"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/blender-review/lens-eye.png",
+      "sha256": "739cd4fd013bc8c08226629cfe8daa88a23f274221aff7ed8e2bc61994eb3c68"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/blender-review/cistern-eye.png",
+      "sha256": "a9b053d0161682ea436c9d07c9abbc33b5018a7cd87a2d03d0646368116dcb00"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/blender-review/overview.png",
+      "sha256": "81d03f523a24cd108bf706622c5241a7efa447c413204370bd756f828561ca43"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/blender-review/archive-interior.png",
+      "sha256": "4c788006f8e4b63df6ba66ddb5d0ad783853bcbb4ca86dce5484023c5a9f4f6e"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/blender-review/polar-interior.png",
+      "sha256": "ffb8ab121a52611227d2a6d72cc60528f9b1ec5c66b5d51687d970feafda2768"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/blender-review/arcade-eye.png",
+      "sha256": "ae3057ef3f71f34d394a9c4d3805fa1f982181080d0aeb524b35e2444a3f58f4"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/blender-review/pump-interior.png",
+      "sha256": "02f975ae10d78ebb185807a4419728d7b3857f97e60f1699f8a16f7fb7c45457"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-walkthrough/archive.png",
+      "sha256": "87f5bc1eeae2315050bfaf5f3a504377a204e82c46afc2ebca98d8dd5d168c94"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-walkthrough/polar.png",
+      "sha256": "6592d188b629a58e05b21000db26aa4d1cd4fdba5b72395f058852256df07d48"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-walkthrough/arcade.png",
+      "sha256": "276f517f599bf645cf77fcfd62fb4f307b46eafb43a2aaa11614eaefea022687"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-walkthrough/pump.png",
+      "sha256": "aa54c355fd9620e66f679eccae8196aa906ea3919a6647bb540912aa039aca57"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-walkthrough/lens.png",
+      "sha256": "95c557408cebed1efb0d2afbbf29a09c21a343f0b826bf40ccf80c7920f828ae"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-walkthrough/gameplay-wide.png",
+      "sha256": "61f7508cba0f98725f4fde186a4d6a71e40c864d684440bebfc5df205f49991f"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-walkthrough/help-wide.png",
+      "sha256": "9805441bad0da1372eabb3ca2f6defd48fffd3d1f618a28f63ac47261c8db140"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-walkthrough/gameplay-compact150.png",
+      "sha256": "01e58a4b65ab42670c6a97885b079036ca660d0fcbfe4ed4a729cc8ba04f20cb"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-walkthrough/help-compact150.png",
+      "sha256": "5265082e0cdc31c319740fe1225dbe25d2f04a1b93a0a86b641d40086ed26010"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-walkthrough/frame-00001.png",
+      "sha256": "ffc1c38849bce96294910e40f719cf07fdf24eb86110fa3fa3cdd00279d38f51"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-walkthrough/frame-00553.png",
+      "sha256": "1a21c05886be920b3bfe4e22b183d4a19a905b9791565554111767d0e610b421"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-walkthrough/frame-01105.png",
+      "sha256": "cf1b4284378c628fd97576610ffa7e8a19386327af52bf5bf56bcdbb0c8c812e"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/current-dm/combat-live.png",
+      "sha256": "1e8f19a7add3785f8465e172f46f0935a6497cea3b0cfb103ffeaf5ea0af7c1d"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/current-dm/results-wide.png",
+      "sha256": "71391cf74d4c92c194d57c5bedd7dd624344412961ddf6d105929b489e022e02"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/current-dm/help-wide.png",
+      "sha256": "6dfb0f3a2778fa7abbfe75250c8c433abb35ba12942f274243d30e16e945954b"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/current-dm/results-compact150.png",
+      "sha256": "f4ec75abb14dc88399e6126437d0b5ac29033940e575ac91c137567603821b29"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/current-dm/help-compact150.png",
+      "sha256": "5a430f47449dd903646181172679dc27b49253e278f360ac393d73e6325cf8d9"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/current-dm/frame-00001.png",
+      "sha256": "4447653bba5557ac0a722807238723ec7e542b75a33f6e881d7edd9a345eddea"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/current-dm/frame-00026.png",
+      "sha256": "ed5fc181dc54b6b2dc2f1ae40352dbeefd14c88d55b514236ace504ec3c059a4"
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/current-dm/frame-00051.png",
+      "sha256": "c8c955fc820d82122856f260ad7b513a5b9cd1bf76e37bf12e897ad783a3499c"
+    }
+  ],
+  "journeys": {
+    "native-walkthrough": {
+      "native": {
+        "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-walkthrough/native-journey.json",
+        "sha256": "ff619e027d9fedf477c066674f80f5c2bf93a6368f957aa509560fe30e772bfb"
+      },
+      "source": {
+        "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-walkthrough/source-outcome.json",
+        "sha256": "f95a7cfceca8420f1a2eb071773c98e98f33c1f162467789b87caef4ffbc614c"
+      },
+      "teardown": {
+        "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/native-walkthrough/teardown.json",
+        "sha256": "7037d31b3331cb02d373e980f676f152cf618220b2cfbffe4bc84dd46b7d1cb9"
+      },
+      "inputEvents": 1471,
+      "lastAck": 1131,
+      "seconds": 412.79999999995323,
+      "visits": [
+        {
+          "id": "archive",
+          "time": 92.58333333332936,
+          "x": -35.61937738843048,
+          "y": 12,
+          "z": 1.8612027449295323e-07
+        },
+        {
+          "id": "polar",
+          "time": 165.3666666666904,
+          "x": -1.8184539447266588e-05,
+          "y": 24,
+          "z": -85.461346866147
+        },
+        {
+          "id": "arcade",
+          "time": 255.1333333334285,
+          "x": 71.72007142006026,
+          "y": 11.999999999999998,
+          "z": -0.14038715045967726
+        },
+        {
+          "id": "pump",
+          "time": 333.81666666669173,
+          "x": 22.15037451468504,
+          "y": 0,
+          "z": 77.91660013208717
+        },
+        {
+          "id": "lens",
+          "time": 404.3499999999609,
+          "x": 7.577216746314739e-07,
+          "y": 12,
+          "z": -0.8997002185217726
+        }
+      ],
+      "frameMsP50": 133.333333333333,
+      "frameMsP95": 143.567666666675,
+      "uiChecks": [
+        {
+          "label": "gameplay-wide",
+          "allFit": true
+        },
+        {
+          "label": "help-wide",
+          "allFit": true
+        },
+        {
+          "label": "gameplay-compact150",
+          "allFit": true
+        },
+        {
+          "label": "help-compact150",
+          "allFit": true
+        }
+      ],
+      "captureCadence": {
+        "frameImages": 1105,
+        "spanSeconds": 390.318,
+        "measuredFps": 2.8284629455982047,
+        "medianGapMs": 352.0,
+        "maxGapMs": 836,
+        "encoding": "none",
+        "scope": "continuous sampled walkthrough"
+      }
+    },
+    "current-dm": {
+      "native": {
+        "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/current-dm/native-journey.json",
+        "sha256": "b74953260868826b519d2d4a97aca3639976f7ea1f4dd7b3ffcbed42824e9139"
+      },
+      "source": {
+        "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/current-dm/source-outcome.json",
+        "sha256": "845e0e73afeb3b92d05e780b204f02a7ff168832f2f111566082d517569d6340"
+      },
+      "teardown": {
+        "path": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c/current-dm/teardown.json",
+        "sha256": "9c6a9ff3dd6e7d9ba939b1ae9e92471f7b8a90d9451043f9eae8659e12973eb9"
+      },
+      "inputEvents": 790,
+      "lastAck": 507,
+      "seconds": 133.3999999999983,
+      "visits": [],
+      "frameMsP50": 133.333333333333,
+      "frameMsP95": 144.093888888889,
+      "uiChecks": [
+        {
+          "label": "results-wide",
+          "allFit": true
+        },
+        {
+          "label": "help-wide",
+          "allFit": true
+        },
+        {
+          "label": "results-compact150",
+          "allFit": true
+        },
+        {
+          "label": "help-compact150",
+          "allFit": true
+        }
+      ],
+      "importedTriangles": 147103,
+      "dressing": {
+        "batches": 41,
+        "detail": 2,
+        "errors": [],
+        "map_id": "parallax-observatory",
+        "matched": [
+          "saltstone",
+          "cistern",
+          "metal",
+          "mirror",
+          "paving",
+          "ochre"
+        ],
+        "motes": 32,
+        "panels": 26,
+        "preserved": [
+          "sea"
+        ],
+        "resources": [
+          "res://moth/generated/textures/weathered_concrete.png",
+          "res://moth/derived/data/weathered_concrete.png",
+          "res://moth/generated/normals/weathered_concrete.png",
+          "res://moth/generated/materials/entanglement-ceramic-r.png",
+          "res://moth/generated/materials/entanglement-ceramic-t.png",
+          "res://moth/generated/textures/brushed_metal.png",
+          "res://moth/derived/data/brushed_metal.png",
+          "res://moth/generated/normals/metal.png",
+          "res://moth/generated/materials/entanglement-r.png",
+          "res://moth/generated/materials/entanglement-t.png",
+          "res://moth/generated/textures/weathered_concrete-worn.png",
+          "res://moth/derived/data/weathered_concrete-worn.png",
+          "res://moth/derived/normals/weathered_concrete-worn.png",
+          "res://moth/generated/textures/ice-cracked.png",
+          "res://moth/derived/normals/ice-cracked.png",
+          "res://moth/generated/textures/holographic_grid.png",
+          "res://moth/generated/normals/holographic_grid.png",
+          "res://moth/generated/textures/circuit_board-etch.png",
+          "res://moth/derived/normals/circuit_board-etch.png",
+          "res://moth/generated/textures/dust-field.png",
+          "res://moth/generated/textures/flow-field.png"
+        ],
+        "signs": 10,
+        "status": "ready",
+        "surfaces": 6,
+        "unmatched": [],
+        "unused_selectors": []
+      },
+      "candidateHash": "c0354fb7f7b30c7cbb44b80757bf10914dc6ff349eb54139e176d1e5ebe17a22",
+      "profileSha256": "b2cdfa1da6c201b32df5af103a39ee7fbbc7490768bd9b2986f8f03c236e6701",
+      "captureCadence": {
+        "frameImages": 51,
+        "spanSeconds": 71.596,
+        "measuredFps": 0.6983630370411755,
+        "medianGapMs": 395.0,
+        "maxGapMs": 14499,
+        "encoding": "none",
+        "scope": "event-gated combat samples"
+      }
+    }
+  },
+  "evidenceRoot": "/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/production-c",
+  "limitations": [
+    "No hardware GPU performance claim; llvmpipe capture.",
+    "Original six-mode evidence retains its old asset anchor; current checks are walkthrough plus full DM.",
+    "Two editor import crashes retained; graphical native runtime/imported candidate checks pass.",
+    "Initial short cap labels rejected and removed; final dressing diagnostics empty.",
+    "Original source-only recipe identity stays frozen; build-time manifest retains pending label, later current receipts hold the executed evidence.",
+    "Parent owns final package receipt and exports."
+  ]
+}

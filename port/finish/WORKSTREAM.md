@@ -25,12 +25,13 @@ worktrees start at `6cefd9eb` and live under `/home/mojo/.tmp-on-disk/`.
 ## Heavy-tool ownership and completion sequence
 
 **Current grant (supersedes the historical grant below):**
-`PARALLAX-INTERIORS-PRODUCTION-20261002-C` belongs to Parallax Astra
-`ses_f055a6b41ffe42yCL8AxbOL676`. Animation grant B explicitly released at
-`2026-10-02T21:45:31.798193Z`; all nine produced rigs and native surface captures
-are merged at `bb02e34b`. Parallax now builds/reopens its differentiated interiors
-and revalidates refined Moth mounts. Camera and Foundry light corrections, asset
-integration, baseline diagnosis and package closure continue source-only. See
+`ROBOT-ASSET-PRODUCTION-20261002-D` belongs to robot Astra
+`ses_f03a2843bffefDFoP3x1j1cxRO` for three skins/six props and their real native
+integration. Parallax grant C explicitly released at `2026-10-02T22:23:17.018270Z`;
+its produced/reopened interiors, native mount/geometry/DM evidence and restored
+Foundry-light checks are merged at `b66f4ab3`. Packaging prepares its exact asset
+promotion. All nine produced fighters are merged; responsive camera native review
+remains pending. Vehicles/scenery/maps follow later explicit grants. See
 `../surface-refinement/WORKSTREAM.md`, `RELEASE_COMPLETION.md` and
 `../fighting/animation/PRODUCTION_B.md` for current evidence and remaining gates.
 

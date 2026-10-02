@@ -94,12 +94,15 @@ def validate():
     assert json.loads((HERE/'mounts.json').read_text()) == hosts
     source = json.loads((ASSET_ROOT/'godot/multiplayer_worlds/generated/parallax-observatory.json').read_text())
     assert source['geometryHash'] == HASH == profile['geometry_hash']
-    glb = ASSET_ROOT/'godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb'
-    assert digest(glb) == 'b3ea4ec57f57f6db83e1acab40dc95135562347ef884cc8f33ba067af8521bb1'
-    master = ASSET_ROOT/'tools/godot-multiplayer/new-maps/parallax-observatory/parallax-observatory.blend'
+    pins = json.loads((HERE/'interiors-v2-pins.json').read_text())
+    candidate = os.environ.get('PARALLAX_CANDIDATE_DIR')
+    glb = Path(candidate)/'parallax-observatory.glb' if candidate else ASSET_ROOT/'godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb'
+    assert digest(glb) == pins['glbSha256']
+    master = Path(candidate)/'parallax-observatory.blend' if candidate else ASSET_ROOT/'tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/output/parallax-observatory.blend'
     asset = json.loads((glb.parent/'asset-manifest.json').read_text())
     assert digest(master) == asset['blendSha256']
-    assert digest(master) == 'fcd7f284443c45d08177837a23af530b1667deb106bddb8822d507f5655ca090'
+    assert digest(master) == pins['blendSha256']
+    assert asset['candidateHash'] == pins['candidateHash']
     doc, faces, primitive_counts = glb_data(glb)
     assert not doc.get('images') and not doc.get('textures')
     names = {m['name'] for m in doc['materials']}

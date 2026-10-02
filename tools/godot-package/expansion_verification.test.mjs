@@ -18,18 +18,19 @@ import {readBlackwater} from '../../port/native-horde/blackwater-schema.mjs';
 
 const files=Object.keys(WORLDS).map(id=>`godot/multiplayer_worlds/generated/${id}.json`);
 const manifest={server_closure:{worldDataFiles:files,hordeDataFiles:['godot/horde_maps/generated/blackwater-reclamation.json']}};
-test('the extracted manifest retains 43 original pairs and the 11 accepted Helix/Foundry pairs',()=>{
+test('the extracted manifest retains 43 original pairs, 11 Helix/Foundry and six historical Parallax pairs',()=>{
   const pairs=coverage(manifest,WORLDS);
   const original=['switchyard-ward','rainmarket-exchange','breakwater-exchange','thermal-divide','sirocco-circuit','copper-bowl','tern-archipelago'];
   const additions={
     'helix-conservatory':['deathmatch','teamdeathmatch','ctf','domination','koth'],
     'gravemill-foundry':['deathmatch','teamdeathmatch','domination','assault','payload','combined-arms'],
+    'parallax-observatory':['deathmatch','teamdeathmatch','ctf','koth','uplink','holdout'],
   };
   assert.deepEqual([...new Set(pairs.map(row=>row.map))].sort(),[...original,...Object.keys(additions)].sort());
   assert.equal(pairs.filter(row=>original.includes(row.map)).length,43);
   for(const [map,modes] of Object.entries(additions))assert.deepEqual(pairs.filter(row=>row.map===map).map(row=>row.mode).sort(),[...modes].sort());
-  assert.equal(new Set(pairs.map(row=>`${row.map}:${row.mode}`)).size,54);
-  assert.equal(pairs.length,54);
+  assert.equal(new Set(pairs.map(row=>`${row.map}:${row.mode}`)).size,60);
+  assert.equal(pairs.length,60);
   for(const mode of ['puma-race','puma-soccer','cocs','cocs-coop','combined-arms','payload'])assert.ok(pairs.some(row=>row.mode===mode));
 });
 test('missing manifest family or packaged catalog option fails instead of silently skipping expansion',()=>{
