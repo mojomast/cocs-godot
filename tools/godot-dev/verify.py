@@ -49,6 +49,8 @@ os.environ['EDGE_MAP_CASES'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'edge-
 os.environ['EDGE_RENDER_OUT'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'edge-render')
 os.environ['PLAYER_GAMEPLAY_EVIDENCE'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'player-gameplay')
 os.environ['MODE_EVIDENCE'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'competitive-modes')
+os.environ['EVIDENCE_DIR'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'finish-source')
+os.environ['LATTICE_EVIDENCE'] = str(Path(os.environ['COCS_CAREER_ROOT']) / 'lattice-source')
 # Verification-owned loopback authorities must not inherit a user's fixed server
 # port. The launchers resolve and pass the actual ephemeral endpoint to Godot.
 os.environ['PORT'] = '0'
@@ -58,6 +60,7 @@ for key, suffix in [("XDG_DATA_HOME", "data"), ("XDG_CONFIG_HOME", "config"), ("
     Path(os.environ[key]).mkdir(parents=True, exist_ok=True)
 commands = [
     ("gate-runner-tests", [sys.executable, "tools/godot-dev/test_gate_runner.py"]),
+    ("finish-runner-tests", [sys.executable, "tools/godot-dev/test_finish_runner.py"]),
     ("playable-gate-registration", [sys.executable, "tools/godot-dev/test_playable_gates.py"]),
     ("verifier-report-tests", [sys.executable, "tools/godot-dev/test_verifier_report.py"]),
     ("ci-artifact-tests", [sys.executable, "tools/godot-dev/test_ci_artifact.py"]),
@@ -368,6 +371,31 @@ commands = [
     ("competitive-native-juggernaut", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "port/next-port/modes/native-proof.mjs", "--mode=juggernaut"]),
     ("competitive-native-elimination", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "port/next-port/modes/native-proof.mjs", "--mode=team-elimination"]),
     ("competitive-native-vip", [sys.executable, "tools/godot-dev/xvfb_run.py", "node", "port/next-port/modes/native-proof.mjs", "--mode=vip-escort"]),
+    # Focused representatives only. Full normal-rate/multi-client matrices are
+    # opt-in serial jobs in port/finish/matrix.json, with gate-specific deadlines.
+    ("finish-gameplay-source", ["node", "tools/port/pass-two-gameplay/source.mjs", "--check"]),
+    ("finish-gameplay-contract", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_gameplay/second_pass_test.gd"]),
+    ("finish-world-source", ["node", "scripts/world-weather-spatial-oracle.mjs", "--check"]),
+    ("finish-world-contract", [binary, "--headless", "--path", "godot", "--script", "res://tests/world_weather/spatial.gd"]),
+    ("finish-challenge-source", ["node", "--test", "port/pass-two/modes/challenges.test.mjs"]),
+    ("finish-challenge-contract", [binary, "--headless", "--path", "godot", "--script", "res://tests/mode_expansion/challenges_contracts.gd"]),
+    ("finish-spectator-source", ["node", "tools/experience/spectator-oracle.mjs", "--check"]),
+    ("finish-spectator-contract", [binary, "--headless", "--path", "godot", "--script", "res://tests/experience/spectator_contract.gd"]),
+    ("finish-spectator-camera", [binary, "--headless", "--path", "godot", "--script", "res://tests/experience/competitive_camera.gd"]),
+    ("finish-horde-guidance", [binary, "--headless", "--path", "godot", "--script", "res://tests/horde_expansion/guidance_test.gd"]),
+    ("finish-audio-source", ["node", "--test", "tools/godot-audiovisual/expansion/telegraph.test.mjs"]),
+    ("finish-audio-contract", [binary, "--headless", "--audio-driver", "Dummy", "--path", "godot", "--script", "res://tests/audio_expansion/threat_gate.gd"]),
+    ("finish-lattice-source", ["node", "tools/port/lattice/source-oracle.mjs"]),
+    ("finish-lattice-contract", [binary, "--headless", "--path", "godot", "--script", "res://tests/lattice/expansion_feedback_contract.gd"]),
+    ("finish-controls-source", ["node", "tools/port/input-bindings/source-oracle.mjs"]),
+    ("finish-controls-contract", [binary, "--headless", "--path", "godot", "--script", "res://tests/input_bindings/contracts.gd"]),
+    ("finish-replay-source", ["node", "--test", "tools/port/replay/adapter.test.mjs"]),
+    ("finish-caption-source", ["node", "tools/port/finish/caption-oracle.mjs"]),
+    ("finish-caption-integration", [binary, "--headless", "--path", "godot", "--script", "res://tests/finish/caption_integration.gd"]),
+    ("finish-home-replays", [binary, "--headless", "--path", "godot", "--script", "res://tests/finish/home_replays.gd"]),
+    ("finish-replay-bridge-negative", [binary, "--headless", "--path", "godot", "--script", "res://tests/finish/replay_bridge_negative.gd"]),
+    ("finish-replay-bridge-source", ["node", "--test", "tools/port/finish/replay-bridge-contract.test.mjs"]),
+    ("finish-package-closure", ["node", "--test", "tools/godot-package/finishing_closure.test.mjs"]),
     ("audiovisual-event-router", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/event_router.gd"]),
     ("audiovisual-outcome", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/outcome.gd"]),
     ("audiovisual-settings", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/settings.gd"]),
