@@ -19,6 +19,10 @@ import {existsSync, lstatSync, mkdirSync, mkdtempSync, readdirSync, readFileSync
 import {dirname, join, relative, resolve, sep} from 'node:path';
 import {tmpdir} from 'node:os';
 import {fileURLToPath} from 'node:url';
+import {BASE_WORLDS, REVIEWED_CANDIDATES} from './world_closure.mjs';
+import {REPLAY_FILES, REPLAY_KIND} from './replay_runtime.mjs';
+import {FEATURE_JSON} from './feature_resources.mjs';
+import {DRESSING_IDS} from './dressing_resources.mjs';
 
 // The repository that contains this module, not the process working directory.
 export const REPO_ROOT = fileURLToPath(new URL('../../', import.meta.url));
@@ -254,7 +258,8 @@ function runtimeClosure(manifest) {
   require_(Array.isArray(campaignDataFiles) && new Set(campaignDataFiles).size === campaignDataFiles.length, 'Invalid campaign data closure');
   for (const path of campaignDataFiles) require_(/^godot\/campaign\/generated\/(rootfall-verge|siltwake-crossing|emberline-ascent|crown-array)\.json$/.test(path), `Unexpected campaign data file: ${path}`);
   require_(Array.isArray(worldDataFiles) && new Set(worldDataFiles).size === worldDataFiles.length, 'Invalid multiplayer world data closure');
-  for (const path of worldDataFiles) require_(/^godot\/multiplayer_worlds\/generated\/(switchyard-ward|rainmarket-exchange|breakwater-exchange|thermal-divide|sirocco-circuit|copper-bowl|tern-archipelago)\.json$/.test(path), `Unexpected multiplayer world data file: ${path}`);
+  const scopedWorldFiles = [...Object.keys(BASE_WORLDS), ...REVIEWED_CANDIDATES].map(id=>`godot/multiplayer_worlds/generated/${id}.json`);
+  for (const path of worldDataFiles) require_(scopedWorldFiles.includes(path), `Unexpected multiplayer world data file: ${path}`);
   for (const path of [...dataFiles, ...identityDataFiles, ...hordeDataFiles, ...campaignDataFiles, ...worldDataFiles]) {
     assertRelPath(path, 'Runtime data file');
     require_(DATA_FILE.test(path), `Runtime data file must be a godot/ JSON path: ${path}`);
@@ -586,7 +591,71 @@ export function verifyGitIdentity(repo, identity, packageDir) {
     require_(expected === actual, `Runtime data differs from port_commit: ${path}`);
   }
   verifyLauncherSurface(repo, identity, packageDir);
+  verifyReplayRuntime(repo, identity, packageDir);
+  verifyFeatureProvenance(repo, identity);
   verifyClosure(repo, identity, derivative);
+  verifyDressingProvenance(repo, identity);
+}
+
+// worldDataFiles is verified against committed discovery before this check.
+export function verifyDressingProvenance(repo, identity) {
+  const builder='tools/godot-package/build.py';
+  const exists=git(repo,['ls-tree','--name-only',identity.port_commit,'--',builder]);
+  const requires=exists && gitObjectBytes(repo,identity.port_commit,builder).includes(Buffer.from('"dressing_resource_sha256"'));
+  if (!requires && identity.manifest.dressing_resource_sha256===undefined) return;
+  const recorded=identity.manifest.dressing_resource_sha256;
+  require_(plainObject(recorded),'Dressing resource provenance missing');
+  const files=[];
+  for (const id of DRESSING_IDS) {
+    if (!(identity.worldDataFiles ?? []).includes(`godot/multiplayer_worlds/generated/${id}.json`)) continue;
+    const path=`godot/multiplayer_worlds/dressing/profiles/${id}.json`;
+    if (git(repo,['ls-tree','--name-only',identity.port_commit,'--',path])) files.push(path);
+  }
+  requireSortedEqual(Object.keys(recorded),files,'Committed dressing resource closure');
+  for (const path of files) require_(recorded[path]===gitObjectHash(repo,identity.port_commit,path),`Dressing resource differs from recorded commit: ${path}`);
+}
+
+export function verifyFeatureProvenance(repo, identity) {
+  const builderPath='tools/godot-package/build.py';
+  const hasBuilder=git(repo,['ls-tree','--name-only',identity.port_commit,'--',builderPath]);
+  const requires=hasBuilder && gitObjectBytes(repo,identity.port_commit,builderPath).includes(Buffer.from('"feature_resource_sha256"'));
+  if (!requires && identity.manifest.feature_resource_sha256===undefined) return;
+  const recorded=identity.manifest.feature_resource_sha256;
+  require_(plainObject(recorded),'Feature resource provenance missing');
+  const files=[];
+  for (const [anchor,paths] of Object.entries(FEATURE_JSON)) {
+    if (git(repo,['ls-tree','--name-only',identity.port_commit,'--',anchor])) files.push(...paths);
+  }
+  if (files.includes('godot/audio/telegraphs/manifest.json')) {
+    const audio=JSON.parse(gitObjectBytes(repo,identity.port_commit,'godot/audio/telegraphs/manifest.json'));
+    files.push(...audio.inventory.map(entry=>`godot/audio/telegraphs/${entry.file}`),'godot/audio/threat_policy.gd','godot/audio/threat_service.gd');
+  }
+  requireSortedEqual(Object.keys(recorded),files,'Committed feature resource closure');
+  for (const path of files) require_(recorded[path]===gitObjectHash(repo,identity.port_commit,path),`Feature resource differs from recorded commit: ${path}`);
+}
+
+// Derive requirement from the recorded build, never HEAD or a caller-provided
+// optional inventory. Old artifacts without the bridge retain their contract.
+export function verifyReplayRuntime(repo, identity, packageDir) {
+  const enabled = git(repo, ['ls-tree', '--name-only', identity.port_commit, '--', 'godot/replay/bridge.gd']) !== '';
+  const actual = Object.keys(identity.files).filter(path=>path.startsWith('replay-runtime/'));
+  const expected = enabled ? [...REPLAY_FILES.map(path=>`replay-runtime/${path}`), 'replay-runtime/manifest.json'] : [];
+  requireSortedEqual(actual, expected, 'Separate replay runtime closure');
+  if (!enabled) return;
+  const own = JSON.parse(readFileSync(join(packageDir,'replay-runtime/manifest.json'),'utf8'));
+  require_(own.version===1 && own.kind===REPLAY_KIND, 'Replay runtime manifest identity mismatch');
+  require_(plainObject(own.files), 'Replay runtime files missing');
+  requireSortedEqual(Object.keys(own.files), REPLAY_FILES, 'Replay runtime manifest files');
+  require_(plainObject(identity.manifest.replay_runtime_sha256), 'Replay runtime provenance missing');
+  requireSortedEqual(Object.keys(identity.manifest.replay_runtime_sha256), REPLAY_FILES, 'Replay runtime provenance files');
+  for (const path of REPLAY_FILES) {
+    const expectedHash = gitObjectHash(repo, identity.port_commit, path);
+    const actualHash = sha256File(join(packageDir,'replay-runtime',path));
+    require_(actualHash===expectedHash && own.files[path]===expectedHash && identity.manifest.replay_runtime_sha256[path]===expectedHash,
+      `Replay runtime differs from recorded commit: ${path}`);
+  }
+  const admission = JSON.parse(readFileSync(join(packageDir,'replay-runtime/godot/replay/admission.json'),'utf8'));
+  require_(admission.demoSha256===own.files['game/demo.mjs'], 'Replay source demo hash mismatch');
 }
 
 export function validateArtifact({packageDir, repoRoot = REPO_ROOT, manifest = null, manifestPath = null} = {}) {

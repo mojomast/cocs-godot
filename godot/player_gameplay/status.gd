@@ -9,6 +9,22 @@ func _init() -> void:
 static func number(value: Variant) -> float:
 	return maxf(0.0, float(value)) if (value is float or value is int) and is_finite(float(value)) else 0.0
 
+static func rope_hint(actor: Dictionary, state: Dictionary) -> String:
+	if actor.is_empty() or actor.get("zipRide") != null or actor.get("vehicleId") != null or actor.get("grounded") != true: return ""
+	for owner: Dictionary in state.get("actors", []):
+		if number(owner.get("health")) <= 0.0: continue
+		var movement: Variant = owner.get("movement")
+		if not movement is Dictionary or movement.get("enabled") != true: continue
+		var anchor: Variant = movement.get("anchor")
+		if not anchor is Dictionary or number(anchor.get("life")) <= 0.0: continue
+		var from: Variant = anchor.get("from")
+		if not from is Dictionary: continue
+		# Discovery radius only. Source core.moveActor owns the .9m boarding test.
+		var distance := Vector2(float(actor.get("x", 0)), float(actor.get("z", 0))).distance_to(Vector2(float(from.get("x", 0)), float(from.get("z", 0))))
+		var floor_y := float(from.get("y", 0)) - float(owner.get("eyeHeight", 1.45))
+		if distance < 5.0 and absf(float(actor.get("y", 0)) - floor_y) < 0.7: return "SHARED ROPE · WALK INTO GOLD RING"
+	return ""
+
 func project(actor: Dictionary, config: Dictionary = {}, allowed: bool = true) -> Dictionary:
 	if not allowed or actor.is_empty() or number(actor.get("health")) <= 0.0 or number(actor.get("dead")) > 0.0: return {}
 	var kit: Dictionary = catalog.get("operators", {}).get(actor.get("character", ""), {})
@@ -29,7 +45,15 @@ func project(actor: Dictionary, config: Dictionary = {}, allowed: bool = true) -
 		if number(movement.get("maxFuel")) > 0.0: move_state += " · FUEL %d%%" % roundi(100.0 * number(movement.get("fuel")) / number(movement.maxFuel))
 		if number(movement.get("maxCharges")) > 0.0: move_state += " · %d/%d" % [number(movement.get("charges")), number(movement.maxCharges)]
 		if number(movement.get("miss")) > 0.0: move_state += " · NO ANCHOR"
-	var inputs := {"mobility":"X", "jump":"AIR + SPACE", "jump-hold":"HOLD SPACE", "crouch":"HOLD CTRL → SPACE", "crouch-jump":"CTRL + SPACE"}
+	# advanceCharge launches on crouch RELEASE, not on a jump press.
+	var inputs := {"mobility":"X", "jump":"AIR + SPACE", "jump-hold":"HOLD SPACE", "crouch":"HOLD CTRL → RELEASE", "crouch-jump":"CTRL + SPACE"}
+	if movement.get("verb") == "grapple": inputs.mobility = "HOLD X · RELEASE TO DETACH"
+	if movement.get("phase") == "charging":
+		var total := number(kit.movement.budget.get("windup"))
+		var charged := number(movement.get("windup"))
+		move_state = "RELEASE CTRL TO LAUNCH" if total > 0.0 and charged >= total else "CHARGING %d%%" % roundi(100.0 * charged / maxf(total, 0.001))
+	elif movement.get("phase") == "windup":
+		move_state = "WINDUP %.2fs" % number(movement.get("windup"))
 	var passive := str(kit.passive.name)
 	if verb.get("active") != true: passive += " · DISABLED"
 	else:
@@ -43,7 +67,7 @@ func project(actor: Dictionary, config: Dictionary = {}, allowed: bool = true) -
 	var statuses: Array[String] = []
 	if number(actor.get("slow")) > 0.0: statuses.append("JAMMED %.1fs" % number(actor.slow))
 	if actor.get("sliding", false): statuses.append("SLIDING")
-	if actor.get("zipRide") != null: statuses.append("ROPE / ZIPLINE RIDE")
+	if actor.get("zipRide") != null: statuses.append("ROPE / ZIPLINE RIDE · SPACE TO DETACH WHEN CLEAR")
 	if number(actor.get("riderSpeedTimer")) > 0.0: statuses.append("RIDER SPEED %.1fs" % number(actor.riderSpeedTimer))
 	var grenade := number(actor.get("grenadeCooldown"))
 	return {"power":{"name":power.get("name", "Power"), "state":power_state, "active":active, "cooldown":cooldown}, "mobility":{"name":kit.movement.name, "input":inputs.get(kit.movement.input, ""), "state":move_state}, "passive":passive, "passive_description":kit.passive.description, "statuses":statuses, "grenade":"G · FRAG READY" if grenade <= 0.0 else "G · FRAG %.1fs" % grenade}

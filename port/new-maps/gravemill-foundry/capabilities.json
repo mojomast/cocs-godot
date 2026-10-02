@@ -1,0 +1,46 @@
+{
+  "id": "gravemill-foundry",
+  "name": "Gravemill Foundry",
+  "revision": 3,
+  "accepted": true,
+  "architecturalReview": "parent review pending",
+  "stage": "PRODUCTION SOURCE/NATIVE VERIFIED; PARENT ARCHITECTURAL REVIEW",
+  "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+  "recipeHash": "3c7f9242bb7c98000871b27d58d14c719a4867e1a9fc625b106c97f7c1c608eb",
+  "nativeColliderHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+  "modes": {
+    "payload": {
+      "sourceFullRound": "passed",
+      "nativeJourney": "passed",
+      "publicPlayable": true
+    },
+    "combined-arms": {
+      "sourceFullRound": "passed",
+      "nativeJourney": "passed",
+      "publicPlayable": true
+    },
+    "deathmatch": {
+      "sourceFullRound": "passed",
+      "nativeJourney": "passed",
+      "publicPlayable": true
+    },
+    "assault": {
+      "sourceFullRound": "passed",
+      "nativeJourney": "passed",
+      "publicPlayable": true
+    },
+    "domination": {
+      "sourceFullRound": "passed",
+      "nativeJourney": "passed",
+      "publicPlayable": true
+    },
+    "teamdeathmatch": {
+      "sourceFullRound": "passed",
+      "nativeJourney": "passed",
+      "publicPlayable": true
+    }
+  },
+  "blenderStatus": "generated, saved master reopened, GLB imported; architecture and UI captures inspected",
+  "fixtureLimit": "Controlled normal-input rounds; bounded autonomous bot observations separately documented. Actual clip cadence is not encoded fps or GPU performance.",
+  "evidence": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/revision3-production"
+}

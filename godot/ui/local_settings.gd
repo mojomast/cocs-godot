@@ -178,6 +178,7 @@ func build_panel() -> void:
 	var title := Label.new()
 	title.text = "SETTINGS"
 	column.add_child(title)
+	column.add_child(preload("res://input_bindings/settings_panel.gd").new())
 	for entry: Dictionary in [
 		{"key":"caption_scale", "label":"Sound caption text size", "low":80, "high":160},
 		{"key":"master_volume", "label":"Master volume", "low":0, "high":100},

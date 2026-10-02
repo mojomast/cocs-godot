@@ -128,3 +128,7 @@ acceptance remain pending. Retain those and the cinematic-trailer gap. They
 require explicit engine time after current production work; prior wave-one video
 does not prove native mission-chain completion. Preserve previous
 releases and publish new screenshots as accepted artifacts become available.
+
+The owner subsequently assigned the refreshed cinematic pipeline to a dedicated
+[new Astra lane](../expansion-four/WORKSTREAM.md). Its source preparation can run
+now; actual capture/encoding still needs an explicit heavy-slot grant.

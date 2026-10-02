@@ -1,0 +1,441 @@
+{
+  "version": 1,
+  "provenance": "New original deterministic additive PCM motifs; build.mjs, no external inputs",
+  "sample_rate": 22050,
+  "channels": 1,
+  "bits": 16,
+  "files": [
+    {
+      "file": "audio/chatgpt_attack.wav",
+      "sha256": "dd9b50b3a6ff884e529fc661be9634b90e49d292e2af56c0d6286d13bb6b14ef",
+      "bytes": 4896,
+      "duration": 0.11002267573696145,
+      "peak": 0.292938232421875,
+      "rms": 0.1050978538253559
+    },
+    {
+      "file": "audio/chatgpt_guard.wav",
+      "sha256": "c212e019a5cde1c5fb408de0695ce442a4744a366c24380dcf7ce33ee3008c11",
+      "bytes": 3792,
+      "duration": 0.08498866213151927,
+      "peak": 0.24346923828125,
+      "rms": 0.07248302415039473
+    },
+    {
+      "file": "audio/chatgpt_impact.wav",
+      "sha256": "a8d8a5ff6b910e792f2a15b7286ac0e30449af89f00a2a72658709c84c546382",
+      "bytes": 5336,
+      "duration": 0.12,
+      "peak": 0.29412841796875,
+      "rms": 0.10576345518758644
+    },
+    {
+      "file": "audio/chatgpt_throw.wav",
+      "sha256": "7d262348f953d6a2f276ae6b7c8325cff19df8ea9c14e57e47547b95fa6e48dd",
+      "bytes": 9746,
+      "duration": 0.22,
+      "peak": 0.30572509765625,
+      "rms": 0.10905141683126406
+    },
+    {
+      "file": "audio/chatgpt_super.wav",
+      "sha256": "14b4adaacbd5eb496f045c7b1f195956f2045ebb5124dcfe24b4d7d33ffac7b2",
+      "bytes": 15920,
+      "duration": 0.36,
+      "peak": 0.31549072265625,
+      "rms": 0.1440830286982214
+    },
+    {
+      "file": "audio/chatgpt_tech.wav",
+      "sha256": "67c428a2c0165d8f72b112685cb8b8c6891952e3f1ead7d554a534bf0d23b11c",
+      "bytes": 6218,
+      "duration": 0.14,
+      "peak": 0.21209716796875,
+      "rms": 0.06588187128507224
+    },
+    {
+      "file": "audio/claude_attack.wav",
+      "sha256": "d6e97dd83889926d558bca2d19632ffe3224c4e524a95cf48285b14a08ff9f8c",
+      "bytes": 4896,
+      "duration": 0.11002267573696145,
+      "peak": 0.290802001953125,
+      "rms": 0.09437345798680695
+    },
+    {
+      "file": "audio/claude_guard.wav",
+      "sha256": "3a1d23a9962882ffc9aaa7886db85e4d6e6810b78f4b917323bec4967be69979",
+      "bytes": 3792,
+      "duration": 0.08498866213151927,
+      "peak": 0.240631103515625,
+      "rms": 0.06516985055682915
+    },
+    {
+      "file": "audio/claude_impact.wav",
+      "sha256": "2682b94873a136049cc54510571cd36f3b1545935fb113147c5f40eb1f2f5751",
+      "bytes": 5336,
+      "duration": 0.12,
+      "peak": 0.287689208984375,
+      "rms": 0.09504670002034446
+    },
+    {
+      "file": "audio/claude_throw.wav",
+      "sha256": "862919a1f8258a94846b94d5631b07ea5c0d96abac4ef0e933e18915ccb3366b",
+      "bytes": 9746,
+      "duration": 0.22,
+      "peak": 0.302520751953125,
+      "rms": 0.09798139245540052
+    },
+    {
+      "file": "audio/claude_super.wav",
+      "sha256": "1dfd26a681348e94083f64e0a011beda6bea5b67412941eef1aa1c709dfb0c80",
+      "bytes": 15920,
+      "duration": 0.36,
+      "peak": 0.3123779296875,
+      "rms": 0.1294936723671525
+    },
+    {
+      "file": "audio/claude_tech.wav",
+      "sha256": "b0fe1d4edccb7b240499793543b2df9cedb37cec5a95606c4a9c8218cdff9db1",
+      "bytes": 6218,
+      "duration": 0.14,
+      "peak": 0.21124267578125,
+      "rms": 0.05920264857890624
+    },
+    {
+      "file": "audio/grok_attack.wav",
+      "sha256": "0bca847e1074b95d074b2286898c9e803c0a55b4e4dbc3cee0bfce882265c435",
+      "bytes": 4896,
+      "duration": 0.11002267573696145,
+      "peak": 0.18316650390625,
+      "rms": 0.08062997933020867
+    },
+    {
+      "file": "audio/grok_guard.wav",
+      "sha256": "df474e70b0c3c48ca8ba39b56b522c0bb32edd96021b09111c1477e12170d4cc",
+      "bytes": 3792,
+      "duration": 0.08498866213151927,
+      "peak": 0.150848388671875,
+      "rms": 0.05563926103186011
+    },
+    {
+      "file": "audio/grok_impact.wav",
+      "sha256": "34d5c17bd61c962257b3899748ce65e0a8c9715602294e231e057d60216eb423",
+      "bytes": 5336,
+      "duration": 0.12,
+      "peak": 0.176544189453125,
+      "rms": 0.0809562322031883
+    },
+    {
+      "file": "audio/grok_throw.wav",
+      "sha256": "552687d001dfc559fb79e8232d783e20028cd73c14aab5380889fd3d1beb1b53",
+      "bytes": 9746,
+      "duration": 0.22,
+      "peak": 0.1927490234375,
+      "rms": 0.08373877040206175
+    },
+    {
+      "file": "audio/grok_super.wav",
+      "sha256": "6e5b26aeb1f04d2fbf3c651e40b572685102035bc49decab56742496dd3c2632",
+      "bytes": 15920,
+      "duration": 0.36,
+      "peak": 0.19610595703125,
+      "rms": 0.11053634284958151
+    },
+    {
+      "file": "audio/grok_tech.wav",
+      "sha256": "a25b85ed506834d4bc82601ec2dc5e120ef11073f75cdaef45324c54c8020c9b",
+      "bytes": 6218,
+      "duration": 0.14,
+      "peak": 0.13409423828125,
+      "rms": 0.05054426533664263
+    },
+    {
+      "file": "audio/meta_attack.wav",
+      "sha256": "d4c5c79aa0d6e02d43b0b857509ea8382b2e0490b393858c668b29e09c79a71e",
+      "bytes": 4896,
+      "duration": 0.11002267573696145,
+      "peak": 0.281219482421875,
+      "rms": 0.10448222955642918
+    },
+    {
+      "file": "audio/meta_guard.wav",
+      "sha256": "097a52b8641896bac2f9275aa056e48e9cd3a0fada2a28b4af2436e11ea14374",
+      "bytes": 3792,
+      "duration": 0.08498866213151927,
+      "peak": 0.243438720703125,
+      "rms": 0.07227788967327436
+    },
+    {
+      "file": "audio/meta_impact.wav",
+      "sha256": "51b6731b1e01cfe51e5237f053bdb64935a10d564803b26e1fd43eee88c62ff0",
+      "bytes": 5336,
+      "duration": 0.12,
+      "peak": 0.26708984375,
+      "rms": 0.10590355860992626
+    },
+    {
+      "file": "audio/meta_throw.wav",
+      "sha256": "9653d5a27bd2893e1158b20bbd3ee12e20b136bacfacb50515ec546ebf147947",
+      "bytes": 9746,
+      "duration": 0.22,
+      "peak": 0.3013916015625,
+      "rms": 0.1089093068610863
+    },
+    {
+      "file": "audio/meta_super.wav",
+      "sha256": "b7bfce92549b6ad1b513d51c39b0c21f432617bb318f5530f4834bbdc60ae2e9",
+      "bytes": 15920,
+      "duration": 0.36,
+      "peak": 0.31622314453125,
+      "rms": 0.14488388652480708
+    },
+    {
+      "file": "audio/meta_tech.wav",
+      "sha256": "d34c811c1568f75762534c6c56f4539c4bb708e0b241832b83d3518a524b97f3",
+      "bytes": 6218,
+      "duration": 0.14,
+      "peak": 0.212799072265625,
+      "rms": 0.06597322350213007
+    },
+    {
+      "file": "audio/gemini_attack.wav",
+      "sha256": "b8d449d0a45c7dbbd8ac0cdd9571309e0497cef668502ca37d9f3d9f8918c6a4",
+      "bytes": 4896,
+      "duration": 0.11002267573696145,
+      "peak": 0.291107177734375,
+      "rms": 0.09438435252386423
+    },
+    {
+      "file": "audio/gemini_guard.wav",
+      "sha256": "dc20e6b857c1e79938c19bde7a12793d08cbfb50148c44e10505062719f73fdb",
+      "bytes": 3792,
+      "duration": 0.08498866213151927,
+      "peak": 0.24169921875,
+      "rms": 0.0651320491880602
+    },
+    {
+      "file": "audio/gemini_impact.wav",
+      "sha256": "5318fb7ede73d5fcc92cd7f2261be8f90516b2f10ecc5cbb923b099f43f6ab36",
+      "bytes": 5336,
+      "duration": 0.12,
+      "peak": 0.29248046875,
+      "rms": 0.09504516196617357
+    },
+    {
+      "file": "audio/gemini_throw.wav",
+      "sha256": "0a9b18d18af17f877d04e984b31c136b90f1dfc52298a8fe5ce0871b7ac36b3b",
+      "bytes": 9746,
+      "duration": 0.22,
+      "peak": 0.3021240234375,
+      "rms": 0.09797400081989306
+    },
+    {
+      "file": "audio/gemini_super.wav",
+      "sha256": "5484a4782815f15f20e45ad11d8ffb3063a1bb1628100fb9268669f93b530237",
+      "bytes": 15920,
+      "duration": 0.36,
+      "peak": 0.313018798828125,
+      "rms": 0.1294768904114379
+    },
+    {
+      "file": "audio/gemini_tech.wav",
+      "sha256": "43346f3248202d8ad6ae4ced79c639f1966b638ebd591dc22f7fee2a1736f095",
+      "bytes": 6218,
+      "duration": 0.14,
+      "peak": 0.210968017578125,
+      "rms": 0.05920525166397409
+    },
+    {
+      "file": "audio/deepseek_attack.wav",
+      "sha256": "1bcc6c910f3d5f25474a12421ef3cf7e83d47ec2312f4acd5fb029d5724508b6",
+      "bytes": 4896,
+      "duration": 0.11002267573696145,
+      "peak": 0.2838134765625,
+      "rms": 0.10520944191001408
+    },
+    {
+      "file": "audio/deepseek_guard.wav",
+      "sha256": "e170854756d208d39e1aade4368eb1b8060b7c8618aea63cf5ea9a10f2ca875a",
+      "bytes": 3792,
+      "duration": 0.08498866213151927,
+      "peak": 0.2430419921875,
+      "rms": 0.0726158809516404
+    },
+    {
+      "file": "audio/deepseek_impact.wav",
+      "sha256": "18550afeac438d2a94b15ee9b2a6030b6d30691fcdcc8ad5fa549ebee191f187",
+      "bytes": 5336,
+      "duration": 0.12,
+      "peak": 0.29034423828125,
+      "rms": 0.10571220952841612
+    },
+    {
+      "file": "audio/deepseek_throw.wav",
+      "sha256": "b9c2dc3b1a678796f3e0dec2f4f79b06a3da7af19bad779a01bdbb4594d93724",
+      "bytes": 9746,
+      "duration": 0.22,
+      "peak": 0.302703857421875,
+      "rms": 0.10890044309705897
+    },
+    {
+      "file": "audio/deepseek_super.wav",
+      "sha256": "6afdf7740060dbf1a34cb3dd083729abd391caf65580506c4dc3ca03b8d6bf18",
+      "bytes": 15920,
+      "duration": 0.36,
+      "peak": 0.313629150390625,
+      "rms": 0.14406115832567779
+    },
+    {
+      "file": "audio/deepseek_tech.wav",
+      "sha256": "768991a490a77f3bdf1e24c6cbaa2e406ed0d7bca889f3f089e08f2022935238",
+      "bytes": 6218,
+      "duration": 0.14,
+      "peak": 0.212738037109375,
+      "rms": 0.06595475145520992
+    },
+    {
+      "file": "audio/mistral_attack.wav",
+      "sha256": "ebc12a8c204d1d93a18e8f2d81fdb12f98a564a59729648ac8cf133b3a9ac452",
+      "bytes": 4896,
+      "duration": 0.11002267573696145,
+      "peak": 0.287689208984375,
+      "rms": 0.09437350505326135
+    },
+    {
+      "file": "audio/mistral_guard.wav",
+      "sha256": "744951ad2ca3c6debf6a9c5511316db12806fd06bccd76f8002ea1495e27ab4d",
+      "bytes": 3792,
+      "duration": 0.08498866213151927,
+      "peak": 0.240264892578125,
+      "rms": 0.06511325564555942
+    },
+    {
+      "file": "audio/mistral_impact.wav",
+      "sha256": "f2dc723a89dfc91d0118ed0ba8e035a69a742849366ff3e2d196b0884e7459f0",
+      "bytes": 5336,
+      "duration": 0.12,
+      "peak": 0.291778564453125,
+      "rms": 0.09499844708389743
+    },
+    {
+      "file": "audio/mistral_throw.wav",
+      "sha256": "9d49a22226c3a0fabf6960a1699832ab74eb704f779de8ff2d3400eab8562423",
+      "bytes": 9746,
+      "duration": 0.22,
+      "peak": 0.302520751953125,
+      "rms": 0.09798834370156267
+    },
+    {
+      "file": "audio/mistral_super.wav",
+      "sha256": "5b955c4f2e2225d348859c5d33a4cbff236ea672fb70a55702ddcfc4648d87c3",
+      "bytes": 15920,
+      "duration": 0.36,
+      "peak": 0.313690185546875,
+      "rms": 0.12947825489396977
+    },
+    {
+      "file": "audio/mistral_tech.wav",
+      "sha256": "47dca768ad6edd5bbf65972b3948db2cb737981d848cdb09400b965d67731411",
+      "bytes": 6218,
+      "duration": 0.14,
+      "peak": 0.2109375,
+      "rms": 0.059184071254878186
+    },
+    {
+      "file": "audio/kimi_attack.wav",
+      "sha256": "fe552a2febb6bedddc7f68a3b9ac0b4e5bed094b8afd90a3b5cc715585f76b0b",
+      "bytes": 4896,
+      "duration": 0.11002267573696145,
+      "peak": 0.292266845703125,
+      "rms": 0.10506405439513043
+    },
+    {
+      "file": "audio/kimi_guard.wav",
+      "sha256": "e62bcb50b699cdb34e976c4f3ff2cdfdfca6bb4116454baf5eef50e6b29286f4",
+      "bytes": 3792,
+      "duration": 0.08498866213151927,
+      "peak": 0.242156982421875,
+      "rms": 0.0725011381474615
+    },
+    {
+      "file": "audio/kimi_impact.wav",
+      "sha256": "430215a7fa110dae08d4ca79f8ed824d56857b32787d7a3c67e5484e895d79a5",
+      "bytes": 5336,
+      "duration": 0.12,
+      "peak": 0.295135498046875,
+      "rms": 0.10577874007942727
+    },
+    {
+      "file": "audio/kimi_throw.wav",
+      "sha256": "dacffa226324044cdfe2f08582a45febac72b9834354f1fc3587889eb2552605",
+      "bytes": 9746,
+      "duration": 0.22,
+      "peak": 0.306549072265625,
+      "rms": 0.1090569595057759
+    },
+    {
+      "file": "audio/kimi_super.wav",
+      "sha256": "3f9e58e77281f65722cbd3075233d4a6b47987b1400601311a034556f487c8ba",
+      "bytes": 15920,
+      "duration": 0.36,
+      "peak": 0.31549072265625,
+      "rms": 0.1440844351509485
+    },
+    {
+      "file": "audio/kimi_tech.wav",
+      "sha256": "241ac42f9186cee055404acf94219a496eb4585f1acaa330281014cf32d694ef",
+      "bytes": 6218,
+      "duration": 0.14,
+      "peak": 0.212799072265625,
+      "rms": 0.06589819697170982
+    },
+    {
+      "file": "audio/qwen_attack.wav",
+      "sha256": "feb07599d5d636e928171b541aaf74d8d87dacf629a50bac89322be3c28da07b",
+      "bytes": 4896,
+      "duration": 0.11002267573696145,
+      "peak": 0.18011474609375,
+      "rms": 0.08059701366752715
+    },
+    {
+      "file": "audio/qwen_guard.wav",
+      "sha256": "58a93f0d9c3e15e730a0b85fd80de7fa1f1210b2494f8c3e50170a15183331ee",
+      "bytes": 3792,
+      "duration": 0.08498866213151927,
+      "peak": 0.153411865234375,
+      "rms": 0.05558322183884623
+    },
+    {
+      "file": "audio/qwen_impact.wav",
+      "sha256": "b0b93d8106cfddbec6b9b932f2f74b10e7e096720ec436a6be4216b4c5cd6554",
+      "bytes": 5336,
+      "duration": 0.12,
+      "peak": 0.181060791015625,
+      "rms": 0.08107529240001829
+    },
+    {
+      "file": "audio/qwen_throw.wav",
+      "sha256": "0cec766cf597c335502026c862466fee39d1e2c3424d5e55f0ef653593031e68",
+      "bytes": 9746,
+      "duration": 0.22,
+      "peak": 0.191253662109375,
+      "rms": 0.08366836426521294
+    },
+    {
+      "file": "audio/qwen_super.wav",
+      "sha256": "3b396a076f9a7fcb01c50210d2064e2d227334941dadae0d7a4a80938205fabe",
+      "bytes": 15920,
+      "duration": 0.36,
+      "peak": 0.19879150390625,
+      "rms": 0.11054687223057323
+    },
+    {
+      "file": "audio/qwen_tech.wav",
+      "sha256": "0564f87195e83dff0f207e0cf4cfd5accafe77631f8b8257188db390dd0e27fe",
+      "bytes": 6218,
+      "duration": 0.14,
+      "peak": 0.134002685546875,
+      "rms": 0.05055339343772876
+    }
+  ]
+}

@@ -52,6 +52,7 @@ var start := Button.new()
 var quit_button := Button.new()
 var settings_button := Button.new()
 var career_button := Button.new()
+var replays_button := Button.new()
 var columns: BoxContainer
 var content_scroll: ScrollContainer
 var category_column: VBoxContainer
@@ -203,6 +204,17 @@ func build_ui() -> void:
 		if service != null: service.open_panel(career_button))
 	actions.add_child(start)
 	actions.add_child(career_button)
+	replays_button.name = "Replays"
+	replays_button.text = "REPLAYS"
+	replays_button.custom_minimum_size = Vector2(150, 44)
+	replays_button.pressed.connect(open_replays)
+	actions.add_child(replays_button)
+	var fighting_button := Button.new()
+	fighting_button.name = "Fighting"
+	fighting_button.text = "FIGHTING"
+	fighting_button.custom_minimum_size = Vector2(150, 44)
+	fighting_button.pressed.connect(open_fighting)
+	actions.add_child(fighting_button)
 	actions.add_child(settings_button)
 	actions.add_child(quit_button)
 	right.add_child(actions)
@@ -543,6 +555,33 @@ func on_start() -> void:
 	save_preferences()
 	print("MENU_ROUTE ", JSON.stringify({"args": args}))
 	get_tree().call_deferred("quit", 0)
+
+func open_replays() -> void:
+	if quitting or SettingsAccess.overlay_open(): return
+	quitting = true
+	stop_attract()
+	save_preferences()
+	audiovisual.suspend("replay_library")
+	# In-process read-only route: no MENU_ROUTE marker or authority supervisor.
+	var error := get_tree().change_scene_to_file("res://replay/library.tscn")
+	if error != OK:
+		quitting = false
+		status.text = "Could not open Replay Library."
+		status.add_theme_color_override("font_color", ERROR_INK)
+		refresh_attract()
+
+func open_fighting() -> void:
+	if quitting or SettingsAccess.overlay_open(): return
+	quitting = true
+	stop_attract()
+	save_preferences()
+	audiovisual.suspend("fighting")
+	var error := get_tree().change_scene_to_file("res://fighting/main.tscn")
+	if error != OK:
+		quitting = false
+		status.text = "Could not open Fighting."
+		status.add_theme_color_override("font_color", ERROR_INK)
+		refresh_attract()
 
 func quit_menu() -> void:
 	if quitting: return

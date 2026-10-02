@@ -9,6 +9,7 @@ import {pathToFileURL} from 'node:url';
 import {createConnection} from 'node:net';
 import {fileURLToPath} from 'node:url';
 import {createInterface} from 'node:readline';
+import {worldClosure,worldArt} from './world_closure.mjs';
 
 const IDS=['switchyard-ward','rainmarket-exchange','breakwater-exchange','thermal-divide','sirocco-circuit','copper-bowl','tern-archipelago'];
 const HEX=/^[a-f0-9]{64}$/;
@@ -25,11 +26,9 @@ export function sourceModeCoverage(experiences) {
 export function coverage(manifest, worlds) {
   const closure=manifest.server_closure;
   assert.ok(closure && Array.isArray(closure.worldDataFiles), 'Expansion manifest must declare worldDataFiles (no legacy fallback)');
-  assert.deepEqual([...closure.worldDataFiles].sort(), IDS.map(id=>`godot/multiplayer_worlds/generated/${id}.json`).sort());
+  assert.deepEqual([...closure.worldDataFiles].sort(), worldClosure(worlds).sort());
   assert.ok(closure.hordeDataFiles?.includes('godot/horde_maps/generated/blackwater-reclamation.json'), 'Blackwater runtime data absent');
-  assert.deepEqual(Object.keys(worlds).sort(), [...IDS].sort(), 'Derive map options from packaged catalog');
   const pairs=Object.entries(worlds).flatMap(([map,entry])=>entry.modes.map(mode=>({map,mode})));
-  assert.equal(pairs.length,43,'All packaged world mode pairs must be visited');
   for(const map of IDS) assert.ok(pairs.some(p=>p.map===map),`Uncovered ${map}`);
   for(const mode of ['deathmatch','teamdeathmatch','instagib','rockets','armsrace','ctf','domination','koth','uplink','holdout','assault','payload','combined-arms','puma-race','puma-soccer','cocs','cocs-coop'])
     assert.ok(pairs.some(p=>p.mode===mode),`Uncovered mode ${mode}`);
@@ -148,7 +147,7 @@ export async function verify(root,output,{node=process.platform==='win32'?join(r
       const horde=mode==='horde';
       const data=sourceMode?{}:horde?blackwater:catalog.readWorld(map);
       if(!sourceMode)assert.match(data.geometryHash,HEX);
-      if(mode==='puma-race')assert.equal(data.arena.race?.gates?.length,14,'Packaged Sirocco gate route');
+      if(map==='sirocco-circuit')assert.equal(data.arena.race?.gates?.length,14,'Packaged Sirocco gate route');
       if(mode==='cocs'||mode==='cocs-coop')assert.equal(data.arena.nodes?.length,7,'Packaged Tern command nodes');
       const entry=join(root,sourceMode?'runtime/server/game-server.mjs':horde?'runtime/port/native-horde/authority.mjs':'runtime/port/multiplayer-worlds/derived/game-server.mjs');
       let server,native,port;
@@ -159,6 +158,7 @@ export async function verify(root,output,{node=process.platform==='win32'?join(r
         assert.equal(health.port,port);
         const args=['--headless','--audio-driver','Dummy','--main-pack',join(root,'cocs.pck'),'--script',probe,'--',
           `--endpoint=ws://127.0.0.1:${port}`,`--map=${map}`,`--mode=${mode}`,
+          ...(!sourceMode&&!horde?[`--expect-art=${worldArt(map)}`]:[]),
           ...(sourceMode?['--source-mode','--bots=2']:[`--expect-hash=${data.geometryHash}`])];
         // LATTICE normally waits for a human Enter at its session panel. Its
         // existing evidence switch requests that same start through the real

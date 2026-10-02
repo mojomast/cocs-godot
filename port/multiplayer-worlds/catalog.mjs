@@ -4,6 +4,8 @@ import {terrainSupportAt, terrainTriangles, terrainWallTriangles} from '../../ga
 
 // World lane adds entries here after its per-mode authority/geometry audit.
 export const WORLDS = Object.freeze({
+  'helix-conservatory':Object.freeze({name:'Helix Conservatory',modes:Object.freeze(['deathmatch','teamdeathmatch','ctf','domination','koth'])}),
+  'gravemill-foundry':Object.freeze({name:'Gravemill Foundry',modes:Object.freeze(['deathmatch','teamdeathmatch','domination','assault','payload','combined-arms'])}),
   'switchyard-ward':Object.freeze({name:'Switchyard Ward',modes:Object.freeze(['deathmatch','teamdeathmatch','instagib','rockets','armsrace','ctf','domination','koth','uplink','holdout','assault'])}),
   'rainmarket-exchange':Object.freeze({name:'Rainmarket Exchange',modes:Object.freeze(['deathmatch','teamdeathmatch','instagib','rockets','armsrace','domination','koth','uplink','holdout','assault','payload'])}),
   'breakwater-exchange':Object.freeze({name:'Breakwater Exchange',modes:Object.freeze(['deathmatch','teamdeathmatch','domination','assault','payload','combined-arms'])}),

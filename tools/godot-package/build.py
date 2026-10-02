@@ -143,7 +143,9 @@ def main():
     if edge_data != expected_edge_data:
         raise RuntimeError("Unexpected campaign facade data closure")
     allowed_campaign_data = {f"godot/campaign/generated/{name}.json" for name in ["rootfall-verge", "siltwake-crossing", "emberline-ascent", "crown-array"]}
-    allowed_world_data = {f"godot/multiplayer_worlds/generated/{name}.json" for name in ["switchyard-ward", "rainmarket-exchange", "breakwater-exchange", "thermal-divide", "sirocco-circuit", "copper-bowl", "tern-archipelago"]}
+    # discover validates the production registry against the unchanged original
+    # pairs and bounded prospective IDs. Unregistered recipe files never enter.
+    allowed_world_data = set(world_data)
     allowed_arena_data = {f"godot/native_arenas/generated/{name}.json" for name in ["prism-foundry", "aurora-basin", "cinder-array"]}
     allowed_identity_data = {f"godot/identity_maps/generated/{name}.json" for name in ["lacuna-court", "vermilion-fold", "nacre-engine", "canopy-divide", "basalt-reach"]}
     for label, declared, allowed in [("native-arena", arena_data, allowed_arena_data),
@@ -164,7 +166,7 @@ def main():
             raise RuntimeError("Native deathmatch adapter requires all six committed arena data files")
     if any(p.startswith("port/multiplayer-worlds/") for p in closure["adapterModules"]):
         if set(world_data) != allowed_world_data:
-            raise RuntimeError("Multiplayer world adapter requires exactly seven committed gameplay recipes")
+            raise RuntimeError("Multiplayer world adapter requires its accepted committed gameplay recipes")
     input_paths = set(closure["modules"])
     if any(p.startswith("port/native-campaign/") for p in closure["adapterModules"]):
         if set(campaign_data) != allowed_campaign_data:
@@ -176,6 +178,10 @@ def main():
     input_paths.update(campaign_data)
     input_paths.update(world_data)
     input_paths.update(edge_data)
+    replay_files = ["game/demo.mjs", "godot/replay/admission.json", "tools/port/replay/adapter.mjs", "tools/port/replay/service.mjs"] if (ROOT / "godot/replay/bridge.gd").is_file() else []
+    input_paths.update(replay_files)
+    feature_files = json.loads(run(["node", ROOT / "tools/godot-package/feature_resources.mjs", ROOT]))
+    input_paths.update(feature_files)
     if edge_data:
         run(["node", "port/edge-effects/bake-structures.mjs", "--check"])
         input_paths.add("port/edge-effects/bake-structures.mjs")
@@ -196,6 +202,9 @@ def main():
         # Editable masters, recipe generators and Blender scripts are part of
         # the reviewed build provenance even though only GLBs ship in the PCK.
         input_paths.update(git("ls-files", "tools/godot-multiplayer").splitlines())
+    world_resource_files = json.loads(run(["node", ROOT / "tools/godot-package/world_resources.mjs", ROOT])) if world_data else []
+    input_paths.update(world_resource_files)
+    dressing_resources = [p for p in world_resource_files if p.startswith("godot/multiplayer_worlds/dressing/profiles/")]
     if derivative:
         input_paths.add("port/contracts/lattice-catalog-derivative.json")
     # The Career catalog and its generator arrive with a later lane; include them
@@ -222,6 +231,10 @@ def main():
         input_paths.update([gameplay_catalog_generator, "game/kits.mjs",
                             "game/harness-profiles.mjs", "game/operator-verbs.mjs"])
     audio_pack = ROOT / "tools/godot-audiovisual/music_pack.mjs"
+    telegraph_generator = "tools/godot-audiovisual/expansion/telegraph_pack.mjs"
+    if "godot/audio/telegraphs/manifest.json" in feature_files:
+        run(["node", telegraph_generator, "--check"], env=derivative_env)
+        input_paths.add(telegraph_generator)
     if audio_pack.is_file():
         run(["node", audio_pack, "--check"], env=derivative_env)
         input_paths.update(git("ls-files", "tools/godot-audiovisual", "assets/music/THIRD_PARTY_LICENSES.md").splitlines())
@@ -264,6 +277,7 @@ def main():
     # Port-owned adapters and data have separate provenance, never source-lock
     # exemptions. Require committed reviewed bytes; record exact hashes.
     port_owned = [*closure["adapterModules"], *arena_data, *identity_data, *horde_data, *campaign_data, *world_data, *edge_data]
+    port_owned.extend(dressing_resources)
     if career_catalog in input_paths:
         port_owned.append(career_catalog)
     if finish_catalog in input_paths:
@@ -341,6 +355,14 @@ ssh_remote_deploy/enabled=false
 '''
     if (project / "player_models/recipes.json").is_file():
         preset = preset.replace('include_filter="', 'include_filter="player_models/*.json,')
+    # Explicit dynamically-read feature catalogs; imported WAV/GDScript resources
+    # remain covered by all_resources. Never export tests or arbitrary JSON.
+    preset = preset.replace('include_filter="', 'include_filter="input_bindings/contexts.json,replay/admission.json,audio/telegraphs/manifest.json,')
+    # FileAccess cannot infer finish profiles. world_resources grants only existing
+    # optional profiles of registered worlds; each exact JSON path is hashed above.
+    dressing_files = sorted(p.removeprefix("godot/") for p in dressing_resources)
+    if dressing_files:
+        preset = preset.replace('include_filter="', 'include_filter="' + ",".join(dressing_files) + ",")
     if windows:
         preset = preset.replace('name="Private Linux Prototype"', f'name="{preset_name}"').replace('platform="Linux"', 'platform="Windows Desktop"')
         preset += '\ncodesign/enable=false\napplication/modify_resources=false\ndebug/export_console_wrapper=0\n'
@@ -348,6 +370,7 @@ ssh_remote_deploy/enabled=false
     run([editor, "--headless", "--path", project, "--editor", "--import"], env=env, log=logs / "import.log")
     package = work / ("cocs-native-" + args.target)
     package.mkdir()
+    replay_hashes = json.loads(run(["node", ROOT / "tools/godot-package/replay_runtime.mjs", ROOT, package / "replay-runtime", port_commit])) if replay_files else {}
     run([editor, "--headless", "--path", project, "--export-release", preset_name, package / executable], env=env, log=logs / "export.log")
     if not (package / "cocs.pck").is_file():
         raise RuntimeError("Expected separate PCK")
@@ -461,6 +484,9 @@ ssh_remote_deploy/enabled=false
         "edge_data_sha256":{p:inputs[p] for p in edge_data},
         "generated_resources_sha256":tree_hash(resources), "staged_export_preset":preset,
         "launchers":launchers,
+        "replay_runtime_sha256":replay_hashes,
+        "feature_resource_sha256":{p:inputs[p] for p in feature_files},
+        "dressing_resource_sha256":{p:inputs[p] for p in dressing_resources},
         "files":tree(package),
     }
     write_json(package / "manifest.json", manifest)

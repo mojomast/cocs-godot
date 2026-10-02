@@ -1,0 +1,3704 @@
+{
+  "provenance": {
+    "game/hud.mjs": "e3f93556b9c71e0aa81da51a0e0266ebe61e70c84d0bac9d927f6bf26db171b2",
+    "game/cocs-intel.mjs": "1be460752165e06e84aaece3ef539722591d576e4d77f5a4683a28d2a2ee5de0",
+    "game/camera-modes.mjs": "4fcaba4acb0958b7b2660c3db2ff97bf7f8a93b862137a9e8c3f1520884b7abe",
+    "app/page.tsx": "ea81fbc71df57c3699bdf2f1aa045ade484eb64a55d02a1a4c1e8ef30fb78857",
+    "game/view.mjs": "98f8aca46bece81a191760a253db68814bf4e768ee56f37be41eae09723af33d"
+  },
+  "selection": [
+    {
+      "actors": [],
+      "target": null,
+      "expected": null,
+      "next": null,
+      "previous": null
+    },
+    {
+      "actors": [],
+      "target": 0,
+      "expected": null,
+      "next": null,
+      "previous": null
+    },
+    {
+      "actors": [],
+      "target": 1,
+      "expected": null,
+      "next": null,
+      "previous": null
+    },
+    {
+      "actors": [],
+      "target": "named",
+      "expected": null,
+      "next": null,
+      "previous": null
+    },
+    {
+      "actors": [],
+      "target": "one",
+      "expected": null,
+      "next": null,
+      "previous": null
+    },
+    {
+      "actors": [],
+      "target": "two",
+      "expected": null,
+      "next": null,
+      "previous": null
+    },
+    {
+      "actors": [],
+      "target": "0",
+      "expected": null,
+      "next": null,
+      "previous": null
+    },
+    {
+      "actors": [],
+      "target": 99,
+      "expected": null,
+      "next": null,
+      "previous": null
+    },
+    {
+      "actors": [
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 100,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": null,
+      "expected": 0,
+      "next": 0,
+      "previous": 1
+    },
+    {
+      "actors": [
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 100,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": 0,
+      "expected": 0,
+      "next": 1,
+      "previous": 1
+    },
+    {
+      "actors": [
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 100,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": 1,
+      "expected": 1,
+      "next": 0,
+      "previous": 0
+    },
+    {
+      "actors": [
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 100,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": "named",
+      "expected": 0,
+      "next": 0,
+      "previous": 1
+    },
+    {
+      "actors": [
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 100,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": "one",
+      "expected": 0,
+      "next": 0,
+      "previous": 1
+    },
+    {
+      "actors": [
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 100,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": "two",
+      "expected": 0,
+      "next": 0,
+      "previous": 1
+    },
+    {
+      "actors": [
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 100,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": "0",
+      "expected": 0,
+      "next": 0,
+      "previous": 1
+    },
+    {
+      "actors": [
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 100,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": 99,
+      "expected": 0,
+      "next": 0,
+      "previous": 1
+    },
+    {
+      "actors": [
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 100,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        }
+      ],
+      "target": null,
+      "expected": 1,
+      "next": 1,
+      "previous": 0
+    },
+    {
+      "actors": [
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 100,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        }
+      ],
+      "target": 0,
+      "expected": 0,
+      "next": 1,
+      "previous": 1
+    },
+    {
+      "actors": [
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 100,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        }
+      ],
+      "target": 1,
+      "expected": 1,
+      "next": 0,
+      "previous": 0
+    },
+    {
+      "actors": [
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 100,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        }
+      ],
+      "target": "named",
+      "expected": 1,
+      "next": 1,
+      "previous": 0
+    },
+    {
+      "actors": [
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 100,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        }
+      ],
+      "target": "one",
+      "expected": 1,
+      "next": 1,
+      "previous": 0
+    },
+    {
+      "actors": [
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 100,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        }
+      ],
+      "target": "two",
+      "expected": 1,
+      "next": 1,
+      "previous": 0
+    },
+    {
+      "actors": [
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 100,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        }
+      ],
+      "target": "0",
+      "expected": 1,
+      "next": 1,
+      "previous": 0
+    },
+    {
+      "actors": [
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 100,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        }
+      ],
+      "target": 99,
+      "expected": 1,
+      "next": 1,
+      "previous": 0
+    },
+    {
+      "actors": [
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 0,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 0,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": null,
+      "expected": 0,
+      "next": null,
+      "previous": null
+    },
+    {
+      "actors": [
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 0,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 0,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": 0,
+      "expected": 0,
+      "next": null,
+      "previous": null
+    },
+    {
+      "actors": [
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 0,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 0,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": 1,
+      "expected": 0,
+      "next": null,
+      "previous": null
+    },
+    {
+      "actors": [
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 0,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 0,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": "named",
+      "expected": 0,
+      "next": null,
+      "previous": null
+    },
+    {
+      "actors": [
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 0,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 0,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": "one",
+      "expected": 0,
+      "next": null,
+      "previous": null
+    },
+    {
+      "actors": [
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 0,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 0,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": "two",
+      "expected": 0,
+      "next": null,
+      "previous": null
+    },
+    {
+      "actors": [
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 0,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 0,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": "0",
+      "expected": 0,
+      "next": null,
+      "previous": null
+    },
+    {
+      "actors": [
+        {
+          "id": 0,
+          "name": "Alpha",
+          "team": 0,
+          "health": 0,
+          "x": 1,
+          "y": 2,
+          "z": 3,
+          "req": 777,
+          "reqBuff": {
+            "secret": "PRIVATE"
+          },
+          "weapon": 4,
+          "cooldown": 99
+        },
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 0,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": 99,
+      "expected": 0,
+      "next": null,
+      "previous": null
+    },
+    {
+      "actors": [
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": null,
+      "expected": 1,
+      "next": 1,
+      "previous": 1
+    },
+    {
+      "actors": [
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": 0,
+      "expected": 1,
+      "next": 1,
+      "previous": 1
+    },
+    {
+      "actors": [
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": 1,
+      "expected": 1,
+      "next": 1,
+      "previous": 1
+    },
+    {
+      "actors": [
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": "named",
+      "expected": 1,
+      "next": 1,
+      "previous": 1
+    },
+    {
+      "actors": [
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": "one",
+      "expected": 1,
+      "next": 1,
+      "previous": 1
+    },
+    {
+      "actors": [
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": "two",
+      "expected": 1,
+      "next": 1,
+      "previous": 1
+    },
+    {
+      "actors": [
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": "0",
+      "expected": 1,
+      "next": 1,
+      "previous": 1
+    },
+    {
+      "actors": [
+        {
+          "id": 1,
+          "name": "Beta",
+          "team": 1,
+          "health": 50,
+          "x": 4,
+          "y": 5,
+          "z": 6
+        },
+        {
+          "id": "named",
+          "name": "String ID",
+          "health": 0,
+          "x": 7,
+          "y": 8,
+          "z": 9
+        }
+      ],
+      "target": 99,
+      "expected": 1,
+      "next": 1,
+      "previous": 1
+    },
+    {
+      "actors": [
+        {
+          "id": "one",
+          "health": 100
+        },
+        {
+          "id": "two",
+          "health": 100
+        }
+      ],
+      "target": null,
+      "expected": "one",
+      "next": "one",
+      "previous": "two"
+    },
+    {
+      "actors": [
+        {
+          "id": "one",
+          "health": 100
+        },
+        {
+          "id": "two",
+          "health": 100
+        }
+      ],
+      "target": 0,
+      "expected": "one",
+      "next": "one",
+      "previous": "two"
+    },
+    {
+      "actors": [
+        {
+          "id": "one",
+          "health": 100
+        },
+        {
+          "id": "two",
+          "health": 100
+        }
+      ],
+      "target": 1,
+      "expected": "one",
+      "next": "one",
+      "previous": "two"
+    },
+    {
+      "actors": [
+        {
+          "id": "one",
+          "health": 100
+        },
+        {
+          "id": "two",
+          "health": 100
+        }
+      ],
+      "target": "named",
+      "expected": "one",
+      "next": "one",
+      "previous": "two"
+    },
+    {
+      "actors": [
+        {
+          "id": "one",
+          "health": 100
+        },
+        {
+          "id": "two",
+          "health": 100
+        }
+      ],
+      "target": "one",
+      "expected": "one",
+      "next": "two",
+      "previous": "two"
+    },
+    {
+      "actors": [
+        {
+          "id": "one",
+          "health": 100
+        },
+        {
+          "id": "two",
+          "health": 100
+        }
+      ],
+      "target": "two",
+      "expected": "two",
+      "next": "one",
+      "previous": "one"
+    },
+    {
+      "actors": [
+        {
+          "id": "one",
+          "health": 100
+        },
+        {
+          "id": "two",
+          "health": 100
+        }
+      ],
+      "target": "0",
+      "expected": "one",
+      "next": "one",
+      "previous": "two"
+    },
+    {
+      "actors": [
+        {
+          "id": "one",
+          "health": 100
+        },
+        {
+          "id": "two",
+          "health": 100
+        }
+      ],
+      "target": 99,
+      "expected": "one",
+      "next": "one",
+      "previous": "two"
+    }
+  ],
+  "assist": [
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": 0,
+      "time": 9,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": 0,
+      "time": 10,
+      "expected": true
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": 0,
+      "time": 14.999,
+      "expected": true
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": 0,
+      "time": 15,
+      "expected": true
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": 0,
+      "time": 15.001,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": 0,
+      "time": 20,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": "0",
+      "time": 9,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": "0",
+      "time": 10,
+      "expected": true
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": "0",
+      "time": 14.999,
+      "expected": true
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": "0",
+      "time": 15,
+      "expected": true
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": "0",
+      "time": 15.001,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": "0",
+      "time": 20,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": 1,
+      "time": 9,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": 1,
+      "time": 10,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": 1,
+      "time": 14.999,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": 1,
+      "time": 15,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": 1,
+      "time": 15.001,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": 1,
+      "time": 20,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": "named",
+      "time": 9,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": "named",
+      "time": 10,
+      "expected": true
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": "named",
+      "time": 14.999,
+      "expected": true
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": "named",
+      "time": 15,
+      "expected": true
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": "named",
+      "time": 15.001,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": "named",
+      "time": 20,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": null,
+      "time": 9,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": null,
+      "time": 10,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": null,
+      "time": 14.999,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": null,
+      "time": 15,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": null,
+      "time": 15.001,
+      "expected": false
+    },
+    {
+      "marks": {
+        "0": 10,
+        "named": 10
+      },
+      "victim": null,
+      "time": 20,
+      "expected": false
+    }
+  ],
+  "visibility": [
+    {
+      "event": {
+        "type": "cocs-capture",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-capture",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-capture",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-depot-capture",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-depot-capture",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-depot-capture",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-depot-vehicle-spawn",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-depot-vehicle-spawn",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-depot-vehicle-spawn",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-device-use",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-device-use",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-device-use",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-prime",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-prime",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-prime",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-prime-start",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-prime-start",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-prime-start",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-prime-interrupt",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-prime-interrupt",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-prime-interrupt",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-hack",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-hack",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-hack",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-deploy",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-deploy",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-deploy",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-sabotage",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-sabotage",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-sabotage",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-vault",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-vault",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-vault",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-repair",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-repair",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-repair",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-restored",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-restored",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-restored",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-offline",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-offline",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-terminal-offline",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-order",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-order",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": false
+    },
+    {
+      "event": {
+        "type": "cocs-order",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": false
+    },
+    {
+      "event": {
+        "type": "cocs-scan",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-scan",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": false
+    },
+    {
+      "event": {
+        "type": "cocs-scan",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": false
+    },
+    {
+      "event": {
+        "type": "cocs-role",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-role",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": false
+    },
+    {
+      "event": {
+        "type": "cocs-role",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": false
+    },
+    {
+      "event": {
+        "type": "cocs-buy",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-buy",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": false
+    },
+    {
+      "event": {
+        "type": "cocs-buy",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": false
+    },
+    {
+      "event": {
+        "type": "cocs-unknown",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "cocs-unknown",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": false
+    },
+    {
+      "event": {
+        "type": "cocs-unknown",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": false
+    },
+    {
+      "event": {
+        "type": "death",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "death",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "death",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "damage",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 0,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "damage",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": 1,
+      "expected": true
+    },
+    {
+      "event": {
+        "type": "damage",
+        "team": 0,
+        "actor": 0,
+        "text": "PRIVATE"
+      },
+      "team": null,
+      "expected": true
+    }
+  ],
+  "publicSnapshot": {
+    "time": 10,
+    "actors": [
+      {
+        "id": 0,
+        "name": "Alpha",
+        "team": 0,
+        "health": 100,
+        "x": 1,
+        "y": 2,
+        "z": 3,
+        "weapon": 4,
+        "cooldown": 99
+      },
+      {
+        "id": 1,
+        "name": "Beta",
+        "team": 1,
+        "health": 50,
+        "x": 4,
+        "y": 5,
+        "z": 6
+      },
+      {
+        "id": "named",
+        "name": "String ID",
+        "health": 0,
+        "x": 7,
+        "y": 8,
+        "z": 9
+      }
+    ],
+    "cocs": {
+      "intel": {},
+      "contacts": {},
+      "req": [],
+      "cards": [],
+      "scores": {
+        "0": 2,
+        "1": 3
+      }
+    }
+  },
+  "motion": [
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 0,
+        "up": 0,
+        "boost": false
+      },
+      "dt": 0,
+      "expected": {
+        "pose": {
+          "x": 1,
+          "y": 0.4,
+          "z": 3,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": -9.493820533782198,
+          "y": 6.230693476938408,
+          "z": -11.271460884409468
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 1,
+        "up": 1,
+        "boost": false
+      },
+      "dt": 0,
+      "expected": {
+        "pose": {
+          "x": 1,
+          "y": 0.4,
+          "z": 3,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.4114007822923946,
+          "y": 11.435994798186057,
+          "z": -11.100719382436699
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": 0,
+        "boost": false
+      },
+      "dt": 0,
+      "expected": {
+        "pose": {
+          "x": 1,
+          "y": 0.4,
+          "z": 3,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": -1,
+        "boost": false
+      },
+      "dt": 0,
+      "expected": {
+        "pose": {
+          "x": 1,
+          "y": 0.4,
+          "z": 3,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 0,
+          "y": -16,
+          "z": 0
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 0,
+        "up": 0,
+        "boost": true
+      },
+      "dt": 0,
+      "expected": {
+        "pose": {
+          "x": 1,
+          "y": 0.4,
+          "z": 3,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": -22.785169281077273,
+          "y": 14.953664344652175,
+          "z": -27.051506122582715
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 1,
+        "up": 1,
+        "boost": true
+      },
+      "dt": 0,
+      "expected": {
+        "pose": {
+          "x": 1,
+          "y": 0.4,
+          "z": 3,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 3.3873618775017476,
+          "y": 27.446387515646542,
+          "z": -26.64172651784808
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": 0,
+        "boost": true
+      },
+      "dt": 0,
+      "expected": {
+        "pose": {
+          "x": 1,
+          "y": 0.4,
+          "z": 3,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": -1,
+        "boost": true
+      },
+      "dt": 0,
+      "expected": {
+        "pose": {
+          "x": 1,
+          "y": 0.4,
+          "z": 3,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 0,
+          "y": -38.4,
+          "z": 0
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 0,
+        "up": 0,
+        "boost": false
+      },
+      "dt": 0.006944444444444444,
+      "expected": {
+        "pose": {
+          "x": 1.0123197101898893,
+          "y": 0.4,
+          "z": 3.0188849409465197,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.5480765346881014,
+          "y": -0.7156976617912392,
+          "z": 2.4388629925977092
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 1,
+        "up": 1,
+        "boost": false
+      },
+      "dt": 0.006944444444444444,
+      "expected": {
+        "pose": {
+          "x": 1.0138321018145922,
+          "y": 0.4,
+          "z": 3.018722867106826,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.9836453226025377,
+          "y": -0.4560281749427385,
+          "z": 2.39218572676588
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": 0,
+        "boost": false
+      },
+      "dt": 0.006944444444444444,
+      "expected": {
+        "pose": {
+          "x": 1.013483370585135,
+          "y": 0.4,
+          "z": 3.0202250558777024,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.8832107285188848,
+          "y": -0.9416053642594424,
+          "z": 2.8248160927783275
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": -1,
+        "boost": false
+      },
+      "dt": 0.006944444444444444,
+      "expected": {
+        "pose": {
+          "x": 1.0136158415249792,
+          "y": 0.4,
+          "z": 3.020423762287469,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.9213623591940343,
+          "y": -1.5897823060447427,
+          "z": 2.8820435387910512
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 0,
+        "up": 0,
+        "boost": true
+      },
+      "dt": 0.006944444444444444,
+      "expected": {
+        "pose": {
+          "x": 1.0105051263207632,
+          "y": 0.4,
+          "z": 3.0167305910691913,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.025476380379795,
+          "y": -0.37272073686315,
+          "z": 1.8184102279270304
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 1,
+        "up": 1,
+        "boost": true
+      },
+      "dt": 0.006944444444444444,
+      "expected": {
+        "pose": {
+          "x": 1.0141348662200502,
+          "y": 0.4,
+          "z": 3.0163416138539256,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 2.0708414713744423,
+          "y": 0.25048603157325133,
+          "z": 1.7063847899306392
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": 0,
+        "boost": true
+      },
+      "dt": 0.006944444444444444,
+      "expected": {
+        "pose": {
+          "x": 1.013483370585135,
+          "y": 0.4,
+          "z": 3.0202250558777024,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.8832107285188848,
+          "y": -0.9416053642594424,
+          "z": 2.8248160927783275
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": -1,
+        "boost": true
+      },
+      "dt": 0.006944444444444444,
+      "expected": {
+        "pose": {
+          "x": 1.0136158415249792,
+          "y": 0.4,
+          "z": 3.020423762287469,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.9213623591940343,
+          "y": -2.470523883071558,
+          "z": 2.8820435387910512
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 0,
+        "up": 0,
+        "boost": false
+      },
+      "dt": 0.03333333333333333,
+      "expected": {
+        "pose": {
+          "x": 1.0331163183816114,
+          "y": 0.4,
+          "z": 3.058341747045626,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": -0.01302089710331078,
+          "y": 0.26637935809459834,
+          "z": 0.5005048227375468
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 1,
+        "up": 1,
+        "boost": false
+      },
+      "dt": 0.03333333333333333,
+      "expected": {
+        "pose": {
+          "x": 1.0654525116937756,
+          "y": 0.4070505935675027,
+          "z": 3.0548764732861162,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.927150701626539,
+          "y": 1.4230356140501623,
+          "z": 0.29258839716696805
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": 0,
+        "boost": false
+      },
+      "dt": 0.03333333333333333,
+      "expected": {
+        "pose": {
+          "x": 1.0583051179479448,
+          "y": 0.4,
+          "z": 3.087457676921917,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.4983070768766815,
+          "y": -0.7491535384383408,
+          "z": 2.2474606153150223
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": -1,
+        "boost": false
+      },
+      "dt": 0.03333333333333333,
+      "expected": {
+        "pose": {
+          "x": 1.0608286864778433,
+          "y": 0.4,
+          "z": 3.091243029716765,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.649721188670605,
+          "y": -3.627091084970463,
+          "z": 2.4745817830059074
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 0,
+        "up": 0,
+        "boost": true
+      },
+      "dt": 0.03333333333333333,
+      "expected": {
+        "pose": {
+          "x": 0.9943190030468868,
+          "y": 0.41323525485827434,
+          "z": 3.0122799513060308,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": -2.340859817186793,
+          "y": 1.794115291496459,
+          "z": -2.2632029216381575
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 1,
+        "up": 1,
+        "boost": true
+      },
+      "dt": 0.03333333333333333,
+      "expected": {
+        "pose": {
+          "x": 1.0719258669960807,
+          "y": 0.4595015050964969,
+          "z": 3.0039632942832077,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 2.3155520197648465,
+          "y": 4.570090305789813,
+          "z": -2.762202343007547
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": 0,
+        "boost": true
+      },
+      "dt": 0.03333333333333333,
+      "expected": {
+        "pose": {
+          "x": 1.0583051179479448,
+          "y": 0.4,
+          "z": 3.087457676921917,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.4983070768766815,
+          "y": -0.7491535384383408,
+          "z": 2.2474606153150223
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": -1,
+        "boost": true
+      },
+      "dt": 0.03333333333333333,
+      "expected": {
+        "pose": {
+          "x": 1.0608286864778433,
+          "y": 0.4,
+          "z": 3.091243029716765,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.649721188670605,
+          "y": -7.550213771859688,
+          "z": 2.4745817830059074
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 0,
+        "up": 0,
+        "boost": false
+      },
+      "dt": 0.1,
+      "expected": {
+        "pose": {
+          "x": 0.9478434067921275,
+          "y": 0.45863019857638276,
+          "z": 2.98690628619656,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": -3.0431318641574494,
+          "y": 2.1726039715276544,
+          "z": -3.261874276068794
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 1,
+        "up": 1,
+        "boost": false
+      },
+      "dt": 0.1,
+      "expected": {
+        "pose": {
+          "x": 1.1908746943850068,
+          "y": 0.6035161763792052,
+          "z": 2.960862096779909,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.8174938877001334,
+          "y": 5.070323527584104,
+          "z": -3.782758064401815
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": 0,
+        "boost": false
+      },
+      "dt": 0.1,
+      "expected": {
+        "pose": {
+          "x": 1.1420448207626857,
+          "y": 0.4,
+          "z": 3.2130672311440285,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 0.8408964152537146,
+          "y": -0.4204482076268573,
+          "z": 1.2613446228805718
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": -1,
+        "boost": false
+      },
+      "dt": 0.1,
+      "expected": {
+        "pose": {
+          "x": 1.1561231024154686,
+          "y": 0.4,
+          "z": 3.234184653623203,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.122462048309373,
+          "y": -7.581534637679702,
+          "z": 1.6836930724640595
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 0,
+        "up": 0,
+        "boost": true
+      },
+      "dt": 0.1,
+      "expected": {
+        "pose": {
+          "x": 0.6562518329194499,
+          "y": 0.6499986482741466,
+          "z": 2.6407165717992607,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": -8.874963341611002,
+          "y": 5.999972965482931,
+          "z": -10.185668564014788
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 1,
+        "up": 1,
+        "boost": true
+      },
+      "dt": 0.1,
+      "expected": {
+        "pose": {
+          "x": 1.23952692314236,
+          "y": 0.9977249950009205,
+          "z": 2.578210517199298,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 2.7905384628471976,
+          "y": 12.954499900018408,
+          "z": -11.435789656014038
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": 0,
+        "boost": true
+      },
+      "dt": 0.1,
+      "expected": {
+        "pose": {
+          "x": 1.1420448207626857,
+          "y": 0.4,
+          "z": 3.2130672311440285,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 0.8408964152537146,
+          "y": -0.4204482076268573,
+          "z": 1.2613446228805718
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": -1,
+        "boost": true
+      },
+      "dt": 0.1,
+      "expected": {
+        "pose": {
+          "x": 1.1561231024154686,
+          "y": 0.4,
+          "z": 3.234184653623203,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.122462048309373,
+          "y": -17.409959696614724,
+          "z": 1.6836930724640595
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 0,
+        "up": 0,
+        "boost": false
+      },
+      "dt": 0.5,
+      "expected": {
+        "pose": {
+          "x": 0.9478434067921275,
+          "y": 0.45863019857638276,
+          "z": 2.98690628619656,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": -3.0431318641574494,
+          "y": 2.1726039715276544,
+          "z": -3.261874276068794
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 1,
+        "up": 1,
+        "boost": false
+      },
+      "dt": 0.5,
+      "expected": {
+        "pose": {
+          "x": 1.1908746943850068,
+          "y": 0.6035161763792052,
+          "z": 2.960862096779909,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.8174938877001334,
+          "y": 5.070323527584104,
+          "z": -3.782758064401815
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": 0,
+        "boost": false
+      },
+      "dt": 0.5,
+      "expected": {
+        "pose": {
+          "x": 1.1420448207626857,
+          "y": 0.4,
+          "z": 3.2130672311440285,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 0.8408964152537146,
+          "y": -0.4204482076268573,
+          "z": 1.2613446228805718
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": -1,
+        "boost": false
+      },
+      "dt": 0.5,
+      "expected": {
+        "pose": {
+          "x": 1.1561231024154686,
+          "y": 0.4,
+          "z": 3.234184653623203,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.122462048309373,
+          "y": -7.581534637679702,
+          "z": 1.6836930724640595
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 0,
+        "up": 0,
+        "boost": true
+      },
+      "dt": 0.5,
+      "expected": {
+        "pose": {
+          "x": 0.6562518329194499,
+          "y": 0.6499986482741466,
+          "z": 2.6407165717992607,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": -8.874963341611002,
+          "y": 5.999972965482931,
+          "z": -10.185668564014788
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 1,
+        "right": 1,
+        "up": 1,
+        "boost": true
+      },
+      "dt": 0.5,
+      "expected": {
+        "pose": {
+          "x": 1.23952692314236,
+          "y": 0.9977249950009205,
+          "z": 2.578210517199298,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 2.7905384628471976,
+          "y": 12.954499900018408,
+          "z": -11.435789656014038
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": 0,
+        "boost": true
+      },
+      "dt": 0.5,
+      "expected": {
+        "pose": {
+          "x": 1.1420448207626857,
+          "y": 0.4,
+          "z": 3.2130672311440285,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 0.8408964152537146,
+          "y": -0.4204482076268573,
+          "z": 1.2613446228805718
+        }
+      }
+    },
+    {
+      "pose": {
+        "x": 1,
+        "y": 0.4,
+        "z": 3,
+        "yaw": 0.7,
+        "pitch": 0.4
+      },
+      "velocity": {
+        "x": 2,
+        "y": -1,
+        "z": 3
+      },
+      "input": {
+        "forward": 0,
+        "right": 0,
+        "up": -1,
+        "boost": true
+      },
+      "dt": 0.5,
+      "expected": {
+        "pose": {
+          "x": 1.1561231024154686,
+          "y": 0.4,
+          "z": 3.234184653623203,
+          "yaw": 0.7,
+          "pitch": 0.4
+        },
+        "velocity": {
+          "x": 1.122462048309373,
+          "y": -17.409959696614724,
+          "z": 1.6836930724640595
+        }
+      }
+    }
+  ]
+}
