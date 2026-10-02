@@ -7,13 +7,19 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
+Current assignments below supersede the historical checkpoints later in this file.
+The owner renewed the execution directive: **use subagents to advance the missing
+production work**. Source workers start from committed parent `652b8f3c` in their
+existing checkouts; the active heavy worker adopts new inputs only at safe run
+boundaries.
+
 | Work | Existing owner/session | Current action |
 |---|---|---|
-| Native integration and visual finish | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Repair current engine failures; complete baseline gates; at a run boundary merge `e38b3662`, then native Moth map/operator checks and screenshots |
-| Actual fighting combos | Sol `ses_f026eedd8ffeCVNtizjJEn6vHg` | Repair 27 authored traces from actual native failure logs; preserve legitimate spacing/input rules and retain failed evidence |
-| Remaining asset source consolidation | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Consolidate committed Vesper, Abyssal, robots, vehicles, Stormglass and scenery recipes/hooks in existing checkout; prepare exact sequential production units |
-| Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Extend completion ledger for fighting, visual finishes, queued assets/cinematic and final packages using existing gates, with exact-input receipts |
-| Windows release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Close all dynamic resources and runtime dependencies, prepare actual Windows CI/extraction tests and versioned release commands |
+| Fighting production and native surface review | Astra `ses_f026e25e4ffezp2kvz5VGox7dz` | Exclusive heavy grant B: real Meta/Mistral master/export/native slice, then remaining seven; compile revised surfaces and capture matched district comparisons |
+| Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Source-only campaign input-chain diagnosis and control-texture ownership repairs or targeted native diagnostics; preserve pending native gates |
+| Queued asset integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Implement missing test-only candidate admission/hosted journey harnesses; reconcile every builder/receipt with refined material semantics before serial production |
+| Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Extension already integrated; fresh exact-input ledger required after production candidate stabilizes; no current engine grant |
+| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Extend required queued-asset resource/provenance closure and negative tests; preserve strict final preflight and historical release validation |
 
 All workers run in the background, using existing sessions/checkouts. Source work
 may run in parallel. The parent owns merges, stage transitions, explicit heavy
@@ -22,18 +28,18 @@ are introduced by this directive.
 
 ## Exclusive heavy ownership
 
-`FINISH-COMBINED-NATIVE-20261002-A` remains with the integration Astra. After the
-tool-server restart it resumed from retained receipts. Recovery fixes are at
-`1bbd3ea6`; the targeted run is
-`/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/run-1tdw_lph/`.
-No acceptance or release follows from a started run. No other agent may run
-Godot, Blender, imports, rendering, audio capture or encoding before explicit
-teardown/release and a new grant.
+**`FIGHTING-ANIMATION-PRODUCTION-20261002-B` belongs to animation Astra
+`ses_f026e25e4ffezp2kvz5VGox7dz`.** Its scope includes fighting Blender production,
+native import/review and the bounded revised-surface comparison task. Prior grant
+`FINISH-COMBINED-NATIVE-20261002-A` was explicitly released at
+`2026-10-02T20:49:20Z`; its committed closeout is integrated.
 
-The current grant now also covers native Moth map/operator finishes after the
-baseline run reaches a stable checkpoint and `e38b3662` is merged once. It does
-not grant fighter Blender production. Preserve current evidence when inputs
-change; never attach old receipts to the new candidate as though unchanged.
+No other agent may run Godot, Blender, imports, rendering, audio capture or encoding
+before explicit teardown/release and a new grant. Asset integration, gameplay
+diagnosis and packaging preparation run source-only in parallel. The parent will
+sequence the asset production queue and remaining native gates after the current
+owner's immutable checkpoint and explicit release. Preserve current evidence when
+inputs change; never attach old receipts to new candidate identities.
 
 ## Required completion sequence
 
@@ -70,9 +76,12 @@ change; never attach old receipts to the new candidate as though unchanged.
 
 ## Remaining evidence distinctions
 
-The current fighting native core/invariant/pair-seek suites passed, but proposed
-combo cases passed only 16/54; all 54 replay comparisons matched. No production
-fighting GLBs exist yet. Source-complete animation recipes are not finished art.
+The native core/invariant/pair-seek suites and **54/54 combo cases** passed at the
+recorded integration anchors; earlier 16/54 results remain retained failure
+history. Production fighter exports and their actual motion/contact acceptance
+are still assigned to the active animation owner. Source-complete animation
+recipes are not finished art, and historical native passes are not final-candidate
+release acceptance.
 
 Real audio is currently blocked by device permissions and the absent Pulse
 socket. Software-rendered capture does not establish real-GPU performance, and
