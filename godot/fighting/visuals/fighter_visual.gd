@@ -97,7 +97,11 @@ func present(fighter: Dictionary, _alpha: float) -> void:
 	unavailable_reason = ""
 	var data: Dictionary = _manifest["clips"][clip]
 	var animation: Animation = _player.get_animation(_clip_names[clip])
-	var seconds := _seek_seconds(float(fighter.get("animation_frame", 0)), data)
+	var seconds := _presentation_seconds(fighter, data)
+	if seconds < 0.0:
+		_model.visible = false
+		unavailable_reason = "invalid_pair_animation_timeline"
+		return
 	# Import resampling may slightly alter duration. Explicit phase knots remain
 	# authoritative; scaling is against the declared authored duration only.
 	seconds *= animation.length / float(data["duration"])
@@ -137,10 +141,54 @@ func set_lod(level: int) -> void:
 		mesh.visible = (mask & bit) != 0
 
 
+func _presentation_seconds(fighter: Dictionary, data: Dictionary) -> float:
+	# Entirely snapshot-derived: no remembered catch, elapsed timer, or recovery
+	# cache that could disagree after load/rewind or on a newly configured visual.
+	var clip := str(fighter.get("animation", "idle"))
+	var state := str(fighter.get("state", ""))
+	if state in ["throw_tech", "win", "lose", "knockdown", "wakeup"]:
+		return _seek_seconds(float(fighter.get("animation_frame", 0)), data)
+	var phase: Dictionary = fighter.get("pair_phase", {})
+	if phase.is_empty():
+		# Core must retain this optional attacker-only projection through recovery.
+		# pair_phase itself continues to mean that both actors are currently held.
+		phase = fighter.get("animation_pair_phase", {})
+	if phase.is_empty():
+		return _seek_seconds(float(fighter.get("animation_frame", 0)), data)
+	var move := str(phase.get("move_id", ""))
+	var id := int(fighter.get("id", -1))
+	var attacker := id == int(phase.get("actor", -2)) and clip == move
+	var victim := id == int(phase.get("target", -2)) and clip.begins_with("victim_") and clip.ends_with("_" + move)
+	if move.is_empty() or not (attacker or victim):
+		# A tech, KO, new attack or reaction cannot inherit an old pair clock.
+		return _seek_seconds(float(fighter.get("animation_frame", 0)), data)
+	for field: String in ["caught_move_frame", "damage_frame", "release_frame", "end_frame", "frame"]:
+		var value: Variant = phase.get(field)
+		if not (value is int or value is float):
+			return -1.0
+		if not is_finite(float(value)) or float(value) != floorf(float(value)) or float(value) < 0.0:
+			return -1.0
+	var caught := float(phase["caught_move_frame"])
+	var damage := float(phase["damage_frame"])
+	var release := float(phase["release_frame"])
+	var end := float(phase["end_frame"])
+	var frame := float(fighter.get("animation_frame", 0))
+	if damage <= caught or release <= damage or end <= release or float(phase["frame"]) != frame:
+		return -1.0
+	var keys: Array = [[caught, 0.28], [damage, 0.68], [release, 0.82], [end, 1.0]]
+	if caught > 0.0:
+		keys.push_front([0.0, 0.0])
+	return _seek_knots(frame, keys, false)
+
+
 func _seek_seconds(frame: float, data: Dictionary) -> float:
 	var keys: Array = data["seek_keys"]
+	return _seek_knots(frame, keys, bool(data.get("loop", false)))
+
+
+func _seek_knots(frame: float, keys: Array, loop: bool) -> float:
 	var end_frame := float(keys[-1][0])
-	var cursor := fposmod(frame, end_frame) if bool(data.get("loop", false)) else clampf(frame, 0.0, end_frame)
+	var cursor := fposmod(frame, end_frame) if loop else clampf(frame, float(keys[0][0]), end_frame)
 	for index: int in range(1, keys.size()):
 		var left: Array = keys[index - 1]
 		var right: Array = keys[index]

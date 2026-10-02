@@ -1,7 +1,8 @@
 # Animation/rig implementation — source-ready checkpoint
 
-Status: **READY FOR BLENDER, source only.** Foundry revision 3 owns the exclusive
-heavy slot. No Blender, Godot, import, render, capture or encode has run in this
+Status: **READY FOR BLENDER, source only.** The integration worker owns
+`FINISH-COMBINED-NATIVE-20261002-A`; this lane has no heavy grant.
+No Blender, Godot, import, render, capture or encode has run in this
 lane. Generated fighting GLBs and `.blend` masters do not exist yet. Scripts
 below are prepared production paths, not native acceptance evidence.
 
@@ -129,13 +130,20 @@ agree; weight groups preserve articulation.
 - Manifest hashes bind `roster.json`, `rules.json`, coverage, master, original
   GLB and the generating pipeline. Runtime refuses stale roster/rules hashes.
 
-**Core coordination still required:** if a throw connects on its second active
-frame, or Claude counters after `counter.from`, both snapshot animation clocks
-must describe the same chosen contact phase. The fixed coverage contact is the
-earliest authored catch. A dynamic catch may need a shared phase offset/remap
-agreed with core; do not let the visual adapter invent a damage or release time.
-Native pair capture below is a fixed-placement authoring proof, not a simulator
-trace for post-release side swaps or tech/KO interruption.
+**Dynamic core integration:** the adapter now consumes core `6be3b1ce`'s shared
+`pair_phase` and maps actual catch/damage/release/end to .28/.68/.82/1.0. It
+validates strictly increasing integral knots and matching `frame`/animation_frame.
+The snapshot alone selects the pose; repeated hitstop, rewind and fresh adapter
+construction do not require a remembered catch. Tech, KO, new attacks and reactions
+discard obsolete pair metadata. Root and facing always remain snapshot-authoritative;
+core performs side swap at **damage**, not release.
+
+**One core projection remains required:** `pair_phase` is currently cleared on
+release. Preserve optional attacker `animation_pair_phase` through recovery so
+dynamic release/end knots cannot fall back to the fixed manifest. The adapter
+already accepts it; precise lifecycle/save-load requirements are in
+`PAIR_SEEK_HANDOFF.md`. Native pair capture below is a fixed-placement authoring
+proof, not a simulator trace for side swaps or tech/KO interruption.
 
 ## Sharing and resource closure
 

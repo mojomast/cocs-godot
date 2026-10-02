@@ -1,6 +1,8 @@
 {
   "status": "source_ready_native_unrun",
-  "heavy_owner": "Foundry revision 3",
+  "heavy_owner": "integration worker ses_f0294303bffed6Fb8UJLKe4ZDz / FINISH-COMBINED-NATIVE-20261002-A",
+  "source_recheck_date": "2026-10-02",
+  "source_recheck_root": "/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930",
   "operators": 9,
   "state_combat_clips": 336,
   "shared_victim_actions": 25,
@@ -19,13 +21,14 @@
   "cross_operator_curve_rms_minimum_required": 0.025,
   "same_operator_aliased_state_combat_curves": 0,
   "content_hashes": {
-    "roster": "2398099cacb5e6b4773d3aa3d9bdece56e005289aab94ecd776ce95b2bf59f2d",
+    "roster": "a736dcfe91d44a08b165e1f7191420617984a561972505b0dd53df1b22cd4748",
     "rules": "5a89f073c107d504b34b6cb58d00599009245533a92519610d92616a6e4cff4a",
     "coverage": "7681c7ffb3deec42eb411527b52bb47010ccbc90a04764768f45b78dddcda026"
   },
-  "evidence": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/source-audit.json",
-  "executed": ["stdlib source oracle", "Python compileall", "git diff --check"],
+  "evidence": "/home/mojo/.tmp-on-disk/cocs-fighting-animation-evidence-20261002/source-audit-current-content.json",
+  "dynamic_pair_seek": {"catch_scenarios": 60, "shared_frame_samples": 2072, "interruption_checks": 360, "invalid_phase_rejections": 420, "status": "source_numeric_only"},
+  "executed": ["stdlib source oracle", "dynamic pair seek numeric oracle", "Python compileall", "gdtoolkit grammar parser for adapter and pair-seek fixture", "git diff --check"],
   "not_executed": ["Blender build", "master reopen", "GLB export", "Godot import", "native gates", "render/capture/encode"],
-  "remaining_contract": "Late-active catch and delayed counter must expose coherent paired animation phases from core.",
+  "remaining_contract": "Core must persist attacker animation_pair_phase through recovery and save/load; adapter consumes the optional field now.",
   "remaining_art_gates": ["native rig axes and skin weights", "materials and colors", "per-body armor/hand intersections", "locomotion skating", "foot clearance and planted contacts", "paired landing/release", "side-on readability"]
 }
