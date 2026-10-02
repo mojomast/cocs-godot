@@ -28,6 +28,8 @@ Configured bounds are 320 × 256 m; actual supported architecture is approximate
 
 Visuals read the same generated arena: exact terrain polygons, walls and block extents are emitted into Blender. Craft geometry is attached to source-solid cabinet surfaces, below floor footings, above head clearance, or outside reachable parapets. Native authority must stay in the source match; GLB colliders must not become a second authority.
 
+Every polygon wall is emitted as individual triangles. This is required because source movement consumes wall perimeter segments: the triangle diagonal carries the wall's vertical span, while a tall quad's horizontal edges can both miss the standing body. Triangulation preserves the original visible/ray geometry. Sustained-input contact fixtures cover both sides at ground/upper heights, low parapets, ramps, arch traversal and slab underside contacts; see `ACCEPTANCE.md`.
+
 ## Reproducibility and ownership contract
 
 Generator: `tools/godot-multiplayer/new-maps/parallax-observatory/generate.mjs`.

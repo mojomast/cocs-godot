@@ -2,10 +2,10 @@
 
 ## Completed in Node / static Python syntax only
 
-Source geometry hash: `62395bcf7d3cd08f3718d8fd2722714c03fdfa0f8afd7ce9699dec3c3be9f58a`.
+Source geometry hash: `916164f0417369f37506e3908e940c961ea142aa349dcda3226ca1f316a040eb`.
 
 - Deterministic generator `--check` passes.
-- 118 terrain surfaces, 844 source wall polygons, 38 source blocks, three fully modeled ceiling slabs.
+- 118 terrain surfaces, 1,688 individual source wall triangles (844 original quads), 38 source blocks, three fully modeled ceiling slabs.
 - Real frozen derivative `Match` factory intercepts only arena assignment, matching the world adapter pattern.
 - 689 source navigation nodes; all 689 in one connected component.
 - All 21 spawn/pickup/flag/objective locations supported, unobstructed and connected via a real `walkEdge` to that component.
@@ -22,10 +22,28 @@ Reproduce:
 ```sh
 node tools/godot-multiplayer/new-maps/parallax-observatory/generate.mjs --check
 node port/new-maps/parallax-observatory/acceptance.mjs
+node port/new-maps/parallax-observatory/wall-contacts.mjs
 ```
 
 Evidence directory: `/home/mojo/.tmp-on-disk/cocs-new-map-observatory-evidence-20261002/`.
-`node-acceptance.json` contains measured results. `failures.md` retains corrected test failures.
+`node-acceptance-wallfix.json` contains the current measured results; `node-acceptance.json` retains the initial acceptance. `failures.md` retains corrected test failures.
+
+### Source movement wall correction (Gravemill finding)
+
+`terrainWallSegments` considers perimeter edges. Tall quad walls have no edge intersecting a standing actor's body span. All source walls now use individual triangles, whose diagonals provide that span; visual triangles are exactly identical. A comparison against commit `408ed002` verifies the arena is otherwise byte-structure equivalent. Blender emission accepts those triangles and emits each parapet cap only once.
+
+`wall-contacts.mjs` tests 180 consecutive input frames (3 s) from each side. Contact aprons are explicitly synthetic supported floors around exact production wall footprints so the sea does not invalidate outside contacts; none is added to the map. Ground/upper tall-wall regressions extend those footprints to 4 m and reproduce the reported source bug.
+
+| Contact | Quad signed stopping distance | Triangulated distance | Actor radius |
+|---|---:|---:|---:|
+| Ground 4 m regression, both sides | −22.335 m (crossed) | 0.4213 m | 0.42 m |
+| Upper 4 m regression, both sides | −22.335 m (crossed) | 0.4213 m | 0.42 m |
+| Exact ground/upper low parapets, both sides | 0.4213 m | 0.4213 m | 0.42 m |
+| Exact ramped parapet, both sides | 0.4311 m | 0.4311 m | 0.42 m |
+
+The existing low parapets were already movement-solid; this is not misreported as a production tall-wall failure. Vault walls use solid blocks and pass independent two-face source contact tests on supported aprons. Real map tests also push into vault side walls, move 33.935 m through each open arch/vault in both directions over 4 s, walk under the service gallery, and launch actors upward against all three real slab undersides. The recipe has no separate window passage to claim as tested.
+
+Evidence: `wall-contacts-before.json`, `wall-contacts-after.json`, `node-acceptance-wallfix.json`. All six routes in both directions, pickups, flag returns/captures and all six source full-round fixtures pass after triangulation. Navigation remains 689/689 connected.
 
 ## Explicit slot boundary
 

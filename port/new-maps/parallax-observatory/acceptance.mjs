@@ -7,6 +7,7 @@ import {Match,floorAt,obstructed,rayWorld,moveActor,walkEdge} from '../../multip
 import {terrainSupportAt,terrainTriangles} from '../../../game/terrain.mjs';
 const data=JSON.parse(readFileSync(new URL('../../../godot/multiplayer_worlds/generated/parallax-observatory.json',import.meta.url))),a=data.arena;
 assert.equal(createHash('sha256').update(canonical(a)).digest('hex'),data.geometryHash);
+assert.ok(a.terrain.walls.every(w=>w.vertices.length===3),'source walls must retain movement-blocking diagonals');
 // The exact derivative constructor used by the production world factory, with
 // only its arena assignment intercepted. Shared registries belong to parent.
 class ObservatoryMatch extends Match {get arena(){return a;}set arena(_fallback){} }

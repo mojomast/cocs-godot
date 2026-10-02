@@ -81,6 +81,11 @@ for(const surface of surfaces.filter(s=>s.walkable))for(let i=0;i<surface.vertic
   walls.push({id:`parapet-${surface.id}-${i}-${j}`,material:'saltstone',vertices:[p,q,[q[0],q[1]+1.1,q[2]],[p[0],p[1]+1.1,p[2]]]});
  }
 }
+// terrainWallSegments consumes polygon perimeter edges, not face area. A quad
+// taller than the actor exposes only horizontal edges outside the body span.
+// Individual triangles retain the diagonal's full height for source movement,
+// while preserving exactly the same rendered/ray geometry and slab openings.
+walls.splice(0,walls.length,...walls.flatMap(w=>Array.from({length:w.vertices.length-2},(_,i)=>({...w,id:`${w.id}-tri-${i}`,vertices:[w.vertices[0],w.vertices[i+1],w.vertices[i+2]]}))));
 const geometryHash=createHash('sha256').update(canonical(arena)).digest('hex');
 const art={seed:20261002,palette:{saltstone:'#b9b5a4',paving:'#8e919a',metal:'#242a38',ochre:'#ba863d',mirror:'#707d99',cistern:'#565b74',sea:'#242c49'},landmarks:[{id:'tilting-primary-dish',kind:'dish',x:-68,y:37,z:-94,r:27,tilt:.57},{id:'eastern-spectrograph',kind:'dish',x:79,y:29,z:-83,r:16,tilt:-.38},{id:'polar-armillary',kind:'armillary',x:0,y:42,z:-84,r:14},{id:'arrival-dome',kind:'dome',x:-116,y:19,z:19,r:14},{id:'instrument-dome',kind:'dome',x:115,y:19,z:18,r:12}],cameras:[{id:'arrival-eye',eye:[-111,13.65,-3],target:[0,20,-60]},{id:'lens-eye',eye:[8,13.65,5],target:[-50,30,-85]},{id:'cistern-eye',eye:[-10,1.65,78],target:[24,2,78]},{id:'overview',eye:[185,160,210],target:[0,10,0]}],budgets:{triangles:160000,materialBatches:7,glbBytes:16000000}};
 const recipe={schemaVersion:1,...arena,art,routes:routes.map(r=>({...r,points:r.points.map(([x,z])=>({x,y:height(z),z}))}))};

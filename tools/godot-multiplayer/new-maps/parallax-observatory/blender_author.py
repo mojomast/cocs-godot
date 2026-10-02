@@ -95,9 +95,9 @@ for s in A['terrain']['surfaces']:
                 continue
             emit('chalk-footing.'+s['id']+'.'+str(i), [p,q,[q[0],-17,q[2]],[p[0],-17,p[2]]], [(0,1,2,3)], 'saltstone')
 for wall in A['terrain']['walls']:
-    emit('SOURCE.wall.'+wall['id'], wall['vertices'], [(0,1,2),(0,2,3)], wall['material'], True)
-    if wall['id'].startswith('parapet'):
-        p,q = wall['vertices'][2:4]
+    emit('SOURCE.wall.'+wall['id'], wall['vertices'], [(0,i,i+1) for i in range(1,len(wall['vertices'])-1)], wall['material'], True)
+    if wall['id'].startswith('parapet') and wall['id'].endswith('-tri-1'):
+        p,q = wall['vertices'][1:3]
         beam('ochre-edge.'+wall['id'], p,q,.12,'ochre')
 for b in A['blocks']:
     bottom = b.get('baseY',0)
