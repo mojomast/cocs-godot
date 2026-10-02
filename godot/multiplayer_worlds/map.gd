@@ -26,6 +26,10 @@ func build(data: Dictionary) -> bool:
  # twice (the old coplanar roofs flickered into black/white stripes). Urban
  # GLBs contain facades only, so their authority terrain stays visible.
  var art_covers_surfaces: bool = data.has("recipeHash") and arena.get("art") is Dictionary and (arena.get("art",{}) as Dictionary).has("ground") and ResourceLoader.exists(art_path)
+ if str(data.id) == "parallax-observatory":
+  art_path = "res://multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb"
+  if not ResourceLoader.exists(art_path): return false
+  art_covers_surfaces = true
  set_meta("multiplayer_world",true)
  var markers := Node3D.new()
  markers.name = "StaticPickupMarkers"

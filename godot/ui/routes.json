@@ -118,6 +118,9 @@
     },
     "tern-archipelago": {
       "name": "Tern Archipelago"
+    },
+    "parallax-observatory": {
+      "name": "Parallax Observatory"
     }
   },
   "routes": [
@@ -420,7 +423,8 @@
             "thermal-divide",
             "sirocco-circuit",
             "copper-bowl",
-            "tern-archipelago"
+            "tern-archipelago",
+            "parallax-observatory"
           ],
           "default": "switchyard-ward"
         },
@@ -485,6 +489,14 @@
             "tern-archipelago": [
               "cocs",
               "cocs-coop"
+            ],
+            "parallax-observatory": [
+              "deathmatch",
+              "teamdeathmatch",
+              "ctf",
+              "koth",
+              "uplink",
+              "holdout"
             ]
           },
           "default": "deathmatch"
@@ -517,6 +529,7 @@
           "maps": [
             "breakwater-exchange",
             "copper-bowl",
+            "parallax-observatory",
             "rainmarket-exchange",
             "sirocco-circuit",
             "switchyard-ward",
@@ -534,6 +547,14 @@
             ],
             "copper-bowl": [
               "puma-soccer"
+            ],
+            "parallax-observatory": [
+              "ctf",
+              "deathmatch",
+              "holdout",
+              "koth",
+              "teamdeathmatch",
+              "uplink"
             ],
             "rainmarket-exchange": [
               "armsrace",

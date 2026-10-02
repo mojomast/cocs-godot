@@ -150,6 +150,10 @@ func load_map(id: String) -> bool:
  world = next
  current_id = id
  expected_hash = str(data.geometryHash)
+ if id == "parallax-observatory":
+  var look := preload("res://multiplayer_worlds/art/parallax-observatory/presentation.gd").new()
+  next.add_child(look)
+  look.bind(self,data)
  return true
 
 func on_lobby(frame: Dictionary) -> void:
@@ -208,6 +212,8 @@ func on_results(frame: Dictionary) -> void:
  pickups.apply_state(frame.state)
  objective_renderer.apply_state(frame.state,client.actor_id)
  release_pointer()
+ if current_id == "parallax-observatory" and selected_mode in ["koth","uplink","holdout"]:
+  zones.apply(frame.state,client.actor_id,current_id,selected_mode)
  label.text = "Round ended · Enter: restart as host"
  if "--urban-fixture-restart" in OS.get_cmdline_user_args() and join_room_id.is_empty() and round_results == 1:
   get_tree().create_timer(2.0).timeout.connect(func() -> void: debug_restart())

@@ -32,6 +32,9 @@ export const EXPERIENCES = {
 };
 
 // Standalone exploration/labs, deliberately outside the source map routes.
+EXPERIENCES['multiplayer-worlds'].maps['parallax-observatory'] = ['deathmatch','teamdeathmatch','ctf','koth','uplink','holdout'];
+EXPERIENCES['multiplayer-worlds'].identity['parallax-observatory'] = {scene:'res://multiplayer_worlds/demo.tscn',modes:EXPERIENCES['multiplayer-worlds'].maps['parallax-observatory']};
+
 export const NATIVE_EXPERIENCES = {
   showcase: {scene:'res://showcase/demo.tscn'},
   'aurora-basin': {scene:'res://aurora_basin/demo.tscn'},

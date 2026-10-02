@@ -1,6 +1,7 @@
 extends "res://world/catalog.gd"
 const WORLD_ROOT := "res://multiplayer_worlds/generated/"
 const MODES := {
+ "parallax-observatory": ["deathmatch","teamdeathmatch","ctf","koth","uplink","holdout"],
  "switchyard-ward": ["deathmatch","teamdeathmatch","instagib","rockets","armsrace","ctf","domination","koth","uplink","holdout","assault"],
  "rainmarket-exchange": ["deathmatch","teamdeathmatch","instagib","rockets","armsrace","domination","koth","uplink","holdout","assault","payload"]
  ,"breakwater-exchange": ["deathmatch","teamdeathmatch","domination","assault","payload","combined-arms"]
