@@ -1,0 +1,1255 @@
+{
+  "geometry_hash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+  "glb_sha256": "46bf1648b32d23e337cd11b2c639a47f17d36c41361aab9434e1e621361e5935",
+  "material_coverage": "8/8",
+  "embedded_source_textures": 0,
+  "panels": 37,
+  "signs": 20,
+  "motes": 32,
+  "face_samples": 1425,
+  "resources": {
+    "res://moth/generated/textures/diamond_plate.png": "73c360a156a11b7b13a99adfd33c5ee057f00cfa28e6c684d27fe032a8d601cf",
+    "res://moth/derived/data/diamond_plate.png": "2e74499a47cbc968c18fa2107826a76ae4603280fdbad0d8fc66ffda0262bbdd",
+    "res://moth/generated/normals/diamond_plate.png": "30aac41aceeb8da141c6b94b6d7d464bc0fde3301ebbd2c7c7420de7efc169f5",
+    "res://moth/generated/materials/entanglement-r.png": "2c6d587cc75a3ca178c61c31eb820909db2070cb637622d1f84975422ba71d13",
+    "res://moth/generated/materials/entanglement-t.png": "7214592bdf129c0e147216d789c3b0d32cdd75311af2b4473f7be40825a72612",
+    "res://moth/generated/textures/rock.png": "aad5e455978fdae96d8a6784908c0019e33083f809cfcf606c7c84b13ca35504",
+    "res://moth/derived/data/rock.png": "8b400da2a0313be935baa99d9422d577b4bd28eac1e330971e061b97be40ed90",
+    "res://moth/generated/normals/rock.png": "47523f76a4c62a937965cef38511f7743df4bc825f9acb5a30d0435701d4a849",
+    "res://moth/generated/materials/entanglement-void-r.png": "cae2038e38c16d09daff4ca70ccdaf929cd1d343ff2ba26bc9430b13a4589757",
+    "res://moth/generated/materials/entanglement-void-t.png": "31e579b975d3f691455245c2140e8f911d2f5d0afc09de2c264c9c0f423a90c9",
+    "res://moth/generated/textures/metal-oxide.png": "82ac59a91f7be9a0fd4182a8b83d7b2b7cf07d7bb6e98ae5b5ff006eedcb8257",
+    "res://moth/derived/data/metal-oxide.png": "da3cd588f2f813ea41eff828feea084fb12b83fabff8ef6632b4f6583907cb08",
+    "res://moth/derived/normals/metal-oxide.png": "ea314cc8916d9e1734b8b7a17c40e2c2e28861385dd8db5e460dd7c9a47c3033",
+    "res://moth/generated/textures/riveted_armor.png": "2afc1402d3438a9ffdea671d8b40b3d97811408613402c4f66c228e8621efdb9",
+    "res://moth/derived/data/riveted_armor.png": "9b3f3ec5c69b36def42c2bdb536ce92a93c4ad92fe8610950b7ef49899dfced5",
+    "res://moth/derived/normals/riveted_armor.png": "86e039e81c256d1c32ba2cc5a1e73106f39cbca1ff0a3ba89c0e989569c6d699",
+    "res://moth/generated/textures/riveted_armor-scorched.png": "a7e8f11847cd2b402e9cc631039c28fd6d4e1d851e1555af58143fc820a511ec",
+    "res://moth/derived/data/riveted_armor-scorched.png": "031722622b2bdb4afc76b208b8f3088bd3d57c3df6e4fb21e9f6c62fddf381f6",
+    "res://moth/derived/normals/riveted_armor-scorched.png": "2cb6386312ea438405d942b978fb1e36d4e4e045653a60ef972588a72ae97707",
+    "res://moth/generated/textures/hazard_stripes.png": "4f2bfb3fd45f16c485749606ba7cfb49b32d86c28c3fd1b0d942d69d613cff44",
+    "res://moth/derived/data/hazard_stripes.png": "5149082b715620d1227ea1867f3bc50c908e7571c84057d6e9053bc3e7e55a94",
+    "res://moth/generated/normals/hazard_stripes.png": "2471d7eea4463dccfd123d066931f425c0189bd464c72d0f6aadfdc9a15cc4e0",
+    "res://moth/generated/materials/entanglement-ember-r.png": "36ad9ff17f76f3894f35a17f23d8421de7897e85f6d2e6b31735c17b21ecbeec",
+    "res://moth/generated/materials/entanglement-ember-t.png": "7214592bdf129c0e147216d789c3b0d32cdd75311af2b4473f7be40825a72612",
+    "res://moth/derived/masks/hazard_stripes.png": "edce2dee413ad9343c685fadd1d0632247851098ac5ca92e3279043151d368a7",
+    "res://moth/generated/textures/hex_paneling.png": "725a587331a74d235254e64b7f5d9a605e2de8cc28f16eec3c92577c3ddeea40",
+    "res://moth/derived/data/hex_paneling.png": "aae91de481d4cfef0b5a753a31311a12ba640b5b6929dcef4c6057b8c5935a7d",
+    "res://moth/generated/normals/holographic_grid.png": "7a98e3381f06b33e589ec97ab23a5cf9eac56ddd3508d75553e139a19425d4dd",
+    "res://moth/generated/materials/entanglement-ceramic-r.png": "e5de4f53a1abec7ec724e406cc792dbb482e54a582447b3967751658ba31ae15",
+    "res://moth/generated/materials/entanglement-ceramic-t.png": "31e579b975d3f691455245c2140e8f911d2f5d0afc09de2c264c9c0f423a90c9",
+    "res://moth/generated/textures/weathered_concrete-damp.png": "8a143f57858a26d6ea5ab81badc60cb0ea154294b9fe180c505cb1b472bd0fab",
+    "res://moth/derived/data/weathered_concrete-damp.png": "bdcdde3249e6479c91253fa646185a8232e5995b724ab8fd953a78241371eb3f",
+    "res://moth/derived/normals/weathered_concrete-damp.png": "12303dd906a6864ef854df189ff42d1ad3de65e7e6a9e05c0e889bbf14b64e0a",
+    "res://moth/generated/textures/metal.png": "1edff202b4755b6d8bd84f6e2499d9052df804e40a17d30cd0ee68926e3a7f46",
+    "res://moth/generated/textures/metal_grating.png": "a9c19f1b0c7ebfb59a079a7a9780390baffcf5f0f593e2c6b5bc8c4977ab9372"
+  },
+  "mounts": [
+    {
+      "id": "crusher--72-abrasion--5",
+      "support": "crusher-bed--72-side-3",
+      "face": [
+        -77,
+        4.4,
+        -25.78
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        3.5,
+        2.6
+      ]
+    },
+    {
+      "id": "crusher--72-abrasion-0",
+      "support": "crusher-bed--72-side-3",
+      "face": [
+        -72,
+        4.4,
+        -25.080000000000002
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        3.5,
+        2.6
+      ]
+    },
+    {
+      "id": "crusher--72-abrasion-5",
+      "support": "crusher-bed--72-side-3",
+      "face": [
+        -67,
+        4.4,
+        -24.380000000000003
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        3.5,
+        2.6
+      ]
+    },
+    {
+      "id": "crusher--72-grease",
+      "support": "crusher-bed--72-side-1",
+      "face": [
+        -72,
+        3.5999999999999996,
+        -9.080000000000002
+      ],
+      "normal": [
+        -0.13864784453440623,
+        0,
+        0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": 1,
+      "size": [
+        8,
+        0.8
+      ]
+    },
+    {
+      "id": "crusher--72-isolate",
+      "support": "crusher-bed--72-side-3",
+      "face": [
+        -72,
+        6.4,
+        -25.080000000000002
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        6,
+        0.9
+      ]
+    },
+    {
+      "id": "crusher--72-hazard",
+      "support": "crusher-bed--72-side-3",
+      "face": [
+        -72,
+        5.4,
+        -25.080000000000002
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        7,
+        0.45
+      ]
+    },
+    {
+      "id": "crusher--48-abrasion--5",
+      "support": "crusher-bed--48-side-3",
+      "face": [
+        -53,
+        6.08,
+        -15.420000000000002
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        3.5,
+        2.6
+      ]
+    },
+    {
+      "id": "crusher--48-abrasion-0",
+      "support": "crusher-bed--48-side-3",
+      "face": [
+        -48,
+        6.08,
+        -14.72
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        3.5,
+        2.6
+      ]
+    },
+    {
+      "id": "crusher--48-abrasion-5",
+      "support": "crusher-bed--48-side-3",
+      "face": [
+        -43,
+        6.08,
+        -14.02
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        3.5,
+        2.6
+      ]
+    },
+    {
+      "id": "crusher--48-grease",
+      "support": "crusher-bed--48-side-1",
+      "face": [
+        -48,
+        5.28,
+        1.2799999999999994
+      ],
+      "normal": [
+        -0.13864784453440623,
+        0,
+        0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": 1,
+      "size": [
+        8,
+        0.8
+      ]
+    },
+    {
+      "id": "crusher--48-isolate",
+      "support": "crusher-bed--48-side-3",
+      "face": [
+        -48,
+        8.08,
+        -14.72
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        6,
+        0.9
+      ]
+    },
+    {
+      "id": "crusher--48-hazard",
+      "support": "crusher-bed--48-side-3",
+      "face": [
+        -48,
+        7.08,
+        -14.72
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        7,
+        0.45
+      ]
+    },
+    {
+      "id": "crusher-sector",
+      "support": "crusher-house-front",
+      "face": [
+        -94,
+        7,
+        -65.16
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        9,
+        1.3
+      ]
+    },
+    {
+      "id": "crusher-back-soot--94",
+      "support": "crusher-house-back",
+      "face": [
+        -94,
+        3,
+        9.839999999999998
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        5,
+        4
+      ]
+    },
+    {
+      "id": "crusher-back-soot--81",
+      "support": "crusher-house-back",
+      "face": [
+        -81,
+        3,
+        11.659999999999998
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        5,
+        4
+      ]
+    },
+    {
+      "id": "crusher-back-soot--61",
+      "support": "crusher-house-back",
+      "face": [
+        -61,
+        3,
+        14.459999999999999
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        5,
+        4
+      ]
+    },
+    {
+      "id": "crusher-back-soot--44",
+      "support": "crusher-house-back",
+      "face": [
+        -44,
+        3,
+        16.84
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        5,
+        4
+      ]
+    },
+    {
+      "id": "cooling--84--1-waterline",
+      "support": "cooling-recess-bank",
+      "face": [
+        -84,
+        12.8,
+        17.639999999999997
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        5.2,
+        1.2
+      ]
+    },
+    {
+      "id": "cooling--84--1-vent-grate",
+      "support": "cooling-recess-bank",
+      "face": [
+        -84,
+        14.6,
+        17.639999999999997
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        3,
+        1.3
+      ]
+    },
+    {
+      "id": "cooling--84--1-circuit",
+      "support": "cooling-recess-bank",
+      "face": [
+        -84,
+        15.65,
+        17.639999999999997
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        4.8,
+        0.5
+      ]
+    },
+    {
+      "id": "cooling--84-1-waterline",
+      "support": "cooling-recess-bank",
+      "face": [
+        -84,
+        12.8,
+        30.84
+      ],
+      "normal": [
+        -0.13864784453440623,
+        0,
+        0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": 1,
+      "size": [
+        5.2,
+        1.2
+      ]
+    },
+    {
+      "id": "cooling--84-1-vent-grate",
+      "support": "cooling-recess-bank",
+      "face": [
+        -84,
+        14.6,
+        30.84
+      ],
+      "normal": [
+        -0.13864784453440623,
+        0,
+        0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": 1,
+      "size": [
+        3,
+        1.3
+      ]
+    },
+    {
+      "id": "cooling--84-1-circuit",
+      "support": "cooling-recess-bank",
+      "face": [
+        -84,
+        15.65,
+        30.84
+      ],
+      "normal": [
+        -0.13864784453440623,
+        0,
+        0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": 1,
+      "size": [
+        4.8,
+        0.5
+      ]
+    },
+    {
+      "id": "cooling--48--1-waterline",
+      "support": "cooling-recess-bank",
+      "face": [
+        -48,
+        12.8,
+        22.68
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        5.2,
+        1.2
+      ]
+    },
+    {
+      "id": "cooling--48--1-vent-grate",
+      "support": "cooling-recess-bank",
+      "face": [
+        -48,
+        14.6,
+        22.68
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        3,
+        1.3
+      ]
+    },
+    {
+      "id": "cooling--48--1-circuit",
+      "support": "cooling-recess-bank",
+      "face": [
+        -48,
+        15.65,
+        22.68
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        4.8,
+        0.5
+      ]
+    },
+    {
+      "id": "cooling--48-1-waterline",
+      "support": "cooling-recess-bank",
+      "face": [
+        -48,
+        12.8,
+        35.88
+      ],
+      "normal": [
+        -0.13864784453440623,
+        0,
+        0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": 1,
+      "size": [
+        5.2,
+        1.2
+      ]
+    },
+    {
+      "id": "cooling--48-1-vent-grate",
+      "support": "cooling-recess-bank",
+      "face": [
+        -48,
+        14.6,
+        35.88
+      ],
+      "normal": [
+        -0.13864784453440623,
+        0,
+        0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": 1,
+      "size": [
+        3,
+        1.3
+      ]
+    },
+    {
+      "id": "cooling--48-1-circuit",
+      "support": "cooling-recess-bank",
+      "face": [
+        -48,
+        15.65,
+        35.88
+      ],
+      "normal": [
+        -0.13864784453440623,
+        0,
+        0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": 1,
+      "size": [
+        4.8,
+        0.5
+      ]
+    },
+    {
+      "id": "cooling-sector",
+      "support": "cooling-enclosure",
+      "face": [
+        -73,
+        18.4,
+        15.78
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        5,
+        1.0
+      ]
+    },
+    {
+      "id": "assay-0-32-enamel",
+      "support": "assay-inspection-lintel",
+      "face": [
+        48.5,
+        19,
+        38.79
+      ],
+      "normal": [
+        -0.13864784453440623,
+        0,
+        0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": 1,
+      "size": [
+        12,
+        2
+      ]
+    },
+    {
+      "id": "assay-0-32-station",
+      "support": "assay-inspection-lintel",
+      "face": [
+        48.5,
+        19,
+        38.79
+      ],
+      "normal": [
+        -0.13864784453440623,
+        0,
+        0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": 1,
+      "size": [
+        7.5,
+        0.85
+      ]
+    },
+    {
+      "id": "assay-0-40-enamel",
+      "support": "assay-inspection-lintel",
+      "face": [
+        48.5,
+        19,
+        46.79
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        12,
+        2
+      ]
+    },
+    {
+      "id": "assay-0-40-station",
+      "support": "assay-inspection-lintel",
+      "face": [
+        48.5,
+        19,
+        46.79
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        7.5,
+        0.85
+      ]
+    },
+    {
+      "id": "assay-1-32-enamel",
+      "support": "assay-inspection-lintel",
+      "face": [
+        67.0,
+        19,
+        41.38
+      ],
+      "normal": [
+        -0.13864784453440623,
+        0,
+        0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": 1,
+      "size": [
+        15,
+        2
+      ]
+    },
+    {
+      "id": "assay-1-32-station",
+      "support": "assay-inspection-lintel",
+      "face": [
+        67.0,
+        19,
+        41.38
+      ],
+      "normal": [
+        -0.13864784453440623,
+        0,
+        0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": 1,
+      "size": [
+        7.5,
+        0.85
+      ]
+    },
+    {
+      "id": "assay-1-40-enamel",
+      "support": "assay-inspection-lintel",
+      "face": [
+        67.0,
+        19,
+        49.38
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        15,
+        2
+      ]
+    },
+    {
+      "id": "assay-1-40-station",
+      "support": "assay-inspection-lintel",
+      "face": [
+        67.0,
+        19,
+        49.38
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        7.5,
+        0.85
+      ]
+    },
+    {
+      "id": "assay-2-32-enamel",
+      "support": "assay-inspection-lintel",
+      "face": [
+        84.5,
+        19,
+        43.83
+      ],
+      "normal": [
+        -0.13864784453440623,
+        0,
+        0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": 1,
+      "size": [
+        10,
+        2
+      ]
+    },
+    {
+      "id": "assay-2-32-station",
+      "support": "assay-inspection-lintel",
+      "face": [
+        84.5,
+        19,
+        43.83
+      ],
+      "normal": [
+        -0.13864784453440623,
+        0,
+        0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": 1,
+      "size": [
+        7.5,
+        0.85
+      ]
+    },
+    {
+      "id": "assay-2-40-enamel",
+      "support": "assay-inspection-lintel",
+      "face": [
+        84.5,
+        19,
+        51.83
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        10,
+        2
+      ]
+    },
+    {
+      "id": "assay-2-40-station",
+      "support": "assay-inspection-lintel",
+      "face": [
+        84.5,
+        19,
+        51.83
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        7.5,
+        0.85
+      ]
+    },
+    {
+      "id": "assay-sector",
+      "support": "assay-outer-wall",
+      "face": [
+        73,
+        18.5,
+        36.22
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        5,
+        1.0
+      ]
+    },
+    {
+      "id": "kiln-44-heat",
+      "support": "kiln-buttress",
+      "face": [
+        44,
+        6,
+        -15.34
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        2.5,
+        9
+      ]
+    },
+    {
+      "id": "kiln-44-hazard",
+      "support": "kiln-buttress",
+      "face": [
+        44,
+        1.5,
+        -15.34
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        2.5,
+        0.65
+      ]
+    },
+    {
+      "id": "kiln-80-heat",
+      "support": "kiln-buttress",
+      "face": [
+        80,
+        6,
+        -10.299999999999999
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        2.5,
+        9
+      ]
+    },
+    {
+      "id": "kiln-80-hazard",
+      "support": "kiln-buttress",
+      "face": [
+        80,
+        1.5,
+        -10.299999999999999
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        2.5,
+        0.65
+      ]
+    },
+    {
+      "id": "kiln-104-heat",
+      "support": "kiln-buttress",
+      "face": [
+        104,
+        6,
+        -6.939999999999998
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        2.5,
+        9
+      ]
+    },
+    {
+      "id": "kiln-104-hazard",
+      "support": "kiln-buttress",
+      "face": [
+        104,
+        1.5,
+        -6.939999999999998
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        2.5,
+        0.65
+      ]
+    },
+    {
+      "id": "kiln-rear-52-soot",
+      "support": "kiln-service-back",
+      "face": [
+        52,
+        4,
+        29.28
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        9,
+        6
+      ]
+    },
+    {
+      "id": "kiln-rear-72-soot",
+      "support": "kiln-service-back",
+      "face": [
+        72,
+        4,
+        32.08
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        9,
+        6
+      ]
+    },
+    {
+      "id": "kiln-rear-94-soot",
+      "support": "kiln-service-back",
+      "face": [
+        94,
+        4,
+        35.160000000000004
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.045,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        9,
+        6
+      ]
+    },
+    {
+      "id": "kiln-sector",
+      "support": "kiln-service-back",
+      "face": [
+        74,
+        11,
+        32.36
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        10,
+        1.3
+      ]
+    },
+    {
+      "id": "kiln-danger",
+      "support": "kiln-service-back",
+      "face": [
+        56,
+        6.9,
+        29.84
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        11,
+        1.0
+      ]
+    },
+    {
+      "id": "transfer-sector",
+      "support": "transfer-south-cut",
+      "face": [
+        0,
+        6,
+        -77.81132075471697
+      ],
+      "normal": [
+        0.3282855896664737,
+        0,
+        -0.9445785153269873
+      ],
+      "offset": 0.065,
+      "axis": "transfer",
+      "side": -1,
+      "size": [
+        12,
+        1.0
+      ]
+    },
+    {
+      "id": "service--132",
+      "support": "ore-hopper--132-side-3",
+      "face": [
+        -132,
+        2,
+        -116.48
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        7.5,
+        0.8
+      ]
+    },
+    {
+      "id": "service-134",
+      "support": "ore-hopper-134-side-3",
+      "face": [
+        134,
+        2,
+        -79.24
+      ],
+      "normal": [
+        0.13864784453440623,
+        0,
+        -0.9903417466743302
+      ],
+      "offset": 0.065,
+      "axis": "q",
+      "side": -1,
+      "size": [
+        7.5,
+        0.8
+      ]
+    }
+  ],
+  "source_provenance": {
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision3/recipe.mjs": "1d5edf7960dccf83599953c24fe269180e827aa9e3e4ee8b21f44afb25454391",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/gravemill-foundry.blend": "c7a7551cd45bae86f3d1adf62744c4dfae96f9ad8dc6d3960ba1909e4a4dc3fa",
+    "port/native-multiplayer-worlds/worlds/gravemill-foundry.json": "3c7f9242bb7c98000871b27d58d14c719a4867e1a9fc625b106c97f7c1c608eb",
+    "godot/material_language/families.gd": "a3351d2b1909b8258f9fb24ef61b91f9879f2d0aed694ac6fd1ad5aeef4d40db",
+    "godot/material_language/library.gd": "bad8d3c963405a5870c68861d43395281aa2beea7d5f4961df5796ebce26e136",
+    "godot/material_language/family.gdshader": "a7340a0c4b6856ed64ba5e4a6a3e3095efbe142f567aef4e641c5e56c518341a"
+  },
+  "native_render_validation": "pending integration grant; source checks only"
+}
