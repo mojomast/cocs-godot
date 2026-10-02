@@ -12,6 +12,10 @@ const WEAR_BOUNDS := {
 	"wear_strength": [0.0, 0.65], "wear_height_min": [-100.0, 100.0],
 	"wear_height_max": [-100.0, 100.0], "wear_roughness": [0.0, 1.0],
 }
+const VARIATION_BOUNDS := {
+	"variation_strength": [0.0, 1.0], "variation_scale": [0.01, 1.0],
+}
+const VARIATION_MODES := ["none", "organic", "manufactured"]
 const CAPS := {"material_variants": 32, "panels": 96, "signs": 24, "motes": 96}
 
 static func validate(value: Variant, map_id: String, geometry_hash: String) -> Array[String]:
@@ -94,14 +98,16 @@ static func _options(value: Variant, family: String, errors: Array[String]) -> v
 	if not value is Dictionary:
 		errors.append("options must be object")
 		return
-	_closed(value, Language.BOUNDS.keys() + WEAR_BOUNDS.keys() + ["tint", "variant", "glow", "wear_tint"], "options", errors)
+	_closed(value, Language.BOUNDS.keys() + WEAR_BOUNDS.keys() + VARIATION_BOUNDS.keys() + ["tint", "variant", "glow", "wear_tint", "variation_mode", "variation_seed"], "options", errors)
 	for key: String in value:
-		if Language.BOUNDS.has(key) or WEAR_BOUNDS.has(key):
-			var bounds: Array = Language.BOUNDS.get(key, WEAR_BOUNDS.get(key))
+		if Language.BOUNDS.has(key) or WEAR_BOUNDS.has(key) or VARIATION_BOUNDS.has(key):
+			var bounds: Array = Language.BOUNDS.get(key, WEAR_BOUNDS.get(key, VARIATION_BOUNDS.get(key)))
 			if not _number(value[key], bounds[0], bounds[1]): errors.append("invalid option " + key)
 		elif key in ["tint", "wear_tint"] and not _color(value[key]): errors.append("invalid " + key)
 		elif key == "variant" and not Language.variants(family).has(value[key]): errors.append("unknown family variant")
 		elif key == "glow" and not value[key] is bool: errors.append("glow must be boolean")
+		elif key == "variation_mode" and not value[key] in VARIATION_MODES: errors.append("invalid variation_mode")
+		elif key == "variation_seed" and not _integer(value[key], 0, 2147483647): errors.append("invalid variation_seed")
 	if _number(value.get("wear_strength"), 0.001, 0.65):
 		if not _color(value.get("wear_tint")) or not _number(value.get("wear_height_min"), -100, 100) or not _number(value.get("wear_height_max"), -100, 100): errors.append("wear requires tint and height interval")
 		elif value.wear_height_max <= value.wear_height_min: errors.append("empty wear height interval")

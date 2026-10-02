@@ -1,0 +1,54 @@
+{
+  "status": "map-local source checks passed; shared variation integration blocked; refined native unverified",
+  "profiles": [
+    {
+      "path": "godot/multiplayer_worlds/dressing/profiles/gravemill-foundry.json",
+      "sha256": "8f5131886a3c1c8e4cc4a3aecd271980fd64bc93239b1ac3719c1936ac13c46d",
+      "deterministic_regeneration": true,
+      "original_placements_signs_pockets_exclusions_preserved": true
+    },
+    {
+      "path": "godot/multiplayer_worlds/dressing/profiles/helix-conservatory.json",
+      "sha256": "87b7e80de33c0fcd4f589bf850f5b2684e1e4c8a493a489c520a7ae81ea05194",
+      "deterministic_regeneration": true,
+      "original_placements_signs_pockets_exclusions_preserved": true
+    },
+    {
+      "path": "godot/multiplayer_worlds/dressing/profiles/parallax-observatory.json",
+      "sha256": "e9632cb70f9b8485fb41bc609104cd5137206fab0a9e22ad22b343cfcb09dce0",
+      "deterministic_regeneration": true,
+      "original_placements_signs_pockets_exclusions_preserved": true
+    }
+  ],
+  "regeneration_commands": [
+    [
+      "python3",
+      "port/map-finish/gravemill-foundry/author.py"
+    ],
+    [
+      "python3",
+      "port/map-finish/helix-conservatory/finish.py",
+      "--write"
+    ],
+    [
+      "python3",
+      "port/map-finish/parallax-observatory/author.py",
+      "--write"
+    ],
+    [
+      "python3",
+      "port/map-finish/parallax-observatory/validate.py",
+      "--write-report"
+    ]
+  ],
+  "parallax_asset_root": "/home/mojo/.tmp-on-disk/cocs-map-finish-parallax-20261002",
+  "helix_negative_probes_passed": [
+    "missing resource",
+    "invented variant",
+    "floating placement",
+    "overhanging face",
+    "mote ceiling",
+    "unmatched material"
+  ],
+  "native_executed": false
+}

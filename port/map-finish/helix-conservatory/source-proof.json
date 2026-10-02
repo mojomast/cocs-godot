@@ -3,6 +3,8 @@
   "geometry_hash": "f068d1abe262907659f1f02205e2bf56b7c5dbe298191f66d008b420965fa9b2",
   "glb_sha256": "0c462ffa475f02aa388101c38339d6d81eb3df9549a7d664ca65ec390c802d88",
   "seed": 610022,
+  "profile_sha256": "87b7e80de33c0fcd4f589bf850f5b2684e1e4c8a493a489c520a7ae81ea05194",
+  "variation_contract": "BRIEF.md; local bounds checked; shared validator must pass after rendering-owner integration",
   "counts": {
     "material_variants": 9,
     "panels": 46,
@@ -33,12 +35,9 @@
     "res://moth/generated/textures/sand.png": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96",
     "res://moth/derived/data/sand.png": "d8cb046449243f2817c8771aec533ca70aafa0b26e7fde64ef3a04f98ac536ca",
     "res://moth/generated/normals/sand.png": "f18caa13e18e025fffe0652a15746fb61a0f3ef7f6518dee34d40f56772893e0",
-    "res://moth/generated/textures/rock-moss.png": "80c63f01502fa13b0deb309c9d90a38104cde1b6877075d00d273b8a80dfdbda",
-    "res://moth/derived/data/rock-moss.png": "ec5d3e90773537cb91ae4f7aaa5a90d13037336bf75cbd58a237da12f17907c8",
-    "res://moth/derived/normals/rock-moss.png": "28e4ee99927b6b8a1532328c5da5de9c3f58b6dba4f236bf72a65034397ad801",
-    "res://moth/generated/textures/hex_paneling.png": "725a587331a74d235254e64b7f5d9a605e2de8cc28f16eec3c92577c3ddeea40",
-    "res://moth/derived/data/hex_paneling.png": "aae91de481d4cfef0b5a753a31311a12ba640b5b6929dcef4c6057b8c5935a7d",
-    "res://moth/generated/normals/hex_paneling.png": "81b507c81ab04f7cdf4c28acfb51e0fabe2c384192667bcb964b099394fd4971",
+    "res://moth/generated/textures/weathered_concrete.png": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550",
+    "res://moth/derived/data/weathered_concrete.png": "75af09daa0a49fb90419f9c23e68b1c8ebac0c082a7f90c5d84f2983b49a7951",
+    "res://moth/generated/normals/weathered_concrete.png": "97343f9f55fe9e00421cb91b754a0d7c564e2a4ac7a9edcd60d6226f106c210c",
     "res://moth/generated/materials/entanglement-ceramic-r.png": "e5de4f53a1abec7ec724e406cc792dbb482e54a582447b3967751658ba31ae15",
     "res://moth/generated/materials/entanglement-ceramic-t.png": "31e579b975d3f691455245c2140e8f911d2f5d0afc09de2c264c9c0f423a90c9",
     "res://moth/generated/textures/weathered_concrete-worn.png": "fc6707d6bf6ae6dc6dfec746100f83015ce74885976b20688280f29bcdf111cf",
@@ -56,9 +55,8 @@
     "res://moth/generated/textures/grass.png": "b34ff20efcd0abad36323f9c6ffca4f30325dc91f7110a624ce7dac1d4f2fe64",
     "res://moth/derived/data/grass.png": "c97abfe4504283f5e21477f9f4fdd95a90bcdf86937abb478bc603e1df83f651",
     "res://moth/generated/normals/grass.png": "75a3351ecf362141f4bcbf4c5fbcee8ecea908a7e08f6d852cf769791dc00b57",
-    "res://moth/generated/textures/weathered_concrete-damp.png": "8a143f57858a26d6ea5ab81badc60cb0ea154294b9fe180c505cb1b472bd0fab",
-    "res://moth/derived/normals/weathered_concrete-damp.png": "12303dd906a6864ef854df189ff42d1ad3de65e7e6a9e05c0e889bbf14b64e0a",
-    "res://moth/generated/textures/dust-field.png": "91e45cbbabf25909d0adc3905de7cb5a736188ffd48c02a99caf8879a1749a9f"
+    "res://moth/generated/textures/rock-moss.png": "80c63f01502fa13b0deb309c9d90a38104cde1b6877075d00d273b8a80dfdbda",
+    "res://moth/derived/normals/rock-moss.png": "28e4ee99927b6b8a1532328c5da5de9c3f58b6dba4f236bf72a65034397ad801"
   },
   "placements": [
     {

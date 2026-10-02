@@ -24,7 +24,16 @@ worktrees start at `6cefd9eb` and live under `/home/mojo/.tmp-on-disk/`.
 
 ## Heavy-tool ownership and completion sequence
 
-**Current exclusive grant: `FINISH-COMBINED-NATIVE-20261002-A`.** Integration
+**Current grant (supersedes the historical grant below):**
+`FIGHTING-ANIMATION-PRODUCTION-20261002-B` belongs to animation Astra
+`ses_f026e25e4ffezp2kvz5VGox7dz`, from canonical `9c684569`. The prior integration
+grant was explicitly released at `2026-10-02T20:49:20Z`; its immutable closeout is
+merged. Meta/Mistral production and native inspection precede the other seven
+fighters. Remaining baseline fixes and three owner-requested Astra surface
+refinement lanes continue source-only. See `surface-refinement/WORKSTREAM.md` in
+the sibling port directory and `NATIVE_CLOSEOUT.md` for retained failures.
+
+**Completed grant: `FINISH-COMBINED-NATIVE-20261002-A`.** Integration
 owner `ses_f0294303bffed6Fb8UJLKe4ZDz` is reusing the existing
 `cocs-finish-integration-20261002` checkout/cache at parent `09160dc0`.
 Foundry explicitly stopped all owned processes and released its slot. Parent
