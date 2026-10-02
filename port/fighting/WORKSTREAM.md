@@ -92,6 +92,15 @@ before bulk exports. See `port/efficiency/DECISIONS.md`; all-nine unique animati
 and effects remain required. Content schema/prose-free provenance changes and
 core input/math/hitstop/JSON corrections are in progress with existing owners.
 
+Presentation follow-up `a814d422` is merged as `bc78be27`. The actual FX director
+now receives projectile snapshots, post-pose socket accents and pause/focus/Settings
+audio state; new rounds/seeks clear FX history. Short button taps latch for one
+simulation tick, then release, matching core-derived input edges. The training
+tech dummy emits separated held samples. Production FX dependency checks and
+prepared InputEvent negatives are included. Lane grammar, interface, resource and
+918 camera checks passed; native input/audio/reflection/seek execution remains
+pending. Parent reviewed the integration diff without repeating unchanged suites.
+
 ### Fighting content checkpoint
 
 Content `827d24a8` + `79d98652` is merged as `0193f14a` + `b0669433`.
