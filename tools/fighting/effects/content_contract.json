@@ -1,0 +1,1613 @@
+{
+  "version": 1,
+  "source_commits": [
+    "827d24a8",
+    "79d98652"
+  ],
+  "roster_sha256": "2398099cacb5e6b4773d3aa3d9bdece56e005289aab94ecd776ce95b2bf59f2d",
+  "operators": {
+    "chatgpt": {
+      "stand_l": {
+        "effect": "chatgpt:stand_l",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 5,
+        "active": 3,
+        "recovery": 10
+      },
+      "stand_m": {
+        "effect": "chatgpt:stand_m",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 8,
+        "active": 3,
+        "recovery": 16
+      },
+      "stand_h": {
+        "effect": "chatgpt:stand_h",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 12,
+        "active": 4,
+        "recovery": 23
+      },
+      "crouch_l": {
+        "effect": "chatgpt:crouch_l",
+        "kind": "strike",
+        "level": "low",
+        "startup": 5,
+        "active": 2,
+        "recovery": 11
+      },
+      "crouch_m": {
+        "effect": "chatgpt:crouch_m",
+        "kind": "strike",
+        "level": "low",
+        "startup": 9,
+        "active": 3,
+        "recovery": 18
+      },
+      "crouch_h": {
+        "effect": "chatgpt:crouch_h",
+        "kind": "strike",
+        "level": "low",
+        "startup": 11,
+        "active": 4,
+        "recovery": 24
+      },
+      "air_l": {
+        "effect": "chatgpt:air_l",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 5,
+        "active": 3,
+        "recovery": 9
+      },
+      "air_m": {
+        "effect": "chatgpt:air_m",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 8,
+        "active": 4,
+        "recovery": 14
+      },
+      "air_h": {
+        "effect": "chatgpt:air_h",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 11,
+        "active": 5,
+        "recovery": 20
+      },
+      "throw_f": {
+        "effect": "chatgpt:throw_f",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 6,
+        "active": 2,
+        "recovery": 30,
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      },
+      "throw_b": {
+        "effect": "chatgpt:throw_b",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 6,
+        "active": 2,
+        "recovery": 32,
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      },
+      "special1": {
+        "effect": "chatgpt:special1",
+        "kind": "projectile",
+        "level": "mid",
+        "startup": 12,
+        "active": 3,
+        "recovery": 22
+      },
+      "special2": {
+        "effect": "chatgpt:special2",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 14,
+        "active": 4,
+        "recovery": 24,
+        "movement": {
+          "type": "reel",
+          "from": 14,
+          "to": 17,
+          "vx": 0,
+          "vy": 0,
+          "distance": 1300,
+          "duration": 15,
+          "air_only": false,
+          "ground_only": false,
+          "cooldown": 45,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1,
+          "pull_speed": 90,
+          "on": "hit"
+        }
+      },
+      "special3": {
+        "effect": "chatgpt:special3",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 12,
+        "active": 2,
+        "recovery": 30,
+        "throw": {
+          "range": 790,
+          "tech_frames": 0,
+          "damage_frame": 20,
+          "release_frame": 34,
+          "victim_x": 650,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": true,
+          "ground_only": true,
+          "knockdown_frames": 42
+        }
+      },
+      "super": {
+        "effect": "chatgpt:super",
+        "kind": "super",
+        "level": "mid",
+        "startup": 9,
+        "active": 5,
+        "recovery": 42
+      }
+    },
+    "claude": {
+      "stand_l": {
+        "effect": "claude:stand_l",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 6,
+        "active": 3,
+        "recovery": 12
+      },
+      "stand_m": {
+        "effect": "claude:stand_m",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 10,
+        "active": 4,
+        "recovery": 18
+      },
+      "stand_h": {
+        "effect": "claude:stand_h",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 15,
+        "active": 3,
+        "recovery": 26
+      },
+      "crouch_l": {
+        "effect": "claude:crouch_l",
+        "kind": "strike",
+        "level": "low",
+        "startup": 6,
+        "active": 2,
+        "recovery": 12
+      },
+      "crouch_m": {
+        "effect": "claude:crouch_m",
+        "kind": "strike",
+        "level": "low",
+        "startup": 10,
+        "active": 4,
+        "recovery": 20
+      },
+      "crouch_h": {
+        "effect": "claude:crouch_h",
+        "kind": "strike",
+        "level": "low",
+        "startup": 13,
+        "active": 5,
+        "recovery": 25
+      },
+      "air_l": {
+        "effect": "claude:air_l",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 6,
+        "active": 4,
+        "recovery": 11
+      },
+      "air_m": {
+        "effect": "claude:air_m",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 10,
+        "active": 5,
+        "recovery": 17
+      },
+      "air_h": {
+        "effect": "claude:air_h",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 14,
+        "active": 4,
+        "recovery": 23
+      },
+      "throw_f": {
+        "effect": "claude:throw_f",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 6,
+        "active": 2,
+        "recovery": 30,
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      },
+      "throw_b": {
+        "effect": "claude:throw_b",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 6,
+        "active": 2,
+        "recovery": 32,
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      },
+      "special1": {
+        "effect": "claude:special1",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 14,
+        "active": 3,
+        "recovery": 27
+      },
+      "special2": {
+        "effect": "claude:special2",
+        "kind": "mobility",
+        "level": "mid",
+        "startup": 6,
+        "active": 18,
+        "recovery": 14,
+        "movement": {
+          "type": "glide",
+          "from": 6,
+          "to": 23,
+          "vx": -65,
+          "vy": -25,
+          "distance": 1400,
+          "duration": 18,
+          "air_only": true,
+          "ground_only": false,
+          "cooldown": 45,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1
+        }
+      },
+      "special3": {
+        "effect": "claude:special3",
+        "kind": "counter",
+        "level": "unblockable",
+        "startup": 5,
+        "active": 12,
+        "recovery": 30,
+        "counter": {
+          "from": 5,
+          "to": 16,
+          "reflect": true,
+          "strike": true,
+          "range": 850,
+          "damage_frame": 25,
+          "release_frame": 40
+        }
+      },
+      "super": {
+        "effect": "claude:super",
+        "kind": "super",
+        "level": "mid",
+        "startup": 10,
+        "active": 5,
+        "recovery": 42
+      }
+    },
+    "grok": {
+      "stand_l": {
+        "effect": "grok:stand_l",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 4,
+        "active": 3,
+        "recovery": 12
+      },
+      "stand_m": {
+        "effect": "grok:stand_m",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 7,
+        "active": 4,
+        "recovery": 18
+      },
+      "stand_h": {
+        "effect": "grok:stand_h",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 18,
+        "active": 3,
+        "recovery": 27
+      },
+      "crouch_l": {
+        "effect": "grok:crouch_l",
+        "kind": "strike",
+        "level": "low",
+        "startup": 5,
+        "active": 2,
+        "recovery": 12
+      },
+      "crouch_m": {
+        "effect": "grok:crouch_m",
+        "kind": "strike",
+        "level": "low",
+        "startup": 8,
+        "active": 3,
+        "recovery": 19
+      },
+      "crouch_h": {
+        "effect": "grok:crouch_h",
+        "kind": "strike",
+        "level": "low",
+        "startup": 10,
+        "active": 4,
+        "recovery": 25
+      },
+      "air_l": {
+        "effect": "grok:air_l",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 4,
+        "active": 3,
+        "recovery": 10
+      },
+      "air_m": {
+        "effect": "grok:air_m",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 7,
+        "active": 4,
+        "recovery": 16
+      },
+      "air_h": {
+        "effect": "grok:air_h",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 12,
+        "active": 4,
+        "recovery": 22
+      },
+      "throw_f": {
+        "effect": "grok:throw_f",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 6,
+        "active": 2,
+        "recovery": 30,
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      },
+      "throw_b": {
+        "effect": "grok:throw_b",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 6,
+        "active": 2,
+        "recovery": 32,
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      },
+      "special1": {
+        "effect": "grok:special1",
+        "kind": "projectile",
+        "level": "mid",
+        "startup": 16,
+        "active": 3,
+        "recovery": 24
+      },
+      "special2": {
+        "effect": "grok:special2",
+        "kind": "mobility",
+        "level": "mid",
+        "startup": 8,
+        "active": 1,
+        "recovery": 16,
+        "movement": {
+          "type": "super_jump",
+          "from": 8,
+          "to": 8,
+          "vx": 60,
+          "vy": 255,
+          "distance": 1800,
+          "duration": 35,
+          "air_only": false,
+          "ground_only": true,
+          "cooldown": 45,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1
+        }
+      },
+      "special3": {
+        "effect": "grok:special3",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 17,
+        "active": 5,
+        "recovery": 29,
+        "movement": {
+          "type": "rush",
+          "from": 8,
+          "to": 21,
+          "vx": 100,
+          "vy": 0,
+          "distance": 1800,
+          "duration": 14,
+          "air_only": false,
+          "ground_only": true,
+          "cooldown": 45,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1
+        }
+      },
+      "super": {
+        "effect": "grok:super",
+        "kind": "super",
+        "level": "mid",
+        "startup": 11,
+        "active": 5,
+        "recovery": 42
+      }
+    },
+    "meta": {
+      "stand_l": {
+        "effect": "meta:stand_l",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 7,
+        "active": 3,
+        "recovery": 14
+      },
+      "stand_m": {
+        "effect": "meta:stand_m",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 11,
+        "active": 4,
+        "recovery": 23
+      },
+      "stand_h": {
+        "effect": "meta:stand_h",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 17,
+        "active": 5,
+        "recovery": 31
+      },
+      "crouch_l": {
+        "effect": "meta:crouch_l",
+        "kind": "strike",
+        "level": "low",
+        "startup": 7,
+        "active": 2,
+        "recovery": 14
+      },
+      "crouch_m": {
+        "effect": "meta:crouch_m",
+        "kind": "strike",
+        "level": "low",
+        "startup": 12,
+        "active": 4,
+        "recovery": 24
+      },
+      "crouch_h": {
+        "effect": "meta:crouch_h",
+        "kind": "strike",
+        "level": "low",
+        "startup": 15,
+        "active": 5,
+        "recovery": 30
+      },
+      "air_l": {
+        "effect": "meta:air_l",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 7,
+        "active": 3,
+        "recovery": 12
+      },
+      "air_m": {
+        "effect": "meta:air_m",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 11,
+        "active": 5,
+        "recovery": 20
+      },
+      "air_h": {
+        "effect": "meta:air_h",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 16,
+        "active": 6,
+        "recovery": 27
+      },
+      "throw_f": {
+        "effect": "meta:throw_f",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 8,
+        "active": 2,
+        "recovery": 30,
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 20,
+          "release_frame": 31,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      },
+      "throw_b": {
+        "effect": "meta:throw_b",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 8,
+        "active": 2,
+        "recovery": 32,
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 20,
+          "release_frame": 31,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      },
+      "special1": {
+        "effect": "meta:special1",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 11,
+        "active": 5,
+        "recovery": 25
+      },
+      "special2": {
+        "effect": "meta:special2",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 12,
+        "active": 6,
+        "recovery": 30,
+        "movement": {
+          "type": "slam",
+          "from": 4,
+          "to": 17,
+          "vx": 25,
+          "vy": -180,
+          "distance": 900,
+          "duration": 14,
+          "air_only": true,
+          "ground_only": false,
+          "cooldown": 45,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1
+        }
+      },
+      "special3": {
+        "effect": "meta:special3",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 15,
+        "active": 2,
+        "recovery": 34,
+        "throw": {
+          "range": 980,
+          "tech_frames": 0,
+          "damage_frame": 23,
+          "release_frame": 37,
+          "victim_x": 650,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": true,
+          "ground_only": true,
+          "knockdown_frames": 42
+        }
+      },
+      "super": {
+        "effect": "meta:super",
+        "kind": "super",
+        "level": "mid",
+        "startup": 12,
+        "active": 5,
+        "recovery": 42
+      }
+    },
+    "gemini": {
+      "stand_l": {
+        "effect": "gemini:stand_l",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 5,
+        "active": 2,
+        "recovery": 10
+      },
+      "stand_m": {
+        "effect": "gemini:stand_m",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 8,
+        "active": 3,
+        "recovery": 15
+      },
+      "stand_h": {
+        "effect": "gemini:stand_h",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 12,
+        "active": 4,
+        "recovery": 22
+      },
+      "crouch_l": {
+        "effect": "gemini:crouch_l",
+        "kind": "strike",
+        "level": "low",
+        "startup": 5,
+        "active": 2,
+        "recovery": 10
+      },
+      "crouch_m": {
+        "effect": "gemini:crouch_m",
+        "kind": "strike",
+        "level": "low",
+        "startup": 8,
+        "active": 3,
+        "recovery": 17
+      },
+      "crouch_h": {
+        "effect": "gemini:crouch_h",
+        "kind": "strike",
+        "level": "low",
+        "startup": 11,
+        "active": 4,
+        "recovery": 23
+      },
+      "air_l": {
+        "effect": "gemini:air_l",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 5,
+        "active": 3,
+        "recovery": 9
+      },
+      "air_m": {
+        "effect": "gemini:air_m",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 8,
+        "active": 4,
+        "recovery": 13
+      },
+      "air_h": {
+        "effect": "gemini:air_h",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 11,
+        "active": 4,
+        "recovery": 19
+      },
+      "throw_f": {
+        "effect": "gemini:throw_f",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 6,
+        "active": 2,
+        "recovery": 30,
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      },
+      "throw_b": {
+        "effect": "gemini:throw_b",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 6,
+        "active": 2,
+        "recovery": 32,
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      },
+      "special1": {
+        "effect": "gemini:special1",
+        "kind": "projectile",
+        "level": "mid",
+        "startup": 13,
+        "active": 2,
+        "recovery": 25
+      },
+      "special2": {
+        "effect": "gemini:special2",
+        "kind": "mobility",
+        "level": "mid",
+        "startup": 5,
+        "active": 1,
+        "recovery": 12,
+        "movement": {
+          "type": "double_jump",
+          "from": 5,
+          "to": 5,
+          "vx": 30,
+          "vy": 180,
+          "distance": 1000,
+          "duration": 25,
+          "air_only": true,
+          "ground_only": false,
+          "cooldown": 45,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1,
+          "air_uses": 1,
+          "reset_on_land": true
+        },
+        "stance": {
+          "resource": "band",
+          "set": 1,
+          "duration": 180,
+          "variants": {
+            "stand_l": "palm_l",
+            "stand_m": "palm_m",
+            "stand_h": "palm_h"
+          }
+        }
+      },
+      "special3": {
+        "effect": "gemini:special3",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 13,
+        "active": 2,
+        "recovery": 29,
+        "throw": {
+          "range": 780,
+          "tech_frames": 0,
+          "damage_frame": 21,
+          "release_frame": 35,
+          "victim_x": 650,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": true,
+          "ground_only": true,
+          "knockdown_frames": 42
+        },
+        "stance": {
+          "resource": "band",
+          "set": 1,
+          "duration": 180,
+          "variants": {
+            "stand_l": "palm_l",
+            "stand_m": "palm_m",
+            "stand_h": "palm_h"
+          }
+        }
+      },
+      "super": {
+        "effect": "gemini:super",
+        "kind": "super",
+        "level": "mid",
+        "startup": 13,
+        "active": 5,
+        "recovery": 42
+      },
+      "palm_l": {
+        "effect": "gemini:palm_l",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 6,
+        "active": 3,
+        "recovery": 12
+      },
+      "palm_m": {
+        "effect": "gemini:palm_m",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 10,
+        "active": 3,
+        "recovery": 19
+      },
+      "palm_h": {
+        "effect": "gemini:palm_h",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 15,
+        "active": 4,
+        "recovery": 28
+      }
+    },
+    "deepseek": {
+      "stand_l": {
+        "effect": "deepseek:stand_l",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 7,
+        "active": 3,
+        "recovery": 13
+      },
+      "stand_m": {
+        "effect": "deepseek:stand_m",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 11,
+        "active": 4,
+        "recovery": 21
+      },
+      "stand_h": {
+        "effect": "deepseek:stand_h",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 16,
+        "active": 4,
+        "recovery": 29
+      },
+      "crouch_l": {
+        "effect": "deepseek:crouch_l",
+        "kind": "strike",
+        "level": "low",
+        "startup": 7,
+        "active": 2,
+        "recovery": 13
+      },
+      "crouch_m": {
+        "effect": "deepseek:crouch_m",
+        "kind": "strike",
+        "level": "low",
+        "startup": 11,
+        "active": 4,
+        "recovery": 23
+      },
+      "crouch_h": {
+        "effect": "deepseek:crouch_h",
+        "kind": "strike",
+        "level": "low",
+        "startup": 14,
+        "active": 5,
+        "recovery": 28
+      },
+      "air_l": {
+        "effect": "deepseek:air_l",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 7,
+        "active": 4,
+        "recovery": 12
+      },
+      "air_m": {
+        "effect": "deepseek:air_m",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 11,
+        "active": 5,
+        "recovery": 19
+      },
+      "air_h": {
+        "effect": "deepseek:air_h",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 15,
+        "active": 5,
+        "recovery": 25
+      },
+      "throw_f": {
+        "effect": "deepseek:throw_f",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 6,
+        "active": 2,
+        "recovery": 30,
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      },
+      "throw_b": {
+        "effect": "deepseek:throw_b",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 6,
+        "active": 2,
+        "recovery": 32,
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      },
+      "special1": {
+        "effect": "deepseek:special1",
+        "kind": "projectile",
+        "level": "mid",
+        "startup": 10,
+        "active": 3,
+        "recovery": 28
+      },
+      "special2": {
+        "effect": "deepseek:special2",
+        "kind": "mobility",
+        "level": "mid",
+        "startup": 5,
+        "active": 30,
+        "recovery": 18,
+        "movement": {
+          "type": "hover",
+          "from": 5,
+          "to": 34,
+          "vx": 25,
+          "vy": 0,
+          "distance": 800,
+          "duration": 30,
+          "air_only": true,
+          "ground_only": false,
+          "cooldown": 45,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1
+        }
+      },
+      "special3": {
+        "effect": "deepseek:special3",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 16,
+        "active": 2,
+        "recovery": 35,
+        "throw": {
+          "range": 900,
+          "tech_frames": 0,
+          "damage_frame": 24,
+          "release_frame": 38,
+          "victim_x": 650,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": true,
+          "ground_only": true,
+          "knockdown_frames": 42
+        }
+      },
+      "super": {
+        "effect": "deepseek:super",
+        "kind": "super",
+        "level": "mid",
+        "startup": 14,
+        "active": 5,
+        "recovery": 42
+      }
+    },
+    "mistral": {
+      "stand_l": {
+        "effect": "mistral:stand_l",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 4,
+        "active": 2,
+        "recovery": 9
+      },
+      "stand_m": {
+        "effect": "mistral:stand_m",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 7,
+        "active": 3,
+        "recovery": 14
+      },
+      "stand_h": {
+        "effect": "mistral:stand_h",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 10,
+        "active": 4,
+        "recovery": 22
+      },
+      "crouch_l": {
+        "effect": "mistral:crouch_l",
+        "kind": "strike",
+        "level": "low",
+        "startup": 4,
+        "active": 2,
+        "recovery": 10
+      },
+      "crouch_m": {
+        "effect": "mistral:crouch_m",
+        "kind": "strike",
+        "level": "low",
+        "startup": 7,
+        "active": 3,
+        "recovery": 16
+      },
+      "crouch_h": {
+        "effect": "mistral:crouch_h",
+        "kind": "strike",
+        "level": "low",
+        "startup": 10,
+        "active": 4,
+        "recovery": 22
+      },
+      "air_l": {
+        "effect": "mistral:air_l",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 4,
+        "active": 3,
+        "recovery": 8
+      },
+      "air_m": {
+        "effect": "mistral:air_m",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 7,
+        "active": 4,
+        "recovery": 12
+      },
+      "air_h": {
+        "effect": "mistral:air_h",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 10,
+        "active": 4,
+        "recovery": 18
+      },
+      "throw_f": {
+        "effect": "mistral:throw_f",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 6,
+        "active": 2,
+        "recovery": 30,
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      },
+      "throw_b": {
+        "effect": "mistral:throw_b",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 6,
+        "active": 2,
+        "recovery": 32,
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      },
+      "special1": {
+        "effect": "mistral:special1",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 10,
+        "active": 4,
+        "recovery": 20
+      },
+      "special2": {
+        "effect": "mistral:special2",
+        "kind": "mobility",
+        "level": "mid",
+        "startup": 3,
+        "active": 10,
+        "recovery": 13,
+        "movement": {
+          "type": "air_dash",
+          "from": 3,
+          "to": 12,
+          "vx": 145,
+          "vy": 0,
+          "distance": 1450,
+          "duration": 10,
+          "air_only": true,
+          "ground_only": false,
+          "cooldown": 45,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1,
+          "air_uses": 1,
+          "reset_on_land": true
+        }
+      },
+      "special3": {
+        "effect": "mistral:special3",
+        "kind": "strike",
+        "level": "low",
+        "startup": 14,
+        "active": 5,
+        "recovery": 27,
+        "movement": {
+          "type": "rush",
+          "from": 5,
+          "to": 18,
+          "vx": 105,
+          "vy": 0,
+          "distance": 1500,
+          "duration": 14,
+          "air_only": false,
+          "ground_only": true,
+          "cooldown": 45,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1
+        }
+      },
+      "super": {
+        "effect": "mistral:super",
+        "kind": "super",
+        "level": "mid",
+        "startup": 15,
+        "active": 5,
+        "recovery": 42
+      }
+    },
+    "kimi": {
+      "stand_l": {
+        "effect": "kimi:stand_l",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 5,
+        "active": 3,
+        "recovery": 11
+      },
+      "stand_m": {
+        "effect": "kimi:stand_m",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 9,
+        "active": 3,
+        "recovery": 18
+      },
+      "stand_h": {
+        "effect": "kimi:stand_h",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 14,
+        "active": 4,
+        "recovery": 25
+      },
+      "crouch_l": {
+        "effect": "kimi:crouch_l",
+        "kind": "strike",
+        "level": "low",
+        "startup": 5,
+        "active": 2,
+        "recovery": 12
+      },
+      "crouch_m": {
+        "effect": "kimi:crouch_m",
+        "kind": "strike",
+        "level": "low",
+        "startup": 9,
+        "active": 3,
+        "recovery": 20
+      },
+      "crouch_h": {
+        "effect": "kimi:crouch_h",
+        "kind": "strike",
+        "level": "low",
+        "startup": 12,
+        "active": 4,
+        "recovery": 25
+      },
+      "air_l": {
+        "effect": "kimi:air_l",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 5,
+        "active": 4,
+        "recovery": 10
+      },
+      "air_m": {
+        "effect": "kimi:air_m",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 9,
+        "active": 4,
+        "recovery": 16
+      },
+      "air_h": {
+        "effect": "kimi:air_h",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 13,
+        "active": 5,
+        "recovery": 22
+      },
+      "throw_f": {
+        "effect": "kimi:throw_f",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 6,
+        "active": 2,
+        "recovery": 30,
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      },
+      "throw_b": {
+        "effect": "kimi:throw_b",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 6,
+        "active": 2,
+        "recovery": 32,
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      },
+      "special1": {
+        "effect": "kimi:special1",
+        "kind": "projectile",
+        "level": "mid",
+        "startup": 15,
+        "active": 2,
+        "recovery": 27
+      },
+      "special2": {
+        "effect": "kimi:special2",
+        "kind": "mobility",
+        "level": "mid",
+        "startup": 15,
+        "active": 1,
+        "recovery": 22,
+        "movement": {
+          "type": "blink",
+          "from": 15,
+          "to": 15,
+          "vx": 0,
+          "vy": 0,
+          "distance": 1800,
+          "duration": 1,
+          "air_only": false,
+          "ground_only": true,
+          "cooldown": 75,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1
+        }
+      },
+      "special3": {
+        "effect": "kimi:special3",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 14,
+        "active": 2,
+        "recovery": 32,
+        "throw": {
+          "range": 800,
+          "tech_frames": 0,
+          "damage_frame": 22,
+          "release_frame": 36,
+          "victim_x": 650,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": true,
+          "ground_only": true,
+          "knockdown_frames": 42
+        }
+      },
+      "super": {
+        "effect": "kimi:super",
+        "kind": "super",
+        "level": "mid",
+        "startup": 16,
+        "active": 5,
+        "recovery": 42
+      }
+    },
+    "qwen": {
+      "stand_l": {
+        "effect": "qwen:stand_l",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 6,
+        "active": 3,
+        "recovery": 12
+      },
+      "stand_m": {
+        "effect": "qwen:stand_m",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 9,
+        "active": 4,
+        "recovery": 19
+      },
+      "stand_h": {
+        "effect": "qwen:stand_h",
+        "kind": "strike",
+        "level": "mid",
+        "startup": 14,
+        "active": 4,
+        "recovery": 27
+      },
+      "crouch_l": {
+        "effect": "qwen:crouch_l",
+        "kind": "strike",
+        "level": "low",
+        "startup": 6,
+        "active": 2,
+        "recovery": 13
+      },
+      "crouch_m": {
+        "effect": "qwen:crouch_m",
+        "kind": "strike",
+        "level": "low",
+        "startup": 10,
+        "active": 4,
+        "recovery": 21
+      },
+      "crouch_h": {
+        "effect": "qwen:crouch_h",
+        "kind": "strike",
+        "level": "low",
+        "startup": 13,
+        "active": 5,
+        "recovery": 26
+      },
+      "air_l": {
+        "effect": "qwen:air_l",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 6,
+        "active": 3,
+        "recovery": 11
+      },
+      "air_m": {
+        "effect": "qwen:air_m",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 9,
+        "active": 5,
+        "recovery": 17
+      },
+      "air_h": {
+        "effect": "qwen:air_h",
+        "kind": "strike",
+        "level": "overhead",
+        "startup": 13,
+        "active": 5,
+        "recovery": 23
+      },
+      "throw_f": {
+        "effect": "qwen:throw_f",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 6,
+        "active": 2,
+        "recovery": 30,
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      },
+      "throw_b": {
+        "effect": "qwen:throw_b",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 6,
+        "active": 2,
+        "recovery": 32,
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      },
+      "special1": {
+        "effect": "qwen:special1",
+        "kind": "projectile",
+        "level": "mid",
+        "startup": 14,
+        "active": 3,
+        "recovery": 24
+      },
+      "special2": {
+        "effect": "qwen:special2",
+        "kind": "mobility",
+        "level": "mid",
+        "startup": 20,
+        "active": 1,
+        "recovery": 25,
+        "movement": {
+          "type": "anchor",
+          "from": 20,
+          "to": 20,
+          "vx": 0,
+          "vy": 0,
+          "distance": 2000,
+          "duration": 1,
+          "air_only": false,
+          "ground_only": true,
+          "cooldown": 90,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1,
+          "anchor_life": 180,
+          "trigger_range": 650,
+          "pull_speed": 55,
+          "max_count": 1
+        }
+      },
+      "special3": {
+        "effect": "qwen:special3",
+        "kind": "throw",
+        "level": "unblockable",
+        "startup": 14,
+        "active": 2,
+        "recovery": 33,
+        "throw": {
+          "range": 1050,
+          "tech_frames": 0,
+          "damage_frame": 22,
+          "release_frame": 36,
+          "victim_x": 650,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": true,
+          "ground_only": true,
+          "knockdown_frames": 42
+        }
+      },
+      "super": {
+        "effect": "qwen:super",
+        "kind": "super",
+        "level": "mid",
+        "startup": 17,
+        "active": 5,
+        "recovery": 42
+      }
+    }
+  }
+}
