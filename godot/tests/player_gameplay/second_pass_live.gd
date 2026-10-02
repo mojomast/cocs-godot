@@ -47,6 +47,7 @@ func run() -> void:
 	var plan: Dictionary = oracle.plans[operator]
 	session = load("res://world/session.tscn").instantiate()
 	root.add_child(session)
+	current_scene = session
 	session.client.events.connect(func(items: Array) -> void:
 		for event: Dictionary in items:
 			if event.get("actor") == session.client.actor_id: observed.append(event))
@@ -62,10 +63,14 @@ func run() -> void:
 	click.global_position = click.position
 	click.pressed = true
 	Input.parse_input_event(click)
+	Input.flush_buffered_events()
+	await process_frame
 	click = click.duplicate()
 	click.pressed = false
 	Input.parse_input_event(click)
+	Input.flush_buffered_events()
 	await create_timer(0.25).timeout
+	print("GAMEPLAY_INPUT_ELIGIBILITY ", JSON.stringify({"capture":Input.mouse_mode == Input.MOUSE_MODE_CAPTURED,"eligible":session.can_capture_pointer(),"focused":session.application_focused,"stale":session.snapshot_watch.stale(),"hover":str(root.gui_get_hovered_control())}))
 	aim(float(plan.aim.yaw), float(plan.aim.pitch))
 	await capture("wide-before")
 	key(KEY_Q, true)

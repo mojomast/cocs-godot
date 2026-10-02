@@ -17,6 +17,7 @@ func _initialize() -> void:
 func begin() -> void:
 	session = load("res://world/session.tscn").instantiate()
 	root.add_child(session)
+	current_scene = session
 	session.client.events.connect(func(items: Array) -> void:
 		for event: Dictionary in items:
 			if event.get("actor") == session.client.actor_id: observed[event.type] = true
