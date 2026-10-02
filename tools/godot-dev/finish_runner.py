@@ -459,7 +459,11 @@ def main(argv=None):
             env = isolated_environment(directory)
             substitutions = {'out': str(directory / 'artifacts'), 'godot': environment['GODOT_BIN'],
                              'audio_driver': environment['AUDIO_DRIVER'], 'python': sys.executable,
-                             'grant_reference': args.grant_reference, 'root': str(args.root.resolve())}
+                             'grant_reference': args.grant_reference, 'root': str(args.root.resolve()),
+                             # Stable path, mutable contents: saved with the running
+                             # attempt below before any producer reads its anchor.
+                             'finish_anchor': str(report_path.resolve()),
+                             'finish_matrix': str(args.matrix.resolve())}
             env.update({k: v for k, v in environment.items() if v and k not in ('PATH',)})
             env.update({key: value.format(**substitutions) for key, value in job.get('env', {}).items()})
             command = [arg.format(**substitutions) for arg in job['command']]

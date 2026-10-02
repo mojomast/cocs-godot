@@ -1,12 +1,63 @@
 # Final completion acceptance
 
-Follow-up to candidate `b66f4ab3` (after `dff733c0`), merged into the existing acceptance worktree.
-Adopt only at the parent checkpoint boundary. C cleanup/release was reported at
-22:23:17Z; exclusive grant D belongs to the original robot owner
-`ses_f03a2843bffefDFoP3x1j1cxRO`. This is source preparation;
+Follow-up to candidate `b6ab6782`, merged into the original acceptance worktree.
+Adopt only at the parent checkpoint boundary. Exclusive heavy grant E remains
+with vehicles `ses_f03440966ffeBzmLZZ3UkR4Oi7`. This is source preparation;
 no Godot, import, Blender, capture, encoding or Windows execution was performed.
 
 ## Contract and completion ledger
+
+### Production UI registration at `b6ab6782`
+
+`fighting-production-ui-journey` adopts `14c40506`'s actual executable fixture
+and `UI_JOB_PROPOSAL.json`, with its 730-second bound, ten coverage units and
+owned Xvfb. It follows `native-import`, `fighting-camera-native` and the existing
+`final-receipt-tests` source job. The latter now also runs `test_ui_driver.py`,
+including the real nine-export/import/clip source audit; no extra source job is
+added. The four-stage receipt requires this executable to pass, and still requires
+independently bound art/readability/smoothing/hardware-GPU review. Physical
+controller evidence and all other manual/audio/external criticals remain separate.
+
+The final runner adds two substitutions:
+
+* `{finish_anchor}`: absolute path to **this invocation's ledger `report.json`**,
+  including when resuming that ledger.
+* `{finish_matrix}`: absolute path to the actual `--matrix` argument.
+
+The production command explicitly supplies both `--finish-anchor` and
+`--finish-matrix`. The runner atomically saves the exact resolved queue,
+input identity and running command before calling the producer. `ui_driver.py`
+then recomputes identity and checks the queue before native launch and rechecks
+identity afterward. It never acquires the already-held outer cohort lock.
+
+The ledger **path** is stable; its bytes change as attempts complete. The driver's
+`finish_anchor.sha256` records the launch-time report bytes for provenance; it is
+not compared against the later mutable ledger file. Receipt conversion instead
+validates the current exact input identity and queue, launch-bound producer
+identity, retained artifacts and separately hashed owner review. Missing/wrong
+anchors or changed queue contracts fail. An unanchored standalone producer cannot
+be promoted later by attaching a current report. No `ui_driver.py` change is needed.
+The cinematic `2902412b` identity/receipt path also checks input identity and queue;
+these additive substitutions do not change its existing ledger binding semantics.
+
+**Actual environment blocker:** parent reports `/dev/uinput` exists but is neither
+readable nor writable to its process. The fixture requires writable uinput and
+readable resulting event nodes; it fails closed without virtual-pad fallback.
+Xvfb, xdotool and libX11 are also required. Presentation Astra
+`ses_f026d6c45ffefUJ0hXFvdcTgG3` owns the concurrent device-choice/router correction;
+merge that committed correction before freezing a fresh execution candidate.
+This lane does not edit production presentation or UI journey/driver code.
+
+Parallax and robots are promoted through `b732c99b`; robot D's 60,593 checks remain
+historical, not final-ledger evidence. Scenery `cf0e8def` is source-merged and
+natively unrun. The UI/camera follow-up is also natively unrun.
+
+After grant E releases and a new explicit fighting grant is issued, use a fresh
+ledger for the final committed matrix and presentation bytes, complete the source
+and native prerequisites, then select `fighting-production-ui-journey` with
+`--run --grant engine --grant-reference ACTUAL-FIGHTING-GRANT --resume REPORT`.
+Use the same explicit `--matrix port/finish/final_matrix.json`. Selecting the UI
+job does not auto-run prerequisites. Do not execute this while E is active.
 
 ### Parallax C dependency adoption
 
@@ -39,7 +90,7 @@ beside the targeted logs below. No C receipts were imported into the final ledge
 downgrading its 96 critical jobs. It adds focused fighting, map/operator finish,
 production and Windows closure. Existing `port/fighting/acceptance/plan.json`
 entries are read directly, rather than copied into a competing fighting plan.
-The resolved matrix preserves the previous 135 jobs and now has 141: 34 source, 84 engine, 4 audio,
+The resolved matrix preserves all previous 141 jobs and now has 142: 34 source, 85 engine, 4 audio,
 13 manual and 6 external. These numbers describe scheduling, not quality.
 
 Every report contains `completion_ledger`: ID, owner, cohort, execution status,
@@ -104,7 +155,7 @@ python3 tools/godot-dev/finish_runner.py --matrix port/finish/final_matrix.json 
 
 Select the two strict closure IDs when production/promotion is ready; missing
 assets must fail, rather than switching those commands to audit. Planning and
-execution use the shared supervisor lock; do not compete with grant D. Use the
+execution use the shared supervisor lock; do not compete with grant E. Use the
 committed matrix for source inspection until the owner releases that slot.
 
 Later native selection `fighting-camera-native` requires passed `native-import`,
@@ -209,6 +260,22 @@ units `fighting-Home-and-nine-rigs`, `three-map-and-operator-finishes`,
 does not supply this graphical proof. All requested final units remain required.
 
 ## Outstanding ownership and evidence
+
+Latest UI integration source checks at `b6ab6782`: **20 runner tests**, **15 receipt
+tests**, **10 UI driver/source tests**, and **10 cinematic pipeline source tests**
+passed. The new runner test intercepts the real expanded UI command before spawn;
+it verifies saved running-attempt/queue identity, stable report-path binding despite
+mutable ledger SHA, and refusal of wrong/missing anchors or changed contracts.
+The UI source suite includes actual nine-rig binding checks and rejection of
+historical unanchored receipt conversion. No Godot/X11/uinput worker is launched.
+
+Evidence directory:
+`/home/mojo/.tmp-on-disk/cocs-finish-acceptance-evidence-20261002/ui-registration-b6ab6782-t8zwgxth/`.
+`dry-plan.json` contains all 142 resolved jobs, inventories, the retained 141 prior
+IDs and truthful unrun completion statuses. It is explicitly **not resumable**:
+it was generated read-only without taking the active heavy owner's cohort lock.
+Create a fresh real ledger only at the agreed adoption/execution boundary. This
+registration is neither a final-input freeze nor export/release acceptance.
 
 | Work | Owner / next action | Current acceptance state |
 |---|---|---|
