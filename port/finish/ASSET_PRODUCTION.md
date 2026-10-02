@@ -295,6 +295,72 @@ same evidence root. These are source results, not a native parse or journey pass
 
 ## Windows release closure
 
+### Producer/package compatibility follow-up (parent `479ddd9f`)
+
+The robot build now archives `tools/godot-robots/generated/recipe.json` from the
+**same single UTF-8 byte string** used by its existing `recipeSHA256`: Python
+`json.dumps(manifest(), sort_keys=True)`, without a newline. It is written only
+when the actual Blender build runs. The source test extracts and executes only
+that serialization/write block and hash expression against the real pure recipe;
+it does not import `bpy` or build any asset.
+
+Generic receipt collection now snapshots every exact `expected.packageInputs`
+path from `productionResources(..., strict:false)`. There is no second glob or
+producer-maintained package inventory. Missing auxiliary recipes/reports/reference
+exports now also stop receipt collection. After actual native/visual review, use:
+
+```sh
+python3 tools/asset-production/run.py --unit vehicles --stage package-receipt --granted \
+  --receipt-file /absolute/path/to/actual/vehicles.json \
+  --runtime-hook godot/vehicles/puma.gd \
+  --runtime-hook godot/vehicles/renderer.gd \
+  --runtime-hook godot/combined_arms/chassis.gd \
+  --runtime-hook godot/combined_arms/fleet.gd
+```
+
+Supply the actual native-reviewed hooks; the command rejects absent paths,
+test scripts and duplicate hooks. For each other local unit, use its real generic
+receipt and reviewed activation scripts in the same `package-receipt` stage.
+Robot selection/prop-placement integration remains a native-production prerequisite;
+listing its optional skin adapter alone does not prove that integration exists.
+No new native-review gate is introduced: this is the existing post-native producer
+handoff. Parallax keeps its separate producer and is rejected by this converter.
+
+`tools/asset-production/package-receipt.mjs` verifies exact master/export lists,
+current byte hashes and source fingerprints, the generic receipt's package-input
+snapshot, and independently re-reads GLB embedded image hashes with the package
+validator. It writes the fixed `tools/godot-package/production_receipts/<unit>.json`
+with `packageInputs`, explicit hashed `runtimeHooks`, and `rawFiles: []`. Current
+producers use imported resources; invented raw GLB copies are rejected. A differing
+existing fixed receipt is preserved for explicit parent reconciliation.
+
+The converter never changes promotion records or registration, and marks its
+receipt `accepted:false`. Parent still owns committed receipt hashing/promotion
+after real review. **No package receipt, recipe output or promotion was produced
+in this source-only follow-up; all six local units currently fail on missing
+actual outputs.** The packaging audit's exact paths match the committed producers;
+no path substitution was needed.
+
+The selective-normal warning at `PACKAGING_ASSETS.md` lines 65–68 describes the
+older producer. It is already resolved by the merged material validation: smooth
+coatings/foliage/rubber/fabric retain geometry normals, while reviewed relief roles
+require the correct texture normal strength and shared albedo/normal UV phase.
+This compatibility change retains that behavior and the strict native shutdown
+and reviewed Foundry immutability guards.
+
+Focused source checks:
+
+```sh
+python3 -m unittest discover -s tools/asset-production -p 'test_robot_recipe_bytes.py' -v
+node --test tools/asset-production/package-receipt.test.mjs
+```
+
+The positive conversion fixture is explicitly synthetic in-memory integrity data,
+not a produced master/GLB. Negative cases cover absent files, stale auxiliary
+inputs/builders/masters, wrong export/image hashes, stale embedded fingerprints,
+invented raw files and invalid runtime hooks. The CLI negative checks the actual
+unbuilt robot unit and confirms that no fixed receipt is emitted.
+
 After all units pass, parent integrates approved bindings, robot selection/prop
 placements, candidate hosted routes, package resource closure and accepted map
 pairs; reruns affected canonical/native checks; builds and tests the Windows

@@ -133,6 +133,8 @@ def main():
     parser.add_argument('--stage',default='preflight')
     parser.add_argument('--granted',action='store_true')
     parser.add_argument('--compact',action='store_true',help='760x520 UI150 hosted profile')
+    parser.add_argument('--receipt-file',help='Actual generic receipt for post-native package-receipt stage')
+    parser.add_argument('--runtime-hook',action='append',default=[],help='Actual production hook path; repeat as needed')
     args = parser.parse_args()
     plan = load_plan()
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ')
@@ -149,7 +151,12 @@ def main():
     # Same advisory lock as FINISHCOMBINED-A. Never wait/poll another owner.
     with open('/tmp/opencode/cocs-finish-acceptance.lock','a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-        for command in commands(plan,unit,args.stage):
+        if args.stage == 'package-receipt':
+            if not args.receipt_file or not args.runtime_hook: raise ValueError('package-receipt requires --receipt-file and explicit --runtime-hook paths')
+            selected = [{'id':'package-receipt','argv':['node','tools/asset-production/package-receipt.mjs',unit['id'],args.receipt_file] + ['--runtime-hook='+p for p in args.runtime_hook], 'timeoutSeconds':60}]
+        else:
+            selected = commands(plan,unit,args.stage)
+        for command in selected:
             if args.compact:
                 if not args.stage.startswith('hosted-'): raise ValueError('--compact requires hosted stage')
                 command = {**command, 'argv': command['argv'] + ['--compact']}
