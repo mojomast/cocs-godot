@@ -30,6 +30,8 @@ func key(code: int, pressed: bool) -> void:
 func click(pressed: bool) -> void:
 	var event := InputEventMouseButton.new()
 	event.button_index = MOUSE_BUTTON_LEFT
+	event.position = root.get_visible_rect().size * Vector2(0.5, 0.65)
+	event.global_position = event.position
 	event.pressed = pressed
 	Input.parse_input_event(event)
 func capture(label: String) -> void:
@@ -47,6 +49,7 @@ func _process(delta: float) -> bool:
 		max_cables = maxi(max_cables, session.get_node("PlayerGameplay").cues.slots.size())
 	ride_seen = ride_seen or session.presentation.local_actor.get("zipRide") != null
 	if stage == 0 and age > 0.5:
+		root.grab_focus()
 		click(true)
 		click(false)
 		stage = 1

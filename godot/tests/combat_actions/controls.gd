@@ -151,4 +151,6 @@ func run() -> void:
 	check(not c.command(0,0,true,false).ads, "mounted press cannot latch infantry ADS")
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	print("NATIVE_COMBAT_ACTIONS checks=",checks," failures=",failures," synthetic=true")
+	await RenderingServer.frame_post_draw
+	await process_frame
 	quit(1 if failures else 0)

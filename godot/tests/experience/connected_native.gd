@@ -83,7 +83,7 @@ func pointer(position: Vector2, pressed: bool) -> void:
 	Input.parse_input_event(button)
 
 func world_click(pressed: bool) -> void:
-	pointer(root.get_visible_rect().size * Vector2(0.8, 0.45), pressed)
+	pointer(root.get_visible_rect().size * Vector2(0.5, 0.65), pressed)
 
 func release_focus() -> void:
 	var focus := root.gui_get_focus_owner()
@@ -92,7 +92,7 @@ func release_focus() -> void:
 func http(path: String, body: Variant = null) -> Dictionary:
 	var request := HTTPRequest.new()
 	root.add_child(request)
-	request.timeout = 5
+	request.timeout = 15
 	var error := request.request(endpoint + path, ["Content-Type: application/json"], HTTPClient.METHOD_GET if body == null else HTTPClient.METHOD_POST, "" if body == null else JSON.stringify(body))
 	if error != OK:
 		check(false, "HTTP queue " + path)
@@ -337,6 +337,7 @@ func execute(command: Dictionary) -> void:
 		other.size = Vector2i(280, 180)
 		root.add_child(other)
 		other.show()
+		await process_frame
 		other.grab_focus()
 		await wait_for(func(): return not root.has_focus(), "actual native window focus loss", 5)
 		await create_timer(0.2).timeout

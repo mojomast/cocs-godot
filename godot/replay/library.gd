@@ -11,7 +11,7 @@ var viewport := SubViewport.new()
 var clips := ItemList.new()
 var message := Label.new()
 var clock_label := Label.new()
-var play := Button.new()
+var play: Button
 var speed := OptionButton.new()
 var seek := HSlider.new()
 var file_dialog := FileDialog.new()

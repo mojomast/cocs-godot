@@ -77,7 +77,7 @@ func _process(delta: float) -> bool:
 			capture("ride")
 			stage = 2
 		elif waypoint < route.size():
-			var direction := route[waypoint] - Vector2(actor.x, actor.z)
+			var direction: Vector2 = route[waypoint] - Vector2(actor.x, actor.z)
 			if direction.length() < 0.4: waypoint += 1
 			else:
 				aim(atan2(-direction.x, -direction.y), 0)

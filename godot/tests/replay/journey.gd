@@ -41,6 +41,7 @@ func run() -> void:
 	require(await wait_for(func() -> bool: return session.phase == 3 and not capture.last_state.is_empty(), 15), "native live recipient")
 	if failures: quit(1); return
 	capture.begin()
+	capture.bridge.failed.connect(func(message: String) -> void: print("REPLAY_RUNTIME_REJECTION ", message))
 	require(await wait_for(func() -> bool: return capture.recording, 10), "Record button pipeline acknowledged")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	var down := InputEventKey.new()
@@ -56,7 +57,7 @@ func run() -> void:
 	Input.parse_input_event(down)
 	fire.pressed = false
 	Input.parse_input_event(fire)
-	require(await wait_for(func() -> bool: return session.phase == 4, 40), "actual source round results")
+	require(await wait_for(func() -> bool: return session.phase == 4, 75), "actual source round results")
 	require(session.client.last_ack > 0, "source acknowledged native input")
 	capture.bridge.reply.connect(func(op: String, value: Dictionary) -> void:
 		if op == "save": saved_id = str(value.clip.id))

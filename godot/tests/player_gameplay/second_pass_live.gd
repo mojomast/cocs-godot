@@ -55,8 +55,11 @@ func run() -> void:
 			if actor.id == session.client.actor_id: poses.append(actor.duplicate(true)))
 	while session.phase != 3 or not session.received_pose: await process_frame
 	await create_timer(0.4).timeout
+	root.grab_focus()
 	var click := InputEventMouseButton.new()
 	click.button_index = MOUSE_BUTTON_LEFT
+	click.position = root.get_visible_rect().size * Vector2(0.5, 0.65)
+	click.global_position = click.position
 	click.pressed = true
 	Input.parse_input_event(click)
 	click = click.duplicate()
