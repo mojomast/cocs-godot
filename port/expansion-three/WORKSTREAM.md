@@ -24,6 +24,21 @@ Their candidate modes are design targets until source/native journeys pass.
 
 ## Source/code checkpoints
 
+- **Abyssal — `67f79981`, ready for Blender.** Twelve pressure chambers in three
+  districts, seventeen angled gallery routes, eight crosslinks and 20 m walkable
+  relief are authored as a deterministic source/native geometry recipe. Blender
+  export scripts are prepared; no master or GLB has been produced.
+- **12/12 Node checks passed:** all seventeen routes walked both directions,
+  935 connected nav nodes / 2,943 undirected edges, sustained body contact against
+  58 shell segments, 34 portal and twelve ceiling ray checks, reciprocal overlook
+  counterfire, physical source CTF capture and KOTH/Domination/Holdout scoring
+  wins. Autonomous checks observe only fifteen simulated seconds per candidate
+  mode with supported movement; they do not prove bot round completion.
+- Native architectural/collision inspection, hosted inputs, wide/compact HUD,
+  measured rendering/capture budgets and final registration remain pending.
+  Core identity, generator freshness and Python syntax checks passed. This
+  checkpoint does not grant an engine slot or approve a published mode pair.
+
 - **Robots — `fb9715fb`, ready for Blender.** Three authored skin recipes:
   Needle Surveyor (skirmisher), Caisson Guard (bulwark), and Kiln Tender (mortar),
   each with three compatible LOD assemblies. Six workshop prop recipes and
