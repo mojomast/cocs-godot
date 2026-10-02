@@ -1,8 +1,8 @@
 # Acceptance checkpoint — 2026-10-02
 
-**READY FOR ENGINE.** Source chain and actual Warden kill observed. Full mission
-victory, native controller behavior, rendered HUD quality and human balance are
-not accepted yet. No heavy-slot work was launched.
+**READY FOR ENGINE.** Full **source-only mission victory** is now observed after
+one diagnosed test-controller fix. Native controller behavior, rendered HUD
+quality and human balance are not accepted yet. No heavy-slot work was launched.
 
 Evidence root:
 `/home/mojo/.tmp-on-disk/cocs-expansion-three-horde-evidence-20261002/`
@@ -13,6 +13,10 @@ Evidence root:
 |---|---|
 | `source-chain-lPeSlp/` | PASS: 23,971 ordinary source input steps, dt=1/60; 399.5167 source seconds in 9.981 wall seconds. Wave 7, stage C, four stations, three lives. |
 | `source-boss-UXBKiC/` | FAILED full-victory criterion: 54,000 steps, 900 source seconds in 43.675 wall seconds. Warden defeated, then source timer loss with six enemies alive, 121 kills, zero player deaths, three lives. Retained. |
+| `source-boss-6kDcvB/` | **PASS full source victory:** one authorized follow-up attempt; same seed/config, corrected controller target-range preference only. 48,207 steps, 803.45 source seconds / 20.13855 wall seconds, all stations/gates, Warden death and source `mission-won`, 91 kills, zero deaths, three lives. |
+| `target-probe-4bdlC7/probe.json` | Focused old-input replay to 552.10s; zero position divergence. Demonstrates visible 294.65m target incorrectly displacing nearer 129.89m target. No completion claim. |
+| `targeting-tests-qhqydq7t/` | Exact-geometry regression failed before fix; 3/3 tests pass afterward. |
+| `trace-analysis-4ajx7S/`, `trace-analysis-w9unZA/` | Read-only before/after per-wave movement, fire, idle, target, shot, upgrade and summon accounting. |
 | `wire-replay-AgNt8f/` | FAILED bounded contract probe: one stale-input reset despite 96.48ms largest arrival gap. An unbounded 16ms timer overproduced against 60Hz source steps. Retained. |
 | `wire-replay-XkwcvJ/` | PASS after **fixture-only** ACK-bounded pacing: 600 replayed inputs + neutral cancellation, max ACK 601, 603 source steps / 600 applied, max gap 83.1191ms, no resets/errors. Ten-second Node transport probe, not mission or native acceptance. |
 | `source-checks-eao5yg74/node-tests.log` | 27/27 existing Node tests passed: Blackwater source/map/director, upgrades, input FIFO/TTL and transport regressions. |
@@ -32,9 +36,19 @@ Actual wave-ten Warden actor **127**: arrival/phase 1 at 853.5; phase 2 at
 0/450. Source `lost` at 900 explicitly says “The clock ran out.” The runner
 correctly exits 1 rather than presenting this kill as mission victory.
 
+The one later source attempt **does** emit victory at 803.45s: Warden **91**
+arrives/phase 1 at 691.85, phase 2 at 800.30, phase 3 at 802.1667, dies to player
+0/pulse weapon 0 at 803.45, and source `mission-won` follows in the same step.
+All four stations complete by 429.9833s; B/C arrivals at 137.6667/417.8333s.
+Both original offered Overshield choices are accepted (waves 3/7, indices 3/2).
+See **`TARGETING_FOLLOWUP.md`** for exact diagnostic coordinates, before/after
+counts, limitations, and the preserved negative-before test. This supersedes
+only the source full-victory gate, not native or human acceptance.
+
 ## Ready commands
 
-Source-only, no engine required (already run once each; no repeat needed):
+Source-only, no engine required (completed; the additional full-run budget has
+been consumed, so do not repeat without a new instruction):
 
 ```sh
 node port/expansion-three/horde/source-journey.mjs chain
