@@ -20,6 +20,30 @@ Evidence: `/home/mojo/.tmp-on-disk/cocs-expansion-four-<lane>-evidence-20261002`
 New racing-map ID: `stormglass-causeway`; source racing support is a target until
 actual ordinary-input lap and hosted native acceptance pass.
 
+## Source/code checkpoints
+
+- **Stormglass — `e723b2fd`, ready for Blender.** A 1,191 m circuit with 21
+  corners and 28 m clear road width links terminal, curved freight-vault and
+  quay/surgeworks districts, with three seawall gates and 31 building modules.
+  Nine focused source tests passed, plus 31 existing race tests (one existing
+  slow test skipped). Ordinary-input mounted driving finished in 105.306 seconds
+  with zero impacts/resets. Four stock AI racers produced a legitimate winner
+  at 64.387 seconds; the other racers were on the closing sector, not all finished.
+- Two input-driven competitors exercised countdown, finish and standings; 42
+  barriers passed sustained infantry/Puma/ray contact, six overhead checks passed,
+  and all 215 navigation nodes connect. These are source fixtures, not hosted
+  native or human acceptance. `modeBindings` remains empty.
+- **Parent scope decision:** accept a flat drivable circuit under the frozen
+  source race rules, which use flat vehicle support, Y=0 respawns and a Y≤3 gate
+  limit. The earlier suggested 15–25 m driving relief was a design target, not a
+  user requirement; architecture may reach 24 m without claiming elevated roads.
+  No authority change is authorized or needed for this map's current scope.
+- Blender/master/GLB generation, eye-level architecture review, source/native
+  collision comparison, hosted two-native-player race, restart/Home, standard
+  wide/compact UI and measured continuous driving footage remain pending. Parent
+  must extend the sports scene generator/catalog and package closure only after
+  those gates. No heavy-tool grant is implied by the scope decision.
+
 ## Resource and integration contract
 
 **No new lane has a heavy-tool grant. Parallax retains the exclusive slot.**
