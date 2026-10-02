@@ -20,8 +20,8 @@ boundaries.
 | Fighting camera readability | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing correction merged at `1bff0281`; six parent source checks pass, native four-stage comparison still pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | Source correction merged at `91ad0ce5`; bounded native follow-up assigned to current grant-C owner after primary Parallax work |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
-| Queued asset integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Hosted/finish/teardown contracts integrated and passing; emitting exact robot recipe bytes and executable package-receipt conversion before real asset builds |
-| Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Extension already integrated; fresh exact-input ledger required after production candidate stabilizes; no current engine grant |
+| Queued asset integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Hosted/finish/teardown and exact producer/package-receipt contracts integrated and passing; awaiting real serial asset-production grant |
+| Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Source-only registration of new camera, import-setting, luminaire and final production-closure gates; fresh exact-input ledger required after candidate stabilizes |
 | Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Seven-unit closure and fighter import-byte preservation integrated at `479ddd9f`; source tests pass; waiting for actual promotions/native acceptance before export |
 
 All workers run in the background, using existing sessions/checkouts. Source work
@@ -364,3 +364,22 @@ receipt conversion before builds. Parallax received the explicit revised-master/
 runtime paths and its correct exemption from common embedded-texture fingerprints.
 Promotion records await real outputs and native review; they are not filled from
 source-only inventories.
+
+## Producer/package compatibility completed
+
+Asset `2f2d702c` is merged as `dff733c0`. Robot builds archive exactly the one
+UTF-8 serialization used for `recipeSHA256`, without a trailing newline. Generic
+asset receipts now snapshot the packager's exact supporting-input inventory;
+the new `package-receipt` stage verifies actual masters/exports, image and embedded
+source fingerprints, unchanged supporting inputs and explicit runtime hooks.
+It cannot emit a receipt for absent assets, overwrite a differing fixed receipt,
+or change promotion/registration state. Parent reran all five conversion tests
+and the exact robot serialization test successfully.
+
+All actual queued asset receipts/promotions remain pending; this source bridge
+removes a production/package handoff gap, not the production requirement. The
+acceptance owner has resumed source-only work to register the new executable
+camera/import/closure checks and updated luminaire semantics without dropping
+existing criticals. Private candidate journeys remain pre-promotion work and must
+not be incorrectly required after their public catalogs are registered. Current
+grant C remains exclusively with Parallax and its bounded light-check extension.
