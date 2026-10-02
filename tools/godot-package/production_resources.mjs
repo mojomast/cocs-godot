@@ -56,7 +56,7 @@ function specification(unit,read) {
   if(id==='robots') {
     for(const name of [...skins,...props]){masters.push(`tools/godot-robots/masters/${name}.blend`);exports.push(`godot/robot_assets/switchyard/generated/${name}.glb`);}
     extra.push(...skins.map(name=>`tools/godot-robots/masters/${name}_skeletal.glb`),'godot/robot_assets/switchyard/generated/build-receipt.json','tools/godot-robots/generated/recipe.json');
-    extra.push(...robotImportPaths(exports),'tools/godot-robots/production-d.json');
+    extra.push(...robotImportPaths(exports),'tools/godot-robots/production-d.json','godot/biomes/expansion/scenery_pack.gd');
     inputs.push('tools/godot-robots/verify_blender.py','godot/robot_assets/switchyard/skin_adapter.gd');
     const contract=JSON.parse(read('godot/robot_assets/switchyard/contract.json'));
     inputs.push(...Object.keys(contract.source));
