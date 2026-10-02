@@ -15,8 +15,16 @@ assert bpy.context.scene['candidateHash']==manifest['candidateHash']
 assert bpy.context.scene['geometryHash']==manifest['geometryHash']
 assert hashlib.sha256(master.read_bytes()).hexdigest()==manifest['blendSha256']
 assert len(bpy.data.collections['EXPORT - seven material batches'].objects)==7
+for obj in bpy.context.selected_objects:
+    obj.select_set(False)
+for obj in bpy.data.collections['EXPORT - seven material batches'].objects:
+    obj.select_set(True)
+reexport=out/'reopened-export.glb'
+bpy.ops.export_scene.gltf(filepath=str(reexport),export_format='GLB',use_selection=True,export_extras=True,export_yup=True)
+assert reexport.stat().st_size<=16000000
 report={'candidateHash':manifest['candidateHash'],'geometryHash':manifest['geometryHash'],
         'blendSha256':manifest['blendSha256'],'editableObjects':len(bpy.data.collections['EDITABLE - authority and architectural craft'].objects),
-        'reopened':str(master),'status':'fresh candidate master reopened'}
+        'reopened':str(master),'reexportSha256':hashlib.sha256(reexport.read_bytes()).hexdigest(),
+        'reexportBytes':reexport.stat().st_size,'status':'fresh candidate master reopened and exported'}
 (out/'master-reopen.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report))

@@ -12,7 +12,7 @@ assert.equal(bytes.readUInt32LE(0),0x46546c67);assert.equal(bytes.readUInt32LE(4
 const gltf=JSON.parse(bytes.subarray(20,20+bytes.readUInt32LE(12)).toString());
 assert.equal(manifest.geometryHash,data.geometryHash);assert.equal(manifest.recipeHash,data.recipeHash);
 assert.equal(createHash('sha256').update(bytes).digest('hex'),manifest.glbSha256);
-const blend=read(`tools/godot-multiplayer/new-maps/${id}/${id}.blend`);
+const blend=read(manifest.candidateHash ? `tools/godot-multiplayer/new-maps/${id}/revisions/interiors-v2/output/${id}.blend` : `tools/godot-multiplayer/new-maps/${id}/${id}.blend`);
 assert.equal(createHash('sha256').update(blend).digest('hex'),manifest.blendSha256);
 let triangles=0;for(const mesh of gltf.meshes)for(const primitive of mesh.primitives){assert.equal(primitive.mode??4,4);triangles+=gltf.accessors[primitive.indices??primitive.attributes.POSITION].count/3;}
 assert.ok(triangles<=data.art.budgets.triangles);assert.ok(bytes.length<=data.art.budgets.glbBytes);assert.ok(gltf.materials.length<=data.art.budgets.materialBatches);

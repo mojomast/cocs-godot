@@ -1,5 +1,13 @@
 # Interiors v2 — READY FOR BOUNDED VISUAL PASS
 
+**Production follow-up completed under grant C:** actual build, fresh master
+reopen/re-export, native collision, Full/Off images and hosted-input evidence are
+recorded in `port/new-maps/parallax-observatory/production-c.json` and
+`PRODUCTION-C.md`. The revised master is committed under `output/` and the runtime
+GLB is promoted. Original source-check and candidate identity below remain the
+historical source-only record; these initial grant instructions are superseded by
+the production ledger. Parent chooses final visual/package acceptance.
+
 **Source-only candidate. No Blender, Godot, import, render or encoding job has
 been run for this revision. Helix holds the heavy slot.** Accepted checkpoint
 `9a6372b4` + `277f379e`, its master/GLB, source geometry and evidence are untouched.

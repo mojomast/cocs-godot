@@ -2,10 +2,10 @@
   "status": "source-ready; native pending",
   "geometry_hash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
   "variation_contract": "BRIEF.md; local bounds checked; shared validator must pass after rendering-owner integration",
-  "accepted_asset_source": "/home/mojo/.tmp-on-disk/cocs-map-finish-parallax-20261002",
-  "accepted_glb_sha256": "b3ea4ec57f57f6db83e1acab40dc95135562347ef884cc8f33ba067af8521bb1",
-  "accepted_master_sha256": "fcd7f284443c45d08177837a23af530b1667deb106bddb8822d507f5655ca090",
-  "profile_sha256": "e9632cb70f9b8485fb41bc609104cd5137206fab0a9e22ad22b343cfcb09dce0",
+  "accepted_asset_source": "current checkout",
+  "accepted_glb_sha256": "c1dffd357545206d3f70870f850e441c5be148e652830a4a69835185a75610bd",
+  "accepted_master_sha256": "59946f15dd530ecc3f38d38aea41089e2e113b812060483e8ff92138c0d686b8",
+  "profile_sha256": "b2cdfa1da6c201b32df5af103a39ee7fbbc7490768bd9b2986f8f03c236e6701",
   "coverage": {
     "matched": [
       "saltstone",
@@ -31,11 +31,11 @@
   },
   "counts": {
     "materials": 6,
-    "panels": 52,
-    "signs": 18,
+    "panels": 26,
+    "signs": 10,
     "pockets": 5,
     "motes": 32,
-    "support_samples": 1750
+    "support_samples": 900
   },
   "material_bindings": [
     {
@@ -151,16 +151,6 @@
       "width": 64,
       "height": 64
     },
-    "res://moth/generated/textures/metal-oxide.png": {
-      "sha256": "82ac59a91f7be9a0fd4182a8b83d7b2b7cf07d7bb6e98ae5b5ff006eedcb8257",
-      "width": 64,
-      "height": 64
-    },
-    "res://moth/derived/normals/metal-oxide.png": {
-      "sha256": "ea314cc8916d9e1734b8b7a17c40e2c2e28861385dd8db5e460dd7c9a47c3033",
-      "width": 64,
-      "height": 64
-    },
     "res://moth/generated/textures/ice-cracked.png": {
       "sha256": "2ebe487943a7835bef5ca43bf362d8ab8ed17ab656928ca1756ff2cb9738f945",
       "width": 64,
@@ -193,390 +183,6 @@
     }
   },
   "mount_checks": [
-    {
-      "id": "archive-ceramic--1-0",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "ephemeris-vault-wall--1"
-    },
-    {
-      "id": "archive-ceramic--1-1",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "ephemeris-vault-wall--1"
-    },
-    {
-      "id": "archive-ceramic--1-2",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "ephemeris-vault-wall--1"
-    },
-    {
-      "id": "archive-ceramic--1-3",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "ephemeris-vault-wall--1"
-    },
-    {
-      "id": "archive-ceramic--1-4",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "ephemeris-vault-wall--1"
-    },
-    {
-      "id": "archive-ceramic--1-5",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "ephemeris-vault-wall--1"
-    },
-    {
-      "id": "archive-ceramic--1-6",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "ephemeris-vault-wall--1"
-    },
-    {
-      "id": "archive-ceramic--1-7",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "ephemeris-vault-wall--1"
-    },
-    {
-      "id": "archive-ceramic--1-8",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "ephemeris-vault-wall--1"
-    },
-    {
-      "id": "archive-ceramic-1-0",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": -1,
-      "exported_backing_normal_signs": [
-        1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "ephemeris-vault-wall-1"
-    },
-    {
-      "id": "archive-ceramic-1-1",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": -1,
-      "exported_backing_normal_signs": [
-        1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "ephemeris-vault-wall-1"
-    },
-    {
-      "id": "archive-ceramic-1-2",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": -1,
-      "exported_backing_normal_signs": [
-        1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "ephemeris-vault-wall-1"
-    },
-    {
-      "id": "archive-ceramic-1-3",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": -1,
-      "exported_backing_normal_signs": [
-        1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "ephemeris-vault-wall-1"
-    },
-    {
-      "id": "archive-ceramic-1-4",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": -1,
-      "exported_backing_normal_signs": [
-        1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "ephemeris-vault-wall-1"
-    },
-    {
-      "id": "archive-ceramic-1-5",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": -1,
-      "exported_backing_normal_signs": [
-        1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "ephemeris-vault-wall-1"
-    },
-    {
-      "id": "archive-ceramic-1-6",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": -1,
-      "exported_backing_normal_signs": [
-        1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "ephemeris-vault-wall-1"
-    },
-    {
-      "id": "archive-ceramic-1-7",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": -1,
-      "exported_backing_normal_signs": [
-        1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "ephemeris-vault-wall-1"
-    },
-    {
-      "id": "archive-ceramic-1-8",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": -1,
-      "exported_backing_normal_signs": [
-        1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "ephemeris-vault-wall-1"
-    },
-    {
-      "id": "pump-mineral--1-1",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "tidal-pump-vault-wall--1"
-    },
-    {
-      "id": "pump-mineral--1-3",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "tidal-pump-vault-wall--1"
-    },
-    {
-      "id": "pump-mineral--1-5",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "tidal-pump-vault-wall--1"
-    },
-    {
-      "id": "pump-mineral--1-7",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "tidal-pump-vault-wall--1"
-    },
-    {
-      "id": "pump-oxide--1-0",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.03,
-      "max_backing_distance": 0.03,
-      "host": "tidal-pump-vault-wall--1"
-    },
-    {
-      "id": "pump-oxide--1-1",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.03,
-      "max_backing_distance": 0.03,
-      "host": "tidal-pump-vault-wall--1"
-    },
-    {
-      "id": "pump-oxide--1-2",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.03,
-      "max_backing_distance": 0.03,
-      "host": "tidal-pump-vault-wall--1"
-    },
-    {
-      "id": "pump-mineral-1-1",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": -1,
-      "exported_backing_normal_signs": [
-        1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "tidal-pump-vault-wall-1"
-    },
-    {
-      "id": "pump-mineral-1-3",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": -1,
-      "exported_backing_normal_signs": [
-        1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "tidal-pump-vault-wall-1"
-    },
-    {
-      "id": "pump-mineral-1-5",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": -1,
-      "exported_backing_normal_signs": [
-        1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "tidal-pump-vault-wall-1"
-    },
-    {
-      "id": "pump-mineral-1-7",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": -1,
-      "exported_backing_normal_signs": [
-        1
-      ],
-      "min_backing_distance": 0.0125,
-      "max_backing_distance": 0.0125,
-      "host": "tidal-pump-vault-wall-1"
-    },
-    {
-      "id": "pump-oxide-1-0",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": -1,
-      "exported_backing_normal_signs": [
-        1
-      ],
-      "min_backing_distance": 0.03,
-      "max_backing_distance": 0.03,
-      "host": "tidal-pump-vault-wall-1"
-    },
-    {
-      "id": "pump-oxide-1-1",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": -1,
-      "exported_backing_normal_signs": [
-        1
-      ],
-      "min_backing_distance": 0.03,
-      "max_backing_distance": 0.03,
-      "host": "tidal-pump-vault-wall-1"
-    },
-    {
-      "id": "pump-oxide-1-2",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": -1,
-      "exported_backing_normal_signs": [
-        1
-      ],
-      "min_backing_distance": 0.03,
-      "max_backing_distance": 0.03,
-      "host": "tidal-pump-vault-wall-1"
-    },
     {
       "id": "polar-frost--1--12",
       "samples": 25,
@@ -824,99 +430,75 @@
       "host": "institute-wing-82-10"
     },
     {
-      "id": "archive-index--1-0",
+      "id": "pump-mineral-sill--1-0",
       "samples": 25,
       "normal_axis": 2,
       "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.03,
-      "max_backing_distance": 0.03,
-      "host": "ephemeris-vault-wall--1"
-    },
-    {
-      "id": "archive-index--1-1",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.03,
-      "max_backing_distance": 0.03,
-      "host": "ephemeris-vault-wall--1"
-    },
-    {
-      "id": "archive-index-1-0",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": -1,
       "exported_backing_normal_signs": [
         1
       ],
       "min_backing_distance": 0.03,
       "max_backing_distance": 0.03,
-      "host": "ephemeris-vault-wall-1"
-    },
-    {
-      "id": "archive-index-1-1",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": -1,
-      "exported_backing_normal_signs": [
-        1
-      ],
-      "min_backing_distance": 0.03,
-      "max_backing_distance": 0.03,
-      "host": "ephemeris-vault-wall-1"
-    },
-    {
-      "id": "pump-service--1-0",
-      "samples": 25,
-      "normal_axis": 2,
-      "normal_sign": 1,
-      "exported_backing_normal_signs": [
-        -1
-      ],
-      "min_backing_distance": 0.05,
-      "max_backing_distance": 0.05,
       "host": "tidal-pump-vault-wall--1"
     },
     {
-      "id": "pump-service--1-1",
+      "id": "pump-mineral-sill--1-1",
       "samples": 25,
       "normal_axis": 2,
       "normal_sign": 1,
       "exported_backing_normal_signs": [
-        -1
+        1
       ],
-      "min_backing_distance": 0.05,
-      "max_backing_distance": 0.05,
+      "min_backing_distance": 0.03,
+      "max_backing_distance": 0.03,
       "host": "tidal-pump-vault-wall--1"
     },
     {
-      "id": "pump-service-1-0",
+      "id": "pump-mineral-sill--1-2",
+      "samples": 25,
+      "normal_axis": 2,
+      "normal_sign": 1,
+      "exported_backing_normal_signs": [
+        1
+      ],
+      "min_backing_distance": 0.03,
+      "max_backing_distance": 0.03,
+      "host": "tidal-pump-vault-wall--1"
+    },
+    {
+      "id": "pump-mineral-sill-1-0",
       "samples": 25,
       "normal_axis": 2,
       "normal_sign": -1,
       "exported_backing_normal_signs": [
         1
       ],
-      "min_backing_distance": 0.05,
-      "max_backing_distance": 0.05,
+      "min_backing_distance": 0.03,
+      "max_backing_distance": 0.03,
       "host": "tidal-pump-vault-wall-1"
     },
     {
-      "id": "pump-service-1-1",
+      "id": "pump-mineral-sill-1-1",
       "samples": 25,
       "normal_axis": 2,
       "normal_sign": -1,
       "exported_backing_normal_signs": [
         1
       ],
-      "min_backing_distance": 0.05,
-      "max_backing_distance": 0.05,
+      "min_backing_distance": 0.03,
+      "max_backing_distance": 0.03,
+      "host": "tidal-pump-vault-wall-1"
+    },
+    {
+      "id": "pump-mineral-sill-1-2",
+      "samples": 25,
+      "normal_axis": 2,
+      "normal_sign": -1,
+      "exported_backing_normal_signs": [
+        1
+      ],
+      "min_backing_distance": 0.03,
+      "max_backing_distance": 0.03,
       "host": "tidal-pump-vault-wall-1"
     },
     {

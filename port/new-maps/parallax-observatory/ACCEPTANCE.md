@@ -1,5 +1,10 @@
 # Parallax Observatory — source and native acceptance
 
+The six full-round receipts below remain historical evidence for accepted
+`9a6372b4` / `277f379e`. The unchanged-authority interiors-v2 promotion has separate
+current native/art receipts in `production-c.json` and review notes in
+`PRODUCTION-C.md`; historical asset hashes and receipts are not relabeled.
+
 Geometry: `906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554`.
 Recipe: `e949e43d5546ec8b0c9024810f1da6229152e370ad640ecf27ecb54c05f2e23d`.
 
