@@ -52,3 +52,13 @@ against GLB triangles, plus six negative probes. Foundry `7ed49f44` is merged as
 Both use v1 profiles and preserve accepted geometry/assets. Shared owner received
 the actual commits for binder integration and Helix's soft wear-mask extension
 request. Native finished appearance, detail switching and lifecycle remain unrun.
+
+Parallax `b3ca045f` is merged as `f5c7683a` (finish profile/docs only): six material
+bindings and intentional `sea` preservation cover all seven accepted materials;
+52 panels, 18 signs and 32 motes are planned. Lane validation checked 26 resource
+references and 1,750 backing-face samples. The `mirror` material is opaque optical
+alloy, not glass. Its GLB/master and mode bindings remain isolated; this merge
+does not advertise Parallax or establish parent native acceptance. Placements
+target the accepted production GLB and must be rechecked if interiors-v2 is built
+and promoted. Shared owner received this third profile; all map appearance review
+remains pending the serial engine grant.
