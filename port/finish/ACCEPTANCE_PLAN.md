@@ -171,6 +171,28 @@ Receipts cannot replace executable gates. Missing/changed evidence or input hash
 are rejected. All prior attempts remain. `release_ready` stays false: this is an
 acceptance ledger, not a release publisher.
 
+### Additive engineering readiness labels
+
+`integration_ready` is true only when every critical **source and engine** job
+has a latest passed attempt in this exact-input ledger. Missing, unselected,
+skipped, running or failed engineering jobs keep it false. An input identity and
+at least one critical engineering job are required. This is engineering
+completion, **not playtest certification**.
+
+`blockers_by_cohort` exposes `unrun` and `failing` gate-ID lists for source,
+engine, audio, manual and external cohorts. Thus integration can be ready while
+real-audio failures, human listening, OS/assistive or GPU review and export
+acceptance remain visible release blockers. Existing `status`,
+`incomplete_critical`, exit semantics and the conservative `release_ready: false`
+remain unchanged; every critical cohort still participates in the aggregate.
+
+Use the existing selection/resume CLI to avoid repeating completed source jobs.
+For the frozen native candidate, reuse one existing finish/integration worktree,
+perform its required import once under the explicit grant, then bind the ledger
+to the resulting cache bytes. Strict same-input validation and cache hashing
+remain in force. Ignored cache files do not themselves imply a reimport; no
+cache exclusions, lockfile-only dependency shortcuts or synthetic passes are used.
+
 ## Source execution actually completed
 
 Seventeen distinct source registrations passed across this checkout and the

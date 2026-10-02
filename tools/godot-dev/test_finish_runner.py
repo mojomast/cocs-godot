@@ -95,6 +95,48 @@ class FinishRunnerTest(unittest.TestCase):
         self.assertEqual(result['missing'], ['missing.mjs'])
         self.assertEqual(result['node_packages'], ['ws'])
 
+    def test_integration_readiness_keeps_all_release_blockers(self):
+        jobs = [{'id': cohort, 'cohort': cohort, 'critical': True}
+                for cohort in ('source', 'engine', 'audio', 'manual', 'external')]
+        report = {'input_identity': {'sha256': 'a' * 64}, 'attempts': {
+            'source': [{'status': 'passed'}], 'engine': [{'status': 'passed'}],
+            'audio': [{'status': 'failed', 'failure_reason': 'silent PCM'}],
+            'manual': [{'status': 'unrun', 'skip_reason': 'human review pending'}]}}
+        summarize(report, jobs)
+        self.assertTrue(report['integration_ready'])
+        self.assertFalse(report['release_ready'])
+        self.assertEqual(report['status'], 'incomplete')
+        self.assertEqual(report['incomplete_critical'], ['audio', 'manual', 'external'])
+        self.assertEqual(report['blockers_by_cohort']['audio'], {'unrun': [], 'failing': ['audio']})
+        self.assertEqual(report['blockers_by_cohort']['manual']['unrun'], ['manual'])
+        self.assertEqual(report['blockers_by_cohort']['external']['unrun'], ['external'])
+        # Historical failure is retained, but readiness uses the latest attempt.
+        report['attempts']['engine'].insert(0, {'status': 'failed'})
+        summarize(report, jobs)
+        self.assertTrue(report['integration_ready'])
+        self.assertEqual(len(report['attempts']['engine']), 2)
+
+    def test_integration_readiness_requires_every_critical_engineering_pass(self):
+        jobs = [{'id': 'source', 'cohort': 'source'}, {'id': 'engine', 'cohort': 'engine'}]
+        for cohort, status in [('engine', 'failed'), ('engine', 'unrun'),
+                               ('engine', 'skipped'), ('engine', 'running'), ('source', 'failed')]:
+            with self.subTest(cohort=cohort, status=status):
+                report = {'input_identity': {'sha256': 'b' * 64}, 'attempts': {
+                    'source': [{'status': 'passed'}], 'engine': [{'status': 'passed'}]}}
+                report['attempts'][cohort] = [{'status': status}]
+                summarize(report, jobs)
+                self.assertFalse(report['integration_ready'])
+                self.assertFalse(report['release_ready'])
+                bucket = 'failing' if status == 'failed' else 'unrun'
+                self.assertEqual(report['blockers_by_cohort'][cohort][bucket], [cohort])
+        for attempts in ({}, {'source': [{'status': 'unrun'}], 'engine': [{'status': 'unrun'}]}):
+            report = {'input_identity': {'sha256': 'b' * 64}, 'attempts': attempts}
+            summarize(report, jobs)
+            self.assertFalse(report['integration_ready'])
+        report = {'attempts': {cohort: [{'status': 'passed'}] for cohort in ('source', 'engine')}}
+        summarize(report, jobs)
+        self.assertFalse(report['integration_ready'], 'No input identity cannot certify integration')
+
     def test_integrated_entrypoints_exist_in_this_checkout(self):
         root = Path(__file__).resolve().parents[2]
         matrix = load_matrix()

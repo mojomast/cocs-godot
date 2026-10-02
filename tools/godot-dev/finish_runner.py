@@ -241,6 +241,18 @@ def summarize(report, jobs):
     latest = {key: value[-1]['status'] for key, value in report['attempts'].items() if value}
     report['incomplete_critical'] = [j['id'] for j in jobs if j.get('critical', True) and latest.get(j['id']) != 'passed']
     report['status'] = 'incomplete' if report['incomplete_critical'] else 'passed'
+    engineering = [j for j in jobs if j.get('critical', True) and j['cohort'] in ('source', 'engine')]
+    # All receipts belong to this ledger's identity, enforced by strict resume.
+    # This label is engineering completion, not playtest or release certification.
+    report['integration_ready'] = bool(engineering and report.get('input_identity', {}).get('sha256')) and all(
+        latest.get(j['id']) == 'passed' for j in engineering)
+    blockers = {cohort: {'unrun': [], 'failing': []}
+                for cohort in ('source', 'engine', 'audio', 'manual', 'external')}
+    for job in jobs:
+        status = latest.get(job['id'])
+        if job.get('critical', True) and status != 'passed':
+            blockers[job['cohort']]['failing' if status == 'failed' else 'unrun'].append(job['id'])
+    report['blockers_by_cohort'] = blockers
     # Feature acceptance is not packaging, production art, listening, or publication.
     report['release_ready'] = False
 
