@@ -84,20 +84,31 @@ def build():
        'panels':[],'signs':[],'pockets':[],'preserve_materials':['glass'],
        'budgets':{'material_variants':12,'panels':64,'signs':20,'motes':72}}
     treatments=[
-      ('verdigris','oxidised-copper','default','5b8f79',.65,.64),
-      ('soil','regolith','default','817153',1.4,.94),
-      ('stone','regolith','mossy','899681',.85,.82),
-      ('ceramic','pearl-ceramic','polished','c8d0bb',.6,.30),
-      ('brick','pearl-ceramic','worn','ad8b68',.65,.79),
-      ('gold','brushed-alloy','default','b4ab83',1.1,.46),
-      ('solar','brushed-alloy','circuit','324b61',.7,.35),
-      ('leaflight','regolith','verdant','99b95d',.9,.86),
-      ('botanical','regolith','verdant','50713e',.9,.92)]
-    for source,family,variant,tint,density,roughness in treatments:
+      ('verdigris','oxidised-copper','default','547f70',1.3,.62),
+      ('soil','regolith','default','827054',1.5,.94),
+      ('stone','pearl-ceramic','cast','a7a28f',1.3,.88),
+      ('ceramic','pearl-ceramic','cast','c2bda5',1.5,.68),
+      ('brick','pearl-ceramic','worn','a27d5c',1.3,.87),
+      ('gold','brushed-alloy','default','b89a5c',1.5,.53),
+      ('solar','brushed-alloy','circuit','344650',1.1,.55),
+      # Actual grass is low-contrast botanical grain. Keep authored frond
+      # silhouettes and colour separation; neither rock nor macro-organic plaid.
+      ('leaflight','regolith','verdant','82a454',1.5,.83),
+      ('botanical','regolith','verdant','496c38',1.5,.88)]
+    for index,(source,family,variant,tint,density,roughness) in enumerate(treatments):
+        leaf=source in ['leaflight','botanical']
+        manufactured=source in ['gold','solar']
         p['materials'].append({'source':source,'family':family,'options':{
           'variant':variant,'tint':tint,'tiles_per_metre':density,'roughness':roughness,
-          'lut_gain':0.035 if source=='verdigris' else 0.0,'pulse_speed':0.0,'pulse_depth':0.0,
-          'normal_strength':.18 if source in ['leaflight','botanical'] else .30}})
+          'lut_gain':0.0,'pulse_speed':0.0,'pulse_depth':0.0,
+          'texture_strength':{'verdigris':.20,'soil':.30,'stone':.33,'ceramic':.20,'brick':.30,'gold':.16,'solar':.22,'leaflight':.16,'botanical':.22}[source],
+          'texture_saturation':.15 if leaf else (.08 if source in ['soil','verdigris'] else 0),
+          'albedo_gain':1.3,'normal_strength':.045 if leaf else (.06 if manufactured else .10),
+          'roughness_variation':.08,'detail_strength':.06,'ao_strength':.12,
+          'metallic':.42 if source=='gold' else (.35 if source=='verdigris' else 0),
+          'specular_strength':.20,'variation_mode':'manufactured' if manufactured else 'organic',
+          'variation_strength':.10 if manufactured else (.18 if leaf else .32),
+          'variation_scale':.12 if leaf else .07,'variation_seed':610220+index}})
     proof=[]
     def mount(id,mesh_id,face,width,height,lift,texture=None,text=None,side=1,**finish_fields):
         m=meshes[mesh_id];v=[m['vertices'][i] for i in face]
@@ -112,14 +123,16 @@ def build():
              'size':[round(width,6),round(height,6)],'essential':bool(text)}
         if text: row.update(text=text,foreground='e4ebd8',background='233e35');p['signs'].append(row)
         else:
-            row.update(texture=texture,tint='7c8e6a' if 'root' in id or 'damp' in id else '81968b',**finish_fields)
+            row.update(texture=texture,tint='858575' if 'root' in id else 'a49f8d',**finish_fields)
+            if 'wear_mask' in row:
+                row.update(wear_mask='weathered_concrete',opacity=round(row['opacity']*.55,3),feather=.4)
             p['panels'].append(row)
         proof.append({'id':id,'mesh':mesh_id,'material':m['material'],'face':face,'normal':rounded(n),
                       'clearance_metres':.018,'role':'wayfinding' if text else 'bounded-weather/service-inset',
                       'support_center':rounded(center),'axes':{'x':rounded(xaxis),'y':[0,1,0]},'size':row['size']})
     # Retaining faces already interrupted at route gaps. Never use clerestory glass.
-    groups=[('archive','archive-inner-retaining-','weathered_concrete-damp',.22),
-            ('irrigation','irrigation-inner-wall-','metal-oxide',.18),
+    groups=[('archive','archive-inner-retaining-','weathered_concrete-worn',.22),
+            ('irrigation','irrigation-inner-wall-','weathered_concrete-worn',.18),
             ('pavilion','pavilion-inner-plinth-','weathered_concrete-worn',.22)]
     sign_texts={'archive':['01 / SEED ARCHIVE','RESEARCH AISLE','SERVICE AISLE'],
                 'irrigation':['02 / FILTRATION','MAINTENANCE LOOP','ARCHIVE RING'],
@@ -187,6 +200,7 @@ def audit(p,proof,recipe):
         raw=path.read_bytes();require(raw[:8]==b'\x89PNG\r\n\x1a\n','invalid PNG')
         require(list(struct.unpack_from('>II',raw,16))==[record['width'],record['height']],'image size mismatch')
         resources[record['path']]=hashlib.sha256(raw).hexdigest()
+        require(resources[record['path']]==record['png_sha256'],'Moth PNG identity changed '+key)
     import re
     lib=(ROOT/'godot/material_language/library.gd').read_text()
     bounds={k:(float(lo),float(hi)) for k,lo,hi in re.findall(r'"([\w_]+)": \[([\d.-]+), ([\d.-]+),',lib)}
@@ -195,6 +209,15 @@ def audit(p,proof,recipe):
         require(row['options']['variant'] in f['variants'],'missing variant');v=f['variants'][row['options']['variant']]
         for k,val in row['options'].items():
             if k in ['tint','variant']: continue
+            # Additive private dressing contract; common Language.BOUNDS does
+            # not own these. Shared validation is a separate integration gate.
+            if k=='variation_mode':
+                require(val in ['none','organic','manufactured'],'invalid variation mode');continue
+            if k in ['variation_strength','variation_scale','variation_seed']:
+                lo,hi={'variation_strength':(0,1),'variation_scale':(.01,1),'variation_seed':(0,2147483647)}[k]
+                require(math.isfinite(val) and lo<=val<=hi,'invalid '+k)
+                if k=='variation_seed':require(type(val) is int,'noninteger seed')
+                continue
             require(k in bounds and bounds[k][0]<=val<=bounds[k][1],'unsupported/out of range option '+k)
         resolve(manifest['textures'],v['base']);resolve(derived,'data--'+v['base'])
         resolve(derived,'normal--'+v['normal']) if v['normal_source']=='derived' else resolve(manifest['normals'],v['normal'])
@@ -246,6 +269,8 @@ def audit(p,proof,recipe):
     counts={'material_variants':len(p['materials']),'panels':len(p['panels']),'signs':len(p['signs']),'motes':sum(r['count'] for r in p['pockets'])}
     for k,n in counts.items():require(n<=p['budgets'][k],'budget exceeded '+k)
     return {'status':'source-ready-native-review-pending','geometry_hash':HASH,'glb_sha256':GLB_HASH,'seed':SEED,
+            'profile_sha256':hashlib.sha256((json.dumps(p,indent=2)+'\n').encode()).hexdigest(),
+            'variation_contract':'BRIEF.md; local bounds checked; shared validator must pass after rendering-owner integration',
             'counts':counts,'matched_materials':assigned,'preserved_materials':preserved,'unmatched_materials':[],
             'resources':resources,'placements':proof,'proof_scope':'All quad corners contained by recipe support faces; every support triangle decoded from accepted GLB. No rendered appearance claim.'}
 
