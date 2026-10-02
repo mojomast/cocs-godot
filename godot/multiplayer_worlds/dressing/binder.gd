@@ -200,9 +200,9 @@ func _sign(entry: Dictionary) -> void:
 	var font := ThemeDB.fallback_font
 	label.font = font
 	var width := 1.0
-	var lines := entry.text.split("\n")
+	var lines: PackedStringArray = str(entry.text).split("\n")
 	for line: String in lines: width = maxf(width, font.get_string_size(line, HORIZONTAL_ALIGNMENT_LEFT, -1, 64).x)
-	var height := font.get_height(64) * lines.size()
+	var height: float = font.get_height(64) * lines.size()
 	label.pixel_size = minf(float(entry.size[0]) * 0.88 / width, float(entry.size[1]) * 0.88 / height)
 	if label.pixel_size * 64 < 0.08:
 		_diagnostics.errors.append("sign text too small to read: " + entry.id)

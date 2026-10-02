@@ -106,6 +106,7 @@ func _charge_and_policy() -> void:
 	check(s.snapshot().fighters[1].move_id == "special2", "Grok requires and consumes down charge")
 
 func _pair_clocks() -> void:
+	_landing_attack()
 	var s = sim()
 	s.step([F.input(32), F.input()])
 	var release_seen := false
@@ -135,6 +136,36 @@ func _pair_clocks() -> void:
 	idle(s, 2)
 	view = s.snapshot()
 	check(not view.pair.is_empty() and view.fighters[0].animation_frame == view.fighters[1].animation_frame, "delayed Claude counter becomes shared pair")
+
+func _landing_attack() -> void:
+	var roster := F.roster()
+	var rules := F.rules()
+	rules.landing_recovery = 4
+	for operator in roster.operators:
+		operator.moves.air_m.recovery = 30
+		operator.moves.air_m.cancels = [{"to":"stand_l", "from":2, "until":30, "on":["hit", "block"]}]
+	var s := Simulation.new()
+	s.configure(roster, rules)
+	check(s.last_error.is_empty(), "landing fixture schema")
+	s.start_match({"operators":["chatgpt", "claude"], "stage_id":"landing", "seed":7, "training":true})
+	s.training_reset({"fighters":[{"x":-420,"y":1},{"x":420}]})
+	s.step([F.input(2), F.input()])
+	var saw_landing := false
+	var saw_frozen := false
+	for tick in range(20):
+		var before: Dictionary = s.snapshot()
+		var after: Dictionary = s.step([F.input(), F.input()])
+		var old := int(before.fighters[0].landing_left)
+		if old > 0:
+			var expected := old if before.freeze > 0 else old - 1
+			check(after.fighters[0].landing_left == expected, "landing recovery advances once and freezes with hitstop")
+			saw_frozen = saw_frozen or before.freeze > 0
+		if after.fighters[0].landing_left == 4: saw_landing = true
+		if saw_landing and after.fighters[0].landing_left == 0 and after.freeze == 0: break
+	check(saw_landing and saw_frozen, "committed air attack lands and encounters real hitstop")
+	check(s.snapshot().fighters[0].move_id == "air_m", "landing timer expires during committed recovery")
+	s.step([F.input(1), F.input()])
+	check(s.snapshot().fighters[0].move_id == "stand_l", "legal grounded cancel after landing recovery")
 
 func _hits_and_guard() -> void:
 	var s = sim()

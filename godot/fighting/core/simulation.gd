@@ -124,7 +124,12 @@ func step(inputs: Array) -> Dictionary:
 			if f.move_id.is_empty() and f.stun == 0 and f.down == 0:
 				f.facing = 1 if _state.fighters[1 - id].x >= f.x else -1
 		for id in range(2):
-			_advance(_state.fighters[id], _state.fighters[1 - id])
+			var fighter: Dictionary = _state.fighters[id]
+			var landing_before := int(fighter.landing_left)
+			_advance(fighter, _state.fighters[1 - id])
+			# Recovery belongs to the combat clock, including committed attacks.
+			# A newly landed actor keeps its full interval; hitstop never enters here.
+			if landing_before > 0: fighter.landing_left = maxi(0, int(fighter.landing_left) - 1)
 		_anchors()
 		_push()
 		_projectiles_advance()
@@ -409,7 +414,6 @@ func _locomotion(f: Dictionary) -> void:
 	var input: Dictionary = f.input
 	var stats: Dictionary = _catalog[f.operator_id].stats
 	if f.landing_left > 0:
-		f.landing_left -= 1
 		f.vx = 0
 		f.animation = "land"
 		return

@@ -80,7 +80,7 @@ func send(request: Dictionary) -> bool:
 	if request.get("op") == "frame" and not pending.is_empty() and pending.back().get("op") in ["frame", "frames"]:
 		var previous: Dictionary = pending.back()
 		var frames: Array = previous.frames.duplicate() if previous.op == "frames" else [previous]
-		if frames.size() < 4:
+		if frames.size() < 32:
 			frames.append(request)
 			var batch := {"op":"frames", "frames":frames}
 			var batch_bytes := JSON.stringify(batch).to_utf8_buffer().size()

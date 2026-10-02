@@ -150,7 +150,7 @@ test('bounded native packet batching retains source capture order/due decisions'
     local.dispatch({op:'record',...options});
     local.dispatch({op:'frames',frames});for(const frame of frames)oracle.frame(frame);
     assert.deepEqual(local.capture.finish().keyframes,oracle.finish().keyframes);
-    assert.throws(()=>local.dispatch({op:'frames',frames:Array(5).fill(frames[0])}),/capture batch/);
+    assert.throws(()=>local.dispatch({op:'frames',frames:Array(33).fill(frames[0])}),/capture batch/);
   }finally{rmSync(root,{recursive:true,force:true});}
 });
 test('actual bounded loopback service authentication, record/save/open/seek/discard lifecycle',async()=>{
