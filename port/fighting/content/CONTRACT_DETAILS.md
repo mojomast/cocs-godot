@@ -84,6 +84,22 @@ checks that author hints match the expected held edges. A duration holds buttons
 through its window; it emits one rising-edge hint on the first tick, then zero.
 Without duration, a sample occupies one tick and the next unspecified tick releases
 it naturally. The helper is input expansion only, not recognition/combat authority.
+
+Ground combo fixtures use `distance >= rules.pushbox.w` (current exact-touch
+minimum 660 mm). This predicate applies only when both initial feet heights are
+zero; airborne fixtures retain their separate authored separation. First-contact
+horizontal reach is checked against the defender hurtbox as a candidate bound,
+not a substitute for movement/collision execution.
+DeepSeek's optional `defender_setup_inputs` gives the dummy an explicit 36-tick
+same-world-direction walk during charge setup. All horizontal samples are relative
+to the **attacker's** initial facing, including these defender samples; pass that
+same facing to `expandTrace(combo,facing,'defender')`. Native fixtures are mirrors
+of the same operator, so both walk with the same authored speed. Defender follows
+using canonical inputs only and releases on the first attack tick. Place actors
+once at initial legal separation; there are no per-step position assignments.
+The independent verifier `9549da1c` found the original 550 mm grounded fixtures
+inside the 660 mm pushboxes; those fixture candidates were invalid. Correcting
+spacing does not establish native combo validity or erase the original failure.
 Trace tick scheduling uses startup/active plus authored hitstop estimates, not a
 second simulation. Preconditions specify positions/airborne/charge/resource.
 Only the native core can certify contacts, hitstop, stun continuity and scaling.
