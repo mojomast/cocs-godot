@@ -5,10 +5,19 @@ run in this lane. Parallax retains the heavy slot until explicit reassignment.
 
 ## Executed lightweight checks
 
-`node --test tools/godot-audiovisual/expansion/telegraph.test.mjs`: **5/5 pass**.
+`node --test tools/godot-audiovisual/expansion/telegraph.test.mjs`: **6/6 pass**.
 These execute actual source `_beat` and `_falloff`, compare all source vectors,
 reproduce every generated PCM file byte-for-byte, check attack/exponential release,
 finite samples, distinct motifs, silent tails and shared priority fixtures.
+The additional actual-source `updateEnemyRoles` test steps artillery for 900
+ticks and verifies target mark, windup duration and source cooldown spacing.
+All four tooling files pass Node syntax checks. Production campaign authority
+module imports and the controlled initial mortar/Warden deployment were checked
+with bounded Node-only setup (no simulation loop or native process).
+
+Initial authority module import failed because this worktree lacked `ws`.
+Preserved failure, then reused the parent's `node_modules` via an ignored symlink;
+the same module import passed. This is an environment fix, not a source change.
 
 PCM inventory: 160 files; 3,191,080 bytes; largest prequantization peak
 0.09732718897213075. No clipping and no normalization. This is Node-generated
@@ -17,6 +26,8 @@ been engine-parsed or executed yet. Node reference policy is not native proof.
 
 Evidence directory:
 `/home/mojo/.tmp-on-disk/cocs-expansion-three-audio-evidence-20261002/`.
+Final code-stage oracle log: `node-oracles-03.log` (6/6, 941.082074 ms);
+earlier `node-oracles-02.log` and environment failures remain preserved.
 Keep failed attempts and add numbered native attempts rather than overwrite.
 
 ## Prepared, executable after grant

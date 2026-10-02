@@ -24,7 +24,9 @@ static func slot(active: Array, weights: Array, starts: Array, weight: float, no
 		if not active[i]: return i
 	var weakest := -1
 	for i in active.size():
-		if now - float(starts[i]) < ATTACK_GUARD: continue
+		# A simultaneous burst of ordinary tells must not exclude the boss.
+		var critical_upgrade := weight > 1.0 and float(weights[i]) <= 1.0
+		if now - float(starts[i]) < ATTACK_GUARD and not critical_upgrade: continue
 		if weakest < 0 or float(weights[i]) < float(weights[weakest]): weakest = i
 	if weakest >= 0 and weight > float(weights[weakest]) + STEAL_MARGIN: return weakest
 	return -1
