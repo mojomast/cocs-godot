@@ -59,4 +59,18 @@ plus walkthrough footage. Record asset budgets and observed timings. Separate
 controlled fixtures from natural play balance and real-GPU performance. Preserve
 failed attempts and earlier releases.
 
-No map asset or native acceptance is complete at this launch checkpoint.
+## Design/source checkpoints
+
+- **Helix Conservatory — `0eb5401b`, ready for Blender.** Deterministic 240 m
+  radial plan, elevations 0/8/16/24 m and fifteen authored routes. Five source
+  tests passed, including 27,544 real movement ticks, open/blocked shot and
+  ceiling checks, and a connected 2,554-node navigation graph. Authoring script
+  is prepared; no `.blend`, GLB, native rendering or hosted mode acceptance yet.
+  Art starts from 1,338 explicit parts / 5,034 triangles / six materials.
+- Source movement selects the highest walkable surface at each X/Z. Helix uses
+  non-overlapping terraces, with non-walkable aqueducts and ceilings, to provide
+  vertical routes without incorrectly claiming overlapping playable decks.
+- Helix remains on its isolated map branch until Blender/native verification;
+  its advertised `modeBindings` remains empty pending actual mode journeys.
+
+No finished Blender asset or native map acceptance is claimed at this checkpoint.
