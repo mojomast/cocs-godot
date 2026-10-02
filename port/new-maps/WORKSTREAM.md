@@ -52,6 +52,26 @@ Blender authoring scripts, editable master, GLB, native data and focused tests.
 
 ## Verification and resource queue
 
+**Current grant: Gravemill Foundry revision 3.** Helix completed revision 2 and
+explicitly released all owned processes. Parent inspected its overview, four
+district views and compact CTF result, accepted the distinct architectural forms
+for integration, and merged `a2377512` + `63a6244d` with their prerequisites at
+`c8432fcb`. The revised art remains stylized, with sparse peripheral areas and
+distant steel-edge aliasing; package/native-composition acceptance remains pending.
+
+Helix revision-2 proof: five hosted modes (DM/TDM/CTF/Domination/KOTH), 15 source
+checks, 16 routing/options checks, reopened master and native geometry/contact
+agreement. Art is 138,580 triangles/25 surfaces/10 materials; collision uses 37,056
+triangles/7,562 shapes. The continuous CTF sample captures 1,530 frames across
+118.548 seconds (12.90 Hz, maximum gap 207 ms), below the requested 15 Hz target
+on llvmpipe. Historical bot-CTF timeout and source-only Arsenal/Juggernaut remain.
+Parent reran package/options checks, world-resource closure and generated-scene
+consistency after merge. Exact reports: `helix-conservatory/revision-2/FINAL.md`.
+
+Foundry's existing Astra session now has the exclusive serial Blender/native
+production grant for `8d248904`. All fighting agents remain source/code-only.
+The following queue text records the earlier grants and prototype checkpoints.
+
 **Parallax Observatory now owns the exclusive Blender/Godot slot.** Foundry
 released all owned processes after six hosted mode rounds and its production
 checkpoint. Parallax received an explicit grant and must merge verified runtime

@@ -18,10 +18,11 @@ worktrees start at `6cefd9eb` and live under `/home/mojo/.tmp-on-disk/`.
 
 ## Heavy-tool ownership and completion sequence
 
-**Helix revision 2 now owns the exclusive heavy slot.** Parallax explicitly
-released all owned processes after its final production checkpoint, and the parent
-granted Helix its second Blender/native pass. Integration, packaging and acceptance
-agents have only source/static/Node permission until a later explicit grant.
+**Gravemill Foundry revision 3 now owns the exclusive heavy slot.** Helix finished
+its production pass and explicitly released all owned processes. Its revised art
+and five hosted mode bindings are merged at `c8432fcb` after parent visual review.
+Parent package/options and world-resource checks passed. Combined feature/native
+acceptance follows Foundry's explicit release; fighting agents remain code-only.
 
 Parallax checkpoint: assets/tests `9a6372b4`, isolated bindings `277f379e`, geometry
 `906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554`.
@@ -29,7 +30,7 @@ Six hosted modes passed: DM/TDM/CTF/KOTH/Uplink/Holdout. Parent inspected overvi
 archive, pump and polar-hall images: overall silhouette and polar hall are distinct;
 archive/pump interiors still share too much structure. Parallax has a bounded
 **source-only** differentiation task, preserving this checkpoint. No new heavy
-grant was issued to Parallax. Foundry revision 3 follows Helix's explicit release.
+grant was issued to Parallax. Foundry revision 3 received the next explicit grant.
 
 1. Inspect final Parallax architectural and gameplay images and record the actual
    asset identity and proven pairs. Receive explicit slot release.
@@ -54,6 +55,12 @@ distinct evidence requirements.
 ## Integration boundaries
 
 ### Combined candidate merged
+
+Acceptance branch `ed404fa6` is now merged as well: 24 canonical additions
+produce **383 planned gates**, and a separate 96-job matrix has strict incomplete
+reporting, bounded serial execution and explicit grants. Its 20 source jobs and
+30 Python runner/registration/report/watchdog checks passed on the worker branch.
+No native jobs ran. See `ACCEPTANCE_PLAN.md`; Helix remains the heavy-slot owner.
 
 Integrator final `34726217` is merged into the parent at **`5a4bc82d`**. All 24
 prepared feature commits, both packaging commits and reconciled shared hooks are
