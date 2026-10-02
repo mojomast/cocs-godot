@@ -211,3 +211,25 @@ failed attempts and earlier releases.
   [cooling gallery](https://github.com/mojomast/cocs-godot/releases/download/quiet-relay-gallery-2026-09-30/foundry-prototype-cooling.png).
   `foundry-prototype-provenance.json` labels the pending revision and the short
   resampled cadence of `foundry-prototype-payload-sample.mp4`.
+
+## Foundry architectural revision 3 — source candidate
+
+- **`8d248904`, ready for the next Blender pass.** Staged design wraps the drums
+  in a substantial crusher house, adds a covered angled transfer passage and
+  diagonal service cut, builds a kiln/service/loading furnace district, and
+  differentiates enclosed cooling machinery spaces from a steep-roofed,
+  partitioned assay building. Unequal geological benches replace perimeter teeth.
+- Candidate source checks passed all ten routes in both directions, a connected
+  3,698-node graph and all 22 gameplay markers, the mounted 767.64 m Puma loop
+  with zero collisions, and all six controlled rounds. New sustained body/ray
+  contacts, ceilings, inspection-window openings and lintels passed as well.
+- Candidate geometry:
+  `8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f`.
+  Files remain isolated under the map's `revision3/` authoring directory; old
+  runtime wrappers, master and GLB are byte-identical to the functional checkpoint.
+  Native drivers moved under `godot/tests/new_maps/gravemill_foundry/`.
+- No Blender/Godot/import/render ran for this revision. Parallax retains the
+  current slot, followed by Helix's second production pass, then Foundry's next
+  explicit grant. Required gates include actual architectural review, native
+  collision and hosted-mode revalidation, 760×520/UI150 HUD inspection and a
+  longer continuous walkthrough with measured capture cadence.
