@@ -1,0 +1,23 @@
+{
+  "id": "gravemill-foundry",
+  "name": "Gravemill Foundry",
+  "stage": "READY FOR BLENDER",
+  "accepted": false,
+  "recipeHash": "cd1d5a678cb2fb711693f6fc2287c9f23b47efa28545227ab71023ed16bdd45d",
+  "geometryHash": "cabd8f2cd7c3e4bf2bda9c7aafdcbfaf4c7154d79660fe7869857859c6009ccd",
+  "sourceColliderContract": "terrain surfaces and individually triangulated terrain walls; source input and ray probes passed",
+  "nativeColliderHash": null,
+  "nativeColliderStatus": "pending explicit heavy-slot grant and production binder probe",
+  "blenderStatus": "generator authored and Python syntax checked; master, GLB, budget and image review pending",
+  "modes": {
+    "payload": {"sourceFullRound": "passed", "nativeJourney": "pending", "publicPlayable": false},
+    "assault": {"sourceFullRound": "passed", "nativeJourney": "pending", "publicPlayable": false},
+    "combined-arms": {"sourceFullRound": "passed including mount-drive-turn-exit-capture", "nativeJourney": "pending", "publicPlayable": false},
+    "deathmatch": {"sourceFullRound": "passed", "nativeJourney": "pending", "publicPlayable": false},
+    "teamdeathmatch": {"sourceFullRound": "passed", "nativeJourney": "pending", "publicPlayable": false},
+    "domination": {"sourceFullRound": "passed", "nativeJourney": "pending", "publicPlayable": false}
+  },
+  "fixtureLimit": "two-seat normal-input source fixtures with passive opponent; not competitive or native playtesting",
+  "evidence": "/home/mojo/.tmp-on-disk/cocs-new-map-foundry-evidence-20261002/",
+  "heavySlotHeld": false
+}
