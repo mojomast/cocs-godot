@@ -139,7 +139,7 @@ func on_results(frame: Dictionary) -> void:
 	audiovisual.finish(frame.state, net.actor_id)
 	controls.release()
 	# A final neutral receipt is explicit, even though source results stop stepping.
-	checked(net.send_input(controls.packet(float(vehicle.get("yaw", 0))-PI, false)))
+	if not net.spectating: checked(net.send_input(controls.packet(float(vehicle.get("yaw", 0))-PI, false)))
 	if phase == "error": return
 	phase = "results"
 	guidance.reset()
@@ -196,9 +196,11 @@ func on_snapshot(frame: Dictionary) -> void:
 		ball.scale = Vector3.ONE * float(b.r)
 
 func eligible() -> bool:
+	if net.spectating: return false
 	return phase == "active" and age < 0.5 and not state.get("over", false) and not vehicle.is_empty() and vehicle.get("driver") == net.actor_id and float(vehicle.get("health", 0)) > 0 and float(vehicle.get("respawnTimer", 1)) <= 0 and float(actor.get("health", 0)) > 0 and float(actor.get("dead", 1)) <= 0 and state.get("race", {}).get("phase") in ["racing", "playing"]
 
 func _input(event: InputEvent) -> void:
+	if net.spectating: return
 	if SettingsAccess.overlay_open():
 		if (event is InputEventKey and not event.pressed): controls.accept(event, false)
 		return
@@ -228,7 +230,7 @@ func _process(delta: float) -> void:
 		checked(net.create_room())
 	if phase in ["connecting", "starting"] and phase_age > 15: fail("Setup timed out")
 	if phase == "active" and age > 10: fail("Authoritative snapshots timed out")
-	if phase == "active":
+	if phase == "active" and not net.spectating:
 		send_age += delta
 		if send_age >= 1.0/30.0:
 			send_age = 0
@@ -240,6 +242,7 @@ func _process(delta: float) -> void:
 	guidance.apply(state.get("race", {}), net.actor_id, phase == "active" and age < 0.5 and not state.get("over", false))
 	var soccer_target := soccer_guidance.apply(state, net.actor_id, vehicle, mode == "puma-soccer" and phase == "active" and age < 0.5)
 	hud.update({"mode":mode, "state":state, "vehicle":vehicle, "actor_id":net.actor_id, "phase":phase, "age":age, "eligible":eligible(), "engaged":controls.engaged, "focused":controls.focused, "error":error, "message":progression.message, "soccer_guidance":soccer_target})
+	hud.visible = not net.spectating # Public target/camera panel owns the spectator surface.
 
 func _exit_tree() -> void:
 	controls.release()
