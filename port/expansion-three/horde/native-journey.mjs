@@ -6,7 +6,7 @@ import {createAuthority} from '../../native-horde/authority.mjs';
 const goal=process.argv[2]??'chain';if(!['chain','boss'].includes(goal))throw Error('chain or boss required');
 const rendered=process.argv.includes('--rendered'),compact=process.argv.includes('--compact');
 if(compact&&!rendered)throw Error('--compact requires --rendered');
-const root='/home/mojo/.tmp-on-disk/cocs-expansion-three-horde-evidence-20261002';mkdirSync(root,{recursive:true});
+const root=process.env.HORDE_EVIDENCE_DIR??'/home/mojo/.tmp-on-disk/cocs-expansion-three-horde-evidence-20261002';mkdirSync(root,{recursive:true});
 const out=mkdtempSync(`${root}/native-${goal}-`),log=createWriteStream(`${out}/native.log`),wire=createWriteStream(`${out}/wire.jsonl`);
 const result={out,goal,rendered,compact,normalClock:true,debug:false,events:[],resets:[],upgrades:[],steps:0,applied:0,maxInputGapMs:0,maxAck:0,errors:[],passed:false};
 let lastInput=null,doneAt=null,epoch=null,child,timer,killTimer,output='';
