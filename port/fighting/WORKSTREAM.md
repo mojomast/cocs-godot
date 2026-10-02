@@ -48,10 +48,26 @@ to settle from evidence:
 8. Parallel implementation ownership plus cross-lane/native acceptance and release
    dependencies, including current prepared-feature integration.
 
-Implementation models resolved from the model catalog:
-`openai/gpt-6.1-sol` and `openai/gpt-6-astra`. Roles will follow the finalized
-interfaces: Sol for bounded implementation/content work, Astra for combat/animation
-architecture, integration and complex correctness. Implementation has not launched.
+All three reports are complete. Parent consolidated their findings and corrections
+into [DESIGN.md](DESIGN.md), then launched implementation from **`37dd3da4`**.
+
+## Active implementation ownership
+
+| Lane | Model | Session | Branch | Owned deliverable |
+|---|---|---|---|---|
+| Combat core / AI | Astra | `ses_f026f7ab3ffeH2Gn5BX0BDDz5i` | `fighting/core-20261002` | Fixed-tick combat, move/input recognition, throws/projectiles, resources, deterministic state and AI |
+| Nine-character movesets | Sol | `ses_f026eedd8ffeCVNtizjJEn6vHg` | `fighting/content-20261002` | Roster/rules/frame data, distinctive specials and supers, combo inputs and schema validation |
+| Rigs and unique animation | Astra | `ses_f026e25e4ffezp2kvz5VGox7dz` | `fighting/animation-20261002` | All nine fighting rigs, Blender-authored clip recipes, paired throws, runtime playback and asset provenance |
+| Interface, input and stages | Sol | `ses_f026d6c45ffefUJ0hXFvdcTgG3` | `fighting/presentation-20261002` | Character/stage selection, versus/AI/training, two-player controls, HUD/camera and three initial map stages |
+| Unique effects and sound | Sol | `ses_f026ccc26ffexFjFqmEZ171Q6x` | `fighting/effects-20261002` | Nine distinct effect vocabularies, bounded source-event presentation and audio |
+| Independent acceptance | Astra | `ses_f026c14a5ffeK3WZVDmpQEEylH` | `fighting/verification-20261002` | Mechanics/matchup/animation/stage/lifecycle gates and bounded merged native runner |
+
+Models: `openai/gpt-6.1-sol`, `openai/gpt-6-astra`. Worktrees:
+`/home/mojo/.tmp-on-disk/cocs-fighting-<lane>-20261002`; evidence uses
+`cocs-fighting-<lane>-evidence-20261002`. All six run in the background, without
+nested agents. Shared APIs, fixed-point units, clip/move IDs and file ownership are
+defined in DESIGN.md. The parent resolves cross-lane schema extensions and final
+integration. No lane received a Blender/Godot grant at launch.
 
 ## Received research and parent review
 
@@ -62,6 +78,13 @@ architecture, integration and complex correctness. Implementation has not launch
 - Animation report `512e7716` (parent `afa1c714`) received. Existing nine
   operator GLBs have zero skins and zero animation clips; current motion is
   runtime procedural. A new authored animation pipeline is substantive work.
+- Roster/stage report `464180b0` (parent `6c895d43`) received: nine operators,
+  seven harnesses and 57 valid FPS loadouts. Fighting scope is nine characters,
+  with new authored fighting stats rather than 63 separate harness fighters.
+  Parent independently viewed Basalt/Canopy/Blood Gulch/Crown images. Basalt,
+  Canopy and Crown are initial stage-framing targets; Parallax requires the final
+  art dependency. The distant Blood Gulch phase-1 view is insufficient to prioritize
+  it over those targets. All fighting-stage compositions need fresh native review.
 - Parent fetched the Quaternius Universal Animation Library 2 and KayKit Character
   Animations primary pages: both advertise CC0. KayKit provides free FBX/glTF;
   its editable Blender sources are a paid tier. Quaternius's advertised complete

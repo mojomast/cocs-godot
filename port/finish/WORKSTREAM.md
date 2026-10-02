@@ -55,6 +55,12 @@ distinct evidence requirements.
 
 ### Combined candidate merged
 
+Acceptance branch `ed404fa6` is now merged as well: 24 canonical additions
+produce **383 planned gates**, and a separate 96-job matrix has strict incomplete
+reporting, bounded serial execution and explicit grants. Its 20 source jobs and
+30 Python runner/registration/report/watchdog checks passed on the worker branch.
+No native jobs ran. See `ACCEPTANCE_PLAN.md`; Helix remains the heavy-slot owner.
+
 Integrator final `34726217` is merged into the parent at **`5a4bc82d`**. All 24
 prepared feature commits, both packaging commits and reconciled shared hooks are
 now present on `feature/relay-campaign`. The exported Replay fallback fix is
