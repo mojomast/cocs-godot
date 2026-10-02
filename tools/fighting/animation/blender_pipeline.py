@@ -13,8 +13,10 @@ import sys
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0,str(HERE))
 from glb import GLB, OWNER_MAP, source_rig
-from kinematics import solve
+from kinematics import solve, rotate
 from recipes import OPERATORS, MOVES, THROWS, library, sample, curve_hash, timing
+from content import inputs
+from pairing import adapted_pose
 
 
 def args():
@@ -37,14 +39,14 @@ def ordered(rig):
 
 
 def sockets(rig):
-    result = {'Chest':{'bone':'Chest','offset':[0,0,-.12]},
+    result = {'Chest':{'bone':'Chest','offset':[0,0,0]},
               'Hips':{'bone':'Hips','offset':[0,0,0]}}
     # Offsets are in exported Godot bone-local coordinates. Limb sockets use
     # +Y along the bone; knuckles extend towards the hand tip, not an FPS muzzle.
     for side,letter in (('Left','L'),('Right','R')):
         for name,bone,offset in (
             ('Hand',side+'Hand',[0,.035,0]),('Knuckle',side+'Hand',[0,.085,0]),
-            ('Grip',side+'Hand',[0,.045,.025]),('Foot',side+'Foot',[0,.07,0]),
+            ('Grip',side+'Hand',[0,.045,0]),('Foot',side+'Foot',[0,.07,0]),
             ('Streak',side+'LowerArm',[0,.15,0]),('Elbow',side+'LowerArm',[0,0,0]),
             ('Knee',side+'LowerLeg',[0,0,0]),('Guard',side+'LowerArm',[0,.12,0])):
             result[name+letter] = {'bone':bone,'offset':offset}
@@ -52,10 +54,11 @@ def sockets(rig):
 
 
 def build(options,bpy):
-    from mathutils import Vector
+    from mathutils import Matrix, Vector
     src = options.root/'godot/source_operators/generated'/f'{options.operator}.glb'
     oracle = GLB(src)
     rig = source_rig(oracle)
+    roster,pairs,rigs,libraries,hashes = inputs(options.root,options.roster)
     bpy.ops.object.select_all(action='SELECT')
     bpy.ops.object.delete(use_global=False)
     bpy.ops.import_scene.gltf(filepath=str(src))
@@ -127,7 +130,22 @@ def build(options,bpy):
     bpy.context.view_layer.objects.active = arm
     arm.animation_data_create()
     clips = library(options.operator)
+    shared_actions = {}
+    shared_master = options.root/'tools/fighting/animation/masters/meta.blend'
+    if options.operator != 'meta':
+        if not shared_master.is_file():
+            raise ValueError('Build and inspect Meta first; its master owns the 25 shared victim Actions')
+        with bpy.data.libraries.load(str(shared_master),link=True,relative=True) as (source,target):
+            target.actions = [name for name in source.actions if name.startswith('victim_')]
+        shared_actions = {action.name:action for action in target.actions}
+        assert len(shared_actions)==25
     for name,clip in clips.items():
+        if name in shared_actions:
+            # Link the same Action+slot from the Meta master. Do not author or
+            # sample another body-specific copy of a common-rest victim action.
+            action = shared_actions[name]
+            stash_action(arm,name,action,action.slots[0])
+            continue
         action = bpy.data.actions.new(name)
         action.use_fake_user = True
         slot = action.slots.new(id_type='OBJECT',name=arm.name)
@@ -135,18 +153,41 @@ def build(options,bpy):
         arm.animation_data.action_slot = slot
         max_error = 0.0
         for frame in range(61):
-            pose = sample(clip['keys'],frame/60)
+            pose = adapted_pose(options.operator,clip,frame/60,rig,rigs,libraries,pairs)
             heads,tails,errors = solve(rig,pose)
             max_error = max(max_error,max(errors.values()))
+            desired_matrices = {}
             for bone_name in ordered(rig):
                 pb = arm.pose.bones[bone_name]
+                pb.rotation_mode = 'QUATERNION'
                 rest = arm.data.bones[bone_name]
                 direction = Vector(tails[bone_name])-Vector(heads[bone_name])
                 original = rest.tail_local-rest.head_local
                 rotation = original.rotation_difference(direction)
-                matrix = rotation.to_matrix().to_4x4() @ rest.matrix_local
+                rotation_matrix = rotation.to_matrix().to_4x4()
+                # Direction-only alignment cannot express axial hip/shoulder
+                # twist. Preserve the full authored counterrotation for the
+                # mechanical torso, neck, head and shoulder plates.
+                angles = None
+                if bone_name == 'Hips':
+                    angles = [pose['torso'][0]*-.18,pose['torso'][1]*-.32,pose['torso'][2]*-.2]
+                elif bone_name in ('Spine','Chest','Neck','LeftShoulder','RightShoulder'):
+                    angles = pose['torso']
+                elif bone_name == 'Head':
+                    angles = [a+b for a,b in zip(pose['torso'],pose['head'])]
+                if angles is not None:
+                    rotation_matrix = Matrix([rotate(axis,angles) for axis in ([1,0,0],[0,1,0],[0,0,1])]).transposed().to_4x4()
+                matrix = rotation_matrix @ rest.matrix_local
                 matrix.translation = Vector(heads[bone_name])
-                pb.matrix = matrix
+                # Convert explicitly against the freshly solved parent. Using
+                # pb.matrix assignment can read a stale dependency-graph parent
+                # when an entire hierarchy is keyed in one Python iteration.
+                if pb.parent:
+                    parent_matrix = desired_matrices[pb.parent.name]
+                    pb.matrix_basis = rest.convert_local_to_pose(matrix,rest.matrix_local,
+                        parent_matrix=parent_matrix,parent_matrix_local=pb.parent.bone.matrix_local,invert=True)
+                else:
+                    pb.matrix_basis = rest.convert_local_to_pose(matrix,rest.matrix_local,invert=True)
                 # World matrices are resolved parent-first before keying local
                 # basis. Wrist twist is a deliberate local hand-axis channel.
                 if bone_name.endswith('Hand'):
@@ -154,6 +195,7 @@ def build(options,bpy):
                     index = 0 if bone_name.startswith('Left') else 1
                     pb.rotation_mode = 'QUATERNION'
                     pb.rotation_quaternion = pb.rotation_quaternion @ Quaternion((0,1,0),math.radians(pose['wrist'][index]))
+                desired_matrices[bone_name] = matrix
                 pb.keyframe_insert(data_path='location',frame=frame,group=bone_name)
                 pb.keyframe_insert(data_path='rotation_quaternion',frame=frame,group=bone_name)
                 pb.keyframe_insert(data_path='scale',frame=frame,group=bone_name)
@@ -165,23 +207,24 @@ def build(options,bpy):
                         for key in curve.keyframe_points: key.interpolation = 'LINEAR'
         action['curve_sha256'] = curve_hash(clip)
         action['max_ik_clamp_m'] = max_error
-        track = arm.animation_data.nla_tracks.new()
-        track.name = name
-        strip = track.strips.new(name,0,action)
-        strip.action_slot = slot
-        track.mute = True
+        stash_action(arm,name,action,slot)
         arm.animation_data.action = None
     for pb in arm.pose.bones: pb.matrix_basis.identity()
     arm['operator_id'] = options.operator
     arm['source_sha256'] = oracle.sha256
     arm['recipe_schema'] = 1
     arm['rig_json'] = json.dumps(rig)
+    arm['content_hashes_json'] = json.dumps(hashes,sort_keys=True)
+    arm['pipeline_sha256'] = pipeline_hash()
+    if shared_actions:
+        arm['shared_master_sha256'] = hashlib.sha256(shared_master.read_bytes()).hexdigest()
     master = options.root/'tools/fighting/animation/masters'/f'{options.operator}.blend'
     master.parent.mkdir(parents=True,exist_ok=True)
     scene.frame_set(0)
     bpy.ops.wm.save_as_mainfile(filepath=str(master))
     return {'status':'master_saved_unreviewed','master':str(master),'actions':len(clips),
-            'bones':len(rig['heads']),'skin_batches':len(groups),'source_sha256':oracle.sha256}
+            'bones':len(rig['heads']),'skin_batches':len(groups),'source_sha256':oracle.sha256,
+            'linked_shared_actions':len(shared_actions),'newly_authored_actions':len(clips)-len(shared_actions)}
 
 
 def reopen_export(options,bpy):
@@ -189,6 +232,12 @@ def reopen_export(options,bpy):
     bpy.ops.wm.open_mainfile(filepath=str(master))
     arm = next(o for o in bpy.context.scene.objects if o.type=='ARMATURE')
     assert arm['operator_id']==options.operator
+    current_source = GLB(options.root/'godot/source_operators/generated'/f'{options.operator}.glb')
+    assert arm['source_sha256']==current_source.sha256, 'source geometry changed; rebuild master'
+    assert arm['pipeline_sha256']==pipeline_hash(), 'pipeline changed since build; rebuild master'
+    if options.operator!='meta':
+        shared_master = options.root/'tools/fighting/animation/masters/meta.blend'
+        assert arm['shared_master_sha256']==hashlib.sha256(shared_master.read_bytes()).hexdigest(), 'shared master changed; rebuild links'
     clips = library(options.operator)
     actions = {t.name:t.strips[0].action for t in arm.animation_data.nla_tracks}
     assert set(actions)==set(clips), (set(actions)^set(clips))
@@ -200,16 +249,13 @@ def reopen_export(options,bpy):
     for obj in bpy.context.scene.objects:
         if obj.type=='MESH':
             assert all(len(v.groups)==1 and abs(v.groups[0].weight-1)<1e-6 for v in obj.data.vertices)
-    if not options.roster and not options.draft_timing:
-        raise ValueError('--roster required, or explicitly label --draft-timing for vertical-slice inspection')
-    roster = {}
-    if options.roster:
-        roster = {x['id']:x for x in json.loads(options.roster.read_text())['operators']}
+    roster,pairs,rigs,libraries,hashes = inputs(options.root,options.roster)
+    assert json.loads(arm['content_hashes_json'])==hashes, 'content changed since build; rebuild master'
     manifests = {}
     for name,clip in clips.items():
         content = None
-        if options.roster:
-            if name in MOVES:
+        if not options.draft_timing:
+            if name in roster[options.operator]['moves']:
                 content = roster[options.operator]['moves'][name]
                 assert content['animation']==name, f'content animation mismatch: {name}'
             elif name.startswith('victim_'):
@@ -231,14 +277,34 @@ def reopen_export(options,bpy):
     assert len(exported.doc.get('skins',[]))==1
     rig = json.loads(arm['rig_json'])
     manifest = {'version':1,'operator_id':options.operator,'status':'exported_unreviewed',
-        'timing_status':'content_bound' if options.roster else 'draft',
+        'timing_status':'draft' if options.draft_timing else 'content_bound',
+        'content_hashes':hashes,
+        'pipeline_sha256':pipeline_hash(),
         'sha256':exported.sha256,'source_sha256':arm['source_sha256'],
         'master_sha256':hashlib.sha256(master.read_bytes()).hexdigest(),
         'source_forward':'-Z','root_yaw_right':-math.pi/2,'clips':manifests,
         'sockets':sockets(rig),'bone_map':{name:name for name in rig['heads']},
         'root_motion':'locked','native_accepted':False}
+    manifest['shared_victims'] = {'authoring_master':'tools/fighting/animation/masters/meta.blend',
+        'unique_actions':25,'transport':'self_contained_glb_until_native_shared_library_proof'}
     (output/f'{options.operator}.json').write_text(json.dumps(manifest,indent=2)+'\n')
     return {'status':'reopened_exported_unreviewed','file':str(glb_path),'sha256':exported.sha256,'clips':len(clips)}
+
+
+def stash_action(arm,name,action,slot):
+    track = arm.animation_data.nla_tracks.new()
+    track.name = name
+    strip = track.strips.new(name,0,action)
+    strip.action_slot = slot
+    track.mute = True
+
+
+def pipeline_hash():
+    digest = hashlib.sha256()
+    for name in ('recipes.py','glb.py','kinematics.py','pairing.py','content.py','blender_pipeline.py'):
+        digest.update(name.encode())
+        digest.update((HERE/name).read_bytes())
+    return digest.hexdigest()
 
 
 if __name__=='__main__':

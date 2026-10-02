@@ -5,6 +5,7 @@ metres. Blender resolves these curves against each robot's measured anatomy.
 These are production recipes, not claims of accepted exported animation.
 """
 from copy import deepcopy
+from functools import lru_cache
 import hashlib
 import json
 import math
@@ -13,6 +14,7 @@ OPERATORS = ('chatgpt', 'claude', 'grok', 'meta', 'gemini', 'deepseek', 'mistral
 STATES = tuple('idle walk_f walk_b crouch jump_rise jump_apex jump_fall land dash_f dash_b guard_hi guard_lo hit_hi hit_lo hit_air block_hi block_lo knockdown wakeup throw_tech win lose'.split())
 MOVES = tuple('stand_l stand_m stand_h crouch_l crouch_m crouch_h air_l air_m air_h throw_f throw_b special1 special2 special3 super'.split())
 THROWS = ('throw_f', 'throw_b', 'special3')
+PAIRS = tuple((o,m) for o in OPERATORS for m in THROWS if m!='special3' or o not in ('grok','mistral'))
 
 # Each row is an independently composed guard: hands, hip compression, torso
 # pitch/yaw/roll, stagger, gait order. Angles are degrees, not local bone Euler.
@@ -58,6 +60,19 @@ SIGNATURES = {
 }
 
 
+# Content's concrete 79d98652 motion briefs refine the initial survey proposal.
+CONTACTS['mistral'][6] = ('lh',.77,-.10,-.18,-20,[24,25,-17])
+CONTACTS['kimi'][2] = ('lf',.46,.81,-.18,0,[-23,61,22])
+CONTACTS['kimi'][5] = ('both',.49,.65,.25,100,[-26,-59,-23])
+CONTACTS['qwen'][4] = ('rh',.80,-.48,.20,35,[30,-26,0])
+CONTACTS['qwen'][5] = ('both',.55,.56,.12,40,[-18,-30,5])
+CONTACTS['deepseek'][5] = ('both',.43,.61,.16,80,[-20,-29,15])
+CONTACTS['deepseek'][7] = ('rf',.28,.49,.17,0,[19,-18,4])
+CONTACTS['deepseek'][8] = ('both',.32,-.62,.18,115,[46,-32,23])
+CONTACTS['gemini'][1] = ('both',.62,.04,.35,-80,[7,-47,13])
+CONTACTS['gemini'][8] = ('both',.56,-.46,.26,-70,[29,44,-19])
+
+
 def neutral(operator):
     p = PROFILES[operator]
     return dict(lh=p['lh'][:], rh=p['rh'][:], lf=[p['stagger'],0,-.15],
@@ -85,8 +100,8 @@ def contact(base, spec):
             out[other] = [.12,.06,-.06 if other == 'lh' else .06]
         else:
             # Supporting hip moves over the planted leg; no leg stretch padding.
-            out['hips'][0] = base['rf' if limb == 'lf' else 'lf'][0]
-            out['hips'][1] += .055
+            out['hips'][0] = base['rf' if limb == 'lf' else 'lf'][0]*.65+f*.35
+            out['hips'][1] += .025
     out['head'] = [-torso[0]*.3,-torso[1]*.55,-torso[2]*.3]
     return out
 
@@ -100,7 +115,10 @@ def attack(operator, move):
     if move in MOVES[:9]:
         spec = CONTACTS[operator][MOVES.index(move)]
     else:
-        spec = SIGNATURES[operator][{'special1':0,'special2':1,'super':2}[move]]
+        if move == 'special3':
+            spec = ('rh',.46,-.16,-.27,100,[42,-47,22]) if operator=='grok' else ('rf',.55,.07,.12,0,[35,-48,18])
+        else:
+            spec = SIGNATURES[operator][{'special1':0,'special2':1,'super':2}[move]]
     impact = contact(base,spec)
     accent = PROFILES[operator]['accent']
     wind = alter(base, torso=[base['torso'][i]-accent[i]*.65 for i in range(3)],
@@ -133,6 +151,7 @@ def state_keys(operator, name):
     if name in ('walk_f','walk_b','dash_f','dash_b'):
         direction = -1 if name.endswith('_b') else 1
         dash = name.startswith('dash')
+        if dash: b['hips'][1] -= .045
         step = stride*(1.3 if dash else 1)*direction
         left = alter(b,lf=[step,lift,-.15],torso=turn,lh=[.15,-.2,-.12])
         plant = alter(left,lf=[step,0,-.15],hips=[.035,b['hips'][1]-.03,0])
@@ -144,7 +163,15 @@ def state_keys(operator, name):
                         lh=[p['lh'][0]*.7,p['lh'][1]+.15,p['lh'][2]],
                         rh=[p['rh'][0]*.8,p['rh'][1]+.17,p['rh'][2]])
         recoil = alter(guarded,torso=[p['torso'][0]-9,p['torso'][1]+a[1]*.2,p['torso'][2]+a[2]*.25])
-        return [(0,guarded),(.22,recoil),(.65,guarded),(1,guarded)]
+        if name.startswith('block'):
+            recoil['hips'][0] -= .035
+            recoil['torso'][0] -= 13
+            recoil['head'] = [-9,a[1]*.15,4]
+            return [(0,guarded),(.12,recoil),(.43,alter(recoil,lh=[.17,.28,-.05])),(.78,guarded),(1,guarded)]
+        if name == 'crouch':
+            guarded['lh'],guarded['rh'] = [.25,-.30,p['lh'][2]],[.16,-.26,p['rh'][2]]
+            return [(0,guarded),(.45,alter(guarded,head=[8,a[1]*.1,0])),(1,guarded)]
+        return [(0,guarded),(.38,alter(guarded,head=[-3,a[1]*.06,0])),(1,guarded)]
     if name in ('jump_rise','jump_apex','jump_fall','land'):
         fold = {'jump_rise':.23,'jump_apex':.35,'jump_fall':.10,'land':0}[name]
         mid = alter(b,lf=[stride,fold,-.15],rf=[-stride*.5,fold*.7,.15],
@@ -160,6 +187,10 @@ def state_keys(operator, name):
                        hips=[-.04,b['hips'][1]-(.29 if down else .06),0],head=[-18,12,7])
         if down:
             recoil = alter(recoil,torso=[64,a[1],a[2]],lf=[.27,0,-.15],rf=[-.22,0,.15])
+        if name == 'hit_air':
+            recoil = alter(recoil,lf=[.16,.28,-.15],rf=[-.12,.22,.15],torso=[-39,a[1]*1.25,a[2]],head=[-22,0,0])
+        if name == 'lose':
+            recoil = alter(recoil,hips=[0,-.41,0],torso=[48,a[1]*.4,a[2]*.6],head=[32,0,7],lh=[.1,-.63,-.15],rh=[-.08,-.59,.15])
         keys = [(0,b),(.19,recoil),(.56,alter(recoil,head=[15,-12,0])),(1,recoil if down else b)]
         return [(1-t,v) for t,v in reversed(keys)] if name == 'wakeup' else keys
     if name == 'throw_tech':
@@ -181,11 +212,15 @@ def throw_keys(operator, move, victim=False):
         caught = alter(b,lh=[.25,.15,-.2],rh=[.25,.15,.2],torso=[25,angle*.3,p['accent'][2]])
         lifted = alter(caught,lf=[.17,.27,-.15],rf=[-.08,.32,.15],torso=[-30,angle,p['accent'][2]])
         landed = alter(b,hips=[0,-.38,0],torso=[65,-angle,15],lh=[.1,-.5,-.2],rh=[.1,-.5,.2])
-        return [(0,b),(.28,caught),(.5,caught),(.68,lifted),(.82,landed),(1,landed)]
+        if special:
+            caught = alter(caught,lh=[.14,.32,-.26],rh=[.11,.35,.26],head=[-14,angle*.2,0])
+            lifted = alter(lifted,lf=[.21,.40,-.15],rf=[-.09,.43,.15],torso=[-43,angle*1.15,p['accent'][2]+8])
+            landed = alter(landed,torso=[74,-angle,23],head=[21,0,-12])
+        return [(0,b),(.28,caught),(.50,lifted),(.68,landed),(.82,landed),(1,landed)]
     grasp = alter(b,lh=[.67,-.05,.12],rh=[.64,-.12,-.12],hips=[.025,b['hips'][1]-.05,0])
     lift = alter(grasp,lh=[.49,.48,.1],rh=[.51,.42,-.1],torso=[-17,angle,p['accent'][2]])
     release = alter(grasp,lh=[.75,-.30,-.1],rh=[.71,-.35,.1],torso=[35 if special else 22,-angle,p['accent'][2]])
-    return [(0,b),(.16,alter(b,hips=[-.03,b['hips'][1]-.06,0])),(.28,grasp),(.5,grasp),(.68,lift),(.82,release),(1,b)]
+    return [(0,b),(.16,alter(b,hips=[-.03,b['hips'][1]-.06,0])),(.28,grasp),(.50,lift),(.68,release),(.82,release),(1,b)]
 
 
 def sample(keys, t):
@@ -198,36 +233,38 @@ def sample(keys, t):
     return deepcopy(keys[-1][1])
 
 
+@lru_cache(maxsize=1)
+def shared_victims():
+    return {f'victim_{a}_{m}':dict(keys=throw_keys(a,m,True),loop=False,frames=60,
+        phases={'start':0,'contact':.28,'damage':.68,'release':.82,'end':1},
+        pair={'attacker':a,'move':m,'position_owner':'simulation','contact_tolerance_m':.06}) for a,m in PAIRS}
+
+
 def library(operator):
     clips = {}
     for name in STATES + MOVES:
-        keys = throw_keys(operator,name) if name in THROWS else attack(operator,name) if name in MOVES else state_keys(operator,name)
+        keys = throw_keys(operator,name) if (operator,name) in PAIRS else attack(operator,name) if name in MOVES else state_keys(operator,name)
         clips[name] = dict(keys=keys,loop=name in ('idle','walk_f','walk_b','crouch','guard_hi','guard_lo'),
                            frames=60, phases={'start':0,'anticipation':.22,'preactive':.40,'impact':.50,'recovery':.60,'end':1})
-    for attacker in OPERATORS:
-        for move in THROWS:
-            # Choreography belongs to attacker, posture/rest solve belongs to victim.
-            keys = throw_keys(attacker,move,True)
-            vb = neutral(operator)
-            for _, pose in keys:
-                pose['lh'][2] += (vb['lh'][2]-neutral(attacker)['lh'][2])*.3
-                pose['rh'][2] += (vb['rh'][2]-neutral(attacker)['rh'][2])*.3
-            clips[f'victim_{attacker}_{move}'] = dict(keys=keys,loop=False,frames=60,
-                phases={'start':0,'contact':.28,'hold_end':.5,'lift':.68,'impact':.82,'end':1},
-                pair={'attacker':attacker,'move':move,'position_owner':'simulation','contact_tolerance_m':.06})
+    # Identical shipped joint rests: 25 shared authored reactions, 225 resolved
+    # usages. Mesh/contact inspection still covers all nine robot silhouettes.
+    clips.update(shared_victims())
     for name in THROWS:
-        clips[name]['phases'] = {'start':0,'contact':.28,'hold_end':.5,'lift':.68,'impact':.82,'end':1}
+        if (operator,name) in PAIRS:
+            clips[name]['phases'] = {'start':0,'contact':.28,'damage':.68,'release':.82,'end':1}
     # Explicit second-band variants; content may select these, never silently alias.
     if operator == 'gemini':
-        for name in ('idle','guard_hi','stand_l','stand_m','stand_h'):
-            c = deepcopy(clips[name])
-            for _,p in c['keys']:
-                p['lh'],p['rh'] = p['rh'],p['lh']
-                for h in ('lh','rh'): p[h][2] *= -1
-                p['torso'][1] *= -1
-                p['torso'][2] *= -1
-                p['wrist'] = [-p['wrist'][1],-p['wrist'][0]]
-            clips[name+'_band_b'] = c
+        for name,spec in zip(('palm_l','palm_m','palm_h'),[
+            ('rh',.87,.02,.08,30,[5,-23,4]),
+            ('both',.75,.19,.15,65,[14,5,-3]),
+            ('lh',.72,.57,.14,85,[-22,32,-9])]):
+            base = alter(neutral(operator),lh=[.30,.15,-.15],rh=[.45,.03,.12],torso=[2,-18,3])
+            impact = contact(base,spec)
+            c = deepcopy(clips['stand_l'])
+            c['keys'] = [(0,base),(.22,alter(base,hips=[-.04,-.14,0],wrist=[60,-60])),
+                (.4,alter(base,lh=[.05,.22,-.12],rh=[.08,.15,.15])),(.5,impact),
+                (.6,alter(impact,wrist=[100,-90])),(.83,alter(base,torso=[12,28,6])),(1,base)]
+            clips[name] = c
     return clips
 
 
@@ -244,12 +281,16 @@ def timing(clip, move=None):
     if move is None:
         return [[0,0],[clip['frames'],clip['frames']/60]]
     if 'contact' in clip['phases']:
-        pair = move.get('throw',{}).get('animation_timeline')
-        if not pair:
-            raise ValueError('throw.animation_timeline required: contact,hold_end,lift,impact,end')
-        return [[0,0]] + [[int(pair[k]),float(v)] for k,v in clip['phases'].items() if k!='start']
+        pair = move.get('throw',move.get('counter',{}))
+        if not pair: raise ValueError('paired move requires throw or counter metadata')
+        return [[0,0],[int(pair.get('from',move['startup'])),.28],
+            [int(pair['damage_frame']),.68],[int(pair['release_frame']),.82],
+            [sum(int(move[k]) for k in ('startup','active','recovery')),1.0]]
     startup,active,recovery = (int(move[k]) for k in ('startup','active','recovery'))
     if min(startup,active,recovery) < 1:
         raise ValueError('positive move windows required')
-    return [[0,0],[startup*.44,.22],[max(startup*.8,startup-1),.40],
-            [startup,.50],[startup+active,.60],[startup+active+recovery,1.0]]
+    impact = int(move.get('projectile',{}).get('spawn_frame',startup))
+    if move['kind']=='mobility': impact = int(move['movement']['from'])
+    end_active = max(impact+1,startup+active)
+    return [[0,0],[impact*.44,.22],[max(impact*.8,impact-1),.40],
+            [impact,.50],[end_active,.60],[startup+active+recovery,1.0]]

@@ -20,6 +20,7 @@ def unit(a):
 def rotate(v, angles):
     # pitch around lateral X, yaw around up Z, roll around forward Y.
     pitch,yaw,roll = [math.radians(a) for a in angles]
+    pitch = -pitch  # positive authored pitch leans into forward +Y
     x,y,z = v
     y,z = y*math.cos(pitch)-z*math.sin(pitch),y*math.sin(pitch)+z*math.cos(pitch)
     x,z = x*math.cos(roll)+z*math.sin(roll),-x*math.sin(roll)+z*math.cos(roll)
@@ -70,7 +71,7 @@ def solve(rig,pose):
             tails[bone] = out[match]
         else:
             delta = sub(rig['tails'][bone],rest[bone])
-            angle = pose['head'] if bone=='Head' else [0,0,0]
+            angle = add(pose['torso'],pose['head']) if bone=='Head' else [0,0,0]
             tails[bone] = add(out[bone],rotate(delta,angle))
     # The actor origin is immutable even when the hips compress.
     out['Root'],tails['Root'] = rest['Root'][:],rig['tails']['Root'][:]

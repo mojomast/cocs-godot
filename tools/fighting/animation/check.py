@@ -7,20 +7,26 @@ import math
 from pathlib import Path
 from glb import GLB, source_rig
 from kinematics import solve
-from recipes import OPERATORS, STATES, MOVES, THROWS, library, sample, timing
+from recipes import OPERATORS, STATES, MOVES, PAIRS, library, sample, timing
+from content import inputs
+from pairing import adapted_pose, grip
 
 
 def audit(root,exported=False):
     report = {'status':'source_only','operators':{},'pending':['Blender build','master reopen',
-        'GLB export','content frame binding','paired contact solve','native playback','side-on art inspection'],
+        'GLB export','native paired contact solve','native playback','side-on art inspection'],
         'uniqueness':{}}
+    roster,pairs,rigs,libraries,hashes = inputs(root)
+    report['content_hashes'] = hashes
+    report['shared_rest'] = {'identical':True,'operators':9,'retargeting':'none','motion_scale':'unchanged','rest_fixer':'disabled'}
     curves = {}
+    pair_errors = []
     for operator in OPERATORS:
         glb = GLB(root/'godot/source_operators/generated'/f'{operator}.glb')
         assert not glb.doc.get('skins') and not glb.doc.get('animations')
         rig = source_rig(glb)
         clips = library(operator)
-        expected = set(STATES+MOVES)|{f'victim_{a}_{m}' for a in OPERATORS for m in THROWS}
+        expected = set(STATES+MOVES)|{f'victim_{a}_{m}' for a,m in PAIRS}
         assert expected<=clips.keys()
         errors = {}
         root_positions = set()
@@ -31,19 +37,42 @@ def audit(root,exported=False):
             trajectory = []
             worst = 0
             for frame in range(61):
-                pose = sample(clip['keys'],frame/60)
+                pose = adapted_pose(operator,clip,frame/60,rig,rigs,libraries,pairs)
                 heads,tails,clamps = solve(rig,pose)
                 for bone,point in heads.items():
                     assert all(math.isfinite(v) for v in point+tails[bone])
                     assert math.dist(point,tails[bone])>.00001, (operator,name,frame,bone)
                 root_positions.add(tuple(heads['Root']))
                 worst = max(worst,max(clamps.values()))
-                trajectory.extend(v for channel in ('lh','rh','lf','rf','torso','hips','wrist') for v in pose[channel])
+                for side in ('Left','Right'):
+                    for chain in (('UpperArm','LowerArm','Hand'),('UpperLeg','LowerLeg','Foot')):
+                        for a,b in zip(chain,chain[1:]):
+                            assert abs(math.dist(heads[side+a],heads[side+b])-math.dist(rig['heads'][side+a],rig['heads'][side+b]))<1e-6
+                trajectory.extend(v/(90 if channel in ('torso','wrist') else 1) for channel in ('lh','rh','lf','rf','torso','hips','wrist') for v in pose[channel])
+                if 'pair' in clip and .28<=frame/60<=.82:
+                    pair = clip['pair']
+                    definition = pairs[(pair['attacker'],pair['move'])]
+                    ah,at,_ = solve(rigs[pair['attacker']],sample(libraries[pair['attacker']][pair['move']]['keys'],frame/60))
+                    contact = grip(ah,at)
+                    victim = heads['Chest']
+                    victim = [-victim[0],definition['victim_x']/1000-victim[1],victim[2]+definition['victim_y']/1000]
+                    error = math.dist(contact,victim)
+                    assert error<=.060001,(operator,name,frame,error)
+                    pair_errors.append(error)
             errors[name] = round(worst,6)
+            assert worst<=.001,(operator,name,'unreachable authored target',worst)
             curves[operator][name] = trajectory
             keys = timing(clip)
             assert keys[0]==[0,0] and keys[-1]==[60,1.0]
+            move = roster[operator]['moves'].get(name)
+            if 'pair' in clip:
+                move = roster[clip['pair']['attacker']]['moves'][clip['pair']['move']]
+            if move:
+                bound = timing(clip,move)
+                assert all(a[0]<b[0] and a[1]<b[1] for a,b in zip(bound,bound[1:])),(operator,name,bound)
         assert len(root_positions)==1
+        for a,b in itertools.combinations(STATES+MOVES,2):
+            assert curves[operator][a]!=curves[operator][b], ('aliased state/combat curves',operator,a,b)
         report['operators'][operator] = {'source_sha256':glb.sha256,'gun_removed_bounds':glb.bounds(),
             'bones':len(rig['heads']),'bone_lengths_m':{k:round(math.dist(v,rig['tails'][k]),6) for k,v in rig['heads'].items()},
             'clips':len(clips),'curve_sample_count':len(clips)*61,
@@ -57,11 +86,13 @@ def audit(root,exported=False):
             # positional channels; compare trajectories, not hashes or filenames.
             ca,cb = curves[a][name],curves[b][name]
             distance = math.sqrt(sum((x-y)**2 for x,y in zip(ca,cb))/len(ca))
-            assert distance>.10,(name,a,b,distance)
+            assert distance>.025,(name,a,b,distance)
             distances.append((distance,a,b))
         d,a,b = min(distances)
         report['uniqueness'][name] = {'min_curve_rms':round(d,5),'closest_pair':[a,b]}
-    report['coverage'] = {'operators':9,'required_per_operator':64,'total_authored_clips':sum(len(library(o)) for o in OPERATORS)}
+    report['coverage'] = {'operators':9,'state_combat_clips':336,'paired_timelines':len(pairs),
+        'victim_instances':225,'unique_authored_clips':361,'resolved_clip_usages':sum(len(library(o)) for o in OPERATORS)}
+    report['paired_contacts'] = {'samples':len(pair_errors),'max_error_m':max(pair_errors),'tolerance_m':.06,'status':'task_space_only_not_native'}
     return report
 
 
@@ -71,6 +102,10 @@ def check_export(root,operator,clips):
     manifest = json.loads(path.with_suffix('.json').read_text())
     assert glb.sha256==manifest['sha256']
     doc = glb.doc
+    source = GLB(root/'godot/source_operators/generated'/f'{operator}.glb')
+    for lod in (1,2,4):
+        a,b = source.bounds(lod=lod),glb.bounds(lod=lod)
+        assert max(abs(x-y) for k in ('min','max') for x,y in zip(a[k],b[k]))<.0001, ('rest_geometry_bounds',operator,lod,a,b)
     assert len(doc.get('skins',[]))==1
     assert {a['name'] for a in doc['animations']}==set(clips)
     skin = doc['skins'][0]
