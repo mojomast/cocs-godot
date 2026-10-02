@@ -183,3 +183,20 @@ queued-asset corrections. See `port/surface-refinement/WORKSTREAM.md`. This visu
 requirement remains open even though the earlier material binding/lifecycle tests
 passed. Final native comparisons and owner-facing images must show the correction
 before the candidate can be called visually finished.
+
+## Baseline source repairs during animation production
+
+Integration follow-up commits `1ccafffe`, `547a7ce0`, `b5e648da`, `b27b780e` are
+merged as `5dbf4044`, `6e691c4a`, `10e9e326`, `6ea61316`. Retained evidence proves
+the spectator fixture evicted an exact public snapshot and the rope reconnect
+fixture waited without pressing its required Connect button. Both fixtures now
+preserve their original assertions while fixing those setup/history defects.
+Native Horde aim height and close-range sprint input are aligned with the proven
+source controller; this does not establish native victory.
+
+Seven focused Node checks passed on the lane. Campaign movement has bounded
+input-trace instrumentation, not a demonstrated fix; two control-fixture texture
+leaks and spectator input variants remain unresolved. Exact bounded native retry
+selections and uncertainties are in `SOURCE_BASELINE_FOLLOWUP.md`. The animation
+grant remains exclusive; this source batch ran no heavy tools and inherits no
+native acceptance merely from being merged.
