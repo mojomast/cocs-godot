@@ -118,3 +118,22 @@ checks pass. Native lifecycle and three named light views, plus the Helix font/
 exclusion regression, are assigned as a bounded extension of current grant C
 after primary Parallax work. No fresh light screenshot or native pass is claimed
 yet; see `maps/EMISSION_FOLLOWUP.md`.
+
+## C review closes the light correction
+
+Parallax C delivered and passed all five native light/font/exclusion checks;
+parent inspected the restored Foundry cooling lamps in the actual post-fix image.
+The lights regain source emission while nearby coated surfaces remain ordinary
+lit material. The new Parallax archive/pump geometry was built, independently
+reopened and reviewed with corrected mounts and the refined palette. Parent
+accepted its bounded art improvement at `b66f4ab3`.
+
+Fresh native gallery: **http://100.125.104.79:8796/native-production-c/** — forty
+byte-identical files, all HTTP hashes verified. Old B images remain unchanged and
+retain their pre-light-fix label. Parallax Off/Full columns use the same revised
+geometry. Native C history, including editor import crashes and later successful
+runtime checks, is retained in `maps/EMISSION_NATIVE_C.md` and the map production
+handoff. No hardware-GPU claim follows from these captures.
+
+C explicitly released; current heavy grant D belongs to the original robot owner
+`ses_f03a2843bffefDFoP3x1j1cxRO`. Final-candidate native/packaging checks remain.

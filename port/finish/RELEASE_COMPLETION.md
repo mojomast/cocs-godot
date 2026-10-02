@@ -16,13 +16,14 @@ boundaries.
 | Work | Existing owner/session | Current action |
 |---|---|---|
 | Fighting production and native surface review | Astra `ses_f026e25e4ffezp2kvz5VGox7dz` | Complete and merged at `bb02e34b`; nine real rigs/masters and native comparisons; grant B released |
-| Parallax interior production | Astra `ses_f055a6b41ffe42yCL8AxbOL676` | Exclusive heavy grant C: build/reopen refined interiors, native geometry/art review and current Moth mount revalidation |
+| Parallax interior production | Astra `ses_f055a6b41ffe42yCL8AxbOL676` | Complete, parent-reviewed and merged at `b66f4ab3`; grant C released; exact package promotion assigned to packaging owner |
+| Robot/prop production | Astra `ses_f03a2843bffefDFoP3x1j1cxRO` | Exclusive grant D: real three-skin/six-prop masters, exports, native animation/LOD/placement and package-ready receipts |
 | Fighting camera readability | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing correction merged at `1bff0281`; six parent source checks pass, native four-stage comparison still pending |
-| Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | Source correction merged at `91ad0ce5`; bounded native follow-up assigned to current grant-C owner after primary Parallax work |
+| Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
 | Queued asset integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Hosted/finish/teardown and exact producer/package-receipt contracts integrated and passing; awaiting real serial asset-production grant |
-| Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Source-only registration of new camera, import-setting, luminaire and final production-closure gates; fresh exact-input ledger required after candidate stabilizes |
-| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Seven-unit closure and fighter import-byte preservation integrated at `479ddd9f`; source tests pass; waiting for actual promotions/native acceptance before export |
+| Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Six new gates integrated at `0ffc853c`/`f70355d5`, preserving all original 135 jobs; fresh exact-input ledger required after candidate stabilizes |
+| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Seven-unit closure integrated; preparing actual Parallax promotion under explicit parent authorization; six other units still require production |
 
 All workers run in the background, using existing sessions/checkouts. Source work
 may run in parallel. The parent owns merges, stage transitions, explicit heavy
@@ -31,15 +32,14 @@ are introduced by this directive.
 
 ## Exclusive heavy ownership
 
-**`PARALLAX-INTERIORS-PRODUCTION-20261002-C` belongs to Parallax Astra
-`ses_f055a6b41ffe42yCL8AxbOL676`.** Its scope includes actual revised-interior
-Blender production/reopen/export, native geometry and visual review, and refined
-Moth mount checks in the original observatory checkout. A bounded extension also
-permits five Foundry-emission/Helix-regression checks after primary Parallax work;
-see `port/surface-refinement/maps/EMISSION_FOLLOWUP.md`. Grant B was explicitly
-released at `2026-10-02T21:45:31.798193Z`, with all 83 owned process groups checked
-and none remaining. Prior grant A was also explicitly released; both closeouts
-are integrated.
+**`ROBOT-ASSET-PRODUCTION-20261002-D` belongs to robot Astra
+`ses_f03a2843bffefDFoP3x1j1cxRO`.** Its scope is the robots unit: real Blender
+masters/exports and independent reopen, native role/prop/LOD/animation/placement
+review, integration hooks and actual package-ready receipts. Grant C explicitly
+released at `2026-10-02T22:23:17.018270Z`, with zero remaining owned processes
+across sixteen groups. Its Parallax and five light checks are integrated. A and B
+also explicitly released. Vehicles/scenery/maps await later grants; D does not
+grant an unbounded multi-unit batch.
 
 No other agent may run Godot, Blender, imports, rendering, audio capture or encoding
 before explicit teardown/release and a new grant. Asset integration, gameplay
@@ -383,3 +383,39 @@ camera/import/closure checks and updated luminaire semantics without dropping
 existing criticals. Private candidate journeys remain pre-promotion work and must
 not be incorrectly required after their public catalogs are registered. Current
 grant C remains exclusively with Parallax and its bounded light-check extension.
+
+## Parallax production accepted for integration; robots underway
+
+Parallax C commits are merged at `b66f4ab3`: revised GLB
+`c1dffd357545206d3f70870f850e441c5be148e652830a4a69835185a75610bd`,
+147,103 triangles/seven batches/8,621,072 bytes; revised master
+`59946f15dd530ecc3f38d38aea41089e2e113b812060483e8ff92138c0d686b8`.
+Separate Blender reopen/re-export is byte-identical. Native physics covers source
+parity, 60 blocks, 859 support/capsule probes, walls and five ceilings; 900 dressing
+mount samples pass. Current native walkthrough covers five districts and current
+DM completes. Six historical mode proofs retain their original anchor; geometry
+is unchanged. The catalog now contains ten worlds / sixty demonstrated pairs.
+
+Parent inspected full-resolution overview, archive interior/storage, pump interior/
+hydraulics and corrected Foundry cooling. Archive retrieval/storage and pump
+hydraulics/ducts are visibly distinct; reviewed art is accepted for integration.
+Foundry source light emission is restored without making nearby coatings glow.
+All five C emission/font/exclusion checks pass. Two retained editor-import crashes
+are not erased by subsequent successful graphical runtime/imported-asset checks.
+Final clean import/export remains a release requirement.
+
+Forty unchanged native files are published and HTTP/hash verified at
+**http://100.125.104.79:8796/native-production-c/** (15,642,055 bytes). Parallax
+columns mean dressing Off/Full on the same revised geometry. Previous galleries
+remain intact. Parent source checks passed twelve integration contracts, the
+Parallax face/mount validator and actual art audit. Exact reviewed catalog/profile
+pins advance only Parallax and the previously approved Foundry luminaire fix;
+frozen source/shared-material guards remain.
+
+Packaging is authorized to record only Parallax's actual reviewed promotion;
+the other six units remain pending. Grant D now advances robot skins/props with
+their original owner from `b66f4ab3`. The final acceptance additions are integrated
+as `0ffc853c`/`f70355d5`: six new jobs, all previous 135 retained, strict native
+camera result parsing, production import/closure checks and all thirteen future
+map-pair outcomes bound to clean teardown. Parent runner/receipt tests pass.
+Historical B/C evidence remains historical, not a completed new final ledger.
