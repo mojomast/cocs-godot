@@ -272,7 +272,7 @@ func _process(delta: float) -> void:
 			var result := net.send_input(p)
 			input_queued.emit(net.input_seq, p, result)
 			checked(result)
-	if not actor.is_empty():
+	if not net.spectating and not actor.is_empty():
 		var pose := chase.mounted(vehicle, actor, yaw, pitch, delta) if not vehicle.is_empty() else chase.infantry(actor, yaw, pitch)
 		if vehicle.is_empty() and eligible() and get_window().has_focus() and local_motion.ready():
 			var forward: Vector3 = pose.target - pose.eye

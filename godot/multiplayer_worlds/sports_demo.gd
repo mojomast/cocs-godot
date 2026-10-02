@@ -252,7 +252,7 @@ func _process(delta: float) -> void:
 		if send_age >= 1.0/30.0:
 			send_age = 0
 			checked(net.send_input(controls.packet(float(vehicle.get("yaw", 0)) - PI, eligible())))
-	if not vehicle.is_empty():
+	if not net.spectating and not vehicle.is_empty():
 		var pose: Dictionary = chase.follow(vehicle, delta)
 		world.camera.position = pose.eye
 		world.camera.look_at(pose.target)
