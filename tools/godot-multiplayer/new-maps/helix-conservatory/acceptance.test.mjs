@@ -2,10 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {recipe as m,makeRecipe,hash} from './recipe.mjs';
 import {floorAt,walkEdge,obstructed,navigation,moveActor,rayWorld} from '../../../../game/core.mjs';
-import {terrainSupportAt} from '../../../../game/terrain.mjs';
+import {terrainSupportAt,terrainTriangles} from '../../../../game/terrain.mjs';
 import {validateMapSchema} from '../../../../game/map-schema.mjs';
 test('deterministic schema and exact visual/collision correspondence',()=>{
  assert.equal(hash(makeRecipe()),hash(m));assert.deepEqual(validateMapSchema(m),[]);
+ assert.equal(terrainTriangles(m.terrain).length,m.terrain.surfaces.reduce((n,s)=>n+s.triangles.length,0),'construction support sampling must not leave an incomplete runtime triangle cache');
  for(const s of m.terrain.surfaces){const visual=m.art.meshes.find(v=>v.id===s.id);assert.deepEqual(s.vertices,visual.vertices);assert.deepEqual(s.triangles,visual.triangles);}
  assert.ok(m.terrain.surfaces.filter(s=>s.walkable).length>600);
  for(const s of m.terrain.surfaces.filter(s=>s.id.includes('vault')||s.id.includes('aqueduct')))assert.equal(s.walkable,false);

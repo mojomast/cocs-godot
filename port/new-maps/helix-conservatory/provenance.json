@@ -1,12 +1,22 @@
 {
   "id": "helix-conservatory",
-  "recipeHash": "4ed79a7e3dd26ca5478d65dc7e9263d169a4b24ce3abc80288411ba41eebb861",
-  "geometryHash": "0f089e1cc6f741b08a842b0225560cb261dcbdf7d5e7031829945499f29b0553",
-  "meshHash": "681574451b8a982b2e7abf46ec6549b89c6264a3481cd919fdb30dc8d2930913",
+  "recipeHash": "87228c2f40262ccbd4dcea5bb50ba4fbbeb634462e54be11abf2499d4ede106a",
+  "geometryHash": "6afb8d0f8f749b0318c31f5684e1f2a23117b7b7b3823ff2b84e2f38e375ee3c",
+  "meshHash": "238c52d21059b513993ee518b131e7c5a817706486d4d6cfd74914e78cfac443",
   "sourceLock": "515daf",
   "reviewedDerivative": "0326",
-  "status": "ready-for-blender",
-  "modes": [],
+  "status": "native-scene-accepted-package-pending",
+  "modes": [
+    "deathmatch",
+    "teamdeathmatch",
+    "ctf",
+    "domination",
+    "koth"
+  ],
+  "sourceOnlyModes": [
+    "arsenal",
+    "juggernaut"
+  ],
   "candidateModes": [
     "deathmatch",
     "teamdeathmatch",
@@ -16,6 +26,9 @@
     "domination",
     "koth"
   ],
-  "meshCount": 1338,
-  "triangles": 5034
+  "artPath": "res://multiplayer_worlds/art/helix-conservatory/helix-conservatory.glb",
+  "visualCoverage": "complete-terrain",
+  "blendMaster": "tools/godot-multiplayer/new-maps/helix-conservatory/masters/helix-conservatory.blend",
+  "meshCount": 8770,
+  "triangles": 39578
 }

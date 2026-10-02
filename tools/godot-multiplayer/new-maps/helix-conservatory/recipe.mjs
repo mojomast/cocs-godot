@@ -1,6 +1,7 @@
 // A single-valued radial landscape: the frozen source cannot select stacked floors.
 // Every solid mesh below is also source collision; glass/leaves are explicitly visual.
 import {createHash} from 'node:crypto';
+import {terrainSupportAt} from '../../../../game/terrain.mjs';
 export const ID='helix-conservatory';
 const N=96,TAU=Math.PI*2;
 export const polar=(r,a)=>[r*Math.cos(a),r*Math.sin(a)];
@@ -96,6 +97,68 @@ export function makeRecipe(){
  for(const r of [20,57,91])for(let i=0;i<16;i++){const p=polar(r,(i+.5)*TAU/16);if(m.routes.some(route=>route.points.slice(1).some((b,j)=>distance(p,route.points[j],b)<4.5)))removed.add(`${r}-${i}`);}
  const keep=id=>![...removed].some(key=>id===`planter-${key}`||id.startsWith(`planter-${key}-`)||id.startsWith(`leaf-${key}-`));
  m.art.meshes=m.art.meshes.filter(s=>keep(s.id));m.terrain.surfaces=m.terrain.surfaces.filter(s=>keep(s.id));m.terrain.walls=m.terrain.walls.filter(s=>keep(s.id));
+ // Production art pass: explicit recipe-authored details. Inlays, glass and
+ // botanical blades are visual-only; elevated metal hoops have matching rays.
+ // Query a construction snapshot so terrain.mjs never caches the final arena
+ // before the later overhead hoop surfaces have been appended.
+ const floorTerrain={...m.terrain,surfaces:[...m.terrain.surfaces]};
+ const floor=(x,z)=>terrainSupportAt(x,z,floorTerrain,.8)?.y??24;
+ const floorPoint=(r,a,offset=.025)=>{const [x,z]=polar(r,a);return[x,floor(x,z)+offset,z];};
+ for(const [ring,r] of [[0,12],[1,52],[2,86],[3,116]]){
+  for(let i=0;i<192;i++)for(const side of [-1,1]){
+   const a=i*TAU/192,b=(i+.88)*TAU/192,edge=r+side*2.4;
+   quad(`ring-inlay-${ring}-${i}-${side}`,[floorPoint(edge-.09,a),floorPoint(edge-.09,b),floorPoint(edge+.09,b),floorPoint(edge+.09,a)],ring%2?'gold':'verdigris','none');
+  }
+ }
+ // Stone joint grid follows the circular masonry, rather than Cartesian tiles.
+ for(let r=5;r<119;r+=3)for(let i=0;i<96;i++){
+  const a=i*TAU/96,b=(i+1)*TAU/96;
+  quad(`masonry-joint-${r}-${i}`,[floorPoint(r-.025,a,.012),floorPoint(r-.025,b,.012),floorPoint(r+.025,b,.012),floorPoint(r+.025,a,.012)],'joint','none');
+ }
+ for(const route of m.routes.filter(r=>r.id.startsWith('garden-ramp')||r.id.startsWith('spiral-'))){
+  for(let i=1;i<route.points.length;i++){
+   const a=route.points[i-1],b=route.points[i],dx=b[0]-a[0],dz=b[1]-a[1],len=Math.hypot(dx,dz),nx=-dz/len,nz=dx/len;
+   const p=(v,w)=>[v[0]+nx*w,floor(v[0]+nx*w,v[1]+nz*w)+.035,v[1]+nz*w];
+   for(const side of [-1,1])quad(`${route.id}-inlay-${i}-${side}`,[p(a,side*2-.12),p(b,side*2-.12),p(b,side*2+.12),p(a,side*2+.12)],route.id.startsWith('spiral')?'gold':'verdigris','none');
+  }
+ }
+ const crownHeight=r=>28+18*Math.sin((116-r)/84*Math.PI*.8);
+ for(const r of [34,48,66,86,104,116])for(let i=0;i<96;i++){
+  const a=(i+3)*TAU/96,b=(i+4)*TAU/96,p=t=>{const [x,z]=polar(r,t);return[x,crownHeight(r),z];};
+  beam(`hoop-${r}-${i}`,p(a),p(b),.18,'verdigris');
+ }
+ for(let i=0;i<16;i++)for(const [r0,r1]of [[66,86],[86,104],[104,116]]){
+  const a=(i+.5)*TAU/16+.006,b=(i+1.5)*TAU/16-.006;
+  for(let j=0;j<8;j++){const c=a+(b-a)*j/8,d=a+(b-a)*(j+1)/8;
+   const p=(r,t)=>{const [x,z]=polar(r,t);return[x,crownHeight(r)-.06,z];};
+   quad(`greenhouse-pane-${i}-${r0}-${j}`,[p(r0,c),p(r0,d),p(r1,d),p(r1,c)],'glass','none');
+  }
+ }
+ // Fern fronds: tapered folded strips, deterministic whorls at existing planters.
+ for(const plant of [...m.art.meshes].filter(p=>p.id.startsWith('planter-')&&p.collision==='wall')){
+  const x=(plant.vertices[0][0]+plant.vertices[1][0])/2,z=(plant.vertices[0][2]+plant.vertices[2][2])/2,y=plant.vertices[4][1];
+  for(let frond=0;frond<16;frond++){
+   const a=frond*2.399963,r=1.8+(frond%4)*.3,verts=[],tris=[];
+   for(let j=0;j<=8;j++){const t=j/8,w=.3*Math.sin(t*Math.PI),cx=x+Math.cos(a)*r*t,cz=z+Math.sin(a)*r*t,h=y+Math.sin(t*Math.PI*.7)*(1.3+(frond%3)*.45);
+    verts.push([cx-Math.sin(a)*w,h,cz+Math.cos(a)*w],[cx,h+.08,cz],[cx+Math.sin(a)*w,h,cz-Math.cos(a)*w]);
+    if(j)for(let k=0;k<2;k++){const q=(j-1)*3+k;tris.push([q,q+3,q+4],[q,q+4,q+1]);}
+   }
+   mesh(`${plant.id}-fern-${frond}`,verts,tris,frond%3?'botanical':'leaflight','none');
+  }
+ }
+ // Drawer fascia lines sit on existing solid faces, never across open doorways.
+ for(const s of [-1,1])for(const side of [-1,1])for(let i=-2;i<=2;i++)for(let shelf=0;shelf<6;shelf++){
+  const x=s*52+side*3.28,z=i*2.5,y=8.3+shelf*.55;
+  quad(`drawer-fascia-${s}-${side}-${i}-${shelf}`,[[x,y,z-.68],[x,y,z+.68],[x,y+.06,z+.68],[x,y+.06,z-.68]],'joint','none');
+ }
+ m.art.labels=[
+  {text:'HELIX / 00',x:0,y:.055,z:5,size:2.2,floor:true,material:'verdigris'},
+  {text:'LIGHTWELL',x:0,y:.055,z:8,size:1.1,floor:true,material:'verdigris'},
+  {text:'01  SEED ARCHIVE',x:-52,y:13,z:-9.56,size:.75,yaw:Math.PI,material:'gold'},
+  {text:'02  IRRIGATION LAB',x:52,y:13,z:9.56,size:.65,yaw:0,material:'gold'},
+  {text:'CANOPY  /  +16',x:0,y:16.06,z:86,size:1.1,floor:true,material:'gold'},
+  {text:'CROWN  /  +24',x:0,y:24.06,z:-116,size:1.2,floor:true,material:'verdigris'}];
+ m.art.visualCoverage='complete-terrain';
  return m;
 }
 export const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');

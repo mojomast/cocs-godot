@@ -5,6 +5,7 @@ import bpy
 import sys
 import json
 import hashlib
+import math
 from pathlib import Path
 
 root = Path(sys.argv[sys.argv.index('--') + 1]).resolve()
@@ -12,11 +13,14 @@ source = root / 'port/native-multiplayer-worlds/worlds/helix-conservatory.json'
 recipe = json.loads(source.read_text())
 out = root / 'godot/multiplayer_worlds/art/helix-conservatory'
 out.mkdir(parents=True, exist_ok=True)
+masters = root / 'tools/godot-multiplayer/new-maps/helix-conservatory/masters'
+masters.mkdir(parents=True, exist_ok=True)
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
-colors = {'ceramic': (.76, .79, .66, 1), 'stone': (.37, .43, .38, 1),
-          'verdigris': (.075, .40, .35, 1), 'gold': (.94, .57, .12, 1),
-          'botanical': (.11, .31, .10, 1), 'glass': (.40, .82, .79, .20)}
+colors = {'ceramic': (.28, .30, .23, 1), 'stone': (.12, .17, .14, 1),
+          'verdigris': (.025, .18, .15, 1), 'gold': (.5, .26, .045, 1),
+          'botanical': (.025, .13, .018, 1), 'leaflight': (.12, .28, .045, 1),
+          'joint': (.04, .065, .055, 1), 'glass': (.15, .36, .32, .08)}
 materials = {}
 for name, color in colors.items():
     mat = bpy.data.materials.new(name)
@@ -27,7 +31,7 @@ for name, color in colors.items():
     bsdf.inputs['Roughness'].default_value = .38 if name == 'verdigris' else .72
     bsdf.inputs['Metallic'].default_value = .6 if name in ('gold', 'verdigris') else 0
     if name == 'glass':
-        bsdf.inputs['Alpha'].default_value = .20
+        bsdf.inputs['Alpha'].default_value = .08
         mat.surface_render_method = 'DITHERED'
     materials[name] = mat
 
@@ -54,18 +58,36 @@ for (material, collision, walkable), batch in batches.items():
     obj['walkable'] = walkable
     obj['recipe_sha256'] = hashlib.sha256(source.read_bytes()).hexdigest()
 
+for i, label in enumerate(recipe['art'].get('labels', [])):
+    curve = bpy.data.curves.new(f'wayfinding-{i}', 'FONT')
+    curve.body = label['text']
+    curve.align_x = 'CENTER'
+    curve.size = label['size']
+    curve.resolution_u = 3
+    obj = bpy.data.objects.new(f'wayfinding-{i}', curve)
+    bpy.context.collection.objects.link(obj)
+    obj.location = (label['x'], -label['z'], label['y'])
+    obj.rotation_euler = (0, 0, 0) if label.get('floor') else (math.pi/2, 0, -label.get('yaw', 0))
+    curve.materials.append(materials[label['material']])
+    obj['authority_class'] = 'none'
+    obj['recipe_label'] = i
+    bpy.context.view_layer.objects.active = obj
+    obj.select_set(True)
+    bpy.ops.object.convert(target='MESH')
+    obj.select_set(False)
+
 scene = bpy.context.scene
 scene['map_id'] = recipe['id']
 scene['source_lock'] = '515daf'
 scene['reviewed_derivative'] = '0326'
 scene['collision_note'] = 'Use reviewed recipe triangles, never auto-convex GLB collision.'
-bpy.ops.wm.save_as_mainfile(filepath=str(out / 'helix-conservatory.blend'))
+bpy.ops.wm.save_as_mainfile(filepath=str(masters / 'helix-conservatory.blend'))
 bpy.ops.export_scene.gltf(filepath=str(out / 'helix-conservatory.glb'), export_format='GLB',
                           export_extras=True, export_yup=True, export_apply=False)
 report = {'recipeSha256': hashlib.sha256(source.read_bytes()).hexdigest(),
           'vertices': sum(len(b['vertices']) for b in batches.values()),
           'triangles': sum(len(b['faces']) for b in batches.values()),
           'meshBatches': len(batches), 'materials': len(materials),
-          'files': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in out.iterdir() if p.suffix in ('.blend', '.glb')}}
+          'files': {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest() for p in [out / 'helix-conservatory.glb', masters / 'helix-conservatory.blend']}}
 (out / 'helix-conservatory-art-report.json').write_text(json.dumps(report, indent=2) + '\n')
 print(json.dumps(report))

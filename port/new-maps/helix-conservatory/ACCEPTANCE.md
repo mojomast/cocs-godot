@@ -1,4 +1,6 @@
-# Acceptance — READY FOR BLENDER, not release-ready
+# Acceptance — native scene accepted, parent packaging pending
+
+**Current production evidence and exact remaining gates: [PRODUCTION.md](PRODUCTION.md).** The sections below preserve the historical pre-engine checkpoints, hashes and initially pending work; their READY FOR BLENDER status is superseded by the 2026-10-02 production pass. Five native modes are accepted; Arsenal/Juggernaut remain source-only.
 
 ## Lightweight verification
 

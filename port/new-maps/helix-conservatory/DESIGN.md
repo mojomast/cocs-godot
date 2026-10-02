@@ -2,6 +2,8 @@
 
 Stable ID: `helix-conservatory`. Seed: `61002`. Source lock `515daf`; reviewed derivative `0326`.
 
+Production update: see [PRODUCTION.md](PRODUCTION.md) for the inspected Blender/native art, final hash, five accepted native modes and separate source-only modes. The editable master now lives at `tools/godot-multiplayer/new-maps/helix-conservatory/masters/helix-conservatory.blend`, outside Godot's automatic import tree. Historical initial planning below is retained for traceability.
+
 ## Spatial design
 
 A 240 m diameter research conservatory descends from a 24 m crown through 16 m canopy and 8 m archive terraces into an open zero-height lightwell. Ninety-six angular sectors give the landscape a curved silhouette. Sixteen articulated hexagonal-section greenhouse ribs scallop above the terraces, framing the open sky. Discontinuous planter crescents, ceramic lanterns, verdigris aqueducts and seed drawers articulate the ground plan.

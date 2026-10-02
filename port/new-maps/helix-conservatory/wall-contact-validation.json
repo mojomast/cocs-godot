@@ -1,7 +1,7 @@
 {
   "id": "helix-conservatory",
   "classification": "source-only continuous-input wall contacts; quad negative control is test-only",
-  "recipeContentHash": "4e866ac5777f6763261a1fa49a8f26de7ce5c0b3df8ed713ef6b0dfa3f8df395",
+  "recipeContentHash": "126a0f2f21250576b44be1853182d6c3a0377ed82f8001c505e1a6cf036b2fdf",
   "wallPolygons": 712,
   "productionGeometryChanged": false,
   "rows": [
