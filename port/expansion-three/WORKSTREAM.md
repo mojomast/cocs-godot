@@ -24,6 +24,23 @@ Their candidate modes are design targets until source/native journeys pass.
 
 ## Source/code checkpoints
 
+- **Vesper — `9b1d8b86`, ready for Blender.** A 280×240 m urban recipe with
+  24 m relief, nineteen routes, seven connected three-room interiors, station
+  halls, brick arcades, stepped blocks and canal warehouses. All routes passed
+  both-way source movement (29,276 ticks); all 2,143 generated navigation nodes
+  connect. Source body/ray contacts, real door/window apertures, ceilings,
+  walkable-footprint separation and canal/bridge support checks passed.
+- Six controlled source rounds passed: DM/TDM ended on time after legitimate
+  input-fired kills; CTF completed three physically carried captures; Domination,
+  KOTH and Uplink ended through objectives. These are source fixtures, not native
+  or autonomous-bot acceptance. Geometry hash:
+  `1e9ad354a2d4f474f783289043380cd7ea046ca5631cd829715c627d0bc37548`.
+- Blender scripts and native collision probe are prepared but unexecuted. Actual
+  architecture review, stair/body agreement, hosted native modes, HUD/capture
+  budgets and package acceptance remain pending. Parent must resolve the named
+  `res://multiplayer_worlds/art/vesper-viaduct/vesper-viaduct.glb` binding before
+  production acceptance. No shared registration or engine grant is implied.
+
 - **Abyssal — `67f79981`, ready for Blender.** Twelve pressure chambers in three
   districts, seventeen angled gallery routes, eight crosslinks and 20 m walkable
   relief are authored as a deterministic source/native geometry recipe. Blender
