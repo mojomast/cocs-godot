@@ -46,9 +46,11 @@ Blender authoring scripts, editable master, GLB, native data and focused tests.
 
 ## Verification and resource queue
 
-**Current map state: design, code and Node checks only.** World-weather acceptance
-and Modes and Experience have released the slot; parent now owns combined
-verification/exports before the map queue.
+**Helix now owns the exclusive Blender/Godot slot.** Parent completed the 359-gate
+combined suite, both exports, 75 Linux cases and three exported graphical checks;
+Windows execution runs remotely. Helix was explicitly granted local production
+and instructed to merge the verified `e731fd53` runtime before importing/rendering.
+Foundry and Parallax continue to wait for their explicit grants.
 Map agents must return `READY FOR BLENDER` and receive an explicit parent grant
 before Blender, import, bake, rendering or Godot runs. Use serial heavy processes
 and `LP_NUM_THREADS=1`; no nested agents.
@@ -115,4 +117,5 @@ failed attempts and earlier releases.
   rounds passed again with 689/689 connected nav nodes. New geometry hash:
   `916164f0417369f37506e3908e940c961ea142aa349dcda3226ca1f316a040eb`.
 
-No finished Blender asset or native map acceptance is claimed at this checkpoint.
+Helix is now executing Blender/native production. No finished Blender asset or
+native map acceptance is claimed at this grant checkpoint.

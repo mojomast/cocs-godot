@@ -47,9 +47,9 @@ its `port/next-port/<lane>/` directory, with actual source/native anchors.
 
 ## Shared-file and engine coordination
 
-- **Parent owns the exclusive Godot slot now for combined verification/exports.**
-  Experience released after `2571ff59`, integrated as `78ef1673`; its owned
-  Godot/Xvfb/authority processes are stopped. Other lanes are research,
+- **Helix Conservatory owns the exclusive local Blender/Godot slot now.**
+  Parent completed local canonical, export, Linux package and three exported
+  graphical checks. Windows verification runs remotely. Other lanes are research,
   code and Node-only until explicitly granted the engine. Heavy native/Blender
   work is serialized with `LP_NUM_THREADS=1` and the pinned Godot 4.5.2 binary.
 - Current handoff: Gameplay → World → Modes → Experience → parent combined

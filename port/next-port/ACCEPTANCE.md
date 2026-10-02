@@ -19,14 +19,21 @@ Evidence root: `/home/mojo/.tmp-on-disk/cocs-first-port-pass-evidence-20261002/`
 - Both archives were checksum-verified and freshly extracted into paths with
   spaces. Platform execution acceptance is in progress, not yet claimed.
 
-## Pending at this checkpoint
+## Platform and exported-game checks
 
-- Linux extracted package: expected **23 base + 52 expansion = 75 cases**.
+- Linux extracted package: **23 base + 52 expansion = 75/75 cases passed**.
+- Windows archive independently passed recorded-commit/source closure and all
+  file-integrity checks; actual Windows execution remains in progress below.
 - Windows: [workflow 36972400600](https://github.com/mojomast/cocs-godot/actions/runs/36972400600),
   expected the same 75 cases with transport observation.
-- Package-only graphical caption/HUD evidence, using the external harness in
-  the evidence root and production resources/authorities from the extraction.
-- Final public acceptance archive, release notes and publication.
+- Package-only graphical journeys: **3/3 passed** — Full Arsenal wide, VIP
+  compact, Campaign compact. External fixture loads production scenes/resources
+  from `cocs.pck` and authorities only from extracted `runtime/`; per-run fixture
+  and manifest hashes are retained. Parent inspected pickup/operator status,
+  compact ability/caption and campaign story-comms captures. These are controlled
+  presentation fixtures with recorded source setup, not natural completion proof.
+- Final public acceptance archive, release notes and publication are pending
+  actual Windows results.
 
 Draft release tag: `quiet-relay-source-expansion-2026-10-02`.
 
