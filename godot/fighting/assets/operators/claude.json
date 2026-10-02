@@ -1,0 +1,2182 @@
+{
+  "version": 1,
+  "operator_id": "claude",
+  "status": "exported_unreviewed",
+  "timing_status": "content_bound",
+  "content_hashes": {
+    "roster": "1cb28db7f34fefe3c37ccb8f4b5a54822465d2b28fa8a6401ab0fa8fd77e5e02",
+    "rules": "5a89f073c107d504b34b6cb58d00599009245533a92519610d92616a6e4cff4a",
+    "coverage": "7681c7ffb3deec42eb411527b52bb47010ccbc90a04764768f45b78dddcda026"
+  },
+  "pipeline_sha256": "4740026211ba304dc4b4c6b16ee13f90be1948b4543717c1c98c7b17486b4063",
+  "sha256": "ef3897a93679c4c698e550eac1e4534a17463cf18321d97ee91f36a4d33a4d8a",
+  "source_sha256": "de246dec07441eb00078465856face34f782e75fb43372f3c42a36e42bb04087",
+  "master_sha256": "7dc4404bc84255a4c60a7ec02d2f51e598dce96119445612bf9b70a18ab222e2",
+  "source_forward": "-Z",
+  "root_yaw_right": -1.5707963267948966,
+  "clips": {
+    "idle": {
+      "duration": 1.0,
+      "loop": true,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "373da7fd8f8abb25bef609353c0e424243fddba34af13ef3ddcc09b6fb506f26",
+      "max_ik_clamp_m": 0.0
+    },
+    "walk_f": {
+      "duration": 1.0,
+      "loop": true,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          10.909090909090908,
+          1.0
+        ]
+      ],
+      "curve_sha256": "7cff22893ee1e95883ddd0ddaaa56a9464c0fae2ea79297156566e97ce8404de",
+      "max_ik_clamp_m": 0.0
+    },
+    "walk_b": {
+      "duration": 1.0,
+      "loop": true,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          10.909090909090908,
+          1.0
+        ]
+      ],
+      "curve_sha256": "65bdd543e21eed4ff71a5883212a987ce863415fa3554aa7836922f153240901",
+      "max_ik_clamp_m": 0.0
+    },
+    "crouch": {
+      "duration": 1.0,
+      "loop": true,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "ab50c407f4f7e96fb386bd2b5ca4115ad264090bcb8ef9796e626148e19e18d7",
+      "max_ik_clamp_m": 0.0
+    },
+    "jump_rise": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "566b13dd0afc874bf47f1e4c54e42b9b47bf96c7a86c99682ba3454cce64d942",
+      "max_ik_clamp_m": 0.0
+    },
+    "jump_apex": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "3fdb3c8af1259c60e2e4ad5de5f4fe67162533de55f0d1319223f4f06404979c",
+      "max_ik_clamp_m": 0.0
+    },
+    "jump_fall": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "10123a77ad3ee7117746b23b35d86f70a8d581730e64d099ac9cb08460887259",
+      "max_ik_clamp_m": 0.0
+    },
+    "land": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "9a687fd46e6d7584c12f2389f4a1ce5b7278163b66044091ba0836bef071b683",
+      "max_ik_clamp_m": 0.0
+    },
+    "dash_f": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "25524bf1695b2e35b0389137eaac5692f8d5baaa36567de212023a0a06affb90",
+      "max_ik_clamp_m": 0.0
+    },
+    "dash_b": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "effeaf94d7803c2859b30509c60caed352474d1b811ac85cda3d956931e1b9ac",
+      "max_ik_clamp_m": 0.0
+    },
+    "guard_hi": {
+      "duration": 1.0,
+      "loop": true,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "d152de6ab563faa49bbdfadd41d165e763d0d1c950f7e4ee64a0b40518560a7a",
+      "max_ik_clamp_m": 0.0
+    },
+    "guard_lo": {
+      "duration": 1.0,
+      "loop": true,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "bdcb2262933a3f1ab8cc400b5a11f983300e3d1beeee875792a98c12a466f877",
+      "max_ik_clamp_m": 0.0
+    },
+    "hit_hi": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "d1318b3a8a46d508444ddf2418c33e2cf3956411cf7e4ee1d2ba5286e976febf",
+      "max_ik_clamp_m": 0.0
+    },
+    "hit_lo": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "c718f4515cf0d861d30c965da8a5d37d82a7a89810a10e8ea50941dc6ad54cd1",
+      "max_ik_clamp_m": 0.0
+    },
+    "hit_air": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "52609e60cf7ee9f72f4ff2719a0d0e69d9b1f8b01fdd402659aa3dc72b8b3f32",
+      "max_ik_clamp_m": 0.0
+    },
+    "block_hi": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "9f86b649c999a96ce8ca4478ae24eb7d8d541f5f276316dcae35c11206e8cc45",
+      "max_ik_clamp_m": 0.0
+    },
+    "block_lo": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "9ff351f6f146d25004ba5e3534c65108db7428e2c95040473de96daac2feef45",
+      "max_ik_clamp_m": 0.0
+    },
+    "knockdown": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "e30435d2ee393726d152f3bda3f52f078ee9ba9bcf96fd5b4b4ac27a99d71783",
+      "max_ik_clamp_m": 0.0
+    },
+    "wakeup": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "91524f63756b16e06276eb7ddb7236d0bf88f6b3c854107b7320595467c6ccb5",
+      "max_ik_clamp_m": 0.0
+    },
+    "throw_tech": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "54f01e25cf19d93cbc39af313626d6aa458ecb067fd84c106d79178cb37aa3cc",
+      "max_ik_clamp_m": 0.0
+    },
+    "win": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "66a6b771321cc91bfc52ef6787bf477675cf2c0f6c8662b50a7088486286d1e9",
+      "max_ik_clamp_m": 0.0
+    },
+    "lose": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          1.0
+        ]
+      ],
+      "curve_sha256": "bb909a050785f98772b46aae4115da0ccf26033405cdccd8625212ee9161c5fa",
+      "max_ik_clamp_m": 0.0
+    },
+    "stand_l": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          2.64,
+          0.22
+        ],
+        [
+          5,
+          0.4
+        ],
+        [
+          6,
+          0.5
+        ],
+        [
+          9,
+          0.6
+        ],
+        [
+          21,
+          1.0
+        ]
+      ],
+      "curve_sha256": "f1aa0b9c00fa220bae62600d5757ce621ed77a2fb892d99dff498d029aa14bde",
+      "max_ik_clamp_m": 0.0
+    },
+    "stand_m": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          4.4,
+          0.22
+        ],
+        [
+          9,
+          0.4
+        ],
+        [
+          10,
+          0.5
+        ],
+        [
+          14,
+          0.6
+        ],
+        [
+          32,
+          1.0
+        ]
+      ],
+      "curve_sha256": "82bdd33fb3ad32ceff1517b5d5a4d5229fee39fcf04b817cc96eb2d75dcf8562",
+      "max_ik_clamp_m": 0.0
+    },
+    "stand_h": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6.6,
+          0.22
+        ],
+        [
+          14,
+          0.4
+        ],
+        [
+          15,
+          0.5
+        ],
+        [
+          18,
+          0.6
+        ],
+        [
+          44,
+          1.0
+        ]
+      ],
+      "curve_sha256": "2567ae5aca760575665943174002262f42d24f6b54d5fcf936d578f9c0d3ce91",
+      "max_ik_clamp_m": 0.0
+    },
+    "crouch_l": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          2.64,
+          0.22
+        ],
+        [
+          5,
+          0.4
+        ],
+        [
+          6,
+          0.5
+        ],
+        [
+          8,
+          0.6
+        ],
+        [
+          20,
+          1.0
+        ]
+      ],
+      "curve_sha256": "751c6bb0170cef8d6e0332bdd4100301200098ac8b7a9eea9f7bd8c090986c73",
+      "max_ik_clamp_m": 0.0
+    },
+    "crouch_m": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          4.4,
+          0.22
+        ],
+        [
+          9,
+          0.4
+        ],
+        [
+          10,
+          0.5
+        ],
+        [
+          14,
+          0.6
+        ],
+        [
+          34,
+          1.0
+        ]
+      ],
+      "curve_sha256": "69ae60720172f19c721aa899136fb05e44f803d151499bb2fe85a9f6c936d8cc",
+      "max_ik_clamp_m": 0.0
+    },
+    "crouch_h": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          5.72,
+          0.22
+        ],
+        [
+          12,
+          0.4
+        ],
+        [
+          13,
+          0.5
+        ],
+        [
+          18,
+          0.6
+        ],
+        [
+          43,
+          1.0
+        ]
+      ],
+      "curve_sha256": "b36f90f9bac427045bea1706dafab894340a365b1680ca00aa6d609bf19ceacd",
+      "max_ik_clamp_m": 0.0
+    },
+    "air_l": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          2.64,
+          0.22
+        ],
+        [
+          5,
+          0.4
+        ],
+        [
+          6,
+          0.5
+        ],
+        [
+          10,
+          0.6
+        ],
+        [
+          21,
+          1.0
+        ]
+      ],
+      "curve_sha256": "5a8bb49a97d06e6a7c3ea5682598a8b9e2ddf2d938904f7b98089dba2ae5592f",
+      "max_ik_clamp_m": 0.0
+    },
+    "air_m": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          4.4,
+          0.22
+        ],
+        [
+          9,
+          0.4
+        ],
+        [
+          10,
+          0.5
+        ],
+        [
+          15,
+          0.6
+        ],
+        [
+          32,
+          1.0
+        ]
+      ],
+      "curve_sha256": "28b6dadb25a9a90994f4c7e89f5979684812afefe805897d9e8f8937b2a25493",
+      "max_ik_clamp_m": 0.0
+    },
+    "air_h": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6.16,
+          0.22
+        ],
+        [
+          13,
+          0.4
+        ],
+        [
+          14,
+          0.5
+        ],
+        [
+          18,
+          0.6
+        ],
+        [
+          41,
+          1.0
+        ]
+      ],
+      "curve_sha256": "7620642284bff798286ed53a1f7d4da73ea0a8cf3b3a89a03798d482f171228e",
+      "max_ik_clamp_m": 0.0
+    },
+    "throw_f": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0.28
+        ],
+        [
+          18,
+          0.68
+        ],
+        [
+          29,
+          0.82
+        ],
+        [
+          38,
+          1.0
+        ]
+      ],
+      "curve_sha256": "d25a7bdd77678e35f63aa48b3fe007bb8536c20e511f7074f9e01dc2957739e6",
+      "max_ik_clamp_m": 0.0
+    },
+    "throw_b": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0.28
+        ],
+        [
+          18,
+          0.68
+        ],
+        [
+          29,
+          0.82
+        ],
+        [
+          40,
+          1.0
+        ]
+      ],
+      "curve_sha256": "a0622b907f91c64f4dc390aa696eced6ca6d34cde8431ecc81df7a81b1aa0a35",
+      "max_ik_clamp_m": 0.0
+    },
+    "special1": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6.16,
+          0.22
+        ],
+        [
+          13,
+          0.4
+        ],
+        [
+          14,
+          0.5
+        ],
+        [
+          17,
+          0.6
+        ],
+        [
+          44,
+          1.0
+        ]
+      ],
+      "curve_sha256": "8ec8d6408176009976289fd0cf48f1087da4a8750956efcc6517285a2abbf7f1",
+      "max_ik_clamp_m": 0.0
+    },
+    "special2": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          2.64,
+          0.22
+        ],
+        [
+          5,
+          0.4
+        ],
+        [
+          6,
+          0.5
+        ],
+        [
+          24,
+          0.6
+        ],
+        [
+          38,
+          1.0
+        ]
+      ],
+      "curve_sha256": "57cca19d159d5a46707debb7ea2604b74b0c1aed2c67f408a69aff3c4194b394",
+      "max_ik_clamp_m": 0.0
+    },
+    "special3": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          5,
+          0.28
+        ],
+        [
+          25,
+          0.68
+        ],
+        [
+          40,
+          0.82
+        ],
+        [
+          47,
+          1.0
+        ]
+      ],
+      "curve_sha256": "e5fd0b91c7cc6f6021924d3b095bf7cb7307e6850799ddefc4852dddc32759d3",
+      "max_ik_clamp_m": 0.0
+    },
+    "super": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "anticipation": 0.22,
+        "preactive": 0.4,
+        "impact": 0.5,
+        "recovery": 0.6,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          4.4,
+          0.22
+        ],
+        [
+          9,
+          0.4
+        ],
+        [
+          10,
+          0.5
+        ],
+        [
+          15,
+          0.6
+        ],
+        [
+          57,
+          1.0
+        ]
+      ],
+      "curve_sha256": "2adfc84d270425918505ef3d2622a9b906cc1251d6d5dba3489fad0a721010f5",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_chatgpt_throw_f": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0.28
+        ],
+        [
+          18,
+          0.68
+        ],
+        [
+          29,
+          0.82
+        ],
+        [
+          38,
+          1.0
+        ]
+      ],
+      "curve_sha256": "c3e44be90a93282069687dce26190461b65f190e13d11338fabf61b6b7c151c5",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_chatgpt_throw_b": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0.28
+        ],
+        [
+          18,
+          0.68
+        ],
+        [
+          29,
+          0.82
+        ],
+        [
+          40,
+          1.0
+        ]
+      ],
+      "curve_sha256": "f1277e0a813a7467002a899d0169b1439f310eaa0f00860b8bc2ab3eebbce296",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_chatgpt_special3": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          12,
+          0.28
+        ],
+        [
+          20,
+          0.68
+        ],
+        [
+          34,
+          0.82
+        ],
+        [
+          44,
+          1.0
+        ]
+      ],
+      "curve_sha256": "88358999a19587c5587ee2b8af21641dc51ba0a05511d766cf9713822e226b06",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_claude_throw_f": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0.28
+        ],
+        [
+          18,
+          0.68
+        ],
+        [
+          29,
+          0.82
+        ],
+        [
+          38,
+          1.0
+        ]
+      ],
+      "curve_sha256": "af1bc6649751047b3f95a73292695007c08eb975e4bc6a0855b10248f26c7817",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_claude_throw_b": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0.28
+        ],
+        [
+          18,
+          0.68
+        ],
+        [
+          29,
+          0.82
+        ],
+        [
+          40,
+          1.0
+        ]
+      ],
+      "curve_sha256": "522c89a32c16e8267f6bb030dbdf53e149aaecf512f337cd889b1a855e1f6472",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_claude_special3": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          5,
+          0.28
+        ],
+        [
+          25,
+          0.68
+        ],
+        [
+          40,
+          0.82
+        ],
+        [
+          47,
+          1.0
+        ]
+      ],
+      "curve_sha256": "7c00cf5aea881499fc0585a803360105a570158b421f992c48e3e4e04762bff3",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_grok_throw_f": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0.28
+        ],
+        [
+          18,
+          0.68
+        ],
+        [
+          29,
+          0.82
+        ],
+        [
+          38,
+          1.0
+        ]
+      ],
+      "curve_sha256": "effa40dcebdf10b6e90662515cac02346bb40a045ef64534975f6e378ab378f4",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_grok_throw_b": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0.28
+        ],
+        [
+          18,
+          0.68
+        ],
+        [
+          29,
+          0.82
+        ],
+        [
+          40,
+          1.0
+        ]
+      ],
+      "curve_sha256": "3effa44b766815e977a2c1695ce2cd049771d8c1cac421c8737b6b6ea6464487",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_meta_throw_f": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          8,
+          0.28
+        ],
+        [
+          20,
+          0.68
+        ],
+        [
+          31,
+          0.82
+        ],
+        [
+          40,
+          1.0
+        ]
+      ],
+      "curve_sha256": "db4ab9d64847c4b5421e1630c7c991102a39e655e15d284bc70b525bf60d4a11",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_meta_throw_b": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          8,
+          0.28
+        ],
+        [
+          20,
+          0.68
+        ],
+        [
+          31,
+          0.82
+        ],
+        [
+          42,
+          1.0
+        ]
+      ],
+      "curve_sha256": "49256142146df013602b9eec71923404479148fe99d9a50ebc20cee2cebe6664",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_meta_special3": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          15,
+          0.28
+        ],
+        [
+          23,
+          0.68
+        ],
+        [
+          37,
+          0.82
+        ],
+        [
+          51,
+          1.0
+        ]
+      ],
+      "curve_sha256": "7c054040d4e4e7dd56f2345a4c4d7f8d0229357be037981e7d3ee025103bf2bd",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_gemini_throw_f": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0.28
+        ],
+        [
+          18,
+          0.68
+        ],
+        [
+          29,
+          0.82
+        ],
+        [
+          38,
+          1.0
+        ]
+      ],
+      "curve_sha256": "8322d40bb253ddc55688ab438a692c1bd22bac12abc0d9ee875f8ec010990fb7",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_gemini_throw_b": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0.28
+        ],
+        [
+          18,
+          0.68
+        ],
+        [
+          29,
+          0.82
+        ],
+        [
+          40,
+          1.0
+        ]
+      ],
+      "curve_sha256": "08edd3530678b8874e6994717062286b0b657314a935679b1999c5f34b3e2e1d",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_gemini_special3": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          13,
+          0.28
+        ],
+        [
+          21,
+          0.68
+        ],
+        [
+          35,
+          0.82
+        ],
+        [
+          44,
+          1.0
+        ]
+      ],
+      "curve_sha256": "636400a3cc6d8ae3bbfe2d0ea43b21c63cad82b65ca0c21b7f0452a7aab40c5f",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_deepseek_throw_f": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0.28
+        ],
+        [
+          18,
+          0.68
+        ],
+        [
+          29,
+          0.82
+        ],
+        [
+          38,
+          1.0
+        ]
+      ],
+      "curve_sha256": "03a6e0d1a6c8882f056fbac03a10b808724c812543c89c8311d37c75f603502e",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_deepseek_throw_b": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0.28
+        ],
+        [
+          18,
+          0.68
+        ],
+        [
+          29,
+          0.82
+        ],
+        [
+          40,
+          1.0
+        ]
+      ],
+      "curve_sha256": "57ecb80cd45ad16153ac8b88d141a617c0a3083ebafa1f8e822062d4bf1b869c",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_deepseek_special3": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0.28
+        ],
+        [
+          24,
+          0.68
+        ],
+        [
+          38,
+          0.82
+        ],
+        [
+          53,
+          1.0
+        ]
+      ],
+      "curve_sha256": "22fdbef3980d5d96c058df4ec2be4f8be4b29dfc6f67019de9c4c7f7c3d2b165",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_mistral_throw_f": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0.28
+        ],
+        [
+          18,
+          0.68
+        ],
+        [
+          29,
+          0.82
+        ],
+        [
+          38,
+          1.0
+        ]
+      ],
+      "curve_sha256": "5cf4126f44bf338448839decd342e863a61cdc092b36046203b041240889aab5",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_mistral_throw_b": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0.28
+        ],
+        [
+          18,
+          0.68
+        ],
+        [
+          29,
+          0.82
+        ],
+        [
+          40,
+          1.0
+        ]
+      ],
+      "curve_sha256": "0cf9082731df1378ad426aa212d9a732843d1d1737b782282f744648b625c705",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_kimi_throw_f": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0.28
+        ],
+        [
+          18,
+          0.68
+        ],
+        [
+          29,
+          0.82
+        ],
+        [
+          38,
+          1.0
+        ]
+      ],
+      "curve_sha256": "58ddbdc8daee22faae05c2cb5563f3ce275817bf4ee804d6a761d804c6ecde3f",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_kimi_throw_b": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0.28
+        ],
+        [
+          18,
+          0.68
+        ],
+        [
+          29,
+          0.82
+        ],
+        [
+          40,
+          1.0
+        ]
+      ],
+      "curve_sha256": "f6ea4197f18a70f8030681c7d1776438f02855f9985d868586af550f2411eaba",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_kimi_special3": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          14,
+          0.28
+        ],
+        [
+          22,
+          0.68
+        ],
+        [
+          36,
+          0.82
+        ],
+        [
+          48,
+          1.0
+        ]
+      ],
+      "curve_sha256": "66f04a07d635c63c04dc8627c58c2e8b723c10bca207119cb9201bd97cf5de61",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_qwen_throw_f": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0.28
+        ],
+        [
+          18,
+          0.68
+        ],
+        [
+          29,
+          0.82
+        ],
+        [
+          38,
+          1.0
+        ]
+      ],
+      "curve_sha256": "75c1827cc20132a8878878f3a69e60cd7e5546ae58e7e047d5e7d91efee3e1a5",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_qwen_throw_b": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0.28
+        ],
+        [
+          18,
+          0.68
+        ],
+        [
+          29,
+          0.82
+        ],
+        [
+          40,
+          1.0
+        ]
+      ],
+      "curve_sha256": "12e639bc86b6a26d855c7f9725dea848997158ea911b79590de530caae79e118",
+      "max_ik_clamp_m": 0.0
+    },
+    "victim_qwen_special3": {
+      "duration": 1.0,
+      "loop": false,
+      "phases": {
+        "start": 0,
+        "contact": 0.28,
+        "damage": 0.68,
+        "release": 0.82,
+        "end": 1
+      },
+      "seek_keys": [
+        [
+          0,
+          0
+        ],
+        [
+          14,
+          0.28
+        ],
+        [
+          22,
+          0.68
+        ],
+        [
+          36,
+          0.82
+        ],
+        [
+          49,
+          1.0
+        ]
+      ],
+      "curve_sha256": "99a0714330ad1143dd21fd8930204e98324914b47964a9bb7ae71e1fc6e4daaf",
+      "max_ik_clamp_m": 0.0
+    }
+  },
+  "sockets": {
+    "Chest": {
+      "bone": "Chest",
+      "offset": [
+        0,
+        0,
+        0.16
+      ]
+    },
+    "Hips": {
+      "bone": "Hips",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    "HandL": {
+      "bone": "LeftHand",
+      "offset": [
+        0,
+        0.035,
+        0
+      ]
+    },
+    "KnuckleL": {
+      "bone": "LeftHand",
+      "offset": [
+        0,
+        0.085,
+        0
+      ]
+    },
+    "GripL": {
+      "bone": "LeftHand",
+      "offset": [
+        0,
+        0.045,
+        0
+      ]
+    },
+    "FootL": {
+      "bone": "LeftFoot",
+      "offset": [
+        0,
+        0.07,
+        0
+      ]
+    },
+    "StreakL": {
+      "bone": "LeftLowerArm",
+      "offset": [
+        0,
+        0.15,
+        0
+      ]
+    },
+    "ElbowL": {
+      "bone": "LeftLowerArm",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    "KneeL": {
+      "bone": "LeftLowerLeg",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    "GuardL": {
+      "bone": "LeftLowerArm",
+      "offset": [
+        0,
+        0.12,
+        0
+      ]
+    },
+    "HandR": {
+      "bone": "RightHand",
+      "offset": [
+        0,
+        0.035,
+        0
+      ]
+    },
+    "KnuckleR": {
+      "bone": "RightHand",
+      "offset": [
+        0,
+        0.085,
+        0
+      ]
+    },
+    "GripR": {
+      "bone": "RightHand",
+      "offset": [
+        0,
+        0.045,
+        0
+      ]
+    },
+    "FootR": {
+      "bone": "RightFoot",
+      "offset": [
+        0,
+        0.07,
+        0
+      ]
+    },
+    "StreakR": {
+      "bone": "RightLowerArm",
+      "offset": [
+        0,
+        0.15,
+        0
+      ]
+    },
+    "ElbowR": {
+      "bone": "RightLowerArm",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    "KneeR": {
+      "bone": "RightLowerLeg",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    "GuardR": {
+      "bone": "RightLowerArm",
+      "offset": [
+        0,
+        0.12,
+        0
+      ]
+    }
+  },
+  "bone_map": {
+    "Root": "Root",
+    "Hips": "Hips",
+    "Spine": "Spine",
+    "Chest": "Chest",
+    "Head": "Head",
+    "LeftUpperArm": "LeftUpperArm",
+    "LeftLowerArm": "LeftLowerArm",
+    "LeftHand": "LeftHand",
+    "RightUpperArm": "RightUpperArm",
+    "RightLowerArm": "RightLowerArm",
+    "RightHand": "RightHand",
+    "LeftUpperLeg": "LeftUpperLeg",
+    "LeftLowerLeg": "LeftLowerLeg",
+    "LeftFoot": "LeftFoot",
+    "RightUpperLeg": "RightUpperLeg",
+    "RightLowerLeg": "RightLowerLeg",
+    "RightFoot": "RightFoot",
+    "Neck": "Neck",
+    "LeftShoulder": "LeftShoulder",
+    "RightShoulder": "RightShoulder"
+  },
+  "root_motion": "locked",
+  "native_accepted": false,
+  "shared_victims": {
+    "authoring_master": "tools/fighting/animation/masters/meta.blend",
+    "unique_actions": 25,
+    "transport": "self_contained_glb_until_native_shared_library_proof"
+  }
+}

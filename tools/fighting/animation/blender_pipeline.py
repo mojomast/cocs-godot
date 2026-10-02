@@ -39,7 +39,7 @@ def ordered(rig):
 
 
 def sockets(rig):
-    result = {'Chest':{'bone':'Chest','offset':[0,0,0]},
+    result = {'Chest':{'bone':'Chest','offset':[0,0,.16]},
               'Hips':{'bone':'Hips','offset':[0,0,0]}}
     # Offsets are in exported Godot bone-local coordinates. Limb sockets use
     # +Y along the bone; knuckles extend towards the hand tip, not an FPS muzzle.
@@ -63,6 +63,7 @@ def build(options,bpy):
     bpy.ops.object.delete(use_global=False)
     bpy.ops.import_scene.gltf(filepath=str(src))
     imported = list(bpy.context.scene.objects)
+    empty_objects = [obj for obj in imported if obj.type != 'MESH']
     scene = bpy.context.scene
     scene.render.fps = 60
     scene.frame_start,scene.frame_end = 0,60
@@ -88,8 +89,8 @@ def build(options,bpy):
         obj.vertex_groups.new(name=owner).add(list(range(len(obj.data.vertices))),1.0,'REPLACE')
         obj['source_owner'] = owner
         kept.append(obj)
-    for obj in imported:
-        if obj.type != 'MESH' and obj.name in bpy.data.objects:
+    for obj in empty_objects:
+        if obj.name in bpy.data.objects:
             bpy.data.objects.remove(obj,do_unlink=True)
     arm_data = bpy.data.armatures.new('FighterSkeleton')
     arm = bpy.data.objects.new('FighterSkeleton',arm_data)
@@ -176,7 +177,7 @@ def build(options,bpy):
                 elif bone_name == 'Head':
                     angles = [a+b for a,b in zip(pose['torso'],pose['head'])]
                 if angles is not None:
-                    rotation_matrix = Matrix([rotate(axis,angles) for axis in ([1,0,0],[0,1,0],[0,0,1])]).transposed().to_4x4()
+                    rotation_matrix = Matrix([rotate(rotate(axis,angles),pose['body']) for axis in ([1,0,0],[0,1,0],[0,0,1])]).transposed().to_4x4()
                 matrix = rotation_matrix @ rest.matrix_local
                 matrix.translation = Vector(heads[bone_name])
                 # Convert explicitly against the freshly solved parent. Using
@@ -270,7 +271,8 @@ def reopen_export(options,bpy):
     bpy.ops.export_scene.gltf(filepath=str(glb_path),export_format='GLB',export_animations=True,
         export_animation_mode='ACTIONS',export_merge_animation='NONE',export_anim_single_armature=True,
         export_reset_pose_bones=True,export_force_sampling=True,export_frame_range=False,
-        export_anim_slide_to_zero=True,export_skins=True,export_extras=True,export_yup=True)
+        export_anim_slide_to_zero=True,export_skins=True,export_extras=True,export_yup=True,
+        export_tangents=True)
     exported = GLB(glb_path)
     actual_names = {a['name'] for a in exported.doc.get('animations',[])}
     assert actual_names==set(clips), f'export clip names differ: {actual_names^set(clips)}'
