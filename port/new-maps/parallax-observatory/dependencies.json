@@ -1,0 +1,21 @@
+{
+  "id": "parallax-observatory",
+  "sourceAnchor": "4ae4e5b786e6de0e3b1bc18e785e202e6cb95ad8",
+  "geometryHash": "62395bcf7d3cd08f3718d8fd2722714c03fdfa0f8afd7ce9699dec3c3be9f58a",
+  "recipeHash": "9a7f5896e2eebf062b9ec117902a713216803225ac37bb8efd6421244572948f",
+  "sha256": {
+    "tools/godot-multiplayer/new-maps/parallax-observatory/generate.mjs": "3ce1950887238286a54c8f1e7eb4ea22e7117e3028a061f92ddc3b6de20b2314",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/blender_author.py": "48f678346ec3b0570e5f5165dc81ec88992c6742e13da818509215fbcbaab059",
+    "port/native-multiplayer-worlds/worlds/parallax-observatory.json": "9a7f5896e2eebf062b9ec117902a713216803225ac37bb8efd6421244572948f",
+    "godot/multiplayer_worlds/generated/parallax-observatory.json": "3b849849aaccbe7f168a2d653e8bb2022f5c4f9d81f5544c16523fa56fb5780d",
+    "game/core.mjs": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+    "port/multiplayer-worlds/derived/core.mjs": "090d353ed616b1edbbd3053734bc092ed24444bdd1abfdca02293cab4aacf841"
+  },
+  "generatedFrom": {
+    "port/native-multiplayer-worlds/worlds/parallax-observatory.json": ["tools/godot-multiplayer/new-maps/parallax-observatory/generate.mjs"],
+    "godot/multiplayer_worlds/generated/parallax-observatory.json": ["tools/godot-multiplayer/new-maps/parallax-observatory/generate.mjs"],
+    "godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb": ["godot/multiplayer_worlds/generated/parallax-observatory.json", "tools/godot-multiplayer/new-maps/parallax-observatory/blender_author.py"],
+    "tools/godot-multiplayer/new-maps/parallax-observatory/parallax-observatory.blend": ["godot/multiplayer_worlds/generated/parallax-observatory.json", "tools/godot-multiplayer/new-maps/parallax-observatory/blender_author.py"]
+  },
+  "pending": ["blend", "glb", "asset-manifest", "native-registration", "native-input-journeys", "three-eye-level-images", "overview", "walkthrough-clip", "wide-compact-hud"]
+}
