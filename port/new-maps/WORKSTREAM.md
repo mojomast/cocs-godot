@@ -80,6 +80,13 @@ failed attempts and earlier releases.
   alongside controlled DM/TDM/KOTH/Uplink/Holdout fixtures. Blender/native art,
   screenshots, footage and hosted native acceptance remain pending.
 - Parent is reviewing the shared [integration requirements](INTEGRATION.md).
-  Helix has resumed source-only objective journeys while waiting for its slot.
+- **Helix objective follow-up — `3549c4a1`: seven source rounds passed.** DM,
+  TDM, Arsenal, Juggernaut, CTF, Domination and KOTH ended through source scoring.
+  After initial controlled setup, the fixtures use inputs without actor/score
+  writes: 30,134 source frames, 2,915.536 m walked and zero falls. CTF includes
+  interact-drop/return and three physically carried captures. Combat uses explicit
+  rail-start/unlimited-ammunition settings and shortened targets. These are
+  scripted source fixtures; native, autonomous-bot and human acceptance remain
+  pending. Geometry is unchanged and `modeBindings` is still pending.
 
 No finished Blender asset or native map acceptance is claimed at this checkpoint.
