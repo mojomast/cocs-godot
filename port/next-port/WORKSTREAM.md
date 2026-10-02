@@ -5,6 +5,12 @@ and resume porting features from the Three.js version. Start from `29e242a0`;
 the published Windows/Linux runtime is `1c1f6e34`, with 67 package cases passing
 on each platform. Existing archives and evidence remain unchanged.
 
+**Follow-up authorization:** the owner requests a second pass immediately after
+this pass completes. Finish this pass's integration, combined checks and verified
+Windows/Linux release, then start another Astra pass using the evidence-linked
+remaining-gap inventories and any new playtest feedback. This authorizes one
+additional pass; retain separate revision, acceptance and release records.
+
 ## Approach
 
 Compare actual source and native implementations before selecting work. Historical
@@ -67,6 +73,14 @@ its `port/next-port/<lane>/` directory, with actual source/native anchors.
   Source tests/oracle passed; native/rendered/connected checks await engine grant.
 - Both lanes' oracle checks and native contracts are registered in the canonical
   verifier. Registration is not a passing native result or release approval.
+- Modes `86c182f9` integrated as `babb33f3`: Full Arsenal/Juggernaut on the three
+  original arenas, Team Elimination on Tidal Citadel, VIP Escort on Sunscar
+  Convoy. Eight source-supported pairs, 81 Node checks and a normal-rate source
+  round passed; native acceptance is queued after World releases its slot.
+- Parent extends the extracted-package verifier with those eight source-mode
+  cases and explicit in-PCK caption/gameplay catalog checks. Expected platform
+  total is 23 base + 52 expansion = **75**, pending actual exports/runs. All seven
+  Node verifier tests pass, including real source objective shapes and cleanup.
 
 Require real source inputs/events/results, lifecycle and privacy/control boundary
 checks, native visual/audio evidence appropriate to the feature, and wide/compact

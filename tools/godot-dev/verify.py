@@ -353,6 +353,7 @@ commands = [
     ("player-gameplay-source-fixtures", ["node", "port/next-port/gameplay/fixtures.mjs", "--check"]),
     ("player-gameplay-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/player_gameplay/test.gd"]),
     ("player-gameplay-live-input", ["node", "port/next-port/gameplay/live.mjs"]),
+    ("competitive-source-modes", ["node", "--test", "port/next-port/modes/source-parity.test.mjs", "game/extra-modes.test.mjs"]),
     ("audiovisual-event-router", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/event_router.gd"]),
     ("audiovisual-outcome", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/outcome.gd"]),
     ("audiovisual-settings", [binary, "--headless", "--path", "godot", "--script", "res://tests/audio_new/settings.gd"]),

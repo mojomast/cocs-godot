@@ -98,6 +98,7 @@ class PlayableGatesTest(unittest.TestCase):
             "player-gameplay-source-fixtures": "port/next-port/gameplay/fixtures.mjs",
             "player-gameplay-native": "res://tests/player_gameplay/test.gd",
             "player-gameplay-live-input": "port/next-port/gameplay/live.mjs",
+            "competitive-source-modes": "port/next-port/modes/source-parity.test.mjs",
         }
         for name, path in expected.items():
             with self.subTest(gate=name):

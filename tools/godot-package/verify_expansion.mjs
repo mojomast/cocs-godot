@@ -12,6 +12,16 @@ import {createInterface} from 'node:readline';
 
 const IDS=['switchyard-ward','rainmarket-exchange','breakwater-exchange','thermal-divide','sirocco-circuit','copper-bowl','tern-archipelago'];
 const HEX=/^[a-f0-9]{64}$/;
+export function sourceModeCoverage(experiences) {
+  const route=experiences['mode-expansion'];
+  assert.equal(route?.scene,'res://mode_expansion/demo.tscn','Source-mode product route missing');
+  const expected={
+    'meridian-exchange':['arsenal','juggernaut'],'verdant-reliquary':['arsenal','juggernaut'],
+    'ember-crucible':['arsenal','juggernaut'],'tidal-citadel':['team-elimination'],'sunscar-convoy':['vip-escort'],
+  };
+  assert.deepEqual(route.maps,expected,'All eight source-mode pairs must be visited');
+  return Object.entries(route.maps).flatMap(([map,modes])=>modes.map(mode=>({map,mode,sourceMode:true})));
+}
 export function coverage(manifest, worlds) {
   const closure=manifest.server_closure;
   assert.ok(closure && Array.isArray(closure.worldDataFiles), 'Expansion manifest must declare worldDataFiles (no legacy fallback)');
@@ -128,17 +138,19 @@ export async function verify(root,output,{node=process.platform==='win32'?join(r
     // Here every imported module and JSON comes ONLY from root/runtime.
     const catalog=await import(pathToFileURL(join(root,'runtime/port/multiplayer-worlds/catalog.mjs')).href);
     const pairs=coverage(manifest,catalog.WORLDS);
-    const rows=[...pairs,{map:'blackwater-reclamation',mode:'horde'}];
+    const packagedOptions=await import(pathToFileURL(join(root,'options.mjs')).href);
+    const sourcePairs=sourceModeCoverage(packagedOptions.EXPERIENCES);
+    const rows=[...pairs,{map:'blackwater-reclamation',mode:'horde'},...sourcePairs];
     const blackwater=JSON.parse(await readFile(join(root,'runtime/godot/horde_maps/generated/blackwater-reclamation.json'),'utf8'));
     assert.match(blackwater.geometryHash,HEX);
-    for(const [index,{map,mode}] of rows.entries()){
+    for(const [index,{map,mode,sourceMode=false}] of rows.entries()){
       const name=`${String(index+1).padStart(2,'0')}-${map}-${mode}`;
       const horde=mode==='horde';
-      const data=horde?blackwater:catalog.readWorld(map);
-      assert.match(data.geometryHash,HEX);
+      const data=sourceMode?{}:horde?blackwater:catalog.readWorld(map);
+      if(!sourceMode)assert.match(data.geometryHash,HEX);
       if(mode==='puma-race')assert.equal(data.arena.race?.gates?.length,14,'Packaged Sirocco gate route');
       if(mode==='cocs'||mode==='cocs-coop')assert.equal(data.arena.nodes?.length,7,'Packaged Tern command nodes');
-      const entry=join(root,horde?'runtime/port/native-horde/authority.mjs':'runtime/port/multiplayer-worlds/derived/game-server.mjs');
+      const entry=join(root,sourceMode?'runtime/server/game-server.mjs':horde?'runtime/port/native-horde/authority.mjs':'runtime/port/multiplayer-worlds/derived/game-server.mjs');
       let server,native,port;
       try{
         server=await launch(node,[fileURLToPath(import.meta.url),'--authority',entry],sandbox,env);active.push(server.child);
@@ -146,15 +158,18 @@ export async function verify(root,output,{node=process.platform==='win32'?join(r
         const health=await (await fetch(`http://127.0.0.1:${port}/`,{signal:AbortSignal.timeout(5000)})).json();
         assert.equal(health.port,port);
         const args=['--headless','--audio-driver','Dummy','--main-pack',join(root,'cocs.pck'),'--script',probe,'--',
-          `--endpoint=ws://127.0.0.1:${port}`,`--map=${map}`,`--mode=${mode}`,`--expect-hash=${data.geometryHash}`];
+          `--endpoint=ws://127.0.0.1:${port}`,`--map=${map}`,`--mode=${mode}`,
+          ...(sourceMode?['--source-mode','--bots=2']:[`--expect-hash=${data.geometryHash}`])];
         // LATTICE normally waits for a human Enter at its session panel. Its
         // existing evidence switch requests that same start through the real
         // client after a configured roster, with no state or actor injection.
         if(mode==='cocs'||mode==='cocs-coop')args.push('--world-evidence');
         native=await launch(engine,args,sandbox,{...env,LP_NUM_THREADS:'1'});active.push(native.child);
         const proof=await marker(native,'EXPANSION_PRODUCT_READY ',55000);
-        assert.equal(proof.scene,horde?'res://horde_maps/blackwater_demo.tscn':mode.startsWith('puma-')?'res://multiplayer_worlds/sports_demo.tscn':mode.startsWith('cocs')?'res://multiplayer_worlds/lattice_demo.tscn':'res://multiplayer_worlds/demo.tscn');
-        assert.equal(proof.map,map);assert.equal(proof.mode,mode);assert.equal(proof.hash,data.geometryHash);
+        assert.equal(proof.scene,sourceMode?'res://mode_expansion/demo.tscn':horde?'res://horde_maps/blackwater_demo.tscn':mode.startsWith('puma-')?'res://multiplayer_worlds/sports_demo.tscn':mode.startsWith('cocs')?'res://multiplayer_worlds/lattice_demo.tscn':'res://multiplayer_worlds/demo.tscn');
+        assert.equal(proof.map,map);assert.equal(proof.mode,mode);
+        if(sourceMode){assert.equal(proof.source_mode,true);assert.equal(proof.catalogs,true);assert.ok(proof.instructions?.length>20);}
+        else assert.equal(proof.hash,data.geometryHash);
         assert.ok(proof.snapshots>=3 && proof.actors>0,'Native client received advancing state');
         if(horde){assert.equal(proof.blackwater,1);assert.ok(proof.robots.every(id=>['scrapper','skirmisher','sentinel','mortar','bulwark','warden'].includes(id)));}
         if(mode.startsWith('puma-'))assert.ok(proof.race,'Sports race state absent');
@@ -164,7 +179,7 @@ export async function verify(root,output,{node=process.platform==='win32'?join(r
         // Parse/errors can arrive after the ready marker, including teardown.
         assert.doesNotMatch(server.read()+native.read(),/SCRIPT ERROR|ERROR:|Assertion failed|EXPANSION_AUTHORITY_FAILED/);
         assert.ok(await closed(port),'Authority listener survived');
-        report.cases.push({map,mode,hash:data.geometryHash,scene:proof.scene,actors:proof.actors,snapshots:proof.snapshots,robots:proof.robots,
+        report.cases.push({map,mode,hash:data.geometryHash,source_mode:sourceMode,scene:proof.scene,actors:proof.actors,snapshots:proof.snapshots,robots:proof.robots,
           authority_pid:server.child.pid,native_pid:native.child.pid,port,native_exit:nativeExit.code,authority_exit:server.child.exitCode,listener_closed:true,cleanup:true});
       }catch(error){
         throw error;
@@ -181,7 +196,7 @@ export async function verify(root,output,{node=process.platform==='win32'?join(r
         if(teardownError)throw teardownError;
       }
     }
-    report.status='passed';report.pairs=pairs.length;report.blackwater=true;
+    report.status='passed';report.pairs=pairs.length;report.blackwater=true;report.source_mode_pairs=sourcePairs.length;
   }catch(error){report.status='failed';report.error=error.stack;throw error;}
   finally{
     for(const child of active)await forceStop(child);

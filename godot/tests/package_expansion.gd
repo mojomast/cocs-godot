@@ -11,13 +11,16 @@ var start_hash := ""
 var snapshots := 0
 var last: Dictionary = {}
 var age := 0.0
+var source_mode := false
+var catalogs_ok := false
 
 func _initialize() -> void:
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--map="): map_id = arg.trim_prefix("--map=")
 		if arg.begins_with("--mode="): mode = arg.trim_prefix("--mode=")
 		if arg.begins_with("--expect-hash="): expected_hash = arg.trim_prefix("--expect-hash=")
-	if map_id.is_empty() or mode.is_empty() or expected_hash.length() != 64:
+		if arg == "--source-mode": source_mode = true
+	if map_id.is_empty() or mode.is_empty() or (not source_mode and expected_hash.length() != 64):
 		push_error("EXPANSION_INVALID_OPTIONS")
 		quit(2)
 		return
@@ -27,7 +30,14 @@ func inspect() -> void:
 	var horde := mode == "horde"
 	scene_path = "res://horde_maps/blackwater_demo.tscn" if horde else ("res://multiplayer_worlds/sports_demo.tscn" if mode.begins_with("puma-") else ("res://multiplayer_worlds/lattice_demo.tscn" if mode.begins_with("cocs") else "res://multiplayer_worlds/demo.tscn"))
 	var art := "res://horde_maps/art/blackwater-reclamation.glb" if horde else "res://multiplayer_worlds/art/" + ("worlds/" if map_id not in ["switchyard-ward", "rainmarket-exchange"] else "") + map_id + ".glb"
-	if not ResourceLoader.exists(scene_path) or not ResourceLoader.exists(art) or not load(art) is PackedScene:
+	if source_mode:
+		scene_path = "res://mode_expansion/demo.tscn"
+		var captions: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://experience/source_catalog.json"))
+		var gameplay: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://player_gameplay/catalog.json"))
+		catalogs_ok = captions is Dictionary and gameplay is Dictionary and captions.get("captions", {}).size() >= 115 and gameplay.get("operators", {}).size() == 9
+		if not catalogs_ok:
+			push_error("EXPANSION_PLAYER_CATALOGS_MISSING"); quit(2); return
+	if not ResourceLoader.exists(scene_path) or (not source_mode and (not ResourceLoader.exists(art) or not load(art) is PackedScene)):
 		push_error("EXPANSION_PCK_RESOURCE_MISSING " + scene_path + " " + art)
 		quit(2)
 		return
@@ -61,13 +71,26 @@ func _process(delta: float) -> bool:
 	var state: Dictionary = last.get("state", {})
 	var objectives: Dictionary = state.get("objectives") if state.get("objectives") is Dictionary else {}
 	var race: Dictionary = state.get("race") if state.get("race") is Dictionary else {}
-	if state.is_empty() or str(state.get("mapId", "")) != map_id or start_hash != expected_hash:
+	if state.is_empty() or str(state.get("mapId", "")) != map_id or (not source_mode and start_hash != expected_hash):
 		push_error("EXPANSION_PRODUCT_HASH_OR_MAP_MISMATCH " + map_id + " " + start_hash)
 		quit(2)
 		return false
 	var horde := mode == "horde"
 	var robots := []
-	if horde:
+	if source_mode:
+		if str(state.get("config", {}).get("mode", "")) != mode or product.objective_label.text.length() < 20:
+			push_error("EXPANSION_SOURCE_MODE_IDENTITY_MISMATCH"); quit(2); return false
+		if mode == "arsenal":
+			var actor: Dictionary = state.actors[0]
+			if actor.get("ammo", []).size() != 10 or actor.ammo.any(func(value: Variant) -> bool: return value != "∞"):
+				push_error("EXPANSION_ARSENAL_LOADOUT_MISSING"); quit(2); return false
+		elif mode == "juggernaut" and (not objectives.has("juggernautId") or not objectives.has("points")):
+			push_error("EXPANSION_CROWN_STATE_MISSING"); quit(2); return false
+		elif mode == "team-elimination" and objectives.get("lives", {}).size() != 2:
+			push_error("EXPANSION_TEAM_TICKETS_MISSING"); quit(2); return false
+		elif mode == "vip-escort" and (not objectives.has("vipId") or objectives.get("extract", {}).is_empty()):
+			push_error("EXPANSION_VIP_STATE_MISSING"); quit(2); return false
+	elif horde:
 		if last.get("hordeMapContract", {}).get("geometryHash") != expected_hash or state.get("blackwater", {}).get("version") != 1:
 			push_error("EXPANSION_BLACKWATER_CONTRACT_MISMATCH")
 			quit(2)
@@ -93,6 +116,6 @@ func _process(delta: float) -> bool:
 		push_error("EXPANSION_ZONES_MISSING"); quit(2); return false
 	if not horde and product.get("current_id") != null and str(product.get("current_id")) != map_id:
 		push_error("EXPANSION_PRODUCT_SCENE_MAP_MISMATCH"); quit(2); return false
-	print("EXPANSION_PRODUCT_READY ", JSON.stringify({"scene":scene_path,"map":map_id,"mode":mode,"hash":start_hash,"snapshots":snapshots,"actors":state.get("actors", []).size(),"objective":objectives.get("kind", ""),"race":race.get("phase", ""),"robots":robots,"blackwater":state.get("blackwater", {}).get("version", 0)}))
+	print("EXPANSION_PRODUCT_READY ", JSON.stringify({"scene":scene_path,"map":map_id,"mode":mode,"hash":start_hash,"snapshots":snapshots,"actors":state.get("actors", []).size(),"objective":objectives.get("kind", ""),"race":race.get("phase", ""),"robots":robots,"blackwater":state.get("blackwater", {}).get("version", 0),"source_mode":source_mode,"catalogs":catalogs_ok,"instructions":product.objective_label.text if source_mode else ""}))
 	quit(0)
 	return false

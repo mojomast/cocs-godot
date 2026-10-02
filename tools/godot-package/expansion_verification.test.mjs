@@ -8,7 +8,9 @@ import {tmpdir} from 'node:os';
 import {fileURLToPath} from 'node:url';
 import {once} from 'node:events';
 import {WebSocket} from 'ws';
-import {coverage,gracefulAuthority,waitExit,forceStop} from './verify_expansion.mjs';
+import {coverage,sourceModeCoverage,gracefulAuthority,waitExit,forceStop} from './verify_expansion.mjs';
+import {EXPERIENCES} from './options.mjs';
+import {Room as SourceRoom} from '../../server/room.mjs';
 import {WORLDS,readWorld} from '../../port/multiplayer-worlds/catalog.mjs';
 import {Room} from '../../port/multiplayer-worlds/derived/room.mjs';
 import {createAuthority} from '../../port/native-horde/authority.mjs';
@@ -26,6 +28,22 @@ test('missing manifest family or packaged catalog option fails instead of silent
   assert.throws(()=>coverage({server_closure:{...manifest.server_closure,worldDataFiles:files.slice(1)}},WORLDS));
   assert.throws(()=>coverage({server_closure:{...manifest.server_closure,hordeDataFiles:[]}},WORLDS),/Blackwater/);
   assert.throws(()=>coverage(manifest,Object.fromEntries(Object.entries(WORLDS).slice(1))));
+});
+test('all eight packaged source-mode routes yield the objective/loadout shapes consumed by native probes',()=>{
+  const pairs=sourceModeCoverage(EXPERIENCES);
+  assert.equal(pairs.length,8);
+  assert.throws(()=>sourceModeCoverage({}));
+  const broken=structuredClone(EXPERIENCES);broken['mode-expansion'].maps['meridian-exchange'].pop();
+  assert.throws(()=>sourceModeCoverage(broken));
+  for(const {map,mode} of pairs){
+    const room=new SourceRoom();room.join(1,'Host');room.host(1,{mode,botCount:2,timeLimit:120},map);
+    assert.equal(room.start(1),true);
+    const state=room.match.snapshot();assert.equal(state.mapId,map);assert.equal(state.config.mode,mode);
+    if(mode==='arsenal')assert.deepEqual(state.actors[0].ammo,Array(10).fill('∞'));
+    if(mode==='juggernaut'){assert.ok(state.objectives.juggernautId>=0);assert.ok(state.objectives.points);}
+    if(mode==='team-elimination')assert.equal(Object.keys(state.objectives.lives).length,2);
+    if(mode==='vip-escort'){assert.ok(state.objectives.vipId>=0);assert.ok(state.objectives.extract);}
+  }
 });
 test('external probe loads production scenes/PCK resources and never substitutes product authority',()=>{
   const probe=readFileSync(new URL('../../godot/tests/package_expansion.gd',import.meta.url),'utf8');
