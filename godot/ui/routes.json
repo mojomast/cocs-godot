@@ -121,6 +121,9 @@
     },
     "helix-conservatory": {
       "name": "Helix Conservatory"
+    },
+    "gravemill-foundry": {
+      "name": "Gravemill Foundry"
     }
   },
   "routes": [
@@ -424,7 +427,8 @@
             "sirocco-circuit",
             "copper-bowl",
             "tern-archipelago",
-            "helix-conservatory"
+            "helix-conservatory",
+            "gravemill-foundry"
           ],
           "default": "switchyard-ward"
         },
@@ -496,6 +500,14 @@
               "ctf",
               "domination",
               "koth"
+            ],
+            "gravemill-foundry": [
+              "deathmatch",
+              "teamdeathmatch",
+              "domination",
+              "assault",
+              "payload",
+              "combined-arms"
             ]
           },
           "default": "deathmatch"
@@ -528,6 +540,7 @@
           "maps": [
             "breakwater-exchange",
             "copper-bowl",
+            "gravemill-foundry",
             "helix-conservatory",
             "rainmarket-exchange",
             "sirocco-circuit",
@@ -546,6 +559,14 @@
             ],
             "copper-bowl": [
               "puma-soccer"
+            ],
+            "gravemill-foundry": [
+              "assault",
+              "combined-arms",
+              "deathmatch",
+              "domination",
+              "payload",
+              "teamdeathmatch"
             ],
             "helix-conservatory": [
               "ctf",

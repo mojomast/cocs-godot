@@ -33,6 +33,9 @@ export const EXPERIENCES = {
 // Reviewed additive map binding; source-only Arsenal/Juggernaut stay unadvertised.
 EXPERIENCES['multiplayer-worlds'].modes['helix-conservatory'] = ['deathmatch','teamdeathmatch','ctf','domination','koth'];
 EXPERIENCES['multiplayer-worlds'].identity['helix-conservatory'] = {scene:'res://multiplayer_worlds/demo.tscn',modes:EXPERIENCES['multiplayer-worlds'].modes['helix-conservatory']};
+// Additive Foundry binding; each listed mode has a scoped native full-round proof.
+EXPERIENCES['multiplayer-worlds'].modes['gravemill-foundry'] = ['deathmatch','teamdeathmatch','domination','assault','payload','combined-arms'];
+EXPERIENCES['multiplayer-worlds'].identity['gravemill-foundry'] = {scene:'res://multiplayer_worlds/demo.tscn',modes:EXPERIENCES['multiplayer-worlds'].modes['gravemill-foundry']};
 
 // Standalone exploration/labs, deliberately outside the source map routes.
 export const NATIVE_EXPERIENCES = {
