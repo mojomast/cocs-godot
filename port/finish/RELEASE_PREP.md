@@ -1,5 +1,10 @@
 # Windows final release preparation — source checkpoint
 
+**Latest source update:** see [PACKAGING_ASSETS.md](PACKAGING_ASSETS.md). Parent
+`bb02e34b` now supplies all nine real fighter exports/masters/sidecars. Their
+strict source closure passes; the seven queued production units and final native
+acceptance still block release. The earlier checkpoint below is retained.
+
 ## Candidate and grant boundary
 
 Canonical content baseline: **`e38b3662`**. Packaging history was reconciled with
