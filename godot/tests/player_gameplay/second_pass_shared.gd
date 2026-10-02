@@ -10,10 +10,15 @@ var cable_seen := false
 var models: Array = []
 var end_ride := 0.0
 var route := [Vector2(44, -34), Vector2(-44, -34)]
+var scenario := "death"
+var resumed := false
+var suspended_clean := false
+var resumed_live := false
 
 func _initialize() -> void:
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--evidence="): out = arg.trim_prefix("--evidence=")
+		if arg.begins_with("--scenario="): scenario = arg.trim_prefix("--scenario=")
 	call_deferred("begin")
 
 func begin() -> void:
@@ -48,10 +53,18 @@ func _process(delta: float) -> bool:
 	if elapsed > 65.0:
 		push_error("shared native journey deadline stage=" + str(stage))
 		quit(2)
+	if is_instance_valid(session) and session.phase == -5 and scenario == "reconnect" and not resumed:
+		var adapter: Node = session.get_node("PlayerGameplay")
+		suspended_clean = adapter.model.is_empty() and adapter.cues.slots.is_empty() and adapter.cues.channels.is_empty()
+		# Invoke the real lobby Retry handler; no transport/pose/state injection.
+		session.lobby_retry_reconnect()
+		resumed = true
+		stage = 4
 	if not is_instance_valid(session) or session.phase != 3 or not session.received_pose or not session.has_node("PlayerGameplay"): return false
 	var binding: Node = session.get_node("PlayerGameplay")
 	var actor: Dictionary = session.presentation.local_actor
 	cable_seen = cable_seen or not binding.cues.slots.is_empty()
+	if resumed and not binding.cues.slots.is_empty(): resumed_live = true
 	if stage == 0:
 		click(true)
 		click(false)
@@ -80,11 +93,13 @@ func _process(delta: float) -> bool:
 	elif stage == 4:
 		for owner: Dictionary in binding.snapshot.get("actors", []):
 			if owner.id == actor.id: continue
-			if float(owner.health) <= 0.0:
+			var done: bool = float(owner.health) <= 0.0 if scenario == "death" else owner.movement.get("anchor") == null
+			if done:
 				click(false)
 				stage = 5
 				end_ride = elapsed
 				break
+			if scenario != "death": continue
 			var dx := float(owner.x) - float(actor.x)
 			var dz := float(owner.z) - float(actor.z)
 			var dy := float(owner.y) + float(owner.eyeHeight) - float(actor.y) - float(actor.eyeHeight)
@@ -95,8 +110,9 @@ func _process(delta: float) -> bool:
 				key(KEY_R, false)
 	elif stage == 5 and elapsed - end_ride > 0.2:
 		var ok: bool = ride_seen and cable_seen and binding.cues.slots.is_empty()
-		capture("owner-death-cleanup")
-		print("SECOND_PASS_SHARED ", JSON.stringify({"ok":ok,"ride_seen":ride_seen,"cable_seen":cable_seen,"slots_after_death":binding.cues.slots.size(),"models":models,"native_role":"guest","owner_role":"Node source-wire"}))
+		if scenario == "reconnect": ok = ok and suspended_clean and resumed_live
+		capture(scenario + "-cleanup")
+		print("SECOND_PASS_SHARED ", JSON.stringify({"ok":ok,"scenario":scenario,"ride_seen":ride_seen,"cable_seen":cable_seen,"slots_after_cleanup":binding.cues.slots.size(),"suspended_clean":suspended_clean,"resumed_live":resumed_live,"models":models,"native_role":"guest","owner_role":"Node source-wire"}))
 		stage = 6
 		finish(ok)
 	return false
