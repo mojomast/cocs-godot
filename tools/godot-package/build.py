@@ -202,8 +202,9 @@ def main():
         # Editable masters, recipe generators and Blender scripts are part of
         # the reviewed build provenance even though only GLBs ship in the PCK.
         input_paths.update(git("ls-files", "tools/godot-multiplayer").splitlines())
-    if world_data:
-        input_paths.update(json.loads(run(["node", ROOT / "tools/godot-package/world_resources.mjs", ROOT])))
+    world_resource_files = json.loads(run(["node", ROOT / "tools/godot-package/world_resources.mjs", ROOT])) if world_data else []
+    input_paths.update(world_resource_files)
+    dressing_resources = [p for p in world_resource_files if p.startswith("godot/multiplayer_worlds/dressing/profiles/")]
     if derivative:
         input_paths.add("port/contracts/lattice-catalog-derivative.json")
     # The Career catalog and its generator arrive with a later lane; include them
@@ -276,6 +277,7 @@ def main():
     # Port-owned adapters and data have separate provenance, never source-lock
     # exemptions. Require committed reviewed bytes; record exact hashes.
     port_owned = [*closure["adapterModules"], *arena_data, *identity_data, *horde_data, *campaign_data, *world_data, *edge_data]
+    port_owned.extend(dressing_resources)
     if career_catalog in input_paths:
         port_owned.append(career_catalog)
     if finish_catalog in input_paths:
@@ -356,6 +358,11 @@ ssh_remote_deploy/enabled=false
     # Explicit dynamically-read feature catalogs; imported WAV/GDScript resources
     # remain covered by all_resources. Never export tests or arbitrary JSON.
     preset = preset.replace('include_filter="', 'include_filter="input_bindings/contexts.json,replay/admission.json,audio/telegraphs/manifest.json,')
+    # FileAccess cannot infer finish profiles. world_resources grants only existing
+    # optional profiles of registered worlds; each exact JSON path is hashed above.
+    dressing_files = sorted(p.removeprefix("godot/") for p in dressing_resources)
+    if dressing_files:
+        preset = preset.replace('include_filter="', 'include_filter="' + ",".join(dressing_files) + ",")
     if windows:
         preset = preset.replace('name="Private Linux Prototype"', f'name="{preset_name}"').replace('platform="Linux"', 'platform="Windows Desktop"')
         preset += '\ncodesign/enable=false\napplication/modify_resources=false\ndebug/export_console_wrapper=0\n'
@@ -479,6 +486,7 @@ ssh_remote_deploy/enabled=false
         "launchers":launchers,
         "replay_runtime_sha256":replay_hashes,
         "feature_resource_sha256":{p:inputs[p] for p in feature_files},
+        "dressing_resource_sha256":{p:inputs[p] for p in dressing_resources},
         "files":tree(package),
     }
     write_json(package / "manifest.json", manifest)
