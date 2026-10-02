@@ -53,9 +53,11 @@ is already included in `gained`; consumers must never add it again.
 
 ## Minimal parent integration hook
 
-The separate hook commit changes only `tools/godot-dev/launch.mjs`,
+The separate production hook commit changes only `tools/godot-dev/launch.mjs`,
 `tools/godot-package/run.mjs`, and the explicit runtime adapter closure in
 `tools/godot-package/discover.mjs`.
+The follow-up fixture commit adjusts only the synthetic menu/lobby authority
+entry paths and records their process-boundary regression results.
 
 The default **ordinary owned source authority** factory becomes
 `port/pass-two/modes/challenge-authority.mjs::createGameServer`. This must cover

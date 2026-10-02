@@ -69,7 +69,7 @@ for (const kind of ['dev','package']) {
       if(kind==='package') {
         for(const name of ['run.mjs','options.mjs','endpoint.mjs','settings_path.mjs','career_path.mjs'])await copy('tools/godot-package/'+name,name);
         await copy('port/contracts/map-selection.json','catalog.json');
-        await put('runtime/server/game-server.mjs',authority);
+        await put('runtime/port/pass-two/modes/challenge-authority.mjs',authority);
         script=join(root,'run.mjs');
       } else {
         for(const name of ['launch.mjs','launch_options.mjs'])await copy('tools/godot-dev/'+name,'tools/godot-dev/'+name);
@@ -77,7 +77,7 @@ for (const kind of ['dev','package']) {
         await copy('port/contracts/map-selection.json','port/contracts/map-selection.json');
         await put('port/contracts/source-lock.json',JSON.stringify({godot_version:'journey-fixture'}));
         await put('tools/godot-export/semantic.mjs','export function verifySource(){}\n');
-        await put('server/game-server.mjs',authority);
+        await put('port/pass-two/modes/challenge-authority.mjs',authority);
         script=join(root,'tools/godot-dev/launch.mjs');
       }
       const settings=join(root,'preferences','local_settings.json');
