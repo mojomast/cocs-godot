@@ -24,6 +24,23 @@ Their candidate modes are design targets until source/native journeys pass.
 
 ## Source/code checkpoints
 
+- **Audio — ready for engine:** `22b95dba` adds eight source-event enemy windup
+  motifs and a four-voice positional threat service; `0b5823a3` isolates shared
+  AV hooks; `bf4d8865` adds source cooldown and boss-priority checks. Artillery/
+  boss sounds use authoritative target marks. Existing snapshot-edge robot
+  grunts remain distinct. Source-derived PCM comprises 160 reproducible files
+  across twenty roots (3,191,080 bytes), without normalization.
+- **6/6 Node tests passed**, including actual source beat/falloff, artillery mark
+  and cooldown behavior, byte-for-byte PCM reproduction and priority vectors.
+  The largest single-cue prequantization peak was 0.097327; this establishes
+  neither the combined native mix nor intelligibility. No native process ran.
+- Pending: engine parsing/lifecycle, the prepared connected source-event journey,
+  real-driver Effects-bus recording, mixed/isolated PCM metrics and listening.
+  Its initial mortar/Warden deployment is explicitly controlled setup; direct
+  stale/focus presentation transitions do not prove an actual transport stall.
+  Parent must merge AV hooks with World `12f0aa1b` and regress event-before-snapshot,
+  weather/mute and reconnect ownership. Dummy playback is lifecycle proof only.
+
 - **Vesper — `9b1d8b86`, ready for Blender.** A 280×240 m urban recipe with
   24 m relief, nineteen routes, seven connected three-room interiors, station
   halls, brick arcades, stepped blocks and canal warehouses. All routes passed
