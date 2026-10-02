@@ -828,7 +828,7 @@
                         "type": "string",
                         "minLength": 1
                       },
-                      "minItems": 3,
+                      "minItems": 2,
                       "maxItems": 12
                     },
                     "setup_inputs": {
@@ -935,6 +935,12 @@
                       "minItems": 0,
                       "maxItems": 16
                     },
+                    "setup_kind": {
+                      "type": "string",
+                      "enum": [
+                        "paired_jump"
+                      ]
+                    },
                     "inputs": {
                       "type": "array",
                       "items": {
@@ -984,7 +990,7 @@
                         ],
                         "additionalProperties": false
                       },
-                      "minItems": 3,
+                      "minItems": 2,
                       "maxItems": 12
                     },
                     "status": {
