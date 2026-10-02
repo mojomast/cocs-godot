@@ -44,6 +44,21 @@ Their candidate modes are design targets until source/native journeys pass.
   controller issue is found, one additional same-setup bounded completion attempt.
   Full native victory, chain/upgrade-hotkey execution and inspected wide/compact
   views remain pending. No Horde engine slot is granted.
+- **Horde follow-up — `05986449`: full source mission victory at 803.45 seconds.**
+  Exact replay reproduced the prior target-selection defect with zero position
+  divergence: a visible enemy 294.65 m away displaced a nearer occluded enemy
+  despite the controller's existing 65 m firing window. The fixture now prefers
+  visible enemies inside that window, otherwise pursuing the nearest enemy.
+  Native fixture logic mirrors the fix but remains unexecuted. Production rules,
+  HUD, geometry, timing, seed and upgrade policy were untouched.
+- The single permitted additional full run used the same setup/seed and ordinary
+  inputs, completed four stations, both stage arrivals and ten waves, killed the
+  Warden through all three phases, and received source `mission-won`: 91 kills,
+  zero deaths, 96.55 seconds remaining. Wave-nine target switches fell 737→26
+  and combat duration 304→78.88 seconds; some earlier waves were slower. This
+  proves the specific fixture correction and scripted source completion, not
+  general balance or native/human acceptance. Before/after regression checks
+  passed 3/3 after reproducing the original failure. All failed traces remain.
 
 - **LATTICE — `dabf5b9c` + `9f944afb`, ready for engine.** Latest-command HUD
   feedback replaces stale BUY receipts with current HOLD/recruitment responses;

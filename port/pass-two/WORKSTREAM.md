@@ -122,7 +122,9 @@ The owner's later request launched [six additional Astra lanes](../expansion-thr
 Blackwater mission-flow/completion work is now explicitly assigned to that Horde
 lane; current second-pass ownership and native acceptance obligations continue.
 
-Retain the full Blackwater machinery/Warden and cinematic-trailer gaps. They
+Blackwater now has a full scripted **source** victory at 803.45 seconds after a
+test-controller targeting correction (`05986449`); native completion and rendered
+acceptance remain pending. Retain those and the cinematic-trailer gap. They
 require explicit engine time after current production work; prior wave-one video
-and bounded losses do not prove mission-chain completion. Preserve previous
+does not prove native mission-chain completion. Preserve previous
 releases and publish new screenshots as accepted artifacts become available.
