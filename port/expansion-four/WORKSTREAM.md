@@ -22,6 +22,26 @@ actual ordinary-input lap and hosted native acceptance pass.
 
 ## Source/code checkpoints
 
+- **Controls — `def1e974`, shared hooks `a1b1c090`, handoff `9aa752a8`, ready
+  for engine.** Sixteen keyboard/mouse fields, occupied-input swapping, reset,
+  device-local atomic persistence and dynamic hints are implemented. All 25
+  source keyboard action IDs/defaults are retained; only fourteen live gameplay
+  keyboard actions plus fire/ADS are editable. Separate contexts are inventoried.
+- **53/53 source regressions passed.** Actual-source oracles cover 25 defaults,
+  nine normalization cases, 1,075 swaps, fourteen timelines/98 samples and four
+  modal transitions. Thirty-seven GDScript files passed grammar parsing only.
+  Parent independently checked generated multiplayer scene consistency; it passed.
+- Mapping runs through existing samplers and tracks releases to the original
+  binding. Shared hooks span thirty existing files and require deliberate merging
+  with queued gameplay, spectator, Horde and LATTICE work. Preserve both binding-
+  label consumer calls in `player_gameplay/session_binding.gd` and
+  `experience/player_info.gd`, plus spectator packet guards and modal suppression.
+- Native type/runtime, Settings wide/compact layout, physical side-button/modifier
+  input, cross-route held-input lifecycle, actual spectator seats and assistive
+  technology remain unverified. The prepared base-world journey's final spectator
+  identity check is synthetic; it does not replace connected seat acceptance.
+  No heavy slot or production-package acceptance is granted by this handoff.
+
 - **Replay — `9120d991` + optional session hook `9794575a`, ready for engine.**
   Recipient-delivered recording, unique local clip storage, metadata library,
   source JSON import and read-only play/pause/seek/speed/subject controls are
