@@ -2,6 +2,8 @@ extends RefCounted
 ## Visual-only source weather response. Bind only the static map subtree.
 ## Each shared material is duplicated once per binding; source assets stay dry.
 const Profile = preload("res://ambience/weather_profile.gd")
+const WetSurface = preload("res://ambience/wet_surface.gd")
+var surface := WetSurface.new()
 const MATERIAL_CAP := 256
 const NODE_CAP := 16384
 const BINDING_CAP := 16384
@@ -22,8 +24,9 @@ var writes := 0
 var _applied := -1.0
 var _kind := ""
 
-func bind(world: Node3D, environment: WorldEnvironment, sun: DirectionalLight3D) -> void:
+func bind(world: Node3D, environment: WorldEnvironment, sun: DirectionalLight3D, seed: int = 1) -> void:
 	clear()
+	surface.seed = seed + 13
 	if not is_instance_valid(world) or not is_instance_valid(environment) or environment.environment == null: return
 	_environment = environment
 	_sun = sun
@@ -90,6 +93,14 @@ func _bind_material(node: GeometryInstance3D, surface: int, original: Material) 
 			capped = true
 			return
 		_materials[original] = {"material": original.duplicate(), "roughness": roughness, "metallic": metallic, "ground": ground}
+		var entry: Dictionary = _materials[original]
+		if original is StandardMaterial3D:
+			entry["roughness_texture"] = original.roughness_texture
+			entry["roughness_channel"] = original.roughness_texture_channel
+		elif original is ShaderMaterial:
+			var shader := surface.lease_shader(original.shader)
+			entry["spatial_wet"] = shader != null
+			if shader != null: entry.material.shader = shader
 	var copy: Material = _materials[original].material
 	var prior: Material = node.material_override if surface < 0 else (node as MeshInstance3D).get_surface_override_material(surface)
 	_bindings.append({"node": weakref(node), "surface": surface, "prior": prior, "copy": copy})
@@ -126,6 +137,14 @@ func apply(kind: String, delta: float, immediate: bool = false) -> void:
 		_sun.light_color = _linear_mix(_base.key_color, Color.BLACK, wetness * 0.3 + dark * 0.55)
 	var look := Profile.wet_sheen(wetness)
 	for entry: Dictionary in _materials.values():
+		var patterned := wetness > 0.01
+		if entry.material is StandardMaterial3D:
+			entry.material.roughness_texture = surface.get_texture() if patterned else entry.roughness_texture
+			entry.material.roughness_texture_channel = BaseMaterial3D.TEXTURE_CHANNEL_GREEN if patterned else entry.roughness_channel
+		elif entry.get("spatial_wet", false):
+			entry.material.set_shader_parameter("weather_has_roughness", patterned)
+			entry.material.set_shader_parameter("weather_roughness_map", surface.get_texture() if patterned else null)
+		if entry.material is StandardMaterial3D or entry.get("spatial_wet", false): writes += 2
 		if entry.ground:
 			entry.material.set_shader_parameter("weather_wetness", wetness)
 			writes += 1
@@ -159,6 +178,7 @@ func clear() -> void:
 			_sun.light_color = _base.key_color
 	_bindings.clear()
 	_materials.clear()
+	surface.clear()
 	_shader_defaults.clear()
 	_base.clear()
 	_owned = null
@@ -174,4 +194,5 @@ func diagnostics() -> Dictionary:
 	return {"wetness": wetness, "materials": _materials.size(), "material_cap": MATERIAL_CAP,
 		"bindings": _bindings.size(), "binding_cap": BINDING_CAP,
 		"visited": visited, "node_cap": NODE_CAP, "capped": capped, "uniform_writes": writes,
-		"additional_geometry_nodes": 0, "additional_colliders": 0}
+		"additional_geometry_nodes": 0, "additional_colliders": 0,
+		"wet_textures": 0 if surface.texture == null else 1, "wet_shader_variants": surface.shaders.size()}
