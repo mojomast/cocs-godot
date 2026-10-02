@@ -144,6 +144,11 @@ func _prepare(root: Node3D) -> void:
 				_diagnostics.resources.append(texture.resource_path)
 
 func _collect(node: Node) -> void:
+	# Font triangles must keep their one-sided material; triplanar architectural
+	# finishes disable culling and would expose mirrored glyph backs again.
+	if node.get_meta("wayfinding_front_corrected", false):
+		_diagnostics["preserved_wayfinding"] = int(_diagnostics.get("preserved_wayfinding", 0)) + 1
+		return
 	if node is MeshInstance3D and node.mesh != null:
 		for index in node.mesh.get_surface_count():
 			var source: Material = node.mesh.surface_get_material(index)
