@@ -4,6 +4,7 @@ extends Node3D
 
 const OPERATORS: Array[String] = ["chatgpt", "claude", "grok", "meta", "gemini", "deepseek", "mistral", "kimi", "qwen"]
 const ASSET_ROOT := "res://fighting/assets/operators/"
+const MothFinish = preload("res://source_operators/moth_finish/binder.gd")
 
 var available: bool = false
 var unavailable_reason: String = "not_configured"
@@ -16,6 +17,8 @@ var _manifest: Dictionary = {}
 var _clip_names: Dictionary = {}
 var _current_clip: String = ""
 var _meshes: Array[MeshInstance3D] = []
+var _finish := MothFinish.new()
+var finish_report: Dictionary = {}
 
 
 func configure(id: String) -> bool:
@@ -75,6 +78,9 @@ func configure(id: String) -> bool:
 	timing_status = str(_manifest.get("timing_status", "draft"))
 	available = true
 	unavailable_reason = ""
+	finish_report = _finish.bind(_model, id)
+	if not finish_report.get("installed", false):
+		push_warning("Fighter Moth finish fallback %s: %s" % [id, finish_report.get("errors", [])])
 	set_lod(0)
 	reset()
 	return true
@@ -217,7 +223,13 @@ func _unavailable(reason: String) -> bool:
 	return false
 
 
+func set_team_color(color: Color) -> void:
+	_finish.set_team_color(color)
+
+
 func _clear() -> void:
+	_finish.clear()
+	finish_report.clear()
 	available = false
 	timing_status = "unavailable"
 	_player = null
