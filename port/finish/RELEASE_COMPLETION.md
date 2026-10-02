@@ -164,3 +164,22 @@ visual review, software rendering, and the fact that these are FPS operator
 models rather than produced fighting rigs. The gallery now uses the transient
 user service `cocs-screenshot-gallery-8796.service` so tool-shell restarts do not
 take down the preview server. It remains bound only to `100.125.104.79:8796`.
+
+## Grant transition and visual correction
+
+Native closeout `5eb72bc2` / runtime `f2c82794` is merged; FX keeps the parent's
+correct `1cb28db7...` roster binding. The final acceptance extension is adopted as
+`9c684569` at the completed-run boundary. Parent runner/receipt tests and FX
+identity checks passed. A new final ledger is required for the changed inputs.
+
+Heavy grant `FIGHTING-ANIMATION-PRODUCTION-20261002-B` is explicitly issued to the
+original animation Astra for real all-nine rig/clip production, starting with
+Meta/Mistral native slice. Integration Astra is now source-only on remaining
+baseline failures, preserving their critical status for the next engine pass.
+
+Owner rejected the lavender cast, repetition and material suitability in the
+Moth candidate. Three Astra agents now implement rendering, map-art and operator/
+queued-asset corrections. See `port/surface-refinement/WORKSTREAM.md`. This visual
+requirement remains open even though the earlier material binding/lifecycle tests
+passed. Final native comparisons and owner-facing images must show the correction
+before the candidate can be called visually finished.
