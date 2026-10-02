@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "contract": "port/fighting/DESIGN.md v1",
+  "claim": "prepared independent gates; no native acceptance before real execution",
+  "jobs": [
+    {
+      "id": "journeys",
+      "resource": "godot-exclusive",
+      "timeout_seconds": 240,
+      "script": "res://tests/fighting/acceptance/journeys.gd",
+      "marker": "FIGHTING_ACCEPTANCE_JOURNEYS_OK",
+      "requires": ["godot/fighting/core/simulation.gd", "godot/fighting/core/ai.gd", "godot/fighting/data/roster.json", "godot/fighting/data/rules.json", "godot/tests/fighting/acceptance/journeys.gd"]
+    },
+    {
+      "id": "native-assets",
+      "resource": "godot-exclusive",
+      "timeout_seconds": 180,
+      "script": "res://tests/fighting/acceptance/assets.gd",
+      "marker": "FIGHTING_ACCEPTANCE_ASSETS_OK",
+      "requires": ["godot/fighting/visuals/fighter_visual.gd", "godot/fighting/data/roster.json", "godot/tests/fighting/acceptance/assets.gd", "godot/fighting/assets/operators/chatgpt.glb", "godot/fighting/assets/operators/claude.glb", "godot/fighting/assets/operators/grok.glb", "godot/fighting/assets/operators/meta.glb", "godot/fighting/assets/operators/gemini.glb", "godot/fighting/assets/operators/deepseek.glb", "godot/fighting/assets/operators/mistral.glb", "godot/fighting/assets/operators/kimi.glb", "godot/fighting/assets/operators/qwen.glb"]
+    },
+    {
+      "id": "mechanics-extended",
+      "resource": "godot-exclusive",
+      "timeout_seconds": 240,
+      "requires": ["godot/fighting/core/simulation.gd", "godot/fighting/data/roster.json", "port/fighting/acceptance/mechanics-fixtures.json"],
+      "reason": "Requires approved mechanics fields, timeline indexing and independent expected outcomes; cannot manufacture fixture passes."
+    },
+    {
+      "id": "shell-fx-capture",
+      "resource": "gpu-audio-exclusive",
+      "timeout_seconds": 300,
+      "requires": ["godot/fighting/main.tscn", "godot/fighting/effects/director.gd", "port/fighting/acceptance/contact-fixtures.json"],
+      "reason": "Public shell/device hooks, authored contact anatomy descriptors and native stage API pending; actual capture not yet prepared."
+    },
+    {
+      "id": "blender-reopen",
+      "resource": "blender-exclusive",
+      "timeout_seconds": 300,
+      "requires": ["port/fighting/acceptance/blender-masters.json"],
+      "reason": "Nine real authored masters and parent Blender grant required."
+    }
+  ],
+  "coverage_required": {
+    "matchups": {"mirrors": 9, "distinct": 36, "both_actor_orders": true},
+    "combos": {"per_operator": 3, "operators": 9, "both_facings": true, "no_hitstun_gaps": true},
+    "mechanics": ["15 move families per operator", "guard high-low-overhead-unblockable", "buffer frame 6 accepted and frame 7 rejected", "queued input through hitstop", "held no repeat", "negative edge disabled", "SOCD horizontal and vertical neutral", "relative-facing motion and facing lock", "normal throw tech frames 1-10 and late rejection", "throw whiff and wakeup/hitstun invulnerability", "command throw escape and trade", "paired sideflip damage once and victim cleanup on KO", "simultaneous contact actor-order parity", "projectile finite life/range/count and swept contact", "clash strengths and reflection owner reassignment", "meter gain and super exactly 1000", "juggle cap, floor, deterioration, bounce/OTG finite", "resource reset and finite-state bounds", "malformed inputs and unknown mechanics rejection"],
+    "serialization": ["full field inventory", "deep detached snapshot and save", "JSON round trip", "fresh instances deterministic all later frames", "hitstop", "airborne", "projectiles", "paired throws", "input history and buffered edges", "AI RNG and decisions", "phase transitions and rematch", "event IDs unique within match; reset only on new match"],
+    "presentation": ["ResourceLoader loads every script/class and nine GLBs", "weighted meshes and finite animation curves", "native sampled rest/bones/pose finite", "real animation names and victim clips", "nine side-on native contact sheets at 1000 units/metre", "contact and plant measured against authored anatomy tolerances", "three stages max separation and jump framing", "wide/compact/UI150", "FX dedup/reset/malformed/budget measurement", "low/reduced motion", "focus/device-loss release two actors", "AI inactive/pause/resume exact tick count", "live Home teardown", "FPS authority/store isolation and optional runner PID inventory", "human feel/balance", "real GPU frame cadence", "Windows/Linux exported closure"]
+  },
+  "package_proposal_only": {
+    "parent_owned": true,
+    "apply_after_actual_native_gates": true,
+    "include_resources": ["res://fighting/**", "res://fighting/assets/**", "res://fighting/data/*.json", "res://fighting/main.tscn"],
+    "exclude_resources": ["res://tests/**"],
+    "dependency_closure": "Resolve native stage builders and dynamically loaded art using existing package infrastructure; do not replace canonical filters."
+  }
+}
