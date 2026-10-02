@@ -34,6 +34,9 @@ func begin(frame: Dictionary, room: String) -> void:
 	if key != round_key:
 		round_key = key
 		service.bind_session(session_host, eye, arena, mode, key, int(revision))
+		var viewer: Variant = session_host.get("world")
+		if is_instance_valid(viewer) and viewer is Node:
+			service.weather.bind_presentation(viewer.get("world"), viewer.get("environment"), viewer.get("sun"))
 	service.start_round(key)
 	started = true
 

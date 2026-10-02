@@ -239,12 +239,14 @@ func _observe_countdown(race: Dictionary) -> void:
 	countdown_beat = beat
 
 func tick(delta: float) -> void:
-	if not focused or not fresh or settings.get("mute", false) == true: return
+	if not focused or not fresh: return
+	# Muting audio must not freeze the independent world-weather presentation.
+	weather.tick(delta)
+	if settings.get("mute", false) == true: return
 	if moth_bed.stream != null:
 		if scene in ["menu", "explore"] and settings.get("ambience_enabled", true) == true and not moth_bed.playing: moth_bed.play()
 		elif scene not in ["menu", "explore"] and moth_bed.playing: moth_bed.stop()
 	music.tick(delta)
-	weather.tick(delta)
 
 func set_focus(value: bool) -> void:
 	focused = value
