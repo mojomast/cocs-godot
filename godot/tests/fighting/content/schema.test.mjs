@@ -117,9 +117,30 @@ test('ground fixtures reject overlap and permit exact pushbox-touch separation',
 });
 test('fixture spacing validation derives from current rules rather than frozen 660 literal',()=>assert.ok(mutate((r,s)=>{s.pushbox.w+=40;}).some(e=>e.includes('below legal pushbox width 700'))));
 test('air fixtures are exempt from grounded pushbox-spacing rejection',()=>{
- for(const op of roster.operators){const air=op.combos[2];assert.ok(air.preconditions.distance<rules.pushbox.w);assert.ok(air.preconditions.attacker_y>0&&air.preconditions.defender_y>0);}
+ for(const op of roster.operators){const air=op.combos[2];if(air.setup_kind==='paired_jump'){assert.equal(air.preconditions.distance,rules.pushbox.w);assert.equal(air.preconditions.attacker_y,0);assert.equal(air.preconditions.defender_y,0);}else{assert.ok(air.preconditions.distance<rules.pushbox.w);assert.ok(air.preconditions.attacker_y>0&&air.preconditions.defender_y>0);}}
  assert.deepEqual(validate(roster,rules),[]);
  assert.ok(!mutate(r=>{r.operators[0].combos[0].preconditions.distance=500;r.operators[0].combos[0].preconditions.attacker_y=100;}).some(e=>e.includes('below legal pushbox width')));
+});
+test('native-03 passing candidates remain byte-identical and no move balance fields change',()=>{
+ const baseline=JSON.parse(spawnSync('git',['show','242d5741:godot/fighting/data/roster.json'],{cwd:root,encoding:'utf8'}).stdout);
+ for(const op of roster.operators){const old=baseline.operators.find(o=>o.id===op.id);assert.deepEqual(op.moves,old.moves);assert.deepEqual(op.stats,old.stats);assert.deepEqual(op.resource,old.resource);if(['chatgpt','claude','gemini','deepseek','mistral','kimi'].includes(op.id))assert.deepEqual(op.combos[1],old.combos[1]);if(['grok','mistral'].includes(op.id))assert.deepEqual(op.combos[2],old.combos[2]);}
+});
+test('basic confirms are two hits while special/air routes retain three distinct attacks',()=>{
+ for(const op of roster.operators){assert.equal(op.combos[0].route.length,2);assert.equal(op.combos[1].route.length,3);assert.equal(op.combos[2].route.length,3);assert.equal(new Set(op.combos[1].route).size,3);assert.equal(op.combos[1].route.at(-1),'special1');}
+ assert.ok(mutate(r=>{const c=r.operators[0].combos[0];c.route.pop();c.inputs.pop();}).length>0);
+ assert.ok(mutate(r=>{const c=r.operators[0].combos[1];c.route.pop();c.inputs.pop();}).some(e=>e.includes('retain three attacks')));
+});
+test('paired jump setups originate from grounded positions and use only ordinary up edges',()=>{
+ for(const op of roster.operators.filter(op=>op.combos[2].setup_kind==='paired_jump')){const c=op.combos[2];const attacker=expandTrace(c),defender=expandTrace(c,1,'defender');assert.equal(attacker[0].axis_y,1);assert.equal(defender[0].axis_y,1);assert.equal(attacker[1].axis_y,0);assert.equal(attacker[8].held,1);assert.equal(c.preconditions.attacker_y,0);assert.equal(c.preconditions.defender_y,0);}
+ assert.ok(mutate(r=>{r.operators[1].combos[2].preconditions.attacker_y=1000;}).some(e=>e.includes('starts grounded')));
+ assert.ok(mutate(r=>{r.operators[1].combos[2].setup_inputs[0].vy=185;}).some(e=>e.includes('unknown key')));
+});
+test('harder air projectile finishers and fixtures are preserved with only landing-recovery input delay',()=>{
+ const baseline=JSON.parse(spawnSync('git',['show','242d5741:godot/fighting/data/roster.json'],{cwd:root,encoding:'utf8'}).stdout);
+ for(const id of ['chatgpt','gemini','kimi','qwen']){const c=roster.operators.find(op=>op.id===id).combos[2],old=baseline.operators.find(op=>op.id===id).combos[2];assert.deepEqual(c.route,old.route);assert.equal(c.route.at(-1),'special1');assert.deepEqual(c.preconditions,old.preconditions);assert.deepEqual(c.inputs.slice(0,2),old.inputs.slice(0,2));assert.equal(c.inputs[2].tick,old.inputs[2].tick+4);assert.ok(c.notes.includes('landing-timer repair'));}
+});
+test('continuous crouch sample avoids an authored down-neutral-down mobility motion',()=>{
+ for(const id of ['meta','qwen']){const op=roster.operators.find(op=>op.id===id);for(const c of op.combos.slice(0,2)){const inputs=expandTrace(c);for(let tick=c.inputs[0].tick;tick<=c.inputs[1].tick;tick++)assert.equal(inputs[tick].axis_y,-1);}}
 });
 test('legal ground fixture also needs plausible first-strike reach into defender hurtbox',()=>assert.ok(mutate(r=>{r.operators[6].combos[0].preconditions.distance=1500;}).some(e=>e.includes('first-contact horizontal reach'))));
 test('charge defender setup is an ordinary same-direction walk, not an attack or position rewrite',()=>{

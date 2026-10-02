@@ -1,0 +1,5158 @@
+{
+  "version": 1,
+  "evidence_file": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/fighting-native-03/actual_content-detail.json",
+  "evidence_sha256": "3423ce317c8af53804c2c3a99e53d96961a71c0ff1c8cdbc87abc55e3ad2189c",
+  "tested_core_commit": "a84f6961",
+  "tested_source_repair": "065d78a5",
+  "tested_roster_sha256": "a736dcfe91d44a08b165e1f7191420617984a561972505b0dd53df1b22cd4748",
+  "cases": 54,
+  "original_passed": 16,
+  "original_failed": 38,
+  "replays_equal": 54,
+  "cause_counts": {
+    "third_normal_whiffs_after_pushback": 12,
+    "native_pass_unchanged": 16,
+    "third_input_after_landing": 14,
+    "projectile_contact_after_stun_reset": 2,
+    "crouch_motion_recognized_as_mobility": 8,
+    "third_crouch_motion_recognized_as_mobility": 2
+  },
+  "results": [
+    {
+      "operator": "chatgpt",
+      "name": "Basic confirm",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_normal_whiffs_after_pushback",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 48,
+          "move": "stand_l",
+          "tick": 5
+        },
+        {
+          "combo_hits": 2,
+          "damage": 70,
+          "move": "stand_m",
+          "tick": 20
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_m",
+          "tick": 12
+        },
+        {
+          "move": "stand_h",
+          "tick": 28
+        }
+      ],
+      "third_input_witness": {
+        "tick": 28,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 1291,
+          "y": 0,
+          "stun": 22,
+          "hurtbox": [
+            991,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 40,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 12,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              250,
+              900,
+              850,
+              600
+            ]
+          ]
+        },
+        "defender": {
+          "x": 2027,
+          "y": 0,
+          "stun": 10,
+          "hurtbox": [
+            1727,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Use the two observed continuous L/M contacts as a basic confirm; keep signature/air routes as three attacks.",
+      "new_route": [
+        "stand_l",
+        "stand_m"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "chatgpt",
+      "name": "Basic confirm",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_normal_whiffs_after_pushback",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 48,
+          "move": "stand_l",
+          "tick": 5
+        },
+        {
+          "combo_hits": 2,
+          "damage": 70,
+          "move": "stand_m",
+          "tick": 20
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_m",
+          "tick": 12
+        },
+        {
+          "move": "stand_h",
+          "tick": 28
+        }
+      ],
+      "third_input_witness": {
+        "tick": 28,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -1291,
+          "y": 0,
+          "stun": 22,
+          "hurtbox": [
+            -1591,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 40,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 12,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              -1100,
+              900,
+              850,
+              600
+            ]
+          ]
+        },
+        "defender": {
+          "x": -2027,
+          "y": 0,
+          "stun": 10,
+          "hurtbox": [
+            -2327,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Use the two observed continuous L/M contacts as a basic confirm; keep signature/air routes as three attacks.",
+      "new_route": [
+        "stand_l",
+        "stand_m"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "chatgpt",
+      "name": "Signature special confirm",
+      "facing": 1,
+      "original_passed": true,
+      "replay_equal": true,
+      "cause": "native_pass_unchanged",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 48,
+          "move": "stand_l",
+          "tick": 5
+        },
+        {
+          "combo_hits": 2,
+          "damage": 70,
+          "move": "stand_m",
+          "tick": 20
+        },
+        {
+          "combo_hits": 3,
+          "damage": 68,
+          "move": "special1",
+          "tick": 46
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_m",
+          "tick": 12
+        },
+        {
+          "move": "special1",
+          "tick": 28
+        }
+      ],
+      "third_input_witness": {
+        "tick": 28,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 1291,
+          "y": 0,
+          "stun": 22,
+          "hurtbox": [
+            991,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 40,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 12,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 2027,
+          "y": 0,
+          "stun": 10,
+          "hurtbox": [
+            1727,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Preserve this candidate exactly.",
+      "new_route": [
+        "stand_l",
+        "stand_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": true,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "chatgpt",
+      "name": "Signature special confirm",
+      "facing": -1,
+      "original_passed": true,
+      "replay_equal": true,
+      "cause": "native_pass_unchanged",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 48,
+          "move": "stand_l",
+          "tick": 5
+        },
+        {
+          "combo_hits": 2,
+          "damage": 70,
+          "move": "stand_m",
+          "tick": 20
+        },
+        {
+          "combo_hits": 3,
+          "damage": 68,
+          "move": "special1",
+          "tick": 46
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_m",
+          "tick": 12
+        },
+        {
+          "move": "special1",
+          "tick": 28
+        }
+      ],
+      "third_input_witness": {
+        "tick": 28,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -1291,
+          "y": 0,
+          "stun": 22,
+          "hurtbox": [
+            -1591,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 40,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 12,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -2027,
+          "y": 0,
+          "stun": 10,
+          "hurtbox": [
+            -2327,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Preserve this candidate exactly.",
+      "new_route": [
+        "stand_l",
+        "stand_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": true,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "chatgpt",
+      "name": "Air corner chain",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_input_after_landing",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 47,
+          "move": "air_l",
+          "tick": 5
+        },
+        {
+          "combo_hits": 2,
+          "damage": 68,
+          "move": "air_m",
+          "tick": 22
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "air_l",
+          "tick": 0
+        },
+        {
+          "move": "air_m",
+          "tick": 12
+        }
+      ],
+      "third_input_witness": {
+        "tick": 28,
+        "attacker": {
+          "x": 6744,
+          "y": 0,
+          "move": "air_m",
+          "frame": 10,
+          "landing_left": 4,
+          "hitboxes": [
+            [
+              6994,
+              -450,
+              650,
+              750
+            ]
+          ]
+        },
+        "defender": {
+          "x": 7650,
+          "y": 115,
+          "stun": 24,
+          "hurtbox": [
+            7350,
+            215,
+            600,
+            1400
+          ]
+        }
+      },
+      "third_active_witness": null,
+      "correction": "Retain original harder projectile finisher and physical fixture. Delay third input four ticks to cover landing recovery; Astra landing-timer repair is explicitly required before native certification.",
+      "new_route": [
+        "air_l",
+        "air_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 500,
+        "attacker_y": 1000,
+        "defender_y": 800,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "chatgpt",
+      "name": "Air corner chain",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_input_after_landing",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 47,
+          "move": "air_l",
+          "tick": 5
+        },
+        {
+          "combo_hits": 2,
+          "damage": 68,
+          "move": "air_m",
+          "tick": 22
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "air_l",
+          "tick": 0
+        },
+        {
+          "move": "air_m",
+          "tick": 12
+        }
+      ],
+      "third_input_witness": {
+        "tick": 28,
+        "attacker": {
+          "x": -6744,
+          "y": 0,
+          "move": "air_m",
+          "frame": 10,
+          "landing_left": 4,
+          "hitboxes": [
+            [
+              -7644,
+              -450,
+              650,
+              750
+            ]
+          ]
+        },
+        "defender": {
+          "x": -7650,
+          "y": 115,
+          "stun": 24,
+          "hurtbox": [
+            -7950,
+            215,
+            600,
+            1400
+          ]
+        }
+      },
+      "third_active_witness": null,
+      "correction": "Retain original harder projectile finisher and physical fixture. Delay third input four ticks to cover landing recovery; Astra landing-timer repair is explicitly required before native certification.",
+      "new_route": [
+        "air_l",
+        "air_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 500,
+        "attacker_y": 1000,
+        "defender_y": 800,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "claude",
+      "name": "Basic confirm",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_normal_whiffs_after_pushback",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 51,
+          "move": "stand_l",
+          "tick": 6
+        },
+        {
+          "combo_hits": 2,
+          "damage": 72,
+          "move": "crouch_m",
+          "tick": 23
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "crouch_m",
+          "tick": 13
+        },
+        {
+          "move": "stand_h",
+          "tick": 31
+        }
+      ],
+      "third_input_witness": {
+        "tick": 31,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 1302,
+          "y": 0,
+          "stun": 26,
+          "hurtbox": [
+            1002,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 46,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 15,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              250,
+              900,
+              1230,
+              600
+            ]
+          ]
+        },
+        "defender": {
+          "x": 2020,
+          "y": 0,
+          "stun": 11,
+          "hurtbox": [
+            1720,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Use the two observed continuous L/M contacts as a basic confirm; keep signature/air routes as three attacks.",
+      "new_route": [
+        "stand_l",
+        "crouch_m"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "claude",
+      "name": "Basic confirm",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_normal_whiffs_after_pushback",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 51,
+          "move": "stand_l",
+          "tick": 6
+        },
+        {
+          "combo_hits": 2,
+          "damage": 72,
+          "move": "crouch_m",
+          "tick": 23
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "crouch_m",
+          "tick": 13
+        },
+        {
+          "move": "stand_h",
+          "tick": 31
+        }
+      ],
+      "third_input_witness": {
+        "tick": 31,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -1302,
+          "y": 0,
+          "stun": 26,
+          "hurtbox": [
+            -1602,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 46,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 15,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              -1480,
+              900,
+              1230,
+              600
+            ]
+          ]
+        },
+        "defender": {
+          "x": -2020,
+          "y": 0,
+          "stun": 11,
+          "hurtbox": [
+            -2320,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Use the two observed continuous L/M contacts as a basic confirm; keep signature/air routes as three attacks.",
+      "new_route": [
+        "stand_l",
+        "crouch_m"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "claude",
+      "name": "Signature special confirm",
+      "facing": 1,
+      "original_passed": true,
+      "replay_equal": true,
+      "cause": "native_pass_unchanged",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 51,
+          "move": "stand_l",
+          "tick": 6
+        },
+        {
+          "combo_hits": 2,
+          "damage": 72,
+          "move": "crouch_m",
+          "tick": 23
+        },
+        {
+          "combo_hits": 3,
+          "damage": 84,
+          "move": "special1",
+          "tick": 45
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "crouch_m",
+          "tick": 13
+        },
+        {
+          "move": "special1",
+          "tick": 31
+        }
+      ],
+      "third_input_witness": {
+        "tick": 31,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 1302,
+          "y": 0,
+          "stun": 26,
+          "hurtbox": [
+            1002,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 45,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 14,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              250,
+              900,
+              2850,
+              600
+            ]
+          ]
+        },
+        "defender": {
+          "x": 2010,
+          "y": 0,
+          "stun": 30,
+          "hurtbox": [
+            1710,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Preserve this candidate exactly.",
+      "new_route": [
+        "stand_l",
+        "crouch_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": true,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "claude",
+      "name": "Signature special confirm",
+      "facing": -1,
+      "original_passed": true,
+      "replay_equal": true,
+      "cause": "native_pass_unchanged",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 51,
+          "move": "stand_l",
+          "tick": 6
+        },
+        {
+          "combo_hits": 2,
+          "damage": 72,
+          "move": "crouch_m",
+          "tick": 23
+        },
+        {
+          "combo_hits": 3,
+          "damage": 84,
+          "move": "special1",
+          "tick": 45
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "crouch_m",
+          "tick": 13
+        },
+        {
+          "move": "special1",
+          "tick": 31
+        }
+      ],
+      "third_input_witness": {
+        "tick": 31,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -1302,
+          "y": 0,
+          "stun": 26,
+          "hurtbox": [
+            -1602,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 45,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 14,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              -3100,
+              900,
+              2850,
+              600
+            ]
+          ]
+        },
+        "defender": {
+          "x": -2010,
+          "y": 0,
+          "stun": 30,
+          "hurtbox": [
+            -2310,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Preserve this candidate exactly.",
+      "new_route": [
+        "stand_l",
+        "crouch_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": true,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "claude",
+      "name": "Air corner chain",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_input_after_landing",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 50,
+          "move": "air_l",
+          "tick": 6
+        },
+        {
+          "combo_hits": 2,
+          "damage": 74,
+          "move": "air_m",
+          "tick": 23
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "air_l",
+          "tick": 0
+        },
+        {
+          "move": "air_m",
+          "tick": 13
+        }
+      ],
+      "third_input_witness": {
+        "tick": 31,
+        "attacker": {
+          "x": 6750,
+          "y": 0,
+          "move": "air_m",
+          "frame": 11,
+          "landing_left": 4,
+          "hitboxes": [
+            [
+              7000,
+              -450,
+              800,
+              750
+            ]
+          ]
+        },
+        "defender": {
+          "x": 7650,
+          "y": 61,
+          "stun": 26,
+          "hurtbox": [
+            7350,
+            161,
+            600,
+            1400
+          ]
+        }
+      },
+      "third_active_witness": null,
+      "correction": "Grounded legal corner setup, paired ordinary jumps at tick0, three air normals beginning tick8; core landing-left latch separately reported.",
+      "new_route": [
+        "air_l",
+        "air_m",
+        "air_h"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "claude",
+      "name": "Air corner chain",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_input_after_landing",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 50,
+          "move": "air_l",
+          "tick": 6
+        },
+        {
+          "combo_hits": 2,
+          "damage": 74,
+          "move": "air_m",
+          "tick": 23
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "air_l",
+          "tick": 0
+        },
+        {
+          "move": "air_m",
+          "tick": 13
+        }
+      ],
+      "third_input_witness": {
+        "tick": 31,
+        "attacker": {
+          "x": -6750,
+          "y": 0,
+          "move": "air_m",
+          "frame": 11,
+          "landing_left": 4,
+          "hitboxes": [
+            [
+              -7800,
+              -450,
+              800,
+              750
+            ]
+          ]
+        },
+        "defender": {
+          "x": -7650,
+          "y": 61,
+          "stun": 26,
+          "hurtbox": [
+            -7950,
+            161,
+            600,
+            1400
+          ]
+        }
+      },
+      "third_active_witness": null,
+      "correction": "Grounded legal corner setup, paired ordinary jumps at tick0, three air normals beginning tick8; core landing-left latch separately reported.",
+      "new_route": [
+        "air_l",
+        "air_m",
+        "air_h"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "grok",
+      "name": "Basic confirm",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_normal_whiffs_after_pushback",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 50,
+          "move": "stand_l",
+          "tick": 4
+        },
+        {
+          "combo_hits": 2,
+          "damage": 78,
+          "move": "stand_m",
+          "tick": 18
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_m",
+          "tick": 11
+        },
+        {
+          "move": "crouch_h",
+          "tick": 26
+        }
+      ],
+      "third_input_witness": {
+        "tick": 26,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "crouch_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 1341,
+          "y": 0,
+          "stun": 24,
+          "hurtbox": [
+            1041,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 36,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "crouch_h",
+          "frame": 10,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              250,
+              150,
+              560,
+              420
+            ]
+          ]
+        },
+        "defender": {
+          "x": 2148,
+          "y": 0,
+          "stun": 14,
+          "hurtbox": [
+            1848,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Use the two observed continuous L/M contacts as a basic confirm; keep signature/air routes as three attacks.",
+      "new_route": [
+        "stand_l",
+        "stand_m"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "grok",
+      "name": "Basic confirm",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_normal_whiffs_after_pushback",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 50,
+          "move": "stand_l",
+          "tick": 4
+        },
+        {
+          "combo_hits": 2,
+          "damage": 78,
+          "move": "stand_m",
+          "tick": 18
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_m",
+          "tick": 11
+        },
+        {
+          "move": "crouch_h",
+          "tick": 26
+        }
+      ],
+      "third_input_witness": {
+        "tick": 26,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "crouch_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -1341,
+          "y": 0,
+          "stun": 24,
+          "hurtbox": [
+            -1641,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 36,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "crouch_h",
+          "frame": 10,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              -810,
+              150,
+              560,
+              420
+            ]
+          ]
+        },
+        "defender": {
+          "x": -2148,
+          "y": 0,
+          "stun": 14,
+          "hurtbox": [
+            -2448,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Use the two observed continuous L/M contacts as a basic confirm; keep signature/air routes as three attacks.",
+      "new_route": [
+        "stand_l",
+        "stand_m"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "grok",
+      "name": "Signature special confirm",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "projectile_contact_after_stun_reset",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 50,
+          "move": "stand_l",
+          "tick": 4
+        },
+        {
+          "combo_hits": 2,
+          "damage": 78,
+          "move": "stand_m",
+          "tick": 18
+        },
+        {
+          "combo_hits": 1,
+          "damage": 98,
+          "move": "special1",
+          "tick": 54
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_m",
+          "tick": 11
+        },
+        {
+          "move": "special1",
+          "tick": 26
+        }
+      ],
+      "third_input_witness": {
+        "tick": 26,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 1341,
+          "y": 0,
+          "stun": 24,
+          "hurtbox": [
+            1041,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 42,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 16,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 2258,
+          "y": 0,
+          "stun": 8,
+          "hurtbox": [
+            1958,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Grok grenade remains third hit in a documented grounded-corner pressure candidate; avoid midscreen late projectile travel/apex contact.",
+      "new_route": [
+        "stand_l",
+        "stand_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "grok",
+      "name": "Signature special confirm",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "projectile_contact_after_stun_reset",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 50,
+          "move": "stand_l",
+          "tick": 4
+        },
+        {
+          "combo_hits": 2,
+          "damage": 78,
+          "move": "stand_m",
+          "tick": 18
+        },
+        {
+          "combo_hits": 1,
+          "damage": 98,
+          "move": "special1",
+          "tick": 54
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_m",
+          "tick": 11
+        },
+        {
+          "move": "special1",
+          "tick": 26
+        }
+      ],
+      "third_input_witness": {
+        "tick": 26,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -1341,
+          "y": 0,
+          "stun": 24,
+          "hurtbox": [
+            -1641,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 42,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 16,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -2258,
+          "y": 0,
+          "stun": 8,
+          "hurtbox": [
+            -2558,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Grok grenade remains third hit in a documented grounded-corner pressure candidate; avoid midscreen late projectile travel/apex contact.",
+      "new_route": [
+        "stand_l",
+        "stand_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "grok",
+      "name": "Air corner chain",
+      "facing": 1,
+      "original_passed": true,
+      "replay_equal": true,
+      "cause": "native_pass_unchanged",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 49,
+          "move": "air_l",
+          "tick": 4
+        },
+        {
+          "combo_hits": 2,
+          "damage": 77,
+          "move": "air_m",
+          "tick": 18
+        },
+        {
+          "combo_hits": 3,
+          "damage": 104,
+          "move": "air_h",
+          "tick": 38
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "air_l",
+          "tick": 0
+        },
+        {
+          "move": "air_m",
+          "tick": 11
+        },
+        {
+          "move": "air_h",
+          "tick": 26
+        }
+      ],
+      "third_input_witness": {
+        "tick": 26,
+        "attacker": {
+          "x": 6709,
+          "y": 181,
+          "move": "air_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 7650,
+          "y": 430,
+          "stun": 25,
+          "hurtbox": [
+            7350,
+            530,
+            600,
+            1400
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 38,
+        "attacker": {
+          "x": 6446,
+          "y": 0,
+          "move": "air_h",
+          "frame": 12,
+          "landing_left": 4,
+          "hitboxes": [
+            [
+              6696,
+              -450,
+              710,
+              750
+            ]
+          ]
+        },
+        "defender": {
+          "x": 7650,
+          "y": 0,
+          "stun": 31,
+          "hurtbox": [
+            7350,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Preserve this candidate exactly.",
+      "new_route": [
+        "air_l",
+        "air_m",
+        "air_h"
+      ],
+      "new_preconditions": {
+        "distance": 500,
+        "attacker_y": 1000,
+        "defender_y": 800,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": true,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "grok",
+      "name": "Air corner chain",
+      "facing": -1,
+      "original_passed": true,
+      "replay_equal": true,
+      "cause": "native_pass_unchanged",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 49,
+          "move": "air_l",
+          "tick": 4
+        },
+        {
+          "combo_hits": 2,
+          "damage": 77,
+          "move": "air_m",
+          "tick": 18
+        },
+        {
+          "combo_hits": 3,
+          "damage": 104,
+          "move": "air_h",
+          "tick": 38
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "air_l",
+          "tick": 0
+        },
+        {
+          "move": "air_m",
+          "tick": 11
+        },
+        {
+          "move": "air_h",
+          "tick": 26
+        }
+      ],
+      "third_input_witness": {
+        "tick": 26,
+        "attacker": {
+          "x": -6709,
+          "y": 181,
+          "move": "air_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -7650,
+          "y": 430,
+          "stun": 25,
+          "hurtbox": [
+            -7950,
+            530,
+            600,
+            1400
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 38,
+        "attacker": {
+          "x": -6446,
+          "y": 0,
+          "move": "air_h",
+          "frame": 12,
+          "landing_left": 4,
+          "hitboxes": [
+            [
+              -7406,
+              -450,
+              710,
+              750
+            ]
+          ]
+        },
+        "defender": {
+          "x": -7650,
+          "y": 0,
+          "stun": 31,
+          "hurtbox": [
+            -7950,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Preserve this candidate exactly.",
+      "new_route": [
+        "air_l",
+        "air_m",
+        "air_h"
+      ],
+      "new_preconditions": {
+        "distance": 500,
+        "attacker_y": 1000,
+        "defender_y": 800,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": true,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "meta",
+      "name": "Basic confirm",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "crouch_motion_recognized_as_mobility",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 54,
+          "move": "crouch_l",
+          "tick": 7
+        },
+        {
+          "combo_hits": 1,
+          "damage": 130,
+          "move": "stand_h",
+          "tick": 52
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "crouch_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_h",
+          "tick": 35
+        }
+      ],
+      "third_input_witness": {
+        "tick": 35,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 1192,
+          "y": 0,
+          "stun": 1,
+          "hurtbox": [
+            892,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 52,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 17,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              250,
+              900,
+              930,
+              600
+            ]
+          ]
+        },
+        "defender": {
+          "x": 1192,
+          "y": 0,
+          "stun": 39,
+          "hurtbox": [
+            892,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Keep down held continuously through crouch L/M. Basic becomes two-hit confirm; signature keeps its third special.",
+      "new_route": [
+        "crouch_l",
+        "crouch_m"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "meta",
+      "name": "Basic confirm",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "crouch_motion_recognized_as_mobility",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 54,
+          "move": "crouch_l",
+          "tick": 7
+        },
+        {
+          "combo_hits": 1,
+          "damage": 130,
+          "move": "stand_h",
+          "tick": 52
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "crouch_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_h",
+          "tick": 35
+        }
+      ],
+      "third_input_witness": {
+        "tick": 35,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -1192,
+          "y": 0,
+          "stun": 1,
+          "hurtbox": [
+            -1492,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 52,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 17,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              -1180,
+              900,
+              930,
+              600
+            ]
+          ]
+        },
+        "defender": {
+          "x": -1192,
+          "y": 0,
+          "stun": 39,
+          "hurtbox": [
+            -1492,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Keep down held continuously through crouch L/M. Basic becomes two-hit confirm; signature keeps its third special.",
+      "new_route": [
+        "crouch_l",
+        "crouch_m"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "meta",
+      "name": "Signature special confirm",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "crouch_motion_recognized_as_mobility",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 54,
+          "move": "crouch_l",
+          "tick": 7
+        },
+        {
+          "combo_hits": 1,
+          "damage": 100,
+          "move": "special1",
+          "tick": 46
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "crouch_l",
+          "tick": 0
+        },
+        {
+          "move": "special1",
+          "tick": 35
+        }
+      ],
+      "third_input_witness": {
+        "tick": 35,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 1192,
+          "y": 0,
+          "stun": 1,
+          "hurtbox": [
+            892,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 46,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 11,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              250,
+              900,
+              1950,
+              600
+            ]
+          ]
+        },
+        "defender": {
+          "x": 1192,
+          "y": 0,
+          "stun": 33,
+          "hurtbox": [
+            892,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Keep down held continuously through crouch L/M. Basic becomes two-hit confirm; signature keeps its third special.",
+      "new_route": [
+        "crouch_l",
+        "crouch_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "meta",
+      "name": "Signature special confirm",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "crouch_motion_recognized_as_mobility",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 54,
+          "move": "crouch_l",
+          "tick": 7
+        },
+        {
+          "combo_hits": 1,
+          "damage": 100,
+          "move": "special1",
+          "tick": 46
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "crouch_l",
+          "tick": 0
+        },
+        {
+          "move": "special1",
+          "tick": 35
+        }
+      ],
+      "third_input_witness": {
+        "tick": 35,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -1192,
+          "y": 0,
+          "stun": 1,
+          "hurtbox": [
+            -1492,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 46,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 11,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              -2200,
+              900,
+              1950,
+              600
+            ]
+          ]
+        },
+        "defender": {
+          "x": -1192,
+          "y": 0,
+          "stun": 33,
+          "hurtbox": [
+            -1492,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Keep down held continuously through crouch L/M. Basic becomes two-hit confirm; signature keeps its third special.",
+      "new_route": [
+        "crouch_l",
+        "crouch_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "meta",
+      "name": "Air corner chain",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_input_after_landing",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 56,
+          "move": "air_l",
+          "tick": 7
+        },
+        {
+          "combo_hits": 2,
+          "damage": 86,
+          "move": "air_m",
+          "tick": 25
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "air_l",
+          "tick": 0
+        },
+        {
+          "move": "air_m",
+          "tick": 14
+        }
+      ],
+      "third_input_witness": {
+        "tick": 34,
+        "attacker": {
+          "x": 6737,
+          "y": 0,
+          "move": "air_m",
+          "frame": 12,
+          "landing_left": 4,
+          "hitboxes": [
+            [
+              6987,
+              -450,
+              730,
+              750
+            ]
+          ]
+        },
+        "defender": {
+          "x": 7650,
+          "y": 0,
+          "stun": 29,
+          "hurtbox": [
+            7350,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": null,
+      "correction": "Grounded legal corner setup, paired ordinary jumps at tick0, three air normals beginning tick8; core landing-left latch separately reported.",
+      "new_route": [
+        "air_l",
+        "air_m",
+        "air_h"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "meta",
+      "name": "Air corner chain",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_input_after_landing",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 56,
+          "move": "air_l",
+          "tick": 7
+        },
+        {
+          "combo_hits": 2,
+          "damage": 86,
+          "move": "air_m",
+          "tick": 25
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "air_l",
+          "tick": 0
+        },
+        {
+          "move": "air_m",
+          "tick": 14
+        }
+      ],
+      "third_input_witness": {
+        "tick": 34,
+        "attacker": {
+          "x": -6737,
+          "y": 0,
+          "move": "air_m",
+          "frame": 12,
+          "landing_left": 4,
+          "hitboxes": [
+            [
+              -7717,
+              -450,
+              730,
+              750
+            ]
+          ]
+        },
+        "defender": {
+          "x": -7650,
+          "y": 0,
+          "stun": 29,
+          "hurtbox": [
+            -7950,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": null,
+      "correction": "Grounded legal corner setup, paired ordinary jumps at tick0, three air normals beginning tick8; core landing-left latch separately reported.",
+      "new_route": [
+        "air_l",
+        "air_m",
+        "air_h"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "gemini",
+      "name": "Basic confirm",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_normal_whiffs_after_pushback",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 46,
+          "move": "stand_l",
+          "tick": 5
+        },
+        {
+          "combo_hits": 2,
+          "damage": 67,
+          "move": "stand_m",
+          "tick": 20
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_m",
+          "tick": 12
+        },
+        {
+          "move": "stand_h",
+          "tick": 28
+        }
+      ],
+      "third_input_witness": {
+        "tick": 28,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 1292,
+          "y": 0,
+          "stun": 22,
+          "hurtbox": [
+            992,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 40,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 12,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              250,
+              900,
+              880,
+              600
+            ]
+          ]
+        },
+        "defender": {
+          "x": 2032,
+          "y": 0,
+          "stun": 10,
+          "hurtbox": [
+            1732,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Use the two observed continuous L/M contacts as a basic confirm; keep signature/air routes as three attacks.",
+      "new_route": [
+        "stand_l",
+        "stand_m"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "gemini",
+      "name": "Basic confirm",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_normal_whiffs_after_pushback",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 46,
+          "move": "stand_l",
+          "tick": 5
+        },
+        {
+          "combo_hits": 2,
+          "damage": 67,
+          "move": "stand_m",
+          "tick": 20
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_m",
+          "tick": 12
+        },
+        {
+          "move": "stand_h",
+          "tick": 28
+        }
+      ],
+      "third_input_witness": {
+        "tick": 28,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -1292,
+          "y": 0,
+          "stun": 22,
+          "hurtbox": [
+            -1592,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 40,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 12,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              -1130,
+              900,
+              880,
+              600
+            ]
+          ]
+        },
+        "defender": {
+          "x": -2032,
+          "y": 0,
+          "stun": 10,
+          "hurtbox": [
+            -2332,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Use the two observed continuous L/M contacts as a basic confirm; keep signature/air routes as three attacks.",
+      "new_route": [
+        "stand_l",
+        "stand_m"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "gemini",
+      "name": "Signature special confirm",
+      "facing": 1,
+      "original_passed": true,
+      "replay_equal": true,
+      "cause": "native_pass_unchanged",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 46,
+          "move": "stand_l",
+          "tick": 5
+        },
+        {
+          "combo_hits": 2,
+          "damage": 67,
+          "move": "stand_m",
+          "tick": 20
+        },
+        {
+          "combo_hits": 3,
+          "damage": 72,
+          "move": "special1",
+          "tick": 45
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_m",
+          "tick": 12
+        },
+        {
+          "move": "special1",
+          "tick": 28
+        }
+      ],
+      "third_input_witness": {
+        "tick": 28,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 1292,
+          "y": 0,
+          "stun": 22,
+          "hurtbox": [
+            992,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 41,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 13,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 2048,
+          "y": 0,
+          "stun": 9,
+          "hurtbox": [
+            1748,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Preserve this candidate exactly.",
+      "new_route": [
+        "stand_l",
+        "stand_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": true,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "gemini",
+      "name": "Signature special confirm",
+      "facing": -1,
+      "original_passed": true,
+      "replay_equal": true,
+      "cause": "native_pass_unchanged",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 46,
+          "move": "stand_l",
+          "tick": 5
+        },
+        {
+          "combo_hits": 2,
+          "damage": 67,
+          "move": "stand_m",
+          "tick": 20
+        },
+        {
+          "combo_hits": 3,
+          "damage": 72,
+          "move": "special1",
+          "tick": 45
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_m",
+          "tick": 12
+        },
+        {
+          "move": "special1",
+          "tick": 28
+        }
+      ],
+      "third_input_witness": {
+        "tick": 28,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -1292,
+          "y": 0,
+          "stun": 22,
+          "hurtbox": [
+            -1592,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 41,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 13,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -2048,
+          "y": 0,
+          "stun": 9,
+          "hurtbox": [
+            -2348,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Preserve this candidate exactly.",
+      "new_route": [
+        "stand_l",
+        "stand_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": true,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "gemini",
+      "name": "Air corner chain",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_input_after_landing",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 46,
+          "move": "air_l",
+          "tick": 5
+        },
+        {
+          "combo_hits": 2,
+          "damage": 66,
+          "move": "air_m",
+          "tick": 22
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "air_l",
+          "tick": 0
+        },
+        {
+          "move": "air_m",
+          "tick": 12
+        }
+      ],
+      "third_input_witness": {
+        "tick": 28,
+        "attacker": {
+          "x": 6739,
+          "y": 0,
+          "move": "air_m",
+          "frame": 10,
+          "landing_left": 4,
+          "hitboxes": [
+            [
+              6989,
+              -450,
+              690,
+              750
+            ]
+          ]
+        },
+        "defender": {
+          "x": 7650,
+          "y": 115,
+          "stun": 24,
+          "hurtbox": [
+            7350,
+            215,
+            600,
+            1400
+          ]
+        }
+      },
+      "third_active_witness": null,
+      "correction": "Retain original harder projectile finisher and physical fixture. Delay third input four ticks to cover landing recovery; Astra landing-timer repair is explicitly required before native certification.",
+      "new_route": [
+        "air_l",
+        "air_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 500,
+        "attacker_y": 1000,
+        "defender_y": 800,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "gemini",
+      "name": "Air corner chain",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_input_after_landing",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 46,
+          "move": "air_l",
+          "tick": 5
+        },
+        {
+          "combo_hits": 2,
+          "damage": 66,
+          "move": "air_m",
+          "tick": 22
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "air_l",
+          "tick": 0
+        },
+        {
+          "move": "air_m",
+          "tick": 12
+        }
+      ],
+      "third_input_witness": {
+        "tick": 28,
+        "attacker": {
+          "x": -6739,
+          "y": 0,
+          "move": "air_m",
+          "frame": 10,
+          "landing_left": 4,
+          "hitboxes": [
+            [
+              -7679,
+              -450,
+              690,
+              750
+            ]
+          ]
+        },
+        "defender": {
+          "x": -7650,
+          "y": 115,
+          "stun": 24,
+          "hurtbox": [
+            -7950,
+            215,
+            600,
+            1400
+          ]
+        }
+      },
+      "third_active_witness": null,
+      "correction": "Retain original harder projectile finisher and physical fixture. Delay third input four ticks to cover landing recovery; Astra landing-timer repair is explicitly required before native certification.",
+      "new_route": [
+        "air_l",
+        "air_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 500,
+        "attacker_y": 1000,
+        "defender_y": 800,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "deepseek",
+      "name": "Basic confirm",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_normal_whiffs_after_pushback",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 52,
+          "move": "crouch_l",
+          "tick": 7
+        },
+        {
+          "combo_hits": 2,
+          "damage": 81,
+          "move": "stand_m",
+          "tick": 25
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "crouch_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_m",
+          "tick": 14
+        },
+        {
+          "move": "stand_h",
+          "tick": 34
+        }
+      ],
+      "third_input_witness": {
+        "tick": 34,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 1311,
+          "y": 0,
+          "stun": 28,
+          "hurtbox": [
+            1011,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 50,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 16,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              250,
+              900,
+              1000,
+              600
+            ]
+          ]
+        },
+        "defender": {
+          "x": 2101,
+          "y": 0,
+          "stun": 12,
+          "hurtbox": [
+            1801,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Use the two observed continuous L/M contacts as a basic confirm; keep signature/air routes as three attacks.",
+      "new_route": [
+        "crouch_l",
+        "stand_m"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "deepseek",
+      "name": "Basic confirm",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_normal_whiffs_after_pushback",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 52,
+          "move": "crouch_l",
+          "tick": 7
+        },
+        {
+          "combo_hits": 2,
+          "damage": 81,
+          "move": "stand_m",
+          "tick": 25
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "crouch_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_m",
+          "tick": 14
+        },
+        {
+          "move": "stand_h",
+          "tick": 34
+        }
+      ],
+      "third_input_witness": {
+        "tick": 34,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -1311,
+          "y": 0,
+          "stun": 28,
+          "hurtbox": [
+            -1611,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 50,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 16,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              -1250,
+              900,
+              1000,
+              600
+            ]
+          ]
+        },
+        "defender": {
+          "x": -2101,
+          "y": 0,
+          "stun": 12,
+          "hurtbox": [
+            -2401,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Use the two observed continuous L/M contacts as a basic confirm; keep signature/air routes as three attacks.",
+      "new_route": [
+        "crouch_l",
+        "stand_m"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "deepseek",
+      "name": "Signature special confirm",
+      "facing": 1,
+      "original_passed": true,
+      "replay_equal": true,
+      "cause": "native_pass_unchanged",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 52,
+          "move": "crouch_l",
+          "tick": 43
+        },
+        {
+          "combo_hits": 2,
+          "damage": 79,
+          "move": "crouch_m",
+          "tick": 61
+        },
+        {
+          "combo_hits": 3,
+          "damage": 104,
+          "move": "special1",
+          "tick": 84
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "crouch_l",
+          "tick": 36
+        },
+        {
+          "move": "crouch_m",
+          "tick": 50
+        },
+        {
+          "move": "special1",
+          "tick": 69
+        }
+      ],
+      "third_input_witness": {
+        "tick": 69,
+        "attacker": {
+          "x": -1512,
+          "y": 0,
+          "move": "special1",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -206,
+          "y": 0,
+          "stun": 28,
+          "hurtbox": [
+            -506,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 79,
+        "attacker": {
+          "x": -1512,
+          "y": 0,
+          "move": "special1",
+          "frame": 10,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 476,
+          "y": 0,
+          "stun": 18,
+          "hurtbox": [
+            176,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Preserve this candidate exactly.",
+      "new_route": [
+        "crouch_l",
+        "crouch_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": true,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "deepseek",
+      "name": "Signature special confirm",
+      "facing": -1,
+      "original_passed": true,
+      "replay_equal": true,
+      "cause": "native_pass_unchanged",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 52,
+          "move": "crouch_l",
+          "tick": 43
+        },
+        {
+          "combo_hits": 2,
+          "damage": 79,
+          "move": "crouch_m",
+          "tick": 61
+        },
+        {
+          "combo_hits": 3,
+          "damage": 104,
+          "move": "special1",
+          "tick": 84
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "crouch_l",
+          "tick": 36
+        },
+        {
+          "move": "crouch_m",
+          "tick": 50
+        },
+        {
+          "move": "special1",
+          "tick": 69
+        }
+      ],
+      "third_input_witness": {
+        "tick": 69,
+        "attacker": {
+          "x": 1512,
+          "y": 0,
+          "move": "special1",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 206,
+          "y": 0,
+          "stun": 28,
+          "hurtbox": [
+            -94,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 79,
+        "attacker": {
+          "x": 1512,
+          "y": 0,
+          "move": "special1",
+          "frame": 10,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -476,
+          "y": 0,
+          "stun": 18,
+          "hurtbox": [
+            -776,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Preserve this candidate exactly.",
+      "new_route": [
+        "crouch_l",
+        "crouch_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": true,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "deepseek",
+      "name": "Air corner chain",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_input_after_landing",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 53,
+          "move": "air_l",
+          "tick": 7
+        },
+        {
+          "combo_hits": 2,
+          "damage": 81,
+          "move": "air_m",
+          "tick": 25
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "air_l",
+          "tick": 0
+        },
+        {
+          "move": "air_m",
+          "tick": 14
+        }
+      ],
+      "third_input_witness": {
+        "tick": 34,
+        "attacker": {
+          "x": 6742,
+          "y": 0,
+          "move": "air_m",
+          "frame": 12,
+          "landing_left": 4,
+          "hitboxes": [
+            [
+              6992,
+              -450,
+              830,
+              750
+            ]
+          ]
+        },
+        "defender": {
+          "x": 7650,
+          "y": 0,
+          "stun": 28,
+          "hurtbox": [
+            7350,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": null,
+      "correction": "Grounded legal corner setup, paired ordinary jumps at tick0, three air normals beginning tick8; core landing-left latch separately reported.",
+      "new_route": [
+        "air_l",
+        "air_m",
+        "air_h"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "deepseek",
+      "name": "Air corner chain",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_input_after_landing",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 53,
+          "move": "air_l",
+          "tick": 7
+        },
+        {
+          "combo_hits": 2,
+          "damage": 81,
+          "move": "air_m",
+          "tick": 25
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "air_l",
+          "tick": 0
+        },
+        {
+          "move": "air_m",
+          "tick": 14
+        }
+      ],
+      "third_input_witness": {
+        "tick": 34,
+        "attacker": {
+          "x": -6742,
+          "y": 0,
+          "move": "air_m",
+          "frame": 12,
+          "landing_left": 4,
+          "hitboxes": [
+            [
+              -7822,
+              -450,
+              830,
+              750
+            ]
+          ]
+        },
+        "defender": {
+          "x": -7650,
+          "y": 0,
+          "stun": 28,
+          "hurtbox": [
+            -7950,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": null,
+      "correction": "Grounded legal corner setup, paired ordinary jumps at tick0, three air normals beginning tick8; core landing-left latch separately reported.",
+      "new_route": [
+        "air_l",
+        "air_m",
+        "air_h"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "mistral",
+      "name": "Basic confirm",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_crouch_motion_recognized_as_mobility",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 45,
+          "move": "stand_l",
+          "tick": 4
+        },
+        {
+          "combo_hits": 2,
+          "damage": 63,
+          "move": "crouch_m",
+          "tick": 18
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "crouch_m",
+          "tick": 11
+        }
+      ],
+      "third_input_witness": {
+        "tick": 26,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "crouch_m",
+          "frame": 8,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              250,
+              150,
+              780,
+              420
+            ]
+          ]
+        },
+        "defender": {
+          "x": 1324,
+          "y": 0,
+          "stun": 22,
+          "hurtbox": [
+            1024,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": null,
+      "correction": "Retain observed L/M contacts as a two-hit basic confirm; retain existing passing three-hit special and air candidates.",
+      "new_route": [
+        "stand_l",
+        "crouch_m"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "mistral",
+      "name": "Basic confirm",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_crouch_motion_recognized_as_mobility",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 45,
+          "move": "stand_l",
+          "tick": 4
+        },
+        {
+          "combo_hits": 2,
+          "damage": 63,
+          "move": "crouch_m",
+          "tick": 18
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "crouch_m",
+          "tick": 11
+        }
+      ],
+      "third_input_witness": {
+        "tick": 26,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "crouch_m",
+          "frame": 8,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              -1030,
+              150,
+              780,
+              420
+            ]
+          ]
+        },
+        "defender": {
+          "x": -1324,
+          "y": 0,
+          "stun": 22,
+          "hurtbox": [
+            -1624,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": null,
+      "correction": "Retain observed L/M contacts as a two-hit basic confirm; retain existing passing three-hit special and air candidates.",
+      "new_route": [
+        "stand_l",
+        "crouch_m"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "mistral",
+      "name": "Signature special confirm",
+      "facing": 1,
+      "original_passed": true,
+      "replay_equal": true,
+      "cause": "native_pass_unchanged",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 45,
+          "move": "stand_l",
+          "tick": 4
+        },
+        {
+          "combo_hits": 2,
+          "damage": 63,
+          "move": "crouch_m",
+          "tick": 18
+        },
+        {
+          "combo_hits": 3,
+          "damage": 64,
+          "move": "special1",
+          "tick": 36
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "crouch_m",
+          "tick": 11
+        },
+        {
+          "move": "special1",
+          "tick": 26
+        }
+      ],
+      "third_input_witness": {
+        "tick": 26,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 1324,
+          "y": 0,
+          "stun": 22,
+          "hurtbox": [
+            1024,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 36,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 10,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              250,
+              900,
+              1650,
+              600
+            ]
+          ]
+        },
+        "defender": {
+          "x": 2059,
+          "y": 0,
+          "stun": 25,
+          "hurtbox": [
+            1759,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Preserve this candidate exactly.",
+      "new_route": [
+        "stand_l",
+        "crouch_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": true,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "mistral",
+      "name": "Signature special confirm",
+      "facing": -1,
+      "original_passed": true,
+      "replay_equal": true,
+      "cause": "native_pass_unchanged",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 45,
+          "move": "stand_l",
+          "tick": 4
+        },
+        {
+          "combo_hits": 2,
+          "damage": 63,
+          "move": "crouch_m",
+          "tick": 18
+        },
+        {
+          "combo_hits": 3,
+          "damage": 64,
+          "move": "special1",
+          "tick": 36
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "crouch_m",
+          "tick": 11
+        },
+        {
+          "move": "special1",
+          "tick": 26
+        }
+      ],
+      "third_input_witness": {
+        "tick": 26,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -1324,
+          "y": 0,
+          "stun": 22,
+          "hurtbox": [
+            -1624,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 36,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 10,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              -1900,
+              900,
+              1650,
+              600
+            ]
+          ]
+        },
+        "defender": {
+          "x": -2059,
+          "y": 0,
+          "stun": 25,
+          "hurtbox": [
+            -2359,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Preserve this candidate exactly.",
+      "new_route": [
+        "stand_l",
+        "crouch_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": true,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "mistral",
+      "name": "Air corner chain",
+      "facing": 1,
+      "original_passed": true,
+      "replay_equal": true,
+      "cause": "native_pass_unchanged",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 45,
+          "move": "air_l",
+          "tick": 4
+        },
+        {
+          "combo_hits": 2,
+          "damage": 63,
+          "move": "air_m",
+          "tick": 18
+        },
+        {
+          "combo_hits": 3,
+          "damage": 83,
+          "move": "air_h",
+          "tick": 36
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "air_l",
+          "tick": 0
+        },
+        {
+          "move": "air_m",
+          "tick": 11
+        },
+        {
+          "move": "air_h",
+          "tick": 26
+        }
+      ],
+      "third_input_witness": {
+        "tick": 26,
+        "attacker": {
+          "x": 6718,
+          "y": 181,
+          "move": "air_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 7650,
+          "y": 430,
+          "stun": 22,
+          "hurtbox": [
+            7350,
+            530,
+            600,
+            1400
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 36,
+        "attacker": {
+          "x": 6474,
+          "y": 0,
+          "move": "air_h",
+          "frame": 10,
+          "landing_left": 4,
+          "hitboxes": [
+            [
+              6724,
+              -450,
+              770,
+              750
+            ]
+          ]
+        },
+        "defender": {
+          "x": 7650,
+          "y": 0,
+          "stun": 27,
+          "hurtbox": [
+            7350,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Preserve this candidate exactly.",
+      "new_route": [
+        "air_l",
+        "air_m",
+        "air_h"
+      ],
+      "new_preconditions": {
+        "distance": 500,
+        "attacker_y": 1000,
+        "defender_y": 800,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": true,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "mistral",
+      "name": "Air corner chain",
+      "facing": -1,
+      "original_passed": true,
+      "replay_equal": true,
+      "cause": "native_pass_unchanged",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 45,
+          "move": "air_l",
+          "tick": 4
+        },
+        {
+          "combo_hits": 2,
+          "damage": 63,
+          "move": "air_m",
+          "tick": 18
+        },
+        {
+          "combo_hits": 3,
+          "damage": 83,
+          "move": "air_h",
+          "tick": 36
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "air_l",
+          "tick": 0
+        },
+        {
+          "move": "air_m",
+          "tick": 11
+        },
+        {
+          "move": "air_h",
+          "tick": 26
+        }
+      ],
+      "third_input_witness": {
+        "tick": 26,
+        "attacker": {
+          "x": -6718,
+          "y": 181,
+          "move": "air_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -7650,
+          "y": 430,
+          "stun": 22,
+          "hurtbox": [
+            -7950,
+            530,
+            600,
+            1400
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 36,
+        "attacker": {
+          "x": -6474,
+          "y": 0,
+          "move": "air_h",
+          "frame": 10,
+          "landing_left": 4,
+          "hitboxes": [
+            [
+              -7494,
+              -450,
+              770,
+              750
+            ]
+          ]
+        },
+        "defender": {
+          "x": -7650,
+          "y": 0,
+          "stun": 27,
+          "hurtbox": [
+            -7950,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Preserve this candidate exactly.",
+      "new_route": [
+        "air_l",
+        "air_m",
+        "air_h"
+      ],
+      "new_preconditions": {
+        "distance": 500,
+        "attacker_y": 1000,
+        "defender_y": 800,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": true,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "kimi",
+      "name": "Basic confirm",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_normal_whiffs_after_pushback",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 46,
+          "move": "stand_l",
+          "tick": 5
+        },
+        {
+          "combo_hits": 2,
+          "damage": 69,
+          "move": "stand_m",
+          "tick": 21
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_m",
+          "tick": 12
+        },
+        {
+          "move": "crouch_h",
+          "tick": 29
+        }
+      ],
+      "third_input_witness": {
+        "tick": 29,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "crouch_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 1406,
+          "y": 0,
+          "stun": 24,
+          "hurtbox": [
+            1106,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 41,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "crouch_h",
+          "frame": 12,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              250,
+              150,
+              730,
+              420
+            ]
+          ]
+        },
+        "defender": {
+          "x": 2264,
+          "y": 0,
+          "stun": 12,
+          "hurtbox": [
+            1964,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Use the two observed continuous L/M contacts as a basic confirm; keep signature/air routes as three attacks.",
+      "new_route": [
+        "stand_l",
+        "stand_m"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "kimi",
+      "name": "Basic confirm",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_normal_whiffs_after_pushback",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 46,
+          "move": "stand_l",
+          "tick": 5
+        },
+        {
+          "combo_hits": 2,
+          "damage": 69,
+          "move": "stand_m",
+          "tick": 21
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_m",
+          "tick": 12
+        },
+        {
+          "move": "crouch_h",
+          "tick": 29
+        }
+      ],
+      "third_input_witness": {
+        "tick": 29,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "crouch_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -1406,
+          "y": 0,
+          "stun": 24,
+          "hurtbox": [
+            -1706,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 41,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "crouch_h",
+          "frame": 12,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              -980,
+              150,
+              730,
+              420
+            ]
+          ]
+        },
+        "defender": {
+          "x": -2264,
+          "y": 0,
+          "stun": 12,
+          "hurtbox": [
+            -2564,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Use the two observed continuous L/M contacts as a basic confirm; keep signature/air routes as three attacks.",
+      "new_route": [
+        "stand_l",
+        "stand_m"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "kimi",
+      "name": "Signature special confirm",
+      "facing": 1,
+      "original_passed": true,
+      "replay_equal": true,
+      "cause": "native_pass_unchanged",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 46,
+          "move": "stand_l",
+          "tick": 5
+        },
+        {
+          "combo_hits": 2,
+          "damage": 69,
+          "move": "stand_m",
+          "tick": 21
+        },
+        {
+          "combo_hits": 3,
+          "damage": 76,
+          "move": "special1",
+          "tick": 48
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_m",
+          "tick": 12
+        },
+        {
+          "move": "special1",
+          "tick": 29
+        }
+      ],
+      "third_input_witness": {
+        "tick": 29,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 1406,
+          "y": 0,
+          "stun": 24,
+          "hurtbox": [
+            1106,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 44,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 15,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 2312,
+          "y": 0,
+          "stun": 9,
+          "hurtbox": [
+            2012,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Preserve this candidate exactly.",
+      "new_route": [
+        "stand_l",
+        "stand_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": true,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "kimi",
+      "name": "Signature special confirm",
+      "facing": -1,
+      "original_passed": true,
+      "replay_equal": true,
+      "cause": "native_pass_unchanged",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 46,
+          "move": "stand_l",
+          "tick": 5
+        },
+        {
+          "combo_hits": 2,
+          "damage": 69,
+          "move": "stand_m",
+          "tick": 21
+        },
+        {
+          "combo_hits": 3,
+          "damage": 76,
+          "move": "special1",
+          "tick": 48
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "stand_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_m",
+          "tick": 12
+        },
+        {
+          "move": "special1",
+          "tick": 29
+        }
+      ],
+      "third_input_witness": {
+        "tick": 29,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -1406,
+          "y": 0,
+          "stun": 24,
+          "hurtbox": [
+            -1706,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 44,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 15,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -2312,
+          "y": 0,
+          "stun": 9,
+          "hurtbox": [
+            -2612,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Preserve this candidate exactly.",
+      "new_route": [
+        "stand_l",
+        "stand_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": true,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "kimi",
+      "name": "Air corner chain",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_input_after_landing",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 46,
+          "move": "air_l",
+          "tick": 5
+        },
+        {
+          "combo_hits": 2,
+          "damage": 68,
+          "move": "air_m",
+          "tick": 22
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "air_l",
+          "tick": 0
+        },
+        {
+          "move": "air_m",
+          "tick": 12
+        }
+      ],
+      "third_input_witness": {
+        "tick": 29,
+        "attacker": {
+          "x": 6704,
+          "y": 0,
+          "move": "air_m",
+          "frame": 10,
+          "landing_left": 4,
+          "hitboxes": [
+            [
+              6954,
+              -450,
+              860,
+              750
+            ]
+          ]
+        },
+        "defender": {
+          "x": 7650,
+          "y": 115,
+          "stun": 26,
+          "hurtbox": [
+            7350,
+            215,
+            600,
+            1400
+          ]
+        }
+      },
+      "third_active_witness": null,
+      "correction": "Retain original harder projectile finisher and physical fixture. Delay third input four ticks to cover landing recovery; Astra landing-timer repair is explicitly required before native certification.",
+      "new_route": [
+        "air_l",
+        "air_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 500,
+        "attacker_y": 1000,
+        "defender_y": 800,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "kimi",
+      "name": "Air corner chain",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_input_after_landing",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 46,
+          "move": "air_l",
+          "tick": 5
+        },
+        {
+          "combo_hits": 2,
+          "damage": 68,
+          "move": "air_m",
+          "tick": 22
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "air_l",
+          "tick": 0
+        },
+        {
+          "move": "air_m",
+          "tick": 12
+        }
+      ],
+      "third_input_witness": {
+        "tick": 29,
+        "attacker": {
+          "x": -6704,
+          "y": 0,
+          "move": "air_m",
+          "frame": 10,
+          "landing_left": 4,
+          "hitboxes": [
+            [
+              -7814,
+              -450,
+              860,
+              750
+            ]
+          ]
+        },
+        "defender": {
+          "x": -7650,
+          "y": 115,
+          "stun": 26,
+          "hurtbox": [
+            -7950,
+            215,
+            600,
+            1400
+          ]
+        }
+      },
+      "third_active_witness": null,
+      "correction": "Retain original harder projectile finisher and physical fixture. Delay third input four ticks to cover landing recovery; Astra landing-timer repair is explicitly required before native certification.",
+      "new_route": [
+        "air_l",
+        "air_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 500,
+        "attacker_y": 1000,
+        "defender_y": 800,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "qwen",
+      "name": "Basic confirm",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "crouch_motion_recognized_as_mobility",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 50,
+          "move": "crouch_l",
+          "tick": 6
+        },
+        {
+          "combo_hits": 1,
+          "damage": 119,
+          "move": "stand_h",
+          "tick": 45
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "crouch_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_h",
+          "tick": 31
+        }
+      ],
+      "third_input_witness": {
+        "tick": 31,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 1222,
+          "y": 0,
+          "stun": 2,
+          "hurtbox": [
+            922,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 45,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 14,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              250,
+              900,
+              1060,
+              600
+            ]
+          ]
+        },
+        "defender": {
+          "x": 1223,
+          "y": 0,
+          "stun": 36,
+          "hurtbox": [
+            923,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Keep down held continuously through crouch L/M. Basic becomes two-hit confirm; signature keeps its third special.",
+      "new_route": [
+        "crouch_l",
+        "crouch_m"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "qwen",
+      "name": "Basic confirm",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "crouch_motion_recognized_as_mobility",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 50,
+          "move": "crouch_l",
+          "tick": 6
+        },
+        {
+          "combo_hits": 1,
+          "damage": 119,
+          "move": "stand_h",
+          "tick": 45
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "crouch_l",
+          "tick": 0
+        },
+        {
+          "move": "stand_h",
+          "tick": 31
+        }
+      ],
+      "third_input_witness": {
+        "tick": 31,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -1222,
+          "y": 0,
+          "stun": 2,
+          "hurtbox": [
+            -1522,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 45,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "stand_h",
+          "frame": 14,
+          "landing_left": 0,
+          "hitboxes": [
+            [
+              -1310,
+              900,
+              1060,
+              600
+            ]
+          ]
+        },
+        "defender": {
+          "x": -1223,
+          "y": 0,
+          "stun": 36,
+          "hurtbox": [
+            -1523,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Keep down held continuously through crouch L/M. Basic becomes two-hit confirm; signature keeps its third special.",
+      "new_route": [
+        "crouch_l",
+        "crouch_m"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "qwen",
+      "name": "Signature special confirm",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "crouch_motion_recognized_as_mobility",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 50,
+          "move": "crouch_l",
+          "tick": 6
+        },
+        {
+          "combo_hits": 1,
+          "damage": 90,
+          "move": "special1",
+          "tick": 46
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "crouch_l",
+          "tick": 0
+        },
+        {
+          "move": "special1",
+          "tick": 31
+        }
+      ],
+      "third_input_witness": {
+        "tick": 31,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 1222,
+          "y": 0,
+          "stun": 2,
+          "hurtbox": [
+            922,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 45,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 14,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": 1223,
+          "y": 0,
+          "stun": 0,
+          "hurtbox": [
+            923,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Keep down held continuously through crouch L/M. Basic becomes two-hit confirm; signature keeps its third special.",
+      "new_route": [
+        "crouch_l",
+        "crouch_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "qwen",
+      "name": "Signature special confirm",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "crouch_motion_recognized_as_mobility",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 50,
+          "move": "crouch_l",
+          "tick": 6
+        },
+        {
+          "combo_hits": 1,
+          "damage": 90,
+          "move": "special1",
+          "tick": 46
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "crouch_l",
+          "tick": 0
+        },
+        {
+          "move": "special1",
+          "tick": 31
+        }
+      ],
+      "third_input_witness": {
+        "tick": 31,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 0,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -1222,
+          "y": 0,
+          "stun": 2,
+          "hurtbox": [
+            -1522,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "third_active_witness": {
+        "tick": 45,
+        "attacker": {
+          "x": 0,
+          "y": 0,
+          "move": "special1",
+          "frame": 14,
+          "landing_left": 0,
+          "hitboxes": []
+        },
+        "defender": {
+          "x": -1223,
+          "y": 0,
+          "stun": 0,
+          "hurtbox": [
+            -1523,
+            0,
+            600,
+            1800
+          ]
+        }
+      },
+      "correction": "Keep down held continuously through crouch L/M. Basic becomes two-hit confirm; signature keeps its third special.",
+      "new_route": [
+        "crouch_l",
+        "crouch_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 660,
+        "attacker_y": 0,
+        "defender_y": 0,
+        "corner": false,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "qwen",
+      "name": "Air corner chain",
+      "facing": 1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_input_after_landing",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 51,
+          "move": "air_l",
+          "tick": 6
+        },
+        {
+          "combo_hits": 2,
+          "damage": 75,
+          "move": "air_m",
+          "tick": 22
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "air_l",
+          "tick": 0
+        },
+        {
+          "move": "air_m",
+          "tick": 13
+        }
+      ],
+      "third_input_witness": {
+        "tick": 30,
+        "attacker": {
+          "x": 6733,
+          "y": 0,
+          "move": "air_m",
+          "frame": 10,
+          "landing_left": 4,
+          "hitboxes": [
+            [
+              6983,
+              -450,
+              870,
+              750
+            ]
+          ]
+        },
+        "defender": {
+          "x": 7650,
+          "y": 161,
+          "stun": 26,
+          "hurtbox": [
+            7350,
+            261,
+            600,
+            1400
+          ]
+        }
+      },
+      "third_active_witness": null,
+      "correction": "Retain original harder projectile finisher and physical fixture. Delay third input four ticks to cover landing recovery; Astra landing-timer repair is explicitly required before native certification.",
+      "new_route": [
+        "air_l",
+        "air_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 500,
+        "attacker_y": 1000,
+        "defender_y": 800,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    },
+    {
+      "operator": "qwen",
+      "name": "Air corner chain",
+      "facing": -1,
+      "original_passed": false,
+      "replay_equal": true,
+      "cause": "third_input_after_landing",
+      "contacts": [
+        {
+          "combo_hits": 1,
+          "damage": 51,
+          "move": "air_l",
+          "tick": 6
+        },
+        {
+          "combo_hits": 2,
+          "damage": 75,
+          "move": "air_m",
+          "tick": 22
+        }
+      ],
+      "move_starts": [
+        {
+          "move": "air_l",
+          "tick": 0
+        },
+        {
+          "move": "air_m",
+          "tick": 13
+        }
+      ],
+      "third_input_witness": {
+        "tick": 30,
+        "attacker": {
+          "x": -6733,
+          "y": 0,
+          "move": "air_m",
+          "frame": 10,
+          "landing_left": 4,
+          "hitboxes": [
+            [
+              -7853,
+              -450,
+              870,
+              750
+            ]
+          ]
+        },
+        "defender": {
+          "x": -7650,
+          "y": 161,
+          "stun": 26,
+          "hurtbox": [
+            -7950,
+            261,
+            600,
+            1400
+          ]
+        }
+      },
+      "third_active_witness": null,
+      "correction": "Retain original harder projectile finisher and physical fixture. Delay third input four ticks to cover landing recovery; Astra landing-timer repair is explicitly required before native certification.",
+      "new_route": [
+        "air_l",
+        "air_m",
+        "special1"
+      ],
+      "new_preconditions": {
+        "distance": 500,
+        "attacker_y": 1000,
+        "defender_y": 800,
+        "corner": true,
+        "meter": 0,
+        "charge_back_ticks": 0
+      },
+      "unchanged_candidate": false,
+      "actual_rerun": "pending"
+    }
+  ]
+}
