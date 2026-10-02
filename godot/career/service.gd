@@ -19,6 +19,8 @@ const Actions = preload("res://career/actions_model.gd")
 const ResultsModel = preload("res://career/results_model.gd")
 const HistoryModel = preload("res://career/history_model.gd")
 const EquippedModel = preload("res://career/equipped_model.gd")
+const ChallengesModel = preload("res://career/challenges_model.gd")
+var challenges: Dictionary = {}
 const HISTORY_TIMEOUT_MS := 8000
 const MAX_SEEN_ROUNDS := 8
 var catalog: Dictionary = {}
@@ -130,6 +132,7 @@ func owned(client: Node) -> bool:
 	return connection_owner != null and connection_owner.get_ref() == client
 
 func mark_profile_changed() -> void:
+	if profile.is_empty(): challenges.clear()
 	profile_revision += 1
 	equipment_cache_revision = -1
 
@@ -192,6 +195,7 @@ func receive_welcome(client: Node, frame: Dictionary) -> void:
 	connection_owner = weakref(client)
 	connection_epoch += 1
 	profile = CareerProfile.project(frame.get("profile"))
+	challenges = ChallengesModel.project(frame.get("profile", {}).get("challenges")) if not profile.is_empty() else {}
 	mark_profile_changed()
 	reset_result_tracking()
 	reset_history()
@@ -237,6 +241,7 @@ func receive_progression(client: Node, frame: Dictionary) -> void:
 					action_status = "Source confirmed selection · saved for next match." if outcome == "applied" else "Source adjusted/refused selection · see confirmed equipment below."
 					pending.clear()
 			profile = next
+			challenges = ChallengesModel.project(frame.get("profile", {}).get("challenges"))
 			mark_profile_changed()
 	if ResultsModel.is_award(frame):
 		receive_award(frame, current_actor_id(client))
@@ -244,6 +249,8 @@ func receive_progression(client: Node, frame: Dictionary) -> void:
 func receive_award(frame: Dictionary, actor_id: int) -> void:
 	var award: Dictionary = ResultsModel.project_award(frame)
 	if award.is_empty(): return
+	var challenge_award := ChallengesModel.award(frame.get("challengeAward"))
+	if not challenge_award.is_empty(): award.challenges = challenge_award
 	var identity := ""
 	var raw_profile: Variant = frame.get("profile")
 	if raw_profile is Dictionary: identity = str(raw_profile.get("id", ""))
@@ -509,7 +516,7 @@ func build_panel() -> void:
 	var tabs := HFlowContainer.new()
 	tabs.add_theme_constant_override("separation", 6)
 	details.add_child(tabs)
-	for entry: Dictionary in [{"id":"gear", "label":"GEAR"}, {"id":"loadout", "label":"LOADOUT"}, {"id":"attachment", "label":"MODS"}, {"id":"finish", "label":"FINISHES"}, {"id":"crosshair", "label":"RETICLES"}, {"id":"results", "label":"RESULTS"}, {"id":"history", "label":"HISTORY"}]:
+	for entry: Dictionary in [{"id":"gear", "label":"GEAR"}, {"id":"loadout", "label":"LOADOUT"}, {"id":"attachment", "label":"MODS"}, {"id":"finish", "label":"FINISHES"}, {"id":"crosshair", "label":"RETICLES"}, {"id":"results", "label":"RESULTS"}, {"id":"challenges", "label":"CHALLENGES"}, {"id":"history", "label":"HISTORY"}]:
 		var id: String = entry.id
 		var button := Button.new()
 		button.name = "Tab_" + id
@@ -563,6 +570,9 @@ func refresh() -> void:
 	var list := details.find_child("CatalogRows", true, false) as VBoxContainer
 	if list == null: return
 	clear_rows(list)
+	if category == "challenges":
+		render_challenges(list)
+		return
 	if category == "loadout":
 		render_loadout(list, summary)
 		return
@@ -753,6 +763,11 @@ func render_award(list: Node, title: String, award: Dictionary) -> void:
 	if award.get("levelUp") == true: parts.append("LEVEL UP")
 	if award.get("prestigeUp") == true: parts.append("PRESTIGE UP")
 	add_line(list, title + (" · " + " · ".join(parts) if parts.size() > 0 else ""), 16)
+	if award.get("challenges") is Dictionary:
+		var bonus: Dictionary = award.challenges
+		add_line(list, "Challenge bonus · +%d XP included in source award" % int(bonus.gained), 14)
+		for row: Dictionary in bonus.completed:
+			add_line(list, "COMPLETED · %s · +%d XP" % [row.label, int(row.reward)], 14)
 	var breakdown := []
 	if award.has("baseGained"): breakdown.append("base %d" % int(award.baseGained))
 	if award.has("prestigeBonus") and int(award.prestigeBonus) > 0: breakdown.append("prestige +%d" % int(award.prestigeBonus))
@@ -770,6 +785,16 @@ func render_award(list: Node, title: String, award: Dictionary) -> void:
 		var names := []
 		for item: Dictionary in achievement_list: names.append(str(item.get("name", "achievement")))
 		add_line(list, "Achievements · " + ", ".join(names), 14)
+
+func render_challenges(list: Node) -> void:
+	if challenges.is_empty():
+		add_line(list, "Challenge status unavailable · this connection has not supplied a source challenge profile.", 16)
+		return
+	add_line(list, "Source challenges · bonuses settle with match XP. Completed rewards are already included in your source career.", 14)
+	for group: String in ["daily", "weekly"]:
+		add_line(list, group.to_upper(), 19)
+		for row: Dictionary in challenges[group]:
+			add_line(list, "%s · %d/%d · %s" % [row.label, int(row.progress), int(row.target), "EARNED" if row.done else "+%d XP" % int(row.reward)], 16)
 
 func render_history(list: Node) -> void:
 	add_line(list, "Recent server matches · source-recorded; not a personal timeline.", 16)
