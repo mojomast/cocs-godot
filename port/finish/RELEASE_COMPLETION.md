@@ -24,7 +24,7 @@ boundaries.
 | Queued asset integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Hosted/finish/teardown and exact producer/package-receipt contracts integrated and passing; awaiting real serial asset-production grant |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Six new gates integrated at `0ffc853c`/`f70355d5`, preserving all original 135 jobs; fresh exact-input ledger required after candidate stabilizes |
 | Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Actual Parallax receipt/promotion integrated; six other units still require production; native/export/Windows CI pending |
-| Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | Source-only reconciliation of original prepared v3 pipeline, absent from canonical tree; actual capture waits for final assets and an explicit grant |
+| Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | Prepared v3 pipeline integrated at `2902412b`; nine focused parent tests pass; real capture/edit/install awaits final assets and a later grant |
 
 All workers run in the background, using existing sessions/checkouts. Source work
 may run in parallel. The parent owns merges, stage transitions, explicit heavy
@@ -441,3 +441,25 @@ The prepared cinematic-v3 directory is still absent from canonical despite its
 registered gates. The original cinematic agent is now reconciling its isolated
 pipeline into main under a source-only assignment. Robot grant D remains exclusive;
 no capture/encoding grant was issued to cinematic work.
+
+## Cinematic pipeline integrated
+
+Original trailer branch through `a7a6ab96` is merged as `2902412b`. The previously
+missing `tools/release/cinematic-v3/` now provides executable prepare/capture/
+menu-check/edit/install/rollback/receipt stages and real native capture fixtures.
+It retains the 75-second four-chapter campaign scope. Dynamic preflight uses the
+actual package production validator and rejects missing/pending assets or robot/
+scenery fallbacks. Capture receipts bind source records, invocation identity,
+actual PNG hashes/dimensions, source ticks, draw/save timestamps and clean exit.
+
+Menu installation preserves the exact prior demo bytes, installs atomically,
+checks real Home without candidate injection and restores the backup on failure.
+The final ledger-bound attempt is separate from the installation rehearsal and
+cannot retroactively re-stamp evidence after inputs change. Human watching/
+listening remains its independent acceptance gate.
+
+Parent reran nine focused source tests successfully, excluding the offline
+authority-step test during the source-only phase. `--plan` passes and reports ten
+registered worlds and the six genuinely pending production units; retained at
+`/tmp/opencode/parent-cinematic-v3-plan.json`. No capture, encoding, audio, menu
+installation or new native result occurred. Robot grant D remains exclusive.
