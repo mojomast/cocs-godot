@@ -16,14 +16,15 @@ boundaries.
 | Work | Existing owner/session | Current action |
 |---|---|---|
 | Fighting production and native surface review | Astra `ses_f026e25e4ffezp2kvz5VGox7dz` | Complete and merged at `bb02e34b`; nine real rigs/masters and native comparisons; grant B released |
-| Parallax interior production | Astra `ses_f055a6b41ffe42yCL8AxbOL676` | Complete, parent-reviewed and merged at `b66f4ab3`; grant C released; exact package promotion assigned to packaging owner |
+| Parallax interior production | Astra `ses_f055a6b41ffe42yCL8AxbOL676` | Complete and reviewed at `b66f4ab3`; exact package promotion integrated at `5d33287a`; final-candidate regressions remain |
 | Robot/prop production | Astra `ses_f03a2843bffefDFoP3x1j1cxRO` | Exclusive grant D: real three-skin/six-prop masters, exports, native animation/LOD/placement and package-ready receipts |
 | Fighting camera readability | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing correction merged at `1bff0281`; six parent source checks pass, native four-stage comparison still pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
 | Queued asset integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Hosted/finish/teardown and exact producer/package-receipt contracts integrated and passing; awaiting real serial asset-production grant |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Six new gates integrated at `0ffc853c`/`f70355d5`, preserving all original 135 jobs; fresh exact-input ledger required after candidate stabilizes |
-| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Seven-unit closure integrated; preparing actual Parallax promotion under explicit parent authorization; six other units still require production |
+| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Actual Parallax receipt/promotion integrated; six other units still require production; native/export/Windows CI pending |
+| Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | Source-only reconciliation of original prepared v3 pipeline, absent from canonical tree; actual capture waits for final assets and an explicit grant |
 
 All workers run in the background, using existing sessions/checkouts. Source work
 may run in parallel. The parent owns merges, stage transitions, explicit heavy
@@ -419,3 +420,24 @@ as `0ffc853c`/`f70355d5`: six new jobs, all previous 135 retained, strict native
 camera result parsing, production import/closure checks and all thirteen future
 map-pair outcomes bound to clean teardown. Parent runner/receipt tests pass.
 Historical B/C evidence remains historical, not a completed new final ledger.
+
+## Actual Parallax package promotion integrated
+
+Packaging `c6892a32` / `eac3db08` is merged as `5961554a` / `5d33287a`. The actual
+fixed receipt SHA-256 is
+`f0d2b15ddb6c1d1609a2be5f1bc37cbf486b4b7034bf7fa6973577af9e79e6d0`;
+it binds the real master/GLB, 58 supporting inputs, production evidence, hooks,
+registry and import settings. Original GLB bytes are explicitly exported because
+native Parallax audit probes hash them. Only Parallax is promoted; robots, fleet,
+scenery, Vesper, Abyssal and Stormglass remain pending.
+
+Parent's eleven targeted production/expansion checks pass and the source audit
+validates the actual promotion (`/tmp/opencode/parent-parallax-promoted-audit.json`).
+The packaging owner verified 61 retained evidence-file hashes and recorded-Git
+validation. This closes asset packaging identity, not final native/manual/audio
+acceptance, export or Windows execution. See `PARALLAX_PACKAGE_PROMOTION.md`.
+
+The prepared cinematic-v3 directory is still absent from canonical despite its
+registered gates. The original cinematic agent is now reconciling its isolated
+pipeline into main under a source-only assignment. Robot grant D remains exclusive;
+no capture/encoding grant was issued to cinematic work.

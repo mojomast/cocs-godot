@@ -23,7 +23,7 @@
   "units": [
     {
       "id":"parallax-interiors", "owner":"original Parallax worktree; parent review only", "external":true,
-      "sourceCommits":["3e9bf9e5","fd1aeefb","be16f060","bf0aaac9"], "status":"built/reopened/native reviewed; integrated b66f4ab3; package promotion in progress",
+      "sourceCommits":["3e9bf9e5","fd1aeefb","be16f060","bf0aaac9"], "status":"built/reopened/native reviewed; integrated b66f4ab3; actual package promotion 5d33287a",
       "originalWorktree":"/home/mojo/.tmp-on-disk/cocs-new-map-observatory-20261002",
       "recipePaths":["tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/build_recipe.py","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/author_candidate.py","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/candidate-meshes.json"],
       "prerequisites":["fresh explicit grant for any further heavy work", "rebuild from pinned pre-promotion inputs per PRODUCTION-C.md"],
@@ -38,7 +38,7 @@
         {"argv":["{godot}","--single-threaded-scene","--path","godot","--audio-driver","Dummy","--script","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/output/inspection.gd"],"timeoutSeconds":600}
       ],
       "externalTargets":["tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/output/parallax-observatory.blend","godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb"],
-      "nextAssets":"package receipt for actual reviewed revised master/export; original master retained", "nextCapture":"final-candidate registered mode regressions; C images and current DM remain exact-anchor evidence",
+      "nextAssets":"actual package receipt committed; preserve original and revised masters through final export", "nextCapture":"final-candidate registered mode regressions; C images and current DM remain exact-anchor evidence",
       "gates":["parent-only integration of original geometry/assets/hooks", "Moth mounts revalidated against revised interior geometry", "hosted native accepted pairs before registration"],
       "docs":["port/map-finish/parallax-observatory/REVIEW.md"]
     },
