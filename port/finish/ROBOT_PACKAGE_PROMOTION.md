@@ -105,6 +105,12 @@ preserved two-unit production identities read from recorded Git objects.
 Evidence logs: packaging evidence directory, `robot-promotion-tests.log` and
 `robot-promotion-audit.json`.
 
+After the final supporting-input merge and promotion commit `ef5f18aa`,
+**67/67 targeted source tests passed**, including recorded-Git promotion/history
+validation and strict refusal of the five pending units. Final log:
+`robot-promotion-final-tests.log`. Python AST validation of `build.py` and
+`git diff --check` also passed.
+
 **Current status: two promoted / five pending.** Vehicles, scenery, Vesper Viaduct,
 Abyssal Pressureworks and Stormglass Causeway still require their real outputs,
 receipts, activation hooks and applicable accepted registrations. Strict export
