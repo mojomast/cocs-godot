@@ -64,6 +64,11 @@ its `port/next-port/<lane>/` directory, with actual source/native anchors.
 
 ## Acceptance and publication
 
+**Merged checkpoint:** `e731fd53` passed **359/359** canonical gates on its first
+run. Fresh Windows/Linux exports share all 1,672 common inputs and generated
+resources. Extracted platform verification is running; the release remains a
+draft. Current results and public screenshots: [ACCEPTANCE.md](ACCEPTANCE.md).
+
 ### First implementation integrations (native acceptance pending)
 
 - Gameplay `4d1b8b69` integrated as `ffd5fad2`: reliable short X taps, bounded
