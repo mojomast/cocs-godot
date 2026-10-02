@@ -17,7 +17,7 @@ test('catalog grants only registered reviewed pairs, preserves all original pair
   worlds['vesper-viaduct']={modes:['deathmatch','ctf']};
   const manifest={server_closure:{worldDataFiles:worldClosure(worlds),hordeDataFiles:['godot/horde_maps/generated/blackwater-reclamation.json']}};
   assert.equal(coverage(manifest,worlds).length,45);
-  assert.equal(worldArt('vesper-viaduct'),'res://multiplayer_worlds/art/vesper-viaduct/vesper-viaduct.glb');
+  assert.equal(worldArt('vesper-viaduct'),'res://multiplayer_worlds/art/worlds/vesper-viaduct.glb');
   assert.equal(worldArt('sirocco-circuit'),'res://multiplayer_worlds/art/worlds/sirocco-circuit.glb');
   worlds['vesper-viaduct'].modes=[];assert.throws(()=>worldClosure(worlds),/Invalid accepted modes/);
   delete worlds['vesper-viaduct'];worlds['random-map']={modes:['deathmatch']};assert.throws(()=>worldClosure(worlds),/Unreviewed world/);

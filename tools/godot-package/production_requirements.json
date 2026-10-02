@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "plan": "port/finish/ASSET_PRODUCTION.json",
+  "units": {
+    "parallax-interiors": {"required": true, "map": "parallax-observatory", "promotion": null},
+    "robots": {"required": true, "promotion": null},
+    "vehicles": {"required": true, "promotion": null},
+    "scenery": {"required": true, "promotion": null},
+    "vesper-viaduct": {"required": true, "map": "vesper-viaduct", "promotion": null},
+    "abyssal-pressureworks": {"required": true, "map": "abyssal-pressureworks", "promotion": null},
+    "stormglass-causeway": {"required": true, "map": "stormglass-causeway", "promotion": null}
+  }
+}

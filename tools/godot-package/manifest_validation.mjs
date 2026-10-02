@@ -24,6 +24,8 @@ import {REPLAY_FILES, REPLAY_KIND} from './replay_runtime.mjs';
 import {FEATURE_JSON} from './feature_resources.mjs';
 import {DRESSING_IDS} from './dressing_resources.mjs';
 import {finalResources} from './final_resources.mjs';
+import {productionResources} from './production_resources.mjs';
+import {fighterImports} from './fighter_imports.mjs';
 
 // The repository that contains this module, not the process working directory.
 export const REPO_ROOT = fileURLToPath(new URL('../../', import.meta.url));
@@ -597,6 +599,28 @@ export function verifyGitIdentity(repo, identity, packageDir) {
   verifyClosure(repo, identity, derivative);
   verifyDressingProvenance(repo, identity);
   verifyFinalProvenance(repo, identity);
+  verifyProductionProvenance(repo, identity);
+}
+
+export function verifyProductionProvenance(repo,identity) {
+  const builder='tools/godot-package/build.py';
+  const exists=git(repo,['ls-tree','--name-only',identity.port_commit,'--',builder]);
+  const code=exists?gitObjectBytes(repo,identity.port_commit,builder).toString():'';
+  if(!code.includes('"production_resource_sha256"')&&identity.manifest.production_resource_sha256===undefined)return;
+  const paths=new Set(git(repo,['ls-tree','-r','--name-only',identity.port_commit,'--','godot','tools','port','game']).split('\n'));
+  const read=path=>gitObjectBytes(repo,identity.port_commit,path),has=path=>paths.has(path);
+  verifyFighterImportProvenance(repo,identity);
+  const expected=productionResources({read,has,worldIds:(identity.worldDataFiles??[]).map(p=>p.split('/').at(-1).slice(0,-5))});
+  for(const [field,key]of [['production_resource_sha256','resources'],['production_provenance_sha256','provenance'],['production_raw_resource_sha256','raw']])
+    require_(canonicalJson(identity.manifest[field])===canonicalJson(expected[key]),`${field} differs from required recorded production closure`);
+}
+
+export function verifyFighterImportProvenance(repo,identity) {
+  const paths=new Set(git(repo,['ls-tree','-r','--name-only',identity.port_commit,'--','godot/fighting']).split('\n'));
+  const imports=fighterImports({read:path=>gitObjectBytes(repo,identity.port_commit,path),has:path=>paths.has(path)});
+  require_(canonicalJson(identity.manifest.fighter_import_sha256)===canonicalJson(imports),'Fighter import settings differ from recorded commit');
+  const generator=Object.keys(imports).length?gitObjectHash(repo,identity.port_commit,'tools/fighting/animation/prepare_native.py'):null;
+  require_(identity.manifest.fighter_import_generator_sha256===generator,'Fighter import preparer differs from recorded commit');
 }
 
 export function verifyFinalProvenance(repo, identity) {

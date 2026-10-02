@@ -14,6 +14,7 @@ export function worldArt(id) {
   // Accepted rev3 Foundry retains its production worlds/ export path. Runtime
   // map.gd already loads these bytes; candidate naming must not invent a path.
   if (id==='gravemill-foundry') return 'res://multiplayer_worlds/art/worlds/gravemill-foundry.glb';
+  if (['vesper-viaduct','abyssal-pressureworks','stormglass-causeway'].includes(id)) return `res://multiplayer_worlds/art/worlds/${id}.glb`;
   return REVIEWED_CANDIDATES.includes(id) ? `res://multiplayer_worlds/art/${id}/${id}.glb`
     : `res://multiplayer_worlds/art/${['switchyard-ward','rainmarket-exchange'].includes(id)?'':'worlds/'}${id}.glb`;
 }

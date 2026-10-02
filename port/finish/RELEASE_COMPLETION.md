@@ -20,7 +20,7 @@ boundaries.
 | Fighting camera readability | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing correction merged at `1bff0281`; six parent source checks pass, native four-stage comparison still pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | Source correction merged at `91ad0ce5`; bounded native follow-up assigned to current grant-C owner after primary Parallax work |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
-| Queued asset integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Implement missing test-only candidate admission/hosted journey harnesses; reconcile every builder/receipt with refined material semantics before serial production |
+| Queued asset integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | 13 private hosted journeys, refined builder contracts and strict shutdown receipts integrated; 15 Node + 5 helper checks pass; awaiting asset-production grant |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Extension already integrated; fresh exact-input ledger required after production candidate stabilizes; no current engine grant |
 | Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Extend required queued-asset resource/provenance closure and negative tests; preserve strict final preflight and historical release validation |
 
@@ -311,3 +311,31 @@ the native gate are ready in `godot/tests/fighting/presentation/`; exact pending
 four-stage comparisons are documented in
 `port/fighting/presentation/CAMERA_FOLLOWUP.md`. No camera-native grant is implied
 by this merge; grant C retains its explicit Parallax/light-check scope.
+
+## Candidate asset journeys integrated; source follow-up active
+
+Asset `935e24a0` is merged as `7c74b553`: explicit private admission and thirteen
+selectable two-native-client journeys (six Vesper, six Abyssal, one Stormglass),
+plus actual builder material-role/UV/COLOR_0/selective-normal/fingerprint checks.
+Public catalogs remain closed. Native journeys, imports and production exports
+are still unrun. The lane passed ten contracts and five helper tests at its own
+anchor, with no missing preflight dependencies.
+
+Parent rerun is **9/10**, not green: the broad preservation assertion against
+`652b8f3c` rejects the subsequently reviewed Foundry light profile correction.
+That legitimate identity advancement is assigned back to the owner with frozen
+authority/catalog safeguards retained. Parent review also found that hosted
+journey success and logs were written before native teardown, omitting late
+errors. The active source follow-up must add bounded graceful fixture shutdown,
+complete post-exit logs, strict error/exit validation and failure receipts before
+these journeys can establish acceptance. No result is upgraded by this merge.
+
+The follow-up `597a10e2` is now merged as `cb184dc6`. Its guard preserves the
+original frozen paths and pins only the legitimate Foundry profile exception to
+reviewed `91ad0ce5`. Candidate fixtures can gracefully quit after results; outcome
+success waits for drained final logs, expected zero exits, teardown notifications
+and server closure. Spawn/nonzero/forced-exit/missing-notification/engine/leak
+failures retain failure receipts and cannot become successful outcomes. Parent
+ran all fifteen Node contracts and five helper tests successfully. No engine or
+authority simulation ran; actual build/reopen/import/hosted acceptance remains
+pending the serial asset-production grant after C.

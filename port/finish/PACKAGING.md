@@ -2,6 +2,11 @@
 
 ## Resumed Windows release preparation
 
+Latest source follow-up: [PACKAGING_ASSETS.md](PACKAGING_ASSETS.md) supersedes the
+earlier missing-fighter checkpoint. Actual committed fighters now pass strict
+closure; exact import settings and seven still-required queued production units
+have explicit fail-closed inventories and recorded-commit checks.
+
 The packaging lane has now merged canonical `e38b3662` at `88cbc406` and prepared
 fighting/operator-finish/Moth raw-resource closure plus pinned Windows CI. See
 [RELEASE_PREP.md](RELEASE_PREP.md) for the current source checkpoint, 234 passing
