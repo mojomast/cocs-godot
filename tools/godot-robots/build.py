@@ -181,8 +181,13 @@ def metrics(meshes):
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True); MASTERS.mkdir(parents=True, exist_ok=True)
+    # One serialization owns both the archived package input and receipt hash.
+    recipe_bytes = json.dumps(manifest(), sort_keys=True).encode('utf-8')
+    recipe_archive = HERE / 'generated' / 'recipe.json'
+    recipe_archive.parent.mkdir(parents=True, exist_ok=True)
+    recipe_archive.write_bytes(recipe_bytes)
     receipt = {'seed': SEED, 'blender': bpy.app.version_string, 'assets': {},
-               'recipeSHA256': hashlib.sha256(json.dumps(manifest(), sort_keys=True).encode()).hexdigest(),
+               'recipeSHA256': hashlib.sha256(recipe_bytes).hexdigest(),
                'generatorSHA256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
     for skin, role in SKINS.items():
         mat = reset(); measured = {}

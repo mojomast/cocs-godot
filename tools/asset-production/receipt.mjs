@@ -5,6 +5,7 @@ import {dirname,basename,resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {materialRule as ruleFor,validateSurface} from './material-validation.mjs';
+import {inventory,inputSnapshot} from './package-receipt.mjs';
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const plan=JSON.parse(readFileSync(resolve(root,'port/finish/ASSET_PRODUCTION.json')));
 const unit=plan.units.find(u=>u.id===process.argv[2]);
@@ -46,6 +47,9 @@ for(const path of exports){
 const measuredTriangles=rows.reduce((n,r)=>n+r.triangles,0);
 if(measuredTriangles>unit.configuredTriangleCap)throw Error(`${unit.id}: ${measuredTriangles} exceeds configured cap ${unit.configuredTriangleCap}`);
 const report={unit:unit.id,sourceCommits:unit.sourceCommits,sourceHashes,sourceFingerprint,masters:masters.map(p=>({path:p.slice(root.length),sha256:sha(readFileSync(p))})),exports:rows,measuredGLBTriangles:measuredTriangles,configuredTriangleCap:unit.configuredTriangleCap,accepted:false,pending:unit.gates};
+const packageSpec=inventory(root)[unit.id];
+if(packageSpec.missing.length)throw Error('Missing exact package production inputs: '+packageSpec.missing.join(', '));
+report.packageInputHashes=inputSnapshot(packageSpec.expected,p=>readFileSync(resolve(root,p)));
 const out=resolve(plan.evidenceRoot,'receipts',new Date().toISOString().replaceAll(':','-'));
 mkdirSync(out,{recursive:true});writeFileSync(resolve(out,unit.id+'.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({unit:unit.id,measuredTriangles,report:resolve(out,unit.id+'.json'),accepted:false}));
