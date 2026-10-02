@@ -373,7 +373,22 @@ func trace_input(controls: Dictionary, result: Error) -> Dictionary:
 	if controls.has("weapon"): selected["weapon"] = controls.weapon
 	return {"schema":1, "event":"input_queue", "round":round_starts,
 		"actor_id":client.actor_id, "ack":client.last_ack, "phase":phase,
-		"controls":selected, "queue_result":int(result), "queued":result == OK}
+		"controls":selected, "queue_result":int(result), "queued":result == OK,
+		"input_seq":client.input_seq, "gates":trace_input_gates()}
+
+func trace_input_gates() -> Dictionary:
+	# Read only: never sample/clear input or serialize endpoint/identity fields.
+	var focus: Control = get_viewport().gui_get_focus_owner() if is_inside_tree() else null
+	return {"application_focus":application_focused,
+		"window_focus":get_window().has_focus() if is_inside_tree() else false,
+		"gui_focus":str(focus.get_path()) if focus != null else "",
+		"pointer":Input.mouse_mode, "overlay":SettingsAccess.overlay_open(),
+		"social":social_capturing(), "stale":snapshot_watch.stale(),
+		"received_pose":received_pose, "lifecycle":presentation.lifecycle.status,
+		"spectator":client.spectating, "w_down":combat_actions.down.has("k%d" % KEY_W),
+		"w_held":combat_actions.key(KEY_W),
+		"w_mapping":combat_actions.bindings.down.get("KeyW", ""),
+		"w_blocked":combat_actions.bindings.blocked.has("KeyW")}
 
 func emit_snapshot_trace(reseeded: bool) -> void:
 	if not trace_enabled or trace_count >= native_trace_limit(): return
@@ -837,6 +852,8 @@ func observe_combat_input(event: InputEvent) -> void:
 	combat_actions.record(event, combat_controls_active(), presentation.local_actor)
 
 func _input(event: InputEvent) -> void:
+	if trace_enabled and event is InputEventKey and event.physical_keycode == KEY_W:
+		emit_native_trace({"schema":1,"event":"w_input_entry","pressed":event.pressed,"echo":event.echo,"gates":trace_input_gates()})
 	if client.spectating:
 		# Observe physical releases without capturing or writing any actor packet.
 		combat_actions.record(event, false)
@@ -849,6 +866,8 @@ func _input(event: InputEvent) -> void:
 		return
 	# Observe releases even when a GUI control handles the event later.
 	observe_combat_input(event)
+	if trace_enabled and event is InputEventKey and event.physical_keycode == KEY_W:
+		emit_native_trace({"schema":1,"event":"w_input_recorded","pressed":event.pressed,"gates":trace_input_gates()})
 	if weapon_selection.handle_event(event, weapon_controls_active(), presentation.local_actor):
 		if weapon_selection.pending >= 0: combat_actions.cancel_aim()
 		get_viewport().set_input_as_handled()
