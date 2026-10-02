@@ -1,4 +1,5 @@
 extends RefCounted
+const LatticeCaption = preload("res://lattice/event_caption.gd")
 ## Plain, non-live text. No speech, audio playback, positional inference or input.
 const TTL := 2.2
 const CATALOG_PATH := "res://experience/source_catalog.json"
@@ -53,6 +54,8 @@ func text_for(event: Dictionary) -> String:
 		var prefix := "Alt fire"
 		if kind in ["alt-state", "alt-mode"]: prefix = "Alt mode off" if event.get("alt") == false or event.get("on") == false else "Alt mode"
 		return prefix + (" · " + label if not label.is_empty() else "")
+	var lattice_text := LatticeCaption.text_for(event)
+	if not lattice_text.is_empty(): return lattice_text
 	return str(catalog.get("captions", {}).get(kind, {}).get("text", ""))
 
 static func event_allowed(event: Dictionary, actor_id: int, team: Variant = null) -> bool:
