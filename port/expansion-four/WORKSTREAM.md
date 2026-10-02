@@ -22,6 +22,24 @@ actual ordinary-input lap and hosted native acceptance pass.
 
 ## Source/code checkpoints
 
+- **Replay — `9120d991` + optional session hook `9794575a`, ready for engine.**
+  Recipient-delivered recording, unique local clip storage, metadata library,
+  source JSON import and read-only play/pause/seek/speed/subject controls are
+  implemented through unchanged source demo logic in a bounded local Node helper.
+  First admission is Meridian Exchange DM/TDM/Instagib/Rockets; other families
+  explicitly fail admission. Playback has no authority client or award path.
+- **78/78 Node checks passed**, including source-exact seek/interpolation, actual
+  seated/spectator recipient-stream recording, malformed-file handling and an
+  authenticated helper lifecycle. Six GDScript files passed grammar parsing only.
+  The four-file standalone runtime package was generated and exercised. Meridian
+  tests do not establish private-intel COCS recording parity; COCS is unsupported.
+- Parent integration must add Home **Replays** without starting authority and
+  include `replay/admission.json`, native renderer dependencies and the separate
+  `replay-runtime` closure. The optional four-line live-session capture hook must
+  be reconciled with other queued session changes. Native record/save/reopen,
+  exact seek poses, zero post-leave authority input, UI/audio/lifecycle inspection
+  and both extracted-package checks remain pending. No engine grant is implied.
+
 - **Trailer — `1c65712b`, `05f2a216`, `44dafb18`, ready for capture.** Executable
   v3 pipeline plans sixteen shots / 75 source seconds / 1,800 individually
   rendered frames at 1280×720, with four chapter identities, six camera splines,
