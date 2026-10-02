@@ -6,7 +6,7 @@
   "provenance": "Original authored fighting frame data and move names; source operator identities imported unchanged. No downloaded motion or external fighter content.",
   "source_files": {
     "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
-    "port/fighting/DESIGN.md": "52754c58c4c3b44b53450427e6ad73834a467c3d132e03e341952e1f338b10ca",
+    "port/fighting/DESIGN.md": "c5a5750a4f72646106adf97972ea56f5e61668a8641bf3476d18ad483881b9f0",
     "godot/fighting/data/roster.json": "2398099cacb5e6b4773d3aa3d9bdece56e005289aab94ecd776ce95b2bf59f2d",
     "godot/fighting/data/rules.json": "5a89f073c107d504b34b6cb58d00599009245533a92519610d92616a6e4cff4a",
     "port/fighting/content/ANIMATION_COVERAGE.json": "7681c7ffb3deec42eb411527b52bb47010ccbc90a04764768f45b78dddcda026",

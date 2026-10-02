@@ -71,6 +71,23 @@ integration. No lane received a Blender/Godot grant at launch.
 
 ## Received research and parent review
 
+### Fighting content checkpoint
+
+Content `827d24a8` + `79d98652` is merged as `0193f14a` + `b0669433`.
+Nine operators have 138 authored moves (135 required plus three Gemini stance
+variants), 27 proposed combo traces, 336 state/combat clip requirements and 25
+paired timelines across nine victim bodies (225 victim instances). Fourteen
+source tests passed on the lane; actual-core combos, native motion and balance
+remain pending. `content/CONTRACT_DETAILS.md` now supplies exact optional fields
+to the core, animation, presentation, effects and independent verification owners.
+
+Parent merge check initially passed 13/14: the design hash correctly detected the
+newly appended Helix stage/resource decision. Parent inspected the diff: only the
+fourth-stage eligibility/resource note changed, with combat interfaces/stat targets
+unchanged. `content/FREEZE.json` now records the reviewed updated DESIGN hash;
+runtime roster/rules, source identities and all other content hashes are unchanged.
+Initial failure is retained at `/tmp/opencode/fighting-parent-content-tests.tap`.
+
 - Engine report `87b7fc4f` (parent `98064fb4`) received. Parent independently
   verified Castagne's v0.58 Godot-3 release and Sakuga's Godot-4.7/.NET README.
   An isolated local fixed-tick Godot fighter is the leading recommendation;
