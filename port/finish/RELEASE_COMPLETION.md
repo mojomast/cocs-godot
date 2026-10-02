@@ -99,3 +99,25 @@ release. Parent receipts: `/tmp/opencode/final-resources-parent-tests.tap` and
 No Windows build, new CI dispatch, archive or release has been produced by this
 checkpoint. Follow `RELEASE_PREP.md` after final assets/native review and explicit
 export grant; the prior published runtime and Windows result remain historical.
+
+## Remaining asset consolidation checkpoint
+
+Consolidated asset branch `23e06c86` is merged at `98e7b948`: Vesper, Abyssal,
+Stormglass, robot skins/props, vehicle fleet and biome scenery source recipes and
+optional adapters are now together. The asset-only sequence and exact bounded
+commands are in `ASSET_PRODUCTION.md` / `.json`; this does not displace the current
+native grant or the queued fighting animation production step.
+
+New builders include real attachment-local Moth UV finishing, master/export source
+fingerprints, reopened-master checks and rejection of missing UVs, flat-only
+materials, stale provenance and exceeded configured budgets. Vesper/Abyssal have
+empty public `modeBindings` and separate candidate mode lists; no unaccepted maps
+were registered. Admission metadata changed their canonical wrapper identities,
+while authority geometry was checked unchanged. Accepted maps remain untouched.
+
+Parent reran source-only preflight and all four consolidation contracts:
+`/tmp/opencode/asset-production-parent-preflight.log` and
+`/tmp/opencode/asset-production-parent-contracts.tap`. Source consolidation is
+complete; all new masters/GLBs and their native production acceptance remain
+pending explicit serial grants. Parallax's interior correction remains in its
+original map worktree and requires Moth mount revalidation when promoted.
