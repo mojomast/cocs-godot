@@ -1,4 +1,5 @@
 extends RefCounted
+const Feedback = preload("res://lattice/world_feedback.gd")
 ## Compact, recipient-only copy for the in-world instrument panel. This is
 ## display data: no local wave clock, guessed enemies, purchase debit or orders.
 
@@ -24,6 +25,10 @@ static func projection(projection: Dictionary, target: Dictionary, topology: Dic
 	if fact is Dictionary and not fact.is_empty():
 		result.goal = safe(fact.get("label", target_id), "OBJECTIVE")
 		result.objective = "%s  ·  %s" % ["CAPTURE LEGAL" if fact.get("capture_legal") == true else "HOLD / CHECK LINK", safe(fact.get("supply"), "SUPPLY UNKNOWN")]
+		for node: Dictionary in projection.get("nodes", []):
+			if node.get("id") == target_id:
+				result.objective += " · " + str(Feedback.objective(node, actor).progress)
+				break
 		var x: Variant = actor.get("x")
 		var z: Variant = actor.get("z")
 		if (x is int or x is float) and (z is int or z is float) and is_finite(float(x)) and is_finite(float(z)):

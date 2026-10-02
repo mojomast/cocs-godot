@@ -2,6 +2,7 @@ extends Control
 ## In-world presentation only. Every fact comes from the current recipient
 ## projection or an exact local action card; no collision, targeting or orders.
 const Model = preload("res://lattice/world_tactical_model.gd")
+const Feedback = preload("res://lattice/world_feedback.gd")
 ## Below this logical width the two instrument cards stack and compress so a
 ## 150%-scaled 760x520 viewport (roughly 507x347 logical) still shows every
 ## essential source-backed fact without overlap. The command deck keeps the
@@ -178,11 +179,15 @@ func present(projection: Dictionary, target: Dictionary, topology: Dictionary, a
 	economy.text = "PERSONAL REQ  %s     TEAM FLUX  %s" % [model.req, model.flux]
 	intel.text = model.intel
 	intel.visible = not intel.text.is_empty()
-	receipt.text = Model.buy_receipt(actions)
+	var action_feedback := Feedback.receipt(actions, projection.get("context", {}).get("revision"))
+	receipt.text = str(action_feedback.get("text", ""))
+	receipt.add_theme_color_override("font_color", Color("f2b57a") if action_feedback.get("status") == "rejected" else Color("e4f3f0"))
 	receipt.visible = not receipt.text.is_empty()
 	combat.text = combat_text.left(160)
 	combat.visible = not combat.text.is_empty()
 	control_hint.text = "RELEASED  ·  RELEASE CONTROLS, THEN CLICK WORLD TO RESUME   ·   C DECK   ·   F12 SETTINGS" if controls == "released" else "C  COMMAND DECK   ·   TAB  SCORES   ·   ESC  RELEASE POINTER   ·   F12 SETTINGS"
+	if controls != "released" and action_feedback.get("status") == "rejected":
+		control_hint.text = "C DECK · " + str(action_feedback.get("recovery", ""))
 	var context: Dictionary = projection.get("context", {})
 	var identity := "%s/%s/%s" % [projection.get("map"), context.get("revision"), context.get("actor")]
 	if identity != epoch:
