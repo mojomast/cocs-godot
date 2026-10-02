@@ -11,16 +11,16 @@
   },
   "source_files": {
     "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
-    "godot/fighting/data/roster.json": "2398099cacb5e6b4773d3aa3d9bdece56e005289aab94ecd776ce95b2bf59f2d",
+    "godot/fighting/data/roster.json": "a736dcfe91d44a08b165e1f7191420617984a561972505b0dd53df1b22cd4748",
     "godot/fighting/data/rules.json": "5a89f073c107d504b34b6cb58d00599009245533a92519610d92616a6e4cff4a",
-    "godot/fighting/data/schema.json": "1c54f6f4786127bb13afcd1c65e07e11244c774c28a58e72bca1e0ddab5c38d7",
+    "godot/fighting/data/schema.json": "a30f92cd7656778b8adafd7d1bea3aaac1276f5e62e0700678e4629811d7f10c",
     "port/fighting/content/ANIMATION_COVERAGE.json": "7681c7ffb3deec42eb411527b52bb47010ccbc90a04764768f45b78dddcda026",
     "port/fighting/content/COMBO_ESTIMATES.json": "c5abd988b48a43b046723c3fb3201b5b09ae18269dfe0dd8606c30d84d48f7b6",
     "tools/fighting/content/balance_targets.json": "801805f80c061b6a627d324c3712514001330e63f076dd59b9ec7e9dbad82c55",
     "tools/fighting/content/state_keys.json": "4d75716ac9b32652d420a480e5153d903ab7d1f996972c9060699926e122f9f2",
-    "tools/fighting/content/schema.mjs": "6a943fa021545a422b2d0fac3a1c05743f65c9187a26072ffbd5b3dc24867cb0",
-    "tools/fighting/content/trace.mjs": "4bb284834086bf6312b123713d53ae8769a5a58bc58cf764fb58c7b83638236e",
-    "tools/fighting/content/author.mjs": "afaa7540b44bc9aabcdb067f1c669906a2f54425725515dd205ce6e3a100c04e",
-    "tools/fighting/content/validate.mjs": "16d144940d9e3020a034531956860ef4fe49cd04ddf5b010912bdf6be04defc1"
+    "tools/fighting/content/schema.mjs": "9ed94cf9a518d32dcc53c9bf3152d5ca3d405c270d7f1115e52308af72202cd9",
+    "tools/fighting/content/trace.mjs": "da19099b5d1af130ab53b188e0d47d93c33fbc531190e611ca79f0d53b75fefd",
+    "tools/fighting/content/author.mjs": "6d2dc86210f63431b1b149ab1eeceaa776d26dfd06e0976f2d7c3dcb44dcb2d2",
+    "tools/fighting/content/validate.mjs": "3c7a6deaa6b45b829940ac1f224d96f9acf1b9694699c4061278db6a862c7cb5"
   }
 }

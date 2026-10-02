@@ -56,6 +56,11 @@ it contains no authoritative combat simulation.
    fighters using each trace's fixture preconditions; air-corner traces begin
    with both actors already airborne. DeepSeek includes a real 36-tick back-charge
    setup; maintain its back hold through normals and forward release for S1.
+   Grounded fixtures start at the rules' legal pushbox width (660 mm). During
+   DeepSeek's charge, replay its explicit `defender_setup_inputs` using the same
+   initial attacker-facing conversion, so the same-operator dummy walks alongside
+   the attacker through ordinary inputs. Release the dummy at first attack.
+   Place the actors once before playback; never teleport them per step.
 3. Expand sparse trace samples to two canonical input dictionaries each tick.
    Use `trace.mjs`: a duration holds axes/buttons, while a rising-edge `pressed`
    hint is emitted only on the first tick; unspecified ticks are neutral. Core

@@ -822,14 +822,14 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 550,
+            "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
             "corner": false,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
         },
         {
           "name": "Signature special confirm",
@@ -867,14 +867,14 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 550,
+            "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
             "corner": false,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
         },
         {
           "name": "Air corner chain",
@@ -1740,14 +1740,14 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 550,
+            "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
             "corner": false,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
         },
         {
           "name": "Signature special confirm",
@@ -1785,14 +1785,14 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 550,
+            "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
             "corner": false,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
         },
         {
           "name": "Air corner chain",
@@ -2669,14 +2669,14 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 550,
+            "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
             "corner": false,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
         },
         {
           "name": "Signature special confirm",
@@ -2714,14 +2714,14 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 550,
+            "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
             "corner": false,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
         },
         {
           "name": "Air corner chain",
@@ -3597,14 +3597,14 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 550,
+            "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
             "corner": false,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
         },
         {
           "name": "Signature special confirm",
@@ -3642,14 +3642,14 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 550,
+            "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
             "corner": false,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
         },
         {
           "name": "Air corner chain",
@@ -4686,14 +4686,14 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 550,
+            "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
             "corner": false,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
         },
         {
           "name": "Signature special confirm",
@@ -4731,14 +4731,14 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 550,
+            "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
             "corner": false,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
         },
         {
           "name": "Air corner chain",
@@ -5622,14 +5622,14 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 550,
+            "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
             "corner": false,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
         },
         {
           "name": "Signature special confirm",
@@ -5639,6 +5639,16 @@
             "special1"
           ],
           "setup_inputs": [
+            {
+              "tick": 0,
+              "axis_x": -1,
+              "axis_y": 0,
+              "held": 0,
+              "pressed": 0,
+              "duration": 36
+            }
+          ],
+          "defender_setup_inputs": [
             {
               "tick": 0,
               "axis_x": -1,
@@ -5678,14 +5688,14 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 550,
+            "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
             "corner": false,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
         },
         {
           "name": "Air corner chain",
@@ -6560,14 +6570,14 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 550,
+            "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
             "corner": false,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
         },
         {
           "name": "Signature special confirm",
@@ -6605,14 +6615,14 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 550,
+            "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
             "corner": false,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
         },
         {
           "name": "Air corner chain",
@@ -7479,14 +7489,14 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 550,
+            "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
             "corner": false,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
         },
         {
           "name": "Signature special confirm",
@@ -7524,14 +7534,14 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 550,
+            "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
             "corner": false,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
         },
         {
           "name": "Air corner chain",
@@ -8402,14 +8412,14 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 550,
+            "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
             "corner": false,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
         },
         {
           "name": "Signature special confirm",
@@ -8447,14 +8457,14 @@
           ],
           "status": "proposed",
           "preconditions": {
-            "distance": 550,
+            "distance": 660,
             "attacker_y": 0,
             "defender_y": 0,
             "corner": false,
             "meter": 0,
             "charge_back_ticks": 0
           },
-          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof."
+          "notes": "Training fixture places actors as specified; charge setup uses real inputs. Schedule estimates first-active-frame contacts and shared hitstop. Native core must verify positions, contact, stun continuity, scaling and landing; not runtime proof. Original ground fixture was 550 mm, below the 660 mm pushbox width; corrected to legal spacing. Charge defender follows through authored ordinary movement inputs, with no per-tick position writes."
         },
         {
           "name": "Air corner chain",
