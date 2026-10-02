@@ -9,6 +9,7 @@ const HandGrips = preload("res://source_operators/hand_grips.gd")
 const WeaponArt = preload("res://first_person/art_adapter.gd")
 const WeaponFinish = preload("res://first_person/finish.gd")
 const ArmorDetail = preload("res://source_operators/armor_detail.gd")
+const MothFinish = preload("res://source_operators/moth_finish/binder.gd")
 const Locomotion = preload("res://source_operators/locomotion.gd")
 const Motion = preload("res://source_operators/motion_math.gd")
 const Ground = preload("res://source_operators/ground_contact.gd")
@@ -41,6 +42,8 @@ var death_start: Dictionary = {}
 var death_target: Dictionary = {}
 var last_live_pose: Dictionary = {}
 var armor_details: Array[MeshInstance3D] = []
+var moth_finish := MothFinish.new()
+var finish_report: Dictionary = {}
 var locomotion := Locomotion.new()
 var handling_weight := Vector3.ZERO
 var handling_velocity := Vector3.ZERO
@@ -56,9 +59,10 @@ func apply_identity(actor: Dictionary) -> void:
 	set_meta("team",actor.get("team",""))
 	if character == next:
 		_apply_team(actor.get("team"))
-		ArmorDetail.apply_team(armor_details,team_material)
+		if not finish_report.get("installed",false): ArmorDetail.apply_team(armor_details,team_material)
 		return
 	_clear_death_animation()
+	moth_finish.clear()
 	if is_instance_valid(source):
 		remove_child(source)
 		source.free()
@@ -87,6 +91,8 @@ func apply_identity(actor: Dictionary) -> void:
 	_collect(source)
 	_apply_team(actor.get("team"))
 	armor_details = ArmorDetail.build(nodes,character,team_material)
+	finish_report = moth_finish.bind(source,character)
+	if not finish_report.get("installed",false): push_warning("Operator Moth finish fallback %s: %s" % [character,finish_report.get("errors",[])])
 	locomotion.reset()
 	handling_weight = Vector3.ZERO; handling_velocity = Vector3.ZERO
 	rig.configure(nodes)
@@ -125,6 +131,7 @@ func _apply_team(team: Variant) -> void:
 	var blue: bool = key in ["1","1.0","blue"]
 	if team_material:
 		team_material.albedo_color = Color(Catalog.OPERATORS[character].teamPalette[0 if red else 1].color) if red or blue else neutral_armor
+		moth_finish.set_team_color(team_material.albedo_color)
 	for bar: MeshInstance3D in team_bars:
 		var index: int = int(str(bar.name).right(1))
 		bar.visible = (red or blue) and (index == 0 or blue)
