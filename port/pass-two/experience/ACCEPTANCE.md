@@ -16,6 +16,18 @@ Evidence root: `/home/mojo/.tmp-on-disk/cocs-pass-two-experience-evidence-202610
 | `gdparse` via `uv tool run --from gdtoolkit` | PASS grammar parse for new helpers, presenter, native contract, combined-arms HUD and all four session-hook files. `gdparse-final.log`. Not a Godot semantic/type check. |
 | `git diff --check` | PASS |
 
+Harness follow-up checks (still no engine): `node --check` on the connected
+runner/process utility; **six Node tests pass** for four-route selection,
+source-public snapshot assertions, TERM-resistant parent/grandchild escalation,
+live descendants after leader exit, missing executable handling, ordinary exit,
+deadline and interruption rejection. Final logs: `connected-node-final.log`,
+`connected-node-syntax.log`, and `connected-gdparse-final.log`; the earlier logs
+remain. Synthetic process logs are retained beneath the unique
+`/tmp/opencode/spectator-process-check-*` path printed in the Node log.
+The actual CLI `--family=world --compact --plan` output is retained as
+`connected-world-plan.json`. Grammar parsing covers the new native driver and
+the two tests-only route subclasses. These are not native passes.
+
 The initial missing-`three` failure is retained in `source-oracle-attempt1.log`.
 Resolved using the authorized parent `node_modules` symlink. No failed native
 attempts exist because no native process was launched.
@@ -38,6 +50,75 @@ Use only after explicit grant, with `LP_NUM_THREADS=1` and pinned binary:
    captures, not only the synthetic lifecycle contract.
 
 ## Connected acceptance matrix / execution plan
+
+### Executable commands — prepared, honestly unexecuted
+
+The matrix is now implemented by `tools/experience/connected-native.mjs` plus
+`godot/tests/experience/connected_native.gd`. Run these **only after explicit
+engine grant** and the normal native asset/import prerequisites are available:
+
+```sh
+export GODOT_BIN=/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64
+export LP_NUM_THREADS=1
+export EVIDENCE_DIR=/home/mojo/.tmp-on-disk/cocs-pass-two-experience-evidence-20261002
+node tools/experience/connected-native.mjs --family=mode
+node tools/experience/connected-native.mjs --family=world
+node tools/experience/connected-native.mjs --family=sports
+node tools/experience/connected-native.mjs --family=combined_arms
+```
+
+Run each again with `--compact` for **760×520 / actual production UI150**;
+default is **1280×800 / UI100**. Do not parallelize these engine runs without a
+new grant. `--plan` on any command is a safe code-only route description; it
+starts no server, Xvfb or Godot. The checked-in worktree currently lacks the
+ignored `godot/content/generated/manifest.json`; use the normal parent-approved
+semantic export/import preparation in the engine slot, not a harness bypass.
+
+Each invocation creates a unique `spectator-FAMILY-{wide,compact}-*` evidence
+directory. Each logical peer has isolated saved settings; every process epoch
+has its own native log, screenshot directory and XDG paths. Evidence includes:
+
+- `plan.json`, exact per-epoch launch arguments, and `native-reports.json`;
+- `wire.ndjson`, with authoritative seat/phase at every incoming input (neutral
+  packets count), source events and public snapshot actor scalars; credentials
+  are redacted;
+- `source-actions.json`, including real damage/death event IDs and clocks,
+  duplicate delivery of original event bytes, starvation and source BOT takeover;
+- per-peer PNGs plus logical viewport/control rectangles, shaped minimum sizes,
+  source/public target scalars and actual content-scale factor;
+- `failure.log` on error and `teardown.json` with each process-group exit,
+  escalation and remaining live members, plus authority/control listener closure.
+
+The runner owns the existing `tools/godot-dev/xvfb_run.py` wrapper for each
+native peer. Commands have awaited deadlines, the total journey has a 240-second
+bound, native drivers have a 260-second watchdog, and teardown escalates TERM to
+KILL and waits for the owned group to stop. The source remains at its normal
+clock, with requested 120-second round limits and an explicit five-second
+disconnected-seat grace for the expiry test. Nothing fast-forwards source time
+or manufactures event metadata.
+
+**Route distinctions and remaining integration proof:** Mode alone has an
+ordinary Retry-seat UI, so it is the full same-process reconnect/expired-token
+privacy gate. World, sports and combined arms exercise their real explicit
+Settings Leave → supervised Home → rejoin path; they do not claim a missing
+Retry UI. Sports does not support infantry damage/death, and skips those source
+stages. The other routes compare real within/outside-five-second ASSIST metadata
+against `assistCredit`, and record watched-target death fallback. A departing
+player remains a public BOT actor in the source, so removal is not fabricated.
+
+The mode subclass's existing fixed-camera snapshot reset is a **known static
+integration concern** (`godot/mode_expansion/demo.gd:166–168`). The driver now
+checks free-camera continuity across callbacks and may fail there until the
+parent reconciles that override. All connected commands remain unexecuted;
+parsing and the synthetic tests do not waive this gate or screenshot review.
+
+**Package closure:** explicitly allowlist
+`godot/experience/public_event_types.json` for runtime shipping. It is loaded by
+`res://experience/spectator_events.gd`; omitting it breaks the public-event
+filter. The native test driver/scenes and oracle fixtures must remain excluded
+from exported production resources.
+
+### Matrix assertions
 
 Every admitted route gets **two native players plus one late native spectator**.
 Use existing authority/native journey launch utilities; retain a fresh directory
