@@ -118,6 +118,9 @@
     },
     "tern-archipelago": {
       "name": "Tern Archipelago"
+    },
+    "gravemill-foundry": {
+      "name": "Gravemill Foundry"
     }
   },
   "routes": [
@@ -420,7 +423,8 @@
             "thermal-divide",
             "sirocco-circuit",
             "copper-bowl",
-            "tern-archipelago"
+            "tern-archipelago",
+            "gravemill-foundry"
           ],
           "default": "switchyard-ward"
         },
@@ -485,6 +489,14 @@
             "tern-archipelago": [
               "cocs",
               "cocs-coop"
+            ],
+            "gravemill-foundry": [
+              "deathmatch",
+              "teamdeathmatch",
+              "domination",
+              "assault",
+              "payload",
+              "combined-arms"
             ]
           },
           "default": "deathmatch"
@@ -517,6 +529,7 @@
           "maps": [
             "breakwater-exchange",
             "copper-bowl",
+            "gravemill-foundry",
             "rainmarket-exchange",
             "sirocco-circuit",
             "switchyard-ward",
@@ -534,6 +547,14 @@
             ],
             "copper-bowl": [
               "puma-soccer"
+            ],
+            "gravemill-foundry": [
+              "assault",
+              "combined-arms",
+              "deathmatch",
+              "domination",
+              "payload",
+              "teamdeathmatch"
             ],
             "rainmarket-exchange": [
               "armsrace",

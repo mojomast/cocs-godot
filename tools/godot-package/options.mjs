@@ -31,6 +31,10 @@ export const EXPERIENCES = {
   'lattice-world': {scene:'res://lattice/world_demo.tscn', maps:{'asterion-relay':['cocs','cocs-coop'], 'monsoon-foundry':['cocs','cocs-coop']}},
 };
 
+// Additive Foundry binding; each listed mode has a scoped native full-round proof.
+EXPERIENCES['multiplayer-worlds'].maps['gravemill-foundry'] = ['deathmatch','teamdeathmatch','domination','assault','payload','combined-arms'];
+EXPERIENCES['multiplayer-worlds'].identity['gravemill-foundry'] = {scene:'res://multiplayer_worlds/demo.tscn',modes:EXPERIENCES['multiplayer-worlds'].maps['gravemill-foundry']};
+
 // Standalone exploration/labs, deliberately outside the source map routes.
 export const NATIVE_EXPERIENCES = {
   showcase: {scene:'res://showcase/demo.tscn'},
