@@ -784,7 +784,7 @@ func on_snapshot(frame: Dictionary) -> void:
 		print("PORT_LIFECYCLE_LIVE_OK starts=", round_starts, " results=", round_results, " restarted_actors=", presentation.actors.size(), " restarted_ack=", client.last_ack, " map=", current_id, " normal_rate=true")
 		client.disconnect_server()
 		get_tree().quit(0)
-	label.text = "NODE-AUTHORITATIVE PROTOTYPE · %s\n" % selected_mode + presentation.hud_text + "\nClick: capture/fire · RMB: ADS · Z/MMB: alt · Esc: release · WASD: move · Space: jump\nShift: sprint · Ctrl/C: crouch · R: reload · E: interact · X: mobility · Q: power · F: melee · G: grenade · 1–9/0 or wheel: weapon | ACK %d" % client.last_ack
+	label.text = "NODE-AUTHORITATIVE PROTOTYPE · %s\n" % selected_mode + presentation.hud_text + preload("res://input_bindings/hints.gd").resolve("\nClick: capture · LMB: fire · RMB: ADS · Z/MMB: alt · Esc: release · WASD: move · Space: jump\nShift: sprint · Ctrl/C: crouch · R: reload · E: interact · X: mobility · Q: power · F: melee · G: grenade · 1–9/0 or wheel: weapon | ACK %d" % client.last_ack)
 	var smoke_pickups_ok: bool = pickups.markers.is_empty() if selected_mode == "instagib" else not pickups.markers.is_empty()
 	var smoke_fire_ok: bool = combat.local_launches > 0 if selected_mode == "rockets" else combat.shots > 0
 	if smoke and smoke_fire_ok and moved and fired and client.last_ack > 10 and presentation.actors.size() == selected_bot_count + 1 and (selected_bot_count == 0 or presentation.rendered_remote_poses > 10) and smoke_pickups_ok and not world.get_node("StaticPickupMarkers").visible:
@@ -833,8 +833,8 @@ func observe_combat_input(event: InputEvent) -> void:
 
 func _input(event: InputEvent) -> void:
 	if SettingsAccess.overlay_open() or social_capturing():
+		combat_actions.record(event, false, presentation.local_actor)
 		if (event is InputEventKey or event is InputEventMouseButton) and not event.pressed:
-			combat_actions.record(event, false, presentation.local_actor)
 			weapon_selection.handle_event(event, false, presentation.local_actor)
 		return
 	# Observe releases even when a GUI control handles the event later.

@@ -198,7 +198,7 @@ func show_brief(id: String) -> void:
 	brief = true
 	card.show()
 	heading.text = "THE QUIET RELAY\n" + Catalog.TITLES[Catalog.MAP_IDS.find(id)]
-	body.text = "A surviving archive is calling through the quarantine. Follow ECHO along the power corridor, break the security cordon, and restore the network.\n\nWASD move · Shift sprint · Space jump\nMouse aim · LMB fire · RMB aim · R reload\nE interact · Q power · F melee · G grenade\n1–9 / wheel weapons · Esc release cursor\n\nClick the world to take control after each checkpoint."
+	preload("res://input_bindings/hints.gd").bind(body, "A surviving archive is calling through the quarantine. Follow ECHO along the power corridor, break the security cordon, and restore the network.\n\nWASD move · Shift sprint · Space jump\nMouse aim · LMB fire · RMB aim · R reload\nE interact · Q power · F melee · G grenade\n1–9 / wheel weapons · Esc release cursor\n\nClick the world to take control after each checkpoint.")
 	primary.text = "Begin chapter"
 	restart.hide()
 	objective_scroll.hide()

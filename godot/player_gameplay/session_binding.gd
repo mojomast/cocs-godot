@@ -59,7 +59,7 @@ func refresh() -> void:
 	var actor: Dictionary = session.presentation.local_actor if is_instance_valid(session) else {}
 	model = status.project(actor, snapshot.get("config", {}), active)
 	status_changed.emit(model)
-	panel.text = Status.text(model)
+	panel.text = preload("res://input_bindings/hints.gd").resolve(Status.text(model))
 	panel.visible = active and show_compact_status
 	if active: cues.apply_state(snapshot)
 	else: cues.clear_visuals()

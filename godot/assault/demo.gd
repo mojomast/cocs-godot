@@ -143,7 +143,7 @@ func on_snapshot(frame: Dictionary) -> void:
 func refresh_objective_hud() -> void:
 	objective_label.text = game_hud.objective_text() if is_instance_valid(game_hud.session) else assault.text(presentation.local_actor.get("team"), phase == 4)
 	if not notice.is_empty(): objective_label.text += "\n" + notice
-	if mounted(): objective_label.text += "\nVEHICLE · Click to capture · WASD drive · Fire · Space/Shift/Ctrl · E exit"
+	if mounted(): objective_label.text += preload("res://input_bindings/hints.gd").resolve("\nVEHICLE · Click to capture · WASD drive · LMB fire · Space/Shift/Ctrl · E exit")
 	elif phase == 3: objective_label.text += "\nE: enter nearby source vehicle"
 	if phase == 4: objective_label.text += "\nEnter: request source rematch"
 

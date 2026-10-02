@@ -163,7 +163,7 @@ func create_horde_visual(actor: Dictionary, local_id: int) -> Node3D:
 func show_controls() -> void:
 	var hud: Node = get_node_or_null("GameHUD")
 	if hud != null:
-		hud.controls.text = "WASD move · Space jump · Shift sprint · Ctrl/C crouch · X mobility · Q power · E use\nLMB fire · RMB ADS · Z/MMB alt · R reload · F kick (tap each time) · G grenade · 1–9/0/wheel weapons · Tab scores · Esc release"
+		preload("res://input_bindings/hints.gd").bind(hud.controls, "WASD move · Space jump · Shift sprint · Ctrl/C crouch · X mobility · Q power · E use\nLMB fire · RMB ADS · Z/MMB alt · R reload · F kick (tap each time) · G grenade · 1–9/0/wheel weapons · Tab scores · Esc release")
 
 ## ---------------------------------------------------------------------------
 ## Horde run upgrades: visible choice buttons plus 1..9 hotkeys. The authority
@@ -391,7 +391,7 @@ func aim_requested() -> bool:
 
 func release_pointer() -> void:
 	controls.focus(false)
-	if phase == 3 and horde_client.input_epoch > 0 and client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
+	if phase == 3 and not client.spectating and horde_client.input_epoch > 0 and client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
 		horde_client.send_controls({}, true) # immediate FIFO cancellation, not a fire release
 	super.release_pointer()
 
@@ -579,12 +579,12 @@ func on_error(message: String) -> void:
 	super.on_error(message)
 
 func controls_released() -> bool:
-	for key: int in [KEY_W,KEY_A,KEY_S,KEY_D,KEY_SPACE,KEY_E,KEY_R,KEY_F,KEY_G,KEY_Q,KEY_X,KEY_Z,KEY_C,KEY_SHIFT,KEY_CTRL]:
-		if Input.is_physical_key_pressed(key): return false
-	return not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and not Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE)
+	return controls.bindings.released_for_capture()
 
 func _input(event: InputEvent) -> void:
-	if HordeSettingsAccess.overlay_open(): return
+	if HordeSettingsAccess.overlay_open() or social_capturing():
+		controls.record(event, false, presentation.local_actor)
+		return
 	if event is InputEventKey and event.pressed and not event.echo:
 		var index := intercept_offer_key(key_code(event))
 		if index > 0:
@@ -619,7 +619,7 @@ func _process(delta: float) -> void:
 		else: av_tick(delta)
 		camera.rotation = Vector3(pitch, yaw, 0)
 		send_elapsed += delta
-		if send_elapsed >= 1.0 / 60.0:
+		if send_elapsed >= 1.0 / 60.0 and not client.spectating:
 			send_elapsed = fmod(send_elapsed, 1.0 / 60.0)
 			var active := weapon_controls_active()
 			if not active: controls.clear()
