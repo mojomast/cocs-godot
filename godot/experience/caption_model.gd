@@ -4,6 +4,8 @@ const TTL := 2.2
 const CATALOG_PATH := "res://experience/source_catalog.json"
 const LOCAL_TYPES := ["damage", "pickup", "powerup", "spawn", "reload", "dryfire", "weapon-switch", "loadout-switch", "power", "grenade", "melee", "shot", "launch", "alt-state", "alt-mode", "alt-fire", "alt-toggle", "move-start", "move-end", "windup-start", "windup-end", "charge-start", "charge-release", "charge-cancel", "slam-launch", "slam-impact", "grapple-hook", "grapple-release", "rope-place", "rope-expire", "move-miss", "rope-miss", "move-blocked", "fuel-empty", "no-lift", "chain-cancel", "landing-recovery", "threat-ping"]
 const TELEGRAPHS := {"overseer":"overseer aura", "mender":"mender pulse", "flanker":"flanker push", "phalanx":"phalanx shield", "sapper":"sapper charge", "artillery":"artillery", "boss":"boss slam"}
+const SpectatorEvents = preload("res://experience/spectator_events.gd")
+const TEAM_CAPTIONS := ["cocs-terminal-shard", "cocs-terminal-vault", "cocs-terminal-sabotage", "cocs-terminal-hack", "cocs-terminal-deploy", "cocs-depot-purchase", "cocs-sapper", "cocs-siphon", "cocs-scan", "cocs-role-spawn", "cocs-role-killed", "cocs-role-expire", "cocs-command", "cocs-order-complete", "cocs-order-rejected"]
 var catalog: Dictionary = {}
 var current: Dictionary = {}
 var repeated: Dictionary = {}
@@ -53,7 +55,24 @@ func text_for(event: Dictionary) -> String:
 		return prefix + (" · " + label if not label.is_empty() else "")
 	return str(catalog.get("captions", {}).get(kind, {}).get("text", ""))
 
-func consume(events: Array, at: float, actor_id: int, enabled: bool) -> void:
+static func event_allowed(event: Dictionary, actor_id: int, team: Variant = null) -> bool:
+	var kind := str(event.get("type", ""))
+	if kind in LOCAL_TYPES: return actor_id >= 0 and event.get("actor") == actor_id
+	if not kind.begins_with("cocs-"): return true
+	# Keep the spectator allowlist and reject foreign private team events before
+	# formatting. Team comes only from the current confirmed local snapshot.
+	if actor_id < 0 and not SpectatorEvents.public_event(event): return false
+	if event.get("team") in [0, 1] and event.get("team") != team and not SpectatorEvents.public_event(event): return false
+	# Source latticeSoundCue eligibility, independent of audio mute/volume.
+	if kind in ["cocs-buy", "cocs-device-use"]: return actor_id >= 0 and event.get("actor") == actor_id
+	if kind in TEAM_CAPTIONS and (team == null or event.get("team") != team): return false
+	if kind == "cocs-command" and event.get("action") not in ["take", "release", "mutiny-vote", "policy", "set-route"]: return false
+	if kind in ["cocs-role-repair", "cocs-role-spot"]:
+		var entries: Variant = event.get("repaired" if kind == "cocs-role-repair" else "targets")
+		return entries is Array and not entries.is_empty()
+	return true
+
+func consume(events: Array, at: float, actor_id: int, enabled: bool, team: Variant = null) -> void:
 	if not enabled:
 		clear()
 		return
@@ -61,7 +80,7 @@ func consume(events: Array, at: float, actor_id: int, enabled: bool) -> void:
 		if not value is Dictionary: continue
 		var kind := str(value.get("type", ""))
 		# Global captions describe a received event, never its location or proximity.
-		if kind in LOCAL_TYPES and (actor_id < 0 or value.get("actor") != actor_id): continue
+		if not event_allowed(value, actor_id, team): continue
 		var candidate := {"text":text_for(value), "priority":catalog.get("captions", {}).get(kind, {}).get("priority", 80)}
 		# Repeated simulation tells may interleave with shots in the same batch.
 		# Dedupe by text as well as the currently showing line so a held blocked

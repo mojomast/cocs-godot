@@ -23,6 +23,7 @@ var gameplay: Node
 var gameplay_model: Dictionary = {}
 var campaign_hud: Control
 var role_key := ""
+var caption_team: Variant = null
 var layout_age := 0.0
 var layout_dirty := true
 var desired_visibility: Dictionary = {}
@@ -171,6 +172,7 @@ func clear() -> void:
 	ready_for_events = false
 	gameplay_model = {}
 	role_key = ""
+	caption_team = null
 	layout_dirty = true
 	desired_visibility.clear()
 	ability_scroll.hide()
@@ -204,6 +206,12 @@ func on_snapshot(frame: Dictionary) -> void:
 	clock = next_clock
 	received_usec = Time.get_ticks_usec()
 	ready_for_events = true
+	caption_team = null
+	if not spectator() and state.get("actors") is Array:
+		for value: Variant in state.actors:
+			if value is Dictionary and value.get("id") == client.get("actor_id"):
+				caption_team = value.get("team")
+				break
 	combat.snapshot(state, -1 if spectator() else int(client.get("actor_id")))
 	public_feed.snapshot(state, null if spectator() else client.get("actor_id"))
 	spectator_camera.snapshot(state)
@@ -247,7 +255,7 @@ func on_events(items: Array) -> void:
 		return
 	var caption_items := items
 	if spectator(): caption_items = items.filter(func(item: Variant) -> bool: return item is Dictionary and SpectatorEvents.public_event(item))
-	captions.consume(caption_items, clock, -1 if spectator() else int(client.get("actor_id")), settings.get("captions", false) == true)
+	captions.consume(caption_items, clock, -1 if spectator() else int(client.get("actor_id")), settings.get("captions", false) == true, caption_team)
 	layout_dirty = true
 	refresh()
 
