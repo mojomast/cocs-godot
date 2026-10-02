@@ -87,3 +87,25 @@ archive first, then the eleven accepted districts, with matching flat/rejected/
 refined cameras and selected moving/grazing-light views. Refined operator PNGs are
 also provided. No second heavy owner was granted access. Native images, compilation
 and aesthetic acceptance are still pending; publication will retain old evidence.
+
+## Native comparison delivered
+
+Production B is integrated at `bb02e34b`. The private shader compiled and rendered;
+all eleven districts have matching flat/rejected/refined captures with successful
+receipts, plus two short motion/grazing-light sequences and nine operator finish
+comparisons. Parent reviewed district overview sheets and full-resolution cooling/
+archive views. The reduction in lavender plating and repetitive high-contrast
+patterns is visible; the archive label reads correctly. Operator shell changes
+are subtle in the retained side-lit crop and do not establish all-angle approval.
+
+Published, byte/hash-verified gallery:
+**http://100.125.104.79:8796/native-production-b/** (142 retained files).
+Original rejected evidence remains available. The map rig uses inherited proof
+lighting, not yet a verified match to multiplayer production lighting. Real GPU
+cost is unmeasured. Foundry light panels are visibly too dull and have an active
+source-only correction owner, map-art Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5`.
+
+Grant B explicitly released; **grant C belongs to Parallax's original owner**
+`ses_f055a6b41ffe42yCL8AxbOL676` for real revised-interior production and mount/
+surface review. That owner now owns any necessary Parallax-local profile/mount
+updates; the Foundry follow-up must not edit those files concurrently.

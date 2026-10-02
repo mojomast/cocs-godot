@@ -15,7 +15,10 @@ boundaries.
 
 | Work | Existing owner/session | Current action |
 |---|---|---|
-| Fighting production and native surface review | Astra `ses_f026e25e4ffezp2kvz5VGox7dz` | Exclusive heavy grant B: real Meta/Mistral master/export/native slice, then remaining seven; compile revised surfaces and capture matched district comparisons |
+| Fighting production and native surface review | Astra `ses_f026e25e4ffezp2kvz5VGox7dz` | Complete and merged at `bb02e34b`; nine real rigs/masters and native comparisons; grant B released |
+| Parallax interior production | Astra `ses_f055a6b41ffe42yCL8AxbOL676` | Exclusive heavy grant C: build/reopen refined interiors, native geometry/art review and current Moth mount revalidation |
+| Fighting camera readability | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Source-only correction of oversized fixed jump envelope; actual-bounds framing with safe airborne transitions |
+| Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | Source-only correction of authored ceiling lights becoming dull under refined finish; preserve localized emission |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Source-only campaign input-chain diagnosis and control-texture ownership repairs or targeted native diagnostics; preserve pending native gates |
 | Queued asset integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Implement missing test-only candidate admission/hosted journey harnesses; reconcile every builder/receipt with refined material semantics before serial production |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Extension already integrated; fresh exact-input ledger required after production candidate stabilizes; no current engine grant |
@@ -28,11 +31,13 @@ are introduced by this directive.
 
 ## Exclusive heavy ownership
 
-**`FIGHTING-ANIMATION-PRODUCTION-20261002-B` belongs to animation Astra
-`ses_f026e25e4ffezp2kvz5VGox7dz`.** Its scope includes fighting Blender production,
-native import/review and the bounded revised-surface comparison task. Prior grant
-`FINISH-COMBINED-NATIVE-20261002-A` was explicitly released at
-`2026-10-02T20:49:20Z`; its committed closeout is integrated.
+**`PARALLAX-INTERIORS-PRODUCTION-20261002-C` belongs to Parallax Astra
+`ses_f055a6b41ffe42yCL8AxbOL676`.** Its scope includes actual revised-interior
+Blender production/reopen/export, native geometry and visual review, and refined
+Moth mount checks in the original observatory checkout. Grant B was explicitly
+released at `2026-10-02T21:45:31.798193Z`, with all 83 owned process groups checked
+and none remaining. Prior grant A was also explicitly released; both closeouts
+are integrated.
 
 No other agent may run Godot, Blender, imports, rendering, audio capture or encoding
 before explicit teardown/release and a new grant. Asset integration, gameplay
@@ -76,12 +81,12 @@ inputs change; never attach old receipts to new candidate identities.
 
 ## Remaining evidence distinctions
 
-The native core/invariant/pair-seek suites and **54/54 combo cases** passed at the
-recorded integration anchors; earlier 16/54 results remain retained failure
-history. Production fighter exports and their actual motion/contact acceptance
-are still assigned to the active animation owner. Source-complete animation
-recipes are not finished art, and historical native passes are not final-candidate
-release acceptance.
+The native core/invariant/pair-seek suites and **54/54 combo cases** passed again
+against produced fighters. All nine masters/GLBs are merged, with **137,046 native
+animation checks** passing at the recorded production anchor. Earlier failures
+remain retained history. Final gameplay framing, complete versus/AI/training
+journeys and cross-stage presentation acceptance remain pending; historical native
+passes are not final-candidate release acceptance.
 
 Real audio is currently blocked by device permissions and the absent Pulse
 socket. Software-rendered capture does not establish real-GPU performance, and
@@ -220,3 +225,34 @@ has the exact candidate and a bounded matched-comparison task beginning with
 Foundry cooling and Helix archive. Only that owner may compile/render while grant
 B is active. Source completion does not close the owner's visual feedback; actual
 native review and a fresh screenshot gallery remain required.
+
+## Nine-fighter production and grant C
+
+Animation commits `ded21092`, `1b690f01`, `80cb466b` are integrated at `bb02e34b`.
+They deliver nine separately reopened Blender masters, nine animated GLBs and
+content-bound manifests. Preserve the committed `.glb.import` files: disabling
+node-level animation optimization prevents loss of back-throw contact keys.
+The native pass reports 137,046 animation checks, 194 core checks, 113,550
+invariants, all 54 combo cases and paired snapshot seeking passed. Parent reran
+strict fighter inventory successfully at the merged anchor; receipt:
+`/tmp/opencode/production-b-parent-resource-inventory.json`.
+
+The same pass compiled the refined shader and captured eleven matched district
+sets, two motion/grazing-light sets, all-nine operator comparisons and five actual
+stage combat clips. Parent inspected the two district overviews, full-resolution
+Foundry cooling and Helix archive, Meta finish comparison and extreme paired
+contact overview. Purple/repeating patterns are substantially quieter; archive
+sign text is readable in the full-resolution capture. Foundry ceiling lights and
+small gameplay fighter framing remain concrete assigned defects.
+
+Fresh gallery: **http://100.125.104.79:8796/native-production-b/**. Its 142 files
+(65,323,545 bytes) were copied without re-encoding and all HTTP-served SHA-256s
+verified. It labels inherited proof lighting, software capture and pending art/
+camera follow-up. Older galleries remain untouched. Publication script:
+`port/surface-refinement/publish_production_b.py`.
+
+Grant C now advances Parallax interiors in its original checkout. Robots, vehicles,
+scenery, Vesper, Abyssal and Stormglass remain queued after its explicit release.
+Packaging received the real fighter inputs and critical import settings; source
+asset integration received the new anchor and grant transition. No Windows build
+or new release publication has occurred.
