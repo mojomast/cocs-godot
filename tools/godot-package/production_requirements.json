@@ -2,7 +2,7 @@
   "version": 1,
   "plan": "port/finish/ASSET_PRODUCTION.json",
   "units": {
-    "parallax-interiors": {"required": true, "map": "parallax-observatory", "promotion": null},
+    "parallax-interiors": {"required": true, "map": "parallax-observatory", "promotion": {"receipt": "tools/godot-package/production_receipts/parallax-interiors.json", "sha256": "f0d2b15ddb6c1d1609a2be5f1bc37cbf486b4b7034bf7fa6973577af9e79e6d0"}},
     "robots": {"required": true, "promotion": null},
     "vehicles": {"required": true, "promotion": null},
     "scenery": {"required": true, "promotion": null},
