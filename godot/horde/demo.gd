@@ -156,6 +156,7 @@ func create_horde_visual(actor: Dictionary, local_id: int) -> Node3D:
 		var robot := RobotVisual.new()
 		robot.automatic_animation = false # Horde render loop advances once; never double-step gait/death.
 		robot.configure(actor, local_id)
+		preload("res://robot_assets/switchyard/skin_adapter.gd").install_role(robot)
 		return robot
 	var operator := ActorVisual.new()
 	operator.local_id = local_id

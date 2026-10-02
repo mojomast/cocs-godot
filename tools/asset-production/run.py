@@ -116,15 +116,31 @@ def execute(command, plan, output):
     if argv[0] == plan['tools']['blender'] and '--python-exit-code' not in argv:
         argv[1:1] = ['--python-exit-code','1']
     log = output/(command['id']+'.log')
+    started = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    record = {'argv':argv,'started':started,'timeoutSeconds':command['timeoutSeconds'],'log':str(log)}
     with log.open('w') as stream:
-        proc = subprocess.Popen(argv,cwd=ROOT,env={**os.environ,**plan['common']['environment']},stdout=stream,stderr=subprocess.STDOUT,start_new_session=True)
+        proc = subprocess.Popen(argv,cwd=ROOT,env={**os.environ,**plan['common']['environment'], 'ASSET_STAGE_EVIDENCE':str(output)},stdout=stream,stderr=subprocess.STDOUT,start_new_session=True)
+        record['processGroup'] = proc.pid
         try:
             code = proc.wait(timeout=command['timeoutSeconds'])
-        except BaseException:
-            os.killpg(proc.pid,signal.SIGKILL)
+        except BaseException as error:
+            record['failure'] = repr(error)
+            try: os.killpg(proc.pid,signal.SIGKILL)
+            except ProcessLookupError: pass
             proc.wait()
             raise
+        finally:
+            # Reap only this command's descendants, including a crashed renderer's
+            # helper. Never enumerate or stop another owner's process group.
+            try: os.killpg(proc.pid,signal.SIGKILL)
+            except ProcessLookupError: pass
+            record['exitCode'] = proc.returncode
+            record['ended'] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+            record['ownedGroupTeardownRequested'] = True
+            (output/(command['id']+'-process.json')).write_text(json.dumps(record,indent=2)+'\n')
     if code: raise RuntimeError(f'{command["id"]} failed ({code}); preserve {log}')
+    if re.search(r'^(?:SCRIPT ERROR:|ERROR:|Traceback \(most recent call last\):)',log.read_text(),re.M):
+        raise RuntimeError(f'{command["id"]} emitted runtime errors despite exit 0; preserve {log}')
 
 
 def main():
@@ -135,10 +151,11 @@ def main():
     parser.add_argument('--compact',action='store_true',help='760x520 UI150 hosted profile')
     parser.add_argument('--receipt-file',help='Actual generic receipt for post-native package-receipt stage')
     parser.add_argument('--runtime-hook',action='append',default=[],help='Actual production hook path; repeat as needed')
+    parser.add_argument('--evidence-root',help='Granted unit evidence directory; defaults to queue evidence root')
     args = parser.parse_args()
     plan = load_plan()
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ')
-    output = Path(plan['evidenceRoot'])/stamp
+    output = Path(args.evidence_root or plan['evidenceRoot'])/stamp
     output.mkdir(parents=True)
     report = preflight(plan)
     (output/'preflight.json').write_text(json.dumps(report,indent=2)+'\n')

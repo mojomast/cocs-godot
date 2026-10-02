@@ -16,7 +16,7 @@ const near=(a,b)=>assert.ok(Math.abs(a-b)<1e-9,`${a} != ${b}`);
 function compare(a,b){for(const k of Object.keys(b))typeof b[k]==='object'?compare(a[k],b[k]):near(a[k],b[k]);}
 function origin(r,j){const joint=r.joints[j];const p=joint.parent?origin(r,joint.parent):[0,0,0];return p.map((v,i)=>v+joint.at[i]);}
 function bounds(p){
-  if(p.shape==='box')return [p.p.map((v,i)=>v-p.size[i]/2),p.p.map((v,i)=>v+p.size[i]/2)];
+  if(p.size)return [p.p.map((v,i)=>v-p.size[i]/2),p.p.map((v,i)=>v+p.size[i]/2)];
   // Conservative radial envelope; bevel removes material and cannot enlarge it.
   return [p.a.map((v,i)=>Math.min(v,p.b[i])-p.radius),p.a.map((v,i)=>Math.max(v,p.b[i])+p.radius)];
 }

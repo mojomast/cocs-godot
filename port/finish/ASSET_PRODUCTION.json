@@ -50,7 +50,13 @@
         {"id":"build","argv":["{blender}","-b","-t","1","--python","tools/godot-robots/build.py"],"timeoutSeconds":600},
         {"id":"reopen-original","argv":["{blender}","-b","-t","1","--python","tools/godot-robots/verify_blender.py"],"timeoutSeconds":300},
         {"id":"receipt-original","argv":["node","godot/tests/robot_assets/verify_receipt.mjs"],"timeoutSeconds":60},
-        {"id":"native","argv":["{godot}","--headless","--path","godot","--script","res://tests/robot_assets/native_contract.gd"],"timeoutSeconds":180}
+        {"id":"native","argv":["{godot}","--headless","--path","godot","--script","res://tests/robot_assets/native_contract.gd"],"timeoutSeconds":180},
+        {"id":"contacts","argv":["{godot}","--headless","--path","godot","--script","res://tests/robot_assets/contact_probe.gd"],"timeoutSeconds":180},
+        {"id":"source-targeting","argv":["node","godot/tests/robot_assets/source_targeting.mjs"],"timeoutSeconds":90},
+        {"id":"production-capture","argv":["node","godot/tests/robot_assets/production_capture.mjs"],"timeoutSeconds":600},
+        {"id":"review","argv":["/home/mojo/.local/bin/uv","run","--with","pillow","--no-project","python3","godot/tests/robot_assets/review.py"],"timeoutSeconds":180},
+        {"id":"capture","argv":["xvfb-run","-a","-s","-screen 0 1280x800x24","{godot}","--path","godot","--rendering-method","gl_compatibility","--audio-driver","Dummy","--script","res://tests/robot_assets/inspection.gd"],"timeoutSeconds":600},
+        {"id":"capture-compact","argv":["xvfb-run","-a","-s","-screen 0 760x520x24","{godot}","--path","godot","--rendering-method","gl_compatibility","--audio-driver","Dummy","--script","res://tests/robot_assets/inspection.gd","--","--compact"],"timeoutSeconds":600}
       ],
       "masters":{"glob":"tools/godot-robots/masters/*.blend","count":9},
       "exports":{"glob":"godot/robot_assets/switchyard/generated/*.glb","count":9},

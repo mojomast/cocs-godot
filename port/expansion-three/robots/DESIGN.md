@@ -1,8 +1,9 @@
 # Switchyard: authored robot workshop pack
 
-Status: **READY FOR BLENDER** (source only). Seed `31027`. No asset exports,
-masters, screenshots, engine imports, or runtime selection have been produced.
-Parallax owns the heavy slot per BRIEF; wait for explicit parent grant.
+Status: **actual production completed under grant ROBOT-ASSET-PRODUCTION-20261002-D**.
+Seed `31027`. Nine real runtime GLBs, nine editable masters and three skeletal
+reference GLBs are built/reopened/imported. See ACCEPTANCE for immutable stage
+receipts, native captures, measured budgets and parent promotion handoff.
 
 ## Bodies
 
@@ -39,14 +40,18 @@ It also exports joint-local rigid meshes for the current native pipeline to
 beside the masters. This explicit adapter avoids extracting skinned mesh data
 and losing skin transforms in RobotVisual's existing mesh replacement loader.
 
-`skin_adapter.gd.install(robot, skin)` is called explicitly **after configure**.
+`skin_adapter.gd.install_role(robot)` is called by the Campaign and Horde factories
+**after configure**, deterministically mapping the three supported roles.
 It validates every assembly before any replacement, rejects mismatched model IDs
 and absent exports, retains originals for restore, and leaves native pivots and
 material overrides intact. Reapply after model identity changes. The helper
-does not register skins globally or touch shared factories. Parent may expose
-local selection when assets pass acceptance. Do not subclass RobotVisual in the
+retains stock fallback for missing/unmapped art. `select_stock(robot)` explicitly
+restores the baseline and disables automatic reinstallation. A three-line
+RobotVisual hook re-applies an opted-in pack on identity changes; unmapped roles
+restore the original untextured material. Do not subclass RobotVisual in the
 shared factory: Horde uses exact `get_script() == RobotVisual` checks for stepping
-and corpse processing. No shared integration commit is necessary at this stage.
+and corpse processing. The small shared factory/terrain/identity hooks are isolated
+in a separate integration commit for parent review.
 
 Runtime animation remains the existing Godot pipeline: distance-based gait,
 source-grounded two-link IK, bounded turret pitch, weapon attack/recoil, shield
@@ -62,10 +67,16 @@ are editable pose studies, not claims of final foot planting; runtime Motion's
 Relay console, repair dock, battery rack, blast shutter frame, cargo stack and
 cable junction share enamel/steel/ceramic materials and retaining fasteners.
 Each exports one joined surface, reusable by PackedScene or MultiMesh installation.
-They contain no physics or gameplay nodes. Installation is optional and deferred:
-solid dressings must sit within reviewed existing geometry; open frame/dock
-clearances remain visibly and physically open. No invisible blocker is authored.
+They contain no physics or gameplay nodes. `workshop.gd` now installs all six as
+shallow service fixtures on six explicitly named existing Emberline metal cover
+faces. Fixture depth is normalized to .10m, projecting .115m from the existing
+surface; source blocks remain visibly behind the open frame/dock. These are
+wall service assemblies, not new doors, walkable crates or gameplay repair stations.
+Their volumes remain editable/full-depth in the standalone GLBs. The native
+rebuild test proves six deterministic mounts, no duplicates and no added collider.
 
-Targets (not measurements): robots 14k/8.5k/5.5k triangles and 13/13/9 draws by
-LOD; props <=3k triangles, one draw each, <=24 instances per workshop. Real
-receipt checks and gameplay cost measurements must precede acceptance.
+Measured budgets and exact bytes are in ACCEPTANCE and the real package receipt.
+No frozen source, hitbox, palette outside this pack, Parallax geometry, or other
+production unit was modified. Smooth coating is the explicit Moth finish role;
+normal textures are deliberately absent. The exported palette uses named `Col`
+as COLOR_0, multiplied by real neutral Moth detail on the sole local UV channel.

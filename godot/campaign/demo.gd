@@ -143,6 +143,7 @@ func create_visual(actor: Dictionary, local_id: int) -> Node3D:
 		var script: GDScript = load("res://campaign/robot_visual.gd")
 		var robot: Node3D = script.new()
 		robot.configure(actor, local_id)
+		preload("res://robot_assets/switchyard/skin_adapter.gd").install_role(robot)
 		robot_instances += 1
 		return robot
 	var operator := SourceVisual.new()

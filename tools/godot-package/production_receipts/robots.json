@@ -1,0 +1,411 @@
+{
+  "unit": "robots",
+  "sourceCommits": [
+    "fb9715fb"
+  ],
+  "sourceHashes": {
+    "godot/robot_assets/switchyard/contract.json": "956105382159b46b445a3f58ece02397995dec988f316689bac11ef4e9f1dc61",
+    "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
+    "tools/godot-robots/build.py": "d3b6244b32a8aa65b984e72db6390c07b8391fc02dd366e94c3f8c293465e1a9",
+    "tools/godot-robots/recipe.py": "446f471881fc91fbfb9ed0588239f2f00ad883f9597e5efbcbd7913f7986865f"
+  },
+  "sourceFingerprint": "3e6deae571e2aa3b7fe22725775b11ea37f04ef5f68acedf45df2fa8cea68190",
+  "masters": [
+    {
+      "path": "tools/godot-robots/masters/battery_rack.blend",
+      "sha256": "7cbef6a5f79a1203a43fb428bc1aec0c1f9e2bcb49b631587f959386d0e68357"
+    },
+    {
+      "path": "tools/godot-robots/masters/blast_shutter_frame.blend",
+      "sha256": "63663c4c5299929a8a7b20109195859bba60c76986d0c07e6d2862d2c223f80b"
+    },
+    {
+      "path": "tools/godot-robots/masters/cable_junction.blend",
+      "sha256": "9b66c6f54639b0803a3cfba5a86e7dc04f651cc9851d963433f10e87777dcb8d"
+    },
+    {
+      "path": "tools/godot-robots/masters/caisson_guard.blend",
+      "sha256": "4827779714aad4d0cdbb1499ca298d2071ea331a13838789c9304a0167467c4d"
+    },
+    {
+      "path": "tools/godot-robots/masters/cargo_stack.blend",
+      "sha256": "86c98d83a9661591db0fb3ea1aa116043eb6ba8bf64676fcc83f9a3e5177af23"
+    },
+    {
+      "path": "tools/godot-robots/masters/kiln_tender.blend",
+      "sha256": "4aa59165be9dd5f74a4767d9586e8a1c522245c22e4f5b7106bfc709f9fcf233"
+    },
+    {
+      "path": "tools/godot-robots/masters/needle_surveyor.blend",
+      "sha256": "45fe7d181d2a957f76fc82252c2896ec4680b39687d8efb4bc8198383c613d98"
+    },
+    {
+      "path": "tools/godot-robots/masters/relay_console.blend",
+      "sha256": "3adc2a67f42abe63fa9f6ae7eeb67b75bf580c057f5a248a5eac8d38a7e0ee53"
+    },
+    {
+      "path": "tools/godot-robots/masters/repair_dock.blend",
+      "sha256": "ddad563c4e68383e61323eab7f3a82be869ad1b5de35f4754088685e0e8d0a2b"
+    }
+  ],
+  "exports": [
+    {
+      "path": "godot/robot_assets/switchyard/generated/battery_rack.glb",
+      "bytes": 190484,
+      "sha256": "c7f9908dbd262855de0e0729c703cba5675f50c87e6f195e73772ea162d01cd0",
+      "triangles": 2176,
+      "surfaces": 1,
+      "texturedSurfaces": 1,
+      "textures": [
+        {
+          "name": "MothLocal_Switchyard_vertex_enamel",
+          "bytes": 2248,
+          "sha256": "4d1dbd7512467698a8249adde7741339776c571f8ce10717ed6f44c13a004071"
+        }
+      ]
+    },
+    {
+      "path": "godot/robot_assets/switchyard/generated/blast_shutter_frame.glb",
+      "bytes": 144024,
+      "sha256": "edc259363997e06e5d514c04d1cbcbb1b533602b86934090c79f4b16332d7966",
+      "triangles": 1636,
+      "surfaces": 1,
+      "texturedSurfaces": 1,
+      "textures": [
+        {
+          "name": "MothLocal_Switchyard_vertex_enamel",
+          "bytes": 2248,
+          "sha256": "4d1dbd7512467698a8249adde7741339776c571f8ce10717ed6f44c13a004071"
+        }
+      ]
+    },
+    {
+      "path": "godot/robot_assets/switchyard/generated/cable_junction.glb",
+      "bytes": 153312,
+      "sha256": "530f18fe88884f0a442796ee7e00eb5899b1116a027f54d0dd40899e218409e2",
+      "triangles": 1744,
+      "surfaces": 1,
+      "texturedSurfaces": 1,
+      "textures": [
+        {
+          "name": "MothLocal_Switchyard_vertex_enamel",
+          "bytes": 2248,
+          "sha256": "4d1dbd7512467698a8249adde7741339776c571f8ce10717ed6f44c13a004071"
+        }
+      ]
+    },
+    {
+      "path": "godot/robot_assets/switchyard/generated/caisson_guard.glb",
+      "bytes": 1652052,
+      "sha256": "c4ee21567db5c954c031ce267813a9d70d0be9aedce7bc282341e3c0b53c1a20",
+      "triangles": 19516,
+      "surfaces": 25,
+      "texturedSurfaces": 25,
+      "textures": [
+        {
+          "name": "MothLocal_Switchyard_vertex_enamel",
+          "bytes": 2248,
+          "sha256": "4d1dbd7512467698a8249adde7741339776c571f8ce10717ed6f44c13a004071"
+        }
+      ]
+    },
+    {
+      "path": "godot/robot_assets/switchyard/generated/cargo_stack.glb",
+      "bytes": 144036,
+      "sha256": "4f38999b1cd8824142381f8f8e9c3b14eb076949603f2b4a42d66f0c99904b88",
+      "triangles": 1636,
+      "surfaces": 1,
+      "texturedSurfaces": 1,
+      "textures": [
+        {
+          "name": "MothLocal_Switchyard_vertex_enamel",
+          "bytes": 2248,
+          "sha256": "4d1dbd7512467698a8249adde7741339776c571f8ce10717ed6f44c13a004071"
+        }
+      ]
+    },
+    {
+      "path": "godot/robot_assets/switchyard/generated/kiln_tender.glb",
+      "bytes": 2207984,
+      "sha256": "142c4206649551764b6bc07a59afa1b297404c3efeac07ed1ae495f315188157",
+      "triangles": 26176,
+      "surfaces": 32,
+      "texturedSurfaces": 32,
+      "textures": [
+        {
+          "name": "MothLocal_Switchyard_vertex_enamel",
+          "bytes": 2248,
+          "sha256": "4d1dbd7512467698a8249adde7741339776c571f8ce10717ed6f44c13a004071"
+        }
+      ]
+    },
+    {
+      "path": "godot/robot_assets/switchyard/generated/needle_surveyor.glb",
+      "bytes": 1557064,
+      "sha256": "4d9b53d1778f9ee5127f3697b1f7cd39b056b9ec163880df9150b71d95b72765",
+      "triangles": 18352,
+      "surfaces": 22,
+      "texturedSurfaces": 22,
+      "textures": [
+        {
+          "name": "MothLocal_Switchyard_vertex_enamel",
+          "bytes": 2248,
+          "sha256": "4d1dbd7512467698a8249adde7741339776c571f8ce10717ed6f44c13a004071"
+        }
+      ]
+    },
+    {
+      "path": "godot/robot_assets/switchyard/generated/relay_console.glb",
+      "bytes": 143072,
+      "sha256": "aa5213ceb4f191b7981e6ef02d01b950e414daeb582f84a3de41c3a73876fc42",
+      "triangles": 1636,
+      "surfaces": 1,
+      "texturedSurfaces": 1,
+      "textures": [
+        {
+          "name": "MothLocal_Switchyard_vertex_enamel",
+          "bytes": 2248,
+          "sha256": "4d1dbd7512467698a8249adde7741339776c571f8ce10717ed6f44c13a004071"
+        }
+      ]
+    },
+    {
+      "path": "godot/robot_assets/switchyard/generated/repair_dock.glb",
+      "bytes": 190516,
+      "sha256": "c81b3791e248a76654d1092856022a16fa0357cab20a80d80beb432f31a4819b",
+      "triangles": 2184,
+      "surfaces": 1,
+      "texturedSurfaces": 1,
+      "textures": [
+        {
+          "name": "MothLocal_Switchyard_vertex_enamel",
+          "bytes": 2248,
+          "sha256": "4d1dbd7512467698a8249adde7741339776c571f8ce10717ed6f44c13a004071"
+        }
+      ]
+    }
+  ],
+  "measuredGLBTriangles": 75056,
+  "configuredTriangleCap": 102000,
+  "accepted": false,
+  "pending": [
+    "Moth texture survives COLOR_0 multiplication and adapter install",
+    "skin factory/local selection hook and six reviewed prop placements still required",
+    "animated body/eye/muzzle/source hit-volume agreement",
+    "feet on slope/step/strafe; idle/walk/attack/react/death",
+    "source-event attacks and death/corpse teardown"
+  ],
+  "packageInputHashes": {
+    "game/alt-fire.mjs": "d7f821f28f9cfe3d12da2da3461e053f698037aa8e44540324c76a58c2e02c5f",
+    "game/arsenal-maps.mjs": "fad8dff6d87dda4aef905969cd9b130e3a5c7c9776e8b1e6e0294a8dc6d63f3d",
+    "game/assault.mjs": "6e24f4a363ce8ccb1787057ec125d3695da2aefe133f7872bf3a4cde66daea70",
+    "game/attachments.mjs": "66c46bfb2bae119a61ba7ffcdd301e34fad42a50e2dc3c7833828b9abfdcef14",
+    "game/battle-maps.mjs": "3d4ac5b9a4dfc5e896e0679ba39a8da3d579285b0e551160e45687f9437dfaf8",
+    "game/blood-gulch.mjs": "2df956608fc6fe73c77410ccb5889f09266c722c236494f46d4d585730ea9a7b",
+    "game/bot-personalities.mjs": "173c86b85a7c688987a9f65dd72195042c75f0038bb9f10ef22a79f3dcc699c2",
+    "game/bots.mjs": "2a6d3fcd7960711fc4aeefe77aaa39dc1a318c6c36097ede7010894a411cf95a",
+    "game/campaign-anchors.mjs": "0d07d2cfb5e67049524870b1a8af2703d57b747cc7ca85f825a545dd47e9d8a7",
+    "game/campaign-data.mjs": "bac73e42b0d519d8929c1dbdf004c088a05c46ecb757f784b632859a7d4c380c",
+    "game/character-anim.mjs": "feaff9cd77a88174210957e871420d429c3523d5b2517592749b190e602bfa01",
+    "game/cocs-bots.mjs": "bdad004df06de288be3628528485f66d7f5ded589eeca8a0daafdbdddb461d7e",
+    "game/cocs-coop.mjs": "36038e1f524b1a25c9fd991990b0fddf62ccaae89c87566486f372e9e684e2a6",
+    "game/cocs-difficulty.mjs": "e3ca14ecea9333ab2d74b2ccf8f281f7a962bb67cc8c6b3d28eebbe5b37c42c0",
+    "game/cocs-director.mjs": "926af20afc920c3d3a6ff9870322d128414205a7c80b84d7c19073471069ed8d",
+    "game/cocs-economy.mjs": "1fdbdddeeabb32eff1dbb1d73bc34506d63c2e3e2ac6fb0a37851465865f8f93",
+    "game/cocs-roles.mjs": "3edaf3207b6a54bf0600ee0fb9eee732bdd494351d67f9cc85b1c8e66ade67fa",
+    "game/cocs-squads.mjs": "b6d234b007e6d80a670c4646c43fdaf6485e62120876fe6ccbe210ac026cd6a1",
+    "game/cocs-terminals.mjs": "7b96cad0dcbf2b0dfb5dd78cf1217298edaf70785e482fb3944745636d3efa3f",
+    "game/cocs-traversal.mjs": "555e742ff721549db974ac470a2b523ac6dad98659c40f7399a11e904c7672f7",
+    "game/cocs.mjs": "1224034a80181d83571f15034059aa979545afc171632e6588fe9d2ebf3724e6",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "game/core.mjs": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+    "game/cosmetics.mjs": "466d6eba56296a88b698a6036cc40b1381634b30d350fe04757832a15779b98a",
+    "game/ctf-maps.mjs": "4f91623e6cc6914b9cca688edd7b37a1ba0e804808943a40deb27525ab78107f",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+    "game/deaths.mjs": "2c97fa500f2dfe504b1b3c7ff5de8cc5699b44b9c79df4eedb1276107933c89c",
+    "game/destination-combat-maps.mjs": "a8964b89d4fa2dffac2d0b7ee49fe6fc70e9e261fd9a5078b2630370a5f7316b",
+    "game/destination-lattice-maps.mjs": "a7110177c2e4dca4b56f88f7e0d768b96df935661e0d4dfe87ba2970be8b1966",
+    "game/destination-maps.mjs": "e8ac0655a4ae8030f70a76f258784c5007ea2be808f0cb10547385c6ceffeda2",
+    "game/destination-objective-maps.mjs": "f995d7ec863f848ac7e3aa6a9a48e2a51b27f6fda7749e86877594665a1c79d8",
+    "game/destination-sports-maps.mjs": "bd3f486d57b188163b16193b4ce05401bac14ad19b40b73768525c9ca4d0e0b1",
+    "game/enemy-types.mjs": "92b600584061d0626b35dd44ae94e1903ba178b390f600a0254fbc5505685613",
+    "game/expansion-maps.mjs": "62b30255393daa473f5c6e46056e8922c1dc74c02c993499cbe6ac3e6439537f",
+    "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+    "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
+    "game/horde-stages.mjs": "132bb551f0e517ed037d2e97fbd8ff510802eaaa7163e39da10e59745d656afb",
+    "game/island-maps.mjs": "5fff90834c33d65bd8a06a70528aff45f7d5b09840b8eaa0a3a9c5f23f4d0cf7",
+    "game/kits.mjs": "e44908b88341bce5f4df8ffe9e896482202466dc502fd93059ba63e5b54c40bd",
+    "game/lattice-foundry.mjs": "5c63d3d1c36e9957a6181cc2e7f83f27056599040ad9f4f7714d43c5596b4c56",
+    "game/lattice-maps.mjs": "d3eae8ec886ed66dfc04c420d9a4e6051368dff385bc680cf238387545c91016",
+    "game/lattice-roles.mjs": "bd1f1165c3e2b3dfa3b33e3351f90db1039eaf264ddadab08e5e481dcee31340",
+    "game/lattice-support.mjs": "5d359bf2a7fb06a3e6f0085cf13c68d2db900297223298d2befffd8edb393f3a",
+    "game/levelgen.mjs": "3a5b2285b1a9703cded463bdffa0cc73f38b75b427e0ce9371919c646a4dd38b",
+    "game/map-schema.mjs": "e4b6ebc445912c6128eb1cbc658d91d07751b85650bc92fd0fd0764ae72716b8",
+    "game/maps.mjs": "729d94c4a3bc566d3c6b89c8c5c7d656babf338f2ab42edc988f383e021dd731",
+    "game/math.mjs": "a9f2e5f55f7e90c567d35b4c77d7ecdeae4c28b5174d52f8cf9a5e4e59170327",
+    "game/mode-data.mjs": "7598bfa2d5fb0495bbfcb615c3083245d4dff632a13aa1a42593da8023e91548",
+    "game/moth-assets.mjs": "736d5ff7e844f8210b273791f4806bae916a4e463494f64c78b94bd4cb2768ab",
+    "game/moth-baked.mjs": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2",
+    "game/moth-maps.mjs": "613cdeac0ea8f5f64c988f051698661825d2053268b75fe1151c7beacfcdc081",
+    "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
+    "game/nextgen-maps.mjs": "9a8dc8720a2395edf796a0d630f0033c9aa29d872d3fcf98db3aefabdac33727",
+    "game/objectives.mjs": "3e92ad1f85fb785362e15fd836d2b80f95060e0670e9f58a766f79ffa60742ec",
+    "game/operator-profiles.mjs": "b7c4aec4aac899626ad5d7a78f5870218513a5b1d38ff12f2312beacc32882ba",
+    "game/operator-verbs.mjs": "f3bbcd2e13bc04dabf2a81a74ddee3848d6835d11d8ac063e4603ea689bf96b3",
+    "game/outcome.mjs": "f66fe5ca09e8507939d407a7eb9defd4a2d23b643a221955e0d0ad584b17ec98",
+    "game/payload.mjs": "13e357516af38fdfe6596dfa7a43cbeaae2445f492ad41df934deb8840bc92bb",
+    "game/progression.mjs": "5b70fa168d8edb5192052ad9bed3243370db7ba8f13952a9401596a9d4bc1ce5",
+    "game/race-maps.mjs": "d14c6d5cf31728cb5bac4363b142d16a79705b727f7e015774d80a68d5abf4b3",
+    "game/race.mjs": "1c448a0f00e3354dd6fa32190f85dcc6c31883f428b07193773fcd02bf2effba",
+    "game/ragdoll.mjs": "10bd8cb43405d45a42d5034261ce89119a8bf05c24c3ca1f47f1b4b4202efa3d",
+    "game/singleplayer.mjs": "60ab39e4cc9dd07f38fed27c39f25b2383e0ea1257dba5ee29f2ebe7762189ce",
+    "game/soccer-maps.mjs": "9a57d95b9064c21d3c73303535379f006638aa3c476227bf92946541d1ca6669",
+    "game/soccer.mjs": "78da2d005207c5e744f56a2d3924d0bf82ed4c62b29bd0702b97513b74359972",
+    "game/spatial.mjs": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
+    "game/spawn-placement.mjs": "b0665e410e68eaf160c1a890558a69efa035e58abd76c45c28fcc01ae42b2361",
+    "game/spec-effects.mjs": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
+    "game/story.mjs": "6306ec902fbb8427dd0060ac79084c95bb7fc6999a49f28ec86cae9ddccf059b",
+    "game/structures.mjs": "445ace67e41028e602aab692578c9d200ca8fb58d1b3f9f8c1568c5ac2b5d1d2",
+    "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+    "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+    "game/vehicles.mjs": "e55dbed9969a9f4430b0471fefb4d294fddf0e75d8af853565c9361c106244db",
+    "godot/campaign/robot_parts.gd": "03c20644298f8dc939a25717bb347ddfc46aa89efbbdf561d3e13f735cc1a1c9",
+    "godot/campaign/robot_visual.gd": "34ae54e739b464bd01ca1beb2ca991038ce50aa7aca4cfc10942831dfc836f20",
+    "godot/moth/derived/manifest.json": "5be9ad6493455138464dc059dd64a32dc5d837f6fc4e460957f606f6d2a79887",
+    "godot/moth/generated/manifest.json": "c5589ff2f2ab68d982b2bb45c221c08d8e3f653953e5d5d446bfa4cd68380047",
+    "godot/robot_assets/switchyard/contract.json": "956105382159b46b445a3f58ece02397995dec988f316689bac11ef4e9f1dc61",
+    "godot/robot_assets/switchyard/generated/build-receipt.json": "0f9f2bd1bc6a0b4d2a6c5b1b151a43dda916d52d462b9f67ccc04ec3ae9ae168",
+    "godot/robot_assets/switchyard/skin_adapter.gd": "cfe644ea6ac98adeb3e2d95c1f4e0d79d9cd60aa261509d801c18e30cdc624a8",
+    "godot/source_operators/ground_contact.gd": "566f0b43f3430593eff3e6a35a9841a4ed3a67e00b202c3153f5fab75fb5b4fd",
+    "godot/source_operators/motion_math.gd": "ef5133895e42a7b5e60e80bfc5e09da021566ab1e40ae12eee523d4c46d8b633",
+    "port/native-campaign/core.generated.mjs": "2800bec533c3810a94d61e2f7f20f93574e44b13346dee2085200a0467759cca",
+    "port/native-campaign/enemies.mjs": "f3bed6afe31c3ee87f05cf3f02f162916785eedf64171ed7bb7058d6668b6b7e",
+    "port/native-campaign/feel.mjs": "0d4e9cc29f54fc372f266b13b79fd4b6615f6264a13929522b13feaa36873557",
+    "port/native-horde/robot-roles.mjs": "d61dfc281cfe71ab0525735a1a299d868394ffc5c1cff4e8b0c72f7e62f056a1",
+    "tools/asset-production/material-validation.mjs": "874e5d31c666a8af4a98b600bb182a4f4cb9c5e6b1488d80908f855b2584bb3d",
+    "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
+    "tools/asset-production/package-receipt.mjs": "e1917daa642b15e6e3290b537fbf9024ba72e6f5dfd18f4025d3e589d9702621",
+    "tools/asset-production/receipt.mjs": "9648c19d979b2486c78830628c2f2508a02b4b2874d1f64149966d88d7e5f9d8",
+    "tools/asset-production/reopen.py": "4628bc44122a690495766f3cc967a82d3ab7aeab52c272cca7a202be88e0f5de",
+    "tools/godot-campaign/robot-art/build.py": "470a45d39dd24d13fac9f7bd5e1cffd395a8aa9f4de2f2ecddca365be908815e",
+    "tools/godot-package/production_resources.mjs": "84b0cf5e11c8f01bd46119fa0e159388a9cf43d7a94e4f77c499abad7f81e9ab",
+    "tools/godot-robots/build.py": "d3b6244b32a8aa65b984e72db6390c07b8391fc02dd366e94c3f8c293465e1a9",
+    "tools/godot-robots/generated/recipe.json": "7510a2a78e0f54e3609af9d4a030da292ad8734605e592db048b95cbfb3bb76a",
+    "tools/godot-robots/masters/caisson_guard_skeletal.glb": "26e814a10d49997b599628f30afc068331482e62573f69aaff02391c79e24e26",
+    "tools/godot-robots/masters/kiln_tender_skeletal.glb": "6165bd0c9c113b3464e5a94caa3b31482430b6457b667b95080839bc8e3d151c",
+    "tools/godot-robots/masters/needle_surveyor_skeletal.glb": "b53b2231904a206ff86b39132217c717e4973a9ac7415e479a6f7a36cb909523",
+    "tools/godot-robots/recipe.py": "446f471881fc91fbfb9ed0588239f2f00ad883f9597e5efbcbd7913f7986865f",
+    "tools/godot-robots/verify_blender.py": "e16029eefc7ac280e0da9899b828e4014477c161f4f9cab63ba7da912283adc5"
+  },
+  "packageInputs": {
+    "game/alt-fire.mjs": "d7f821f28f9cfe3d12da2da3461e053f698037aa8e44540324c76a58c2e02c5f",
+    "game/arsenal-maps.mjs": "fad8dff6d87dda4aef905969cd9b130e3a5c7c9776e8b1e6e0294a8dc6d63f3d",
+    "game/assault.mjs": "6e24f4a363ce8ccb1787057ec125d3695da2aefe133f7872bf3a4cde66daea70",
+    "game/attachments.mjs": "66c46bfb2bae119a61ba7ffcdd301e34fad42a50e2dc3c7833828b9abfdcef14",
+    "game/battle-maps.mjs": "3d4ac5b9a4dfc5e896e0679ba39a8da3d579285b0e551160e45687f9437dfaf8",
+    "game/blood-gulch.mjs": "2df956608fc6fe73c77410ccb5889f09266c722c236494f46d4d585730ea9a7b",
+    "game/bot-personalities.mjs": "173c86b85a7c688987a9f65dd72195042c75f0038bb9f10ef22a79f3dcc699c2",
+    "game/bots.mjs": "2a6d3fcd7960711fc4aeefe77aaa39dc1a318c6c36097ede7010894a411cf95a",
+    "game/campaign-anchors.mjs": "0d07d2cfb5e67049524870b1a8af2703d57b747cc7ca85f825a545dd47e9d8a7",
+    "game/campaign-data.mjs": "bac73e42b0d519d8929c1dbdf004c088a05c46ecb757f784b632859a7d4c380c",
+    "game/character-anim.mjs": "feaff9cd77a88174210957e871420d429c3523d5b2517592749b190e602bfa01",
+    "game/cocs-bots.mjs": "bdad004df06de288be3628528485f66d7f5ded589eeca8a0daafdbdddb461d7e",
+    "game/cocs-coop.mjs": "36038e1f524b1a25c9fd991990b0fddf62ccaae89c87566486f372e9e684e2a6",
+    "game/cocs-difficulty.mjs": "e3ca14ecea9333ab2d74b2ccf8f281f7a962bb67cc8c6b3d28eebbe5b37c42c0",
+    "game/cocs-director.mjs": "926af20afc920c3d3a6ff9870322d128414205a7c80b84d7c19073471069ed8d",
+    "game/cocs-economy.mjs": "1fdbdddeeabb32eff1dbb1d73bc34506d63c2e3e2ac6fb0a37851465865f8f93",
+    "game/cocs-roles.mjs": "3edaf3207b6a54bf0600ee0fb9eee732bdd494351d67f9cc85b1c8e66ade67fa",
+    "game/cocs-squads.mjs": "b6d234b007e6d80a670c4646c43fdaf6485e62120876fe6ccbe210ac026cd6a1",
+    "game/cocs-terminals.mjs": "7b96cad0dcbf2b0dfb5dd78cf1217298edaf70785e482fb3944745636d3efa3f",
+    "game/cocs-traversal.mjs": "555e742ff721549db974ac470a2b523ac6dad98659c40f7399a11e904c7672f7",
+    "game/cocs.mjs": "1224034a80181d83571f15034059aa979545afc171632e6588fe9d2ebf3724e6",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "game/core.mjs": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+    "game/cosmetics.mjs": "466d6eba56296a88b698a6036cc40b1381634b30d350fe04757832a15779b98a",
+    "game/ctf-maps.mjs": "4f91623e6cc6914b9cca688edd7b37a1ba0e804808943a40deb27525ab78107f",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+    "game/deaths.mjs": "2c97fa500f2dfe504b1b3c7ff5de8cc5699b44b9c79df4eedb1276107933c89c",
+    "game/destination-combat-maps.mjs": "a8964b89d4fa2dffac2d0b7ee49fe6fc70e9e261fd9a5078b2630370a5f7316b",
+    "game/destination-lattice-maps.mjs": "a7110177c2e4dca4b56f88f7e0d768b96df935661e0d4dfe87ba2970be8b1966",
+    "game/destination-maps.mjs": "e8ac0655a4ae8030f70a76f258784c5007ea2be808f0cb10547385c6ceffeda2",
+    "game/destination-objective-maps.mjs": "f995d7ec863f848ac7e3aa6a9a48e2a51b27f6fda7749e86877594665a1c79d8",
+    "game/destination-sports-maps.mjs": "bd3f486d57b188163b16193b4ce05401bac14ad19b40b73768525c9ca4d0e0b1",
+    "game/enemy-types.mjs": "92b600584061d0626b35dd44ae94e1903ba178b390f600a0254fbc5505685613",
+    "game/expansion-maps.mjs": "62b30255393daa473f5c6e46056e8922c1dc74c02c993499cbe6ac3e6439537f",
+    "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+    "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
+    "game/horde-stages.mjs": "132bb551f0e517ed037d2e97fbd8ff510802eaaa7163e39da10e59745d656afb",
+    "game/island-maps.mjs": "5fff90834c33d65bd8a06a70528aff45f7d5b09840b8eaa0a3a9c5f23f4d0cf7",
+    "game/kits.mjs": "e44908b88341bce5f4df8ffe9e896482202466dc502fd93059ba63e5b54c40bd",
+    "game/lattice-foundry.mjs": "5c63d3d1c36e9957a6181cc2e7f83f27056599040ad9f4f7714d43c5596b4c56",
+    "game/lattice-maps.mjs": "d3eae8ec886ed66dfc04c420d9a4e6051368dff385bc680cf238387545c91016",
+    "game/lattice-roles.mjs": "bd1f1165c3e2b3dfa3b33e3351f90db1039eaf264ddadab08e5e481dcee31340",
+    "game/lattice-support.mjs": "5d359bf2a7fb06a3e6f0085cf13c68d2db900297223298d2befffd8edb393f3a",
+    "game/levelgen.mjs": "3a5b2285b1a9703cded463bdffa0cc73f38b75b427e0ce9371919c646a4dd38b",
+    "game/map-schema.mjs": "e4b6ebc445912c6128eb1cbc658d91d07751b85650bc92fd0fd0764ae72716b8",
+    "game/maps.mjs": "729d94c4a3bc566d3c6b89c8c5c7d656babf338f2ab42edc988f383e021dd731",
+    "game/math.mjs": "a9f2e5f55f7e90c567d35b4c77d7ecdeae4c28b5174d52f8cf9a5e4e59170327",
+    "game/mode-data.mjs": "7598bfa2d5fb0495bbfcb615c3083245d4dff632a13aa1a42593da8023e91548",
+    "game/moth-assets.mjs": "736d5ff7e844f8210b273791f4806bae916a4e463494f64c78b94bd4cb2768ab",
+    "game/moth-baked.mjs": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2",
+    "game/moth-maps.mjs": "613cdeac0ea8f5f64c988f051698661825d2053268b75fe1151c7beacfcdc081",
+    "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
+    "game/nextgen-maps.mjs": "9a8dc8720a2395edf796a0d630f0033c9aa29d872d3fcf98db3aefabdac33727",
+    "game/objectives.mjs": "3e92ad1f85fb785362e15fd836d2b80f95060e0670e9f58a766f79ffa60742ec",
+    "game/operator-profiles.mjs": "b7c4aec4aac899626ad5d7a78f5870218513a5b1d38ff12f2312beacc32882ba",
+    "game/operator-verbs.mjs": "f3bbcd2e13bc04dabf2a81a74ddee3848d6835d11d8ac063e4603ea689bf96b3",
+    "game/outcome.mjs": "f66fe5ca09e8507939d407a7eb9defd4a2d23b643a221955e0d0ad584b17ec98",
+    "game/payload.mjs": "13e357516af38fdfe6596dfa7a43cbeaae2445f492ad41df934deb8840bc92bb",
+    "game/progression.mjs": "5b70fa168d8edb5192052ad9bed3243370db7ba8f13952a9401596a9d4bc1ce5",
+    "game/race-maps.mjs": "d14c6d5cf31728cb5bac4363b142d16a79705b727f7e015774d80a68d5abf4b3",
+    "game/race.mjs": "1c448a0f00e3354dd6fa32190f85dcc6c31883f428b07193773fcd02bf2effba",
+    "game/ragdoll.mjs": "10bd8cb43405d45a42d5034261ce89119a8bf05c24c3ca1f47f1b4b4202efa3d",
+    "game/singleplayer.mjs": "60ab39e4cc9dd07f38fed27c39f25b2383e0ea1257dba5ee29f2ebe7762189ce",
+    "game/soccer-maps.mjs": "9a57d95b9064c21d3c73303535379f006638aa3c476227bf92946541d1ca6669",
+    "game/soccer.mjs": "78da2d005207c5e744f56a2d3924d0bf82ed4c62b29bd0702b97513b74359972",
+    "game/spatial.mjs": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
+    "game/spawn-placement.mjs": "b0665e410e68eaf160c1a890558a69efa035e58abd76c45c28fcc01ae42b2361",
+    "game/spec-effects.mjs": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
+    "game/story.mjs": "6306ec902fbb8427dd0060ac79084c95bb7fc6999a49f28ec86cae9ddccf059b",
+    "game/structures.mjs": "445ace67e41028e602aab692578c9d200ca8fb58d1b3f9f8c1568c5ac2b5d1d2",
+    "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+    "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+    "game/vehicles.mjs": "e55dbed9969a9f4430b0471fefb4d294fddf0e75d8af853565c9361c106244db",
+    "godot/campaign/robot_parts.gd": "03c20644298f8dc939a25717bb347ddfc46aa89efbbdf561d3e13f735cc1a1c9",
+    "godot/campaign/robot_visual.gd": "34ae54e739b464bd01ca1beb2ca991038ce50aa7aca4cfc10942831dfc836f20",
+    "godot/moth/derived/manifest.json": "5be9ad6493455138464dc059dd64a32dc5d837f6fc4e460957f606f6d2a79887",
+    "godot/moth/generated/manifest.json": "c5589ff2f2ab68d982b2bb45c221c08d8e3f653953e5d5d446bfa4cd68380047",
+    "godot/robot_assets/switchyard/contract.json": "956105382159b46b445a3f58ece02397995dec988f316689bac11ef4e9f1dc61",
+    "godot/robot_assets/switchyard/generated/build-receipt.json": "0f9f2bd1bc6a0b4d2a6c5b1b151a43dda916d52d462b9f67ccc04ec3ae9ae168",
+    "godot/robot_assets/switchyard/skin_adapter.gd": "cfe644ea6ac98adeb3e2d95c1f4e0d79d9cd60aa261509d801c18e30cdc624a8",
+    "godot/source_operators/ground_contact.gd": "566f0b43f3430593eff3e6a35a9841a4ed3a67e00b202c3153f5fab75fb5b4fd",
+    "godot/source_operators/motion_math.gd": "ef5133895e42a7b5e60e80bfc5e09da021566ab1e40ae12eee523d4c46d8b633",
+    "port/native-campaign/core.generated.mjs": "2800bec533c3810a94d61e2f7f20f93574e44b13346dee2085200a0467759cca",
+    "port/native-campaign/enemies.mjs": "f3bed6afe31c3ee87f05cf3f02f162916785eedf64171ed7bb7058d6668b6b7e",
+    "port/native-campaign/feel.mjs": "0d4e9cc29f54fc372f266b13b79fd4b6615f6264a13929522b13feaa36873557",
+    "port/native-horde/robot-roles.mjs": "d61dfc281cfe71ab0525735a1a299d868394ffc5c1cff4e8b0c72f7e62f056a1",
+    "tools/asset-production/material-validation.mjs": "874e5d31c666a8af4a98b600bb182a4f4cb9c5e6b1488d80908f855b2584bb3d",
+    "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
+    "tools/asset-production/package-receipt.mjs": "e1917daa642b15e6e3290b537fbf9024ba72e6f5dfd18f4025d3e589d9702621",
+    "tools/asset-production/receipt.mjs": "9648c19d979b2486c78830628c2f2508a02b4b2874d1f64149966d88d7e5f9d8",
+    "tools/asset-production/reopen.py": "4628bc44122a690495766f3cc967a82d3ab7aeab52c272cca7a202be88e0f5de",
+    "tools/godot-campaign/robot-art/build.py": "470a45d39dd24d13fac9f7bd5e1cffd395a8aa9f4de2f2ecddca365be908815e",
+    "tools/godot-package/production_resources.mjs": "84b0cf5e11c8f01bd46119fa0e159388a9cf43d7a94e4f77c499abad7f81e9ab",
+    "tools/godot-robots/build.py": "d3b6244b32a8aa65b984e72db6390c07b8391fc02dd366e94c3f8c293465e1a9",
+    "tools/godot-robots/generated/recipe.json": "7510a2a78e0f54e3609af9d4a030da292ad8734605e592db048b95cbfb3bb76a",
+    "tools/godot-robots/masters/caisson_guard_skeletal.glb": "26e814a10d49997b599628f30afc068331482e62573f69aaff02391c79e24e26",
+    "tools/godot-robots/masters/kiln_tender_skeletal.glb": "6165bd0c9c113b3464e5a94caa3b31482430b6457b667b95080839bc8e3d151c",
+    "tools/godot-robots/masters/needle_surveyor_skeletal.glb": "b53b2231904a206ff86b39132217c717e4973a9ac7415e479a6f7a36cb909523",
+    "tools/godot-robots/recipe.py": "446f471881fc91fbfb9ed0588239f2f00ad883f9597e5efbcbd7913f7986865f",
+    "tools/godot-robots/verify_blender.py": "e16029eefc7ac280e0da9899b828e4014477c161f4f9cab63ba7da912283adc5"
+  },
+  "runtimeHooks": {
+    "godot/campaign/demo.gd": "7fab4d8128cb0b0343bcd64f9c9f776c01cf14cd38cd511da8db5c4192ecc34e",
+    "godot/campaign/robot_visual.gd": "34ae54e739b464bd01ca1beb2ca991038ce50aa7aca4cfc10942831dfc836f20",
+    "godot/campaign/terrain.gd": "3c32b16fdf5899802069828c683a69c37c0b6fed1dd393e4849fa0f2aaac8068",
+    "godot/horde/demo.gd": "c010585a309910a781f5dd0d87013e5fbd4bac927774c6b60ba03c444b3b7951",
+    "godot/robot_assets/switchyard/skin_adapter.gd": "cfe644ea6ac98adeb3e2d95c1f4e0d79d9cd60aa261509d801c18e30cdc624a8",
+    "godot/robot_assets/switchyard/workshop.gd": "c105afbc0874fc2afb7d56b72a48bcd6546873e62669ec08cef037daa936e81e"
+  },
+  "rawFiles": []
+}

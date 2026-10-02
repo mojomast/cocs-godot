@@ -98,6 +98,10 @@ func build(id: String) -> bool:
 	expansion.name = "BiomeExpansionFour"
 	add_child(expansion)
 	expansion.build(self)
+	var workshop := preload("res://robot_assets/switchyard/workshop.gd").new()
+	workshop.name = "SwitchyardWorkshop"
+	add_child(workshop)
+	workshop.build(self)
 	return true
 
 func height_at(x: float, z: float) -> float:

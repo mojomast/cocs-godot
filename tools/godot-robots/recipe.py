@@ -26,11 +26,12 @@ def robot(skin, lod=0):
     pieces = []
 
     def box(j, name, p, s, mat='armor', bevel=.015):
-        pieces.append(dict(joint=j, name=name, shape='box', p=list(p), size=list(s),
+        shape = 'plate' if name in ['split_breastplate','armored_crossbeam','split_saddle','sensor_cowl','overlapping_scute','contact_sole'] else 'box'
+        pieces.append(dict(joint=j, name=name, shape=shape, p=list(p), size=list(s),
                            material=mat, bevel=bevel))
 
     def rod(j, name, a, b, radius, mat='steel'):
-        pieces.append(dict(joint=j, name=name, shape='rod', a=list(a), b=list(b),
+        pieces.append(dict(joint=j, name=name, shape='tube' if name in ['barrel','tube'] else 'rod', a=list(a), b=list(b),
                            radius=radius, material=mat, bevel=min(.008, radius/4)))
 
     # Three separate load-bearing architectures; rear and belly are authored too.
@@ -78,14 +79,24 @@ def robot(skin, lod=0):
         start, stop = (knee, [knee[n]+end[n] for n in range(3)]) if lod == 2 else ([0, 0, 0], end)
         rod(target, 'shin_ram', start, stop, .06 if role == 'skirmisher' else .09)
         box(target, 'contact_sole', stop, [.18 if role == 'skirmisher' else .25, .18, .38 if biped else .23], 'dark')
+        if lod == 0:
+            for tread in [-.06, .04]:
+                box(target, 'toe_cleat', [stop[0],stop[1]+.082,stop[2]+tread],
+                    [.16 if role == 'skirmisher' else .23,.024,.034], 'steel', .005)
         if lod < 2:
             rod(hip, 'axle', [-.1, 0, 0], [.1, 0, 0], .1, 'steel')
             rod(shin, 'knee_axle', [-.09, 0, 0], [.09, 0, 0], .095, 'ceramic')
             a = [knee[0]+.055, knee[1]*.15, knee[2]*.15]
             b = [knee[0]+.055, knee[1]*.78, knee[2]*.78]
             rod(hip, 'piston_parallel', a, b, .022)
+    rod('Turret', 'turntable_bearing', [0, -.06, 0], [0, .09, 0], width*.28, 'dark')
     box('Turret', 'sensor_cowl', [0, .12, 0], [width*.84, .21, .39], 'armor', .035)
-    box('Optics', 'status_slit', [0, .12, -width*.399], [width*.42, .045, .018], 'optic', .004)
+    box('Optics', 'status_slit', [0, .12, -max(width*.399,.215)], [width*.42, .045, .018], 'optic', .004)
+    if lod < 2:
+        box('Turret', 'sensor_brow', [0,.21,-.16], [width*.76,.06,.13], 'ceramic', .012)
+    if lod == 0:
+        for side in [-1, 1]:
+            rod('Turret', 'azimuth_spindle', [side*width*.4,.09,-.04], [side*width*.4,.09,.12], .043, 'steel')
     if role == 'mortar':
         # A service-tool cradle around the existing artillery tube; no new ability.
         box('Weapon', 'pressure_breech', [0, .24, -.14], [.4, .29, .68], 'ceramic', .04)
@@ -130,6 +141,23 @@ def props():
                     a=[p[0]+side*s[0]*.35,p[1]+level*s[1]*.35,p[2]-s[2]/2],
                     b=[p[0]+side*s[0]*.35,p[1]+level*s[1]*.35,p[2]-s[2]/2-.02],
                     radius=.02, material='steel', bevel=.003))
+        # Recessed, legible service panels on each assembly, using the same kit
+        # rather than leaving the support props as anonymous uninterrupted boxes.
+        width = min(.46, s[0]*.68)
+        for n in range(3):
+            pieces.append(dict(joint='Root',name='service_vent',shape='box',
+                p=[p[0],p[1]+(n-1)*.075,p[2]-s[2]/2-.01],
+                size=[width,.028,.022],material='dark',bevel=.004))
+        pieces.append(dict(joint='Root',name='service_indicator',shape='box',
+            p=[p[0],p[1]+s[1]*.35,p[2]-s[2]/2-.018],
+            size=[width*.45,.035,.025],material='coolant',bevel=.004))
+    # Dock actuators and rack cell caps create functional negative space/detail.
+    for side in [-1,1]:
+        out['repair_dock'].append(dict(joint='Root',name='dock_actuator',shape='rod',
+            a=[side*.56,.25,.23],b=[side*.56,.95,.23],radius=.042,material='steel',bevel=.008))
+    for x in [-.4,0,.4]:
+        out['battery_rack'].append(dict(joint='Root',name='cell_cap',shape='box',
+            p=[x,.82,-.19],size=[.16,.08,.05],material='ceramic',bevel=.008))
     return out
 
 
