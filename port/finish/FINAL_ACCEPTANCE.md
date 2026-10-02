@@ -1,11 +1,39 @@
 # Final completion acceptance
 
-Follow-up to candidate `dff733c0`, merged into the existing acceptance worktree.
-Adopt only at the parent checkpoint boundary. Exclusive grant C remains with
-Parallax `ses_f055a6b41ffe42yCL8AxbOL676`. This is source preparation;
+Follow-up to candidate `b66f4ab3` (after `dff733c0`), merged into the existing acceptance worktree.
+Adopt only at the parent checkpoint boundary. C cleanup/release was reported at
+22:23:17Z; exclusive grant D belongs to the original robot owner
+`ses_f03a2843bffefDFoP3x1j1cxRO`. This is source preparation;
 no Godot, import, Blender, capture, encoding or Windows execution was performed.
 
 ## Contract and completion ledger
+
+### Parallax C dependency adoption
+
+`b66f4ab3` incorporates `fd1aeefb` / `be16f060` / `bf0aaac9`. Read the committed
+`port/new-maps/parallax-observatory/PRODUCTION-C.md` and
+`port/surface-refinement/maps/EMISSION_NATIVE_C.md`: the revised master reopens
+to byte-identical GLB, geometry is unchanged, and actual native physics/mount
+proof, current-asset DM and all-five-district walkthrough were executed. Parent
+reviewed archive/pump/exterior imagery and accepts the asset improvement.
+The six historical mode proofs retain their older asset anchor; neither those
+nor current C evidence automatically passes a new final ledger.
+
+All five emission follow-up checks actually passed natively, including Foundry
+seven dressed selectors plus preserved `GM / orange` lifecycle and Helix
+exclusion/font regression. These software-renderer comparisons are not GPU
+performance proof. The responsive-camera correction is still natively unrun.
+
+The committed catalog now has ten worlds / sixty pairs, including six Parallax
+pairs. Vesper, Abyssal and Stormglass remain unregistered. Packaging owns the
+single real Parallax promotion receipt in progress, with the other six units
+remaining null; this lane does not edit requirements or receipts. The earlier
+seven-pending strict/audit logs below describe the `dff733c0` source snapshot,
+not a claim that current Parallax assets or native evidence are absent.
+After adopting `b66f4ab3`, the Parallax source adapter passed against its actual
+registered recipe/GLB/material bindings, and all 15 receipt tests passed again.
+These source results are in `parallax-b66-source.log` and `receipts-b66.log`
+beside the targeted logs below. No C receipts were imported into the final ledger.
 
 `final_matrix.json` extends the original `matrix.json` without removing or
 downgrading its 96 critical jobs. It adds focused fighting, map/operator finish,
@@ -76,7 +104,7 @@ python3 tools/godot-dev/finish_runner.py --matrix port/finish/final_matrix.json 
 
 Select the two strict closure IDs when production/promotion is ready; missing
 assets must fail, rather than switching those commands to audit. Planning and
-execution use the shared supervisor lock; do not compete with grant C. Use the
+execution use the shared supervisor lock; do not compete with grant D. Use the
 committed matrix for source inspection until the owner releases that slot.
 
 Later native selection `fighting-camera-native` requires passed `native-import`,
@@ -187,7 +215,7 @@ does not supply this graphical proof. All requested final units remain required.
 | Fighting mechanics/invariants/27 routes both facings | Core + acceptance; final frozen-candidate execution | B 54/54 at `1b690f01`; current final matrix pending |
 | Nine exported rigs, unique motion/contact | Animation producer + independent fighting acceptance; final responsive-view review | Nine real GLBs/masters/import settings committed; B native evidence historical |
 | Four stages, pause/input/AI/training | Fighting presentation; existing journey plus explicit missing training/device units | Native unrun; actual stages are Basalt, Canopy, Crown, Helix |
-| Three Moth map finishes | Map owners + shared binder; existing proof and district inspection | Helix source adapter passed; native unrun; Parallax recipe/art and registration unresolved |
+| Three Moth map finishes | Map owners + shared binder; existing proof and district inspection | Parallax C art/registration committed; Foundry/Helix emission C native passes retained at their own anchors; final matrix pending |
 | Nine operator finishes | Content/runtime owners; reuse exact-anchor source receipts, execute lifetime and moving UV/team/LOD review | Source resources present; native/manual unrun |
 | Vesper, Abyssal, robots, vehicles, Stormglass, scenery | Asset consolidator and six owners; follow owned `ASSET_PRODUCTION.md` | Missing producer/assets remain blocked; no recipe-only completion |
 | Menu/trailer | Cinematic owner; existing production pipeline and full watch/listen | Producer absent here; capture/encode/review unrun |
