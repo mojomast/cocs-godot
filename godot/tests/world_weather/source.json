@@ -1,0 +1,588 @@
+{
+  "source": "game/environment.mjs + ArenaView._applyArenaLook/_applyWetSheen/_updateWeather",
+  "base": {
+    "fog": "#607f8f",
+    "density": 0.003,
+    "exposure": 1.1,
+    "fill": 0.8,
+    "key": 0.9,
+    "fillColor": "#cce4e9",
+    "keyColor": "#e1efff",
+    "roughness": 0.84,
+    "metallic": 0.1
+  },
+  "looks": [
+    {
+      "kind": "clear",
+      "wetness": 0,
+      "density": 0.003,
+      "fog": [
+        0.3764767606879643,
+        0.49804493074189676,
+        0.5607896183435715
+      ],
+      "exposure": 1.1,
+      "fill": 0.8,
+      "fillColor": [
+        0.8000028754620482,
+        0.8941192531665577,
+        0.9137268125404129
+      ],
+      "key": 0.9,
+      "keyColor": [
+        0.8823547144396859,
+        0.9372558754176662,
+        0.9999999999999999
+      ],
+      "roughness": 0.84,
+      "metallic": 0.1
+    },
+    {
+      "kind": "overcast",
+      "wetness": 0.04,
+      "density": 0.0032400000000000003,
+      "fog": [
+        0.37057566125623465,
+        0.4892080297568369,
+        0.5510515584461149
+      ],
+      "exposure": 0.9878000000000001,
+      "fill": 0.78944,
+      "fillColor": [
+        0.790669271618677,
+        0.8837582317438103,
+        0.9031517459994755
+      ],
+      "key": 0.873,
+      "keyColor": [
+        0.8645432755485036,
+        0.9184012149383803,
+        0.9799530874057322
+      ],
+      "roughness": 0.8215199999999999,
+      "metallic": 0.112
+    },
+    {
+      "kind": "rain",
+      "wetness": 0.16,
+      "density": 0.004050000000000001,
+      "fog": [
+        0.3567154771479906,
+        0.4717192875856722,
+        0.5321766578403135
+      ],
+      "exposure": 0.9130000000000001,
+      "fill": 0.7824,
+      "fillColor": [
+        0.7775026218815011,
+        0.8691422332204125,
+        0.8882338001097172
+      ],
+      "key": 0.855,
+      "keyColor": [
+        0.840848286482251,
+        0.8933184028964087,
+        0.9532841934642965
+      ],
+      "roughness": 0.76608,
+      "metallic": 0.14800000000000002
+    },
+    {
+      "kind": "snow",
+      "wetness": 0.05,
+      "density": 0.0036,
+      "fog": [
+        0.39253097281435034,
+        0.5094266513284327,
+        0.5713072156655402
+      ],
+      "exposure": 1.1374000000000002,
+      "fill": 0.8,
+      "fillColor": [
+        0.7964299746724001,
+        0.890153057231513,
+        0.9096786801974559
+      ],
+      "key": 0.9,
+      "keyColor": [
+        0.8764705056366636,
+        0.931027026650982,
+        0.993377277361965
+      ],
+      "roughness": 0.8169,
+      "metallic": 0.115
+    },
+    {
+      "kind": "ash",
+      "wetness": 0,
+      "density": 0.00375,
+      "fog": [
+        0.36951337062149836,
+        0.48603792311555444,
+        0.5464033371889006
+      ],
+      "exposure": 0.9597500000000001,
+      "fill": 0.77888,
+      "fillColor": [
+        0.7870407555326411,
+        0.8797302985326848,
+        0.8990406009692583
+      ],
+      "key": 0.846,
+      "keyColor": [
+        0.8560636041614489,
+        0.9094248865263066,
+        0.9704091515023529
+      ],
+      "roughness": 0.84,
+      "metallic": 0.1
+    },
+    {
+      "kind": "storm",
+      "wetness": 0.22,
+      "density": 0.0048000000000000004,
+      "fog": [
+        0.3444640650578861,
+        0.45647516623314804,
+        0.5156192554298962
+      ],
+      "exposure": 0.8195,
+      "fill": 0.7718400000000001,
+      "fillColor": [
+        0.7663034080290223,
+        0.8567102405420568,
+        0.875544978762295
+      ],
+      "key": 0.8280000000000001,
+      "keyColor": [
+        0.8192630093392009,
+        0.8704688692697358,
+        0.9289897966525941
+      ],
+      "roughness": 0.73836,
+      "metallic": 0.166
+    }
+  ],
+  "replay": [
+    {
+      "kind": "storm",
+      "delta": 0.25,
+      "wetness": 0.03531945543077438
+    },
+    {
+      "kind": "storm",
+      "delta": 0.25,
+      "wetness": 0.06496862026188305
+    },
+    {
+      "kind": "storm",
+      "delta": 0.25,
+      "wetness": 0.08985781983930069
+    },
+    {
+      "kind": "storm",
+      "delta": 0.25,
+      "wetness": 0.11075123316588992
+    },
+    {
+      "kind": "storm",
+      "delta": 0.25,
+      "wetness": 0.12829035567072816
+    },
+    {
+      "kind": "storm",
+      "delta": 0.25,
+      "wetness": 0.14301369519554583
+    },
+    {
+      "kind": "storm",
+      "delta": 0.25,
+      "wetness": 0.15537330592882279
+    },
+    {
+      "kind": "storm",
+      "delta": 0.25,
+      "wetness": 0.16574866793284657
+    },
+    {
+      "kind": "storm",
+      "delta": 0.25,
+      "wetness": 0.1744583384101464
+    },
+    {
+      "kind": "storm",
+      "delta": 0.25,
+      "wetness": 0.18176973244090205
+    },
+    {
+      "kind": "storm",
+      "delta": 0.25,
+      "wetness": 0.18790733349162997
+    },
+    {
+      "kind": "storm",
+      "delta": 0.25,
+      "wetness": 0.19305958578434398
+    },
+    {
+      "kind": "rain",
+      "delta": 0.25,
+      "wetness": 0.18775210139038945
+    },
+    {
+      "kind": "rain",
+      "delta": 0.25,
+      "wetness": 0.1832966963532613
+    },
+    {
+      "kind": "rain",
+      "delta": 0.25,
+      "wetness": 0.17955657531447358
+    },
+    {
+      "kind": "rain",
+      "delta": 0.25,
+      "wetness": 0.17641690444993663
+    },
+    {
+      "kind": "rain",
+      "delta": 0.25,
+      "wetness": 0.17378128569979653
+    },
+    {
+      "kind": "rain",
+      "delta": 0.25,
+      "wetness": 0.17156879703592048
+    },
+    {
+      "kind": "rain",
+      "delta": 0.25,
+      "wetness": 0.16971150789365744
+    },
+    {
+      "kind": "rain",
+      "delta": 0.25,
+      "wetness": 0.16815239348358632
+    },
+    {
+      "kind": "rain",
+      "delta": 0.25,
+      "wetness": 0.16684358394586968
+    },
+    {
+      "kind": "rain",
+      "delta": 0.25,
+      "wetness": 0.16574489459058372
+    },
+    {
+      "kind": "rain",
+      "delta": 0.25,
+      "wetness": 0.16482259209764455
+    },
+    {
+      "kind": "rain",
+      "delta": 0.25,
+      "wetness": 0.1640483587946738
+    },
+    {
+      "kind": "clear",
+      "delta": 0.25,
+      "wetness": 0.13771154653585488
+    },
+    {
+      "kind": "clear",
+      "delta": 0.25,
+      "wetness": 0.1156029245805088
+    },
+    {
+      "kind": "clear",
+      "delta": 0.25,
+      "wetness": 0.09704368666056129
+    },
+    {
+      "kind": "clear",
+      "delta": 0.25,
+      "wetness": 0.08146400408853526
+    },
+    {
+      "kind": "clear",
+      "delta": 0.25,
+      "wetness": 0.06838553017209234
+    },
+    {
+      "kind": "clear",
+      "delta": 0.25,
+      "wetness": 0.057406713421987374
+    },
+    {
+      "kind": "clear",
+      "delta": 0.25,
+      "wetness": 0.04819046862137319
+    },
+    {
+      "kind": "clear",
+      "delta": 0.25,
+      "wetness": 0.04045382721836991
+    },
+    {
+      "kind": "clear",
+      "delta": 0.25,
+      "wetness": 0.03395924927544507
+    },
+    {
+      "kind": "clear",
+      "delta": 0.25,
+      "wetness": 0.028507330224323984
+    },
+    {
+      "kind": "clear",
+      "delta": 0.25,
+      "wetness": 0.023930678500194993
+    },
+    {
+      "kind": "clear",
+      "delta": 0.25,
+      "wetness": 0.02008877607875941
+    },
+    {
+      "kind": "snow",
+      "delta": 0.25,
+      "wetness": 0.024890813079514726
+    },
+    {
+      "kind": "snow",
+      "delta": 0.25,
+      "wetness": 0.028921916753792284
+    },
+    {
+      "kind": "snow",
+      "delta": 0.25,
+      "wetness": 0.032305855034613126
+    },
+    {
+      "kind": "snow",
+      "delta": 0.25,
+      "wetness": 0.03514652578229786
+    },
+    {
+      "kind": "snow",
+      "delta": 0.25,
+      "wetness": 0.037531146785135534
+    },
+    {
+      "kind": "snow",
+      "delta": 0.25,
+      "wetness": 0.03953293362784132
+    },
+    {
+      "kind": "snow",
+      "delta": 0.25,
+      "wetness": 0.04121334764703412
+    },
+    {
+      "kind": "snow",
+      "delta": 0.25,
+      "wetness": 0.04262398299324451
+    },
+    {
+      "kind": "snow",
+      "delta": 0.25,
+      "wetness": 0.04380815073836603
+    },
+    {
+      "kind": "snow",
+      "delta": 0.25,
+      "wetness": 0.044802208665776735
+    },
+    {
+      "kind": "snow",
+      "delta": 0.25,
+      "wetness": 0.04563667757199293
+    },
+    {
+      "kind": "snow",
+      "delta": 0.25,
+      "wetness": 0.046337178353929726
+    },
+    {
+      "kind": "ash",
+      "delta": 0.25,
+      "wetness": 0.03889806969184125
+    },
+    {
+      "kind": "ash",
+      "delta": 0.25,
+      "wetness": 0.03265325769718606
+    },
+    {
+      "kind": "ash",
+      "delta": 0.25,
+      "wetness": 0.027411006424888997
+    },
+    {
+      "kind": "ash",
+      "delta": 0.25,
+      "wetness": 0.02301036178972292
+    },
+    {
+      "kind": "ash",
+      "delta": 0.25,
+      "wetness": 0.019316209754822407
+    },
+    {
+      "kind": "ash",
+      "delta": 0.25,
+      "wetness": 0.016215127893336317
+    },
+    {
+      "kind": "ash",
+      "delta": 0.25,
+      "wetness": 0.01361190295273178
+    },
+    {
+      "kind": "ash",
+      "delta": 0.25,
+      "wetness": 0.011426607499699797
+    },
+    {
+      "kind": "ash",
+      "delta": 0.25,
+      "wetness": 0.009592145889197073
+    },
+    {
+      "kind": "ash",
+      "delta": 0.25,
+      "wetness": 0.008052194210928974
+    },
+    {
+      "kind": "ash",
+      "delta": 0.25,
+      "wetness": 0.006759470962961495
+    },
+    {
+      "kind": "ash",
+      "delta": 0.25,
+      "wetness": 0.005674285356543622
+    }
+  ],
+  "phases": [
+    {
+      "background": "#303030",
+      "expected": {
+        "phase": "night",
+        "t": 0,
+        "cycle": "night"
+      }
+    },
+    {
+      "background": "#606060",
+      "expected": {
+        "phase": "dusk",
+        "t": 0,
+        "cycle": "dusk"
+      }
+    },
+    {
+      "background": "#909090",
+      "expected": {
+        "phase": "day",
+        "t": 0,
+        "cycle": "day"
+      }
+    },
+    {
+      "background": "#cccccc",
+      "expected": {
+        "phase": "day",
+        "t": 0,
+        "cycle": "day"
+      }
+    }
+  ],
+  "sourceHashes": {
+    "environment.mjs": "fe9a1e84add0d1f16ab9667cb617c5f94a1cb53e480666c79746759dcbabe0c5",
+    "view.mjs": "98f8aca46bece81a191760a253db68814bf4e768ee56f37be41eae09723af33d"
+  },
+  "sheen": [
+    {
+      "value": -1,
+      "expected": {
+        "wetness": 0,
+        "roughness": 1,
+        "metalness": 0,
+        "sheen": 0,
+        "reflection": 0
+      }
+    },
+    {
+      "value": 0,
+      "expected": {
+        "wetness": 0,
+        "roughness": 1,
+        "metalness": 0,
+        "sheen": 0,
+        "reflection": 0
+      }
+    },
+    {
+      "value": 0.04,
+      "expected": {
+        "wetness": 0.04,
+        "roughness": 0.978,
+        "metalness": 0.012,
+        "sheen": 0.02,
+        "reflection": 0.04
+      }
+    },
+    {
+      "value": 0.16,
+      "expected": {
+        "wetness": 0.16,
+        "roughness": 0.912,
+        "metalness": 0.048,
+        "sheen": 0.08,
+        "reflection": 0.16
+      }
+    },
+    {
+      "value": 0.22,
+      "expected": {
+        "wetness": 0.22,
+        "roughness": 0.879,
+        "metalness": 0.066,
+        "sheen": 0.11,
+        "reflection": 0.22
+      }
+    },
+    {
+      "value": 0.5,
+      "expected": {
+        "wetness": 0.5,
+        "roughness": 0.725,
+        "metalness": 0.15,
+        "sheen": 0.25,
+        "reflection": 0.5
+      }
+    },
+    {
+      "value": 1,
+      "expected": {
+        "wetness": 1,
+        "roughness": 0.44999999999999996,
+        "metalness": 0.3,
+        "sheen": 0.5,
+        "reflection": 1
+      }
+    },
+    {
+      "value": 2,
+      "expected": {
+        "wetness": 1,
+        "roughness": 0.44999999999999996,
+        "metalness": 0.3,
+        "sheen": 0.5,
+        "reflection": 1
+      }
+    }
+  ]
+}

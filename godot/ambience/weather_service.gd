@@ -2,6 +2,9 @@ extends Node3D
 ## Eventless, opt-in cosmetic layer. Host owns lifecycle and calls bind/tick.
 ## Host suppresses only overlapping falling fields before acknowledging handoff.
 const Profile = preload("res://ambience/weather_profile.gd")
+const WeatherLook = preload("res://ambience/weather_look.gd")
+var look := WeatherLook.new()
+var _look_stamp := -1.0
 const MAX_PARTICLES := 48
 const MAX_EMITS_PER_TICK := 44
 const AUDIO_RATE := 22050
@@ -86,12 +89,15 @@ func _sync_audio_playback() -> void:
 		_playback = _audio.get_stream_playback() as AudioStreamGeneratorPlayback
 
 func _exit_tree() -> void:
+	look.clear()
 	preload("res://audio/playback_cleanup.gd").release(_audio)
 	_playback = null
 	preload("res://audio/playback_cleanup.gd").drain()
 
 ## Source arena metadata only. No synthesized geometry or map parameters.
 func bind(arena: Dictionary, camera: Camera3D, mode: String = "playing", seed: int = 1) -> void:
+	look.clear()
+	_look_stamp = -1.0
 	_arena = arena.duplicate(true)
 	_camera = camera
 	_mode = mode
@@ -104,6 +110,7 @@ func bind(arena: Dictionary, camera: Camera3D, mode: String = "playing", seed: i
 	_mesh.visible_instance_count = 0
 	_active_particles = 0
 	_snapshot_weather = ""
+	_flash.light_energy = 0.0
 	_snapshot_time = {}
 	_strike_window = -1
 	_lightning_claimed.clear()
@@ -112,6 +119,12 @@ func bind(arena: Dictionary, camera: Camera3D, mode: String = "playing", seed: i
 	_audio_state = Profile.u32(seed) if Profile.u32(seed) != 0 else 1
 	_audio_frames = 0
 	_refresh()
+
+## Production host supplies its static map only: excludes actors and pickups.
+func bind_presentation(world: Node3D, environment: WorldEnvironment, sun: DirectionalLight3D) -> void:
+	look.bind(world, environment, sun)
+	look.apply(_weather if _quality > 0.0 else "clear", 0.0, true)
+	_look_stamp = _elapsed
 
 ## Explicit handoff: only true after the native ambient weather emitters are
 ## disabled for this viewer. False immediately releases the extra field.
@@ -146,6 +159,7 @@ func apply_settings(settings: Dictionary) -> void:
 		_flash.light_energy = 0.0
 	_sync_audio_playback()
 	_refresh()
+	if not _enabled or _reduced or _quality <= 0.0: look.apply("clear", 0.0, true)
 
 func set_focus(focused: bool) -> void:
 	_focused = focused
@@ -166,6 +180,7 @@ func apply_snapshot(frame: Dictionary) -> void:
 			_spawn_serial = -1
 			_live.clear()
 			_strike_window = -1
+			_look_stamp = -1.0
 		_elapsed = float(timestamp)
 		_authoritative_time = true
 	# game/core.mjs snapshot() serializes the authored object as `singleplayer`
@@ -185,6 +200,10 @@ func tick(delta: float) -> void:
 	if not is_finite(delta) or delta <= 0.0 or not _focused: return
 	if not _authoritative_time: _elapsed += minf(delta, 0.1)
 	_refresh()
+	if _focused:
+		var elapsed := maxf(0.0, _elapsed - _look_stamp) if _look_stamp >= 0.0 else 0.0
+		look.apply(_weather if _quality > 0.0 else "clear", elapsed, _look_stamp < 0.0)
+		_look_stamp = _elapsed
 	_update_lightning()
 	_update_particles()
 	_fill_audio()

@@ -48,6 +48,7 @@ func av_start(frame: Dictionary) -> bool:
 	if audiovisual_round != key:
 		audiovisual_round = key
 		audiovisual.bind_session(self, camera, arena, selected_mode, key, int(revision))
+		audiovisual.weather.bind_presentation(world, environment, sun)
 		audiovisual.start_round(key)
 	else: audiovisual.start_round(key) # same revision reconnect does not reset IDs
 	if not application_focused: audiovisual.set_focus(false)

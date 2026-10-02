@@ -8,6 +8,23 @@ const KINDS := {
 	"ash": {"particles": 64, "mood": "hot", "wind": 1.2, "color": "8f8880", "size": 0.035, "life": 3.8, "fall": 0.9, "drift": 0.8, "streakRatio": 0.4},
 	"storm": {"particles": 130, "mood": "storm", "wind": 2.0, "color": "9fb0c2", "size": 0.03, "life": 1.4, "fall": 15.0, "drift": 0.7, "streakRatio": 1.15},
 }
+## game/environment.mjs WEATHER_PRESETS: density, exposure, tint, wet, dark.
+const LOOKS := {
+	"clear": [1.0, 1.0, "000000", 0.0, 0.0],
+	"overcast": [1.08, 0.88, "39404a", 0.04, 0.06],
+	"rain": [1.35, 0.8, "28323d", 0.16, 0.1],
+	"snow": [1.2, 1.04, "c3d1de", 0.05, 0.0],
+	"ash": [1.25, 0.85, "3a3129", 0.0, 0.12],
+	"storm": [1.6, 0.7, "1e2833", 0.22, 0.16],
+}
+
+static func wet_sheen(wetness: float) -> Dictionary:
+	var w := clampf(wetness if is_finite(wetness) else 0.0, 0.0, 1.0)
+	return {"wetness": w, "roughness": 1.0 - w * 0.55, "metalness": minf(0.35, w * 0.3), "sheen": w * 0.5, "reflection": w}
+
+static func wet_step(current: float, target: float, delta: float) -> float:
+	if not is_finite(delta) or delta <= 0.0: return current
+	return current + (target - current) * (1.0 - exp(-0.7 * clampf(delta, 0.0, 0.25)))
 const BIOMES := {
 	"canyon": {"mood": "hot", "tint": "#8a6a44", "particles": "dust"},
 	"forest": {"mood": "default", "tint": "#4f7a44", "particles": "leaf"},
@@ -93,7 +110,7 @@ static func time_at(arena: Dictionary, elapsed: float, mode: String = "playing")
 		if str(arena.get("id", "")) in NIGHT_IDS:
 			authored = "night"
 		else:
-			var background := Color(str(arena.get("background", "#090f17")))
+			var background := Color(str(arena.get("background", "#090f17"))).srgb_to_linear()
 			var luminance := background.r * 0.2126 + background.g * 0.7152 + background.b * 0.0722
 			authored = "night" if luminance < 0.06 else ("dusk" if luminance < 0.18 else "day")
 	if arena.get("reducedMotion", false) == true or arena.get("timeOfDay", true) == false or arena.get("timeOfDayOverride", true) == false:
