@@ -69,6 +69,18 @@ coherent player-visible batch, then verify it through actual lifecycle journeys.
 - Modes remains isolated pending native Career/settlement, wide/compact rendered,
   reconnect/restart and fresh-process persistence acceptance. No heavy slot was
   granted by this source-checkpoint handoff.
+- **Experience — implementation ready, connected runner in preparation:**
+  `ab437a38` adds public-snapshot spectator follow/cycle/freecam, target HUD,
+  event-backed kill feed/ASSIST and combined-arms layout changes. `6ca4959a`
+  isolates session camera/input hooks. **127 source tests passed**, alongside
+  48 target, 30 assist, 63 visibility-context and 40 free-motion oracle vectors.
+  Grammar checks are not Godot type or rendered acceptance. No engine ran.
+- Parent requested an executable bounded multi-client runner for the documented
+  native matrix while Experience waits: source wire input isolation, camera and
+  modal transitions, seat/reconnect privacy, event-backed assists, and inspected
+  wide/compact layouts across supported route families. New runtime data
+  `godot/experience/public_event_types.json` needs parent package-closure review.
+  Implementation remains isolated and Helix retains the heavy slot.
 
 ## Parent follow-up
 
