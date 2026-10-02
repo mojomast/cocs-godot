@@ -1,0 +1,57 @@
+{
+  "bindings": [
+    {
+      "finish": "mistral-trim",
+      "role": "metal",
+      "source_material": "sourceMaterial0"
+    },
+    {
+      "finish": "mistral-precision",
+      "role": "precision",
+      "source_material": "sourceMaterial4"
+    },
+    {
+      "finish": "mistral-shell",
+      "role": "armor",
+      "source_material": "sourceMaterial5"
+    },
+    {
+      "finish": "mistral-rubber",
+      "role": "rubber",
+      "source_material": "sourceMaterial6"
+    }
+  ],
+  "operator_id": "mistral",
+  "overlay_finishes": {
+    "board": "mistral-board",
+    "panel": "mistral-panel",
+    "vent": "mistral-vent"
+  },
+  "preserve_materials": [
+    {
+      "reason": "existing emissive optics / wing identity",
+      "source_material": "sourceMaterial1"
+    },
+    {
+      "reason": "dark chassis material shared with visor lens; retain optical surface",
+      "source_material": "sourceMaterial2"
+    },
+    {
+      "reason": "existing emissive optics / wing identity",
+      "source_material": "sourceMaterial3"
+    },
+    {
+      "reason": "material shared with held weapon",
+      "source_material": "sourceMaterial7"
+    },
+    {
+      "reason": "existing emissive optics / wing identity; material shared with held weapon",
+      "source_material": "sourceMaterial8"
+    },
+    {
+      "reason": "team identification / unlit markers",
+      "source_material": "sourceTeamIvory"
+    }
+  ],
+  "version": 1
+}
