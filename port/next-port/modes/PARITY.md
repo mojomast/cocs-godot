@@ -1,8 +1,9 @@
 # Competitive modes source → native parity
 
-Status: **implemented; READY FOR ENGINE, native acceptance pending**. This lane has
-not run Godot, Blender, imports, or package builds. Engine ownership remains with
-the gameplay lane until the parent explicitly grants this lane a slot.
+Status: **native follow-up accepted for all four mode journeys after explicit
+exclusive engine grant; engine slot released at follow-up handoff**. Package and
+combined cross-lane acceptance remain parent-owned. No Blender or package build
+was used in this lane. See ACCEPTANCE.md for exact native outcomes and limits.
 
 ## Audited authority
 
@@ -30,12 +31,12 @@ the gameplay lane until the parent explicitly grants this lane a slot.
 | Vehicles / Combined Arms | Already ported | No new claim | Existing baseline |
 | Career identity, profiles, XP, equipment, results/history | Already ported (`godot/career/{identity,profile,equipped_model,results_model,history_model,service}.gd`) | Reuse ordinary source sessions | Existing baseline |
 | Daily/weekly challenge bonus UI | Source local application path exists | Pending; no server award invented | Not claimed |
-| Full Arsenal | Missing native route | All ten source weapon identities, unlimited ammo; existing selection/first person | Source fixtures pass; native pending |
-| Juggernaut | Missing native route | Source crown, shield, survival points, kill transfer/bounty, crown world marker and point-ranked scoreboard | Source fixtures and normal-rate connected round pass; native pending |
-| Team Elimination | Missing native route | Source team tickets/deaths/attrition/time winner; ticket HUD and team lives results | Source fixtures pass; native pending |
-| VIP Escort | Missing native route | Source VIP deployment/proximity motion/extraction hold/decay/death/timeout; VIP + beacon labels and escort scoreboard | Source fixtures pass; native pending |
-| Home / host setup | Generated selectors already present | Competitive Modes route: map, mode, bots, round seconds, wait-for-players | Parser parity passes; visual pending |
-| Guest / spectator / reconnect / restart / leave | Existing source transport and native session lifecycle | Scoped scene hooks, explicit reconnect button, restart button/Enter, Leave/Home | Source wire passes; two-native script prepared, not run |
+| Full Arsenal | Missing native route | All ten source weapon identities, unlimited ammo; existing selection/first person | Source fixtures pass; native normal-rate draw / restart / Home pass |
+| Juggernaut | Missing native route | Source crown, shield, survival points, kill transfer/bounty, crown world marker and point-ranked scoreboard | Source fixtures, native survival win and native-observed bot combat transfer / 30-point win pass |
+| Team Elimination | Missing native route | Source team tickets/deaths/attrition/time winner; ticket HUD and team lives results | Source fixtures pass; native time-result / restart / Home pass |
+| VIP Escort | Missing native route | Source VIP deployment/proximity motion/extraction hold/decay/death/timeout; VIP + beacon labels and escort scoreboard | Source fixtures pass; native defender timeout / restart / Home pass; ordinary-input extraction not accepted |
+| Home / host setup | Generated selectors already present | Competitive Modes route: map, mode, bots, round seconds, wait-for-players | Actual native selectors validate all four selected journeys; wide/compact Home inspected |
+| Guest / spectator / reconnect / restart / leave | Existing source transport and native session lifecycle | Scoped scene hooks, explicit reconnect button, restart button/Enter, Leave/Home | Three native clients (two players + late spectator), actual reconnect, restart and Leave/Home pass for all four modes |
 
 ## Exact routing and integration contract
 
@@ -58,7 +59,7 @@ capabilities advertise external authority reuse. Existing Combat setup shows the
 exact separate route for these modes; the Home Competitive Modes selector is the
 playable host setup.
 
-Native scope: `godot/mode_expansion/{demo,state,markers,scoreboard}.gd` and scene.
+Native scope: `godot/mode_expansion/{demo,state,markers,scoreboard,hud}.gd` and scene.
 The scoreboard subclasses the common layout; no common HUD/settings/menu layout
 rewrite. It uses crown points (then frags), VIP captures/time/frags, and ticket
 totals instead of implying ordinary FFA ranking for objectives.
@@ -73,9 +74,11 @@ Parent integration dependencies:
    eight new map/mode cases on **each Linux and Windows** package. Preserve the
    previous 67 probes; expected expanded count is 75 per platform if one probe
    is counted per map/mode. Registry changes 25 → 26 routes, 13 → 14 experiences.
-4. Run native and combined acceptance after the explicit engine slot grant.
-   Package build/release remains parent-owned. These commits are not release
-   authorization.
+4. Native lane checks passed after grant. Re-run the two new native gates below
+   against the combined branch, including Experience HUD composition. Package
+   build/release remains parent-owned; this is not release authorization.
+   - `godot --headless --path godot --script res://mode_expansion/contracts.gd`
+   - `GODOT_BIN=... MODE_EVIDENCE=<isolated-dir> node port/next-port/modes/native-proof.mjs --mode=<id>` (each of the four IDs, sequentially, a display/Xvfb required)
 
 ## Source details that must not be “fixed” in native
 
@@ -93,7 +96,10 @@ Parent integration dependencies:
   decreases by elapsed time outside the radius rather than instantly resetting.
   The source VIP uses its direct extraction motion and source floor support; the
   port does not substitute navigation or different rules. Native full-path
-  movement/extraction acceptance is still pending.
+  successful ordinary-input extraction acceptance remains pending. A bounded
+  source-input probe following the VIP stalls near x=-32.35 on Sunscar and loses
+  at 180 seconds. This preserves frozen behavior rather than moving the beacon,
+  teleporting the VIP, or changing source navigation.
 
 Evidence directory: `/home/mojo/.tmp-on-disk/cocs-port-modes-evidence-20261001`.
 See [ACCEPTANCE.md](ACCEPTANCE.md) for passed checks, failed attempts and the

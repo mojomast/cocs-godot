@@ -2,6 +2,15 @@ extends "res://ui/scoreboard.gd"
 ## Mode-scoped ranking/columns layered over the shared responsive scoreboard.
 var score_heading := "FRAGS"
 
+func layout_band() -> Rect2:
+	var band := super.layout_band()
+	if is_instance_valid(session) and "mode_card" in session:
+		var card: Control = session.mode_card
+		var top := maxf(band.position.y, card.position.y + card.size.y + 10.0)
+		band.size.y = maxf(100.0, band.end.y - top)
+		band.position.y = top
+	return band
+
 func apply_state(state: Dictionary, local_id: int, is_results: bool = false) -> void:
 	super.apply_state(state, local_id, is_results)
 	var mode: String = str(state.get("config", {}).get("mode", ""))
@@ -24,8 +33,8 @@ func apply_state(state: Dictionary, local_id: int, is_results: bool = false) -> 
 			entry.objective_known = true
 			entry.objective_rank = [float(stats.get("objectiveCaptures", 0)), float(stats.get("objectiveTime", 0)), float(source.get("frags", 0))]
 	entries.sort_custom(ranked_before)
-	if mode == "juggernaut": objective_rank_text = "Crown points / frags · source ranking"
-	elif mode == "vip-escort": objective_rank_text = "Extraction captures / escort time / frags"
+	if mode == "juggernaut": objective_rank_text = "Points / frags"
+	elif mode == "vip-escort": objective_rank_text = "Captures / time / frags"
 	elif mode == "team-elimination":
 		var lives: Dictionary = objective.get("lives", {})
 		team_score_text = "Team lives · Red %s · Blue %s" % [str(lives.get("0", 0)), str(lives.get("1", 0))]
@@ -39,5 +48,11 @@ func roster_label() -> String:
 	return "%d combatants · %d VIP" % [entries.size() - vip_count, vip_count]
 
 func render() -> void:
-	set_row(header_row, ["#", "PLAYER", "TEAM", score_heading, "DEATHS"], MUTED)
+	set_row(header_row, ["#", "PLAYER", "TEAM", "PTS" if score_heading == "POINTS" else ("TIME" if score_heading == "ESCORT" else score_heading), "DEATHS"], MUTED)
 	super.render()
+	# The mode card reserves additional height above the common HUD band. Page
+	# from the measured card chrome so larger bot rosters cannot spill below it.
+	while page_size > 1 and panel.get_combined_minimum_size().y > layout_band().size.y:
+		page_size -= 1
+		change_page(0)
+		super.render()
