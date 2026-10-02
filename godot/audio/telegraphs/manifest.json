@@ -1,0 +1,1078 @@
+{
+  "source": "game/feedback.mjs TELEGRAPH_CUES, MODE_THEMES, _beat, _tone, _noise",
+  "rate": 22050,
+  "cues": {
+    "overseer": {
+      "notes": [
+        0,
+        -3,
+        2
+      ],
+      "step": 0.07,
+      "length": 0.2,
+      "gain": 0.07,
+      "shimmer": true
+    },
+    "mender": {
+      "notes": [
+        0,
+        4
+      ],
+      "step": 0.06,
+      "length": 0.18,
+      "gain": 0.06,
+      "shimmer": false
+    },
+    "flanker": {
+      "notes": [
+        12,
+        5,
+        9
+      ],
+      "step": 0.06,
+      "length": 0.16,
+      "gain": 0.065,
+      "shimmer": false
+    },
+    "phalanx": {
+      "notes": [
+        0,
+        -5
+      ],
+      "step": 0.09,
+      "length": 0.22,
+      "gain": 0.075,
+      "shimmer": false
+    },
+    "sapper": {
+      "notes": [
+        -12,
+        -7,
+        0
+      ],
+      "step": 0.08,
+      "length": 0.2,
+      "gain": 0.08,
+      "shimmer": false
+    },
+    "artillery": {
+      "notes": [
+        12,
+        11
+      ],
+      "step": 0.1,
+      "length": 0.24,
+      "gain": 0.075,
+      "shimmer": false
+    },
+    "boss": {
+      "notes": [
+        0,
+        -7,
+        -12
+      ],
+      "step": 0.11,
+      "length": 0.28,
+      "gain": 0.085,
+      "shimmer": true
+    },
+    "generic": {
+      "notes": [
+        0,
+        -2
+      ],
+      "step": 0.08,
+      "length": 0.2,
+      "gain": 0.065,
+      "shimmer": false
+    }
+  },
+  "roots": {
+    "default": 58,
+    "deathmatch": 62,
+    "teamdeathmatch": 58,
+    "ctf": 55,
+    "koth": 52,
+    "domination": 57,
+    "assault": 50,
+    "payload": 53,
+    "instagib": 66,
+    "rockets": 48,
+    "arsenal": 60,
+    "armsrace": 64,
+    "combined-arms": 51,
+    "puma-race": 69,
+    "puma-soccer": 67,
+    "horde": 46,
+    "campaign": 54,
+    "juggernaut": 49,
+    "team-elimination": 45,
+    "vip-escort": 56,
+    "holdout": 55,
+    "uplink": 63,
+    "cocs": 57,
+    "cocs-coop": 50
+  },
+  "inventory": [
+    {
+      "file": "45-overseer.wav",
+      "frames": 10143,
+      "peak": 0.07929196240629295,
+      "sha256": "7a09e28e46f3d84d13c5635f9d8efd69a9380b39f931231eb3c797dd7d20ab0f"
+    },
+    {
+      "file": "45-mender.wav",
+      "frames": 7938,
+      "peak": 0.059216300561231325,
+      "sha256": "a709c124b51a836e7a45678b69de48e51f1c5a6a90a9e3d9fba1b5ba5b2059f1"
+    },
+    {
+      "file": "45-flanker.wav",
+      "frames": 8820,
+      "peak": 0.06591179844244979,
+      "sha256": "4459c542b2811cddfd4df7f6a7da3d07fe3108913bfc1ba32cf77e57962963ac"
+    },
+    {
+      "file": "45-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.06940050488114981,
+      "sha256": "9205134453883ad764fa14b4ee5f38d3be13dc0642cdc35d4615ce10bc945749"
+    },
+    {
+      "file": "45-sapper.wav",
+      "frames": 10584,
+      "peak": 0.06947404033511528,
+      "sha256": "b3b8865a33c69a1f9b9e870b7172de68506bfb4833a6d0d2b1d9b58b9b1b574d"
+    },
+    {
+      "file": "45-artillery.wav",
+      "frames": 10143,
+      "peak": 0.07344394727179343,
+      "sha256": "a23dc845853666bc6f0b7e89664684aea99204e2fb5ee570f4c4c4bc6210f704"
+    },
+    {
+      "file": "45-boss.wav",
+      "frames": 13671,
+      "peak": 0.09227236287834936,
+      "sha256": "d285fd566cc9ce8cdfa9620cd159c8bb8a481c36afc8428fed7639cb263a3fc6"
+    },
+    {
+      "file": "45-generic.wav",
+      "frames": 8820,
+      "peak": 0.06155013417694174,
+      "sha256": "01e5bc91b76a3bb3307885e7bb439f9e0357b3cb48514266ea18ad6a7ce86d82"
+    },
+    {
+      "file": "46-overseer.wav",
+      "frames": 10143,
+      "peak": 0.08276013693884421,
+      "sha256": "41b9aa94e4a2cf05a7cd5ae2cec70f94a01bddc2eeb9766c9a82dd5ebcf73ccd"
+    },
+    {
+      "file": "46-mender.wav",
+      "frames": 7938,
+      "peak": 0.06102244405986101,
+      "sha256": "d4bfb657dd896b9a6e1d17de79bdd460b272fe25613b29fccbb1c04bcc63fef8"
+    },
+    {
+      "file": "46-flanker.wav",
+      "frames": 8820,
+      "peak": 0.06798326207218389,
+      "sha256": "9fd34bbf863d112e42b162a44dfb6616b21e7fecbdfa79d6b5660e79b3ed37f1"
+    },
+    {
+      "file": "46-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.0695233732308677,
+      "sha256": "339f864b8b57bd2acb3a6523fd7275afc7e0c395b7b53f24a6ac43d6c8d38691"
+    },
+    {
+      "file": "46-sapper.wav",
+      "frames": 10584,
+      "peak": 0.07064052519347447,
+      "sha256": "bae611011b592d9cc87ade809849d02ef18df67b94b7f355b1058361263816c1"
+    },
+    {
+      "file": "46-artillery.wav",
+      "frames": 10143,
+      "peak": 0.07583236526459511,
+      "sha256": "1e9e61d286080e40ded877edaa3087dc97bde3412d089680bcc4c97752610359"
+    },
+    {
+      "file": "46-boss.wav",
+      "frames": 13671,
+      "peak": 0.09572076767348553,
+      "sha256": "c8a82dace6d37d46efc8ec242cde93ada5ada9ce5cc93b1af1c2f7b85ef95965"
+    },
+    {
+      "file": "46-generic.wav",
+      "frames": 8820,
+      "peak": 0.06248446010213172,
+      "sha256": "8754e59e8c478ea159df1a5f9b14a445dd386c4c73455fb9b501d7fc5a776ab7"
+    },
+    {
+      "file": "48-overseer.wav",
+      "frames": 10143,
+      "peak": 0.08170116254565747,
+      "sha256": "a067db4907d3511aca42b40c4da90f1d8060b6b79b1bc11c9b343d671271838f"
+    },
+    {
+      "file": "48-mender.wav",
+      "frames": 7938,
+      "peak": 0.06330245614292082,
+      "sha256": "19edbb61c3cf27b2752ebd4dae395e46dfbfc9655f6cae3bb7af26d3d1b14d6a"
+    },
+    {
+      "file": "48-flanker.wav",
+      "frames": 8820,
+      "peak": 0.06821028792694578,
+      "sha256": "136b0b5dae630293f20ee59f3593b59fca4087223b3227d092a0bd35ea28aac4"
+    },
+    {
+      "file": "48-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.0699677448215318,
+      "sha256": "be8394ca79033e5546fb9d0057e56905021e00545a6ceb77ec18e8fd0cb7c4f5"
+    },
+    {
+      "file": "48-sapper.wav",
+      "frames": 10584,
+      "peak": 0.07285597450879824,
+      "sha256": "700f82dabdd493ee81e22dac78b666878d9badfd174a92259e44b53531949e8e"
+    },
+    {
+      "file": "48-artillery.wav",
+      "frames": 10143,
+      "peak": 0.06616676120187773,
+      "sha256": "9b2012e17e189dd01d0c3a7ea0ec38d4814857efb9702e9302ed645d6a9871cd"
+    },
+    {
+      "file": "48-boss.wav",
+      "frames": 13671,
+      "peak": 0.09732718897213075,
+      "sha256": "ab3e15573dd697e964a5a668bd31976f881f32aa1c745c5c228ae1dc208749e1"
+    },
+    {
+      "file": "48-generic.wav",
+      "frames": 8820,
+      "peak": 0.06035243930770677,
+      "sha256": "6caaa6e6571d9b8a03200232c0924cdbe4d29fcdd006ebf559f003f18d9e569d"
+    },
+    {
+      "file": "49-overseer.wav",
+      "frames": 10143,
+      "peak": 0.07823298801310621,
+      "sha256": "dea56c952922791e3f6c91b9c315fbd12508903f9eab41bd50eb78b714d51057"
+    },
+    {
+      "file": "49-mender.wav",
+      "frames": 7938,
+      "peak": 0.06193565946882891,
+      "sha256": "d7fdca93028270637edc14daee4693df7316d818574cc4c76b92479f16d1ba91"
+    },
+    {
+      "file": "49-flanker.wav",
+      "frames": 8820,
+      "peak": 0.06599482496431348,
+      "sha256": "ccbaa80390027c634bdaf4c8011ae24ef9210110c35d2548357127a4490d73f4"
+    },
+    {
+      "file": "49-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.07036167820607399,
+      "sha256": "335993e1e3e33fe74fd18442ed76259e8aea3ab60e4fce941085f072c1dc61c3"
+    },
+    {
+      "file": "49-sapper.wav",
+      "frames": 10584,
+      "peak": 0.07431316579002407,
+      "sha256": "37d23e345259c4b0aa0d899151ad4e4c684208272ff9bfae34c3199757f50def"
+    },
+    {
+      "file": "49-artillery.wav",
+      "frames": 10143,
+      "peak": 0.0657005501842384,
+      "sha256": "21614bc48fe27de994c833100e900ce19a73e12141a608749a9c96eeec4fa038"
+    },
+    {
+      "file": "49-boss.wav",
+      "frames": 13671,
+      "peak": 0.09218915860489212,
+      "sha256": "0c274ad24fd851a13f9579714f22ec32716d2261987e9519f71463aaf52f8b04"
+    },
+    {
+      "file": "49-generic.wav",
+      "frames": 8820,
+      "peak": 0.06070463764039975,
+      "sha256": "2641573adb24993da431f52e6ae7af31951b42f9f845fe4f20b5e686069a7848"
+    },
+    {
+      "file": "50-overseer.wav",
+      "frames": 10143,
+      "peak": 0.07476481348055497,
+      "sha256": "92c3233e23f8d37e9457ff6de647f25b14f8244a53a440893e60816de877d468"
+    },
+    {
+      "file": "50-mender.wav",
+      "frames": 7938,
+      "peak": 0.060392178425211294,
+      "sha256": "76c99533a1cf118f374245f4e87e45bd4bf337e0a47327e7044fc9d5bdc131ac"
+    },
+    {
+      "file": "50-flanker.wav",
+      "frames": 8820,
+      "peak": 0.064230160593716,
+      "sha256": "02bf4bbf9c952936498af63276522ec329f6fe29c08bd6295171407fea0a8e13"
+    },
+    {
+      "file": "50-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.07092283681122438,
+      "sha256": "bef34a83a5c57f73c6947acdd1d702f9366a5416ca54b590051ccc51a83ab9a3"
+    },
+    {
+      "file": "50-sapper.wav",
+      "frames": 10584,
+      "peak": 0.07549389633418696,
+      "sha256": "de9bb9fa9351504fdd4567e552884e3f02be00adc5e2105b812c37e2b4a1c316"
+    },
+    {
+      "file": "50-artillery.wav",
+      "frames": 10143,
+      "peak": 0.0681761475978746,
+      "sha256": "5be5e679780dd7e2483e9520285632734d5ced3589b94867d55c65d077462aca"
+    },
+    {
+      "file": "50-boss.wav",
+      "frames": 13671,
+      "peak": 0.08705112823765344,
+      "sha256": "a74d25c0c8de1b93c4d3c30bef73f67fe14db6e7cd72daceeeb7c4f1289c1637"
+    },
+    {
+      "file": "50-generic.wav",
+      "frames": 8820,
+      "peak": 0.06075766308024021,
+      "sha256": "6d39871cd7c8ba3b0201412befe609d1bf42fb0e93461135d8b48bad098d5987"
+    },
+    {
+      "file": "51-overseer.wav",
+      "frames": 10143,
+      "peak": 0.07621290382692404,
+      "sha256": "002fb90df6f1908b721897a6c1f58505d136e29b9fc35c3072463b952fc4ca4f"
+    },
+    {
+      "file": "51-mender.wav",
+      "frames": 7938,
+      "peak": 0.05871242810509631,
+      "sha256": "f2154d7c59591a0466c4b527d0ff5f328b98dac9b40e58e1b0fce923720fbc5b"
+    },
+    {
+      "file": "51-flanker.wav",
+      "frames": 8820,
+      "peak": 0.06229894224058215,
+      "sha256": "5d19261e5c5b39c661f68f6d31bd66d6e3a3aa1856e2ecee57e6273e6d88ace7"
+    },
+    {
+      "file": "51-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.07056171590155165,
+      "sha256": "3a95721af9c9b3d27027d385636b1ce939629aa2147f533536b15585d7df5a2e"
+    },
+    {
+      "file": "51-sapper.wav",
+      "frames": 10584,
+      "peak": 0.07688947785625472,
+      "sha256": "bf521cc3e9352e599f036e828ab41f8961d943b895cc1cf890b94244e1f8d2cf"
+    },
+    {
+      "file": "51-artillery.wav",
+      "frames": 10143,
+      "peak": 0.06861553341043537,
+      "sha256": "027a444e343dd193dc666e45b57f6fb977a43cd41169a30662f040147f5e9cea"
+    },
+    {
+      "file": "51-boss.wav",
+      "frames": 13671,
+      "peak": 0.08191309787041483,
+      "sha256": "fb92629395e4c8ca3e1b723169ef5d83a45f567e410e50358b2b4f65abbfa0bd"
+    },
+    {
+      "file": "51-generic.wav",
+      "frames": 8820,
+      "peak": 0.060854987640424525,
+      "sha256": "7606169a80289fd1eb9a9a5ddb7095a84abe8af31448376d7fb011c01786baef"
+    },
+    {
+      "file": "52-overseer.wav",
+      "frames": 10143,
+      "peak": 0.0794272268487073,
+      "sha256": "640f242c58587c5acb99553c17d50f028bd2493c5ee73b67043a13cdc4ab29bc"
+    },
+    {
+      "file": "52-mender.wav",
+      "frames": 7938,
+      "peak": 0.057267087048504285,
+      "sha256": "a3900f9bf32325de1dc1fd5b05e0e959220217fca2227ea809da647ceaeea7d7"
+    },
+    {
+      "file": "52-flanker.wav",
+      "frames": 8820,
+      "peak": 0.06541044066662383,
+      "sha256": "9316ce0064d043223c3a069b8957a49eb04c103ceacce5f0335b3d03c767f1f8"
+    },
+    {
+      "file": "52-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.07071069006466382,
+      "sha256": "9d0564b72de8e45fe934d3e14beb9a489d707321c2bf9bd914c9a4bf9adfe673"
+    },
+    {
+      "file": "52-sapper.wav",
+      "frames": 10584,
+      "peak": 0.07834484154487426,
+      "sha256": "c64ab82976d5f7a73ea134dc76674349613a35e0757a926780662b2e0b122a46"
+    },
+    {
+      "file": "52-artillery.wav",
+      "frames": 10143,
+      "peak": 0.06652961371692107,
+      "sha256": "d402fc908b8b91e374f2a7ecc00cc2a0f1a3736958a6a5761731725f58e371ec"
+    },
+    {
+      "file": "52-boss.wav",
+      "frames": 13671,
+      "peak": 0.08603083521503008,
+      "sha256": "216bead804bf939a36ac906e0306de8123f65c4e4d97e5b3acda7340d756d647"
+    },
+    {
+      "file": "52-generic.wav",
+      "frames": 8820,
+      "peak": 0.06101179756417147,
+      "sha256": "aeedfac5dd2686781500b425822ef7390cc3aa9f6c765c0f29c9665c18726b33"
+    },
+    {
+      "file": "53-overseer.wav",
+      "frames": 10143,
+      "peak": 0.08145456256276586,
+      "sha256": "f5f017125d8e3acb1532be79ad8118385762a0db834a0244fbbd6db85e37761f"
+    },
+    {
+      "file": "53-mender.wav",
+      "frames": 7938,
+      "peak": 0.05619044459955763,
+      "sha256": "ebf80aa54e8a98a7656659d4692bee3762b6aa3c126a7aadb3573d222aeabb69"
+    },
+    {
+      "file": "53-flanker.wav",
+      "frames": 8820,
+      "peak": 0.06810619181976646,
+      "sha256": "4feb628551a4dcfe3cc5b17cd627f6c924a0be5accc9993087c2d1ea608ec85b"
+    },
+    {
+      "file": "53-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.0709117948469977,
+      "sha256": "7c53d5c47fffaf5a625c916bcd03b2cd793f06d193f44c35ec26a4fbb38d4b26"
+    },
+    {
+      "file": "53-sapper.wav",
+      "frames": 10584,
+      "peak": 0.07986049022856816,
+      "sha256": "1f81c2a839451c7e55bcd3bf9149a4ce082117eef4878dba401a2973d8318d35"
+    },
+    {
+      "file": "53-artillery.wav",
+      "frames": 10143,
+      "peak": 0.06673850005763267,
+      "sha256": "97fac549a647239877e05eaaefc7b414e26b25cf86db43d16787053b85a98e3c"
+    },
+    {
+      "file": "53-boss.wav",
+      "frames": 13671,
+      "peak": 0.08332875507029107,
+      "sha256": "7dc8876b4b2a3877d7904a8eb29bd78881e2de244a860f555dd056527ae6ec1a"
+    },
+    {
+      "file": "53-generic.wav",
+      "frames": 8820,
+      "peak": 0.06118408213723451,
+      "sha256": "f67006e7ed48aac05767e49d82021a7bc6837d682d26f4506dae3ed4ca4321b1"
+    },
+    {
+      "file": "54-overseer.wav",
+      "frames": 10143,
+      "peak": 0.08060622493831546,
+      "sha256": "2a63d7188ba1857099a8c35faad3e6454bdd3a9f36608696578224b8ff4299de"
+    },
+    {
+      "file": "54-mender.wav",
+      "frames": 7938,
+      "peak": 0.0563667109124501,
+      "sha256": "37cdcbb7591dc9473f1e50a4e6e3b6038ff39fb9a670c1b9f3620c80a82b579c"
+    },
+    {
+      "file": "54-flanker.wav",
+      "frames": 8820,
+      "peak": 0.06684486955534738,
+      "sha256": "c41ade8238d83babf875985a2640ca0d93278084d377df7c9269e11e7d5c3f8d"
+    },
+    {
+      "file": "54-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.07116545038152541,
+      "sha256": "7bb57b0e20456f0f92345aea7bd8cf701587ec0b5b23df15732aa30a75b8a82e"
+    },
+    {
+      "file": "54-sapper.wav",
+      "frames": 10584,
+      "peak": 0.07991826371231481,
+      "sha256": "a685d7678de58ed45f2fa56c6c5ec8aed96753a369cf2a92642aa08df983ddfb"
+    },
+    {
+      "file": "54-artillery.wav",
+      "frames": 10143,
+      "peak": 0.06681066426125362,
+      "sha256": "438b01c2aba1fd2096476554ca88a07c28a88189090a419d3cd80dd014a14292"
+    },
+    {
+      "file": "54-boss.wav",
+      "frames": 13671,
+      "peak": 0.08464726927189523,
+      "sha256": "822c06ba9167e950f827916f34e13da1dcb0652d1d98cc9bb9cd33c34c80a5c1"
+    },
+    {
+      "file": "54-generic.wav",
+      "frames": 8820,
+      "peak": 0.061416631715255174,
+      "sha256": "c89d679d71c12ec0389a1830040ec43aa59e9707764c7a1185d4750364029ace"
+    },
+    {
+      "file": "55-overseer.wav",
+      "frames": 10143,
+      "peak": 0.07880572340498862,
+      "sha256": "2dc1b09b1e8edf97885c03e7a257bf055f6eb1f8bcef9e5ccff61f939ffb65bb"
+    },
+    {
+      "file": "55-mender.wav",
+      "frames": 7938,
+      "peak": 0.056639569729784005,
+      "sha256": "4d649ce031828529f915ab9d3c86948aabe8bfb8e4e99cbaa92caa5c448d94e0"
+    },
+    {
+      "file": "55-flanker.wav",
+      "frames": 8820,
+      "peak": 0.06415579855865176,
+      "sha256": "a9445b6ebecaf14a010348f0394af4966386d58c861feb11d0793f6d02418fe1"
+    },
+    {
+      "file": "55-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.07147207906699006,
+      "sha256": "7697381b6e063251ace4a962c44e942e61873501b06b9ad4d1fa2da2f0057537"
+    },
+    {
+      "file": "55-sapper.wav",
+      "frames": 10584,
+      "peak": 0.07925676397227216,
+      "sha256": "7585e08f28ff95740c0a8d17e20fec866dc57ed048bf9e6727de6090ee499b58"
+    },
+    {
+      "file": "55-artillery.wav",
+      "frames": 10143,
+      "peak": 0.07009932531611188,
+      "sha256": "ce865b40fd2bfb2a6a37c5f103087ba7a8ab354c8e569ec84d1003caa4bdbd27"
+    },
+    {
+      "file": "55-boss.wav",
+      "frames": 13671,
+      "peak": 0.09008926485245501,
+      "sha256": "cb7763d6534450362e607582459927be7049bc9ddd457efaecefe86102b09cae"
+    },
+    {
+      "file": "55-generic.wav",
+      "frames": 8820,
+      "peak": 0.061695039717831746,
+      "sha256": "e9a4507cabf64c4c7139530832813c8dc1f855955027a5e0a990bc0dc7811dbd"
+    },
+    {
+      "file": "56-overseer.wav",
+      "frames": 10143,
+      "peak": 0.07559140038320557,
+      "sha256": "34df3e9017468adaf29be8882bdae10df599fbf50fbc9d95269dde8fed9ca5b4"
+    },
+    {
+      "file": "56-mender.wav",
+      "frames": 7938,
+      "peak": 0.05694119046846733,
+      "sha256": "fd05d896680a0c5c0fe014a85e7258be847318ff21951e77395a11d9fa3c360b"
+    },
+    {
+      "file": "56-flanker.wav",
+      "frames": 8820,
+      "peak": 0.06145957520359911,
+      "sha256": "70c9efa7391a9fe698f5b85cba7f5219110359feb28e270cfc04d9c574523202"
+    },
+    {
+      "file": "56-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.07170151056580251,
+      "sha256": "5c67ba4e33ad320222a23b991ecab0c7761c248984dd4b2e287dd662cda7e8d0"
+    },
+    {
+      "file": "56-sapper.wav",
+      "frames": 10584,
+      "peak": 0.0783316586011111,
+      "sha256": "b8966309c34fcdbb130bf3a1cb9c2fbf4fddab7903ad60c6bbf8e2babfef083a"
+    },
+    {
+      "file": "56-artillery.wav",
+      "frames": 10143,
+      "peak": 0.06761347400735526,
+      "sha256": "fdf588a6bbd1c1c91c103465ffd03f1493f13cfca544590b81cfd4420105b0e6"
+    },
+    {
+      "file": "56-boss.wav",
+      "frames": 13671,
+      "peak": 0.08551195332290454,
+      "sha256": "6e471f98d358c266037f1a716e2b3957f6b825eb825b5e3c5afb4f15c51138de"
+    },
+    {
+      "file": "56-generic.wav",
+      "frames": 8820,
+      "peak": 0.06320156073819844,
+      "sha256": "9e0f9ab29f27534839e90b67ee936bd2c35e0c3180e0e190a9d16c1af3439b52"
+    },
+    {
+      "file": "57-overseer.wav",
+      "frames": 10143,
+      "peak": 0.07237707736142224,
+      "sha256": "4cd738c906184a22cd7216fde9611a4eccfeb2756634871d4e133f05dc497e47"
+    },
+    {
+      "file": "57-mender.wav",
+      "frames": 7938,
+      "peak": 0.056956560742717564,
+      "sha256": "0c1d3ccf7e106d52676a6062400f432fab2d8d4d13c1438a0f8780eeaa583d72"
+    },
+    {
+      "file": "57-flanker.wav",
+      "frames": 8820,
+      "peak": 0.05901095101033368,
+      "sha256": "a5eca14912b3cacf5e2693f18c16cee60bce8feac00ab1e07cbb6c2030843667"
+    },
+    {
+      "file": "57-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.07168538079011118,
+      "sha256": "1078b6cf549f1603cc48cd3b6d0135746064db3cddf3c9f298842ef22dfdf9bb"
+    },
+    {
+      "file": "57-sapper.wav",
+      "frames": 10584,
+      "peak": 0.07707255254126084,
+      "sha256": "be59fde45d195abde3e53ea3520c9adf7398af72b6091abf687700b2d9a74f90"
+    },
+    {
+      "file": "57-artillery.wav",
+      "frames": 10143,
+      "peak": 0.06742727427340356,
+      "sha256": "ce40b179267cc704c6a13d2e791f32f5ad28bba239f5b6f4a208caa3d07bcab2"
+    },
+    {
+      "file": "57-boss.wav",
+      "frames": 13671,
+      "peak": 0.08666978319482141,
+      "sha256": "14f27ebc2ab4758560a28f163a8658727ded86834d882b3abef356064053d4ff"
+    },
+    {
+      "file": "57-generic.wav",
+      "frames": 8820,
+      "peak": 0.06485340372653621,
+      "sha256": "36f0b19c0856e3dcfa22f35092f86a1bb35a3daaf6c975bf9c03593d34fa9877"
+    },
+    {
+      "file": "58-overseer.wav",
+      "frames": 10143,
+      "peak": 0.07303661353788024,
+      "sha256": "16a1cccab2cd71f7c7a0449c3cacd4a6eeffdb020323ccbb064f139c88863693"
+    },
+    {
+      "file": "58-mender.wav",
+      "frames": 7938,
+      "peak": 0.05701408055879634,
+      "sha256": "93d60e4e2c7caad08d6589b36a34bf36510ed843cb4465a736487849973a78dc"
+    },
+    {
+      "file": "58-flanker.wav",
+      "frames": 8820,
+      "peak": 0.061460219414438244,
+      "sha256": "1ebd15a6f1324660fce5a46db2460fbf0f92fc61cbbaa3cb475c92d2cbf8d1c2"
+    },
+    {
+      "file": "58-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.07185009295385715,
+      "sha256": "9c219b0eb71898705c7bfcef33e6791c43a46ee5ab6525ce75fd33921e7d1924"
+    },
+    {
+      "file": "58-sapper.wav",
+      "frames": 10584,
+      "peak": 0.07589344797359167,
+      "sha256": "18e62f8f4e7495faabaca288f1c7de2813becbc27cffed6457989bce435a80c9"
+    },
+    {
+      "file": "58-artillery.wav",
+      "frames": 10143,
+      "peak": 0.06797767921542576,
+      "sha256": "5c7bca0b985cb9227976077443b7568cb2db6745c214beaa17fee24114951a29"
+    },
+    {
+      "file": "58-boss.wav",
+      "frames": 13671,
+      "peak": 0.08768877029210598,
+      "sha256": "0ebb6b3450cdb5994534bcdecb9fd4c99e2d29d70a796e740971227992484f29"
+    },
+    {
+      "file": "58-generic.wav",
+      "frames": 8820,
+      "peak": 0.06458790191518315,
+      "sha256": "6696347e0643f4b01c9d911f01ae890a03118afa02b42f5fdfe68dbc77c94f64"
+    },
+    {
+      "file": "60-overseer.wav",
+      "frames": 10143,
+      "peak": 0.07374543149065627,
+      "sha256": "6002571c6315e081ecfa5f782b01b9c09eb5bd08f6986c10f8198f996178c260"
+    },
+    {
+      "file": "60-mender.wav",
+      "frames": 7938,
+      "peak": 0.06023636899524092,
+      "sha256": "490e278134f6ab84bc067aa082b890f75a1864b0a2ca4af6201de5b79232ed1f"
+    },
+    {
+      "file": "60-flanker.wav",
+      "frames": 8820,
+      "peak": 0.06698154234849778,
+      "sha256": "251cb6de70412c6ef06b7664207d9374c79e2de5879d5310fa42cd899d381cbb"
+    },
+    {
+      "file": "60-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.07258383286620593,
+      "sha256": "145f7010234c7fdce1e7a4e785d1c4581f22dbb4b404ba1b47b660f48519f4ed"
+    },
+    {
+      "file": "60-sapper.wav",
+      "frames": 10584,
+      "peak": 0.07361201350630049,
+      "sha256": "8c91e3b914acb9b18f28d50dd09bef4ac36d312e8a62b6fde9085795d8541ebc"
+    },
+    {
+      "file": "60-artillery.wav",
+      "frames": 10143,
+      "peak": 0.07012279355161243,
+      "sha256": "b24a1ea376dafcfcff34cb90d84b0f1a49ac0e724a05aff0580245a47418a726"
+    },
+    {
+      "file": "60-boss.wav",
+      "frames": 13671,
+      "peak": 0.08491207107004206,
+      "sha256": "dd89e80becc347acb72e21bf57acc4550ec908feac210597a423a8a86dd60821"
+    },
+    {
+      "file": "60-generic.wav",
+      "frames": 8820,
+      "peak": 0.062264090816552924,
+      "sha256": "e0dcf1dcd59c58625bce4e65f58b3c6a340aa7243f550d3820fb8701cdacadec"
+    },
+    {
+      "file": "62-overseer.wav",
+      "frames": 10143,
+      "peak": 0.07601484687878096,
+      "sha256": "fffb7f168bb5cfcc1e8d98a7ce8360e040d262354323ff9c8f7f68e9e74c872d"
+    },
+    {
+      "file": "62-mender.wav",
+      "frames": 7938,
+      "peak": 0.06390819389127965,
+      "sha256": "3bcd4b0d546c0032419bd76de87e941ff9ea79af31bb7d507fc4ae8c534eafa1"
+    },
+    {
+      "file": "62-flanker.wav",
+      "frames": 8820,
+      "peak": 0.06718445614385668,
+      "sha256": "52dcd6dc7c88153bcf19b7e28781e917d2a6196dadc8fe54c50b3cae8301f51c"
+    },
+    {
+      "file": "62-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.07235904873602121,
+      "sha256": "95571d46e9efe576d3a7562202b7deacbadc448e2f58e03d5b9998b5547cec2d"
+    },
+    {
+      "file": "62-sapper.wav",
+      "frames": 10584,
+      "peak": 0.07169056640847787,
+      "sha256": "f5cae64a9a1444377b61fa53917bc5a6987da9a6efec7a8b23aeb6fc589f2f6b"
+    },
+    {
+      "file": "62-artillery.wav",
+      "frames": 10143,
+      "peak": 0.06856779081167305,
+      "sha256": "29ba70c5153ef811c9cfb2ec04b6c195e48cf146262f230642191ec0aebc310f"
+    },
+    {
+      "file": "62-boss.wav",
+      "frames": 13671,
+      "peak": 0.0928737578695247,
+      "sha256": "bffc0b2ef8ccd2fe8bff334c21f6b5237c2a55c7fa6bed1c3f6666506e9f9c72"
+    },
+    {
+      "file": "62-generic.wav",
+      "frames": 8820,
+      "peak": 0.0625369763375624,
+      "sha256": "bd26cf800de282730e9460f992f34efbf9c363a9cbb0ac52797faf2dbb85c71c"
+    },
+    {
+      "file": "63-overseer.wav",
+      "frames": 10143,
+      "peak": 0.07786473443350506,
+      "sha256": "7c1dc02002db6b55dfb8fd9a5ce4fb60d10d92290ddd6294186ad6fa24f86f09"
+    },
+    {
+      "file": "63-mender.wav",
+      "frames": 7938,
+      "peak": 0.06585441398375987,
+      "sha256": "87c7cfe420b14d335eed6e3f034992ccc88ded36332488e667bd650fc84b0dba"
+    },
+    {
+      "file": "63-flanker.wav",
+      "frames": 8820,
+      "peak": 0.06395021216404713,
+      "sha256": "6c207db774ad3a0de61265242734bcd1fd9e5f840fc99775e7f2de601d4a5d97"
+    },
+    {
+      "file": "63-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.07267929285168774,
+      "sha256": "38c7315dc89f2da2c6ebc3e1edb8698aec286dbf843d220245cb28c245232004"
+    },
+    {
+      "file": "63-sapper.wav",
+      "frames": 10584,
+      "peak": 0.07322500287178409,
+      "sha256": "c24fe17fc0fea6bfae747e5a63c2279447727141fe62f16532804114cd208c6c"
+    },
+    {
+      "file": "63-artillery.wav",
+      "frames": 10143,
+      "peak": 0.06857929144904341,
+      "sha256": "c669f96217aadbafdd7c55c61178f4385fc8e3f2bfaaf0f534248bcd814e9ab5"
+    },
+    {
+      "file": "63-boss.wav",
+      "frames": 13671,
+      "peak": 0.08761266597343592,
+      "sha256": "bdfa788e5eeb1517cb604b50e56175b03d3cfc9556e908de92148120016d20ae"
+    },
+    {
+      "file": "63-generic.wav",
+      "frames": 8820,
+      "peak": 0.06286745981486642,
+      "sha256": "3f5ea2d1a5673fb13d017ba46019b1820174c3cdb25f277d9affc61eac6e00ee"
+    },
+    {
+      "file": "64-overseer.wav",
+      "frames": 10143,
+      "peak": 0.07962709363291835,
+      "sha256": "435980337c46b96b621d5ff72834bc975b9bfc703da1f6e85a2d1dc6e34250c3"
+    },
+    {
+      "file": "64-mender.wav",
+      "frames": 7938,
+      "peak": 0.06526285423962544,
+      "sha256": "28188934b78a1a26073a933f5e6b1122f915826d55547eb46902ad4990ea47b7"
+    },
+    {
+      "file": "64-flanker.wav",
+      "frames": 8820,
+      "peak": 0.06013509373182135,
+      "sha256": "c558a58787596aa80c546e614fc71791d16010f21e181f0598e23d5d439c95a3"
+    },
+    {
+      "file": "64-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.07285385634305847,
+      "sha256": "0173090d04f59fe2e27d097ddaa7beebdb2c38c867615fe02ec822a0b48ced7d"
+    },
+    {
+      "file": "64-sapper.wav",
+      "frames": 10584,
+      "peak": 0.07468921580958049,
+      "sha256": "202743bb17f292c2b28fffd36981fc4ec91a8e569010dd58597f5703b284e317"
+    },
+    {
+      "file": "64-artillery.wav",
+      "frames": 10143,
+      "peak": 0.07161137925486365,
+      "sha256": "5b81d5146a50997bbcb177479fef283c8305d4beaa1ec0f3c54ecac5b5815b62"
+    },
+    {
+      "file": "64-boss.wav",
+      "frames": 13671,
+      "peak": 0.08308207070446248,
+      "sha256": "605859eda43502848959314c9004f387c0d20e0723d67ffd7e106bf774ed367d"
+    },
+    {
+      "file": "64-generic.wav",
+      "frames": 8820,
+      "peak": 0.06298572672386168,
+      "sha256": "a0dcb9185e38261a1d3b5a56ea6bead594013bdad71cc76f69ed12d29229228b"
+    },
+    {
+      "file": "66-overseer.wav",
+      "frames": 10143,
+      "peak": 0.08576974064416477,
+      "sha256": "190172ce1d14489e9b410a378ab185a167d48dddab8b8cefa2ff33439a587eb5"
+    },
+    {
+      "file": "66-mender.wav",
+      "frames": 7938,
+      "peak": 0.06187697297783377,
+      "sha256": "c7b55207d4e06054be234fa946fe4e57d9e689f0d45b558acd59fad7100202a6"
+    },
+    {
+      "file": "66-flanker.wav",
+      "frames": 8820,
+      "peak": 0.0592455613157827,
+      "sha256": "193bc513b4f0eed8c1b798d77d790d9f221d6eef6fb3513bf1abbfe2a78fb791"
+    },
+    {
+      "file": "66-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.07303205793966028,
+      "sha256": "c157c21ba01458d226f935ee43f790bec473efcedecd1df986e91ddd15caf56a"
+    },
+    {
+      "file": "66-sapper.wav",
+      "frames": 10584,
+      "peak": 0.07752227111218733,
+      "sha256": "3cc004b31413807c10909821ed387623611e00ac9c8e75db1870ec344b4abcf8"
+    },
+    {
+      "file": "66-artillery.wav",
+      "frames": 10143,
+      "peak": 0.06922028457163956,
+      "sha256": "b6c2a13e3c571b9b64ae4819f2cccf6bba7d17936ef9a16160d748a637819328"
+    },
+    {
+      "file": "66-boss.wav",
+      "frames": 13671,
+      "peak": 0.09018510712000966,
+      "sha256": "002f8c284a82e6ec249fdb544c4cf561e6cbe418666a7f916107601f0e22eb6c"
+    },
+    {
+      "file": "66-generic.wav",
+      "frames": 8820,
+      "peak": 0.06319886008023855,
+      "sha256": "182cd47a6db6361ac03ba0c55ca8aea801fd3907cbe4d97d8a752f9637ec6a17"
+    },
+    {
+      "file": "67-overseer.wav",
+      "frames": 10143,
+      "peak": 0.08498126611110338,
+      "sha256": "d68a7389b86ed915852f41c4e41f58f837947738e8b1ed4eb5b54926715351d4"
+    },
+    {
+      "file": "67-mender.wav",
+      "frames": 7938,
+      "peak": 0.05931065869908466,
+      "sha256": "1d4940a8f7d3b65fc34019da0ba1bacf0eab852d72a1c65b997c3865740fcd16"
+    },
+    {
+      "file": "67-flanker.wav",
+      "frames": 8820,
+      "peak": 0.06116195816172344,
+      "sha256": "c2f3441ba00c3c0ad39080cabf182d1894be8b35c4f3c68f03ef35a78ed84aa9"
+    },
+    {
+      "file": "67-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.07334412320837132,
+      "sha256": "667866fa498488e4ec0c18f871002b312da2dcb886324f6b211dad6bc7106755"
+    },
+    {
+      "file": "67-sapper.wav",
+      "frames": 10584,
+      "peak": 0.07893574977420251,
+      "sha256": "6666b9bc063129a1c3dfb142b992a1465da9a33223c796287070376b5e3f9fe1"
+    },
+    {
+      "file": "67-artillery.wav",
+      "frames": 10143,
+      "peak": 0.06963861243731603,
+      "sha256": "86f1c0fea1f1cd098a4bc87535b42ed50601c4ba11fda39eb96b3fb2ed20b0f6"
+    },
+    {
+      "file": "67-boss.wav",
+      "frames": 13671,
+      "peak": 0.09007164670248602,
+      "sha256": "b496e6ba2a04fad97e7e8b4d86b62bc526837de5893503453f556cd815c97be9"
+    },
+    {
+      "file": "67-generic.wav",
+      "frames": 8820,
+      "peak": 0.0639193747579423,
+      "sha256": "b98d5f7bc4db1bc9d1aa77178b7bb42a1a6ebf0c986c715a5a933bcc94eb8249"
+    },
+    {
+      "file": "69-overseer.wav",
+      "frames": 10143,
+      "peak": 0.08158527793226666,
+      "sha256": "438797538a7f779cc3ae2beadd73e19feedeb8fac7cd99006b709c44868f8866"
+    },
+    {
+      "file": "69-mender.wav",
+      "frames": 7938,
+      "peak": 0.05836545007357402,
+      "sha256": "255a1ae69a3b94d12e280e1704377e17bfbfdb7464fda086b91ad6c01441049a"
+    },
+    {
+      "file": "69-flanker.wav",
+      "frames": 8820,
+      "peak": 0.0635416015784248,
+      "sha256": "a3ddfd42bd78fa5e488c130c224b9e42063b60749c2650ae5d99a80621bfa892"
+    },
+    {
+      "file": "69-phalanx.wav",
+      "frames": 9482,
+      "peak": 0.0732629754043271,
+      "sha256": "8c5c2eb521faf97b198a3e14e500ef843c0db51df277b3445de3e38fd7393001"
+    },
+    {
+      "file": "69-sapper.wav",
+      "frames": 10584,
+      "peak": 0.0809725660756741,
+      "sha256": "6ab288f0369686c155da70e410f19ac469f634f7170cb5a83ca4a7ce985c8cb1"
+    },
+    {
+      "file": "69-artillery.wav",
+      "frames": 10143,
+      "peak": 0.07263020015623614,
+      "sha256": "ff860fb7f80276ace80352487197e8783ac6a5e92e727049877da56082e0f3c4"
+    },
+    {
+      "file": "69-boss.wav",
+      "frames": 13671,
+      "peak": 0.0882315444276092,
+      "sha256": "1dba7e1762cc3877b2c41ccbbcf29aa93f4b960c3f3ce3dc066d79c299288e32"
+    },
+    {
+      "file": "69-generic.wav",
+      "frames": 8820,
+      "peak": 0.0670519407448413,
+      "sha256": "40c798921955baec3c279e58202dd85ddf1fe5dc8c946451825865f54f72c912"
+    }
+  ]
+}

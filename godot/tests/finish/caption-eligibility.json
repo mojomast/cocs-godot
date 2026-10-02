@@ -1,0 +1,2138 @@
+[
+  {
+    "event": {
+      "type": "cocs-terminal-shard",
+      "action": "collect",
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-terminal-shard",
+      "action": "collect",
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-terminal-shard",
+      "action": "collect",
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-terminal-shard",
+      "action": "collect",
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-terminal-shard",
+      "action": "return",
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-terminal-shard",
+      "action": "return",
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-terminal-shard",
+      "action": "return",
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-terminal-shard",
+      "action": "return",
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-capture",
+      "node": "relay-2",
+      "depot": "depot-0",
+      "item": "puma",
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-capture",
+      "node": "relay-2",
+      "depot": "depot-0",
+      "item": "puma",
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-capture",
+      "node": "relay-2",
+      "depot": "depot-0",
+      "item": "puma",
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-capture",
+      "node": "relay-2",
+      "depot": "depot-0",
+      "item": "puma",
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-depot-capture",
+      "node": "relay-2",
+      "depot": "depot-0",
+      "item": "puma",
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-depot-capture",
+      "node": "relay-2",
+      "depot": "depot-0",
+      "item": "puma",
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-depot-capture",
+      "node": "relay-2",
+      "depot": "depot-0",
+      "item": "puma",
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-depot-capture",
+      "node": "relay-2",
+      "depot": "depot-0",
+      "item": "puma",
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-depot-vehicle-spawn",
+      "node": "relay-2",
+      "depot": "depot-0",
+      "item": "puma",
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-depot-vehicle-spawn",
+      "node": "relay-2",
+      "depot": "depot-0",
+      "item": "puma",
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-depot-vehicle-spawn",
+      "node": "relay-2",
+      "depot": "depot-0",
+      "item": "puma",
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-depot-vehicle-spawn",
+      "node": "relay-2",
+      "depot": "depot-0",
+      "item": "puma",
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-depot-purchase",
+      "node": "relay-2",
+      "depot": "depot-0",
+      "item": "puma",
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-depot-purchase",
+      "node": "relay-2",
+      "depot": "depot-0",
+      "item": "puma",
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-depot-purchase",
+      "node": "relay-2",
+      "depot": "depot-0",
+      "item": "puma",
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-depot-purchase",
+      "node": "relay-2",
+      "depot": "depot-0",
+      "item": "puma",
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-device-use",
+      "kind": "zipline",
+      "actor": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-device-use",
+      "kind": "zipline",
+      "actor": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-device-use",
+      "kind": "zipline",
+      "actor": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-device-use",
+      "kind": "zipline",
+      "actor": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "director-wave",
+      "wave": 4
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-wave",
+      "wave": 4
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-wave",
+      "wave": 4
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-wave",
+      "wave": 4
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-wave-cleared",
+      "wave": 4
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-wave-cleared",
+      "wave": 4
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-wave-cleared",
+      "wave": 4
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-wave-cleared",
+      "wave": 4
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-spawn",
+      "wave": 4
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-spawn",
+      "wave": 4
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-spawn",
+      "wave": 4
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-spawn",
+      "wave": 4
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-init",
+      "tier": "D2"
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-init",
+      "tier": "D2"
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-init",
+      "tier": "D2"
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-init",
+      "tier": "D2"
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-spawn-telegraph",
+      "kind": "boss"
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-spawn-telegraph",
+      "kind": "boss"
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-spawn-telegraph",
+      "kind": "boss"
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-spawn-telegraph",
+      "kind": "boss"
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-spawn-telegraph",
+      "kind": "scout"
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-spawn-telegraph",
+      "kind": "scout"
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-spawn-telegraph",
+      "kind": "scout"
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-spawn-telegraph",
+      "kind": "scout"
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-modifier",
+      "name": "hard-shell"
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-modifier",
+      "name": "hard-shell"
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-modifier",
+      "name": "hard-shell"
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-modifier",
+      "name": "hard-shell"
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-escalation",
+      "kind": "siege"
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-escalation",
+      "kind": "siege"
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-escalation",
+      "kind": "siege"
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-escalation",
+      "kind": "siege"
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-boss",
+      "phase": 2
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-boss",
+      "phase": 2
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-boss",
+      "phase": 2
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-boss",
+      "phase": 2
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-phase",
+      "phase": 3
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-phase",
+      "phase": 3
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-phase",
+      "phase": 3
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-phase",
+      "phase": 3
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-retarget",
+      "node": "front-1"
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-retarget",
+      "node": "front-1"
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-retarget",
+      "node": "front-1"
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-retarget",
+      "node": "front-1"
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-denial",
+      "node": "front-1"
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-denial",
+      "node": "front-1"
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-denial",
+      "node": "front-1"
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-denial",
+      "node": "front-1"
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-reinforce",
+      "node": "front-1"
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-reinforce",
+      "node": "front-1"
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-reinforce",
+      "node": "front-1"
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-reinforce",
+      "node": "front-1"
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-retire",
+      "count": 7
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-retire",
+      "count": 7
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-retire",
+      "count": 7
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "director-retire",
+      "count": 7
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-order-complete",
+      "verb": "hold",
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-order-complete",
+      "verb": "hold",
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-order-complete",
+      "verb": "hold",
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-order-complete",
+      "verb": "hold",
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-order-rejected",
+      "verb": "hold",
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-order-rejected",
+      "verb": "hold",
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-order-rejected",
+      "verb": "hold",
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-order-rejected",
+      "verb": "hold",
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "coop-spend-rejected",
+      "verb": "hold",
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "coop-spend-rejected",
+      "verb": "hold",
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "coop-spend-rejected",
+      "verb": "hold",
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "coop-spend-rejected",
+      "verb": "hold",
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "coop-bonus",
+      "state": "done",
+      "label": "Convoy"
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "coop-bonus",
+      "state": "done",
+      "label": "Convoy"
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "coop-bonus",
+      "state": "done",
+      "label": "Convoy"
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "coop-bonus",
+      "state": "done",
+      "label": "Convoy"
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-terminal-sabotage",
+      "terminal": "terminal-1",
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-terminal-sabotage",
+      "terminal": "terminal-1",
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-terminal-sabotage",
+      "terminal": "terminal-1",
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-terminal-sabotage",
+      "terminal": "terminal-1",
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-sapper",
+      "node": "relay-2",
+      "denied": 2,
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-sapper",
+      "node": "relay-2",
+      "denied": 2,
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-sapper",
+      "node": "relay-2",
+      "denied": 2,
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-sapper",
+      "node": "relay-2",
+      "denied": 2,
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-siphon",
+      "flux": 8.7,
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-siphon",
+      "flux": 8.7,
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-siphon",
+      "flux": 8.7,
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-siphon",
+      "flux": 8.7,
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-scan",
+      "marked": 0,
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-scan",
+      "marked": 0,
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-scan",
+      "marked": 0,
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-scan",
+      "marked": 0,
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-scan",
+      "marked": 3,
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-scan",
+      "marked": 3,
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-scan",
+      "marked": 3,
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-scan",
+      "marked": 3,
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-role-spawn",
+      "role": "saboteur",
+      "refund": 8.7,
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-role-spawn",
+      "role": "saboteur",
+      "refund": 8.7,
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-role-spawn",
+      "role": "saboteur",
+      "refund": 8.7,
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-role-spawn",
+      "role": "saboteur",
+      "refund": 8.7,
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-role-killed",
+      "role": "saboteur",
+      "refund": 8.7,
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-role-killed",
+      "role": "saboteur",
+      "refund": 8.7,
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-role-killed",
+      "role": "saboteur",
+      "refund": 8.7,
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-role-killed",
+      "role": "saboteur",
+      "refund": 8.7,
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-role-expire",
+      "role": "saboteur",
+      "refund": 8.7,
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-role-expire",
+      "role": "saboteur",
+      "refund": 8.7,
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-role-expire",
+      "role": "saboteur",
+      "refund": 8.7,
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-role-expire",
+      "role": "saboteur",
+      "refund": 8.7,
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-role-rally",
+      "targets": [
+        0,
+        1
+      ],
+      "actor": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-role-rally",
+      "targets": [
+        0,
+        1
+      ],
+      "actor": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-role-rally",
+      "targets": [
+        0,
+        1
+      ],
+      "actor": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-role-rally",
+      "targets": [
+        0,
+        1
+      ],
+      "actor": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-role-repair",
+      "repaired": [
+        "device:a",
+        "terminal:b"
+      ],
+      "actor": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-role-repair",
+      "repaired": [
+        "device:a",
+        "terminal:b"
+      ],
+      "actor": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-role-repair",
+      "repaired": [
+        "device:a",
+        "terminal:b"
+      ],
+      "actor": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-role-repair",
+      "repaired": [
+        "device:a",
+        "terminal:b"
+      ],
+      "actor": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-role-spot",
+      "targets": [
+        3,
+        4,
+        5
+      ],
+      "actor": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-role-spot",
+      "targets": [
+        3,
+        4,
+        5
+      ],
+      "actor": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-role-spot",
+      "targets": [
+        3,
+        4,
+        5
+      ],
+      "actor": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-role-spot",
+      "targets": [
+        3,
+        4,
+        5
+      ],
+      "actor": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-prime-start",
+      "node": "siphon-0"
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-prime-start",
+      "node": "siphon-0"
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-prime-start",
+      "node": "siphon-0"
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-prime-start",
+      "node": "siphon-0"
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-prime",
+      "node": "siphon-0"
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-prime",
+      "node": "siphon-0"
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-prime",
+      "node": "siphon-0"
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-prime",
+      "node": "siphon-0"
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-prime-interrupt",
+      "node": "siphon-0"
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-prime-interrupt",
+      "node": "siphon-0"
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-prime-interrupt",
+      "node": "siphon-0"
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-prime-interrupt",
+      "node": "siphon-0"
+    },
+    "actor": -1,
+    "team": null,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "take",
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "take",
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "take",
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "take",
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "release",
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "release",
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "release",
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "release",
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "mutiny-vote",
+      "votes": 2,
+      "needed": 3,
+      "seat": false,
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "mutiny-vote",
+      "votes": 2,
+      "needed": 3,
+      "seat": false,
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "mutiny-vote",
+      "votes": 2,
+      "needed": 3,
+      "seat": false,
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "mutiny-vote",
+      "votes": 2,
+      "needed": 3,
+      "seat": false,
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "mutiny-vote",
+      "seat": "0",
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "mutiny-vote",
+      "seat": "0",
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "mutiny-vote",
+      "seat": "0",
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "mutiny-vote",
+      "seat": "0",
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "policy",
+      "policy": "ASSAULT",
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "policy",
+      "policy": "ASSAULT",
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "policy",
+      "policy": "ASSAULT",
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "policy",
+      "policy": "ASSAULT",
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "policy",
+      "policy": null,
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "policy",
+      "policy": null,
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "policy",
+      "policy": null,
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "policy",
+      "policy": null,
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "set-route",
+      "value": "front-1",
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "set-route",
+      "value": "front-1",
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "set-route",
+      "value": "front-1",
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "set-route",
+      "value": "front-1",
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "set-route",
+      "value": null,
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "set-route",
+      "value": null,
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "set-route",
+      "value": null,
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "set-route",
+      "value": null,
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "unknown",
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "unknown",
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "unknown",
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-command",
+      "action": "unknown",
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-role-repair",
+      "repaired": [],
+      "actor": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-role-repair",
+      "repaired": [],
+      "actor": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-role-repair",
+      "repaired": [],
+      "actor": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-role-repair",
+      "repaired": [],
+      "actor": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-role-spot",
+      "targets": [],
+      "actor": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-role-spot",
+      "targets": [],
+      "actor": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-role-spot",
+      "targets": [],
+      "actor": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-role-spot",
+      "targets": [],
+      "actor": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-buy",
+      "actor": 0,
+      "team": 0
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-buy",
+      "actor": 0,
+      "team": 0
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-buy",
+      "actor": 0,
+      "team": 0
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-buy",
+      "actor": 0,
+      "team": 0
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-device-use",
+      "actor": 1,
+      "team": 1,
+      "kind": "teleporter"
+    },
+    "actor": 0,
+    "team": 0,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-device-use",
+      "actor": 1,
+      "team": 1,
+      "kind": "teleporter"
+    },
+    "actor": 1,
+    "team": 1,
+    "expected": true
+  },
+  {
+    "event": {
+      "type": "cocs-device-use",
+      "actor": 1,
+      "team": 1,
+      "kind": "teleporter"
+    },
+    "actor": 2,
+    "team": 0,
+    "expected": false
+  },
+  {
+    "event": {
+      "type": "cocs-device-use",
+      "actor": 1,
+      "team": 1,
+      "kind": "teleporter"
+    },
+    "actor": -1,
+    "team": null,
+    "expected": false
+  }
+]

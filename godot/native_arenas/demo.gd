@@ -113,7 +113,7 @@ func build_composition() -> void:
 	# Bind now, after session handlers, so even a fast local start is observed.
 	shared_hud.bind_session(self)
 	scores.bind_session(self)
-	shared_hud.controls.text = "WASD move · Space jump · Shift sprint · Ctrl/C crouch · X mobility · E use · Q power\nLMB fire · RMB ADS · Z/MMB alt · R reload · F melee · G grenade · 1–9/0/wheel weapons · Tab scores · Esc release"
+	preload("res://input_bindings/hints.gd").bind(shared_hud.controls, "WASD move · Space jump · Shift sprint · Ctrl/C crouch · X mobility · E use · Q power\nLMB fire · RMB ADS · Z/MMB alt · R reload · F melee · G grenade · 1–9/0/wheel weapons · Tab scores · Esc release")
 
 static func parse_options(args: PackedStringArray) -> Dictionary:
 	var options := {"map":"prism-foundry", "endpoint":"", "bots":2,

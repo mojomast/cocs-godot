@@ -4,6 +4,8 @@ var info := Label.new()
 var help := Label.new()
 var prompt := Label.new()
 var aim := Label.new()
+var top_scroll := ScrollContainer.new()
+var bottom_scroll := ScrollContainer.new()
 const SOURCE_SEATS := {"puma":4, "hornet":3, "titan":3, "scout":2, "transport":6}
 
 func vehicle_card(v: Dictionary, seat: Variant) -> String:
@@ -34,17 +36,21 @@ func _ready() -> void:
 		label.add_theme_constant_override("shadow_offset_x", 2)
 		label.add_theme_constant_override("shadow_offset_y", 2)
 		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	title.position = Vector2(20, 16)
 	title.add_theme_font_size_override("font_size", 24)
-	info.position = Vector2(20, 50)
-	help.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
-	help.offset_left = 20
-	help.offset_top = -96
-	prompt.set_anchors_and_offsets_preset(Control.PRESET_CENTER_BOTTOM)
-	prompt.offset_left = -200
-	prompt.offset_right = 200
-	prompt.offset_top = -155
-	prompt.offset_bottom = -120
+	# Wrapping rows share bounded scroll regions instead of fixed overlapping
+	# offsets. This remains reachable at compact UI150 with released controls.
+	for scroll: ScrollContainer in [top_scroll, bottom_scroll]:
+		add_child(scroll)
+		scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+		scroll.focus_mode = Control.FOCUS_ALL
+		preload("res://experience/scroll_keys.gd").bind(scroll)
+		var rows := VBoxContainer.new()
+		rows.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		scroll.add_child(rows)
+		for label: Label in ([title, info] if scroll == top_scroll else [prompt, help]):
+			label.reparent(rows)
+			label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	prompt.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	prompt.add_theme_font_size_override("font_size", 22)
 	aim.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
@@ -53,6 +59,21 @@ func _ready() -> void:
 	aim.offset_top = -12
 	aim.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	aim.text = "+"
+	get_viewport().size_changed.connect(layout)
+	layout()
+
+func layout() -> void:
+	var view := get_viewport().get_visible_rect().size
+	top_scroll.position = Vector2(20, 16)
+	top_scroll.size = Vector2(view.x - 40, view.y * 0.28)
+	bottom_scroll.position = Vector2(20, view.y * 0.66)
+	bottom_scroll.size = Vector2(view.x - 40, view.y * 0.34 - 16)
+
+func _process(_delta: float) -> void:
+	var released := Input.mouse_mode != Input.MOUSE_MODE_CAPTURED
+	for scroll: ScrollContainer in [top_scroll, bottom_scroll]:
+		scroll.mouse_filter = Control.MOUSE_FILTER_STOP if released else Control.MOUSE_FILTER_IGNORE
+		scroll.focus_mode = Control.FOCUS_ALL if released else Control.FOCUS_NONE
 
 func update(a: Dictionary, v: Dictionary, near: Dictionary, engaged: bool, phase: String, age: float, error: String) -> void:
 	title.text = "SUNSCAR CONVOY  /  COMBINED ARMS"
@@ -61,9 +82,9 @@ func update(a: Dictionary, v: Dictionary, near: Dictionary, engaged: bool, phase
 	info.text = "Infantry  •  HP %.0f  •  Team %s" % [a.get("health", 0), a.get("team", "—")]
 	if mounted:
 		info.text = vehicle_card(v, a.get("vehicleSeat", ""))
-	help.text = "WASD move  •  Mouse look / LMB fire  •  E mount / exit\nSpace %s  •  Shift %s\nEnter capture controls  •  Esc release  •  Fresh Enter + keys after seat change" % ["lift" if mounted and v.get("kind") == "hornet" else ("brake tap" if mounted else "jump"), "boost" if mounted else "sprint"]
+	help.text = preload("res://input_bindings/hints.gd").resolve("WASD move  •  Mouse look / LMB fire  •  E mount / exit\nSpace %s  •  Shift %s\nEnter capture controls  •  Esc release  •  Fresh Enter + keys after seat change" % ["lift" if mounted and v.get("kind") == "hornet" else ("brake tap" if mounted else "jump"), "boost" if mounted else "sprint"])
 	if mounted and a.get("vehicleSeat") != "driver":
-		help.text = "Seat: %s  •  E exit  •  Mouse look / LMB fire\nEnter capture controls  •  Esc release" % str(a.get("vehicleSeat", "")).capitalize()
+		help.text = preload("res://input_bindings/hints.gd").resolve("Seat: %s  •  E exit  •  Mouse look / LMB fire\nEnter capture controls  •  Esc release" % str(a.get("vehicleSeat", "")).capitalize())
 	prompt.text = "E  •  Exit vehicle" if mounted else ("E  •  Board %s" % str(near.kind).to_upper() if not near.is_empty() else "")
 	if phase != "active": prompt.text = error if not error.is_empty() else phase.capitalize()
 	elif age >= 0.5: prompt.text = "Snapshots stale — controls released"

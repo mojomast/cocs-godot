@@ -1,0 +1,4012 @@
+{
+  "version": 1,
+  "units_per_meter": 1000,
+  "content_roster_sha256": "a736dcfe91d44a08b165e1f7191420617984a561972505b0dd53df1b22cd4748",
+  "families": {
+    "chatgpt": {
+      "color": "#57e6cd",
+      "language": "survey brackets / articulated tracking cable",
+      "tone": [
+        620,
+        930,
+        1240
+      ],
+      "wave": "sine",
+      "segments": [
+        {
+          "points": [
+            [
+              -0.48,
+              0.18
+            ],
+            [
+              -0.48,
+              0.42
+            ],
+            [
+              -0.24,
+              0.42
+            ]
+          ],
+          "motion": "track",
+          "width": 0.025,
+          "delay": 0
+        },
+        {
+          "points": [
+            [
+              0.24,
+              0.42
+            ],
+            [
+              0.48,
+              0.42
+            ],
+            [
+              0.48,
+              0.18
+            ]
+          ],
+          "motion": "track",
+          "width": 0.025,
+          "delay": 0
+        },
+        {
+          "points": [
+            [
+              -0.48,
+              -0.18
+            ],
+            [
+              -0.48,
+              -0.42
+            ],
+            [
+              -0.24,
+              -0.42
+            ]
+          ],
+          "motion": "track",
+          "width": 0.025,
+          "delay": 0
+        },
+        {
+          "points": [
+            [
+              0.24,
+              -0.42
+            ],
+            [
+              0.48,
+              -0.42
+            ],
+            [
+              0.48,
+              -0.18
+            ]
+          ],
+          "motion": "track",
+          "width": 0.025,
+          "delay": 0
+        },
+        {
+          "points": [
+            [
+              -0.8,
+              0
+            ],
+            [
+              -0.6,
+              0.08
+            ],
+            [
+              -0.4,
+              -0.08
+            ],
+            [
+              -0.2,
+              0.04
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "motion": "reel",
+          "width": 0.018,
+          "delay": 0.12
+        }
+      ]
+    },
+    "claude": {
+      "color": "#f29d71",
+      "language": "salmon ceramic chevrons / plate ward",
+      "tone": [
+        440,
+        660,
+        880
+      ],
+      "wave": "triangle",
+      "segments": [
+        {
+          "points": [
+            [
+              -0.46,
+              -0.48
+            ],
+            [
+              -0.12,
+              0
+            ],
+            [
+              -0.46,
+              0.48
+            ]
+          ],
+          "motion": "ward",
+          "width": 0.06,
+          "delay": 0
+        },
+        {
+          "points": [
+            [
+              -0.18,
+              -0.4
+            ],
+            [
+              0.14,
+              0
+            ],
+            [
+              -0.18,
+              0.4
+            ]
+          ],
+          "motion": "ward",
+          "width": 0.045,
+          "delay": 0.16
+        },
+        {
+          "points": [
+            [
+              0.1,
+              -0.32
+            ],
+            [
+              0.38,
+              0
+            ],
+            [
+              0.1,
+              0.32
+            ]
+          ],
+          "motion": "ward",
+          "width": 0.03,
+          "delay": 0.32
+        },
+        {
+          "points": [
+            [
+              -0.55,
+              -0.52
+            ],
+            [
+              -0.55,
+              0.52
+            ]
+          ],
+          "motion": "settle",
+          "width": 0.04,
+          "delay": 0
+        }
+      ]
+    },
+    "grok": {
+      "color": "#ff8b4d",
+      "language": "asymmetric piston / ballistic embers",
+      "tone": [
+        110,
+        173,
+        257
+      ],
+      "wave": "pulse",
+      "segments": [
+        {
+          "points": [
+            [
+              -0.58,
+              -0.3
+            ],
+            [
+              -0.2,
+              -0.3
+            ],
+            [
+              0.18,
+              0.12
+            ],
+            [
+              0.62,
+              0.12
+            ]
+          ],
+          "motion": "piston",
+          "width": 0.08,
+          "delay": 0
+        },
+        {
+          "points": [
+            [
+              -0.52,
+              0.28
+            ],
+            [
+              -0.16,
+              0.28
+            ],
+            [
+              0.3,
+              0.46
+            ]
+          ],
+          "motion": "piston",
+          "width": 0.035,
+          "delay": 0.18
+        },
+        {
+          "points": [
+            [
+              0.16,
+              -0.1
+            ],
+            [
+              0.26,
+              -0.14
+            ]
+          ],
+          "motion": "ember",
+          "width": 0.04,
+          "delay": 0.1
+        },
+        {
+          "points": [
+            [
+              0.35,
+              0.18
+            ],
+            [
+              0.42,
+              0.23
+            ]
+          ],
+          "motion": "ember",
+          "width": 0.025,
+          "delay": 0.26
+        },
+        {
+          "points": [
+            [
+              0.04,
+              0.34
+            ],
+            [
+              0.11,
+              0.43
+            ]
+          ],
+          "motion": "ember",
+          "width": 0.025,
+          "delay": 0.34
+        }
+      ]
+    },
+    "meta": {
+      "color": "#57b9ff",
+      "language": "paired turbine sectors / inward implosion",
+      "tone": [
+        82,
+        123,
+        164
+      ],
+      "wave": "sine",
+      "segments": [
+        {
+          "points": [
+            [
+              -0.66,
+              0
+            ],
+            [
+              -0.57,
+              0.23
+            ],
+            [
+              -0.35,
+              0.31
+            ],
+            [
+              -0.18,
+              0.23
+            ]
+          ],
+          "motion": "implode",
+          "width": 0.075,
+          "delay": 0
+        },
+        {
+          "points": [
+            [
+              -0.18,
+              -0.23
+            ],
+            [
+              -0.35,
+              -0.31
+            ],
+            [
+              -0.57,
+              -0.23
+            ],
+            [
+              -0.66,
+              0
+            ]
+          ],
+          "motion": "implode",
+          "width": 0.055,
+          "delay": 0.14
+        },
+        {
+          "points": [
+            [
+              0.18,
+              0.23
+            ],
+            [
+              0.35,
+              0.31
+            ],
+            [
+              0.57,
+              0.23
+            ],
+            [
+              0.66,
+              0
+            ]
+          ],
+          "motion": "implode",
+          "width": 0.075,
+          "delay": 0.07
+        },
+        {
+          "points": [
+            [
+              0.66,
+              0
+            ],
+            [
+              0.57,
+              -0.23
+            ],
+            [
+              0.35,
+              -0.31
+            ],
+            [
+              0.18,
+              -0.23
+            ]
+          ],
+          "motion": "implode",
+          "width": 0.055,
+          "delay": 0.21
+        },
+        {
+          "points": [
+            [
+              -0.27,
+              0
+            ],
+            [
+              0,
+              0.14
+            ],
+            [
+              0.27,
+              0
+            ]
+          ],
+          "motion": "brace",
+          "width": 0.08,
+          "delay": 0.34
+        }
+      ]
+    },
+    "gemini": {
+      "color": "#fff0c3",
+      "language": "split petals / interleaved two bands",
+      "tone": [
+        523,
+        784,
+        1046
+      ],
+      "wave": "triangle",
+      "segments": [
+        {
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              -0.26,
+              0.34
+            ],
+            [
+              -0.55,
+              0.42
+            ],
+            [
+              -0.36,
+              0.12
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "motion": "petal_a",
+          "width": 0.026,
+          "delay": 0
+        },
+        {
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              0.26,
+              -0.34
+            ],
+            [
+              0.55,
+              -0.42
+            ],
+            [
+              0.36,
+              -0.12
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "motion": "petal_b",
+          "width": 0.026,
+          "delay": 0.18
+        },
+        {
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              0.28,
+              0.18
+            ],
+            [
+              0.54,
+              0.05
+            ],
+            [
+              0.32,
+              -0.06
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "motion": "petal_b",
+          "width": 0.038,
+          "delay": 0.08
+        },
+        {
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              -0.28,
+              -0.18
+            ],
+            [
+              -0.54,
+              -0.05
+            ],
+            [
+              -0.32,
+              0.06
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "motion": "petal_a",
+          "width": 0.038,
+          "delay": 0.26
+        }
+      ]
+    },
+    "deepseek": {
+      "color": "#56c5f2",
+      "language": "concentrating pressure channels / buoyant bubbles",
+      "tone": [
+        147,
+        294,
+        588
+      ],
+      "wave": "sine",
+      "segments": [
+        {
+          "points": [
+            [
+              -0.75,
+              0.38
+            ],
+            [
+              -0.4,
+              0.18
+            ],
+            [
+              0,
+              0.08
+            ],
+            [
+              0.24,
+              0
+            ]
+          ],
+          "motion": "compress",
+          "width": 0.045,
+          "delay": 0
+        },
+        {
+          "points": [
+            [
+              -0.75,
+              -0.38
+            ],
+            [
+              -0.4,
+              -0.18
+            ],
+            [
+              0,
+              -0.08
+            ],
+            [
+              0.24,
+              0
+            ]
+          ],
+          "motion": "compress",
+          "width": 0.045,
+          "delay": 0.08
+        },
+        {
+          "points": [
+            [
+              -0.8,
+              0
+            ],
+            [
+              -0.3,
+              0
+            ],
+            [
+              0.32,
+              0
+            ]
+          ],
+          "motion": "compress",
+          "width": 0.07,
+          "delay": 0.18
+        },
+        {
+          "points": [
+            [
+              -0.38,
+              0.15
+            ],
+            [
+              -0.43,
+              0.2
+            ],
+            [
+              -0.38,
+              0.25
+            ],
+            [
+              -0.33,
+              0.2
+            ],
+            [
+              -0.38,
+              0.15
+            ]
+          ],
+          "motion": "bubble",
+          "width": 0.018,
+          "delay": 0.22
+        },
+        {
+          "points": [
+            [
+              -0.62,
+              -0.12
+            ],
+            [
+              -0.66,
+              -0.08
+            ],
+            [
+              -0.62,
+              -0.04
+            ],
+            [
+              -0.58,
+              -0.08
+            ],
+            [
+              -0.62,
+              -0.12
+            ]
+          ],
+          "motion": "bubble",
+          "width": 0.018,
+          "delay": 0.36
+        }
+      ]
+    },
+    "mistral": {
+      "color": "#ffbd59",
+      "language": "swept aerofoil slivers / shear ribbons",
+      "tone": [
+        740,
+        1110,
+        1480
+      ],
+      "wave": "triangle",
+      "segments": [
+        {
+          "points": [
+            [
+              -0.85,
+              -0.22
+            ],
+            [
+              -0.2,
+              0.1
+            ],
+            [
+              0.65,
+              0.18
+            ],
+            [
+              0.1,
+              0.04
+            ],
+            [
+              -0.85,
+              -0.22
+            ]
+          ],
+          "motion": "sweep",
+          "width": 0.02,
+          "delay": 0
+        },
+        {
+          "points": [
+            [
+              -0.7,
+              0.16
+            ],
+            [
+              -0.16,
+              0.4
+            ],
+            [
+              0.52,
+              0.36
+            ]
+          ],
+          "motion": "shear",
+          "width": 0.028,
+          "delay": 0.12
+        },
+        {
+          "points": [
+            [
+              -0.92,
+              -0.36
+            ],
+            [
+              -0.36,
+              -0.14
+            ],
+            [
+              0.28,
+              -0.12
+            ]
+          ],
+          "motion": "shear",
+          "width": 0.015,
+          "delay": 0.26
+        },
+        {
+          "points": [
+            [
+              -0.45,
+              0.34
+            ],
+            [
+              -0.14,
+              0.5
+            ],
+            [
+              0.08,
+              0.46
+            ]
+          ],
+          "motion": "sweep",
+          "width": 0.018,
+          "delay": 0.34
+        }
+      ]
+    },
+    "kimi": {
+      "color": "#ff82b2",
+      "language": "broken orbital arcs / afterimage trace",
+      "tone": [
+        659,
+        831,
+        988
+      ],
+      "wave": "sine",
+      "segments": [
+        {
+          "points": [
+            [
+              0.5,
+              0
+            ],
+            [
+              0.46,
+              0.23
+            ],
+            [
+              0.28,
+              0.4
+            ],
+            [
+              0.06,
+              0.46
+            ]
+          ],
+          "motion": "orbit",
+          "width": 0.025,
+          "delay": 0
+        },
+        {
+          "points": [
+            [
+              -0.28,
+              0.4
+            ],
+            [
+              -0.46,
+              0.23
+            ],
+            [
+              -0.5,
+              0
+            ]
+          ],
+          "motion": "orbit",
+          "width": 0.025,
+          "delay": 0.12
+        },
+        {
+          "points": [
+            [
+              -0.46,
+              -0.23
+            ],
+            [
+              -0.28,
+              -0.4
+            ],
+            [
+              -0.06,
+              -0.46
+            ]
+          ],
+          "motion": "orbit",
+          "width": 0.025,
+          "delay": 0.24
+        },
+        {
+          "points": [
+            [
+              0.28,
+              -0.4
+            ],
+            [
+              0.46,
+              -0.23
+            ],
+            [
+              0.5,
+              0
+            ]
+          ],
+          "motion": "orbit",
+          "width": 0.025,
+          "delay": 0.36
+        },
+        {
+          "points": [
+            [
+              -0.7,
+              -0.06
+            ],
+            [
+              -0.4,
+              0.05
+            ],
+            [
+              -0.14,
+              -0.04
+            ],
+            [
+              0.1,
+              0
+            ]
+          ],
+          "motion": "echo",
+          "width": 0.012,
+          "delay": 0.18
+        }
+      ]
+    },
+    "qwen": {
+      "color": "#b797ff",
+      "language": "segmented tether / locking lamellar sigils",
+      "tone": [
+        220,
+        330,
+        495
+      ],
+      "wave": "pulse",
+      "segments": [
+        {
+          "points": [
+            [
+              -0.74,
+              0
+            ],
+            [
+              -0.55,
+              0
+            ]
+          ],
+          "motion": "lock",
+          "width": 0.025,
+          "delay": 0
+        },
+        {
+          "points": [
+            [
+              -0.48,
+              0
+            ],
+            [
+              -0.29,
+              0
+            ]
+          ],
+          "motion": "lock",
+          "width": 0.025,
+          "delay": 0.08
+        },
+        {
+          "points": [
+            [
+              -0.22,
+              0
+            ],
+            [
+              -0.03,
+              0
+            ]
+          ],
+          "motion": "lock",
+          "width": 0.025,
+          "delay": 0.16
+        },
+        {
+          "points": [
+            [
+              0.12,
+              -0.32
+            ],
+            [
+              0.36,
+              -0.32
+            ],
+            [
+              0.48,
+              -0.12
+            ],
+            [
+              0.48,
+              0.12
+            ],
+            [
+              0.36,
+              0.32
+            ],
+            [
+              0.12,
+              0.32
+            ]
+          ],
+          "motion": "lamella",
+          "width": 0.04,
+          "delay": 0.24
+        },
+        {
+          "points": [
+            [
+              0.04,
+              -0.2
+            ],
+            [
+              0.28,
+              -0.2
+            ],
+            [
+              0.38,
+              0
+            ],
+            [
+              0.28,
+              0.2
+            ],
+            [
+              0.04,
+              0.2
+            ]
+          ],
+          "motion": "lamella",
+          "width": 0.025,
+          "delay": 0.36
+        },
+        {
+          "points": [
+            [
+              0.22,
+              -0.08
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.22,
+              0.08
+            ]
+          ],
+          "motion": "lock",
+          "width": 0.04,
+          "delay": 0.44
+        }
+      ]
+    }
+  },
+  "effects": {
+    "chatgpt:stand_l": {
+      "operator": "chatgpt",
+      "move": "stand_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 5,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "chatgpt:stand_m": {
+      "operator": "chatgpt",
+      "move": "stand_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 8,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "chatgpt:stand_h": {
+      "operator": "chatgpt",
+      "move": "stand_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 12,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "chatgpt:crouch_l": {
+      "operator": "chatgpt",
+      "move": "crouch_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 5,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "chatgpt:crouch_m": {
+      "operator": "chatgpt",
+      "move": "crouch_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 9,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "chatgpt:crouch_h": {
+      "operator": "chatgpt",
+      "move": "crouch_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 11,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "chatgpt:air_l": {
+      "operator": "chatgpt",
+      "move": "air_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 5,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "chatgpt:air_m": {
+      "operator": "chatgpt",
+      "move": "air_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 8,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "chatgpt:air_h": {
+      "operator": "chatgpt",
+      "move": "air_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 11,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "chatgpt:throw_f": {
+      "operator": "chatgpt",
+      "move": "throw_f",
+      "scale": 1.05,
+      "lifetime": 0.42,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 6,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      }
+    },
+    "chatgpt:throw_b": {
+      "operator": "chatgpt",
+      "move": "throw_b",
+      "scale": 1.05,
+      "lifetime": 0.42,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 6,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      }
+    },
+    "chatgpt:special1": {
+      "operator": "chatgpt",
+      "move": "special1",
+      "scale": 1.12,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 12,
+      "kind": "projectile",
+      "declared_windows": {}
+    },
+    "chatgpt:special2": {
+      "operator": "chatgpt",
+      "move": "special2",
+      "scale": 1.12,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 14,
+      "kind": "strike",
+      "declared_windows": {
+        "movement": {
+          "type": "reel",
+          "from": 14,
+          "to": 17,
+          "vx": 0,
+          "vy": 0,
+          "distance": 1300,
+          "duration": 15,
+          "air_only": false,
+          "ground_only": false,
+          "cooldown": 45,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1,
+          "pull_speed": 90,
+          "on": "hit"
+        }
+      }
+    },
+    "chatgpt:special3": {
+      "operator": "chatgpt",
+      "move": "special3",
+      "scale": 1.05,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 12,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 790,
+          "tech_frames": 0,
+          "damage_frame": 20,
+          "release_frame": 34,
+          "victim_x": 650,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": true,
+          "ground_only": true,
+          "knockdown_frames": 42
+        }
+      }
+    },
+    "chatgpt:super": {
+      "operator": "chatgpt",
+      "move": "super",
+      "scale": 1.45,
+      "lifetime": 0.72,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 9,
+      "kind": "super",
+      "declared_windows": {}
+    },
+    "chatgpt:guard_hi": {
+      "operator": "chatgpt",
+      "move": "guard_hi",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "chatgpt:guard_lo": {
+      "operator": "chatgpt",
+      "move": "guard_lo",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "chatgpt:throw_tech": {
+      "operator": "chatgpt",
+      "move": "throw_tech",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "chatgpt:dash_f": {
+      "operator": "chatgpt",
+      "move": "dash_f",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "chatgpt:dash_b": {
+      "operator": "chatgpt",
+      "move": "dash_b",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "chatgpt:land": {
+      "operator": "chatgpt",
+      "move": "land",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "chatgpt:jump_rise": {
+      "operator": "chatgpt",
+      "move": "jump_rise",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "chatgpt:counter": {
+      "operator": "chatgpt",
+      "move": "counter",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "chatgpt:reflect": {
+      "operator": "chatgpt",
+      "move": "reflect",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "chatgpt:clash": {
+      "operator": "chatgpt",
+      "move": "clash",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "chatgpt:release": {
+      "operator": "chatgpt",
+      "move": "release",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "claude:stand_l": {
+      "operator": "claude",
+      "move": "stand_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 6,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "claude:stand_m": {
+      "operator": "claude",
+      "move": "stand_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 10,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "claude:stand_h": {
+      "operator": "claude",
+      "move": "stand_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 15,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "claude:crouch_l": {
+      "operator": "claude",
+      "move": "crouch_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 6,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "claude:crouch_m": {
+      "operator": "claude",
+      "move": "crouch_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 10,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "claude:crouch_h": {
+      "operator": "claude",
+      "move": "crouch_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 13,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "claude:air_l": {
+      "operator": "claude",
+      "move": "air_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 6,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "claude:air_m": {
+      "operator": "claude",
+      "move": "air_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 10,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "claude:air_h": {
+      "operator": "claude",
+      "move": "air_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 14,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "claude:throw_f": {
+      "operator": "claude",
+      "move": "throw_f",
+      "scale": 1.05,
+      "lifetime": 0.42,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 6,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      }
+    },
+    "claude:throw_b": {
+      "operator": "claude",
+      "move": "throw_b",
+      "scale": 1.05,
+      "lifetime": 0.42,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 6,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      }
+    },
+    "claude:special1": {
+      "operator": "claude",
+      "move": "special1",
+      "scale": 1.12,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 14,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "claude:special2": {
+      "operator": "claude",
+      "move": "special2",
+      "scale": 1.12,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 6,
+      "kind": "mobility",
+      "declared_windows": {
+        "movement": {
+          "type": "glide",
+          "from": 6,
+          "to": 23,
+          "vx": -65,
+          "vy": -25,
+          "distance": 1400,
+          "duration": 18,
+          "air_only": true,
+          "ground_only": false,
+          "cooldown": 45,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1
+        }
+      }
+    },
+    "claude:special3": {
+      "operator": "claude",
+      "move": "special3",
+      "scale": 1.05,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 5,
+      "kind": "counter",
+      "declared_windows": {
+        "counter": {
+          "from": 5,
+          "to": 16,
+          "reflect": true,
+          "strike": true,
+          "range": 850,
+          "damage_frame": 25,
+          "release_frame": 40
+        }
+      }
+    },
+    "claude:super": {
+      "operator": "claude",
+      "move": "super",
+      "scale": 1.45,
+      "lifetime": 0.72,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 10,
+      "kind": "super",
+      "declared_windows": {}
+    },
+    "claude:guard_hi": {
+      "operator": "claude",
+      "move": "guard_hi",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "claude:guard_lo": {
+      "operator": "claude",
+      "move": "guard_lo",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "claude:throw_tech": {
+      "operator": "claude",
+      "move": "throw_tech",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "claude:dash_f": {
+      "operator": "claude",
+      "move": "dash_f",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "claude:dash_b": {
+      "operator": "claude",
+      "move": "dash_b",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "claude:land": {
+      "operator": "claude",
+      "move": "land",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "claude:jump_rise": {
+      "operator": "claude",
+      "move": "jump_rise",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "claude:counter": {
+      "operator": "claude",
+      "move": "counter",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "claude:reflect": {
+      "operator": "claude",
+      "move": "reflect",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "claude:clash": {
+      "operator": "claude",
+      "move": "clash",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "claude:release": {
+      "operator": "claude",
+      "move": "release",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "grok:stand_l": {
+      "operator": "grok",
+      "move": "stand_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 4,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "grok:stand_m": {
+      "operator": "grok",
+      "move": "stand_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 7,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "grok:stand_h": {
+      "operator": "grok",
+      "move": "stand_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "overhead",
+      "startup_frames": 18,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "grok:crouch_l": {
+      "operator": "grok",
+      "move": "crouch_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 5,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "grok:crouch_m": {
+      "operator": "grok",
+      "move": "crouch_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 8,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "grok:crouch_h": {
+      "operator": "grok",
+      "move": "crouch_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 10,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "grok:air_l": {
+      "operator": "grok",
+      "move": "air_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 4,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "grok:air_m": {
+      "operator": "grok",
+      "move": "air_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 7,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "grok:air_h": {
+      "operator": "grok",
+      "move": "air_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 12,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "grok:throw_f": {
+      "operator": "grok",
+      "move": "throw_f",
+      "scale": 1.05,
+      "lifetime": 0.42,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 6,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      }
+    },
+    "grok:throw_b": {
+      "operator": "grok",
+      "move": "throw_b",
+      "scale": 1.05,
+      "lifetime": 0.42,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 6,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      }
+    },
+    "grok:special1": {
+      "operator": "grok",
+      "move": "special1",
+      "scale": 1.12,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 16,
+      "kind": "projectile",
+      "declared_windows": {}
+    },
+    "grok:special2": {
+      "operator": "grok",
+      "move": "special2",
+      "scale": 1.12,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 8,
+      "kind": "mobility",
+      "declared_windows": {
+        "movement": {
+          "type": "super_jump",
+          "from": 8,
+          "to": 8,
+          "vx": 60,
+          "vy": 255,
+          "distance": 1800,
+          "duration": 35,
+          "air_only": false,
+          "ground_only": true,
+          "cooldown": 45,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1
+        }
+      }
+    },
+    "grok:special3": {
+      "operator": "grok",
+      "move": "special3",
+      "scale": 1.05,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 17,
+      "kind": "strike",
+      "declared_windows": {
+        "movement": {
+          "type": "rush",
+          "from": 8,
+          "to": 21,
+          "vx": 100,
+          "vy": 0,
+          "distance": 1800,
+          "duration": 14,
+          "air_only": false,
+          "ground_only": true,
+          "cooldown": 45,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1
+        }
+      }
+    },
+    "grok:super": {
+      "operator": "grok",
+      "move": "super",
+      "scale": 1.45,
+      "lifetime": 0.72,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 11,
+      "kind": "super",
+      "declared_windows": {}
+    },
+    "grok:guard_hi": {
+      "operator": "grok",
+      "move": "guard_hi",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "grok:guard_lo": {
+      "operator": "grok",
+      "move": "guard_lo",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "grok:throw_tech": {
+      "operator": "grok",
+      "move": "throw_tech",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "grok:dash_f": {
+      "operator": "grok",
+      "move": "dash_f",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "grok:dash_b": {
+      "operator": "grok",
+      "move": "dash_b",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "grok:land": {
+      "operator": "grok",
+      "move": "land",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "grok:jump_rise": {
+      "operator": "grok",
+      "move": "jump_rise",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "grok:counter": {
+      "operator": "grok",
+      "move": "counter",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "grok:reflect": {
+      "operator": "grok",
+      "move": "reflect",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "grok:clash": {
+      "operator": "grok",
+      "move": "clash",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "grok:release": {
+      "operator": "grok",
+      "move": "release",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "meta:stand_l": {
+      "operator": "meta",
+      "move": "stand_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 7,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "meta:stand_m": {
+      "operator": "meta",
+      "move": "stand_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 11,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "meta:stand_h": {
+      "operator": "meta",
+      "move": "stand_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 17,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "meta:crouch_l": {
+      "operator": "meta",
+      "move": "crouch_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 7,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "meta:crouch_m": {
+      "operator": "meta",
+      "move": "crouch_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 12,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "meta:crouch_h": {
+      "operator": "meta",
+      "move": "crouch_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 15,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "meta:air_l": {
+      "operator": "meta",
+      "move": "air_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 7,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "meta:air_m": {
+      "operator": "meta",
+      "move": "air_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 11,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "meta:air_h": {
+      "operator": "meta",
+      "move": "air_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 16,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "meta:throw_f": {
+      "operator": "meta",
+      "move": "throw_f",
+      "scale": 1.05,
+      "lifetime": 0.42,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 8,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 20,
+          "release_frame": 31,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      }
+    },
+    "meta:throw_b": {
+      "operator": "meta",
+      "move": "throw_b",
+      "scale": 1.05,
+      "lifetime": 0.42,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 8,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 20,
+          "release_frame": 31,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      }
+    },
+    "meta:special1": {
+      "operator": "meta",
+      "move": "special1",
+      "scale": 1.12,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 11,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "meta:special2": {
+      "operator": "meta",
+      "move": "special2",
+      "scale": 1.12,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 12,
+      "kind": "strike",
+      "declared_windows": {
+        "movement": {
+          "type": "slam",
+          "from": 4,
+          "to": 17,
+          "vx": 25,
+          "vy": -180,
+          "distance": 900,
+          "duration": 14,
+          "air_only": true,
+          "ground_only": false,
+          "cooldown": 45,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1
+        }
+      }
+    },
+    "meta:special3": {
+      "operator": "meta",
+      "move": "special3",
+      "scale": 1.05,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 15,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 980,
+          "tech_frames": 0,
+          "damage_frame": 23,
+          "release_frame": 37,
+          "victim_x": 650,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": true,
+          "ground_only": true,
+          "knockdown_frames": 42
+        }
+      }
+    },
+    "meta:super": {
+      "operator": "meta",
+      "move": "super",
+      "scale": 1.45,
+      "lifetime": 0.72,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 12,
+      "kind": "super",
+      "declared_windows": {}
+    },
+    "meta:guard_hi": {
+      "operator": "meta",
+      "move": "guard_hi",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "meta:guard_lo": {
+      "operator": "meta",
+      "move": "guard_lo",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "meta:throw_tech": {
+      "operator": "meta",
+      "move": "throw_tech",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "meta:dash_f": {
+      "operator": "meta",
+      "move": "dash_f",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "meta:dash_b": {
+      "operator": "meta",
+      "move": "dash_b",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "meta:land": {
+      "operator": "meta",
+      "move": "land",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "meta:jump_rise": {
+      "operator": "meta",
+      "move": "jump_rise",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "meta:counter": {
+      "operator": "meta",
+      "move": "counter",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "meta:reflect": {
+      "operator": "meta",
+      "move": "reflect",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "meta:clash": {
+      "operator": "meta",
+      "move": "clash",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "meta:release": {
+      "operator": "meta",
+      "move": "release",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "gemini:stand_l": {
+      "operator": "gemini",
+      "move": "stand_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 5,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "gemini:stand_m": {
+      "operator": "gemini",
+      "move": "stand_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 8,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "gemini:stand_h": {
+      "operator": "gemini",
+      "move": "stand_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 12,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "gemini:crouch_l": {
+      "operator": "gemini",
+      "move": "crouch_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 5,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "gemini:crouch_m": {
+      "operator": "gemini",
+      "move": "crouch_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 8,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "gemini:crouch_h": {
+      "operator": "gemini",
+      "move": "crouch_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 11,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "gemini:air_l": {
+      "operator": "gemini",
+      "move": "air_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 5,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "gemini:air_m": {
+      "operator": "gemini",
+      "move": "air_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 8,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "gemini:air_h": {
+      "operator": "gemini",
+      "move": "air_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 11,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "gemini:throw_f": {
+      "operator": "gemini",
+      "move": "throw_f",
+      "scale": 1.05,
+      "lifetime": 0.42,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 6,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      }
+    },
+    "gemini:throw_b": {
+      "operator": "gemini",
+      "move": "throw_b",
+      "scale": 1.05,
+      "lifetime": 0.42,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 6,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      }
+    },
+    "gemini:special1": {
+      "operator": "gemini",
+      "move": "special1",
+      "scale": 1.12,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 13,
+      "kind": "projectile",
+      "declared_windows": {}
+    },
+    "gemini:special2": {
+      "operator": "gemini",
+      "move": "special2",
+      "scale": 1.12,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 5,
+      "kind": "mobility",
+      "declared_windows": {
+        "movement": {
+          "type": "double_jump",
+          "from": 5,
+          "to": 5,
+          "vx": 30,
+          "vy": 180,
+          "distance": 1000,
+          "duration": 25,
+          "air_only": true,
+          "ground_only": false,
+          "cooldown": 45,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1,
+          "air_uses": 1,
+          "reset_on_land": true
+        },
+        "stance": {
+          "resource": "band",
+          "set": 1,
+          "duration": 180,
+          "variants": {
+            "stand_l": "palm_l",
+            "stand_m": "palm_m",
+            "stand_h": "palm_h"
+          }
+        }
+      }
+    },
+    "gemini:special3": {
+      "operator": "gemini",
+      "move": "special3",
+      "scale": 1.05,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 13,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 780,
+          "tech_frames": 0,
+          "damage_frame": 21,
+          "release_frame": 35,
+          "victim_x": 650,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": true,
+          "ground_only": true,
+          "knockdown_frames": 42
+        },
+        "stance": {
+          "resource": "band",
+          "set": 1,
+          "duration": 180,
+          "variants": {
+            "stand_l": "palm_l",
+            "stand_m": "palm_m",
+            "stand_h": "palm_h"
+          }
+        }
+      }
+    },
+    "gemini:super": {
+      "operator": "gemini",
+      "move": "super",
+      "scale": 1.45,
+      "lifetime": 0.72,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 13,
+      "kind": "super",
+      "declared_windows": {}
+    },
+    "gemini:guard_hi": {
+      "operator": "gemini",
+      "move": "guard_hi",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "gemini:guard_lo": {
+      "operator": "gemini",
+      "move": "guard_lo",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "gemini:throw_tech": {
+      "operator": "gemini",
+      "move": "throw_tech",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "gemini:dash_f": {
+      "operator": "gemini",
+      "move": "dash_f",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "gemini:dash_b": {
+      "operator": "gemini",
+      "move": "dash_b",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "gemini:land": {
+      "operator": "gemini",
+      "move": "land",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "gemini:jump_rise": {
+      "operator": "gemini",
+      "move": "jump_rise",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "gemini:counter": {
+      "operator": "gemini",
+      "move": "counter",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "gemini:reflect": {
+      "operator": "gemini",
+      "move": "reflect",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "gemini:clash": {
+      "operator": "gemini",
+      "move": "clash",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "gemini:release": {
+      "operator": "gemini",
+      "move": "release",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "gemini:palm_l": {
+      "operator": "gemini",
+      "move": "palm_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 6,
+      "kind": "strike",
+      "declared_windows": {},
+      "shape_variant": "palm"
+    },
+    "gemini:palm_m": {
+      "operator": "gemini",
+      "move": "palm_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 10,
+      "kind": "strike",
+      "declared_windows": {},
+      "shape_variant": "palm"
+    },
+    "gemini:palm_h": {
+      "operator": "gemini",
+      "move": "palm_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 15,
+      "kind": "strike",
+      "declared_windows": {},
+      "shape_variant": "palm"
+    },
+    "deepseek:stand_l": {
+      "operator": "deepseek",
+      "move": "stand_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 7,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "deepseek:stand_m": {
+      "operator": "deepseek",
+      "move": "stand_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 11,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "deepseek:stand_h": {
+      "operator": "deepseek",
+      "move": "stand_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 16,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "deepseek:crouch_l": {
+      "operator": "deepseek",
+      "move": "crouch_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 7,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "deepseek:crouch_m": {
+      "operator": "deepseek",
+      "move": "crouch_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 11,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "deepseek:crouch_h": {
+      "operator": "deepseek",
+      "move": "crouch_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 14,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "deepseek:air_l": {
+      "operator": "deepseek",
+      "move": "air_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 7,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "deepseek:air_m": {
+      "operator": "deepseek",
+      "move": "air_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 11,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "deepseek:air_h": {
+      "operator": "deepseek",
+      "move": "air_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 15,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "deepseek:throw_f": {
+      "operator": "deepseek",
+      "move": "throw_f",
+      "scale": 1.05,
+      "lifetime": 0.42,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 6,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      }
+    },
+    "deepseek:throw_b": {
+      "operator": "deepseek",
+      "move": "throw_b",
+      "scale": 1.05,
+      "lifetime": 0.42,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 6,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      }
+    },
+    "deepseek:special1": {
+      "operator": "deepseek",
+      "move": "special1",
+      "scale": 1.12,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 10,
+      "kind": "projectile",
+      "declared_windows": {}
+    },
+    "deepseek:special2": {
+      "operator": "deepseek",
+      "move": "special2",
+      "scale": 1.12,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 5,
+      "kind": "mobility",
+      "declared_windows": {
+        "movement": {
+          "type": "hover",
+          "from": 5,
+          "to": 34,
+          "vx": 25,
+          "vy": 0,
+          "distance": 800,
+          "duration": 30,
+          "air_only": true,
+          "ground_only": false,
+          "cooldown": 45,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1
+        }
+      }
+    },
+    "deepseek:special3": {
+      "operator": "deepseek",
+      "move": "special3",
+      "scale": 1.05,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 16,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 900,
+          "tech_frames": 0,
+          "damage_frame": 24,
+          "release_frame": 38,
+          "victim_x": 650,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": true,
+          "ground_only": true,
+          "knockdown_frames": 42
+        }
+      }
+    },
+    "deepseek:super": {
+      "operator": "deepseek",
+      "move": "super",
+      "scale": 1.45,
+      "lifetime": 0.72,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 14,
+      "kind": "super",
+      "declared_windows": {}
+    },
+    "deepseek:guard_hi": {
+      "operator": "deepseek",
+      "move": "guard_hi",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "deepseek:guard_lo": {
+      "operator": "deepseek",
+      "move": "guard_lo",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "deepseek:throw_tech": {
+      "operator": "deepseek",
+      "move": "throw_tech",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "deepseek:dash_f": {
+      "operator": "deepseek",
+      "move": "dash_f",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "deepseek:dash_b": {
+      "operator": "deepseek",
+      "move": "dash_b",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "deepseek:land": {
+      "operator": "deepseek",
+      "move": "land",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "deepseek:jump_rise": {
+      "operator": "deepseek",
+      "move": "jump_rise",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "deepseek:counter": {
+      "operator": "deepseek",
+      "move": "counter",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "deepseek:reflect": {
+      "operator": "deepseek",
+      "move": "reflect",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "deepseek:clash": {
+      "operator": "deepseek",
+      "move": "clash",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "deepseek:release": {
+      "operator": "deepseek",
+      "move": "release",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "mistral:stand_l": {
+      "operator": "mistral",
+      "move": "stand_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 4,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "mistral:stand_m": {
+      "operator": "mistral",
+      "move": "stand_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 7,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "mistral:stand_h": {
+      "operator": "mistral",
+      "move": "stand_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 10,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "mistral:crouch_l": {
+      "operator": "mistral",
+      "move": "crouch_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 4,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "mistral:crouch_m": {
+      "operator": "mistral",
+      "move": "crouch_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 7,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "mistral:crouch_h": {
+      "operator": "mistral",
+      "move": "crouch_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 10,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "mistral:air_l": {
+      "operator": "mistral",
+      "move": "air_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 4,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "mistral:air_m": {
+      "operator": "mistral",
+      "move": "air_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 7,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "mistral:air_h": {
+      "operator": "mistral",
+      "move": "air_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 10,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "mistral:throw_f": {
+      "operator": "mistral",
+      "move": "throw_f",
+      "scale": 1.05,
+      "lifetime": 0.42,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 6,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      }
+    },
+    "mistral:throw_b": {
+      "operator": "mistral",
+      "move": "throw_b",
+      "scale": 1.05,
+      "lifetime": 0.42,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 6,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      }
+    },
+    "mistral:special1": {
+      "operator": "mistral",
+      "move": "special1",
+      "scale": 1.12,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 10,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "mistral:special2": {
+      "operator": "mistral",
+      "move": "special2",
+      "scale": 1.12,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 3,
+      "kind": "mobility",
+      "declared_windows": {
+        "movement": {
+          "type": "air_dash",
+          "from": 3,
+          "to": 12,
+          "vx": 145,
+          "vy": 0,
+          "distance": 1450,
+          "duration": 10,
+          "air_only": true,
+          "ground_only": false,
+          "cooldown": 45,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1,
+          "air_uses": 1,
+          "reset_on_land": true
+        }
+      }
+    },
+    "mistral:special3": {
+      "operator": "mistral",
+      "move": "special3",
+      "scale": 1.05,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "low",
+      "startup_frames": 14,
+      "kind": "strike",
+      "declared_windows": {
+        "movement": {
+          "type": "rush",
+          "from": 5,
+          "to": 18,
+          "vx": 105,
+          "vy": 0,
+          "distance": 1500,
+          "duration": 14,
+          "air_only": false,
+          "ground_only": true,
+          "cooldown": 45,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1
+        }
+      }
+    },
+    "mistral:super": {
+      "operator": "mistral",
+      "move": "super",
+      "scale": 1.45,
+      "lifetime": 0.72,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 15,
+      "kind": "super",
+      "declared_windows": {}
+    },
+    "mistral:guard_hi": {
+      "operator": "mistral",
+      "move": "guard_hi",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "mistral:guard_lo": {
+      "operator": "mistral",
+      "move": "guard_lo",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "mistral:throw_tech": {
+      "operator": "mistral",
+      "move": "throw_tech",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "mistral:dash_f": {
+      "operator": "mistral",
+      "move": "dash_f",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "mistral:dash_b": {
+      "operator": "mistral",
+      "move": "dash_b",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "mistral:land": {
+      "operator": "mistral",
+      "move": "land",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "mistral:jump_rise": {
+      "operator": "mistral",
+      "move": "jump_rise",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "mistral:counter": {
+      "operator": "mistral",
+      "move": "counter",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "mistral:reflect": {
+      "operator": "mistral",
+      "move": "reflect",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "mistral:clash": {
+      "operator": "mistral",
+      "move": "clash",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "mistral:release": {
+      "operator": "mistral",
+      "move": "release",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "kimi:stand_l": {
+      "operator": "kimi",
+      "move": "stand_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 5,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "kimi:stand_m": {
+      "operator": "kimi",
+      "move": "stand_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 9,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "kimi:stand_h": {
+      "operator": "kimi",
+      "move": "stand_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 14,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "kimi:crouch_l": {
+      "operator": "kimi",
+      "move": "crouch_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 5,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "kimi:crouch_m": {
+      "operator": "kimi",
+      "move": "crouch_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 9,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "kimi:crouch_h": {
+      "operator": "kimi",
+      "move": "crouch_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 12,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "kimi:air_l": {
+      "operator": "kimi",
+      "move": "air_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 5,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "kimi:air_m": {
+      "operator": "kimi",
+      "move": "air_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 9,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "kimi:air_h": {
+      "operator": "kimi",
+      "move": "air_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 13,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "kimi:throw_f": {
+      "operator": "kimi",
+      "move": "throw_f",
+      "scale": 1.05,
+      "lifetime": 0.42,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 6,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      }
+    },
+    "kimi:throw_b": {
+      "operator": "kimi",
+      "move": "throw_b",
+      "scale": 1.05,
+      "lifetime": 0.42,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 6,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      }
+    },
+    "kimi:special1": {
+      "operator": "kimi",
+      "move": "special1",
+      "scale": 1.12,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 15,
+      "kind": "projectile",
+      "declared_windows": {}
+    },
+    "kimi:special2": {
+      "operator": "kimi",
+      "move": "special2",
+      "scale": 1.12,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 15,
+      "kind": "mobility",
+      "declared_windows": {
+        "movement": {
+          "type": "blink",
+          "from": 15,
+          "to": 15,
+          "vx": 0,
+          "vy": 0,
+          "distance": 1800,
+          "duration": 1,
+          "air_only": false,
+          "ground_only": true,
+          "cooldown": 75,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1
+        }
+      }
+    },
+    "kimi:special3": {
+      "operator": "kimi",
+      "move": "special3",
+      "scale": 1.05,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 14,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 800,
+          "tech_frames": 0,
+          "damage_frame": 22,
+          "release_frame": 36,
+          "victim_x": 650,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": true,
+          "ground_only": true,
+          "knockdown_frames": 42
+        }
+      }
+    },
+    "kimi:super": {
+      "operator": "kimi",
+      "move": "super",
+      "scale": 1.45,
+      "lifetime": 0.72,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 16,
+      "kind": "super",
+      "declared_windows": {}
+    },
+    "kimi:guard_hi": {
+      "operator": "kimi",
+      "move": "guard_hi",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "kimi:guard_lo": {
+      "operator": "kimi",
+      "move": "guard_lo",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "kimi:throw_tech": {
+      "operator": "kimi",
+      "move": "throw_tech",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "kimi:dash_f": {
+      "operator": "kimi",
+      "move": "dash_f",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "kimi:dash_b": {
+      "operator": "kimi",
+      "move": "dash_b",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "kimi:land": {
+      "operator": "kimi",
+      "move": "land",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "kimi:jump_rise": {
+      "operator": "kimi",
+      "move": "jump_rise",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "kimi:counter": {
+      "operator": "kimi",
+      "move": "counter",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "kimi:reflect": {
+      "operator": "kimi",
+      "move": "reflect",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "kimi:clash": {
+      "operator": "kimi",
+      "move": "clash",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "kimi:release": {
+      "operator": "kimi",
+      "move": "release",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "qwen:stand_l": {
+      "operator": "qwen",
+      "move": "stand_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 6,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "qwen:stand_m": {
+      "operator": "qwen",
+      "move": "stand_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 9,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "qwen:stand_h": {
+      "operator": "qwen",
+      "move": "stand_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 14,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "qwen:crouch_l": {
+      "operator": "qwen",
+      "move": "crouch_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 6,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "qwen:crouch_m": {
+      "operator": "qwen",
+      "move": "crouch_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 10,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "qwen:crouch_h": {
+      "operator": "qwen",
+      "move": "crouch_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_FootR",
+      "level": "low",
+      "startup_frames": 13,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "qwen:air_l": {
+      "operator": "qwen",
+      "move": "air_l",
+      "scale": 0.68,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 6,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "qwen:air_m": {
+      "operator": "qwen",
+      "move": "air_m",
+      "scale": 0.92,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 9,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "qwen:air_h": {
+      "operator": "qwen",
+      "move": "air_h",
+      "scale": 1.2,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_FootR",
+      "level": "overhead",
+      "startup_frames": 13,
+      "kind": "strike",
+      "declared_windows": {}
+    },
+    "qwen:throw_f": {
+      "operator": "qwen",
+      "move": "throw_f",
+      "scale": 1.05,
+      "lifetime": 0.42,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 6,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      }
+    },
+    "qwen:throw_b": {
+      "operator": "qwen",
+      "move": "throw_b",
+      "scale": 1.05,
+      "lifetime": 0.42,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 6,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 750,
+          "tech_frames": 10,
+          "damage_frame": 18,
+          "release_frame": 29,
+          "victim_x": 600,
+          "victim_y": 0,
+          "side_swap": true,
+          "command": false,
+          "ground_only": true,
+          "knockdown_frames": 36
+        }
+      }
+    },
+    "qwen:special1": {
+      "operator": "qwen",
+      "move": "special1",
+      "scale": 1.12,
+      "lifetime": 0.33,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 14,
+      "kind": "projectile",
+      "declared_windows": {}
+    },
+    "qwen:special2": {
+      "operator": "qwen",
+      "move": "special2",
+      "scale": 1.12,
+      "lifetime": 0.25,
+      "beat": 0,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 20,
+      "kind": "mobility",
+      "declared_windows": {
+        "movement": {
+          "type": "anchor",
+          "from": 20,
+          "to": 20,
+          "vx": 0,
+          "vy": 0,
+          "distance": 2000,
+          "duration": 1,
+          "air_only": false,
+          "ground_only": true,
+          "cooldown": 90,
+          "invulnerable_from": -1,
+          "invulnerable_to": -1,
+          "anchor_life": 180,
+          "trigger_range": 650,
+          "pull_speed": 55,
+          "max_count": 1
+        }
+      }
+    },
+    "qwen:special3": {
+      "operator": "qwen",
+      "move": "special3",
+      "scale": 1.05,
+      "lifetime": 0.29,
+      "beat": 1,
+      "socket": "Socket_HandR",
+      "level": "unblockable",
+      "startup_frames": 14,
+      "kind": "throw",
+      "declared_windows": {
+        "throw": {
+          "range": 1050,
+          "tech_frames": 0,
+          "damage_frame": 22,
+          "release_frame": 36,
+          "victim_x": 650,
+          "victim_y": 0,
+          "side_swap": false,
+          "command": true,
+          "ground_only": true,
+          "knockdown_frames": 42
+        }
+      }
+    },
+    "qwen:super": {
+      "operator": "qwen",
+      "move": "super",
+      "scale": 1.45,
+      "lifetime": 0.72,
+      "beat": 2,
+      "socket": "Socket_HandR",
+      "level": "mid",
+      "startup_frames": 17,
+      "kind": "super",
+      "declared_windows": {}
+    },
+    "qwen:guard_hi": {
+      "operator": "qwen",
+      "move": "guard_hi",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "qwen:guard_lo": {
+      "operator": "qwen",
+      "move": "guard_lo",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "qwen:throw_tech": {
+      "operator": "qwen",
+      "move": "throw_tech",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "qwen:dash_f": {
+      "operator": "qwen",
+      "move": "dash_f",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "qwen:dash_b": {
+      "operator": "qwen",
+      "move": "dash_b",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "qwen:land": {
+      "operator": "qwen",
+      "move": "land",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "qwen:jump_rise": {
+      "operator": "qwen",
+      "move": "jump_rise",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "qwen:counter": {
+      "operator": "qwen",
+      "move": "counter",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "qwen:reflect": {
+      "operator": "qwen",
+      "move": "reflect",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "qwen:clash": {
+      "operator": "qwen",
+      "move": "clash",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    },
+    "qwen:release": {
+      "operator": "qwen",
+      "move": "release",
+      "scale": 0.72,
+      "lifetime": 0.32,
+      "beat": 0,
+      "socket": "Socket_HandR"
+    }
+  },
+  "budgets": {
+    "low": {
+      "slots": 12,
+      "segments": 12,
+      "voices": 4
+    },
+    "high": {
+      "slots": 32,
+      "segments": 24,
+      "voices": 6
+    },
+    "detail": {
+      "slots": 48,
+      "segments": 32,
+      "voices": 8
+    }
+  },
+  "dedup_window": 4096
+}

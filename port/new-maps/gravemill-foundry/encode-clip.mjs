@@ -1,0 +1,16 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {spawnSync} from 'node:child_process';
+const root=process.argv[2],mode=process.argv[3]??'walkthrough';
+if(!root)throw Error('usage: node encode-clip.mjs evidence-directory [walkthrough|payload]');
+const tag='FOUNDRY_NATIVE_CAPTURE ',frames=fs.readFileSync(path.join(root,`${mode}-host.log`),'utf8').split('\n').filter(l=>l.startsWith(tag)).map(l=>JSON.parse(l.slice(tag.length))).filter(r=>r.label.startsWith('frame-')&&r.error===0);
+if(frames.length<15)throw Error('insufficient captured native frames');
+const seconds=(frames.at(-1).ticksMs-frames[0].ticksMs)/1000,cadence=(frames.length-1)/seconds;
+const gaps=frames.slice(1).map((f,i)=>f.ticksMs-frames[i].ticksMs).sort((a,b)=>a-b);
+if(mode==='walkthrough'&&seconds<20)throw Error('Representative walkthrough capture must span at least 20 continuous seconds');
+const concat=frames.map((f,i)=>`file '${path.join(root,`${mode}-frames`,f.label+'.png')}'\nduration ${i<frames.length-1?(frames[i+1].ticksMs-f.ticksMs)/1000:1/cadence}`).join('\n')+'\n';
+const list=path.join(root,`${mode}-frames.ffconcat`);fs.writeFileSync(list,concat);
+const output=path.join(root,`${mode}.mp4`),encoded=spawnSync('ffmpeg',['-y','-loglevel','error','-threads','1','-f','concat','-safe','0','-i',list,'-vf','fps=15,format=yuv420p','-c:v','libx264','-threads','1','-preset','fast','-crf','20','-movflags','+faststart',output],{stdio:'inherit'});
+if(encoded.status!==0)throw Error('ffmpeg encode failed');
+const report={mode,geometryHash:frames[0].hash,frames:frames.length,actualCaptureSpanSeconds:seconds,measuredCaptureCadence:cadence,gapsMs:{median:gaps[Math.floor(gaps.length*.5)],p95:gaps[Math.floor(gaps.length*.95)],max:gaps.at(-1),over250:gaps.filter(g=>g>250).length},encodedFps:15,resolution:'1280x800 UI; 0.75 3D scale',renderer:'Godot compatibility renderer / llvmpipe software CPU; capture preset disables sun shadows',method:'Production native camera follows authority pose; ordinary serialized native inputs. Frame timestamp durations preserved before 15fps resampling.',performanceLimit:'Capture cadence is not a GPU or interactive gameplay FPS benchmark',output};
+fs.writeFileSync(path.join(root,`${mode}-clip.json`),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));

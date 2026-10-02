@@ -30,7 +30,8 @@ const campaignAdapters = ['authority','maps','match','missions','enemies','story
 const worldAdapters = ['catalog','match','derived/core','derived/payload','derived/room','derived/rooms','derived/game-server']
   .map(name => `port/multiplayer-worlds/${name}.mjs`);
 const edgeAdapters = ['port/edge-effects/structure-rays.mjs'];
-const adapters = [...edgeAdapters, ...hordeAdapters, ...nativeArenaAdapters, ...debugAdapters,
+const challengeAdapters = ['port/pass-two/modes/challenge-authority.mjs'];
+const adapters = [...challengeAdapters, ...edgeAdapters, ...hordeAdapters, ...nativeArenaAdapters, ...debugAdapters,
   ...localRosterAdapters, ...identityZoneAdapters, ...campaignAdapters, ...worldAdapters];
 // Explicit dynamic data-read manifest: the builder hashes committed bytes and
 // copies these paths under runtime/, preserving catalog.mjs URL resolution.
@@ -61,6 +62,7 @@ function discover(entry) {
   return {modules, external:[...external].sort()};
 }
 const ordinary = discover('server/game-server.mjs'), horde = discover(hordeAdapters[0]);
+const challenges = existsSync(resolve(root, challengeAdapters[0])) ? discover(challengeAdapters[0]) : null;
 const nativeArenaEntry = nativeArenaAdapters[0];
 // During parallel implementation the entry may be absent; an existing entry
 // must have a complete static closure. Data existence is checked by the builder.
@@ -74,7 +76,7 @@ const worlds = existsSync(resolve(root, worldEntry)) ? discover(worldEntry) : nu
 const worldData = worlds ? worldClosure((await import(pathToFileURL(resolve(root, 'port/multiplayer-worlds/catalog.mjs')))).WORLDS) : [];
 const campaignDataFiles = campaign ? ['rootfall-verge','siltwake-crossing','emberline-ascent','crown-array']
   .map(id => `godot/campaign/generated/${id}.json`) : [];
-const all = {...ordinary.modules, ...horde.modules, ...nativeArena?.modules, ...identityZones?.modules, ...campaign?.modules, ...worlds?.modules};
+const all = {...ordinary.modules, ...horde.modules, ...nativeArena?.modules, ...identityZones?.modules, ...campaign?.modules, ...worlds?.modules, ...challenges?.modules};
 const edgeDataFiles = Object.hasOwn(all, edgeAdapters[0]) ? ['port/edge-effects/structure-faces.json'] : [];
 const dataFiles = nativeArena ? nativeArenaData : [];
 const identityDataFiles = nativeArena || identityZones ? identityArenaData : [];
@@ -98,7 +100,7 @@ console.log(JSON.stringify({entry:'server/game-server.mjs', hordeEntry:hordeAdap
     ...(hordeDataFiles.includes('godot/horde_maps/generated/blackwater-reclamation.json') ? [['port/native-horde/blackwater-schema.mjs', ['godot/horde_maps/generated/blackwater-reclamation.json']]] : []),
     ...(worlds ? [['port/multiplayer-worlds/catalog.mjs',worldData]] : []),
   ]),
-  routes:{ordinary:Object.keys(ordinary.modules).sort(), horde:Object.keys(horde.modules).sort(), nativeArena:Object.keys(nativeArena?.modules ?? {}).sort(),
+  routes:{ordinary:Object.keys(ordinary.modules).sort(), challenges:Object.keys(challenges?.modules ?? {}).sort(), horde:Object.keys(horde.modules).sort(), nativeArena:Object.keys(nativeArena?.modules ?? {}).sort(),
     identityZones:Object.keys(identityZones?.modules ?? {}).sort(), campaign:Object.keys(campaign?.modules ?? {}).sort(), worlds:Object.keys(worlds?.modules ?? {}).sort()},
   nativeArenaAdditionalSource:Object.keys(nativeArena?.modules ?? {}).filter(p=>!adapters.includes(p) && !Object.hasOwn(ordinary.modules,p)).sort(),
   identityZoneAdditionalSource:Object.keys(identityZones?.modules ?? {}).filter(p=>!adapters.includes(p) && !Object.hasOwn(ordinary.modules,p) && !Object.hasOwn(horde.modules,p)).sort(),

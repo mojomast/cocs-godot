@@ -1,0 +1,11 @@
+{
+  "recipeSha256": "6ba9c6529568836ad4b3b69663c8160b6bc8cddc201b077294136441fe03484b",
+  "vertices": 139340,
+  "triangles": 137928,
+  "meshBatches": 22,
+  "materials": 10,
+  "files": {
+    "godot/multiplayer_worlds/art/helix-conservatory/helix-conservatory.glb": "0c462ffa475f02aa388101c38339d6d81eb3df9549a7d664ca65ec390c802d88",
+    "tools/godot-multiplayer/new-maps/helix-conservatory/masters/revision-2/helix-conservatory.blend": "6431fe4bd9a199ba780f92ba01f8a74185a6408e4c4e9f34a973b76718a91b08"
+  }
+}
