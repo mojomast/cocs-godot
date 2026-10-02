@@ -53,6 +53,9 @@ var settings_document: Dictionary = {}
 var error_text := ""
 var box_display := false
 var training_boxes
+var fx_session_serial := 0
+var fx_session_id := ""
+var fx_event_floor := 0
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -71,6 +74,7 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
 		focused = false
 		router.release_all()
+		if is_instance_valid(effects): effects.set_paused(true)
 		if active: call_deferred("show_pause")
 	elif what == NOTIFICATION_APPLICATION_FOCUS_IN:
 		focused = true
@@ -117,6 +121,7 @@ func _panel(title: String) -> VBoxContainer:
 	_clear_ui()
 	router.set_modal(true)
 	paused = true
+	if is_instance_valid(effects): effects.set_paused(true)
 	modal = PanelContainer.new()
 	modal.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var style := StyleBoxFlat.new()
@@ -219,6 +224,23 @@ func start_match() -> void:
 			error_text = "Required production dependency missing: " + path
 			show_selection()
 			return
+	for name: String in ["catalog.json","manifest.json"]:
+		var path := "res://fighting/assets/effects/" + name
+		if not FileAccess.file_exists(path):
+			error_text = "Required production FX asset missing: " + path
+			show_selection()
+			return
+	var fx_manifest: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://fighting/assets/effects/manifest.json"))
+	if not fx_manifest is Dictionary or not fx_manifest.get("files",[]) is Array or fx_manifest.get("files",[]).is_empty():
+		error_text = "Production FX manifest is unavailable or invalid."
+		show_selection()
+		return
+	for entry: Dictionary in fx_manifest.files:
+		var path := "res://fighting/assets/effects/" + str(entry.get("file",""))
+		if not FileAccess.file_exists(path) and not ResourceLoader.exists(path):
+			error_text = "Required production fighting sound missing: " + path
+			show_selection()
+			return
 	if not Stages.available().any(func(item): return item.id == stage_id):
 		error_text = "Selected stage dependency is unavailable."
 		show_selection()
@@ -271,9 +293,13 @@ func start_match() -> void:
 		visuals.append(visual)
 	effects = load(DEPENDENCIES[3]).new()
 	world.add_child(effects)
-	effects.configure({"reduced_motion":reduced_motion,"quality":"low" if low_fx else "high"})
-	effects.reset()
+	fx_session_serial += 1
+	fx_session_id = "match-%d" % fx_session_serial
+	effects.configure(_fx_options())
+	effects.set_paused(true)
 	state = simulation.snapshot()
+	fx_event_floor = int(state.tick)
+	_present_snapshot_effects()
 	history.clear()
 	record_inputs.clear()
 	recording = false
@@ -324,22 +350,43 @@ func _tick() -> void:
 	last_inputs = commands.duplicate(true)
 	history.append(last_inputs)
 	if history.size() > 12: history.pop_front()
+	var old_round := int(state.round_index)
 	state = simulation.step(commands)
+	if int(state.round_index) != old_round:
+		effects.reset()
+		fx_event_floor = int(state.tick)
+		tech_until = [0,0]
+		for visual in visuals: visual.reset()
 	for event: Dictionary in state.events:
+		if int(event.tick) < fx_event_floor: continue
 		if str(event.type) in ["throw_start","throw_capture","throw_attempt"] and int(event.target) in [0,1]: tech_until[int(event.target)] = int(event.tick)+10
-	effects.consume(state.events,state.fighters)
+	_present_snapshot_effects()
 	_update_hud()
 	if str(state.phase) == "match_over": show_results()
 
 func _dummy_command() -> Dictionary:
 	if dummy == "cpu": return ai.command(state,1)
-	var mask := 64 if dummy in ["guard","crouch guard"] else 32 if dummy == "tech" else 0
+	var tech_press := dummy == "tech" and int(state.tick)%12 == 0
+	var mask := 64 if dummy in ["guard","crouch guard"] else 32 if tech_press else 0
 	# Tech dummy taps through the same recognizer, never writes a throw result.
-	return {"axis_x":0,"axis_y":-1 if dummy in ["crouch","crouch guard"] else 0,"held":mask,"pressed":32 if dummy == "tech" and int(state.tick)%12 == 0 else 0}
+	return {"axis_x":0,"axis_y":-1 if dummy in ["crouch","crouch guard"] else 0,"held":mask,"pressed":32 if tech_press else 0}
+
+func _fx_options() -> Dictionary:
+	return {"reduced_motion":reduced_motion,"quality":"low" if low_fx else "high","session_id":fx_session_id}
+
+func _present_snapshot_effects(with_events: bool = true) -> void:
+	if not is_instance_valid(effects) or state.is_empty(): return
+	if with_events:
+		var fresh: Array = state.events.filter(func(event): return int(event.tick) >= fx_event_floor)
+		effects.consume(fresh,state.fighters)
+	# Snapshot presence owns flight, reflection form, clash and despawn removal.
+	effects.present_projectiles(state.projectiles,state.fighters)
 
 func _process(delta: float) -> void:
 	if not active or state.is_empty() or not is_instance_valid(camera): return
-	for p: int in visuals.size(): visuals[p].present(state.fighters[p],0.0)
+	for p: int in visuals.size():
+		visuals[p].present(state.fighters[p],0.0)
+		effects.present_fighter(state.fighters[p],visuals[p])
 	camera.present(state.fighters,get_viewport().get_visible_rect().size)
 	training_boxes.visible = mode == "training" and box_display
 	if training_boxes.visible: training_boxes.present(state,roster)
@@ -358,6 +405,7 @@ func resume_match() -> void:
 	binding_target.clear()
 	router.set_modal(false)
 	paused = false
+	effects.set_paused(false)
 	_build_hud()
 	_update_hud()
 
@@ -491,7 +539,10 @@ func show_training() -> void:
 		simulation.load_state(recording_state)
 		state = simulation.snapshot()
 		effects.reset()
+		fx_event_floor = int(state.tick)+1
+		tech_until = [0,0]
 		for visual in visuals: visual.reset()
+		_present_snapshot_effects(false)
 		replay_index = 0
 		resume_match())
 	_text(box,"Input history (last 12 ticks): " + JSON.stringify(history),14)
@@ -533,7 +584,13 @@ func _save_options() -> void:
 	var file := FileAccess.open("user://fighting/settings.json",FileAccess.WRITE)
 	if file != null: file.store_string(JSON.stringify(settings_document,"\t"))
 	if is_instance_valid(camera): camera.reduced_motion = reduced_motion
-	if is_instance_valid(effects): effects.configure({"reduced_motion":reduced_motion,"quality":"low" if low_fx else "high"})
+	if is_instance_valid(effects):
+		# Explicit Settings changes rebuild the pool once. Never configure in
+		# render/snapshot loops or replay pre-settings contact/audio events.
+		effects.configure(_fx_options())
+		effects.set_paused(paused or not focused)
+		fx_event_floor = int(state.tick)+1
+		_present_snapshot_effects(false)
 
 func go_home() -> void:
 	active = false
