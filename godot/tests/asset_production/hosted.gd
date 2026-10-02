@@ -1,6 +1,28 @@
 extends "res://tests/new_maps/gravemill_foundry/journey.gd"
 ## Two actual production native transports; input dictionaries use send_input.
 ## The parent fixture handles presentation/captures, never actor pose writes.
+var shutdown_pending := false
+
+func _process(delta: float) -> void:
+	# Results put the inherited driver in phase 4, so quit must be read here,
+	# outside its phase-3-only input sampling. Also works during failed startup.
+	if shutdown_pending: return
+	if not controls_path.is_empty() and FileAccess.file_exists(controls_path):
+		var command: Variant = JSON.parse_string(FileAccess.get_file_as_string(controls_path))
+		if command is Dictionary and command.get("quit", false):
+			shutdown_pending = true
+			shutdown_fixture.call_deferred()
+			return
+	super._process(delta)
+
+func shutdown_fixture() -> void:
+	# Drain an in-flight viewport capture before releasing its scene resources.
+	while capture_busy:
+		await get_tree().process_frame
+	client.disconnect_server()
+	print("CANDIDATE_TEARDOWN_READY ", JSON.stringify({"role":role,"phase":phase,"hash":expected_hash}))
+	get_tree().quit(0)
+
 func _init() -> void:
 	catalog = preload("res://tests/asset_production/candidate_catalog.gd").new()
 
