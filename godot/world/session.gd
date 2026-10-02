@@ -837,7 +837,11 @@ func observe_combat_input(event: InputEvent) -> void:
 	combat_actions.record(event, combat_controls_active(), presentation.local_actor)
 
 func _input(event: InputEvent) -> void:
-	if client.spectating: return # Dedicated read-only camera owns spectator input.
+	if client.spectating:
+		# Observe physical releases without capturing or writing any actor packet.
+		combat_actions.record(event, false)
+		combat_actions.clear()
+		return # Dedicated read-only camera owns spectator input.
 	if SettingsAccess.overlay_open() or social_capturing():
 		combat_actions.record(event, false, presentation.local_actor)
 		if (event is InputEventKey or event is InputEventMouseButton) and not event.pressed:

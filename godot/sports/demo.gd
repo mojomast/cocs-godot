@@ -200,7 +200,10 @@ func eligible() -> bool:
 	return phase == "active" and age < 0.5 and not state.get("over", false) and not vehicle.is_empty() and vehicle.get("driver") == net.actor_id and float(vehicle.get("health", 0)) > 0 and float(vehicle.get("respawnTimer", 1)) <= 0 and float(actor.get("health", 0)) > 0 and float(actor.get("dead", 1)) <= 0 and state.get("race", {}).get("phase") in ["racing", "playing"]
 
 func _input(event: InputEvent) -> void:
-	if net.spectating: return
+	if net.spectating:
+		controls.accept(event, false)
+		controls.release()
+		return
 	if SettingsAccess.overlay_open():
 		controls.accept(event, false)
 		return

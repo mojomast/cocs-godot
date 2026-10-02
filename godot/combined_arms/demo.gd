@@ -219,7 +219,10 @@ func aim_requested() -> bool:
 	return eligible() and not net.spectating and (vehicle.is_empty() or actor.get("vehicleSeat") == "passenger") and not actor.get("reloading", false) and controls.engaged and controls.focused and get_window().has_focus() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and controls.ads
 
 func _input(event: InputEvent) -> void:
-	if net.spectating: return
+	if net.spectating:
+		controls.accept(event, false, false)
+		controls.release()
+		return
 	if SettingsAccess.overlay_open():
 		release()
 		controls.accept(event, false)

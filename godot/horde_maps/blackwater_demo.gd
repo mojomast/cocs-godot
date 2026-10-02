@@ -135,7 +135,7 @@ func on_snapshot(frame: Dictionary) -> void:
 		horde_label.text = "WAVE %d/%d · %s · LIVES %d · ENEMIES %d" % [int(single.get("wave",0)),int(single.get("waveTarget",10)),str(single.get("phase","")).to_upper(),int(single.get("lives",0)),int(single.get("enemiesAlive",0))]
 		var boss: Variant = single.get("boss")
 		if boss is Dictionary and boss.get("alive",false): horde_label.text += "\n%s · HP %d/%d · PHASE %d" % [str(boss.get("name","BOSS")),int(boss.get("hp",0)),int(boss.get("maxHp",0)),int(boss.get("phase",1))]
-	horde_label.text += "\nSYSTEMS %d/4 · %s\n%s" % [guidance.completed,guidance.route,guidance.instruction]
+	horde_label.text += preload("res://input_bindings/hints.gd").resolve("\nSYSTEMS %d/4 · %s\n%s" % [guidance.completed,guidance.route,guidance.instruction])
 	if not mission_notice.is_empty() and float(state.get("time", 0.0)) <= mission_notice_until and (not compact or mission.get("active") == null):
 		horde_label.text += "\n" + mission_notice
 	var serial := int(mission.get("serial", 0))

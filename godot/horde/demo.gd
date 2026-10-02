@@ -597,6 +597,10 @@ func controls_released() -> bool:
 	return controls.bindings.released_for_capture()
 
 func _input(event: InputEvent) -> void:
+	if client.spectating:
+		controls.record(event, false)
+		controls.clear()
+		return
 	if HordeSettingsAccess.overlay_open() or social_capturing():
 		controls.record(event, false, presentation.local_actor)
 		return
@@ -632,7 +636,7 @@ func _process(delta: float) -> void:
 		if not was_stale and snapshot_watch.stale(): release_pointer()
 		if snapshot_watch.stale() or not application_focused or HordeSettingsAccess.overlay_open(): audiovisual.suspend("stale_or_focus")
 		else: av_tick(delta)
-		camera.rotation = Vector3(pitch, yaw, 0)
+		if not client.spectating: camera.rotation = Vector3(pitch, yaw, 0)
 		send_elapsed += delta
 		if send_elapsed >= 1.0 / 60.0 and not client.spectating:
 			send_elapsed = fmod(send_elapsed, 1.0 / 60.0)

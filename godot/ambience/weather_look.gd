@@ -63,7 +63,7 @@ func bind(world: Node3D, environment: WorldEnvironment, sun: DirectionalLight3D,
 			pending.append(child)
 	capped = capped or not pending.is_empty()
 
-func _bind_material(node: GeometryInstance3D, surface: int, original: Material) -> void:
+func _bind_material(node: GeometryInstance3D, surface_index: int, original: Material) -> void:
 	if original == null: return
 	if _bindings.size() >= BINDING_CAP:
 		capped = true
@@ -102,10 +102,10 @@ func _bind_material(node: GeometryInstance3D, surface: int, original: Material) 
 			entry["spatial_wet"] = shader != null
 			if shader != null: entry.material.shader = shader
 	var copy: Material = _materials[original].material
-	var prior: Material = node.material_override if surface < 0 else (node as MeshInstance3D).get_surface_override_material(surface)
-	_bindings.append({"node": weakref(node), "surface": surface, "prior": prior, "copy": copy})
-	if surface < 0: node.material_override = copy
-	else: (node as MeshInstance3D).set_surface_override_material(surface, copy)
+	var prior: Material = node.material_override if surface_index < 0 else (node as MeshInstance3D).get_surface_override_material(surface_index)
+	_bindings.append({"node": weakref(node), "surface": surface_index, "prior": prior, "copy": copy})
+	if surface_index < 0: node.material_override = copy
+	else: (node as MeshInstance3D).set_surface_override_material(surface_index, copy)
 
 func _scalar_default(shader: Shader, uniform_name: String) -> Variant:
 	var key := shader.resource_path + "/" + uniform_name

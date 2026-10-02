@@ -103,6 +103,12 @@ func bind_session(target: Node) -> void:
 	if client.has_signal("lobby"): client.lobby.connect(on_lobby)
 	_dock_campaign()
 	_bind_gameplay()
+	var bindings := preload("res://input_bindings/access.gd").service()
+	if bindings != null and not bindings.changed.is_connected(refresh_ability_bindings): bindings.changed.connect(refresh_ability_bindings)
+
+func refresh_ability_bindings() -> void:
+	ability.text = preload("res://input_bindings/hints.gd").resolve(AbilityText.text(gameplay_model))
+	layout_dirty = true
 
 func _bind_gameplay() -> void:
 	if not is_instance_valid(session): return
@@ -201,17 +207,18 @@ func on_snapshot(frame: Dictionary) -> void:
 		return
 	var state: Dictionary = frame.state
 	var next_clock := Combat.number(state.get("time"))
-	if next_clock < clock or (not role_key.is_empty() and current_role() != role_key): clear()
+	var next_team: Variant = null
+	if not spectator() and state.get("actors") is Array:
+		for value: Variant in state.actors:
+			if value is Dictionary and value.get("id") == client.get("actor_id"):
+				next_team = value.get("team")
+				break
+	if next_clock < clock or (not role_key.is_empty() and current_role() != role_key) or (ready_for_events and next_team != caption_team): clear()
 	role_key = current_role()
 	clock = next_clock
 	received_usec = Time.get_ticks_usec()
 	ready_for_events = true
-	caption_team = null
-	if not spectator() and state.get("actors") is Array:
-		for value: Variant in state.actors:
-			if value is Dictionary and value.get("id") == client.get("actor_id"):
-				caption_team = value.get("team")
-				break
+	caption_team = next_team
 	combat.snapshot(state, -1 if spectator() else int(client.get("actor_id")))
 	public_feed.snapshot(state, null if spectator() else client.get("actor_id"))
 	spectator_camera.snapshot(state)
