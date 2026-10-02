@@ -7,8 +7,11 @@ from pathlib import Path
 import hashlib
 import json
 import bpy
+import sys
 
 ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / 'tools/asset-production'))
+from moth_finish import finish_scene
 HERE = Path(__file__).resolve().parent
 RAW = (HERE / "meshes.json").read_bytes()
 DATA = json.loads(RAW)
@@ -53,6 +56,9 @@ def build(asset):
     scene["reviewed_block"] = asset["block"]
     master = HERE / "masters" / (asset["id"] + ".blend")
     master.parent.mkdir(exist_ok=True)
+    placement = next(p for p in CATALOG['chapters'][asset['chapter']]['placements'] if p['asset'] == asset['id'])
+    sx, sy, sz = placement['scale']
+    finish_scene(ROOT, 'scenery', (sx, sz, sy))
     bpy.ops.wm.save_as_mainfile(filepath=str(master))
     output = ROOT / "godot/biomes/expansion/art"
     output.mkdir(parents=True, exist_ok=True)

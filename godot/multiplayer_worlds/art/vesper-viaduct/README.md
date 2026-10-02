@@ -1,6 +1,7 @@
 # Vesper Viaduct art lane
 
-Reserved for grant-generated `vesper-viaduct.glb`. No asset exists yet.
+Historical source-lane reservation; no asset exists here.
 Editable master: `tools/godot-multiplayer/new-maps/vesper-viaduct/masters/`.
-Parent registration must resolve this named folder explicitly; current shared
-`map.gd` defaults to the flat `art/worlds/<id>.glb` path.
+Consolidated grant-generated target is now
+`godot/multiplayer_worlds/art/worlds/vesper-viaduct.glb`, matching the current
+production loader without a shared path override. See `port/finish/ASSET_PRODUCTION.md`.

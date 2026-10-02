@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[4]
 HERE = Path(__file__).resolve().parent
 ID = 'vesper-viaduct'
 MASTER = HERE / 'masters' / (ID + '.blend')
-ART = ROOT / 'godot/multiplayer_worlds/art/vesper-viaduct'
+ART = ROOT / 'godot/multiplayer_worlds/art/worlds'
 EVIDENCE = Path('/home/mojo/.tmp-on-disk/cocs-expansion-three-vesper-evidence-20261002')
 COLORS = {'brick': '#984e36', 'plaster': '#b1816b', 'slate': '#293449',
           'iron': '#252d37', 'quay': '#535969', 'cobbles': '#77605b',
@@ -24,6 +24,8 @@ COLORS = {'brick': '#984e36', 'plaster': '#b1816b', 'slate': '#293449',
 
 def main():
     import bpy
+    sys.path.insert(0, str(ROOT / 'tools/asset-production'))
+    from moth_finish import finish_scene
     from mathutils import Vector
     parser = argparse.ArgumentParser()
     parser.add_argument('action', choices=['build', 'reopen-export', 'inspect'])
@@ -156,16 +158,41 @@ def main():
         sun.data.energy = 3
         link(sun, 'Inspection')
         scene.world.color = (.13, .17, .24)
+        finish_scene(ROOT, ID)
         bpy.ops.wm.save_as_mainfile(filepath=str(MASTER))
     if args.action in ('build', 'reopen-export'):
+        # Keep named editable pieces in the saved master. Runtime copies are
+        # converted/joined per material so every wall triangle is not a draw call.
+        groups = {}
+        for obj in list(bpy.context.scene.objects):
+            if obj.type not in ('MESH', 'CURVE', 'FONT'):
+                continue
+            assert len(obj.data.materials) == 1, obj.name
+            copy = obj.copy()
+            copy.data = obj.data.copy()
+            bpy.context.collection.objects.link(copy)
+            groups.setdefault(copy.data.materials[0].name, []).append(copy)
+        export_objects = []
+        for material_name, objects in groups.items():
+            bpy.ops.object.select_all(action='DESELECT')
+            for obj in objects:
+                obj.select_set(True)
+            bpy.context.view_layer.objects.active = objects[0]
+            bpy.ops.object.convert(target='MESH')
+            bpy.ops.object.join()
+            obj = bpy.context.object
+            obj.name = 'batch-' + material_name
+            export_objects.append(obj)
         bpy.ops.object.select_all(action='DESELECT')
-        for obj in bpy.context.scene.objects:
-            obj.select_set(obj.type in ('MESH', 'CURVE', 'FONT'))
+        for obj in export_objects:
+            obj.select_set(True)
         output = ART / (ID + '.glb')
         bpy.ops.export_scene.gltf(filepath=str(output), export_format='GLB', use_selection=True, export_yup=True, export_extras=True)
         counts = {'objects': len(bpy.context.scene.objects), 'sourceWalls': len(recipe['terrain']['walls']), 'sourceSurfaces': len(recipe['terrain']['surfaces']), 'glbBytes': output.stat().st_size, 'recipeSHA256': hashlib.sha256(raw).hexdigest(), 'masterSHA256': hashlib.sha256(MASTER.read_bytes()).hexdigest(), 'glbSHA256': hashlib.sha256(output.read_bytes()).hexdigest(), 'action': args.action}
         (EVIDENCE / (args.action + '-provenance.json')).write_text(json.dumps(counts, indent=2)+'\n')
         print(json.dumps(counts))
+        for obj in export_objects:
+            bpy.data.objects.remove(obj, do_unlink=True)
     if args.action == 'inspect':
         scene = bpy.context.scene
         scene.render.engine = 'BLENDER_EEVEE_NEXT'

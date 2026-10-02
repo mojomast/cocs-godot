@@ -89,5 +89,8 @@ export function recipe(){
  for(let i=1;i<tram.length-1;i++){const a=tram[i-1],b=tram[i],c=tram[i+1],point=p=>{const l=Math.hypot(p[0]-b[0],p[1]-b[1]);return b.map((v,j)=>v+(p[j]-v)*Math.min(4/l,.3));},p=point(a),q=point(c);for(let j=0;j<=12;j++){const t=j/12;rail.push([0,1].map(k=>(1-t)**2*p[k]+2*t*(1-t)*b[k]+t*t*q[k]));}}
  rail.push(tram.at(-1));m.art.tram=rail.map(([x,z])=>[x,height(z)+.025,z]);
  m.art.inspectionViews=[{id:'overview',eye:[190,175,-200],target:[0,20,0]},{id:'canal',eye:[-110,1.7,-95],target:[0,12,-60]},{id:'civic',eye:[-110,13.7,-8],target:[20,28,0]},{id:'concourse',eye:[-86,25.7,85],target:[30,30,85]},{id:'arcade',eye:[-100,25.7,65],target:[0,35,70]}];
+ // Design candidates are not published native bindings.
+ m.candidateModes=Object.values(m.modeBindings).flat();
+ m.modeBindings={};
  return m;
 }

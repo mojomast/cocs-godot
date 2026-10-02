@@ -8,8 +8,11 @@ import json
 import math
 import pathlib
 import bpy
+import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
+sys.path.insert(0, str(ROOT / 'tools/asset-production'))
+from moth_finish import finish_scene
 ID = 'abyssal-pressureworks'
 SOURCE = ROOT / 'port/native-multiplayer-worlds/worlds' / (ID + '.json')
 DATA = json.loads(SOURCE.read_text())
@@ -172,6 +175,7 @@ MASTER.parent.mkdir(parents=True, exist_ok=True)
 EXPORT.parent.mkdir(parents=True, exist_ok=True)
 batches.hide_viewport = True
 batches.hide_render = True
+finish_scene(ROOT, ID)
 bpy.ops.wm.save_as_mainfile(filepath=str(MASTER))
 batches.hide_viewport = False
 batches.hide_render = False

@@ -65,5 +65,8 @@ export function recipe(){
  m.pickups=[['health',1],['armor',10],['rocket',5],['rail',2],['health',11],['armor',0]].map(([kind,i])=>[kind,rooms[i].x,rooms[i].z]);
  for(let i=0;i<9;i++)m.art.reefs.push({x:-110+i*27,y:-12-i%3*3,z:-102-i%2*6,radius:5+i%3,height:14+i%4*3});
  m.design={walkableRelief:20,primaryRoutes:3,crosslinks:8,windowPolicy:'Transparent observation glazing is nonblocking for source shots and native physics; exterior has no walkable support.',budgets:{materials:7,triangles:100000,drawCalls:48},physics:'Dry habitat; ordinary source movement and gravity.'};
+ // Design candidates are not published native bindings.
+ m.candidateModes=Object.values(m.modeBindings).flat();
+ m.modeBindings={};
  return m;
 }

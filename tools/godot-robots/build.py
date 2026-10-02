@@ -17,6 +17,8 @@ sys.path.insert(0, str(HERE))
 from recipe import SKINS, PALETTE, SEED, robot, props, manifest
 
 ROOT = HERE.parents[1]
+sys.path.insert(0, str(ROOT / 'tools/asset-production'))
+from moth_finish import finish_scene
 OUT = ROOT / 'godot/robot_assets/switchyard/generated'
 MASTERS = HERE / 'masters'
 
@@ -86,6 +88,7 @@ def assemblies(specs, prefix, material):
 
 
 def export(path):
+    finish_scene(ROOT, 'robots')
     bpy.ops.export_scene.gltf(filepath=str(path), export_format='GLB',
         export_yup=True, export_animations=True, export_extras=True,
         export_materials='EXPORT', export_all_vertex_colors=True,
@@ -195,10 +198,12 @@ def main():
         rig = skeleton(source['joints'], objects)
         author_clips(rig, role)
         bpy.context.scene.render.fps = 30
+        finish_scene(ROOT, 'robots')
         bpy.ops.wm.save_as_mainfile(filepath=str(MASTERS / f'{skin}.blend'))
         export(MASTERS / f'{skin}_skeletal.glb')
     for name, specs in props().items():
         mat = reset(); objects = assemblies(specs, '', mat)
+        finish_scene(ROOT, 'robots')
         bpy.ops.wm.save_as_mainfile(filepath=str(MASTERS / f'{name}.blend'))
         target = OUT / f'{name}.glb'; export(target)
         receipt['assets'][name] = {'sha256': hashlib.sha256(target.read_bytes()).hexdigest(), 'meshes': metrics(objects), 'collision': None}

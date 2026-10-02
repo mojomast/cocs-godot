@@ -10,6 +10,8 @@ import sys
 import bpy
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
+sys.path.insert(0, str(ROOT / 'tools/asset-production'))
+from moth_finish import finish_scene
 ID = 'stormglass-causeway'
 DATA = json.loads((ROOT / 'port/native-multiplayer-worlds/worlds' / (ID + '.json')).read_text())
 MASTER = ROOT / 'tools/godot-multiplayer/new-maps' / ID / (ID + '.blend')
@@ -85,6 +87,7 @@ else:
         curve.materials.append(materials['amber'])
     MASTER.parent.mkdir(parents=True, exist_ok=True)
     ART.parent.mkdir(parents=True, exist_ok=True)
+    finish_scene(ROOT, ID)
     bpy.ops.wm.save_as_mainfile(filepath=str(MASTER))
     bpy.ops.object.select_all(action='DESELECT')
     for obj in export.objects:
