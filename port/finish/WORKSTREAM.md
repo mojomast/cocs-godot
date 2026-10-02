@@ -53,6 +53,28 @@ distinct evidence requirements.
 
 ## Integration boundaries
 
+### Packaging checkpoint
+
+Packaging returned `8522dcde` + `1466c861`, ready for integrated checks. The
+integration agent has been instructed to merge both commits after feature changes
+and preserve the challenge-authority discovery hooks. Explicit closure includes
+the four-file replay runtime, controls/spectator catalogs and 160 telegraph WAVs.
+Only registered map/mode pairs extend the original seven worlds/43 pairs.
+
+Actual results: 221 non-engine package tests, four final integrity/catalog tests,
+fifteen replay adapter tests, and a real extracted helper running from a fresh CWD
+with spaces passed. Missing/corrupt helper copies were rejected; 160 audio files
+reproduced deterministically. Recorded-commit discovery found 85 source modules,
+38 adapters and seven worlds. These are isolated-branch results, not integrated
+PCK or platform acceptance. Initial failures remain in the evidence directory.
+
+Required production fix assigned to the integrator: replay bridge development
+fallback must be editor-only. Exports use their own `replay-runtime`, verify its
+exact four file hashes before launch, and show an error for absent/corrupt helpers.
+Windows uses bundled Node; Home Replays remains authority-free. The integrator
+also owns reviewing stale seven-bot factory tests against the current 24-bot
+contract, retaining meaningful boundary tests. Heavy-slot ownership remains Helix.
+
 - Feature integrator owns production hook reconciliation and Home Replays.
 - Packaging agent owns `tools/godot-package/` closure and extracted checks.
 - Acceptance agent owns canonical registration and its new serial runner.
