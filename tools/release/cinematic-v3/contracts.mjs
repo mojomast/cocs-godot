@@ -65,11 +65,12 @@ export async function plan(m) {
   const music=JSON.parse(await readFile(join(root,m.music.path,'manifest.json')));
   if(music.original_composition!==true||music.bpm!==m.music.bpm||music.sources.some(s=>s.license!=='CC0-1.0'))throw Error('Music provenance changed');
   for(const stem of music.stems)if(sha256(await readFile(join(root,m.music.path,stem.file)))!==stem.sha256)throw Error('Music bytes changed');
-  const dependencyFiles=['manifest.mjs','fixture.mjs','contracts.mjs','pipeline.mjs','process.mjs','edit.mjs'].map(p=>`tools/release/cinematic-v3/${p}`).concat([
+  const dependencyFiles=(await readdir(join(root,'tools/release/cinematic-v3'))).filter(p=>/\.(mjs|py)$/.test(p)).map(p=>`tools/release/cinematic-v3/${p}`).concat([
     'tools/godot-campaign/trailer-fixture.mjs','godot/tests/cinematic_v3/capture.gd','godot/tests/cinematic_v3/attract_candidate.gd',
-    'godot/tests/campaign/trailer_session.gd',...m.chapters.map(c=>`godot/campaign/generated/${c.id}.json`)]);
+    'godot/tests/campaign/trailer_session.gd','godot/ui/attract/demo.json',...m.chapters.map(c=>`godot/campaign/generated/${c.id}.json`)]);
   const files=Object.fromEntries(await Promise.all(dependencyFiles.map(async p=>[p,sha256(await readFile(join(root,p)))])));
-  return {...m,shots,duration,frames:duration*m.fps,manifestSHA256:sha256(JSON.stringify(m)),
+  const {assetInputs}=await import('./assets.mjs');
+  return {...m,shots,duration,frames:duration*m.fps,manifestSHA256:sha256(JSON.stringify(m)),assets:assetInputs(),
     provenance:{revision:git('rev-parse','HEAD'),runtimeIndexSHA256:sha256(index),runtimeIndex:index,files,music,
       status:'source plan only; native frames, cast visibility, art/weather motion and menu acceptance pending'}};
 }
@@ -78,7 +79,18 @@ export async function verifyFrames(directory,shot,fps) {
   const rows=(await readFile(join(directory,'cadence.jsonl'),'utf8')).trim().split('\n').map(JSON.parse);
   const expected=shot.seconds*fps;
   if(names.length!==expected||rows.length!==expected)throw Error(`${shot.id}: incomplete capture`);
+  const invocation=JSON.parse(await readFile(join(directory,'invocation.json')));
+  if(!/^[a-f0-9]{64}$/.test(invocation.captureToken??''))throw Error('Missing native invocation nonce');
+  const replay=(await readFile(join(directory,'replay.jsonl'),'utf8')).trimEnd().split('\n');
+  const records=replay.slice(1).map(JSON.parse);
+  if(records.length!==expected)throw Error('Source replay length mismatch');
   rows.forEach((r,i)=>{if(names[i]!==`${String(i).padStart(6,'0')}.png`||r.frame!==i||r.saveError!==0||r.sourceFrame!==i||r.width!==1280||r.height!==720||!Number.isFinite(r.wallUsec)||i&&r.wallUsec<=rows[i-1].wallUsec)throw Error(`${shot.id}: cadence/sequence invalid`);});
+  for(const [i,r]of rows.entries()) {
+    const record=records[i],bytes=await readFile(join(directory,'frames',names[i]));
+    if(bytes.length<33||bytes.subarray(0,8).toString('hex')!=='89504e470d0a1a0a'||bytes.toString('ascii',12,16)!=='IHDR'||bytes.readUInt32BE(16)!==1280||bytes.readUInt32BE(20)!==720||sha256(bytes)!==r.pngSHA256)throw Error('Actual PNG bytes/dimensions/hash mismatch');
+    if(r.captureToken!==invocation.captureToken||record.frame!==i||r.sourceRecordSHA256!==sha256(replay[i+1])||!Number.isFinite(r.sourceTime)||Math.abs(r.sourceTime-record.state.time)>1e-9||r.saveFinishedUsec<r.wallUsec||!Number.isFinite(r.saveFinishedUsec))throw Error('Native source-clock/nonce/hash mismatch');
+    if(i&&Math.abs((r.sourceTime-rows[i-1].sourceTime)-(Math.floor((i+1)*60/fps)-Math.floor(i*60/fps))/60)>1e-6)throw Error('Source clock does not advance at recorded 60 Hz ticks');
+  }
   const seconds=(rows.at(-1).wallUsec-rows[0].wallUsec)/1e6;
   return {frames:expected,sourceSeconds:shot.seconds,wallSeconds:seconds,observedWallFPS:(expected-1)/seconds,
     missingOutputFrames:0,realtimeCapture:false,encodedFPS:fps,sourceRateHz:60,

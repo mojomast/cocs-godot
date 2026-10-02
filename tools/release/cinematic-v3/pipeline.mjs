@@ -1,11 +1,15 @@
 #!/usr/bin/env node
-import {readFile,writeFile,mkdir,open} from 'node:fs/promises';
+import {readFile,writeFile,mkdir,open,readdir} from 'node:fs/promises';
+import {randomBytes} from 'node:crypto';
 import {join,resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {manifest} from './manifest.mjs';
 import {root,plan,sha256,outside,verifyFrames} from './contracts.mjs';
 import {createFixture} from './fixture.mjs';
 import {runProcess} from './process.mjs';
+import {assetInputs,assertAssetIdentity} from './assets.mjs';
+import {writeProof,readProof,digestFile} from './proof.mjs';
+import {checkBoundIdentity} from './receipt.mjs';
 const json=(path,value)=>writeFile(path,JSON.stringify(value,null,2)+'\n',{flag:'wx'});
 
 export async function prepare(out,p) {
@@ -76,12 +80,14 @@ export async function exportAttract(out,p) {
     install:'Only after native candidate/menu lifecycle acceptance; parent owns production installation'});
 }
 
-async function verifyPlan(out) {
+export async function verifyPlan(out) {
   const saved=JSON.parse(await readFile(join(out,'plan.json'))),current=await plan(manifest);
-  if(saved.manifestSHA256!==current.manifestSHA256||saved.provenance.runtimeIndexSHA256!==current.provenance.runtimeIndexSHA256||JSON.stringify(saved.provenance.files)!==JSON.stringify(current.provenance.files))throw Error('Source/assets changed since preparation; use a new evidence directory');
+  if(saved.manifestSHA256!==current.manifestSHA256||saved.assets?.sha256!==current.assets.sha256||JSON.stringify(saved.assets?.pending)!==JSON.stringify(current.assets.pending)||saved.provenance.runtimeIndexSHA256!==current.provenance.runtimeIndexSHA256||JSON.stringify(saved.provenance.files)!==JSON.stringify(current.provenance.files))throw Error('Source/assets changed since preparation; use a new evidence directory');
   return saved;
 }
 export async function capture(out,p,{shotID,godot,deadlineSeconds=1800,budgetSeconds=14400}={}) {
+  await checkBoundIdentity(p);
+  assertAssetIdentity(p.assets,assetInputs({strict:true}));
   const shots=p.shots.filter(s=>!shotID||s.id===shotID);
   if(!shots.length)throw Error('Unknown shot');
   const started=Date.now();
@@ -89,44 +95,75 @@ export async function capture(out,p,{shotID,godot,deadlineSeconds=1800,budgetSec
     const remaining=budgetSeconds*1000-(Date.now()-started);
     if(remaining<=0)throw Error('Overall capture deadline reached');
     const directory=join(out,shot.id),replay=join(directory,'replay.jsonl');
+    assertAssetIdentity(p.assets,assetInputs({strict:true}));
+    await checkBoundIdentity(p);
+    const captureToken=randomBytes(32).toString('hex'),assetPath=join(directory,'asset-inputs.json');
+    await json(assetPath,p.assets);
     const receipt=JSON.parse(await readFile(join(directory,'receipt.json')));
     if(sha256(await readFile(replay))!==receipt.sha256)throw Error(`${shot.id}: replay hash changed`);
     await mkdir(join(directory,'frames')); // Never silently resume/overwrite old frames.
     const args=['--path',join(root,'godot'),'--rendering-method','gl_compatibility','--audio-driver','Dummy',
       '--fixed-fps',String(p.fps),'--resolution','1280x720','--script','res://tests/cinematic_v3/capture.gd','--',
       `--map=${shot.map}`,'--mode=campaign','--mute','--endpoint=ws://127.0.0.1:1/native-campaign',
-      `--trailer-source=${replay}`,`--trailer-output=${join(directory,'frames')}`];
-    await json(join(directory,'invocation.json'),{godot,args,environment:{LP_NUM_THREADS:1},deadlineSeconds,budgetSeconds});
+      `--trailer-source=${replay}`,`--trailer-output=${join(directory,'frames')}`,`--capture-token=${captureToken}`,`--asset-proof=${assetPath}`];
+    await json(join(directory,'invocation.json'),{godot,args,captureToken,godotSHA256:await digestFile(godot),environment:{LP_NUM_THREADS:1},deadlineSeconds,budgetSeconds});
     await runProcess(godot,args,{cwd:root,log:join(directory,'godot.log'),timeoutMs:Math.min(deadlineSeconds*1000,remaining)});
     const log=await readFile(join(directory,'godot.log'),'utf8');
-    if(!log.includes(`CINEMATIC_V3_OK ${shot.id} frames=${shot.seconds*p.fps}`)||/SCRIPT ERROR|^ERROR:/m.test(log))throw Error(`${shot.id}: native failure; retain logs`);
-    await json(join(directory,'capture-receipt.json'),await verifyFrames(directory,shot,p.fps));
+    if(!log.includes(`CINEMATIC_V3_OK ${shot.id} frames=${shot.seconds*p.fps}`)||/SCRIPT ERROR|^ERROR:|resources still in use|ObjectDB instances leaked/m.test(log))throw Error(`${shot.id}: native failure; retain logs`);
+    assertAssetIdentity(p.assets,assetInputs({strict:true}));
+    await checkBoundIdentity(p);
+    const paths=Object.fromEntries(['godot.log','cadence.jsonl','replay.jsonl','invocation.json','asset-inputs.json'].map(n=>[n,join(directory,n)]));
+    for(const name of await readdir(join(directory,'frames')))paths[`frames/${name}`]=join(directory,'frames',name);
+    await writeProof(join(directory,'capture-receipt.json'),{...await verifyFrames(directory,shot,p.fps),kind:'native-shot',executed:true,status:'passed',manifestSHA256:p.manifestSHA256,assetSHA256:p.assets.sha256},paths);
   }
 }
+export const defaultGodot=()=>process.env.GODOT_BIN??'/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64';
+export async function menuCheck(out,p,{godot=defaultGodot(),installed=false,directory=join(out,installed?'menu-installed':'menu-native')}={}) {
+  await checkBoundIdentity(p);
+  assertAssetIdentity(p.assets,assetInputs({strict:true}));
+  await mkdir(directory);
+  const captureToken=randomBytes(32).toString('hex'),candidate=join(out,'attract-candidate.json');
+  if(installed){const a=JSON.parse(await readFile(candidate)),b=JSON.parse(await readFile(join(root,'godot/ui/attract/demo.json')));
+    if(JSON.stringify(a.clips)!==JSON.stringify(b.clips))throw Error('Installed menu clips differ from source candidate');}
+  const args=['--path',join(root,'godot'),'--rendering-method','gl_compatibility','--audio-driver','Dummy','--resolution','1280x800','--script','res://tests/cinematic_v3/attract_candidate.gd'];
+  await json(join(directory,'invocation.json'),{godot,args,captureToken,godotSHA256:await digestFile(godot),installed});
+  await runProcess(godot,args,{cwd:root,log:join(directory,'godot.log'),timeoutMs:600000,
+    env:{COCS_ATTRACT_EVIDENCE:directory,COCS_ATTRACT_CANDIDATE:candidate,COCS_ATTRACT_INSTALLED:installed?'1':'0',COCS_CAPTURE_TOKEN:captureToken}});
+  const log=await readFile(join(directory,'godot.log'),'utf8'),result=JSON.parse(await readFile(join(directory,'native-result.json')));
+  if(!/CINEMATIC_V3_ATTRACT checks=\d+ failures=0/.test(log)||/SCRIPT ERROR|^ERROR:|resources still in use|ObjectDB instances leaked/m.test(log)||result.status!=='passed'||result.checks<30||result.failures!==0||result.installed!==installed||result.captureToken!==captureToken||result.candidateSHA256!==await digestFile(candidate))throw Error('Native menu candidate failed; preserve evidence');
+  const paths=Object.fromEntries(['godot.log','native-result.json','invocation.json'].map(n=>[n,join(directory,n)]));paths.candidate=candidate;
+  for(const [index,shot]of p.shots.filter(s=>s.menu).entries())for(const suffix of ['a','b'])for(const type of ['','-stage']){
+    const name=`${String(index).padStart(2,'0')}-${shot.id}-${suffix}${type}.png`;paths[name]=join(directory,name);}
+  for(const name of ['compact-ui150.png','compact-ui150-stage.png'])paths[name]=join(directory,name);
+  await checkBoundIdentity(p);
+  return writeProof(join(directory,'receipt.json'),{...result,kind:'native-menu',manifestSHA256:p.manifestSHA256,assetSHA256:p.assets.sha256},paths);
+}
 export async function main(args=process.argv.slice(2)) {
-  const flags=new Set(['--plan','--prepare','--capture','--menu-check','--edit-plan','--edit','--slot-granted']);
-  const keys=['output','shot','godot','deadline-seconds','budget-seconds'];
+  const flags=new Set(['--plan','--prepare','--capture','--menu-check','--install-menu','--rollback-menu','--receipt','--installed','--edit-plan','--edit','--slot-granted']);
+  const keys=['output','shot','godot','deadline-seconds','budget-seconds','ledger'];
   for(const a of args)if(!flags.has(a)&&!keys.some(k=>a.startsWith(`--${k}=`)))throw Error(`Unknown option ${a}`);
   const value=k=>args.find(a=>a.startsWith(`--${k}=`))?.slice(k.length+3);
-  const modes=args.filter(a=>flags.has(a)&&a!=='--slot-granted');
+  const modes=args.filter(a=>flags.has(a)&&!['--slot-granted','--installed'].includes(a));
   if(modes.length!==1)throw Error('Choose exactly one --plan / --prepare / --capture / --menu-check / --edit-plan / --edit');
-  if(['--capture','--menu-check','--edit'].includes(modes[0])&&!args.includes('--slot-granted'))throw Error('Explicit exclusive heavy-slot grant required');
+  if(['--capture','--menu-check','--install-menu','--edit'].includes(modes[0])&&!args.includes('--slot-granted'))throw Error('Explicit exclusive heavy-slot grant required');
+  if(modes[0]==='--rollback-menu'){
+    if(!value('output'))throw Error('--output required');
+    const {rollbackMenu}=await import('./install.mjs');return rollbackMenu(outside(value('output')));
+  }
   const p=await plan(manifest);
   if(modes[0]==='--plan'){console.log(JSON.stringify({...p,provenance:{...p.provenance,runtimeIndex:'See prepare plan.json for exact tracked runtime inventory'}},null,2));return;}
   if(!value('output'))throw Error('--output=/absolute/new/evidence/directory required');
   const out=outside(value('output'));
-  if(modes[0]==='--prepare')return prepare(out,p);
+  if(modes[0]==='--prepare'){
+    if(value('ledger')){const {ledgerIdentity}=await import('./receipt.mjs');p.finishIdentity=await ledgerIdentity(value('ledger'));p.finishLedger=resolve(value('ledger'));}
+    return prepare(out,p);
+  }
   const saved=await verifyPlan(out);
   if(modes[0]==='--menu-check') {
-    const directory=join(out,'menu-native');await mkdir(directory);
-    const godot=value('godot')??process.env.GODOT_BIN??'/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64';
-    await runProcess(godot,['--path',join(root,'godot'),'--rendering-method','gl_compatibility','--audio-driver','Dummy','--resolution','1280x800',
-      '--script','res://tests/cinematic_v3/attract_candidate.gd'],{cwd:root,log:join(directory,'godot.log'),timeoutMs:600000,
-      env:{COCS_ATTRACT_EVIDENCE:directory,COCS_ATTRACT_CANDIDATE:join(out,'attract-candidate.json')}});
-    const log=await readFile(join(directory,'godot.log'),'utf8');
-    if(!/CINEMATIC_V3_ATTRACT checks=\d+ failures=0/.test(log)||/SCRIPT ERROR|^ERROR:/m.test(log))throw Error('Native menu candidate failed; preserve evidence');
-    return;
+    return menuCheck(out,saved,{godot:value('godot')??defaultGodot(),installed:args.includes('--installed')});
   }
+  if(modes[0]==='--install-menu'){const {installMenu}=await import('./install.mjs');return installMenu(out,saved,()=>menuCheck(out,saved,{godot:value('godot')??defaultGodot(),installed:true}));}
+  if(modes[0]==='--receipt'){const {closeReceipt}=await import('./receipt.mjs');return closeReceipt(out,saved);}
   if(modes[0]==='--capture'){
     const number=(key,fallback)=>{const n=Number(value(key)??fallback);if(!Number.isFinite(n)||n<1||n>28800)throw Error('Invalid wall deadline');return n;};
     return capture(out,saved,{shotID:value('shot'),godot:value('godot')??process.env.GODOT_BIN??'/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64',

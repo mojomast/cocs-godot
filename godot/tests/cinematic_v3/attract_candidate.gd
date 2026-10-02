@@ -1,5 +1,13 @@
 extends "res://tests/main_menu/live_attract.gd"
 ## Injects an external candidate into the real presentation stage, never production data.
+var capture_trace: Array = []
+
+func capture(label: String) -> PackedByteArray:
+	var bytes: PackedByteArray = await super.capture(label)
+	capture_trace.append({"label":label,"wallUsec":Time.get_ticks_usec(),
+		"chapter":menu.attract_stage.chapter_index,"sourceReplayTime":menu.attract_stage.chapter_time})
+	return bytes
+
 func run() -> void:
 	output = OS.get_environment("COCS_ATTRACT_EVIDENCE")
 	var candidate := OS.get_environment("COCS_ATTRACT_CANDIDATE")
@@ -17,16 +25,20 @@ func run() -> void:
 	root.add_child(menu)
 	current_scene = menu
 	var stage: Node = menu.attract_stage
-	stage.stop()
-	stage.clear_chapter()
-	stage.clips.clear()
+	var installed := OS.get_environment("COCS_ATTRACT_INSTALLED") == "1"
 	require(data.version == 1 and data.fps == 12, "existing public replay format")
-	for clip: Dictionary in data.clips:
-		require(stage._valid_clip(clip), "candidate validates: " + str(clip.id))
-		stage.clips.append(clip)
-	stage.replay_checked = true
-	stage.chapter_index = -1
-	stage.start()
+	if installed:
+		require(stage.clips == data.clips and stage.active, "real Home loads installed source clips without injection")
+	else:
+		stage.stop()
+		stage.clear_chapter()
+		stage.clips.clear()
+		for clip: Dictionary in data.clips:
+			require(stage._valid_clip(clip), "candidate validates: " + str(clip.id))
+			stage.clips.append(clip)
+		stage.replay_checked = true
+		stage.chapter_index = -1
+		stage.start()
 	var maps := {}
 	for index: int in stage.clips.size():
 		if index > 0: stage.advance_chapter()
@@ -89,5 +101,15 @@ func run() -> void:
 	await process_frame
 	await process_frame
 	require(weak_stage.get_ref() == null, "scene exit frees stage and resources")
+	var report := FileAccess.open(output.path_join("native-result.json"), FileAccess.WRITE)
+	if report == null:
+		quit(1)
+		return
+	report.store_string(JSON.stringify({"status":"passed" if failures == 0 else "failed", "executed":true,
+		"checks":checks, "failures":failures, "installed":installed,
+		"captureToken":OS.get_environment("COCS_CAPTURE_TOKEN"),
+		"candidateSHA256":FileAccess.get_sha256(candidate),"captures":capture_trace,
+		"installedSHA256":FileAccess.get_sha256("res://ui/attract/demo.json")}))
+	report.close()
 	print("CINEMATIC_V3_ATTRACT checks=%d failures=%d" % [checks, failures])
 	quit(0 if failures == 0 else 1)

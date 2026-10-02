@@ -5,12 +5,16 @@ var output := ""
 var session: Node
 var ledger: FileAccess
 var replay: FileAccess
+var capture_token := ""
+var asset_proof := ""
 
 func _initialize() -> void:
 	seed(421002)
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--trailer-source="): source = arg.trim_prefix("--trailer-source=")
 		if arg.begins_with("--trailer-output="): output = arg.trim_prefix("--trailer-output=")
+		if arg.begins_with("--capture-token="): capture_token = arg.trim_prefix("--capture-token=")
+		if arg.begins_with("--asset-proof="): asset_proof = arg.trim_prefix("--asset-proof=")
 	call_deferred("run")
 
 func finish(code: int) -> void:
@@ -24,12 +28,20 @@ func finish(code: int) -> void:
 
 func run() -> void:
 	replay = FileAccess.open(source, FileAccess.READ)
-	if replay == null or output.is_empty():
+	if replay == null or output.is_empty() or capture_token.length() != 64 or asset_proof.is_empty():
 		push_error("CINEMATIC_V3 missing replay/output")
 		await finish(1)
 		return
 	var header: Dictionary = JSON.parse_string(replay.get_line())
 	var shot: Dictionary = header.shot
+	var asset_inputs: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(asset_proof))
+	for path: String in asset_inputs.files:
+		if not path.begins_with("godot/"): continue
+		var resource_path := "res://" + path.trim_prefix("godot/")
+		if FileAccess.get_sha256(resource_path) != str(asset_inputs.files[path]) or (path.ends_with(".glb") and not ResourceLoader.exists(resource_path)):
+			push_error("CINEMATIC_V3 required asset missing/stale: " + path)
+			await finish(1)
+			return
 	root.size = Vector2i(1280, 720)
 	root.get_node("LocalSettings").set_process(false)
 	root.get_node("LocalSettings").hint.hide()
@@ -44,6 +56,11 @@ func run() -> void:
 	session.campaign_hud.hide_brief()
 	session.campaign_hud.set_process(false)
 	for i: int in range(4): await process_frame
+	var scenery: Node = session.world.get_node_or_null("BiomeExpansionFour")
+	if scenery == null or scenery.loaded_assets.size() != 3:
+		push_error("CINEMATIC_V3 final chapter scenery not installed; fallback refused")
+		await finish(1)
+		return
 	ledger = FileAccess.open(output.get_base_dir().path_join("cadence.jsonl"), FileAccess.WRITE)
 	if ledger == null:
 		push_error("CINEMATIC_V3 cannot open cadence ledger")
@@ -64,6 +81,12 @@ func run() -> void:
 		session.ground_tells.apply_events(record.events)
 		session.combat.apply_events(record.events, 0)
 		session.av_events(record.events)
+		for visual: Node in session.presentation.actors.values():
+			var model: Variant = visual.get("model_id")
+			if model != null and asset_inputs.requiredNativeSkins.has(str(model)) and visual.get_meta("switchyard_skin", "") != asset_inputs.requiredNativeSkins[str(model)]:
+				push_error("CINEMATIC_V3 required production skin fell back: " + str(model))
+				await finish(1)
+				return
 		if session.phase != 3:
 			push_error("CINEMATIC_V3 production session rejected snapshot")
 			await finish(1)
@@ -120,6 +143,7 @@ func run() -> void:
 			cast.append({"id":id,"screen":[screen.x,screen.y],"potentiallyVisible":actor.is_visible_in_tree() and not session.camera.is_position_behind(actor.global_position) and Rect2(0,0,1280,720).has_point(screen)})
 		var engine_frame := Engine.get_process_frames()
 		ledger.store_line(JSON.stringify({"frame":index,"sourceFrame":record.frame,"sourceTime":record.state.time,
+			"captureToken":capture_token,"sourceRecordSHA256":line.sha256_text(),"pngSHA256":FileAccess.get_sha256(output.path_join("%06d.png" % index)),
 			"wallUsec":rendered_at,"saveFinishedUsec":Time.get_ticks_usec(),"saveError":error,
 			"engineProcessFrames":engine_frame - previous_process,"requestedVisualDelta":1.0 / 24.0,
 			"camera":[session.camera.position.x,session.camera.position.y,session.camera.position.z],
