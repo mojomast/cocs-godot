@@ -1,3 +1,3 @@
-// Tests opt into revision 2; the preserved functional checkpoint is the default.
-const candidate=await import(process.env.HELIX_ARCHITECTURE==='2'?'./recipe-v2.mjs':'./recipe.mjs');
+// Revision 2 is production. Explicit revision 1 retains historical reproduction.
+const candidate=await import(process.env.HELIX_ARCHITECTURE==='1'?'./recipe.mjs':'./recipe-v2.mjs');
 export const {recipe,makeRecipe,hash,polar,ID}=candidate;

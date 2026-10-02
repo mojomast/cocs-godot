@@ -32,10 +32,11 @@ func run() -> void:
  camera.make_current()
  var shots := {
   "overview":[Vector3(125,145,135),Vector3(0,12,0)],
-  "lightwell-eye":[Vector3(0,1.7,-12),Vector3(35,12,40)],
+  "lightwell-eye":[Vector3(0,1.7,-12),Vector3(0,14,0)],
   "archive-eye":[Vector3(-52,9.7,-7),Vector3(-52,10,9)],
   "archive-portal-eye":[Vector3(-52,9.7,-18),Vector3(-52,12,-8)],
-  "irrigation-eye":[Vector3(52,9.7,7),Vector3(52,10,-9)],
+  "irrigation-eye":[Vector3(57,9.7,-9),Vector3(70,18,0)],
+  "pavilion-eye":[Vector3(25,17.7,79),Vector3(0,24,86)],
   "canopy-eye":[Vector3(0,17.7,86),Vector3(-35,15,25)],
   "crown-eye":[Vector3(0,25.7,-116),Vector3(35,27,0)]}
  var metrics := {}

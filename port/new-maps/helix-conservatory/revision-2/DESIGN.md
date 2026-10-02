@@ -1,5 +1,7 @@
 # Architectural revision 2 — READY FOR SECOND BLENDER PASS
 
+**Subsequent granted production pass completed:** see [FINAL.md](FINAL.md) and `production-validation.json`. The source-only checkpoint below is historical; this exact candidate hash has now been built and independently native-revalidated.
+
 **Source candidate only. No revision-2 native or visual acceptance.** Parent rejected the visual/spatial sufficiency of the functional checkpoint `becef6b4` + `96174a63`. Those commits and their GLB/native reports remain historical. This revision is staged here rather than silently replacing their runtime JSON, assets or advertised-mode registries. No Blender/Godot process was used for this revision; the slot belongs to other workstreams.
 
 ## Spatial design

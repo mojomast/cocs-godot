@@ -1,4 +1,6 @@
-# Acceptance — revision 2 ready for second Blender pass
+# Acceptance — revision 2 built and native revalidated
+
+Current production follow-up: [revision-2/FINAL.md](revision-2/FINAL.md). Five new hosted native passes, new collision/art comparison and continuous measured-cadence footage. Parent aesthetic/package approval, real-GPU and human validation remain pending. Historical checkpoints below are retained.
 
 **Parent accepted the old functional milestone, not final art.** See [revision-2/DESIGN.md](revision-2/DESIGN.md) for the new district architecture and passing source checks. New geometry has no native acceptance yet. The native results below and in PRODUCTION.md apply only to the preserved functional checkpoint.
 

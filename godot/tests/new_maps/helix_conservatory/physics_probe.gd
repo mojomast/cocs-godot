@@ -94,9 +94,10 @@ func run() -> void:
  var space := world.get_world_3d().direct_space_state
  check(shot(space,Vector3(52,10,-12),Vector3(52,10,12)).is_empty(),"archive portal open")
  check(not shot(space,Vector3(52,10,7),Vector3(42,10,7)).is_empty(),"archive side blocks")
- check(shot(space,Vector3(6,3,4),Vector3(6,3,8)).is_empty(),"glass transmits shot")
- check(not shot(space,Vector3(52,10,0),Vector3(52,20,0)).is_empty(),"vault ceiling blocks")
- for spec in [[Vector3(10.35,0,16),Vector3.RIGHT,13.35],[Vector3(17.65,0,16),Vector3.LEFT,14.65],[Vector3(43.5,7.633142309,7),Vector3.RIGHT,46.5],[Vector3(50.5,8,7),Vector3.LEFT,47.5],[Vector3(84.55146,16,17.753219),Vector3.RIGHT,87.55146],[Vector3(93.95146,16.72876,17.753219),Vector3.LEFT,90.95146]]:
+ check(shot(space,Vector3(58,12,0),Vector3(63,12,0)).is_empty(),"glass transmits shot")
+ check(not shot(space,Vector3(52,10,0),Vector3(52,24,0)).is_empty(),"vault ceiling blocks")
+ var fixtures: Array = JSON.parse_string(FileAccess.get_file_as_string("res://tests/new_maps/helix_conservatory/contacts.json"))
+ for spec: Dictionary in fixtures:
   var body := CharacterBody3D.new()
   body.safe_margin = .001
   var shape := CollisionShape3D.new()
@@ -107,15 +108,17 @@ func run() -> void:
   shape.position.y = .9
   body.add_child(shape)
   world.add_child(body)
-  body.position = spec[0] + Vector3.UP*.01
+  body.position = world._v(spec.start) + Vector3.UP*.01
   await physics_frame
   for i in range(120):
-   body.velocity = spec[1]*7 + Vector3.DOWN*5
+   body.velocity = world._v(spec.direction)*7 + Vector3.DOWN*5
    body.move_and_slide()
    await physics_frame
-  var gap: float = absf(body.position.x-float(spec[2]))
-  check(gap>=.415 and gap<.5,"native body contact " + str(spec[0])+" gap="+str(gap))
-  contacts.append({"start":str(spec[0]),"end":str(body.position),"gap":gap,"frames":120})
+  var gap: float = -(body.position-world._v(spec.face)).dot(world._v(spec.direction))
+  check(gap>=.415 and gap<.5,"native body contact " + str(spec.id)+" gap="+str(gap))
+  check(absf(gap-float(spec.sourceGap))<.02,"source/native contact agreement")
+  check(not shot(space,world._v(spec.start)+Vector3.UP,world._v(spec.start)+Vector3.UP+world._v(spec.direction)*4).is_empty(),"district contact ray")
+  contacts.append({"id":spec.id,"start":spec.start,"end":str(body.position),"gap":gap,"sourceGap":spec.sourceGap,"frames":120})
   body.queue_free()
   await physics_frame
  var report := {"geometryHash":world.geometry_hash,"collisionShapes":shapes,"uniqueCollisionTriangles":native.size(),"meshNodes":mesh_count,"meshSurfaces":surface_count,"visualTriangles":visual_triangles,"visualParity":parity,"contacts":contacts,"failures":failures}

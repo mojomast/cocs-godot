@@ -14,14 +14,14 @@ let room,guest,child,seq=0,timer,watchdog,logs='',lastGuide={},pathStates={},wir
 const dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 function route(m,from,to){const nearest=p=>m.nav.reduce((best,n,i)=>dist(n,p)<dist(m.nav[best],p)?i:best,0),start=nearest(from),end=nearest(to),prev=new Map([[start,null]]),q=[start];for(let k=0;k<q.length&&!prev.has(end);k++)for(const j of m.edges[q[k]])if(!prev.has(j)){prev.set(j,q[k]);q.push(j);}assert.ok(prev.has(end));const nodes=[];for(let i=end;i!==null;i=prev.get(i))nodes.unshift(m.nav[i]);return [...nodes,to];}
 function steer(m,a,target,key){let s=pathStates[a.id];if(!s||s.key!==key||s.deaths!==a.deaths){s=pathStates[a.id]={key,deaths:a.deaths,route:route(m,a,target),index:0};}
- while(s.index<s.route.length-1&&dist(a,s.route[s.index])<.85)s.index++;
+ while(s.index<s.route.length-1&&dist(a,s.route[s.index])<2.5)s.index++;
  const p=dist(a,target)<1.6?target:s.route[s.index],dx=p.x-a.x,dz=p.z-a.z;
- return {yaw:Math.atan2(-dx,-dz),pitch:0,move:dist(a,target)>.65,crouch:Math.hypot(dx,dz)<3,x:dx,z:dz};}
+ return {yaw:Math.atan2(-dx,-dz),pitch:0,move:dist(a,target)>(mode==='ctf'?.65:2.5),crouch:true,x:dx,z:dz};}
 function guide(){const m=room?.match;if(!m)return {move:false};const a=m.actors[0],b=m.actors[1];
  if(a.health<=0||m.over)return {move:false};
  if(mode==='ctf'){const enemy=m.flags[1],target=enemy.carrier===a.id?{x:-86,z:0}:{x:86,z:0};return steer(m,a,target,enemy.carrier===a.id?'return':'steal');}
  if(['domination','koth'].includes(mode)){const z=m.objectiveState.zones[0];return steer(m,a,z,'zone-'+z.x+':'+z.z);}
- const result=steer(m,a,{x:-3,z:0},'duel');if(dist(a,{x:-3,z:0})<1&&b.health>0&&dist(b,{x:3,z:0})<1){result.move=false;result.fire=true;result.yaw=Math.atan2(a.x-b.x,a.z-b.z);result.pitch=Math.atan2(b.y+1-a.y-a.eyeHeight,dist(a,b));}return result;
+ const result=steer(m,a,{x:-3,z:0},'duel');if(dist(a,{x:-3,z:0})<3&&b.health>0&&dist(b,{x:3,z:0})<3){result.move=false;result.fire=true;result.yaw=Math.atan2(a.x-b.x,a.z-b.z);result.pitch=Math.atan2(b.y+1-a.y-a.eyeHeight,dist(a,b));}return result;
 }
 const control=createServer((req,res)=>{try{assert.equal(req.url,'/guide');lastGuide=guide();res.setHeader('content-type','application/json');res.end(JSON.stringify(lastGuide));}catch(e){res.statusCode=500;res.end(String(e));}});await new Promise(r=>control.listen(0,'127.0.0.1',r));
 game.wss.on('connection',s=>s.on('message',raw=>{const f=JSON.parse(raw);if(f.type==='input')wire.push({peer:s.peerId??null,...f});}));

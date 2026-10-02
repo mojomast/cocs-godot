@@ -14,6 +14,7 @@ source = root / 'port/native-multiplayer-worlds/worlds/helix-conservatory.json'
 if revision2:
     source = root / 'port/new-maps/helix-conservatory/revision-2/recipe.json'
 recipe = json.loads(source.read_text())
+revision2 = revision2 or recipe['art'].get('revision') == 2
 out = root / 'godot/multiplayer_worlds/art/helix-conservatory'
 out.mkdir(parents=True, exist_ok=True)
 masters = root / 'tools/godot-multiplayer/new-maps/helix-conservatory/masters'

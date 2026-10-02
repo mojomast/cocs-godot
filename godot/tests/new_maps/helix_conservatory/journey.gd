@@ -15,11 +15,14 @@ var native_events := {}
 var budget_started := 0
 var frame_times: Array[float] = []
 var guide := {}
+var capture_times: Array[int] = []
 func _ready() -> void:
  for arg in OS.get_cmdline_user_args():
   if arg.begins_with("--helix-out="): helix_out=arg.trim_prefix("--helix-out=")
   if arg.begins_with("--helix-guide="): guide_url=arg.trim_prefix("--helix-guide=")
- get_window().size=Vector2i(640,400)
+ get_window().size=Vector2i(760,520)
+ get_window().content_scale_factor=1.5
+ get_viewport().scaling_3d_scale=.5
  request=HTTPRequest.new()
  add_child(request)
  request.request_completed.connect(on_guide)
@@ -61,11 +64,18 @@ func _process(delta: float) -> void:
   finished=true
   key(KEY_W,false)
   mouse(false)
-  get_window().size=Vector2i(960,600)
+  get_window().size=Vector2i(760,520)
   await get_tree().process_frame
   await RenderingServer.frame_post_draw
   get_viewport().get_texture().get_image().save_png(helix_out.path_join("results.png"))
+  get_window().size=Vector2i(1280,800)
+  get_window().content_scale_factor=1.0
+  await get_tree().process_frame
+  await RenderingServer.frame_post_draw
+  get_viewport().get_texture().get_image().save_png(helix_out.path_join("results-normal.png"))
   frame_times.sort()
+  var cadence := FileAccess.open(helix_out.path_join("capture-times.json"),FileAccess.WRITE)
+  cadence.store_string(JSON.stringify({"monotonicMs":capture_times,"window":[760,520],"uiScale":150,"capture":"every rendered gameplay frame"}))
   var report := {"map":current_id,"mode":selected_mode,"geometryHash":expected_hash,"roundResults":round_results,"objectiveText":objective_text.text,"guideFrames":guide_frames,"inputEvents":input_events,"captures":capture_index,"nativeEvents":native_events,"lastAck":client.last_ack,"renderer":RenderingServer.get_video_adapter_name(),"drawCalls":RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_TOTAL_DRAW_CALLS_IN_FRAME),"frameMsP50":frame_times[frame_times.size()/2] if not frame_times.is_empty() else 0,"frameMsP95":frame_times[int(frame_times.size()*.95)] if not frame_times.is_empty() else 0,"failures":[]}
   var file := FileAccess.open(helix_out.path_join("native-journey.json"),FileAccess.WRITE)
   file.store_string(JSON.stringify(report,"  "))
@@ -82,12 +92,13 @@ func _process(delta: float) -> void:
   guide_elapsed=0
   requesting=true
   if request.request(guide_url+"/guide")!=OK: fail("guide request rejected")
- if capture_elapsed>=1.0:
+ if capture_elapsed>=0.0:
   capture_elapsed=0
   capture_index+=1
   capture_frame(capture_index)
 func capture_frame(index: int) -> void:
  await RenderingServer.frame_post_draw
+ capture_times.append(Time.get_ticks_msec())
  get_viewport().get_texture().get_image().save_png(helix_out.path_join("frame-%04d.png"%index))
 func on_guide(_result: int, code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
  requesting=false

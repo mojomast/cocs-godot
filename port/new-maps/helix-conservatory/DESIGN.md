@@ -2,7 +2,7 @@
 
 Stable ID: `helix-conservatory`. Seed: `61002`. Source lock `515daf`; reviewed derivative `0326`.
 
-Current visual/spatial design: [architectural revision 2](revision-2/DESIGN.md), **READY FOR SECOND BLENDER PASS**, source-only. Parent accepted the functional milestone but rejected the checkpoint's visual/spatial sufficiency. [PRODUCTION.md](PRODUCTION.md) records historical native evidence only; its GLB does not represent revision 2. The editable master lives outside Godot's automatic import tree. Historical initial planning below is retained for traceability.
+Current visual/spatial design: [architectural revision 2](revision-2/DESIGN.md), built and independently native-revalidated in [FINAL.md](revision-2/FINAL.md). Parent aesthetic approval remains pending. [PRODUCTION.md](PRODUCTION.md) records original-generation native evidence only. The editable master lives outside Godot's automatic import tree. Historical initial planning below is retained for traceability.
 
 ## Spatial design
 
