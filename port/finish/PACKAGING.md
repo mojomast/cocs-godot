@@ -1,5 +1,13 @@
 # Finishing package closure — Astra worker
 
+## Resumed Windows release preparation
+
+The packaging lane has now merged canonical `e38b3662` at `88cbc406` and prepared
+fighting/operator-finish/Moth raw-resource closure plus pinned Windows CI. See
+[RELEASE_PREP.md](RELEASE_PREP.md) for the current source checkpoint, 234 passing
+non-engine package checks, exact candidate/grant procedure and remaining native
+acceptance. The following first-pass record is retained as historical evidence.
+
 ## Scope and acceptance boundary
 
 Base: `6cefd9eb`, branch `finish/packaging-20261002`. Published runtime remains
