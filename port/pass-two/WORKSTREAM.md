@@ -39,6 +39,20 @@ Treat source fixtures, connected native input, rendered review, natural player
 experience and real-GPU measurements as distinct evidence levels. Complete a
 coherent player-visible batch, then verify it through actual lifecycle journeys.
 
+## Source/code checkpoints
+
+- **World — ready for engine:** `f93f71b2` implements source-derived seeded
+  wet-roughness textures, restoration of original texture/channel ownership and
+  pooled ground-supported rain contacts. `12f0aa1b` separately integrates
+  round/seek clearing and confirmed-snapshot weather context. The source suite
+  passed 66 tests; actual Three.js texture/scheduling/ripple oracles and the
+  first-pass weather oracle passed. Declared caps are 18 contact instances,
+  36 triangles and six support queries per update; engine measurements remain
+  pending. Vehicle exhaust/heat is deferred. No Godot/Blender/import/render ran.
+- World remains on its isolated branch pending its explicit engine grant and
+  native type/shader, pixel, rendered, connected and resource-lifecycle acceptance.
+  Helix retains the heavy slot; this handoff does not advance the engine queue.
+
 ## Parent follow-up
 
 Retain the full Blackwater machinery/Warden and cinematic-trailer gaps. They
