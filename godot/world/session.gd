@@ -156,8 +156,8 @@ func spectator_status() -> String:
 	if phase == 4:
 		return "Host restart keeps you a spectator.\nLeave and join between rounds to request a player seat."
 	if snapshot_watch.stale():
-		return snapshot_watch.message() + "\nRead-only fixed view · No player controls."
-	return "Read-only fixed view · Tab: scores · No player controls.\nRestart keeps you a spectator; Leave and join between rounds to request play."
+		return snapshot_watch.message() + "\nRead-only view · Camera paused."
+	return "Read-only · [ / ] target · V follow/free · Tab scores.\nRestart keeps your spectator seat."
 
 func lobby_host_allowed() -> bool:
 	if client.spectating: return false
@@ -737,7 +737,8 @@ func on_snapshot(frame: Dictionary) -> void:
 		local_motion.reset()
 		received_pose = false
 		pose_actor_id = -1
-		release_pointer()
+		combat_actions.clear()
+		weapon_selection.clear()
 		label.text = "SPECTATING\n" + spectator_status()
 		emit_snapshot_trace(false)
 		return
@@ -832,6 +833,7 @@ func observe_combat_input(event: InputEvent) -> void:
 	combat_actions.record(event, combat_controls_active(), presentation.local_actor)
 
 func _input(event: InputEvent) -> void:
+	if client.spectating: return # Dedicated read-only camera owns spectator input.
 	if SettingsAccess.overlay_open() or social_capturing():
 		if (event is InputEventKey or event is InputEventMouseButton) and not event.pressed:
 			combat_actions.record(event, false, presentation.local_actor)
@@ -844,6 +846,7 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if client.spectating: return
 	if SettingsAccess.overlay_open() or social_capturing(): return
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_ESCAPE: release_pointer()
@@ -901,7 +904,6 @@ func _process(delta: float) -> void:
 			begin_room()
 	if phase != 3: return
 	if client.spectating:
-		release_pointer()
 		send_elapsed = 0.0
 		return # Read-only recipients do not even queue neutral player inputs.
 	camera.rotation = Vector3(pitch, yaw, 0)
