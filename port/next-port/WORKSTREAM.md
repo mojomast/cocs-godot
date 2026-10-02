@@ -47,11 +47,12 @@ its `port/next-port/<lane>/` directory, with actual source/native anchors.
 
 ## Shared-file and engine coordination
 
-- **World owns the exclusive Godot slot now.** Gameplay released the slot after
-  its accepted live-input journeys. Other lanes are research,
+- **Modes owns the exclusive Godot slot now.** World released after native
+  acceptance `e99ab7ca`, integrated as `c290d24e`. Other lanes are research,
   code and Node-only until explicitly granted the engine. Heavy native/Blender
   work is serialized with `LP_NUM_THREADS=1` and the pinned Godot 4.5.2 binary.
-- Current handoff: Gameplay → World → next ready Modes/Experience, adjusted only through
+- Current handoff: Gameplay → World → Modes → Experience → parent combined
+  verification/exports → Blender map queue, adjusted only through
   an explicit parent grant after the preceding owner releases its processes.
 - Modes owns generated route capabilities and mode allowlists; Experience
   consumes those without rewriting the same files.
@@ -98,6 +99,13 @@ its `port/next-port/<lane>/` directory, with actual source/native anchors.
   and `port/next-port/modes/source-parity.test.mjs`. This verifies source rules,
   generated selectors, packaged-case coverage and manifest validation, not native
   rendering or an exported build. Result is recorded in the session tool output.
+- World follow-up `e99ab7ca` integrated as `c290d24e`: map-owned light binding,
+  weather ticking while muted, standalone compositions, campaign wet ground and
+  shader-default handling. Native contracts/regressions pass; 51 matched images
+  across 17 maps and six actual-wire journeys passed lane review. Maximum observed
+  clones/bindings/scanned nodes: 57/588/2,836, no cap hits or static draw-count
+  increase. These remain lane results pending combined suite/platform acceptance.
+  Parent registers standalone and two isolated real-wire regression journeys.
 
 Require real source inputs/events/results, lifecycle and privacy/control boundary
 checks, native visual/audio evidence appropriate to the feature, and wide/compact

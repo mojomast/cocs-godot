@@ -42,8 +42,14 @@ if (kind === 'spectator') {
 const binary = process.env.GODOT_BIN || '/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64';
 const args = ['-a', binary, '--path', 'godot', '--audio-driver', 'Dummy', '--script', 'res://tests/world_weather/journey.gd', '--', `--endpoint=${endpoint}`, `--map=${map}`, `--mode=${kind === 'campaign' ? 'campaign' : kind === 'source' ? 'ctf' : 'deathmatch'}`, '--bots=0', '--mute', `--weather-journey=${kind}`, `--weather-output=${output}`];
 if (room) args.push(`--join-room=${room}`);
-const child = spawn('xvfb-run', args, {env: {...process.env, LP_NUM_THREADS: '1', COCS_SETTINGS_PATH: output + '/settings.json'}, stdio: 'inherit'});
-const timeout = setTimeout(() => child.kill('SIGTERM'), 115000);
+const child = spawn('xvfb-run', args, {detached:true, env: {...process.env, LP_NUM_THREADS: '1', COCS_SETTINGS_PATH: output + '/settings.json'}, stdio: 'inherit'});
+// The owned Xvfb wrapper and native child share this private process group.
+// Reap both on deadline instead of leaving an engine behind after killing only
+// the wrapper. This harness runs on Linux; Windows acceptance uses its own runner.
+const timeout = setTimeout(() => {
+  try { process.kill(-child.pid, 'SIGKILL'); }
+  catch (error) { if (error.code !== 'ESRCH') throw error; }
+}, 115000);
 try {
   process.exitCode = await new Promise((resolve, reject) => { child.on('error', reject); child.on('exit', code => resolve(code ?? 1)); });
 } finally {
