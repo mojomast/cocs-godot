@@ -1,13 +1,16 @@
 extends CanvasLayer
-## Passive shared presentation. Explicit bind_session is also available to the
-## parent integrator. No input handler, network write, camera or simulation edit.
+## Shared information projection. The dedicated spectator child owns read-only
+## camera input; neither component writes actor controls or simulation state.
 const Captions = preload("res://experience/caption_model.gd")
 const Combat = preload("res://experience/combat_info.gd")
 const Access = preload("res://ui/settings_access.gd")
 const Regions = preload("res://experience/hud_regions.gd")
 const AbilityText = preload("res://experience/ability_text.gd")
+const SpectatorEvents = preload("res://experience/spectator_events.gd")
 var captions := Captions.new()
 var combat := Combat.new()
+var public_feed := preload("res://experience/kill_feed.gd").new()
+var feed := Label.new()
 var session: Node
 var client: Node
 var caption := Label.new()
@@ -28,10 +31,13 @@ var clock := 0.0
 var received_usec := 0
 var ready_for_events := false
 var bound_scene: Node
+var spectator_camera := preload("res://experience/spectator_camera.gd").new()
 
 func _ready() -> void:
 	layer = 6
-	for label: Label in [caption, recap, kill, ability]:
+	spectator_camera.information = self
+	add_child(spectator_camera)
+	for label: Label in [caption, recap, kill, ability, feed]:
 		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		label.add_theme_color_override("font_color", Color("edf5ff"))
@@ -154,6 +160,10 @@ func unbind() -> void:
 	clear()
 
 func clear() -> void:
+	# A new spectator seat must not inherit the previous actor's mouse capture.
+	if spectator(): Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	spectator_camera.clear()
+	public_feed.clear()
 	captions.clear()
 	combat.clear()
 	clock = 0
@@ -165,7 +175,7 @@ func clear() -> void:
 	desired_visibility.clear()
 	ability_scroll.hide()
 	recap_scroll.hide()
-	for label: Label in [caption, recap, kill, ability]:
+	for label: Label in [caption, recap, kill, ability, feed]:
 		label.text = ""
 		label.hide()
 
@@ -195,6 +205,8 @@ func on_snapshot(frame: Dictionary) -> void:
 	received_usec = Time.get_ticks_usec()
 	ready_for_events = true
 	combat.snapshot(state, -1 if spectator() else int(client.get("actor_id")))
+	public_feed.snapshot(state, null if spectator() else client.get("actor_id"))
+	spectator_camera.snapshot(state)
 	_bind_gameplay()
 	layout_dirty = true
 	refresh()
@@ -221,13 +233,21 @@ func stale() -> bool:
 	return received_usec == 0 or Time.get_ticks_usec() - received_usec > 1500000
 
 func on_events(items: Array) -> void:
+	# Lobby/role signals can precede the next snapshot in the same poll batch.
+	# Never let that batch reuse the previous seat's attribution/private context.
+	if current_role() != role_key:
+		clear()
+		return
 	if not ready_for_events or not is_instance_valid(client) or not live() or stale(): return
 	# A muted mix still captions; focus/modal loss drops captions without replay.
 	combat.events(items)
+	public_feed.events(items)
 	if blocked():
 		captions.clear()
 		return
-	captions.consume(items, clock, -1 if spectator() else int(client.get("actor_id")), settings.get("captions", false) == true)
+	var caption_items := items
+	if spectator(): caption_items = items.filter(func(item: Variant) -> bool: return item is Dictionary and SpectatorEvents.public_event(item))
+	captions.consume(caption_items, clock, -1 if spectator() else int(client.get("actor_id")), settings.get("captions", false) == true)
 	layout_dirty = true
 	refresh()
 
@@ -259,12 +279,14 @@ func refresh() -> void:
 	caption.text = captions.line(clock)
 	recap.text = combat.recap()
 	kill.text = combat.latest_kill
+	feed.text = public_feed.text()
 	var show_ability := active and not spectator() and not gameplay_model.is_empty()
-	var show_recap: bool = active and not recap.text.is_empty() and settings.get("combat_readouts", true) == true and not is_instance_valid(campaign_hud)
+	var show_recap: bool = active and not spectator() and not recap.text.is_empty() and settings.get("combat_readouts", true) == true and not is_instance_valid(campaign_hud)
 	var wanted := {
+		feed:active and not feed.text.is_empty() and settings.get("combat_readouts", true) == true and not is_instance_valid(campaign_hud),
 		caption:active and not caption.text.is_empty() and settings.get("captions", false) == true,
 		recap:show_recap, recap_scroll:show_recap,
-		kill:active and not combat.dead and clock - combat.kill_at >= 0 and clock - combat.kill_at < 2.2 and not kill.text.is_empty() and settings.get("combat_readouts", true) == true,
+		kill:active and not spectator() and not combat.dead and clock - combat.kill_at >= 0 and clock - combat.kill_at < 2.2 and not kill.text.is_empty() and settings.get("combat_readouts", true) == true,
 		ability:show_ability, ability_scroll:show_ability and not is_instance_valid(campaign_hud)}
 	if wanted != desired_visibility:
 		desired_visibility = wanted
@@ -285,7 +307,7 @@ func layout() -> void:
 	var compact := view.x < 700 or view.y < 450
 	var font := 14 if compact else 18
 	caption.add_theme_font_size_override("font_size", roundi(font * float(settings.get("caption_scale", 100)) / 100.0))
-	for label: Label in [recap, kill, ability]: label.add_theme_font_size_override("font_size", font)
+	for label: Label in [recap, kill, ability, feed]: label.add_theme_font_size_override("font_size", font)
 	var width := minf(view.x - 32, 680)
 	var background := StyleBoxFlat.new()
 	background.bg_color = Color(0.02, 0.035, 0.05, 0.96 if settings.get("caption_background") == "solid" else 0.72)
@@ -308,7 +330,8 @@ func layout() -> void:
 	if preferences != null and preferences.hint != null and preferences.hint.is_visible_in_tree(): occupied.append(preferences.hint.get_global_rect())
 	# Keep the actual aiming point free even if the route hides its reticle.
 	occupied.append(Rect2(view * 0.5 - Vector2(28, 28), Vector2(56, 56)))
-	for label: Label in [caption, kill]:
+	if spectator_camera.active: occupied.append(spectator_camera.panel.get_global_rect())
+	for label: Label in [caption, kill, feed]:
 		if not label.visible: continue
 		label.size = Vector2(minf(width, 520), 0)
 		var desired := Vector2(minf(width, 520), label.get_combined_minimum_size().y)
