@@ -15,7 +15,7 @@ import time
 import uuid
 
 from gate_runner import save_report
-from finish_receipts import accept_reference, sha, validate_artifact_checks
+from finish_receipts import accept_reference, sha, validate_artifact_checks, validate_output_checks
 
 ROOT = Path(__file__).resolve().parents[2]
 MATRIX = ROOT / 'port/finish/matrix.json'
@@ -510,6 +510,7 @@ def main(argv=None):
                         attempt.update(status='failed', failure_reason='invalid combo report')
             if attempt['status'] == 'passed':
                 try:
+                    validate_output_checks(job, (directory / 'output.log').read_text())
                     if job.get('success_marker') and job['success_marker'] not in (directory / 'output.log').read_text():
                         raise ValueError('Missing required native success marker')
                     attempt['units'] = validate_artifact_checks(job, directory / 'artifacts', args.root)

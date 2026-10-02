@@ -1,8 +1,8 @@
 # Final completion acceptance
 
-Follow-up to candidate `e38b3662`, merged into the existing acceptance worktree.
-Adopt only at the parent checkpoint boundary after the active
-`FINISH-COMBINED-NATIVE-20261002-A` invocation stops. This is source preparation;
+Follow-up to candidate `dff733c0`, merged into the existing acceptance worktree.
+Adopt only at the parent checkpoint boundary. Exclusive grant C remains with
+Parallax `ses_f055a6b41ffe42yCL8AxbOL676`. This is source preparation;
 no Godot, import, Blender, capture, encoding or Windows execution was performed.
 
 ## Contract and completion ledger
@@ -11,7 +11,7 @@ no Godot, import, Blender, capture, encoding or Windows execution was performed.
 downgrading its 96 critical jobs. It adds focused fighting, map/operator finish,
 production and Windows closure. Existing `port/fighting/acceptance/plan.json`
 entries are read directly, rather than copied into a competing fighting plan.
-The resolved matrix currently has 135 jobs: 29 source, 83 engine, 4 audio,
+The resolved matrix preserves the previous 135 jobs and now has 141: 34 source, 84 engine, 4 audio,
 13 manual and 6 external. These numbers describe scheduling, not quality.
 
 Every report contains `completion_ledger`: ID, owner, cohort, execution status,
@@ -19,8 +19,10 @@ preparation, dependencies, missing inputs, next action and per-unit status.
 `ready-to-run` describes preparation only. Skipped/unrun/deferred critical work
 never becomes acceptance. Combo units are derived from the actual roster as
 operator/route/facing, preserving each failed or successful executed trace.
-The parent-reported 16/54 pass, 38 fail result is recorded as a historical
-blocker, not imported as this candidate's evidence. Sol owns content repair.
+The earlier 16/54 result was superseded by actual native B **54/54** at anchor
+`1b690f01`. Parent also reports 137,046 native animation checks with nine actual
+fighters now committed. These are historical executed B results, not passes for
+the changed responsive-camera/current final matrix. No B receipt is re-stamped.
 
 `integration_ready` still requires every critical source and engine job to
 pass, including production-dependent engine closures. All audio, manual and
@@ -49,6 +51,78 @@ remain in force. Matrix/runner adoption changes identity: start a fresh ledger
 after adoption rather than resuming an older matrix's report.
 
 ## Exact-anchor receipt references
+
+### Current registration follow-up
+
+New source IDs are `fighting-camera-source` (including nine real-rig bind-space
+checks), `fighting-import-settings-source`, `final-resource-contract-tests`,
+`final-fighter-resource-closure`, and `final-seven-unit-production-closure`.
+Both closure commands are strict. The package tools' optional `--audit` may exit
+zero while listing pending assets; it is diagnostic preparation, never this gate's
+pass. Converted package receipts remain `accepted:false`; current manifests and
+valid export hashes establish resource closure, not native or human acceptance.
+Existing engine/manual/audio/external gates remain required even if strict closure
+passes. No package producer or active Parallax files are modified by this lane.
+
+After adoption, create a **fresh** ledger on the final frozen checkout. Targeted
+source selection (no engine grant) can use:
+
+```sh
+python3 tools/godot-dev/finish_runner.py --matrix port/finish/final_matrix.json \
+  --evidence /absolute/new-final-evidence --run \
+  --select fighting-camera-source --select fighting-import-settings-source \
+  --select final-resource-contract-tests
+```
+
+Select the two strict closure IDs when production/promotion is ready; missing
+assets must fail, rather than switching those commands to audit. Planning and
+execution use the shared supervisor lock; do not compete with grant C. Use the
+committed matrix for source inspection until the owner releases that slot.
+
+Later native selection `fighting-camera-native` requires passed `native-import`,
+`fighting-camera-source`, and `fighting-import-settings-source` on the same
+ledger, plus the engine grant. Selection does not implicitly execute prerequisites.
+It requires exit zero, the existing engine-error scan, and exactly one
+`FIGHTING_CAMERA_GATE {"passed":true,"failures":[]}` JSON record in `output.log`.
+Missing, duplicate, malformed, false or incomplete records fail. The headless
+envelope fixture does not certify actual rendered rigs.
+
+The existing four-stage receipt now explicitly includes responsive-camera
+readability, smoothing/reset and pose-cache costs per
+`port/fighting/presentation/CAMERA_FOLLOWUP.md`. Use bounded representative
+neutral/jump/throw/projectile/corner/separation views across actual stages,
+wide/compact HUD100/150 and reduced motion; inspect real contact silhouettes,
+floor line, crop seams and charged/double jumps. Record one-time bind-cache
+construction and per-frame pose sampling separately from renderer cadence/GPU
+cost. Source predicted pixels are not rendered measurements. This extends the
+existing review, without registering a Cartesian capture suite.
+
+Foundry uses the already-extended `proof.gd`: Off/Low/Full, reapply, cleanup and
+reload verify preserved luminaire emission. The receipt adapter checks failures
+and ready lifecycle states, with no obsolete requirement to dress all eight
+selectors; preserved luminaires are valid and must remain untouched.
+
+### Production map journey evidence and promotion
+
+The 13 private hosted pairs are deliberately **not** runnable post-promotion
+final jobs. Their admission rejects public registration. Vesper, Abyssal and
+Stormglass owner-closure receipts instead require `map_journeys`, keyed by the
+matrix's exact modes (6/6/1). Each entry names an `artifact` in the retained
+artifact table and a `stage` of `private-production` or `public-current`.
+The outcome JSON must identify `id`, `mode`, `recipeSha`, `artSha`,
+`geometryHash`, successful `journeyPassed`/`success`, `processFailed:false`,
+and successful teardown with two clean peers and no server error. The recipe
+and GLB hashes must match actual current files. Changed recipes/exports require
+new evidence or explicit owner reconciliation, never a hash rewrite.
+
+Private outcome `accepted:false` correctly means the producer did not promote
+the map. The **separate exact-current-anchor owner envelope** supplies acceptance
+after reviewing retained production-stage evidence. Raw conversion output from
+`tools/asset-production/package-receipt.mjs` cannot replace that envelope, the
+native execution report, or the final seven-unit strict packaging gate. Later
+public journey producers can supply the same normalized outcome fields while
+retaining their original reports as hashed artifacts. No historical finish-ledger
+input identity is relabelled to the current one.
 
 `--receipt /absolute/reference.json` reads existing evidence; it never executes
 the producer. The reference is:
@@ -110,8 +184,8 @@ does not supply this graphical proof. All requested final units remain required.
 
 | Work | Owner / next action | Current acceptance state |
 |---|---|---|
-| Fighting mechanics/invariants/27 routes both facings | Core + Sol content; repair reported contacts and execute existing harnesses | Native unrun here; 38 reported route failures unresolved |
-| Nine exported rigs, unique motion/contact | Animation producer + independent fighting acceptance; real master/export/native slice before broader review | Nine production fighting GLBs missing here |
+| Fighting mechanics/invariants/27 routes both facings | Core + acceptance; final frozen-candidate execution | B 54/54 at `1b690f01`; current final matrix pending |
+| Nine exported rigs, unique motion/contact | Animation producer + independent fighting acceptance; final responsive-view review | Nine real GLBs/masters/import settings committed; B native evidence historical |
 | Four stages, pause/input/AI/training | Fighting presentation; existing journey plus explicit missing training/device units | Native unrun; actual stages are Basalt, Canopy, Crown, Helix |
 | Three Moth map finishes | Map owners + shared binder; existing proof and district inspection | Helix source adapter passed; native unrun; Parallax recipe/art and registration unresolved |
 | Nine operator finishes | Content/runtime owners; reuse exact-anchor source receipts, execute lifetime and moving UV/team/LOD review | Source resources present; native/manual unrun |
@@ -120,7 +194,11 @@ does not supply this graphical proof. All requested final units remain required.
 | Final Windows archive | Packaging + Windows CI owner | Actual PCK/extracted clean Windows graphical/CI proof absent |
 | Existing real audio, GPU, OS/accessibility and human gates | Existing owners | Remain critical in inherited matrix |
 
-Targeted source verification: 19 runner tests and 10 receipt tests passed;
-receipt fixtures are synthetic and never count as native or release evidence.
-The Helix source adapter passed actual catalog/geometry/material coverage.
+Targeted follow-up source verification: 19 runner tests, 15 receipt tests,
+6 camera/real-rig tests and 14 packaging/conversion contract tests passed.
+Actual fighter import-settings and final-resource closure passed. Strict seven-unit
+production closure failed closed with all seven units pending; audit returned the
+same seven pending units with exit zero, and is not acceptance. Receipt fixtures
+are synthetic and never count as native or release evidence. Logs are retained in
+`/home/mojo/.tmp-on-disk/cocs-finish-acceptance-evidence-20261002/registration-dff733c0-c37u7oap/`.
 No full acceptance suite rerun or active-branch polling was used.
