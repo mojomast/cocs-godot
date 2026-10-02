@@ -51,3 +51,18 @@ operator coverage, five asset-helper tests and four package resource tests
 successfully; logs use `/tmp/opencode/refined-*`. Animation producer received the
 exact commit for safe-boundary import, without unnecessary fighting rig re-export.
 Map material/art and anti-repetition rendering corrections are still active.
+
+Map-art correction `0d20d7d6` is merged as `a908920f`. The agent inspected all
+eleven native district comparisons and confirmed that `diamond_plate` albedo
+itself contains purple/green pixels. Foundry's broad plating/rivet patterns are
+replaced by quieter coating/mineral choices; Helix uses warmer mineral surfaces,
+subtler metals and grass-derived leaf grain; Parallax uses restrained coastal
+masonry, paving and instrument finishes. Existing placements/signs/geometry and
+glass/sea exclusions remain. All three map-local audits and regeneration passed.
+
+**Intermediate integration dependency:** these profiles use the four agreed
+variation fields and require the rendering owner's pending schema/shader commit.
+Existing shared validation rejects those fields until that dependency lands.
+Do not call the current parent a native-ready material candidate or export it.
+The rendering owner received the real profile commit for combined validation.
+Refined appearance is not accepted until three-state matched native review.
