@@ -1,5 +1,8 @@
 # Authorized second source-feature pass
 
+**Started after publication:** four fresh Astra agents are active from `51c29dc9`.
+See [second-pass ownership and engine queue](../pass-two/WORKSTREAM.md).
+
 The owner explicitly requested another pass after this one completes. Launch the
 next Astra fan-out after the first pass's combined acceptance and verified
 Windows/Linux release. Reassess priorities against new playtest feedback and the

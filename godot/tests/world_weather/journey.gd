@@ -144,10 +144,16 @@ func run() -> void:
 		Input.flush_buffered_events()
 	var before := position()
 	check(session.combat_controls_active(), "native pointer capture admits movement")
+	# Preserve actual submitted controls/queue results for the unresolved
+	# campaign movement gate; ACK growth alone does not establish nonzero input.
+	var prior_trace: bool = session.trace_enabled
+	session.trace_enabled = true
+	receipt("movement-input-before")
 	key(KEY_W, true)
 	await create_timer(1.2).timeout
 	key(KEY_W, false)
 	await create_timer(0.3).timeout
+	session.trace_enabled = prior_trace
 	check(position().distance_to(before) > 0.15, "real input moves public actor")
 	receipt("moved")
 	# A normal authoritative restart changes the source weather seed to revision 2.

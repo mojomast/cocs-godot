@@ -13,6 +13,7 @@ var last: Dictionary = {}
 var age := 0.0
 var source_mode := false
 var catalogs_ok := false
+var expected_art := ""
 
 func _initialize() -> void:
 	for arg: String in OS.get_cmdline_user_args():
@@ -20,6 +21,7 @@ func _initialize() -> void:
 		if arg.begins_with("--mode="): mode = arg.trim_prefix("--mode=")
 		if arg.begins_with("--expect-hash="): expected_hash = arg.trim_prefix("--expect-hash=")
 		if arg == "--source-mode": source_mode = true
+		if arg.begins_with("--expect-art="): expected_art = arg.trim_prefix("--expect-art=")
 	if map_id.is_empty() or mode.is_empty() or (not source_mode and expected_hash.length() != 64):
 		push_error("EXPANSION_INVALID_OPTIONS")
 		quit(2)
@@ -30,6 +32,7 @@ func inspect() -> void:
 	var horde := mode == "horde"
 	scene_path = "res://horde_maps/blackwater_demo.tscn" if horde else ("res://multiplayer_worlds/sports_demo.tscn" if mode.begins_with("puma-") else ("res://multiplayer_worlds/lattice_demo.tscn" if mode.begins_with("cocs") else "res://multiplayer_worlds/demo.tscn"))
 	var art := "res://horde_maps/art/blackwater-reclamation.glb" if horde else "res://multiplayer_worlds/art/" + ("worlds/" if map_id not in ["switchyard-ward", "rainmarket-exchange"] else "") + map_id + ".glb"
+	if not expected_art.is_empty() and not horde: art = expected_art
 	if source_mode:
 		scene_path = "res://mode_expansion/demo.tscn"
 		var captions: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://experience/source_catalog.json"))

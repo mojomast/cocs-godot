@@ -6,16 +6,20 @@ archive signal from the forest relay to the Crown Array. Each chapter targets
 
 ## Start
 
-[Download the targeting, animation and effects playtest (Windows / Linux)](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-targeting-animation-2026-10-01).
-Runtime **`1c1f6e34`** includes all balance/F3 controls below, corrected robot and
+[Download the source-expansion and accessibility playtest (Windows / Linux)](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-source-expansion-2026-10-02).
+Runtime **`e731fd53`** adds reliable short X taps, visible rope/grapple tools,
+operator status, optional sound captions and weather lighting/wetness. It includes
+all balance/F3 controls below, corrected robot and
 building-edge targeting, faster projectiles, more deliberate enemies, eight
 optional activities, improved animation, round impact marks and new shaders.
-Both platforms passed **23 base + 44 expansion package cases**. Windows passed
-the full suite with transport traces and three additional Crown starts. Campaign
-input flow addresses the input-queue overflow captured from the preceding build.
+Both platforms passed **23 base + 52 expansion = 75 package cases**; the merged
+suite passed **359/359 gates**. Windows transport traces and three exported Linux
+graphical journeys are retained. Campaign input flow retains the preceding fix
+for the captured input-queue overflow.
 Release notes and `playtest-acceptance.json` preserve results and limitations.
 
-The [previous feel-expansion build](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-feel-expansion-2026-10-01)
+The [targeting/animation build](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-targeting-animation-2026-10-01),
+[previous feel-expansion build](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-feel-expansion-2026-10-01)
 and [original campaign build](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-playtest-2026-10-01)
 remain available unchanged.
 
@@ -39,6 +43,13 @@ The default is Rootfall Verge on normal difficulty. At a chapter's exit, choose
 ending.
 
 ## New targeting, animation and optional activities
+
+**F12 → Settings** enables sound captions and controls their size, background and
+placement. Captions work while muted. Operator kit details share the objective
+scroll area; release the pointer with **Esc**, focus that panel and use the
+arrow/Page/Home/End keys to scroll. Source cooldowns, charges and fuel drive the
+readouts. Weather now changes lighting, fog and surface sheen while respecting
+quality and reduced-motion settings.
 
 Robots now have hit regions fitted to their visible bodies and more deliberate
 movement, including planted attack windows. Plasma travels at 138m/s, rockets at
@@ -81,7 +92,7 @@ Normal starts with **140 health / 60 armor**. After three damage-free seconds,
 health recovers even while returning fire; after five seconds armor recovers to
 40. Nearby robot kills restore up to 8 health / 6 armor. Easy grants more reserves
 and fewer overlapping attackers; Hard tightens recovery and attack pressure.
-These recovery changes were introduced in `091b1333` and remain in `1c1f6e34`.
+These recovery changes were introduced in `091b1333` and remain in `e731fd53`.
 
 ## In-game cheats
 
@@ -100,7 +111,7 @@ Press **F3**, **Esc**, or **Resume game** to return to play. Enabled cheats are
 shown on the HUD. Toggle choices carry across campaign chapter/retry transitions
 within the connected session and reset on a new connection. The same menu is
 available in ordinary solo Horde launches. These controls are included in the
-linked `1c1f6e34` playtest and preceding `091b1333`; the older `614e11ad` package predates them.
+linked `e731fd53` playtest and preceding `1c1f6e34`/`091b1333`; the older `614e11ad` package predates them.
 
 ## People along the relay
 

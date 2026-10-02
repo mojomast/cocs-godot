@@ -1,0 +1,76 @@
+{
+  "finishes": 63,
+  "operators": {
+    "chatgpt": {
+      "all_primitives": 111,
+      "bindings": 4,
+      "covered_primitives": 59,
+      "preserved_material_names": 6
+    },
+    "claude": {
+      "all_primitives": 117,
+      "bindings": 4,
+      "covered_primitives": 61,
+      "preserved_material_names": 6
+    },
+    "deepseek": {
+      "all_primitives": 116,
+      "bindings": 4,
+      "covered_primitives": 60,
+      "preserved_material_names": 6
+    },
+    "gemini": {
+      "all_primitives": 110,
+      "bindings": 4,
+      "covered_primitives": 60,
+      "preserved_material_names": 6
+    },
+    "grok": {
+      "all_primitives": 110,
+      "bindings": 4,
+      "covered_primitives": 59,
+      "preserved_material_names": 6
+    },
+    "kimi": {
+      "all_primitives": 111,
+      "bindings": 4,
+      "covered_primitives": 59,
+      "preserved_material_names": 6
+    },
+    "meta": {
+      "all_primitives": 117,
+      "bindings": 4,
+      "covered_primitives": 59,
+      "preserved_material_names": 6
+    },
+    "mistral": {
+      "all_primitives": 109,
+      "bindings": 4,
+      "covered_primitives": 60,
+      "preserved_material_names": 6
+    },
+    "qwen": {
+      "all_primitives": 113,
+      "bindings": 4,
+      "covered_primitives": 61,
+      "preserved_material_names": 6
+    }
+  },
+  "png_bytes": 1071133,
+  "scope": "source-only; native validation pending",
+  "status": "PASS",
+  "tests": [
+    "exact real-material classification",
+    "protected material exclusion",
+    "frozen catalog GLB hashes",
+    "all primitive UV1 and ranges",
+    "neutral bounded albedo and bare bevel sample",
+    "roughness R variation",
+    "decoded normal unit length",
+    "nine unique untinted panel patterns",
+    "resource and pixel hashes",
+    "real Moth registry source hashes",
+    "bounded unique map budget"
+  ],
+  "unique_png_maps": 116
+}

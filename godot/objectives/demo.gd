@@ -127,9 +127,7 @@ func on_snapshot(frame: Dictionary) -> void:
 		evidence_count += 1
 
 func controls_released() -> bool:
-	for key: int in [KEY_W,KEY_A,KEY_S,KEY_D,KEY_SPACE,KEY_E,KEY_R,KEY_F,KEY_SHIFT,KEY_CTRL]:
-		if Input.is_physical_key_pressed(key): return false
-	return not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
+	return combat_actions.bindings.released_for_capture()
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Fresh capture requires movement/interaction keys to have been released.
@@ -137,7 +135,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	super._unhandled_input(event)
 
 func refresh_hud() -> void:
-	label.text = "%s / %s | %s | ACK %d\nClick: engage / Esc: release / WASD: move / mouse: aim / E: interact\nRelease movement/action keys before clicking to resume." % [current_id, selected_mode, presentation.lifecycle.status, client.last_ack]
+	label.text = "%s / %s | %s | ACK %d" % [current_id, selected_mode, presentation.lifecycle.status, client.last_ack] + preload("res://input_bindings/hints.gd").resolve("\nClick: engage / Esc: release / WASD: move / mouse: aim / E: interact\nRelease movement/action keys before clicking to resume.")
 	objective_label.text = objectives.hud_text
 	if phase == 4: label.text += "\nResults: Enter to request another round."
 

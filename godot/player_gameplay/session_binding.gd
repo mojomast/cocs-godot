@@ -43,6 +43,7 @@ func bind_session(target: Node) -> void:
 	session.client.started.connect(func(_frame: Dictionary) -> void: clear_round())
 	session.client.results.connect(func(_frame: Dictionary) -> void: clear_round())
 	session.client.connection_error.connect(func(_message: String) -> void: clear_round())
+	session.client.transport_dropped.connect(func(_message: String) -> void: clear_round())
 
 func allowed() -> bool:
 	if not is_instance_valid(session) or session.phase != 3 or session.client.spectating or not session.application_focused or session.snapshot_watch.stale() or Settings.overlay_open(): return false
@@ -55,22 +56,29 @@ func observe(frame: Dictionary) -> void:
 	refresh()
 
 func refresh() -> void:
-	var active := allowed()
+	var active := allowed() and not snapshot.is_empty()
 	var actor: Dictionary = session.presentation.local_actor if is_instance_valid(session) else {}
-	model = status.project(actor, snapshot.get("config", {}), active)
-	status_changed.emit(model)
-	panel.text = Status.text(model)
-	panel.visible = active and show_compact_status
-	if active: cues.apply_state(snapshot)
+	var next := status.project(actor, snapshot.get("config", {}), active)
+	if not next.is_empty():
+		var hint := Status.rope_hint(actor, snapshot)
+		if not hint.is_empty(): next.statuses.append(hint)
+	if next != model:
+		model = next
+		status_changed.emit(model)
+	panel.text = preload("res://input_bindings/hints.gd").resolve(Status.text(model))
+	panel.visible = not model.is_empty() and show_compact_status
+	if not model.is_empty(): cues.apply_state(snapshot)
 	else: cues.clear_visuals()
 
 func events(items: Array) -> void:
-	cues.apply_events(items, allowed())
+	cues.apply_events(items, allowed() and not model.is_empty())
 
 func _process(delta: float) -> void:
 	if session == null: return
 	var settings := Settings.service()
 	if settings != null: cues.reduced_motion = settings.values.get("reduced_motion", false)
+	if "combat" in session and is_instance_valid(session.combat) and is_instance_valid(session.combat.quality_controls):
+		cues.set_quality(session.combat.quality_controls.quality)
 	refresh()
 	cues.advance(delta)
 
@@ -78,4 +86,6 @@ func clear_round() -> void:
 	snapshot = {}
 	model = {}
 	panel.text = ""
+	panel.hide()
+	status_changed.emit(model)
 	cues.clear_round()

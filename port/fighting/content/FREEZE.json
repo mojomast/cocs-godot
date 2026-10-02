@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "date": "2026-10-02",
+  "balance": "authored initial targets; human balance pending",
+  "combo_validation": "proposed; actual core/native pending",
+  "provenance": "Original authored fighting frame data and move names; source operator identities imported unchanged. No downloaded motion or external fighter content.",
+  "source_boundary_base": "37dd3da4",
+  "historical_provenance": {
+    "initial_design_sha256": "52754c58c4c3b44b53450427e6ad73834a467c3d132e03e341952e1f338b10ca",
+    "note": "Informational historical source hash only; never compared to working prose."
+  },
+  "source_files": {
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+    "godot/fighting/data/roster.json": "1cb28db7f34fefe3c37ccb8f4b5a54822465d2b28fa8a6401ab0fa8fd77e5e02",
+    "godot/fighting/data/rules.json": "5a89f073c107d504b34b6cb58d00599009245533a92519610d92616a6e4cff4a",
+    "godot/fighting/data/schema.json": "a62f335b4b1567ae1b0668e73715db118dceb47aae81496a6aa0c1c6f44d1716",
+    "port/fighting/content/ANIMATION_COVERAGE.json": "7681c7ffb3deec42eb411527b52bb47010ccbc90a04764768f45b78dddcda026",
+    "port/fighting/content/COMBO_ESTIMATES.json": "4a08fcc843dc1260c8564411d7ab06d9c56b280c7b95a0572cad59cf801b29b0",
+    "tools/fighting/content/balance_targets.json": "801805f80c061b6a627d324c3712514001330e63f076dd59b9ec7e9dbad82c55",
+    "tools/fighting/content/state_keys.json": "4d75716ac9b32652d420a480e5153d903ab7d1f996972c9060699926e122f9f2",
+    "tools/fighting/content/schema.mjs": "163223aaec66efbec5ee051b27686b4fbe427f25021174f9629e2eeb9ac3f659",
+    "tools/fighting/content/trace.mjs": "da19099b5d1af130ab53b188e0d47d93c33fbc531190e611ca79f0d53b75fefd",
+    "tools/fighting/content/author.mjs": "fffb117e032627ec8d9909f5a404777d1aaf846a0826836e769ff2d31b528263",
+    "tools/fighting/content/validate.mjs": "b11b7041a9a95ac2c288c5d6827c8d235aeb6fbf56c088b1080911681d95bf48"
+  }
+}

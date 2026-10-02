@@ -1,6 +1,7 @@
 extends "res://world/viewer.gd"
 
 const Client = preload("res://net/client.gd")
+const ReplayCapture = preload("res://replay/capture.gd")
 const SettingsAccess = preload("res://ui/settings_access.gd")
 const MouseMotion = preload("res://ui/mouse_motion.gd")
 const ControlMath = preload("res://world/control_math.gd")
@@ -156,8 +157,8 @@ func spectator_status() -> String:
 	if phase == 4:
 		return "Host restart keeps you a spectator.\nLeave and join between rounds to request a player seat."
 	if snapshot_watch.stale():
-		return snapshot_watch.message() + "\nRead-only fixed view · No player controls."
-	return "Read-only fixed view · Tab: scores · No player controls.\nRestart keeps you a spectator; Leave and join between rounds to request play."
+		return snapshot_watch.message() + "\nRead-only view · Camera paused."
+	return "Read-only · [ / ] target · V follow/free · Tab scores.\nRestart keeps your spectator seat."
 
 func lobby_host_allowed() -> bool:
 	if client.spectating: return false
@@ -471,6 +472,9 @@ func _ready() -> void:
 	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	label.get_parent().mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(client)
+	# Recipient-only recording; the child enables controls for its exact admission.
+	# Replay playback is a separate scene and never instantiates this live session.
+	add_child(ReplayCapture.new())
 	add_child(presentation)
 	add_child(combat)
 	label.get_parent().add_child(combat_label)
@@ -737,7 +741,8 @@ func on_snapshot(frame: Dictionary) -> void:
 		local_motion.reset()
 		received_pose = false
 		pose_actor_id = -1
-		release_pointer()
+		combat_actions.clear()
+		weapon_selection.clear()
 		label.text = "SPECTATING\n" + spectator_status()
 		emit_snapshot_trace(false)
 		return
@@ -784,7 +789,7 @@ func on_snapshot(frame: Dictionary) -> void:
 		print("PORT_LIFECYCLE_LIVE_OK starts=", round_starts, " results=", round_results, " restarted_actors=", presentation.actors.size(), " restarted_ack=", client.last_ack, " map=", current_id, " normal_rate=true")
 		client.disconnect_server()
 		get_tree().quit(0)
-	label.text = "NODE-AUTHORITATIVE PROTOTYPE · %s\n" % selected_mode + presentation.hud_text + "\nClick: capture/fire · RMB: ADS · Z/MMB: alt · Esc: release · WASD: move · Space: jump\nShift: sprint · Ctrl/C: crouch · R: reload · E: interact · X: mobility · Q: power · F: melee · G: grenade · 1–9/0 or wheel: weapon | ACK %d" % client.last_ack
+	label.text = "NODE-AUTHORITATIVE PROTOTYPE · %s\n" % selected_mode + presentation.hud_text + preload("res://input_bindings/hints.gd").resolve("\nClick: capture · LMB: fire · RMB: ADS · Z/MMB: alt · Esc: release · WASD: move · Space: jump\nShift: sprint · Ctrl/C: crouch · R: reload · E: interact · X: mobility · Q: power · F: melee · G: grenade · 1–9/0 or wheel: weapon | ACK %d" % client.last_ack)
 	var smoke_pickups_ok: bool = pickups.markers.is_empty() if selected_mode == "instagib" else not pickups.markers.is_empty()
 	var smoke_fire_ok: bool = combat.local_launches > 0 if selected_mode == "rockets" else combat.shots > 0
 	if smoke and smoke_fire_ok and moved and fired and client.last_ack > 10 and presentation.actors.size() == selected_bot_count + 1 and (selected_bot_count == 0 or presentation.rendered_remote_poses > 10) and smoke_pickups_ok and not world.get_node("StaticPickupMarkers").visible:
@@ -832,9 +837,14 @@ func observe_combat_input(event: InputEvent) -> void:
 	combat_actions.record(event, combat_controls_active(), presentation.local_actor)
 
 func _input(event: InputEvent) -> void:
+	if client.spectating:
+		# Observe physical releases without capturing or writing any actor packet.
+		combat_actions.record(event, false)
+		combat_actions.clear()
+		return # Dedicated read-only camera owns spectator input.
 	if SettingsAccess.overlay_open() or social_capturing():
+		combat_actions.record(event, false, presentation.local_actor)
 		if (event is InputEventKey or event is InputEventMouseButton) and not event.pressed:
-			combat_actions.record(event, false, presentation.local_actor)
 			weapon_selection.handle_event(event, false, presentation.local_actor)
 		return
 	# Observe releases even when a GUI control handles the event later.
@@ -844,6 +854,7 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if client.spectating: return
 	if SettingsAccess.overlay_open() or social_capturing(): return
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_ESCAPE: release_pointer()
@@ -901,7 +912,6 @@ func _process(delta: float) -> void:
 			begin_room()
 	if phase != 3: return
 	if client.spectating:
-		release_pointer()
 		send_elapsed = 0.0
 		return # Read-only recipients do not even queue neutral player inputs.
 	camera.rotation = Vector3(pitch, yaw, 0)

@@ -120,7 +120,9 @@ func build_ui() -> void:
 	bots.value_changed.connect(func(_value: float) -> void: update_settings())
 	duration.value_changed.connect(func(_value: float) -> void: update_settings())
 	player_name.text_changed.connect(func(value: String) -> void: launch.disabled = value.strip_edges().is_empty())
-	stack.add_child(text("WASD move · Space jump · Shift sprint · Ctrl/C crouch · X mobility · E use\nLMB fire · RMB aim · Z/MMB alt · R reload · Q power · F melee · G grenade\n1–9/0 or wheel: weapons · Tab: scores · Esc: release mouse · Enter: restart after results", 14, MUTED))
+	var binding_help := text("", 14, MUTED)
+	preload("res://input_bindings/hints.gd").bind(binding_help, "WASD move · Space jump · Shift sprint · Ctrl/C crouch · X mobility · E use\nLMB fire · RMB aim · Z/MMB alt · R reload · Q power · F melee · G grenade\n1–9/0 or wheel: weapons · Tab: scores · Esc: release mouse · Enter: restart after results")
+	stack.add_child(binding_help)
 	launch.text = "START DEATHMATCH  →"
 	launch.custom_minimum_size.y = 48
 	launch.add_theme_font_size_override("font_size", 18)

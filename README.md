@@ -13,8 +13,11 @@ game that preserves all nine DESTINATIONS maps and their gameplay identity.
 the native setup menu; Arms Race, local Horde, sports, objectives, zones, combined arms and LATTICE have
 standalone routes through the common launcher.
 
-**Latest playtest:** [Targeting, Animation & Effects — Windows / Linux](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-targeting-animation-2026-10-01),
-runtime `1c1f6e34`. Both platforms passed 67 extracted-package cases. It includes
+**Latest playtest:** [Source Expansion, Abilities & Accessibility — Windows / Linux](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-source-expansion-2026-10-02),
+runtime `e731fd53`. Both platforms passed 75 extracted-package cases; the merged
+suite passed 359/359 gates. This adds four source modes, reliable short-tap
+mobility, rope/grapple presentation, operator readouts, sound captions and weather
+lighting/wet surfaces. It also includes
 the four-chapter Quiet Relay campaign, seven multiplayer expansion maps,
 Blackwater robot Horde, in-game solo cheats, eight optional campaign activities,
 improved targeting/animation and corrected edge-hit/decal effects.
@@ -38,6 +41,8 @@ simulation lock and verification evidence remain reproducible.
 | Arena combat | Meridian Exchange, Verdant Reliquary and Ember Crucible; Deathmatch, Team Deathmatch, Instagib and Rocket Arena |
 | Multiplayer lobby | Popup-free host/join controls, selected-server room browser, source-echoed room chat, explicit same-room reconnect/Leave, host-only start/restart and read-only active-match spectators |
 | Arms Race | Three combat arenas, source-controlled ten-weapon ladder; independent kill-to-promotion and timed results/restart acceptance |
+| Competitive Modes | Full Arsenal and Juggernaut on three original arenas; Team Elimination on Tidal Citadel; VIP Escort on Sunscar Convoy; reconnect/results/restart/Home verified, ordinary-input VIP extraction remains unaccepted |
+| Captions / operator status | F12 sound captions with priority and repeat suppression; source-backed ability/passive/resources, incoming-hit history, compact campaign comms and keyboard-scrollable kit panels |
 | Local Horde | Three combat arenas, Nacre Engine, Cinderwake Drydock and Blackwater Reclamation; source-owned waves/upgrades, robot presentation and staged machinery/gates; ten-wave default, full Blackwater chain/Warden acceptance still open |
 | Zone-control demo | KOTH / Domination HUD, objective rings, source capture/scoring, results and restart; independently exercised on Verdant / Meridian |
 | Combined arms | Five source chassis, driver/gunner/passenger controls, visible crew and fresh controls after seat changes; bounded three-native-client Puma crew acceptance |
@@ -109,7 +114,7 @@ the revisions described in their accompanying evidence directories.
 ### Windows demo download
 
 Download **cocs-native-windows.zip** from the
-[latest playtest release](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-targeting-animation-2026-10-01).
+[latest playtest release](https://github.com/mojomast/cocs-godot/releases/tag/quiet-relay-source-expansion-2026-10-02).
 Extract the entire ZIP and double-click **Campaign.cmd** for The Quiet Relay or
 **Play.cmd** for arena play. **Graphics Showcase.cmd** opens the native exploration
 maps, shader gallery and particle lab. **Demo Menu.cmd** offers the other routes.

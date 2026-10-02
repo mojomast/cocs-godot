@@ -17,6 +17,7 @@ var horde := HordeModel.new()
 var robot_voices := RobotVoices.new()
 var robot_tells := RobotTells.new()
 var horde_label := Label.new()
+var choice_scroll: ScrollContainer
 var waves := 10
 var evidence := false
 var evidence_rows := 0
@@ -163,7 +164,7 @@ func create_horde_visual(actor: Dictionary, local_id: int) -> Node3D:
 func show_controls() -> void:
 	var hud: Node = get_node_or_null("GameHUD")
 	if hud != null:
-		hud.controls.text = "WASD move · Space jump · Shift sprint · Ctrl/C crouch · X mobility · Q power · E use\nLMB fire · RMB ADS · Z/MMB alt · R reload · F kick (tap each time) · G grenade · 1–9/0/wheel weapons · Tab scores · Esc release"
+		preload("res://input_bindings/hints.gd").bind(hud.controls, "WASD move · Space jump · Shift sprint · Ctrl/C crouch · X mobility · Q power · E use\nLMB fire · RMB ADS · Z/MMB alt · R reload · F kick (tap each time) · G grenade · 1–9/0/wheel weapons · Tab scores · Esc release")
 
 ## ---------------------------------------------------------------------------
 ## Horde run upgrades: visible choice buttons plus 1..9 hotkeys. The authority
@@ -179,7 +180,14 @@ func ensure_choice_controls() -> void:
 	choice_panel = VBoxContainer.new()
 	choice_panel.name = "HordeUpgradeChoices"
 	choice_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	choice_layer.add_child(choice_panel)
+	choice_scroll = ScrollContainer.new()
+	choice_scroll.mouse_filter = Control.MOUSE_FILTER_PASS
+	choice_scroll.visible = false
+	choice_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	choice_scroll.follow_focus = true
+	choice_layer.add_child(choice_scroll)
+	choice_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	choice_scroll.add_child(choice_panel)
 	choice_status = Label.new()
 	choice_status.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	choice_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -253,16 +261,21 @@ func sync_choice_controls() -> void:
 			button.mouse_filter = Control.MOUSE_FILTER_STOP
 			button.text = str(row.label)
 			var tooltip := str(row.tooltip)
-			if not tooltip.is_empty(): button.tooltip_text = tooltip
+			if not tooltip.is_empty():
+				button.tooltip_text = tooltip
+				button.text += " · " + tooltip
+			button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 			button.pressed.connect(choose_offer.bind(int(row.index)))
 			choice_panel.add_child(button)
 			choice_buttons.append(button)
-		choice_status.text = ""
+		choice_status.text = "Choose one run-long boost · number key, or Esc then click" if not plan.is_empty() else ""
 	update_choice_feedback()
 	choice_status.visible = not horde.offers.is_empty() or not choice_status.text.is_empty()
 	# The status label is a child of the panel: a promoted result must keep the
 	# panel open even though the offer itself is gone.
 	choice_panel.visible = not horde.offers.is_empty() or choice_status.visible
+	choice_scroll.visible = choice_panel.visible
 	last_applied = maxi(last_applied, horde.applied_count)
 	last_selected = horde.selected_id
 
@@ -298,9 +311,11 @@ func choose_offer(index: int) -> void:
 		choice_status.text = "Choice refused · %s" % str(result.reason)
 	choice_status.visible = true
 	choice_panel.visible = true
+	choice_scroll.visible = true
 
 func clear_choices() -> void:
 	if choice_panel != null: choice_panel.visible = false
+	if choice_scroll != null: choice_scroll.visible = false
 	rebuild_choice_buttons()
 	last_choice_signature = ""
 	last_rejected = ""
@@ -391,7 +406,7 @@ func aim_requested() -> bool:
 
 func release_pointer() -> void:
 	controls.focus(false)
-	if phase == 3 and horde_client.input_epoch > 0 and client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
+	if phase == 3 and not client.spectating and horde_client.input_epoch > 0 and client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
 		horde_client.send_controls({}, true) # immediate FIFO cancellation, not a fire release
 	super.release_pointer()
 
@@ -579,12 +594,16 @@ func on_error(message: String) -> void:
 	super.on_error(message)
 
 func controls_released() -> bool:
-	for key: int in [KEY_W,KEY_A,KEY_S,KEY_D,KEY_SPACE,KEY_E,KEY_R,KEY_F,KEY_G,KEY_Q,KEY_X,KEY_Z,KEY_C,KEY_SHIFT,KEY_CTRL]:
-		if Input.is_physical_key_pressed(key): return false
-	return not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and not Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE)
+	return controls.bindings.released_for_capture()
 
 func _input(event: InputEvent) -> void:
-	if HordeSettingsAccess.overlay_open(): return
+	if client.spectating:
+		controls.record(event, false)
+		controls.clear()
+		return
+	if HordeSettingsAccess.overlay_open() or social_capturing():
+		controls.record(event, false, presentation.local_actor)
+		return
 	if event is InputEventKey and event.pressed and not event.echo:
 		var index := intercept_offer_key(key_code(event))
 		if index > 0:
@@ -617,9 +636,9 @@ func _process(delta: float) -> void:
 		if not was_stale and snapshot_watch.stale(): release_pointer()
 		if snapshot_watch.stale() or not application_focused or HordeSettingsAccess.overlay_open(): audiovisual.suspend("stale_or_focus")
 		else: av_tick(delta)
-		camera.rotation = Vector3(pitch, yaw, 0)
+		if not client.spectating: camera.rotation = Vector3(pitch, yaw, 0)
 		send_elapsed += delta
-		if send_elapsed >= 1.0 / 60.0:
+		if send_elapsed >= 1.0 / 60.0 and not client.spectating:
 			send_elapsed = fmod(send_elapsed, 1.0 / 60.0)
 			var active := weapon_controls_active()
 			if not active: controls.clear()
@@ -630,7 +649,11 @@ func _process(delta: float) -> void:
 			if result != OK: on_error("Input could not be queued. Relaunch to reconnect.")
 	elif phase == 4: av_tick(delta)
 	horde_label.custom_minimum_size.x = maxf(240, get_viewport().get_visible_rect().size.x - 40)
-	if choice_layer != null: choice_layer.offset = Vector2(20, horde_label.position.y + horde_label.size.y + 10)
+	horde_label.size.x = horde_label.custom_minimum_size.x
+	if choice_layer != null:
+		var viewport_size := get_viewport().get_visible_rect().size
+		choice_layer.offset = Vector2(20, horde_label.position.y + horde_label.size.y + 10)
+		choice_scroll.size = Vector2(maxf(240, viewport_size.x - 40), maxf(60, viewport_size.y - choice_layer.offset.y - 70))
 	if phase == 3 and snapshot_watch.stale():
 		horde.apply({}, true)
 		horde_label.text = horde.text

@@ -1,0 +1,286 @@
+{
+  "geometryHash": "6afb8d0f8f749b0318c31f5684e1f2a23117b7b7b3823ff2b84e2f38e375ee3c",
+  "results": [
+    {
+      "mode": "ctf",
+      "classification": "autonomous source bots; no supplied inputs or post-construction state writes",
+      "frames": 10800,
+      "time": 180.00000000003539,
+      "over": true,
+      "endReason": "time",
+      "events": {
+        "grapple-hook": 17,
+        "move-start": 31,
+        "move-end": 31,
+        "grapple-release": 17,
+        "move-blocked": 7343,
+        "shot": 1435,
+        "damage": 582,
+        "threat-ping": 20,
+        "power": 25,
+        "grenade": 40,
+        "alt-state": 785,
+        "death": 41,
+        "explosion": 43,
+        "spawn": 41,
+        "windup-start": 5,
+        "windup-end": 5,
+        "slam-launch": 5,
+        "landing-recovery": 10,
+        "slam-impact": 5,
+        "killstreak": 4,
+        "charge-start": 66,
+        "charge-cancel": 66,
+        "pickup": 3,
+        "weapon-switch": 7,
+        "flag-pickup": 2,
+        "launch": 3,
+        "flag-drop": 2,
+        "flag-return": 1,
+        "sudden-death": 1
+      },
+      "initial": [
+        {
+          "id": 0,
+          "x": -86,
+          "z": 0
+        },
+        {
+          "id": 1,
+          "x": 85,
+          "z": 5
+        },
+        {
+          "id": 2,
+          "x": -85,
+          "z": -5
+        },
+        {
+          "id": 3,
+          "x": 86,
+          "z": 0
+        }
+      ],
+      "walked": {
+        "0": 1699.4499676755693,
+        "1": 1472.493917790157,
+        "2": 1664.491794288169,
+        "3": 1549.215996495272
+      },
+      "teamScores": {
+        "0": 0,
+        "1": 0
+      },
+      "actors": [
+        {
+          "id": 0,
+          "frags": 6,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 1,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 254,
+            "hits": 100,
+            "damage": 815.5001497498774
+          },
+          "botState": "flag-attack"
+        },
+        {
+          "id": 1,
+          "frags": 14,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 1,
+            "flagReturns": 0,
+            "flagDrops": 1,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 342,
+            "hits": 158,
+            "damage": 1511.5176077219237
+          },
+          "botState": "flag-attack"
+        },
+        {
+          "id": 2,
+          "frags": 9,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 354,
+            "hits": 189,
+            "damage": 1418.1582839526452
+          },
+          "botState": "flag-attack"
+        },
+        {
+          "id": 3,
+          "frags": 12,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 1,
+            "flagReturns": 0,
+            "flagDrops": 1,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 424,
+            "hits": 135,
+            "damage": 1288.482392278076
+          },
+          "botState": "flag-attack"
+        }
+      ]
+    },
+    {
+      "mode": "domination",
+      "classification": "autonomous source bots; no supplied inputs or post-construction state writes",
+      "frames": 5586,
+      "time": 93.099999999996,
+      "over": true,
+      "endReason": "objective",
+      "events": {
+        "zone-progress": 305,
+        "grapple-hook": 8,
+        "move-start": 14,
+        "move-end": 14,
+        "grapple-release": 8,
+        "move-blocked": 3093,
+        "shot": 881,
+        "damage": 194,
+        "threat-ping": 5,
+        "power": 6,
+        "alt-state": 74,
+        "death": 9,
+        "spawn": 9,
+        "zone-capture": 2,
+        "powerup": 4,
+        "zone-score": 13,
+        "pickup": 3,
+        "weapon-switch": 1,
+        "zone-neutralized": 1,
+        "objective-win": 1
+      },
+      "initial": [
+        {
+          "id": 0,
+          "x": -86,
+          "z": 0
+        },
+        {
+          "id": 1,
+          "x": 85,
+          "z": 5
+        },
+        {
+          "id": 2,
+          "x": -85,
+          "z": -5
+        },
+        {
+          "id": 3,
+          "x": 86,
+          "z": 0
+        }
+      ],
+      "walked": {
+        "0": 799.2764665877296,
+        "1": 768.9818765197857,
+        "2": 806.7088648070924,
+        "3": 785.2876743823361
+      },
+      "teamScores": {
+        "0": 1.8333333333333317,
+        "1": 10.000000000000076
+      },
+      "actors": [
+        {
+          "id": 0,
+          "frags": 2,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 1.8333333333333317,
+            "objectiveCaptures": 1,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 251,
+            "hits": 52,
+            "damage": 308.2919030688261
+          },
+          "botState": "objective"
+        },
+        {
+          "id": 1,
+          "frags": 4,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 10.000000000000076,
+            "objectiveCaptures": 1,
+            "objectiveNeutralizations": 1,
+            "objectiveContests": 0,
+            "shots": 257,
+            "hits": 66,
+            "damage": 575.6496149769374
+          },
+          "botState": "objective"
+        },
+        {
+          "id": 2,
+          "frags": 1,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 196,
+            "hits": 41,
+            "damage": 307.83288357841053
+          },
+          "botState": "regroup"
+        },
+        {
+          "id": 3,
+          "frags": 2,
+          "scoreStats": {
+            "captures": 0,
+            "flagPickups": 0,
+            "flagReturns": 0,
+            "flagDrops": 0,
+            "objectiveTime": 0,
+            "objectiveCaptures": 0,
+            "objectiveNeutralizations": 0,
+            "objectiveContests": 0,
+            "shots": 171,
+            "hits": 35,
+            "damage": 284.9339145464619
+          },
+          "botState": "objective"
+        }
+      ]
+    }
+  ]
+}

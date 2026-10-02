@@ -208,7 +208,7 @@ func on_snapshot(frame: Dictionary) -> void:
 		local_motion.ingest(chase.infantry(actor, yaw, pitch).eye, true, Time.get_ticks_usec() / 1000000.0)
 	else:
 		local_motion.reset()
-	if not eligible(): release()
+	if not eligible() and not net.spectating: release()
 	update_graphics()
 	graphics.apply_state()
 
@@ -219,9 +219,13 @@ func aim_requested() -> bool:
 	return eligible() and not net.spectating and (vehicle.is_empty() or actor.get("vehicleSeat") == "passenger") and not actor.get("reloading", false) and controls.engaged and controls.focused and get_window().has_focus() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and controls.ads
 
 func _input(event: InputEvent) -> void:
+	if net.spectating:
+		controls.accept(event, false, false)
+		controls.release()
+		return
 	if SettingsAccess.overlay_open():
 		release()
-		if (event is InputEventKey or event is InputEventMouseButton) and not event.pressed: controls.accept(event, false)
+		controls.accept(event, false)
 		return
 	var focused := get_window().has_focus() and controls.focused
 	controls.accept(event, eligible() and focused, (vehicle.is_empty() or actor.get("vehicleSeat") == "passenger") and not actor.get("reloading", false) and not net.spectating)
@@ -254,7 +258,8 @@ func _process(delta: float) -> void:
 	age += delta
 	audiovisual.advance(delta, phase == "results" or phase == "active" and age < 0.5, get_window().has_focus(), SettingsAccess.overlay_open())
 	phase_age += delta
-	if not eligible() or SettingsAccess.overlay_open() or not get_window().has_focus() or (controls.engaged and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED): release()
+	if net.spectating: controls.release()
+	elif not eligible() or SettingsAccess.overlay_open() or not get_window().has_focus() or (controls.engaged and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED): release()
 	if phase == "connecting" and not create_sent and net.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
 		create_sent = true
 		checked(net.create_room() if join_room_id.is_empty() else net.join_room(join_room_id))
@@ -270,7 +275,7 @@ func _process(delta: float) -> void:
 			var result := net.send_input(p)
 			input_queued.emit(net.input_seq, p, result)
 			checked(result)
-	if not actor.is_empty():
+	if not net.spectating and not actor.is_empty():
 		var pose := chase.mounted(vehicle, actor, yaw, pitch, delta) if not vehicle.is_empty() else chase.infantry(actor, yaw, pitch)
 		if vehicle.is_empty() and eligible() and get_window().has_focus() and local_motion.ready():
 			var forward: Vector3 = pose.target - pose.eye
@@ -283,6 +288,7 @@ func _process(delta: float) -> void:
 	update_graphics()
 	hud.update(actor, vehicle, Lease.nearby(state, actor), controls.engaged, phase, age, error)
 	hud.objective(state, join_room_id.is_empty() and not net.spectating and roster.get("hostId", -1) == net.peer_id)
+	hud.visible = not net.spectating
 	if phase == "waiting": hud.info.text += "\nRoom %s · waiting for host / %d connected players" % [net.room_id, wait_for_players]
 
 func _exit_tree() -> void:

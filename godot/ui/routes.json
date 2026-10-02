@@ -119,6 +119,12 @@
     "tern-archipelago": {
       "name": "Tern Archipelago"
     },
+    "helix-conservatory": {
+      "name": "Helix Conservatory"
+    },
+    "gravemill-foundry": {
+      "name": "Gravemill Foundry"
+    },
     "parallax-observatory": {
       "name": "Parallax Observatory"
     }
@@ -424,6 +430,8 @@
             "sirocco-circuit",
             "copper-bowl",
             "tern-archipelago",
+            "helix-conservatory",
+            "gravemill-foundry",
             "parallax-observatory"
           ],
           "default": "switchyard-ward"
@@ -490,6 +498,21 @@
               "cocs",
               "cocs-coop"
             ],
+            "helix-conservatory": [
+              "deathmatch",
+              "teamdeathmatch",
+              "ctf",
+              "domination",
+              "koth"
+            ],
+            "gravemill-foundry": [
+              "deathmatch",
+              "teamdeathmatch",
+              "domination",
+              "assault",
+              "payload",
+              "combined-arms"
+            ],
             "parallax-observatory": [
               "deathmatch",
               "teamdeathmatch",
@@ -529,6 +552,8 @@
           "maps": [
             "breakwater-exchange",
             "copper-bowl",
+            "gravemill-foundry",
+            "helix-conservatory",
             "parallax-observatory",
             "rainmarket-exchange",
             "sirocco-circuit",
@@ -547,6 +572,21 @@
             ],
             "copper-bowl": [
               "puma-soccer"
+            ],
+            "gravemill-foundry": [
+              "assault",
+              "combined-arms",
+              "deathmatch",
+              "domination",
+              "payload",
+              "teamdeathmatch"
+            ],
+            "helix-conservatory": [
+              "ctf",
+              "deathmatch",
+              "domination",
+              "koth",
+              "teamdeathmatch"
             ],
             "parallax-observatory": [
               "ctf",

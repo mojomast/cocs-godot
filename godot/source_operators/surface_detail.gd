@@ -12,6 +12,7 @@ static var materials: Dictionary = {}
 static func mesh_for(size: Vector3) -> ArrayMesh:
 	var key := str(size)
 	if meshes.has(key): return meshes[key]
+	if meshes.size() >= 128: meshes.clear()
 	var original := Builder.mesh_for({"size":[size.x,size.y,size.z],"lower":0.8,"upper":1.0,"bevel":0.14})
 	var arrays := original.surface_get_arrays(0)
 	var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
@@ -26,12 +27,25 @@ static func mesh_for(size: Vector3) -> ArrayMesh:
 	arrays[Mesh.ARRAY_TEX_UV] = uv
 	var mesh := ArrayMesh.new()
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES,arrays)
+	# Tangents are derived from fitted UV0 for the optional Moth normal map.
+	var tool := SurfaceTool.new()
+	tool.create_from(mesh,0)
+	tool.generate_tangents()
+	mesh = tool.commit()
 	meshes[key] = mesh
 	return mesh
 
 static func material_for(base: StandardMaterial3D, style: String) -> StandardMaterial3D:
-	var key := "%s:%s:%s:%s" % [style,base.albedo_color.to_html(),base.metallic,base.roughness]
+	# Snapshot every stored base property (including exact Color/float values).
+	# Instance ID also prevents two different resource identities sharing a clone.
+	var key: Array = [style,base.get_instance_id()]
+	for property: Dictionary in base.get_property_list():
+		if int(property.usage) & PROPERTY_USAGE_STORAGE:
+			key.append(property.name)
+			key.append(base.get(property.name))
+	key = key.duplicate(true)
 	if materials.has(key): return materials[key]
+	if materials.size() >= 128: materials.clear()
 	var material: StandardMaterial3D = base.duplicate()
 	material.resource_name = "NativeDetail_" + style
 	material.albedo_texture = BOARD if style == "board" else (VENT if style == "vent" else PANEL)
