@@ -31,7 +31,7 @@ async function runRoute(plan){
  ? (await import('../../port/native-identity-zones/authority.mjs')).createIdentityZoneAuthority
  : plan.experience==='horde'
  ? (await import('../../port/native-horde/authority.mjs')).createAuthority
- : (await import('../../server/game-server.mjs')).createGameServer;
+  : (await import('../../port/pass-two/modes/challenge-authority.mjs')).createGameServer;
  const privateRuntime=plan.nativeOnly||plan.nativeArena||plan.campaign||plan.world;
  const runtime=privateRuntime?mkdtempSync(join(tmpdir(),'cocs-native-')):resolve('.port-runtime');mkdirSync(runtime,{recursive:true});
    const env={...process.env,COCS_SETTINGS_PATH:localSettingsPath};for(const [name,dir] of [['XDG_DATA_HOME','data'],['XDG_CONFIG_HOME','config'],['XDG_CACHE_HOME','cache']]){env[name]=resolve(runtime,dir);mkdirSync(env[name],{recursive:true});}

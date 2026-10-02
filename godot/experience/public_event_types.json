@@ -1,0 +1,16 @@
+[
+  "cocs-capture",
+  "cocs-depot-capture",
+  "cocs-depot-vehicle-spawn",
+  "cocs-device-use",
+  "cocs-prime",
+  "cocs-prime-start",
+  "cocs-prime-interrupt",
+  "cocs-terminal-hack",
+  "cocs-terminal-deploy",
+  "cocs-terminal-sabotage",
+  "cocs-terminal-vault",
+  "cocs-terminal-repair",
+  "cocs-terminal-restored",
+  "cocs-terminal-offline"
+]

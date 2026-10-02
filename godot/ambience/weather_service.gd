@@ -4,6 +4,8 @@ extends Node3D
 const Profile = preload("res://ambience/weather_profile.gd")
 const WeatherLook = preload("res://ambience/weather_look.gd")
 var look := WeatherLook.new()
+const RainContact = preload("res://ambience/rain_contact.gd")
+var contacts := RainContact.new()
 var _look_stamp := -1.0
 const MAX_PARTICLES := 48
 const MAX_EMITS_PER_TICK := 44
@@ -46,6 +48,7 @@ var _spawn_cursor := 0
 var _live: Array[Dictionary] = []
 
 func _ready() -> void:
+	add_child(contacts)
 	var quad := QuadMesh.new()
 	quad.size = Vector2(0.035, 0.20)
 	var material := StandardMaterial3D.new()
@@ -97,6 +100,7 @@ func _exit_tree() -> void:
 ## Source arena metadata only. No synthesized geometry or map parameters.
 func bind(arena: Dictionary, camera: Camera3D, mode: String = "playing", seed: int = 1) -> void:
 	look.clear()
+	contacts.bind(null)
 	_look_stamp = -1.0
 	_arena = arena.duplicate(true)
 	_camera = camera
@@ -122,6 +126,7 @@ func bind(arena: Dictionary, camera: Camera3D, mode: String = "playing", seed: i
 
 ## Production host supplies its static map only: excludes actors and pickups.
 func bind_presentation(world: Node3D, environment: Variant = null, sun: Variant = null) -> void:
+	contacts.bind(world)
 	# Campaign/native arenas free the inherited viewer nodes and own their
 	# persistent composition inside the map. Never pass freed instances to typed
 	# bindings or choose arbitrarily among multiple lighting owners.
@@ -134,15 +139,31 @@ func bind_presentation(world: Node3D, environment: Variant = null, sun: Variant 
 	if not is_instance_valid(sun):
 		var lights := world.find_children("*", "DirectionalLight3D", true, false)
 		sun = lights[0] if lights.size() == 1 else null
-	look.bind(world, environment as WorldEnvironment, sun as DirectionalLight3D)
+	look.bind(world, environment as WorldEnvironment, sun as DirectionalLight3D, _seed)
 	look.apply(_weather if _quality > 0.0 else "clear", 0.0, true)
 	_look_stamp = _elapsed
+
+## Explicit round/seek boundary; the AV owner waits for a fresh snapshot before
+## ticking again. Same-map material leases and lighting baselines remain owned.
+func reset_transients() -> void:
+	contacts.clear()
+	_live.clear()
+	_mesh.visible_instance_count = 0
+	_active_particles = 0
+	_spawn_serial = -1
+	_spawn_cursor = 0
+	_look_stamp = -1.0
+	_strike_window = -1
+	_lightning_claimed.clear()
+	_flash.light_energy = 0.0
+	_thunder_until = -1.0
 
 ## Explicit handoff: only true after the native ambient weather emitters are
 ## disabled for this viewer. False immediately releases the extra field.
 func set_native_weather_suppressed(acknowledged: bool) -> void:
 	_suppressed = acknowledged
 	if not acknowledged:
+		contacts.clear()
 		_mesh.visible_instance_count = 0
 		_active_particles = 0
 		_flash.light_energy = 0.0
@@ -166,6 +187,8 @@ func apply_settings(settings: Dictionary) -> void:
 	if (volume is float or volume is int) and is_finite(float(volume)):
 		_volume = clampf(float(volume) / 100.0, 0.0, 1.0) * 0.25
 	if not _enabled or _reduced or _quality <= 0.0:
+		contacts.clear()
+		_live.clear()
 		_mesh.visible_instance_count = 0
 		_active_particles = 0
 		_flash.light_energy = 0.0
@@ -176,6 +199,8 @@ func apply_settings(settings: Dictionary) -> void:
 func set_focus(focused: bool) -> void:
 	_focused = focused
 	if not focused:
+		contacts.clear()
+		_live.clear()
 		_mesh.visible_instance_count = 0
 		_active_particles = 0
 		_flash.light_energy = 0.0
@@ -189,6 +214,7 @@ func apply_snapshot(frame: Dictionary) -> void:
 	var timestamp: Variant = frame.get("time")
 	if (timestamp is float or timestamp is int) and is_finite(float(timestamp)) and float(timestamp) >= 0.0:
 		if _authoritative_time and float(timestamp) < _elapsed:
+			contacts.clear()
 			_spawn_serial = -1
 			_live.clear()
 			_strike_window = -1
@@ -230,6 +256,7 @@ func _refresh() -> void:
 	var next: String = _snapshot_weather if not _snapshot_weather.is_empty() else Profile.select(_arena, _time, _seed, _reduced)
 	if _reduced or not _enabled: next = "clear"
 	if next != _weather:
+		contacts.clear()
 		_weather = next
 		_strike_window = -1
 		_spawn_serial = -1
@@ -239,7 +266,9 @@ func _refresh() -> void:
 
 func _update_particles() -> void:
 	_active_particles = 0
+	contacts.begin_tick()
 	if not _suppressed or not wants_precipitation_handoff() or not is_instance_valid(_camera):
+		contacts.clear()
 		_mesh.visible_instance_count = 0
 		return
 	var preset: Dictionary = Profile.KINDS[_weather]
@@ -261,6 +290,8 @@ func _update_particles() -> void:
 			var size: float = preset.size * (0.8 + Profile.hash_unit(salt, 6) * 0.5)
 			var pos := origin + Vector3(cos(angle) * distance, 4.0 + Profile.hash_unit(salt, 3) * 6.0, sin(angle) * distance)
 			var velocity := Vector3((Profile.hash_unit(salt, 7) - 0.5) * preset.drift, -fall, (Profile.hash_unit(salt, 8) - 0.5) * preset.drift)
+			if _weather in ["rain", "storm"]:
+				contacts.schedule(pos, velocity, Color(preset.color), _elapsed)
 			var particle := {"pos": pos, "velocity": velocity, "born": _elapsed, "life": life, "size": size}
 			if _live.size() < MAX_PARTICLES: _live.append(particle)
 			else:
@@ -271,7 +302,8 @@ func _update_particles() -> void:
 	for particle: Dictionary in _live:
 		var age: float = _elapsed - float(particle.born)
 		if age < 0.0 or age >= float(particle.life): continue
-		var position: Vector3 = particle.pos + Vector3(particle.velocity.x * gust, particle.velocity.y, particle.velocity.z * gust) * age
+		var drift := 1.0 if _weather in ["rain", "storm"] else gust
+		var position: Vector3 = particle.pos + Vector3(particle.velocity.x * drift, particle.velocity.y, particle.velocity.z * drift) * age
 		var size: float = particle.size
 		var ratio: float = preset.streakRatio
 		_mesh.set_instance_transform(visible, Transform3D(Basis.IDENTITY.scaled(Vector3(size / 0.035, size * ratio / 0.20, 1.0)), position - origin))
@@ -279,6 +311,7 @@ func _update_particles() -> void:
 		visible += 1
 	_mesh.visible_instance_count = visible
 	_active_particles = visible
+	contacts.update(_elapsed, origin)
 
 func _update_lightning() -> void:
 	_flash.light_energy = 0.0

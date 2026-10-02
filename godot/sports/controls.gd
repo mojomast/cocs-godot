@@ -3,8 +3,10 @@ extends RefCounted
 var engaged := false
 var focused := true
 var keys: Dictionary = {}
+var bindings = preload("res://input_bindings/mapper.gd").new()
 
 func release() -> void:
+	bindings.suppress()
 	engaged = false
 	keys.clear()
 
@@ -13,6 +15,10 @@ func focus(value: bool) -> void:
 	release()
 
 func accept(event: InputEvent, eligible: bool) -> void:
+	event = bindings.translate(event, eligible and engaged and focused)
+	if event != null: accept_mapped(event, eligible)
+
+func accept_mapped(event: InputEvent, eligible: bool) -> void:
 	if event is InputEventKey and not event.echo:
 		if event.physical_keycode == KEY_ESCAPE and event.pressed:
 			release()

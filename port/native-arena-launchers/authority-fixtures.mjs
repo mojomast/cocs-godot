@@ -12,8 +12,8 @@ import {syntheticArena} from '../native-arenas/tests/fixtures.mjs';
 const exec = promisify(execFile), repository = new URL('../../', import.meta.url);
 
 export async function verifyFactoryBounds() {
-  for (const bots of [0, 8]) await assert.rejects(createNativeArenaAuthority({port:0, host:'127.0.0.1',
-    bots, arenaData:syntheticArena()}), /botCount must be 1\.\.7/);
+  for (const bots of [0, 25]) await assert.rejects(createNativeArenaAuthority({port:0, host:'127.0.0.1',
+    bots, arenaData:syntheticArena()}), /botCount must be 1\.\.24/);
 }
 
 export async function verifyActualFactory(kind, bots) {
@@ -24,7 +24,7 @@ export async function verifyActualFactory(kind, bots) {
   // kills it with ERR_UNKNOWN_FILE_EXTENSION. Pin CJS so the fixture owns its
   // loader regardless of the environment the gates run in.
   await writeFile(join(root, 'package.json'), '{"type":"commonjs"}\n');
-  const seconds = bots === 7 ? 300 : 60, valid = bots >= 1 && bots <= 7;
+  const seconds = bots === 24 ? 300 : 60, valid = bots >= 1 && bots <= 24;
   try {
     const put = async (path, text) => {await mkdir(dirname(join(root,path)), {recursive:true}); await writeFile(join(root,path),text);};
     const copy = async (from, to) => {await mkdir(dirname(join(root,to)), {recursive:true}); await copyFile(new URL(from,repository),join(root,to));};
@@ -114,7 +114,7 @@ else {
       for (const path of child.xdg) await assert.rejects(readdir(path),{code:'ENOENT'});
       const port = Number(text.match(/ACTUAL_ENDPOINT ws:\/\/127\.0\.0\.1:(\d+)\/native-arenas/)[1]);
       await new Promise((resolve,reject)=>{const socket=net.connect(port,'127.0.0.1');socket.once('connect',()=>{socket.destroy();reject(Error('Actual listener survived'));});socket.once('error',resolve);});
-    } else assert.match(text,/--bots must be 1\.\.7/);
+    } else assert.match(text,/--bots must be 1\.\.24/);
     assert.deepEqual((await readdir(root)).filter(name=>name.startsWith('cocs-native-')),[]);
   } finally {
     await rm(root,{recursive:true,force:true,maxRetries:5,retryDelay:100});

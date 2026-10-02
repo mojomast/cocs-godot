@@ -3,6 +3,7 @@ const BlackwaterCatalog = preload("res://horde_maps/blackwater_catalog.gd")
 const BlackwaterMap = preload("res://horde_maps/blackwater.gd")
 const Atmosphere = preload("res://native_arenas/identity_environment.gd")
 const ID := "blackwater-reclamation"
+const MissionGuidance = preload("res://horde/mission_guidance.gd")
 class BlackwaterCombat extends "res://world/combat_feedback.gd":
 	func _configure_map(state: Dictionary) -> void:
 		if not is_instance_valid(effect_camera) or not is_instance_valid(effect_session): return
@@ -48,7 +49,8 @@ func on_blackwater_events(items: Array) -> void:
 		var kind := str(item.get("type", ""))
 		if kind not in ["blackwater-station-armed", "blackwater-station-restored"]: continue
 		var station := str(item.get("station", "")).replace("-", " ").to_upper()
-		mission_notice = "%s · %s" % [station, "REPAIR ARMED · HOLD THE AREA" if kind == "blackwater-station-armed" else "RESTORED · SUPPLY ONLINE"]
+		mission_notice = "%s · %s" % [station, "REPAIR ARMED · HOLD THE AREA" if kind == "blackwater-station-armed" else "RESTORED · SYSTEM ONLINE"]
+		if kind == "blackwater-station-restored" and item.get("pickupId") != null: mission_notice += " · CACHE REFRESHED"
 		mission_notice_until = float(item.get("time", 0.0)) + 5.0
 
 func _init() -> void:
@@ -125,27 +127,32 @@ func on_snapshot(frame: Dictionary) -> void:
 		return
 	builder.call("apply_source_stage", stage, str(frame.get("inputEpoch", "")))
 	builder.call("apply_station_state", mission)
-	var target := ""
-	for item: Variant in mission.get("stations", []):
-		if not item is Dictionary or item.get("id") in mission.get("completed", []) or not item.get("available", false): continue
-		target = "%s · %.1f / %.1fs" % [str(item.caption), float(item.progress), float(item.required)]
-		if str(item.id) == str(mission.get("active", "")): target += " · WORKING"
-		else: target += " · E TO ARM"
-		break
-	if not target.is_empty():
-		for item: Variant in mission.get("stations", []):
-			if item is Dictionary and target.begins_with(str(item.get("caption", ""))):
-				var local: Dictionary = presentation.local_actor
-				if not local.is_empty(): target += " · %.0fm" % Vector2(float(item.x), float(item.z)).distance_to(Vector2(float(local.x), float(local.z)))
-				break
-		horde_label.text += "\n" + target
-	if not mission_notice.is_empty() and float(state.get("time", 0.0)) <= mission_notice_until:
+	var guidance := MissionGuidance.project(mission, stage, presentation.local_actor)
+	var viewport_size := get_viewport().get_visible_rect().size
+	var compact := viewport_size.x<850 or viewport_size.y<600
+	if compact:
+		var single: Dictionary = state.get("singleplayer",{})
+		horde_label.text = "WAVE %d/%d · %s · LIVES %d · ENEMIES %d" % [int(single.get("wave",0)),int(single.get("waveTarget",10)),str(single.get("phase","")).to_upper(),int(single.get("lives",0)),int(single.get("enemiesAlive",0))]
+		var boss: Variant = single.get("boss")
+		if boss is Dictionary and boss.get("alive",false): horde_label.text += "\n%s · HP %d/%d · PHASE %d" % [str(boss.get("name","BOSS")),int(boss.get("hp",0)),int(boss.get("maxHp",0)),int(boss.get("phase",1))]
+	horde_label.text += preload("res://input_bindings/hints.gd").resolve("\nSYSTEMS %d/4 · %s\n%s" % [guidance.completed,guidance.route,guidance.instruction])
+	if not mission_notice.is_empty() and float(state.get("time", 0.0)) <= mission_notice_until and (not compact or mission.get("active") == null):
 		horde_label.text += "\n" + mission_notice
-	var transit: Variant = stage.get("transit")
-	if transit is Dictionary:
-		var to := str(transit.get("to", ""))
-		horde_label.text += "\nFLOODGATE %s · %s · WALK TO %s" % [to, "OPENING" if str(transit.get("phase", "")) == "warning" else "OPEN", str(envelope.presentation.stages.get(to, to))]
 	var serial := int(mission.get("serial", 0))
 	if serial > last_serial:
 		last_serial = serial
-		horde_label.text += "\nSYSTEM RESTORED · SUPPLY CACHE AVAILABLE"
+
+func _process(delta: float) -> void:
+	super(delta)
+	var viewport_size := get_viewport().get_visible_rect().size
+	var compact := viewport_size.x<850 or viewport_size.y<600
+	horde_label.add_theme_font_size_override("font_size",13 if compact else 17)
+	var hud: Node = get_node_or_null("GameHUD")
+	var top := 70.0
+	if hud != null and hud.status_panel.visible: top = hud.status_panel.position.y+hud.status_panel.size.y+8.0
+	horde_label.position.y = top
+	# Reflow downward after changing viewport/font; allow the label to shrink.
+	horde_label.size.y = horde_label.get_minimum_size().y
+	if choice_layer != null:
+		choice_layer.offset = Vector2(20,top+horde_label.size.y+6)
+		choice_scroll.size.y = maxf(32,viewport_size.y-choice_layer.offset.y-(116 if compact else 174))
