@@ -11,6 +11,12 @@ Windows/Linux release, then start another Astra pass using the evidence-linked
 remaining-gap inventories and any new playtest feedback. This authorizes one
 additional pass; retain separate revision, acceptance and release records.
 
+**Additional owner request:** three more Astra agents are building distinct,
+complex Blender maps in isolated branches. See the [new-map workstream](../new-maps/WORKSTREAM.md).
+Their design/code/source checks run in parallel; they join the explicit heavy
+tool queue after current feature acceptance. Shared map/package integration is
+parent-owned, with separate map acceptance records.
+
 ## Approach
 
 Compare actual source and native implementations before selecting work. Historical
