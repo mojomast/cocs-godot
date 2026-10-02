@@ -258,3 +258,13 @@ all stage cameras at max separation and jump height; low/reduced modes; exported
 Windows/Linux closure. Headless/source proof does not substitute for native art,
 human fighting feel/balance or real-GPU performance. Canonical/package hooks are
 parent-owned and applied after the candidate has passed its focused native gates.
+
+### Post-launch stage/resource decision
+
+Helix revision 2 subsequently completed Blender/native production and parent
+architectural review. Its accepted integration candidate is merged at `c8432fcb`.
+Presentation now targets its lightwell/specimen composition as a **fourth** stage,
+alongside Basalt, Canopy and Crown. Use the final revision-2 GLB/hash, not prototype
+art. Parallax remains a later candidate. All four fighting compositions require
+their own native readability/camera checks. The heavy slot has passed to Foundry
+revision 3; fighting lanes still have no heavy-tool grant.

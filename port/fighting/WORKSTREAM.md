@@ -104,10 +104,16 @@ integration. No lane received a Blender/Godot grant at launch.
 
 ## Existing work and resource ownership
 
-The finishing agents remain active under `port/finish/WORKSTREAM.md`. Helix
-revision 2 owns the exclusive Blender/Godot/import/render/encode slot. Fighting
-research has no heavy grant. Future code authoring may proceed independently once
-planned; actual Blender and native production require serialized explicit grants.
+The finishing work remains active under `port/finish/WORKSTREAM.md`. Gravemill
+revision 3 now owns the exclusive Blender/Godot/import/render/encode slot after
+Helix's explicit release. Fighting implementation remains source/code-only;
+actual Blender and native production require serialized explicit grants.
+
+Helix revision-2 art passed parent architectural review and is merged at `c8432fcb`.
+The fighting presentation agent was assigned its lightwell/specimen composition as
+a fourth stage target using the actual final GLB. This promotes its eligibility
+for stage authoring, not native fighting-stage acceptance. Its side-on framing,
+fighter visibility and stage budget still require verification.
 
 Keep frozen source and derivative identities intact. New fighting authority must
 be isolated with explicit provenance rather than silently changing existing FPS
