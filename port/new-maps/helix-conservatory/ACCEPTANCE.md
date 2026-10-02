@@ -32,6 +32,20 @@ All rounds terminate through source scoring (`capture`, `frag`, `objective`), no
 
 Failed full-round attempts are preserved: attempt 01 caught harness syntax; attempt 02 completed journeys but incorrectly expected a `match-end` event the source does not emit. The corrected assertion requires actual `match.over` and source `overReason`. Attempts 03 and 04 are passing runs; attempt 04 adds trajectory hashes, normalized config and milestone evidence. `validatedSourceModes` lives in `source-validation.json`; public `modeBindings` remains empty and geometry hashes are unchanged.
 
+## Source wall-perimeter regression review
+
+Cross-map review after Gravemill `32cbf30f`: **Helix already emits all 712 wall polygons as individual triangles** in `recipe.mjs`'s `mesh(..., collision='wall')` branch. Each triangle's projected perimeter includes a full-height diagonal, satisfying the locked `terrainWallSegments`/`terrainObstructed` contract. No recipe, art, collision, mode fixture, or geometry hash changed during this review.
+
+Run `node --test tools/godot-multiplayer/new-maps/helix-conservatory/wall-contacts.test.mjs`. Set `HELIX_WRITE_CONTACT_REPORT=1` to save `wall-contact-validation.json`. **4/4 tests passed**; evidence: `wall-contacts-attempt-01.tap` in the evidence directory. Checks include:
+
+- Every production wall has exactly three vertices and a projected full-height segment.
+- Twelve continuous-input contacts: both sides of ground aqueduct pier, archive wall, 1.4 m low planter/parapets at 0/8/16 m, and crown rib foot at 24 m. Each contact holds directional input for **720 frames / 12 seconds**. Every stopping gap is **0.426150481 m**, above the source actor radius of 0.42 m, and additional pressure leaves the actor stopped.
+- Ramp-to-wall contacts climb from **7.633142309 to 8 m** at the laboratory and descend from **16.728759030 to 16 m** at a canopy planter. Both settle on actual terrain support without penetrating.
+- Both directions through the archive portals and beneath the aqueduct remain traversable using continuous source movement.
+- A **test-only merged-quad negative control** reproduces the reported bug on the same ground pier. Starting at `(10,0,16)` with +X input for 120 frames: merged quads let the actor reach **X=23.618293963**, through the pier at X=13.35–14.65; the unchanged production triangles stop at **X=12.923849519**, gap **0.426150481 m**. Both representations still stop the source ray at **3.35 m**, demonstrating why shot tests alone were insufficient.
+
+Before/after production measurements are identical: 712 triangles and geometry hash `0f089e1cc6f741b08a842b0225560cb261dcbdf7d5e7031829945499f29b0553`. This is a verification-only follow-up. Existing route graph and seven controlled source rounds retain their unchanged geometry provenance. No locked-source, registry, Blender or native work was performed.
+
 ## Explicit native art coverage contract — parent-owned integration
 
 This map's recipe contains `arena.art = {meshes, palette}`, with **no `art.ground` array**. The older native `map.gd` path uses `art.ground` to decide whether to suppress fallback terrain rendering. Parent must explicitly mark this GLB as complete terrain visual coverage, so loading it does not also draw duplicate generated ground. Collision still comes from the reviewed terrain recipe. Do not infer coverage from the legacy field or use a generic whole-mesh collider.
