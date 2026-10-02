@@ -4,6 +4,7 @@ extends Node
 const Music = preload("res://audio/music_service.gd")
 const Vehicle = preload("res://audio/vehicle_service.gd")
 const Motifs = preload("res://audio/objective_motifs.gd")
+const Threats = preload("res://audio/threat_service.gd")
 const Weather = preload("res://ambience/weather_service.gd")
 const Router = preload("res://audio/event_router.gd")
 const Outcome = preload("res://audio/outcome.gd")
@@ -11,6 +12,7 @@ const Buses = preload("res://audio/buses.gd")
 var music
 var vehicle
 var motifs
+var threats
 var weather
 var moth_bed := AudioStreamPlayer.new()
 var router := Router.new()
@@ -40,6 +42,8 @@ func _ready() -> void:
 	add_child(vehicle)
 	motifs = Motifs.new()
 	add_child(motifs)
+	threats = Threats.new()
+	add_child(threats)
 	weather = Weather.new()
 	add_child(weather)
 	moth_bed.name = "ReviewedMothBed"
@@ -58,6 +62,8 @@ func bind_session(owner: Node, eye: Camera3D, arena: Dictionary, match_mode: Str
 	host = owner
 	camera = eye
 	mode = match_mode
+	threats.stop_all()
+	threats.set_mode(mode)
 	music.bind(owner)
 	music.set_mode_theme(mode)
 	music.set_seed(seed)
@@ -81,6 +87,7 @@ func start_round(identity: Variant) -> void:
 	music.reset()
 	vehicle.stop_all()
 	motifs.stop_all()
+	threats.stop_all()
 	context_ready = false
 	last_time = -1.0
 	intensity_stamp = -1000.0
@@ -95,6 +102,7 @@ func seek_reset(identity: Variant) -> void:
 	music.reset()
 	vehicle.stop_all()
 	motifs.stop_all()
+	threats.stop_all()
 	context_ready = false
 	last_time = -1.0
 	suspension_reason = "replay_seek"
@@ -106,6 +114,7 @@ func apply_settings(normalized: Dictionary) -> void:
 	if music != null: music.set_settings(settings)
 	if vehicle != null: vehicle.apply_settings(settings)
 	if motifs != null: motifs.apply_settings(settings)
+	if threats != null: threats.apply_settings(settings)
 	if weather != null: weather.apply_settings(settings)
 	if weather != null: _sync_weather_ownership()
 	if moth_bed.stream != null:
@@ -118,6 +127,7 @@ func apply_settings(normalized: Dictionary) -> void:
 		if music != null: music.reset()
 		if vehicle != null: vehicle.stop_all()
 		if motifs != null: motifs.stop_all()
+		if threats != null: threats.stop_all()
 
 func apply_snapshot(state: Dictionary, local_id: int, is_fresh: bool = true) -> void:
 	actor_id = local_id
@@ -141,11 +151,13 @@ func apply_snapshot(state: Dictionary, local_id: int, is_fresh: bool = true) -> 
 			# not evidence of a new round or permission to replay old wire IDs.
 			music.reset()
 			vehicle.stop_all()
+			threats.stop_all()
 		last_time = float(time)
 	weather.apply_snapshot(state)
 	_sync_weather_ownership()
 	var config: Variant = state.get("config")
 	if config is Dictionary and config.get("mode") is String: music.set_mode_theme(config.mode)
+	if config is Dictionary and config.get("mode") is String: threats.set_mode(config.mode)
 	if focused and settings.get("mute", false) != true: music.start()
 	var alive := actor.get("health", 0) is int or actor.get("health", 0) is float
 	var hp := float(actor.get("health", 0)) if alive else 0.0
@@ -205,6 +217,10 @@ func apply_events(events: Array) -> void:
 	if not focused or not fresh or settings.get("mute", false) == true: return
 	for plan: Dictionary in plans:
 		var kind: String = plan.type
+		if kind == "enemy-telegraph":
+			if scene != "results" and threats.event_plan(plan, actor, last_time):
+				last_cue = "%s:%d" % [kind, int(plan.id)]
+			continue
 		if kind in ["vehicle-shot", "vehicle-damage"]:
 			vehicle.event_plan(plan)
 			continue
@@ -222,6 +238,7 @@ func finish(outcome: String = "neutral") -> void:
 	music.set_outcome(outcome if outcome in ["victory", "defeat"] else "neutral")
 	vehicle.stop_all()
 	motifs.stop_all()
+	threats.stop_all()
 
 func finish_state(state: Dictionary, local_actor_id: int, match_mode: String) -> void:
 	finish(Outcome.resolve(state, match_mode, local_actor_id))
@@ -256,6 +273,7 @@ func set_focus(value: bool) -> void:
 	music.set_focus(value)
 	vehicle.set_focus(value)
 	motifs.set_focus(value)
+	threats.set_focus(value)
 	weather.set_focus(value)
 	if not value: moth_bed.stop()
 	if not value: suspend("focus")
@@ -266,11 +284,13 @@ func suspend(reason: String) -> void:
 	music.reset()
 	vehicle.stop_all()
 	motifs.stop_all()
+	threats.stop_all()
 	weather.set_focus(false)
 	moth_bed.stop()
 
 func status() -> Dictionary:
 	return {"music":music.status(), "vehicle":vehicle.status(), "motifs":motifs.status(), "weather":weather.diagnostics(), "routing":router.status(),
+		"threats":threats.status(),
 		"current_scene":scene, "last_cue_id":last_cue, "suspension_reason":suspension_reason,
 		"moth_bed":moth_bed.playing, "ready":context_ready, "fresh":fresh, "focused":focused}
 
