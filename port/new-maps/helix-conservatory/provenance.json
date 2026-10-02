@@ -1,0 +1,21 @@
+{
+  "id": "helix-conservatory",
+  "recipeHash": "4ed79a7e3dd26ca5478d65dc7e9263d169a4b24ce3abc80288411ba41eebb861",
+  "geometryHash": "0f089e1cc6f741b08a842b0225560cb261dcbdf7d5e7031829945499f29b0553",
+  "meshHash": "681574451b8a982b2e7abf46ec6549b89c6264a3481cd919fdb30dc8d2930913",
+  "sourceLock": "515daf",
+  "reviewedDerivative": "0326",
+  "status": "ready-for-blender",
+  "modes": [],
+  "candidateModes": [
+    "deathmatch",
+    "teamdeathmatch",
+    "arsenal",
+    "juggernaut",
+    "ctf",
+    "domination",
+    "koth"
+  ],
+  "meshCount": 1338,
+  "triangles": 5034
+}
