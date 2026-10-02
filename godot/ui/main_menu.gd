@@ -209,6 +209,12 @@ func build_ui() -> void:
 	replays_button.custom_minimum_size = Vector2(150, 44)
 	replays_button.pressed.connect(open_replays)
 	actions.add_child(replays_button)
+	var fighting_button := Button.new()
+	fighting_button.name = "Fighting"
+	fighting_button.text = "FIGHTING"
+	fighting_button.custom_minimum_size = Vector2(150, 44)
+	fighting_button.pressed.connect(open_fighting)
+	actions.add_child(fighting_button)
 	actions.add_child(settings_button)
 	actions.add_child(quit_button)
 	right.add_child(actions)
@@ -561,6 +567,19 @@ func open_replays() -> void:
 	if error != OK:
 		quitting = false
 		status.text = "Could not open Replay Library."
+		status.add_theme_color_override("font_color", ERROR_INK)
+		refresh_attract()
+
+func open_fighting() -> void:
+	if quitting or SettingsAccess.overlay_open(): return
+	quitting = true
+	stop_attract()
+	save_preferences()
+	audiovisual.suspend("fighting")
+	var error := get_tree().change_scene_to_file("res://fighting/main.tscn")
+	if error != OK:
+		quitting = false
+		status.text = "Could not open Fighting."
 		status.add_theme_color_override("font_color", ERROR_INK)
 		refresh_attract()
 
