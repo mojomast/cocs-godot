@@ -1,38 +1,11 @@
 extends RefCounted
-## Private family instances. Packed baked data, never procedural noise, drives wear.
+## Private family instances. Packed baked data drives wear; stable spatial blending
+## decorrelates organic grain. Shared Moth assets and materials remain immutable.
 const Language = preload("res://material_language/library.gd")
 const Families = preload("res://material_language/families.gd")
 const Profile = preload("res://multiplayer_worlds/dressing/profile.gd")
 const Moth = preload("res://moth/library.gd")
-const FamilyShader = preload("res://material_language/family.gdshader")
-static var _wear_shader: Shader
-const UNIFORMS := """
-uniform float macro_tiles_per_metre = 0.06;
-uniform float macro_strength = 0.0;
-uniform float wear_strength = 0.0;
-uniform float wear_height_min = 0.0;
-uniform float wear_height_max = 2.0;
-uniform float wear_roughness = 0.95;
-uniform vec4 wear_tint : source_color = vec4(0.4, 0.35, 0.3, 1.0);
-uniform mat4 map_inverse;
-"""
-const FRAGMENT := """
-	// Macro samples the SAME verified packed surface data at a separate scale.
-	// Height-bound deposit accumulates in texture creases on selected materials.
-	vec3 mp = world_position * macro_tiles_per_metre;
-	vec3 macro = texture(data_map, mp.zy).rgb * weights.x
-		+ texture(data_map, mp.xz).rgb * weights.y
-		+ texture(data_map, mp.xy).rgb * weights.z;
-	float local_height = (map_inverse * vec4(world_position, 1.0)).y;
-	float band = smoothstep(wear_height_min, wear_height_min + 0.15, local_height)
-		* (1.0 - smoothstep(wear_height_max - 0.15, wear_height_max, local_height));
-	float deposit = clamp((1.0 - macro.r) * 2.0, 0.0, 1.0) * band * wear_strength;
-	if (has_data) {
-		ALBEDO *= mix(1.0, 0.65 + macro.b * 0.5, macro_strength);
-		ALBEDO = mix(ALBEDO, wear_tint.rgb, deposit);
-		ROUGHNESS = mix(ROUGHNESS, wear_roughness, deposit);
-	}
-"""
+const PrivateShader = preload("res://multiplayer_worlds/dressing/surface.gdshader")
 
 static func build(entry: Dictionary, root: Node3D) -> Dictionary:
 	var options: Dictionary = entry.get("options", {}).duplicate(true)
@@ -63,13 +36,9 @@ static func build(entry: Dictionary, root: Node3D) -> Dictionary:
 	if shared == null: return {"error": "material-language cache refused " + family}
 	# Never set a parameter on the cached material or mutate its shader.
 	var material := shared.duplicate() as ShaderMaterial
-	if float(options.get("macro_strength", 0)) > 0 or float(options.get("wear_strength", 0)) > 0:
-		if _wear_shader == null:
-			if FamilyShader.code.count("varying vec3 world_position;") != 1 or FamilyShader.code.count("\tMETALLIC = metallic;") != 1:
-				return {"error": "family shader extension integration point changed"}
-			_wear_shader = Shader.new()
-			_wear_shader.code = FamilyShader.code.replace("varying vec3 world_position;", UNIFORMS + "\nvarying vec3 world_position;").replace("\tMETALLIC = metallic;", FRAGMENT + "\n\tMETALLIC = metallic;")
-		material.shader = _wear_shader
+	var variation_active: bool = options.get("variation_mode", "none") != "none" and float(options.get("variation_strength", 0)) > 0.0
+	if float(options.get("macro_strength", 0)) > 0 or float(options.get("wear_strength", 0)) > 0 or variation_active:
+		material.shader = PrivateShader
 		# Preserve every verified family sampler/response across shader assignment.
 		for uniform: Dictionary in shared.shader.get_shader_uniform_list():
 			material.set_shader_parameter(str(uniform.name), shared.get_shader_parameter(str(uniform.name)))
@@ -77,4 +46,8 @@ static func build(entry: Dictionary, root: Node3D) -> Dictionary:
 		for key: String in Profile.WEAR_BOUNDS:
 			if options.has(key): material.set_shader_parameter(key, options[key])
 		if options.has("wear_tint"): material.set_shader_parameter("wear_tint", Color(options.wear_tint))
+		material.set_shader_parameter("variation_mode", Profile.VARIATION_MODES.find(options.get("variation_mode", "none")))
+		material.set_shader_parameter("variation_seed", int(options.get("variation_seed", 0)))
+		for key: String in Profile.VARIATION_BOUNDS:
+			if options.has(key): material.set_shader_parameter(key, options[key])
 	return {"material": material, "resources": paths}
