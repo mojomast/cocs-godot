@@ -18,6 +18,11 @@ func _ready() -> void:
 	add_child(camera)
 	add_child(environment)
 	add_child(sun)
+	# Viewer helpers still write these controls; retain ownership without showing UI.
+	add_child(label)
+	add_child(selector)
+	label.hide()
+	selector.hide()
 	add_child(presentation)
 	add_child(pickups)
 	add_child(combat)
