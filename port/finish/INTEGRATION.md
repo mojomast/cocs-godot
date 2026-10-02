@@ -1,6 +1,6 @@
 # Combined non-art feature candidate
 
-**READY FOR COMBINED ENGINE — native grant deferred.**
+**Historical source checkpoint. Native follow-up and remaining blockers: [NATIVE_CLOSEOUT.md](NATIVE_CLOSEOUT.md).**
 
 Branch: `finish/integration-20261002`; base: `6cefd9eb`.
 Runtime/source candidate: `76c6a9ec` (the following documentation commit does not

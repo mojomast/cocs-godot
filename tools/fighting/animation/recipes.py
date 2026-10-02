@@ -77,7 +77,7 @@ def neutral(operator):
     p = PROFILES[operator]
     return dict(lh=p['lh'][:], rh=p['rh'][:], lf=[p['stagger'],0,-.15],
                 rf=[-p['stagger'],0,.15], hips=[0,-p['sink'],0],
-                torso=p['torso'][:], head=[0,0,0], wrist=[0,0])
+                torso=p['torso'][:], head=[0,0,0], wrist=[0,0], body=[0,0,0])
 
 
 def alter(pose, **changes):
@@ -153,6 +153,23 @@ def state_keys(operator, name):
         dash = name.startswith('dash')
         if dash: b['hips'][1] -= .045
         step = stride*(1.3 if dash else 1)*direction
+        if not dash:
+            b['hips'][1] -= .02
+            # Grounded support moves opposite the actor at constant speed;
+            # the other foot lifts, passes and plants, then roles alternate.
+            poses=[]
+            for t in (0,.125,.25,.375,.5,.625,.75,.875,1):
+                phase=(t*2)%1
+                first=t<.5 or t==1
+                planted=step*(1-2*phase)
+                swing=-step+2*step*phase
+                height=lift*(1-abs(2*phase-1))
+                left=[planted,0,-.15] if first else [swing,height,-.15]
+                right=[swing,height,.15] if first else [planted,0,.15]
+                if t==1: left,right=[step,0,-.15],[-step,0,.15]
+                pose=alter(b,lf=left,rf=right,torso=[turn[0],turn[1]*(1-2*phase)*(1 if first else -1),turn[2]*.45])
+                poses.append((t,pose))
+            return poses
         left = alter(b,lf=[step,lift,-.15],torso=turn,lh=[.15,-.2,-.12])
         plant = alter(left,lf=[step,0,-.15],hips=[.035,b['hips'][1]-.03,0])
         right = alter(b,rf=[step,lift,.15],torso=[turn[0],-turn[1],-turn[2]],rh=[.1,-.24,.13])
@@ -186,11 +203,12 @@ def state_keys(operator, name):
                        lh=[-.18,.26,-.25],rh=[-.22,-.15,.28],
                        hips=[-.04,b['hips'][1]-(.29 if down else .06),0],head=[-18,12,7])
         if down:
-            recoil = alter(recoil,torso=[64,a[1],a[2]],lf=[.27,0,-.15],rf=[-.22,0,.15])
+            recoil = alter(recoil,hips=[0,b['hips'][1],0],torso=[12,a[1]*.3,a[2]*.3],
+                lf=[.13,0,-.15],rf=[-.13,0,.15],body=[82,a[1]*.3,a[2]*.2])
         if name == 'hit_air':
             recoil = alter(recoil,lf=[.16,.28,-.15],rf=[-.12,.22,.15],torso=[-39,a[1]*1.25,a[2]],head=[-22,0,0])
         if name == 'lose':
-            recoil = alter(recoil,hips=[0,-.41,0],torso=[48,a[1]*.4,a[2]*.6],head=[32,0,7],lh=[.1,-.63,-.15],rh=[-.08,-.59,.15])
+            recoil = alter(recoil,torso=[18,a[1]*.4,a[2]*.6],head=[32,0,7],lh=[.1,-.63,-.15],rh=[-.08,-.59,.15],body=[88,a[1]*.2,a[2]*.4])
         keys = [(0,b),(.19,recoil),(.56,alter(recoil,head=[15,-12,0])),(1,recoil if down else b)]
         return [(1-t,v) for t,v in reversed(keys)] if name == 'wakeup' else keys
     if name == 'throw_tech':
@@ -228,7 +246,12 @@ def sample(keys, t):
     for (ta,a),(tb,b) in zip(keys,keys[1:]):
         if t <= tb:
             v = (t-ta)/(tb-ta)
+            linear_v = v
             v = v*v*(3-2*v)  # bounded Hermite; no Bezier overshoot through floor
+            # Ground contact gait needs constant backwards support velocity,
+            # not eased skating between equally spaced foot keys.
+            if len(keys)==9:
+                return {k:[x+(y-x)*(linear_v if k in ('lf','rf') else v) for x,y in zip(a[k],b[k])] for k in a}
             return {k:[x+(y-x)*v for x,y in zip(a[k],b[k])] for k in a}
     return deepcopy(keys[-1][1])
 
@@ -246,6 +269,10 @@ def library(operator):
         keys = throw_keys(operator,name) if (operator,name) in PAIRS else attack(operator,name) if name in MOVES else state_keys(operator,name)
         clips[name] = dict(keys=keys,loop=name in ('idle','walk_f','walk_b','crouch','guard_hi','guard_lo'),
                            frames=60, phases={'start':0,'anticipation':.22,'preactive':.40,'impact':.50,'recovery':.60,'end':1})
+        if name in ('walk_f','walk_b'):
+            stride={'chatgpt':.18,'claude':.12,'grok':.23,'meta':.105,'gemini':.20,'deepseek':.11,'mistral':.29,'kimi':.22,'qwen':.15}[operator]
+            speed={'chatgpt':52,'claude':44,'grok':57,'meta':40,'gemini':56,'deepseek':42,'mistral':62,'kimi':58,'qwen':48}[operator]
+            clips[name]['frames']=4*stride*1000/speed
     # Identical shipped joint rests: 25 shared authored reactions, 225 resolved
     # usages. Mesh/contact inspection still covers all nine robot silhouettes.
     clips.update(shared_victims())
@@ -279,7 +306,7 @@ def timing(clip, move=None):
     hitbox envelope is authoritative. Throws require explicit shared timeline.
     """
     if move is None:
-        return [[0,0],[clip['frames'],clip['frames']/60]]
+        return [[0,0],[clip['frames'],1.0]]
     if 'contact' in clip['phases']:
         pair = move.get('throw',move.get('counter',{}))
         if not pair: raise ValueError('paired move requires throw or counter metadata')

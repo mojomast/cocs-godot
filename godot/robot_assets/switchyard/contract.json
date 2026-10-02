@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "status": "source-authored-awaiting-Blender-grant",
+  "seed": 31027,
+  "skins": {"needle_surveyor": "skirmisher", "caisson_guard": "bulwark", "kiln_tender": "mortar"},
+  "selection": "explicit-local-opt-in-after-configure; originals-default",
+  "rig": "rigid-assembly-adapter-to-RobotVisual; editable-one-weight-skeleton-in-master",
+  "source": {
+    "game/core.mjs": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+    "port/native-campaign/core.generated.mjs": "2800bec533c3810a94d61e2f7f20f93574e44b13346dee2085200a0467759cca",
+    "port/native-campaign/enemies.mjs": "f3bed6afe31c3ee87f05cf3f02f162916785eedf64171ed7bb7058d6668b6b7e",
+    "port/native-horde/robot-roles.mjs": "d61dfc281cfe71ab0525735a1a299d868394ffc5c1cff4e8b0c72f7e62f056a1",
+    "godot/campaign/robot_visual.gd": "ff8a41f5cb09fe1f1ffc5f6fcc60ce3107eb9ced5e01350149aac4bb2d295735",
+    "godot/source_operators/motion_math.gd": "ef5133895e42a7b5e60e80bfc5e09da021566ab1e40ae12eee523d4c46d8b633",
+    "godot/source_operators/ground_contact.gd": "566f0b43f3430593eff3e6a35a9841a4ed3a67e00b202c3153f5fab75fb5b4fd",
+    "tools/godot-campaign/robot-art/build.py": "470a45d39dd24d13fac9f7bd5e1cffd395a8aa9f4de2f2ecddca365be908815e"
+  },
+  "authority": {
+    "actorCenterAboveFeet": 0.9,
+    "feetOrigin": [0, -0.9, 0],
+    "forward": [0, 0, -1],
+    "eyeStandingFallback": 1.45,
+    "muzzleFromEye": {"right": 0.24, "forward": 0.42, "down": 0.24},
+    "campaignScale": {"skirmisher": 0.86, "bulwark": 1.5, "mortar": 1.15},
+    "campaignContact": {
+      "skirmisher": {"width": 0.713, "depth": 0.701, "offsetX": -0.0825, "offsetZ": -0.0495, "bottom": 0.569, "top": 1.75},
+      "bulwark": {"width": 1.336, "depth": 1.132, "offsetX": 0, "offsetZ": -0.086, "bottom": 1.267, "top": 2.686, "shield": {"width": 1.05, "depth": 0.54, "offsetX": -0.69, "offsetZ": -0.69, "bottom": 0.81, "top": 2.52}},
+      "mortar": {"width": 1.052, "depth": 1.086, "offsetX": 0, "offsetZ": 0, "bottom": 0.497, "top": 1.521}
+    },
+    "bodyMotionMargin": 0.06,
+    "collision": "none",
+    "events": ["vx", "vz", "grounded", "yaw", "bodyYaw", "pitch", "shots", "melee", "health", "armor", "campaignAttackWindup", "campaignExposed", "campaignShieldHit", "artilleryWindup", "phalanxWindup", "flankWindup"]
+  },
+  "budgetsNotMeasurements": {
+    "robotTrianglesPerLOD": [14000, 8500, 5500],
+    "robotDrawsPerLOD": [13, 13, 9],
+    "materialsPerAssembly": 1,
+    "propTriangles": 3000,
+    "propDraws": 1,
+    "propInstancesPerWorkshop": 24,
+    "propCollision": "none; optional placement only within reviewed existing solid geometry; open frame remains open"
+  }
+}

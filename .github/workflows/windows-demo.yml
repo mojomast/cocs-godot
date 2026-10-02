@@ -6,6 +6,10 @@ on:
         description: Release tag containing cocs-native-windows.zip
         required: true
         type: string
+      candidate:
+        description: Exact 40-hex frozen package commit (also the verifier checkout)
+        required: true
+        type: string
       startup_diagnostic:
         description: Observe three original Campaign.cmd Crown startups instead of the suite
         type: boolean
@@ -21,15 +25,22 @@ permissions:
 jobs:
   windows-smoke:
     runs-on: windows-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.candidate }}
+          fetch-depth: 0
       - name: Download exact release asset and extract into a path with spaces
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ inputs.tag }}
+          CANDIDATE: ${{ inputs.candidate }}
         run: |
+          if ($env:CANDIDATE -cnotmatch '^[0-9a-f]{40}$') { throw 'Candidate must be an exact 40-hex commit' }
+          if ((git rev-parse HEAD).Trim() -ne $env:CANDIDATE) { throw 'Verifier checkout differs from candidate' }
+          if (![Environment]::Is64BitOperatingSystem) { throw 'Real 64-bit Windows required' }
           $download = Join-Path $env:RUNNER_TEMP 'cocs-download'
           gh release download $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY --pattern 'cocs-native-windows.zip*' --dir $download
           if ($LASTEXITCODE -ne 0) { throw 'Release download failed' }
@@ -38,7 +49,18 @@ jobs:
           if ((Get-FileHash $zip -Algorithm SHA256).Hash.ToLower() -ne $expected) { throw 'ZIP checksum mismatch' }
           $extract = Join-Path $env:RUNNER_TEMP 'fresh Windows demo'
           Expand-Archive $zip $extract
-          "DEMO_ROOT=$extract\cocs-native-windows" >> $env:GITHUB_ENV
+          $root = Join-Path $extract 'cocs-native-windows'
+          $manifest = Get-Content (Join-Path $root 'manifest.json') -Raw | ConvertFrom-Json
+          if ($manifest.port_commit -ne $env:CANDIDATE -or $manifest.target -ne 'windows') { throw 'Downloaded package is not the frozen Windows candidate' }
+          if ((Get-FileHash (Join-Path $root 'node.exe') -Algorithm SHA256).Hash.ToLower() -ne $manifest.bundled_node.executable_sha256) { throw 'Bundled Node hash mismatch' }
+          "DEMO_ROOT=$root" >> $env:GITHUB_ENV
+      - name: Recorded commit identity and bundled x64 Node (no SDK or Node install)
+        shell: pwsh
+        run: |
+          & "$env:DEMO_ROOT\node.exe" -e "if(process.platform!=='win32'||process.arch!=='x64')process.exit(2)"
+          if ($LASTEXITCODE -ne 0) { throw 'Bundled Node must execute as Windows x64' }
+          & "$env:DEMO_ROOT\node.exe" tools/godot-package/manifest_validation.mjs --package "$env:DEMO_ROOT" --repo "$env:GITHUB_WORKSPACE" --json
+          if ($LASTEXITCODE -ne 0) { throw 'Recorded package closure validation failed' }
       - name: Bundled runtimes, expansion mode pairs and cleanup
         if: ${{ !inputs.startup_diagnostic }}
         shell: pwsh
@@ -46,19 +68,24 @@ jobs:
           TRANSPORT_TRACE: ${{ inputs.transport_trace }}
         run: |
           $previousNodeOptions = $env:NODE_OPTIONS
+          $previousPath = $env:PATH
           try {
+            # Execution can use only bundled runtimes and Windows system tools.
+            # Git was needed for the recorded-object validation above, not play.
+            $env:PATH = "$env:SystemRoot\System32;$env:SystemRoot"
+            Remove-Item Env:NODE_OPTIONS,Env:NODE_PATH,Env:COCS_SOURCE_DERIVATIVE -ErrorAction SilentlyContinue
             if ($env:TRANSPORT_TRACE -eq 'true') {
               $preload = ([System.Uri](Resolve-Path 'port/singleplayer-feel/startup_preload.mjs').Path).AbsoluteUri
               $env:COCS_STARTUP_PACKAGE = $env:DEMO_ROOT
               $env:COCS_STARTUP_OUTPUT = "$env:RUNNER_TEMP\windows-evidence\original-suite-ws"
-              $env:NODE_OPTIONS = "$previousNodeOptions --import=$preload"
+              $env:NODE_OPTIONS = "--import=$preload"
             }
             & "$env:DEMO_ROOT\node.exe" tools/godot-package/verify_windows.mjs "$env:DEMO_ROOT" "$env:RUNNER_TEMP\windows-evidence"
             if ($LASTEXITCODE -ne 0) { throw 'Native Windows smoke failed' }
             if ($env:TRANSPORT_TRACE -eq 'true' -and !(Get-ChildItem "$env:COCS_STARTUP_OUTPUT\startup-ws-*.jsonl" -ErrorAction SilentlyContinue)) {
               throw 'Requested transport observation produced no evidence'
             }
-          } finally { $env:NODE_OPTIONS = $previousNodeOptions }
+          } finally { $env:NODE_OPTIONS = $previousNodeOptions; $env:PATH = $previousPath }
       - name: Three independent Crown startup observations
         if: ${{ inputs.startup_diagnostic }}
         shell: pwsh

@@ -5,38 +5,56 @@
   "materials": [
     {
       "source": "GM / soot",
-      "family": "brushed-alloy",
+      "family": "pearl-ceramic",
       "options": {
-        "variant": "plate",
-        "tint": "879199",
-        "tiles_per_metre": 0.65,
-        "roughness": 0.58,
-        "albedo_gain": 1.9,
-        "texture_strength": 0.72,
-        "normal_strength": 0.32,
-        "roughness_variation": 0.24,
+        "variant": "cast",
+        "tint": "777872",
+        "tiles_per_metre": 1.35,
+        "roughness": 0.79,
+        "albedo_gain": 1.25,
+        "texture_strength": 0.24,
+        "texture_saturation": 0,
+        "normal_strength": 0.1,
+        "metallic": 0.02,
+        "specular_strength": 0.22,
+        "detail_strength": 0.08,
+        "ao_strength": 0.16,
+        "roughness_variation": 0.1,
         "glow": false,
         "lut_gain": 0,
         "pulse_speed": 0,
-        "pulse_depth": 0
+        "pulse_depth": 0,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610240
       }
     },
     {
       "source": "GM / mineral",
-      "family": "regolith",
+      "family": "pearl-ceramic",
       "options": {
-        "variant": "scoured",
-        "tint": "aaa89b",
-        "tiles_per_metre": 0.55,
+        "variant": "worn",
+        "tint": "b5ab97",
+        "tiles_per_metre": 1.15,
         "roughness": 0.91,
-        "albedo_gain": 5.0,
-        "texture_strength": 0.72,
-        "normal_strength": 0.32,
-        "roughness_variation": 0.24,
+        "albedo_gain": 1.35,
+        "texture_strength": 0.35,
+        "texture_saturation": 0,
+        "normal_strength": 0.1,
+        "metallic": 0.02,
+        "specular_strength": 0.22,
+        "detail_strength": 0.08,
+        "ao_strength": 0.16,
+        "roughness_variation": 0.1,
         "glow": false,
         "lut_gain": 0,
         "pulse_speed": 0,
-        "pulse_depth": 0
+        "pulse_depth": 0,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610241
       }
     },
     {
@@ -44,107 +62,134 @@
       "family": "oxidised-copper",
       "options": {
         "variant": "default",
-        "tint": "88aa98",
-        "tiles_per_metre": 0.7,
-        "roughness": 0.65,
-        "albedo_gain": 1.9,
-        "texture_strength": 0.72,
-        "normal_strength": 0.32,
-        "roughness_variation": 0.24,
+        "tint": "8b9682",
+        "tiles_per_metre": 1.2,
+        "roughness": 0.67,
+        "albedo_gain": 1.35,
+        "texture_strength": 0.22,
+        "texture_saturation": 0.08,
+        "normal_strength": 0.1,
+        "metallic": 0.38,
+        "specular_strength": 0.22,
+        "detail_strength": 0.08,
+        "ao_strength": 0.16,
+        "roughness_variation": 0.1,
         "glow": false,
         "lut_gain": 0,
         "pulse_speed": 0,
-        "pulse_depth": 0
+        "pulse_depth": 0,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610242
       }
     },
     {
       "source": "GM / brass",
-      "family": "oxidised-copper",
+      "family": "brushed-alloy",
       "options": {
-        "variant": "riveted",
-        "tint": "b2a075",
-        "tiles_per_metre": 0.85,
-        "roughness": 0.54,
-        "albedo_gain": 1.8,
-        "texture_strength": 0.72,
-        "normal_strength": 0.32,
-        "roughness_variation": 0.24,
+        "variant": "default",
+        "tint": "a78a58",
+        "tiles_per_metre": 1.4,
+        "roughness": 0.55,
+        "albedo_gain": 1.3,
+        "texture_strength": 0.18,
+        "texture_saturation": 0,
+        "normal_strength": 0.06,
+        "metallic": 0.46,
+        "specular_strength": 0.22,
+        "detail_strength": 0.08,
+        "ao_strength": 0.16,
+        "roughness_variation": 0.1,
         "glow": false,
         "lut_gain": 0,
         "pulse_speed": 0,
-        "pulse_depth": 0
+        "pulse_depth": 0,
+        "variation_mode": "manufactured",
+        "variation_strength": 0.12,
+        "variation_scale": 0.07,
+        "variation_seed": 610243
       }
     },
     {
       "source": "GM / ore",
-      "family": "oxidised-copper",
+      "family": "pearl-ceramic",
       "options": {
-        "variant": "scorched",
-        "tint": "bda18a",
-        "tiles_per_metre": 0.55,
-        "roughness": 0.82,
-        "albedo_gain": 2.2,
-        "texture_strength": 0.72,
-        "normal_strength": 0.32,
-        "roughness_variation": 0.24,
+        "variant": "worn",
+        "tint": "a7856c",
+        "tiles_per_metre": 1.25,
+        "roughness": 0.89,
+        "albedo_gain": 1.35,
+        "texture_strength": 0.32,
+        "texture_saturation": 0,
+        "normal_strength": 0.1,
+        "metallic": 0.02,
+        "specular_strength": 0.22,
+        "detail_strength": 0.08,
+        "ao_strength": 0.16,
+        "roughness_variation": 0.1,
         "glow": false,
         "lut_gain": 0,
         "pulse_speed": 0,
-        "pulse_depth": 0
-      }
-    },
-    {
-      "source": "GM / orange",
-      "family": "hazard-industrial",
-      "options": {
-        "variant": "default",
-        "tint": "dac08a",
-        "tiles_per_metre": 1,
-        "roughness": 0.62,
-        "albedo_gain": 1.8,
-        "texture_strength": 0.72,
-        "normal_strength": 0.32,
-        "roughness_variation": 0.24,
-        "glow": false,
-        "lut_gain": 0,
-        "pulse_speed": 0,
-        "pulse_depth": 0
+        "pulse_depth": 0,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610244
       }
     },
     {
       "source": "GM / chalk",
-      "family": "enamel-glaze",
+      "family": "pearl-ceramic",
       "options": {
-        "variant": "default",
-        "tint": "d1ddd8",
-        "tiles_per_metre": 0.8,
-        "roughness": 0.29,
-        "albedo_gain": 1.9,
-        "texture_strength": 0.72,
-        "normal_strength": 0.32,
-        "roughness_variation": 0.24,
+        "variant": "cast",
+        "tint": "c4bcaa",
+        "tiles_per_metre": 1.4,
+        "roughness": 0.82,
+        "albedo_gain": 1.2,
+        "texture_strength": 0.22,
+        "texture_saturation": 0,
+        "normal_strength": 0.1,
+        "metallic": 0.02,
+        "specular_strength": 0.22,
+        "detail_strength": 0.08,
+        "ao_strength": 0.16,
+        "roughness_variation": 0.1,
         "glow": false,
         "lut_gain": 0,
         "pulse_speed": 0,
-        "pulse_depth": 0
+        "pulse_depth": 0,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610246
       }
     },
     {
       "source": "GM / cooling-floor",
-      "family": "enamel-glaze",
+      "family": "pearl-ceramic",
       "options": {
-        "variant": "damp",
-        "tint": "99aaa5",
-        "tiles_per_metre": 0.7,
-        "roughness": 0.46,
-        "albedo_gain": 2.6,
-        "texture_strength": 0.72,
-        "normal_strength": 0.32,
-        "roughness_variation": 0.24,
+        "variant": "cast",
+        "tint": "93948b",
+        "tiles_per_metre": 1.2,
+        "roughness": 0.78,
+        "albedo_gain": 1.3,
+        "texture_strength": 0.3,
+        "texture_saturation": 0,
+        "normal_strength": 0.1,
+        "metallic": 0.02,
+        "specular_strength": 0.22,
+        "detail_strength": 0.08,
+        "ao_strength": 0.16,
+        "roughness_variation": 0.1,
         "glow": false,
         "lut_gain": 0,
         "pulse_speed": 0,
-        "pulse_depth": 0
+        "pulse_depth": 0,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610247
       }
     }
   ],
@@ -225,12 +270,12 @@
         8,
         0.8
       ],
-      "texture": "metal-oxide",
-      "tint": "555e55",
+      "texture": "weathered_concrete-worn",
+      "tint": "686158",
       "essential": false,
-      "wear_mask": "dust-field",
-      "opacity": 0.28,
-      "feather": 0.15,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.154,
+      "feather": 0.4,
       "seed": 610027
     },
     {
@@ -329,12 +374,12 @@
         8,
         0.8
       ],
-      "texture": "metal-oxide",
-      "tint": "555e55",
+      "texture": "weathered_concrete-worn",
+      "tint": "686158",
       "essential": false,
-      "wear_mask": "dust-field",
-      "opacity": 0.28,
-      "feather": 0.15,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.154,
+      "feather": 0.4,
       "seed": 610032
     },
     {
@@ -373,12 +418,12 @@
         5,
         4
       ],
-      "texture": "riveted_armor-scorched",
+      "texture": "weathered_concrete-worn",
       "tint": "8b8173",
       "essential": false,
-      "wear_mask": "dust-field",
-      "opacity": 0.24,
-      "feather": 0.15,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.132,
+      "feather": 0.4,
       "seed": 610034
     },
     {
@@ -397,12 +442,12 @@
         5,
         4
       ],
-      "texture": "riveted_armor-scorched",
+      "texture": "weathered_concrete-worn",
       "tint": "8b8173",
       "essential": false,
-      "wear_mask": "dust-field",
-      "opacity": 0.24,
-      "feather": 0.15,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.132,
+      "feather": 0.4,
       "seed": 610035
     },
     {
@@ -421,12 +466,12 @@
         5,
         4
       ],
-      "texture": "riveted_armor-scorched",
+      "texture": "weathered_concrete-worn",
       "tint": "8b8173",
       "essential": false,
-      "wear_mask": "dust-field",
-      "opacity": 0.24,
-      "feather": 0.15,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.132,
+      "feather": 0.4,
       "seed": 610036
     },
     {
@@ -445,12 +490,12 @@
         5,
         4
       ],
-      "texture": "riveted_armor-scorched",
+      "texture": "weathered_concrete-worn",
       "tint": "8b8173",
       "essential": false,
-      "wear_mask": "dust-field",
-      "opacity": 0.24,
-      "feather": 0.15,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.132,
+      "feather": 0.4,
       "seed": 610037
     },
     {
@@ -469,12 +514,12 @@
         5.2,
         1.2
       ],
-      "texture": "weathered_concrete-damp",
-      "tint": "9eafa0",
+      "texture": "weathered_concrete-worn",
+      "tint": "aba798",
       "essential": false,
-      "wear_mask": "dust-field",
-      "opacity": 0.22,
-      "feather": 0.15,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
       "seed": 610038
     },
     {
@@ -494,7 +539,7 @@
         1.3
       ],
       "texture": "metal_grating",
-      "tint": "a4b6b4",
+      "tint": "9b9c95",
       "essential": false
     },
     {
@@ -513,12 +558,12 @@
         5.2,
         1.2
       ],
-      "texture": "weathered_concrete-damp",
-      "tint": "9eafa0",
+      "texture": "weathered_concrete-worn",
+      "tint": "aba798",
       "essential": false,
-      "wear_mask": "dust-field",
-      "opacity": 0.22,
-      "feather": 0.15,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
       "seed": 610040
     },
     {
@@ -538,7 +583,7 @@
         1.3
       ],
       "texture": "metal_grating",
-      "tint": "a4b6b4",
+      "tint": "9b9c95",
       "essential": false
     },
     {
@@ -557,12 +602,12 @@
         5.2,
         1.2
       ],
-      "texture": "weathered_concrete-damp",
-      "tint": "9eafa0",
+      "texture": "weathered_concrete-worn",
+      "tint": "aba798",
       "essential": false,
-      "wear_mask": "dust-field",
-      "opacity": 0.22,
-      "feather": 0.15,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
       "seed": 610042
     },
     {
@@ -582,7 +627,7 @@
         1.3
       ],
       "texture": "metal_grating",
-      "tint": "a4b6b4",
+      "tint": "9b9c95",
       "essential": false
     },
     {
@@ -601,12 +646,12 @@
         5.2,
         1.2
       ],
-      "texture": "weathered_concrete-damp",
-      "tint": "9eafa0",
+      "texture": "weathered_concrete-worn",
+      "tint": "aba798",
       "essential": false,
-      "wear_mask": "dust-field",
-      "opacity": 0.22,
-      "feather": 0.15,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
       "seed": 610044
     },
     {
@@ -626,7 +671,7 @@
         1.3
       ],
       "texture": "metal_grating",
-      "tint": "a4b6b4",
+      "tint": "9b9c95",
       "essential": false
     },
     {
@@ -645,8 +690,8 @@
         12,
         2
       ],
-      "texture": "hex_paneling",
-      "tint": "c5d8d7",
+      "texture": "weathered_concrete",
+      "tint": "c5bdab",
       "essential": false
     },
     {
@@ -665,8 +710,8 @@
         12,
         2
       ],
-      "texture": "hex_paneling",
-      "tint": "c5d8d7",
+      "texture": "weathered_concrete",
+      "tint": "c5bdab",
       "essential": false
     },
     {
@@ -685,8 +730,8 @@
         15,
         2
       ],
-      "texture": "hex_paneling",
-      "tint": "c5d8d7",
+      "texture": "weathered_concrete",
+      "tint": "c5bdab",
       "essential": false
     },
     {
@@ -705,8 +750,8 @@
         15,
         2
       ],
-      "texture": "hex_paneling",
-      "tint": "c5d8d7",
+      "texture": "weathered_concrete",
+      "tint": "c5bdab",
       "essential": false
     },
     {
@@ -725,8 +770,8 @@
         10,
         2
       ],
-      "texture": "hex_paneling",
-      "tint": "c5d8d7",
+      "texture": "weathered_concrete",
+      "tint": "c5bdab",
       "essential": false
     },
     {
@@ -745,8 +790,8 @@
         10,
         2
       ],
-      "texture": "hex_paneling",
-      "tint": "c5d8d7",
+      "texture": "weathered_concrete",
+      "tint": "c5bdab",
       "essential": false
     },
     {
@@ -765,12 +810,12 @@
         2.5,
         9
       ],
-      "texture": "riveted_armor-scorched",
+      "texture": "weathered_concrete-worn",
       "tint": "998473",
       "essential": false,
-      "wear_mask": "dust-field",
-      "opacity": 0.26,
-      "feather": 0.15,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.143,
+      "feather": 0.4,
       "seed": 610052
     },
     {
@@ -809,12 +854,12 @@
         2.5,
         9
       ],
-      "texture": "riveted_armor-scorched",
+      "texture": "weathered_concrete-worn",
       "tint": "998473",
       "essential": false,
-      "wear_mask": "dust-field",
-      "opacity": 0.26,
-      "feather": 0.15,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.143,
+      "feather": 0.4,
       "seed": 610054
     },
     {
@@ -853,12 +898,12 @@
         2.5,
         9
       ],
-      "texture": "riveted_armor-scorched",
+      "texture": "weathered_concrete-worn",
       "tint": "998473",
       "essential": false,
-      "wear_mask": "dust-field",
-      "opacity": 0.26,
-      "feather": 0.15,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.143,
+      "feather": 0.4,
       "seed": 610056
     },
     {
@@ -897,12 +942,12 @@
         9,
         6
       ],
-      "texture": "riveted_armor-scorched",
+      "texture": "weathered_concrete-worn",
       "tint": "8b8277",
       "essential": false,
-      "wear_mask": "dust-field",
-      "opacity": 0.24,
-      "feather": 0.15,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.132,
+      "feather": 0.4,
       "seed": 610058
     },
     {
@@ -921,12 +966,12 @@
         9,
         6
       ],
-      "texture": "riveted_armor-scorched",
+      "texture": "weathered_concrete-worn",
       "tint": "8b8277",
       "essential": false,
-      "wear_mask": "dust-field",
-      "opacity": 0.24,
-      "feather": 0.15,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.132,
+      "feather": 0.4,
       "seed": 610059
     },
     {
@@ -945,12 +990,12 @@
         9,
         6
       ],
-      "texture": "riveted_armor-scorched",
+      "texture": "weathered_concrete-worn",
       "tint": "8b8277",
       "essential": false,
-      "wear_mask": "dust-field",
-      "opacity": 0.24,
-      "feather": 0.15,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.132,
+      "feather": 0.4,
       "seed": 610060
     }
   ],
@@ -1426,7 +1471,9 @@
       "count": 8
     }
   ],
-  "preserve_materials": [],
+  "preserve_materials": [
+    "GM / orange"
+  ],
   "budgets": {
     "material_variants": 8,
     "panels": 64,

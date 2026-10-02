@@ -1,0 +1,55 @@
+{
+  "status": "source-ready-native-compilation-and-visual-review-pending",
+  "rendering_base": "068e3ce2",
+  "map_dependency": "0d20d7d6",
+  "local_map_dependency_cherry_pick": "bef7c193",
+  "shared_tests": {"passed": 10, "failed": 0},
+  "package_dressing_provenance_tests": {"passed": 2, "failed": 0},
+  "actual_committed_profile_provenance": {
+    "helix_and_foundry_current_hashes": "pass",
+    "helix_and_foundry_stale_068e3ce2_hashes": "rejected-as-required",
+    "parallax_production_discovery": "parent-integration-owned; no package build claimed"
+  },
+  "profiles": [
+    {
+      "id": "helix-conservatory",
+      "sha256": "87b7e80de33c0fcd4f589bf850f5b2684e1e4c8a493a489c520a7ae81ea05194",
+      "materials": 9,
+      "resolved_shared_resources": 32,
+      "shared_schema_resource_and_glb_selector_errors": [],
+      "map_owner_self_test": "pass; six negative probes passed"
+    },
+    {
+      "id": "gravemill-foundry",
+      "sha256": "8f5131886a3c1c8e4cc4a3aecd271980fd64bc93239b1ac3719c1936ac13c46d",
+      "materials": 8,
+      "resolved_shared_resources": 25,
+      "shared_schema_resource_and_glb_selector_errors": [],
+      "map_owner_validation": "pass; generated profile equals actual profile; 1425 face samples"
+    },
+    {
+      "id": "parallax-observatory",
+      "sha256": "e9632cb70f9b8485fb41bc609104cd5137206fab0a9e22ad22b343cfcb09dce0",
+      "materials": 6,
+      "resolved_shared_resources": 23,
+      "shared_schema_resource_and_glb_selector_errors": [],
+      "map_owner_validation": "pass; 1750 support samples",
+      "read_only_asset_root": "/home/mojo/.tmp-on-disk/cocs-map-finish-parallax-20261002",
+      "glb": "godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb"
+    }
+  ],
+  "pixel_study": "pass: node port/surface-refinement/pixel-study.mjs; ten albedo/data pairs and available baked normals verified against manifest PNG SHA-256",
+  "gdscript_source_parse": "pass: gdparse surface.gd profile.gd tests/map_finish/refinement.gd; not Godot type checking",
+  "shader_source_checks": "uniform signature/default parity, sampler coordinate consistency, finite bounded schema, balanced structure; not shader compilation",
+  "native_processes_launched": 0,
+  "visual_acceptance": false,
+  "texture_read_cost": {
+    "typical_none_or_manufactured": 9,
+    "typical_organic": 18,
+    "additional_active_macro_or_wear": 3,
+    "all_features_none_or_manufactured": 18,
+    "all_features_organic": 30,
+    "additional_draw_calls": 0,
+    "additional_texture_resources": 0
+  }
+}

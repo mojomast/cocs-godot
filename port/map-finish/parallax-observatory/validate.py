@@ -2,10 +2,17 @@
 import hashlib
 import json
 import math
+import os
 import re
 import struct
 from collections import Counter
 from author import ROOT, HERE, PROFILE, HASH, build
+from pathlib import Path
+
+# Accepted Parallax assets are not tracked at refinement base 068e3ce2. Allow
+# explicit read-only validation against their owning checkout, never substitute
+# its profile, shared validator, textures or runtime. All binary hashes stay pinned.
+ASSET_ROOT = Path(os.environ.get('PARALLAX_ASSET_ROOT',str(ROOT))).resolve()
 
 
 def digest(path):
@@ -85,13 +92,14 @@ def validate():
     expected, hosts = build()
     assert profile == expected, 'Profile drift: regenerate author.py --write'
     assert json.loads((HERE/'mounts.json').read_text()) == hosts
-    source = json.loads((ROOT/'godot/multiplayer_worlds/generated/parallax-observatory.json').read_text())
+    source = json.loads((ASSET_ROOT/'godot/multiplayer_worlds/generated/parallax-observatory.json').read_text())
     assert source['geometryHash'] == HASH == profile['geometry_hash']
-    glb = ROOT/'godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb'
+    glb = ASSET_ROOT/'godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb'
     assert digest(glb) == 'b3ea4ec57f57f6db83e1acab40dc95135562347ef884cc8f33ba067af8521bb1'
-    master = ROOT/'tools/godot-multiplayer/new-maps/parallax-observatory/parallax-observatory.blend'
+    master = ASSET_ROOT/'tools/godot-multiplayer/new-maps/parallax-observatory/parallax-observatory.blend'
     asset = json.loads((glb.parent/'asset-manifest.json').read_text())
     assert digest(master) == asset['blendSha256']
+    assert digest(master) == 'fcd7f284443c45d08177837a23af530b1667deb106bddb8822d507f5655ca090'
     doc, faces, primitive_counts = glb_data(glb)
     assert not doc.get('images') and not doc.get('textures')
     names = {m['name'] for m in doc['materials']}
@@ -123,6 +131,13 @@ def validate():
         entry = dict(f['default'],**f['variants'].get(variant,{}))
         for key,value in opts.items():
             if key in ('tint','variant'): continue
+            if key=='variation_mode':
+                assert value in ('none','organic','manufactured');continue
+            if key in ('variation_strength','variation_scale','variation_seed'):
+                lo,hi={'variation_strength':(0,1),'variation_scale':(.01,1),'variation_seed':(0,2147483647)}[key]
+                assert math.isfinite(value) and lo<=value<=hi,key
+                if key=='variation_seed':assert type(value) is int
+                continue
             assert key in bounds, key
             assert math.isfinite(value) and bounds[key][0] <= value <= bounds[key][1]
         assert re.fullmatch('[0-9a-f]{6}',opts['tint'])
@@ -149,7 +164,15 @@ def validate():
         for item in profile[kind]:
             assert item['id'] not in ids
             ids.add(item['id'])
-            if kind == 'panels': resource(baked,'textures',item['texture'])
+            if kind == 'panels':
+                resource(baked,'textures',item['texture'])
+                normal=item.get('normal',item['texture'])
+                if normal in baked['normals']:resource(baked,'normals',normal)
+                else:resource(derived,'derived','normal--'+normal)
+                if 'wear_mask' in item:
+                    resource(baked,'textures',item['wear_mask'])
+                    assert 0<=item['opacity']<=1 and 0<=item['feather']<=.5
+                    assert type(item['seed']) is int and 0<=item['seed']<=2147483647
             else:
                 # Conservative readable plaque aspect ratio, not an engine text
                 # layout/render claim. Native capture must still inspect glyphs.
@@ -212,6 +235,8 @@ def validate():
         motes += pocket['count']
     assert motes <= profile['budgets']['motes']
     return dict(status='source-ready; native pending',geometry_hash=HASH,
+                variation_contract='BRIEF.md; local bounds checked; shared validator must pass after rendering-owner integration',
+                accepted_asset_source='current checkout' if ASSET_ROOT==ROOT else str(ASSET_ROOT),
                 accepted_glb_sha256=digest(glb),accepted_master_sha256=digest(master),
                 profile_sha256=digest(PROFILE),coverage=dict(matched=selectors,preserved=profile['preserve_materials'],unmatched=[],primitive_counts=dict(primitive_counts)),
                 counts=dict(materials=len(selectors),panels=len(profile['panels']),signs=len(profile['signs']),pockets=len(profile['pockets']),motes=motes,support_samples=len(support)*25),

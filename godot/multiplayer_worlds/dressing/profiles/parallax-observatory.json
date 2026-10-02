@@ -8,35 +8,51 @@
       "family": "pearl-ceramic",
       "options": {
         "variant": "cast",
-        "tint": "bcb6a5",
+        "tint": "bcb29d",
         "lut_gain": 0,
         "pulse_speed": 0,
         "pulse_depth": 0,
-        "tiles_per_metre": 0.65,
-        "roughness": 0.86,
-        "roughness_variation": 0.22,
-        "normal_strength": 0.22,
-        "texture_strength": 0.7,
-        "texture_saturation": 0.18,
-        "albedo_gain": 2.0
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "variation_mode": "organic",
+        "variation_strength": 0.32,
+        "variation_scale": 0.07,
+        "variation_seed": 610260,
+        "tiles_per_metre": 1.3,
+        "roughness": 0.88,
+        "roughness_variation": 0.1,
+        "normal_strength": 0.1,
+        "texture_strength": 0.32,
+        "texture_saturation": 0,
+        "albedo_gain": 1.35,
+        "metallic": 0,
+        "specular_strength": 0.18
       }
     },
     {
       "source": "cistern",
-      "family": "enamel-glaze",
+      "family": "pearl-ceramic",
       "options": {
-        "variant": "damp",
-        "tint": "687b86",
+        "variant": "cast",
+        "tint": "808b88",
         "lut_gain": 0,
         "pulse_speed": 0,
         "pulse_depth": 0,
-        "tiles_per_metre": 0.8,
-        "roughness": 0.48,
-        "roughness_variation": 0.28,
-        "normal_strength": 0.28,
-        "texture_strength": 0.72,
-        "texture_saturation": 0.18,
-        "albedo_gain": 2.8
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "variation_mode": "organic",
+        "variation_strength": 0.32,
+        "variation_scale": 0.07,
+        "variation_seed": 610261,
+        "tiles_per_metre": 1.2,
+        "roughness": 0.76,
+        "roughness_variation": 0.1,
+        "normal_strength": 0.1,
+        "texture_strength": 0.28,
+        "texture_saturation": 0,
+        "albedo_gain": 1.3,
+        "metallic": 0,
+        "specular_strength": 0.2
       }
     },
     {
@@ -44,15 +60,23 @@
       "family": "brushed-alloy",
       "options": {
         "variant": "default",
-        "tint": "626e77",
+        "tint": "747873",
         "lut_gain": 0,
         "pulse_speed": 0,
         "pulse_depth": 0,
-        "tiles_per_metre": 1.1,
-        "roughness": 0.72,
-        "roughness_variation": 0.24,
-        "normal_strength": 0.22,
-        "texture_strength": 0.6,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "variation_mode": "manufactured",
+        "variation_strength": 0.1,
+        "variation_scale": 0.07,
+        "variation_seed": 610262,
+        "tiles_per_metre": 1.4,
+        "roughness": 0.7,
+        "roughness_variation": 0.08,
+        "normal_strength": 0.06,
+        "texture_strength": 0.2,
+        "texture_saturation": 0,
+        "albedo_gain": 1.3,
         "metallic": 0.42,
         "specular_strength": 0.18
       }
@@ -62,53 +86,77 @@
       "family": "brushed-alloy",
       "options": {
         "variant": "default",
-        "tint": "a1afbb",
+        "tint": "afb2a9",
         "lut_gain": 0,
         "pulse_speed": 0,
         "pulse_depth": 0,
-        "tiles_per_metre": 0.65,
-        "roughness": 0.42,
-        "roughness_variation": 0.12,
-        "normal_strength": 0.12,
-        "texture_strength": 0.38,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "variation_mode": "manufactured",
+        "variation_strength": 0.1,
+        "variation_scale": 0.07,
+        "variation_seed": 610263,
+        "tiles_per_metre": 1.5,
+        "roughness": 0.4,
+        "roughness_variation": 0.06,
+        "normal_strength": 0.035,
+        "texture_strength": 0.12,
+        "texture_saturation": 0,
+        "albedo_gain": 1.2,
         "metallic": 0.55,
         "specular_strength": 0.2
       }
     },
     {
       "source": "paving",
-      "family": "regolith",
+      "family": "pearl-ceramic",
       "options": {
-        "variant": "scoured",
-        "tint": "979993",
+        "variant": "worn",
+        "tint": "999787",
         "lut_gain": 0,
         "pulse_speed": 0,
         "pulse_depth": 0,
-        "tiles_per_metre": 0.85,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "variation_mode": "organic",
+        "variation_strength": 0.32,
+        "variation_scale": 0.07,
+        "variation_seed": 610264,
+        "tiles_per_metre": 1.25,
         "roughness": 0.92,
-        "roughness_variation": 0.18,
-        "normal_strength": 0.26,
-        "texture_strength": 0.6,
-        "texture_saturation": 0.15,
-        "albedo_gain": 5.0
+        "roughness_variation": 0.12,
+        "normal_strength": 0.12,
+        "texture_strength": 0.36,
+        "texture_saturation": 0,
+        "albedo_gain": 1.35,
+        "metallic": 0,
+        "specular_strength": 0.18
       }
     },
     {
       "source": "ochre",
-      "family": "oxidised-copper",
+      "family": "pearl-ceramic",
       "options": {
-        "variant": "default",
+        "variant": "cast",
         "tint": "aa925f",
         "lut_gain": 0,
         "pulse_speed": 0,
         "pulse_depth": 0,
-        "tiles_per_metre": 0.75,
-        "roughness": 0.74,
-        "roughness_variation": 0.28,
-        "normal_strength": 0.2,
-        "texture_strength": 0.55,
-        "texture_saturation": 0.25,
-        "metallic": 0.22
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "variation_mode": "organic",
+        "variation_strength": 0.32,
+        "variation_scale": 0.07,
+        "variation_seed": 610265,
+        "tiles_per_metre": 1.4,
+        "roughness": 0.68,
+        "roughness_variation": 0.1,
+        "normal_strength": 0.06,
+        "texture_strength": 0.18,
+        "texture_saturation": 0,
+        "albedo_gain": 1.3,
+        "metallic": 0.03,
+        "specular_strength": 0.2
       }
     }
   ],
@@ -129,8 +177,8 @@
         0.4,
         0.64
       ],
-      "texture": "hex_paneling",
-      "tint": "dae3df",
+      "texture": "weathered_concrete",
+      "tint": "d8cfb9",
       "essential": false
     },
     {
@@ -149,8 +197,8 @@
         0.4,
         0.64
       ],
-      "texture": "hex_paneling",
-      "tint": "dae3df",
+      "texture": "weathered_concrete",
+      "tint": "d8cfb9",
       "essential": false
     },
     {
@@ -169,8 +217,8 @@
         0.4,
         0.64
       ],
-      "texture": "hex_paneling",
-      "tint": "dae3df",
+      "texture": "weathered_concrete",
+      "tint": "d8cfb9",
       "essential": false
     },
     {
@@ -189,8 +237,8 @@
         0.4,
         0.64
       ],
-      "texture": "hex_paneling",
-      "tint": "dae3df",
+      "texture": "weathered_concrete",
+      "tint": "d8cfb9",
       "essential": false
     },
     {
@@ -209,8 +257,8 @@
         0.4,
         0.64
       ],
-      "texture": "hex_paneling",
-      "tint": "dae3df",
+      "texture": "weathered_concrete",
+      "tint": "d8cfb9",
       "essential": false
     },
     {
@@ -229,8 +277,8 @@
         0.4,
         0.64
       ],
-      "texture": "hex_paneling",
-      "tint": "dae3df",
+      "texture": "weathered_concrete",
+      "tint": "d8cfb9",
       "essential": false
     },
     {
@@ -249,8 +297,8 @@
         0.4,
         0.64
       ],
-      "texture": "hex_paneling",
-      "tint": "dae3df",
+      "texture": "weathered_concrete",
+      "tint": "d8cfb9",
       "essential": false
     },
     {
@@ -269,8 +317,8 @@
         0.4,
         0.64
       ],
-      "texture": "hex_paneling",
-      "tint": "dae3df",
+      "texture": "weathered_concrete",
+      "tint": "d8cfb9",
       "essential": false
     },
     {
@@ -289,8 +337,8 @@
         0.4,
         0.64
       ],
-      "texture": "hex_paneling",
-      "tint": "dae3df",
+      "texture": "weathered_concrete",
+      "tint": "d8cfb9",
       "essential": false
     },
     {
@@ -309,8 +357,8 @@
         0.4,
         0.64
       ],
-      "texture": "hex_paneling",
-      "tint": "dae3df",
+      "texture": "weathered_concrete",
+      "tint": "d8cfb9",
       "essential": false
     },
     {
@@ -329,8 +377,8 @@
         0.4,
         0.64
       ],
-      "texture": "hex_paneling",
-      "tint": "dae3df",
+      "texture": "weathered_concrete",
+      "tint": "d8cfb9",
       "essential": false
     },
     {
@@ -349,8 +397,8 @@
         0.4,
         0.64
       ],
-      "texture": "hex_paneling",
-      "tint": "dae3df",
+      "texture": "weathered_concrete",
+      "tint": "d8cfb9",
       "essential": false
     },
     {
@@ -369,8 +417,8 @@
         0.4,
         0.64
       ],
-      "texture": "hex_paneling",
-      "tint": "dae3df",
+      "texture": "weathered_concrete",
+      "tint": "d8cfb9",
       "essential": false
     },
     {
@@ -389,8 +437,8 @@
         0.4,
         0.64
       ],
-      "texture": "hex_paneling",
-      "tint": "dae3df",
+      "texture": "weathered_concrete",
+      "tint": "d8cfb9",
       "essential": false
     },
     {
@@ -409,8 +457,8 @@
         0.4,
         0.64
       ],
-      "texture": "hex_paneling",
-      "tint": "dae3df",
+      "texture": "weathered_concrete",
+      "tint": "d8cfb9",
       "essential": false
     },
     {
@@ -429,8 +477,8 @@
         0.4,
         0.64
       ],
-      "texture": "hex_paneling",
-      "tint": "dae3df",
+      "texture": "weathered_concrete",
+      "tint": "d8cfb9",
       "essential": false
     },
     {
@@ -449,8 +497,8 @@
         0.4,
         0.64
       ],
-      "texture": "hex_paneling",
-      "tint": "dae3df",
+      "texture": "weathered_concrete",
+      "tint": "d8cfb9",
       "essential": false
     },
     {
@@ -469,8 +517,8 @@
         0.4,
         0.64
       ],
-      "texture": "hex_paneling",
-      "tint": "dae3df",
+      "texture": "weathered_concrete",
+      "tint": "d8cfb9",
       "essential": false
     },
     {
@@ -489,9 +537,13 @@
         1.35,
         0.62
       ],
-      "texture": "weathered_concrete-damp",
-      "tint": "8ca69a",
-      "essential": false
+      "texture": "weathered_concrete-worn",
+      "tint": "a6a18f",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610298
     },
     {
       "id": "pump-mineral--1-3",
@@ -509,9 +561,13 @@
         1.35,
         0.62
       ],
-      "texture": "weathered_concrete-damp",
-      "tint": "8ca69a",
-      "essential": false
+      "texture": "weathered_concrete-worn",
+      "tint": "a6a18f",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610299
     },
     {
       "id": "pump-mineral--1-5",
@@ -529,9 +585,13 @@
         1.35,
         0.62
       ],
-      "texture": "weathered_concrete-damp",
-      "tint": "8ca69a",
-      "essential": false
+      "texture": "weathered_concrete-worn",
+      "tint": "a6a18f",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610300
     },
     {
       "id": "pump-mineral--1-7",
@@ -549,9 +609,13 @@
         1.35,
         0.62
       ],
-      "texture": "weathered_concrete-damp",
-      "tint": "8ca69a",
-      "essential": false
+      "texture": "weathered_concrete-worn",
+      "tint": "a6a18f",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610301
     },
     {
       "id": "pump-oxide--1-0",
@@ -570,8 +634,12 @@
         0.12
       ],
       "texture": "metal-oxide",
-      "tint": "9aad96",
-      "essential": false
+      "tint": "a39173",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610302
     },
     {
       "id": "pump-oxide--1-1",
@@ -590,8 +658,12 @@
         0.12
       ],
       "texture": "metal-oxide",
-      "tint": "9aad96",
-      "essential": false
+      "tint": "a39173",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610303
     },
     {
       "id": "pump-oxide--1-2",
@@ -610,8 +682,12 @@
         0.12
       ],
       "texture": "metal-oxide",
-      "tint": "9aad96",
-      "essential": false
+      "tint": "a39173",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610304
     },
     {
       "id": "pump-mineral-1-1",
@@ -629,9 +705,13 @@
         1.35,
         0.62
       ],
-      "texture": "weathered_concrete-damp",
-      "tint": "8ca69a",
-      "essential": false
+      "texture": "weathered_concrete-worn",
+      "tint": "a6a18f",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610305
     },
     {
       "id": "pump-mineral-1-3",
@@ -649,9 +729,13 @@
         1.35,
         0.62
       ],
-      "texture": "weathered_concrete-damp",
-      "tint": "8ca69a",
-      "essential": false
+      "texture": "weathered_concrete-worn",
+      "tint": "a6a18f",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610306
     },
     {
       "id": "pump-mineral-1-5",
@@ -669,9 +753,13 @@
         1.35,
         0.62
       ],
-      "texture": "weathered_concrete-damp",
-      "tint": "8ca69a",
-      "essential": false
+      "texture": "weathered_concrete-worn",
+      "tint": "a6a18f",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610307
     },
     {
       "id": "pump-mineral-1-7",
@@ -689,9 +777,13 @@
         1.35,
         0.62
       ],
-      "texture": "weathered_concrete-damp",
-      "tint": "8ca69a",
-      "essential": false
+      "texture": "weathered_concrete-worn",
+      "tint": "a6a18f",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610308
     },
     {
       "id": "pump-oxide-1-0",
@@ -710,8 +802,12 @@
         0.12
       ],
       "texture": "metal-oxide",
-      "tint": "9aad96",
-      "essential": false
+      "tint": "a39173",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610309
     },
     {
       "id": "pump-oxide-1-1",
@@ -730,8 +826,12 @@
         0.12
       ],
       "texture": "metal-oxide",
-      "tint": "9aad96",
-      "essential": false
+      "tint": "a39173",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610310
     },
     {
       "id": "pump-oxide-1-2",
@@ -750,8 +850,12 @@
         0.12
       ],
       "texture": "metal-oxide",
-      "tint": "9aad96",
-      "essential": false
+      "tint": "a39173",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610311
     },
     {
       "id": "polar-frost--1--12",
@@ -771,7 +875,11 @@
       ],
       "texture": "ice-cracked",
       "tint": "a6c1ca",
-      "essential": false
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610312
     },
     {
       "id": "polar-optics--1--12",
@@ -811,7 +919,11 @@
       ],
       "texture": "ice-cracked",
       "tint": "a6c1ca",
-      "essential": false
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610314
     },
     {
       "id": "polar-optics--1-12",
@@ -851,7 +963,11 @@
       ],
       "texture": "ice-cracked",
       "tint": "a6c1ca",
-      "essential": false
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610316
     },
     {
       "id": "polar-optics-1--12",
@@ -891,7 +1007,11 @@
       ],
       "texture": "ice-cracked",
       "tint": "a6c1ca",
-      "essential": false
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610318
     },
     {
       "id": "polar-optics-1-12",
@@ -1091,7 +1211,11 @@
       ],
       "texture": "weathered_concrete-worn",
       "tint": "a6b0a4",
-      "essential": false
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610328
     },
     {
       "id": "coastal-salt--18",
@@ -1111,7 +1235,11 @@
       ],
       "texture": "weathered_concrete-worn",
       "tint": "a6b0a4",
-      "essential": false
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610329
     },
     {
       "id": "coastal-salt-84",
@@ -1131,7 +1259,11 @@
       ],
       "texture": "weathered_concrete-worn",
       "tint": "a6b0a4",
-      "essential": false
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610330
     },
     {
       "id": "coastal-salt-82",
@@ -1151,7 +1283,11 @@
       ],
       "texture": "weathered_concrete-worn",
       "tint": "a6b0a4",
-      "essential": false
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610331
     }
   ],
   "signs": [

@@ -100,6 +100,18 @@ once at initial legal separation; there are no per-step position assignments.
 The independent verifier `9549da1c` found the original 550 mm grounded fixtures
 inside the 660 mm pushboxes; those fixture candidates were invalid. Correcting
 spacing does not establish native combo validity or erase the original failure.
+
+Native-03 follow-up adds optional combo metadata `setup_kind:paired_jump`: both
+actors begin grounded at legal corner spacing, receive one ordinary Up edge at
+tick0, and the attacker begins air normals at tick8. Existing `setup_inputs` and
+`defender_setup_inputs` contain the actual canonical command samples; the marker
+does not authorize any state/velocity injection or require a new core handler.
+Both streams mirror from the initial attacker facing. The source gate recognizes
+this setup as ordinary jump input rather than applying the charge-walk-only rule.
+Basic confirms may contain two attacks; signature/air routes must retain at least
+three. No one-hit route is accepted. All move frame data and boxes are unchanged.
+Actual native results/causes and the separately identified landing timer latch are
+recorded in `NATIVE_03_DIAGNOSIS.json` and `NATIVE_03_FOLLOWUP.md`.
 Trace tick scheduling uses startup/active plus authored hitstop estimates, not a
 second simulation. Preconditions specify positions/airborne/charge/resource.
 Only the native core can certify contacts, hitstop, stun continuity and scaling.

@@ -15,28 +15,36 @@ def build():
     mounts = []
 
     def material(source, family, variant, tint, **options):
+        manufactured=source in ['metal','mirror']
         p['materials'].append(dict(source=source, family=family,
-                                   options=dict(variant=variant, tint=tint, lut_gain=0,
-                                                pulse_speed=0, pulse_depth=0, **options)))
+                                    options=dict(variant=variant, tint=tint, lut_gain=0,
+                                                 pulse_speed=0, pulse_depth=0,
+                                                 detail_strength=.06,ao_strength=.14,
+                                                 variation_mode='manufactured' if manufactured else 'organic',
+                                                 variation_strength=.10 if manufactured else .32,
+                                                 variation_scale=.07,variation_seed=610260+len(p['materials']), **options)))
 
-    material('saltstone', 'pearl-ceramic', 'cast', 'bcb6a5', tiles_per_metre=.65,
-             roughness=.86, roughness_variation=.22, normal_strength=.22,
-             texture_strength=.7, texture_saturation=.18, albedo_gain=2.0)
-    material('cistern', 'enamel-glaze', 'damp', '687b86', tiles_per_metre=.8,
-             roughness=.48, roughness_variation=.28, normal_strength=.28,
-             texture_strength=.72, texture_saturation=.18, albedo_gain=2.8)
-    material('metal', 'brushed-alloy', 'default', '626e77', tiles_per_metre=1.1,
-             roughness=.72, roughness_variation=.24, normal_strength=.22,
-             texture_strength=.6, metallic=.42, specular_strength=.18)
-    material('mirror', 'brushed-alloy', 'default', 'a1afbb', tiles_per_metre=.65,
-             roughness=.42, roughness_variation=.12, normal_strength=.12,
-             texture_strength=.38, metallic=.55, specular_strength=.2)
-    material('paving', 'regolith', 'scoured', '979993', tiles_per_metre=.85,
-             roughness=.92, roughness_variation=.18, normal_strength=.26,
-             texture_strength=.6, texture_saturation=.15, albedo_gain=5.0)
-    material('ochre', 'oxidised-copper', 'default', 'aa925f', tiles_per_metre=.75,
-             roughness=.74, roughness_variation=.28, normal_strength=.2,
-             texture_strength=.55, texture_saturation=.25, metallic=.22)
+    material('saltstone', 'pearl-ceramic', 'cast', 'bcb29d', tiles_per_metre=1.3,
+             roughness=.88, roughness_variation=.10, normal_strength=.10,
+             texture_strength=.32, texture_saturation=0, albedo_gain=1.35,metallic=0,specular_strength=.18)
+    material('cistern', 'pearl-ceramic', 'cast', '808b88', tiles_per_metre=1.2,
+             roughness=.76, roughness_variation=.10, normal_strength=.10,
+             texture_strength=.28, texture_saturation=0, albedo_gain=1.3,metallic=0,specular_strength=.20)
+    material('metal', 'brushed-alloy', 'default', '747873', tiles_per_metre=1.4,
+             roughness=.70, roughness_variation=.08, normal_strength=.06,
+             texture_strength=.20,texture_saturation=0,albedo_gain=1.3, metallic=.42, specular_strength=.18)
+    # Accepted source mirror is opaque optical alloy, not glazing.
+    material('mirror', 'brushed-alloy', 'default', 'afb2a9', tiles_per_metre=1.5,
+             roughness=.40, roughness_variation=.06, normal_strength=.035,
+             texture_strength=.12,texture_saturation=0,albedo_gain=1.2, metallic=.55, specular_strength=.2)
+    material('paving', 'pearl-ceramic', 'worn', '999787', tiles_per_metre=1.25,
+             roughness=.92, roughness_variation=.12, normal_strength=.12,
+             texture_strength=.36, texture_saturation=0, albedo_gain=1.35,metallic=0,specular_strength=.18)
+    # Same batch includes painted survey diamonds/ticks and cabinet faces as
+    # well as metal ribs: quiet ochre coating, not all-over corroded stock.
+    material('ochre', 'pearl-ceramic', 'cast', 'aa925f', tiles_per_metre=1.4,
+             roughness=.68, roughness_variation=.10, normal_strength=.06,
+             texture_strength=.18, texture_saturation=0,albedo_gain=1.3, metallic=.03,specular_strength=.20)
 
     def mount(kind, id, position, yaw, size, host, story, **fields):
         p[kind].append(dict(id=id, position=position, rotation_degrees=[0,yaw,0],
@@ -44,8 +52,11 @@ def build():
         mounts.append(dict(id=id, host=host, story=story))
 
     def panel(id, texture, pos, yaw, size, host, story, tint='ffffff'):
+        wear={}
+        if id.startswith(('pump-mineral-','pump-oxide-','polar-frost-','coastal-salt-')):
+            wear=dict(wear_mask='weathered_concrete',opacity=.18,feather=.4,seed=610280+len(p['panels']))
         mount('panels', id, pos, yaw, size, host, story, texture=texture,
-              tint=tint, essential=False)
+              tint=tint, essential=False,**wear)
 
     def sign(id, text, pos, yaw, size, host, story, foreground='dce5e6', background='263239'):
         mount('signs', id, pos, yaw, size, host, story, text=text,
@@ -58,9 +69,9 @@ def build():
         host = f'ephemeris-vault-wall-{side}'
         for j in range(9):
             x = -36 - 26*.44 + j*26*.11
-            panel(f'archive-ceramic-{side}-{j}', 'hex_paneling',
+            panel(f'archive-ceramic-{side}-{j}', 'weathered_concrete',
                   [round(x-.64,3),13.8,side*7.105], yaw, [.4,.64], host,
-                  'Clean ceramic retrieval insert, beside the accepted cassette slots.', 'dae3df')
+                  'Clean ceramic retrieval insert, beside the accepted cassette slots.', 'd8cfb9')
         for j, x in enumerate((-43.2,-28.8)):
             sign(f'archive-index-{side}-{j}', f'PLATES / {"A" if side == -1 else "B"}{j+1:02}',
                  [x,15.39,side*7.17], yaw, [3.7,.3], host,
@@ -74,13 +85,13 @@ def build():
         host = f'tidal-pump-vault-wall-{side}'
         for j in (1,3,5,7):
             x = 24 - 26*.44 + j*26*.11
-            panel(f'pump-mineral-{side}-{j}', 'weathered_concrete-damp',
+            panel(f'pump-mineral-{side}-{j}', 'weathered_concrete-worn',
                   [round(x-.16,3),.8,78+side*7.105], yaw, [1.35,.62], host,
-                  'Damp salt/mineral deposit on a low pump instrument backing.', '8ca69a')
+                  'Damp salt/mineral deposit on a low pump instrument backing.', 'a6a18f')
         for j, x in enumerate((18.2,24.2,30.2)):
             panel(f'pump-oxide-{side}-{j}', 'metal-oxide',
                   [x,3.29,78+side*7.17], yaw, [1.25,.12], host,
-                  'Oxidation at the upper service band, below the wall-bound header.', '9aad96')
+                  'Oxidation at the upper service band, below the wall-bound header.', 'a39173')
         for j, x in enumerate((18.2,30.2)):
             sign(f'pump-service-{side}-{j}', f'{"SUPPLY" if side == -1 else "RETURN"} / P{j+1:02}',
                  [x,3.48,78+side*7.15], yaw, [3.5,.18], host,

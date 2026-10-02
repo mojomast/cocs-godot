@@ -55,13 +55,13 @@ func input(code: String, pressed: bool) -> void:
 	if event is InputEventKey:
 		event.location = KEY_LOCATION_RIGHT if code in ["ControlRight", "ShiftRight", "AltRight"] else KEY_LOCATION_LEFT
 	if event is InputEventMouseButton:
-		event.position = root.get_visible_rect().size * Vector2(0.68, 0.45)
+		event.position = root.get_visible_rect().size * Vector2(0.5, 0.65)
 		event.global_position = event.position
 	Input.parse_input_event(event)
 
 func capture_pointer() -> void:
 	var motion := InputEventMouseMotion.new()
-	motion.position = root.get_visible_rect().size * Vector2(0.68, 0.45)
+	motion.position = root.get_visible_rect().size * Vector2(0.5, 0.65)
 	motion.global_position = motion.position
 	Input.parse_input_event(motion)
 	await process_frame
@@ -93,8 +93,11 @@ func choose(action: String, code: String) -> void:
 	await process_frame
 	check(choice.get_popup().visible, "keyboard opens options " + action)
 	tap(KEY_HOME)
-	for item in index:
-		tap(KEY_DOWN)
+	await process_frame
+	for item in choice.item_count + 1:
+		var focused := choice.get_popup().get_focused_item()
+		if focused == index: break
+		tap(KEY_DOWN if focused < index else KEY_UP)
 		await process_frame
 	tap(KEY_ENTER)
 	await process_frame

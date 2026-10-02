@@ -35,3 +35,14 @@ test('visible enemy inside the existing fire window still wins target selection'
  const command=new JourneyController().sample(snapshot([mender,nearby]));
  assert.equal(command.route,'combat-67');assert.equal(command.input.fire,true);
 });
+
+test('source close-combat contract aims at visibility height and releases sprint while approaching',()=>{
+  const nearby={...husk,x:player.x+25,z:player.z};
+  const state=snapshot([nearby]),before=structuredClone(state);
+  const command=new JourneyController().sample(state);
+  assert.equal(Object.hasOwn(command.input,'sprint'),false,'source omits inactive sprint');
+  assert.equal(command.keys.includes('ShiftLeft'),false);
+  assert.equal(command.mouse.pitch,Math.atan2(1.2-1.45,25));
+  assert.notEqual(command.mouse.pitch,Math.atan2(.9-1.45,25));
+  assert.deepEqual(state,before);
+});

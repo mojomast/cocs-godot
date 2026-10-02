@@ -571,7 +571,7 @@
       "pillow": "12.3.0"
     },
     "generator": "tools/operator-finish/content/build.py",
-    "generator_sha256": "5fe7fe1961c1163cc9ba0bf6340e735b46017f8c075294f053ba3482715cd649",
+    "generator_sha256": "c155ac535172f482306501074526c0dc26cc348b281669f662101bea5a16da42",
     "moth_baked_source": {
       "path": "game/moth-baked.mjs",
       "sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
@@ -643,11 +643,22 @@
         "registry_color_space": "srgb",
         "registry_key": "textures/riveted_armor",
         "rgba_pixel_sha256": "3df636ee97cd6569e880ff73d46e52527db3efa5840896fbd6a0f1b99e38bd80"
+      },
+      "sand": {
+        "dimensions": [
+          64,
+          64
+        ],
+        "path": "res://moth/generated/textures/sand.png",
+        "png_sha256": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96",
+        "registry_color_space": "srgb",
+        "registry_key": "textures/sand",
+        "rgba_pixel_sha256": "4c924f108fa5000306682b81fb47033a66b07b2a7ac520fd7bf6f20b2ef05de0"
       }
     },
     "normal_convention": "N=normalize(-2*dH/dU,-2*dH/dV,1); image rows are +V. Native moving-light orientation verification pending.",
     "operator_catalog_manifest_sha256": "8a55864d05880e720ab81e446aeb504c1fd151c0e5d2595446e60cd9112e35e6",
-    "recipe": "Moth luminance centered + authored UV1 seam/wear/mark masks; restrained neutral modulation; height gradient normal renormalized before RGB8 quantization",
+    "recipe": "Moth luminance centered; quiet shared-UV shell grain; authored seam/wear/mark masks only on fitted overlays and trim; neutral modulation; height gradient normal renormalized before RGB8 quantization",
     "source_glbs": {
       "chatgpt": "38b5dcdb45160e81753cf783983cb1235df4fd96c9139fe6f06aebb59d9bc1d0",
       "claude": "de246dec07441eb00078465856face34f782e75fb43372f3c42a36e42bb04087",
@@ -821,13 +832,13 @@
       ],
       "meaning": "neutral RGB multiplier; opaque; no tint or emission",
       "moth_keys": [
-        "textures/hex_paneling"
+        "textures/sand"
       ],
-      "pixel_sha256": "8e52a13c61f84e890713c433de34b27678171f272237d897fb48cf0e9db0588d",
-      "png_sha256": "2b58240f8bce2f1d7e75b8f14208e67b4602674b4bfea2c3737d312c94058b72",
+      "pixel_sha256": "2a63034e4fd384d0e1655836a15d3c77ca9fe8d7a4b70031e47250a59ce2326a",
+      "png_sha256": "fa39e78e13fd4b5793528eabb848c98a02fbec6ed0464d51008c8de973660e49",
       "range": [
-        228,
-        252
+        245,
+        246
       ]
     },
     "res://source_operators/moth_finish/assets/chatgpt-shell-normal.png": {
@@ -845,12 +856,12 @@
       ],
       "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
       "moth_keys": [
-        "textures/hex_paneling"
+        "textures/sand"
       ],
-      "pixel_sha256": "ea521cfc89946465c15f5d4bcb094b7c6b83c1e01153c111964cd86e17731b87",
-      "png_sha256": "7b1e4d52233f9f4d15a82e708db8e4d1f378f8b596c5899e9b736b57cfc5b255",
+      "pixel_sha256": "3883fa22802920ec01a38df83a0a33e0f76ac7957ed2f728eda13b713f5f4a3c",
+      "png_sha256": "8d97ea355109d6f823d3f9ee5a16383b26964742c327405c8f71112718a1f90e",
       "range": [
-        111,
+        127,
         255
       ]
     },
@@ -869,13 +880,13 @@
       ],
       "meaning": "R luminance = physical perceptual roughness; gain 1",
       "moth_keys": [
-        "textures/hex_paneling"
+        "textures/sand"
       ],
-      "pixel_sha256": "86a384fdf66dd4e89ab7bffbf32dcb28d401297c477bbd453bfb100050899695",
-      "png_sha256": "d6f171a281fd6233ea31843029502589bb51e2d39b8d1edd6dbabb9c57fed465",
+      "pixel_sha256": "398a6c5cead9f70fa2e299504e212f3b5bbeec63c77fff42326d18fcd7e3cbd2",
+      "png_sha256": "d040caf2912feff81b763a6ef75a374d0816fdf40be4795551ded0f878acb784",
       "range": [
-        128,
-        159
+        144,
+        146
       ]
     },
     "res://source_operators/moth_finish/assets/chatgpt-vent-albedo.png": {
@@ -1109,13 +1120,13 @@
       ],
       "meaning": "neutral RGB multiplier; opaque; no tint or emission",
       "moth_keys": [
-        "textures/hex_paneling"
+        "textures/sand"
       ],
-      "pixel_sha256": "b6e7918f058c6058c7e4142da72175f5e8cf139c589e835f328d763bbd104557",
-      "png_sha256": "077cfc63f49a42988fa26a30e9163547e709f797204e80e12e865da68220f1fe",
+      "pixel_sha256": "2a63034e4fd384d0e1655836a15d3c77ca9fe8d7a4b70031e47250a59ce2326a",
+      "png_sha256": "fa39e78e13fd4b5793528eabb848c98a02fbec6ed0464d51008c8de973660e49",
       "range": [
-        228,
-        251
+        245,
+        246
       ]
     },
     "res://source_operators/moth_finish/assets/claude-shell-normal.png": {
@@ -1133,12 +1144,12 @@
       ],
       "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
       "moth_keys": [
-        "textures/hex_paneling"
+        "textures/sand"
       ],
-      "pixel_sha256": "8f33ed5923825aa59d94e3162c1f46628a1e3861709216dddd9cd8fa2b327e53",
-      "png_sha256": "e68441d392eb1e80e2a074bd1245a193a257532bc79c786151a387794ac943b1",
+      "pixel_sha256": "3883fa22802920ec01a38df83a0a33e0f76ac7957ed2f728eda13b713f5f4a3c",
+      "png_sha256": "8d97ea355109d6f823d3f9ee5a16383b26964742c327405c8f71112718a1f90e",
       "range": [
-        111,
+        127,
         255
       ]
     },
@@ -1157,13 +1168,13 @@
       ],
       "meaning": "R luminance = physical perceptual roughness; gain 1",
       "moth_keys": [
-        "textures/hex_paneling"
+        "textures/sand"
       ],
-      "pixel_sha256": "0f11f4e4dff9bb3d0605a5ecd0f6658e287185077df723add13f70c34fab74ec",
-      "png_sha256": "45441413ca77f42619477150b91a856443a822e518229ea7ab007e6b824a628b",
+      "pixel_sha256": "398a6c5cead9f70fa2e299504e212f3b5bbeec63c77fff42326d18fcd7e3cbd2",
+      "png_sha256": "d040caf2912feff81b763a6ef75a374d0816fdf40be4795551ded0f878acb784",
       "range": [
-        127,
-        158
+        144,
+        146
       ]
     },
     "res://source_operators/moth_finish/assets/claude-vent-albedo.png": {
@@ -1399,11 +1410,11 @@
       "moth_keys": [
         "textures/brushed_metal"
       ],
-      "pixel_sha256": "c74630c106e19d9d8ce63f26fe4c04645f922d1c5fb03900c9184e4195dab399",
-      "png_sha256": "163a1626c76659c24d85e945e5102b7a12799b480ff6f1b5d35ce20efe37a54a",
+      "pixel_sha256": "0aaf074a98b6766cef2a0c86d595e621794d3195ac82817c6e75fc80d0df1c11",
+      "png_sha256": "521778fd6134512bf5e4f4b5b1ba6313ef4723effc7e5a507334663db6541c08",
       "range": [
-        222,
-        251
+        244,
+        247
       ]
     },
     "res://source_operators/moth_finish/assets/deepseek-shell-normal.png": {
@@ -1423,10 +1434,10 @@
       "moth_keys": [
         "textures/brushed_metal"
       ],
-      "pixel_sha256": "d7f8f807131910df22ec70a9d364f62f1ed403c6bd40bde439be4b4b5a6dd05e",
-      "png_sha256": "e46a0eb90f7e39f11284959710ea7ee1f9c2fa5908f5c5e2fd7e2516c8f56ba4",
+      "pixel_sha256": "30555666a8fa5c3b281479866229a34834bc091a4367a93dfe244322bd2e1fe8",
+      "png_sha256": "d7aa8059cbccbce1e1fe3892785805d81add76c19bd8a2bc8f3e03872b7e866b",
       "range": [
-        105,
+        127,
         255
       ]
     },
@@ -1447,11 +1458,11 @@
       "moth_keys": [
         "textures/brushed_metal"
       ],
-      "pixel_sha256": "ce387f3668c101214eb9ae90ae217bd643aadbb31a6d67af80fb480c0e6a1560",
-      "png_sha256": "f735bb3e574a18547f94cdb9dfaaf59b11342d88390f52567866ea30fc9cfff8",
+      "pixel_sha256": "7bb34d73160a06363a04e612a150772c7f0667c36d9406a0eea555b40ebe92b6",
+      "png_sha256": "0df0d589c8472110db8ff47766aacc67bb3ee0b9e84117ad25582d58589d56ce",
       "range": [
-        127,
-        159
+        144,
+        147
       ]
     },
     "res://source_operators/moth_finish/assets/deepseek-vent-albedo.png": {
@@ -1685,13 +1696,13 @@
       ],
       "meaning": "neutral RGB multiplier; opaque; no tint or emission",
       "moth_keys": [
-        "textures/hex_paneling"
+        "textures/sand"
       ],
-      "pixel_sha256": "dee63f48568efa0f2792c543470ed35415e2279b1269de24e2fbbf312ec6f146",
-      "png_sha256": "ef62ca19a421e6877e606bfaff90aeb2f3d7ab8251ea16ceb58b856dae1498c0",
+      "pixel_sha256": "2a63034e4fd384d0e1655836a15d3c77ca9fe8d7a4b70031e47250a59ce2326a",
+      "png_sha256": "fa39e78e13fd4b5793528eabb848c98a02fbec6ed0464d51008c8de973660e49",
       "range": [
-        228,
-        252
+        245,
+        246
       ]
     },
     "res://source_operators/moth_finish/assets/gemini-shell-normal.png": {
@@ -1709,12 +1720,12 @@
       ],
       "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
       "moth_keys": [
-        "textures/hex_paneling"
+        "textures/sand"
       ],
-      "pixel_sha256": "0bf858776c8b56af57d8d38b76eac2517d0f4dde2eca4a3243eefec5fcb2d313",
-      "png_sha256": "882924d2c3555b6a094457d8669ac4b3c45d1d3f0c9b1a4b3ec600c649fe7325",
+      "pixel_sha256": "3883fa22802920ec01a38df83a0a33e0f76ac7957ed2f728eda13b713f5f4a3c",
+      "png_sha256": "8d97ea355109d6f823d3f9ee5a16383b26964742c327405c8f71112718a1f90e",
       "range": [
-        111,
+        127,
         255
       ]
     },
@@ -1733,13 +1744,13 @@
       ],
       "meaning": "R luminance = physical perceptual roughness; gain 1",
       "moth_keys": [
-        "textures/hex_paneling"
+        "textures/sand"
       ],
-      "pixel_sha256": "2f1316c4875bacbc48810a7b2f2b1ab8ff804a50b6cdd5e170bb1c6cead44fcf",
-      "png_sha256": "a1bab9a2c2dd2548d00de36a236726e7f85890ec80fc7aac43b160394ba782b7",
+      "pixel_sha256": "398a6c5cead9f70fa2e299504e212f3b5bbeec63c77fff42326d18fcd7e3cbd2",
+      "png_sha256": "d040caf2912feff81b763a6ef75a374d0816fdf40be4795551ded0f878acb784",
       "range": [
-        127,
-        159
+        144,
+        146
       ]
     },
     "res://source_operators/moth_finish/assets/gemini-vent-albedo.png": {
@@ -1975,11 +1986,11 @@
       "moth_keys": [
         "textures/brushed_metal"
       ],
-      "pixel_sha256": "a0223f999ab928efe7942aefe172e8fcba7eee89ff8e398649dee051fa2187ac",
-      "png_sha256": "51369643b0f8b698d4522f5dd2eac293a691f97b77d812853c926e8a4aae13d0",
+      "pixel_sha256": "0aaf074a98b6766cef2a0c86d595e621794d3195ac82817c6e75fc80d0df1c11",
+      "png_sha256": "521778fd6134512bf5e4f4b5b1ba6313ef4723effc7e5a507334663db6541c08",
       "range": [
-        229,
-        252
+        244,
+        247
       ]
     },
     "res://source_operators/moth_finish/assets/grok-shell-normal.png": {
@@ -1999,10 +2010,10 @@
       "moth_keys": [
         "textures/brushed_metal"
       ],
-      "pixel_sha256": "44c02a3cfcfda551a53bb8346defd8ca3629d2984c54b695974a9995e1baa7a4",
-      "png_sha256": "f8b88b1d6267743a8ec858bc21182c15f20d59ec0947a14ba45ddb04a4b8983c",
+      "pixel_sha256": "30555666a8fa5c3b281479866229a34834bc091a4367a93dfe244322bd2e1fe8",
+      "png_sha256": "d7aa8059cbccbce1e1fe3892785805d81add76c19bd8a2bc8f3e03872b7e866b",
       "range": [
-        111,
+        127,
         255
       ]
     },
@@ -2023,11 +2034,11 @@
       "moth_keys": [
         "textures/brushed_metal"
       ],
-      "pixel_sha256": "72e41c88feff34ff3915d4940c1a146abb3c8486d958d8cc5f475f3842cf73c8",
-      "png_sha256": "60744aa5e2e38cb4cd6c0732ae8ef761c1860912c37504afee2182a89835575d",
+      "pixel_sha256": "7bb34d73160a06363a04e612a150772c7f0667c36d9406a0eea555b40ebe92b6",
+      "png_sha256": "0df0d589c8472110db8ff47766aacc67bb3ee0b9e84117ad25582d58589d56ce",
       "range": [
-        128,
-        159
+        144,
+        147
       ]
     },
     "res://source_operators/moth_finish/assets/grok-vent-albedo.png": {
@@ -2261,13 +2272,13 @@
       ],
       "meaning": "neutral RGB multiplier; opaque; no tint or emission",
       "moth_keys": [
-        "textures/hex_paneling"
+        "textures/sand"
       ],
-      "pixel_sha256": "c1df4396bb8582303b10e3066ea6a17b1fb0bcd281371f0dc9fb271f6b5208a5",
-      "png_sha256": "d2615b0b464f53745d1389061d7c6955b49c013af87f3667fb9b7271212ec80a",
+      "pixel_sha256": "2a63034e4fd384d0e1655836a15d3c77ca9fe8d7a4b70031e47250a59ce2326a",
+      "png_sha256": "fa39e78e13fd4b5793528eabb848c98a02fbec6ed0464d51008c8de973660e49",
       "range": [
-        228,
-        252
+        245,
+        246
       ]
     },
     "res://source_operators/moth_finish/assets/kimi-shell-normal.png": {
@@ -2285,12 +2296,12 @@
       ],
       "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
       "moth_keys": [
-        "textures/hex_paneling"
+        "textures/sand"
       ],
-      "pixel_sha256": "6cab67f00bf68fc37d7630c0f678bd64b83e63d1370b28390c34628e89da2de9",
-      "png_sha256": "c266fd575ea72c8b932f18f13bc6e30d84318e5d53b09855ba504328ae5b4314",
+      "pixel_sha256": "3883fa22802920ec01a38df83a0a33e0f76ac7957ed2f728eda13b713f5f4a3c",
+      "png_sha256": "8d97ea355109d6f823d3f9ee5a16383b26964742c327405c8f71112718a1f90e",
       "range": [
-        111,
+        127,
         255
       ]
     },
@@ -2309,13 +2320,13 @@
       ],
       "meaning": "R luminance = physical perceptual roughness; gain 1",
       "moth_keys": [
-        "textures/hex_paneling"
+        "textures/sand"
       ],
-      "pixel_sha256": "3f19137008ba137439fa4721b163881338771989d6eb219891fba19569bcf739",
-      "png_sha256": "e92250079f6fff266e46156b1c3ec647e5cd36d7601c1b85a0fd1f859b145822",
+      "pixel_sha256": "398a6c5cead9f70fa2e299504e212f3b5bbeec63c77fff42326d18fcd7e3cbd2",
+      "png_sha256": "d040caf2912feff81b763a6ef75a374d0816fdf40be4795551ded0f878acb784",
       "range": [
-        128,
-        159
+        144,
+        146
       ]
     },
     "res://source_operators/moth_finish/assets/kimi-vent-albedo.png": {
@@ -2549,13 +2560,13 @@
       ],
       "meaning": "neutral RGB multiplier; opaque; no tint or emission",
       "moth_keys": [
-        "textures/riveted_armor"
+        "textures/brushed_metal"
       ],
-      "pixel_sha256": "4ee0f6f9486913ba702b2a77c0cd0b98a52e9a55d2e7adb7fe8300bdd04e6773",
-      "png_sha256": "ae8e4d611c08baaf9064c1f221e7c0a08824dab5c7c6948d718be7c6926f4db3",
+      "pixel_sha256": "0aaf074a98b6766cef2a0c86d595e621794d3195ac82817c6e75fc80d0df1c11",
+      "png_sha256": "521778fd6134512bf5e4f4b5b1ba6313ef4723effc7e5a507334663db6541c08",
       "range": [
-        224,
-        252
+        244,
+        247
       ]
     },
     "res://source_operators/moth_finish/assets/meta-shell-normal.png": {
@@ -2573,12 +2584,12 @@
       ],
       "meaning": "RGB tangent normal +Y in UV V direction; unit-length after derivation",
       "moth_keys": [
-        "textures/riveted_armor"
+        "textures/brushed_metal"
       ],
-      "pixel_sha256": "7f90b5fb0c2a662977d1020b0e0caa40ef218ae0ba3f1725669d5815c54d34c2",
-      "png_sha256": "b1caccbc72e9c346158d5ab1fcd1e6173a3c5fc4f7091b39f3cb38dafc97079c",
+      "pixel_sha256": "30555666a8fa5c3b281479866229a34834bc091a4367a93dfe244322bd2e1fe8",
+      "png_sha256": "d7aa8059cbccbce1e1fe3892785805d81add76c19bd8a2bc8f3e03872b7e866b",
       "range": [
-        111,
+        127,
         255
       ]
     },
@@ -2597,13 +2608,13 @@
       ],
       "meaning": "R luminance = physical perceptual roughness; gain 1",
       "moth_keys": [
-        "textures/riveted_armor"
+        "textures/brushed_metal"
       ],
-      "pixel_sha256": "e424c38b228e720b2a72d80255b64276eb9186488337458e869eb16511a431c0",
-      "png_sha256": "bc951d7509350b9aabd8363eaee48dcdd0e2441861d7c825366dd2aef7d8f5ca",
+      "pixel_sha256": "b8e340b3e78b5775b305aa0272eab99229c3fd80485d0066562b905b54c25723",
+      "png_sha256": "2e35421df7285b316c57c38490ddf20289ef11dc8151d466a349934e75292927",
       "range": [
-        155,
-        186
+        169,
+        173
       ]
     },
     "res://source_operators/moth_finish/assets/meta-vent-albedo.png": {
@@ -2839,11 +2850,11 @@
       "moth_keys": [
         "textures/brushed_metal"
       ],
-      "pixel_sha256": "9a1d75b0ab1a5bbc33b09c3cd4b95450acae6a642f60526b183ae66c8a661bfd",
-      "png_sha256": "4bca2f70e0fb6cf1aa0cece2d2d51147a179ed89fa206826208ac2a4f2859646",
+      "pixel_sha256": "c79408ae4a1ab9ea32ab9d8f4cb8e1b20a081b8ec94804607e3a68c3dcda3cd1",
+      "png_sha256": "ec08755ddb0776974494779872c3c766b455a7a0719b42047e92fc9af07276bd",
       "range": [
-        228,
-        251
+        244,
+        247
       ]
     },
     "res://source_operators/moth_finish/assets/mistral-shell-normal.png": {
@@ -2863,10 +2874,10 @@
       "moth_keys": [
         "textures/brushed_metal"
       ],
-      "pixel_sha256": "d2757d8650066819547489cb4ce12bde58750ae4a7d1dd71a51a5d7a4bd85bb5",
-      "png_sha256": "9ffd7a35014eb4cda23156f6b4a7d492b63b0d88cdc835918fe2e59f92bc97f1",
+      "pixel_sha256": "07b00750e81c260a62752672a13cd6df3e2ecf78a970635b7700632b0e48c76b",
+      "png_sha256": "6a2a8e68a2edaede498413cad5e1324eaa84148f28392802978658317dd22f39",
       "range": [
-        111,
+        127,
         255
       ]
     },
@@ -2887,11 +2898,11 @@
       "moth_keys": [
         "textures/brushed_metal"
       ],
-      "pixel_sha256": "656cb5617cf4b8e0df2084fc0cbff865796aa4a1a0142ba22e109aab9327088d",
-      "png_sha256": "3e90d718e8c8f09e523a3fe9678a728bb38f12aec18a4ce6afc750171ceb4db2",
+      "pixel_sha256": "17c63f605d45dc3e25e47398c0a175ba854c3d028e0aa1dc50cec39fa5dd2eed",
+      "png_sha256": "ab8f8deb355b4ceedf48222f0f3aa13e28e22c5d65185b8715ff7ed07df98920",
       "range": [
-        92,
-        124
+        108,
+        111
       ]
     },
     "res://source_operators/moth_finish/assets/mistral-vent-albedo.png": {
@@ -3127,11 +3138,11 @@
       "moth_keys": [
         "textures/brushed_metal"
       ],
-      "pixel_sha256": "5330df83e3c9ba5ce36dc058aa0ec7bd27406407b51c1c478d30461a793e876b",
-      "png_sha256": "408d20eedb7b0e4021006cf87508dd3a78ffbc695a0fb1572f4cb46e4727f2ef",
+      "pixel_sha256": "0aaf074a98b6766cef2a0c86d595e621794d3195ac82817c6e75fc80d0df1c11",
+      "png_sha256": "521778fd6134512bf5e4f4b5b1ba6313ef4723effc7e5a507334663db6541c08",
       "range": [
-        229,
-        252
+        244,
+        247
       ]
     },
     "res://source_operators/moth_finish/assets/qwen-shell-normal.png": {
@@ -3151,10 +3162,10 @@
       "moth_keys": [
         "textures/brushed_metal"
       ],
-      "pixel_sha256": "a27db28d9227251a3512e2be371c90ae4ce93831673cdc202368709c11b4556f",
-      "png_sha256": "0f01137d982d39e3dc5d237682b3cc129decbbeac7109bd5b603db8afd919e5e",
+      "pixel_sha256": "30555666a8fa5c3b281479866229a34834bc091a4367a93dfe244322bd2e1fe8",
+      "png_sha256": "d7aa8059cbccbce1e1fe3892785805d81add76c19bd8a2bc8f3e03872b7e866b",
       "range": [
-        111,
+        127,
         255
       ]
     },
@@ -3175,11 +3186,11 @@
       "moth_keys": [
         "textures/brushed_metal"
       ],
-      "pixel_sha256": "e3fb46123152298804566ee25df36c267091e5114fc20939c021f1b06693c569",
-      "png_sha256": "d055184172f3cdf82dd72583c28f8bb31a7d9a6a052e9ac349ac94cd7a0acab1",
+      "pixel_sha256": "7bb34d73160a06363a04e612a150772c7f0667c36d9406a0eea555b40ebe92b6",
+      "png_sha256": "0df0d589c8472110db8ff47766aacc67bb3ee0b9e84117ad25582d58589d56ce",
       "range": [
-        128,
-        159
+        144,
+        147
       ]
     },
     "res://source_operators/moth_finish/assets/qwen-vent-albedo.png": {

@@ -4,6 +4,12 @@ The owner requested Astra subagents to **finish up**. This workstream consolidat
 the prepared features, completes queued production, and carries accepted content
 through native and package verification to a new release.
 
+The owner's latest directive is to **continue using subagents until the requested
+work is finished, then build a Windows release**. Current completion ownership,
+heavy-grant scope and the complete remaining production sequence are maintained in
+[RELEASE_COMPLETION.md](RELEASE_COMPLETION.md). That document supersedes historical
+queue-owner statements below; it does not supersede source locks or evidence gates.
+
 ## Active ownership
 
 | Agent | Session | Branch/worktree | Deliverable |
@@ -18,7 +24,17 @@ worktrees start at `6cefd9eb` and live under `/home/mojo/.tmp-on-disk/`.
 
 ## Heavy-tool ownership and completion sequence
 
-**Current exclusive grant: `FINISH-COMBINED-NATIVE-20261002-A`.** Integration
+**Current grant (supersedes the historical grant below):**
+`PARALLAX-INTERIORS-PRODUCTION-20261002-C` belongs to Parallax Astra
+`ses_f055a6b41ffe42yCL8AxbOL676`. Animation grant B explicitly released at
+`2026-10-02T21:45:31.798193Z`; all nine produced rigs and native surface captures
+are merged at `bb02e34b`. Parallax now builds/reopens its differentiated interiors
+and revalidates refined Moth mounts. Camera and Foundry light corrections, asset
+integration, baseline diagnosis and package closure continue source-only. See
+`../surface-refinement/WORKSTREAM.md`, `RELEASE_COMPLETION.md` and
+`../fighting/animation/PRODUCTION_B.md` for current evidence and remaining gates.
+
+**Completed grant: `FINISH-COMBINED-NATIVE-20261002-A`.** Integration
 owner `ses_f0294303bffed6Fb8UJLKe4ZDz` is reusing the existing
 `cocs-finish-integration-20261002` checkout/cache at parent `09160dc0`.
 Foundry explicitly stopped all owned processes and released its slot. Parent

@@ -26,7 +26,7 @@ func observe_actor(actor: Dictionary) -> void:
 	actor_weapon = weapon
 
 func record(event: InputEvent, active: bool, actor: Dictionary = {}) -> void:
-	var physical_capture := event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT
+	var physical_capture: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT
 	event = bindings.translate(event, active)
 	if event == null: return
 	observe_actor(actor)

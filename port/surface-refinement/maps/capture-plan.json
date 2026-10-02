@@ -1,0 +1,611 @@
+{
+  "status": "planned-not-rendered",
+  "base": "068e3ce2",
+  "districts": [
+    {
+      "district": "foundry-assay",
+      "map": "gravemill-foundry",
+      "camera": [
+        66.0,
+        13.65,
+        45.24
+      ],
+      "target": [
+        66.0,
+        19.0,
+        41.24
+      ],
+      "fov": 75.0,
+      "clock": 12.0,
+      "viewport": "(1280, 800)",
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "inherited_command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/xvfb_run.py",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/map_finish/proof.gd",
+        "--",
+        "--map=gravemill-foundry",
+        "--proof-dir=/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-assay",
+        "--camera=66,13.65,45.24",
+        "--target=66,19,41.24",
+        "--clock=12"
+      ],
+      "inherited_receipt_sha256": "9b499cc5c92e18cc2ec6a4d81b903dd1f909ee97eed4895b2baf607a76ed5dfd",
+      "original_images": [
+        {
+          "state": "original-flat",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-assay/gravemill-foundry-0.png",
+          "sha256": "1940b136b553a661b29691f57532131b015fcaff669aaabf354e321157ffd0cc"
+        },
+        {
+          "state": "rejected-Moth-Low",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-assay/gravemill-foundry-1.png",
+          "sha256": "18180b2a47c91393f6063427576ee3c79e51be67549f9b7aa3902d6c3b80c698"
+        },
+        {
+          "state": "rejected-Moth-Full",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-assay/gravemill-foundry-2.png",
+          "sha256": "5c8d6020be9f1eaef717037d22b58efc138b9a2785cbaaeb61167f3af4bb7541"
+        }
+      ],
+      "refined_native_status": "not run; pending explicit integration grant"
+    },
+    {
+      "district": "foundry-cooling",
+      "map": "gravemill-foundry",
+      "camera": [
+        -84.0,
+        13.65,
+        13.24
+      ],
+      "target": [
+        -84.0,
+        14.3,
+        17.64
+      ],
+      "fov": 75.0,
+      "clock": 12.0,
+      "viewport": "(1280, 800)",
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "inherited_command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/xvfb_run.py",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/map_finish/proof.gd",
+        "--",
+        "--map=gravemill-foundry",
+        "--proof-dir=/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-cooling",
+        "--camera=-84,13.65,13.24",
+        "--target=-84,14.3,17.64",
+        "--clock=12"
+      ],
+      "inherited_receipt_sha256": "31fa2f8f9f35bfaa7f9f7bb05e70273c26b35ffe102043cb001f98f9a8da2848",
+      "original_images": [
+        {
+          "state": "original-flat",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-cooling/gravemill-foundry-0.png",
+          "sha256": "3badf53519b457a5ed67b6946baa0d96b290ee26ff2b2c2bf291d0680f01d3fe"
+        },
+        {
+          "state": "rejected-Moth-Low",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-cooling/gravemill-foundry-1.png",
+          "sha256": "aee7d832d514599f867ce07f8cef482cf4a853daa13e3f4a28e83860be40f6a2"
+        },
+        {
+          "state": "rejected-Moth-Full",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-cooling/gravemill-foundry-2.png",
+          "sha256": "ac1af35b6573e84fd0be08825625605ec8ad922b4d4136a6e55ef3f95657baab"
+        }
+      ],
+      "refined_native_status": "not run; pending explicit integration grant"
+    },
+    {
+      "district": "foundry-crown",
+      "map": "gravemill-foundry",
+      "camera": [
+        0.0,
+        25.65,
+        109.0
+      ],
+      "target": [
+        64.0,
+        25.5,
+        117.96
+      ],
+      "fov": 75.0,
+      "clock": 12.0,
+      "viewport": "(1280, 800)",
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "inherited_command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/xvfb_run.py",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/map_finish/proof.gd",
+        "--",
+        "--map=gravemill-foundry",
+        "--proof-dir=/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-crown",
+        "--camera=0,25.65,109",
+        "--target=64,25.5,117.96",
+        "--clock=12"
+      ],
+      "inherited_receipt_sha256": "646ce09d02f7bcb65477973ae8ec560ab08bf43d75971fe1bce1b97bc9127580",
+      "original_images": [
+        {
+          "state": "original-flat",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-crown/gravemill-foundry-0.png",
+          "sha256": "0a4b438de328013d70961df7f100ce02acb45a0a8350ec486f59e0bc25d95dea"
+        },
+        {
+          "state": "rejected-Moth-Low",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-crown/gravemill-foundry-1.png",
+          "sha256": "d3bbb627b2dd186d846f5ecc6430a3a3303fe1383a9ba82be608a7e9291bd7df"
+        },
+        {
+          "state": "rejected-Moth-Full",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-crown/gravemill-foundry-2.png",
+          "sha256": "0ecf87ebe6bc0da8459ec2d6aeb99bb50db6aeffe307982fed8e452a159fb020"
+        }
+      ],
+      "refined_native_status": "not run; pending explicit integration grant"
+    },
+    {
+      "district": "foundry-crusher",
+      "map": "gravemill-foundry",
+      "camera": [
+        -88.0,
+        5.01,
+        -20.32
+      ],
+      "target": [
+        -72.0,
+        5.9,
+        -25.08
+      ],
+      "fov": 75.0,
+      "clock": 12.0,
+      "viewport": "(1280, 800)",
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "inherited_command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/xvfb_run.py",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/map_finish/proof.gd",
+        "--",
+        "--map=gravemill-foundry",
+        "--proof-dir=/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-crusher",
+        "--camera=-88,5.01,-20.32",
+        "--target=-72,5.9,-25.08",
+        "--clock=12"
+      ],
+      "inherited_receipt_sha256": "89a92a2728c0c356c2cf86182d6b917e3319feda460d037ac1273077fe3c45a4",
+      "original_images": [
+        {
+          "state": "original-flat",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-crusher/gravemill-foundry-0.png",
+          "sha256": "746d7fe4513448de6c5f1e757b7175b946ee99943792d14c1f31b09652c2015e"
+        },
+        {
+          "state": "rejected-Moth-Low",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-crusher/gravemill-foundry-1.png",
+          "sha256": "5a14c0baecf56c0e9be2bfd37367253c2da53ed88dab10f72d1c0d59f528a9a1"
+        },
+        {
+          "state": "rejected-Moth-Full",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-crusher/gravemill-foundry-2.png",
+          "sha256": "5a14c0baecf56c0e9be2bfd37367253c2da53ed88dab10f72d1c0d59f528a9a1"
+        }
+      ],
+      "refined_native_status": "not run; pending explicit integration grant"
+    },
+    {
+      "district": "foundry-furnace",
+      "map": "gravemill-foundry",
+      "camera": [
+        80.0,
+        1.65,
+        -18.8
+      ],
+      "target": [
+        80.0,
+        6.0,
+        -10.3
+      ],
+      "fov": 75.0,
+      "clock": 12.0,
+      "viewport": "(1280, 800)",
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "inherited_command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/xvfb_run.py",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/map_finish/proof.gd",
+        "--",
+        "--map=gravemill-foundry",
+        "--proof-dir=/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-furnace",
+        "--camera=80,1.65,-18.8",
+        "--target=80,6,-10.3",
+        "--clock=12"
+      ],
+      "inherited_receipt_sha256": "ca0e867f223affae01f0566206bbb87bdb980d52fa35e9a3baa0ceb9d19a768f",
+      "original_images": [
+        {
+          "state": "original-flat",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-furnace/gravemill-foundry-0.png",
+          "sha256": "a390d5e114d99246a9ef6ea39719f57cc853b95a0868ca9adcf16ccf11da4510"
+        },
+        {
+          "state": "rejected-Moth-Low",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-furnace/gravemill-foundry-1.png",
+          "sha256": "9af041266035229bd02cb912dcc0436281449ab25675e74fd53c854bfaea5fa2"
+        },
+        {
+          "state": "rejected-Moth-Full",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-furnace/gravemill-foundry-2.png",
+          "sha256": "e71ea5d228342cde04b41adb23d9a117393ee55d1425f911e734b8577253c362"
+        }
+      ],
+      "refined_native_status": "not run; pending explicit integration grant"
+    },
+    {
+      "district": "foundry-transfer",
+      "map": "gravemill-foundry",
+      "camera": [
+        0.0,
+        1.65,
+        -88.0
+      ],
+      "target": [
+        0.0,
+        6.0,
+        -77.81132
+      ],
+      "fov": 75.0,
+      "clock": 12.0,
+      "viewport": "(1280, 800)",
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "inherited_command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/xvfb_run.py",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/map_finish/proof.gd",
+        "--",
+        "--map=gravemill-foundry",
+        "--proof-dir=/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-transfer",
+        "--camera=0,1.65,-88",
+        "--target=0,6,-77.81132",
+        "--clock=12"
+      ],
+      "inherited_receipt_sha256": "ff32ac26bc6d5686d28ccc7b6e8ba70debff937c4a87e1ac39d74da3bdd40605",
+      "original_images": [
+        {
+          "state": "original-flat",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-transfer/gravemill-foundry-0.png",
+          "sha256": "c4e5ee4f5f7caf86b0d7fb7554637f2dc1cddac4cfddc842d5aaa49bf7ff94e0"
+        },
+        {
+          "state": "rejected-Moth-Low",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-transfer/gravemill-foundry-1.png",
+          "sha256": "9249c7447b983cc6740f79bb8df077e964e86f84c5958a263accfc41fb927952"
+        },
+        {
+          "state": "rejected-Moth-Full",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/foundry-transfer/gravemill-foundry-2.png",
+          "sha256": "9249c7447b983cc6740f79bb8df077e964e86f84c5958a263accfc41fb927952"
+        }
+      ],
+      "refined_native_status": "not run; pending explicit integration grant"
+    },
+    {
+      "district": "helix-archive",
+      "map": "helix-conservatory",
+      "camera": [
+        -46.671552,
+        9.65,
+        1.629806
+      ],
+      "target": [
+        -50.0,
+        11.0,
+        -8.0
+      ],
+      "fov": 75.0,
+      "clock": 12.0,
+      "viewport": "(1280, 800)",
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "inherited_command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/xvfb_run.py",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/map_finish/proof.gd",
+        "--",
+        "--map=helix-conservatory",
+        "--proof-dir=/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-archive",
+        "--camera=-46.671552,9.65,1.629806",
+        "--target=-50,11,-8",
+        "--clock=12"
+      ],
+      "inherited_receipt_sha256": "38dddbc3714e1a9caf2824922aa905560bb951f8e375f45315ba238515a5bedf",
+      "original_images": [
+        {
+          "state": "original-flat",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-archive/helix-conservatory-0.png",
+          "sha256": "2c46c7278632a9569a4256f886669c366fe3be764e3ddf584da1060b58a7e419"
+        },
+        {
+          "state": "rejected-Moth-Low",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-archive/helix-conservatory-1.png",
+          "sha256": "7c6764deca0471faddfad63ea0ab213bac7615b826c151fc54b1fa3e9983fdc7"
+        },
+        {
+          "state": "rejected-Moth-Full",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-archive/helix-conservatory-2.png",
+          "sha256": "7c6764deca0471faddfad63ea0ab213bac7615b826c151fc54b1fa3e9983fdc7"
+        }
+      ],
+      "refined_native_status": "not run; pending explicit integration grant"
+    },
+    {
+      "district": "helix-botanical",
+      "map": "helix-conservatory",
+      "camera": [
+        20.48828,
+        2.052575,
+        16.007198
+      ],
+      "target": [
+        28.0,
+        5.0,
+        22.0
+      ],
+      "fov": 75.0,
+      "clock": 12.0,
+      "viewport": "(1280, 800)",
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "inherited_command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/xvfb_run.py",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/map_finish/proof.gd",
+        "--",
+        "--map=helix-conservatory",
+        "--proof-dir=/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-botanical",
+        "--camera=20.48828,2.052575,16.007198",
+        "--target=28,5,22",
+        "--clock=12"
+      ],
+      "inherited_receipt_sha256": "ddd570d1500814ea3c6e86f1a57b471281e5085f2434386c7db76b5081c446ff",
+      "original_images": [
+        {
+          "state": "original-flat",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-botanical/helix-conservatory-0.png",
+          "sha256": "1ada0f68a8ea53cbbd3b1f7a4070dbf482e36e53eb164b142ffb8fe985be4eee"
+        },
+        {
+          "state": "rejected-Moth-Low",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-botanical/helix-conservatory-1.png",
+          "sha256": "00d42884130b52e258c42522a352931ec656f541d00b2004cd9ee9014401fb35"
+        },
+        {
+          "state": "rejected-Moth-Full",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-botanical/helix-conservatory-2.png",
+          "sha256": "b85511893c014c8ae7b783ea8b8c5cf577f11827756025be39e00e72cb2e280e"
+        }
+      ],
+      "refined_native_status": "not run; pending explicit integration grant"
+    },
+    {
+      "district": "helix-irrigation",
+      "map": "helix-conservatory",
+      "camera": [
+        55.057772,
+        9.65,
+        -14.752686
+      ],
+      "target": [
+        64.0,
+        13.0,
+        -17.0
+      ],
+      "fov": 75.0,
+      "clock": 12.0,
+      "viewport": "(1280, 800)",
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "inherited_command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/xvfb_run.py",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/map_finish/proof.gd",
+        "--",
+        "--map=helix-conservatory",
+        "--proof-dir=/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-irrigation",
+        "--camera=55.057772,9.65,-14.752686",
+        "--target=64,13,-17",
+        "--clock=12"
+      ],
+      "inherited_receipt_sha256": "8c38f3c463b807f9ac2529f039df66c68b09e1f2394eb5fcb0b8a22ab5928ed3",
+      "original_images": [
+        {
+          "state": "original-flat",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-irrigation/helix-conservatory-0.png",
+          "sha256": "6e37467fc8534db7aa53198ed331e5daa0bb36a2b6c25dc49ee0d89cedb2fe20"
+        },
+        {
+          "state": "rejected-Moth-Low",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-irrigation/helix-conservatory-1.png",
+          "sha256": "943df3f38b3b06b84453e3a279c5dc1ed4dd34dca6d532355e286246eefd7ac1"
+        },
+        {
+          "state": "rejected-Moth-Full",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-irrigation/helix-conservatory-2.png",
+          "sha256": "943df3f38b3b06b84453e3a279c5dc1ed4dd34dca6d532355e286246eefd7ac1"
+        }
+      ],
+      "refined_native_status": "not run; pending explicit integration grant"
+    },
+    {
+      "district": "helix-lightwell",
+      "map": "helix-conservatory",
+      "camera": [
+        9.52024,
+        1.65,
+        7.305137
+      ],
+      "target": [
+        0.0,
+        13.0,
+        0.0
+      ],
+      "fov": 75.0,
+      "clock": 12.0,
+      "viewport": "(1280, 800)",
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "inherited_command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/xvfb_run.py",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/map_finish/proof.gd",
+        "--",
+        "--map=helix-conservatory",
+        "--proof-dir=/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-lightwell",
+        "--camera=9.52024,1.65,7.305137",
+        "--target=0,13,0",
+        "--clock=12"
+      ],
+      "inherited_receipt_sha256": "a628addd59a80eb7d76df4b11717a5aafabbfa67c8e8610a19ff8d2b31313192",
+      "original_images": [
+        {
+          "state": "original-flat",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-lightwell/helix-conservatory-0.png",
+          "sha256": "4f7fb0d11f3cb1819c567384568db27e2a5fff3d8b5b73099f06ebae8e3851d7"
+        },
+        {
+          "state": "rejected-Moth-Low",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-lightwell/helix-conservatory-1.png",
+          "sha256": "ff44e545c0144df907fc6dadc048d7839f4a5f9ed7e8b205a1bc90d32a602b56"
+        },
+        {
+          "state": "rejected-Moth-Full",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-lightwell/helix-conservatory-2.png",
+          "sha256": "ff44e545c0144df907fc6dadc048d7839f4a5f9ed7e8b205a1bc90d32a602b56"
+        }
+      ],
+      "refined_native_status": "not run; pending explicit integration grant"
+    },
+    {
+      "district": "helix-pavilion",
+      "map": "helix-conservatory",
+      "camera": [
+        11.551367,
+        17.65,
+        82.19225
+      ],
+      "target": [
+        15.0,
+        18.0,
+        86.0
+      ],
+      "fov": 75.0,
+      "clock": 12.0,
+      "viewport": "(1280, 800)",
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "inherited_command": [
+        "/usr/bin/python3",
+        "tools/godot-dev/xvfb_run.py",
+        "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "godot",
+        "--script",
+        "res://tests/map_finish/proof.gd",
+        "--",
+        "--map=helix-conservatory",
+        "--proof-dir=/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-pavilion",
+        "--camera=11.551367,17.65,82.19225",
+        "--target=15,18,86",
+        "--clock=12"
+      ],
+      "inherited_receipt_sha256": "b6b68f20f59169456e8e2f5df2b932f34fb44adc47d6a8f4bdd3dc86103b0691",
+      "original_images": [
+        {
+          "state": "original-flat",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-pavilion/helix-conservatory-0.png",
+          "sha256": "724214c09a00b2adb44fcacdb1c74ed8d0fb36de418b6e6885a5714a51d3cd99"
+        },
+        {
+          "state": "rejected-Moth-Low",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-pavilion/helix-conservatory-1.png",
+          "sha256": "96f7e23a50e713b385f26586e4ac0ba4e75b575834aae7a8f6cf41b6f957543a"
+        },
+        {
+          "state": "rejected-Moth-Full",
+          "path": "/home/mojo/.tmp-on-disk/cocs-finish-integration-evidence-20261002/moth-districts-final/helix-pavilion/helix-conservatory-2.png",
+          "sha256": "96f7e23a50e713b385f26586e4ac0ba4e75b575834aae7a8f6cf41b6f957543a"
+        }
+      ],
+      "refined_native_status": "not run; pending explicit integration grant"
+    }
+  ]
+}

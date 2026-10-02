@@ -35,12 +35,27 @@ func _run() -> void:
 	var world := Map.new()
 	stage.add_child(world)
 	_check(world.build(raw), "map build")
+	if id == "helix-conservatory":
+		var signs := world.find_children("wayfinding-*", "MeshInstance3D", true, false)
+		_check(signs.size() == 3, "all three baked wayfinding faces")
+		for sign_node: MeshInstance3D in signs:
+			var normal := Vector3.ZERO
+			for surface in sign_node.mesh.get_surface_count():
+				var arrays := sign_node.mesh.surface_get_arrays(surface)
+				for value: Vector3 in arrays[Mesh.ARRAY_NORMAL]: normal += value
+				_check(sign_node.get_active_material(surface).cull_mode == BaseMaterial3D.CULL_BACK, "wayfinding backface culling " + sign_node.name)
+			var front := (sign_node.global_basis * normal).normalized()
+			var expected := Vector3.BACK if sign_node.name == "wayfinding-0" else Vector3.FORWARD
+			_check(front.dot(expected) > 0.99, "recipe-facing font normal " + sign_node.name)
+			print("WAYFINDING_FRONT ", sign_node.name, " ", front, " expected ", expected)
 	var hash: String = raw.geometryHash
 	var initial := Binder.apply(world, id, hash)
 	_check(initial.status == "ready", "profile/resource/selector coverage: " + str(initial))
 	Binder.set_root_detail(world, Binder.Detail.OFF)
 	var originals: Array[Dictionary] = []
 	_snapshot(world.get_node_or_null("BlenderArtNoGameplayCollision"), originals)
+	if id == "gravemill-foundry":
+		_check(_verify_preserved_emission(originals) == 1, "one imported Foundry luminaire surface")
 	var profile_path := "res://multiplayer_worlds/dressing/profiles/" + id + ".json"
 	var p: Variant = JSON.parse_string(FileAccess.get_file_as_string(profile_path)) if FileAccess.file_exists(profile_path) else null
 	if p is Dictionary:
@@ -50,6 +65,7 @@ func _run() -> void:
 	for iteration in 3:
 		for level in [Binder.Detail.OFF, Binder.Detail.LOW, Binder.Detail.FULL]:
 			Binder.set_root_detail(world, level)
+			_verify_preserved_emission(originals)
 			var owned := 0
 			for child: Node in world.get_children():
 				if child.get_meta(Binder.OWNER, false):
@@ -61,6 +77,7 @@ func _run() -> void:
 					if level == Binder.Detail.LOW: _check(d.motes == 0, "Low motes")
 			owned_max = maxi(owned_max, owned)
 		Binder.apply(world, id, hash)
+		_verify_preserved_emission(originals)
 	_check(owned_max == 1, "idempotent owned root")
 	var camera := Camera3D.new()
 	stage.add_child(camera)
@@ -70,8 +87,8 @@ func _run() -> void:
 	camera.position = _coordinates(args.get("camera", "55,35,55"))
 	camera.look_at(_coordinates(args.get("target", "0,3,0")))
 	var sun := DirectionalLight3D.new()
-	sun.rotation_degrees = Vector3(-48, -30, 0)
-	sun.light_energy = 1.0
+	sun.rotation_degrees = Vector3(-44, -30, 0)
+	sun.light_energy = 1.25
 	stage.add_child(sun)
 	var environment := WorldEnvironment.new()
 	var env := Environment.new()
@@ -102,11 +119,13 @@ func _run() -> void:
 		frame_usec.append(now - previous)
 		previous = now
 	Binder.cleanup(world)
+	_verify_preserved_emission(originals)
 	_check(world.get_node_or_null("NewMapDressing") == null, "cleanup")
 	for original: Dictionary in originals:
 		_check(original.node.mesh.surface_get_material(original.index) == original.material, "immutable mesh surface")
 		_check(original.node.get_surface_override_material(original.index) == original.override, "restored original override")
 	var reloaded := Binder.apply(world, id, hash)
+	_verify_preserved_emission(originals)
 	_check(reloaded.status == "ready", "reload coverage")
 	var result := {"map": id, "initial": initial, "reloaded": reloaded, "failures": _failures, "owned_max": owned_max, "frame_usec": frame_usec, "renderer": RenderingServer.get_video_adapter_name(), "rendering_method": ProjectSettings.get_setting("rendering/renderer/rendering_method"), "camera": str(camera.position), "fov": camera.fov, "viewport": str(root.size), "clock": float(args.get("clock", "12")), "evidence_note": "frame cadence is not a GPU FPS measurement; images require human route/district review"}
 	if directory != "":
@@ -157,5 +176,24 @@ func _snapshot(node: Node, result: Array[Dictionary]) -> void:
 	if node == null: return
 	if node is MeshInstance3D and node.mesh != null:
 		for index in node.mesh.get_surface_count():
-			result.append({"node": node, "index": index, "material": node.mesh.surface_get_material(index), "override": node.get_surface_override_material(index)})
+			var row := {"node": node, "index": index, "material": node.mesh.surface_get_material(index), "override": node.get_surface_override_material(index)}
+			var active: Material = node.get_active_material(index)
+			if active is BaseMaterial3D and active.emission_enabled:
+				row["emissive"] = {"material": active, "color": active.emission, "energy": active.emission_energy_multiplier, "texture": active.emission_texture, "operator": active.emission_operator}
+			result.append(row)
 	for child: Node in node.get_children(): _snapshot(child, result)
+
+func _verify_preserved_emission(originals: Array[Dictionary]) -> int:
+	var count := 0
+	for row: Dictionary in originals:
+		if not row.has("emissive"): continue
+		count += 1
+		var expected: Dictionary = row.emissive
+		var actual: Material = row.node.get_active_material(row.index)
+		_check(actual == expected.material, "authored luminaire material retained across dressing lifecycle")
+		if actual is BaseMaterial3D:
+			_check(actual.emission_enabled and actual.emission == expected.color and actual.emission_energy_multiplier == expected.energy, "authored luminaire emission/color/energy retained")
+			_check(actual.emission_texture == expected.texture and actual.emission_operator == expected.operator, "authored luminaire emission mapping retained")
+		else:
+			_check(false, "authored luminaire replaced by dressing shader")
+	return count

@@ -62,6 +62,20 @@ static func cleanup(root: Node3D) -> void:
 			child.set_detail(Detail.OFF)
 			child.free()
 
+static func orient_helix_wayfinding(art: Node3D) -> void:
+	# Baked Blender font faces use the opposite forward convention from the
+	# recipe signs. Correct each instance, never its shared mesh or source GLB.
+	for node: Node in art.find_children("wayfinding-*", "MeshInstance3D", true, false):
+		if node.get_meta("wayfinding_front_corrected", false): continue
+		node.rotate_y(PI)
+		node.set_meta("wayfinding_front_corrected", true)
+		for surface in node.mesh.get_surface_count():
+			var original: Material = node.get_active_material(surface)
+			if original is BaseMaterial3D:
+				var front: BaseMaterial3D = original.duplicate()
+				front.cull_mode = BaseMaterial3D.CULL_BACK
+				node.set_surface_override_material(surface, front)
+
 static func set_root_detail(root: Node3D, level: int) -> void:
 	root.set_meta("dressing_detail", clampi(level, Detail.OFF, Detail.FULL))
 	for child: Node in root.get_children():
@@ -130,6 +144,11 @@ func _prepare(root: Node3D) -> void:
 				_diagnostics.resources.append(texture.resource_path)
 
 func _collect(node: Node) -> void:
+	# Font triangles must keep their one-sided material; triplanar architectural
+	# finishes disable culling and would expose mirrored glyph backs again.
+	if node.get_meta("wayfinding_front_corrected", false):
+		_diagnostics["preserved_wayfinding"] = int(_diagnostics.get("preserved_wayfinding", 0)) + 1
+		return
 	if node is MeshInstance3D and node.mesh != null:
 		for index in node.mesh.get_surface_count():
 			var source: Material = node.mesh.surface_get_material(index)
@@ -200,9 +219,9 @@ func _sign(entry: Dictionary) -> void:
 	var font := ThemeDB.fallback_font
 	label.font = font
 	var width := 1.0
-	var lines := entry.text.split("\n")
+	var lines: PackedStringArray = str(entry.text).split("\n")
 	for line: String in lines: width = maxf(width, font.get_string_size(line, HORIZONTAL_ALIGNMENT_LEFT, -1, 64).x)
-	var height := font.get_height(64) * lines.size()
+	var height: float = font.get_height(64) * lines.size()
 	label.pixel_size = minf(float(entry.size[0]) * 0.88 / width, float(entry.size[1]) * 0.88 / height)
 	if label.pixel_size * 64 < 0.08:
 		_diagnostics.errors.append("sign text too small to read: " + entry.id)

@@ -24,6 +24,36 @@ func _initialize() -> void:
 func begin() -> void:
 	session = load("res://world/session.tscn").instantiate()
 	root.add_child(session)
+	current_scene = session
+	if scenario == "reconnect":
+		# --lobby-menu intentionally waits for user Connect; --join-room alone
+		# does not auto-seat this route. Exercise the real form before riding.
+		await process_frame
+		session.lobby_menu.role.grab_focus()
+		await tap(KEY_RIGHT)
+		session.lobby_menu.room.grab_focus()
+		for character: String in session.join_room_id:
+			var event := InputEventKey.new()
+			event.unicode = character.unicode_at(0)
+			event.pressed = true
+			Input.parse_input_event(event)
+			await process_frame
+			event = event.duplicate()
+			event.pressed = false
+			Input.parse_input_event(event)
+		session.lobby_menu.connect_button.grab_focus()
+		await tap(KEY_SPACE)
+
+func tap(code: int) -> void:
+	key(code, true)
+	await process_frame
+	key(code, false)
+	await process_frame
+
+func retry_from_menu() -> void:
+	await process_frame
+	session.lobby_menu.reconnect_button.grab_focus()
+	await tap(KEY_SPACE)
 
 func key(code: int, pressed: bool) -> void:
 	var event := InputEventKey.new()
@@ -35,6 +65,8 @@ func key(code: int, pressed: bool) -> void:
 func click(pressed: bool) -> void:
 	var event := InputEventMouseButton.new()
 	event.button_index = MOUSE_BUTTON_LEFT
+	event.position = root.get_visible_rect().size * Vector2(0.5, 0.65)
+	event.global_position = event.position
 	event.pressed = pressed
 	Input.parse_input_event(event)
 
@@ -56,8 +88,8 @@ func _process(delta: float) -> bool:
 	if is_instance_valid(session) and session.phase == -5 and scenario == "reconnect" and not resumed:
 		var adapter: Node = session.get_node("PlayerGameplay")
 		suspended_clean = adapter.model.is_empty() and adapter.cues.slots.is_empty() and adapter.cues.channels.is_empty()
-		# Invoke the real lobby Retry handler; no transport/pose/state injection.
-		session.lobby_retry_reconnect()
+		# Use the visible Retry control, including normal press/release handling.
+		call_deferred("retry_from_menu")
 		resumed = true
 		stage = 4
 	if not is_instance_valid(session) or session.phase != 3 or not session.received_pose or not session.has_node("PlayerGameplay"): return false
@@ -77,7 +109,7 @@ func _process(delta: float) -> bool:
 			capture("ride")
 			stage = 2
 		elif waypoint < route.size():
-			var direction := route[waypoint] - Vector2(actor.x, actor.z)
+			var direction: Vector2 = route[waypoint] - Vector2(actor.x, actor.z)
 			if direction.length() < 0.4: waypoint += 1
 			else:
 				aim(atan2(-direction.x, -direction.y), 0)

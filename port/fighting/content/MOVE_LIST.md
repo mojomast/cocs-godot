@@ -48,9 +48,9 @@ HP 1000; walk 52 mm/tick; weight 100%; jump 185 mm/tick. Resource adaptation: 0/
 
 ### Proposed input traces
 
-- **Basic confirm**: Survey Tap xx Cage Cross xx Plasma Lift. Inputs at ticks 0, 12, 28. Grounded close fixture. **Pending actual core verification.**
+- **Basic confirm**: Survey Tap xx Cage Cross. Inputs at ticks 0, 12. Grounded close fixture. **Pending actual core verification.**
 - **Signature special confirm**: Survey Tap xx Cage Cross xx Survey Orb. Inputs at ticks 0, 12, 28. Grounded close fixture. **Pending actual core verification.**
-- **Air corner chain**: Bracket Peck xx Open-Cage Kick xx Survey Orb. Inputs at ticks 0, 12, 28. Airborne corner fixture. **Pending actual core verification.**
+- **Air corner chain**: Bracket Peck xx Open-Cage Kick xx Survey Orb. Inputs at ticks 0, 12, 32. Airborne corner fixture. **Pending actual core verification.**
 
 ## Claude (claude) — ward footsies
 
@@ -92,9 +92,9 @@ HP 1060; walk 44 mm/tick; weight 110%; jump 170 mm/tick. Resource review: 0/4.
 
 ### Proposed input traces
 
-- **Basic confirm**: Crook Jab xx Shin Gate xx Ceramic Lance. Inputs at ticks 0, 13, 31. Grounded close fixture. **Pending actual core verification.**
+- **Basic confirm**: Crook Jab xx Shin Gate. Inputs at ticks 0, 13. Grounded close fixture. **Pending actual core verification.**
 - **Signature special confirm**: Crook Jab xx Shin Gate xx Ward Lance. Inputs at ticks 0, 13, 31. Grounded close fixture. **Pending actual core verification.**
-- **Air corner chain**: Glide Palm xx Winged Ward xx Descending Chevron. Inputs at ticks 0, 13, 31. Airborne corner fixture. **Pending actual core verification.**
+- **Air corner chain**: Glide Palm xx Winged Ward xx Descending Chevron. Inputs at ticks 8, 21, 39; 36-tick back-charge setup from tick 0. Airborne corner fixture. **Pending actual core verification.**
 
 ## Grok (grok) — pressure brawler
 
@@ -136,8 +136,8 @@ HP 980; walk 57 mm/tick; weight 95%; jump 205 mm/tick. Resource heat: 0/6.
 
 ### Proposed input traces
 
-- **Basic confirm**: Offset Hook xx Piston Elbow xx Furnace Upper. Inputs at ticks 0, 11, 26. Grounded close fixture. **Pending actual core verification.**
-- **Signature special confirm**: Offset Hook xx Piston Elbow xx Arc Grenade. Inputs at ticks 0, 11, 26. Grounded close fixture. **Pending actual core verification.**
+- **Basic confirm**: Offset Hook xx Piston Elbow. Inputs at ticks 0, 11. Grounded close fixture. **Pending actual core verification.**
+- **Signature special confirm**: Offset Hook xx Piston Elbow xx Arc Grenade. Inputs at ticks 0, 11, 26. Airborne corner fixture. **Pending actual core verification.**
 - **Air corner chain**: Crooked Peck xx Flying Piston xx Falling Anvil. Inputs at ticks 0, 11, 26. Airborne corner fixture. **Pending actual core verification.**
 
 ## Meta (meta) — armored grappler
@@ -180,9 +180,9 @@ HP 1100; walk 40 mm/tick; weight 120%; jump 165 mm/tick. Resource brace: 3/3.
 
 ### Proposed input traces
 
-- **Basic confirm**: Rivet Tap xx Foundation Kick xx Twin-Piston Crush. Inputs at ticks 0, 14, 35. Grounded close fixture. **Pending actual core verification.**
+- **Basic confirm**: Rivet Tap xx Foundation Kick. Inputs at ticks 0, 14. Grounded close fixture. **Pending actual core verification.**
 - **Signature special confirm**: Rivet Tap xx Foundation Kick xx Shock Cone. Inputs at ticks 0, 14, 35. Grounded close fixture. **Pending actual core verification.**
-- **Air corner chain**: Turbine Peck xx Cross-Brace Knee xx Two-Drum Drop. Inputs at ticks 0, 14, 34. Airborne corner fixture. **Pending actual core verification.**
+- **Air corner chain**: Turbine Peck xx Cross-Brace Knee xx Two-Drum Drop. Inputs at ticks 8, 22, 42; 36-tick back-charge setup from tick 0. Airborne corner fixture. **Pending actual core verification.**
 
 ## Gemini (gemini) — two-stance duelist
 
@@ -230,9 +230,9 @@ HP 960; walk 56 mm/tick; weight 95%; jump 192 mm/tick. Resource band: 0/1.
 
 ### Proposed input traces
 
-- **Basic confirm**: Petal Jab xx Twin-Claw Cross xx Rail Palm Lift. Inputs at ticks 0, 12, 28. Grounded close fixture. **Pending actual core verification.**
+- **Basic confirm**: Petal Jab xx Twin-Claw Cross. Inputs at ticks 0, 12. Grounded close fixture. **Pending actual core verification.**
 - **Signature special confirm**: Petal Jab xx Twin-Claw Cross xx Rail Lance. Inputs at ticks 0, 12, 28. Grounded close fixture. **Pending actual core verification.**
-- **Air corner chain**: Claw Peck xx Mirror Heel xx Rail Lance. Inputs at ticks 0, 12, 28. Airborne corner fixture. **Pending actual core verification.**
+- **Air corner chain**: Claw Peck xx Mirror Heel xx Rail Lance. Inputs at ticks 0, 12, 32. Airborne corner fixture. **Pending actual core verification.**
 
 ## DeepSeek (deepseek) — charge hover zoner
 
@@ -274,9 +274,9 @@ HP 1080; walk 42 mm/tick; weight 115%; jump 175 mm/tick. Resource fuel: 90/90.
 
 ### Proposed input traces
 
-- **Basic confirm**: Valve Tap xx Pressure Palm xx Vessel Elbow. Inputs at ticks 0, 14, 34. Grounded close fixture. **Pending actual core verification.**
+- **Basic confirm**: Valve Tap xx Pressure Palm. Inputs at ticks 0, 14. Grounded close fixture. **Pending actual core verification.**
 - **Signature special confirm**: Valve Tap xx Ballast Sweep xx Compute Shot. Inputs at ticks 36, 50, 69; 36-tick back-charge setup from tick 0. Grounded close fixture. **Pending actual core verification.**
-- **Air corner chain**: Diver Peck xx Pressure Knee xx Salvage Dive. Inputs at ticks 0, 14, 34. Airborne corner fixture. **Pending actual core verification.**
+- **Air corner chain**: Diver Peck xx Pressure Knee xx Salvage Dive. Inputs at ticks 8, 22, 42; 36-tick back-charge setup from tick 0. Airborne corner fixture. **Pending actual core verification.**
 
 ## Mistral (mistral) — air-dash rushdown
 
@@ -318,7 +318,7 @@ HP 920; walk 62 mm/tick; weight 85%; jump 198 mm/tick. Resource air_dash: 1/1.
 
 ### Proposed input traces
 
-- **Basic confirm**: Scatter Snap xx Wing Sweep xx Tailfin Rise. Inputs at ticks 0, 11, 26. Grounded close fixture. **Pending actual core verification.**
+- **Basic confirm**: Scatter Snap xx Wing Sweep. Inputs at ticks 0, 11. Grounded close fixture. **Pending actual core verification.**
 - **Signature special confirm**: Scatter Snap xx Wing Sweep xx Flak Fan. Inputs at ticks 0, 11, 26. Grounded close fixture. **Pending actual core verification.**
 - **Air corner chain**: Slipstream Peck xx Swept Heel xx Sirocco Dive. Inputs at ticks 0, 11, 26. Airborne corner fixture. **Pending actual core verification.**
 
@@ -362,9 +362,9 @@ HP 900; walk 58 mm/tick; weight 85%; jump 190 mm/tick. Resource context: 0/3.
 
 ### Proposed input traces
 
-- **Basic confirm**: Gimbal Jab xx Orbital Backhand xx Axis Rise. Inputs at ticks 0, 12, 29. Grounded close fixture. **Pending actual core verification.**
+- **Basic confirm**: Gimbal Jab xx Orbital Backhand. Inputs at ticks 0, 12. Grounded close fixture. **Pending actual core verification.**
 - **Signature special confirm**: Gimbal Jab xx Orbital Backhand xx Context Pulse. Inputs at ticks 0, 12, 29. Grounded close fixture. **Pending actual core verification.**
-- **Air corner chain**: Satellite Peck xx Orbit Heel xx Context Pulse. Inputs at ticks 0, 12, 29. Airborne corner fixture. **Pending actual core verification.**
+- **Air corner chain**: Satellite Peck xx Orbit Heel xx Context Pulse. Inputs at ticks 0, 12, 33. Airborne corner fixture. **Pending actual core verification.**
 
 ## Qwen (qwen) — anchor setplay grappler
 
@@ -406,7 +406,15 @@ HP 1020; walk 48 mm/tick; weight 105%; jump 180 mm/tick. Resource tools: 3/3.
 
 ### Proposed input traces
 
-- **Basic confirm**: Lockpin Tap xx Segment Sweep xx Sentinel Lift. Inputs at ticks 0, 13, 31. Grounded close fixture. **Pending actual core verification.**
+- **Basic confirm**: Lockpin Tap xx Segment Sweep. Inputs at ticks 0, 13. Grounded close fixture. **Pending actual core verification.**
 - **Signature special confirm**: Lockpin Tap xx Segment Sweep xx Tool Pulse. Inputs at ticks 0, 13, 31. Grounded close fixture. **Pending actual core verification.**
-- **Air corner chain**: Glyph Peck xx Locking Heel xx Tool Pulse. Inputs at ticks 0, 13, 30. Airborne corner fixture. **Pending actual core verification.**
+- **Air corner chain**: Glyph Peck xx Locking Heel xx Tool Pulse. Inputs at ticks 0, 13, 34. Airborne corner fixture. **Pending actual core verification.**
+
+## Native-03 candidate follow-up
+
+Basic confirms now teach two consecutive normals; signature and air practice retain three attacks. Original native failures and all passing candidates are recorded in NATIVE_03_DIAGNOSIS.json. Revised candidates need actual-core rerun.
+Meta/Qwen: hold down continuously through crouch L and crouch M; a down-neutral-down sequence selects Mobility instead.
+Grok signature grenade practice is now a grounded corner-pressure route; its original midscreen third hit arrived after hitstun expired.
+Claude, Meta and DeepSeek air practice: start grounded at the corner, tap Up for both actors at tick0, then begin the listed aerial normals at tick8. Their new setup uses ordinary jumps, with no initial velocity injection. Grok/Mistral retain the native-passing airborne fixtures unchanged.
+ChatGPT, Gemini, Kimi and Qwen retain their harder air-normal into projectile routes. The third input is four ticks later to cover ordinary landing recovery; Astra must repair the observed landing-timer latch before these candidates can be certified. No projectile finisher is replaced to hide the core issue.
 

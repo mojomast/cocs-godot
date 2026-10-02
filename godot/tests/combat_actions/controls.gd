@@ -5,6 +5,13 @@ const ArmsRace = preload("res://arms_race/demo.gd")
 const Combined = preload("res://combined_arms/controls.gd")
 var checks := 0
 var failures := 0
+var resource_probe: RefCounted
+
+func probe(stage: String, extra: Dictionary = {}) -> void:
+	if resource_probe == null: return
+	var roots := {"autoloads":root,"SessionScript":Session,"ArmsScript":ArmsRace}
+	roots.merge(extra)
+	resource_probe.snapshot(stage, roots)
 
 func check(ok: bool, message: String) -> void:
 	checks += 1
@@ -36,6 +43,12 @@ func prepare(s: Node) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _initialize() -> void:
+	call_deferred("run")
+
+func run() -> void:
+	if OS.get_environment("BASELINE_CONTROLS_RESOURCE_PROBE") == "1":
+		resource_probe = load("res://tests/combat_actions/resource_probe.gd").new()
+	probe("before-session")
 	var a := Actions.new()
 	for code: int in Actions.EDGE_KEYS:
 		var field: String = Actions.EDGE_KEYS[code]
@@ -85,7 +98,9 @@ func _initialize() -> void:
 	check(a.sample(0,0,true).z == -1, "fresh movement resumes after release")
 
 	var s := Session.new()
+	probe("session-allocated", {"session":s})
 	prepare(s)
+	probe("session-prepared", {"session":s})
 	s.release_pointer()
 	var click := mouse(MOUSE_BUTTON_LEFT,true)
 	s._input(click)
@@ -127,12 +142,17 @@ func _initialize() -> void:
 		s._input(mouse(MOUSE_BUTTON_RIGHT, true))
 		check(s.aim_requested(), boundary + " fresh release/press works")
 		s._input(mouse(MOUSE_BUTTON_RIGHT, false))
+	probe("session-before-free", {"session":s})
 	s.free()
+	probe("session-freed")
 	var arms := ArmsRace.new()
+	probe("arms-allocated", {"arms":arms})
 	prepare(arms)
 	arms._input(mouse(MOUSE_BUTTON_RIGHT, true))
 	check(not arms.weapon_controls_active() and arms.aim_requested(), "Arms Race ADS independent from pinned weapon selection")
+	probe("arms-before-free", {"arms":arms})
 	arms.free()
+	probe("arms-freed")
 	var c := Combined.new()
 	c.accept(key(KEY_ENTER,true),true)
 	c.accept(mouse(MOUSE_BUTTON_RIGHT,true),true,true)
@@ -148,4 +168,8 @@ func _initialize() -> void:
 	check(not c.command(0,0,true,false).ads, "mounted press cannot latch infantry ADS")
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	print("NATIVE_COMBAT_ACTIONS checks=",checks," failures=",failures," synthetic=true")
+	await RenderingServer.frame_post_draw
+	await process_frame
+	probe("existing-post-draw-boundary")
+	resource_probe = null
 	quit(1 if failures else 0)

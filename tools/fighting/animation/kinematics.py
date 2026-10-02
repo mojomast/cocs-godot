@@ -71,8 +71,23 @@ def solve(rig,pose):
             tails[bone] = out[match]
         else:
             delta = sub(rig['tails'][bone],rest[bone])
+            if bone.endswith('Hand'):
+                delta = mul(unit(sub(out[bone],out[bone.replace('Hand','LowerArm')])),norm(delta))
             angle = add(pose['torso'],pose['head']) if bone=='Head' else [0,0,0]
             tails[bone] = add(out[bone],rotate(delta,angle))
+    # Free knockdowns rotate the whole articulated body, rather than replacing
+    # a fall with a crouch. Keep the lowest joint above the original sole plane.
+    if any(abs(a)>1e-9 for a in pose.get('body',[0,0,0])):
+        pivot=out['Hips'][:]
+        for bone in out:
+            if bone=='Root': continue
+            out[bone]=add(pivot,rotate(sub(out[bone],pivot),pose['body']))
+            tails[bone]=add(pivot,rotate(sub(tails[bone],pivot),pose['body']))
+        floor_shift=.15-min(p[2] for bone,p in out.items() if bone!='Root')
+        for bone in out:
+            if bone!='Root':
+                out[bone][2]+=floor_shift
+                tails[bone][2]+=floor_shift
     # The actor origin is immutable even when the hips compress.
     out['Root'],tails['Root'] = rest['Root'][:],rig['tails']['Root'][:]
     return out,tails,errors

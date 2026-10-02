@@ -10,6 +10,7 @@ var port := 0
 var capability := ""
 var ready_path := ""
 var pending: Array[Dictionary] = []
+var pending_sizes: Array[int] = []
 var pending_bytes := 0
 var busy := false
 var active_op := ""
@@ -24,7 +25,9 @@ static func runtime_plan(editor: bool, executable_dir: String, development_root:
 		var manifest_file := FileAccess.open(base.path_join("manifest.json"), FileAccess.READ)
 		if manifest_file == null: return {"error":"Replay runtime manifest is missing from this installation."}
 		if manifest_file.get_length() > 65536: return {"error":"Replay runtime manifest is invalid."}
-		var manifest: Variant = JSON.parse_string(manifest_file.get_as_text())
+		var parser := JSON.new()
+		if parser.parse(manifest_file.get_as_text()) != OK: return {"error":"Replay runtime manifest is invalid."}
+		var manifest: Variant = parser.data
 		if not manifest is Dictionary or manifest.get("version") != 1 or manifest.get("kind") != RUNTIME_KIND or not manifest.get("files") is Dictionary:
 			return {"error":"Replay runtime manifest is invalid."}
 		var files: Dictionary = manifest.files
@@ -56,6 +59,8 @@ func spawn_helper(node: String, arguments: PackedStringArray) -> int:
 
 func _ready() -> void:
 	add_child(http)
+	# Loopback transport must keep progressing while the renderer is busy.
+	http.use_threads = true
 	http.timeout = 8.0
 	http.body_size_limit = 2 * 1024 * 1024
 	http.request_completed.connect(_completed)
@@ -73,28 +78,30 @@ func _ready() -> void:
 
 func send(request: Dictionary) -> bool:
 	if stopped: return false
+	var bytes := JSON.stringify(request).to_utf8_buffer().size()
 	# Preserve delivered packets while amortizing HTTP overhead. Source Node still
 	# owns the 18 Hz due decision; batching does not resample or drop events.
 	if request.get("op") == "frame" and not pending.is_empty() and pending.back().get("op") in ["frame", "frames"]:
 		var previous: Dictionary = pending.back()
-		var frames: Array = previous.frames.duplicate() if previous.op == "frames" else [previous]
-		if frames.size() < 4:
-			frames.append(request)
-			var batch := {"op":"frames", "frames":frames}
-			var batch_bytes := JSON.stringify(batch).to_utf8_buffer().size()
-			var old_bytes := JSON.stringify(previous).to_utf8_buffer().size()
+		var frames: Array = previous.frames if previous.op == "frames" else [previous]
+		if frames.size() < 32:
+			var old_bytes: int = pending_sizes.back()
+			var base_bytes: int = old_bytes if previous.op == "frames" else JSON.stringify({"op":"frames", "frames":frames}).to_utf8_buffer().size()
+			var batch_bytes: int = base_bytes + bytes + 1 # comma plus exact JSON item bytes
 			if batch_bytes < 512 * 1024 and pending_bytes - old_bytes + batch_bytes <= 4 * 1024 * 1024:
-				pending.pop_back()
+				frames.append(request.duplicate(true))
+				pending[-1] = {"op":"frames", "frames":frames}
+				pending_sizes[-1] = batch_bytes
 				pending_bytes += batch_bytes - old_bytes
-				pending.append(batch.duplicate(true))
 				return true
 	if request.get("op") in ["seek", "speed"] and not pending.is_empty() and pending.back().get("op") == request.op:
-		pending_bytes -= JSON.stringify(pending.pop_back()).to_utf8_buffer().size()
-	var bytes := JSON.stringify(request).to_utf8_buffer().size()
+		pending.pop_back()
+		pending_bytes -= pending_sizes.pop_back()
 	if pending.size() >= 32 or pending_bytes + bytes > 4 * 1024 * 1024:
 		failed.emit("Replay queue is full; recording stopped. Save the delivered prefix.")
 		return false
 	pending.append(request.duplicate(true))
+	pending_sizes.append(bytes)
 	pending_bytes += bytes
 	return true
 
@@ -115,7 +122,7 @@ func _process(delta: float) -> void:
 	if pending.is_empty(): return
 	var request: Dictionary = pending.pop_front()
 	var text := JSON.stringify(request)
-	pending_bytes -= text.to_utf8_buffer().size()
+	pending_bytes -= pending_sizes.pop_front()
 	active_op = str(request.op)
 	active_epoch = int(request.get("_epoch", 0))
 	busy = true
@@ -137,6 +144,7 @@ func _completed(result: int, code: int, _headers: PackedStringArray, body: Packe
 		# Keep helper alive so a capped/interrupted recording can still be saved.
 		failed.emit(str(value.get("error", "Replay rejected")))
 		pending.clear()
+		pending_sizes.clear()
 		pending_bytes = 0
 		return
 	value["_epoch"] = active_epoch
@@ -145,6 +153,7 @@ func _completed(result: int, code: int, _headers: PackedStringArray, body: Packe
 func _abort(message: String) -> void:
 	stopped = true
 	pending.clear()
+	pending_sizes.clear()
 	pending_bytes = 0
 	failed.emit(message)
 

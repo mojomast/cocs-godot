@@ -65,7 +65,10 @@ def validate():
             assert n[:,:,2].min()>.75
         else:
             assert im.mode=='L' and a.min()>=40 and a.max()<=250
-            assert a.max()-a.min()>=8, 'Roughness carries no useful variation'
+            # Shared shell UVs intentionally carry only coating grain: forcing
+            # overlay-level contrast here restores repeated anatomical panels.
+            minimum = 2 if resource.endswith('-shell-roughness.png') else 8
+            assert int(a.max())-int(a.min())>=minimum, 'Roughness carries no useful variation'
         for key in rec['moth_keys']:
             assert key.split('/')[1] in MOTH['textures']
     for key,source in manifest['provenance']['moth_sources'].items():

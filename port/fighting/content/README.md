@@ -3,6 +3,12 @@
 **READY FOR CORE/NATIVE COMBO VALIDATION.** This is authored source content, with
 human balance, actual core combo proof and native animation acceptance pending.
 
+Actual native-03 now provides 16 passing and 38 failing facing cases, with all
+54 replay comparisons equal. `NATIVE_03_DIAGNOSIS.json` preserves frame/contact
+witnesses and maps every failure; `NATIVE_03_FOLLOWUP.md` documents corrected
+candidates and a precise core landing-timer issue. All native-passing candidates
+remain unchanged; revised ones await native rerun. No move balance values change.
+
 ## Deliverables
 
 - `godot/fighting/data/roster.json`: nine source-identity operators, 138 explicit
@@ -61,6 +67,9 @@ it contains no authoritative combat simulation.
    initial attacker-facing conversion, so the same-operator dummy walks alongside
    the attacker through ordinary inputs. Release the dummy at first attack.
    Place the actors once before playback; never teleport them per step.
+   For `setup_kind:paired_jump`, start both actors grounded at the corner and
+   replay both Up samples at tick0; begin the attacker air route at tick8. Native
+   fixtures for already-passing Grok/Mistral air routes remain unchanged.
 3. Expand sparse trace samples to two canonical input dictionaries each tick.
    Use `trace.mjs`: a duration holds axes/buttons, while a rising-edge `pressed`
    hint is emitted only on the first tick; unspecified ticks are neutral. Core

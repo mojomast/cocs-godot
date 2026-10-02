@@ -1,0 +1,166 @@
+{
+  "version": 1,
+  "canonicalBase": "e38b3662",
+  "consolidatedRecipeRevision": "652b8f3c",
+  "archive": "archive/scenery-source-fe3f3b5a",
+  "slotOwnerAtHandoff": "C — Parallax original owner; explicit release and a new grant required",
+  "grant": "none; source consolidation only",
+  "tools": {
+    "blender": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender",
+    "godot": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64"
+  },
+  "sourcePinSha256": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+  "evidenceRoot": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/consolidation",
+  "minimumFreeGiB": 3,
+  "common": {
+    "environment": {"LP_NUM_THREADS":"1"},
+    "import": {"argv":["{godot}","--headless","--path","godot","--editor","--import","--quit"],"timeoutSeconds":600},
+    "finishScript": "tools/asset-production/moth_finish.py",
+    "finishSpace": "fixed attachment-local UV, real Moth albedo modulation + tangent normal; no moving world-coordinate shaders",
+    "texturePreserveNames": ["glass","water","ocean","cyan","amber","letter"],
+    "acceptance": ["editable master independently reopened", "GLB reimported and exact resource hashes recorded", "nonflat Moth textures and usable UVs verified", "native source-contact and collision/visual correspondence", "production-context eye-level art inspection", "ordinary-input hosted gameplay/story journey", "1280x800/UI100 and 760x520/UI150", "LOD/detail/wetness restoration and teardown", "actual capture timestamps/cadence and renderer", "parent package closure then Windows release; no silent deferred units"]
+  },
+  "units": [
+    {
+      "id":"parallax-interiors", "owner":"original Parallax worktree; parent review only", "external":true,
+      "sourceCommits":["3e9bf9e5"], "status":"external-unit-pending; not merged by consolidation",
+      "originalWorktree":"/home/mojo/.tmp-on-disk/cocs-new-map-observatory-20261002",
+      "recipePaths":["tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/build_recipe.py","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/author_candidate.py","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/candidate-meshes.json"],
+      "prerequisites":["FINISHCOMBINED-A releases slot", "parent resumes original worker"],
+      "commands":[], "configuredTriangleCap":160000,"measuredTriangles":null,
+      "externalOnlyCommands":[
+        {"argv":["python3","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/author_candidate.py","--prepare-only"],"timeoutSeconds":120},
+        {"argv":["python3","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/prepare_native.py"],"timeoutSeconds":120},
+        {"argv":["{blender}","-b","-t","1","--python-exit-code","1","--python","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/author_candidate.py","--","--slot-granted","--render"],"timeoutSeconds":900},
+        {"argv":["{blender}","-b","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/output/parallax-observatory.blend","-t","1","--python-exit-code","1","--python","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/reopen_candidate.py","--","--slot-granted"],"timeoutSeconds":300},
+        {"argv":["node","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/output/audit-art.mjs"],"timeoutSeconds":120},
+        {"argv":["{godot}","--headless","--single-threaded-scene","--path","godot","--script","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/output/physics.gd"],"timeoutSeconds":300},
+        {"argv":["{godot}","--single-threaded-scene","--path","godot","--audio-driver","Dummy","--script","tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/output/inspection.gd"],"timeoutSeconds":600}
+      ],
+      "externalTargets":["tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/output/parallax-observatory.blend","revision-local candidate GLB/GLTFDocument; accepted GLB not overwritten"],
+      "nextAssets":"finish original interior revision, preserve its assets/provenance", "nextCapture":"native interiors and revised source paths; then Moth face-mount revalidation",
+      "gates":["parent-only integration of original geometry/assets/hooks", "Moth mounts revalidated against revised interior geometry", "hosted native accepted pairs before registration"],
+      "docs":["port/map-finish/parallax-observatory/REVIEW.md"]
+    },
+    {
+      "id":"robots", "sourceCommits":["fb9715fb"], "status":"source-ready-unbuilt", "external":false,
+      "recipePaths":["tools/godot-robots/recipe.py","tools/godot-robots/build.py","godot/robot_assets/switchyard/contract.json"],
+      "prerequisites":["explicit serial slot grant", "Moth image preflight", "stock baseline robot GLBs available"],
+      "commands":[
+        {"id":"build","argv":["{blender}","-b","-t","1","--python","tools/godot-robots/build.py"],"timeoutSeconds":600},
+        {"id":"reopen-original","argv":["{blender}","-b","-t","1","--python","tools/godot-robots/verify_blender.py"],"timeoutSeconds":300},
+        {"id":"receipt-original","argv":["node","godot/tests/robot_assets/verify_receipt.mjs"],"timeoutSeconds":60},
+        {"id":"native","argv":["{godot}","--headless","--path","godot","--script","res://tests/robot_assets/native_contract.gd"],"timeoutSeconds":180}
+      ],
+      "masters":{"glob":"tools/godot-robots/masters/*.blend","count":9},
+      "exports":{"glob":"godot/robot_assets/switchyard/generated/*.glb","count":9},
+      "lodAssemblies":9,"workshopProps":6,"configuredTriangleCap":102000,"capExplanation":"3*(14000+8500+5500)+6*3000 across all LODs/props; not simultaneously visible", "measuredTriangles":null,
+      "nextAssets":"3 skins (Needle/Caisson/Kiln), 9 rigid LOD assemblies in 3 GLBs, 6 prop GLBs; 3 skeletal reference GLBs outside runtime",
+      "nextCapture":"actual Campaign and Horde bodies at source scales, poses, shield/attack contacts, original/new silhouettes and six workshop placements",
+      "gates":["Moth texture survives COLOR_0 multiplication and adapter install", "skin factory/local selection hook and six reviewed prop placements still required", "animated body/eye/muzzle/source hit-volume agreement", "feet on slope/step/strafe; idle/walk/attack/react/death", "source-event attacks and death/corpse teardown"],
+      "docs":["port/expansion-three/robots/ACCEPTANCE.md","port/expansion-three/robots/DESIGN.md"]
+    },
+    {
+      "id":"vehicles", "sourceCommits":["91fb48e4","ce739609"], "status":"source-ready-unbuilt", "external":false,
+      "recipePaths":["tools/godot-vehicle-assets/recipe.mjs","tools/godot-vehicle-assets/build.py"],
+      "prerequisites":["explicit serial slot grant", "write deterministic recipe JSON", "optional hooks present; native no-asset fallback before build"],
+      "commands":[
+        {"id":"recipes","argv":["node","tools/godot-vehicle-assets/write-recipes.mjs"],"timeoutSeconds":30},
+        {"id":"fallback","argv":["{godot}","--headless","--path","godot","--script","res://tests/vehicle_assets/native.gd"],"timeoutSeconds":180},
+        {"id":"build","argv":["{blender}","-b","-t","1","--python","tools/godot-vehicle-assets/build.py","--","{root}"],"timeoutSeconds":900},
+        {"id":"native","argv":["{godot}","--headless","--path","godot","--script","res://tests/vehicle_assets/native.gd","--","--require-assets"],"timeoutSeconds":180}
+      ],
+      "masters":{"glob":"tools/godot-vehicle-assets/masters/*.blend","count":9},
+      "exports":{"glob":"godot/vehicle_assets/generated/*.glb","count":9},
+      "configuredTriangleCap":456000,"capExplanation":"3 identities * (100000+36000+16000) post-modifier caps; all LODs", "sourceRecipeTriangles":89948,"measuredTriangles":null,
+      "nextAssets":"Puma/Titan/Scout 9 LOD exports, independent masters and material-local UV finishes",
+      "nextCapture":"source-wire mount/drive/reverse/boost/turret fire/passenger/dismount, rain/team changes, repair/destruction/respawn in production maps",
+      "gates":["independent generic master + GLB reopen", "correct source pivots/wheel roll/muzzles and crew clearance", "team accent retains textures while wet", "64 vehicle stress and reconnect cleanup", "LOD24/65m and compact chase-camera review"],
+      "docs":["port/expansion-four/vehicles/ACCEPTANCE.md"]
+    },
+    {
+      "id":"scenery", "sourceCommits":["36358d96","fe3f3b5a"], "status":"source-ready-unbuilt", "external":false,
+      "recipePaths":["tools/godot-biomes/expansion/recipe.mjs","tools/godot-biomes/expansion/meshes.json","godot/biomes/expansion/catalog.json","tools/godot-biomes/expansion/build.py"],
+      "prerequisites":["explicit serial slot grant", "production campaign source SHA checks pass"],
+      "commands":[
+        {"id":"build","argv":["{blender}","-b","-t","1","--python","tools/godot-biomes/expansion/build.py"],"timeoutSeconds":600},
+        {"id":"reopen-original","argv":["{blender}","-b","-t","1","--python","tools/godot-biomes/expansion/reopen.py"],"timeoutSeconds":300},
+        {"id":"native","argv":["{godot}","--headless","--path","godot","-s","res://tests/biome_assets/imported_geometry.gd"],"timeoutSeconds":180},
+        {"id":"capture","argv":["node","godot/tests/biome_assets/run_inspection.mjs","--granted"],"timeoutSeconds":1560}
+      ],
+      "masters":{"glob":"tools/godot-biomes/expansion/masters/*.blend","count":12},
+      "exports":{"glob":"godot/biomes/expansion/art/*.glb","count":24},
+      "configuredTriangleCap":108000,"capExplanation":"12 assemblies * 2 LODs * 4500 strict source cap", "sourceRecipeTriangles":13452,"measuredTriangles":null,
+      "nextAssets":"12 editable Rootfall/Siltwake/Emberline/Crown assemblies and 24 textured LOD exports",
+      "nextCapture":"prepared production-demo old/new/full/reduced views in all four chapters, then ordinary native walk/shot/workshop journeys",
+      "gates":["new surfaces visible outside retained old facade", "no objective/player/robot silhouette blockage", "exact old collider IDs and shot windows", "Moth normal/albedo import and wet-original restoration", "continuous timestamped gameplay capture beyond staged stills"],
+      "docs":["port/expansion-four/scenery/ACCEPTANCE.md","port/expansion-four/scenery/INTEGRATION.md"]
+    },
+    {
+      "id":"vesper-viaduct", "sourceCommits":["9b1d8b86"], "status":"source-ready-unbuilt-unregistered", "external":false,
+      "recipePaths":["tools/godot-multiplayer/new-maps/vesper-viaduct/recipe.mjs","tools/godot-multiplayer/new-maps/vesper-viaduct/author_blender.py"],
+      "candidateModes":["deathmatch","teamdeathmatch","ctf","domination","koth","uplink"],"acceptedModes":[],
+      "prerequisites":["explicit serial slot grant", "modeBindings remain empty", "corrected loader art path"],
+      "commands":[
+        {"id":"build","argv":["{blender}","-b","-t","1","--python","tools/godot-multiplayer/new-maps/vesper-viaduct/author_blender.py","--","build"],"timeoutSeconds":900},
+        {"id":"reopen-original","argv":["{blender}","-b","-t","1","--python","tools/godot-multiplayer/new-maps/vesper-viaduct/author_blender.py","--","reopen-export"],"timeoutSeconds":300},
+        {"id":"native","argv":["{godot}","--headless","--path","godot","--script","res://tests/new_maps/vesper_viaduct/collision.gd"],"timeoutSeconds":180},
+        {"id":"hosted-deathmatch","argv":["node","tools/asset-production/candidate-hosted.mjs","vesper-viaduct","deathmatch","--granted"],"timeoutSeconds":960},
+        {"id":"hosted-teamdeathmatch","argv":["node","tools/asset-production/candidate-hosted.mjs","vesper-viaduct","teamdeathmatch","--granted"],"timeoutSeconds":960},
+        {"id":"hosted-ctf","argv":["node","tools/asset-production/candidate-hosted.mjs","vesper-viaduct","ctf","--granted"],"timeoutSeconds":960},
+        {"id":"hosted-domination","argv":["node","tools/asset-production/candidate-hosted.mjs","vesper-viaduct","domination","--granted"],"timeoutSeconds":960},
+        {"id":"hosted-koth","argv":["node","tools/asset-production/candidate-hosted.mjs","vesper-viaduct","koth","--granted"],"timeoutSeconds":960},
+        {"id":"hosted-uplink","argv":["node","tools/asset-production/candidate-hosted.mjs","vesper-viaduct","uplink","--granted"],"timeoutSeconds":960}
+      ],
+      "masters":{"glob":"tools/godot-multiplayer/new-maps/vesper-viaduct/masters/*.blend","count":1},
+      "exports":{"glob":"godot/multiplayer_worlds/art/worlds/vesper-viaduct.glb","count":1},
+      "configuredTriangleCap":250000,"capExplanation":"consolidation release ceiling; actual export unknown", "measuredTriangles":null,
+      "nextAssets":"editable 3-tier canal/station/civic architecture, actual Moth material-local UV finish and GLB",
+      "nextCapture":"overview, canal, civic, concourse and all seven three-room interiors; six candidate hosted rounds via isolated admission fixture",
+      "gates":["native body contact/window/door/roof/void support", "GLB batches/material and actual draw budget review", "hosted CTF physical carry and Dom/KOTH/Uplink objectives; DM/TDM normal fire", "test-only admission seam before parent registers only passed pairs"],
+      "docs":["port/expansion-three/vesper/ACCEPTANCE.md"]
+    },
+    {
+      "id":"abyssal-pressureworks", "sourceCommits":["67f79981"], "status":"source-ready-unbuilt-unregistered", "external":false,
+      "recipePaths":["tools/godot-multiplayer/new-maps/abyssal-pressureworks/recipe.mjs","tools/godot-multiplayer/new-maps/abyssal-pressureworks/blender_author.py"],
+      "candidateModes":["deathmatch","teamdeathmatch","ctf","koth","domination","holdout"],"acceptedModes":[],
+      "prerequisites":["explicit serial slot grant", "modeBindings remain empty"],
+      "commands":[
+        {"id":"build","argv":["{blender}","-b","-t","1","--python","tools/godot-multiplayer/new-maps/abyssal-pressureworks/blender_author.py"],"timeoutSeconds":900},
+        {"id":"native","argv":["{godot}","--headless","--path","godot","--script","res://tests/asset_production/map_probe.gd","--","--map=abyssal-pressureworks"],"timeoutSeconds":180},
+        {"id":"hosted-deathmatch","argv":["node","tools/asset-production/candidate-hosted.mjs","abyssal-pressureworks","deathmatch","--granted"],"timeoutSeconds":960},
+        {"id":"hosted-teamdeathmatch","argv":["node","tools/asset-production/candidate-hosted.mjs","abyssal-pressureworks","teamdeathmatch","--granted"],"timeoutSeconds":960},
+        {"id":"hosted-ctf","argv":["node","tools/asset-production/candidate-hosted.mjs","abyssal-pressureworks","ctf","--granted"],"timeoutSeconds":960},
+        {"id":"hosted-koth","argv":["node","tools/asset-production/candidate-hosted.mjs","abyssal-pressureworks","koth","--granted"],"timeoutSeconds":960},
+        {"id":"hosted-domination","argv":["node","tools/asset-production/candidate-hosted.mjs","abyssal-pressureworks","domination","--granted"],"timeoutSeconds":960},
+        {"id":"hosted-holdout","argv":["node","tools/asset-production/candidate-hosted.mjs","abyssal-pressureworks","holdout","--granted"],"timeoutSeconds":960}
+      ],
+      "masters":{"glob":"tools/godot-multiplayer/new-maps/abyssal-pressureworks/masters/*.blend","count":1},
+      "exports":{"glob":"godot/multiplayer_worlds/art/worlds/abyssal-pressureworks.glb","count":1},
+      "configuredTriangleCap":100000,"capExplanation":"existing design budget; 7 materials / 48 configured draws", "measuredTriangles":null,
+      "nextAssets":"12 pressure chambers, galleries, equalizer, reefs, textured shell/copper finish and editable master",
+      "nextCapture":"three route bands and district interiors, view glazing/open portals and equalizer at player eye; hosted six-candidate matrix",
+      "gates":["independent generic master + GLB reopen", "58 sustained shell contacts, 34 portals, 12 ceilings and transparent pane counterfire", "native DM/TDM and CTF/KOTH/Domination/Holdout scoring", "test-only admission seam before parent registers only passed pairs"],
+      "docs":["port/expansion-three/abyssal/ACCEPTANCE.md"]
+    },
+    {
+      "id":"stormglass-causeway", "sourceCommits":["e723b2fd"], "status":"source-ready-unbuilt-unregistered", "external":false,
+      "recipePaths":["tools/godot-multiplayer/new-maps/stormglass-causeway/recipe.mjs","tools/godot-multiplayer/new-maps/stormglass-causeway/blender_export.py"],
+      "candidateModes":["puma-race"],"acceptedModes":[],
+      "prerequisites":["explicit serial slot grant", "vehicle assets separately accepted or explicit stock Puma fallback", "canonical wrapper correction; no race geometry change"],
+      "commands":[
+        {"id":"build","argv":["{blender}","-b","-t","1","--python","tools/godot-multiplayer/new-maps/stormglass-causeway/blender_export.py"],"timeoutSeconds":900},
+        {"id":"reopen-original","argv":["{blender}","-b","-t","1","tools/godot-multiplayer/new-maps/stormglass-causeway/stormglass-causeway.blend","--python","tools/godot-multiplayer/new-maps/stormglass-causeway/blender_export.py","--","--verify-only"],"timeoutSeconds":300},
+        {"id":"native","argv":["{godot}","--headless","--path","godot","--script","res://tests/new_maps/stormglass_causeway/route_probe.gd"],"timeoutSeconds":180},
+        {"id":"hosted-puma-race","argv":["node","tools/asset-production/candidate-hosted.mjs","stormglass-causeway","puma-race","--granted"],"timeoutSeconds":960}
+      ],
+      "masters":{"glob":"tools/godot-multiplayer/new-maps/stormglass-causeway/*.blend","count":1},
+      "exports":{"glob":"godot/multiplayer_worlds/art/worlds/stormglass-causeway.glb","count":1},
+      "configuredTriangleCap":250000,"capExplanation":"consolidation release ceiling; source 9682 mesh pieces, actual export unknown", "measuredTriangles":null,
+      "nextAssets":"1191m coastal causeway, freight vault/quay/gates, actual road/material texture detail and editable master",
+      "nextCapture":"production chase camera ordinary steering/braking laps, two native clients countdown/standings/results and >=20s continuous capture",
+      "gates":["441 road supports, 42 sustained infantry/Puma barrier contacts, six ceilings", "source vs imported exact geometry and wheel/chase clearance", "wrong-way/reset/restart/Home and source-scored hosted race", "parent review flat-road source concession; no invented playable relief"],
+      "docs":["port/expansion-four/stormglass/ACCEPTANCE.md","port/expansion-four/stormglass/DESIGN.md"]
+    }
+  ]
+}
