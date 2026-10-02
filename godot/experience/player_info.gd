@@ -4,6 +4,8 @@ extends CanvasLayer
 const Captions = preload("res://experience/caption_model.gd")
 const Combat = preload("res://experience/combat_info.gd")
 const Access = preload("res://ui/settings_access.gd")
+const Regions = preload("res://experience/hud_regions.gd")
+const AbilityText = preload("res://experience/ability_text.gd")
 var captions := Captions.new()
 var combat := Combat.new()
 var session: Node
@@ -11,6 +13,15 @@ var client: Node
 var caption := Label.new()
 var recap := Label.new()
 var kill := Label.new()
+var ability := Label.new()
+var ability_scroll := ScrollContainer.new()
+var gameplay: Node
+var gameplay_model: Dictionary = {}
+var campaign_hud: Control
+var role_key := ""
+var layout_age := 0.0
+var layout_dirty := true
+var desired_visibility: Dictionary = {}
 var settings: Dictionary = {}
 var clock := 0.0
 var received_usec := 0
@@ -19,7 +30,7 @@ var bound_scene: Node
 
 func _ready() -> void:
 	layer = 6
-	for label: Label in [caption, recap, kill]:
+	for label: Label in [caption, recap, kill, ability]:
 		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		label.add_theme_color_override("font_color", Color("edf5ff"))
@@ -27,6 +38,13 @@ func _ready() -> void:
 		label.add_theme_constant_override("shadow_offset_x", 1)
 		label.add_theme_constant_override("shadow_offset_y", 1)
 		add_child(label)
+	add_child(ability_scroll)
+	ability.reparent(ability_scroll)
+	ability.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	ability_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	ability_scroll.follow_focus = true
+	ability_scroll.name = "PlayerAbilityReadout"
+	ability.tooltip_text = "Esc releases the cursor. Scroll this panel to read the complete operator kit."
 	caption.name = "SoundCaption"
 	recap.name = "IncomingHitRecap"
 	kill.name = "EliminationReadout"
@@ -39,26 +57,89 @@ func _ready() -> void:
 func apply_settings(value: Dictionary) -> void:
 	settings = value.duplicate()
 	if settings.get("captions", false) != true: captions.clear()
-	if is_inside_tree(): layout()
+	layout_dirty = true
+	if is_inside_tree():
+		_dock_campaign()
+		layout()
+
+static func phase_live(value: Variant) -> bool:
+	# Audited families: world/session descendants use integer 3. Independent
+	# sports and combined-arms roots use the string active, with a `net` client.
+	return value == "active" if value is String else ((value is int or value is float) and value == 3)
+
+func live() -> bool:
+	return is_instance_valid(session) and "phase" in session and phase_live(session.get("phase"))
 
 func bind_session(target: Node) -> void:
 	if session == target and is_instance_valid(client): return
 	unbind()
-	if not is_instance_valid(target) or not "client" in target: return
-	var peer: Variant = target.get("client")
+	if not is_instance_valid(target): return
+	var peer: Variant = target.get("client") if "client" in target else (target.get("net") if "net" in target else null)
 	if not peer is Node or not peer.has_signal("snapshot") or not peer.has_signal("events"): return
 	session = target
 	client = peer
+	session.tree_exiting.connect(unbind)
 	client.snapshot.connect(on_snapshot)
 	client.events.connect(on_events)
 	if client.has_signal("started"): client.started.connect(on_started)
 	if client.has_signal("results"): client.results.connect(on_results)
 	if client.has_signal("connection_error"): client.connection_error.connect(on_error)
+	if client.has_signal("lobby"): client.lobby.connect(on_lobby)
+	_dock_campaign()
+	_bind_gameplay()
+
+func _bind_gameplay() -> void:
+	if not is_instance_valid(session): return
+	var candidate := session.get_node_or_null("PlayerGameplay")
+	if candidate == gameplay: return
+	_release_gameplay()
+	if candidate == null or not candidate.has_signal("status_changed"): return
+	gameplay = candidate
+	gameplay.show_compact_status = false
+	gameplay.panel.hide()
+	gameplay.status_changed.connect(on_gameplay_status)
+	on_gameplay_status(gameplay.model)
+
+func _release_gameplay() -> void:
+	if is_instance_valid(gameplay):
+		if gameplay.is_connected("status_changed", on_gameplay_status): gameplay.disconnect("status_changed", on_gameplay_status)
+		gameplay.show_compact_status = true
+	gameplay = null
+	gameplay_model = {}
+
+func on_gameplay_status(model: Dictionary) -> void:
+	# The owner enforces alive/mode/vehicle/source-clock policy. Retain all fields
+	# without changing active/cooldown or inventing values when it clears itself.
+	var next := model.duplicate(true) if ready_for_events and live() and not blocked() and not spectator() else {}
+	if next == gameplay_model: return
+	gameplay_model = next
+	ability.text = AbilityText.text(gameplay_model)
+	layout_dirty = true
+
+func _dock_campaign() -> void:
+	if not is_instance_valid(session): return
+	var hud: Variant = session.get("campaign_hud") if "campaign_hud" in session else null
+	if hud is Control and hud.has_method("attach_experience"):
+		campaign_hud = hud
+		hud.attach_experience(ability, caption, settings.get("caption_position", "bottom") == "top")
+		ability_scroll.hide()
+
+func _undock_campaign() -> void:
+	if is_instance_valid(campaign_hud): campaign_hud.detach_experience()
+	# Restore ownership before a route can be freed, so persistent UI is not lost.
+	if is_instance_valid(ability) and ability.get_parent() != ability_scroll: ability.reparent(ability_scroll)
+	if is_instance_valid(caption) and caption.get_parent() != self: caption.reparent(self)
+	ability.custom_minimum_size.x = 0
+	caption.custom_minimum_size.x = 0
+	campaign_hud = null
 
 func unbind() -> void:
+	_release_gameplay()
+	_undock_campaign()
 	if is_instance_valid(client):
-		for pair: Array in [["snapshot", on_snapshot], ["events", on_events], ["started", on_started], ["results", on_results], ["connection_error", on_error]]:
+		for pair: Array in [["snapshot", on_snapshot], ["events", on_events], ["started", on_started], ["results", on_results], ["connection_error", on_error], ["lobby", on_lobby]]:
 			if client.has_signal(pair[0]) and client.is_connected(pair[0], pair[1]): client.disconnect(pair[0], pair[1])
+	if is_instance_valid(session) and session.tree_exiting.is_connected(unbind): session.tree_exiting.disconnect(unbind)
 	session = null
 	client = null
 	clear()
@@ -69,7 +150,12 @@ func clear() -> void:
 	clock = 0
 	received_usec = 0
 	ready_for_events = false
-	for label: Label in [caption, recap, kill]:
+	gameplay_model = {}
+	role_key = ""
+	layout_dirty = true
+	desired_visibility.clear()
+	ability_scroll.hide()
+	for label: Label in [caption, recap, kill, ability]:
 		label.text = ""
 		label.hide()
 
@@ -77,77 +163,154 @@ func on_started(_frame: Dictionary) -> void: clear()
 func on_results(_frame: Dictionary) -> void: clear()
 func on_error(_message: String) -> void: clear()
 
+func spectator() -> bool:
+	return not is_instance_valid(client) or ("spectating" in client and client.get("spectating") == true)
+
+func current_role() -> String:
+	return "%s:%s" % [client.get("actor_id"), spectator()] if is_instance_valid(client) else ""
+
+func on_lobby(_frame: Dictionary) -> void:
+	if not live() or (not role_key.is_empty() and current_role() != role_key): clear()
+
 func on_snapshot(frame: Dictionary) -> void:
 	if not is_instance_valid(client) or not frame.get("state") is Dictionary: return
-	if "phase" in session and int(session.get("phase")) != 3:
+	if not live():
 		clear()
 		return
 	var state: Dictionary = frame.state
 	var next_clock := Combat.number(state.get("time"))
-	if next_clock < clock: clear()
+	if next_clock < clock or (not role_key.is_empty() and current_role() != role_key): clear()
+	role_key = current_role()
 	clock = next_clock
 	received_usec = Time.get_ticks_usec()
 	ready_for_events = true
-	combat.snapshot(state, int(client.get("actor_id")))
+	combat.snapshot(state, -1 if spectator() else int(client.get("actor_id")))
+	_bind_gameplay()
+	layout_dirty = true
 	refresh()
 
 func blocked() -> bool:
 	if Access.overlay_open(): return true
+	if not is_instance_valid(session): return true
+	if "application_focused" in session and session.get("application_focused") == false: return true
+	if session.has_method("social_capturing") and session.social_capturing(): return true
+	for key: String in ["world_commands", "session_panel"]:
+		var panel: Variant = session.get(key) if key in session else null
+		if panel is Control and panel.is_visible_in_tree(): return true
+	if is_instance_valid(campaign_hud) and campaign_hud.card.visible: return true
 	if is_instance_valid(session) and "solo_cheats" in session:
 		var cheats: Variant = session.get("solo_cheats")
 		if is_instance_valid(cheats) and cheats.overlay.visible: return true
 	return not get_window().has_focus()
 
+func stale() -> bool:
+	if not is_instance_valid(session): return true
+	if "snapshot_watch" in session and session.get("snapshot_watch") != null:
+		return session.get("snapshot_watch").stale()
+	if "age" in session: return Combat.number(session.get("age"), 999) >= 0.5
+	return received_usec == 0 or Time.get_ticks_usec() - received_usec > 1500000
+
 func on_events(items: Array) -> void:
-	if not ready_for_events or not is_instance_valid(client): return
+	if not ready_for_events or not is_instance_valid(client) or not live() or stale(): return
 	# A muted mix still captions; focus/modal loss drops captions without replay.
 	combat.events(items)
 	if blocked():
 		captions.clear()
 		return
-	captions.consume(items, clock, int(client.get("actor_id")), settings.get("captions", false) == true)
+	captions.consume(items, clock, -1 if spectator() else int(client.get("actor_id")), settings.get("captions", false) == true)
+	layout_dirty = true
 	refresh()
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	# LocalSettings lives across route changes. Bind after the route's own ready.
 	var scene := get_tree().current_scene
-	if scene != bound_scene:
+	if scene != bound_scene or not is_instance_valid(client):
 		bound_scene = scene
 		bind_session(scene)
 	if not is_instance_valid(session): return
-	if "phase" in session and int(session.get("phase")) != 3:
+	_bind_gameplay()
+	if not live() or (not role_key.is_empty() and current_role() != role_key):
 		clear()
 		return
-	if received_usec > 0 and Time.get_ticks_usec() - received_usec > 1500000:
+	if ready_for_events and stale():
 		clear()
-	if blocked(): captions.clear()
+	if blocked():
+		captions.clear()
+		gameplay_model = {}
+		ability.text = ""
+	layout_age += delta
+	if layout_age >= 0.1:
+		layout_age = 0
+		layout_dirty = true # Existing HUD bounds can change without a snapshot.
 	refresh()
 
 func refresh() -> void:
-	var active := ready_for_events and not blocked()
+	var active := ready_for_events and live() and not stale() and not blocked()
 	caption.text = captions.line(clock)
-	caption.visible = active and not caption.text.is_empty() and settings.get("captions", false) == true
 	recap.text = combat.recap()
-	recap.visible = active and not recap.text.is_empty() and settings.get("combat_readouts", true) == true
 	kill.text = combat.latest_kill
-	kill.visible = active and not combat.dead and clock - combat.kill_at >= 0 and clock - combat.kill_at < 2.2 and not kill.text.is_empty() and settings.get("combat_readouts", true) == true
+	var show_ability := active and not spectator() and not gameplay_model.is_empty()
+	var wanted := {
+		caption:active and not caption.text.is_empty() and settings.get("captions", false) == true,
+		recap:active and not recap.text.is_empty() and settings.get("combat_readouts", true) == true,
+		kill:active and not combat.dead and clock - combat.kill_at >= 0 and clock - combat.kill_at < 2.2 and not kill.text.is_empty() and settings.get("combat_readouts", true) == true,
+		ability:show_ability, ability_scroll:show_ability and not is_instance_valid(campaign_hud)}
+	if wanted != desired_visibility:
+		desired_visibility = wanted
+		layout_dirty = true
+	var released := Input.mouse_mode != Input.MOUSE_MODE_CAPTURED
+	ability_scroll.mouse_filter = Control.MOUSE_FILTER_STOP if released else Control.MOUSE_FILTER_IGNORE
+	ability_scroll.focus_mode = Control.FOCUS_ALL if released else Control.FOCUS_NONE
+	ability.mouse_filter = Control.MOUSE_FILTER_STOP if released else Control.MOUSE_FILTER_IGNORE
+	if layout_dirty: layout()
 
 func layout() -> void:
+	if not is_inside_tree(): return
+	layout_dirty = false
+	for control: Control in desired_visibility: control.visible = desired_visibility[control]
 	var view := get_viewport().get_visible_rect().size
 	var compact := view.x < 700 or view.y < 450
 	var font := 14 if compact else 18
 	caption.add_theme_font_size_override("font_size", roundi(font * float(settings.get("caption_scale", 100)) / 100.0))
-	for label: Label in [recap, kill]: label.add_theme_font_size_override("font_size", font)
+	for label: Label in [recap, kill, ability]: label.add_theme_font_size_override("font_size", font)
 	var width := minf(view.x - 32, 680)
-	caption.size = Vector2(width, 0)
-	caption.position = Vector2((view.x - width) / 2, 60 if settings.get("caption_position", "bottom") == "top" else view.y - (108 if compact else 160))
 	var background := StyleBoxFlat.new()
 	background.bg_color = Color(0.02, 0.035, 0.05, 0.96 if settings.get("caption_background") == "solid" else 0.72)
 	if settings.get("caption_background") == "transparent": background.bg_color.a = 0
 	for edge: int in [SIDE_LEFT, SIDE_TOP, SIDE_RIGHT, SIDE_BOTTOM]: background.set_content_margin(edge, 6)
 	caption.add_theme_stylebox_override("normal", background)
 	recap.add_theme_stylebox_override("normal", background)
-	recap.size = Vector2(minf(view.x - 32, 520), 0)
-	recap.position = Vector2((view.x - recap.size.x) / 2, 92 if compact else 130)
-	kill.size = Vector2(width, 0)
-	kill.position = Vector2((view.x - width) / 2, 92 if compact else 130)
+	ability.add_theme_stylebox_override("normal", background)
+	if is_instance_valid(campaign_hud):
+		ability.custom_minimum_size.x = 0 # Campaign owns its narrower column width.
+		caption.custom_minimum_size.x = 0
+		campaign_hud.layout_live()
+		# Campaign has its own death/result card. It owns that area exclusively.
+		recap.hide()
+		kill.hide()
+		return
+	var occupied: Array[Rect2] = Regions.occupied(session, [gameplay]) if is_instance_valid(session) else []
+	# Keep the actual aiming point free even if the route hides its reticle.
+	occupied.append(Rect2(view * 0.5 - Vector2(28, 28), Vector2(56, 56)))
+	for label: Label in [caption, recap, kill]:
+		if not label.visible: continue
+		var desired := Vector2(minf(width, 520), float(font * (5 if label == recap else 3) + 12))
+		var rect := Regions.choose(view, occupied, desired, settings.get("caption_position", "bottom") == "bottom" if label == caption else false)
+		# Caption/recap must fit fully: never clip a protected call mid-sentence.
+		label.size = Vector2(rect.size.x, 0)
+		var needed := label.get_combined_minimum_size().y
+		if not rect.has_area() or needed > rect.size.y:
+			label.hide()
+			continue
+		label.position = rect.position
+		label.size.y = needed
+		occupied.append(Rect2(rect.position, Vector2(rect.size.x, needed)))
+	if ability_scroll.visible:
+		var desired := Vector2(minf(view.x - 24, 390), 120 if compact else 220)
+		var rect := Regions.choose(view, occupied, desired)
+		if rect.has_area():
+			ability.custom_minimum_size.x = 0
+			ability_scroll.position = rect.position
+			ability_scroll.size = rect.size
+			ability.custom_minimum_size.x = maxf(80, rect.size.x - 16)
+		else: ability_scroll.hide()

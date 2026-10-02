@@ -23,6 +23,10 @@ var bottom := VBoxContainer.new()
 var menu := HBoxContainer.new()
 var objective_scroll := ScrollContainer.new()
 var comms := ScrollContainer.new()
+var comms_stack := VBoxContainer.new()
+var experience_status: Label
+var experience_caption: Label
+var experience_story: Control
 var boss := Label.new()
 var compact := false
 var brief := false
@@ -50,6 +54,8 @@ func _ready() -> void:
 	heading.add_theme_font_size_override("font_size", 27)
 	add_child(objective_scroll)
 	objective_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	objective_scroll.focus_mode = Control.FOCUS_ALL
+	objective_scroll.follow_focus = true
 	objective_scroll.add_child(top)
 	top.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.mouse_filter = MOUSE_FILTER_IGNORE
@@ -58,7 +64,12 @@ func _ready() -> void:
 	bottom.mouse_filter = MOUSE_FILTER_IGNORE
 	bottom.add_child(comms)
 	comms.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	comms.add_child(subtitle)
+	comms.focus_mode = Control.FOCUS_ALL
+	comms.follow_focus = true
+	comms.add_child(comms_stack)
+	comms_stack.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	comms_stack.add_theme_constant_override("separation", 0)
+	comms_stack.add_child(subtitle)
 	var comms_style := StyleBoxFlat.new()
 	comms_style.bg_color = Color(0.025, 0.05, 0.06, 0.82)
 	comms.add_theme_stylebox_override("panel", comms_style)
@@ -108,6 +119,41 @@ func _ready() -> void:
 func bind_session(value: Node) -> void:
 	session = value
 
+func attach_experience(status_label: Label, caption_label: Label, caption_at_top: bool) -> void:
+	# Shared scroll viewports keep objectives/comms and optional player readouts
+	# in one measured hierarchy at UI150, instead of another overlapping layer.
+	experience_status = status_label
+	experience_caption = caption_label
+	if status_label.get_parent() != top: status_label.reparent(top)
+	status_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var caption_parent: Node = top if caption_at_top else comms_stack
+	if caption_label.get_parent() != caption_parent: caption_label.reparent(caption_parent)
+	caption_parent.move_child(caption_label, 0)
+	caption_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	# Spoken story lines and sound captions share the comms viewport rather than
+	# independently growing over each other at compact sizes. Interaction prompts
+	# remain with the story owner; no story state or input policy is changed.
+	if is_instance_valid(session) and "story_widgets" in session:
+		var widgets: Variant = session.get("story_widgets")
+		if widgets is Control and "comms_docked" in widgets:
+			experience_story = widgets
+			widgets.comms_docked = true
+			if widgets.caption.get_parent() != comms_stack: widgets.caption.reparent(comms_stack)
+			widgets.caption.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			comms_stack.move_child(widgets.caption, 1 if caption_parent == comms_stack else 0)
+	layout_live()
+
+func detach_experience() -> void:
+	# The persistent owner reparents its labels immediately after this call.
+	experience_status = null
+	experience_caption = null
+	if is_instance_valid(experience_story):
+		experience_story.comms_docked = false
+		experience_story.caption.custom_minimum_size.x = 0
+		experience_story.caption.reparent(experience_story)
+		experience_story.layout()
+	experience_story = null
+
 func resize() -> void:
 	var viewport_size := get_viewport_rect().size
 	compact = viewport_size.y < 540 or viewport_size.x < 800
@@ -134,8 +180,13 @@ func layout_live() -> void:
 	objective_scroll.size = Vector2(top_width, minf(view.y * 0.30, maxf(30, top.get_combined_minimum_size().y)))
 	bottom.size.x = width
 	subtitle.custom_minimum_size.x = width - 16
-	comms.visible = subtitle.visible
-	comms.custom_minimum_size.y = minf(view.y * 0.22, subtitle.get_combined_minimum_size().y) if comms.visible else 0
+	var bottom_caption := is_instance_valid(experience_caption) and experience_caption.get_parent() == comms_stack and experience_caption.visible
+	var story_caption := is_instance_valid(experience_story) and experience_story.caption.visible
+	if is_instance_valid(experience_story): experience_story.caption.custom_minimum_size.x = width - 16
+	if is_instance_valid(experience_status): experience_status.custom_minimum_size.x = maxf(80, top_width - 16)
+	if is_instance_valid(experience_caption): experience_caption.custom_minimum_size.x = maxf(80, (width if bottom_caption else top_width) - 16)
+	comms.visible = subtitle.visible or bottom_caption or story_caption
+	comms.custom_minimum_size.y = minf(view.y * 0.22, comms_stack.get_combined_minimum_size().y) if comms.visible else 0
 	bottom.size.y = bottom.get_combined_minimum_size().y
 	# Reserve the shared Settings shortcut footer; measured content grows upward.
 	bottom.position = Vector2(16, view.y - 40 - bottom.size.y)
@@ -204,10 +255,14 @@ func _process(delta: float) -> void:
 	checkpoint_time = maxf(0, checkpoint_time - delta)
 	notice.visible = checkpoint_time > 0
 	var captured := Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
+	objective_scroll.focus_mode = Control.FOCUS_NONE if captured else Control.FOCUS_ALL
+	comms.focus_mode = Control.FOCUS_NONE if captured else Control.FOCUS_ALL
 	crosshair.visible = captured and session.campaign.playing() and not card.visible and not Settings.overlay_open()
 	menu.visible = not captured and not Settings.overlay_open()
 	status.text = "Waiting for authority…" if session.action_pending else (session.snapshot_watch.message() if session.snapshot_watch.stale() and session.phase == 3 else ("Click to control · Esc: cursor / scroll comms" if session.phase == 3 and not captured and session.campaign.playing() else ""))
-	if captured and comms.visible and subtitle.get_combined_minimum_size().y > comms.size.y + 1: status.text = "Esc: scroll full comms"
+	if captured and comms.visible and comms_stack.get_combined_minimum_size().y > comms.size.y + 1: status.text = "Esc: scroll full comms"
+	if is_instance_valid(experience_status) and experience_status.visible and top.get_combined_minimum_size().y > objective_scroll.size.y + 1:
+		status.text += (" · " if not status.text.is_empty() else "") + "Esc: scroll operator kit"
 	layout_live()
 	waypoint.hide()
 	if not session.campaign.playing() or session.phase != 3 or card.visible or Settings.overlay_open(): return

@@ -7,6 +7,7 @@ var story: Dictionary = {}
 var interludes: Dictionary = {}
 var allowed := false
 var session: Node
+var comms_docked := false # Optional shared campaign transcript owns caption geometry.
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(PRESET_FULL_RECT)
@@ -59,7 +60,9 @@ func layout() -> void:
 	var compact := view.y < 540 or view.x < 800
 	caption.add_theme_font_size_override("font_size", 13 if compact else 17)
 	prompt.add_theme_font_size_override("font_size", 14 if compact else 19)
-	caption.position = Vector2((view.x - width) * 0.5, minf(view.y * (0.60 if compact else 0.69), view.y - 155))
-	caption.size = Vector2(width, 38 if compact else 52)
-	prompt.position = caption.position - Vector2(0, 32)
+	var caption_anchor := Vector2((view.x - width) * 0.5, minf(view.y * (0.60 if compact else 0.69), view.y - 155))
+	if not comms_docked:
+		caption.position = caption_anchor
+		caption.size = Vector2(width, 38 if compact else 52)
+	prompt.position = caption_anchor - Vector2(0, 32)
 	prompt.size = Vector2(width, 26)

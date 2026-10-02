@@ -23,9 +23,52 @@ not an exhaustive claim that every product element is complete.
 
 Implementation: `godot/experience/{caption_model,combat_info,player_info}.gd`,
 `godot/ui/local_settings.gd`. LocalSettings instantiates the passive child and
-forwards normalized preferences; the child binds the current scene's client
-after ready. The parent can instead explicitly call `bind_session(session)`.
+forwards normalized preferences; the child binds the current scene's `client`
+or independent route's `net` after ready. The parent can instead explicitly call `bind_session(session)`.
 The node has no input handler, input packets, camera changes, or authority writes.
+
+### Gameplay integration checkpoint (code-only, awaiting engine)
+
+Gameplay `4d1b8b6989bdc27192817dfab8bf7fa4d9fc1d1b` was cherry-picked here as
+`5ef020a8`. Its three accepted input journeys are upstream evidence, not a new
+native verification of this combined UI. The experience presenter lazily finds
+`PlayerGameplay`, subscribes to `status_changed`, and sets
+`show_compact_status = false`. Unbinding disconnects and restores the fallback.
+
+The complete model is retained unchanged. Power state (and concurrent active
+cooldown), movement name/input/state, passive name/description, grenade and all
+status words are shown as ordinary wrapped text. All nine source-produced
+operator fixtures are represented; no local countdown or derived buff is added.
+
+- **Campaign:** kit text joins the existing bounded objective scroll area;
+  sound captions and story dialogue join the existing bounded comms transcript.
+  Top caption preference docks at the start of the objective column. The
+  narrative subtitle, story line and caption are separate VBox rows, sharing the
+  same 22%-height viewport rather than independently covering one another.
+  Interaction prompts remain story-owned. Esc releases input for scrolling;
+  focusable scroll areas relinquish focus on pointer capture. The campaign death
+  card owns its area; the generic recap/kill overlay is suppressed there.
+- **Other routes:** `hud_regions.gd` subtracts actual visible HUD panels, labels,
+  scroll areas and the aiming point from the logical viewport. Optional overlays
+  use remaining measured rectangles; the kit gets a bounded scroll viewport.
+  If no readable region exists, the optional overlay yields instead of covering
+  an objective or clipping a caption. Compact geometry and screenshot legibility
+  still require the native slot; the solver alone is not visual acceptance.
+
+Route/lifecycle audit:
+
+| Actual route family | Transport and live phase | Status source |
+|---|---|---|
+| `world/session.gd` descendants: campaign, objectives, zone modes, native arenas, Horde, multiplayer infantry, LATTICE world | `client`, integer `3`; `snapshot_watch.stale()` | Lazy `PlayerGameplay` when shared `on_snapshot` installs it |
+| `sports/demo.gd`, `multiplayer_worlds/sports_demo.gd` | `net`, string `"active"`; authoritative receive `age < 0.5` | No synthetic PlayerGameplay model; captions consume accepted events |
+| `combined_arms/demo.gd` | `net`, string `"active"`; authoritative receive `age < 0.5` | No synthetic PlayerGameplay model; captions consume accepted events |
+| Home/labs/nonnetwork viewers or unknown lifecycle | No eligible binding / fail closed | No status invented |
+
+Actor/spectator role changes, start/results/error, backwards snapshot clocks and
+stale reception clear the projection. Focus, Settings, Career, chat, LATTICE
+modal surfaces and F3 hide/clear the status. A route's `tree_exiting` detaches
+persistent labels before its HUD is freed. This fixes the earlier integer-only
+binding assumption; it does not impose phase `3` on independent roots.
 
 ## Family inventory and code anchors
 
