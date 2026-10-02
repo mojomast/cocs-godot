@@ -71,6 +71,31 @@ integration. No lane received a Blender/Godot grant at launch.
 
 ## Received research and parent review
 
+### Animation and independent acceptance checkpoints
+
+Animation pipeline `bebcf101` + `e3c51498` is merged as `20145483` + `fe5e94c2`.
+It provides a common 20-bone rigid-skin conversion, 336 distinct state/combat
+recipes, 25 shared victim choreographies, content-bound manual seeking and
+Blender build/reopen/export scripts. Source checks sampled 34,221 poses and 7,425
+task-space contacts. Those closed-form checks do not establish visible contacts,
+foot planting or native rig correctness. No fighting master or GLB exists yet.
+The first granted animation production is Meta, then Mistral, then an inspected
+integrated slice before the remaining seven. Initial self-contained GLBs may
+duplicate victim transport data while source Actions are shared; a shared Godot
+library optimization is deferred until actual track-path compatibility is proven.
+
+Independent acceptance `1267f122` + `9549da1c` is merged as `583ed124` +
+`2f9fa981`. Sixteen Python tests passed on its lane, including evidence refusal,
+binary validation and sparse-input semantics. Missing generated assets correctly
+leave source acceptance deferred. Native gates cover the first slice, input-only
+combos/pairs/AI, JSON continuation, mirrors and alias-aware clips; all are unrun.
+
+The verifier exposed proposed ground-combo separation 550 inside a 660-unit
+pushbox width. Content owner is correcting authored spacing and adding a negative
+check. Core owner is resolving shared paired-animation phases for late-active
+throw catches and delayed counters. Neither issue may be hidden by teleporting
+fixtures after setup or inventing visual damage/release timing.
+
 ### Effects and presentation source checkpoints
 
 FX `52c74a0c` is merged as `9fd6f74e`: nine form/motion vocabularies, 138 attack
