@@ -8,6 +8,7 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 [autoload]
 
 Diagnostics="*res://debug/diagnostics.gd"
+InputBindings="*res://input_bindings/service.gd"
 LocalSettings="*res://ui/local_settings.gd"
 Career="*res://career/service.gd"
 Identity="*res://career/identity.gd"

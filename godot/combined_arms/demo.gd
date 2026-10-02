@@ -222,7 +222,7 @@ func _input(event: InputEvent) -> void:
 	if net.spectating: return
 	if SettingsAccess.overlay_open():
 		release()
-		if (event is InputEventKey or event is InputEventMouseButton) and not event.pressed: controls.accept(event, false)
+		controls.accept(event, false)
 		return
 	var focused := get_window().has_focus() and controls.focused
 	controls.accept(event, eligible() and focused, (vehicle.is_empty() or actor.get("vehicleSeat") == "passenger") and not actor.get("reloading", false) and not net.spectating)

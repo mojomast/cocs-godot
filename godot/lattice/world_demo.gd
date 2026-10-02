@@ -154,9 +154,10 @@ func world_modal_layer() -> CanvasLayer:
 	return modal_layer
 
 func controls_released() -> bool:
-	for key: int in [KEY_W, KEY_A, KEY_S, KEY_D, KEY_SPACE, KEY_R, KEY_SHIFT, KEY_CTRL, KEY_E, KEY_F, KEY_C, KEY_ESCAPE, KEY_0, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9]:
+	if not combat_actions.bindings.released_for_capture(): return false
+	for key: int in [KEY_C, KEY_ESCAPE, KEY_0, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9]:
 		if Input.is_physical_key_pressed(key): return false
-	return not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
+	return true
 
 func can_capture_pointer() -> bool:
 	return super.can_capture_pointer() and not world_wait_release and not session_panel.visible and not (is_instance_valid(world_commands) and world_commands.visible) and client.projection_actor == client.actor_id and not client.projection.is_empty()
@@ -170,7 +171,7 @@ func world_command_gate() -> String:
 func world_neutral() -> void:
 	release_pointer()
 	world_wait_release = true
-	if phase != 3 or not client.connection_open(): return
+	if phase != 3 or client.spectating or not client.connection_open(): return
 	var controls := {"x":0.0, "z":0.0, "yaw":yaw, "pitch":pitch, "fire":false, "jump":false, "reload":false, "sprint":false, "crouch":false, "interact":false, "mobility":false, "ads":false, "power":false, "melee":false, "grenade":false, "altFire":false}
 	var result: Error = client.send_input(controls)
 	emit_native_trace(trace_input(controls, result))
@@ -220,7 +221,7 @@ func refresh_session_setup() -> void:
 
 func _input(event: InputEvent) -> void:
 	if WorldSettingsAccess.overlay_open():
-		if (event is InputEventKey or event is InputEventMouseButton) and not event.pressed: super._input(event)
+		super._input(event)
 		return
 	if event is InputEventKey and event.pressed and not event.echo and is_instance_valid(world_commands):
 		if event.keycode == KEY_ENTER and phase == 12:
@@ -231,7 +232,9 @@ func _input(event: InputEvent) -> void:
 			world_restart_requested()
 			get_viewport().set_input_as_handled()
 			return
-		if session_panel.visible: return
+		if session_panel.visible:
+			combat_actions.record(event, false, presentation.local_actor)
+			return
 		if event.keycode == KEY_C or (event.keycode == KEY_ESCAPE and world_commands.visible):
 			if world_commands.visible: world_close_commands()
 			else:

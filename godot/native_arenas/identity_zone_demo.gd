@@ -299,16 +299,14 @@ func release_pointer() -> void:
 	super.release_pointer()
 	# One FIFO cancellation when live capture ends; the authority still owns the
 	# input epoch.
-	if was_active and phase == 3:
+	if was_active and phase == 3 and not client.spectating:
 		client.call("send_controls", {}, true)
 
 func can_capture_pointer() -> bool:
 	return super.can_capture_pointer() and not zones.projection.is_empty()
 
 func controls_released() -> bool:
-	for key: int in [KEY_W, KEY_A, KEY_S, KEY_D, KEY_SPACE, KEY_E, KEY_R, KEY_F, KEY_SHIFT, KEY_CTRL]:
-		if Input.is_physical_key_pressed(key): return false
-	return not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
+	return combat_actions.bindings.released_for_capture()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and not controls_released(): return

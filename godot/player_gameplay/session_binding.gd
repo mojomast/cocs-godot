@@ -65,7 +65,7 @@ func refresh() -> void:
 	if next != model:
 		model = next
 		status_changed.emit(model)
-	panel.text = Status.text(model)
+	panel.text = preload("res://input_bindings/hints.gd").resolve(Status.text(model))
 	panel.visible = not model.is_empty() and show_compact_status
 	if not model.is_empty(): cues.apply_state(snapshot)
 	else: cues.clear_visuals()

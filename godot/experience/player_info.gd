@@ -129,7 +129,7 @@ func on_gameplay_status(model: Dictionary) -> void:
 	var next := model.duplicate(true) if ready_for_events and live() and not blocked() and not spectator() else {}
 	if next == gameplay_model: return
 	gameplay_model = next
-	ability.text = AbilityText.text(gameplay_model)
+	ability.text = preload("res://input_bindings/hints.gd").resolve(AbilityText.text(gameplay_model))
 	layout_dirty = true
 
 func _dock_campaign() -> void:

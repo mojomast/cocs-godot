@@ -202,7 +202,7 @@ func eligible() -> bool:
 func _input(event: InputEvent) -> void:
 	if net.spectating: return
 	if SettingsAccess.overlay_open():
-		if (event is InputEventKey and not event.pressed): controls.accept(event, false)
+		controls.accept(event, false)
 		return
 	controls.accept(event, eligible())
 	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_F5 and phase == "results":
