@@ -73,6 +73,23 @@ integration. No lane received a Blender/Godot grant at launch.
 
 ### Animation and independent acceptance checkpoints
 
+Core `ce3f603b` + `6be3b1ce` is merged as `4d4b952d` + `09160dc0`, completing
+source integration of all six implementation lanes. The actual roster corrections
+are consumed with no new stat/move/timing edits. Core lane passed 227 Node checks
+(222 content plus five core/trace checks) and grammar parsing; native compilation,
+mechanics, determinism and combo acceptance are still pending. Snapshot contract
+now exposes shared dynamic pair knots, projectile `owner` and original provenance,
+true contact coordinates and top-level anchor/stance timers. Animation owner is
+binding the dynamic pair knots in a bounded source follow-up.
+
+Foundry explicitly released the heavy slot. Parent issued
+`FINISH-COMBINED-NATIVE-20261002-A` to the existing finish integration Astra
+`ses_f0294303bffed6Fb8UJLKe4ZDz`, using parent `09160dc0` in the existing sandbox.
+It covers combined feature native verification plus asset-independent fighting
+core fixtures, invariants and 27 actual traces in both facings after native typing.
+No fighting art production is authorized yet. Meta/Mistral Blender/native slice
+follows the integration owner's explicit process teardown/release.
+
 Animation pipeline `bebcf101` + `e3c51498` is merged as `20145483` + `fe5e94c2`.
 It provides a common 20-bone rigid-skin conversion, 336 distinct state/combat
 recipes, 25 shared victim choreographies, content-bound manual seeking and

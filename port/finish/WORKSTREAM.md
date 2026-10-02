@@ -18,11 +18,23 @@ worktrees start at `6cefd9eb` and live under `/home/mojo/.tmp-on-disk/`.
 
 ## Heavy-tool ownership and completion sequence
 
-**Gravemill Foundry revision 3 now owns the exclusive heavy slot.** Helix finished
-its production pass and explicitly released all owned processes. Its revised art
-and five hosted mode bindings are merged at `c8432fcb` after parent visual review.
-Parent package/options and world-resource checks passed. Combined feature/native
-acceptance follows Foundry's explicit release; fighting agents remain code-only.
+**Current exclusive grant: `FINISH-COMBINED-NATIVE-20261002-A`.** Integration
+owner `ses_f0294303bffed6Fb8UJLKe4ZDz` is reusing the existing
+`cocs-finish-integration-20261002` checkout/cache at parent `09160dc0`.
+Foundry explicitly stopped all owned processes and released its slot. Parent
+reviewed overview, crusher, cooling, assay, furnace and compact payload images,
+accepted revision 3 for integration and merged its branch at `4febce4d`.
+Both Helix and Foundry bindings are retained; regenerated routing and closure
+checks pass 30/30. Initial stale ordering failures remain in the evidence logs.
+
+Grant scope: import/native typing first, then bounded serial combined-feature
+engine gates, Horde chain before full victory, and asset-independent fighting
+core fixtures/27 actual combo traces. Fix actual integration failures and preserve
+exact-input receipts. No fighting Blender production yet; its adapter follow-up
+is source-only. Real audio runs only with an actual driver; manual/GPU/external
+acceptance remains separately pending. All other heavy work waits for explicit
+release. The live candidate now includes all six fighting source lanes, but no
+fighting GLBs exist and no playable/native fighting acceptance is implied.
 
 Parallax checkpoint: assets/tests `9a6372b4`, isolated bindings `277f379e`, geometry
 `906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554`.
