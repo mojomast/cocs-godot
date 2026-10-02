@@ -34,6 +34,10 @@ func run() -> void:
 	await process_frame
 	await process_frame
 	check(current_scene.scene_file_path == "res://ui/main_menu.tscn", "library Home restores production menu")
-	check(helper_pid <= 0 or not OS.is_process_running(helper_pid), "replay helper released on Home")
+	# Godot's PID tracker reports ECHILD when queried again after kill reaped it.
+	check(helper_pid <= 0 or not DirAccess.dir_exists_absolute("/proc/%d" % helper_pid), "replay helper released on Home (Linux /proc)")
+	current_scene.queue_free()
+	await process_frame
+	await process_frame
 	print("FINISH_HOME_REPLAYS ", checks, " checks / ", failures, " failures")
 	quit(1 if failures else 0)

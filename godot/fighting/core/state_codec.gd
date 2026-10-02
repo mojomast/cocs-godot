@@ -41,6 +41,12 @@ static func valid_state(s: Dictionary) -> bool:
 		for target in f.hit_ledger:
 			if target not in [0, 1]:
 				return false
+		if f.has("animation_pair_phase"):
+			var phase: Variant = f.animation_pair_phase
+			if not phase is Dictionary or not fields(phase, ["actor", "target", "caught_move_frame", "elapsed", "damage_frame", "release_frame", "end_frame", "frame"], TYPE_INT) or not fields(phase, ["move_id"], TYPE_STRING): return false
+			if phase.actor != f.id or phase.target != 1 - f.id or phase.move_id != f.animation or f.state not in ["throw", "attack", "idle"]: return false
+			if phase.caught_move_frame < 0 or phase.damage_frame <= phase.caught_move_frame or phase.release_frame <= phase.damage_frame or phase.end_frame <= phase.release_frame: return false
+			if phase.frame != f.animation_frame or phase.frame < phase.caught_move_frame or phase.frame > phase.end_frame or phase.elapsed != phase.frame - phase.caught_move_frame: return false
 	for p in s.projectiles:
 		if not p is Dictionary or not fields(p, ["id", "owner", "x", "previous_x", "y", "previous_y", "vx", "vy", "gravity", "life", "range", "travel", "width", "height", "clash", "reflections", "max_reflections"], TYPE_INT):
 			return false

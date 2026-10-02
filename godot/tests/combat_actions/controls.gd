@@ -36,6 +36,9 @@ func prepare(s: Node) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _initialize() -> void:
+	call_deferred("run")
+
+func run() -> void:
 	var a := Actions.new()
 	for code: int in Actions.EDGE_KEYS:
 		var field: String = Actions.EDGE_KEYS[code]

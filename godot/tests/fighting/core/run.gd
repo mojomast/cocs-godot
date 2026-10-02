@@ -107,6 +107,20 @@ func _charge_and_policy() -> void:
 
 func _pair_clocks() -> void:
 	var s = sim()
+	s.step([F.input(32), F.input()])
+	var release_seen := false
+	for tick in range(40):
+		var pose: Dictionary = s.step([F.input(), F.input()])
+		var phase: Dictionary = pose.fighters[0].get("animation_pair_phase", {})
+		if not phase.is_empty() and pose.pair.is_empty():
+			release_seen = true
+			check(phase.frame == pose.fighters[0].animation_frame and phase.elapsed == phase.frame - phase.caught_move_frame, "recovery phase uses authoritative animation clock")
+			var restored = sim()
+			restored.load_state(JSON.parse_string(JSON.stringify(s.save_state())))
+			check(restored.last_error.is_empty() and restored.snapshot() == pose, "release/recovery JSON restore preserves phase")
+	check(release_seen, "release snapshot retains attacker pair projection")
+	check(not s.snapshot().fighters[0].has("animation_pair_phase"), "animation transition clears recovery phase")
+	s = sim()
 	s.training_place({"fighters": [{"x": -550}, {"x": 550}]})
 	s.step([F.input(32), F.input()])
 	idle(s, 2)
