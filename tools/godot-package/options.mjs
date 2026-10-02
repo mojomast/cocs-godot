@@ -31,6 +31,10 @@ export const EXPERIENCES = {
   'lattice-world': {scene:'res://lattice/world_demo.tscn', maps:{'asterion-relay':['cocs','cocs-coop'], 'monsoon-foundry':['cocs','cocs-coop']}},
 };
 
+// Reviewed additive map binding; source-only Arsenal/Juggernaut stay unadvertised.
+EXPERIENCES['multiplayer-worlds'].maps['helix-conservatory'] = ['deathmatch','teamdeathmatch','ctf','domination','koth'];
+EXPERIENCES['multiplayer-worlds'].identity['helix-conservatory'] = {scene:'res://multiplayer_worlds/demo.tscn',modes:EXPERIENCES['multiplayer-worlds'].maps['helix-conservatory']};
+
 // Standalone exploration/labs, deliberately outside the source map routes.
 export const NATIVE_EXPERIENCES = {
   showcase: {scene:'res://showcase/demo.tscn'},

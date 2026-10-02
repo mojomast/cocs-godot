@@ -118,6 +118,9 @@
     },
     "tern-archipelago": {
       "name": "Tern Archipelago"
+    },
+    "helix-conservatory": {
+      "name": "Helix Conservatory"
     }
   },
   "routes": [
@@ -420,7 +423,8 @@
             "thermal-divide",
             "sirocco-circuit",
             "copper-bowl",
-            "tern-archipelago"
+            "tern-archipelago",
+            "helix-conservatory"
           ],
           "default": "switchyard-ward"
         },
@@ -485,6 +489,13 @@
             "tern-archipelago": [
               "cocs",
               "cocs-coop"
+            ],
+            "helix-conservatory": [
+              "deathmatch",
+              "teamdeathmatch",
+              "ctf",
+              "domination",
+              "koth"
             ]
           },
           "default": "deathmatch"
@@ -517,6 +528,7 @@
           "maps": [
             "breakwater-exchange",
             "copper-bowl",
+            "helix-conservatory",
             "rainmarket-exchange",
             "sirocco-circuit",
             "switchyard-ward",
@@ -534,6 +546,13 @@
             ],
             "copper-bowl": [
               "puma-soccer"
+            ],
+            "helix-conservatory": [
+              "ctf",
+              "deathmatch",
+              "domination",
+              "koth",
+              "teamdeathmatch"
             ],
             "rainmarket-exchange": [
               "armsrace",

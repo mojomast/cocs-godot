@@ -207,6 +207,8 @@ func on_results(frame: Dictionary) -> void:
  presentation.apply_state(frame.state,client.actor_id)
  pickups.apply_state(frame.state)
  objective_renderer.apply_state(frame.state,client.actor_id)
+ if current_id == "helix-conservatory" and selected_mode == "ctf":
+  objective_text.text = objective_renderer.hud_text
  release_pointer()
  label.text = "Round ended · Enter: restart as host"
  if "--urban-fixture-restart" in OS.get_cmdline_user_args() and join_room_id.is_empty() and round_results == 1:

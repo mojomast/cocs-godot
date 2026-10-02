@@ -58,6 +58,7 @@ Evidence root: `/home/mojo/.tmp-on-disk/cocs-new-map-conservatory-evidence-20261
 - **8 materials, 16 architectural mesh batches + 6 label nodes = 22 mesh nodes / 22 mesh surfaces**. These are static batches, not thousands of draw nodes. Editable recipe contains 8,770 parts and 52,156 pre-export recipe vertices.
 - Shadowed architectural inspection at 1440×900: actual rendering counters are in `inspection-final/inspection.json`; draw/primitive counts include shadow passes, not just unique scene triangles.
 - Gameplay recording uses **640×400, shadows off, software Mesa llvmpipe, one LP thread**. Successful CTF runs were around **49 ms median / 57 ms p95** render-frame intervals on this software setup (exact final values in `production-validation.json`). These are not hardware FPS claims. Result screenshot is expanded to 960×600 after gameplay stops.
+- The low-resolution gameplay capture visibly clips some inherited long help/kit text at its right/bottom edges; objective ownership, carried flag state and source score remain legible. The 960×600 final CTF result is fully readable. Compact prototype-HUD polish is not claimed by this map pass.
 - Source authority outcome times: DM **76.933 s**, TDM **82.233 s**, CTF **69.2 s**, Domination **28.033 s**, KOTH **29.583 s**. Limits: five frags/zone points, one hosted CTF capture. Separate source fixture retains the standard three-capture CTF round.
 - Route/options parity tests: **16/16**, including idempotent generated routes and existing capability checks.
 
@@ -75,6 +76,8 @@ Final bounded run explicitly passes `{inputs:{}}` so **all four AI seats** execu
 ## Integration contract and remaining acceptance
 
 Separate integration commit adds only Helix to source WORLDS, native MODES, dev/package option tables, route metadata and generated route choice. `map.gd` explicitly resolves this map's nested GLB and complete-surface coverage, preventing duplicate terrain. Existing seven map assets and hashes are preserved. No package allowlists or verifier scripts changed.
+
+The runtime capability contract is those five-mode registries plus `provenance.json.modes` / `production-validation.json.acceptedNativeModes`. The historical recipe `modeBindings` remains empty; `candidateModes` is a research list, not a publication allowlist. Parent packaging should consume the accepted modes, never promote the two source-only candidates automatically.
 
 Parent must include the new JSON/GLB/import settings in future package closure; the Blender master and authoring/test scripts remain production-source artifacts. Run the standalone `build.mjs`, not the old overhead expander. Runtime map selection is the existing `multiplayer-worlds` experience with `--map=helix-conservatory` and an accepted mode. No permanent local server is left running.
 
