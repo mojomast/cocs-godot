@@ -109,7 +109,32 @@ test('invalid durations, overlaps and wrong axis types rejected',()=>{
  assert.ok(mutate(r=>{r.operators[0].combos[0].inputs[0].axis_y='down';}).some(e=>e.includes('axis_y')));
 });
 test('all 27 authored traces expand canonically for both facing directions',()=>{
- for(const op of roster.operators)for(const combo of op.combos){const normal=expandTrace(combo),mirror=expandTrace(combo,-1);assert.equal(normal.length,mirror.length);normal.forEach((sample,i)=>{assert.equal(sample.axis_x,-mirror[i].axis_x);assert.equal(sample.axis_y,mirror[i].axis_y);assert.equal(sample.held,mirror[i].held);});}
+ for(const op of roster.operators)for(const combo of op.combos){const normal=expandTrace(combo),mirror=expandTrace(combo,-1);assert.equal(normal.length,mirror.length);normal.forEach((sample,i)=>{assert.ok(sample.axis_x===-mirror[i].axis_x);assert.equal(sample.axis_y,mirror[i].axis_y);assert.equal(sample.held,mirror[i].held);});}
+});
+test('ground fixtures reject overlap and permit exact pushbox-touch separation',()=>{
+ assert.ok(mutate(r=>{r.operators[0].combos[0].preconditions.distance=rules.pushbox.w-1;}).some(e=>e.includes('below legal pushbox width')));
+ assert.deepEqual(mutate(r=>{r.operators[0].combos[0].preconditions.distance=rules.pushbox.w;}),[]);
+});
+test('fixture spacing validation derives from current rules rather than frozen 660 literal',()=>assert.ok(mutate((r,s)=>{s.pushbox.w+=40;}).some(e=>e.includes('below legal pushbox width 700'))));
+test('air fixtures are exempt from grounded pushbox-spacing rejection',()=>{
+ for(const op of roster.operators){const air=op.combos[2];assert.ok(air.preconditions.distance<rules.pushbox.w);assert.ok(air.preconditions.attacker_y>0&&air.preconditions.defender_y>0);}
+ assert.deepEqual(validate(roster,rules),[]);
+ assert.ok(!mutate(r=>{r.operators[0].combos[0].preconditions.distance=500;r.operators[0].combos[0].preconditions.attacker_y=100;}).some(e=>e.includes('below legal pushbox width')));
+});
+test('legal ground fixture also needs plausible first-strike reach into defender hurtbox',()=>assert.ok(mutate(r=>{r.operators[6].combos[0].preconditions.distance=1500;}).some(e=>e.includes('first-contact horizontal reach'))));
+test('charge defender setup is an ordinary same-direction walk, not an attack or position rewrite',()=>{
+ const combo=roster.operators.find(op=>op.id==='deepseek').combos[1];
+ for(const facing of [1,-1]){const a=expandTrace(combo,facing),b=expandTrace(combo,facing,'defender');for(let tick=0;tick<combo.inputs[0].tick;tick++){assert.equal(a[tick].axis_x,b[tick].axis_x);assert.equal(b[tick].axis_y,0);assert.equal(b[tick].held,0);assert.equal(b[tick].pressed,0);}assert.equal(b[combo.inputs[0].tick].held,0);assert.equal(b[combo.inputs[0].tick].axis_x,0);}
+ assert.ok(mutate(r=>{delete r.operators[5].combos[1].defender_setup_inputs;}).some(e=>e.includes('charge defender must follow')));
+});
+test('charge follow with wrong direction, short duration or buttons is rejected',()=>{
+ assert.ok(mutate(r=>{r.operators[5].combos[1].defender_setup_inputs[0].axis_x=1;}).some(e=>e.includes('charge defender must follow')));
+ assert.ok(mutate(r=>{r.operators[5].combos[1].defender_setup_inputs[0].duration=1;}).some(e=>e.includes('charge defender must follow')));
+ assert.ok(mutate(r=>{const sample=r.operators[5].combos[1].defender_setup_inputs[0];sample.held=1;sample.pressed=1;}).some(e=>e.includes('ordinary grounded movement')));
+});
+test('defender setup cannot continue into the attack or carry unknown position fields',()=>{
+ assert.ok(mutate(r=>{r.operators[5].combos[1].defender_setup_inputs[0].duration=37;}).some(e=>e.includes('only before first attack')));
+ assert.ok(mutate(r=>{r.operators[5].combos[1].defender_setup_inputs[0].x=0;}).some(e=>e.includes('unknown key')));
 });
 test('machine schema export is current and freeze excludes all working prose',()=>{
  assert.deepEqual(readJSON('godot/fighting/data/schema.json'),schema);

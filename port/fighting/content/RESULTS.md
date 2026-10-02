@@ -2,6 +2,21 @@
 
 **READY FOR CORE/NATIVE COMBO VALIDATION**
 
+## Latest: legal grounded fixture correction
+
+- Verifier `9549da1c` found the original 550 mm fixture inside 660 mm pushboxes.
+- 18 ground candidates now use `rules.pushbox.w` (660 mm); nine air candidates
+  retain their original fixture and input data.
+- DeepSeek records a second ordinary-input charge-follow stream for the defender.
+- Full source suite: **222/222 PASS**, with fresh generation passing.
+- Moves, stats, resources, attacker samples, rules and animation timings unchanged.
+  Runtime roster changes intentionally through combo metadata; parent effects/data
+  contract hash synchronization is required after integration.
+- All 27 actual core combo validations remain pending; no native engine run.
+
+Details and roster hash: `GROUND_FIXTURE_CORRECTION.md`.
+Evidence: `/home/mojo/.tmp-on-disk/cocs-fighting-content-evidence-20261002/ground-fixture-correction/`.
+
 ## C2/C3/F9 correction verification
 
 Evidence:
