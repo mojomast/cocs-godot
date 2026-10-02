@@ -82,6 +82,14 @@ now exposes shared dynamic pair knots, projectile `owner` and original provenanc
 true contact coordinates and top-level anchor/stance timers. Animation owner is
 binding the dynamic pair knots in a bounded source follow-up.
 
+That follow-up `117bd441` is merged as `770dd96d`: stateless snapshot-driven paired
+seeking, malformed-clock rejection and an asset-free native fixture. Source checks
+covered 60 catches, 2,072 shared frames, 360 interruptions and 420 invalid clocks.
+Native integration owner received the required core continuation change: preserve
+`animation_pair_phase` through attacker recovery after release, including typed
+save/load and interruption cleanup. Release continuity remains pending that fix
+and actual native execution; no presentation-side timer or phase cache is used.
+
 Foundry explicitly released the heavy slot. Parent issued
 `FINISH-COMBINED-NATIVE-20261002-A` to the existing finish integration Astra
 `ses_f0294303bffed6Fb8UJLKe4ZDz`, using parent `09160dc0` in the existing sandbox.
