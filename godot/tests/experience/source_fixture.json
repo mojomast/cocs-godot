@@ -1,0 +1,6804 @@
+{
+  "sha256": "e3f93556b9c71e0aa81da51a0e0266ebe61e70c84d0bac9d927f6bf26db171b2",
+  "samples": [
+    {
+      "event": {
+        "type": "pickup"
+      },
+      "expected": "Pickup"
+    },
+    {
+      "event": {
+        "type": "pickup",
+        "kind": "health"
+      },
+      "expected": "Health acquired"
+    },
+    {
+      "event": {
+        "type": "pickup",
+        "kind": "armor"
+      },
+      "expected": "Armor acquired"
+    },
+    {
+      "event": {
+        "type": "pickup",
+        "kind": "ammo"
+      },
+      "expected": "Ammo acquired"
+    },
+    {
+      "event": {
+        "type": "pickup",
+        "kind": "megahealth"
+      },
+      "expected": "Mega health acquired"
+    },
+    {
+      "event": {
+        "type": "pickup",
+        "kind": "rifle"
+      },
+      "expected": "Weapon acquired"
+    },
+    {
+      "event": {
+        "type": "spawn"
+      },
+      "expected": ""
+    },
+    {
+      "event": {
+        "type": "spawn",
+        "actor": 0
+      },
+      "expected": "Respawn"
+    },
+    {
+      "event": {
+        "type": "damage"
+      },
+      "expected": "Damage taken"
+    },
+    {
+      "event": {
+        "type": "enemy-telegraph",
+        "kind": "overseer"
+      },
+      "expected": "Incoming attack · overseer aura"
+    },
+    {
+      "event": {
+        "type": "enemy-telegraph",
+        "kind": "mender"
+      },
+      "expected": "Incoming attack · mender pulse"
+    },
+    {
+      "event": {
+        "type": "enemy-telegraph",
+        "kind": "flanker"
+      },
+      "expected": "Incoming attack · flanker push"
+    },
+    {
+      "event": {
+        "type": "enemy-telegraph",
+        "kind": "phalanx"
+      },
+      "expected": "Incoming attack · phalanx shield"
+    },
+    {
+      "event": {
+        "type": "enemy-telegraph",
+        "kind": "sapper"
+      },
+      "expected": "Incoming attack · sapper charge"
+    },
+    {
+      "event": {
+        "type": "enemy-telegraph",
+        "kind": "artillery"
+      },
+      "expected": "Incoming attack · artillery"
+    },
+    {
+      "event": {
+        "type": "enemy-telegraph",
+        "kind": "boss"
+      },
+      "expected": "Incoming attack · boss slam"
+    },
+    {
+      "event": {
+        "type": "enemy-telegraph",
+        "kind": "unknown"
+      },
+      "expected": "Incoming attack"
+    },
+    {
+      "event": {
+        "type": "shot",
+        "alt": true,
+        "weapon": 0
+      },
+      "expected": "Alt fire · SALVO"
+    },
+    {
+      "event": {
+        "type": "shot",
+        "alt": true,
+        "weapon": 1
+      },
+      "expected": "Alt fire · CLUSTER"
+    },
+    {
+      "event": {
+        "type": "shot",
+        "alt": true,
+        "weapon": 2
+      },
+      "expected": "Alt fire · OVERLOAD"
+    },
+    {
+      "event": {
+        "type": "shot",
+        "alt": true,
+        "weapon": 3
+      },
+      "expected": "Alt fire · SLUG"
+    },
+    {
+      "event": {
+        "type": "shot",
+        "alt": true,
+        "weapon": 4
+      },
+      "expected": "Alt fire · MORTAR"
+    },
+    {
+      "event": {
+        "type": "shot",
+        "alt": true,
+        "weapon": 5
+      },
+      "expected": "Alt fire · PROXIMITY MINE"
+    },
+    {
+      "event": {
+        "type": "shot",
+        "alt": true,
+        "weapon": 6
+      },
+      "expected": "Alt fire · CHAIN"
+    },
+    {
+      "event": {
+        "type": "shot",
+        "alt": true,
+        "weapon": 7
+      },
+      "expected": "Alt fire · FLAK BOMB"
+    },
+    {
+      "event": {
+        "type": "shot",
+        "alt": true,
+        "weapon": 8
+      },
+      "expected": "Alt fire · DOUBLE TAP"
+    },
+    {
+      "event": {
+        "type": "shot",
+        "alt": true,
+        "weapon": 9
+      },
+      "expected": "Alt fire · TWIN"
+    },
+    {
+      "event": {
+        "type": "charge",
+        "state": "ready"
+      },
+      "expected": "Charged shot ready"
+    },
+    {
+      "event": {
+        "type": "charge"
+      },
+      "expected": "Charging shot"
+    },
+    {
+      "event": {
+        "type": "weather-change",
+        "kind": "rain"
+      },
+      "expected": "Weather · rain"
+    },
+    {
+      "event": {
+        "type": "time-change",
+        "phase": "night"
+      },
+      "expected": "Time of day · night"
+    }
+  ],
+  "replacement": [
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 80,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 80,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 109,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 109,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 100,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 100,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 130,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 130,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 85,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 85,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 120,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 120,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 80,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 80,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 80,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 109,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 109,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 100,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 100,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 130,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 130,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 85,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 85,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 120,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 120,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 109,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 80,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 80,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 109,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 109,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 100,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 100,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 130,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 130,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 85,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 85,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 120,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 120,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 100,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 80,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 80,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 109,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 109,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 100,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 100,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 130,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 130,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 85,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 85,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 120,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 120,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 130,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 80,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 80,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 109,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 109,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 100,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 100,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 130,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 130,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 85,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 85,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 120,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 120,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 85,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 80,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 80
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 80,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 80
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 80,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 109,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 109
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 109,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 109
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 109,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 100,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 100
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 100,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 100
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 100,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 130,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 10,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 10
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 11,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 11
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 12.199,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 12.199
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 12.2,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 12.2
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 130
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 130,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 130
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 130,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 85,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 85
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 85,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 85
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 85,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 9,
+      "expected": {
+        "text": "First",
+        "priority": 120,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 9,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 9
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 10,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 11,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 12.199,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 12.2,
+      "expected": null
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "First",
+        "priority": 120
+      },
+      "at": 13,
+      "expected": {
+        "text": "First",
+        "priority": 120,
+        "at": 13
+      }
+    },
+    {
+      "current": {
+        "text": "First",
+        "priority": 120,
+        "at": 10
+      },
+      "candidate": {
+        "text": "Next",
+        "priority": 120
+      },
+      "at": 13,
+      "expected": {
+        "text": "Next",
+        "priority": 120,
+        "at": 13
+      }
+    }
+  ],
+  "badges": [
+    {
+      "entry": null,
+      "expected": []
+    },
+    {
+      "entry": {},
+      "expected": []
+    },
+    {
+      "entry": {
+        "self": true,
+        "overkill": 90
+      },
+      "expected": []
+    },
+    {
+      "entry": {
+        "fall": true,
+        "assist": true
+      },
+      "expected": []
+    },
+    {
+      "entry": {
+        "assist": true,
+        "victimStreak": 2,
+        "overkill": 55,
+        "killerStreak": 3
+      },
+      "expected": [
+        "ASSIST",
+        "STREAK ENDED",
+        "OVERKILL",
+        "×3 STREAK"
+      ]
+    },
+    {
+      "entry": {
+        "victimStreak": 1,
+        "overkill": 54,
+        "killerStreak": 1
+      },
+      "expected": []
+    }
+  ]
+}

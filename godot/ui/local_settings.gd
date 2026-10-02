@@ -7,7 +7,8 @@ const MENU_SCENE := "res://ui/main_menu.tscn"
 const DEFAULTS := {"master_volume": 100, "mute": false, "window_mode": "windowed", "mouse_sensitivity": 100, "ui_scale": 100,
 	"music_enabled": true, "music_volume": 100, "effects_volume": 100, "ambience_enabled": true, "ambience_volume": 100,
 	"announcer_enabled": false, "announcer_volume": 100, "weather_enabled": true, "weather_quality": 100,
-	"reduced_motion": false, "lightning_flashes": true, "attract_demo_enabled": true}
+	"reduced_motion": false, "lightning_flashes": true, "attract_demo_enabled": true,
+	"captions": false, "caption_scale": 100, "caption_background": "dim", "caption_position": "bottom", "combat_readouts": true}
 signal audio_preferences_changed(preferences: Dictionary)
 signal preferences_changed(preferences: Dictionary)
 var path := "user://local_settings.json"
@@ -19,6 +20,7 @@ var status: Label
 var hint: Label
 var career_button: Button
 var startup_display_override := false
+var player_info: CanvasLayer
 
 static func explicit_display_flag(args: PackedStringArray, user_args: PackedStringArray = PackedStringArray()) -> bool:
 	# Godot includes args after `--` in both lists. Only engine-side flags
@@ -40,22 +42,28 @@ func _ready() -> void:
 			path = configured
 		load_at(path)
 	build_panel()
+	player_info = preload("res://experience/player_info.gd").new()
+	player_info.name = "PlayerInformation"
+	add_child(player_info)
+	preferences_changed.connect(player_info.apply_settings)
 	apply()
 
 static func normalize(raw: Variant) -> Dictionary:
 	var result := DEFAULTS.duplicate()
 	if not raw is Dictionary: return result
-	for key: String in ["master_volume", "mouse_sensitivity", "ui_scale", "music_volume", "effects_volume", "ambience_volume", "announcer_volume", "weather_quality"]:
+	for key: String in ["master_volume", "mouse_sensitivity", "ui_scale", "music_volume", "effects_volume", "ambience_volume", "announcer_volume", "weather_quality", "caption_scale"]:
 		var value: Variant = raw.get(key)
 		if typeof(value) != TYPE_FLOAT and typeof(value) != TYPE_INT: continue
 		if value is float and not is_finite(value): continue
-		var low := 25 if key == "mouse_sensitivity" else (75 if key == "ui_scale" else 0)
-		var high := 250 if key == "mouse_sensitivity" else (150 if key == "ui_scale" else 100)
+		var low := 80 if key == "caption_scale" else (25 if key == "mouse_sensitivity" else (75 if key == "ui_scale" else 0))
+		var high := 160 if key == "caption_scale" else (250 if key == "mouse_sensitivity" else (150 if key == "ui_scale" else 100))
 		result[key] = clampi(roundi(clampf(float(value), low, high)), low, high)
 	if raw.get("mute") is bool: result.mute = raw.mute
-	for key: String in ["music_enabled", "ambience_enabled", "announcer_enabled", "weather_enabled", "reduced_motion", "lightning_flashes", "attract_demo_enabled"]:
+	for key: String in ["music_enabled", "ambience_enabled", "announcer_enabled", "weather_enabled", "reduced_motion", "lightning_flashes", "attract_demo_enabled", "captions", "combat_readouts"]:
 		if raw.get(key) is bool: result[key] = raw[key]
 	if raw.get("window_mode") in ["windowed", "fullscreen"]: result.window_mode = raw.window_mode
+	if raw.get("caption_background") in ["dim", "solid", "transparent"]: result.caption_background = raw.caption_background
+	if raw.get("caption_position") in ["top", "bottom"]: result.caption_position = raw.caption_position
 	return result
 
 func load_at(file_path: String) -> void:
@@ -94,9 +102,11 @@ func save() -> bool:
 
 func set_value(key: String, value: Variant, persist: bool = true) -> bool:
 	if not DEFAULTS.has(key): return false
-	if key in ["mute", "music_enabled", "ambience_enabled", "announcer_enabled", "weather_enabled", "reduced_motion", "lightning_flashes", "attract_demo_enabled"] and not value is bool: return false
+	if key in ["mute", "music_enabled", "ambience_enabled", "announcer_enabled", "weather_enabled", "reduced_motion", "lightning_flashes", "attract_demo_enabled", "captions", "combat_readouts"] and not value is bool: return false
 	if key == "window_mode" and value not in ["windowed", "fullscreen"]: return false
-	if key in ["master_volume", "mouse_sensitivity", "ui_scale", "music_volume", "effects_volume", "ambience_volume", "announcer_volume", "weather_quality"]:
+	if key == "caption_background" and value not in ["dim", "solid", "transparent"]: return false
+	if key == "caption_position" and value not in ["top", "bottom"]: return false
+	if key in ["master_volume", "mouse_sensitivity", "ui_scale", "music_volume", "effects_volume", "ambience_volume", "announcer_volume", "weather_quality", "caption_scale"]:
 		if typeof(value) not in [TYPE_INT, TYPE_FLOAT]: return false
 		if value is float and not is_finite(value): return false
 	var candidate := values.duplicate()
@@ -169,6 +179,7 @@ func build_panel() -> void:
 	title.text = "SETTINGS"
 	column.add_child(title)
 	for entry: Dictionary in [
+		{"key":"caption_scale", "label":"Sound caption text size", "low":80, "high":160},
 		{"key":"master_volume", "label":"Master volume", "low":0, "high":100},
 		{"key":"music_volume", "label":"Music volume", "low":0, "high":100},
 		{"key":"effects_volume", "label":"Effects volume", "low":0, "high":100},
@@ -205,6 +216,8 @@ func build_panel() -> void:
 	rows.mute = mute
 	mute.toggled.connect(func(on: bool) -> void: set_value("mute", on))
 	for entry: Dictionary in [
+		{"key":"captions", "label":"Sound captions (also when muted)"},
+		{"key":"combat_readouts", "label":"Incoming-hit recap / elimination details"},
 		{"key":"music_enabled", "label":"Music"}, {"key":"ambience_enabled", "label":"Ambient sound"},
 		{"key":"announcer_enabled", "label":"Announcer voice"}, {"key":"weather_enabled", "label":"Cosmetic weather"},
 		{"key":"lightning_flashes", "label":"Lightning flashes"}, {"key":"reduced_motion", "label":"Reduced weather motion"},
@@ -215,6 +228,23 @@ func build_panel() -> void:
 		column.add_child(toggle)
 		rows[key] = toggle
 		toggle.toggled.connect(func(on: bool) -> void: set_value(key, on))
+	for entry: Dictionary in [
+		{"key":"caption_position", "label":"Caption placement", "choices":["bottom", "top"]},
+		{"key":"caption_background", "label":"Caption background", "choices":["dim", "solid", "transparent"]}]:
+		var label := Label.new()
+		label.text = entry.label
+		column.add_child(label)
+		var choice := OptionButton.new()
+		var key: String = entry.key
+		var choices: Array = entry.choices
+		for value: String in choices: choice.add_item(value.capitalize())
+		choice.item_selected.connect(func(index: int) -> void: set_value(key, choices[index]))
+		column.add_child(choice)
+		rows[key] = choice
+	var caption_note := Label.new()
+	caption_note.text = "Captions describe received events, not their distance or direction. Important calls hold for 2.2 seconds. No automatic speech."
+	caption_note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	column.add_child(caption_note)
 	var mode := CheckButton.new()
 	mode.text = "Fullscreen"
 	column.add_child(mode)
@@ -275,10 +305,12 @@ func open_panel(from_menu: bool = false, previous_focus: Control = null) -> void
 	return_focus = previous_focus
 	release_controls()
 	status.text = "The match continues while Settings is open. After Back, use the mode's click/Enter controls to resume input."
-	for key: String in ["master_volume", "music_volume", "effects_volume", "ambience_volume", "announcer_volume", "weather_quality", "mouse_sensitivity", "ui_scale"]: rows[key].set_value_no_signal(values[key])
-	for key: String in ["master_volume", "music_volume", "effects_volume", "ambience_volume", "announcer_volume", "weather_quality", "mouse_sensitivity", "ui_scale"]: rows[key + "_value"].text = "%d%%" % values[key]
+	for key: String in ["master_volume", "music_volume", "effects_volume", "ambience_volume", "announcer_volume", "weather_quality", "mouse_sensitivity", "ui_scale", "caption_scale"]: rows[key].set_value_no_signal(values[key])
+	for key: String in ["master_volume", "music_volume", "effects_volume", "ambience_volume", "announcer_volume", "weather_quality", "mouse_sensitivity", "ui_scale", "caption_scale"]: rows[key + "_value"].text = "%d%%" % values[key]
 	rows.mute.set_pressed_no_signal(values.mute)
-	for key: String in ["music_enabled", "ambience_enabled", "announcer_enabled", "weather_enabled", "lightning_flashes", "reduced_motion", "attract_demo_enabled"]: rows[key].set_pressed_no_signal(values[key])
+	for key: String in ["music_enabled", "ambience_enabled", "announcer_enabled", "weather_enabled", "lightning_flashes", "reduced_motion", "attract_demo_enabled", "captions", "combat_readouts"]: rows[key].set_pressed_no_signal(values[key])
+	rows.caption_position.select(["bottom", "top"].find(values.caption_position))
+	rows.caption_background.select(["dim", "solid", "transparent"].find(values.caption_background))
 	rows.window_mode.set_pressed_no_signal(values.window_mode == "fullscreen")
 	rows.leave.visible = not from_menu
 	rows.back.text = "Back to Home (Esc)" if from_menu else "Back to game (Esc)"

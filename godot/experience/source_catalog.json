@@ -1,0 +1,491 @@
+{
+  "source": "game/hud.mjs",
+  "sha256": "e3f93556b9c71e0aa81da51a0e0266ebe61e70c84d0bac9d927f6bf26db171b2",
+  "ttl": 2.2,
+  "captions": {
+    "shot": {
+      "text": "Gunfire",
+      "priority": 80
+    },
+    "explosion": {
+      "text": "Explosion",
+      "priority": 80
+    },
+    "vehicle-shot": {
+      "text": "Vehicle gunfire",
+      "priority": 80
+    },
+    "grenade": {
+      "text": "Grenade out",
+      "priority": 80
+    },
+    "melee": {
+      "text": "Melee",
+      "priority": 80
+    },
+    "reload": {
+      "text": "Reloading",
+      "priority": 80
+    },
+    "pickup": {
+      "text": "Pickup",
+      "priority": 80
+    },
+    "powerup": {
+      "text": "Powerup",
+      "priority": 80
+    },
+    "vehicle-enter": {
+      "text": "Mounted vehicle",
+      "priority": 80
+    },
+    "vehicle-exit": {
+      "text": "Dismounted vehicle",
+      "priority": 80
+    },
+    "vehicle-destroyed": {
+      "text": "Vehicle destroyed",
+      "priority": 109
+    },
+    "vehicle-splatter": {
+      "text": "Vehicle splatter",
+      "priority": 80
+    },
+    "zone-capture": {
+      "text": "Zone captured",
+      "priority": 100
+    },
+    "zone-score": {
+      "text": "Objective scoring",
+      "priority": 100
+    },
+    "zone-neutralized": {
+      "text": "Zone neutralized",
+      "priority": 80
+    },
+    "flag-pickup": {
+      "text": "Flag taken",
+      "priority": 100
+    },
+    "flag-return": {
+      "text": "Flag returned",
+      "priority": 80
+    },
+    "flag-drop": {
+      "text": "Flag dropped",
+      "priority": 80
+    },
+    "flag-pass": {
+      "text": "Flag passed",
+      "priority": 100
+    },
+    "flag-contest": {
+      "text": "Flag contested",
+      "priority": 109
+    },
+    "capture": {
+      "text": "Flag captured",
+      "priority": 80
+    },
+    "assault-sector-captured": {
+      "text": "Sector captured",
+      "priority": 80
+    },
+    "assault-sector-lost": {
+      "text": "Sector lost",
+      "priority": 80
+    },
+    "assault-breach": {
+      "text": "Sector breached",
+      "priority": 100
+    },
+    "payload-checkpoint": {
+      "text": "Checkpoint reached",
+      "priority": 80
+    },
+    "payload-delivered": {
+      "text": "Payload delivered",
+      "priority": 100
+    },
+    "payload-contest": {
+      "text": "Payload contested",
+      "priority": 109
+    },
+    "soccer-goal": {
+      "text": "Goal",
+      "priority": 80
+    },
+    "killstreak": {
+      "text": "Killstreak",
+      "priority": 109
+    },
+    "death": {
+      "text": "Elimination",
+      "priority": 130
+    },
+    "mission-message": {
+      "text": "Mission update",
+      "priority": 85
+    },
+    "mission-won": {
+      "text": "Mission complete",
+      "priority": 130
+    },
+    "mission-lost": {
+      "text": "Mission failed",
+      "priority": 130
+    },
+    "horde-wave": {
+      "text": "Wave incoming",
+      "priority": 109
+    },
+    "horde-wave-cleared": {
+      "text": "Wave cleared",
+      "priority": 109
+    },
+    "horde-resupply": {
+      "text": "Resupplied",
+      "priority": 80
+    },
+    "horde-upgrade": {
+      "text": "Upgrade available",
+      "priority": 80
+    },
+    "horde-upgrade-selected": {
+      "text": "Upgrade acquired",
+      "priority": 80
+    },
+    "enemy-detonate": {
+      "text": "Sapper detonation",
+      "priority": 80
+    },
+    "singleplayer-checkpoint": {
+      "text": "Checkpoint saved",
+      "priority": 85
+    },
+    "npc-deploy": {
+      "text": "Contacts",
+      "priority": 85
+    },
+    "story-line": {
+      "text": "Mission briefing",
+      "priority": 85
+    },
+    "npc-bark": {
+      "text": "Transmission",
+      "priority": 85
+    },
+    "boss-phase": {
+      "text": "Boss phase",
+      "priority": 120
+    },
+    "armsrace-promote": {
+      "text": "Ladder up",
+      "priority": 80
+    },
+    "armsrace-demote": {
+      "text": "Ladder down",
+      "priority": 80
+    },
+    "juggernaut-transfer": {
+      "text": "Crown taken",
+      "priority": 80
+    },
+    "elimination-life": {
+      "text": "Team life lost",
+      "priority": 80
+    },
+    "vip-deploy": {
+      "text": "VIP deployed",
+      "priority": 80
+    },
+    "vip-down": {
+      "text": "VIP down",
+      "priority": 80
+    },
+    "vip-extracted": {
+      "text": "VIP extracted",
+      "priority": 80
+    },
+    "holdout-progress": {
+      "text": "Holdout progress",
+      "priority": 85
+    },
+    "holdout-win": {
+      "text": "Holdout won",
+      "priority": 80
+    },
+    "uplink-capture": {
+      "text": "Uplink captured",
+      "priority": 80
+    },
+    "uplink-stage": {
+      "text": "Uplink advanced",
+      "priority": 80
+    },
+    "uplink-win": {
+      "text": "Uplink won",
+      "priority": 80
+    },
+    "objective-win": {
+      "text": "Objective secured",
+      "priority": 100
+    },
+    "enemy-telegraph": {
+      "text": "Incoming attack",
+      "priority": 109
+    },
+    "boss-slam": {
+      "text": "Boss slam",
+      "priority": 109
+    },
+    "boss-summon": {
+      "text": "Boss summon",
+      "priority": 109
+    },
+    "mender-heal": {
+      "text": "Ally healed",
+      "priority": 80
+    },
+    "overseer-aura": {
+      "text": "Overseer aura",
+      "priority": 109
+    },
+    "phalanx-shield": {
+      "text": "Phalanx shield",
+      "priority": 109
+    },
+    "enemy-flank": {
+      "text": "Flanking",
+      "priority": 109
+    },
+    "enemy-artillery": {
+      "text": "Artillery incoming",
+      "priority": 109
+    },
+    "race-coin": {
+      "text": "Coin collected",
+      "priority": 80
+    },
+    "race-box": {
+      "text": "Item box",
+      "priority": 80
+    },
+    "race-boost": {
+      "text": "Speed boost",
+      "priority": 80
+    },
+    "race-item": {
+      "text": "Item deployed",
+      "priority": 80
+    },
+    "race-hazard-hit": {
+      "text": "Hazard hit",
+      "priority": 80
+    },
+    "race-lap": {
+      "text": "Lap complete",
+      "priority": 80
+    },
+    "race-finish": {
+      "text": "Race finish",
+      "priority": 80
+    },
+    "power": {
+      "text": "Ability activated",
+      "priority": 80
+    },
+    "threat-ping": {
+      "text": "Threat ping",
+      "priority": 80
+    },
+    "feint": {
+      "text": "Radar feint",
+      "priority": 80
+    },
+    "move-start": {
+      "text": "Movement ability",
+      "priority": 80
+    },
+    "move-end": {
+      "text": "Movement ended",
+      "priority": 80
+    },
+    "windup-start": {
+      "text": "Movement wind-up",
+      "priority": 80
+    },
+    "windup-end": {
+      "text": "Movement wind-up ended",
+      "priority": 80
+    },
+    "charge-start": {
+      "text": "Movement charge",
+      "priority": 80
+    },
+    "charge-release": {
+      "text": "Movement released",
+      "priority": 80
+    },
+    "charge-cancel": {
+      "text": "Movement charge cancelled",
+      "priority": 80
+    },
+    "slam-launch": {
+      "text": "Slam launch",
+      "priority": 80
+    },
+    "slam-impact": {
+      "text": "Slam impact",
+      "priority": 80
+    },
+    "grapple-hook": {
+      "text": "Grapple hooked",
+      "priority": 80
+    },
+    "grapple-release": {
+      "text": "Grapple released",
+      "priority": 80
+    },
+    "rope-place": {
+      "text": "Rope deployed",
+      "priority": 80
+    },
+    "rope-expire": {
+      "text": "Rope expired",
+      "priority": 80
+    },
+    "move-miss": {
+      "text": "Movement missed",
+      "priority": 80
+    },
+    "rope-miss": {
+      "text": "Rope missed",
+      "priority": 80
+    },
+    "move-blocked": {
+      "text": "Movement blocked",
+      "priority": 80
+    },
+    "fuel-empty": {
+      "text": "Fuel empty",
+      "priority": 80
+    },
+    "no-lift": {
+      "text": "Movement blocked",
+      "priority": 80
+    },
+    "chain-cancel": {
+      "text": "Movement chained",
+      "priority": 80
+    },
+    "landing-recovery": {
+      "text": "Landing recovery",
+      "priority": 80
+    },
+    "vehicle-damage": {
+      "text": "Vehicle damaged",
+      "priority": 80
+    },
+    "deployable": {
+      "text": "Sentry deployed",
+      "priority": 80
+    },
+    "deployable-fire": {
+      "text": "Sentry firing",
+      "priority": 80
+    },
+    "deployable-expire": {
+      "text": "Sentry expired",
+      "priority": 80
+    },
+    "weapon-upgrade": {
+      "text": "Weapon upgrade",
+      "priority": 85
+    },
+    "dryfire": {
+      "text": "Empty magazine",
+      "priority": 80
+    },
+    "weapon-switch": {
+      "text": "Weapon switch",
+      "priority": 80
+    },
+    "loadout-switch": {
+      "text": "Loadout changed",
+      "priority": 80
+    },
+    "horde-modifier": {
+      "text": "Wave modifier",
+      "priority": 80
+    },
+    "lattice-support": {
+      "text": "Lattice support",
+      "priority": 85
+    },
+    "vehicle-repair": {
+      "text": "Vehicle repaired",
+      "priority": 85
+    },
+    "deployable-destroyed": {
+      "text": "Sentry destroyed",
+      "priority": 109
+    },
+    "deployable-repaired": {
+      "text": "Sentry repaired",
+      "priority": 85
+    },
+    "objective-tiebreak": {
+      "text": "Objective tiebreak",
+      "priority": 100
+    },
+    "sudden-death": {
+      "text": "Sudden death",
+      "priority": 120
+    },
+    "weather-change": {
+      "text": "Weather change",
+      "priority": 85
+    },
+    "time-change": {
+      "text": "Time of day change",
+      "priority": 85
+    },
+    "bounty": {
+      "text": "Bounty claimed",
+      "priority": 109
+    },
+    "charge": {
+      "text": "Charging shot",
+      "priority": 85
+    },
+    "horde-summary": {
+      "text": "Horde summary",
+      "priority": 100
+    }
+  },
+  "alt": [
+    "Alt fire · SALVO",
+    "Alt fire · CLUSTER",
+    "Alt fire · OVERLOAD",
+    "Alt fire · SLUG",
+    "Alt fire · MORTAR",
+    "Alt fire · PROXIMITY MINE",
+    "Alt fire · CHAIN",
+    "Alt fire · FLAK BOMB",
+    "Alt fire · DOUBLE TAP",
+    "Alt fire · TWIN"
+  ],
+  "ranges": [
+    "LONG · 16–70m · 60%",
+    "MID · 60m",
+    "LONG · 90m",
+    "SHORT · 6–24m · 40%",
+    "LONG · 65m",
+    "MID · 55m",
+    "MID · 14–52m · 55%",
+    "SHORT · 5–22m · 40%",
+    "LONG · 32–80m · 72%",
+    "MID · 11–35m · 55%"
+  ]
+}
