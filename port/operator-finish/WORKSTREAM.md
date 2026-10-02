@@ -30,3 +30,22 @@ That checkpoint is not an acceptance result or explicit slot release.
   identity switching, LOD and configure/free lifetime checks. Meta/Mistral first
   for fighting motion, then all-nine coverage. Source pixels are not native art
   acceptance; improvements remain pending until inspected in actual gameplay.
+
+## Merged source checkpoints
+
+Authored content `8d84b3ff` is merged as `2b54a442`: nine profiles, 63 finish
+records, 116 unique 256px PNGs (1,071,133 bytes), deterministic authoring and
+provenance. Lane audit covered all 1,014 primitives: 538 body primitives bound,
+476 intentionally preserved. Normal maps are omitted on matte hand/rubber UVs
+with degenerate triangles. Parent inspected the all-nine 2D texture study; this
+does not prove rendered appearance. Preview studies are served at
+`http://100.125.104.79:8796/operator-finish-preview/`, explicitly labelled 2D.
+
+Runtime `3a2bf1ee`, fighting hook `88fb2d94`, and JSON export filters `12e4eca2`
+are merged as `48b3e431`, `5ed5f989`, `d5ff6773`. Lane checks covered grammar and
+eight validator tests, but did not yet include actual authored manifest closure.
+Parent combined validator exposed a provenance-record schema mismatch for
+`shared-rubber-albedo.png`. Runtime owner has the exact failure and actual content
+commit for reconciliation; do not treat merged hooks as working native finishes.
+Imported tangent availability, final package closure, actual body/overlay binding
+and animated appearance remain native gates. No extra heavy grant was issued.
