@@ -294,7 +294,7 @@ func terrain_material(kind: String = "concrete") -> Material:
 			"ash": texture_key = "rough_stucco-weathered"
 			"metal": texture_key = "metal"
 		if TERRAIN_NORMALS.has(kind): normal_key = str(TERRAIN_NORMALS[kind].key)
-		var mat := MothSurfaces.create_surface(texture_key, Color.WHITE, true)
+		var mat := MothSurfaces.create_surface(texture_key, Color.WHITE, true, true)
 		mat.set_shader_parameter("texture_strength", 0.48)
 		mat.set_shader_parameter("texture_saturation", 0.2)
 		mat.set_shader_parameter("repeat_scale", 0.4)
