@@ -1,5 +1,12 @@
 # New Moth resources and Blender-authored map variety
 
+**R7 gate correction delivered:** `19daef32` adds semantic texture/sampler/UV/
+emissive/occlusion equivalence and native material-field comparisons. Worker reports
+all sixteen tests passing, both actual-R6 counterexamples rejected, equivalent
+remapped bindings accepted, and all 226 W hashes/original R7 reports unchanged.
+Independent focused re-review is active before integration. R7's actual artifact
+and grant remain null; X retains sole heavy ownership.
+
 **R7 review: tangent solver supported; full source approval withheld.** Independent
 review reproduced a production-gate P1: editable-export material auditing accepts
 clamped ground texture wrapping and an added orange emissive texture, then canonical

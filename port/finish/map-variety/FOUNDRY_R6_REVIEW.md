@@ -2,6 +2,14 @@
 
 ## R7 source review follow-up — material gate correction required
 
+**Corrective delivery `19daef32` is under focused independent re-review.** The
+producer reports sixteen tests passing, including both real-R6 mutations below,
+positive equivalence under remapped image/texture/sampler indices and negative
+native material-field mutations. New `corrective-validation.json` records the
+follow-up; original R7 reports and all 226 W hashes remain unchanged. Queue grant
+and actual artifact hash remain null with autostart disabled. No source approval
+or native acceptance is inferred from the producer report alone.
+
 Independent review of `9fb0172e` supports its seven-entry tangent repair but
 withholds full source approval for the editable-master equivalence gate.
 `revision7/production.py:18–25,48–60` accepts both actual-R6 mutations:
