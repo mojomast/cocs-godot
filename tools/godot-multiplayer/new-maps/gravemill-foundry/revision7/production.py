@@ -6,6 +6,9 @@ UVs and material pixels before applying the seven-entry patch to that baseline.
 """
 import collections
 import json
+import sys
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parent))
 from tangents import *
 sys.path.insert(0,str(ROOT/'tools/map-variety-pipeline'))
 from material_pack import linear_rgba
