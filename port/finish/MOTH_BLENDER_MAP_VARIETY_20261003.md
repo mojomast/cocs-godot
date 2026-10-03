@@ -9,6 +9,12 @@ cover 137 files; seven production receipts remain unchanged. Full review:
 successor; botanical X retains sole heavy ownership. Gameplay/manual-art/public
 promotion acceptance remains pending.
 
+R6's gallery now shows qualified staged approval with a separate dated status
+and copied parent review. All 29 follow-up HTTP/hash checks passed; 22 original
+PNGs and four historical manifest/report files remain unchanged. The seven
+invalid tangent bases remain an explicit corrective follow-up, and before views
+remain labeled staged R5: <http://100.125.104.79:8796/foundry-r6/review-status.json>.
+
 ## Current ownership — botanical successor X; W released
 
 **`MOTH-BLENDER-20261003-X` is the sole active heavy grant**, Astra
