@@ -38,7 +38,7 @@ def check(map_id, out_dir, bindings_path):
         assert len(wall.get('vertices', [])) == 3, f'{map_id}: wall not a triangle'
 
     result = kit_expander.plan(arena['art']['kit'], allowed)
-    assert result['summary']['withinBudget'], f'{map_id}: kit over triangle budget'
+    assert result['summary']['triangleAdvisory']['measurement'] == 'source-estimate'
     for entry in result['ops']:
         assert entry['material'] in allowed, f'{map_id}: unbound {entry["material"]}'
         assert all(abs(c) < 1e6 for c in entry['at']), f'{map_id}: wild coordinate'
@@ -47,9 +47,12 @@ def check(map_id, out_dir, bindings_path):
     pieces = kit_expander.piece_plan(arena)
     for bucket in list(structures['buckets']) + list(pieces['buckets']):
         assert bucket in allowed, f'{map_id}: unbound structure material {bucket}'
-    total = kit_expander.scene_summary(arena, allowed)['sourceSceneTriangles']
+    scene = kit_expander.scene_summary(arena, allowed)
+    total = scene['sourceSceneTriangles']
     print('OK', map_id, 'ops', result['summary']['ops'], 'kitTri', result['summary']['triangles'],
-          'shellTri', shell['authorityTriangles'], 'totalTri', total, 'batches', result['summary']['batches'])
+          'shellTri', shell['authorityTriangles'], 'sourceEstimateTri', total,
+          'advisoryOverageTri', scene['triangleAdvisory']['overageTriangles'],
+          'reviewStatus', scene['triangleAdvisory']['status'], 'batches', result['summary']['batches'])
 
 
 def check_unknown_class_rejected():

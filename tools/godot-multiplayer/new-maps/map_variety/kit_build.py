@@ -12,6 +12,7 @@ import sys
 from pathlib import Path
 
 import kit_expander
+from triangle_policy import triangle_advisory
 
 
 def _sha256(path):
@@ -204,8 +205,7 @@ def build(root, authority_path, bindings_path, master_path, export_path, report_
     source.hide_render = True
     source.hide_viewport = True
     evaluated_triangles = sum(sum(len(p.vertices)-2 for p in obj.data.polygons) for obj in export.objects)
-    if evaluated_triangles > 160000:
-        raise ValueError(f'Evaluated complete scene exceeds 160000 triangles: {evaluated_triangles}')
+    evaluated_advisory = triangle_advisory(evaluated_triangles, 'evaluated-scene')
 
     master_path = Path(master_path)
     master_path.parent.mkdir(parents=True, exist_ok=True)
@@ -240,9 +240,10 @@ def build(root, authority_path, bindings_path, master_path, export_path, report_
         'baseCraftSourceSha256': craft.get('sourceSha256'),
         'baseCraftCandidateCuts': craft.get('candidateCutLineage',[]),
         'evaluatedSceneTriangles': evaluated_triangles,
+        'evaluatedTriangleAdvisory': evaluated_advisory,
         'exportAudit': export_audit,
         'materialReceipt': material_receipt,
-        'sourceEstimateOnly': True,
+        'kitTriangleMeasurement': 'unmodified-source-estimate',
         'kitTriangles': result['summary']['triangles'],
         'kitOps': result['summary']['ops'], 'kitBatches': result['summary']['batches'],
         'exportBatches': len(batches), 'labels': len(label_objects),

@@ -20,6 +20,7 @@ from export_audit import verify_albedo, srgb_byte, validate_bindings, audit_glb
 from source_geometry import solid_geometry, world_vertices
 from map_materials import adapter_bindings, load_reviewed_materials, assert_packed_materials, PRESERVED
 from base_craft import base_craft_plan
+from triangle_policy import triangle_advisory
 
 
 class MeshObject:
@@ -140,15 +141,39 @@ class RepairTests(unittest.TestCase):
             self.assertEqual(capture['walls'],[w for w in a['terrain']['walls'] if w.get('renderSource')=='kit'],name)
             self.assertEqual(capture['surfaces'],[s for s in a['terrain']['surfaces'] if s.get('renderSource')=='kit' and not s['walkable']],name)
 
-    def test_actual_glb_primitive_and_triangle_caps_are_enforced(self):
+    def test_glb_triangle_overage_is_advisory_but_primitive_and_count_validation_remain_strict(self):
         def fixture(primitives,count):
             document={'meshes':[{'primitives':[{'indices':0,'attributes':{'POSITION':1}} for _ in range(primitives)]}],'accessors':[{'count':count}]}
             data=json.dumps(document).encode();data+=b' '*((-len(data))%4)
             blob=struct.pack('<III',0x46546c67,2,20+len(data))+struct.pack('<II',len(data),0x4e4f534a)+data
             return SimpleNamespace(read_bytes=lambda:blob)
-        bindings={'schema':'map-variety-bindings/v1','materials':{}}
+        bindings={'schema':'map-variety-bindings/v1','materials':{},'pack':{
+            'base':'assets/moth/map-variety-20261003/candidate-v2/manifest.json',
+            'overlay':'assets/moth/map-variety-20261003/candidate-v3/manifest.json'}}
         with self.assertRaisesRegex(ValueError,'64 primitives'):audit_glb(fixture(65,3),ROOT,bindings)
-        with self.assertRaisesRegex(ValueError,'160000 triangles'):audit_glb(fixture(1,480003),ROOT,bindings)
+        report=audit_glb(fixture(1,480003),ROOT,bindings)
+        self.assertEqual(report['triangles'],160001)
+        self.assertEqual(report['triangleAdvisory'],triangle_advisory(160001,'exported-glb'))
+        self.assertEqual(report['triangleAdvisory']['overageTriangles'],10001)
+        for count in (None,-3,3.5,True):
+            with self.subTest(count=count),self.assertRaisesRegex(ValueError,'element count'):
+                audit_glb(fixture(1,count),ROOT,bindings)
+        with self.assertRaisesRegex(ValueError,'Incomplete triangle'):
+            audit_glb(fixture(1,480004),ROOT,bindings)
+
+    def test_triangle_advisory_never_claims_acceptance_from_an_estimate_or_measurement(self):
+        for measurement in ('source-estimate','evaluated-scene','exported-glb'):
+            for total in (149999,150000,150001,200000):
+                report=triangle_advisory(total,measurement)
+                self.assertEqual(report['totalTriangles'],total)
+                self.assertEqual(report['targetTriangles'],150000)
+                self.assertEqual(report['policy'],'advisory')
+                self.assertEqual(report['overTarget'],total>150000)
+                self.assertEqual(report['overageTriangles'],max(0,total-150000))
+                self.assertEqual(report['status'],'pending-performance-visual-review')
+        for total in (None,-1,float('nan'),150000.0,True):
+            with self.assertRaises(ValueError):triangle_advisory(total,'exported-glb')
+        with self.assertRaises(ValueError):triangle_advisory(1,'unknown')
 
     def test_greenhouse_world_path_is_converted_once(self):
         _,arena,binding=next(candidates())
@@ -210,7 +235,8 @@ class RepairTests(unittest.TestCase):
             if name=='vesper-viaduct':
                 for label in ['window-reveal','rear-window','roof-principal-rafter','clock-belt-course','stair-handrail']:
                     self.assertIn(label,names)
-            self.assertLessEqual(expand.scene_summary(a,set(binding['materials']))['sourceSceneTriangles'],160000)
+            summary=expand.scene_summary(a,set(binding['materials']))
+            self.assertEqual(summary['triangleAdvisory'],triangle_advisory(summary['sourceSceneTriangles'],'source-estimate'))
 
 
 if __name__=='__main__':unittest.main()

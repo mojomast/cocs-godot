@@ -4,6 +4,7 @@ import json
 import math
 import struct
 import zlib
+from triangle_policy import triangle_advisory
 
 
 def png_pixels(raw):
@@ -100,10 +101,12 @@ def audit_glb(path, root, bindings):
     for p in primitives:
         if p.get('mode',4) != 4: raise ValueError('Nontriangle export primitive')
         count = gltf['accessors'][p['indices']]['count'] if 'indices' in p else gltf['accessors'][p['attributes']['POSITION']]['count']
+        if type(count) is not int or count < 0:
+            raise ValueError('Unknown or invalid primitive element count')
         if count % 3:
             raise ValueError('Incomplete triangle primitive')
         triangles += count//3
-    if triangles > 160000: raise ValueError(f'GLB exceeds 160000 triangles: {triangles}')
+    advisory = triangle_advisory(triangles, 'exported-glb')
     resources, textures = {}, {}
     for key in ('base','overlay'):
         manifest_path = root / bindings['pack'][key]
@@ -158,4 +161,4 @@ def audit_glb(path, root, bindings):
         material_index=gltf['materials'].index(material)
         if any('TANGENT' not in p['attributes'] for p in primitives if p.get('material')==material_index):
             raise ValueError('Normal-mapped primitive lost tangents: '+name)
-    return {'triangles':triangles,'primitives':len(primitives),'albedo':evidence}
+    return {'triangles':triangles,'triangleAdvisory':advisory,'primitives':len(primitives),'albedo':evidence}

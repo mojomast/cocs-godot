@@ -62,8 +62,12 @@ Implementation and regenerated candidate authorities: commit `f6687255`.
 12. **Budgets:** source estimates include complete base craft, structures,
     decorative meshes, kit and infrastructure. Helix and Parallax use explicit
     one-segment edge chamfers and no redundant bevel on already rounded profiles.
-    Actual evaluated complete scene triangles and actual GLB triangles/primitives
-    enforce the existing 160000 / 64 limits. No threshold was increased.
+    Total triangles now use the user's 150000 advisory target; actual evaluated
+    scene and GLB counts report their measured total and overage without failing
+    solely for exceeding it. Review status stays pending performance/visual
+    review. The 24000 per-source/batch constraints and 64-primitive limit remain
+    strict, as do topology and material/pixel validation. No geometry was removed
+    or threshold raised for this policy follow-up.
 13. **Cameras:** authored Parallax/Vesper views and explicit Helix inspection
     views are restored with correctly transformed eyes/targets. Editable source
     and evaluated export collections coexist without duplicate rendering.
@@ -114,7 +118,22 @@ The actual build/reopen-export entrypoints remain:
 
 Each exposes `build --adapter material_adapter` and `reopen-export`, writes its
 revision-local editable master/GLB/report, packs material images, and performs
-complete export/pixel gates. Only the heavy owner executes those steps after
-integration. Evaluated bevel/font counts, GLB verification, portable reopen,
+strict export/pixel gates and advisory total-triangle reporting. Only the heavy
+owner executes those steps after integration. Evaluated bevel/font counts,
+GLB verification, portable reopen,
 camera renders and native movement/mode acceptance remain pending that run.
 Accepted masters, registered/runtime worlds, game core and physics are unchanged.
+
+## User-directed triangle-policy follow-up
+
+The 150000 total-triangle target is advisory at every measurement stage. A
+synthetic 160001-triangle GLB regression now completes its audit and reports
+`totalTriangles: 160001`, `overageTriangles: 10001`, `overTarget: true` and
+`status: pending-performance-visual-review`. This fixture is not a native map
+measurement. Unknown/invalid counts and malformed triangle topology still fail.
+
+Only five affected Python regressions and the standalone kit-source checks were
+run for this follow-up: advisory overage/count validation, pending-review status,
+unchanged source chunking, complete-source estimate reporting, and strict albedo
+pixel validation. All passed. Geometry, generated authorities and shared Kit
+files were not changed, and no heavy/native execution occurred.

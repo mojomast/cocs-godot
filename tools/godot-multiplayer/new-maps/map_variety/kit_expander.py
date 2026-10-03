@@ -7,6 +7,7 @@ any Blender process is granted. Each op maps 1:1 to a `blender_kit.Kit` call.
 import json
 import math
 from collections import Counter
+from triangle_policy import triangle_advisory
 
 
 def _empty():
@@ -471,8 +472,8 @@ def plan(kit, allowed_materials, max_triangles=24000):
             'sectors': sorted({e['sector'] for e in ops}),
             'materials': sorted({e['material'] for e in ops}),
             'batches': batches,
-            'budget': {'maxTrianglesPerBatch': max_triangles, 'triangleBudget': 160000},
-            'withinBudget': total <= 160000,
+            'sourceMeshLimits': {'maxTrianglesPerBatch': max_triangles},
+            'triangleAdvisory': triangle_advisory(total, 'source-estimate'),
             'measurement': 'unmodified source estimate; evaluated full-scene acceptance pending',
         },
     }
@@ -492,6 +493,7 @@ def scene_summary(arena, allowed, cap=24000):
                    sourceSceneTriangles=summary['triangles']+shell['authorityTriangles']+structures['triangles']+pieces['triangles']+decorative['triangles']+infrastructure+craft['triangles']+(2 if arena.get('art',{}).get('water') else 0),
                    labelsPendingTessellation=len(arena.get('art',{}).get('labels',[]))+len(craft['labels']),
                    evaluatedAcceptance='pending Blender evaluation and GLB pixel/primitive audit')
+    summary['triangleAdvisory'] = triangle_advisory(summary['sourceSceneTriangles'], 'source-estimate')
     return summary
 
 

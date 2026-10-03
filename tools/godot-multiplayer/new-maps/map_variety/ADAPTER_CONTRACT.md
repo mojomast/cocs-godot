@@ -54,7 +54,15 @@ OpenGL source, and packed roughness G must match source roughness R. It verifies
 normal strength and tangent attributes too. Source and derived/export hashes
 are distinct evidence fields, never incorrectly required to be identical.
 
-Both export paths enforce actual complete GLB limits of 160000 triangles and
-64 primitives. Plans are unmodified-source estimates with evaluated acceptance
-explicitly pending; Blender evaluation and native acceptance run serially under
-the heavy owner after integration.
+Total triangles use a **150000-triangle advisory target**, not an acceptance
+ceiling. Source plans, evaluated scenes and exported GLBs report `triangleAdvisory`
+(the evaluated build field is `evaluatedTriangleAdvisory`): `policy: advisory`,
+`measurement`, `totalTriangles`, `targetTriangles`, `overTarget`,
+`overageTriangles`, and `status: pending-performance-visual-review`. Even a
+below-target measured count does not imply native acceptance. Higher counts are
+reviewed using actual renders, loading, memory and gameplay performance.
+
+The 24000-triangle per-source/batch constraints, 64-primitive limit, valid integer
+counts, export topology and material/pixel checks remain strict. Plans are
+unmodified-source estimates, not measurements; Blender evaluation and native
+acceptance run serially under the heavy owner after integration.
