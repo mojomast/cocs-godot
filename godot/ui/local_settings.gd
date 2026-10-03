@@ -353,7 +353,11 @@ func close_panel() -> void:
 func leave_match() -> void:
 	if not overlay_open() or not rows.leave.visible: return
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	get_tree().call_deferred("quit", 0)
+	# The advertised action returns to Home; quitting also abandons callers
+	# awaiting the scene transition and bypasses normal session disposal.
+	panel.hide()
+	return_focus = null
+	get_tree().call_deferred("change_scene_to_file", "res://ui/main_menu.tscn")
 
 func _input(event: InputEvent) -> void:
 	if DisplayServer.get_name() == "headless" or panel == null: return
