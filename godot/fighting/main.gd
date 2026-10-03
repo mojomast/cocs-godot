@@ -599,6 +599,7 @@ func show_training() -> void:
 	for p: int in 2:
 		_text(box,"P%d" % (p+1),18)
 		for line: String in feedback.goal_lines(p): _text(box,line,14)
+		_text(box,"P%d controls · L %s · M %s · H %s · Special %s · Mobility %s · Grab %s · Guard %s" % [p+1,router.label(p,"L"),router.label(p,"M"),router.label(p,"H"),router.label(p,"Special"),router.label(p,"Mobility"),router.label(p,"Grab"),router.label(p,"Guard")],14)
 	_button(box,"Back",show_pause).grab_focus()
 
 func show_settings() -> void:

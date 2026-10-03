@@ -48,7 +48,10 @@ real core emissions and the authored roster; no large combat subsystem was added
     history; full 12-row history, last-attack detail, goals and a
     recording/replay status line in the scrollable Training controls modal;
   * the old `JSON.stringify(history)` dump and its display-only `history` use are
-    gone from the modal.
+    gone from the modal;
+  * each operator's goal block ends with a dynamic bind hint built from
+    `router.label(p,…)` for L/M/H/Special/Mobility/Grab/Guard, so keyboard and
+    controller layouts read correctly without a second binding table.
 * Native tests (authored, **pending grant**): `godot/tests/fighting/presentation/training_feedback.gd`
   drives the helper with the real nine-operator roster, real `input_router`
   commands and synthetic snapshots mirroring core event shapes; it asserts

@@ -87,6 +87,9 @@ class TrainingFeedbackSourceTest(unittest.TestCase):
         # FX pools still never rebuild inside the tick/present loops.
         tick = self.main.split('func _tick(', 1)[1].split('\nfunc ', 1)[0]
         self.assertNotIn('effects.configure(', tick)
+        # Goals show dynamic bind hints through the existing router labels.
+        training = self.main.split('func show_training(', 1)[1].split('\nfunc ', 1)[0]
+        self.assertIn('router.label(p,"Grab")', training)
 
     def test_history_and_result_views_are_contractually_present(self):
         self.assertIn('const HISTORY_LIMIT := 12', self.helper)
