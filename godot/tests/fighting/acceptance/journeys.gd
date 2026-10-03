@@ -51,7 +51,10 @@ func equal(a: Variant, b: Variant) -> bool:
 func json_safe(value: Variant) -> bool:
 	if value is Dictionary:
 		for key in value:
-			if not key is String or not json_safe(value[key]):
+			# Godot dot-key insertion may produce StringName keys; JSON encodes
+			# these as strings, as the core codec explicitly permits. Values still
+			# must be JSON scalars/containers, and roundtrip equality stays required.
+			if not (key is String or key is StringName) or not json_safe(value[key]):
 				return false
 		return true
 	if value is Array:
@@ -61,10 +64,10 @@ func json_safe(value: Variant) -> bool:
 		return true
 	return value == null or value is String or value is bool or value is int or (value is float and is_finite(value))
 
-func fresh(operators: Array, seed_value: int = 23017) -> Variant:
+func fresh(operators: Array, seed_value: int = 23017, training: bool = false) -> Variant:
 	var sim: Variant = simulation_script.new()
 	sim.configure(roster.duplicate(true), rules.duplicate(true))
-	sim.start_match({"operators": operators, "stage_id": "basalt-reach", "seed": seed_value, "training": false})
+	sim.start_match({"operators": operators, "stage_id": "basalt-reach", "seed": seed_value, "training": training})
 	return sim
 
 func fight(sim: Variant) -> bool:

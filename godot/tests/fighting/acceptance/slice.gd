@@ -131,7 +131,7 @@ func _run() -> void:
 			var state: Dictionary = sim.snapshot()
 			var inputs := [neutral(), neutral()]
 			if state.phase == "fight":
-				var distance := abs(int(state.fighters[0].x - state.fighters[1].x))
+				var distance := absi(int(state.fighters[0].x - state.fighters[1].x))
 				if distance > 700 and not issued:
 					inputs[0] = command(int(state.fighters[0].facing))
 				elif not issued:

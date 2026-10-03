@@ -55,6 +55,18 @@ def judge(result, output, marker, artifact):
     return {**result, 'status': 'failed' if reason else 'passed', 'failure_reason': reason}
 
 
+def native_command(job, godot, root):
+    command = [str(godot.resolve())]
+    if not job.get('rendered', False):
+        command.append('--headless')
+    # These contracts verify rendering/mechanics, not audible output. Avoid an
+    # erroneous ALSA auto-probe on hosts without a sound card. Audio-class gates
+    # retain their real-driver requirement and never inherit this substitution.
+    if 'audio' not in job['resource']:
+        command += ['--audio-driver', 'Dummy']
+    return command + ['--path', str(root / 'godot'), '--script', job['script']]
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('mode', choices=['plan', 'source', 'native'])
@@ -103,10 +115,7 @@ def main(argv=None):
                 env = finish.isolated_environment(run / 'user')
                 env['FIGHTING_ACCEPTANCE_OUTPUT'] = str(run / 'native.json')
                 env['FIGHTING_ACCEPTANCE_EVIDENCE'] = str(run)
-                command = [str(args.godot.resolve())]
-                if not job.get('rendered', False):
-                    command.append('--headless')
-                command += ['--path', str(root / 'godot'), '--script', job['script']]
+                command = native_command(job, args.godot, root)
                 report['grant'] = args.heavy_grant
                 report['binary_sha256'] = hashlib.sha256(args.godot.read_bytes()).hexdigest()
                 save_report(run / 'manifest.json', report)
