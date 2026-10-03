@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender",
+    "--python-exit-code",
+    "1",
+    "-b",
+    "-t",
+    "1",
+    "--python",
+    "tools/asset-production/reopen.py",
+    "--",
+    "--unit=scenery"
+  ],
+  "started": "2026-10-03T00:55:54.860299+00:00",
+  "timeoutSeconds": 600,
+  "log": "port/expansion-four/scenery/production-f/20261003T005554.749924Z/independent-reopen.log",
+  "processGroup": 688239,
+  "exitCode": 0,
+  "ended": "2026-10-03T00:55:55.925699+00:00",
+  "ownedGroupTeardownRequested": true
+}

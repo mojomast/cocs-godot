@@ -87,12 +87,18 @@ def build(asset):
         preset = ('[remap]\nimporter="scene"\nimporter_version=1\ntype="PackedScene"\n'
                   f'path="{imported}"\n\n[deps]\nsource_file="{source}"\n'
                   f'dest_files=["{imported}"]\n\n[params]\n'
-                  'meshes/generate_lods=false\nmeshes/create_shadow_meshes=false\n'
+                  'meshes/generate_lods=false\nmeshes/create_shadow_meshes=false\nmeshes/force_disable_compression=true\n'
                   'meshes/light_baking=1\nanimation/import=false\nmaterials/extract=0\n')
         Path(str(glb) + ".import").write_text(preset)
         bpy.data.objects.remove(joined, do_unlink=True)
     print("BIOME4_BUILT", asset["id"], len(sources))
 
 
-for entry in DATA["assets"]:
-    build(entry)
+if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--asset', choices=[a['id'] for a in DATA['assets']])
+    args = parser.parse_args(sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else [])
+    for entry in DATA["assets"]:
+        if args.asset is None or entry['id'] == args.asset:
+            build(entry)
