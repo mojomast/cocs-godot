@@ -1,232 +1,125 @@
 {
-  "unit": "abyssal-pressureworks",
+  "unit": "stormglass-causeway",
   "sourceCommits": [
-    "67f79981"
+    "e723b2fd"
   ],
   "sourceHashes": {
     "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
-    "tools/godot-multiplayer/new-maps/abyssal-pressureworks/blender_author.py": "e238921171421ac5c3b2699bb47d9a4f9a3578a2c748192b78bc50fcb60d3641",
-    "tools/godot-multiplayer/new-maps/abyssal-pressureworks/recipe.mjs": "be7baa4dc1eaa3a2daa2d4fb890874df3aa432367788174280889b92e765c8ad"
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/blender_export.py": "e58de79ab845d95663a2d5cd8ed1b9dceba932cd0fc8f47829d1896ea760e8ec",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/recipe.mjs": "427d7d4b9ade4d19bfecc7f061b6bc87146a44b56f79aa5c6de2b95a1daa162a"
   },
-  "sourceFingerprint": "68487ea2e93e97aa7e2dc0eed7e5f000d6ba64f467971f843f2a8b75acdaecfe",
+  "sourceFingerprint": "dd0f4fbea323ba8fa8ad4b7bf578c980c737495188f941fc8aa0b983dfd39d1c",
   "masters": [
     {
-      "path": "tools/godot-multiplayer/new-maps/abyssal-pressureworks/masters/abyssal-pressureworks.blend",
-      "sha256": "0b450d5ab0ad975aed1887f72c91601a4dce9757f3c7c2a1ba6965aa2bf64ee2"
+      "path": "tools/godot-multiplayer/new-maps/stormglass-causeway/stormglass-causeway.blend",
+      "sha256": "970d244fbec4d352dd3148c5e68f927037c224fa680c680050c83c8984d84e40"
     }
   ],
   "exports": [
     {
-      "path": "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks.glb",
-      "bytes": 2210172,
-      "sha256": "fa6888d11ed95dee670b3200b141962e74d6ea17523aef3bcbd7edee149f16b1",
-      "triangles": 32500,
-      "surfaces": 7,
-      "texturedSurfaces": 4,
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway.glb",
+      "bytes": 3901880,
+      "sha256": "ff318582fd47ca633ef74da1aa4a6aa2b5b691800f12fb3210f3dac140cb5b33",
+      "triangles": 56552,
+      "surfaces": 30,
+      "texturedSurfaces": 6,
       "textures": [
         {
-          "name": "MothLocal_navy",
-          "bytes": 2480,
-          "sha256": "b6c184ce31d709e8506d8b524746cd8782391e4b3503bf59dc59f2c0b7f940ad"
+          "name": "MothLocalNormal_asphalt",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
         },
         {
-          "name": "MothLocal_ivory",
-          "bytes": 3317,
-          "sha256": "939ab009d22e1b7930881389b30e58c360eecf2ab708837f2a5d4249b35ab45a"
+          "name": "MothLocal_asphalt",
+          "bytes": 1501,
+          "sha256": "2293522fa2dc0d82414e8efab452f597e9226c7f6b804e0f435eb6cf4d91accf"
         },
         {
-          "name": "MothLocal_coral",
-          "bytes": 2828,
-          "sha256": "b84a19a1f5be797406aaa488241b18a59b102f90120efbafb98f64e6df07577e"
+          "name": "MothLocalNormal_concrete",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
         },
         {
-          "name": "MothLocalNormal_copper",
+          "name": "MothLocal_concrete",
+          "bytes": 2777,
+          "sha256": "0dec7f448cc836d1bc1192c68d9563145ad70f264f43ef3a47852c31e46db105"
+        },
+        {
+          "name": "MothLocalNormal_salt",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_salt",
+          "bytes": 3673,
+          "sha256": "abe71fda4751c6acd508b977d357b50f381535de1975d4bf49bc516c63da6997"
+        },
+        {
+          "name": "MothLocal_teal",
+          "bytes": 1803,
+          "sha256": "70c7dff7c89c343ba9e059327476f4fba48f1b918daf55cb51c73c23c2e58301"
+        },
+        {
+          "name": "MothLocalNormal_steel",
           "bytes": 5817,
           "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
         },
         {
-          "name": "MothLocal_copper",
-          "bytes": 2771,
-          "sha256": "9cc8af2f0012e372d180e5ecac502cbeff5cf3906c88e0533f4db59489d81a78"
+          "name": "MothLocal_steel",
+          "bytes": 2358,
+          "sha256": "ccba777af4ff6e05051281a24ca913a3b8e15e82dd94a92b75d3fa555bb2c7d9"
+        },
+        {
+          "name": "MothLocalNormal_brick",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_brick",
+          "bytes": 2181,
+          "sha256": "610dfcab946aa0c6ec52248f88b8903851f44e9dc4f950a259123a80a775a823"
         }
       ]
     }
   ],
-  "measuredGLBTriangles": 32500,
-  "configuredTriangleCap": 100000,
+  "measuredGLBTriangles": 56552,
+  "configuredTriangleCap": 250000,
   "accepted": false,
   "pending": [
-    "independent generic master + GLB reopen",
-    "58 sustained shell contacts, 34 portals, 12 ceilings and transparent pane counterfire",
-    "native DM/TDM and CTF/KOTH/Domination/Holdout scoring",
-    "test-only admission seam before parent registers only passed pairs"
+    "441 road supports, 42 sustained infantry/Puma barrier contacts, six ceilings",
+    "source vs imported exact geometry and wheel/chase clearance",
+    "wrong-way/reset/restart/Home and source-scored hosted race",
+    "parent review flat-road source concession; no invented playable relief"
   ],
   "packageInputHashes": {
-    "game/alt-fire.mjs": "d7f821f28f9cfe3d12da2da3461e053f698037aa8e44540324c76a58c2e02c5f",
-    "game/arsenal-maps.mjs": "fad8dff6d87dda4aef905969cd9b130e3a5c7c9776e8b1e6e0294a8dc6d63f3d",
-    "game/assault.mjs": "6e24f4a363ce8ccb1787057ec125d3695da2aefe133f7872bf3a4cde66daea70",
-    "game/attachments.mjs": "66c46bfb2bae119a61ba7ffcdd301e34fad42a50e2dc3c7833828b9abfdcef14",
-    "game/battle-maps.mjs": "3d4ac5b9a4dfc5e896e0679ba39a8da3d579285b0e551160e45687f9437dfaf8",
-    "game/blood-gulch.mjs": "2df956608fc6fe73c77410ccb5889f09266c722c236494f46d4d585730ea9a7b",
-    "game/bot-personalities.mjs": "173c86b85a7c688987a9f65dd72195042c75f0038bb9f10ef22a79f3dcc699c2",
-    "game/bots.mjs": "2a6d3fcd7960711fc4aeefe77aaa39dc1a318c6c36097ede7010894a411cf95a",
-    "game/campaign-anchors.mjs": "0d07d2cfb5e67049524870b1a8af2703d57b747cc7ca85f825a545dd47e9d8a7",
-    "game/campaign-data.mjs": "bac73e42b0d519d8929c1dbdf004c088a05c46ecb757f784b632859a7d4c380c",
-    "game/character-anim.mjs": "feaff9cd77a88174210957e871420d429c3523d5b2517592749b190e602bfa01",
-    "game/cocs-bots.mjs": "bdad004df06de288be3628528485f66d7f5ded589eeca8a0daafdbdddb461d7e",
-    "game/cocs-coop.mjs": "36038e1f524b1a25c9fd991990b0fddf62ccaae89c87566486f372e9e684e2a6",
-    "game/cocs-difficulty.mjs": "e3ca14ecea9333ab2d74b2ccf8f281f7a962bb67cc8c6b3d28eebbe5b37c42c0",
-    "game/cocs-director.mjs": "926af20afc920c3d3a6ff9870322d128414205a7c80b84d7c19073471069ed8d",
-    "game/cocs-economy.mjs": "1fdbdddeeabb32eff1dbb1d73bc34506d63c2e3e2ac6fb0a37851465865f8f93",
-    "game/cocs-roles.mjs": "3edaf3207b6a54bf0600ee0fb9eee732bdd494351d67f9cc85b1c8e66ade67fa",
-    "game/cocs-squads.mjs": "b6d234b007e6d80a670c4646c43fdaf6485e62120876fe6ccbe210ac026cd6a1",
-    "game/cocs-terminals.mjs": "7b96cad0dcbf2b0dfb5dd78cf1217298edaf70785e482fb3944745636d3efa3f",
-    "game/cocs-traversal.mjs": "555e742ff721549db974ac470a2b523ac6dad98659c40f7399a11e904c7672f7",
-    "game/cocs.mjs": "1224034a80181d83571f15034059aa979545afc171632e6588fe9d2ebf3724e6",
-    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
-    "game/core.mjs": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
-    "game/cosmetics.mjs": "466d6eba56296a88b698a6036cc40b1381634b30d350fe04757832a15779b98a",
-    "game/ctf-maps.mjs": "4f91623e6cc6914b9cca688edd7b37a1ba0e804808943a40deb27525ab78107f",
-    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
-    "game/deaths.mjs": "2c97fa500f2dfe504b1b3c7ff5de8cc5699b44b9c79df4eedb1276107933c89c",
-    "game/destination-combat-maps.mjs": "a8964b89d4fa2dffac2d0b7ee49fe6fc70e9e261fd9a5078b2630370a5f7316b",
-    "game/destination-lattice-maps.mjs": "a7110177c2e4dca4b56f88f7e0d768b96df935661e0d4dfe87ba2970be8b1966",
-    "game/destination-maps.mjs": "e8ac0655a4ae8030f70a76f258784c5007ea2be808f0cb10547385c6ceffeda2",
-    "game/destination-objective-maps.mjs": "f995d7ec863f848ac7e3aa6a9a48e2a51b27f6fda7749e86877594665a1c79d8",
-    "game/destination-sports-maps.mjs": "bd3f486d57b188163b16193b4ce05401bac14ad19b40b73768525c9ca4d0e0b1",
-    "game/enemy-types.mjs": "92b600584061d0626b35dd44ae94e1903ba178b390f600a0254fbc5505685613",
-    "game/expansion-maps.mjs": "62b30255393daa473f5c6e46056e8922c1dc74c02c993499cbe6ac3e6439537f",
     "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
-    "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
-    "game/horde-stages.mjs": "132bb551f0e517ed037d2e97fbd8ff510802eaaa7163e39da10e59745d656afb",
-    "game/island-maps.mjs": "5fff90834c33d65bd8a06a70528aff45f7d5b09840b8eaa0a3a9c5f23f4d0cf7",
-    "game/kits.mjs": "e44908b88341bce5f4df8ffe9e896482202466dc502fd93059ba63e5b54c40bd",
-    "game/lattice-foundry.mjs": "5c63d3d1c36e9957a6181cc2e7f83f27056599040ad9f4f7714d43c5596b4c56",
-    "game/lattice-maps.mjs": "d3eae8ec886ed66dfc04c420d9a4e6051368dff385bc680cf238387545c91016",
-    "game/lattice-roles.mjs": "bd1f1165c3e2b3dfa3b33e3351f90db1039eaf264ddadab08e5e481dcee31340",
-    "game/lattice-support.mjs": "5d359bf2a7fb06a3e6f0085cf13c68d2db900297223298d2befffd8edb393f3a",
-    "game/levelgen.mjs": "3a5b2285b1a9703cded463bdffa0cc73f38b75b427e0ce9371919c646a4dd38b",
-    "game/map-schema.mjs": "e4b6ebc445912c6128eb1cbc658d91d07751b85650bc92fd0fd0764ae72716b8",
-    "game/maps.mjs": "729d94c4a3bc566d3c6b89c8c5c7d656babf338f2ab42edc988f383e021dd731",
-    "game/math.mjs": "a9f2e5f55f7e90c567d35b4c77d7ecdeae4c28b5174d52f8cf9a5e4e59170327",
-    "game/mode-data.mjs": "7598bfa2d5fb0495bbfcb615c3083245d4dff632a13aa1a42593da8023e91548",
-    "game/moth-assets.mjs": "736d5ff7e844f8210b273791f4806bae916a4e463494f64c78b94bd4cb2768ab",
     "game/moth-baked.mjs": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2",
-    "game/moth-maps.mjs": "613cdeac0ea8f5f64c988f051698661825d2053268b75fe1151c7beacfcdc081",
-    "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
-    "game/nextgen-maps.mjs": "9a8dc8720a2395edf796a0d630f0033c9aa29d872d3fcf98db3aefabdac33727",
-    "game/objectives.mjs": "3e92ad1f85fb785362e15fd836d2b80f95060e0670e9f58a766f79ffa60742ec",
-    "game/operator-profiles.mjs": "b7c4aec4aac899626ad5d7a78f5870218513a5b1d38ff12f2312beacc32882ba",
-    "game/operator-verbs.mjs": "f3bbcd2e13bc04dabf2a81a74ddee3848d6835d11d8ac063e4603ea689bf96b3",
-    "game/outcome.mjs": "f66fe5ca09e8507939d407a7eb9defd4a2d23b643a221955e0d0ad584b17ec98",
-    "game/payload.mjs": "13e357516af38fdfe6596dfa7a43cbeaae2445f492ad41df934deb8840bc92bb",
-    "game/progression.mjs": "5b70fa168d8edb5192052ad9bed3243370db7ba8f13952a9401596a9d4bc1ce5",
-    "game/race-maps.mjs": "d14c6d5cf31728cb5bac4363b142d16a79705b727f7e015774d80a68d5abf4b3",
-    "game/race.mjs": "1c448a0f00e3354dd6fa32190f85dcc6c31883f428b07193773fcd02bf2effba",
-    "game/ragdoll.mjs": "10bd8cb43405d45a42d5034261ce89119a8bf05c24c3ca1f47f1b4b4202efa3d",
-    "game/singleplayer.mjs": "60ab39e4cc9dd07f38fed27c39f25b2383e0ea1257dba5ee29f2ebe7762189ce",
-    "game/soccer-maps.mjs": "9a57d95b9064c21d3c73303535379f006638aa3c476227bf92946541d1ca6669",
-    "game/soccer.mjs": "78da2d005207c5e744f56a2d3924d0bf82ed4c62b29bd0702b97513b74359972",
-    "game/spatial.mjs": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
-    "game/spawn-placement.mjs": "b0665e410e68eaf160c1a890558a69efa035e58abd76c45c28fcc01ae42b2361",
-    "game/spec-effects.mjs": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
-    "game/story.mjs": "6306ec902fbb8427dd0060ac79084c95bb7fc6999a49f28ec86cae9ddccf059b",
-    "game/structures.mjs": "445ace67e41028e602aab692578c9d200ca8fb58d1b3f9f8c1568c5ac2b5d1d2",
     "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
     "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
-    "game/vehicles.mjs": "e55dbed9969a9f4430b0471fefb4d294fddf0e75d8af853565c9361c106244db",
     "godot/moth/derived/manifest.json": "5be9ad6493455138464dc059dd64a32dc5d837f6fc4e460957f606f6d2a79887",
     "godot/moth/generated/manifest.json": "c5589ff2f2ab68d982b2bb45c221c08d8e3f653953e5d5d446bfa4cd68380047",
-    "godot/multiplayer_worlds/generated/abyssal-pressureworks.json": "c2acae268634f93e6f98f6abd6414289ff63852d2b9580482e2027595eecee76",
+    "godot/multiplayer_worlds/generated/stormglass-causeway.json": "cdbb72fd712bd09807c9c83ffc08f7ef7d7d397a974819b062d8125f96c05ee6",
     "port/multiplayer-worlds/catalog.mjs": "d2919c888433f16d8183ed33c408514b3894272d8ac7d35ba04c85b61fb7c4f2",
-    "port/native-multiplayer-worlds/worlds/abyssal-pressureworks.json": "5119ea83e8defa9f726fa70d2d478785111a51fcf0aefaf72c5117b4fde320af",
+    "port/native-multiplayer-worlds/worlds/stormglass-causeway.json": "3b0f86130eae0f925ce9409d710804f44c33073852ba09b0b4d0949ef034c548",
     "tools/asset-production/material-validation.mjs": "874e5d31c666a8af4a98b600bb182a4f4cb9c5e6b1488d80908f855b2584bb3d",
     "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
     "tools/asset-production/package-receipt.mjs": "e1917daa642b15e6e3290b537fbf9024ba72e6f5dfd18f4025d3e589d9702621",
     "tools/asset-production/receipt.mjs": "9648c19d979b2486c78830628c2f2508a02b4b2874d1f64149966d88d7e5f9d8",
     "tools/asset-production/reopen.py": "4628bc44122a690495766f3cc967a82d3ab7aeab52c272cca7a202be88e0f5de",
-    "tools/godot-multiplayer/new-maps/abyssal-pressureworks/blender_author.py": "e238921171421ac5c3b2699bb47d9a4f9a3578a2c748192b78bc50fcb60d3641",
-    "tools/godot-multiplayer/new-maps/abyssal-pressureworks/build.mjs": "cc21e5440b81b710f7159b65129246e7bbed11fbc02314354ee2589a800184a3",
-    "tools/godot-multiplayer/new-maps/abyssal-pressureworks/recipe.mjs": "be7baa4dc1eaa3a2daa2d4fb890874df3aa432367788174280889b92e765c8ad",
-    "tools/godot-package/production_resources.mjs": "cc441a03e1db8060452c99960aaed8bee60cd9dcf6cdee1c48455554df671835",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/blender_export.py": "e58de79ab845d95663a2d5cd8ed1b9dceba932cd0fc8f47829d1896ea760e8ec",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/build.mjs": "182ecaf1ef3347c1b4642d40ae10305927055a9f4a571883f1fa671fb3ad45cf",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/recipe.mjs": "427d7d4b9ade4d19bfecc7f061b6bc87146a44b56f79aa5c6de2b95a1daa162a",
+    "tools/godot-package/production_resources.mjs": "0a95ddacb4af6f0b3dc053e4963e6b4201324cecf2dbe8a02617aafb21fbe219",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
-    "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1"
+    "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
+    "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba"
   },
   "packageInputs": {
-    "game/alt-fire.mjs": "d7f821f28f9cfe3d12da2da3461e053f698037aa8e44540324c76a58c2e02c5f",
-    "game/arsenal-maps.mjs": "fad8dff6d87dda4aef905969cd9b130e3a5c7c9776e8b1e6e0294a8dc6d63f3d",
-    "game/assault.mjs": "6e24f4a363ce8ccb1787057ec125d3695da2aefe133f7872bf3a4cde66daea70",
-    "game/attachments.mjs": "66c46bfb2bae119a61ba7ffcdd301e34fad42a50e2dc3c7833828b9abfdcef14",
-    "game/battle-maps.mjs": "3d4ac5b9a4dfc5e896e0679ba39a8da3d579285b0e551160e45687f9437dfaf8",
-    "game/blood-gulch.mjs": "2df956608fc6fe73c77410ccb5889f09266c722c236494f46d4d585730ea9a7b",
-    "game/bot-personalities.mjs": "173c86b85a7c688987a9f65dd72195042c75f0038bb9f10ef22a79f3dcc699c2",
-    "game/bots.mjs": "2a6d3fcd7960711fc4aeefe77aaa39dc1a318c6c36097ede7010894a411cf95a",
-    "game/campaign-anchors.mjs": "0d07d2cfb5e67049524870b1a8af2703d57b747cc7ca85f825a545dd47e9d8a7",
-    "game/campaign-data.mjs": "bac73e42b0d519d8929c1dbdf004c088a05c46ecb757f784b632859a7d4c380c",
-    "game/character-anim.mjs": "feaff9cd77a88174210957e871420d429c3523d5b2517592749b190e602bfa01",
-    "game/cocs-bots.mjs": "bdad004df06de288be3628528485f66d7f5ded589eeca8a0daafdbdddb461d7e",
-    "game/cocs-coop.mjs": "36038e1f524b1a25c9fd991990b0fddf62ccaae89c87566486f372e9e684e2a6",
-    "game/cocs-difficulty.mjs": "e3ca14ecea9333ab2d74b2ccf8f281f7a962bb67cc8c6b3d28eebbe5b37c42c0",
-    "game/cocs-director.mjs": "926af20afc920c3d3a6ff9870322d128414205a7c80b84d7c19073471069ed8d",
-    "game/cocs-economy.mjs": "1fdbdddeeabb32eff1dbb1d73bc34506d63c2e3e2ac6fb0a37851465865f8f93",
-    "game/cocs-roles.mjs": "3edaf3207b6a54bf0600ee0fb9eee732bdd494351d67f9cc85b1c8e66ade67fa",
-    "game/cocs-squads.mjs": "b6d234b007e6d80a670c4646c43fdaf6485e62120876fe6ccbe210ac026cd6a1",
-    "game/cocs-terminals.mjs": "7b96cad0dcbf2b0dfb5dd78cf1217298edaf70785e482fb3944745636d3efa3f",
-    "game/cocs-traversal.mjs": "555e742ff721549db974ac470a2b523ac6dad98659c40f7399a11e904c7672f7",
-    "game/cocs.mjs": "1224034a80181d83571f15034059aa979545afc171632e6588fe9d2ebf3724e6",
-    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
-    "game/core.mjs": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
-    "game/cosmetics.mjs": "466d6eba56296a88b698a6036cc40b1381634b30d350fe04757832a15779b98a",
-    "game/ctf-maps.mjs": "4f91623e6cc6914b9cca688edd7b37a1ba0e804808943a40deb27525ab78107f",
-    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
-    "game/deaths.mjs": "2c97fa500f2dfe504b1b3c7ff5de8cc5699b44b9c79df4eedb1276107933c89c",
-    "game/destination-combat-maps.mjs": "a8964b89d4fa2dffac2d0b7ee49fe6fc70e9e261fd9a5078b2630370a5f7316b",
-    "game/destination-lattice-maps.mjs": "a7110177c2e4dca4b56f88f7e0d768b96df935661e0d4dfe87ba2970be8b1966",
-    "game/destination-maps.mjs": "e8ac0655a4ae8030f70a76f258784c5007ea2be808f0cb10547385c6ceffeda2",
-    "game/destination-objective-maps.mjs": "f995d7ec863f848ac7e3aa6a9a48e2a51b27f6fda7749e86877594665a1c79d8",
-    "game/destination-sports-maps.mjs": "bd3f486d57b188163b16193b4ce05401bac14ad19b40b73768525c9ca4d0e0b1",
-    "game/enemy-types.mjs": "92b600584061d0626b35dd44ae94e1903ba178b390f600a0254fbc5505685613",
-    "game/expansion-maps.mjs": "62b30255393daa473f5c6e46056e8922c1dc74c02c993499cbe6ac3e6439537f",
     "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
-    "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
-    "game/horde-stages.mjs": "132bb551f0e517ed037d2e97fbd8ff510802eaaa7163e39da10e59745d656afb",
-    "game/island-maps.mjs": "5fff90834c33d65bd8a06a70528aff45f7d5b09840b8eaa0a3a9c5f23f4d0cf7",
-    "game/kits.mjs": "e44908b88341bce5f4df8ffe9e896482202466dc502fd93059ba63e5b54c40bd",
-    "game/lattice-foundry.mjs": "5c63d3d1c36e9957a6181cc2e7f83f27056599040ad9f4f7714d43c5596b4c56",
-    "game/lattice-maps.mjs": "d3eae8ec886ed66dfc04c420d9a4e6051368dff385bc680cf238387545c91016",
-    "game/lattice-roles.mjs": "bd1f1165c3e2b3dfa3b33e3351f90db1039eaf264ddadab08e5e481dcee31340",
-    "game/lattice-support.mjs": "5d359bf2a7fb06a3e6f0085cf13c68d2db900297223298d2befffd8edb393f3a",
-    "game/levelgen.mjs": "3a5b2285b1a9703cded463bdffa0cc73f38b75b427e0ce9371919c646a4dd38b",
-    "game/map-schema.mjs": "e4b6ebc445912c6128eb1cbc658d91d07751b85650bc92fd0fd0764ae72716b8",
-    "game/maps.mjs": "729d94c4a3bc566d3c6b89c8c5c7d656babf338f2ab42edc988f383e021dd731",
-    "game/math.mjs": "a9f2e5f55f7e90c567d35b4c77d7ecdeae4c28b5174d52f8cf9a5e4e59170327",
-    "game/mode-data.mjs": "7598bfa2d5fb0495bbfcb615c3083245d4dff632a13aa1a42593da8023e91548",
-    "game/moth-assets.mjs": "736d5ff7e844f8210b273791f4806bae916a4e463494f64c78b94bd4cb2768ab",
     "game/moth-baked.mjs": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2",
-    "game/moth-maps.mjs": "613cdeac0ea8f5f64c988f051698661825d2053268b75fe1151c7beacfcdc081",
-    "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
-    "game/nextgen-maps.mjs": "9a8dc8720a2395edf796a0d630f0033c9aa29d872d3fcf98db3aefabdac33727",
-    "game/objectives.mjs": "3e92ad1f85fb785362e15fd836d2b80f95060e0670e9f58a766f79ffa60742ec",
-    "game/operator-profiles.mjs": "b7c4aec4aac899626ad5d7a78f5870218513a5b1d38ff12f2312beacc32882ba",
-    "game/operator-verbs.mjs": "f3bbcd2e13bc04dabf2a81a74ddee3848d6835d11d8ac063e4603ea689bf96b3",
-    "game/outcome.mjs": "f66fe5ca09e8507939d407a7eb9defd4a2d23b643a221955e0d0ad584b17ec98",
-    "game/payload.mjs": "13e357516af38fdfe6596dfa7a43cbeaae2445f492ad41df934deb8840bc92bb",
-    "game/progression.mjs": "5b70fa168d8edb5192052ad9bed3243370db7ba8f13952a9401596a9d4bc1ce5",
-    "game/race-maps.mjs": "d14c6d5cf31728cb5bac4363b142d16a79705b727f7e015774d80a68d5abf4b3",
-    "game/race.mjs": "1c448a0f00e3354dd6fa32190f85dcc6c31883f428b07193773fcd02bf2effba",
-    "game/ragdoll.mjs": "10bd8cb43405d45a42d5034261ce89119a8bf05c24c3ca1f47f1b4b4202efa3d",
-    "game/singleplayer.mjs": "60ab39e4cc9dd07f38fed27c39f25b2383e0ea1257dba5ee29f2ebe7762189ce",
-    "game/soccer-maps.mjs": "9a57d95b9064c21d3c73303535379f006638aa3c476227bf92946541d1ca6669",
-    "game/soccer.mjs": "78da2d005207c5e744f56a2d3924d0bf82ed4c62b29bd0702b97513b74359972",
-    "game/spatial.mjs": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
-    "game/spawn-placement.mjs": "b0665e410e68eaf160c1a890558a69efa035e58abd76c45c28fcc01ae42b2361",
-    "game/spec-effects.mjs": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
-    "game/story.mjs": "6306ec902fbb8427dd0060ac79084c95bb7fc6999a49f28ec86cae9ddccf059b",
-    "game/structures.mjs": "445ace67e41028e602aab692578c9d200ca8fb58d1b3f9f8c1568c5ac2b5d1d2",
     "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
     "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
-    "game/vehicles.mjs": "e55dbed9969a9f4430b0471fefb4d294fddf0e75d8af853565c9361c106244db",
     "godot/ambience/rain_contact.gd": "1ccad1e6d1df2ea22d77844b70c66a291d7e2e4f2ac226fc9650aa5be13f9206",
     "godot/ambience/rain_contact.gdshader": "ca65680e7dd5286b1efc89f9f1326a058720361a108d3ec09d7de43c67da19d9",
     "godot/ambience/weather_look.gd": "4b2c3a0a1c4e623b8dcce990fbd30ff2d85bbad25eb28063c295898cb95783da",
@@ -363,24 +256,36 @@
     "godot/moth_scenery/profiles.gd": "ac16e2c2c0a6eeb40c92a0344c067a0d8e90a8f1f3be28a84e2dc4c0f63eaf2a",
     "godot/moth_scenery/scenery.gd": "0580721e4278923ae1e901324faaa02efe5b258dd2390c56a3793b35184b1ce3",
     "godot/multiplayer_worlds/abyssal_presentation.gd": "2a2be7d8c8dc95ece97bbd4f8cec0190d6f407f8a34655882898a48e4868dea8",
-    "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks.glb.import": "089f60b70adbf6b0a25a9edf591661ec6a6ca2f373dd34a1921f50e591fb0221",
-    "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocalNormal_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
-    "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocalNormal_copper.png.import": "6ee40dba43bfeaa8cd4dfaaeb538c4dc217e37e2b2735d38bbc390f1cfc8ead3",
-    "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_copper.png": "9cc8af2f0012e372d180e5ecac502cbeff5cf3906c88e0533f4db59489d81a78",
-    "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_copper.png.import": "50b1177c12008a6d10401204199a6c594c88d7ae89836e2cad23311579c5bb3f",
-    "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_coral.png": "b84a19a1f5be797406aaa488241b18a59b102f90120efbafb98f64e6df07577e",
-    "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_coral.png.import": "1bf90c63642e535e639c7af206ce44899379cfa222b1155f36f8b1a4cda0b6ec",
-    "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_ivory.png": "939ab009d22e1b7930881389b30e58c360eecf2ab708837f2a5d4249b35ab45a",
-    "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_ivory.png.import": "31ab8f6652c425ea888b36b89463223a27f9289ecedeaf418b85f7758f84ace4",
-    "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_navy.png": "b6c184ce31d709e8506d8b524746cd8782391e4b3503bf59dc59f2c0b7f940ad",
-    "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_navy.png.import": "fc4684b473385d5c7b4b77e572c6b1bf83e71708dac494ad942f7f8e92ab48b9",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway.glb.import": "cf831e83c7ad01d83456f6fa0385f6b3703afe16cb490572235b0990ca3b57fb",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_asphalt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_asphalt.png.import": "afe4adccc11eb6af9dbc2a025639af1e58eeb444d5f454ee31a370b6e5724f44",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_brick.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_brick.png.import": "9527492265535e36a578ab68fff3a259308fca8a25caebacf28f17b4cb48e3b1",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_concrete.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_concrete.png.import": "73ae95b831e3aa848a538f40172c45c99399e0ed935d8d4f5fb423a877f77626",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_salt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_salt.png.import": "c81de06811c531b7a0f17e4c7d95267d8b2fbedf474cae72a684f312b25b1fb3",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_steel.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_steel.png.import": "9f7c19904be08aeddfadb20ca859c9dfa3121f6be5291e13ca39bf45a1520ac6",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_asphalt.png": "2293522fa2dc0d82414e8efab452f597e9226c7f6b804e0f435eb6cf4d91accf",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_asphalt.png.import": "8c29ad9bc79d4825892f39fb60979b23a12fb961213c2e653adf67ce85d38c91",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_brick.png": "610dfcab946aa0c6ec52248f88b8903851f44e9dc4f950a259123a80a775a823",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_brick.png.import": "a2a0d2987fad7c96b34d65ceb2e89530ff73d4c6ebecd239c7e7019e8a1d624f",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_concrete.png": "0dec7f448cc836d1bc1192c68d9563145ad70f264f43ef3a47852c31e46db105",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_concrete.png.import": "9268aa9bd026ca7c6b66c0f95f2057a9820fe362fc6416d76012c4d70afb8acc",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_salt.png": "abe71fda4751c6acd508b977d357b50f381535de1975d4bf49bc516c63da6997",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_salt.png.import": "84ac5af14a187a910cabd2e93c004c56fd62de6e9624ff55c76f12c795634c90",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_steel.png": "ccba777af4ff6e05051281a24ca913a3b8e15e82dd94a92b75d3fa555bb2c7d9",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_steel.png.import": "e02cc407466dfb5e82a3f6ece0e701e6b80d9b36d1da04c8c9eb4c8f4d4510c3",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_teal.png": "70c7dff7c89c343ba9e059327476f4fba48f1b918daf55cb51c73c23c2e58301",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_teal.png.import": "4eb564bca9ccd57b3a0dc54b7df681db446f0b42441141da3d23f7613df6695b",
     "godot/multiplayer_worlds/catalog.gd": "c902cb9c083772c3ad3c75fdc1f8e3a5f1c4e226f54aafb67b7b32c19c76e61d",
     "godot/multiplayer_worlds/dressing/binder.gd": "b3e707af9da73f21b3c791c1d7deca9caad5472b422f263d9998ac961444a87d",
     "godot/multiplayer_worlds/dressing/profile.gd": "ee41823e074ea8571e25d1671aedf5c3918ffa56af0427e24640a45a3662a59c",
     "godot/multiplayer_worlds/dressing/surface.gd": "70e88ee5b9d46e95f0ff8bc7a7b5876cf20a6b052d016efd69955fe72e35b5d0",
     "godot/multiplayer_worlds/dressing/surface.gdshader": "8d77b5729585a3129009a0f67da64044181e7747c641c03c9b02dcd09206d3ff",
     "godot/multiplayer_worlds/dressing/wear_panel.gdshader": "2628addabee8718df5801862c85407df9088feba17cfaec243e75bcffd4490e3",
-    "godot/multiplayer_worlds/generated/abyssal-pressureworks.json": "c2acae268634f93e6f98f6abd6414289ff63852d2b9580482e2027595eecee76",
+    "godot/multiplayer_worlds/generated/stormglass-causeway.json": "cdbb72fd712bd09807c9c83ffc08f7ef7d7d397a974819b062d8125f96c05ee6",
     "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
     "godot/multiplayer_worlds/sports_demo.gd": "928cab00e03bafd6088b16734833b8f1c4cea6b341353235d63f7c1f04d187c8",
     "godot/multiplayer_worlds/viewer.gd": "99b859a39f9b849f12f469c7c6b9accf53a9760d38587ecf3bb0ede68d2bfa55",
@@ -486,145 +391,80 @@
     "godot/world/session.gd": "32ff87d491dad9f47d555fa3eec701fbfbbfa47608075ebbc2796b5c291b549c",
     "godot/world/viewer.gd": "1b6ef1540e69e0e3e4eb942e04d2ea43f8eb1598248965092755f46c8525d2e8",
     "godot/world/weapon_selection.gd": "079435cbe98558ae6aa5918bdc4cc217b7504230c0807811624bef559ecc578e",
-    "port/expansion-three/abyssal/evidence/production-i/ctf/outcome.json": "74ccd2d864a4afea6e5ae2f0306cb818d237d1dbc3d6f2851f1ce95fbfa4ae28",
-    "port/expansion-three/abyssal/evidence/production-i/ctf/private-authority/derivation.json": "92df4a9fc27cce3ae424f75f58816d4b1820fe20f84588bfe5e1c20b7e70b2b0",
-    "port/expansion-three/abyssal/evidence/production-i/ctf/teardown.json": "f088298bdb7e8ebcf6f2af7886c0762fb0f75750405cf5803ea1c6714a9fb471",
-    "port/expansion-three/abyssal/evidence/production-i/deathmatch/outcome.json": "03a3dfd487aa6cd3160fa13b0f93e7ada27d50a84750baadc5b753758468699b",
-    "port/expansion-three/abyssal/evidence/production-i/deathmatch/private-authority/derivation.json": "27049791bf42dea02146c1422610f3559cc7f03432c46f7b1e616ebf3a6dd3ee",
-    "port/expansion-three/abyssal/evidence/production-i/deathmatch/teardown.json": "d7ae7479634af6adec92cfafc521075e2ca52cf849dfabab9aa02db8624468bb",
-    "port/expansion-three/abyssal/evidence/production-i/domination/outcome.json": "104dc030d51de5fdc79c36cc2e2b3fbd72efe4b6b3ab441288ca1223fea35972",
-    "port/expansion-three/abyssal/evidence/production-i/domination/private-authority/derivation.json": "6a8a43be5ca3c6505ee8361f01ebf0a72e6600d340eebc2a8a6e0f0d3dfd0311",
-    "port/expansion-three/abyssal/evidence/production-i/domination/teardown.json": "7c8010152e3d1147fbf3c1c00d76ae0a56841ebfbd778e34dc4f11efc021e623",
-    "port/expansion-three/abyssal/evidence/production-i/holdout/outcome.json": "40f3067ffa567b55faf21839a8ae5a30f06f2384cc02f583c9538384a7334dbd",
-    "port/expansion-three/abyssal/evidence/production-i/holdout/private-authority/derivation.json": "568a15924a7d246b9687e5b3666f331fd297d0eb8ce8f31b6cc70810e12c91b1",
-    "port/expansion-three/abyssal/evidence/production-i/holdout/teardown.json": "e01a41d181598b095beffc48628f5dfdf8e5fdd4e3640a0fdd8f0df68c1d6b2c",
-    "port/expansion-three/abyssal/evidence/production-i/hosted-summary.json": "2f5503d948d8280346a07451cb4a045ef6b88c79795b962554219302a7c7523c",
-    "port/expansion-three/abyssal/evidence/production-i/inspection.json": "adc48fcdb8ecc054654413f9958264e5ee74293d24b9cdc620534fef8ea1a0ff",
-    "port/expansion-three/abyssal/evidence/production-i/koth/outcome.json": "4fbbffe3b6cc4f633dfe53e411deb96bf99406f6bec640f7aff2654a2afed83a",
-    "port/expansion-three/abyssal/evidence/production-i/koth/private-authority/derivation.json": "366ce1c112dffdf5742884012e8a5b0934d487c5ba98f8b4cbe7af1c56c3219e",
-    "port/expansion-three/abyssal/evidence/production-i/koth/teardown.json": "7ca476135a8aea972ef8c01592a1cbd31e3cbebc0b3fc712bec117999c45cb89",
-    "port/expansion-three/abyssal/evidence/production-i/manifest.json": "e2366136bd72f8e5feda1d2aacdc58a16504956a5f325c536c51c0461de7cc2d",
-    "port/expansion-three/abyssal/evidence/production-i/producer-receipt.json": "25ad4fc34e2fef196588219c548fde1cb0ec771f0e5141c192ef0173b38a8767",
-    "port/expansion-three/abyssal/evidence/production-i/release-i.json": "226e4571b04886bd897aa2329f2d6b1d21fa413adce04a74c55bc3a867673c33",
-    "port/expansion-three/abyssal/evidence/production-i/teamdeathmatch/outcome.json": "512058f9c42ca465cd397862bf4f4a36d3775c8dc29b244d75927aaf9c37310c",
-    "port/expansion-three/abyssal/evidence/production-i/teamdeathmatch/private-authority/derivation.json": "6f1b721a33fa1a4433d659b846d91da14486c80cc8af5e3766935dd87fb242be",
-    "port/expansion-three/abyssal/evidence/production-i/teamdeathmatch/teardown.json": "dea61f095f52b803e25bcff441a9fe2f463e04812cd90f82cea4a6ba423bc031",
+    "port/expansion-four/stormglass/PAIR-PROPOSAL-J.json": "a4a391e7e8dcb5d11dc037de44b8a02a9a4edf057c3eb41bae58f20d2b6980c8",
+    "port/expansion-four/stormglass/evidence/production-j/art-audit.json": "e6daf490140ca3234fc762ac8349f6420bc712b13026e14b32a71b42bbb24b04",
+    "port/expansion-four/stormglass/evidence/production-j/generic-receipt.json": "df3ec7f7a5b2ab0b76701ad9ee777eeeb934f64fdbca984a76262b1ab91697b3",
+    "port/expansion-four/stormglass/evidence/production-j/release-j.json": "b4def8ada5f7c18ef55d6989b36f54031c90044fc30c3ef0a8fc172bea4f8ed5",
+    "port/expansion-four/stormglass/evidence/production-j/runs/2026-10-03T05-59-03.606Z-stormglass-causeway-puma-race/outcome.json": "55f335feed4c409f0d0f95a50a88750b62679fb941167d599350ad33a85f31d3",
+    "port/expansion-four/stormglass/evidence/production-j/runs/2026-10-03T05-59-03.606Z-stormglass-causeway-puma-race/teardown.json": "2a0657256da442fc014d4cb1df484ed20b49a5fcb96146eaa3815a9dac2b7b02",
+    "port/expansion-four/stormglass/evidence/production-j/runs/2026-10-03T06-00-57.076Z-stormglass-causeway-puma-race/outcome.json": "d8dc81f5551a4e93718f1ce281241cb1fc7a521b228af117fb6bd7e490788d0e",
+    "port/expansion-four/stormglass/evidence/production-j/runs/2026-10-03T06-00-57.076Z-stormglass-causeway-puma-race/teardown.json": "9d2137486f71b247a01b5d6b0cdef177801611adb0a2e20e7e6d890dad5c111d",
+    "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054201.375093Z-build/build-process.json": "bc48cea95892feb9c27ee3b4204cb2a2241af2e79b21b8e79f862bb21e141a17",
+    "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054201.375093Z-build/build.log": "4196d6dd932dc37b419871a75fe247a0467fc5694f09c63c9b95fc2205bfdcf1",
+    "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054210.294563Z-import/import-process.json": "459d40c35648aa93885b420d75ada2197046bc3a853c11ab1c955652d2f8b8b4",
+    "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054210.294563Z-import/import.log": "77db4815e0ce18a3cef580134d3feba3d024ddc0ce5986ef0ad0fa166574049d",
+    "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054509.988544Z-reopen-original/reopen-original-process.json": "1136ff9354ebcd37f921d5cb2894b5e0f8e38f71b9a1b524bbbafb349a5ec664",
+    "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054509.988544Z-reopen-original/reopen-original.log": "084b33685bcac3644ed232205d262398fcb4f434ca3476bb7f31b63df8dcd1f7",
+    "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054515.058809Z-reopen/independent-reopen-process.json": "34137e690391795ff0296ba770e6f409bf0ac15346e67b20c91d2b1014d8dabc",
+    "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054515.058809Z-reopen/independent-reopen.log": "5867e400a3010c89aa9666d01cdc5905374fb0424939418fec83ec61715c69e9",
+    "port/expansion-four/stormglass/evidence/production-j/stages/20261003T055018.455696Z-native/native-process.json": "874b2c8747421f33de5bfc3bf01257bb3daa2a5d6fe6d3356440be8bbbe5aebf",
+    "port/expansion-four/stormglass/evidence/production-j/stages/20261003T055018.455696Z-native/native.log": "eb085e8d4547fd434421218142adf7be827aeba0db03caa0cbb66f9c3e221f2f",
+    "port/expansion-four/stormglass/evidence/production-j/summary.json": "d2c6771b1ef54660667d996d022b24e115b6adeead8db718a058fa1c61ad6e1e",
     "port/multiplayer-worlds/catalog.mjs": "a74314f0b84143ae36a2983f102613ffcced69bfbecc891597797ec268eee3f1",
-    "port/native-multiplayer-worlds/worlds/abyssal-pressureworks.json": "5119ea83e8defa9f726fa70d2d478785111a51fcf0aefaf72c5117b4fde320af",
+    "port/native-multiplayer-worlds/worlds/stormglass-causeway.json": "3b0f86130eae0f925ce9409d710804f44c33073852ba09b0b4d0949ef034c548",
     "tools/asset-production/material-validation.mjs": "874e5d31c666a8af4a98b600bb182a4f4cb9c5e6b1488d80908f855b2584bb3d",
     "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
     "tools/asset-production/package-receipt.mjs": "e1917daa642b15e6e3290b537fbf9024ba72e6f5dfd18f4025d3e589d9702621",
     "tools/asset-production/receipt.mjs": "9648c19d979b2486c78830628c2f2508a02b4b2874d1f64149966d88d7e5f9d8",
     "tools/asset-production/reopen.py": "4628bc44122a690495766f3cc967a82d3ab7aeab52c272cca7a202be88e0f5de",
-    "tools/godot-multiplayer/new-maps/abyssal-pressureworks/blender_author.py": "e238921171421ac5c3b2699bb47d9a4f9a3578a2c748192b78bc50fcb60d3641",
-    "tools/godot-multiplayer/new-maps/abyssal-pressureworks/build.mjs": "cc21e5440b81b710f7159b65129246e7bbed11fbc02314354ee2589a800184a3",
-    "tools/godot-multiplayer/new-maps/abyssal-pressureworks/recipe.mjs": "be7baa4dc1eaa3a2daa2d4fb890874df3aa432367788174280889b92e765c8ad",
-    "tools/godot-package/abyssal_i_inventory.json": "9b77b11fa09975e69c373d74ef3d721e4535dd5ada89817c8766cdd55cd38d9f",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/architecture.py": "1fbdb7a6198e4fcfae4adc2fbebcf28933e504fe4aa98002d42692742cc68664",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/blender_export.py": "e58de79ab845d95663a2d5cd8ed1b9dceba932cd0fc8f47829d1896ea760e8ec",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/build.mjs": "182ecaf1ef3347c1b4642d40ae10305927055a9f4a571883f1fa671fb3ad45cf",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/export-report.json": "ddfdb490789601f033c5caa39ee78ed5036d25c3e2c7cb669ffc1650cf20e300",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/recipe.mjs": "427d7d4b9ade4d19bfecc7f061b6bc87146a44b56f79aa5c6de2b95a1daa162a",
     "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d",
     "tools/godot-package/feature_dependencies.mjs": "bc2a3d53839c38a9f63104554a7dae0bb9fc44a921bba1117ec05a42018a267d",
     "tools/godot-package/production_resources.mjs": "c026e97ba7665458774e6c644cac999d425b14512cc12c74b57afe2cf2a8455d",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
     "tools/godot-package/stormglass_imports.mjs": "8e5827c156dae2dacbef20f80c77c8e36a1cf41e3579699c6aa862f2ecd0bc3c",
+    "tools/godot-package/stormglass_j_inventory.json": "edb811fd503d343314f6fad4bb469a0e73195f643d7d3af34684598712190fb4",
     "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
     "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba"
   },
+  "nativeRuntimeHooks": {
+    "godot/multiplayer_worlds/sports_demo.gd": "78b86c3874bbc7e91069ac6c8d65fb9468fecbfcf7cbe34f63fcbdd8c13232b9",
+    "godot/sports/chase.gd": "57b92456b701f39f75e84864eedc03809238adbe849f0675240abdf03a5f3abc",
+    "godot/sports/controls.gd": "6c55e17862ce148b23998a7725d848d2f3744af4342217108f81105373a21822",
+    "godot/sports/hud.gd": "08ffcb18b690917ae0740d3fb2dc91a9c13c04f5f9c8aa9aa05924407ff02250",
+    "godot/vehicles/renderer.gd": "3d185e80ddf005278721966d0ccd9cc027aec2cf1a6a0f1c2ce6f6d5676cf975",
+    "godot/vehicles/puma.gd": "dece0e0b743fcb6377bb58fcb7dcc963fca9c7d047baa87bc89469162b2934fe",
+    "godot/vehicle_assets/attachment.gd": "13fc00ebd1d5495769df1d120329e5462724cf09487697a6258f92a1545f3a63"
+  },
   "runtimeHooks": {
-    "godot/multiplayer_worlds/abyssal_presentation.gd": "2a2be7d8c8dc95ece97bbd4f8cec0190d6f407f8a34655882898a48e4868dea8",
-    "godot/multiplayer_worlds/demo.gd": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748",
-    "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543"
+    "godot/multiplayer_worlds/sports_demo.gd": "928cab00e03bafd6088b16734833b8f1c4cea6b341353235d63f7c1f04d187c8",
+    "godot/sports/chase.gd": "c589874c000503647a79fc435b3715fffe6027ab0fc89744975f68900e69ef17",
+    "godot/sports/controls.gd": "3401604703866777ad2875260b4c918ed5faa15881593bcf9849b797c315c7c2",
+    "godot/sports/hud.gd": "eaa003b9b5cc473a424cf6338523593d1d082ef58a6b6947264a6b126eff1e0e",
+    "godot/vehicles/renderer.gd": "3d185e80ddf005278721966d0ccd9cc027aec2cf1a6a0f1c2ce6f6d5676cf975",
+    "godot/vehicles/puma.gd": "dece0e0b743fcb6377bb58fcb7dcc963fca9c7d047baa87bc89469162b2934fe",
+    "godot/vehicle_assets/attachment.gd": "89a11d2c2987b5be14f8d6458079cd27dc16f461b1530ce66d6ac9e3b4e66f21"
   },
   "rawFiles": [],
-  "abyssalPackageVerifierAdvance": {
+  "stormglassPackageVerifierAdvance": {
     "previousReceipt": {
-      "commit": "f0e76bf7",
-      "path": "tools/godot-package/production_receipts/abyssal-pressureworks.json",
-      "sha256": "25ad4fc34e2fef196588219c548fde1cb0ec771f0e5141c192ef0173b38a8767"
+      "commit": "38dfb3bd",
+      "path": "port/expansion-four/stormglass/evidence/production-j/generic-receipt.json",
+      "sha256": "df3ec7f7a5b2ab0b76701ad9ee777eeeb934f64fdbca984a76262b1ab91697b3"
     },
     "changed": {
       "port/multiplayer-worlds/catalog.mjs": {
         "before": "d2919c888433f16d8183ed33c408514b3894272d8ac7d35ba04c85b61fb7c4f2",
-        "after": "12ae860e3186c5ccf547452183dd2dcec81af1fb444b11cddade4815cab3ad96"
+        "after": "a74314f0b84143ae36a2983f102613ffcced69bfbecc891597797ec268eee3f1"
       },
       "tools/godot-package/production_resources.mjs": {
-        "before": "cc441a03e1db8060452c99960aaed8bee60cd9dcf6cdee1c48455554df671835",
-        "after": "5556e3b1f0c87a98b26a2393aad62ee112857afd4abd3f56bd24214394bf187d"
-      }
-    },
-    "added": {
-      "godot/multiplayer_worlds/abyssal_presentation.gd": "2a2be7d8c8dc95ece97bbd4f8cec0190d6f407f8a34655882898a48e4868dea8",
-      "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks.glb.import": "089f60b70adbf6b0a25a9edf591661ec6a6ca2f373dd34a1921f50e591fb0221",
-      "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocalNormal_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
-      "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocalNormal_copper.png.import": "6ee40dba43bfeaa8cd4dfaaeb538c4dc217e37e2b2735d38bbc390f1cfc8ead3",
-      "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_copper.png": "9cc8af2f0012e372d180e5ecac502cbeff5cf3906c88e0533f4db59489d81a78",
-      "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_copper.png.import": "50b1177c12008a6d10401204199a6c594c88d7ae89836e2cad23311579c5bb3f",
-      "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_coral.png": "b84a19a1f5be797406aaa488241b18a59b102f90120efbafb98f64e6df07577e",
-      "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_coral.png.import": "1bf90c63642e535e639c7af206ce44899379cfa222b1155f36f8b1a4cda0b6ec",
-      "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_ivory.png": "939ab009d22e1b7930881389b30e58c360eecf2ab708837f2a5d4249b35ab45a",
-      "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_ivory.png.import": "31ab8f6652c425ea888b36b89463223a27f9289ecedeaf418b85f7758f84ace4",
-      "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_navy.png": "b6c184ce31d709e8506d8b524746cd8782391e4b3503bf59dc59f2c0b7f940ad",
-      "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_navy.png.import": "fc4684b473385d5c7b4b77e572c6b1bf83e71708dac494ad942f7f8e92ab48b9",
-      "godot/multiplayer_worlds/catalog.gd": "65a0b3f6fb962eec1cf0b2c0c42a9bfd27713cc850f799e5ab1cc7c72d0cc53a",
-      "port/expansion-three/abyssal/evidence/production-i/ctf/outcome.json": "74ccd2d864a4afea6e5ae2f0306cb818d237d1dbc3d6f2851f1ce95fbfa4ae28",
-      "port/expansion-three/abyssal/evidence/production-i/ctf/private-authority/derivation.json": "92df4a9fc27cce3ae424f75f58816d4b1820fe20f84588bfe5e1c20b7e70b2b0",
-      "port/expansion-three/abyssal/evidence/production-i/ctf/teardown.json": "f088298bdb7e8ebcf6f2af7886c0762fb0f75750405cf5803ea1c6714a9fb471",
-      "port/expansion-three/abyssal/evidence/production-i/deathmatch/outcome.json": "03a3dfd487aa6cd3160fa13b0f93e7ada27d50a84750baadc5b753758468699b",
-      "port/expansion-three/abyssal/evidence/production-i/deathmatch/private-authority/derivation.json": "27049791bf42dea02146c1422610f3559cc7f03432c46f7b1e616ebf3a6dd3ee",
-      "port/expansion-three/abyssal/evidence/production-i/deathmatch/teardown.json": "d7ae7479634af6adec92cfafc521075e2ca52cf849dfabab9aa02db8624468bb",
-      "port/expansion-three/abyssal/evidence/production-i/domination/outcome.json": "104dc030d51de5fdc79c36cc2e2b3fbd72efe4b6b3ab441288ca1223fea35972",
-      "port/expansion-three/abyssal/evidence/production-i/domination/private-authority/derivation.json": "6a8a43be5ca3c6505ee8361f01ebf0a72e6600d340eebc2a8a6e0f0d3dfd0311",
-      "port/expansion-three/abyssal/evidence/production-i/domination/teardown.json": "7c8010152e3d1147fbf3c1c00d76ae0a56841ebfbd778e34dc4f11efc021e623",
-      "port/expansion-three/abyssal/evidence/production-i/holdout/outcome.json": "40f3067ffa567b55faf21839a8ae5a30f06f2384cc02f583c9538384a7334dbd",
-      "port/expansion-three/abyssal/evidence/production-i/holdout/private-authority/derivation.json": "568a15924a7d246b9687e5b3666f331fd297d0eb8ce8f31b6cc70810e12c91b1",
-      "port/expansion-three/abyssal/evidence/production-i/holdout/teardown.json": "e01a41d181598b095beffc48628f5dfdf8e5fdd4e3640a0fdd8f0df68c1d6b2c",
-      "port/expansion-three/abyssal/evidence/production-i/hosted-summary.json": "2f5503d948d8280346a07451cb4a045ef6b88c79795b962554219302a7c7523c",
-      "port/expansion-three/abyssal/evidence/production-i/inspection.json": "adc48fcdb8ecc054654413f9958264e5ee74293d24b9cdc620534fef8ea1a0ff",
-      "port/expansion-three/abyssal/evidence/production-i/koth/outcome.json": "4fbbffe3b6cc4f633dfe53e411deb96bf99406f6bec640f7aff2654a2afed83a",
-      "port/expansion-three/abyssal/evidence/production-i/koth/private-authority/derivation.json": "366ce1c112dffdf5742884012e8a5b0934d487c5ba98f8b4cbe7af1c56c3219e",
-      "port/expansion-three/abyssal/evidence/production-i/koth/teardown.json": "7ca476135a8aea972ef8c01592a1cbd31e3cbebc0b3fc712bec117999c45cb89",
-      "port/expansion-three/abyssal/evidence/production-i/manifest.json": "e2366136bd72f8e5feda1d2aacdc58a16504956a5f325c536c51c0461de7cc2d",
-      "port/expansion-three/abyssal/evidence/production-i/producer-receipt.json": "25ad4fc34e2fef196588219c548fde1cb0ec771f0e5141c192ef0173b38a8767",
-      "port/expansion-three/abyssal/evidence/production-i/release-i.json": "226e4571b04886bd897aa2329f2d6b1d21fa413adce04a74c55bc3a867673c33",
-      "port/expansion-three/abyssal/evidence/production-i/teamdeathmatch/outcome.json": "512058f9c42ca465cd397862bf4f4a36d3775c8dc29b244d75927aaf9c37310c",
-      "port/expansion-three/abyssal/evidence/production-i/teamdeathmatch/private-authority/derivation.json": "6f1b721a33fa1a4433d659b846d91da14486c80cc8af5e3766935dd87fb242be",
-      "port/expansion-three/abyssal/evidence/production-i/teamdeathmatch/teardown.json": "dea61f095f52b803e25bcff441a9fe2f463e04812cd90f82cea4a6ba423bc031",
-      "tools/godot-package/abyssal_i_inventory.json": "9b77b11fa09975e69c373d74ef3d721e4535dd5ada89817c8766cdd55cd38d9f",
-      "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d",
-      "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba"
-    },
-    "runtimeChanged": {},
-    "previousPackageFingerprint": "cb367f4620d8a430abeedd8869d46c0dab5029998c61ff7ef1ab839f750d3491",
-    "packageFingerprint": "21cf335a4eacddbe9ca942d639b176a1ee8984192c6d39217ddde0c1223c4059",
-    "reason": "Parent accepted Abyssal I integration and six public modes. Source-only supporting hook/catalog/verifier reconciliation; original I/H/F native evidence and prior advances remain immutable.",
-    "review": "port/finish/ABYSSAL_PACKAGE_PROMOTION.md"
-  },
-  "integrationReview": {
-    "acceptedBy": "parent overview, reef window, vessel-1-2 interior and compact CTF results review",
-    "foundation": "f0e76bf7",
-    "nativeEvidence": "port/expansion-three/abyssal/evidence/production-i/hosted-summary.json",
-    "limitations": [
-      "room-shell repetition",
-      "software performance limits; no hardware performance claim"
-    ],
-    "publicModes": [
-      "deathmatch",
-      "teamdeathmatch",
-      "ctf",
-      "koth",
-      "domination",
-      "holdout"
-    ]
-  },
-  "featureAdvance": {
-    "previousReceipt": {
-      "commit": "a5c26f25",
-      "path": "tools/godot-package/production_receipts/abyssal-pressureworks.json",
-      "sha256": "c626aea965c14a28cb04716b870ce3118cd00c3dbd8fb46606cca771cc19e34f"
-    },
-    "changed": {
-      "tools/godot-package/production_resources.mjs": {
-        "before": "5556e3b1f0c87a98b26a2393aad62ee112857afd4abd3f56bd24214394bf187d",
-        "after": "bb057e2fb671faf8cf635c80b29ed574bc2fc0eda97e3268fb0e82cd8ee02bce"
+        "before": "0a95ddacb4af6f0b3dc053e4963e6b4201324cecf2dbe8a02617aafb21fbe219",
+        "after": "c026e97ba7665458774e6c644cac999d425b14512cc12c74b57afe2cf2a8455d"
       }
     },
     "added": {
@@ -761,13 +601,38 @@
       "godot/moth_scenery/panel.gdshader": "fb6c4f137d9ae83c37d492675aeabfd84ad2d06f7946b7a9cacdccb6c08d3d41",
       "godot/moth_scenery/profiles.gd": "ac16e2c2c0a6eeb40c92a0344c067a0d8e90a8f1f3be28a84e2dc4c0f63eaf2a",
       "godot/moth_scenery/scenery.gd": "0580721e4278923ae1e901324faaa02efe5b258dd2390c56a3793b35184b1ce3",
+      "godot/multiplayer_worlds/abyssal_presentation.gd": "2a2be7d8c8dc95ece97bbd4f8cec0190d6f407f8a34655882898a48e4868dea8",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway.glb.import": "cf831e83c7ad01d83456f6fa0385f6b3703afe16cb490572235b0990ca3b57fb",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_asphalt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_asphalt.png.import": "afe4adccc11eb6af9dbc2a025639af1e58eeb444d5f454ee31a370b6e5724f44",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_brick.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_brick.png.import": "9527492265535e36a578ab68fff3a259308fca8a25caebacf28f17b4cb48e3b1",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_concrete.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_concrete.png.import": "73ae95b831e3aa848a538f40172c45c99399e0ed935d8d4f5fb423a877f77626",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_salt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_salt.png.import": "c81de06811c531b7a0f17e4c7d95267d8b2fbedf474cae72a684f312b25b1fb3",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_steel.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_steel.png.import": "9f7c19904be08aeddfadb20ca859c9dfa3121f6be5291e13ca39bf45a1520ac6",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_asphalt.png": "2293522fa2dc0d82414e8efab452f597e9226c7f6b804e0f435eb6cf4d91accf",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_asphalt.png.import": "8c29ad9bc79d4825892f39fb60979b23a12fb961213c2e653adf67ce85d38c91",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_brick.png": "610dfcab946aa0c6ec52248f88b8903851f44e9dc4f950a259123a80a775a823",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_brick.png.import": "a2a0d2987fad7c96b34d65ceb2e89530ff73d4c6ebecd239c7e7019e8a1d624f",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_concrete.png": "0dec7f448cc836d1bc1192c68d9563145ad70f264f43ef3a47852c31e46db105",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_concrete.png.import": "9268aa9bd026ca7c6b66c0f95f2057a9820fe362fc6416d76012c4d70afb8acc",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_salt.png": "abe71fda4751c6acd508b977d357b50f381535de1975d4bf49bc516c63da6997",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_salt.png.import": "84ac5af14a187a910cabd2e93c004c56fd62de6e9624ff55c76f12c795634c90",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_steel.png": "ccba777af4ff6e05051281a24ca913a3b8e15e82dd94a92b75d3fa555bb2c7d9",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_steel.png.import": "e02cc407466dfb5e82a3f6ece0e701e6b80d9b36d1da04c8c9eb4c8f4d4510c3",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_teal.png": "70c7dff7c89c343ba9e059327476f4fba48f1b918daf55cb51c73c23c2e58301",
+      "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_teal.png.import": "4eb564bca9ccd57b3a0dc54b7df681db446f0b42441141da3d23f7613df6695b",
+      "godot/multiplayer_worlds/catalog.gd": "c902cb9c083772c3ad3c75fdc1f8e3a5f1c4e226f54aafb67b7b32c19c76e61d",
       "godot/multiplayer_worlds/dressing/binder.gd": "b3e707af9da73f21b3c791c1d7deca9caad5472b422f263d9998ac961444a87d",
       "godot/multiplayer_worlds/dressing/profile.gd": "ee41823e074ea8571e25d1671aedf5c3918ffa56af0427e24640a45a3662a59c",
       "godot/multiplayer_worlds/dressing/surface.gd": "70e88ee5b9d46e95f0ff8bc7a7b5876cf20a6b052d016efd69955fe72e35b5d0",
       "godot/multiplayer_worlds/dressing/surface.gdshader": "8d77b5729585a3129009a0f67da64044181e7747c641c03c9b02dcd09206d3ff",
       "godot/multiplayer_worlds/dressing/wear_panel.gdshader": "2628addabee8718df5801862c85407df9088feba17cfaec243e75bcffd4490e3",
       "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
-      "godot/multiplayer_worlds/sports_demo.gd": "f6a121b02b8b1776d59140120651abf6c35da4b25453c73618bf55a0f307930b",
+      "godot/multiplayer_worlds/sports_demo.gd": "928cab00e03bafd6088b16734833b8f1c4cea6b341353235d63f7c1f04d187c8",
       "godot/multiplayer_worlds/viewer.gd": "99b859a39f9b849f12f469c7c6b9accf53a9760d38587ecf3bb0ede68d2bfa55",
       "godot/native_arenas/client.gd": "2283f3c36dcf4a16b141d6d207078c2b8e47dbba61105341fcb207045c6d180b",
       "godot/native_arenas/maps/geometry.gd": "5879559142e2be1548c313b1902a2c4a89bcc4c37ca6fed5c41ab9aa61cab231",
@@ -786,6 +651,7 @@
       "godot/player_models/builder.gd": "36871df836cdfb70e7940aaa7e9abb6b97e4c74b293b95c9a7b1cff31ebbc508",
       "godot/replay/bridge.gd": "a2fa3517499360d8258f2d681787864325e43aceacfe9688a2eb97354f9f3524",
       "godot/replay/capture.gd": "7dcd94b78ff8cd37e755d9390acb71fa85a09f1d9171a01368d9cf3e65db8d4d",
+      "godot/replay/stage.gd": "9d80c822737534c7606981a0d63f8676a2cc853810c8cfb1699b6519af141cc0",
       "godot/robot_assets/switchyard/skin_adapter.gd": "cfe644ea6ac98adeb3e2d95c1f4e0d79d9cd60aa261509d801c18e30cdc624a8",
       "godot/robot_assets/switchyard/workshop.gd": "c105afbc0874fc2afb7d56b72a48bcd6546873e62669ec08cef037daa936e81e",
       "godot/shader_lab/conduit.gdshader": "09928671a444c63ea6ca327464203a05497b9e4f76df3e847b6a7f509479ed62",
@@ -802,21 +668,23 @@
       "godot/source_operators/generated/world_weapons/catalog.gd": "75a8d812f8a391e948e7417b139d85bfa03856c79d33c0c4b27858ad46438061",
       "godot/source_operators/ground_contact.gd": "f3aa53909b7fabbcca396d19b7a1704cdf9e0279f368afdd8722fc8a38817bd9",
       "godot/source_operators/hand_grips.gd": "5605a6c90051f19803b4e0fca1890daced1601b5cde7f7eddb6bfb5caaaa2d59",
-      "godot/source_operators/locomotion.gd": "584a0c23611962fff1b1c1a511a640ec26227a17bcd2639c305637fb007545dd",
+      "godot/source_operators/locomotion.gd": "d6d756911e9a273c7dbb3e88b88e79d67234fa0a6166c59dc2dfa6ca9e9ae0e3",
+      "godot/source_operators/melee_events.gd": "427cbf26efb0b289afc4b595e1be1904f470db869d632bca02ec25887dfe2e4f",
+      "godot/source_operators/melee_pose.gd": "1cfce0989b5cdb64c9df9193050f37ecb7502b59cb7c62113d8089b1cd37e3e9",
       "godot/source_operators/moth_finish/binder.gd": "7c807e8e257b2d8bc667eeebf283678316a86f269c653bf1cb050091fc4636f0",
       "godot/source_operators/motion_math.gd": "967f5f5167f4eac4b7b24212be058c149bb751c45450c1c2628cb42b24a8d069",
-      "godot/source_operators/operator_visual.gd": "a5d6bc153cd99e3928b43dfe6d98023445ad3d23d6e4a3cf238c64f19f3e93ee",
+      "godot/source_operators/operator_visual.gd": "8af316a41810cd86a70cb8a00741c8ae4ceaae73eb579fc157d3a09b76ecd92a",
       "godot/source_operators/surface_detail.gd": "ab8c502f1646dd4c74de0c813f6bfd531af2935e0894da8f813395c9db0b2b5c",
       "godot/source_operators/textures/armor_panel.svg": "f52fb1cd5c2725fbf8b7a491c649378fc7c4816cfb38a4bf5f167f3d4997756f",
       "godot/source_operators/textures/panel_roughness.svg": "e551956f2b83f6f40ede7eff2c7fc48446d9e5e37f05e555f081d26cefdc353b",
       "godot/source_operators/textures/service_board.svg": "e6fea316444112711d4e1bb5c1d9237fab0ad9043aa4a05f41f0bd39aecdd02c",
       "godot/source_operators/textures/vent_panel.svg": "11f25d7299f5932f65d46a239ed91488e550d9c03238df17aff6436464cb3b4f",
-      "godot/sports/av_lifecycle.gd": "a266a96e3bf7c5d186cd279ba9a0b619fb5f0c5fcd26a941ee1b251e43b1a64c",
+      "godot/sports/av_lifecycle.gd": "9811ae6751579d3ce80a54f15a1889c2eccba3e7f724610b89a66c2f5fdbbbb5",
       "godot/sports/chase.gd": "c589874c000503647a79fc435b3715fffe6027ab0fc89744975f68900e69ef17",
       "godot/sports/controls.gd": "3401604703866777ad2875260b4c918ed5faa15881593bcf9849b797c315c7c2",
-      "godot/sports/demo.gd": "dc030049e3f49d6756aef76c77f5cc1dc3f52deb9a7c9b1a26b8d02113e00102",
+      "godot/sports/demo.gd": "c9f6ab3962ca0dcf184b5c1801c938065a5339e64cf87a1ff4c0dc2031abb01b",
       "godot/sports/guidance.gd": "4ea35cfb933403619979420aa9a9b9d507a0f59b8f0329813c34a8f35b049308",
-      "godot/sports/hud.gd": "be4daecdd6c92711c88be8a7a5d0a198bbd8cc7200aadc61371e2fda4e8f1a16",
+      "godot/sports/hud.gd": "eaa003b9b5cc473a424cf6338523593d1d082ef58a6b6947264a6b126eff1e0e",
       "godot/sports/practice.gd": "01596d8ccb9c4f75f17f74344ccc5ca7d500ea86f21aa4a39901f5fb6f902e9f",
       "godot/sports/progression.gd": "d47cf9d8d64033a1e8ef3debad90fa63ee82c1dfbffd6428e54e57e7343ce02a",
       "godot/sports/soccer_guidance.gd": "ee5b25a010f8095dcad4cb297651daf89599e7100f614ef11f424725670bc4ef",
@@ -834,7 +702,7 @@
       "godot/ui/scoreboard.gd": "427ddbaf71058832dcd8307675c9d3f293306bbd01e09ff80171f98b1236e187",
       "godot/ui/settings_access.gd": "2bb46c9e6ee5dabbdef7a4cd864bf4afcae2a3c8dd7be93d0180a907da7920e0",
       "godot/ui/weapon_names.gd": "c1e1abcb4d0556596c9e3996637e4210da4c5d35e3b4b6de019251822c503fb3",
-      "godot/vehicle_assets/attachment.gd": "13fc00ebd1d5495769df1d120329e5462724cf09487697a6258f92a1545f3a63",
+      "godot/vehicle_assets/attachment.gd": "89a11d2c2987b5be14f8d6458079cd27dc16f461b1530ce66d6ac9e3b4e66f21",
       "godot/vehicles/puma.gd": "dece0e0b743fcb6377bb58fcb7dcc963fca9c7d047baa87bc89469162b2934fe",
       "godot/vehicles/renderer.gd": "3d185e80ddf005278721966d0ccd9cc027aec2cf1a6a0f1c2ce6f6d5676cf975",
       "godot/vehicles/session_bridge.gd": "35c2e661be4bd8ce7fd0d085dbd7425577da8f50743c2ac103629139e35b602c",
@@ -861,101 +729,82 @@
       "godot/world/local_motion.gd": "866023a68b705ba539dfb4c8f030530449bb13169e012f9dece386c52eb23591",
       "godot/world/melee_feedback.gd": "491b8b48430a26a42800230fecc9f0c04bc03788ad0409b7f51e37d4edc845b4",
       "godot/world/pickups.gd": "707818c490ed5dd99b90d5ebff8e7b8212fe832c378f2527681e259fbbd5f9d4",
-      "godot/world/presentation.gd": "b7dbd839627526bff16d55b31c92face8fcf3d248302210b0cfc805693ea4892",
+      "godot/world/presentation.gd": "c464a7f383322f17b201e6922571173188480548f60d7505aa958ad1f455d21b",
       "godot/world/projectiles.gd": "d8004fe4721c66a4d2c8a799c0485d0cd5bd9dc8947ae4278c1e8dfe0201efdf",
       "godot/world/remote_motion.gd": "dbb32f63c7706ccb5eb9b8df9784630cd14deec040b89fc454e9905bafcbeb5d",
       "godot/world/scenery_settings.gd": "82f3d50051cdcd787a1314298b1e34c4e4f6135907c2e030fffa75d46b3ad8a2",
-      "godot/world/session.gd": "7c49f5ca4c347617aa9fe8dafd1c45887578fa001cfa8ba9c6398f06d7a96067",
+      "godot/world/session.gd": "32ff87d491dad9f47d555fa3eec701fbfbbfa47608075ebbc2796b5c291b549c",
       "godot/world/viewer.gd": "1b6ef1540e69e0e3e4eb942e04d2ea43f8eb1598248965092755f46c8525d2e8",
       "godot/world/weapon_selection.gd": "079435cbe98558ae6aa5918bdc4cc217b7504230c0807811624bef559ecc578e",
-      "tools/godot-package/feature_dependencies.mjs": "bc2a3d53839c38a9f63104554a7dae0bb9fc44a921bba1117ec05a42018a267d"
+      "port/expansion-four/stormglass/PAIR-PROPOSAL-J.json": "a4a391e7e8dcb5d11dc037de44b8a02a9a4edf057c3eb41bae58f20d2b6980c8",
+      "port/expansion-four/stormglass/evidence/production-j/art-audit.json": "e6daf490140ca3234fc762ac8349f6420bc712b13026e14b32a71b42bbb24b04",
+      "port/expansion-four/stormglass/evidence/production-j/generic-receipt.json": "df3ec7f7a5b2ab0b76701ad9ee777eeeb934f64fdbca984a76262b1ab91697b3",
+      "port/expansion-four/stormglass/evidence/production-j/release-j.json": "b4def8ada5f7c18ef55d6989b36f54031c90044fc30c3ef0a8fc172bea4f8ed5",
+      "port/expansion-four/stormglass/evidence/production-j/runs/2026-10-03T05-59-03.606Z-stormglass-causeway-puma-race/outcome.json": "55f335feed4c409f0d0f95a50a88750b62679fb941167d599350ad33a85f31d3",
+      "port/expansion-four/stormglass/evidence/production-j/runs/2026-10-03T05-59-03.606Z-stormglass-causeway-puma-race/teardown.json": "2a0657256da442fc014d4cb1df484ed20b49a5fcb96146eaa3815a9dac2b7b02",
+      "port/expansion-four/stormglass/evidence/production-j/runs/2026-10-03T06-00-57.076Z-stormglass-causeway-puma-race/outcome.json": "d8dc81f5551a4e93718f1ce281241cb1fc7a521b228af117fb6bd7e490788d0e",
+      "port/expansion-four/stormglass/evidence/production-j/runs/2026-10-03T06-00-57.076Z-stormglass-causeway-puma-race/teardown.json": "9d2137486f71b247a01b5d6b0cdef177801611adb0a2e20e7e6d890dad5c111d",
+      "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054201.375093Z-build/build-process.json": "bc48cea95892feb9c27ee3b4204cb2a2241af2e79b21b8e79f862bb21e141a17",
+      "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054201.375093Z-build/build.log": "4196d6dd932dc37b419871a75fe247a0467fc5694f09c63c9b95fc2205bfdcf1",
+      "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054210.294563Z-import/import-process.json": "459d40c35648aa93885b420d75ada2197046bc3a853c11ab1c955652d2f8b8b4",
+      "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054210.294563Z-import/import.log": "77db4815e0ce18a3cef580134d3feba3d024ddc0ce5986ef0ad0fa166574049d",
+      "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054509.988544Z-reopen-original/reopen-original-process.json": "1136ff9354ebcd37f921d5cb2894b5e0f8e38f71b9a1b524bbbafb349a5ec664",
+      "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054509.988544Z-reopen-original/reopen-original.log": "084b33685bcac3644ed232205d262398fcb4f434ca3476bb7f31b63df8dcd1f7",
+      "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054515.058809Z-reopen/independent-reopen-process.json": "34137e690391795ff0296ba770e6f409bf0ac15346e67b20c91d2b1014d8dabc",
+      "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054515.058809Z-reopen/independent-reopen.log": "5867e400a3010c89aa9666d01cdc5905374fb0424939418fec83ec61715c69e9",
+      "port/expansion-four/stormglass/evidence/production-j/stages/20261003T055018.455696Z-native/native-process.json": "874b2c8747421f33de5bfc3bf01257bb3daa2a5d6fe6d3356440be8bbbe5aebf",
+      "port/expansion-four/stormglass/evidence/production-j/stages/20261003T055018.455696Z-native/native.log": "eb085e8d4547fd434421218142adf7be827aeba0db03caa0cbb66f9c3e221f2f",
+      "port/expansion-four/stormglass/evidence/production-j/summary.json": "d2c6771b1ef54660667d996d022b24e115b6adeead8db718a058fa1c61ad6e1e",
+      "tools/godot-multiplayer/new-maps/stormglass-causeway/architecture.py": "1fbdb7a6198e4fcfae4adc2fbebcf28933e504fe4aa98002d42692742cc68664",
+      "tools/godot-multiplayer/new-maps/stormglass-causeway/export-report.json": "ddfdb490789601f033c5caa39ee78ed5036d25c3e2c7cb669ffc1650cf20e300",
+      "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d",
+      "tools/godot-package/feature_dependencies.mjs": "bc2a3d53839c38a9f63104554a7dae0bb9fc44a921bba1117ec05a42018a267d",
+      "tools/godot-package/stormglass_imports.mjs": "8e5827c156dae2dacbef20f80c77c8e36a1cf41e3579699c6aa862f2ecd0bc3c",
+      "tools/godot-package/stormglass_j_inventory.json": "edb811fd503d343314f6fad4bb469a0e73195f643d7d3af34684598712190fb4"
     },
-    "runtimeChanged": {},
-    "sharedRuntimeChanged": {},
-    "previousPackageFingerprint": "21cf335a4eacddbe9ca942d639b176a1ee8984192c6d39217ddde0c1223c4059",
-    "packageFingerprint": "4e888f4dc5f632fc852c6f933f3af7a9a689e3e5fdfc8749beb8a46c011e6547",
-    "dependencyRoots": [
-      "godot/ui/main_menu.gd",
-      "godot/ui/local_settings.gd",
-      "godot/campaign/demo.gd",
-      "godot/fighting/main.gd",
-      "godot/combined_arms/demo.gd",
-      "godot/sports/demo.gd",
-      "godot/multiplayer_worlds/sports_demo.gd",
-      "godot/world/session.gd"
-    ],
-    "review": {
-      "foundation": "a5c26f25",
-      "scope": "supporting package dependency reconciliation only; native feature checks pending",
-      "nativeFeatureChecks": "pending",
-      "document": "port/finish/motion/FEATURE_PACKAGE_RECONCILIATION.md"
-    },
-    "evidencePolicy": "Original asset production/native evidence and F/H/I reconciliation entries remain immutable. This package-input advance is not new UI, controls, motion, first-person or vehicle native acceptance."
-  },
-  "stormglassPackageVerifierAdvance": {
-    "previousReceipt": {
-      "commit": "38dfb3bd",
-      "path": "tools/godot-package/production_receipts/abyssal-pressureworks.json",
-      "sha256": "52d735bb4a5cd01e7f9c7ae6c307aa52c161a7baae69d59fc493546b97321075"
-    },
-    "changed": {
-      "godot/multiplayer_worlds/catalog.gd": {
-        "before": "65a0b3f6fb962eec1cf0b2c0c42a9bfd27713cc850f799e5ab1cc7c72d0cc53a",
-        "after": "c902cb9c083772c3ad3c75fdc1f8e3a5f1c4e226f54aafb67b7b32c19c76e61d"
-      },
+    "runtimeChanged": {
       "godot/multiplayer_worlds/sports_demo.gd": {
-        "before": "f6a121b02b8b1776d59140120651abf6c35da4b25453c73618bf55a0f307930b",
+        "before": "78b86c3874bbc7e91069ac6c8d65fb9468fecbfcf7cbe34f63fcbdd8c13232b9",
         "after": "928cab00e03bafd6088b16734833b8f1c4cea6b341353235d63f7c1f04d187c8"
       },
-      "godot/source_operators/locomotion.gd": {
-        "before": "584a0c23611962fff1b1c1a511a640ec26227a17bcd2639c305637fb007545dd",
-        "after": "d6d756911e9a273c7dbb3e88b88e79d67234fa0a6166c59dc2dfa6ca9e9ae0e3"
+      "godot/sports/chase.gd": {
+        "before": "57b92456b701f39f75e84864eedc03809238adbe849f0675240abdf03a5f3abc",
+        "after": "c589874c000503647a79fc435b3715fffe6027ab0fc89744975f68900e69ef17"
       },
-      "godot/source_operators/operator_visual.gd": {
-        "before": "a5d6bc153cd99e3928b43dfe6d98023445ad3d23d6e4a3cf238c64f19f3e93ee",
-        "after": "8af316a41810cd86a70cb8a00741c8ae4ceaae73eb579fc157d3a09b76ecd92a"
-      },
-      "godot/sports/av_lifecycle.gd": {
-        "before": "a266a96e3bf7c5d186cd279ba9a0b619fb5f0c5fcd26a941ee1b251e43b1a64c",
-        "after": "9811ae6751579d3ce80a54f15a1889c2eccba3e7f724610b89a66c2f5fdbbbb5"
-      },
-      "godot/sports/demo.gd": {
-        "before": "dc030049e3f49d6756aef76c77f5cc1dc3f52deb9a7c9b1a26b8d02113e00102",
-        "after": "c9f6ab3962ca0dcf184b5c1801c938065a5339e64cf87a1ff4c0dc2031abb01b"
+      "godot/sports/controls.gd": {
+        "before": "6c55e17862ce148b23998a7725d848d2f3744af4342217108f81105373a21822",
+        "after": "3401604703866777ad2875260b4c918ed5faa15881593bcf9849b797c315c7c2"
       },
       "godot/sports/hud.gd": {
-        "before": "be4daecdd6c92711c88be8a7a5d0a198bbd8cc7200aadc61371e2fda4e8f1a16",
+        "before": "08ffcb18b690917ae0740d3fb2dc91a9c13c04f5f9c8aa9aa05924407ff02250",
         "after": "eaa003b9b5cc473a424cf6338523593d1d082ef58a6b6947264a6b126eff1e0e"
       },
       "godot/vehicle_assets/attachment.gd": {
         "before": "13fc00ebd1d5495769df1d120329e5462724cf09487697a6258f92a1545f3a63",
         "after": "89a11d2c2987b5be14f8d6458079cd27dc16f461b1530ce66d6ac9e3b4e66f21"
-      },
-      "godot/world/presentation.gd": {
-        "before": "b7dbd839627526bff16d55b31c92face8fcf3d248302210b0cfc805693ea4892",
-        "after": "c464a7f383322f17b201e6922571173188480548f60d7505aa958ad1f455d21b"
-      },
-      "godot/world/session.gd": {
-        "before": "7c49f5ca4c347617aa9fe8dafd1c45887578fa001cfa8ba9c6398f06d7a96067",
-        "after": "32ff87d491dad9f47d555fa3eec701fbfbbfa47608075ebbc2796b5c291b549c"
-      },
-      "port/multiplayer-worlds/catalog.mjs": {
-        "before": "12ae860e3186c5ccf547452183dd2dcec81af1fb444b11cddade4815cab3ad96",
-        "after": "a74314f0b84143ae36a2983f102613ffcced69bfbecc891597797ec268eee3f1"
-      },
-      "tools/godot-package/production_resources.mjs": {
-        "before": "bb057e2fb671faf8cf635c80b29ed574bc2fc0eda97e3268fb0e82cd8ee02bce",
-        "after": "c026e97ba7665458774e6c644cac999d425b14512cc12c74b57afe2cf2a8455d"
       }
     },
-    "added": {
-      "godot/replay/stage.gd": "9d80c822737534c7606981a0d63f8676a2cc853810c8cfb1699b6519af141cc0",
-      "godot/source_operators/melee_events.gd": "427cbf26efb0b289afc4b595e1be1904f470db869d632bca02ec25887dfe2e4f",
-      "godot/source_operators/melee_pose.gd": "1cfce0989b5cdb64c9df9193050f37ecb7502b59cb7c62113d8089b1cd37e3e9",
-      "tools/godot-package/stormglass_imports.mjs": "8e5827c156dae2dacbef20f80c77c8e36a1cf41e3579699c6aa862f2ecd0bc3c"
+    "nativeToFeatureAdvance": {
+      "to": "a5c26f25",
+      "changed": {
+        "godot/multiplayer_worlds/sports_demo.gd": {
+          "before": "78b86c3874bbc7e91069ac6c8d65fb9468fecbfcf7cbe34f63fcbdd8c13232b9",
+          "after": "f6a121b02b8b1776d59140120651abf6c35da4b25453c73618bf55a0f307930b"
+        },
+        "godot/sports/chase.gd": {
+          "before": "57b92456b701f39f75e84864eedc03809238adbe849f0675240abdf03a5f3abc",
+          "after": "c589874c000503647a79fc435b3715fffe6027ab0fc89744975f68900e69ef17"
+        },
+        "godot/sports/controls.gd": {
+          "before": "6c55e17862ce148b23998a7725d848d2f3744af4342217108f81105373a21822",
+          "after": "3401604703866777ad2875260b4c918ed5faa15881593bcf9849b797c315c7c2"
+        },
+        "godot/sports/hud.gd": {
+          "before": "08ffcb18b690917ae0740d3fb2dc91a9c13c04f5f9c8aa9aa05924407ff02250",
+          "after": "be4daecdd6c92711c88be8a7a5d0a198bbd8cc7200aadc61371e2fda4e8f1a16"
+        }
+      }
     },
-    "runtimeChanged": {},
-    "nativeToFeatureAdvance": null,
     "raceSourceAdvance": {
       "from": "9746a9e2",
       "to": "4cc0292d",
@@ -1012,14 +861,32 @@
         "godot/source_operators/melee_pose.gd": "1cfce0989b5cdb64c9df9193050f37ecb7502b59cb7c62113d8089b1cd37e3e9"
       }
     },
-    "previousPackageFingerprint": "4e888f4dc5f632fc852c6f933f3af7a9a689e3e5fdfc8749beb8a46c011e6547",
-    "packageFingerprint": "640c9c71c63a5d4c76bdd1daedfef2632aefb5351db7aa5ed117ac70cefd8a7f",
+    "previousPackageFingerprint": "de46a0c87c8c72e5185c158a55f6be8ea6fe506506c745b7c69e07a840403078",
+    "packageFingerprint": "b642043400fb70439794b486fb7ddffc30cc58acc37fb1419b45286416e6cd93",
     "review": {
       "foundation": "38dfb3bd",
       "scope": "supporting package dependency reconciliation only; native feature checks pending",
       "nativeFeatureChecks": "pending",
       "document": "port/finish/STORMGLASS_PACKAGE_PROMOTION.md"
     },
-    "reason": "One Stormglass public Puma race registration after featureAdvance; exact catalog/verifier, 4cc0292d race HUD/audio/attachment and 38dfb3bd melee presentation reconciliation. Original E/F/H/I/native evidence and all previous advances retained; new native checks pending."
+    "reason": "Original J producer and private native snapshots preserved. Runtime chain: J to a5c26f25 features to 4cc0292d shared race fixes and 38dfb3bd melee presentation; native pending. One public Puma race pair; flat-road concession."
+  },
+  "integrationReview": {
+    "acceptedBy": "parent actual overview/terminal/freight bore/surgeworks/wide gameplay/compact results review",
+    "foundation": "38dfb3bd",
+    "publicModes": [
+      "puma-race"
+    ],
+    "drivableReliefMetres": 0,
+    "sharedProductionFeatureAcceptance": false,
+    "limitations": [
+      "explicit flat-road concession; zero drivable relief; no jumps or elevated road claims",
+      "hard water boundary",
+      "dark walls and scenic repetition",
+      "private fixture patched HUD name, compact results and audio cleanup; shared fixes integrated at 4cc0292d but native checks pending",
+      "J used historical camera; new feature acceptance pending; no hardware performance or human-feel claim"
+    ],
+    "assetReady": true,
+    "nativeEvidence": "port/expansion-four/stormglass/evidence/production-j/summary.json"
   }
 }

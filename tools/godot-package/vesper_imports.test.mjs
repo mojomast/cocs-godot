@@ -7,11 +7,11 @@ import {VESPER_GLB,VESPER_INVENTORY,vesperImportPaths,verifyVesperImports} from 
 import {productionResources,REQUIREMENTS} from './production_resources.mjs';
 const read=p=>readFileSync(p),hash=b=>createHash('sha256').update(b).digest('hex');
 const options={read,has:existsSync,worldIds:['parallax-observatory','vesper-viaduct','abyssal-pressureworks'],strict:false};
-test('H exact 16 PNGs and 17 import sidecars retain promotion; strict final still rejects Stormglass',()=>{
+test('H exact 16 PNGs and 17 import sidecars retain promotion; omitted Stormglass registration blocks strict inventory',()=>{
  const paths=vesperImportPaths();assert.equal(paths.length,33);assert.equal(paths.filter(p=>p.endsWith('.png')).length,16);
  verifyVesperImports(read);
  const result=productionResources(options);assert.deepEqual(result.pending,['stormglass-causeway']);
- assert.equal(result.units['vesper-viaduct'].expected.packageInputs.length,386);
+ assert.equal(result.units['vesper-viaduct'].expected.packageInputs.length,390);
  for(const p of paths)assert.ok(Object.hasOwn(p.endsWith('.import')?result.provenance:result.resources,p));
  assert.throws(()=>productionResources({...options,strict:true}),/Required final production units remain pending/);
 });

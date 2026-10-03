@@ -1,0 +1,230 @@
+{
+  "foundation": "9746a9e2",
+  "files": [
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway.glb",
+      "bytes": 3901880,
+      "sha256": "ff318582fd47ca633ef74da1aa4a6aa2b5b691800f12fb3210f3dac140cb5b33"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway.glb.import",
+      "bytes": 1092,
+      "sha256": "cf831e83c7ad01d83456f6fa0385f6b3703afe16cb490572235b0990ca3b57fb"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_asphalt.png",
+      "bytes": 6429,
+      "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_asphalt.png.import",
+      "bytes": 1128,
+      "sha256": "afe4adccc11eb6af9dbc2a025639af1e58eeb444d5f454ee31a370b6e5724f44"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_brick.png",
+      "bytes": 6429,
+      "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_brick.png.import",
+      "bytes": 1123,
+      "sha256": "9527492265535e36a578ab68fff3a259308fca8a25caebacf28f17b4cb48e3b1"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_concrete.png",
+      "bytes": 6429,
+      "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_concrete.png.import",
+      "bytes": 1132,
+      "sha256": "73ae95b831e3aa848a538f40172c45c99399e0ed935d8d4f5fb423a877f77626"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_salt.png",
+      "bytes": 6429,
+      "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_salt.png.import",
+      "bytes": 1120,
+      "sha256": "c81de06811c531b7a0f17e4c7d95267d8b2fbedf474cae72a684f312b25b1fb3"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_steel.png",
+      "bytes": 5817,
+      "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocalNormal_steel.png.import",
+      "bytes": 1123,
+      "sha256": "9f7c19904be08aeddfadb20ca859c9dfa3121f6be5291e13ca39bf45a1520ac6"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_asphalt.png",
+      "bytes": 1501,
+      "sha256": "2293522fa2dc0d82414e8efab452f597e9226c7f6b804e0f435eb6cf4d91accf"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_asphalt.png.import",
+      "bytes": 1110,
+      "sha256": "8c29ad9bc79d4825892f39fb60979b23a12fb961213c2e653adf67ce85d38c91"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_brick.png",
+      "bytes": 2181,
+      "sha256": "610dfcab946aa0c6ec52248f88b8903851f44e9dc4f950a259123a80a775a823"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_brick.png.import",
+      "bytes": 1105,
+      "sha256": "a2a0d2987fad7c96b34d65ceb2e89530ff73d4c6ebecd239c7e7019e8a1d624f"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_concrete.png",
+      "bytes": 2777,
+      "sha256": "0dec7f448cc836d1bc1192c68d9563145ad70f264f43ef3a47852c31e46db105"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_concrete.png.import",
+      "bytes": 1114,
+      "sha256": "9268aa9bd026ca7c6b66c0f95f2057a9820fe362fc6416d76012c4d70afb8acc"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_salt.png",
+      "bytes": 3673,
+      "sha256": "abe71fda4751c6acd508b977d357b50f381535de1975d4bf49bc516c63da6997"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_salt.png.import",
+      "bytes": 1102,
+      "sha256": "84ac5af14a187a910cabd2e93c004c56fd62de6e9624ff55c76f12c795634c90"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_steel.png",
+      "bytes": 2358,
+      "sha256": "ccba777af4ff6e05051281a24ca913a3b8e15e82dd94a92b75d3fa555bb2c7d9"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_steel.png.import",
+      "bytes": 1105,
+      "sha256": "e02cc407466dfb5e82a3f6ece0e701e6b80d9b36d1da04c8c9eb4c8f4d4510c3"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_teal.png",
+      "bytes": 1803,
+      "sha256": "70c7dff7c89c343ba9e059327476f4fba48f1b918daf55cb51c73c23c2e58301"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_teal.png.import",
+      "bytes": 1102,
+      "sha256": "4eb564bca9ccd57b3a0dc54b7df681db446f0b42441141da3d23f7613df6695b"
+    },
+    {
+      "path": "port/expansion-four/stormglass/PAIR-PROPOSAL-J.json",
+      "bytes": 1776,
+      "sha256": "a4a391e7e8dcb5d11dc037de44b8a02a9a4edf057c3eb41bae58f20d2b6980c8"
+    },
+    {
+      "path": "port/expansion-four/stormglass/evidence/production-j/art-audit.json",
+      "bytes": 5537,
+      "sha256": "e6daf490140ca3234fc762ac8349f6420bc712b13026e14b32a71b42bbb24b04"
+    },
+    {
+      "path": "port/expansion-four/stormglass/evidence/production-j/generic-receipt.json",
+      "bytes": 6016,
+      "sha256": "df3ec7f7a5b2ab0b76701ad9ee777eeeb934f64fdbca984a76262b1ab91697b3"
+    },
+    {
+      "path": "port/expansion-four/stormglass/evidence/production-j/release-j.json",
+      "bytes": 813,
+      "sha256": "b4def8ada5f7c18ef55d6989b36f54031c90044fc30c3ef0a8fc172bea4f8ed5"
+    },
+    {
+      "path": "port/expansion-four/stormglass/evidence/production-j/runs/2026-10-03T05-59-03.606Z-stormglass-causeway-puma-race/outcome.json",
+      "bytes": 19009,
+      "sha256": "55f335feed4c409f0d0f95a50a88750b62679fb941167d599350ad33a85f31d3"
+    },
+    {
+      "path": "port/expansion-four/stormglass/evidence/production-j/runs/2026-10-03T05-59-03.606Z-stormglass-causeway-puma-race/teardown.json",
+      "bytes": 638,
+      "sha256": "2a0657256da442fc014d4cb1df484ed20b49a5fcb96146eaa3815a9dac2b7b02"
+    },
+    {
+      "path": "port/expansion-four/stormglass/evidence/production-j/runs/2026-10-03T06-00-57.076Z-stormglass-causeway-puma-race/outcome.json",
+      "bytes": 19016,
+      "sha256": "d8dc81f5551a4e93718f1ce281241cb1fc7a521b228af117fb6bd7e490788d0e"
+    },
+    {
+      "path": "port/expansion-four/stormglass/evidence/production-j/runs/2026-10-03T06-00-57.076Z-stormglass-causeway-puma-race/teardown.json",
+      "bytes": 638,
+      "sha256": "9d2137486f71b247a01b5d6b0cdef177801611adb0a2e20e7e6d890dad5c111d"
+    },
+    {
+      "path": "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054201.375093Z-build/build-process.json",
+      "bytes": 606,
+      "sha256": "bc48cea95892feb9c27ee3b4204cb2a2241af2e79b21b8e79f862bb21e141a17"
+    },
+    {
+      "path": "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054201.375093Z-build/build.log",
+      "bytes": 3706,
+      "sha256": "4196d6dd932dc37b419871a75fe247a0467fc5694f09c63c9b95fc2205bfdcf1"
+    },
+    {
+      "path": "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054210.294563Z-import/import-process.json",
+      "bytes": 555,
+      "sha256": "459d40c35648aa93885b420d75ada2197046bc3a853c11ab1c955652d2f8b8b4"
+    },
+    {
+      "path": "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054210.294563Z-import/import.log",
+      "bytes": 3948,
+      "sha256": "77db4815e0ce18a3cef580134d3feba3d024ddc0ce5986ef0ad0fa166574049d"
+    },
+    {
+      "path": "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054509.988544Z-reopen-original/reopen-original-process.json",
+      "bytes": 743,
+      "sha256": "1136ff9354ebcd37f921d5cb2894b5e0f8e38f71b9a1b524bbbafb349a5ec664"
+    },
+    {
+      "path": "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054509.988544Z-reopen-original/reopen-original.log",
+      "bytes": 269,
+      "sha256": "084b33685bcac3644ed232205d262398fcb4f434ca3476bb7f31b63df8dcd1f7"
+    },
+    {
+      "path": "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054515.058809Z-reopen/independent-reopen-process.json",
+      "bytes": 626,
+      "sha256": "34137e690391795ff0296ba770e6f409bf0ac15346e67b20c91d2b1014d8dabc"
+    },
+    {
+      "path": "port/expansion-four/stormglass/evidence/production-j/stages/20261003T054515.058809Z-reopen/independent-reopen.log",
+      "bytes": 2198,
+      "sha256": "5867e400a3010c89aa9666d01cdc5905374fb0424939418fec83ec61715c69e9"
+    },
+    {
+      "path": "port/expansion-four/stormglass/evidence/production-j/stages/20261003T055018.455696Z-native/native-process.json",
+      "bytes": 588,
+      "sha256": "874b2c8747421f33de5bfc3bf01257bb3daa2a5d6fe6d3356440be8bbbe5aebf"
+    },
+    {
+      "path": "port/expansion-four/stormglass/evidence/production-j/stages/20261003T055018.455696Z-native/native.log",
+      "bytes": 273,
+      "sha256": "eb085e8d4547fd434421218142adf7be827aeba0db03caa0cbb66f9c3e221f2f"
+    },
+    {
+      "path": "port/expansion-four/stormglass/evidence/production-j/summary.json",
+      "bytes": 6630,
+      "sha256": "d2c6771b1ef54660667d996d022b24e115b6adeead8db718a058fa1c61ad6e1e"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/stormglass-causeway/architecture.py",
+      "bytes": 6249,
+      "sha256": "1fbdb7a6198e4fcfae4adc2fbebcf28933e504fe4aa98002d42692742cc68664"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/stormglass-causeway/export-report.json",
+      "bytes": 570,
+      "sha256": "ddfdb490789601f033c5caa39ee78ed5036d25c3e2c7cb669ffc1650cf20e300"
+    }
+  ]
+}

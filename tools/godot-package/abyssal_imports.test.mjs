@@ -7,11 +7,11 @@ import {ABYSSAL_GLB,ABYSSAL_INVENTORY,abyssalImportPaths,verifyAbyssalImports} f
 import {productionResources,REQUIREMENTS} from './production_resources.mjs';
 const read=p=>readFileSync(p),hash=b=>createHash('sha256').update(b).digest('hex');
 const options={read,has:existsSync,worldIds:['parallax-observatory','vesper-viaduct','abyssal-pressureworks'],strict:false};
-test('I exact five images and six sidecars admit sixth unit; strict final rejects Stormglass',()=>{
+test('I exact five images and six sidecars retain promotion; omitted Stormglass registration blocks strict inventory',()=>{
  const paths=abyssalImportPaths();assert.equal(paths.length,11);assert.equal(paths.filter(p=>p.endsWith('.png')).length,5);
  verifyAbyssalImports(read);
  const result=productionResources(options);assert.deepEqual(result.pending,['stormglass-causeway']);
- assert.equal(result.units['abyssal-pressureworks'].expected.packageInputs.length,370);
+ assert.equal(result.units['abyssal-pressureworks'].expected.packageInputs.length,374);
  for(const p of paths)assert.ok(Object.hasOwn(p.endsWith('.import')?result.provenance:result.resources,p));
  assert.throws(()=>productionResources({...options,strict:true}),/Required final production units remain pending/);
 });
