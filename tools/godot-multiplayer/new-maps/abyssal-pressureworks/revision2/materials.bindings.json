@@ -1,0 +1,26 @@
+{
+  "map": "abyssal-pressureworks",
+  "pack": {
+    "base": "assets/moth/map-variety-20261003/candidate-v2/manifest.json",
+    "overlay": "assets/moth/map-variety-20261003/candidate-v3/manifest.json"
+  },
+  "materials": {
+    "copper-patina": {"role": "surface", "material": "copper-patina", "normal": true},
+    "copper-heat-oxide": {"role": "surface", "material": "copper-heat-oxide", "normal": true},
+    "cast-seams": {"role": "surface", "material": "cast-seams", "normal": true},
+    "ceramic-enamel": {"role": "surface", "material": "ceramic-enamel", "normal": true},
+    "oxidized-iron": {"role": "surface", "material": "oxidized-iron", "normal": true},
+    "basalt-strata": {"role": "surface", "material": "basalt-strata", "normal": true},
+    "deep-silt": {"role": "surface", "material": "deep-silt", "normal": true},
+    "salt-limestone": {"role": "surface", "material": "salt-limestone", "normal": true},
+    "observation-glass": {"role": "preserve"},
+    "equalizer-emissive": {"role": "preserve"},
+    "navy": {"role": "surface", "material": "quay-damp-horizontal", "normal": true},
+    "ivory": {"role": "surface", "material": "ceramic-enamel", "normal": true},
+    "coral": {"role": "surface", "material": "terracotta", "normal": true},
+    "copper": {"role": "surface", "material": "copper-patina", "normal": true},
+    "amber": {"role": "preserve"},
+    "cyan": {"role": "preserve"},
+    "glass": {"role": "preserve"}
+  }
+}
