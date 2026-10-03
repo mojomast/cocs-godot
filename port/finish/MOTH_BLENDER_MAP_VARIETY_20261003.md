@@ -1,5 +1,30 @@
 # New Moth resources and Blender-authored map variety
 
+## Latest production checkpoint — Foundry R delivered
+
+R owner delivered **`6ff4079e`** and explicitly released. Parent inspected the
+release receipt's three empty process scans and available locks, plus several
+actual Blender/native images. The receipt does not enumerate owned process-group
+IDs or audit timestamps. No new heavy grant is active; subsequent references to
+R's scope below describe its completed grant.
+
+**Screenshots:** <http://100.125.104.79:8796/foundry-r4/> — 22 original PNGs
+(eight same-camera Blender base/candidate pairs and six native candidate stills).
+Gallery owner verified 30 HTTP/hash checks. These are work-in-progress views;
+parent observed dark, gray-green areas and strong native aliasing, so visual
+signoff remains pending.
+
+Delivered artifacts: editable packed master (276 source objects / 30 images),
+GLB with 111,454 triangles / 16 batches / 13,363,544 bytes, exact material encoding
+receipt, staged authority, native import and 1,026 grounded nav probes / six bunker
+contacts. The GLB exceeds its 7 MB design target; no budget exception or hosted
+six-mode acceptance has been granted. Worker commit remains unmerged during
+independent Astra review `ses_efd30e1f6ffeLbhHTPoh266kZW`.
+
+Coastal Sol is integrating the actual adapter's explicit preserved-material
+contract source-only. Botanical Astra repairs continue. The next serial production
+grant follows review and dependency readiness.
+
 ## User directive and order of work
 
 The user explicitly requested Flash/Sol subagents to populate the newer maps with
