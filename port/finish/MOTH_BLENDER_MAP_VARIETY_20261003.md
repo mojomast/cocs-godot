@@ -1,5 +1,20 @@
 # New Moth resources and Blender-authored map variety
 
+## Active grant Z — exact-art Vesper native diagnostics
+
+**MOTH-BLENDER-20261003-Z is the sole heavy grant**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`. Independent review closed the fixture binding P1;
+sources are integrated as **`8b80875b` / `33afe0ec`**. Parent passed thirteen Python,
+three Node tests and explicit pinned-X artifact/negative checks. Six bounded groups
+of ten walk-only trials are authorized after import/identity checks; first genuine
+group failure stops the sequence. Static X failures remain recorded, and these
+movement-API diagnostics do not establish sprint/input/network/full-map acceptance.
+
+Parent verified lock availability at 22:38:35.483767Z with only the pre-existing
+viewer running. Z must preserve X/U evidence and release with three empty owned-
+group audits. Sol is preparing Parallax's tangent-successor production contract
+source-only; no Parallax artifact/build grant is issued.
+
 **Vesper native-binding correction delivered:** `525b9fbe` pins both authority/
 GLB variants and adds explicit imported-art binding before physics. Thirteen
 portable tests and actual pinned-X negative checks report passing. Independent

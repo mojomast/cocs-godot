@@ -7,7 +7,13 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
-**No active heavy grant. Foundry R7 Y completed and released**, delivering
+**Current heavy owner: Vesper diagnostics Z**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`. Reviewed exact-art sources are integrated through
+`33afe0ec`; parent passed thirteen Python, three Node tests and pinned-X integration
+checks. Six bounded ten-walk groups are authorized, stopping on first failed group.
+No static failures are waived. Parallax production-contract preparation is source-only.
+
+**Foundry R7 Y completed and released**, delivering
 `26da91b3` / `f3b51b2c`. Parent verified 237 hashes, three empty audits/16 groups,
 no current survivors and an available lock at 22:05:19Z. Independent artifact
 review closed all seven tangent defects with zero native waivers. R7 is integrated
@@ -25,8 +31,9 @@ is closed, but 184 stair contacts still block artifact approval.
 Vesper diagnosis is source-only. X gallery: <http://100.125.104.79:8796/botanical-x/>
 Diagnostic `902c3bbb` passed independent source review: 60 required authoritative
 stair trials pass, while native exploration remains unproven. Exact-art native
-readiness is withheld because the fixture loads accepted art without GLB pins;
-the producer is correcting binding. The 184 static contacts remain failed. The
+readiness subsequently passed review after exact GLB binding was corrected in
+`525b9fbe`, integrated as `33afe0ec`; Z now owns diagnostic execution. The 184
+static contacts remain failed. The
 Parallax three-corner proposal is source-approved but unapplied; no corrected
 artifact or new native acceptance is claimed. See `map-variety/POST_X_SOURCE_REVIEW.md`.
 (70 original PNGs, 92 HTTP/hash checks passed). No full three-map acceptance.
@@ -187,7 +194,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P, Q, R, S, T, U, V, W, X and Y have released; no heavy grant is active.**
+**P, Q, R, S, T, U, V, W, X and Y have released; Z owns native diagnostics.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -228,6 +235,12 @@ are introduced without the user's renewed scope. The subsequent overnight
 directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
+
+**Active: `MOTH-BLENDER-20261003-Z`**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `33afe0ec`. Exact accepted/X Vesper
+authority and art, genuine UID/precision import checks, six walk-only diagnostic
+groups with first-failure stop. Preserve static failures; no production movement/
+geometry changes, no public promotion. Three empty group audits and explicit release.
 
 **Released: `MOTH-BLENDER-20261003-Y`**, Astra
 `ses_efd30e1f6ffeLbhHTPoh266kZW`, foundation `10d9938f`. Actual seven-entry

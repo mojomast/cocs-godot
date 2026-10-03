@@ -1,4 +1,26 @@
-# Post-X source review — diagnosis approved; exact-art native fixture blocked
+# Post-X source review — diagnosis and exact-art fixture approved
+
+## Current disposition — binding P1 closed; Z diagnostics authorized
+
+Independent focused re-review approved `902c3bbb` + `525b9fbe` for source
+integration and bounded native diagnostic readiness. Parent selected them as
+**`8b80875b` / `33afe0ec`** and passed thirteen Python tests, three Node tests
+(movement plus strict shipping closure), and explicit pinned-X integration checks.
+The tests reject missing imports/art, tampering and accepted-art substitution even
+with an edited manifest. Both fixed identity sets and actual inventories agree
+between Python and GDScript; selected art attaches before the first physics wait.
+
+After confirming lock availability and only the pre-existing viewer at
+2026-10-03T22:38:35.483767Z, parent issued **MOTH-BLENDER-20261003-Z** to Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`. Scope: import/pin/reimport then six bounded groups
+of ten walk-only exact-art exploration diagnostics. Stop on the first failed group;
+retain parse/import/identity/stall failures. Actual native success is pending.
+Z is the sole heavy grant. No geometry/controller changes or static-contact waiver.
+
+Parallax's approved three-corner proposal is now assigned to Sol
+`ses_efd55bb5cffeJRWNA4xZq8O6cE` for **source-only** production-contract preparation,
+including editable-master equivalence, fresh reopen and future native basis proof.
+It has no heavy authorization. Earlier findings below are retained history.
 
 ## Binding correction delivered for focused re-review
 
