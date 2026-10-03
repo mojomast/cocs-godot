@@ -1,0 +1,542 @@
+{
+  "grant": "MOTION-UI-NATIVE-20261003-K",
+  "released": true,
+  "owned_groups": [
+    1911279,
+    1926227,
+    1926365,
+    1928074,
+    1929237,
+    1929377,
+    1929447,
+    1959330,
+    1964537,
+    1964747,
+    1964858,
+    1964925,
+    1964994,
+    1965585,
+    1965655,
+    1965779,
+    1966072,
+    1966131,
+    1966172,
+    1988413,
+    1988714,
+    1988872,
+    1988986,
+    1989045,
+    1989655,
+    1992153,
+    1992289,
+    1992451,
+    1993999,
+    1995182,
+    1998863,
+    2004085,
+    2005748,
+    2005894,
+    2006173,
+    2009775,
+    2014384,
+    2022980,
+    2030088,
+    2037327,
+    2038876,
+    2039037,
+    2039544,
+    2039669,
+    2039728,
+    2039790,
+    2045572,
+    2045710,
+    2046114,
+    2046219,
+    2046268,
+    2046313,
+    2046317,
+    2046394,
+    2052040,
+    2052153,
+    2052227,
+    2052647,
+    2052715,
+    2052757,
+    2052810,
+    2052814,
+    2052850,
+    2061333,
+    2061479,
+    2061578,
+    2062311,
+    2062451,
+    2062500,
+    2062634,
+    2062639,
+    2062701,
+    2070448,
+    2084841
+  ],
+  "legacy_attempts_with_reaped_descendant_receipts_but_no_pgid": 50,
+  "receipts": [
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-initial/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-import-fix/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-3/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-4/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-5/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-6/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-parent4cc-import-contracts/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-7/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-bridge-first/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-bridge-typed/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-operator-graphics/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-rest-contracts/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-rest-fixes/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-fps-graphics/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-motion-integral/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-vehicle-live/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-vehicle-live-deps/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-vehicle-live-authority/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-vehicle-live-restart-compact/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-finish-binder/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-live-kick/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-live-kick-tcp/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-live-kick-semantic/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-live-kick-software/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-final-operator-graphics/queue.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-live-kick/live-kick/producer/summary.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-live-kick-tcp/live-kick/producer/summary.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-live-kick-semantic/live-kick/producer/summary.json",
+    "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-live-kick-software/live-kick/producer/summary.json"
+  ],
+  "audits": [
+    {
+      "at": "2026-10-03T07:02:44.462254+00:00",
+      "matches": [],
+      "unowned_native_observations": [
+        {
+          "pid": 70662,
+          "pgid": 70662,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 175537,
+          "pgid": 175537,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 176009,
+          "pgid": 176009,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 176505,
+          "pgid": 176505,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 176934,
+          "pgid": 176934,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 177437,
+          "pgid": 177437,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 177961,
+          "pgid": 177961,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 178459,
+          "pgid": 178459,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 2492715,
+          "pgid": 2492715,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 2523017,
+          "pgid": 2522902,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb :99 -screen 0 1440x900x24 -nolisten tcp ",
+          "cwd": ""
+        },
+        {
+          "pid": 2585873,
+          "pgid": 2585868,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb :99 -screen 0 1440x900x24 -nolisten tcp ",
+          "cwd": ""
+        },
+        {
+          "pid": 2598700,
+          "pgid": 2598689,
+          "state": "S",
+          "comm": "godot-bin",
+          "command": "/opt/viewer/godot-bin --path /home/browser/viewer --rendering-method gl_compatibility --audio-driver Dummy res://asset_viewer/viewer.tscn ",
+          "cwd": ""
+        },
+        {
+          "pid": 3002226,
+          "pgid": 3001069,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix ",
+          "cwd": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port"
+        },
+        {
+          "pid": 3003879,
+          "pgid": 3003347,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb :91 -screen 0 1280x800x24 -nolisten tcp ",
+          "cwd": "/tmp/opencode/grainprobe"
+        },
+        {
+          "pid": 3005999,
+          "pgid": 3004479,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix ",
+          "cwd": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port"
+        },
+        {
+          "pid": 3094547,
+          "pgid": 3093474,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix ",
+          "cwd": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port"
+        },
+        {
+          "pid": 3113490,
+          "pgid": 3113486,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb :78 -screen 0 1600x1000x24 -nolisten tcp ",
+          "cwd": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-03T07:02:44.810703+00:00",
+      "matches": [],
+      "unowned_native_observations": [
+        {
+          "pid": 70662,
+          "pgid": 70662,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 175537,
+          "pgid": 175537,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 176009,
+          "pgid": 176009,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 176505,
+          "pgid": 176505,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 176934,
+          "pgid": 176934,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 177437,
+          "pgid": 177437,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 177961,
+          "pgid": 177961,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 178459,
+          "pgid": 178459,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 2492715,
+          "pgid": 2492715,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 2523017,
+          "pgid": 2522902,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb :99 -screen 0 1440x900x24 -nolisten tcp ",
+          "cwd": ""
+        },
+        {
+          "pid": 2585873,
+          "pgid": 2585868,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb :99 -screen 0 1440x900x24 -nolisten tcp ",
+          "cwd": ""
+        },
+        {
+          "pid": 2598700,
+          "pgid": 2598689,
+          "state": "R",
+          "comm": "godot-bin",
+          "command": "/opt/viewer/godot-bin --path /home/browser/viewer --rendering-method gl_compatibility --audio-driver Dummy res://asset_viewer/viewer.tscn ",
+          "cwd": ""
+        },
+        {
+          "pid": 3002226,
+          "pgid": 3001069,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix ",
+          "cwd": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port"
+        },
+        {
+          "pid": 3003879,
+          "pgid": 3003347,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb :91 -screen 0 1280x800x24 -nolisten tcp ",
+          "cwd": "/tmp/opencode/grainprobe"
+        },
+        {
+          "pid": 3005999,
+          "pgid": 3004479,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix ",
+          "cwd": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port"
+        },
+        {
+          "pid": 3094547,
+          "pgid": 3093474,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix ",
+          "cwd": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port"
+        },
+        {
+          "pid": 3113490,
+          "pgid": 3113486,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb :78 -screen 0 1600x1000x24 -nolisten tcp ",
+          "cwd": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-03T07:02:45.157525+00:00",
+      "matches": [],
+      "unowned_native_observations": [
+        {
+          "pid": 70662,
+          "pgid": 70662,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 175537,
+          "pgid": 175537,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 176009,
+          "pgid": 176009,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 176505,
+          "pgid": 176505,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 176934,
+          "pgid": 176934,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 177437,
+          "pgid": 177437,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 177961,
+          "pgid": 177961,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 178459,
+          "pgid": 178459,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 2492715,
+          "pgid": 2492715,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 ",
+          "cwd": ""
+        },
+        {
+          "pid": 2523017,
+          "pgid": 2522902,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb :99 -screen 0 1440x900x24 -nolisten tcp ",
+          "cwd": ""
+        },
+        {
+          "pid": 2585873,
+          "pgid": 2585868,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb :99 -screen 0 1440x900x24 -nolisten tcp ",
+          "cwd": ""
+        },
+        {
+          "pid": 2598700,
+          "pgid": 2598689,
+          "state": "S",
+          "comm": "godot-bin",
+          "command": "/opt/viewer/godot-bin --path /home/browser/viewer --rendering-method gl_compatibility --audio-driver Dummy res://asset_viewer/viewer.tscn ",
+          "cwd": ""
+        },
+        {
+          "pid": 3002226,
+          "pgid": 3001069,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix ",
+          "cwd": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port"
+        },
+        {
+          "pid": 3003879,
+          "pgid": 3003347,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb :91 -screen 0 1280x800x24 -nolisten tcp ",
+          "cwd": "/tmp/opencode/grainprobe"
+        },
+        {
+          "pid": 3005999,
+          "pgid": 3004479,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix ",
+          "cwd": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port"
+        },
+        {
+          "pid": 3094547,
+          "pgid": 3093474,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix ",
+          "cwd": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port"
+        },
+        {
+          "pid": 3113490,
+          "pgid": 3113486,
+          "state": "S",
+          "comm": "Xvfb",
+          "command": "Xvfb :78 -screen 0 1600x1000x24 -nolisten tcp ",
+          "cwd": "/home/mojo/.hermes-instances/fresh/workspace/cocs-godot-port"
+        }
+      ]
+    }
+  ],
+  "scope": "all retained groups and lane command/environment/cwd tags; unrelated browser/viewer native services recorded separately, never signalled"
+}

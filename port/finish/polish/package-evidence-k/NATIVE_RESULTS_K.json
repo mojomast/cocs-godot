@@ -1,0 +1,2110 @@
+{
+  "grant": "MOTION-UI-NATIVE-20261003-K",
+  "released": true,
+  "release_receipt": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/release-K.json",
+  "source_runtime_anchor": "278c4962",
+  "latest_by_gate": {
+    "native-import": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-parent4cc-import-contracts/queue.json",
+      "id": "native-import",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 3.649,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-ui-home-search": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-ui-home-search",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.286,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-ui-home-input": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-ui-home-input",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.564,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-ui-bindings": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-ui-bindings",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.285,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-ui-journal-model": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-ui-journal-model",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.288,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-ui-journal-input": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-ui-journal-input",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.277,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-ui-training-feedback": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-ui-training-feedback",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.359,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-ui-training-layout": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-ui-training-layout",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.36,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-fp-lifecycle": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-fp-lifecycle",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.363,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-fp-binding": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-fp-binding",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.36,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-fp-ads": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-fp-ads",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.385,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-kick-chains": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-kick-chains",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.382,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-sports-controls": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-sports-controls",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.462,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-vehicle-controls": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-vehicle-controls",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.281,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-vehicle-views": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-vehicle-views",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 1.021,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-operator-legacy": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-operator-legacy",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.381,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-operator-grips": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-operator-grips",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.384,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-operator-nine": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-operator-nine",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.385,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-biomes": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-biomes",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.38,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-animation-actors": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-animation-actors",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.38,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-world-motion": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-world-motion",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.283,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-ordinary-motion": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-ordinary-motion",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.281,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-campaign-motion": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "id": "typecheck-campaign-motion",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.28,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "ui-home-search": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-3/queue.json",
+      "id": "ui-home-search",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.475,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "ui-home-input": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-3/queue.json",
+      "id": "ui-home-input",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 9.773,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "ui-bindings": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-3/queue.json",
+      "id": "ui-bindings",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 1.013,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "ui-journal-model": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-3/queue.json",
+      "id": "ui-journal-model",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.454,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "ui-journal-input": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-3/queue.json",
+      "id": "ui-journal-input",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.448,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "ui-training-feedback": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-4/queue.json",
+      "id": "ui-training-feedback",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.718,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "ui-training-layout": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-5/queue.json",
+      "id": "ui-training-layout",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.695,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "fp-lifecycle": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-5/queue.json",
+      "id": "fp-lifecycle",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.61,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "fp-binding": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-6/queue.json",
+      "id": "fp-binding",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 1.525,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "fp-ads": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-6/queue.json",
+      "id": "fp-ads",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.815,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "kick-chains": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-parent4cc-import-contracts/queue.json",
+      "id": "kick-chains",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.516,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-sports-lifecycle": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-parent4cc-import-contracts/queue.json",
+      "id": "typecheck-sports-lifecycle",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.333,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-sports-polish": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-parent4cc-import-contracts/queue.json",
+      "id": "typecheck-sports-polish",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.238,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "sports-controls": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-7/queue.json",
+      "id": "sports-controls",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.599,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "sports-lifecycle": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-rest-contracts/queue.json",
+      "id": "sports-lifecycle",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 1.723,
+      "owned_process_group": 1964537,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "sports-polish": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-rest-fixes/queue.json",
+      "id": "sports-polish",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.503,
+      "owned_process_group": 1988413,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-operator-melee": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-bridge-typed/queue.json",
+      "id": "typecheck-operator-melee",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.44,
+      "owned_process_group": 1926227,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "operator-nine": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-motion-integral/queue.json",
+      "id": "operator-nine",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 11.851,
+      "owned_process_group": 2004085,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "operator-melee": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-motion-integral/queue.json",
+      "id": "operator-melee",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 1.247,
+      "owned_process_group": 2005748,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-operator-gallery": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-operator-graphics/queue.json",
+      "id": "typecheck-operator-gallery",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.418,
+      "owned_process_group": 1929237,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-operator-melee-gallery": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-operator-graphics/queue.json",
+      "id": "typecheck-operator-melee-gallery",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.442,
+      "owned_process_group": 1929377,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "operator-gallery": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-final-operator-graphics/queue.json",
+      "id": "operator-gallery",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 248.8,
+      "owned_process_group": 2070448,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "operator-melee-gallery": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-final-operator-graphics/queue.json",
+      "id": "operator-melee-gallery",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 12.559,
+      "owned_process_group": 2084841,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "vehicle-controls": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-rest-fixes/queue.json",
+      "id": "vehicle-controls",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.597,
+      "owned_process_group": 1988714,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "vehicle-views": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-rest-fixes/queue.json",
+      "id": "vehicle-views",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 1.347,
+      "owned_process_group": 1988872,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "operator-legacy": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-rest-contracts/queue.json",
+      "id": "operator-legacy",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 6.468,
+      "owned_process_group": 1964994,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "operator-grips": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-rest-contracts/queue.json",
+      "id": "operator-grips",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 1.083,
+      "owned_process_group": 1965585,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "biomes": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-rest-contracts/queue.json",
+      "id": "biomes",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.982,
+      "owned_process_group": 1965655,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "animation-actors": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-motion-integral/queue.json",
+      "id": "animation-actors",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 3.19,
+      "owned_process_group": 2006173,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "world-motion": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-rest-contracts/queue.json",
+      "id": "world-motion",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.42,
+      "owned_process_group": 1966072,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "ordinary-motion": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-rest-fixes/queue.json",
+      "id": "ordinary-motion",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.522,
+      "owned_process_group": 1989655,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "campaign-motion": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-rest-contracts/queue.json",
+      "id": "campaign-motion",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.436,
+      "owned_process_group": 1966172,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "operator-reduced-settings": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-motion-integral/queue.json",
+      "id": "operator-reduced-settings",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.784,
+      "owned_process_group": 2005894,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-kick-captures": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-fps-graphics/queue.json",
+      "id": "typecheck-kick-captures",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.397,
+      "owned_process_group": 1992153,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-kick-reduced-ads": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-fps-graphics/queue.json",
+      "id": "typecheck-kick-reduced-ads",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.414,
+      "owned_process_group": 1992289,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "kick-captures": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-fps-graphics/queue.json",
+      "id": "kick-captures",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 13.774,
+      "owned_process_group": 1992451,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "kick-reduced-ads": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-fps-graphics/queue.json",
+      "id": "kick-reduced-ads",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 13.017,
+      "owned_process_group": 1993999,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "ads-projection": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-fps-graphics/queue.json",
+      "id": "ads-projection",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 23.32,
+      "owned_process_group": 1995182,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "handling-captures": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-fps-graphics/queue.json",
+      "id": "handling-captures",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 29.749,
+      "owned_process_group": 1998863,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "vehicle-live": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-vehicle-live-restart-compact/queue.json",
+      "id": "vehicle-live",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 73.38,
+      "owned_process_group": 2030088,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "operator-finish": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-finish-binder/queue.json",
+      "id": "operator-finish",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.859,
+      "owned_process_group": 2037327,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "live-kick": {
+      "report": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-live-kick-software/queue.json",
+      "id": "live-kick",
+      "status": "failed",
+      "failure_reason": "nonzero-exit",
+      "exit_code": 1,
+      "duration_seconds": 26.263,
+      "owned_process_group": 2061333,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    }
+  },
+  "stages": [
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-initial/queue.json",
+      "head": "e858c0546687c0f46af9977b2ee4ab9c1c8e931c",
+      "sha256": "ac7f5e7dfe37af92495154eed38448518f99f0591f73522a956dbcc11e6b192a",
+      "attempts": [
+        {
+          "id": "native-import",
+          "status": "failed",
+          "failure_reason": "engine-error",
+          "exit_code": 0,
+          "duration_seconds": 8.708,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-import-fix/queue.json",
+      "head": "7d2fa666244c83f60abaf389f67b56e669dc240f",
+      "sha256": "777fe0f5a9d3fe165e68441fa9f33013feda0faead9718f716aef484c6ccf909",
+      "attempts": [
+        {
+          "id": "native-import",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 3.693,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-ui-home-search",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.285,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-ui-home-input",
+          "status": "failed",
+          "failure_reason": "engine-error",
+          "exit_code": 0,
+          "duration_seconds": 0.47,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-types-2/queue.json",
+      "head": "85bb8855e592f6fc8e5066fc7d2d5601c4504253",
+      "sha256": "61c875b39e220e8ce4e6135aff3579c26f4a72356f52fed716ceddd999aff007",
+      "attempts": [
+        {
+          "id": "typecheck-ui-home-search",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.286,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-ui-home-input",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.564,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-ui-bindings",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.285,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-ui-journal-model",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.288,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-ui-journal-input",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.277,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-ui-training-feedback",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.359,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-ui-training-layout",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.36,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-fp-lifecycle",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.363,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-fp-binding",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.36,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-fp-ads",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.385,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-kick-chains",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.382,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-sports-controls",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.462,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-vehicle-controls",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.281,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-vehicle-views",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 1.021,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-operator-legacy",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.381,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-operator-grips",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.384,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-operator-nine",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.385,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-biomes",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.38,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-animation-actors",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.38,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-world-motion",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.283,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-ordinary-motion",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.281,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-campaign-motion",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.28,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "ui-home-search",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.463,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "ui-home-input",
+          "status": "failed",
+          "failure_reason": "fixture-failures",
+          "exit_code": 1,
+          "duration_seconds": 9.868,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-3/queue.json",
+      "head": "58bbe2087fba5c8e2b6f11bf54d8ee830cdfa116",
+      "sha256": "2279d9a497be0eca6e19644029aa36a388857706fceb00a69b6a21e7c849d77d",
+      "attempts": [
+        {
+          "id": "ui-home-search",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.475,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "ui-home-input",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 9.773,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "ui-bindings",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 1.013,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "ui-journal-model",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.454,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "ui-journal-input",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.448,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "ui-training-feedback",
+          "status": "failed",
+          "failure_reason": "fixture-failures",
+          "exit_code": 1,
+          "duration_seconds": 0.74,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-4/queue.json",
+      "head": "58bbe2087fba5c8e2b6f11bf54d8ee830cdfa116",
+      "sha256": "e4d6d13efdbc38b7de1283832234e096609630e0f76faf342a528d33629fcf96",
+      "attempts": [
+        {
+          "id": "ui-training-feedback",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.718,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "ui-training-layout",
+          "status": "failed",
+          "failure_reason": "missing-success-marker",
+          "exit_code": null,
+          "duration_seconds": 60.139,
+          "cleanup": {
+            "signalled": [
+              1869045
+            ],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-5/queue.json",
+      "head": "58bbe2087fba5c8e2b6f11bf54d8ee830cdfa116",
+      "sha256": "e4410aa54d11fe65cac0042160213bbb70854acd6c6804c71c92320d081b1682",
+      "attempts": [
+        {
+          "id": "ui-training-layout",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.695,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "fp-lifecycle",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.61,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "fp-binding",
+          "status": "failed",
+          "failure_reason": "fixture-failures",
+          "exit_code": 1,
+          "duration_seconds": 0.619,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-6/queue.json",
+      "head": "58bbe2087fba5c8e2b6f11bf54d8ee830cdfa116",
+      "sha256": "26e943031ef92d94c2ef24a2faab15cfb3540586e290ee8eff4afbdd45cb0dc5",
+      "attempts": [
+        {
+          "id": "fp-binding",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 1.525,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "fp-ads",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.815,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "kick-chains",
+          "status": "failed",
+          "failure_reason": "engine-error",
+          "exit_code": 0,
+          "duration_seconds": 0.531,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-parent4cc-import-contracts/queue.json",
+      "head": "1159dbf3ebf6222687fa480f9bf1a47efbb28c85",
+      "sha256": "2b991fb60ce9fcf178c5ed6ff489263465a1cd82e45256086ff8341d0072b23d",
+      "attempts": [
+        {
+          "id": "native-import",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 3.649,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-sports-lifecycle",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.333,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-sports-polish",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.238,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "kick-chains",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.516,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "sports-controls",
+          "status": "failed",
+          "failure_reason": "engine-error",
+          "exit_code": 0,
+          "duration_seconds": 0.593,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-contracts-7/queue.json",
+      "head": "1159dbf3ebf6222687fa480f9bf1a47efbb28c85",
+      "sha256": "62dc11e2fa39669c4424fc7bb130233e56348a2a39686bfe9a11606f869d30e7",
+      "attempts": [
+        {
+          "id": "sports-controls",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.599,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "sports-lifecycle",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 1.624,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "sports-polish",
+          "status": "failed",
+          "failure_reason": "timeout",
+          "exit_code": null,
+          "duration_seconds": 120.149,
+          "cleanup": {
+            "signalled": [
+              1892329
+            ],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-bridge-first/queue.json",
+      "head": "1784d2c0f43700410574b89c390e566ae6d88e1f",
+      "sha256": "501d4a610cee5dbe83813a4046e4e4239f0bbccc1fffad7a3f71049636ec9438",
+      "attempts": [
+        {
+          "id": "typecheck-operator-melee",
+          "status": "failed",
+          "failure_reason": "engine-error",
+          "exit_code": 0,
+          "duration_seconds": 0.42,
+          "owned_process_group": 1911279,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-bridge-typed/queue.json",
+      "head": "9351ed490f02cbe231b753ab324ad114f5f5c670",
+      "sha256": "2e90b23e4f02a0570600fce2e976a8c48faf03415cac1a4727117ceba3386f47",
+      "attempts": [
+        {
+          "id": "typecheck-operator-melee",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.44,
+          "owned_process_group": 1926227,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "operator-nine",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 11.677,
+          "owned_process_group": 1926365,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "operator-melee",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 1.271,
+          "owned_process_group": 1928074,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-operator-graphics/queue.json",
+      "head": "9351ed490f02cbe231b753ab324ad114f5f5c670",
+      "sha256": "1c4fbee910250f59127f7814068df935ee4b41cb251a0b97696bb64b0ffdd7d8",
+      "attempts": [
+        {
+          "id": "typecheck-operator-gallery",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.418,
+          "owned_process_group": 1929237,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-operator-melee-gallery",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.442,
+          "owned_process_group": 1929377,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "operator-gallery",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 250.267,
+          "owned_process_group": 1929447,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "operator-melee-gallery",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 12.673,
+          "owned_process_group": 1959330,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-rest-contracts/queue.json",
+      "head": "6398f3c757896ddd49a0a4a8ddf845bcf7a9dc07",
+      "sha256": "a482e7abe7c1ab577820ad618a71dd7388c5ad0e48a9f6026fa36725869b71a5",
+      "attempts": [
+        {
+          "id": "sports-lifecycle",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 1.723,
+          "owned_process_group": 1964537,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "sports-polish",
+          "status": "failed",
+          "failure_reason": "fixture-failures",
+          "exit_code": 1,
+          "duration_seconds": 0.417,
+          "owned_process_group": 1964747,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "vehicle-controls",
+          "status": "failed",
+          "failure_reason": "nonzero-exit",
+          "exit_code": 1,
+          "duration_seconds": 0.524,
+          "owned_process_group": 1964858,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "vehicle-views",
+          "status": "failed",
+          "failure_reason": "native-resource-leak",
+          "exit_code": 0,
+          "duration_seconds": 1.174,
+          "owned_process_group": 1964925,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "operator-legacy",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 6.468,
+          "owned_process_group": 1964994,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "operator-grips",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 1.083,
+          "owned_process_group": 1965585,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "biomes",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.982,
+          "owned_process_group": 1965655,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "animation-actors",
+          "status": "failed",
+          "failure_reason": "fixture-failures",
+          "exit_code": 1,
+          "duration_seconds": 3.132,
+          "owned_process_group": 1965779,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "world-motion",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.42,
+          "owned_process_group": 1966072,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "ordinary-motion",
+          "status": "failed",
+          "failure_reason": "fixture-failures",
+          "exit_code": 1,
+          "duration_seconds": 0.416,
+          "owned_process_group": 1966131,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "campaign-motion",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.436,
+          "owned_process_group": 1966172,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-rest-fixes/queue.json",
+      "head": "6398f3c757896ddd49a0a4a8ddf845bcf7a9dc07",
+      "sha256": "c86c4420904b4dd6dba12aceac439ea7e46ffa0c8a6a817bf69862ee9cda948b",
+      "attempts": [
+        {
+          "id": "sports-polish",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.503,
+          "owned_process_group": 1988413,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "vehicle-controls",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.597,
+          "owned_process_group": 1988714,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "vehicle-views",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 1.347,
+          "owned_process_group": 1988872,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "operator-reduced-settings",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.679,
+          "owned_process_group": 1988986,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "animation-actors",
+          "status": "failed",
+          "failure_reason": "fixture-failures",
+          "exit_code": 1,
+          "duration_seconds": 3.193,
+          "owned_process_group": 1989045,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "ordinary-motion",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.522,
+          "owned_process_group": 1989655,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-fps-graphics/queue.json",
+      "head": "6398f3c757896ddd49a0a4a8ddf845bcf7a9dc07",
+      "sha256": "cf70c0428cacd846c7bb49201d538343a5687485fec24bb110e6ad6290048868",
+      "attempts": [
+        {
+          "id": "typecheck-kick-captures",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.397,
+          "owned_process_group": 1992153,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-kick-reduced-ads",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.414,
+          "owned_process_group": 1992289,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "kick-captures",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 13.774,
+          "owned_process_group": 1992451,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "kick-reduced-ads",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 13.017,
+          "owned_process_group": 1993999,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "ads-projection",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 23.32,
+          "owned_process_group": 1995182,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "handling-captures",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 29.749,
+          "owned_process_group": 1998863,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-motion-integral/queue.json",
+      "head": "6398f3c757896ddd49a0a4a8ddf845bcf7a9dc07",
+      "sha256": "14070c2bf5a6176dd03e0fb3318ab8eb721d0759e89f1498f06e268ba55695b8",
+      "attempts": [
+        {
+          "id": "operator-nine",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 11.851,
+          "owned_process_group": 2004085,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "operator-melee",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 1.247,
+          "owned_process_group": 2005748,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "operator-reduced-settings",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.784,
+          "owned_process_group": 2005894,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "animation-actors",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 3.19,
+          "owned_process_group": 2006173,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-vehicle-live/queue.json",
+      "head": "b9e2a9eb07bdfb6e2412dbf37b424b490b76dfe7",
+      "sha256": "1f491f4c99f8523da07df70bb02a0790a2b24130767cdafae2f54a1466d5648d",
+      "attempts": [
+        {
+          "id": "vehicle-live",
+          "status": "failed",
+          "failure_reason": "nonzero-exit",
+          "exit_code": 1,
+          "duration_seconds": 0.239,
+          "owned_process_group": 2009775,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-vehicle-live-deps/queue.json",
+      "head": "b9e2a9eb07bdfb6e2412dbf37b424b490b76dfe7",
+      "sha256": "1f491f4c99f8523da07df70bb02a0790a2b24130767cdafae2f54a1466d5648d",
+      "attempts": [
+        {
+          "id": "vehicle-live",
+          "status": "failed",
+          "failure_reason": "nonzero-exit",
+          "exit_code": 1,
+          "duration_seconds": 23.617,
+          "owned_process_group": 2014384,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-vehicle-live-authority/queue.json",
+      "head": "b9e2a9eb07bdfb6e2412dbf37b424b490b76dfe7",
+      "sha256": "2915485a0f264cde023b84d450fa39ca8a5ecc4fd3e66c4a35973ace95682793",
+      "attempts": [
+        {
+          "id": "vehicle-live",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 13.379,
+          "owned_process_group": 2022980,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-vehicle-live-restart-compact/queue.json",
+      "head": "b9e2a9eb07bdfb6e2412dbf37b424b490b76dfe7",
+      "sha256": "160b3aef624c30b3b945a25db1a5c2a172f466b1bae1f5eaf0df7dd161a41f28",
+      "attempts": [
+        {
+          "id": "vehicle-live",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 73.38,
+          "owned_process_group": 2030088,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-finish-binder/queue.json",
+      "head": "ab9431748e6aacb3689fea7c503758cc2aa61221",
+      "sha256": "b7622b7e32e59d1ee7df78133c85b85e1a541d559b24140371a58b10f9257842",
+      "attempts": [
+        {
+          "id": "operator-finish",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.859,
+          "owned_process_group": 2037327,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-live-kick/queue.json",
+      "head": "ab9431748e6aacb3689fea7c503758cc2aa61221",
+      "sha256": "94469096d14b324e0fa268dbed164b3bfb6899d6f744b47eb794925913ff803e",
+      "attempts": [
+        {
+          "id": "live-kick",
+          "status": "failed",
+          "failure_reason": "nonzero-exit",
+          "exit_code": 1,
+          "duration_seconds": 12.085,
+          "owned_process_group": 2038876,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-live-kick-tcp/queue.json",
+      "head": "f272221f1898a806255c8703dd2dac614ecce28e",
+      "sha256": "592cb51d25950cbabb84f2aa044d5f853037be238be4f44a4e71f6ba13966f93",
+      "attempts": [
+        {
+          "id": "live-kick",
+          "status": "failed",
+          "failure_reason": "nonzero-exit",
+          "exit_code": 1,
+          "duration_seconds": 25.096,
+          "owned_process_group": 2045572,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-live-kick-semantic/queue.json",
+      "head": "3576de581740e674bed393dd100b0e92c1c5d66a",
+      "sha256": "831eebf84924acdc8656a4fab0e32a4daabe83c7be1c1baed6a8d91f3f913af7",
+      "attempts": [
+        {
+          "id": "live-kick",
+          "status": "failed",
+          "failure_reason": "nonzero-exit",
+          "exit_code": 1,
+          "duration_seconds": 28.895,
+          "owned_process_group": 2052040,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-live-kick-software/queue.json",
+      "head": "278c4962eecf8442c55db8685739452632395589",
+      "sha256": "a0fc5b3aaa0832e8fb5442deb930cd1c3af464468030e99367119c7f6b40d05c",
+      "attempts": [
+        {
+          "id": "live-kick",
+          "status": "failed",
+          "failure_reason": "nonzero-exit",
+          "exit_code": 1,
+          "duration_seconds": 26.263,
+          "owned_process_group": 2061333,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-motion-native-evidence-20261003/k-final-operator-graphics/queue.json",
+      "head": "278c4962eecf8442c55db8685739452632395589",
+      "sha256": "c7238819ffce7a8bd5f22758ab896337b1b07064adbd52aea85073f67b168b8a",
+      "attempts": [
+        {
+          "id": "operator-gallery",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 248.8,
+          "owned_process_group": 2070448,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "operator-melee-gallery",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 12.559,
+          "owned_process_group": 2084841,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    }
+  ],
+  "gaps": [
+    "live-kick contact and early-press software cadence acceptance failed",
+    "combined-arms/general-world ordinary-input mount/look/demount views not newly captured"
+  ]
+}

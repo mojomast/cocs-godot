@@ -1,0 +1,1162 @@
+[
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-board-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "8382c4edbcd7b23f28471b8df1afa472268a56b51692521c4d6ddfb9370c4a90"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-board-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "a3fb27bc4307cbef285c081a37a2be447ea05c7154d6f05f5726899349e99a0e"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-board-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "d86c97a2a91859ca40d6b636d83825417ec807a744f38ed7203c435e2d90e2ad"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-panel-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "ab33e0dcdf2515ebb3f273ace6712e99c24d6c9026180c9de817b50a7283442c"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-panel-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "6b37d17690b2be3c50ee286dd0005aa6d1727c985912ca8a9a823e19565e634d"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-panel-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "64cedec9d2658e01d6f8ce0b820f15a8760c2c3d1edd7599521858bfa8d174a9"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-shell-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "fa39e78e13fd4b5793528eabb848c98a02fbec6ed0464d51008c8de973660e49"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-shell-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "8d97ea355109d6f823d3f9ee5a16383b26964742c327405c8f71112718a1f90e"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-shell-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "d040caf2912feff81b763a6ef75a374d0816fdf40be4795551ded0f878acb784"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-vent-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "bb7d61066342bfa7d93e191928dc5a267d8058a549fbab6936f7a77b5b727601"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-vent-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "20da66d3e265fd88e6ff17e4cd55036a100f64149777015438aaecf782c56f61"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-vent-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "9abb8b644934701aae524cc5535ff39a6f5b29a66b61b7a1d343f92e2d80789b"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-board-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "cda20181b673a9a2fe78abdc3c2e45619c52372ba2f040bcabdc645c4f189acb"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-board-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "a55ec98a506faf7f2ca4ed5337ed6331e07209de118196b38bdb850f3cdfe5c2"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-board-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "a1eae3de06c5be195de5c8e262132a5b588fad75e26085eb6171bdd62a5f04e3"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-panel-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "804cd267ac4bace12d51ccdceb98d3dd3d5c0722832695eace9756ed95e5acd9"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-panel-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "316a4d886cc21740fc741a6d97d8feb9b8c145ddaa27ffceffb184627f5593a1"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-panel-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "b7a458f8ffa896a39e291a98fff14880c3034110cef7c9454dae6027dd408024"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-shell-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "fa39e78e13fd4b5793528eabb848c98a02fbec6ed0464d51008c8de973660e49"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-shell-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "8d97ea355109d6f823d3f9ee5a16383b26964742c327405c8f71112718a1f90e"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-shell-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "d040caf2912feff81b763a6ef75a374d0816fdf40be4795551ded0f878acb784"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-vent-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "b9ccd5e2baf4a6f018e5425eb45054e72137b45e5c7fa8567c780bd6e4e56d8a"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-vent-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "c8fd3c39a711eaee18120f78d4d144bc2e366491102dd9ed65de77454304d9e5"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-vent-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "b0e0a17fd93ea1360a957da865ce36df2b181660dc3dc9053e5b3d3ecd544df3"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-board-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "ef62736cea3e5b4a554517bbc9a31e4c8d4db217617c43f49cf0a33596b0b85e"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-board-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "2d39d30250fb36d36b870d4dbe92ba8542d6fce20ae3e59b94c2e64ef40527fa"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-board-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "d454b910e4fe968b8ca9309d52e17d8600593c9a119f206813582d5f44021229"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-panel-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "a94ead7984118f2d81ccf8d4806b6f0a9de30fc7e85651ddd2d3041c2866204e"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-panel-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "f93e7aece64d8fa1fc4e2fea1d81e3d69de275312eeb5864853fcb72fe9c27dd"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-panel-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "fe996cd86ba848bd3f48315e7caec10448468ed09d27da8cecba9a87e0dd42ce"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-shell-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "521778fd6134512bf5e4f4b5b1ba6313ef4723effc7e5a507334663db6541c08"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-shell-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "d7aa8059cbccbce1e1fe3892785805d81add76c19bd8a2bc8f3e03872b7e866b"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-shell-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "0df0d589c8472110db8ff47766aacc67bb3ee0b9e84117ad25582d58589d56ce"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-vent-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "054fa09a59d9f5400963dcd38c3bec126247749dddce78e182f8440faf22eae0"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-vent-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "a62c1b5fe17bac274199ef86c00f93d02b3dc9ec56385639bcddb641d73ebfe8"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-vent-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "f6c16b83657f8bbea33ab2bb16eeeb6e70498a3bda18bff123f0d1a95906e70f"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-board-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "4181f80763b8d503fa1ade6168e434af7ed3a4ba04620ec434c1c422299e0efc"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-board-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "a6fbc19a240839c18ea066b79a9bda308f9e2301b3138bfe2334c8711a41cd3e"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-board-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "15b3f4c4a3260ca9154c68a8f108cbc6856e55d6c8403c4181f2fcb46fa1a1b9"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-panel-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "038c47266d052f37dd97ce6dbedd502c455e67b1b3e397f3cc57ef4e84317199"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-panel-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "83219f2831065fd02a116cf5d51a9913d957fc2b2eded586d8a4b69cf1aeeb54"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-panel-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "c20d3d6cfe27bf62cfcf2dc4f51ca4e3138e603265f7c1e5c09ad5878a0adf92"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-shell-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "fa39e78e13fd4b5793528eabb848c98a02fbec6ed0464d51008c8de973660e49"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-shell-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "8d97ea355109d6f823d3f9ee5a16383b26964742c327405c8f71112718a1f90e"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-shell-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "d040caf2912feff81b763a6ef75a374d0816fdf40be4795551ded0f878acb784"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-vent-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "4c88a5bf84917f359f25282857c2a3d0fb1e8b4288cf96f211a2d4a44ac18a75"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-vent-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "13c3acc07a2111d6c828fb94a6cbaf01f5f67febf70791159fa07ad19c78f132"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-vent-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "2f5bd5d2721accc3ee6a293173d7a063ae7816ccc55412d0cc8f82e7f2cfe1ee"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-board-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "337771c80502b84741df74793a5f43d6e52ea98b19fbb646a5ae68f05714c7fb"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-board-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "600bd6e6df41d721372734af9607663bbd000dedea40a07e41206ccd0eda7403"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-board-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "981b05923cf42b8f2d49e188731f8170a57443b5fe11b6860129d4d0dce4b6bf"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-panel-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "6a0bc27de802c0d1e74e845954163548e50a2eeb67bbc6346cf41fca895bce98"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-panel-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "cefe3ad47db4c4c86eed1f95f761461d1a279fdb07571cc505c58f67405407d0"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-panel-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "baff37887702b75bc2c50066b81768178e2e28017957cfca98af62326090f154"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-shell-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "521778fd6134512bf5e4f4b5b1ba6313ef4723effc7e5a507334663db6541c08"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-shell-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "d7aa8059cbccbce1e1fe3892785805d81add76c19bd8a2bc8f3e03872b7e866b"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-shell-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "0df0d589c8472110db8ff47766aacc67bb3ee0b9e84117ad25582d58589d56ce"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-vent-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "d91055e5ddb9d1cfde7562ccaaf42e382af572dbbba291357b0d006d7f16622e"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-vent-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "4d2e3dba783b3d3f36aebf9f18775391647fa369757ca68c6acf6c80773c5ecc"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-vent-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "25a0fd0fb26f330eb592e23344f9e8a6b9f2beb954463d6303d1a1f91435a235"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-board-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "438dd726fc1b1031e9e7220e7e546199cb89afa2603fbf54151a6c6b552a9a57"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-board-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "de4b7761304239b09aa77a15dc92fcc9987614c1d702faa37a5d747dfe3101f2"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-board-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "3a5f8dd988ebb1b13a7f7bb1b7db22d4e9d48ecc45257f79036bd384d557dddb"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-panel-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "cfd235f845b7cf72f6d9a92d67b89988e10a09eb11cb3fe2beadda2510458aa7"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-panel-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "347f4e585590f5f827ac02ea6dfabc88205919ba78f225014fe409296ba6efd6"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-panel-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "79f826714312f61743c94f2e116d242316f7174313babc31472714d4d534976a"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-shell-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "fa39e78e13fd4b5793528eabb848c98a02fbec6ed0464d51008c8de973660e49"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-shell-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "8d97ea355109d6f823d3f9ee5a16383b26964742c327405c8f71112718a1f90e"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-shell-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "d040caf2912feff81b763a6ef75a374d0816fdf40be4795551ded0f878acb784"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-vent-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "a63e96a10cc2a373d862affaff17ae37e15066a677632131aa9280797ef33bef"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-vent-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "e1069432d561ed5ab35bbfa57ead75d60dfeab9d6238fe8e042821e03aa3f8a3"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-vent-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "2da8d1eed427cc1285a9bdc2c5e6a17ae8eca46eaaa57ab974059e8b433ad02f"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-board-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "c2eed2065dac4223c6b3202e11aa8d4f9f69d02674db4397e6f6e5865d977ee8"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-board-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "0b6bd56d6484801bda6dcc2d6111d4062d2ea82564705f148e808b77cee3ff36"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-board-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "4c8f0065ac838f65dfdd35d9cb80bef14071d883814f2c9705610b689bd00e16"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-panel-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "ccf8b71eac2c33cb79832a09798a9662858f9f8d52be7917c930fa2768f6aa81"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-panel-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "4f0e92734484d2ca40bf402f49fd88dfa9307f21dc3f0f3b094c63b0077f7a51"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-panel-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "23fede39fea10a5c8f59e69a5ccb90aadea9b48e523b4b5f525a282e20e99611"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-shell-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "521778fd6134512bf5e4f4b5b1ba6313ef4723effc7e5a507334663db6541c08"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-shell-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "d7aa8059cbccbce1e1fe3892785805d81add76c19bd8a2bc8f3e03872b7e866b"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-shell-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "2e35421df7285b316c57c38490ddf20289ef11dc8151d466a349934e75292927"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-vent-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "eb2e64cf4ee5625fe86fbd4fbe6e3c3e07f4b20c2e68c8639610a5d75440c350"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-vent-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "9b752dc9bb814daa3722a842dcca90e9e9bd08c8f6e17b38da652ada0d741247"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-vent-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "f598cae70f17e77f19037746e4a65015fafd3a9162b7166c68696cc117f50bdf"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-board-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "11060ce202fc52779b48a360e894844292c678a93c54a0ae3023de7312ac9649"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-board-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "9d277404492fdc1f9082f835cc09aa1e79e34cef6ef9588180b4dffab181de3b"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-board-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "cd4bd10e7cc8e9237f507999653152fee98a6b5c6151e585d7eac5db3d09f3f7"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-panel-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "90278a94dd3602be6b0c1c1cf271fe1ee2391b23f5736490749788dabce9a2be"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-panel-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "87cb626706784dd15e5d4bdab4e9cbf42ccbf16c7036b3962870ed64a5caee6d"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-panel-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "d51fa70bd74377df40230185df43424e5c56dfd03ee91574ac705ea5f7cb9a14"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-shell-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "ec08755ddb0776974494779872c3c766b455a7a0719b42047e92fc9af07276bd"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-shell-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "6a2a8e68a2edaede498413cad5e1324eaa84148f28392802978658317dd22f39"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-shell-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "ab8f8deb355b4ceedf48222f0f3aa13e28e22c5d65185b8715ff7ed07df98920"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-vent-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "c40582858529f61fd0b629116055fcda05263d53bba377bcc56ee78bbcedce2b"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-vent-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "f9be708c302a873da715a0b127388a30f77c0cf3716b476a7600d7bfb1d7ed03"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-vent-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "816aa64ad25092a6d1411b36553a5fbf70fa53ad0b8f4262da3f743c30a6a5aa"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-board-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "dd000c40c9b28d8802abf0016c2ed717f46008fc7e338954111f2c5eec61f72b"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-board-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "e20a62da1085641045685c44921965dffe580c92996e5ef645b94dfd86cd082e"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-board-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "1ca6881722510848de6da7f70aa2b8bfabdfe0da1585006be5cc2226156df391"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-panel-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "8962b5eae92e7483d4a4a96840f9455790739aa20ea2eaaad5d63714d4ca7787"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-panel-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "fefb05274dd78d67dc27e1c13faa395e7399b823d273e821f32704953aee79c7"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-panel-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "3a40c5d1fd32bdddfd06e433751528bbfbdff3a2f8a4e67e5778076f42c5e0c4"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-shell-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "521778fd6134512bf5e4f4b5b1ba6313ef4723effc7e5a507334663db6541c08"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-shell-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "d7aa8059cbccbce1e1fe3892785805d81add76c19bd8a2bc8f3e03872b7e866b"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-shell-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "0df0d589c8472110db8ff47766aacc67bb3ee0b9e84117ad25582d58589d56ce"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-vent-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "b3a6a624e60b4372c00b3af91e513865cc4c142f527d0dd54abf4cbc27313efe"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-vent-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "84b3387eff12aa156bd472111f34e242674216e3792920aa5105b33372616069"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-vent-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "899792dbac5ff5dbdfd069f23d7855e416ce34cab17bda45413e626e1d160e41"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/shared-precision-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "521778fd6134512bf5e4f4b5b1ba6313ef4723effc7e5a507334663db6541c08"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/shared-precision-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "d7aa8059cbccbce1e1fe3892785805d81add76c19bd8a2bc8f3e03872b7e866b"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/shared-precision-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "a6212888552861ec2469b2f508a399112dfae440bf980337a194bcdd4882b623"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/shared-rubber-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "47cbeef4c2483339b4f0da3b7fd5981bc204257c4b07b6be93e71be794640103"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/shared-rubber-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "e31e94f0089cb3d7edd935e8efef819ff8ea84227634fd7c726f5d83fb50cf29"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/shared-trim-albedo.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "6def0d240b4b7b95abefacbb4241a96c0733af956883660469d47a8d075bb49e"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/shared-trim-normal.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "2b476fdf4ea2c6b6f640cc90b79aa6b1765ff1848afbb62d27a4235669eccf6b"
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/shared-trim-roughness.png",
+    "sidecarExists": true,
+    "sidecarTracked": false,
+    "parameters": [
+      "compress/mode=0",
+      "compress/normal_map=0"
+    ],
+    "sha256": "ab83479ff4a9f14a91600f19f565232e929ef87afb50fc4a35a86301c991dd52"
+  }
+]

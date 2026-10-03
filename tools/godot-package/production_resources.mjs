@@ -12,6 +12,7 @@ import {vesperImportPaths,verifyVesperImports,VESPER_EVIDENCE,VESPER_SUPPORTING_
 import {abyssalImportPaths,verifyAbyssalImports,ABYSSAL_EVIDENCE,ABYSSAL_SUPPORTING_RUNTIME} from './abyssal_imports.mjs';
 import {FEATURE_ROOTS,verifyFeatureAdvance,robotSupportingHash} from './feature_dependencies.mjs';
 import {stormglassImportPaths,verifyStormglassImports,verifyStormglassAdvance,STORMGLASS_EVIDENCE,STORMGLASS_SUPPORTING_RUNTIME} from './stormglass_imports.mjs';
+import {polishPaths,verifyPolishAdvance,verifyOperatorFinishImports} from './polish_dependencies.mjs';
 export const REQUIREMENTS='tools/godot-package/production_requirements.json';
 export const REQUIRED_UNITS=Object.freeze(['parallax-interiors','robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
 const skins=['needle_surveyor','caisson_guard','kiln_tender'];
@@ -144,7 +145,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     // External Parallax recipes are not read from its active worktree. Pending
     // absence is reported until parent imports reviewed committed revision bytes.
     try {spec=specification(unit,read);}catch(error){if(requirement.promotion)throw error;missing.push('specification: '+error.message);spec={inputs:unit.recipePaths,masters:[],exports:[],extra:[]};}
-    const inputs=helperClosure([...spec.inputs,...spec.extra,...FEATURE_ROOTS,'godot/replay/stage.gd',plan.common.finishScript,'tools/asset-production/receipt.mjs','tools/asset-production/reopen.py','godot/moth/generated/manifest.json','godot/moth/derived/manifest.json','game/moth-baked.mjs'],read,has);
+    const inputs=helperClosure([...spec.inputs,...spec.extra,...FEATURE_ROOTS,...polishPaths(read),'godot/replay/stage.gd',plan.common.finishScript,'tools/asset-production/receipt.mjs','tools/asset-production/reopen.py','godot/moth/generated/manifest.json','godot/moth/derived/manifest.json','game/moth-baked.mjs'],read,has);
     spec.packageInputs=inputs;
     for(const path of [...inputs,...spec.masters,...spec.exports]){safe(path);if(!has(path))missing.push(path);}
     const registered=!expectedMap||worldIds.includes(expectedMap);
@@ -153,6 +154,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     if(!promotion||!registered||missing.length){pending.push(unit.id);continue;}
     assert.equal(promotion.receipt,`tools/godot-package/production_receipts/${unit.id}.json`,'Promotion receipt must have its fixed committed path');
     const receipt=JSON.parse(add(promotion.receipt,promotion.sha256));assert.equal(receipt.unit,unit.id);
+    verifyPolishAdvance(receipt,read);
     verifyStormglassAdvance(receipt);
     if(['parallax-interiors','robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks'].includes(unit.id))verifyFeatureAdvance(receipt);
     if(unit.id==='parallax-interiors') {
@@ -228,6 +230,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     }
   }
   // Private shader is an actual preload dependency, not a new route/acceptance.
+  if(!pending.length)verifyOperatorFinishImports(read);
   if(has('godot/multiplayer_worlds/dressing/surface.gd')) {
     add('godot/multiplayer_worlds/dressing/surface.gd');
     add('godot/multiplayer_worlds/dressing/surface.gdshader');
