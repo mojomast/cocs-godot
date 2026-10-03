@@ -36,7 +36,7 @@ func _initialize() -> void:
     var image := texture.get_image()
     assert(image != null and not image.is_empty())
     var name := mat.resource_name.replace("/", "-").replace(" ", "-").replace(".", "-")
-    var path := OUT + "pixels/" + name + "-" + channel + ".png"
+    var path: String = OUT + "pixels/" + name + "-" + channel + ".png"
     assert(image.save_png(path) == OK)
     row.images[channel] = {"path":path,"sha256":FileAccess.get_sha256(path),"width":image.get_width(),"height":image.get_height()}
    report.materials[mat.resource_name] = row

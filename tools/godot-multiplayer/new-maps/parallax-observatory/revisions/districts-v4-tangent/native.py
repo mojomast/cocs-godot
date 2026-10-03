@@ -74,7 +74,13 @@ def check_streams(artifact, report, raw):
                     match = i; maximum = [max(x,y) for x,y in zip(maximum,err)]
                     if marked: affected += 3
                     break
-            if match is None: raise ValueError('Native normal/UV/tangent/handedness drift; no fallback waiver')
+            if match is None:
+                raise ValueError('Native normal/UV/tangent/handedness drift; no fallback waiver: '
+                    + str({'surface':surface['node'], 'role':surface['material'], 'triangle':start//3,
+                           'sourceChoices':len(choices), 'positions':[c[0] for c in cs],
+                           'nativeTangents':[c[3] for c in cs],
+                           'candidateErrors':[[max(abs(x-y) for c,d in zip(cs,want) for x,y in zip(c[j],d[j]))
+                                               for j in (0,1,2,3)] for want,_ in choices[:3]]}))
             choices.pop(match); count += 1
     if next_offset != len(raw) or any(expected.values()) or count != total or affected != 3:
         raise ValueError('Native face coverage or all three repaired corners missing')
