@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "timber-weather",
+  "engine": "blur-core-v1",
+  "jobId": "3fd13eaf-e9b1-444b-9e15-364435aa7b2e",
+  "recipeFingerprint": "13b8abcddfdf9bc09992c67fc99ad57b5cf4bbc8814b2adb35027c410d4d9d94",
+  "generationFingerprint": "d27c112d1d6467e3ccee01c47200c16c18939c961e07331e62b61c5c32105032",
+  "verification": "new-request",
+  "rawFingerprint": "fdf8abba8e20b4562b79ff4cd1a5ad789e7a56c86b80d1f437844840803b20f6",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 429487,
+    "sha256": "d737797d0230c67fa64631beba50f56b83e4a40ffebf69a1b4a724bd1e827355",
+    "jsonHash": "7045b29446c14eec5a6f0ac2a172006497a7ccb9b47d7067ee1048190a878957"
+  }
+}

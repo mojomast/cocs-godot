@@ -1,0 +1,29 @@
+{
+  "engineId": "demo-callback-v1",
+  "name": "Callback Bridge (Demo)",
+  "version": null,
+  "creditsPerRun": 0,
+  "enabled": true,
+  "paramsSchema": {
+    "properties": {
+      "iterations": {
+        "default": 10,
+        "description": "Number of processing iterations",
+        "exclusiveMinimum": 0,
+        "maximum": 100,
+        "title": "Iterations",
+        "type": "integer"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [],
+  "outputFiles": [],
+  "runPolicy": {
+    "timeout": 300,
+    "max_retries": 3,
+    "heartbeat": 60
+  },
+  "errorCodes": []
+}

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "terracotta-image-ry",
+  "engine": "blur-v1",
+  "jobId": "611112f2-638c-4c24-b9a7-2602ef3cba6c",
+  "recipeFingerprint": "e5c7a3c59fa5d562c81df5c27c1ce0deb3e8258dc693997ead95c459d944eddc",
+  "generationFingerprint": "96cc904f78d7e46759a5772036d01895f9fcd081e24b93ce5f99e8c6b5442025",
+  "verification": "new-request",
+  "rawFingerprint": "bf3c7b48d08859b1700e0cc527aa2ad5ed90b3cb790d6dbeebb30778f1486e35",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "bde6b0ac-a71a-48cf-958b-faf8204a103d",
+      "bytes": 6055,
+      "sha256": "b3bf0ac9e11c5e5145199f0a4a252eecfdf9dd7285cda51ece440ebf5f72be45"
+    }
+  ],
+  "result": null
+}

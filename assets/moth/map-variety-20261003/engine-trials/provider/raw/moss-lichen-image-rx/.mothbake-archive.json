@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "moss-lichen-image-rx",
+  "engine": "blur-v1",
+  "jobId": "f935e1da-9b5a-43d6-b121-f3071cc796a2",
+  "recipeFingerprint": "f7295b11890cc20b1e35090d4c58bc84e1dcb06c86c7bdbd47432b46f7d39d31",
+  "generationFingerprint": "05ae29cb75452beab9123fe8932b19391dd0e4a70bfc8340428ff8b6cd9710a5",
+  "verification": "new-request",
+  "rawFingerprint": "f806f56abf87ed4d9dd1ab7d3c585faa15aad07e09d06526d02c327cb07af65e",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "a3b8dddb-51ec-40c7-beaa-382a6805ccaa",
+      "bytes": 4675,
+      "sha256": "16704bd38c507746846ae666953f3e9c108e05059a681faefea8f814cb1cdd50"
+    }
+  ],
+  "result": null
+}

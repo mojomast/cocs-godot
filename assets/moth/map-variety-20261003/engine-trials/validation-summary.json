@@ -1,0 +1,25 @@
+{
+  "genericToolCommit": "69c62d7c4bd754340623a4a7fa93bfa970e5ab73",
+  "nodeVersion": "v22.23.1",
+  "checks": {
+    "npmTest": {"passed":372,"failed":0},
+    "pythonBackendTests": {"passed":3,"failed":0},
+    "nodeSyntaxSrcBinExamplesPython": "passed",
+    "offlineExamples": ["image-material","flat-grid"],
+    "npmPackDryRun": "passed",
+    "gitDiffCheck": "passed",
+    "actualRecordedQpixlRepair": {"records":2,"remoteCalls":0},
+    "overlayFreshRebake": {"materialPNGsByteIdentical":20,"auxiliaryFilesByteIdentical":16,"contactsAndManifestByteIdentical":true,"remoteCalls":0}
+  },
+  "evidence": {
+    "remoteOutcomes":"receipt.json",
+    "concurrentPosts":"concurrency/report.json",
+    "perImageDiagnostics":"comparison/metrics.json",
+    "maskAndLutDiagnostics":"comparison/fields-luts.json",
+    "recordedShapeRepair":"provider/qpixl-repaired.json",
+    "selectedOverlay":"../candidate-v3/manifest.json",
+    "overlayVerification":"../candidate-v3/verification.json"
+  },
+  "notRun": ["Blender","Godot","runtime imports","native rendering"],
+  "visualStatus":"CPU contact-sheet reviewed; editable Blender master construction and world-scale lighting review pending next stage"
+}

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "terracotta-tessa-palette",
+  "engine": "tessa-image-v1",
+  "jobId": "7b00a0d4-d07e-4fcc-b530-725e1129343d",
+  "recipeFingerprint": "04232338204ff6e78a943a1dac0c47929af09a49d23475cb774b817549cf350f",
+  "generationFingerprint": "947eb537434763aa4d610a510bd7e9cef18755a0d27260bab403c7f0cc01c9b1",
+  "verification": "new-request",
+  "rawFingerprint": "345268644753c1f26352bd703b34dcd504f0d551786dcbea6ff3ff0e380d024d",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "491db93e-a972-47f4-bd68-3088621820fc",
+      "bytes": 3536,
+      "sha256": "bb3f598ba6bac39008b86158a5e0b83a218ae3eb3816be7a5867034aa0f0b2fc"
+    }
+  ],
+  "result": null
+}

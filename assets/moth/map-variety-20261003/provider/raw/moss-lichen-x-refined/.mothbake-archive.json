@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "moss-lichen-x-refined",
+  "engine": "blur-core-v1",
+  "jobId": "7ff8cdc4-b802-4006-bdc9-7551bdac1e85",
+  "recipeFingerprint": "29f7014e0877f438d44ce52333fc2238f30ffa6955ef1c991e04402b5cf0080b",
+  "generationFingerprint": "7520d44ce5e89d812cc5703f62b5b23b3c89df251b32e501ddbbb48ec49b8818",
+  "verification": "new-request",
+  "rawFingerprint": "38bc7077e07e8b645d757f33cdcdf92a9aa816924a7c77f1fb652445769bfa15",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 430984,
+    "sha256": "f0ebef7e20ff47d8b32d411c8d268048db380115590cec29f0b69f2a08bf69dc",
+    "jsonHash": "cdf3e58b254f3425b2da5570ba36bee2fa1ee953094b680b7845d66ba0714254"
+  }
+}

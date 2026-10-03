@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "ceramic-enamel",
+  "engine": "blur-core-v1",
+  "jobId": "600a94e1-8a06-4435-aabb-8a7cd10d0baa",
+  "recipeFingerprint": "3895de1687ea51cf3d011bd30b2de650338f5657705c73441eee26890e25722c",
+  "generationFingerprint": "5799ba63eadae94036d5213ee1dfed067bb1a0fd15fb305a22c88b60b5004311",
+  "verification": "new-request",
+  "rawFingerprint": "9e64029ec884680a9637d9825459b06301f81386d502d0b613ddc28f7208e86b",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 426224,
+    "sha256": "83b8f2ece9c628d36d00b995d68e25d45c91d09d10bfadbee2c523e5e883e388",
+    "jsonHash": "55834fdc82a7d6a27e95871904e5309c3ac8fd7346920dd89f8366943502a05d"
+  }
+}

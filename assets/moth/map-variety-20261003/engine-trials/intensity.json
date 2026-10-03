@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "contractSnapshot": "../engine-review/contracts.json",
+  "jobs": [
+    {
+      "id": "copper-patina-kernel-mid-global",
+      "engine": "deep-fryer-v1",
+      "credits": 1,
+      "raw": "copper-patina-kernel-mid-global",
+      "params": {
+        "gates": [
+          [
+            "rx",
+            0.3
+          ]
+        ],
+        "tile_size": 2
+      },
+      "inputs": {
+        "image": "sources/copper-patina-source.png"
+      },
+      "bake": {
+        "type": "texture-tile",
+        "name": "copper-patina-kernel-mid-global",
+        "size": 64
+      },
+      "jobId": "02fab9ce-3cc4-4e5b-bd90-beb58dc62e2c",
+      "assetIds": {
+        "result": "ffe6a0a0-a5e2-4706-9908-3fc83285850d"
+      }
+    }
+  ],
+  "emitters": []
+}

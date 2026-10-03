@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "lime-plaster-x-refined",
+  "engine": "blur-core-v1",
+  "jobId": "6e0cbdce-4f12-48c3-8582-738b7cc1c8bd",
+  "recipeFingerprint": "2648ebac68117abe9b44874057004d7014f06d83f4af515aca3216aa14b12b3c",
+  "generationFingerprint": "7dd7517c011f4fa66b8c7893c196d6f32fdd6bfeda7f79d5ef1d81c80e8429cf",
+  "verification": "new-request",
+  "rawFingerprint": "74d7136f8ea617cc21e5922e33a3e353ce63c7d46f31d01c9f536f6c575a3895",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 430632,
+    "sha256": "7f3f17910fc275c7680ac708ca9413e7aacca194890809030b1910981ee18aaa",
+    "jsonHash": "604ca3c2fe1bc47c4fc02483e350b9eebf7b7804a1bb6e90c2ee261dcca18afd"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "moss-lichen-kernel-low",
+  "engine": "deep-fryer-v1",
+  "jobId": "ea5fd666-9b47-4dbd-887c-e9a964cb3dbd",
+  "recipeFingerprint": "b98c36e717f5e47d0d43859971a0bd1210276ad82a630970defba7afc6b16e89",
+  "generationFingerprint": "4d44ccd63052e57454005aa065c97249905518bfe419f5369c1c407644d5a371",
+  "verification": "new-request",
+  "rawFingerprint": "2f7440141d747a115251c45cfa91e797962c73b6eca65d07391e567a68d2a944",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "49709baa-fc03-4747-bf8d-abd4881b28f3",
+      "bytes": 5384,
+      "sha256": "a8bd713de4ee6ab6812cdb4bbf60f4621325439d2c96b1b810507c5e18da34b3"
+    }
+  ],
+  "result": null
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "terracotta",
+  "engine": "blur-core-v1",
+  "jobId": "be436cfc-92ca-43ab-ad95-45c268bc7e95",
+  "recipeFingerprint": "4325f847ec8a4fd1b93760b257d801e9337ed830f9f2decc6f15e32044867bc2",
+  "generationFingerprint": "67af443d074c4c69035ad53b3de91c401e023e96995e32e35b1e363e53653567",
+  "verification": "new-request",
+  "rawFingerprint": "25ebe1ff3379712c7cc50d84a59160173ce8aacf613a6ebec64f6a6d58eb715d",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 426275,
+    "sha256": "3d9534126aac38a8fd27360c95ff62e2ab96b91c25c5a8b83566eefdcdc7f5a1",
+    "jsonHash": "a479b7732172a0a1fa1f2a6011122e6647d5d5e007ac1121deea3a7f04213ebb"
+  }
+}

@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { pathToFileURL } from 'node:url';
+const pin=JSON.parse(fs.readFileSync(new URL('./tool-pin.json',import.meta.url)));
+export const toolRoot=process.env.MOTHBAKE_ROOT;
+if(!toolRoot)throw new Error('Set MOTHBAKE_ROOT to the pinned mothbake checkout');
+if(execFileSync('git',['-C',toolRoot,'rev-parse','HEAD'],{encoding:'utf8'}).trim()!==pin.commit)throw new Error('mothbake revision differs from tool-pin.json');
+execFileSync('git',['-C',toolRoot,'diff','--quiet','HEAD','--','src']);
+export const loadTool=relative=>import(pathToFileURL(`${toolRoot}/src/${relative}`).href);
+export const {tileFbmXY}=await loadTool('noise.mjs');

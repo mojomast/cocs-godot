@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "copper-patina-x-refined",
+  "engine": "blur-core-v1",
+  "jobId": "77d16376-94cd-4779-bbd3-8dbd96823c18",
+  "recipeFingerprint": "4c8d9795856e922f55041268554b45f636899ee02570eacdca2d5b6debf1b2cf",
+  "generationFingerprint": "4c2589bc24d21155b3e2c9399b8c85d99ad939063928ede23c2a6c2038fe7cb9",
+  "verification": "new-request",
+  "rawFingerprint": "d68b8e159cadce568e53966e3eebd6cb06ed5649d0c51e3f87040a43703d6bc3",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 429523,
+    "sha256": "5e811cb93cf3d998cfc7d0fcd87f84c11b059d1f583b5ab576f4335a55681eb6",
+    "jsonHash": "656ff9c1421184710f710c6d90b7159788258ff5147378ad7cea9d719e349da9"
+  }
+}

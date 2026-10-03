@@ -1,0 +1,1263 @@
+{
+  "version": 1,
+  "jobs": {
+    "copper-patina-image-rx": {
+      "state": "local-failed",
+      "jobId": null,
+      "metadata": {
+        "recipeFingerprint": "3513f8fbb2b6afd343b0d6c52e1c3d4c04dbaef4e6fe3ce746cef53ccffa4721",
+        "bakeConfigFingerprint": "a88cde5dda90f3adacd20093fe81e1eaac944562e8440b9feadf3ecceb9553de",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "ambiguousAssetId": "4bcb530f-c839-4044-ad64-20f027f9ab55"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:35:25.301Z"
+        },
+        {
+          "state": "local-failed",
+          "at": "2026-10-03T15:35:28.848Z",
+          "detail": "asset operation uncertain for 4bcb530f-c839-4044-ad64-20f027f9ab55"
+        }
+      ]
+    },
+    "copper-patina-kernel-low": {
+      "state": "local-failed",
+      "jobId": null,
+      "metadata": {
+        "recipeFingerprint": "a4abe005fa02027ebd218b13544e3ada5ed7146425c630d30082fc85129c1a47",
+        "bakeConfigFingerprint": "824a74a9e5a158ad07494b2040c5b8e30aa628c9f34ab0ee322298cb391e5e55",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "ambiguousAssetId": "7f6a7673-8e6e-4186-8eea-5f3919795c9a"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:35:28.848Z"
+        },
+        {
+          "state": "local-failed",
+          "at": "2026-10-03T15:35:32.656Z",
+          "detail": "asset operation uncertain for 7f6a7673-8e6e-4186-8eea-5f3919795c9a"
+        }
+      ]
+    },
+    "copper-patina-tele-vertical": {
+      "state": "local-failed",
+      "jobId": null,
+      "metadata": {
+        "recipeFingerprint": "62e781d4b0f557c0f9952e81ea2414cda150a775103f3f03fa1234a169e057cf",
+        "bakeConfigFingerprint": "e2815c8f3e4e4bfc02aa569237d1a6a6f6dbefe91f454e367817622737254739",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "ambiguousAssetId": "23ce7aab-316d-4870-9c3b-4e33c5240c5f"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:35:32.657Z"
+        },
+        {
+          "state": "local-failed",
+          "at": "2026-10-03T15:35:37.234Z",
+          "detail": "asset operation uncertain for 23ce7aab-316d-4870-9c3b-4e33c5240c5f"
+        }
+      ]
+    },
+    "copper-patina-tessa-palette": {
+      "state": "published",
+      "jobId": "4f0a42b7-52da-4819-a224-70fafd75c70b",
+      "metadata": {
+        "recipeFingerprint": "cf2c92a02862efac2e992689762309dab658e1840e1cde6a0b402837fcc5f003",
+        "bakeConfigFingerprint": "bcf97cb3d726b3aa5a859d339681db2ba177508d11a73f220022deb166681373",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "01aab3605f22da6090eb50bf8e6a072797b2c6fe789ceac6c4e6693c55c71850",
+        "rawFingerprint": "1321fcf3bb74054bfd8818676c4ebb852abe2e0f2445c62710757e326c693398",
+        "bakeFingerprint": "6acd61be0c97e0e22886b8603bd546a5138f4e37770620add3122b2e0ae9595b",
+        "exportFingerprint": "ce64e4bf0389283844cba08ebbc966f70a09a9e097797758ead833c97a44f094"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:35:37.234Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:35:39.076Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:35:40.613Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:35:40.614Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:36:45.515Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:36:46.232Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:36:46.237Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.488Z"
+        }
+      ]
+    },
+    "terracotta-image-rx": {
+      "state": "published",
+      "jobId": "5f8cdcd1-3bee-4c1e-a506-9007848646f5",
+      "metadata": {
+        "recipeFingerprint": "9649f12e693745f3f4b80746b7a2a77ad0377ca7d7a2065b4c8c8e0f39246ae1",
+        "bakeConfigFingerprint": "7881f9318e43db4faf717bcbd32e544e8cc9c1254df863180a317c36295496d0",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "40c14530a87fc7a1a13467bbc5e647b4873e268e94d5ed1478a1e1f2dd782b22",
+        "rawFingerprint": "498264adcd85a2b6898261079d9a39f573719a67070acda7a9edeb581d57f177",
+        "bakeFingerprint": "f48ef1be3d29a89f9cfa36b3f276085cb22b53cb7181bf17ea5c42a40d53348b",
+        "exportFingerprint": "8160cd4fd5314ccebbc53e8f551c707f35df4d6aa9ec265951fb4684cdc9c7ad"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:36:46.237Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:36:50.031Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:36:51.665Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:36:51.665Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:36:55.238Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:36:55.984Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:36:55.986Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.488Z"
+        }
+      ]
+    },
+    "terracotta-kernel-low": {
+      "state": "published",
+      "jobId": "3400ae3b-946d-4706-9252-a42ecc094452",
+      "metadata": {
+        "recipeFingerprint": "3c0bcce1d20642f39c1e719a47ada4f03a1b86cef0560f82d4651b49881e81ba",
+        "bakeConfigFingerprint": "33e96d9a41f50d89c08bd6794b36e1f21a66ffc99e9e3ac9e202cde0c9262263",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "cdd52b201b1af97c7f5e566cdb9048c903491ac5773457837b5b99739d37a04e",
+        "rawFingerprint": "0ea99811ad35c50e90a1035f24b5baa3b9f8caea4e4b5438669dd2aa288e3fec",
+        "bakeFingerprint": "62e4461c3e3de56776f13bf65d1365d4041d631b723218e798fd8785e1f90d0e",
+        "exportFingerprint": "8379a9b726c1e2b24ea9e19582e107a5901a196f29a44e1af2b6e753404d8a0a"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:36:55.986Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:36:59.447Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:37:01.054Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:37:01.054Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:37:52.214Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:37:52.864Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:37:52.867Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.489Z"
+        }
+      ]
+    },
+    "terracotta-tele-vertical": {
+      "state": "published",
+      "jobId": "6847d958-6a42-4c30-b439-0ab1bf957c48",
+      "metadata": {
+        "recipeFingerprint": "0d3c4515bc1fe19e228fbc68ae7a6c26e20c413d8ec19ddaaa08d7279e9e181d",
+        "bakeConfigFingerprint": "b6ef486f2e9da7777f59c967a38405e4b1c34be5c5337127230cc8707cb5a33e",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "1ee728c23835e793820590cdbbb28589160a9a87548f93c514bae564f3f0abe1",
+        "rawFingerprint": "aba638b9a89a83923a334b8702828a8ddc55fa7baf602cf9415f947857aee315",
+        "bakeFingerprint": "f8e3a9e9245598c306d6571c508979f5ace979a3a857bd68b6992040d44544ee",
+        "exportFingerprint": "26198f6a8577972c791ef57f3ce1332249cc910b8407bbd5ae47fb8ac36e63a6"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:37:52.867Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:37:57.842Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:37:59.437Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:37:59.437Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:38:03.068Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:38:03.837Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:38:03.838Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.489Z"
+        }
+      ]
+    },
+    "terracotta-tessa-palette": {
+      "state": "published",
+      "jobId": "7b00a0d4-d07e-4fcc-b530-725e1129343d",
+      "metadata": {
+        "recipeFingerprint": "04232338204ff6e78a943a1dac0c47929af09a49d23475cb774b817549cf350f",
+        "bakeConfigFingerprint": "78d27baccf69c2a1223a6488073bae394f59e10731a0b227d344e11d1f596e9c",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "947eb537434763aa4d610a510bd7e9cef18755a0d27260bab403c7f0cc01c9b1",
+        "rawFingerprint": "345268644753c1f26352bd703b34dcd504f0d551786dcbea6ff3ff0e380d024d",
+        "bakeFingerprint": "9fb22702573167021e1c0d287c85136fc864ca4ce21a43d35db70aa489ad6c34",
+        "exportFingerprint": "f8395ddfa97374584aa133426acb78c0c413c097afc83a513b6a8b186099db89"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:38:03.838Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:38:05.564Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:38:07.294Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:38:07.294Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:39:12.761Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:39:13.420Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:39:13.422Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.489Z"
+        }
+      ]
+    },
+    "prismatic-etch-image-rx": {
+      "state": "published",
+      "jobId": "12f6d86c-55a5-4c68-8ed6-77af53355de2",
+      "metadata": {
+        "recipeFingerprint": "47c4df26837066f1e0d526703d8cfa174c41f5d671dbd9196cfd48b2016b230c",
+        "bakeConfigFingerprint": "720d5b6ff027bd4b6e8e65e9a00ae13703df07eeafcbe170fc01a9e80216b7a7",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "37434215f993da450a3cc9448a35b34455a98067ed0ffff970c8a9410e161a3a",
+        "rawFingerprint": "055fb245854d5947c57ea4f96b1a86aa6f03d838414f4cd62855006a1dffaf54",
+        "bakeFingerprint": "c3984e2b45c9d96d3d80acdf17a8c9f1a0284d82e1f9dd7e6745fa3465c86cb6",
+        "exportFingerprint": "145d05be6ec6b3faedf6005658c1fea7b681f9d74d0cf55ecb17d75b47266475"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:39:13.422Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:39:16.638Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:39:18.398Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:39:18.398Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:39:21.873Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:39:22.623Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:39:22.624Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.489Z"
+        }
+      ]
+    },
+    "prismatic-etch-kernel-low": {
+      "state": "published",
+      "jobId": "b98af9c8-7dac-4a1f-8f71-0525f2c5d177",
+      "metadata": {
+        "recipeFingerprint": "dcbdd9503f65470149a007d91c3e690a35cb2e011770c210e8ff0cfbe825835f",
+        "bakeConfigFingerprint": "1ae8ad57a507198a00bdf2974592a42c925d261161be1afa16450b23727e7379",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "bb5a0ba93e92c2113722fd44866f3c47d32a9529cb24841761b0e99c49e20910",
+        "rawFingerprint": "978dbdca0a6902441f9571375847dbd995841894304cce511d14b80fce030d11",
+        "bakeFingerprint": "bc40695d7162813ea442da9177b19610213c6e2a28d1cb499df4d055c32d9dc4",
+        "exportFingerprint": "146cc6929a5d1fdadd93ee87d1fc0a773b8d816ce6dd721e70725a8b020bd1f1"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:39:22.624Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:39:26.774Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:39:28.731Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:39:28.731Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:40:19.768Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:40:20.425Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:40:20.427Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.490Z"
+        }
+      ]
+    },
+    "prismatic-etch-tele-vertical": {
+      "state": "published",
+      "jobId": "76822651-fc97-451a-8abb-39b7a7a09b24",
+      "metadata": {
+        "recipeFingerprint": "5e2ab0b2b31f826efb607e82d9fa7f3f1997ee20c06a2f3ab6fde3d02ce330b1",
+        "bakeConfigFingerprint": "faca07e3f0dd3387e144e6208e325b1c7ec6049d8f22803afe3ee3e5951fc4af",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "aeafd4bd2c7e6054dffa72bd755194068f71fcde76d4053e88c58ebd4b2d1bde",
+        "rawFingerprint": "3c7690723c73db49b3eb139bcb3cad85b9e8c01bc7ab366c6dc4668234748973",
+        "bakeFingerprint": "d2b4fc94e799a30fe12321f16903d5af9f72b3ff901316b1645853037cb7cf5a",
+        "exportFingerprint": "5f5d8ad71ab90bd498af35294d1e571dd4eac704fcf4232921af78ad8046e386"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:40:20.427Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:40:25.345Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:40:27.038Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:40:27.038Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:40:32.651Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:40:33.315Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:40:33.316Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.490Z"
+        }
+      ]
+    },
+    "prismatic-etch-tessa-palette": {
+      "state": "published",
+      "jobId": "ce0b4765-f1b0-44b4-97d9-718ed3a62515",
+      "metadata": {
+        "recipeFingerprint": "6abdc01d116eccc06956ff177c8f5424e6a64e4ce8cc4797266ca341d02c2c18",
+        "bakeConfigFingerprint": "788ae0d24061bb81289ca6e905971196f77d39869adc758fe69e03c31db2650e",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "872b1ae0a09caa10f981657484510276a281a2512be86fabb3b00963612c8fdd",
+        "rawFingerprint": "32d890288300ac78756ce3b59361c6697d0d5062b58971ff4d19ee46b22b2388",
+        "bakeFingerprint": "7c690ada3b1d334a6005aa8b1c2fe1d8edf28fac1d48f0447b4dc60a8fa5b08c",
+        "exportFingerprint": "ad1ff185ec7d2bbe9f4600ac94a841bef82e3a564493c619587cc2bb4d7fd31e"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:40:33.316Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:40:34.945Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:40:36.540Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:40:36.541Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:41:41.024Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:41:41.795Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:41:41.796Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.491Z"
+        }
+      ]
+    },
+    "quay-waterline-image-rx": {
+      "state": "published",
+      "jobId": "ab9208cb-0a1a-46c1-a927-603f55050f29",
+      "metadata": {
+        "recipeFingerprint": "5be24137218f3bfa3c5ecc83e71fa470a5c91ec3d5166f0f780d71d8ec6e71a6",
+        "bakeConfigFingerprint": "3c93ce8c884a7cc6de4c3c4844ab1f45cabc94f56ff8d320f3fe9fdd5f3c45d0",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "b67dd88e8dfb42ac0a2314e9948b528307e6b24799d51d56a12fc8f9a98b3f7d",
+        "rawFingerprint": "40cd9d23d925486858c6cbdd0b8e652743ad77fbb916919920983fc82e6ebbe0",
+        "bakeFingerprint": "6403ef978ac8339c603c7d7027c29900d4084c7d5eeb85d237a61072ae7fb803",
+        "exportFingerprint": "f7f61b9eb1508e28b7496cf04fcd744982353e6152ef22e4b61ec012f0251241"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:41:41.797Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:41:44.845Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:41:46.266Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:41:46.266Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:41:49.765Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:41:50.544Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:41:50.546Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.491Z"
+        }
+      ]
+    },
+    "quay-waterline-kernel-low": {
+      "state": "published",
+      "jobId": "6928c6c7-5023-4cc4-802b-dab52ab491d9",
+      "metadata": {
+        "recipeFingerprint": "8cd1af9107d3cd5a3282c07d60973a06e6cd2ad9a9d9cb9eb011cad5753cc6ed",
+        "bakeConfigFingerprint": "282d29c150294a8744e95538252aec3d01b4066eb2eafdef486fecae0743ab50",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "cdbd38b6c16a3fa14c9d48a1f4013fc990aea8311afcc61562ab27ca83702fa0",
+        "rawFingerprint": "146cfa7a98e2c09d4d334ba396be0ba412967ac1438424d73a0e3dbad2315673",
+        "bakeFingerprint": "8712d8f57f89f49296997e4edfeb0e9a8898c789bcd92a9c9c88f9de00fbc499",
+        "exportFingerprint": "c76dcce5c8a8e4f9fcdbd77e21b94af1d4f8b4673273bb3c941099dbf5da78e5"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:41:50.546Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:41:53.876Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:41:55.530Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:41:55.531Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:42:46.493Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:42:47.153Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:42:47.155Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.491Z"
+        }
+      ]
+    },
+    "quay-waterline-tele-vertical": {
+      "state": "published",
+      "jobId": "0dec5762-44b8-4b9d-a15a-fe00cbb581cd",
+      "metadata": {
+        "recipeFingerprint": "b4747f5234a7e635d5922116a21878055e473657c72f24a27fde7c81acdfdcba",
+        "bakeConfigFingerprint": "1ae4fc043ae3a5b74a74deffc6ec488d4dbc339d96297204b64e097bdc14e4d7",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "bee33c5ce383d4b23bb3b0fbe19d625f68b8eaef3cb5ebdc2fd02c1cfc31a143",
+        "rawFingerprint": "b6ead07e8966455cbb9d5178fa9add2420d172a78af4135b30f91b36196637a8",
+        "bakeFingerprint": "b334d818470dd179da0394d0c5e76e93299495e36eef920fc9fb774f00df93c4",
+        "exportFingerprint": "9ecf4be72b81a134ae76a26b1f72256dfd2f0c663bcb7e6c54988b69fdb55948"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:42:47.155Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:42:52.001Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:42:53.707Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:42:53.707Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:42:57.226Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:42:57.937Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:42:57.938Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.491Z"
+        }
+      ]
+    },
+    "quay-waterline-tessa-palette": {
+      "state": "published",
+      "jobId": "9bd0c9b1-397d-4a94-862e-c7a12048a2f0",
+      "metadata": {
+        "recipeFingerprint": "5bfe8cd0e166d1c740388a275c5686fda16db819dee29dd64814286763bb57f5",
+        "bakeConfigFingerprint": "013421d485bd3ae36af0e8029af2028d73c985b957364dac58a1f2b82138feda",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "9f79186a699e74b2b6ea0ee894f32ae32468852c9c61300edf123b4644e99ca9",
+        "rawFingerprint": "849d15d1995fd79cea6ebc8d31c20efbc52ee00741197d2d847329215167bd7c",
+        "bakeFingerprint": "066935208aba4f0a4e91719a1f40ae4e6378a4eacd0fce0b112e5dbefa8a864c",
+        "exportFingerprint": "d8ef1ceaac4ab091cae5174efad79f31fcc6caff5db5564d25e500cce8aa0287"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:42:57.938Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:42:59.465Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:43:00.957Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:43:00.957Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:44:05.232Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:44:05.958Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:44:05.959Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.491Z"
+        }
+      ]
+    },
+    "moss-lichen-image-rx": {
+      "state": "published",
+      "jobId": "f935e1da-9b5a-43d6-b121-f3071cc796a2",
+      "metadata": {
+        "recipeFingerprint": "f7295b11890cc20b1e35090d4c58bc84e1dcb06c86c7bdbd47432b46f7d39d31",
+        "bakeConfigFingerprint": "0f3bb1e226eb20cd36e5db86ddd4899373211a06bf94fb2d8f00d7c822c8368c",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "05ae29cb75452beab9123fe8932b19391dd0e4a70bfc8340428ff8b6cd9710a5",
+        "rawFingerprint": "f806f56abf87ed4d9dd1ab7d3c585faa15aad07e09d06526d02c327cb07af65e",
+        "bakeFingerprint": "a70ab44a84975012bf44b4e04282296df8baf9c2e4cb9bbd8bc5bfd316e499a9",
+        "exportFingerprint": "025f6dc69ecc09f6f51ca0d4d1a6223eddf9dd7d245972c7b5746a4b11af4e80"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:44:05.960Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:44:09.118Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:44:10.762Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:44:10.762Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:44:14.198Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:44:14.863Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:44:14.864Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.491Z"
+        }
+      ]
+    },
+    "moss-lichen-kernel-low": {
+      "state": "published",
+      "jobId": "ea5fd666-9b47-4dbd-887c-e9a964cb3dbd",
+      "metadata": {
+        "recipeFingerprint": "b98c36e717f5e47d0d43859971a0bd1210276ad82a630970defba7afc6b16e89",
+        "bakeConfigFingerprint": "55f72607ec2b58002f106870a8c2a18f98970b1eb83e46f02e82765c2f4f705d",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "4d44ccd63052e57454005aa065c97249905518bfe419f5369c1c407644d5a371",
+        "rawFingerprint": "2f7440141d747a115251c45cfa91e797962c73b6eca65d07391e567a68d2a944",
+        "bakeFingerprint": "624710acbd8bf6e815cb530941a8d8425281365b932e54486ecb8e3084d2d947",
+        "exportFingerprint": "b0ef2a43bb65da9d2728836b7500a06a4e48b52614378d5b4e5dcda4be59f6df"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:44:14.864Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:44:18.095Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:44:19.736Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:44:19.736Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:46:59.242Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:46:59.879Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:46:59.880Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.491Z"
+        }
+      ]
+    },
+    "moss-lichen-tele-vertical": {
+      "state": "published",
+      "jobId": "80fb36f9-d06a-4d88-82b6-9e3797b58157",
+      "metadata": {
+        "recipeFingerprint": "c21fc738246c54446c1238093a17998876506b8e3402507a3f2eab4fb9d35e89",
+        "bakeConfigFingerprint": "4e0372f8c0c2512b852fb68c7c7973302483da74f6695a11a11918fb8a20070a",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "f8285663f8738ba50d907dcf7f606e28f3878a81701b16723f5c464265fc021f",
+        "rawFingerprint": "0d730032dfb9187851176bec6f142f51879acb149b2bcc52f53a4014f376c5d1",
+        "bakeFingerprint": "3578ac118fc05250fd034618c62afb66ea5626d602ebbbbb4d12c246f2c52274",
+        "exportFingerprint": "e27d70cb6be5a9d44d6b33f9af1788d56ab9835759d3989112d6a315fd530cde"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:46:59.880Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:47:04.826Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:47:06.253Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:47:06.254Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:47:09.925Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:47:10.650Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:47:10.651Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.491Z"
+        }
+      ]
+    },
+    "moss-lichen-tessa-palette": {
+      "state": "published",
+      "jobId": "75a41b6a-9586-4743-bedf-9bcbbf5806ed",
+      "metadata": {
+        "recipeFingerprint": "70e640ec00e7ffc25f17559efafcde294d27fcdd1496c3c715f3dae041b7e22e",
+        "bakeConfigFingerprint": "24845dcb6c1405ae6ac9d14db0b8c4f71ea886af54df4f6798105d12ff940647",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "415d4077223eefea343028c7d813a0e91a89af5511d28a7886c31203d37030db",
+        "rawFingerprint": "b9a81a62d7cd3cbaeedbcf5270861a60967395319d4fb739517cdcf3cc78de85",
+        "bakeFingerprint": "2a6b2b7cd6368eb1da42cd7ae58efa3209a259ff1db474257661039b27f12574",
+        "exportFingerprint": "5611a2c62ef775d410fa6a557e2f730e7d501dc0d61bcdb175f18fe0e2bca35d"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:47:10.651Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:47:12.305Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:47:13.803Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:47:13.804Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:48:18.368Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:48:19.137Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:48:19.139Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.492Z"
+        }
+      ]
+    },
+    "terracotta-image-ry": {
+      "state": "published",
+      "jobId": "611112f2-638c-4c24-b9a7-2602ef3cba6c",
+      "metadata": {
+        "recipeFingerprint": "e5c7a3c59fa5d562c81df5c27c1ce0deb3e8258dc693997ead95c459d944eddc",
+        "bakeConfigFingerprint": "6d2ee6ee1b51d9e465b8e3cd5f8cd0aebf808abc14cba3ec3ee79db540043de6",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "96cc904f78d7e46759a5772036d01895f9fcd081e24b93ce5f99e8c6b5442025",
+        "rawFingerprint": "bf3c7b48d08859b1700e0cc527aa2ad5ed90b3cb790d6dbeebb30778f1486e35",
+        "bakeFingerprint": "3ab64b1ea702ccbf7d245992bf4ce73c6d0d1f736b2f5814b3723a44568995c1",
+        "exportFingerprint": "a972e84af6eb7b6c1598f17b1e8e0fb5994c2c2cfae2019af5b66034b4d86e1b"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:48:19.139Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:48:22.322Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:48:23.984Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:48:23.985Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:48:27.527Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:48:28.193Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:48:28.194Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.492Z"
+        }
+      ]
+    },
+    "copper-patina-kernel-mid": {
+      "state": "local-failed",
+      "jobId": null,
+      "metadata": {
+        "recipeFingerprint": "20055debe2c2431baf3df893acb37f71e14c53e84ad87abe051c6f05954be091",
+        "bakeConfigFingerprint": "0c8cecae809919ec4a68c74d87a719c619de00eb27d832d7de464bbf4807c2e1",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "ambiguousAssetId": "09af9bc1-c698-41bd-bbc7-696866c7088c"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:48:28.194Z"
+        },
+        {
+          "state": "local-failed",
+          "at": "2026-10-03T15:48:30.984Z",
+          "detail": "asset operation uncertain for 09af9bc1-c698-41bd-bbc7-696866c7088c"
+        }
+      ]
+    },
+    "quay-waterline-tele-horizontal": {
+      "state": "published",
+      "jobId": "2ba62d5f-208a-4413-84ad-f3876602d037",
+      "metadata": {
+        "recipeFingerprint": "c817b512ba41e51f47d150ef0af5e9660eeb20dc604889d08d7416e58ad1a85a",
+        "bakeConfigFingerprint": "73844ff43aa734dedf421e48de4b2dbeb3a59e48c18ad54da24d71d11546d756",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "f3264299b778e5a63258a90f12208de2b53abf6ec384bd96a1bc7ba7b49231a2",
+        "rawFingerprint": "d1782eae6cec16bfafbcbe0a464d994adb86f976f5301b7755d774cfcc8e1b55",
+        "bakeFingerprint": "d6bc20336887f9fc61335b1d2b1743158ea5e62c14d96f623dca5454e9a7c15e",
+        "exportFingerprint": "43c4fca8cb98f3182ee739a7b00e563a8e409c7db60c2f289a6df1e785bc3c9d"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:48:30.984Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:48:35.840Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:48:37.317Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:48:37.318Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:48:40.800Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:48:41.566Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:48:41.568Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.492Z"
+        }
+      ]
+    },
+    "copper-patina-tessa-noisy": {
+      "state": "published",
+      "jobId": "79e73604-a523-40ec-879d-93e776e98304",
+      "metadata": {
+        "recipeFingerprint": "9167a76db5d5be5ac229576c6e95455fe7d43a17d424a9e9b67e15256543ab8a",
+        "bakeConfigFingerprint": "a3710d691368322d92ae88dc85626145063dbddcf8aa6ecb01329189a62018ad",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "0d18dece24f08663254b4ad9f36dcb322223c212d52e2194f8278f1afed7b235",
+        "rawFingerprint": "353d277bb8def657b8c2552cd699902c1a842ec93ce05f906492a982f02efe3d",
+        "bakeFingerprint": "d1e4d625e6bab7787ad5dffe7fc24b78f321e63db590e1848483284da8526e7a",
+        "exportFingerprint": "6aac84edbe5ee8d9b5ba95ec67d9be0f56d601c3b781f2fec695d44d0c8f528f"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:48:41.568Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:48:43.011Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:48:44.343Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:48:44.343Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:58:08.674Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:58:09.336Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:58:09.340Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.492Z"
+        }
+      ]
+    },
+    "moss-lichen-qpixl": {
+      "state": "local-failed",
+      "jobId": "83d8426a-ef39-4c5c-ae08-265f33191de3",
+      "metadata": {
+        "recipeFingerprint": "64c81d496dfb5b0ef55fd4a1a8897df697a5648ee0b5bd28278f9cfec5da3813",
+        "bakeConfigFingerprint": "dc2d586551ff6228b754d80fedebabac25ba2bc66a9b64c04767728c9d214e98",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "00c15e503907d31f2e428b96fdb9b2ec06691301cb4cd97d9b78dae3015b5eba",
+        "rawFingerprint": "4e8e1fe3281024948eedb215c3c87ad08070a9e4493b5b567a77998585a396c0"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:58:09.340Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:58:09.350Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:58:10.713Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:58:10.713Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:58:58.179Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:58:59.530Z"
+        },
+        {
+          "state": "local-failed",
+          "at": "2026-10-03T15:58:59.530Z",
+          "detail": "local execution stage failed"
+        }
+      ]
+    },
+    "quay-waterline-qpixl": {
+      "state": "local-failed",
+      "jobId": "10d07077-63c4-4b66-8623-c4d7de13ee74",
+      "metadata": {
+        "recipeFingerprint": "c18ae0dd73f049b4f7b95422f683e7c984f5fbcd36aadee9f211980334e7aa46",
+        "bakeConfigFingerprint": "b87916d421edc86146c3e0a54376057701eef9c22f799aac1bb70710f162cbfc",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "a42a4b435ef82f16d519b1715be84ad4762f87cd674f56a8203ed9bdf16ddb74",
+        "rawFingerprint": "0b7fdb1546f0f908bd778db6e9d7915c5db78f5f478d434fa8fc69bf85b119d1"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:58:59.530Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:58:59.534Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:59:01.065Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:59:01.066Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:59:42.565Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:59:43.630Z"
+        },
+        {
+          "state": "local-failed",
+          "at": "2026-10-03T15:59:43.630Z",
+          "detail": "local execution stage failed"
+        }
+      ]
+    },
+    "instrument-lut-3-body": {
+      "state": "published",
+      "jobId": "210cf363-bb9b-4a0a-a4d4-3436dc2ee279",
+      "metadata": {
+        "recipeFingerprint": "e8317dfda9346ea9e3d8e294eef181a51f1f893864c996506209f001118001b9",
+        "bakeConfigFingerprint": "0c6a511ce6733e6eb1451b9f86e3765550e82fe94e69be442281ac85123815e3",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "0ce84ee728d35b9299570bdc6a3e1803aae84ff018ec1ab2152279b2451314a9",
+        "rawFingerprint": "120201e9553cf595101e9d7dc5dc50a307447f4f70521f34df26067df01fea55",
+        "bakeFingerprint": "2f6782463586dea2b923944cc058328e4163bda08ebc35ecd1ee485daae6c9b9",
+        "exportFingerprint": "a1525d61aa1ee1fc985cfce25c57c0fbbb323160f85d52ba81d449c71aec22b5"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:59:43.631Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:59:43.631Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:59:44.860Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:59:44.860Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:59:50.850Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:59:51.594Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:59:51.599Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.492Z"
+        }
+      ]
+    },
+    "instrument-lut-frustrated": {
+      "state": "published",
+      "jobId": "c56014b8-3a3c-46d1-bd3b-55fcc30bf65c",
+      "metadata": {
+        "recipeFingerprint": "826cf2c182602cc1d4adef7badc7efb1274c017ed13784ce70f50b443960af1c",
+        "bakeConfigFingerprint": "ef1686e6ead3d3ff38681dab23bf949ee5f7b9d878d4ac40a85273ab9729f9ae",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "a970c42f015d0a1c48969b706841b3efe3bcb5d7e85f216852477e84cf3e3583",
+        "rawFingerprint": "6cf493f89cd6af163cd5249bc5ec35d190b8819fde5159813f3bf8ca484ecb36",
+        "bakeFingerprint": "6f7f6d01bfc296273e95ecdb47ae82f1296d136947b9d46aa68d7eab93f02f64",
+        "exportFingerprint": "4fb5868d158547314c2f12746619b33156f284d9a14c9418223f8ad5067b59ee"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:59:51.599Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:59:51.599Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:59:52.794Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:59:52.794Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:59:58.741Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:59:59.485Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:59:59.487Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:59:59.492Z"
+        }
+      ]
+    }
+  }
+}

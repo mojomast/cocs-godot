@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "ribbed-steel",
+  "engine": "blur-core-v1",
+  "jobId": "9a489657-80b5-4236-8fd0-225c5ffa9f87",
+  "recipeFingerprint": "05bc91e55d7bb3912eab31b2fa361859fd22b0d423e9c26a9776bb517fdb43f3",
+  "generationFingerprint": "5faee4cf21dea52e89ce3a0823bb7a9977e9fec9a2c2a140adf3842985e8aaa1",
+  "verification": "new-request",
+  "rawFingerprint": "8a225df300fc5b9a0d5216a1f94e99fc33d6e4ce1fbe964031c14ff275f219df",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 436349,
+    "sha256": "bb4c4583d1c7a8e92c238b87d6e7638b01d8b05ed63459fe2a4776a9ddb03841",
+    "jsonHash": "baa92e424299f59ab5f7d6afb440ab4a8b432868a2ac9038b5a0e9548553f37f"
+  }
+}

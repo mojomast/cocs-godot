@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "copper-patina-kernel-global",
+  "engine": "deep-fryer-v1",
+  "jobId": "f8a88453-7580-4384-8671-00eb9679231d",
+  "recipeFingerprint": "032a0e3de76e2a70e5f6802a50b50d623708dad29f825b3393a27b585f2ff051",
+  "generationFingerprint": "6e2bf374705c382a70a94072f7acad14d3e0d128c5a189337aedb3a0c7a15c0b",
+  "verification": "concurrent-new-request",
+  "rawFingerprint": "1b6698435fc533252ac6b3587924a692048111694b12efa6f9af29fabcc745aa",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "65d76a30-7736-4fee-966a-5b3326493798",
+      "bytes": 5142,
+      "sha256": "44b0acc6d176648583df1e9e726fab852c23872db48a8f7c1a86accde7095fcd"
+    }
+  ],
+  "result": null
+}

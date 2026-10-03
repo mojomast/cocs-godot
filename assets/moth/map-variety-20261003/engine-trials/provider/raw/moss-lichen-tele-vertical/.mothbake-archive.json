@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "moss-lichen-tele-vertical",
+  "engine": "telablur-v1",
+  "jobId": "80fb36f9-d06a-4d88-82b6-9e3797b58157",
+  "recipeFingerprint": "c21fc738246c54446c1238093a17998876506b8e3402507a3f2eab4fb9d35e89",
+  "generationFingerprint": "f8285663f8738ba50d907dcf7f606e28f3878a81701b16723f5c464265fc021f",
+  "verification": "new-request",
+  "rawFingerprint": "0d730032dfb9187851176bec6f142f51879acb149b2bcc52f53a4014f376c5d1",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "cbdb75d4-656e-4198-8008-426aacfdb9f1",
+      "bytes": 4762,
+      "sha256": "f719494e18e4e3b2c831b48511d6e2fa7eb747decc5b0a312eeb0a2b4d44b3a4"
+    }
+  ],
+  "result": null
+}

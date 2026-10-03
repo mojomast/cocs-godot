@@ -1,0 +1,38 @@
+
+> slate-shingle (blur-core-v1) — submit
+  submitted e6e2c413-fc42-4301-aee9-134d0060fdcc
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.slate-shingle
+
+> cobble-sett (blur-core-v1) — submit
+  submitted 3fac8d90-53ed-483e-8907-3fc1cab78adf
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.cobble-sett
+
+> fern-frond (blur-core-v1) — submit
+  submitted 20ec5563-3b66-436e-a345-ec907a37ad3c
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.fern-frond
+
+> sea-flow (blur-core-v1) — submit
+  submitted a2a37484-b842-4404-a09e-bbc536f84002
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.sea-flow
+
+> timber-weather (blur-core-v1) — submit
+  submitted 3fd13eaf-e9b1-444b-9e15-364435aa7b2e
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.timber-weather
+
+> quay-waterline (blur-core-v1) — submit
+  submitted f28876be-f9e2-49c1-a8b4-fe3d49a0bdd8
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.quay-waterline
+recorded job ids in /tmp/opencode/cocs-moth-resources/assets/moth/map-variety-20261003/supplemental.json
+baked 6 record(s) from 6 job(s) into /tmp/opencode/cocs-moth-resources/assets/moth/map-variety-20261003/provider · {"grids":6} · failed: 0

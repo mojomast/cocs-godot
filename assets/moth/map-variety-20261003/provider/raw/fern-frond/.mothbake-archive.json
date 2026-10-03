@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "fern-frond",
+  "engine": "blur-core-v1",
+  "jobId": "20ec5563-3b66-436e-a345-ec907a37ad3c",
+  "recipeFingerprint": "e74194b14925236b9543e95bb6ac2171863b6380c000f79325ded375e45aac13",
+  "generationFingerprint": "20416e2ea0e6ff35a6b828ccbf32af74163248818c060ba8d18944bdb60fbf77",
+  "verification": "new-request",
+  "rawFingerprint": "bb6925c54e5946745cd092b7b061da92fe79a67d22b69499ac359f3e499f0b63",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 439701,
+    "sha256": "6b5bb108077769555464733ad090bca15fd0694c19ac91c71b88736520e20798",
+    "jsonHash": "bb4a3fea4e39ed779e5f630f9af1518df1927b9b4283e203d76c44ab9fd03b1d"
+  }
+}

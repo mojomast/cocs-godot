@@ -1,0 +1,127 @@
+{
+  "engineId": "blur-v0",
+  "name": "Quantum Blur",
+  "version": null,
+  "creditsPerRun": 1,
+  "enabled": true,
+  "paramsSchema": {
+    "properties": {
+      "downscale": {
+        "default": true,
+        "description": "Strategy used when a mask region is larger than the maximum number of qubits allows:\n\n- `true` — the region is downscaled to fit, blurred, and upscaled back.\n- `false` — the region is split into adjacent tiles that are blurred independently.",
+        "title": "Downscale",
+        "type": "boolean"
+      },
+      "reach": {
+        "default": 0,
+        "description": "Controls how far from its original position a pixel can be affected by the blur:\n\n- `0` — fully local: only nearby pixels are affected (default).\n- `1` — fully non-local: pixels anywhere on the canvas can be affected equally.",
+        "maximum": 1,
+        "minimum": 0,
+        "title": "Reach",
+        "type": "number"
+      },
+      "size": {
+        "default": 1024,
+        "description": "Pixel budget per blur pass: a region up to `size × size` pixels is blurred in a single pass. Internally converted to a qubit budget via `ceil(log2(size)) * 2`. Must be between 8 and 1024. Default 1024.",
+        "maximum": 1024,
+        "minimum": 8,
+        "title": "Size",
+        "type": "integer"
+      },
+      "strength": {
+        "default": 0.5,
+        "description": "Strength of the effect, which controls the rotation applied to each qubit:\n\n- `0` — the image is left unchanged.\n- `1` — maximum blur.",
+        "maximum": 1,
+        "minimum": 0,
+        "title": "Strength",
+        "type": "number"
+      },
+      "style": {
+        "default": "rx",
+        "description": "Quantum gate used to apply the effect:\n\n- `rx` — rotation around the x-axis of the Bloch sphere.\n- `ry` — rotation around the y-axis of the Bloch sphere.",
+        "enum": [
+          "rx",
+          "ry"
+        ],
+        "title": "Style",
+        "type": "string"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [
+    {
+      "name": "image",
+      "mime_types": [
+        "image/png",
+        "image/jpeg",
+        "image/webp",
+        "image/tiff",
+        "image/bmp"
+      ],
+      "required": true,
+      "description": "The image of your choice. The blur effect is applied RGB pixel values only, not the alpha channel. It means that if you submitted a PNG with transparent background, the background from the output will also be transparent."
+    },
+    {
+      "name": "mask",
+      "mime_types": [
+        "image/png",
+        "image/jpeg",
+        "image/webp",
+        "image/tiff",
+        "image/bmp"
+      ],
+      "required": false,
+      "description": "Optional mask controlling where the effect is applied, on a per-pixel\nbasis. Must match the size of `image`. Each output pixel is a soft\nblend `C = m · C_blurred + (1 - m) · C_original`, where `m` is the\nnormalised mask intensity at that pixel: black keeps the original,\nwhite takes the fully blurred version, and grey values blend smoothly\nbetween the two. Single-channel masks are used directly; RGB masks are\nconverted to luminance.\n\n**Alpha-channel fallback**\n\nIf no mask is provided, the alpha channel of `image` is used instead\n(transparent pixels keep the original, opaque pixels are blurred). For\nRGB input with no alpha channel, the whole image is blurred.\n"
+    }
+  ],
+  "outputFiles": [],
+  "runPolicy": {
+    "timeout": 600,
+    "max_retries": 1,
+    "heartbeat": 600
+  },
+  "errorCodes": [
+    {
+      "type": "image_too_large",
+      "description": "Image exceeds the 1024×1024 px limit."
+    },
+    {
+      "type": "too_many_tiles",
+      "description": "Image with downscale=false and the given max_qubits would require more than 200 quantum tiles. Enable downscale or increase max_qubits."
+    },
+    {
+      "type": "mask_size_mismatch",
+      "description": "Mask dimensions do not match the image dimensions."
+    },
+    {
+      "type": "no_mask_region",
+      "description": "The provided mask has no non-zero pixels — nothing to blur."
+    },
+    {
+      "type": "invalid_params",
+      "description": "One or more params fields failed Pydantic validation."
+    },
+    {
+      "type": "invalid_image",
+      "description": "The image or mask file could not be decoded."
+    },
+    {
+      "type": "blur_failed",
+      "description": "The quantum blur circuit failed on a mask region."
+    },
+    {
+      "type": "region_extraction_failed",
+      "description": "A mask region could not be extracted from the image (e.g. an invalid bounding box)."
+    },
+    {
+      "type": "compose_failed",
+      "description": "A blurred region could not be blended back into the output image."
+    },
+    {
+      "type": "encoding_failed",
+      "description": "The output image could not be encoded in the input's format."
+    }
+  ]
+}

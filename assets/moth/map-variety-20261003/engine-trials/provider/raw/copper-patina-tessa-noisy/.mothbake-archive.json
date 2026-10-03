@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "copper-patina-tessa-noisy",
+  "engine": "tessa-image-v1",
+  "jobId": "79e73604-a523-40ec-879d-93e776e98304",
+  "recipeFingerprint": "9167a76db5d5be5ac229576c6e95455fe7d43a17d424a9e9b67e15256543ab8a",
+  "generationFingerprint": "0d18dece24f08663254b4ad9f36dcb322223c212d52e2194f8278f1afed7b235",
+  "verification": "new-request",
+  "rawFingerprint": "353d277bb8def657b8c2552cd699902c1a842ec93ce05f906492a982f02efe3d",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "712116d0-325d-468e-a09f-f08aba6bd875",
+      "bytes": 914,
+      "sha256": "36c45c0e3433b61e2913cdc2eaf7302ca27602cb4ac39ea917bfe0a1c2843ed0"
+    }
+  ],
+  "result": null
+}

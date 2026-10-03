@@ -1,0 +1,162 @@
+{
+  "engineId": "qrc-audio-v1",
+  "name": "QRC Audio",
+  "version": null,
+  "creditsPerRun": 5,
+  "enabled": true,
+  "paramsSchema": {
+    "properties": {
+      "chunk_seconds": {
+        "default": 1,
+        "description": "Length of each chunk in seconds when splitting the `audio` file. Ignored when `chunks` is given.",
+        "exclusiveMinimum": 0,
+        "title": "Chunk Seconds",
+        "type": "number"
+      },
+      "crossfade": {
+        "default": 0,
+        "description": "Milliseconds of crossfade between chunks (0 = hard cuts).",
+        "maximum": 1000,
+        "minimum": 0,
+        "title": "Crossfade",
+        "type": "integer"
+      },
+      "length": {
+        "default": 10,
+        "description": "How many chunks to string together in the output",
+        "exclusiveMinimum": 0,
+        "maximum": 500,
+        "title": "Length",
+        "type": "integer"
+      },
+      "loop": {
+        "default": true,
+        "description": "Treat the audio as looping material — the end flows back into the start. Learning only.",
+        "title": "Loop",
+        "type": "boolean"
+      },
+      "quality": {
+        "default": "moderate",
+        "description": "How hard to train when learning a fresh piece (no `model`): instant skips training for a quick untrained shuffle; fast is quick and rough; complete is slow and tight.",
+        "enum": [
+          "instant",
+          "fast",
+          "moderate",
+          "complete"
+        ],
+        "title": "Quality",
+        "type": "string"
+      },
+      "seed": {
+        "anyOf": [
+          {
+            "maximum": 4294967295,
+            "minimum": 0,
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Change for a different result, keep fixed to reproduce one. On a fresh piece it also fixes the learned reservoir; when reusing a `model` it just varies the take, so you can fan out independent takes by changing it.",
+        "title": "Seed"
+      },
+      "training_sequence": {
+        "anyOf": [
+          {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Advanced — chunk filenames in a specific order to learn. Omit to learn the chunks' natural order. Ignored when a `model` is given.",
+        "title": "Training Sequence"
+      },
+      "variation": {
+        "default": 1,
+        "description": "How freely the result departs from the learned order: low = tight and repetitive, high = loose and surprising.",
+        "exclusiveMinimum": 0,
+        "title": "Variation",
+        "type": "number"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [
+    {
+      "name": "audio",
+      "mime_types": [
+        "audio/wav",
+        "audio/x-wav",
+        "audio/mpeg",
+        "audio/ogg",
+        "audio/flac"
+      ],
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "chunks",
+      "mime_types": [
+        "application/zip"
+      ],
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "model",
+      "mime_types": [
+        "application/json"
+      ],
+      "required": false,
+      "description": ""
+    }
+  ],
+  "outputFiles": [
+    {
+      "name": "result",
+      "content_types": [
+        "audio/wav"
+      ],
+      "required": true,
+      "description": "The generated remix WAV."
+    },
+    {
+      "name": "state",
+      "content_types": [
+        "application/json"
+      ],
+      "required": true,
+      "description": "Advanced reservoir state; reuse on a later call as job:<id>/state."
+    },
+    {
+      "name": "vocabulary",
+      "content_types": [
+        "application/zip"
+      ],
+      "required": true,
+      "description": "Zip of chunk WAVs (filenames are tokens); reuse as job:<id>/vocabulary."
+    },
+    {
+      "name": "model",
+      "content_types": [
+        "application/json"
+      ],
+      "required": false,
+      "description": "Pristine trained model for fan-out; reuse as job:<id>/model."
+    }
+  ],
+  "runPolicy": {
+    "timeout": 3600,
+    "max_retries": 1,
+    "heartbeat": 3000
+  },
+  "errorCodes": []
+}

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "status": "offline-checks-passed",
+  "pngsDecodedAndHashVerified": 20,
+  "pngsByteIdenticalOnFreshRebake": 20,
+  "auxiliaryFilesHashVerifiedAndByteIdentical": 16,
+  "contactsAndManifestByteIdentical": true,
+  "baseManifestVerifiedUnchanged": true,
+  "maxNormalError": 0.0051692614365355105,
+  "maxBaseSeamRatio": 0.5934088769909666,
+  "mipWarnings": [
+    {
+      "key": "quay-damp-horizontal.normal",
+      "size": 16,
+      "edgeMean": 1.2708333333333333,
+      "interiorMean": 0.3958333333333333,
+      "ratio": 3.2105263157894735
+    }
+  ],
+  "apiCalls": 0,
+  "blenderReview": "pending next authorized stage"
+}

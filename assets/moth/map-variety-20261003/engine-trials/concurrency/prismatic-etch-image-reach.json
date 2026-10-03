@@ -1,0 +1,38 @@
+{
+  "id": "prismatic-etch-image-reach",
+  "batch": 4,
+  "engine": "blur-v1",
+  "params": {
+    "strength": 0.18,
+    "reach": 0.08,
+    "style": "rx",
+    "size": 64
+  },
+  "inputs": {
+    "image": "sources/prismatic-etch-source.png"
+  },
+  "recipeFingerprint": "29134cefe811f413775a30b62bcde64a0ff08fa4080eb2998d7aa729f9117cec",
+  "state": "completed",
+  "jobId": "a93da26a-bbe4-47a9-821f-fd05f1efc028",
+  "attempts": [
+    {
+      "startMonotonicMs": 1791042352515.0266,
+      "startUTC": "2026-10-03T15:45:52.515Z",
+      "endMonotonicMs": 1791042354489.374,
+      "http": 202,
+      "durationMs": 1974.347412109375
+    }
+  ],
+  "observations": [
+    {
+      "atUTC": "2026-10-03T15:45:58.952Z",
+      "monotonicMs": 1791042358952.4128,
+      "status": "completed",
+      "step": "exporting",
+      "startedAt": null,
+      "completedAt": null
+    }
+  ],
+  "submittedAt": "2026-10-03T15:45:53Z",
+  "archived": true
+}

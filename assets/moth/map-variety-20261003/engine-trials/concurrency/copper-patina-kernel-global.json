@@ -1,0 +1,217 @@
+{
+  "id": "copper-patina-kernel-global",
+  "batch": 2,
+  "engine": "deep-fryer-v1",
+  "params": {
+    "gates": [
+      [
+        "rx",
+        0.1
+      ]
+    ],
+    "tile_size": 2
+  },
+  "inputs": {
+    "image": "sources/copper-patina-source.png"
+  },
+  "recipeFingerprint": "032a0e3de76e2a70e5f6802a50b50d623708dad29f825b3393a27b585f2ff051",
+  "state": "completed",
+  "jobId": "f8a88453-7580-4384-8671-00eb9679231d",
+  "attempts": [
+    {
+      "startMonotonicMs": 1791042231498.3042,
+      "startUTC": "2026-10-03T15:43:51.498Z",
+      "endMonotonicMs": 1791042233442.1958,
+      "http": 202,
+      "durationMs": 1943.8916015625
+    }
+  ],
+  "observations": [
+    {
+      "atUTC": "2026-10-03T15:43:54.824Z",
+      "monotonicMs": 1791042234824.2185,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:43:58.315Z",
+      "monotonicMs": 1791042238315.3127,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:44:01.640Z",
+      "monotonicMs": 1791042241640.9492,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:44:04.804Z",
+      "monotonicMs": 1791042244804.9194,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:44:08.817Z",
+      "monotonicMs": 1791042248817.5852,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:44:13.793Z",
+      "monotonicMs": 1791042253793.4795,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:44:19.490Z",
+      "monotonicMs": 1791042259490.168,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:44:25.213Z",
+      "monotonicMs": 1791042265213.1218,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:44:30.876Z",
+      "monotonicMs": 1791042270876.733,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:44:36.544Z",
+      "monotonicMs": 1791042276545.0042,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:44:42.218Z",
+      "monotonicMs": 1791042282218.3813,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:44:47.966Z",
+      "monotonicMs": 1791042287966.3743,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:44:53.707Z",
+      "monotonicMs": 1791042293707.4224,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:44:59.448Z",
+      "monotonicMs": 1791042299448.0977,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:45:05.156Z",
+      "monotonicMs": 1791042305156.9062,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:45:10.900Z",
+      "monotonicMs": 1791042310900.998,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:45:16.671Z",
+      "monotonicMs": 1791042316671.5535,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:45:22.412Z",
+      "monotonicMs": 1791042322412.3271,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:45:28.122Z",
+      "monotonicMs": 1791042328122.5308,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:45:33.855Z",
+      "monotonicMs": 1791042333855.884,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:45:39.569Z",
+      "monotonicMs": 1791042339569.486,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:45:45.318Z",
+      "monotonicMs": 1791042345319.0166,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:45:51.742Z",
+      "monotonicMs": 1791042351742.672,
+      "status": "completed",
+      "step": "run",
+      "startedAt": null,
+      "completedAt": null
+    }
+  ],
+  "submittedAt": "2026-10-03T15:43:52Z",
+  "archived": true
+}
