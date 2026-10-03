@@ -12,6 +12,7 @@ import json
 import pathlib
 import sys
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from build_entry import packed_image_count
 
 

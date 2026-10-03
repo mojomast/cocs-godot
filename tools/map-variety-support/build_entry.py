@@ -90,10 +90,13 @@ def _glb_material_images(path):
 
     result = {}
     for material in doc.get('materials', []):
-        base = material.get('pbrMetallicRoughness', {}).get('baseColorTexture')
+        pbr = material.get('pbrMetallicRoughness', {})
+        base = pbr.get('baseColorTexture')
+        rough = pbr.get('metallicRoughnessTexture')
         normal = material.get('normalTexture')
         result[material['name']] = {'color': image_bytes(base['index']) if base else None,
-                                    'normal': image_bytes(normal['index']) if normal else None}
+                                    'normal': image_bytes(normal['index']) if normal else None,
+                                    'roughness': image_bytes(rough['index']) if rough else None}
     return result
 
 
@@ -118,6 +121,20 @@ def verify_png_pixels(source, embedded, decode, *, srgb):
     return len(original) // 4
 
 
+def verify_roughness_pixels(source, embedded, decode):
+    """glTF ORM roughness is G; R's source scalar is linear red."""
+    if not embedded:
+        raise ValueError('Missing embedded glTF metallicRoughness texture')
+    width, height, original = decode(source)
+    ew, eh, exported = decode(embedded)
+    if (width, height) != (ew, eh) or len(original) != len(exported):
+        raise ValueError('Roughness image dimensions changed')
+    for pixel in range(0, len(original), 4):
+        if abs(original[pixel] - exported[pixel + 1]) > 1:
+            raise ValueError('Embedded roughness G differs from immutable source R at pixel %d' % (pixel // 4))
+    return len(original) // 4
+
+
 def packed_image_count(images):
     """Count all FILE images; fail if any reopened master would need disk bytes."""
     file_images = [image for image in images if image.source == 'FILE']
@@ -128,6 +145,55 @@ def packed_image_count(images):
     if missing:
         raise ValueError('Master retains external images: ' + ', '.join(sorted(missing)))
     return len(file_images)
+
+
+def triangulate_export_batches(batches):
+    """Triangulate baked copies for complete glTF tangents; leave editable source intact."""
+    import bmesh
+    removed = {}
+    for batch in batches:
+        mesh = batch.data
+        if not mesh.uv_layers.get('MothLocal'):
+            raise ValueError('Export batch lost MothLocal before triangulation: ' + batch.name)
+        bmesh_data = bmesh.new()
+        try:
+            bmesh_data.from_mesh(mesh)
+            bmesh.ops.triangulate(bmesh_data, faces=list(bmesh_data.faces))
+            # Font conversion can yield collinear zero-area glyph triangles.
+            # Remove only mathematically invisible export faces, record every
+            # removal, and retain a strict cap rather than hiding bad geometry.
+            zero = [face for face in bmesh_data.faces if face.calc_area() <= 1e-12]
+            if zero:
+                if batch.get('kit_sector') != 'signage' or len(zero) > 64:
+                    raise ValueError('Non-signage/too many zero-area export triangles: %s (%d)' %
+                                     (batch.name, len(zero)))
+                bmesh.ops.delete(bmesh_data, geom=zero, context='FACES_ONLY')
+                removed[batch.name] = len(zero)
+            bmesh_data.to_mesh(mesh)
+        finally:
+            bmesh_data.free()
+        mesh.update()
+        invalid = [(index, len(face.vertices), face.area) for index, face in enumerate(mesh.polygons)
+                   if len(face.vertices) != 3 or face.area <= 1e-12]
+        if invalid and batch.get('kit_sector') == 'signage' and len(invalid) + removed.get(batch.name, 0) <= 64 and all(n == 3 and area <= 1e-12 for _, n, area in invalid):
+            # Blender's float mesh conversion can collapse near-collinear font
+            # slivers that had nonzero double-precision BMesh area.
+            bm = bmesh.new()
+            try:
+                bm.from_mesh(mesh)
+                bm.faces.ensure_lookup_table()
+                bmesh.ops.delete(bm, geom=[bm.faces[i] for i, _, _ in invalid], context='FACES_ONLY')
+                bm.to_mesh(mesh)
+            finally:
+                bm.free()
+            mesh.update()
+            removed[batch.name] = removed.get(batch.name, 0) + len(invalid)
+            invalid = [(index, len(face.vertices), face.area) for index, face in enumerate(mesh.polygons)
+                       if len(face.vertices) != 3 or face.area <= 1e-12]
+        if not mesh.uv_layers.get('MothLocal') or invalid:
+            raise ValueError('Triangulated batch invalid: %s (%d faces, sample %r)' %
+                             (batch.name, len(invalid), invalid[:8]))
+    return removed
 
 
 def glb_triangle_counts(document, max_batches, evaluated_triangles):
@@ -220,7 +286,9 @@ def run(config, argv=None):
     parser.add_argument('--max-batches', type=int, default=64)
     parser.add_argument('--max-triangles', type=int, default=12000)
     parser.add_argument('--max-total-triangles', type=int, default=150000)
-    args = parser.parse_args(argv)
+    # Blender retains its own CLI flags and `--` in sys.argv. Parse only the
+    # builder portion (also support explicit argv in source tests).
+    args = parser.parse_args(sys.argv[sys.argv.index('--') + 1:] if argv is None and '--' in sys.argv else argv)
 
     import bpy
     layout = config['layout']
@@ -276,6 +344,7 @@ def run(config, argv=None):
     batches = kit.build_export_batches(max_triangles=args.max_triangles)
     if not batches or len(batches) > args.max_batches:
         raise SystemExit('Export batch count outside reviewed cap: %d' % len(batches))
+    removed_degenerate = triangulate_export_batches(batches)
     evaluated_triangles = sum(sum(len(poly.vertices) - 2 for poly in batch.data.polygons) for batch in batches)
     if args.max_total_triangles < 1:
         raise ValueError('Total triangle target must be positive')
@@ -325,6 +394,7 @@ def run(config, argv=None):
             # hashes of linear source PNG and derived sRGB glTF PNG containers.
             color = embedded.get(name, {}).get('color')
             normal = embedded.get(name, {}).get('normal')
+            roughness = embedded.get(name, {}).get('roughness')
             if name in used:
                 immutable_color = pathlib.Path(resolved[name]['albedoFile']).read_bytes()
                 if (_sha256(immutable_color) != pack.textures[resolved[name]['albedoKey']]['sha256'] or
@@ -338,12 +408,21 @@ def run(config, argv=None):
                         raise ValueError('Immutable source normal changed: ' + name)
                     entry['verifiedNormalPixels'] = verify_png_pixels(
                         immutable_normal, normal, linear_rgba, srgb=False)
+                roughness_key = pack.material(binding['material'])['channels']['roughness']
+                immutable_roughness = pathlib.Path(pack.textures[roughness_key]['_path']).read_bytes()
+                if (_sha256(immutable_roughness) != pack.textures[roughness_key]['sha256'] or
+                        _sha256(immutable_roughness) != adapter_report['materials'][name]['sourceRoughnessSha256']):
+                    raise ValueError('Immutable source roughness changed: ' + name)
+                entry['verifiedRoughnessPixels'] = verify_roughness_pixels(
+                    immutable_roughness, roughness, linear_rgba)
             entry.update({'sourceColorSha256': pack.textures[resolved[name]['albedoKey']]['sha256'],
                           'sourceNormalSha256': pack.textures[resolved[name]['normalKey']]['sha256'] if resolved[name]['normalKey'] else None,
                           'sourceColorEncoding': 'linear PNG (immutable)',
                           'embeddedColorEncoding': 'glTF sRGB baseColor (derived by adapter)',
                           'embeddedColorSha256': _sha256(color) if color else None,
                           'embeddedNormalSha256': _sha256(normal) if normal else None,
+                          'embeddedRoughnessSha256': _sha256(roughness) if roughness else None,
+                          'sourceRoughnessSha256': adapter_report['materials'][name]['sourceRoughnessSha256'],
                           'adapterConvertedColorSha256': adapter_report['materials'][name]['convertedAlbedoSha256'],
                           'adapterSourceColorSha256': adapter_report['materials'][name]['sourceColorSha256'],
                           'tilesPerMeter': resolved[name]['tilesPerMeter'],
@@ -357,6 +436,7 @@ def run(config, argv=None):
                'baseSpecs': len(composition.compose(authority['arena'])), 'authoredSpecs': len(layout.parts(authority['arena'])),
                'sourceTriangleEstimateBeforeLabelsAndModifiers': source_triangle_estimate(specs),
                'exportBatches': len(batches), 'exportTriangles': evaluated_triangles,
+               'removedZeroAreaSignageTriangles': removed_degenerate,
                'maxTotalTriangles': args.max_total_triangles,
                'triangleTargetExceeded': triangle_target_exceeded,
                'glbPrimitives': primitive_count, 'glbTriangles': actual_triangles,
