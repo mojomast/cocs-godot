@@ -30,4 +30,7 @@ rendering, and generic fallback is one card with no growth under reduced motion.
 - Source-contract check: Node assertions passed for source detonate payload,
   weapon omission, and `emit()` ID/time wrapping.
 - No engine import, render, server, or live source authority was run or changed.
-- Package pin impact: none; no dependencies or package manifests changed.
+- No new runtime dependencies or package manifests were added. The changed
+  `weapon_effects/controller.gd` is already a pinned supporting dependency, so
+  integration requires an exact receipt/hash reconciliation before package
+  validation can pass. Historical asset evidence does not validate this change.
