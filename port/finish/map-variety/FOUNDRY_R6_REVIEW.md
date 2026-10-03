@@ -1,5 +1,32 @@
 # Foundry R6 — qualified staged source/artifact approval
 
+## R7 source review follow-up — material gate correction required
+
+Independent review of `9fb0172e` supports its seven-entry tangent repair but
+withholds full source approval for the editable-master equivalence gate.
+`revision7/production.py:18–25,48–60` accepts both actual-R6 mutations:
+
+1. Change `R6 / ground` base-color sampler to clamp-to-edge (`wrapS=wrapT=33071`).
+2. Add `emissiveTexture: {index: 0}` to `GM / orange`.
+
+Both incorrectly return zero geometry errors and `allMaterialPixelsAndPBRMatch`
+true. Canonical output is then generated from frozen R6, discarding the editable
+changes. Correction must compare effective sampler wrap/filter and texCoord state,
+emissive texture bindings/pixels, and reject unsupported semantics. Existing
+texture-transform rejection stays intact. Native proof must also compare recorded
+material scalar/emission fields, not merely pixels. Astra owns these source-only
+corrections; no R7 merge/build is approved yet.
+
+The solver itself passed all eleven tests and independent NumPy UV-derivative
+verification (maximum float32 direction difference 2.98e-8). Ground handedness is
+−1; copper faces 2283/2303 are +1, the other four −1. Each repaired entry has one
+incident corner; no splitting occurs. Exactly 59 BIN bytes differ within seven
+16-byte records (112 permitted positions), with all other BIN bytes preserved.
+Successor JSON asset/node metadata and container length change legitimately;
+documentation must label the preservation claim BIN-only. Direction verification
+has no zero-tangent waiver and rejects the previous fallback. W's qualified staged
+approval below is unchanged; X remains the sole heavy owner.
+
 **Tangent follow-up:** source-only R7 `9fb0172e` is delivered on `9c5eca6d` and
 under independent review. It proposes exactly seven 16-byte tangent changes with
 all other binary bytes preserved; actual incident corners require no vertex split.

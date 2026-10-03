@@ -1,5 +1,14 @@
 # New Moth resources and Blender-authored map variety
 
+**R7 review: tangent solver supported; full source approval withheld.** Independent
+review reproduced a production-gate P1: editable-export material auditing accepts
+clamped ground texture wrapping and an added orange emissive texture, then canonical
+output discards those changes while claiming equivalence. Astra is correcting
+semantic texture/sampler/emission validation and adding native scalar/emission
+comparisons. All eleven original tests pass; independent tangent derivation agrees
+within 2.98e-8, with only 59 BIN bytes changed inside seven permitted records.
+R7 remains unmerged/unbuilt. X retains sole heavy ownership.
+
 **R7 tangent successor delivered source-only:** `9fb0172e`, based on `9c5eca6d`,
 repairs seven pinned invalid tangent records using incident UV derivatives and
 rejects conflicting shared bases. Worker reports eleven passing source tests,
