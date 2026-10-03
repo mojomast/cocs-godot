@@ -119,3 +119,11 @@ movie for the independent manual watch/listen gate, and use a **fresh ledger-bou
 attempt** after freezing the final candidate. This production rehearsal cannot
 be restamped as final acceptance. Package export and the full final matrix remain
 parent-owned.
+
+Installed-menu commit: `f7310342`. Post-commit focused source checks passed 10/10
+(`post-commit-source-tests.tap`) and `--plan` passed (`post-install-plan.json`).
+The full source suite had already passed before production (`source-tests.tap`).
+An earlier post-install source check correctly rejected the then-uncommitted menu
+as a dirty runtime dependency; its failure log is retained separately. Whitespace
+check passed. Tracked changes are committed; the 679 generated native sidecars
+listed above remain untracked, rather than being silently deleted or published.
