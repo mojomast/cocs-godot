@@ -272,6 +272,19 @@ class FinalReceiptTest(unittest.TestCase):
 
     def test_registration_uses_strict_closure_and_never_postpromotion_private_host(self):
         jobs = {j['id']: j for j in load_matrix(ROOT / 'port/finish/final_matrix.json')['jobs']}
+        self.assertEqual(len(jobs), 142)
+        proposal = json.loads((ROOT / 'port/fighting/acceptance/UI_JOB_PROPOSAL.json').read_text())['job']
+        ui = jobs[proposal['id']]
+        for key in ('cohort', 'timeout', 'units', 'evidence_kind', 'needs_grant_reference'):
+            self.assertEqual(ui[key], proposal[key])
+        self.assertEqual(set(ui['requires']), set(proposal['requires']) |
+                         {'godot/fighting/presentation/device_choices.gd'})
+        camera_source = jobs['fighting-camera-source']
+        self.assertEqual(camera_source['command'][camera_source['command'].index('-p') + 1], 'test_*.py')
+        self.assertIn('tools/fighting/presentation/test_devices.py', camera_source['requires'])
+        self.assertEqual(ui['command'], proposal['command'] +
+                         ['--finish-anchor', '{finish_anchor}', '--finish-matrix', '{finish_matrix}'])
+        self.assertTrue(set(proposal['after']) <= set(ui['after']))
         for name in ('final-seven-unit-production-closure', 'final-fighter-resource-closure'):
             self.assertNotIn('--audit', jobs[name]['command'])
             self.assertEqual(jobs[name]['cohort'], 'source')

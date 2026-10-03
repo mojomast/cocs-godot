@@ -1,0 +1,9 @@
+{
+  "kind": "puma",
+  "lod": 0,
+  "triangles": 35688,
+  "recipe_sha256": "8d50eaba579eacb55a4db97a3727464ff91aed1803faed657ba4a6076c730fad",
+  "blender": "4.5.14 LTS",
+  "materials": 8,
+  "attachments": 6
+}
