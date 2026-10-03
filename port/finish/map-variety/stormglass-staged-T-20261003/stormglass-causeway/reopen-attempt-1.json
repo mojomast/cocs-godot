@@ -1,0 +1,27 @@
+{
+  "map": "stormglass-causeway",
+  "startUtc": "2026-10-03T18:45:20.613298+00:00",
+  "endUtc": "2026-10-03T18:45:21.128382+00:00",
+  "seconds": 0.52,
+  "argv": [
+    "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender",
+    "-b",
+    "-t",
+    "1",
+    "--python-exit-code",
+    "1",
+    "--python",
+    "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/tools/map-variety-support/verify_master.py",
+    "--",
+    "--blend",
+    "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/stormglass-causeway/stormglass-causeway-revision2.blend",
+    "--report",
+    "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/stormglass-causeway/material-report.json"
+  ],
+  "pid": 331437,
+  "pgid": 331437,
+  "kernelStartTicks": "623626457",
+  "returncode": 0,
+  "logSha256": "d66007ba0f142fe33eaaf27ba427d2fa72683b2de68b9a6a98833779a34e582c",
+  "logBytes": 374
+}

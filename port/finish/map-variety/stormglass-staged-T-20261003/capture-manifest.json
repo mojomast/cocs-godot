@@ -1,0 +1,181 @@
+{
+  "renderer": "Godot 4.5.2 GL Compatibility / Mesa llvmpipe; static capture cadence, not gameplay FPS",
+  "pairs": [
+    {
+      "map": "stormglass-causeway",
+      "view": "overview",
+      "cameraEye": [
+        -350,
+        320,
+        -330
+      ],
+      "cameraTarget": [
+        -35,
+        0,
+        5
+      ],
+      "before": "captures/before/stormglass-causeway/overview.png",
+      "after": "captures/after/stormglass-causeway/attempt-2/overview.png",
+      "beforeSha256": "45b561ed018671d31c8c831d8f30377914fdbcfc02cad7ef86917cb1e5bc46a7",
+      "afterSha256": "746326853776ba31eba441b86e011a7d4ed2c87f1fb1138e9822845d6159c8e7",
+      "beforeDrawCalls": 30,
+      "afterDrawCalls": 33,
+      "beforeCaptureReadbackMs": 21,
+      "afterCaptureReadbackMs": 26
+    },
+    {
+      "map": "stormglass-causeway",
+      "view": "terminal",
+      "cameraEye": [
+        -108,
+        3.4,
+        -133
+      ],
+      "cameraTarget": [
+        -5,
+        9,
+        -120
+      ],
+      "before": "captures/before/stormglass-causeway/terminal.png",
+      "after": "captures/after/stormglass-causeway/attempt-2/terminal.png",
+      "beforeSha256": "e4e66a3ff39a176d252b02739e05dbb37eabad3a2073b849a7212fb4a5cfeafe",
+      "afterSha256": "7bc5063aa597cd3adb2fe2ce7e9312c10fbaf4405632410886e4387be74a70a6",
+      "beforeDrawCalls": 60,
+      "afterDrawCalls": 140,
+      "beforeCaptureReadbackMs": 62,
+      "afterCaptureReadbackMs": 209
+    },
+    {
+      "map": "stormglass-causeway",
+      "view": "freight-bore",
+      "cameraEye": [
+        150,
+        3.4,
+        22
+      ],
+      "cameraTarget": [
+        138,
+        7,
+        70
+      ],
+      "before": "captures/before/stormglass-causeway/freight-bore.png",
+      "after": "captures/after/stormglass-causeway/attempt-2/freight-bore.png",
+      "beforeSha256": "27c5ca2985bb644c7b1a51970d9cef49c4f403a4bc27f2b9d4177f8bad5969e9",
+      "afterSha256": "ab0e1a149cf3502df1cb1c0fdfd22e0448433451eca4688cc041d9620e2c0e75",
+      "beforeDrawCalls": 57,
+      "afterDrawCalls": 95,
+      "beforeCaptureReadbackMs": 87,
+      "afterCaptureReadbackMs": 263
+    },
+    {
+      "map": "stormglass-causeway",
+      "view": "quay-chicane",
+      "cameraEye": [
+        45,
+        3.4,
+        145
+      ],
+      "cameraTarget": [
+        -45,
+        8,
+        133
+      ],
+      "before": "captures/before/stormglass-causeway/quay-chicane.png",
+      "after": "captures/after/stormglass-causeway/attempt-2/quay-chicane.png",
+      "beforeSha256": "98b2d60eafc800d52953561d502718fbfae788d3a4dd52dbce313ab8b06b12be",
+      "afterSha256": "f5a5b35080ce1ac311be51e8702557b7c8d70c732d15600c80108c79629ed49d",
+      "beforeDrawCalls": 67,
+      "afterDrawCalls": 113,
+      "beforeCaptureReadbackMs": 72,
+      "afterCaptureReadbackMs": 213
+    },
+    {
+      "map": "stormglass-causeway",
+      "view": "surgeworks",
+      "cameraEye": [
+        -183,
+        3.4,
+        101
+      ],
+      "cameraTarget": [
+        -207,
+        13,
+        47
+      ],
+      "before": "captures/before/stormglass-causeway/surgeworks.png",
+      "after": "captures/after/stormglass-causeway/attempt-2/surgeworks.png",
+      "beforeSha256": "88da8146b709ac4c04c065f171ebbb76f56b19bd2624e65e5ceba72af9ce7a9d",
+      "afterSha256": "d6c45a64e30c37dd27f781ece0b35067182e4237e01ef64f7cefb3ef0f4eec00",
+      "beforeDrawCalls": 60,
+      "afterDrawCalls": 116,
+      "beforeCaptureReadbackMs": 67,
+      "afterCaptureReadbackMs": 195
+    },
+    {
+      "map": "stormglass-causeway",
+      "view": "return-gate",
+      "cameraEye": [
+        -118,
+        3.4,
+        11
+      ],
+      "cameraTarget": [
+        -72,
+        13,
+        -28
+      ],
+      "before": "captures/before/stormglass-causeway/return-gate.png",
+      "after": "captures/after/stormglass-causeway/attempt-2/return-gate.png",
+      "beforeSha256": "09b9cd547dfa23d2506d2e106bcce65db68a55194c9209e394ed802a80e199b1",
+      "afterSha256": "c4ee5ed78f595d3298cefb9d7bf7e2f521b1a8ff0c7aad28b25c3b945eb03838",
+      "beforeDrawCalls": 62,
+      "afterDrawCalls": 139,
+      "beforeCaptureReadbackMs": 72,
+      "afterCaptureReadbackMs": 158
+    },
+    {
+      "map": "stormglass-causeway",
+      "view": "seawall-relief",
+      "cameraEye": [
+        30,
+        9,
+        120
+      ],
+      "cameraTarget": [
+        140,
+        3,
+        120
+      ],
+      "before": "captures/before/stormglass-causeway/seawall-relief.png",
+      "after": "captures/after/stormglass-causeway/attempt-2/seawall-relief.png",
+      "beforeSha256": "18a28d712efc455cb89b0ac4f4c598437df2642ac430037f0f2e3fbee63ab04c",
+      "afterSha256": "717f059dba9f9a6c6eca16d63f0fce50d472eff84d9c5605af9c9bbd10e208ae",
+      "beforeDrawCalls": 55,
+      "afterDrawCalls": 85,
+      "beforeCaptureReadbackMs": 58,
+      "afterCaptureReadbackMs": 90
+    },
+    {
+      "map": "stormglass-causeway",
+      "view": "checkpoint-arch",
+      "cameraEye": [
+        -160,
+        12,
+        60
+      ],
+      "cameraTarget": [
+        -205,
+        3,
+        30
+      ],
+      "before": "captures/before/stormglass-causeway/checkpoint-arch.png",
+      "after": "captures/after/stormglass-causeway/attempt-2/checkpoint-arch.png",
+      "beforeSha256": "83e159847957ffd5128d9173b8c82a3331f9abc04bee1a6f47e5689dfe078484",
+      "afterSha256": "00e948135caeef1a84f409ad05b817409bb603a7ab91a0a026b6d157544b72a3",
+      "beforeDrawCalls": 51,
+      "afterDrawCalls": 106,
+      "beforeCaptureReadbackMs": 81,
+      "afterCaptureReadbackMs": 131
+    }
+  ]
+}

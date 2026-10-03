@@ -1,0 +1,205 @@
+{
+  "art": "res://multiplayer_worlds/art/worlds/stormglass-causeway.glb",
+  "artMeshInstances": 33,
+  "dressing": {
+    "batches": 0,
+    "detail": 2,
+    "errors": [],
+    "map_id": "stormglass-causeway",
+    "matched": [],
+    "motes": 0,
+    "panels": 0,
+    "preserved": [
+      "concrete",
+      "brick",
+      "oxidized-iron",
+      "salt-limestone",
+      "ceramic-enamel",
+      "timber-weather",
+      "basalt-strata",
+      "teal",
+      "salt",
+      "glass",
+      "steel",
+      "amber",
+      "slate-shingle",
+      "cobble-sett",
+      "harbour-glass",
+      "ocean",
+      "asphalt",
+      "quay-damp-horizontal"
+    ],
+    "resources": [],
+    "signs": 0,
+    "status": "ready",
+    "surfaces": 0,
+    "unmatched": [],
+    "unused_selectors": []
+  },
+  "frames": [
+    {
+      "captureReadbackMs": 26,
+      "drawCalls": 33,
+      "eye": [
+        -350,
+        320,
+        -330
+      ],
+      "path": "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/captures/after/stormglass-causeway/attempt-2/overview.png",
+      "staticMemoryBytes": 73578485,
+      "target": [
+        -35,
+        0,
+        5
+      ],
+      "view": "overview"
+    },
+    {
+      "captureReadbackMs": 209,
+      "drawCalls": 140,
+      "eye": [
+        -108,
+        3.4,
+        -133
+      ],
+      "path": "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/captures/after/stormglass-causeway/attempt-2/terminal.png",
+      "staticMemoryBytes": 73727057,
+      "target": [
+        -5,
+        9,
+        -120
+      ],
+      "view": "terminal"
+    },
+    {
+      "captureReadbackMs": 263,
+      "drawCalls": 95,
+      "eye": [
+        150,
+        3.4,
+        22
+      ],
+      "path": "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/captures/after/stormglass-causeway/attempt-2/freight-bore.png",
+      "staticMemoryBytes": 73729525,
+      "target": [
+        138,
+        7,
+        70
+      ],
+      "view": "freight-bore"
+    },
+    {
+      "captureReadbackMs": 213,
+      "drawCalls": 113,
+      "eye": [
+        45,
+        3.4,
+        145
+      ],
+      "path": "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/captures/after/stormglass-causeway/attempt-2/quay-chicane.png",
+      "staticMemoryBytes": 73731481,
+      "target": [
+        -45,
+        8,
+        133
+      ],
+      "view": "quay-chicane"
+    },
+    {
+      "captureReadbackMs": 195,
+      "drawCalls": 116,
+      "eye": [
+        -183,
+        3.4,
+        101
+      ],
+      "path": "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/captures/after/stormglass-causeway/attempt-2/surgeworks.png",
+      "staticMemoryBytes": 73733629,
+      "target": [
+        -207,
+        13,
+        47
+      ],
+      "view": "surgeworks"
+    },
+    {
+      "captureReadbackMs": 158,
+      "drawCalls": 139,
+      "eye": [
+        -118,
+        3.4,
+        11
+      ],
+      "path": "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/captures/after/stormglass-causeway/attempt-2/return-gate.png",
+      "staticMemoryBytes": 73735521,
+      "target": [
+        -72,
+        13,
+        -28
+      ],
+      "view": "return-gate"
+    },
+    {
+      "captureReadbackMs": 90,
+      "drawCalls": 85,
+      "eye": [
+        30,
+        9,
+        120
+      ],
+      "path": "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/captures/after/stormglass-causeway/attempt-2/seawall-relief.png",
+      "staticMemoryBytes": 73737605,
+      "target": [
+        140,
+        3,
+        120
+      ],
+      "view": "seawall-relief"
+    },
+    {
+      "captureReadbackMs": 131,
+      "drawCalls": 106,
+      "eye": [
+        -160,
+        12,
+        60
+      ],
+      "path": "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/captures/after/stormglass-causeway/attempt-2/checkpoint-arch.png",
+      "staticMemoryBytes": 73739497,
+      "target": [
+        -205,
+        3,
+        30
+      ],
+      "view": "checkpoint-arch"
+    }
+  ],
+  "geometryHash": "560ffcf7f1e247482278cf5036d073dad5858bdf5073f485928efb6d705de8f0",
+  "id": "stormglass-causeway",
+  "materialNames": [
+    "concrete",
+    "brick",
+    "oxidized-iron",
+    "salt-limestone",
+    "ceramic-enamel",
+    "timber-weather",
+    "basalt-strata",
+    "teal",
+    "salt",
+    "glass",
+    "steel",
+    "amber",
+    "slate-shingle",
+    "cobble-sett",
+    "harbour-glass",
+    "ocean",
+    "asphalt",
+    "quay-damp-horizontal"
+  ],
+  "renderer": "Godot 4.5.2 gl_compatibility / Xvfb llvmpipe; static capture, not game FPS",
+  "resolution": [
+    1280,
+    720
+  ],
+  "signageBatches": 2
+}

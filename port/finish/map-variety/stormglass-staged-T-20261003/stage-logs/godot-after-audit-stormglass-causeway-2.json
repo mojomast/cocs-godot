@@ -1,0 +1,31 @@
+{
+  "side": "after",
+  "action": "audit",
+  "map": "stormglass-causeway",
+  "startUtc": "2026-10-03T19:02:42.743192+00:00",
+  "endUtc": "2026-10-03T19:02:43.207900+00:00",
+  "seconds": 0.46,
+  "argv": [
+    "/home/mojo/.tmp-on-disk/opencode/cocs-native-ci-state/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "/tmp/opencode/cocs-coastal-T-stage/after",
+    "--rendering-method",
+    "gl_compatibility",
+    "--audio-driver",
+    "Dummy",
+    "--script",
+    "/tmp/opencode/cocs-coastal-T-stage/after/multiplayer_worlds/staged/audit.gd",
+    "--",
+    "--map",
+    "stormglass-causeway",
+    "--output",
+    "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/stormglass-causeway/native-geometry-audit-2.json"
+  ],
+  "pid": 422957,
+  "pgid": 422957,
+  "kernelStartTicks": "623730670",
+  "returncode": 0,
+  "logSha256": "02ebde5d07c7b2cfe2b35a82e5205b53e4432f41d92175dc55a1e891bbe90887",
+  "logBytes": 180
+}

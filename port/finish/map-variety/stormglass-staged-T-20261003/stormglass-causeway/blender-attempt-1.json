@@ -1,0 +1,31 @@
+{
+  "map": "stormglass-causeway",
+  "startUtc": "2026-10-03T18:39:29.271005+00:00",
+  "endUtc": "2026-10-03T18:43:26.972243+00:00",
+  "seconds": 237.7,
+  "argv": [
+    "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender",
+    "-b",
+    "-t",
+    "1",
+    "--python-exit-code",
+    "1",
+    "--python",
+    "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/tools/godot-multiplayer/new-maps/stormglass-causeway/revision2/author.py",
+    "--",
+    "--root",
+    "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003",
+    "--blend",
+    "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/stormglass-causeway/stormglass-causeway-revision2.blend",
+    "--glb",
+    "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/stormglass-causeway/stormglass-causeway-revision2.glb",
+    "--report",
+    "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/stormglass-causeway/material-report.json"
+  ],
+  "pid": 306572,
+  "pgid": 306572,
+  "kernelStartTicks": "623591323",
+  "returncode": 0,
+  "logSha256": "14e81877af832b88e2a31a509f9ce3e3a2df8a805b8f0a4078c0f129c47edd55",
+  "logBytes": 4009
+}

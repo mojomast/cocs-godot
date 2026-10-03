@@ -1,0 +1,175 @@
+{
+  "art": "res://multiplayer_worlds/art/worlds/stormglass-causeway.glb",
+  "artMeshInstances": 30,
+  "dressing": {
+    "errors": [],
+    "map_id": "stormglass-causeway",
+    "matched": [],
+    "motes": 0,
+    "panels": 0,
+    "preserved": [],
+    "resources": [],
+    "signs": 0,
+    "status": "ineligible",
+    "surfaces": 0,
+    "unmatched": [],
+    "unused_selectors": []
+  },
+  "frames": [
+    {
+      "captureReadbackMs": 21,
+      "drawCalls": 30,
+      "eye": [
+        -350,
+        320,
+        -330
+      ],
+      "path": "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/captures/before/stormglass-causeway/overview.png",
+      "staticMemoryBytes": 73359065,
+      "target": [
+        -35,
+        0,
+        5
+      ],
+      "view": "overview"
+    },
+    {
+      "captureReadbackMs": 62,
+      "drawCalls": 60,
+      "eye": [
+        -108,
+        3.4,
+        -133
+      ],
+      "path": "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/captures/before/stormglass-causeway/terminal.png",
+      "staticMemoryBytes": 73502013,
+      "target": [
+        -5,
+        9,
+        -120
+      ],
+      "view": "terminal"
+    },
+    {
+      "captureReadbackMs": 87,
+      "drawCalls": 57,
+      "eye": [
+        150,
+        3.4,
+        22
+      ],
+      "path": "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/captures/before/stormglass-causeway/freight-bore.png",
+      "staticMemoryBytes": 73505441,
+      "target": [
+        138,
+        7,
+        70
+      ],
+      "view": "freight-bore"
+    },
+    {
+      "captureReadbackMs": 72,
+      "drawCalls": 67,
+      "eye": [
+        45,
+        3.4,
+        145
+      ],
+      "path": "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/captures/before/stormglass-causeway/quay-chicane.png",
+      "staticMemoryBytes": 73508677,
+      "target": [
+        -45,
+        8,
+        133
+      ],
+      "view": "quay-chicane"
+    },
+    {
+      "captureReadbackMs": 67,
+      "drawCalls": 60,
+      "eye": [
+        -183,
+        3.4,
+        101
+      ],
+      "path": "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/captures/before/stormglass-causeway/surgeworks.png",
+      "staticMemoryBytes": 73512105,
+      "target": [
+        -207,
+        13,
+        47
+      ],
+      "view": "surgeworks"
+    },
+    {
+      "captureReadbackMs": 72,
+      "drawCalls": 62,
+      "eye": [
+        -118,
+        3.4,
+        11
+      ],
+      "path": "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/captures/before/stormglass-causeway/return-gate.png",
+      "staticMemoryBytes": 73514317,
+      "target": [
+        -72,
+        13,
+        -28
+      ],
+      "view": "return-gate"
+    },
+    {
+      "captureReadbackMs": 58,
+      "drawCalls": 55,
+      "eye": [
+        30,
+        9,
+        120
+      ],
+      "path": "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/captures/before/stormglass-causeway/seawall-relief.png",
+      "staticMemoryBytes": 73516721,
+      "target": [
+        140,
+        3,
+        120
+      ],
+      "view": "seawall-relief"
+    },
+    {
+      "captureReadbackMs": 81,
+      "drawCalls": 51,
+      "eye": [
+        -160,
+        12,
+        60
+      ],
+      "path": "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/captures/before/stormglass-causeway/checkpoint-arch.png",
+      "staticMemoryBytes": 73518613,
+      "target": [
+        -205,
+        3,
+        30
+      ],
+      "view": "checkpoint-arch"
+    }
+  ],
+  "geometryHash": "6afb8a36ee954ff9457a5522a7412c809191fb070eb7fe9eda4d379753acce48",
+  "id": "stormglass-causeway",
+  "materialNames": [
+    "asphalt",
+    "concrete",
+    "salt",
+    "amber",
+    "teal",
+    "glass",
+    "steel",
+    "brick",
+    "ocean"
+  ],
+  "renderer": "Godot 4.5.2 gl_compatibility / Xvfb llvmpipe; static capture, not game FPS",
+  "resolution": [
+    1280,
+    720
+  ],
+  "signageBatches": 0
+}

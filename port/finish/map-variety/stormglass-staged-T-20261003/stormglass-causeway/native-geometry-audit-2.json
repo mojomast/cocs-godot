@@ -1,0 +1,609 @@
+{
+  "failures": [],
+  "geometryHash": "560ffcf7f1e247482278cf5036d073dad5858bdf5073f485928efb6d705de8f0",
+  "importedMaterialInfo": {
+    "amber": {
+      "albedoTexture": false,
+      "alphaMode": 0,
+      "emissionEnabled": false,
+      "metallic": 0.0500000007450581,
+      "normalEnabled": false,
+      "normalTexture": false,
+      "roughness": 0.720000028610229,
+      "roughnessChannel": 0,
+      "roughnessTexture": false
+    },
+    "asphalt": {
+      "albedoTexture": true,
+      "alphaMode": 0,
+      "emissionEnabled": false,
+      "metallic": 0.0,
+      "normalEnabled": true,
+      "normalTexture": true,
+      "roughness": 1.0,
+      "roughnessChannel": 1,
+      "roughnessTexture": true
+    },
+    "basalt-strata": {
+      "albedoTexture": true,
+      "alphaMode": 0,
+      "emissionEnabled": false,
+      "metallic": 0.0,
+      "normalEnabled": true,
+      "normalTexture": true,
+      "roughness": 1.0,
+      "roughnessChannel": 1,
+      "roughnessTexture": true
+    },
+    "brick": {
+      "albedoTexture": true,
+      "alphaMode": 0,
+      "emissionEnabled": false,
+      "metallic": 0.0,
+      "normalEnabled": true,
+      "normalTexture": true,
+      "roughness": 1.0,
+      "roughnessChannel": 1,
+      "roughnessTexture": true
+    },
+    "ceramic-enamel": {
+      "albedoTexture": true,
+      "alphaMode": 0,
+      "emissionEnabled": false,
+      "metallic": 0.0,
+      "normalEnabled": true,
+      "normalTexture": true,
+      "roughness": 1.0,
+      "roughnessChannel": 1,
+      "roughnessTexture": true
+    },
+    "cobble-sett": {
+      "albedoTexture": true,
+      "alphaMode": 0,
+      "emissionEnabled": false,
+      "metallic": 0.0,
+      "normalEnabled": true,
+      "normalTexture": true,
+      "roughness": 1.0,
+      "roughnessChannel": 1,
+      "roughnessTexture": true
+    },
+    "concrete": {
+      "albedoTexture": true,
+      "alphaMode": 0,
+      "emissionEnabled": false,
+      "metallic": 0.0,
+      "normalEnabled": true,
+      "normalTexture": true,
+      "roughness": 1.0,
+      "roughnessChannel": 1,
+      "roughnessTexture": true
+    },
+    "glass": {
+      "albedoTexture": false,
+      "alphaMode": 0,
+      "emissionEnabled": false,
+      "metallic": 0.0500000007450581,
+      "normalEnabled": false,
+      "normalTexture": false,
+      "roughness": 0.25,
+      "roughnessChannel": 0,
+      "roughnessTexture": false
+    },
+    "harbour-glass": {
+      "albedoTexture": false,
+      "alphaMode": 0,
+      "emissionEnabled": false,
+      "metallic": 0.0500000007450581,
+      "normalEnabled": false,
+      "normalTexture": false,
+      "roughness": 0.25,
+      "roughnessChannel": 0,
+      "roughnessTexture": false
+    },
+    "ocean": {
+      "albedoTexture": false,
+      "alphaMode": 0,
+      "emissionEnabled": false,
+      "metallic": 0.0500000007450581,
+      "normalEnabled": false,
+      "normalTexture": false,
+      "roughness": 0.25,
+      "roughnessChannel": 0,
+      "roughnessTexture": false
+    },
+    "oxidized-iron": {
+      "albedoTexture": true,
+      "alphaMode": 0,
+      "emissionEnabled": false,
+      "metallic": 0.649999976158142,
+      "normalEnabled": true,
+      "normalTexture": true,
+      "roughness": 1.0,
+      "roughnessChannel": 1,
+      "roughnessTexture": true
+    },
+    "quay-damp-horizontal": {
+      "albedoTexture": true,
+      "alphaMode": 0,
+      "emissionEnabled": false,
+      "metallic": 0.0,
+      "normalEnabled": true,
+      "normalTexture": true,
+      "roughness": 1.0,
+      "roughnessChannel": 1,
+      "roughnessTexture": true
+    },
+    "salt": {
+      "albedoTexture": true,
+      "alphaMode": 0,
+      "emissionEnabled": false,
+      "metallic": 0.0,
+      "normalEnabled": true,
+      "normalTexture": true,
+      "roughness": 1.0,
+      "roughnessChannel": 1,
+      "roughnessTexture": true
+    },
+    "salt-limestone": {
+      "albedoTexture": true,
+      "alphaMode": 0,
+      "emissionEnabled": false,
+      "metallic": 0.0,
+      "normalEnabled": true,
+      "normalTexture": true,
+      "roughness": 1.0,
+      "roughnessChannel": 1,
+      "roughnessTexture": true
+    },
+    "slate-shingle": {
+      "albedoTexture": true,
+      "alphaMode": 0,
+      "emissionEnabled": false,
+      "metallic": 0.0,
+      "normalEnabled": true,
+      "normalTexture": true,
+      "roughness": 1.0,
+      "roughnessChannel": 1,
+      "roughnessTexture": true
+    },
+    "steel": {
+      "albedoTexture": true,
+      "alphaMode": 0,
+      "emissionEnabled": false,
+      "metallic": 0.649999976158142,
+      "normalEnabled": true,
+      "normalTexture": true,
+      "roughness": 1.0,
+      "roughnessChannel": 1,
+      "roughnessTexture": true
+    },
+    "teal": {
+      "albedoTexture": true,
+      "alphaMode": 0,
+      "emissionEnabled": false,
+      "metallic": 0.0,
+      "normalEnabled": true,
+      "normalTexture": true,
+      "roughness": 1.0,
+      "roughnessChannel": 1,
+      "roughnessTexture": true
+    },
+    "timber-weather": {
+      "albedoTexture": true,
+      "alphaMode": 0,
+      "emissionEnabled": false,
+      "metallic": 0.0,
+      "normalEnabled": true,
+      "normalTexture": true,
+      "roughness": 1.0,
+      "roughnessChannel": 1,
+      "roughnessTexture": true
+    }
+  },
+  "importedMaterialNames": [
+    "concrete",
+    "brick",
+    "oxidized-iron",
+    "salt-limestone",
+    "ceramic-enamel",
+    "timber-weather",
+    "basalt-strata",
+    "teal",
+    "salt",
+    "glass",
+    "steel",
+    "amber",
+    "slate-shingle",
+    "cobble-sett",
+    "harbour-glass",
+    "ocean",
+    "asphalt",
+    "quay-damp-horizontal"
+  ],
+  "importedMeshInstances": 33,
+  "importedMeshTriangles": 46850,
+  "importedTriangleCollisionShapes": 33,
+  "map": "stormglass-causeway",
+  "materialFailures": [],
+  "note": "Exact imported ArrayMesh ConcavePolygonShape audit layer versus actual WorldMap authoritative JSON collider layer; static floor/road rays, not gameplay mode outcomes",
+  "samples": [
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.000000119209289550781,
+      "id": "0",
+      "jsonCollider": "road-20Collider",
+      "jsonY": 0.0,
+      "kind": "spawn",
+      "point": [
+        -135.594733192202,
+        0.0,
+        -125.864911064067
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.000000119209289550781,
+      "id": "1",
+      "jsonCollider": "road-20Collider",
+      "jsonY": 0.0,
+      "kind": "spawn",
+      "point": [
+        -128.005266807798,
+        0.0,
+        -123.335088935933
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.000000119209289550781,
+      "id": "2",
+      "jsonCollider": "road-20Collider",
+      "jsonY": 0.0,
+      "kind": "spawn",
+      "point": [
+        -136.944733192202,
+        0.0,
+        -121.814911064067
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.000000119209289550781,
+      "id": "3",
+      "jsonCollider": "road-20Collider",
+      "jsonY": 0.0,
+      "kind": "spawn",
+      "point": [
+        -129.355266807798,
+        0.0,
+        -119.285088935933
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.000000119209289550781,
+      "id": "4",
+      "jsonCollider": "road-20Collider",
+      "jsonY": 0.0,
+      "kind": "spawn",
+      "point": [
+        -138.294733192202,
+        0.0,
+        -117.764911064067
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.000000119209289550781,
+      "id": "5",
+      "jsonCollider": "road-20Collider",
+      "jsonY": 0.0,
+      "kind": "spawn",
+      "point": [
+        -130.705266807798,
+        0.0,
+        -115.235088935933
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.000000119209289550781,
+      "id": "6",
+      "jsonCollider": "road-20Collider",
+      "jsonY": 0.0,
+      "kind": "spawn",
+      "point": [
+        -139.644733192202,
+        0.0,
+        -113.714911064067
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.000000119209289550781,
+      "id": "7",
+      "jsonCollider": "road-20Collider",
+      "jsonY": 0.0,
+      "kind": "spawn",
+      "point": [
+        -132.055266807798,
+        0.0,
+        -111.185088935933
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0,
+      "id": "road-0",
+      "jsonCollider": "road-0Collider",
+      "jsonY": 0.0000000596046447753906,
+      "kind": "road",
+      "point": [
+        -103.7670542606,
+        0.0,
+        -125.333333333333
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0,
+      "id": "road-1",
+      "jsonCollider": "road-1Collider",
+      "jsonY": 0.0,
+      "kind": "road",
+      "point": [
+        -24.8357416756387,
+        0.0,
+        -120.533712223653
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0,
+      "id": "road-2",
+      "jsonCollider": "road-2Collider",
+      "jsonY": 0.0,
+      "kind": "road",
+      "point": [
+        50.3535844580903,
+        0.0,
+        -99.6057158234554
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0000000596046447753906,
+      "id": "road-3",
+      "jsonCollider": "road-3Collider",
+      "jsonY": 0.0,
+      "kind": "road",
+      "point": [
+        110.581345684617,
+        0.0,
+        -59.6977113614046
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0,
+      "id": "road-4",
+      "jsonCollider": "road-4Collider",
+      "jsonY": 0.0,
+      "kind": "road",
+      "point": [
+        143.477976326887,
+        0.0,
+        -4.20294551998365
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0,
+      "id": "road-5",
+      "jsonCollider": "road-5Collider",
+      "jsonY": 0.0000000596046447753906,
+      "kind": "road",
+      "point": [
+        143.393023110765,
+        0.0,
+        51.2833036023685
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0,
+      "id": "road-6",
+      "jsonCollider": "road-6Collider",
+      "jsonY": 0.0,
+      "kind": "road",
+      "point": [
+        110.559435182151,
+        0.0,
+        87.7500721071475
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0,
+      "id": "road-7",
+      "jsonCollider": "road-7Collider",
+      "jsonY": 0.0,
+      "kind": "road",
+      "point": [
+        66.015535236579,
+        0.0,
+        113.895481568753
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0,
+      "id": "road-8",
+      "jsonCollider": "road-8Collider",
+      "jsonY": 0.000000119209289550781,
+      "kind": "road",
+      "point": [
+        31.498551137057,
+        0.0,
+        141.80477609833
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": -0.0000000596046447753906,
+      "id": "road-9",
+      "jsonCollider": "road-9Collider",
+      "jsonY": 0.0,
+      "kind": "road",
+      "point": [
+        -11.1265995358026,
+        0.0,
+        134.316551712069
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0,
+      "id": "road-10",
+      "jsonCollider": "road-10Collider",
+      "jsonY": 0.0,
+      "kind": "road",
+      "point": [
+        -46.2685198419155,
+        0.0,
+        121.064315696515
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0,
+      "id": "road-11",
+      "jsonCollider": "road-11Collider",
+      "jsonY": 0.0,
+      "kind": "road",
+      "point": [
+        -83.9280456826334,
+        0.0,
+        123.255054857438
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0000000596046447753906,
+      "id": "road-12",
+      "jsonCollider": "road-12Collider",
+      "jsonY": -0.0000000596046447753906,
+      "kind": "road",
+      "point": [
+        -127.09721911626,
+        0.0,
+        103.214014882511
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0,
+      "id": "road-13",
+      "jsonCollider": "road-13Collider",
+      "jsonY": 0.0000000596046447753906,
+      "kind": "road",
+      "point": [
+        -164.067998543999,
+        0.0,
+        100.864582883239
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0,
+      "id": "road-14",
+      "jsonCollider": "road-14Collider",
+      "jsonY": 0.0,
+      "kind": "road",
+      "point": [
+        -193.124696878732,
+        0.0,
+        65.5810912095738
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": -0.0000000596046447753906,
+      "id": "road-15",
+      "jsonCollider": "road-15Collider",
+      "jsonY": 0.0,
+      "kind": "road",
+      "point": [
+        -190.724718183395,
+        0.0,
+        26.5811045249883
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0,
+      "id": "road-16",
+      "jsonCollider": "road-16Collider",
+      "jsonY": 0.0,
+      "kind": "road",
+      "point": [
+        -145.646659272065,
+        0.0,
+        13.2619637209876
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0,
+      "id": "road-17",
+      "jsonCollider": "road-17Collider",
+      "jsonY": 0.0,
+      "kind": "road",
+      "point": [
+        -89.1094843397407,
+        0.0,
+        6.68162487721555
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0,
+      "id": "road-18",
+      "jsonCollider": "road-18Collider",
+      "jsonY": 0.0,
+      "kind": "road",
+      "point": [
+        -69.9916154642636,
+        0.0,
+        -37.2590635967349
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0,
+      "id": "road-19",
+      "jsonCollider": "road-19Collider",
+      "jsonY": 0.0000000596046447753906,
+      "kind": "road",
+      "point": [
+        -102.346154452039,
+        0.0,
+        -78.2042408964312
+      ]
+    },
+    {
+      "artColliderParent": "kit_base_asphalt_00",
+      "artY": 0.0,
+      "id": "road-20",
+      "jsonCollider": "road-20Collider",
+      "jsonY": 0.0,
+      "kind": "road",
+      "point": [
+        -136.636456973071,
+        0.0,
+        -95.3333333333333
+      ]
+    }
+  ]
+}

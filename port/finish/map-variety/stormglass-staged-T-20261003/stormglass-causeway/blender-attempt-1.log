@@ -1,0 +1,76 @@
+Info: Packed 36 file(s)
+Info: Saved as "stormglass-causeway-revision2.blend"
+INFO Draco mesh compression is available, use library at /home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/4.5/scripts/addons_core/io_scene_gltf2/libextern_draco.so
+14:43:11 | INFO: Starting glTF 2.0 export
+14:43:11 | INFO: Extracting primitive: barrier-city-0.001
+14:43:11 | INFO: Primitives created: 1
+14:43:11 | INFO: Extracting primitive: bore-side-4-in.001
+14:43:11 | INFO: Primitives created: 1
+14:43:11 | INFO: Extracting primitive: checkpoint-arch-1.arch.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: checkpoint-arch-1.column.-1.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: checkpoint-arch-1.gantry.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: checkpoint-arch-14.gable.-1.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: cliff-15.flight.005
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: district-0-1-body-0.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: district-0-1-cornice-0.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: district-0-1-glass-0-0-0.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: district-0-1-roof-machinery-0.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: gate-1-counterweight--1-0.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: grandstand-13.canopy.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: grandstand-13.tier.006
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: grandstand-13.tier.007
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: lighthouse.base.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: lighthouse.gallery.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: lighthouse.lamp.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: lighthouse.tower-upper.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: ocean.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: quay-crane-12.beam.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: quay-crane-12.boom.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: quay-crane-12.counterweight.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: road-0.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: route-sign-0.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: route-sign-8.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: seawall-0.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: seawall-0.buttress.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: seawall-0.coping.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: terminal-facade-0.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: terminal-facade-0.cornice.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: terminal-facade-0.roof-machinery.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Extracting primitive: terminal-facade-1.001
+14:43:12 | INFO: Primitives created: 1
+14:43:12 | INFO: Finished glTF 2.0 export in 0.6802668571472168 s
+
+{"status": "built-pending-native-acceptance", "report": "/home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/stormglass-causeway/material-report.json"}
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+
+Blender quit

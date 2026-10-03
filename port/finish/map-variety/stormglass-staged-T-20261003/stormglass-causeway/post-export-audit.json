@@ -1,0 +1,137 @@
+{
+  "map": "stormglass-causeway",
+  "glbSha256": "ec8d8536239d1a481d3b1eadd489be3101739aa523d36e27d4ba0223daca96c4",
+  "glbPrimitives": 33,
+  "glbTriangles": 46850,
+  "missingNormalsOrRequiredTangents": [],
+  "pbrMaterialsVerified": 14,
+  "materials": {
+    "salt-limestone": {
+      "verifiedPixels": {
+        "color": 262144,
+        "roughness": 262144,
+        "normal": 262144
+      },
+      "sourceRoughnessSha256": "d3a83a3eab2cdd5ef13cbd28e30fadb1c76ca11278996720304800db3d59da8a",
+      "embeddedRoughnessSha256": "1c75ff4425dd7d13e8225cf6e09f7ff498c535f291b64a2f60ba69fdc8d6baa8"
+    },
+    "basalt-strata": {
+      "verifiedPixels": {
+        "color": 262144,
+        "roughness": 262144,
+        "normal": 262144
+      },
+      "sourceRoughnessSha256": "a5d214313015eef0cbbe497983753826b69aa568c3667a7298915a7c16188d07",
+      "embeddedRoughnessSha256": "6a222a03f8c50f54d7767c9e88be930c9a8d9b29c71d2db5493a9b23b209a2e3"
+    },
+    "quay-damp-horizontal": {
+      "verifiedPixels": {
+        "color": 262144,
+        "roughness": 262144,
+        "normal": 262144
+      },
+      "sourceRoughnessSha256": "233747c5bf6a8beaa585d851326ce0caf7f5277f6729eef67d3ed10ec17647bc",
+      "embeddedRoughnessSha256": "3bbfdfe862f176ff29578078b67423e29f9c4a73aa11b597c6878bb47d05e586"
+    },
+    "timber-weather": {
+      "verifiedPixels": {
+        "color": 262144,
+        "roughness": 262144,
+        "normal": 262144
+      },
+      "sourceRoughnessSha256": "2d6e17973056f23f1f08ae580345558330cdd44b2de2727d4b8482cc171ecec5",
+      "embeddedRoughnessSha256": "1afcc0cd04efbf07b7e96e9b48314f0cc9fa4d1385cb33bc0776c8aa07b27be8"
+    },
+    "oxidized-iron": {
+      "verifiedPixels": {
+        "color": 262144,
+        "roughness": 262144,
+        "normal": 262144
+      },
+      "sourceRoughnessSha256": "c43d822da97d4a2fefb389eec95681c2b596cf4d66160c5081668514bd2544a6",
+      "embeddedRoughnessSha256": "270e0a5d2c215abb5e51e37e4665c09e26698aa47563a6cdba80c996dbab0818"
+    },
+    "ceramic-enamel": {
+      "verifiedPixels": {
+        "color": 262144,
+        "roughness": 262144,
+        "normal": 262144
+      },
+      "sourceRoughnessSha256": "2c63bee56ac7600342fd93f52ed17aa5d096b4e5c1d659168bd5d0586ae1afc5",
+      "embeddedRoughnessSha256": "71bde5b9fa079061ce35291730a2f385a9c7bbe709e5b9f546844ac6861694bb"
+    },
+    "cobble-sett": {
+      "verifiedPixels": {
+        "color": 262144,
+        "roughness": 262144,
+        "normal": 262144
+      },
+      "sourceRoughnessSha256": "d95ad9082b4e982332a2f08d863185bb05e4a58b0fa6f41d41d36982885fdd3e",
+      "embeddedRoughnessSha256": "e032d7485f9088907d967da027264b5ac651b0744515c8f0f280af69126804de"
+    },
+    "slate-shingle": {
+      "verifiedPixels": {
+        "color": 262144,
+        "roughness": 262144,
+        "normal": 262144
+      },
+      "sourceRoughnessSha256": "90c1aeac8dfd3722036f8495ffd3969d4be24c7e6de82f5872c43f62b861b3fc",
+      "embeddedRoughnessSha256": "bd90b5d264bfb164ccca8c02fbb4dfe166d0033b370ad306e8c1dd4a133c36d4"
+    },
+    "asphalt": {
+      "verifiedPixels": {
+        "color": 262144,
+        "roughness": 262144,
+        "normal": 262144
+      },
+      "sourceRoughnessSha256": "ae1487542085ec7966f6d39e48d648611d623d930d487b831d9ffd20ecc9fa85",
+      "embeddedRoughnessSha256": "b56d60e6e5e8588b28c2291c1b4db650840823c5f20fbde7f1d806e099a25558"
+    },
+    "concrete": {
+      "verifiedPixels": {
+        "color": 262144,
+        "roughness": 262144,
+        "normal": 262144
+      },
+      "sourceRoughnessSha256": "233747c5bf6a8beaa585d851326ce0caf7f5277f6729eef67d3ed10ec17647bc",
+      "embeddedRoughnessSha256": "3bbfdfe862f176ff29578078b67423e29f9c4a73aa11b597c6878bb47d05e586"
+    },
+    "salt": {
+      "verifiedPixels": {
+        "color": 262144,
+        "roughness": 262144,
+        "normal": 262144
+      },
+      "sourceRoughnessSha256": "d3a83a3eab2cdd5ef13cbd28e30fadb1c76ca11278996720304800db3d59da8a",
+      "embeddedRoughnessSha256": "1c75ff4425dd7d13e8225cf6e09f7ff498c535f291b64a2f60ba69fdc8d6baa8"
+    },
+    "teal": {
+      "verifiedPixels": {
+        "color": 262144,
+        "roughness": 262144,
+        "normal": 262144
+      },
+      "sourceRoughnessSha256": "2c63bee56ac7600342fd93f52ed17aa5d096b4e5c1d659168bd5d0586ae1afc5",
+      "embeddedRoughnessSha256": "71bde5b9fa079061ce35291730a2f385a9c7bbe709e5b9f546844ac6861694bb"
+    },
+    "brick": {
+      "verifiedPixels": {
+        "color": 262144,
+        "roughness": 262144,
+        "normal": 262144
+      },
+      "sourceRoughnessSha256": "026e41ba5a566ab71f09ed19a6699c53442aaa2b569b32a0f61f1a2a7dd8fd16",
+      "embeddedRoughnessSha256": "3d8531df0143abe737299e022b6ccd643092c9d1851b23973be0ab4ef2a7d0ef"
+    },
+    "steel": {
+      "verifiedPixels": {
+        "color": 262144,
+        "roughness": 262144,
+        "normal": 262144
+      },
+      "sourceRoughnessSha256": "c43d822da97d4a2fefb389eec95681c2b596cf4d66160c5081668514bd2544a6",
+      "embeddedRoughnessSha256": "270e0a5d2c215abb5e51e37e4665c09e26698aa47563a6cdba80c996dbab0818"
+    }
+  },
+  "status": "read-only-byte-and-attribute-proof; Godot/render pending"
+}
