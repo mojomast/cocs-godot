@@ -2,6 +2,19 @@
 
 ## Corrective delivery awaiting independent review
 
+### Three-blocker follow-up delivered
+
+Astra delivered **`6f6b990f`**, reporting candidate-aware coplanar floor clipping
+with material/coverage lineage, one supported slate Vesper terrace, and nonempty
+scene-referenced/binary-backed GLB validation. The triangle policy stays advisory,
+including a real binary-backed 160,001-triangle fixture.
+
+Reported checks: 25 Node, 17 Python repair and ten correction tests, standalone
+Kit checks, Vesper generation and both affected plans. Source triangle estimates
+are Helix 147,026 / Parallax 144,321 / Vesper 40,686. Independent reviewer
+`ses_efd0e4deaffeke8j2rdXdxtbbn` has the follow-up for focused verification of the
+three previous findings. No parent merge or engine acceptance is claimed yet.
+
 ### Independent corrective review: three blockers remain
 
 Reviewer `ses_efd0e4deaffeke8j2rdXdxtbbn` completed review of `f6687255`,

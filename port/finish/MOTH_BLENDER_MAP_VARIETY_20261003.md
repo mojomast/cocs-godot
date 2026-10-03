@@ -1,5 +1,10 @@
 # New Moth resources and Blender-authored map variety
 
+**Botanical follow-up received:** `6f6b990f` addresses the three remaining floor/
+export blockers and reports 25 Node + 17 Python repair + ten correction passes.
+Independent Astra re-review is active before integration. Triangle totals remain
+advisory; no botanical Blender execution or native acceptance has occurred.
+
 ## Foundry R5 staged integration accepted
 
 Independent review found no P1 blocker; R5 is integrated as **`7ae3f2f5`** after
