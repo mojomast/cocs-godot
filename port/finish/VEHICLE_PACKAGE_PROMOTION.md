@@ -97,6 +97,22 @@ All paths below are relative to `port/expansion-four/vehicles/production-e/`:
 
 ## Source verification and release prerequisites
 
+After promotion commit `bbcdae18`, parent HUD follow-up `83ceaa62` / `d3ef89dc`
+was merged. Read `port/expansion-four/vehicles/HUD_COMPACT_SOURCE_FIX.md`: the only
+production runtime change is `godot/combined_arms/hud.gd`, with measured wrapped
+layout, a 36-logical-pixel footer reserve and scroll/focus cleanup. Its hash moves
+from `9bb05d5e2ea5c60d34811f02946a6fecbcda2277e2c456b22c71689c6b66d21c`
+to `33b22167dfe158da511feb5d1c31d74edc8fb8e75a887ac91f8b4387217865bf`.
+The asset receipt binds the unchanged combined-arms demo as a runtime hook, but
+its recipe-root supporting closure does not contain HUD. **No existing receipt
+input or hook drifted**, so none of the three frozen asset receipts was restamped.
+The full package builder separately includes and hashes every tracked production
+native file (`build.py`'s `native_files` inventory), including this exact HUD file.
+The current package candidate therefore includes the new source HUD; historical
+E outcomes and the clipped screenshot retain the old HUD anchor. Parent reports
+six source layout tests and parsing checks; new native layout/font/focus checks,
+compact screenshots and acceptance remain pending. E does not prove the new HUD.
+
 Focused tests exercise real missing/tampered vehicle masters, GLBs, PNGs and
 sidecars; refreshed receipt hashes cannot bless changed extracted normal/albedo
 bytes, source identity, tangent/orientation policy or stale embedded fingerprints.
@@ -108,6 +124,11 @@ history and refusal of the remaining four units independently of worktree reads.
 Evidence directory: `/home/mojo/.tmp-on-disk/cocs-finish-packaging-evidence-20261002/`;
 source log `vehicle-promotion-tests.log`, recorded-object log
 `vehicle-promotion-git-tests.log`, audit `vehicle-promotion-audit.json`.
+
+Results: **70/70 targeted source tests passed**, then the **recorded-Git test
+passed after the HUD merge**, confirming all three promotions and four pending
+units against committed objects. No repeat native run or broad test rerun was
+needed for the unbound HUD-only supporting revision. `git diff --check` passed.
 
 **Three promoted / four pending:** scenery, Vesper Viaduct, Abyssal Pressureworks
 and Stormglass Causeway remain null promotions and strict export blockers. Scenery
