@@ -42,12 +42,14 @@ func _ready() -> void:
 		add_child(choice)
 	var reset := Button.new()
 	reset.name = "ResetInputBindings"
-	reset.text = "Reset keyboard / mouse defaults"
+	reset.text = "Reset all keyboard / mouse bindings"
 	reset.custom_minimum_size.y = 40
+	reset.tooltip_text = "Restore every keyboard / mouse action to its default, including command, cursor, and voice controls not shown on this page."
+	reset.accessibility_description = reset.tooltip_text
 	reset.pressed.connect(func() -> void:
 		var service := Access.service()
 		if service != null:
-			note.text = "Default bindings saved." if service.reset_defaults() else "Defaults applied; could not save preferences."
+			note.text = "All keyboard / mouse bindings restored and saved." if service.reset_defaults() else "All defaults applied; could not save preferences."
 		refresh())
 	add_child(reset)
 	var binding_service := Access.service()

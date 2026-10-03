@@ -142,6 +142,8 @@ func run() -> void:
 	var panel := preload("res://input_bindings/settings_panel.gd").new()
 	root.add_child(panel)
 	check(panel.choices.size() == Model.LABELS.size(), "all supported gameplay actions have visible fields")
+	var reset_button: Button = panel.find_child("ResetInputBindings", true, false)
+	check(reset_button != null and reset_button.tooltip_text.contains("every keyboard / mouse action") and reset_button.tooltip_text.contains("command, cursor, and voice"), "reset explains full-profile scope including hidden contexts")
 	for action: String in panel.choices:
 		var choice: OptionButton = panel.choices[action]
 		check(choice.focus_mode == Control.FOCUS_ALL and not choice.accessibility_name.is_empty() and not choice.accessibility_description.is_empty(), "keyboard and assistive label " + action)
