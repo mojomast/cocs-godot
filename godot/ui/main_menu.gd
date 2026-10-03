@@ -102,8 +102,10 @@ func _ready() -> void:
 	if "--smoke" in OS.get_cmdline_user_args():
 		# One frame of event loop so the marker flushes on headless runs too.
 		get_tree().call_deferred("quit", 0)
-	if not current_category.is_empty():
-		category_buttons[current_category].call_deferred("grab_focus")
+	if not current_route.is_empty():
+		# Start on the restored destination so keyboard/controller users can
+		# immediately browse and confirm it; categories remain one focus step away.
+		route_buttons[str(current_route.get("id", ""))].call_deferred("grab_focus")
 
 func caption(text: String) -> Label:
 	var item := Label.new()
@@ -215,6 +217,12 @@ func build_ui() -> void:
 	fighting_button.custom_minimum_size = Vector2(150, 44)
 	fighting_button.pressed.connect(open_fighting)
 	actions.add_child(fighting_button)
+	var campaign_button := Button.new()
+	campaign_button.name = "Campaign"
+	campaign_button.text = "CAMPAIGN"
+	campaign_button.custom_minimum_size = Vector2(150, 44)
+	campaign_button.pressed.connect(func() -> void: quick_select_route("campaign"))
+	actions.add_child(campaign_button)
 	actions.add_child(settings_button)
 	actions.add_child(quit_button)
 	right.add_child(actions)
@@ -367,6 +375,15 @@ func select_route(id: String) -> void:
 		selections.merge(preferences.normalize(registry, route, preferences.routes[id]), true)
 	rebuild_params()
 	refresh_status()
+
+## Direct access for featured catalog destinations. Selection still flows
+## through the registry-backed category and route controls.
+func quick_select_route(id: String) -> void:
+	var route: Dictionary = registry.route_by_id(id)
+	if route.is_empty(): return
+	select_category(str(route.get("category", "")))
+	select_route(id)
+	route_buttons[id].grab_focus()
 
 func clear_route() -> void:
 	current_route = {}

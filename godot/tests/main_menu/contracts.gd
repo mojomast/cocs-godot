@@ -231,6 +231,7 @@ func check_tree(routes: Array, categories: Array) -> void:
 	check(quit_node != null and quit_node is Button, "QUIT control is a Button")
 	check(count_named(menu, "Settings") == 1, "Home has one keyboard-focusable Settings button")
 	check(find_named(menu, "Settings") is Button, "Settings is a native Button")
+	check(find_named(menu, "Campaign") is Button, "Home features a direct Campaign destination button")
 	var capability_label := find_named(menu, "RouteCapability")
 	check(capability_label is Label, "menu renders generated route authority summary")
 	if capability_label is Label and not menu.current_route.is_empty():
@@ -247,6 +248,10 @@ func check_tree(routes: Array, categories: Array) -> void:
 	var lobby_toggles: Array = menu.params_box.get_children().filter(func(child: Node) -> bool:
 		return child is CheckButton and not child.is_queued_for_deletion())
 	check(lobby_toggles.size() == 1, "multiplayer lobby displays read-only diagnostics without a cheat switch")
+	menu.quick_select_route("campaign")
+	check(str(menu.current_route.get("id", "")) == "campaign" and menu.current_category == "play"
+		and menu.registry.validate_route(menu.current_route, menu.selections).is_empty(),
+		"featured Campaign action selects a catalog-proven route with valid default chapter/options")
 	await check_responsive_layout(menu)
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(menu.preferences_path))
 	root.remove_child(menu)
