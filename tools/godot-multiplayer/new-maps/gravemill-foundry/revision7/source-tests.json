@@ -1,0 +1,29 @@
+{
+  "time": "2026-10-03T21:24:42.831255+00:00",
+  "scope": "Python source-only; no native engine or production artifact",
+  "command": [
+    "/usr/bin/python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "/home/mojo/.tmp-on-disk/cocs-foundry-r7-source/tools/godot-multiplayer/new-maps/gravemill-foundry/revision7",
+    "-p",
+    "test_tangents.py",
+    "-v"
+  ],
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": "test_all_other_bytes_and_materials_indices_are_unchanged (test_tangents.RealR6.test_all_other_bytes_and_materials_indices_are_unchanged) ... ok\ntest_editable_export_audit_accepts_baseline_rejects_uv_and_material_drift (test_tangents.RealR6.test_editable_export_audit_accepts_baseline_rejects_uv_and_material_drift) ... ok\ntest_exact_seven_corner_mapping_and_non_degeneracy (test_tangents.RealR6.test_exact_seven_corner_mapping_and_non_degeneracy) ... ok\ntest_strict_gate_and_out_of_scope_tangent_change_reject (test_tangents.RealR6.test_strict_gate_and_out_of_scope_tangent_change_reject) ... ok\ntest_wrong_godot_fallback_is_not_accepted (test_tangents.RealR6.test_wrong_godot_fallback_is_not_accepted) ... ok\ntest_additional_zero_unknown_inventory_rejected (test_tangents.UVBasis.test_additional_zero_unknown_inventory_rejected) ... ok\ntest_conflicting_shared_uv_handedness_rejected (test_tangents.UVBasis.test_conflicting_shared_uv_handedness_rejected) ... ok\ntest_native_gate_has_no_fallback_waiver (test_tangents.UVBasis.test_native_gate_has_no_fallback_waiver) ... ok\ntest_reflected_and_reversed_uv_orientation (test_tangents.UVBasis.test_reflected_and_reversed_uv_orientation) ... ok\ntest_same_handedness_but_conflicting_shared_directions_rejected (test_tangents.UVBasis.test_same_handedness_but_conflicting_shared_directions_rejected) ... ok\ntest_shared_vertex_accumulates_all_incidents (test_tangents.UVBasis.test_shared_vertex_accumulates_all_incidents) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 41.706s\n\nOK\n",
+  "frozenWManifestSha256": "234cdbe8118cddf0d10b605e4eebd1fb512ddad73f35fcc9bde745715f5766fc",
+  "frozenWFilesVerified": 226,
+  "trackedDiffOutsideR7Empty": true,
+  "sourceHashes": {
+    "native_check.py": "3a182bbf99c78476867c40b0faefe983a61215ab73f528e79dc56612a9bc0930",
+    "prepare_native.py": "808b4eeca014e0d13f56d9e8c8a6dd4415521af76e806e9c87945522d78b245e",
+    "production.py": "e707bdb6d7ff53f67e756698d0b6e1658909092525e34aedee4bd964ed73cefa",
+    "report_source.py": "355594d7f64e81fb7bc05185232dc3e02d0dacb30aae5060f25f8f148d16d10d",
+    "tangents.py": "e9ffbc04691c71acc777dbbe49c98d1b4c1b4be971292629b1350c587d655133",
+    "test_tangents.py": "0b239466112e4aa300fc589a94510de51a35b59f9995dcd91733d68e029cc0e3"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "gravemill-foundry-r7-seven-tangent-successor",
+  "status": "source-only; informational future recipe, not a scheduled heavy job",
+  "baseCommit": "9c5eca6d",
+  "visualRevision": 7,
+  "sourceR6ArtHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c",
+  "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879",
+  "expectedActualArtHash": null,
+  "heavyGrant": null,
+  "autoStart": false,
+  "triangles": 87566,
+  "primitives": 32,
+  "expectedRepairs": 7,
+  "expectedVertexSplits": 0,
+  "futureStepsAfterNewExplicitGrant": [
+    "Pinned Blender 4.5.14 -b -t 1 --python-exit-code 1 --python revision7/production.py -- --authorized-r7-build; bound 900s, one LP/OMP thread",
+    "Fresh Blender invocation with additional --reopen; bound 120s; packed recipe and actual canonical re-export equivalence must pass",
+    "Pinned Godot 4.5.2 isolated editor import; pin only R7 generated sidecar force_disable_compression=true and generate_lods=false, retaining UID; reimport",
+    "Run generated revision7/import.gd then source-only revision7/native_check.py against actual readback. No zero-tangent exemption permitted",
+    "Capture generated revision7/capture.gd: matched R6/R7 native views and production dressing/weather lifecycle; actual artHash required",
+    "Independent actual-art review and user/manual acceptance; no automatic public promotion or package policy change"
+  ],
+  "historicalEvidence": "R6 W images, 51 pixel checks and base geometry proof remain prior evidence only; never relabel as R7",
+  "nativeAcceptance": "pending",
+  "manualArtAcceptance": "pending"
+}
