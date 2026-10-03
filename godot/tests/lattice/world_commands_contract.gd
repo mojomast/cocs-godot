@@ -67,6 +67,9 @@ func run() -> void:
 	client = demo.client
 	demo.current_id = "asterion-relay"
 	demo.selected_mode = "cocs"
+	# The transport/commands fixture leaves Demo detached intentionally, but
+	# imported actor rigs require their presentation subtree to own world transforms.
+	root.add_child(demo.presentation)
 	client.allowlist = {demo.current_id:{"modes":["cocs","cocs-coop"]}}
 	client.requested_map = demo.current_id
 	client.lobby.connect(demo.on_lobby)

@@ -14,6 +14,9 @@ func check(ok: bool) -> void:
 		quit(1)
 		assert(ok)
 func _initialize() -> void:
+	call_deferred("run")
+
+func run() -> void:
 	# Drive the actual session process without opening a server or invoking _ready.
 	var session := Session.new()
 	session.client.free()
@@ -23,6 +26,10 @@ func _initialize() -> void:
 	session.phase = 3
 	session.smoke = true
 	session.received_pose = true
+	# Imported rigs need an actual world transform even in this transport fixture.
+	# Attach only presentation, preserving the deliberate no-session-_ready setup.
+	session.remove_child(session.presentation)
+	root.add_child(session.presentation)
 	session.presentation.apply_state({"actors":[{"id":0,"x":0,"y":0,"z":0,"dead":0}]}, 0)
 	session.snapshot_watch.observe()
 	session._process(0.02)
@@ -39,6 +46,7 @@ func _initialize() -> void:
 	session.smoke = false
 	session.on_error("Synthetic disconnect")
 	check(session.snapshot_watch.stale() and session.phase == -1)
+	session.presentation.free()
 	session.free()
 	print("PORT_STALL_CONTROLS_OK checks=", checks, " actual_session_process=true synthetic_clock_and_transport=true")
 	quit(0)
