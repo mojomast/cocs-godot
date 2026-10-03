@@ -1,5 +1,20 @@
 # New Moth resources and Blender-authored map variety
 
+**Botanical successors integrated source-only:** independently approved geometry
+and the parent-verified archival-input follow-up are selected as `a22e8956` /
+`6fc988a9` / `231fe1e4` / **`6e1d4b1e`**. Parent passed **74 tests** (43 Python,
+31 Node including strict shipping closure). Explicit read-only U regression
+reproduced all three old artifact failures and passed 49,553 successor-frame
+capsule samples, including every frozen mode/spawn/objective/camera point.
+The loader pins five archival files before parsing and rejects missing/wrong/
+escaping inputs. Rejected U artifacts were not merged. Astra is preparing the
+successor-native staging bridge; actual builds and acceptance await a later grant.
+W remains the sole heavy owner.
+
+Abyssal V's gallery now shows qualified staged integration approval, with separate
+parent review/scope annotations. All 29 follow-up HTTP/hash checks passed; sixteen
+original PNGs and nine historical receipt/manifest files remain unchanged.
+
 **Abyssal V staged-approved and integrated:** independent review closed the
 demonstrated T interior terrace-contact P1 for `b010a076…9ee3aa86`. Complete
 delivery is merged as **`873ad2ac`**. Parent passed 29 source/shipping tests,

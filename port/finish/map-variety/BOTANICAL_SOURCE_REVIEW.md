@@ -1,11 +1,33 @@
 # Botanical/urban source review — corrective source approved
 
-## Post-U successor review in progress
+## Post-U successors source-approved and integrated
+
+Independent reviewer `ses_efc89c2afffeKQvhqPUs4YwsaY` approved `f358e497` →
+`3002a9ba` → `da2e53eb`. Parent separately reviewed follow-up `4136bb4a`'s
+explicit archive loader/test separation and integrated the series as `a22e8956`,
+`6fc988a9`, `231fe1e4`, **`6e1d4b1e`**. No rejected U artifact bundle was merged.
+
+Parent verification: sixteen portable and 27 compatibility Python tests; five
+corrective, 25 compatibility and one committed-Git shipping Node test (**74**).
+The explicit archived regression reproduced all three actual-U failures and
+49,553 finite source-capsule checks, combining 16,790 source-derived samples with
+all 32,763 frozen U fixture points. Five consumed archival files are SHA-pinned
+before parsing; missing input, wrong hashes, unknown paths and escapes reject.
+
+Independent review also reproduced all fifteen successor source outputs in memory,
+confirmed frozen recipes' Kit/craft behavior unchanged, and checked all 265 U
+commit paths byte-identical. Helix's 1,548 frame-render triangles match authority
+canonically; Vesper's full twelve-face boundary requirement rejects missing sides;
+Parallax's full-width aperture, grade and highest-support checks pass. Actual
+successor exports, master reopen, native movement and final visuals remain pending.
+The producer is preparing a source-only native staging bridge while W is active.
+
+The following delivery notes record the review inputs and source identities.
 
 The source approval below led to actual U builds, which exposed three assembly/
 geometry failures; it does not establish approval of those artifacts. The latest
-successors are `f358e497` / `3002a9ba` / `da2e53eb` and remain unmerged pending
-independent review by `ses_efc89c2afffeKQvhqPUs4YwsaY`:
+successors are `f358e497` / `3002a9ba` / `da2e53eb`, now approved and integrated
+as recorded above:
 
 - **Helix revision-4:** five detailed radial arches on ten terrace-grounded posts,
   connected by two eaves and a ridge; intended full-bearing/attachment tests and

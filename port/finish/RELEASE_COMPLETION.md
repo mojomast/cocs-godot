@@ -61,6 +61,10 @@ Helix images: <http://100.125.104.79:8796/helix-u/> (32 initial HTTP/hash checks
 Shared botanical export/staging tools are source-approved and integrated as
 `c7cd4331` / `fb2af58d`; parent passed 35 Python and two Node checks. Actual U
 artifacts remain unmerged; details are in `map-variety/HELIX_U_REVIEW.md`.
+All three corrective successor sources subsequently passed independent review
+and are integrated through `6e1d4b1e`, including explicit SHA-pinned U regression
+inputs. Parent passed 74 tests and the archived three-failure/49,553-capsule
+reproduction. Successor-native staging preparation is source-only while W runs.
 Foundry R6 finish sources and the corrected scene-backed export validator are
 integrated as `99d44ede`; parent reproduced nine source tests and verified strict
 seven-unit shipping closure. Actual R6 build/render acceptance remains pending.
