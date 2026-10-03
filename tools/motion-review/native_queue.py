@@ -62,7 +62,7 @@ def plan(root=ROOT, godot=GODOT, output=Path('/tmp/opencode/motion-native'), sco
             'VEHICLE_VIEW_LIVE_OK',['tools/motion-review/vehicle_live.mjs','godot/tests/sports/view_live.gd'])
         return jobs
     if scope == 'live-kick':
-        add('live-kick',[sys.executable,'tools/godot-weapons/kick-live.py','--execute-native',
+        add('live-kick',[sys.executable,'tools/godot-weapons/kick-live.py','--execute-native','--xvfb-tcp',
             '--grant',grant,'--godot',godot,'--output',str(output/'live-kick'/'producer')],1800,
             'passed', ['tools/godot-weapons/kick-live.py','tools/godot-weapons/kick-live-server.mjs','godot/tests/first_person/kick_live.gd'])
         jobs[-1]['lock_owner']='child'
