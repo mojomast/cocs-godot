@@ -48,8 +48,11 @@ the 13 source findings, 25 Node / 16 Python repair passes, standalone Kit checks
 all generators and plans. Pre-modifier complete estimates are Helix 147,026,
 Parallax 143,782, Vesper 40,688 triangles. Independent reviewer
 `ses_efd0e4deaffeke8j2rdXdxtbbn` is verifying the implementation before merge.
-Original repair owner is making the global triangle gates advisory in a narrow
-follow-up; the candidate remains source-only and unmerged pending review.
+Global triangle gates are now advisory in follow-up `dd05f50c`. Parent reviewed
+the diff and reproduced both focused policy/export regressions: a 160,001-triangle
+fixture reports a 10,001-triangle overage without failing for its total, while
+invalid counts and malformed triangle counts reject. The independent review now
+includes this follow-up; the candidate remains source-only and unmerged.
 
 The user explicitly requested Flash/Sol subagents to populate the newer maps with
 Moth assets, reduce monotony/repetition, and add varied terrain, structures and
