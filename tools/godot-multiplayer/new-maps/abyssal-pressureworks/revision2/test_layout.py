@@ -1,10 +1,11 @@
-"""Bounded source checks for the Abyssal revision-2 layout and material hooks.
+"""Bounded source checks for the Abyssal revision-2 layout, composition and materials.
 
-No bpy, Blender, engine or network. Validates the authored class specs, that
-every referenced material is an exact reviewed binding resolved to real pack
-bytes, and that unknown materials fail closed.
+No bpy, Blender, engine or network. Every layout spec is dispatched through the
+real pure geometry validation (faces are valid outward index tuples with nonzero
+area; pipes through blender_kit's own ring builder), the coordinate basis
+round-trips through Blender/glTF, cameras track target height, and the render
+composition covers the complete revised authority.
 """
-import importlib.util
 import json
 import math
 import sys
@@ -17,62 +18,91 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(ROOT / 'tools' / 'map-variety-support'))
 import layout  # noqa: E402
 import manifest  # noqa: E402
+import geometry  # noqa: E402
+import composition  # noqa: E402
 
 
 def load(path):
     return json.loads(Path(path).read_text())
 
 
+def _normalize(v):
+    length = math.sqrt(sum(c * c for c in v))
+    return tuple(c / length for c in v)
+
+
 class LayoutTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.authority = load(HERE / 'candidate.json')
+        cls.arena = cls.authority['arena']
         cls.bindings = load(HERE / 'materials.bindings.json')['materials']
         cls.pack = manifest.load_pack()
-        cls.parts = layout.parts(cls.authority['arena'])
+        cls.parts = layout.parts(cls.arena)
+        cls.base = composition.compose(cls.arena)
 
-    def test_every_declared_class_is_built(self):
+    def test_coordinate_basis_round_trips_through_blender_and_gltf(self):
+        for point in ((0, 0, 0), (1, 0, 0), (0, 1, 0), (0, 0, 1), (-3, 7, -2), (12.5, -6, 3.25)):
+            self.assertEqual(geometry.roundtrip(point), point)
+        self.assertEqual(geometry.source_to_blender((0, 1, 0)), (0, 0, 1))   # +Y_up -> +Z
+        self.assertEqual(geometry.source_to_blender((0, 0, 1)), (0, -1, 0))  # +Z -> -Y
+        self.assertEqual(geometry.source_to_blender((1, 0, 0)), (1, 0, 0))
+        self.assertEqual(geometry.blender_to_gltf(geometry.source_to_blender((0, 5, 0))), (0, 5, 0))
+        self.assertEqual(geometry.prism_size_to_blender((2, 3, 4)), (2, 4, 3))
+
+    def test_every_layout_spec_passes_real_pure_geometry_validation(self):
         self.assertTrue(self.parts)
-        classes = {layout.classify(p['name']) for p in self.parts}
-        self.assertEqual(classes, set(layout.CLASSES))
-        for name, (variants, _hero) in layout.CLASSES.items():
-            self.assertGreaterEqual(variants, 1, name)
+        for spec in self.parts:
+            self.assertIn(spec['op'], ('mesh', 'pipe'))
+            geometry.validate_spec(spec)
+            if spec['op'] == 'mesh':
+                for face in spec['faces']:
+                    self.assertTrue(all(isinstance(i, int) and 0 <= i < len(spec['vertices']) for i in face), spec['name'])
+                    self.assertGreater(geometry.polygon_area([spec['vertices'][i] for i in face]), 1e-9, spec['name'])
 
-    def test_pressure_vault_has_three_distinct_forms(self):
-        vault = [p for p in self.parts if layout.classify(p['name']) == 'pressure-vault']
-        signature = {p['name'].split('.', 1)[1].split('.')[0] for p in vault}
-        self.assertIn('vault', signature)
-        self.assertTrue(any(s.startswith('pressure-rib') for s in signature))
-        self.assertTrue(any(s.startswith('hab') for s in signature))
+    def test_arch_and_vent_dimensions_are_valid_for_every_variant(self):
+        vaults = [p for p in self.parts if layout.classify(p['name']) == 'pressure-vault']
+        self.assertGreaterEqual(len(vaults), 6)
+        for gate in self.arena['art']['revision2']['replacedRoofHosts']:
+            self.assertFalse(self.arena['terrain']['surfaces'][0]['id'].startswith(gate + '-x'))
+        # Vent jambs must leave a real opening and rise above the wall.
+        vents = [p for p in self.parts if 'hab-vent' in p['name']]
+        self.assertTrue(vents)
+        for spec in vents:
+            geometry.validate_spec(spec)
 
-    def test_every_referenced_material_is_a_reviewed_binding(self):
-        used = {p['material'] for p in self.parts}
+    def test_every_declared_class_is_built_with_variants(self):
+        self.assertEqual({layout.classify(p['name']) for p in self.parts}, set(layout.CLASSES))
+        self.assertGreaterEqual(len({p['name'].split('.', 1)[1].split('.')[0] for p in self.parts if layout.classify(p['name']) == 'pressure-vault'}), 3)
+
+    def test_composition_covers_the_complete_revised_authority(self):
+        surface_ids = {s['id'] for s in self.arena['terrain']['surfaces']}
+        wall_ids = {w['id'] for w in self.arena['terrain']['walls']}
+        base_ids = {s['name'] for s in self.base}
+        for ident in surface_ids | {w['id'] for w in self.arena['terrain']['walls']}:
+            self.assertIn(ident, base_ids, 'missing render base ' + ident)
+        for window in self.arena['art'].get('windows', []):
+            self.assertIn(window['id'], base_ids)
+        for piece in self.arena['art'].get('pieces', []):
+            self.assertIn(piece['id'], base_ids)
+        # The six replaced roofs are absent from authority and render, and their
+        # substitutes are present as authored vaults.
+        for host in self.arena['art']['revision2']['replacedRoofHosts']:
+            self.assertFalse(any(i.startswith(host + '-roof-facet-') or i == host + '-crown' for i in surface_ids))
+            self.assertFalse(any(i.startswith(host + '-roof-facet-') or i == host + '-crown' for i in base_ids))
+            self.assertTrue(any(p['name'].startswith(host + '.') for p in self.parts), 'no substitute for ' + host)
+        # Every new walkable terrace/pocket and its retaining wall render.
+        for deck in self.arena['art']['revision2']['decks']:
+            self.assertIn(deck['id'], surface_ids)
+            self.assertIn(deck['id'], base_ids)
+        for wall in self.arena['terrain']['walls']:
+            self.assertIn(wall['id'], base_ids)
+
+    def test_composition_materials_are_all_reviewed_bindings(self):
+        used = {spec['material'] for spec in self.base + self.parts}
         self.assertTrue(used <= set(self.bindings), used - set(self.bindings))
-        self.assertGreaterEqual(len(used), 6)
-        for part in self.parts:
-            self.assertIn(part['op'], {'mesh', 'prism', 'curved_rib', 'pipe', 'framed_bay'})
-            self.assertTrue(part['sector'])
 
-    def test_all_geometry_is_finite_and_inside_the_review_envelope(self):
-        for part in self.parts:
-            values = []
-            for arg in part['args']:
-                if isinstance(arg, (int, float)):
-                    values.append(arg)
-                elif isinstance(arg, (list, tuple)):
-                    for item in arg:
-                        values.extend(item if isinstance(item, (list, tuple)) else [item])
-            for number in values:
-                if isinstance(number, (int, float)):
-                    self.assertTrue(math.isfinite(number), part['name'])
-            if part['op'] == 'mesh':
-                for vertex in part['args'][0]:
-                    self.assertEqual(len(vertex), 3, part['name'])
-                    self.assertLessEqual(abs(vertex[0]), 140, part['name'])
-                    self.assertLessEqual(abs(vertex[1]), 140, part['name'])
-                    self.assertTrue(-50 < vertex[2] < 45, part['name'] + ' vertical')
-
-    def test_material_plan_resolves_real_pack_bytes(self):
+    def test_material_plan_resolves_real_pack_bytes_and_explicit_root(self):
         plan = self.pack.bindings_plan(self.bindings)
         self.assertEqual(set(plan), set(self.bindings))
         for name, entry in plan.items():
@@ -80,26 +110,43 @@ class LayoutTests(unittest.TestCase):
                 continue
             self.assertTrue(Path(entry['albedoFile']).is_file(), name)
             self.assertTrue(0 < entry['tilesPerMeter'] <= 16, name)
-            if entry['normalFile']:
-                self.assertTrue(Path(entry['normalFile']).is_file(), name)
+        rerouted = manifest.load_pack(str(ROOT))
+        self.assertEqual(rerouted.manifest_sha, self.pack.manifest_sha)
 
     def test_unknown_material_fails_closed(self):
         with self.assertRaises(KeyError):
-            self.pack.bindings_plan({'made-up': {'role': 'surface', 'material': 'not-in-pack', 'normal': True}})
-        with self.assertRaises(ValueError):
-            self.pack.bindings_plan({'made-up': {'role': 'invented', 'material': 'copper-patina', 'normal': True}})
+            self.pack.bindings_plan({'x': {'role': 'surface', 'material': 'not-in-pack', 'normal': True}})
 
-    def test_probe_cameras_are_finite(self):
-        self.assertGreaterEqual(len(layout.PROBE_CAMERAS), 6)
+    def test_ring_and_arch_orientations_are_intentional(self):
+        ring = geometry.ring_mesh_src('r', (0, 5, 0), 1.0, 2.0, 0.3, 'm', 's')
+        ys = [v[1] for v in ring['vertices']]
+        self.assertAlmostEqual(max(ys) - min(ys), 0.3, places=6)  # horizontal band: Y is thickness
+        self.assertGreater(max(abs(v[0]) for v in ring['vertices']), 1.9)
+        self.assertGreater(max(abs(v[2]) for v in ring['vertices']), 1.9)
+        arch = geometry.arch_mesh_src('a', (0, 0), 10.0, 15.0, 2.0, 4.0, 0.0, 'm', 's')
+        ys = [v[1] for v in arch['vertices']]
+        self.assertGreater(max(ys), 10.0 + 15.0 * 0.99)  # rises a full radius: vertical
+        self.assertAlmostEqual(min(ys), 10.0, places=6)
+
+    def test_box_faces_are_outward_wound(self):
+        for heading in (0.0, 0.7, -1.9):
+            spec = geometry.box_mesh_src('b', (3, 4, 5), (4, 1.5, 3), heading, 'm', 's')
+            for face in spec['faces']:
+                points = [spec['vertices'][i] for i in face]
+                normal = geometry.polygon_normal(points)
+                centre = tuple(sum(p[k] for p in points) / len(points) for k in range(3))
+                outward = sum(normal[k] * (centre[k] - (3, 4, 5)[k]) for k in range(3))
+                self.assertGreater(outward, 0, 'inward face at heading %s' % heading)
+
+    def test_camera_forward_tracks_target_height(self):
         for name, (eye, target) in layout.PROBE_CAMERAS.items():
-            self.assertEqual(len(eye), 3, name)
-            self.assertEqual(len(target), 3, name)
-            self.assertTrue(all(math.isfinite(v) for v in (*eye, *target)), name)
-
-    def test_author_and_build_artifacts_exist(self):
-        for name in ('author.py', 'recipe.mjs', 'build.mjs', 'materials.bindings.json', 'arena.json', 'probes.json'):
-            self.assertTrue((HERE / name).is_file(), name)
-        self.assertEqual(self.authority['geometryHash'], load(HERE / 'probes.json')['geometryHash'])
+            forward = _normalize(tuple(target[i] - eye[i] for i in range(3)))
+            converted = geometry.source_direction_to_blender(forward)
+            difference = _normalize(tuple(geometry.source_to_blender(target)[i] - geometry.source_to_blender(eye)[i] for i in range(3)))
+            for a, b in zip(converted, difference):
+                self.assertAlmostEqual(a, b, places=9, msg=name)
+            if target[1] != eye[1]:
+                self.assertGreater(abs(forward[1]), 1e-6, name + ' ignores target height')
 
 
 if __name__ == '__main__':

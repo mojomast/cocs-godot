@@ -16,6 +16,15 @@
     "cobble-sett": {"role": "surface", "material": "cobble-sett", "normal": true},
     "slate-shingle": {"role": "surface", "material": "slate-shingle", "normal": true},
     "sea-flow": {"role": "surface", "material": "sea-flow", "normal": true},
-    "harbour-glass": {"role": "preserve"}
+    "harbour-glass": {"role": "preserve"},
+    "asphalt": {"role": "surface", "material": "viaduct-asphalt", "normal": true},
+    "concrete": {"role": "surface", "material": "quay-damp-horizontal", "normal": true},
+    "salt": {"role": "surface", "material": "salt-limestone", "normal": true},
+    "teal": {"role": "surface", "material": "ceramic-enamel", "normal": true},
+    "brick": {"role": "surface", "material": "terracotta", "normal": true},
+    "steel": {"role": "surface", "material": "oxidized-iron", "normal": true},
+    "amber": {"role": "preserve"},
+    "glass": {"role": "preserve"},
+    "ocean": {"role": "preserve"}
   }
 }

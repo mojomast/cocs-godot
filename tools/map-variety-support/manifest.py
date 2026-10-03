@@ -117,19 +117,26 @@ class Pack:
         return plan
 
 
-def load_pack():
-    base = _read(BASE_MANIFEST)
-    overlay = _read(OVERLAY_MANIFEST)
+def load_pack(root=None):
+    """Resolve the reviewed packs. `root` may override the repository root so a
+    caller (e.g. a parent lane) can point at an explicit checkout; it defaults to
+    this file's repository root."""
+    repository = Path(root).resolve() if root else ROOT
+    pack_root = repository / 'assets/moth/map-variety-20261003'
+    base_manifest = pack_root / 'candidate-v2/manifest.json'
+    overlay_manifest = pack_root / 'candidate-v3/manifest.json'
+    base = _read(base_manifest)
+    overlay = _read(overlay_manifest)
     if base.get('schema') != 'moth-map-material-pack/v1' or overlay.get('schema') != 'moth-map-material-overlay/v1':
         raise ValueError('Unexpected map-variety pack schema')
-    base_sha = sha256(BASE_MANIFEST)
+    base_sha = sha256(base_manifest)
     overlay_ref = overlay.get('basePack', {})
-    resolved_base = (OVERLAY_MANIFEST.parent / overlay_ref.get('manifest', '')).resolve()
-    if resolved_base != BASE_MANIFEST.resolve() or overlay_ref.get('sha256') != base_sha:
+    resolved_base = (overlay_manifest.parent / overlay_ref.get('manifest', '')).resolve()
+    if resolved_base != base_manifest.resolve() or overlay_ref.get('sha256') != base_sha:
         raise ValueError('Overlay base pack identity mismatch')
 
     materials, textures, auxiliary = {}, {}, {}
-    for directory, manifest in ((BASE_MANIFEST.parent, base), (OVERLAY_MANIFEST.parent, overlay)):
+    for directory, manifest in ((base_manifest.parent, base), (overlay_manifest.parent, overlay)):
         for material in manifest.get('materials', []):
             materials[material['id']] = material
         for key, descriptor in manifest.get('textures', {}).items():
@@ -141,15 +148,17 @@ def load_pack():
             auxiliary[key] = {**descriptor,
                               '_files': resolved,
                               '_sha256': {item.get('path'): digest for item, digest in zip(files, [r[1] for r in resolved])}}
-    return Pack(materials, textures, auxiliary, base_sha, sha256(OVERLAY_MANIFEST),
-                {'base': base_sha, 'overlay': sha256(OVERLAY_MANIFEST)})
+    overlay_sha = sha256(overlay_manifest)
+    return Pack(materials, textures, auxiliary, base_sha, overlay_sha,
+                {'base': base_sha, 'overlay': overlay_sha})
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('bindings', help='Repository-relative materials.bindings.json')
+    parser.add_argument('--root', help='Repository root override; defaults to this checkout')
     args = parser.parse_args(argv)
-    pack = load_pack()
+    pack = load_pack(args.root)
     document = _read(ROOT / args.bindings)
     if 'materials' not in document:
         raise ValueError('Bindings file has no materials registry')
