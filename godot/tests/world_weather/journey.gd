@@ -116,6 +116,21 @@ func run() -> void:
 	click.position = root.size / 2
 	Input.parse_input_event(click)
 	Input.flush_buffered_events()
+	if kind == "campaign":
+		var path: Array = session.world.recipe.campaign.criticalPath
+		var target: Dictionary = path[mini(8, path.size() - 1)]
+		var direction := Vector3(target.x, target.y, target.z) - position()
+		var desired_yaw := atan2(-direction.x, -direction.z)
+		var motion := InputEventMouseMotion.new()
+		motion.relative = Vector2(wrapf(float(session.yaw) - desired_yaw, -PI, PI), 0) / (0.003 * preload("res://ui/settings_access.gd").sensitivity())
+		motion.screen_relative = motion.relative
+		Input.parse_input_event(motion)
+		Input.flush_buffered_events()
+		# N observed an 812 ms first-view draw gap: authority advanced its stale
+		# input epoch before W arrived. Warm this real view before the existing
+		# fresh-click recovery, not by bypassing cancellation or moving the actor.
+		await RenderingServer.frame_post_draw
+		await RenderingServer.frame_post_draw
 	await process_frame
 	click = click.duplicate()
 	click.pressed = false
@@ -141,16 +156,6 @@ func run() -> void:
 		retry = retry.duplicate()
 		retry.pressed = false
 		Input.parse_input_event(retry)
-		Input.flush_buffered_events()
-	if kind == "campaign":
-		var path: Array = session.world.recipe.campaign.criticalPath
-		var target: Dictionary = path[mini(8, path.size() - 1)]
-		var direction := Vector3(target.x, target.y, target.z) - position()
-		var desired_yaw := atan2(-direction.x, -direction.z)
-		var motion := InputEventMouseMotion.new()
-		motion.relative = Vector2(wrapf(float(session.yaw) - desired_yaw, -PI, PI), 0) / (0.003 * preload("res://ui/settings_access.gd").sensitivity())
-		motion.screen_relative = motion.relative
-		Input.parse_input_event(motion)
 		Input.flush_buffered_events()
 	var before := position()
 	check(session.combat_controls_active(), "native pointer capture admits movement")

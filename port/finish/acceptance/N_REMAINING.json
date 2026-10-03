@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "grant": "RELEASE-ACCEPTANCE-20261003-N",
+  "resource_released": true,
+  "release_ready": false,
+  "canonical_obligations": 142,
+  "supplemental_matrix": "port/finish/acceptance/n_matrix.json",
+  "evidence_root": "/home/mojo/.tmp-on-disk/cocs-release-acceptance-N-20261003",
+  "queue": [
+    {"priority":1,"id":"world-ordinary-vehicle","status":"failed","next":"Trace focus/capture eligibility, mapper release ledger, GUI consumption and authority wire together on admitted Objectives/Payload route. Keep combined receipt separate."},
+    {"priority":2,"id":"controls-texture-ownership","status":"failed","next":"Attribute two 87380-byte GL textures beyond currently identified weak-owner handles; preserve 90 passing assertions and failed teardown."},
+    {"priority":3,"id":"live-kick-normal-rate","status":"blocked","next":"Establish responsive renderer before retrying unchanged real timing window."},
+    {"priority":4,"id":"final-matrix-staged","status":"queued","next":"At coordinated candidate boundary create fresh identity; run remaining bounded registered source/native subsets serially. Do not reuse prior-candidate native passes as current."},
+    {"priority":5,"id":"devices-audio-human-windows","status":"blocked","next":"Physical controller access, real audio, full-speed film review, human/GPU review, Horde victory and extracted Windows acceptance remain required."}
+  ]
+}
