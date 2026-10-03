@@ -20,6 +20,10 @@ test('committed three-unit promotion and import bytes validate independently of 
   assert.throws(()=>productionResources({...options,strict:true}),/remain pending/);
   const image='godot/robot_assets/switchyard/generated/needle_surveyor_MothLocal_Switchyard_vertex_enamel.png';
   assert.throws(()=>productionResources({...options,read:p=>p===image?Buffer.from('forged'):read(p)}),/content hash mismatch/);
+  const vehicleSidecar='godot/vehicle_assets/generated/puma-lod0.glb.import';
+  assert.throws(()=>productionResources({...options,read:p=>p===vehicleSidecar?Buffer.from('forged'):read(p)}),/content hash mismatch/);
+  const master='tools/godot-vehicle-assets/masters/puma-lod0.blend';
+  assert.ok(productionResources({...options,has:p=>p!==master&&paths.has(p)}).pending.includes('vehicles'));
   for(const id of ['robots','parallax-interiors','vehicles']) {
     const receipt=JSON.parse(read(`tools/godot-package/production_receipts/${id}.json`));
     const previous=receipt.packageVerifierAdvance.previousReceipt;

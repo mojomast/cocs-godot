@@ -19,7 +19,7 @@ for(const id of ['vehicles','robots','parallax-interiors']) {
   const path=`tools/godot-package/production_receipts/${id}.json`,original=gitRead(anchor,path),receipt=JSON.parse(original);
   assert.equal(hash(original),previousHashes[id]);
   const expected=units[id].expected.packageInputs,old=receipt.packageInputs,changed={},added={};
-  const allowedAdded=['tools/godot-package/vehicle_imports.mjs',...(id==='vehicles'?[...vehicleImportPaths(receipt.exports.map(r=>r.path)),...VEHICLE_EVIDENCE]:[])];
+  const allowedAdded=['tools/godot-package/vehicle_imports.mjs',...(id==='vehicles'?['tools/godot-package/robot_imports.mjs',...vehicleImportPaths(receipt.exports.map(r=>r.path)),...VEHICLE_EVIDENCE]:[])];
   assert.deepEqual(expected.filter(p=>!Object.hasOwn(old,p)).sort(),allowedAdded.sort(),'Unexpected new input');
   for(const p of Object.keys(old))assert.ok(expected.includes(p),`Dropped input: ${p}`);
   receipt.packageInputs=Object.fromEntries(expected.map(p=>{
