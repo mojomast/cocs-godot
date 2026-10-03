@@ -1,0 +1,1074 @@
+{
+  "grant": "POLISH-NATIVE-20261003-L",
+  "stages": [
+    {
+      "stage": "l-initial",
+      "candidate": "8921ed4124756c368cecfc637ca183bf8d3ec262",
+      "source_sha256": "ca5fb0fc83fdede322dc81bad5a477a8c2ba4b8e2f64e456277ab4382561a444",
+      "attempts": [
+        {
+          "id": "native-import",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 4.64,
+          "owned_process_group": 2113604,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-explosion",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.236,
+          "owned_process_group": 2114253,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-identity",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.236,
+          "owned_process_group": 2114303,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-variants",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.239,
+          "owned_process_group": 2114388,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-moth",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.227,
+          "owned_process_group": 2114426,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-weather",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.236,
+          "owned_process_group": 2114464,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-depth",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.251,
+          "owned_process_group": 2114502,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-muzzle",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.223,
+          "owned_process_group": 2114637,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-support",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.693,
+          "owned_process_group": 2114678,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "typecheck-lobby",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.331,
+          "owned_process_group": 2114749,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "explosion",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.514,
+          "owned_process_group": 2114793,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "identity",
+          "status": "failed",
+          "failure_reason": "nonzero-exit",
+          "exit_code": 1,
+          "duration_seconds": 0.415,
+          "owned_process_group": 2114915,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "stage": "l-core-rest",
+      "candidate": "8921ed4124756c368cecfc637ca183bf8d3ec262",
+      "source_sha256": "8ed96ab5aadb1dce0e81108b8b4cecd572f898c76477a611ddad8e8c1cda20a6",
+      "attempts": [
+        {
+          "id": "variants",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.431,
+          "owned_process_group": 2117064,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "moth",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.428,
+          "owned_process_group": 2117242,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "weather",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 5.585,
+          "owned_process_group": 2117334,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "depth",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 2.008,
+          "owned_process_group": 2117755,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "muzzle",
+          "status": "failed",
+          "failure_reason": "timeout",
+          "exit_code": null,
+          "duration_seconds": 120.211,
+          "owned_process_group": 2117877,
+          "cleanup": {
+            "signalled": [
+              2117877,
+              2117905,
+              2117909
+            ],
+            "remaining": []
+          }
+        },
+        {
+          "id": "support",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 1.033,
+          "owned_process_group": 2126816,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "lobby",
+          "status": "failed",
+          "failure_reason": "timeout",
+          "exit_code": null,
+          "duration_seconds": 120.213,
+          "owned_process_group": 2126910,
+          "cleanup": {
+            "signalled": [
+              2126910,
+              2126915,
+              2126919
+            ],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "stage": "l-fixture-fixes",
+      "candidate": "8921ed4124756c368cecfc637ca183bf8d3ec262",
+      "source_sha256": "489bb95891a66f1356d2bbf09cef32265ef68c4f68ad309ec71620a3dfeb977e",
+      "attempts": [
+        {
+          "id": "identity",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.47,
+          "owned_process_group": 2139818,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "muzzle",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 1.51,
+          "owned_process_group": 2140009,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "lobby",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 4.162,
+          "owned_process_group": 2140123,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "lobby-flow",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 1.216,
+          "owned_process_group": 2140394,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "popup-focus",
+          "status": "failed",
+          "failure_reason": "timeout",
+          "exit_code": null,
+          "duration_seconds": 120.14,
+          "owned_process_group": 2140459,
+          "cleanup": {
+            "signalled": [
+              2140459,
+              2140463,
+              2140467
+            ],
+            "remaining": []
+          }
+        },
+        {
+          "id": "setup",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 1.686,
+          "owned_process_group": 2147548,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "lobby-existing",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 2.996,
+          "owned_process_group": 2147755,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "weather-unit",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 2.746,
+          "owned_process_group": 2148010,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "weapon-lifecycle",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.693,
+          "owned_process_group": 2148151,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "weapon-rig",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 0.613,
+          "owned_process_group": 2148232,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "identity-composition",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 13.391,
+          "owned_process_group": 2148283,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "identity-inspection",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 11.221,
+          "owned_process_group": 2149126,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "stage": "l-captures-focus",
+      "candidate": "1de76a853c44a257d19e9d2d22e77f575c369028",
+      "source_sha256": "88e1cd00a73338ffe9168f841140906f04be0e622aecaaf0ed3ca23f4aa7f5c0",
+      "attempts": [
+        {
+          "id": "popup-focus",
+          "status": "failed",
+          "failure_reason": "fixture-failures",
+          "exit_code": 1,
+          "duration_seconds": 15.494,
+          "owned_process_group": 2154563,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "effect-captures",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 3.108,
+          "owned_process_group": 2155324,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "lobby-captures",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 1.655,
+          "owned_process_group": 2155608,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "stage": "l-popup-diagnostic",
+      "candidate": "1de76a853c44a257d19e9d2d22e77f575c369028",
+      "source_sha256": "314db16c2dff582b0f8b867e369a68644d6ce81b6ab1fba17138231cb468b7e1",
+      "attempts": [
+        {
+          "id": "popup-focus",
+          "status": "failed",
+          "failure_reason": "fixture-failures",
+          "exit_code": 1,
+          "duration_seconds": 15.646,
+          "owned_process_group": 2163539,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "stage": "l-parent-import-focus",
+      "candidate": "05972f162e3a13e4fea1d7d3dbafa8a657a2f81a",
+      "source_sha256": "9b5fd9536a5154f77b7147cbf0c924d526f36955f4e8a3aab9f75f73867c93b1",
+      "attempts": [
+        {
+          "id": "native-import",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 3.672,
+          "owned_process_group": 2179040,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "lobby",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 4.277,
+          "owned_process_group": 2179290,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "popup-focus",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 14.525,
+          "owned_process_group": 2179650,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "stage": "l-before-K",
+      "candidate": "4188e4116d0722df6da48cd8305267d9e28cdf19",
+      "source_sha256": "7e971bab0159961c061aed77c67d3e1a5740ba55fa831b7778282448840d8e91",
+      "attempts": [
+        {
+          "id": "native-import",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 8.686,
+          "owned_process_group": 2183177,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "muzzle",
+          "status": "failed",
+          "failure_reason": "fixture-failures",
+          "exit_code": 1,
+          "duration_seconds": 1.487,
+          "owned_process_group": 2183908,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "identity-composition",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 14.507,
+          "owned_process_group": 2184044,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "identity-inspection",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 11.347,
+          "owned_process_group": 2184989,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "effect-captures",
+          "status": "failed",
+          "failure_reason": "engine-error",
+          "exit_code": 0,
+          "duration_seconds": 1.882,
+          "owned_process_group": 2186190,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "lobby-captures",
+          "status": "failed",
+          "failure_reason": "nonzero-exit",
+          "exit_code": 1,
+          "duration_seconds": 0.939,
+          "owned_process_group": 2186408,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "stage": "l-before-fixture-retry",
+      "candidate": "4188e4116d0722df6da48cd8305267d9e28cdf19",
+      "source_sha256": "aff230610947ccad23201204c2192a8e93e03e431a851e60302b12015774c6bb",
+      "attempts": [
+        {
+          "id": "effect-captures",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 3.009,
+          "owned_process_group": 2189908,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        },
+        {
+          "id": "lobby-captures",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 1.402,
+          "owned_process_group": 2190122,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "stage": "l-lobby-capture-final",
+      "candidate": "6266702ddbc27a555002195a41c5d1196ba8f623",
+      "source_sha256": "a87d2d656f7e2705a07785d78e273d461fec8e10488e26f2cd1a402593ffa8f9",
+      "attempts": [
+        {
+          "id": "lobby-captures",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 1.579,
+          "owned_process_group": 2191298,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "stage": "l-effects-final",
+      "candidate": "6266702ddbc27a555002195a41c5d1196ba8f623",
+      "source_sha256": "b4345dc80623b093c6a1ef823b67d4e0deef3cd7e2063730bc2ae16d422a6196",
+      "attempts": [
+        {
+          "id": "effect-captures",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 3.408,
+          "owned_process_group": 2193809,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    },
+    {
+      "stage": "l-before-effects-final",
+      "candidate": "4188e4116d0722df6da48cd8305267d9e28cdf19",
+      "source_sha256": "f2b993726fd039f76ee8d58901f00cf8a4a16e43856b4b91c68efdf088097ef9",
+      "attempts": [
+        {
+          "id": "effect-captures",
+          "status": "passed",
+          "failure_reason": null,
+          "exit_code": 0,
+          "duration_seconds": 3.108,
+          "owned_process_group": 2194508,
+          "cleanup": {
+            "signalled": [],
+            "remaining": []
+          }
+        }
+      ]
+    }
+  ],
+  "latest_after_gates": {
+    "native-import": {
+      "stage": "l-parent-import-focus",
+      "id": "native-import",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 3.672,
+      "owned_process_group": 2179040,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-explosion": {
+      "stage": "l-initial",
+      "id": "typecheck-explosion",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.236,
+      "owned_process_group": 2114253,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-identity": {
+      "stage": "l-initial",
+      "id": "typecheck-identity",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.236,
+      "owned_process_group": 2114303,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-variants": {
+      "stage": "l-initial",
+      "id": "typecheck-variants",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.239,
+      "owned_process_group": 2114388,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-moth": {
+      "stage": "l-initial",
+      "id": "typecheck-moth",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.227,
+      "owned_process_group": 2114426,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-weather": {
+      "stage": "l-initial",
+      "id": "typecheck-weather",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.236,
+      "owned_process_group": 2114464,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-depth": {
+      "stage": "l-initial",
+      "id": "typecheck-depth",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.251,
+      "owned_process_group": 2114502,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-muzzle": {
+      "stage": "l-initial",
+      "id": "typecheck-muzzle",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.223,
+      "owned_process_group": 2114637,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-support": {
+      "stage": "l-initial",
+      "id": "typecheck-support",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.693,
+      "owned_process_group": 2114678,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "typecheck-lobby": {
+      "stage": "l-initial",
+      "id": "typecheck-lobby",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.331,
+      "owned_process_group": 2114749,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "explosion": {
+      "stage": "l-initial",
+      "id": "explosion",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.514,
+      "owned_process_group": 2114793,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "identity": {
+      "stage": "l-fixture-fixes",
+      "id": "identity",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.47,
+      "owned_process_group": 2139818,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "variants": {
+      "stage": "l-core-rest",
+      "id": "variants",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.431,
+      "owned_process_group": 2117064,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "moth": {
+      "stage": "l-core-rest",
+      "id": "moth",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.428,
+      "owned_process_group": 2117242,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "weather": {
+      "stage": "l-core-rest",
+      "id": "weather",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 5.585,
+      "owned_process_group": 2117334,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "depth": {
+      "stage": "l-core-rest",
+      "id": "depth",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 2.008,
+      "owned_process_group": 2117755,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "muzzle": {
+      "stage": "l-fixture-fixes",
+      "id": "muzzle",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 1.51,
+      "owned_process_group": 2140009,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "support": {
+      "stage": "l-core-rest",
+      "id": "support",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 1.033,
+      "owned_process_group": 2126816,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "lobby": {
+      "stage": "l-parent-import-focus",
+      "id": "lobby",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 4.277,
+      "owned_process_group": 2179290,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "lobby-flow": {
+      "stage": "l-fixture-fixes",
+      "id": "lobby-flow",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 1.216,
+      "owned_process_group": 2140394,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "popup-focus": {
+      "stage": "l-parent-import-focus",
+      "id": "popup-focus",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 14.525,
+      "owned_process_group": 2179650,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "setup": {
+      "stage": "l-fixture-fixes",
+      "id": "setup",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 1.686,
+      "owned_process_group": 2147548,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "lobby-existing": {
+      "stage": "l-fixture-fixes",
+      "id": "lobby-existing",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 2.996,
+      "owned_process_group": 2147755,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "weather-unit": {
+      "stage": "l-fixture-fixes",
+      "id": "weather-unit",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 2.746,
+      "owned_process_group": 2148010,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "weapon-lifecycle": {
+      "stage": "l-fixture-fixes",
+      "id": "weapon-lifecycle",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.693,
+      "owned_process_group": 2148151,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "weapon-rig": {
+      "stage": "l-fixture-fixes",
+      "id": "weapon-rig",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 0.613,
+      "owned_process_group": 2148232,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "identity-composition": {
+      "stage": "l-fixture-fixes",
+      "id": "identity-composition",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 13.391,
+      "owned_process_group": 2148283,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "identity-inspection": {
+      "stage": "l-fixture-fixes",
+      "id": "identity-inspection",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 11.221,
+      "owned_process_group": 2149126,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "effect-captures": {
+      "stage": "l-effects-final",
+      "id": "effect-captures",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 3.408,
+      "owned_process_group": 2193809,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    },
+    "lobby-captures": {
+      "stage": "l-lobby-capture-final",
+      "id": "lobby-captures",
+      "status": "passed",
+      "failure_reason": null,
+      "exit_code": 0,
+      "duration_seconds": 1.579,
+      "owned_process_group": 2191298,
+      "cleanup": {
+        "signalled": [],
+        "remaining": []
+      }
+    }
+  }
+}
