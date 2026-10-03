@@ -129,7 +129,32 @@ def validate_export(path, report):
 def stage(output, report):
     """A separate throwaway Godot copy, never the accepted art/JSON checkout."""
     project = output / 'project'
-    shutil.copytree(ROOT / 'godot', project, ignore=shutil.ignore_patterns('.godot', '*.import'))
+    # Owner worktrees use a sparse checkout. Copying the on-disk godot/ subtree
+    # silently omitted Binder, material language, shaders and autoloads in V1.
+    # Archive exactly committed HEAD:godot into the private stage instead.
+    import tarfile
+    project.mkdir()
+    archive = subprocess.Popen(['git', 'archive', 'HEAD', 'godot'], cwd=ROOT, stdout=subprocess.PIPE)
+    try:
+        with tarfile.open(fileobj=archive.stdout, mode='r|') as tar:
+            for member in tar:
+                relative = Path(member.name)
+                if not relative.parts or relative.parts[0] != 'godot' or '..' in relative.parts or member.issym() or member.islnk():
+                    raise ValueError('Unexpected Git project archive member: ' + member.name)
+                dest = project.joinpath(*relative.parts[1:])
+                if member.isdir():
+                    dest.mkdir(parents=True, exist_ok=True)
+                elif member.isfile():
+                    dest.parent.mkdir(parents=True, exist_ok=True)
+                    with tar.extractfile(member) as source, dest.open('xb') as target:
+                        shutil.copyfileobj(source, target)
+        if archive.wait(timeout=120):
+            raise ValueError('Committed Godot project archive failed')
+    finally:
+        archive.stdout.close()
+        if archive.poll() is None:
+            archive.kill()
+            archive.wait()
     target = project / 'tests/new_maps/abyssal_pressureworks/corrective'
     target.mkdir(parents=True, exist_ok=True)
     shutil.copy2(output / 'corrective.glb', target / 'corrective.glb')
@@ -176,7 +201,8 @@ def main(argv=None):
     parser.add_argument('--blender', default='blender')
     parser.add_argument('--godot', default='godot')
     parser.add_argument('--grant', required=True, help='Exact exclusive grant label recorded in every V attempt')
-    parser.add_argument('command', choices=['run'])
+    parser.add_argument('--prior-root', type=Path, help='Read-only verified prior V attempt when resuming stage')
+    parser.add_argument('command', choices=['run', 'resume-stage'])
     args = parser.parse_args(argv)
     output = guard_output(args.output_root)
     candidate = json.loads((HERE / 'candidate.json').read_text())
@@ -196,22 +222,40 @@ def main(argv=None):
         blend = output / 'corrective.blend'
         glb = output / 'corrective.glb'
         report_path = output / 'material-report.json'
-        run_phase(output, '01-build', [args.blender, '-b', '-t', '1', '--python-exit-code', '1',
+        if args.command == 'run':
+            run_phase(output, '01-build', [args.blender, '-b', '-t', '1', '--python-exit-code', '1',
                   '--python', str(HERE / 'author.py'), '--', '--root', str(ROOT),
                   '--blend', str(blend), '--glb', str(glb), '--report', str(report_path)], 1800)
+        else:
+            if not args.prior_root or not args.prior_root.is_dir() or args.prior_root.resolve() == output:
+                raise ValueError('resume-stage requires an explicit distinct prior V attempt')
+            prior = args.prior_root.resolve()
+            old_inputs = json.loads((prior / 'inputs.json').read_text())
+            if old_inputs['geometryHash'] != IDENTITY or old_inputs['candidateSha256'] != sha(HERE / 'candidate.json') or old_inputs['bindingsSha256'] != sha(HERE / 'materials.bindings.json'):
+                raise ValueError('Prior V candidate inputs differ')
+            for label in ('01-build', '02-reopen', '03-master-reexport', '04-geometry-audit'):
+                receipt = json.loads((prior / (label + '.receipt.json')).read_text())
+                if receipt.get('exitCode') != 0 or any(receipt['ownedGroupAudits']) or receipt['logSha256'] != sha(prior / (label + '.log')):
+                    raise ValueError('Prior V phase is not verified: ' + label)
+            for name in ('corrective.blend', 'corrective.glb', 'reexport.glb', 'material-report.json', 'geometry-audit.json'):
+                shutil.copyfile(prior / name, output / name)
+            atomic_json(output / 'resume-lineage.json', {'sourceAttempt': str(prior), 'grant': args.grant,
+                         'readOnlyHashes': {name: sha(prior / name) for name in
+                            ('corrective.blend', 'corrective.glb', 'reexport.glb', 'material-report.json', 'geometry-audit.json')}})
         report = json.loads(report_path.read_text())
         if sha(blend) != report['masterSha256'] or report['geometryHash'] != IDENTITY:
             raise ValueError('Builder master/authority mismatch')
         validate_export(glb, report)
-        run_phase(output, '02-reopen', [args.blender, '-b', '-t', '1', '--python-exit-code', '1',
-                  '--python', str(ROOT / 'tools/map-variety-support/verify_master.py'), '--',
-                  '--blend', str(blend), '--report', str(report_path)], 480)
-        run_phase(output, '03-master-reexport', [args.blender, '-b', '-t', '1', '--python-exit-code', '1',
-                  '--python', str(HERE / 'reexport_master.py'), '--', '--blend', str(blend),
-                  '--output', str(output / 'reexport.glb'), '--report', str(report_path)], 600)
-        # Geometry is compared independently, not by potentially unstable GLB bytes.
-        run_phase(output, '04-geometry-audit', [sys.executable, str(HERE / 'audit_corrective.py'),
-                  '--output-root', str(output)], 360)
+        if args.command == 'run':
+            run_phase(output, '02-reopen', [args.blender, '-b', '-t', '1', '--python-exit-code', '1',
+                      '--python', str(ROOT / 'tools/map-variety-support/verify_master.py'), '--',
+                      '--blend', str(blend), '--report', str(report_path)], 480)
+            run_phase(output, '03-master-reexport', [args.blender, '-b', '-t', '1', '--python-exit-code', '1',
+                      '--python', str(HERE / 'reexport_master.py'), '--', '--blend', str(blend),
+                      '--output', str(output / 'reexport.glb'), '--report', str(report_path)], 600)
+        # Compare independent geometry and pixels even on a read-only resume.
+        run_phase(output, '04-geometry-audit' if args.command == 'run' else '04-resumed-geometry-audit',
+                  [sys.executable, str(HERE / 'audit_corrective.py'), '--output-root', str(output)], 360)
         project = stage(output, report)
         run_phase(output, '05-import', [args.godot, '--headless', '--path', str(project), '--editor', '--import', '--quit'], 360)
         run_phase(output, '06-world-check', [args.godot, '--headless', '--path', str(project), '--script',

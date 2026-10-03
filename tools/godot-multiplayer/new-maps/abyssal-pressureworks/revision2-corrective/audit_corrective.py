@@ -11,7 +11,8 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parents[4] / 'tools/map-variety-support'))
 sys.path.insert(0, str(HERE.parents[4] / 'tools/map-variety-pipeline'))
 from build_entry import _glb_material_images
-from service_cave_contacts import glb_triangles, segment_hits, triangles_from_authority
+from service_cave_contacts import glb_triangles, segment_hits, triangles_from_authority, triangles_from_specs
+import layout
 from native_harness import IDENTITY, validate_export, sha, atomic_json
 
 
@@ -60,19 +61,44 @@ def audit(output):
              ((-94, 10, -98.5), (-94, 5, -98.5)),
              ((91, 4, -92.5), (91, -1, -92.5))]
     rays = []
-    for start, end in cases:
+    for index, (start, end) in enumerate(cases):
         art_hits = segment_hits(start, end, visual)
         auth_hits = segment_hits(start, end, authority)
         rays.append({'start': start, 'end': end, 'art': art_hits[:8], 'authority': auth_hits[:8]})
-        for _, name, point in art_hits:
-            if name.startswith('service-cave.') and not any(
-                    sum((point[k] - hit[2][k]) ** 2 for k in range(3)) ** .5 < .08
-                    for hit in auth_hits):
-                raise ValueError('New service cave art without nearby authority contact: %s %r' % (name, point))
+        # Export batches are named for materials, not individual cave specs.
+        # Compare every actual world-space GLB contact on these exact spans.
+        if len(art_hits) != len(auth_hits) or any(
+                sum((a[2][k] - b[2][k]) ** 2 for k in range(3)) ** .5 > .08
+                for a, b in zip(art_hits, auth_hits)):
+            raise ValueError('New GLB/authority mismatch at rejected P1 ray %d: %r vs %r' % (index, art_hits, auth_hits))
+    # Explicitly find *all fourteen* decorative solid forms in the actual GLB.
+    # Their material-batched node names cannot serve as object identifiers;
+    # instead ray-probe each source form's exposed middle face and compare
+    # actual GLB world contacts to the original, unbevelled authored mesh.
+    forms = [part for part in layout.parts(candidate['arena']) if part['name'].startswith('service-cave.')]
+    if len(forms) != 14:
+        raise ValueError('Corrective source lost one of fourteen cave solids')
+    form_rows = []
+    for form in forms:
+        bounds = [(min(v[axis] for v in form['vertices']), max(v[axis] for v in form['vertices']))
+                  for axis in range(3)]
+        axis = 1 if '.ledge' in form['name'] else (2 if '.0.' in form['name'] else 0)
+        center = [(a + b) / 2 for a, b in bounds]
+        start, end = center.copy(), center.copy()
+        start[axis], end[axis] = bounds[axis][0] - .25, bounds[axis][1] + .25
+        expected = segment_hits(start, end, list(triangles_from_specs([form])))
+        actual = segment_hits(start, end, visual)
+        matched = [point for _, _, point in expected if any(
+            sum((point[i] - hit[2][i]) ** 2 for i in range(3)) ** .5 < .09 for hit in actual)]
+        if not expected or not matched:
+            raise ValueError('No actual GLB face near authored cave solid: ' + form['name'])
+        form_rows.append({'name': form['name'], 'bounds': bounds, 'rayAxis': axis,
+                          'expectedContacts': len(expected), 'matchedContacts': len(matched)})
     result = {'status': 'master reexport geometry and pixels match; in-engine collision pending',
               'geometryHash': IDENTITY, 'originalGlbSha256': sha(primary),
               'reexportGlbSha256': sha(reopened), 'primitives': len(primitives),
-              'triangles': triangles, 'materials': len(images1), 'historicalRays': rays}
+              'triangles': triangles, 'materials': len(images1), 'historicalRays': rays,
+              'sourceSolidWorldContactChecks': form_rows}
     atomic_json(output / 'geometry-audit.json', result)
     return result
 
