@@ -65,8 +65,10 @@ No revised map master, export or rendered acceptance is claimed at this checkpoi
   images; botanical wording prohibiting all byte re-encoding is not acceptance
   of incorrectly encoded exports.
 - Movement package reconciliation `4cd806fa` passes 111/113 parent checks; two
-  reject this newly added authoring-resource inventory. Package owner is adding
-  exact hash-bound source reconciliation, without treating the maps as produced.
+  initially rejected this newly added authoring-resource inventory. Follow-up
+  `a83f73f4` pins all 886 authoring files to `9dc08e53` and excludes them from
+  runtime packaging. Parent passed **116/116 source tests**, including committed-
+  Git seven-unit strict closure. This does not treat revised maps as produced.
 
 ## Reviewed resource delivery and real concurrency
 

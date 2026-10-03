@@ -56,8 +56,11 @@ Package owner `ses_f03437da1ffeli91L87Q6CVyRP` delivered the exact movement adva
 `76054ece`, parent-integrated as `4cd806fa`. Parent reproduced **111/113 passing**
 on the current branch: two source-inventory checks reject the subsequently merged
 Moth authoring-resource files, which were absent from the worker's foundation.
-The owner is reconciling that exact resource inventory source-only; this is an
-integration blocker, not a passing package preflight. Moth generation is complete.
+Follow-up `8e565602`, parent-integrated as `a83f73f4`, resolves that integration
+blocker with 886 individually hash-pinned authoring files excluded from runtime
+packaging. Parent passed **116/116 source tests**, including independent committed-
+Git seven-unit strict closure. The earlier 111/113 result remains historical.
+Moth generation and source/package inventory reconciliation are complete.
 Parent coordinates slots,
 fresh movement evidence, changed dependency reconciliation and eventual packages.
 No source test or staged capture establishes human feel or hardware performance.
@@ -80,7 +83,8 @@ No source test or staged capture establishes human feel or hardware performance.
 - User's completed cleanup freed **91 GiB on disk**, with **16 GiB in `/tmp`**.
   Prior low-space reports are historical; no retained evidence was deleted by
   the movement workers. Q's bounded native results are now recorded above;
-  package reconciliation remains pending. P's frozen 89/22/31 ledger is unchanged.
+  source/package reconciliation now passes as recorded above. P's frozen 89/22/31
+  ledger is unchanged; fresh built-package acceptance remains pending.
 
 ## Selected implementation scope
 
