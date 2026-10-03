@@ -1,0 +1,116 @@
+{
+  "accepted": false,
+  "captures": [
+    {
+      "capturedUsec": 1000965,
+      "drawCalls": 31.0,
+      "eye": [
+        -350,
+        320,
+        -330
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T054216.614385Z-inspection/overview.png",
+      "frameSeconds": 0.0,
+      "primitives": 45948.0,
+      "target": [
+        -35,
+        0,
+        5
+      ],
+      "view": "overview"
+    },
+    {
+      "capturedUsec": 2119969,
+      "drawCalls": 59.0,
+      "eye": [
+        -108,
+        3.4,
+        -133
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T054216.614385Z-inspection/terminal.png",
+      "frameSeconds": 0.145075,
+      "primitives": 220208.0,
+      "target": [
+        -5,
+        9,
+        -120
+      ],
+      "view": "terminal"
+    },
+    {
+      "capturedUsec": 3307223,
+      "drawCalls": 56.0,
+      "eye": [
+        150,
+        3.4,
+        22
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T054216.614385Z-inspection/freight-bore.png",
+      "frameSeconds": 0.185586,
+      "primitives": 219088.0,
+      "target": [
+        138,
+        7,
+        70
+      ],
+      "view": "freight-bore"
+    },
+    {
+      "capturedUsec": 4344584,
+      "drawCalls": 62.0,
+      "eye": [
+        45,
+        3.4,
+        145
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T054216.614385Z-inspection/quay-chicane.png",
+      "frameSeconds": 0.124481,
+      "primitives": 219740.0,
+      "target": [
+        -45,
+        8,
+        133
+      ],
+      "view": "quay-chicane"
+    },
+    {
+      "capturedUsec": 5312276,
+      "drawCalls": 61.0,
+      "eye": [
+        -183,
+        3.4,
+        101
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T054216.614385Z-inspection/surgeworks.png",
+      "frameSeconds": 0.187599,
+      "primitives": 219586.0,
+      "target": [
+        -207,
+        13,
+        47
+      ],
+      "view": "surgeworks"
+    },
+    {
+      "capturedUsec": 6378758,
+      "drawCalls": 64.0,
+      "eye": [
+        -118,
+        3.4,
+        11
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T054216.614385Z-inspection/return-gate.png",
+      "frameSeconds": 0.172507,
+      "primitives": 220400.0,
+      "target": [
+        -72,
+        13,
+        -28
+      ],
+      "view": "return-gate"
+    }
+  ],
+  "driver": "opengl3",
+  "geometryHash": "6afb8a36ee954ff9457a5522a7412c809191fb070eb7fe9eda4d379753acce48",
+  "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)"
+}

@@ -1,0 +1,257 @@
+{
+  "accepted": false,
+  "glbSha256": "ff318582fd47ca633ef74da1aa4a6aa2b5b691800f12fb3210f3dac140cb5b33",
+  "bytes": 3901880,
+  "triangles": 56552,
+  "matchedSourceTriangles": 19364,
+  "maxVertexErrorMetres": 0.000009915050317110598,
+  "comparisonToleranceMetres": 0.0001,
+  "extraTriangles": 37188,
+  "streams": [
+    {
+      "mesh": "batch-asphalt",
+      "material": "asphalt",
+      "vertices": 84,
+      "triangles": 42,
+      "textured": true,
+      "normal": true
+    },
+    {
+      "mesh": "batch-concrete",
+      "material": "concrete",
+      "vertices": 11544,
+      "triangles": 5646,
+      "textured": true,
+      "normal": true
+    },
+    {
+      "mesh": "batch-salt",
+      "material": "salt",
+      "vertices": 26112,
+      "triangles": 12480,
+      "textured": true,
+      "normal": true
+    },
+    {
+      "mesh": "batch-amber",
+      "material": "amber",
+      "vertices": 6784,
+      "triangles": 3276,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "batch-teal",
+      "material": "teal",
+      "vertices": 984,
+      "triangles": 560,
+      "textured": true,
+      "normal": false
+    },
+    {
+      "mesh": "batch-glass",
+      "material": "glass",
+      "vertices": 7686,
+      "triangles": 3660,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "batch-steel",
+      "material": "steel",
+      "vertices": 36808,
+      "triangles": 17622,
+      "textured": true,
+      "normal": true
+    },
+    {
+      "mesh": "batch-brick",
+      "material": "brick",
+      "vertices": 556,
+      "triangles": 276,
+      "textured": true,
+      "normal": true
+    },
+    {
+      "mesh": "batch-ocean",
+      "material": "ocean",
+      "vertices": 4,
+      "triangles": 2,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-0",
+      "material": "amber",
+      "vertices": 1863,
+      "triangles": 1596,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-1",
+      "material": "amber",
+      "vertices": 816,
+      "triangles": 760,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-2",
+      "material": "amber",
+      "vertices": 1062,
+      "triangles": 992,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-3",
+      "material": "amber",
+      "vertices": 536,
+      "triangles": 468,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-4",
+      "material": "amber",
+      "vertices": 780,
+      "triangles": 716,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-5",
+      "material": "amber",
+      "vertices": 956,
+      "triangles": 892,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-6",
+      "material": "amber",
+      "vertices": 480,
+      "triangles": 428,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-7",
+      "material": "amber",
+      "vertices": 1250,
+      "triangles": 1180,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-8",
+      "material": "amber",
+      "vertices": 1004,
+      "triangles": 940,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-9",
+      "material": "amber",
+      "vertices": 468,
+      "triangles": 420,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-10",
+      "material": "amber",
+      "vertices": 88,
+      "triangles": 48,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-11",
+      "material": "amber",
+      "vertices": 436,
+      "triangles": 388,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-12",
+      "material": "amber",
+      "vertices": 682,
+      "triangles": 620,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-13",
+      "material": "amber",
+      "vertices": 156,
+      "triangles": 96,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-14",
+      "material": "amber",
+      "vertices": 400,
+      "triangles": 344,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-15",
+      "material": "amber",
+      "vertices": 576,
+      "triangles": 520,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-16",
+      "material": "amber",
+      "vertices": 100,
+      "triangles": 56,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-17",
+      "material": "amber",
+      "vertices": 870,
+      "triangles": 808,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-18",
+      "material": "amber",
+      "vertices": 624,
+      "triangles": 568,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-19",
+      "material": "amber",
+      "vertices": 816,
+      "triangles": 760,
+      "textured": false,
+      "normal": false
+    },
+    {
+      "mesh": "route-sign-20",
+      "material": "amber",
+      "vertices": 436,
+      "triangles": 388,
+      "textured": false,
+      "normal": false
+    }
+  ],
+  "sources": {
+    "architecture.py": "1fbdb7a6198e4fcfae4adc2fbebcf28933e504fe4aa98002d42692742cc68664",
+    "blender_export.py": "e58de79ab845d95663a2d5cd8ed1b9dceba932cd0fc8f47829d1896ea760e8ec",
+    "recipe.mjs": "427d7d4b9ade4d19bfecc7f061b6bc87146a44b56f79aa5c6de2b95a1daa162a"
+  }
+}

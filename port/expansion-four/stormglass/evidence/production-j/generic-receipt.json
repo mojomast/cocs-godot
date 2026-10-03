@@ -1,0 +1,118 @@
+{
+  "unit": "stormglass-causeway",
+  "sourceCommits": [
+    "e723b2fd"
+  ],
+  "sourceHashes": {
+    "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/blender_export.py": "e58de79ab845d95663a2d5cd8ed1b9dceba932cd0fc8f47829d1896ea760e8ec",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/recipe.mjs": "427d7d4b9ade4d19bfecc7f061b6bc87146a44b56f79aa5c6de2b95a1daa162a"
+  },
+  "sourceFingerprint": "dd0f4fbea323ba8fa8ad4b7bf578c980c737495188f941fc8aa0b983dfd39d1c",
+  "masters": [
+    {
+      "path": "tools/godot-multiplayer/new-maps/stormglass-causeway/stormglass-causeway.blend",
+      "sha256": "970d244fbec4d352dd3148c5e68f927037c224fa680c680050c83c8984d84e40"
+    }
+  ],
+  "exports": [
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/stormglass-causeway.glb",
+      "bytes": 3901880,
+      "sha256": "ff318582fd47ca633ef74da1aa4a6aa2b5b691800f12fb3210f3dac140cb5b33",
+      "triangles": 56552,
+      "surfaces": 30,
+      "texturedSurfaces": 6,
+      "textures": [
+        {
+          "name": "MothLocalNormal_asphalt",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_asphalt",
+          "bytes": 1501,
+          "sha256": "2293522fa2dc0d82414e8efab452f597e9226c7f6b804e0f435eb6cf4d91accf"
+        },
+        {
+          "name": "MothLocalNormal_concrete",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_concrete",
+          "bytes": 2777,
+          "sha256": "0dec7f448cc836d1bc1192c68d9563145ad70f264f43ef3a47852c31e46db105"
+        },
+        {
+          "name": "MothLocalNormal_salt",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_salt",
+          "bytes": 3673,
+          "sha256": "abe71fda4751c6acd508b977d357b50f381535de1975d4bf49bc516c63da6997"
+        },
+        {
+          "name": "MothLocal_teal",
+          "bytes": 1803,
+          "sha256": "70c7dff7c89c343ba9e059327476f4fba48f1b918daf55cb51c73c23c2e58301"
+        },
+        {
+          "name": "MothLocalNormal_steel",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_steel",
+          "bytes": 2358,
+          "sha256": "ccba777af4ff6e05051281a24ca913a3b8e15e82dd94a92b75d3fa555bb2c7d9"
+        },
+        {
+          "name": "MothLocalNormal_brick",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_brick",
+          "bytes": 2181,
+          "sha256": "610dfcab946aa0c6ec52248f88b8903851f44e9dc4f950a259123a80a775a823"
+        }
+      ]
+    }
+  ],
+  "measuredGLBTriangles": 56552,
+  "configuredTriangleCap": 250000,
+  "accepted": false,
+  "pending": [
+    "441 road supports, 42 sustained infantry/Puma barrier contacts, six ceilings",
+    "source vs imported exact geometry and wheel/chase clearance",
+    "wrong-way/reset/restart/Home and source-scored hosted race",
+    "parent review flat-road source concession; no invented playable relief"
+  ],
+  "packageInputHashes": {
+    "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+    "game/moth-baked.mjs": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2",
+    "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+    "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+    "godot/moth/derived/manifest.json": "5be9ad6493455138464dc059dd64a32dc5d837f6fc4e460957f606f6d2a79887",
+    "godot/moth/generated/manifest.json": "c5589ff2f2ab68d982b2bb45c221c08d8e3f653953e5d5d446bfa4cd68380047",
+    "godot/multiplayer_worlds/generated/stormglass-causeway.json": "cdbb72fd712bd09807c9c83ffc08f7ef7d7d397a974819b062d8125f96c05ee6",
+    "port/multiplayer-worlds/catalog.mjs": "d2919c888433f16d8183ed33c408514b3894272d8ac7d35ba04c85b61fb7c4f2",
+    "port/native-multiplayer-worlds/worlds/stormglass-causeway.json": "3b0f86130eae0f925ce9409d710804f44c33073852ba09b0b4d0949ef034c548",
+    "tools/asset-production/material-validation.mjs": "874e5d31c666a8af4a98b600bb182a4f4cb9c5e6b1488d80908f855b2584bb3d",
+    "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
+    "tools/asset-production/package-receipt.mjs": "e1917daa642b15e6e3290b537fbf9024ba72e6f5dfd18f4025d3e589d9702621",
+    "tools/asset-production/receipt.mjs": "9648c19d979b2486c78830628c2f2508a02b4b2874d1f64149966d88d7e5f9d8",
+    "tools/asset-production/reopen.py": "4628bc44122a690495766f3cc967a82d3ab7aeab52c272cca7a202be88e0f5de",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/blender_export.py": "e58de79ab845d95663a2d5cd8ed1b9dceba932cd0fc8f47829d1896ea760e8ec",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/build.mjs": "182ecaf1ef3347c1b4642d40ae10305927055a9f4a571883f1fa671fb3ad45cf",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/recipe.mjs": "427d7d4b9ade4d19bfecc7f061b6bc87146a44b56f79aa5c6de2b95a1daa162a",
+    "tools/godot-package/production_resources.mjs": "0a95ddacb4af6f0b3dc053e4963e6b4201324cecf2dbe8a02617aafb21fbe219",
+    "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
+    "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
+    "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
+    "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba"
+  }
+}
