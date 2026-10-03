@@ -30,6 +30,25 @@ Flash lanes author source only; Sol executes Blender serially under R, starting
 with Foundry. The other five maps require later serial execution of their builders.
 No revised map master, export or rendered acceptance is claimed at this checkpoint.
 
+### Source-delivery review checkpoint
+
+- Botanical/urban source delivered as `8cff03b0`, `ddf8c70d`, `0351e1d1`, with
+  18 reported Node passes and a Python source suite. Independent Astra review
+  `ses_efd55fd04ffedSQ6q14ztgmqaa` is checking buildability, complete composition,
+  collision/support agreement and the material adapter contract before merge.
+- Coastal initial source `6675a2ce` was rejected by parent for incorrect coordinate
+  conversion, invalid mesh faces/arch dimensions and incomplete full-map assembly.
+  Corrective `7a7ce64e` reports full authority composition and 37 source checks.
+  Independent Sol review `ses_efd55bb5cffeJRWNA4xZq8O6cE` is checking those fixes
+  and actual geometry extents before merge. Neither delivery is integrated yet.
+- R continues Foundry production. The shared adapter must preserve original
+  linear provider images while producing correctly sRGB-encoded GLB base-color
+  images; botanical wording prohibiting all byte re-encoding is not acceptance
+  of incorrectly encoded exports.
+- Movement package reconciliation `4cd806fa` passes 111/113 parent checks; two
+  reject this newly added authoring-resource inventory. Package owner is adding
+  exact hash-bound source reconciliation, without treating the maps as produced.
+
 ## Reviewed resource delivery and real concurrency
 
 - Initial pack: 30 base families, six derived finishes, 181 lossless PNG channels.

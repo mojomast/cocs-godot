@@ -52,8 +52,13 @@ warnings. Report `NATIVE_Q.md` is parent-integrated as `190fa2a2`. Parent verifi
 three empty audits of four owned groups and byte-identical tracked input manifests.
 No rendered comparison was launched; comfort and human feel remain pending.
 The next heavy owner is Sol under **`MOTH-BLENDER-20261003-R`** for map production.
-Package owner `ses_f03437da1ffeli91L87Q6CVyRP` is reconciling exact dependencies
-source-only. Remote Moth generation continues separately. Parent coordinates slots,
+Package owner `ses_f03437da1ffeli91L87Q6CVyRP` delivered the exact movement advance
+`76054ece`, parent-integrated as `4cd806fa`. Parent reproduced **111/113 passing**
+on the current branch: two source-inventory checks reject the subsequently merged
+Moth authoring-resource files, which were absent from the worker's foundation.
+The owner is reconciling that exact resource inventory source-only; this is an
+integration blocker, not a passing package preflight. Moth generation is complete.
+Parent coordinates slots,
 fresh movement evidence, changed dependency reconciliation and eventual packages.
 No source test or staged capture establishes human feel or hardware performance.
 

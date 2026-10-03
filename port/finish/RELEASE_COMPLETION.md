@@ -111,7 +111,9 @@ New-package native verification is still required. Published
 preview bytes still contain the original runtime.
 **P and Q have explicitly released; Blender production R holds the local heavy slot.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
-the Windows owner retains remote preflight monitoring.
+Parent independently confirmed Windows source-only preflight `37125999742`
+completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
+Its successful source/inventory checks do not cover the newer movement/Moth tree.
 Scenery delivery is preserved but not integrated into the preview. Final production
 and acceptance obligations remain; strict final packaging is unchanged.
 
@@ -129,7 +131,7 @@ boundaries.
 | Fighting presentation and controls | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing at `1bff0281`; controller recovery integrated at `614a8a7f`, all 12 parent presentation source tests pass; native review pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | O complete/released; world/combined ordinary journeys and Controls clean teardown passed; Settings Return Home fix integrated at `3ee932e8`, report at `b17360c9` |
-| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Exact O advance integrated at `14d8a72d`; all 55 parent checks and seven committed-Git strict inventories pass; future runtime drift requires explicit reconciliation |
+| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Movement advance integrated at `4cd806fa`; parent 111/113 source checks pass, two reject newly integrated Moth files missing from the source inventory; exact resource reconciliation active |
 | Vesper Viaduct | Astra `ses_f03a3885fffehx9yFhHubuPCft` | H production/evidence integrated through `04fbbfa5`; six native outcomes passed; parent review/registration at `99a4f597`; package-promoted at `b5d16351` |
 | Abyssal Pressureworks | Astra `ses_f03a3024cffeNO1Cc3Qr1zSLTG` | I delivery integrated through `f0e76bf7`; six native outcomes and parent visual review retained; six-mode registration/package promotion integrated at `c7c81c71` |
 | Stormglass Causeway | Astra `ses_f0342d1ffffeyUHJkcUj3vqP7p` | J completed/released; assets and private race evidence integrated through `997bc013`; one public Puma Race pair and exact package promotion integrated at `5b5c8791`, flat-road concession retained |
@@ -138,7 +140,7 @@ boundaries.
 | Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Actual production at `1f129ab2`; E released; compact-HUD correction at `83ceaa62` passes six parent source checks/grammar, new native layout/screenshots pending |
 | Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base `b6ab6782` and ordinary-controller follow-up `da259d19` integrated; 26 parent acceptance tests and grammar pass; native execution awaits later grant and device access |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | P complete/released on `3e97453a`: 89 passed / 22 failed / 31 unrun; 142 obligations retained; reviewed diagnosis/combo follow-up integrated through `8bf90885`, native verification pending |
-| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Historical Windows graph evidence verified/integrated at `08f3b1f9`; new 13-world/73-pair source-only preflight `37125999742` awaits owner-reported completion; no local export under O |
+| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Historical Windows graph evidence verified/integrated at `08f3b1f9`; parent confirmed source-only preflight `37125999742` succeeded on `c1aa94ef` at 13:29:07Z; newer movement/Moth candidate still needs fresh verification and exports |
 | Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | M complete/released, integrated at `701d4caf`; 75-second film published, 98 candidate/91 installed Home checks pass; human full-watch/listening and final-frozen receipt remain pending |
 
 All workers run in the background, using existing sessions/checkouts. Source work
