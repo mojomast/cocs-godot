@@ -7,6 +7,11 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
+**New polish directive:** Flash audits of graphics/shaders/assets, animation/
+presentation and usability are active. Parent will assign the concrete findings
+to parallel Flash/Sol/Luna source implementations. See `POLISH_AUDIT_20261003.md`.
+Native K retains its current bounded scope and exclusive heavy slot.
+
 **Motion/vehicle directive:** Flash research plus Sol/Astra implementation is
 active for natural operator locomotion, player movement feel, Puma controls and
 first-/third-person vehicle views, and articulated melee kick chains. Ownership:
