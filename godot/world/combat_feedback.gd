@@ -128,6 +128,9 @@ func _quality_changed(level: int) -> void:
 	if is_instance_valid(player_fx): player_fx.set_quality(level)
 	if is_instance_valid(impacts): impacts.set_quality(level)
 	if is_instance_valid(blood_fx): blood_fx.set_quality(CombatQuality.LEVELS[level])
+	# Low drops the supplemental Moth accents; source parity keeps every one of
+	# them behind a real quality/reduced-motion preference rather than a belief.
+	if is_instance_valid(moth_effects): moth_effects.set_quality(level)
 	_update_metrics()
 
 func _attach_rig() -> void:
@@ -209,6 +212,9 @@ func _sync_activity() -> void:
 		if is_instance_valid(player_fx): player_fx.clear_transient()
 		if is_instance_valid(impacts): impacts.reset()
 		if is_instance_valid(blood_fx): blood_fx.reset()
+		# Reset, not pause: a hidden supplemental cue must not keep flashing and
+		# must not resume from a stale frame when focus/freshness returns.
+		if is_instance_valid(moth_effects): moth_effects.reset()
 		hit_remaining = 0.0
 		hurt_remaining = 0.0
 	if is_instance_valid(world_particles): world_particles.set_paused(not active)
@@ -257,6 +263,16 @@ func flush_effects() -> void:
 	if is_instance_valid(blood_fx): blood_fx.apply_events(events, effect_local_id)
 	if is_instance_valid(player_fx): player_fx.apply_events(safe, effect_local_id)
 	if is_instance_valid(impacts): impacts.consume(safe, effect_local_id)
+	# Supplemental Moth world cues: accepted health/megahealth pickups, mender
+	# heals and teleport ends are not owned by weapon_effects, particles, blood
+	# or impacts. Route only those fresh events here, after the public-state and
+	# activity checks above, from the authoritative snapshot actor positions.
+	# Damage sparks and explosions stay with their existing owners.
+	if is_instance_valid(moth_effects):
+		var support: Array = []
+		for event: Variant in events:
+			if MothEffects.support_only(event): support.append(event)
+		if not support.is_empty(): moth_effects.consume(support, effect_local_id, public_actors)
 
 func _update_metrics() -> void:
 	if not is_instance_valid(quality_controls): return
@@ -385,12 +401,14 @@ func _ready() -> void:
 			AudioBuses.apply(options)
 			audio_feedback.set_muted(options.get("mute", false) == true or "--mute" in OS.get_cmdline_user_args() or "--mute-capture" in OS.get_cmdline_user_args())
 			melee_feedback.set_muted(audio_feedback._muted)
+			if is_instance_valid(moth_effects): moth_effects.set_reduced_motion(options.get("reduced_motion", false) == true)
 			melee_feedback.set_reduced_motion(options.get("reduced_motion", false) == true))
 		local_settings.audio_preferences_changed.connect(func(options: Dictionary) -> void:
 			damage_numbers.reduced_motion = options.get("reduced_motion", false) == true)
 		damage_numbers.reduced_motion = local_settings.values.get("reduced_motion", false) == true
 		AudioBuses.apply(local_settings.values)
 		melee_feedback.set_reduced_motion(local_settings.values.get("reduced_motion", false) == true)
+		if is_instance_valid(moth_effects): moth_effects.set_reduced_motion(local_settings.values.get("reduced_motion", false) == true)
 		audio_feedback.set_muted(local_settings.values.get("mute", false) == true or "--mute" in OS.get_cmdline_user_args() or "--mute-capture" in OS.get_cmdline_user_args())
 	else: audio_feedback.set_muted("--mute" in OS.get_cmdline_user_args() or "--mute-capture" in OS.get_cmdline_user_args())
 	melee_feedback.set_muted(audio_feedback._muted)

@@ -24,6 +24,14 @@ var overflow := 0
 var duplicates := 0
 var rejected := 0
 var serial := 0
+## Presentation preferences. Defaults preserve every existing direct caller; the
+## integrated CombatFeedback owner propagates the live quality and reduced-motion
+## choice. Reduced motion and Low quality drop the cues while their accepted
+## event ID is still consumed, so a later preference change cannot replay a
+## hidden event. Source parity: every Moth accent in view.mjs is guarded by
+## `!reduced`.
+var quality := 2
+var reduced_motion := false
 
 func _init() -> void:
 	id_slots.resize(ID_WINDOW)
@@ -53,6 +61,12 @@ func configure_resources(resources: Dictionary) -> void:
 			if not frame is Texture2D or frame.get_width() <= 0 or frame.get_height() <= 0: valid = false
 		if valid: sheets[key] = {"frames": frames.duplicate(), "fps": float(fps)}
 
+func set_quality(level: int) -> void:
+	quality = clampi(level, 0, 2)
+
+func set_reduced_motion(value: bool) -> void:
+	reduced_motion = value == true
+
 static func number(value: Variant) -> bool:
 	return (value is int or value is float) and is_finite(float(value))
 
@@ -65,6 +79,19 @@ static func point(value: Variant) -> Variant:
 	for key: String in ["x", "y", "z"]:
 		if not number(value.get(key)) or absf(float(value[key])) > 100000.0: return null
 	return Vector3(value.x, value.y, value.z)
+
+# Supplemental world cues this module owns in the integrated pipeline: health
+# and megahealth pickups, mender heals and teleport end-points. Damage sparks and
+# explosions are deliberately excluded because weapon_effects and
+# player_fx/impacts already present those beats; routing them here would double
+# the presentation. Kept static so CombatFeedback can filter without another bus.
+static func support_only(event: Variant) -> bool:
+	if not event is Dictionary: return false
+	match str(event.get("type", "")):
+		"teleport", "teleporter": return true
+		"mender-heal": return true
+		"pickup": return event.get("kind") in ["health", "megahealth"]
+	return false
 
 # actors must be the latest PUBLIC authoritative snapshot actors, not predicted
 # or interpolated render nodes. Positions are read only; cues do not follow actors.
@@ -98,6 +125,9 @@ func consume(events: Array, _local_id: int = -1, actors: Array = []) -> void:
 		if id_slots[bucket] >= 0: seen.erase(id_slots[bucket])
 		id_slots[bucket] = id
 		seen[id] = true
+		# Presentation preference gate. The ID is already consumed above, so a
+		# dropped cue stays dropped when quality/reduced motion later changes.
+		if reduced_motion or quality <= 0: continue
 		_present(event, positions)
 
 func _present(event: Dictionary, positions: Dictionary) -> void:
