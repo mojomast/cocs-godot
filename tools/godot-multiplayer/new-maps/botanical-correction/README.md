@@ -1,5 +1,10 @@
 # Source-only successors to frozen U
 
+**Production successor:** explicit grant X later exercised these sources. See
+[`X_HANDOFF.md`](X_HANDOFF.md) for actual artifacts, failures and release, and
+[`STAGING.md`](STAGING.md) for the attempt-scoped adapter. The source-only
+predictions below and `source-evidence.json` remain their frozen historical record.
+
 Branch starts at `243223d3`. U masters/exports/receipts, accepted authorities,
 and the three U source recipes are immutable inputs. No engine or heavy-slot
 supervisor is started or queued by this source task. A new grant is required.
