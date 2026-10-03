@@ -7,6 +7,14 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
+**New user-requested map production:** dedicated Astra is creating new Moth API
+resources and updating mothbake; two Flash audits and a Sol Blender-pipeline lane
+prepare more varied terrain, structures and population across the six newer maps.
+The user explicitly requires Blender-authored assets. Application follows the
+new resource pack, on isolated branches with fresh map validation. P keeps its
+current native slot/candidate; no new local heavy owner is implied. Exact owners,
+sequence and storage constraints: `MOTH_BLENDER_MAP_VARIETY_20261003.md`.
+
 **Current checkpoint (supersedes earlier M-in-progress entries below):** M actually
 completed and released at `2026-10-03T08:08:16.973785Z`; the parent missed its
 completion transition and later gave a stale capturing update. User's in-flight
