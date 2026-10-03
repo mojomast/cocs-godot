@@ -1,0 +1,25 @@
+{
+  "start": "2026-10-03T22:48:02.257431+00:00",
+  "end": "2026-10-03T22:48:09.027413+00:00",
+  "pgid": 1352121,
+  "members": [
+    {
+      "pid": 1352121,
+      "ppid": 1338191,
+      "pgid": 1352121,
+      "startTicks": 625082620,
+      "comm": "python3",
+      "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-native-z/owned_capture.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+    },
+    {
+      "pid": 1352122,
+      "ppid": 1352121,
+      "pgid": 1352121,
+      "startTicks": 625082622,
+      "comm": "Godot_v4.5.2-st",
+      "argv": ""
+    }
+  ],
+  "scriptError": false,
+  "returncode": 0
+}

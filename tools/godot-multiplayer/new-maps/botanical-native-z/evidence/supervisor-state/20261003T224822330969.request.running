@@ -1,0 +1,18 @@
+{
+  "id": "20261003T224822330969",
+  "command": [
+    "python3",
+    "-B",
+    "tools/godot-multiplayer/new-maps/botanical-native-z/owned_capture.py",
+    "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "godot",
+    "--script",
+    "res://tests/new_maps/botanical_post_x/vesper-Z-01/controller_journey.gd",
+    "--",
+    "--fixture=res://tests/new_maps/botanical_post_x/vesper-Z-01/",
+    "--case=accepted-civic-r035"
+  ],
+  "timeout": 180
+}

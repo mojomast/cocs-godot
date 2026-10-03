@@ -1,0 +1,98 @@
+{
+  "grant": "MOTH-BLENDER-20261003-Z",
+  "time": "2026-10-03T22:49:41.170208+00:00",
+  "audits": [
+    {
+      "time": "2026-10-03T22:49:40.435164+00:00",
+      "ownedGroupMembers": [],
+      "groups": [
+        {
+          "pid": 1338821,
+          "ppid": 1338191,
+          "pgid": 1338821,
+          "startTicks": 625057182,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-native-z/owned_capture.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 1352121,
+          "ppid": 1338191,
+          "pgid": 1352121,
+          "startTicks": 625082620,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-native-z/owned_capture.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 1353226,
+          "ppid": 1338191,
+          "pgid": 1353226,
+          "startTicks": 625084644,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-native-z/owned_capture.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_post_x/vesper-Z-01/controller_journey.gd -- --fixture=res://tests/new_maps/botanical_post_x/vesper-Z-01/ --case=accepted-civic-r035 "
+        }
+      ]
+    },
+    {
+      "time": "2026-10-03T22:49:40.668919+00:00",
+      "ownedGroupMembers": [],
+      "groups": [
+        {
+          "pid": 1338821,
+          "ppid": 1338191,
+          "pgid": 1338821,
+          "startTicks": 625057182,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-native-z/owned_capture.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 1352121,
+          "ppid": 1338191,
+          "pgid": 1352121,
+          "startTicks": 625082620,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-native-z/owned_capture.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 1353226,
+          "ppid": 1338191,
+          "pgid": 1353226,
+          "startTicks": 625084644,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-native-z/owned_capture.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_post_x/vesper-Z-01/controller_journey.gd -- --fixture=res://tests/new_maps/botanical_post_x/vesper-Z-01/ --case=accepted-civic-r035 "
+        }
+      ]
+    },
+    {
+      "time": "2026-10-03T22:49:40.905932+00:00",
+      "ownedGroupMembers": [],
+      "groups": [
+        {
+          "pid": 1338821,
+          "ppid": 1338191,
+          "pgid": 1338821,
+          "startTicks": 625057182,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-native-z/owned_capture.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 1352121,
+          "ppid": 1338191,
+          "pgid": 1352121,
+          "startTicks": 625082620,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-native-z/owned_capture.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 1353226,
+          "ppid": 1338191,
+          "pgid": 1353226,
+          "startTicks": 625084644,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-native-z/owned_capture.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_post_x/vesper-Z-01/controller_journey.gd -- --fixture=res://tests/new_maps/botanical_post_x/vesper-Z-01/ --case=accepted-civic-r035 "
+        }
+      ]
+    }
+  ],
+  "noQueuedHeavyWork": true,
+  "ownership": "exact PGID plus kernel start ticks; preexisting excluded"
+}

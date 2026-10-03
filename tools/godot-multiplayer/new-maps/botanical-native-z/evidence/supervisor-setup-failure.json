@@ -1,0 +1,6 @@
+{
+  "time": "2026-10-03T22:43:34.257323+00:00",
+  "failure": "Reused runner directory depth off by one; failed git preflight before ready/job dispatch",
+  "ownedHeavyGroups": 0,
+  "fix": "test runner ROOT HERE.parents[3]; no controller or fixture behavior changed"
+}

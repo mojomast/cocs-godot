@@ -1,0 +1,25 @@
+{
+  "start": "2026-10-03T22:48:22.498614+00:00",
+  "end": "2026-10-03T22:49:11.181987+00:00",
+  "pgid": 1353226,
+  "members": [
+    {
+      "pid": 1353226,
+      "ppid": 1338191,
+      "pgid": 1353226,
+      "startTicks": 625084644,
+      "comm": "python3",
+      "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-native-z/owned_capture.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_post_x/vesper-Z-01/controller_journey.gd -- --fixture=res://tests/new_maps/botanical_post_x/vesper-Z-01/ --case=accepted-civic-r035 "
+    },
+    {
+      "pid": 1353227,
+      "ppid": 1353226,
+      "pgid": 1353226,
+      "startTicks": 625084646,
+      "comm": "Godot_v4.5.2-st",
+      "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_post_x/vesper-Z-01/controller_journey.gd -- --fixture=res://tests/new_maps/botanical_post_x/vesper-Z-01/ --case=accepted-civic-r035 "
+    }
+  ],
+  "scriptError": false,
+  "returncode": 1
+}

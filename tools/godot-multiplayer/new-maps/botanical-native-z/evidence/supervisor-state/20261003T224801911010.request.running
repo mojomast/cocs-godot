@@ -1,0 +1,17 @@
+{
+  "id": "20261003T224801911010",
+  "command": [
+    "python3",
+    "-B",
+    "tools/godot-multiplayer/new-maps/botanical-native-z/owned_capture.py",
+    "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--single-threaded-scene",
+    "--path",
+    "godot",
+    "--editor",
+    "--import",
+    "--quit"
+  ],
+  "timeout": 900
+}

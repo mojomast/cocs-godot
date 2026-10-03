@@ -1,0 +1,8 @@
+{
+  "pid": 1338191,
+  "ppid": 1338182,
+  "pgid": 1338182,
+  "startTicks": 625056157,
+  "comm": "python3",
+  "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-native-z/grant_z.py serve "
+}

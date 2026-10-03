@@ -1,0 +1,43 @@
+{
+  "command": [
+    "python3",
+    "-B",
+    "tools/godot-multiplayer/new-maps/botanical-native-z/owned_capture.py",
+    "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--single-threaded-scene",
+    "--path",
+    "godot",
+    "--editor",
+    "--import",
+    "--quit"
+  ],
+  "timeoutSeconds": 900,
+  "start": "2026-10-03T22:48:02.078277+00:00",
+  "git": "33afe0ec484ff57c82e40050b12266c6d91fda04",
+  "inputDiffSha256": "38f9d740dfe0443cad19eb10065a8589133e4650dfb8fe067448b72c3d7cefa7",
+  "sourceHashes": {
+    "tools/godot-multiplayer/new-maps/botanical-native-z/grant_z.py": "1789120961e3842d8d4dbf67f4742f3d7a91d58a722546e1a6ce89ce213df8bf",
+    "tools/godot-multiplayer/new-maps/botanical-native-z/owned_capture.py": "77b4c969cbce5a1905572a03ee568157634c4986182a4f28cf9d7d83c2b0c3ea",
+    "godot/tests/new_maps/botanical_post_x/art_binding.gd": "ef44102c1c7c83e126101eda1431dab914109dc0576276f5d80ca59425db487a",
+    "godot/tests/new_maps/botanical_post_x/controller_journey.gd": "6ca932c96bfed3f8e3ad0f54e0317bb32781544f5c5ebb3497f846e0c9ce5d70",
+    "godot/tests/new_maps/botanical_post_x/tangent_readback.gd": "f748950bc8c259a392d317014c4b791079b5c1085dd8b36b1238734cc7dfbaf8",
+    "godot/tests/new_maps/botanical_post_x/vesper-Z-01/accepted.json": "e273264a789036b26bda83bf8e390c8ae53f78e4357da241ce4a49368e8af885",
+    "godot/tests/new_maps/botanical_post_x/vesper-Z-01/candidate.json": "397cedc8f5583a229bb3f65ed94d9a8c74c30fd4132b57bd4e754299a47c67ec",
+    "godot/tests/new_maps/botanical_post_x/vesper-Z-01/controller_journey.gd": "6ca932c96bfed3f8e3ad0f54e0317bb32781544f5c5ebb3497f846e0c9ce5d70",
+    "godot/tests/new_maps/botanical_post_x/vesper-Z-01/art_binding.gd": "ef44102c1c7c83e126101eda1431dab914109dc0576276f5d80ca59425db487a",
+    "godot/tests/new_maps/botanical_post_x/vesper-Z-01/source.json": "b1cb4f9366be87dd1b3c03f87ff410692b6c8a0703103e6f09908ef0e8e9de48",
+    "godot/tests/new_maps/botanical_post_x/vesper-Z-01/import-policy.json": "d2b08459694bc693599ee71ac08d5434ff97e78dee8a572d4558d4ca25ba7d84"
+  },
+  "owner": {
+    "pid": 1352121,
+    "ppid": 1338191,
+    "pgid": 1352121,
+    "startTicks": 625082620,
+    "comm": "python3",
+    "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-native-z/owned_capture.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+  },
+  "end": "2026-10-03T22:48:09.083843+00:00",
+  "returncode": 0,
+  "remainingGroupMembers": []
+}

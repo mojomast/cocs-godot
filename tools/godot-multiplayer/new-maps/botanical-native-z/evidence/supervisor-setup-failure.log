@@ -1,0 +1,20 @@
+fatal: not a git repository (or any of the parent directories): .git
+Traceback (most recent call last):
+  File "/home/mojo/.tmp-on-disk/cocs-vesper-native-z/tools/godot-multiplayer/new-maps/botanical-native-z/grant_z.py", line 10, in <module>
+    exec(compile(code,str(source),'exec'),globals())
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mojo/.tmp-on-disk/cocs-vesper-native-z/tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/grant.py", line 84, in <module>
+    if sys.argv[1]=='serve':serve()
+                            ~~~~~^^
+  File "/home/mojo/.tmp-on-disk/cocs-vesper-native-z/tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/grant.py", line 40, in serve
+    'git':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()})
+          ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 472, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+               **kwargs).stdout
+               ^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['git', 'rev-parse', 'HEAD']' returned non-zero exit status 128.

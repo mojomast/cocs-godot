@@ -1,0 +1,1219 @@
+{
+  "scope": "Native trace analysis; headroom rays are source-only, not a native/full finite-capsule clearance gate",
+  "nativeTraceSha256": "646c4b598f0551e8ed3c691508d33f616f275a46c255b05ca522aa117036bed7",
+  "nativeGroup": "accepted-civic-r035",
+  "groupFailed": true,
+  "passed": 5,
+  "failed": 5,
+  "unrunGroups": [
+    "accepted-civic-r042",
+    "candidate-civic-r035",
+    "candidate-civic-r042",
+    "candidate-roof-r035",
+    "candidate-roof-r042"
+  ],
+  "unrunTrials": 50,
+  "inputFrames": 2686,
+  "settleSteps": 200,
+  "headroomRays": 13430,
+  "headroomHits": 0,
+  "headroomRadius": 0.35,
+  "headroomVerticalBand": [
+    0.25,
+    1.8
+  ],
+  "firstTread": {
+    "id": "civic-stair-0",
+    "material": "sandstone",
+    "walkable": true,
+    "vertices": [
+      [
+        30,
+        12.15,
+        25
+      ],
+      [
+        30,
+        12.15,
+        25.5
+      ],
+      [
+        34,
+        12.15,
+        25.5
+      ],
+      [
+        34,
+        12.15,
+        25
+      ]
+    ],
+    "triangles": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        2,
+        3
+      ]
+    ]
+  },
+  "firstTreadIdenticalInCandidate": true,
+  "trialSummaries": [
+    {
+      "id": "civic:30.5:-1",
+      "start": [
+        30.5,
+        24,
+        66
+      ],
+      "goal": [
+        30.5,
+        12,
+        24
+      ],
+      "direction": "downhill",
+      "reached": true,
+      "frames": 410,
+      "stalledFrames": 0,
+      "groundedFrames": 260,
+      "collisionRecords": 137,
+      "maxRise": 0.01834869384770066,
+      "maxDrop": 0.09726524353030186,
+      "maxHorizontal": 0.11307525636379252,
+      "maxXDrift": 0.0008678436279012658,
+      "maxConsecutivePhysicsFrameGap": 1,
+      "firstInputPhysicsFrame": 23,
+      "lastInputPhysicsFrame": 432,
+      "elapsedInputSeconds": 6.833333333333333,
+      "wallUsecSpan": 6831000,
+      "finalPosition": [
+        30.5000190734863,
+        12.0127096176147,
+        24.1351680755615
+      ],
+      "finalVelocity": [
+        -0.000875940837431699,
+        0,
+        -6
+      ],
+      "finalSupport": [
+        30.5000190734863,
+        12,
+        24.1351680755615
+      ],
+      "finalSupportCollider": "city-grade--25--140Collider",
+      "firstStair0Contact": {
+        "before": [
+          30.5001640319824,
+          12.2011623382568,
+          25.1445541381836
+        ],
+        "clock": {
+          "inPhysicsFrame": true,
+          "monotonicUsec": 7395768,
+          "physicsFrame": 423,
+          "physicsTicksPerSecond": 60,
+          "timeScale": 1
+        },
+        "collisions": [
+          {
+            "collider": "civic-stair-0Collider",
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "position": [
+              30.5001525878906,
+              12.1499996185303,
+              25.0677967071533
+            ]
+          },
+          {
+            "collider": "civic-stair-0Collider",
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "position": [
+              30.5001487731934,
+              12.1499996185303,
+              25.0445537567139
+            ]
+          }
+        ],
+        "frame": 400,
+        "grounded": true,
+        "position": [
+          30.5001487731934,
+          12.1527738571167,
+          25.0445537567139
+        ],
+        "resetCount": 1,
+        "support": [
+          30.5001487731934,
+          12.1499996185303,
+          25.0445537567139
+        ],
+        "supportCollider": "civic-stair-0Collider",
+        "supportNormal": [
+          0,
+          1,
+          0
+        ],
+        "velocity": [
+          -0.000859891064465046,
+          0,
+          -6
+        ]
+      },
+      "finalCollisions": [
+        {
+          "collider": "city-grade--25--140Collider",
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "position": [
+            30.500020980835,
+            12,
+            24.1461067199707
+          ]
+        },
+        {
+          "collider": "city-grade--25--140Collider",
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "position": [
+            30.5000190734863,
+            12,
+            24.1351680755615
+          ]
+        }
+      ],
+      "finalContactAnglesDegrees": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "civic:30.5:1",
+      "start": [
+        30.5,
+        12,
+        24
+      ],
+      "goal": [
+        30.5,
+        24,
+        66
+      ],
+      "direction": "uphill",
+      "reached": false,
+      "frames": 127,
+      "stalledFrames": 120,
+      "groundedFrames": 127,
+      "collisionRecords": 127,
+      "maxRise": 0,
+      "maxDrop": 0,
+      "maxHorizontal": 0.10000038146979762,
+      "maxXDrift": 0,
+      "maxConsecutivePhysicsFrameGap": 1,
+      "firstInputPhysicsFrame": 454,
+      "lastInputPhysicsFrame": 580,
+      "elapsedInputSeconds": 2.1166666666666667,
+      "wallUsecSpan": 2097733,
+      "finalPosition": [
+        30.5,
+        12.0166673660278,
+        24.7000026702881
+      ],
+      "finalVelocity": [
+        0,
+        0,
+        0
+      ],
+      "finalSupport": [
+        30.5,
+        12,
+        24.7000026702881
+      ],
+      "finalSupportCollider": "city-grade--25--140Collider",
+      "firstStair0Contact": {
+        "before": [
+          30.5,
+          12.0166673660278,
+          24.7000026702881
+        ],
+        "clock": {
+          "inPhysicsFrame": true,
+          "monotonicUsec": 8030280,
+          "physicsFrame": 461,
+          "physicsTicksPerSecond": 60,
+          "timeScale": 1
+        },
+        "collisions": [
+          {
+            "collider": "civic-stair-0Collider",
+            "normal": [
+              0,
+              0.625151395797729,
+              -0.780503511428833
+            ],
+            "position": [
+              30.5,
+              12.1499996185303,
+              25
+            ]
+          }
+        ],
+        "frame": 7,
+        "grounded": true,
+        "position": [
+          30.5,
+          12.0166673660278,
+          24.7000026702881
+        ],
+        "resetCount": 1,
+        "support": [
+          30.5,
+          12,
+          24.7000026702881
+        ],
+        "supportCollider": "city-grade--25--140Collider",
+        "supportNormal": [
+          0,
+          1,
+          0
+        ],
+        "velocity": [
+          0,
+          0,
+          0
+        ]
+      },
+      "finalCollisions": [
+        {
+          "collider": "civic-stair-0Collider",
+          "normal": [
+            0,
+            0.625151395797729,
+            -0.780503511428833
+          ],
+          "position": [
+            30.5,
+            12.1499996185303,
+            25
+          ]
+        }
+      ],
+      "finalContactAnglesDegrees": [
+        51.30669963486756
+      ]
+    },
+    {
+      "id": "civic:31.25:-1",
+      "start": [
+        31.25,
+        24,
+        66
+      ],
+      "goal": [
+        31.25,
+        12,
+        24
+      ],
+      "direction": "downhill",
+      "reached": true,
+      "frames": 410,
+      "stalledFrames": 0,
+      "groundedFrames": 266,
+      "collisionRecords": 144,
+      "maxRise": 0.017403602599999957,
+      "maxDrop": 0.09843826293949931,
+      "maxHorizontal": 0.11320495607067034,
+      "maxXDrift": 0.0014610290526988479,
+      "maxConsecutivePhysicsFrameGap": 1,
+      "firstInputPhysicsFrame": 601,
+      "lastInputPhysicsFrame": 1010,
+      "elapsedInputSeconds": 6.833333333333333,
+      "wallUsecSpan": 6817080,
+      "finalPosition": [
+        31.2500400543213,
+        12.0100679397583,
+        24.1084842681885
+      ],
+      "finalVelocity": [
+        -0.00225056242197752,
+        0,
+        -5.99999952316284
+      ],
+      "finalSupport": [
+        31.2500400543213,
+        12,
+        24.1084842681885
+      ],
+      "finalSupportCollider": "city-grade--25--140Collider",
+      "firstStair0Contact": {
+        "before": [
+          31.2503223419189,
+          12.1948728561401,
+          25.131139755249
+        ],
+        "clock": {
+          "inPhysicsFrame": true,
+          "monotonicUsec": 17034833,
+          "physicsFrame": 1001,
+          "physicsTicksPerSecond": 60,
+          "timeScale": 1
+        },
+        "collisions": [
+          {
+            "collider": "civic-stair-0Collider",
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "position": [
+              31.2503032684326,
+              12.1499996185303,
+              25.0639514923096
+            ]
+          },
+          {
+            "collider": "civic-stair-0Collider",
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "position": [
+              31.2503833770752,
+              12.1499996185303,
+              25.037769317627
+            ]
+          },
+          {
+            "collider": "civic-stair-0Collider",
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "position": [
+              31.2503814697266,
+              12.1499996185303,
+              25.0304412841797
+            ]
+          }
+        ],
+        "frame": 400,
+        "grounded": true,
+        "position": [
+          31.2503814697266,
+          12.1665134429932,
+          25.0304412841797
+        ],
+        "resetCount": 1,
+        "support": [
+          31.2503814697266,
+          12.1499996185303,
+          25.0304412841797
+        ],
+        "supportCollider": "civic-stair-0Collider",
+        "supportNormal": [
+          0,
+          1,
+          0
+        ],
+        "velocity": [
+          -0.0017098254757002,
+          0,
+          -6
+        ]
+      },
+      "finalCollisions": [
+        {
+          "collider": "city-grade--25--140Collider",
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "position": [
+            31.2500400543213,
+            12,
+            24.1084842681885
+          ]
+        }
+      ],
+      "finalContactAnglesDegrees": [
+        0
+      ]
+    },
+    {
+      "id": "civic:31.25:1",
+      "start": [
+        31.25,
+        12,
+        24
+      ],
+      "goal": [
+        31.25,
+        24,
+        66
+      ],
+      "direction": "uphill",
+      "reached": false,
+      "frames": 127,
+      "stalledFrames": 120,
+      "groundedFrames": 127,
+      "collisionRecords": 127,
+      "maxRise": 0,
+      "maxDrop": 0,
+      "maxHorizontal": 0.10000038146979762,
+      "maxXDrift": 0,
+      "maxConsecutivePhysicsFrameGap": 1,
+      "firstInputPhysicsFrame": 1032,
+      "lastInputPhysicsFrame": 1158,
+      "elapsedInputSeconds": 2.1166666666666667,
+      "wallUsecSpan": 2097463,
+      "finalPosition": [
+        31.25,
+        12.0166673660278,
+        24.7000026702881
+      ],
+      "finalVelocity": [
+        0,
+        0,
+        0
+      ],
+      "finalSupport": [
+        31.25,
+        12,
+        24.7000026702881
+      ],
+      "finalSupportCollider": "city-grade--25--140Collider",
+      "firstStair0Contact": {
+        "before": [
+          31.25,
+          12.0166673660278,
+          24.7000026702881
+        ],
+        "clock": {
+          "inPhysicsFrame": true,
+          "monotonicUsec": 17662781,
+          "physicsFrame": 1039,
+          "physicsTicksPerSecond": 60,
+          "timeScale": 1
+        },
+        "collisions": [
+          {
+            "collider": "civic-stair-0Collider",
+            "normal": [
+              0,
+              0.625151395797729,
+              -0.780503511428833
+            ],
+            "position": [
+              31.25,
+              12.1499996185303,
+              25
+            ]
+          }
+        ],
+        "frame": 7,
+        "grounded": true,
+        "position": [
+          31.25,
+          12.0166673660278,
+          24.7000026702881
+        ],
+        "resetCount": 1,
+        "support": [
+          31.25,
+          12,
+          24.7000026702881
+        ],
+        "supportCollider": "city-grade--25--140Collider",
+        "supportNormal": [
+          0,
+          1,
+          0
+        ],
+        "velocity": [
+          0,
+          0,
+          0
+        ]
+      },
+      "finalCollisions": [
+        {
+          "collider": "civic-stair-0Collider",
+          "normal": [
+            0,
+            0.625151395797729,
+            -0.780503511428833
+          ],
+          "position": [
+            31.25,
+            12.1499996185303,
+            25
+          ]
+        }
+      ],
+      "finalContactAnglesDegrees": [
+        51.30669963486756
+      ]
+    },
+    {
+      "id": "civic:32:-1",
+      "start": [
+        32,
+        24,
+        66
+      ],
+      "goal": [
+        32,
+        12,
+        24
+      ],
+      "direction": "downhill",
+      "reached": true,
+      "frames": 411,
+      "stalledFrames": 0,
+      "groundedFrames": 255,
+      "collisionRecords": 137,
+      "maxRise": 0.01698112487789949,
+      "maxDrop": 0.09843826293939983,
+      "maxHorizontal": 0.1132431030274006,
+      "maxXDrift": 0,
+      "maxConsecutivePhysicsFrameGap": 1,
+      "firstInputPhysicsFrame": 1179,
+      "lastInputPhysicsFrame": 1589,
+      "elapsedInputSeconds": 6.85,
+      "wallUsecSpan": 6830935,
+      "finalPosition": [
+        32,
+        12.0165510177612,
+        24.1280670166016
+      ],
+      "finalVelocity": [
+        0,
+        0,
+        -6
+      ],
+      "finalSupport": [
+        32,
+        12,
+        24.1280670166016
+      ],
+      "finalSupportCollider": "city-grade--25--140Collider",
+      "firstStair0Contact": null,
+      "finalCollisions": [
+        {
+          "collider": "city-grade--25--140Collider",
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "position": [
+            32,
+            12,
+            24.1280670166016
+          ]
+        }
+      ],
+      "finalContactAnglesDegrees": [
+        0
+      ]
+    },
+    {
+      "id": "civic:32:1",
+      "start": [
+        32,
+        12,
+        24
+      ],
+      "goal": [
+        32,
+        24,
+        66
+      ],
+      "direction": "uphill",
+      "reached": false,
+      "frames": 127,
+      "stalledFrames": 120,
+      "groundedFrames": 127,
+      "collisionRecords": 127,
+      "maxRise": 0,
+      "maxDrop": 0,
+      "maxHorizontal": 0.10000038146979762,
+      "maxXDrift": 0,
+      "maxConsecutivePhysicsFrameGap": 1,
+      "firstInputPhysicsFrame": 1611,
+      "lastInputPhysicsFrame": 1737,
+      "elapsedInputSeconds": 2.1166666666666667,
+      "wallUsecSpan": 2097511,
+      "finalPosition": [
+        32,
+        12.0166673660278,
+        24.7000026702881
+      ],
+      "finalVelocity": [
+        0,
+        0,
+        0
+      ],
+      "finalSupport": [
+        32,
+        12,
+        24.7000026702881
+      ],
+      "finalSupportCollider": "city-grade--25--140Collider",
+      "firstStair0Contact": {
+        "before": [
+          32,
+          12.0166673660278,
+          24.7000026702881
+        ],
+        "clock": {
+          "inPhysicsFrame": true,
+          "monotonicUsec": 27315786,
+          "physicsFrame": 1618,
+          "physicsTicksPerSecond": 60,
+          "timeScale": 1
+        },
+        "collisions": [
+          {
+            "collider": "civic-stair-0Collider",
+            "normal": [
+              0,
+              0.6273353099823,
+              -0.778749227523804
+            ],
+            "position": [
+              32,
+              12.1499996185303,
+              25
+            ]
+          }
+        ],
+        "frame": 7,
+        "grounded": true,
+        "position": [
+          32,
+          12.0166673660278,
+          24.7000026702881
+        ],
+        "resetCount": 1,
+        "support": [
+          32,
+          12,
+          24.7000026702881
+        ],
+        "supportCollider": "city-grade--25--140Collider",
+        "supportNormal": [
+          0,
+          1,
+          0
+        ],
+        "velocity": [
+          0,
+          0,
+          0
+        ]
+      },
+      "finalCollisions": [
+        {
+          "collider": "civic-stair-0Collider",
+          "normal": [
+            0,
+            0.6273353099823,
+            -0.778749227523804
+          ],
+          "position": [
+            32,
+            12.1499996185303,
+            25
+          ]
+        }
+      ],
+      "finalContactAnglesDegrees": [
+        51.146200983114575
+      ]
+    },
+    {
+      "id": "civic:32.75:-1",
+      "start": [
+        32.75,
+        24,
+        66
+      ],
+      "goal": [
+        32.75,
+        12,
+        24
+      ],
+      "direction": "downhill",
+      "reached": true,
+      "frames": 410,
+      "stalledFrames": 0,
+      "groundedFrames": 290,
+      "collisionRecords": 137,
+      "maxRise": 0.016434669494598708,
+      "maxDrop": 0.09492206573479933,
+      "maxHorizontal": 0.11284637451169743,
+      "maxXDrift": 0,
+      "maxConsecutivePhysicsFrameGap": 1,
+      "firstInputPhysicsFrame": 1758,
+      "lastInputPhysicsFrame": 2167,
+      "elapsedInputSeconds": 6.833333333333333,
+      "wallUsecSpan": 6817166,
+      "finalPosition": [
+        32.75,
+        12.0006971359253,
+        24.0846309661865
+      ],
+      "finalVelocity": [
+        0,
+        0,
+        -6
+      ],
+      "finalSupport": [
+        32.75,
+        12,
+        24.0846309661865
+      ],
+      "finalSupportCollider": "city-grade--25--140Collider",
+      "firstStair0Contact": {
+        "before": [
+          32.75,
+          12.1501111984253,
+          25.1947975158691
+        ],
+        "clock": {
+          "inPhysicsFrame": true,
+          "monotonicUsec": 36292726,
+          "physicsFrame": 2157,
+          "physicsTicksPerSecond": 60,
+          "timeScale": 1
+        },
+        "collisions": [
+          {
+            "collider": "civic-stair-0Collider",
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "position": [
+              32.75,
+              12.1499996185303,
+              25.0947971343994
+            ]
+          }
+        ],
+        "frame": 399,
+        "grounded": true,
+        "position": [
+          32.75,
+          12.1501111984253,
+          25.0947971343994
+        ],
+        "resetCount": 1,
+        "support": [
+          32.75,
+          12.1499996185303,
+          25.0947971343994
+        ],
+        "supportCollider": "civic-stair-0Collider",
+        "supportNormal": [
+          0,
+          1,
+          0
+        ],
+        "velocity": [
+          0,
+          0,
+          -6
+        ]
+      },
+      "finalCollisions": [
+        {
+          "collider": "city-grade--25--140Collider",
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "position": [
+            32.75,
+            12,
+            24.0846309661865
+          ]
+        }
+      ],
+      "finalContactAnglesDegrees": [
+        0
+      ]
+    },
+    {
+      "id": "civic:32.75:1",
+      "start": [
+        32.75,
+        12,
+        24
+      ],
+      "goal": [
+        32.75,
+        24,
+        66
+      ],
+      "direction": "uphill",
+      "reached": false,
+      "frames": 127,
+      "stalledFrames": 120,
+      "groundedFrames": 127,
+      "collisionRecords": 127,
+      "maxRise": 0,
+      "maxDrop": 0,
+      "maxHorizontal": 0.10000038146979762,
+      "maxXDrift": 0,
+      "maxConsecutivePhysicsFrameGap": 1,
+      "firstInputPhysicsFrame": 2189,
+      "lastInputPhysicsFrame": 2315,
+      "elapsedInputSeconds": 2.1166666666666667,
+      "wallUsecSpan": 2097540,
+      "finalPosition": [
+        32.75,
+        12.0166673660278,
+        24.7000026702881
+      ],
+      "finalVelocity": [
+        0,
+        0,
+        0
+      ],
+      "finalSupport": [
+        32.75,
+        12,
+        24.7000026702881
+      ],
+      "finalSupportCollider": "city-grade--25--140Collider",
+      "firstStair0Contact": {
+        "before": [
+          32.75,
+          12.0166673660278,
+          24.7000026702881
+        ],
+        "clock": {
+          "inPhysicsFrame": true,
+          "monotonicUsec": 36948211,
+          "physicsFrame": 2196,
+          "physicsTicksPerSecond": 60,
+          "timeScale": 1
+        },
+        "collisions": [
+          {
+            "collider": "civic-stair-0Collider",
+            "normal": [
+              0,
+              0.625151395797729,
+              -0.780503511428833
+            ],
+            "position": [
+              32.75,
+              12.1499996185303,
+              25
+            ]
+          }
+        ],
+        "frame": 7,
+        "grounded": true,
+        "position": [
+          32.75,
+          12.0166673660278,
+          24.7000026702881
+        ],
+        "resetCount": 1,
+        "support": [
+          32.75,
+          12,
+          24.7000026702881
+        ],
+        "supportCollider": "city-grade--25--140Collider",
+        "supportNormal": [
+          0,
+          1,
+          0
+        ],
+        "velocity": [
+          0,
+          0,
+          0
+        ]
+      },
+      "finalCollisions": [
+        {
+          "collider": "civic-stair-0Collider",
+          "normal": [
+            0,
+            0.625151395797729,
+            -0.780503511428833
+          ],
+          "position": [
+            32.75,
+            12.1499996185303,
+            25
+          ]
+        }
+      ],
+      "finalContactAnglesDegrees": [
+        51.30669963486756
+      ]
+    },
+    {
+      "id": "civic:33.5:-1",
+      "start": [
+        33.5,
+        24,
+        66
+      ],
+      "goal": [
+        33.5,
+        12,
+        24
+      ],
+      "direction": "downhill",
+      "reached": true,
+      "frames": 410,
+      "stalledFrames": 0,
+      "groundedFrames": 290,
+      "collisionRecords": 137,
+      "maxRise": 0.016929626464801117,
+      "maxDrop": 0.10312461853030008,
+      "maxHorizontal": 0.11259841918940339,
+      "maxXDrift": 0,
+      "maxConsecutivePhysicsFrameGap": 1,
+      "firstInputPhysicsFrame": 2336,
+      "lastInputPhysicsFrame": 2745,
+      "elapsedInputSeconds": 6.833333333333333,
+      "wallUsecSpan": 6817192,
+      "finalPosition": [
+        33.5,
+        12.0166330337524,
+        24.0962810516357
+      ],
+      "finalVelocity": [
+        0,
+        0,
+        -6
+      ],
+      "finalSupport": [
+        33.5,
+        12,
+        24.0962810516357
+      ],
+      "finalSupportCollider": "city-grade--25--140Collider",
+      "firstStair0Contact": {
+        "before": [
+          33.5,
+          12.1513195037842,
+          25.1060199737549
+        ],
+        "clock": {
+          "inPhysicsFrame": true,
+          "monotonicUsec": 45945878,
+          "physicsFrame": 2736,
+          "physicsTicksPerSecond": 60,
+          "timeScale": 1
+        },
+        "collisions": [
+          {
+            "collider": "civic-stair-0Collider",
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "position": [
+              33.5,
+              12.1499996185303,
+              25.0060195922852
+            ]
+          }
+        ],
+        "frame": 400,
+        "grounded": true,
+        "position": [
+          33.5,
+          12.1513195037842,
+          25.0060195922852
+        ],
+        "resetCount": 1,
+        "support": [
+          33.5,
+          12.1499996185303,
+          25.0060195922852
+        ],
+        "supportCollider": "civic-stair-0Collider",
+        "supportNormal": [
+          0,
+          1,
+          0
+        ],
+        "velocity": [
+          0,
+          0,
+          -6
+        ]
+      },
+      "finalCollisions": [
+        {
+          "collider": "city-grade--25--140Collider",
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "position": [
+            33.5,
+            12,
+            24.0962810516357
+          ]
+        }
+      ],
+      "finalContactAnglesDegrees": [
+        0
+      ]
+    },
+    {
+      "id": "civic:33.5:1",
+      "start": [
+        33.5,
+        12,
+        24
+      ],
+      "goal": [
+        33.5,
+        24,
+        66
+      ],
+      "direction": "uphill",
+      "reached": false,
+      "frames": 127,
+      "stalledFrames": 120,
+      "groundedFrames": 127,
+      "collisionRecords": 127,
+      "maxRise": 0,
+      "maxDrop": 0,
+      "maxHorizontal": 0.10000038146979762,
+      "maxXDrift": 0,
+      "maxConsecutivePhysicsFrameGap": 1,
+      "firstInputPhysicsFrame": 2767,
+      "lastInputPhysicsFrame": 2893,
+      "elapsedInputSeconds": 2.1166666666666667,
+      "wallUsecSpan": 2097566,
+      "finalPosition": [
+        33.5,
+        12.0166673660278,
+        24.7000026702881
+      ],
+      "finalVelocity": [
+        0,
+        0,
+        0
+      ],
+      "finalSupport": [
+        33.5,
+        12,
+        24.7000026702881
+      ],
+      "finalSupportCollider": "city-grade--25--140Collider",
+      "firstStair0Contact": {
+        "before": [
+          33.5,
+          12.0166673660278,
+          24.7000026702881
+        ],
+        "clock": {
+          "inPhysicsFrame": true,
+          "monotonicUsec": 46580516,
+          "physicsFrame": 2774,
+          "physicsTicksPerSecond": 60,
+          "timeScale": 1
+        },
+        "collisions": [
+          {
+            "collider": "civic-stair-0Collider",
+            "normal": [
+              0,
+              0.625151395797729,
+              -0.780503511428833
+            ],
+            "position": [
+              33.5,
+              12.1499996185303,
+              25
+            ]
+          }
+        ],
+        "frame": 7,
+        "grounded": true,
+        "position": [
+          33.5,
+          12.0166673660278,
+          24.7000026702881
+        ],
+        "resetCount": 1,
+        "support": [
+          33.5,
+          12,
+          24.7000026702881
+        ],
+        "supportCollider": "city-grade--25--140Collider",
+        "supportNormal": [
+          0,
+          1,
+          0
+        ],
+        "velocity": [
+          0,
+          0,
+          0
+        ]
+      },
+      "finalCollisions": [
+        {
+          "collider": "civic-stair-0Collider",
+          "normal": [
+            0,
+            0.625151395797729,
+            -0.780503511428833
+          ],
+          "position": [
+            33.5,
+            12.1499996185303,
+            25
+          ]
+        }
+      ],
+      "finalContactAnglesDegrees": [
+        51.30669963486756
+      ]
+    }
+  ],
+  "conclusion": "Accepted exploration walker stalls on the first .15m tread: rounded lower-cap contact normal exceeds its 46-degree floor angle. It has no explicit step-up. Highest-floor authoritative JS stepping is a distinct solver. No candidate movement run, geometry change or static-contact waiver follows."
+}
