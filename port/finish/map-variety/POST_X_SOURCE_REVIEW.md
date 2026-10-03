@@ -1,5 +1,12 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**Parallax production-contract follow-up received:** Sol's `48c7e6c1` is under
+independent review by `ses_efd0e4deaffeke8j2rdXdxtbbn`. It pins the original X
+master/GLB, applies only the approved three-corner proposal, and adds future full
+editable-export/material and native proof contracts. Four in-memory tests are
+reported passing; no actual successor or engine execution is claimed. This is
+separate from the ongoing Vesper Z diagnostic grant.
+
 ## Current disposition — binding P1 closed; Z diagnostics authorized
 
 Independent focused re-review approved `902c3bbb` + `525b9fbe` for source

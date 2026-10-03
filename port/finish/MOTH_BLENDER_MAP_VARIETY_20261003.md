@@ -1,5 +1,14 @@
 # New Moth resources and Blender-authored map variety
 
+**Parallax tangent production sources delivered:** `48c7e6c1`, based on `33afe0ec`,
+pins the X master/GLB and limits changes to the three exclusive corners of face
+11823 (five BIN bytes within 48 permitted positions). Producer reports four
+in-memory tests passing, including real sampler/emissive material counterexamples.
+The future contract audits all 155,553 editable-export triangles using the reviewed
+material-semantic gate and prepares native readback. Independent source review is
+active; no successor master/GLB exists or build grant is issued. Z retains sole
+heavy ownership for Vesper diagnostics.
+
 ## Active grant Z — exact-art Vesper native diagnostics
 
 **MOTH-BLENDER-20261003-Z is the sole heavy grant**, Astra
