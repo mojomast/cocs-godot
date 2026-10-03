@@ -1,0 +1,169 @@
+{
+  "artHash": "6325fdf0003813c5cb5a59aca3626f6756998fb53f8aaa143d9f3043f3caa44f",
+  "nativeProof": {
+    "triangles": 87566,
+    "maxNormalUVTangentError": [
+      0.00010782480239868164,
+      0,
+      0.0001665949821472168
+    ],
+    "undefinedTangentWaivers": 0,
+    "artHash": "6325fdf0003813c5cb5a59aca3626f6756998fb53f8aaa143d9f3043f3caa44f",
+    "materialChannelsChecked": 51,
+    "materialFieldSetsChecked": 18,
+    "manualVisualAcceptance": "pending"
+  },
+  "performance": {
+    "staged-r6-before": {
+      "backend": [
+        "llvmpipe (LLVM 20.1.8, 256 bits)"
+      ],
+      "staticViewMsMinMedianMax": [
+        120.14225,
+        214.170875,
+        322.093625
+      ],
+      "drawCallsMinMax": [
+        112.0,
+        227.0
+      ],
+      "peakVideoMemoryBytes": 74140225.0,
+      "peakStaticMemoryBytes": 121178944
+    },
+    "candidate-runtime-r7": {
+      "backend": [
+        "llvmpipe (LLVM 20.1.8, 256 bits)"
+      ],
+      "staticViewMsMinMedianMax": [
+        121.6575,
+        212.426125,
+        315.765375
+      ],
+      "drawCallsMinMax": [
+        112.0,
+        227.0
+      ],
+      "peakVideoMemoryBytes": 74140225.0,
+      "peakStaticMemoryBytes": 121349744
+    }
+  },
+  "pairs": [
+    {
+      "view": "overview",
+      "before": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/overview-staged-r6-before.png",
+      "after": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/overview-candidate-runtime-r7.png",
+      "beforeStatus": "Fresh staged R6 comparison, not accepted-original art",
+      "changedPixels": 289,
+      "totalPixels": 921600,
+      "meaning": "Numeric image differences may include render/resource-order effects; per-corner native readback is the tangent correctness proof"
+    },
+    {
+      "view": "crusher-eye",
+      "before": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/crusher-eye-staged-r6-before.png",
+      "after": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/crusher-eye-candidate-runtime-r7.png",
+      "beforeStatus": "Fresh staged R6 comparison, not accepted-original art",
+      "changedPixels": 774,
+      "totalPixels": 921600,
+      "meaning": "Numeric image differences may include render/resource-order effects; per-corner native readback is the tangent correctness proof"
+    },
+    {
+      "view": "crusher-maintenance",
+      "before": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/crusher-maintenance-staged-r6-before.png",
+      "after": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/crusher-maintenance-candidate-runtime-r7.png",
+      "beforeStatus": "Fresh staged R6 comparison, not accepted-original art",
+      "changedPixels": 1811,
+      "totalPixels": 921600,
+      "meaning": "Numeric image differences may include render/resource-order effects; per-corner native readback is the tangent correctness proof"
+    },
+    {
+      "view": "furnace-eye",
+      "before": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/furnace-eye-staged-r6-before.png",
+      "after": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/furnace-eye-candidate-runtime-r7.png",
+      "beforeStatus": "Fresh staged R6 comparison, not accepted-original art",
+      "changedPixels": 30,
+      "totalPixels": 921600,
+      "meaning": "Numeric image differences may include render/resource-order effects; per-corner native readback is the tangent correctness proof"
+    },
+    {
+      "view": "transfer-eye",
+      "before": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/transfer-eye-staged-r6-before.png",
+      "after": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/transfer-eye-candidate-runtime-r7.png",
+      "beforeStatus": "Fresh staged R6 comparison, not accepted-original art",
+      "changedPixels": 66,
+      "totalPixels": 921600,
+      "meaning": "Numeric image differences may include render/resource-order effects; per-corner native readback is the tangent correctness proof"
+    },
+    {
+      "view": "kiln-eye",
+      "before": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/kiln-eye-staged-r6-before.png",
+      "after": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/kiln-eye-candidate-runtime-r7.png",
+      "beforeStatus": "Fresh staged R6 comparison, not accepted-original art",
+      "changedPixels": 91,
+      "totalPixels": 921600,
+      "meaning": "Numeric image differences may include render/resource-order effects; per-corner native readback is the tangent correctness proof"
+    },
+    {
+      "view": "crusher-roofline",
+      "before": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/crusher-roofline-staged-r6-before.png",
+      "after": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/crusher-roofline-candidate-runtime-r7.png",
+      "beforeStatus": "Fresh staged R6 comparison, not accepted-original art",
+      "changedPixels": 379,
+      "totalPixels": 921600,
+      "meaning": "Numeric image differences may include render/resource-order effects; per-corner native readback is the tangent correctness proof"
+    },
+    {
+      "view": "furnace-skyline",
+      "before": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/furnace-skyline-staged-r6-before.png",
+      "after": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/furnace-skyline-candidate-runtime-r7.png",
+      "beforeStatus": "Fresh staged R6 comparison, not accepted-original art",
+      "changedPixels": 547,
+      "totalPixels": 921600,
+      "meaning": "Numeric image differences may include render/resource-order effects; per-corner native readback is the tangent correctness proof"
+    },
+    {
+      "view": "cooling-eye",
+      "before": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/cooling-eye-staged-r6-before.png",
+      "after": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/cooling-eye-candidate-runtime-r7.png",
+      "beforeStatus": "Fresh staged R6 comparison, not accepted-original art",
+      "changedPixels": 66,
+      "totalPixels": 921600,
+      "meaning": "Numeric image differences may include render/resource-order effects; per-corner native readback is the tangent correctness proof"
+    },
+    {
+      "view": "bunker-player",
+      "before": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/bunker-player-staged-r6-before.png",
+      "after": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/bunker-player-candidate-runtime-r7.png",
+      "beforeStatus": "Fresh staged R6 comparison, not accepted-original art",
+      "changedPixels": 90,
+      "totalPixels": 921600,
+      "meaning": "Numeric image differences may include render/resource-order effects; per-corner native readback is the tangent correctness proof"
+    },
+    {
+      "view": "tipple-player",
+      "before": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/tipple-player-staged-r6-before.png",
+      "after": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native/tipple-player-candidate-runtime-r7.png",
+      "beforeStatus": "Fresh staged R6 comparison, not accepted-original art",
+      "changedPixels": 157,
+      "totalPixels": 921600,
+      "meaning": "Numeric image differences may include render/resource-order effects; per-corner native readback is the tangent correctness proof"
+    },
+    {
+      "view": "tangent-copper-high",
+      "before": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native-targeted/tangent-copper-high-staged-r6-before.png",
+      "after": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native-targeted/tangent-copper-high-candidate-runtime-r7.png",
+      "beforeStatus": "Fresh staged R6 comparison, not accepted-original art",
+      "changedPixels": 12678,
+      "totalPixels": 921600,
+      "meaning": "Numeric image differences may include render/resource-order effects; per-corner native readback is the tangent correctness proof"
+    },
+    {
+      "view": "tangent-ground-sliver",
+      "before": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native-targeted/tangent-ground-sliver-staged-r6-before.png",
+      "after": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/native-targeted/tangent-ground-sliver-candidate-runtime-r7.png",
+      "beforeStatus": "Fresh staged R6 comparison, not accepted-original art",
+      "changedPixels": 6,
+      "totalPixels": 921600,
+      "meaning": "Numeric image differences may include render/resource-order effects; per-corner native readback is the tangent correctness proof"
+    }
+  ]
+}

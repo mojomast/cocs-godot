@@ -1,0 +1,46 @@
+{
+  "masterSha256": "96314db722902c12c8b5866edfd0d12844db3a99527eb746c58f61376dc09472",
+  "exportMeshes": 16,
+  "hiddenEditableGeometryReferences": 270,
+  "packedImages": 40,
+  "recipe": {
+    "compilerSha256": "b0b6d005dd82247327ddfa27ce23b8f5ddc7b69b2c5c2ed150dee9cd3aea75cc",
+    "expectedEntries": [
+      [
+        48,
+        3244
+      ],
+      [
+        53,
+        5151
+      ],
+      [
+        53,
+        5155
+      ],
+      [
+        53,
+        5186
+      ],
+      [
+        53,
+        5207
+      ],
+      [
+        53,
+        5211
+      ],
+      [
+        53,
+        5242
+      ]
+    ],
+    "policy": "Export editable polygons, validate against immutable baseline, then deterministic seven-entry tangent repair. Plain Blender glTF export is an intermediate, not the final artifact.",
+    "recipeFile": "tangents.py",
+    "recipeSha256": "e9ffbc04691c71acc777dbbe49c98d1b4c1b4be971292629b1350c587d655133",
+    "sourceArtSha256": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c",
+    "sourceMasterSha256": "9922b7be04bbc64deda53f0082ec279a2b81f17d5e280d476e74d5b5d12252d8",
+    "visualRevision": 7
+  },
+  "masterUnchangedByRead": true
+}

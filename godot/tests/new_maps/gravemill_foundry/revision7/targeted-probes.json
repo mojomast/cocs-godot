@@ -1,0 +1,31 @@
+{
+  "scope": "Supplemental paired views aimed at real repaired surfaces; unchanged camera/lighting for R6 and R7; thin ground triangle may be subpixel",
+  "cameras": [
+    {
+      "id": "tangent-copper-high",
+      "eye": [
+        0,
+        37,
+        -9
+      ],
+      "target": [
+        0,
+        34.15,
+        -4
+      ]
+    },
+    {
+      "id": "tangent-ground-sliver",
+      "eye": [
+        -188.25,
+        14.3,
+        -8.9
+      ],
+      "target": [
+        -188.388,
+        10.423,
+        -7.943
+      ]
+    }
+  ]
+}

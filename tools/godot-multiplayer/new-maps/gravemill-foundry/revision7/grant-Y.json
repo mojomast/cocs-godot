@@ -1,0 +1,15 @@
+{
+  "grant": "MOTH-BLENDER-20261003-Y",
+  "authorization": "Explicit user grant for actual R7 tangent-only production, master reopen, native proof and matched captures",
+  "baseCommit": "10d9938f",
+  "exclusiveOwner": "Astra; no child agents",
+  "runnerState": "/tmp/opencode/foundry-astra-Y",
+  "lock": "/tmp/opencode/cocs-finish-acceptance.lock",
+  "lockWait": false,
+  "LP_NUM_THREADS": 1,
+  "OMP_NUM_THREADS": 1,
+  "blender": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender",
+  "godot": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "sourceQueue": "queue.json remains historical, grant null, autostart false",
+  "shippingAcceptance": "Separate explicit parent transaction required"
+}

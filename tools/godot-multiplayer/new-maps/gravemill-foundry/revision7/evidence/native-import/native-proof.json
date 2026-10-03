@@ -1,0 +1,13 @@
+{
+  "triangles": 87566,
+  "maxNormalUVTangentError": [
+    0.00010782480239868164,
+    0,
+    0.0001665949821472168
+  ],
+  "undefinedTangentWaivers": 0,
+  "artHash": "6325fdf0003813c5cb5a59aca3626f6756998fb53f8aaa143d9f3043f3caa44f",
+  "materialChannelsChecked": 51,
+  "materialFieldSetsChecked": 18,
+  "manualVisualAcceptance": "pending"
+}
