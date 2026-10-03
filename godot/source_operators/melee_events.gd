@@ -49,7 +49,7 @@ func observe(state: Dictionary, actors: Dictionary, local_id: int) -> void:
 		if id < 0: continue
 		present[id] = true
 		var visual: Node = actors.get(id)
-		var eligible := not round_over and id != local_id and is_instance_valid(visual) and visual.has_method("can_accept_world_melee") and visual.can_accept_world_melee()
+		var eligible: bool = not round_over and id != local_id and is_instance_valid(visual) and visual.has_method("can_accept_world_melee") and visual.can_accept_world_melee()
 		var signature := [actor.get("character"),actor.get("deaths"),actor.get("spawnId"),actor.get("respawnCount"),actor.get("vehicleId")]
 		var old: Dictionary = lifetimes.get(id,{})
 		var floor_time: float = old.get("floor",source_time-MAX_AGE)

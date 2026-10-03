@@ -18,8 +18,9 @@ func _initialize() -> void:
 	motion.ingest(Vector3(0.8, 0, 0), true, 0.0501, 0.1, Vector3(8, 0, 0))
 	check(motion.sample(0.0501).distance_to(before) < 0.001, "batch keeps continuous camera pose")
 	check(motion.sample(0.0581).x - motion.sample(0.0501).x < 0.12, "batch has no receive-clock surge")
+	var accepted_eye: Vector3 = motion._eye
 	motion.ingest(Vector3(0.9, 0, 0), true, 0.06, 0.05, Vector3(8, 0, 0))
-	check(motion._eye.x == 0.8, "older simulation tick cannot rewind")
+	check(motion._eye == accepted_eye, "older simulation tick cannot rewind")
 	motion.ingest(Vector3(30, 0, 0), true, 0.1, 0.15, Vector3.ZERO)
 	check(motion.sample(0.1) == Vector3(30, 0, 0), "teleport reseeds immediately")
 	motion.ingest(Vector3(31, 0, 0), false, 0.2, 0.2, Vector3.ZERO)

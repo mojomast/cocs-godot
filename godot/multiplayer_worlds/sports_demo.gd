@@ -63,11 +63,11 @@ func _ready() -> void:
 		if arg.begins_with("--bots="): world_bots = arg.trim_prefix("--bots=").to_int()
 		if arg.begins_with("--time-limit="): time_limit = clampi(int(arg.trim_prefix("--time-limit=")), 60, 900)
 		if arg.begins_with("--round-target="): round_target = int(arg.trim_prefix("--round-target="))
-	if not map_id in ["sirocco-circuit", "copper-bowl"] or endpoint.is_empty():
+	if not map_id in ["sirocco-circuit", "stormglass-causeway", "copper-bowl"] or endpoint.is_empty():
 		push_error("Require a registered Puma world and authority endpoint")
 		get_tree().quit(2)
 		return
-	mode = "puma-race" if map_id == "sirocco-circuit" else "puma-soccer"
+	mode = "puma-race" if map_id in ["sirocco-circuit", "stormglass-causeway"] else "puma-soccer"
 	add_child(world)
 	world.set_process(false)
 	world.set_process_unhandled_input(false)
