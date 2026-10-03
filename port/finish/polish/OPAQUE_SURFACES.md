@@ -12,8 +12,8 @@ opaque variant. No texture, gain, tint, normal, LUT, or lighting policy changed.
 
 ## Verification / acceptance
 
-- Static source parity and exact priority expression checked locally; `git diff --check` passes.
-- Native shader compilation and `godot --headless --path godot --script res://tests/graphics_depth/variants.gd` and `res://tests/moth/validate.gd` are pending the exclusive native-engine grant. The variants test checks executable shader-body and material/uniform/LUT parity.
+- Repeatable source parity and exact priority expression: `python3 godot/tests/graphics_depth/check_shader_parity.py` (runs without the engine); `git diff --check` passes.
+- Native GDScript parsing/shader compilation and `godot --headless --path godot --script res://tests/graphics_depth/variants.gd`, `godot --headless --path godot --script res://tests/world_weather/spatial.gd`, and `godot --headless --path godot --script res://tests/moth/validate.gd` are pending the exclusive native-engine grant. These scripts parse the changed weather code and variant fixture. The variants test checks executable shader-body and material/uniform/LUT parity; the spatial weather test exercises both Moth shader leases, patterned wetness, original uniforms and textures, dry state and repeated restore. Run `godot --path godot --rendering-method gl_compatibility --script res://tests/world_weather/spatial.gd` for actual shader-uniform reflection; headless's dummy renderer can lack reflection and falls back to parsing uniform declarations.
 - Run the graphical Compatibility test **without `--headless`**: `godot --path godot --rendering-method gl_compatibility --resolution 1200x800 --script res://tests/graphics_depth/capture.gd -- /tmp/opencode/moth-depth-after after`. Require `high_pixels == 81` in every priority case and `order_controls_pass == true`; compare to a capture of the baseline commit on the same renderer/adapter/size. The unchanged priority shader still supplies that test's material.
 
 Removing the explicit depth write from ordinary opaque materials may permit
@@ -22,11 +22,11 @@ pipeline benefit, not an observed GPU-time or FPS improvement. No benchmark was
 run. Runtime/package closure must include the new
 `res://moth/surface_opaque.gdshader` (and its Godot import UID when generated).
 
-## Weather integration dependency
+## Weather integration
 
-`ambience/weather_look.gd` allowlists only the original Moth shader and
-`ambience/wet_surface.gd` only anchors that shader for wet-sheen leasing. The
-atmosphere owner must add the opaque shader to both allowlists with the same
-roughness anchor to retain patterned wet response on general Moth surfaces.
-Until then, its wet shader binding skips those surfaces. This is an explicit
-integration prerequisite before shipping this branch's routing change.
+`ambience/weather_look.gd` recognizes both Moth shader paths, and
+`ambience/wet_surface.gd` leases both using their identical roughness anchor.
+Weather still duplicates materials per binding, changes roughness and metalness
+only on the copy, then restores each original material on clear. Neither the
+world-terrain priority lease nor ordinary opaque sheen depends on an implicit
+shader resource identity. No atmosphere colour or brightness values changed.

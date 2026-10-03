@@ -7,7 +7,7 @@ var surface := WetSurface.new()
 const MATERIAL_CAP := 256
 const NODE_CAP := 16384
 const BINDING_CAP := 16384
-const SHADERS := ["res://moth/surface.gdshader", "res://material_language/family.gdshader"]
+const SHADERS := ["res://moth/surface.gdshader", "res://moth/surface_opaque.gdshader", "res://material_language/family.gdshader"]
 const CAMPAIGN_GROUND := "res://campaign/materials/ground.gdshader"
 var _environment: WorldEnvironment
 var _sun: DirectionalLight3D
