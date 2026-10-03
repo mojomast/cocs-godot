@@ -8,11 +8,11 @@ import {worldEntry,WORLDS,readWorld} from '../../port/multiplayer-worlds/catalog
 import {assertOutcome,controller} from './candidate-guidance.mjs';
 import {validateSurface} from './material-validation.mjs';
 
-test('registered Vesper/Abyssal use public pairs; remaining candidates require private exact-byte admission',()=>{
+test('registered candidates use public pairs; unregistered candidates require private exact-byte admission',()=>{
  assert.deepEqual(Object.values(CANDIDATES).map(a=>a.length),[6,6,1]);
   for(const [id,modes] of Object.entries(CANDIDATES))for(const mode of modes){
    if(Object.hasOwn(WORLDS,id)) {
-    assert.ok(['vesper-viaduct','abyssal-pressureworks'].includes(id));
+    assert.ok(['vesper-viaduct','abyssal-pressureworks','stormglass-causeway'].includes(id));
     assert.deepEqual([...WORLDS[id].modes].sort(),[...modes].sort());
     assert.doesNotThrow(()=>worldEntry(id,mode));assert.equal(readWorld(id).id,id);
     assert.throws(()=>identity(id,mode),'Private seam must not override public registration');
@@ -30,7 +30,11 @@ test('registered Vesper/Abyssal use public pairs; remaining candidates require p
   const bad=JSON.stringify(wrong);assert.throws(()=>authorize({...request,expectedSha:sha(bad)},bad));
  }
 });
-test('private derivatives resolve production dependencies without changing authority bodies; no server is run',()=>{
+test('private seam closes on public registration; otherwise derivatives preserve authority bodies without running a server',()=>{
+  if(Object.hasOwn(WORLDS,'stormglass-causeway')){
+   assert.throws(()=>identity('stormglass-causeway','puma-race'));
+   assert.deepEqual(WORLDS['stormglass-causeway'].modes,['puma-race']);return;
+  }
  const dir=mkdtempSync('/tmp/opencode/candidate-source-');
  try{
   const request=identity('stormglass-causeway','puma-race');prepare(dir,request);

@@ -17,7 +17,12 @@ test('six proven Abyssal capabilities are public; private seam refuses registere
  assert.throws(()=>worldEntry('abyssal-pressureworks','uplink'));
  assert.equal(worldEntry('vesper-viaduct','ctf').name,'Vesper Viaduct');
 });
-test('current private cloner imports actual new broadphase dependency and ws without constructing authority',async()=>{
+test('phase-aware authority import resolves dependencies without constructing a server',async()=>{
+  if(Object.hasOwn(WORLDS,'stormglass-causeway')){
+   assert.throws(()=>identity('stormglass-causeway','puma-race'));
+   const imported=await import(pathToFileURL(ROOT+'port/multiplayer-worlds/derived/game-server.mjs'));
+   assert.equal(typeof imported.createGameServer,'function');return;
+  }
  const dir=fs.mkdtempSync('/tmp/opencode/abyssal-private-import-');
  try{
    const r=identity('stormglass-causeway','puma-race'),d=prepare(dir,r);

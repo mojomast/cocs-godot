@@ -11,6 +11,7 @@ import {sceneryImportPaths,verifySceneryImports,SCENERY_EVIDENCE} from './scener
 import {vesperImportPaths,verifyVesperImports,VESPER_EVIDENCE,VESPER_SUPPORTING_RUNTIME} from './vesper_imports.mjs';
 import {abyssalImportPaths,verifyAbyssalImports,ABYSSAL_EVIDENCE,ABYSSAL_SUPPORTING_RUNTIME} from './abyssal_imports.mjs';
 import {FEATURE_ROOTS,verifyFeatureAdvance,robotSupportingHash} from './feature_dependencies.mjs';
+import {stormglassImportPaths,verifyStormglassImports,verifyStormglassAdvance,STORMGLASS_EVIDENCE,STORMGLASS_SUPPORTING_RUNTIME} from './stormglass_imports.mjs';
 export const REQUIREMENTS='tools/godot-package/production_requirements.json';
 export const REQUIRED_UNITS=Object.freeze(['parallax-interiors','robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
 const skins=['needle_surveyor','caisson_guard','kiln_tender'];
@@ -97,6 +98,7 @@ function specification(unit,read) {
     inputs.push(base+'build.mjs',`port/native-multiplayer-worlds/worlds/${id}.json`,`godot/multiplayer_worlds/generated/${id}.json`);
     if(id==='vesper-viaduct')extra.push(...vesperImportPaths(),...VESPER_EVIDENCE,'godot/multiplayer_worlds/catalog.gd','port/multiplayer-worlds/catalog.mjs');
     if(id==='abyssal-pressureworks')extra.push(...abyssalImportPaths(),...ABYSSAL_EVIDENCE,'godot/multiplayer_worlds/catalog.gd','port/multiplayer-worlds/catalog.mjs','godot/multiplayer_worlds/abyssal_presentation.gd');
+    if(id==='stormglass-causeway')extra.push(...stormglassImportPaths(),...STORMGLASS_EVIDENCE,base+'architecture.py','godot/multiplayer_worlds/catalog.gd','port/multiplayer-worlds/catalog.mjs');
   }
   return {inputs:[...new Set(inputs)].sort(),masters:masters.sort(),exports:exports.sort(),extra:extra.sort()};
 }
@@ -142,7 +144,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     // External Parallax recipes are not read from its active worktree. Pending
     // absence is reported until parent imports reviewed committed revision bytes.
     try {spec=specification(unit,read);}catch(error){if(requirement.promotion)throw error;missing.push('specification: '+error.message);spec={inputs:unit.recipePaths,masters:[],exports:[],extra:[]};}
-    const inputs=helperClosure([...spec.inputs,...spec.extra,...FEATURE_ROOTS,plan.common.finishScript,'tools/asset-production/receipt.mjs','tools/asset-production/reopen.py','godot/moth/generated/manifest.json','godot/moth/derived/manifest.json','game/moth-baked.mjs'],read,has);
+    const inputs=helperClosure([...spec.inputs,...spec.extra,...FEATURE_ROOTS,'godot/replay/stage.gd',plan.common.finishScript,'tools/asset-production/receipt.mjs','tools/asset-production/reopen.py','godot/moth/generated/manifest.json','godot/moth/derived/manifest.json','game/moth-baked.mjs'],read,has);
     spec.packageInputs=inputs;
     for(const path of [...inputs,...spec.masters,...spec.exports]){safe(path);if(!has(path))missing.push(path);}
     const registered=!expectedMap||worldIds.includes(expectedMap);
@@ -151,13 +153,14 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     if(!promotion||!registered||missing.length){pending.push(unit.id);continue;}
     assert.equal(promotion.receipt,`tools/godot-package/production_receipts/${unit.id}.json`,'Promotion receipt must have its fixed committed path');
     const receipt=JSON.parse(add(promotion.receipt,promotion.sha256));assert.equal(receipt.unit,unit.id);
+    verifyStormglassAdvance(receipt);
     if(['parallax-interiors','robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks'].includes(unit.id))verifyFeatureAdvance(receipt);
     if(unit.id==='parallax-interiors') {
       const evidence=JSON.parse(read('port/new-maps/parallax-observatory/production-c.json'));
       for(const [path,sha]of Object.entries(evidence.inputHashes))add(path,sha);
       for(const [path,sha]of Object.entries(evidence.runtimeHooks))if(!path.startsWith('godot/tests/')) {
         let expected=sha;
-        for(const [record,policy]of [[receipt.vesperPackageVerifierAdvance,VESPER_SUPPORTING_RUNTIME],[receipt.abyssalPackageVerifierAdvance,ABYSSAL_SUPPORTING_RUNTIME]]) {
+        for(const [record,policy]of [[receipt.vesperPackageVerifierAdvance,VESPER_SUPPORTING_RUNTIME],[receipt.abyssalPackageVerifierAdvance,ABYSSAL_SUPPORTING_RUNTIME],[receipt.stormglassPackageVerifierAdvance,STORMGLASS_SUPPORTING_RUNTIME]]) {
           const advance=record?.runtimeChanged?.[path];
           if(!advance)continue;
           assert.deepEqual(advance,policy[path],'Unreviewed supporting runtime advance');
@@ -217,6 +220,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     if(unit.id==='vehicles')verifyVehicleImports(spec.exports,read);
     if(unit.id==='vesper-viaduct')verifyVesperImports(read);
     if(unit.id==='abyssal-pressureworks')verifyAbyssalImports(read);
+    if(unit.id==='stormglass-causeway')verifyStormglassImports(read,receipt);
     if(unit.id==='vehicles')for(const kind of ['puma','titan','scout'])for(let lod=0;lod<3;lod++) {
       const stem=`${kind}-lod${lod}`,report=JSON.parse(read(`tools/godot-vehicle-assets/masters/${stem}-report.json`));
       assert.equal(report.kind,kind);assert.equal(report.lod,lod);
