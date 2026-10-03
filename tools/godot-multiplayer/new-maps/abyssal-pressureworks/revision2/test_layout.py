@@ -148,6 +148,31 @@ class LayoutTests(unittest.TestCase):
             if target[1] != eye[1]:
                 self.assertGreater(abs(forward[1]), 1e-6, name + ' ignores target height')
 
+    def test_original_reef_and_accepted_author_details_are_present(self):
+        names = {p['name'] for p in self.base}
+        for spec in self.base:
+            geometry.validate_spec(spec)
+        for index in range(len(self.arena['art']['reefs'])):
+            self.assertIn('reef-%d-escarpment' % index, names)
+            for arm in range(5):
+                self.assertIn('reef-%d-branch-%d' % (index, arm), names)
+                self.assertIn('reef-%d-tip-%d' % (index, arm), names)
+        for index in range(8):
+            self.assertIn('escarpment-bed-%d' % index, names)
+        for host in self.arena['art']['revision2']['replacedRoofHosts']:
+            self.assertTrue(any(n.startswith(host + '-external-load-rib-') for n in names))
+            self.assertTrue(any(n.startswith(host + '-pressure-ring-') for n in names))
+        self.assertEqual(len(composition.labels_for_arena(self.arena)), 12)
+
+    def test_replacement_roof_and_buttress_caps_face_up(self):
+        for spec in self.parts:
+            if spec['name'].endswith('.vault-crown') or spec['name'].startswith('reef-buttress.'):
+                face = spec['faces'][-1]
+                normal = geometry.polygon_normal([spec['vertices'][i] for i in face])
+                self.assertGreater(normal[1], 0, spec['name'])
+        crown = next(s for s in self.parts if s['name'].endswith('.vault-crown'))
+        self.assertEqual(crown['material'], 'ceramic-enamel')
+
 
 if __name__ == '__main__':
     unittest.main()

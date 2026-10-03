@@ -1,7 +1,7 @@
-# Abyssal + Stormglass map-variety revision 2 — source handoff (corrective)
+# Abyssal + Stormglass map-variety revision 2 — source handoff (Sol repair)
 
-**Owner:** map-variety (Abyssal + Stormglass) source lane. **Branch:**
-`finish/map-variety-abyssal-coast` at parent `190fa2a2`.
+**Owner:** coastal repair source lane. **Branch:**
+`sol/map-variety-coastal-repair` from `7a7ce64e` (base authority `190fa2a2`).
 **Scope:** source-only. No engine, Blender, import, render, server or API call ran.
 The actual editable `.blend` and material-batched GLB are **pending Sol's serial
 heavy execution**; nothing here claims a built asset or native acceptance.
@@ -20,9 +20,16 @@ material adapter are **not** edited; this lane adds its own helpers under
 | 2 | Stormglass `_box` faces held 3D coordinates, not indices | All boxes are built through `geometry.box_mesh_src`, producing outward-wound **index** faces; tests assert integer in-range indices, nonzero area and outward normals. |
 | 3 | Abyssal `_poly8` scale used the Y ordinate as Z | Fixed to `(px, py, pz)` with centre and W:D preserved; tested via footprint centre/bounds. |
 | 4 | hab-vent arch 3.2×3.0 invalid for `Kit.framed_bay` | `framed_bay`/`curved_rib` are no longer used for authored forms; bays/arches/rings are explicit source meshes with valid dimensions. Every layout spec is dispatched through real pure geometry validation. |
-| 5 | author emitted only new props, not the map | `tools/map-variety-support/composition.py` emits the **complete revised authority** (every retained deck, ramp, ceiling, wall, equipment piece, glazing, building mesh) plus the authored classes; removed roofs are absent and their substitutes present. |
+| 5 | author emitted only new props, not the map | `tools/map-variety-support/composition.py` emits the **complete revised authority** (every retained deck, ramp, ceiling, wall, equipment piece, glazing, building mesh), accepted author-only fittings, signs, escarpment beds and all nine branched source reefs, plus new classes; removed roofs have substitutes. |
 | 6 | Cameras used a flat Euler ignoring target height | Blender cameras use `(target−eye).to_track_quat('-Z','Y')` on converted eye/target; a pure basis test proves the source forward points at the target with real vertical component. |
 | 7 | Prism sizes/orientations (vertical "wheels") | Prism size is converted source `(X,Z,Y)` → Blender `(X,Y,Z)`; rings are horizontal (source XZ plane, Y thickness) and arches are vertical (rise in source +Y, span across heading). Orientation tests assert each. |
+
+## Sol source repairs after independent review of `7a7ce64e`
+
+- Stormglass scenery is oriented in the actual centerline tangent/across frame. Whole-form placement checks **all authority road triangles**, including intersection by an edge or a triangle enclosing the road without an interior vertex, with 4 m low-height camera/barrier margin; the gate arches stay overhead at their original gate anchors while their low columns stand beyond the road. Camera eyes are checked against new mesh volumes.
+- `art.meshes` is the canonical visual representation of Stormglass road and walls; covered terrain triangles are not rendered twice. The candidate collision, road, race and profile files remain untouched. The 21 original route signs and 12 Abyssal district signs are converted to UV-bearing, exact-amber source meshes **before** Kit batches. Only completed export batches are selected for GLB; the batch and actual GLB triangle/primitive counts are recorded when native execution becomes available.
+- Correct upward caps and radial outward winding for Abyssal frusta, roofs and reef buttresses; retain the distinct ceramic vault crown and give the ribbed pressure vessel a continuous full-height shell. The nine accepted branched reefs and eight escarpment beds, original machine fittings, ribbing and wayfinding are restored with traceable source IDs and original material assignments.
+- Original Moth PNG channels remain immutable and linear (including source albedo). The adapter must supply derived **sRGB** glTF base colour; the report identifies source hash and embedded-derived hash independently, without requiring them to be equal.
 
 ## Files and runnable entry points
 
@@ -31,19 +38,19 @@ material adapter are **not** edited; this lane adds its own helpers under
 | Abyssal | `tools/godot-multiplayer/new-maps/abyssal-pressureworks/revision2/` | `build.mjs` (`--check`) → `arena.json`, `candidate.json`, `probes.json` | `author.py` → `build_entry.run` |
 | Stormglass | `tools/godot-multiplayer/new-maps/stormglass-causeway/revision2/` | `build.mjs` (`--check`) | `author.py` → `build_entry.run` |
 
-Shared source modules: `tools/map-variety-support/{manifest,geometry,composition,build_entry}.py`.
+Shared source modules: `tools/map-variety-support/{manifest,geometry,composition,road,build_entry}.py`.
 
 Bounded source tests (no engine):
 
 ```sh
 node --test tools/godot-multiplayer/new-maps/abyssal-pressureworks/revision2/source.test.mjs
 node --test tools/godot-multiplayer/new-maps/stormglass-causeway/revision2/source.test.mjs
-python3 -m unittest tools/godot-multiplayer/new-maps/abyssal-pressureworks/revision2/test_layout.py
-python3 -m unittest tools/godot-multiplayer/new-maps/stormglass-causeway/revision2/test_layout.py
+python3 -m unittest discover -s tools/godot-multiplayer/new-maps/abyssal-pressureworks/revision2 -p test_layout.py
+python3 -m unittest discover -s tools/godot-multiplayer/new-maps/stormglass-causeway/revision2 -p test_layout.py
 ```
 
-Current results: Abyssal 8 Node + 11 Python pass; Stormglass 6 Node + 12 Python
-pass (14 Node + 23 Python total). Source identity:
+Current results: Abyssal 8 Node + 13 Python pass; Stormglass 6 Node + 16 Python
+pass (14 Node + 29 Python total). Source identity:
 
 - Abyssal `geometryHash` `5fea4aada721903cea26897fb6a17befaf146c576c095dc712feebef626adfa2`
   (base runtime `32366a6c…` untouched), 204 surfaces / 808 walls / 501 nav.
@@ -75,8 +82,8 @@ pass (14 Node + 23 Python total). Source identity:
   steel` (→ viaduct-asphalt / quay-damp-horizontal / salt-limestone /
   ceramic-enamel / terracotta / oxidized-iron) and `amber/glass/ocean` preserved.
 - All channels are linear (albedo Non-Color); normals OpenGL +Y; the adapter must
-  convert glTF base-colour to sRGB. `author.py` writes `material-report.json`
-  (source vs embedded hashes, `tilesPerMeter`, `teamColorSource`) and exports
+  convert glTF base-colour to sRGB in a derived payload. `author.py` writes `material-report.json`
+  (independent immutable-source vs derived-embedded hashes, `tilesPerMeter`, `teamColorSource`) and exports
   `export_tangents=True`.
 
 ## Authored content
@@ -94,7 +101,7 @@ and the ramp.
 **Stormglass** (7 classes): five seawall heights, terrace grandstands, cliff-stair
 switchbacks, three distinct checkpoint arches, lighthouse, three quay cranes and
 varied terminal facades. All scenery is art-only (`arena.art.revision2`),
-explicitly `nontraversal`, at |lateral| ≥ 16 m. **Zero drivable relief retained
+explicitly `nontraversal`; full low-altitude meshes clear the actual road and camera corridor. **Zero drivable relief retained
 truthfully**; `game/race.mjs` and `game/vehicles.mjs` untouched; exactly
 `puma-race` registered.
 

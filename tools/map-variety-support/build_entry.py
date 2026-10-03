@@ -23,6 +23,14 @@ def _sha256(data):
     return hashlib.sha256(data).hexdigest()
 
 
+def source_triangle_estimate(specs):
+    """Pre-modifier estimate; labels and bevel subdivisions are measured after build."""
+    return sum(sum(len(face) - 2 for face in spec['faces']) if spec['op'] == 'mesh'
+               else (len(spec['points']) - 1) * spec.get('sides', 12) * 2
+                    + 2 * (spec.get('sides', 12) - 2)
+               for spec in specs)
+
+
 def _load_adapter(path):
     import importlib.util
     if not pathlib.Path(path).is_file():
@@ -35,11 +43,18 @@ def _load_adapter(path):
     return module
 
 
-def _glb_material_images(path):
+def _glb_document(path):
     raw = pathlib.Path(path).read_bytes()
+    if raw[:4] != b'glTF' or len(raw) != int.from_bytes(raw[8:12], 'little'):
+        raise ValueError('Malformed GLB header/length')
     size = int.from_bytes(raw[12:16], 'little')
     doc = json.loads(raw[20:20 + size])
     blob = raw[size + 28:]
+    return doc, blob
+
+
+def _glb_material_images(path):
+    doc, blob = _glb_document(path)
 
     def image_sha(index):
         view = doc['bufferViews'][doc['images'][doc['textures'][index]['source']]['bufferView']]
@@ -70,29 +85,42 @@ def _emit_cameras(bpy, review, cameras):
     return created
 
 
-def _emit_labels(bpy, export, labels, materials, root):
+def _emit_labels(bpy, source, labels, materials, density):
+    """Make route signs source meshes before batching, with reviewed UV lineage."""
+    if labels and ('amber' not in materials or 'amber' not in density):
+        raise ValueError('Route signs require an exact amber material and UV density')
     created = 0
     for index, label in enumerate(labels):
         curve = bpy.data.curves.new('route-sign-%d' % index, 'FONT')
         curve.body = label['text']
-        curve.size = 0.9
+        curve.size = label.get('size', 0.9)
         curve.extrude = 0.008
         curve.align_x = 'CENTER'
         obj = bpy.data.objects.new(curve.name, curve)
-        export.objects.link(obj)
+        source.objects.link(obj)
         obj.location = geometry.source_to_blender((label['x'], label['y'], label['z']))
         obj.rotation_euler = (1.57079632679, 0, -label.get('heading', 0.0))
-        material = materials.get('amber')
-        if material is not None:
-            curve.materials.append(material)
+        curve.materials.append(materials['amber'])
+        bpy.ops.object.select_all(action='DESELECT')
+        obj.select_set(True)
+        bpy.context.view_layer.objects.active = obj
+        bpy.ops.object.convert(target='MESH')
+        obj.select_set(False)
+        mesh = obj.data
+        if not mesh.polygons:
+            raise ValueError('Empty route sign: ' + label['text'])
+        if len(mesh.materials) != 1 or mesh.materials[0] != materials['amber']:
+            raise ValueError('Route sign lost reviewed amber material')
+        uv = mesh.uv_layers.get('MothLocal') or mesh.uv_layers.new(name='MothLocal')
+        uv.active_render = True
+        for face in mesh.polygons:
+            for loop in face.loop_indices:
+                point = mesh.vertices[mesh.loops[loop].vertex_index].co
+                uv.data[loop].uv = (point.x * density['amber'], point.y * density['amber'])
+        obj['kit_sector'] = 'signage'
+        obj['kit_material'] = 'amber'
+        obj['kit_source'] = 'route-sign-%d' % index
         created += 1
-    bpy.ops.object.select_all(action='DESELECT')
-    for obj in list(export.objects):
-        if obj.type == 'FONT':
-            obj.select_set(True)
-            bpy.context.view_layer.objects.active = obj
-            bpy.ops.object.convert(target='MESH')
-            obj.select_set(False)
     return created
 
 
@@ -149,30 +177,44 @@ def run(config, argv=None):
         else:
             raise SystemExit('Unreviewed spec op: ' + spec['op'])
 
+    labels = _emit_labels(bpy, source, composition.labels_for_arena(authority['arena']), materials, density)
     batches = kit.build_export_batches(max_triangles=args.max_triangles)
     if not batches or len(batches) > args.max_batches:
         raise SystemExit('Export batch count outside reviewed cap: %d' % len(batches))
 
     cameras = _emit_cameras(bpy, review, layout.PROBE_CAMERAS)
-    labels = _emit_labels(bpy, export, authority['arena'].get('art', {}).get('labels', []), materials, args.root)
+    signage = [batch for batch in batches if batch.get('kit_sector') == 'signage']
+    if labels and (not signage or sum(len(batch.data.polygons) for batch in signage) == 0):
+        raise ValueError('Route labels absent from export batches')
 
     bpy.ops.wm.save_as_mainfile(filepath=args.blend)
     bpy.ops.object.select_all(action='DESELECT')
     for batch in batches:
         batch.select_set(True)
     bpy.context.view_layer.objects.active = batches[0]
+    if {obj.name for obj in bpy.context.selected_objects} != {batch.name for batch in batches}:
+        raise ValueError('GLB selection is not exactly the export batches')
     bpy.ops.export_scene.gltf(filepath=args.glb, export_format='GLB', use_selection=True,
                               export_yup=True, export_apply=False, export_extras=True,
                               export_tangents=True, export_materials='EXPORT')
 
     glb_bytes = pathlib.Path(args.glb).read_bytes()
     embedded = _glb_material_images(args.glb)
+    document, _ = _glb_document(args.glb)
+    primitive_counts = [document['accessors'][p['indices']]['count'] // 3
+                        for mesh in document.get('meshes', []) for p in mesh['primitives']
+                        if p.get('mode', 4) == 4 and 'indices' in p]
+    actual_triangles = sum(primitive_counts)
+    if actual_triangles <= 0 or not primitive_counts:
+        raise ValueError('Exported GLB has no indexed triangle primitives')
     report_materials = {}
     for name, binding in bindings.items():
         entry = {'role': binding.get('role')}
         if binding.get('role') != 'preserve':
             entry.update({'sourceColorSha256': pack.textures[resolved[name]['albedoKey']]['sha256'],
-                          'sourceNormalSha256': pack.textures[resolved[name]['normalKey']]['sha256'] if resolved[name]['normalKey'] else None,
+                           'sourceNormalSha256': pack.textures[resolved[name]['normalKey']]['sha256'] if resolved[name]['normalKey'] else None,
+                           'sourceColorEncoding': 'linear PNG (immutable)',
+                           'embeddedColorEncoding': 'glTF sRGB baseColor (derived by adapter)',
                           'embeddedColorSha256': embedded.get(name, {}).get('color'),
                           'embeddedNormalSha256': embedded.get(name, {}).get('normal'),
                           'tilesPerMeter': resolved[name]['tilesPerMeter'],
@@ -181,8 +223,11 @@ def run(config, argv=None):
     report = {'id': authority['id'], 'layoutRevision': authority['layoutRevision'],
               'geometryHash': authority['geometryHash'], 'mothManifestSha256': pack.manifest_sha,
               'glbSha256': _sha256(glb_bytes), 'glbBytes': len(glb_bytes),
-              'baseSpecs': len(composition.compose(authority['arena'])), 'authoredSpecs': len(layout.parts(authority['arena'])),
-              'exportBatches': len(batches), 'probeCameras': cameras, 'labels': labels,
+               'baseSpecs': len(composition.compose(authority['arena'])), 'authoredSpecs': len(layout.parts(authority['arena'])),
+               'sourceTriangleEstimateBeforeLabelsAndModifiers': source_triangle_estimate(specs),
+               'exportBatches': len(batches), 'exportTriangles': sum(sum(len(poly.vertices)-2 for poly in b.data.polygons) for b in batches),
+               'glbPrimitives': len(primitive_counts), 'glbTriangles': actual_triangles,
+               'signageBatches': len(signage), 'probeCameras': cameras, 'labels': labels,
               'composition': 'complete revised authority + authored classes; physics independent JSON',
               'materials': report_materials}
     pathlib.Path(args.report).write_text(json.dumps(report, indent=2) + '\n')

@@ -1,12 +1,15 @@
 """Stormglass revision-2 authored coastal relief (pure Python, no bpy).
 
-Every form is authored in the **source Y-up** frame and validated by
-``geometry.validate_spec``. All scenery is non-traversal and sits outside the
-14 m barrier; the 28 m road and its race/navigation are never touched.
+Forms are authored in the source Y-up frame in the base road convention:
+``heading = atan2(tangent.x, tangent.z)`` so the road tangent is
+``u = (sin h, cos h)`` and across is ``a = (cos h, -sin h)``. Box sizes are
+``(across, along, height)``. Low decorative masses clear all actual road
+triangles; overhead checkpoint arches still frame the existing gates.
 """
 import math
 
 import geometry as g
+import road
 
 MAP_ID = 'stormglass-causeway'
 LAYOUT_REVISION = 2
@@ -36,6 +39,17 @@ CLASS_PREFIX = (('seawall', 'seawall'), ('grandstand', 'grandstand'), ('cliff', 
                 ('checkpoint-arch', 'checkpoint-arch'), ('lighthouse', 'lighthouse'),
                 ('quay-crane', 'quay-crane'), ('terminal-facade', 'terminal-facade'))
 
+# Conservative (half_along, half_across) footprints for corridor-safe placement.
+FOOTPRINT = {
+    'seawall': (14.0, 3.5),
+    'grandstand': (11.0, 21.0),
+    'cliff-stair': (7.0, 20.0),
+    'checkpoint-arch': (2.0, 18.0),
+    'lighthouse': (5.0, 5.0),
+    'quay-crane': (7.0, 10.0),
+    'terminal-facade': (15.0, 7.0),
+}
+
 
 def classify(name):
     for prefix, cls in CLASS_PREFIX:
@@ -45,71 +59,96 @@ def classify(name):
 
 
 def _across(anchor, distance):
-    angle = anchor['heading'] + math.pi / 2
-    return anchor['x'] + distance * math.cos(angle), anchor['z'] + distance * math.sin(angle)
+    return (anchor['x'] + distance * math.cos(anchor['heading']),
+            anchor['z'] - distance * math.sin(anchor['heading']))
 
 
 def _out(anchor, distance):
-    return _across(anchor, distance if anchor['lateral'] >= 0 else -distance)
+    return _across(anchor, -distance if anchor['lateral'] >= 0 else distance)
+
+
+def _box(name, cx, cz, base_y, across, along, height, heading, material, sector, bevel=0.05):
+    return g.box_mesh_src(name, (cx, base_y + height / 2, cz), (across, along, height),
+                          heading, material, sector, bevel=bevel)
 
 
 def parts(authority):
     scenery = authority['art']['revision2']['scenery']
+    quads = road.road_polygons(authority)
+    placed = {}
+
+    def place(anchor):
+        if anchor['id'] not in placed:
+            hx, hz = road.safe_place(anchor, *FOOTPRINT[anchor['cls']], quads)
+            placed[anchor['id']] = {**anchor, 'anchorX': anchor['x'], 'anchorZ': anchor['z'], 'x': hx, 'z': hz}
+        return placed[anchor['id']]
+
     out = []
     # 1. Seawall retaining modules, five distinct heights with optional buttress.
     for a in scenery['seawalls']:
+        a = place(a)
         h = a['height']
-        out.append(g.box_mesh_src(a['id'], (a['x'], (h - 5) / 2, a['z']), (26, 2.6, h + 5), a['heading'], 'quay-damp-horizontal', 'seawall'))
-        out.append(g.box_mesh_src(a['id'] + '.coping', (a['x'], h + 0.3, a['z']), (27, 3.4, 0.6), a['heading'], 'salt-limestone', 'seawall'))
+        out.append(_box(a['id'], a['x'], a['z'], -5, 2.6, 26, h + 5, a['heading'], 'quay-damp-horizontal', 'seawall'))
+        out.append(_box(a['id'] + '.coping', a['x'], a['z'], h, 3.4, 27, 0.6, a['heading'], 'salt-limestone', 'seawall'))
         if a['buttress']:
-            out.append(g.box_mesh_src(a['id'] + '.buttress', (a['x'], (h - 1) / 2, a['z']), (3.0, 6.0, h + 4), a['heading'], 'basalt-strata', 'seawall'))
+            out.append(_box(a['id'] + '.buttress', a['x'], a['z'], -5, 6.0, 3.0, h + 4, a['heading'], 'basalt-strata', 'seawall'))
     # 2. Terrace grandstands: stepped tiers with canopy, four sizes.
     for a in scenery['grandstands']:
+        a = place(a)
         for tier in range(a['tiers']):
             ox, oz = _out(a, (tier + 1) * 2.4)
-            out.append(g.box_mesh_src('%s.tier.%d' % (a['id'], tier), (ox, (tier + 1), oz), (18 + tier, 2.4, (tier + 1) * 2.0), a['heading'], 'timber-weather' if tier % 2 else 'cobble-sett', 'grandstand'))
+            out.append(_box('%s.tier.%d' % (a['id'], tier), ox, oz, 0, 2.4, 18 + tier, (tier + 1) * 2.0, a['heading'], 'timber-weather' if tier % 2 else 'cobble-sett', 'grandstand'))
         ox, oz = _out(a, (a['tiers'] + 1) * 2.4)
-        out.append(g.box_mesh_src(a['id'] + '.canopy', (ox, a['tiers'] * 2 + 0.35, oz), (20, 8, 0.7), a['heading'], 'slate-shingle', 'grandstand'))
+        out.append(_box(a['id'] + '.canopy', ox, oz, a['tiers'] * 2, 8, 20, 0.7, a['heading'], 'slate-shingle', 'grandstand'))
     # 3. Cliff stair switchbacks: alternating flights stepping down.
     for a in scenery['cliffs']:
+        a = place(a)
         for flight in range(a['flights']):
             ox, oz = _out(a, flight * 3.5)
-            out.append(g.box_mesh_src('%s.flight.%d' % (a['id'], flight), (ox, -a['drop'] + flight * 2.0 + 1.0, oz), (12, 3.0, 2.0), a['heading'] + (math.pi / 2 if flight % 2 else 0), 'basalt-strata', 'cliff-stair'))
-    # 4. Three distinct checkpoint arches over the existing gates.
+            out.append(_box('%s.flight.%d' % (a['id'], flight), ox, oz, -a['drop'] + flight * 2.0, 3.0, 12, 2.0,
+                            a['heading'] + (math.pi / 2 if flight % 2 else 0), 'basalt-strata', 'cliff-stair'))
+    # 4. Three distinct checkpoint arches (whole gatehouses clear of the corridor).
     for a in scenery['gates']:
+        # Columns are offset beyond the barrier/camera corridor; their arched
+        # header remains above driving clearance over the true gate centre.
         for side in (-1, 1):
-            ox, oz = _across(a, side * 16.6)
-            out.append(g.box_mesh_src('%s.column.%d' % (a['id'], side), (ox, 6.5, oz), (2.4, 3.0, 13), a['heading'], 'salt-limestone', 'checkpoint-arch'))
-        out.append(g.arch_mesh_src('%s.arch' % a['id'], (a['x'], a['z']), 13.0, 15.5, 2.0, 4.0, a['heading'], 'oxidized-iron', 'checkpoint-arch'))
+            ox, oz = _across(a, side * 20.5)
+            out.append(_box('%s.column.%d' % (a['id'], side), ox, oz, 0, 3.0, 2.4, 13, a['heading'], 'salt-limestone', 'checkpoint-arch'))
+        out.append(g.arch_mesh_src('%s.arch' % a['id'], (a['x'], a['z']), 13.0, 19.0, 2.0, 4.0, a['heading'], 'oxidized-iron', 'checkpoint-arch'))
         if a['variant'] == 0:
-            out.append(g.box_mesh_src(a['id'] + '.lintel', (a['x'], 14, a['z']), (33, 4.0, 2.0), a['heading'], 'oxidized-iron', 'checkpoint-arch'))
+            out.append(_box(a['id'] + '.lintel', a['x'], a['z'], 13, 33, 4.0, 2.0, a['heading'], 'oxidized-iron', 'checkpoint-arch'))
         elif a['variant'] == 1:
             for side in (-1, 1):
                 ox, oz = _across(a, side * 8.5)
-                out.append(g.box_mesh_src('%s.gable.%d' % (a['id'], side), (ox, 15.0, oz), (17, 4.0, 4.0), a['heading'] + side * 0.45, 'timber-weather', 'checkpoint-arch'))
+                out.append(_box('%s.gable.%d' % (a['id'], side), ox, oz, 13, 17, 4.0, 4.0, a['heading'] + side * 0.45, 'timber-weather', 'checkpoint-arch'))
         else:
             for step in range(3):
-                out.append(g.box_mesh_src('%s.step.%d' % (a['id'], step), (a['x'], 13.7 + step * 1.4, a['z']), (34 - step * 7, 4.0 - step * 0.6, 1.4), a['heading'], 'ceramic-enamel', 'checkpoint-arch'))
-        out.append(g.box_mesh_src(a['id'] + '.gantry', (a['x'], 16.4, a['z']), (34, 1.2, 1.2), a['heading'], 'ceramic-enamel', 'checkpoint-arch'))
+                out.append(_box('%s.step.%d' % (a['id'], step), a['x'], a['z'], 13 + step * 1.4, 34 - step * 7, 4.0 - step * 0.6, 1.4, a['heading'], 'ceramic-enamel', 'checkpoint-arch'))
+        out.append(_box(a['id'] + '.gantry', a['x'], a['z'], 15.8, 34, 1.2, 1.2, a['heading'], 'ceramic-enamel', 'checkpoint-arch'))
     # 5. Lighthouse hero (horizontal gallery ring).
-    a = scenery['lighthouse']
-    out.append(g.box_mesh_src('lighthouse.base', (a['x'], -1, a['z']), (9, 9, 6), a['heading'], 'salt-limestone', 'lighthouse'))
-    out.append(g.box_mesh_src('lighthouse.tower', (a['x'], 2 + a['height'] / 2, a['z']), (5.5, 5.5, a['height']), a['heading'], 'salt-limestone', 'lighthouse'))
-    out.append(g.box_mesh_src('lighthouse.tower-upper', (a['x'], 2 + a['height'] * 0.8, a['z']), (4.0, 4.0, a['height'] * 0.4), a['heading'], 'ceramic-enamel', 'lighthouse'))
+    a = place(scenery['lighthouse'])
+    out.append(_box('lighthouse.base', a['x'], a['z'], -4, 9, 9, 6, a['heading'], 'salt-limestone', 'lighthouse'))
+    out.append(_box('lighthouse.tower', a['x'], a['z'], 2, 5.5, 5.5, a['height'], a['heading'], 'salt-limestone', 'lighthouse'))
+    out.append(_box('lighthouse.tower-upper', a['x'], a['z'], 2 + a['height'] * 0.6, 4.0, 4.0, a['height'] * 0.4, a['heading'], 'ceramic-enamel', 'lighthouse'))
     out.append(g.ring_mesh_src('lighthouse.gallery', (a['x'], 2 + a['height'] + 0.6, a['z']), 3.2, 4.2, 0.8, 'oxidized-iron', 'lighthouse'))
-    out.append(g.box_mesh_src('lighthouse.lamp', (a['x'], 2 + a['height'] + 2.9, a['z']), (3.0, 3.0, 3.4), a['heading'], 'harbour-glass', 'lighthouse'))
+    out.append(_box('lighthouse.lamp', a['x'], a['z'], 2 + a['height'] + 1.2, 3.0, 3.0, 3.4, a['heading'], 'harbour-glass', 'lighthouse'))
     # 6. Dockside quay cranes: portal, cantilever, rail gantry.
     for a in scenery['cranes']:
+        a = place(a)
         for side in (-1, 1):
             ox, oz = _across(a, side * 5.0)
-            out.append(g.box_mesh_src('%s.leg.%d' % (a['id'], side), (ox, 7.0, oz), (1.2, 1.2, 14), a['heading'], 'oxidized-iron', 'quay-crane'))
-        out.append(g.box_mesh_src(a['id'] + '.beam', (a['x'], 14.7, a['z']), (12, 2.0, 1.4), a['heading'], 'oxidized-iron', 'quay-crane'))
-        out.append(g.box_mesh_src(a['id'] + '.boom', (a['x'], 15.3, a['z']), (a['boom'], 1.4, 1.2), a['heading'] + math.pi / 2, 'ceramic-enamel', 'quay-crane'))
-        out.append(g.box_mesh_src(a['id'] + '.counterweight', (a['x'], 11.5, a['z']), (3.0, 2.4, 3.0), a['heading'], 'basalt-strata', 'quay-crane'))
+            out.append(_box('%s.leg.%d' % (a['id'], side), ox, oz, 0, 1.2, 1.2, 14, a['heading'], 'oxidized-iron', 'quay-crane'))
+        out.append(_box(a['id'] + '.beam', a['x'], a['z'], 14, 12, 2.0, 1.4, a['heading'], 'oxidized-iron', 'quay-crane'))
+        out.append(_box(a['id'] + '.boom', a['x'], a['z'], 14.6, a['boom'], 1.4, 1.2, a['heading'], 'ceramic-enamel', 'quay-crane'))
+        out.append(_box(a['id'] + '.counterweight', a['x'], a['z'], 10, 3.0, 2.4, 3.0, a['heading'], 'basalt-strata', 'quay-crane'))
     # 7. Varied terminal facades replacing the repeated street-edge modules.
     for a in scenery['facades']:
+        a = place(a)
         height = 10 + a['variant'] * 3
-        out.append(g.box_mesh_src(a['id'], (a['x'], height / 2, a['z']), (16 + a['bays'] * 3, 12, height), a['heading'], 'cobble-sett' if a['variant'] % 2 else 'quay-damp-horizontal', 'terminal-facade'))
-        out.append(g.box_mesh_src(a['id'] + '.cornice', (a['x'], height + 0.35, a['z']), (17 + a['bays'] * 3, 13, 0.7), a['heading'], 'salt-limestone', 'terminal-facade'))
-        out.append(g.box_mesh_src(a['id'] + '.roof-machinery', (a['x'], height + 2.2, a['z']), (5, 4, 3), a['heading'], 'oxidized-iron', 'terminal-facade'))
+        out.append(_box(a['id'], a['x'], a['z'], 0, 12, 16 + a['bays'] * 3, height, a['heading'], 'cobble-sett' if a['variant'] % 2 else 'quay-damp-horizontal', 'terminal-facade'))
+        out.append(_box(a['id'] + '.cornice', a['x'], a['z'], height, 13, 17 + a['bays'] * 3, 0.7, a['heading'], 'salt-limestone', 'terminal-facade'))
+        out.append(_box(a['id'] + '.roof-machinery', a['x'], a['z'], height + 0.7, 4, 5, 3, a['heading'], 'oxidized-iron', 'terminal-facade'))
+    intrusions = [spec['name'] for spec in out if road.low_geometry_conflicts(spec, quads)]
+    if intrusions:
+        raise ValueError('Coastal meshes intrude into driving/camera corridor: ' + ', '.join(intrusions))
     return out

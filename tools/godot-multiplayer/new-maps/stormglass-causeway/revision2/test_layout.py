@@ -19,6 +19,8 @@ import layout  # noqa: E402
 import manifest  # noqa: E402
 import geometry  # noqa: E402
 import composition  # noqa: E402
+import road  # noqa: E402
+import build_entry  # noqa: E402
 
 
 def load(path):
@@ -137,6 +139,43 @@ class LayoutTests(unittest.TestCase):
                 self.assertAlmostEqual(a, b, places=9, msg=name)
             if target[1] != eye[1]:
                 self.assertGreater(abs(forward[1]), 1e-6, name + ' ignores target height')
+
+    def test_all_low_faces_clear_every_actual_road_triangle_and_cameras(self):
+        road_faces = road.road_polygons(self.arena)
+        self.assertEqual(len(road_faces), sum(len(s['triangles']) for s in self.arena['terrain']['surfaces'] if s['id'].startswith('road-')))
+        for part in self.parts:
+            self.assertFalse(road.low_geometry_conflicts(part, road_faces), part['name'])
+        for name, (eye, _) in layout.PROBE_CAMERAS.items():
+            for part in self.parts:
+                v = part['vertices']
+                self.assertFalse(all(min(p[i] for p in v) < eye[i] < max(p[i] for p in v) for i in range(3)), (name, part['name']))
+        # A gate remains above the actual road, rather than being relocated offshore.
+        for gate in self.arena['art']['revision2']['scenery']['gates']:
+            arch = next(p for p in self.parts if p['name'] == gate['id'] + '.arch')
+            self.assertAlmostEqual(arch['vertices'][0][0] + 2 * math.sin(gate['heading']),
+                                   gate['x'] + 19.0 * math.cos(gate['heading']))
+            self.assertGreaterEqual(min(p[1] for p in arch['vertices']), 13)
+
+    def test_crossing_and_enclosure_are_detected_without_inside_vertices(self):
+        square = [[(-1,-1),(1,-1),(1,1)], [(-1,-1),(1,1),(-1,1)]]
+        self.assertTrue(road.triangle_conflicts_corridor([(-2, 0), (2, 0), (0, 2)], square))
+        self.assertTrue(road.triangle_conflicts_corridor([(-3,-3), (3,-3), (0,4)], square))
+
+    def test_art_meshes_cover_terrain_without_coplanar_double_export(self):
+        render_faces = [composition._triangle_key(s['vertices'], f)
+                        for s in self.base if s['op'] == 'mesh' for f in s['faces']]
+        self.assertEqual(len(render_faces), len(set(render_faces)))
+        self.assertEqual(len(self.base), len(self.arena['art']['meshes']))
+        self.assertIn('road-0', {s['name'] for s in self.base})
+        self.assertIn('barrier-sea-0', {s['name'] for s in self.base})
+
+    def test_all_route_signs_are_source_meshes_before_batch_selection(self):
+        import inspect
+        source = inspect.getsource(build_entry.run)
+        self.assertLess(source.index('labels = _emit_labels('), source.index('batches = kit.build_export_batches('))
+        self.assertLess(source.index('batches = kit.build_export_batches('), source.index("batch.select_set(True)"))
+        self.assertEqual(len(composition.labels_for_arena(self.arena)), 21)
+        self.assertIn("obj['kit_material'] = 'amber'", inspect.getsource(build_entry._emit_labels))
 
 
 if __name__ == '__main__':
