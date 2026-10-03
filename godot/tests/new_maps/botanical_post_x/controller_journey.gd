@@ -1,7 +1,7 @@
 extends SceneTree
 ## FUTURE EXPLICIT GRANT ONLY. Actual exploration controller, no invented step-up.
 const Walker = preload("res://exploration/walker.gd")
-const WorldMap = preload("res://multiplayer_worlds/map.gd")
+const ArtBinding = preload("art_binding.gd")
 var directory := ""
 var group_id := ""
 var records: Array = []
@@ -31,12 +31,13 @@ func run() -> void:
 		assert(FileAccess.get_sha256(path)==config.files[path], "Source fixture drift: "+path)
 	assert(config.groups.has(group_id))
 	var group: Dictionary = config.groups[group_id]
+	assert(group_id.begins_with(str(group.variant)+"-"+str(group.run)+"-"),"Case/variant substitution")
 	var output := directory+group_id+"-journey.json"
 	assert(not FileAccess.file_exists(output), "Fresh attempt required")
 	var data := json(directory+str(group.variant)+".json")
-	var world := WorldMap.new()
-	root.add_child(world)
-	assert(world.build(data))
+	var bound := ArtBinding.make_world(root,directory,config,str(group.variant))
+	assert(bound.receipt.bindingReady and bound.receipt.bothVariantsRuntimeVerified)
+	var world: Node3D = bound.world
 	await physics_frame
 	var failed := false
 	for trial: Dictionary in group.trials:
@@ -87,7 +88,7 @@ func run() -> void:
 		await process_frame
 	var file := FileAccess.open(output,FileAccess.WRITE)
 	file.store_string(JSON.stringify({"case":group_id,"geometryHash":data.geometryHash,"sourceSha256":FileAccess.get_sha256(directory+"source.json"),
-		"godot":Engine.get_version_info(),"failed":failed,"records":records,
-		"scope":"actual exploration CharacterBody.step; .42 case is test-only envelope, not authoritative multiplayer movement; no stair lift/teleport/waiver"},"\t")+"\n")
+		"godot":Engine.get_version_info(),"failed":failed,"records":records,"binding":bound.receipt,"walkOnly":true,"sprint":false,
+		"scope":"direct exploration Walker.step walk-only API diagnostic; .42 is test-only envelope; no keyboard/focus/network or full-flight clearance gate; no stair lift/teleport/waiver or full-map acceptance"},"\t")+"\n")
 	file.close()
 	quit(1 if failed else 0)

@@ -1,5 +1,11 @@
 # Post-X source diagnosis — no heavy grant consumed
 
+**Follow-up P1 binding correction:** [NATIVE_BINDING_FOLLOWUP.md](NATIVE_BINDING_FOLLOWUP.md)
+supersedes the original native setup commands below. Both exact GLBs are now
+required, with two-pass UID-retaining import policy and runtime art readback.
+The six groups are **60 walk-only direct `Walker.step` diagnostics**, not sprint,
+keyboard/focus/network tests or full-map acceptance. All native work is pending.
+
 Branch `astra/botanical-post-x-source`, based on X artifact commit `171ffddb`, in
 an isolated worktree. **No Blender, Godot, import, rendering, server, subagents,
 supervisor restart or queued heavy work was used.** Future Foundry Y is another

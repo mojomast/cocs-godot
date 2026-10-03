@@ -1,0 +1,66 @@
+{
+  "scope": "P1 exact Vesper art binding SOURCE ONLY; no engines/imports/renders/servers/children/queued work",
+  "baseCommit": "902c3bbb",
+  "parentReference": "70995941",
+  "historicalProvenanceSha256": "d906c829cd9f1f87f400cd7a2e29632edcecdc8a0fd49b179798ffd30bbc89e7",
+  "historicalEvidenceJsonUnchanged": true,
+  "original15DependenciesMatchCheckoutAndParent": {
+    "game/core.mjs": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+    "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+    "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+    "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+    "game/spatial.mjs": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
+    "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
+    "game/operator-verbs.mjs": "357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e",
+    "game/spec-effects.mjs": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
+    "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "godot/exploration/walker.gd": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+    "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
+    "godot/world/session.gd": "32ff87d491dad9f47d555fa3eec701fbfbbfa47608075ebbc2796b5c291b549c",
+    "godot/multiplayer_worlds/demo.gd": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748"
+  },
+  "artPins": {
+    "accepted": {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct.glb",
+      "artSha256": "6afe34c82d45f06c30dedc780f59ac6afa5200835b487d41705902d771fc0bfd",
+      "geometryHash": "27c71cc8895eab2ca3a0b5cae3c2b8f96ed9afd75db3deec4a5c96bd2f395ea7",
+      "recipeHash": "84aa9e5e7dd415fe9681a35c4bb03403e7b6b23b4713936039936af0cfa7c89f"
+    },
+    "candidate": {
+      "path": "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/vesper-viaduct.glb",
+      "artSha256": "f859d49cc1b462b4a88e351d915518c49940ce24a7b8c2047c2d8f94f419e1db",
+      "geometryHash": "fd8e7134c8933e908336d7b0409c66bdc90f4adc03fcfc6e596d5b4579f1c740",
+      "recipeHash": "f22b863cab4caec974602b81548b11e7fd60e221d441e136c47c35df144220e2"
+    }
+  },
+  "tests": {
+    "portablePythonPassed": 13,
+    "actualPinnedXIntegration": "PASS: strict accepted/candidate GLB census; 60 cases; write-once; missing import/art; tamper; accepted art plus altered manifest substitution rejected"
+  },
+  "native": {
+    "status": "pending; GDScript not engine-parsed",
+    "groups": 6,
+    "walkTrials": 60,
+    "sprint": false,
+    "scope": "direct Walker.step API diagnostic; no keyboard/focus/network or full-map acceptance"
+  },
+  "frozen": {
+    "X": 600,
+    "U": 264,
+    "mismatches": 0
+  },
+  "files": {
+    "godot/tests/new_maps/botanical_post_x/art_binding.gd": "ef44102c1c7c83e126101eda1431dab914109dc0576276f5d80ca59425db487a",
+    "godot/tests/new_maps/botanical_post_x/controller_journey.gd": "af58943e1279f5b314f510cfa26fba8ae25230e870648e36a559aefc795d96d1",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/NATIVE_BINDING_FOLLOWUP.md": "4e205ecd9ef7bfc9e1c1de33fc3dc191e35e8011c966a7807b44a29a7b284e3a",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/README.md": "3699f5383096363eed4cc46f05d5b328cbb49b9dda1d6c94ab3fdc0a75313c55",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/art_binding.py": "3b136a0f2b946aae046f3bc41b10fc776da516a8bb862e2cb851a1cb29fb55ab",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/frozen-integrity-binding.json": "a57fb3bfeb2571f82cc5476d06828e336dc65dd44aa01627ccb3ab923d45d310",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/prepare_native.py": "412cc304e945a25ce79411f1903a696199659e58ab916dc2d5129ea92c77f398",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/test_art_binding.py": "ada0cf9f5241045d9a5b47c5f1832f577bd17250de9776e25f186d92431f42e0",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/test_native_fixture.py": "e86ba669fcb29d51f6da0ed4a0adcc1cf0be86a1ffb4aa30ce7306f2e422fa5c",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/verify_art_fixture.py": "f560dfb9d3e738d77a215e46f2d3fbabb4fa76fa5aecbb64106f6a9b9b90a075"
+  }
+}
