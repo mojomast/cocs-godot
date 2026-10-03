@@ -1,0 +1,29 @@
+{
+  "baseline": "27f3afc3",
+  "protectedDiffEmpty": true,
+  "protectedPaths": [
+    "game/",
+    "server/",
+    "port/contracts/source-lock.json",
+    "port/multiplayer-worlds/catalog.mjs",
+    "godot/multiplayer_worlds/catalog.gd",
+    "godot/multiplayer_worlds/dressing/",
+    "godot/robot_assets/",
+    "godot/vehicle_assets/",
+    "tools/godot-robots/",
+    "tools/godot-vehicle-assets/",
+    "godot/biomes/expansion/",
+    "tools/godot-biomes/expansion/",
+    "tools/asset-production/moth_finish.py",
+    "tools/godot-package/production_receipts/robots.json",
+    "tools/godot-package/production_receipts/vehicles.json",
+    "tools/godot-package/production_receipts/scenery.json",
+    "godot/multiplayer_worlds/art/parallax-observatory/",
+    "godot/multiplayer_worlds/generated/parallax-observatory.json",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/",
+    "godot/multiplayer_worlds/generated/gravemill-foundry.json"
+  ],
+  "coreSHA256": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+  "helperSHA256": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
+  "publicCatalogSHA256": "e679c621c73987fed821850300ffdff2cb6dd4a1a8c1cfbf0d75ffcc874b9fd2"
+}

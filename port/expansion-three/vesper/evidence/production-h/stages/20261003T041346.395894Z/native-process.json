@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "godot",
+    "--script",
+    "res://tests/new_maps/vesper_viaduct/collision.gd"
+  ],
+  "started": "2026-10-03T04:13:46.505740+00:00",
+  "timeoutSeconds": 180,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-three-vesper-evidence-20261002/production-h/20261003T041346.395894Z/native.log",
+  "processGroup": 1339848,
+  "exitCode": 0,
+  "ended": "2026-10-03T04:13:46.970307+00:00",
+  "ownedGroupTeardownRequested": true
+}
