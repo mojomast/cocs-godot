@@ -776,9 +776,10 @@ func on_snapshot(frame: Dictionary) -> void:
 	if reseeded: local_motion.reset()
 	var eye: Vector3 = presentation.eye_position()
 	var now: float = Time.get_ticks_usec() / 1000000.0
-	var authority_velocity := Vector3.INF
-	if selected_mode == "campaign":
-		authority_velocity = Vector3(float(actor.get("vx", 0)), float(actor.get("vy", 0)), float(actor.get("vz", 0)))
+	# Use the source's velocity in every ordinary mode. Deriving it from packet
+	# arrival spacing turns coalesced snapshots into spurious camera acceleration.
+	var authority_velocity := Vector3(float(actor.get("vx", INF)), float(actor.get("vy", INF)), float(actor.get("vz", INF)))
+	if not authority_velocity.is_finite() or actor.get("vehicleId") != null: authority_velocity = Vector3.INF
 	local_motion.ingest(eye, presentation.lifecycle.can_control(), now, local_motion_source_time(frame.state), authority_velocity)
 	apply_local_snapshot_pose(eye, now, reseeded)
 	if reseeded:
@@ -813,10 +814,11 @@ func on_snapshot(frame: Dictionary) -> void:
 		client.disconnect_server()
 		get_tree().quit(0)
 
-## Horde can use source ticks while ordinary sessions retain receive-time motion.
-func local_motion_source_time(_state: Dictionary) -> float:
-	if selected_mode == "campaign": return float(_state.get("time", NAN))
-	return NAN
+## Source ticks are common to all match modes; the receive clock is only a
+## fallback for snapshots without a valid simulation time.
+func local_motion_source_time(state: Dictionary) -> float:
+	var value: Variant = state.get("time")
+	return float(value) if (value is int or value is float) and is_finite(float(value)) else NAN
 
 func apply_local_snapshot_pose(eye: Vector3, now: float, _reseeded: bool) -> void:
 	camera.position = local_motion.sample(now) if local_motion.ready() else eye
