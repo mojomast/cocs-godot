@@ -34,9 +34,15 @@ def faces(g):
     g.geometry()
     if len(g.doc['meshes']) != 39 or len(g.doc['materials']) != 14:
         raise ValueError('Editable scene inventory differs from X')
-    nodes = [n for n in g.doc['nodes'] if 'mesh' in n]
-    if len(nodes) != 39 or {n['mesh'] for n in nodes} != set(range(39)):
-        raise ValueError('Missing/instanced editable mesh')
+    # X exports all 39 meshes as direct scene roots. A nonmesh parent (even an
+    # identity parent) would compose with their TRS; looking only at mesh nodes
+    # could wrongly accept a globally translated/rotated editable export.
+    nodes = g.doc['nodes']
+    roots = g.doc['scenes'][g.doc['scene']]['nodes']
+    if (len(nodes) != 39 or len(roots) != 39 or set(roots) != set(range(39)) or
+        any('children' in n or 'mesh' not in n for n in nodes) or
+        {n['mesh'] for n in nodes} != set(range(39))):
+        raise ValueError('Editable scene must contain exactly 39 flat mesh roots; parent transforms unsupported')
     for node in nodes:
         transform_position, transform_normal = world(node)
         mesh = g.doc['meshes'][node['mesh']]

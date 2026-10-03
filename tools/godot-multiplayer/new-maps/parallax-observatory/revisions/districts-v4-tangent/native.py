@@ -32,7 +32,7 @@ def check_streams(artifact, report, raw):
                 expected[role, tuple(cs[j][0] for j in range(3))].append((cs, marked))
     count = 0
     affected = 0
-    maximum = [0., 0., 0.]
+    maximum = [0., 0., 0., 0.]
     next_offset = 0
     for surface in report['surfaces']:
         size = surface['vertices']; offset = surface['offset']
@@ -66,8 +66,8 @@ def check_streams(artifact, report, raw):
                 choices = candidates[0][1]
             match = None
             for i, (want, marked) in enumerate(choices):
-                err = [max(abs(x-y) for c,d in zip(cs,want) for x,y in zip(c[j],d[j])) for j in (1,2,3)]
-                if err[0] <= .0002 and err[1] == 0 and err[2] <= .0002:
+                err = [max(abs(x-y) for c,d in zip(cs,want) for x,y in zip(c[j],d[j])) for j in (0,1,2,3)]
+                if err[0] <= 1e-5 and err[1] <= .0002 and err[2] == 0 and err[3] <= .0002:
                     match = i; maximum = [max(x,y) for x,y in zip(maximum,err)]
                     if marked: affected += 3
                     break
@@ -75,7 +75,9 @@ def check_streams(artifact, report, raw):
             choices.pop(match); count += 1
     if next_offset != len(raw) or any(expected.values()) or count != total or affected != 3:
         raise ValueError('Native face coverage or all three repaired corners missing')
-    return {'triangles': count, 'maxNormalUVTangentError': maximum, 'zeroTangentWaivers': 0,
+    return {'triangles': count, 'maxLocalPositionNormalUVTangentError': maximum,
+            'positionToleranceMetres': 1e-5, 'scope': 'mesh-local surface arrays; node/world transforms not read back',
+            'zeroTangentWaivers': 0,
             'repairedCornerMatchesAtLeast': affected}
 
 def check(artifact, report, streams, baseline):

@@ -79,6 +79,25 @@ class ParallaxContract(unittest.TestCase):
         struct.pack_into('<f', blob, layout[0], struct.unpack_from('<f', blob, layout[0])[0] + .01)
         with self.assertRaisesRegex(ValueError, 'geometry/normal/UV'): audit(encode(g.doc, blob), self.original)
 
+    def test_actual_x_parented_scene_cannot_hide_a_world_shift(self):
+        # Valid glTF hierarchy: retain every mesh/node/primitive/array/material
+        # byte; replace active roots with one new, translated nonmesh parent.
+        # The previous mesh-only walk accepted this whole-world +100m drift.
+        g = EmbeddedGlb(self.original)
+        roots = g.doc['scenes'][g.doc['scene']]['nodes']
+        self.assertEqual(len(roots), 39)
+        self.assertEqual(len(g.doc['nodes']), 39)
+        for translation in ([100, 0, 0], [0, 0, 0]):
+            with self.subTest(parentTranslation=translation):
+                doc = copy.deepcopy(g.doc)
+                parent = len(doc['nodes'])
+                doc['nodes'].append({'name':'ShiftedExportParent', 'translation':translation, 'children':roots.copy()})
+                doc['scenes'][doc['scene']]['nodes'] = [parent]
+                mutated = encode(doc, g.binary)
+                self.assertEqual(EmbeddedGlb(mutated).geometry()[1], 155553)
+                with self.assertRaisesRegex(ValueError, 'flat mesh roots'):
+                    audit(mutated, self.original)
+
     def test_native_field_gate_reuses_r7_color_precision_for_real_parallax_materials(self):
         g = EmbeddedGlb(self.output)
         def srgb(x): return 12.92*x if x <= .0031308 else 1.055*x**(1/2.4)-.055

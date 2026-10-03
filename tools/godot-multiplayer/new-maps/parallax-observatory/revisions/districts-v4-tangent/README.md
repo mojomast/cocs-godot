@@ -29,9 +29,13 @@ successor. Everything else—including material images, indices and authority
 streams—keeps the pinned X bytes. A different wholesale tangent regeneration
 is outside this contract.
 
-`editable.py` audits an actual future exported master against **every oriented
-face** in world coordinates (including the X wayfinding TRS nodes), material
-role, position/normal/UV, and triangle multiplicity. It imports the **frozen R7
+`editable.py` requires the pinned X scene shape: **exactly 39 direct active-scene
+mesh roots, with no parent nodes or children**. It supports the existing
+wayfinding **leaf TRS** and audits an actual future exported master against
+**every oriented face** in world coordinates, material role,
+position/normal/UV, and triangle multiplicity. A valid glTF nonmesh parent
+translating all 39 roots by 100 m (or even an identity parent) fails closed;
+hierarchical exports require a separate reviewed contract. It imports the **frozen R7
 `material_contract.py`** to compare decoded image channels, sampler wrap/filter,
 normal/roughness, metallic, alpha and emissive semantics instead of equating
 texture indices. A semantically equivalent resource-index remap can pass; an
@@ -53,11 +57,17 @@ The future isolated `godot/tests/new_maps/parallax_tangent/` stage must copy
 the new GLB and exact X authority/profile into test-only paths, pin the **new**
 art hash, preserve the import sidecar UID with compression/LODs disabled, and
 never bind the public catalog. `import.gd` records all native mesh surface
-arrays and decoded material PNGs; `native.py` compares every oriented corner
-and all three repaired corners to the exact output, enforces **zero** undefined
+arrays and decoded material PNGs; `native.py` compares every **mesh-local**
+oriented corner and all three repaired corners to the exact output, with a
+measured maximum local position error bounded by **1e-5 m** (not an exact
+position-equality claim), and enforces **zero** undefined
 tangent waivers, checks R7-equivalent 14 material field sets (Godot 4.5.2 Color
 precision), and compares decoded PBR channels. Import/field/pixel checks do
 not alone assert native sampler equivalence: that is the editable source gate.
+The probe does not record node/world transforms; native proof by itself does
+not establish world-space equality. The separately audited source scene is
+flat and pinned, while an actual future import needs its own transform readback
+before any independent native world-geometry claim.
 Native acceptance remains pending until the actual stage and report pass.
 
 The subsequent grant should capture matched **X staged Parallax before** versus
