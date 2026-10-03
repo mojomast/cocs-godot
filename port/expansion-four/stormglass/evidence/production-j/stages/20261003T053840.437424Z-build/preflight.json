@@ -1,0 +1,820 @@
+{
+  "kind": "source-only-preflight",
+  "heavyExecuted": false,
+  "head": "0f731b78afb255b92f3fc81c7da7de5a791d914d",
+  "tools": {
+    "blender": {
+      "path": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender",
+      "exists": true,
+      "executable": true,
+      "bytes": 163613240,
+      "versionExecuted": false
+    },
+    "godot": {
+      "path": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+      "exists": true,
+      "executable": true,
+      "bytes": 137322608,
+      "versionExecuted": false
+    },
+    "ffmpeg": {
+      "path": "/usr/bin/ffmpeg",
+      "purpose": "later cadence-aware encoding; not invoked"
+    }
+  },
+  "units": [
+    {
+      "id": "parallax-interiors",
+      "status": "parent/original-worktree-owned; no external polling"
+    },
+    {
+      "id": "robots",
+      "mastersPresent": 9,
+      "mastersExpected": 9,
+      "exportsPresent": 9,
+      "exportsExpected": 9,
+      "resourceHashes": {
+        "godot/robot_assets/switchyard/generated/battery_rack.glb": "c7f9908dbd262855de0e0729c703cba5675f50c87e6f195e73772ea162d01cd0",
+        "godot/robot_assets/switchyard/generated/blast_shutter_frame.glb": "edc259363997e06e5d514c04d1cbcbb1b533602b86934090c79f4b16332d7966",
+        "godot/robot_assets/switchyard/generated/cable_junction.glb": "530f18fe88884f0a442796ee7e00eb5899b1116a027f54d0dd40899e218409e2",
+        "godot/robot_assets/switchyard/generated/caisson_guard.glb": "c4ee21567db5c954c031ce267813a9d70d0be9aedce7bc282341e3c0b53c1a20",
+        "godot/robot_assets/switchyard/generated/cargo_stack.glb": "4f38999b1cd8824142381f8f8e9c3b14eb076949603f2b4a42d66f0c99904b88",
+        "godot/robot_assets/switchyard/generated/kiln_tender.glb": "142c4206649551764b6bc07a59afa1b297404c3efeac07ed1ae495f315188157",
+        "godot/robot_assets/switchyard/generated/needle_surveyor.glb": "4d9b53d1778f9ee5127f3697b1f7cd39b056b9ec163880df9150b71d95b72765",
+        "godot/robot_assets/switchyard/generated/relay_console.glb": "aa5213ceb4f191b7981e6ef02d01b950e414daeb582f84a3de41c3a73876fc42",
+        "godot/robot_assets/switchyard/generated/repair_dock.glb": "c81b3791e248a76654d1092856022a16fa0357cab20a80d80beb432f31a4819b"
+      },
+      "configuredTriangleCap": 102000,
+      "measuredTriangles": null,
+      "nextAssets": "3 skins (Needle/Caisson/Kiln), 9 rigid LOD assemblies in 3 GLBs, 6 prop GLBs; 3 skeletal reference GLBs outside runtime",
+      "nextCapture": "actual Campaign and Horde bodies at source scales, poses, shield/attack contacts, original/new silhouettes and six workshop placements"
+    },
+    {
+      "id": "vehicles",
+      "mastersPresent": 9,
+      "mastersExpected": 9,
+      "exportsPresent": 9,
+      "exportsExpected": 9,
+      "resourceHashes": {
+        "godot/vehicle_assets/generated/puma-lod0.glb": "ad1d0f76f85e340338828eec7167470ae2aeffe157ae8a29ef4dfa540fca76cc",
+        "godot/vehicle_assets/generated/puma-lod1.glb": "0d96072586ceed24ad99838ad134c4fc30464b42a4be131a84cfc3351ee84c1a",
+        "godot/vehicle_assets/generated/puma-lod2.glb": "edfe45b1a11e2ec1bfb3df38c111b8f44dbd2573eb5e354a884449cbc131be66",
+        "godot/vehicle_assets/generated/scout-lod0.glb": "64dc780c28e3487bdad1613274fe667e148e6f6f8f31bcc09cb36bb8609fbdf9",
+        "godot/vehicle_assets/generated/scout-lod1.glb": "b616d9fe5cca87fe657e47c032f1267e116a971830e6dcd23adc281ff0c1b11a",
+        "godot/vehicle_assets/generated/scout-lod2.glb": "1380f2103508ace2cd165e6c9688f33ad47b91a68ee145593e13963df1089c22",
+        "godot/vehicle_assets/generated/titan-lod0.glb": "c3667e6520a76e6c433f0a1caa4f73748dcae2c3f8c7fb93d953d41534ac2fe2",
+        "godot/vehicle_assets/generated/titan-lod1.glb": "e0fbe0373b654029c1859e5a8275f8a043262206bdc9fed4878bdfddc4256331",
+        "godot/vehicle_assets/generated/titan-lod2.glb": "be5784ff9a9c415ebdf8b7846e4ac9f3cbf9c83df3710e0f414e3a0653718b28"
+      },
+      "configuredTriangleCap": 456000,
+      "measuredTriangles": null,
+      "nextAssets": "Puma/Titan/Scout 9 LOD exports, independent masters and material-local UV finishes",
+      "nextCapture": "source-wire mount/drive/reverse/boost/turret fire/passenger/dismount, rain/team changes, repair/destruction/respawn in production maps"
+    },
+    {
+      "id": "scenery",
+      "mastersPresent": 12,
+      "mastersExpected": 12,
+      "exportsPresent": 24,
+      "exportsExpected": 24,
+      "resourceHashes": {
+        "godot/biomes/expansion/art/crown-ceramic-lightwell-0.glb": "39c0aa71afbb0c6d044c791dc105d278e895c4e75896fbcd0e69d61b57c89dc9",
+        "godot/biomes/expansion/art/crown-ceramic-lightwell-1.glb": "9e6689b226101cb6ca7ab188dbe1b4b48ddd11ace2ef55fbdd2dbd98edb00993",
+        "godot/biomes/expansion/art/crown-faceted-antenna-0.glb": "54fc76aec06bec41f208d4ebbd62491ddb2fc929b6280eaba16f8a1372f4f36e",
+        "godot/biomes/expansion/art/crown-faceted-antenna-1.glb": "20f14b6a59f98ec0d1ffba18afdccc9564ba46257e18855e32ba9d1273dea7ce",
+        "godot/biomes/expansion/art/crown-folio-archive-0.glb": "1cfebaa1727a56477db6ca74d55926dca2d18320663fb1a673110ba15b653ba9",
+        "godot/biomes/expansion/art/crown-folio-archive-1.glb": "f6a1d758949545e19137cce5eef0060463dd92cd3d68940cee1311b0b33edad8",
+        "godot/biomes/expansion/art/emberline-basalt-terrace-0.glb": "0ec55615a6079c241e8c8868dd697cee43ec1086758cadcc8f16aa3ac0027a99",
+        "godot/biomes/expansion/art/emberline-basalt-terrace-1.glb": "98c6c43f1db946b4f43d19fefc0d1e132e1b9ce37f2150c36aee25bcf59e0716",
+        "godot/biomes/expansion/art/emberline-ceramic-exhaust-0.glb": "1ba5cec1a0b05a2c28cd44eb091be421fe649dc0028b80fdcfb3a337fa0c3ca1",
+        "godot/biomes/expansion/art/emberline-ceramic-exhaust-1.glb": "08dc4dce1a3c5a2756a4b5c224c9f784400dad19815cf1ef499bd09f324f29ba",
+        "godot/biomes/expansion/art/emberline-heatshield-tower-0.glb": "713399cf7a9e3e921adb5715717504b7705639bfd28f71352c12cf7b6a054416",
+        "godot/biomes/expansion/art/emberline-heatshield-tower-1.glb": "6fd410a048a22c554f66eb8116cc9b097d74642998febfdc42f9936bedeb6488",
+        "godot/biomes/expansion/art/rootfall-canopy-relay-0.glb": "ef4b4fa2609017d3c1aea0cf31dc9bcc44c2354118ce398fa5e231a6f1a49644",
+        "godot/biomes/expansion/art/rootfall-canopy-relay-1.glb": "fcdf1e9459a9577a108f134aadabda34d8f96b3132623fdd7f3c69d740eb4da2",
+        "godot/biomes/expansion/art/rootfall-root-archive-0.glb": "8824dff6a08899f236ec8bb81834774a7e5636600b8414ab2bbf1d43d8d46f8e",
+        "godot/biomes/expansion/art/rootfall-root-archive-1.glb": "b01f1230dc11dfc73a6242fd730b9dd48102e795b32459cad98df2ae314f6f0d",
+        "godot/biomes/expansion/art/rootfall-root-buttress-0.glb": "a1e0e9c96b4ae4bbf904081516f12ff10e8cf7b07b585cd44b8aa026d1a63b25",
+        "godot/biomes/expansion/art/rootfall-root-buttress-1.glb": "b5f017ee36e70949512f31f147051706ff59a6ec9eb345b6077bbcd613bd30f5",
+        "godot/biomes/expansion/art/siltwake-flood-abutment-0.glb": "927213938aa494996c537c0faef4f5b2d00adbe7af87781a21c147b596c45693",
+        "godot/biomes/expansion/art/siltwake-flood-abutment-1.glb": "021a74c122dae71df297bba06b95725bbdf98c7edbd68f4778c4bbb9b5dd36cd",
+        "godot/biomes/expansion/art/siltwake-sluice-bank-0.glb": "de7e834aa4649355883aac1d5e1191b76bd86f9ad56c888067c379fc07455d4d",
+        "godot/biomes/expansion/art/siltwake-sluice-bank-1.glb": "c04e2f6ff63aeeb8d3d4aa0489179c5d4aff56522e2c1152594e0d133f5c3060",
+        "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0.glb": "eb7315c37f03edd9846e56edb9ebbca1f017e3abd88391df6531e0a8555f1fd9",
+        "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1.glb": "b40b8a3e2a24fbec0a5cd19614678ef0606c468585ae624a52e87416484b8e52"
+      },
+      "configuredTriangleCap": 108000,
+      "measuredTriangles": null,
+      "nextAssets": "12 editable Rootfall/Siltwake/Emberline/Crown assemblies and 24 textured LOD exports",
+      "nextCapture": "prepared production-demo old/new/full/reduced views in all four chapters, then ordinary native walk/shot/workshop journeys"
+    },
+    {
+      "id": "vesper-viaduct",
+      "mastersPresent": 1,
+      "mastersExpected": 1,
+      "exportsPresent": 1,
+      "exportsExpected": 1,
+      "resourceHashes": {
+        "godot/multiplayer_worlds/art/worlds/vesper-viaduct.glb": "6afe34c82d45f06c30dedc780f59ac6afa5200835b487d41705902d771fc0bfd"
+      },
+      "configuredTriangleCap": 250000,
+      "measuredTriangles": null,
+      "nextAssets": "editable 3-tier canal/station/civic architecture, actual Moth material-local UV finish and GLB",
+      "nextCapture": "overview, canal, civic, concourse and all seven three-room interiors; six candidate hosted rounds via isolated admission fixture"
+    },
+    {
+      "id": "abyssal-pressureworks",
+      "mastersPresent": 1,
+      "mastersExpected": 1,
+      "exportsPresent": 1,
+      "exportsExpected": 1,
+      "resourceHashes": {
+        "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks.glb": "fa6888d11ed95dee670b3200b141962e74d6ea17523aef3bcbd7edee149f16b1"
+      },
+      "configuredTriangleCap": 100000,
+      "measuredTriangles": null,
+      "nextAssets": "12 pressure chambers, galleries, equalizer, reefs, textured shell/copper finish and editable master",
+      "nextCapture": "three route bands and district interiors, view glazing/open portals and equalizer at player eye; hosted six-candidate matrix"
+    },
+    {
+      "id": "stormglass-causeway",
+      "mastersPresent": 0,
+      "mastersExpected": 1,
+      "exportsPresent": 0,
+      "exportsExpected": 1,
+      "resourceHashes": {},
+      "configuredTriangleCap": 250000,
+      "measuredTriangles": null,
+      "nextAssets": "1191m coastal causeway, freight vault/quay/gates, actual road/material texture detail and editable master",
+      "nextCapture": "production chase camera ordinary steering/braking laps, two native clients countdown/standings/results and >=20s continuous capture"
+    }
+  ],
+  "moth": {
+    "godot/moth/generated/textures/sand.png": {
+      "sha256": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96",
+      "bytes": 4929
+    },
+    "godot/moth/generated/textures/brushed_metal.png": {
+      "sha256": "271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51",
+      "bytes": 5945
+    },
+    "godot/moth/generated/textures/macro-organic.png": {
+      "sha256": "de19687a5b14599a3e738f6006b08ad3380b023d6d19d4d2270b903350f5341a",
+      "bytes": 6337
+    },
+    "godot/moth/generated/textures/grass.png": {
+      "sha256": "b34ff20efcd0abad36323f9c6ffca4f30325dc91f7110a624ce7dac1d4f2fe64",
+      "bytes": 5047
+    },
+    "godot/moth/generated/textures/weathered_concrete.png": {
+      "sha256": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550",
+      "bytes": 6448
+    },
+    "game/moth-baked.mjs": {
+      "sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2",
+      "bytes": 1937437
+    }
+  },
+  "missing": [
+    "node package ws"
+  ],
+  "syntax": [
+    "tools/asset-production/moth_finish.py",
+    "tools/godot-robots/build.py",
+    "tools/godot-multiplayer/new-maps/vesper-viaduct/author_blender.py",
+    "tools/godot-vehicle-assets/build.py",
+    "tools/godot-biomes/expansion/build.py",
+    "tools/godot-biomes/expansion/reopen.py",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/blender_export.py",
+    "tools/godot-robots/recipe.py",
+    "tools/godot-multiplayer/new-maps/abyssal-pressureworks/blender_author.py",
+    "tools/godot-robots/verify_blender.py",
+    "tools/asset-production/material_contract.py",
+    "godot/tests/robot_assets/review.py",
+    "tools/asset-production/reopen.py",
+    "tools/asset-production/run.py"
+  ],
+  "dependencies": {
+    "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
+    "godot/tests/vehicle_assets/native.gd": "dfaa549384a6f27e728e5aeae2070c09dd71a48a978f1c7370e57a53c5303983",
+    "tools/godot-multiplayer/new-maps/vesper-viaduct/recipe.mjs": "f1a244bacfddb57a95d290dba7c573e096231ae8ce2dc6fa4e0f43ed0d089400",
+    "tools/asset-production/candidate-hosted.mjs": "5532c11702b7ed27fd2d1e7aa11ba17b031678e2fa21178f1161749e1d0a1076",
+    "tools/godot-robots/build.py": "d3b6244b32a8aa65b984e72db6390c07b8391fc02dd366e94c3f8c293465e1a9",
+    "godot/vehicle_assets/attachment.gd": "13fc00ebd1d5495769df1d120329e5462724cf09487697a6258f92a1545f3a63",
+    "godot/tests/robot_assets/source_targeting.mjs": "03fb8c91fc402da8d3af4cc16d3b3170e0d842bd0a132557eed6db3f8d083b9d",
+    "godot/tests/robot_assets/production_capture.mjs": "bca17c1041648cc080305a20d62d6c4b96fcda0ce410e53a272d3f31d51baebc",
+    "tools/godot-multiplayer/new-maps/vesper-viaduct/author_blender.py": "f540161e4ec506f7ce3098bd1533d6d321a2aa806cd7c0180db8f0b8278ac4c6",
+    "tools/asset-production/process-evidence.mjs": "37b5edb33bd58d854602f6b7ded525d18689bc4b064c69c360edb73cd565c4d3",
+    "godot/tests/biome_assets/imported_geometry.gd": "27e8e46e25030fb8c367a4fd328a2af347e6176153961c223ed184ef9e1ebb03",
+    "godot/robot_assets/switchyard/contract.json": "956105382159b46b445a3f58ece02397995dec988f316689bac11ef4e9f1dc61",
+    "godot/combined_arms/chassis.gd": "7529c5d505f18383edbcbfa406c21e1dfe33449bd56ec8853a5122973916b5e3",
+    "godot/tests/biome_assets/run_inspection.mjs": "7176ddf19097ef21d9b240dccc74e71c29c9a14ad12870f2d95eac5dbbb34a53",
+    "tools/godot-vehicle-assets/recipe.mjs": "cec0637184315458ef0dc2016ecbcafbc3f4c8ff2f82dfe05fec77be4ce632d7",
+    "game/vehicles.mjs": "e55dbed9969a9f4430b0471fefb4d294fddf0e75d8af853565c9361c106244db",
+    "godot/tests/robot_assets/native_contract.gd": "9ddfb708c6bcbffde6254208c5d6cda4ea4c289914e7c89b782ba6d8d35234bd",
+    "tools/godot-vehicle-assets/build.py": "eb5e317409f27201b09800819e949ccb4afeae0e7ae95e9150bb6d294c2a6489",
+    "tools/godot-biomes/expansion/build.py": "d1bb7746663e305d88f7b7aa5c35045ccc88cdb3f8c39bb73f2d76ce93d6aa08",
+    "tools/godot-biomes/expansion/reopen.py": "cee5760adf5640d118eec601b8f2ea0d64e0f35ee940d862e128623a948a617c",
+    "godot/tests/new_maps/stormglass_causeway/route_probe.gd": "50a806f5082bc122ae73f66d1d335b79c9d6642f30b48fbff4b41b0344da2d27",
+    "port/native-horde/robot-roles.mjs": "d61dfc281cfe71ab0525735a1a299d868394ffc5c1cff4e8b0c72f7e62f056a1",
+    "tools/asset-production/receipt.mjs": "9648c19d979b2486c78830628c2f2508a02b4b2874d1f64149966d88d7e5f9d8",
+    "game/core.mjs": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+    "godot/robot_assets/switchyard/skin_adapter.gd": "cfe644ea6ac98adeb3e2d95c1f4e0d79d9cd60aa261509d801c18e30cdc624a8",
+    "game/mode-data.mjs": "7598bfa2d5fb0495bbfcb615c3083245d4dff632a13aa1a42593da8023e91548",
+    "godot/tests/robot_assets/verify_receipt.mjs": "e5c8d1f074a4bb4faff7efa0f6d22b325d74cb80d295b2b900cb70acfe663405",
+    "godot/biomes/expansion/scenery_pack.gd": "8518e24c6397db09408e7e1d9bc38546be26572beb8baf753fac34bb646646c3",
+    "tools/asset-production/candidate-guidance.mjs": "e148085a9b2fef03003da4456768a5a2ffc528c12e4f40bf253d439fe2007ebd",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/blender_export.py": "17bdaf0b175fb51fe1424a93fa8dfae842e11c6fefd040072bd1a6f5e5a15057",
+    "godot/campaign/demo.gd": "7fab4d8128cb0b0343bcd64f9c9f776c01cf14cd38cd511da8db5c4192ecc34e",
+    "godot/campaign/interlude_director.gd": "3ecf9b71942c2d6cd32508e570ed22f58fe1be678e340a0741903ad51e31b1aa",
+    "tools/godot-robots/recipe.py": "446f471881fc91fbfb9ed0588239f2f00ad883f9597e5efbcbd7913f7986865f",
+    "godot/ambience/weather_look.gd": "4b2c3a0a1c4e623b8dcce990fbd30ff2d85bbad25eb28063c295898cb95783da",
+    "tools/asset-production/package-receipt.mjs": "e1917daa642b15e6e3290b537fbf9024ba72e6f5dfd18f4025d3e589d9702621",
+    "game/assault.mjs": "6e24f4a363ce8ccb1787057ec125d3695da2aefe133f7872bf3a4cde66daea70",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/recipe.mjs": "427d7d4b9ade4d19bfecc7f061b6bc87146a44b56f79aa5c6de2b95a1daa162a",
+    "godot/ui/settings_access.gd": "9c66e7a957a86695fd4ffc5e3d339cdf59bbbc587bbff23f6a688eabaf530d02",
+    "tools/godot-multiplayer/new-maps/abyssal-pressureworks/blender_author.py": "e238921171421ac5c3b2699bb47d9a4f9a3578a2c748192b78bc50fcb60d3641",
+    "tools/asset-production/candidate-admission.mjs": "f052846034b96409919f552e5dc6a9592ade3a4597747cc37dd5f3d4bccaa234",
+    "godot/tests/robot_assets/contact_probe.gd": "5b5a1b5e7aa2ed4a9fbdbe67316c6b446b875ee2434a9de6cfbfcb5b8d3d9f36",
+    "godot/campaign/robot_visual.gd": "34ae54e739b464bd01ca1beb2ca991038ce50aa7aca4cfc10942831dfc836f20",
+    "godot/campaign/environment.gd": "8264c0f32500450dbb01129fb4e9d560b3f5087d9eda4104e352061eb93895ae",
+    "game/maps.mjs": "729d94c4a3bc566d3c6b89c8c5c7d656babf338f2ab42edc988f383e021dd731",
+    "game/spec-effects.mjs": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
+    "game/soccer-maps.mjs": "9a57d95b9064c21d3c73303535379f006638aa3c476227bf92946541d1ca6669",
+    "godot/tests/asset_production/map_probe.gd": "dc2c0b4bd3de00e7501235e8d3d620899b4f4cafa55c06621dc4ff96a0876963",
+    "godot/animation/critical_spring.gd": "174b73694cc044971c5ea6eac2c1a834d1741b54a47311a0e0768fc988fa82f9",
+    "godot/campaign/robot_voices.gd": "8c34cecc71b2485e1149d619c489caca16efccb224ab4deb0e0d68a35611329b",
+    "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+    "game/math.mjs": "a9f2e5f55f7e90c567d35b4c77d7ecdeae4c28b5174d52f8cf9a5e4e59170327",
+    "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
+    "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+    "game/progression.mjs": "5b70fa168d8edb5192052ad9bed3243370db7ba8f13952a9401596a9d4bc1ce5",
+    "tools/godot-package/production_resources.mjs": "0a95ddacb4af6f0b3dc053e4963e6b4201324cecf2dbe8a02617aafb21fbe219",
+    "game/blood-gulch.mjs": "2df956608fc6fe73c77410ccb5889f09266c722c236494f46d4d585730ea9a7b",
+    "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+    "game/outcome.mjs": "f66fe5ca09e8507939d407a7eb9defd4a2d23b643a221955e0d0ad584b17ec98",
+    "godot/campaign/story_director.gd": "e3210f7d7102577c5f0d149061f2e33e45ee34b31c1625a86832ce762ec315de",
+    "godot/campaign/terrain.gd": "3c32b16fdf5899802069828c683a69c37c0b6fed1dd393e4849fa0f2aaac8068",
+    "game/race.mjs": "1c448a0f00e3354dd6fa32190f85dcc6c31883f428b07193773fcd02bf2effba",
+    "game/deaths.mjs": "2c97fa500f2dfe504b1b3c7ff5de8cc5699b44b9c79df4eedb1276107933c89c",
+    "tools/asset-production/material-validation.mjs": "874e5d31c666a8af4a98b600bb182a4f4cb9c5e6b1488d80908f855b2584bb3d",
+    "godot/horde/demo.gd": "c010585a309910a781f5dd0d87013e5fbd4bac927774c6b60ba03c444b3b7951",
+    "godot/source_operators/operator_visual.gd": "f0c7c27a15285cb882e1061c9760dafe74eb87489d811ff43888e9fff331f811",
+    "godot/horde/controls.gd": "12d725fea62d98c2ec6d81516c48d1662cf64b16dcda590e81044db49120ab98",
+    "godot/input_bindings/hints.gd": "c3e4e8f0a47095482dff2ceb50385c28d1762a80740f9baa3e68ff7e8ec4d2d9",
+    "game/character-anim.mjs": "feaff9cd77a88174210957e871420d429c3523d5b2517592749b190e602bfa01",
+    "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
+    "game/map-schema.mjs": "e4b6ebc445912c6128eb1cbc658d91d07751b85650bc92fd0fd0764ae72716b8",
+    "game/cocs-coop.mjs": "36038e1f524b1a25c9fd991990b0fddf62ccaae89c87566486f372e9e684e2a6",
+    "godot/campaign/telegraphs.gd": "6c094a4b482e61e814ea2e0e05472d364ca8f3bf258523ae5cac3653288c9607",
+    "game/singleplayer.mjs": "60ab39e4cc9dd07f38fed27c39f25b2383e0ea1257dba5ee29f2ebe7762189ce",
+    "game/spawn-placement.mjs": "b0665e410e68eaf160c1a890558a69efa035e58abd76c45c28fcc01ae42b2361",
+    "godot/source_operators/moth_finish/binder.gd": "7c807e8e257b2d8bc667eeebf283678316a86f269c653bf1cb050091fc4636f0",
+    "godot/weapon_effects/conduit.gdshader": "c93b65ca24c795e84c8124e0f0d25ec477e7c56b1b7c7f8d0a0a33d7a6d314b0",
+    "game/spatial.mjs": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
+    "game/battle-maps.mjs": "3d4ac5b9a4dfc5e896e0679ba39a8da3d579285b0e551160e45687f9437dfaf8",
+    "game/cocs-difficulty.mjs": "e3ca14ecea9333ab2d74b2ccf8f281f7a962bb67cc8c6b3d28eebbe5b37c42c0",
+    "game/objectives.mjs": "3e92ad1f85fb785362e15fd836d2b80f95060e0670e9f58a766f79ffa60742ec",
+    "godot/campaign/client.gd": "4e87bbf47f1f76d46bfe6ff26a831ca008b3da63a7a8a163035e1f8c0f4d3307",
+    "godot/campaign/art/landmarks/crown-receiver.glb": "a4fe581adb2d2a3014d3a008935a47ce82805389a7912064530f2238d74f1370",
+    "tools/godot-robots/verify_blender.py": "e16029eefc7ac280e0da9899b828e4014477c161f4f9cab63ba7da912283adc5",
+    "tools/godot-vehicle-assets/write-recipes.mjs": "7ad20fc262570d9c18522da9abbe3f660902105ce92d1ead88896fe5c62d78b3",
+    "godot/vehicles/puma.gd": "dece0e0b743fcb6377bb58fcb7dcc963fca9c7d047baa87bc89469162b2934fe",
+    "tools/godot-biomes/expansion/recipe.mjs": "0b9398f3229da1e2e42f509a4e0fb54e29686611dee8bf814f17b91023c6fbad",
+    "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
+    "godot/tests/new_maps/vesper_viaduct/collision.gd": "c4110a4944d84cdb5e770b51e52b17b18442b5a839181214873cf982b5a269d9",
+    "godot/combined_arms/fleet.gd": "66535c7fa95081ce23197fc2b1a9deb6b124589f04deafcabeeb0008f0dab146",
+    "godot/ambience/weather_profile.gd": "9dcfe97746a6b90e4470d2f3cc07ed54c0167cffae2eb82f0489a7bce1cfb2ca",
+    "godot/campaign/puppy_visual.gd": "01a65e72629968a5f5d4894b1036d76efc26fdae72e4cd7f1eea797b24dd8991",
+    "godot/campaign/structure_art.gd": "98eebc5f6e29c1b188ed4ebccc7fd5530d811fe6334f306a9d390f4875517451",
+    "game/expansion-maps.mjs": "62b30255393daa473f5c6e46056e8922c1dc74c02c993499cbe6ac3e6439537f",
+    "tools/asset-production/material_contract.py": "2beafbd6721583b1e9afd40b23379913d1b0240739d464af3f597cfe6c695924",
+    "godot/tests/robot_assets/review.py": "1e41612cd147283a7a7b6583d10856d303bbf789216ab967939697e8ef1cd9eb",
+    "godot/biomes/expansion/catalog.json": "c3465701d272399b7976150ff85a3f1503beb35f4aebf318c05581e17de8753d",
+    "tools/godot-biomes/expansion/compile.mjs": "597830e7fa4605c68f87890f4ffcc538cffe5418d575ab3b4fc75da13da7e1e0",
+    "godot/horde/client.gd": "d71aa96306e22457f4e838d0f8b58e8f6bb59a468118b9ea47ac4f3128d0063b",
+    "godot/source_operators/generated/catalog.gd": "68a847ca49fe83033ffb851ee8e3524ad92d1a9fc2b661b15ab7fd54979ee1c4",
+    "tools/asset-production/reopen.py": "4628bc44122a690495766f3cc967a82d3ab7aeab52c272cca7a202be88e0f5de",
+    "godot/tests/robot_assets/inspection.gd": "854871a9ec0c5ad0f98a28f2a6b90947c9e86800c5cc90b515d98691b09851a8",
+    "game/arsenal-maps.mjs": "fad8dff6d87dda4aef905969cd9b130e3a5c7c9776e8b1e6e0294a8dc6d63f3d",
+    "tools/godot-multiplayer/new-maps/abyssal-pressureworks/recipe.mjs": "be7baa4dc1eaa3a2daa2d4fb890874df3aa432367788174280889b92e765c8ad",
+    "game/operator-verbs.mjs": "f3bbcd2e13bc04dabf2a81a74ddee3848d6835d11d8ac063e4603ea689bf96b3",
+    "godot/campaign/catalog.gd": "612e964df74f2bc2db73f24f2caeec6602d0d174e6fa6323d981d473f7e126c7",
+    "game/alt-fire.mjs": "d7f821f28f9cfe3d12da2da3461e053f698037aa8e44540324c76a58c2e02c5f",
+    "godot/campaign/hud.gd": "c1b1bf689cb3c7ac11531aecdc25e91f5692c766e5c128fd58994cadfa877730",
+    "game/cocs-roles.mjs": "3edaf3207b6a54bf0600ee0fb9eee732bdd494351d67f9cc85b1c8e66ade67fa",
+    "game/payload.mjs": "13e357516af38fdfe6596dfa7a43cbeaae2445f492ad41df934deb8840bc92bb",
+    "game/horde-stages.mjs": "132bb551f0e517ed037d2e97fbd8ff510802eaaa7163e39da10e59745d656afb",
+    "tools/godot-campaign/trailer-fixture.mjs": "c96b7601fd1d408f1ccb73fdd451240265ae4822fc7a24cba7e5dbc15e0b2c5f",
+    "godot/horde/model.gd": "8618a91ee71799e9383258090e0e6158cd8839d76b1f3fc0d95e904ab27855db",
+    "godot/multiplayer_worlds/dressing/binder.gd": "b3e707af9da73f21b3c791c1d7deca9caad5472b422f263d9998ac961444a87d",
+    "game/cocs-bots.mjs": "bdad004df06de288be3628528485f66d7f5ded589eeca8a0daafdbdddb461d7e",
+    "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
+    "godot/campaign/story_widgets.gd": "e639f486f069bfcc8947b71682b3e427cccaf6ee816538d2c599e78fd5281e87",
+    "game/campaign-anchors.mjs": "0d07d2cfb5e67049524870b1a8af2703d57b747cc7ca85f825a545dd47e9d8a7",
+    "game/cocs-terminals.mjs": "7b96cad0dcbf2b0dfb5dd78cf1217298edaf70785e482fb3944745636d3efa3f",
+    "game/bots.mjs": "2a6d3fcd7960711fc4aeefe77aaa39dc1a318c6c36097ede7010894a411cf95a",
+    "godot/source_operators/hand_grips.gd": "5605a6c90051f19803b4e0fca1890daced1601b5cde7f7eddb6bfb5caaaa2d59",
+    "game/nextgen-maps.mjs": "9a8dc8720a2395edf796a0d630f0033c9aa29d872d3fcf98db3aefabdac33727",
+    "game/island-maps.mjs": "5fff90834c33d65bd8a06a70528aff45f7d5b09840b8eaa0a3a9c5f23f4d0cf7",
+    "godot/biomes/surface.gdshader": "72aa205f7781f7984efae2941b2636e6c755aa81f569c64d275c1b37f438d27e",
+    "port/native-campaign/match.mjs": "c57987bcea97d3bfb37a849b26e33fd4217717b1ac9f081e70b670093336b4ed",
+    "game/cocs-traversal.mjs": "555e742ff721549db974ac470a2b523ac6dad98659c40f7399a11e904c7672f7",
+    "game/lattice-support.mjs": "5d359bf2a7fb06a3e6f0085cf13c68d2db900297223298d2befffd8edb393f3a",
+    "game/ragdoll.mjs": "10bd8cb43405d45a42d5034261ce89119a8bf05c24c3ca1f47f1b4b4202efa3d",
+    "port/edge-effects/structure-rays.mjs": "e22f5f7c57339e8198c37791b7e9221d64987a3d77c6bcc338a66718a2e65d86",
+    "port/native-campaign/maps.mjs": "788189729bbf4a4a39835371d9fc8db62c56e9da00484416b7f5de030ae67d7d",
+    "godot/audio/buses.gd": "97db3039f41b01ef3cf75600163bf195e08a9222f23b2cc9b956e04fe25a8c86",
+    "godot/campaign/environment_art.gd": "da891f287ca5be6659581c9542d5926283b77b6951d289836e307aa5e61b03ae",
+    "godot/campaign/model.gd": "60201e2fdc6d5e9b80f71a2cf2ef8058ccec860690aa27d35625f8b0ab4ee2b1",
+    "game/kits.mjs": "e44908b88341bce5f4df8ffe9e896482202466dc502fd93059ba63e5b54c40bd",
+    "godot/campaign/smoke_route.gd": "4d0615794fe303624b5b8dae4c9c5e7da46d9f699a314c7d4aafa9b9f3d4637c",
+    "game/ctf-maps.mjs": "4f91623e6cc6914b9cca688edd7b37a1ba0e804808943a40deb27525ab78107f",
+    "game/lattice-maps.mjs": "d3eae8ec886ed66dfc04c420d9a4e6051368dff385bc680cf238387545c91016",
+    "godot/robot_assets/switchyard/workshop.gd": "c105afbc0874fc2afb7d56b72a48bcd6546873e62669ec08cef037daa936e81e",
+    "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
+    "godot/campaign/robot_parts.gd": "03c20644298f8dc939a25717bb347ddfc46aa89efbbdf561d3e13f735cc1a1c9",
+    "port/native-arenas/input-buffer.mjs": "334f743c89be3f9325aa6a844e3f36c9914d4bab274346be3b1f76a86d5b924e",
+    "port/native-campaign/missions.mjs": "98a513a688ed00383f25d44f92733108bbc702ad9927153154bc0ad0798678a1",
+    "port/native-arenas/event-cursor.mjs": "786f215d9ee2a78e9cb23a491688e0d10325c0600cc6b212baa5c022be84160d",
+    "godot/source_operators/generated/world_weapons/catalog.gd": "75a8d812f8a391e948e7417b139d85bfa03856c79d33c0c4b27858ad46438061",
+    "game/moth-assets.mjs": "736d5ff7e844f8210b273791f4806bae916a4e463494f64c78b94bd4cb2768ab",
+    "game/moth-baked.mjs": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2",
+    "game/lattice-roles.mjs": "bd1f1165c3e2b3dfa3b33e3351f90db1039eaf264ddadab08e5e481dcee31340",
+    "godot/source_operators/armor_detail.gd": "527f338429731dda5b4187e8ec69f27a45975864c0fd12162b3dd316dde13cf3",
+    "game/cocs-economy.mjs": "1fdbdddeeabb32eff1dbb1d73bc34506d63c2e3e2ac6fb0a37851465865f8f93",
+    "godot/biomes/foliage.gdshader": "5a47dae07b73dd0a8b27576493241bbbb1ee3f9d42b7d5cb73cda5b5be8ca085",
+    "godot/ui/weapon_names.gd": "c1e1abcb4d0556596c9e3996637e4210da4c5d35e3b4b6de019251822c503fb3",
+    "godot/source_operators/surface_detail.gd": "ab8c502f1646dd4c74de0c813f6bfd531af2935e0894da8f813395c9db0b2b5c",
+    "port/native-campaign/interludes.mjs": "6b92dab959bbccf2a6e6c0ec0f5ceda24dcf5c2958301e2dec37d372623ef5d8",
+    "port/native-arenas/schema.mjs": "4e818f430aff81beaf70c83d3ef36359750e6ee230a587b2828973ff40b9d1f1",
+    "godot/player_models/builder.gd": "36871df836cdfb70e7940aaa7e9abb6b97e4c74b293b95c9a7b1cff31ebbc508",
+    "game/bot-personalities.mjs": "173c86b85a7c688987a9f65dd72195042c75f0038bb9f10ef22a79f3dcc699c2",
+    "godot/source_operators/textures/vent_panel.svg": "11f25d7299f5932f65d46a239ed91488e550d9c03238df17aff6436464cb3b4f",
+    "godot/input_bindings/mapper.gd": "676ed9869ac32ac510c3396c98c6e8a4e711e379546bb7e174afec51be607f80",
+    "tools/asset-production/run.py": "13b8163400b89b4e5e4f1bd04b4426086766c063cfad156163dc1847f9052c85",
+    "tools/godot-biomes/expansion/meshes.json": "f46577afcc7fd0c57086cbcb624454787df4f903f62e70cad8bba296fe22f90d",
+    "game/cosmetics.mjs": "466d6eba56296a88b698a6036cc40b1381634b30d350fe04757832a15779b98a",
+    "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
+    "game/race-maps.mjs": "d14c6d5cf31728cb5bac4363b142d16a79705b727f7e015774d80a68d5abf4b3",
+    "godot/first_person/art_adapter.gd": "a4fe3e2476721dd6aeb5a05dcd9a4324dbd68420ac9fa7836d19c2e025075d7b",
+    "port/native-campaign/authority.mjs": "44b04d320252665275c2f672c8aa6bf6b7716f4fe8aa78ce705b13e08efbac7f",
+    "godot/ambience/wet_surface.gd": "3ed63cc464c5ad2efffec2b80e72647d2d60e54a0b7a2e615f82083236f91279",
+    "game/cocs-director.mjs": "926af20afc920c3d3a6ff9870322d128414205a7c80b84d7c19073471069ed8d",
+    "godot/input_bindings/access.gd": "800fc378101e7206d16f35b96c9a2ca71fa73f295592454a6997ec743885c907",
+    "port/native-arenas/catalog.mjs": "d22963bf548bf4dbb8f09e03f2a5722d834ee101aa6a015f978391440e8fdda6",
+    "game/attachments.mjs": "66c46bfb2bae119a61ba7ffcdd301e34fad42a50e2dc3c7833828b9abfdcef14",
+    "game/cocs-squads.mjs": "b6d234b007e6d80a670c4646c43fdaf6485e62120876fe6ccbe210ac026cd6a1",
+    "godot/world/weapon_selection.gd": "079435cbe98558ae6aa5918bdc4cc217b7504230c0807811624bef559ecc578e",
+    "godot/biomes/map.gd": "449137e35bd30b0f0125954866170fdc771c53a466a83b3988b1453456ce4d1c",
+    "game/soccer.mjs": "78da2d005207c5e744f56a2d3924d0bf82ed4c62b29bd0702b97513b74359972",
+    "godot/input_bindings/model.gd": "239c36c5ffa2b8c2828e107a273852a93c471e44fd01177f8a64ca0946543c68",
+    "godot/blood_fx/wire.gd": "3ba5ffaf7a4a47188fa4298bea0f637cc890c7807eaa1c1da77011d1016462de",
+    "godot/multiplayer_worlds/dressing/wear_panel.gdshader": "2628addabee8718df5801862c85407df9088feba17cfaec243e75bcffd4490e3",
+    "godot/campaign/materials/ground.gdshader": "d117afbd9d4557f446c1c66307ab0bb91888e608801b94034cafba4100f6abc4",
+    "godot/source_operators/locomotion.gd": "ec2d10554891a4e4f96b6b407c6fdcc1333d2c37884b8541934bcea3c370d949",
+    "godot/debug/solo_cheats.gd": "8c69a4de4cc09d5978417bf26f6fff819131a7e0263a174a55c7762df87207c5",
+    "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba",
+    "port/native-debug/solo_cheats.mjs": "0cc64832eac2775e9d2deef85c710d413501507c6edaf1043c13677ede6e7017",
+    "game/campaign-data.mjs": "bac73e42b0d519d8929c1dbdf004c088a05c46ecb757f784b632859a7d4c380c",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "godot/campaign/story_gesture.gd": "e2624b4c33be50718a296bc08c1743bbcbf5e7b4ce8ce3de3f8387f38d42a43c",
+    "game/cocs.mjs": "1224034a80181d83571f15034059aa979545afc171632e6588fe9d2ebf3724e6",
+    "game/destination-maps.mjs": "e8ac0655a4ae8030f70a76f258784c5007ea2be808f0cb10547385c6ceffeda2",
+    "game/protocol.mjs": "362716c6b5ba222a64a76580efae1513c65eededd5a33116ff53974bf07a7fdb",
+    "godot/first_person/finish.gd": "9e52812cf032b12761330555ecb2601ace27ebeadfb7a5971b3b99e035934b89",
+    "godot/source_operators/motion_math.gd": "ef5133895e42a7b5e60e80bfc5e09da021566ab1e40ae12eee523d4c46d8b633",
+    "godot/source_operators/ground_contact.gd": "566f0b43f3430593eff3e6a35a9841a4ed3a67e00b202c3153f5fab75fb5b4fd",
+    "godot/multiplayer_worlds/dressing/profile.gd": "ee41823e074ea8571e25d1671aedf5c3918ffa56af0427e24640a45a3662a59c",
+    "godot/multiplayer_worlds/dressing/surface.gd": "70e88ee5b9d46e95f0ff8bc7a7b5876cf20a6b052d016efd69955fe72e35b5d0",
+    "port/native-campaign/core.generated.mjs": "2800bec533c3810a94d61e2f7f20f93574e44b13346dee2085200a0467759cca",
+    "game/moth-maps.mjs": "613cdeac0ea8f5f64c988f051698661825d2053268b75fe1151c7beacfcdc081",
+    "port/multiplayer-worlds/catalog.mjs": "d2919c888433f16d8183ed33c408514b3894272d8ac7d35ba04c85b61fb7c4f2",
+    "godot/moth_scenery/motes.gdshader": "2f7cf8c3f658eb57781169bbee664e093c4cc4fb038c7097be750d7961d30807",
+    "godot/experience/scroll_keys.gd": "c861aeb98b7e88ba104fe2424bf8ff7af3dda6bc9e46b26ebf8c16cf222eb16c",
+    "game/levelgen.mjs": "3a5b2285b1a9703cded463bdffa0cc73f38b75b427e0ce9371919c646a4dd38b",
+    "game/enemy-types.mjs": "92b600584061d0626b35dd44ae94e1903ba178b390f600a0254fbc5505685613",
+    "godot/first_person/generated/finishes.gd": "29f1fb1709a567f7eea56cc192ab93495c76c6b92214a372101c0d7499eca798",
+    "game/operator-profiles.mjs": "b7c4aec4aac899626ad5d7a78f5870218513a5b1d38ff12f2312beacc32882ba",
+    "port/native-campaign/enemies.mjs": "f3bed6afe31c3ee87f05cf3f02f162916785eedf64171ed7bb7058d6668b6b7e",
+    "game/story.mjs": "6306ec902fbb8427dd0060ac79084c95bb7fc6999a49f28ec86cae9ddccf059b",
+    "godot/material_language/library.gd": "bad8d3c963405a5870c68861d43395281aa2beea7d5f4961df5796ebce26e136",
+    "godot/campaign/art/landmarks/fallen-relay.glb": "dc013e16360fb018fb28dcf76fc6faf74aa7fc1d5ef6a8f480f1f47f4f61b2cf",
+    "godot/moth/library.gd": "807663e54afe3e0ff5275511772cffd50d749731b5c2719f096701063b01647d",
+    "godot/multiplayer_worlds/abyssal_presentation.gd": "2a2be7d8c8dc95ece97bbd4f8cec0190d6f407f8a34655882898a48e4868dea8",
+    "godot/horde/ground_tells.gd": "dcc04bb48de3dba888bdd30c03f4be64a9b42b03c83a121dcb881b1a614716e4",
+    "godot/native_arenas/maps/geometry.gd": "5879559142e2be1548c313b1902a2c4a89bcc4c37ca6fed5c41ab9aa61cab231",
+    "godot/source_operators/character_rig.gd": "9973a81ed85f55146897a3faab6f8518af43c68bb9507ca3ffb2a10ead489846",
+    "godot/source_operators/textures/armor_panel.svg": "f52fb1cd5c2725fbf8b7a491c649378fc7c4816cfb38a4bf5f167f3d4997756f",
+    "godot/material_language/families.gd": "a3351d2b1909b8258f9fb24ef61b91f9879f2d0aed694ac6fd1ad5aeef4d40db",
+    "godot/moth_scenery/panel.gdshader": "fb6c4f137d9ae83c37d492675aeabfd84ad2d06f7946b7a9cacdccb6c08d3d41",
+    "godot/multiplayer_worlds/dressing/surface.gdshader": "8d77b5729585a3129009a0f67da64044181e7747c641c03c9b02dcd09206d3ff",
+    "game/destination-sports-maps.mjs": "bd3f486d57b188163b16193b4ce05401bac14ad19b40b73768525c9ca4d0e0b1",
+    "game/structures.mjs": "445ace67e41028e602aab692578c9d200ca8fb58d1b3f9f8c1568c5ac2b5d1d2",
+    "port/native-campaign/story.mjs": "58aacd949b9acc2a6eca4fc63902849db23c060b7c120c07ec6a344f6353bb89",
+    "godot/source_operators/textures/panel_roughness.svg": "e551956f2b83f6f40ede7eff2c7fc48446d9e5e37f05e555f081d26cefdc353b",
+    "port/native-campaign/targeting.mjs": "3271b82fcebdb6c82bd80e8e9c3ffd3a4ca001c7dcf4e0ede8727c8f5d4435d1",
+    "port/native-campaign/feel.mjs": "0d4e9cc29f54fc372f266b13b79fd4b6615f6264a13929522b13feaa36873557",
+    "godot/source_operators/textures/service_board.svg": "e6fea316444112711d4e1bb5c1d9237fab0ad9043aa4a05f41f0bd39aecdd02c",
+    "game/lattice-foundry.mjs": "5c63d3d1c36e9957a6181cc2e7f83f27056599040ad9f4f7714d43c5596b4c56",
+    "game/destination-combat-maps.mjs": "a8964b89d4fa2dffac2d0b7ee49fe6fc70e9e261fd9a5078b2630370a5f7316b",
+    "game/destination-objective-maps.mjs": "f995d7ec863f848ac7e3aa6a9a48e2a51b27f6fda7749e86877594665a1c79d8",
+    "port/native-campaign/interlude-definitions.mjs": "d1438eaa1291af27e59513814ec9b4c518e01baef5f5fb53be27df79ddf77df5",
+    "godot/material_language/family.gdshader": "a7340a0c4b6856ed64ba5e4a6a3e3095efbe142f567aef4e641c5e56c518341a",
+    "game/destination-lattice-maps.mjs": "a7110177c2e4dca4b56f88f7e0d768b96df935661e0d4dfe87ba2970be8b1966"
+  },
+  "freeGiB": 33.562503814697266,
+  "diskReady": true,
+  "coreSha256": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+  "frozenDiffEmpty": true,
+  "materialContract": {
+    "units": {
+      "robots": {
+        "switchyard_vertex_enamel": {
+          "role": "coating",
+          "normalRequired": false,
+          "colorRequired": true,
+          "sourceHashes": {
+            "godot/moth/generated/textures/sand.png": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96"
+          },
+          "normalStrength": 0
+        }
+      },
+      "vehicles": {
+        "armor": {
+          "role": "coating",
+          "normalRequired": false,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/sand.png": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96"
+          },
+          "normalStrength": 0
+        },
+        "edge": {
+          "role": "alloy",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/brushed_metal.png": "271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51"
+          },
+          "normalStrength": 0.08
+        },
+        "rubber": {
+          "role": "rubber",
+          "normalRequired": false,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/sand.png": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96"
+          },
+          "normalStrength": 0
+        },
+        "recess": {
+          "role": "coating",
+          "normalRequired": false,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/sand.png": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96"
+          },
+          "normalStrength": 0
+        },
+        "seat": {
+          "role": "fabric",
+          "normalRequired": false,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/sand.png": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96"
+          },
+          "normalStrength": 0
+        },
+        "team_accent": {
+          "role": "coating",
+          "normalRequired": false,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/sand.png": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96"
+          },
+          "normalStrength": 0
+        },
+        "lamp": {
+          "role": "preserve",
+          "normalRequired": false,
+          "colorRequired": false
+        },
+        "red": {
+          "role": "coating",
+          "normalRequired": false,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/sand.png": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96"
+          },
+          "normalStrength": 0
+        }
+      },
+      "scenery": {
+        "biome4_bark": {
+          "role": "bark",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/macro-organic.png": "de19687a5b14599a3e738f6006b08ad3380b023d6d19d4d2270b903350f5341a"
+          },
+          "normalStrength": 0.06
+        },
+        "biome4_moss": {
+          "role": "foliage",
+          "normalRequired": false,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/grass.png": "b34ff20efcd0abad36323f9c6ffca4f30325dc91f7110a624ce7dac1d4f2fe64"
+          },
+          "normalStrength": 0
+        },
+        "biome4_sandstone": {
+          "role": "mineral",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/weathered_concrete.png": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550"
+          },
+          "normalStrength": 0.1
+        },
+        "biome4_silt": {
+          "role": "mineral",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/weathered_concrete.png": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550"
+          },
+          "normalStrength": 0.1
+        },
+        "biome4_basalt": {
+          "role": "mineral",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/weathered_concrete.png": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550"
+          },
+          "normalStrength": 0.1
+        },
+        "biome4_copper": {
+          "role": "alloy",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/brushed_metal.png": "271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51"
+          },
+          "normalStrength": 0.08
+        },
+        "biome4_ceramic": {
+          "role": "coating",
+          "normalRequired": false,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/sand.png": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96"
+          },
+          "normalStrength": 0
+        },
+        "biome4_iron": {
+          "role": "alloy",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/brushed_metal.png": "271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51"
+          },
+          "normalStrength": 0.08
+        }
+      },
+      "vesper-viaduct": {
+        "brick": {
+          "role": "mineral",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/weathered_concrete.png": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550"
+          },
+          "normalStrength": 0.1
+        },
+        "plaster": {
+          "role": "mineral",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/weathered_concrete.png": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550"
+          },
+          "normalStrength": 0.1
+        },
+        "slate": {
+          "role": "mineral",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/weathered_concrete.png": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550"
+          },
+          "normalStrength": 0.1
+        },
+        "iron": {
+          "role": "alloy",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/brushed_metal.png": "271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51"
+          },
+          "normalStrength": 0.08
+        },
+        "quay": {
+          "role": "mineral",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/weathered_concrete.png": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550"
+          },
+          "normalStrength": 0.1
+        },
+        "cobbles": {
+          "role": "mineral",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/weathered_concrete.png": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550"
+          },
+          "normalStrength": 0.1
+        },
+        "asphalt": {
+          "role": "mineral",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/weathered_concrete.png": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550"
+          },
+          "normalStrength": 0.1
+        },
+        "sandstone": {
+          "role": "mineral",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/weathered_concrete.png": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550"
+          },
+          "normalStrength": 0.1
+        },
+        "glass": {
+          "role": "preserve",
+          "normalRequired": false,
+          "colorRequired": false
+        },
+        "water": {
+          "role": "preserve",
+          "normalRequired": false,
+          "colorRequired": false
+        },
+        "letter": {
+          "role": "preserve",
+          "normalRequired": false,
+          "colorRequired": false
+        }
+      },
+      "abyssal-pressureworks": {
+        "navy": {
+          "role": "coating",
+          "normalRequired": false,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/sand.png": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96"
+          },
+          "normalStrength": 0
+        },
+        "coral": {
+          "role": "coral",
+          "normalRequired": false,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/sand.png": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96"
+          },
+          "normalStrength": 0
+        },
+        "ivory": {
+          "role": "coating",
+          "normalRequired": false,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/sand.png": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96"
+          },
+          "normalStrength": 0
+        },
+        "copper": {
+          "role": "alloy",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/brushed_metal.png": "271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51"
+          },
+          "normalStrength": 0.08
+        },
+        "cyan": {
+          "role": "preserve",
+          "normalRequired": false,
+          "colorRequired": false
+        },
+        "amber": {
+          "role": "preserve",
+          "normalRequired": false,
+          "colorRequired": false
+        },
+        "glass": {
+          "role": "preserve",
+          "normalRequired": false,
+          "colorRequired": false
+        }
+      },
+      "stormglass-causeway": {
+        "asphalt": {
+          "role": "mineral",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/weathered_concrete.png": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550"
+          },
+          "normalStrength": 0.1
+        },
+        "concrete": {
+          "role": "mineral",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/weathered_concrete.png": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550"
+          },
+          "normalStrength": 0.1
+        },
+        "salt": {
+          "role": "mineral",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/weathered_concrete.png": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550"
+          },
+          "normalStrength": 0.1
+        },
+        "amber": {
+          "role": "preserve",
+          "normalRequired": false,
+          "colorRequired": false
+        },
+        "teal": {
+          "role": "coating",
+          "normalRequired": false,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/sand.png": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96"
+          },
+          "normalStrength": 0
+        },
+        "brick": {
+          "role": "mineral",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/weathered_concrete.png": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550"
+          },
+          "normalStrength": 0.1
+        },
+        "glass": {
+          "role": "preserve",
+          "normalRequired": false,
+          "colorRequired": false
+        },
+        "steel": {
+          "role": "alloy",
+          "normalRequired": true,
+          "colorRequired": false,
+          "sourceHashes": {
+            "godot/moth/generated/textures/brushed_metal.png": "271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51"
+          },
+          "normalStrength": 0.08
+        },
+        "ocean": {
+          "role": "preserve",
+          "normalRequired": false,
+          "colorRequired": false
+        }
+      }
+    },
+    "resources": {
+      "godot/moth/generated/textures/sand.png": "9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96",
+      "godot/moth/generated/textures/brushed_metal.png": "271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51",
+      "godot/moth/generated/textures/macro-organic.png": "de19687a5b14599a3e738f6006b08ad3380b023d6d19d4d2270b903350f5341a",
+      "godot/moth/generated/textures/grass.png": "b34ff20efcd0abad36323f9c6ffca4f30325dc91f7110a624ce7dac1d4f2fe64",
+      "godot/moth/generated/textures/weathered_concrete.png": "2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550"
+    },
+    "master": {
+      "game/moth-baked.mjs": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+    }
+  },
+  "nodeWs": {
+    "ok": false,
+    "resolved": "",
+    "error": "node:internal/modules/package_json_reader:314\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n        ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find package 'ws' imported from /home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-20261002/[eval1]\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\n    at moduleResolve (node:internal/modules/esm/resolve:855:18)\n    at defaultResolve (node:internal/modules/esm/resolve:985:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:783:38)\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:806:52)\n    at Object.resolve (node:internal/modules/esm/initialize_import_meta:35:25)\n    at file:///home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-20261002/[eval1]:1:25\n    at ModuleJob.run (node:internal/modules/esm/module_job:343:25) {\n  code: 'ERR_MODULE_NOT_FOUND'\n}\n\nNode.js v22.23.1"
+  },
+  "readyForExplicitGrant": false,
+  "grantOverride": "STORMGLASS-ASSET-PRODUCTION-20261003-J"
+}

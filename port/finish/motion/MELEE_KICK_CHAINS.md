@@ -41,3 +41,44 @@ For live acceptance, record normal F press/release at ≥0.30 s intervals agains
 - Anticipation: https://education.siggraph.org/static/Drupal_2025/education.siggraph.org/static/HyperGraph/animation/character_animation/principles/anticipation.html
 - Weight shift: https://studio.blender.org/training/animation-fundamentals/5d69b398c4769bb8cceb0709
 - Animation principles: https://www.dgp.toronto.edu/~patrick/csc418/notes/tutorial11.pdf
+
+## Executable ordinary-input live producer (source-only prepared)
+
+`tools/godot-weapons/kick-live.py` now runs the complete bounded evidence group after the exclusive grant:
+
+```sh
+python3 tools/godot-weapons/kick-live.py \
+  --execute-native --grant PARENT_ISSUED_GRANT_ID --godot "$GODOT_BIN" \
+  --output /tmp/opencode/kick-live-UNIQUE
+```
+
+Prerequisites: clean committed worktree, existing Node `ws` dependency, Godot 4.5.x and Xvfb. The runner refuses execution without the explicit native flag; **the flag is not a grant**. No engine, renderer, server, importer or live producer was executed during source-only preparation.
+
+The parent-issued `--grant` identifier is required authorization **metadata**, not self-authorization. Before staging or launching anything, the runner acquires `/tmp/opencode/cocs-finish-acceptance.lock` using `fcntl.LOCK_EX | LOCK_NB`. A busy slot fails immediately; there is no lock wait or retry. The lock stays held through copy, import, authority, render, all cleanup audits and summary writing.
+
+`LP_NUM_THREADS` is fixed to **1**, overrides inherited environment settings, and is recorded in summary metadata. This is the actual configured llvmpipe worker count, not a measurement of total engine threads and not a benchmark/rebench. There is no multi-thread override. Staging copies **only Git-tracked project files**, excluding ignored/untracked injections even when `git status` would omit them. Revision/clean status are checked again after staging; SHA-256 of the runner, authority fixture and native observer is recorded beside the clean executing revision.
+
+The runner records the exact executing `git rev-parse HEAD`, clean `git status`, commands, exit status and cleanup in `summary.json`. It creates a private project copy excluding `.godot`, private HOME/XDG directories and display. Process groups are owned with `start_new_session`, terminated then killed/reaped on success, error, timeout, SIGINT or SIGTERM. Overall deadline is 900 seconds including staging/import; import 600 seconds, semantic probes 30 seconds each, live client 45 seconds each (native self-deadline 40), authority self-deadline 60. There is no detached/background daemon. All logs remain in the requested evidence directory.
+
+Cleanup records actual `/proc/*/stat` process-group membership, including descendants and zombies, rather than trusting the leader's return code. SIGTERM gets a bounded grace period; SIGKILL is sent **only if group members remain**, with escalation recorded. Every owned group receives a fresh final bounded membership audit. `cleanup_audit` records owned/audited group counts, survivor count and `all_groups_empty`; missing audits or any survivor fail acceptance. Authority shutdown requires exit 0, no forced escalation and an empty group. A forced-killed server can never make a journey clean even when the subsequent audit is empty. Xvfb's expected service teardown is labelled separately as `role: display`; it still requires zero survivors but does not masquerade as a clean game/server exit.
+
+### Authority and input provenance
+
+- Real production `createGameServer` / Room / Match / WebSocket protocol, normal 60 Hz source time, shipped `meridian-exchange` geometry. A test-only wrapper on registry ticking sets **one initial placement before the first simulation step** around the clear western spawn, local `(-44,0,-34)` and target `(-44,0,-35.2)`. Both start with normal 100 health and zero armor; the target is a stationary practice participant (`bot:false`). The local initially faces away so the ordinary pointer-capture click cannot damage the target. Construction-only setup is explicitly logged.
+- No post-setup actor position, health, cooldown or authority-action writes. `godot/tests/first_person/kick_live.gd` instantiates the shipped session and uses `Input.parse_input_event` for F, W, number 2, Escape, right/left mouse and look. It never calls `apply_events`, `apply_actor`, `apply_pose`, `advance`, `send_frame`, or kick-model methods. Snapshots/events/rig state are observed only.
+- **Chain scenario:** ADS → first F hit → early F held beyond cooldown (no new event) → normal W follows actual knockback → second/third fresh F hits. Source health must be exactly **55, 10, 0**. Ordinary look-away creates a miss; the next press must return to step 1. Number 2 interrupts a later kick, then a fresh F and Escape test pointer-release interruption.
+- **Blocked scenario:** separate match, explicitly labelled construction-time `protection:25`. Two ordinary accepted F presses must be blocked with health unchanged and step 1, then the same look-away/miss/swap/release checks. This is a controlled protection fixture, not a claim that protection was earned through gameplay.
+- `authority.jsonl` logs original input envelopes, setup, accepted IDs/outcomes/source times and actual target health; `native-report.json` logs received IDs, input events, observational per-frame kick states, checks and captures. The runner requires identical ordered unique authority/native IDs, legal cooldown gaps, expected action counts (**6 chain / 5 blocked**) and correct health results. Native early-press assertion is additionally backed by source-only held-edge tests.
+
+### Render evidence and honesty gates
+
+Contact PNGs come from the **normal rendered session after real accepted F input**, not a posed leg fixture. Each capture stores event ID, strike/step, actual rig age, event-receipt timestamp and rendered-frame timestamp (taken before PNG encoding). Model contact remains 95 ms after receipt; `receipt_to_render_ms` reports the real observed frame delay. Damage is already authoritative at acceptance. The runner requires actual 1280×720 PNG files and active first-three chain poses 1/2/3 in the bounded 95–160 ms sampling window. Slow rendering that misses this window fails evidence rather than silently substituting staged imagery.
+
+The existing offline `kick_capture.gd` remains the separate full nine-profile × three-strike × five-phase gallery. Replay/hidden-drain semantics are deliberately checked by the existing `first_person/lifecycle.gd` and `protocol/melee_feedback.gd`, plus `kick_chains.gd`, which the group runs before live journeys. Live protocol replay injection is not used. Death/respawn/Home and full reload/sprint behavior remain in separate semantic/manual lifecycle coverage; the live producer specifically proves ADS, swap and Escape interruption and target death.
+
+Source-only verification of the producer:
+
+- `node --test tools/godot-weapons/kick-live.test.mjs`: **3/3 passed**. Executes shipped-map placement/occlusion and ordinary source-input knockback-following chain (55/10/0), blocked/early held-edge/miss behavior, and a live-observer no-injection source contract. No socket is opened.
+- `python3 -B tools/godot-weapons/kick_live_contract_test.py`: **3/3 passed**, including rejection of missing images, duplicate/reordered IDs, unearned damage and extra actions. Does not execute the runner.
+- New native observer parses with `gdparse`; Python AST and Node syntax checks pass. **Godot type-check and actual live execution remain pending the exclusive grant.**
+- Follow-up policy checks: `python3 -B tools/godot-weapons/kick_live_policy_test.py`: **6/6 passed**. Covers nonwaiting lock refusal/release, absent-leader descendant and zombie detection, real tiny Python parent/child group shutdown, forced-stop rejection for authority despite zero survivors, mandatory grant/one-thread source policy, and exclusion of ignored/untracked injected files during staging. Only short synthetic Python processes were spawned; no server or engine. Original source contracts remain **3 Node + 3 Python**; native still pending.

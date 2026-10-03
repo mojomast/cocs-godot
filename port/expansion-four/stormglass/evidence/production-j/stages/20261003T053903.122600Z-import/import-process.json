@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "godot",
+    "--editor",
+    "--import",
+    "--quit"
+  ],
+  "started": "2026-10-03T05:39:03.245110+00:00",
+  "timeoutSeconds": 600,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T053903.122600Z-import/import.log",
+  "processGroup": 1661203,
+  "exitCode": 0,
+  "ended": "2026-10-03T05:39:11.174548+00:00",
+  "ownedGroupTeardownRequested": true
+}

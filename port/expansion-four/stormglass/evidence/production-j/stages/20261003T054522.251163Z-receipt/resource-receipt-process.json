@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "node",
+    "tools/asset-production/receipt.mjs",
+    "stormglass-causeway"
+  ],
+  "started": "2026-10-03T05:45:22.369727+00:00",
+  "timeoutSeconds": 60,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T054522.251163Z-receipt/resource-receipt.log",
+  "processGroup": 1696234,
+  "exitCode": 0,
+  "ended": "2026-10-03T05:45:22.684202+00:00",
+  "ownedGroupTeardownRequested": true
+}

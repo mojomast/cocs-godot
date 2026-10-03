@@ -12,15 +12,21 @@ import bpy
 ROOT = pathlib.Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(ROOT / 'tools/asset-production'))
 from moth_finish import finish_scene
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from architecture import author
 ID = 'stormglass-causeway'
 DATA = json.loads((ROOT / 'port/native-multiplayer-worlds/worlds' / (ID + '.json')).read_text())
 MASTER = ROOT / 'tools/godot-multiplayer/new-maps' / ID / (ID + '.blend')
 ART = ROOT / 'godot/multiplayer_worlds/art/worlds' / (ID + '.glb')
-COLORS = {'asphalt': (.055,.085,.10,1), 'concrete': (.31,.38,.39,1),
-          'salt': (.66,.73,.69,1), 'amber': (.75,.36,.045,1),
-          'teal': (.035,.22,.25,1), 'brick': (.27,.13,.085,1),
-          'glass': (.07,.34,.43,1), 'steel': (.12,.19,.22,1),
-          'ocean': (.02,.075,.105,1)}
+# Authored display swatches, explicitly converted to Blender scene-linear once.
+COLORS = {'asphalt': (.23,.28,.30,1), 'concrete': (.55,.60,.60,1),
+          'salt': (.76,.80,.76,1), 'amber': (.94,.62,.16,1),
+          'teal': (.14,.42,.44,1), 'brick': (.48,.29,.22,1),
+          'glass': (.16,.46,.53,1), 'steel': (.29,.37,.39,1),
+          'ocean': (.07,.23,.29,1)}
+
+def linear(color):
+    return tuple(c / 12.92 if c <= .04045 else ((c + .055) / 1.055) ** 2.4 for c in color[:3]) + (color[3],)
 
 if '--verify-only' in sys.argv:
     editable = bpy.data.collections.get('EDITABLE recipe components')
@@ -38,10 +44,10 @@ else:
     materials = {}
     for name, color in COLORS.items():
         material = bpy.data.materials.new(name)
-        material.diffuse_color = color
+        material.diffuse_color = linear(color)
         material.use_nodes = True
         node = material.node_tree.nodes.get('Principled BSDF')
-        node.inputs['Base Color'].default_value = color
+        node.inputs['Base Color'].default_value = linear(color)
         node.inputs['Metallic'].default_value = .5 if name == 'steel' else .05
         node.inputs['Roughness'].default_value = .25 if name in ('glass', 'ocean') else .72
         material.use_backface_culling = False
@@ -65,6 +71,24 @@ else:
         start = len(verts)
         verts.extend(vertices)
         faces.extend([[start + index for index in face] for face in source['triangles']])
+    detail = bpy.data.collections.new('EDITABLE coastal architecture')
+    bpy.context.scene.collection.children.link(detail)
+    def emit_detail(name, vertices, triangles, material):
+        vertices = [(x,-z,y) for x,y,z in vertices]
+        mesh = bpy.data.meshes.new(name)
+        mesh.from_pydata(vertices, [], triangles)
+        mesh.update()
+        mesh.materials.append(materials[material])
+        obj = bpy.data.objects.new(name,mesh)
+        obj['source_collision'] = 'none; outside frozen race envelope'
+        detail.objects.link(obj)
+        verts,faces=batches.setdefault(material,([],[]))
+        start=len(verts)
+        verts.extend(vertices)
+        faces.extend([[start+i for i in face] for face in triangles])
+    author(DATA,emit_detail)
+    detail.hide_render = True
+    detail.hide_viewport = True
     editable.hide_render = True
     editable.hide_viewport = True
     for name, (vertices, faces) in batches.items():
@@ -85,6 +109,13 @@ else:
         obj.location = (label['x'], -label['z'], label['y'])
         obj.rotation_euler = (1.57079632679, 0, -label['heading'])
         curve.materials.append(materials['amber'])
+    bpy.ops.object.select_all(action='DESELECT')
+    for obj in list(export.objects):
+        if obj.type == 'FONT':
+            obj.select_set(True)
+            bpy.context.view_layer.objects.active = obj
+            bpy.ops.object.convert(target='MESH')
+            obj.select_set(False)
     MASTER.parent.mkdir(parents=True, exist_ok=True)
     ART.parent.mkdir(parents=True, exist_ok=True)
     finish_scene(ROOT, ID)

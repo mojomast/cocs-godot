@@ -1,0 +1,33 @@
+// Exact shared runner, with only this unit's private presentation/evidence paths.
+// Its authority derivation, current wall broadphase, clock and lifecycle are intact.
+import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {resolve} from 'node:path';
+import {pathToFileURL} from 'node:url';
+import assert from 'node:assert/strict';
+const root=resolve(import.meta.dirname,'../../../..');
+const source=resolve(root,'tools/asset-production/candidate-hosted.mjs');
+let text=readFileSync(source,'utf8');
+const originalSha=createHash('sha256').update(text).digest('hex');
+const anchor="id==='vesper-viaduct'?'res://tests/new_maps/vesper_viaduct/hosted.tscn'";
+assert.equal(text.split(anchor).length,2);
+text=text.replace(anchor,"id==='stormglass-causeway'?'res://tests/new_maps/stormglass_causeway/hosted.tscn':"+anchor);
+text=text.replace("const args=['--path'","const args=['--verbose','--path'");
+text=text.replace(/from '(\.\/[^']+)'/g,(_,p)=>`from '${pathToFileURL(resolve(root,'tools/asset-production',p)).href}'`);
+const planAnchor="const out=resolve(plan.evidenceRoot,'hosted',";
+assert.equal(text.split(planAnchor).length,2);
+text=text.replace(planAnchor,"plan.evidenceRoot='/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j';\n"+planAnchor);
+const completion='journeyPassed=true;';assert.equal(text.split(completion).length,2);
+text=text.replace(completion,`const restartPath=resolve(out,'host-controls.json');
+  writeFileSync(restartPath+'.tmp',JSON.stringify({input:{},restart:true}));renameSync(restartPath+'.tmp',restartPath);
+  await until('ordinary F5 restart',()=>room.match!==m&&peers.every(p=>p.log.includes('"starts":2')),15000);
+  assert.equal(room.match.race.phase,'countdown');assert.ok(room.match.race.racers.every(r=>r.completedLaps===0&&r.passed===0));
+  respawn.restartObserved=true;
+  await until('restart frame',()=>peers[0].log.includes('"label":"restart"'),10000);
+  ${completion}`);
+const out=process.env.ASSET_STAGE_EVIDENCE;assert.ok(out);
+mkdirSync(out,{recursive:true});
+writeFileSync(resolve(out,'shared-runner.json'),JSON.stringify({source,originalSha,changes:['private Stormglass sports scene','evidence root','absolute helper imports'],accepted:false},null,2));
+const dest=resolve(out,'candidate-runner.mjs');writeFileSync(dest,text);
+process.argv=[process.execPath,dest,'stormglass-causeway','puma-race','--granted',...process.argv.slice(2)];
+await import(pathToFileURL(dest));

@@ -1,0 +1,912 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+STORMGLASS_STARTED {"hash":"6afb8a36ee954ff9457a5522a7412c809191fb070eb7fe9eda4d379753acce48","role":"host","starts":1}
+WARNING: Adding 'body' as child to '' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'turret' as child to '@Node3D@1847' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_0' as child to '@Node3D@1831' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_1' as child to '@Node3D@1835' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_2' as child to '@Node3D@1839' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_3' as child to '@Node3D@1843' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1851' as child to '' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1852' as child to '@Node3D@1847' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1853' as child to '@Node3D@1831' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1854' as child to '@Node3D@1835' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1855' as child to '@Node3D@1839' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1856' as child to '@Node3D@1843' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1857' as child to '' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1858' as child to '@Node3D@1847' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1859' as child to '@Node3D@1831' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1860' as child to '@Node3D@1835' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1861' as child to '@Node3D@1839' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1862' as child to '@Node3D@1843' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'body' as child to '' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'turret' as child to '@Node3D@1900' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_0' as child to '@Node3D@1884' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_1' as child to '@Node3D@1888' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_2' as child to '@Node3D@1892' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_3' as child to '@Node3D@1896' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1904' as child to '' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1905' as child to '@Node3D@1900' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1906' as child to '@Node3D@1884' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1907' as child to '@Node3D@1888' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1908' as child to '@Node3D@1892' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1909' as child to '@Node3D@1896' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1910' as child to '' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1911' as child to '@Node3D@1900' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1912' as child to '@Node3D@1884' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1913' as child to '@Node3D@1888' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1914' as child to '@Node3D@1892' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1915' as child to '@Node3D@1896' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-63.19515, 4.733231, -130.1697)","engineFrames":311,"error":0,"label":"frame-000000","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":11521,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.002,"respawnTimer":0.0,"roll":0.048,"turretYaw":0.0,"vx":13.874,"vy":0.0,"vz":0.325,"x":-53.061,"y":0.0,"yaw":1.525,"z":-129.969},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-61.29038, 4.795072, -130.397)","engineFrames":314,"error":0,"label":"frame-000001","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":11657,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.009,"respawnTimer":0.0,"roll":0.063,"turretYaw":0.0,"vx":13.796,"vy":0.0,"vz":0.694,"x":-51.188,"y":0.0,"yaw":1.492,"z":-129.897},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-59.44664, 4.823254, -130.5965)","engineFrames":317,"error":0,"label":"frame-000002","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":11796,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.003,"respawnTimer":0.0,"roll":0.065,"turretYaw":0.0,"vx":13.761,"vy":0.0,"vz":1.133,"x":-49.38,"y":0.0,"yaw":1.459,"z":-129.774},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-57.54757, 4.836111, -130.7405)","engineFrames":320,"error":0,"label":"frame-000003","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":11936,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.01,"respawnTimer":0.0,"roll":0.063,"turretYaw":0.0,"vx":13.628,"vy":0.0,"vz":1.656,"x":-47.053,"y":0.0,"yaw":1.421,"z":-129.531},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-55.20076, 4.801684, -130.7693)","engineFrames":323,"error":0,"label":"frame-000004","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":12075,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.002,"respawnTimer":0.0,"roll":0.054,"turretYaw":0.0,"vx":13.941,"vy":0.0,"vz":2.099,"x":-45.19,"y":0.0,"yaw":1.398,"z":-129.273},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-53.79729, 4.804129, -130.7228)","engineFrames":325,"error":0,"label":"frame-000005","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":12175,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.003,"respawnTimer":0.0,"roll":0.043,"turretYaw":0.0,"vx":13.665,"vy":0.0,"vz":2.298,"x":-43.827,"y":0.0,"yaw":1.385,"z":-129.054},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-51.90964, 4.837487, -130.5819)","engineFrames":328,"error":0,"label":"frame-000006","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":12316,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.009,"respawnTimer":0.0,"roll":0.031,"turretYaw":0.0,"vx":13.565,"vy":0.0,"vz":2.532,"x":-41.984,"y":0.0,"yaw":1.372,"z":-128.723},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-50.06178, 4.852432, -130.3481)","engineFrames":331,"error":0,"label":"frame-000007","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":12451,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.01,"respawnTimer":0.0,"roll":0.017,"turretYaw":0.0,"vx":13.906,"vy":0.0,"vz":2.801,"x":-39.7,"y":0.0,"yaw":1.365,"z":-128.277},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-48.22385, 4.762453, -130.0335)","engineFrames":333,"error":0,"label":"frame-000008","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":12554,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.005,"respawnTimer":0.0,"roll":0.011,"turretYaw":0.0,"vx":14.032,"vy":0.0,"vz":2.897,"x":-38.288,"y":0.0,"yaw":1.363,"z":-127.988},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-46.35264, 4.820392, -129.6803)","engineFrames":336,"error":0,"label":"frame-000009","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":12694,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.007,"respawnTimer":0.0,"roll":0.003,"turretYaw":0.0,"vx":13.966,"vy":0.0,"vz":2.931,"x":-36.451,"y":0.0,"yaw":1.363,"z":-127.604},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-44.50433, 4.837789, -129.2915)","engineFrames":339,"error":0,"label":"frame-000010","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":12830,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.011,"respawnTimer":0.0,"roll":-0.002,"turretYaw":0.0,"vx":13.49,"vy":0.0,"vz":2.83,"x":-34.625,"y":0.0,"yaw":1.365,"z":-127.221},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-42.68097, 4.833313, -128.8907)","engineFrames":342,"error":0,"label":"frame-000011","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":12966,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.014,"respawnTimer":0.0,"roll":-0.007,"turretYaw":0.0,"vx":13.436,"vy":0.0,"vz":2.777,"x":-32.338,"y":0.0,"yaw":1.37,"z":-126.745},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-40.42746, 4.765044, -128.3881)","engineFrames":345,"error":0,"label":"frame-000012","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":13103,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.001,"respawnTimer":0.0,"roll":-0.008,"turretYaw":0.0,"vx":13.819,"vy":0.0,"vz":2.802,"x":-30.495,"y":0.0,"yaw":1.374,"z":-126.368},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-38.60112, 4.813531, -127.9771)","engineFrames":348,"error":0,"label":"frame-000013","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":13242,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.006,"respawnTimer":0.0,"roll":-0.008,"turretYaw":0.0,"vx":13.801,"vy":0.0,"vz":2.74,"x":-28.683,"y":0.0,"yaw":1.378,"z":-126.005},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-37.21531, 4.802583, -127.6757)","engineFrames":350,"error":0,"label":"frame-000014","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":13347,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.012,"respawnTimer":0.0,"roll":-0.008,"turretYaw":0.0,"vx":14.169,"vy":0.0,"vz":2.771,"x":-27.272,"y":0.0,"yaw":1.381,"z":-125.727},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-35.82621, 4.78976, -127.3768)","engineFrames":352,"error":0,"label":"frame-000015","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":13452,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.023,"respawnTimer":0.0,"roll":-0.007,"turretYaw":0.0,"vx":13.276,"vy":0.0,"vz":2.55,"x":-25.451,"y":0.0,"yaw":1.384,"z":-125.375},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-34.04331, 4.75908, -127.0081)","engineFrames":354,"error":0,"label":"frame-000016","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":13555,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.011,"respawnTimer":0.0,"roll":-0.005,"turretYaw":0.0,"vx":13.907,"vy":0.0,"vz":2.638,"x":-24.086,"y":0.0,"yaw":1.386,"z":-125.114},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-32.63341, 4.783706, -126.719)","engineFrames":356,"error":0,"label":"frame-000017","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":13658,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.006,"respawnTimer":0.0,"roll":-0.004,"turretYaw":0.0,"vx":14.055,"vy":0.0,"vz":2.641,"x":-22.672,"y":0.0,"yaw":1.387,"z":-124.848},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-31.23696, 4.809772, -126.446)","engineFrames":358,"error":0,"label":"frame-000018","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":13759,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.01,"respawnTimer":0.0,"roll":-0.003,"turretYaw":0.0,"vx":13.596,"vy":0.0,"vz":2.537,"x":-21.303,"y":0.0,"yaw":1.388,"z":-124.592},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-29.86399, 4.809216, -126.1803)","engineFrames":360,"error":0,"label":"frame-000019","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":13863,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.006,"respawnTimer":0.0,"roll":-0.002,"turretYaw":0.0,"vx":13.982,"vy":0.0,"vz":2.595,"x":-19.911,"y":0.0,"yaw":1.388,"z":-124.333},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-28.48211, 4.813665, -125.9199)","engineFrames":362,"error":0,"label":"frame-000020","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":13965,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.001,"respawnTimer":0.0,"roll":-0.001,"turretYaw":0.0,"vx":13.737,"vy":0.0,"vz":2.539,"x":-18.093,"y":0.0,"yaw":1.388,"z":-123.996},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-26.66496, 4.757433, -125.5819)","engineFrames":364,"error":0,"label":"frame-000021","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":14064,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.002,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":13.899,"vy":0.0,"vz":2.566,"x":-16.695,"y":0.0,"yaw":1.388,"z":-123.738},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-25.27922, 4.792675, -125.3251)","engineFrames":366,"error":0,"label":"frame-000022","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":14164,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.003,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":13.662,"vy":0.0,"vz":2.523,"x":-15.334,"y":0.0,"yaw":1.388,"z":-123.487},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-23.89466, 4.802521, -125.0692)","engineFrames":368,"error":0,"label":"frame-000023","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":14262,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.0,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":13.829,"vy":0.0,"vz":2.557,"x":-13.943,"y":0.0,"yaw":1.388,"z":-123.23},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-22.52703, 4.805101, -124.8197)","engineFrames":370,"error":0,"label":"frame-000024","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":14358,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.004,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":13.598,"vy":0.0,"vz":2.518,"x":-12.588,"y":0.0,"yaw":1.387,"z":-122.979},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-20.69498, 4.792359, -124.4845)","engineFrames":373,"error":0,"label":"frame-000025","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":14488,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.009,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":13.548,"vy":0.0,"vz":2.516,"x":-10.75,"y":0.0,"yaw":1.387,"z":-122.638},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-18.87272, 4.787137, -124.1521)","engineFrames":376,"error":0,"label":"frame-000026","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":14616,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.001,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":13.723,"vy":0.0,"vz":2.555,"x":-8.921,"y":0.0,"yaw":1.386,"z":-122.298},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-17.01651, 4.786295, -123.8099)","engineFrames":379,"error":0,"label":"frame-000027","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":14743,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.009,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":13.656,"vy":0.0,"vz":2.549,"x":-7.068,"y":0.0,"yaw":1.386,"z":-121.952},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-15.21493, 4.803312, -123.4746)","engineFrames":382,"error":0,"label":"frame-000028","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":14874,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.003,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":13.651,"vy":0.0,"vz":2.554,"x":-5.276,"y":0.0,"yaw":1.386,"z":-121.617},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-13.36748, 4.81265, -123.1345)","engineFrames":385,"error":0,"label":"frame-000029","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":15001,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.007,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":13.594,"vy":0.0,"vz":2.547,"x":-3.432,"y":0.0,"yaw":1.385,"z":-121.272},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-11.57832, 4.81441, -122.802)","engineFrames":388,"error":0,"label":"frame-000030","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":15129,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.004,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":13.596,"vy":0.0,"vz":2.551,"x":-1.648,"y":0.0,"yaw":1.385,"z":-120.937},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-9.745831, 4.807211, -122.4593)","engineFrames":391,"error":0,"label":"frame-000031","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":15253,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.007,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":13.546,"vy":0.0,"vz":2.543,"x":0.19,"y":0.0,"yaw":1.385,"z":-120.592},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-7.961157, 4.814199, -122.1243)","engineFrames":394,"error":0,"label":"frame-000032","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":15378,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.005,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":13.555,"vy":0.0,"vz":2.546,"x":1.968,"y":0.0,"yaw":1.385,"z":-120.259},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-6.57302, 4.870828, -121.8639)","engineFrames":397,"error":0,"label":"frame-000033","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":15506,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.006,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":13.733,"vy":0.0,"vz":2.58,"x":3.794,"y":0.0,"yaw":1.385,"z":-119.916},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-4.745183, 4.843633, -121.5207)","engineFrames":400,"error":0,"label":"frame-000034","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":15632,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.003,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":13.688,"vy":0.0,"vz":2.571,"x":5.181,"y":0.0,"yaw":1.385,"z":-119.655},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-2.918852, 4.814902, -121.1775)","engineFrames":403,"error":0,"label":"frame-000035","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":15764,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.014,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":13.421,"vy":0.0,"vz":2.52,"x":7.466,"y":0.0,"yaw":1.385,"z":-119.226},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-0.661703, 4.741119, -120.7536)","engineFrames":406,"error":0,"label":"frame-000036","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":15891,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.019,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":14.225,"vy":0.0,"vz":2.67,"x":9.317,"y":0.0,"yaw":1.385,"z":-118.878},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(0.77639, 4.842656, -120.4835)","engineFrames":409,"error":0,"label":"frame-000037","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":16012,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.005,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":13.747,"vy":0.0,"vz":2.58,"x":10.702,"y":0.0,"yaw":1.385,"z":-118.618},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(2.580611, 4.805456, -120.1449)","engineFrames":412,"error":0,"label":"frame-000038","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":16133,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.002,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":13.719,"vy":0.0,"vz":2.574,"x":12.518,"y":0.0,"yaw":1.385,"z":-118.278},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(4.426343, 4.791107, -119.7988)","engineFrames":415,"error":0,"label":"frame-000039","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":16256,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.008,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":13.654,"vy":0.0,"vz":2.561,"x":14.371,"y":0.0,"yaw":1.385,"z":-117.93},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(6.224151, 4.79865, -119.4615)","engineFrames":418,"error":0,"label":"frame-000040","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":16381,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.004,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":13.65,"vy":0.0,"vz":2.56,"x":16.163,"y":0.0,"yaw":1.385,"z":-117.594},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(8.06605, 4.79593, -119.1161)","engineFrames":421,"error":0,"label":"frame-000041","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":16508,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.007,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":13.594,"vy":0.0,"vz":2.549,"x":18.007,"y":0.0,"yaw":1.385,"z":-117.248},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(9.856375, 4.804635, -118.7803)","engineFrames":424,"error":0,"label":"frame-000042","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":16631,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.004,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":13.597,"vy":0.0,"vz":2.549,"x":19.791,"y":0.0,"yaw":1.385,"z":-116.914},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(11.24807, 4.850019, -118.5196)","engineFrames":427,"error":0,"label":"frame-000043","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":16745,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.012,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":13.98,"vy":0.0,"vz":2.621,"x":21.182,"y":0.0,"yaw":1.385,"z":-116.653},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(13.05668, 4.772672, -118.1803)","engineFrames":430,"error":0,"label":"frame-000044","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":16858,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.01,"respawnTimer":0.0,"roll":0.002,"turretYaw":0.0,"vx":13.936,"vy":0.0,"vz":2.613,"x":23.014,"y":0.0,"yaw":1.385,"z":-116.31},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(14.47169, 4.793224, -117.9293)","engineFrames":433,"error":0,"label":"frame-000045","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":16972,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.002,"respawnTimer":0.0,"roll":0.022,"turretYaw":0.0,"vx":13.865,"vy":0.0,"vz":2.632,"x":24.42,"y":0.0,"yaw":1.373,"z":-116.045},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(16.30348, 4.740547, -117.734)","engineFrames":436,"error":0,"label":"frame-000046","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":17088,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.005,"respawnTimer":0.0,"roll":0.061,"turretYaw":0.0,"vx":13.775,"vy":0.0,"vz":2.899,"x":26.234,"y":0.0,"yaw":1.335,"z":-115.683},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(17.94333, 4.798199, -117.6912)","engineFrames":439,"error":0,"label":"frame-000047","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":17199,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.003,"respawnTimer":0.0,"roll":0.085,"turretYaw":0.0,"vx":13.834,"vy":0.0,"vz":3.289,"x":27.63,"y":0.0,"yaw":1.299,"z":-115.367},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(19.68575, 4.790309, -117.6425)","engineFrames":442,"error":0,"label":"frame-000048","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":17313,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.006,"respawnTimer":0.0,"roll":0.099,"turretYaw":0.0,"vx":13.61,"vy":0.0,"vz":3.886,"x":29.43,"y":0.0,"yaw":1.248,"z":-114.893},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(21.58971, 4.775958, -117.5386)","engineFrames":445,"error":0,"label":"frame-000049","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":17444,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.007,"respawnTimer":0.0,"roll":0.101,"turretYaw":0.0,"vx":13.348,"vy":0.0,"vz":4.519,"x":31.198,"y":0.0,"yaw":1.2,"z":-114.337},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(23.04813, 4.770925, -117.3991)","engineFrames":447,"error":0,"label":"frame-000050","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":17537,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.003,"respawnTimer":0.0,"roll":0.099,"turretYaw":0.0,"vx":13.303,"vy":0.0,"vz":5.039,"x":32.544,"y":0.0,"yaw":1.165,"z":-113.849},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(24.53646, 4.862893, -117.2465)","engineFrames":450,"error":0,"label":"frame-000051","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":17662,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.0,"respawnTimer":0.0,"roll":0.081,"turretYaw":0.0,"vx":12.825,"vy":0.0,"vz":5.499,"x":34.256,"y":0.0,"yaw":1.13,"z":-113.153},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(26.76907, 4.743009, -116.6501)","engineFrames":453,"error":0,"label":"frame-000052","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":17794,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.014,"respawnTimer":0.0,"roll":0.063,"turretYaw":0.0,"vx":12.378,"vy":0.0,"vz":5.807,"x":35.956,"y":0.0,"yaw":1.104,"z":-112.384},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(28.16703, 4.852523, -116.2637)","engineFrames":456,"error":0,"label":"frame-000053","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":17916,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.004,"respawnTimer":0.0,"roll":0.05,"turretYaw":0.0,"vx":12.612,"vy":0.0,"vz":6.241,"x":37.216,"y":0.0,"yaw":1.09,"z":-111.773},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(29.90543, 4.818039, -115.5852)","engineFrames":459,"error":0,"label":"frame-000054","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":18041,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.008,"respawnTimer":0.0,"roll":0.032,"turretYaw":0.0,"vx":12.253,"vy":0.0,"vz":6.358,"x":38.874,"y":0.0,"yaw":1.078,"z":-110.928},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(31.59879, 4.80494, -114.8245)","engineFrames":462,"error":0,"label":"frame-000055","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":18166,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.008,"respawnTimer":0.0,"roll":0.018,"turretYaw":0.0,"vx":12.515,"vy":0.0,"vz":6.692,"x":40.528,"y":0.0,"yaw":1.072,"z":-110.054},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(33.26106, 4.805786, -113.9918)","engineFrames":465,"error":0,"label":"frame-000056","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":18296,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.002,"respawnTimer":0.0,"roll":0.005,"turretYaw":0.0,"vx":12.263,"vy":0.0,"vz":6.638,"x":42.153,"y":0.0,"yaw":1.073,"z":-109.178},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(34.92158, 4.800624, -113.095)","engineFrames":468,"error":0,"label":"frame-000057","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":18423,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.002,"respawnTimer":0.0,"roll":-0.003,"turretYaw":0.0,"vx":12.385,"vy":0.0,"vz":6.711,"x":43.821,"y":0.0,"yaw":1.076,"z":-108.274},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(36.53934, 4.80799, -112.1892)","engineFrames":471,"error":0,"label":"frame-000058","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":18545,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.005,"respawnTimer":0.0,"roll":-0.009,"turretYaw":0.0,"vx":12.381,"vy":0.0,"vz":6.66,"x":45.446,"y":0.0,"yaw":1.081,"z":-107.397},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(38.17588, 4.765337, -111.2605)","engineFrames":474,"error":0,"label":"frame-000059","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":18657,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.007,"respawnTimer":0.0,"roll":-0.012,"turretYaw":0.0,"vx":12.344,"vy":0.0,"vz":6.56,"x":47.12,"y":0.0,"yaw":1.088,"z":-106.502},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(39.39175, 4.808364, -110.5639)","engineFrames":477,"error":0,"label":"frame-000060","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":18769,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.0,"respawnTimer":0.0,"roll":-0.012,"turretYaw":0.0,"vx":12.359,"vy":0.0,"vz":6.497,"x":48.341,"y":0.0,"yaw":1.092,"z":-105.858},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(41.01983, 4.757629, -109.6513)","engineFrames":480,"error":0,"label":"frame-000061","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":18883,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.008,"respawnTimer":0.0,"roll":-0.012,"turretYaw":0.0,"vx":12.338,"vy":0.0,"vz":6.392,"x":50.013,"y":0.0,"yaw":1.098,"z":-104.986},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(42.24036, 4.815196, -108.9678)","engineFrames":483,"error":0,"label":"frame-000062","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":18995,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.0,"respawnTimer":0.0,"roll":-0.011,"turretYaw":0.0,"vx":12.358,"vy":0.0,"vz":6.335,"x":51.233,"y":0.0,"yaw":1.102,"z":-104.358},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(43.87375, 4.762781, -108.0869)","engineFrames":486,"error":0,"label":"frame-000063","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":19105,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.008,"respawnTimer":0.0,"roll":-0.009,"turretYaw":0.0,"vx":12.337,"vy":0.0,"vz":6.249,"x":52.905,"y":0.0,"yaw":1.106,"z":-103.506},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(45.09566, 4.808027, -107.4305)","engineFrames":489,"error":0,"label":"frame-000064","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":19217,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.0,"respawnTimer":0.0,"roll":-0.007,"turretYaw":0.0,"vx":12.353,"vy":0.0,"vz":6.21,"x":54.125,"y":0.0,"yaw":1.108,"z":-102.891},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(46.73647, 4.758802, -106.579)","engineFrames":492,"error":0,"label":"frame-000065","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":19336,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.008,"respawnTimer":0.0,"roll":-0.005,"turretYaw":0.0,"vx":12.327,"vy":0.0,"vz":6.151,"x":55.797,"y":0.0,"yaw":1.11,"z":-102.055},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(47.97471, 4.833418, -105.9403)","engineFrames":495,"error":0,"label":"frame-000066","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":19450,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.001,"respawnTimer":0.0,"roll":-0.003,"turretYaw":0.0,"vx":12.339,"vy":0.0,"vz":6.133,"x":57.015,"y":0.0,"yaw":1.111,"z":-101.448},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(49.6297, 4.780993, -105.109)","engineFrames":498,"error":0,"label":"frame-000067","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":19558,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.006,"respawnTimer":0.0,"roll":-0.002,"turretYaw":0.0,"vx":12.68,"vy":0.0,"vz":6.283,"x":58.707,"y":0.0,"yaw":1.111,"z":-100.609},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(50.89805, 4.822218, -104.4773)","engineFrames":501,"error":0,"label":"frame-000068","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":19667,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.006,"respawnTimer":0.0,"roll":-0.001,"turretYaw":0.0,"vx":12.654,"vy":0.0,"vz":6.264,"x":59.958,"y":0.0,"yaw":1.111,"z":-99.989},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(52.55485, 4.758049, -103.6562)","engineFrames":504,"error":0,"label":"frame-000069","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":19777,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.011,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":12.798,"vy":0.0,"vz":6.335,"x":61.642,"y":0.0,"yaw":1.111,"z":-99.156},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(53.83304, 4.811789, -103.023)","engineFrames":507,"error":0,"label":"frame-000070","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":19888,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.018,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":12.183,"vy":0.0,"vz":6.034,"x":62.885,"y":0.0,"yaw":1.11,"z":-98.54},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(55.20167, 4.805459, -102.3513)","engineFrames":510,"error":0,"label":"frame-000071","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":19991,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.008,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":12.565,"vy":0.0,"vz":6.23,"x":64.118,"y":0.0,"yaw":1.11,"z":-97.929},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(56.7336, 4.742477, -101.5966)","engineFrames":513,"error":0,"label":"frame-000072","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":20093,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.005,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":12.704,"vy":0.0,"vz":6.306,"x":65.396,"y":0.0,"yaw":1.109,"z":-97.295},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(58.38692, 4.699363, -100.7813)","engineFrames":517,"error":0,"label":"frame-000073","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":20222,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.007,"respawnTimer":0.0,"roll":0.002,"turretYaw":0.0,"vx":12.664,"vy":0.0,"vz":6.298,"x":67.061,"y":0.0,"yaw":1.109,"z":-96.468},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(59.68409, 4.72291, -100.1426)","engineFrames":520,"error":0,"label":"frame-000074","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":20330,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.007,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":12.579,"vy":0.0,"vz":6.267,"x":68.769,"y":0.0,"yaw":1.108,"z":-95.618},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(60.95971, 4.806241, -99.51212)","engineFrames":523,"error":0,"label":"frame-000075","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":20441,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.0,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":12.555,"vy":0.0,"vz":6.263,"x":70.011,"y":0.0,"yaw":1.108,"z":-94.999},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(62.63506, 4.743847, -98.68246)","engineFrames":526,"error":0,"label":"frame-000076","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":20549,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.009,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":12.485,"vy":0.0,"vz":6.236,"x":71.705,"y":0.0,"yaw":1.107,"z":-94.153},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(63.89831, 4.818953, -98.05569)","engineFrames":529,"error":0,"label":"frame-000077","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":20662,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.0,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":12.47,"vy":0.0,"vz":6.234,"x":72.938,"y":0.0,"yaw":1.107,"z":-93.537},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(65.54111, 4.779944, -97.23582)","engineFrames":532,"error":0,"label":"frame-000078","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":20772,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.009,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":12.632,"vy":0.0,"vz":6.319,"x":74.598,"y":0.0,"yaw":1.107,"z":-92.706},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(66.80027, 4.81319, -96.60643)","engineFrames":535,"error":0,"label":"frame-000079","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":20883,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.008,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":12.604,"vy":0.0,"vz":6.308,"x":75.845,"y":0.0,"yaw":1.107,"z":-92.082},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(68.20381, 4.808434, -95.90396)","engineFrames":538,"error":0,"label":"frame-000080","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":20990,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.004,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":12.74,"vy":0.0,"vz":6.377,"x":77.127,"y":0.0,"yaw":1.107,"z":-91.441},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(69.71741, 4.749069, -95.14688)","engineFrames":541,"error":0,"label":"frame-000081","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":21100,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.006,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":12.324,"vy":0.0,"vz":6.17,"x":78.774,"y":0.0,"yaw":1.107,"z":-90.616},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(70.98466, 4.813198, -94.51221)","engineFrames":544,"error":0,"label":"frame-000082","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":21208,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.007,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":12.677,"vy":0.0,"vz":6.346,"x":80.035,"y":0.0,"yaw":1.107,"z":-89.985},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(72.62308, 4.760263, -93.69202)","engineFrames":547,"error":0,"label":"frame-000083","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":21312,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.019,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":12.073,"vy":0.0,"vz":6.044,"x":81.267,"y":0.0,"yaw":1.107,"z":-89.368},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(73.86732, 4.770147, -93.06934)","engineFrames":550,"error":0,"label":"frame-000084","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":21418,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.018,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":12.822,"vy":0.0,"vz":6.417,"x":82.934,"y":0.0,"yaw":1.107,"z":-88.534},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(75.16835, 4.797835, -92.41843)","engineFrames":553,"error":0,"label":"frame-000085","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":21526,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.001,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":12.75,"vy":0.0,"vz":6.38,"x":84.227,"y":0.0,"yaw":1.107,"z":-87.887},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(76.58549, 4.801903, -91.70913)","engineFrames":556,"error":0,"label":"frame-000086","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":21635,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.004,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":12.524,"vy":0.0,"vz":6.266,"x":85.476,"y":0.0,"yaw":1.107,"z":-87.262},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(78.08231, 4.776313, -90.96024)","engineFrames":559,"error":0,"label":"frame-000087","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":21745,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.008,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":12.682,"vy":0.0,"vz":6.344,"x":87.143,"y":0.0,"yaw":1.107,"z":-86.428},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(79.37122, 4.806772, -90.31572)","engineFrames":562,"error":0,"label":"frame-000088","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":21853,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.003,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":12.623,"vy":0.0,"vz":6.313,"x":88.422,"y":0.0,"yaw":1.107,"z":-85.788},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(81.01456, 4.759422, -89.49368)","engineFrames":565,"error":0,"label":"frame-000089","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":21960,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.005,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":12.596,"vy":0.0,"vz":6.298,"x":90.077,"y":0.0,"yaw":1.107,"z":-84.961},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(82.26693, 4.793489, -88.86722)","engineFrames":568,"error":0,"label":"frame-000090","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":22064,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.002,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":12.385,"vy":0.0,"vz":6.192,"x":91.311,"y":0.0,"yaw":1.107,"z":-84.344},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(83.52278, 4.814508, -88.23935)","engineFrames":571,"error":0,"label":"frame-000091","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":22174,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.006,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":12.354,"vy":0.0,"vz":6.177,"x":92.562,"y":0.0,"yaw":1.107,"z":-83.718},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(85.12994, 4.756809, -87.44159)","engineFrames":574,"error":0,"label":"frame-000092","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":22280,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.006,"respawnTimer":0.0,"roll":0.004,"turretYaw":0.0,"vx":12.164,"vy":0.0,"vz":6.084,"x":93.773,"y":0.0,"yaw":1.105,"z":-83.113},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(86.41564, 4.762557, -86.88241)","engineFrames":577,"error":0,"label":"frame-000093","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":22389,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.022,"respawnTimer":0.0,"roll":0.05,"turretYaw":0.0,"vx":12.826,"vy":0.0,"vz":6.598,"x":95.448,"y":0.0,"yaw":1.073,"z":-82.266},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(87.81837, 4.782625, -86.41159)","engineFrames":580,"error":0,"label":"frame-000094","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":22498,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.002,"respawnTimer":0.0,"roll":0.095,"turretYaw":0.0,"vx":12.585,"vy":0.0,"vz":6.844,"x":96.731,"y":0.0,"yaw":1.03,"z":-81.585},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(89.68212, 4.752369, -85.92601)","engineFrames":583,"error":0,"label":"frame-000095","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":22609,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.023,"respawnTimer":0.0,"roll":0.129,"turretYaw":0.0,"vx":11.695,"vy":0.0,"vz":6.963,"x":97.938,"y":0.0,"yaw":0.973,"z":-80.895},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(91.1815, 4.805925, -85.63462)","engineFrames":586,"error":0,"label":"frame-000096","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":22721,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.005,"respawnTimer":0.0,"roll":0.156,"turretYaw":0.0,"vx":11.625,"vy":0.0,"vz":8.095,"x":99.506,"y":0.0,"yaw":0.893,"z":-79.875},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(92.8299, 4.813161, -85.2085)","engineFrames":589,"error":0,"label":"frame-000097","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":22831,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.003,"respawnTimer":0.0,"roll":0.155,"turretYaw":0.0,"vx":10.929,"vy":0.0,"vz":8.549,"x":100.616,"y":0.0,"yaw":0.837,"z":-79.048},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(94.52467, 4.787366, -84.59608)","engineFrames":592,"error":0,"label":"frame-000098","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":22941,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.005,"respawnTimer":0.0,"roll":0.148,"turretYaw":0.0,"vx":10.345,"vy":0.0,"vz":9.386,"x":102.05,"y":0.0,"yaw":0.768,"z":-77.825},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(95.91839, 4.834438, -84.02979)","engineFrames":595,"error":0,"label":"frame-000099","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":23068,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.001,"respawnTimer":0.0,"roll":0.126,"turretYaw":0.0,"vx":9.826,"vy":0.0,"vz":9.855,"x":103.043,"y":0.0,"yaw":0.728,"z":-76.871},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(97.56721, 4.784259, -83.02164)","engineFrames":598,"error":0,"label":"frame-000100","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":23182,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.003,"respawnTimer":0.0,"roll":0.102,"turretYaw":0.0,"vx":9.347,"vy":0.0,"vz":10.463,"x":104.334,"y":0.0,"yaw":0.684,"z":-75.489},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(99.07132, 4.772232, -81.89094)","engineFrames":601,"error":0,"label":"frame-000101","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":23296,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.005,"respawnTimer":0.0,"roll":0.073,"turretYaw":0.0,"vx":8.877,"vy":0.0,"vz":10.813,"x":105.525,"y":0.0,"yaw":0.655,"z":-74.089},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(100.1738, 4.822972, -80.94323)","engineFrames":604,"error":0,"label":"frame-000102","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":23410,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.004,"respawnTimer":0.0,"roll":0.054,"turretYaw":0.0,"vx":8.595,"vy":0.0,"vz":10.968,"x":106.405,"y":0.0,"yaw":0.641,"z":-72.985},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(101.4241, 4.780408, -79.61436)","engineFrames":607,"error":0,"label":"frame-000103","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":23528,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.005,"respawnTimer":0.0,"roll":0.03,"turretYaw":0.0,"vx":8.365,"vy":0.0,"vz":11.127,"x":107.515,"y":0.0,"yaw":0.632,"z":-71.533},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(102.6197, 4.767715, -78.16769)","engineFrames":610,"error":0,"label":"frame-000104","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":23646,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.007,"respawnTimer":0.0,"roll":0.01,"turretYaw":0.0,"vx":8.228,"vy":0.0,"vz":11.151,"x":108.637,"y":0.0,"yaw":0.632,"z":-70.023},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(103.4706, 4.842308, -77.05448)","engineFrames":613,"error":0,"label":"frame-000105","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":23764,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.001,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":8.207,"vy":0.0,"vz":11.16,"x":109.448,"y":0.0,"yaw":0.635,"z":-68.92},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(104.5508, 4.785924, -75.54008)","engineFrames":616,"error":0,"label":"frame-000106","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":23884,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.014,"respawnTimer":0.0,"roll":-0.011,"turretYaw":0.0,"vx":8.582,"vy":0.0,"vz":11.6,"x":110.578,"y":0.0,"yaw":0.642,"z":-67.388},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(105.6188, 4.760871, -73.99774)","engineFrames":619,"error":0,"label":"frame-000107","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":23996,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.004,"respawnTimer":0.0,"roll":-0.017,"turretYaw":0.0,"vx":8.368,"vy":0.0,"vz":11.152,"x":111.692,"y":0.0,"yaw":0.652,"z":-65.893},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(106.4199, 4.820806, -72.8129)","engineFrames":622,"error":0,"label":"frame-000108","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":24110,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.007,"respawnTimer":0.0,"roll":-0.019,"turretYaw":0.0,"vx":8.414,"vy":0.0,"vz":11.061,"x":112.541,"y":0.0,"yaw":0.659,"z":-64.77},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(107.4579, 4.786966, -71.32176)","engineFrames":625,"error":0,"label":"frame-000109","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":24232,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.004,"respawnTimer":0.0,"roll":-0.019,"turretYaw":0.0,"vx":8.516,"vy":0.0,"vz":10.976,"x":113.653,"y":0.0,"yaw":0.669,"z":-63.324},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(108.3723, 4.82164, -70.01468)","engineFrames":628,"error":0,"label":"frame-000110","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":24351,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.003,"respawnTimer":0.0,"roll":-0.018,"turretYaw":0.0,"vx":8.696,"vy":0.0,"vz":11.051,"x":114.524,"y":0.0,"yaw":0.675,"z":-62.211},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(109.3501, 4.804761, -68.67252)","engineFrames":631,"error":0,"label":"frame-000111","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":24467,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.001,"respawnTimer":0.0,"roll":-0.015,"turretYaw":0.0,"vx":8.639,"vy":0.0,"vz":10.799,"x":115.662,"y":0.0,"yaw":0.682,"z":-60.778},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(110.4641, 4.775063, -67.18646)","engineFrames":634,"error":0,"label":"frame-000112","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":24585,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.008,"respawnTimer":0.0,"roll":-0.012,"turretYaw":0.0,"vx":8.678,"vy":0.0,"vz":10.703,"x":116.836,"y":0.0,"yaw":0.687,"z":-59.323},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(111.4138, 4.801275, -65.94612)","engineFrames":637,"error":0,"label":"frame-000113","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":24696,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.017,"respawnTimer":0.0,"roll":-0.01,"turretYaw":0.0,"vx":9.108,"vy":0.0,"vz":11.142,"x":117.729,"y":0.0,"yaw":0.689,"z":-58.227},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(112.5157, 4.762094, -64.5518)","engineFrames":640,"error":0,"label":"frame-000114","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":24811,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.002,"respawnTimer":0.0,"roll":-0.007,"turretYaw":0.0,"vx":9.206,"vy":0.0,"vz":11.172,"x":118.968,"y":0.0,"yaw":0.692,"z":-56.718},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(113.5296, 4.790425, -63.29415)","engineFrames":643,"error":0,"label":"frame-000115","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":24924,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.013,"respawnTimer":0.0,"roll":-0.004,"turretYaw":0.0,"vx":8.915,"vy":0.0,"vz":10.781,"x":119.866,"y":0.0,"yaw":0.693,"z":-55.631},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(114.5805, 4.75966, -62.005)","engineFrames":646,"error":0,"label":"frame-000116","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":25032,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.001,"respawnTimer":0.0,"roll":-0.001,"turretYaw":0.0,"vx":8.909,"vy":0.0,"vz":10.748,"x":121.045,"y":0.0,"yaw":0.693,"z":-54.207},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(115.4904, 4.811558, -60.9068)","engineFrames":649,"error":0,"label":"frame-000117","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":25139,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.006,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":8.881,"vy":0.0,"vz":10.712,"x":121.945,"y":0.0,"yaw":0.692,"z":-53.122},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(116.6467, 4.74944, -59.51804)","engineFrames":652,"error":0,"label":"frame-000118","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":25249,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.004,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":8.872,"vy":0.0,"vz":10.711,"x":123.11,"y":0.0,"yaw":0.691,"z":-51.717},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(117.5572, 4.802483, -58.42617)","engineFrames":655,"error":0,"label":"frame-000119","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":25356,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.004,"respawnTimer":0.0,"roll":0.002,"turretYaw":0.0,"vx":8.839,"vy":0.0,"vz":10.685,"x":124.005,"y":0.0,"yaw":0.69,"z":-50.634},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(118.5409, 4.802063, -57.24905)","engineFrames":658,"error":0,"label":"frame-000120","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":25465,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.005,"respawnTimer":0.0,"roll":0.002,"turretYaw":0.0,"vx":8.693,"vy":0.0,"vz":10.525,"x":124.871,"y":0.0,"yaw":0.689,"z":-49.587},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(119.6174, 4.764303, -55.96267)","engineFrames":661,"error":0,"label":"frame-000121","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":25572,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.004,"respawnTimer":0.0,"roll":0.002,"turretYaw":0.0,"vx":8.928,"vy":0.0,"vz":10.835,"x":126.062,"y":0.0,"yaw":0.688,"z":-48.142},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(120.5172, 4.805084, -54.88232)","engineFrames":664,"error":0,"label":"frame-000122","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":25679,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.005,"respawnTimer":0.0,"roll":0.002,"turretYaw":0.0,"vx":8.905,"vy":0.0,"vz":10.826,"x":126.943,"y":0.0,"yaw":0.687,"z":-47.072},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(121.5043, 4.801472, -53.6959)","engineFrames":667,"error":0,"label":"frame-000123","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":25782,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.001,"respawnTimer":0.0,"roll":0.002,"turretYaw":0.0,"vx":8.75,"vy":0.0,"vz":10.655,"x":127.815,"y":0.0,"yaw":0.687,"z":-46.011},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(122.5755, 4.753852, -52.40289)","engineFrames":670,"error":0,"label":"frame-000124","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":25887,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.001,"respawnTimer":0.0,"roll":0.002,"turretYaw":0.0,"vx":8.816,"vy":0.0,"vz":10.75,"x":128.705,"y":0.0,"yaw":0.686,"z":-44.927},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(123.4715, 4.772739, -51.31643)","engineFrames":673,"error":0,"label":"frame-000125","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":25993,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.019,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":9.165,"vy":0.0,"vz":11.194,"x":129.898,"y":0.0,"yaw":0.685,"z":-43.471},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(124.3892, 4.809657, -50.20773)","engineFrames":676,"error":0,"label":"frame-000126","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":26101,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.005,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":8.853,"vy":0.0,"vz":10.821,"x":130.79,"y":0.0,"yaw":0.685,"z":-42.381},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(125.5607, 4.752537, -48.77975)","engineFrames":679,"error":0,"label":"frame-000127","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":26209,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.019,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":8.493,"vy":0.0,"vz":10.386,"x":131.679,"y":0.0,"yaw":0.685,"z":-41.294},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(126.3267, 4.829219, -47.84443)","engineFrames":682,"error":0,"label":"frame-000128","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":26325,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.085,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":6.221,"vy":0.0,"vz":7.607,"x":132.638,"y":0.0,"yaw":0.685,"z":-40.121},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(127.0963, 4.892951, -46.90387)","engineFrames":685,"error":0,"label":"frame-000129","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":26440,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.064,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":5.068,"vy":0.0,"vz":6.201,"x":133.349,"y":0.0,"yaw":0.685,"z":-39.251},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(127.6202, 4.966284, -46.26334)","engineFrames":688,"error":0,"label":"frame-000130","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":26556,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.02,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":5.199,"vy":0.0,"vz":6.364,"x":133.859,"y":0.0,"yaw":0.685,"z":-38.627},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(128.2979, 4.938354, -45.43367)","engineFrames":691,"error":0,"label":"frame-000131","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":26669,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.016,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":5.005,"vy":0.0,"vz":6.128,"x":134.538,"y":0.0,"yaw":0.685,"z":-37.796},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(128.8166, 4.981421, -44.79905)","engineFrames":694,"error":0,"label":"frame-000132","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":26784,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.011,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":5.278,"vy":0.0,"vz":6.462,"x":135.044,"y":0.0,"yaw":0.685,"z":-37.177},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(129.5051, 4.943159, -43.95618)","engineFrames":697,"error":0,"label":"frame-000133","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":26903,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.002,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":5.208,"vy":0.0,"vz":6.376,"x":135.75,"y":0.0,"yaw":0.685,"z":-36.312},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(130.1875, 4.928419, -43.12067)","engineFrames":700,"error":0,"label":"frame-000134","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":27023,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.01,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":5.014,"vy":0.0,"vz":6.138,"x":136.43,"y":0.0,"yaw":0.685,"z":-35.48},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(130.7076, 4.97852, -42.48408)","engineFrames":703,"error":0,"label":"frame-000135","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":27136,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.014,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":5.287,"vy":0.0,"vz":6.471,"x":136.937,"y":0.0,"yaw":0.685,"z":-34.859},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(131.3994, 4.943976, -41.63705)","engineFrames":706,"error":0,"label":"frame-000136","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":27254,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.001,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":5.216,"vy":0.0,"vz":6.384,"x":137.644,"y":0.0,"yaw":0.685,"z":-33.993},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(132.0846, 4.936699, -40.79826)","engineFrames":709,"error":0,"label":"frame-000137","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":27368,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.009,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":5.023,"vy":0.0,"vz":6.146,"x":138.325,"y":0.0,"yaw":0.685,"z":-33.16},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(132.5958, 4.975379, -40.17322)","engineFrames":712,"error":0,"label":"frame-000138","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":27486,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.014,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":5.295,"vy":0.0,"vz":6.478,"x":138.833,"y":0.0,"yaw":0.685,"z":-32.539},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(133.2943, 4.935965, -39.31839)","engineFrames":715,"error":0,"label":"frame-000139","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":27610,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.001,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":5.224,"vy":0.0,"vz":6.39,"x":139.542,"y":0.0,"yaw":0.685,"z":-31.672},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(133.9859, 4.947404, -38.47271)","engineFrames":718,"error":0,"label":"frame-000140","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":27728,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.009,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":5.03,"vy":0.0,"vz":6.151,"x":140.224,"y":0.0,"yaw":0.685,"z":-30.838},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(134.5113, 4.984084, -37.83896)","engineFrames":721,"error":0,"label":"frame-000141","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":27847,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.014,"respawnTimer":0.0,"roll":0.007,"turretYaw":0.0,"vx":5.294,"vy":0.0,"vz":6.49,"x":140.732,"y":0.0,"yaw":0.679,"z":-30.216},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(135.2768, 4.95246, -37.06312)","engineFrames":724,"error":0,"label":"frame-000142","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":27967,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.004,"respawnTimer":0.0,"roll":0.024,"turretYaw":0.0,"vx":5.068,"vy":0.0,"vz":6.36,"x":141.428,"y":0.0,"yaw":0.654,"z":-29.353},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(136.1145, 4.941544, -36.3641)","engineFrames":727,"error":0,"label":"frame-000143","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":28088,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.008,"respawnTimer":0.0,"roll":0.038,"turretYaw":0.0,"vx":4.978,"vy":0.0,"vz":6.593,"x":142.085,"y":0.0,"yaw":0.617,"z":-28.506},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(137.0481, 4.943353, -35.6994)","engineFrames":730,"error":0,"label":"frame-000144","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":28209,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.007,"respawnTimer":0.0,"roll":0.051,"turretYaw":0.0,"vx":4.553,"vy":0.0,"vz":6.51,"x":142.718,"y":0.0,"yaw":0.57,"z":-27.633},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(137.8354, 4.983615, -35.21699)","engineFrames":733,"error":0,"label":"frame-000145","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":28337,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.005,"respawnTimer":0.0,"roll":0.057,"turretYaw":0.0,"vx":4.432,"vy":0.0,"vz":6.829,"x":143.162,"y":0.0,"yaw":0.532,"z":-26.97},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(138.7636, 4.965793, -34.56602)","engineFrames":736,"error":0,"label":"frame-000146","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":28465,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.017,"respawnTimer":0.0,"roll":0.062,"turretYaw":0.0,"vx":4.234,"vy":0.0,"vz":7.314,"x":143.726,"y":0.0,"yaw":0.479,"z":-26.046},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(139.7467, 4.951058, -33.82957)","engineFrames":739,"error":0,"label":"frame-000147","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":28591,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.001,"respawnTimer":0.0,"roll":0.068,"turretYaw":0.0,"vx":3.789,"vy":0.0,"vz":7.393,"x":144.263,"y":0.0,"yaw":0.422,"z":-25.054},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(140.6935, 4.951052, -33.06828)","engineFrames":742,"error":0,"label":"frame-000148","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":28717,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.014,"respawnTimer":0.0,"roll":0.066,"turretYaw":0.0,"vx":3.487,"vy":0.0,"vz":7.856,"x":144.736,"y":0.0,"yaw":0.37,"z":-24.057},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(141.6323, 4.93385, -32.16759)","engineFrames":745,"error":0,"label":"frame-000149","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":28845,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.042,"respawnTimer":0.0,"roll":0.074,"turretYaw":0.0,"vx":3.487,"vy":0.0,"vz":9.215,"x":145.203,"y":0.0,"yaw":0.315,"z":-22.907},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(142.5851, 4.909907, -31.07011)","engineFrames":748,"error":0,"label":"frame-000150","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":28976,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.048,"respawnTimer":0.0,"roll":0.08,"turretYaw":0.0,"vx":3.335,"vy":0.0,"vz":10.496,"x":145.658,"y":0.0,"yaw":0.262,"z":-21.581},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(143.5178, 4.892807, -29.77366)","engineFrames":751,"error":0,"label":"frame-000151","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":29102,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.048,"respawnTimer":0.0,"roll":0.086,"turretYaw":0.0,"vx":3.049,"vy":0.0,"vz":11.678,"x":146.082,"y":0.0,"yaw":0.211,"z":-20.092},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(144.3588, 4.857628, -28.29188)","engineFrames":754,"error":0,"label":"frame-000152","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":29229,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.045,"respawnTimer":0.0,"roll":0.082,"turretYaw":0.0,"vx":2.677,"vy":0.0,"vz":12.753,"x":146.462,"y":0.0,"yaw":0.167,"z":-18.453},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(145.0977, 4.832788, -26.63694)","engineFrames":757,"error":0,"label":"frame-000153","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":29354,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.041,"respawnTimer":0.0,"roll":0.074,"turretYaw":0.0,"vx":2.289,"vy":0.0,"vz":13.707,"x":146.789,"y":0.0,"yaw":0.133,"z":-16.68},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(145.6916, 4.811796, -24.83856)","engineFrames":760,"error":0,"label":"frame-000154","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":29481,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.005,"respawnTimer":0.0,"roll":0.051,"turretYaw":0.0,"vx":1.866,"vy":0.0,"vz":13.7,"x":147.065,"y":0.0,"yaw":0.113,"z":-14.824},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(146.1172, 4.812978, -23.05955)","engineFrames":763,"error":0,"label":"frame-000155","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":29607,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.009,"respawnTimer":0.0,"roll":0.031,"turretYaw":0.0,"vx":1.592,"vy":0.0,"vz":13.734,"x":147.288,"y":0.0,"yaw":0.102,"z":-13.023},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(146.4246, 4.808218, -21.21742)","engineFrames":766,"error":0,"label":"frame-000156","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":29735,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.005,"respawnTimer":0.0,"roll":0.011,"turretYaw":0.0,"vx":1.451,"vy":0.0,"vz":13.698,"x":147.492,"y":0.0,"yaw":0.101,"z":-11.166},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(146.634, 4.815569, -19.4148)","engineFrames":769,"error":0,"label":"frame-000157","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":29861,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.005,"respawnTimer":0.0,"roll":-0.002,"turretYaw":0.0,"vx":1.426,"vy":0.0,"vz":13.711,"x":147.679,"y":0.0,"yaw":0.105,"z":-9.367},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(146.7987, 4.806102, -17.55316)","engineFrames":772,"error":0,"label":"frame-000158","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":29989,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.007,"respawnTimer":0.0,"roll":-0.011,"turretYaw":0.0,"vx":1.513,"vy":0.0,"vz":14.075,"x":147.878,"y":0.0,"yaw":0.112,"z":-7.489},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(146.9361, 4.804952, -15.69733)","engineFrames":775,"error":0,"label":"frame-000159","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":30117,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.008,"respawnTimer":0.0,"roll":-0.016,"turretYaw":0.0,"vx":1.605,"vy":0.0,"vz":14.028,"x":148.083,"y":0.0,"yaw":0.121,"z":-5.645},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(147.074, 4.804346, -13.79671)","engineFrames":778,"error":0,"label":"frame-000160","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":30245,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.006,"respawnTimer":0.0,"roll":-0.019,"turretYaw":0.0,"vx":1.712,"vy":0.0,"vz":13.927,"x":148.308,"y":0.0,"yaw":0.131,"z":-3.753},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(147.1765, 4.872233, -12.38206)","engineFrames":781,"error":0,"label":"frame-000161","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":30372,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.009,"respawnTimer":0.0,"roll":-0.018,"turretYaw":0.0,"vx":1.861,"vy":0.0,"vz":14.091,"x":148.544,"y":0.0,"yaw":0.139,"z":-1.911},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(147.345, 4.849083, -10.53164)","engineFrames":784,"error":0,"label":"frame-000162","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":30503,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.008,"respawnTimer":0.0,"roll":-0.016,"turretYaw":0.0,"vx":1.883,"vy":0.0,"vz":13.622,"x":148.73,"y":0.0,"yaw":0.145,"z":-0.538},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(147.5389, 4.809517, -8.691303)","engineFrames":787,"error":0,"label":"frame-000163","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":30629,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.005,"respawnTimer":0.0,"roll":-0.014,"turretYaw":0.0,"vx":2.005,"vy":0.0,"vz":13.771,"x":148.995,"y":0.0,"yaw":0.151,"z":1.316},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(147.7496, 4.815715, -6.877738)","engineFrames":790,"error":0,"label":"frame-000164","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":30758,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.008,"respawnTimer":0.0,"roll":-0.009,"turretYaw":0.0,"vx":2.101,"vy":0.0,"vz":13.756,"x":149.331,"y":0.0,"yaw":0.156,"z":3.565},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(147.9914, 4.835261, -5.027282)","engineFrames":793,"error":0,"label":"frame-000165","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":30887,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.008,"respawnTimer":0.0,"roll":-0.007,"turretYaw":0.0,"vx":2.168,"vy":0.0,"vz":13.923,"x":149.547,"y":0.0,"yaw":0.157,"z":4.958},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(148.261, 4.799769, -3.151768)","engineFrames":796,"error":0,"label":"frame-000166","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":31011,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.0,"respawnTimer":0.0,"roll":-0.004,"turretYaw":0.0,"vx":2.223,"vy":0.0,"vz":14.04,"x":149.844,"y":0.0,"yaw":0.159,"z":6.85},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(148.5404, 4.804959, -1.309797)","engineFrames":799,"error":0,"label":"frame-000167","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":31137,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.001,"respawnTimer":0.0,"roll":-0.002,"turretYaw":0.0,"vx":2.203,"vy":0.0,"vz":13.789,"x":150.135,"y":0.0,"yaw":0.159,"z":8.676},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(148.8348, 4.799347, 0.556816)","engineFrames":802,"error":0,"label":"frame-000168","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":31267,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.003,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":2.229,"vy":0.0,"vz":13.926,"x":150.435,"y":0.0,"yaw":0.159,"z":10.552},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(149.1305, 4.8095, 2.382895)","engineFrames":805,"error":0,"label":"frame-000169","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":31392,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.001,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":2.187,"vy":0.0,"vz":13.693,"x":150.725,"y":0.0,"yaw":0.158,"z":12.364},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(149.4333, 4.797691, 4.233355)","engineFrames":808,"error":0,"label":"frame-000170","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":31518,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.003,"respawnTimer":0.0,"roll":0.002,"turretYaw":0.0,"vx":2.199,"vy":0.0,"vz":13.845,"x":151.022,"y":0.0,"yaw":0.157,"z":14.228},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(149.7316, 4.807205, 6.055484)","engineFrames":811,"error":0,"label":"frame-000171","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":31642,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.005,"respawnTimer":0.0,"roll":0.002,"turretYaw":0.0,"vx":2.181,"vy":0.0,"vz":13.828,"x":151.309,"y":0.0,"yaw":0.155,"z":16.044},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(150.0354, 4.80032, 7.917173)","engineFrames":814,"error":0,"label":"frame-000172","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":31768,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.007,"respawnTimer":0.0,"roll":0.002,"turretYaw":0.0,"vx":2.155,"vy":0.0,"vz":13.76,"x":151.603,"y":0.0,"yaw":0.154,"z":17.912},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(150.3235, 4.796421, 9.695273)","engineFrames":817,"error":0,"label":"frame-000173","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":31896,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.062,"respawnTimer":0.0,"roll":0.002,"turretYaw":0.0,"vx":1.795,"vy":0.0,"vz":11.498,"x":151.87,"y":0.0,"yaw":0.153,"z":19.622},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(150.5565, 4.865017, 11.1264)","engineFrames":820,"error":0,"label":"frame-000174","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":32019,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.059,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":1.483,"vy":0.0,"vz":9.55,"x":152.078,"y":0.0,"yaw":0.153,"z":20.958},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(150.7583, 4.883216, 12.38824)","engineFrames":823,"error":0,"label":"frame-000175","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":32148,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.032,"respawnTimer":0.0,"roll":0.001,"turretYaw":0.0,"vx":1.409,"vy":0.0,"vz":9.137,"x":152.27,"y":0.0,"yaw":0.152,"z":22.2},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(150.9514, 4.9245, 13.60508)","engineFrames":826,"error":0,"label":"frame-000176","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":32277,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.022,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":1.346,"vy":0.0,"vz":8.758,"x":152.453,"y":0.0,"yaw":0.152,"z":23.39},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(151.1322, 4.942055, 14.77062)","engineFrames":829,"error":0,"label":"frame-000177","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":32405,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.018,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":1.29,"vy":0.0,"vz":8.409,"x":152.629,"y":0.0,"yaw":0.152,"z":24.531},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(151.3035, 4.94842, 15.8836)","engineFrames":832,"error":0,"label":"frame-000178","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":32532,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.016,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":1.239,"vy":0.0,"vz":8.087,"x":152.797,"y":0.0,"yaw":0.152,"z":25.628},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(151.469, 4.954972, 16.96291)","engineFrames":835,"error":0,"label":"frame-000179","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":32664,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":-0.014,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":1.192,"vy":0.0,"vz":7.788,"x":152.958,"y":0.0,"yaw":0.152,"z":26.684},"viewport":"(506.6667, 346.6667)"}
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-136.3855, 4.9865, -123.239)","engineFrames":2917,"error":0,"label":"results","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":106373,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.00046792120939913,"respawnTimer":0.0,"roll":0.168918466601749,"turretYaw":0.0,"vx":5.96590289447425,"vy":0.0,"vz":-5.7368449942487,"x":-129.200430308066,"y":0.0,"yaw":-4.07518965847291,"z":-128.913979455066},"viewport":"(506.6667, 346.6667)"}
+CANDIDATE_RESULTS {"ack":2450,"hash":"6afb8a36ee954ff9457a5522a7412c809191fb070eb7fe9eda4d379753acce48","mode":"puma-race","role":"host","sent":2402,"state":{"actors":[{"active":0.0,"activeSpeedMultiplier":1.0,"ads":false,"alt":false,"ammo":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"armor":0.0,"attachments":{"behaviors":[],"items":[],"modifiers":{"bloomMax":1.0,"bloomPerShot":1.0,"burst":0.0,"cap":0.0,"damage":1.0,"interval":1.0,"pellets":0.0,"range":1.0,"recoilKick":1.0,"reload":1.0,"spread":1.0},"visual":{"barrel":"stock","magazine":"stock","optic":"none","underbarrel":"none"}},"baseHeight":1.8,"bodyYaw":-2.25420565585709,"bot":null,"botScan":44.0,"braceKnockbackScale":1.0,"braceMitigation":0.0,"braceTimer":0.0,"burst":0.0,"burstLeft":0.0,"burstTimer":0.0,"carrySpeedMultiplier":1.0,"carryingFlag":false,"character":"chatgpt","cooldown":0.0,"cooldownMultiplier":1.0,"coyote":0.0,"crouching":false,"damageMultiplier":1.0,"dead":0.0,"deaths":0.0,"eyeHeight":1.45,"finish":null,"firingThisTick":false,"frags":0.0,"gear":{"armor":0.0,"damage":1.0,"health":0.0,"speed":1.0,"spread":1.0},"gearDamage":1.0,"gearSpeed":1.0,"gearSpread":1.0,"glideSteer":0.0,"grenadeCooldown":0.0,"grounded":true,"harness":"openclaw","health":100.0,"hitScale":1.0,"holsterSkip":0.0,"id":0.0,"inputCrouch":false,"inputJump":false,"inputMobility":false,"juggernaut":false,"juggernautDamage":1.0,"juggernautShield":0.0,"jumpBuffer":0.0,"jumpCutArmed":false,"jumpHeld":false,"ladder":0.0,"lastValid":{"x":-128.9222633739,"y":0.2,"z":-128.622220724714},"maxHealth":100.0,"melee":0.0,"moveSpeed":8.6,"movement":{"activeTime":0.0,"anchor":null,"chains":0.0,"charges":0.0,"cooldown":0.0,"enabled":false,"fuel":0.0,"fuelRecharge":0.0,"grapple":null,"grappleLanding":null,"landingArmed":false,"maxCharges":0.0,"maxFuel":0.0,"miss":0.0,"phase":"ready","recovery":0.0,"v":1.0,"verb":"grapple","windup":0.0},"movementLanded":false,"name":"Godot","pitch":0.0,"powerups":{},"protection":1.5,"punchPitch":0.0,"punchVelPitch":0.0,"punchVelYaw":0.0,"punchYaw":0.0,"reloadDuration":0.0,"reloadTimer":0.0,"reloadWeapon":-1.0,"reloading":false,"riderSpeedBonus":0.0,"riderSpeedTimer":0.0,"scoreStats":{"captures":0.0,"damage":0.0,"flagDrops":0.0,"flagPickups":0.0,"flagReturns":0.0,"hits":0.0,"objectiveCaptures":0.0,"objectiveContests":0.0,"objectiveNeutralizations":0.0,"objectiveTime":0.0,"shots":0.0},"shotWait":0.25,"shots":0.0,"slideCooldown":0.0,"slideTimer":0.0,"sliding":false,"slow":0.0,"slowMultiplier":0.55,"spawnArmor":5.0,"speedMultiplier":1.0,"spread":0.0,"sprinting":false,"streak":0.0,"temporaryShield":0.0,"threatPing":0.0,"traversalCooldown":0.0,"traversalEvent":null,"traversalFlight":false,"traversalPad":null,"traversalTarget":null,"upgradeBase":-1.0,"upgradeTimer":0.0,"upgradeWeapon":null,"vehicleId":0.0,"vehicleSeat":"driver","vehicleSeatIndex":0.0,"verbState":{"active":false,"open":false,"shotsLeft":0.0,"verb":"adaptive","windowIn":0.0},"vx":5.96590289447425,"vy":0.0,"vz":-5.7368449942487,"weapon":0.0,"weaponSwitch":0.0,"x":-128.9222633739,"y":0.2,"yaw":-7.17760886973889,"z":-128.622220724714,"zipRide":null},{"active":0.0,"activeSpeedMultiplier":1.0,"ads":false,"alt":false,"ammo":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"armor":0.0,"attachments":{"behaviors":[],"items":[],"modifiers":{"bloomMax":1.0,"bloomPerShot":1.0,"burst":0.0,"cap":0.0,"damage":1.0,"interval":1.0,"pellets":0.0,"range":1.0,"recoilKick":1.0,"reload":1.0,"spread":1.0},"visual":{"barrel":"stock","magazine":"stock","optic":"none","underbarrel":"none"}},"baseHeight":1.8,"bodyYaw":-2.33761553776368,"bot":null,"botScan":44.0,"braceKnockbackScale":1.0,"braceMitigation":0.0,"braceTimer":0.0,"burst":0.0,"burstLeft":0.0,"burstTimer":0.0,"carrySpeedMultiplier":1.0,"carryingFlag":false,"character":"chatgpt","cooldown":0.0,"cooldownMultiplier":1.0,"coyote":0.0,"crouching":false,"damageMultiplier":1.0,"dead":0.0,"deaths":0.0,"eyeHeight":1.45,"finish":null,"firingThisTick":false,"frags":0.0,"gear":{"armor":0.0,"damage":1.0,"health":0.0,"speed":1.0,"spread":1.0},"gearDamage":1.0,"gearSpeed":1.0,"gearSpread":1.0,"glideSteer":0.0,"grenadeCooldown":0.0,"grounded":true,"harness":"openclaw","health":100.0,"hitScale":1.0,"holsterSkip":0.0,"id":1.0,"inputCrouch":false,"inputJump":false,"inputMobility":false,"juggernaut":false,"juggernautDamage":1.0,"juggernautShield":0.0,"jumpBuffer":0.0,"jumpCutArmed":false,"jumpHeld":false,"ladder":0.0,"lastValid":{"x":-131.259714340046,"y":0.2,"z":-124.820034102695},"maxHealth":100.0,"melee":0.0,"moveSpeed":8.6,"movement":{"activeTime":0.0,"anchor":null,"chains":0.0,"charges":0.0,"cooldown":0.0,"enabled":false,"fuel":0.0,"fuelRecharge":0.0,"grapple":null,"grappleLanding":null,"landingArmed":false,"maxCharges":0.0,"maxFuel":0.0,"miss":0.0,"phase":"ready","recovery":0.0,"v":1.0,"verb":"grapple","windup":0.0},"movementLanded":false,"name":"Godot guest","pitch":0.0,"powerups":{},"protection":1.5,"punchPitch":0.0,"punchVelPitch":0.0,"punchVelYaw":0.0,"punchYaw":0.0,"reloadDuration":0.0,"reloadTimer":0.0,"reloadWeapon":-1.0,"reloading":false,"riderSpeedBonus":0.0,"riderSpeedTimer":0.0,"scoreStats":{"captures":0.0,"damage":0.0,"flagDrops":0.0,"flagPickups":0.0,"flagReturns":0.0,"hits":0.0,"objectiveCaptures":0.0,"objectiveContests":0.0,"objectiveNeutralizations":0.0,"objectiveTime":0.0,"shots":0.0},"shotWait":0.25,"shots":0.0,"slideCooldown":0.0,"slideTimer":0.0,"sliding":false,"slow":0.0,"slowMultiplier":0.55,"spawnArmor":5.0,"speedMultiplier":1.0,"spread":0.0,"sprinting":false,"streak":0.0,"temporaryShield":0.0,"threatPing":0.0,"traversalCooldown":0.0,"traversalEvent":null,"traversalFlight":false,"traversalPad":null,"traversalTarget":null,"upgradeBase":-1.0,"upgradeTimer":0.0,"upgradeWeapon":null,"vehicleId":1.0,"vehicleSeat":"driver","vehicleSeatIndex":0.0,"verbState":{"active":false,"open":false,"shotsLeft":0.0,"verb":"adaptive","windowIn":0.0},"vx":2.76660635917699,"vy":0.0,"vz":-7.6513004232287,"weapon":0.0,"weaponSwitch":0.0,"x":-131.259714340046,"y":0.2,"yaw":-6.66044624992894,"z":-124.820034102695,"zipRide":null}],"config":{"berserk":false,"bigHead":false,"botCount":0.0,"bounty":false,"checkpoint":null,"damage":1.0,"difficulty":"easy","endless":false,"fastPowers":false,"fragLimit":1.0,"gravity":1.0,"instagib":false,"lifeSteal":false,"loadout":null,"mirrorLoadout":false,"mission":"convoy-run","mode":"puma-race","mutators":[],"noRecoil":false,"oneShot":false,"playerName":"","randomLoadout":false,"respawn":2.0,"speed":1.0,"startingWeapon":0.0,"suddenDeath":false,"timeLimit":900.0,"unlimitedAmmo":false},"deployables":[],"feed":[],"flags":[],"leaders":["Godot"],"mapId":"stormglass-causeway","mapName":"Stormglass Causeway","modeName":"Puma Circuit","objectives":null,"over":true,"overReason":"race-finish","pickups":[],"projectiles":0.0,"race":{"boxes":[],"coins":[],"countdown":0.0,"elapsed":105.133333333329,"gates":[{"halfWidth":13.9,"nx":0.811242185175561,"nz":-0.584710284663765,"x":-130.0,"z":-130.0},{"halfWidth":13.9,"nx":0.995708839705243,"nz":0.0925413774094543,"x":-50.0,"z":-130.0},{"halfWidth":13.9,"nx":0.947810970315916,"nz":0.318832815984807,"x":30.0,"z":-115.0},{"halfWidth":13.9,"nx":0.781108466038694,"nz":0.624395358953507,"x":100.0,"z":-80.0},{"halfWidth":13.9,"nx":0.407020187230949,"nz":0.913419162918363,"x":145.0,"z":-25.0},{"halfWidth":13.9,"nx":-0.17629831581479,"nz":0.984336783748768,"x":155.0,"z":40.0},{"halfWidth":13.9,"nx":-0.750417976754927,"nz":0.660963584596793,"x":130.0,"z":85.0},{"halfWidth":13.9,"nx":-0.816059498930971,"nz":0.577967900669694,"x":80.0,"z":105.0},{"halfWidth":13.9,"nx":-0.88638840980783,"nz":0.462942314936048,"x":45.0,"z":145.0},{"halfWidth":13.9,"nx":-0.955636089748998,"nz":-0.294549934593855,"x":0.0,"z":150.0},{"halfWidth":13.9,"nx":-0.99551551450357,"nz":-0.0945984163857509,"x":-35.0,"z":120.0},{"halfWidth":13.9,"nx":-0.997484208812643,"nz":-0.0708890200906793,"x":-70.0,"z":140.0},{"halfWidth":13.9,"nx":-0.978439217349438,"nz":-0.206534979973416,"x":-115.0,"z":105.0},{"halfWidth":13.9,"nx":-0.972064160128522,"nz":-0.234715292628392,"x":-155.0,"z":115.0},{"halfWidth":13.9,"nx":-0.500936891949318,"nz":-0.865483812837743,"x":-195.0,"z":80.0},{"halfWidth":13.9,"nx":0.396224135629695,"nz":-0.918153818455547,"x":-205.0,"z":30.0},{"halfWidth":13.9,"nx":0.982122473970114,"nz":-0.18824305066276,"x":-165.0,"z":5.0},{"halfWidth":13.9,"nx":0.979248956078112,"nz":-0.202661002711249,"x":-110.0,"z":15.0},{"halfWidth":13.9,"nx":0.274512909269269,"nz":-0.961583414293592,"x":-65.0,"z":-15.0},{"halfWidth":13.9,"nx":-0.761475161746387,"nz":-0.648194089793569,"x":-90.0,"z":-70.0},{"halfWidth":13.9,"nx":-0.471857925532024,"nz":-0.881674598767944,"x":-145.0,"z":-85.0}],"hazards":[],"laps":1.0,"phase":"finished","standings":[{"actorId":0.0,"coins":0.0,"completedLaps":1.0,"effects":{"shield":0.0,"slow":0.0,"star":0.0,"turbo":0.0},"finishTime":105.131669069811,"item":null,"lap":1.0,"nextGate":1.0,"position":1.0,"progress":21.0099946211492,"vehicleId":0.0},{"actorId":1.0,"coins":0.0,"completedLaps":0.0,"effects":{"shield":0.0,"slow":0.0,"star":0.0,"turbo":0.0},"finishTime":null,"item":null,"lap":1.0,"nextGate":0.0,"position":2.0,"progress":20.8875820695209,"vehicleId":1.0}],"winnerId":0.0},"rockets":[],"singleplayer":null,"stats":{"falls":0.0,"kills":0.0,"pickups":0.0,"powers":0.0,"respawns":2.0,"shots":0.0},"suddenDeath":false,"teamScores":{"0":0.0,"1":0.0},"time":108.133333333328,"vehicles":[{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.00046792120939913,"respawnTimer":0.0,"roll":0.168918466601749,"turretYaw":0.0,"vx":5.96590289447425,"vy":0.0,"vz":-5.7368449942487,"x":-129.200430308066,"y":0.0,"yaw":-4.07518965847291,"z":-128.913979455066},{"altitude":0.0,"driver":1.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":1.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.00270989820545741,"respawnTimer":0.0,"roll":0.0626753223669331,"turretYaw":0.0,"vx":2.76660635917699,"vy":0.0,"vz":-7.6513004232287,"x":-131.647980089314,"y":0.0,"yaw":-3.53819589426224,"z":-124.928430172484}],"winner":0.0}}
+STORMGLASS_STARTED {"hash":"6afb8a36ee954ff9457a5522a7412c809191fb070eb7fe9eda4d379753acce48","role":"host","starts":2}
+WARNING: Adding 'body' as child to '' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'turret' as child to '@Node3D@2229' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_0' as child to '@Node3D@2213' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_1' as child to '@Node3D@2217' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_2' as child to '@Node3D@2221' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_3' as child to '@Node3D@2225' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2233' as child to '' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2234' as child to '@Node3D@2229' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2235' as child to '@Node3D@2213' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2236' as child to '@Node3D@2217' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2237' as child to '@Node3D@2221' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2238' as child to '@Node3D@2225' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2239' as child to '' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2240' as child to '@Node3D@2229' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2241' as child to '@Node3D@2213' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2242' as child to '@Node3D@2217' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2243' as child to '@Node3D@2221' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2244' as child to '@Node3D@2225' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'body' as child to '' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'turret' as child to '@Node3D@2282' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_0' as child to '@Node3D@2266' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_1' as child to '@Node3D@2270' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_2' as child to '@Node3D@2274' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_3' as child to '@Node3D@2278' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2286' as child to '' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2287' as child to '@Node3D@2282' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2288' as child to '@Node3D@2266' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2289' as child to '@Node3D@2270' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2290' as child to '@Node3D@2274' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2291' as child to '@Node3D@2278' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2292' as child to '' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2293' as child to '@Node3D@2282' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2294' as child to '@Node3D@2266' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2295' as child to '@Node3D@2270' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2296' as child to '@Node3D@2274' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2297' as child to '@Node3D@2278' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+STORMGLASS_NATIVE_CAPTURE {"camera":"(-138.4397, 5.0, -117.3264)","engineFrames":2930,"error":0,"label":"restart","renderer":"llvmpipe (LLVM 20.1.8, 256 bits)","ticksMs":107930,"vehicle":{"altitude":0.0,"driver":0.0,"flight":false,"gunner":null,"health":300.0,"heat":0.0,"id":0.0,"kind":"puma","maxHealth":300.0,"overheated":false,"passengers":[],"pitchBody":0.0,"respawnTimer":0.0,"roll":0.0,"turretYaw":0.0,"vx":0.0,"vy":0.0,"vz":0.0,"x":-135.595,"y":0.0,"yaw":2.82,"z":-125.865},"viewport":"(506.6667, 346.6667)"}
+CANDIDATE_TEARDOWN_READY {"hash":"6afb8a36ee954ff9457a5522a7412c809191fb070eb7fe9eda4d379753acce48","phase":"active","role":"host"}
+STORMGLASS_LEAVE_HOME {"behavior":"canonical Leave match returns to launcher by quitting native process","overlay":true}

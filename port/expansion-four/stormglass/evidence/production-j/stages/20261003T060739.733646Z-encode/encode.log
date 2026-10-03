@@ -1,0 +1,51 @@
+ffmpeg version 7.1.1-1ubuntu4.2 Copyright (c) 2000-2025 the FFmpeg developers
+  built with gcc 15 (Ubuntu 15.2.0-4ubuntu4)
+  configuration: --prefix=/usr --extra-version=1ubuntu4.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-libmfx --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libcaca --enable-libdvdnav --enable-libdvdread --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, concat, from '/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/wide-cadence.ffconcat':
+  Duration: N/A, start: 0.000000, bitrate: N/A
+  Stream #0:0: Video: png, rgba(pc, gbr/bt709/iec61966-2-1), 1280x800, 25 fps, 25 tbr, 25 tbn
+Stream mapping:
+  Stream #0:0 -> #0:0 (png (native) -> h264 (libx264))
+Press [q] to stop, [?] for help
+[libx264 @ 0x60defe9fad80] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2 AVX512
+[libx264 @ 0x60defe9fad80] profile High, level 3.2, 4:2:0, 8-bit
+[libx264 @ 0x60defe9fad80] 264 - core 164 r3108 31e19f9 - H.264/MPEG-4 AVC codec - Copyleft 2003-2023 - http://www.videolan.org/x264.html - options: cabac=1 ref=2 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=6 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=1 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=1 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=30 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to '/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-20261002/port/expansion-four/stormglass/evidence/production-j/ordinary-input.mp4':
+  Metadata:
+    encoder         : Lavf61.7.100
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, unknown/bt709/iec61966-2-1, progressive), 1280x800, q=2-31, 25 fps, 12800 tbn
+      Metadata:
+        encoder         : Lavc61.19.101 libx264
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=    5 fps=0.0 q=24.0 size=       0KiB time=00:00:00.32 bitrate=   1.2kbits/s speed=0.64x    frame=   30 fps= 30 q=25.0 size=     256KiB time=00:00:04.08 bitrate= 514.1kbits/s speed=4.08x    frame=   57 fps= 38 q=25.0 size=     768KiB time=00:00:07.64 bitrate= 823.5kbits/s speed=5.09x    frame=   86 fps= 43 q=24.0 size=    1024KiB time=00:00:11.16 bitrate= 751.7kbits/s speed=5.58x    [concat @ 0x60defe9dbb00] DTS -230584300920840 < 529 out of order
+DTS -230584300920840, next:21200000 st:0 invalid dropping
+PTS -230584300920840, next:21200000 invalid dropping st:0
+frame=  111 fps= 44 q=25.0 size=    1280KiB time=00:00:14.40 bitrate= 728.2kbits/s speed=5.76x    frame=  137 fps= 46 q=24.0 size=    1536KiB time=00:00:18.12 bitrate= 694.4kbits/s speed=6.04x    [out#0/mp4 @ 0x60defea023c0] video:1992KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.160621%
+frame=  156 fps= 47 q=24.0 Lsize=    1996KiB time=00:00:21.04 bitrate= 777.0kbits/s speed= 6.3x    
+[libx264 @ 0x60defe9fad80] frame I:1     Avg QP:16.38  size: 52823
+[libx264 @ 0x60defe9fad80] frame P:45    Avg QP:17.50  size: 17595
+[libx264 @ 0x60defe9fad80] frame B:110   Avg QP:18.52  size: 10863
+[libx264 @ 0x60defe9fad80] consecutive B-frames:  1.9%  5.1% 21.2% 71.8%
+[libx264 @ 0x60defe9fad80] mb I  I16..4: 29.6% 39.9% 30.6%
+[libx264 @ 0x60defe9fad80] mb P  I16..4:  4.7%  6.8%  5.8%  P16..4: 20.5%  8.4%  4.3%  0.0%  0.0%    skip:49.5%
+[libx264 @ 0x60defe9fad80] mb B  I16..4:  4.9%  0.7%  0.8%  B16..8: 21.9% 11.6%  2.7%  direct: 4.5%  skip:52.8%  L0:51.7% L1:45.3% BI: 2.9%
+[libx264 @ 0x60defe9fad80] 8x8 transform intra:26.4% inter:23.4%
+[libx264 @ 0x60defe9fad80] coded y,uvDC,uvAC intra: 20.5% 35.6% 21.4% inter: 5.7% 7.9% 2.6%
+[libx264 @ 0x60defe9fad80] i16 v,h,dc,p: 47% 36% 12%  5%
+[libx264 @ 0x60defe9fad80] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 17% 12% 54%  3%  4%  3%  3%  2%  2%
+[libx264 @ 0x60defe9fad80] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 26% 34% 25%  2%  2%  2%  4%  3%  3%
+[libx264 @ 0x60defe9fad80] i8c dc,h,v,p: 57% 30% 11%  1%
+[libx264 @ 0x60defe9fad80] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x60defe9fad80] ref P L0: 61.5% 38.5%
+[libx264 @ 0x60defe9fad80] ref B L0: 74.1% 25.9%
+[libx264 @ 0x60defe9fad80] ref B L1: 90.9%  9.1%
+[libx264 @ 0x60defe9fad80] kb/s:759.60

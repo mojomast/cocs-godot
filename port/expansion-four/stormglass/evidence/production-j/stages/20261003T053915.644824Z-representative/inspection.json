@@ -1,0 +1,62 @@
+{
+  "accepted": false,
+  "captures": [
+    {
+      "capturedUsec": 889448,
+      "drawCalls": 31.0,
+      "eye": [
+        -350,
+        320,
+        -330
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T053915.644824Z-representative/overview.png",
+      "frameSeconds": 0.0,
+      "primitives": 21748.0,
+      "target": [
+        -35,
+        0,
+        5
+      ],
+      "view": "overview"
+    },
+    {
+      "capturedUsec": 1765199,
+      "drawCalls": 59.0,
+      "eye": [
+        -108,
+        3.4,
+        -133
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T053915.644824Z-representative/terminal.png",
+      "frameSeconds": 0.129788,
+      "primitives": 99208.0,
+      "target": [
+        -5,
+        9,
+        -120
+      ],
+      "view": "terminal"
+    },
+    {
+      "capturedUsec": 2839649,
+      "drawCalls": 55.0,
+      "eye": [
+        150,
+        3.4,
+        22
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T053915.644824Z-representative/freight-bore.png",
+      "frameSeconds": 0.164367,
+      "primitives": 97932.0,
+      "target": [
+        138,
+        7,
+        70
+      ],
+      "view": "freight-bore"
+    }
+  ],
+  "driver": "opengl3",
+  "geometryHash": "6afb8a36ee954ff9457a5522a7412c809191fb070eb7fe9eda4d379753acce48",
+  "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)"
+}

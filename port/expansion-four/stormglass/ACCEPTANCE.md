@@ -1,5 +1,9 @@
 # Source checkpoint and queued production
 
+**Historical source checkpoint below.** Actual grant-J production, native outcomes,
+retained failures and explicit slot release are now recorded in
+[PRODUCTION-J.md](PRODUCTION-J.md). Public registration remains closed.
+
 **READY FOR BLENDER — source-only.** No Blender/Godot/import/render/capture ran.
 Parallax retains the exclusive slot. No `.blend`/GLB exists for Stormglass yet.
 

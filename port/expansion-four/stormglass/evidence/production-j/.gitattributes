@@ -1,0 +1,2 @@
+# Preserve actual engine/encoder stdout bytes, including trailing log whitespace.
+*.log -whitespace

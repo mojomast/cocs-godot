@@ -1,0 +1,44 @@
+{
+  "grant": "STORMGLASS-ASSET-PRODUCTION-20261003-J",
+  "released": true,
+  "releasedAt": "2026-10-03T06:09:35.500713+00:00",
+  "ownedGroups": [
+    1660356,
+    1661203,
+    1662448,
+    1676060,
+    1677227,
+    1677941,
+    1694913,
+    1695499,
+    1696234,
+    1696747,
+    1697812,
+    1718598,
+    1719349,
+    1732867,
+    1744258,
+    1755383,
+    1764844,
+    1793086,
+    1794575
+  ],
+  "audits": [
+    {
+      "at": "2026-10-03T06:09:35.449969+00:00",
+      "ownedProcesses": []
+    },
+    {
+      "at": "2026-10-03T06:09:35.473578+00:00",
+      "ownedProcesses": []
+    },
+    {
+      "at": "2026-10-03T06:09:35.500691+00:00",
+      "ownedProcesses": []
+    }
+  ],
+  "allOwnedGroupsEmpty": true,
+  "heavyJobsRemaining": 0,
+  "accepted": false,
+  "head": "0f731b78afb255b92f3fc81c7da7de5a791d914d"
+}

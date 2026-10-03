@@ -1,0 +1,722 @@
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+WARNING: Adding 'body' as child to '' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'turret' as child to '@Node3D@1847' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_0' as child to '@Node3D@1831' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_1' as child to '@Node3D@1835' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_2' as child to '@Node3D@1839' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_3' as child to '@Node3D@1843' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1851' as child to '' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1852' as child to '@Node3D@1847' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1853' as child to '@Node3D@1831' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1854' as child to '@Node3D@1835' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1855' as child to '@Node3D@1839' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1856' as child to '@Node3D@1843' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1857' as child to '' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1858' as child to '@Node3D@1847' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1859' as child to '@Node3D@1831' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1860' as child to '@Node3D@1835' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1861' as child to '@Node3D@1839' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1862' as child to '@Node3D@1843' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'body' as child to '' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'turret' as child to '@Node3D@1900' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_0' as child to '@Node3D@1884' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_1' as child to '@Node3D@1888' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_2' as child to '@Node3D@1892' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_3' as child to '@Node3D@1896' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1904' as child to '' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1905' as child to '@Node3D@1900' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1906' as child to '@Node3D@1884' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1907' as child to '@Node3D@1888' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1908' as child to '@Node3D@1892' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1909' as child to '@Node3D@1896' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1910' as child to '' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1911' as child to '@Node3D@1900' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1912' as child to '@Node3D@1884' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1913' as child to '@Node3D@1888' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1914' as child to '@Node3D@1892' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@1915' as child to '@Node3D@1896' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'body' as child to '' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'turret' as child to '@Node3D@2229' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_0' as child to '@Node3D@2213' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_1' as child to '@Node3D@2217' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_2' as child to '@Node3D@2221' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_3' as child to '@Node3D@2225' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2233' as child to '' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2234' as child to '@Node3D@2229' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2235' as child to '@Node3D@2213' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2236' as child to '@Node3D@2217' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2237' as child to '@Node3D@2221' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2238' as child to '@Node3D@2225' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2239' as child to '' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2240' as child to '@Node3D@2229' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2241' as child to '@Node3D@2213' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2242' as child to '@Node3D@2217' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2243' as child to '@Node3D@2221' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2244' as child to '@Node3D@2225' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'body' as child to '' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'turret' as child to '@Node3D@2282' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_0' as child to '@Node3D@2266' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_1' as child to '@Node3D@2270' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_2' as child to '@Node3D@2274' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding 'wheel_3' as child to '@Node3D@2278' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2286' as child to '' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2287' as child to '@Node3D@2282' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2288' as child to '@Node3D@2266' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2289' as child to '@Node3D@2270' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2290' as child to '@Node3D@2274' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2291' as child to '@Node3D@2278' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2292' as child to '' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2293' as child to '@Node3D@2282' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2294' as child to '@Node3D@2266' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2295' as child to '@Node3D@2270' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2296' as child to '@Node3D@2274' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
+WARNING: Adding '@MeshInstance3D@2297' as child to '@Node3D@2278' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] apply_state (res://vehicles/renderer.gd:39)
+         [3] on_snapshot (res://multiplayer_worlds/sports_demo.gd:197)
+         [4] deliver_snapshot (res://net/client.gd:493)
+         [5] decode_text (res://net/client.gd:444)
+         [6] _process (res://net/client.gd:522)
