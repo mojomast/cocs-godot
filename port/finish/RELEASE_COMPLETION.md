@@ -25,7 +25,7 @@ boundaries.
 | Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Actual production at `1f129ab2`; E released; compact-HUD correction at `83ceaa62` passes six parent source checks/grammar, new native layout/screenshots pending |
 | Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base `b6ab6782` and ordinary-controller follow-up `da259d19` integrated; 26 parent acceptance tests and grammar pass; native execution awaits later grant and device access |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Launch-bound UI registration integrated through `2e355b93`; 142 jobs preserve all prior coverage; 35 parent runner/receipt tests pass; fresh ledger still required |
-| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Parallax and robots promoted; actual vehicle promotion and extracted texture/import audit active; scenery/three maps still need production; final export/Windows CI pending |
+| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Parallax, robots and vehicles promoted through `9cf15a14`; 13 parent import/receipt/Git checks pass; scenery/three maps and final export/Windows CI pending |
 | Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | Prepared v3 pipeline integrated at `2902412b`; nine focused parent tests pass; real capture/edit/install awaits final assets and a later grant |
 
 All workers run in the background, using existing sessions/checkouts. Source work
@@ -693,3 +693,24 @@ compact/wide screenshots remain pending under a later grant; the original E
 image remains defect evidence. Packaging received the exact changed dependency
 for explicit receipt reconciliation without reattributing E native results.
 Commands and scope: `../expansion-four/vehicles/HUD_COMPACT_SOURCE_FIX.md`.
+
+Vehicle promotion `3a1523c5`, `bbcdae18`, `ca9e072d` is integrated as `f7c2bccb`,
+`9cf15a14`, `5f00bca2`. Vehicles bind 201 package inputs including 69 extracted
+PNGs (60 albedo, nine normal) and 78 import sidecars. Extracted pixels match the
+embedded GLB bytes; import identities, tangents, UV0 and selective normals are
+checked against the actual vehicle material contract. Robot-specific vertex-color
+requirements are not imposed on these material-colored assets.
+
+Parent passed all 13 focused vehicle/robot/import/production/recorded-Git checks.
+The audit is `/tmp/opencode/parent-three-unit-promotion-audit.json`; it confirms
+three promoted units and four pending: scenery, Vesper, Abyssal and Stormglass.
+The packaging owner passed 70 targeted source tests. Current receipt SHA-256s:
+- Vehicles: `86d491cc2121ab85f02eb24f2027a9179359528508fdb317cff19b7b0c21876f`.
+- Robots: `6dcc7c4d4049c86863f6ed03025d08d97e83499dd1183fcb77759486a8f0ef48`.
+- Parallax: `1073428540576e4b46421a84fa06b1b5aecab6c1c1d796790a92e13a0d8a8c5f`.
+
+Prior hashes/supporting-input history are retained. The HUD file is covered by
+full-package tracked-native hashing, not the asset receipt input set; its change
+introduced no asset-receipt drift. E's native evidence predates that correction,
+whose native layout/screenshots remain pending. No production freeze, engine,
+Windows CI or export occurred in this promotion pass. Scenery F remains exclusive.
