@@ -1,5 +1,13 @@
 # New Moth resources and Blender-authored map variety
 
+**R7 tangent successor delivered source-only:** `9fb0172e`, based on `9c5eca6d`,
+repairs seven pinned invalid tangent records using incident UV derivatives and
+rejects conflicting shared bases. Worker reports eleven passing source tests,
+preservation of every binary byte outside those seven records, and all 226 W
+hashes unchanged. Independent reviewer `ses_efd0e4deaffeke8j2rdXdxtbbn` is checking
+derivation, handedness and future master/native proof before integration. R7 is
+unmerged, has no actual GLB/master and no heavy grant; botanical X remains active.
+
 **Foundry R6 staged-approved and integrated:** independent review found no new
 blocking P1 and approved W with seven invalid tangent bases retained as a staged
 shading limitation. W is merged as **`5641fec9`**, exact exclusions as **`9c5eca6d`**.

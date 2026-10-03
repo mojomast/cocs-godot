@@ -1,5 +1,12 @@
 # Foundry R6 — qualified staged source/artifact approval
 
+**Tangent follow-up:** source-only R7 `9fb0172e` is delivered on `9c5eca6d` and
+under independent review. It proposes exactly seven 16-byte tangent changes with
+all other binary bytes preserved; actual incident corners require no vertex split.
+Eleven source tests and unchanged 226-file W inventory are reported by the producer.
+R7 production/reopen/native acceptance remains pending; this does not modify or
+restamp R6 evidence. Botanical X retains sole heavy ownership.
+
 Independent Astra `ses_efd0e4deaffeke8j2rdXdxtbbn` approved `b5dfe08e` +
 `fceaac00` on `e66fce84`, with seven invalid tangent bases retained as a staged
 limitation. Parent integrated W as **`5641fec9`** and exact shipping exclusions
