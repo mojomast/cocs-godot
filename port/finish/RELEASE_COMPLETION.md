@@ -7,6 +7,11 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
+**Motion/vehicle directive:** Flash research plus Sol/Astra implementation is
+active for natural operator locomotion, player movement feel, Puma controls and
+first-/third-person vehicle views, and articulated melee kick chains. Ownership:
+`MOTION_20261003.md`. Abyssal I has released; Stormglass now owns heavy grant J.
+
 **Overnight expansion directive:** the user requested Luna/DeepSeek fan-out and
 substantial implementation progress. Four bounded source-feature lanes are active
 alongside Abyssal production: Home discovery, controls setup, campaign guidance and
@@ -23,10 +28,10 @@ at `2026-10-03T03:43:18.530036Z`, all three groups empty. Windows diagnostic
 navigation optimization integrated at `6b8c445f` and awaits remote Windows cold
 graph comparison plus subsequent new-package native verification. Published
 preview bytes still contain the original runtime.
-**Exclusive local heavy grant I belongs to Abyssal owner
-`ses_f03a3024cffeNO1Cc3Qr1zSLTG`** for Abyssal production and six private hosted
-journeys. H released at `2026-10-03T04:36:05.466278Z`, with 27 process groups
-checked empty three times. F/G/G2/G3/G4/H have released. See `PREVIEW_20261003.md`.
+**Exclusive local heavy grant J belongs to Stormglass owner
+`ses_f0342d1ffffeyUHJkcUj3vqP7p`** for Stormglass production and private race
+acceptance. I released at `2026-10-03T05:28:53.827101Z`, with 23 process groups
+checked empty three times. F/G/G2/G3/G4/H/I have released. See `MOTION_20261003.md`.
 Scenery delivery is preserved but not integrated into the preview. Final production
 and acceptance obligations remain; strict final packaging is unchanged.
 
@@ -46,7 +51,8 @@ boundaries.
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
 | Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | F promotion integrated; Vesper exact closure and five-unit supporting-input reconciliation integrated at `b5d16351`; 25 parent source checks pass; idle pending next source assignment |
 | Vesper Viaduct | Astra `ses_f03a3885fffehx9yFhHubuPCft` | H production/evidence integrated through `04fbbfa5`; six native outcomes passed; parent review/registration at `99a4f597`; package-promoted at `b5d16351` |
-| Abyssal Pressureworks | Astra `ses_f03a3024cffeNO1Cc3Qr1zSLTG` | Exclusive I: actual production/reopen/native geometry, visual review and six private hosted journeys |
+| Abyssal Pressureworks | Astra `ses_f03a3024cffeNO1Cc3Qr1zSLTG` | I delivery integrated through `f0e76bf7`; six native outcomes passed, parent reviewed images; source-only registration/promotion assigned to package-closure owner |
+| Stormglass Causeway | Astra `ses_f0342d1ffffeyUHJkcUj3vqP7p` | Exclusive J: actual map production, reopen/native geometry and private race proof |
 | Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Actual production at `1f129ab2`; E released; compact-HUD correction at `83ceaa62` passes six parent source checks/grammar, new native layout/screenshots pending |
 | Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base `b6ab6782` and ordinary-controller follow-up `da259d19` integrated; 26 parent acceptance tests and grammar pass; native execution awaits later grant and device access |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Launch-bound UI registration integrated through `2e355b93`; 142 jobs preserve all prior coverage; 35 parent runner/receipt tests pass; fresh ledger still required |
@@ -61,12 +67,12 @@ directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
-**`ABYSSAL-ASSET-PRODUCTION-20261003-I` belongs to Abyssal Astra
-`ses_f03a3024cffeNO1Cc3Qr1zSLTG`.** Scope: Abyssal masters/export/reopen/import,
-native collision and visual checks, then private deathmatch, teamdeathmatch, CTF,
-KOTH, domination and holdout journeys. Parent owns review, public registration and
-promotion. Stormglass and cinematic production await later grants.
-Scenery F, preview G/G2/G3/G4 and Vesper H explicitly released. Current I supersedes
+**`STORMGLASS-ASSET-PRODUCTION-20261003-J` belongs to Stormglass Astra
+`ses_f0342d1ffffeyUHJkcUj3vqP7p`.** Scope: Stormglass masters/export/reopen/import,
+native collision/visual checks and private ordinary-input Puma race acceptance.
+Parent owns review, public registration and promotion. Motion/UI native checks
+and cinematic production await later grants.
+Scenery F, preview G/G2/G3/G4, Vesper H and Abyssal I explicitly released. Current J supersedes
 historical ownership metadata in production plans; do not mutate active-run inputs
 just to relabel ownership. Vesper package promotion is complete: five units are
 promoted, Abyssal/Stormglass remain pending. The authorized Windows navigation
