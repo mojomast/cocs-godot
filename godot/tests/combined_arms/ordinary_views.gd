@@ -5,6 +5,7 @@ var kind := "combined"
 var output := ""
 var failures: Array[String] = []
 var observations: Array = []
+var capture_attempts := 0
 
 func _initialize() -> void:
 	for arg: String in OS.get_cmdline_user_args():
@@ -52,15 +53,22 @@ func aim(point: Vector2) -> void:
 func engage() -> void:
 	if kind == "combined": tap(KEY_ENTER)
 	else:
+		capture_attempts += 1
+		print("VEHICLE_CAPTURE_BEFORE ", JSON.stringify({"attempt":capture_attempts,"phase":session.phase,"eligible":session.can_capture_pointer(),"gates":session.trace_input_gates()}))
+		print("VEHICLE_RELEASE_LEDGER ",JSON.stringify(session.combat_actions.bindings.down))
 		var event := InputEventMouseButton.new()
 		event.button_index = MOUSE_BUTTON_LEFT
-		event.position = Vector2(500, 350)
+		# Center-left is the released-pointer ability scroll pane at 960x600.
+		# Click the unobstructed world, not a UI control that owns that click.
+		event.position = Vector2(root.size) * Vector2(0.85, 0.5)
+		event.global_position = event.position
 		event.pressed = true
 		Input.parse_input_event(event)
 		event = event.duplicate()
 		event.pressed = false
 		Input.parse_input_event(event)
 		Input.flush_buffered_events()
+		print("VEHICLE_CAPTURE_AFTER ", JSON.stringify({"attempt":capture_attempts,"gates":session.trace_input_gates()}))
 
 func wait_for(predicate: Callable, seconds: float) -> bool:
 	var deadline := Time.get_ticks_msec() + int(seconds * 1000)
@@ -83,6 +91,7 @@ func run() -> void:
 	change_scene_to_file("res://combined_arms/demo.tscn" if kind == "combined" else "res://objectives/demo.tscn")
 	await scene_changed
 	session = current_scene
+	if kind == "world": session.trace_enabled = true
 	if not await wait_for(func() -> bool: return not actor().is_empty(), 25):
 		check(false, "actual source actor arrival; phase=" + str(session.phase))
 		finish(); return
@@ -138,9 +147,22 @@ func run() -> void:
 	check(await wait_for(func() -> bool: return actor().get("vehicleId") == null, 5), "ordinary E demounts")
 	await capture("demounted")
 	tap(KEY_ESCAPE)
-	change_scene_to_file("res://ui/main_menu.tscn")
-	await scene_changed
+	tap(KEY_F12)
 	await process_frame
+	var leave: Button = root.get_node("LocalSettings").find_child("LeaveMatch", true, false)
+	check(leave != null and leave.is_visible_in_tree(), "ordinary F12 exposes Return Home")
+	if leave != null and leave.is_visible_in_tree():
+		for down: bool in [true, false]:
+			var click := InputEventMouseButton.new()
+			click.button_index = MOUSE_BUTTON_LEFT
+			click.pressed = down
+			click.position = leave.get_global_rect().get_center()
+			click.global_position = click.position
+			Input.parse_input_event(click)
+			Input.flush_buffered_events()
+		check(await wait_for(func() -> bool: return current_scene != null and current_scene.scene_file_path == "res://ui/main_menu.tscn", 5), "ordinary Return Home click")
+		await RenderingServer.frame_post_draw
+		get_root().get_texture().get_image().save_png(output.path_join("home.png"))
 	finish()
 
 func finish() -> void:

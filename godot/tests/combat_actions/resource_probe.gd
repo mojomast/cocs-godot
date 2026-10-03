@@ -16,6 +16,8 @@ func snapshot(label: String, roots: Dictionary) -> void:
 		var id: int = value.get_instance_id()
 		if seen.has(id): continue
 		seen[id] = true
+		if value is Sky:
+			print("CONTROLS_SKY_OWNER ",JSON.stringify({"stage":label,"owner":owner,"path":value.resource_path,"id":id,"rid":value.get_rid().get_id(),"size":value.radiance_size}))
 		if value is Texture2D:
 			if not textures.has(id): textures[id] = {"ref":weakref(value),"first":label,"owner":owner}
 			continue
