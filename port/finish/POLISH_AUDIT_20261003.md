@@ -146,3 +146,11 @@ requested immediate clearing of active cues when quality is disabled or reduced
 motion enabled, retaining consumed event IDs so toggling cannot replay them.
 The fixture must compare the actual passed snapshot for immutability and must not
 print `authored_not_executed:true` when executed. Native validation remains pending.
+
+Sol depth follow-up **`3059de9a`** completes both wet-sheen allowlists and expands
+weather lease/restore coverage for both shader paths. Parent independently ran
+`check_shader_parity.py` (**`MOTH_SHADER_PARITY_OK`**) and parsed six changed/new
+GDScripts, with clean diff checks. Bundle **`03a64083` + `3059de9a`** is now
+source-ready and remains **unmerged**. Native shader reflection/compilation,
+weather restoration, Moth validation and Compatibility depth-pixel comparison
+are pending. No measured performance improvement is claimed.
