@@ -1,5 +1,20 @@
 # Botanical/urban source review — rejected pending correction
 
+## Corrective delivery awaiting independent review
+
+Astra returned `f6687255` and `4e2b83bc` on
+`astra/map-variety-botanical-repair`, reporting all 13 repairs with regenerated
+authority, physical-route probes, complete art composition and adapter/export
+checks. Reported verification: 25 Node, 16 Python repair checks, standalone Kit
+checks, three generators and three plans. A separate Astra reviewer
+`ses_efd0e4deaffeke8j2rdXdxtbbn` is evaluating those commits; no Blender or native
+acceptance is claimed and they remain unmerged.
+
+The user's subsequent triangle guidance makes global totals advisory. The repair
+owner is updating that policy separately; source-mesh chunking and export-validity
+checks remain strict. The historical findings below describe the rejected Flash
+candidate, not an assertion that the corrective commits still contain each defect.
+
 Independent reviewer: Astra `ses_efd55fd04ffedSQ6q14ztgmqaa`.
 Reviewed commits: `8cff03b0`, `ddf8c70d`, `0351e1d1`, foundation `190fa2a2`.
 The reviewer reproduced 18 passing Node tests using source-only probes. No Blender,

@@ -35,6 +35,22 @@ not automatic acceptance. Botanical Astra repairs continue source-only.
 
 ## User directive and order of work
 
+**Triangle-count guidance:** the user explicitly accepts more triangles. Treat
+150,000-triangle totals as advisory design targets, not automatic rejection.
+Retain useful visual detail and judge actual rendering, loading, memory and
+gameplay evidence. Continue reporting pre-modifier estimates separately from
+evaluated/exported totals. Geometry validity, material correctness, collision
+agreement and technical mesh batching remain required; do not infer hardware
+performance from source counts. S owner has received this guidance.
+
+**Botanical repair delivery:** Astra `f6687255` / `4e2b83bc` reports closure of
+the 13 source findings, 25 Node / 16 Python repair passes, standalone Kit checks,
+all generators and plans. Pre-modifier complete estimates are Helix 147,026,
+Parallax 143,782, Vesper 40,688 triangles. Independent reviewer
+`ses_efd0e4deaffeke8j2rdXdxtbbn` is verifying the implementation before merge.
+Original repair owner is making the global triangle gates advisory in a narrow
+follow-up; the candidate remains source-only and unmerged pending review.
+
 The user explicitly requested Flash/Sol subagents to populate the newer maps with
 Moth assets, reduce monotony/repetition, and add varied terrain, structures and
 layouts. A dedicated Astra must first create **new resources through the actual
