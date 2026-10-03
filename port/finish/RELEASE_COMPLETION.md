@@ -7,9 +7,11 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
-**New research-led movement directive:** three Flash agents are researching
-arena movement, traversal/feedback, and native input responsiveness. Parent will
-assign Astra implementation after reviewing the findings. This runs alongside
+**New research-led movement directive:** arena and traversal Flash research is
+complete; native input responsiveness research continues. Astra
+`ses_efd9f7a16ffebB54Qq3YBwuZ3t` is implementing the selected speed-bound fix,
+buffered landing slide and camera-neutral slide cue, with air-steering evaluation.
+This runs alongside
 new Moth/Blender map production; exact owners and constraints are in
 `MOVEMENT_RESEARCH_20261003.md`.
 
