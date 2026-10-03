@@ -2,6 +2,7 @@ extends SceneTree
 const SportsControls = preload("res://sports/controls.gd")
 const ArmsControls = preload("res://combined_arms/controls.gd")
 const Chase = preload("res://sports/chase.gd")
+const LocalSettings = preload("res://ui/local_settings.gd")
 var failures := 0
 
 func check(ok: bool, label: String) -> void:
@@ -22,6 +23,9 @@ func _initialize() -> void:
 	call_deferred("run")
 
 func run() -> void:
+	check(LocalSettings.normalize({}).vehicle_view == "third", "legacy settings default to chase")
+	check(LocalSettings.normalize({"vehicle_view":"first"}).vehicle_view == "first", "first-person preference survives normalization")
+	check(LocalSettings.normalize({"vehicle_view":"sideways"}).vehicle_view == "third", "invalid view rejected")
 	# game/race.mjs and game/soccer.mjs project x/z against actor yaw
 	# heading - PI. Their positive throttle advances +Z at heading zero.
 	for controls in [SportsControls.new(), ArmsControls.new()]:
@@ -32,7 +36,13 @@ func run() -> void:
 		controls.accept(press(KEY_W, false), true)
 		controls.accept(press(KEY_D), true)
 		p = controls.command(-PI, 0, true, true) if controls is ArmsControls else controls.packet(-PI, true)
-		check(is_equal_approx(float(p.x), -1.0), "D yields positive source steer after negative right projection")
+		check(is_equal_approx(float(p.x), -1.0), "D projects to screen right and negative chassis steer")
+		controls.accept(press(KEY_D, false), true)
+		controls.accept(press(KEY_W), true)
+		controls.accept(press(KEY_D), true)
+		p = controls.command(-PI, 0, true, true) if controls is ArmsControls else controls.packet(-PI, true)
+		check(is_equal_approx(float(p.x), -1.0) and is_equal_approx(float(p.z), 1.0), "W+D retain full independent source axes")
+		controls.accept(press(KEY_W, false), true)
 		controls.accept(press(KEY_D, false), true)
 		controls.accept(press(KEY_S), true)
 		p = controls.command(-PI, 0, true, true) if controls is ArmsControls else controls.packet(-PI, true)

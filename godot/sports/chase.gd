@@ -178,6 +178,10 @@ func follow(v: Dictionary, delta: float, look_yaw: float = NAN, look_pitch: floa
 		obstructed = false
 		return {"eye":eye, "target":target}
 	var distance := 10.5 if v.get("kind") == "hornet" else (11.0 if v.get("kind") == "titan" else (7.0 if v.get("kind") == "scout" else 9.0))
+	# A little more road ahead at speed, bounded so boost cannot fling the eye
+	# out of the obstruction query or turn reverse into a front-facing camera.
+	var speed := Vector2(float(v.get("vx", 0.0)), float(v.get("vz", 0.0))).length()
+	if is_finite(speed): distance += minf(speed * 0.04, 1.2)
 	var height := 5.0 if v.get("kind") != "scout" else 3.35
 	var desired := p - direction * distance + Vector3.UP * height
 	var aim := anchor + direction * 7.0
