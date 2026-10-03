@@ -39,7 +39,9 @@ Sol for source-only correction. Corrective `1cdf967e` passed independent source
 review and is integrated with selective tooling/archival fixtures as `a8b3fe6b`.
 Parent passed 33 source/shipping checks, both generator checks and the historical
 three-ray reproduction. The corrective native harness and actual build are now
-assigned to Sol under V, with immutable new output paths.
+completed under V as `03b3db50` and is under independent artifact review. The new
+`b010a076…` successor moves one route endpoint inward after an actual native
+failure; prior attempts remain preserved. Parent verified 110 evidence hashes.
 Stormglass artifacts are selectively staged-integrated as `c5c50a93`: parent
 verified 50 inventory hashes and strict seven-unit shipping closure. The combined
 coastal bundle remains unmerged; Abyssal needs fresh native evidence. T released at
@@ -50,7 +52,8 @@ found disconnected new greenhouse ribs, including outer ends over 8 m from adjoi
 geometry. Helix artifact approval is withheld and Astra owns the source correction.
 Parallax's aperture obstruction and Vesper's 5 cm parapet mismatch block those
 candidates before native acceptance. Parent verified 264 artifact hashes and
-three empty audits/45 groups. Sol now holds V for the corrected Abyssal build.
+three empty audits/45 groups. V also released after three empty audits/25 groups,
+verified at 20:23:44Z. Astra now holds W for actual Foundry R6 finish production.
 Helix images: <http://100.125.104.79:8796/helix-u/> (32 initial HTTP/hash checks passed).
 Shared botanical export/staging tools are source-approved and integrated as
 `c7cd4331` / `fb2af58d`; parent passed 35 Python and two Node checks. Actual U
@@ -60,7 +63,7 @@ integrated as `99d44ede`; parent reproduced nine source tests and verified stric
 seven-unit shipping closure. Actual R6 build/render acceptance remains pending.
 The user explicitly requires Blender-authored assets. Application follows the
 new resource pack, on isolated branches with fresh map validation. P, Q and R released;
-S, T and U also released; corrective Abyssal V owns the sole heavy slot. Exact owners,
+S, T, U and V also released; Foundry R6 W owns the sole heavy slot. Exact owners,
 sequence and storage constraints: `MOTH_BLENDER_MAP_VARIETY_20261003.md`.
 
 **Current checkpoint (supersedes earlier M-in-progress entries below):** M actually
@@ -90,7 +93,7 @@ reviewed and integrated as `346e8db8`, `6252d4bf` and `8bf90885`;
 native verification remains pending. Parent passed **83 source checks**: 33
 Fighting acceptance/command/combo/UI, three diagnosis, seven spectator/process,
 35 runner/receipt and five Blender-toolkit tests. **R, S, T and U are released;
-V owns corrective Abyssal production.** Further heavy work needs its next grant.
+V also released; W owns Foundry R6 production.** Further heavy work needs its next grant.
 
 **Historical O/P foundation:** O repaired both N
 failures and released 18 groups with three empty audits, independently checked
@@ -145,7 +148,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P, Q, R, S, T and U have released; corrective Abyssal V holds the heavy slot.**
+**P, Q, R, S, T, U and V have released; Foundry R6 W holds the heavy slot.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -187,7 +190,15 @@ directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
-**Active: `MOTH-BLENDER-20261003-V`**, Sol
+**Active: `MOTH-BLENDER-20261003-W`**, Astra
+`ses_efd30e1f6ffeLbhHTPoh266kZW`, foundation `e66fce84`. Actual R6 finish build,
+packed-master reopen, strict scene/backing/geometry/material proof and native
+R5/R6 matched captures. Preserve R5 authority and exact streams, use distinct R6
+art identity, retain all attempts. No public promotion/export. All other workers
+are source/artifact-only. Timestamped owned-group logs and three empty release
+audits required.
+
+**Released: `MOTH-BLENDER-20261003-V`**, Sol
 `ses_efd55bb5cffeJRWNA4xZq8O6cE`. Finish/check the new corrective harness and
 execute Abyssal from reviewed `a8b3fe6b` sources into new V output paths. Require
 fresh packed-master and evaluated/exported geometry evidence, material pixels,
@@ -195,6 +206,9 @@ actual shield-wall/old-ray/finite-body native probes and matched captures. Prese
 T failures; no public promotion or release exports. Three timestamped empty owned
 group audits and explicit release required. Helix review and Parallax/Vesper
 corrections remain source/artifact-only.
+V delivered `03b3db50`; final release audit `2026-10-03T20:19:24.266015Z`.
+Parent verified 110 evidence files, three empty audits/25 groups, no current
+survivors and lock availability. Artifact review remains active before integration.
 
 **Released: `MOTH-BLENDER-20261003-U`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`. Finish/check source staging fixtures, then actual
@@ -232,7 +246,7 @@ bounded owned groups and timestamped three empty audits before S release.
 S delivered `4a2f1201` and released at `2026-10-03T18:20:11.138292Z`. Parent
 confirmed all three timestamped audits are empty across 43 recorded groups,
 no current surviving group members, and lock availability. Independent artifact
-review subsequently approved R5; T and U also released. V is active.
+review subsequently approved R5; T, U and V also released. W is active.
 
 **Released: `MOTH-BLENDER-20261003-R`**, owner
 `ses_efdba38e9ffeManqAN9zWiJ3va`, foundation `190fa2a2`. Scope: material adapter

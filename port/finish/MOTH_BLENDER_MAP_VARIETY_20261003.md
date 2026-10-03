@@ -1,5 +1,46 @@
 # New Moth resources and Blender-authored map variety
 
+## Active grant W — Foundry R6; Abyssal V delivered
+
+**`MOTH-BLENDER-20261003-W` is the sole active heavy grant**, Astra
+`ses_efd30e1f6ffeLbhHTPoh266kZW`, for actual source-approved R6 master/export,
+strict geometry/material verification, fresh reopen and matched R5/R6 captures.
+Foundation `e66fce84` includes corrected R6 validation. R5 geometry/authority and
+prior evidence stay immutable; separate actual R6 art identity is required.
+No public promotion or package export. Three timestamped empty owned-group audits
+and explicit release are required. Botanical corrections remain source-only.
+
+Abyssal V delivered through **`03b3db50`**, with native-discovered route-endpoint
+repair in successor `revision2-corrective-v/`, hash
+`b010a0764e3754b9d1e6ff3839e7c319d871336cf5b242a36cd512dd9ee3aa86`.
+The southwest endpoint moves 1.5 m inside its terrace; the worker reports unchanged
+floors/walls/blocks/spawns/objectives. Earlier `ee979520…` attempts remain preserved.
+
+Worker evidence: 43,256,849-byte master / 20,330,312-byte GLB, 47 primitives,
+229,620 triangles, 30 packed images, 12 labels, byte-identical reopened-master
+reexport. All fourteen actual solid contacts/windings, three historic ray spans,
+78 wall-band rays, four wall-end rays and 518 capsule placements report passing.
+The 501 route-related placements are authored nav points, not continuous sweeps;
+nine ramp samples use a recorded 0.15 m lift. Eight matched pairs are delivered.
+
+V's final release audit is **2026-10-03T20:19:24.266015Z**. Parent verified three
+empty timestamped audits/25 groups, no surviving members, lock availability at
+20:23:44.771861Z and all **110 evidence hashes/sizes**. Independent Astra
+`ses_efd0e4deaffeke8j2rdXdxtbbn` is reviewing the new actual artifact before
+integration. The gallery owner is publishing a separate V comparison gallery.
+
+**Abyssal V gallery live:** <http://100.125.104.79:8796/abyssal-v/> — eight
+matched pairs / sixteen original PNGs, separate from blocked Coastal T. All 29
+HTTP/hash checks passed. Parent inspected the southwest exterior-detail and
+terrace-traversal frames. The page labels neutral presentation and discrete
+contact/placement evidence, not continuous traversal or weather acceptance.
+
+**Presentation correction:** the producer report says the parent snapshot has no
+WeatherService; parent verified `a8b3fe6b:godot/ambience/weather_service.gd` exists.
+The accurate boundary is that this isolated stage did not exercise that service.
+Captures are neutral staged presentation, not production-weather acceptance.
+Original report bytes are retained; this note corrects their interpretation.
+
 **Helix independent review: artifact approval withheld.** The five new greenhouse
 ribs have six disconnected ends; the two outer ends are over 8 m from any other
 exported geometry. Source/export agree, so this requires a connected authored
