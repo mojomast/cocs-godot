@@ -1,5 +1,41 @@
 # New Moth resources and Blender-authored map variety
 
+## Current checkpoint — X delivered/released; Foundry R7 Y active
+
+**`MOTH-BLENDER-20261003-Y` is the sole active heavy grant**, Astra
+`ses_efd30e1f6ffeLbhHTPoh266kZW`, for actual tangent-corrected R7 production.
+Independent re-review approved `9fb0172e` + `19daef32`; parent integrated them
+as **`8dbe9eb8` / `10d9938f`** and passed sixteen source tests plus strict shipping
+closure. Both actual-R6 material counterexamples reject; recorded native material
+fields have bounded comparisons. Historical R6 data remains a regression fixture,
+not R7 native proof. Y requires fresh master/reopen/export, complete tangent and
+handedness readback, material/lifecycle evidence and captures, followed by three
+empty owned-group audits. All other work is source/artifact/static-gallery only.
+
+X delivered source `e3497a21` / `cef20865` / `3d50291a` / `5b40a15b` and separate
+artifacts **`171ffddb`**, still unmerged pending review. X released at
+**2026-10-03T21:31:43.664418Z**. Parent verified three timestamped empty audits
+across 50 groups, supervisor receipt hash, no current members, and lock availability
+at 21:43:21.567139Z. All **600 artifact hashes/sizes** match; none exceeds 100 MiB.
+
+| X successor | Actual triangles | Native capsule result | Current boundary |
+|---|---:|---|---|
+| Helix revision-4 | 157,518 | 32,763; zero errors | Ten bearings / 35 grounded connections and actual frame checks pass; independent artifact/art review pending |
+| Parallax districts-v4 | 155,553 | 13,587; zero errors | Original aperture clear, 1,920 additional exported-shell points pass; one inherited zero tangent needs qualification |
+| Vesper urban-v3 | 64,311 | 20,157; 184 contacts | Original parapet mismatch repaired; 170 civic-stair and 14 roof-step contacts block native acceptance |
+
+Independent reviewer `ses_efc89c2afffeKQvhqPUs4YwsaY` is reviewing selective
+artifact approval. The original producer is diagnosing Vesper's stair/controller
+interaction and Parallax's tangent source-only in a new branch. No capsule points
+were lifted/dropped to pass Vesper; accepted-world diagnostics also retain contacts.
+Those comparisons are not a waiver. Full three-map approval remains withheld.
+
+**X gallery:** <http://100.125.104.79:8796/botanical-x/> — 70 original captures:
+Helix 20, Parallax 24, Vesper 26, with occluded/unusable and changed-support views
+explicitly labeled. All 92 HTTP/hash checks passed, including sixteen original
+reports. Production Binder/Weather restoration is dry/effects-suppressed; hosted
+traversal, controller dynamics, manual art and gameplay performance remain pending.
+
 **R7 gate correction delivered:** `19daef32` adds semantic texture/sampler/UV/
 emissive/occlusion equivalence and native material-field comparisons. Worker reports
 all sixteen tests passing, both actual-R6 counterexamples rejected, equivalent

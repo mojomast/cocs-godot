@@ -1,5 +1,23 @@
 # Foundry R6 — qualified staged source/artifact approval
 
+## Current R7 disposition — source approved/integrated; Y production authorized
+
+Focused independent re-review closed the material-equivalence P1 in `19daef32`.
+Both real-R6 mutations reject, as do alpha/double-sided changes and unsupported
+material/texture extensions. Equivalent remapped bindings pass; repeat defaults
+are canonicalized without inventing unspecified filter defaults. Sixteen source
+tests pass. Native recorded fields use sRGB color tolerance 5.1e-5 for four-decimal
+strings (measured maximum 4.684997e-5), float32 scalar tolerance 1e-6, and exact
+emission-enabled/roughness-channel checks. Unrecorded native sampler/alpha/occlusion
+semantics remain explicitly outside that native-field claim.
+
+Parent integrated both source commits as `8dbe9eb8` / **`10d9938f`**, reproducing
+sixteen tests and strict shipping closure. Original R7 reports remain historical.
+After verifying X's clean release, parent authorized **MOTH-BLENDER-20261003-Y**
+for actual R7 production by Astra `ses_efd30e1f6ffeLbhHTPoh266kZW`. New actual
+master/art identity, reopen and native proof remain pending; prior R6 native data
+is not R7 acceptance. Earlier review states below record the corrective history.
+
 ## R7 source review follow-up — material gate correction required
 
 **Corrective delivery `19daef32` is under focused independent re-review.** The
