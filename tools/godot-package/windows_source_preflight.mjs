@@ -11,6 +11,7 @@ import {finalResources} from './final_resources.mjs';
 import {fighterImports} from './fighter_imports.mjs';
 import {channelProduction,buildIntent} from './build_channel.mjs';
 import {WORLDS} from '../../port/multiplayer-worlds/catalog.mjs';
+import {MOVEMENT_CONTRACT,resolveSourceDerivative} from './source_derivative.mjs';
 assert.equal(process.platform,'win32','Real Windows source preflight required');
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const git=args=>execFileSync('git',args,{cwd:root,maxBuffer:256*1024*1024});
@@ -25,7 +26,10 @@ const read=p=>{
   return cache.get(p);
 };
 const has=p=>paths.has(p),hash=b=>createHash('sha256').update(b).digest('hex');
-const lock=JSON.parse(read('port/contracts/source-lock.json')),derivative=JSON.parse(read('port/contracts/lattice-catalog-derivative.json'));
+const lock=JSON.parse(read('port/contracts/source-lock.json')),derivative=resolveSourceDerivative(JSON.parse(read(MOVEMENT_CONTRACT)),read,(rev,p)=>git(['show',`${rev}:${p}`]),(a,b)=>git(['merge-base',a,b]).toString().trim()===a);
+// Source-only generator check, with exact committed generator/output/operator bytes.
+for(const p of ['port/native-campaign/generate-core.mjs','port/native-campaign/core.generated.mjs','game/core.mjs','game/operator-verbs.mjs'])read(p);
+execFileSync(process.execPath,['port/native-campaign/generate-core.mjs','--check'],{cwd:root});
 verifySourceState(root,lock.source_commit,derivative,{portCommit:commit});
 const closure=rederiveClosure(root,{port_commit:commit},derivative);
 read('port/multiplayer-worlds/catalog.mjs'); // bind imported registry to exact Git bytes

@@ -13,6 +13,7 @@ import {abyssalImportPaths,verifyAbyssalImports,ABYSSAL_EVIDENCE,ABYSSAL_SUPPORT
 import {FEATURE_ROOTS,verifyFeatureAdvance,robotSupportingHash} from './feature_dependencies.mjs';
 import {stormglassImportPaths,verifyStormglassImports,verifyStormglassAdvance,STORMGLASS_EVIDENCE,STORMGLASS_SUPPORTING_RUNTIME} from './stormglass_imports.mjs';
 import {polishPaths,verifyPolishAdvance,verifyOperatorFinishImports} from './polish_dependencies.mjs';
+import {movementSupportingHash,verifyMovementPredecessor} from './movement_dependencies.mjs';
 export const REQUIREMENTS='tools/godot-package/production_requirements.json';
 export const REQUIRED_UNITS=Object.freeze(['parallax-interiors','robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
 const skins=['needle_surveyor','caisson_guard','kiln_tender'];
@@ -110,7 +111,12 @@ function helperClosure(paths,read,has) {
     const path=todo.pop();safe(path);if(seen.has(path))continue;seen.add(path);
     if(!has(path))continue;
     const source=/\.(mjs|gd|tscn|tres|gdshader|gdshaderinc)$/.test(path)?read(path).toString():'';
-    if(path.endsWith('.mjs'))for(const m of source.matchAll(/\b(?:from\s*|import\s*)['"](\.[^'"]+)['"]/g))todo.push(posix.normalize(posix.join(posix.dirname(path),m[1])));
+    if(path.endsWith('.mjs'))for(const m of source.matchAll(/\b(?:from\s*|import\s*)['"](\.[^'"]+)['"]/g)){
+      // This exact generator output template is covered by core.generated.mjs,
+      // an explicit root. All actual literal imports keep strict path checks.
+      if(path==='port/native-campaign/generate-core.mjs'&&m[1]==='../../game/${file}')continue;
+      todo.push(posix.normalize(posix.join(posix.dirname(path),m[1])));
+    }
     if(path.endsWith('.gd')) {
       for(const m of source.matchAll(/(?:preload|load)\("res:\/\/([^"%{}]+)"\)/g))todo.push('godot/'+m[1]);
       for(const m of source.matchAll(/^extends\s+"res:\/\/([^"%{}]+)"/gm))todo.push('godot/'+m[1]);
@@ -194,7 +200,8 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     }
     assert.ok(receipt.runtimeHooks&&Object.keys(receipt.runtimeHooks).length,'Promoted unit requires committed activation/placement hooks');
     for(const [path,sha]of Object.entries(receipt.runtimeHooks)) {
-      assert.match(path,/^godot\/(?!tests\/).+\.(gd|gdshader|json)$/);add(path,sha);
+      assert.match(path,/^godot\/(?!tests\/).+\.(gd|gdshader|json)$/);
+      add(path,receipt.movementAdvance.runtimeChanged[path]?movementSupportingHash(path,sha,read):sha);
     }
     // No builder currently performs raw reads of these GLBs. Future raw reads
     // must name an already-declared resource, never an arbitrary extra file.
@@ -210,7 +217,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     if(unit.id==='robots') {
       verifyRobotImports(spec.exports,read);
       const contract=JSON.parse(read('godot/robot_assets/switchyard/contract.json'));
-      for(const [path,sha]of Object.entries(contract.source))add(path,robotSupportingHash(path,sha,receipt,read));
+      for(const [path,sha]of Object.entries(contract.source))add(path,movementSupportingHash(path,robotSupportingHash(path,sha,receipt,read),read));
       const built=JSON.parse(read('godot/robot_assets/switchyard/generated/build-receipt.json'));
       // Archive the exact Python json.dumps(manifest(), sort_keys=True) bytes
       // used by the builder, so verification needs no Python/Blender on Windows.
@@ -223,6 +230,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     if(unit.id==='vesper-viaduct')verifyVesperImports(read);
     if(unit.id==='abyssal-pressureworks')verifyAbyssalImports(read);
     if(unit.id==='stormglass-causeway')verifyStormglassImports(read,receipt);
+    verifyMovementPredecessor(receipt,read);
     if(unit.id==='vehicles')for(const kind of ['puma','titan','scout'])for(let lod=0;lod<3;lod++) {
       const stem=`${kind}-lod${lod}`,report=JSON.parse(read(`tools/godot-vehicle-assets/masters/${stem}-report.json`));
       assert.equal(report.kind,kind);assert.equal(report.lod,lod);

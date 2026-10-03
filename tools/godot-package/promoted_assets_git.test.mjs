@@ -4,6 +4,7 @@ import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {productionResources} from './production_resources.mjs';
+import {verifySourceState} from './manifest_validation.mjs';
 const cwd=fileURLToPath(new URL('../../',import.meta.url));
 const git=args=>execFileSync('git',args,{cwd,maxBuffer:128*1024*1024});
 
@@ -16,15 +17,17 @@ test('committed seven-unit promotion and import bytes validate independently of 
   assert.match(registry,/"parallax-observatory"/);
   const options={read,has:p=>paths.has(p),worldIds:['parallax-observatory','vesper-viaduct','abyssal-pressureworks','stormglass-causeway'],strict:true};
   const result=productionResources(options);
+  verifySourceState(cwd,JSON.parse(read('port/contracts/source-lock.json')).source_commit,
+    JSON.parse(read('port/contracts/movement-candidate-derivative.json')),{portCommit:commit});
   assert.deepEqual(result.pending,[]);
   assert.throws(()=>productionResources({...options,worldIds:options.worldIds.slice(0,-1)}),/remain pending/);
   for(const id of ['abyssal-pressureworks','vesper-viaduct','scenery','robots','vehicles','parallax-interiors','stormglass-causeway']) {
     const receipt=JSON.parse(read(`tools/godot-package/production_receipts/${id}.json`));
-    const advance=receipt.oReviewAdvance,previous=advance.previousReceipt;
+    const advance=receipt.movementAdvance,previous=advance.previousReceipt;
     const bytes=git(['show',`${previous.commit}:${previous.path}`]);
     assert.equal(createHash('sha256').update(bytes).digest('hex'),previous.sha256);
     const old=JSON.parse(bytes);
-    assert.equal(previous.commit,'b17360c9');
+    assert.equal(previous.commit,'f61f6156d9575d8dcf44ca4daf7a09bef727b034');
     const oldInputs=old.packageInputs??old.packageInputHashes;
     const changed={},added={};
     for(const [p,sha]of Object.entries(oldInputs)) {
@@ -37,7 +40,7 @@ test('committed seven-unit promotion and import bytes validate independently of 
     for(const [key,value]of Object.entries(old))if(key!=='packageInputs'&&key!=='runtimeHooks')assert.deepEqual(receipt[key],value);
     for(const [p,sha]of Object.entries(old.runtimeHooks??receipt.nativeRuntimeHooks)) {
       const change=advance.runtimeChanged[p];
-      if(change){assert.equal(id,'stormglass-causeway');assert.equal(change.before,sha);assert.equal(change.after,receipt.runtimeHooks[p]);}
+      if(change){assert.equal(id,'robots');assert.equal(change.before,sha);assert.equal(sha,receipt.runtimeHooks[p]);assert.equal(change.after,receipt.packageInputs[p]);}
       else assert.equal(receipt.runtimeHooks[p],sha);
     }
     assert.equal(createHash('sha256').update(JSON.stringify(oldInputs)).digest('hex'),advance.previousPackageFingerprint);

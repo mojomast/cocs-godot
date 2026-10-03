@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
+import {movementPaths,movementSupportingHash,verifyMovementAdvance} from './movement_dependencies.mjs';
 export const POLISH_INVENTORY='tools/godot-package/polish_8921_inventory.json';
 export const POLISH_INVENTORY_SHA='81f8d2531486fcb88da14dc98cd19565a543e87a4fc389329cbdbb2de6109015';
 const hash=b=>createHash('sha256').update(b).digest('hex');
@@ -11,6 +12,7 @@ export const O_EVIDENCE={
  'port/finish/acceptance/package-evidence-o/controls-final-01/receipt.json':'30affd0776ab8bfd1fb4b11810e987580e8450e40f5bcb4235bc2c3d6fe547ee',
 };
 export function verifyOReview(receipt,read){
+ verifyMovementAdvance(receipt,read);
  const r=receipt.oReviewAdvance;
  assert.ok(r,'Explicit O reconciliation required');
  assert.deepEqual(r.sourceChanged,O_SOURCE_CHANGE,'Exact O source history');
@@ -44,7 +46,7 @@ export function polishInventory(read){
 }
 export function polishPaths(read){
  const s=polishInventory(read);
- return [POLISH_INVENTORY,...Object.keys(O_EVIDENCE),...Object.keys(L_EVIDENCE),...Object.keys(s.changed),...Object.keys(s.added),...Object.keys(s.evidence),...Object.keys(s.operatorFinish.data),...Object.entries(s.operatorFinish.imports).flatMap(([p,r])=>[p,r.sidecar])];
+ return [...movementPaths(read),POLISH_INVENTORY,...Object.keys(O_EVIDENCE),...Object.keys(L_EVIDENCE),...Object.keys(s.changed),...Object.keys(s.added),...Object.keys(s.evidence),...Object.keys(s.operatorFinish.data),...Object.entries(s.operatorFinish.imports).flatMap(([p,r])=>[p,r.sidecar])];
 }
 // Only advance a historical supporting hash if its exact old value is the
 // reviewed predecessor. Earlier records themselves are never rewritten.
@@ -64,7 +66,7 @@ export function verifyPolishAdvance(receipt,read){
  const policy=receipt.unit==='stormglass-causeway'?{[hook]:{before:c.before,after:c.after}}:{};
  assert.deepEqual(r.runtimeChanged,policy,'Exact polish activation hook advance');
  for(const [p,c]of Object.entries(policy))assert.equal(receipt.runtimeHooks[p],c.after,'Polish current runtime identity');
- for(const [p,c]of Object.entries(s.changed))assert.equal(receipt.packageInputs[p],lSupportingHash(p,c.after),'Reviewed polish dependency identity: '+p);
+ for(const [p,c]of Object.entries(s.changed))assert.equal(receipt.packageInputs[p],movementSupportingHash(p,lSupportingHash(p,c.after),read),'Reviewed polish dependency identity: '+p);
  for(const [p,sha]of Object.entries({...s.added,...s.evidence,...s.operatorFinish.data}))assert.equal(receipt.packageInputs[p],sha,'Exact polish addition: '+p);
 }
 export function verifyOperatorFinishImports(read){

@@ -92,7 +92,7 @@ def main():
     parser.add_argument("--target", choices=["linux", "windows"], default="linux")
     parser.add_argument("--candidate", help="optional exact 40-hex frozen commit; release preparation should always supply it")
     parser.add_argument("--preview", action="store_true", help="explicit non-final test build; pending unpromoted assets remain declared, promoted assets stay mandatory")
-    parser.add_argument("--source-derivative", action="store_true", help="opt into the reviewed combined LATTICE/Horde source derivative; the original source lock stays unchanged")
+    parser.add_argument("--source-derivative", action="store_true", help="opt into the exact reviewed movement overlay on the historical LATTICE/Horde derivative; the original source lock stays unchanged")
     parser.add_argument("--operator-models", choices=["source-operators", "baseline", "candidate"], default="source-operators",
                         help="source-operators (default) ships the released presentation.gd source-operator preload; baseline is an accepted alias; candidate is retired")
     args = parser.parse_args()
@@ -125,16 +125,16 @@ def main():
     port_commit = git("rev-parse", "HEAD")
     if args.candidate and port_commit != args.candidate:
         raise RuntimeError("Frozen candidate changed before input discovery")
-    derivative_path = ROOT / "port/contracts/lattice-catalog-derivative.json"
+    derivative_path = ROOT / "port/contracts/movement-candidate-derivative.json"
     derivative = json.loads(derivative_path.read_text()) if args.source_derivative else None
     if lock["godot_version"] != EXACT or git("rev-parse", "--is-shallow-repository") != "false":
         raise RuntimeError("Exact Godot lock and full git history required")
     # Existing verifier checks ancestry plus every tracked locked source/dependency byte.
-    verify = "import {verifySource} from './tools/godot-export/semantic.mjs'; import fs from 'node:fs'; const derivative=process.env.COCS_SOURCE_DERIVATIVE; verifySource(JSON.parse(fs.readFileSync('port/contracts/source-lock.json')),derivative?JSON.parse(fs.readFileSync(derivative)):null);"
+    verify = "import {verifySource} from './tools/godot-export/semantic.mjs'; import fs from 'node:fs'; const derivative=process.env.COCS_SOURCE_DERIVATIVE; console.log(JSON.stringify(verifySource(JSON.parse(fs.readFileSync('port/contracts/source-lock.json')),derivative?JSON.parse(fs.readFileSync(derivative)):null)??null));"
     derivative_env = {**os.environ, "COCS_SOURCE_DERIVATIVE": str(derivative_path)} if derivative else os.environ.copy()
     if not derivative:
         derivative_env.pop("COCS_SOURCE_DERIVATIVE", None)
-    run(["node", "--input-type=module", "-e", verify], env=derivative_env)
+    derivative = json.loads(run(["node", "--input-type=module", "-e", verify], env=derivative_env))
     closure = json.loads(run(["node", "--no-warnings", "--experimental-vm-modules", ROOT / "tools/godot-package/discover.mjs", ROOT]))
     write_json(logs / "server-closure.json", closure)
     arena_data = closure.get("dataFiles", [])
@@ -230,7 +230,9 @@ def main():
     input_paths.update(world_resource_files)
     dressing_resources = [p for p in world_resource_files if p.startswith("godot/multiplayer_worlds/dressing/profiles/")]
     if derivative:
+        input_paths.add("port/contracts/movement-candidate-derivative.json")
         input_paths.add("port/contracts/lattice-catalog-derivative.json")
+        input_paths.add("tools/godot-package/source_derivative.mjs")
     # The Career catalog and its generator arrive with a later lane; include them
     # as build inputs only when present so the baseline build never fails first.
     career_catalog = "godot/career/catalog.json"
