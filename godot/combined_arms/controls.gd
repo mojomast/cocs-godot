@@ -64,11 +64,8 @@ func accept(event: InputEvent, eligible: bool, infantry: bool = true) -> void:
 func command(yaw: float, pitch: float, eligible: bool, driving: bool) -> Dictionary:
 	if driving: cancel_aim()
 	var p := super.packet(yaw, eligible)
-	# Protocol clamps each world axis independently. Fit their common scale
-	# before sending so diagonal driving retains throttle/steer proportions.
-	var axis_scale := maxf(1.0, maxf(absf(p.x), absf(p.z)))
-	p.x /= axis_scale
-	p.z /= axis_scale
+	# The source projects full keyboard axes into throttle and steer separately.
+	# Do not normalize diagonal W+D before that projection.
 	if not driving:
 		var direction := Motion.movement(yaw, held(KEY_W)-held(KEY_S), held(KEY_D)-held(KEY_A)) if engaged else Vector2.ZERO
 		p.x = direction.x

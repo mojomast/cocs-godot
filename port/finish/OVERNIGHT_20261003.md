@@ -34,14 +34,38 @@ swap feedback. The audit's initial "six actions" count was incorrect (current
 `Model.LABELS` exposes 16); the lane must correct it. Hidden adapter-owned fixed
 controls must not be presented as functional rebinding options.
 
+## Implemented source bundles awaiting review/native execution
+
+Parent integrated the returned bundles through `a78edd8d`:
+
+- Home shortcut/search: `31ba6076`, `d6cc624b` (original `d391dc5f`, `e59d981d`).
+- Binding search/modified overview/reset scope: `63d6cdeb`, `6669a124` (original
+  `c5043683`, `c2f4a4cb`). Corrected audit is `../OVERNIGHT_LUNA_CONTROLS.md`.
+- Campaign Relay Journal/route context: `1c84c843` (original `91903d85`).
+- Fighting live training feedback/practice goals/bind hints: `84d06344`,
+  `74f57d27`, `a78edd8d` (original `d344853d`, `63d4878c`, `1c346f7e`).
+
+Astra reviewer `ses_f03a3885fffehx9yFhHubuPCft` completed the independent source
+review. Fixes integrated as `00825bf1`, `22cd650a`, `18e1d627` and `c8eabea1`:
+Home Escape/focus intent, filtered binding focus, valid Journal APIs and public
+state provenance, and Fighting event attribution/idempotence/replay-prefix/HUD
+corrections. Parent independently passed 17 route/options checks and six Fighting
+source checks. The seven-case native runner printed its dry plan with
+`executed:false`. **None of these features has yet passed its new native UI checks
+or shipped.** Review details: `overnight/INTEGRATION_REVIEW.md`.
+
+The user subsequently requested Flash research and Sol/Astra motion, vehicle and
+melee implementation. See `../MOTION_20261003.md`; those lanes are independent.
+Abyssal I has completed/released, and Stormglass owns the next heavy grant J.
+
 ## Production and integration sequence
 
-1. Abyssal continues under exclusive local heavy grant
-   `ABYSSAL-ASSET-PRODUCTION-20261003-I`, owner
-   `ses_f03a3024cffeNO1Cc3Qr1zSLTG`.
-2. Parent reviews actual Abyssal source/assets/native evidence, then integrates
-   only demonstrated mode pairs. Require explicit grant release and zero owned
-   processes before granting Stormglass its production slot.
+1. Abyssal I completed and released; parent reviewed/integrated its six demonstrated
+   pairs and package promotion at `c7c81c71`. Six units are promoted.
+2. Stormglass owns exclusive local heavy grant
+   `STORMGLASS-ASSET-PRODUCTION-20261003-J`, owner
+   `ses_f0342d1ffffeyUHJkcUj3vqP7p`. Require explicit release and zero owned
+   processes before granting native motion/vehicle/UI verification.
 3. Review and integrate source-ready feature commits independently. Run meaningful
    source checks now; actual engine/UI/input checks require a later local slot or
    a separately authorized remote runner. Preserve receipt identities and record

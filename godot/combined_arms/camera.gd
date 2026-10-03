@@ -6,11 +6,11 @@ func infantry(a: Dictionary, yaw: float, pitch: float) -> Dictionary:
 	return {"eye":origin, "target":origin+forward}
 
 func mounted(v: Dictionary, a: Dictionary, yaw: float, pitch: float, delta: float) -> Dictionary:
-	# Aim follows current look for every role, while the anchor remains source-owned.
-	# Driver chase keeps the chassis readable; gunner/passenger use their source seat.
-	if a.get("vehicleSeat") == "driver":
-		var pose := follow(v, delta)
-		var forward := Basis.from_euler(Vector3(pitch, yaw, 0)) * Vector3.FORWARD
-		pose.target = pose.eye + forward * 20.0
-		return pose
-	return infantry(a, yaw, pitch)
+	var settings := preload("res://ui/settings_access.gd").service()
+	var reduced: bool = settings != null and settings.values.get("reduced_motion", false) == true
+	var pose := follow(v, delta, yaw, pitch, str(a.get("vehicleSeat", "driver")), int(a.get("vehicleSeatIndex", 0)), reduced)
+	if not first_person:
+		# Match the wire yaw/pitch used by projectiles; chasing the chassis does
+		# not silently replace the gun sight with the vehicle's nose direction.
+		pose.target = pose.eye + Basis.from_euler(Vector3(pitch, yaw, 0)) * Vector3.FORWARD * 20.0
+	return pose

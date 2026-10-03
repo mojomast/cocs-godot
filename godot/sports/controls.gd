@@ -39,7 +39,7 @@ func packet(yaw: float, eligible: bool) -> Dictionary:
 	var throttle := held(KEY_W) - held(KEY_S) if engaged else 0.0
 	var steer := held(KEY_D) - held(KEY_A) if engaged else 0.0
 	# Invert source stepRace/stepSoccer world-input projections exactly.
-	return {"x":-sin(yaw)*throttle-cos(yaw)*steer,
-		"z":-cos(yaw)*throttle+sin(yaw)*steer,"yaw":yaw,"pitch":0.0,
+	return {"x":-sin(yaw)*throttle+cos(yaw)*steer,
+		"z":-cos(yaw)*throttle-sin(yaw)*steer,"yaw":yaw,"pitch":0.0,
 		"jump":engaged and keys.has(KEY_SPACE),"sprint":engaged and keys.has(KEY_SHIFT),
 		"interact":engaged and keys.has(KEY_R),"fire":false,"power":false}

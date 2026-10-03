@@ -142,6 +142,44 @@ func run() -> void:
 	var panel := preload("res://input_bindings/settings_panel.gd").new()
 	root.add_child(panel)
 	check(panel.choices.size() == Model.LABELS.size(), "all supported gameplay actions have visible fields")
+	var reset_button: Button = panel.find_child("ResetInputBindings", true, false)
+	check(reset_button != null and reset_button.tooltip_text.contains("every keyboard / mouse action") and reset_button.tooltip_text.contains("command, cursor, and voice"), "reset explains full-profile scope including hidden contexts")
+	var previous_store_path: String = hint_store.path
+	hint_store.path = "user://input-bindings-search-contract-%d.json" % OS.get_process_id()
+	hint_store.apply_bindings(Model.DEFAULTS)
+	panel.refresh()
+	check(panel.changes_summary.text.begins_with("Modified from defaults: 0 of %d" % Model.LABELS.size()), "changed summary starts at zero")
+	panel._filter_rows("  mOvE fOrWaRd  ")
+	check(panel.rows.forward.visible and panel.search_status.text == "1 of %d editable actions" % Model.LABELS.size(), "search trims whitespace and ignores case")
+	panel._filter_rows("altfire")
+	check(panel.rows.altFire.visible and panel.search_status.text.begins_with("1 of "), "search matches stable action IDs")
+	hint_store.apply_bindings(Model.rebind(Model.DEFAULTS, "forward", "ArrowUp"))
+	panel._filter_rows("up")
+	check(panel.rows.forward.visible and panel.search_status.text.begins_with("1 of "), "search matches the current binding label")
+	panel._filter_rows("not a binding")
+	check(not panel.rows.forward.visible and panel.search_status.text.contains("No matching bindings"), "zero-result search leaves bindings untouched")
+	var occupied := Model.rebind(Model.DEFAULTS, "commandGo", "KeyI")
+	hint_store.apply_bindings(occupied)
+	panel.refresh()
+	var forward_choice: OptionButton = panel.choices.forward
+	var key_index := -1
+	for item in forward_choice.item_count:
+		if forward_choice.get_item_metadata(item) == "KeyI": key_index = item
+	panel._apply_choice("forward", forward_choice, key_index)
+	check(hint_store.values.forward == "KeyI" and hint_store.values.commandGo == Model.DEFAULTS.forward, "editable binding swap preserves hidden profile mapping without conflict")
+	check(panel.note.text.contains("Other profile action ‘commandGo’ (not editable here)"), "swap note identifies hidden affected action")
+	check(panel.changes_summary.text.begins_with("Modified from defaults: 1 of %d" % Model.LABELS.size()) and panel.changes_summary.text.contains("Move forward (forward): I"), "changed summary names changed action and current binding")
+	check(hint_store.reset_defaults() and panel.changes_summary.text.begins_with("Modified from defaults: 0 of %d" % Model.LABELS.size()), "changed summary clears on whole-profile reset signal")
+	hint_store.apply_bindings(Model.rebind(Model.DEFAULTS,"forward","ArrowUp"))
+	panel.search.text = "up"
+	panel._filter_rows(panel.search.text)
+	forward_choice.grab_focus()
+	panel._apply_choice("forward",forward_choice,key_index)
+	await process_frame
+	await process_frame
+	check(not panel.rows.forward.visible and root.gui_get_focus_owner()==panel.search,"binding-filtered focused row returns focus to search after deferred selection")
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(hint_store.path))
+	hint_store.path = previous_store_path
 	for action: String in panel.choices:
 		var choice: OptionButton = panel.choices[action]
 		check(choice.focus_mode == Control.FOCUS_ALL and not choice.accessibility_name.is_empty() and not choice.accessibility_description.is_empty(), "keyboard and assistive label " + action)

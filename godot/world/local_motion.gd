@@ -45,8 +45,9 @@ func ingest(eye: Vector3, alive: bool, now: float, source_time: float = NAN, aut
 	# Arrival time measures render latency, not the simulation interval. Several
 	# source ticks can be drained in one render frame after a short stall; dividing
 	# their position deltas by microseconds of receive time produces an artificial
-	# 40 m/s camera surge and then a visible correction. Horde supplies the source
-	# clock; other sessions retain their existing receive-clock policy.
+	# 40 m/s camera surge and then a visible correction. Ordinary match sessions
+	# now supply source time and authoritative velocity; callers without either
+	# retain receive-clock fallback.
 	var interval: float = now - _time
 	if is_finite(source_time) and is_finite(_source_time):
 		# Duplicate/non-advancing source times must not fall back to a tiny

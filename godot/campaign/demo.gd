@@ -278,7 +278,7 @@ func on_results(frame: Dictionary) -> void:
 	campaign_hud.refresh()
 
 func can_capture_pointer() -> bool:
-	return campaign.playing() and not action_pending and super.can_capture_pointer()
+	return campaign.playing() and not action_pending and not (is_instance_valid(campaign_hud) and campaign_hud.journal_visible()) and super.can_capture_pointer()
 
 var smoke_route := preload("res://campaign/smoke_route.gd").new()
 var smoke_route_round := -1

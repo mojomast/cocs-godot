@@ -163,7 +163,7 @@ static func describe(view: Dictionary) -> Dictionary:
 			var engaged: bool = view.get("engaged", false)
 			status_text = "ENGAGED · Escape to release" if engaged else "RELEASED · Enter to engage, then fresh movement keys"
 			color = Color(0.4, 1, 0.75) if engaged else color
-			instructions = preload("res://input_bindings/hints.gd").resolve("W/S: forward/reverse · A/D: steer · Space: brake · Shift: boost")
+			instructions = preload("res://input_bindings/hints.gd").resolve("W/S: forward/reverse · A/D: steer · Space: brake · Shift: boost") + " · F4: vehicle view"
 			if not soccer: instructions += "\nR: request race reset (server wait)"
 	return {"title":heading, "phase":phase_text, "detail":detail_text, "speed":speed_text, "status":status_text, "hints":instructions, "color":color}
 

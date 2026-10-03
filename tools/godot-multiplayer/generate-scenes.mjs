@@ -59,6 +59,16 @@ lattice=replace(lattice,'func on_started(frame: Dictionary) -> void:',`func on_s
 \t\treturn`);
 lattice=replace(lattice,'\t\ton_error("LATTICE geometry differs from authority")\n\t\treturn','\t\ton_error("LATTICE geometry differs from authority")\n\t\treturn\n\tif "--world-evidence" in OS.get_cmdline_user_args(): print("WORLD_LATTICE_START ",JSON.stringify({"map":current_id,"mode":selected_mode,"hash":catalog.entries[current_id].geometryHash,"peer":client.peer_id,"actor":client.actor_id}))');
 lattice=replace(lattice,'func on_results(frame: Dictionary) -> void:\n\tav_snapshot(frame.state)', 'func on_results(frame: Dictionary) -> void:\n\tif "--world-evidence" in OS.get_cmdline_user_args(): print("WORLD_LATTICE_RESULTS ",JSON.stringify({"map":current_id,"mode":selected_mode,"peer":client.peer_id,"cocs":frame.state.get("cocs",{}),"winner":frame.state.get("winner")}))\n\tav_snapshot(frame.state)');
+// Preserve the public-spectator admission in the generated world derivative.
+// The base LATTICE scene requires a private actor; this route admits a
+// recipient-only viewer and forwards its snapshots to the shared spectator rig.
+lattice=replace(lattice,'if client.revision < 1 or client.actor_id < 0: return','if client.revision < 1 or (client.actor_id < 0 and not client.spectating): return');
+lattice=replace(lattice,'func on_snapshot(frame: Dictionary) -> void:\n\tif phase != 3: return',`func on_snapshot(frame: Dictionary) -> void:
+	if phase != 3: return
+	if client.spectating:
+		# Public spectators have no private actor projection.
+		super.on_snapshot(frame)
+		return`);
 lattice+=`
 func load_map(id: String) -> bool:
 	var data: Dictionary = catalog.recipes.get(id,{})

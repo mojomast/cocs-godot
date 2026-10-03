@@ -17,6 +17,7 @@ var body := Label.new()
 var primary := Button.new()
 var restart := Button.new()
 var settings := Button.new()
+var journal_button := Button.new()
 var leave := Button.new()
 var top := VBoxContainer.new()
 var bottom := VBoxContainer.new()
@@ -32,6 +33,8 @@ var compact := false
 var brief := false
 var checkpoint_time := 0.0
 var checkpoint_text := ""
+var journal: Control
+var card_route := Label.new()
 
 func text_label(node: Label, font_size: int = 18) -> void:
 	node.add_theme_font_size_override("font_size", font_size)
@@ -90,12 +93,19 @@ func _ready() -> void:
 	stack.add_theme_constant_override("separation", 8)
 	card.add_child(stack)
 	stack.add_child(heading)
+	card_route.mouse_filter = MOUSE_FILTER_IGNORE
+	card_route.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	card_route.add_theme_color_override("font_color", Color("ffd479"))
 	var scroll := ScrollContainer.new()
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	scroll.follow_focus = true
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	stack.add_child(scroll)
-	scroll.add_child(body)
+	var card_content := VBoxContainer.new()
+	card_content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(card_content)
+	card_content.add_child(card_route)
+	card_content.add_child(body)
 	body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	stack.add_child(primary)
 	stack.add_child(restart)
@@ -106,20 +116,45 @@ func _ready() -> void:
 	restart.text = "Restart chapter"
 	restart.pressed.connect(func() -> void: session.request_campaign_action("restart"))
 	add_child(menu)
+	menu.add_child(journal_button)
 	menu.add_child(settings)
 	menu.add_child(leave)
+	journal_button.text = "Journal"
+	journal_button.tooltip_text = "Read the current objective, optional workshops and route"
 	settings.text = "Settings"
 	leave.text = "Leave"
+	journal_button.pressed.connect(func() -> void:
+		if is_instance_valid(journal): journal.toggle_panel())
 	settings.pressed.connect(func() -> void:
 		session.release_pointer()
 		Settings.open_panel(true, settings))
 	leave.pressed.connect(func() -> void: session.leave_campaign())
+	journal = preload("res://campaign/journal.gd").new()
+	add_child(journal)
+	journal.bind_session(session)
 	card.hide()
 	get_viewport().size_changed.connect(resize)
 	resize()
 
 func bind_session(value: Node) -> void:
 	session = value
+	if is_instance_valid(journal): journal.bind_session(value)
+
+func journal_visible() -> bool:
+	return is_instance_valid(journal) and journal.visible
+
+func route_line(current: String, complete_current: bool = false) -> String:
+	# Chapter order and titles come from the public catalog; completion marks come
+	# only from chapters whose level-complete this client actually observed.
+	var parts: Array[String] = []
+	for index: int in Catalog.MAP_IDS.size():
+		var id: String = Catalog.MAP_IDS[index]
+		var status := "locked"
+		if id == current: status = "complete" if complete_current else "current"
+		elif is_instance_valid(journal) and journal.model.cleared(id): status = "cleared"
+		var mark := "◆" if status == "current" else ("✓" if status in ["cleared", "complete"] else "○")
+		parts.append("%s %d %s" % [mark, index + 1, Catalog.TITLES[index]])
+	return " · ".join(parts)
 
 func attach_experience(status_label: Label, caption_label: Label, caption_at_top: bool) -> void:
 	# Shared scroll viewports keep objectives/comms and optional player readouts
@@ -159,11 +194,11 @@ func detach_experience() -> void:
 func resize() -> void:
 	var viewport_size := get_viewport_rect().size
 	compact = viewport_size.y < 540 or viewport_size.x < 800
-	for node: Label in [detail, subtitle, vitals, notice, status, boss, body]: node.add_theme_font_size_override("font_size", 14 if compact else 18)
+	for node: Label in [detail, subtitle, vitals, notice, status, boss, body, card_route]: node.add_theme_font_size_override("font_size", 14 if compact else 18)
 	objective.add_theme_font_size_override("font_size", 16 if compact else 22)
 	heading.add_theme_font_size_override("font_size", 22 if compact else 27)
 	waypoint.add_theme_font_size_override("font_size", 12 if compact else 16)
-	for button: Button in [primary, restart, settings, leave]: button.add_theme_font_size_override("font_size", 14 if compact else 18)
+	for button: Button in [primary, restart, journal_button, settings, leave]: button.add_theme_font_size_override("font_size", 14 if compact else 18)
 	var width := minf(640, viewport_size.x - 32)
 	card.position = Vector2((viewport_size.x - width) * 0.5, 64)
 	card.size = Vector2(width, maxf(180, minf(520, viewport_size.y - 104)))
@@ -198,7 +233,8 @@ func show_brief(id: String) -> void:
 	brief = true
 	card.show()
 	heading.text = "THE QUIET RELAY\n" + Catalog.TITLES[Catalog.MAP_IDS.find(id)]
-	preload("res://input_bindings/hints.gd").bind(body, "A surviving archive is calling through the quarantine. Follow ECHO along the power corridor, break the security cordon, and restore the network.\n\nWASD move · Shift sprint · Space jump\nMouse aim · LMB fire · RMB aim · R reload\nE interact · Q power · F melee · G grenade\n1–9 / wheel weapons · Esc release cursor\n\nClick the world to take control after each checkpoint.")
+	card_route.text = route_line(id)
+	preload("res://input_bindings/hints.gd").bind(body, "A surviving archive is calling through the quarantine. Follow ECHO along the power corridor, break the security cordon, and restore the network.\n\nWASD move · Shift sprint · Space jump\nMouse aim · LMB fire · RMB aim · R reload\nE interact · Q power · F melee · G grenade\n1–9 / wheel weapons · Journal button · Esc cursor\n\nClick the world to take control after each checkpoint.")
 	primary.text = "Begin chapter"
 	restart.hide()
 	objective_scroll.hide()
@@ -213,6 +249,11 @@ func refresh() -> void:
 	var model = session.campaign
 	var state: Dictionary = model.state
 	var phase: String = str(state.get("phase", ""))
+	# Observe every accepted snapshot so the journal's retained workshop/story
+	# record stays truthful even while the panel is closed.
+	if is_instance_valid(journal):
+		journal.observe(state)
+		if journal.open and (phase != "playing" or not session.startup_error.is_empty() or journal.blocked()): journal.close_panel()
 	objective.text = "%s · %s" % [state.get("title", "The Quiet Relay"), state.get("objective", "Connecting…")]
 	detail.text = str(state.get("detail", ""))
 	if state.get("enemiesRemaining", 0) > 0: detail.text += "  ·  Robots %d" % int(state.enemiesRemaining)
@@ -239,36 +280,44 @@ func refresh() -> void:
 	if not session.startup_error.is_empty():
 		heading.text = "Connection ended"
 		body.text = session.startup_error
+		card_route.text = ""
 		primary.hide()
 		restart.hide()
 	elif phase == "dead":
 		heading.text = "Signal interrupted"
 		body.text = "Return to checkpoint %d. Your recovered objectives are held by the archive." % int(state.get("checkpoint", 0))
+		card_route.text = route_line(str(state.get("mapId", "")))
 		primary.text = "Retry checkpoint · Enter"
 	elif phase == "level-complete":
 		heading.text = "Relay secured"
 		body.text = "%s complete.\nRobots disabled: %d · Chapter time: %d:%02d\nThe next signal is waiting." % [state.get("title", "Chapter"), int(state.get("kills", 0)), int(state.get("elapsed", 0)) / 60, int(state.get("elapsed", 0)) % 60]
+		card_route.text = route_line(str(state.get("mapId", "")), true)
 		primary.text = "Continue · Enter"
 	elif phase == "campaign-complete":
 		heading.text = "THE QUIET RELAY\nNetwork restored"
 		body.text = "The repair key reaches the Crown Array. Across the corridor, the quarantine falls silent. The archive was calling for rescue—and you answered.\n\nECHO: No more orders. Just a way home.\n\nCampaign complete · Total time %d:%02d" % [int(state.get("totalElapsed", 0)) / 60, int(state.get("totalElapsed", 0)) % 60]
+		card_route.text = route_line(str(state.get("mapId", "")), true)
 
 func _process(delta: float) -> void:
 	if not is_instance_valid(session): return
 	checkpoint_time = maxf(0, checkpoint_time - delta)
 	notice.visible = checkpoint_time > 0
 	var captured := Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
-	objective_scroll.focus_mode = Control.FOCUS_NONE if captured else Control.FOCUS_ALL
-	comms.focus_mode = Control.FOCUS_NONE if captured else Control.FOCUS_ALL
-	crosshair.visible = captured and session.campaign.playing() and not card.visible and not Settings.overlay_open()
-	menu.visible = not captured and not Settings.overlay_open()
-	status.text = "Waiting for authority…" if session.action_pending else (session.snapshot_watch.message() if session.snapshot_watch.stale() and session.phase == 3 else ("Click to control · Esc: cursor / scroll comms" if session.phase == 3 and not captured and session.campaign.playing() else ""))
+	var journal_open := journal_visible()
+	objective_scroll.focus_mode = Control.FOCUS_NONE if captured or journal_open else Control.FOCUS_ALL
+	comms.focus_mode = Control.FOCUS_NONE if captured or journal_open else Control.FOCUS_ALL
+	crosshair.visible = captured and session.campaign.playing() and not card.visible and not Settings.overlay_open() and not journal_open
+	menu.visible = not captured and not Settings.overlay_open() and not journal_open
+	journal_button.disabled = not (is_instance_valid(journal) and journal.available())
+	var journal_hint := "I journal" if is_instance_valid(journal) and journal.shortcut_available() else "Journal button"
+	journal_button.tooltip_text = "Read objective, workshops and route · " + journal_hint
+	status.text = "Waiting for authority…" if session.action_pending else (session.snapshot_watch.message() if session.snapshot_watch.stale() and session.phase == 3 else ("Click to control · " + journal_hint + " · Esc: cursor / scroll comms" if session.phase == 3 and not captured and session.campaign.playing() else ""))
 	if captured and comms.visible and comms_stack.get_combined_minimum_size().y > comms.size.y + 1: status.text = "Esc: scroll full comms"
 	if is_instance_valid(experience_status) and experience_status.visible and top.get_combined_minimum_size().y > objective_scroll.size.y + 1:
 		status.text += (" · " if not status.text.is_empty() else "") + "Esc: scroll operator kit"
 	layout_live()
 	waypoint.hide()
-	if not session.campaign.playing() or session.phase != 3 or card.visible or Settings.overlay_open(): return
+	if not session.campaign.playing() or session.phase != 3 or card.visible or Settings.overlay_open() or journal_open: return
 	var marker: Dictionary = session.campaign.state.get("marker", {})
 	var target := Vector3(float(marker.get("x", 0)), float(marker.get("y", 0)) + 2, float(marker.get("z", 0)))
 	var distance: float = session.camera.position.distance_to(target)

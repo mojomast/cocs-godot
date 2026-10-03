@@ -13,6 +13,58 @@ var seeded := false
 var eye := Vector3.ZERO
 var target := Vector3.ZERO
 var last := Vector3.ZERO
+var heading := 0.0
+var heading_velocity := 0.0
+var eye_velocity := Vector3.ZERO
+var target_velocity := Vector3.ZERO
+var first_person := false
+
+func toggle_view() -> void:
+	set_view("third" if first_person else "first")
+
+func set_view(mode: String) -> void:
+	var next := mode == "first"
+	if first_person != next:
+		first_person = next
+		reset_motion()
+
+func reset_motion() -> void:
+	seeded = false
+	eye_velocity = Vector3.ZERO
+	target_velocity = Vector3.ZERO
+	heading_velocity = 0.0
+
+static func spring(current: Vector3, velocity: Vector3, desired: Vector3, dt: float, rate: float) -> Array:
+	var decay := exp(-rate * dt)
+	var offset := current - desired
+	var impulse := velocity + offset * rate
+	return [desired + (offset + impulse * dt) * decay, (velocity - impulse * rate * dt) * decay]
+
+static func spring_angle(current: float, velocity: float, desired: float, dt: float, rate: float) -> Vector2:
+	var offset := wrapf(current - desired, -PI, PI)
+	var impulse := velocity + offset * rate
+	var decay := exp(-rate * dt)
+	return Vector2(wrapf(desired + (offset + impulse * dt) * decay, -PI, PI), (velocity - impulse * rate * dt) * decay)
+
+static func forward(yaw: float) -> Vector3:
+	return Vector3(sin(yaw), 0, cos(yaw))
+
+static func seat(v: Dictionary, role: String, index: int = 0) -> Vector3:
+	# Eye above the source seat anchor, with the nose kept in front of the near plane.
+	var kind: String = v.get("kind", "puma")
+	var offset := Vector3.ZERO
+	match kind:
+		"scout": offset = Vector3(-0.2, 1.12, 0.6)
+		"titan": offset = Vector3(-0.6, 1.62, 1.05)
+		"transport": offset = Vector3(-0.7, 2.24, 2.0)
+		"hornet": offset = Vector3(-0.7, 1.21, 1.05)
+		_: offset = Vector3(-0.4, 1.53, 1.05)
+	if role == "gunner":
+		offset = Vector3(0, 2.28 if kind == "titan" else (2.48 if kind == "transport" else 1.76), -0.75 if kind == "titan" else -0.4)
+	elif role == "passenger":
+		offset.x = absf(offset.x) if index % 2 == 0 else -absf(offset.x)
+		offset.z = -0.65 if index > 0 else 0.4
+	return Vector3(v.x, v.y, v.z) + Basis(Vector3.UP, float(v.yaw)) * offset
 
 func configure_map(id: String, map: Dictionary) -> bool:
 	# One selected map only. Repeated rounds keep the immutable spatial cache.
@@ -77,32 +129,87 @@ func clear_eye(anchor: Vector3, candidate: Vector3) -> Vector3:
 	return anchor.lerp(candidate, fraction)
 
 func reset() -> void:
-	seeded = false
+	reset_motion()
+	first_person = false
 	obstructed = false
 	eye = Vector3.ZERO
 	target = Vector3.ZERO
 	last = Vector3.ZERO
 	last_candidates = 0
 
-func follow(v: Dictionary, delta: float) -> Dictionary:
+func follow(v: Dictionary, delta: float, look_yaw: float = NAN, look_pitch: float = 0.0, role: String = "driver", index: int = 0, reduced: bool = false) -> Dictionary:
 	var p := Vector3(v.x, v.y, v.z)
-	var forward := Vector3(sin(float(v.yaw)), 0, cos(float(v.yaw)))
-	# Heading, never velocity: reverse cannot flip the rig. Source chase offsets.
-	var desired := p - forward * 9 + Vector3.UP * 5
-	var aim := p + forward * 6 + Vector3.UP
-	if not seeded or last.distance_to(p) > 8:
+	var yaw: float = float(v.yaw)
+	var dt := clampf(delta, 0.0, 0.1)
+	var snap := not seeded or last.distance_to(p) > 8.0 or not is_finite(delta)
+	if snap:
+		heading = yaw
+		heading_velocity = 0.0
+	elif reduced:
+		heading = yaw
+		heading_velocity = 0.0
+	else:
+		var angle_step := spring_angle(heading, heading_velocity, yaw, dt, 12.0)
+		heading = angle_step.x
+		heading_velocity = angle_step.y
+	# Source heading drives the boom even in reverse. Never integrate a second
+	# vehicle pose from velocity or extrapolate beyond the newest snapshot.
+	var direction := forward(heading)
+	var anchor := p + Vector3.UP * (1.4 if v.get("kind") == "scout" else (2.25 if v.get("kind") == "hornet" else 1.8))
+	if first_person:
+		var cockpit := seat(v, role, index)
+		var sight_yaw := float(v.yaw) - PI if is_nan(look_yaw) else look_yaw
+		var sight := Basis.from_euler(Vector3(look_pitch, sight_yaw, 0)) * Vector3.FORWARD
+		# The seat tracks snapshots with bounded lag; the sight itself responds to
+		# mouse look immediately. Never extrapolate beyond the authoritative seat.
+		if snap or reduced:
+			eye = cockpit
+			eye_velocity = Vector3.ZERO
+		else:
+			var seat_step := spring(eye, eye_velocity, cockpit, dt, 18.0)
+			eye = seat_step[0]
+			eye_velocity = seat_step[1]
+			if eye.distance_to(cockpit) > 0.35:
+				eye = cockpit + (eye - cockpit).limit_length(0.35)
+				eye_velocity = Vector3.ZERO
+		target = eye + sight * 20.0
+		last = p
+		seeded = true
+		obstructed = false
+		return {"eye":eye, "target":target}
+	var distance := 10.5 if v.get("kind") == "hornet" else (11.0 if v.get("kind") == "titan" else (7.0 if v.get("kind") == "scout" else 9.0))
+	# A little more road ahead at speed, bounded so boost cannot fling the eye
+	# out of the obstruction query or turn reverse into a front-facing camera.
+	var speed := Vector2(float(v.get("vx", 0.0)), float(v.get("vz", 0.0))).length()
+	if is_finite(speed): distance += minf(speed * 0.04, 1.2)
+	var height := 5.0 if v.get("kind") != "scout" else 3.35
+	var desired := p - direction * distance + Vector3.UP * height
+	var aim := anchor + direction * 7.0
+	if snap or reduced:
 		eye = desired
 		target = aim
 		seeded = true
+		eye_velocity = Vector3.ZERO
+		target_velocity = Vector3.ZERO
 	else:
-		var weight := 1.0 - exp(-10.0 * clampf(delta, 0, 0.1))
-		eye = eye.lerp(desired, weight)
-		target = target.lerp(aim, weight)
-	var anchor := p + Vector3.UP * 1.2
-	# Bound lag/queries to the original boom length, including fast snapshot moves.
-	eye = anchor + (eye-anchor).limit_length(10.3)
+		var e := spring(eye, eye_velocity, desired, dt, 12.0)
+		eye = e[0]
+		eye_velocity = e[1]
+		var t := spring(target, target_velocity, aim, dt, 12.0)
+		target = t[0]
+		target_velocity = t[1]
+	# Spring overshoot must never place the camera ahead of the vehicle or beyond
+	# the boom; reset momentum at the boundary rather than fighting the clamp.
+	var boom := eye - anchor
+	if boom.dot(direction) > -0.4 or boom.length() > distance + height:
+		eye = anchor + boom.limit_length(distance + height)
+		if (eye - anchor).dot(direction) > -0.4: eye = anchor - direction * 0.4 + Vector3.UP * height
+		eye_velocity = Vector3.ZERO
 	# Clip AFTER smoothing so interpolation cannot carry the eye through a wall.
-	# Safety pull-in is immediate; the existing exponential recovers smoothly.
 	eye = clear_eye(anchor, eye)
+	if obstructed: eye_velocity = Vector3.ZERO
+	if (target - eye).dot(direction) < 1.0:
+		target = eye + direction * 7.0
+		target_velocity = Vector3.ZERO
 	last = p
 	return {"eye":eye,"target":target}

@@ -3,8 +3,10 @@ extends Node
 ## Add this child after the root's _ready, or as a scene child (deferred binding).
 const Rig = preload("res://first_person/rig.gd")
 const SettingsAccess = preload("res://ui/settings_access.gd")
+const SprintFov = preload("res://first_person/sprint_fov.gd")
 var session: Node
 var rig := Rig.new()
+var sprint_fov := SprintFov.new()
 var _last_phase := -999
 var _last_actor := -999
 var _last_angles := Vector2.ZERO
@@ -58,7 +60,8 @@ func refresh() -> void:
 		else:
 			aiming = session.presentation.local_actor.get("aiming", session.presentation.local_actor.get("ads", false)) == true
 	rig.apply_aim(aiming)
-	session.camera.fov = float(rig.get_aim_state(_base_fov).fov)
+	var aim_state := rig.get_aim_state(_base_fov)
+	session.camera.fov = sprint_fov.compose(float(aim_state.fov), float(aim_state.weight)) if allowed else _base_fov
 	var angles := Vector2(session.camera.rotation.y, session.camera.rotation.x)
 	if allowed and _had_angles:
 		rig.apply_look_delta(Vector2(wrapf(angles.x - _last_angles.x, -PI, PI), angles.y - _last_angles.y))
@@ -69,11 +72,17 @@ func _events(items: Array) -> void:
 	refresh() # Consume events even when the current frame is hidden/stale/unfocused.
 	rig.apply_events(items, session.client.actor_id)
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	refresh()
+	if not is_instance_valid(session): return
+	var sprinting: bool = rig.showing and session.presentation.local_actor.get("sprinting", false) == true and session.presentation.local_actor.get("grounded", true) != false
+	sprint_fov.advance(delta, sprinting, rig.showing, rig.reduced_motion)
+	var aim_state := rig.get_aim_state(_base_fov)
+	session.camera.fov = sprint_fov.compose(float(aim_state.fov), float(aim_state.weight)) if rig.showing else _base_fov
 
 func clear_round() -> void:
 	rig.reset()
+	sprint_fov.reset()
 	if is_instance_valid(session) and is_instance_valid(session.camera):
 		session.camera.fov = _base_fov
 	_had_angles = false

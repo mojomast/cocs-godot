@@ -27,7 +27,7 @@ func _initialize() -> void:
 		key(g, KEY_D, true)
 		var p: Dictionary = g.packet(yaw, true)
 		check(is_equal_approx(-p.x*sin(yaw)-p.z*cos(yaw), 1.0), "throttle inverse")
-		check(is_equal_approx(-p.x*cos(yaw)+p.z*sin(yaw), 1.0), "steer inverse")
+		check(is_equal_approx(-p.x*cos(yaw)+p.z*sin(yaw), -1.0), "source D negative-right steer")
 	key(g, KEY_SPACE, true)
 	key(g, KEY_SHIFT, true)
 	key(g, KEY_R, true)

@@ -118,6 +118,7 @@ func clear_round() -> void:
 	fleet.clear_round()
 	actors.clear_round()
 	chase.reset()
+	chase.set_view(SettingsAccess.vehicle_view())
 	graphics.reset()
 	age = 0
 	send_age = 0
@@ -190,6 +191,8 @@ func on_snapshot(frame: Dictionary) -> void:
 	vehicle_bridge.observe(state, net.actor_id)
 	vehicle_bridge.crew_visibility(actors)
 	var previous_weapon: int = int(actor.get("weapon", -1))
+	var previous_heading: float = float(vehicle.get("yaw", 0.0))
+	var previous_vehicle_id: Variant = vehicle.get("id")
 	actor = vehicle_bridge.actor
 	if previous_weapon != int(actor.get("weapon", -1)) or actor.get("reloading", false): controls.cancel_aim()
 	vehicle = vehicle_bridge.vehicle
@@ -197,10 +200,15 @@ func on_snapshot(frame: Dictionary) -> void:
 	if next != identity:
 		release()
 		chase.reset()
+		chase.set_view(SettingsAccess.vehicle_view())
 		local_motion.reset()
 		yaw = float(actor.get("yaw", 0))
 		pitch = float(actor.get("pitch", 0))
 		identity = next
+	elif actor.get("vehicleSeat") == "driver" and vehicle.get("id") == previous_vehicle_id:
+		# Vehicle yaw is authoritative; preserve the driver's free-look offset
+		# through turns instead of leaving the sight pointing at an old world yaw.
+		yaw = Motion.look(yaw + wrapf(float(vehicle.get("yaw", 0.0)) - previous_heading, -PI, PI), pitch).x
 	# Passenger facing is source chassis heading - PI on every sync; no free
 	# passenger yaw exists in the authority or snapshot contract.
 	if actor.get("vehicleSeat") == "passenger": yaw = float(actor.get("yaw", yaw))
@@ -226,6 +234,10 @@ func _input(event: InputEvent) -> void:
 	if SettingsAccess.overlay_open():
 		release()
 		controls.accept(event, false)
+		return
+	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_F4 and not vehicle.is_empty() and eligible():
+		chase.toggle_view()
+		SettingsAccess.save_vehicle_view("first" if chase.first_person else "third")
 		return
 	var focused := get_window().has_focus() and controls.focused
 	controls.accept(event, eligible() and focused, (vehicle.is_empty() or actor.get("vehicleSeat") == "passenger") and not actor.get("reloading", false) and not net.spectating)
@@ -276,6 +288,7 @@ func _process(delta: float) -> void:
 			input_queued.emit(net.input_seq, p, result)
 			checked(result)
 	if not net.spectating and not actor.is_empty():
+		if SettingsAccess.service() != null and not vehicle.is_empty(): chase.set_view(SettingsAccess.vehicle_view())
 		var pose := chase.mounted(vehicle, actor, yaw, pitch, delta) if not vehicle.is_empty() else chase.infantry(actor, yaw, pitch)
 		if vehicle.is_empty() and eligible() and get_window().has_focus() and local_motion.ready():
 			var forward: Vector3 = pose.target - pose.eye
