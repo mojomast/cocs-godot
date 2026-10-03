@@ -124,3 +124,34 @@ the accepted art basename or reuse an old T report/hash for it.
 
 No Blender, Godot, importer, renderer, server, or native capture ran during
 this corrective source stage.
+
+## V grant corrective-native harness (new, separate from the frozen T source stage)
+
+The parent-based V branch adds `revision2-corrective/native_harness.py`,
+`reexport_master.py`, `audit_corrective.py`, source guard tests, and the
+test-only `godot/tests/new_maps/abyssal_pressureworks/corrective/world_check.gd`.
+Under **MOTH-BLENDER-20261003-V**, the actual command is:
+
+```sh
+LP_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 tools/godot-multiplayer/new-maps/abyssal-pressureworks/revision2-corrective/native_harness.py \
+  --grant MOTH-BLENDER-20261003-V \
+  --output-root /tmp/opencode/abyssal-corrective-V-20261003-attempt-1 \
+  --blender /home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender \
+  --godot /home/mojo/.tmp-on-disk/opencode/cocs-graphics-windows-final/toolchain/Godot_v4.5.2-stable_linux.x86_64 run
+```
+
+The new directory must not exist beforehand. A failed attempt keeps its
+`inputs.json`, ordered logs and receipts; a repair gets a new attempt root.
+The exclusive shared lock is nonwaiting; each child uses its own bounded
+session group with kernel start ticks and three empty owned-group audits.
+Builder verifies immutable color, normal and roughness pixels; the saved master
+is reopened, then exported again and compared across **all** triangles, named
+surfaces and decoded PBR pixels. The standalone full-scene embedded GLB validator
+enforces the 64-primitive bound, actual index count and declared POSITION bounds;
+150k triangles is advisory. The staged Godot project is a **copy** within the
+attempt root and hashes the exact corrective JSON and new GLB. Its Binder uses
+a candidate-only copy-local identity/profile preserving the imported PBR
+materials; the parent snapshot has no accepted Abyssal profile or
+`WeatherService`, so this cannot be labeled production-weather acceptance.
+Actual visual capture, outside-wall traversal, hosted modes and final finish
+remain explicit review gates until their own measured evidence is recorded.
