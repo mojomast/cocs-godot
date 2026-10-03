@@ -1,5 +1,23 @@
 # Post-X source review — diagnosis approved; exact-art native fixture blocked
 
+## Binding correction delivered for focused re-review
+
+`525b9fbe` adds explicit authority/art pins and runtime binding to the original
+`902c3bbb` diagnostics. Producer reports thirteen portable tests plus pinned-X
+integration checks passing, including missing import/art, tampering and accepted-art
+substitution with an edited manifest. Historical source reports and all 600 X /
+264 U files remain unchanged. Independent focused re-review is active; neither
+source integration nor native execution is yet claimed for this follow-up.
+
+Pinned accepted GLB: `6afe34c82d45f06c30dedc780f59ac6afa5200835b487d41705902d771fc0bfd`
+(54,804 triangles / eleven materials). Candidate X:
+`f859d49cc1b462b4a88e351d915518c49940ce24a7b8c2047c2d8f94f419e1db`
+(64,311 / seventeen). The proposed runtime removes helper-loaded art, instantiates
+the chosen staged scene before physics, and checks bytes, authority/recipe identity,
+import UID/policy, imported mesh counts and nonempty geometry. Receipts carry both
+identities and binding-ready flags. GDScript remains unparsed/unexecuted by an engine.
+The sixty walk-only direct-step cases keep their diagnostic-only scope.
+
 Independent Astra `ses_efc89c2afffeKQvhqPUs4YwsaY` reviewed `902c3bbb` and
 approved the source-only Vesper diagnosis and unapplied Parallax proposal.
 **Exact-X native journey readiness is withheld** for the artifact-binding P1 below.

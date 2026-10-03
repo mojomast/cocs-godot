@@ -1,5 +1,12 @@
 # New Moth resources and Blender-authored map variety
 
+**Vesper native-binding correction delivered:** `525b9fbe` pins both authority/
+GLB variants and adds explicit imported-art binding before physics. Thirteen
+portable tests and actual pinned-X negative checks report passing. Independent
+focused source re-review is active before integration/engine authorization; all
+600 X and 264 U files remain unchanged. Sixty walk-only movement diagnostics stay
+distinct from hosted/full-map acceptance. No heavy grant is active.
+
 **Post-X review:** `902c3bbb` is approved as source diagnosis and unapplied Parallax
 proposal, but exact-X native readiness is blocked: the journey fixture binds
 accepted art and does not pin either GLB. Astra is correcting test-only artifact
