@@ -88,9 +88,10 @@ func _gui_input(event: InputEvent) -> void:
 			move_browse(-1 if event.is_action_pressed("ui_up") else 1)
 			accept_event()
 	elif row_focused and event.is_action_pressed("ui_cancel"):
-		if browse:
-			cancel_browse()
-			accept_event()
+		cancel_browse()
+		# The focused inline chooser owns Cancel even outside browse mode.
+		# Letting it bubble opens the global settings overlay and loses focus.
+		accept_event()
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		cancel_browse()
 		grab_focus()
