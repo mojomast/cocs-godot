@@ -1,0 +1,9 @@
+{
+  "grant": "MOTH-BLENDER-20261003-AA",
+  "exclusive": true,
+  "map": "parallax-observatory",
+  "released": false,
+  "sourceParent": "d3a4c524",
+  "scope": "Bounded Blender master/reopen and isolated Godot actual tangent verification; no public promotion",
+  "autoStart": false
+}

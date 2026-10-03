@@ -3,10 +3,11 @@ import json
 import math
 import sys
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from contract import HERE, ROOT, MASTER, MASTER_SHA, SOURCE_SHA, REVISION, pinned, repair, verify, sha
 from editable import audit
 
-OUTPUT = HERE / 'native'  # only under a future exclusive heavy grant
+OUTPUT = HERE / 'native/AA02'  # new attempt; AA01 traceback retained
 RECIPE_KEY = 'PARALLAX_TANGENT_RECIPE.json'
 COMPILER_KEY = 'PARALLAX_TANGENT_COMPILER.py'
 

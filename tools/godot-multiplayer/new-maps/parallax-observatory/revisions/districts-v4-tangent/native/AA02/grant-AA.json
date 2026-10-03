@@ -1,0 +1,9 @@
+{
+  "grant": "MOTH-BLENDER-20261003-AA",
+  "exclusive": true,
+  "map": "parallax-observatory",
+  "released": false,
+  "sourceParent": "d3a4c524",
+  "scope": "AA02 successor after AA01 Blender Python import-path failure",
+  "autoStart": false
+}
