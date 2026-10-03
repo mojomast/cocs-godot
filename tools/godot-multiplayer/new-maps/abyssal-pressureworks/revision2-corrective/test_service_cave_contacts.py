@@ -1,9 +1,8 @@
 """Source-only P1 reproduction and exact XZ separation for corrected solid forms.
 
-Frozen T GLB is an archival failure fixture; current layout/authority are a new
-candidate identity and cannot acquire native acceptance from these checks.
+The frozen T GLB is verified separately with verify_archived_service_cave.py;
+these geometry checks require no native artifact in the source checkout.
 """
-import hashlib
 import json
 import math
 import sys
@@ -16,7 +15,7 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(ROOT / 'tools/map-variety-support'))
 import layout
 import geometry
-from service_cave_contacts import T_GLB, glb_triangles, segment_hits, triangles_from_authority, triangles_from_specs
+from service_cave_contacts import segment_hits, triangles_from_authority, triangles_from_specs
 
 
 def point_segment_distance(point, a, b):
@@ -58,22 +57,6 @@ class ServiceCaveContactTests(unittest.TestCase):
         cls.arena = cls.data['arena']
         cls.cave = [s for s in layout.parts(cls.arena) if s['name'].startswith('service-cave.')]
         cls.authority = list(triangles_from_authority(cls.arena))
-        cls.archived = list(glb_triangles())
-
-    def test_frozen_native_glb_reproduces_reviewed_p1_without_restamping_it(self):
-        report = json.loads((ROOT / 'port/finish/map-variety/native-T-20261003/abyssal-pressureworks/material-report.json').read_text())
-        frozen = json.loads((HERE.parent / 'revision2/candidate.json').read_text())
-        self.assertEqual(hashlib.sha256(T_GLB.read_bytes()).hexdigest(), report['glbSha256'])
-        self.assertEqual(report['geometryHash'], '5fea4aada721903cea26897fb6a17befaf146c576c095dc712feebef626adfa2')
-        self.assertEqual(frozen['geometryHash'], report['geometryHash'])
-        self.assertNotEqual(self.data['geometryHash'], report['geometryHash'])
-        cases = [((-106, 7.2, -97), (-106, 7.2, -100), 'deep-silt', -98.35),
-                 ((-94, 10, -98.5), (-94, 5, -98.5), 'salt-limestone', 8.6),
-                 ((91, 4, -92.5), (91, -1, -92.5), 'salt-limestone', 2.6)]
-        for start, end, material, coordinate in cases:
-            hits = segment_hits(start, end, self.archived)
-            self.assertTrue(any(material in name and abs(point[2 if material == 'deep-silt' else 1] - coordinate) < .002
-                                for _, name, point in hits), (start, hits[:8]))
 
     def test_corrected_parts_and_authority_disagree_nowhere_on_reviewed_rays(self):
         self.assertEqual(len(self.cave), 14)  # both ledges, twelve real fins

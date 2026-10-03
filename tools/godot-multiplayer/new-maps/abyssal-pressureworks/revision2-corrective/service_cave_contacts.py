@@ -10,17 +10,12 @@ import pathlib
 import struct
 
 
-HERE = pathlib.Path(__file__).resolve().parent
-ROOT = HERE.parents[4]
-T_GLB = ROOT / 'port/finish/map-variety/native-T-20261003/abyssal-pressureworks/abyssal-pressureworks-revision2.glb'
-
-
 def _component(raw, offset, code, count):
     fmt = {5126: 'f', 5125: 'I', 5123: 'H', 5121: 'B'}[code]
     return struct.unpack_from('<' + fmt * count, raw, offset)
 
 
-def glb_triangles(path=T_GLB):
+def glb_triangles(path):
     raw = pathlib.Path(path).read_bytes()
     if raw[:4] != b'glTF' or struct.unpack_from('<I', raw, 8)[0] != len(raw):
         raise ValueError('Invalid archived GLB')

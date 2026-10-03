@@ -2,14 +2,17 @@
 
 The T-grant Abyssal candidate `5fea4aada721903cea26897fb6a17befaf146c576c095dc712feebef626adfa2`
 is **blocked**. Its genuine 4.5.14 Blender master, GLB, packed-image report,
-reopen receipt, and Godot images in `native-T-20261003/` remain immutable
-historical evidence, not corrected native acceptance. Stormglass retains its
+reopen receipt, and Godot images remain in the frozen T producer worktree at
+`port/finish/map-variety/native-T-20261003/`. They are **not** included in this
+parent-based source integration and are not corrected native acceptance. Stormglass retains its
 independently reviewed staged-integration status and its exact T artifacts.
 
 ## Reproduced defect and new source identity
 
-`test_service_cave_contacts.py` reads the archived 229,620-triangle T GLB,
-verifies its report SHA-256, and reproduces the review's exact world-space rays:
+The separate `verify_archived_service_cave.py` command reads the explicitly
+provided archived 229,620-triangle T GLB, verifies **both** its own SHA-256 and
+the immutable material-report SHA-256 *before parsing geometry*, and reproduces
+the review's exact world-space rays:
 
 | Segment | Historical GLB | Historical authority |
 |---|---|---|
@@ -43,13 +46,47 @@ registered modes' anchors, single-height deck semantics, and finite-radius
 clearance along both terraces, the utility ramp, all spawns/team flags, and
 objectives. Stormglass source remains byte-identical to the T integration.
 
+## Portable tests versus pinned historical fixture
+
+The parent-based source branch contains only the four byte-identical reviewed
+coastal builder prerequisites (`build_entry.py`, `composition.py`,
+`verify_master.py`, `test_preserved.py`) and `revision2-corrective/` source. It
+does **not** copy any rejected Abyssal T master, GLB, report, screenshot, or
+frozen native runner. The pure geometry tests run in a source-only CI checkout:
+
+```sh
+python3 -m unittest discover -s tools/map-variety-support -p 'test_*.py'
+python3 -m unittest discover -s tools/godot-multiplayer/new-maps/abyssal-pressureworks/revision2-corrective -p 'test_*.py'
+node --test tools/godot-multiplayer/new-maps/abyssal-pressureworks/revision2-corrective/source.test.mjs
+node tools/godot-multiplayer/new-maps/abyssal-pressureworks/revision2-corrective/build.mjs --check
+```
+
+These pass **7 shared Python, 16 corrective Python, 9 corrective Node** tests,
+and the deterministic `--check` without any Blender, Godot, or GLB read. The
+archival P1 reproduction is a **separate, explicit** read-only invocation:
+
+```sh
+python3 tools/godot-multiplayer/new-maps/abyssal-pressureworks/revision2-corrective/verify_archived_service_cave.py --fixture-root /home/mojo/.tmp-on-disk/cocs-coastal-blender-T-20261003/port/finish/map-variety/native-T-20261003/abyssal-pressureworks
+```
+
+`COCS_ABYSSAL_T_FIXTURE_ROOT` can supply the same exact directory instead of
+the flag. Missing input is an error; no fixture is searched, downloaded, or
+silently skipped. The pinned historical GLB SHA-256 is
+`925883eff465b7d470a36e215107420228ca8f537a08f2e3a7a879231668bfe7`;
+the material-report SHA-256 is
+`293a4d6b9561ef29d23274e02430d234bc6f13c686361e6ee82e2c67503e0066`.
+The deliberate missing-file and wrong-GLB-hash cases also failed before any
+large geometry parse. This historical reproduction is **not** native closure
+for the corrected candidate.
+
 ## Next authorized heavy stage (future grant only)
 
-1. Run the Abyssal author under a **new** exclusive Blender grant, outputting
+1. After U's botanical heavy slot is released and a **new explicit corrective
+   grant** is assigned, run the Abyssal author, outputting
    a new namespaced `native-<grant>/abyssal-pressureworks/` master, GLB, report,
    and bounded attempt receipts. Do not overwrite T outputs. The T
-   `run_native.py` currently hardcodes its T path: supply new paths via its
-   versioned successor or invoke the author with explicit `--blend`, `--glb`,
+   `run_native.py` in frozen T history hardcodes its T path and was deliberately
+   not integrated here: supply a new namespaced wrapper or invoke the author with explicit `--blend`, `--glb`,
    `--report` arguments under the shared nonwaiting lock and bounded PGID.
 2. Reopen that exact new `.blend`; prove packed images, source/derived pixel
    lineage (sRGB colour, linear normals, ORM green roughness), primitive/triangle
