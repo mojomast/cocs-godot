@@ -1,5 +1,28 @@
 # New Moth resources and Blender-authored map variety
 
+## Current checkpoint — Y delivered/released; no active heavy grant
+
+Foundry R7 Y delivered **`26da91b3` / `f3b51b2c`** and released at
+**2026-10-03T21:58:29.061117Z**, final receipt 21:58:35.653071Z. Parent verified
+three empty audits across 16 owned groups, no current members, and lock availability
+at 22:05:19.738213Z. All **237 manifest hashes/sizes** match. No new heavy grant
+has been issued; remaining workers are source/artifact/static-gallery only.
+
+R7 actual art SHA is `6325fdf0003813c5cb5a59aca3626f6756998fb53f8aaa143d9f3043f3caa44f`;
+master SHA is `96314db722902c12c8b5866edfd0d12844db3a99527eb746c58f61376dc09472`.
+Worker reports 87,566 triangles / 32 primitives, exactly seven repaired records
+(59 BIN bytes within 112 permitted positions), all other BIN bytes identical to
+R6, fresh master/reopen passing, native all-corner directions/handedness with zero
+waivers, 18 material field sets / 51 pixel channels and eight fresh rays passing.
+All 226 W hashes remain unchanged. Twenty-six original captures compare fresh
+staged R6 with R7; subtle shading changes are not a broad art-polish claim.
+
+Independent Astra `ses_efd0e4deaffeke8j2rdXdxtbbn` is reviewing actual Y artifacts.
+Package owner is preparing exact unpromoted-R7 exclusions; the gallery owner is
+publishing a separate R7 comparison page. Y commits remain unmerged pending review
+and packaging checks. Vesper stair diagnosis and Parallax tangent work remain
+source-only; hosted/manual/weather/performance acceptance is still pending.
+
 **Helix/Parallax X artifacts selectively integrated as `5f41d68e`.** All 332
 copies match producer `171ffddb` blobs, hashes and sizes; parent passed twelve
 package checks. The 2,494-file accepted native selection and 137 R5/R6 exclusions
