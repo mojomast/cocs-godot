@@ -1,5 +1,34 @@
 # New Moth resources and Blender-authored map variety
 
+## Current checkpoint — Z released after genuine uphill failures
+
+**No heavy grant is active.** Z delivered `eba8b633` / `dd4fbbb8` and released
+at 2026-10-03T22:49:41.170337Z. Parent verified all **253 inventory hashes/sizes**,
+three empty audits covering three owned groups, no current survivors and lock
+availability at 23:05:00.817432Z. Independent source/evidence review is active;
+the Z delivery remains unmerged.
+
+Only `accepted-civic-r035` ran: **five downhill landing passes, five uphill
+failures; fifty trials unrun**. Both exact GLBs passed binding checks, but candidate
+movement was not tested. Uphill traces stall at the first 0.15 m tread, with rounded
+capsule normals 51.15–51.31° from up exceeding the exploration controller's 46°
+floor limit. Its unchanged movement path has no upward step routine. Authoritative
+JS step success remains separate. Downhill includes 690 non-grounded responses;
+13,430 clear source headroom rays do not establish native capsule clearance.
+Vesper approval stays withheld and all 184 X static contacts remain failed.
+
+Parallax's transform-audit correction **`3a0da75e`** is under focused re-review:
+all 39 meshes must be direct active-scene roots, rejecting the +100 m parent
+counterexample while retaining baseline leaf transforms. Five source tests are
+reported passing; future native position proof is explicitly bounded mesh-local
+data with no node/world transform readback. No Parallax successor artifact exists.
+
+**Parallax tangent contract review found one P1:** `48c7e6c1`'s editable audit
+ignores non-mesh ancestor transforms and accepts an actual-X scene shifted 100 m.
+The repair math/material semantics pass, but Sol is correcting transform validation
+and native local-stream/tolerance labels before re-review. No successor build or
+integration is approved. Z retains the exclusive Vesper diagnostic grant.
+
 **Parallax tangent production sources delivered:** `48c7e6c1`, based on `33afe0ec`,
 pins the X master/GLB and limits changes to the three exclusive corners of face
 11823 (five BIN bytes within 48 permitted positions). Producer reports four

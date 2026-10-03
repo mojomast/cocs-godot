@@ -1,5 +1,44 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Z native outcome and Parallax correction delivery
+
+Z completed as `eba8b633` / `dd4fbbb8`, released, and is under independent
+source/evidence review. The first accepted-world .35 m group produced five
+downhill landing passes and five genuine uphill stalls at the first .15 m tread.
+The remaining fifty trials did not run. Both GLBs passed binding checks, but no
+candidate movement was tested. All 184 prior static contacts remain failed.
+Parent verified 253 inventory files and three empty process-group audits; no
+heavy grant is active. Source headroom rays and downhill arrival do not establish
+continuous grounding or native full-capsule clearance.
+
+Parallax correction `3a0da75e` is under focused source re-review. It rejects
+non-root mesh parenting, including the actual +100 m mutation, and reports
+measured bounded mesh-local native position error. All five source tests are
+reported passing; the baseline's leaf transforms remain supported. No actual
+master/export/native successor is produced. Earlier findings below retain history.
+
+## Parallax production-contract review: transform P1 open
+
+Independent review of `48c7e6c1` supports the three-corner repair and semantic
+material gate, but withholds full source approval. In `districts-v4-tangent/
+editable.py`, only mesh-node transforms are checked. Wrapping all actual-X scene
+roots in a non-mesh parent translated by `[100,0,0]` still passes all 155,553
+triangles with zero reported position/normal/UV error. A moved editable master
+could therefore be certified before its placement changes are discarded.
+
+Sol is correcting the scene contract: either reject unsupported parenting while
+retaining wayfinding leaf TRS, or compose full world transforms. The actual-X
+translated-parent regression and valid baseline must be tested. No actual
+production grant or integration is approved for this contract yet.
+
+All four supplied source tests pass; material semantics cover Parallax's fourteen
+materials and reject clamp/emissive mutations. Independent synthetic readback
+passes all 155,553 triangles and rejects repaired-corner handedness reverted to +1.
+That is source evidence only. The native probe currently records mesh-local arrays,
+not node transforms, and its position fallback permits ≤1e-5 error. Proof labels
+must state those limits or record the additional measurements; exact world-position
+equality is not established. Existing approved X staging remains unchanged.
+
 **Parallax production-contract follow-up received:** Sol's `48c7e6c1` is under
 independent review by `ses_efd0e4deaffeke8j2rdXdxtbbn`. It pins the original X
 master/GLB, applies only the approved three-corner proposal, and adds future full

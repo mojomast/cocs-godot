@@ -7,11 +7,12 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
-**Current heavy owner: Vesper diagnostics Z**, Astra
-`ses_efd55fd04ffedSQ6q14ztgmqaa`. Reviewed exact-art sources are integrated through
-`33afe0ec`; parent passed thirteen Python, three Node tests and pinned-X integration
-checks. Six bounded ten-walk groups are authorized, stopping on first failed group.
-No static failures are waived. Parallax production-contract preparation is source-only.
+**No active heavy grant. Vesper Z released after its first failed native group.**
+Delivery `eba8b633` / `dd4fbbb8` records five downhill landing passes, five uphill
+stalls and fifty unrun trials. Candidate art binding passed, but candidate movement
+was not tested. Parent verified 253 hashes and three empty audits/three groups;
+the lock was available at 23:05:00Z. Independent evidence review is active.
+Parallax transform correction `3a0da75e` is under source re-review; no build grant.
 
 **Foundry R7 Y completed and released**, delivering
 `26da91b3` / `f3b51b2c`. Parent verified 237 hashes, three empty audits/16 groups,
@@ -32,7 +33,8 @@ Vesper diagnosis is source-only. X gallery: <http://100.125.104.79:8796/botanica
 Diagnostic `902c3bbb` passed independent source review: 60 required authoritative
 stair trials pass, while native exploration remains unproven. Exact-art native
 readiness subsequently passed review after exact GLB binding was corrected in
-`525b9fbe`, integrated as `33afe0ec`; Z now owns diagnostic execution. The 184
+`525b9fbe`, integrated as `33afe0ec`; Z subsequently demonstrated accepted-world
+uphill failure and released. The 184
 static contacts remain failed. The
 Parallax three-corner proposal is source-approved but unapplied; no corrected
 artifact or new native acceptance is claimed. See `map-variety/POST_X_SOURCE_REVIEW.md`.
@@ -194,7 +196,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P, Q, R, S, T, U, V, W, X and Y have released; Z owns native diagnostics.**
+**P, Q, R, S, T, U, V, W, X, Y and Z have released; no heavy grant is active.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -236,11 +238,14 @@ directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
-**Active: `MOTH-BLENDER-20261003-Z`**, Astra
+**Released: `MOTH-BLENDER-20261003-Z`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `33afe0ec`. Exact accepted/X Vesper
 authority and art, genuine UID/precision import checks, six walk-only diagnostic
 groups with first-failure stop. Preserve static failures; no production movement/
 geometry changes, no public promotion. Three empty group audits and explicit release.
+Z stopped after the first group: five downhill passes, five uphill failures and
+fifty unrun trials. Delivery `eba8b633` / `dd4fbbb8` is under review. Release at
+22:49:41.170337Z is parent-verified across three groups and 253 inventory files.
 
 **Released: `MOTH-BLENDER-20261003-Y`**, Astra
 `ses_efd30e1f6ffeLbhHTPoh266kZW`, foundation `10d9938f`. Actual seven-entry
