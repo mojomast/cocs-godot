@@ -122,6 +122,7 @@ func clear_round() -> void:
 	vehicle.clear()
 	fleet.clear_round()
 	chase.reset()
+	chase.set_view(SettingsAccess.vehicle_view())
 	world.camera.transform = initial_camera
 	ball.hide()
 	ball.position = Vector3.ZERO
@@ -187,6 +188,7 @@ func on_snapshot(frame: Dictionary) -> void:
 	if previous_id != vehicle.get("id"):
 		controls.release()
 		chase.reset()
+		chase.set_view(SettingsAccess.vehicle_view())
 	if not eligible(): controls.release()
 	var race: Dictionary = state.get("race", {})
 	var b: Variant = race.get("ball")
@@ -207,8 +209,9 @@ func _input(event: InputEvent) -> void:
 	if SettingsAccess.overlay_open():
 		controls.accept(event, false)
 		return
-	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_P and eligible():
+	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_F4 and eligible():
 		chase.toggle_view()
+		SettingsAccess.save_vehicle_view("first" if chase.first_person else "third")
 		return
 	controls.accept(event, eligible())
 	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_F5 and phase == "results":
@@ -242,6 +245,7 @@ func _process(delta: float) -> void:
 			send_age = 0
 			checked(net.send_input(controls.packet(float(vehicle.get("yaw", 0)) - PI, eligible())))
 	if not net.spectating and not vehicle.is_empty():
+		if SettingsAccess.service() != null: chase.set_view(SettingsAccess.vehicle_view())
 		var settings := SettingsAccess.service()
 		var reduced: bool = settings != null and settings.values.get("reduced_motion", false) == true
 		var pose: Dictionary = chase.follow(vehicle, delta, float(vehicle.get("yaw", 0.0)) - PI, 0.0, "driver", 0, reduced)

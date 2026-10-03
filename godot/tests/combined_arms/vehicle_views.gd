@@ -32,7 +32,7 @@ func run() -> void:
 		controls.accept(press(KEY_W, false), true)
 		controls.accept(press(KEY_D), true)
 		p = controls.command(-PI, 0, true, true) if controls is ArmsControls else controls.packet(-PI, true)
-		check(is_equal_approx(float(p.x), 1.0), "D yields positive source steer")
+		check(is_equal_approx(float(p.x), -1.0), "D yields positive source steer after negative right projection")
 		controls.accept(press(KEY_D, false), true)
 		controls.accept(press(KEY_S), true)
 		p = controls.command(-PI, 0, true, true) if controls is ArmsControls else controls.packet(-PI, true)

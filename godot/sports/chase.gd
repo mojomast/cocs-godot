@@ -20,8 +20,13 @@ var target_velocity := Vector3.ZERO
 var first_person := false
 
 func toggle_view() -> void:
-	first_person = not first_person
-	reset_motion()
+	set_view("third" if first_person else "first")
+
+func set_view(mode: String) -> void:
+	var next := mode == "first"
+	if first_person != next:
+		first_person = next
+		reset_motion()
 
 func reset_motion() -> void:
 	seeded = false

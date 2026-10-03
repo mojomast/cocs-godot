@@ -953,8 +953,7 @@ func _process(delta: float) -> void:
 		if vehicle_bridge.actor.get("vehicleSeat") == "driver":
 			var throttle := float(combat_actions.key(KEY_W)) - float(combat_actions.key(KEY_S))
 			var steer := float(combat_actions.key(KEY_D)) - float(combat_actions.key(KEY_A))
-			var axes := Vector2(-sin(yaw)*throttle-cos(yaw)*steer, -cos(yaw)*throttle+sin(yaw)*steer)
-			axes /= maxf(1.0, maxf(absf(axes.x), absf(axes.y)))
+			var axes := Vector2(-sin(yaw)*throttle+cos(yaw)*steer, -cos(yaw)*throttle-sin(yaw)*steer)
 			controls.x = axes.x
 			controls.z = axes.y
 		controls = vehicle_bridge.adapt(controls, active and vehicle_bridge.eligible(client.actor_id, 0.0, phase == 3 and not snapshot_watch.stale(), client.spectating))
