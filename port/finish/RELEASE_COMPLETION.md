@@ -55,7 +55,7 @@ boundaries.
 | Fighting presentation and controls | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing at `1bff0281`; controller recovery integrated at `614a8a7f`, all 12 parent presentation source tests pass; native review pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
-| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Seven strict closures passed at `5b5c8791`; now source-only reconciling reviewed K/polish dependencies through `8921ed41`, preserving original native identities |
+| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | K/polish seven-unit reconciliation integrated at `224a256f`; 49 parent source checks pass, 116 released-K operator import sidecars tracked; subsequent L corrections require a new exact advance |
 | Vesper Viaduct | Astra `ses_f03a3885fffehx9yFhHubuPCft` | H production/evidence integrated through `04fbbfa5`; six native outcomes passed; parent review/registration at `99a4f597`; package-promoted at `b5d16351` |
 | Abyssal Pressureworks | Astra `ses_f03a3024cffeNO1Cc3Qr1zSLTG` | I delivery integrated through `f0e76bf7`; six native outcomes and parent visual review retained; six-mode registration/package promotion integrated at `c7c81c71` |
 | Stormglass Causeway | Astra `ses_f0342d1ffffeyUHJkcUj3vqP7p` | J completed/released; assets and private race evidence integrated through `997bc013`; one public Puma Race pair and exact package promotion integrated at `5b5c8791`, flat-road concession retained |
@@ -84,7 +84,8 @@ Parent owns review, public registration and promotion; cinematic awaits a later 
 Scenery F, preview G/G2/G3/G4, Vesper H, Abyssal I, Stormglass J and motion K explicitly released. Current L supersedes
 historical ownership metadata in production plans; do not mutate active-run inputs
 just to relabel ownership. All seven asset units are promoted and strict asset
-inventory passes at `5b5c8791`. Public coverage is 13 worlds / 73 pairs. This does
+inventory passes at `224a256f`, including reviewed K/polish dependencies through
+`8921ed41`. Public coverage is 13 worlds / 73 pairs. This does
 not discharge final 142-job acceptance or new-feature native obligations.
 The authorized Windows navigation
 comparison runs on a separate remote host.

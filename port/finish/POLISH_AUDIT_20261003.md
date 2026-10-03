@@ -19,9 +19,11 @@ parity, the five-script required-parser lobby source check, scene-generator
 freshness and whitespace checks. These supplement earlier source checks and do
 not establish native acceptance of the new polish.
 
-Package owner `ses_f03437da1ffeli91L87Q6CVyRP` is source-only reconciling exact
-seven-unit dependencies through `8921ed41`; subsequent L fixes require a separate
-reviewed advance. Gallery owner Sol `ses_eff6a3d9cffeTi9iQPn43laxo1` published
+Package owner `ses_f03437da1ffeli91L87Q6CVyRP` completed exact seven-unit
+reconciliation through `8921ed41`, integrated at **`224a256f`**. Parent passed
+49 checks including committed-Git closure; 116 released-K operator import
+sidecars now have explicit tracked identities. Subsequent L fixes require a
+separate reviewed advance. Gallery owner Sol `ses_eff6a3d9cffeTi9iQPn43laxo1` published
 29 original K PNGs and provenance under `/native-motion-k/`, with no heavy work.
 Its 32 HTTP/hash checks passed; real staged poses and ordinary-input Stormglass
 images are clearly distinguished, with live-kick timing failure retained.
