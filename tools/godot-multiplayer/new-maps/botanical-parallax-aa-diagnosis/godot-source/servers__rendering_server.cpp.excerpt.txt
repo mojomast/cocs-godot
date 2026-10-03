@@ -1,0 +1,70 @@
+605: 			} break;
+606: 			case RS::ARRAY_NORMAL: {
+607: 				// If using compression we store normal while storing vertices.
+608: 				if (!(p_format & RS::ARRAY_FLAG_COMPRESS_ATTRIBUTES)) {
+609: 					ERR_FAIL_COND_V(p_arrays[ai].get_type() != Variant::PACKED_VECTOR3_ARRAY, ERR_INVALID_PARAMETER);
+610:
+611: 					Vector<Vector3> array = p_arrays[ai];
+612: 					ERR_FAIL_COND_V(array.size() != p_vertex_array_len, ERR_INVALID_PARAMETER);
+613:
+614: 					const Vector3 *src = array.ptr();
+615: 					for (int i = 0; i < p_vertex_array_len; i++) {
+616: 						Vector2 res = src[i].octahedron_encode();
+617: 						uint16_t vector[2] = {
+618: 							(uint16_t)CLAMP(res.x * 65535, 0, 65535),
+619: 							(uint16_t)CLAMP(res.y * 65535, 0, 65535),
+620: 						};
+621:
+622: 						memcpy(&vw[p_offsets[ai] + i * p_normal_stride], vector, 4);
+623: 					}
+624: 				}
+625: 			} break;
+626:
+627: 			case RS::ARRAY_TANGENT: {
+628: 				// If using compression we store tangent while storing vertices.
+629: 				if (!(p_format & RS::ARRAY_FLAG_COMPRESS_ATTRIBUTES)) {
+630: 					Variant::Type type = p_arrays[ai].get_type();
+631: 					ERR_FAIL_COND_V(type != Variant::PACKED_FLOAT32_ARRAY && type != Variant::PACKED_FLOAT64_ARRAY && type != Variant::NIL, ERR_INVALID_PARAMETER);
+632:
+633: 					if (type == Variant::PACKED_FLOAT32_ARRAY) {
+634: 						Vector<float> array = p_arrays[ai];
+635: 						ERR_FAIL_COND_V(array.size() != p_vertex_array_len * 4, ERR_INVALID_PARAMETER);
+636: 						const float *src_ptr = array.ptr();
+637:
+638: 						for (int i = 0; i < p_vertex_array_len; i++) {
+639: 							const Vector3 src(src_ptr[i * 4 + 0], src_ptr[i * 4 + 1], src_ptr[i * 4 + 2]);
+640: 							Vector2 res = src.octahedron_tangent_encode(src_ptr[i * 4 + 3]);
+641: 							uint16_t vector[2] = {
+642: 								(uint16_t)CLAMP(res.x * 65535, 0, 65535),
+643: 								(uint16_t)CLAMP(res.y * 65535, 0, 65535),
+644: 							};
+645:
+646: 							if (vector[0] == 0 && vector[1] == 65535) {
+647: 								// (1, 1) and (0, 1) decode to the same value, but (0, 1) messes with our compression detection.
+648: 								// So we sanitize here.
+649: 								vector[0] = 65535;
+650: 							}
+651:
+652: 							memcpy(&vw[p_offsets[ai] + i * p_normal_stride], vector, 4);
+653: 						}
+
+1512:
+1513: 			case RS::ARRAY_TANGENT: {
+1514: 				if (!(p_format & RS::ARRAY_FLAG_COMPRESS_ATTRIBUTES)) {
+1515: 					Vector<float> arr;
+1516: 					arr.resize(p_vertex_len * 4);
+1517:
+1518: 					float *w = arr.ptrw();
+1519:
+1520: 					for (int j = 0; j < p_vertex_len; j++) {
+1521: 						const uint32_t v = *(const uint32_t *)&r[j * normal_elem_size + offsets[i]];
+1522: 						float tangent_sign;
+1523: 						Vector3 res = Vector3::octahedron_tangent_decode(Vector2((v & 0xFFFF) / 65535.0, ((v >> 16) & 0xFFFF) / 65535.0), &tangent_sign);
+1524: 						w[j * 4 + 0] = res.x;
+1525: 						w[j * 4 + 1] = res.y;
+1526: 						w[j * 4 + 2] = res.z;
+1527: 						w[j * 4 + 3] = tangent_sign;
+1528: 					}
+1529:
+1530: 					ret[i] = arr;
+1531: 				}

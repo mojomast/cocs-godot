@@ -1,0 +1,34 @@
+479: 				for (uint32_t idx = 0; idx < vertex_array.size(); idx++) {
+480: 					const Vertex &v = vertex_array[idx];
+481:
+482: 					w[idx * 4 + 0] = v.tangent.x;
+483: 					w[idx * 4 + 1] = v.tangent.y;
+484: 					w[idx * 4 + 2] = v.tangent.z;
+485:
+486: 					//float d = v.tangent.dot(v.binormal,v.normal);
+487: 					float d = v.binormal.dot(v.normal.cross(v.tangent));
+488: 					w[idx * 4 + 3] = d < 0 ? -1 : 1;
+489: 				}
+490:
+
+870: 				lformat |= CUSTOM_RGBA_FLOAT << custom_shift[i];
+871: 			}
+872: 		}
+873: 	}
+874:
+875: 	for (int i = 0; i < vc; i++) {
+876: 		Vertex v;
+877: 		if (lformat & RS::ARRAY_FORMAT_VERTEX) {
+878: 			v.vertex = varr[i];
+879: 		}
+880: 		if (lformat & RS::ARRAY_FORMAT_NORMAL) {
+881: 			v.normal = narr[i];
+882: 		}
+883: 		if (lformat & RS::ARRAY_FORMAT_TANGENT) {
+884: 			v.tangent = Vector3(tarr[i * 4 + 0], tarr[i * 4 + 1], tarr[i * 4 + 2]);
+885: 			float d = tarr[i * 4 + 3];
+886: 			v.binormal = v.normal.cross(v.tangent).normalized() * d;
+887: 		}
+888: 		if (lformat & RS::ARRAY_FORMAT_COLOR) {
+889: 			v.color = carr[i];
+890: 		}

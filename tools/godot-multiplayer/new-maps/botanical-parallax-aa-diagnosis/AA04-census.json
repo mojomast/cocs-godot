@@ -1,0 +1,3707 @@
+{
+  "counts": {
+    "matchedGeometryFaces": 155553,
+    "duplicateGroups": 228,
+    "strictEquivalentFaces": 155521,
+    "w": 48,
+    "mismatchedCorners": 48,
+    "mismatchedFaces": 32,
+    "ambiguousBasisGroups": 0,
+    "missingGeometryGroups": 0
+  },
+  "maxStrictMatchedErrorsPNUVT": [
+    0.0,
+    0.00010138750076293945,
+    0.0,
+    0.0001799166202545166
+  ],
+  "mismatches": [
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 33,
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 964,
+          "accessor": 165
+        }
+      ],
+      "native": {
+        "node": "wayfinding-2",
+        "surfaceRecord": 33,
+        "surface": 0,
+        "face": 965,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0005361037606939759,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.422800064086914,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1026,
+            "corner": 2
+          },
+          "native": {
+            "P": [
+              2.422800064086914,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1025,
+            "corner": 1
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        },
+        {
+          "source": {
+            "P": [
+              2.422800064086914,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1027,
+            "corner": 1
+          },
+          "native": {
+            "P": [
+              2.422800064086914,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1027,
+            "corner": 2
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 33,
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 967,
+          "accessor": 165
+        }
+      ],
+      "native": {
+        "node": "wayfinding-2",
+        "surfaceRecord": 33,
+        "surface": 0,
+        "face": 967,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0005361038048996075,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.422800064086914,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1026,
+            "corner": 2
+          },
+          "native": {
+            "P": [
+              2.422800064086914,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1025,
+            "corner": 1
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        },
+        {
+          "source": {
+            "P": [
+              2.422800064086914,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1027,
+            "corner": 0
+          },
+          "native": {
+            "P": [
+              2.422800064086914,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1027,
+            "corner": 0
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 33,
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 965,
+          "accessor": 165
+        }
+      ],
+      "native": {
+        "node": "wayfinding-2",
+        "surfaceRecord": 33,
+        "surface": 0,
+        "face": 963,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0005361037606939759,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.422800064086914,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1026,
+            "corner": 1
+          },
+          "native": {
+            "P": [
+              2.422800064086914,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1025,
+            "corner": 2
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 33,
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 966,
+          "accessor": 165
+        }
+      ],
+      "native": {
+        "node": "wayfinding-2",
+        "surfaceRecord": 33,
+        "surface": 0,
+        "face": 969,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0005361038048996075,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.422800064086914,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1027,
+            "corner": 0
+          },
+          "native": {
+            "P": [
+              2.422800064086914,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1027,
+            "corner": 0
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 33,
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 988,
+          "accessor": 165
+        }
+      ],
+      "native": {
+        "node": "wayfinding-2",
+        "surfaceRecord": 33,
+        "surface": 0,
+        "face": 989,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.00039895860499591934,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.4698398113250732,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1050,
+            "corner": 2
+          },
+          "native": {
+            "P": [
+              2.4698398113250732,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1049,
+            "corner": 1
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        },
+        {
+          "source": {
+            "P": [
+              2.4698398113250732,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1051,
+            "corner": 1
+          },
+          "native": {
+            "P": [
+              2.4698398113250732,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1051,
+            "corner": 2
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 33,
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 991,
+          "accessor": 165
+        }
+      ],
+      "native": {
+        "node": "wayfinding-2",
+        "surfaceRecord": 33,
+        "surface": 0,
+        "face": 991,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0003989585160965766,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.4698398113250732,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1050,
+            "corner": 2
+          },
+          "native": {
+            "P": [
+              2.4698398113250732,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1049,
+            "corner": 1
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        },
+        {
+          "source": {
+            "P": [
+              2.4698398113250732,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1051,
+            "corner": 0
+          },
+          "native": {
+            "P": [
+              2.4698398113250732,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1051,
+            "corner": 0
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 33,
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 989,
+          "accessor": 165
+        }
+      ],
+      "native": {
+        "node": "wayfinding-2",
+        "surfaceRecord": 33,
+        "surface": 0,
+        "face": 987,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.00039895860499591934,
+        "uvJacobian": -0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.4698398113250732,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1050,
+            "corner": 1
+          },
+          "native": {
+            "P": [
+              2.4698398113250732,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1049,
+            "corner": 2
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 33,
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 990,
+          "accessor": 165
+        }
+      ],
+      "native": {
+        "node": "wayfinding-2",
+        "surfaceRecord": 33,
+        "surface": 0,
+        "face": 993,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0003989585160965766,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.4698398113250732,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1051,
+            "corner": 0
+          },
+          "native": {
+            "P": [
+              2.4698398113250732,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1051,
+            "corner": 0
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 33,
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 1002,
+          "accessor": 165
+        }
+      ],
+      "native": {
+        "node": "wayfinding-2",
+        "surfaceRecord": 33,
+        "surface": 0,
+        "face": 1002,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.00039895860499591934,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.5869600772857666,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1063,
+            "corner": 0
+          },
+          "native": {
+            "P": [
+              2.5869600772857666,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1064,
+            "corner": 0
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 33,
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 1003,
+          "accessor": 165
+        }
+      ],
+      "native": {
+        "node": "wayfinding-2",
+        "surfaceRecord": 33,
+        "surface": 0,
+        "face": 1004,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.00039895860499591934,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.5869600772857666,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1063,
+            "corner": 0
+          },
+          "native": {
+            "P": [
+              2.5869600772857666,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1064,
+            "corner": 0
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        },
+        {
+          "source": {
+            "P": [
+              2.5869600772857666,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1062,
+            "corner": 2
+          },
+          "native": {
+            "P": [
+              2.5869600772857666,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1066,
+            "corner": 1
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 33,
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 1001,
+          "accessor": 165
+        }
+      ],
+      "native": {
+        "node": "wayfinding-2",
+        "surfaceRecord": 33,
+        "surface": 0,
+        "face": 1008,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0003989585160965766,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.5869600772857666,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1062,
+            "corner": 1
+          },
+          "native": {
+            "P": [
+              2.5869600772857666,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1066,
+            "corner": 2
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 33,
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 1000,
+          "accessor": 165
+        }
+      ],
+      "native": {
+        "node": "wayfinding-2",
+        "surfaceRecord": 33,
+        "surface": 0,
+        "face": 1006,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0003989585160965766,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.5869600772857666,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1062,
+            "corner": 2
+          },
+          "native": {
+            "P": [
+              2.5869600772857666,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1066,
+            "corner": 1
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        },
+        {
+          "source": {
+            "P": [
+              2.5869600772857666,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1063,
+            "corner": 1
+          },
+          "native": {
+            "P": [
+              2.5869600772857666,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1064,
+            "corner": 2
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 33,
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 977,
+          "accessor": 165
+        }
+      ],
+      "native": {
+        "node": "wayfinding-2",
+        "surfaceRecord": 33,
+        "surface": 0,
+        "face": 984,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0005361038048996075,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.634000062942505,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1038,
+            "corner": 1
+          },
+          "native": {
+            "P": [
+              2.634000062942505,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1042,
+            "corner": 2
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 33,
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 978,
+          "accessor": 165
+        }
+      ],
+      "native": {
+        "node": "wayfinding-2",
+        "surfaceRecord": 33,
+        "surface": 0,
+        "face": 978,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0005361038048996075,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.634000062942505,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1039,
+            "corner": 0
+          },
+          "native": {
+            "P": [
+              2.634000062942505,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1040,
+            "corner": 0
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 33,
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 979,
+          "accessor": 165
+        }
+      ],
+      "native": {
+        "node": "wayfinding-2",
+        "surfaceRecord": 33,
+        "surface": 0,
+        "face": 980,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0005361038048996075,
+        "uvJacobian": -0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.634000062942505,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1039,
+            "corner": 0
+          },
+          "native": {
+            "P": [
+              2.634000062942505,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1040,
+            "corner": 0
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        },
+        {
+          "source": {
+            "P": [
+              2.634000062942505,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1038,
+            "corner": 2
+          },
+          "native": {
+            "P": [
+              2.634000062942505,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1042,
+            "corner": 1
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 33,
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 976,
+          "accessor": 165
+        }
+      ],
+      "native": {
+        "node": "wayfinding-2",
+        "surfaceRecord": 33,
+        "surface": 0,
+        "face": 982,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0005361038048996075,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.634000062942505,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1038,
+            "corner": 2
+          },
+          "native": {
+            "P": [
+              2.634000062942505,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1042,
+            "corner": 1
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        },
+        {
+          "source": {
+            "P": [
+              2.634000062942505,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1039,
+            "corner": 1
+          },
+          "native": {
+            "P": [
+              2.634000062942505,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1040,
+            "corner": 2
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 34,
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 964,
+          "accessor": 170
+        }
+      ],
+      "native": {
+        "node": "wayfinding-3",
+        "surfaceRecord": 34,
+        "surface": 0,
+        "face": 965,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0005361037606939759,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.422800064086914,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1026,
+            "corner": 2
+          },
+          "native": {
+            "P": [
+              2.422800064086914,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1025,
+            "corner": 1
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        },
+        {
+          "source": {
+            "P": [
+              2.422800064086914,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1027,
+            "corner": 1
+          },
+          "native": {
+            "P": [
+              2.422800064086914,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1027,
+            "corner": 2
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 34,
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 967,
+          "accessor": 170
+        }
+      ],
+      "native": {
+        "node": "wayfinding-3",
+        "surfaceRecord": 34,
+        "surface": 0,
+        "face": 967,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0005361038048996075,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.422800064086914,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1026,
+            "corner": 2
+          },
+          "native": {
+            "P": [
+              2.422800064086914,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1025,
+            "corner": 1
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        },
+        {
+          "source": {
+            "P": [
+              2.422800064086914,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1027,
+            "corner": 0
+          },
+          "native": {
+            "P": [
+              2.422800064086914,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1027,
+            "corner": 0
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 34,
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 965,
+          "accessor": 170
+        }
+      ],
+      "native": {
+        "node": "wayfinding-3",
+        "surfaceRecord": 34,
+        "surface": 0,
+        "face": 963,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0005361037606939759,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.422800064086914,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1026,
+            "corner": 1
+          },
+          "native": {
+            "P": [
+              2.422800064086914,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1025,
+            "corner": 2
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 34,
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 966,
+          "accessor": 170
+        }
+      ],
+      "native": {
+        "node": "wayfinding-3",
+        "surfaceRecord": 34,
+        "surface": 0,
+        "face": 969,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0005361038048996075,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.422800064086914,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1027,
+            "corner": 0
+          },
+          "native": {
+            "P": [
+              2.422800064086914,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.211400032043457,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1027,
+            "corner": 0
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 34,
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 988,
+          "accessor": 170
+        }
+      ],
+      "native": {
+        "node": "wayfinding-3",
+        "surfaceRecord": 34,
+        "surface": 0,
+        "face": 989,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.00039895860499591934,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.4698398113250732,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1050,
+            "corner": 2
+          },
+          "native": {
+            "P": [
+              2.4698398113250732,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1049,
+            "corner": 1
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        },
+        {
+          "source": {
+            "P": [
+              2.4698398113250732,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1051,
+            "corner": 1
+          },
+          "native": {
+            "P": [
+              2.4698398113250732,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1051,
+            "corner": 2
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 34,
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 991,
+          "accessor": 170
+        }
+      ],
+      "native": {
+        "node": "wayfinding-3",
+        "surfaceRecord": 34,
+        "surface": 0,
+        "face": 991,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0003989585160965766,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.4698398113250732,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1050,
+            "corner": 2
+          },
+          "native": {
+            "P": [
+              2.4698398113250732,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1049,
+            "corner": 1
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        },
+        {
+          "source": {
+            "P": [
+              2.4698398113250732,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1051,
+            "corner": 0
+          },
+          "native": {
+            "P": [
+              2.4698398113250732,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1051,
+            "corner": 0
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 34,
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 989,
+          "accessor": 170
+        }
+      ],
+      "native": {
+        "node": "wayfinding-3",
+        "surfaceRecord": 34,
+        "surface": 0,
+        "face": 987,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.00039895860499591934,
+        "uvJacobian": -0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.4698398113250732,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1050,
+            "corner": 1
+          },
+          "native": {
+            "P": [
+              2.4698398113250732,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1049,
+            "corner": 2
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 34,
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 990,
+          "accessor": 170
+        }
+      ],
+      "native": {
+        "node": "wayfinding-3",
+        "surfaceRecord": 34,
+        "surface": 0,
+        "face": 993,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0003989585160965766,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.4698398113250732,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1051,
+            "corner": 0
+          },
+          "native": {
+            "P": [
+              2.4698398113250732,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2349199056625366,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1051,
+            "corner": 0
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 34,
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 1002,
+          "accessor": 170
+        }
+      ],
+      "native": {
+        "node": "wayfinding-3",
+        "surfaceRecord": 34,
+        "surface": 0,
+        "face": 1002,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.00039895860499591934,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.5869600772857666,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1063,
+            "corner": 0
+          },
+          "native": {
+            "P": [
+              2.5869600772857666,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1064,
+            "corner": 0
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 34,
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 1003,
+          "accessor": 170
+        }
+      ],
+      "native": {
+        "node": "wayfinding-3",
+        "surfaceRecord": 34,
+        "surface": 0,
+        "face": 1004,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.00039895860499591934,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.5869600772857666,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1063,
+            "corner": 0
+          },
+          "native": {
+            "P": [
+              2.5869600772857666,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1064,
+            "corner": 0
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        },
+        {
+          "source": {
+            "P": [
+              2.5869600772857666,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1062,
+            "corner": 2
+          },
+          "native": {
+            "P": [
+              2.5869600772857666,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1066,
+            "corner": 1
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 34,
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 1001,
+          "accessor": 170
+        }
+      ],
+      "native": {
+        "node": "wayfinding-3",
+        "surfaceRecord": 34,
+        "surface": 0,
+        "face": 1008,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0003989585160965766,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.5869600772857666,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1062,
+            "corner": 1
+          },
+          "native": {
+            "P": [
+              2.5869600772857666,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1066,
+            "corner": 2
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 34,
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 1000,
+          "accessor": 170
+        }
+      ],
+      "native": {
+        "node": "wayfinding-3",
+        "surfaceRecord": 34,
+        "surface": 0,
+        "face": 1006,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0003989585160965766,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.5869600772857666,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1062,
+            "corner": 2
+          },
+          "native": {
+            "P": [
+              2.5869600772857666,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1066,
+            "corner": 1
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        },
+        {
+          "source": {
+            "P": [
+              2.5869600772857666,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1063,
+            "corner": 1
+          },
+          "native": {
+            "P": [
+              2.5869600772857666,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              -1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.2934800386428833,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1064,
+            "corner": 2
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": -1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 3.051804378628731e-05,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 34,
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 977,
+          "accessor": 170
+        }
+      ],
+      "native": {
+        "node": "wayfinding-3",
+        "surfaceRecord": 34,
+        "surface": 0,
+        "face": 984,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0005361038048996075,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.634000062942505,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1038,
+            "corner": 1
+          },
+          "native": {
+            "P": [
+              2.634000062942505,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1042,
+            "corner": 2
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 34,
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 978,
+          "accessor": 170
+        }
+      ],
+      "native": {
+        "node": "wayfinding-3",
+        "surfaceRecord": 34,
+        "surface": 0,
+        "face": 978,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0005361038048996075,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.634000062942505,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1039,
+            "corner": 0
+          },
+          "native": {
+            "P": [
+              2.634000062942505,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1040,
+            "corner": 0
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 34,
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 979,
+          "accessor": 170
+        }
+      ],
+      "native": {
+        "node": "wayfinding-3",
+        "surfaceRecord": 34,
+        "surface": 0,
+        "face": 980,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0005361038048996075,
+        "uvJacobian": -0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.634000062942505,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1039,
+            "corner": 0
+          },
+          "native": {
+            "P": [
+              2.634000062942505,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1040,
+            "corner": 0
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        },
+        {
+          "source": {
+            "P": [
+              2.634000062942505,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1038,
+            "corner": 2
+          },
+          "native": {
+            "P": [
+              2.634000062942505,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1042,
+            "corner": 1
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    },
+    {
+      "sourceCandidates": [
+        {
+          "nodeIndex": 34,
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 976,
+          "accessor": 170
+        }
+      ],
+      "native": {
+        "node": "wayfinding-3",
+        "surfaceRecord": 34,
+        "surface": 0,
+        "face": 982,
+        "material": "ochre"
+      },
+      "material": "ochre",
+      "normalMap": true,
+      "sourceDerivative": {
+        "area": 0.0005361038048996075,
+        "uvJacobian": 0.0,
+        "defined": false
+      },
+      "corners": [
+        {
+          "source": {
+            "P": [
+              2.634000062942505,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1038,
+            "corner": 2
+          },
+          "native": {
+            "P": [
+              2.634000062942505,
+              -0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1042,
+            "corner": 1
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        },
+        {
+          "source": {
+            "P": [
+              2.634000062942505,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "vertex": 1039,
+            "corner": 1
+          },
+          "native": {
+            "P": [
+              2.634000062942505,
+              0.006000000052154064,
+              -0.16368000209331512
+            ],
+            "N": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05
+            ],
+            "UV": [
+              1.3170000314712524,
+              0.9181600213050842
+            ],
+            "T": [
+              1.0,
+              0.0,
+              -1.5259021893143654e-05,
+              1.0
+            ],
+            "vertex": 1040,
+            "corner": 2
+          },
+          "flags": [
+            "w"
+          ],
+          "normalTangentDot": 1.0,
+          "sourceBinormalLength": 0.0,
+          "nativeBinormalLength": 0.0,
+          "binormalAngleDegrees": null,
+          "tangentAngleDegrees": 0.0008742775538815605
+        }
+      ]
+    }
+  ],
+  "ambiguousGroups": [],
+  "missingGeometryGroups": [],
+  "nativeInventory": {
+    "zeroT": 0,
+    "nonunitT": 0,
+    "faces": 155553
+  }
+}

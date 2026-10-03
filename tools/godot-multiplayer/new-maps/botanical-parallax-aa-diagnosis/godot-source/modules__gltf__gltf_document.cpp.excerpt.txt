@@ -1,0 +1,29 @@
+3575: 				array[Mesh::ARRAY_INDEX] = indices;
+3576: 			}
+3577:
+3578: 			bool generate_tangents = p_state->force_generate_tangents && (primitive == Mesh::PRIMITIVE_TRIANGLES && !a.has("TANGENT") && a.has("NORMAL"));
+3579:
+3580: 			if (generate_tangents && !a.has("TEXCOORD_0")) {
+3581: 				// If we don't have UVs we provide a dummy tangent array.
+3582: 				Vector<float> tangents;
+3583: 				tangents.resize(vertex_num * 4);
+3584: 				float *tangentsw = tangents.ptrw();
+
+3607: 			if (p_state->force_disable_compression || is_mesh_2d || !a.has("POSITION") || !a.has("NORMAL") || mesh_prim.has("targets") || (a.has("JOINTS_0") || a.has("JOINTS_1"))) {
+3608: 				flags &= ~RS::ARRAY_FLAG_COMPRESS_ATTRIBUTES;
+3609: 			}
+3610:
+3611: 			Ref<SurfaceTool> mesh_surface_tool;
+3612: 			mesh_surface_tool.instantiate();
+3613: 			mesh_surface_tool->create_from_triangle_arrays(array);
+3614: 			if (a.has("JOINTS_0") && a.has("JOINTS_1")) {
+3615: 				mesh_surface_tool->set_skin_weight_count(SurfaceTool::SKIN_8_WEIGHTS);
+3616: 			}
+3617: 			mesh_surface_tool->index();
+3618: 			if (generate_tangents && a.has("TEXCOORD_0")) {
+3619: 				//must generate mikktspace tangents.. ergh..
+3620: 				mesh_surface_tool->generate_tangents();
+3621: 			}
+3622: 			array = mesh_surface_tool->commit_to_arrays();
+3623:
+3624: 			if ((flags & RS::ARRAY_FLAG_COMPRESS_ATTRIBUTES) && a.has("NORMAL") && (a.has("TANGENT") || generate_tangents)) {

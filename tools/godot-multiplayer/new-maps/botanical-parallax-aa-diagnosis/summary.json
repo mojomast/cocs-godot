@@ -1,0 +1,61 @@
+{
+  "artifactSha256": "95e9da98a45565ca2aae90858a9e5027d9123e4ffd1347da98d5de8573141cd5",
+  "sourceX": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+  "inputs": {
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/parallax-observatory.glb": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+    "/home/mojo/.tmp-on-disk/cocs-parallax-tangent-native-AA-20261003/godot/tests/new_maps/parallax_tangent/candidate.glb": "95e9da98a45565ca2aae90858a9e5027d9123e4ffd1347da98d5de8573141cd5",
+    "/home/mojo/.tmp-on-disk/cocs-parallax-tangent-native-AA-20261003/godot/tests/new_maps/parallax_tangent/evidence/native-import.json": "92b8a389c149ace408432f13ac8658bb3bac7ec311e1aad9f26e86041a6906da",
+    "/home/mojo/.tmp-on-disk/cocs-parallax-tangent-native-AA-20261003/godot/tests/new_maps/parallax_tangent/evidence/native-streams.bin": "5f22791abc09a6f7ea50c988f5cc1787a011df8b625ec5246e92cce4fd28d173",
+    "/home/mojo/.tmp-on-disk/cocs-parallax-tangent-native-AA-20261003/tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/native/AA04/native-import.json": "92b8a389c149ace408432f13ac8658bb3bac7ec311e1aad9f26e86041a6906da",
+    "/home/mojo/.tmp-on-disk/cocs-parallax-tangent-native-AA-20261003/tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/native/AA04/native-streams.bin": "5f22791abc09a6f7ea50c988f5cc1787a011df8b625ec5246e92cce4fd28d173"
+  },
+  "scope": "Static original AA mesh-local arrays; native node transforms absent, no world-transform claim",
+  "AA03": {
+    "matchedGeometryFaces": 155553,
+    "duplicateGroups": 228,
+    "strictEquivalentFaces": 155521,
+    "w": 48,
+    "mismatchedCorners": 48,
+    "mismatchedFaces": 32,
+    "ambiguousBasisGroups": 0,
+    "missingGeometryGroups": 0
+  },
+  "AA04": {
+    "matchedGeometryFaces": 155553,
+    "duplicateGroups": 228,
+    "strictEquivalentFaces": 155521,
+    "w": 48,
+    "mismatchedCorners": 48,
+    "mismatchedFaces": 32,
+    "ambiguousBasisGroups": 0,
+    "missingGeometryGroups": 0
+  },
+  "sourceAA": {
+    "zeroT": 0,
+    "nonunitT": 0,
+    "nonorthogonalNT": 4745,
+    "parallelNT": 16,
+    "nonunitN": 0,
+    "faces": 155553,
+    "definedUVFaces": 150686,
+    "UVHandDisagreeCorners": 452050,
+    "storedTangentOpposesDU": 5,
+    "storedBinormalOpposesDV": 452048,
+    "undefinedUVFaces": 4867
+  },
+  "sourceXInventory": {
+    "zeroT": 1,
+    "nonunitT": 1,
+    "nonorthogonalNT": 4745,
+    "parallelNT": 17,
+    "nonunitN": 0,
+    "faces": 155553,
+    "definedUVFaces": 150686,
+    "UVHandDisagreeCorners": 452053,
+    "storedTangentOpposesDU": 5,
+    "storedBinormalOpposesDV": 452050,
+    "undefinedUVFaces": 4867
+  },
+  "sameCensus": true,
+  "sourceBasisOnly": "Derivative disagreements counted only for nonzero area/Jacobian; no arbitrary UV basis assigned to degenerate UV faces"
+}

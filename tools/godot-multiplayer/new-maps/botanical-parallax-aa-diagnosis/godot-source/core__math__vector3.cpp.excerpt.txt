@@ -1,0 +1,44 @@
+105: 	Vector3 n = *this;
+106: 	n /= Math::abs(n.x) + Math::abs(n.y) + Math::abs(n.z);
+107: 	Vector2 o;
+108: 	if (n.z >= 0.0f) {
+109: 		o.x = n.x;
+110: 		o.y = n.y;
+111: 	} else {
+112: 		o.x = (1.0f - Math::abs(n.y)) * (n.x >= 0.0f ? 1.0f : -1.0f);
+113: 		o.y = (1.0f - Math::abs(n.x)) * (n.y >= 0.0f ? 1.0f : -1.0f);
+114: 	}
+115: 	o.x = o.x * 0.5f + 0.5f;
+116: 	o.y = o.y * 0.5f + 0.5f;
+117: 	return o;
+118: }
+119:
+120: Vector3 Vector3::octahedron_decode(const Vector2 &p_oct) {
+121: 	Vector2 f(p_oct.x * 2.0f - 1.0f, p_oct.y * 2.0f - 1.0f);
+122: 	Vector3 n(f.x, f.y, 1.0f - Math::abs(f.x) - Math::abs(f.y));
+123: 	const real_t t = CLAMP(-n.z, 0.0f, 1.0f);
+124: 	n.x += n.x >= 0 ? -t : t;
+125: 	n.y += n.y >= 0 ? -t : t;
+126: 	return n.normalized();
+127: }
+128:
+129: Vector2 Vector3::octahedron_tangent_encode(float p_sign) const {
+130: 	const real_t bias = 1.0f / (real_t)32767.0f;
+131: 	Vector2 res = octahedron_encode();
+132: 	res.y = MAX(res.y, bias);
+133: 	res.y = res.y * 0.5f + 0.5f;
+134: 	res.y = p_sign >= 0.0f ? res.y : 1 - res.y;
+135: 	return res;
+136: }
+137:
+138: Vector3 Vector3::octahedron_tangent_decode(const Vector2 &p_oct, float *r_sign) {
+139: 	Vector2 oct_compressed = p_oct;
+140: 	oct_compressed.y = oct_compressed.y * 2 - 1;
+141: 	*r_sign = oct_compressed.y >= 0.0f ? 1.0f : -1.0f;
+142: 	oct_compressed.y = Math::abs(oct_compressed.y);
+143: 	Vector3 res = Vector3::octahedron_decode(oct_compressed);
+144: 	return res;
+145: }
+146:
+147: Basis Vector3::outer(const Vector3 &p_with) const {
+148: 	Basis basis;

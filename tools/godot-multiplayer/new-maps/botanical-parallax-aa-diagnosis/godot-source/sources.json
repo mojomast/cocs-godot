@@ -1,0 +1,22 @@
+[
+  {
+    "path": "core/math/vector3.cpp",
+    "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/core/math/vector3.cpp",
+    "sha256": "23ae8d00f980739b3221af9091ce9ac3ab9222ac818d50855d31597a05e3ede3"
+  },
+  {
+    "path": "servers/rendering_server.cpp",
+    "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/servers/rendering_server.cpp",
+    "sha256": "1b27b00cabea138b59ae4bea69c2942009d395cd12acc914a788da215643aa3a"
+  },
+  {
+    "path": "modules/gltf/gltf_document.cpp",
+    "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/modules/gltf/gltf_document.cpp",
+    "sha256": "be5cd97ad0530eef4597240daa9012eed23847b39d8ebc8cc5333161ccb6951e"
+  },
+  {
+    "path": "scene/resources/surface_tool.cpp",
+    "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/scene/resources/surface_tool.cpp",
+    "sha256": "64454eadf4cbf494ea8feba0036307c3fb648c60a826884d715d8b8bdfcf5722"
+  }
+]

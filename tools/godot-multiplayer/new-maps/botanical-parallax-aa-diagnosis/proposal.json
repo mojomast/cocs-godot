@@ -1,0 +1,831 @@
+{
+  "status": "UNAPPROVED policy proposal only; no actual artifact/master/native output",
+  "sourceAAHash": "95e9da98a45565ca2aae90858a9e5027d9123e4ffd1347da98d5de8573141cd5",
+  "actualSuccessorHash": null,
+  "grant": null,
+  "autoStart": false,
+  "records": [
+    {
+      "accessor": 165,
+      "vertex": 1026,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18636336,
+      "incidents": [
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 964,
+          "corner": 2,
+          "area": 0.0005361037606939759,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 965,
+          "corner": 1,
+          "area": 0.0005361037606939759,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 967,
+          "corner": 2,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1027,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18636352,
+      "incidents": [
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 964,
+          "corner": 1,
+          "area": 0.0005361037606939759,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 966,
+          "corner": 0,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 967,
+          "corner": 0,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1038,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        -1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18636528,
+      "incidents": [
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 976,
+          "corner": 2,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 977,
+          "corner": 1,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 979,
+          "corner": 2,
+          "area": 0.0005361038048996075,
+          "uvJacobian": -0.0
+        }
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1039,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        -1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18636544,
+      "incidents": [
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 976,
+          "corner": 1,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 978,
+          "corner": 0,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 979,
+          "corner": 0,
+          "area": 0.0005361038048996075,
+          "uvJacobian": -0.0
+        }
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1050,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        -1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18636720,
+      "incidents": [
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 988,
+          "corner": 2,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 989,
+          "corner": 1,
+          "area": 0.00039895860499591934,
+          "uvJacobian": -0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 991,
+          "corner": 2,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1051,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        -1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18636736,
+      "incidents": [
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 988,
+          "corner": 1,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 990,
+          "corner": 0,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 991,
+          "corner": 0,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1062,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18636912,
+      "incidents": [
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 1000,
+          "corner": 2,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 1001,
+          "corner": 1,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 1003,
+          "corner": 2,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1063,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18636928,
+      "incidents": [
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 1000,
+          "corner": 1,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 1002,
+          "corner": 0,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 1003,
+          "corner": 0,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1026,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18697968,
+      "incidents": [
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 964,
+          "corner": 2,
+          "area": 0.0005361037606939759,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 965,
+          "corner": 1,
+          "area": 0.0005361037606939759,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 967,
+          "corner": 2,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1027,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18697984,
+      "incidents": [
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 964,
+          "corner": 1,
+          "area": 0.0005361037606939759,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 966,
+          "corner": 0,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 967,
+          "corner": 0,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1038,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        -1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18698160,
+      "incidents": [
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 976,
+          "corner": 2,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 977,
+          "corner": 1,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 979,
+          "corner": 2,
+          "area": 0.0005361038048996075,
+          "uvJacobian": -0.0
+        }
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1039,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        -1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18698176,
+      "incidents": [
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 976,
+          "corner": 1,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 978,
+          "corner": 0,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 979,
+          "corner": 0,
+          "area": 0.0005361038048996075,
+          "uvJacobian": -0.0
+        }
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1050,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        -1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18698352,
+      "incidents": [
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 988,
+          "corner": 2,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 989,
+          "corner": 1,
+          "area": 0.00039895860499591934,
+          "uvJacobian": -0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 991,
+          "corner": 2,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1051,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        -1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18698368,
+      "incidents": [
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 988,
+          "corner": 1,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 990,
+          "corner": 0,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 991,
+          "corner": 0,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1062,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18698544,
+      "incidents": [
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 1000,
+          "corner": 2,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 1001,
+          "corner": 1,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 1003,
+          "corner": 2,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1063,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18698560,
+      "incidents": [
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 1000,
+          "corner": 1,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 1002,
+          "corner": 0,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 1003,
+          "corner": 0,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        }
+      ]
+    }
+  ],
+  "changedBINBytes": 64,
+  "permittedBINPositions": 256,
+  "outsideBINRecordsExact": true,
+  "normalUVIndexMaterialAndJSONUnchanged": true,
+  "predictedSurfaceToolSignsAllMinusOne": true,
+  "limitations": "Rank-one UVs cannot define unique dP/du. This extrusion-aligned fallback is an explicit new shading policy requiring approval and fresh native proof; not a waiver or a sign-only patch."
+}

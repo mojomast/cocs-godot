@@ -1,0 +1,92 @@
+{
+  "time": "2026-10-03T23:52:36.658044+00:00",
+  "baseCommit": "1120a016",
+  "producerCommit": "b9c53e82ef10d9ba301786fa6447cfeb4dbe8fa5",
+  "tests": {
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/home/mojo/.tmp-on-disk/cocs-parallax-aa-diagnosis/tools/godot-multiplayer/new-maps/botanical-parallax-aa-diagnosis",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_all_faces_node_scoped_and_duplicate_multiplicity (test_diagnosis.Diagnosis.test_all_faces_node_scoped_and_duplicate_multiplicity) ... ok\ntest_corrected_first_failure_one_corner_not_two (test_diagnosis.Diagnosis.test_corrected_first_failure_one_corner_not_two) ... ok\ntest_multiset_requires_counts_not_closest_handedness (test_diagnosis.Diagnosis.test_multiset_requires_counts_not_closest_handedness) ... ok\ntest_no_forged_pass_for_old_native_or_sign_only_fix (test_diagnosis.Diagnosis.test_no_forged_pass_for_old_native_or_sign_only_fix) ... ok\ntest_proposal_all_incidents_and_bin_boundary (test_diagnosis.Diagnosis.test_proposal_all_incidents_and_bin_boundary) ... ok\ntest_rank_one_policy_rejects_full_rank_or_conflicting_normals (test_diagnosis.Diagnosis.test_rank_one_policy_rejects_full_rank_or_conflicting_normals) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 47.550s\n\nOK\n"
+  },
+  "AAFrozenFilesVerified": 141,
+  "AAOriginalManifestSha256": "5e41067f590e79e54dd8b122840766630655a27595390f75b4213a9e0dc989b8",
+  "noTrackedBaselineChanges": true,
+  "engineInvocations": 0,
+  "actualArtifactOrMasterWritten": false,
+  "newGrant": null,
+  "autoStart": false,
+  "files": {
+    "AA03-census.json": {
+      "sha256": "37af732107f0a7535302926d704569d83ba05f3f2c92d6994a3bca4244c8bac3",
+      "bytes": 85963
+    },
+    "AA04-census.json": {
+      "sha256": "37af732107f0a7535302926d704569d83ba05f3f2c92d6994a3bca4244c8bac3",
+      "bytes": 85963
+    },
+    "README.md": {
+      "sha256": "ca71503c3f45ed336d3f3b5f6d1ec46ba66a9762a8f5643d2694702f5fbfc55b",
+      "bytes": 10580
+    },
+    "census.py": {
+      "sha256": "6ca4bdf968186fdfd72a6c18e1c7f2fbfc5de87e62d5f0c45aa47bcb849ae8d1",
+      "bytes": 12058
+    },
+    "godot-source/LICENSE.txt": {
+      "sha256": "009b98d31760c1488522746b24553b2cdc20da269bac9f4af10d8bfec88b27d5",
+      "bytes": 1209
+    },
+    "godot-source/core__math__vector3.cpp.excerpt.txt": {
+      "sha256": "bdf013c387789ecf7203ba44c2a9118cfde3b1d180a4a9cc5bbfff1b3d56306b",
+      "bytes": 1528
+    },
+    "godot-source/modules__gltf__gltf_document.cpp.excerpt.txt": {
+      "sha256": "4d1fe77859dccea32af2753f5e9580a84888f5c61059ed1e1746c642fe0bdaf9",
+      "bytes": 1416
+    },
+    "godot-source/scene__resources__surface_tool.cpp.excerpt.txt": {
+      "sha256": "56460a6b1d1f4afddecf460e13fd5ed71d9c601f0c5de1fc2500f1726846bff4",
+      "bytes": 1061
+    },
+    "godot-source/servers__rendering_server.cpp.excerpt.txt": {
+      "sha256": "6fddd2dbf8e59045dfd7f392358b3c8f587f4e63f4fefb31ad55d541ed4b820d",
+      "bytes": 2975
+    },
+    "godot-source/sources.json": {
+      "sha256": "992a879fd4e9c1f832c0f110b2b948f848374cd91ca29d3ada81177c43f25d8c",
+      "bytes": 969
+    },
+    "proposal.json": {
+      "sha256": "6e4c532701552ddb0486b3f468b57bce3176d48099ee69a3ed2f6400f9b493ef",
+      "bytes": 16481
+    },
+    "proposal.py": {
+      "sha256": "44401bb41ab9e99db112fd09096d75f4a90437147b9ec028ee6d5c009666bd45",
+      "bytes": 4570
+    },
+    "source-census.json": {
+      "sha256": "ca8347d2cbc9affaa8ecc1dd57cf2cf6b941cc884460a22dc152a7f62b04c936",
+      "bytes": 1839681
+    },
+    "summary.json": {
+      "sha256": "6c06595c01564b2b0f208104dfe042cd653cc04c1eb113e537abf5a194e8ad8b",
+      "bytes": 2900
+    },
+    "test_diagnosis.py": {
+      "sha256": "c3cdba5c7b449d1cb198da11da71143ce0753e4672ef5ae415f8a61c3f5e9b5a",
+      "bytes": 4294
+    }
+  },
+  "excerptFormatting": "Line-numbered excerpts omit trailing space on empty source lines; full original file hashes remain in sources.json.",
+  "postTestFormattingCheck": "Comprehensive source vertex report compacted to one record per line; parsed JSON equality asserted. Only report serialization changed after six tests."
+}
