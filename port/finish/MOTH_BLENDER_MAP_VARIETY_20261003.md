@@ -1,5 +1,14 @@
 # New Moth resources and Blender-authored map variety
 
+**AA integrated as failed-attempt evidence, not an approved successor:** source
+`1b7dff8a` / `673d0a0f` / `badfedc3`, archive **`dec159d4`**. Parent passed nineteen
+checks and all 141 integrated hashes. Independent review confirms the three
+saltstone repairs and material proof, but full native basis acceptance still fails.
+**Diagnosis correction:** native wayfinding face 963 is `[+1,-1,-1]` versus
+canonical `[-1,-1,-1]` — one differing corner, not two. The original hash-pinned
+report remains unchanged; correction and review are in `map-variety/PARALLAX_AA_REVIEW.md`.
+Source/static root-cause work continues; no heavy grant is active.
+
 ## Current checkpoint — AA released; Parallax full native gate blocked
 
 **No heavy grant is active.** AA delivered source `ed3582c6` / `bd0aa9c2` /

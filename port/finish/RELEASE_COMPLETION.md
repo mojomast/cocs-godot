@@ -8,12 +8,14 @@ finishing and verifying the new candidate.
 ## Active work and ownership
 
 **No active heavy grant. Parallax AA released with full native approval blocked.**
-Delivery `b9c53e82` reports successful build/reopen and native proof of the three
+Delivery `b9c53e82`, integrated as failed evidence `dec159d4`, has reviewed build/reopen and native proof of the three
 repaired corners, but all-face tangent verification fails on wayfinding geometry.
 A fresh import with tangent generation disabled reproduces it. Captures/rays/
 traversal remain unrun. Parent verified 141 files and three empty audits/ten groups;
-lock availability was confirmed at 23:32:12Z. Artifact review and mismatch census
-are source/static only, as is Vesper step-up feasibility work.
+lock availability was confirmed at 23:32:12Z. Parent passed nineteen checks and
+all 141 integrated hashes. Review corrects the first mismatch to one native +1
+corner versus canonical −1; full native approval stays withheld. Mismatch census
+and Vesper step-up feasibility remain source/static only. See `map-variety/PARALLAX_AA_REVIEW.md`.
 
 **Vesper Z released after its first failed native group.**
 Delivery `eba8b633` / `dd4fbbb8` records five downhill landing passes, five uphill

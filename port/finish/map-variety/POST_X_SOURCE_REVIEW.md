@@ -1,5 +1,15 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## AA failed archive integrated; diagnostic correction
+
+Independent review approved AA sources and failed evidence, integrated through
+**`dec159d4`**. Parent passed nineteen source/package checks and all 141 hashes.
+The three saltstone corner repairs pass actual native proof; complete native basis
+approval remains withheld. Correct first mismatch: native face 963 signs
+`[+1,-1,-1]`, both canonical choices `[-1,-1,-1]`. Only one corner differs.
+Original producer receipts remain unchanged; `PARALLAX_AA_REVIEW.md` supplies the
+separate correction and full qualification. No heavy grant is active.
+
 ## AA actual delivery — local repair proved; full native gate failed
 
 AA completed through `b9c53e82` and released at 23:22:04.862755Z. Parent verified
