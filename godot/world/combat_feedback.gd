@@ -212,9 +212,10 @@ func _sync_activity() -> void:
 		if is_instance_valid(player_fx): player_fx.clear_transient()
 		if is_instance_valid(impacts): impacts.reset()
 		if is_instance_valid(blood_fx): blood_fx.reset()
-		# Reset, not pause: a hidden supplemental cue must not keep flashing and
-		# must not resume from a stale frame when focus/freshness returns.
-		if is_instance_valid(moth_effects): moth_effects.reset()
+		# Hide, not reset: a hidden supplemental cue must not keep flashing and
+		# must not resume from a stale frame, while its accepted-ID history is
+		# retained so nothing can replay on resume. Only clear_round resets IDs.
+		if is_instance_valid(moth_effects): moth_effects.clear_transient()
 		hit_remaining = 0.0
 		hurt_remaining = 0.0
 	if is_instance_valid(world_particles): world_particles.set_paused(not active)

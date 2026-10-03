@@ -26,10 +26,10 @@ var rejected := 0
 var serial := 0
 ## Presentation preferences. Defaults preserve every existing direct caller; the
 ## integrated CombatFeedback owner propagates the live quality and reduced-motion
-## choice. Reduced motion and Low quality drop the cues while their accepted
-## event ID is still consumed, so a later preference change cannot replay a
-## hidden event. Source parity: every Moth accent in view.mjs is guarded by
-## `!reduced`.
+## choice. Disabling a preference immediately hides live cues and drops new ones
+## while their accepted event ID is still consumed, so a later preference change
+## cannot replay a hidden event or resurrect an old cue. Source parity: every
+## Moth accent in view.mjs is guarded by `!reduced`.
 var quality := 2
 var reduced_motion := false
 
@@ -62,10 +62,17 @@ func configure_resources(resources: Dictionary) -> void:
 		if valid: sheets[key] = {"frames": frames.duplicate(), "fps": float(fps)}
 
 func set_quality(level: int) -> void:
-	quality = clampi(level, 0, 2)
+	var next := clampi(level, 0, 2)
+	if next == quality: return
+	quality = next
+	# Disabling stops live cues at once; restoring never resurrects them.
+	if quality <= 0: clear_transient()
 
 func set_reduced_motion(value: bool) -> void:
-	reduced_motion = value == true
+	var next := value == true
+	if next == reduced_motion: return
+	reduced_motion = next
+	if reduced_motion: clear_transient()
 
 static func number(value: Variant) -> bool:
 	return (value is int or value is float) and is_finite(float(value))
@@ -223,6 +230,18 @@ func active_count() -> int:
 	for slot: Dictionary in slots:
 		if slot.remaining > 0: count += 1
 	return count
+
+## Immediately stop every live cue without surrendering the bounded reusable
+## pool, the accepted-ID history (seen/sliding floor) or the injected sheets.
+## Counters stay monotonic so the transient clear is not a round boundary. This
+## is the preference/focus clear; reset() is reserved for round boundaries where
+## public IDs may legitimately be reused.
+func clear_transient() -> void:
+	for slot: Dictionary in slots:
+		if slot.remaining <= 0: continue
+		slot.remaining = 0.0
+		slot.node.visible = false
+		slot.material.set_shader_parameter("frame_texture", null)
 
 func reset() -> void:
 	# Immediate release at round boundary; normal expiry retains bounded reusable
