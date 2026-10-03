@@ -10,9 +10,13 @@ finishing and verifying the new candidate.
 **Requested test build published:** `quiet-relay-fighting-vehicles-preview-2026-10-03`,
 candidate `cb6e4c9f6bff09aafe4d9ef6262c5996a6219329`, Windows/Linux public downloads.
 Focused actual Windows check `37093996218` passed; broader suite retains the Helix
-startup timeout after 23 baseline and six Parallax passes. Packaging owns local
-`PREVIEW-DIAGNOSTIC-20261003-G4` for that diagnosis. F/G/G2/G3 explicitly released.
-This supersedes older F ownership below. See `PREVIEW_20261003.md`.
+startup timeout after 23 baseline and six Parallax passes. G4 explicitly released
+at `2026-10-03T03:43:18.530036Z`, all three groups empty. Windows diagnostic
+`37094406934` confirms synchronous authority startup exceeds the client deadline;
+packaging is preparing a source-only navigation optimization.
+**Exclusive local heavy grant H belongs to Vesper owner
+`ses_f03a3885fffehx9yFhHubuPCft`** for Vesper production and six private hosted
+journeys. F/G/G2/G3/G4 have released. See `PREVIEW_20261003.md`.
 Scenery delivery is preserved but not integrated into the preview. Final production
 and acceptance obligations remain; strict final packaging is unchanged.
 
@@ -30,11 +34,12 @@ boundaries.
 | Fighting presentation and controls | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing at `1bff0281`; controller recovery integrated at `614a8a7f`, all 12 parent presentation source tests pass; native review pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
-| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Exclusive grant F: twelve assemblies/24 LOD exports, masters/reopen, atomic lifecycle, four connected chapter journeys and visual review |
+| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | F integrated through `27f3afc3`; parent inspected four chapter views and four architectural details; source-only exact texture/import package promotion active, capture-paced limitations retained |
+| Vesper Viaduct | Astra `ses_f03a3885fffehx9yFhHubuPCft` | Exclusive H: production, reopen, native geometry/visual review and six private hosted mode journeys; public registration awaits proof |
 | Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Actual production at `1f129ab2`; E released; compact-HUD correction at `83ceaa62` passes six parent source checks/grammar, new native layout/screenshots pending |
 | Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base `b6ab6782` and ordinary-controller follow-up `da259d19` integrated; 26 parent acceptance tests and grammar pass; native execution awaits later grant and device access |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Launch-bound UI registration integrated through `2e355b93`; 142 jobs preserve all prior coverage; 35 parent runner/receipt tests pass; fresh ledger still required |
-| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Parallax, robots and vehicles promoted through `9cf15a14`; 13 parent import/receipt/Git checks pass; scenery/three maps and final export/Windows CI pending |
+| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | G3 preview published with focused Windows pass; source-only Helix cold-navigation optimization active after G4 diagnostic; final release remains pending |
 | Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | Prepared v3 pipeline integrated at `2902412b`; nine focused parent tests pass; real capture/edit/install awaits final assets and a later grant |
 
 All workers run in the background, using existing sessions/checkouts. Source work
@@ -44,14 +49,14 @@ are introduced by this directive.
 
 ## Exclusive heavy ownership
 
-**`SCENERY-ASSET-PRODUCTION-20261003-F` belongs to scenery Astra
-`ses_f03437da1ffeli91L87Q6CVyRP`.** Its scope is the scenery unit: twelve authored
-assemblies/24 LOD exports and editable masters, independent reopen, native geometry/
-atomic lifecycle checks, connected four-chapter gameplay and visual review, plus
-actual package-ready receipts. Vehicle E explicitly released at
-`2026-10-03T00:49:06.525631Z`, with zero remaining processes across 36 owned groups.
-Its assets and journeys are integrated. A/B/C/D also explicitly released. Maps
-await later grants; F does not grant an unbounded multi-unit batch.
+**`VESPER-ASSET-PRODUCTION-20261003-H` belongs to Vesper Astra
+`ses_f03a3885fffehx9yFhHubuPCft`.** Scope: Vesper masters/export/reopen/import,
+native collision and visual checks, then private deathmatch, teamdeathmatch, CTF,
+domination, KOTH and uplink journeys. Parent owns review, public registration and
+promotion. Abyssal, Stormglass and cinematic production await later grants.
+Scenery F and preview G/G2/G3/G4 explicitly released. Current H supersedes historical
+F/G metadata in production plans; do not mutate active-run inputs just to relabel
+their ownership. Source-only scenery promotion and Helix optimization run in parallel.
 
 No other agent may run Godot, Blender, imports, rendering, audio capture or encoding
 before explicit teardown/release and a new grant. Asset integration, gameplay
