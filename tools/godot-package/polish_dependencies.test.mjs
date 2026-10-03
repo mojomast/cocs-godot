@@ -4,7 +4,7 @@ import {readFileSync,existsSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {productionResources,REQUIREMENTS,REQUIRED_UNITS} from './production_resources.mjs';
-import {POLISH_INVENTORY,polishInventory,verifyOperatorFinishImports} from './polish_dependencies.mjs';
+import {POLISH_INVENTORY,polishInventory,verifyOperatorFinishImports,L_SOURCE_CHANGE,L_EVIDENCE,lSupportingHash} from './polish_dependencies.mjs';
 import {WORLDS} from '../../port/multiplayer-worlds/catalog.mjs';
 const read=p=>readFileSync(p),hash=b=>createHash('sha256').update(b).digest('hex');
 const options={read,has:existsSync,worldIds:Object.keys(WORLDS),strict:true};
@@ -16,9 +16,38 @@ function forged(id,mutate){
 test('all seven strict closures bind exact 8921 snapshot, opaque shader, identity composition and scene compiler',()=>{
  assert.deepEqual(productionResources(options).pending,[]);
  assert.equal(Object.keys(s.changed).length,22);
- for(const [p,c]of Object.entries(s.changed)){assert.equal(hash(git(s.previous,p)),c.before);assert.equal(hash(git(s.foundation,p)),c.after);assert.equal(hash(read(p)),c.after);}
+ for(const [p,c]of Object.entries(s.changed)){assert.equal(hash(git(s.previous,p)),c.before);assert.equal(hash(git(s.foundation,p)),c.after);assert.equal(hash(read(p)),lSupportingHash(p,c.after));}
  for(const [p,sha]of Object.entries(s.added))assert.equal(hash(git(s.foundation,p)),sha);
  for(const id of REQUIRED_UNITS){const r=JSON.parse(read(`tools/godot-package/production_receipts/${id}.json`));for(const p of ['godot/moth/surface_opaque.gdshader','godot/native_arenas/identity_environment.gd','tools/godot-multiplayer/generate-scenes.mjs'])assert.ok(r.packageInputs[p]);}
+});
+test('L appends one exact lobby correction while preserving the entire original polish review and all producer fields',()=>{
+ for(const id of REQUIRED_UNITS){
+  const p=`tools/godot-package/production_receipts/${id}.json`,bytes=git('9cd1ac72',p),old=JSON.parse(bytes),now=JSON.parse(read(p));
+  for(const [k,v]of Object.entries(old))if(k!=='packageInputs')assert.deepEqual(now[k],v,id+': '+k);
+  assert.equal(now.lReviewAdvance.previousReceipt.sha256,hash(bytes));
+  assert.deepEqual(now.lReviewAdvance.sourceChanged,L_SOURCE_CHANGE);
+  assert.deepEqual(Object.keys(now.lReviewAdvance.changed).sort(),['godot/ui/lobby_choice.gd','tools/godot-package/polish_dependencies.mjs']);
+  assert.deepEqual(Object.keys(now.lReviewAdvance.added).sort(),Object.keys(L_EVIDENCE).sort());
+  assert.equal(now.polishAdvance.review.combinedNativeChecks,'pending','Historical review must not be rewritten');
+ }
+ for(const [p,c]of Object.entries(L_SOURCE_CHANGE)){assert.equal(hash(git('8921ed41',p)),c.before);assert.equal(hash(git('9cd1ac72',p)),c.after);}
+});
+test('retained L release has three empty audits/49 groups, 30 passed gate IDs and all 116 stable sidecars',()=>{
+ for(const [p,sha]of Object.entries(L_EVIDENCE))assert.equal(hash(read(p)),sha);
+ const base='port/finish/polish/package-evidence-l/';
+ const release=JSON.parse(read(base+'release-L.json'));assert.equal(release.released,true);assert.equal(release.owned_groups.length,49);assert.equal(release.audits.length,3);for(const a of release.audits)assert.deepEqual(a.matches,[]);
+ const gates=JSON.parse(read(base+'NATIVE_RESULTS_L.json')).latest_after_gates;assert.equal(Object.keys(gates).length,30);for(const r of Object.values(gates))assert.equal(r.status,'passed');
+ const rows=JSON.parse(read(base+'sidecars-post-import.json'));assert.equal(rows.length,116);
+ assert.deepEqual(rows.map(r=>r.path).sort(),Object.values(s.operatorFinish.imports).map(r=>r.sidecar).sort());
+ for(const r of rows){assert.equal(r.equal,true);assert.equal(hash(read(r.path)),r.sha256);assert.equal(hash(git('9cd1ac72',r.path)),r.sha256);}
+});
+test('missing/forged L step, stale current dependency, future source and rewritten L evidence reject',()=>{
+ assert.throws(forged('robots',r=>delete r.lReviewAdvance),/Explicit L reconciliation required/);
+ assert.throws(forged('scenery',r=>r.lReviewAdvance.sourceChanged['godot/ui/lobby_choice.gd'].before='0'.repeat(64)),/Exact L source history/);
+ assert.throws(forged('vehicles',r=>r.packageInputs['godot/ui/lobby_choice.gd']=L_SOURCE_CHANGE['godot/ui/lobby_choice.gd'].before),/Current L dependency identity/);
+ assert.throws(forged('stormglass-causeway',r=>r.lReviewAdvance.review.liveKickAcceptance='passed'),/L review boundary/);
+ const p='godot/ui/lobby_choice.gd';assert.throws(()=>productionResources({...options,read:x=>x===p?Buffer.concat([read(x),Buffer.from('\n# future')]):read(x)}),/content hash mismatch/);
+ const evidence=Object.keys(L_EVIDENCE)[0];assert.throws(()=>productionResources({...options,read:x=>x===evidence?Buffer.from('{}'):read(x)}),/Exact retained L evidence/);
 });
 test('all previous producer/native fields and histories are byte-identical in value; only one declared hook advances',()=>{
  for(const id of REQUIRED_UNITS){
