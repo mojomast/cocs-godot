@@ -26,6 +26,11 @@ var probe_environment := WorldEnvironment.new()
 var surface_bases: Array[Dictionary] = []
 var vehicle_target := ""
 var suppressed_stage := ""
+var capture_path := ""
+var capture_busy := false
+var capture_age := 0.0
+var captures := 0
+var captured_stages: Dictionary = {}
 
 func verify(value: bool, label: String) -> void:
 	if value: return
@@ -38,6 +43,7 @@ func _ready() -> void:
 		if arg.begins_with("--vehicle-command="): command_path = arg.trim_prefix("--vehicle-command=")
 		if arg.begins_with("--vehicle-role="): journey_role = arg.trim_prefix("--vehicle-role=")
 		if arg.begins_with("--vehicle-target="): vehicle_target = arg.trim_prefix("--vehicle-target=")
+		if arg.begins_with("--vehicle-capture="): capture_path = arg.trim_prefix("--vehicle-capture=")
 		require_assets = require_assets or arg == "--require-assets"
 	verify(require_assets, "production journey requires --require-assets; fallback is a separate gate")
 	probe_environment.environment = Environment.new()
@@ -62,6 +68,11 @@ func _ready() -> void:
 		get_tree().quit(2)
 		return
 	super._ready()
+	world.sun.shadow_enabled = false
+	get_viewport().scaling_3d_scale = 0.5
+	if not capture_path.is_empty(): DirAccess.make_dir_recursive_absolute(capture_path)
+	var settings := SettingsAccess.service()
+	if settings != null: settings.set_value("ui_scale",150 if "--vehicle-compact" in OS.get_cmdline_user_args() else 100,false)
 	input_queued.connect(func(seq: int, packet: Dictionary, result: int) -> void:
 		print("VEHICLE_INPUT ",JSON.stringify({"role":journey_role,"stage":stage_name,"round":rounds,"seq":seq,"packet":packet,"result":result})))
 
@@ -69,7 +80,7 @@ func on_lobby(frame: Dictionary) -> void:
 	if not configured and join_room_id.is_empty() and frame.get("hostId",-1) == net.peer_id:
 		configured = true
 		roster = frame
-		checked(net.send_frame({"type":"host","mapId":map_id,"config":{"mode":"combined-arms","botCount":0,"timeLimit":300,"fragLimit":900,"startingWeapon":0,"unlimitedAmmo":true}}))
+		checked(net.send_frame({"type":"host","mapId":map_id,"config":{"mode":"combined-arms","botCount":0,"timeLimit":180,"fragLimit":900,"startingWeapon":0,"unlimitedAmmo":true}}))
 		return
 	super.on_lobby(frame)
 
@@ -89,7 +100,7 @@ func on_started(frame: Dictionary) -> void:
 func on_events(items: Array) -> void:
 	super.on_events(items)
 	for event: Dictionary in items:
-		if str(event.get("type","")).begins_with("vehicle-") or event.get("type") == "shot":
+		if str(event.get("type","")).begins_with("vehicle-") or event.get("type") in ["shot","launch"]:
 			print("VEHICLE_EVENT ",JSON.stringify({"role":journey_role,"stage":stage_name,"round":rounds,"event":event}))
 
 func on_snapshot(frame: Dictionary) -> void:
@@ -97,7 +108,7 @@ func on_snapshot(frame: Dictionary) -> void:
 	super.on_snapshot(frame)
 	# The production lease releases inputs on seat changes. Do not turn a still
 	# queued E into an automatic second interaction while the driver observes it.
-	if previous != identity: suppressed_stage = stage_name
+	if previous != identity and (stage_name.begins_with("enter-") or stage_name.begins_with("exit-")): suppressed_stage = stage_name
 
 func key_event(name: String, pressed: bool) -> void:
 	var event := InputEventKey.new()
@@ -176,7 +187,13 @@ func apply_command(command: Dictionary) -> void:
 	for name: String in held:
 		if not name in desired: key_event(name,false)
 	for name: String in desired:
-		if not name in held: key_event(name,true)
+		if not name in held:
+			key_event(name,true)
+		elif name in ["W","A","S","D","SHIFT","SPACE"] and controls.engaged and not controls.keys.has(KEY_CODES[name]):
+			# A real lease/focus release can arrive between stimulus and snapshot.
+			# Recovery uses a fresh physical up/down edge, never edits the gate.
+			key_event(name,false)
+			key_event(name,true)
 	held.assign(desired)
 	var next_fire := bool(command.get("fire",false))
 	if next_fire != firing: mouse_fire(next_fire)
@@ -222,6 +239,13 @@ func fleet_report() -> Array:
 			if a.id == v.driver: team = int(a.team)
 		var color := Color("e56859") if team == 0 else (Color("58a7ed") if team == 1 else Color("dfc98d"))
 		var owned := true
+		var wheel_angles: Array = []
+		for wheel: Node3D in node.wheels:
+			verify(is_finite(wheel.rotation.x) and is_zero_approx(wheel.rotation.y) and is_zero_approx(wheel.rotation.z),"source-only rolling axis")
+			wheel_angles.append(wheel.rotation.x)
+		if v.kind == "puma":
+			var expected_roll: float = wrapf(node.roll_angle + node.roll_speed * node.roll_age / 0.42,-PI,PI)
+			verify(node.roll_age <= 0.100001 and absf(wrapf(node.wheels[0].rotation.x-expected_roll,-PI,PI))<0.0001,"bounded source Puma wheel lead")
 		for binding: Dictionary in node.get_meta("vehicle_accents",[]):
 			var mesh: MeshInstance3D = binding.node.get_ref()
 			var active: StandardMaterial3D = mesh.get_active_material(binding.surface)
@@ -233,7 +257,7 @@ func fleet_report() -> Array:
 		verify(node.get_meta("authored_vehicle","") == v.kind and identities,"authored nine-LOD identity for " + str(v.id))
 		verify(owned and isolated,"team/weather per-instance ownership for " + str(v.id))
 		verify(mouth_ok,"source muzzle transform " + str(v.id))
-		rows.append({"id":v.id,"kind":v.kind,"authored":node.get_meta("authored_vehicle",""),"attachments":targets.size(),"lods":lods,"assetIdentity":identities,"muzzleMatch":mouth_ok,"visible":node.visible,"position":[node.position.x,node.position.y,node.position.z],"team":team,"channelsOwned":owned,"materialsIsolated":isolated})
+		rows.append({"id":v.id,"kind":v.kind,"authored":node.get_meta("authored_vehicle",""),"attachments":targets.size(),"lods":lods,"assetIdentity":identities,"muzzleMatch":mouth_ok,"visible":node.visible,"position":[node.position.x,node.position.y,node.position.z],"team":team,"channelsOwned":owned,"materialsIsolated":isolated,"wheelAngles":wheel_angles})
 	return rows
 
 func _process(delta: float) -> void:
@@ -250,14 +274,33 @@ func _process(delta: float) -> void:
 		if command is Dictionary: apply_command(command)
 	if shutting_down: return
 	super._process(delta)
+	capture_age += delta
+	if phase == "active" and not capture_busy and not capture_path.is_empty() and capture_age >= 0.12 and captures < 180:
+		if stage_name in ["drive-boost","drive-bend","reverse"] or not captured_stages.has(stage_name):
+			capture_age = 0
+			captured_stages[stage_name] = true
+			capture_frame.call_deferred()
 	reporting += delta
 	if reporting >= 0.2:
 		reporting = 0
 		var retired := true
 		for reference: WeakRef in prior_nodes: retired = retired and reference.get_ref() == null
-		print("VEHICLE_REPORT ",JSON.stringify({"role":journey_role,"stage":stage_name,"command":command_id,"round":rounds,"requireAssets":require_assets,"phase":phase,"peer":net.peer_id,"seq":net.last_snapshot_seq,"ack":net.last_ack,"sourceTime":state.get("time",-1),"actor":actor,"fleet":fleet_report() if phase == "active" else [],"wet":wet,"resetClean":reset_clean,"retired":retired,"failures":failures}))
+		print("VEHICLE_REPORT ",JSON.stringify({"role":journey_role,"stage":stage_name,"command":command_id,"round":rounds,"requireAssets":require_assets,"phase":phase,"peer":net.peer_id,"seq":net.last_snapshot_seq,"ack":net.last_ack,"sourceTime":state.get("time",-1),"actor":actor,"fleet":fleet_report() if phase == "active" else [],"wet":wet,"resetClean":reset_clean,"retired":retired,"failures":failures,"inputState":{"engaged":controls.engaged,"focused":controls.focused,"windowFocus":get_window().has_focus(),"keys":controls.keys,"blocked":controls.blocked,"age":age,"eligible":eligible(),"delta":delta}}))
+
+func capture_frame() -> void:
+	if capture_busy: return
+	capture_busy = true
+	var captured_stage := stage_name
+	await RenderingServer.frame_post_draw
+	var path := capture_path.path_join("%04d-%s.png" % [captures,captured_stage])
+	var result := get_viewport().get_texture().get_image().save_png(path)
+	print("VEHICLE_CAPTURE ",JSON.stringify({"file":path,"stage":captured_stage,"sourceTime":state.get("time",-1),"seq":net.last_snapshot_seq,"ticksMs":Time.get_ticks_msec(),"engineFrame":Engine.get_frames_drawn(),"camera":str(world.camera.global_position),"viewport":str(get_viewport().get_visible_rect().size),"result":result}))
+	verify(result == OK,"capture write")
+	captures += 1
+	capture_busy = false
 
 func shutdown_fixture() -> void:
+	while capture_busy: await get_tree().process_frame
 	release_stimulus()
 	toggle_wet(false)
 	net.disconnect_server()

@@ -1,8 +1,9 @@
 // Pure input/report contracts. Importing this module never constructs a match.
 import assert from 'node:assert/strict';
+import {route} from '../asset-production/candidate-guidance.mjs';
 export const KINDS=Object.freeze(['puma','titan','scout']);
 export const MAP='sunscar-convoy', MODE='combined-arms';
-export const ROUND_SECONDS=300;
+export const ROUND_SECONDS=180;
 export const KEYS=Object.freeze(['W','A','S','D','SHIFT','SPACE','E','R','ENTER','ESCAPE']);
 export const distance=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 export const wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
@@ -13,6 +14,20 @@ export function look(a,b,height=.35){
 export function walk(a,b){return distance(a,b)>.45?{keys:['W'],...look(a,b,1.45)}:neutral();}
 export function drive(v,keys){return {keys,yaw:v.heading-Math.PI,pitch:0};}
 export function signedSpeed(v){return v.velocity.x*Math.sin(v.heading)+v.velocity.z*Math.cos(v.heading);}
+export function seatSettled(source,native,vehicleId,seat=null){
+  return !!source&&!!native&&source.id===native.id&&source.vehicleId===vehicleId&&native.vehicleId===vehicleId&&(vehicleId===null||source.vehicleSeat===seat&&native.vehicleSeat===seat);
+}
+export function walkingController(){
+  const paths=new Map();
+  return (m,a,target,key)=>{
+    let p=paths.get(a.id);
+    if(!p||p.key!==key||p.deaths!==a.deaths){p={key,deaths:a.deaths,points:route(m,a,target)};paths.set(a.id,p);}
+    // Native software frames are slower than the 60 Hz authority. Intermediate
+    // route nodes need a crossing radius, not a sub-frame 0.7 m point orbit.
+    while(p.points.length>1&&distance(a,p.points[0])<2.4)p.points.shift();
+    return walk(a,p.points[0]);
+  };
+}
 export function validateCommand(c){
   assert.ok(c&&typeof c==='object');assert.ok(Number.isSafeInteger(c.id)&&c.id>0);
   assert.ok(typeof c.stage==='string'&&c.stage.length<=96);

@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "node",
+    "tools/asset-production/package-receipt.mjs",
+    "vehicles",
+    "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/consolidation/receipts/2026-10-03T00-46-51.903Z/vehicles.json",
+    "--runtime-hook=godot/vehicle_assets/attachment.gd",
+    "--runtime-hook=godot/vehicles/puma.gd",
+    "--runtime-hook=godot/vehicles/renderer.gd",
+    "--runtime-hook=godot/combined_arms/chassis.gd",
+    "--runtime-hook=godot/combined_arms/fleet.gd",
+    "--runtime-hook=godot/combined_arms/demo.gd"
+  ],
+  "started": "2026-10-03T00:47:26.509046+00:00",
+  "timeoutSeconds": 60,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-four-vehicles-evidence-20261002/production-e/20261003T004726.508882Z/package-receipt.log",
+  "processGroup": 646007,
+  "exitCode": 0,
+  "ended": "2026-10-03T00:47:26.622982+00:00",
+  "ownedGroupTeardownRequested": true
+}

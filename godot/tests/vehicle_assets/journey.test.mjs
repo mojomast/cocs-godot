@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {EventEmitter} from 'node:events';
-import {KINDS,MAP,MODE,ROUND_SECONDS,validateCommand,walk,drive,look,signedSpeed,assertRole,assertObservation,assertCase,assertEventPosition} from '../../../tools/godot-vehicle-assets/journey-contract.mjs';
+import {KINDS,MAP,MODE,ROUND_SECONDS,validateCommand,walk,drive,look,signedSpeed,assertRole,assertObservation,assertCase,assertEventPosition,seatSettled} from '../../../tools/godot-vehicle-assets/journey-contract.mjs';
 import {options,assetInputs} from '../../../tools/godot-vehicle-assets/journey.mjs';
 import {controller} from '../../../tools/asset-production/candidate-guidance.mjs';
 import {observeChild,shutdownPeers} from '../../../tools/asset-production/process-evidence.mjs';
@@ -59,6 +59,14 @@ test('seat ownership is reciprocal and does not invent a Scout gunner',()=>{
   state.vehicles[0].passengers=[];assert.throws(()=>assertRole(state,2,'source-car','passenger'));
   const p={kind:'scout',gunnerFire:false};for(const key of ['driver','drive','bend','reverse','driverFire','teamSwapWet','passengerFire','damage','repair','wreck','respawn','reset','resetCleanup','nativeAssets','wireInputs'])p[key]=true;
   assertCase(p,'scout');assert.throws(()=>assertCase({...p,gunnerFire:true},'scout'));assert.throws(()=>assertCase({...p,resetCleanup:false},'scout'));
+});
+test('phase cannot advance on source mount before native lease receipt',()=>{
+  const foot={id:0,vehicleId:null},driver={id:0,vehicleId:'puma',vehicleSeat:'driver'};
+  assert.equal(seatSettled(driver,foot,'puma','driver'),false);
+  assert.equal(seatSettled(driver,driver,'puma','driver'),true);
+  assert.equal(seatSettled(foot,driver,null),false);
+  assert.equal(seatSettled(foot,foot,null),true);
+  assert.equal(seatSettled(driver,{...driver,id:1},'puma','driver'),false);
 });
 test('repair/wreck effects require finite source-position events',()=>{
   const vehicle={position:{x:1,y:0,z:2}};
