@@ -73,7 +73,7 @@ func _process(delta: float) -> void:
   client.send_input({"x":0.0,"z":1.0,"sprint":true})
 
 func foundry_hud_layout() -> void:
- if current_id != "gravemill-foundry" or not is_instance_valid(objective_text.get_parent()): return
+ if current_id not in ["gravemill-foundry","vesper-viaduct"] or not is_instance_valid(objective_text.get_parent()): return
  var width := get_viewport().get_visible_rect().size.x - 32
  var panel: Control = objective_text.get_parent()
  panel.size.x = maxf(240, width)
