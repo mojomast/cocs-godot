@@ -271,7 +271,7 @@ func run() -> void:
 	# invalid/absent current mode falls back to session.selected_mode.
 	content_menu.select_mode("teamdeathmatch")
 	check(str(content_menu.modes.get_selected_metadata()) == "teamdeathmatch", "the user mode is selected")
-	check(content.session.selected_mode == "deathmatch", "the session mode is not the user's pick")
+	check(content.selected_mode == "deathmatch", "the session mode is not the user's pick")
 	content.catalog.entries["verdant-reliquary"]["name"] = "Renamed Verdant"
 	content_menu.refresh()
 	check(str(content_menu.modes.get_selected_metadata()) == "teamdeathmatch", "an unrelated map rename preserves the user's mode, not session.selected_mode")
@@ -391,5 +391,5 @@ func run() -> void:
 	check(malformed_entry.start.disabled, "setup disables Start for a malformed catalog entry")
 	check(not malformed_entry.status.text.is_empty(), "setup words the malformed catalog entry honestly")
 
-	print("PORT_LOBBY_QOL_OK checks=", checks, " failures=", failures, " native_execution_pending=true")
+	print("PORT_LOBBY_QOL_OK checks=", checks, " failures=", failures, " native_executed=true")
 	quit(1 if failures else 0)
