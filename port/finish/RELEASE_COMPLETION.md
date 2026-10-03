@@ -20,13 +20,15 @@ new Moth/Blender map production; exact owners and constraints are in
 **New user-requested map production:** Astra's Moth base/compared multi-engine pack
 and mothbake updates are complete and integrated. Parent verified 201 PNG hashes
 and actual comparison sheets. **R completed and released** with Foundry staged
-master/GLB and 22 actual screenshots at worker `6ff4079e`, pending independent
-Astra review and parent integration. The original Flash map lanes stopped after
+master/GLB and 22 actual screenshots at worker `6ff4079e`, **rejected by independent
+Astra review** for exported geometry/collision defects and still unmerged. Astra
+now holds **`MOTH-BLENDER-20261003-S`** for corrective revision-5 production.
+The original Flash map lanes stopped after
 failed review: Astra owns botanical/urban repair, Sol owns coastal adapter integration
 after the corrected coastal sources were merged as `18201a06`.
 The user explicitly requires Blender-authored assets. Application follows the
 new resource pack, on isolated branches with fresh map validation. P, Q and R released;
-no new heavy grant is active. Exact owners,
+S is the sole active heavy grant. Exact owners,
 sequence and storage constraints: `MOTH_BLENDER_MAP_VARIETY_20261003.md`.
 
 **Current checkpoint (supersedes earlier M-in-progress entries below):** M actually
@@ -55,8 +57,8 @@ Diagnosis commits `cd2b2017`, `47b3633b` and combo follow-up `199d2641` were
 reviewed and integrated as `346e8db8`, `6252d4bf` and `8bf90885`;
 native verification remains pending. Parent passed **83 source checks**: 33
 Fighting acceptance/command/combo/UI, three diagnosis, seven spectator/process,
-35 runner/receipt and five Blender-toolkit tests. **R is released; no heavy grant
-is active.** Further production requires an explicit next grant and fresh candidate.
+35 runner/receipt and five Blender-toolkit tests. **R is released; S owns corrective
+Foundry production.** Other heavy production requires an explicit next grant.
 
 **Historical O/P foundation:** O repaired both N
 failures and released 18 groups with three empty audits, independently checked
@@ -111,7 +113,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P, Q and R have explicitly released; no local heavy grant is active.**
+**P, Q and R have explicitly released; Astra S owns the local heavy slot.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -153,6 +155,16 @@ directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
+**Active: `MOTH-BLENDER-20261003-S`**, Astra
+`ses_efd30e1f6ffeLbhHTPoh266kZW`, corrective Foundry revision-5 production from
+rejected `6ff4079e` in a fresh isolated worktree. Scope: fix geometry/authority
+alignment and normals, preserved luminaires, generic optional-normal receipt,
+actual Blender rebuild/reopen/GLB/import, targeted physics and new captures.
+Preserve R4 evidence. No package exports or full matrix. Other workers source-only.
+Parent pre-grant check found the lock free; only matching Godot was the unrelated
+September-21 environment viewer, explicitly excluded and left untouched. Require
+bounded owned groups and timestamped three empty audits before S release.
+
 **Released: `MOTH-BLENDER-20261003-R`**, owner
 `ses_efdba38e9ffeManqAN9zWiJ3va`, foundation `190fa2a2`. Scope: material adapter
 and toolkit execution, actual Foundry Blender modeling/master/GLB/reopen, bounded
@@ -161,7 +173,7 @@ No full matrix, package export or encoding.
 Worker delivered `6ff4079e` and explicitly released. Parent inspected three empty
 process-scan/available-lock audits and the staged import integrity receipt. These
 R audits do not contain per-group IDs or timestamps. Independent production review
-is active; no new Blender/native grant has been issued. Actual screenshots:
+rejected the complete candidate; Astra is rebuilding under S. Actual rejected-WIP screenshots:
 <http://100.125.104.79:8796/foundry-r4/> (22 PNGs, 30 HTTP/hash checks).
 
 **Historical:** `RELEASE-MATRIX-20261003-P`, owner
