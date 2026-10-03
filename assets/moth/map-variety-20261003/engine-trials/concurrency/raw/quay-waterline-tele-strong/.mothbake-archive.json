@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "quay-waterline-tele-strong",
+  "engine": "telablur-v1",
+  "jobId": "3a666634-4519-4984-a96b-84a11737fabd",
+  "recipeFingerprint": "2c9b5efec796606acd7354334f35d453e43e7ce1321dc189be6e9329cfa60a8f",
+  "generationFingerprint": "99c3952a910f874b1e037a982118b792f1a543bec245db02188e480768db8a3b",
+  "verification": "concurrent-new-request",
+  "rawFingerprint": "d8bc5a8c6ba1a1d395ce921b70aad87d03b2ad0e16eea7d3f6ef9b92808d09bd",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "c926fdfb-9c7b-44a3-aadf-0fbe830cff22",
+      "bytes": 2977,
+      "sha256": "85b4f5a92173649c246f0ae51cba6445f82fed8c6b131a79b1bc206d2926e143"
+    }
+  ],
+  "result": null
+}

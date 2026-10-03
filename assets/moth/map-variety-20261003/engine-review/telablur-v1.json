@@ -1,0 +1,158 @@
+{
+  "engineId": "telablur-v1",
+  "name": "Quantum Teleblur",
+  "version": null,
+  "creditsPerRun": 1,
+  "enabled": true,
+  "paramsSchema": {
+    "properties": {
+      "direction": {
+        "default": "full",
+        "description": "Which qubits receive the blur rotation, controlling the spatial direction of the blur effect:\n\n- `full` — all pixel qubits are rotated, producing blur in both directions (default).\n- `vertical` — only the y-encoding qubits are rotated; the blur spreads vertically.\n- `horizontal` — only the x-encoding qubits are rotated; the blur spreads horizontally.",
+        "enum": [
+          "full",
+          "vertical",
+          "horizontal"
+        ],
+        "title": "Direction",
+        "type": "string"
+      },
+      "downscale": {
+        "default": true,
+        "description": "If True, oversized regions are downscaled before teleport and upscaled back. If False, oversized regions are tiled into adjacent sub-images.",
+        "title": "Downscale",
+        "type": "boolean"
+      },
+      "mask_bin_size": {
+        "anyOf": [
+          {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": 4,
+        "description": "Mask quantisation step as a percentage of 255 (0–100). Pixel values below this threshold are treated as background, preventing near-zero JPEG/WebP compression artifacts from being detected as separate mask regions. Default 4 (~10/255).",
+        "title": "Mask Bin Size"
+      },
+      "mask_min_region": {
+        "anyOf": [
+          {
+            "minimum": 1,
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": 16,
+        "description": "Minimum mask region size in pixels. Connected components smaller than this are discarded after quantisation, removing residual compression artifacts that survive the binning step. Default 16.",
+        "title": "Mask Min Region"
+      },
+      "size": {
+        "default": 1024,
+        "description": "Pixel budget per teleblur pass: a region up to `size × size` pixels is teleported in a single pass. Must be between 8 and 1024. Default 1024.",
+        "maximum": 1024,
+        "minimum": 8,
+        "title": "Size",
+        "type": "integer"
+      },
+      "strength": {
+        "default": 0.5,
+        "description": "Strength of the teleportation effect, between 0.0 and 1.0",
+        "maximum": 1,
+        "minimum": 0,
+        "title": "Strength",
+        "type": "number"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [
+    {
+      "name": "image1",
+      "mime_types": [
+        "image/png",
+        "image/jpeg",
+        "image/webp",
+        "image/tiff",
+        "image/bmp"
+      ],
+      "required": true,
+      "description": "The source image. The teleblur effect morphs this image toward image2 through quantum rotation gates. Supported formats: PNG, JPEG, WebP, TIFF, BMP."
+    },
+    {
+      "name": "image2",
+      "mime_types": [
+        "image/png",
+        "image/jpeg",
+        "image/webp",
+        "image/tiff",
+        "image/bmp"
+      ],
+      "required": true,
+      "description": "The target image. The teleblur effect morphs image1 toward this image. If the dimensions differ from image1, image2 is resized to match before processing."
+    },
+    {
+      "name": "mask",
+      "mime_types": [
+        "image/png",
+        "image/jpeg",
+        "image/webp",
+        "image/tiff",
+        "image/bmp"
+      ],
+      "required": false,
+      "description": "Optional mask controlling where the effect is applied, on a per-pixel\nbasis. Must match the size of `image1`. Each output pixel is a soft\nblend `C = m · C_teleblurred + (1 - m) · C_image1`, where `m` is the\nnormalised mask intensity at that pixel: black keeps image1, white takes\nthe fully teleblurred result, and grey values blend smoothly between the\ntwo. Single-channel masks are used directly; RGB masks are converted to\nluminance.\n\n**Alpha-channel fallback**\n\nIf no mask is provided, the alpha channel of `image1` is used instead\n(transparent pixels keep image1, opaque pixels are teleblurred). For\nRGB input with no alpha channel, the whole image is teleblurred.\n"
+    }
+  ],
+  "outputFiles": [
+    {
+      "name": "result",
+      "content_types": [
+        "image/png",
+        "image/jpeg",
+        "image/webp",
+        "image/tiff",
+        "image/bmp"
+      ],
+      "required": true,
+      "description": "The processed image."
+    }
+  ],
+  "runPolicy": {
+    "timeout": 18000,
+    "max_retries": 1,
+    "heartbeat": 18000
+  },
+  "errorCodes": [
+    {
+      "type": "invalid_image1",
+      "description": "The first image file could not be decoded."
+    },
+    {
+      "type": "invalid_image2",
+      "description": "The second image file could not be decoded."
+    },
+    {
+      "type": "mask_size_mismatch",
+      "description": "Mask dimensions do not match image1 dimensions."
+    },
+    {
+      "type": "no_mask_region",
+      "description": "The provided mask has no non-zero pixels — nothing to teleblur."
+    },
+    {
+      "type": "invalid_params",
+      "description": "One or more params fields failed Pydantic validation."
+    },
+    {
+      "type": "processing_failed",
+      "description": "The quantum teleport circuit failed during processing."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "copper-patina-tele-global",
+  "batch": 4,
+  "engine": "telablur-v1",
+  "params": {
+    "strength": 0.3,
+    "direction": "full",
+    "size": 64
+  },
+  "inputs": {
+    "image1": "sources/copper-patina-source.png",
+    "image2": "sources/copper-patina-target.png"
+  },
+  "recipeFingerprint": "fda3c0c3296ccb766a61022a7ca301489532475da3ca3dee4373bac9ce613448",
+  "state": "completed",
+  "jobId": "e95a4f5d-1871-4c56-a310-b62fd91591a7",
+  "attempts": [
+    {
+      "startMonotonicMs": 1791042352514.1233,
+      "startUTC": "2026-10-03T15:45:52.514Z",
+      "endMonotonicMs": 1791042354914.3196,
+      "http": 202,
+      "durationMs": 2400.1962890625
+    }
+  ],
+  "observations": [
+    {
+      "atUTC": "2026-10-03T15:45:56.159Z",
+      "monotonicMs": 1791042356159.5679,
+      "status": "processing",
+      "step": "teleport",
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:46:02.466Z",
+      "monotonicMs": 1791042362466.2117,
+      "status": "completed",
+      "step": "encode",
+      "startedAt": null,
+      "completedAt": null
+    }
+  ],
+  "submittedAt": "2026-10-03T15:45:53Z",
+  "archived": true
+}

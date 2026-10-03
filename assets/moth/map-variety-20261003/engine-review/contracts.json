@@ -1,0 +1,4611 @@
+{
+  "version": 1,
+  "service": {
+    "apiVersion": "v0.41.0",
+    "retrievedAt": "2026-10-03T15:32:46.504Z",
+    "source": "https://api.mothquantum.com/api/v1/engines",
+    "verification": "observed-read-only"
+  },
+  "engines": {
+    "blur-core-v1": {
+      "engineId": "blur-core-v1",
+      "name": "Quantum Blur Core",
+      "version": null,
+      "creditsPerRun": 1,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "axes": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Which axes of `values` to blur along. `null` (default) blurs every axis. E.g. for a 2-D grid, `[0]` blurs only along axis 0, leaving axis 1 untouched. Negative indices count from the end, as in numpy.",
+            "title": "Axes"
+          },
+          "max_qubits": {
+            "default": 20,
+            "description": "Safety cap on the total number of qubits `values`'s shape is allowed to require. A 1024x1024 2-D grid costs 20 qubits; a flat 1D list of up to 2**20 numbers also costs 20. Default 20, max 24.",
+            "maximum": 24,
+            "minimum": 1,
+            "title": "Max Qubits",
+            "type": "integer"
+          },
+          "reach": {
+            "default": 0,
+            "description": "Controls how far from its original position a value can be affected by the blur:\n\n- `0` — fully local: only neighbouring grid points are affected (default).\n- `1` — fully non-local: any point on the grid can be affected equally.",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Reach",
+            "type": "number"
+          },
+          "shots": {
+            "anyOf": [
+              {
+                "minimum": 1,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "If given, the grid is recovered from this many simulated projective measurements, introducing shot noise. If omitted (default), the exact (infinite-shot) probabilities are used.",
+            "title": "Shots"
+          },
+          "strength": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              }
+            ],
+            "default": 0.5,
+            "description": "Strength of the effect, which controls the rotation applied to each qubit:\n\n- `0` — the values are left unchanged.\n- `1` — maximum blur.\n\nA single number applies to every axis identically. A list applies per axis instead — one entry per axis in `axes` (or, if `axes` is omitted, one per axis of `values`) — so e.g. one axis can be left at `0` (untouched) while another is fully blurred.",
+            "title": "Strength"
+          },
+          "style": {
+            "default": "x",
+            "description": "Quantum gate(s) used to apply the effect: any non-empty combination of the letters `x`, `y`, each selecting a rotation around that axis of the Bloch sphere (Rx/Ry). Every qubit gets the gates in `style` applied in order, left to right, all using the same angle for that qubit — e.g. `\"xy\"` applies Rx then Ry to each qubit, both by the same amount. `style` picks which gates run; `strength` (below) picks how hard, per axis.",
+            "pattern": "^[xy]+$",
+            "title": "Style",
+            "type": "string"
+          },
+          "values": {
+            "description": "An arbitrarily nested list of non-negative numbers. The nesting depth is the grid's dimensionality: a flat list is 1-D, a list of lists is 2-D, etc. Must be rectangular (non-ragged).",
+            "items": {},
+            "title": "Values",
+            "type": "array"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [],
+      "outputFiles": [],
+      "runPolicy": {
+        "timeout": 300,
+        "max_retries": 1,
+        "heartbeat": 60
+      },
+      "errorCodes": [
+        {
+          "type": "invalid_params",
+          "description": "One or more params fields failed Pydantic validation."
+        },
+        {
+          "type": "invalid_values",
+          "description": "`values` was not a rectangular nested list of non-negative numbers (ragged nesting, non-numeric entries, or a negative value)."
+        },
+        {
+          "type": "too_many_qubits",
+          "description": "The shape of `values` requires more qubits than `max_qubits` allows."
+        },
+        {
+          "type": "invalid_axes",
+          "description": "One or more entries in `axes` is out of range for the dimensionality of `values`."
+        },
+        {
+          "type": "invalid_strength",
+          "description": "`strength` was given as a list whose length doesn't match the number of targeted axes (the length of `axes`, or the dimensionality of `values` if `axes` is omitted)."
+        }
+      ]
+    },
+    "blur-midi-v1": {
+      "engineId": "blur-midi-v1",
+      "name": "Blur Jazz",
+      "version": null,
+      "creditsPerRun": 1,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "margin": {
+            "anyOf": [
+              {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": 0.15,
+            "description": "Fraction of the active pitch span to pad above and below before blurring, giving the blur room to spread into adjacent pitches. `0` — no padding; blur is hard-clipped at the boundary notes. Default 0.15.",
+            "title": "Margin"
+          },
+          "mask": {
+            "anyOf": [
+              {
+                "items": {
+                  "maxItems": 3,
+                  "minItems": 3,
+                  "prefixItems": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "type": "array"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "List of regions to blur, each as [track_index, start_seconds, end_seconds]. When omitted every note track is blurred in full. Tracks and time ranges not covered by the mask pass through unchanged. Example: [[1, 0.5, 2.0], [2, 1.0, 3.5]].",
+            "title": "Mask"
+          },
+          "qubits": {
+            "default": 20,
+            "description": "Qubit budget per blur pass (4–20). Determines the largest piano-roll tile the quantum simulator handles in one shot; larger values avoid tiling but require more simulation memory. Default 20.",
+            "maximum": 20,
+            "minimum": 4,
+            "title": "Qubits",
+            "type": "integer"
+          },
+          "reach": {
+            "default": 0,
+            "description": "Non-locality of the blur:\n\n- `0` — fully local: only neighbouring pitches/times mix.\n- `1` — fully non-local: any pitch can mix with any other.",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Reach",
+            "type": "number"
+          },
+          "resolution": {
+            "default": 0,
+            "description": "Number of MIDI ticks per piano-roll step (integer ≥ 0). `0` (default) — auto: uses the 5th-percentile note duration, robust to sequencer-artefact grace notes. Any positive value sets the step size directly; larger values produce a coarser grid and faster blur.",
+            "minimum": 0,
+            "title": "Resolution",
+            "type": "integer"
+          },
+          "strength": {
+            "default": 0.5,
+            "description": "Blur strength (0 = unchanged, 1 = maximum).",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Strength",
+            "type": "number"
+          },
+          "threshold": {
+            "default": 0.1,
+            "description": "Relative noise gate: a velocity delta must exceed threshold × max_velocity_in_roll to emit a note. Scales with the loudest note so it suppresses artefacts proportionally regardless of the overall dynamic level. Default 0.1.",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Threshold",
+            "type": "number"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [
+        {
+          "name": "midi",
+          "mime_types": [
+            "audio/midi",
+            "audio/mid"
+          ],
+          "required": true,
+          "description": "The MIDI file to process. Supported formats: MIDI 0, 1, and 2. Output is returned in the same format and tick resolution as the input."
+        }
+      ],
+      "outputFiles": [
+        {
+          "name": "result",
+          "content_types": [
+            "audio/midi"
+          ],
+          "required": true,
+          "description": "The blurred MIDI file, in the same SMF type and tick resolution as the input."
+        }
+      ],
+      "runPolicy": {
+        "timeout": 18000,
+        "max_retries": 1,
+        "heartbeat": 18000
+      },
+      "errorCodes": [
+        {
+          "type": "invalid_midi",
+          "description": "The MIDI file could not be parsed (corrupt, truncated, or not a valid SMF file)."
+        },
+        {
+          "type": "no_notes",
+          "description": "The MIDI file contains no note_on events — nothing to blur."
+        },
+        {
+          "type": "invalid_params",
+          "description": "One or more params fields failed Pydantic validation."
+        },
+        {
+          "type": "blur_failed",
+          "description": "The quantum blur circuit failed on a piano-roll tile."
+        },
+        {
+          "type": "encoding_failed",
+          "description": "The blurred piano roll could not be re-encoded as a MIDI file."
+        }
+      ]
+    },
+    "blur-v0": {
+      "engineId": "blur-v0",
+      "name": "Quantum Blur",
+      "version": null,
+      "creditsPerRun": 1,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "downscale": {
+            "default": true,
+            "description": "Strategy used when a mask region is larger than the maximum number of qubits allows:\n\n- `true` — the region is downscaled to fit, blurred, and upscaled back.\n- `false` — the region is split into adjacent tiles that are blurred independently.",
+            "title": "Downscale",
+            "type": "boolean"
+          },
+          "reach": {
+            "default": 0,
+            "description": "Controls how far from its original position a pixel can be affected by the blur:\n\n- `0` — fully local: only nearby pixels are affected (default).\n- `1` — fully non-local: pixels anywhere on the canvas can be affected equally.",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Reach",
+            "type": "number"
+          },
+          "size": {
+            "default": 1024,
+            "description": "Pixel budget per blur pass: a region up to `size × size` pixels is blurred in a single pass. Internally converted to a qubit budget via `ceil(log2(size)) * 2`. Must be between 8 and 1024. Default 1024.",
+            "maximum": 1024,
+            "minimum": 8,
+            "title": "Size",
+            "type": "integer"
+          },
+          "strength": {
+            "default": 0.5,
+            "description": "Strength of the effect, which controls the rotation applied to each qubit:\n\n- `0` — the image is left unchanged.\n- `1` — maximum blur.",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Strength",
+            "type": "number"
+          },
+          "style": {
+            "default": "rx",
+            "description": "Quantum gate used to apply the effect:\n\n- `rx` — rotation around the x-axis of the Bloch sphere.\n- `ry` — rotation around the y-axis of the Bloch sphere.",
+            "enum": [
+              "rx",
+              "ry"
+            ],
+            "title": "Style",
+            "type": "string"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [
+        {
+          "name": "image",
+          "mime_types": [
+            "image/png",
+            "image/jpeg",
+            "image/webp",
+            "image/tiff",
+            "image/bmp"
+          ],
+          "required": true,
+          "description": "The image of your choice. The blur effect is applied RGB pixel values only, not the alpha channel. It means that if you submitted a PNG with transparent background, the background from the output will also be transparent."
+        },
+        {
+          "name": "mask",
+          "mime_types": [
+            "image/png",
+            "image/jpeg",
+            "image/webp",
+            "image/tiff",
+            "image/bmp"
+          ],
+          "required": false,
+          "description": "Optional mask controlling where the effect is applied, on a per-pixel\nbasis. Must match the size of `image`. Each output pixel is a soft\nblend `C = m · C_blurred + (1 - m) · C_original`, where `m` is the\nnormalised mask intensity at that pixel: black keeps the original,\nwhite takes the fully blurred version, and grey values blend smoothly\nbetween the two. Single-channel masks are used directly; RGB masks are\nconverted to luminance.\n\n**Alpha-channel fallback**\n\nIf no mask is provided, the alpha channel of `image` is used instead\n(transparent pixels keep the original, opaque pixels are blurred). For\nRGB input with no alpha channel, the whole image is blurred.\n"
+        }
+      ],
+      "outputFiles": [],
+      "runPolicy": {
+        "timeout": 600,
+        "max_retries": 1,
+        "heartbeat": 600
+      },
+      "errorCodes": [
+        {
+          "type": "image_too_large",
+          "description": "Image exceeds the 1024×1024 px limit."
+        },
+        {
+          "type": "too_many_tiles",
+          "description": "Image with downscale=false and the given max_qubits would require more than 200 quantum tiles. Enable downscale or increase max_qubits."
+        },
+        {
+          "type": "mask_size_mismatch",
+          "description": "Mask dimensions do not match the image dimensions."
+        },
+        {
+          "type": "no_mask_region",
+          "description": "The provided mask has no non-zero pixels — nothing to blur."
+        },
+        {
+          "type": "invalid_params",
+          "description": "One or more params fields failed Pydantic validation."
+        },
+        {
+          "type": "invalid_image",
+          "description": "The image or mask file could not be decoded."
+        },
+        {
+          "type": "blur_failed",
+          "description": "The quantum blur circuit failed on a mask region."
+        },
+        {
+          "type": "region_extraction_failed",
+          "description": "A mask region could not be extracted from the image (e.g. an invalid bounding box)."
+        },
+        {
+          "type": "compose_failed",
+          "description": "A blurred region could not be blended back into the output image."
+        },
+        {
+          "type": "encoding_failed",
+          "description": "The output image could not be encoded in the input's format."
+        }
+      ]
+    },
+    "blur-v1": {
+      "engineId": "blur-v1",
+      "name": "Quantum Blur",
+      "version": "1.1.9",
+      "creditsPerRun": 1,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "downscale": {
+            "default": true,
+            "description": "Strategy used when a mask region is larger than the maximum number of qubits allows:\n\n- `true` — the region is downscaled to fit, blurred, and upscaled back.\n- `false` — the region is split into adjacent tiles that are blurred independently.",
+            "title": "Downscale",
+            "type": "boolean"
+          },
+          "mask_bin_size": {
+            "anyOf": [
+              {
+                "maximum": 100,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": 4,
+            "description": "Mask quantisation step as a percentage of 255 (0–100). Pixel values below this threshold are treated as background, preventing near-zero JPEG/WebP compression artifacts from being detected as separate mask regions. Default 4 (~10/255).",
+            "title": "Mask Bin Size"
+          },
+          "mask_min_region": {
+            "anyOf": [
+              {
+                "minimum": 1,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": 16,
+            "description": "Minimum mask region size in pixels. Connected components smaller than this are discarded after quantisation, removing residual compression artifacts that survive the binning step. Default 16.",
+            "title": "Mask Min Region"
+          },
+          "reach": {
+            "default": 0,
+            "description": "Controls how far from its original position a pixel can be affected by the blur:\n\n- `0` — fully local: only nearby pixels are affected (default).\n- `1` — fully non-local: pixels anywhere on the canvas can be affected equally.",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Reach",
+            "type": "number"
+          },
+          "size": {
+            "default": 1024,
+            "description": "Pixel budget per blur pass: a region up to `size × size` pixels is blurred in a single pass. Internally converted to a qubit budget via `ceil(log2(size)) * 2`. Must be between 8 and 1024. Default 1024.",
+            "maximum": 1024,
+            "minimum": 8,
+            "title": "Size",
+            "type": "integer"
+          },
+          "strength": {
+            "default": 0.5,
+            "description": "Strength of the effect, which controls the rotation applied to each qubit:\n\n- `0` — the image is left unchanged.\n- `1` — maximum blur.",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Strength",
+            "type": "number"
+          },
+          "style": {
+            "default": "rx",
+            "description": "Quantum gate used to apply the effect:\n\n- `rx` — rotation around the x-axis of the Bloch sphere.\n- `ry` — rotation around the y-axis of the Bloch sphere.",
+            "enum": [
+              "rx",
+              "ry"
+            ],
+            "title": "Style",
+            "type": "string"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [
+        {
+          "name": "image",
+          "mime_types": [
+            "image/png",
+            "image/jpeg",
+            "image/webp",
+            "image/tiff",
+            "image/bmp"
+          ],
+          "required": true,
+          "description": "The image of your choice. The blur effect is applied RGB pixel values only, not the alpha channel. It means that if you submitted a PNG with transparent background, the background from the output will also be transparent."
+        },
+        {
+          "name": "mask",
+          "mime_types": [
+            "image/png",
+            "image/jpeg",
+            "image/webp",
+            "image/tiff",
+            "image/bmp"
+          ],
+          "required": false,
+          "description": "Optional mask controlling where the effect is applied, on a per-pixel\nbasis. Must match the size of `image`. Each output pixel is a soft\nblend `C = m · C_blurred + (1 - m) · C_original`, where `m` is the\nnormalised mask intensity at that pixel: black keeps the original,\nwhite takes the fully blurred version, and grey values blend smoothly\nbetween the two. Single-channel masks are used directly; RGB masks are\nconverted to luminance.\n\n**Alpha-channel fallback**\n\nIf no mask is provided, the alpha channel of `image` is used instead\n(transparent pixels keep the original, opaque pixels are blurred). For\nRGB input with no alpha channel, the whole image is blurred.\n"
+        }
+      ],
+      "outputFiles": [
+        {
+          "name": "result",
+          "content_types": [
+            "image/png",
+            "image/jpeg",
+            "image/webp",
+            "image/tiff",
+            "image/bmp"
+          ],
+          "required": true,
+          "description": "The processed image."
+        }
+      ],
+      "runPolicy": {
+        "timeout": 300,
+        "max_retries": 1,
+        "heartbeat": 300
+      },
+      "errorCodes": [
+        {
+          "type": "mask_size_mismatch",
+          "description": "Mask dimensions do not match the image dimensions."
+        },
+        {
+          "type": "no_mask_region",
+          "description": "The provided mask has no non-zero pixels — nothing to blur."
+        },
+        {
+          "type": "invalid_params",
+          "description": "One or more params fields failed Pydantic validation."
+        },
+        {
+          "type": "invalid_image",
+          "description": "The image or mask file could not be decoded."
+        },
+        {
+          "type": "blur_failed",
+          "description": "The quantum blur circuit failed on a mask region."
+        },
+        {
+          "type": "region_extraction_failed",
+          "description": "A mask region could not be extracted from the image (e.g. an invalid bounding box)."
+        },
+        {
+          "type": "compose_failed",
+          "description": "A blurred region could not be blended back into the output image."
+        },
+        {
+          "type": "encoding_failed",
+          "description": "The output image could not be encoded in the input's format."
+        }
+      ]
+    },
+    "coin-toss-v1": {
+      "engineId": "coin-toss-v1",
+      "name": "Coin Toss",
+      "version": "1.0.15",
+      "creditsPerRun": 2,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "backend_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "IBM Quantum backend to run on when mode is qpu, e.g. ibm_brisbane. Leave blank to let the platform choose the least busy one.",
+            "title": "Backend Name"
+          },
+          "mode": {
+            "default": "emu",
+            "description": "Where the circuit runs. emu uses the platform's simulator and returns in seconds; qpu submits to real IBM Quantum hardware and can queue for minutes.",
+            "enum": [
+              "emu",
+              "qpu"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "qpu_instance": {
+            "anyOf": [
+              {
+                "format": "password",
+                "type": "string",
+                "writeOnly": true,
+                "sensitive": true
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "IBM Quantum instance (hub/group/project) that pairs with qpu_token. Leave blank together with qpu_token to use Moth's account.",
+            "title": "Qpu Instance"
+          },
+          "qpu_token": {
+            "anyOf": [
+              {
+                "format": "password",
+                "type": "string",
+                "writeOnly": true,
+                "sensitive": true
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Your own IBM Quantum API token for mode qpu. Recommended to leave blank: runs then use Moth's own IBM account through the platform backend.",
+            "title": "Qpu Token"
+          },
+          "shots": {
+            "default": 10,
+            "description": "Number of coin tosses to run. More shots bring the heads/tails split closer to 50/50.",
+            "exclusiveMinimum": 0,
+            "title": "Shots",
+            "type": "integer"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [],
+      "outputFiles": [],
+      "runPolicy": {
+        "timeout": 300,
+        "max_retries": 3,
+        "heartbeat": 60
+      },
+      "errorCodes": [
+        {
+          "type": "coin_toss_failed",
+          "description": "The quantum circuit failed to execute."
+        },
+        {
+          "type": "missing_credentials",
+          "description": "No IBM Quantum token available for a QPU run."
+        },
+        {
+          "type": "unknown_backend",
+          "description": "The requested backend does not exist."
+        },
+        {
+          "type": "circuit_too_large",
+          "description": "The circuit does not fit the selected backend."
+        },
+        {
+          "type": "ibm_submission_failed",
+          "description": "mothbackend could not submit the circuit to IBM."
+        },
+        {
+          "type": "ibm_collection_failed",
+          "description": "The QPU job did not complete successfully."
+        }
+      ]
+    },
+    "comet-qrng-v1": {
+      "engineId": "comet-qrng-v1",
+      "name": "Comet Quantum RNG Engine",
+      "version": "1.0.0",
+      "creditsPerRun": 5,
+      "enabled": true,
+      "paramsSchema": {
+        "$defs": {
+          "Derivation": {
+            "properties": {
+              "floats": {
+                "default": 0,
+                "description": "Uniform doubles in [0, 1) with 53-bit mantissas.",
+                "maximum": 100000,
+                "minimum": 0,
+                "title": "Floats",
+                "type": "integer"
+              },
+              "integers": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/IntegerDerivation"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Uniform integers in [min, max] via rejection sampling."
+              }
+            },
+            "title": "Derivation",
+            "type": "object"
+          },
+          "IntegerDerivation": {
+            "properties": {
+              "count": {
+                "description": "How many integers to derive.",
+                "maximum": 100000,
+                "minimum": 1,
+                "title": "Count",
+                "type": "integer"
+              },
+              "max": {
+                "description": "Inclusive upper bound.",
+                "title": "Max",
+                "type": "integer"
+              },
+              "min": {
+                "description": "Inclusive lower bound.",
+                "title": "Min",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "min",
+              "max",
+              "count"
+            ],
+            "title": "IntegerDerivation",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "backend_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "IBM backend to target; omit to auto-select the least busy device. Ignored when mode='emu'.",
+            "title": "Backend Name"
+          },
+          "bell_witness": {
+            "default": true,
+            "description": "Add 8 qubits carrying four CHSH Bell pairs measured in the same job (fidelity witness).",
+            "title": "Bell Witness",
+            "type": "boolean"
+          },
+          "derive": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Derivation"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional unbiased integers/floats derived from the conditioned bytes."
+          },
+          "epsilon_log2": {
+            "default": 64,
+            "description": "Extractor security parameter: output is 2^-epsilon_log2-close to uniform.",
+            "maximum": 128,
+            "minimum": 32,
+            "title": "Epsilon Log2",
+            "type": "integer"
+          },
+          "include_raw_counts": {
+            "default": true,
+            "description": "Echo the raw counts so third parties can recompute the output.",
+            "title": "Include Raw Counts",
+            "type": "boolean"
+          },
+          "mode": {
+            "default": "emu",
+            "description": "'emu' samples on a local Aer simulator (classical baseline, uncertified); 'qpu' samples IBM hardware.",
+            "enum": [
+              "emu",
+              "qpu"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "num_qubits": {
+            "default": 12,
+            "description": "Width of the randomness register (Born-rule bits per shot).",
+            "maximum": 256,
+            "minimum": 1,
+            "title": "Num Qubits",
+            "type": "integer"
+          },
+          "output_bytes": {
+            "default": 32,
+            "description": "Conditioned bytes requested. You receive min(output_bytes, extractable).",
+            "maximum": 1000000,
+            "minimum": 1,
+            "title": "Output Bytes",
+            "type": "integer"
+          },
+          "prev_pulse_hash": {
+            "anyOf": [
+              {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Previous beacon pulse hash to chain onto (hex).",
+            "title": "Prev Pulse Hash"
+          },
+          "public_seed": {
+            "default": "toeplitz-v1",
+            "description": "Toeplitz seed: a shipped seed id (default 'toeplitz-v1', uniform seed from a documented ceremony — information-theoretic mode) or any custom string (SHAKE-256 expanded — computational mode, labelled as such).",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Public Seed",
+            "type": "string"
+          },
+          "pulse_index": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Beacon pulse index, if chaining.",
+            "title": "Pulse Index"
+          },
+          "qpu_instance": {
+            "anyOf": [
+              {
+                "format": "password",
+                "type": "string",
+                "writeOnly": true,
+                "sensitive": true
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "IBM Quantum instance CRN; BYOK override, omit to use mothbackend's own shared IBM credentials.",
+            "title": "Qpu Instance"
+          },
+          "qpu_token": {
+            "anyOf": [
+              {
+                "format": "password",
+                "type": "string",
+                "writeOnly": true,
+                "sensitive": true
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "IBM Quantum API token; BYOK override, omit to use mothbackend's own shared IBM credentials.",
+            "title": "Qpu Token"
+          },
+          "require_assumption_free": {
+            "default": false,
+            "description": "Certify only on the assumption-free tier (whole-shot most-common-value bound, no independence assumed). Capped near log2(shots) bits per shot; ≈0 in counts mode, so this effectively needs per-shot memory readout.",
+            "title": "Require Assumption Free",
+            "type": "boolean"
+          },
+          "shots": {
+            "default": 4096,
+            "description": "Number of measurement shots (max 10,000). Raw bits = num_qubits × shots.",
+            "exclusiveMinimum": 0,
+            "maximum": 10000,
+            "title": "Shots",
+            "type": "integer"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [],
+      "outputFiles": [],
+      "runPolicy": {
+        "timeout": 300,
+        "max_retries": 3,
+        "heartbeat": 60
+      },
+      "errorCodes": [
+        {
+          "type": "invalid_params",
+          "description": "Parameter validation failed (e.g. circuit exceeds the EMU cap of 20 qubits)."
+        },
+        {
+          "type": "backend_too_small",
+          "description": "The circuit needs more qubits than the selected IBM backend provides."
+        },
+        {
+          "type": "missing_credentials",
+          "description": "IBM authentication failed — no usable token/instance (shared or BYOK)."
+        },
+        {
+          "type": "simulation_failed",
+          "description": "Aer simulation failed."
+        },
+        {
+          "type": "collection_failed",
+          "description": "Could not retrieve the QPU result — job cancelled, failed, or backend errored."
+        },
+        {
+          "type": "collection_timeout",
+          "description": "The QPU job did not reach a terminal state within the engine's 6000 s poll deadline; the provider job was cancelled."
+        },
+        {
+          "type": "result_malformed",
+          "description": "The backend returned counts that do not match the submitted circuit."
+        }
+      ]
+    },
+    "deep-fryer-v1": {
+      "engineId": "deep-fryer-v1",
+      "name": "Deep Fryer",
+      "version": null,
+      "creditsPerRun": 1,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "gates": {
+            "default": [
+              [
+                "rx",
+                0.5
+              ]
+            ],
+            "description": "Sequence of (gate_name, intensity) pairs applied to each tile's qubit lattice, in order.",
+            "items": {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            "title": "Gates",
+            "type": "array"
+          },
+          "mask_bin_size": {
+            "default": 4,
+            "description": "Mask quantisation step as a percentage of 255 (0-100). Pixel values below this threshold are treated as background, preventing near-zero JPEG/WebP compression artifacts from being detected as separate mask regions. Default 4 (~10/255).",
+            "maximum": 100,
+            "minimum": 0,
+            "title": "Mask Bin Size",
+            "type": "number"
+          },
+          "mask_min_region": {
+            "default": 16,
+            "description": "Minimum mask region size in pixels. Connected components smaller than this are discarded after quantisation, removing residual compression artifacts that survive the binning step. Default 16.",
+            "minimum": 1,
+            "title": "Mask Min Region",
+            "type": "integer"
+          },
+          "tile_size": {
+            "default": 4,
+            "description": "Side length of the square qubit lattice used as the per-tile processing kernel.",
+            "maximum": 4,
+            "minimum": 2,
+            "title": "Tile Size",
+            "type": "integer"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [
+        {
+          "name": "image",
+          "mime_types": [
+            "image/png",
+            "image/jpeg",
+            "image/webp",
+            "image/bmp",
+            "image/tiff"
+          ],
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "mask",
+          "mime_types": [
+            "image/png",
+            "image/jpeg",
+            "image/webp",
+            "image/bmp",
+            "image/tiff"
+          ],
+          "required": false,
+          "description": "Optional mask controlling where the effect is applied, on a per-pixel basis. Resized (Lanczos) to match `image` if it isn't already the same size. Brighter mask pixels take more of the quantum-processed color, darker pixels keep more of the original. The mask is split into disjoint connected regions and each is processed independently, scoped to its own bounding box. If omitted, the alpha channel of `image` is used instead (transparent pixels stay original, opaque pixels are processed); for RGB input with no alpha channel, the whole image is processed."
+        }
+      ],
+      "outputFiles": [
+        {
+          "name": "result",
+          "content_types": [
+            "image/png",
+            "image/jpeg",
+            "image/webp",
+            "image/bmp",
+            "image/tiff"
+          ],
+          "required": true,
+          "description": "The processed image."
+        }
+      ],
+      "runPolicy": {
+        "timeout": 30000,
+        "max_retries": 3,
+        "heartbeat": 60000
+      },
+      "errorCodes": [
+        {
+          "type": "invalid_image",
+          "description": "The image or mask file could not be decoded."
+        },
+        {
+          "type": "no_mask_region",
+          "description": "The provided mask has no non-zero regions after quantisation — nothing to process."
+        },
+        {
+          "type": "invalid_params",
+          "description": "One or more params fields failed Pydantic validation."
+        },
+        {
+          "type": "tile_too_large",
+          "description": "tile_size ** 2 exceeds the MAX_QUBITS simulation budget."
+        },
+        {
+          "type": "unsupported_gate",
+          "description": "A gate name in `gates` is not in the supported gate registry."
+        },
+        {
+          "type": "kernel_failed",
+          "description": "The quantum color kernel failed on a tile."
+        },
+        {
+          "type": "encoding_failed",
+          "description": "The output image could not be encoded in the input's format."
+        }
+      ]
+    },
+    "demo-callback-v1": {
+      "engineId": "demo-callback-v1",
+      "name": "Callback Bridge (Demo)",
+      "version": null,
+      "creditsPerRun": 0,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "iterations": {
+            "default": 10,
+            "description": "Number of processing iterations",
+            "exclusiveMinimum": 0,
+            "maximum": 100,
+            "title": "Iterations",
+            "type": "integer"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [],
+      "outputFiles": [],
+      "runPolicy": {
+        "timeout": 300,
+        "max_retries": 3,
+        "heartbeat": 60
+      },
+      "errorCodes": []
+    },
+    "entanglement-shader-v0": {
+      "engineId": "entanglement-shader-v0",
+      "name": "Entanglement Shader",
+      "version": null,
+      "creditsPerRun": 1,
+      "enabled": true,
+      "paramsSchema": {
+        "description": "Request body parameters.",
+        "properties": {
+          "absorption": {
+            "default": 0.95,
+            "description": "Fraction of the maximum absorption achievable at the given reflectance.\n\n- `0` — no absorption.\n- `1` — maximum absorption and minimum transmission.\n",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Absorption",
+            "type": "number"
+          },
+          "incoming_rays": {
+            "default": 8,
+            "description": "Number of light rays entering the stack simultaneously.\n\n- Must be `>= layers` so that at least one ray is transmitted.\n- Maximum enforced by the 21-qubit budget at validation time.\n",
+            "minimum": 1,
+            "title": "Incoming Rays",
+            "type": "integer"
+          },
+          "interaction": {
+            "default": 1,
+            "description": "Strength of the nonlinear quantum interaction terms.\n\n- `0` — interaction disabled; only reflectance and absorption shape the output.\n- Positive vs. negative values of the same magnitude produce distinct colour patterns.\n",
+            "title": "Interaction",
+            "type": "number"
+          },
+          "layers": {
+            "default": 2,
+            "description": "Number of conducting sheets in the stack.\n\n- Maximum enforced by the 21-qubit budget at validation time.\n",
+            "minimum": 1,
+            "title": "Layers",
+            "type": "integer"
+          },
+          "reflectance": {
+            "default": 0.2,
+            "description": "Fraction of reflected power of a single ray and layer at normal incidence.\n\n- `0` — perfect transmittance and no absorption.\n- `1` — perfect mirror, no transmission or absorption.\n",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Reflectance",
+            "type": "number"
+          },
+          "resolution": {
+            "anyOf": [
+              {
+                "minimum": 10,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": 60,
+            "description": "Density of the angle–phase lookup table baked into the shader.\n\n- Higher values reduce banding on close-up or oblique surfaces.\n",
+            "title": "Resolution"
+          },
+          "style": {
+            "default": "peaked",
+            "description": "Selects which nonlinear interaction channels are active.\n\n- `peaked` — reflection and transmission peak at the same angle for large number of layers.\n- `frustrated` — competing interaction channels produce a non-monotone colour pattern.\n- `3-body` — three-body interactions only; subtle, low-contrast effect.\n- `constrained` — higher ray counts suppress transmission, deepening shadows.\n",
+            "enum": [
+              "peaked",
+              "frustrated",
+              "3-body",
+              "constrained"
+            ],
+            "title": "Style",
+            "type": "string"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [],
+      "outputFiles": [],
+      "runPolicy": {
+        "timeout": 18000,
+        "max_retries": 1,
+        "heartbeat": 18000
+      },
+      "errorCodes": [
+        {
+          "type": "max_qubits_exceeded",
+          "description": "Configuration requires more qubits than the maximum allowed."
+        }
+      ]
+    },
+    "entanglement-shader-v1": {
+      "engineId": "entanglement-shader-v1",
+      "name": "Entanglement Shader",
+      "version": null,
+      "creditsPerRun": 1,
+      "enabled": true,
+      "paramsSchema": {
+        "description": "Request body parameters.",
+        "properties": {
+          "absorption": {
+            "default": 0.95,
+            "description": "Fraction of the maximum absorption achievable at the given reflectance.\n\n- `0` — no absorption.\n- `1` — maximum absorption and minimum transmission.\n",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Absorption",
+            "type": "number"
+          },
+          "incoming_rays": {
+            "default": 8,
+            "description": "Number of light rays entering the stack simultaneously.\n\n- Must be `>= layers` so that at least one ray is transmitted.\n- Maximum enforced by the 21-qubit budget at validation time.\n",
+            "minimum": 1,
+            "title": "Incoming Rays",
+            "type": "integer"
+          },
+          "interaction": {
+            "default": 1,
+            "description": "Strength of the nonlinear quantum interaction terms.\n\n- `0` — interaction disabled; only reflectance and absorption shape the output.\n- Positive vs. negative values of the same magnitude produce distinct colour patterns.\n",
+            "title": "Interaction",
+            "type": "number"
+          },
+          "layers": {
+            "default": 2,
+            "description": "Number of conducting sheets in the stack.\n\n- Maximum enforced by the 21-qubit budget at validation time.\n",
+            "minimum": 1,
+            "title": "Layers",
+            "type": "integer"
+          },
+          "reflectance": {
+            "default": 0.2,
+            "description": "Fraction of reflected power of a single ray and layer at normal incidence.\n\n- `0` — perfect transmittance and no absorption.\n- `1` — perfect mirror, no transmission or absorption.\n",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Reflectance",
+            "type": "number"
+          },
+          "resolution": {
+            "anyOf": [
+              {
+                "minimum": 10,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": 60,
+            "description": "Density of the angle–phase lookup table baked into the shader.\n\n- Higher values reduce banding on close-up or oblique surfaces.\n",
+            "title": "Resolution"
+          },
+          "style": {
+            "default": "peaked",
+            "description": "Selects which nonlinear interaction channels are active.\n\n- `peaked` — reflection and transmission peak at the same angle for large number of layers.\n- `frustrated` — competing interaction channels produce a non-monotone colour pattern.\n- `3-body` — three-body interactions only; subtle, low-contrast effect.\n- `constrained` — higher ray counts suppress transmission, deepening shadows.\n",
+            "enum": [
+              "peaked",
+              "frustrated",
+              "3-body",
+              "constrained"
+            ],
+            "title": "Style",
+            "type": "string"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [],
+      "outputFiles": [
+        {
+          "name": "result",
+          "content_types": [
+            "application/zip"
+          ],
+          "required": true,
+          "description": "ZIP archive containing all shader formats (OSL, Marmoset .frag, GLSL, HLSL, MaterialX) and the shared R/T lookup tables (EXR, HDR)."
+        }
+      ],
+      "runPolicy": {
+        "timeout": 18000,
+        "max_retries": 1,
+        "heartbeat": 18000
+      },
+      "errorCodes": [
+        {
+          "type": "max_qubits_exceeded",
+          "description": "Configuration requires more qubits than the maximum allowed."
+        }
+      ]
+    },
+    "graph-v1": {
+      "engineId": "graph-v1",
+      "name": "Quantum Graph Engine",
+      "version": null,
+      "creditsPerRun": 5,
+      "enabled": true,
+      "paramsSchema": {
+        "$defs": {
+          "BlochOperation": {
+            "properties": {
+              "fraction": {
+                "default": 1,
+                "description": "Fraction of the full rotation to apply.",
+                "title": "Fraction",
+                "type": "number"
+              },
+              "paulis": {
+                "additionalProperties": {
+                  "type": "number"
+                },
+                "description": "Single-qubit Pauli targets, e.g. {'X': 1.0}.",
+                "title": "Paulis",
+                "type": "object"
+              },
+              "qubit": {
+                "description": "Target qubit.",
+                "minimum": 0,
+                "title": "Qubit",
+                "type": "integer"
+              },
+              "type": {
+                "const": "bloch",
+                "title": "Type",
+                "type": "string"
+              },
+              "update": {
+                "default": true,
+                "description": "Refresh tomography after this operation so later operations see its effect (QuantumGraph's default). False is faster but blind.",
+                "title": "Update",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "type",
+              "qubit",
+              "paulis"
+            ],
+            "title": "BlochOperation",
+            "type": "object"
+          },
+          "RelationshipOperation": {
+            "properties": {
+              "fraction": {
+                "default": 1,
+                "description": "Fraction of the full rotation to apply.",
+                "title": "Fraction",
+                "type": "number"
+              },
+              "paulis": {
+                "additionalProperties": {
+                  "type": "number"
+                },
+                "description": "Two-qubit Pauli targets, e.g. {'ZZ': 1.0}.",
+                "title": "Paulis",
+                "type": "object"
+              },
+              "qubits": {
+                "description": "The coupled qubit pair.",
+                "items": {
+                  "type": "integer"
+                },
+                "maxItems": 2,
+                "minItems": 2,
+                "title": "Qubits",
+                "type": "array"
+              },
+              "type": {
+                "const": "relationship",
+                "title": "Type",
+                "type": "string"
+              },
+              "update": {
+                "default": true,
+                "description": "Refresh tomography after this operation so later operations see its effect (QuantumGraph's default). False is faster but blind.",
+                "title": "Update",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "type",
+              "qubits",
+              "paulis"
+            ],
+            "title": "RelationshipOperation",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "backend_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "IBM backend to target; omit to auto-select the least busy device. Ignored when mode='emu'.",
+            "title": "Backend Name"
+          },
+          "coupling_map": {
+            "anyOf": [
+              {
+                "items": {
+                  "items": {
+                    "type": "integer"
+                  },
+                  "type": "array"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Graph edges as qubit pairs; omit for a fully connected graph (QuantumGraph's default).",
+            "title": "Coupling Map"
+          },
+          "mode": {
+            "default": "emu",
+            "description": "'emu' runs on a local Aer simulator; 'qpu' submits to IBM hardware.",
+            "enum": [
+              "emu",
+              "qpu"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "num_qubits": {
+            "default": 4,
+            "description": "Number of qubits (graph nodes), 2-20.",
+            "maximum": 20,
+            "minimum": 2,
+            "title": "Num Qubits",
+            "type": "integer"
+          },
+          "operations": {
+            "anyOf": [
+              {
+                "items": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/$defs/BlochOperation"
+                    },
+                    {
+                      "$ref": "#/$defs/RelationshipOperation"
+                    }
+                  ]
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "State-preparation targets applied in order: 'bloch' sets single-qubit Pauli targets, 'relationship' sets two-qubit targets on a coupled pair. Omit for a random state drawn from 'seed'.",
+            "title": "Operations"
+          },
+          "qpu_instance": {
+            "anyOf": [
+              {
+                "format": "password",
+                "type": "string",
+                "writeOnly": true,
+                "sensitive": true
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "IBM Quantum instance CRN; required when mode='qpu'.",
+            "title": "Qpu Instance"
+          },
+          "qpu_token": {
+            "anyOf": [
+              {
+                "format": "password",
+                "type": "string",
+                "writeOnly": true,
+                "sensitive": true
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "IBM Quantum API token; required when mode='qpu'.",
+            "title": "Qpu Token"
+          },
+          "seed": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Seeds the random graph; the same seed always builds the same circuit. Omit for a fresh random graph.",
+            "title": "Seed"
+          },
+          "shots": {
+            "default": 1024,
+            "description": "Number of measurement shots.",
+            "exclusiveMinimum": 0,
+            "title": "Shots",
+            "type": "integer"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [],
+      "outputFiles": [],
+      "runPolicy": {
+        "timeout": 300,
+        "max_retries": 3,
+        "heartbeat": 60
+      },
+      "errorCodes": [
+        {
+          "type": "graph_init_failed",
+          "description": "QuantumGraph initialization failed."
+        },
+        {
+          "type": "prep_failed",
+          "description": "State-preparation operations failed — an operation could not be applied to the graph."
+        },
+        {
+          "type": "simulation_failed",
+          "description": "Aer simulation failed."
+        },
+        {
+          "type": "ibm_auth_failed",
+          "description": "IBM authentication failed — IBM_QUANTUM_TOKEN missing or invalid."
+        },
+        {
+          "type": "ibm_submission_failed",
+          "description": "Circuit submission to the IBM QPU failed."
+        },
+        {
+          "type": "ibm_collection_failed",
+          "description": "Could not retrieve QPU result — job may have been cancelled or backend errored."
+        },
+        {
+          "type": "invalid_params",
+          "description": "Parameter validation failed."
+        }
+      ]
+    },
+    "labyrinth-v1": {
+      "engineId": "labyrinth-v1",
+      "name": "Quantum Labyrinth Engine",
+      "version": null,
+      "creditsPerRun": 5,
+      "enabled": true,
+      "paramsSchema": {
+        "$defs": {
+          "GridSize": {
+            "properties": {
+              "cols": {
+                "minimum": 1,
+                "title": "Cols",
+                "type": "integer"
+              },
+              "rows": {
+                "minimum": 1,
+                "title": "Rows",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "rows",
+              "cols"
+            ],
+            "title": "GridSize",
+            "type": "object"
+          },
+          "LevelData": {
+            "description": "Inline level definition — the parsed level_*.txt `level_data` dict.",
+            "properties": {
+              "coupling_map": {
+                "items": {
+                  "items": {
+                    "type": "integer"
+                  },
+                  "type": "array"
+                },
+                "title": "Coupling Map",
+                "type": "array"
+              },
+              "grid_size": {
+                "$ref": "#/$defs/GridSize"
+              },
+              "initial_states": {
+                "additionalProperties": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "title": "Initial States",
+                "type": "object"
+              },
+              "name": {
+                "default": "<unnamed level>",
+                "title": "Name",
+                "type": "string"
+              },
+              "num_qubits": {
+                "minimum": 2,
+                "title": "Num Qubits",
+                "type": "integer"
+              },
+              "relationships": {
+                "items": {},
+                "title": "Relationships",
+                "type": "array"
+              }
+            },
+            "required": [
+              "grid_size",
+              "num_qubits",
+              "coupling_map"
+            ],
+            "title": "LevelData",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "backend_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "IBM backend to target; omit to auto-select the least busy device. Ignored when mode='emu'.",
+            "title": "Backend Name"
+          },
+          "fraction": {
+            "default": 0.3333333333333333,
+            "description": "Strength of each ZZ prep step, as a fraction of a full rotation.",
+            "exclusiveMinimum": 0,
+            "maximum": 1,
+            "title": "Fraction",
+            "type": "number"
+          },
+          "k": {
+            "default": 3,
+            "description": "Tomography correlation length: expectation values tracked over paths of k connected qubits; higher is more faithful but costlier (max 4).",
+            "maximum": 4,
+            "minimum": 1,
+            "title": "K",
+            "type": "integer"
+          },
+          "level_data": {
+            "$ref": "#/$defs/LevelData",
+            "description": "Level definition: grid size, qubit count, coupling map, and initial states."
+          },
+          "mode": {
+            "default": "emu",
+            "description": "'emu' runs on a local Aer simulator; 'qpu' submits to IBM hardware.",
+            "enum": [
+              "emu",
+              "qpu"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "qpu_instance": {
+            "anyOf": [
+              {
+                "format": "password",
+                "type": "string",
+                "writeOnly": true,
+                "sensitive": true
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "IBM Quantum instance CRN; falls back to IBM_QUANTUM_INSTANCE env var.",
+            "title": "Qpu Instance"
+          },
+          "qpu_token": {
+            "anyOf": [
+              {
+                "format": "password",
+                "type": "string",
+                "writeOnly": true,
+                "sensitive": true
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "IBM Quantum API token; falls back to IBM_QUANTUM_TOKEN env var.",
+            "title": "Qpu Token"
+          },
+          "shots": {
+            "default": 4096,
+            "description": "Number of measurement shots (max 10,000).",
+            "exclusiveMinimum": 0,
+            "maximum": 10000,
+            "title": "Shots",
+            "type": "integer"
+          },
+          "steps": {
+            "default": 3,
+            "description": "Number of ZZ prep sweeps over the lattice (max 5).",
+            "maximum": 5,
+            "minimum": 1,
+            "title": "Steps",
+            "type": "integer"
+          },
+          "top_n": {
+            "default": 16,
+            "description": "Most-probable measurements kept in the output; -1 keeps all.",
+            "minimum": -1,
+            "title": "Top N",
+            "type": "integer"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [],
+      "outputFiles": [],
+      "runPolicy": {
+        "timeout": 300,
+        "max_retries": 3,
+        "heartbeat": 60
+      },
+      "errorCodes": [
+        {
+          "type": "invalid_level",
+          "description": "level_data validation failed — missing grid_size, num_qubits, or coupling_map."
+        },
+        {
+          "type": "graph_init_failed",
+          "description": "QuantumGraph initialization failed."
+        },
+        {
+          "type": "prep_failed",
+          "description": "ZZ state preparation loop failed."
+        },
+        {
+          "type": "emu_cap_exceeded",
+          "description": "num_qubits exceeds the local-simulation cap; use mode=\"qpu\" for larger lattices."
+        },
+        {
+          "type": "simulation_failed",
+          "description": "Aer simulation failed."
+        },
+        {
+          "type": "ibm_auth_failed",
+          "description": "IBM authentication failed — IBM_QUANTUM_TOKEN missing or invalid."
+        },
+        {
+          "type": "backend_too_small",
+          "description": "level_data requires more qubits than the selected IBM backend provides."
+        },
+        {
+          "type": "ibm_submission_failed",
+          "description": "Circuit submission to the IBM QPU failed."
+        },
+        {
+          "type": "ibm_collection_failed",
+          "description": "Could not retrieve QPU result — job may have been cancelled or backend errored."
+        },
+        {
+          "type": "invalid_params",
+          "description": "Parameter validation failed."
+        }
+      ]
+    },
+    "otoc-echo-v1": {
+      "engineId": "otoc-echo-v1",
+      "name": "Quantum Echo",
+      "version": "0.1.2",
+      "creditsPerRun": 1,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "allow_high_shots": {
+            "default": false,
+            "description": "Permit shots above 8192 (QPU time scales linearly).",
+            "title": "Allow High Shots",
+            "type": "boolean"
+          },
+          "depth": {
+            "default": 8,
+            "description": "Echo depths t = 1..depth — the tap time slots. Each circuit has 2·depth layers.",
+            "maximum": 32,
+            "minimum": 1,
+            "title": "Depth",
+            "type": "integer"
+          },
+          "disorder": {
+            "default": 0,
+            "description": "Additive per-gate angle jitter, std in radians. 0 = clean Floquet. Localises the echo; the only lever that makes `seed` matter.",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Disorder",
+            "type": "number"
+          },
+          "exact": {
+            "default": true,
+            "description": "aer only: exact (infinite-shot) expectation values instead of sampling.",
+            "title": "Exact",
+            "type": "boolean"
+          },
+          "fractional_gates": {
+            "default": true,
+            "description": "Use native rzz/rx on hardware where available. Halves the forward half's two-qubit count; disables gate twirling.",
+            "title": "Fractional Gates",
+            "type": "boolean"
+          },
+          "height": {
+            "anyOf": [
+              {
+                "maximum": 32,
+                "minimum": 2,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Square lattice height. Required for `square`.",
+            "title": "Height"
+          },
+          "include_taps": {
+            "default": true,
+            "description": "Also emit a flattened tap list (site, depth, F_re, F_im, level, polarity) in extras.",
+            "title": "Include Taps",
+            "type": "boolean"
+          },
+          "include_z": {
+            "default": false,
+            "description": "Also measure <Z_i>, completing each site's Bloch vector. Free on aer; a third measurement basis (1.5x shots) on hardware.",
+            "title": "Include Z",
+            "type": "boolean"
+          },
+          "kick": {
+            "default": "Z",
+            "description": "Perturbation Pauli applied to the kick site between U and U†.",
+            "enum": [
+              "Z",
+              "Y",
+              "X"
+            ],
+            "title": "Kick",
+            "type": "string"
+          },
+          "kick_site": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Regeneration source: the site that receives the impulse. Default: centre.",
+            "title": "Kick Site"
+          },
+          "lattice": {
+            "default": "chain",
+            "description": "Topology of the delay line. `chain`: site → pan. `square` (Nighthawk-native): x → pan, y → diffusion.",
+            "enum": [
+              "chain",
+              "square"
+            ],
+            "title": "Lattice",
+            "type": "string"
+          },
+          "machine": {
+            "default": "aer",
+            "description": "Backend: 'aer' (local, noiseless) or an IBM backend name such as 'ibm_phoenix'.",
+            "title": "Machine",
+            "type": "string"
+          },
+          "min_tap_level": {
+            "default": 0.02,
+            "description": "|F| threshold for the emitted tap list.",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Min Tap Level",
+            "type": "number"
+          },
+          "n_sites": {
+            "default": 8,
+            "description": "Chain length in qubits (= pan positions). Ignored for `square`.",
+            "maximum": 156,
+            "minimum": 2,
+            "title": "N Sites",
+            "type": "integer"
+          },
+          "qpu_instance": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "IBM Quantum instance CRN. As with the token: required for `via: direct`, optional BYOK for `via: mothbackend`.",
+            "format": "password",
+            "title": "Qpu Instance",
+            "writeOnly": true,
+            "sensitive": true
+          },
+          "qpu_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "IBM Quantum API token. Required for `via: direct` on an IBM machine (or the QISKIT_IBM_TOKEN env var); optional BYOK for `via: mothbackend`, which otherwise uses Moth's own credentials.",
+            "format": "password",
+            "title": "Qpu Token",
+            "writeOnly": true,
+            "sensitive": true
+          },
+          "ref_floor": {
+            "anyOf": [
+              {
+                "exclusiveMinimum": 0,
+                "maximum": 1,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "|c_ref| below which F is null. Default: 4/sqrt(shots), ~0 for exact simulation.",
+            "title": "Ref Floor"
+          },
+          "seed": {
+            "anyOf": [
+              {
+                "maximum": 9007199254740991,
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "RNG seed for the disorder realisation. Only audible when disorder > 0. Drawn as a 31-bit integer and returned in provenance if omitted. Capped at 2**53-1: above that, moth-api (Go) and any browser client re-spell the integer as a float64 and it stops matching the seed you sent.",
+            "title": "Seed"
+          },
+          "shots": {
+            "default": 4096,
+            "description": "Shots per circuit. Ignored when machine='aer' and exact=true. Above 8192 requires allow_high_shots.",
+            "minimum": 1,
+            "title": "Shots",
+            "type": "integer"
+          },
+          "theta_x": {
+            "default": 0.9424777960769379,
+            "description": "Transverse kick per layer (RX angle, rad). The 'how quantum' dial: low → loud regular taps; high → inverted, attenuated, erased.",
+            "maximum": 3.141592653589793,
+            "minimum": 0,
+            "title": "Theta X",
+            "type": "number"
+          },
+          "theta_z": {
+            "default": 0,
+            "description": "Phase layer (RZ angle, rad). 0 → real, two-signed F. >0 → complex F: taps acquire a phase.",
+            "maximum": 3.141592653589793,
+            "minimum": 0,
+            "title": "Theta Z",
+            "type": "number"
+          },
+          "theta_zz": {
+            "default": 1.0995574287564276,
+            "description": "Coupling per layer (RZZ, rad). Non-monotonic: ≈0.25π is the sparse setting. π is a Clifford (no scrambling). θ and π−θ coincide only when theta_x = 0, not at the default drive, so the upper half of the range is its own territory. The sign is invisible unless theta_z > 0.",
+            "exclusiveMinimum": -3.141592653589793,
+            "maximum": 3.141592653589793,
+            "title": "Theta Zz",
+            "type": "number"
+          },
+          "twirls": {
+            "default": 1,
+            "description": "ZZ-commutant Pauli twirls per circuit, averaged. Randomises off-axis coherent rzz error (not angle miscalibration, which the reference run absorbs). Multiplies circuit count.",
+            "maximum": 32,
+            "minimum": 1,
+            "title": "Twirls",
+            "type": "integer"
+          },
+          "via": {
+            "default": "direct",
+            "description": "How to reach the machine. `direct`: this engine drives qiskit-ibm-runtime itself (analytic emulation, native fractional gates, one batched QPU session). `mothbackend`: route through Moth's execution service, which holds the credentials — sampled only, so no analytic mode, no fractional gates, and one submission per circuit.",
+            "enum": [
+              "direct",
+              "mothbackend"
+            ],
+            "title": "Via",
+            "type": "string"
+          },
+          "width": {
+            "anyOf": [
+              {
+                "maximum": 32,
+                "minimum": 2,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Square lattice width. Required for `square`.",
+            "title": "Width"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [],
+      "outputFiles": [],
+      "runPolicy": {
+        "timeout": 7200,
+        "max_retries": 1,
+        "heartbeat": 3600
+      },
+      "errorCodes": [
+        {
+          "type": "invalid_params",
+          "description": "params fail Params' own field validation (type/range) or a cross-field check (square lattice without width/height, kick_site outside the line, shots over the cap without allow_high_shots)."
+        },
+        {
+          "type": "too_many_qubits",
+          "description": "the delay line needs more qubits than the machine allows — 24 for aer, the device's own width for an IBM backend."
+        },
+        {
+          "type": "invalid_machine",
+          "description": "machine is neither 'aer' nor an IBM backend name the runtime knows."
+        },
+        {
+          "type": "backend_unavailable",
+          "description": "the requested execution route could not be reached — for `via: direct`, qiskit-ibm-runtime is missing or no credentials were supplied (qpu_token param / QISKIT_IBM_TOKEN); for `via: mothbackend`, the mothbackend package is absent or the service returned a transport error. Retryable."
+        },
+        {
+          "type": "execution_failed",
+          "description": "the estimator returned an error while running the echo circuits."
+        }
+      ]
+    },
+    "qdrive-api-v1": {
+      "engineId": "qdrive-api-v1",
+      "name": "QDrive",
+      "version": null,
+      "creditsPerRun": 1,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "ansatz": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "QASM3 ansatz circuits keyed by the number of qubits they act on.",
+            "title": "Ansatz"
+          },
+          "coupling_map": {
+            "anyOf": [
+              {
+                "items": {
+                  "items": {
+                    "type": "integer"
+                  },
+                  "type": "array"
+                },
+                "type": "array"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional coupling map edges, e.g. [[0, 1], [1, 2]].",
+            "title": "Coupling Map"
+          },
+          "machine": {
+            "default": "aer",
+            "description": "Backend to run on; see backend.MACHINES",
+            "title": "Machine",
+            "type": "string"
+          },
+          "n_qubits": {
+            "anyOf": [
+              {
+                "exclusiveMinimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Number of qubits in the circuit; required unless the initial_circuit file input is given",
+            "title": "N Qubits"
+          },
+          "sample": {
+            "default": false,
+            "description": "Also run a shot-based sampler on the final circuit",
+            "title": "Sample",
+            "type": "boolean"
+          },
+          "seed": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "RNG seed; a random one is drawn if omitted",
+            "title": "Seed"
+          },
+          "shots": {
+            "default": 1024,
+            "description": "Shot count used by both the estimator and the sampler",
+            "exclusiveMinimum": 0,
+            "title": "Shots",
+            "type": "integer"
+          },
+          "targets": {
+            "anyOf": [
+              {
+                "items": {
+                  "anyOf": [
+                    {
+                      "additionalProperties": true,
+                      "type": "object"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "type": "array"
+              },
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "description": "Ordered QDrive.target() calls; an empty/null entry calls update() instead. An expvals value may be a number, [value, certainty], or a measured[...]-style expression [[word, qubits, coefficient], ...] (optionally [terms, certainty]).",
+            "title": "Targets"
+          },
+          "tomography": {
+            "default": 0,
+            "description": "0: none, 1: single-qubit tomography, 2: two-qubit tomography",
+            "maximum": 2,
+            "minimum": 0,
+            "title": "Tomography",
+            "type": "integer"
+          },
+          "update_method": {
+            "default": "spectral",
+            "description": "QDrive.update() fitting method: one of ('spectral', 'direct', 'constrained')",
+            "title": "Update Method",
+            "type": "string"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [
+        {
+          "name": "initial_circuit",
+          "mime_types": [
+            "text/plain"
+          ],
+          "required": false,
+          "description": ""
+        }
+      ],
+      "outputFiles": [
+        {
+          "name": "circuit",
+          "content_types": [
+            "text/plain"
+          ],
+          "required": true,
+          "description": "The final circuit (QASM3), also chainable into a later job's initial_circuit via job:<id>/circuit."
+        }
+      ],
+      "runPolicy": {
+        "timeout": 120,
+        "max_retries": 3,
+        "heartbeat": 30
+      },
+      "errorCodes": [
+        {
+          "type": "invalid_params",
+          "description": "params fail Params' own field validation (type/range)."
+        },
+        {
+          "type": "invalid_initial_circuit",
+          "description": "initial_circuit bytes aren't parseable QASM3."
+        },
+        {
+          "type": "n_qubits_mismatch",
+          "description": "n_qubits disagrees with initial_circuit's own qubit count."
+        },
+        {
+          "type": "invalid_coupling_map",
+          "description": "coupling_map isn't a list of 2-qubit edges."
+        },
+        {
+          "type": "coupling_map_out_of_range",
+          "description": "coupling_map references more qubits than n_qubits."
+        },
+        {
+          "type": "invalid_ansatz",
+          "description": "an ansatz key isn't an integer qubit count."
+        },
+        {
+          "type": "invalid_ansatz_qasm",
+          "description": "an ansatz value isn't parseable QASM3."
+        },
+        {
+          "type": "ansatz_width_mismatch",
+          "description": "an ansatz circuit's qubit count doesn't match its key."
+        },
+        {
+          "type": "unsupported_target_ansatz",
+          "description": "a target dict carries its own 'ansatz' key, which isn't supported — use the top-level ansatz parameter."
+        },
+        {
+          "type": "invalid_target",
+          "description": "a target is missing 'qubits', has duplicate/out-of-range qubits, or a non-mapping 'expvals'."
+        },
+        {
+          "type": "invalid_update_method",
+          "description": "update_method isn't one of spectral, direct, or constrained."
+        },
+        {
+          "type": "invalid_machine",
+          "description": "machine isn't a backend.get_backend() knows about."
+        }
+      ]
+    },
+    "qpixl-v1": {
+      "engineId": "qpixl-v1",
+      "name": "Qpixl",
+      "version": null,
+      "creditsPerRun": 1,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "allow_high_shots": {
+            "default": false,
+            "description": "Permit `shots` above 8192. Real hardware time scales linearly with shots, and emulated runs multiply shots by the number of data-qubit groups, so raising this can be expensive. Off by default.",
+            "title": "Allow High Shots",
+            "type": "boolean"
+          },
+          "backend_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "IBM device to target when mode='qpu', e.g. 'ibm_fez'. Required in that mode -- there is no least-busy auto-select. Ignored when mode='emu'.",
+            "title": "Backend Name"
+          },
+          "discretize": {
+            "default": 0,
+            "description": "Number of discrete levels to quantize `values` to. 0 encodes them continuously.",
+            "minimum": 0,
+            "title": "Discretize",
+            "type": "integer"
+          },
+          "dynamic_range": {
+            "default": "none",
+            "description": "Rescale the reconstruction to match a summary statistic of the original `values`, to counteract shot noise/decoherence shrinking its spread toward the middle of the range. 'none' leaves the reconstruction unchanged. 'min_max' rescales so its min and max match the input's. 'percentile' does the same using the 2nd/98th percentiles instead, less sensitive to outliers. 'mean_std' matches mean and standard deviation. 'abs_max' rescales by the single largest absolute value. 'min_avg_max' matches min, mean, and max all three at once.",
+            "enum": [
+              "none",
+              "min_max",
+              "percentile",
+              "mean_std",
+              "abs_max",
+              "min_avg_max"
+            ],
+            "title": "Dynamic Range",
+            "type": "string"
+          },
+          "machine": {
+            "default": "aer",
+            "description": "Which emulator to use when mode='emu' (ignored when mode='qpu'). 'aer' is noiseless. 'fake_<chip>' options (e.g. 'fake_fez', 'fake_sherbrooke', 'fake_torino') are each calibrated to a real current IBM chip's noise.",
+            "enum": [
+              "aer",
+              "fake_fez",
+              "fake_marrakesh",
+              "fake_torino",
+              "fake_brisbane",
+              "fake_kyiv",
+              "fake_sherbrooke",
+              "fake_kyoto",
+              "fake_osaka",
+              "fake_quebec",
+              "fake_cusco",
+              "fake_strasbourg",
+              "fake_brussels"
+            ],
+            "title": "Machine",
+            "type": "string"
+          },
+          "mode": {
+            "default": "emu",
+            "description": "'emu' simulates the circuit (see `machine` for noiseless vs. noisy); 'qpu' submits to real IBM hardware (see `backend_name`). Both run server-side on mothbackend.",
+            "enum": [
+              "emu",
+              "qpu"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "shots": {
+            "default": 4096,
+            "description": "Number of measurement shots to sample. Capped at 8192 unless `allow_high_shots` is set; the hard ceiling is 32768. Note this is shots PER data-qubit group when mode='emu', not per run.",
+            "exclusiveMinimum": 0,
+            "maximum": 32768,
+            "title": "Shots",
+            "type": "integer"
+          },
+          "values": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "items": {
+                  "items": {
+                    "type": "number"
+                  },
+                  "type": "array"
+                },
+                "type": "array"
+              }
+            ],
+            "default": [
+              0.05,
+              0.2,
+              0.4,
+              0.6,
+              0.8,
+              0.95
+            ],
+            "description": "Array of floating-point values to encode. Either a flat list, a nested list of groups (one sublist per data-qubit group, in the exact order `list_groups(values, machine)` returns them), or that same shape written as a single string wrapped in [..] or (..), e.g. \"[0.1,0.2,0.3]\" for a flat list or \"[[0.1,0.2],[0.3,0.4]]\" / \"([0.1,0.2],[0.3,0.4])\" for groups. A group with more values than its capacity is rejected; a group with fewer is padded with zeros.",
+            "minLength": 1,
+            "title": "Values"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [],
+      "outputFiles": [],
+      "runPolicy": {
+        "timeout": 18000,
+        "max_retries": 1,
+        "heartbeat": 6000
+      },
+      "errorCodes": [
+        {
+          "type": "unparseable_values",
+          "description": "a string values input isn't a valid comma-separated (optionally [..]/(..) grouped) number list."
+        },
+        {
+          "type": "too_few_values",
+          "description": "values must contain at least 2 numbers."
+        },
+        {
+          "type": "non_finite_values",
+          "description": "values must contain only finite numbers (no NaN/Infinity)."
+        },
+        {
+          "type": "too_many_values",
+          "description": "values exceeds the largest supported simulated lattice (64x64)."
+        },
+        {
+          "type": "insufficient_qubits",
+          "description": "values exceeds the selected machine's data-qubit capacity."
+        },
+        {
+          "type": "group_count_mismatch",
+          "description": "a nested (grouped) values input has a different number of groups than the machine's lattice."
+        },
+        {
+          "type": "group_overflow",
+          "description": "one group in a nested (grouped) values input has more values than that group's data qubit can hold."
+        },
+        {
+          "type": "unsupported_machine",
+          "description": "the requested machine name isn't recognized."
+        },
+        {
+          "type": "ibm_connection_failed",
+          "description": "Could not authenticate/connect to IBM Quantum with the given token/instance."
+        },
+        {
+          "type": "submission_failed",
+          "description": "The transpiled circuit was rejected or the sampling job failed to submit."
+        }
+      ]
+    },
+    "qrc-audio-v1": {
+      "engineId": "qrc-audio-v1",
+      "name": "QRC Audio",
+      "version": null,
+      "creditsPerRun": 5,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "chunk_seconds": {
+            "default": 1,
+            "description": "Length of each chunk in seconds when splitting the `audio` file. Ignored when `chunks` is given.",
+            "exclusiveMinimum": 0,
+            "title": "Chunk Seconds",
+            "type": "number"
+          },
+          "crossfade": {
+            "default": 0,
+            "description": "Milliseconds of crossfade between chunks (0 = hard cuts).",
+            "maximum": 1000,
+            "minimum": 0,
+            "title": "Crossfade",
+            "type": "integer"
+          },
+          "length": {
+            "default": 10,
+            "description": "How many chunks to string together in the output",
+            "exclusiveMinimum": 0,
+            "maximum": 500,
+            "title": "Length",
+            "type": "integer"
+          },
+          "loop": {
+            "default": true,
+            "description": "Treat the audio as looping material — the end flows back into the start. Learning only.",
+            "title": "Loop",
+            "type": "boolean"
+          },
+          "quality": {
+            "default": "moderate",
+            "description": "How hard to train when learning a fresh piece (no `model`): instant skips training for a quick untrained shuffle; fast is quick and rough; complete is slow and tight.",
+            "enum": [
+              "instant",
+              "fast",
+              "moderate",
+              "complete"
+            ],
+            "title": "Quality",
+            "type": "string"
+          },
+          "seed": {
+            "anyOf": [
+              {
+                "maximum": 4294967295,
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Change for a different result, keep fixed to reproduce one. On a fresh piece it also fixes the learned reservoir; when reusing a `model` it just varies the take, so you can fan out independent takes by changing it.",
+            "title": "Seed"
+          },
+          "training_sequence": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Advanced — chunk filenames in a specific order to learn. Omit to learn the chunks' natural order. Ignored when a `model` is given.",
+            "title": "Training Sequence"
+          },
+          "variation": {
+            "default": 1,
+            "description": "How freely the result departs from the learned order: low = tight and repetitive, high = loose and surprising.",
+            "exclusiveMinimum": 0,
+            "title": "Variation",
+            "type": "number"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [
+        {
+          "name": "audio",
+          "mime_types": [
+            "audio/wav",
+            "audio/x-wav",
+            "audio/mpeg",
+            "audio/ogg",
+            "audio/flac"
+          ],
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chunks",
+          "mime_types": [
+            "application/zip"
+          ],
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "model",
+          "mime_types": [
+            "application/json"
+          ],
+          "required": false,
+          "description": ""
+        }
+      ],
+      "outputFiles": [
+        {
+          "name": "result",
+          "content_types": [
+            "audio/wav"
+          ],
+          "required": true,
+          "description": "The generated remix WAV."
+        },
+        {
+          "name": "state",
+          "content_types": [
+            "application/json"
+          ],
+          "required": true,
+          "description": "Advanced reservoir state; reuse on a later call as job:<id>/state."
+        },
+        {
+          "name": "vocabulary",
+          "content_types": [
+            "application/zip"
+          ],
+          "required": true,
+          "description": "Zip of chunk WAVs (filenames are tokens); reuse as job:<id>/vocabulary."
+        },
+        {
+          "name": "model",
+          "content_types": [
+            "application/json"
+          ],
+          "required": false,
+          "description": "Pristine trained model for fan-out; reuse as job:<id>/model."
+        }
+      ],
+      "runPolicy": {
+        "timeout": 3600,
+        "max_retries": 1,
+        "heartbeat": 3000
+      },
+      "errorCodes": []
+    },
+    "qrc-gen-v2": {
+      "engineId": "qrc-gen-v2",
+      "name": "QRC Generate",
+      "version": null,
+      "creditsPerRun": 1,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "initial_events": {
+            "anyOf": [
+              {
+                "items": {},
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Warm up the reservoir on these events before generating, instead of the whole vocabulary (the default for a fresh model). Tokens must belong to the model's vocabulary. Ignored when continuing from a `state` that is itself a prior qrc-gen-v1 output, unless given explicitly to deliberately re-seed the trajectory.",
+            "title": "Initial Events"
+          },
+          "length": {
+            "default": 10,
+            "description": "Number of tokens to generate",
+            "exclusiveMinimum": 0,
+            "title": "Length",
+            "type": "integer"
+          },
+          "random_seed": {
+            "anyOf": [
+              {
+                "maximum": 4294967295,
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "RNG seed for this call's own generation randomness (softmax sampling) — applied after the model is loaded, not the seed the QRC was trained with (that one is always reused exactly, to reconstruct the reservoir faithfully). None = keep whatever RNG state the model already has (deterministic given the same inputs); give a value to force a specific, reproducible sampling trajectory.",
+            "title": "Random Seed"
+          },
+          "shots": {
+            "anyOf": [
+              {
+                "maximum": 8192,
+                "minimum": 1,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Measurement shots during generation (backend.shots). None = keep whatever shots the model was trained (or last generated) with.",
+            "title": "Shots"
+          },
+          "variation": {
+            "default": 1,
+            "description": "Sampling temperature: low = deterministic/repetitive, high = random",
+            "exclusiveMinimum": 0,
+            "title": "Variation",
+            "type": "number"
+          },
+          "vocabulary": {
+            "anyOf": [
+              {
+                "items": {},
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Relabel the model's output space: the trained reservoir/readout only depend on vocabulary *size*, not identity, so any vocabulary with the same number of distinct tokens as the model's own can be swapped in — generation then emits from this vocabulary instead. A different size raises `incompatible_model` (readout shape mismatch).",
+            "title": "Vocabulary"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [
+        {
+          "name": "state",
+          "mime_types": [
+            "application/json"
+          ],
+          "required": true,
+          "description": ""
+        }
+      ],
+      "outputFiles": [
+        {
+          "name": "state",
+          "content_types": [
+            "application/json"
+          ],
+          "required": true,
+          "description": "Updated reservoir state; chain into a further qrc-gen-v2 call via input_files.state."
+        }
+      ],
+      "runPolicy": {
+        "timeout": 3600,
+        "max_retries": 1,
+        "heartbeat": 3000
+      },
+      "errorCodes": []
+    },
+    "qrc-image-v1": {
+      "engineId": "qrc-image-v1",
+      "name": "QRC Image",
+      "version": null,
+      "creditsPerRun": 5,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "fps": {
+            "default": 4,
+            "description": "Frames per second for the generated GIF.",
+            "exclusiveMinimum": 0,
+            "maximum": 30,
+            "title": "Fps",
+            "type": "number"
+          },
+          "length": {
+            "default": 10,
+            "description": "Number of frames to generate",
+            "exclusiveMinimum": 0,
+            "maximum": 500,
+            "title": "Length",
+            "type": "integer"
+          },
+          "periodic": {
+            "default": true,
+            "description": "Allow training windows to wrap past the end of `training_sequence` back to the start, treating it as cyclic. Used only when training (state is absent); ignored otherwise.",
+            "title": "Periodic",
+            "type": "boolean"
+          },
+          "quality": {
+            "default": "moderate",
+            "description": "Training effort, used only when training (i.e. `state` is absent): fast is quick and rough, complete trains longest on the most data.",
+            "enum": [
+              "fast",
+              "moderate",
+              "complete"
+            ],
+            "title": "Quality",
+            "type": "string"
+          },
+          "seed": {
+            "anyOf": [
+              {
+                "maximum": 4294967295,
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Top-level RNG seed for training. Used only when training (state is absent); None picks a random seed for this run, recorded in the returned state so the exact run can be reproduced later by passing it back explicitly. Ignored when continuing from a state — its own build seed is always reused, since a different value would reconstruct a different physical reservoir than the one the readout was trained against.",
+            "title": "Seed"
+          },
+          "training_sequence": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Sequence of filenames from `vocabulary`, in training order. Required when `state` is not given (there's nothing yet to continue from); ignored otherwise.",
+            "title": "Training Sequence"
+          },
+          "variation": {
+            "default": 1,
+            "description": "Sampling temperature: low = deterministic/repetitive, high = random",
+            "exclusiveMinimum": 0,
+            "title": "Variation",
+            "type": "number"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [
+        {
+          "name": "vocabulary",
+          "mime_types": [
+            "application/zip"
+          ],
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "state",
+          "mime_types": [
+            "application/json"
+          ],
+          "required": false,
+          "description": ""
+        }
+      ],
+      "outputFiles": [
+        {
+          "name": "result",
+          "content_types": [
+            "image/gif"
+          ],
+          "required": true,
+          "description": "The generated GIF."
+        },
+        {
+          "name": "state",
+          "content_types": [
+            "application/json"
+          ],
+          "required": true,
+          "description": "Advanced reservoir state; reuse on a later call as job:<id>/state."
+        },
+        {
+          "name": "vocabulary",
+          "content_types": [
+            "application/zip"
+          ],
+          "required": true,
+          "description": "Frame vocabulary; reuse as job:<id>/vocabulary."
+        }
+      ],
+      "runPolicy": {
+        "timeout": 3600,
+        "max_retries": 1,
+        "heartbeat": 3000
+      },
+      "errorCodes": []
+    },
+    "qrc-midi-v1": {
+      "engineId": "qrc-midi-v1",
+      "name": "QRC MIDI",
+      "version": null,
+      "creditsPerRun": 5,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "bpm": {
+            "default": 120,
+            "description": "Tempo of the generated file in beats per minute. Note durations are preserved either way — this only sets the beat grid a DAW sees.",
+            "exclusiveMinimum": 0,
+            "title": "Bpm",
+            "type": "number"
+          },
+          "length": {
+            "default": 10,
+            "description": "How many notes to generate",
+            "exclusiveMinimum": 0,
+            "maximum": 500,
+            "title": "Length",
+            "type": "integer"
+          },
+          "loop": {
+            "default": true,
+            "description": "Treat the melody as looping material — the end flows back into the start. Learning only.",
+            "title": "Loop",
+            "type": "boolean"
+          },
+          "quality": {
+            "default": "moderate",
+            "description": "How hard to train when learning a fresh file (no `model`): instant skips training for a quick untrained shuffle; fast is quick and rough; complete is slow and tight.",
+            "enum": [
+              "instant",
+              "fast",
+              "moderate",
+              "complete"
+            ],
+            "title": "Quality",
+            "type": "string"
+          },
+          "seed": {
+            "anyOf": [
+              {
+                "maximum": 4294967295,
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Change for a different result, keep fixed to reproduce one. On a fresh file it also fixes the learned reservoir; when reusing a `model` it just varies the take, so you can fan out independent takes by changing it.",
+            "title": "Seed"
+          },
+          "variation": {
+            "default": 1,
+            "description": "How freely the result departs from the learned order: low = tight and repetitive, high = loose and surprising.",
+            "exclusiveMinimum": 0,
+            "title": "Variation",
+            "type": "number"
+          },
+          "velocity": {
+            "default": 100,
+            "description": "How hard every generated note is struck (1–127). One value for the whole file.",
+            "maximum": 127,
+            "minimum": 1,
+            "title": "Velocity",
+            "type": "integer"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [
+        {
+          "name": "midi",
+          "mime_types": [
+            "audio/midi",
+            "audio/x-midi"
+          ],
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "model",
+          "mime_types": [
+            "application/json"
+          ],
+          "required": false,
+          "description": ""
+        }
+      ],
+      "outputFiles": [
+        {
+          "name": "result",
+          "content_types": [
+            "audio/midi"
+          ],
+          "required": true,
+          "description": "The generated MIDI."
+        },
+        {
+          "name": "state",
+          "content_types": [
+            "application/json"
+          ],
+          "required": true,
+          "description": "Advanced reservoir state; reuse on a later call as job:<id>/state."
+        },
+        {
+          "name": "model",
+          "content_types": [
+            "application/json"
+          ],
+          "required": false,
+          "description": "Pristine trained model for fan-out; reuse as job:<id>/model."
+        }
+      ],
+      "runPolicy": {
+        "timeout": 3600,
+        "max_retries": 1,
+        "heartbeat": 3000
+      },
+      "errorCodes": []
+    },
+    "qrc-train-v2": {
+      "engineId": "qrc-train-v2",
+      "name": "QRC Train",
+      "version": null,
+      "creditsPerRun": 5,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "epochs": {
+            "default": 50,
+            "description": "Readout training epochs (readout.epoch)",
+            "maximum": 500,
+            "minimum": 1,
+            "title": "Epochs",
+            "type": "integer"
+          },
+          "mixing": {
+            "default": 0.7,
+            "description": "How much each reservoir step replaces its memory (reservoir.mixing); 1 = fully replaced",
+            "exclusiveMinimum": 0,
+            "maximum": 1,
+            "title": "Mixing",
+            "type": "number"
+          },
+          "mode": {
+            "default": "order",
+            "description": "Window-sampling mode (handler.mode)",
+            "enum": [
+              "random",
+              "order",
+              "stride"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "num_qubits": {
+            "default": 5,
+            "description": "Reservoir qubits (reservoir.num_qubits)",
+            "maximum": 12,
+            "minimum": 2,
+            "title": "Num Qubits",
+            "type": "integer"
+          },
+          "num_random_gates": {
+            "default": 10,
+            "description": "Random gates mixed into each reservoir step (reservoir.num_random_gates)",
+            "maximum": 100,
+            "minimum": 0,
+            "title": "Num Random Gates",
+            "type": "integer"
+          },
+          "periodic": {
+            "default": true,
+            "description": "Allow windows to wrap past the end of the sequence (handler.periodic)",
+            "title": "Periodic",
+            "type": "boolean"
+          },
+          "sample_fraction": {
+            "default": 1,
+            "description": "Fraction of the candidate windows `mode` can produce that are kept, via quasi-random subsampling (handler.sample_fraction)",
+            "exclusiveMinimum": 0,
+            "maximum": 1,
+            "title": "Sample Fraction",
+            "type": "number"
+          },
+          "sample_length": {
+            "default": 15,
+            "description": "Window length (handler.sample_length)",
+            "maximum": 256,
+            "minimum": 1,
+            "title": "Sample Length",
+            "type": "integer"
+          },
+          "seed": {
+            "anyOf": [
+              {
+                "maximum": 4294967295,
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Top-level RNG seed shared by every component that doesn't set its own (config.seed). None = pick a random seed for this run; it's recorded in the returned model's state, so the exact run can be reproduced later by passing it back explicitly.",
+            "title": "Seed"
+          },
+          "sequence": {
+            "default": [
+              1,
+              2,
+              3,
+              2,
+              1,
+              1,
+              2,
+              3,
+              2,
+              1,
+              1,
+              2,
+              3,
+              2,
+              1,
+              1,
+              2,
+              3,
+              2,
+              1
+            ],
+            "description": "Tokens to train on — any hashable values (ints, strings, ...) forming a unique set",
+            "items": {},
+            "title": "Sequence",
+            "type": "array"
+          },
+          "shots": {
+            "default": 3000,
+            "description": "Measurement shots (backend.shots)",
+            "maximum": 8192,
+            "minimum": 1,
+            "title": "Shots",
+            "type": "integer"
+          },
+          "vocabulary": {
+            "anyOf": [
+              {
+                "items": {},
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Fixed vocabulary covering the full input space (e.g. all MIDI pitches, all ascii chars). None = derive the vocabulary from the sequence's own distinct tokens, in the order they first appear (default).",
+            "title": "Vocabulary"
+          },
+          "washout": {
+            "default": 5,
+            "description": "Washout period; must be < sample_length (readout.washout).",
+            "exclusiveMinimum": 1,
+            "maximum": 255,
+            "title": "Washout",
+            "type": "integer"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [],
+      "outputFiles": [
+        {
+          "name": "state",
+          "content_types": [
+            "application/json"
+          ],
+          "required": true,
+          "description": "Trained reservoir state; reuse in qrc-gen-v2 via input_files.state (train once, generate many)."
+        }
+      ],
+      "runPolicy": {
+        "timeout": 3600,
+        "max_retries": 1,
+        "heartbeat": 3000
+      },
+      "errorCodes": []
+    },
+    "retrocausal-echo-v1": {
+      "engineId": "retrocausal-echo-v1",
+      "name": "Retrocausal Echo",
+      "version": "0.1.2",
+      "creditsPerRun": 2,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "allow_high_shots": {
+            "default": false,
+            "description": "Permit shots above 8192.",
+            "title": "Allow High Shots",
+            "type": "boolean"
+          },
+          "bpm": {
+            "anyOf": [
+              {
+                "exclusiveMinimum": 20,
+                "maximum": 400,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Tempo. When set, one depth step = `division` of a bar instead of master_ms/depth.",
+            "title": "Bpm"
+          },
+          "decay": {
+            "default": 0.9,
+            "description": "Extra level roll-off per depth step, on top of |F|. 1.0 = none.",
+            "exclusiveMinimum": 0,
+            "maximum": 1,
+            "title": "Decay",
+            "type": "number"
+          },
+          "depth": {
+            "default": 8,
+            "description": "Echo depths t = 1..depth — the tap time slots.",
+            "maximum": 32,
+            "minimum": 1,
+            "title": "Depth",
+            "type": "integer"
+          },
+          "diffusion_ms": {
+            "default": 0,
+            "description": "Square lattice only: y spreads taps by up to ±diffusion_ms/2 inside their depth slot.",
+            "maximum": 500,
+            "minimum": 0,
+            "title": "Diffusion Ms",
+            "type": "number"
+          },
+          "disorder": {
+            "default": 0,
+            "description": "Additive per-gate angle jitter, std in radians. Localises the echo; the only lever that makes `seed` audible.",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Disorder",
+            "type": "number"
+          },
+          "division": {
+            "default": 0.25,
+            "description": "Step as a fraction of a beat when bpm is set. 0.25 sixteenth · 0.5 eighth · 0.75 dotted eighth · 0.3333 eighth-triplet · 1.0 quarter.",
+            "exclusiveMinimum": 0,
+            "maximum": 4,
+            "title": "Division",
+            "type": "number"
+          },
+          "emit": {
+            "default": "audio",
+            "description": "`audio` renders a WAV — your input processed, or the effect's own impulse response when no audio is supplied. `map` skips rendering entirely and returns only the time-mapped tap list, which is what a sequencer or a DAW plugin wants: same tap map, no audio work, no WAV to download.",
+            "enum": [
+              "audio",
+              "map"
+            ],
+            "title": "Emit",
+            "type": "string"
+          },
+          "exact": {
+            "default": true,
+            "description": "aer only: exact expectation values instead of sampling.",
+            "title": "Exact",
+            "type": "boolean"
+          },
+          "feedback": {
+            "default": 0,
+            "description": "Regeneration loop gain. The bus of selected taps is normalised first, so this is the fraction of signal that comes back round — always convergent, and 0.6 sounds like 0.6 on a rack unit rather than diverging.",
+            "exclusiveMaximum": 1,
+            "minimum": 0,
+            "title": "Feedback",
+            "type": "number"
+          },
+          "feedback_source": {
+            "default": "kick",
+            "description": "Which taps regenerate. `kick`: only the kick site's column (the classic single regeneration tap). `all`: every tap.",
+            "enum": [
+              "kick",
+              "all"
+            ],
+            "title": "Feedback Source",
+            "type": "string"
+          },
+          "fractional_gates": {
+            "default": true,
+            "description": "Use native rzz/rx where available.",
+            "title": "Fractional Gates",
+            "type": "boolean"
+          },
+          "grain_ms": {
+            "default": 120,
+            "description": "Grain length for `reverse` mode. Short → stuttered; long → whole phrases backwards.",
+            "exclusiveMinimum": 1,
+            "maximum": 2000,
+            "title": "Grain Ms",
+            "type": "number"
+          },
+          "height": {
+            "anyOf": [
+              {
+                "maximum": 32,
+                "minimum": 2,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Square lattice height. Required for `square`.",
+            "title": "Height"
+          },
+          "include_tap_map": {
+            "default": true,
+            "description": "Also emit the rendered tap map inline in the result (it is always written to taps.json).",
+            "title": "Include Tap Map",
+            "type": "boolean"
+          },
+          "ir_seconds": {
+            "default": 3,
+            "description": "With no `audio` input, render the effect's own stereo impulse response for this long.",
+            "exclusiveMinimum": 0,
+            "maximum": 30,
+            "title": "Ir Seconds",
+            "type": "number"
+          },
+          "kick": {
+            "default": "Z",
+            "description": "Perturbation Pauli applied to the kick site between U and U†.",
+            "enum": [
+              "Z",
+              "Y",
+              "X"
+            ],
+            "title": "Kick",
+            "type": "string"
+          },
+          "kick_site": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Regeneration source: the site that receives the impulse. Default: centre.",
+            "title": "Kick Site"
+          },
+          "lattice": {
+            "default": "chain",
+            "description": "Delay-line topology. `chain`: site → pan. `square` (Nighthawk-native): x → pan, y → diffusion.",
+            "enum": [
+              "chain",
+              "square"
+            ],
+            "title": "Lattice",
+            "type": "string"
+          },
+          "machine": {
+            "default": "aer",
+            "description": "Backend for the measurement: 'aer' (local, noiseless) or an IBM backend name such as 'ibm_phoenix'.",
+            "title": "Machine",
+            "type": "string"
+          },
+          "master_ms": {
+            "default": 640,
+            "description": "Length of the master delay line in ms. One depth step = master_ms / depth. Ignored when bpm is set.",
+            "exclusiveMinimum": 0,
+            "maximum": 8000,
+            "title": "Master Ms",
+            "type": "number"
+          },
+          "max_regen": {
+            "default": 24,
+            "description": "Cap on regeneration iterations.",
+            "maximum": 64,
+            "minimum": 1,
+            "title": "Max Regen",
+            "type": "integer"
+          },
+          "min_level": {
+            "default": 0.05,
+            "description": "|F| threshold below which a tap is dropped.",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Min Level",
+            "type": "number"
+          },
+          "mix": {
+            "default": 0.6,
+            "description": "Dry/wet. 0 = dry, 1 = wet only.",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Mix",
+            "type": "number"
+          },
+          "n_sites": {
+            "default": 8,
+            "description": "Chain length in qubits (= pan positions). Ignored for `square`.",
+            "maximum": 156,
+            "minimum": 2,
+            "title": "N Sites",
+            "type": "integer"
+          },
+          "negative_mode": {
+            "default": "invert",
+            "description": "What a negative F does. `invert`: flip polarity (phase-cancelling echo). `reverse`: play that tap's grains backwards. `phase`: rotate by arg(F) via a Hilbert transform — the only mode that uses F_im, so pair it with theta_z > 0.",
+            "enum": [
+              "invert",
+              "reverse",
+              "phase"
+            ],
+            "title": "Negative Mode",
+            "type": "string"
+          },
+          "output_format": {
+            "default": "pcm_16",
+            "description": "WAV sample format.",
+            "enum": [
+              "pcm_16",
+              "pcm_32",
+              "float_32"
+            ],
+            "title": "Output Format",
+            "type": "string"
+          },
+          "qpu_instance": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "IBM Quantum instance CRN. As with the token: required for `via: direct`, optional BYOK for `via: mothbackend`.",
+            "format": "password",
+            "title": "Qpu Instance",
+            "writeOnly": true,
+            "sensitive": true
+          },
+          "qpu_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "IBM Quantum API token when machine is an IBM backend; falls back to QISKIT_IBM_TOKEN.",
+            "format": "password",
+            "title": "Qpu Token",
+            "writeOnly": true,
+            "sensitive": true
+          },
+          "ref_floor": {
+            "anyOf": [
+              {
+                "exclusiveMinimum": 0,
+                "maximum": 1,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "|c_ref| below which a tap is dropped as unnormalisable. Default: 4/sqrt(shots), ~0 for exact simulation. Raise it to prune taps the noise floor cannot support.",
+            "title": "Ref Floor"
+          },
+          "seed": {
+            "anyOf": [
+              {
+                "maximum": 9007199254740991,
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "RNG seed for the disorder realisation. Only audible when disorder > 0. Drawn as a 31-bit integer and returned in provenance if omitted. Capped at 2**53-1: above that, moth-api (Go) and any browser client re-spell the integer as a float64 and it stops matching the seed you sent.",
+            "title": "Seed"
+          },
+          "shots": {
+            "default": 4096,
+            "description": "Shots per circuit. Ignored when machine='aer' and exact=true. Above 8192 requires allow_high_shots.",
+            "minimum": 1,
+            "title": "Shots",
+            "type": "integer"
+          },
+          "sr": {
+            "default": 44100,
+            "description": "Sample rate. Ignored when an `audio` file is supplied — that file's own rate is used.",
+            "maximum": 192000,
+            "minimum": 8000,
+            "title": "Sr",
+            "type": "integer"
+          },
+          "stereo_width": {
+            "default": 1,
+            "description": "Scales the site → pan spread. 0 = mono.",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Stereo Width",
+            "type": "number"
+          },
+          "tail_ms": {
+            "anyOf": [
+              {
+                "maximum": 30000,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Silence appended to the input so the last tap and its regenerations fit. Default: computed from the tap map.",
+            "title": "Tail Ms"
+          },
+          "theta_x": {
+            "default": 0.9424777960769379,
+            "description": "Transverse kick per layer (RX, rad) — the 'how quantum' dial. Low → loud regular taps; high → inverted, attenuated, erased.",
+            "maximum": 3.141592653589793,
+            "minimum": 0,
+            "title": "Theta X",
+            "type": "number"
+          },
+          "theta_z": {
+            "default": 0,
+            "description": "Phase layer (RZ, rad). 0 → real, two-signed taps. >0 → complex F, which `negative_mode: phase` renders as rotation.",
+            "maximum": 3.141592653589793,
+            "minimum": 0,
+            "title": "Theta Z",
+            "type": "number"
+          },
+          "theta_zz": {
+            "default": 1.0995574287564276,
+            "description": "Coupling per layer (RZZ, rad). Non-monotonic: ≈0.25π is the sparse setting. π is a Clifford (no scrambling). θ and π−θ coincide only when theta_x = 0, not at the default drive, so the upper half of the range is its own territory. The sign is invisible unless theta_z > 0.",
+            "exclusiveMinimum": -3.141592653589793,
+            "maximum": 3.141592653589793,
+            "title": "Theta Zz",
+            "type": "number"
+          },
+          "twirls": {
+            "default": 1,
+            "description": "ZZ-commutant Pauli twirls per circuit, averaged. Only useful on hardware: it randomises off-axis coherent error in the couplings. Multiplies the circuit count, so it multiplies QPU time.",
+            "maximum": 32,
+            "minimum": 1,
+            "title": "Twirls",
+            "type": "integer"
+          },
+          "via": {
+            "default": "direct",
+            "description": "How to reach the machine. `direct`: this engine drives qiskit-ibm-runtime itself (analytic emulation, native fractional gates, one batched QPU session). `mothbackend`: route through Moth's execution service, which holds the credentials — sampled only, so no analytic mode, no fractional gates, and one submission per circuit.",
+            "enum": [
+              "direct",
+              "mothbackend"
+            ],
+            "title": "Via",
+            "type": "string"
+          },
+          "width": {
+            "anyOf": [
+              {
+                "maximum": 32,
+                "minimum": 2,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Square lattice width. Required for `square`.",
+            "title": "Width"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [
+        {
+          "name": "audio",
+          "mime_types": [
+            "audio/wav",
+            "audio/x-wav",
+            "audio/wave",
+            "audio/mpeg",
+            "audio/ogg",
+            "audio/flac"
+          ],
+          "required": false,
+          "description": "Mono or stereo audio to process — WAV, MP3, OGG or FLAC. Stereo is summed to mono first, since the taps place their own stereo image. The file's own sample rate wins over the `sr` param."
+        },
+        {
+          "name": "ir",
+          "mime_types": [
+            "application/json"
+          ],
+          "required": false,
+          "description": "A previously measured impulse response — an otoc-echo `trajectory` envelope. Supply it to re-render without paying for the measurement again, and every echo param is ignored. Pass the asset id of a previous retrocausal-echo job's own `ir` output (output assets carry `slot` and `job_id`, so they chain straight into `input_files`), or upload the JSON yourself. `job:<id>/ir` is the documented alias for the same thing but may not resolve — prefer the asset id."
+        }
+      ],
+      "outputFiles": [
+        {
+          "name": "result",
+          "content_types": [
+            "audio/wav",
+            "application/json"
+          ],
+          "required": true,
+          "description": "The primary output. With `emit: audio` (the default) this is the rendered stereo WAV. With `emit: map` no audio is rendered at all and this is the tap map as JSON — the same envelope the `taps` slot carries — so a sequencer or plugin can place the events itself without downloading audio."
+        },
+        {
+          "name": "ir",
+          "content_types": [
+            "application/json"
+          ],
+          "required": true,
+          "description": "The impulse response actually used, as an otoc-echo `trajectory` envelope. Its output asset chains straight into another job's `input_files.ir` — one measurement, many mixes."
+        },
+        {
+          "name": "taps",
+          "content_types": [
+            "application/json"
+          ],
+          "required": true,
+          "description": "The full `media` result envelope: provenance, the audio's shape, the echo summary, the spec, and the rendered tap map (time_ms, level, pan, F, polarity per tap). This is where a caller reads the numbers; a DAW or plugin can load it directly."
+        }
+      ],
+      "runPolicy": {
+        "timeout": 7200,
+        "max_retries": 1,
+        "heartbeat": 3600
+      },
+      "errorCodes": [
+        {
+          "type": "invalid_params",
+          "description": "params fail Params' own field validation (type/range) or a cross-field check (square lattice without width/height, kick_site outside the line, shots over the cap without allow_high_shots)."
+        },
+        {
+          "type": "invalid_ir",
+          "description": "the `ir` input is not UTF-8 JSON, or not an otoc-echo `trajectory` envelope. A bare envelope, a handler return wrapped in `output`, and a whole job result wrapped in `result` are all accepted."
+        },
+        {
+          "type": "invalid_audio",
+          "description": "the `audio` input could not be decoded as a PCM or float WAV, is over the size cap, or decoded to zero samples."
+        },
+        {
+          "type": "audio_too_long",
+          "description": "the input, or the input plus its computed tail, exceeds the render length cap. Set tail_ms explicitly or send a shorter file."
+        },
+        {
+          "type": "no_taps",
+          "description": "no tap survived min_level — the echo was fully erased at this theta_x, or min_level is too high. The echo summary is in the message."
+        },
+        {
+          "type": "too_many_taps",
+          "description": "the tap map is larger than the render cap. Raise min_level or lower depth."
+        },
+        {
+          "type": "too_many_qubits",
+          "description": "the delay line needs more qubits than the machine allows — 24 for aer, the device's own width for an IBM backend. Supplying a measured `ir` sidesteps this entirely."
+        },
+        {
+          "type": "invalid_machine",
+          "description": "machine is neither 'aer' nor an IBM backend name the runtime knows."
+        },
+        {
+          "type": "backend_unavailable",
+          "description": "the requested execution route could not be reached — for `via: direct`, qiskit-ibm-runtime is missing or no credentials were supplied (qpu_token param / QISKIT_IBM_TOKEN); for `via: mothbackend`, the mothbackend package is absent or the service returned a transport error. Retryable."
+        },
+        {
+          "type": "execution_failed",
+          "description": "the estimator returned an error while running the echo circuits."
+        }
+      ]
+    },
+    "tamagotchi-v0": {
+      "engineId": "tamagotchi-v0",
+      "name": "Tamagotchi",
+      "version": null,
+      "creditsPerRun": 1,
+      "enabled": true,
+      "paramsSchema": {
+        "$defs": {
+          "NoiseParams": {
+            "properties": {
+              "p_1q": {
+                "default": 0,
+                "description": "1-qubit gate depolarizing probability",
+                "title": "P 1Q",
+                "type": "number"
+              },
+              "p_gate": {
+                "default": 0,
+                "description": "2-qubit gate depolarizing probability",
+                "title": "P Gate",
+                "type": "number"
+              },
+              "p_idle": {
+                "default": 0,
+                "description": "idle depolarizing probability on data qubits",
+                "title": "P Idle",
+                "type": "number"
+              },
+              "p_meas": {
+                "default": 0,
+                "description": "measurement (readout) flip probability",
+                "title": "P Meas",
+                "type": "number"
+              }
+            },
+            "title": "NoiseParams",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "actions": {
+            "description": "list of [gate, target] over logical qubits; gates: I,X,Z,H,S,CX,SE",
+            "items": {},
+            "title": "Actions",
+            "type": "array"
+          },
+          "code": {
+            "default": "steane",
+            "description": "CSS code key (see CODE_REGISTRY)",
+            "title": "Code",
+            "type": "string"
+          },
+          "expected": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "optional expected per-logical outcome; auto-computed if omitted",
+            "title": "Expected"
+          },
+          "method": {
+            "default": "stabilizer",
+            "description": "Aer simulation method",
+            "title": "Method",
+            "type": "string"
+          },
+          "n_logical": {
+            "default": 1,
+            "description": "number of logical qubits",
+            "title": "N Logical",
+            "type": "integer"
+          },
+          "noise": {
+            "$ref": "#/$defs/NoiseParams"
+          },
+          "seed": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "simulator seed for reproducibility",
+            "title": "Seed"
+          },
+          "shots": {
+            "default": 1024,
+            "description": "number of measurement shots",
+            "title": "Shots",
+            "type": "integer"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [],
+      "outputFiles": [],
+      "runPolicy": {
+        "timeout": 30000,
+        "max_retries": 3,
+        "heartbeat": 60000
+      },
+      "errorCodes": []
+    },
+    "tamagotchi-v1": {
+      "engineId": "tamagotchi-v1",
+      "name": "Tamagotchi",
+      "version": null,
+      "creditsPerRun": 0,
+      "enabled": true,
+      "paramsSchema": {
+        "$defs": {
+          "NoiseParams": {
+            "properties": {
+              "p_1q": {
+                "default": 0,
+                "description": "1-qubit gate depolarizing probability",
+                "title": "P 1Q",
+                "type": "number"
+              },
+              "p_gate": {
+                "default": 0,
+                "description": "2-qubit gate depolarizing probability",
+                "title": "P Gate",
+                "type": "number"
+              },
+              "p_idle": {
+                "default": 0,
+                "description": "idle depolarizing probability on data qubits",
+                "title": "P Idle",
+                "type": "number"
+              },
+              "p_meas": {
+                "default": 0,
+                "description": "measurement (readout) flip probability",
+                "title": "P Meas",
+                "type": "number"
+              }
+            },
+            "title": "NoiseParams",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "actions": {
+            "description": "list of [gate, target] over logical qubits; gates: I,X,Z,H,S,CX,SE",
+            "items": {},
+            "title": "Actions",
+            "type": "array"
+          },
+          "code": {
+            "default": "steane",
+            "description": "CSS code key (see CODE_REGISTRY)",
+            "title": "Code",
+            "type": "string"
+          },
+          "expected": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "optional expected per-logical outcome; auto-computed if omitted",
+            "title": "Expected"
+          },
+          "method": {
+            "default": "stabilizer",
+            "description": "Aer simulation method",
+            "title": "Method",
+            "type": "string"
+          },
+          "n_logical": {
+            "default": 1,
+            "description": "number of logical qubits",
+            "title": "N Logical",
+            "type": "integer"
+          },
+          "noise": {
+            "$ref": "#/$defs/NoiseParams"
+          },
+          "seed": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "simulator seed for reproducibility",
+            "title": "Seed"
+          },
+          "shots": {
+            "default": 1024,
+            "description": "number of measurement shots",
+            "title": "Shots",
+            "type": "integer"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [],
+      "outputFiles": [],
+      "runPolicy": {
+        "timeout": 30000,
+        "max_retries": 3,
+        "heartbeat": 60000
+      },
+      "errorCodes": []
+    },
+    "telablur-v1": {
+      "engineId": "telablur-v1",
+      "name": "Quantum Teleblur",
+      "version": null,
+      "creditsPerRun": 1,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "direction": {
+            "default": "full",
+            "description": "Which qubits receive the blur rotation, controlling the spatial direction of the blur effect:\n\n- `full` — all pixel qubits are rotated, producing blur in both directions (default).\n- `vertical` — only the y-encoding qubits are rotated; the blur spreads vertically.\n- `horizontal` — only the x-encoding qubits are rotated; the blur spreads horizontally.",
+            "enum": [
+              "full",
+              "vertical",
+              "horizontal"
+            ],
+            "title": "Direction",
+            "type": "string"
+          },
+          "downscale": {
+            "default": true,
+            "description": "If True, oversized regions are downscaled before teleport and upscaled back. If False, oversized regions are tiled into adjacent sub-images.",
+            "title": "Downscale",
+            "type": "boolean"
+          },
+          "mask_bin_size": {
+            "anyOf": [
+              {
+                "maximum": 100,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": 4,
+            "description": "Mask quantisation step as a percentage of 255 (0–100). Pixel values below this threshold are treated as background, preventing near-zero JPEG/WebP compression artifacts from being detected as separate mask regions. Default 4 (~10/255).",
+            "title": "Mask Bin Size"
+          },
+          "mask_min_region": {
+            "anyOf": [
+              {
+                "minimum": 1,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": 16,
+            "description": "Minimum mask region size in pixels. Connected components smaller than this are discarded after quantisation, removing residual compression artifacts that survive the binning step. Default 16.",
+            "title": "Mask Min Region"
+          },
+          "size": {
+            "default": 1024,
+            "description": "Pixel budget per teleblur pass: a region up to `size × size` pixels is teleported in a single pass. Must be between 8 and 1024. Default 1024.",
+            "maximum": 1024,
+            "minimum": 8,
+            "title": "Size",
+            "type": "integer"
+          },
+          "strength": {
+            "default": 0.5,
+            "description": "Strength of the teleportation effect, between 0.0 and 1.0",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Strength",
+            "type": "number"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [
+        {
+          "name": "image1",
+          "mime_types": [
+            "image/png",
+            "image/jpeg",
+            "image/webp",
+            "image/tiff",
+            "image/bmp"
+          ],
+          "required": true,
+          "description": "The source image. The teleblur effect morphs this image toward image2 through quantum rotation gates. Supported formats: PNG, JPEG, WebP, TIFF, BMP."
+        },
+        {
+          "name": "image2",
+          "mime_types": [
+            "image/png",
+            "image/jpeg",
+            "image/webp",
+            "image/tiff",
+            "image/bmp"
+          ],
+          "required": true,
+          "description": "The target image. The teleblur effect morphs image1 toward this image. If the dimensions differ from image1, image2 is resized to match before processing."
+        },
+        {
+          "name": "mask",
+          "mime_types": [
+            "image/png",
+            "image/jpeg",
+            "image/webp",
+            "image/tiff",
+            "image/bmp"
+          ],
+          "required": false,
+          "description": "Optional mask controlling where the effect is applied, on a per-pixel\nbasis. Must match the size of `image1`. Each output pixel is a soft\nblend `C = m · C_teleblurred + (1 - m) · C_image1`, where `m` is the\nnormalised mask intensity at that pixel: black keeps image1, white takes\nthe fully teleblurred result, and grey values blend smoothly between the\ntwo. Single-channel masks are used directly; RGB masks are converted to\nluminance.\n\n**Alpha-channel fallback**\n\nIf no mask is provided, the alpha channel of `image1` is used instead\n(transparent pixels keep image1, opaque pixels are teleblurred). For\nRGB input with no alpha channel, the whole image is teleblurred.\n"
+        }
+      ],
+      "outputFiles": [
+        {
+          "name": "result",
+          "content_types": [
+            "image/png",
+            "image/jpeg",
+            "image/webp",
+            "image/tiff",
+            "image/bmp"
+          ],
+          "required": true,
+          "description": "The processed image."
+        }
+      ],
+      "runPolicy": {
+        "timeout": 18000,
+        "max_retries": 1,
+        "heartbeat": 18000
+      },
+      "errorCodes": [
+        {
+          "type": "invalid_image1",
+          "description": "The first image file could not be decoded."
+        },
+        {
+          "type": "invalid_image2",
+          "description": "The second image file could not be decoded."
+        },
+        {
+          "type": "mask_size_mismatch",
+          "description": "Mask dimensions do not match image1 dimensions."
+        },
+        {
+          "type": "no_mask_region",
+          "description": "The provided mask has no non-zero pixels — nothing to teleblur."
+        },
+        {
+          "type": "invalid_params",
+          "description": "One or more params fields failed Pydantic validation."
+        },
+        {
+          "type": "processing_failed",
+          "description": "The quantum teleport circuit failed during processing."
+        }
+      ]
+    },
+    "tessa-image-v1": {
+      "engineId": "tessa-image-v1",
+      "name": "Tessa Image",
+      "version": null,
+      "creditsPerRun": 1,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "distortion": {
+            "default": 0,
+            "description": "Alpha for the exp(i*alpha/2*(P⊗Q)) gate applied between adjacent data qubits in transform_channels, where (P, Q) is `gate_pauli`.",
+            "title": "Distortion",
+            "type": "number"
+          },
+          "fixed_palette": {
+            "default": false,
+            "description": "Import the image through a palette of its own colours (capped at 256) and run only the resulting per-pixel palette index through the device -- as exact, losslessly-quantized levels -- instead of decomposing it into the continuous colour-sphere coordinates. Good for flat-color/graphic-style images.",
+            "title": "Fixed Palette",
+            "type": "boolean"
+          },
+          "gate_pauli": {
+            "default": "XZ",
+            "description": "Which two-qubit Pauli pair (P, Q) to use for the exp(i*distortion/2*(P⊗Q)) gate applied between adjacent data qubits in transform_channels, e.g. 'XY', 'ZZ'.",
+            "pattern": "^[IXYZ]{2}$",
+            "title": "Gate Pauli",
+            "type": "string"
+          },
+          "machine": {
+            "default": "aer",
+            "description": "Where to run the circuit. 'aer' is a noiseless local simulator. 'fake_<chip>' options (e.g. 'fake_fez', 'fake_sherbrooke', 'fake_torino') are local simulators calibrated to a real current IBM chip's noise. 'ibm_<chip>' options (e.g. 'ibm_fez', 'ibm_miami', 'ibm_marrakesh') submit to that real IBM Quantum hardware; 'least_busy' submits to whichever operational device currently has the shortest queue.",
+            "enum": [
+              "aer",
+              "ibm_fez",
+              "ibm_miami",
+              "ibm_marrakesh",
+              "least_busy",
+              "fake_fez",
+              "fake_marrakesh",
+              "fake_torino",
+              "fake_brisbane",
+              "fake_kyiv",
+              "fake_sherbrooke",
+              "fake_kyoto",
+              "fake_osaka",
+              "fake_quebec",
+              "fake_cusco",
+              "fake_strasbourg",
+              "fake_brussels"
+            ],
+            "title": "Machine",
+            "type": "string"
+          },
+          "range_correction": {
+            "default": false,
+            "description": "Stretch each decoded field back over its original dynamic range. Off by default -- the raw decoded values are used as-is, with no correction.",
+            "title": "Range Correction",
+            "type": "boolean"
+          },
+          "separate_rgb": {
+            "default": true,
+            "description": "Give each of the three colour coordinates its own circuit. Turn this off to put the two angles on one circuit instead: a qubit is cos(theta/2)|0> + e^(i phi)|1>, so the sphere's polar angle can ride in the rotation and hue in the phase of the same cell, turning three circuits into two at the cost of a second measurement setting and a noisier reconstruction. Ignored when fixed_palette is set.",
+            "title": "Separate Rgb",
+            "type": "boolean"
+          },
+          "shots": {
+            "default": 4096,
+            "description": "Number of measurement shots to sample, per processed field.",
+            "exclusiveMinimum": 0,
+            "title": "Shots",
+            "type": "integer"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [
+        {
+          "name": "image",
+          "mime_types": [
+            "image/png",
+            "image/jpeg",
+            "image/webp",
+            "image/tiff",
+            "image/bmp"
+          ],
+          "required": true,
+          "description": "The image to encode. By default every pixel becomes a point on the colour sphere -- a radius and two angles, the same coordinates that describe a qubit's own state -- and each of those three goes through the quantum encode/measure/decode round trip, any that doesn't vary passed through unencoded, before the image is recomposed. With fixed_palette the image is instead quantized to a palette of its own colours (capped at 256) and only the per-pixel palette index makes the trip. The alpha channel, if any, passes through unchanged."
+        }
+      ],
+      "outputFiles": [
+        {
+          "name": "result",
+          "content_types": [
+            "image/png"
+          ],
+          "required": true,
+          "description": "The recomposed image after the quantum round trip."
+        }
+      ],
+      "runPolicy": {
+        "timeout": 18000,
+        "max_retries": 1,
+        "heartbeat": 6000
+      },
+      "errorCodes": [
+        {
+          "type": "invalid_image",
+          "description": "The image file could not be decoded."
+        },
+        {
+          "type": "distortion_without_hardware",
+          "description": "distortion is greater than 0 on a machine that reads out per-group (every machine except real IBM hardware) -- the cross-cell gate it adds is silently dropped there, so it would have no effect."
+        },
+        {
+          "type": "too_many_values",
+          "description": "the image's pixel count exceeds the largest supported simulated lattice (64x64)."
+        },
+        {
+          "type": "insufficient_qubits",
+          "description": "the image still exceeds the selected machine's data-qubit capacity after being downsampled to fit it -- a degenerate-case fallback, not the normal outcome for an oversized image."
+        },
+        {
+          "type": "unsupported_machine",
+          "description": "the requested machine name isn't recognized."
+        },
+        {
+          "type": "ibm_connection_failed",
+          "description": "Could not authenticate/connect to IBM Quantum with the given token/instance."
+        },
+        {
+          "type": "submission_failed",
+          "description": "The transpiled circuit was rejected or the sampling job failed to submit."
+        },
+        {
+          "type": "encoding_failed",
+          "description": "The output image could not be encoded."
+        }
+      ]
+    },
+    "tessa-image-v1-test": {
+      "engineId": "tessa-image-v1-test",
+      "name": "Tessa Image",
+      "version": "0.1.3",
+      "creditsPerRun": 1,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "backend_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Backend/device to target. Required for mode='emu' (the real chip to simulate, e.g. 'sherbrooke') and mode='qpu' unless provider='ibm' (then omit to auto-select the least busy device). Ignored for mode='sim'.",
+            "title": "Backend Name"
+          },
+          "distortion": {
+            "default": 0,
+            "description": "Alpha for the exp(i*alpha/2*(P⊗Q)) gate applied between adjacent data qubits in transform_channels, where (P, Q) is `gate_pauli`.",
+            "title": "Distortion",
+            "type": "number"
+          },
+          "dynamical_decoupling": {
+            "default": true,
+            "description": "Whether mode='qpu' submissions get moth_backbone's dynamical_decoupling ('XY4') - pads idle-qubit time with pulses that cancel dephasing, no extra circuit executions, so it's on by default. Set False only to isolate its effect for a controlled comparison; normal callers should leave this on. Ignored for mode='sim'/'emu' (no idle-time dephasing to counteract either way).",
+            "title": "Dynamical Decoupling",
+            "type": "boolean"
+          },
+          "error_mitigation": {
+            "anyOf": [
+              {
+                "const": "zne",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Real archaeo error mitigation, applied server-side by moth_backbone. Currently 'zne' (Zero-Noise Extrapolation) - genuine accuracy gain but runs the circuit at multiple noise-scaled variants, so real extra QPU time/cost. Opt-in only, never a silent default. Ignored for mode='sim'.",
+            "title": "Error Mitigation"
+          },
+          "fixed_palette": {
+            "default": false,
+            "description": "Import the image through a palette of its own colours (capped at 256) and run only the resulting per-pixel palette index through the device -- as exact, losslessly-quantized levels -- instead of decomposing it into the continuous colour-sphere coordinates. Good for flat-color/graphic-style images.",
+            "title": "Fixed Palette",
+            "type": "boolean"
+          },
+          "gate_pauli": {
+            "default": "XZ",
+            "description": "Which two-qubit Pauli pair (P, Q) to use for the exp(i*distortion/2*(P⊗Q)) gate applied between adjacent data qubits in transform_channels, e.g. 'XY', 'ZZ'.",
+            "pattern": "^[IXYZ]{2}$",
+            "title": "Gate Pauli",
+            "type": "string"
+          },
+          "max_tiles": {
+            "default": 16,
+            "description": "Safety cap on mode='emu'/'qpu' tiling (see the module's own tiling docstring): an oversized image for a fixed-capacity chip is now split into tiles instead of downsampled away, and real cost scales with the NUMBER of tiles (each is its own extra circuit in the shared submission, so real extra queue time/cost on mode='qpu'), not with pixel count directly - nothing bounds that automatically. Rejected outright (before any circuit runs) when the image would need more tiles than this. Raise explicitly to accept a bigger job's cost/time; ignored for mode='sim' (no fixed capacity to tile against - it grows its own lattice to fit instead, up to topology._MAX_LATTICE_DIM).",
+            "exclusiveMinimum": 0,
+            "title": "Max Tiles",
+            "type": "integer"
+          },
+          "mode": {
+            "default": "sim",
+            "description": "'sim' runs on a local noiseless simulator, sized to fit the image (no backend_name needed). 'emu' runs locally against a real IBM chip's own calibration snapshot via moth_backbone (needs an explicit backend_name, e.g. 'sherbrooke' - no 'fake_' prefix). 'qpu' submits to real hardware via moth_backbone.",
+            "enum": [
+              "sim",
+              "emu",
+              "qpu"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "pole_clamp": {
+            "anyOf": [
+              {
+                "maximum": 1.5707963267948966,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "How far each single-field channel's (r/theta, or index for fixed_palette) encoded angle stays from the poles (theta=0/pi). HISTORICAL NOTE, why this defaults to 0 now: this field predates iqpixl's own linear-in-<Z> encoding fix (see Mode.angles' own docstring) - the ORIGINAL rationale was that theta=arccos(<Z>)'s decode slope is infinite at the poles, amplifying shot/readout noise hardest at extreme values, and a nonzero clamp bounded that slope. Once the encoding itself was changed so <Z> is linear in the value (no arccos anywhere in the decode path), that slope-blowup no longer exists, and re-measuring (same noisy local simulation, same realistic ~2-3%/qubit readout error this field's own earlier measurement used) found NO consistent benefit from a nonzero clamp any more - error was flat within noise across 0 to 0.2*pi. Shot-noise variance is actually LOWEST at the poles under the new encoding (a Bloch-sphere qubit's own measurement variance is (1-<Z>^2)/shots, minimized at <Z>=+-1), so clamping away from them now trades away real signal for no compensating benefit. Left as a settable escape hatch (e.g. for a systematic, non-shot-noise effect like T1 decay during measurement, which a per-cell affine/readout calibration - see codec.calibrate_readout - already corrects for anyway) rather than removed outright, but 0 is now the default for every mode, sim included (a field pinned exactly to a pole is a deterministic |0>/|1> measurement with ZERO shot variance regardless of shot count on a noiseless simulator - confirmed directly: a flat/grayscale image's exact noiseless round trip depends on this staying 0 there). Applies to every single-field channel (r always; theta/phi too when separate_rgb=True) - never to the paired theta/phi circuit (separate_rgb=False), whose own theta already gets iqpixl's own pair-mode default (0.2*pi) automatically, nor to fixed_palette's index channel, which stays exact (clamp=0) on purpose - quant_levels='auto' there promises a lossless round trip, and clamping would break that promise.",
+            "title": "Pole Clamp"
+          },
+          "provider": {
+            "anyOf": [
+              {
+                "enum": [
+                  "ibm",
+                  "iqm"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Execution family for mode='qpu'/'emu' - 'ibm' | 'iqm'. Omit for a real IBM device name (inferred), or for mode='emu' to reach IBM's fake_<chip> catalog; set 'iqm' for mode='emu' to reach IQM's own fake_<chip> catalog instead, or for mode='qpu' to target IQM hardware.",
+            "title": "Provider"
+          },
+          "range_correction": {
+            "default": false,
+            "description": "Stretch each decoded field back over its original dynamic range. Off by default -- the raw decoded values are used as-is, with no correction.",
+            "title": "Range Correction",
+            "type": "boolean"
+          },
+          "readout_calibration": {
+            "default": false,
+            "description": "Whether to measure and correct per-cell noise before decoding - iqpixl's own calibrate_affine: one real, GENERIC-data calibration circuit (same graph/mode/clamp as the real channels), fitting a per-cell affine <Z> gain/offset via least squares over that cell's own address configs. Its own circuits ride in the SAME combined submission as every channel this image decodes (see decode_channels) - not a separate batch, not once per channel or per cell. Corrects the real circuit's OWN accumulated gate error in addition to readout error (unlike a bare measurement-only calibration), because iqpixl's own linear-in-<Z> encoding (Mode.angles) makes a depolarizing-style contraction EXACTLY affine in the value. Confirmed empirically (noisy local simulation, realistic ~1%/qubit gate + ~2-3%/qubit readout error): mean reconstruction error dropped ~70% when enabled - confirm before assuming that figure holds at a different noise scale. Real, genuine extra cost (len(graph.groups) more circuits in the shared batch, at the same shots= as everything else) - opt-in, not a silent default, same reasoning as error_mitigation. KNOWN LIMITATION, not planned to change: the calibration circuits' shots are the SAME shots= as the real channels, with no independent knob - SubmitJobBatchRequest.shots is one value for the WHOLE batch by design (moth_backbone's own proto comment: a per-circuit override would silently split one real submission into several), and fixing that means either touching archaeo/moth_interconnect (out of scope) or giving calibration its own separate submission (a second real queue entry - exactly what batching this into one call exists to avoid). Low shots= can therefore under-shoot calibration's own stability - if that matters, use a higher shots= or leave this off. Ignored for mode='sim' (noiseless - the fit's own shot noise is then pure overhead with nothing to correct). With separate_rgb=False, the one paired theta/phi channel gets iqpixl's calibrate_readout (per-qubit confusion matrices) instead - calibrate_affine's own fit is tied to the clamp it was measured against, and that channel's own clamp differs from the other channels' (see decode_channels' own docstring). A fitted calibration is cached process-wide (keyed by backend/clamp/shots, with a TTL), so only the first image on a given backend/settings pays for it.",
+            "title": "Readout Calibration",
+            "type": "boolean"
+          },
+          "separate_rgb": {
+            "default": true,
+            "description": "Give each of the three colour coordinates its own circuit. Turn this off to put the two angles on one circuit instead: a qubit is cos(theta/2)|0> + e^(i phi)|1>, so the sphere's polar angle can ride in the rotation and hue in the phase of the same cell, turning three circuits into two at the cost of a second measurement setting and a noisier reconstruction. Ignored when fixed_palette is set.",
+            "title": "Separate Rgb",
+            "type": "boolean"
+          },
+          "shots": {
+            "default": 4096,
+            "description": "Base number of measurement shots to sample, per processed field. The ACTUAL submitted count scales with the graph's own worst-case cell degree (see decode_channels' own `_shots_for_graph`): every address config in a degree-d cell shares the SAME shot budget (one joint measurement setting reads all 2**d of them at once), so a higher-degree chip (e.g. IQM's square-lattice garnet) dilutes per-value precision more than a lower-degree one (e.g. IBM's heavy-hex fez) at the SAME nominal shots= - silently paying more error for the same setting. Scaled by 2**max_degree / 8 (degree 3 - the common heavy-hex case - is unchanged; higher-degree chips pay more shots, lower-degree ones fewer) so the same shots= means comparable per-value precision across backends, not the same literal circuit count.",
+            "exclusiveMinimum": 0,
+            "title": "Shots",
+            "type": "integer"
+          },
+          "simulator": {
+            "anyOf": [
+              {
+                "enum": [
+                  "aer",
+                  "pennylane_lightning",
+                  "cudaq_sim"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "mode='sim' only - which local simulator moth_backbone executes circuits against. Defaults to 'aer'. 'pennylane_lightning' and 'cudaq_sim' are real, separate simulator backends (not aliases of aer) - useful to compare against aer's own time/fidelity, not just hardware's. Ignored for mode='emu'/'qpu'.",
+            "title": "Simulator"
+          },
+          "twirling": {
+            "default": true,
+            "description": "Whether mode='qpu' submissions get Pauli twirling on two-qubit gates - randomizes each physical CX/ECR instance's Pauli frame so coherent gate errors average into a stochastic channel across shots, no extra circuit executions, so it's on by default (same reasoning as dynamical_decoupling). IBM-only - real, already-wired archaeo capability (sampler.options.twirling); silently has no effect for provider='iqm' (logged server-side, not an error). Ignored for mode='sim'/'emu' (no gate-level noise model to twirl either way).",
+            "title": "Twirling",
+            "type": "boolean"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [
+        {
+          "name": "image",
+          "mime_types": [
+            "image/png",
+            "image/jpeg",
+            "image/webp",
+            "image/tiff",
+            "image/bmp"
+          ],
+          "required": true,
+          "description": "The image to encode. By default every pixel becomes a point on the colour sphere -- a radius and two angles, the same coordinates that describe a qubit's own state -- and each of those three goes through the quantum encode/measure/decode round trip, any that doesn't vary passed through unencoded, before the image is recomposed. With fixed_palette the image is instead quantized to a palette of its own colours (capped at 256) and only the per-pixel palette index makes the trip. The alpha channel, if any, passes through unchanged."
+        }
+      ],
+      "outputFiles": [
+        {
+          "name": "result",
+          "content_types": [
+            "image/png"
+          ],
+          "required": true,
+          "description": "The recomposed image after the quantum round trip."
+        }
+      ],
+      "runPolicy": {
+        "timeout": 18000,
+        "max_retries": 1,
+        "heartbeat": 6000
+      },
+      "errorCodes": [
+        {
+          "type": "invalid_image",
+          "description": "The image file could not be decoded."
+        },
+        {
+          "type": "distortion_without_hardware",
+          "description": "distortion is greater than 0 on a machine that reads out per-group (every machine except real IBM hardware) -- the cross-cell gate it adds is silently dropped there, so it would have no effect."
+        },
+        {
+          "type": "too_many_values",
+          "description": "mode='sim' only -- the image's pixel count exceeds the largest supported simulated lattice (64x64). \"sim\" sizes its own lattice to fit the image; this is what it hits instead once that growth runs out of room."
+        },
+        {
+          "type": "insufficient_qubits",
+          "description": "mode='sim' only -- the image's pixel count exceeds the data-qubit capacity of the largest lattice \"sim\" can grow to (see too_many_values). Not reachable for mode='emu'/'qpu', which tile an oversized image across a fixed-capacity chip instead (see too_many_tiles)."
+        },
+        {
+          "type": "too_many_tiles",
+          "description": "mode='emu'/'qpu' only -- the image needs more tiles than max_tiles allows to fit the selected machine's fixed data-qubit capacity. Each tile is a real backend submission, so this bounds real cost/time explicitly rather than tiling an arbitrarily large image for free; raise max_tiles to accept the extra cost, or shrink the image."
+        },
+        {
+          "type": "unsupported_machine",
+          "description": "the requested machine name isn't recognized."
+        },
+        {
+          "type": "ibm_connection_failed",
+          "description": "Could not authenticate/connect to IBM Quantum with the given token/instance."
+        },
+        {
+          "type": "submission_failed",
+          "description": "The transpiled circuit was rejected or the sampling job failed to submit."
+        },
+        {
+          "type": "encoding_failed",
+          "description": "The output image could not be encoded."
+        }
+      ]
+    },
+    "test-binary-v1": {
+      "engineId": "test-binary-v1",
+      "name": "Test Binary",
+      "version": null,
+      "creditsPerRun": 0,
+      "enabled": true,
+      "paramsSchema": {},
+      "inputFiles": [
+        {
+          "name": "file",
+          "mime_types": [],
+          "required": true,
+          "description": ""
+        }
+      ],
+      "outputFiles": [],
+      "runPolicy": {
+        "timeout": 300,
+        "max_retries": 3,
+        "heartbeat": 60
+      },
+      "errorCodes": []
+    },
+    "test-engine-error-v1": {
+      "engineId": "test-engine-error-v1",
+      "name": "Test Engine Error",
+      "version": null,
+      "creditsPerRun": 0,
+      "enabled": true,
+      "paramsSchema": {},
+      "inputFiles": [],
+      "outputFiles": [],
+      "runPolicy": {
+        "timeout": 300,
+        "max_retries": 3,
+        "heartbeat": 60
+      },
+      "errorCodes": []
+    },
+    "test-engine-fail-v1": {
+      "engineId": "test-engine-fail-v1",
+      "name": "Test Fail Engine",
+      "version": null,
+      "creditsPerRun": 0,
+      "enabled": true,
+      "paramsSchema": {},
+      "inputFiles": [],
+      "outputFiles": [],
+      "runPolicy": {
+        "timeout": 300,
+        "max_retries": 3,
+        "heartbeat": 60
+      },
+      "errorCodes": []
+    },
+    "test-engine-submission-v1": {
+      "engineId": "test-engine-submission-v1",
+      "name": "Test Engine Submission",
+      "version": null,
+      "creditsPerRun": 1,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "example": {
+            "default": "hello",
+            "description": "An example parameter",
+            "title": "Example",
+            "type": "string"
+          }
+        },
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [],
+      "outputFiles": [],
+      "runPolicy": {
+        "timeout": 30,
+        "max_retries": 3,
+        "heartbeat": 60
+      },
+      "errorCodes": []
+    },
+    "test-engine-v1": {
+      "engineId": "test-engine-v1",
+      "name": "Test Engine",
+      "version": null,
+      "creditsPerRun": 0,
+      "enabled": true,
+      "paramsSchema": {},
+      "inputFiles": [],
+      "outputFiles": [],
+      "runPolicy": {
+        "timeout": 300,
+        "max_retries": 3,
+        "heartbeat": 60
+      },
+      "errorCodes": []
+    },
+    "tomography-api-v2": {
+      "engineId": "tomography-api-v2",
+      "name": "Tomography Api",
+      "version": "0.2.0",
+      "creditsPerRun": 1,
+      "enabled": true,
+      "paramsSchema": {
+        "properties": {
+          "backend_name": {
+            "default": "automatic",
+            "description": "mothprovider backend/method within provider_name",
+            "title": "Backend Name",
+            "type": "string"
+          },
+          "circuit_qasm": {
+            "description": "OpenQASM 2 source of the circuit to analyze",
+            "title": "Circuit Qasm",
+            "type": "string"
+          },
+          "classical_mutual_information": {
+            "default": true,
+            "description": "Whether to compute classical (Shannon) mutual information between each pair's measurement outcomes, separately for the X, Y, and Z basis",
+            "title": "Classical Mutual Information",
+            "type": "boolean"
+          },
+          "double_tomography": {
+            "default": true,
+            "description": "Whether to perform double tomography",
+            "title": "Double Tomography",
+            "type": "boolean"
+          },
+          "mutual_information": {
+            "default": true,
+            "description": "Whether to compute quantum mutual information (von Neumann entropies)",
+            "title": "Mutual Information",
+            "type": "boolean"
+          },
+          "provider_name": {
+            "default": "aer",
+            "description": "mothprovider provider used to execute the circuits",
+            "title": "Provider Name",
+            "type": "string"
+          },
+          "qubit_list": {
+            "description": "List of qubits to measure",
+            "items": {
+              "type": "integer"
+            },
+            "title": "Qubit List",
+            "type": "array"
+          },
+          "qubit_pair_list": {
+            "description": "List of qubit pairs to measure",
+            "items": {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                }
+              ],
+              "type": "array"
+            },
+            "title": "Qubit Pair List",
+            "type": "array"
+          },
+          "shots": {
+            "default": 4096,
+            "description": "Shots per executed measurement circuit",
+            "title": "Shots",
+            "type": "integer"
+          },
+          "single_tomography": {
+            "default": true,
+            "description": "Whether to perform single tomography",
+            "title": "Single Tomography",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "circuit_qasm"
+        ],
+        "title": "Params",
+        "type": "object"
+      },
+      "inputFiles": [],
+      "outputFiles": [],
+      "runPolicy": {
+        "timeout": 10800,
+        "max_retries": 3,
+        "heartbeat": 10800
+      },
+      "errorCodes": []
+    }
+  }
+}

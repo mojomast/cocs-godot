@@ -1,0 +1,16 @@
+{
+  "engineId": "test-engine-v1",
+  "name": "Test Engine",
+  "version": null,
+  "creditsPerRun": 0,
+  "enabled": true,
+  "paramsSchema": {},
+  "inputFiles": [],
+  "outputFiles": [],
+  "runPolicy": {
+    "timeout": 300,
+    "max_retries": 3,
+    "heartbeat": 60
+  },
+  "errorCodes": []
+}

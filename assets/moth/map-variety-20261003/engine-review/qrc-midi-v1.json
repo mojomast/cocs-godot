@@ -1,0 +1,127 @@
+{
+  "engineId": "qrc-midi-v1",
+  "name": "QRC MIDI",
+  "version": null,
+  "creditsPerRun": 5,
+  "enabled": true,
+  "paramsSchema": {
+    "properties": {
+      "bpm": {
+        "default": 120,
+        "description": "Tempo of the generated file in beats per minute. Note durations are preserved either way — this only sets the beat grid a DAW sees.",
+        "exclusiveMinimum": 0,
+        "title": "Bpm",
+        "type": "number"
+      },
+      "length": {
+        "default": 10,
+        "description": "How many notes to generate",
+        "exclusiveMinimum": 0,
+        "maximum": 500,
+        "title": "Length",
+        "type": "integer"
+      },
+      "loop": {
+        "default": true,
+        "description": "Treat the melody as looping material — the end flows back into the start. Learning only.",
+        "title": "Loop",
+        "type": "boolean"
+      },
+      "quality": {
+        "default": "moderate",
+        "description": "How hard to train when learning a fresh file (no `model`): instant skips training for a quick untrained shuffle; fast is quick and rough; complete is slow and tight.",
+        "enum": [
+          "instant",
+          "fast",
+          "moderate",
+          "complete"
+        ],
+        "title": "Quality",
+        "type": "string"
+      },
+      "seed": {
+        "anyOf": [
+          {
+            "maximum": 4294967295,
+            "minimum": 0,
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Change for a different result, keep fixed to reproduce one. On a fresh file it also fixes the learned reservoir; when reusing a `model` it just varies the take, so you can fan out independent takes by changing it.",
+        "title": "Seed"
+      },
+      "variation": {
+        "default": 1,
+        "description": "How freely the result departs from the learned order: low = tight and repetitive, high = loose and surprising.",
+        "exclusiveMinimum": 0,
+        "title": "Variation",
+        "type": "number"
+      },
+      "velocity": {
+        "default": 100,
+        "description": "How hard every generated note is struck (1–127). One value for the whole file.",
+        "maximum": 127,
+        "minimum": 1,
+        "title": "Velocity",
+        "type": "integer"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [
+    {
+      "name": "midi",
+      "mime_types": [
+        "audio/midi",
+        "audio/x-midi"
+      ],
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "model",
+      "mime_types": [
+        "application/json"
+      ],
+      "required": false,
+      "description": ""
+    }
+  ],
+  "outputFiles": [
+    {
+      "name": "result",
+      "content_types": [
+        "audio/midi"
+      ],
+      "required": true,
+      "description": "The generated MIDI."
+    },
+    {
+      "name": "state",
+      "content_types": [
+        "application/json"
+      ],
+      "required": true,
+      "description": "Advanced reservoir state; reuse on a later call as job:<id>/state."
+    },
+    {
+      "name": "model",
+      "content_types": [
+        "application/json"
+      ],
+      "required": false,
+      "description": "Pristine trained model for fan-out; reuse as job:<id>/model."
+    }
+  ],
+  "runPolicy": {
+    "timeout": 3600,
+    "max_retries": 1,
+    "heartbeat": 3000
+  },
+  "errorCodes": []
+}

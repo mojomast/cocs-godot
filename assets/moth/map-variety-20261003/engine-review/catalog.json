@@ -1,0 +1,326 @@
+{
+  "retrievedAt": "2026-10-03T15:32:20.211Z",
+  "http": 200,
+  "engines": [
+    {
+      "id": "blur-core-v1",
+      "name": "Quantum Blur Core",
+      "description": "Apply a quantum blur to any N-dimensional grid of non-negative numbers.",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 1,
+      "inputType": "application/json",
+      "outputType": "application/json"
+    },
+    {
+      "id": "blur-midi-v1",
+      "name": "Blur Jazz",
+      "description": "Apply a quantum blur effect to a MIDI file.",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 1,
+      "inputType": "application/json",
+      "outputType": "audio/midi"
+    },
+    {
+      "id": "blur-v0",
+      "name": "Quantum Blur",
+      "description": "Apply a quantum blur algorithm to the image.",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 1,
+      "inputType": "application/json",
+      "outputType": "application/octet-stream"
+    },
+    {
+      "id": "blur-v1",
+      "name": "Quantum Blur",
+      "description": "Apply a quantum blur algorithm to the image.",
+      "enabled": true,
+      "version": "1.1.9",
+      "creditsPerRun": 1,
+      "inputType": "application/json",
+      "outputType": "application/octet-stream"
+    },
+    {
+      "id": "coin-toss-v1",
+      "name": "Coin Toss",
+      "description": "Flip a quantum coin with a Hadamard gate and return heads and tails counts.",
+      "enabled": true,
+      "version": "1.0.15",
+      "creditsPerRun": 2,
+      "inputType": "application/json",
+      "outputType": "application/json"
+    },
+    {
+      "id": "comet-qrng-v1",
+      "name": "Comet Quantum RNG Engine",
+      "description": "Random bytes from Born-rule measurements on IBM hardware (or Aer baseline), with an SP 800-90B min-entropy certificate, Toeplitz extractor and CHSH witness.",
+      "enabled": true,
+      "version": "1.0.0",
+      "creditsPerRun": 5,
+      "inputType": "application/json",
+      "outputType": "application/json"
+    },
+    {
+      "id": "deep-fryer-v1",
+      "name": "Deep Fryer",
+      "description": "Gives images a blown-out, deep-fried meme look by scrambling hue and lightness through a quantum kernel circuit, tile by tile.",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 1,
+      "inputType": "application/octet-stream",
+      "outputType": "application/octet-stream"
+    },
+    {
+      "id": "demo-callback-v1",
+      "name": "Callback Bridge (Demo)",
+      "description": "Demonstrates bridging a library callback to update_progress — correct pattern for black-box libraries that expose iteration hooks",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 0,
+      "inputType": "application/json",
+      "outputType": "application/json"
+    },
+    {
+      "id": "entanglement-shader-v0",
+      "name": "Entanglement Shader",
+      "description": "Quantum iridescent BSDF generator.",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 1,
+      "inputType": "application/json",
+      "outputType": "application/octet-stream"
+    },
+    {
+      "id": "entanglement-shader-v1",
+      "name": "Entanglement Shader",
+      "description": "Quantum iridescent BSDF generator.",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 1,
+      "inputType": "application/json",
+      "outputType": "application/zip"
+    },
+    {
+      "id": "graph-v1",
+      "name": "Quantum Graph Engine",
+      "description": "Prepare a quantum graph state — your own couplings and correlations, or a random one — and sample it via Aer simulation (EMU) or an IBM QPU.",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 5,
+      "inputType": "application/json",
+      "outputType": "application/json"
+    },
+    {
+      "id": "labyrinth-v1",
+      "name": "Quantum Labyrinth Engine",
+      "description": "Turn a Backrooms level definition into a game-readable maze: a ZZ-correlated quantum graph sampled on Aer (EMU) or IBM QPU.",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 5,
+      "inputType": "application/json",
+      "outputType": "application/json"
+    },
+    {
+      "id": "otoc-echo-v1",
+      "name": "Quantum Echo",
+      "description": "Perturb a scrambled qubit chain, reverse it, and listen for what returns — a signed, complex multi-tap delay map.",
+      "enabled": true,
+      "version": "0.1.2",
+      "creditsPerRun": 1,
+      "inputType": "application/json",
+      "outputType": "application/json"
+    },
+    {
+      "id": "qdrive-api-v1",
+      "name": "QDrive",
+      "description": "Build a quantum circuit by specifying target expectation values instead of gates.",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 1,
+      "inputType": "multipart/form-data",
+      "outputType": "application/json"
+    },
+    {
+      "id": "qpixl-v1",
+      "name": "Qpixl",
+      "description": "An array encoded as qubit angles, decoded in a single measurement.",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 1,
+      "inputType": "application/json",
+      "outputType": "application/json"
+    },
+    {
+      "id": "qrc-audio-v1",
+      "name": "QRC Audio",
+      "description": "Sequence audio with a quantum reservoir — split a file into chunks, learn their order, and generate a new arrangement as one WAV.",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 5,
+      "inputType": "multipart/form-data",
+      "outputType": "audio/wav"
+    },
+    {
+      "id": "qrc-gen-v2",
+      "name": "QRC Generate",
+      "description": "Generate a sequence from a trained QRC model, reused by reference (train once, generate many).",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 1,
+      "inputType": "multipart/form-data",
+      "outputType": "application/json"
+    },
+    {
+      "id": "qrc-image-v1",
+      "name": "QRC Image",
+      "description": "Train a quantum reservoir on a sequence of images (or continue one already trained) and generate a new sequence, rendered as an animated GIF.",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 5,
+      "inputType": "multipart/form-data",
+      "outputType": "image/gif"
+    },
+    {
+      "id": "qrc-midi-v1",
+      "name": "QRC MIDI",
+      "description": "Sequence MIDI with a quantum reservoir — learn the notes of a file and generate a new arrangement as a fresh .mid.",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 5,
+      "inputType": "multipart/form-data",
+      "outputType": "audio/midi"
+    },
+    {
+      "id": "qrc-train-v2",
+      "name": "QRC Train",
+      "description": "Train a quantum reservoir on a token sequence and emit a reusable model artifact.",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 5,
+      "inputType": "application/json",
+      "outputType": "application/json"
+    },
+    {
+      "id": "retrocausal-echo-v1",
+      "name": "Retrocausal Echo",
+      "description": "A multi-tap delay whose tap map is measured on a quantum computer — negative returns invert, reverse or rotate the signal.",
+      "enabled": true,
+      "version": "0.1.2",
+      "creditsPerRun": 2,
+      "inputType": "multipart/form-data",
+      "outputType": "audio/wav"
+    },
+    {
+      "id": "tamagotchi-v0",
+      "name": "Tamagotchi",
+      "description": "Cute little thingy",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 1,
+      "inputType": "application/json",
+      "outputType": "application/json"
+    },
+    {
+      "id": "tamagotchi-v1",
+      "name": "Tamagotchi",
+      "description": "Cute little thingy",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 0,
+      "inputType": "application/json",
+      "outputType": "application/json"
+    },
+    {
+      "id": "telablur-v1",
+      "name": "Quantum Teleblur",
+      "description": "Morph one image into another through quantum rotation gates.",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 1,
+      "inputType": "application/json",
+      "outputType": "application/octet-stream"
+    },
+    {
+      "id": "tessa-image-v1",
+      "name": "Tessa Image",
+      "description": "Encode an image's colours as points on a sphere with the Tessa quantum encoder and read them back",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 1,
+      "inputType": "application/json",
+      "outputType": "image/png"
+    },
+    {
+      "id": "tessa-image-v1-test",
+      "name": "Tessa Image",
+      "description": "Encode an image's colours as points on a sphere with the Tessa quantum encoder and read them back",
+      "enabled": true,
+      "version": "0.1.3",
+      "creditsPerRun": 1,
+      "inputType": "application/json",
+      "outputType": "image/png"
+    },
+    {
+      "id": "test-binary-v1",
+      "name": "Test Binary",
+      "description": "Echo engine that accepts any binary file and returns it unprocessed",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 0,
+      "inputType": "application/octet-stream",
+      "outputType": "application/octet-stream"
+    },
+    {
+      "id": "test-engine-error-v1",
+      "name": "Test Engine Error",
+      "description": "Stub engine that always raises EngineError (for domain error testing)",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 0,
+      "inputType": "application/json",
+      "outputType": "application/json"
+    },
+    {
+      "id": "test-engine-fail-v1",
+      "name": "Test Fail Engine",
+      "description": "Stub engine that always fails (for retry/error testing)",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 0,
+      "inputType": "application/json",
+      "outputType": "application/json"
+    },
+    {
+      "id": "test-engine-submission-v1",
+      "name": "Test Engine Submission",
+      "description": "Hello world",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 1,
+      "inputType": "application/json",
+      "outputType": "application/json"
+    },
+    {
+      "id": "test-engine-v1",
+      "name": "Test Engine",
+      "description": "Stub engine that returns a dummy result after 3 seconds",
+      "enabled": true,
+      "version": null,
+      "creditsPerRun": 0,
+      "inputType": "application/json",
+      "outputType": "application/json"
+    },
+    {
+      "id": "tomography-api-v2",
+      "name": "Tomography Api",
+      "description": "Simple core engine to compute relevant quantities of a quantum circuit",
+      "enabled": true,
+      "version": "0.2.0",
+      "creditsPerRun": 1,
+      "inputType": "application/json",
+      "outputType": "application/json"
+    }
+  ]
+}

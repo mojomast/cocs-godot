@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "results": [
+    {
+      "batch": 2,
+      "accepted": 2,
+      "completed": 2,
+      "jobIds": [
+        "2bba80b9-3060-41cd-b65d-b8463f0e2cc6",
+        "f8a88453-7580-4384-8671-00eb9679231d"
+      ],
+      "postOverlapMs": 1531.693603515625,
+      "postDurationsMs": [
+        1532.602294921875,
+        1943.8916015625
+      ],
+      "http429": 0,
+      "elapsedMs": 121016.8271484375,
+      "processingObservations": [
+        {
+          "id": "copper-patina-image-global",
+          "observations": [
+            {
+              "atUTC": "2026-10-03T15:43:54.205Z",
+              "monotonicMs": 1791042234205.9966,
+              "status": "processing",
+              "step": "processing",
+              "startedAt": null,
+              "completedAt": null
+            }
+          ]
+        },
+        {
+          "id": "copper-patina-kernel-global",
+          "observations": []
+        }
+      ],
+      "executionOverlap": "Only status observations supplied; POST overlap alone does not prove worker execution overlap"
+    },
+    {
+      "batch": 4,
+      "accepted": 4,
+      "completed": 4,
+      "jobIds": [
+        "e95a4f5d-1871-4c56-a310-b62fd91591a7",
+        "0813a770-dfac-4bc4-8f37-11aaa74308d4",
+        "3a666634-4519-4984-a96b-84a11737fabd",
+        "a93da26a-bbe4-47a9-821f-fd05f1efc028"
+      ],
+      "postOverlapMs": 1578.09619140625,
+      "postDurationsMs": [
+        2400.1962890625,
+        1578.57373046875,
+        2897.18408203125,
+        1974.347412109375
+      ],
+      "http429": 0,
+      "elapsedMs": 63870.382080078125,
+      "processingObservations": [
+        {
+          "id": "copper-patina-tele-global",
+          "observations": [
+            {
+              "atUTC": "2026-10-03T15:45:56.159Z",
+              "monotonicMs": 1791042356159.5679,
+              "status": "processing",
+              "step": "teleport",
+              "startedAt": null,
+              "completedAt": null
+            }
+          ]
+        },
+        {
+          "id": "copper-patina-kernel-four",
+          "observations": [
+            {
+              "atUTC": "2026-10-03T15:46:49.332Z",
+              "monotonicMs": 1791042409332.487,
+              "status": "processing",
+              "step": "run",
+              "startedAt": null,
+              "completedAt": null
+            }
+          ]
+        },
+        {
+          "id": "quay-waterline-tele-strong",
+          "observations": [
+            {
+              "atUTC": "2026-10-03T15:45:57.573Z",
+              "monotonicMs": 1791042357574.012,
+              "status": "processing",
+              "step": "teleport",
+              "startedAt": null,
+              "completedAt": null
+            }
+          ]
+        },
+        {
+          "id": "prismatic-etch-image-reach",
+          "observations": []
+        }
+      ],
+      "executionOverlap": "Only status observations supplied; POST overlap alone does not prove worker execution overlap"
+    }
+  ]
+}

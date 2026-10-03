@@ -1,0 +1,108 @@
+{
+  "engineId": "coin-toss-v1",
+  "name": "Coin Toss",
+  "version": "1.0.15",
+  "creditsPerRun": 2,
+  "enabled": true,
+  "paramsSchema": {
+    "properties": {
+      "backend_name": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "IBM Quantum backend to run on when mode is qpu, e.g. ibm_brisbane. Leave blank to let the platform choose the least busy one.",
+        "title": "Backend Name"
+      },
+      "mode": {
+        "default": "emu",
+        "description": "Where the circuit runs. emu uses the platform's simulator and returns in seconds; qpu submits to real IBM Quantum hardware and can queue for minutes.",
+        "enum": [
+          "emu",
+          "qpu"
+        ],
+        "title": "Mode",
+        "type": "string"
+      },
+      "qpu_instance": {
+        "anyOf": [
+          {
+            "format": "password",
+            "type": "string",
+            "writeOnly": true,
+            "sensitive": true
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "IBM Quantum instance (hub/group/project) that pairs with qpu_token. Leave blank together with qpu_token to use Moth's account.",
+        "title": "Qpu Instance"
+      },
+      "qpu_token": {
+        "anyOf": [
+          {
+            "format": "password",
+            "type": "string",
+            "writeOnly": true,
+            "sensitive": true
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Your own IBM Quantum API token for mode qpu. Recommended to leave blank: runs then use Moth's own IBM account through the platform backend.",
+        "title": "Qpu Token"
+      },
+      "shots": {
+        "default": 10,
+        "description": "Number of coin tosses to run. More shots bring the heads/tails split closer to 50/50.",
+        "exclusiveMinimum": 0,
+        "title": "Shots",
+        "type": "integer"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [],
+  "outputFiles": [],
+  "runPolicy": {
+    "timeout": 300,
+    "max_retries": 3,
+    "heartbeat": 60
+  },
+  "errorCodes": [
+    {
+      "type": "coin_toss_failed",
+      "description": "The quantum circuit failed to execute."
+    },
+    {
+      "type": "missing_credentials",
+      "description": "No IBM Quantum token available for a QPU run."
+    },
+    {
+      "type": "unknown_backend",
+      "description": "The requested backend does not exist."
+    },
+    {
+      "type": "circuit_too_large",
+      "description": "The circuit does not fit the selected backend."
+    },
+    {
+      "type": "ibm_submission_failed",
+      "description": "mothbackend could not submit the circuit to IBM."
+    },
+    {
+      "type": "ibm_collection_failed",
+      "description": "The QPU job did not complete successfully."
+    }
+  ]
+}

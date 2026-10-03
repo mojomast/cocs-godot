@@ -1,0 +1,98 @@
+{
+  "engineId": "entanglement-shader-v1",
+  "name": "Entanglement Shader",
+  "version": null,
+  "creditsPerRun": 1,
+  "enabled": true,
+  "paramsSchema": {
+    "description": "Request body parameters.",
+    "properties": {
+      "absorption": {
+        "default": 0.95,
+        "description": "Fraction of the maximum absorption achievable at the given reflectance.\n\n- `0` — no absorption.\n- `1` — maximum absorption and minimum transmission.\n",
+        "maximum": 1,
+        "minimum": 0,
+        "title": "Absorption",
+        "type": "number"
+      },
+      "incoming_rays": {
+        "default": 8,
+        "description": "Number of light rays entering the stack simultaneously.\n\n- Must be `>= layers` so that at least one ray is transmitted.\n- Maximum enforced by the 21-qubit budget at validation time.\n",
+        "minimum": 1,
+        "title": "Incoming Rays",
+        "type": "integer"
+      },
+      "interaction": {
+        "default": 1,
+        "description": "Strength of the nonlinear quantum interaction terms.\n\n- `0` — interaction disabled; only reflectance and absorption shape the output.\n- Positive vs. negative values of the same magnitude produce distinct colour patterns.\n",
+        "title": "Interaction",
+        "type": "number"
+      },
+      "layers": {
+        "default": 2,
+        "description": "Number of conducting sheets in the stack.\n\n- Maximum enforced by the 21-qubit budget at validation time.\n",
+        "minimum": 1,
+        "title": "Layers",
+        "type": "integer"
+      },
+      "reflectance": {
+        "default": 0.2,
+        "description": "Fraction of reflected power of a single ray and layer at normal incidence.\n\n- `0` — perfect transmittance and no absorption.\n- `1` — perfect mirror, no transmission or absorption.\n",
+        "maximum": 1,
+        "minimum": 0,
+        "title": "Reflectance",
+        "type": "number"
+      },
+      "resolution": {
+        "anyOf": [
+          {
+            "minimum": 10,
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": 60,
+        "description": "Density of the angle–phase lookup table baked into the shader.\n\n- Higher values reduce banding on close-up or oblique surfaces.\n",
+        "title": "Resolution"
+      },
+      "style": {
+        "default": "peaked",
+        "description": "Selects which nonlinear interaction channels are active.\n\n- `peaked` — reflection and transmission peak at the same angle for large number of layers.\n- `frustrated` — competing interaction channels produce a non-monotone colour pattern.\n- `3-body` — three-body interactions only; subtle, low-contrast effect.\n- `constrained` — higher ray counts suppress transmission, deepening shadows.\n",
+        "enum": [
+          "peaked",
+          "frustrated",
+          "3-body",
+          "constrained"
+        ],
+        "title": "Style",
+        "type": "string"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [],
+  "outputFiles": [
+    {
+      "name": "result",
+      "content_types": [
+        "application/zip"
+      ],
+      "required": true,
+      "description": "ZIP archive containing all shader formats (OSL, Marmoset .frag, GLSL, HLSL, MaterialX) and the shared R/T lookup tables (EXR, HDR)."
+    }
+  ],
+  "runPolicy": {
+    "timeout": 18000,
+    "max_retries": 1,
+    "heartbeat": 18000
+  },
+  "errorCodes": [
+    {
+      "type": "max_qubits_exceeded",
+      "description": "Configuration requires more qubits than the maximum allowed."
+    }
+  ]
+}

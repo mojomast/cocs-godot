@@ -1,0 +1,230 @@
+{
+  "engineId": "labyrinth-v1",
+  "name": "Quantum Labyrinth Engine",
+  "version": null,
+  "creditsPerRun": 5,
+  "enabled": true,
+  "paramsSchema": {
+    "$defs": {
+      "GridSize": {
+        "properties": {
+          "cols": {
+            "minimum": 1,
+            "title": "Cols",
+            "type": "integer"
+          },
+          "rows": {
+            "minimum": 1,
+            "title": "Rows",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "rows",
+          "cols"
+        ],
+        "title": "GridSize",
+        "type": "object"
+      },
+      "LevelData": {
+        "description": "Inline level definition — the parsed level_*.txt `level_data` dict.",
+        "properties": {
+          "coupling_map": {
+            "items": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "title": "Coupling Map",
+            "type": "array"
+          },
+          "grid_size": {
+            "$ref": "#/$defs/GridSize"
+          },
+          "initial_states": {
+            "additionalProperties": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Initial States",
+            "type": "object"
+          },
+          "name": {
+            "default": "<unnamed level>",
+            "title": "Name",
+            "type": "string"
+          },
+          "num_qubits": {
+            "minimum": 2,
+            "title": "Num Qubits",
+            "type": "integer"
+          },
+          "relationships": {
+            "items": {},
+            "title": "Relationships",
+            "type": "array"
+          }
+        },
+        "required": [
+          "grid_size",
+          "num_qubits",
+          "coupling_map"
+        ],
+        "title": "LevelData",
+        "type": "object"
+      }
+    },
+    "properties": {
+      "backend_name": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "IBM backend to target; omit to auto-select the least busy device. Ignored when mode='emu'.",
+        "title": "Backend Name"
+      },
+      "fraction": {
+        "default": 0.3333333333333333,
+        "description": "Strength of each ZZ prep step, as a fraction of a full rotation.",
+        "exclusiveMinimum": 0,
+        "maximum": 1,
+        "title": "Fraction",
+        "type": "number"
+      },
+      "k": {
+        "default": 3,
+        "description": "Tomography correlation length: expectation values tracked over paths of k connected qubits; higher is more faithful but costlier (max 4).",
+        "maximum": 4,
+        "minimum": 1,
+        "title": "K",
+        "type": "integer"
+      },
+      "level_data": {
+        "$ref": "#/$defs/LevelData",
+        "description": "Level definition: grid size, qubit count, coupling map, and initial states."
+      },
+      "mode": {
+        "default": "emu",
+        "description": "'emu' runs on a local Aer simulator; 'qpu' submits to IBM hardware.",
+        "enum": [
+          "emu",
+          "qpu"
+        ],
+        "title": "Mode",
+        "type": "string"
+      },
+      "qpu_instance": {
+        "anyOf": [
+          {
+            "format": "password",
+            "type": "string",
+            "writeOnly": true,
+            "sensitive": true
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "IBM Quantum instance CRN; falls back to IBM_QUANTUM_INSTANCE env var.",
+        "title": "Qpu Instance"
+      },
+      "qpu_token": {
+        "anyOf": [
+          {
+            "format": "password",
+            "type": "string",
+            "writeOnly": true,
+            "sensitive": true
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "IBM Quantum API token; falls back to IBM_QUANTUM_TOKEN env var.",
+        "title": "Qpu Token"
+      },
+      "shots": {
+        "default": 4096,
+        "description": "Number of measurement shots (max 10,000).",
+        "exclusiveMinimum": 0,
+        "maximum": 10000,
+        "title": "Shots",
+        "type": "integer"
+      },
+      "steps": {
+        "default": 3,
+        "description": "Number of ZZ prep sweeps over the lattice (max 5).",
+        "maximum": 5,
+        "minimum": 1,
+        "title": "Steps",
+        "type": "integer"
+      },
+      "top_n": {
+        "default": 16,
+        "description": "Most-probable measurements kept in the output; -1 keeps all.",
+        "minimum": -1,
+        "title": "Top N",
+        "type": "integer"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [],
+  "outputFiles": [],
+  "runPolicy": {
+    "timeout": 300,
+    "max_retries": 3,
+    "heartbeat": 60
+  },
+  "errorCodes": [
+    {
+      "type": "invalid_level",
+      "description": "level_data validation failed — missing grid_size, num_qubits, or coupling_map."
+    },
+    {
+      "type": "graph_init_failed",
+      "description": "QuantumGraph initialization failed."
+    },
+    {
+      "type": "prep_failed",
+      "description": "ZZ state preparation loop failed."
+    },
+    {
+      "type": "emu_cap_exceeded",
+      "description": "num_qubits exceeds the local-simulation cap; use mode=\"qpu\" for larger lattices."
+    },
+    {
+      "type": "simulation_failed",
+      "description": "Aer simulation failed."
+    },
+    {
+      "type": "ibm_auth_failed",
+      "description": "IBM authentication failed — IBM_QUANTUM_TOKEN missing or invalid."
+    },
+    {
+      "type": "backend_too_small",
+      "description": "level_data requires more qubits than the selected IBM backend provides."
+    },
+    {
+      "type": "ibm_submission_failed",
+      "description": "Circuit submission to the IBM QPU failed."
+    },
+    {
+      "type": "ibm_collection_failed",
+      "description": "Could not retrieve QPU result — job may have been cancelled or backend errored."
+    },
+    {
+      "type": "invalid_params",
+      "description": "Parameter validation failed."
+    }
+  ]
+}
