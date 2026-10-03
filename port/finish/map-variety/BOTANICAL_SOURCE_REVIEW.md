@@ -2,6 +2,42 @@
 
 ## Corrective delivery awaiting independent review
 
+### Independent corrective review: three blockers remain
+
+Reviewer `ses_efd0e4deaffeke8j2rdXdxtbbn` completed review of `f6687255`,
+`4e2b83bc` and `dd05f50c`. Most original repairs are independently supported,
+but source approval remains withheld for these specific defects:
+
+1. **Parallax floor composition:** `shell_plan()` emits overlapping authority
+   floors while captured base craft excludes the accepted floor-union pass.
+   `armillary-arc-joint-0--12` (saltstone) and `tidal-cistern-joint-0--12`
+   (cistern) share ten identical triangles at Y=12; their opposite-side pair
+   repeats the issue. Twenty exact duplicates have conflicting materials.
+   Restore candidate-aware union/material priority, also resolving partial
+   coplanar overlaps while retaining the new lightwell openings.
+2. **Vesper roof duplication:** `roof-terrace-block-cap` (brick) and
+   `roof-terrace-deck` (slate) both render the entire 22×16 m face at Y=22,
+   X=7..29/Z=37..53. Select one slate visual surface while retaining support
+   and the actual playable terrace.
+3. **Invalid export acceptance:** `audit_glb()` accepts JSON-only containers
+   with zero meshes or a single count-only accessor without positions, buffers,
+   scene nodes or materials. Empty material loops produce no evidence yet pass.
+   Require nonempty scene-referenced backed geometry, valid accessors/indices/
+   bounds/materials and required pixel evidence. Triangle totals stay advisory.
+
+Original Astra repair owner is correcting these three on its isolated branch.
+No Blender/native execution or shared helper edits are authorized for that lane;
+S retains the sole heavy slot. The repaired branch remains unmerged.
+
+Independent positive evidence includes actual nine-part compound capture,
+coordinate/heading fixes, source chunking, complete Helix decoration and pinned
+base craft, physically checked Parallax descent and Vesper roof access, working
+portal normalization, winding handling, PBR/preserved material split, packing,
+pixel-verification hooks and restored cameras. All 25 Node / 16 baseline repair
+tests passed; a float32 scan found no emitted polygons below the Kit area limit.
+Those checks cover pre-bevel/source geometry, not evaluated native acceptance.
+The reviewer explicitly approved the **advisory triangle policy**.
+
 Astra returned `f6687255` and `4e2b83bc` on
 `astra/map-variety-botanical-repair`, reporting all 13 repairs with regenerated
 authority, physical-route probes, complete art composition and adapter/export

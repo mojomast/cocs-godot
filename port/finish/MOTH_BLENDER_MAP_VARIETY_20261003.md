@@ -52,7 +52,11 @@ Global triangle gates are now advisory in follow-up `dd05f50c`. Parent reviewed
 the diff and reproduced both focused policy/export regressions: a 160,001-triangle
 fixture reports a 10,001-triangle overage without failing for its total, while
 invalid counts and malformed triangle counts reject. The independent review now
-includes this follow-up; the candidate remains source-only and unmerged.
+includes this follow-up and has now finished: most repairs are supported, but
+Parallax floor-union composition, the duplicated Vesper terrace top and empty/
+malformed GLB acceptance still block approval. Original Astra repair owner is
+correcting those three; full findings are in `map-variety/BOTANICAL_SOURCE_REVIEW.md`.
+The candidate remains source-only and unmerged; triangle counts are not blockers.
 
 The user explicitly requested Flash/Sol subagents to populate the newer maps with
 Moth assets, reduce monotony/repetition, and add varied terrain, structures and
