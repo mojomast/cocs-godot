@@ -10,6 +10,10 @@ on:
       candidate:
         required: true
         type: string
+      helix_diagnostic:
+        description: Run the unchanged-bound single-case Helix observer instead of the focused preview routes
+        type: boolean
+        default: false
 permissions:
   contents: write
 jobs:
@@ -50,12 +54,22 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Recorded artifact validation failed' }
           "DEMO_ROOT=$root" >> $env:GITHUB_ENV
       - name: Extracted resources and graphical preview routes
+        if: ${{ !inputs.helix_diagnostic }}
         shell: pwsh
         run: |
           $env:PATH = "$env:SystemRoot\System32;$env:SystemRoot"
           Remove-Item Env:NODE_OPTIONS,Env:NODE_PATH,Env:COCS_SOURCE_DERIVATIVE -ErrorAction SilentlyContinue
           & "$env:DEMO_ROOT\node.exe" verifier/tools/godot-package/verify_preview_windows.mjs "$env:DEMO_ROOT" "$env:RUNNER_TEMP\preview-evidence"
           if ($LASTEXITCODE -ne 0) { throw 'Focused native preview failed' }
+      - name: Single-case Helix startup diagnostic
+        if: ${{ inputs.helix_diagnostic }}
+        shell: pwsh
+        run: |
+          $env:PATH = "$env:SystemRoot\System32;$env:SystemRoot"
+          $env:LP_NUM_THREADS = '1'
+          Remove-Item Env:NODE_OPTIONS,Env:NODE_PATH,Env:COCS_SOURCE_DERIVATIVE -ErrorAction SilentlyContinue
+          & "$env:DEMO_ROOT\node.exe" verifier/tools/godot-package/verify_expansion.mjs "$env:DEMO_ROOT" "$env:RUNNER_TEMP\preview-evidence\helix" --case=helix-conservatory/deathmatch --diagnostics
+          if ($LASTEXITCODE -ne 0) { throw 'Helix diagnostic failed; retain phase logs and CPU profile' }
       - uses: actions/upload-artifact@v4
         if: always()
         with:
