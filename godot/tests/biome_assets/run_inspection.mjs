@@ -15,8 +15,10 @@ let child,authority;
 async function cleanup() {if(child?.pid&&child.exitCode===null&&child.signalCode===null){child.kill('SIGKILL');await once(child,'exit');}if(authority)await authority.close();}
 for(const signal of ['SIGINT','SIGTERM'])process.once(signal,()=>{void cleanup().finally(()=>process.exit(130));});
 const results=[];
+const selectedMap=process.argv.find(a=>a.startsWith('--map='))?.slice(6);
+if(selectedMap&&!maps.includes(selectedMap))throw Error('Unknown chapter');
 try {
-  for(const map of maps)for(const profile of ['wide','compact']) {
+  for(const map of selectedMap?[selectedMap]:maps)for(const profile of process.argv.includes('--wide-only')?['wide']:['wide','compact']) {
     const directory=resolve(evidence,map,profile);mkdirSync(directory,{recursive:true});
     authority=createAuthority({mapId:map,random:()=>.5});
     authority.server.listen(0,'127.0.0.1');await once(authority.server,'listening');

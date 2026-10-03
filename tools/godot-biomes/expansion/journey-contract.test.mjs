@@ -3,8 +3,15 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {planJourney} from './journey-plan.mjs';
 import {EventCursor} from '../../../port/native-arenas/event-cursor.mjs';
+import {recipes} from './recipe.mjs';
 const read=p=>readFileSync(new URL('../../../'+p,import.meta.url));
 const catalog=JSON.parse(read('godot/biomes/expansion/catalog.json'));
+test('native-reviewed exterior relief remains inside unchanged collision envelopes',()=>{
+ for(const assembly of recipes())for(const part of assembly.parts)for(const [x,y,z] of part.vertices){
+  assert.ok(Math.abs(x)<=.5&&y>=0&&y<=1&&Math.abs(z)<=.5,assembly.id+'/'+part.name);
+  assert.ok(Math.abs(z)>=.474,'Relief must sit outside retained main facade');
+ }
+});
 test('four connected source-clear itineraries bind six actual LOD names and both workshops; no authority runs',()=>{
  for(const id of Object.keys(catalog.chapters)){
   const raw=read(`godot/campaign/generated/${id}.json`),data=JSON.parse(raw),plan=planJourney(data,catalog,raw);

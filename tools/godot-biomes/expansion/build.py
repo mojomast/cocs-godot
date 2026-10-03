@@ -59,6 +59,21 @@ def build(asset):
     placement = next(p for p in CATALOG['chapters'][asset['chapter']]['placements'] if p['asset'] == asset['id'])
     sx, sy, sz = placement['scale']
     finish_scene(ROOT, 'scenery', (sx, sz, sy))
+    # Generated-image pack() writes channel values directly. The shared finish
+    # supplies linear shader tints; encode them for the exported sRGB PNG so
+    # Godot's sRGB decode restores the authored color rather than darkening twice.
+    # Local producer fix: never alter the shared finisher or linear normal maps.
+    for image in bpy.data.images:
+        if not image.name.startswith('MothLocal_'):
+            continue
+        pixels = list(image.pixels[:])
+        for i in range(0, len(pixels), 4):
+            for channel in range(3):
+                value = pixels[i + channel]
+                pixels[i + channel] = 12.92 * value if value <= .0031308 else 1.055 * value ** (1 / 2.4) - .055
+        image.pixels.foreach_set(pixels)
+        image.pack()
+    scene['scenery_albedo_transfer'] = 'linear-to-srgb-packed-v1'
     bpy.ops.wm.save_as_mainfile(filepath=str(master))
     output = ROOT / "godot/biomes/expansion/art"
     output.mkdir(parents=True, exist_ok=True)

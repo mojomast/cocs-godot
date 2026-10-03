@@ -13,6 +13,8 @@ var observations: Array = []
 var failure := ""
 var finished := false
 var held: Dictionary = {}
+var input_epoch := -1
+var combat_captured := {}
 
 func _initialize() -> void:
 	for arg: String in OS.get_cmdline_user_args():
@@ -68,19 +70,22 @@ func verify_geometry() -> bool:
 		if asset.id not in plan.assets: continue
 		for lod: int in 2:
 			var expected: Dictionary={}
+			var expected_triangles: Array=[]
 			for part: Dictionary in asset.parts:
 				if lod==1 and bool(part.detail): continue
 				for face: Array in part.triangles:
-					var k := Geometry.key([Pack.vector(part.vertices[int(face[0])]),Pack.vector(part.vertices[int(face[1])]),Pack.vector(part.vertices[int(face[2])])])
+					var vertices := [Pack.vector(part.vertices[int(face[0])]),Pack.vector(part.vertices[int(face[1])]),Pack.vector(part.vertices[int(face[2])])]
+					expected_triangles.append(vertices)
+					var k := Geometry.key(vertices)
 					expected[k]=int(expected.get(k,0))+1
 			var packed := load(Pack.ART+str(asset.id)+"-%d.glb"%lod) as PackedScene
 			if packed==null: return false
 			var instance := packed.instantiate()
 			var actual: Dictionary={}
-			var counts := {"meshes":0,"surfaces":0}
+			var counts := {"meshes":0,"surfaces":0,"triangles":[]}
 			Geometry.collect(instance,Transform3D.IDENTITY,actual,counts)
 			instance.free()
-			if actual!=expected or counts.meshes!=1 or counts.surfaces>4: return false
+			if not Geometry.same_triangles(counts.triangles,expected_triangles) or counts.meshes!=1 or counts.surfaces>4: return false
 			checked+=1
 	return checked==6
 
@@ -103,6 +108,10 @@ func collider_signature(node: Node, out: Array) -> void:
 func wait_start() -> bool:
 	var deadline := Time.get_ticks_msec()+30000
 	while Time.get_ticks_msec()<deadline:
+		if session.client.input_epoch!=input_epoch:
+			release()
+			input_epoch=session.client.input_epoch
+			await process_frame
 		if session.phase==3 and session.received_pose and session.client.last_ack>0: return true
 		if not str(session.startup_error).is_empty(): failure=str(session.startup_error); return false
 		await process_frame
@@ -110,7 +119,8 @@ func wait_start() -> bool:
 	return false
 
 func capture(label: String) -> void:
-	await RenderingServer.frame_post_draw
+	await process_frame
+	RenderingServer.force_draw()
 	var stamp := Time.get_ticks_usec()
 	if root.get_texture().get_image().save_png(output.path_join(label+".png")) != OK: failure="capture failed"
 	observations.append({"capture":label,"capturedUsec":stamp,"sourceTime":latest.get("time"),"ack":session.client.last_ack})
@@ -119,6 +129,10 @@ func perform(stage: Dictionary) -> bool:
 	var deadline := Time.get_ticks_msec() + (150000 if stage.kind=="encounter" else 30000)
 	var tick := 0
 	while Time.get_ticks_msec()<deadline:
+		if session.client.input_epoch!=input_epoch:
+			release()
+			input_epoch=session.client.input_epoch
+			await process_frame
 		if not str(session.startup_error).is_empty() or actor().get("health",0)<=0 or latest.get("campaign",{}).get("phase")!="playing": failure="source death/transport failure"; return false
 		if Input.mouse_mode!=Input.MOUSE_MODE_CAPTURED:
 			release(); root.grab_focus(); mouse(true); await process_frame; mouse(false)
@@ -143,6 +157,11 @@ func perform(stage: Dictionary) -> bool:
 			var target: Dictionary=targets[0]
 			point_at(target_point(target))
 			mouse(true); key(KEY_R,tick%30==0)
+			var combat_key := str(campaign.stepIndex)
+			if not combat_captured.has(combat_key):
+				combat_captured[combat_key]=true
+				await create_timer(.12).timeout
+				await capture("ordinary-combat-"+combat_key)
 		elif stage.kind=="interact":
 			mouse(false);key(KEY_W,false)
 			if stage.look is Dictionary: point_at(v(stage.look)+Vector3(0,1.4,0))
@@ -163,6 +182,8 @@ func run() -> void:
 	plan=JSON.parse_string(FileAccess.get_file_as_string(plan_path))
 	DirAccess.make_dir_recursive_absolute(output)
 	root.size=Vector2i(760,520) if "--compact" in OS.get_cmdline_user_args() else Vector2i(1280,800)
+	RenderingServer.render_loop_enabled=false
+	observations.append({"renderer":RenderingServer.get_video_adapter_name(),"internal3DScale":root.scaling_3d_scale,"viewport":[root.size.x,root.size.y],"renderCadence":"explicit captures only; ordinary input continues between captures","reason":"software llvmpipe exceeds unchanged source input TTL; not continuous rendered playability proof"})
 	var settings: Node=root.get_node("LocalSettings")
 	settings.set_value("ui_scale",150 if root.size.x==760 else 100,false)
 	session=load("res://campaign/demo.tscn").instantiate()
@@ -173,6 +194,11 @@ func run() -> void:
 	session.launch_campaign()
 	if not await wait_start(): finish(); return
 	var world: Node3D=session.world
+	var workshop: Node3D=world.get_node("SwitchyardWorkshop")
+	var workshop_before: Array=[]
+	for prop: Node3D in workshop.get_children(): workshop_before.append([prop.get_instance_id(),str(prop.transform)])
+	if plan.id=="emberline-ascent" and workshop_before.size()!=6:
+		failure="missing preserved Emberline workshop props";finish();return
 	var pack: Node3D=world.get_node("BiomeExpansionFour")
 	if not pack.build(world,true) or pack.loaded_assets!=plan.assets or pack.get_child_count()!=6 or pack.recipe_hash!=plan.recipeHash:
 		failure="required actual scenery missing/invalid"; finish(); return
@@ -184,6 +210,7 @@ func run() -> void:
 	var start_time: float=latest.time
 	await capture("start")
 	for i: int in plan.stages.size():
+		if i%20==0: print("SCENERY_ROUTE_PROGRESS ",i,"/",plan.stages.size()," source=",latest.get("time")," ack=",session.client.last_ack)
 		if not await perform(plan.stages[i]): finish(); return
 		if plan.stages[i].kind!="walk":
 			observations.append({"stage":plan.stages[i],"time":latest.time,"ack":session.client.last_ack,"actor":actor().duplicate(true)})
@@ -204,6 +231,9 @@ func run() -> void:
 	pack.clear();pack.clear()
 	if not pack.loaded_assets.is_empty() or pack.get_child_count()!=0 or old.any(func(w: WeakRef) -> bool: return w.get_ref()!=null): failure="clear ownership leak"
 	if not pack.build(world,true): failure="strict rebuild failed"
+	var workshop_after: Array=[]
+	for prop: Node3D in workshop.get_children(): workshop_after.append([prop.get_instance_id(),str(prop.transform)])
+	if workshop_after!=workshop_before: failure="scenery lifecycle changed original workshop props"
 	await capture("source-camera-return")
 	observations.append({"sourceElapsed":float(latest.time)-start_time,"ack":session.client.last_ack,"loadedAssets":pack.loaded_assets.duplicate(),"returnedToStart":v(actor()).distance_to(v(plan.start))<2.0})
 	release()
