@@ -1,27 +1,6 @@
 extends "res://tests/asset_production/hosted.gd"
 ## Only captures/observes. All actor inputs pass through inherited send_input.
-var observed_respawn := false
-var walk_clip_seconds := 0.0
 var review: Array = []
-
-func _process(delta: float) -> void:
- super._process(delta)
- if phase != 3 or role != "host": return
- var actor: Dictionary = presentation.local_actor
- if float(actor.get("deaths",0))>0 and float(actor.get("health",0))>0: observed_respawn = true
- if observed_respawn: walk_clip_seconds += delta
- capture_enabled = observed_respawn and walk_clip_seconds < 22
-
-func foundry_hud_layout() -> void:
- # Use the same responsive layout for this private map as the reviewed worlds.
- if not is_instance_valid(objective_text.get_parent()): return
- var width := get_viewport().get_visible_rect().size.x-32
- var panel: Control = objective_text.get_parent()
- panel.size.x = maxf(240,width)
- for text: Label in [label,combat_label,objective_text]:
-  text.custom_minimum_size.x = 0
-  text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-  text.add_theme_font_size_override("font_size",12 if width < 700 else 16)
 
 func capture(label_name: String) -> void:
  if capture_root.is_empty() or capture_busy: return
