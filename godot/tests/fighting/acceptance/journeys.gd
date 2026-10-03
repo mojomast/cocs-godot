@@ -297,26 +297,34 @@ func combos() -> void:
 	for operator in roster.operators:
 		for combo in operator.combos:
 			for actor in 2:
-				var sim: Variant = fresh([operator.id, operator.id])
+				# Training mode differs from an ordinary match only by skipping the
+				# round clock (simulation.gd step); the authored combo mechanics
+				# below, including startup/hitstun/damage and replay, are unchanged.
+				var sim: Variant = fresh([operator.id, operator.id], 23017, true)
 				if not fight(sim):
 					return
 				var victim := 1 - actor
 				var label: String = operator.id + ":" + combo.name + " actor=" + str(actor)
-				var fixture: Dictionary = sim.save_state()
-				if not fixture.has("fighters"):
-					unrun.append(label + " saved-state fixture inventory requires core coordination")
-					continue
 				var pre: Dictionary = combo.preconditions
 				var facing := 1 if actor == 0 else -1
-				# Sole fixture mutation, before the trace. No HP edits, no further writes.
-				# Defender follows charge walking through ordinary inputs during setup.
-				var victim_x := (int(rules.stage_half_width) - 330) * facing if pre.corner else int(pre.distance / 2) * facing
-				fixture.fighters[victim].x = victim_x
-				fixture.fighters[actor].x = victim_x - int(pre.distance) * facing
-				fixture.fighters[actor].y = int(pre.attacker_y)
-				fixture.fighters[victim].y = int(pre.defender_y)
-				fixture.fighters[actor].meter = int(pre.meter)
-				sim.load_state(fixture)
+				# The old fixture wrote into a top-level saved.fighters array that the
+				# checksummed save_state envelope does not expose. The public training
+				# placement API now supplies the same distance/height/meter setup. A
+				# corner defender uses the simulation's own wall clamp
+				# (stage_half_width - 350, applied by step() on the first frame) because
+				# that is both the exact reachable x and the placement API's bound.
+				var victim_x := (int(rules.stage_half_width) - 350) * facing if pre.corner else int(pre.distance / 2) * facing
+				var placements: Array = [{"x": 0, "y": 0, "meter": 0}, {"x": 0, "y": 0, "meter": 0}]
+				placements[victim].x = victim_x
+				placements[actor].x = victim_x - int(pre.distance) * facing
+				placements[actor].y = int(pre.attacker_y)
+				placements[victim].y = int(pre.defender_y)
+				placements[actor].meter = int(pre.meter)
+				sim.training_place({"fighters": placements})
+				if not expect(sim.last_error.is_empty(), label + " public training fixture placement accepted"):
+					continue
+				# Real checksummed save of the placed fixture, retained in evidence.
+				var fixture: Dictionary = sim.save_state()
 				var samples: Array = combo.get("setup_inputs", []).duplicate(true)
 				samples.append_array(combo.inputs)
 				var first_attack := int(combo.inputs[0].tick)

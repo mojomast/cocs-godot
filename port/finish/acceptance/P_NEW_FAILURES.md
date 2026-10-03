@@ -31,6 +31,33 @@ Dummy explicitly in the isolated patch; real-audio jobs retain their own contrac
 No production runtime files, fixed-60 authority, damage, deadlines, animation keys
 or package pins changed. All proposed changes need a fresh native candidate.
 
+## Follow-up: journeys combos fixture migrated (source-only)
+
+`47b3633b` converted only `mechanics.gd` to the public training placement API.
+`journeys.gd` `combos()` still carried the same invalid envelope mutation
+(`sim.save_state()` followed by `fixture.has("fighters")` and
+`fixture.fighters[...]`), so once the StringName predicate fix removed the
+100-entry failure cap the combo path would have deferred every combo. This
+follow-up migrates `combos()` the same way:
+
+- `fresh([operator.id, operator.id], 23017, true)` and
+  `sim.training_place({"fighters": placements})`, preserving the original
+  distance / attacker_y / defender_y / meter values. Training mode changes only
+  the round-clock skip in `simulation.gd:115`; startup, hitstun, damage, contact
+  and replay assertions below the fixture are unchanged.
+- A corner defender is placed at `stage_half_width - 350`: the exact x the
+  simulation clamps to on the first step (`simulation.gd:139`) and the placement
+  API bound. The original `- 330` differed by 20 units and was immediately
+  clamped to the same value, so distance-dependent combo checks are identical.
+- A rejected placement now records a real failure through
+  `expect(sim.last_error.is_empty(), ...)` instead of silently deferring.
+- `fixture` is re-read from `sim.save_state()` after placement, so the evidence
+  written beside each trace records a valid checksummed envelope.
+
+`paired_throws`, the paired-throw continuation and the seven deferred mechanic
+families remain owner-deferred. This follow-up still claims no pass; the journey
+gate needs a fresh candidate and a native run.
+
 ## Disk correlation
 
 All retained JSON/log files under these ten completed attempts were hashed and
@@ -44,6 +71,7 @@ its completion boundary. No asset copies or old-evidence deletion were used.
 
 - `python3 -m unittest discover -s tools/fighting/acceptance -p test_acceptance.py`: 16 passed.
 - `python3 -m unittest discover -s tools/fighting/acceptance -p test_native_command.py`: 2 passed, including preserving the real-audio contract.
+- `python3 -m unittest discover -s tools/fighting/acceptance -p test_combos_fixture.py`: 5 passed. The combo fixture uses the public training placement with its `last_error` guard, and the scanner rejects the invalid save-state envelope pattern on synthetic input while finding no analogous mutation across the acceptance suite.
 - Initial broad test discovery: 27 passed, one error because sparse checkout lacks
   `port/fighting/content/ANIMATION_COVERAGE.json`; that test also requires actual
   operator GLBs. It was not bypassed or labelled passed; no assets copied.
