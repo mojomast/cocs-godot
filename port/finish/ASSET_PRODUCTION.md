@@ -3,7 +3,7 @@
 **Current production: grant F belongs to the original scenery owner for the
 scenery unit only.** Vehicle E explicitly released after real build/reopen/native
 journeys; its nine masters/exports and evidence are integrated at `1f129ab2`.
-Parallax and robots are package-promoted; vehicles are under promotion review.
+Parallax, robots and vehicles are package-promoted.
 The remaining three maps await subsequent explicit grants. Source consolidation work described
 below launched no heavy tools; see `RELEASE_COMPLETION.md` for later production
 results and the current ownership table.

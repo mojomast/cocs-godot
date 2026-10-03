@@ -29,8 +29,8 @@ worktrees start at `6cefd9eb` and live under `/home/mojo/.tmp-on-disk/`.
 `ses_f03437da1ffeli91L87Q6CVyRP` for four chapters' twelve assemblies, 24 LOD
 exports and connected native integration. Vehicle E explicitly released at
 `2026-10-03T00:49:06.525631Z`; its produced fleet is integrated at `1f129ab2`.
-Parallax and robots are package-promoted; vehicle promotion is under source
-review. Vehicle compact-HUD source follow-up runs alongside scenery production.
+Parallax, robots and vehicles are package-promoted. The vehicle compact-HUD
+source correction is integrated; its native review follows scenery production.
 Maps follow later heavy grants; responsive fighting-camera native review remains
 pending. See
 `../surface-refinement/WORKSTREAM.md`, `RELEASE_COMPLETION.md` and
