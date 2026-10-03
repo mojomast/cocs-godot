@@ -1,0 +1,9 @@
+{
+  "scope": "informational only; Parallax tangent successor requires a future exclusive heavy grant",
+  "grant": null,
+  "artifactSha256": null,
+  "packedMasterSha256": null,
+  "autoStart": false,
+  "nativeStatus": "not run",
+  "production": "production.py --authorized-parallax-tangent --grant-receipt <exclusive-unreleased-receipt.json>"
+}
