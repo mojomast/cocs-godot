@@ -35,18 +35,22 @@ lighting, not accepted production weather/finish. Parent inspected both overview
 images: distinct layouts are visible, while large uniform surfaces and presentation
 still need art review. This gallery is candidate evidence, not final polish approval.
 
-**R6 review correction:** independent review supports the finish plan and exact
-stream preservation but found one P1: the verifier accepts empty/incomplete active
-scenes and an accessor extending past its declared view. Astra producer is fixing
-those three reproductions source-only. R6 remains unmerged and unbuilt.
+**R6 source integrated:** correction `90dd354a` closes the independent review's
+scene/accessor verifier gap and is merged with the finish sources as **`99d44ede`**.
+Parent reviewed the gate wiring, reproduced all nine source tests (including all
+three original counterexamples), verified exact merged source/helper bytes and
+passed the committed-Git seven-unit shipping check. The valid in-memory composition
+retains 87,566 triangles / 32 primitives and exact position/normal/tangent bytes.
+R6 remains unbuilt; native appearance and performance need a later exclusive grant.
 
-**Foundry R6 source delivery:** `54caaed9` introduces functional finish partitions
+**Foundry R6 source delivery history:** `54caaed9` introduces functional finish partitions
 for steel roofs/machinery, warm kiln/tipple masonry and oxidized bunker shells,
 while retaining cooling copper and accepted orange. The worker reports exact
 oriented coverage of R5's 87,566 triangles, 32 planned material primitives and
 three passing in-memory composition tests. Independent Astra
-`ses_efd0e4deaffeke8j2rdXdxtbbn` is reviewing source correctness before integration.
-R6 is unmerged and has no actual export, master reopen or screenshots. Production
+`ses_efd0e4deaffeke8j2rdXdxtbbn` supported the plan but identified the verifier gap
+closed by the corrective integration above. R6 has no actual export, master reopen
+or screenshots. Production
 is queued after coastal T and botanical builds under a future exclusive grant;
 S remains released. Actual R6 art identity must be separate from R5 despite the
 shared collision/geometry identity.

@@ -37,6 +37,9 @@ checks. Coastal T delivered actual Abyssal/Stormglass builds and 15 native pairs
 independent artifact review is active before integration. T released at
 19:05:47.349432Z after three empty 27-group audits, verified by parent. Astra now
 holds U for serial Helix/Parallax/Vesper production and native validation.
+Foundry R6 finish sources and the corrected scene-backed export validator are
+integrated as `99d44ede`; parent reproduced nine source tests and verified strict
+seven-unit shipping closure. Actual R6 build/render acceptance remains pending.
 The user explicitly requires Blender-authored assets. Application follows the
 new resource pack, on isolated branches with fresh map validation. P, Q and R released;
 S and T also released; botanical U now owns the sole heavy slot. Exact owners,
@@ -172,8 +175,8 @@ Helix, Parallax and Vesper production from approved `32eba401` sources and revie
 shared dependencies: packed masters/exports/reopen, exported channels and geometry,
 staged native collision/route probes and matched captures. Serial bounded commands,
 owned-group logs and three timestamped empty audits on release are required.
-No public promotion or release export. Coastal artifact review and R6's one
-verifier correction remain source/artifact-only.
+No public promotion or release export. Coastal artifact review remains source/
+artifact-only; R6's verifier correction is integrated, with its build queued later.
 
 **Released: `MOTH-BLENDER-20261003-T`**, Sol
 `ses_efd55bb5cffeJRWNA4xZq8O6cE`, foundation `bce5b834`. Actual Abyssal then

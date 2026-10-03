@@ -76,6 +76,18 @@ shortened to one byte all incorrectly pass the current inventory comparison.
 The producer is correcting scene reachability and accessor-backing validation
 before integration. This does not change R5's approved staged disposition.
 
+**Correction approved and source-integrated:** `90dd354a` uses the parent's
+unchanged botanical `EmbeddedGlb` validator through a narrow Foundry adapter.
+The gate runs before inventory, on composed bytes, and before actual-art checks.
+Parent inspected the dependency/wiring and reproduced all nine source tests:
+the three original malformed cases reject, while a real-R5-derived composition
+with the seven-material fixture passes exact stream/coverage checks. Additional
+reference, stride/index, cycle, nonfinite and container-bound cases reject.
+Merged as **`99d44ede`**, with exact producer/helper bytes verified and the
+committed-Git seven-unit shipping check passing. This closes the source P1;
+actual R6 production, native screenshots and visual acceptance remain pending U's
+release and a subsequent exclusive grant. Prior R6 reports remain historical.
+
 The staged-resource packaging issue identified during integration is resolved by
 `96bc9758`: exact R5 file hashes and exclusions are enforced before copying and
 in export filters. Parent passed 54 checks on the current branch; details are in
