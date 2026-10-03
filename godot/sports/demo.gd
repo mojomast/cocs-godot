@@ -207,6 +207,9 @@ func _input(event: InputEvent) -> void:
 	if SettingsAccess.overlay_open():
 		controls.accept(event, false)
 		return
+	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_P and eligible():
+		chase.toggle_view()
+		return
 	controls.accept(event, eligible())
 	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_F5 and phase == "results":
 		clear_round()
@@ -239,7 +242,9 @@ func _process(delta: float) -> void:
 			send_age = 0
 			checked(net.send_input(controls.packet(float(vehicle.get("yaw", 0)) - PI, eligible())))
 	if not net.spectating and not vehicle.is_empty():
-		var pose: Dictionary = chase.follow(vehicle, delta)
+		var settings := SettingsAccess.service()
+		var reduced: bool = settings != null and settings.values.get("reduced_motion", false) == true
+		var pose: Dictionary = chase.follow(vehicle, delta, float(vehicle.get("yaw", 0.0)) - PI, 0.0, "driver", 0, reduced)
 		world.camera.position = pose.eye
 		world.camera.look_at(pose.target)
 	guidance.apply(state.get("race", {}), net.actor_id, phase == "active" and age < 0.5 and not state.get("over", false))
