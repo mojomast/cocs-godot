@@ -1,0 +1,66 @@
+{
+  "sourceCommit": "f0e76bf7",
+  "policy": "Exact committed I import bytes; no engine reimport",
+  "files": [
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks.glb",
+      "bytes": 2210172,
+      "sha256": "fa6888d11ed95dee670b3200b141962e74d6ea17523aef3bcbd7edee149f16b1"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks.glb.import",
+      "bytes": 1098,
+      "sha256": "089f60b70adbf6b0a25a9edf591661ec6a6ca2f373dd34a1921f50e591fb0221"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocalNormal_copper.png",
+      "bytes": 5817,
+      "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocalNormal_copper.png.import",
+      "bytes": 1132,
+      "sha256": "6ee40dba43bfeaa8cd4dfaaeb538c4dc217e37e2b2735d38bbc390f1cfc8ead3"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_copper.png",
+      "bytes": 2771,
+      "sha256": "9cc8af2f0012e372d180e5ecac502cbeff5cf3906c88e0533f4db59489d81a78"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_copper.png.import",
+      "bytes": 1114,
+      "sha256": "50b1177c12008a6d10401204199a6c594c88d7ae89836e2cad23311579c5bb3f"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_coral.png",
+      "bytes": 2828,
+      "sha256": "b84a19a1f5be797406aaa488241b18a59b102f90120efbafb98f64e6df07577e"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_coral.png.import",
+      "bytes": 1111,
+      "sha256": "1bf90c63642e535e639c7af206ce44899379cfa222b1155f36f8b1a4cda0b6ec"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_ivory.png",
+      "bytes": 3317,
+      "sha256": "939ab009d22e1b7930881389b30e58c360eecf2ab708837f2a5d4249b35ab45a"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_ivory.png.import",
+      "bytes": 1110,
+      "sha256": "31ab8f6652c425ea888b36b89463223a27f9289ecedeaf418b85f7758f84ace4"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_navy.png",
+      "bytes": 2480,
+      "sha256": "b6c184ce31d709e8506d8b524746cd8782391e4b3503bf59dc59f2c0b7f940ad"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_navy.png.import",
+      "bytes": 1108,
+      "sha256": "fc4684b473385d5c7b4b77e572c6b1bf83e71708dac494ad942f7f8e92ab48b9"
+    }
+  ]
+}
