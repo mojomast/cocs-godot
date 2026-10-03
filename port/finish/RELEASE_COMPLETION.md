@@ -7,13 +7,14 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
-**User priority: immediate testing build.** Exclusive
-`PREVIEW-PACKAGE-20261003-G` now belongs to packaging Astra. Scenery F has
-explicitly released (54 groups, zero survivors; owner re-audit at
-`2026-10-03T02:49:41.230553Z`). The source table below describes production work;
-this preview handoff supersedes its older F ownership. See `PREVIEW_20261003.md`.
+**Requested test build published:** `quiet-relay-fighting-vehicles-preview-2026-10-03`,
+candidate `cb6e4c9f6bff09aafe4d9ef6262c5996a6219329`, Windows/Linux public downloads.
+Focused actual Windows check `37093996218` passed; broader suite retains the Helix
+startup timeout after 23 baseline and six Parallax passes. Packaging owns local
+`PREVIEW-DIAGNOSTIC-20261003-G4` for that diagnosis. F/G/G2/G3 explicitly released.
+This supersedes older F ownership below. See `PREVIEW_20261003.md`.
 Scenery delivery is preserved but not integrated into the preview. Final production
-and release obligations remain; preview packaging must preserve strict final mode.
+and acceptance obligations remain; strict final packaging is unchanged.
 
 Current assignments below supersede the historical checkpoints later in this file.
 The owner renewed the execution directive: **use subagents to advance the missing

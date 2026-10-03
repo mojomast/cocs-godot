@@ -65,5 +65,8 @@ Fresh extraction and recorded-commit artifact checks passed for both archives.
 The extracted Linux build passed the declared resource/nine-rig probe, graphical
 Home → Fighting AI/local/training → Home, Rootfall Campaign smoke and graphical
 Sunscar vehicle startup. Windows recorded-artifact validation and source preflight
-passed. Focused graphical Windows Fighting/vehicle checks are recorded separately
-before this draft is published. Existing releases remain available.
+passed. **[Focused Windows verification passed](https://github.com/mojomast/cocs-godot/actions/runs/37093996218):**
+all nine fighter resources, graphical Home → Fighting AI/local/training → Home,
+and graphical Sunscar vehicle startup, with clean exits. These are bounded launch
+checks, not full-match or physical-input acceptance. The broader Helix timeout
+above remains open. Existing releases remain available.
