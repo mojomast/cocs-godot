@@ -48,11 +48,11 @@ mode/map, operator or vehicle, resolution/UI scale and reproduction steps.
 
 ## Build identity and checksums
 
-Both archives use candidate `a0866981d28ab5e4c2227bfa41d25aadeba0fe3b`.
+Both archives use candidate `9857b33ef32025e360f05fa1c611b3e3747a9481`.
 
 ```text
-45046d17d7176ec24a6860569ae7857a0d3368ee163b8669bfffeba4f995fe23  cocs-native-windows.zip
-4eb6abe8f8eca4c0029b989711bbe6983d0a7a2d887f0c2d8d0afd073bf93b83  cocs-native-linux.tar.gz
+c20d89175dd103c53fc15a6c8a7133a32738127b597e6063bdf082bca167586b  cocs-native-windows.zip
+83a7e7012c10a8772014d720b0bf2b29d313ccfea0e2414ee213e1c0d1743709  cocs-native-linux.tar.gz
 ```
 
 Fresh extraction and recorded-commit artifact checks passed for both archives.
