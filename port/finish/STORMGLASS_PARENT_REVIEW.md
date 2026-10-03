@@ -50,3 +50,13 @@ and the recorded-timestamp driving clip. All **13** served files (including
 summary, release record, manifest and HTML) passed HTTP/size/SHA-256 comparison.
 Verification: `/tmp/opencode/stormglass-j-gallery-http-verification.json`.
 These images retain J's original runtime identity, not the newly integrated fixes.
+
+## Promotion integrated
+
+Package transaction `a012ec50` integrated as **`5b5c8791`**. Parent independently
+passed **47** source/import/receipt-history/public-coverage checks, including the
+committed-Git all-seven strict inventory check. Both public catalogs now expose
+exactly Stormglass × Puma Race; total coverage is **13 worlds / 73 pairs**.
+All seven asset inventories pass. New-feature native acceptance, shared race
+fixes and final release remain pending. Exact receipt/delta history:
+`STORMGLASS_PACKAGE_PROMOTION.md`.

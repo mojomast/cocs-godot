@@ -55,10 +55,10 @@ boundaries.
 | Fighting presentation and controls | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing at `1bff0281`; controller recovery integrated at `614a8a7f`, all 12 parent presentation source tests pass; native review pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
-| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Six feature-aware asset closures integrated at `4008eba2`, 27 parent checks pass; preparing Stormglass one-pair registration and seventh asset promotion source-only |
+| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | All seven strict asset closures and Stormglass registration integrated at `5b5c8791`; 47 parent source/import/history/coverage checks pass; later native fixes need exact reconciliation |
 | Vesper Viaduct | Astra `ses_f03a3885fffehx9yFhHubuPCft` | H production/evidence integrated through `04fbbfa5`; six native outcomes passed; parent review/registration at `99a4f597`; package-promoted at `b5d16351` |
 | Abyssal Pressureworks | Astra `ses_f03a3024cffeNO1Cc3Qr1zSLTG` | I delivery integrated through `f0e76bf7`; six native outcomes and parent visual review retained; six-mode registration/package promotion integrated at `c7c81c71` |
-| Stormglass Causeway | Astra `ses_f0342d1ffffeyUHJkcUj3vqP7p` | J completed/released; assets and private race evidence integrated through `997bc013`; parent review accepts one Puma Race pair with flat-road concession, promotion pending |
+| Stormglass Causeway | Astra `ses_f0342d1ffffeyUHJkcUj3vqP7p` | J completed/released; assets and private race evidence integrated through `997bc013`; one public Puma Race pair and exact package promotion integrated at `5b5c8791`, flat-road concession retained |
 | Integrated motion/UI native verification | Astra `ses_f03a3885fffehx9yFhHubuPCft` | Exclusive K: new UI/operator/vehicle/first-person native typing, regression checks, captures and live kick/input evidence |
 | Shared race UI/lifecycle repairs | Sol `ses_effc08498ffeMuhuRDvyAoXEpj` | Source-only production fixes for J findings: map title, responsive result panel, restart audio teardown and attachment ownership warnings |
 | Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Actual production at `1f129ab2`; E released; compact-HUD correction at `83ceaa62` passes six parent source checks/grammar, new native layout/screenshots pending |
@@ -82,8 +82,9 @@ checks. No map production, full final matrix, package export or cinematic grant.
 Parent owns review, public registration and promotion; cinematic awaits a later slot.
 Scenery F, preview G/G2/G3/G4, Vesper H, Abyssal I and Stormglass J explicitly released. Current K supersedes
 historical ownership metadata in production plans; do not mutate active-run inputs
-just to relabel ownership. Abyssal package promotion is complete: six units are
-promoted, Stormglass remains pending. Public coverage is 12 worlds / 72 pairs.
+just to relabel ownership. All seven asset units are promoted and strict asset
+inventory passes at `5b5c8791`. Public coverage is 13 worlds / 73 pairs. This does
+not discharge final 142-job acceptance or new-feature native obligations.
 The authorized Windows navigation
 comparison runs on a separate remote host.
 
