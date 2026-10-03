@@ -36,7 +36,7 @@ jobs:
           $json = node --input-type=module -e "import {WORLDS} from './port/multiplayer-worlds/catalog.mjs';console.log(JSON.stringify(Object.keys(WORLDS)))"
           if ($LASTEXITCODE -ne 0) { throw 'Registry listing failed' }
           $registered = @($json | ConvertFrom-Json)
-          if ($registered.Count -ne 10 -or $registered -notcontains 'helix-conservatory') { throw 'Unexpected registered world scope' }
+          if ($registered.Count -ne 13 -or $registered -notcontains 'helix-conservatory') { throw 'Unexpected registered world scope' }
           $maps = @('helix-conservatory') + @($registered | Where-Object { $_ -ne 'helix-conservatory' })
           foreach ($map in $maps) {
             node tools/godot-package/compare_navigation.mjs $map > "evidence/$map.json" 2> "evidence/$map.stderr.log"
