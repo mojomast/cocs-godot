@@ -1,0 +1,25 @@
+{
+  "schema": "map-variety-bindings/v1",
+  "mapId": "parallax-observatory",
+  "revision": 3,
+  "pack": {
+    "base": "assets/moth/map-variety-20261003/candidate-v2/manifest.json",
+    "overlay": "assets/moth/map-variety-20261003/candidate-v3/manifest.json"
+  },
+  "notes": "Astral institute surfaces. All channels linear; albedo stays Non-Color in Blender and is converted to glTF sRGB by the shared adapter. Normals OpenGL +Y.",
+  "materials": {
+    "saltstone": {"role": "surface", "resource": "salt-limestone",         "tilesPerMeter": 0.5,  "normalStrength": 0.4},
+    "cistern":   {"role": "surface", "resource": "ceramic-enamel",         "tilesPerMeter": 0.5,  "normalStrength": 0.35},
+    "metal":     {"role": "surface", "resource": "anodized-brush",         "tilesPerMeter": 0.5,  "normalStrength": 0.3},
+    "mirror":    {"role": "surface", "resource": "optical-mirror-opaque",  "tilesPerMeter": 0.5,  "normalStrength": 0.2},
+    "paving":    {"role": "surface", "resource": "basalt-strata",          "tilesPerMeter": 0.25, "normalStrength": 0.45},
+    "ochre":     {"role": "surface", "resource": "anodized-brush",         "tilesPerMeter": 0.5,  "normalStrength": 0.3},
+    "parallax.instrument-alloy": {"role": "surface", "resource": "anodized-brush",        "tilesPerMeter": 0.5, "normalStrength": 0.3},
+    "parallax.enamel":           {"role": "surface", "resource": "ceramic-enamel",        "tilesPerMeter": 0.5, "normalStrength": 0.35},
+    "parallax.etch":             {"role": "surface", "resource": "etched-coating-haze",   "tilesPerMeter": 0.5, "normalStrength": 0.25},
+    "parallax.optics":           {"role": "surface", "resource": "optical-mirror-opaque", "tilesPerMeter": 0.5, "normalStrength": 0.2},
+    "parallax.glazing":          {"role": "surface", "resource": "frosted-glass",         "tilesPerMeter": 0.5, "normalStrength": 0.2},
+    "parallax.stone":            {"role": "surface", "resource": "salt-limestone",         "tilesPerMeter": 0.5, "normalStrength": 0.4},
+    "parallax.trim":             {"role": "surface", "resource": "trim-wear",              "tilesPerMeter": 0.5, "normalStrength": 0.35}
+  }
+}
