@@ -32,3 +32,19 @@ parsed the changed product HUD, damage-number implementation/regression, and
 Vesper collision/hosted/inspection scripts successfully with `gdparse`.
 
 Published preview `cb6e4c9f` remains immutable and does not contain Vesper.
+
+## Package promotion integrated
+
+`9fcb0aed` integrated as **`b5d16351`**. Parent independently passed **25/25**
+source/import/receipt/registration checks, including all five promotions from
+committed Git bytes and exact **11-world / 66-pair** public coverage. Actual H
+import settings are preserved: 16 embedded/extracted PNGs, 16 PNG sidecars and
+one GLB sidecar. Vesper inputs expanded 89 → 143; original production/native
+identities remain unchanged. Vesper receipt SHA-256:
+`a732d1f38393a4317d8ef5ba6527e35634abe25d64b7f83aafbbe7061d72d689`.
+
+Parallax's catalog/HUD supporting-hook advances are pinned to exact before/after
+hashes and retained in history, not retroactively attributed to its original native
+run. Future preview closure has five promoted/two pending units. Default final
+packaging still rejects Abyssal and Stormglass. Details:
+`port/finish/VESPER_PACKAGE_PROMOTION.md`.
