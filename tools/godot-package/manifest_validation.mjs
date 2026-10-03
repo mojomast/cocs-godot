@@ -28,6 +28,7 @@ import {productionResources} from './production_resources.mjs';
 import {channelProduction,verifyChannelManifest,previewReadme} from './build_channel.mjs';
 import {fighterImports} from './fighter_imports.mjs';
 import {MOVEMENT_COMMIT,MOVEMENT_CONTRACT,resolveSourceDerivative} from './source_derivative.mjs';
+import {verifyAuthoringResources,rejectAuthoringRuntime} from './authoring_resources.mjs';
 
 // The repository that contains this module, not the process working directory.
 export const REPO_ROOT = fileURLToPath(new URL('../../', import.meta.url));
@@ -433,11 +434,15 @@ export function verifySourceState(repo, sourceCommit, derivative, {portCommit, h
     .split('\0').filter(path => tracked.has(path));
   const added = git(repo, ['diff', '--name-only', '-z', '--no-renames', '--diff-filter=A', sourceCommit, head,
     '--', 'game', 'server', 'assets', 'public', 'package.json', 'package-lock.json'])
-    .split('\0').filter(path => path && !path.endsWith('.test.mjs'));
+    .split('\0').filter(path => path && !/^(game|server)\/.*\.test\.mjs$/.test(path));
+  const authoring = verifyAuthoringResources({read:p=>gitObjectBytes(repo,portCommit,p),
+    isAncestor:(a,b)=>{try{return git(repo,['merge-base',a,b])===a;}catch{return false;}},
+    sourceCommit,portCommit:head,added});
+  const runtimeAdded = added.filter(p=>!Object.hasOwn(authoring,p));
   if (!derivative) {
     require_(changed.length === 0, `Recorded port commit changes locked source: ${changed.join(', ')}`);
-    require_(added.length === 0, `Recorded port commit adds uninventoried source: ${added.join(', ')}`);
-    return;
+    require_(runtimeAdded.length === 0, `Recorded port commit adds uninventoried source: ${runtimeAdded.join(', ')}`);
+    return authoring;
   }
   require_(derivative.schema_version === 1, 'Derivative schema_version must be 1');
   require_(derivative.source_commit === sourceCommit, 'Derivative source_commit differs from the manifested source_commit');
@@ -449,7 +454,7 @@ export function verifySourceState(repo, sourceCommit, derivative, {portCommit, h
     'Derivative runtime inventory is missing');
   // A reviewed derivative may introduce new source modules as well as modify
   // locked files; both kinds must appear in the recorded runtime inventory.
-  const actual = [...new Set([...changed, ...added])].filter(path => !path.endsWith('.test.mjs')).sort();
+  const actual = [...new Set([...changed, ...runtimeAdded])].filter(path => !/^(game|server)\/.*\.test\.mjs$/.test(path)).sort();
   requireSortedEqual(actual, Object.keys(runtimeFiles), 'Derivative source inventory');
   for (const [path, hash] of Object.entries(runtimeFiles)) {
     require_(/^(game|server)\/[a-z0-9-]+\.mjs$/.test(path), `Invalid derivative source entry: ${path}`);
@@ -458,6 +463,7 @@ export function verifySourceState(repo, sourceCommit, derivative, {portCommit, h
     require_(gitObjectHash(repo, derivative.derivative_commit, path) === hash, `Derivative source byte mismatch: ${path}`);
     require_(gitObjectHash(repo, head, path) === hash, `Recorded source byte mismatch: ${path}`);
   }
+  return authoring;
 }
 
 // Load and bind the derivative contract from the recorded port commit (never the
@@ -594,7 +600,8 @@ export function verifyGitIdentity(repo, identity, packageDir) {
     'Manifest godot_version differs from the recorded source lock');
 
   const derivative = loadDerivative(repo, identity);
-  verifySourceState(repo, identity.source_commit, derivative, {portCommit: identity.port_commit});
+  const authoring=verifySourceState(repo, identity.source_commit, derivative, {portCommit: identity.port_commit});
+  rejectAuthoringRuntime(Object.keys(identity.files),authoring);
   const derivativeFiles = derivative ? derivative.runtime_files : {};
 
   for (const path of identity.sourceModules) {

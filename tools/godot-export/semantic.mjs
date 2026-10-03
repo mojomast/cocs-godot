@@ -4,6 +4,7 @@ import {createHash} from 'node:crypto';
 import {resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {resolveSourceDerivative} from '../godot-package/source_derivative.mjs';
+import {verifyAuthoringResources} from '../godot-package/authoring_resources.mjs';
 import {MAPS} from '../../game/maps.mjs';
 import {terrainTriangles,terrainWallTriangles,terrainWallSegments} from '../../game/terrain.mjs';
 const root=fileURLToPath(new URL('../../',import.meta.url));
@@ -56,12 +57,16 @@ export function verifySource(lock,derivative=null,repositoryRoot=root) {
   // whether strict mode or a derivative is eligible to build.
   const candidates=execFileSync('git',['ls-files','--cached','--others','--exclude-standard','-z','--',
     'game','server','assets','public',':(top,glob)package*.json'],{cwd:repositoryRoot,encoding:'utf8'}).split('\0').filter(Boolean);
-  const added=[...new Set(candidates.filter(p=>!tracked.includes(p)&&!p.endsWith('.test.mjs')))].sort();
-  if(!derivative){if(changed.length||added.length)throw Error('Locked source differs from working tree');return;}
+  const added=[...new Set(candidates.filter(p=>!tracked.includes(p)&&!/^(game|server)\/.*\.test\.mjs$/.test(p)))].sort();
+  const authoring=verifyAuthoringResources({read:p=>readFileSync(resolve(repositoryRoot,p)),isAncestor:(a,b)=>{
+    try{return git('merge-base',a,b)===a;}catch{return false;}
+  },sourceCommit:lock.source_commit,portCommit:git('rev-parse','HEAD'),added});
+  const runtimeAdded=added.filter(p=>!Object.hasOwn(authoring,p));
+  if(!derivative){if(changed.length||runtimeAdded.length)throw Error('Locked source differs from working tree');return;}
   if(derivative.schema_version!==1||derivative.source_commit!==lock.source_commit||!/^[0-9a-f]{40}$/.test(derivative.derivative_commit??'')||git('merge-base',derivative.derivative_commit,'HEAD')!==derivative.derivative_commit)throw Error('Invalid derivative source ancestry');
   const files=derivative.runtime_files;
   if(!files||typeof files!=='object'||Array.isArray(files)||!Object.keys(files).length)throw Error('Missing derivative runtime inventory');
-  const actual=[...new Set([...changed,...added])].filter(p=>!p.endsWith('.test.mjs')).sort();
+  const actual=[...new Set([...changed,...runtimeAdded])].filter(p=>!/^(game|server)\/.*\.test\.mjs$/.test(p)).sort();
   const expected=Object.keys(files).sort();
   for(const p of expected)if(!/^(game|server)\/[a-z0-9-]+\.mjs$/.test(p)||! /^[0-9a-f]{64}$/.test(files[p]))throw Error(`Invalid derivative source entry: ${p}`);
   if(JSON.stringify(actual)!==JSON.stringify(expected))throw Error('Derivative source inventory differs from locked source');
