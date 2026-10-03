@@ -30,7 +30,7 @@ failed review: Astra owns botanical/urban repair, Sol owns coastal adapter integ
 after the corrected coastal sources were merged as `18201a06`.
 The user explicitly requires Blender-authored assets. Application follows the
 new resource pack, on isolated branches with fresh map validation. P, Q and R released;
-S also released; no heavy grant is active. Exact owners,
+S also released; coastal T now owns the sole heavy slot. Exact owners,
 sequence and storage constraints: `MOTH_BLENDER_MAP_VARIETY_20261003.md`.
 
 **Current checkpoint (supersedes earlier M-in-progress entries below):** M actually
@@ -59,8 +59,8 @@ Diagnosis commits `cd2b2017`, `47b3633b` and combo follow-up `199d2641` were
 reviewed and integrated as `346e8db8`, `6252d4bf` and `8bf90885`;
 native verification remains pending. Parent passed **83 source checks**: 33
 Fighting acceptance/command/combo/UI, three diagnosis, seven spectator/process,
-35 runner/receipt and five Blender-toolkit tests. **R and S are released.**
-Further heavy production requires an explicit next grant.
+35 runner/receipt and five Blender-toolkit tests. **R and S are released; T owns
+coastal Blender/native production.** Further heavy production needs its next grant.
 
 **Historical O/P foundation:** O repaired both N
 failures and released 18 groups with three empty audits, independently checked
@@ -115,7 +115,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P, Q, R and S have explicitly released; no local heavy grant is active.**
+**P, Q, R and S have explicitly released; coastal T holds the local heavy slot.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -157,6 +157,14 @@ directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
+**Active: `MOTH-BLENDER-20261003-T`**, Sol
+`ses_efd55bb5cffeJRWNA4xZq8O6cE`, foundation `bce5b834`. Actual Abyssal then
+Stormglass production: Blender masters/exports, packed-image reopen, embedded
+material/export geometry checks, staged native collision/runtime review and real
+matched captures. No public promotion/package export or full matrix. Other agents
+remain source/artifact-only. Preserve attempts and emit three timestamped empty
+owned-process-group audits plus explicit release at completion.
+
 **Released: `MOTH-BLENDER-20261003-S`**, Astra
 `ses_efd30e1f6ffeLbhHTPoh266kZW`, corrective Foundry revision-5 production from
 rejected `6ff4079e` in a fresh isolated worktree. Scope: fix geometry/authority
@@ -169,7 +177,7 @@ bounded owned groups and timestamped three empty audits before S release.
 S delivered `4a2f1201` and released at `2026-10-03T18:20:11.138292Z`. Parent
 confirmed all three timestamped audits are empty across 43 recorded groups,
 no current surviving group members, and lock availability. Independent artifact
-review is active; no new heavy grant has been issued.
+review is active; coastal T now holds the subsequent heavy grant.
 
 **Released: `MOTH-BLENDER-20261003-R`**, owner
 `ses_efdba38e9ffeManqAN9zWiJ3va`, foundation `190fa2a2`. Scope: material adapter

@@ -1,5 +1,21 @@
 # New Moth resources and Blender-authored map variety
 
+## Active production — coastal T
+
+Shared-source prerequisite bundle `ef1692b5` is parent-integrated as **`bce5b834`**.
+All eight files exactly match the reviewed S support; parent passed seven shared
+tests plus six coastal adapter tests, with one expected R4-artifact-dependent skip.
+Rejected R4 map artifacts were not integrated.
+
+**`MOTH-BLENDER-20261003-T` is now the sole active heavy grant**, Sol
+`ses_efd55bb5cffeJRWNA4xZq8O6cE`, foundation `bce5b834` in a new isolated worktree.
+Scope: actual Abyssal then Stormglass Blender production, packed-master reopen,
+exported geometry/material validation, staged native physics/runtime integration,
+matched before/after screenshots and explicit release. Global triangles remain
+advisory. No package promotion/export or full release matrix is authorized.
+Other agents remain source/artifact-only. T requires bounded owned process groups,
+timestamped logs, preserved attempts and three empty audits before release.
+
 ## Latest corrective delivery — Foundry R5 / S released
 
 Astra delivered optional-normal receipt fix `77d3d16c` and corrective production
@@ -7,7 +23,7 @@ Astra delivered optional-normal receipt fix `77d3d16c` and corrective production
 `2026-10-03T18:20:11.138292Z`**. Parent inspected three timestamped empty audits
 covering 43 recorded process groups, then independently confirmed no surviving
 members and lock availability. The unrelated environment viewer stays untouched.
-No heavy grant is active at this checkpoint.
+That released slot is now assigned to coastal T as recorded above.
 
 **New gallery:** <http://100.125.104.79:8796/foundry-r5/> — 22 original 1280×720
 native PNGs, 11 genuine accepted-runtime-finish versus staged-R5 pairs. All 33
