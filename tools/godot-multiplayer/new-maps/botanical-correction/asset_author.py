@@ -5,7 +5,7 @@ No supervisor or queue submission is performed by this entrypoint.
 import argparse
 import json
 from source_scene import ROOT,k
-MAPS={'parallax-observatory':'districts-v4','vesper-viaduct':'urban-v3'}
+MAPS={'helix-conservatory':'revision-4','parallax-observatory':'districts-v4','vesper-viaduct':'urban-v3'}
 
 def paths(ident):
     revision=MAPS[ident]

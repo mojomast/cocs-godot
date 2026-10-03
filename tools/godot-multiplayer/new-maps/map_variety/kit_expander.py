@@ -371,6 +371,29 @@ def _landmark(d, material):
             _pipe(d['id'] + '.mast', material, d['sector'], at, rot, .25, 8, [[0, 0, 3], [0, 0, 9]])]
 
 
+def _greenhouse_frame(d, material):
+    """Five radial transverse ribs on paired terrace posts, joined longitudinally.
+
+    One descriptor owns every member and the source_geometry collider capture.
+    Local Y-up offsets are converted once by expand_kit, like other compounds.
+    """
+    p=d['params'];angles=p['angles'];radius=p['radius'];spring=p['spring']
+    mid=(p['inner']+p['outer'])/2;out=[]
+    point=lambda r,a,y:[r*math.cos(a),y,r*math.sin(a)]
+    for degrees in angles:
+        angle=math.radians(degrees)
+        out.append(_curved_rib(f'greenhouse-rib-{degrees}',material,d['sector'],
+            point(radius,angle,spring),-angle,p['inner'],p['outer'],p['depth'],0,math.pi,p['segments']))
+        for side in (-1,1):
+            out.append(_prism(f'greenhouse-post-{degrees}-{side}',material,d['sector'],
+                point(radius+side*mid,angle,(spring+.02)/2),-angle,
+                [p['outer']-p['inner'],p['depth']+.2,spring+.02],0))
+    for name,r,y in [('inner-eave',radius-mid,spring),('outer-eave',radius+mid,spring),('ridge',radius,spring+mid)]:
+        path=[to_blender(point(r,math.radians(a),y)) for a in angles]
+        out.append(_pipe('greenhouse-'+name,material,d['sector'],[0,0,0],0,.18,10,path))
+    return out
+
+
 HANDLERS = {
     'prism': lambda d, m: [_prism(d['id'], m, d['sector'], d['at'], d.get('rot', 0), d['params']['size'], d['params'].get('bevel', .035))],
     'framed_bay': lambda d, m: [_framed(d['id'], m, d['sector'], d['at'], d.get('rot', 0), d['params']['width'], d['params']['height'], d['params']['depth'], d['params'].get('arch', False), d['params'].get('trimMaterial', m))],
@@ -391,6 +414,7 @@ HANDLERS = {
     'arch_bridge': _arch_bridge,
     'retaining_wall': _retaining_wall,
     'landmark': _landmark,
+    'greenhouse_frame': _greenhouse_frame,
 }
 
 

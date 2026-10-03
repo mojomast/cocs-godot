@@ -39,7 +39,9 @@ def scene(arena):
     materials={d['material'] for d in arena['art']['kit']}
     # expand_kit validates secondary materials against the supplied allowlist.
     prior='districts-v3' if arena['id']=='parallax-observatory' else 'urban-v2'
-    bindings=json.loads((ROOT/f'tools/godot-multiplayer/new-maps/{arena["id"]}/revisions/{prior}/variety_bindings.json').read_text())
+    path=ROOT/f'tools/godot-multiplayer/new-maps/{arena["id"]}/revisions/{prior}/variety_bindings.json'
+    if arena['id']=='helix-conservatory':path=ROOT/'tools/godot-multiplayer/new-maps/helix-conservatory/variety_bindings.json'
+    bindings=json.loads(path.read_text())
     for op in k.expand_kit(arena['art']['kit'],set(bindings['materials']))+k.infrastructure_plan(arena):kit_build.create_assembly(kit,op)
     for o in kit.source.objects:
         v=world_vertices(o)

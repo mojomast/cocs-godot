@@ -1,0 +1,2208 @@
+{
+  "baseline": "243223d3",
+  "scope": "Source predictions, no acceptance reuse or heavy execution",
+  "candidates": {
+    "helix-conservatory": {
+      "revision": "revision-4",
+      "geometryHash": "f5a3d0d7b2872fa7c7fa6bb2727ee31915a717ffbc160343acf491fe3b9bc49e",
+      "authoritySha256": "1e5847c04d1a18165333a900e77db33ff24017d87eb87e5efed779d59d52d2bb",
+      "bindingsSha256": "760122242dbf875974b4bec1646da2a60f2c5ee41bb89d3fb496896f4afbc7c2",
+      "sourceSummary": {
+        "ops": 138,
+        "triangles": 9188,
+        "sectors": [
+          "archive",
+          "botanical",
+          "canopy",
+          "grotto",
+          "lightwell"
+        ],
+        "materials": [
+          "helix.archive-stone",
+          "helix.bark",
+          "helix.fern",
+          "helix.greenhouse-frame",
+          "helix.grotto-rock",
+          "helix.soil",
+          "helix.trim"
+        ],
+        "batches": 9,
+        "sourceMeshLimits": {
+          "maxTrianglesPerBatch": 24000
+        },
+        "triangleAdvisory": {
+          "policy": "advisory",
+          "measurement": "source-estimate",
+          "totalTriangles": 147378,
+          "targetTriangles": 150000,
+          "overTarget": false,
+          "overageTriangles": 0,
+          "status": "pending-performance-visual-review"
+        },
+        "measurement": "unmodified source estimate; evaluated full-scene acceptance pending",
+        "authorityShellTriangles": 37316,
+        "structureTriangles": 0,
+        "pieceTriangles": 0,
+        "decorativeTriangles": 100874,
+        "decorativeMeshes": 5240,
+        "infrastructureTriangles": 0,
+        "baseCraftTriangles": 0,
+        "baseCraftParts": 0,
+        "sourceSceneTriangles": 147378,
+        "labelsPendingTessellation": 3,
+        "evaluatedAcceptance": "pending Blender evaluation and GLB pixel/primitive audit",
+        "floorUnion": null
+      },
+      "expectedMaster": "tools/godot-multiplayer/new-maps/helix-conservatory/revisions/revision-4/masters/helix-conservatory.blend",
+      "expectedGlb": "port/new-maps/helix-conservatory/variety/revision-4/helix-conservatory.glb",
+      "masterSha256": null,
+      "glbSha256": null,
+      "status": "source-only; actual successor export and native pending",
+      "sourceAttachments": {
+        "joints": [
+          {
+            "rib": "greenhouse-rib-70",
+            "post": "greenhouse-post-70--1",
+            "eave": "greenhouse-inner-eave",
+            "center": [
+              27.63522758071404,
+              19,
+              75.92716375950138
+            ],
+            "endCrossSection": [
+              [
+                27.490127851808534,
+                19.0,
+                76.40564685081345
+              ],
+              [
+                27.216511737148,
+                19.0,
+                75.65389275418472
+              ],
+              [
+                28.05394342428008,
+                19.0,
+                76.20043476481804
+              ],
+              [
+                27.780327309619548,
+                19.0,
+                75.44868066818931
+              ]
+            ],
+            "postVertices": [
+              [
+                27.12254247506941,
+                16.0,
+                75.68809476851729
+              ],
+              [
+                27.396158589729943,
+                16.0,
+                76.43984886514602
+              ],
+              [
+                27.87429657169814,
+                16.0,
+                75.41447865385675
+              ],
+              [
+                28.147912686358673,
+                16.0,
+                76.16623275048548
+              ],
+              [
+                27.12254247506941,
+                19.020000000000003,
+                75.68809476851729
+              ],
+              [
+                27.396158589729943,
+                19.020000000000003,
+                76.43984886514602
+              ],
+              [
+                27.87429657169814,
+                19.020000000000003,
+                75.41447865385675
+              ],
+              [
+                28.147912686358673,
+                19.020000000000003,
+                76.16623275048548
+              ]
+            ],
+            "groundY": 16,
+            "bearingOverlap": 0.02
+          },
+          {
+            "rib": "greenhouse-rib-70",
+            "post": "greenhouse-post-70-1",
+            "eave": "greenhouse-outer-eave",
+            "center": [
+              31.876277357952336,
+              19,
+              87.57935225724665
+            ],
+            "endCrossSection": [
+              [
+                31.457561514386295,
+                19.0,
+                87.30608125193
+              ],
+              [
+                31.73117762904683,
+                19.0,
+                88.05783534855873
+              ],
+              [
+                32.02137708685784,
+                19.0,
+                87.10086916593458
+              ],
+              [
+                32.29499320151837,
+                19.0,
+                87.85262326256331
+              ]
+            ],
+            "postVertices": [
+              [
+                31.363592252307704,
+                16.0,
+                87.34028326626256
+              ],
+              [
+                31.63720836696824,
+                16.0,
+                88.09203736289129
+              ],
+              [
+                32.115346348936434,
+                16.0,
+                87.06666715160202
+              ],
+              [
+                32.38896246359697,
+                16.0,
+                87.81842124823075
+              ],
+              [
+                31.363592252307704,
+                19.020000000000003,
+                87.34028326626256
+              ],
+              [
+                31.63720836696824,
+                19.020000000000003,
+                88.09203736289129
+              ],
+              [
+                32.115346348936434,
+                19.020000000000003,
+                87.06666715160202
+              ],
+              [
+                32.38896246359697,
+                19.020000000000003,
+                87.81842124823075
+              ]
+            ],
+            "groundY": 16,
+            "bearingOverlap": 0.02
+          },
+          {
+            "rib": "greenhouse-rib-76",
+            "post": "greenhouse-post-76--1",
+            "eave": "greenhouse-inner-eave",
+            "center": [
+              19.547289164453147,
+              19,
+              78.39989468310051
+            ],
+            "endCrossSection": [
+              [
+                19.352969204810215,
+                19.0,
+                78.86058954229082
+              ],
+              [
+                19.15943168833048,
+                19.0,
+                78.08435296127003
+              ],
+              [
+                19.935146640575816,
+                19.0,
+                78.71543640493101
+              ],
+              [
+                19.74160912409608,
+                19.0,
+                77.93919982391022
+              ]
+            ],
+            "postVertices": [
+              [
+                19.06240211570288,
+                16.0,
+                78.10854515082997
+              ],
+              [
+                19.255939632182617,
+                16.0,
+                78.88478173185078
+              ],
+              [
+                19.838638696723677,
+                16.0,
+                77.91500763435025
+              ],
+              [
+                20.032176213203414,
+                16.0,
+                78.69124421537106
+              ],
+              [
+                19.06240211570288,
+                19.020000000000003,
+                78.10854515082997
+              ],
+              [
+                19.255939632182617,
+                19.020000000000003,
+                78.88478173185078
+              ],
+              [
+                19.838638696723677,
+                19.020000000000003,
+                77.91500763435025
+              ],
+              [
+                20.032176213203414,
+                19.020000000000003,
+                78.69124421537106
+              ]
+            ],
+            "groundY": 16,
+            "bearingOverlap": 0.02
+          },
+          {
+            "rib": "greenhouse-rib-76",
+            "post": "greenhouse-post-76-1",
+            "eave": "greenhouse-outer-eave",
+            "center": [
+              22.54712066988903,
+              19,
+              90.43156168892287
+            ],
+            "endCrossSection": [
+              [
+                22.159263193766357,
+                19.0,
+                90.11601996709237
+              ],
+              [
+                22.352800710246093,
+                19.0,
+                90.89225654811317
+              ],
+              [
+                22.741440629531958,
+                19.0,
+                89.97086682973256
+              ],
+              [
+                22.934978146011694,
+                19.0,
+                90.74710341075335
+              ]
+            ],
+            "postVertices": [
+              [
+                22.062233621138763,
+                16.0,
+                90.14021215665232
+              ],
+              [
+                22.2557711376185,
+                16.0,
+                90.91644873767314
+              ],
+              [
+                22.83847020215956,
+                16.0,
+                89.9466746401726
+              ],
+              [
+                23.032007718639296,
+                16.0,
+                90.72291122119341
+              ],
+              [
+                22.062233621138763,
+                19.020000000000003,
+                90.14021215665232
+              ],
+              [
+                22.2557711376185,
+                19.020000000000003,
+                90.91644873767314
+              ],
+              [
+                22.83847020215956,
+                19.020000000000003,
+                89.9466746401726
+              ],
+              [
+                23.032007718639296,
+                19.020000000000003,
+                90.72291122119341
+              ]
+            ],
+            "groundY": 16,
+            "bearingOverlap": 0.02
+          },
+          {
+            "rib": "greenhouse-rib-82",
+            "post": "greenhouse-post-82--1",
+            "eave": "greenhouse-inner-eave",
+            "center": [
+              11.24518655757329,
+              19,
+              80.01365995431888
+            ],
+            "endCrossSection": [
+              [
+                11.003775377334843,
+                19.0,
+                80.45151911210353
+              ],
+              [
+                10.892436896566792,
+                19.0,
+                79.65930465711027
+              ],
+              [
+                11.597936218579786,
+                19.0,
+                80.3680152515275
+              ],
+              [
+                11.486597737811735,
+                19.0,
+                79.57580079653424
+              ]
+            ],
+            "postVertices": [
+              [
+                10.793410089692635,
+                16.0,
+                79.67322196720627
+              ],
+              [
+                10.904748570460686,
+                16.0,
+                80.46543642219953
+              ],
+              [
+                11.585624544685892,
+                16.0,
+                79.56188348643823
+              ],
+              [
+                11.696963025453943,
+                16.0,
+                80.35409794143149
+              ],
+              [
+                10.793410089692635,
+                19.020000000000003,
+                79.67322196720627
+              ],
+              [
+                10.904748570460686,
+                19.020000000000003,
+                80.46543642219953
+              ],
+              [
+                11.585624544685892,
+                19.020000000000003,
+                79.56188348643823
+              ],
+              [
+                11.696963025453943,
+                19.020000000000003,
+                80.35409794143149
+              ]
+            ],
+            "groundY": 16,
+            "bearingOverlap": 0.02
+          },
+          {
+            "rib": "greenhouse-rib-82",
+            "post": "greenhouse-post-82-1",
+            "eave": "greenhouse-outer-eave",
+            "center": [
+              12.970933009478102,
+              19,
+              92.29298400671436
+            ],
+            "endCrossSection": [
+              [
+                12.618183348471604,
+                19.0,
+                91.93862870950575
+              ],
+              [
+                12.729521829239655,
+                19.0,
+                92.730843164499
+              ],
+              [
+                13.212344189716546,
+                19.0,
+                91.85512484892972
+              ],
+              [
+                13.323682670484597,
+                19.0,
+                92.64733930392298
+              ]
+            ],
+            "postVertices": [
+              [
+                12.519156541597448,
+                16.0,
+                91.95254601960175
+              ],
+              [
+                12.6304950223655,
+                16.0,
+                92.74476047459501
+              ],
+              [
+                13.311370996590705,
+                16.0,
+                91.84120753883371
+              ],
+              [
+                13.422709477358756,
+                16.0,
+                92.63342199382697
+              ],
+              [
+                12.519156541597448,
+                19.020000000000003,
+                91.95254601960175
+              ],
+              [
+                12.6304950223655,
+                19.020000000000003,
+                92.74476047459501
+              ],
+              [
+                13.311370996590705,
+                19.020000000000003,
+                91.84120753883371
+              ],
+              [
+                13.422709477358756,
+                19.020000000000003,
+                92.63342199382697
+              ]
+            ],
+            "groundY": 16,
+            "bearingOverlap": 0.02
+          },
+          {
+            "rib": "greenhouse-rib-88",
+            "post": "greenhouse-post-88--1",
+            "eave": "greenhouse-inner-eave",
+            "center": [
+              2.819879333562087,
+              19,
+              80.75077882314294
+            ],
+            "endCrossSection": [
+              [
+                2.534021884137359,
+                19.0,
+                81.16100500296132
+              ],
+              [
+                2.506102286775358,
+                19.0,
+                80.36149234134605
+              ],
+              [
+                3.1336563803488167,
+                19.0,
+                81.14006530493982
+              ],
+              [
+                3.1057367829868157,
+                19.0,
+                80.34055264332456
+              ]
+            ],
+            "postVertices": [
+              [
+                2.4061632040734486,
+                16.0,
+                80.3649822910163
+              ],
+              [
+                2.434082801435449,
+                16.0,
+                81.16449495263157
+              ],
+              [
+                3.205675865688725,
+                16.0,
+                80.3370626936543
+              ],
+              [
+                3.2335954630507255,
+                16.0,
+                81.13657535526957
+              ],
+              [
+                2.4061632040734486,
+                19.020000000000003,
+                80.3649822910163
+              ],
+              [
+                2.434082801435449,
+                19.020000000000003,
+                81.16449495263157
+              ],
+              [
+                3.205675865688725,
+                19.020000000000003,
+                80.3370626936543
+              ],
+              [
+                3.2335954630507255,
+                19.020000000000003,
+                81.13657535526957
+              ]
+            ],
+            "groundY": 16,
+            "bearingOverlap": 0.02
+          },
+          {
+            "rib": "greenhouse-rib-88",
+            "post": "greenhouse-post-88-1",
+            "eave": "greenhouse-outer-eave",
+            "center": [
+              3.2526330926731006,
+              19,
+              93.14322507817973
+            ],
+            "endCrossSection": [
+              [
+                2.9388560458863715,
+                19.0,
+                92.75393859638284
+              ],
+              [
+                2.9667756432483725,
+                19.0,
+                93.5534512579981
+              ],
+              [
+                3.538490542097829,
+                19.0,
+                92.73299889836134
+              ],
+              [
+                3.56641013945983,
+                19.0,
+                93.53251155997661
+              ]
+            ],
+            "postVertices": [
+              [
+                2.838916963184462,
+                16.0,
+                92.75742854605309
+              ],
+              [
+                2.8668365605464627,
+                16.0,
+                93.55694120766836
+              ],
+              [
+                3.6384296247997385,
+                16.0,
+                92.72950894869109
+              ],
+              [
+                3.666349222161739,
+                16.0,
+                93.52902161030636
+              ],
+              [
+                2.838916963184462,
+                19.020000000000003,
+                92.75742854605309
+              ],
+              [
+                2.8668365605464627,
+                19.020000000000003,
+                93.55694120766836
+              ],
+              [
+                3.6384296247997385,
+                19.020000000000003,
+                92.72950894869109
+              ],
+              [
+                3.666349222161739,
+                19.020000000000003,
+                93.52902161030636
+              ]
+            ],
+            "groundY": 16,
+            "bearingOverlap": 0.02
+          },
+          {
+            "rib": "greenhouse-rib-94",
+            "post": "greenhouse-post-94--1",
+            "eave": "greenhouse-inner-eave",
+            "center": [
+              -5.636323078525327,
+              19,
+              80.6031752609938
+            ],
+            "endCrossSection": [
+              [
+                -5.963494883100924,
+                19.0,
+                80.98127393897448
+              ],
+              [
+                -5.907689704105624,
+                19.0,
+                80.18322269876663
+              ],
+              [
+                -5.364956452945029,
+                19.0,
+                81.02312782322096
+              ],
+              [
+                -5.3091512739497295,
+                19.0,
+                80.2250765830131
+              ]
+            ],
+            "postVertices": [
+              [
+                -6.007446109131607,
+                16.0,
+                80.17624705139221
+              ],
+              [
+                -6.0632512881269065,
+                16.0,
+                80.97429829160006
+              ],
+              [
+                -5.209394868923747,
+                16.0,
+                80.23205223038752
+              ],
+              [
+                -5.265200047919047,
+                16.0,
+                81.03010347059538
+              ],
+              [
+                -6.007446109131607,
+                19.020000000000003,
+                80.17624705139221
+              ],
+              [
+                -6.0632512881269065,
+                19.020000000000003,
+                80.97429829160006
+              ],
+              [
+                -5.209394868923747,
+                19.020000000000003,
+                80.23205223038752
+              ],
+              [
+                -5.265200047919047,
+                19.020000000000003,
+                81.03010347059538
+              ]
+            ],
+            "groundY": 16,
+            "bearingOverlap": 0.02
+          },
+          {
+            "rib": "greenhouse-rib-94",
+            "post": "greenhouse-post-94-1",
+            "eave": "greenhouse-outer-eave",
+            "center": [
+              -6.501303352952481,
+              19,
+              92.97296948421562
+            ],
+            "endCrossSection": [
+              [
+                -6.772669978532778,
+                19.0,
+                92.55301692198844
+              ],
+              [
+                -6.828475157528078,
+                19.0,
+                93.3510681621963
+              ],
+              [
+                -6.1741315483768835,
+                19.0,
+                92.59487080623492
+              ],
+              [
+                -6.229936727372183,
+                19.0,
+                93.39292204644278
+              ]
+            ],
+            "postVertices": [
+              [
+                -6.872426383558761,
+                16.0,
+                92.54604127461404
+              ],
+              [
+                -6.9282315625540605,
+                16.0,
+                93.3440925148219
+              ],
+              [
+                -6.074375143350901,
+                16.0,
+                92.60184645360935
+              ],
+              [
+                -6.130180322346201,
+                16.0,
+                93.39989769381721
+              ],
+              [
+                -6.872426383558761,
+                19.020000000000003,
+                92.54604127461404
+              ],
+              [
+                -6.9282315625540605,
+                19.020000000000003,
+                93.3440925148219
+              ],
+              [
+                -6.074375143350901,
+                19.020000000000003,
+                92.60184645360935
+              ],
+              [
+                -6.130180322346201,
+                19.020000000000003,
+                93.39989769381721
+              ]
+            ],
+            "groundY": 16,
+            "bearingOverlap": 0.02
+          }
+        ],
+        "edges": [
+          [
+            "greenhouse-rib-70",
+            "greenhouse-post-70--1"
+          ],
+          [
+            "greenhouse-post-70--1",
+            "ground"
+          ],
+          [
+            "greenhouse-rib-70",
+            "greenhouse-inner-eave"
+          ],
+          [
+            "greenhouse-rib-70",
+            "greenhouse-post-70-1"
+          ],
+          [
+            "greenhouse-post-70-1",
+            "ground"
+          ],
+          [
+            "greenhouse-rib-70",
+            "greenhouse-outer-eave"
+          ],
+          [
+            "greenhouse-rib-70",
+            "greenhouse-ridge"
+          ],
+          [
+            "greenhouse-rib-76",
+            "greenhouse-post-76--1"
+          ],
+          [
+            "greenhouse-post-76--1",
+            "ground"
+          ],
+          [
+            "greenhouse-rib-76",
+            "greenhouse-inner-eave"
+          ],
+          [
+            "greenhouse-rib-76",
+            "greenhouse-post-76-1"
+          ],
+          [
+            "greenhouse-post-76-1",
+            "ground"
+          ],
+          [
+            "greenhouse-rib-76",
+            "greenhouse-outer-eave"
+          ],
+          [
+            "greenhouse-rib-76",
+            "greenhouse-ridge"
+          ],
+          [
+            "greenhouse-rib-82",
+            "greenhouse-post-82--1"
+          ],
+          [
+            "greenhouse-post-82--1",
+            "ground"
+          ],
+          [
+            "greenhouse-rib-82",
+            "greenhouse-inner-eave"
+          ],
+          [
+            "greenhouse-rib-82",
+            "greenhouse-post-82-1"
+          ],
+          [
+            "greenhouse-post-82-1",
+            "ground"
+          ],
+          [
+            "greenhouse-rib-82",
+            "greenhouse-outer-eave"
+          ],
+          [
+            "greenhouse-rib-82",
+            "greenhouse-ridge"
+          ],
+          [
+            "greenhouse-rib-88",
+            "greenhouse-post-88--1"
+          ],
+          [
+            "greenhouse-post-88--1",
+            "ground"
+          ],
+          [
+            "greenhouse-rib-88",
+            "greenhouse-inner-eave"
+          ],
+          [
+            "greenhouse-rib-88",
+            "greenhouse-post-88-1"
+          ],
+          [
+            "greenhouse-post-88-1",
+            "ground"
+          ],
+          [
+            "greenhouse-rib-88",
+            "greenhouse-outer-eave"
+          ],
+          [
+            "greenhouse-rib-88",
+            "greenhouse-ridge"
+          ],
+          [
+            "greenhouse-rib-94",
+            "greenhouse-post-94--1"
+          ],
+          [
+            "greenhouse-post-94--1",
+            "ground"
+          ],
+          [
+            "greenhouse-rib-94",
+            "greenhouse-inner-eave"
+          ],
+          [
+            "greenhouse-rib-94",
+            "greenhouse-post-94-1"
+          ],
+          [
+            "greenhouse-post-94-1",
+            "ground"
+          ],
+          [
+            "greenhouse-rib-94",
+            "greenhouse-outer-eave"
+          ],
+          [
+            "greenhouse-rib-94",
+            "greenhouse-ridge"
+          ]
+        ],
+        "numericToleranceMetres": 1e-08,
+        "futureActualToleranceMetres": 0.0001,
+        "futureRule": "Match named evaluated components to actual GLB triangles, then test their measured complete bearing sections and longitudinal rings"
+      },
+      "newFrameFiniteCapsuleSamples": 49553,
+      "frozenUProbeSha256": "a61b35fb633166bd4dbed2930a61bc039c6eddc746388d7f8815a8fcba7cc41f",
+      "finiteCapsule": {
+        "radius": 0.42,
+        "height": 1.8,
+        "spacing": 0.25,
+        "scope": "all original route/nav plus frozen U fixture including mode spawns/objectives against every new frame triangle; complete native physics pending"
+      }
+    },
+    "parallax-observatory": {
+      "revision": "districts-v4",
+      "geometryHash": "3a5800e89876ebcc741381802def24415d5050651c0d3b831ea8b9ec3b77b4f9",
+      "authoritySha256": "cd62bdf5c2eafa8dfb25ef29691226c43eef0bb40ca67492110a7bc8c68f6aeb",
+      "bindingsSha256": "14f7baa4fffb03cd9979eefe2bae660530ad8ac33e625a9e39a19787a66564c7",
+      "sourceSummary": {
+        "ops": 80,
+        "triangles": 3416,
+        "sectors": [
+          "court",
+          "institutes",
+          "instruments",
+          "scientific"
+        ],
+        "materials": [
+          "parallax.enamel",
+          "parallax.etch",
+          "parallax.glazing",
+          "parallax.instrument-alloy",
+          "parallax.optics",
+          "parallax.stone",
+          "parallax.trim"
+        ],
+        "batches": 15,
+        "sourceMeshLimits": {
+          "maxTrianglesPerBatch": 24000
+        },
+        "triangleAdvisory": {
+          "policy": "advisory",
+          "measurement": "source-estimate",
+          "totalTriangles": 144585,
+          "targetTriangles": 150000,
+          "overTarget": false,
+          "overageTriangles": 0,
+          "status": "pending-performance-visual-review"
+        },
+        "measurement": "unmodified source estimate; evaluated full-scene acceptance pending",
+        "authorityShellTriangles": 5467,
+        "structureTriangles": 888,
+        "pieceTriangles": 0,
+        "decorativeTriangles": 0,
+        "decorativeMeshes": 0,
+        "infrastructureTriangles": 0,
+        "baseCraftTriangles": 134814,
+        "baseCraftParts": 22134,
+        "sourceSceneTriangles": 144585,
+        "labelsPendingTessellation": 8,
+        "evaluatedAcceptance": "pending Blender evaluation and GLB pixel/primitive audit",
+        "floorUnion": {
+          "policy": "coplanar-first-authored-surface-wins",
+          "materialPriority": "terrain.surfaces order, preserving accepted author order before candidate additions",
+          "inputTriangles": 637,
+          "renderTriangles": 1179,
+          "inputProjectedArea": 29825.495472442053,
+          "renderProjectedArea": 18530.18388167457,
+          "overlapRemovedProjectedArea": 11295.311590767484,
+          "discardedSubprecisionProjectedArea": 0,
+          "lineage": [
+            {
+              "sourceId": "meridian-lens-joint-0--12",
+              "material": "saltstone",
+              "priority": 0,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 242.99999999999997,
+              "renderProjectedArea": 242.99999999999997
+            },
+            {
+              "sourceId": "meridian-lens-joint-1--12",
+              "material": "saltstone",
+              "priority": 1,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 242.99999999999994,
+              "renderProjectedArea": 242.99999999999994
+            },
+            {
+              "sourceId": "meridian-lens-joint-2--12",
+              "material": "saltstone",
+              "priority": 2,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 242.99999999999997,
+              "renderProjectedArea": 242.99999999999997
+            },
+            {
+              "sourceId": "meridian-lens-joint-3--12",
+              "material": "saltstone",
+              "priority": 3,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 243.0,
+              "renderProjectedArea": 243.0
+            },
+            {
+              "sourceId": "meridian-lens-joint-4--12",
+              "material": "saltstone",
+              "priority": 4,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 243.00000000000006,
+              "renderProjectedArea": 243.00000000000006
+            },
+            {
+              "sourceId": "meridian-lens-joint-5--12",
+              "material": "saltstone",
+              "priority": 5,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 243.0,
+              "renderProjectedArea": 243.0
+            },
+            {
+              "sourceId": "meridian-lens-joint-6--12",
+              "material": "saltstone",
+              "priority": 6,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 243.00000000000003,
+              "renderProjectedArea": 243.00000000000003
+            },
+            {
+              "sourceId": "meridian-lens-span-1--12",
+              "material": "saltstone",
+              "priority": 7,
+              "inputTriangles": 2,
+              "renderTriangles": 14,
+              "inputProjectedArea": 648.0,
+              "renderProjectedArea": 405.00000000000006
+            },
+            {
+              "sourceId": "meridian-lens-span-2--12",
+              "material": "saltstone",
+              "priority": 8,
+              "inputTriangles": 2,
+              "renderTriangles": 14,
+              "inputProjectedArea": 648.0,
+              "renderProjectedArea": 405.0
+            },
+            {
+              "sourceId": "meridian-lens-span-3--12",
+              "material": "saltstone",
+              "priority": 9,
+              "inputTriangles": 2,
+              "renderTriangles": 14,
+              "inputProjectedArea": 648.0,
+              "renderProjectedArea": 405.00000000000006
+            },
+            {
+              "sourceId": "meridian-lens-span-4--12",
+              "material": "saltstone",
+              "priority": 10,
+              "inputTriangles": 6,
+              "renderTriangles": 26,
+              "inputProjectedArea": 640.0,
+              "renderProjectedArea": 397.00000000000006
+            },
+            {
+              "sourceId": "meridian-lens-span-5--12",
+              "material": "saltstone",
+              "priority": 11,
+              "inputTriangles": 2,
+              "renderTriangles": 14,
+              "inputProjectedArea": 648.0,
+              "renderProjectedArea": 405.00000000000006
+            },
+            {
+              "sourceId": "meridian-lens-span-6--12",
+              "material": "saltstone",
+              "priority": 12,
+              "inputTriangles": 2,
+              "renderTriangles": 14,
+              "inputProjectedArea": 648.0,
+              "renderProjectedArea": 405.0
+            },
+            {
+              "sourceId": "armillary-arc-joint-0--12",
+              "material": "saltstone",
+              "priority": 13,
+              "inputTriangles": 10,
+              "renderTriangles": 0,
+              "inputProjectedArea": 146.99999999999991,
+              "renderProjectedArea": 0.0
+            },
+            {
+              "sourceId": "armillary-arc-joint-1--60",
+              "material": "saltstone",
+              "priority": 14,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 146.9999999999999,
+              "renderProjectedArea": 146.9999999999999
+            },
+            {
+              "sourceId": "armillary-arc-joint-2--200",
+              "material": "saltstone",
+              "priority": 15,
+              "inputTriangles": 5,
+              "renderTriangles": 5,
+              "inputProjectedArea": 73.49999999999977,
+              "renderProjectedArea": 73.49999999999977
+            },
+            {
+              "sourceId": "armillary-arc-joint-2--60",
+              "material": "saltstone",
+              "priority": 16,
+              "inputTriangles": 5,
+              "renderTriangles": 5,
+              "inputProjectedArea": 73.5,
+              "renderProjectedArea": 73.5
+            },
+            {
+              "sourceId": "armillary-arc-joint-3--200",
+              "material": "saltstone",
+              "priority": 17,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 147.0,
+              "renderProjectedArea": 147.0
+            },
+            {
+              "sourceId": "armillary-arc-joint-4--200",
+              "material": "saltstone",
+              "priority": 18,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 146.99999999999991,
+              "renderProjectedArea": 146.99999999999991
+            },
+            {
+              "sourceId": "armillary-arc-joint-5--200",
+              "material": "saltstone",
+              "priority": 19,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 147.0000000000001,
+              "renderProjectedArea": 147.0000000000001
+            },
+            {
+              "sourceId": "armillary-arc-joint-6--200",
+              "material": "saltstone",
+              "priority": 20,
+              "inputTriangles": 5,
+              "renderTriangles": 5,
+              "inputProjectedArea": 73.49999999999977,
+              "renderProjectedArea": 73.49999999999977
+            },
+            {
+              "sourceId": "armillary-arc-joint-6--60",
+              "material": "saltstone",
+              "priority": 21,
+              "inputTriangles": 5,
+              "renderTriangles": 5,
+              "inputProjectedArea": 73.5,
+              "renderProjectedArea": 73.5
+            },
+            {
+              "sourceId": "armillary-arc-joint-7--60",
+              "material": "saltstone",
+              "priority": 22,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 146.99999999999977,
+              "renderProjectedArea": 146.99999999999977
+            },
+            {
+              "sourceId": "armillary-arc-joint-8--12",
+              "material": "saltstone",
+              "priority": 23,
+              "inputTriangles": 10,
+              "renderTriangles": 0,
+              "inputProjectedArea": 146.9999999999999,
+              "renderProjectedArea": 0.0
+            },
+            {
+              "sourceId": "armillary-arc-span-1--60",
+              "material": "saltstone",
+              "priority": 24,
+              "inputTriangles": 2,
+              "renderTriangles": 14,
+              "inputProjectedArea": 187.8297101099821,
+              "renderProjectedArea": 114.32971010998244
+            },
+            {
+              "sourceId": "armillary-arc-span-1--12",
+              "material": "saltstone",
+              "priority": 25,
+              "inputTriangles": 2,
+              "renderTriangles": 5,
+              "inputProjectedArea": 187.82971010998256,
+              "renderProjectedArea": 48.66901242629234
+            },
+            {
+              "sourceId": "armillary-arc-span-2--200",
+              "material": "saltstone",
+              "priority": 26,
+              "inputTriangles": 1,
+              "renderTriangles": 3,
+              "inputProjectedArea": 20.41666666666697,
+              "renderProjectedArea": 4.11974041179019
+            },
+            {
+              "sourceId": "armillary-arc-span-2--60",
+              "material": "saltstone",
+              "priority": 27,
+              "inputTriangles": 3,
+              "renderTriangles": 23,
+              "inputProjectedArea": 635.6443061094924,
+              "renderProjectedArea": 504.7483948238855
+            },
+            {
+              "sourceId": "armillary-arc-span-3--200",
+              "material": "saltstone",
+              "priority": 28,
+              "inputTriangles": 3,
+              "renderTriangles": 21,
+              "inputProjectedArea": 492.3129759490199,
+              "renderProjectedArea": 370.70375514696343
+            },
+            {
+              "sourceId": "armillary-arc-span-3--60",
+              "material": "saltstone",
+              "priority": 29,
+              "inputTriangles": 1,
+              "renderTriangles": 4,
+              "inputProjectedArea": 46.2777777777776,
+              "renderProjectedArea": 20.32428214488732
+            },
+            {
+              "sourceId": "armillary-arc-span-4--200",
+              "material": "saltstone",
+              "priority": 30,
+              "inputTriangles": 2,
+              "renderTriangles": 22,
+              "inputProjectedArea": 455.8069766907915,
+              "renderProjectedArea": 308.3476944451305
+            },
+            {
+              "sourceId": "armillary-arc-span-5--200",
+              "material": "saltstone",
+              "priority": 31,
+              "inputTriangles": 2,
+              "renderTriangles": 29,
+              "inputProjectedArea": 455.8069766907915,
+              "renderProjectedArea": 308.36747320312827
+            },
+            {
+              "sourceId": "armillary-arc-span-6--200",
+              "material": "saltstone",
+              "priority": 32,
+              "inputTriangles": 6,
+              "renderTriangles": 24,
+              "inputProjectedArea": 481.6315725384276,
+              "renderProjectedArea": 359.5630694907095
+            },
+            {
+              "sourceId": "armillary-arc-span-6--60",
+              "material": "saltstone",
+              "priority": 33,
+              "inputTriangles": 2,
+              "renderTriangles": 8,
+              "inputProjectedArea": 46.03339047316422,
+              "renderProjectedArea": 20.642611275221725
+            },
+            {
+              "sourceId": "armillary-arc-span-7--200",
+              "material": "saltstone",
+              "priority": 34,
+              "inputTriangles": 1,
+              "renderTriangles": 3,
+              "inputProjectedArea": 20.41666666666697,
+              "renderProjectedArea": 4.11974041179019
+            },
+            {
+              "sourceId": "armillary-arc-span-7--60",
+              "material": "saltstone",
+              "priority": 35,
+              "inputTriangles": 3,
+              "renderTriangles": 24,
+              "inputProjectedArea": 635.6443061094924,
+              "renderProjectedArea": 504.37851592942036
+            },
+            {
+              "sourceId": "armillary-arc-span-8--60",
+              "material": "saltstone",
+              "priority": 36,
+              "inputTriangles": 2,
+              "renderTriangles": 13,
+              "inputProjectedArea": 187.8297101099821,
+              "renderProjectedArea": 114.13687256949845
+            },
+            {
+              "sourceId": "armillary-arc-span-8--12",
+              "material": "saltstone",
+              "priority": 37,
+              "inputTriangles": 2,
+              "renderTriangles": 4,
+              "inputProjectedArea": 187.82971010998256,
+              "renderProjectedArea": 48.6690124262924
+            },
+            {
+              "sourceId": "tidal-cistern-joint-0--12",
+              "material": "cistern",
+              "priority": 38,
+              "inputTriangles": 10,
+              "renderTriangles": 0,
+              "inputProjectedArea": 146.99999999999991,
+              "renderProjectedArea": 0.0
+            },
+            {
+              "sourceId": "tidal-cistern-joint-1-12",
+              "material": "cistern",
+              "priority": 39,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 147.0000000000001,
+              "renderProjectedArea": 147.0000000000001
+            },
+            {
+              "sourceId": "tidal-cistern-joint-2-12",
+              "material": "cistern",
+              "priority": 40,
+              "inputTriangles": 3,
+              "renderTriangles": 3,
+              "inputProjectedArea": 3.7214884748259465,
+              "renderProjectedArea": 3.7214884748259465
+            },
+            {
+              "sourceId": "tidal-cistern-joint-2-60",
+              "material": "cistern",
+              "priority": 41,
+              "inputTriangles": 9,
+              "renderTriangles": 9,
+              "inputProjectedArea": 143.27851152517383,
+              "renderProjectedArea": 143.27851152517383
+            },
+            {
+              "sourceId": "tidal-cistern-joint-3-60",
+              "material": "cistern",
+              "priority": 42,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 147.0,
+              "renderProjectedArea": 147.0
+            },
+            {
+              "sourceId": "tidal-cistern-joint-4-60",
+              "material": "cistern",
+              "priority": 43,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 146.9999999999999,
+              "renderProjectedArea": 146.9999999999999
+            },
+            {
+              "sourceId": "tidal-cistern-joint-5-60",
+              "material": "cistern",
+              "priority": 44,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 146.99999999999977,
+              "renderProjectedArea": 146.99999999999977
+            },
+            {
+              "sourceId": "tidal-cistern-joint-6-12",
+              "material": "cistern",
+              "priority": 45,
+              "inputTriangles": 3,
+              "renderTriangles": 3,
+              "inputProjectedArea": 3.7214884748259465,
+              "renderProjectedArea": 3.7214884748259465
+            },
+            {
+              "sourceId": "tidal-cistern-joint-6-60",
+              "material": "cistern",
+              "priority": 46,
+              "inputTriangles": 9,
+              "renderTriangles": 9,
+              "inputProjectedArea": 143.27851152517383,
+              "renderProjectedArea": 143.27851152517383
+            },
+            {
+              "sourceId": "tidal-cistern-joint-7-12",
+              "material": "cistern",
+              "priority": 47,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 147.0000000000001,
+              "renderProjectedArea": 147.0000000000001
+            },
+            {
+              "sourceId": "tidal-cistern-joint-8--12",
+              "material": "cistern",
+              "priority": 48,
+              "inputTriangles": 10,
+              "renderTriangles": 0,
+              "inputProjectedArea": 146.9999999999999,
+              "renderProjectedArea": 0.0
+            },
+            {
+              "sourceId": "tidal-cistern-span-1--12",
+              "material": "cistern",
+              "priority": 49,
+              "inputTriangles": 2,
+              "renderTriangles": 6,
+              "inputProjectedArea": 195.91998366680218,
+              "renderProjectedArea": 50.19900668936839
+            },
+            {
+              "sourceId": "tidal-cistern-span-1-12",
+              "material": "cistern",
+              "priority": 50,
+              "inputTriangles": 2,
+              "renderTriangles": 12,
+              "inputProjectedArea": 293.87997550020316,
+              "renderProjectedArea": 220.3799755002026
+            },
+            {
+              "sourceId": "tidal-cistern-span-2-12",
+              "material": "cistern",
+              "priority": 51,
+              "inputTriangles": 2,
+              "renderTriangles": 18,
+              "inputProjectedArea": 546.7174773134655,
+              "renderProjectedArea": 469.3442868640061
+            },
+            {
+              "sourceId": "tidal-cistern-span-2-60",
+              "material": "cistern",
+              "priority": 52,
+              "inputTriangles": 2,
+              "renderTriangles": 9,
+              "inputProjectedArea": 109.34349546269277,
+              "renderProjectedArea": 39.56498393751781
+            },
+            {
+              "sourceId": "tidal-cistern-span-3-12",
+              "material": "cistern",
+              "priority": 53,
+              "inputTriangles": 1,
+              "renderTriangles": 1,
+              "inputProjectedArea": 0.6843382729280165,
+              "renderProjectedArea": 0.00013276434719955432
+            },
+            {
+              "sourceId": "tidal-cistern-span-3-60",
+              "material": "cistern",
+              "priority": 54,
+              "inputTriangles": 3,
+              "renderTriangles": 25,
+              "inputProjectedArea": 530.5783086353596,
+              "renderProjectedArea": 383.279244734647
+            },
+            {
+              "sourceId": "tidal-cistern-span-4-60",
+              "material": "cistern",
+              "priority": 55,
+              "inputTriangles": 2,
+              "renderTriangles": 16,
+              "inputProjectedArea": 672.0,
+              "renderProjectedArea": 524.545451232906
+            },
+            {
+              "sourceId": "tidal-cistern-span-5-60",
+              "material": "cistern",
+              "priority": 56,
+              "inputTriangles": 2,
+              "renderTriangles": 14,
+              "inputProjectedArea": 252.0,
+              "renderProjectedArea": 105.00000000000045
+            },
+            {
+              "sourceId": "tidal-cistern-span-6-60",
+              "material": "cistern",
+              "priority": 57,
+              "inputTriangles": 2,
+              "renderTriangles": 22,
+              "inputProjectedArea": 302.8663071389751,
+              "renderProjectedArea": 154.83353865083677
+            },
+            {
+              "sourceId": "tidal-cistern-span-7-12",
+              "material": "cistern",
+              "priority": 58,
+              "inputTriangles": 2,
+              "renderTriangles": 19,
+              "inputProjectedArea": 546.7174773134652,
+              "renderProjectedArea": 469.4959888386395
+            },
+            {
+              "sourceId": "tidal-cistern-span-7-60",
+              "material": "cistern",
+              "priority": 59,
+              "inputTriangles": 2,
+              "renderTriangles": 10,
+              "inputProjectedArea": 109.34349546269277,
+              "renderProjectedArea": 39.10825387788759
+            },
+            {
+              "sourceId": "tidal-cistern-span-8--12",
+              "material": "cistern",
+              "priority": 60,
+              "inputTriangles": 2,
+              "renderTriangles": 14,
+              "inputProjectedArea": 195.91998366680218,
+              "renderProjectedArea": 50.199006689368616
+            },
+            {
+              "sourceId": "tidal-cistern-span-8-12",
+              "material": "cistern",
+              "priority": 61,
+              "inputTriangles": 2,
+              "renderTriangles": 15,
+              "inputProjectedArea": 293.87997550020316,
+              "renderProjectedArea": 220.22827352557124
+            },
+            {
+              "sourceId": "west-calibration-joint-0--200",
+              "material": "saltstone",
+              "priority": 62,
+              "inputTriangles": 10,
+              "renderTriangles": 6,
+              "inputProjectedArea": 108.00000000000023,
+              "renderProjectedArea": 7.035075936398243
+            },
+            {
+              "sourceId": "west-calibration-joint-1--60",
+              "material": "saltstone",
+              "priority": 63,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 108.00000000000011,
+              "renderProjectedArea": 108.00000000000011
+            },
+            {
+              "sourceId": "west-calibration-joint-2--12",
+              "material": "saltstone",
+              "priority": 64,
+              "inputTriangles": 10,
+              "renderTriangles": 0,
+              "inputProjectedArea": 108.00000000000001,
+              "renderProjectedArea": 0.0
+            },
+            {
+              "sourceId": "west-calibration-joint-3-12",
+              "material": "saltstone",
+              "priority": 65,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 108.00000000000011,
+              "renderProjectedArea": 108.00000000000011
+            },
+            {
+              "sourceId": "west-calibration-joint-4-60",
+              "material": "saltstone",
+              "priority": 66,
+              "inputTriangles": 10,
+              "renderTriangles": 0,
+              "inputProjectedArea": 108.00000000000023,
+              "renderProjectedArea": 0.0
+            },
+            {
+              "sourceId": "west-calibration-span-1--200",
+              "material": "saltstone",
+              "priority": 67,
+              "inputTriangles": 2,
+              "renderTriangles": 0,
+              "inputProjectedArea": 73.4258809957364,
+              "renderProjectedArea": 0.0
+            },
+            {
+              "sourceId": "west-calibration-span-1--60",
+              "material": "saltstone",
+              "priority": 68,
+              "inputTriangles": 2,
+              "renderTriangles": 18,
+              "inputProjectedArea": 293.70352398294426,
+              "renderProjectedArea": 192.93785711515488
+            },
+            {
+              "sourceId": "west-calibration-span-2--60",
+              "material": "saltstone",
+              "priority": 69,
+              "inputTriangles": 2,
+              "renderTriangles": 10,
+              "inputProjectedArea": 288.0,
+              "renderProjectedArea": 233.85218695709966
+            },
+            {
+              "sourceId": "west-calibration-span-2--12",
+              "material": "saltstone",
+              "priority": 70,
+              "inputTriangles": 2,
+              "renderTriangles": 3,
+              "inputProjectedArea": 144.0,
+              "renderProjectedArea": 36.0
+            },
+            {
+              "sourceId": "west-calibration-span-3--12",
+              "material": "saltstone",
+              "priority": 71,
+              "inputTriangles": 2,
+              "renderTriangles": 3,
+              "inputProjectedArea": 144.0,
+              "renderProjectedArea": 36.0
+            },
+            {
+              "sourceId": "west-calibration-span-3-12",
+              "material": "saltstone",
+              "priority": 72,
+              "inputTriangles": 2,
+              "renderTriangles": 10,
+              "inputProjectedArea": 288.0,
+              "renderProjectedArea": 234.0000000000001
+            },
+            {
+              "sourceId": "west-calibration-span-4-12",
+              "material": "saltstone",
+              "priority": 73,
+              "inputTriangles": 2,
+              "renderTriangles": 16,
+              "inputProjectedArea": 293.70352398294426,
+              "renderProjectedArea": 200.09347550772293
+            },
+            {
+              "sourceId": "west-calibration-span-4-60",
+              "material": "saltstone",
+              "priority": 74,
+              "inputTriangles": 2,
+              "renderTriangles": 3,
+              "inputProjectedArea": 73.4258809957364,
+              "renderProjectedArea": 1.5829255922287757
+            },
+            {
+              "sourceId": "east-instrument-joint-0--200",
+              "material": "saltstone",
+              "priority": 75,
+              "inputTriangles": 10,
+              "renderTriangles": 11,
+              "inputProjectedArea": 108.00000000000023,
+              "renderProjectedArea": 7.035075936398243
+            },
+            {
+              "sourceId": "east-instrument-joint-1--60",
+              "material": "saltstone",
+              "priority": 76,
+              "inputTriangles": 21,
+              "renderTriangles": 21,
+              "inputProjectedArea": 76.9282032302757,
+              "renderProjectedArea": 76.9282032302757
+            },
+            {
+              "sourceId": "east-instrument-joint-2--12",
+              "material": "saltstone",
+              "priority": 77,
+              "inputTriangles": 10,
+              "renderTriangles": 0,
+              "inputProjectedArea": 108.00000000000001,
+              "renderProjectedArea": 0.0
+            },
+            {
+              "sourceId": "east-instrument-joint-3-12",
+              "material": "saltstone",
+              "priority": 78,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 108.00000000000011,
+              "renderProjectedArea": 108.00000000000011
+            },
+            {
+              "sourceId": "east-instrument-joint-4-60",
+              "material": "saltstone",
+              "priority": 79,
+              "inputTriangles": 10,
+              "renderTriangles": 0,
+              "inputProjectedArea": 108.00000000000023,
+              "renderProjectedArea": 0.0
+            },
+            {
+              "sourceId": "east-instrument-span-1--200",
+              "material": "saltstone",
+              "priority": 80,
+              "inputTriangles": 2,
+              "renderTriangles": 0,
+              "inputProjectedArea": 73.4258809957364,
+              "renderProjectedArea": 0.0
+            },
+            {
+              "sourceId": "east-instrument-span-1--60",
+              "material": "saltstone",
+              "priority": 81,
+              "inputTriangles": 5,
+              "renderTriangles": 24,
+              "inputProjectedArea": 254.49175814605735,
+              "renderProjectedArea": 166.24510021669062
+            },
+            {
+              "sourceId": "east-instrument-span-2--60",
+              "material": "saltstone",
+              "priority": 82,
+              "inputTriangles": 7,
+              "renderTriangles": 13,
+              "inputProjectedArea": 266.0,
+              "renderProjectedArea": 227.38808534196198
+            },
+            {
+              "sourceId": "east-instrument-span-2--12",
+              "material": "saltstone",
+              "priority": 83,
+              "inputTriangles": 2,
+              "renderTriangles": 3,
+              "inputProjectedArea": 144.0,
+              "renderProjectedArea": 36.0
+            },
+            {
+              "sourceId": "east-instrument-span-3--12",
+              "material": "saltstone",
+              "priority": 84,
+              "inputTriangles": 2,
+              "renderTriangles": 3,
+              "inputProjectedArea": 144.0,
+              "renderProjectedArea": 36.0
+            },
+            {
+              "sourceId": "east-instrument-span-3-12",
+              "material": "saltstone",
+              "priority": 85,
+              "inputTriangles": 2,
+              "renderTriangles": 10,
+              "inputProjectedArea": 288.0,
+              "renderProjectedArea": 233.99999999999977
+            },
+            {
+              "sourceId": "east-instrument-span-4-12",
+              "material": "saltstone",
+              "priority": 86,
+              "inputTriangles": 2,
+              "renderTriangles": 17,
+              "inputProjectedArea": 293.70352398294426,
+              "renderProjectedArea": 200.09360827207092
+            },
+            {
+              "sourceId": "east-instrument-span-4-60",
+              "material": "saltstone",
+              "priority": 87,
+              "inputTriangles": 2,
+              "renderTriangles": 3,
+              "inputProjectedArea": 73.4258809957364,
+              "renderProjectedArea": 3.8432134151144055
+            },
+            {
+              "sourceId": "polar-crosslink-joint-0--200",
+              "material": "saltstone",
+              "priority": 88,
+              "inputTriangles": 10,
+              "renderTriangles": 0,
+              "inputProjectedArea": 108.00000000000001,
+              "renderProjectedArea": 0.0
+            },
+            {
+              "sourceId": "polar-crosslink-joint-1--60",
+              "material": "saltstone",
+              "priority": 89,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 107.99999999999999,
+              "renderProjectedArea": 107.99999999999999
+            },
+            {
+              "sourceId": "polar-crosslink-joint-2--12",
+              "material": "saltstone",
+              "priority": 90,
+              "inputTriangles": 10,
+              "renderTriangles": 0,
+              "inputProjectedArea": 108.0,
+              "renderProjectedArea": 0.0
+            },
+            {
+              "sourceId": "polar-crosslink-joint-3-12",
+              "material": "saltstone",
+              "priority": 91,
+              "inputTriangles": 10,
+              "renderTriangles": 10,
+              "inputProjectedArea": 108.0,
+              "renderProjectedArea": 108.0
+            },
+            {
+              "sourceId": "polar-crosslink-joint-4-60",
+              "material": "saltstone",
+              "priority": 92,
+              "inputTriangles": 10,
+              "renderTriangles": 0,
+              "inputProjectedArea": 108.0,
+              "renderProjectedArea": 0.0
+            },
+            {
+              "sourceId": "polar-crosslink-span-1--200",
+              "material": "saltstone",
+              "priority": 93,
+              "inputTriangles": 2,
+              "renderTriangles": 16,
+              "inputProjectedArea": 288.0,
+              "renderProjectedArea": 195.7861918704766
+            },
+            {
+              "sourceId": "polar-crosslink-span-1--60",
+              "material": "saltstone",
+              "priority": 94,
+              "inputTriangles": 2,
+              "renderTriangles": 7,
+              "inputProjectedArea": 144.0,
+              "renderProjectedArea": 90.0
+            },
+            {
+              "sourceId": "polar-crosslink-span-2--60",
+              "material": "saltstone",
+              "priority": 95,
+              "inputTriangles": 2,
+              "renderTriangles": 8,
+              "inputProjectedArea": 432.0,
+              "renderProjectedArea": 377.99999999999994
+            },
+            {
+              "sourceId": "polar-crosslink-span-2--12",
+              "material": "saltstone",
+              "priority": 96,
+              "inputTriangles": 2,
+              "renderTriangles": 6,
+              "inputProjectedArea": 144.0,
+              "renderProjectedArea": 36.0
+            },
+            {
+              "sourceId": "polar-crosslink-span-3--12",
+              "material": "saltstone",
+              "priority": 97,
+              "inputTriangles": 2,
+              "renderTriangles": 12,
+              "inputProjectedArea": 144.0,
+              "renderProjectedArea": 36.0
+            },
+            {
+              "sourceId": "polar-crosslink-span-3-12",
+              "material": "saltstone",
+              "priority": 98,
+              "inputTriangles": 2,
+              "renderTriangles": 10,
+              "inputProjectedArea": 360.0,
+              "renderProjectedArea": 305.99999999999994
+            },
+            {
+              "sourceId": "polar-crosslink-span-4-12",
+              "material": "saltstone",
+              "priority": 99,
+              "inputTriangles": 2,
+              "renderTriangles": 10,
+              "inputProjectedArea": 216.0,
+              "renderProjectedArea": 161.99999999999997
+            },
+            {
+              "sourceId": "polar-crosslink-span-4-60",
+              "material": "saltstone",
+              "priority": 100,
+              "inputTriangles": 2,
+              "renderTriangles": 3,
+              "inputProjectedArea": 216.0,
+              "renderProjectedArea": 131.99999999999997
+            },
+            {
+              "sourceId": "arrival-plaza--60",
+              "material": "saltstone",
+              "priority": 101,
+              "inputTriangles": 3,
+              "renderTriangles": 8,
+              "inputProjectedArea": 161.51288694035736,
+              "renderProjectedArea": 82.33255266732272
+            },
+            {
+              "sourceId": "arrival-plaza--12",
+              "material": "saltstone",
+              "priority": 102,
+              "inputTriangles": 8,
+              "renderTriangles": 35,
+              "inputProjectedArea": 876.9742261192854,
+              "renderProjectedArea": 318.3106646981718
+            },
+            {
+              "sourceId": "arrival-plaza-12",
+              "material": "saltstone",
+              "priority": 103,
+              "inputTriangles": 3,
+              "renderTriangles": 4,
+              "inputProjectedArea": 161.51288694035725,
+              "renderProjectedArea": 90.5508159860799
+            },
+            {
+              "sourceId": "vault-district--60",
+              "material": "metal",
+              "priority": 104,
+              "inputTriangles": 3,
+              "renderTriangles": 4,
+              "inputProjectedArea": 85.85194719060826,
+              "renderProjectedArea": 40.73216712919873
+            },
+            {
+              "sourceId": "vault-district--12",
+              "material": "metal",
+              "priority": 105,
+              "inputTriangles": 4,
+              "renderTriangles": 20,
+              "inputProjectedArea": 744.7064940365489,
+              "renderProjectedArea": 236.92237232443404
+            },
+            {
+              "sourceId": "vault-district-12",
+              "material": "metal",
+              "priority": 106,
+              "inputTriangles": 3,
+              "renderTriangles": 5,
+              "inputProjectedArea": 85.85194719060837,
+              "renderProjectedArea": 46.792772280907
+            },
+            {
+              "sourceId": "central-lens-dais--60",
+              "material": "mirror",
+              "priority": 107,
+              "inputTriangles": 5,
+              "renderTriangles": 11,
+              "inputProjectedArea": 135.73273141331407,
+              "renderProjectedArea": 58.89357663898177
+            },
+            {
+              "sourceId": "central-lens-dais--12",
+              "material": "mirror",
+              "priority": 108,
+              "inputTriangles": 8,
+              "renderTriangles": 15,
+              "inputProjectedArea": 833.7242898437511,
+              "renderProjectedArea": 112.75382900171493
+            },
+            {
+              "sourceId": "central-lens-dais-12",
+              "material": "mirror",
+              "priority": 109,
+              "inputTriangles": 5,
+              "renderTriangles": 11,
+              "inputProjectedArea": 135.7327314133141,
+              "renderProjectedArea": 58.89357663898179
+            },
+            {
+              "sourceId": "ephemeris-vault--12",
+              "material": "cistern",
+              "priority": 110,
+              "inputTriangles": 2,
+              "renderTriangles": 0,
+              "inputProjectedArea": 416.0,
+              "renderProjectedArea": 0.0
+            },
+            {
+              "sourceId": "tidal-pump-vault-60",
+              "material": "cistern",
+              "priority": 111,
+              "inputTriangles": 2,
+              "renderTriangles": 17,
+              "inputProjectedArea": 416.0,
+              "renderProjectedArea": 52.0
+            },
+            {
+              "sourceId": "polar-hall-foundation--200",
+              "material": "paving",
+              "priority": 112,
+              "inputTriangles": 2,
+              "renderTriangles": 17,
+              "inputProjectedArea": 988.0,
+              "renderProjectedArea": 383.3825267968714
+            },
+            {
+              "sourceId": "court-floor",
+              "material": "paving",
+              "priority": 113,
+              "inputTriangles": 26,
+              "renderTriangles": 29,
+              "inputProjectedArea": 938.0,
+              "renderProjectedArea": 754.0
+            },
+            {
+              "sourceId": "court-terrace-ramp",
+              "material": "saltstone",
+              "priority": 114,
+              "inputTriangles": 2,
+              "renderTriangles": 2,
+              "inputProjectedArea": 540.0,
+              "renderProjectedArea": 540.0
+            },
+            {
+              "sourceId": "lightwell-floor",
+              "material": "cistern",
+              "priority": 115,
+              "inputTriangles": 4,
+              "renderTriangles": 4,
+              "inputProjectedArea": 48.0,
+              "renderProjectedArea": 48.0
+            },
+            {
+              "sourceId": "lightwell-access-ramp",
+              "material": "saltstone",
+              "priority": 116,
+              "inputTriangles": 4,
+              "renderTriangles": 4,
+              "inputProjectedArea": 64.0,
+              "renderProjectedArea": 64.0
+            },
+            {
+              "sourceId": "court-entry",
+              "material": "paving",
+              "priority": 117,
+              "inputTriangles": 4,
+              "renderTriangles": 5,
+              "inputProjectedArea": 24.0,
+              "renderProjectedArea": 16.0
+            },
+            {
+              "sourceId": "court-east-landing-v4",
+              "material": "saltstone",
+              "priority": 118,
+              "inputTriangles": 2,
+              "renderTriangles": 2,
+              "inputProjectedArea": 56.0,
+              "renderProjectedArea": 56.0
+            },
+            {
+              "sourceId": "court-east-grade-v4",
+              "material": "saltstone",
+              "priority": 119,
+              "inputTriangles": 2,
+              "renderTriangles": 2,
+              "inputProjectedArea": 127.5,
+              "renderProjectedArea": 127.5
+            }
+          ],
+          "producerReference": {
+            "path": "tools/godot-multiplayer/new-maps/parallax-observatory/blender_author.py",
+            "sha256": "9cec1edaab54477d9999eb7888c921d527f0ee3f1248f2adf9c2a6a7cf5897cc",
+            "rule": "accepted first-authored floor/material ownership, applied to candidate coplanar geometry"
+          }
+        }
+      },
+      "expectedMaster": "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4/masters/parallax-observatory.blend",
+      "expectedGlb": "port/new-maps/parallax-observatory/variety/districts-v4/parallax-observatory.glb",
+      "masterSha256": null,
+      "glbSha256": null,
+      "status": "source-only; actual successor export and native pending"
+    },
+    "vesper-viaduct": {
+      "revision": "urban-v3",
+      "geometryHash": "fd8e7134c8933e908336d7b0409c66bdc90f4adc03fcfc6e596d5b4579f1c740",
+      "authoritySha256": "397cedc8f5583a229bb3f65ed94d9a8c74c30fd4132b57bd4e754299a47c67ec",
+      "bindingsSha256": "b57feb9ee8042e57294e82ca15bac9a3c5dcbcbd0e2a9f99429ab333b670dda2",
+      "sourceSummary": {
+        "ops": 83,
+        "triangles": 1928,
+        "sectors": [
+          "canal",
+          "market",
+          "retaining",
+          "roofs",
+          "rooftop"
+        ],
+        "materials": [
+          "vesper.awning",
+          "vesper.brick-era",
+          "vesper.coping",
+          "vesper.quay",
+          "vesper.slate",
+          "vesper.stall"
+        ],
+        "batches": 10,
+        "sourceMeshLimits": {
+          "maxTrianglesPerBatch": 24000
+        },
+        "triangleAdvisory": {
+          "policy": "advisory",
+          "measurement": "source-estimate",
+          "totalTriangles": 40614,
+          "targetTriangles": 150000,
+          "overTarget": false,
+          "overageTriangles": 0,
+          "status": "pending-performance-visual-review"
+        },
+        "measurement": "unmodified source estimate; evaluated full-scene acceptance pending",
+        "authorityShellTriangles": 3404,
+        "structureTriangles": 12,
+        "pieceTriangles": 3636,
+        "decorativeTriangles": 0,
+        "decorativeMeshes": 0,
+        "infrastructureTriangles": 4844,
+        "baseCraftTriangles": 26788,
+        "baseCraftParts": 2111,
+        "sourceSceneTriangles": 40614,
+        "labelsPendingTessellation": 7,
+        "evaluatedAcceptance": "pending Blender evaluation and GLB pixel/primitive audit",
+        "floorUnion": null
+      },
+      "expectedMaster": "tools/godot-multiplayer/new-maps/vesper-viaduct/revisions/urban-v3/masters/vesper-viaduct.blend",
+      "expectedGlb": "port/new-maps/vesper-viaduct/variety/urban-v3/vesper-viaduct.glb",
+      "masterSha256": null,
+      "glbSha256": null,
+      "status": "source-only; actual successor export and native pending"
+    }
+  },
+  "dependencies": {
+    "tools/godot-multiplayer/new-maps/botanical-correction/asset_author.py": "9ea829fcd303931bbb3585c7ab742fd5973089387520e5440826977718e84adb",
+    "tools/godot-multiplayer/new-maps/botanical-correction/capsule.py": "0b8c04fdcb73f461da511ccab2955229f03ee1ff92302feaf6a91b4da2f8b48a",
+    "tools/godot-multiplayer/new-maps/botanical-correction/correction.test.mjs": "302fa5721f70640c05421878fe3cf2e975ee581e123c9126b6e26b6095592ede",
+    "tools/godot-multiplayer/new-maps/botanical-correction/generate.mjs": "57d3b223bd51839301c6408158e49b3f051af4a147e2b53ad684f708fd96be91",
+    "tools/godot-multiplayer/new-maps/botanical-correction/measure_future.py": "c62a53854027acac98d042af0c8793f65d703673341a5bc5598bd08002a8e5b5",
+    "tools/godot-multiplayer/new-maps/botanical-correction/route_points.mjs": "bc29dedcb0c684eba5f03804331e67d4dfaf8120073425e77de07d8f224d4861",
+    "tools/godot-multiplayer/new-maps/botanical-correction/source_evidence.py": "4567f44024252f88020ff18fc3b574e2140c7fc0c8ea8ba9d15f5254dd7068b7",
+    "tools/godot-multiplayer/new-maps/botanical-correction/source_scene.py": "6df4eb3c40ce936c2973b3d633798c83b2737cf9b5b00ce0c5f96ff900b36467",
+    "tools/godot-multiplayer/new-maps/botanical-correction/test_correction.py": "fce4618258fa64bb52634f4ec7d52692fd0b21a8f3077d9693c3fecb34cc2c8f",
+    "tools/godot-multiplayer/new-maps/botanical-correction/test_greenhouse.py": "17812c196da8bdb569c7faa5f1a848d85069f88c79c7b3453b6a4eb986ed6b37",
+    "tools/godot-multiplayer/new-maps/botanical-correction/verify_future.py": "75baf107c4e01e1379f04b97da7ce3b6a91440f711b356d9c7ce50a42d7f6499",
+    "tools/godot-multiplayer/new-maps/helix-conservatory/recipe-v4.mjs": "2fa1cfadfc1b696a51682bd221880572ffe301255ca49c5ad1f22abb51e9b04f",
+    "tools/godot-multiplayer/new-maps/map_variety/base_craft.py": "1bbb30e3dc47770c33131f440948f470cf8021272158c5fa0f92b54c40b4dd0c",
+    "tools/godot-multiplayer/new-maps/map_variety/kit_build.py": "1a18bc74b6b363fb57dd8b5eba073a817c2e1aeb1d71bb20582eb6040773e52e",
+    "tools/godot-multiplayer/new-maps/map_variety/kit_expander.py": "a95b3aff60e98d58f26d6b18c412ec99cc6a8305672cd8175141b62768f3b17f",
+    "tools/godot-multiplayer/new-maps/map_variety/source_geometry.py": "b837de9b0984c962ec5c787b3a4187591efc5edbde765f9856a139f8cc82b960",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4/recipe-v4.mjs": "a920c6817784c3e1b38eddf9b696f64ff717f108d3dd089154c55e9e8d2e1ad9",
+    "tools/godot-multiplayer/new-maps/vesper-viaduct/revisions/urban-v3/recipe-v3.mjs": "220469d6c11301f40a70ff8b6527474eec1b8e714e131c2df037c3673b67f98d"
+  }
+}

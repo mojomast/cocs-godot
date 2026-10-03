@@ -4,6 +4,44 @@ Branch starts at `243223d3`. U masters/exports/receipts, accepted authorities,
 and the three U source recipes are immutable inputs. No engine or heavy-slot
 supervisor is started or queued by this source task. A new grant is required.
 
+## Helix revision-4 — third independently confirmed P1
+
+The original five tangential arches had faithful transforms but no intended
+supports. The source regression reads the real frozen U GLB, excludes the
+rib's own evaluated triangles, and reproduces the >8.7m gap at rib70's outer
+end. It does not reinterpret that missing geometry as a transform error.
+
+The replacement is a low, radial pavilion frame: five transverse semicircular
+arches at the same 70/76/82/88/94° stations and radius87, inner/outer arch radius
+5.8/6.6m, springY19, crownY25.6. Their paired feet are at radius80.8/93.2 on
+the **original Y16 terrace**, with .8m radial / .8m tangential posts, 3.02m tall.
+Posts support each complete .8×.6m rib end section with 2cm bearing overlap.
+Two slim .18m-radius longitudinal eaves and one crown ridge join the stations;
+they are not arbitrary long beams reaching toward unrelated distant geometry.
+The central canopy route at radius86 retains over 8m frame headroom. All five
+arches keep their 28-segment detailed profile. The inherited thin pavilion,
+south ridge and every one of the 5,240 decorative meshes remain unchanged.
+
+One new `greenhouse_frame` consumer descriptor expands both render geometry and
+real Kit-derived collision for every post, rib, eave and ridge. All ten named
+end sections are tested against their **intended posts**, and all named pipe
+joint rings against the correct eave/crown station. The static graph has 18
+members and 35 named attachment edges, all reachable from ground. Post footprint
+corners have original y16 support; old route/nav/spawn/objective data and heights
+are preserved. Finite .42m / 1.8m capsules on every original 25cm route sample
+and nav point test every new member triangle, not merely member footprints.
+Including the immutable U fixture's mode spawns/objectives/camera points, this
+is **49,553 finite-capsule samples** against the new frame. The frozen-U negative
+test examines all ten actual end centres with their own rib triangles excluded:
+six lack attachment within 4cm; the rib70 outer gap is >8.7m.
+
+`measure_future.py` and `verify_future.py` are prepared for a new grant: the
+former measures the **new** reopened master; the latter matches every evaluated
+triangle against actual GLB bytes and reruns attachment tests on measured member
+vertices with 0.1mm precision. Entire world authority shell coverage is included.
+Neither has been run with an engine or successor artifacts; their actual/native
+validation remains pending. U's source fixture and U reports are unchanged.
+
 ## Parallax districts-v4
 
 U's east portal runs from x48 to x44 at y12, but the court stops at x46, leaving
@@ -39,9 +77,12 @@ take the original path. There is no global wall thickness or tolerance change.
 ```sh
 node tools/godot-multiplayer/new-maps/botanical-correction/generate.mjs
 python3 -B tools/godot-multiplayer/new-maps/botanical-correction/test_correction.py
+python3 -B tools/godot-multiplayer/new-maps/botanical-correction/test_greenhouse.py
 node --test tools/godot-multiplayer/new-maps/botanical-correction/correction.test.mjs
 python3 -B tools/godot-multiplayer/new-maps/botanical-correction/asset_author.py parallax-observatory plan
 python3 -B tools/godot-multiplayer/new-maps/botanical-correction/asset_author.py vesper-viaduct plan
+python3 -B tools/godot-multiplayer/new-maps/botanical-correction/asset_author.py helix-conservatory plan
+python3 -B tools/godot-multiplayer/new-maps/botanical-correction/source_evidence.py
 ```
 
 Python tests first read the **actual frozen U GLBs** and reproduce both failures.
@@ -66,6 +107,14 @@ distinct build/reopen reports are under `port/new-maps/MAP/variety/NEW_REVISION/
 Do not invoke the released U supervisor or U `produce.py`/`prepare_stage.py`:
 their closed hashes and stage paths intentionally remain the old U candidates.
 
+Under that same future owned supervisor, run pinned Blender with
+`--python tools/godot-multiplayer/new-maps/botanical-correction/measure_future.py -- MAP`,
+then pure `python3 -B tools/godot-multiplayer/new-maps/botanical-correction/verify_future.py MAP`.
+Use distinct future attempt IDs; retain every failed output before another
+attempt. Bound build to 1800s, reopen/measurement to 900s each, pure export proof
+to 180s. Later import remains bounded to 900s, native tests 60–180s and captures
+300s/map. No supervisor command is executed by these instructions.
+
 Future evaluated proof, native staging and new exact-hash Binder profile must
 use a fresh `botanical-correction/ATTEMPT_ID/MAP` namespace. Before any acceptance,
 repeat actual full-scene triangle/material/winding comparison, **all** authority
@@ -83,3 +132,27 @@ promotion. The successor policy in `base_craft.py` is a separate prerequisite
 for Vesper urban-v3, unused by frozen Helix. No shared Kit/adapter/runtime files
 are edited. Keep successor corrective commits separate from frozen artifact
 selection and independent Helix review. 150k triangles remains advisory.
+
+For Helix revision-4, the new `kit_expander.py` handler and `source_geometry.py`
+solid classification are additionally required. They are opt-in by the new class
+and do not change existing U directives. Parallax/Vesper source correction is
+commit `f358e497`; the separate following Helix commit adds this assembly.
+No parent shared completion document is modified here.
+
+## Final source verification
+
+- Corrective tests: 8 geometry Python, 5 greenhouse Python, 5 Node tests.
+- Compatibility: 27 existing map-variety Python, 8 U fixture Python, 25 existing
+  map-variety Node tests, and all three standalone Kit source checks pass.
+- Frozen U artifact inventory (264 hashes), original authorities and receipts
+  are verified byte-for-byte; no new native receipt exists.
+- Successor generation and source evidence are deterministic. Source estimates
+  are 147,378 / 144,585 / 40,614 triangles (Helix / Parallax / Vesper); actual
+  modifier/export counts remain pending and may exceed 150k.
+- `source-evidence.json` carries exact new geometry/source dependency hashes,
+  pending artifact identities, and all ten source attachment sections.
+
+`3002a9ba` additionally requires all twelve canonical parapet boundary triangles
+before suppressing the legacy craft box. A missing side fails closed. The
+complete anticipated render scene is also tested with bidirectional capsules on
+the entire new Parallax grade using exact sloped-plane capsule contact geometry.

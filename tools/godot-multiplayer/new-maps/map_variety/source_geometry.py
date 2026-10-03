@@ -16,7 +16,7 @@ import kit_build
 import kit_expander
 
 SOLIDS = {'grotto_arch','stepped_terrace','facade_bays','tower','scientific_room',
-          'stall_row','roof_run','arch_bridge','retaining_wall','framed_bay'}
+          'stall_row','roof_run','arch_bridge','retaining_wall','framed_bay','greenhouse_frame'}
 
 
 class MeshObject:

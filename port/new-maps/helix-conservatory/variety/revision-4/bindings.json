@@ -1,0 +1,116 @@
+{
+  "schema": "map-variety-bindings/v1",
+  "mapId": "helix-conservatory",
+  "revision": "revision-4",
+  "pack": {
+    "base": "assets/moth/map-variety-20261003/candidate-v2/manifest.json",
+    "overlay": "assets/moth/map-variety-20261003/candidate-v3/manifest.json"
+  },
+  "notes": "Immutable pack channels are linear. Sol load_materials(root, bindings) derives sRGB albedo images and binds them as sRGB for Blender/glTF; source and derived hashes are separate and export RGB pixels are verified. Normals are Non-Color OpenGL +Y. Exact roles: surface or preserve; unknown roles fail.",
+  "materials": {
+    "botanical": {
+      "role": "surface",
+      "resource": "moss-lichen",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.35
+    },
+    "leaflight": {
+      "role": "surface",
+      "resource": "moss-warm-weather",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.3
+    },
+    "soil": {
+      "role": "surface",
+      "resource": "moss-lichen",
+      "tilesPerMeter": 0.25,
+      "normalStrength": 0.45
+    },
+    "stone": {
+      "role": "surface",
+      "resource": "grotto-wet-rock",
+      "tilesPerMeter": 0.25,
+      "normalStrength": 0.5
+    },
+    "ceramic": {
+      "role": "surface",
+      "resource": "ceramic-enamel",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.35
+    },
+    "brick": {
+      "role": "surface",
+      "resource": "terracotta",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.45
+    },
+    "gold": {
+      "role": "surface",
+      "resource": "anodized-brush",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.3
+    },
+    "solar": {
+      "role": "surface",
+      "resource": "prismatic-etch",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.25
+    },
+    "verdigris": {
+      "role": "surface",
+      "resource": "copper-patina",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.4
+    },
+    "glass": {
+      "role": "preserve",
+      "tilesPerMeter": 1
+    },
+    "water": {
+      "role": "preserve",
+      "tilesPerMeter": 1
+    },
+    "helix.grotto-rock": {
+      "role": "surface",
+      "resource": "grotto-wet-rock",
+      "tilesPerMeter": 0.25,
+      "normalStrength": 0.55
+    },
+    "helix.soil": {
+      "role": "surface",
+      "resource": "moss-lichen",
+      "tilesPerMeter": 0.25,
+      "normalStrength": 0.45
+    },
+    "helix.trim": {
+      "role": "surface",
+      "resource": "masonry-coping",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.35
+    },
+    "helix.archive-stone": {
+      "role": "surface",
+      "resource": "ceramic-enamel",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.35
+    },
+    "helix.bark": {
+      "role": "surface",
+      "resource": "bark-fibers",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.5
+    },
+    "helix.fern": {
+      "role": "surface",
+      "resource": "fern-frond",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.3
+    },
+    "helix.greenhouse-frame": {
+      "role": "surface",
+      "resource": "anodized-brush",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.3
+    }
+  }
+}

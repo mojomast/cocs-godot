@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {physicalIndex,standingFailure,traceRoute} from '../map_variety/navigation_audit.mjs';
 const load=(id,rev)=>JSON.parse(readFileSync(`port/new-maps/${id}/variety/${rev}/authority.json`)).arena;
-for(const [id,before,after] of [['parallax-observatory','districts-v3','districts-v4'],['vesper-viaduct','urban-v2','urban-v3']]) {
+for(const [id,before,after] of [['helix-conservatory','revision-3','revision-4'],['parallax-observatory','districts-v3','districts-v4'],['vesper-viaduct','urban-v2','urban-v3']]) {
   const old=load(id,before),next=load(id,after);
   test(id+' preserves every U route endpoint/nav coordinate, authored and resolved heights',()=>{
     for(const r of old.routes)assert.deepEqual(next.routes.find(n=>n.id===r.id),r);

@@ -1,0 +1,14 @@
+{
+  "map": "helix-conservatory",
+  "revision": "revision-4",
+  "predecessor": "5755ec9fba17d4b88d99d90e1717d86ce5ae9983a5c2bc290a93b5b366585140",
+  "geometryHash": "f5a3d0d7b2872fa7c7fa6bb2727ee31915a717ffbc160343acf491fe3b9bc49e",
+  "recipeHash": "87ea1588103afb516bffa5bec9ab51601eb89109ec034ac10f2947ccacf6d2e2",
+  "physical": {
+    "failures": [],
+    "baselineDefects": []
+  },
+  "status": "source-only; U native acceptance does not apply",
+  "glbSha256": null,
+  "masterSha256": null
+}

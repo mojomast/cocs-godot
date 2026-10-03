@@ -76,6 +76,19 @@ class CorrectionTests(unittest.TestCase):
                     o=[v-.02*n for v,n in zip(p,direction)]
                     self.assertAlmostEqual(source.ray(o,direction,.04),visual.ray(o,direction,.04),places=6)
 
+    def test_new_east_grade_finite_capsules_against_complete_source_scene(self):
+        a=self.new['parallax-observatory'];rows,_,_=self.scenes[a['id']]
+        source=Capsules(authority_triangles(a));visual=Capsules([r['vertices'] for r in rows])
+        # A capsule rests on a sloped plane with lower hemisphere centre at
+        # r/cos(slope) above centreline support, not r. This is geometric contact,
+        # not an enlarged wall tolerance. 1mm separates contact numerically.
+        lift=.42*(math.sqrt(1+(12/25.5)**2)-1)+.001
+        for i in list(range(103))+list(reversed(range(103))):
+            z=-37.5-i*.25;y=12+i*.25*12/25.5
+            for x in [48,49.5,51]:
+                self.assertIsNone(source.overlaps(x,y+lift,z),(x,y,z,'authority'))
+                self.assertIsNone(visual.overlaps(x,y+lift,z),(x,y,z,'complete visual'))
+
     def test_entire_authority_wall_shell_no_offset_or_missing_triangle(self):
         # Covers all legacy AND new authority walls across both worlds, not only
         # the two regressions or new Kit components. RenderSource=kit is tested

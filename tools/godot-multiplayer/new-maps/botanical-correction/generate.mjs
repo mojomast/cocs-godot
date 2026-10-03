@@ -3,14 +3,18 @@ import {mkdirSync,writeFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {makeRecipe as parallax} from '../parallax-observatory/revisions/districts-v4/recipe-v4.mjs';
 import {makeRecipe as vesper} from '../vesper-viaduct/revisions/urban-v3/recipe-v3.mjs';
+import {makeRecipe as helix} from '../helix-conservatory/recipe-v4.mjs';
 import {loadPack,validateBindings,auditArena,writeCandidate,readJson,REPO_ROOT} from '../map_variety/variety_lib.mjs';
 import {auditPhysicalRoutes} from '../map_variety/navigation_audit.mjs';
 export const candidates=[
+  {id:'helix-conservatory',prior:'revision-3',revision:'revision-4',make:helix},
   {id:'parallax-observatory',prior:'districts-v3',revision:'districts-v4',make:parallax},
   {id:'vesper-viaduct',prior:'urban-v2',revision:'urban-v3',make:vesper},
 ];
 export function generate(c) {
-  const bindings=readJson(`tools/godot-multiplayer/new-maps/${c.id}/revisions/${c.prior}/variety_bindings.json`);
+  const bindingPath=c.id==='helix-conservatory'?'tools/godot-multiplayer/new-maps/helix-conservatory/variety_bindings.json':
+    `tools/godot-multiplayer/new-maps/${c.id}/revisions/${c.prior}/variety_bindings.json`;
+  const bindings=readJson(bindingPath);
   bindings.revision=c.revision;
   const pack=loadPack(bindings.pack);validateBindings(c.id,bindings,pack);
   const arena=c.make();
