@@ -1,7 +1,7 @@
 # Reviewed polish source integration
 
 Branch: `integration/polish-20261003`, foundation `5b5c8791`.
-Five reviewed lanes assembled without conflicts through `6ac28c41`:
+Six reviewed lanes assembled without conflicts through `24c1ff8b`:
 
 | Lane | Original commits | Integration commits |
 |---|---|---|
@@ -10,10 +10,18 @@ Five reviewed lanes assembled without conflicts through `6ac28c41`:
 | Opaque/priority surfaces and wetness | `03a64083`, `3059de9a` | `a1d537d4`, `e3747ba5` |
 | Muzzle sheet extraction | `e5a0f710` | `3cad92d3` |
 | Integrated support cues | `e31de5d7`, `cebc8d33`, `1216527c`, `7ee7a33c` | `1dd15fa9`, `0d88aa84`, `3ef25e72`, `6ac28c41` |
+| Lobby workflows | `2f87d812`, `0a79068d`, `f0a1fed7`, `e5b73ed6` | `688a7541`, `155fae04`, `91d179f2`, `24c1ff8b` |
 
 Parent verified the combined tree with the executable shader parity check
 (`MOTH_SHADER_PARITY_OK`), grammar parsing of all **14** changed/new GDScripts,
-and `git diff --check`. No engine/import/render/server/build ran here.
+and `git diff --check`. After adding the lobby lane, parent parsed its five
+scripts, passed `LOBBY_QOL_SOURCE_OK files=5 problems=0 parser=gdtoolkit`, and
+passed seven verifier unit tests. This brings source grammar coverage to **19**
+changed/new scripts. No engine/import/render/server/build ran here.
+
+The separate lobby gate-registration commit `eda8a2da` was intentionally left
+for acceptance-owner reconciliation after K. The fixture can be run by path;
+staging its code does not implicitly expand the active native candidate.
 
 This branch is separate from `feature/relay-campaign` and active native K.
 It must adopt K's accepted runtime corrections after K releases, resolve overlap
@@ -41,6 +49,10 @@ the nonwaiting shared lock and `LP_NUM_THREADS=1`:
   real Moth-frame alpha/core/hue comparisons, retaining actual PNG/JSON output.
 - `tests/combat_integration/support_cues.gd`: integrated heal/teleport ownership,
   immediate preference/focus clearing, no old-event replay and immutable inputs.
+- `tests/protocol/lobby_qol.gd`: truthful filtered-room feedback, focus-preserving
+  selection, idle host/guest control state, same-size catalog edits, live empty
+  catalog recovery and preservation of the user's selected mode. Also run the
+  existing lobby/setup and popup-free keyboard/focus regressions.
 
 Capture actual gameplay for authored identity-map atmosphere and heal/teleport/
 explosion/muzzle behavior. Source math and grammar do not establish rendered
