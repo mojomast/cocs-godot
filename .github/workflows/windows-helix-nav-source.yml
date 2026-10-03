@@ -1,0 +1,55 @@
+name: Windows cold navigation source comparison
+on:
+  push:
+    branches: [preview/helix-nav-source]
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - name: Preserve committed bytes
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.0'
+      - name: Record exact source identity
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path evidence | Out-Null
+          $head = (git rev-parse HEAD).Trim()
+          if ($head -ne $env:GITHUB_SHA) { throw 'Checkout identity mismatch' }
+          node -e "if(process.platform!=='win32'||process.arch!=='x64'||process.version!=='v22.22.0')process.exit(2);console.log(JSON.stringify({commit:process.env.GITHUB_SHA,platform:process.platform,arch:process.arch,node:process.version,scope:'source comparison only; not native acceptance'},null,2))" > evidence/identity.json
+          if ($LASTEXITCODE -ne 0) { throw 'Unexpected execution platform/version' }
+      - name: Synthetic equivalence and derivative reproducibility
+        shell: pwsh
+        run: |
+          node --test port/multiplayer-worlds/wall_candidates.test.mjs > evidence/unit-tests.log 2>&1
+          if ($LASTEXITCODE -ne 0) { Get-Content evidence/unit-tests.log; throw 'Equivalence tests failed' }
+          node port/multiplayer-worlds/generate-derivative.mjs --check > evidence/derivative-check.log 2>&1
+          if ($LASTEXITCODE -ne 0) { Get-Content evidence/derivative-check.log; throw 'Derivative drift' }
+      - name: Helix then remaining registered graphs, serial cold processes
+        shell: pwsh
+        run: |
+          $json = node --input-type=module -e "import {WORLDS} from './port/multiplayer-worlds/catalog.mjs';console.log(JSON.stringify(Object.keys(WORLDS)))"
+          if ($LASTEXITCODE -ne 0) { throw 'Registry listing failed' }
+          $registered = @($json | ConvertFrom-Json)
+          if ($registered.Count -ne 10 -or $registered -notcontains 'helix-conservatory') { throw 'Unexpected registered world scope' }
+          $maps = @('helix-conservatory') + @($registered | Where-Object { $_ -ne 'helix-conservatory' })
+          foreach ($map in $maps) {
+            node tools/godot-package/compare_navigation.mjs $map > "evidence/$map.json" 2> "evidence/$map.stderr.log"
+            if ($LASTEXITCODE -ne 0) {
+              Get-Content "evidence/$map.json"
+              Get-Content "evidence/$map.stderr.log"
+              throw "Cold graph comparison failed: $map"
+            }
+            Get-Content "evidence/$map.json"
+          }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: windows-navigation-source-${{ github.sha }}
+          path: evidence/
+          if-no-files-found: error
