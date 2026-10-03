@@ -223,6 +223,7 @@ func on_snapshot(frame: Dictionary) -> void:
   if zones.apply(frame.state,client.actor_id,current_id,selected_mode):
    zone_renderer.apply(zones.projection)
    objective_text.text = "%s / %s | score %s" % [current_id,selected_mode,str(zones.projection.scores)]
+ if current_id == "abyssal-pressureworks": foundry_hud_layout()
  if evidence:
   print("WORLD_NATIVE ",JSON.stringify({"map":current_id,"mode":selected_mode,"hash":expected_hash,"round":round_starts,"peer":client.peer_id,"actor":client.actor_id,"ack":client.last_ack,"phase":phase,"state":frame.state.get("objectives",{})}))
  if not urban_capture_path.is_empty() and not urban_capture_queued:

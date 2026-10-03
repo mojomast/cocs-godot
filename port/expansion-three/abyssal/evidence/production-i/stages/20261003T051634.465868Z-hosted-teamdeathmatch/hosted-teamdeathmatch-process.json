@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "xvfb-run",
+    "-a",
+    "-s",
+    "-screen 0 1280x800x24",
+    "node",
+    "tools/asset-production/candidate-hosted.mjs",
+    "abyssal-pressureworks",
+    "teamdeathmatch",
+    "--granted"
+  ],
+  "started": "2026-10-03T05:16:34.578668+00:00",
+  "timeoutSeconds": 960,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T051634.465868Z-hosted-teamdeathmatch/hosted-teamdeathmatch.log",
+  "processGroup": 1542327,
+  "exitCode": 0,
+  "ended": "2026-10-03T05:18:08.979543+00:00",
+  "ownedGroupTeardownRequested": true
+}

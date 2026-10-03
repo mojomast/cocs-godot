@@ -2,6 +2,7 @@
 import argparse
 import datetime
 import fcntl
+import hashlib
 import json
 from pathlib import Path
 import sys
@@ -19,6 +20,15 @@ plan = load_plan()
 out = Path('/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i') / (datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ')+'-'+args.stage)
 out.mkdir(parents=True)
 report = preflight(plan)
+report['grantOverride'] = 'ABYSSAL-ASSET-PRODUCTION-20261003-I'
+report['dynamicNativeInputs'] = {path: hashlib.sha256((ROOT/path).read_bytes()).hexdigest() for path in [
+    'tools/asset-production/candidate-hosted.mjs', 'tools/asset-production/candidate-admission.mjs',
+    'tools/asset-production/candidate-guidance.mjs', 'port/multiplayer-worlds/derived/core.mjs',
+    'port/multiplayer-worlds/wall_candidates.mjs', 'godot/multiplayer_worlds/demo.gd',
+    'godot/multiplayer_worlds/map.gd', 'godot/multiplayer_worlds/abyssal_presentation.gd',
+    'godot/tests/new_maps/abyssal_pressureworks/hosted.gd',
+    'godot/tests/new_maps/abyssal_pressureworks/inspection.gd',
+    'godot/tests/asset_production/hosted.gd', 'godot/tests/asset_production/candidate_catalog.gd']}
 (out/'preflight.json').write_text(json.dumps(report,indent=2)+'\n')
 assert report['readyForExplicitGrant']
 command = {'id':args.stage,'timeoutSeconds':240,'argv':['{godot}','--path','godot','--audio-driver','Dummy','--resolution','1280x800','--script','res://tests/new_maps/abyssal_pressureworks/inspection.gd','--']+(['--representative'] if args.stage=='representative' else [])}

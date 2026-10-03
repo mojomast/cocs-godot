@@ -26,6 +26,15 @@ test('current private cloner imports actual new broadphase dependency and ws wit
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
 test('frozen authority, shared finish, public catalogs and other producer receipts preserve merged canonical bytes',()=>{
- const protectedPaths=['game/','port/contracts/source-lock.json','port/multiplayer-worlds/catalog.mjs','godot/multiplayer_worlds/catalog.gd','tools/asset-production/moth_finish.py','tools/godot-package/production_receipts/'];
+ const protectedPaths=['game/','port/contracts/source-lock.json','port/multiplayer-worlds/catalog.mjs','port/multiplayer-worlds/derived/','port/multiplayer-worlds/wall_candidates.mjs','godot/multiplayer_worlds/catalog.gd','tools/asset-production/moth_finish.py','tools/godot-package/production_receipts/',':(exclude)tools/godot-package/production_receipts/abyssal-pressureworks.json'];
  assert.equal(execFileSync('git',['diff','99a4f597','--',...protectedPaths],{cwd:ROOT,encoding:'utf8'}),'');
+});
+test('actual Godot-extracted images match embedded export bytes and keep lossless normal policies',()=>{
+ const base=ROOT+'godot/multiplayer_worlds/art/worlds/abyssal-pressureworks',bytes=fs.readFileSync(base+'.glb'),size=bytes.readUInt32LE(12),doc=JSON.parse(bytes.subarray(20,20+size)),bin=bytes.subarray(28+size);
+ assert.equal(doc.images.length,5);
+ for(const image of doc.images){
+  const view=doc.bufferViews[image.bufferView],start=view.byteOffset??0,path=base+'_'+image.name+'.png';
+  assert.equal(sha(fs.readFileSync(path)),sha(bin.subarray(start,start+view.byteLength)),image.name);
+  const policy=fs.readFileSync(path+'.import','utf8');assert.match(policy,/compress\/mode=0/);assert.match(policy,/mipmaps\/generate=true/);assert.match(policy,/process\/normal_map_invert_y=false/);
+ }
 });
