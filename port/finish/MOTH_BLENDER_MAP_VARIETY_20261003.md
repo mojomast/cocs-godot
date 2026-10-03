@@ -34,8 +34,11 @@ No revised map master, export or rendered acceptance is claimed at this checkpoi
 
 - Botanical/urban source delivered as `8cff03b0`, `ddf8c70d`, `0351e1d1`, with
   18 reported Node passes and a Python source suite. Independent Astra review
-  `ses_efd55fd04ffedSQ6q14ztgmqaa` is checking buildability, complete composition,
-  collision/support agreement and the material adapter contract before merge.
+  `ses_efd55fd04ffedSQ6q14ztgmqaa` reproduced the Node passes but **rejected all
+  three revisions** for deterministic build failures, misplaced/omitted geometry,
+  invalid traversal probes, a covered lightwell and inconsistent export contracts.
+  Complete corrective scope: `map-variety/BOTANICAL_SOURCE_REVIEW.md`. Original
+  Flash owner is correcting its source; Sol owns the inherited Kit rib-winding fix.
 - Coastal initial source `6675a2ce` was rejected by parent for incorrect coordinate
   conversion, invalid mesh faces/arch dimensions and incomplete full-map assembly.
   Corrective `7a7ce64e` reports full authority composition and 37 source checks.
