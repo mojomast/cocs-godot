@@ -1,14 +1,14 @@
 name: Windows source-only packaging preflight
 on:
   push:
-    branches: [preview/windows-source-preflight-g3]
+    branches: [preview/windows-source-preflight-next]
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
   source-preflight:
     runs-on: windows-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - name: Preserve exact committed bytes
         run: git config --global core.autocrlf false
@@ -20,5 +20,17 @@ jobs:
           node-version: '22.22.0'
       - name: Path and locked-source regressions
         run: node --test tools/godot-package/dependency_path.test.mjs tools/godot-package/source_state_windows.test.mjs
+      - name: Seven-unit positive and tamper/pending negative gates
+        run: node --test tools/godot-package/build_channel.test.mjs
       - name: Recorded discovery and strict promoted asset preflight (no engine)
-        run: node tools/godot-package/windows_source_preflight.mjs
+        shell: pwsh
+        run: |
+          node tools/godot-package/windows_source_preflight.mjs > source-preflight.json 2> source-preflight.stderr.log
+          if ($LASTEXITCODE -ne 0) { Get-Content source-preflight.stderr.log; throw 'Strict recorded source preflight failed' }
+          Get-Content source-preflight.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: windows-source-preflight-${{ github.sha }}
+          path: source-preflight.*
+          if-no-files-found: warn

@@ -6,10 +6,10 @@ import {pathToFileURL} from 'node:url';
 import {manifest} from './manifest.mjs';
 import {root,plan,sha256,outside,verifyFrames} from './contracts.mjs';
 import {createFixture} from './fixture.mjs';
-import {runProcess} from './process.mjs';
 import {assetInputs,assertAssetIdentity} from './assets.mjs';
 import {writeProof,readProof,digestFile} from './proof.mjs';
 import {checkBoundIdentity} from './receipt.mjs';
+import {runNative,nativeCommand} from './native.mjs';
 const json=(path,value)=>writeFile(path,JSON.stringify(value,null,2)+'\n',{flag:'wx'});
 
 export async function prepare(out,p) {
@@ -107,13 +107,15 @@ export async function capture(out,p,{shotID,godot,deadlineSeconds=1800,budgetSec
       '--fixed-fps',String(p.fps),'--resolution','1280x720','--script','res://tests/cinematic_v3/capture.gd','--',
       `--map=${shot.map}`,'--mode=campaign','--mute','--endpoint=ws://127.0.0.1:1/native-campaign',
       `--trailer-source=${replay}`,`--trailer-output=${join(directory,'frames')}`,`--capture-token=${captureToken}`,`--asset-proof=${assetPath}`];
-    await json(join(directory,'invocation.json'),{godot,args,captureToken,godotSHA256:await digestFile(godot),environment:{LP_NUM_THREADS:1},deadlineSeconds,budgetSeconds});
-    await runProcess(godot,args,{cwd:root,log:join(directory,'godot.log'),timeoutMs:Math.min(deadlineSeconds*1000,remaining)});
+    const timeoutMs=Math.min(deadlineSeconds*1000,remaining),logPath=join(directory,'godot.log');
+    await json(join(directory,'invocation.json'),{godot,args,captureToken,godotSHA256:await digestFile(godot),environment:{LP_NUM_THREADS:1},deadlineSeconds,budgetSeconds,
+      native:nativeCommand(godot,args,logPath,timeoutMs)});
+    await runNative(godot,args,{cwd:root,log:logPath,timeoutMs});
     const log=await readFile(join(directory,'godot.log'),'utf8');
     if(!log.includes(`CINEMATIC_V3_OK ${shot.id} frames=${shot.seconds*p.fps}`)||/SCRIPT ERROR|^ERROR:|resources still in use|ObjectDB instances leaked/m.test(log))throw Error(`${shot.id}: native failure; retain logs`);
     assertAssetIdentity(p.assets,assetInputs({strict:true}));
     await checkBoundIdentity(p);
-    const paths=Object.fromEntries(['godot.log','godot.log.process.json','cadence.jsonl','replay.jsonl','invocation.json','asset-inputs.json'].map(n=>[n,join(directory,n)]));
+    const paths=Object.fromEntries(['godot.log','godot.log.process.json','godot.log.supervision.json','godot.log.supervision.native.log','cadence.jsonl','replay.jsonl','invocation.json','asset-inputs.json'].map(n=>[n,join(directory,n)]));
     for(const name of await readdir(join(directory,'frames')))paths[`frames/${name}`]=join(directory,'frames',name);
     await writeProof(join(directory,'capture-receipt.json'),{...await verifyFrames(directory,shot,p.fps,p.inputSHA256),kind:'native-shot',executed:true,status:'passed',inputSHA256:p.inputSHA256,manifestSHA256:p.manifestSHA256,assetSHA256:p.assets.sha256},paths);
   }
@@ -127,12 +129,12 @@ export async function menuCheck(out,p,{godot=defaultGodot(),installed=false,dire
   if(installed){const a=JSON.parse(await readFile(candidate)),b=JSON.parse(await readFile(join(root,'godot/ui/attract/demo.json')));
     if(JSON.stringify(a.clips)!==JSON.stringify(b.clips))throw Error('Installed menu clips differ from source candidate');}
   const args=['--path',join(root,'godot'),'--rendering-method','gl_compatibility','--audio-driver','Dummy','--resolution','1280x800','--script','res://tests/cinematic_v3/attract_candidate.gd'];
-  await json(join(directory,'invocation.json'),{godot,args,captureToken,godotSHA256:await digestFile(godot),installed});
-  await runProcess(godot,args,{cwd:root,log:join(directory,'godot.log'),timeoutMs:600000,
+  await json(join(directory,'invocation.json'),{godot,args,captureToken,godotSHA256:await digestFile(godot),installed,native:nativeCommand(godot,args,join(directory,'godot.log'),600000)});
+  await runNative(godot,args,{cwd:root,log:join(directory,'godot.log'),timeoutMs:600000,
     env:{COCS_ATTRACT_EVIDENCE:directory,COCS_ATTRACT_CANDIDATE:candidate,COCS_ATTRACT_INSTALLED:installed?'1':'0',COCS_CAPTURE_TOKEN:captureToken}});
   const log=await readFile(join(directory,'godot.log'),'utf8'),result=JSON.parse(await readFile(join(directory,'native-result.json')));
   if(!/CINEMATIC_V3_ATTRACT checks=\d+ failures=0/.test(log)||/SCRIPT ERROR|^ERROR:|resources still in use|ObjectDB instances leaked/m.test(log)||result.status!=='passed'||result.checks<30||result.failures!==0||result.installed!==installed||result.captureToken!==captureToken||result.candidateSHA256!==await digestFile(candidate))throw Error('Native menu candidate failed; preserve evidence');
-  const paths=Object.fromEntries(['godot.log','godot.log.process.json','native-result.json','invocation.json'].map(n=>[n,join(directory,n)]));paths.candidate=candidate;
+  const paths=Object.fromEntries(['godot.log','godot.log.process.json','godot.log.supervision.json','godot.log.supervision.native.log','native-result.json','invocation.json'].map(n=>[n,join(directory,n)]));paths.candidate=candidate;
   for(const [index,shot]of p.shots.filter(s=>s.menu).entries())for(const suffix of ['a','b'])for(const type of ['','-stage']){
     const name=`${String(index).padStart(2,'0')}-${shot.id}-${suffix}${type}.png`;paths[name]=join(directory,name);}
   for(const name of ['compact-ui150.png','compact-ui150-stage.png'])paths[name]=join(directory,name);

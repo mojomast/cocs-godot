@@ -56,6 +56,9 @@ func run() -> void:
 	session.campaign_hud.hide_brief()
 	session.campaign_hud.set_process(false)
 	for i: int in range(4): await process_frame
+	# The capture fixture has no interactive debug controls; retain gameplay HUD.
+	if is_instance_valid(session.solo_cheats):
+		session.solo_cheats.hide()
 	var scenery: Node = session.world.get_node_or_null("BiomeExpansionFour")
 	if scenery == null or scenery.loaded_assets.size() != 3:
 		push_error("CINEMATIC_V3 final chapter scenery not installed; fallback refused")
@@ -80,6 +83,9 @@ func run() -> void:
 		session.on_snapshot({"state":record.state})
 		session.ground_tells.apply_events(record.events)
 		session.combat.apply_events(record.events, 0)
+		# K's accepted-event operator pose bridge is now a real production recipient.
+		# Dispatch recorded events once through its existing eligibility checks.
+		session.presentation._on_melee_events(record.events)
 		session.av_events(record.events)
 		for visual: Node in session.presentation.actors.values():
 			var model: Variant = visual.get("model_id")

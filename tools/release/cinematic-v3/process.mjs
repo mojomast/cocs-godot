@@ -11,7 +11,7 @@ export async function runProcess(command,args,{cwd,log,timeoutMs=600000,env={}})
       let reason=null,killTimer;
       execution.pid=child.pid;
       const kill=signal=>{if(child.pid)try{process.kill(-child.pid,signal);}catch(e){if(e.code!=='ESRCH')throw e;}};
-      const stop=why=>{reason??=why;kill('SIGTERM');killTimer??=setTimeout(()=>kill('SIGKILL'),2000);};
+      const stop=why=>{reason??=why;kill('SIGTERM');killTimer??=setTimeout(()=>kill('SIGKILL'),10000);};
       const interrupt=()=>stop('interrupted'),timer=setTimeout(()=>stop('wall deadline exceeded'),timeoutMs);
       process.on('SIGINT',interrupt);process.on('SIGTERM',interrupt);
       const cleanup=()=>{clearTimeout(timer);clearTimeout(killTimer);process.off('SIGINT',interrupt);process.off('SIGTERM',interrupt);};

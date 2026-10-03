@@ -35,10 +35,12 @@ test('conversion uses the package audit exact inventories and preserves embedded
  assert.deepEqual(r.runtimeHooks,{'godot/multiplayer_worlds/map.gd':hash(f.read('godot/multiplayer_worlds/map.gd'))});
  assert.equal(r.accepted,false);
 });
-test('missing actual masters/exports fail; current queue cannot manufacture a receipt',()=>{
- for(const id of ['robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks','stormglass-causeway'])assert.ok(audit[id].missing.length>0,id);
- const f=fixture();f.memory.delete(expected.masters[0]);assert.throws(()=>convert(f),/ENOENT/);
- const g=fixture();g.memory.delete(expected.exports[0]);assert.throws(()=>convert(g),/ENOENT/);
+test('missing masters/exports fail independently of current production promotion',()=>{
+ for(const path of [...expected.masters,...expected.exports]){
+  const f=fixture(),read=f.read;
+  f.read=p=>{if(p===path)throw Object.assign(new Error('ENOENT: '+p),{code:'ENOENT'});return read(p);};
+  assert.throws(()=>convert(f),/ENOENT/);
+ }
 });
 test('stale builder, auxiliary package inputs, master, GLB and embedded image identities are rejected',()=>{
  for(const mutate of [
@@ -60,9 +62,9 @@ test('runtime hooks must be explicit existing production paths; no tests, escape
  for(const hooks of [[],['godot/tests/asset_production/hosted.gd'],['godot/../game/core.mjs'],['godot/missing.gd'],['godot/multiplayer_worlds/map.gd','godot/multiplayer_worlds/map.gd']])assert.throws(()=>convert({...fixture(),hooks}));
  const f=fixture();f.receipt.rawFiles=['godot/unreviewed.glb'];assert.throws(()=>convert(f),/no raw/);
 });
-test('actual CLI refuses the unbuilt robot unit before writing any fixed package receipt',()=>{
+test('actual CLI refuses a missing robot receipt without changing fixed package receipt',()=>{
  const output=resolve(root,'tools/godot-package/production_receipts/robots.json'),before=existsSync(output)?readFileSync(output):null;
  const result=spawnSync(process.execPath,['tools/asset-production/package-receipt.mjs','robots','/tmp/opencode/nonexistent-asset-receipt.json','--runtime-hook=godot/robot_assets/switchyard/skin_adapter.gd'],{cwd:root,encoding:'utf8',timeout:10000});
- assert.equal(result.status,1);assert.match(result.stderr,/Real production inputs\/masters\/exports required/);
+  assert.equal(result.status,1);assert.match(result.stderr,/ENOENT.*nonexistent-asset-receipt\.json|Real production inputs\/masters\/exports required/);
  assert.deepEqual(existsSync(output)?readFileSync(output):null,before);
 });

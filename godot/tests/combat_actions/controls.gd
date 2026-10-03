@@ -143,6 +143,9 @@ func run() -> void:
 		check(s.aim_requested(), boundary + " fresh release/press works")
 		s._input(mouse(MOUSE_BUTTON_RIGHT, false))
 	probe("session-before-free", {"session":s})
+	# Constructor-owned atmosphere queues a dirty Sky in Compatibility. Complete
+	# that renderer transaction before destroying its owner in this same frame.
+	await RenderingServer.frame_post_draw
 	s.free()
 	probe("session-freed")
 	var arms := ArmsRace.new()
@@ -151,6 +154,7 @@ func run() -> void:
 	arms._input(mouse(MOUSE_BUTTON_RIGHT, true))
 	check(not arms.weapon_controls_active() and arms.aim_requested(), "Arms Race ADS independent from pinned weapon selection")
 	probe("arms-before-free", {"arms":arms})
+	await RenderingServer.frame_post_draw
 	arms.free()
 	probe("arms-freed")
 	var c := Combined.new()

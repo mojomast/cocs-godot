@@ -1,5 +1,14 @@
 # Reviewed polish source integration
 
+## Native verification integrated
+
+L final `dc62c844` merged as **`9cd1ac72`** after explicit release. All nine
+primary fixtures passed. The one production correction consumes Cancel on a
+focused inline lobby choice outside browse mode; it passes the 63-check actual
+scene popup/input regression. Full results and retained failures:
+`NATIVE_L.md`. Package reconciliation must explicitly advance that final runtime
+hash. Earlier native-pending statements below describe the source staging phase.
+
 ## Main-branch adoption
 
 After K's audited release, parent merged K `4188e411` as `f06d65fc` and this

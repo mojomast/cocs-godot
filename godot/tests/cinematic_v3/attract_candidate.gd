@@ -96,7 +96,7 @@ func run() -> void:
 	await capture("compact-ui150")
 	menu.stop_attract()
 	require(not stage.active and stage.viewport.render_target_update_mode == SubViewport.UPDATE_DISABLED, "Home route departure stops viewport")
-	var weak_stage := weakref(stage)
+	var weak_stage: WeakRef = weakref(stage)
 	menu.queue_free()
 	await process_frame
 	await process_frame
