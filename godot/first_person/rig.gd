@@ -33,6 +33,8 @@ var showing := false
 var reduced_motion := false
 var flight_mode := false # Public soloCheats.flight presentation gate.
 var speed := 0.0
+var slide_target := 0.0
+var slide_weight := 0.0
 var reloading := false
 var reload_progress := 0.0
 var recoil := 0.0
@@ -161,6 +163,7 @@ func apply_actor(actor: Dictionary, can_show: bool) -> void:
 	if eligible: inertia.observe(actor, source_camera.global_basis, flight_mode)
 	speed = minf(12.0, Vector2(number(actor.get("vx")), number(actor.get("vz"))).length()) if eligible and actor.get("grounded", true) != false else 0.0
 	reloading = eligible and actor.get("reloading", false) == true
+	slide_target = 1.0 if eligible and actor.get("sliding", false) == true else 0.0
 	aim_blocked = reloading or actor.get("sprinting", false) == true or number(actor.get("weaponSwitch")) > 0.0
 	if aim_blocked: interrupt_kick()
 	if aim_blocked:
@@ -357,6 +360,11 @@ func advance(delta: float) -> void:
 	# Keep settled neutral sights exactly on the camera ray. Recoil is deliberately
 	# visible, then recovers; idle/locomotion/lag fade out as cheek weld completes.
 	var free_motion := 1.0 - aim_weight
+	# Small weapon-only slide cant; settled sights and camera retain their ray.
+	slide_weight = 0.0 if reduced_motion else lerpf(slide_weight, slide_target, 1.0 - exp(-dt * 12.0))
+	var slide_pose := slide_weight * free_motion
+	pivot.position += Vector3(0.018, -0.025, 0.0) * slide_pose
+	pivot.basis *= Basis.from_euler(Vector3(0.0, 0.0, 0.08 * slide_pose))
 	# Weapon-oomph recoil: the source kick is amplified per weapon (heavier source
 	# feel -> stronger multiplier) with a fast transient punch layered on top.
 	# Reduced motion keeps a visible but small punch and never the full jolt.
@@ -385,6 +393,8 @@ func advance(delta: float) -> void:
 		flare.global_transform = anchors["Muzzle%d" % index].global_transform * Transform3D(Basis(Vector3.RIGHT, PI / 2.0), Vector3(0, 0, -0.025))
 
 func _clear_motion() -> void:
+	slide_target = 0.0
+	slide_weight = 0.0
 	recoil = 0.0
 	punch = 0.0
 	punch_spring.reset()

@@ -155,6 +155,9 @@ commands = [
     ("cinder-traversal", [binary, "--headless", "--path", "godot", "--script", "res://tests/cinder_array/verify.gd", "--", str(root / "port/reports/cinder-traversal.json")]),
     ("exploration-walker", [binary, "--headless", "--path", "godot", "--script", "res://tests/graphics_batch/walker.gd"]),
     ("first-person-rig", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/lifecycle.gd"]),
+    # Supplemental cue gate: requires the preceding godot-import and imported
+    # godot/first_person/generated/weapon-0.glb, like the other rig fixtures.
+    ("first-person-slide", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/slide.gd"]),
     ("weapon-blender-art", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/art_override.gd"]),
     ("weapon-blender-source-audit", [sys.executable, "tools/godot-weapons/blender-art/verify.py"]),
     ("first-person-finishes", [binary, "--headless", "--path", "godot", "--script", "res://tests/first_person/finishes.gd"]),
@@ -512,6 +515,8 @@ if not version['passed']:
 # session and a session without capture produce no such line, so this is engine
 # teardown behaviour, not our content. Any other ERROR line still fails the gate.
 gate_options = {
+    'campaign-input-flow': {'timeout': 60},
+    'first-person-slide': {'timeout': 60},
     'campaign-compact-ui': {'timeout': 300},
     'product-shell-journey': {'timeout': 300},
     'player-flow-journey': {'timeout': 240},
@@ -523,13 +528,23 @@ gate_options = {
         'allowed_error_patterns': (r'^ERROR: Texture with GL ID of \d+: leaked \d+ bytes\.$',),
     },
 }
+gate_prerequisites = {
+    'first-person-slide': ['godot/first_person/generated/weapon-0.glb'],
+}
 keep_going = os.environ.get('COCS_VERIFY_KEEP_GOING') == '1'
 report['keep_going'] = keep_going
 failed_gates = []
 for name, command in commands:
     report['active_gate'] = name
     save_report(report_path, report)
-    result, output = run_gate(name, command, f'port/reports/{name}.log', **gate_options.get(name, {}))
+    missing = [path for path in gate_prerequisites.get(name, []) if not (root / path).is_file()]
+    if missing:
+        output = 'Missing gate prerequisites: ' + ', '.join(missing) + '\n'
+        Path(f'port/reports/{name}.log').write_text(output)
+        result = {'gate': name, 'command': command, 'exit_code': None, 'passed': False,
+                  'failure_reason': 'missing-prerequisite', 'duration_seconds': 0}
+    else:
+        result, output = run_gate(name, command, f'port/reports/{name}.log', **gate_options.get(name, {}))
     record(result)
     if not result['passed']: failed_gates.append(name)
     report['failed_gate_names'] = failed_gates.copy()
