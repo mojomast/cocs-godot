@@ -49,9 +49,9 @@ boundaries.
 | Fighting presentation and controls | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing at `1bff0281`; controller recovery integrated at `614a8a7f`, all 12 parent presentation source tests pass; native review pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
-| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | F promotion integrated; Vesper exact closure and five-unit supporting-input reconciliation integrated at `b5d16351`; 25 parent source checks pass; idle pending next source assignment |
+| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Six-unit exact closure and Abyssal registration integrated at `c7c81c71`; 35 parent source/import/receipt/registration checks pass; idle pending next source assignment |
 | Vesper Viaduct | Astra `ses_f03a3885fffehx9yFhHubuPCft` | H production/evidence integrated through `04fbbfa5`; six native outcomes passed; parent review/registration at `99a4f597`; package-promoted at `b5d16351` |
-| Abyssal Pressureworks | Astra `ses_f03a3024cffeNO1Cc3Qr1zSLTG` | I delivery integrated through `f0e76bf7`; six native outcomes passed, parent reviewed images; source-only registration/promotion assigned to package-closure owner |
+| Abyssal Pressureworks | Astra `ses_f03a3024cffeNO1Cc3Qr1zSLTG` | I delivery integrated through `f0e76bf7`; six native outcomes and parent visual review retained; six-mode registration/package promotion integrated at `c7c81c71` |
 | Stormglass Causeway | Astra `ses_f0342d1ffffeyUHJkcUj3vqP7p` | Exclusive J: actual map production, reopen/native geometry and private race proof |
 | Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Actual production at `1f129ab2`; E released; compact-HUD correction at `83ceaa62` passes six parent source checks/grammar, new native layout/screenshots pending |
 | Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base `b6ab6782` and ordinary-controller follow-up `da259d19` integrated; 26 parent acceptance tests and grammar pass; native execution awaits later grant and device access |
@@ -74,8 +74,9 @@ Parent owns review, public registration and promotion. Motion/UI native checks
 and cinematic production await later grants.
 Scenery F, preview G/G2/G3/G4, Vesper H and Abyssal I explicitly released. Current J supersedes
 historical ownership metadata in production plans; do not mutate active-run inputs
-just to relabel ownership. Vesper package promotion is complete: five units are
-promoted, Abyssal/Stormglass remain pending. The authorized Windows navigation
+just to relabel ownership. Abyssal package promotion is complete: six units are
+promoted, Stormglass remains pending. Public coverage is 12 worlds / 72 pairs.
+The authorized Windows navigation
 comparison runs on a separate remote host.
 
 No other agent may run Godot, Blender, imports, rendering, audio capture or encoding
