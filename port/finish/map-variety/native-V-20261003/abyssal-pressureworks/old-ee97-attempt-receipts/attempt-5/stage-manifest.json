@@ -1,0 +1,16 @@
+{
+  "geometryHash": "ee979520743dd4c73ac0d825774a2c99b5a8d85800a6eead5170f261abe61bea",
+  "candidateSha256": "c8a5780879684c99131dd8f5a817890d4e7cadd5a50e24604db99bffd1ecd00c",
+  "glbSha256": "449bc89941698b65c80e55b83718b86f3c01432ae3dd94bb59d1011d85e9e4a7",
+  "masterSha256": "2048f4930c05141d17f52ed0553ad0d0592d74139541d485fc345330901249a7",
+  "probesSha256": "aa75ec476709ac2855f53e8b748f2bf4094cf974cb3d7388af0cdf8cd1b02786",
+  "reportSha256": "8e475be87d9ca205004d6fd852910ac8a3242426c0893ce362cf9731e1bea2ca",
+  "stageSchemaSha256": "12bc0b5d6c12746bb3131121e3e22682304925d0da890f77dd508b249a6abea5",
+  "stageProfileSha256": "dd6352be69efccb7ba1a24da6f02811719d0bd7df0383f29d6b1a2138a4ff67f",
+  "stage": "isolated test-only project; production Binder with candidate-only preserve-PBR profile; weather not present in parent snapshot; no runtime promotion",
+  "pending": [
+    "production weather/finish assessment",
+    "host modes",
+    "camera sweep"
+  ]
+}

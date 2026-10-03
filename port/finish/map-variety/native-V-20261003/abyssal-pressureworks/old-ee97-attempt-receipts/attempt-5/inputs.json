@@ -1,0 +1,12 @@
+{
+  "grant": "MOTH-BLENDER-20261003-V",
+  "geometryHash": "ee979520743dd4c73ac0d825774a2c99b5a8d85800a6eead5170f261abe61bea",
+  "candidateSha256": "c8a5780879684c99131dd8f5a817890d4e7cadd5a50e24604db99bffd1ecd00c",
+  "bindingsSha256": "a7d590fb1e4af169bbe37f2463b3a89ef0d255e434bd7c8a757b42d0b927170b",
+  "authorSha256": "c3c7e9630e47a3dd8787fb1b0af4a7e5023890d3819c17d02513457992eef195",
+  "builderSha256": "143e5c93a347c8353926c0a6c4a4ecface231ce9a9e323b71f821db727964c45",
+  "git": "bc62898a4a483d7e54312a19292fb60673d20338",
+  "blender": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender",
+  "godot": "/home/mojo/.tmp-on-disk/opencode/cocs-graphics-windows-final/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "startedUtc": "2026-10-03T20:11:13.863359+00:00"
+}

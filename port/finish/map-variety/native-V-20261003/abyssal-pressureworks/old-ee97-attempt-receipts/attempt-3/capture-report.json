@@ -1,0 +1,807 @@
+{
+	"captures": [
+		{
+			"drawCalls": 35.0,
+			"dressing": {
+				"errors": [],
+				"map_id": "abyssal-pressureworks",
+				"matched": [],
+				"motes": 0,
+				"panels": 0,
+				"preserved": [],
+				"resources": [],
+				"signs": 0,
+				"status": "identity_mismatch",
+				"surfaces": 0,
+				"unmatched": [],
+				"unused_selectors": []
+			},
+			"eightFrameMicroseconds": 1236974,
+			"eye": [
+				-94,
+				8.0,
+				-86
+			],
+			"file": "/tmp/opencode/abyssal-corrective-V-20261003-attempt-3/captures/sw-player-wall-accepted-runtime-before.png",
+			"geometryHash": "32366a6c3df7f95f8d89281c5f83b24d9583cefeb4c0099790303d15349b53be",
+			"height": 720,
+			"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+			"scope": "8 settled frames/static view on recorded backend; not hosted movement FPS",
+			"sha256": "42003a23a3eceb32810c6f8a2668f7d15499599f0c29ae12c5114604756eb71a",
+			"staticMeanFrameMs": 154.62175,
+			"staticMemoryBytes": 55788933,
+			"target": [
+				-94,
+				7.4,
+				-101
+			],
+			"variant": "accepted-runtime-before",
+			"videoMemoryBytes": 15433526.0,
+			"view": "sw-player-wall",
+			"width": 1280
+		},
+		{
+			"drawCalls": 35.0,
+			"dressing": {
+				"errors": [],
+				"map_id": "abyssal-pressureworks",
+				"matched": [],
+				"motes": 0,
+				"panels": 0,
+				"preserved": [],
+				"resources": [],
+				"signs": 0,
+				"status": "identity_mismatch",
+				"surfaces": 0,
+				"unmatched": [],
+				"unused_selectors": []
+			},
+			"eightFrameMicroseconds": 1492371,
+			"eye": [
+				-103,
+				8.0,
+				-95
+			],
+			"file": "/tmp/opencode/abyssal-corrective-V-20261003-attempt-3/captures/sw-terrace-walk-accepted-runtime-before.png",
+			"geometryHash": "32366a6c3df7f95f8d89281c5f83b24d9583cefeb4c0099790303d15349b53be",
+			"height": 720,
+			"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+			"scope": "8 settled frames/static view on recorded backend; not hosted movement FPS",
+			"sha256": "346b082dfa875fef85d9b24b456a18ef196317b8e783b03768d62ed8ea838920",
+			"staticMeanFrameMs": 186.546375,
+			"staticMemoryBytes": 55792521,
+			"target": [
+				-89,
+				7.6,
+				-96
+			],
+			"variant": "accepted-runtime-before",
+			"videoMemoryBytes": 15433526.0,
+			"view": "sw-terrace-walk",
+			"width": 1280
+		},
+		{
+			"drawCalls": 35.0,
+			"dressing": {
+				"errors": [],
+				"map_id": "abyssal-pressureworks",
+				"matched": [],
+				"motes": 0,
+				"panels": 0,
+				"preserved": [],
+				"resources": [],
+				"signs": 0,
+				"status": "identity_mismatch",
+				"surfaces": 0,
+				"unmatched": [],
+				"unused_selectors": []
+			},
+			"eightFrameMicroseconds": 1057165,
+			"eye": [
+				-94,
+				8.0,
+				-70
+			],
+			"file": "/tmp/opencode/abyssal-corrective-V-20261003-attempt-3/captures/sw-observation-bay-accepted-runtime-before.png",
+			"geometryHash": "32366a6c3df7f95f8d89281c5f83b24d9583cefeb4c0099790303d15349b53be",
+			"height": 720,
+			"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+			"scope": "8 settled frames/static view on recorded backend; not hosted movement FPS",
+			"sha256": "90daf0b8cc78e9751a4a03d9d0b1927398a87d12cd0ebce10c7b0e33717bdd04",
+			"staticMeanFrameMs": 132.145625,
+			"staticMemoryBytes": 55795373,
+			"target": [
+				-94,
+				8.5,
+				-101
+			],
+			"variant": "accepted-runtime-before",
+			"videoMemoryBytes": 15433526.0,
+			"view": "sw-observation-bay",
+			"width": 1280
+		},
+		{
+			"drawCalls": 35.0,
+			"dressing": {
+				"errors": [],
+				"map_id": "abyssal-pressureworks",
+				"matched": [],
+				"motes": 0,
+				"panels": 0,
+				"preserved": [],
+				"resources": [],
+				"signs": 0,
+				"status": "identity_mismatch",
+				"surfaces": 0,
+				"unmatched": [],
+				"unused_selectors": []
+			},
+			"eightFrameMicroseconds": 1181913,
+			"eye": [
+				-94,
+				8.2,
+				-110
+			],
+			"file": "/tmp/opencode/abyssal-corrective-V-20261003-attempt-3/captures/sw-exterior-detail-accepted-runtime-before.png",
+			"geometryHash": "32366a6c3df7f95f8d89281c5f83b24d9583cefeb4c0099790303d15349b53be",
+			"height": 720,
+			"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+			"scope": "8 settled frames/static view on recorded backend; not hosted movement FPS",
+			"sha256": "9a98faca68f7e09e9405bc7b282286bcc51314e81c8284f039992441e030814d",
+			"staticMeanFrameMs": 147.739125,
+			"staticMemoryBytes": 55798257,
+			"target": [
+				-94,
+				8.5,
+				-102
+			],
+			"variant": "accepted-runtime-before",
+			"videoMemoryBytes": 15433526.0,
+			"view": "sw-exterior-detail",
+			"width": 1280
+		},
+		{
+			"drawCalls": 35.0,
+			"dressing": {
+				"errors": [],
+				"map_id": "abyssal-pressureworks",
+				"matched": [],
+				"motes": 0,
+				"panels": 0,
+				"preserved": [],
+				"resources": [],
+				"signs": 0,
+				"status": "identity_mismatch",
+				"surfaces": 0,
+				"unmatched": [],
+				"unused_selectors": []
+			},
+			"eightFrameMicroseconds": 664586,
+			"eye": [
+				91,
+				2.0,
+				-89
+			],
+			"file": "/tmp/opencode/abyssal-corrective-V-20261003-attempt-3/captures/se-player-wall-accepted-runtime-before.png",
+			"geometryHash": "32366a6c3df7f95f8d89281c5f83b24d9583cefeb4c0099790303d15349b53be",
+			"height": 720,
+			"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+			"scope": "8 settled frames/static view on recorded backend; not hosted movement FPS",
+			"sha256": "080bb6df76cd367bba1cb5d4c757d246f90c2d2517e97c7e0e86038fe2a7a704",
+			"staticMeanFrameMs": 83.07325,
+			"staticMemoryBytes": 55801077,
+			"target": [
+				103,
+				2.2,
+				-90
+			],
+			"variant": "accepted-runtime-before",
+			"videoMemoryBytes": 15433526.0,
+			"view": "se-player-wall",
+			"width": 1280
+		},
+		{
+			"drawCalls": 35.0,
+			"dressing": {
+				"errors": [],
+				"map_id": "abyssal-pressureworks",
+				"matched": [],
+				"motes": 0,
+				"panels": 0,
+				"preserved": [],
+				"resources": [],
+				"signs": 0,
+				"status": "identity_mismatch",
+				"surfaces": 0,
+				"unmatched": [],
+				"unused_selectors": []
+			},
+			"eightFrameMicroseconds": 777529,
+			"eye": [
+				84,
+				2.0,
+				-90
+			],
+			"file": "/tmp/opencode/abyssal-corrective-V-20261003-attempt-3/captures/se-terrace-walk-accepted-runtime-before.png",
+			"geometryHash": "32366a6c3df7f95f8d89281c5f83b24d9583cefeb4c0099790303d15349b53be",
+			"height": 720,
+			"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+			"scope": "8 settled frames/static view on recorded backend; not hosted movement FPS",
+			"sha256": "c849756459e690c170b6faf8a1c892d9ee82e95f1462eaf171029c0c82e5d492",
+			"staticMeanFrameMs": 97.191125,
+			"staticMemoryBytes": 55803897,
+			"target": [
+				100,
+				2.1,
+				-91
+			],
+			"variant": "accepted-runtime-before",
+			"videoMemoryBytes": 15433526.0,
+			"view": "se-terrace-walk",
+			"width": 1280
+		},
+		{
+			"drawCalls": 35.0,
+			"dressing": {
+				"errors": [],
+				"map_id": "abyssal-pressureworks",
+				"matched": [],
+				"motes": 0,
+				"panels": 0,
+				"preserved": [],
+				"resources": [],
+				"signs": 0,
+				"status": "identity_mismatch",
+				"surfaces": 0,
+				"unmatched": [],
+				"unused_selectors": []
+			},
+			"eightFrameMicroseconds": 1315141,
+			"eye": [
+				112,
+				2.2,
+				-90
+			],
+			"file": "/tmp/opencode/abyssal-corrective-V-20261003-attempt-3/captures/se-exterior-detail-accepted-runtime-before.png",
+			"geometryHash": "32366a6c3df7f95f8d89281c5f83b24d9583cefeb4c0099790303d15349b53be",
+			"height": 720,
+			"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+			"scope": "8 settled frames/static view on recorded backend; not hosted movement FPS",
+			"sha256": "91a88c7305d7afd46bab9d315dd784aba2cb26c33712b6c0ea514f820c0a3118",
+			"staticMeanFrameMs": 164.392625,
+			"staticMemoryBytes": 55806845,
+			"target": [
+				104,
+				2.2,
+				-90
+			],
+			"variant": "accepted-runtime-before",
+			"videoMemoryBytes": 15433526.0,
+			"view": "se-exterior-detail",
+			"width": 1280
+		},
+		{
+			"drawCalls": 35.0,
+			"dressing": {
+				"errors": [],
+				"map_id": "abyssal-pressureworks",
+				"matched": [],
+				"motes": 0,
+				"panels": 0,
+				"preserved": [],
+				"resources": [],
+				"signs": 0,
+				"status": "identity_mismatch",
+				"surfaces": 0,
+				"unmatched": [],
+				"unused_selectors": []
+			},
+			"eightFrameMicroseconds": 972167,
+			"eye": [
+				-75,
+				15,
+				-72
+			],
+			"file": "/tmp/opencode/abyssal-corrective-V-20261003-attempt-3/captures/overhead-route-accepted-runtime-before.png",
+			"geometryHash": "32366a6c3df7f95f8d89281c5f83b24d9583cefeb4c0099790303d15349b53be",
+			"height": 720,
+			"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+			"scope": "8 settled frames/static view on recorded backend; not hosted movement FPS",
+			"sha256": "c2fa5b7c458d6c9de31e651883bd8ad30a2969f4f96077999faff271a488470e",
+			"staticMeanFrameMs": 121.520875,
+			"staticMemoryBytes": 55809665,
+			"target": [
+				-87,
+				8,
+				-92
+			],
+			"variant": "accepted-runtime-before",
+			"videoMemoryBytes": 15433526.0,
+			"view": "overhead-route",
+			"width": 1280
+		},
+		{
+			"drawCalls": 140.0,
+			"dressing": {
+				"batches": 2,
+				"detail": 2,
+				"errors": [],
+				"map_id": "abyssal-pressureworks",
+				"matched": [],
+				"motes": 12,
+				"panels": 0,
+				"preserved": [
+					"copper-patina",
+					"ceramic-enamel",
+					"navy",
+					"coral",
+					"amber",
+					"ivory",
+					"cyan",
+					"oxidized-iron",
+					"copper",
+					"deep-silt",
+					"basalt-strata",
+					"cast-seams",
+					"salt-limestone",
+					"glass"
+				],
+				"resources": [
+					"res://moth/generated/textures/dust-field.png",
+					"res://moth/generated/textures/flow-field.png"
+				],
+				"signs": 0,
+				"status": "ready",
+				"surfaces": 0,
+				"unmatched": [],
+				"unused_selectors": []
+			},
+			"eightFrameMicroseconds": 2051125,
+			"eye": [
+				-94,
+				8.0,
+				-86
+			],
+			"file": "/tmp/opencode/abyssal-corrective-V-20261003-attempt-3/captures/sw-player-wall-corrective-candidate-binder.png",
+			"geometryHash": "ee979520743dd4c73ac0d825774a2c99b5a8d85800a6eead5170f261abe61bea",
+			"height": 720,
+			"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+			"scope": "8 settled frames/static view on recorded backend; not hosted movement FPS",
+			"sha256": "1cbc5f73f8bbf4210745e01a898a2311889ac696549895227ce475f5c278a4fc",
+			"staticMeanFrameMs": 256.390625,
+			"staticMemoryBytes": 53554863,
+			"target": [
+				-94,
+				7.4,
+				-101
+			],
+			"variant": "corrective-candidate-binder",
+			"videoMemoryBytes": 63177622.0,
+			"view": "sw-player-wall",
+			"width": 1280
+		},
+		{
+			"drawCalls": 189.0,
+			"dressing": {
+				"batches": 2,
+				"detail": 2,
+				"errors": [],
+				"map_id": "abyssal-pressureworks",
+				"matched": [],
+				"motes": 12,
+				"panels": 0,
+				"preserved": [
+					"copper-patina",
+					"ceramic-enamel",
+					"navy",
+					"coral",
+					"amber",
+					"ivory",
+					"cyan",
+					"oxidized-iron",
+					"copper",
+					"deep-silt",
+					"basalt-strata",
+					"cast-seams",
+					"salt-limestone",
+					"glass"
+				],
+				"resources": [
+					"res://moth/generated/textures/dust-field.png",
+					"res://moth/generated/textures/flow-field.png"
+				],
+				"signs": 0,
+				"status": "ready",
+				"surfaces": 0,
+				"unmatched": [],
+				"unused_selectors": []
+			},
+			"eightFrameMicroseconds": 2152892,
+			"eye": [
+				-103,
+				8.0,
+				-95
+			],
+			"file": "/tmp/opencode/abyssal-corrective-V-20261003-attempt-3/captures/sw-terrace-walk-corrective-candidate-binder.png",
+			"geometryHash": "ee979520743dd4c73ac0d825774a2c99b5a8d85800a6eead5170f261abe61bea",
+			"height": 720,
+			"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+			"scope": "8 settled frames/static view on recorded backend; not hosted movement FPS",
+			"sha256": "2aa74fd095db809c7d890fdd9e36b21bba2aadab52c0c59ba43c664f5fd0873d",
+			"staticMeanFrameMs": 269.1115,
+			"staticMemoryBytes": 53571287,
+			"target": [
+				-89,
+				7.6,
+				-96
+			],
+			"variant": "corrective-candidate-binder",
+			"videoMemoryBytes": 63177622.0,
+			"view": "sw-terrace-walk",
+			"width": 1280
+		},
+		{
+			"drawCalls": 145.0,
+			"dressing": {
+				"batches": 2,
+				"detail": 2,
+				"errors": [],
+				"map_id": "abyssal-pressureworks",
+				"matched": [],
+				"motes": 12,
+				"panels": 0,
+				"preserved": [
+					"copper-patina",
+					"ceramic-enamel",
+					"navy",
+					"coral",
+					"amber",
+					"ivory",
+					"cyan",
+					"oxidized-iron",
+					"copper",
+					"deep-silt",
+					"basalt-strata",
+					"cast-seams",
+					"salt-limestone",
+					"glass"
+				],
+				"resources": [
+					"res://moth/generated/textures/dust-field.png",
+					"res://moth/generated/textures/flow-field.png"
+				],
+				"signs": 0,
+				"status": "ready",
+				"surfaces": 0,
+				"unmatched": [],
+				"unused_selectors": []
+			},
+			"eightFrameMicroseconds": 1599463,
+			"eye": [
+				-94,
+				8.0,
+				-70
+			],
+			"file": "/tmp/opencode/abyssal-corrective-V-20261003-attempt-3/captures/sw-observation-bay-corrective-candidate-binder.png",
+			"geometryHash": "ee979520743dd4c73ac0d825774a2c99b5a8d85800a6eead5170f261abe61bea",
+			"height": 720,
+			"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+			"scope": "8 settled frames/static view on recorded backend; not hosted movement FPS",
+			"sha256": "57bf26e68f77f8be8df214da82d43d680f8ececc28601a21e457e28fad39cb1c",
+			"staticMeanFrameMs": 199.932875,
+			"staticMemoryBytes": 53574107,
+			"target": [
+				-94,
+				8.5,
+				-101
+			],
+			"variant": "corrective-candidate-binder",
+			"videoMemoryBytes": 63177622.0,
+			"view": "sw-observation-bay",
+			"width": 1280
+		},
+		{
+			"drawCalls": 185.0,
+			"dressing": {
+				"batches": 2,
+				"detail": 2,
+				"errors": [],
+				"map_id": "abyssal-pressureworks",
+				"matched": [],
+				"motes": 12,
+				"panels": 0,
+				"preserved": [
+					"copper-patina",
+					"ceramic-enamel",
+					"navy",
+					"coral",
+					"amber",
+					"ivory",
+					"cyan",
+					"oxidized-iron",
+					"copper",
+					"deep-silt",
+					"basalt-strata",
+					"cast-seams",
+					"salt-limestone",
+					"glass"
+				],
+				"resources": [
+					"res://moth/generated/textures/dust-field.png",
+					"res://moth/generated/textures/flow-field.png"
+				],
+				"signs": 0,
+				"status": "ready",
+				"surfaces": 0,
+				"unmatched": [],
+				"unused_selectors": []
+			},
+			"eightFrameMicroseconds": 1775603,
+			"eye": [
+				-94,
+				8.2,
+				-110
+			],
+			"file": "/tmp/opencode/abyssal-corrective-V-20261003-attempt-3/captures/sw-exterior-detail-corrective-candidate-binder.png",
+			"geometryHash": "ee979520743dd4c73ac0d825774a2c99b5a8d85800a6eead5170f261abe61bea",
+			"height": 720,
+			"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+			"scope": "8 settled frames/static view on recorded backend; not hosted movement FPS",
+			"sha256": "5560e9d271d6109f565b6a736a90753fbaeb9a050b1099e65c4c8bb4e0f72c0f",
+			"staticMeanFrameMs": 221.950375,
+			"staticMemoryBytes": 53577671,
+			"target": [
+				-94,
+				8.5,
+				-102
+			],
+			"variant": "corrective-candidate-binder",
+			"videoMemoryBytes": 63177622.0,
+			"view": "sw-exterior-detail",
+			"width": 1280
+		},
+		{
+			"drawCalls": 149.0,
+			"dressing": {
+				"batches": 2,
+				"detail": 2,
+				"errors": [],
+				"map_id": "abyssal-pressureworks",
+				"matched": [],
+				"motes": 12,
+				"panels": 0,
+				"preserved": [
+					"copper-patina",
+					"ceramic-enamel",
+					"navy",
+					"coral",
+					"amber",
+					"ivory",
+					"cyan",
+					"oxidized-iron",
+					"copper",
+					"deep-silt",
+					"basalt-strata",
+					"cast-seams",
+					"salt-limestone",
+					"glass"
+				],
+				"resources": [
+					"res://moth/generated/textures/dust-field.png",
+					"res://moth/generated/textures/flow-field.png"
+				],
+				"signs": 0,
+				"status": "ready",
+				"surfaces": 0,
+				"unmatched": [],
+				"unused_selectors": []
+			},
+			"eightFrameMicroseconds": 1079667,
+			"eye": [
+				91,
+				2.0,
+				-89
+			],
+			"file": "/tmp/opencode/abyssal-corrective-V-20261003-attempt-3/captures/se-player-wall-corrective-candidate-binder.png",
+			"geometryHash": "ee979520743dd4c73ac0d825774a2c99b5a8d85800a6eead5170f261abe61bea",
+			"height": 720,
+			"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+			"scope": "8 settled frames/static view on recorded backend; not hosted movement FPS",
+			"sha256": "46d2b39ccfef970f2a15854a48d05f9a68671a077babcd1db37894267ad56112",
+			"staticMeanFrameMs": 134.958375,
+			"staticMemoryBytes": 53582091,
+			"target": [
+				103,
+				2.2,
+				-90
+			],
+			"variant": "corrective-candidate-binder",
+			"videoMemoryBytes": 63177622.0,
+			"view": "se-player-wall",
+			"width": 1280
+		},
+		{
+			"drawCalls": 155.0,
+			"dressing": {
+				"batches": 2,
+				"detail": 2,
+				"errors": [],
+				"map_id": "abyssal-pressureworks",
+				"matched": [],
+				"motes": 12,
+				"panels": 0,
+				"preserved": [
+					"copper-patina",
+					"ceramic-enamel",
+					"navy",
+					"coral",
+					"amber",
+					"ivory",
+					"cyan",
+					"oxidized-iron",
+					"copper",
+					"deep-silt",
+					"basalt-strata",
+					"cast-seams",
+					"salt-limestone",
+					"glass"
+				],
+				"resources": [
+					"res://moth/generated/textures/dust-field.png",
+					"res://moth/generated/textures/flow-field.png"
+				],
+				"signs": 0,
+				"status": "ready",
+				"surfaces": 0,
+				"unmatched": [],
+				"unused_selectors": []
+			},
+			"eightFrameMicroseconds": 1226131,
+			"eye": [
+				84,
+				2.0,
+				-90
+			],
+			"file": "/tmp/opencode/abyssal-corrective-V-20261003-attempt-3/captures/se-terrace-walk-corrective-candidate-binder.png",
+			"geometryHash": "ee979520743dd4c73ac0d825774a2c99b5a8d85800a6eead5170f261abe61bea",
+			"height": 720,
+			"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+			"scope": "8 settled frames/static view on recorded backend; not hosted movement FPS",
+			"sha256": "fbc0af9b37a682e19d6e882cb82cd9a067235dbcb8a6fca52588c5385c5d8148",
+			"staticMeanFrameMs": 153.266375,
+			"staticMemoryBytes": 53585255,
+			"target": [
+				100,
+				2.1,
+				-91
+			],
+			"variant": "corrective-candidate-binder",
+			"videoMemoryBytes": 63177622.0,
+			"view": "se-terrace-walk",
+			"width": 1280
+		},
+		{
+			"drawCalls": 187.0,
+			"dressing": {
+				"batches": 2,
+				"detail": 2,
+				"errors": [],
+				"map_id": "abyssal-pressureworks",
+				"matched": [],
+				"motes": 12,
+				"panels": 0,
+				"preserved": [
+					"copper-patina",
+					"ceramic-enamel",
+					"navy",
+					"coral",
+					"amber",
+					"ivory",
+					"cyan",
+					"oxidized-iron",
+					"copper",
+					"deep-silt",
+					"basalt-strata",
+					"cast-seams",
+					"salt-limestone",
+					"glass"
+				],
+				"resources": [
+					"res://moth/generated/textures/dust-field.png",
+					"res://moth/generated/textures/flow-field.png"
+				],
+				"signs": 0,
+				"status": "ready",
+				"surfaces": 0,
+				"unmatched": [],
+				"unused_selectors": []
+			},
+			"eightFrameMicroseconds": 2195395,
+			"eye": [
+				112,
+				2.2,
+				-90
+			],
+			"file": "/tmp/opencode/abyssal-corrective-V-20261003-attempt-3/captures/se-exterior-detail-corrective-candidate-binder.png",
+			"geometryHash": "ee979520743dd4c73ac0d825774a2c99b5a8d85800a6eead5170f261abe61bea",
+			"height": 720,
+			"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+			"scope": "8 settled frames/static view on recorded backend; not hosted movement FPS",
+			"sha256": "d258334374a0d1c61785f97048bd3ff0f0633148f4d945e33768faf4740794bf",
+			"staticMeanFrameMs": 274.424375,
+			"staticMemoryBytes": 53588563,
+			"target": [
+				104,
+				2.2,
+				-90
+			],
+			"variant": "corrective-candidate-binder",
+			"videoMemoryBytes": 63177622.0,
+			"view": "se-exterior-detail",
+			"width": 1280
+		},
+		{
+			"drawCalls": 146.0,
+			"dressing": {
+				"batches": 2,
+				"detail": 2,
+				"errors": [],
+				"map_id": "abyssal-pressureworks",
+				"matched": [],
+				"motes": 12,
+				"panels": 0,
+				"preserved": [
+					"copper-patina",
+					"ceramic-enamel",
+					"navy",
+					"coral",
+					"amber",
+					"ivory",
+					"cyan",
+					"oxidized-iron",
+					"copper",
+					"deep-silt",
+					"basalt-strata",
+					"cast-seams",
+					"salt-limestone",
+					"glass"
+				],
+				"resources": [
+					"res://moth/generated/textures/dust-field.png",
+					"res://moth/generated/textures/flow-field.png"
+				],
+				"signs": 0,
+				"status": "ready",
+				"surfaces": 0,
+				"unmatched": [],
+				"unused_selectors": []
+			},
+			"eightFrameMicroseconds": 1609474,
+			"eye": [
+				-75,
+				15,
+				-72
+			],
+			"file": "/tmp/opencode/abyssal-corrective-V-20261003-attempt-3/captures/overhead-route-corrective-candidate-binder.png",
+			"geometryHash": "ee979520743dd4c73ac0d825774a2c99b5a8d85800a6eead5170f261abe61bea",
+			"height": 720,
+			"renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+			"scope": "8 settled frames/static view on recorded backend; not hosted movement FPS",
+			"sha256": "aac7db4483044d563b2071cb608f1d5e911ce748629fead8918fcc3a7a804ffb",
+			"staticMeanFrameMs": 201.18425,
+			"staticMemoryBytes": 53591383,
+			"target": [
+				-87,
+				8,
+				-92
+			],
+			"variant": "corrective-candidate-binder",
+			"videoMemoryBytes": 63177622.0,
+			"view": "overhead-route",
+			"width": 1280
+		}
+	],
+	"failures": [],
+	"finishScope": "WorldMap + Abyssal production presentation + candidate-only preserve-PBR Binder; no WeatherService in parent snapshot; not hosted play",
+	"status": "paired original PNGs captured; finish and hosted manual acceptance pending"
+}

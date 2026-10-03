@@ -1,0 +1,231 @@
+{
+	"artMeshes": 47,
+	"clearances": [
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": -94.0,
+				"y": 6.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": -34.0,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": 31.0,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": 91.0,
+				"y": 0.0,
+				"z": -58.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": -91.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": 34.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": 94.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": -98.0,
+				"y": 20.0,
+				"z": 68.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": -39.0,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": 26.0,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": 87.0,
+				"y": 20.0,
+				"z": 72.0
+			}
+		},
+		{
+			"name": "objective",
+			"overlapCount": 0,
+			"point": {
+				"id": "reef",
+				"label": "REEF LAB",
+				"radius": 7.0,
+				"x": -34.0,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "objective",
+			"overlapCount": 0,
+			"point": {
+				"id": "equalizer",
+				"label": "EQUALIZER",
+				"radius": 7.0,
+				"x": 34.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "objective",
+			"overlapCount": 0,
+			"point": {
+				"id": "operations",
+				"label": "OPERATIONS",
+				"radius": 7.0,
+				"x": 26.0,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "service-terrace",
+			"overlapCount": 0,
+			"point": {
+				"x": -94,
+				"y": 6,
+				"z": -96
+			}
+		},
+		{
+			"name": "service-terrace",
+			"overlapCount": 0,
+			"point": {
+				"x": 91,
+				"y": 0,
+				"z": -90
+			}
+		}
+	],
+	"dressing": {
+		"batches": 2,
+		"detail": 2,
+		"errors": [],
+		"map_id": "abyssal-pressureworks",
+		"matched": [],
+		"motes": 12,
+		"panels": 0,
+		"preserved": [
+			"copper-patina",
+			"ceramic-enamel",
+			"navy",
+			"coral",
+			"amber",
+			"ivory",
+			"cyan",
+			"oxidized-iron",
+			"copper",
+			"deep-silt",
+			"basalt-strata",
+			"cast-seams",
+			"salt-limestone",
+			"glass"
+		],
+		"resources": [
+			"res://moth/generated/textures/dust-field.png",
+			"res://moth/generated/textures/flow-field.png"
+		],
+		"signs": 0,
+		"status": "ready",
+		"surfaces": 0,
+		"unmatched": [],
+		"unused_selectors": []
+	},
+	"errors": [],
+	"geometryHash": "ee979520743dd4c73ac0d825774a2c99b5a8d85800a6eead5170f261abe61bea",
+	"rays": [
+		{
+			"collider": "none",
+			"contact": "none",
+			"name": "old-silt-side"
+		},
+		{
+			"collider": "service-terrace-swCollider:<StaticBody3D#50700749251>",
+			"contact": "(-94.0, 6.0, -98.5)",
+			"name": "terrace-sw"
+		},
+		{
+			"collider": "service-terrace-seCollider:<StaticBody3D#50834966982>",
+			"contact": "(91.0, 0.0, -92.5)",
+			"name": "terrace-se"
+		},
+		{
+			"collider": "OverheadSide3254:<StaticBody3D#91066733347>",
+			"contact": "(-94.0, 7.2, -101.0)",
+			"name": "south-shield"
+		},
+		{
+			"collider": "OverheadSide3260:<StaticBody3D#91368723253>",
+			"contact": "(103.0, 1.2, -90.0)",
+			"name": "east-shield"
+		}
+	],
+	"status": "imported art + corrected WorldMap physics + candidate Binder checks passed; host and finish pending"
+}

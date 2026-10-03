@@ -1,0 +1,142 @@
+{
+  "label": "01-build",
+  "command": [
+    "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender",
+    "-b",
+    "-t",
+    "1",
+    "--python-exit-code",
+    "1",
+    "--python",
+    "/home/mojo/.tmp-on-disk/cocs-abyssal-native-harness-H-20261003/tools/godot-multiplayer/new-maps/abyssal-pressureworks/revision2-corrective-v/author.py",
+    "--",
+    "--root",
+    "/home/mojo/.tmp-on-disk/cocs-abyssal-native-harness-H-20261003",
+    "--blend",
+    "/tmp/opencode/abyssal-corrective-v2-V-20261003-attempt-1/corrective.blend",
+    "--glb",
+    "/tmp/opencode/abyssal-corrective-v2-V-20261003-attempt-1/corrective.glb",
+    "--report",
+    "/tmp/opencode/abyssal-corrective-v2-V-20261003-attempt-1/material-report.json"
+  ],
+  "cwd": "/home/mojo/.tmp-on-disk/cocs-abyssal-native-harness-H-20261003",
+  "launched": {
+    "pid": 704908,
+    "pgid": 704908,
+    "startTicks": 624168013,
+    "comm": "blender"
+  },
+  "baseline": [
+    {
+      "pid": 70662,
+      "pgid": 70662,
+      "startTicks": 511841716,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 175537,
+      "pgid": 175537,
+      "startTicks": 511960882,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 176009,
+      "pgid": 176009,
+      "startTicks": 511961172,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 176505,
+      "pgid": 176505,
+      "startTicks": 511961467,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 176934,
+      "pgid": 176934,
+      "startTicks": 511961759,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 177437,
+      "pgid": 177437,
+      "startTicks": 511962053,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 177961,
+      "pgid": 177961,
+      "startTicks": 511962341,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 178459,
+      "pgid": 178459,
+      "startTicks": 511962636,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 2492715,
+      "pgid": 2492715,
+      "startTicks": 522362783,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 2523017,
+      "pgid": 2522902,
+      "startTicks": 508677582,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 2585873,
+      "pgid": 2585868,
+      "startTicks": 508830749,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 2598700,
+      "pgid": 2598689,
+      "startTicks": 522477875,
+      "comm": "godot-bin"
+    },
+    {
+      "pid": 3002226,
+      "pgid": 3001069,
+      "startTicks": 528656103,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 3003879,
+      "pgid": 3003347,
+      "startTicks": 528658125,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 3005999,
+      "pgid": 3004479,
+      "startTicks": 528659838,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 3094547,
+      "pgid": 3093474,
+      "startTicks": 528806950,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 3113490,
+      "pgid": 3113486,
+      "startTicks": 528838460,
+      "comm": "Xvfb"
+    }
+  ],
+  "utc": "2026-10-03T20:15:36.192974+00:00",
+  "timeoutSeconds": 1800,
+  "exitCode": 0,
+  "ownedGroupAudits": [
+    [],
+    [],
+    []
+  ],
+  "logSha256": "b1b805162b182e2d7c4c30db195fb60c0b5b8876e90e4be924192d32427a8952"
+}

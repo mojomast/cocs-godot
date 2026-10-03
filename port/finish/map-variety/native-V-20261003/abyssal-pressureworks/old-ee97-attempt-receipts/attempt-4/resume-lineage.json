@@ -1,0 +1,11 @@
+{
+  "sourceAttempt": "/tmp/opencode/abyssal-corrective-V-20261003-attempt-1",
+  "grant": "MOTH-BLENDER-20261003-V",
+  "readOnlyHashes": {
+    "corrective.blend": "2048f4930c05141d17f52ed0553ad0d0592d74139541d485fc345330901249a7",
+    "corrective.glb": "449bc89941698b65c80e55b83718b86f3c01432ae3dd94bb59d1011d85e9e4a7",
+    "reexport.glb": "449bc89941698b65c80e55b83718b86f3c01432ae3dd94bb59d1011d85e9e4a7",
+    "material-report.json": "8e475be87d9ca205004d6fd852910ac8a3242426c0893ce362cf9731e1bea2ca",
+    "geometry-audit.json": "84c5be654b8c9029de9b0d2efe217f75a4f8521cae58ad461d39d2f1191c5622"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "label": "06-world-check",
+  "command": [
+    "/home/mojo/.tmp-on-disk/opencode/cocs-graphics-windows-final/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "/tmp/opencode/abyssal-corrective-V-20261003-attempt-5/project",
+    "--script",
+    "res://tests/new_maps/abyssal_pressureworks/corrective/world_check.gd",
+    "--",
+    "--report=/tmp/opencode/abyssal-corrective-V-20261003-attempt-5/world-check.json"
+  ],
+  "cwd": "/home/mojo/.tmp-on-disk/cocs-abyssal-native-harness-H-20261003",
+  "launched": {
+    "pid": 692043,
+    "pgid": 692043,
+    "startTicks": 624144007,
+    "comm": "Godot_v4.5.2-st"
+  },
+  "baseline": [
+    {
+      "pid": 70662,
+      "pgid": 70662,
+      "startTicks": 511841716,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 175537,
+      "pgid": 175537,
+      "startTicks": 511960882,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 176009,
+      "pgid": 176009,
+      "startTicks": 511961172,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 176505,
+      "pgid": 176505,
+      "startTicks": 511961467,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 176934,
+      "pgid": 176934,
+      "startTicks": 511961759,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 177437,
+      "pgid": 177437,
+      "startTicks": 511962053,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 177961,
+      "pgid": 177961,
+      "startTicks": 511962341,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 178459,
+      "pgid": 178459,
+      "startTicks": 511962636,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 2492715,
+      "pgid": 2492715,
+      "startTicks": 522362783,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 2523017,
+      "pgid": 2522902,
+      "startTicks": 508677582,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 2585873,
+      "pgid": 2585868,
+      "startTicks": 508830749,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 2598700,
+      "pgid": 2598689,
+      "startTicks": 522477875,
+      "comm": "godot-bin"
+    },
+    {
+      "pid": 3002226,
+      "pgid": 3001069,
+      "startTicks": 528656103,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 3003879,
+      "pgid": 3003347,
+      "startTicks": 528658125,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 3005999,
+      "pgid": 3004479,
+      "startTicks": 528659838,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 3094547,
+      "pgid": 3093474,
+      "startTicks": 528806950,
+      "comm": "Xvfb"
+    },
+    {
+      "pid": 3113490,
+      "pgid": 3113486,
+      "startTicks": 528838460,
+      "comm": "Xvfb"
+    }
+  ],
+  "utc": "2026-10-03T20:11:36.133861+00:00",
+  "timeoutSeconds": 360,
+  "exitCode": 2,
+  "ownedGroupAudits": [
+    [],
+    [],
+    []
+  ],
+  "logSha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+}

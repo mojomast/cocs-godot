@@ -1,0 +1,93 @@
+{
+  "status": "master reexport geometry and pixels match; in-engine collision pending",
+  "geometryHash": "ee979520743dd4c73ac0d825774a2c99b5a8d85800a6eead5170f261abe61bea",
+  "originalGlbSha256": "449bc89941698b65c80e55b83718b86f3c01432ae3dd94bb59d1011d85e9e4a7",
+  "reexportGlbSha256": "449bc89941698b65c80e55b83718b86f3c01432ae3dd94bb59d1011d85e9e4a7",
+  "primitives": 47,
+  "triangles": 229620,
+  "materials": 14,
+  "historicalRays": [
+    {
+      "start": [
+        -106,
+        7.2,
+        -97
+      ],
+      "end": [
+        -106,
+        7.2,
+        -100
+      ],
+      "art": [],
+      "authority": []
+    },
+    {
+      "start": [
+        -94,
+        10,
+        -98.5
+      ],
+      "end": [
+        -94,
+        5,
+        -98.5
+      ],
+      "art": [
+        [
+          0.8,
+          "kit.base.cast-seams.00",
+          [
+            -94.0,
+            6.0,
+            -98.5
+          ]
+        ]
+      ],
+      "authority": [
+        [
+          0.8,
+          "service-terrace-sw",
+          [
+            -94.0,
+            6.0,
+            -98.5
+          ]
+        ]
+      ]
+    },
+    {
+      "start": [
+        91,
+        4,
+        -92.5
+      ],
+      "end": [
+        91,
+        -1,
+        -92.5
+      ],
+      "art": [
+        [
+          0.8,
+          "kit.base.cast-seams.00",
+          [
+            91.0,
+            0.0,
+            -92.5
+          ]
+        ]
+      ],
+      "authority": [
+        [
+          0.8,
+          "service-terrace-se",
+          [
+            91.0,
+            0.0,
+            -92.5
+          ]
+        ]
+      ]
+    }
+  ]
+}
