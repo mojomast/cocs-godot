@@ -48,13 +48,19 @@ For live acceptance, record normal F press/release at ≥0.30 s intervals agains
 
 ```sh
 python3 tools/godot-weapons/kick-live.py \
-  --execute-native --godot "$GODOT_BIN" \
+  --execute-native --grant PARENT_ISSUED_GRANT_ID --godot "$GODOT_BIN" \
   --output /tmp/opencode/kick-live-UNIQUE
 ```
 
 Prerequisites: clean committed worktree, existing Node `ws` dependency, Godot 4.5.x and Xvfb. The runner refuses execution without the explicit native flag; **the flag is not a grant**. No engine, renderer, server, importer or live producer was executed during source-only preparation.
 
+The parent-issued `--grant` identifier is required authorization **metadata**, not self-authorization. Before staging or launching anything, the runner acquires `/tmp/opencode/cocs-finish-acceptance.lock` using `fcntl.LOCK_EX | LOCK_NB`. A busy slot fails immediately; there is no lock wait or retry. The lock stays held through copy, import, authority, render, all cleanup audits and summary writing.
+
+`LP_NUM_THREADS` is fixed to **1**, overrides inherited environment settings, and is recorded in summary metadata. This is the actual configured llvmpipe worker count, not a measurement of total engine threads and not a benchmark/rebench. There is no multi-thread override. Staging copies **only Git-tracked project files**, excluding ignored/untracked injections even when `git status` would omit them. Revision/clean status are checked again after staging; SHA-256 of the runner, authority fixture and native observer is recorded beside the clean executing revision.
+
 The runner records the exact executing `git rev-parse HEAD`, clean `git status`, commands, exit status and cleanup in `summary.json`. It creates a private project copy excluding `.godot`, private HOME/XDG directories and display. Process groups are owned with `start_new_session`, terminated then killed/reaped on success, error, timeout, SIGINT or SIGTERM. Overall deadline is 900 seconds including staging/import; import 600 seconds, semantic probes 30 seconds each, live client 45 seconds each (native self-deadline 40), authority self-deadline 60. There is no detached/background daemon. All logs remain in the requested evidence directory.
+
+Cleanup records actual `/proc/*/stat` process-group membership, including descendants and zombies, rather than trusting the leader's return code. SIGTERM gets a bounded grace period; SIGKILL is sent **only if group members remain**, with escalation recorded. Every owned group receives a fresh final bounded membership audit. `cleanup_audit` records owned/audited group counts, survivor count and `all_groups_empty`; missing audits or any survivor fail acceptance. Authority shutdown requires exit 0, no forced escalation and an empty group. A forced-killed server can never make a journey clean even when the subsequent audit is empty. Xvfb's expected service teardown is labelled separately as `role: display`; it still requires zero survivors but does not masquerade as a clean game/server exit.
 
 ### Authority and input provenance
 
@@ -75,3 +81,4 @@ Source-only verification of the producer:
 - `node --test tools/godot-weapons/kick-live.test.mjs`: **3/3 passed**. Executes shipped-map placement/occlusion and ordinary source-input knockback-following chain (55/10/0), blocked/early held-edge/miss behavior, and a live-observer no-injection source contract. No socket is opened.
 - `python3 -B tools/godot-weapons/kick_live_contract_test.py`: **3/3 passed**, including rejection of missing images, duplicate/reordered IDs, unearned damage and extra actions. Does not execute the runner.
 - New native observer parses with `gdparse`; Python AST and Node syntax checks pass. **Godot type-check and actual live execution remain pending the exclusive grant.**
+- Follow-up policy checks: `python3 -B tools/godot-weapons/kick_live_policy_test.py`: **6/6 passed**. Covers nonwaiting lock refusal/release, absent-leader descendant and zombie detection, real tiny Python parent/child group shutdown, forced-stop rejection for authority despite zero survivors, mandatory grant/one-thread source policy, and exclusion of ignored/untracked injected files during staging. Only short synthetic Python processes were spawned; no server or engine. Original source contracts remain **3 Node + 3 Python**; native still pending.

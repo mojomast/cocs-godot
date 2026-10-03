@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Bounded native ordinary-input kick evidence. Run only with the native grant."""
 import argparse
+from contextlib import contextmanager
+import fcntl
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -13,26 +16,89 @@ import tempfile
 import time
 
 ROOT = Path(__file__).resolve().parents[2]
+ACCEPTANCE_LOCK = Path('/tmp/opencode/cocs-finish-acceptance.lock')
+RENDER_THREADS = 1
 
 
-def stop_group(process):
+@contextmanager
+def acceptance_lock(path=ACCEPTANCE_LOCK):
+    """The shared lock never waits, and is held through final cleanup/reporting."""
+    with path.open('a+') as handle:
+        try:
+            fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError as error:
+            raise RuntimeError(f'Exclusive acceptance slot busy: {path}; nothing launched') from error
+        try:
+            yield
+        finally:
+            fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+
+
+def group_members(pgid, proc=Path('/proc')):
+    """Linux pgrp membership, including zombies; an exited leader proves nothing."""
+    members = []
+    for entry in proc.iterdir():
+        if not entry.name.isdecimal():
+            continue
+        try:
+            fields = (entry / 'stat').read_text().rsplit(') ', 1)[1].split()
+        except (FileNotFoundError, ProcessLookupError):
+            continue
+        if int(fields[2]) == pgid:
+            members.append({'pid': int(entry.name), 'state': fields[0]})
+    return sorted(members, key=lambda member: member['pid'])
+
+
+def await_empty_group(process, seconds):
+    deadline = time.monotonic() + seconds
+    while True:
+        process.poll()  # Reap our leader before accounting for zombies.
+        survivors = group_members(process.pid)
+        if not survivors or time.monotonic() >= deadline:
+            return survivors
+        time.sleep(.025)
+
+
+def stop_group(process, grace=4.0, audit=2.0):
     if process is None:
         return None
-    # Kill the owned group even when its leader already exited.
-    try:
-        os.killpg(process.pid, signal.SIGTERM)
-    except ProcessLookupError:
-        pass
-    try:
-        process.wait(timeout=4)
-    except subprocess.TimeoutExpired:
-        pass
-    try:
-        os.killpg(process.pid, signal.SIGKILL)
-    except ProcessLookupError:
-        pass
-    process.wait(timeout=4)
-    return process.returncode
+    process.poll()
+    before = group_members(process.pid)
+    result = {'pid': process.pid, 'pgid': process.pid, 'before': before,
+              'term_sent': False, 'escalated': False}
+    if before:
+        try:
+            os.killpg(process.pid, signal.SIGTERM)
+            result['term_sent'] = True
+        except ProcessLookupError:
+            pass
+    survivors = await_empty_group(process, grace)
+    if survivors:
+        result['escalated'] = True
+        try:
+            os.killpg(process.pid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+        survivors = await_empty_group(process, audit)
+    result.update(returncode=process.poll(), survivors=survivors, empty=not survivors)
+    return result
+
+
+def clean_stop(result, role):
+    if not result.get('empty') or result.get('survivors'):
+        return False
+    if role == 'display':  # Expected service shutdown, independently accounted.
+        return True
+    return not result.get('escalated') and result.get('returncode') == 0
+
+
+def copy_tracked_project(project):
+    paths = subprocess.check_output(['git', 'ls-files', '-z', '--', 'godot'], cwd=ROOT).decode().split('\0')
+    for relative in filter(None, paths):
+        source = ROOT / relative
+        destination = project / Path(relative).relative_to('godot')
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, destination)
 
 
 def validate(report, records, directory, scenario):
@@ -72,28 +138,47 @@ def main():
     parser.add_argument('--output', required=True, type=Path)
     parser.add_argument('--godot', default=os.environ.get('GODOT_BIN', shutil.which('godot') or ''))
     parser.add_argument('--execute-native', action='store_true', help='Explicitly run after receiving exclusive native grant')
+    parser.add_argument('--grant', required=True, help='Record the parent-issued authorization ID; this does not grant permission')
     args = parser.parse_args()
     if not args.execute_native:
         parser.error('Source-only phase: use --execute-native only after the exclusive grant')
     if not args.godot:
         parser.error('--godot or GODOT_BIN required')
+    if not args.grant.strip():
+        parser.error('--grant must contain the parent-issued authorization ID')
+    if args.output.resolve().is_relative_to(ROOT):
+        parser.error('--output must be outside the source worktree')
+    try:
+        with acceptance_lock():
+            run(args)
+    except RuntimeError as error:
+        parser.exit(1, str(error)+'\n')
+
+
+def run(args):
     revision = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
     status = subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT, text=True)
     if status:
-        parser.error('Evidence requires a clean source commit; write --output outside the worktree')
+        raise RuntimeError('Evidence requires a clean source commit')
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=False)
     summary = {'passed': False, 'revision': revision, 'source_status': status, 'normal_rate': True,
+               'grant_id': args.grant.strip(), 'grant_semantics': 'parent authorization metadata, not self-authorization',
+               'acceptance_lock': str(ACCEPTANCE_LOCK), 'LP_NUM_THREADS': RENDER_THREADS,
+               'thread_policy': 'one-thread production render; no benchmark or rebench',
                'setup_only_actor_writes': True, 'scenarios': {}, 'cleanup': [], 'commands': []}
     children = []
+    roles = {}
+    stopped = {}
     logs = []
 
-    def launch(command, name, env):
+    def launch(command, name, env, role='client'):
         summary['commands'].append(command)
         handle = (output / name).open('w')
         logs.append(handle)
         child = subprocess.Popen(command, cwd=ROOT, env=env, stdout=handle, stderr=subprocess.STDOUT, start_new_session=True)
         children.append(child)
+        roles[child.pid] = role
         return child
 
     def bounded(command, name, env, timeout):
@@ -114,13 +199,20 @@ def main():
     try:
         with tempfile.TemporaryDirectory(prefix='kick-live-', dir='/tmp/opencode') as temporary:
             stage = Path(temporary)
-            env = {**os.environ, 'HOME': str(stage), 'LIBGL_ALWAYS_SOFTWARE': '1', 'LP_NUM_THREADS': '2'}
+            env = {**os.environ, 'HOME': str(stage), 'LIBGL_ALWAYS_SOFTWARE': '1', 'LP_NUM_THREADS': str(RENDER_THREADS)}
             for key in ['XDG_DATA_HOME', 'XDG_CONFIG_HOME', 'XDG_CACHE_HOME', 'XDG_RUNTIME_DIR']:
                 folder = stage / key
                 folder.mkdir(mode=0o700)
                 env[key] = str(folder)
             project = stage / 'godot'
-            shutil.copytree(ROOT / 'godot', project, ignore=shutil.ignore_patterns('.godot'))
+            copy_tracked_project(project)
+            current = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
+            after_copy = subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT, text=True)
+            if current != revision or after_copy:
+                raise RuntimeError('Source changed during tracked staging')
+            summary['executing_input_sha256'] = {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
+                for name in ['tools/godot-weapons/kick-live.py', 'tools/godot-weapons/kick-live-server.mjs',
+                             'godot/tests/first_person/kick_live.gd']}
             bounded([args.godot, '--headless', '--path', str(project), '--editor', '--import'], 'import.log', env, 600)
             for fixture in ['first_person/kick_chains', 'first_person/lifecycle', 'protocol/melee_feedback']:
                 bounded([args.godot, '--headless', '--path', str(project), '--script', f'res://tests/{fixture}.gd'], fixture.replace('/', '-')+'.log', env, 30)
@@ -130,6 +222,7 @@ def main():
                 logs.append(handle)
                 display = subprocess.Popen(['Xvfb', '-displayfd', str(write_fd), '-screen', '0', '1280x720x24', '-nolisten', 'tcp'], pass_fds=[write_fd], env=env, stdout=handle, stderr=subprocess.STDOUT, start_new_session=True)
                 children.append(display)
+                roles[display.pid] = 'display'
                 os.close(write_fd)
                 write_fd = -1
                 if not select.select([read_fd], [], [], 10)[0]:
@@ -146,7 +239,7 @@ def main():
                 directory = output / scenario
                 directory.mkdir()
                 ready = stage / (scenario + '.json')
-                server = launch(['node', str(ROOT / 'tools/godot-weapons/kick-live-server.mjs'), str(ready), str(directory), scenario], scenario+'-server.log', env)
+                server = launch(['node', str(ROOT / 'tools/godot-weapons/kick-live-server.mjs'), str(ready), str(directory), scenario], scenario+'-server.log', env, role='authority')
                 try:
                     deadline = time.monotonic() + 10
                     while not ready.exists():
@@ -167,7 +260,9 @@ def main():
                     checks['revision'] = report.get('revision') == revision
                     summary['scenarios'][scenario] = {'checks': checks, 'passed': all(checks.values())}
                 finally:
-                    stop_group(server)
+                    stopped[server.pid] = stop_group(server)
+                    if not clean_stop(stopped[server.pid], 'authority'):
+                        raise RuntimeError('Authority did not stop gracefully with an empty process group')
             summary['passed'] = len(summary['scenarios']) == 2 and all(row['passed'] for row in summary['scenarios'].values())
     except (Exception, KeyboardInterrupt) as error:
         summary['error'] = str(error)
@@ -177,12 +272,29 @@ def main():
         signal.signal(signal.SIGINT, signal.SIG_IGN)
         for child in reversed(children):
             try:
-                summary['cleanup'].append({'pid': child.pid, 'returncode': stop_group(child)})
+                result = stopped.get(child.pid)
+                if result is None:
+                    result = stop_group(child)
+                # Fresh final audit of EVERY group, even an earlier stopped authority.
+                result['final_survivors'] = await_empty_group(child, 1.0)
+                result['role'] = roles[child.pid]
+                result['clean'] = clean_stop(result, result['role']) and not result['final_survivors']
+                summary['cleanup'].append(result)
+                if not result['clean']:
+                    summary['passed'] = False
             except Exception as error:
                 summary['passed'] = False
                 summary['cleanup'].append({'pid': child.pid, 'error': str(error)})
         for handle in logs:
             handle.close()
+        audited = [row for row in summary['cleanup'] if 'final_survivors' in row]
+        summary['cleanup_audit'] = {
+            'owned_groups': len(children), 'audited_groups': len(audited),
+            'survivor_count': sum(len(row['final_survivors']) for row in audited),
+            'all_groups_empty': len(audited) == len(children) and all(not row['final_survivors'] for row in audited),
+        }
+        if not summary['cleanup_audit']['all_groups_empty']:
+            summary['passed'] = False
         (output / 'summary.json').write_text(json.dumps(summary, indent=2)+'\n')
     print(json.dumps(summary, indent=2))
     raise SystemExit(0 if summary['passed'] else 1)
