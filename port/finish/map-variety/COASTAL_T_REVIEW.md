@@ -1,5 +1,27 @@
 # Coastal T artifact review — Abyssal blocked, Stormglass staged-qualified
 
+## Follow-up checkpoint
+
+**Stormglass selectively integrated as `c5c50a93`**, from worker `2ed7a012`.
+Its master, GLB, pixel/native reports and eight image pairs live only under
+`port/finish/map-variety/stormglass-staged-T-20261003/`. Parent verified all 50
+inventory hashes, 49 byte-identical original T files and the exact Stormglass-only
+capture-manifest subset. All 53 commit paths are inside that evidence namespace;
+accepted runtime bindings and shipping policy are unchanged. The committed-Git
+seven-unit shipping check passes. This is staged artifact integration, not race,
+chase-camera, production-weather or public promotion acceptance.
+
+**Abyssal source correction delivered as `1cdf967e`**, under the new
+`revision2-corrective/` namespace. It moves two ledges and twelve fins outside the
+retaining walls and extends the southwest south wall across the deck edge.
+New geometry identity:
+`ee979520743dd4c73ac0d825774a2c99b5a8d85800a6eead5170f261abe61bea`.
+Worker reports 17 Python / nine Node passes, reproduced historical GLB mismatches,
+and finite-radius source clearance. Independent reviewer is checking those claims
+and required source dependencies before integration. The P1 remains open pending
+fresh actual-art/native evidence; the rejected T candidate remains immutable.
+U retains sole heavy ownership.
+
 Independent Astra `ses_efd0e4deaffeke8j2rdXdxtbbn` reviewed `834ff85a` / `f2d34471`
 without editing files or running engines. **One Abyssal P1 blocks approval of the
 combined artifact bundle. Stormglass qualifies for staged integration.** Neither

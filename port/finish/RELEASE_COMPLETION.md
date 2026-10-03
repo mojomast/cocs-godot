@@ -35,8 +35,10 @@ failed review. Astra's complete botanical/urban repairs passed independent revie
 and were merged as `32eba401`; parent passed 25 Node / 27 Python tests plus Kit
 checks. Coastal T delivered actual Abyssal/Stormglass builds and 15 native pairs;
 independent review found an Abyssal terrace-solid collision P1, now assigned to
-Sol for source-only correction. Stormglass qualifies for staged integration;
-the combined coastal bundle remains unmerged. T released at
+Sol for source-only correction. Corrective `1cdf967e` is under independent review.
+Stormglass artifacts are selectively staged-integrated as `c5c50a93`: parent
+verified 50 inventory hashes and strict seven-unit shipping closure. The combined
+coastal bundle remains unmerged; Abyssal needs fresh native evidence. T released at
 19:05:47.349432Z after three empty 27-group audits, verified by parent. Astra now
 holds U for serial Helix/Parallax/Vesper production and native validation.
 Foundry R6 finish sources and the corrected scene-backed export validator are

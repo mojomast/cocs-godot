@@ -1,5 +1,13 @@
 # New Moth resources and Blender-authored map variety
 
+**Stormglass staged artifact integration:** worker `2ed7a012` is integrated as
+`c5c50a93`, confined to `port/finish/map-variety/stormglass-staged-T-20261003/`.
+Parent verified all 50 inventory hashes, exact original T bytes/subset lineage,
+and the committed-Git seven-unit shipping check. Public runtime promotion remains
+pending. Abyssal's source-only correction `1cdf967e` is under independent review;
+its two ledges/twelve fins are moved beyond retaining walls in a new corrective
+namespace. Fresh Blender/native evidence is still required to close the P1.
+
 **Coastal independent review complete:** Abyssal has one P1—new accessible terrace
 fins/ledges appear solid in the actual export but lack authority collision.
 Stormglass qualifies for staged integration, including actual new-relief clearance
