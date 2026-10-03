@@ -3,6 +3,7 @@ import collections
 from tangents import *
 from production import material_pixels
 from material_pack import linear_rgba
+from material_contract import verify_native_materials
 
 def canonical(cs):
     start=min(range(3),key=lambda j:tuple(c[0] for c in cs[j:]+cs[:j]))
@@ -37,7 +38,7 @@ def main():
     out=HERE/'evidence/native-import';artifact=(ROOT/'godot/multiplayer_worlds/art/revisions/gravemill-foundry-r7.glb').read_bytes()
     verify(SOURCE.read_bytes(),artifact)
     report=json.loads((out/'native-import.json').read_text());proof=verify_streams(artifact,report,(out/'native-streams.bin').read_bytes())
-    g=gate(artifact);checked=0
+    g=gate(artifact);material_fields=verify_native_materials(g,report);checked=0
     for mat in g.doc['materials']:
         wanted=material_pixels(g,mat)
         for label,(w,h,pixels) in wanted.items():
@@ -47,7 +48,7 @@ def main():
             if label=='roughnessMetallic':actual=bytes(v for i,v in enumerate(actual) if i%4 in (1,2))
             if (aw,ah,bytes(actual))!=(w,h,pixels):raise ValueError('Native material pixels changed')
             checked+=1
-    proof.update({'artHash':sha(artifact),'materialChannelsChecked':checked,'manualVisualAcceptance':'pending'})
+    proof.update({'artHash':sha(artifact),'materialChannelsChecked':checked,'materialFieldSetsChecked':material_fields,'manualVisualAcceptance':'pending'})
     (out/'native-proof.json').write_text(json.dumps(proof,indent=2)+'\n')
 
 if __name__=='__main__':main()

@@ -85,7 +85,10 @@ in a `.blend` would not be a truthful persistence contract. `production.py` inst
    normal `1e-4`, material scalar `1e-6`.
 5. Uses R6's canonical streams (avoiding round-trip drift in valid entries) plus
    the deterministic seven-entry repair to emit the new artifact. All output bytes
-   outside those records retain exact R6 identity, independently of exporter rounding.
+   outside those records **within the BIN chunk** retain exact R6 identity,
+   independently of exporter rounding. Exactly 59 BIN bytes differ within 112
+   permitted byte positions (seven 16-byte records). JSON asset/node successor
+   metadata and the enclosing container length legitimately change.
 6. A **fresh process with `--reopen`** repeats the editable export audit, validates
    embedded recipe/source, and requires canonical output byte equality with the
    actual R7 GLB. Plain Blender UI glTF export is only an intermediate, not the final
@@ -127,3 +130,36 @@ winding, all-incident shared vertices, conflicting handedness/directions, unknow
 additional zeros, strict scene/buffer-view rejection, valid-tangent mutation and
 native fallback rejection. `source-report.json` and `source-tests.json` record the
 executed source results and preservation of all 226 W manifest file hashes.
+
+## P1 material-equivalence correction
+
+Original `source-report.json` and `source-tests.json` remain frozen historical
+receipts from `9fb0172e`; they do not establish the corrected material gate.
+`corrective-validation.json` records the new source-only tests and preservation
+checks. Run both suites with `-p 'test_*.py'` in the discovery command above.
+
+The editable-export audit now compares effective texture bindings by decoded
+channel pixels, UV selection and sampler semantics, independently of image,
+texture or sampler indices. Wrap defaults are REPEAT (10497). Missing filters
+remain implementation-defined and are never equated with an explicit filter.
+Only valid glTF filter/wrap enums are allowed. Core base-color, metallic/roughness,
+normal, occlusion and emissive bindings are covered, including presence, normal
+scale, occlusion strength, alpha mode/cutoff, double-sided state, emission and the
+baseline's legitimate `KHR_materials_emissive_strength`. Unrecognized meaningful
+material/texture fields and extensions fail closed; names/extras remain metadata.
+Texture transforms and unavailable UV sets remain rejected.
+
+The real R6 ground clamp-to-edge mutation and orange emissive-texture addition
+must fail the full editable audit. Equivalent remapped resource indices and
+explicit default wrap/UV values must pass. No geometry/UV matching tolerance changes.
+
+The native checker also compares every scalar/color/emission field actually
+recorded by the frozen import probe. Godot 4.5.2 serializes Color as four-decimal
+sRGB strings: linear glTF RGB is converted to sRGB, alpha is retained, and the
+comparison tolerance is `5.1e-5` for that formatting. Numeric float32 fields use
+`1e-6`; emission-enabled and roughness-channel values are exact. Emission energy
+is the recorded `emission_energy_multiplier`, not a guessed physical unit.
+The historical R6 native report supplies a schema/representation regression
+fixture only; no fresh R7 native acceptance is claimed. The probe does not record
+native sampler/alpha/occlusion settings, so these are source semantic proofs,
+not additional native readback claims.

@@ -9,6 +9,7 @@ import json
 from tangents import *
 sys.path.insert(0,str(ROOT/'tools/map-variety-pipeline'))
 from material_pack import linear_rgba
+from material_contract import compare_materials
 
 MASTER=HERE/'gravemill-foundry-revision7.blend'
 ART=ROOT/'godot/multiplayer_worlds/art/revisions/gravemill-foundry-r7.glb'
@@ -45,19 +46,7 @@ def audit_editable_export(raw):
             if index is None:raise ValueError('Editable master differs from canonical geometry/normal/UV/role')
             maximum=[max(a,b) for a,b in zip(maximum,errors[index])];choices.pop(index);count+=1
     if any(expected.values()) or count!=87566:raise ValueError('Editable master triangle coverage changed')
-    originals={m['name']:m for m in baseline.doc['materials']};new={m['name']:m for m in draft.doc['materials']}
-    if set(originals)!=set(new):raise ValueError('Editable master material inventory changed')
-    for name,old in originals.items():
-        m=new[name]
-        if material_pixels(baseline,old)!=material_pixels(draft,m):raise ValueError('Editable master material pixels changed: '+name)
-        for field,default in [('alphaMode','OPAQUE'),('doubleSided',False)]:
-            if old.get(field,default)!=m.get(field,default):raise ValueError('Material rendering policy changed')
-        def fields(mat):
-            p=mat.get('pbrMetallicRoughness',{})
-            return [*p.get('baseColorFactor',[1,1,1,1]),p.get('metallicFactor',1),p.get('roughnessFactor',1),
-                *mat.get('emissiveFactor',[0,0,0]),mat.get('normalTexture',{}).get('scale',1),
-                mat.get('extensions',{}).get('KHR_materials_emissive_strength',{}).get('emissiveStrength',1)]
-        if max(abs(a-b) for a,b in zip(fields(old),fields(m)))>1e-6:raise ValueError('Material PBR/emission fields changed')
+    compare_materials(baseline,draft)
     return {'triangles':count,'maxPositionNormalUVError':maximum,'allMaterialPixelsAndPBRMatch':True}
 
 def main():
