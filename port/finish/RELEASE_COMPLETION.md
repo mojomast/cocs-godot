@@ -16,9 +16,10 @@ at `2026-10-03T03:43:18.530036Z`, all three groups empty. Windows diagnostic
 navigation optimization integrated at `6b8c445f` and awaits remote Windows cold
 graph comparison plus subsequent new-package native verification. Published
 preview bytes still contain the original runtime.
-**Exclusive local heavy grant H belongs to Vesper owner
-`ses_f03a3885fffehx9yFhHubuPCft`** for Vesper production and six private hosted
-journeys. F/G/G2/G3/G4 have released. See `PREVIEW_20261003.md`.
+**Exclusive local heavy grant I belongs to Abyssal owner
+`ses_f03a3024cffeNO1Cc3Qr1zSLTG`** for Abyssal production and six private hosted
+journeys. H released at `2026-10-03T04:36:05.466278Z`, with 27 process groups
+checked empty three times. F/G/G2/G3/G4/H have released. See `PREVIEW_20261003.md`.
 Scenery delivery is preserved but not integrated into the preview. Final production
 and acceptance obligations remain; strict final packaging is unchanged.
 
@@ -36,8 +37,9 @@ boundaries.
 | Fighting presentation and controls | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing at `1bff0281`; controller recovery integrated at `614a8a7f`, all 12 parent presentation source tests pass; native review pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
-| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | F integrated through `27f3afc3` and package-promoted at `b62f7562`; 118 PNGs/142 sidecars exact closure; parent review and capture-paced limitations retained |
-| Vesper Viaduct | Astra `ses_f03a3885fffehx9yFhHubuPCft` | Exclusive H: production, reopen, native geometry/visual review and six private hosted mode journeys; public registration awaits proof |
+| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | F package-promoted at `b62f7562`; now owns source-only Vesper promotion and shared-input reconciliation |
+| Vesper Viaduct | Astra `ses_f03a3885fffehx9yFhHubuPCft` | H production/evidence integrated through `04fbbfa5`; six native outcomes passed; parent visual review and six-mode registration at `99a4f597`; package promotion pending |
+| Abyssal Pressureworks | Astra `ses_f03a3024cffeNO1Cc3Qr1zSLTG` | Exclusive I: actual production/reopen/native geometry, visual review and six private hosted journeys |
 | Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Actual production at `1f129ab2`; E released; compact-HUD correction at `83ceaa62` passes six parent source checks/grammar, new native layout/screenshots pending |
 | Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base `b6ab6782` and ordinary-controller follow-up `da259d19` integrated; 26 parent acceptance tests and grammar pass; native execution awaits later grant and device access |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Launch-bound UI registration integrated through `2e355b93`; 142 jobs preserve all prior coverage; 35 parent runner/receipt tests pass; fresh ledger still required |
@@ -51,14 +53,15 @@ are introduced by this directive.
 
 ## Exclusive heavy ownership
 
-**`VESPER-ASSET-PRODUCTION-20261003-H` belongs to Vesper Astra
-`ses_f03a3885fffehx9yFhHubuPCft`.** Scope: Vesper masters/export/reopen/import,
+**`ABYSSAL-ASSET-PRODUCTION-20261003-I` belongs to Abyssal Astra
+`ses_f03a3024cffeNO1Cc3Qr1zSLTG`.** Scope: Abyssal masters/export/reopen/import,
 native collision and visual checks, then private deathmatch, teamdeathmatch, CTF,
-domination, KOTH and uplink journeys. Parent owns review, public registration and
-promotion. Abyssal, Stormglass and cinematic production await later grants.
-Scenery F and preview G/G2/G3/G4 explicitly released. Current H supersedes historical
-F/G metadata in production plans; do not mutate active-run inputs just to relabel
-their ownership. Source-only scenery promotion and Helix optimization run in parallel.
+KOTH, domination and holdout journeys. Parent owns review, public registration and
+promotion. Stormglass and cinematic production await later grants.
+Scenery F, preview G/G2/G3/G4 and Vesper H explicitly released. Current I supersedes
+historical ownership metadata in production plans; do not mutate active-run inputs
+just to relabel ownership. Vesper package promotion is source-only; the authorized
+Windows navigation comparison runs on a separate remote host.
 
 No other agent may run Godot, Blender, imports, rendering, audio capture or encoding
 before explicit teardown/release and a new grant. Asset integration, gameplay
