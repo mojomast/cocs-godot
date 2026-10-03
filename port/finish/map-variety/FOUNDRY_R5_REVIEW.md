@@ -69,6 +69,13 @@ master/export consistency and distinct art-identity handling before integration.
 No R6 build/render approval is claimed. Its planned comparison is **R5 versus R6**,
 not accepted-runtime versus R6; R5 evidence remains immutable.
 
+Independent R6 review of `54caaed9` supports its material/UV plan and exact retained
+position/normal/tangent bytes, but source approval is withheld for one verifier
+gap. Empty active scenes, a missing root mesh node and a used index bufferView
+shortened to one byte all incorrectly pass the current inventory comparison.
+The producer is correcting scene reachability and accessor-backing validation
+before integration. This does not change R5's approved staged disposition.
+
 The staged-resource packaging issue identified during integration is resolved by
 `96bc9758`: exact R5 file hashes and exclusions are enforced before copying and
 in export filters. Parent passed 54 checks on the current branch; details are in

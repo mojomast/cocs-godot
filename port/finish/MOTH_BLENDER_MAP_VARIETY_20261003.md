@@ -1,5 +1,45 @@
 # New Moth resources and Blender-authored map variety
 
+## Current ownership — botanical U; coastal T released
+
+**`MOTH-BLENDER-20261003-U` is the sole active heavy grant**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, for actual Helix, Parallax and Vesper builds,
+packed-master reopen, exported material/geometry validation, staged native
+collision/traversal probes and matched captures. Finish/check the source staging
+fixtures first, then execute serially from the approved botanical sources.
+Other workers remain source/artifact/static-gallery only. U must retain bounded
+owned-group records and provide three timestamped empty audits before release.
+
+Coastal T delivered `834ff85a` (tooling), `f2d34471` (assets/evidence) and
+`f490c052` (release). Its last release audit is **2026-10-03T19:05:47.349432Z**.
+Parent checked all three timestamped audits across 27 groups, independently found
+no surviving group members and confirmed lock availability at 19:07:46Z. Existing
+viewer/display processes predate this grant and remain untouched.
+
+Worker results: Abyssal **229,620 triangles / 47 imported mesh instances / 30 packed
+images**, Stormglass **46,850 / 33 / 36**; fresh master reopen and exported
+color/normal/roughness checks reported passed. Abyssal's 79,620-triangle overage
+is advisory. Fifteen original native before/after pairs are delivered. The 15
+Abyssal and 29 Stormglass floor/road probes are limited evidence; full outcomes,
+race completion and swept chase-camera clearance remain pending. Broad pale decks
+and some obstructed close-camera views also need visual review.
+
+Independent Astra `ses_efd0e4deaffeke8j2rdXdxtbbn` is reviewing actual coastal
+artifacts before integration; gallery owner is publishing a separate static
+comparison gallery. Coastal commits remain unmerged during review.
+
+**Coastal gallery live:** <http://100.125.104.79:8796/coastal-t/> — seven Abyssal
+and eight Stormglass pairs, 30 original 1280×720 PNGs. All 52 HTTP/hash checks
+passed. Labels describe accepted JSON/GLB versus staged revision-2 under capture
+lighting, not accepted production weather/finish. Parent inspected both overview
+images: distinct layouts are visible, while large uniform surfaces and presentation
+still need art review. This gallery is candidate evidence, not final polish approval.
+
+**R6 review correction:** independent review supports the finish plan and exact
+stream preservation but found one P1: the verifier accepts empty/incomplete active
+scenes and an accessor extending past its declared view. Astra producer is fixing
+those three reproductions source-only. R6 remains unmerged and unbuilt.
+
 **Foundry R6 source delivery:** `54caaed9` introduces functional finish partitions
 for steel roofs/machinery, warm kiln/tipple masonry and oxidized bunker shells,
 while retaining cooling copper and accepted orange. The worker reports exact
@@ -35,7 +75,7 @@ reject. Seven production receipts and histories remain unchanged. Details:
 `map-variety/FOUNDRY_R5_PACKAGE_STAGING.md`.
 T remains the only active heavy grant, producing Abyssal and Stormglass.
 
-## Active production — coastal T
+## Historical grant — coastal T
 
 Shared-source prerequisite bundle `ef1692b5` is parent-integrated as **`bce5b834`**.
 All eight files exactly match the reviewed S support; parent passed seven shared
