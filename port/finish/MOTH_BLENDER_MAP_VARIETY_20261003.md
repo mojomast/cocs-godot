@@ -13,21 +13,66 @@ This is a new production pass, not a claim that earlier maps already meet the
 new variety goal. Primary scope is Helix Conservatory, Gravemill Foundry, Parallax
 Observatory, Vesper Viaduct, Abyssal Pressureworks and Stormglass Causeway.
 
-## Active owners
+## Owners and completed preparation
 
 Source foundation: `55edd9f2`. All work is isolated from the live P candidate.
 
 | Work | Agent/session | Current responsibility |
 |---|---|---|
 | New Moth resources + mothbake | Astra `ses_efdbb8a90ffeBrpRZAFfraUSXv` | Authenticated live catalog/schema discovery, actual new API jobs, recorded outputs, deterministic material bakes, generic tool updates and handoff manifest |
-| Industrial/coastal variety | Flash `ses_efdbb1dfeffebxsWuzs9jbjzJv` | Foundry/Abyssal/Stormglass source and visual audit; concrete Blender asset families, placement and terrain/layout revision design |
-| Botanical/urban variety | Flash `ses_efdbaaa61ffesiVbXI7pmlS04Q` | Helix/Parallax/Vesper source and visual audit; concrete Blender asset families, placement and terrain/layout revision design |
-| Blender production integration | Sol `ses_efdba38e9ffeManqAN9zWiJ3va` | Material/trim-sheet handoff, editable master/export pipeline, bounded batching and collision/navigation validation preparation |
+| Industrial/coastal variety | Flash `ses_efdbb1dfeffebxsWuzs9jbjzJv` | Audit completed; blueprint in `MAP_VARIETY_REVISION_BLUEPRINT_20261003.md`; application not started |
+| Botanical/urban variety | Flash `ses_efdbaaa61ffesiVbXI7pmlS04Q` | Audit completed; findings summarized below; application not started |
+| Blender production integration | Sol `ses_efdba38e9ffeManqAN9zWiJ3va` | Initial receipt `c6db6393` delivered, not integrated; resumed for review corrections and source-only Blender modeling helpers |
 
 Flash/Sol application follows Astra's usable resource delivery and parent review.
 The current audit/preparation work does not substitute for actual asset production.
 Parent must assign the implementation lanes and the next explicit Blender/native
 slot once the dependency and ownership boundaries are ready.
+
+## Audit results and parent review
+
+Both Flash audits completed without engine or Blender execution. Material requests
+from both were relayed to Astra. Their asset counts and budgets are design targets,
+not produced inventory or measured runtime performance.
+
+| Map | Observed repetition | Proposed Blender forms and layout work |
+|---|---|---|
+| Helix | Flat terrace ribbons, blank archive walls, thin greenhouse framing | Stepped soil/retaining masses, botanical grotto, root forms, curved greenhouse ribs, differentiated archive bays |
+| Parallax | Repeated window bands, empty connective interiors, uniform archive racks | Distinct instrument halls and towers, stepped courts, lightwells, differentiated scientific-room equipment |
+| Vesper | Similar building boxes, blank brick facades, repeated windows/doors | Multiple architectural facade/roof families, market arcades, canal/viaduct masonry, stair/retaining terraces |
+| Foundry | Repeated hoppers/bins/filter banks; missing embedded texture finish | Gantries, furnace batteries, rail/loading structures, varied ore clusters, crusher machinery and real Moth texture integration |
+| Abyssal | Repeated vessel shells, gallery forms and reef spacing | District-specific pressure vessels, pipe manifolds/bridges, observation blisters, reef/escarpment forms |
+| Stormglass | Repeated road shoulders, modules, gates and coastal structures | Varied retaining walls, cliff terraces, gatehouses, grandstands, lighthouse and quay cranes |
+
+Parent independently inspected Foundry's current GLB: **8 meshes, 8 materials,
+0 textures, 0 images**. Its new finish integration is part of this pass.
+
+The botanical audit flagged Vesper's historical `6917cffc…` identity in
+`ASSET_PRODUCTION.md`. Parent recomputed the current full canonical arena hash
+from both runtime wrapper and source arena: both equal
+`27c71cc8895eab2ca3a0b5cae3c2b8f96ed9afd75db3deec4a5c96bd2f395ea7`.
+The older document records an earlier admission stage; it is not a second current
+runtime identity. The export path is `art/worlds/vesper-viaduct.glb` (the audit's
+`vester` spelling was a typo). Future revisions must use current source identities.
+
+Implementation corrections to the proposed blueprints:
+
+- Detailed new asset forms must actually be constructed in Blender with editable
+  source collections. Merely importing recipe triangles and re-exporting them does
+  not fulfill the requested modeling pass. Authority proxies remain separately
+  authored and must agree with visible walkable/blocking forms.
+- For revised Helix geometry, compare optimized and reference navigation on the
+  **same new geometry**. Its graph need not equal the old graph after deliberate
+  layout changes. Preserve the broadphase optimization and measure new performance;
+  the audit's suggested 1.5-second bound is not an adopted acceptance threshold.
+- Stormglass's current race code uses flat support, Y=0 spawn/reset positions and
+  fixed gate-height bounds. Real road grades require a coordinated versioned
+  terrain/race/vehicle revision. Coastal scenery alone does not remove the existing
+  zero-drivable-relief concession. No such runtime change has been made here.
+- Sol's initial receipt needs stronger texture-reference, normal-source and
+  source-to-packed-image checks before adoption. The parent requested focused
+  rejection tests and genuine Blender modeling helpers; no built/native pass is
+  implied by `c6db6393`.
 
 ## Required production qualities
 
