@@ -1,0 +1,236 @@
+[
+  {
+    "path": "godot/biomes/expansion/art/rootfall-canopy-relay-0.glb",
+    "sha256": "638d28b144a8b79964937771ddb9916dfac59fea94b43921e0511529130b2f13",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "bark",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/macro-organic.png\": \"de19687a5b14599a3e738f6006b08ad3380b023d6d19d4d2270b903350f5341a\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_bark",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.05999999865889549
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9200000166893005
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 2,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "foliage",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/grass.png\": \"b34ff20efcd0abad36323f9c6ffca4f30325dc91f7110a624ce7dac1d4f2fe64\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_moss",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 4
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9399999976158142
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "POSITION": 0,
+        "NORMAL": 1,
+        "TEXCOORD_0": 2
+      },
+      {
+        "POSITION": 4,
+        "NORMAL": 5,
+        "TEXCOORD_0": 6
+      },
+      {
+        "POSITION": 8,
+        "NORMAL": 9,
+        "TEXCOORD_0": 10
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_bark",
+        "bytes": 6122,
+        "sha256": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_bark.png"
+      },
+      {
+        "name": "MothLocal_biome4_bark",
+        "bytes": 1584,
+        "sha256": "2eee2d763ef685e52c539300e65ca817af08d429dac10f824de1f7a8e8c186b1",
+        "preview": "/tmp/opencode/MothLocal_biome4_bark.png"
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png"
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3244,
+        "sha256": "c66533ac7034337ca713555257a4fa2e243ecd5bb5636db3cd8203acfcedf73b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png"
+      },
+      {
+        "name": "MothLocal_biome4_moss",
+        "bytes": 2621,
+        "sha256": "e04bc69f7cd023e913457bf225c06068617f292cc75e2d0803bd962b0161ef4e",
+        "preview": "/tmp/opencode/MothLocal_biome4_moss.png"
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/rootfall-canopy-relay-1.glb",
+    "sha256": "099f6708cf99ec6849d8a2e8d3d1f0863b70d0a0785378188c6ba4d788d3b63b",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "bark",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/macro-organic.png\": \"de19687a5b14599a3e738f6006b08ad3380b023d6d19d4d2270b903350f5341a\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_bark",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.05999999865889549
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9200000166893005
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "foliage",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/grass.png\": \"b34ff20efcd0abad36323f9c6ffca4f30325dc91f7110a624ce7dac1d4f2fe64\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_moss",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9399999976158142
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 3,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 4
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "POSITION": 0,
+        "NORMAL": 1,
+        "TEXCOORD_0": 2
+      },
+      {
+        "POSITION": 4,
+        "NORMAL": 5,
+        "TEXCOORD_0": 6
+      },
+      {
+        "POSITION": 8,
+        "NORMAL": 9,
+        "TEXCOORD_0": 10
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_bark",
+        "bytes": 6122,
+        "sha256": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_bark.png"
+      },
+      {
+        "name": "MothLocal_biome4_bark",
+        "bytes": 1584,
+        "sha256": "2eee2d763ef685e52c539300e65ca817af08d429dac10f824de1f7a8e8c186b1",
+        "preview": "/tmp/opencode/MothLocal_biome4_bark.png"
+      },
+      {
+        "name": "MothLocal_biome4_moss",
+        "bytes": 2621,
+        "sha256": "e04bc69f7cd023e913457bf225c06068617f292cc75e2d0803bd962b0161ef4e",
+        "preview": "/tmp/opencode/MothLocal_biome4_moss.png"
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png"
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3244,
+        "sha256": "c66533ac7034337ca713555257a4fa2e243ecd5bb5636db3cd8203acfcedf73b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png"
+      }
+    ]
+  }
+]

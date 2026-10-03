@@ -1,6 +1,6 @@
 // Heavy job, explicit parent grant only. Owns serial authorities/native processes.
 import {spawn} from 'node:child_process';
-import {mkdirSync,createWriteStream,writeFileSync} from 'node:fs';
+import {mkdirSync,writeFileSync} from 'node:fs';
 import {once} from 'node:events';
 import {resolve} from 'node:path';
 import {createAuthority} from '../../../port/native-campaign/authority.mjs';
@@ -23,15 +23,17 @@ try {
     const endpoint=`ws://127.0.0.1:${authority.server.address().port}/native-campaign`;
     const args=['--path',root+'godot','--rendering-driver','opengl3','-s','res://tests/biome_assets/native_inspection.gd','--',`--map=${map}`,`--endpoint=${endpoint}`,`--output=${directory}`];
     if(profile==='compact')args.push('--compact');
-    const log=createWriteStream(resolve(directory,'native.log'));
+    args.unshift('--audio-driver','Dummy');
+    let log='';
     child=spawn(godot,args,{cwd:root,env:{...process.env,LP_NUM_THREADS:'1'},stdio:['ignore','pipe','pipe']});
-    child.stdout.pipe(log,{end:false});child.stderr.pipe(log,{end:false});
+    child.stdout.on('data',b=>{log+=b;});child.stderr.on('data',b=>{log+=b;});
     let timeout=false;
     const timer=setTimeout(()=>{timeout=true;child.kill('SIGKILL');},180000);
-    const [code,signal]=await once(child,'exit');clearTimeout(timer);log.end();
+    const [code,signal]=await once(child,'close');clearTimeout(timer);
+    writeFileSync(resolve(directory,'native.log'),log);
     results.push({map,profile,code,signal,timeout});
     writeFileSync(resolve(evidence,'runs.json'),JSON.stringify(results,null,2));
     child=null;await authority.close();authority=null;
-    if(code!==0||timeout)throw Error(`Native inspection failed: ${map}/${profile}; retained ${directory}`);
+    if(code!==0||timeout||/SCRIPT ERROR|Parse Error|ERROR:|ObjectDB instances leaked|resources still in use/.test(log))throw Error(`Native inspection failed: ${map}/${profile}; retained ${directory}`);
   }
 } finally {await cleanup();}

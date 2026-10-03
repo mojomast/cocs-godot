@@ -1,0 +1,9 @@
+file:///home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/godot/tests/biome_assets/run_inspection.mjs:36
+    if(code!==0||timeout||/SCRIPT ERROR|Parse Error|ERROR:|ObjectDB instances leaked|resources still in use/.test(log))throw Error(`Native inspection failed: ${map}/${profile}; retained ${directory}`);
+                                                                                                                             ^
+
+Error: Native inspection failed: rootfall-verge/wide; retained /home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-02-47.218Z/rootfall-verge/wide
+    at file:///home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/godot/tests/biome_assets/run_inspection.mjs:36:126
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+Node.js v22.23.1

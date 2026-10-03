@@ -1,0 +1,44 @@
+[
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-02-47.218Z/rootfall-verge/wide/rootfall-canopy-relay-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-02-47.218Z/rootfall-verge/wide/rootfall-canopy-relay-approach-after.png",
+    "changedPixelsOver2": 1223,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 220
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-02-47.218Z/rootfall-verge/wide/rootfall-canopy-relay-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-02-47.218Z/rootfall-verge/wide/rootfall-canopy-relay-eye-after.png",
+    "changedPixelsOver2": 1361,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 161
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-02-47.218Z/rootfall-verge/wide/rootfall-root-archive-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-02-47.218Z/rootfall-verge/wide/rootfall-root-archive-approach-after.png",
+    "changedPixelsOver2": 682,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 124
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-02-47.218Z/rootfall-verge/wide/rootfall-root-archive-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-02-47.218Z/rootfall-verge/wide/rootfall-root-archive-eye-after.png",
+    "changedPixelsOver2": 751,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 122
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-02-47.218Z/rootfall-verge/wide/rootfall-root-buttress-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-02-47.218Z/rootfall-verge/wide/rootfall-root-buttress-approach-after.png",
+    "changedPixelsOver2": 51,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 57
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-02-47.218Z/rootfall-verge/wide/rootfall-root-buttress-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-02-47.218Z/rootfall-verge/wide/rootfall-root-buttress-eye-after.png",
+    "changedPixelsOver2": 35,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 60
+  }
+]

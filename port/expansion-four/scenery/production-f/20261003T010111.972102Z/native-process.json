@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "godot",
+    "-s",
+    "res://tests/biome_assets/imported_geometry.gd"
+  ],
+  "started": "2026-10-03T01:01:12.081534+00:00",
+  "timeoutSeconds": 180,
+  "log": "port/expansion-four/scenery/production-f/20261003T010111.972102Z/native.log",
+  "processGroup": 704950,
+  "exitCode": 1,
+  "ended": "2026-10-03T01:01:12.445885+00:00",
+  "ownedGroupTeardownRequested": true
+}
