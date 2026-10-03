@@ -1,5 +1,14 @@
 # New Moth resources and Blender-authored map variety
 
+**X selective artifact approval:** Helix and Parallax's actual frame/aperture P1s
+are closed; Parallax retains one measured tangent limitation. Vesper's parapet
+P1 is closed, but 184 contacts still block artifact approval. Full findings:
+`map-variety/BOTANICAL_X_REVIEW.md`. Shared X source is integrated through
+**`2f64d2de`**, with 22 parent Python tests and strict shipping closure passing.
+Sol is preparing the exact approved artifact subset. Gallery status is updated;
+all 89 follow-up HTTP/hash checks pass, preserving 70 original PNGs and sixteen
+reports. No blanket X/U merge or public promotion; Y retains sole heavy ownership.
+
 ## Current checkpoint — X delivered/released; Foundry R7 Y active
 
 **`MOTH-BLENDER-20261003-Y` is the sole active heavy grant**, Astra
