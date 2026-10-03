@@ -90,3 +90,5 @@ and swept chase-camera clearance are not established by the sparse floor probes.
 
 Gallery: <http://100.125.104.79:8796/coastal-t/>. A separate review-status record
 labels these findings while retaining original images/reports unchanged.
+Gallery owner verified all 46 HTTP/hash checks after adding the status record;
+all 30 original PNGs and historical manifests/reports remain byte-identical.

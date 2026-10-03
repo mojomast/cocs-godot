@@ -6,7 +6,9 @@ Stormglass qualifies for staged integration, including actual new-relief clearan
 against all road triangles. The combined bundle remains unmerged. Sol owns a
 source-only Abyssal correction; any rebuilt evidence needs a later grant. Full
 findings, exact rays and acceptance boundaries: `map-variety/COASTAL_T_REVIEW.md`.
-Gallery status is being updated separately without altering original images.
+Gallery status now labels Abyssal **P1 blocked** and Stormglass **staged-qualified**.
+All 46 HTTP/hash checks passed; the 30 original PNGs and historical reports remain
+unchanged. Separate record: <http://100.125.104.79:8796/coastal-t/review-status.json>.
 
 ## Current ownership — botanical U; coastal T released
 
