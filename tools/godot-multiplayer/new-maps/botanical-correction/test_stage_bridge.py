@@ -3,6 +3,7 @@ import json
 import shutil
 import unittest
 import uuid
+import math
 import subprocess
 from unittest.mock import patch
 from stage_config import MAPS,ROOT,paths,source,sha,read
@@ -98,5 +99,15 @@ class StageBridgeTests(unittest.TestCase):
                 c=next(c for c in p['cameras'] if c['id']=='greenhouse-eye')
                 self.assertEqual(c['eye'],c['beforeEye']);self.assertIn('radial',c['targetLineage'])
                 self.assertEqual(sum(x['kind']=='frame-post' for x in p['raySpecs']),60)
+                # Exact X-02 failure geometry: the old radial ray was coplanar
+                # with the inherited angle82 brick seam. Require a real crossing
+                # through the SAME post centre, not a wider distance tolerance.
+                ray=next(r for r in p['raySpecs'] if r['id']=='post:82:93.2:0.5:1')
+                a=math.radians(82);normal=(-math.sin(a),0,math.cos(a))
+                old_direction=(-math.cos(a),0,-math.sin(a))
+                self.assertAlmostEqual(sum(x*y for x,y in zip(normal,old_direction)),0)
+                self.assertGreater(abs(sum(x*y for x,y in zip(normal,ray['direction']))),.25)
+                center=[93.2*math.cos(a),16.5,93.2*math.sin(a)]
+                for k in range(3):self.assertAlmostEqual(ray['origin'][k]+ray['direction'][k],center[k])
 
 if __name__=='__main__':unittest.main()

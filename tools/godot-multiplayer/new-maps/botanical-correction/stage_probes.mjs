@@ -25,9 +25,12 @@ if(data.id==='helix-conservatory') {
   camera.target=[87*Math.cos(82*Math.PI/180),22,87*Math.sin(82*Math.PI/180)];
   camera.targetLineage='successor radial greenhouse spring/crown; unchanged supported before/after eye';
   for(const angle of [70,76,82,88,94])for(const radius of [80.8,93.2]) {
-    const a=angle*Math.PI/180,x=radius*Math.cos(a),z=radius*Math.sin(a);
+    const a=angle*Math.PI/180,x=radius*Math.cos(a),z=radius*Math.sin(a),witness=a+17*Math.PI/180;
+    // Radial witnesses can be exactly coplanar with inherited pavilion seam
+    // walls. Float32 export then invents a near-origin crossing. Oblique rays
+    // through the same post centre cross those planes unambiguously.
     for(const h of [.5,1.5,2.5])for(const side of [-1,1])
-      p.raySpecs.push({id:`post:${angle}:${radius}:${h}:${side}`,kind:'frame-post',origin:[x+side*Math.cos(a),16+h,z+side*Math.sin(a)],direction:[-side*Math.cos(a),0,-side*Math.sin(a)],max:2});
+      p.raySpecs.push({id:`post:${angle}:${radius}:${h}:${side}`,kind:'frame-post',origin:[x+side*Math.cos(witness),16+h,z+side*Math.sin(witness)],direction:[-side*Math.cos(witness),0,-side*Math.sin(witness)],max:2});
   }
 }
 if(data.id==='parallax-observatory') {
