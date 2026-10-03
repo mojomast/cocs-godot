@@ -91,7 +91,14 @@ func run() -> void:
 		while position().distance_to(point) > 0.8 and Time.get_ticks_msec() < deadline:
 			aim(point)
 			key(KEY_W, true)
-			await process_frame
+			# Near a waypoint use discrete human-like taps and let the authoritative
+			# neutral packet settle; frame-sized full-speed reversals overshoot on
+			# software renderers. Never change actor coordinates or source clocks.
+			if position().distance_to(point) < 5.0:
+				await create_timer(0.1).timeout
+				key(KEY_W, false)
+				await create_timer(0.3).timeout
+			else: await process_frame
 		key(KEY_W, false)
 		if position().distance_to(point) > 0.8:
 			check(false, "ordinary approach " + str(point) + " actual " + str(position()))

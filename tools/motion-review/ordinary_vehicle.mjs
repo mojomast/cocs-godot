@@ -21,7 +21,7 @@ try {
     '--rendering-method','gl_compatibility','--audio-driver','Dummy',
     '--script','res://tests/combined_arms/ordinary_views.gd','--',
     `--endpoint=ws://127.0.0.1:${game.server.address().port}`,'--map=sunscar-convoy',
-    '--mode=combined-arms','--bots=0',`--view-route=${route}`,`--evidence-out=${output}`],
+    `--mode=${route==='world'?'teamdeathmatch':'combined-arms'}`,'--bots=0',`--view-route=${route}`,`--evidence-out=${output}`],
     {stdio:['ignore','pipe','pipe'],env:{...process.env,LP_NUM_THREADS:'1'}});
   for(const stream of [child.stdout,child.stderr])stream.on('data',chunk=>text+=chunk);
   timer=setTimeout(()=>child.kill('SIGTERM'),145000);
