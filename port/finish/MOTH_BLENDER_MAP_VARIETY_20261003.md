@@ -1,5 +1,27 @@
 # New Moth resources and Blender-authored map variety
 
+**R7 integrated with exact shipping exclusions:** approved Y is merged as
+**`dd76b82a`**, policy as **`dd6bc7c3`**. Parent passed 78 tests and all 237 Y
+hashes/sizes. All seven tangent defects are closed in actual art/native evidence.
+Combined R5/R6/R7 exclusions are 211 files / 54,926,437 bytes; accepted selection
+stays 2,494 paths and seven production receipts remain unchanged. Public promotion
+and hosted/manual acceptance remain pending; no heavy grant is active.
+
+**Post-X diagnosis delivered:** source-only `902c3bbb` reproduces Vesper's 184
+static contacts but reports 60 required unchanged-authoritative-controller trials
+passing across civic/roof stairs. Exploration CharacterBody behavior remains
+unproven; a native journey fixture is prepared, not executed. Parallax's local
+proposal repairs the zero and two neighboring handedness values on its one triangle
+(five BIN bytes within 48 permitted positions). Independent source review is active
+before integration or engine authorization. X/U artifacts remain immutable.
+
+**R7 actual artifact approved:** independent review of `26da91b3` / `f3b51b2c`
+closed all seven tangent defects in the GLB and native readback, with zero waivers.
+R7 no longer needs R6's tangent exception. Full review:
+`map-variety/FOUNDRY_R7_REVIEW.md`. Integration awaits the exact R7 package exclusion
+transaction. Y remains released; no heavy grant is active. Hosted/manual/broader
+weather and public promotion acceptance remain pending.
+
 ## Current checkpoint — Y delivered/released; no active heavy grant
 
 Foundry R7 Y delivered **`26da91b3` / `f3b51b2c`** and released at

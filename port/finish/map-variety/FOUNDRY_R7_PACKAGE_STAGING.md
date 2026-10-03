@@ -1,5 +1,15 @@
 # Foundry R7/Y — unpromoted package exclusion
 
+## Parent integration
+
+Independently approved Y is merged as **`dd76b82a`**, preserving original
+`f3b51b2c` ancestry. Package-only `0f108974` is integrated as **`dd6bc7c3`**.
+Parent passed all 62 package checks (59 Node including committed-Git closure,
+three actual builder fixtures), plus sixteen R7 source tests: **78 total**.
+The pinned Y manifest and all 237 original files match after integration.
+All seven tangent defects are closed by actual-art/native review; remaining
+acceptance boundaries are recorded in `FOUNDRY_R7_REVIEW.md`.
+
 Package-only branch `package/foundry-r7-staging` starts at parent
 **`167ac4bc151877c3daeb685be0c3d35bdb8e8a93`**. Local fixture integration merge
 **`4e401275808022a80271a88366ea91920418afb1`** preserves original Y source

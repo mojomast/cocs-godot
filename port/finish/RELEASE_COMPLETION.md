@@ -9,9 +9,11 @@ finishing and verifying the new candidate.
 
 **No active heavy grant. Foundry R7 Y completed and released**, delivering
 `26da91b3` / `f3b51b2c`. Parent verified 237 hashes, three empty audits/16 groups,
-no current survivors and an available lock at 22:05:19Z. Actual tangent/native
-proof is under independent artifact review, with exact package exclusions being
-prepared. All remaining workers are source/artifact/static-gallery only.
+no current survivors and an available lock at 22:05:19Z. Independent artifact
+review closed all seven tangent defects with zero native waivers. R7 is integrated
+as `dd76b82a`, exact package exclusions as `dd6bc7c3`; parent passed 78 tests and
+all 237 hashes. Full review:
+`map-variety/FOUNDRY_R7_REVIEW.md`. Remaining workers are source/artifact/static only.
 R7 source/material gate correction passed independent review and is integrated
 through `10d9938f`; parent passed sixteen source tests and strict shipping closure.
 Botanical X delivered all three actual successors as `171ffddb` and released at
@@ -21,6 +23,10 @@ as `5f41d68e`; parent verified 332 exact producer copies and twelve package chec
 Parallax retains one invalid tangent. Vesper's parapet mismatch
 is closed, but 184 stair contacts still block artifact approval.
 Vesper diagnosis is source-only. X gallery: <http://100.125.104.79:8796/botanical-x/>
+Diagnostic `902c3bbb` is under independent source review: 60 required authoritative
+stair trials report passing, while native exploration remains unproven. The 184
+static contacts remain recorded. A local Parallax three-corner tangent proposal is
+also awaiting review; no corrected artifact or new native acceptance is claimed.
 (70 original PNGs, 92 HTTP/hash checks passed). No full three-map acceptance.
 
 **Research-led movement integrated:** all three Flash reports and Astra's
