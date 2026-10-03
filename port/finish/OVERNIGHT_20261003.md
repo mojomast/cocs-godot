@@ -27,6 +27,13 @@ and restored-route focus. It is not yet integrated/native-verified. Parent asked
 the same lane to continue with searchable destinations, explicit no-results and
 clear behavior, and selection/focus preservation before returning the full bundle.
 
+Controls first checkpoint `c5043683` clarifies full-profile reset scope; it is
+unmerged and only grammar-checked. Parent requested continuation: searchable
+existing editable bindings, persistent modified-from-default summary and truthful
+swap feedback. The audit's initial "six actions" count was incorrect (current
+`Model.LABELS` exposes 16); the lane must correct it. Hidden adapter-owned fixed
+controls must not be presented as functional rebinding options.
+
 ## Production and integration sequence
 
 1. Abyssal continues under exclusive local heavy grant
