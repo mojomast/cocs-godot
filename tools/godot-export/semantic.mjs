@@ -3,6 +3,7 @@ import {readFileSync,writeFileSync,mkdirSync,existsSync,renameSync,rmSync} from 
 import {createHash} from 'node:crypto';
 import {resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {resolveSourceDerivative} from '../godot-package/source_derivative.mjs';
 import {MAPS} from '../../game/maps.mjs';
 import {terrainTriangles,terrainWallTriangles,terrainWallSegments} from '../../game/terrain.mjs';
 const root=fileURLToPath(new URL('../../',import.meta.url));
@@ -45,6 +46,7 @@ export function normalizeMap(map) {
 }
 export function verifySource(lock,derivative=null,repositoryRoot=root) {
   const git=(...args)=>execFileSync('git',args,{cwd:repositoryRoot,encoding:'utf8'}).trim();
+  derivative=resolveSourceDerivative(derivative,p=>readFileSync(resolve(repositoryRoot,p)),(rev,p)=>execFileSync('git',['show',`${rev}:${p}`],{cwd:repositoryRoot}), (a,b)=>git('merge-base',a,b)===a);
   if(git('merge-base',lock.source_commit,'HEAD')!==lock.source_commit)throw Error('Checkout is not based on locked source');
   // Compare tracked source and dependency files to the lock, including unstaged edits.
   const tracked=git('ls-tree','-r','--name-only',lock.source_commit).split('\n').filter(p=>/^(game\/|server\/|assets\/|public\/|package.*json$)/.test(p));
@@ -68,6 +70,7 @@ export function verifySource(lock,derivative=null,repositoryRoot=root) {
    const checksum=bytes=>createHash('sha256').update(bytes).digest('hex');
    if(checksum(committed)!==files[p]||checksum(readFileSync(resolve(repositoryRoot,p)))!==files[p])throw Error(`Derivative source byte mismatch: ${p}`);
   }
+  return derivative;
 }
 export function build(output=resolve(root,'godot/content/generated')) {
   const lock=JSON.parse(readFileSync(resolve(root,'port/contracts/source-lock.json')));

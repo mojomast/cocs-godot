@@ -36,7 +36,8 @@ test('phase-aware authority import resolves dependencies without constructing a 
 });
 test('registration preserves frozen authority, I geometry/assets and native evidence; receipt advances tested separately',()=>{
  const protectedPaths=['game/','port/contracts/source-lock.json','port/multiplayer-worlds/derived/','port/multiplayer-worlds/wall_candidates.mjs','tools/asset-production/moth_finish.py','port/expansion-three/abyssal/evidence/','tools/godot-multiplayer/new-maps/abyssal-pressureworks/','godot/multiplayer_worlds/art/worlds/abyssal*','godot/multiplayer_worlds/generated/abyssal-pressureworks.json','port/native-multiplayer-worlds/worlds/abyssal-pressureworks.json'];
- assert.equal(execFileSync('git',['diff','f0e76bf7','--',...protectedPaths],{cwd:ROOT,encoding:'utf8'}),'');
+ assert.equal(execFileSync('git',['diff','f0e76bf7','14d8a72d','--',...protectedPaths],{cwd:ROOT,encoding:'utf8'}),'');
+ assert.equal(execFileSync('git',['diff','f61f6156','--',...protectedPaths],{cwd:ROOT,encoding:'utf8'}),'');
 });
 test('actual Godot-extracted images match embedded export bytes and keep lossless normal policies',()=>{
  const base=ROOT+'godot/multiplayer_worlds/art/worlds/abyssal-pressureworks',bytes=fs.readFileSync(base+'.glb'),size=bytes.readUInt32LE(12),doc=JSON.parse(bytes.subarray(20,20+size)),bin=bytes.subarray(28+size);

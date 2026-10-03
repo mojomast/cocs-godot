@@ -27,6 +27,7 @@ import {finalResources} from './final_resources.mjs';
 import {productionResources} from './production_resources.mjs';
 import {channelProduction,verifyChannelManifest,previewReadme} from './build_channel.mjs';
 import {fighterImports} from './fighter_imports.mjs';
+import {MOVEMENT_COMMIT,MOVEMENT_CONTRACT,resolveSourceDerivative} from './source_derivative.mjs';
 
 // The repository that contains this module, not the process working directory.
 export const REPO_ROOT = fileURLToPath(new URL('../../', import.meta.url));
@@ -416,6 +417,8 @@ export function validateRuntimeClosure(packageDir, identity) {
 // commits only. This never reads the working tree, HEAD or an ambient selection:
 // the comparison tree is `head` (defaulting to the explicit `portCommit`).
 export function verifySourceState(repo, sourceCommit, derivative, {portCommit, head = portCommit} = {}) {
+  derivative = resolveSourceDerivative(derivative, p => gitObjectBytes(repo, portCommit, p),
+    (rev, p) => gitObjectBytes(repo, rev, p), (a,b) => git(repo, ['merge-base', a, b]) === a);
   require_(HEX40.test(sourceCommit), 'source_commit must be pinned');
   require_(HEX40.test(portCommit ?? ''), 'verifySourceState requires an explicit portCommit');
   require_(git(repo, ['merge-base', sourceCommit, head]) === sourceCommit,
@@ -453,6 +456,7 @@ export function verifySourceState(repo, sourceCommit, derivative, {portCommit, h
     require_(tracked.has(path) || added.includes(path), `Derivative source is not present in the recorded port commit: ${path}`);
     require_(HEX64.test(hash), `Derivative source hash must be 64-hex: ${path}`);
     require_(gitObjectHash(repo, derivative.derivative_commit, path) === hash, `Derivative source byte mismatch: ${path}`);
+    require_(gitObjectHash(repo, head, path) === hash, `Recorded source byte mismatch: ${path}`);
   }
 }
 
@@ -460,7 +464,8 @@ export function verifySourceState(repo, sourceCommit, derivative, {portCommit, h
 // working tree), checking it against the manifest's recorded commit and hash.
 function loadDerivative(repo, identity) {
   if (identity.derivativeCommit === null) return null;
-  const bytes = gitObjectBytes(repo, identity.port_commit, DERIVATIVE_CONTRACT);
+  const path = identity.derivativeCommit === MOVEMENT_COMMIT ? MOVEMENT_CONTRACT : DERIVATIVE_CONTRACT;
+  const bytes = gitObjectBytes(repo, identity.port_commit, path);
   require_(sha256(bytes) === identity.derivativeHash,
     'Derivative metadata mismatch: committed contract hash differs from manifest source_derivative_sha256');
   const derivative = JSON.parse(bytes.toString('utf8'));
@@ -468,7 +473,8 @@ function loadDerivative(repo, identity) {
     'Derivative metadata mismatch: contract derivative_commit differs from manifest source_derivative_commit');
   require_(derivative.source_commit === identity.source_commit,
     'Derivative metadata mismatch: contract source_commit differs from manifest source_commit');
-  return derivative;
+  return resolveSourceDerivative(derivative, p => gitObjectBytes(repo, identity.port_commit, p),
+    (rev,p) => gitObjectBytes(repo,rev,p), (a,b) => git(repo,['merge-base',a,b]) === a);
 }
 
 // Materialize the committed `.mjs` graph (and the JSON families a discovery stub
@@ -476,6 +482,8 @@ function loadDerivative(repo, identity) {
 // run the committed discover.mjs against it. This re-derives the closure from
 // committed bytes; an ambient/discover at HEAD is never used.
 export function rederiveClosure(repo, identity, derivative) {
+  derivative = resolveSourceDerivative(derivative, p => gitObjectBytes(repo, identity.port_commit, p),
+    (rev,p) => gitObjectBytes(repo,rev,p), (a,b) => git(repo,['merge-base',a,b]) === a);
   const temp = mkdtempSync(join(tmpdir(), 'cocs-closure-'));
   try {
     const listing = git(repo, ['ls-tree', '-r', '--name-only', identity.port_commit,

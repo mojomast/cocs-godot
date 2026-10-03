@@ -1,0 +1,19 @@
+{
+  "foundation":"f61f6156d9575d8dcf44ca4daf7a09bef727b034",
+  "previous":"14d8a72d",
+  "status":"source-candidate-not-native-acceptance",
+  "changed":{
+    "game/core.mjs":{"before":"58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9","after":"655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3"},
+    "game/operator-verbs.mjs":{"before":"f3bbcd2e13bc04dabf2a81a74ddee3848d6835d11d8ac063e4603ea689bf96b3","after":"357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e"},
+    "game/feedback.mjs":{"before":"9b99d61463a0edc64ad681949c7eb4b6993f879f4ab7bf3f30383aa8043b193f","after":"bce79610e67236a16e135e05338809e6dd29411be40ac8aff4fbe99f9f69e923"},
+    "game/weapon-ads.mjs":{"before":"01d9eb7ddbb304b0bca39899e393730cbdf04fffb5024f28886399e76f20452b","after":"133a10f85e9c59928c16e5e25e240e1aa0e89200f81cecd77bb62482f6ef795f"},
+    "godot/campaign/client.gd":{"before":"4e87bbf47f1f76d46bfe6ff26a831ca008b3da63a7a8a163035e1f8c0f4d3307","after":"95d3ecb853cd539e6a98ef089b2e47c3471b2b85508d53ba84f0006a54891c11"},
+    "godot/first_person/rig.gd":{"before":"d1b71b95d16f5b5a4ebfedef332a5a863aa66f13ce50687bfaf2efce78f6f217","after":"1e6869124115ef7cbdf147b9f1597759ee198a2467af4d8ef6f4f285268ef0cf"},
+    "godot/native_arenas/client.gd":{"before":"2283f3c36dcf4a16b141d6d207078c2b8e47dbba61105341fcb207045c6d180b","after":"ce746b41d71f52b8b48f300e516bc8a072087e24c0846a370d16873af8be473c"},
+    "godot/horde/client.gd":{"before":"d71aa96306e22457f4e838d0f8b58e8f6bb59a468118b9ea47ac4f3128d0063b","after":"6702106baf121e3e321b0fce7a323432abe7f3456125264bfcb58b84abbf6eeb"},
+    "godot/horde/demo.gd":{"before":"c010585a309910a781f5dd0d87013e5fbd4bac927774c6b60ba03c444b3b7951","after":"5c03c0aca831d1af8d9c4f00cca3a462308125f6dbd42dd7ea1687e70bd29a1a"},
+    "port/native-campaign/generate-core.mjs":{"before":"328724fe0354252c23397eac53062de290145bd465648add5b50f413d82d1bf9","after":"cc7eb3e0e49faccfdbe66511a04ac9541fdd21692541d9da29a1aaa747482655"},
+    "port/native-campaign/core.generated.mjs":{"before":"2800bec533c3810a94d61e2f7f20f93574e44b13346dee2085200a0467759cca","after":"949e8a599d0bea5773e35043fefdc1d58d38a3f0ea678ad76f76ba5e47e78abb"}
+  },
+  "added":{"port/contracts/movement-candidate-derivative.json":"b775686e10f21d54150f37a231690d9d24a2da15f8ed775001acc2328b63f830"}
+}

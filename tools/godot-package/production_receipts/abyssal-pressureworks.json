@@ -155,6 +155,7 @@
   },
   "packageInputs": {
     "game/alt-fire.mjs": "d7f821f28f9cfe3d12da2da3461e053f698037aa8e44540324c76a58c2e02c5f",
+    "game/announcer-clips.mjs": "a8773bcc5e2861148b4e6c9639ec58f74c4a09da7da7ee14b264dd22cf3d717a",
     "game/arsenal-maps.mjs": "fad8dff6d87dda4aef905969cd9b130e3a5c7c9776e8b1e6e0294a8dc6d63f3d",
     "game/assault.mjs": "6e24f4a363ce8ccb1787057ec125d3695da2aefe133f7872bf3a4cde66daea70",
     "game/attachments.mjs": "66c46bfb2bae119a61ba7ffcdd301e34fad42a50e2dc3c7833828b9abfdcef14",
@@ -176,7 +177,7 @@
     "game/cocs-traversal.mjs": "555e742ff721549db974ac470a2b523ac6dad98659c40f7399a11e904c7672f7",
     "game/cocs.mjs": "1224034a80181d83571f15034059aa979545afc171632e6588fe9d2ebf3724e6",
     "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
-    "game/core.mjs": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+    "game/core.mjs": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
     "game/cosmetics.mjs": "466d6eba56296a88b698a6036cc40b1381634b30d350fe04757832a15779b98a",
     "game/ctf-maps.mjs": "4f91623e6cc6914b9cca688edd7b37a1ba0e804808943a40deb27525ab78107f",
     "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
@@ -187,12 +188,15 @@
     "game/destination-objective-maps.mjs": "f995d7ec863f848ac7e3aa6a9a48e2a51b27f6fda7749e86877594665a1c79d8",
     "game/destination-sports-maps.mjs": "bd3f486d57b188163b16193b4ce05401bac14ad19b40b73768525c9ca4d0e0b1",
     "game/enemy-types.mjs": "92b600584061d0626b35dd44ae94e1903ba178b390f600a0254fbc5505685613",
+    "game/environment.mjs": "fe9a1e84add0d1f16ab9667cb617c5f94a1cb53e480666c79746759dcbabe0c5",
     "game/expansion-maps.mjs": "62b30255393daa473f5c6e46056e8922c1dc74c02c993499cbe6ac3e6439537f",
+    "game/feedback.mjs": "bce79610e67236a16e135e05338809e6dd29411be40ac8aff4fbe99f9f69e923",
     "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
     "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
     "game/horde-stages.mjs": "132bb551f0e517ed037d2e97fbd8ff510802eaaa7163e39da10e59745d656afb",
     "game/island-maps.mjs": "5fff90834c33d65bd8a06a70528aff45f7d5b09840b8eaa0a3a9c5f23f4d0cf7",
     "game/kits.mjs": "e44908b88341bce5f4df8ffe9e896482202466dc502fd93059ba63e5b54c40bd",
+    "game/lattice-feedback.mjs": "2c0fa62dfa381849ed13672c511866177bb0a3b0e272f7ab7f892a38d9c57d50",
     "game/lattice-foundry.mjs": "5c63d3d1c36e9957a6181cc2e7f83f27056599040ad9f4f7714d43c5596b4c56",
     "game/lattice-maps.mjs": "d3eae8ec886ed66dfc04c420d9a4e6051368dff385bc680cf238387545c91016",
     "game/lattice-roles.mjs": "bd1f1165c3e2b3dfa3b33e3351f90db1039eaf264ddadab08e5e481dcee31340",
@@ -206,16 +210,21 @@
     "game/moth-baked.mjs": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2",
     "game/moth-maps.mjs": "613cdeac0ea8f5f64c988f051698661825d2053268b75fe1151c7beacfcdc081",
     "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
+    "game/music.mjs": "8973258df4ae4572d5560fbe7d46a0d8f7318f12671d576e46884656adbcdf22",
     "game/nextgen-maps.mjs": "9a8dc8720a2395edf796a0d630f0033c9aa29d872d3fcf98db3aefabdac33727",
     "game/objectives.mjs": "3e92ad1f85fb785362e15fd836d2b80f95060e0670e9f58a766f79ffa60742ec",
     "game/operator-profiles.mjs": "b7c4aec4aac899626ad5d7a78f5870218513a5b1d38ff12f2312beacc32882ba",
-    "game/operator-verbs.mjs": "f3bbcd2e13bc04dabf2a81a74ddee3848d6835d11d8ac063e4603ea689bf96b3",
+    "game/operator-verbs.mjs": "357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e",
     "game/outcome.mjs": "f66fe5ca09e8507939d407a7eb9defd4a2d23b643a221955e0d0ad584b17ec98",
     "game/payload.mjs": "13e357516af38fdfe6596dfa7a43cbeaae2445f492ad41df934deb8840bc92bb",
     "game/progression.mjs": "5b70fa168d8edb5192052ad9bed3243370db7ba8f13952a9401596a9d4bc1ce5",
     "game/race-maps.mjs": "d14c6d5cf31728cb5bac4363b142d16a79705b727f7e015774d80a68d5abf4b3",
     "game/race.mjs": "1c448a0f00e3354dd6fa32190f85dcc6c31883f428b07193773fcd02bf2effba",
     "game/ragdoll.mjs": "10bd8cb43405d45a42d5034261ce89119a8bf05c24c3ca1f47f1b4b4202efa3d",
+    "game/reticle.mjs": "1d6d8df4cc8db0e4dcf0a0cd5ab2e2b7db1c273d5f1897e61c97ea5f7d80aa7b",
+    "game/sampler.mjs": "1e420e4c6e6a170c58ac4bd6274edc9161650d5a343875e1007c014cbe8ef254",
+    "game/sfx-design.mjs": "ed589ab9a941e196ffb3beba966e35a1b5557b796fbe224ca16f55e2c1da7253",
+    "game/sights.mjs": "e57877966c60c7bad54f56992e854c9c070fe9be936da4829c090d0482bf5938",
     "game/singleplayer.mjs": "60ab39e4cc9dd07f38fed27c39f25b2383e0ea1257dba5ee29f2ebe7762189ce",
     "game/soccer-maps.mjs": "9a57d95b9064c21d3c73303535379f006638aa3c476227bf92946541d1ca6669",
     "game/soccer.mjs": "78da2d005207c5e744f56a2d3924d0bf82ed4c62b29bd0702b97513b74359972",
@@ -227,6 +236,7 @@
     "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
     "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
     "game/vehicles.mjs": "e55dbed9969a9f4430b0471fefb4d294fddf0e75d8af853565c9361c106244db",
+    "game/weapon-ads.mjs": "133a10f85e9c59928c16e5e25e240e1aa0e89200f81cecd77bb62482f6ef795f",
     "godot/ambience/rain_contact.gd": "1ccad1e6d1df2ea22d77844b70c66a291d7e2e4f2ac226fc9650aa5be13f9206",
     "godot/ambience/rain_contact.gdshader": "ca65680e7dd5286b1efc89f9f1326a058720361a108d3ec09d7de43c67da19d9",
     "godot/ambience/weather_look.gd": "21af5e987cd407a26f50b81a80fa3cfdce124e929690385f0123f31702ed6366",
@@ -266,7 +276,7 @@
     "godot/campaign/art/landmarks/crown-receiver.glb": "a4fe581adb2d2a3014d3a008935a47ce82805389a7912064530f2238d74f1370",
     "godot/campaign/art/landmarks/fallen-relay.glb": "dc013e16360fb018fb28dcf76fc6faf74aa7fc1d5ef6a8f480f1f47f4f61b2cf",
     "godot/campaign/catalog.gd": "612e964df74f2bc2db73f24f2caeec6602d0d174e6fa6323d981d473f7e126c7",
-    "godot/campaign/client.gd": "4e87bbf47f1f76d46bfe6ff26a831ca008b3da63a7a8a163035e1f8c0f4d3307",
+    "godot/campaign/client.gd": "95d3ecb853cd539e6a98ef089b2e47c3471b2b85508d53ba84f0006a54891c11",
     "godot/campaign/demo.gd": "cd90b6be02614af02f01b145ffbb9ee419b60a9612e3520029963a60b6414a43",
     "godot/campaign/environment.gd": "8264c0f32500450dbb01129fb4e9d560b3f5087d9eda4104e352061eb93895ae",
     "godot/campaign/environment_art.gd": "da891f287ca5be6659581c9542d5926283b77b6951d289836e307aa5e61b03ae",
@@ -336,7 +346,7 @@
     "godot/first_person/inertia.gd": "6b1aa98d57eae2a0d4cace886b77b390200b16ffd271ace79fb1f737a54dfef1",
     "godot/first_person/kick_motion.gd": "f58e81f2ccf2d6fc35790fd72cdfc2c1098e7b65a5430198388f97e75ff59714",
     "godot/first_person/kick_rig.gd": "683d79a1dc40a888302df9f3d0f904dc3a29cb94f787b058ccdbc5ae4fb572bf",
-    "godot/first_person/rig.gd": "d1b71b95d16f5b5a4ebfedef332a5a863aa66f13ce50687bfaf2efce78f6f217",
+    "godot/first_person/rig.gd": "1e6869124115ef7cbdf147b9f1597759ee198a2467af4d8ef6f4f285268ef0cf",
     "godot/first_person/session_binding.gd": "ee6f478bc8a020dfbeac0cf2e70f4e59855fe29b567461fb9e74390a5673e99c",
     "godot/first_person/sprint_fov.gd": "ba8381203cb66b7e6faf66c80bf05270a2362b760ce58a96865c6fb1aacc1277",
     "godot/graphics_atmosphere/atmosphere.gd": "8acfa2611bbc7909bfd752b7887daaf42038ef76f43654da292538b21514a322",
@@ -344,6 +354,11 @@
     "godot/graphics_atmosphere/horizon.gdshader": "6a06b0d7203f2ae386ffc656eda63d445d1c6e866b813fbbd3462a80f2c4ab58",
     "godot/graphics_fx/moth_world.gd": "5f5f64cc32d6d8203acbafdd408182dacafce7322c9716dd5df534d84ba9afef",
     "godot/graphics_fx/moth_world.gdshader": "4df24fe17afb7bb8ff9ba2d9d10fbd5b8d560f5d97129fc4652b1ba177420b0b",
+    "godot/horde/client.gd": "6702106baf121e3e321b0fce7a323432abe7f3456125264bfcb58b84abbf6eeb",
+    "godot/horde/controls.gd": "12d725fea62d98c2ec6d81516c48d1662cf64b16dcda590e81044db49120ab98",
+    "godot/horde/demo.gd": "5c03c0aca831d1af8d9c4f00cca3a462308125f6dbd42dd7ea1687e70bd29a1a",
+    "godot/horde/ground_tells.gd": "dcc04bb48de3dba888bdd30c03f4be64a9b42b03c83a121dcb881b1a614716e4",
+    "godot/horde/model.gd": "8618a91ee71799e9383258090e0e6158cd8839d76b1f3fc0d95e904ab27855db",
     "godot/identity_maps/style.gd": "f40cc96c9cf65ef2bb4efad2451d56249b85c8e4bf81dc11e5b969fe72c073a1",
     "godot/input_bindings/access.gd": "800fc378101e7206d16f35b96c9a2ca71fa73f295592454a6997ec743885c907",
     "godot/input_bindings/hints.gd": "c3e4e8f0a47095482dff2ceb50385c28d1762a80740f9baa3e68ff7e8ec4d2d9",
@@ -386,7 +401,7 @@
     "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
     "godot/multiplayer_worlds/sports_demo.gd": "7f6b0792d54f0a95823d038937d6bed801ef2ef8f4b0d51ae41a28c3a616161b",
     "godot/multiplayer_worlds/viewer.gd": "99b859a39f9b849f12f469c7c6b9accf53a9760d38587ecf3bb0ede68d2bfa55",
-    "godot/native_arenas/client.gd": "2283f3c36dcf4a16b141d6d207078c2b8e47dbba61105341fcb207045c6d180b",
+    "godot/native_arenas/client.gd": "ce746b41d71f52b8b48f300e516bc8a072087e24c0846a370d16873af8be473c",
     "godot/native_arenas/identity_environment.gd": "547631de9df3d1d6f9813f057a142447e7134f713542107c073b31e9e83cfbd0",
     "godot/native_arenas/maps/geometry.gd": "5879559142e2be1548c313b1902a2c4a89bcc4c37ca6fed5c41ab9aa61cab231",
     "godot/net/client.gd": "1ecbfeb7fc343073e6682d1430b0c6492574a352e9520da4988f6cd368193c3a",
@@ -731,6 +746,8 @@
     "godot/world/session.gd": "32ff87d491dad9f47d555fa3eec701fbfbbfa47608075ebbc2796b5c291b549c",
     "godot/world/viewer.gd": "1b6ef1540e69e0e3e4eb942e04d2ea43f8eb1598248965092755f46c8525d2e8",
     "godot/world/weapon_selection.gd": "079435cbe98558ae6aa5918bdc4cc217b7504230c0807811624bef559ecc578e",
+    "port/contracts/lattice-catalog-derivative.json": "8026224dadcb2f326171cf5cad7826f8d7b5f2f78b2beef8c8ac220c5706628f",
+    "port/contracts/movement-candidate-derivative.json": "b775686e10f21d54150f37a231690d9d24a2da15f8ed775001acc2328b63f830",
     "port/expansion-three/abyssal/evidence/production-i/ctf/outcome.json": "74ccd2d864a4afea6e5ae2f0306cb818d237d1dbc3d6f2851f1ce95fbfa4ae28",
     "port/expansion-three/abyssal/evidence/production-i/ctf/private-authority/derivation.json": "92df4a9fc27cce3ae424f75f58816d4b1820fe20f84588bfe5e1c20b7e70b2b0",
     "port/expansion-three/abyssal/evidence/production-i/ctf/teardown.json": "f088298bdb7e8ebcf6f2af7886c0762fb0f75750405cf5803ea1c6714a9fb471",
@@ -768,6 +785,8 @@
     "port/finish/polish/package-evidence-l/release-L.json": "819946192b5425341e3759d0f1ea0e00b03e6ee287b06ff6651eed6d3dc44675",
     "port/finish/polish/package-evidence-l/sidecars-post-import.json": "6dd729453631d929094fb28ee1c027e740e180508a59958f6a2e78f0d53bdf5f",
     "port/multiplayer-worlds/catalog.mjs": "a74314f0b84143ae36a2983f102613ffcced69bfbecc891597797ec268eee3f1",
+    "port/native-campaign/core.generated.mjs": "949e8a599d0bea5773e35043fefdc1d58d38a3f0ea678ad76f76ba5e47e78abb",
+    "port/native-campaign/generate-core.mjs": "cc7eb3e0e49faccfdbe66511a04ac9541fdd21692541d9da29a1aaa747482655",
     "port/native-multiplayer-worlds/worlds/abyssal-pressureworks.json": "5119ea83e8defa9f726fa70d2d478785111a51fcf0aefaf72c5117b4fde320af",
     "tools/asset-production/material-validation.mjs": "874e5d31c666a8af4a98b600bb182a4f4cb9c5e6b1488d80908f855b2584bb3d",
     "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
@@ -781,11 +800,14 @@
     "tools/godot-package/abyssal_i_inventory.json": "9b77b11fa09975e69c373d74ef3d721e4535dd5ada89817c8766cdd55cd38d9f",
     "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d",
     "tools/godot-package/feature_dependencies.mjs": "bc2a3d53839c38a9f63104554a7dae0bb9fc44a921bba1117ec05a42018a267d",
+    "tools/godot-package/movement_dependencies.mjs": "6605c7507c8fe3fe1a5b306c17dc8da51eca746599f458ff169468a49ce0f078",
+    "tools/godot-package/movement_f61_inventory.json": "532faf2b9fa92b674f06a4485615e5405a73666fd43893f31baedccee9f6712d",
     "tools/godot-package/polish_8921_inventory.json": "81f8d2531486fcb88da14dc98cd19565a543e87a4fc389329cbdbb2de6109015",
-    "tools/godot-package/polish_dependencies.mjs": "87ffcf9ff5eac9ce616e05b3758c8a4b5f21eeefa15e8af25bf011cc09c446cf",
-    "tools/godot-package/production_resources.mjs": "24b13e6d80755417c230054c4126dd862d3fd5f347bd478fa7c64e65e9994076",
+    "tools/godot-package/polish_dependencies.mjs": "5870f37d789cab29673de62a358c5cd61d247c21f1d3825ceafd5f059bba67b2",
+    "tools/godot-package/production_resources.mjs": "63e04fd04d05d9ff9080e273ebb732e960ef41ad1d9071d3e7465b3b545b084d",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
+    "tools/godot-package/source_derivative.mjs": "e6fba11786154b908ec44afe3cf0572dfb7ff61fab990b0efc73c4e28d38adbd",
     "tools/godot-package/stormglass_imports.mjs": "4a3c9ee6cae7aae48b40258178ae7ea6cacff96c209533ab0681ae2606d87510",
     "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
     "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba"
@@ -1841,6 +1863,131 @@
       "nativeCoverage": "ordinary world and combined-arms journeys plus 90-assertion controls fixture; not final 142 acceptance",
       "liveKickAcceptance": "not accepted",
       "document": "port/finish/acceptance/O_PACKAGE_RECONCILIATION.md"
+    }
+  },
+  "movementAdvance": {
+    "previousReceipt": {
+      "commit": "f61f6156d9575d8dcf44ca4daf7a09bef727b034",
+      "path": "tools/godot-package/production_receipts/abyssal-pressureworks.json",
+      "sha256": "5606d508ee887576a7ea37f668945a9734e93b06b03099871e6a1522d0807c97"
+    },
+    "changed": {
+      "game/core.mjs": {
+        "before": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+        "after": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3"
+      },
+      "game/operator-verbs.mjs": {
+        "before": "f3bbcd2e13bc04dabf2a81a74ddee3848d6835d11d8ac063e4603ea689bf96b3",
+        "after": "357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e"
+      },
+      "godot/campaign/client.gd": {
+        "before": "4e87bbf47f1f76d46bfe6ff26a831ca008b3da63a7a8a163035e1f8c0f4d3307",
+        "after": "95d3ecb853cd539e6a98ef089b2e47c3471b2b85508d53ba84f0006a54891c11"
+      },
+      "godot/first_person/rig.gd": {
+        "before": "d1b71b95d16f5b5a4ebfedef332a5a863aa66f13ce50687bfaf2efce78f6f217",
+        "after": "1e6869124115ef7cbdf147b9f1597759ee198a2467af4d8ef6f4f285268ef0cf"
+      },
+      "godot/native_arenas/client.gd": {
+        "before": "2283f3c36dcf4a16b141d6d207078c2b8e47dbba61105341fcb207045c6d180b",
+        "after": "ce746b41d71f52b8b48f300e516bc8a072087e24c0846a370d16873af8be473c"
+      },
+      "tools/godot-package/polish_dependencies.mjs": {
+        "before": "87ffcf9ff5eac9ce616e05b3758c8a4b5f21eeefa15e8af25bf011cc09c446cf",
+        "after": "5870f37d789cab29673de62a358c5cd61d247c21f1d3825ceafd5f059bba67b2"
+      },
+      "tools/godot-package/production_resources.mjs": {
+        "before": "24b13e6d80755417c230054c4126dd862d3fd5f347bd478fa7c64e65e9994076",
+        "after": "63e04fd04d05d9ff9080e273ebb732e960ef41ad1d9071d3e7465b3b545b084d"
+      }
+    },
+    "added": {
+      "game/announcer-clips.mjs": "a8773bcc5e2861148b4e6c9639ec58f74c4a09da7da7ee14b264dd22cf3d717a",
+      "game/environment.mjs": "fe9a1e84add0d1f16ab9667cb617c5f94a1cb53e480666c79746759dcbabe0c5",
+      "game/feedback.mjs": "bce79610e67236a16e135e05338809e6dd29411be40ac8aff4fbe99f9f69e923",
+      "game/lattice-feedback.mjs": "2c0fa62dfa381849ed13672c511866177bb0a3b0e272f7ab7f892a38d9c57d50",
+      "game/music.mjs": "8973258df4ae4572d5560fbe7d46a0d8f7318f12671d576e46884656adbcdf22",
+      "game/reticle.mjs": "1d6d8df4cc8db0e4dcf0a0cd5ab2e2b7db1c273d5f1897e61c97ea5f7d80aa7b",
+      "game/sampler.mjs": "1e420e4c6e6a170c58ac4bd6274edc9161650d5a343875e1007c014cbe8ef254",
+      "game/sfx-design.mjs": "ed589ab9a941e196ffb3beba966e35a1b5557b796fbe224ca16f55e2c1da7253",
+      "game/sights.mjs": "e57877966c60c7bad54f56992e854c9c070fe9be936da4829c090d0482bf5938",
+      "game/weapon-ads.mjs": "133a10f85e9c59928c16e5e25e240e1aa0e89200f81cecd77bb62482f6ef795f",
+      "godot/horde/client.gd": "6702106baf121e3e321b0fce7a323432abe7f3456125264bfcb58b84abbf6eeb",
+      "godot/horde/controls.gd": "12d725fea62d98c2ec6d81516c48d1662cf64b16dcda590e81044db49120ab98",
+      "godot/horde/demo.gd": "5c03c0aca831d1af8d9c4f00cca3a462308125f6dbd42dd7ea1687e70bd29a1a",
+      "godot/horde/ground_tells.gd": "dcc04bb48de3dba888bdd30c03f4be64a9b42b03c83a121dcb881b1a614716e4",
+      "godot/horde/model.gd": "8618a91ee71799e9383258090e0e6158cd8839d76b1f3fc0d95e904ab27855db",
+      "port/contracts/lattice-catalog-derivative.json": "8026224dadcb2f326171cf5cad7826f8d7b5f2f78b2beef8c8ac220c5706628f",
+      "port/contracts/movement-candidate-derivative.json": "b775686e10f21d54150f37a231690d9d24a2da15f8ed775001acc2328b63f830",
+      "port/native-campaign/core.generated.mjs": "949e8a599d0bea5773e35043fefdc1d58d38a3f0ea678ad76f76ba5e47e78abb",
+      "port/native-campaign/generate-core.mjs": "cc7eb3e0e49faccfdbe66511a04ac9541fdd21692541d9da29a1aaa747482655",
+      "tools/godot-package/movement_dependencies.mjs": "6605c7507c8fe3fe1a5b306c17dc8da51eca746599f458ff169468a49ce0f078",
+      "tools/godot-package/movement_f61_inventory.json": "532faf2b9fa92b674f06a4485615e5405a73666fd43893f31baedccee9f6712d",
+      "tools/godot-package/source_derivative.mjs": "e6fba11786154b908ec44afe3cf0572dfb7ff61fab990b0efc73c4e28d38adbd"
+    },
+    "runtimeChanged": {},
+    "reviewedSource": {
+      "foundation": "f61f6156d9575d8dcf44ca4daf7a09bef727b034",
+      "previous": "14d8a72d",
+      "status": "source-candidate-not-native-acceptance",
+      "changed": {
+        "game/core.mjs": {
+          "before": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+          "after": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3"
+        },
+        "game/operator-verbs.mjs": {
+          "before": "f3bbcd2e13bc04dabf2a81a74ddee3848d6835d11d8ac063e4603ea689bf96b3",
+          "after": "357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e"
+        },
+        "game/feedback.mjs": {
+          "before": "9b99d61463a0edc64ad681949c7eb4b6993f879f4ab7bf3f30383aa8043b193f",
+          "after": "bce79610e67236a16e135e05338809e6dd29411be40ac8aff4fbe99f9f69e923"
+        },
+        "game/weapon-ads.mjs": {
+          "before": "01d9eb7ddbb304b0bca39899e393730cbdf04fffb5024f28886399e76f20452b",
+          "after": "133a10f85e9c59928c16e5e25e240e1aa0e89200f81cecd77bb62482f6ef795f"
+        },
+        "godot/campaign/client.gd": {
+          "before": "4e87bbf47f1f76d46bfe6ff26a831ca008b3da63a7a8a163035e1f8c0f4d3307",
+          "after": "95d3ecb853cd539e6a98ef089b2e47c3471b2b85508d53ba84f0006a54891c11"
+        },
+        "godot/first_person/rig.gd": {
+          "before": "d1b71b95d16f5b5a4ebfedef332a5a863aa66f13ce50687bfaf2efce78f6f217",
+          "after": "1e6869124115ef7cbdf147b9f1597759ee198a2467af4d8ef6f4f285268ef0cf"
+        },
+        "godot/native_arenas/client.gd": {
+          "before": "2283f3c36dcf4a16b141d6d207078c2b8e47dbba61105341fcb207045c6d180b",
+          "after": "ce746b41d71f52b8b48f300e516bc8a072087e24c0846a370d16873af8be473c"
+        },
+        "godot/horde/client.gd": {
+          "before": "d71aa96306e22457f4e838d0f8b58e8f6bb59a468118b9ea47ac4f3128d0063b",
+          "after": "6702106baf121e3e321b0fce7a323432abe7f3456125264bfcb58b84abbf6eeb"
+        },
+        "godot/horde/demo.gd": {
+          "before": "c010585a309910a781f5dd0d87013e5fbd4bac927774c6b60ba03c444b3b7951",
+          "after": "5c03c0aca831d1af8d9c4f00cca3a462308125f6dbd42dd7ea1687e70bd29a1a"
+        },
+        "port/native-campaign/generate-core.mjs": {
+          "before": "328724fe0354252c23397eac53062de290145bd465648add5b50f413d82d1bf9",
+          "after": "cc7eb3e0e49faccfdbe66511a04ac9541fdd21692541d9da29a1aaa747482655"
+        },
+        "port/native-campaign/core.generated.mjs": {
+          "before": "2800bec533c3810a94d61e2f7f20f93574e44b13346dee2085200a0467759cca",
+          "after": "949e8a599d0bea5773e35043fefdc1d58d38a3f0ea678ad76f76ba5e47e78abb"
+        }
+      },
+      "added": {
+        "port/contracts/movement-candidate-derivative.json": "b775686e10f21d54150f37a231690d9d24a2da15f8ed775001acc2328b63f830"
+      }
+    },
+    "previousPackageFingerprint": "a14a201b0cba31ad2910a4dd3058d357cc748b718253d0c94c3e90c4eb726d8d",
+    "packageFingerprint": "e498942d6233aca4c9d863bfdbaaca212ac15f756a78f6952e843369cc5c0c97",
+    "review": {
+      "foundation": "f61f6156d9575d8dcf44ca4daf7a09bef727b034",
+      "status": "source-candidate-not-native-acceptance",
+      "nativeChecks": "pending",
+      "assetProduction": "reuse unchanged original production bytes",
+      "document": "port/finish/movement-research/PACKAGE_RECONCILIATION.md"
     }
   }
 }

@@ -68,14 +68,16 @@ function vehicleFixture() {
   const req=JSON.parse(disk(REQUIREMENTS));
   const spec=productionResources({read,has,strict:false}).units.vehicles.expected;
   const receipt=JSON.parse(disk('tools/godot-package/production_receipts/vehicles.json'));
-  receipt.rawFiles=[spec.exports[0]]; // Synthetic raw-reader scenario on real assets.
   const refresh=()=>{const path='tools/godot-package/production_receipts/vehicles.json',bytes=Buffer.from(JSON.stringify(receipt));files.set(path,bytes);req.units.vehicles.promotion={receipt:path,sha256:sha(bytes)};files.set(REQUIREMENTS,Buffer.from(JSON.stringify(req)));};
   refresh();return {files,read,has,receipt,refresh,spec};
 }
 test('promoted identity enumerates exact masters/exports and raw bytes; stale helper/recipe/declared hashes fail',()=>{
   const f=vehicleFixture(),check=()=>productionResources({...f,strict:false});
   const result=check();assert.ok(!result.pending.includes('vehicles'));
-  assert.equal(result.raw[f.spec.exports[0]],sha(f.read(f.spec.exports[0])));
+  assert.equal(result.raw[f.spec.exports[0]],undefined);
+  f.receipt.rawFiles=[f.spec.exports[0]];f.refresh();
+  assert.throws(check,/Full pre-movement producer\/history identity/,'A new raw-reader policy requires a separately reviewed advance');
+  f.receipt.rawFiles=[];f.refresh();
   for(const helper of ['tools/asset-production/moth_finish.py','tools/godot-vehicle-assets/write-recipes.mjs']) {
     f.files.set(helper,Buffer.from('changed helper'));assert.throws(check,/content hash mismatch/);f.files.delete(helper);
   }
