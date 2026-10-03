@@ -1,0 +1,59 @@
+{
+  "scope": "Read-only official API/source snapshots; no engine invoked",
+  "files": {
+    "PhysicsTestMotionParameters3D.xml": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/doc/classes/PhysicsTestMotionParameters3D.xml",
+      "sha256": "c0d26f3f5e4dc4fea5b9c77e52ddf1fda530943adb1d47d56529939957e59e32",
+      "bytes": 3071,
+      "sourceVersion": "4.5.2-stable"
+    },
+    "PhysicsTestMotionResult3D.xml": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/doc/classes/PhysicsTestMotionResult3D.xml",
+      "sha256": "d39bd8c8b0d70c8ebe53103818d254d4797a382edc78a8f075ebf0a2d07a7953",
+      "bytes": 4746,
+      "sourceVersion": "4.5.2-stable"
+    },
+    "PhysicsBody3D.xml": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/doc/classes/PhysicsBody3D.xml",
+      "sha256": "9131a1b5481ab9db6573010420946f584deafb7e2683a5fe081897b7ef0479a9",
+      "bytes": 6625,
+      "sourceVersion": "4.5.2-stable"
+    },
+    "CharacterBody3D.xml": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/doc/classes/CharacterBody3D.xml",
+      "sha256": "5b584f0763cac180b34e8716579cef51bc535c99015641e4413e74f466d7f4b7",
+      "bytes": 17280,
+      "sourceVersion": "4.5.2-stable"
+    },
+    "CollisionObject3D.xml": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/doc/classes/CollisionObject3D.xml",
+      "sha256": "f8ddf78d972795b788f92e01c5261359bd089a34d2421191577ca7e4015effb3",
+      "bytes": 13243,
+      "sourceVersion": "4.5.2-stable"
+    },
+    "physics_body_3d.cpp": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/scene/3d/physics/physics_body_3d.cpp",
+      "sha256": "5b00beb867664606ae0dddcab713d5c781f99db0d8e726e11c7609e04ecd39ff",
+      "bytes": 10779,
+      "sourceVersion": "4.5.2-stable"
+    },
+    "character_body_3d.cpp": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/scene/3d/physics/character_body_3d.cpp",
+      "sha256": "15ecd597a988b01b860479ae5d8392d06e73d7dcacd453c855c0b8d5ee90a40d",
+      "bytes": 39328,
+      "sourceVersion": "4.5.2-stable"
+    },
+    "PhysicsServer3D.xml": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/doc/classes/PhysicsServer3D.xml",
+      "sha256": "656c12e0a6082ffa2b8e7da246c086eaa2ac2ff3a0f859619c762abb01780ca5",
+      "bytes": 86651,
+      "sourceVersion": "4.5.2-stable"
+    },
+    "LICENSE.txt": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/LICENSE.txt",
+      "sha256": "b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80",
+      "bytes": 1149,
+      "sourceVersion": "4.5.2-stable"
+    }
+  }
+}

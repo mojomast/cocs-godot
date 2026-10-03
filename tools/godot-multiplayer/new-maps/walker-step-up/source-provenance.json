@@ -1,0 +1,145 @@
+{
+  "scope": "SOURCE ONLY exploration swept-step feasibility experiment v1; no engine/import/render/server/child agents or heavy work",
+  "baseCommit": "d882244715602589a40990f8c63792d04d63abfc",
+  "branch": "astra/walker-step-up-source",
+  "productionChanged": false,
+  "nativeStatus": "new GDScript unparsed and unrun; no native traversal success claimed",
+  "productionPromotion": false,
+  "preferredRoute": "physics-swept exploration-controller experiment; no map-ramp rewrite",
+  "constants": {
+    "radiusProfiles": [
+      0.35,
+      0.42
+    ],
+    "height": 1.8,
+    "offsetY": 0.9,
+    "safeMargin": 0.02,
+    "floorAngleDegrees": 46,
+    "floorSnap": 0.3,
+    "physicsHz": 60,
+    "strictStepLimit": 0.25,
+    "strictAdmissionLimit": 0.3,
+    "conservativeGuard": 0.0001,
+    "minimumHeadOnCosine": 0.98,
+    "maxTrianglesInSupportCertificate": 32,
+    "maxNativeContacts": 32
+  },
+  "sourceChecks": {
+    "testsPassed": 16,
+    "independentGeometryPolicyCases": 13,
+    "staticApiPlanContracts": 3,
+    "actualSourceTreadFaces": 94,
+    "supportStripCertificates": 940,
+    "executedGDScript": false,
+    "mockIsGodotSolver": false
+  },
+  "preservation": {
+    "Z": 253,
+    "X": 600,
+    "U": 264,
+    "originalProductionDependencies": 15,
+    "mismatches": 0
+  },
+  "nativePlan": {
+    "referenceWalks": 10,
+    "experimentalWalksRequired": 60,
+    "groups": 7,
+    "status": "requires source review, versioned native driver review and future explicit grant; no batch launcher"
+  },
+  "promotionBlockers": [
+    "native recovery and parent floor-snap response unproved",
+    "pre-lift excluded from parent get_real_velocity/get_position_delta accounting",
+    "conservative static/head-on/flat support scope requires impact review"
+  ],
+  "productionWalkerSha256": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+  "additionalMathDependency": {
+    "path": "tools/godot-multiplayer/new-maps/botanical-correction/capsule.py",
+    "sha256": "0b8c04fdcb73f461da511ccab2955229f03ee1ff92302feaf6a91b4da2f8b48a"
+  },
+  "candidateSourcePins": {
+    "godot/tests/walker_step_up/candidate_walker.gd": "1789d86450334f61683df5bfc294663c807207c502a32d3be99f8e0ab265244e",
+    "godot/tests/walker_step_up/sweep_proposal.gd": "dfeffbcf930ee45233da040c205b7d08ce585b38628a67cacf6be8b6e04dd295"
+  },
+  "files": {
+    "tools/godot-multiplayer/new-maps/walker-step-up/README.md": {
+      "sha256": "c76dd55fcae576df962abcdf17418d66f3420d7a110a41844a0c5052d478298e",
+      "bytes": 17793
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-up/acceptance-plan.json": {
+      "sha256": "d1d3fb7e75f41d1df0c64ecb7ceb5db757dbe2ee6c6a2bd33606d508fbedcc73",
+      "bytes": 25075
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-up/build_plan.py": {
+      "sha256": "e719ce5d2e5e77a7d8970439195b343f0b660c6b00c775af5279fbef25f6016c",
+      "bytes": 6384
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-up/preservation.json": {
+      "sha256": "628b4f7cf0eb5b656d7402c7a7de669e28a46e81fc4dc66f50ac34b6edee4a8a",
+      "bytes": 2277
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-up/references/CharacterBody3D.xml": {
+      "sha256": "5b584f0763cac180b34e8716579cef51bc535c99015641e4413e74f466d7f4b7",
+      "bytes": 17280
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-up/references/CollisionObject3D.xml": {
+      "sha256": "f8ddf78d972795b788f92e01c5261359bd089a34d2421191577ca7e4015effb3",
+      "bytes": 13243
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-up/references/LICENSE.txt": {
+      "sha256": "b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80",
+      "bytes": 1149
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-up/references/PhysicsBody3D.xml": {
+      "sha256": "9131a1b5481ab9db6573010420946f584deafb7e2683a5fe081897b7ef0479a9",
+      "bytes": 6625
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-up/references/PhysicsServer3D.xml": {
+      "sha256": "656c12e0a6082ffa2b8e7da246c086eaa2ac2ff3a0f859619c762abb01780ca5",
+      "bytes": 86651
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-up/references/PhysicsTestMotionParameters3D.xml": {
+      "sha256": "c0d26f3f5e4dc4fea5b9c77e52ddf1fda530943adb1d47d56529939957e59e32",
+      "bytes": 3071
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-up/references/PhysicsTestMotionResult3D.xml": {
+      "sha256": "d39bd8c8b0d70c8ebe53103818d254d4797a382edc78a8f075ebf0a2d07a7953",
+      "bytes": 4746
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-up/references/character_body_3d.cpp": {
+      "sha256": "15ecd597a988b01b860479ae5d8392d06e73d7dcacd453c855c0b8d5ee90a40d",
+      "bytes": 39328
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-up/references/index.json": {
+      "sha256": "8659fe6e0dc443a07e524cf01a1e8e63c4214a878e32a32fa4efe695aefe931a",
+      "bytes": 2760
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-up/references/physics_body_3d.cpp": {
+      "sha256": "5b00beb867664606ae0dddcab713d5c781f99db0d8e726e11c7609e04ecd39ff",
+      "bytes": 10779
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-up/source_geometry.py": {
+      "sha256": "0ea205f0e50f1c3a04820efb1ffae6b95e9648edf359585762844d6dbcb48483",
+      "bytes": 4039
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-up/test_api_contract.py": {
+      "sha256": "3284b4fbba4f1ccdfc9cd29cd587fb872b9a77e926ec831656dd345de8016d21",
+      "bytes": 1841
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-up/test_source_geometry.py": {
+      "sha256": "c00afbcf0bc59c76d08bbcd408b9401b2a48c6fccb595aa7a0a2edd57c000b61",
+      "bytes": 6752
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-up/verify_preservation.py": {
+      "sha256": "08c5a61f14b3f882fe3b2dc99dcec6b8e4a1f135fd03c1dd4466e2b34c7e002a",
+      "bytes": 1642
+    },
+    "godot/tests/walker_step_up/candidate_walker.gd": {
+      "sha256": "1789d86450334f61683df5bfc294663c807207c502a32d3be99f8e0ab265244e",
+      "bytes": 2589
+    },
+    "godot/tests/walker_step_up/sweep_proposal.gd": {
+      "sha256": "dfeffbcf930ee45233da040c205b7d08ce585b38628a67cacf6be8b6e04dd295",
+      "bytes": 17295
+    }
+  }
+}

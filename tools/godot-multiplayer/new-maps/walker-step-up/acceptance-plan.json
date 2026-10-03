@@ -1,0 +1,1215 @@
+{
+  "status": "SOURCE PROPOSAL ONLY; no GDScript parse, import, physics or controller success claimed",
+  "version": "walker-step-up-experiment-v1",
+  "base": "d8822447",
+  "engine": "Godot 4.5.2 official 6ce3de25a",
+  "productionPromotion": false,
+  "nativeGrant": null,
+  "fixedPhysicsHz": 60,
+  "timeScale": 1,
+  "walkOnly": true,
+  "groups": [
+    {
+      "id": "reference-accepted-civic-r035",
+      "profile": "unchanged-production-Walker",
+      "timeoutSeconds": 180,
+      "referenceOnly": true,
+      "expectedHistoricalOutcome": {
+        "passedDownhill": 5,
+        "failedUphill": 5
+      },
+      "variant": "accepted",
+      "run": "civic",
+      "radius": 0.35,
+      "height": 1.8,
+      "controller": "unmodified exploration walker",
+      "trials": [
+        {
+          "id": "civic:30.5:-1",
+          "start": [
+            30.5,
+            24,
+            66
+          ],
+          "goal": [
+            30.5,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:30.5:1",
+          "start": [
+            30.5,
+            12,
+            24
+          ],
+          "goal": [
+            30.5,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:31.25:-1",
+          "start": [
+            31.25,
+            23.999999999999996,
+            66
+          ],
+          "goal": [
+            31.25,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:31.25:1",
+          "start": [
+            31.25,
+            12,
+            24
+          ],
+          "goal": [
+            31.25,
+            23.999999999999996,
+            66
+          ]
+        },
+        {
+          "id": "civic:32:-1",
+          "start": [
+            32,
+            24,
+            66
+          ],
+          "goal": [
+            32,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:32:1",
+          "start": [
+            32,
+            12,
+            24
+          ],
+          "goal": [
+            32,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:32.75:-1",
+          "start": [
+            32.75,
+            24,
+            66
+          ],
+          "goal": [
+            32.75,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:32.75:1",
+          "start": [
+            32.75,
+            12,
+            24
+          ],
+          "goal": [
+            32.75,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:33.5:-1",
+          "start": [
+            33.5,
+            24,
+            66
+          ],
+          "goal": [
+            33.5,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:33.5:1",
+          "start": [
+            33.5,
+            12,
+            24
+          ],
+          "goal": [
+            33.5,
+            24,
+            66
+          ]
+        }
+      ]
+    },
+    {
+      "variant": "accepted",
+      "run": "civic",
+      "radius": 0.35,
+      "height": 1.8,
+      "controller": "res://tests/walker_step_up/candidate_walker.gd",
+      "trials": [
+        {
+          "id": "civic:30.5:-1",
+          "start": [
+            30.5,
+            24,
+            66
+          ],
+          "goal": [
+            30.5,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:30.5:1",
+          "start": [
+            30.5,
+            12,
+            24
+          ],
+          "goal": [
+            30.5,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:31.25:-1",
+          "start": [
+            31.25,
+            23.999999999999996,
+            66
+          ],
+          "goal": [
+            31.25,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:31.25:1",
+          "start": [
+            31.25,
+            12,
+            24
+          ],
+          "goal": [
+            31.25,
+            23.999999999999996,
+            66
+          ]
+        },
+        {
+          "id": "civic:32:-1",
+          "start": [
+            32,
+            24,
+            66
+          ],
+          "goal": [
+            32,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:32:1",
+          "start": [
+            32,
+            12,
+            24
+          ],
+          "goal": [
+            32,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:32.75:-1",
+          "start": [
+            32.75,
+            24,
+            66
+          ],
+          "goal": [
+            32.75,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:32.75:1",
+          "start": [
+            32.75,
+            12,
+            24
+          ],
+          "goal": [
+            32.75,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:33.5:-1",
+          "start": [
+            33.5,
+            24,
+            66
+          ],
+          "goal": [
+            33.5,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:33.5:1",
+          "start": [
+            33.5,
+            12,
+            24
+          ],
+          "goal": [
+            33.5,
+            24,
+            66
+          ]
+        }
+      ],
+      "id": "step-v1-accepted-civic-r035",
+      "profile": "unpromoted-test-subclass",
+      "timeoutSeconds": 180,
+      "internalTimeoutSeconds": 170,
+      "referenceOnly": false,
+      "requiredPassed": 10,
+      "radiusScope": "actual exploration size"
+    },
+    {
+      "variant": "accepted",
+      "run": "civic",
+      "radius": 0.42,
+      "height": 1.8,
+      "controller": "res://tests/walker_step_up/candidate_walker.gd",
+      "trials": [
+        {
+          "id": "civic:30.5:-1",
+          "start": [
+            30.5,
+            24,
+            66
+          ],
+          "goal": [
+            30.5,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:30.5:1",
+          "start": [
+            30.5,
+            12,
+            24
+          ],
+          "goal": [
+            30.5,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:31.25:-1",
+          "start": [
+            31.25,
+            23.999999999999996,
+            66
+          ],
+          "goal": [
+            31.25,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:31.25:1",
+          "start": [
+            31.25,
+            12,
+            24
+          ],
+          "goal": [
+            31.25,
+            23.999999999999996,
+            66
+          ]
+        },
+        {
+          "id": "civic:32:-1",
+          "start": [
+            32,
+            24,
+            66
+          ],
+          "goal": [
+            32,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:32:1",
+          "start": [
+            32,
+            12,
+            24
+          ],
+          "goal": [
+            32,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:32.75:-1",
+          "start": [
+            32.75,
+            24,
+            66
+          ],
+          "goal": [
+            32.75,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:32.75:1",
+          "start": [
+            32.75,
+            12,
+            24
+          ],
+          "goal": [
+            32.75,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:33.5:-1",
+          "start": [
+            33.5,
+            24,
+            66
+          ],
+          "goal": [
+            33.5,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:33.5:1",
+          "start": [
+            33.5,
+            12,
+            24
+          ],
+          "goal": [
+            33.5,
+            24,
+            66
+          ]
+        }
+      ],
+      "id": "step-v1-accepted-civic-r042",
+      "profile": "unpromoted-test-subclass",
+      "timeoutSeconds": 180,
+      "internalTimeoutSeconds": 170,
+      "referenceOnly": false,
+      "requiredPassed": 10,
+      "radiusScope": "test-only .42 envelope; no production resize"
+    },
+    {
+      "variant": "candidate",
+      "run": "civic",
+      "radius": 0.35,
+      "height": 1.8,
+      "controller": "res://tests/walker_step_up/candidate_walker.gd",
+      "trials": [
+        {
+          "id": "civic:30.5:-1",
+          "start": [
+            30.5,
+            24,
+            66
+          ],
+          "goal": [
+            30.5,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:30.5:1",
+          "start": [
+            30.5,
+            12,
+            24
+          ],
+          "goal": [
+            30.5,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:31.25:-1",
+          "start": [
+            31.25,
+            23.999999999999996,
+            66
+          ],
+          "goal": [
+            31.25,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:31.25:1",
+          "start": [
+            31.25,
+            12,
+            24
+          ],
+          "goal": [
+            31.25,
+            23.999999999999996,
+            66
+          ]
+        },
+        {
+          "id": "civic:32:-1",
+          "start": [
+            32,
+            24,
+            66
+          ],
+          "goal": [
+            32,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:32:1",
+          "start": [
+            32,
+            12,
+            24
+          ],
+          "goal": [
+            32,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:32.75:-1",
+          "start": [
+            32.75,
+            24,
+            66
+          ],
+          "goal": [
+            32.75,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:32.75:1",
+          "start": [
+            32.75,
+            12,
+            24
+          ],
+          "goal": [
+            32.75,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:33.5:-1",
+          "start": [
+            33.5,
+            24,
+            66
+          ],
+          "goal": [
+            33.5,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:33.5:1",
+          "start": [
+            33.5,
+            12,
+            24
+          ],
+          "goal": [
+            33.5,
+            24,
+            66
+          ]
+        }
+      ],
+      "id": "step-v1-candidate-civic-r035",
+      "profile": "unpromoted-test-subclass",
+      "timeoutSeconds": 180,
+      "internalTimeoutSeconds": 170,
+      "referenceOnly": false,
+      "requiredPassed": 10,
+      "radiusScope": "actual exploration size"
+    },
+    {
+      "variant": "candidate",
+      "run": "civic",
+      "radius": 0.42,
+      "height": 1.8,
+      "controller": "res://tests/walker_step_up/candidate_walker.gd",
+      "trials": [
+        {
+          "id": "civic:30.5:-1",
+          "start": [
+            30.5,
+            24,
+            66
+          ],
+          "goal": [
+            30.5,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:30.5:1",
+          "start": [
+            30.5,
+            12,
+            24
+          ],
+          "goal": [
+            30.5,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:31.25:-1",
+          "start": [
+            31.25,
+            23.999999999999996,
+            66
+          ],
+          "goal": [
+            31.25,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:31.25:1",
+          "start": [
+            31.25,
+            12,
+            24
+          ],
+          "goal": [
+            31.25,
+            23.999999999999996,
+            66
+          ]
+        },
+        {
+          "id": "civic:32:-1",
+          "start": [
+            32,
+            24,
+            66
+          ],
+          "goal": [
+            32,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:32:1",
+          "start": [
+            32,
+            12,
+            24
+          ],
+          "goal": [
+            32,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:32.75:-1",
+          "start": [
+            32.75,
+            24,
+            66
+          ],
+          "goal": [
+            32.75,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:32.75:1",
+          "start": [
+            32.75,
+            12,
+            24
+          ],
+          "goal": [
+            32.75,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:33.5:-1",
+          "start": [
+            33.5,
+            24,
+            66
+          ],
+          "goal": [
+            33.5,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:33.5:1",
+          "start": [
+            33.5,
+            12,
+            24
+          ],
+          "goal": [
+            33.5,
+            24,
+            66
+          ]
+        }
+      ],
+      "id": "step-v1-candidate-civic-r042",
+      "profile": "unpromoted-test-subclass",
+      "timeoutSeconds": 180,
+      "internalTimeoutSeconds": 170,
+      "referenceOnly": false,
+      "requiredPassed": 10,
+      "radiusScope": "test-only .42 envelope; no production resize"
+    },
+    {
+      "variant": "candidate",
+      "run": "roof",
+      "radius": 0.35,
+      "height": 1.8,
+      "controller": "res://tests/walker_step_up/candidate_walker.gd",
+      "trials": [
+        {
+          "id": "roof:16.5:-1",
+          "start": [
+            16.5,
+            24,
+            70
+          ],
+          "goal": [
+            16.5,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:16.5:1",
+          "start": [
+            16.5,
+            22,
+            51
+          ],
+          "goal": [
+            16.5,
+            24,
+            70
+          ]
+        },
+        {
+          "id": "roof:17.25:-1",
+          "start": [
+            17.25,
+            24,
+            70
+          ],
+          "goal": [
+            17.25,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:17.25:1",
+          "start": [
+            17.25,
+            22,
+            51
+          ],
+          "goal": [
+            17.25,
+            24,
+            70
+          ]
+        },
+        {
+          "id": "roof:18:-1",
+          "start": [
+            18,
+            24,
+            70
+          ],
+          "goal": [
+            18,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:18:1",
+          "start": [
+            18,
+            22,
+            51
+          ],
+          "goal": [
+            18,
+            24,
+            70
+          ]
+        },
+        {
+          "id": "roof:18.75:-1",
+          "start": [
+            18.75,
+            24,
+            70
+          ],
+          "goal": [
+            18.75,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:18.75:1",
+          "start": [
+            18.75,
+            22,
+            51
+          ],
+          "goal": [
+            18.75,
+            24,
+            70
+          ]
+        },
+        {
+          "id": "roof:19.5:-1",
+          "start": [
+            19.5,
+            24,
+            70
+          ],
+          "goal": [
+            19.5,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:19.5:1",
+          "start": [
+            19.5,
+            22,
+            51
+          ],
+          "goal": [
+            19.5,
+            24,
+            70
+          ]
+        }
+      ],
+      "id": "step-v1-candidate-roof-r035",
+      "profile": "unpromoted-test-subclass",
+      "timeoutSeconds": 180,
+      "internalTimeoutSeconds": 170,
+      "referenceOnly": false,
+      "requiredPassed": 10,
+      "radiusScope": "actual exploration size"
+    },
+    {
+      "variant": "candidate",
+      "run": "roof",
+      "radius": 0.42,
+      "height": 1.8,
+      "controller": "res://tests/walker_step_up/candidate_walker.gd",
+      "trials": [
+        {
+          "id": "roof:16.5:-1",
+          "start": [
+            16.5,
+            24,
+            70
+          ],
+          "goal": [
+            16.5,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:16.5:1",
+          "start": [
+            16.5,
+            22,
+            51
+          ],
+          "goal": [
+            16.5,
+            24,
+            70
+          ]
+        },
+        {
+          "id": "roof:17.25:-1",
+          "start": [
+            17.25,
+            24,
+            70
+          ],
+          "goal": [
+            17.25,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:17.25:1",
+          "start": [
+            17.25,
+            22,
+            51
+          ],
+          "goal": [
+            17.25,
+            24,
+            70
+          ]
+        },
+        {
+          "id": "roof:18:-1",
+          "start": [
+            18,
+            24,
+            70
+          ],
+          "goal": [
+            18,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:18:1",
+          "start": [
+            18,
+            22,
+            51
+          ],
+          "goal": [
+            18,
+            24,
+            70
+          ]
+        },
+        {
+          "id": "roof:18.75:-1",
+          "start": [
+            18.75,
+            24,
+            70
+          ],
+          "goal": [
+            18.75,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:18.75:1",
+          "start": [
+            18.75,
+            22,
+            51
+          ],
+          "goal": [
+            18.75,
+            24,
+            70
+          ]
+        },
+        {
+          "id": "roof:19.5:-1",
+          "start": [
+            19.5,
+            24,
+            70
+          ],
+          "goal": [
+            19.5,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:19.5:1",
+          "start": [
+            19.5,
+            22,
+            51
+          ],
+          "goal": [
+            19.5,
+            24,
+            70
+          ]
+        }
+      ],
+      "id": "step-v1-candidate-roof-r042",
+      "profile": "unpromoted-test-subclass",
+      "timeoutSeconds": 180,
+      "internalTimeoutSeconds": 170,
+      "referenceOnly": false,
+      "requiredPassed": 10,
+      "radiusScope": "test-only .42 envelope; no production resize"
+    }
+  ],
+  "totalWalkTrials": 70,
+  "sequence": "Native counterexamples first; reference group retains failed=true; parent must explicitly authorize proceeding from the known failed reference to the experimental profile. Require step-v1-accepted-civic-r035 10/10 before the other five candidate groups. No autonomous loop.",
+  "binding": "Both exact Vesper authority/GLB pairs and actual UID-retaining compression-off/LOD-off import/readback as approved 525b9fbe; preserve Z paths and pins, use fresh walker_step_up attempt namespace.",
+  "perFrameRequired": [
+    "physicsFrame",
+    "actualDelta",
+    "bodyBefore",
+    "bodyAfter",
+    "actualShapeData",
+    "ordinaryVelocity",
+    "ordinaryRealVelocity",
+    "wholeFrameDelta",
+    "groundedBefore",
+    "groundedAfter",
+    "resetCount",
+    "input",
+    "profile",
+    "allSweepParametersAndResults",
+    "supportFaceCertificate",
+    "acceptedLiftCount",
+    "candidateFault"
+  ],
+  "nativeCounterexamples": [
+    {
+      "id": "low-ceiling-up",
+      "foot": [
+        32,
+        12.0166673660278,
+        24.7000026702881
+      ],
+      "tread": [
+        30,
+        34,
+        25,
+        25.5,
+        12.15
+      ],
+      "ceiling": [
+        30,
+        34,
+        24,
+        24.9,
+        13.9
+      ],
+      "required": "no lift; up volume blocked"
+    },
+    {
+      "id": "low-overhang-forward",
+      "foot": [
+        32,
+        12.0166673660278,
+        24.7000026702881
+      ],
+      "tread": [
+        30,
+        34,
+        25,
+        25.5,
+        12.15
+      ],
+      "ceiling": [
+        30,
+        34,
+        25.12,
+        26,
+        13.78
+      ],
+      "required": "no lift; up clear but raised-forward volume blocked"
+    },
+    {
+      "id": "strict-rise-boundaries",
+      "rises": [
+        0.15,
+        0.249,
+        0.24995,
+        0.25,
+        0.25001,
+        0.3,
+        0.31
+      ],
+      "required": "only .15 and .249 may plan a step; .24995 rejected conservatively by 0.1mm guard, all boundary/greater heights rejected"
+    },
+    {
+      "id": "steep-contact",
+      "anglesDegrees": [
+        46,
+        46.01,
+        47,
+        51.3
+      ],
+      "required": "down support >46 rejected; no native floor threshold broadening"
+    },
+    {
+      "id": "narrow-and-hole",
+      "required": "width less than capsule diameter plus two margins OR depth less than radius plus two margins rejected; two overlapping triangles with a shared outside edge rejected"
+    },
+    {
+      "id": "pit",
+      "required": "no down hit within bounded drop => no lift"
+    },
+    {
+      "id": "lateral-corner",
+      "approachCosines": [
+        1,
+        0.98,
+        0.97,
+        0.70710678,
+        0
+      ],
+      "required": "below .98 rejected; no diagonal wall climb"
+    },
+    {
+      "id": "no-intent-airborne-jump",
+      "required": "zero input, airborne, ascending or descending jump, jump press => unchanged original path"
+    },
+    {
+      "id": "platform-and-transform",
+      "required": "moving/rotating platforms, non-static floor, non-yaw rotation, scaling, transformed parent, extra/disabled shapes => no assist"
+    },
+    {
+      "id": "edge-ladder",
+      "rises": [
+        0.15,
+        0.3,
+        0.45,
+        0.6
+      ],
+      "shelfDepth": 0.08,
+      "required": "no assist on any shelf; no accumulating partial lifts up a wall"
+    },
+    {
+      "id": "one-frame-budget",
+      "required": "one proposal maximum; no query consumes horizontal budget; exactly one original step; no second forward movement or frame warp"
+    },
+    {
+      "id": "ordinary-controls",
+      "required": "flat walk/sprint and diagonal speed, ramps both ways, jump arc/landing, focus/pointer release, reset remain baseline-equivalent; unsupported capsule-height changes bypass assist"
+    }
+  ],
+  "promotionImpactMatrix": [
+    {
+      "consumer": "godot/aurora_basin/demo.gd",
+      "acceptance": "existing tests/aurora_basin/validate.gd route loop, native heights/slopes; separately instantiate candidate without changing originals"
+    },
+    {
+      "consumer": "godot/cinder_array/demo.gd",
+      "acceptance": "existing tests/cinder_array/verify.gd transfer deck, walk/sprint route, inclines and bridge connections; separately instantiate candidate"
+    },
+    {
+      "consumer": "godot/tests/graphics_batch/walker.gd",
+      "acceptance": "ground, wall, jump, fall reset, focus, pointer and clamped spawn tests for both profiles"
+    },
+    {
+      "consumer": "standing capsule and crouch-like inputs",
+      "acceptance": "Walker has no crouch implementation; confirm Control/input does not resize it, altered heights reject assist; add no crouch behavior"
+    },
+    {
+      "consumer": "get_real_velocity/get_position_delta consumers",
+      "acceptance": "pre-lift is outside parent move_and_slide accounting; whole-frame telemetry mandatory and production-promotion blocker until downstream semantics reviewed"
+    }
+  ],
+  "excludedSystems": [
+    "authoritative JS movement",
+    "Fighting movement",
+    "network session movement",
+    "Parallax production",
+    "global movement epochs"
+  ],
+  "dependencies": {
+    "godot/exploration/walker.gd": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+    "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
+    "godot/multiplayer_worlds/dressing/binder.gd": "b3e707af9da73f21b3c791c1d7deca9caad5472b422f263d9998ac961444a87d",
+    "game/core.mjs": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+    "godot/project.godot": "d0e91541e535d3bb590688a88c65e3461fcd9b2a5e4c6f0c7065942775b516a3",
+    "godot/tests/graphics_batch/walker.gd": "d31e2c3e9b4ec11a5067670ebd86febb01b0d8968fa4a6c374a8cd92452bff42",
+    "godot/tests/aurora_basin/validate.gd": "35057db01b2a82512c3869c0354c773999deb5dcb8f47d1da2db5a56555b5d53",
+    "godot/tests/cinder_array/verify.gd": "ba6c79b974d887b490bddb346a855b0a1ceea3c9e5690746b789427c726c9716"
+  }
+}
