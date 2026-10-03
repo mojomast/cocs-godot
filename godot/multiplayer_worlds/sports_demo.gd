@@ -117,6 +117,7 @@ func checked(result: Error) -> bool:
 func fail(message: String) -> void:
 	if "--world-evidence" in OS.get_cmdline_user_args(): print("WORLD_SPORTS_ERROR ",message)
 	audiovisual.dropped()
+	audiovisual.release_audio(false)
 	error = message
 	phase = "error"
 	controls.release()
@@ -232,6 +233,7 @@ func _input(event: InputEvent) -> void:
 		return
 	controls.accept(event, eligible())
 	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_F5 and phase == "results":
+		audiovisual.release_audio(true)
 		clear_round()
 		phase = "starting"
 		phase_age = 0
@@ -270,9 +272,10 @@ func _process(delta: float) -> void:
 		world.camera.look_at(pose.target)
 	guidance.apply(state.get("race", {}), net.actor_id, phase == "active" and age < 0.5 and not state.get("over", false))
 	var soccer_target := soccer_guidance.apply(state, net.actor_id, vehicle, mode == "puma-soccer" and phase == "active" and age < 0.5)
-	hud.update({"mode":mode, "state":state, "vehicle":vehicle, "actor_id":net.actor_id, "phase":phase, "age":age, "eligible":eligible(), "engaged":controls.engaged, "focused":controls.focused, "error":error, "message":progression.message, "soccer_guidance":soccer_target})
+	hud.update({"mode":mode, "map_id":map_id, "map_name":world.catalog.entries.get(map_id, {}).get("name", ""), "state":state, "vehicle":vehicle, "actor_id":net.actor_id, "phase":phase, "age":age, "eligible":eligible(), "engaged":controls.engaged, "focused":controls.focused, "error":error, "message":progression.message, "soccer_guidance":soccer_target})
 	hud.visible = not net.spectating # Public target/camera panel owns the spectator surface.
 
 func _exit_tree() -> void:
 	controls.release()
+	audiovisual.release_audio(false)
 	net.disconnect_server()
