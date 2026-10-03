@@ -34,6 +34,11 @@ def audit(output):
     primary = output / 'corrective.glb'
     reopened = output / 'reexport.glb'
     validated = validate_export(primary, report)
+    # This export currently reproduces byte-for-byte. Keep an exact comparison
+    # as the strongest possible normals/tangents/transforms and PBR proof; a
+    # future exporter changing serialization must earn a new audited comparator.
+    if sha(primary) != sha(reopened):
+        raise ValueError('Reopened master reexport differs at GLB byte level (including normals/tangents/transforms)')
     # Reexport has independent bytes, but must have the same whole-scene mesh
     # topology, world coordinates, material bindings, and embedded PBR pixels.
     from glb_geometry import EmbeddedGlb

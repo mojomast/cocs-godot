@@ -173,10 +173,14 @@ def stage(output, report):
     target.mkdir(parents=True, exist_ok=True)
     shutil.copy2(output / 'corrective.glb', target / 'corrective.glb')
     shutil.copy2(HERE / 'candidate.json', target / 'candidate.json')
+    shutil.copy2(HERE / 'probes.json', target / 'probes.json')
     if sha(target / 'corrective.glb') != report['glbSha256']:
         raise ValueError('Staged art differs from audited export')
     if sha(target / 'candidate.json') != sha(HERE / 'candidate.json'):
         raise ValueError('Staged authority differs from corrected source')
+    probes = json.loads((target / 'probes.json').read_text())
+    if probes['geometryHash'] != IDENTITY or len(probes['points']) != 501:
+        raise ValueError('Staged route probes are not corrective source')
     # A copy-local exact identity in the real production Binder schema; never
     # edit the source checkout's accepted identities or material definitions.
     schema = project / 'multiplayer_worlds/dressing/profile.gd'
@@ -200,6 +204,7 @@ def stage(output, report):
     atomic_json(profile_path, profile)
     manifest = {'geometryHash': IDENTITY, 'candidateSha256': sha(target / 'candidate.json'),
                 'glbSha256': sha(target / 'corrective.glb'), 'masterSha256': report['masterSha256'],
+                'probesSha256': sha(target / 'probes.json'),
                 'reportSha256': sha(output / 'material-report.json'),
                 'stageSchemaSha256': sha(schema), 'stageProfileSha256': sha(profile_path),
                 'stage': 'isolated test-only project; production Binder with candidate-only preserve-PBR profile; weather not present in parent snapshot; no runtime promotion',

@@ -4,7 +4,7 @@ const WorldMap = preload("res://multiplayer_worlds/map.gd")
 const Binder = preload("res://multiplayer_worlds/dressing/binder.gd")
 const IDENTITY := "ee979520743dd4c73ac0d825774a2c99b5a8d85800a6eead5170f261abe61bea"
 const HERE := "res://tests/new_maps/abyssal_pressureworks/corrective/"
-var result := {"status": "started", "rays": [], "clearances": [], "errors": []}
+var result := {"status": "started", "rays": [], "clearances": [], "wallBands": [], "wallEnds": [], "errors": []}
 var report_path := ""
 
 func _initialize() -> void:
@@ -41,7 +41,7 @@ func run() -> void:
 		return
 	var data := json_at(HERE + "candidate.json")
 	var manifest := json_at(HERE + "stage-manifest.json")
-	if data.get("geometryHash") != IDENTITY or manifest.get("geometryHash") != IDENTITY or FileAccess.get_sha256(HERE + "candidate.json") != manifest.get("candidateSha256") or FileAccess.get_sha256(HERE + "corrective.glb") != manifest.get("glbSha256"):
+	if data.get("geometryHash") != IDENTITY or manifest.get("geometryHash") != IDENTITY or FileAccess.get_sha256(HERE + "candidate.json") != manifest.get("candidateSha256") or FileAccess.get_sha256(HERE + "corrective.glb") != manifest.get("glbSha256") or FileAccess.get_sha256(HERE + "probes.json") != manifest.get("probesSha256"):
 		fail("staged bytes or authority identity changed")
 		return
 	var world := WorldMap.new()
@@ -98,6 +98,36 @@ func run() -> void:
 		if check.has("z") and abs(contact.position.z - float(check.z)) > 0.08:
 			fail("shield wall Z moved")
 			return
+	# Dense physical bands cover the length and jump-height body band of both
+	# retaining walls, not merely a single center ray. Probe their endcaps too.
+	for i in range(17):
+		var x := -110.0 + float(i) * 2.0
+		for height: float in [6.5, 7.8, 9.25]:
+			var contact := ray(space, Vector3(x,height,-100), Vector3(x,height,-102))
+			result.wallBands.append({"wall":"south-sw", "x":x, "y":height, "hit":str(contact.get("position", "none"))})
+			if contact.is_empty() or abs(contact.position.z + 101.0) > .08:
+				fail("south retaining wall gap in ordinary jump/body band: " + str([x,height]))
+				return
+	for i in range(9):
+		var z := -94.0 + float(i)
+		for height: float in [0.5, 1.8, 3.25]:
+			var contact := ray(space, Vector3(102,height,z), Vector3(104,height,z))
+			result.wallBands.append({"wall":"east-se", "z":z, "y":height, "hit":str(contact.get("position", "none"))})
+			if contact.is_empty() or abs(contact.position.x - 103.0) > .08:
+				fail("east retaining wall gap in ordinary jump/body band: " + str([z,height]))
+				return
+	for x: float in [-113.0, -75.0]:
+		var contact := ray(space, Vector3(x,7.2,-100), Vector3(x,7.2,-102))
+		result.wallEnds.append({"wall":"south-sw", "x":x, "contact":str(contact.get("position", "none"))})
+		if not contact.is_empty():
+			fail("south retaining wall extends beyond declared end or adjacent authority blocks approach: " + str(x))
+			return
+	for z: float in [-96.0, -84.0]:
+		var contact := ray(space, Vector3(102,1.2,z), Vector3(104,1.2,z))
+		result.wallEnds.append({"wall":"east-se", "z":z, "contact":str(contact.get("position", "none"))})
+		if not contact.is_empty():
+			fail("east retaining wall extends beyond declared end or adjacent authority blocks approach: " + str(z))
+			return
 	# Full-size finite body at actual spawn/objective anchors and near terraces.
 	# Radius .52 includes nominal .42 collision radius + .05 bevel + margin.
 	var capsule := CapsuleShape3D.new()
@@ -108,6 +138,11 @@ func run() -> void:
 	for objective: Dictionary in data.arena.objectiveZones: points.append({"name": "objective", "point": objective})
 	for entry: Dictionary in [{"x": -94, "y": 6, "z": -96}, {"x": 91, "y": 0, "z": -90}]:
 		points.append({"name": "service-terrace", "point": entry})
+	var route := json_at(HERE + "probes.json")
+	if route.get("geometryHash") != IDENTITY or route.get("points", []).size() != 501:
+		fail("501-point corrective route probe fixture missing")
+		return
+	for point: Dictionary in route.points: points.append({"name":"route", "point":point})
 	for entry: Dictionary in points:
 		var point: Dictionary = entry.point
 		var q := PhysicsShapeQueryParameters3D.new()
@@ -123,4 +158,5 @@ func run() -> void:
 	result.geometryHash = IDENTITY
 	result.dressing = dressed
 	result.artMeshes = art.find_children("*", "MeshInstance3D", true, false).size()
+	result.pending = ["exterior falls/special traversal and hosted controller journeys", "production weather/finish"]
 	finish(0)
