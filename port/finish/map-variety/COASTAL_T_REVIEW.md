@@ -24,6 +24,17 @@ U retains sole heavy ownership.
 
 ### Corrective source review passed
 
+**Parent source integration complete: `a8b3fe6b`.** Selected prerequisites
+`bd3e722a`, corrective source `d98b1b54` and explicit archival verifier `e614159f`
+are integrated without rejected T artifacts or frozen runners. Parent verified
+the four builder files are byte-identical to reviewed `834ff85a`, then passed
+seven shared Python, sixteen corrective Python, nine Node and one committed-Git
+shipping check (**33 total**). Both old/corrective generator checks pass; explicit
+read-only archival verification reproduces all three old GLB mismatches with
+separate pinned GLB/report hashes. This is historical failure reproduction, not
+new native success. Sol is preparing configurable, non-overwriting native build/
+probe/capture sources for the future corrective grant; U remains active.
+
 Independent Astra approved **`1cdf967e` for source integration**, reproducing
 17 Python / nine Node tests and `build.mjs --check`. All 84 faces of the fourteen
 solids are outward-wound. Floors/blocks are unchanged; only the two triangles of

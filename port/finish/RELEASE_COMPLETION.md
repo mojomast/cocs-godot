@@ -36,7 +36,10 @@ and were merged as `32eba401`; parent passed 25 Node / 27 Python tests plus Kit
 checks. Coastal T delivered actual Abyssal/Stormglass builds and 15 native pairs;
 independent review found an Abyssal terrace-solid collision P1, now assigned to
 Sol for source-only correction. Corrective `1cdf967e` passed independent source
-review; selective tooling and archival-fixture dependencies are being prepared.
+review and is integrated with selective tooling/archival fixtures as `a8b3fe6b`.
+Parent passed 33 source/shipping checks, both generator checks and the historical
+three-ray reproduction. New native execution sources are being prepared; the
+corrective Blender/native build remains pending a later exclusive grant.
 Stormglass artifacts are selectively staged-integrated as `c5c50a93`: parent
 verified 50 inventory hashes and strict seven-unit shipping closure. The combined
 coastal bundle remains unmerged; Abyssal needs fresh native evidence. T released at

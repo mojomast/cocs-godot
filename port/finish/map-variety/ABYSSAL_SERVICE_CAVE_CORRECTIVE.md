@@ -1,5 +1,11 @@
 # Abyssal service-cave P1 · source-only corrective candidate
 
+**Parent integration:** `a8b3fe6b`, comprising four reviewed source prerequisites,
+the corrected authority/art sources and explicit archive verification. Parent
+reproduced 33 source/shipping checks, both old/corrective authority checks and the
+three historical T contact rays. No corrective native build or P1 artifact closure
+is claimed; botanical U retains sole heavy ownership at this checkpoint.
+
 The T-grant Abyssal candidate `5fea4aada721903cea26897fb6a17befaf146c576c095dc712feebef626adfa2`
 is **blocked**. Its genuine 4.5.14 Blender master, GLB, packed-image report,
 reopen receipt, and Godot images remain in the frozen T producer worktree at

@@ -9,9 +9,12 @@ its two ledges/twelve fins are moved beyond retaining walls in a new corrective
 namespace. Fresh Blender/native evidence is still required to close the P1.
 Reviewer reproduced 17 Python / nine Node tests and generation, confirmed all
 84 solid faces outward, and checked 42 ordinary-jump approaches against the 4 m
-shield walls. Sol is preparing selective builder prerequisites and explicit
-hash-pinned archival fixture access before parent source integration. No rejected
-T artifact bundle is needed; U retains sole heavy ownership.
+shield walls. The builder prerequisites and explicit hash-pinned archival fixture
+access are now integrated as **`a8b3fe6b`**. Parent passed 33 source/shipping checks,
+both authority generator checks and all three historical GLB repro rays. No
+rejected T artifact bundle was merged. Sol is preparing new namespaced native
+execution/probe sources; U retains sole heavy ownership and corrective native
+P1 closure remains pending.
 
 **Coastal independent review complete:** Abyssal has one P1—new accessible terrace
 fins/ledges appear solid in the actual export but lack authority collision.
