@@ -52,8 +52,11 @@ Focused actual Windows check `37093996218` passed; broader suite retains the Hel
 startup timeout after 23 baseline and six Parallax passes. G4 explicitly released
 at `2026-10-03T03:43:18.530036Z`, all three groups empty. Windows diagnostic
 `37094406934` confirms synchronous authority startup exceeds the client deadline;
-navigation optimization integrated at `6b8c445f` and awaits remote Windows cold
-graph comparison plus subsequent new-package native verification. Published
+navigation optimization integrated at `6b8c445f`. Historical Windows cold graph
+comparison `37095237382` passed with all ten graph identities unchanged; parent
+verified its downloaded artifact and integrated the report at `08f3b1f9`.
+Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
+New-package native verification is still required. Published
 preview bytes still contain the original runtime.
 **Exclusive local heavy grant O belongs to `ses_f0294303bffed6Fb8UJLKe4ZDz`.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N have released. Native O and source/remote Windows
@@ -84,7 +87,7 @@ boundaries.
 | Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Actual production at `1f129ab2`; E released; compact-HUD correction at `83ceaa62` passes six parent source checks/grammar, new native layout/screenshots pending |
 | Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base `b6ab6782` and ordinary-controller follow-up `da259d19` integrated; 26 parent acceptance tests and grammar pass; native execution awaits later grant and device access |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | N released and merged at `17807ab9`; combined ordinary vehicle and campaign movement passed, two concrete failures handed to O; all 142 obligations/96 original gates preserved |
-| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Active source/remote-only retrieval and analysis of Windows Helix comparison plus next-release prerequisites; no local export under O |
+| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Historical Windows graph evidence verified/integrated at `08f3b1f9`; new 13-world/73-pair source-only preflight `37125999742` awaits owner-reported completion; no local export under O |
 | Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | M complete/released, integrated at `701d4caf`; 75-second film published, 98 candidate/91 installed Home checks pass; human full-watch/listening and final-frozen receipt remain pending |
 
 All workers run in the background, using existing sessions/checkouts. Source work

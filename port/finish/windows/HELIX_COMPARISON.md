@@ -1,5 +1,22 @@
 # Windows Helix comparison: retrieved result and next-package preflight
 
+## Parent review and integration
+
+Worker `c1aa94ef` integrated as **`08f3b1f9`**. Parent independently verified the
+downloaded ZIP SHA-256 and all ten original/candidate geometry, node/edge count
+and ordered-graph identities. Two channel tests, three targeted coverage tests,
+JavaScript syntax and whitespace checks pass.
+
+The navigation workflow previously existed only on the dedicated comparison
+branch. Parent admitted its reviewed 13-world version as a new canonical file;
+its push trigger remains limited to `preview/helix-nav-source`. This merge does
+not launch a new navigation benchmark.
+
+Current source-only Windows preflight **37125999742** was launched at exact
+`c1aa94ef31e41d7f75a93b1cfd0a0a6bbd7901e2`. Its owner monitors completion; the
+dispatch/running checkpoint is not a pass or current-package acceptance:
+<https://github.com/mojomast/cocs-godot/actions/runs/37125999742>.
+
 ## Completed remote evidence, re-fetched from GitHub
 
 Run **37095237382**: https://github.com/mojomast/cocs-godot/actions/runs/37095237382
