@@ -1,9 +1,12 @@
 # New Moth resources and Blender-authored map variety
 
-**Botanical follow-up received:** `6f6b990f` addresses the three remaining floor/
-export blockers and reports 25 Node + 17 Python repair + ten correction passes.
-Independent Astra re-review is active before integration. Triangle totals remain
-advisory; no botanical Blender execution or native acceptance has occurred.
+**Botanical sources approved and integrated:** independent review closed all three
+remaining findings in `6f6b990f`; the complete repair series is merged as
+**`32eba401`**. Parent passed 25 Node / 27 Python tests and standalone Kit checks.
+Astra is preparing source-only native staging/capture fixtures for the next serial
+production stage. Triangle totals remain advisory; actual botanical Blender
+execution and native acceptance are pending. Review details:
+`map-variety/BOTANICAL_SOURCE_REVIEW.md`.
 
 ## Foundry R5 staged integration accepted
 
@@ -13,7 +16,12 @@ authority generation, built material receipt and seven-unit committed-Git closur
 Full qualified approval: `map-variety/FOUNDRY_R5_REVIEW.md`. Hosted/manual/public
 promotion remain pending; broad pale/repetitive finishes still need visual work.
 Astra producer is implementing a bounded source-only revision-6 finish pass.
-Package owner is adding explicit shipping exclusion for unpromoted staged art.
+Exact staged-art shipping exclusions are integrated as **`96bc9758`**. Parent
+passed all 54 checks on the botanical-integrated branch: 51 Node and three Python.
+The 63 R5 files / 16,911,756 bytes are excluded before copy and by exact export
+filters; unknown revisions, changed/missing staged files and production references
+reject. Seven production receipts and histories remain unchanged. Details:
+`map-variety/FOUNDRY_R5_PACKAGE_STAGING.md`.
 T remains the only active heavy grant, producing Abyssal and Stormglass.
 
 ## Active production — coastal T
@@ -32,7 +40,7 @@ advisory. No package promotion/export or full release matrix is authorized.
 Other agents remain source/artifact-only. T requires bounded owned process groups,
 timestamped logs, preserved attempts and three empty audits before release.
 
-## Latest corrective delivery — Foundry R5 / S released
+## Historical corrective delivery — Foundry R5 / S released
 
 Astra delivered optional-normal receipt fix `77d3d16c` and corrective production
 `4a2f1201`, with R4 evidence unchanged. **S released at
@@ -61,7 +69,7 @@ rejected R4 art. R5 remains unmerged during review. Coastal production can follo
 shared dependency integration under a fresh serial grant; botanical's three
 remaining source corrections continue with its Astra owner.
 
-## Latest production checkpoint — Foundry R rejected; Astra S rebuilding
+## Historical production checkpoint — Foundry R rejected; Astra S rebuilding
 
 R owner delivered **`6ff4079e`** and explicitly released. Parent inspected the
 release receipt's three empty process scans and available locks, plus several

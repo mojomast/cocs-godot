@@ -1,5 +1,13 @@
 # Foundry R5 — exact staged-resource shipping separation
 
+## Parent integration
+
+Worker `8ef96fde` is integrated as **`96bc9758`**, after the botanical source merge
+`32eba401`. Parent reproduced **54 passing checks**: 51 Node (including the
+committed-Git seven-unit closure) and three Python builder tests using the commands
+below. No engine/import/export ran during this integration; coastal T retains its
+exclusive heavy grant. Historical untracked sidecars/evidence were preserved.
+
 Foundation **`7ae3f2f54cd1d0764274d5c014eeb937e161af29`**, including shared
 prerequisite `bce5b834` and R5 artifact cherry-pick of
 `4a2f120158040bdd0a894132d09eb8d6eea379aa`. Adopted as merge `395adcbc` in the

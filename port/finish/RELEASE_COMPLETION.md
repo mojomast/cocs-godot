@@ -26,11 +26,15 @@ completed corrective revision-5 production as `4a2f1201` and **released S** at
 18:20:11.138292Z. R5 passed independent artifact review and is staged-integrated
 as `7ae3f2f5`; parent verified 235 files, authority/material receipts and strict
 seven-unit inventory. Hosted/manual/visual polish and public promotion remain
-pending, with staged-resource shipping exclusions under package-owner review. Its 22 native
+pending. Exact staged-resource shipping exclusions are integrated as `96bc9758`;
+parent passed 54 checks, excluding 63 R5 files from future release projects while
+preserving all seven production receipts. Its 22 native
 comparison images are at <http://100.125.104.79:8796/foundry-r5/>.
 The original Flash map lanes stopped after
-failed review: Astra owns botanical/urban repair, Sol owns coastal adapter integration
-after the corrected coastal sources were merged as `18201a06`.
+failed review. Astra's complete botanical/urban repairs passed independent review
+and were merged as `32eba401`; parent passed 25 Node / 27 Python tests plus Kit
+checks. Astra is preparing source-only native fixtures. Sol holds coastal T for
+actual Abyssal/Stormglass production using the integrated shared adapter.
 The user explicitly requires Blender-authored assets. Application follows the
 new resource pack, on isolated branches with fresh map validation. P, Q and R released;
 S also released; coastal T now owns the sole heavy slot. Exact owners,

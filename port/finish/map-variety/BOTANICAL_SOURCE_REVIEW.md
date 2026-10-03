@@ -1,6 +1,30 @@
-# Botanical/urban source review — rejected pending correction
+# Botanical/urban source review — corrective source approved
 
-## Corrective delivery awaiting independent review
+## Current disposition: integrated, production pending
+
+Independent Astra `ses_efd0e4deaffeke8j2rdXdxtbbn` approved corrective commit
+`6f6b990fafd486c0f4d8960359049a3e4ff2ae22`: all three remaining P1 findings are
+closed. Parent merged the complete repair series as **`32eba401`** and reproduced
+**25 Node tests, 27 Python tests and standalone Kit checks**.
+
+- Parallax accepted-author material areas agree within `1.3e-11 m²`; 5,253
+  float32 interior samples have zero height/material-ownership mismatches.
+  Candidate union contains 1,145 triangles / 18,435.838328 m², with zero discarded
+  subprecision area. Physics authority remains byte-identical to `dd05f50c`.
+- Vesper has exactly two slate terrace triangles / 352 m² at Y=22. All 26 routes
+  pass and 857/857 nav nodes connect. Candidate hash is
+  `c044bc54cfd96e99e3b29d61c5bc66bc9c470f8f3823176c063d2fe6ee9474ad`.
+- Both malformed GLB counterexamples reject. Build/reopen audit paths also bind
+  evaluated triangle totals and used-material sets to scene-backed geometry.
+  The backed 160,001-triangle fixture passes with its advisory overage.
+
+This is source approval only. Actual Blender evaluation/export, packed-master
+reopen, exported pixel checks, screenshots and native gameplay remain pending.
+The repair owner is preparing source-only native staging/capture fixtures; coastal
+T retains the sole heavy grant. Earlier findings and review transitions below are
+historical evidence, superseded by this disposition.
+
+## Historical corrective delivery and review
 
 ### Three-blocker follow-up delivered
 
