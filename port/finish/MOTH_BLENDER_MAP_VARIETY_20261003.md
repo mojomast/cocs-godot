@@ -23,6 +23,12 @@ publishing a separate R7 comparison page. Y commits remain unmerged pending revi
 and packaging checks. Vesper stair diagnosis and Parallax tangent work remain
 source-only; hosted/manual/weather/performance acceptance is still pending.
 
+**R7 gallery live:** <http://100.125.104.79:8796/foundry-r7/> — thirteen pairs,
+26 original PNGs (eleven standard and two tangent-targeted views). All 38 HTTP/
+hash checks passed. Before is freshly staged R6, not relabeled W evidence. Copper
+changes are subtle and the ground sliver is not visually isolated; native corner
+readback is the correction evidence. Independent artifact review remains active.
+
 **Helix/Parallax X artifacts selectively integrated as `5f41d68e`.** All 332
 copies match producer `171ffddb` blobs, hashes and sizes; parent passed twelve
 package checks. The 2,494-file accepted native selection and 137 R5/R6 exclusions
