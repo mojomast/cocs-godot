@@ -349,6 +349,8 @@ func advance(dt: float) -> void:
 	var travel := Vector2(delta.x,delta.z) if a.has("x") and a.has("z") else Vector2(vx,vz)*dt
 	if mounted: travel = Vector2.ZERO
 	state.travelDistance = travel.length()
+	state.previousTravelVelocity = travel_velocity
+	state.targetTravelVelocity = travel/dt
 	travel_velocity = travel_velocity.lerp(travel/dt,1.0-exp(-12.0*dt))
 	state.travelVelocity = travel_velocity
 	state.speed = travel_velocity.length()
