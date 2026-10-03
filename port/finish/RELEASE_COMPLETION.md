@@ -7,6 +7,26 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
+**Current checkpoint (supersedes earlier M-in-progress entries below):** M actually
+completed and released at `2026-10-03T08:08:16.973785Z`; the parent missed its
+completion transition and later gave a stale capturing update. User's in-flight
+question prompted a direct process/evidence check. No cinematic engine or encoder
+was still running. Parent verified three empty audits/72 groups and the actual
+45,812,911-byte MP4 hash, merged M as **`701d4caf`**, and passed 11 pipeline tests.
+
+**Exclusive active grant: `RELEASE-ACCEPTANCE-20261003-N`**, owner
+`ses_f0292f089ffeq9MnxeAHN0yrKb`. It adopts `701d4caf`, performs source preflight
+and bounded serial native acceptance, prioritizing remaining vehicle-input and
+campaign diagnostics. Preserve all 142 obligations, exact candidate identities,
+failed runs and hardware/manual gaps. No package export, cinematic re-encode or
+asset production under N. Three empty ownership audits are required for release.
+
+Sol `ses_eff6a3d9cffeTi9iQPn43laxo1` published the completed movie at
+<http://100.125.104.79:8796/cinematic-m/> with 12 matching HTTP/hash checks.
+The original MP4 is unchanged; static publication used no heavy work. The movie and installed
+Home are complete production rehearsal results (98 candidate/91 installed checks),
+not a frozen-final receipt or human full-watch/listening approval.
+
 **Polish checkpoint:** All six lanes passed native verification under L, integrated
 at `9cd1ac72`. Nine primary fixtures and 30 latest gate IDs passed, with 27 real
 before/after image pairs. Final L package reconciliation integrated at `623127c5`

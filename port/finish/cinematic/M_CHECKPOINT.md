@@ -1,5 +1,11 @@
 # Cinematic M — in-progress checkpoint
 
+**Superseded:** M completed and released at `2026-10-03T08:08:16.973785Z`, documented
+in `M_PRODUCTION.md`. Parent discovered the completed handoff while answering the
+user's missing-in-flight question, verified release/MP4 identity and integrated
+the delivered branch as `701d4caf`. Eleven parent pipeline tests pass. The earlier
+capturing status below is historical; it must not be used as current activity.
+
 Grant **`CINEMATIC-NATIVE-20261003-M`** remains exclusively owned by
 `ses_f03411df4ffeEk7157dyOo57NZ`. The worker's checkpoint response is not a
 production completion or a grant release.
