@@ -56,7 +56,11 @@ geometry. Helix artifact approval is withheld and Astra owns the source correcti
 Parallax's aperture obstruction and Vesper's 5 cm parapet mismatch block those
 candidates before native acceptance. Parent verified 264 artifact hashes and
 three empty audits/45 groups. V also released after three empty audits/25 groups,
-verified at 20:23:44Z. Astra now holds W for actual Foundry R6 finish production.
+verified at 20:23:44Z. Foundry W subsequently delivered `b5dfe08e` / `fceaac00`,
+with 22 matched R5/R6 screenshots, and released at 20:47:04.704425Z. Parent verified
+226 manifest files, three empty audits/18 groups and current lock availability.
+R6 artifact review includes seven inherited zero-tangent substitutions; exact staged
+shipping policy is being prepared. Astra now holds X for botanical successors.
 Helix images: <http://100.125.104.79:8796/helix-u/> (32 initial HTTP/hash checks passed).
 Shared botanical export/staging tools are source-approved and integrated as
 `c7cd4331` / `fb2af58d`; parent passed 35 Python and two Node checks. Actual U
@@ -64,13 +68,13 @@ artifacts remain unmerged; details are in `map-variety/HELIX_U_REVIEW.md`.
 All three corrective successor sources subsequently passed independent review
 and are integrated through `6e1d4b1e`, including explicit SHA-pinned U regression
 inputs. Parent passed 74 tests and the archived three-failure/49,553-capsule
-reproduction. Successor-native staging preparation is source-only while W runs.
+reproduction. Successor staging and actual builds are authorized serially under X.
 Foundry R6 finish sources and the corrected scene-backed export validator are
 integrated as `99d44ede`; parent reproduced nine source tests and verified strict
 seven-unit shipping closure. Actual R6 build/render acceptance remains pending.
 The user explicitly requires Blender-authored assets. Application follows the
 new resource pack, on isolated branches with fresh map validation. P, Q and R released;
-S, T, U and V also released; Foundry R6 W owns the sole heavy slot. Exact owners,
+S, T, U, V and W also released; botanical X owns the sole heavy slot. Exact owners,
 sequence and storage constraints: `MOTH_BLENDER_MAP_VARIETY_20261003.md`.
 
 **Current checkpoint (supersedes earlier M-in-progress entries below):** M actually
@@ -100,7 +104,7 @@ reviewed and integrated as `346e8db8`, `6252d4bf` and `8bf90885`;
 native verification remains pending. Parent passed **83 source checks**: 33
 Fighting acceptance/command/combo/UI, three diagnosis, seven spectator/process,
 35 runner/receipt and five Blender-toolkit tests. **R, S, T and U are released;
-V also released; W owns Foundry R6 production.** Further heavy work needs its next grant.
+V and W also released; X owns botanical production.** Further heavy work needs its next grant.
 
 **Historical O/P foundation:** O repaired both N
 failures and released 18 groups with three empty audits, independently checked
@@ -155,7 +159,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P, Q, R, S, T, U and V have released; Foundry R6 W holds the heavy slot.**
+**P, Q, R, S, T, U, V and W have released; botanical X holds the heavy slot.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -197,13 +201,24 @@ directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
-**Active: `MOTH-BLENDER-20261003-W`**, Astra
+**Active: `MOTH-BLENDER-20261003-X`**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`. Finish/check successor staging, then actual
+Helix revision-4 / Parallax districts-v4 / Vesper urban-v3 production from reviewed
+sources through `6e1d4b1e`. New output identities/attempts; preserve all U failures.
+Actual attachment/aperture/parapet proofs, master reopen/reexport, imported pixels,
+native finite-body/routes/anchors and matched captures are required. Source totals
+remain advisory. No public promotion/export; three empty owned-group release audits.
+
+**Released: `MOTH-BLENDER-20261003-W`**, Astra
 `ses_efd30e1f6ffeLbhHTPoh266kZW`, foundation `e66fce84`. Actual R6 finish build,
 packed-master reopen, strict scene/backing/geometry/material proof and native
 R5/R6 matched captures. Preserve R5 authority and exact streams, use distinct R6
 art identity, retain all attempts. No public promotion/export. All other workers
 are source/artifact-only. Timestamped owned-group logs and three empty release
 audits required.
+W delivered `b5dfe08e` / `fceaac00` and released at `2026-10-03T20:47:04.704425Z`.
+Parent verified 226 files, three empty audits/18 groups, no current members and
+available lock. R6 is under independent artifact/tangent review before integration.
 
 **Released: `MOTH-BLENDER-20261003-V`**, Sol
 `ses_efd55bb5cffeJRWNA4xZq8O6cE`. Finish/check the new corrective harness and
@@ -253,7 +268,7 @@ bounded owned groups and timestamped three empty audits before S release.
 S delivered `4a2f1201` and released at `2026-10-03T18:20:11.138292Z`. Parent
 confirmed all three timestamped audits are empty across 43 recorded groups,
 no current surviving group members, and lock availability. Independent artifact
-review subsequently approved R5; T, U and V also released. W is active.
+review subsequently approved R5; T, U, V and W also released. X is active.
 
 **Released: `MOTH-BLENDER-20261003-R`**, owner
 `ses_efdba38e9ffeManqAN9zWiJ3va`, foundation `190fa2a2`. Scope: material adapter

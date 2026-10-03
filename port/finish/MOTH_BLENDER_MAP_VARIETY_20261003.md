@@ -1,5 +1,48 @@
 # New Moth resources and Blender-authored map variety
 
+## Current ownership — botanical successor X; W released
+
+**`MOTH-BLENDER-20261003-X` is the sole active heavy grant**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`. Finish/check the successor staging bridge, then
+build Helix revision-4, Parallax districts-v4 and Vesper urban-v3 serially from the
+source-approved series through `6e1d4b1e`. Require actual grounded-frame attachments,
+full aperture/grade clearance, canonical parapet boundaries, fresh master reexport,
+imported pixel/geometry proof, native probes and matched images. Preserve U failures
+and use new attempt namespaces. No public promotion or package export. Three
+timestamped empty owned-group audits and explicit release required.
+
+Foundry W delivered **`b5dfe08e` / `fceaac00`** and released, receipt timestamp
+**2026-10-03T20:47:04.704425Z**. Parent verified three empty audits/18 groups,
+current group absence, lock availability at 20:53:40.760155Z and all **226 manifest
+hashes/sizes**. All other workers remain source/artifact/static-gallery only.
+
+R6 actual results: 87,566 triangles / 16 nodes / 32 primitives / 15,012,396 bytes;
+18 materials, seven new roles, 36 embedded PNGs. Master has 40 packed images,
+16 editable export meshes and 270 hidden references. Reopen positions match,
+UV max error 3.82e-6; native positions/UVs and 51 material/channel pixels match.
+Eight fresh targeted rays and emission/dressing/weather lifecycle checks report
+passing. Seven inherited zero-direction tangent corners receive Godot substitutions;
+their acceptance remains explicitly undecided under independent review.
+
+Independent reviewer `ses_efd0e4deaffeke8j2rdXdxtbbn` is reviewing actual W artifacts.
+Package owner is preparing exact unpromoted-R6 exclusions; R6 remains unmerged.
+The package-only delivery is now **`af648e8a`**, awaiting W artifact review and
+integration with original `fceaac00` ancestry preserved. Parent independently
+verified its manifest pin and all 74 R6 resource hashes: 19,007,243 bytes comprising
+one GLB, 36 PNGs and 37 sidecars. Combined R5/R6 exclusion is 137 files /
+35,918,999 bytes; accepted native selection stays 2,494 files and seven receipt
+histories remain unchanged. Worker reports 58 checks passed. The fixture merge
+`6d2596f8` is not an integration commit; use W history then the package-only fix.
+Warm-cache load 95.5 ms and llvmpipe static 124–331 ms/frame (median 218), 112–227
+draw calls and 74.1 MB peak reported video memory do not establish gameplay/GPU
+performance. Manual art and hosted acceptance remain pending.
+
+**R6 gallery:** <http://100.125.104.79:8796/foundry-r6/> — eleven matched staged
+R5/R6 pairs, 22 original PNGs. All 33 HTTP/hash checks passed. Parent inspected
+crusher-roofline and bunker views; functional contrast is visible, with broad
+pale surfaces/repetitive finishes still requiring manual review. R5's capsule
+receipt is prior same-geometry evidence, not a W rerun.
+
 **Botanical successors integrated source-only:** independently approved geometry
 and the parent-verified archival-input follow-up are selected as `a22e8956` /
 `6fc988a9` / `231fe1e4` / **`6e1d4b1e`**. Parent passed **74 tests** (43 Python,
@@ -39,7 +82,7 @@ before integration. The producer is also making frozen-U regression fixture acce
 explicit so parent need not import the rejected U artifact bundle. Actual successor
 master/GLB paths are absent and their hashes are null. W remains the sole heavy grant.
 
-## Active grant W — Foundry R6; Abyssal V delivered
+## Historical grant W — Foundry R6; Abyssal V delivered
 
 **`MOTH-BLENDER-20261003-W` is the sole active heavy grant**, Astra
 `ses_efd30e1f6ffeLbhHTPoh266kZW`, for actual source-approved R6 master/export,
