@@ -404,17 +404,32 @@ func _impact(pos: Vector3, normal: Vector3, weapon: int) -> void:
 ## The authoritative position is used exactly; no ground contact is invented.
 func _consume_explosion(event: Dictionary) -> void:
 	var kind := blast_kind(event)
-	var weapon := identity(event.get("weapon"))
-	var primary: bool = event.get("alt") != true and weapon in [1,4,5]
-	if (kind.is_empty() and not primary) or quality == 0: return
-	var pos: Variant = point(event.get("pos"))
-	if pos == null: return
-	var time: float = float(event.time) if numeric(event.get("time")) else 0.0
+	var has_weapon := event.has("weapon")
+	var weapon := identity(event.get("weapon")) if has_weapon else -1
+	var time: Variant = event.get("time")
 	var id := identity(event.get("id"))
-	if id >= 0 and not _remember("blast/%d/%s" % [id, str(time)], time): return
+	# Explosions are authoritative source events: unlike cosmetic predictions,
+	# they must carry the same finite identity, clock, and position contract.
+	if id < 0 or not numeric(time) or float(time) < 0.0 or (has_weapon and (weapon < 0 or weapon >= Profiles.ITEMS.size())):
+		rejected += 1
+		return
+	var pos: Variant = point(event.get("pos"))
+	if pos == null:
+		rejected += 1
+		return
+	if quality == 0: return
+	if not _remember("blast/%d/%s" % [id, str(float(time))], float(time)): return
+	var primary: bool = event.get("alt") != true and weapon in [1,4,5]
 	if primary:
 		_primary_blast(pos,weapon)
 		blasts += 1
+		return
+	if kind.is_empty():
+		# Source detonate() does not identify a weapon. Give that legitimate event
+		# one restrained presentation without inventing a profile or attribution.
+		if not has_weapon:
+			_generic_blast(pos, event.get("radius"))
+			blasts += 1
 		return
 	match kind:
 		"cluster": _cluster_blast(pos, identity(event.get("bomblet")))
@@ -422,6 +437,15 @@ func _consume_explosion(event: Dictionary) -> void:
 		"mine": _mine_blast(pos)
 		"bomb": _bomb_blast(pos)
 	blasts += 1
+
+func _generic_blast(pos: Vector3, source_radius: Variant) -> void:
+	var size := 0.78
+	if numeric(source_radius) and float(source_radius) > 0.0:
+		size = clampf(sqrt(float(source_radius)) * 0.31, 0.55, 1.1)
+	var core := _blast_card(pos, 13, size, 0.22, Color("c8b9a0"), 0.55, 0.65)
+	core.merge({"opacity":0.82}, true)
+	if reduced_motion: core.growth = 0.0
+	_update_slot(core)
 
 func _primary_blast(pos: Vector3, weapon: int) -> void:
 	var tint: Color = Profiles.ITEMS[weapon].color

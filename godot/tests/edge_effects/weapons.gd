@@ -48,6 +48,28 @@ func run() -> void:
 	for slot: Dictionary in fx.slots: check(slot.kind!=12,"reduced motion suppresses grenade fragments")
 	fx.reset()
 	fx.reduced_motion = false
+	# Mirrors source Core.detonate(): emit adds id/time around this exact payload,
+	# and the ordinary detonation payload contains pos without weapon attribution.
+	var generic_event := {"type":"explosion", "id":7001, "time":7.0,
+		"pos":{"x":2.0,"y":3.0,"z":-4.0}, "radius":5.0}
+	fx.consume([generic_event],0,[])
+	check(fx.blasts==1 and fx.slots.size()==1,"source-shaped weaponless detonation gets generic burst")
+	check(fx.slots[0].node.global_position==Vector3(2,3,-4),"generic burst uses authoritative source position")
+	var generic_count := fx.slots.size()
+	fx.consume([generic_event],0,[])
+	check(fx.blasts==1 and fx.slots.size()==generic_count,"generic explosion replay deduplicates on source id/time")
+	fx.reset()
+	fx.consume([{"type":"explosion","id":7010,"time":7.1,"pos":{"x":0,"y":0,"z":-3},"alt":true,"altId":"unknown"}],0,[])
+	check(fx.blasts==0 and fx.slots.is_empty(),"unknown alt without weapon is not reclassified generic")
+	fx.consume([{"type":"explosion","id":7011,"time":7.2,"pos":{"x":0,"y":0,"z":-3},"weapon":-1}],0,[])
+	check(fx.blasts==0 and fx.rejected==1,"malformed explicit weapon is rejected")
+	fx.consume([{"type":"explosion","id":7012,"time":7.3,"pos":{"x":0,"y":0,"z":-3},"weapon":1}],0,[])
+	check(fx.blasts==1 and fx.slots.size()>0,"recognized primary rocket preserves source-specific presentation")
+	fx.reset()
+	fx.set_quality(1)
+	fx.consume([{"type":"explosion","id":7013,"time":7.4,"pos":{"x":0,"y":0,"z":-3},"weapon":9,"alt":true,"altId":"bomb"}],0,[])
+	check(fx.blasts==1 and fx.blast_shards==4,"recognized altId keeps its distinct blast ahead of weapon fallback")
+	fx.reset()
 	for index: int in 1000:
 		fx.consume([{"type":"explosion","weapon":[1,4,5][index%3],"id":index+1,"time":index+1.0,"pos":{"x":0,"y":0,"z":-5}}],0,[])
 	check(fx.slots.size()==Effects.CAP,"1000 primary blasts reuse the existing 64 slots")
