@@ -592,7 +592,7 @@
     "godot/ui/loadout.gd": "4baf3dbb091819ebe6b57363bea756ab1d14d809abb55c50949b15e7ffa8aa77",
     "godot/ui/lobby_choice.gd": "9eba4c8067e4b769a3486cf0949680a5e145c1620d00608f9ece1fad8b9d7e95",
     "godot/ui/lobby_menu.gd": "657087bc31cd8f8e22f7bb7d4907f21be14fc01191b2546c0cd94d1f9ae64a6a",
-    "godot/ui/local_settings.gd": "569765028c3a7029c6fee7972d3b3926fe2d4af8cfec755012f595a212cf50a7",
+    "godot/ui/local_settings.gd": "073a48948796a68680cd0f4242655374c5f8b7fc5b835347ebaf0dd35b7d42f9",
     "godot/ui/main_menu.gd": "6779c48baccdeee929d82ed789ae2b88e3f08911f547327217f41dfdab43d240",
     "godot/ui/match_setup.gd": "082ea48c7109941e126092ddc80434d1cf3c5b644f87584ed9a75a20f896b95a",
     "godot/ui/menu_preferences.gd": "5c4cd6d581d0eb512807344cbb72bb4c00218f26cab1e30b60f64c26e467a174",
@@ -655,6 +655,10 @@
     "port/expansion-four/stormglass/evidence/production-j/stages/20261003T055018.455696Z-native/native-process.json": "874b2c8747421f33de5bfc3bf01257bb3daa2a5d6fe6d3356440be8bbbe5aebf",
     "port/expansion-four/stormglass/evidence/production-j/stages/20261003T055018.455696Z-native/native.log": "eb085e8d4547fd434421218142adf7be827aeba0db03caa0cbb66f9c3e221f2f",
     "port/expansion-four/stormglass/evidence/production-j/summary.json": "d2c6771b1ef54660667d996d022b24e115b6adeead8db718a058fa1c61ad6e1e",
+    "port/finish/acceptance/package-evidence-o/HEAVY_GRANT_RELEASE.json": "75e737cbf562be0601b83b73a09157fd0fce91632f7dc2fe2712b34ad7d7cde7",
+    "port/finish/acceptance/package-evidence-o/combined-home-regression-01/receipt.json": "3b97393b6388145314535d7a5c8f91abffb2a2fd8173eb11f0942e16ce2fe4c1",
+    "port/finish/acceptance/package-evidence-o/controls-final-01/receipt.json": "30affd0776ab8bfd1fb4b11810e987580e8450e40f5bcb4235bc2c3d6fe547ee",
+    "port/finish/acceptance/package-evidence-o/world-final-01/receipt.json": "e35f5391b787d73c21e26a7ae98a18d5cb84070371b907c1b0438746ce640972",
     "port/finish/polish/package-evidence-k/NATIVE_RESULTS_K.json": "b61f40578c6b29a1959c3c206037f725e693da003a36085fa1693747d8c350f3",
     "port/finish/polish/package-evidence-k/generated-sidecars-final/manifest.json": "c220e418cc113fe4f126931c18349f79ef1cee7fc7c192e077486c106396e397",
     "port/finish/polish/package-evidence-k/k-finish-binder/operator-finish/native.log": "0ff9dc1f66ca45d82bbe20c011f497c1a8ec8686b9dcdab359ed5f802db863c9",
@@ -680,7 +684,7 @@
     "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d",
     "tools/godot-package/feature_dependencies.mjs": "bc2a3d53839c38a9f63104554a7dae0bb9fc44a921bba1117ec05a42018a267d",
     "tools/godot-package/polish_8921_inventory.json": "81f8d2531486fcb88da14dc98cd19565a543e87a4fc389329cbdbb2de6109015",
-    "tools/godot-package/polish_dependencies.mjs": "c16c9b4196ffbf5c155fcc44726fa85902d17a7c3013c0deec688160de10c465",
+    "tools/godot-package/polish_dependencies.mjs": "87ffcf9ff5eac9ce616e05b3758c8a4b5f21eeefa15e8af25bf011cc09c446cf",
     "tools/godot-package/production_resources.mjs": "24b13e6d80755417c230054c4126dd862d3fd5f347bd478fa7c64e65e9994076",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
@@ -1670,6 +1674,45 @@
       "nativePolish": "L supplemental coverage passed; not final 142 acceptance",
       "liveKickAcceptance": "not accepted",
       "document": "port/finish/polish/L_PACKAGE_RECONCILIATION.md"
+    }
+  },
+  "oReviewAdvance": {
+    "previousReceipt": {
+      "commit": "b17360c9",
+      "path": "tools/godot-package/production_receipts/stormglass-causeway.json",
+      "sha256": "4736b2d686ae9c4a39d05a77f2f238cc6e0b23d76a3e0571230c80e2b6ae5602"
+    },
+    "changed": {
+      "godot/ui/local_settings.gd": {
+        "before": "569765028c3a7029c6fee7972d3b3926fe2d4af8cfec755012f595a212cf50a7",
+        "after": "073a48948796a68680cd0f4242655374c5f8b7fc5b835347ebaf0dd35b7d42f9"
+      },
+      "tools/godot-package/polish_dependencies.mjs": {
+        "before": "c16c9b4196ffbf5c155fcc44726fa85902d17a7c3013c0deec688160de10c465",
+        "after": "87ffcf9ff5eac9ce616e05b3758c8a4b5f21eeefa15e8af25bf011cc09c446cf"
+      }
+    },
+    "added": {
+      "port/finish/acceptance/package-evidence-o/HEAVY_GRANT_RELEASE.json": "75e737cbf562be0601b83b73a09157fd0fce91632f7dc2fe2712b34ad7d7cde7",
+      "port/finish/acceptance/package-evidence-o/combined-home-regression-01/receipt.json": "3b97393b6388145314535d7a5c8f91abffb2a2fd8173eb11f0942e16ce2fe4c1",
+      "port/finish/acceptance/package-evidence-o/controls-final-01/receipt.json": "30affd0776ab8bfd1fb4b11810e987580e8450e40f5bcb4235bc2c3d6fe547ee",
+      "port/finish/acceptance/package-evidence-o/world-final-01/receipt.json": "e35f5391b787d73c21e26a7ae98a18d5cb84070371b907c1b0438746ce640972"
+    },
+    "runtimeChanged": {},
+    "sourceChanged": {
+      "godot/ui/local_settings.gd": {
+        "before": "569765028c3a7029c6fee7972d3b3926fe2d4af8cfec755012f595a212cf50a7",
+        "after": "073a48948796a68680cd0f4242655374c5f8b7fc5b835347ebaf0dd35b7d42f9"
+      }
+    },
+    "previousPackageFingerprint": "63d63bfc572be5dd738eb56e43529923ee39b82d8bbf1a361e393ac63db88530",
+    "packageFingerprint": "87d2c2d10f5fc316dd6982921f701dafe005a55a4bb99c935ed0e4d9a399aad5",
+    "review": {
+      "foundation": "b17360c9",
+      "scope": "one reviewed Settings Return Home correction and retained O final receipts",
+      "nativeCoverage": "ordinary world and combined-arms journeys plus 90-assertion controls fixture; not final 142 acceptance",
+      "liveKickAcceptance": "not accepted",
+      "document": "port/finish/acceptance/O_PACKAGE_RECONCILIATION.md"
     }
   }
 }

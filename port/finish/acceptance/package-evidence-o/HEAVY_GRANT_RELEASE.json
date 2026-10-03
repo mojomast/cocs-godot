@@ -1,0 +1,197 @@
+{
+  "grant": "GAMEPLAY-REPAIR-20261003-O",
+  "owner": "ses_f0294303bffed6Fb8UJLKe4ZDz",
+  "released": true,
+  "released_utc": "2026-10-03T13:43:24.673890+00:00",
+  "audits": [
+    {
+      "audit": 1,
+      "utc": "2026-10-03T13:43:24.043427+00:00",
+      "owned_processes": [],
+      "live_engines_encoders": [],
+      "unowned_existing_xvfb": [
+        {
+          "pid": 3002226,
+          "pgid": 3001069,
+          "executable": "Xvfb",
+          "command": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix "
+        },
+        {
+          "pid": 3003879,
+          "pgid": 3003347,
+          "executable": "Xvfb",
+          "command": "Xvfb :91 -screen 0 1280x800x24 -nolisten tcp "
+        },
+        {
+          "pid": 3005999,
+          "pgid": 3004479,
+          "executable": "Xvfb",
+          "command": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix "
+        },
+        {
+          "pid": 3094547,
+          "pgid": 3093474,
+          "executable": "Xvfb",
+          "command": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix "
+        },
+        {
+          "pid": 3113490,
+          "pgid": 3113486,
+          "executable": "Xvfb",
+          "command": "Xvfb :78 -screen 0 1600x1000x24 -nolisten tcp "
+        }
+      ]
+    },
+    {
+      "audit": 2,
+      "utc": "2026-10-03T13:43:24.258430+00:00",
+      "owned_processes": [],
+      "live_engines_encoders": [],
+      "unowned_existing_xvfb": [
+        {
+          "pid": 3002226,
+          "pgid": 3001069,
+          "executable": "Xvfb",
+          "command": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix "
+        },
+        {
+          "pid": 3003879,
+          "pgid": 3003347,
+          "executable": "Xvfb",
+          "command": "Xvfb :91 -screen 0 1280x800x24 -nolisten tcp "
+        },
+        {
+          "pid": 3005999,
+          "pgid": 3004479,
+          "executable": "Xvfb",
+          "command": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix "
+        },
+        {
+          "pid": 3094547,
+          "pgid": 3093474,
+          "executable": "Xvfb",
+          "command": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix "
+        },
+        {
+          "pid": 3113490,
+          "pgid": 3113486,
+          "executable": "Xvfb",
+          "command": "Xvfb :78 -screen 0 1600x1000x24 -nolisten tcp "
+        }
+      ]
+    },
+    {
+      "audit": 3,
+      "utc": "2026-10-03T13:43:24.473753+00:00",
+      "owned_processes": [],
+      "live_engines_encoders": [],
+      "unowned_existing_xvfb": [
+        {
+          "pid": 3002226,
+          "pgid": 3001069,
+          "executable": "Xvfb",
+          "command": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix "
+        },
+        {
+          "pid": 3003879,
+          "pgid": 3003347,
+          "executable": "Xvfb",
+          "command": "Xvfb :91 -screen 0 1280x800x24 -nolisten tcp "
+        },
+        {
+          "pid": 3005999,
+          "pgid": 3004479,
+          "executable": "Xvfb",
+          "command": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix "
+        },
+        {
+          "pid": 3094547,
+          "pgid": 3093474,
+          "executable": "Xvfb",
+          "command": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix "
+        },
+        {
+          "pid": 3113490,
+          "pgid": 3113486,
+          "executable": "Xvfb",
+          "command": "Xvfb :78 -screen 0 1600x1000x24 -nolisten tcp "
+        }
+      ]
+    }
+  ],
+  "job_cleanup": {
+    "world-01": {
+      "signalled": [],
+      "remaining": []
+    },
+    "world-02": {
+      "signalled": [],
+      "remaining": []
+    },
+    "world-03": {
+      "signalled": [],
+      "remaining": []
+    },
+    "controls-gl-01": {
+      "signalled": [],
+      "remaining": []
+    },
+    "controls-gl-02": {
+      "signalled": [],
+      "remaining": []
+    },
+    "controls-gl-03": {
+      "signalled": [],
+      "remaining": []
+    },
+    "controls-sky-01": {
+      "signalled": [],
+      "remaining": []
+    },
+    "controls-fixed-01": {
+      "signalled": [],
+      "remaining": []
+    },
+    "controls-fixed-gl-01": {
+      "signalled": [],
+      "remaining": []
+    },
+    "world-fixed-01": {
+      "signalled": [],
+      "remaining": []
+    },
+    "world-fixed-02": {
+      "signalled": [],
+      "remaining": []
+    },
+    "world-fixed-03": {
+      "signalled": [],
+      "remaining": []
+    },
+    "world-home-01": {
+      "signalled": [],
+      "remaining": []
+    },
+    "world-home-02": {
+      "signalled": [],
+      "remaining": []
+    },
+    "combined-home-regression-01": {
+      "signalled": [],
+      "remaining": []
+    },
+    "controls-final-01": {
+      "signalled": [],
+      "remaining": []
+    },
+    "controls-baseline-correlated-01": {
+      "signalled": [],
+      "remaining": []
+    },
+    "world-final-01": {
+      "signalled": [],
+      "remaining": []
+    }
+  },
+  "candidate": "f22fcc1e95c0b890f1ad656f16ab2b406b5b069b"
+}

@@ -20,11 +20,11 @@ test('committed seven-unit promotion and import bytes validate independently of 
   assert.throws(()=>productionResources({...options,worldIds:options.worldIds.slice(0,-1)}),/remain pending/);
   for(const id of ['abyssal-pressureworks','vesper-viaduct','scenery','robots','vehicles','parallax-interiors','stormglass-causeway']) {
     const receipt=JSON.parse(read(`tools/godot-package/production_receipts/${id}.json`));
-    const advance=receipt.lReviewAdvance,previous=advance.previousReceipt;
+    const advance=receipt.oReviewAdvance,previous=advance.previousReceipt;
     const bytes=git(['show',`${previous.commit}:${previous.path}`]);
     assert.equal(createHash('sha256').update(bytes).digest('hex'),previous.sha256);
     const old=JSON.parse(bytes);
-    assert.equal(previous.commit,'9cd1ac72');
+    assert.equal(previous.commit,'b17360c9');
     const oldInputs=old.packageInputs??old.packageInputHashes;
     const changed={},added={};
     for(const [p,sha]of Object.entries(oldInputs)) {

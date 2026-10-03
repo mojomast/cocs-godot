@@ -4,7 +4,7 @@ import {readFileSync,existsSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {productionResources,REQUIREMENTS,REQUIRED_UNITS} from './production_resources.mjs';
-import {POLISH_INVENTORY,polishInventory,verifyOperatorFinishImports,L_SOURCE_CHANGE,L_EVIDENCE,lSupportingHash} from './polish_dependencies.mjs';
+import {POLISH_INVENTORY,polishInventory,verifyOperatorFinishImports,L_SOURCE_CHANGE,L_EVIDENCE,lSupportingHash,O_SOURCE_CHANGE,O_EVIDENCE} from './polish_dependencies.mjs';
 import {WORLDS} from '../../port/multiplayer-worlds/catalog.mjs';
 const read=p=>readFileSync(p),hash=b=>createHash('sha256').update(b).digest('hex');
 const options={read,has:existsSync,worldIds:Object.keys(WORLDS),strict:true};
@@ -13,6 +13,37 @@ function forged(id,mutate){
  const path=`tools/godot-package/production_receipts/${id}.json`,r=JSON.parse(read(path)),req=JSON.parse(read(REQUIREMENTS));mutate(r);const bytes=Buffer.from(JSON.stringify(r));req.units[id].promotion.sha256=hash(bytes);
  return ()=>productionResources({...options,read:p=>p===path?bytes:p===REQUIREMENTS?Buffer.from(JSON.stringify(req)):read(p)});
 }
+test('O preserves every prior producer/native/review field and advances only local Settings plus the verifier',()=>{
+ for(const id of REQUIRED_UNITS){
+  const p=`tools/godot-package/production_receipts/${id}.json`,bytes=git('b17360c9',p),old=JSON.parse(bytes),now=JSON.parse(read(p));
+  for(const [k,v]of Object.entries(old))if(k!=='packageInputs')assert.deepEqual(now[k],v,id+': '+k);
+  assert.equal(now.oReviewAdvance.previousReceipt.sha256,hash(bytes));
+  assert.deepEqual(now.oReviewAdvance.sourceChanged,O_SOURCE_CHANGE);
+  assert.deepEqual(Object.keys(now.oReviewAdvance.changed).sort(),['godot/ui/local_settings.gd','tools/godot-package/polish_dependencies.mjs']);
+  assert.deepEqual(Object.keys(now.oReviewAdvance.added).sort(),Object.keys(O_EVIDENCE).sort());
+  assert.deepEqual(now.oReviewAdvance.runtimeChanged,{});
+ }
+ for(const [p,c]of Object.entries(O_SOURCE_CHANGE)){assert.equal(hash(git('9cd1ac72',p)),c.before);assert.equal(hash(git('b17360c9',p)),c.after);assert.equal(hash(read(p)),c.after);}
+});
+test('O retains three passed final receipts and empty release audits without claiming a new native run',()=>{
+ for(const [p,sha]of Object.entries(O_EVIDENCE))assert.equal(hash(read(p)),sha);
+ const base='port/finish/acceptance/package-evidence-o/',release=JSON.parse(read(base+'HEAVY_GRANT_RELEASE.json'));
+ assert.equal(release.released,true);assert.equal(release.audits.length,3);assert.equal(Object.keys(release.job_cleanup).length,18);
+ for(const a of release.audits){assert.deepEqual(a.owned_processes,[]);assert.deepEqual(a.live_engines_encoders,[]);}
+ for(const job of Object.values(release.job_cleanup))assert.deepEqual(job.remaining,[]);
+ for(const run of ['world-final-01','combined-home-regression-01','controls-final-01']){
+  const r=JSON.parse(read(base+run+'/receipt.json'));assert.equal(r.status,'passed');assert.equal(r.exit_code,0);assert.equal(r.grant,'GAMEPLAY-REPAIR-20261003-O');assert.deepEqual(r.cleanup.remaining,[]);
+  assert.equal(r.input_identity.sha256,'752f896a7768171785bb416b6aaea4660342d6548afa3b9332fbc0235c296747');
+ }
+});
+test('missing/forged O step, stale Settings, later source and altered final receipts reject',()=>{
+ assert.throws(forged('robots',r=>delete r.oReviewAdvance),/Explicit O reconciliation required/);
+ assert.throws(forged('scenery',r=>r.oReviewAdvance.sourceChanged['godot/ui/local_settings.gd'].before='0'.repeat(64)),/Exact O source history/);
+ assert.throws(forged('vehicles',r=>r.packageInputs['godot/ui/local_settings.gd']=O_SOURCE_CHANGE['godot/ui/local_settings.gd'].before),/Current O dependency identity/);
+ assert.throws(forged('stormglass-causeway',r=>r.oReviewAdvance.review.liveKickAcceptance='passed'),/O review boundary/);
+ const p='godot/ui/local_settings.gd';assert.throws(()=>productionResources({...options,read:x=>x===p?Buffer.concat([read(x),Buffer.from('\n# future P')]):read(x)}),/content hash mismatch/);
+ const evidence=Object.keys(O_EVIDENCE)[1];assert.throws(()=>productionResources({...options,read:x=>x===evidence?Buffer.from('{}'):read(x)}),/Exact retained O evidence/);
+});
 test('all seven strict closures bind exact 8921 snapshot, opaque shader, identity composition and scene compiler',()=>{
  assert.deepEqual(productionResources(options).pending,[]);
  assert.equal(Object.keys(s.changed).length,22);
