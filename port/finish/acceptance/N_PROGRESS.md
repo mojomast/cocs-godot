@@ -1,5 +1,17 @@
 # Release acceptance N — execution checkpoint
 
+## Parent integration and follow-up
+
+N `7d4731e2` merged as **`17807ab9`**. Parent inspected the fixture/source-test
+corrections and independently passed the weather spatial oracle, five receipt
+tests, both changed-script grammar checks and whitespace checks. Parent verified
+all three empty release audits and no live members of the 48 recorded groups.
+
+Next exclusive grant **`GAMEPLAY-REPAIR-20261003-O`** belongs to gameplay owner
+`ses_f0294303bffed6Fb8UJLKe4ZDz`, targeting the failed world vehicle approach and
+two Controls texture leaks. Windows preparation runs source/remote-only in parallel.
+N results retain their original source anchors; neither open failure is accepted.
+
 Grant: `RELEASE-ACCEPTANCE-20261003-N`. Owner: acceptance. No child agents.
 Adopted parent `701d4caf736a0c7f45f79fdef7475b1603f79768` before execution.
 Evidence root: `/home/mojo/.tmp-on-disk/cocs-release-acceptance-N-20261003`.
