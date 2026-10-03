@@ -9,22 +9,35 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from config import HERE, DEST, MAPS, entry, read, write, sha
 
-def run(map_id):
+def run(map_id,refresh=False):
     import bpy
     from mathutils import Vector
     if bpy.app.version[:3] != (4,5,14):raise ValueError('Pinned Blender 4.5.14 required')
     author,data,_,_,_=entry(map_id)
     evidence=HERE/'evidence'/map_id
     evidence.mkdir(parents=True,exist_ok=True)
-    build=read(author.REPORT)
+    build=read(evidence/'build-report.json' if refresh else author.REPORT)
     if build.get('geometryHash')!=data['geometryHash'] or 'files' not in build:raise ValueError('Fresh build receipt required')
-    for path,digest in build['files'].items():
-        from config import ROOT
-        if sha(ROOT/path)!=digest:raise ValueError('Build artifact changed: '+path)
-    write(evidence/'build-report.json',build)
+    if refresh:
+        import datetime as dt
+        import tarfile
+        prior=read(evidence/'evaluated.json')
+        if prior['masterSha256']!=sha(author.MASTER) or prior['glbSha256']!=sha(author.EXPORT):raise ValueError('Camera refresh requires intact measured artifacts')
+        archive=HERE/'evidence/attempts'/(dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%S%f')+'-'+map_id+'-camera-master.tar.gz')
+        with tarfile.open(archive,'w:gz') as tar:
+            for path in (author.MASTER,evidence/'evaluated.json',evidence/'reopen-report.json'):tar.add(path,arcname=path.name)
+    else:
+        for path,digest in build['files'].items():
+            from config import ROOT
+            if sha(ROOT/path)!=digest:raise ValueError('Build artifact changed: '+path)
+        write(evidence/'build-report.json',build)
     bpy.ops.wm.open_mainfile(filepath=str(author.MASTER))
     scene=bpy.context.scene
     if scene['geometry_hash']!=data['geometryHash']:raise ValueError('Stale master')
+    previous=bpy.data.collections.get('Botanical matched native inspection cameras')
+    if previous:
+        for obj in list(previous.objects):bpy.data.objects.remove(obj,do_unlink=True)
+        bpy.data.collections.remove(previous)
     collection=bpy.data.collections.new('Botanical matched native inspection cameras')
     scene.collection.children.link(collection)
     cameras=read(DEST/(map_id+'-cameras.json'))['cameras']
@@ -40,6 +53,11 @@ def run(map_id):
     import kit_build
     reopened=kit_build.reopen_export(author.ROOT,author.MASTER,author.EXPORT,author.REPORT,author.AUTHORITY)
     write(evidence/'reopen-report.json',reopened)
+    # Hidden source objects are excluded from the freshly opened depsgraph;
+    # their cached matrix_world may still be identity. Evaluate them explicitly
+    # for measurement without resaving or exposing duplicate rendered sources.
+    bpy.data.collections['SOURCE - authority and map-variety kit'].hide_viewport=False
+    bpy.context.view_layer.update()
     depsgraph=bpy.context.evaluated_depsgraph_get()
     def point(obj,v):
         p=obj.matrix_world@v
@@ -73,5 +91,5 @@ def run(map_id):
 
 if __name__=='__main__':
     args=sys.argv[sys.argv.index('--')+1:]
-    if len(args)!=1 or args[0] not in MAPS:raise ValueError('Expected exact botanical map ID')
-    run(args[0])
+    if len(args) not in (1,2) or args[0] not in MAPS or (len(args)==2 and args[1]!='--refresh-cameras'):raise ValueError('Expected exact botanical map ID')
+    run(args[0],len(args)==2)

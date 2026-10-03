@@ -85,18 +85,19 @@
       "id": "greenhouse-eye",
       "eye": [
         30,
-        17.65,
-        78
+        22.298223236078307,
+        100
       ],
       "target": [
         0,
         30,
         87
       ],
+      "repositionReason": "Native review: view from supported outer approach rather than underneath pavilion; same before/after eye",
       "beforeEye": [
         30,
-        17.65,
-        78
+        22.298223236078307,
+        100
       ],
       "player": true,
       "fov": 68,
@@ -105,8 +106,8 @@
         26.45,
         78
       ],
-      "ground": 16,
-      "beforeGround": 16,
+      "ground": 20.64822323607831,
+      "beforeGround": 20.64822323607831,
       "comparison": "matched-player-camera",
       "sourceCameraAdjustment": "source-support correction; original retained in authoredEye"
     },
@@ -142,26 +143,26 @@
     {
       "id": "archive-player",
       "eye": [
-        52,
+        -47,
         9.65,
-        0
-      ],
-      "target": [
-        43,
-        13,
         10
       ],
-      "beforeEye": [
-        52,
+      "target": [
+        -44,
         9.65,
-        0
+        30
+      ],
+      "beforeEye": [
+        -47,
+        9.65,
+        10
       ],
       "player": true,
       "fov": 68,
       "authoredEye": [
-        52,
+        -47,
         9.65,
-        0
+        10
       ],
       "ground": 8,
       "beforeGround": 8,
@@ -171,26 +172,26 @@
     {
       "id": "canopy-player",
       "eye": [
-        86,
+        74,
         17.65,
-        0
+        44
       ],
       "target": [
-        72,
-        27,
-        0
+        40,
+        9,
+        24
       ],
       "beforeEye": [
-        86,
+        74,
         17.65,
-        0
+        44
       ],
       "player": true,
       "fov": 68,
       "authoredEye": [
-        86,
+        74,
         17.65,
-        0
+        44
       ],
       "ground": 16,
       "beforeGround": 16,
@@ -200,26 +201,26 @@
     {
       "id": "crown-player",
       "eye": [
-        116,
+        100,
         25.65,
-        0
+        58
       ],
       "target": [
-        96,
-        39,
-        10
+        42,
+        10,
+        25
       ],
       "beforeEye": [
-        116,
+        100,
         25.65,
-        0
+        58
       ],
       "player": true,
       "fov": 68,
       "authoredEye": [
-        116,
+        100,
         25.65,
-        0
+        58
       ],
       "ground": 24,
       "beforeGround": 24,

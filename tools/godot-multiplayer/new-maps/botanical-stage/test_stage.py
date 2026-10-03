@@ -58,6 +58,20 @@ class StageTests(unittest.TestCase):
         with self.assertRaises(ValueError):TriangleInventory([row,row]).match([row],complete=True)
         with self.assertRaises(ValueError):TriangleInventory([row]).match([row,row])
 
+    def test_exporter_font_material_variant_regression(self):
+        # Real Blender's second font UV stream can generate duplicate named
+        # material variants. The correction must normalize producer UVs rather
+        # than letting ambiguous material identities through the verifier.
+        from export_audit import audit_glb
+        from glb_test_fixtures import preserved_bindings
+        from types import SimpleNamespace
+        doc,binary=geometry_fixture(primitive_count=2)
+        doc['materials'].append(copy.deepcopy(doc['materials'][0]))
+        doc['meshes'][0]['primitives'][1]['material']=1
+        blob=encode_glb(doc,binary)
+        with self.assertRaisesRegex(ValueError,'Ambiguous duplicate'):
+            audit_glb(SimpleNamespace(read_bytes=lambda:blob),ROOT,preserved_bindings())
+
     def test_rays_reject_nan_and_detect_upper_body_not_just_footprints(self):
         wall=[[[0,1,-1],[0,3,-1],[0,3,1]],[[0,1,-1],[0,3,1],[0,1,1]]]
         self.assertAlmostEqual(RayIndex(wall).ray([-1,2,0],[1,0,0],3),1)

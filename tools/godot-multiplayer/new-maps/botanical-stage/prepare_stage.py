@@ -10,6 +10,8 @@ import re
 import shutil
 import subprocess
 import sys
+import hashlib
+import itertools
 from config import HERE, ROOT, DEST, MAPS, entry, source_manifest, read, write, sha, res
 
 
@@ -71,8 +73,20 @@ def prepare_artifacts(map_id):
     profile,prior=make_profile(map_id,proof['usedMaterials'])
     write(stage/'profile.json',profile)
     write(stage/'geometry-proof.json',proof)
+    from glb_geometry import EmbeddedGlb
+    from export_audit import png_pixels
+    container=EmbeddedGlb(author.EXPORT.read_bytes());pixels={}
+    for material in container.doc['materials']:
+        channels={}
+        pbr=material.get('pbrMetallicRoughness',{})
+        for key,texture in [('albedo',pbr.get('baseColorTexture')),('normal',material.get('normalTexture')),('roughness',pbr.get('metallicRoughnessTexture'))]:
+            if texture:
+                (w,h),rgba=png_pixels(container.image_bytes(texture))
+                channels[key]={'width':w,'height':h,'rgba8Sha256':hashlib.sha256(bytes(itertools.chain.from_iterable(rgba))).hexdigest()}
+        pixels[material['name']]=channels
+    write(stage/'expected-pixels.json',pixels)
     paths=[stage/'candidate.glb',stage/'authority.json',stage/'probes.json',stage/'profile.json',
-           stage/'geometry-proof.json',DEST/'profile_schema.gd',DEST/'source-manifest.json',
+           stage/'geometry-proof.json',stage/'expected-pixels.json',DEST/'profile_schema.gd',DEST/'source-manifest.json',
            DEST/(map_id+'-cameras.json')]+list(DEST.glob('*.gd'))
     paths+= [ROOT/'godot/multiplayer_worlds/dressing/binder.gd',ROOT/'godot/ambience/weather_service.gd']
     manifest={'schema':'botanical-stage/v1','status':'artifacts-verified-native-pending',

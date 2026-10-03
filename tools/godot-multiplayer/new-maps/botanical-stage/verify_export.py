@@ -89,7 +89,18 @@ def verify(map_id):
         collision=source.ray(spec['origin'],spec['direction'],spec['max'])
         rendered=visual.ray(spec['origin'],spec['direction'],spec['max'])
         if abs(collision-rendered)>BEVEL:raise ValueError(f'Actual GLB/source ray mismatch {spec["id"]}: {collision}, {rendered}')
-        if spec['kind']=='portal' and collision<spec['max']-PRECISION:raise ValueError('Blocked portal '+spec['id'])
+        if spec['kind']=='portal' and collision<spec['max']-PRECISION:
+            # A horizontal ray can meet the ascending walkable floor beyond an
+            # arch. That is not a filled aperture. Prove the hit is walkable
+            # support, and still forbid every wall/nonwalkable cap in the span.
+            forbidden=[]
+            for wall in data['arena']['terrain']['walls']:
+                v=wall['vertices'];forbidden.extend([[v[0],v[i],v[i+1]] for i in range(1,len(v)-1)])
+            for s in data['arena']['terrain']['surfaces']:
+                if not s.get('walkable',True):forbidden.extend([[s['vertices'][i] for i in f] for f in s['triangles']])
+            if RayIndex(forbidden).ray(spec['origin'],spec['direction'],spec['max'])<spec['max']-PRECISION:
+                raise ValueError('Blocked portal '+spec['id'])
+            spec['walkableFloorIntersection']=collision
         rays.append({**spec,'authority':collision,'glb':rendered,'toleranceMetres':BEVEL})
     return {'geometryHash':data['geometryHash'],'glbSha256':sha(author.EXPORT),'masterSha256':sha(author.MASTER),
         'geometryStatus':'actual-export-verified','nativeStatus':'pending','usedMaterials':audit['usedMaterials'],

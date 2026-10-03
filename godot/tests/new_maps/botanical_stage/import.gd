@@ -14,6 +14,26 @@ func run() -> void:
 	var world := Stage.make_world(root,id)
 	var originals := Stage.snapshot(world)
 	assert(not originals.is_empty())
+	var expected_pixels := Stage.read_json(Stage.directory(id)+"expected-pixels.json")
+	var verified_pixels := {}
+	for row: Dictionary in originals:
+		var material: StandardMaterial3D = row.active
+		var selector: String = row.source.resource_name
+		if verified_pixels.has(selector): continue
+		var channels: Dictionary = expected_pixels[selector]
+		for channel: String in channels:
+			var texture: Texture2D = material.get(channel+"_texture")
+			assert(texture != null)
+			var image := texture.get_image()
+			if image.is_compressed(): assert(image.decompress()==OK)
+			image.clear_mipmaps()
+			image.convert(Image.FORMAT_RGBA8)
+			assert(image.get_width()==int(channels[channel].width) and image.get_height()==int(channels[channel].height))
+			var digest := HashingContext.new()
+			digest.start(HashingContext.HASH_SHA256)
+			digest.update(image.get_data())
+			assert(digest.finish().hex_encode()==channels[channel].rgba8Sha256,"Imported pixel mismatch: "+selector+"/"+channel)
+		verified_pixels[selector] = channels
 	var proof := Stage.read_json(Stage.directory(id)+"geometry-proof.json")
 	var triangles := 0
 	for node: MeshInstance3D in Stage.art_root(world).find_children("*","MeshInstance3D",true,false):
@@ -50,7 +70,7 @@ func run() -> void:
 	var weather_report: Dictionary = weather.look.diagnostics()
 	weather.look.clear()
 	Stage.restored(originals)
-	var report := {"geometryHash":receipt.geometryHash,"glbSha256":receipt.glbSha256,"manifestSha256":FileAccess.get_sha256(Stage.directory(id)+"manifest.json"),"godot":version,"triangles":triangles,"materials":proof.usedMaterials,"materialInstancesRestored":originals.size(),"weatherLook":weather_report,"dressing":world.get_meta("staged_dressing"),"scope":"actual imported GLB/schema/Binder/Weather lifecycle; rendering and hosted play are separate pending gates"}
+	var report := {"geometryHash":receipt.geometryHash,"glbSha256":receipt.glbSha256,"manifestSha256":FileAccess.get_sha256(Stage.directory(id)+"manifest.json"),"godot":version,"triangles":triangles,"materials":proof.usedMaterials,"importedPixelEvidence":verified_pixels,"materialInstancesRestored":originals.size(),"weatherLook":weather_report,"dressing":world.get_meta("staged_dressing"),"scope":"actual imported GLB/schema/Binder/Weather lifecycle; rendering and hosted play are separate pending gates"}
 	var file := FileAccess.open(Stage.directory(id)+"import-report.json",FileAccess.WRITE)
 	file.store_string(JSON.stringify(report,"  ")+"\n")
 	print("BOTANICAL_IMPORT ",JSON.stringify(report))

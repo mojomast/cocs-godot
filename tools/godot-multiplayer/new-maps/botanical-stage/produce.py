@@ -17,7 +17,9 @@ def produce(map_id,phase):
         run(180,sys.executable,'-B',HERE/'prepare_stage.py','--map',map_id)
     elif phase=='native':
         # Import/parser errors are retained; no timeout is silently widened.
-        run(900,GODOT,'--headless','--path','godot','--editor','--import','--quit')
+        run(900,GODOT,'--headless','--single-threaded-scene','--path','godot','--editor','--import','--quit')
+        run(60,sys.executable,'-B',HERE/'pin_import.py',map_id)
+        run(900,GODOT,'--headless','--single-threaded-scene','--path','godot','--editor','--import','--quit')
         for script,seconds in [('import',120),('physics',180)]:
             run(seconds,GODOT,'--headless','--path','godot','--script',f'res://tests/new_maps/botanical_stage/{script}.gd','--','--map='+map_id)
     elif phase=='capture':

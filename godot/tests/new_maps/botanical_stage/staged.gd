@@ -43,6 +43,10 @@ static func make_world(parent: Node, id: String, candidate: bool = true) -> Node
 	parent.add_child(world)
 	assert(world.build(data))
 	if candidate:
+		var import_options := ConfigFile.new()
+		assert(import_options.load(directory(id)+"candidate.glb.import")==OK)
+		assert(import_options.get_value("params","meshes/force_disable_compression",false)==true)
+		assert(import_options.get_value("params","meshes/generate_lods",true)==false)
 		Binder.cleanup(world)
 		var old := world.get_node_or_null("BlenderArtNoGameplayCollision")
 		assert(old != null, "Accepted runtime baseline art required")

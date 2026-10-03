@@ -29,7 +29,8 @@ python3 -B tools/godot-multiplayer/new-maps/parallax-observatory/revisions/distr
 python3 -B tools/godot-multiplayer/new-maps/vesper-viaduct/revisions/urban-v2/asset_author.py plan
 ```
 
-The source handoff has 7 Python harness tests and 1 Node layer-preservation test.
+The initial source handoff has 7 Python harness tests and 1 Node layer-preservation test
+(now 8 Python tests after the actual exporter regression was added).
 GDScript parsing, actual builds, import and native reports are **pending** at this
 source checkpoint. No generated UID/import cache or acceptance report is supplied.
 
@@ -139,3 +140,37 @@ and record the U release receipt before handoff. Preserve all pre-existing
 sidecars; only provably new, untracked, unrelated U-generated sidecars may be
 removed with a before/after hash receipt. Packaging policy is not changed here;
 the parent must explicitly inventory any later promotion transaction.
+
+## U production corrections (source delta after `68e3f21e`)
+
+- Actual Blender export found evaluated n-gons missing tangents and font UV1
+  splitting `gold` into duplicate named materials. The consumer Kit wrapper now
+  adds a final n-gon Triangulate modifier, preserving editable source polygons;
+  converted fonts retain their sole authored MothLocal UV stream. Strict tangent/
+  material audits remain unchanged. The duplicate-material binary fixture is a
+  regression, and the actual corrected Helix export passes those same gates.
+- Freshly reopened hidden source objects have unevaluated identity matrix caches.
+  The proof explicitly unhides/evaluates them **after** saving/reopening, without
+  resaving visible duplicate geometry. Raw world placements/faces then match.
+- A portal ray may hit the ascending walkable floor past the arch. Such hits are
+  reported with their distance, matched to the real GLB, and still require the
+  entire ray span to be free of walls and nonwalkable caps. They are not labelled
+  empty-space rays. Native finite-capsule route checks remain required.
+- Cold multi-threaded Godot scene import crashed in the engine. The retained
+  retry uses `--single-threaded-scene` and the same 900 s bound; it completed.
+- Godot's default mesh compression displaced actual GLB ray hits by millimetres.
+  `pin_import.py` edits only actual generated candidate sidecars to disable mesh
+  compression/LOD generation, retains the native UID, and reimports. The 0.1 mm
+  ray precision gate is unchanged. Imported albedo/normal/packed roughness images
+  are decoded to RGBA8 and hashed against real embedded GLB pixels natively.
+- Tiny nonzero trigonometric coordinates on cardinal floor seams can miss a
+  center ray and two cardinal-offset retries. Native diagnostic probes reproduced
+  this at (-12,0,~1e-15) and (~5e-15,16,86); all four diagonal 5 mm footprint
+  corners hit the correct plane. The fallback now requires all four corners,
+  reports every seam and still tests the capsule at the unmodified authored
+  coordinate. No old nav Y is rewritten or discarded.
+
+`release_verify.py --cleanup-sidecars` inventories/removes only provably new,
+untracked unrelated sidecars. After `grant.py release`, `release_verify.py`
+checks all three empty group audits plus current kernel identities and records
+nonwaiting lock availability. These steps must be executed, not inferred.

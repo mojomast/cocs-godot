@@ -54,8 +54,8 @@ export function makeProbes(data, accepted) {
   const authored=a.art.cameras??a.art.inspectionViews;
   const extra={
     'helix-conservatory':[
-      ['lightwell-player',0,10,0,3,-8],['archive-player',52,0,43,13,10],
-      ['canopy-player',86,0,72,27,0],['crown-player',116,0,96,39,10]],
+      ['lightwell-player',0,10,0,3,-8],['archive-player',-47,10,-44,9.65,30],
+      ['canopy-player',74,44,40,9,24],['crown-player',100,58,42,10,25]],
     'parallax-observatory':[
       ['well-descent',32,-34,43,12,-34],['court-relief',24,-34,10,17,-34]],
     'vesper-viaduct':[
@@ -68,6 +68,10 @@ export function makeProbes(data, accepted) {
     if(a.id==='helix-conservatory'&&view.id==='botanical-eye') {
       view.eye=[-29.5,9.65,46.5];
       view.repositionReason='0.71m lateral move to clear candidate shelf rim; both variants use this same location';
+    }
+    if(a.id==='helix-conservatory'&&view.id==='greenhouse-eye') {
+      view.eye=[30,25.65,100];
+      view.repositionReason='Native review: view from supported outer approach rather than underneath pavilion; same before/after eye';
     }
     const [x,y,z]=view.eye;
     if(view.id==='overview') {cameras.push({...view,beforeEye:view.eye,comparison:'matched-overview',player:false,fov:68});continue;}

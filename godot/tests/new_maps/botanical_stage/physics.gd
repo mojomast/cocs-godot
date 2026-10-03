@@ -44,7 +44,9 @@ func run() -> void:
 		var hit := space.intersect_ray(PhysicsRayQueryParameters3D.create(origin+Vector3.UP*.5,origin-Vector3.UP*.3,1))
 		if hit.is_empty():
 			var adjacent_count := 0
-			for offset: Vector3 in [Vector3(.005,0,0),Vector3(-.005,0,0),Vector3(0,0,.005),Vector3(0,0,-.005)]:
+			# Diagonal footprint corners avoid leaving two retry rays on the
+			# same cardinal seam (authored trig coordinates can be ~1e-15).
+			for offset: Vector3 in [Vector3(.005,0,.005),Vector3(-.005,0,.005),Vector3(.005,0,-.005),Vector3(-.005,0,-.005)]:
 				var adjacent := space.intersect_ray(PhysicsRayQueryParameters3D.create(origin+offset+Vector3.UP*.5,origin+offset-Vector3.UP*.3,1))
 				if not adjacent.is_empty() and absf(float(adjacent.position.y)-float(p.y))<.08:
 					adjacent_count += 1

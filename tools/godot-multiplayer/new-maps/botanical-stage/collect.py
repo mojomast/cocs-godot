@@ -3,6 +3,7 @@ import argparse
 from config import HERE, ROOT, DEST, MAPS, entry, read, write, sha, res
 
 def collect(map_id):
+    author,_,_,_,_=entry(map_id)
     from export_audit import png_pixels
     stage=DEST/'artifacts'/map_id;manifest=read(stage/'manifest.json')
     identity=manifest['geometryHash'];manifest_sha=sha(stage/'manifest.json')
@@ -24,7 +25,7 @@ def collect(map_id):
             row=found[0];path=ROOT/'godot'/row['path'][6:]
             expected=identity if variant=='candidate-runtime-after' else manifest['source']['acceptedGeometryHash']
             if row['geometryHash']!=expected or sha(path)!=row['sha256']:raise ValueError('Image identity mismatch')
-            w,h,pixels=png_pixels(path.read_bytes())
+            (w,h),pixels=png_pixels(path.read_bytes())
             if (w,h)!=(1280,720):raise ValueError('Wrong native dimensions')
             decoded.append(pixels);images.append({**row,'bytes':path.stat().st_size,'width':w,'height':h})
         different=sum(a!=b for a,b in zip(*decoded))

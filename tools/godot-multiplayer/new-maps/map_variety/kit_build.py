@@ -127,6 +127,12 @@ def _labels(export_collection, materials, density, labels):
         # Helix labels intentionally use its reviewed gold PBR, so converted
         # fonts need the same explicit UV channel/tangent basis as Kit meshes.
         uv = obj.data.uv_layers.get('MothLocal') or obj.data.uv_layers.new(name='MothLocal')
+        # Converted fonts may retain a generated UVMap. The material explicitly
+        # selects MothLocal; keeping it as UV1 makes glTF split the same named
+        # material into per-mesh texCoord variants. This mesh uses only MothLocal.
+        for layer in list(obj.data.uv_layers):
+            if layer != uv:
+                obj.data.uv_layers.remove(layer)
         uv.active_render = True
         repeat = density[label['material']]
         for loop in obj.data.loops:
@@ -147,7 +153,15 @@ def build(root, authority_path, bindings_path, master_path, export_path, report_
     from blender_kit import Kit
     class OrientedKit(Kit):
         def mesh(self, name, vertices, faces, material, **kwargs):
-            return super().mesh(name, vertices, kit_expander.outward_faces(vertices,faces), material, **kwargs)
+            obj = super().mesh(name, vertices, kit_expander.outward_faces(vertices,faces), material, **kwargs)
+            # Bevels and pipe endcaps can produce n-gons. Blender's glTF tangent
+            # calculator accepts tris/quads only. Keep editable source polygons
+            # and triangulate the evaluated result after bevel/normal modifiers.
+            triangulate = obj.modifiers.new('Export tangent-safe n-gons', 'TRIANGULATE')
+            triangulate.min_vertices = 5
+            if hasattr(triangulate, 'keep_custom_normals'):
+                triangulate.keep_custom_normals = True
+            return obj
 
     authority = json.loads(Path(authority_path).read_text())
     arena = authority['arena']
