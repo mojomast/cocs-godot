@@ -33,6 +33,8 @@ CONTRACTS = [
     ('operator-grips','source_operators/grips.gd','maximumGripWorldError',240),
     ('operator-nine','operator_motion/contracts.gd','operator-motion-native',1200),
     ('operator-melee','operator_motion/melee_contracts.gd','operator-world-melee',240),
+    ('operator-reduced-settings','operator_motion/reduced_settings.gd','OPERATOR_REDUCED_SETTINGS',120),
+    ('operator-finish','operator_motion/finish_lifecycle.gd','OPERATOR_FINISH_LIFECYCLE_OK',120),
     ('biomes','biomes/contracts.gd','biome-model-animation',240),
     ('animation-actors','animation_pass/actors.gd','ACTOR_ANIMATION_OK',240),
     ('world-motion','world_motion/unit.gd','WORLD_MOTION_UNIT_OK',60),
@@ -55,6 +57,10 @@ def plan(root=ROOT, godot=GODOT, output=Path('/tmp/opencode/motion-native'), sco
     def add(name, argv, timeout, marker, sources, **extra):
         jobs.append(dict(id=name, argv=argv, timeout=timeout, marker=marker,
                          requires=sources, lock_owner='queue', **extra))
+    if scope == 'vehicle-live':
+        add('vehicle-live',['node','tools/motion-review/vehicle_live.mjs',godot,str(output/'vehicle-live'/'evidence')],120,
+            'VEHICLE_VIEW_LIVE_OK',['tools/motion-review/vehicle_live.mjs','godot/tests/sports/view_live.gd'])
+        return jobs
     if scope == 'live-kick':
         add('live-kick',[sys.executable,'tools/godot-weapons/kick-live.py','--execute-native',
             '--grant',grant,'--godot',godot,'--output',str(output/'live-kick'/'producer')],1800,
@@ -100,6 +106,7 @@ def anchor(root, jobs):
     for folder in ['godot/source_operators/generated','godot/fighting/data']:
         files.update(str(p.relative_to(root)) for p in (root/folder).glob('*') if p.is_file() and p.suffix in ['.glb','.gd','.json'])
     files.update(str(p.relative_to(root)) for p in (root/'godot/content/generated').rglob('*.json'))
+    files.update(str(p.relative_to(root)) for p in (root/'godot/source_operators/moth_finish').rglob('*') if p.is_file() and p.suffix in ['.json','.png','.gd'])
     hashes = {p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in sorted(files) if (root/p).is_file()}
     return {'head':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),
             'sha256':hashlib.sha256(json.dumps(hashes,sort_keys=True).encode()).hexdigest(),
@@ -137,13 +144,14 @@ def execute_job(job, output, env):
 
 def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--scope',choices=['contracts','graphics','live-kick'],default='contracts')
+    parser.add_argument('--scope',choices=['contracts','graphics','live-kick','vehicle-live'],default='contracts')
     parser.add_argument('--godot',default=GODOT)
     parser.add_argument('--output',type=Path,default=Path('/tmp/opencode/motion-native'))
     parser.add_argument('--execute',action='store_true')
     parser.add_argument('--grant',default='')
     parser.add_argument('--candidate',default='',help='Exact merged/runtime-reviewed HEAD, including operator overlay')
     parser.add_argument('--only',action='append',default=[],help='Explicit gate IDs for a bounded failure retry; no implicit import')
+    parser.add_argument('--keep-going',action='store_true',help='Run independent selected gates serially after behavioral failures')
     args=parser.parse_args(argv)
     jobs=plan(godot=args.godot,output=args.output,scope=args.scope,grant=args.grant or 'NEW-GRANT')
     if args.only:
@@ -151,7 +159,7 @@ def main(argv=None):
         jobs=[j for j in jobs if j['id'] in args.only]
     identity=anchor(ROOT,jobs)
     report={'executed':False,'scope':args.scope,'sourceAnchor':identity,'jobs':jobs,
-            'runtimeCandidateNeedsOperatorOverlayMerge':True,'attempts':[]}
+            'runtimeCandidateNeedsOperatorOverlayMerge':not (ROOT/'godot/source_operators/melee_events.gd').exists(),'attempts':[]}
     if not args.execute:
         print(json.dumps(report,indent=2));return 0
     if not args.grant or args.candidate!=identity['head']: parser.error('New explicit grant and exact reviewed --candidate HEAD required')
@@ -165,7 +173,7 @@ def main(argv=None):
             result={'status':'failed','failure_reason':str(error)}
         report['attempts'].append({'id':job['id'],**result})
         save_report(args.output/'queue.json',report)
-        if result['status']!='passed': return 1
-    return 0
+        if result['status']!='passed' and (not args.keep_going or result.get('cleanup',{}).get('remaining') or result.get('failure_reason') in ['interrupted','descendants-survived']): return 1
+    return int(any(a['status']!='passed' for a in report['attempts']))
 
 if __name__=='__main__': raise SystemExit(main())

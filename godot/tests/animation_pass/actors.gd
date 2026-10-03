@@ -135,7 +135,9 @@ func run() -> void:
 	# shortened-stride implementation's 3.8 m/s swing-speed cap.
 	for i in [1,2]:
 		check(rate_paths[i].size()==6,"Six transition-time samples required")
-		for sample in 6: check(rate_paths[i][sample].distance_to(rate_paths[0][sample])<0.03,"Transition ankle paths converge within 3 cm across render rates")
+		for sample in 6:
+			var error: float = rate_paths[i][sample].distance_to(rate_paths[0][sample])
+			check(error<0.03,"Transition ankle paths converge within 3 cm across render rates: rate=%d sample=%d error=%f"%[i,sample,error])
 	for i in [1,2]: check(operator_feet[i].distance_to(operator_feet[0])<0.005,"Operator final terrain-foot rate invariance")
 	var gesture := Gesture.new(); gesture.select("wave"); gesture.advance(0.9)
 	var before: Dictionary = gesture.sample(); gesture.select("work")

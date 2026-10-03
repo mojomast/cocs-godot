@@ -109,7 +109,7 @@ func _initialize() -> void:
 		check(is_equal_approx(-p.x*sin(yaw)-p.z*cos(yaw), 1), "exact source throttle projection")
 		check(is_equal_approx(-p.x*cos(yaw)+p.z*sin(yaw), -1), "source D negative-right steer projection")
 	var diagonal := g.command(PI/4, 0, true, true)
-	check(is_equal_approx(diagonal.x, -sqrt(2.0)) and is_zero_approx(diagonal.z), "source web keeps full W+D axes without native normalization")
+	check(is_equal_approx(Vector2(diagonal.x,diagonal.z).length(),sqrt(2.0)) and is_equal_approx(-diagonal.x*sin(PI/4)-diagonal.z*cos(PI/4),1.0) and is_equal_approx(-diagonal.x*cos(PI/4)+diagonal.z*sin(PI/4),-1.0), "source web keeps full W+D axes and signed source projection without native normalization")
 	tap(g, KEY_E)
 	check(g.command(0, 0, true, true).interact, "tap survives until packet")
 	check(not g.command(0, 0, true, true).interact, "interact consumed once")

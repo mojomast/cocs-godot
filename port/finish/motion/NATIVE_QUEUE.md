@@ -47,7 +47,40 @@ native logs, and descendant cleanup results. Native runs are serialized under
   0.000209365 m; maximum target residual 0.000208896 m; maximum grip residual
   0.000003847 m. Melee ankle travel 0.775980–0.870201 m; maximum support error
   0.000000043 m. These are fixed-step physical measurements, not visual acceptance.
-- `k-operator-graphics`: gait and accepted-event melee phase galleries underway.
+- `k-operator-graphics`: **passed**, 216 gait PNGs and 243 melee PNGs. Inspected
+  Gemini lateral gait and ChatGPT side/contact kick; both show articulated limbs.
+- `k-rest-contracts` / `k-rest-fixes`: native results exposed stale fixed camera
+  offsets, a diagonal expectation with the old steering sign, unowned eager
+  nodes in the session stub, and an exact scalar/Vector3 precision mismatch.
+  Corrected physical camera/command invariants and fixture teardown now pass.
+  Sports lifecycle now awaits actual 760×520/UI150 layout, checking nonzero bounds.
+  Operator legacy matrices, measured grips, biomes, ordinary/world motion and
+  campaign motion pass. Animation transition convergence initially failed by
+  up to 0.245460 m; this was a real frame-rate-dependent phase integration bug.
+- `88c65c9f`: integrate the velocity-filter stride trajectory at bounded midpoint
+  samples; decorate copied public presentation actors with real reduced-motion
+  preferences. `k-motion-integral` passes the strict 3 cm cross-rate transition
+  gate, 540 gait cases, 27 melee cases, and the actual settings-toggle pipeline.
+- `k-fps-graphics`: **passed**, 135 normal + 135 reduced-ADS kick PNGs across
+  nine profiles/three strikes/five phases, with camera FOV consistency assertions;
+  native ADS projection and handling capture gates also passed.
+- Parent `5b5c8791` promotion merged at a safe boundary. `b9e2a9eb` fixes the
+  previously hardcoded generated shared sports route to admit public Stormglass;
+  `generate-scenes.mjs --check` passes. No source authority was edited.
+- `k-vehicle-live-authority`: **passed**, ordinary Enter/W/D/F4/Escape through
+  the real shared public Stormglass client and accepted derived authority.
+  Four native images show third/first-person driving and turning. Earlier retries
+  retained missing Node dependency and wrong authority runner configuration errors.
+  Compact results/restart/audio restoration is a separate bounded run underway.
+
+### Texture import policy observation
+
+`moth-import-policy.json` records all 116 tracked Moth PNG SHA-256 values.
+All 116 received local `.import` sidecars; none are tracked. Observed sidecars use
+`compress/mode=0`, `compress/normal_map=0`. No speculative importer-mode change
+was made. Native captures load these assets; the binder lifecycle gate explicitly
+checks installation, texture resources, team isolation and teardown across nine
+profiles. Sidecar commit completeness remains a package-owner decision.
 
 ## Fixture audit
 
