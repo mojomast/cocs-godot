@@ -22,7 +22,7 @@ boundaries.
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
 | Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Exclusive grant F: twelve assemblies/24 LOD exports, masters/reopen, atomic lifecycle, four connected chapter journeys and visual review |
-| Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Actual production integrated at `1f129ab2`; E released, 22 parent source checks pass; source-only compact-HUD clipping correction active |
+| Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Actual production at `1f129ab2`; E released; compact-HUD correction at `83ceaa62` passes six parent source checks/grammar, new native layout/screenshots pending |
 | Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base `b6ab6782` and ordinary-controller follow-up `da259d19` integrated; 26 parent acceptance tests and grammar pass; native execution awaits later grant and device access |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Launch-bound UI registration integrated through `2e355b93`; 142 jobs preserve all prior coverage; 35 parent runner/receipt tests pass; fresh ledger still required |
 | Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Parallax and robots promoted; actual vehicle promotion and extracted texture/import audit active; scenery/three maps still need production; final export/Windows CI pending |
@@ -682,3 +682,14 @@ The original scenery owner now holds exclusive F, starting from `1f129ab2` with
 the integrated atomic loader and connected journeys. It must build/reopen all
 real outputs and execute native four-chapter/LOD/lifecycle/shot/workshop/cleanup
 coverage before handing back actual receipts and an explicit process release.
+
+Compact-HUD follow-up `d3ef89dc` is integrated as `83ceaa62`. The only changed
+production path is `godot/combined_arms/hud.gd`: it uses wrapped content heights,
+reserves 36 logical pixels for F12, retains font/user scale and all instructions,
+and provides bounded overflow navigation/focus with scroll reset on recapture.
+Parent passed six layout/contract source tests and grammar parsing for both the
+HUD and its new native fixture. Actual font/container measurements and replacement
+compact/wide screenshots remain pending under a later grant; the original E
+image remains defect evidence. Packaging received the exact changed dependency
+for explicit receipt reconciliation without reattributing E native results.
+Commands and scope: `../expansion-four/vehicles/HUD_COMPACT_SOURCE_FIX.md`.
