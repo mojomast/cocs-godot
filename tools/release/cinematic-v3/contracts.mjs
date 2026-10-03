@@ -70,6 +70,7 @@ export async function plan(m) {
   const dependencyFiles=(await readdir(join(root,'tools/release/cinematic-v3'))).filter(p=>/\.(mjs|py)$/.test(p)).sort().map(p=>`tools/release/cinematic-v3/${p}`).concat([
     'tools/godot-campaign/trailer-fixture.mjs','godot/tests/cinematic_v3/capture.gd','godot/tests/cinematic_v3/attract_candidate.gd',
     'tools/godot-package/production_resources.mjs','tools/godot-dev/finish_runner.py','tools/godot-dev/finish_receipts.py','tools/godot-dev/gate_runner.py',
+    'tools/godot-dev/xvfb_run.py','tools/motion-review/release.py',
     'godot/tests/campaign/trailer_session.gd','godot/ui/attract/demo.json',...m.chapters.map(c=>`godot/campaign/generated/${c.id}.json`)]);
   const files=Object.fromEntries(await Promise.all(dependencyFiles.map(async p=>[p,sha256(await readFile(join(root,p)))])));
   const {assetInputs}=await import('./assets.mjs');
