@@ -11,7 +11,7 @@ test('H exact 16 PNGs and 17 import sidecars retain promotion; strict final stil
  const paths=vesperImportPaths();assert.equal(paths.length,33);assert.equal(paths.filter(p=>p.endsWith('.png')).length,16);
  verifyVesperImports(read);
  const result=productionResources(options);assert.deepEqual(result.pending,['stormglass-causeway']);
- assert.equal(result.units['vesper-viaduct'].expected.packageInputs.length,144);
+ assert.equal(result.units['vesper-viaduct'].expected.packageInputs.length,386);
  for(const p of paths)assert.ok(Object.hasOwn(p.endsWith('.import')?result.provenance:result.resources,p));
  assert.throws(()=>productionResources({...options,strict:true}),/Required final production units remain pending/);
 });

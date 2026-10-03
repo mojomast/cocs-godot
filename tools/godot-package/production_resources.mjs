@@ -10,6 +10,7 @@ import {vehicleImportPaths,verifyVehicleImports,VEHICLE_EVIDENCE} from './vehicl
 import {sceneryImportPaths,verifySceneryImports,SCENERY_EVIDENCE} from './scenery_imports.mjs';
 import {vesperImportPaths,verifyVesperImports,VESPER_EVIDENCE,VESPER_SUPPORTING_RUNTIME} from './vesper_imports.mjs';
 import {abyssalImportPaths,verifyAbyssalImports,ABYSSAL_EVIDENCE,ABYSSAL_SUPPORTING_RUNTIME} from './abyssal_imports.mjs';
+import {FEATURE_ROOTS,verifyFeatureAdvance,robotSupportingHash} from './feature_dependencies.mjs';
 export const REQUIREMENTS='tools/godot-package/production_requirements.json';
 export const REQUIRED_UNITS=Object.freeze(['parallax-interiors','robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
 const skins=['needle_surveyor','caisson_guard','kiln_tender'];
@@ -105,9 +106,14 @@ function helperClosure(paths,read,has) {
   while(todo.length) {
     const path=todo.pop();safe(path);if(seen.has(path))continue;seen.add(path);
     if(!has(path))continue;
-    const source=path.endsWith('.mjs')||path.endsWith('.gd')?read(path).toString():'';
+    const source=/\.(mjs|gd|tscn|tres|gdshader|gdshaderinc)$/.test(path)?read(path).toString():'';
     if(path.endsWith('.mjs'))for(const m of source.matchAll(/\b(?:from\s*|import\s*)['"](\.[^'"]+)['"]/g))todo.push(posix.normalize(posix.join(posix.dirname(path),m[1])));
-    if(path.endsWith('.gd'))for(const m of source.matchAll(/(?:preload|load)\("res:\/\/([^"%{}]+)"\)/g))todo.push('godot/'+m[1]);
+    if(path.endsWith('.gd')) {
+      for(const m of source.matchAll(/(?:preload|load)\("res:\/\/([^"%{}]+)"\)/g))todo.push('godot/'+m[1]);
+      for(const m of source.matchAll(/^extends\s+"res:\/\/([^"%{}]+)"/gm))todo.push('godot/'+m[1]);
+    }
+    if(/\.(tscn|tres)$/.test(path))for(const m of source.matchAll(/\[ext_resource\b[^\]\n]*\bpath="res:\/\/([^"%{}]+)"/g))todo.push('godot/'+m[1]);
+    if(/\.(gdshader|gdshaderinc)$/.test(path))for(const m of source.matchAll(/^\s*#include\s+"res:\/\/([^"%{}]+)"/gm))todo.push('godot/'+m[1]);
   }
   return [...seen].sort();
 }
@@ -136,7 +142,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     // External Parallax recipes are not read from its active worktree. Pending
     // absence is reported until parent imports reviewed committed revision bytes.
     try {spec=specification(unit,read);}catch(error){if(requirement.promotion)throw error;missing.push('specification: '+error.message);spec={inputs:unit.recipePaths,masters:[],exports:[],extra:[]};}
-    const inputs=helperClosure([...spec.inputs,...spec.extra,plan.common.finishScript,'tools/asset-production/receipt.mjs','tools/asset-production/reopen.py','godot/moth/generated/manifest.json','godot/moth/derived/manifest.json','game/moth-baked.mjs'],read,has);
+    const inputs=helperClosure([...spec.inputs,...spec.extra,...FEATURE_ROOTS,plan.common.finishScript,'tools/asset-production/receipt.mjs','tools/asset-production/reopen.py','godot/moth/generated/manifest.json','godot/moth/derived/manifest.json','game/moth-baked.mjs'],read,has);
     spec.packageInputs=inputs;
     for(const path of [...inputs,...spec.masters,...spec.exports]){safe(path);if(!has(path))missing.push(path);}
     const registered=!expectedMap||worldIds.includes(expectedMap);
@@ -145,6 +151,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     if(!promotion||!registered||missing.length){pending.push(unit.id);continue;}
     assert.equal(promotion.receipt,`tools/godot-package/production_receipts/${unit.id}.json`,'Promotion receipt must have its fixed committed path');
     const receipt=JSON.parse(add(promotion.receipt,promotion.sha256));assert.equal(receipt.unit,unit.id);
+    if(['parallax-interiors','robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks'].includes(unit.id))verifyFeatureAdvance(receipt);
     if(unit.id==='parallax-interiors') {
       const evidence=JSON.parse(read('port/new-maps/parallax-observatory/production-c.json'));
       for(const [path,sha]of Object.entries(evidence.inputHashes))add(path,sha);
@@ -198,7 +205,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     if(unit.id==='robots') {
       verifyRobotImports(spec.exports,read);
       const contract=JSON.parse(read('godot/robot_assets/switchyard/contract.json'));
-      for(const [path,sha]of Object.entries(contract.source))add(path,sha);
+      for(const [path,sha]of Object.entries(contract.source))add(path,robotSupportingHash(path,sha,receipt,read));
       const built=JSON.parse(read('godot/robot_assets/switchyard/generated/build-receipt.json'));
       // Archive the exact Python json.dumps(manifest(), sort_keys=True) bytes
       // used by the builder, so verification needs no Python/Blender on Windows.
