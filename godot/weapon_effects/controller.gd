@@ -417,8 +417,10 @@ func _consume_explosion(event: Dictionary) -> void:
 	if pos == null:
 		rejected += 1
 		return
-	if quality == 0: return
 	if not _remember("blast/%d/%s" % [id, str(float(time))], float(time)): return
+	# Consume valid source identity even when effects are disabled. Raising
+	# quality later must not replay an old explosion into the presentation.
+	if quality == 0: return
 	var primary: bool = event.get("alt") != true and weapon in [1,4,5]
 	if primary:
 		_primary_blast(pos,weapon)
@@ -427,7 +429,7 @@ func _consume_explosion(event: Dictionary) -> void:
 	if kind.is_empty():
 		# Source detonate() does not identify a weapon. Give that legitimate event
 		# one restrained presentation without inventing a profile or attribution.
-		if not has_weapon:
+		if not has_weapon and event.get("alt") != true and not event.has("altId"):
 			_generic_blast(pos, event.get("radius"))
 			blasts += 1
 		return
