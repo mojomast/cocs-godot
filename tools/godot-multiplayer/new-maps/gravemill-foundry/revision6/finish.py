@@ -13,7 +13,7 @@ R5 = HERE.parent / 'revision5'
 GLB = ROOT / 'godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5.glb'
 sys.path.insert(0, str(ROOT / 'tools/map-variety-pipeline'))
 from material_pack import load_pack, sha
-from receipt import glb_parts
+from glb_contract import parts as glb_parts, from_parts, values
 
 def read(p): return json.loads(p.read_text())
 def write(p, value):
@@ -24,21 +24,19 @@ def cross(a,b): return (a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b
 def length(a): return math.sqrt(sum(x*x for x in a))
 
 def access(doc, blob, index):
-    a=doc['accessors'][index];v=doc['bufferViews'][a['bufferView']]
-    assert not a.get('sparse') and not a.get('normalized')
-    fmt='<'+{5126:'f',5125:'I',5123:'H'}[a['componentType']]*{'SCALAR':1,'VEC2':2,'VEC3':3,'VEC4':4}[a['type']]
-    size=struct.calcsize(fmt);offset=v.get('byteOffset',0)+a.get('byteOffset',0)
-    return [struct.unpack_from(fmt,blob,offset+i*v.get('byteStride',size)) for i in range(a['count'])]
+    return values(from_parts(doc,blob),index)
 
 def primitives(doc, blob):
-    for node in doc['nodes']:
+    glb=from_parts(doc,blob)
+    for index in glb.foundry_node_order:
+        node=doc['nodes'][index]
         if 'mesh' not in node: continue
         assert not any(k in node for k in ('translation','rotation','scale','matrix'))
         for pi,p in enumerate(doc['meshes'][node['mesh']]['primitives']):
             assert p.get('mode',4)==4
-            streams={k:access(doc,blob,v) for k,v in p['attributes'].items()}
+            streams={k:values(glb,v) for k,v in p['attributes'].items()}
             assert all(k in streams for k in ('POSITION','NORMAL','TANGENT','TEXCOORD_0'))
-            ids=[v[0] for v in access(doc,blob,p['indices'])]
+            ids=[v[0] for v in values(glb,p['indices'])]
             yield node,pi,p,streams,[ids[i:i+3] for i in range(0,len(ids),3)]
 
 def provenance():

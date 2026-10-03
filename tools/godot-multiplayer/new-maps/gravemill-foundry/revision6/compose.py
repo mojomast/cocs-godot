@@ -9,12 +9,14 @@ import copy
 import json
 import struct
 from finish import GLB, glb_parts, primitives, sha
+from glb_contract import EmbeddedGlb, gate
 
 def compose(plan, library):
     raw=GLB.read_bytes();doc,source=glb_parts(raw)
     assert sha(raw)==plan['sourceGLBSha256']
     doc=copy.deepcopy(doc);blob=bytearray(source)
-    lib,libblob=glb_parts(library)
+    material_library=EmbeddedGlb(library)
+    lib,libblob=material_library.doc,material_library.binary
     def view(data, target=None):
         blob.extend(b'\0'*(-len(blob)%4));v={'buffer':0,'byteOffset':len(blob),'byteLength':len(data)}
         if target: v['target']=target
@@ -78,4 +80,6 @@ def compose(plan, library):
         'geometryHash':plan['geometryHash'],'finishPlanSha256':sha(json.dumps(plan,sort_keys=True).encode()),'acceptance':'pending native visual review'})
     doc['buffers']=[{'byteLength':len(blob)}]
     header=json.dumps(doc,separators=(',',':')).encode();header+=b' '*(-len(header)%4);blob.extend(b'\0'*(-len(blob)%4))
-    return struct.pack('<III',0x46546c67,2,28+len(header)+len(blob))+struct.pack('<I4s',len(header),b'JSON')+header+struct.pack('<I4s',len(blob),b'BIN\0')+blob
+    result=struct.pack('<III',0x46546c67,2,28+len(header)+len(blob))+struct.pack('<I4s',len(header),b'JSON')+header+struct.pack('<I4s',len(blob),b'BIN\0')+blob
+    gate(result)  # Actual composed bytes must satisfy the same pre-inventory gate.
+    return result

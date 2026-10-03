@@ -22,10 +22,12 @@ def fixture():
         'NORMAL':stream([(0,0,1)]*4,'fff','VEC3'),'TANGENT':stream([(1,0,0,1)]*4,'ffff','VEC4'),
         'TEXCOORD_0':stream([(0,0),(1,0),(0,1),(1,1)],'ff','VEC2')}
     indices=stream([(i,) for i in (0,1,2,1,3,2)],'I','SCALAR',5125)
+    acc[attrs['POSITION']].update({'min':[0,0,0],'max':[1,1,0]})
     doc={'asset':{'version':'2.0'},'bufferViews':views,'accessors':acc,'nodes':[{'name':'fixture','mesh':0}],
         'meshes':[{'primitives':[{'attributes':attrs,'indices':indices,'material':0}]}],
-        'materials':[{'name':'GM / orange','emissiveFactor':[.8,.19,.025]}],'images':[],'textures':[]}
-    source=glb(doc,bytes(blob));library=glb({'asset':{'version':'2.0'},'materials':[{'name':'R6 / machine'}]},b'')
+        'materials':[{'name':'GM / orange','emissiveFactor':[.8,.19,.025]}],'images':[],'textures':[],
+        'scene':0,'scenes':[{'nodes':[0]}]}
+    source=glb(doc,bytes(blob));library=glb({'asset':{'version':'2.0'},'materials':[{'name':'R6 / machine'}]},b'\0'*4)
     plan={'sourceGLBSha256':sha(source),'geometryHash':'fixture-geometry','assignments':[{'node':'fixture','primitive':0,
         'roles':['GM / orange','R6 / machine'],'uvScale':{'GM / orange':1,'R6 / machine':.5}}]}
     return source,library,plan
