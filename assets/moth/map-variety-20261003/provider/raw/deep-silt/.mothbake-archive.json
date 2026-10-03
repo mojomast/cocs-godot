@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "deep-silt",
+  "engine": "blur-core-v1",
+  "jobId": "ae462fc2-1aa5-41d1-9b77-4b2f90ae5f21",
+  "recipeFingerprint": "74df575b758595f78d45f8f9788c9208cc9fdae1f4d3baa758fd9faa1eac4d05",
+  "generationFingerprint": "8fca036a699c5b2ae3f6b7b4bf80a47f6fe3379678c526e7c0105bdc529b12b2",
+  "verification": "new-request",
+  "rawFingerprint": "cc96ccf3db9476bd881085f75cd74aa6782ffe1ca3c35ed7e59d5f2fa2a4de74",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 436907,
+    "sha256": "eda48ba28f8ba061890f91d1260a588c03de77b6375907ba5c107127d270c4cf",
+    "jsonHash": "85d71cf4c937dd2f443be776d4c559059801b6a6f3be0bbbaecdf682e4e3dcfa"
+  }
+}

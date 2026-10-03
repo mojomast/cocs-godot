@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "prismatic-etch",
+  "engine": "blur-core-v1",
+  "jobId": "8be51b46-175c-492a-8ffb-87ee952fb3d3",
+  "recipeFingerprint": "17e187d2f38a99c259d884be2828711574c62139f19f539450d4a7eca34b967d",
+  "generationFingerprint": "826a32c68acb2d48375beed6b415eb6c2f6a6e7b9db9f8ea1ab18f31aa6ac380",
+  "verification": "new-request",
+  "rawFingerprint": "5c143444744836cd4188a13b79b21ef126e56bd7d199c7dfd0dc2e825ef20a98",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 439228,
+    "sha256": "9cf509485aff0b97d9773a9f290f7240482cdba32f193e27a4fbf7dbe82cb050",
+    "jsonHash": "4b856163749844bc4f7e6622a97bb6602b4b2057bbef30654fbd810394f5059f"
+  }
+}

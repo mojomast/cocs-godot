@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "bark-fibers",
+  "engine": "blur-core-v1",
+  "jobId": "d1bf63f6-1d30-4660-9091-34c66951dd6a",
+  "recipeFingerprint": "51f1147ddbe8045789530ada7a578a44b762ddeabbe9961a939c507570f18168",
+  "generationFingerprint": "326627eb4b74fd463b4207e23eba5d8cf235bf9851c62392e33f506fc91a6cdc",
+  "verification": "new-request",
+  "rawFingerprint": "1ff74a5525527fd1da7a5ad1d4c45c712f6d2b520ae464613b8e45b68016f668",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 428849,
+    "sha256": "50006f86e37b48c6c28fa956e22114f0803ca709a770f1c76efeec9fc201c01d",
+    "jsonHash": "f4b837b141d499927bff2597e0c70955edf2c45de2f154e742f9a7dbdf184904"
+  }
+}

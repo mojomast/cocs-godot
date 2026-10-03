@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "cast-seams",
+  "engine": "blur-core-v1",
+  "jobId": "e76045bb-c860-4874-a1c2-136b83fb58c4",
+  "recipeFingerprint": "19ac167e1167be41a5a0ae1d74276c3c2c4fb0449fbb621b0a48c284e13164ca",
+  "generationFingerprint": "618c45756fa043bb14cb3e07e72173a0c95ad50810a746f98b7c6c4a19f475b6",
+  "verification": "new-request",
+  "rawFingerprint": "708507f7d7143d0a81a4b09ead616a5e48ec5b60b2661efe7f0c6bad01f76d07",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 436486,
+    "sha256": "fee145f06dfea17b3e9ac1a1d3a8513b4d824af4ae7d9a6f953c2bfacfbe99cf",
+    "jsonHash": "fe5663890fe226191a3521d79ece94b32638e1e6bdd43826033c201551898aec"
+  }
+}

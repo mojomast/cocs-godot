@@ -1,0 +1,257 @@
+{
+  "status": "offline-checks-passed",
+  "decoded": 181,
+  "rebakeCompared": 181,
+  "baseFamilies": 30,
+  "materials": 36,
+  "maxBaseSeamRatio": 1.5668415526391148,
+  "maxNormalError": 0.006093149935492259,
+  "coarseMipWarnings": [
+    {
+      "id": "cast-seams",
+      "channel": "normal",
+      "size": 64,
+      "edgeMean": 4.8359375,
+      "interiorMean": 1.4227430555555556,
+      "ratio": 3.3990237949969493,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "cast-seams",
+      "channel": "normal",
+      "size": 32,
+      "edgeMean": 9.442708333333334,
+      "interiorMean": 1.5270497311827957,
+      "ratio": 6.183628561998019,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "cast-seams",
+      "channel": "normal",
+      "size": 16,
+      "edgeMean": 4.760416666666667,
+      "interiorMean": 1.3659722222222221,
+      "ratio": 3.4850025419420443,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "terracotta",
+      "channel": "albedo",
+      "size": 16,
+      "edgeMean": 4.90625,
+      "interiorMean": 1.6076388888888888,
+      "ratio": 3.0518358531317498,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "terracotta",
+      "channel": "albedo",
+      "size": 8,
+      "edgeMean": 5.833333333333333,
+      "interiorMean": 1.7857142857142858,
+      "ratio": 3.266666666666666,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "terracotta",
+      "channel": "height",
+      "size": 16,
+      "edgeMean": 59.8125,
+      "interiorMean": 19.0875,
+      "ratio": 3.1335952848722988,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "terracotta",
+      "channel": "height",
+      "size": 8,
+      "edgeMean": 72.1875,
+      "interiorMean": 20.830357142857142,
+      "ratio": 3.4654950707243892,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "ceramic-enamel",
+      "channel": "albedo",
+      "size": 32,
+      "edgeMean": 3.703125,
+      "interiorMean": 1.1295362903225807,
+      "ratio": 3.2784471218206157,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "ceramic-enamel",
+      "channel": "albedo",
+      "size": 16,
+      "edgeMean": 5.708333333333333,
+      "interiorMean": 1.1972222222222222,
+      "ratio": 4.767981438515081,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "ceramic-enamel",
+      "channel": "albedo",
+      "size": 8,
+      "edgeMean": 6.625,
+      "interiorMean": 1.4047619047619047,
+      "ratio": 4.716101694915254,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "ceramic-enamel",
+      "channel": "normal",
+      "size": 32,
+      "edgeMean": 4.333333333333333,
+      "interiorMean": 1.3044354838709677,
+      "ratio": 3.321998969603297,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "ceramic-enamel",
+      "channel": "height",
+      "size": 32,
+      "edgeMean": 41.484375,
+      "interiorMean": 13.316028225806452,
+      "ratio": 3.115371512926303,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "ceramic-enamel",
+      "channel": "height",
+      "size": 16,
+      "edgeMean": 69.25,
+      "interiorMean": 13.941666666666666,
+      "ratio": 4.967124925283922,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "ceramic-enamel",
+      "channel": "height",
+      "size": 8,
+      "edgeMean": 79.8125,
+      "interiorMean": 15.008928571428571,
+      "ratio": 5.317668054729328,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "shopfront-opaque",
+      "channel": "albedo",
+      "size": 32,
+      "edgeMean": 1.8177083333333333,
+      "interiorMean": 0.36508736559139787,
+      "ratio": 4.9788311090658075,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "shopfront-opaque",
+      "channel": "albedo",
+      "size": 16,
+      "edgeMean": 2.3541666666666665,
+      "interiorMean": 0.40555555555555556,
+      "ratio": 5.8047945205479445,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "shopfront-opaque",
+      "channel": "albedo",
+      "size": 8,
+      "edgeMean": 2.6875,
+      "interiorMean": 0.5327380952380952,
+      "ratio": 5.044692737430168,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "shopfront-opaque",
+      "channel": "normal",
+      "size": 32,
+      "edgeMean": 4.333333333333333,
+      "interiorMean": 1.3044354838709677,
+      "ratio": 3.321998969603297,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "shopfront-opaque",
+      "channel": "height",
+      "size": 32,
+      "edgeMean": 41.484375,
+      "interiorMean": 13.316028225806452,
+      "ratio": 3.115371512926303,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "shopfront-opaque",
+      "channel": "height",
+      "size": 16,
+      "edgeMean": 69.25,
+      "interiorMean": 13.941666666666666,
+      "ratio": 4.967124925283922,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "shopfront-opaque",
+      "channel": "height",
+      "size": 8,
+      "edgeMean": 79.8125,
+      "interiorMean": 15.008928571428571,
+      "ratio": 5.317668054729328,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "prismatic-etch",
+      "channel": "albedo",
+      "size": 16,
+      "edgeMean": 3.1666666666666665,
+      "interiorMean": 1.0069444444444444,
+      "ratio": 3.1448275862068966,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "prismatic-etch",
+      "channel": "albedo",
+      "size": 8,
+      "edgeMean": 3.7916666666666665,
+      "interiorMean": 1.125,
+      "ratio": 3.3703703703703702,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "prismatic-etch",
+      "channel": "height",
+      "size": 16,
+      "edgeMean": 37.28125,
+      "interiorMean": 10.127083333333333,
+      "ratio": 3.6813412878008642,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "prismatic-etch",
+      "channel": "height",
+      "size": 8,
+      "edgeMean": 44.125,
+      "interiorMean": 9.642857142857142,
+      "ratio": 4.575925925925926,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "trim-wear",
+      "channel": "normal",
+      "size": 32,
+      "edgeMean": 6.791666666666667,
+      "interiorMean": 1.9220430107526882,
+      "ratio": 3.5335664335664334,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    },
+    {
+      "id": "masonry-coping",
+      "channel": "normal",
+      "size": 32,
+      "edgeMean": 6.791666666666667,
+      "interiorMean": 1.9220430107526882,
+      "ratio": 3.5335664335664334,
+      "note": "coarse-mip diagnostic; inspect structural joints at world scale in Blender"
+    }
+  ],
+  "blenderReview": "pending next authorized stage",
+  "runtimeImport": "not run",
+  "remoteCalls": 0
+}

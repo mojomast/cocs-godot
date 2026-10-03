@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "aggregate",
+  "engine": "blur-core-v1",
+  "jobId": "b6b43ff0-9962-49d4-be7a-a555d7ea7488",
+  "recipeFingerprint": "42c3c7d8cf433f0a18286914c35910c4ff339e3b945b7815584725d1c4bbf7ae",
+  "generationFingerprint": "dcb9208f5279a945d2463577abcb17c8da141819dce2c2369fe4f2a54f34fc29",
+  "verification": "new-request",
+  "rawFingerprint": "cbd28e6b6fefc93c2a9b11743bd3f5e489767de10c377629ce612bcd43515505",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 431817,
+    "sha256": "16e85479f1a60c64c08488dfda3c3dca51c281fa2decd11441c87a744805025c",
+    "jsonHash": "75191a4edde43369f787b0532713546a2cf470f5c4d65fe2d68e720b4afe3af9"
+  }
+}

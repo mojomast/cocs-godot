@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-03",
+  "api": "https://api.mothquantum.com",
+  "authenticatedCatalogHTTP": 200,
+  "engineDefinitionHTTP": 200,
+  "openapiHTTP": 200,
+  "earlierUrllibOpenapiHTTP": 403,
+  "submissions": 45,
+  "completed": 45,
+  "estimatedCredits": 45,
+  "actualChargedCredits": null,
+  "creditNote": "Catalog estimate only; response schemas do not expose actual billing",
+  "requests": {
+    "jobPOST": 45,
+    "runnerResultGET": 45,
+    "extraExactBodyResultGET": 45,
+    "statusGETLowerBound": 90,
+    "discovery": 4,
+    "totalLowerBound": 229,
+    "exactTotal": null,
+    "note": "Runner logs status transitions, not unchanged polls; total count is a lower bound, never an invented exact count"
+  },
+  "selection": {
+    "baseFamilies": 30,
+    "selectedJobResults": 30,
+    "supersededXyResults": 15,
+    "derivedVariants": 6
+  },
+  "batches": [
+    {
+      "name": "initial",
+      "planFingerprint": "3421148320c96cb4a7cb1e4b237c49de9dd86928397df3edc28dd03591236287",
+      "fullPlanSha256": "2462750ecc04f82e31f3fb12f8d2d50bd0e413b2cebf953dbe44288ec6e05350",
+      "spending": {
+        "submissions": 24,
+        "estimatedCredits": 24,
+        "unknownCost": 0
+      },
+      "confirmedSubmissions": [
+        "b6b43ff0-9962-49d4-be7a-a555d7ea7488",
+        "e76045bb-c860-4874-a1c2-136b83fb58c4",
+        "be436cfc-92ca-43ab-ad95-45c268bc7e95",
+        "80c55a22-14c1-4fc4-923f-2c8cbf6d4fb5",
+        "8a24b3ab-aa05-4e02-80a2-d7671a860530",
+        "4ac2ba8f-f995-4068-ad8a-0f44063cb671",
+        "600a94e1-8a06-4435-aabb-8a7cd10d0baa",
+        "b3839608-a32f-4c50-a729-6df967591e8e",
+        "8168939f-bf1c-47fc-ad5a-8173afe845e9",
+        "f033bd87-7fe6-4240-b12c-1d8971aee927",
+        "eea99f12-9127-405e-8638-2bb2163cef46",
+        "17589d21-9a18-4dfe-a844-73a29100b240",
+        "d813f780-d96e-4a4f-a78b-3b9c41c3ea70",
+        "ae462fc2-1aa5-41d1-9b77-4b2f90ae5f21",
+        "2a2ad170-c7f7-4d05-ba60-15c5c2f31a05",
+        "a5e564a8-428a-4ae2-bc81-63861a6ad96b",
+        "d1bf63f6-1d30-4660-9091-34c66951dd6a",
+        "a15acea2-9026-4e1a-a398-880a1f462394",
+        "70894686-ba2b-49ff-899e-e7fa37c51e4c",
+        "8be51b46-175c-492a-8ffb-87ee952fb3d3",
+        "5023e7ff-76a3-49a1-a8e8-fc6d3c0cd6e6",
+        "9a489657-80b5-4236-8fd0-225c5ffa9f87",
+        "8cf0bdad-a78b-4bf7-9971-e385c2bc0462",
+        "36c11ff5-5828-4e21-a20b-49cd9395647d"
+      ],
+      "completedTransitions": 24,
+      "statusRequestsLowerBound": 48,
+      "retryLogEntries": 0
+    },
+    {
+      "name": "supplemental",
+      "planFingerprint": "52252dae5bd8704a55617b048cc88a862908d5be0f23f37c03b4d06887982f37",
+      "fullPlanSha256": "8727ce90271a515729b495c7f7f385846675e82a305e32881bef35e3a6c5fdb2",
+      "spending": {
+        "submissions": 6,
+        "estimatedCredits": 6,
+        "unknownCost": 0
+      },
+      "confirmedSubmissions": [
+        "e6e2c413-fc42-4301-aee9-134d0060fdcc",
+        "3fac8d90-53ed-483e-8907-3fc1cab78adf",
+        "20ec5563-3b66-436e-a345-ec907a37ad3c",
+        "a2a37484-b842-4404-a09e-bbc536f84002",
+        "3fd13eaf-e9b1-444b-9e15-364435aa7b2e",
+        "f28876be-f9e2-49c1-a8b4-fe3d49a0bdd8"
+      ],
+      "completedTransitions": 6,
+      "statusRequestsLowerBound": 12,
+      "retryLogEntries": 0
+    },
+    {
+      "name": "refined",
+      "planFingerprint": "f0da57a0b2efd60fd48e0903d0cc17dcf1658aa547778061ee8ed55030f4a3ed",
+      "fullPlanSha256": "5236b2102c94d6a109f4cd21e6ec04e33286c40136a5643d750ffcf0a4974974",
+      "spending": {
+        "submissions": 15,
+        "estimatedCredits": 15,
+        "unknownCost": 0
+      },
+      "confirmedSubmissions": [
+        "aa239b82-f2d7-4a0d-a50d-6984134e987f",
+        "6e0cbdce-4f12-48c3-8582-738b7cc1c8bd",
+        "77d16376-94cd-4779-bbd3-8dbd96823c18",
+        "36dfc0ec-9ac0-40f1-9a34-746f0f671b71",
+        "b35d411c-5fca-4bdc-847b-efe6be2252cc",
+        "f5e2c53e-2b64-4235-96ea-89815df02ca0",
+        "76775a92-f80c-4da1-a32b-56dc33ab9e93",
+        "7ff8cdc4-b802-4006-bdc9-7551bdac1e85",
+        "306a53a2-2c18-444a-bf4a-458682d45cb9",
+        "c1582bcf-edfd-40a4-9e2d-45cff9534aa7",
+        "67f6b325-ad6f-43e6-9c59-61e48d3c54ad",
+        "38374f90-91de-4c07-8e28-127a92b51431",
+        "4c0663fa-0209-4c68-b480-f87d3d7e165d",
+        "dc6dd001-2ae7-411b-aa4f-e6eaad708cad",
+        "8a66b95a-04ef-4017-b9e8-fd0f505c13c5"
+      ],
+      "completedTransitions": 15,
+      "statusRequestsLowerBound": 30,
+      "retryLogEntries": 0
+    }
+  ]
+}

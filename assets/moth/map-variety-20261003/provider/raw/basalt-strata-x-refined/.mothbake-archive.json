@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "basalt-strata-x-refined",
+  "engine": "blur-core-v1",
+  "jobId": "f5e2c53e-2b64-4235-96ea-89815df02ca0",
+  "recipeFingerprint": "de35e49319c9a5a54fee9da965df7a4d3a5325b80f086520e6d8d4468c0d4066",
+  "generationFingerprint": "bb917adfdf19ab77cc9713c3e04c4d8fe833b24f262ba106b1f76a11226488b1",
+  "verification": "new-request",
+  "rawFingerprint": "8a0333616a3e95d84d7573cc127762012787763ff49cf2874d3970c23a45d51a",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 428672,
+    "sha256": "10c640f1a24fbce1c693106c8b0c794b1f6851ad8a001bbdc2003753d43108f7",
+    "jsonHash": "c21f061c5022695cb4d355be5cbaae3675be86d59e060eb13c7af830a5003aa7"
+  }
+}

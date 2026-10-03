@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "deep-silt-x-refined",
+  "engine": "blur-core-v1",
+  "jobId": "76775a92-f80c-4da1-a32b-56dc33ab9e93",
+  "recipeFingerprint": "bb0cd89ad65efaf1d452809e1c47d28a1b83dec7ec7ae59a3784bfaeb29f5044",
+  "generationFingerprint": "28e1bf401b73bed4e6a7eb4916ae2db3d47be4596d5302e4df1d5f1ea97c2531",
+  "verification": "new-request",
+  "rawFingerprint": "f1d0f939572bd1bb9a45ca47f1f0fd68cc3368339e89cbe19208c8ac5fe4c363",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 431491,
+    "sha256": "6390708feb9c6e88c8c5f8cc5aff78f541b8f5fb31ac6169d9be0717a56d0b3d",
+    "jsonHash": "8b6da7c3ccd5d72113da448ab009f8d89761797d62c13a236e4184091c25a79a"
+  }
+}

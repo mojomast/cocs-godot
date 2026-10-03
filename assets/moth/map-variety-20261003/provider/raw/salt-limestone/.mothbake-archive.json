@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "salt-limestone",
+  "engine": "blur-core-v1",
+  "jobId": "eea99f12-9127-405e-8638-2bb2163cef46",
+  "recipeFingerprint": "c99854519157b3f7bb454ea9b25f99dab7cddd7aec64d3672e8c02f9793eecd7",
+  "generationFingerprint": "7f7c5bf624102700daff6caaa927425b986fefe58691fc35225f436775387af0",
+  "verification": "new-request",
+  "rawFingerprint": "293a78a5e3206fe0da196a1fd78b04d759a3a3ae219829e76f14a966920e800c",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 429999,
+    "sha256": "6b6a06bc8bd069eaa88ba96b4db5b6f850fe49bc538d453157f7f33d11722908",
+    "jsonHash": "156dd3294256bb588327b4a4898590eb6f861b3f110e27e0e424b8b0d6035adc"
+  }
+}
