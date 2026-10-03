@@ -34,3 +34,19 @@ Native motion/UI owner `ses_f03a3885fffehx9yFhHubuPCft` now holds exclusive
 `MOTION-UI-NATIVE-20261003-K`. Package owner
 `ses_f03437da1ffeli91L87Q6CVyRP` is preparing source-only registration and seventh
 asset promotion. Neither task may restamp J's original native evidence.
+
+## Shared fixes and gallery follow-up
+
+Sol `ef608fe1` integrated as **`4cc0292d`**: catalog map names in sports HUD,
+responsive wrapped results, restart/exit audio release with reusable persistent
+streams, corrected round-audio binding order, and imported mesh owner assignment.
+Parent passed generated-scene freshness and seven GDScript grammar checks. K owner
+received the new `sports/lifecycle_release.gd` fixture and the requirement to test
+actual shared routes without J's private HUD/audio overrides. Native pass pending.
+Package owner received the exact supporting runtime advance for reconciliation.
+
+Gallery: http://100.125.104.79:8796/native-stormglass-j/ — eight actual native PNGs
+and the recorded-timestamp driving clip. All **13** served files (including
+summary, release record, manifest and HTML) passed HTTP/size/SHA-256 comparison.
+Verification: `/tmp/opencode/stormglass-j-gallery-http-verification.json`.
+These images retain J's original runtime identity, not the newly integrated fixes.
