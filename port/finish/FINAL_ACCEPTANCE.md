@@ -49,10 +49,10 @@ discovers `test_*.py`, covering the six camera and six device source tests.
 `device_choices.gd` is explicitly required by both that source job and the UI
 executable; production GDScript was already in dynamic input identity. No new job
 is added: the total remains 142.
-Independent fixture owner `ses_f026c14a5ffeK3WZVDmpQEEylH` is adapting ordinary
+Independent fixture follow-up `68bbe292` is integrated as `da259d19`: ordinary
 P1-first/P2-second selection and single-activation keyboard recovery while the
-other pad stays assigned. That fixture follow-up remains a separate committed
-dependency before final native execution; source tests do not prove OS hotplug.
+other pad stays assigned. Parent acceptance source tests and grammar parsing
+pass; source tests do not prove OS hotplug.
 This lane does not edit production presentation or UI journey/driver code.
 
 Parallax and robots are promoted through `b732c99b`; robot D's 60,593 checks remain
