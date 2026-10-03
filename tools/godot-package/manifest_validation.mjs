@@ -29,6 +29,7 @@ import {channelProduction,verifyChannelManifest,previewReadme} from './build_cha
 import {fighterImports} from './fighter_imports.mjs';
 import {MOVEMENT_COMMIT,MOVEMENT_CONTRACT,resolveSourceDerivative} from './source_derivative.mjs';
 import {verifyAuthoringResources,rejectAuthoringRuntime} from './authoring_resources.mjs';
+import {gitStagedResources,rejectStagedInputs} from './staged_resources.mjs';
 
 // The repository that contains this module, not the process working directory.
 export const REPO_ROOT = fileURLToPath(new URL('../../', import.meta.url));
@@ -602,6 +603,9 @@ export function verifyGitIdentity(repo, identity, packageDir) {
   const derivative = loadDerivative(repo, identity);
   const authoring=verifySourceState(repo, identity.source_commit, derivative, {portCommit: identity.port_commit});
   rejectAuthoringRuntime(Object.keys(identity.files),authoring);
+  const staged=gitStagedResources(repo,identity.port_commit,{consumers:[...identity.sourceModules,...identity.adapters,...identity.dataFiles,...identity.worldDataFiles,...identity.campaignDataFiles,...identity.hordeDataFiles]});
+  rejectStagedInputs(Object.keys(identity.files),staged);
+  for(const key of ['production_resource_sha256','production_raw_resource_sha256','final_resource_sha256','raw_resource_sha256','fighter_import_sha256'])rejectStagedInputs(Object.keys(identity.manifest[key]??{}),staged);
   const derivativeFiles = derivative ? derivative.runtime_files : {};
 
   for (const path of identity.sourceModules) {
