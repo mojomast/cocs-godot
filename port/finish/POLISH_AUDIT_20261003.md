@@ -105,3 +105,12 @@ unknown weaponless `alt:true` event would incorrectly take the generic branch,
 despite its new fixture asserting rejection. Returned for explicit fallback
 eligibility, quality-off consumption/replay checks and actual grammar validation.
 The native fixture remains unrun; a clean diff alone does not establish behavior.
+
+Sol atmosphere checkpoint **`62c3d04d`** is reviewed and source-ready on its own
+branch, **not integrated** while K's candidate remains stable. The live identity
+environment delegates to the existing authored style for its three explicit map
+keys; Canopy/Basalt retain their procedural path. Parent inspected the change,
+weather lease fixture and actual style signature, then independently parsed both
+changed/new GDScripts and passed diff checks. Native single-environment ownership,
+weather restoration and gameplay/inspection image parity remain pending. Report:
+worker `port/finish/polish/IDENTITY_ATMOSPHERE.md`.
