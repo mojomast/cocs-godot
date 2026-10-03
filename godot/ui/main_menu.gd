@@ -11,6 +11,7 @@ extends Control
 
 const RouteRegistry = preload("res://ui/route_registry.gd")
 const MenuPreferences = preload("res://ui/menu_preferences.gd")
+const RouteSearch = preload("res://ui/route_search.gd")
 const SettingsAccess = preload("res://ui/settings_access.gd")
 const Audiovisual = preload("res://audio/av_service.gd")
 const Choice = preload("res://ui/lobby_choice.gd")
@@ -32,6 +33,7 @@ var current_route: Dictionary = {}
 var selections: Dictionary = {}
 var category_buttons: Dictionary = {}
 var route_buttons: Dictionary = {}
+var search_result_buttons: Array[Button] = []
 var choice_rows: Dictionary = {}
 var slider_rows: Dictionary = {}
 var value_labels: Dictionary = {}
@@ -57,6 +59,9 @@ var columns: BoxContainer
 var content_scroll: ScrollContainer
 var category_column: VBoxContainer
 var route_column: VBoxContainer
+var search_field := LineEdit.new()
+var search_count := Label.new()
+var search_results := VBoxContainer.new()
 
 func update_layout() -> void:
 	if columns == null: return
@@ -142,6 +147,23 @@ func build_ui() -> void:
 	content_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	content_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	stack.add_child(content_scroll)
+	var search_panel := VBoxContainer.new()
+	search_panel.name = "DestinationSearch"
+	search_panel.add_theme_constant_override("separation", 5)
+	search_field.name = "DestinationSearchField"
+	search_field.placeholder_text = "Search destinations and maps…"
+	search_field.clear_button_enabled = true
+	search_field.custom_minimum_size.y = 40
+	search_field.text_changed.connect(_on_search_changed)
+	search_field.text_submitted.connect(_on_search_submitted)
+	search_panel.add_child(search_field)
+	search_count.name = "DestinationSearchCount"
+	search_count.add_theme_color_override("font_color", CAPTION)
+	search_count.text = "Search catalog destinations and maps"
+	search_panel.add_child(search_count)
+	search_results.name = "DestinationSearchResults"
+	search_results.add_theme_constant_override("separation", 4)
+	search_panel.add_child(search_results)
 	columns = BoxContainer.new()
 	columns.name = "Columns"
 	columns.add_theme_constant_override("separation", 28)
@@ -165,6 +187,7 @@ func build_ui() -> void:
 	right.add_theme_constant_override("separation", 8)
 	right.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	columns.add_child(right)
+	right.add_child(search_panel)
 	right.add_child(caption("ROUTES"))
 	right.add_child(routes_box)
 	routes_box.add_theme_constant_override("separation", 6)
@@ -226,7 +249,7 @@ func build_ui() -> void:
 	actions.add_child(settings_button)
 	actions.add_child(quit_button)
 	right.add_child(actions)
-	var footer := caption("Tab moves focus · Left/Right browses a choice · F12 Settings · Career / Arsenal opens in this window · Esc quits")
+	var footer := caption("Search destinations/maps · Tab moves focus · Left/Right browses a choice · F12 Settings · Career / Arsenal opens in this window · Esc quits")
 	footer.name = "Footer"
 	footer.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	stack.add_child(footer)
@@ -454,22 +477,70 @@ func build_choice_row(param: Dictionary) -> Control:
 		picker.set_item_metadata(picker.item_count - 1, str(value))
 	picker.select(values.find(selections.get(key, "")))
 	picker.item_selected.connect(func(index: int) -> void:
-		selections[key] = str(picker.get_item_metadata(index))
-		if key == "operator" and selections[key] == "claude" and str(current_route.get("id", "")).contains("horde"):
-			# The pinned source locks Claude to Claude Code. Select the legal
-			# harness in the menu rather than launching an invalid local session.
-			selections["harness"] = "claudecode"
-			var harness_picker: Variant = choice_rows.get("harness")
-			if harness_picker != null:
-				for item in harness_picker.item_count:
-					if harness_picker.get_item_metadata(item) == "claudecode":
-						harness_picker.select(item)
-						break
-		if key == registry.map_param_key(current_route): rederive_for_map()
-		refresh_status())
+		apply_choice_selection(key, str(picker.get_item_metadata(index))))
 	row.add_child(picker)
 	choice_rows[key] = picker
 	return row
+
+## Shared ordinary option path: search-result map picks use the same existing
+## choice row selection/re-derivation rules as a direct picker interaction.
+func apply_choice_selection(key: String, value: String) -> void:
+	var picker: Variant = choice_rows.get(key)
+	if picker == null: return
+	var choices := registry.choice_values(_param_by_key(key), str(selections.get(registry.map_param_key(current_route), "")))
+	if not value in choices: return
+	selections[key] = value
+	picker.select(choices.find(value))
+	if key == "operator" and value == "claude" and str(current_route.get("id", "")).contains("horde"):
+		selections["harness"] = "claudecode"
+		var harness_picker: Variant = choice_rows.get("harness")
+		if harness_picker != null:
+			for item in harness_picker.item_count:
+				if harness_picker.get_item_metadata(item) == "claudecode":
+					harness_picker.select(item)
+					break
+	if key == registry.map_param_key(current_route): rederive_for_map()
+	refresh_status()
+
+func _param_by_key(key: String) -> Dictionary:
+	for param: Dictionary in registry.params_of(current_route):
+		if str(param.get("key", "")) == key: return param
+	return {}
+
+func _on_search_changed(query: String) -> void:
+	for child: Node in search_results.get_children():
+		search_results.remove_child(child)
+		child.queue_free()
+	search_result_buttons.clear()
+	var matches := RouteSearch.search(registry, query, OS.get_environment("COCS_DEBUG") == "1")
+	search_count.text = "%d matches" % matches.size() if not RouteSearch.normalize_query(query).is_empty() else "Search catalog destinations and maps"
+	if matches.is_empty():
+		if not RouteSearch.normalize_query(query).is_empty():
+			var empty := caption("No matching destinations or maps.")
+			empty.name = "SearchNoResults"
+			search_results.add_child(empty)
+		return
+	for result: Dictionary in matches:
+		var button := Button.new()
+		button.custom_minimum_size.y = 40
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		button.text = str(result.route_label)
+		if str(result.kind) == "map": button.text += "  ·  " + str(result.map_label)
+		button.pressed.connect(func() -> void: _select_search_result(result))
+		search_results.add_child(button)
+		search_result_buttons.append(button)
+
+func _select_search_result(result: Dictionary) -> void:
+	var route_id := str(result.get("route_id", ""))
+	if registry.route_by_id(route_id).is_empty(): return
+	select_category(str(result.get("category_id", "")))
+	select_route(route_id)
+	if str(result.get("kind", "")) == "map":
+		apply_choice_selection(registry.map_param_key(current_route), str(result.get("map_id", "")))
+
+func _on_search_submitted(_query: String) -> void:
+	# Enter filters/navigates the field only; launching always requires START.
+	pass
 
 ## HSlider with an integer snap plus a live value label, honouring min/max/
 ## step and the map's max_by_map bound.
@@ -627,6 +698,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _input(event: InputEvent) -> void:
+	if release_key(event) and search_field.has_focus() and not SettingsAccess.overlay_open() and not search_field.text.is_empty():
+		# Consume Escape before LineEdit/Control defaults can close Home; a
+		# subsequent Escape from the now-empty field follows normal quit behavior.
+		search_field.clear()
+		get_viewport().set_input_as_handled()
+		return
 	if event is InputEventKey or event is InputEventMouseButton:
 		if event.pressed and not quitting: audiovisual.music.start() # User gesture unlocks audio.
 
