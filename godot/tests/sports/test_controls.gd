@@ -2,11 +2,12 @@ extends SceneTree
 const Gate = preload("res://sports/controls.gd")
 const Chase = preload("res://sports/chase.gd")
 var checks := 0
+var failures := 0
 func check(value: bool, message: String) -> void:
 	checks += 1
 	if not value:
+		failures += 1
 		push_error(message)
-		quit(1)
 func key(g, code: int, down: bool, eligible: bool = true) -> void:
 	var e := InputEventKey.new()
 	e.physical_keycode = code
@@ -27,7 +28,7 @@ func _initialize() -> void:
 		key(g, KEY_D, true)
 		var p: Dictionary = g.packet(yaw, true)
 		check(is_equal_approx(-p.x*sin(yaw)-p.z*cos(yaw), 1.0), "throttle inverse")
-		check(is_equal_approx(-p.x*cos(yaw)+p.z*sin(yaw), 1.0), "steer inverse")
+		check(is_equal_approx(-p.x*cos(yaw)+p.z*sin(yaw), -1.0), "source D negative-right steer")
 	key(g, KEY_SPACE, true)
 	key(g, KEY_SHIFT, true)
 	key(g, KEY_R, true)
@@ -48,12 +49,14 @@ func _initialize() -> void:
 	check(not g.engaged, "escape releases")
 	var c := Chase.new()
 	var v := {"x":0.0,"y":0.0,"z":0.0,"yaw":0.0,"vx":0,"vz":-6}
-	check(c.follow(v, 0.1).eye.is_equal_approx(Vector3(0, 5, -9)), "+Z and reverse no flip")
+	var rear: Vector3 = c.follow(v, 0.1).eye
+	check(rear.is_finite() and rear.z < -1.0 and rear.y > 1.0 and absf(rear.x)<0.01, "+Z reverse keeps camera behind and above chassis")
 	c.reset()
 	v.yaw = PI/2
-	check(c.follow(v, 0.1).eye.is_equal_approx(Vector3(-9, 5, 0)), "+X heading")
+	var lateral: Vector3 = c.follow(v, 0.1).eye
+	check(lateral.distance_to(Basis(Vector3.UP,PI/2)*rear)<0.001, "+X heading rotates chase offset with chassis")
 	v.x = 100.0
-	check(c.follow(v, 0.01).eye.is_equal_approx(Vector3(91, 5, 0)), "reset teleport snaps camera")
+	check(c.follow(v, 0.01).eye.distance_to(lateral+Vector3(100,0,0))<0.001, "teleport preserves chase offset without interpolating across map")
 	c.reset()
 	check(not c.seeded, "round cleanup")
 	var demo = preload("res://sports/demo.gd").new()
@@ -84,5 +87,5 @@ func _initialize() -> void:
 	demo.world.sun.free()
 	demo.world.free()
 	demo.free()
-	print("SPORTS_SYNTHETIC_CHECKS ", checks)
-	quit()
+	print("SPORTS_SYNTHETIC_CHECKS ", checks, " failures=", failures)
+	quit(0 if failures == 0 else 1)

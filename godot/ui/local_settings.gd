@@ -8,7 +8,8 @@ const DEFAULTS := {"master_volume": 100, "mute": false, "window_mode": "windowed
 	"music_enabled": true, "music_volume": 100, "effects_volume": 100, "ambience_enabled": true, "ambience_volume": 100,
 	"announcer_enabled": false, "announcer_volume": 100, "weather_enabled": true, "weather_quality": 100,
 	"reduced_motion": false, "lightning_flashes": true, "attract_demo_enabled": true,
-	"captions": false, "caption_scale": 100, "caption_background": "dim", "caption_position": "bottom", "combat_readouts": true}
+	"captions": false, "caption_scale": 100, "caption_background": "dim", "caption_position": "bottom", "combat_readouts": true,
+	"vehicle_view": "third"}
 signal audio_preferences_changed(preferences: Dictionary)
 signal preferences_changed(preferences: Dictionary)
 var path := "user://local_settings.json"
@@ -64,6 +65,7 @@ static func normalize(raw: Variant) -> Dictionary:
 	if raw.get("window_mode") in ["windowed", "fullscreen"]: result.window_mode = raw.window_mode
 	if raw.get("caption_background") in ["dim", "solid", "transparent"]: result.caption_background = raw.caption_background
 	if raw.get("caption_position") in ["top", "bottom"]: result.caption_position = raw.caption_position
+	if raw.get("vehicle_view") in ["first", "third"]: result.vehicle_view = raw.vehicle_view
 	return result
 
 func load_at(file_path: String) -> void:
@@ -106,6 +108,7 @@ func set_value(key: String, value: Variant, persist: bool = true) -> bool:
 	if key == "window_mode" and value not in ["windowed", "fullscreen"]: return false
 	if key == "caption_background" and value not in ["dim", "solid", "transparent"]: return false
 	if key == "caption_position" and value not in ["top", "bottom"]: return false
+	if key == "vehicle_view" and value not in ["first", "third"]: return false
 	if key in ["master_volume", "mouse_sensitivity", "ui_scale", "music_volume", "effects_volume", "ambience_volume", "announcer_volume", "weather_quality", "caption_scale"]:
 		if typeof(value) not in [TYPE_INT, TYPE_FLOAT]: return false
 		if value is float and not is_finite(value): return false
@@ -230,6 +233,7 @@ func build_panel() -> void:
 		rows[key] = toggle
 		toggle.toggled.connect(func(on: bool) -> void: set_value(key, on))
 	for entry: Dictionary in [
+		{"key":"vehicle_view", "label":"Vehicle camera", "choices":["third", "first"]},
 		{"key":"caption_position", "label":"Caption placement", "choices":["bottom", "top"]},
 		{"key":"caption_background", "label":"Caption background", "choices":["dim", "solid", "transparent"]}]:
 		var label := Label.new()
@@ -312,6 +316,7 @@ func open_panel(from_menu: bool = false, previous_focus: Control = null) -> void
 	for key: String in ["music_enabled", "ambience_enabled", "announcer_enabled", "weather_enabled", "lightning_flashes", "reduced_motion", "attract_demo_enabled", "captions", "combat_readouts"]: rows[key].set_pressed_no_signal(values[key])
 	rows.caption_position.select(["bottom", "top"].find(values.caption_position))
 	rows.caption_background.select(["dim", "solid", "transparent"].find(values.caption_background))
+	rows.vehicle_view.select(["third", "first"].find(values.vehicle_view))
 	rows.window_mode.set_pressed_no_signal(values.window_mode == "fullscreen")
 	rows.leave.visible = not from_menu
 	rows.back.text = "Back to Home (Esc)" if from_menu else "Back to game (Esc)"

@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "extends": "../final_matrix.json",
+  "scope": "Supplemental N ordinary-input probes; canonical final matrix remains 142 obligations",
+  "jobs": [
+    {"id":"n-vehicle-typecheck","cohort":"engine","timeout":60,"command":["{godot}","--headless","--path","godot","--script","res://tests/combined_arms/ordinary_views.gd","--check-only"],"requires":["godot/tests/combined_arms/ordinary_views.gd"],"criteria":"Actual Godot typecheck; no ordinary vehicle behavior claim"},
+    {"id":"n-combined-ordinary-vehicle","cohort":"engine","timeout":160,"after":["native-import","n-vehicle-typecheck"],"command":["node","tools/motion-review/ordinary_vehicle.mjs","{godot}","{out}","combined"],"requires":["tools/motion-review/ordinary_vehicle.mjs","godot/tests/combined_arms/ordinary_views.gd","godot/combined_arms/demo.tscn"],"success_marker":"ORDINARY_VEHICLE_OK combined","artifacts":["native.json","wire.json","teardown.json"],"criteria":"Production combined-arms ordinary approach/E mount, W drive, F4 view, mouse look/E demount, Home; actual source relationship and retained images/wire, no state mutation"},
+    {"id":"n-world-ordinary-vehicle","cohort":"engine","timeout":160,"after":["native-import","n-vehicle-typecheck"],"command":["node","tools/motion-review/ordinary_vehicle.mjs","{godot}","{out}","world"],"requires":["tools/motion-review/ordinary_vehicle.mjs","godot/tests/combined_arms/ordinary_views.gd","godot/world/session.gd","godot/objectives/demo.tscn"],"success_marker":"ORDINARY_VEHICLE_OK world","artifacts":["native.json","wire.json","teardown.json"],"criteria":"Production world/session through admitted Sunscar Objectives/Payload route: ordinary approach/E mount, W drive, F4 view, mouse look/E demount, Home; actual source relationship and retained images/wire, no state mutation"}
+  ]
+}

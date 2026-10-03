@@ -12,6 +12,7 @@ import {assetInputs,assertAssetIdentity} from './assets.mjs';
 import {installMenu,replaceMenuTransaction} from './install.mjs';
 import {writeProof,readProof} from './proof.mjs';
 import {closeReceipt} from './receipt.mjs';
+import {nativeCommand} from './native.mjs';
 
 function testPNG() {
   const crc=bytes=>{let value=0xffffffff;for(const byte of bytes){value^=byte;for(let bit=0;bit<8;bit++)value=(value>>>1)^((value&1)?0xedb88320:0);}return (value^0xffffffff)>>>0;};
@@ -38,6 +39,14 @@ test('capture and encode cannot execute without explicit slot grant',async()=>{
   await assert.rejects(main(['--edit','--output=/tmp/opencode/no-render']),/grant/);
   await assert.rejects(main(['--menu-check','--output=/tmp/opencode/no-render']),/grant/);
   await assert.rejects(main(['--install-menu','--output=/tmp/opencode/no-render']),/grant/);
+});
+test('native commands reuse bounded TCP display supervision without launching Xvfb',()=>{
+  const invocation=nativeCommand('/pinned/Godot',['--resolution','1280x720'],'/external/godot.log',600000);
+  assert.equal(invocation.command,'python3');
+  assert.equal(invocation.display,'owned TCP via xvfb_run.start_server(False)');
+  assert.equal(invocation.supervisor,'finish_runner.run_bounded');
+  assert.deepEqual(invocation.args.slice(-4),['--','/pinned/Godot','--resolution','1280x720']);
+  assert.throws(()=>nativeCommand('/pinned/Godot',[],'/external/log',1000),/budget/);
 });
 test('ordinary source inputs walk, jump and damage active production opposition',()=>{
   for(const id of ['root-run','ember-run','silt-fire']) {

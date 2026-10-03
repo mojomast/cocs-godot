@@ -1,0 +1,582 @@
+[
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-board-albedo.png.import",
+    "sha256": "42c53f9f98faa74b346d0b145133f2cc1a829e8bd5b20d5b12265ea658315690",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-board-normal.png.import",
+    "sha256": "d77233b198bd4f2faeb4766dc0e4b63e9a2109d5b28511644f4fb07051244098",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-board-roughness.png.import",
+    "sha256": "01c08fa652b02226e42dda83a7bff4bf33f941febf4468e7d9f4d8de658bbf6e",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-panel-albedo.png.import",
+    "sha256": "37287babce732a35d6b020af09b01e3f3248308b8999e5361a28115d95f37144",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-panel-normal.png.import",
+    "sha256": "b8ad11aac74a75f5daf619f76dac430fcd4c0a3d584f5efdc23682247bf82554",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-panel-roughness.png.import",
+    "sha256": "da9d64a1f97a0921408747a5b48934676f632ca93990f5e5b2bd3f8445308c86",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-shell-albedo.png.import",
+    "sha256": "f9294fe32a34066a2cab94a7f4a92b8a90e201c466d84dc7dc64e02391f043bd",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-shell-normal.png.import",
+    "sha256": "6d8fdabfaebfdd36cbd55a89c0cb9db4a4515d2dab6ed586a63b3b5911c6f8a9",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-shell-roughness.png.import",
+    "sha256": "6f409c69b5647e9f84d41d683bc308a97fba84bfd23e64956d7275aad13d0172",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-vent-albedo.png.import",
+    "sha256": "723d5891a0395a61b6c6ffe0be55b6b4deb7a7a6979173f2bef6a1a1aaa73bf5",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-vent-normal.png.import",
+    "sha256": "9f9183ac0464da44d13839d6d944b0ffb9abf4ff25f43fb435f944c5650805db",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/chatgpt-vent-roughness.png.import",
+    "sha256": "c65f09f5938879acf256568f64d3fcf693ac6b2586ec5619e9839ce9e5091df3",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-board-albedo.png.import",
+    "sha256": "253bbc1fd81031109d82dea031babe0a7dc4a0880c2ded77db33c3c9f386b576",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-board-normal.png.import",
+    "sha256": "022f54bbab95ff6b4b26be4795d54eefcf5577c4168416d18a92dd1fbb8c97d4",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-board-roughness.png.import",
+    "sha256": "b27bc2a4939aaedbfdcd918c7ed945ae80af0e88a7bda9e503cfade2abc422ff",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-panel-albedo.png.import",
+    "sha256": "4e45d671c23943954789c1c7d0b357c936d9600d52e3873314d6ee02507a054d",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-panel-normal.png.import",
+    "sha256": "fa09ae789e6cc4f73667f565bba62f816185d3e02bf5edd64152f591599b8094",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-panel-roughness.png.import",
+    "sha256": "ea3c8b3b288cbac100a80c385aaeb24544a0da08c63f99742a96453885f7fe77",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-shell-albedo.png.import",
+    "sha256": "0cb8f39600131d460385ecc5b73de03616b290ce0d38e0b115b8409e210f04cb",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-shell-normal.png.import",
+    "sha256": "a15259969e6b54a87bbbd9c2396230503394f0897737251cfb0f207c328f45eb",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-shell-roughness.png.import",
+    "sha256": "6d21235045c8ae3945ada81af275602e391d75b1a2bc146639a9287601804125",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-vent-albedo.png.import",
+    "sha256": "232382cea03e3351ca6aa107f913462565c9c6064d80338370e8325d7cd06ea2",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-vent-normal.png.import",
+    "sha256": "816d05000d5c2cbbf628d96b36c751ae08232bd146633d136faaa4c520abf6a3",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/claude-vent-roughness.png.import",
+    "sha256": "e4e7acd447547e71761b7059ee9d5fcfffe8669261749b3f4eefdaa58a83e48c",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-board-albedo.png.import",
+    "sha256": "f550e96ddb329f9bcf8a1917ce15455de603af9196f68bdf613221db4f2dc422",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-board-normal.png.import",
+    "sha256": "cbb01c1461ba03d42af98c40ba8e7026964b645596436dfac2de56871569afd8",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-board-roughness.png.import",
+    "sha256": "b690c43aeddefc98095ea0548a3d3194795c68610b9f69a5407a25e3bcfa99b1",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-panel-albedo.png.import",
+    "sha256": "5150d552cfab955300d8349e5cda766b2823eaaaca16f40eb58e76baf3e57850",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-panel-normal.png.import",
+    "sha256": "08222d541aa357885c041dfc3d6ad4c75913e7aa959499d4f324670496600561",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-panel-roughness.png.import",
+    "sha256": "9eb258aaac73bbb69f0506ab487319c945c87cc0759ef8c2b859195aac5005b6",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-shell-albedo.png.import",
+    "sha256": "187e5d3a92f9368b2dcc18a05c572784fc387386073ce49bb021735eddebdc0a",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-shell-normal.png.import",
+    "sha256": "5109abfa25d9e699542b3dd472cc53e0b39edf712f4ef50327781d8ea61d9876",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-shell-roughness.png.import",
+    "sha256": "23f8c688b0c362e822773343457ad2f4c51514f6cfe78938018ca06bf3e283d9",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-vent-albedo.png.import",
+    "sha256": "c27469ed4e440b10a0cf1b96510539a461713b22bfc7154468d3153bbde8dfd1",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-vent-normal.png.import",
+    "sha256": "4a94906fe29ecd3de13e708880c1c2d3445c9e95615765b6cc4407fa4d0bf0aa",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/deepseek-vent-roughness.png.import",
+    "sha256": "09a930d541bb448e71d5406472d565b5f2242d5d25e80eefb08064fe5163a613",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-board-albedo.png.import",
+    "sha256": "b18e22a74e990a51ba6c2d9dfb80a84e6777f409192d2bf004e06927eb784170",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-board-normal.png.import",
+    "sha256": "9b70d649dcf1fbdd241031493d0cdc7c722f3dae0f0e6045c8266608196fd471",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-board-roughness.png.import",
+    "sha256": "187a152da009994ece24c5f5b75aa2cfa4f398d6e19436ef2b79034776526646",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-panel-albedo.png.import",
+    "sha256": "e31c5dd9aca55819b09731d51c493df74cb6f091b5d5b776808643a401aa1c4d",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-panel-normal.png.import",
+    "sha256": "84df224453efb0d75b3ed19c7dea8fe25f3bf337b5ea5871f422094c03209d46",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-panel-roughness.png.import",
+    "sha256": "01f17a7123b6c46d755f74878185a3e4fa615ebc556ca97260e5e720e3b24d02",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-shell-albedo.png.import",
+    "sha256": "40b33e7f53c23f7d50e7d7f23574ced7df6cb6b6647392748c1da15dc32f3874",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-shell-normal.png.import",
+    "sha256": "bf8c3d28c766b908f630d40a5e184ad471038067107eae511abde3e387b7e975",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-shell-roughness.png.import",
+    "sha256": "6352efd0d169c983fffe7fe7f304a3a96407f85217e878eadb593556c8de1760",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-vent-albedo.png.import",
+    "sha256": "2e67c21138809b2663951e3088ddac17d415fc186de818f65e2ab401edb48518",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-vent-normal.png.import",
+    "sha256": "521c472fe9f4400d6b9d835cc80afe12f535dfc9070267017bcc725e91ccdee8",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/gemini-vent-roughness.png.import",
+    "sha256": "98ee9ee0adb363a2891f536fdb21c4ee8605d76970a18a80a748f265b4a10041",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-board-albedo.png.import",
+    "sha256": "083e21ebb53a4926096b60e1348450e572a3f43be7974b23f681ae590a172c85",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-board-normal.png.import",
+    "sha256": "dc741932fb24e7c14f8ddfff7faa2e869c08e2bccb26ce0bcb8fbd8535e5548a",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-board-roughness.png.import",
+    "sha256": "55cce6ce1b60035dc57244c83fe8c9510575c1c06235152f509fc36d0cbae07b",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-panel-albedo.png.import",
+    "sha256": "f241b95e67b54b90d57f2addbba585229d1df00775f920f43df5b2a66b24ef21",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-panel-normal.png.import",
+    "sha256": "b54acbef2e60dd34c89a1cd24ed929d9817fb09a7c0a1e5027c57e5b2f99f07d",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-panel-roughness.png.import",
+    "sha256": "e4531bc46cb52a899ff9f4ce6ac3c4c01d3040514513ef35c39397316b188eaf",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-shell-albedo.png.import",
+    "sha256": "558469eed94204aed78a76b91c0ca09fd7dbf8e24f2c28dd07e66c5f702d131c",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-shell-normal.png.import",
+    "sha256": "507de2af884648723f0754b4d157c14730f5f97d68cc391506d2d621d138746b",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-shell-roughness.png.import",
+    "sha256": "b6d15b8f18d4df432dfe8faab7b6d8b091e058c1007d7ff6062fe6ea4c3080b5",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-vent-albedo.png.import",
+    "sha256": "5cbb20aa075a0195ffd3944a147582bbf3d40fbe45cf452b9bc42cb60dea1b21",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-vent-normal.png.import",
+    "sha256": "7e59444bf1eae3f6fac1283eedfb5db247b19e4b18a395173ded593d05ad15fa",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/grok-vent-roughness.png.import",
+    "sha256": "3d8a588851b80fbbd5185b9557c33e329d158c823cced205fc37f175cd68eed7",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-board-albedo.png.import",
+    "sha256": "cd4f6c9872683034a24bbaef0aa957341dd600d418c8a5a148d881a9824f566a",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-board-normal.png.import",
+    "sha256": "85f1e049732063e05afc316a5315ef7a61ae75ba582c71736453cc0978772e80",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-board-roughness.png.import",
+    "sha256": "b5be426765caaa8dcda2b27424ed14b35625e9b563978bf36e9a084d561eab24",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-panel-albedo.png.import",
+    "sha256": "92bb051d6e1de73a547dc1c58fdc0f7b851698def8fbedbdf17ee29fcb14121e",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-panel-normal.png.import",
+    "sha256": "e8dd869bd57dca4f8f8425fb341b22c9967de638df55aa22296871ad504952a2",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-panel-roughness.png.import",
+    "sha256": "47ce4dbfab3bba4146a99d99c71c19e17d260d4e72e1b5abc17dba5bfd14bf01",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-shell-albedo.png.import",
+    "sha256": "661bdd4c3655c8bf5c89a9f23338e565759394a0b884c28a00715273839ec0f4",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-shell-normal.png.import",
+    "sha256": "dd5eebc5e85886331b6a877677239bee7fde4a219591dc539875d1a491a33133",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-shell-roughness.png.import",
+    "sha256": "e3ebd7ddff2464b2f25a66e752768d5ec4b4b4ed88cae90849b372eded062be9",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-vent-albedo.png.import",
+    "sha256": "b5c6d5e5de162cd23fa87ebd2cb3d871886c068300086e0fde059806a337e25b",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-vent-normal.png.import",
+    "sha256": "fd1cae187510582ad9938c6276cf4f4033f7f3dd78df8b25e0e9dd477329d75f",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/kimi-vent-roughness.png.import",
+    "sha256": "2e33ff3bf53e57205ceade9d2b400dffd78a6435cc57f57ddcf12844ce8e09d3",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-board-albedo.png.import",
+    "sha256": "3367fd5f035eaeae9c52260ea15b15fe186a751d1b8dc39fa7760e7e8b53a03a",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-board-normal.png.import",
+    "sha256": "e7e6a89f779bb508ba3d0e91e0b48e56855f744d7a8b9d5f1f615c817446fe60",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-board-roughness.png.import",
+    "sha256": "6bcb6e0a10127a0a29bf7d403786daf7fdb9f559d1558556e07d0e86535ea386",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-panel-albedo.png.import",
+    "sha256": "5d24712d389ccbaae001b6ae9e278ed70a5eb3faa00cb7df499169a2778e4a47",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-panel-normal.png.import",
+    "sha256": "130d86acf2137222dcacb6ef2a50509853ee9ef505f4010faa442b92f70e06ec",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-panel-roughness.png.import",
+    "sha256": "c0ca309fa4db8a08854ad5f5b999464324bbb8fd85b3b533258044203e3e091a",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-shell-albedo.png.import",
+    "sha256": "37603c9b0a43e299fb52dacc96021e56c44df5f47216c2082fc572bae7e4fb62",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-shell-normal.png.import",
+    "sha256": "521466a9f221ecf584c8eae6581c2d9e96e4e9e298aeeb26724f8c77df0471fb",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-shell-roughness.png.import",
+    "sha256": "9da47c8aa741211f88a504245ce0aa268becb3e0552b351cfca5a81c746325d4",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-vent-albedo.png.import",
+    "sha256": "2a874567f2105d574ef9f74688a80e3b3e34d397b4e31d0cb8b094977b4dd7aa",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-vent-normal.png.import",
+    "sha256": "fdabce44bf7ec73ddc43e1f78df56195a5032f26f20f1af4f514fdf9e77f0a61",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/meta-vent-roughness.png.import",
+    "sha256": "9d7a0f21331a895396983f281bdcbe9a6bc71413e772a55f98917d7b4001523e",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-board-albedo.png.import",
+    "sha256": "1fff860ba860cd77a47b1567e0581991969a357e0c1d2570687f5e8a5562aab6",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-board-normal.png.import",
+    "sha256": "38a608c942399565bf69a28d1fbbde2ff59046f7469206756db40d00af793b7c",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-board-roughness.png.import",
+    "sha256": "a261557c2f79a39afc87b3ac135ffcb3197c869e22480b32175269970faff131",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-panel-albedo.png.import",
+    "sha256": "89fd97b60fbc9fd9ceb7a9fa748a434c46bb674ad85bf8cd1be7f20e3bfe4b18",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-panel-normal.png.import",
+    "sha256": "6d6b83ade9afe84ff472da8ce7e45018de480b38ecd299f61f3a273490a455f4",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-panel-roughness.png.import",
+    "sha256": "b2af73dad839484632606862a598cab851b298d41c27be188a0bd31cf8929ad3",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-shell-albedo.png.import",
+    "sha256": "709d6e6bd2514ae0d71983800f493704905b16d3a78315e4ba484a0da3159f78",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-shell-normal.png.import",
+    "sha256": "cfc5b0269baba9c36f0b79df2c147831300401efe197f36ca8adbab0a49568db",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-shell-roughness.png.import",
+    "sha256": "8eba415ee59ad04b48a1b004ecd786f42c2ede14f8ad98166a9c4c624cbda03c",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-vent-albedo.png.import",
+    "sha256": "54ce8a154a4eb4375229332355a2fbd18a731b6073c26cd1ff52f19bead41bef",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-vent-normal.png.import",
+    "sha256": "e2b52d37bed8386270bcea94166a6fcd5841318a0fbc396bb7368984db2073b5",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/mistral-vent-roughness.png.import",
+    "sha256": "2c598d3a75709db6987408c642ca5897900592034a6124244aa5ccbed68f3a46",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-board-albedo.png.import",
+    "sha256": "3673b7320f192d8d2553d773431845fe2de99c0a40ba25cf451fb90d028ca409",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-board-normal.png.import",
+    "sha256": "9af74eedf0857af5ed141a26a38c02c561e5254b2d21d5d4534f2d0332db1bdf",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-board-roughness.png.import",
+    "sha256": "a6d9df2741de1723075675021db1156444ef72581547890faa2edb08f31cfbbe",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-panel-albedo.png.import",
+    "sha256": "f2e5b41ee2b6b944bb556c161b5b1489f7795b254eecc6b7941b6651dd5eaac2",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-panel-normal.png.import",
+    "sha256": "134226eb493340ea81e966602642f29589c9671b9ddfb7a66aa29ceec69baaec",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-panel-roughness.png.import",
+    "sha256": "3b908fffb885c1e878394d627412d39bd0d7df3e84166139d4386407d82a0fd4",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-shell-albedo.png.import",
+    "sha256": "c3c02b896a6542b1d46cb693782d47406d7e3eb1e3900d68bc8f3e3deb16bddd",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-shell-normal.png.import",
+    "sha256": "c538d75a66e788999d32afc631f7d18a1a54d8520342bb26298e2b37bffbd035",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-shell-roughness.png.import",
+    "sha256": "ce8b663a5c0ff3fac5fc3c13ff3d6522c82f783ceee465185914b41876d4e90a",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-vent-albedo.png.import",
+    "sha256": "575b1df947645e614c083afa79ba4375e5cb8f893f40be096c7a7be23b8b80c0",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-vent-normal.png.import",
+    "sha256": "70dc164cb067cd9a4acc7abee2c99fa3ddf361f9ac47675cb8a541350a2c71a9",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/qwen-vent-roughness.png.import",
+    "sha256": "c84fc6978f6d296bbcf3ba42148b57bbca0440acab8c30103fda7811e44ef51c",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/shared-precision-albedo.png.import",
+    "sha256": "5c942aceb7bb2e6030b1b81cf94faaac09f86828340a9e5394f904117b8501dd",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/shared-precision-normal.png.import",
+    "sha256": "2213259f4f4d5a5c183da00a5b850b8a17e94b9f1b0a2948bde89e25581eadba",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/shared-precision-roughness.png.import",
+    "sha256": "b99d78a100345b830510f4732b194719152824c6e4c6eb6f44352f07e26029c7",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/shared-rubber-albedo.png.import",
+    "sha256": "a08d88c99d2940c4c2756bcfe656d9d887584e6825dcb570aab8af4ad397997b",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/shared-rubber-roughness.png.import",
+    "sha256": "86aec1313f82f7ecef0427171fbdde9b6dc5cff3b8754fcf37c4f0d9feacf358",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/shared-trim-albedo.png.import",
+    "sha256": "1a8e596020fd119e923612f025f0cb60fbfd746f519fe6c9eced1c7ca8d775df",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/shared-trim-normal.png.import",
+    "sha256": "e1d6baa6f779bdb6ef648a9f5fe777f25864f2883c0b3ec5053c6ac6574824e0",
+    "equal": true
+  },
+  {
+    "path": "godot/source_operators/moth_finish/assets/shared-trim-roughness.png.import",
+    "sha256": "38ae3f4d55344cfcce3ef94683e7ebb349e647778ebd47ac710db30d0adee7f2",
+    "equal": true
+  }
+]

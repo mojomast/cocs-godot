@@ -15,21 +15,26 @@ var progress_label: Label
 var soccer_label: Label
 var result_panel: PanelContainer
 var result_label: Label
+var top_panel: Control
+var bottom_panel: Control
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	focus_mode = Control.FOCUS_NONE
 	var top := panel(false)
+	top_panel = top.get_parent() as Control
 	var heading := HBoxContainer.new()
 	top.add_child(heading)
 	title = label(heading, 20)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	phase_label = label(heading, 18)
 	var metrics := HBoxContainer.new()
 	top.add_child(metrics)
 	detail = label(metrics, 24)
 	detail.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	speed_label = label(metrics, 24)
 	progress_label = label(top, 16)
 	progress_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -37,16 +42,13 @@ func _ready() -> void:
 	soccer_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	soccer_label.hide()
 	var bottom := panel(true)
+	bottom_panel = bottom.get_parent() as Control
 	status = label(bottom, 18)
 	hints = label(bottom, 16)
 	hints.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	result_panel = PanelContainer.new()
 	add_child(result_panel)
 	result_panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
-	result_panel.offset_left = -340
-	result_panel.offset_right = 340
-	result_panel.offset_top = -170
-	result_panel.offset_bottom = 170
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.025, 0.045, 0.075, 0.97)
 	style.border_color = Color(0.35, 1, 0.8)
@@ -55,10 +57,36 @@ func _ready() -> void:
 	style.set_content_margin_all(20)
 	result_panel.add_theme_stylebox_override("panel", style)
 	result_label = label(result_panel, 21)
+	result_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	result_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	result_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	result_panel.hide()
+	resized.connect(layout_results)
+	layout_results()
 	make_passive(self)
+
+func layout_results() -> void:
+	if result_panel == null or result_label == null: return
+	# Control.size is the scaled canvas extent, including UI150 and live resize.
+	# Results own the screen while visible; every standings/restart line fits
+	# within the available rectangle instead of a fixed 680px panel.
+	var width := minf(680.0, maxf(200.0, size.x - 24.0))
+	var height := minf(400.0, maxf(180.0, size.y - 24.0))
+	result_panel.offset_left = -width * 0.5
+	result_panel.offset_right = width * 0.5
+	result_panel.offset_top = -height * 0.5
+	result_panel.offset_bottom = height * 0.5
+	var compact := width < 560.0 or height < 300.0
+	top_panel.offset_left = 12 if compact else 16
+	top_panel.offset_right = -12 if compact else -16
+	top_panel.offset_bottom = 166 if compact else 136
+	bottom_panel.offset_left = 12 if compact else 16
+	bottom_panel.offset_right = -12 if compact else -16
+	result_label.add_theme_font_size_override("font_size", 16 if compact else 21)
+	title.add_theme_font_size_override("font_size", 16 if compact else 20)
+	phase_label.add_theme_font_size_override("font_size", 14 if compact else 18)
+	detail.add_theme_font_size_override("font_size", 18 if compact else 24)
+	speed_label.add_theme_font_size_override("font_size", 18 if compact else 24)
 
 func panel(bottom: bool) -> VBoxContainer:
 	var p := PanelContainer.new()
@@ -108,7 +136,13 @@ static func describe(view: Dictionary) -> Dictionary:
 	var v: Dictionary = view.get("vehicle", {})
 	var phase: String = view.get("phase", "connecting")
 	var sports_phase: String = race.get("phase", "")
-	var heading := "Aurora Stadium · Puma Soccer" if soccer else "Ion Speedway · Puma Race"
+	var map_id := str(view.get("map_id", ""))
+	var venue := str(view.get("map_name", "")).strip_edges()
+	if venue.is_empty() and state.get("mapId") == map_id:
+		venue = str(state.get("mapName", "")).strip_edges()
+	if venue.is_empty():
+		venue = {"ion-speedway":"Ion Speedway", "aurora-stadium":"Aurora Stadium"}.get(map_id, "Puma Arena")
+	var heading: String = "%s · Puma %s" % [venue, "Soccer" if soccer else "Race"]
 	var phase_text := "Connecting…"
 	var status_text := "RELEASED · Waiting for the server"
 	var instructions := "Controls become available after the countdown."
@@ -163,7 +197,7 @@ static func describe(view: Dictionary) -> Dictionary:
 			var engaged: bool = view.get("engaged", false)
 			status_text = "ENGAGED · Escape to release" if engaged else "RELEASED · Enter to engage, then fresh movement keys"
 			color = Color(0.4, 1, 0.75) if engaged else color
-			instructions = preload("res://input_bindings/hints.gd").resolve("W/S: forward/reverse · A/D: steer · Space: brake · Shift: boost")
+			instructions = preload("res://input_bindings/hints.gd").resolve("W/S: forward/reverse · A/D: steer · Space: brake · Shift: boost") + " · F4: vehicle view"
 			if not soccer: instructions += "\nR: request race reset (server wait)"
 	return {"title":heading, "phase":phase_text, "detail":detail_text, "speed":speed_text, "status":status_text, "hints":instructions, "color":color}
 
@@ -173,6 +207,8 @@ func reset() -> void:
 	for item: Label in [title, phase_label, detail, speed_label, status, hints, progress_label, soccer_label, result_label]: item.text = ""
 	soccer_label.hide()
 	result_panel.hide()
+	top_panel.show()
+	bottom_panel.show()
 
 func update(view: Dictionary) -> void:
 	var parts := describe(view)
@@ -203,4 +239,6 @@ func update(view: Dictionary) -> void:
 	soccer_label.text = soccer_text
 	soccer_label.visible = not soccer_text.is_empty()
 	result_panel.visible = not results.is_empty()
+	top_panel.visible = results.is_empty()
+	bottom_panel.visible = results.is_empty()
 	result_label.text = results

@@ -8,9 +8,9 @@ const read=p=>readFileSync(p),receipt=JSON.parse(read('tools/godot-package/produ
 const exports=receipt.exports.map(r=>r.path),paths=sceneryImportPaths(exports,read);
 test('F exact 118 embedded/extracted images and 142 lossless import sidecars',()=>{
  assert.equal(paths.length,260);verifySceneryImports(exports,read);
- const result=productionResources({read,has:existsSync,worldIds:['parallax-observatory'],strict:false});
- assert.equal(result.units.scenery.expected.packageInputs.length,390);
- assert.deepEqual(result.pending,['vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
+ const result=productionResources({read,has:existsSync,worldIds:['parallax-observatory','vesper-viaduct','abyssal-pressureworks'],strict:false});
+ assert.equal(result.units.scenery.expected.packageInputs.length,883);
+ assert.deepEqual(result.pending,['stormglass-causeway']);
  for(const p of paths)assert.ok(Object.hasOwn(p.endsWith('.import')?result.provenance:result.resources,p));
  assert.throws(()=>productionResources({read,has:existsSync,worldIds:['parallax-observatory']}),/Required final production units remain pending/);
 });
@@ -31,7 +31,8 @@ test('wrong image hashes and changed lossless/normal/source policies fail agains
 test('supporting reconciliation preserves all original production and native fields',()=>{
  for(const id of ['scenery','robots','vehicles','parallax-interiors']) {
   const path=`tools/godot-package/production_receipts/${id}.json`,old=JSON.parse(execFileSync('git',['show',`27f3afc3:${path}`])),now=JSON.parse(read(path));
-  for(const [key,value]of Object.entries(old))if(key!=='packageInputs')assert.deepEqual(now[key],value,key);
+  for(const [key,value]of Object.entries(old))if(key!=='packageInputs'&&key!=='runtimeHooks')assert.deepEqual(now[key],value,key);
+  for(const [p,sha]of Object.entries(old.runtimeHooks))assert.equal(now.vesperPackageVerifierAdvance.runtimeChanged[p]?.before??now.abyssalPackageVerifierAdvance.runtimeChanged[p]?.before??now.featureAdvance.runtimeChanged[p]?.before??now.stormglassPackageVerifierAdvance.runtimeChanged[p]?.before??now.runtimeHooks[p],sha);
   assert.equal(now.sceneryPackageVerifierAdvance.previousReceipt.commit,'27f3afc3');
  }
 });

@@ -34,7 +34,7 @@ function launch(role,extra=[]){
  const compact=process.argv.includes('--compact');
  const args=['--path',resolve(ROOT,'godot'),'--audio-driver','Dummy',
   ...(role==='guest'?['--headless']:['--resolution',compact?'760x520':'1280x800']),
-  'res://tests/asset_production/hosted.tscn','--',`--endpoint=${endpoint}`,`--map=${id}`,`--mode=${mode}`,'--bots=0','--candidate-private',
+    id==='vesper-viaduct'?'res://tests/new_maps/vesper_viaduct/hosted.tscn':id==='abyssal-pressureworks'?'res://tests/new_maps/abyssal_pressureworks/hosted.tscn':'res://tests/asset_production/hosted.tscn','--',`--endpoint=${endpoint}`,`--map=${id}`,`--mode=${mode}`,'--bots=0','--candidate-private',
   `--candidate-sha=${permit.expectedSha}`,`--candidate-geometry=${permit.data.geometryHash}`,
   `--foundry-role=${role}`,`--foundry-controls=${resolve(out,role+'-controls.json')}`,
   ...(role==='host'?[`--foundry-capture=${resolve(out,'frames')}`]:[]),...(compact?['--foundry-compact']:[]),...extra];
@@ -57,7 +57,7 @@ try{
  launch('guest',[`--join-room=${room.id}`]);m=await until('native join and source start',()=>room.match);
   assert.equal(m.arena.id,id);assert.equal(m.config.mode,mode);assert.equal(m.actors.filter(a=>!a.bot).length,2);
  stage='gameplay';
- const follow=controller();let samples=0,resetSent=false;
+  const follow=controller();let samples=0,resetSent=false,captureStarted=null;
  const avoid=[...Object.values(m.flags??{}),...(m.objectiveState?.zones??[])];
  const retreat=avoid.length?m.nav.reduce((best,p)=>Math.min(...avoid.map(q=>distance(p,q)))>Math.min(...avoid.map(q=>distance(best,q)))?p:best,m.nav[0]):null;
  function aim(a,b){return {yaw:Math.atan2(a.x-b.x,a.z-b.z),pitch:Math.atan2(b.y+1-a.y-(a.eyeHeight??1.45),distance(a,b)),fire:true,reload:a.ammo?.[a.weapon]===0};}
@@ -83,10 +83,18 @@ try{
    if(respawn.dead&&a.health>0)respawn.alive=true;
    if(!respawn.alive){guest=hunt(b,a,'respawn-contact');}
    else if(['deathmatch','teamdeathmatch'].includes(mode)){host=hunt(a,b,'combat');}
-   else if(mode==='ctf'){
-    guest=follow(m,b,retreat,'opponent-retreat');
-    const enemy=Object.values(m.flags).find(f=>f.team!==a.team),home=Object.values(m.flags).find(f=>f.team===a.team);
-    const carrying=enemy.carrier===a.id;host=follow(m,a,carrying?home:enemy,carrying?'flag-return':'flag-pickup');
+    else if(mode==='ctf'){
+     guest=follow(m,b,retreat,'opponent-retreat');
+     const enemy=Object.values(m.flags).find(f=>f.team!==a.team),home=Object.values(m.flags).find(f=>f.team===a.team);
+     // Abyssal's ordinary approach can cross the home flag before the first
+     // kill. Use the real interact/drop and presence-return rules, never reset
+     // the flag object. A mutually carried state is valid source gameplay.
+     if(id==='abyssal-pressureworks'&&b.carryingFlag)guest={...guest,interact:true};
+     if(id==='abyssal-pressureworks'&&home.state!=='at-base'){
+      host=home.state==='carried'?hunt(a,b,'recover-home-carrier'):follow(m,a,home,'recover-home-dropped');
+     }else{
+      const carrying=enemy.carrier===a.id;host=follow(m,a,carrying?home:enemy,carrying?'flag-return':'flag-pickup');
+     }
    }else{
     guest=follow(m,b,retreat,'opponent-retreat');
     const zones=m.objectiveState.zones;
@@ -94,7 +102,9 @@ try{
     host=follow(m,a,target,'objective-'+target.id+':'+target.x+':'+target.z);
    }
   }
-  stimulus('host',host,m.time>=10&&m.time<32);stimulus('guest',guest);
+   if(id==='abyssal-pressureworks'&&respawn.alive&&captureStarted===null)captureStarted=m.time;
+   const clip=id==='abyssal-pressureworks'?captureStarted!==null&&m.time<captureStarted+22:m.time>=10&&m.time<32;
+   stimulus('host',host,clip);stimulus('guest',guest);
   if(samples++%20===0)trace.push({wall:new Date().toISOString(),time:m.time,actors:m.actors.map(a=>({id:a.id,x:a.x,y:a.y,z:a.z,health:a.health,deaths:a.deaths})),respawn:{...respawn},race:m.race?{phase:m.race.phase,standings:m.race.racers.map(r=>({id:r.actorId,passed:r.passed,laps:r.completedLaps}))}:null});
  };
  timer=setInterval(()=>{try{tick();}catch(e){tickError=e;}},50);

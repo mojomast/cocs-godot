@@ -1,0 +1,138 @@
+{
+  "captures": [
+    {
+      "capturedUsec": 866866,
+      "drawCalls": 7.0,
+      "eye": [
+        -178,
+        174,
+        182
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T044433.844034Z-representative/overview.png",
+      "frameSeconds": 0.0,
+      "primitives": 12392.0,
+      "target": [
+        0,
+        10,
+        0
+      ],
+      "view": "overview"
+    },
+    {
+      "capturedUsec": 1726891,
+      "drawCalls": 30.0,
+      "eye": [
+        23,
+        11.65,
+        -11
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T044433.844034Z-representative/equalizer.png",
+      "frameSeconds": 0.219275,
+      "primitives": 61920.0,
+      "target": [
+        44,
+        24,
+        8
+      ],
+      "view": "equalizer"
+    },
+    {
+      "capturedUsec": 2483589,
+      "drawCalls": 35.0,
+      "eye": [
+        -94,
+        7.65,
+        -70
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T044433.844034Z-representative/reef-window.png",
+      "frameSeconds": 0.21734,
+      "primitives": 61960.0,
+      "target": [
+        -94,
+        9,
+        -101
+      ],
+      "view": "reef-window"
+    }
+  ],
+  "collision": {
+    "art": "res://multiplayer_worlds/art/worlds/abyssal-pressureworks.glb",
+    "dressing": {
+      "errors": [],
+      "map_id": "abyssal-pressureworks",
+      "matched": [],
+      "motes": 0,
+      "panels": 0,
+      "preserved": [],
+      "resources": [],
+      "signs": 0,
+      "status": "ineligible",
+      "surfaces": 0,
+      "unmatched": [],
+      "unused_selectors": []
+    },
+    "gameplayTriangles": 2512,
+    "geometryHash": "1ba0013a069d0b771e152395a2b37a5559008a8afe8107b4ce55952cfe6e9c82"
+  },
+  "driver": "opengl3",
+  "geometryHash": "1ba0013a069d0b771e152395a2b37a5559008a8afe8107b4ce55952cfe6e9c82",
+  "importedStreams": [
+    {
+      "albedo": "res://multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_ivory.png",
+      "material": "ivory",
+      "normalEnabled": false,
+      "tangents": 39968,
+      "uv": 9992,
+      "vertices": 9992
+    },
+    {
+      "albedo": "res://multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_navy.png",
+      "material": "navy",
+      "normalEnabled": false,
+      "tangents": 6248,
+      "uv": 1562,
+      "vertices": 1562
+    },
+    {
+      "albedo": "res://multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_coral.png",
+      "material": "coral",
+      "normalEnabled": false,
+      "tangents": 7008,
+      "uv": 1752,
+      "vertices": 1752
+    },
+    {
+      "albedo": "res://multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_copper.png",
+      "material": "copper",
+      "normalEnabled": true,
+      "tangents": 25776,
+      "uv": 6444,
+      "vertices": 6444
+    },
+    {
+      "albedo": "preserved",
+      "material": "cyan",
+      "normalEnabled": false,
+      "tangents": 3168,
+      "uv": 792,
+      "vertices": 792
+    },
+    {
+      "albedo": "preserved",
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 15552,
+      "uv": 3888,
+      "vertices": 3888
+    },
+    {
+      "albedo": "preserved",
+      "material": "glass",
+      "normalEnabled": false,
+      "tangents": 64,
+      "uv": 16,
+      "vertices": 16
+    }
+  ],
+  "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)"
+}

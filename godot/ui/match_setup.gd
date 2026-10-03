@@ -36,6 +36,12 @@ var close := Button.new()
 var body: MarginContainer
 var hint := Label.new()
 var dismissed := false
+# Original locked-catalog failure text when the owner has one, so an empty
+# registry reports the real reason instead of a generic guess.
+var catalog_error := ""
+# Fingerprint of the read-only catalog projection last rendered into the map
+# row. A same-size replacement that changes ids/names/modes still differs here.
+var catalog_fingerprint := ""
 
 func _ready() -> void:
 	# configure() is also used before attachment by fixtures/scene builders.
@@ -44,9 +50,21 @@ func _ready() -> void:
 	resized.connect(center_panel)
 	call_deferred("center_panel")
 
+# Owner-visible catalog update path. configure() captures one fingerprint; if the
+# owner opens or replaces the catalog afterwards, this detects the change and
+# rebuilds the map/mode rows once without any caller invoking the private
+# populate_modes(). It does nothing while unchanged or while the body is
+# dismissed, and is inert before configure() (body is null).
+func _process(_delta: float) -> void:
+	if body == null or not is_inside_tree() or not body.visible: return
+	if catalog_signature() == catalog_fingerprint: return
+	populate_modes(selected_mode())
+
 static func validate(maps: Dictionary, map_id: String, mode: String) -> String:
 	if not maps.has(map_id): return "Unknown locked map: " + map_id
-	if mode not in maps[map_id].get("modes", []):
+	var entry: Variant = maps[map_id]
+	if not entry is Dictionary: return "Malformed locked catalog entry: " + map_id
+	if mode not in valid_modes(entry):
 		return "Mode '%s' is not supported by %s in the locked catalog." % [mode, map_id]
 	var route: String = STANDALONE.get(map_id, {}).get(mode, "")
 	if not route.is_empty():
@@ -55,6 +73,32 @@ static func validate(maps: Dictionary, map_id: String, mode: String) -> String:
 	if map_id not in MAPS: return "Native gameplay pending for " + map_id
 	if mode not in MODES: return "Native mode pending: " + mode
 	return ""
+
+# The mode ids the locked catalog actually advertises for one entry. Each value
+# must be a String; `strip_edges()` first removes leading/trailing whitespace
+# (including newlines, so "\nfoo" is accepted as "foo"), then any remaining
+# interior control character rejects the entry. Empty and over-long ids are
+# dropped, duplicates collapse and order is preserved. This accepts exactly what
+# the catalog advertises (registry/standalone/lattice ids are not second-guessed
+# by an allowlist) and never invents a mode. Read-only: the catalog is untouched.
+static func valid_modes(entry: Variant) -> Array:
+	var result: Array = []
+	if not entry is Dictionary: return result
+	var raw: Variant = entry.get("modes", [])
+	if not raw is Array: return result
+	for value: Variant in raw:
+		if not value is String: continue
+		var mode := str(value).strip_edges()
+		if mode.is_empty() or mode.length() > 64: continue
+		var control := false
+		for index: int in mode.length():
+			var code: int = mode.unicode_at(index)
+			if code <= 0x1f or code == 0x7f:
+				control = true
+				break
+		if control or mode in result: continue
+		result.append(mode)
+	return result
 
 static func parse_args(args: PackedStringArray, maps: Dictionary) -> Dictionary:
 	var result := {"map":DEFAULT_MAP, "mode":DEFAULT_MODE, "operator":Loadout.DEFAULT_CHARACTER, "harness":Loadout.DEFAULT_HARNESS, "bots":2, "setup":false, "error":""}
@@ -117,8 +161,9 @@ func caption(text: String) -> Label:
 	item.add_theme_color_override("font_color", Color("a3b7c9"))
 	return item
 
-func configure(maps: Dictionary, map_id: String, mode: String, character: String = "", harness: String = "", bots: int = 2) -> void:
+func configure(maps: Dictionary, map_id: String, mode: String, character: String = "", harness: String = "", bots: int = 2, catalog_error_text: String = "") -> void:
 	entries = maps
+	catalog_error = catalog_error_text
 	set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
 	custom_minimum_size = Vector2(680, 460)
 	size = custom_minimum_size
@@ -150,11 +195,8 @@ func configure(maps: Dictionary, map_id: String, mode: String, character: String
 	build_loadout_rows()
 	box.add_child(caption("Map"))
 	box.add_child(map_choice)
-	for id: String in entries:
-		var suffix := "" if id in MAPS else (" — separate demo" if STANDALONE.has(id) else " — pending")
-		map_choice.add_item(entries[id].name + suffix)
-		map_choice.set_item_metadata(map_choice.item_count - 1, id)
-		if id == map_id: map_choice.select(map_choice.item_count - 1)
+	rebuild_map_choices(map_id)
+	catalog_fingerprint = catalog_signature()
 	box.add_child(caption("Mode"))
 	box.add_child(mode_choice)
 	box.add_child(status)
@@ -189,6 +231,7 @@ func configure(maps: Dictionary, map_id: String, mode: String, character: String
 	map_choice.item_selected.connect(func(_index: int) -> void: populate_modes())
 	mode_choice.item_selected.connect(func(_index: int) -> void: update_status())
 	start.pressed.connect(func() -> void:
+		if entries.is_empty(): return
 		if validate(entries, selected_map(), selected_mode()).is_empty():
 			start_requested.emit(selected_map(), selected_mode()))
 	populate_modes(mode)
@@ -257,6 +300,72 @@ func selected_map() -> String:
 
 func selected_mode() -> String:
 	return str(mode_choice.get_selected_metadata())
+
+# Total catalog access: a missing id, a non-dictionary entry or an absent
+# `modes` array yields an empty value instead of an invalid-dictionary error.
+# These are read-only projections; the shared catalog is never mutated.
+func map_entry(map_id: String) -> Dictionary:
+	if map_id.is_empty() or not entries.has(map_id): return {}
+	var entry: Variant = entries[map_id]
+	return entry if entry is Dictionary else {}
+
+func offered_modes(map_id: String) -> Array:
+	return valid_modes(map_entry(map_id))
+
+func map_index(id: String) -> int:
+	for index: int in map_choice.item_count:
+		if str(map_choice.get_item_metadata(index)) == id: return index
+	return -1
+
+func first_valid_map() -> String:
+	for raw: Variant in entries.keys():
+		var id := str(raw)
+		if not offered_modes(id).is_empty(): return id
+	return ""
+
+func catalog_problem() -> String:
+	if catalog_error.is_empty():
+		return "The locked map catalog is empty; there is nothing to start."
+	return "Locked catalog unavailable: " + catalog_error
+
+# Read-only projection of the catalog content the map row depends on: sorted
+# ids plus each entry's name and validated modes. Same-size replacements that
+# change other ids, names or a map's modes still produce a different string.
+func catalog_signature() -> String:
+	var ids: Array = entries.keys()
+	ids.sort()
+	var parts := PackedStringArray()
+	for raw: Variant in ids:
+		var id := str(raw)
+		parts.append("%s\u001f%s\u001f%s" % [id, str(map_entry(id).get("name", "")), "\u001e".join(PackedStringArray(offered_modes(str(id))))])
+	return "\u001d".join(parts)
+
+# Rebuild the map rows from the live catalog, keeping the current selection by
+# metadata and falling back to the first surviving startable map. Rebuilding is
+# what makes a newly added key (absent from the old rows) selectable again.
+func rebuild_map_choices(preferred: String = "") -> void:
+	var previous := preferred if not preferred.is_empty() else selected_map()
+	map_choice.clear()
+	for raw: Variant in entries.keys():
+		var id := str(raw)
+		var entry := map_entry(id)
+		var suffix := "" if id in MAPS else (" — separate demo" if STANDALONE.has(id) else " — pending")
+		map_choice.add_item(str(entry.get("name", id)) + suffix)
+		map_choice.set_item_metadata(map_choice.item_count - 1, id)
+	if not previous.is_empty() and map_index(previous) >= 0:
+		map_choice.select(map_index(previous))
+	else:
+		var fallback := first_valid_map()
+		if not fallback.is_empty() and map_index(fallback) >= 0:
+			map_choice.select(map_index(fallback))
+
+# Rebuild the map row only when the catalog content actually changed; a stable
+# frame does no work and a pure modes change for the selected map is picked up.
+func sync_catalog() -> void:
+	var signature := catalog_signature()
+	if signature == catalog_fingerprint: return
+	catalog_fingerprint = signature
+	rebuild_map_choices()
 
 # Operator/harness selection. Every row entry carries the source ID as metadata;
 # the source lock (claude -> claudecode) is applied to the row, never bypassed.
@@ -328,22 +437,46 @@ func on_harness_selected(_index: int) -> void:
 	loadout_changed.emit(selected_character(), selected_harness())
 
 func populate_modes(preferred: String = DEFAULT_MODE) -> void:
+	# A reopened/failed catalog can replace ids, names or modes without changing
+	# the size; sync_catalog() notices and rebuilds the map rows first.
+	sync_catalog()
 	mode_choice.clear()
-	for mode: String in entries[selected_map()].modes:
-		var pending := selected_map() not in MAPS or mode not in MODES
+	var map_id := selected_map()
+	var offered := offered_modes(map_id)
+	for mode: String in offered:
+		var pending := map_id not in MAPS or mode not in MODES
 		var suffix := ""
 		if pending:
-			suffix = " — separate demo" if STANDALONE.get(selected_map(), {}).has(mode) else (" — main menu" if mode == "campaign" else " — pending")
+			suffix = " — separate demo" if STANDALONE.get(map_id, {}).has(mode) else (" — main menu" if mode == "campaign" else " — pending")
 		mode_choice.add_item(MODE_NAMES.get(mode, mode.capitalize()) + suffix)
 		mode_choice.set_item_metadata(mode_choice.item_count - 1, mode)
 		if mode == preferred: mode_choice.select(mode_choice.item_count - 1)
+	mode_choice.disabled = offered.is_empty()
 	update_status()
 
 func update_status() -> void:
-	if entries.is_empty(): return
-	var problem := validate(entries, selected_map(), selected_mode())
+	# No usable catalog: state an honest reason and disable Start, but leave the
+	# Close setup path fully usable so the player is never trapped.
+	if entries.is_empty():
+		start.disabled = true
+		status.text = catalog_problem()
+		if is_inside_tree(): call_deferred("settle")
+		return
+	var map_id := selected_map()
+	var entry := map_entry(map_id)
+	if entry.is_empty():
+		start.disabled = true
+		status.text = "The selected map is no longer in the locked catalog. Close and reopen setup to choose another."
+		if is_inside_tree(): call_deferred("settle")
+		return
+	if offered_modes(map_id).is_empty():
+		start.disabled = true
+		status.text = "No playable modes are registered for %s in the locked catalog." % str(entry.get("name", map_id))
+		if is_inside_tree(): call_deferred("settle")
+		return
+	var problem := validate(entries, map_id, selected_mode())
 	start.disabled = not problem.is_empty()
-	status.text = problem if start.disabled else "Ready: %s / %s · %s\nClick to capture in-game; Esc releases the pointer." % [entries[selected_map()].name, MODE_NAMES.get(selected_mode(), selected_mode()), Loadout.label(selected_character(), selected_harness())]
+	status.text = problem if start.disabled else "Ready: %s / %s · %s\nClick to capture in-game; Esc releases the pointer." % [str(entry.get("name", map_id)), MODE_NAMES.get(selected_mode(), selected_mode()), Loadout.label(selected_character(), selected_harness())]
 	if not start.disabled and selected_mode() == "teamdeathmatch":
 		status.text += "\nRed vs Blue · Shared team score · Friendly fire off · Tab: scores"
 	if not start.disabled and selected_mode() == "rockets":

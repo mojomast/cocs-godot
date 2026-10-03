@@ -1,5 +1,8 @@
 # Abyssal Pressureworks — source-ready architectural recipe
 
+Preserved source-stage design. See [PRODUCTION_I.md](PRODUCTION_I.md) for the
+actual produced master/GLB, native-reviewed revisions and current evidence.
+
 Stable ID: `abyssal-pressureworks`. Lane branch: `expansion-three/abyssal`.
 Base: `27cfaa14`. Stage: **READY FOR BLENDER**, awaiting the parent's exclusive slot.
 

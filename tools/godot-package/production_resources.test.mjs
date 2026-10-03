@@ -15,6 +15,8 @@ test('all seven units remain required; a promotion without registry membership s
   const unpromoted=JSON.parse(disk(REQUIREMENTS));unpromoted.units.robots.promotion=null;
   unpromoted.units.vehicles.promotion=null;
   unpromoted.units.scenery.promotion=null;
+  unpromoted.units['vesper-viaduct'].promotion=null;
+  unpromoted.units['abyssal-pressureworks'].promotion=null;
   const read=p=>p===REQUIREMENTS?Buffer.from(JSON.stringify(unpromoted)):disk(p);
   const result=productionResources({read,has:exists,worldIds,strict:false});
   assert.deepEqual([...result.pending].sort(),[...REQUIRED_UNITS].sort());
@@ -32,11 +34,11 @@ test('all seven units remain required; a promotion without registry membership s
   assert.throws(()=>productionResources({read:p=>p==='port/finish/ASSET_PRODUCTION.json'?Buffer.from(JSON.stringify(plan)):disk(p),has:exists,strict:false}),/builder\/recipe dropped/);
 });
 
-test('four real promotions bind actual production bytes; three units remain pending',()=>{
+test('seven real promotions bind actual production bytes and pass strict inventory',()=>{
   const options={read:disk,has:exists,worldIds:Object.keys(WORLDS),strict:false};
   const result=productionResources(options);
-  assert.equal(Object.keys(WORLDS).length,10);
-  assert.deepEqual(result.pending,REQUIRED_UNITS.filter(id=>!['parallax-interiors','robots','vehicles','scenery'].includes(id)));
+  assert.equal(Object.keys(WORLDS).length,13);
+  assert.deepEqual(result.pending,[]);
   const glb='godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb';
   assert.equal(result.raw[glb],'c1dffd357545206d3f70870f850e441c5be148e652830a4a69835185a75610bd');
   assert.ok(!Object.hasOwn(result.resources,glb+'.import'));
@@ -48,7 +50,7 @@ test('four real promotions bind actual production bytes; three units remain pend
   const bytes=Buffer.from(JSON.stringify(receipt)),req=JSON.parse(disk(REQUIREMENTS));
   req.units['parallax-interiors'].promotion.sha256=sha(bytes);
   assert.throws(()=>productionResources({...options,read:p=>p===receiptPath?bytes:p===REQUIREMENTS?Buffer.from(JSON.stringify(req)):disk(p)}),/requires raw GLB/);
-  assert.throws(()=>productionResources({...options,strict:true}),/remain pending/);
+  assert.deepEqual(productionResources({...options,strict:true}).pending,[]);
 });
 
 // Synthetic binary/metadata fixture uses a real committed PNG. It proves closure

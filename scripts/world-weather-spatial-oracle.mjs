@@ -38,7 +38,12 @@ const result = {sourceHashes:Object.fromEntries(['textures.mjs','view.mjs','effe
 // Check the explicit adapter contract without launching the native engine.
 const adapter = fs.readFileSync(new URL('../godot/ambience/wet_surface.gd',import.meta.url),'utf8');
 const anchors = [...adapter.matchAll(/^\s*"(res:\/\/[^"\n]+)": ("(?:[^"\\]|\\.)*"),$/gm)];
-assert.equal(anchors.length,3);
+assert.deepEqual(anchors.map(([,path])=>path).sort(),[
+  'res://campaign/materials/ground.gdshader',
+  'res://material_language/family.gdshader',
+  'res://moth/surface.gdshader',
+  'res://moth/surface_opaque.gdshader',
+].sort());
 for(const [,path,quoted] of anchors){
   const code=fs.readFileSync(new URL('../godot/'+path.slice(6),import.meta.url),'utf8');
   assert.equal(code.split(JSON.parse(quoted)).length,2,`unique reviewed roughness anchor: ${path}`);

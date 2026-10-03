@@ -6,6 +6,9 @@ const Finish = preload("res://first_person/finish.gd")
 const Art = preload("res://first_person/art_adapter.gd")
 const Inertia = preload("res://first_person/inertia.gd")
 const Spring = preload("res://animation/critical_spring.gd")
+const KickMotion = preload("res://first_person/kick_motion.gd")
+const KickRig = preload("res://first_person/kick_rig.gd")
+var kick_motion := KickMotion.new()
 var inertia := Inertia.new()
 var punch_spring := Spring.new()
 const MAX_SEEN := 4096
@@ -19,7 +22,7 @@ var weapon: Node3D
 var hands: Node3D
 var flash: Node3D
 var kick_leg: Node3D
-const KICK_SECONDS := 0.19
+const KICK_SECONDS := KickMotion.DURATION
 var kick_age := KICK_SECONDS
 var kick_count := 0
 var manifest: Dictionary = {}
@@ -151,6 +154,7 @@ func apply_actor(actor: Dictionary, can_show: bool) -> void:
 	if eligible and id != current_weapon: _select_weapon(id)
 	if showing and not eligible: _clear_motion()
 	finish.apply(actor.get("finish") if eligible else null)
+	if eligible: kick_leg.apply_identity(actor)
 	showing = eligible
 	overlay.visible = eligible
 	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS if eligible else SubViewport.UPDATE_DISABLED
@@ -158,6 +162,7 @@ func apply_actor(actor: Dictionary, can_show: bool) -> void:
 	speed = minf(12.0, Vector2(number(actor.get("vx")), number(actor.get("vz"))).length()) if eligible and actor.get("grounded", true) != false else 0.0
 	reloading = eligible and actor.get("reloading", false) == true
 	aim_blocked = reloading or actor.get("sprinting", false) == true or number(actor.get("weaponSwitch")) > 0.0
+	if aim_blocked: interrupt_kick()
 	if aim_blocked:
 		aim_requested = false
 		aim_target = 0.0
@@ -165,7 +170,7 @@ func apply_actor(actor: Dictionary, can_show: bool) -> void:
 	reload_progress = clampf(1.0 - number(actor.get("reloadTimer"), duration) / duration, 0.0, 1.0) if reloading and duration > 0 else 0.0
 
 func apply_aim(active: bool, weight: float = 1.0) -> bool:
-	aim_requested = active and showing and not aim_blocked and is_finite(weight) and weight > 0.0
+	aim_requested = active and showing and not aim_blocked and kick_motion.age >= KICK_SECONDS and is_finite(weight) and weight > 0.0
 	aim_target = clampf(weight, 0.0, 1.0) if aim_requested else 0.0
 	return aim_requested
 
@@ -212,8 +217,11 @@ func apply_events(events: Array, local_id: int) -> void:
 			# Only an accepted source melee event moves the foot. A denied repeat
 			# during source cooldown never claims a hit or invents an extra attack.
 			if showing and owner == local_id and owner == actor_id:
-				kick_age = 0.0
-				kick_count += 1
+				if kick_motion.accept(event):
+					kick_age = 0.0
+					kick_count += 1
+					aim_requested = false
+					aim_target = 0.0
 			continue
 		# One source trigger can produce 8/12 shot events. Explosive shrapnel is not fire.
 		var volley := "volley/%d/%d/%s" % [owner, kind, str(time)]
@@ -331,7 +339,7 @@ func advance(delta: float) -> void:
 		if punch < 0.0005: punch = 0.0
 	flash_remaining = maxf(0.0, flash_remaining - dt)
 	switch_remaining = maxf(0.0, switch_remaining - dt)
-	var target := aim_target if not reloading and switch_remaining <= 0.0 else 0.0
+	var target := aim_target if not reloading and switch_remaining <= 0.0 and kick_motion.age >= KICK_SECONDS else 0.0
 	var rate := float(info.ads.enter if target > aim_weight else info.ads.exit)
 	aim_weight = lerpf(aim_weight, target, 1.0 - exp(-dt * rate))
 	if absf(aim_weight - target) < 0.00001: aim_weight = target
@@ -368,6 +376,9 @@ func advance(delta: float) -> void:
 	handling.advance(dt, reloading, reload_progress, aim_weight, reduced_motion)
 	_update_hands()
 	_advance_kick(delta)
+	var kick_pose := kick_motion.sample(reduced_motion)
+	pivot.position += kick_pose.weapon_position
+	pivot.basis *= Basis.from_euler(kick_pose.weapon_rotation)
 	# Includes break-action motion, recoil, ADS, switch and reload transforms.
 	for index: int in flash.get_child_count():
 		var flare := flash.get_child(index) as Node3D
@@ -389,6 +400,7 @@ func _clear_motion() -> void:
 	reloading = false
 	reload_progress = 0.0
 	kick_age = KICK_SECONDS
+	kick_motion.interrupt()
 	if is_instance_valid(kick_leg): kick_leg.hide()
 	if is_instance_valid(flash): flash.hide()
 	if is_instance_valid(weapon): handling.clear()
@@ -405,6 +417,7 @@ func reset() -> void:
 	expired_time = -INF
 	recoil_count = 0
 	kick_count = 0
+	kick_motion.reset()
 	if _attached:
 		overlay.hide()
 		viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
@@ -423,67 +436,27 @@ func _exit_tree() -> void:
 			node.mesh = null
 
 func _build_kick_leg() -> void:
-	kick_leg = Node3D.new()
-	kick_leg.name = "MeleeKickLeg"
+	kick_leg = KickRig.new()
 	viewport.add_child(kick_leg)
-	var trouser := StandardMaterial3D.new()
-	trouser.albedo_color = Color("30424d")
-	trouser.roughness = 0.92
-	var boot := StandardMaterial3D.new()
-	boot.albedo_color = Color("354b56")
-	boot.roughness = 0.85
-	var shin := MeshInstance3D.new()
-	shin.name = "Shin"
-	var shin_mesh := CylinderMesh.new()
-	shin_mesh.top_radius = 0.082
-	shin_mesh.bottom_radius = 0.105
-	shin_mesh.height = 0.46
-	shin_mesh.radial_segments = 12
-	shin.mesh = shin_mesh
-	shin.material_override = trouser
-	shin.position = Vector3(0.015, -0.30, 0.20)
-	kick_leg.add_child(shin)
-	var foot := MeshInstance3D.new()
-	foot.name = "Boot"
-	var boot_mesh := BoxMesh.new()
-	boot_mesh.size = Vector3(0.24, 0.15, 0.40)
-	foot.mesh = boot_mesh
-	foot.material_override = boot
-	foot.position = Vector3(0.0, -0.025, -0.12)
-	kick_leg.add_child(foot)
-	var sole := MeshInstance3D.new()
-	sole.name = "BootSole"
-	var sole_mesh := BoxMesh.new()
-	sole_mesh.size = Vector3(0.26, 0.05, 0.42)
-	sole.mesh = sole_mesh
-	var sole_material := StandardMaterial3D.new()
-	sole_material.albedo_color = Color("7e9aaa")
-	sole_material.roughness = 0.95
-	sole.material_override = sole_material
-	sole.position = Vector3(0.0, -0.12, -0.12)
-	kick_leg.add_child(sole)
-	var cap := MeshInstance3D.new()
-	cap.name = "ToeCap"
-	var cap_mesh := BoxMesh.new()
-	cap_mesh.size = Vector3(0.245, 0.165, 0.095)
-	cap.mesh = cap_mesh
-	cap.material_override = sole_material
-	cap.position = Vector3(0.0, -0.023, -0.305)
-	kick_leg.add_child(cap)
-	kick_leg.hide()
+	kick_leg.build()
+
+func interrupt_kick() -> void:
+	kick_motion.interrupt()
+	kick_age = KICK_SECONDS
+	if is_instance_valid(kick_leg): kick_leg.hide()
+
+func get_kick_state() -> Dictionary:
+	var pose := kick_motion.sample(reduced_motion)
+	return {"step":pose.step, "strike":pose.strike, "age":kick_motion.age,
+		"active":showing and pose.visible, "confirmed":kick_motion.confirmed,
+		"accepted":kick_count, "contact_seconds":KickMotion.CONTACT,
+		"duration":KICK_SECONDS, "chain_window":KickMotion.CHAIN_WINDOW}
 
 func _advance_kick(delta: float) -> void:
 	if not is_instance_valid(kick_leg): return
-	kick_age = minf(KICK_SECONDS, kick_age + delta)
-	kick_leg.visible = showing and kick_age < KICK_SECONDS
-	if not kick_leg.visible: return
-	var phase := kick_age / KICK_SECONDS
-	# Accepted event is already contact authority; this visual windup never
-	# schedules a second impact. Quick extension, short contact hold, followthrough.
-	var extension := smoothstep(0.0, 0.28, phase) * (1.0 - smoothstep(0.40, 1.0, phase))
-	if reduced_motion: extension *= 0.55
-	kick_leg.position = Vector3(-0.35, -0.68, -0.58).lerp(Vector3(-0.16, -0.18, -0.65), extension)
-	kick_leg.rotation = Vector3(-0.17 - 0.33 * extension, -0.10 * extension, -0.16 * extension)
+	kick_motion.advance(delta)
+	kick_age = kick_motion.age
+	kick_leg.apply_pose(kick_motion.sample(reduced_motion))
 
 func _build_hands() -> void:
 	# Rigid articulated hierarchy: independent Wrist / Elbow / Forearm nodes.

@@ -63,11 +63,11 @@ func _ready() -> void:
 		if arg.begins_with("--bots="): world_bots = arg.trim_prefix("--bots=").to_int()
 		if arg.begins_with("--time-limit="): time_limit = clampi(int(arg.trim_prefix("--time-limit=")), 60, 900)
 		if arg.begins_with("--round-target="): round_target = int(arg.trim_prefix("--round-target="))
-	if not map_id in ["sirocco-circuit", "copper-bowl"] or endpoint.is_empty():
+	if not map_id in ["sirocco-circuit", "stormglass-causeway", "copper-bowl"] or endpoint.is_empty():
 		push_error("Require a registered Puma world and authority endpoint")
 		get_tree().quit(2)
 		return
-	mode = "puma-race" if map_id == "sirocco-circuit" else "puma-soccer"
+	mode = "puma-race" if map_id in ["sirocco-circuit", "stormglass-causeway"] else "puma-soccer"
 	add_child(world)
 	world.set_process(false)
 	world.set_process_unhandled_input(false)
@@ -117,6 +117,7 @@ func checked(result: Error) -> bool:
 func fail(message: String) -> void:
 	if "--world-evidence" in OS.get_cmdline_user_args(): print("WORLD_SPORTS_ERROR ",message)
 	audiovisual.dropped()
+	audiovisual.release_audio(false)
 	error = message
 	phase = "error"
 	controls.release()
@@ -130,6 +131,7 @@ func clear_round() -> void:
 	vehicle.clear()
 	fleet.clear_round()
 	chase.reset()
+	chase.set_view(SettingsAccess.vehicle_view())
 	world.camera.transform = initial_camera
 	ball.hide()
 	ball.position = Vector3.ZERO
@@ -204,6 +206,7 @@ func on_snapshot(frame: Dictionary) -> void:
 	if previous_id != vehicle.get("id"):
 		controls.release()
 		chase.reset()
+		chase.set_view(SettingsAccess.vehicle_view())
 	if not eligible(): controls.release()
 	var race: Dictionary = state.get("race", {})
 	var b: Variant = race.get("ball")
@@ -224,8 +227,13 @@ func _input(event: InputEvent) -> void:
 	if SettingsAccess.overlay_open():
 		controls.accept(event, false)
 		return
+	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_F4 and eligible():
+		chase.toggle_view()
+		SettingsAccess.save_vehicle_view("first" if chase.first_person else "third")
+		return
 	controls.accept(event, eligible())
 	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_F5 and phase == "results":
+		audiovisual.release_audio(true)
 		clear_round()
 		phase = "starting"
 		phase_age = 0
@@ -256,14 +264,18 @@ func _process(delta: float) -> void:
 			send_age = 0
 			checked(net.send_input(controls.packet(float(vehicle.get("yaw", 0)) - PI, eligible())))
 	if not net.spectating and not vehicle.is_empty():
-		var pose: Dictionary = chase.follow(vehicle, delta)
+		if SettingsAccess.service() != null: chase.set_view(SettingsAccess.vehicle_view())
+		var settings := SettingsAccess.service()
+		var reduced: bool = settings != null and settings.values.get("reduced_motion", false) == true
+		var pose: Dictionary = chase.follow(vehicle, delta, float(vehicle.get("yaw", 0.0)) - PI, 0.0, "driver", 0, reduced)
 		world.camera.position = pose.eye
 		world.camera.look_at(pose.target)
 	guidance.apply(state.get("race", {}), net.actor_id, phase == "active" and age < 0.5 and not state.get("over", false))
 	var soccer_target := soccer_guidance.apply(state, net.actor_id, vehicle, mode == "puma-soccer" and phase == "active" and age < 0.5)
-	hud.update({"mode":mode, "state":state, "vehicle":vehicle, "actor_id":net.actor_id, "phase":phase, "age":age, "eligible":eligible(), "engaged":controls.engaged, "focused":controls.focused, "error":error, "message":progression.message, "soccer_guidance":soccer_target})
+	hud.update({"mode":mode, "map_id":map_id, "map_name":world.catalog.entries.get(map_id, {}).get("name", ""), "state":state, "vehicle":vehicle, "actor_id":net.actor_id, "phase":phase, "age":age, "eligible":eligible(), "engaged":controls.engaged, "focused":controls.focused, "error":error, "message":progression.message, "soccer_guidance":soccer_target})
 	hud.visible = not net.spectating # Public target/camera panel owns the spectator surface.
 
 func _exit_tree() -> void:
 	controls.release()
+	audiovisual.release_audio(false)
 	net.disconnect_server()

@@ -102,6 +102,7 @@ func choose(action: String, code: String) -> void:
 	tap(KEY_ENTER)
 	await process_frame
 	check(store.values[action] == code, "GUI applied " + action + "=" + code)
+	check(choice.has_focus(), "visible binding selector regains focus after rebind " + action)
 
 func screenshot(name: String) -> void:
 	await RenderingServer.frame_post_draw
@@ -120,6 +121,14 @@ func run() -> void:
 	tap(KEY_F12)
 	await process_frame
 	check(settings.overlay_open(), "F12 discovers settings")
+	var binding_panel: Node = settings.panel.find_child("KeyboardMouseBindings", true, false)
+	var search_field: LineEdit = binding_panel.search
+	search_field.grab_focus()
+	for key: int in [KEY_P, KEY_O, KEY_W, KEY_E, KEY_R]: tap(key)
+	await process_frame
+	check(search_field.has_focus() and binding_panel.rows.power.visible and not binding_panel.rows.forward.visible, "keyboard search filters editable actions and keeps focus")
+	search_field.clear()
+	search_field.grab_focus()
 	for pair: Array in [["forward", "ArrowUp"], ["melee", "MouseX1"], ["mobility", "MouseX2"], ["fire", "KeyI"], ["power", "KeyY"], ["crouch", "ControlRight"]]:
 		await choose(pair[0], pair[1])
 	await screenshot("settings-scrolled")

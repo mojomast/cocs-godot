@@ -11,7 +11,12 @@ const VehicleBridge = preload("res://vehicles/session_bridge.gd")
 const VehicleFleet = preload("res://combined_arms/fleet.gd")
 const Audiovisual = preload("res://audio/av_service.gd")
 const VehicleShots = preload("res://vehicles/session_shots.gd")
+const VehicleCamera = preload("res://sports/chase.gd")
 var vehicle_bridge := VehicleBridge.new()
+var vehicle_camera := VehicleCamera.new()
+var vehicle_camera_time := NAN
+var vehicle_camera_map_attempted := ""
+var mounted_camera_pose: Dictionary = {}
 var vehicle_fleet: Node3D
 var vehicle_shots: Node3D
 var audiovisual
@@ -86,16 +91,30 @@ func vehicle_shots_allowed() -> bool:
 
 func clear_vehicles() -> void:
 	vehicle_bridge.reset()
+	vehicle_camera.reset()
+	vehicle_camera_time = NAN
+	mounted_camera_pose.clear()
 	if is_instance_valid(vehicle_fleet): vehicle_fleet.clear_round()
 	if is_instance_valid(vehicle_shots): vehicle_shots.clear_round()
 
 func observe_vehicles(value: Dictionary) -> void:
 	bind_vehicle_shots()
 	set_vehicle_shots_active(vehicle_shots_allowed())
+	var previous_id: Variant = vehicle_bridge.vehicle.get("id")
+	var previous_heading: float = float(vehicle_bridge.vehicle.get("yaw", 0.0))
 	var changed := vehicle_bridge.observe(value, client.actor_id)
+	if vehicle_bridge.mounted() and vehicle_camera_map_attempted != current_id:
+		vehicle_camera_map_attempted = current_id
+		vehicle_camera.configure_map(current_id, catalog.resolve_map(current_id))
 	if changed:
 		release_pointer()
 		local_motion.reset()
+		vehicle_camera.reset_motion()
+		vehicle_camera_time = NAN
+		mounted_camera_pose.clear()
+	elif previous_id != null and vehicle_bridge.actor.get("vehicleSeat") == "driver" and vehicle_bridge.vehicle.get("id") == previous_id:
+		# Preserve driver free-look through authoritative chassis turns.
+		yaw = ControlMath.look(yaw + wrapf(float(vehicle_bridge.vehicle.get("yaw", 0.0)) - previous_heading, -PI, PI), pitch).x
 	if not value.get("vehicles", []).is_empty() and not is_instance_valid(vehicle_fleet) and is_inside_tree():
 		vehicle_fleet = VehicleFleet.new()
 		add_child(vehicle_fleet)
@@ -328,6 +347,10 @@ func update_look(relative: Vector2) -> void:
 	var angles := ControlMath.look(yaw - relative.x * gain, pitch - relative.y * gain)
 	if vehicle_bridge.actor.get("vehicleSeat") != "passenger": yaw = angles.x
 	pitch = angles.y
+	# Mouse look updates the same mounted pose owner immediately; the next
+	# presentation tick will replace its eye from the latest source vehicle.
+	if vehicle_bridge.mounted() and not mounted_camera_pose.is_empty():
+		apply_mounted_camera_pose(sighted_mounted_pose(mounted_camera_pose))
 
 const SnapshotWatch = preload("res://net/snapshot_watch.gd")
 var snapshot_watch := SnapshotWatch.new()
@@ -495,6 +518,7 @@ func _ready() -> void:
 	label.get_parent().add_child(combat_label)
 	combat_label.position = Vector2(24, 170)
 	combat_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	presentation.bind_melee_events(client,combat)
 	client.events.connect(func(items: Array) -> void:
 		if phase == 3:
 			combat.apply_events(items, client.actor_id)
@@ -776,11 +800,26 @@ func on_snapshot(frame: Dictionary) -> void:
 	if reseeded: local_motion.reset()
 	var eye: Vector3 = presentation.eye_position()
 	var now: float = Time.get_ticks_usec() / 1000000.0
-	var authority_velocity := Vector3.INF
-	if selected_mode == "campaign":
-		authority_velocity = Vector3(float(actor.get("vx", 0)), float(actor.get("vy", 0)), float(actor.get("vz", 0)))
-	local_motion.ingest(eye, presentation.lifecycle.can_control(), now, local_motion_source_time(frame.state), authority_velocity)
-	apply_local_snapshot_pose(eye, now, reseeded)
+	# Use the source's velocity in every ordinary mode. Deriving it from packet
+	# arrival spacing turns coalesced snapshots into spurious camera acceleration.
+	var authority_velocity := Vector3(float(actor.get("vx", INF)), float(actor.get("vy", INF)), float(actor.get("vz", INF)))
+	if not authority_velocity.is_finite() or actor.get("vehicleId") != null: authority_velocity = Vector3.INF
+	if vehicle_bridge.mounted():
+		# Mounted eyes belong to the chassis camera, never infantry local_motion.
+		local_motion.reset()
+		if vehicle_bridge.vehicle.is_empty():
+			vehicle_camera.reset_motion()
+			mounted_camera_pose.clear()
+			camera.position = eye # Incomplete lease: source seat pose, no prediction.
+		else:
+			if reseeded: vehicle_camera.reset_motion()
+		if not vehicle_bridge.vehicle.is_empty() and not vehicle_camera.seeded:
+			vehicle_camera.set_view(SettingsAccess.vehicle_view())
+			apply_mounted_camera_pose(sighted_mounted_pose(vehicle_camera.follow(vehicle_bridge.vehicle, 0.0, yaw, pitch,
+				str(actor.get("vehicleSeat", "driver")), int(actor.get("vehicleSeatIndex", 0)))))
+	else:
+		local_motion.ingest(eye, presentation.lifecycle.can_control(), now, local_motion_source_time(frame.state), authority_velocity)
+		apply_local_snapshot_pose(eye, now, reseeded)
 	if reseeded:
 		weapon_selection.clear()
 		combat_actions.clear()
@@ -790,6 +829,8 @@ func on_snapshot(frame: Dictionary) -> void:
 		initial_position = camera.position
 		received_pose = true
 	if vehicle_bridge.actor.get("vehicleSeat") == "passenger": yaw = float(actor.get("yaw", yaw))
+	if vehicle_bridge.mounted() and not mounted_camera_pose.is_empty():
+		apply_mounted_camera_pose(sighted_mounted_pose(mounted_camera_pose))
 	pose_actor_id = client.actor_id
 	# A respawn must not silently reactivate controls held before death.
 	# Keep the pose for authoritative camera tracking, but require recapture.
@@ -805,6 +846,7 @@ func on_snapshot(frame: Dictionary) -> void:
 		client.disconnect_server()
 		get_tree().quit(0)
 	label.text = "NODE-AUTHORITATIVE PROTOTYPE · %s\n" % selected_mode + presentation.hud_text + preload("res://input_bindings/hints.gd").resolve("\nClick: capture · LMB: fire · RMB: ADS · Z/MMB: alt · Esc: release · WASD: move · Space: jump\nShift: sprint · Ctrl/C: crouch · R: reload · E: interact · X: mobility · Q: power · F: melee · G: grenade · 1–9/0 or wheel: weapon | ACK %d" % client.last_ack)
+	if vehicle_bridge.mounted(): label.text += "\nF4: vehicle view (first / third)"
 	var smoke_pickups_ok: bool = pickups.markers.is_empty() if selected_mode == "instagib" else not pickups.markers.is_empty()
 	var smoke_fire_ok: bool = combat.local_launches > 0 if selected_mode == "rockets" else combat.shots > 0
 	if smoke and smoke_fire_ok and moved and fired and client.last_ack > 10 and presentation.actors.size() == selected_bot_count + 1 and (selected_bot_count == 0 or presentation.rendered_remote_poses > 10) and smoke_pickups_ok and not world.get_node("StaticPickupMarkers").visible:
@@ -813,19 +855,56 @@ func on_snapshot(frame: Dictionary) -> void:
 		client.disconnect_server()
 		get_tree().quit(0)
 
-## Horde can use source ticks while ordinary sessions retain receive-time motion.
-func local_motion_source_time(_state: Dictionary) -> float:
-	if selected_mode == "campaign": return float(_state.get("time", NAN))
-	return NAN
+## Source ticks are common to all match modes; the receive clock is only a
+## fallback for snapshots without a valid simulation time.
+func local_motion_source_time(state: Dictionary) -> float:
+	var value: Variant = state.get("time")
+	return float(value) if (value is int or value is float) and is_finite(float(value)) else NAN
 
 func apply_local_snapshot_pose(eye: Vector3, now: float, _reseeded: bool) -> void:
 	camera.position = local_motion.sample(now) if local_motion.ready() else eye
+
+func sighted_mounted_pose(pose: Dictionary) -> Dictionary:
+	var sight := pose.duplicate()
+	# The server uses this same wire yaw/pitch for driver/gunner shots. Chase
+	# owns the eye, but the reticle's sight direction cannot silently inherit
+	# the chassis heading or a smoothed target from another clock.
+	var forward: Vector3 = Basis.from_euler(Vector3(pitch, yaw, 0)) * Vector3.FORWARD
+	sight.target = sight.eye + forward * 20.0
+	return sight
+
+func apply_mounted_camera_pose(pose: Dictionary) -> void:
+	if pose.is_empty(): return
+	mounted_camera_pose = pose
+	camera.position = pose.eye
+	# A single pose application owns both translation and orientation. Infantry
+	# keeps its own rotation path; no vehicle root transform or FOV is written.
+	if camera.is_inside_tree(): camera.look_at(pose.target)
+	else: camera.rotation = Vector3(pitch, yaw, 0)
 
 # Runs from the presentation node's render clock, not session._process: Horde
 # overrides that method. Translation alone is visual; look angles and input
 # remain current, and stale/focus/spectator epochs cannot extrapolate a pose.
 func render_local_translation(now: float) -> void:
 	if phase != 3 or client.spectating or not received_pose or presentation.local_actor.is_empty(): return
+	if vehicle_bridge.mounted() and vehicle_bridge.vehicle.is_empty():
+		mounted_camera_pose.clear()
+		local_motion.reset()
+		camera.position = presentation.eye_position()
+		return
+	if vehicle_bridge.mounted() and not vehicle_bridge.vehicle.is_empty():
+		if snapshot_watch.stale() or not application_focused:
+			vehicle_camera.reset_motion()
+			vehicle_camera_time = NAN
+		if SettingsAccess.service() != null: vehicle_camera.set_view(SettingsAccess.vehicle_view())
+		var delta := 0.0 if is_nan(vehicle_camera_time) else clampf(now - vehicle_camera_time, 0.0, 0.1)
+		vehicle_camera_time = now
+		var settings := SettingsAccess.service()
+		var reduced: bool = settings != null and settings.values.get("reduced_motion", false) == true
+		apply_mounted_camera_pose(sighted_mounted_pose(vehicle_camera.follow(vehicle_bridge.vehicle, delta, yaw, pitch,
+			str(vehicle_bridge.actor.get("vehicleSeat", "driver")), int(vehicle_bridge.actor.get("vehicleSeatIndex", 0)), reduced)))
+		return
+	mounted_camera_pose.clear()
 	if snapshot_watch.stale() or not application_focused:
 		local_motion.reset()
 		camera.position = presentation.eye_position()
@@ -863,6 +942,13 @@ func _input(event: InputEvent) -> void:
 		combat_actions.record(event, false, presentation.local_actor)
 		if (event is InputEventKey or event is InputEventMouseButton) and not event.pressed:
 			weapon_selection.handle_event(event, false, presentation.local_actor)
+		return
+	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_F4 and vehicle_bridge.mounted() and not vehicle_bridge.vehicle.is_empty() and can_capture_pointer():
+		vehicle_camera.toggle_view()
+		SettingsAccess.save_vehicle_view("first" if vehicle_camera.first_person else "third")
+		apply_mounted_camera_pose(sighted_mounted_pose(vehicle_camera.follow(vehicle_bridge.vehicle, 0.0, yaw, pitch,
+			str(vehicle_bridge.actor.get("vehicleSeat", "driver")), int(vehicle_bridge.actor.get("vehicleSeatIndex", 0)))))
+		get_viewport().set_input_as_handled()
 		return
 	# Observe releases even when a GUI control handles the event later.
 	observe_combat_input(event)
@@ -933,7 +1019,7 @@ func _process(delta: float) -> void:
 	if client.spectating:
 		send_elapsed = 0.0
 		return # Read-only recipients do not even queue neutral player inputs.
-	camera.rotation = Vector3(pitch, yaw, 0)
+	if not vehicle_bridge.mounted() or vehicle_bridge.vehicle.is_empty(): camera.rotation = Vector3(pitch, yaw, 0)
 	send_elapsed += delta
 	if send_elapsed < 1.0 / 60.0: return
 	send_elapsed = fmod(send_elapsed, 1.0 / 60.0)
@@ -951,8 +1037,7 @@ func _process(delta: float) -> void:
 		if vehicle_bridge.actor.get("vehicleSeat") == "driver":
 			var throttle := float(combat_actions.key(KEY_W)) - float(combat_actions.key(KEY_S))
 			var steer := float(combat_actions.key(KEY_D)) - float(combat_actions.key(KEY_A))
-			var axes := Vector2(-sin(yaw)*throttle-cos(yaw)*steer, -cos(yaw)*throttle+sin(yaw)*steer)
-			axes /= maxf(1.0, maxf(absf(axes.x), absf(axes.y)))
+			var axes := Vector2(-sin(yaw)*throttle+cos(yaw)*steer, -cos(yaw)*throttle-sin(yaw)*steer)
 			controls.x = axes.x
 			controls.z = axes.y
 		controls = vehicle_bridge.adapt(controls, active and vehicle_bridge.eligible(client.actor_id, 0.0, phase == 3 and not snapshot_watch.stale(), client.spectating))

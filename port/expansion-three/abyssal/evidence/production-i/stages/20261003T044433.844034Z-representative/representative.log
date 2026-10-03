@@ -1,0 +1,6 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+ABYSSAL_INSPECTION_OK [{"capturedUsec":866866,"drawCalls":7.0,"eye":[-178,174,182],"file":"/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T044433.844034Z-representative/overview.png","frameSeconds":0.0,"primitives":12392.0,"target":[0,10,0],"view":"overview"},{"capturedUsec":1726891,"drawCalls":30.0,"eye":[23,11.65,-11],"file":"/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T044433.844034Z-representative/equalizer.png","frameSeconds":0.219275,"primitives":61920.0,"target":[44,24,8],"view":"equalizer"},{"capturedUsec":2483589,"drawCalls":35.0,"eye":[-94,7.65,-70],"file":"/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T044433.844034Z-representative/reef-window.png","frameSeconds":0.21734,"primitives":61960.0,"target":[-94,9,-101],"view":"reef-window"}]

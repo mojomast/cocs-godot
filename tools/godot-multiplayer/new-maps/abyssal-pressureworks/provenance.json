@@ -1,0 +1,13 @@
+{
+  "id": "abyssal-pressureworks",
+  "recipeSha256": "5119ea83e8defa9f726fa70d2d478785111a51fcf0aefaf72c5117b4fde320af",
+  "blender": "4.5.14 LTS",
+  "triangles": 32500,
+  "materialBatches": 7,
+  "editableObjects": 2532,
+  "master": "tools/godot-multiplayer/new-maps/abyssal-pressureworks/masters/abyssal-pressureworks.blend",
+  "glb": "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks.glb",
+  "glbSha256": "fa6888d11ed95dee670b3200b141962e74d6ea17523aef3bcbd7edee149f16b1",
+  "glbBytes": 2210172,
+  "inspection": "PENDING native views and master reopen"
+}

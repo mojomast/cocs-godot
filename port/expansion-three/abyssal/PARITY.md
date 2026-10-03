@@ -1,5 +1,8 @@
 # Abyssal source/native contract
 
+This is the original source-ready contract. The grant-I production revision,
+new exact geometry identity and native outcomes are in [PRODUCTION_I.md](PRODUCTION_I.md).
+
 Inspected implementations:
 
 - `game/core.mjs`: highest-XZ floor support, `moveActor`, `navigation`,

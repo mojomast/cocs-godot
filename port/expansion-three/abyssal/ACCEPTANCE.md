@@ -1,5 +1,8 @@
 # Abyssal acceptance — 2026-10-02
 
+Historical source-only checkpoint below. Actual grant-I production on 2026-10-03
+is recorded in [PRODUCTION_I.md](PRODUCTION_I.md), with retained native evidence.
+
 ## Actual result: READY FOR BLENDER
 
 No heavy-slot grant has been received. No Blender/Godot process, import, bake,

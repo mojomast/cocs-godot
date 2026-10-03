@@ -1,0 +1,328 @@
+{
+  "accepted": false,
+  "captures": [
+    {
+      "capturedUsec": 1014358,
+      "drawCalls": 31.0,
+      "eye": [
+        -350,
+        320,
+        -330
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T060713.410748Z-inspection/overview.png",
+      "frameSeconds": 0.0,
+      "primitives": 45948.0,
+      "target": [
+        -35,
+        0,
+        5
+      ],
+      "view": "overview"
+    },
+    {
+      "capturedUsec": 2121323,
+      "drawCalls": 59.0,
+      "eye": [
+        -108,
+        3.4,
+        -133
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T060713.410748Z-inspection/terminal.png",
+      "frameSeconds": 0.146698,
+      "primitives": 220208.0,
+      "target": [
+        -5,
+        9,
+        -120
+      ],
+      "view": "terminal"
+    },
+    {
+      "capturedUsec": 3295170,
+      "drawCalls": 56.0,
+      "eye": [
+        150,
+        3.4,
+        22
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T060713.410748Z-inspection/freight-bore.png",
+      "frameSeconds": 0.189481,
+      "primitives": 219088.0,
+      "target": [
+        138,
+        7,
+        70
+      ],
+      "view": "freight-bore"
+    },
+    {
+      "capturedUsec": 4346969,
+      "drawCalls": 62.0,
+      "eye": [
+        45,
+        3.4,
+        145
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T060713.410748Z-inspection/quay-chicane.png",
+      "frameSeconds": 0.125111,
+      "primitives": 219740.0,
+      "target": [
+        -45,
+        8,
+        133
+      ],
+      "view": "quay-chicane"
+    },
+    {
+      "capturedUsec": 5319844,
+      "drawCalls": 61.0,
+      "eye": [
+        -183,
+        3.4,
+        101
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T060713.410748Z-inspection/surgeworks.png",
+      "frameSeconds": 0.195051,
+      "primitives": 219586.0,
+      "target": [
+        -207,
+        13,
+        47
+      ],
+      "view": "surgeworks"
+    },
+    {
+      "capturedUsec": 6388880,
+      "drawCalls": 64.0,
+      "eye": [
+        -118,
+        3.4,
+        11
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T060713.410748Z-inspection/return-gate.png",
+      "frameSeconds": 0.174204,
+      "primitives": 220400.0,
+      "target": [
+        -72,
+        13,
+        -28
+      ],
+      "view": "return-gate"
+    }
+  ],
+  "driver": "opengl3",
+  "geometryHash": "6afb8a36ee954ff9457a5522a7412c809191fb070eb7fe9eda4d379753acce48",
+  "importedStreams": [
+    {
+      "material": "asphalt",
+      "normalEnabled": true,
+      "tangents": 336,
+      "uv": 84,
+      "vertices": 84
+    },
+    {
+      "material": "concrete",
+      "normalEnabled": true,
+      "tangents": 46176,
+      "uv": 11544,
+      "vertices": 11544
+    },
+    {
+      "material": "salt",
+      "normalEnabled": true,
+      "tangents": 104448,
+      "uv": 26112,
+      "vertices": 26112
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 27136,
+      "uv": 6784,
+      "vertices": 6784
+    },
+    {
+      "material": "teal",
+      "normalEnabled": false,
+      "tangents": 3936,
+      "uv": 984,
+      "vertices": 984
+    },
+    {
+      "material": "glass",
+      "normalEnabled": false,
+      "tangents": 30744,
+      "uv": 7686,
+      "vertices": 7686
+    },
+    {
+      "material": "steel",
+      "normalEnabled": true,
+      "tangents": 147232,
+      "uv": 36808,
+      "vertices": 36808
+    },
+    {
+      "material": "brick",
+      "normalEnabled": true,
+      "tangents": 2224,
+      "uv": 556,
+      "vertices": 556
+    },
+    {
+      "material": "ocean",
+      "normalEnabled": false,
+      "tangents": 16,
+      "uv": 4,
+      "vertices": 4
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 7452,
+      "uv": 1863,
+      "vertices": 1863
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 3264,
+      "uv": 816,
+      "vertices": 816
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 4248,
+      "uv": 1062,
+      "vertices": 1062
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 2144,
+      "uv": 536,
+      "vertices": 536
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 3120,
+      "uv": 780,
+      "vertices": 780
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 3824,
+      "uv": 956,
+      "vertices": 956
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 1920,
+      "uv": 480,
+      "vertices": 480
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 5000,
+      "uv": 1250,
+      "vertices": 1250
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 4016,
+      "uv": 1004,
+      "vertices": 1004
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 1872,
+      "uv": 468,
+      "vertices": 468
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 352,
+      "uv": 88,
+      "vertices": 88
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 1744,
+      "uv": 436,
+      "vertices": 436
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 2728,
+      "uv": 682,
+      "vertices": 682
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 624,
+      "uv": 156,
+      "vertices": 156
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 1600,
+      "uv": 400,
+      "vertices": 400
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 2304,
+      "uv": 576,
+      "vertices": 576
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 400,
+      "uv": 100,
+      "vertices": 100
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 3480,
+      "uv": 870,
+      "vertices": 870
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 2496,
+      "uv": 624,
+      "vertices": 624
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 3264,
+      "uv": 816,
+      "vertices": 816
+    },
+    {
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 1744,
+      "uv": 436,
+      "vertices": 436
+    }
+  ],
+  "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)"
+}

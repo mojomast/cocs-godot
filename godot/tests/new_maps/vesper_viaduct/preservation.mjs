@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {readFileSync,writeFileSync} from 'node:fs';
+const protectedPaths=['game/','server/','port/contracts/source-lock.json','port/multiplayer-worlds/catalog.mjs','godot/multiplayer_worlds/catalog.gd','godot/multiplayer_worlds/dressing/','godot/robot_assets/','godot/vehicle_assets/','tools/godot-robots/','tools/godot-vehicle-assets/','godot/biomes/expansion/','tools/godot-biomes/expansion/','tools/asset-production/moth_finish.py','tools/godot-package/production_receipts/robots.json','tools/godot-package/production_receipts/vehicles.json','tools/godot-package/production_receipts/scenery.json'];
+protectedPaths.push('godot/multiplayer_worlds/art/parallax-observatory/','godot/multiplayer_worlds/generated/parallax-observatory.json','tools/godot-multiplayer/new-maps/parallax-observatory/','godot/multiplayer_worlds/generated/gravemill-foundry.json');
+const diff=execFileSync('git',['diff','27f3afc3','--',...protectedPaths],{encoding:'utf8',maxBuffer:8*1024*1024});
+assert.equal(diff,'','Vesper production changed protected shared authority/assets');
+const sha=p=>createHash('sha256').update(readFileSync(p)).digest('hex');
+assert.equal(sha('game/core.mjs'),'58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9');
+const result={baseline:'27f3afc3',protectedDiffEmpty:true,protectedPaths,coreSHA256:sha('game/core.mjs'),helperSHA256:sha('tools/asset-production/moth_finish.py'),publicCatalogSHA256:sha('port/multiplayer-worlds/catalog.mjs')};
+if(process.argv[2])writeFileSync(process.argv[2],JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify(result));

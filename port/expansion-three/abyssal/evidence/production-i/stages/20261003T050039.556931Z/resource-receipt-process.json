@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "node",
+    "tools/asset-production/receipt.mjs",
+    "abyssal-pressureworks"
+  ],
+  "started": "2026-10-03T05:00:39.671187+00:00",
+  "timeoutSeconds": 60,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T050039.556931Z/resource-receipt.log",
+  "processGroup": 1494353,
+  "exitCode": 0,
+  "ended": "2026-10-03T05:00:39.935471+00:00",
+  "ownedGroupTeardownRequested": true
+}

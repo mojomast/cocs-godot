@@ -4,13 +4,21 @@ import {mkdtempSync,readFileSync,rmSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {ROOT,CANDIDATES,identity,authorize,prepare,sha} from './candidate-admission.mjs';
-import {worldEntry} from '../../port/multiplayer-worlds/catalog.mjs';
+import {worldEntry,WORLDS,readWorld} from '../../port/multiplayer-worlds/catalog.mjs';
 import {assertOutcome,controller} from './candidate-guidance.mjs';
 import {validateSurface} from './material-validation.mjs';
 
-test('all 6/6/1 candidates refuse public/unauthorized admission and byte/geometry identity substitution',()=>{
+test('registered candidates use public pairs; unregistered candidates require private exact-byte admission',()=>{
  assert.deepEqual(Object.values(CANDIDATES).map(a=>a.length),[6,6,1]);
- for(const [id,modes] of Object.entries(CANDIDATES))for(const mode of modes){
+  for(const [id,modes] of Object.entries(CANDIDATES))for(const mode of modes){
+   if(Object.hasOwn(WORLDS,id)) {
+    assert.ok(['vesper-viaduct','abyssal-pressureworks','stormglass-causeway'].includes(id));
+    assert.deepEqual([...WORLDS[id].modes].sort(),[...modes].sort());
+    assert.doesNotThrow(()=>worldEntry(id,mode));assert.equal(readWorld(id).id,id);
+    assert.throws(()=>identity(id,mode),'Private seam must not override public registration');
+    assert.throws(()=>worldEntry(id,'payload'));
+    continue;
+   }
   const request=identity(id,mode),bytes=readFileSync(resolve(ROOT,`godot/multiplayer_worlds/generated/${id}.json`));
   assert.throws(()=>worldEntry(id,mode));
   assert.throws(()=>authorize({...request,enabled:false},bytes));
@@ -22,7 +30,11 @@ test('all 6/6/1 candidates refuse public/unauthorized admission and byte/geometr
   const bad=JSON.stringify(wrong);assert.throws(()=>authorize({...request,expectedSha:sha(bad)},bad));
  }
 });
-test('private derivatives resolve production dependencies without changing authority bodies; no server is run',()=>{
+test('private seam closes on public registration; otherwise derivatives preserve authority bodies without running a server',()=>{
+  if(Object.hasOwn(WORLDS,'stormglass-causeway')){
+   assert.throws(()=>identity('stormglass-causeway','puma-race'));
+   assert.deepEqual(WORLDS['stormglass-causeway'].modes,['puma-race']);return;
+  }
  const dir=mkdtempSync('/tmp/opencode/candidate-source-');
  try{
   const request=identity('stormglass-causeway','puma-race');prepare(dir,request);

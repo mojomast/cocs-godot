@@ -107,10 +107,9 @@ func _initialize() -> void:
 	for yaw in [0.0, PI/2, PI, -PI/2]:
 		var p := g.command(yaw, 0, true, true)
 		check(is_equal_approx(-p.x*sin(yaw)-p.z*cos(yaw), 1), "exact source throttle projection")
-		check(is_equal_approx(-p.x*cos(yaw)+p.z*sin(yaw), 1), "exact source steer projection")
+		check(is_equal_approx(-p.x*cos(yaw)+p.z*sin(yaw), -1), "source D negative-right steer projection")
 	var diagonal := g.command(PI/4, 0, true, true)
-	check(absf(diagonal.x) <= 1 and absf(diagonal.z) <= 1, "wire axes remain within source parser bounds")
-	check(is_equal_approx(-diagonal.x*sin(PI/4)-diagonal.z*cos(PI/4), -diagonal.x*cos(PI/4)+diagonal.z*sin(PI/4)), "diagonal retains throttle/steer ratio after wire fit")
+	check(is_equal_approx(Vector2(diagonal.x,diagonal.z).length(),sqrt(2.0)) and is_equal_approx(-diagonal.x*sin(PI/4)-diagonal.z*cos(PI/4),1.0) and is_equal_approx(-diagonal.x*cos(PI/4)+diagonal.z*sin(PI/4),-1.0), "source web keeps full W+D axes and signed source projection without native normalization")
 	tap(g, KEY_E)
 	check(g.command(0, 0, true, true).interact, "tap survives until packet")
 	check(not g.command(0, 0, true, true).interact, "interact consumed once")

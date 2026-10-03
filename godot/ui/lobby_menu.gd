@@ -38,6 +38,65 @@ var actions: BoxContainer
 # Sticky browsed-room note, kept visible under the per-phase status text until
 # the user connects, clears the room, or changes role.
 var selection_note := ""
+# Fingerprint of the read-only catalog projection last rendered into the map
+# row. A same-size replacement that changes ids/names/modes still differs here.
+var catalog_fingerprint := ""
+# Observer counter: increments only when room.editable actually changes. A
+# per-frame owner must leave this flat while the role/phase is stable.
+var room_editable_writes := 0
+
+# Catalog access is total: a failed `catalog.open()` leaves the shared entries
+# dictionary empty (and the manifest error on the catalog), so every lookup here
+# must survive a missing id, a non-dictionary entry or an absent `modes` array
+# without an invalid-dictionary error. None of these helpers mutate the catalog.
+func map_entry(map_id: String) -> Dictionary:
+	if map_id.is_empty() or not entries.has(map_id): return {}
+	var entry: Variant = entries[map_id]
+	return entry if entry is Dictionary else {}
+
+func offered_modes(map_id: String) -> Array:
+	return Setup.valid_modes(map_entry(map_id))
+
+func catalog_ready() -> bool:
+	return not entries.is_empty()
+
+func selected_entry() -> Dictionary:
+	return map_entry(str(maps.get_selected_metadata()))
+
+# Host/join/start need an advertised map that resolves to a real entry with at
+# least one mode. A non-empty but malformed/mode-less catalog disables the launch
+# path instead of letting the session reject it after a click.
+func launchable() -> bool:
+	var map_id := str(maps.get_selected_metadata())
+	return catalog_ready() and not map_entry(map_id).is_empty() and not offered_modes(map_id).is_empty()
+
+# The catalog's own failure string, surfaced verbatim. `world/catalog.gd` sets
+# `error` on a failed open() but later resolve_map() calls can overwrite it and a
+# successful resolve never clears it, so this is best-effort original text, not a
+# guarantee of freshness. It is never replaced by a generic guess.
+func catalog_error_text() -> String:
+	var message := ""
+	if session != null and "catalog" in session:
+		var live: Variant = session.get("catalog")
+		if live is Dictionary:
+			message = str(live.get("error", ""))
+		elif live is Object:
+			message = str(live.get("error"))
+	if message.is_empty():
+		return "The locked map catalog is empty; maps, modes and hosting are unavailable."
+	return "Locked catalog unavailable: " + message
+
+# Read-only projection of the catalog content the map/mode rows depend on:
+# sorted ids plus each entry's name and validated modes. Same-size replacements
+# that change other ids, names or the selected map's modes still differ.
+func catalog_signature() -> String:
+	var ids: Array = entries.keys()
+	ids.sort()
+	var parts := PackedStringArray()
+	for raw: Variant in ids:
+		var id := str(raw)
+		parts.append("%s\u001f%s\u001f%s" % [id, str(map_entry(id).get("name", "")), "\u001e".join(PackedStringArray(offered_modes(id)))])
+	return "\u001d".join(parts)
 
 func field(title: String, control: Control) -> void:
 	var caption := Label.new()
@@ -83,12 +142,12 @@ func _ready() -> void:
 	field("Role", role)
 	field("Room code (guest)", room)
 	field("Map / expected host map", maps)
-	for id: String in entries:
-		maps.add_item(str(entries[id].name) + (" — pending" if id not in Setup.MAPS else ""))
-		maps.set_item_metadata(maps.item_count - 1, id)
-		if id == session.current_id: maps.select(maps.item_count - 1)
+	rebuild_map_choices(session.current_id)
+	catalog_fingerprint = catalog_signature()
 	field("Host mode (guests use authority's mode)", modes)
-	maps.item_selected.connect(func(_i: int) -> void: populate_modes())
+	maps.item_selected.connect(func(_i: int) -> void:
+		populate_modes()
+		apply_choice_enablement())
 	populate_modes()
 	# Operator/harness rows match the shared popup-free choice. A guest picks
 	# their own pair; after connecting the authority echo is the only source.
@@ -193,9 +252,9 @@ func select_room(record: Dictionary) -> void:
 	room.editable = true
 	var map_id := str(record.get("mapId", ""))
 	var mode := str(record.get("mode", ""))
-	var map_supported: bool = not map_id.is_empty() and entries.has(map_id)
-	var offered: Variant = entries[map_id].get("modes", []) if map_supported else []
-	var mode_supported: bool = map_supported and offered is Array and mode in offered
+	var map_supported: bool = not map_entry(map_id).is_empty()
+	var offered: Array = offered_modes(map_id)
+	var mode_supported: bool = map_supported and mode in offered
 	if map_supported: select_map(map_id)
 	if mode_supported: select_mode(mode)
 	var note := "Selected room %s" % room_id
@@ -253,6 +312,7 @@ func select_map(id: String) -> bool:
 	if index < 0: return false
 	maps.select(index)
 	populate_modes()
+	apply_choice_enablement()
 	return true
 
 func select_mode(id: String) -> bool:
@@ -337,12 +397,59 @@ func on_operator_selected(_index: int) -> void:
 	if operator.disabled: return
 	apply_harness_lock()
 
-func populate_modes() -> void:
+# (Re)build the mode row for the selected map. `preferred` wins when supplied;
+# otherwise the map row never resets a user's mode on an unrelated catalog
+# change: the currently selected mode is kept whenever it is still offered, and
+# only an invalid/absent current mode falls back to the session's mode (or the
+# first offered mode).
+func populate_modes(preferred: String = "") -> void:
+	var keep := preferred if not preferred.is_empty() else str(modes.get_selected_metadata())
+	if keep.is_empty() or keep == "<null>": keep = session.selected_mode
 	modes.clear()
-	for mode: String in entries[str(maps.get_selected_metadata())].modes:
+	var offered := offered_modes(str(maps.get_selected_metadata()))
+	for mode: String in offered:
 		modes.add_item(Setup.MODE_NAMES.get(mode, mode) + (" — pending" if mode not in Setup.MODES else ""))
 		modes.set_item_metadata(modes.item_count - 1, mode)
-		if mode == session.selected_mode: modes.select(modes.item_count - 1)
+		if mode == keep: modes.select(modes.item_count - 1)
+
+# Single owner of the four top-level choice enabled states. Called once per
+# refresh after any catalog reconciliation, and again immediately after a user
+# map change so the mode row is correct before the next frame. Each property is
+# written exactly once per call; the setters are idempotent across calls.
+func apply_choice_enablement() -> void:
+	var editable: bool = session.phase in [-3, -1, -4]
+	var ready := catalog_ready()
+	var offered := offered_modes(str(maps.get_selected_metadata()))
+	role.disabled = not editable
+	maps.disabled = not editable or not ready
+	modes.disabled = not editable or role.selected == 1 or offered.is_empty()
+	operator.disabled = not editable
+
+# Rebuild the map row from the live catalog, keeping the current selection by
+# metadata and falling back to the session's current map. Rebuilding is what
+# makes a newly added key (absent from the old rows) selectable again.
+func rebuild_map_choices(preferred: String = "") -> void:
+	var previous := preferred if not preferred.is_empty() else str(maps.get_selected_metadata())
+	maps.clear()
+	for raw: Variant in entries.keys():
+		var id := str(raw)
+		var entry := map_entry(id)
+		maps.add_item(str(entry.get("name", id)) + (" — pending" if id not in Setup.MAPS else ""))
+		maps.set_item_metadata(maps.item_count - 1, id)
+	if not previous.is_empty() and map_index(previous) >= 0:
+		maps.select(map_index(previous))
+	elif not session.current_id.is_empty() and map_index(session.current_id) >= 0:
+		maps.select(map_index(session.current_id))
+
+# Rebuild the map/mode rows only when the catalog content actually changed; a
+# stable frame performs no work, while a same-size replacement that changes other
+# ids, names or the selected map's modes is picked up and its selection kept.
+func sync_map_choices() -> void:
+	var signature := catalog_signature()
+	if signature == catalog_fingerprint: return
+	catalog_fingerprint = signature
+	rebuild_map_choices()
+	populate_modes()
 
 func resize_panel() -> void:
 	var viewport := get_viewport().get_visible_rect().size
@@ -432,17 +539,36 @@ func refresh() -> void:
 			hud.score_label.text = "SPECTATOR"
 			hud.controls.hide()
 	var editable := phase in [-3, -1, -4]
-	for control: LineEdit in [endpoint, player_name, room]: control.editable = editable
-	for control: Control in [role, maps, modes]: control.disabled = not editable
-	operator.disabled = not editable
+	# Conditional writes: the per-frame caller only touches a field when its value
+	# actually changed, and the shared choice setters are themselves idempotent.
+	# `room` is excluded here: it has its own single writer below (guest-only), so
+	# leaving it in this loop would toggle a host field false->true->false.
+	for control: LineEdit in [endpoint, player_name]:
+		if control.editable != editable: control.editable = editable
+	# A live, failed or re-run catalog can invalidate the map row between frames;
+	# reconcile it before a missing/empty entry can reach populate_modes.
+	sync_map_choices()
+	var ready := catalog_ready()
+	var entry := selected_entry()
+	var offered := offered_modes(str(maps.get_selected_metadata()))
+	var can_launch := launchable()
+	# Exactly one writer per disabled property per refresh (apply_choice_enablement
+	# owns role/maps/modes/operator; apply_harness_lock owns harness). The earlier
+	# "not editable" loop followed by a second modes write made a stable guest or
+	# empty-catalog frame render twice every frame.
+	apply_choice_enablement()
 	# Owner of harness.disabled for both states, so a stale lock never sticks.
 	apply_harness_lock()
-	modes.disabled = not editable or role.selected == 1
-	room.editable = editable and role.selected == 1
+	# Sole writer of room.editable for this refresh (guest-only join field).
+	var room_editable := editable and role.selected == 1
+	if room.editable != room_editable:
+		room.editable = room_editable
+		room_editable_writes += 1
 	connect_button.visible = editable
+	connect_button.disabled = not editable or not can_launch
 	connect_button.text = "Retry with these settings" if phase == -1 else ("Join lobby" if role.selected == 1 else "Create lobby")
 	start_button.visible = phase == 12
-	start_button.disabled = not session.lobby_host_allowed()
+	start_button.disabled = not session.lobby_host_allowed() or not can_launch
 	reconnect_button.visible = phase == -5
 	reconnect_button.disabled = phase == -5 and not session.client.reconnect_ticket.available(session.endpoint, session.current_id, session.client.reconnect_ticket.room_id)
 	back_button.visible = phase != -3
@@ -454,11 +580,21 @@ func refresh() -> void:
 	if role.selected != 1 or phase not in [-3, -4]: selection_note = ""
 	if phase in [-3, -4] and not selection_note.is_empty():
 		page_status = (page_status + "\n" + selection_note) if not page_status.is_empty() else selection_note
-	status.text = page_status
 	if phase == -3:
-		roster.text = "No room joined. Native maps/modes marked pending cannot be started."
+		var empty_roster := "No room joined. Native maps/modes marked pending cannot be started."
+		if roster.text != empty_roster: roster.text = empty_roster
 		var problem := Setup.validate(entries, str(maps.get_selected_metadata()), str(modes.get_selected_metadata()))
-		if not problem.is_empty() and role.selected == 0: status.text += "\n" + problem
+		if not problem.is_empty() and role.selected == 0:
+			page_status = (page_status + "\n" + problem) if not page_status.is_empty() else problem
+	# An empty/failed locked catalog is stated once, in the catalog's own words,
+	# and disables the host/join/mode controls (back/retry stay usable).
+	if not ready and phase in [-3, -4]:
+		page_status = catalog_error_text()
+	elif ready and entry.is_empty() and phase in [-3, -4]:
+		page_status = "The selected map is not a valid locked catalog entry; choose another map."
+	elif ready and offered.is_empty() and phase in [-3, -4]:
+		page_status = "No modes are registered for the selected map; choose another map."
+	if status.text != page_status: status.text = page_status
 	# Room browser tracks the live connection and asks once when browse opens. The
 	# endpoint label shows the connection the browser is actually bound to.
 	if is_instance_valid(room_browser):
