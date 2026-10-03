@@ -46,10 +46,12 @@ deadlines to mask slow input delivery. P's Gemini and campaign delivery gaps are
 evidence to investigate, not proof that movement physics is wrong. Old acceptance
 results remain tied to their old candidate.
 
-P is released. **`MOVEMENT-NATIVE-20261003-Q` is the sole active heavy grant**,
-owned by `ses_f0292f089ffeq9MnxeAHN0yrKb`, starting from `f61f6156` in a fresh
-worktree. Its bounded scope is import readiness, native input-flow and slide-pose
-contracts, optional small staged cue captures, followed by explicit cleanup/release.
+P and Q are released. **Q passed** on exact candidate `f61f6156`: import readiness,
+1,970 native input-flow checks and 10 native slide-pose checks, zero errors or
+warnings. Report `NATIVE_Q.md` is parent-integrated as `190fa2a2`. Parent verified
+three empty audits of four owned groups and byte-identical tracked input manifests.
+No rendered comparison was launched; comfort and human feel remain pending.
+The next heavy owner is Sol under **`MOTH-BLENDER-20261003-R`** for map production.
 Package owner `ses_f03437da1ffeli91L87Q6CVyRP` is reconciling exact dependencies
 source-only. Remote Moth generation continues separately. Parent coordinates slots,
 fresh movement evidence, changed dependency reconciliation and eventual packages.
@@ -72,8 +74,8 @@ No source test or staged capture establishes human feel or hardware performance.
   150 ms acceptance window.
 - User's completed cleanup freed **91 GiB on disk**, with **16 GiB in `/tmp`**.
   Prior low-space reports are historical; no retained evidence was deleted by
-  the movement workers. Fresh Q native results and package reconciliation remain
-  pending; P's frozen 89/22/31 ledger is unchanged.
+  the movement workers. Q's bounded native results are now recorded above;
+  package reconciliation remains pending. P's frozen 89/22/31 ledger is unchanged.
 
 ## Selected implementation scope
 

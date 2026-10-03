@@ -19,15 +19,43 @@ Source foundation: `55edd9f2`. All work is isolated from the live P candidate.
 
 | Work | Agent/session | Current responsibility |
 |---|---|---|
-| New Moth resources + mothbake | Astra `ses_efdbb8a90ffeBrpRZAFfraUSXv` | Authenticated live catalog/schema discovery, actual new API jobs, recorded outputs, deterministic material bakes, generic tool updates and handoff manifest |
-| Industrial/coastal variety | Flash `ses_efdbb1dfeffebxsWuzs9jbjzJv` | Audit completed; blueprint in `MAP_VARIETY_REVISION_BLUEPRINT_20261003.md`; subsequent P review/combo fixture repair complete; map application not started |
-| Botanical/urban variety | Flash `ses_efdbaaa61ffesiVbXI7pmlS04Q` | Audit completed; findings summarized below; application not started |
-| Blender production integration | Sol `ses_efdba38e9ffeManqAN9zWiJ3va` | Source toolkit complete through `add8a2e5`, parent-reviewed with five source tests passing; Blender execution and actual assets pending |
+| New Moth resources + mothbake | Astra `ses_efdbb8a90ffeBrpRZAFfraUSXv` | Complete through `9dc08e53`, parent-integrated; generic tool `69c62d7c`; base + multi-engine overlay reviewed for Blender application |
+| Abyssal/coastal variety | Flash `ses_efdbb1dfeffebxsWuzs9jbjzJv` | Active source implementation: Abyssal/Stormglass versioned Blender builders, composition and authority-safe layout revisions |
+| Botanical/urban variety | Flash `ses_efdbaaa61ffesiVbXI7pmlS04Q` | Active source implementation: Helix/Parallax/Vesper versioned Blender builders and matching terrain/layout authority |
+| Blender production integration + Foundry | Sol `ses_efdba38e9ffeManqAN9zWiJ3va` | Sole heavy owner R: actual material adapter/Blender toolkit execution, Foundry revision-4 modeling, masters/GLB/reopen/render checks |
 
-Flash/Sol application follows Astra's usable resource delivery and parent review.
-The current audit/preparation work does not substitute for actual asset production.
-Parent must assign the implementation lanes and the next explicit Blender/native
-slot once the dependency and ownership boundaries are ready.
+Flash/Sol application has now been assigned after Astra's resource delivery and
+parent review. Foundation is `190fa2a2`, including the resource merge and Q report.
+Flash lanes author source only; Sol executes Blender serially under R, starting
+with Foundry. The other five maps require later serial execution of their builders.
+No revised map master, export or rendered acceptance is claimed at this checkpoint.
+
+## Reviewed resource delivery and real concurrency
+
+- Initial pack: 30 base families, six derived finishes, 181 lossless PNG channels.
+- Multi-engine comparison: all 32 contracts inspected; 31 additional completed
+  jobs across image Blur, Deep Fryer, Teleblur, Tessa, Qpixl and Entanglement Shader.
+- Selected additive overlay: four image-derived finishes / 20 PNGs, two measured
+  coverage masks and two LUT/shader companion sets. Unhelpful/noisy/byte-identical
+  variants remain comparison evidence rather than inflated delivered inventory.
+- Parent inspected actual comparison and overlay contact sheets and independently
+  verified all **201 texture hashes, byte lengths, dimensions and linear color
+  declarations**, auxiliary hashes and immutable base-manifest linkage.
+- Recorded two- and four-job batches both accepted and completed every job with
+  overlapping POST intervals and zero 429 responses. Multiple outstanding jobs
+  work; worker execution overlap and maximum concurrency are not established.
+- Source pack is approved for **Blender application and review**, not native/world
+  visual acceptance. Scalar/image material channels are linear, including albedo;
+  the GLB exporter must encode base-color images to sRGB correctly.
+
+Exact comparisons, request evidence and limitations:
+`map-variety/MOTH_ENGINE_REVIEW.md`; adapter contract:
+`map-variety/MOTH_RESOURCES.md`. Sol `ses_eff6a3d9cffeTi9iQPn43laxo1` published
+**11 original PNG comparison/contact sheets** at
+<http://100.125.104.79:8796/moth-map-materials/> with **17 HTTP/hash checks passed**.
+The downloadable manifest records original paths and SHA-256. These are flat
+resource previews, not Blender map renders or native acceptance. K/L/movie bytes
+were verified intact. Publication used static files, separate from heavy production.
 
 ## Audit results and parent review
 
@@ -130,20 +158,19 @@ to consume unbounded local storage.
 **P completed and released** (`RELEASE-MATRIX-20261003-P`,
 `ses_f0292f089ffeq9MnxeAHN0yrKb`) at `2026-10-03T15:04:52.013061Z`.
 Parent inspected its three empty cleanup audits covering 239 owned process groups.
-**Movement native verification Q now owns the heavy slot**:
-`MOVEMENT-NATIVE-20261003-Q`, owner `ses_f0292f089ffeq9MnxeAHN0yrKb`.
-Moth lanes may perform source work, remote Moth
-jobs and bounded low-resource image baking; no local Blender/Godot imports,
-rendering, encoding, servers or native benchmarks until a new explicit slot.
+**Q completed and released** at `2026-10-03T16:24:10.116424Z`; parent inspected
+three empty audits of four groups and identical before/after input manifests.
+**`MOTH-BLENDER-20261003-R` now owns the sole heavy slot**, owner
+`ses_efdba38e9ffeManqAN9zWiJ3va`. Scope: shared material adapter/toolkit validation,
+actual Foundry Blender production/reopen/export, bounded native material/physics
+review and real captures. Other map lanes remain source-only. No package export,
+cinematic encoding or full acceptance matrix is authorized. R must explicitly
+release after three empty ownership audits before another heavy producer.
 The pinned Blender is the existing 4.5.14 toolchain. Actual Blender production is
 mandatory in the next phase, not replaced by a source-only generator claim.
 
-The user requested broader Moth engine evaluation after the initial resource
-delivery used only `blur-core-v1`; that follow-up and actual concurrent-generation
-testing remain with the resource owner. Initial pack delivery is not application
-approval. Parent independently verified concurrent authenticated catalog HTTP
-requests at batch sizes two and four, all 200 responses; this does not establish
-generation execution overlap. User cleanup subsequently freed 91 GiB on disk;
+The user-requested broader engine evaluation and concurrent-generation test are
+complete, as recorded above. User cleanup subsequently freed 91 GiB on disk;
 the original 1.17 GB/late low-space figures above are historical.
 
 P finished its frozen candidate independently: 89 passed, 22 failed, 31 unrun;

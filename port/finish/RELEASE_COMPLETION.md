@@ -9,19 +9,21 @@ finishing and verifying the new candidate.
 
 **Research-led movement integrated:** all three Flash reports and Astra's
 implementation/review closure are complete, merged as `f61f6156`. Parent passed
-29 focused source tests plus generation/oracle checks. Independent native owner
-`ses_f0292f089ffeq9MnxeAHN0yrKb` now holds **`MOVEMENT-NATIVE-20261003-Q`** for
-bounded fresh import/input-flow/slide verification; package owner is reconciling
-dependencies source-only. This runs alongside
+29 focused source tests plus generation/oracle checks. Q completed on `f61f6156`
+with **1,970 input-flow and 10 slide-pose checks passing**, zero engine errors or
+warnings, and explicitly released after three empty audits. Report integrated as
+`190fa2a2`; package owner is reconciling dependencies source-only. This runs alongside
 new Moth/Blender map production; exact owners and constraints are in
 `MOVEMENT_RESEARCH_20261003.md`.
 
-**New user-requested map production:** dedicated Astra is creating new Moth API
-resources and updating mothbake; two Flash audits are complete and Sol is preparing
-Blender modeling helpers and export verification for the six newer maps.
+**New user-requested map production:** Astra's Moth base/compared multi-engine pack
+and mothbake updates are complete and integrated. Parent verified 201 PNG hashes
+and actual comparison sheets. Sol holds **`MOTH-BLENDER-20261003-R`** for real
+Foundry production/shared material binding; two Flash lanes implement the other
+five maps' Blender sources and terrain/layout revisions.
 The user explicitly requires Blender-authored assets. Application follows the
-new resource pack, on isolated branches with fresh map validation. P has released;
-the next Blender grant awaits resource readiness. Exact owners,
+new resource pack, on isolated branches with fresh map validation. P and Q released;
+R is the sole heavy grant. Exact owners,
 sequence and storage constraints: `MOTH_BLENDER_MAP_VARIETY_20261003.md`.
 
 **Current checkpoint (supersedes earlier M-in-progress entries below):** M actually
@@ -50,8 +52,8 @@ Diagnosis commits `cd2b2017`, `47b3633b` and combo follow-up `199d2641` were
 reviewed and integrated as `346e8db8`, `6252d4bf` and `8bf90885`;
 native verification remains pending. Parent passed **83 source checks**: 33
 Fighting acceptance/command/combo/UI, three diagnosis, seven spectator/process,
-35 runner/receipt and five Blender-toolkit tests. **Q is now the only active heavy
-grant**, scoped to the new movement candidate. New Moth/Blender production requires an explicit next grant
+35 runner/receipt and five Blender-toolkit tests. **R is now the only active heavy
+grant**, scoped to new Moth/Blender map production. Further production requires an explicit next grant
 after the resource pack is ready; its acceptance uses a fresh candidate.
 
 **Historical O/P foundation:** O repaired both N
@@ -107,8 +109,8 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P has explicitly released; movement verification Q now holds the local heavy slot.**
-F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P have released. P diagnosis source fixes are integrated;
+**P and Q have explicitly released; Blender production R holds the local heavy slot.**
+F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 the Windows owner retains remote preflight monitoring.
 Scenery delivery is preserved but not integrated into the preview. Final production
 and acceptance obligations remain; strict final packaging is unchanged.
@@ -147,10 +149,11 @@ directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
-**Active: `MOVEMENT-NATIVE-20261003-Q`**, owner
-`ses_f0292f089ffeq9MnxeAHN0yrKb`, candidate `f61f6156`. Scope: fresh isolated
-import readiness, bounded native input-flow and slide-pose tests, optional small
-staged cue captures. No full matrix, Blender production, package export or encoding.
+**Active: `MOTH-BLENDER-20261003-R`**, owner
+`ses_efdba38e9ffeManqAN9zWiJ3va`, foundation `190fa2a2`. Scope: material adapter
+and toolkit execution, actual Foundry Blender modeling/master/GLB/reopen, bounded
+native material/physics review and captures. Other map workers remain source-only.
+No full matrix, package export or encoding.
 Three empty ownership audits and explicit release are required afterward.
 
 **Historical:** `RELEASE-MATRIX-20261003-P`, owner
