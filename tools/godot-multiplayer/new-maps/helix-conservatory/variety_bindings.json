@@ -1,0 +1,30 @@
+{
+  "schema": "map-variety-bindings/v1",
+  "mapId": "helix-conservatory",
+  "revision": 3,
+  "pack": {
+    "base": "assets/moth/map-variety-20261003/candidate-v2/manifest.json",
+    "overlay": "assets/moth/map-variety-20261003/candidate-v3/manifest.json"
+  },
+  "notes": "Exact GLB material names bound to map-variety-20261003 resource ids. All channels linear; albedo PNG stays linear/Non-Color in Blender and is converted to glTF sRGB by the shared adapter. Normals are OpenGL +Y.",
+  "materials": {
+    "botanical":          {"role": "surface", "resource": "moss-lichen",     "tilesPerMeter": 0.5, "normalStrength": 0.35},
+    "leaflight":          {"role": "surface", "resource": "moss-warm-weather","tilesPerMeter": 0.5, "normalStrength": 0.3},
+    "soil":               {"role": "surface", "resource": "moss-lichen",     "tilesPerMeter": 0.25, "normalStrength": 0.45},
+    "stone":              {"role": "surface", "resource": "grotto-wet-rock", "tilesPerMeter": 0.25, "normalStrength": 0.5},
+    "ceramic":            {"role": "surface", "resource": "ceramic-enamel",  "tilesPerMeter": 0.5, "normalStrength": 0.35},
+    "brick":              {"role": "surface", "resource": "terracotta",      "tilesPerMeter": 0.5, "normalStrength": 0.45},
+    "gold":               {"role": "surface", "resource": "anodized-brush",  "tilesPerMeter": 0.5, "normalStrength": 0.3},
+    "solar":              {"role": "surface", "resource": "prismatic-etch",  "tilesPerMeter": 0.5, "normalStrength": 0.25},
+    "verdigris":          {"role": "surface", "resource": "copper-patina",   "tilesPerMeter": 0.5, "normalStrength": 0.4},
+    "glass":              {"role": "preserve"},
+    "water":              {"role": "preserve"},
+    "helix.grotto-rock":  {"role": "surface", "resource": "grotto-wet-rock", "tilesPerMeter": 0.25, "normalStrength": 0.55},
+    "helix.soil":         {"role": "surface", "resource": "moss-lichen",     "tilesPerMeter": 0.25, "normalStrength": 0.45},
+    "helix.trim":         {"role": "surface", "resource": "masonry-coping",  "tilesPerMeter": 0.5, "normalStrength": 0.35},
+    "helix.archive-stone":{"role": "surface", "resource": "ceramic-enamel",  "tilesPerMeter": 0.5, "normalStrength": 0.35},
+    "helix.bark":         {"role": "surface", "resource": "bark-fibers",     "tilesPerMeter": 0.5, "normalStrength": 0.5},
+    "helix.fern":         {"role": "surface", "resource": "fern-frond",      "tilesPerMeter": 0.5, "normalStrength": 0.3},
+    "helix.greenhouse-frame": {"role": "surface", "resource": "anodized-brush", "tilesPerMeter": 0.5, "normalStrength": 0.3}
+  }
+}
