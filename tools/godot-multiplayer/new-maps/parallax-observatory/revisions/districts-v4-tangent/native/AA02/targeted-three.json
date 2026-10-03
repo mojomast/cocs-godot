@@ -1,0 +1,127 @@
+{
+  "scope": "targeted three-corner actual import only; all-face native verifier blocked separately",
+  "artifactSha256": "95e9da98a45565ca2aae90858a9e5027d9123e4ffd1347da98d5de8573141cd5",
+  "surface": "kit_authority_saltstone_00",
+  "sourceFace": 11823,
+  "nativeFace": 11823,
+  "uniqueGeometryUVMatches": 1,
+  "corners": [
+    {
+      "accessor": 48,
+      "vertex": 24049,
+      "sourceTangent": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "canonicalTangent": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "nativeTangent": [
+        1.0,
+        0.0,
+        -4.5778462663292885e-05,
+        -1.0
+      ],
+      "nativePosition": [
+        68.77897644042969,
+        24.0,
+        -66.25537872314453
+      ],
+      "nativeUV": [
+        35.36811447143555,
+        -32.56804275512695
+      ],
+      "nativeNormal": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05
+      ],
+      "sourceFace": 11823,
+      "nativeFace": 11823,
+      "nativeNode": "kit_authority_saltstone_00"
+    },
+    {
+      "accessor": 48,
+      "vertex": 24050,
+      "sourceTangent": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "canonicalTangent": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "nativeTangent": [
+        1.0,
+        0.0,
+        -4.5778462663292885e-05,
+        -1.0
+      ],
+      "nativePosition": [
+        35.5203971862793,
+        24.0,
+        -84.05670928955078
+      ],
+      "nativeUV": [
+        18.73882484436035,
+        -41.46870803833008
+      ],
+      "nativeNormal": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05
+      ],
+      "sourceFace": 11823,
+      "nativeFace": 11823,
+      "nativeNode": "kit_authority_saltstone_00"
+    },
+    {
+      "accessor": 48,
+      "vertex": 24051,
+      "sourceTangent": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "canonicalTangent": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "nativeTangent": [
+        1.0,
+        0.0,
+        -4.5778462663292885e-05,
+        -1.0
+      ],
+      "nativePosition": [
+        35.5,
+        24.0,
+        -84.06217956542969
+      ],
+      "nativeUV": [
+        18.728626251220703,
+        -41.47144317626953
+      ],
+      "nativeNormal": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05
+      ],
+      "sourceFace": 11823,
+      "nativeFace": 11823,
+      "nativeNode": "kit_authority_saltstone_00"
+    }
+  ]
+}

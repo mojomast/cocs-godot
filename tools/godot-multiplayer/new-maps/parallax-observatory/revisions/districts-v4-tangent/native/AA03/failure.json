@@ -1,0 +1,18 @@
+{
+  "time": "2026-10-03T23:23:19.116708+00:00",
+  "attempt": "AA03",
+  "status": "failed strict all-face native verification; targeted three-corner diagnostic independently passed",
+  "stage": "/tmp/opencode/parallax-tangent-AA03-stage",
+  "artSha256": "95e9da98a45565ca2aae90858a9e5027d9123e4ffd1347da98d5de8573141cd5",
+  "importReportSha256": "92b8a389c149ace408432f13ac8658bb3bac7ec311e1aad9f26e86041a6906da",
+  "nativeStreamsSha256": "5f22791abc09a6f7ea50c988f5cc1787a011df8b625ec5246e92cce4fd28d173",
+  "firstMismatch": {
+    "node": "wayfinding-2",
+    "material": "ochre",
+    "nativeFace": 963,
+    "sourceChoices": 2,
+    "sourceToNativeTangentW": "both source +1, native -1 on two corners",
+    "normalError": 2.3752450942993164e-05
+  },
+  "scope": "No new native acceptance or waiver"
+}

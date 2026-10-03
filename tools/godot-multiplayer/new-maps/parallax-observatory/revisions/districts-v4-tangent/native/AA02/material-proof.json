@@ -1,0 +1,8 @@
+{
+  "scope": "AA03 actual imported PBR field/pixel qualification only; all-face native geometry gate failed and artifact approval withheld",
+  "artSha256": "95e9da98a45565ca2aae90858a9e5027d9123e4ffd1347da98d5de8573141cd5",
+  "nativeMaterialFieldSets": 14,
+  "decodedChannelComparisons": 39,
+  "nativeSamplerAlphaOcclusion": "not measured; preserved source semantic gate only",
+  "noArtifactApproval": true
+}

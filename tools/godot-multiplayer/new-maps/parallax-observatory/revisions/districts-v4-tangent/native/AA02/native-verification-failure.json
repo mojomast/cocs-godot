@@ -1,0 +1,7 @@
+{
+  "time": "2026-10-03T23:20:21.050581+00:00",
+  "artifactSha256": "95e9da98a45565ca2aae90858a9e5027d9123e4ffd1347da98d5de8573141cd5",
+  "importReportSha256": "92b8a389c149ace408432f13ac8658bb3bac7ec311e1aad9f26e86041a6906da",
+  "error": "Native normal/UV/tangent/handedness drift; no fallback waiver at first unmatched actual imported face",
+  "status": "failed; no native approval"
+}

@@ -1,0 +1,268 @@
+{
+  "grant": "MOTH-BLENDER-20261003-AA",
+  "released": "2026-10-03T23:22:04.862755+00:00",
+  "audits": [
+    {
+      "time": "2026-10-03T23:22:00.224823+00:00",
+      "ownedGroupMembers": [],
+      "groups": [
+        {
+          "pid": 1461653,
+          "ppid": 1460766,
+          "pgid": 1461653,
+          "startTicks": 625251364,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/production.py -- --authorized-parallax-tangent --grant-receipt tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/native/AA01/grant-AA.json "
+        },
+        {
+          "pid": 1463142,
+          "ppid": 1460766,
+          "pgid": 1463142,
+          "startTicks": 625254034,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 70 --python tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/production.py -- --authorized-parallax-tangent --grant-receipt tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/native/AA02/grant-AA.json "
+        },
+        {
+          "pid": 1464793,
+          "ppid": 1460766,
+          "pgid": 1464793,
+          "startTicks": 625256969,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 70 --python tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/production.py -- --authorized-parallax-tangent --grant-receipt tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/native/AA02/grant-AA.json --reopen "
+        },
+        {
+          "pid": 1469140,
+          "ppid": 1460766,
+          "pgid": 1469140,
+          "startTicks": 625264998,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA02-stage --import --quit "
+        },
+        {
+          "pid": 1470809,
+          "ppid": 1460766,
+          "pgid": 1470809,
+          "startTicks": 625267883,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA02-stage --import --quit "
+        },
+        {
+          "pid": 1471593,
+          "ppid": 1460766,
+          "pgid": 1471593,
+          "startTicks": 625268900,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA02-stage --script res://tests/new_maps/parallax_tangent/import.gd "
+        },
+        {
+          "pid": 1473228,
+          "ppid": 1460766,
+          "pgid": 1473228,
+          "startTicks": 625271459,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA03-stage --import --quit "
+        },
+        {
+          "pid": 1473761,
+          "ppid": 1460766,
+          "pgid": 1473761,
+          "startTicks": 625272295,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA03-stage --script res://tests/new_maps/parallax_tangent/import.gd "
+        },
+        {
+          "pid": 1478951,
+          "ppid": 1460766,
+          "pgid": 1478951,
+          "startTicks": 625280859,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA04-stage --import --quit "
+        },
+        {
+          "pid": 1479456,
+          "ppid": 1460766,
+          "pgid": 1479456,
+          "startTicks": 625281710,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA04-stage --script res://tests/new_maps/parallax_tangent/import.gd "
+        }
+      ]
+    },
+    {
+      "time": "2026-10-03T23:22:00.455296+00:00",
+      "ownedGroupMembers": [],
+      "groups": [
+        {
+          "pid": 1461653,
+          "ppid": 1460766,
+          "pgid": 1461653,
+          "startTicks": 625251364,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/production.py -- --authorized-parallax-tangent --grant-receipt tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/native/AA01/grant-AA.json "
+        },
+        {
+          "pid": 1463142,
+          "ppid": 1460766,
+          "pgid": 1463142,
+          "startTicks": 625254034,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 70 --python tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/production.py -- --authorized-parallax-tangent --grant-receipt tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/native/AA02/grant-AA.json "
+        },
+        {
+          "pid": 1464793,
+          "ppid": 1460766,
+          "pgid": 1464793,
+          "startTicks": 625256969,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 70 --python tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/production.py -- --authorized-parallax-tangent --grant-receipt tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/native/AA02/grant-AA.json --reopen "
+        },
+        {
+          "pid": 1469140,
+          "ppid": 1460766,
+          "pgid": 1469140,
+          "startTicks": 625264998,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA02-stage --import --quit "
+        },
+        {
+          "pid": 1470809,
+          "ppid": 1460766,
+          "pgid": 1470809,
+          "startTicks": 625267883,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA02-stage --import --quit "
+        },
+        {
+          "pid": 1471593,
+          "ppid": 1460766,
+          "pgid": 1471593,
+          "startTicks": 625268900,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA02-stage --script res://tests/new_maps/parallax_tangent/import.gd "
+        },
+        {
+          "pid": 1473228,
+          "ppid": 1460766,
+          "pgid": 1473228,
+          "startTicks": 625271459,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA03-stage --import --quit "
+        },
+        {
+          "pid": 1473761,
+          "ppid": 1460766,
+          "pgid": 1473761,
+          "startTicks": 625272295,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA03-stage --script res://tests/new_maps/parallax_tangent/import.gd "
+        },
+        {
+          "pid": 1478951,
+          "ppid": 1460766,
+          "pgid": 1478951,
+          "startTicks": 625280859,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA04-stage --import --quit "
+        },
+        {
+          "pid": 1479456,
+          "ppid": 1460766,
+          "pgid": 1479456,
+          "startTicks": 625281710,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA04-stage --script res://tests/new_maps/parallax_tangent/import.gd "
+        }
+      ]
+    },
+    {
+      "time": "2026-10-03T23:22:00.685233+00:00",
+      "ownedGroupMembers": [],
+      "groups": [
+        {
+          "pid": 1461653,
+          "ppid": 1460766,
+          "pgid": 1461653,
+          "startTicks": 625251364,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/production.py -- --authorized-parallax-tangent --grant-receipt tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/native/AA01/grant-AA.json "
+        },
+        {
+          "pid": 1463142,
+          "ppid": 1460766,
+          "pgid": 1463142,
+          "startTicks": 625254034,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 70 --python tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/production.py -- --authorized-parallax-tangent --grant-receipt tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/native/AA02/grant-AA.json "
+        },
+        {
+          "pid": 1464793,
+          "ppid": 1460766,
+          "pgid": 1464793,
+          "startTicks": 625256969,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 70 --python tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/production.py -- --authorized-parallax-tangent --grant-receipt tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/native/AA02/grant-AA.json --reopen "
+        },
+        {
+          "pid": 1469140,
+          "ppid": 1460766,
+          "pgid": 1469140,
+          "startTicks": 625264998,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA02-stage --import --quit "
+        },
+        {
+          "pid": 1470809,
+          "ppid": 1460766,
+          "pgid": 1470809,
+          "startTicks": 625267883,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA02-stage --import --quit "
+        },
+        {
+          "pid": 1471593,
+          "ppid": 1460766,
+          "pgid": 1471593,
+          "startTicks": 625268900,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA02-stage --script res://tests/new_maps/parallax_tangent/import.gd "
+        },
+        {
+          "pid": 1473228,
+          "ppid": 1460766,
+          "pgid": 1473228,
+          "startTicks": 625271459,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA03-stage --import --quit "
+        },
+        {
+          "pid": 1473761,
+          "ppid": 1460766,
+          "pgid": 1473761,
+          "startTicks": 625272295,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA03-stage --script res://tests/new_maps/parallax_tangent/import.gd "
+        },
+        {
+          "pid": 1478951,
+          "ppid": 1460766,
+          "pgid": 1478951,
+          "startTicks": 625280859,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA04-stage --import --quit "
+        },
+        {
+          "pid": 1479456,
+          "ppid": 1460766,
+          "pgid": 1479456,
+          "startTicks": 625281710,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-mode-parity-linux-770-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path /tmp/opencode/parallax-tangent-AA04-stage --script res://tests/new_maps/parallax_tangent/import.gd "
+        }
+      ]
+    }
+  ],
+  "currentOwnedMembers": [],
+  "nonwaitingLockAvailableAt": "2026-10-03T23:22:04.862716+00:00",
+  "supervisorReceiptSha256": "c38b968c7173febb6f9047a52ede6df524d9fd2c4e15bdf9f9e5b9c84ae1ccad",
+  "noQueuedHeavyWork": true
+}

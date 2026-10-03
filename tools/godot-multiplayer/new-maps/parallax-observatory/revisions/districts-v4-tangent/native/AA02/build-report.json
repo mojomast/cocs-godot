@@ -1,0 +1,48 @@
+{
+  "sourceSha256": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+  "artifactSha256": "95e9da98a45565ca2aae90858a9e5027d9123e4ffd1347da98d5de8573141cd5",
+  "masterSha256": null,
+  "geometryHash": "3a5800e89876ebcc741381802def24415d5050651c0d3b831ea8b9ec3b77b4f9",
+  "revision": "parallax-districts-v4-tangent-v1",
+  "face": 11823,
+  "vertices": [
+    24049,
+    24050,
+    24051
+  ],
+  "repairedTangent": [
+    1.0,
+    0.0,
+    0.0,
+    -1.0
+  ],
+  "allowedBytes": 48,
+  "changedBytes": 5,
+  "allOtherBinBytesIdentical": true,
+  "nativeAcceptance": "pending",
+  "finiteUnitTangents": 319065,
+  "zeroWaivers": 0,
+  "scope": "future actual authorized production",
+  "packedMasterSha256": "2e6617840ec57d08685dd78e64a29bbe7f55db2b1a26da40b6c6a46cd4c0373d",
+  "editableReexport": {
+    "triangles": 155553,
+    "maxPositionNormalUVError": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "allMaterialsDecodedPixelsSamplersEmissionMatch": true,
+    "orientedFaceMultiplicity": "exact"
+  },
+  "recipe": {
+    "visualRevision": "parallax-districts-v4-tangent-v1",
+    "sourceGlbSha256": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+    "sourcePackedMasterSha256": "9957ca8cc3e4e7f2bca00f7b82a48ed88d031e9e3949259ebf5603f584141051",
+    "geometryHash": "3a5800e89876ebcc741381802def24415d5050651c0d3b831ea8b9ec3b77b4f9",
+    "compilerSha256": "b605657915f5b26b6fbf8dffbff02178af5840e96fa1d69b24602df9adb24c62",
+    "editableAuditSha256": "cda3a9dcc924b2419da22f6edc25cb20a0584eb29a4851a23dcdac2eaeeb33cf",
+    "uvBasisSha256": "4e857df8d84b239d78ce8f41fdfcafae922b1d977f7178087279afb3d8e5673c",
+    "materialGateSha256": "da587a73ea7af6bfd471aaa9cf1f540d6e143974d14753cf387a34aece1bf3d4",
+    "policy": "Export all 39 editable X meshes; semantic audit, then deterministic three-corner compiler against exact X GLB. Plain Blender glTF is intermediate."
+  }
+}

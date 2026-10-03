@@ -1,0 +1,151 @@
+{
+  "grant": "MOTH-BLENDER-20261003-AA",
+  "time": "2026-10-03T23:15:57.152158+00:00",
+  "owner": {
+    "pid": 1460766,
+    "ppid": 1460765,
+    "pgid": 1460765,
+    "startTicks": 625250105,
+    "comm": "python3",
+    "argv": "python3 -B tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/grant_AA.py serve "
+  },
+  "preexistingMatching": [
+    {
+      "pid": 70662,
+      "ppid": 70408,
+      "pgid": 70662,
+      "startTicks": 511841716,
+      "comm": "Xvfb",
+      "argv": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 "
+    },
+    {
+      "pid": 175537,
+      "ppid": 175401,
+      "pgid": 175537,
+      "startTicks": 511960882,
+      "comm": "Xvfb",
+      "argv": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 "
+    },
+    {
+      "pid": 176009,
+      "ppid": 175913,
+      "pgid": 176009,
+      "startTicks": 511961172,
+      "comm": "Xvfb",
+      "argv": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 "
+    },
+    {
+      "pid": 176505,
+      "ppid": 176442,
+      "pgid": 176505,
+      "startTicks": 511961467,
+      "comm": "Xvfb",
+      "argv": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 "
+    },
+    {
+      "pid": 176934,
+      "ppid": 176864,
+      "pgid": 176934,
+      "startTicks": 511961759,
+      "comm": "Xvfb",
+      "argv": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 "
+    },
+    {
+      "pid": 177437,
+      "ppid": 177371,
+      "pgid": 177437,
+      "startTicks": 511962053,
+      "comm": "Xvfb",
+      "argv": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 "
+    },
+    {
+      "pid": 177961,
+      "ppid": 177827,
+      "pgid": 177961,
+      "startTicks": 511962341,
+      "comm": "Xvfb",
+      "argv": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 "
+    },
+    {
+      "pid": 178459,
+      "ppid": 178328,
+      "pgid": 178459,
+      "startTicks": 511962636,
+      "comm": "Xvfb",
+      "argv": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 "
+    },
+    {
+      "pid": 2492715,
+      "ppid": 2492587,
+      "pgid": 2492715,
+      "startTicks": 522362783,
+      "comm": "Xvfb",
+      "argv": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 "
+    },
+    {
+      "pid": 2523017,
+      "ppid": 2522902,
+      "pgid": 2522902,
+      "startTicks": 508677582,
+      "comm": "Xvfb",
+      "argv": "Xvfb :99 -screen 0 1440x900x24 -nolisten tcp "
+    },
+    {
+      "pid": 2585873,
+      "ppid": 2585868,
+      "pgid": 2585868,
+      "startTicks": 508830749,
+      "comm": "Xvfb",
+      "argv": "Xvfb :99 -screen 0 1440x900x24 -nolisten tcp "
+    },
+    {
+      "pid": 2598700,
+      "ppid": 2598689,
+      "pgid": 2598689,
+      "startTicks": 522477875,
+      "comm": "godot-bin",
+      "argv": "/opt/viewer/godot-bin --path /home/browser/viewer --rendering-method gl_compatibility --audio-driver Dummy res://asset_viewer/viewer.tscn "
+    },
+    {
+      "pid": 3002226,
+      "ppid": 9634,
+      "pgid": 3001069,
+      "startTicks": 528656103,
+      "comm": "Xvfb",
+      "argv": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix "
+    },
+    {
+      "pid": 3003879,
+      "ppid": 9634,
+      "pgid": 3003347,
+      "startTicks": 528658125,
+      "comm": "Xvfb",
+      "argv": "Xvfb :91 -screen 0 1280x800x24 -nolisten tcp "
+    },
+    {
+      "pid": 3005999,
+      "ppid": 9634,
+      "pgid": 3004479,
+      "startTicks": 528659838,
+      "comm": "Xvfb",
+      "argv": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix "
+    },
+    {
+      "pid": 3094547,
+      "ppid": 9634,
+      "pgid": 3093474,
+      "startTicks": 528806950,
+      "comm": "Xvfb",
+      "argv": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix "
+    },
+    {
+      "pid": 3113490,
+      "ppid": 9634,
+      "pgid": 3113486,
+      "startTicks": 528838460,
+      "comm": "Xvfb",
+      "argv": "Xvfb :78 -screen 0 1600x1000x24 -nolisten tcp "
+    }
+  ],
+  "git": "d3a4c524b860cd361a91cbb1c3ed73d5eef56725"
+}
