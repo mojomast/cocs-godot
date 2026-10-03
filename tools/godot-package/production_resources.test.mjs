@@ -16,6 +16,7 @@ test('all seven units remain required; a promotion without registry membership s
   unpromoted.units.vehicles.promotion=null;
   unpromoted.units.scenery.promotion=null;
   unpromoted.units['vesper-viaduct'].promotion=null;
+  unpromoted.units['abyssal-pressureworks'].promotion=null;
   const read=p=>p===REQUIREMENTS?Buffer.from(JSON.stringify(unpromoted)):disk(p);
   const result=productionResources({read,has:exists,worldIds,strict:false});
   assert.deepEqual([...result.pending].sort(),[...REQUIRED_UNITS].sort());
@@ -33,11 +34,11 @@ test('all seven units remain required; a promotion without registry membership s
   assert.throws(()=>productionResources({read:p=>p==='port/finish/ASSET_PRODUCTION.json'?Buffer.from(JSON.stringify(plan)):disk(p),has:exists,strict:false}),/builder\/recipe dropped/);
 });
 
-test('five real promotions bind actual production bytes; two units remain pending',()=>{
+test('six real promotions bind actual production bytes; one unit remains pending',()=>{
   const options={read:disk,has:exists,worldIds:Object.keys(WORLDS),strict:false};
   const result=productionResources(options);
-  assert.equal(Object.keys(WORLDS).length,11);
-  assert.deepEqual(result.pending,REQUIRED_UNITS.filter(id=>!['parallax-interiors','robots','vehicles','scenery','vesper-viaduct'].includes(id)));
+  assert.equal(Object.keys(WORLDS).length,12);
+  assert.deepEqual(result.pending,['stormglass-causeway']);
   const glb='godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb';
   assert.equal(result.raw[glb],'c1dffd357545206d3f70870f850e441c5be148e652830a4a69835185a75610bd');
   assert.ok(!Object.hasOwn(result.resources,glb+'.import'));

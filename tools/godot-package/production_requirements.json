@@ -7,28 +7,28 @@
       "map": "parallax-observatory",
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/parallax-interiors.json",
-        "sha256": "0e1d3815e6a47411a8dc52b9bf8d04f21d12cef8d97693f53e61f3f59e12e116"
+        "sha256": "c12e87e81fcecf7ddf537fb86198074d4adfa1ed0e165dad0ca74c34e75e4116"
       }
     },
     "robots": {
       "required": true,
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/robots.json",
-        "sha256": "15d1e1fa1b8b03ae91091ed6bc69d83a7432eb2250e012cdaff608955c8ab827"
+        "sha256": "e89daf7514c7f9233593933e87db068c36c5e4475e391801dc91e8a9d23a7146"
       }
     },
     "vehicles": {
       "required": true,
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/vehicles.json",
-        "sha256": "73f4e885a0d2fe32e530cf23886984412b565d8bce3660e93d5b2d97bbf956d7"
+        "sha256": "bf3b7e95158af6357bdcb82950d282a4526decad70f7532172cd1d11a1a929bb"
       }
     },
     "scenery": {
       "required": true,
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/scenery.json",
-        "sha256": "67c235f345e6c447818ae2fb7ec425bce91cd3a99ae5625547194cbd483b9fc8"
+        "sha256": "29c2d4f26decc5de874984f666404c05113ac1316a6c6ca909f2a4b31996dd0c"
       }
     },
     "vesper-viaduct": {
@@ -36,13 +36,16 @@
       "map": "vesper-viaduct",
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/vesper-viaduct.json",
-        "sha256": "a732d1f38393a4317d8ef5ba6527e35634abe25d64b7f83aafbbe7061d72d689"
+        "sha256": "7172bc359e9793c48c2b74ca7e458e49d6455f479c005ede7443739dce427e68"
       }
     },
     "abyssal-pressureworks": {
       "required": true,
       "map": "abyssal-pressureworks",
-      "promotion": null
+      "promotion": {
+        "receipt": "tools/godot-package/production_receipts/abyssal-pressureworks.json",
+        "sha256": "c626aea965c14a28cb04716b870ce3118cd00c3dbd8fb46606cca771cc19e34f"
+      }
     },
     "stormglass-causeway": {
       "required": true,

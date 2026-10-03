@@ -22,12 +22,13 @@
     "godot/moth/library.gd": "807663e54afe3e0ff5275511772cffd50d749731b5c2719f096701063b01647d",
     "godot/moth_scenery/motes.gdshader": "2f7cf8c3f658eb57781169bbee664e093c4cc4fb038c7097be750d7961d30807",
     "godot/moth_scenery/panel.gdshader": "fb6c4f137d9ae83c37d492675aeabfd84ad2d06f7946b7a9cacdccb6c08d3d41",
+    "godot/multiplayer_worlds/abyssal_presentation.gd": "2a2be7d8c8dc95ece97bbd4f8cec0190d6f407f8a34655882898a48e4868dea8",
     "godot/multiplayer_worlds/art/parallax-observatory/asset-manifest.json": "80bc29748c55ed6d72d5c3e901e6edd66b80b0079efef452b4bb24499e91addb",
     "godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb": "c1dffd357545206d3f70870f850e441c5be148e652830a4a69835185a75610bd",
     "godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb.import": "f101be17a593768f5a7fcbae491e72de0e0fc0cf91d0ed6e2d7334b15f61c04c",
     "godot/multiplayer_worlds/art/parallax-observatory/presentation.gd": "67e5a4c8dbf8b758a4f01f01395e83641edfd87978d5e37bed7f9fb85c284594",
-    "godot/multiplayer_worlds/catalog.gd": "22bcfe114a3c80b0db310ced91f8bf0a9079e0f0f404f4f422a92e5d6a2bb4ca",
-    "godot/multiplayer_worlds/demo.gd": "0284095333fd3e278b1fb9b276cc334436aab9b42bd915ffa988b7381bbe2906",
+    "godot/multiplayer_worlds/catalog.gd": "65a0b3f6fb962eec1cf0b2c0c42a9bfd27713cc850f799e5ab1cc7c72d0cc53a",
+    "godot/multiplayer_worlds/demo.gd": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748",
     "godot/multiplayer_worlds/dressing/binder.gd": "b3e707af9da73f21b3c791c1d7deca9caad5472b422f263d9998ac961444a87d",
     "godot/multiplayer_worlds/dressing/profile.gd": "ee41823e074ea8571e25d1671aedf5c3918ffa56af0427e24640a45a3662a59c",
     "godot/multiplayer_worlds/dressing/profiles/parallax-observatory.json": "b2cdfa1da6c201b32df5af103a39ee7fbbc7490768bd9b2986f8f03c236e6701",
@@ -35,7 +36,7 @@
     "godot/multiplayer_worlds/dressing/surface.gdshader": "8d77b5729585a3129009a0f67da64044181e7747c641c03c9b02dcd09206d3ff",
     "godot/multiplayer_worlds/dressing/wear_panel.gdshader": "2628addabee8718df5801862c85407df9088feba17cfaec243e75bcffd4490e3",
     "godot/multiplayer_worlds/generated/parallax-observatory.json": "13c0b91156aaa2fd713dea7dfafe8f9f48d92b2b414ff9c4b583efb047bdabc4",
-    "godot/multiplayer_worlds/map.gd": "c24d976d372b2ddaf636ae17ac6bc30d8d147a9ab993a3cd9b96cff8ff4a92db",
+    "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
     "godot/multiplayer_worlds/urban_lighting.gd": "aa02961ccd39d1655df7ba9619d6270b6751f1e6dd3742ec4daa7a60bba83674",
     "godot/objectives/guidance.gd": "a288d3dc5e4002453171fbf975e03193fb4107d3230b6dd486156d1d4e9c3b8f",
     "godot/objectives/renderer.gd": "18aeba6749d92325b7183d3465c7b8b0577226ac06a43abd6942476ded9df438",
@@ -46,7 +47,7 @@
     "port/map-finish/parallax-observatory/mounts.json": "c8fef78e4f3bbab45f7172619e2fc842290aa554d0f28eb7f293cdefac011b0d",
     "port/map-finish/parallax-observatory/source-check.json": "dd734927a3ad0bfb4d6977c47c8e6aa1b28992a39c0ee8135feeaf081619ffe8",
     "port/map-finish/parallax-observatory/validate.py": "61afa1dcd01881f024d6eb689167f99d02c7e4e04274427e080a3bc96f5db101",
-    "port/multiplayer-worlds/catalog.mjs": "d2919c888433f16d8183ed33c408514b3894272d8ac7d35ba04c85b61fb7c4f2",
+    "port/multiplayer-worlds/catalog.mjs": "12ae860e3186c5ccf547452183dd2dcec81af1fb444b11cddade4815cab3ad96",
     "port/native-multiplayer-worlds/worlds/parallax-observatory.json": "e949e43d5546ec8b0c9024810f1da6229152e370ad640ecf27ecb54c05f2e23d",
     "port/new-maps/parallax-observatory/audit-art.mjs": "4a334a3e4dd1b1bef8c5140e8a92df32e2e39e3702e23d791e48c04c989651bc",
     "port/new-maps/parallax-observatory/production-c.json": "f369bc9d595dd84c08c791cb6a443aa7bbd06e37b65d080d85c7095a92050ec1",
@@ -65,7 +66,8 @@
     "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/prepare_native.py": "994a8324838b4a405c3aaa88e4c4081a6a2fbdec7083b726815d011646bbbdc2",
     "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/reopen_candidate.py": "4ad9e40bdbe0e6d0321a259786f32b4ef14600b30ba4ebe0146091c7475b031a",
     "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/source-check.json": "299a068f800667feff17baa952cdbe08c44786b75fc9173b1782ace37c882534",
-    "tools/godot-package/production_resources.mjs": "0a95ddacb4af6f0b3dc053e4963e6b4201324cecf2dbe8a02617aafb21fbe219",
+    "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d",
+    "tools/godot-package/production_resources.mjs": "5556e3b1f0c87a98b26a2393aad62ee112857afd4abd3f56bd24214394bf187d",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
     "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
@@ -86,14 +88,14 @@
   ],
   "runtimeHooks": {
     "godot/multiplayer_worlds/art/parallax-observatory/presentation.gd": "67e5a4c8dbf8b758a4f01f01395e83641edfd87978d5e37bed7f9fb85c284594",
-    "godot/multiplayer_worlds/catalog.gd": "22bcfe114a3c80b0db310ced91f8bf0a9079e0f0f404f4f422a92e5d6a2bb4ca",
-    "godot/multiplayer_worlds/demo.gd": "0284095333fd3e278b1fb9b276cc334436aab9b42bd915ffa988b7381bbe2906",
+    "godot/multiplayer_worlds/catalog.gd": "65a0b3f6fb962eec1cf0b2c0c42a9bfd27713cc850f799e5ab1cc7c72d0cc53a",
+    "godot/multiplayer_worlds/demo.gd": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748",
     "godot/multiplayer_worlds/dressing/binder.gd": "b3e707af9da73f21b3c791c1d7deca9caad5472b422f263d9998ac961444a87d",
     "godot/multiplayer_worlds/dressing/profile.gd": "ee41823e074ea8571e25d1671aedf5c3918ffa56af0427e24640a45a3662a59c",
     "godot/multiplayer_worlds/dressing/profiles/parallax-observatory.json": "b2cdfa1da6c201b32df5af103a39ee7fbbc7490768bd9b2986f8f03c236e6701",
     "godot/multiplayer_worlds/dressing/surface.gd": "70e88ee5b9d46e95f0ff8bc7a7b5876cf20a6b052d016efd69955fe72e35b5d0",
     "godot/multiplayer_worlds/dressing/surface.gdshader": "8d77b5729585a3129009a0f67da64044181e7747c641c03c9b02dcd09206d3ff",
-    "godot/multiplayer_worlds/map.gd": "c24d976d372b2ddaf636ae17ac6bc30d8d147a9ab993a3cd9b96cff8ff4a92db"
+    "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543"
   },
   "rawFiles": [
     "godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb"
@@ -201,5 +203,56 @@
     "packageFingerprint": "dbefdd7ce887b256bd37a2271432fa0b88d2f83944f080cdfa416b3dcc953a52",
     "reason": "Parent accepted Vesper H integration/public six-mode registration; supporting verifier/catalog/demo reconciliation only. H native evidence used the original frozen authority, not the later Helix navigation optimization.",
     "review": "port/finish/VESPER_PACKAGE_PROMOTION.md"
+  },
+  "abyssalPackageVerifierAdvance": {
+    "previousReceipt": {
+      "commit": "f0e76bf7",
+      "path": "tools/godot-package/production_receipts/parallax-interiors.json",
+      "sha256": "0e1d3815e6a47411a8dc52b9bf8d04f21d12cef8d97693f53e61f3f59e12e116"
+    },
+    "changed": {
+      "godot/multiplayer_worlds/catalog.gd": {
+        "before": "22bcfe114a3c80b0db310ced91f8bf0a9079e0f0f404f4f422a92e5d6a2bb4ca",
+        "after": "65a0b3f6fb962eec1cf0b2c0c42a9bfd27713cc850f799e5ab1cc7c72d0cc53a"
+      },
+      "godot/multiplayer_worlds/demo.gd": {
+        "before": "0284095333fd3e278b1fb9b276cc334436aab9b42bd915ffa988b7381bbe2906",
+        "after": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748"
+      },
+      "godot/multiplayer_worlds/map.gd": {
+        "before": "c24d976d372b2ddaf636ae17ac6bc30d8d147a9ab993a3cd9b96cff8ff4a92db",
+        "after": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543"
+      },
+      "port/multiplayer-worlds/catalog.mjs": {
+        "before": "d2919c888433f16d8183ed33c408514b3894272d8ac7d35ba04c85b61fb7c4f2",
+        "after": "12ae860e3186c5ccf547452183dd2dcec81af1fb444b11cddade4815cab3ad96"
+      },
+      "tools/godot-package/production_resources.mjs": {
+        "before": "0a95ddacb4af6f0b3dc053e4963e6b4201324cecf2dbe8a02617aafb21fbe219",
+        "after": "5556e3b1f0c87a98b26a2393aad62ee112857afd4abd3f56bd24214394bf187d"
+      }
+    },
+    "added": {
+      "godot/multiplayer_worlds/abyssal_presentation.gd": "2a2be7d8c8dc95ece97bbd4f8cec0190d6f407f8a34655882898a48e4868dea8",
+      "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d"
+    },
+    "runtimeChanged": {
+      "godot/multiplayer_worlds/catalog.gd": {
+        "before": "22bcfe114a3c80b0db310ced91f8bf0a9079e0f0f404f4f422a92e5d6a2bb4ca",
+        "after": "65a0b3f6fb962eec1cf0b2c0c42a9bfd27713cc850f799e5ab1cc7c72d0cc53a"
+      },
+      "godot/multiplayer_worlds/demo.gd": {
+        "before": "0284095333fd3e278b1fb9b276cc334436aab9b42bd915ffa988b7381bbe2906",
+        "after": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748"
+      },
+      "godot/multiplayer_worlds/map.gd": {
+        "before": "c24d976d372b2ddaf636ae17ac6bc30d8d147a9ab993a3cd9b96cff8ff4a92db",
+        "after": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543"
+      }
+    },
+    "previousPackageFingerprint": "dbefdd7ce887b256bd37a2271432fa0b88d2f83944f080cdfa416b3dcc953a52",
+    "packageFingerprint": "28bc28312bb44cf84a587950ad86759c451a84a1fde0ddf5c48c39ea8a86260a",
+    "reason": "Parent accepted Abyssal I integration and six public modes. Source-only supporting hook/catalog/verifier reconciliation; original I/H/F native evidence and prior advances remain immutable.",
+    "review": "port/finish/ABYSSAL_PACKAGE_PROMOTION.md"
   }
 }

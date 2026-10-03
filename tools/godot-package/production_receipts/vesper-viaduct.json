@@ -316,7 +316,7 @@
     "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_sandstone.png.import": "9a3481bf64ab75999ea5e30032606e08f6680f9ab3cd71a0b395aa75727ca5ec",
     "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_slate.png": "d08d2214eaa02f364d6c50b6f036fa1f26116d0e0cb884e61aeffcef3de7d597",
     "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_slate.png.import": "c051851e3e030aabff523844003499d6bf860bffbe38f98b7e210bea9c87dc06",
-    "godot/multiplayer_worlds/catalog.gd": "22bcfe114a3c80b0db310ced91f8bf0a9079e0f0f404f4f422a92e5d6a2bb4ca",
+    "godot/multiplayer_worlds/catalog.gd": "65a0b3f6fb962eec1cf0b2c0c42a9bfd27713cc850f799e5ab1cc7c72d0cc53a",
     "godot/multiplayer_worlds/generated/vesper-viaduct.json": "e273264a789036b26bda83bf8e390c8ae53f78e4357da241ce4a49368e8af885",
     "port/expansion-three/vesper/evidence/production-h/ctf/outcome.json": "88a8bf9ffe3f12a0b498ae55a3e75ed4666c0ae77f68230b0d5be6a7dce96136",
     "port/expansion-three/vesper/evidence/production-h/ctf/teardown.json": "4cfc3b32450365da65bd21eb46dfc2e5d90aff0e95e85ced081989608f0e1048",
@@ -335,7 +335,7 @@
     "port/expansion-three/vesper/evidence/production-h/teamdeathmatch/teardown.json": "d2238151fdf7c051f95e6e2fd6d7b300d380e5d6f8ee6442e8f88b6585b3a4a7",
     "port/expansion-three/vesper/evidence/production-h/uplink/outcome.json": "b513aff041c5244d76f18c77a23f8a53289d1d9f1a35811e08dd07a1e399b0d8",
     "port/expansion-three/vesper/evidence/production-h/uplink/teardown.json": "9453b0812360b1bf75215b59879a1ce47b12b10f9a14b2b3bb8d0f2df8a64097",
-    "port/multiplayer-worlds/catalog.mjs": "d2919c888433f16d8183ed33c408514b3894272d8ac7d35ba04c85b61fb7c4f2",
+    "port/multiplayer-worlds/catalog.mjs": "12ae860e3186c5ccf547452183dd2dcec81af1fb444b11cddade4815cab3ad96",
     "port/native-multiplayer-worlds/worlds/vesper-viaduct.json": "84aa9e5e7dd415fe9681a35c4bb03403e7b6b23b4713936039936af0cfa7c89f",
     "tools/asset-production/material-validation.mjs": "874e5d31c666a8af4a98b600bb182a4f4cb9c5e6b1488d80908f855b2584bb3d",
     "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
@@ -345,7 +345,8 @@
     "tools/godot-multiplayer/new-maps/vesper-viaduct/author_blender.py": "f540161e4ec506f7ce3098bd1533d6d321a2aa806cd7c0180db8f0b8278ac4c6",
     "tools/godot-multiplayer/new-maps/vesper-viaduct/build.mjs": "3f87fc86d5619115e9ef3d947d4e86f34a6c0705afcbdfceee013281e9c0d049",
     "tools/godot-multiplayer/new-maps/vesper-viaduct/recipe.mjs": "f1a244bacfddb57a95d290dba7c573e096231ae8ce2dc6fa4e0f43ed0d089400",
-    "tools/godot-package/production_resources.mjs": "0a95ddacb4af6f0b3dc053e4963e6b4201324cecf2dbe8a02617aafb21fbe219",
+    "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d",
+    "tools/godot-package/production_resources.mjs": "5556e3b1f0c87a98b26a2393aad62ee112857afd4abd3f56bd24214394bf187d",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
     "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
@@ -353,8 +354,8 @@
     "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba"
   },
   "runtimeHooks": {
-    "godot/multiplayer_worlds/demo.gd": "0284095333fd3e278b1fb9b276cc334436aab9b42bd915ffa988b7381bbe2906",
-    "godot/multiplayer_worlds/map.gd": "c24d976d372b2ddaf636ae17ac6bc30d8d147a9ab993a3cd9b96cff8ff4a92db",
+    "godot/multiplayer_worlds/demo.gd": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748",
+    "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
     "godot/world/damage_numbers.gd": "8dc45d9bd02c4077e88a1a6bbe2ea738e54896b0492a61aa8119fccc3d788951"
   },
   "rawFiles": [],
@@ -453,5 +454,43 @@
       "koth",
       "uplink"
     ]
+  },
+  "abyssalPackageVerifierAdvance": {
+    "previousReceipt": {
+      "commit": "f0e76bf7",
+      "path": "tools/godot-package/production_receipts/vesper-viaduct.json",
+      "sha256": "a732d1f38393a4317d8ef5ba6527e35634abe25d64b7f83aafbbe7061d72d689"
+    },
+    "changed": {
+      "godot/multiplayer_worlds/catalog.gd": {
+        "before": "22bcfe114a3c80b0db310ced91f8bf0a9079e0f0f404f4f422a92e5d6a2bb4ca",
+        "after": "65a0b3f6fb962eec1cf0b2c0c42a9bfd27713cc850f799e5ab1cc7c72d0cc53a"
+      },
+      "port/multiplayer-worlds/catalog.mjs": {
+        "before": "d2919c888433f16d8183ed33c408514b3894272d8ac7d35ba04c85b61fb7c4f2",
+        "after": "12ae860e3186c5ccf547452183dd2dcec81af1fb444b11cddade4815cab3ad96"
+      },
+      "tools/godot-package/production_resources.mjs": {
+        "before": "0a95ddacb4af6f0b3dc053e4963e6b4201324cecf2dbe8a02617aafb21fbe219",
+        "after": "5556e3b1f0c87a98b26a2393aad62ee112857afd4abd3f56bd24214394bf187d"
+      }
+    },
+    "added": {
+      "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d"
+    },
+    "runtimeChanged": {
+      "godot/multiplayer_worlds/demo.gd": {
+        "before": "0284095333fd3e278b1fb9b276cc334436aab9b42bd915ffa988b7381bbe2906",
+        "after": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748"
+      },
+      "godot/multiplayer_worlds/map.gd": {
+        "before": "c24d976d372b2ddaf636ae17ac6bc30d8d147a9ab993a3cd9b96cff8ff4a92db",
+        "after": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543"
+      }
+    },
+    "previousPackageFingerprint": "2656dea9f85a252dbebfbbe1dd309f055db0b0ee43b397079fec9c67805a5f03",
+    "packageFingerprint": "8423deaa33f3d165a5a4b4bc68542a3341999041224aa8d35ef3e7286bf079f2",
+    "reason": "Parent accepted Abyssal I integration and six public modes. Source-only supporting hook/catalog/verifier reconciliation; original I/H/F native evidence and prior advances remain immutable.",
+    "review": "port/finish/ABYSSAL_PACKAGE_PROMOTION.md"
   }
 }

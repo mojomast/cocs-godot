@@ -6,12 +6,12 @@ import {execFileSync} from 'node:child_process';
 import {VESPER_GLB,VESPER_INVENTORY,vesperImportPaths,verifyVesperImports} from './vesper_imports.mjs';
 import {productionResources,REQUIREMENTS} from './production_resources.mjs';
 const read=p=>readFileSync(p),hash=b=>createHash('sha256').update(b).digest('hex');
-const options={read,has:existsSync,worldIds:['parallax-observatory','vesper-viaduct'],strict:false};
-test('H exact 16 PNGs and 17 import sidecars admit fifth unit; strict final still rejects two maps',()=>{
+const options={read,has:existsSync,worldIds:['parallax-observatory','vesper-viaduct','abyssal-pressureworks'],strict:false};
+test('H exact 16 PNGs and 17 import sidecars retain promotion; strict final still rejects Stormglass',()=>{
  const paths=vesperImportPaths();assert.equal(paths.length,33);assert.equal(paths.filter(p=>p.endsWith('.png')).length,16);
  verifyVesperImports(read);
- const result=productionResources(options);assert.deepEqual(result.pending,['abyssal-pressureworks','stormglass-causeway']);
- assert.equal(result.units['vesper-viaduct'].expected.packageInputs.length,143);
+ const result=productionResources(options);assert.deepEqual(result.pending,['stormglass-causeway']);
+ assert.equal(result.units['vesper-viaduct'].expected.packageInputs.length,144);
  for(const p of paths)assert.ok(Object.hasOwn(p.endsWith('.import')?result.provenance:result.resources,p));
  assert.throws(()=>productionResources({...options,strict:true}),/Required final production units remain pending/);
 });

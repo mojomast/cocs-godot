@@ -4,19 +4,23 @@ import fs from 'node:fs';
 import {pathToFileURL} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {identity,authorize,prepare,sha,ROOT,CANDIDATES} from '../../../tools/asset-production/candidate-admission.mjs';
-import {worldEntry} from '../../../port/multiplayer-worlds/catalog.mjs';
-test('six Abyssal capabilities remain private; promoted Vesper uses public admission',()=>{
+import {worldEntry,WORLDS,readWorld} from '../../../port/multiplayer-worlds/catalog.mjs';
+test('six proven Abyssal capabilities are public; private seam refuses registered maps',()=>{
+ assert.deepEqual(WORLDS['abyssal-pressureworks'].modes,CANDIDATES['abyssal-pressureworks']);
+ assert.equal(readWorld('abyssal-pressureworks').id,'abyssal-pressureworks');
+ const native=fs.readFileSync(ROOT+'godot/multiplayer_worlds/catalog.gd','utf8');
+ assert.match(native,/"abyssal-pressureworks": \["deathmatch","teamdeathmatch","ctf","koth","domination","holdout"\]/);
  for(const mode of CANDIDATES['abyssal-pressureworks']){
-  const r=identity('abyssal-pressureworks',mode),bytes=fs.readFileSync(ROOT+'godot/multiplayer_worlds/generated/abyssal-pressureworks.json');
-  assert.throws(()=>worldEntry(r.id,mode));assert.throws(()=>authorize({...r,enabled:false},bytes));assert.throws(()=>authorize({...r,expectedSha:'0'.repeat(64)},bytes));
-  const bad=structuredClone(r.data);bad.geometryHash='0'.repeat(64);const changed=JSON.stringify(bad);assert.throws(()=>authorize({...r,expectedSha:sha(changed)},changed));
+   assert.doesNotThrow(()=>worldEntry('abyssal-pressureworks',mode));
+   assert.throws(()=>identity('abyssal-pressureworks',mode));
  }
+ assert.throws(()=>worldEntry('abyssal-pressureworks','uplink'));
  assert.equal(worldEntry('vesper-viaduct','ctf').name,'Vesper Viaduct');
 });
 test('current private cloner imports actual new broadphase dependency and ws without constructing authority',async()=>{
  const dir=fs.mkdtempSync('/tmp/opencode/abyssal-private-import-');
  try{
-  const r=identity('abyssal-pressureworks','ctf'),d=prepare(dir,r);
+   const r=identity('stormglass-causeway','puma-race'),d=prepare(dir,r);
   const imported=await import(pathToFileURL(d.server));assert.equal(typeof imported.createGameServer,'function');
   for(const name of ['core','payload','room','rooms','game-server','match']){
    const original=ROOT+(name==='match'?`port/multiplayer-worlds/${name}.mjs`:`port/multiplayer-worlds/derived/${name}.mjs`);
@@ -25,9 +29,9 @@ test('current private cloner imports actual new broadphase dependency and ws wit
   }
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
-test('frozen authority, shared finish, public catalogs and other producer receipts preserve merged canonical bytes',()=>{
- const protectedPaths=['game/','port/contracts/source-lock.json','port/multiplayer-worlds/catalog.mjs','port/multiplayer-worlds/derived/','port/multiplayer-worlds/wall_candidates.mjs','godot/multiplayer_worlds/catalog.gd','tools/asset-production/moth_finish.py','tools/godot-package/production_receipts/',':(exclude)tools/godot-package/production_receipts/abyssal-pressureworks.json'];
- assert.equal(execFileSync('git',['diff','99a4f597','--',...protectedPaths],{cwd:ROOT,encoding:'utf8'}),'');
+test('registration preserves frozen authority, I geometry/assets and native evidence; receipt advances tested separately',()=>{
+ const protectedPaths=['game/','port/contracts/source-lock.json','port/multiplayer-worlds/derived/','port/multiplayer-worlds/wall_candidates.mjs','tools/asset-production/moth_finish.py','port/expansion-three/abyssal/evidence/','tools/godot-multiplayer/new-maps/abyssal-pressureworks/','godot/multiplayer_worlds/art/worlds/abyssal*','godot/multiplayer_worlds/generated/abyssal-pressureworks.json','port/native-multiplayer-worlds/worlds/abyssal-pressureworks.json'];
+ assert.equal(execFileSync('git',['diff','f0e76bf7','--',...protectedPaths],{cwd:ROOT,encoding:'utf8'}),'');
 });
 test('actual Godot-extracted images match embedded export bytes and keep lossless normal policies',()=>{
  const base=ROOT+'godot/multiplayer_worlds/art/worlds/abyssal-pressureworks',bytes=fs.readFileSync(base+'.glb'),size=bytes.readUInt32LE(12),doc=JSON.parse(bytes.subarray(20,20+size)),bin=bytes.subarray(28+size);

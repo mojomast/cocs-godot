@@ -418,7 +418,8 @@
     "tools/asset-production/receipt.mjs": "9648c19d979b2486c78830628c2f2508a02b4b2874d1f64149966d88d7e5f9d8",
     "tools/asset-production/reopen.py": "4628bc44122a690495766f3cc967a82d3ab7aeab52c272cca7a202be88e0f5de",
     "tools/godot-campaign/robot-art/build.py": "470a45d39dd24d13fac9f7bd5e1cffd395a8aa9f4de2f2ecddca365be908815e",
-    "tools/godot-package/production_resources.mjs": "0a95ddacb4af6f0b3dc053e4963e6b4201324cecf2dbe8a02617aafb21fbe219",
+    "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d",
+    "tools/godot-package/production_resources.mjs": "5556e3b1f0c87a98b26a2393aad62ee112857afd4abd3f56bd24214394bf187d",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
     "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
@@ -554,5 +555,26 @@
     "packageFingerprint": "01d9eab47564195867a770a2e3bcb49f06dbd1a5f9ba8fd2944eb796c3c48d06",
     "reason": "Parent accepted Vesper H integration/public six-mode registration; supporting verifier/catalog/demo reconciliation only. H native evidence used the original frozen authority, not the later Helix navigation optimization.",
     "review": "port/finish/VESPER_PACKAGE_PROMOTION.md"
+  },
+  "abyssalPackageVerifierAdvance": {
+    "previousReceipt": {
+      "commit": "f0e76bf7",
+      "path": "tools/godot-package/production_receipts/robots.json",
+      "sha256": "15d1e1fa1b8b03ae91091ed6bc69d83a7432eb2250e012cdaff608955c8ab827"
+    },
+    "changed": {
+      "tools/godot-package/production_resources.mjs": {
+        "before": "0a95ddacb4af6f0b3dc053e4963e6b4201324cecf2dbe8a02617aafb21fbe219",
+        "after": "5556e3b1f0c87a98b26a2393aad62ee112857afd4abd3f56bd24214394bf187d"
+      }
+    },
+    "added": {
+      "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d"
+    },
+    "runtimeChanged": {},
+    "previousPackageFingerprint": "01d9eab47564195867a770a2e3bcb49f06dbd1a5f9ba8fd2944eb796c3c48d06",
+    "packageFingerprint": "e6eddc7afa932584c4c69650173956f8a4e34cf1a39547943dce4ce97bcf28bb",
+    "reason": "Parent accepted Abyssal I integration and six public modes. Source-only supporting hook/catalog/verifier reconciliation; original I/H/F native evidence and prior advances remain immutable.",
+    "review": "port/finish/ABYSSAL_PACKAGE_PROMOTION.md"
   }
 }
