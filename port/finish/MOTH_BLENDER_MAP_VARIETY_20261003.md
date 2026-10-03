@@ -45,7 +45,8 @@ not produced inventory or measured runtime performance.
 | Stormglass | Repeated road shoulders, modules, gates and coastal structures | Varied retaining walls, cliff terraces, gatehouses, grandstands, lighthouse and quay cranes |
 
 Parent independently inspected Foundry's current GLB: **8 meshes, 8 materials,
-0 textures, 0 images**. Its new finish integration is part of this pass.
+0 textures, 0 images**. This describes embedded GLB content, not absence of runtime
+dressing. Its new Blender-embedded finish integration is part of this pass.
 
 The botanical audit flagged Vesper's historical `6917cffc…` identity in
 `ASSET_PRODUCTION.md`. Parent recomputed the current full canonical arena hash
@@ -110,13 +111,16 @@ historical evidence/unfamiliar files to recover space. Report a concrete capacit
 block if one occurs. The authorization for remote API requests is not permission
 to consume unbounded local storage.
 
-**P remains the only local heavy owner** (`RELEASE-MATRIX-20261003-P`,
-`ses_f0292f089ffeq9MnxeAHN0yrKb`). New lanes may perform source work, remote Moth
+**P completed and released** (`RELEASE-MATRIX-20261003-P`,
+`ses_f0292f089ffeq9MnxeAHN0yrKb`) at `2026-10-03T15:04:52.013061Z`.
+Parent inspected its three empty cleanup audits covering 239 owned process groups.
+No new heavy grant is active yet. New lanes may perform source work, remote Moth
 jobs and bounded low-resource image baking; no local Blender/Godot imports,
 rendering, encoding, servers or native benchmarks until a new explicit slot.
 The pinned Blender is the existing 4.5.14 toolchain. Actual Blender production is
 mandatory in the next phase, not replaced by a source-only generator claim.
 
-P was told to finish its current candidate independently. New resources and map
+P finished its frozen candidate independently: 89 passed, 22 failed, 31 unrun;
+release readiness remains false. New resources and map
 revisions require fresh visual/native acceptance and exact package reconciliation;
 existing P/K/L/O results do not validate the new artwork or terrain.

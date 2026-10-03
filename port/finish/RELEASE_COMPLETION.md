@@ -8,11 +8,11 @@ finishing and verifying the new candidate.
 ## Active work and ownership
 
 **New user-requested map production:** dedicated Astra is creating new Moth API
-resources and updating mothbake; two Flash audits and a Sol Blender-pipeline lane
-prepare more varied terrain, structures and population across the six newer maps.
+resources and updating mothbake; two Flash audits are complete and Sol is preparing
+Blender modeling helpers and export verification for the six newer maps.
 The user explicitly requires Blender-authored assets. Application follows the
-new resource pack, on isolated branches with fresh map validation. P keeps its
-current native slot/candidate; no new local heavy owner is implied. Exact owners,
+new resource pack, on isolated branches with fresh map validation. P has released;
+the next Blender grant awaits resource readiness. Exact owners,
 sequence and storage constraints: `MOTH_BLENDER_MAP_VARIETY_20261003.md`.
 
 **Current checkpoint (supersedes earlier M-in-progress entries below):** M actually
@@ -22,21 +22,40 @@ question prompted a direct process/evidence check. No cinematic engine or encode
 was still running. Parent verified three empty audits/72 groups and the actual
 45,812,911-byte MP4 hash, merged M as **`701d4caf`**, and passed 11 pipeline tests.
 
-**Exclusive active grant: `RELEASE-MATRIX-20261003-P`**, owner
-`ses_f0292f089ffeq9MnxeAHN0yrKb`, foundation **`b17360c9`**. O repaired both N
+**P completed and released:** `RELEASE-MATRIX-20261003-P`, owner
+`ses_f0292f089ffeq9MnxeAHN0yrKb`, frozen candidate **`3e97453a`**, released at
+`2026-10-03T15:04:52.013061Z`. The final canonical ledger has **89 passed,
+22 failed, 31 unrun = 142 obligations**. Source: 34 passed; engine: 55 passed,
+22 failed, eight unrun; audio/manual/external: four/13/six unrun.
+Every available command-backed source/engine job was attempted; release readiness
+remains false. Horde boss reached wave 10, four stations, 11 rewards and Warden
+phase 1 before an authoritative loss at 900.45 seconds.
+
+Parent inspected `final-cleanup-audits.json`: three empty audits of 239 owned
+groups. `final-integrity.json` records equal frozen input identity, 712 unchanged
+tracked sidecars, and only editor `filesystem_cache10` changed among 2,560 earlier
+cache entries. Evidence root:
+`/home/mojo/.tmp-on-disk/cocs-release-matrix-P-20261003/`;
+ledger: `canonical-02/run-47ivx55a/report.json`.
+Diagnosis commits `cd2b2017` and `47b3633b` remain isolated and native-unverified;
+independent Flash source review is assigned before integration. **No heavy grant
+is currently active.** New Moth/Blender production requires an explicit next grant
+after the resource pack is ready; its acceptance uses a fresh candidate.
+
+**Historical O/P foundation:** O repaired both N
 failures and released 18 groups with three empty audits, independently checked
 by parent. World/combined ordinary vehicle journeys now pass through actual
 F12/Return Home. Controls passes 90 assertions with zero leaks after completing
 fixture-owned sky rendering before disposal. The real Settings quit-vs-Home bug
-is corrected. P executes remaining available automatable acceptance serially;
+is corrected. P executed available automatable acceptance serially;
 all 142 obligations and historical failures remain.
 
-**P in-progress checkpoint:** source batch 27/29 passed; NumPy/Pillow availability
+**Historical P pre-freeze checkpoint (superseded above):** source batch 27/29 passed; NumPy/Pillow availability
 was corrected, with closure-dependent retry queued. Independent native batch
 29/32 passed initially; three fixture defects were corrected in `84ace28f` and
 all three regressions then passed. Parent reviewed/integrated those corrections
 as `4b2d87db` and passed their grammar checks. Fifteen connected canonical jobs
-are running serially in `connected-preclosure`. P remains active, not released.
+were queued serially in `connected-preclosure`; this was before P's final release.
 O package closure is now verified at **`14d8a72d`**, with **55 parent checks**
 passed. P was told to adopt it at the next stage boundary before ledger freeze.
 
@@ -76,9 +95,9 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**Exclusive local heavy grant P belongs to `ses_f0292f089ffeq9MnxeAHN0yrKb`.**
-F/G/G2/G3/G4/H/I/J/K/L/M/N/O have released. Native P and source-only package-pin
-reconciliation are active; the Windows owner retains remote preflight monitoring.
+**P has explicitly released; no local heavy grant is active.**
+F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P have released. P diagnosis is under source review;
+the Windows owner retains remote preflight monitoring.
 Scenery delivery is preserved but not integrated into the preview. Final production
 and acceptance obligations remain; strict final packaging is unchanged.
 
@@ -104,7 +123,7 @@ boundaries.
 | Shared race UI/lifecycle repairs | Sol `ses_effc08498ffeMuhuRDvyAoXEpj` | Source-only production fixes for J findings: map title, responsive result panel, restart audio teardown and attachment ownership warnings |
 | Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Actual production at `1f129ab2`; E released; compact-HUD correction at `83ceaa62` passes six parent source checks/grammar, new native layout/screenshots pending |
 | Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base `b6ab6782` and ordinary-controller follow-up `da259d19` integrated; 26 parent acceptance tests and grammar pass; native execution awaits later grant and device access |
-| Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Exclusive P on O-integrated `b17360c9`: execute remaining available automatable matrix, stabilize candidate/cache identity and retain manual/hardware blocks; all 142 obligations/96 original gates preserved |
+| Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | P complete/released on `3e97453a`: 89 passed / 22 failed / 31 unrun; 142 obligations retained; diagnosis `cd2b2017` + `47b3633b` under independent source review, native verification pending |
 | Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Historical Windows graph evidence verified/integrated at `08f3b1f9`; new 13-world/73-pair source-only preflight `37125999742` awaits owner-reported completion; no local export under O |
 | Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | M complete/released, integrated at `701d4caf`; 75-second film published, 98 candidate/91 installed Home checks pass; human full-watch/listening and final-frozen receipt remain pending |
 
@@ -116,8 +135,9 @@ directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
-**`RELEASE-MATRIX-20261003-P`**, owner `ses_f0292f089ffeq9MnxeAHN0yrKb`, is the
-only active heavy grant. Scope: remaining available registered acceptance,
+**No active heavy grant.** `RELEASE-MATRIX-20261003-P`, owner
+`ses_f0292f089ffeq9MnxeAHN0yrKb`, released at `2026-10-03T15:04:52.013061Z`.
+Its completed scope was remaining available registered acceptance,
 serial bounded native/source cohorts and minimal demonstrated defect corrections.
 No package export, cinematic recapture/encode, asset rebakes or authority changes.
 Package-bound jobs require the exact O pin advance; new runtime fixes need another
@@ -126,7 +146,7 @@ Use shared nonwaiting lock, bounded owned groups, exact source identities and
 `LP_NUM_THREADS=1`. Three empty audits and explicit release are required before
 the next heavy owner. Real audio, physical devices and human review remain separate.
 Parent owns review, public registration, promotion and release publication.
-Scenery F, preview G/G2/G3/G4, Vesper H, Abyssal I, Stormglass J, motion K, polish L, cinematic M, acceptance N and repair O explicitly released. This checkpoint supersedes
+Scenery F, preview G/G2/G3/G4, Vesper H, Abyssal I, Stormglass J, motion K, polish L, cinematic M, acceptance N, repair O and acceptance P explicitly released. This checkpoint supersedes
 historical ownership metadata in production plans; do not mutate active-run inputs
 just to relabel ownership. All seven asset units are promoted and strict asset
 inventory passes at `14d8a72d`, including the reviewed O correction through
