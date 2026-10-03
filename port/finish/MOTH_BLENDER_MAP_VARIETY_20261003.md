@@ -39,8 +39,14 @@ No revised map master, export or rendered acceptance is claimed at this checkpoi
 - Coastal initial source `6675a2ce` was rejected by parent for incorrect coordinate
   conversion, invalid mesh faces/arch dimensions and incomplete full-map assembly.
   Corrective `7a7ce64e` reports full authority composition and 37 source checks.
-  Independent Sol review `ses_efd55bb5cffeJRWNA4xZq8O6cE` is checking those fixes
-  and actual geometry extents before merge. Neither delivery is integrated yet.
+  Independent Sol review `ses_efd55bb5cffeJRWNA4xZq8O6cE` reproduced all 37 checks
+  but found further blockers: 61 vertices from 25 Stormglass parts enter road
+  polygons; terrain/art duplicates include all 137 terrain surfaces; 21 labels
+  are created after batching and omitted from GLB selection; Abyssal top caps
+  face downward and nine original reef forms are omitted. Coastal owner is
+  correcting full-mesh placement, render deduplication, export membership,
+  outward winding and reef composition, with regression coverage. The revision
+  remains rejected pending review. Neither map-source delivery is integrated yet.
 - R continues Foundry production. The shared adapter must preserve original
   linear provider images while producing correctly sRGB-encoded GLB base-color
   images; botanical wording prohibiting all byte re-encoding is not acceptance
