@@ -7,6 +7,7 @@
 // matching terrain support. No source/authority or physics change.
 import {makeRecipe as checkpoint, hash, polar} from './recipe-v2.mjs';
 import {terrainSupportAt} from '../../../../game/terrain.mjs';
+import {composeKitAuthority} from '../map_variety/kit_authority.mjs';
 export {hash, polar};
 export const ID = 'helix-conservatory';
 const TAU = Math.PI * 2, D = Math.PI / 180;
@@ -19,6 +20,12 @@ export function makeRecipe() {
   m.art.revision = 3;
   m.art.kit = [];
   m.art.portals = [];
+  m.art.cameras = [
+    {id:'overview',eye:[125,100,125],target:[0,12,0]},
+    {id:'grotto-eye',eye:[-24,9.65,-45],target:[-15,10,-56]},
+    {id:'botanical-eye',eye:[-30,9.65,47],target:[-41,10,41]},
+    {id:'greenhouse-eye',eye:[30,26.45,78],target:[0,30,87]},
+  ];
   m.art.varietyDistricts = ['rock-grotto-arcade', 'stepped-botanical-banks', 'archive-bay-articulation', 'root-and-greenhouse-forms'];
   m.verification = {...m.verification, varietyRouteIds: []};
 
@@ -54,7 +61,7 @@ export function makeRecipe() {
   };
   const clearance = q => Math.min(...primary.flatMap(r => r.points.slice(1).map((b, i) => distance(q, r.points[i], b))));
   const reserveRoute = (id, points, width = 2.5) => {
-    m.routes.push({id, width, points});
+    m.routes.push({id, width, points:points.map(([x,z])=>({x,y:floor(x,z),z}))});
     for (let j = 1; j < points.length; j++) {
       const a = points[j - 1], b = points[j], n = Math.ceil(Math.hypot(a[0] - b[0], a[1] - b[1]) / 2);
       for (let i = 0; i <= n; i++) m.navNodes.push({x: mix(a[0], b[0], i / n), z: mix(a[1], b[1], i / n)});
@@ -66,7 +73,7 @@ export function makeRecipe() {
     return Array.from({length: n + 1}, (_, i) => polar(r, mix(a, b, i / n)));
   };
   const kit = (id, klass, material, sectorName, at, params, rot = 0, tilt = 0) =>
-    m.art.kit.push({id, class: klass, material, sector: sectorName, at, rot, tilt, params});
+    m.art.kit.push({id, class: klass, material, sector: sectorName, at, rot, tilt, params:{profiled:true,bevelSegments:1,...params}});
 
   // ---- Rock grotto arcade on the flat r=45..60 archive terrace ---------------
   // Outer shell is real collision; two gaps stay open as authored mouths. The
@@ -76,6 +83,7 @@ export function makeRecipe() {
   const MOUTH = 4.6, pieces = 30;
   for (let i = 0; i < pieces; i++) {
     const a = mix(G0, G1, i / pieces), b = mix(G0, G1, (i + 1) / pieces), mid = (a + b) / 2;
+    if (clearance(polar(59, mid)) < 4) continue;
     if (Math.min(Math.abs(mid - mouthA), Math.abs(mid - mouthB)) * 57 < MOUTH) continue;
     sector(`grotto-shell-${i}`, 57.4, 60.6, a, b, 5.2 + (i % 3) * .5, i % 4 ? 'stone' : 'brick', 8);
   }
@@ -87,7 +95,7 @@ export function makeRecipe() {
   }
   for (const [index, a] of [[0, mouthA], [1, mouthB]]) {
     const [x, z] = polar(59, a);
-    kit(`grotto-arch-${index}`, 'grotto_arch', 'helix.grotto-rock', 'grotto', [x, 8, z], {span: 4.8, rise: 3.4, depth: 3.6, thickness: .9, blocks: 9}, a);
+    kit(`grotto-arch-${index}`, 'grotto_arch', 'helix.grotto-rock', 'grotto', [x, 8, z], {span: 4.8, rise: 3.4, depth: 3.6, thickness: .9, blocks: 9}, -a-Math.PI/2);
     m.art.portals.push({id: `grotto-mouth-${index}`, at: [x, 8, z], dir: [Math.cos(a), Math.sin(a)], width: 4.0, depth: 5, yaw: a});
   }
   const pool = polar(50.5, (G0 + G1) / 2);
@@ -106,7 +114,7 @@ export function makeRecipe() {
     const id = `botanical-shelf-${i}`;
     sector(id, r, r + 2.6, a - 1.5 * D, a + 1.5 * D, 1.8, 'soil', 8);
     kit(`${id}-rim`, 'stepped_terrace', 'helix.soil', 'botanical', [x + 1.3 * Math.cos(a), 8.9, z + 1.3 * Math.sin(a)],
-      {tiers: 2, run: 2.2, rise: .45, width: 2.2, depth: 5.4, capMaterial: 'helix.trim'});
+      {tiers: 2, run: 2.2, rise: .45, width: 2.2, depth: 5.4, capMaterial: 'helix.trim'},-a);
     // A second, taller row beyond the crosslink.
     const [bx, bz] = polar(61.5, a);
     if (clearance([bx, bz]) >= 3.0) sector(`botanical-upper-${i}`, 60.2, 62.8, a - 1.4 * D, a + 1.4 * D, 2.3, 'soil', null);
@@ -119,7 +127,7 @@ export function makeRecipe() {
     const mid = (a + b) / 2, span = (b - a) * D;
     const [x, z] = polar(61.4, mid * D);
     kit(`archive-bay-${index}`, 'facade_bays', 'helix.archive-stone', 'archive', [x, 15.2, z],
-      {height: 4.2, depth: .8, arch: index % 2 === 0, bays: [span * .32, span * .42, span * .26], trimMaterial: 'helix.trim'}, mid * D);
+      {height: 6.2, depth: .8, arch: index % 2 === 0, bays: [span * 61.4 * .32, span * 61.4 * .42, span * 61.4 * .26], trimMaterial: 'helix.trim'}, -mid * D - Math.PI/2);
     if (span > .34) sector(`archive-blind-${index}`, 60.6, 61.7, (a + 1) * D, (b - 1) * D, 6.2, 'brick', null);
   }
 
@@ -135,16 +143,16 @@ export function makeRecipe() {
   }
   for (const a of [70, 76, 82, 88, 94]) {
     const [x, z] = polar(87, a * D);
-    kit(`greenhouse-rib-${a}`, 'curved_rib', 'helix.greenhouse-frame', 'canopy', [x, 24.8, z], {inner: 13.4, outer: 14.2, depth: 1.1, start: 0, stop: Math.PI, segments: 28}, a * D, Math.PI / 2);
+    kit(`greenhouse-rib-${a}`, 'curved_rib', 'helix.greenhouse-frame', 'canopy', [x, 24.8, z], {inner: 13.4, outer: 14.2, depth: 1.1, start: 0, stop: Math.PI, segments: 28}, -a * D - Math.PI/2);
   }
-  kit('greenhouse-ridge', 'pipe', 'helix.greenhouse-frame', 'canopy', [0, 30.4, 87], {radius: .28, sides: 10, path: [[-11, 30.2, 84], [0, 30.6, 87], [11, 30.2, 84]]});
-  kit('greenhouse-ridge-south', 'pipe', 'helix.greenhouse-frame', 'canopy', [0, 30.4, -87], {radius: .28, sides: 10, path: [[-11, 30.2, -84], [0, 30.6, -87], [11, 30.2, -84]]});
+  kit('greenhouse-ridge', 'pipe', 'helix.greenhouse-frame', 'canopy', [0, 30.4, 87], {radius: .28, sides: 10, path: [[-11, 3, -.2], [0, 0, .2], [11, 3, -.2]]});
+  kit('greenhouse-ridge-south', 'pipe', 'helix.greenhouse-frame', 'canopy', [0, 30.4, -87], {radius: .28, sides: 10, path: [[-11, -3, -.2], [0, 0, .2], [11, -3, -.2]]});
   for (const s of [-1, 1]) kit(`specimen-root-buttress-${s}`, 'root_form', 'helix.bark', 'lightwell', [s * 6, 0, 0], {height: 11, radius: .42, branches: 2, lean: -s * .2});
 
   // ---- New walkable crosslinks ---------------------------------------------
   reserveRoute('grotto-loop', [...curve(50, G0 + 3 * D, G1 - 3 * D), ...curve(52.4, G1 - 3 * D, G0 + 3 * D)], 2.5);
   reserveRoute('grotto-spur', (() => { const [mx, mz] = polar(52, mouthA); const [ox, oz] = polar(60, mouthA); return [[mx, mz], polar(56.5, mouthA), [ox, oz]]; })(), 2.5);
 
-  return m;
+  return composeKitAuthority(m);
 }
 export const recipe = makeRecipe();

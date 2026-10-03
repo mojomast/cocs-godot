@@ -6,6 +6,7 @@ any Blender process is granted. Each op maps 1:1 to a `blender_kit.Kit` call.
 """
 import json
 import math
+from collections import Counter
 
 
 def _empty():
@@ -29,6 +30,28 @@ def _box(center, size):
 
 def _triangles(vertices, faces):
     return sum(max(0, len(face) - 2) for face in faces)
+
+
+def signed_volume(vertices, faces):
+    total = 0
+    for face in faces:
+        a = vertices[face[0]]
+        for i in range(1,len(face)-1):
+            b,c = vertices[face[i]],vertices[face[i+1]]
+            total += sum(a[k]*(b[(k+1)%3]*c[(k+2)%3]-b[(k+2)%3]*c[(k+1)%3]) for k in range(3))/6
+    return total
+
+
+def outward_faces(vertices, faces):
+    """Consumer-side orientation guard; no edits to the Sol-owned shared Kit.
+
+    Only closed indexed shells are normalized. Open authored sheets retain
+    their authored orientation, so this cannot flip floors or glazing by guess.
+    """
+    edges = Counter(tuple(sorted((a,face[(i+1)%len(face)]))) for face in faces for i,a in enumerate(face))
+    if edges and all(n == 2 for n in edges.values()) and signed_volume(vertices,faces) < -1e-8:
+        return [tuple(reversed(face)) for face in faces]
+    return faces
 
 
 def _op(op, name, material, sector, at, rot, **params):
@@ -66,17 +89,18 @@ def _mesh(name, material, sector, at, rot, vertices, faces, bevel=0.0, smooth=Tr
 
 def _grotto_arch(d, material):
     span = d['params'].get('span', 4.6)
-    rise = span / 2
+    rise = d['params'].get('rise', 3.4)
     thickness = d['params'].get('thickness', .9)
     depth = d['params'].get('depth', 3.4)
     at, rot = d['at'], d.get('rot', 0)
+    spring = rise - (span / 2 - thickness)
     out = [
-        _curved_rib(d['id'] + '.band', material, d['sector'], at, rot, span / 2 - thickness, span / 2, depth, 0, math.pi, 22),
-        _curved_rib(d['id'] + '.reveal', material, d['sector'], [at[0], at[1], at[2] - depth * .18], rot,
+        _curved_rib(d['id'] + '.band', material, d['sector'], [at[0],at[1]+spring,at[2]], rot, span / 2 - thickness, span / 2, depth, 0, math.pi, 22),
+        _curved_rib(d['id'] + '.reveal', material, d['sector'], [at[0], at[1]+spring, at[2] - depth * .18], rot,
                     span / 2 - thickness * 1.4, span / 2 - thickness * .9, depth * .32, 0, math.pi, 22),
-        _prism(d['id'] + '.springer', material, d['sector'], at, rot, [span + thickness, depth * 1.2, thickness * .7], .05),
     ]
-    del rise
+    for side in (-1,1):
+        out.append(_prism(d['id']+f'.springer{side}',material,d['sector'],[at[0]+side*(span-thickness)/2,at[1]+spring/2,at[2]],rot,[thickness,depth,spring],.05))
     return out
 
 
@@ -166,8 +190,10 @@ def _fern_card(d, material):
             e = (cx0 + math.sin(angle) * w0, cy0 - math.cos(angle) * w0, z0)
             base = len(vertices)
             vertices.extend([a, b, c, e])
-            faces.append((base, base + 1, base + 2, base + 3))
-    return [_mesh(d['id'], material, d['sector'], d['at'], d.get('rot', 0), vertices, faces, 0.0, False)]
+            faces.append((base, base+1, base+2) if segment == 0 else
+                         (base, base+1, base+3) if segment == 2 else
+                         (base, base+1, base+2, base+3))
+    return [_mesh(d['id'], material, d['sector'], d['at'], d.get('rot', 0), vertices, [tuple(reversed(f)) for f in faces], 0.0, False)]
 
 
 def _pool(d, material):
@@ -206,6 +232,8 @@ def _lightwell(d, material):
     at, rot = d['at'], d.get('rot', 0)
     out = [_curved_rib(d['id'] + '.oculus', trim, d['sector'], at, rot, radius - .5, radius, .8, 0, math.tau, ribs * 2),
            _curved_rib(d['id'] + '.inner-ring', trim, d['sector'], [at[0], at[1] + .6, at[2]], rot, radius - 1.1, radius - .7, .5, 0, math.tau, ribs * 2)]
+    for op in out:
+        op['tilt'] = math.pi/2
     vertices, faces = [], []
     for index in range(ribs):
         angle = index * math.tau / ribs
@@ -265,8 +293,8 @@ def _stall_row(d, material):
         out.append(_prism(f"{d['id']}.awning{index}", trim, d['sector'],
                           [at[0] + offset, at[1] + 2.5, at[2]], rot, [width + .5, depth + .9, .18], .03))
         for side in (-1, 1):
-            out.append(_pipe(f"{d['id']}.post{index}.{side}", trim, d['sector'], at, rot, .06, 6,
-                             [[offset + side * (width / 2 - .1), -depth / 2 - .2, 0], [offset + side * (width / 2 - .1), -depth / 2 - .2, 2.4]]))
+            out.append(_pipe(f"{d['id']}.post{index}.{side}", trim, d['sector'], at, rot, .06, 8,
+                              [[offset + side * (width / 2 - .1), -depth / 2 - .2, 0], [offset + side * (width / 2 - .1), -depth / 2 - .2, 2.4]]))
     return out
 
 
@@ -302,10 +330,10 @@ def _arch_bridge(d, material):
     for side in (-1, 1):
         out.append(_prism(f"{d['id']}.pier{side}", material, d['sector'],
                           [at[0] + side * (span / 2), at[1] + pier / 2, at[2]], rot, [1.6, width, pier], .05))
-    out.append(_curved_rib(d['id'] + '.arch', material, d['sector'], [at[0], at[1] + pier, at[2]], rot,
+    out.append(_curved_rib(d['id'] + '.arch', material, d['sector'], [at[0], at[1] + pier-span/2-.5, at[2]], rot,
                            span / 2 - thickness, span / 2, width, 0, math.pi, 24))
     out.append(_prism(d['id'] + '.deck', trim, d['sector'],
-                      [at[0], at[1] + pier + .3, at[2]], rot, [span + 1.5, width + .6, .5], .05))
+                       [at[0], at[1] + pier - .25, at[2]], rot, [span + 2, width, .5], .05))
     return out
 
 
@@ -324,6 +352,8 @@ def _retaining_wall(d, material):
 
 def _landmark(d, material):
     p = d['params']
+    if p.get('acceptedCraft'):
+        return [] # Exact accepted petals/domes/armillary come from base_craft.py.
     kind = p.get('kind', 'dome')
     radius = float(p.get('radius', 8))
     at, rot = d['at'], d.get('rot', 0)
@@ -377,13 +407,29 @@ def expand_kit(kit, allowed_materials):
             raise ValueError('Unknown kit class: ' + str(klass))
         if source['material'] not in allowed_materials:
             raise ValueError('Unbound kit material: ' + source['material'])
-        x, y, z = source['at']
-        converted = dict(source)
-        converted['at'] = [float(x), float(-z), float(y)]
-        converted['rot'] = float(-source.get('rot', 0))
-        for entry in HANDLERS[klass](converted, converted['material']):
+        # Handlers express assembly offsets in source Y-up, while primitive
+        # vertices/sizes are local Blender Z-up. Expand around zero, convert
+        # offsets exactly once, then rigidly rotate the ENTIRE assembly.
+        local = dict(source, at=[0, 0, 0], rot=0)
+        origin = to_blender(source['at'])
+        heading = float(source.get('rot', 0))
+        c, s = math.cos(heading), math.sin(heading)
+        for entry in HANDLERS[klass](local, local['material']):
+            x, y, z = to_blender(entry['at'])
+            entry['at'] = [origin[0] + c*x-s*y, origin[1] + s*x+c*y, origin[2]+z]
+            entry['rot'] += heading
+            if source['params'].get('profiled') and entry['op'] in ('curved_rib','pipe'):
+                # Rounded profiles already carry real silhouette geometry.
+                # Avoid a second bevel on every longitudinal tessellation edge.
+                entry['profiled'] = True
+            if 'bevelSegments' in source['params']:
+                segments = source['params']['bevelSegments']
+                if segments not in (1,2):raise ValueError('Unreviewed bevel segment count')
+                entry['bevelSegments'] = segments
             if entry['material'] not in allowed_materials:
                 raise ValueError('Unbound op material: ' + entry['material'])
+            if entry.get('trimMaterial',entry['material']) not in allowed_materials:
+                raise ValueError('Unbound trim material')
             ops.append(entry)
     return ops
 
@@ -392,11 +438,11 @@ def op_triangles(entry):
     if entry['op'] == 'prism':
         return 12
     if entry['op'] == 'framed_bay':
-        return 12 * 7 + (22 * 8 if entry.get('arch') else 0)
+        return 12 * 7 + 2*(20*8+4) if entry.get('arch') else 12*9
     if entry['op'] == 'curved_rib':
         return entry['segments'] * 8 + 4
     if entry['op'] == 'pipe':
-        return entry['sides'] * 2 + max(0, len(entry['points']) - 1) * entry['sides'] * 2
+        return entry['sides'] * 2 - 4 + max(0, len(entry['points']) - 1) * entry['sides'] * 2
     if entry['op'] == 'mesh':
         return _triangles(entry['vertices'], entry['faces'])
     raise ValueError('Unknown op: ' + entry['op'])
@@ -409,8 +455,13 @@ def plan(kit, allowed_materials, max_triangles=24000):
     for entry in ops:
         triangles = op_triangles(entry)
         total += triangles
-        key = (entry['sector'], entry['material'])
-        groups[key] = groups.get(key, 0) + triangles
+        parts = [(entry['material'], triangles)]
+        if entry['op'] == 'framed_bay':
+            frame = 24+164 if entry['arch'] else 36
+            parts = [(entry['material'],frame),(entry['trimMaterial'],triangles-frame)]
+        for material,count in parts:
+            key = (entry['sector'], material)
+            groups[key] = groups.get(key, 0) + count
     batches = sum(-(-triangles // max_triangles) for triangles in groups.values())
     return {
         'ops': ops,
@@ -422,8 +473,26 @@ def plan(kit, allowed_materials, max_triangles=24000):
             'batches': batches,
             'budget': {'maxTrianglesPerBatch': max_triangles, 'triangleBudget': 160000},
             'withinBudget': total <= 160000,
+            'measurement': 'unmodified source estimate; evaluated full-scene acceptance pending',
         },
     }
+
+
+def scene_summary(arena, allowed, cap=24000):
+    from pathlib import Path
+    from base_craft import base_craft_plan
+    craft = base_craft_plan(arena, Path(__file__).resolve().parents[4])
+    summary = dict(plan(arena['art']['kit'],allowed,cap)['summary'])
+    shell, structures, pieces, decorative = shell_plan(arena), structure_plan(arena), piece_plan(arena), decorative_plan(arena)
+    infrastructure = sum(op_triangles(o) for o in infrastructure_plan(arena))
+    summary.update(authorityShellTriangles=shell['authorityTriangles'], structureTriangles=structures['triangles'],
+                   pieceTriangles=pieces['triangles'], decorativeTriangles=decorative['triangles'],
+                   decorativeMeshes=len(decorative['lineage']), infrastructureTriangles=infrastructure,
+                   baseCraftTriangles=craft['triangles'], baseCraftParts=len(craft['lineage']),
+                   sourceSceneTriangles=summary['triangles']+shell['authorityTriangles']+structures['triangles']+pieces['triangles']+decorative['triangles']+infrastructure+craft['triangles']+(2 if arena.get('art',{}).get('water') else 0),
+                   labelsPendingTessellation=len(arena.get('art',{}).get('labels',[]))+len(craft['labels']),
+                   evaluatedAcceptance='pending Blender evaluation and GLB pixel/primitive audit')
+    return summary
 
 
 def structure_plan(arena):
@@ -434,7 +503,7 @@ def structure_plan(arena):
         bucket = buckets.setdefault(material, _empty())
         base = len(bucket['vertices'])
         vertices, faces = _box((0, 0, 0), (w, d, max_y - min_y))
-        vertices = [(x + vx, -z + vy, min_y + vz) for vx, vy, vz in vertices]
+        vertices = [(x + vx, -z + vy, (min_y + max_y) / 2 + vz) for vx, vy, vz in vertices]
         bucket['vertices'].extend(vertices)
         bucket['faces'].extend(tuple(base + i for i in face) for face in faces)
 
@@ -465,15 +534,82 @@ def to_blender(vertex):
     return (float(x), float(-z), float(y))
 
 
+def mesh_chunks(bucket, cap=24000):
+    """Bound individual editable source meshes, preserving every face once."""
+    chunk, indices, count = _empty(), {}, 0
+    for face in bucket['faces']:
+        triangles = len(face) - 2
+        if triangles > cap:
+            raise ValueError('Single polygon exceeds source cap')
+        if count + triangles > cap:
+            yield chunk
+            chunk, indices, count = _empty(), {}, 0
+        mapped = []
+        for old in face:
+            if old not in indices:
+                indices[old] = len(chunk['vertices'])
+                chunk['vertices'].append(bucket['vertices'][old])
+            mapped.append(indices[old])
+        chunk['faces'].append(tuple(mapped))
+        count += triangles
+    if chunk['faces']:
+        yield chunk
+
+
+def decorative_plan(arena):
+    """Keep all authored noncollision meshes; terrain-backed art is emitted once."""
+    buckets, lineage = {}, []
+    for mesh in arena.get('art', {}).get('meshes', []):
+        collision = mesh.get('collision', 'none')
+        if collision in ('surface', 'wall'):
+            continue
+        if collision != 'none':
+            raise ValueError('Unknown art collision role: ' + collision)
+        bucket = buckets.setdefault(mesh['material'], _empty())
+        _add(bucket, [to_blender(v) for v in mesh['vertices']], mesh['triangles'])
+        lineage.append(mesh['id'])
+    return {'buckets': buckets, 'lineage': lineage,
+            'triangles': sum(_triangles(b['vertices'], b['faces']) for b in buckets.values())}
+
+
+def infrastructure_plan(arena):
+    """Preserved Vesper rail and clock forms, editable through the same Kit."""
+    art, ops = arena.get('art', {}), []
+    for offset in (-1.1, 1.1) if art.get('tram') else ():
+        points = []
+        for x, _, source_z in art['tram']:
+            z = source_z + offset
+            y = 0 if z <= -65 else (z+65)*.3 if z < -25 else 12 if z <= 25 else 12+(z-25)*.3 if z < 65 else 24
+            point = to_blender((x, y+.045, z))
+            if not points or math.dist(points[-1], point) >= .01:
+                points.append(point)
+        ops.append(_pipe('tram-rail.'+str(offset), 'iron', 'infrastructure', [0,0,0], 0, .045, 8, points))
+    clock = art.get('clock')
+    if clock:
+        r, n = clock['radius'], 48
+        # Dial faces source -Z (Blender +Y); closed, outward-wound cylinder.
+        vertices = [(r*math.cos(i*math.tau/n), y, r*math.sin(i*math.tau/n)) for y in (-.06,.06) for i in range(n)]
+        faces = [tuple(range(n)), tuple(reversed(range(n,2*n)))]
+        faces += [(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)]
+        ops.append(_mesh('civic-clock-dial','letter','infrastructure',to_blender((clock['x'],clock['y'],clock['z'])),0,vertices,faces,0,False))
+        for name, x, y, z, size in [('minute',clock['x'],clock['y']+1,clock['z']-.15,(.15,.13,2.2)),('hour',clock['x']+.65,clock['y'],clock['z']-.17,(1.4,.14,.18))]:
+            ops.append(_prism('clock-'+name,'iron','infrastructure',to_blender((x,y,z)),0,size,.01))
+    return ops
+
+
 def shell_plan(arena):
     """World-space authority surfaces/walls as one batched mesh per material."""
     surfaces, walls, miscount = {}, {}, 0
     for surface in arena['terrain']['surfaces']:
+        if surface.get('renderSource') == 'kit':
+            continue
         bucket = surfaces.setdefault(surface['material'], _empty())
         base = len(bucket['vertices'])
         bucket['vertices'].extend(to_blender(v) for v in surface['vertices'])
         bucket['faces'].extend(tuple(base + i for i in triangle) for triangle in surface['triangles'])
     for wall in arena['terrain']['walls']:
+        if wall.get('renderSource') == 'kit':
+            continue
         vertices = wall.get('vertices') or [wall['a'], wall['b']]
         if len(vertices) != 3:
             miscount += 1

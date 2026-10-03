@@ -1,52 +1,60 @@
-# Shared Moth material adapter contract
+# Shared Moth adapter integration
 
-`tools/map-variety-pipeline/material_adapter.py` is **Sol-owned**. The three map
-builders (`*/asset_author.py`) and the kit do not implement Moth binding; they
-import the adapter through
-`tools/godot-multiplayer/new-maps/map_variety/material_adapter_contract.py`.
-Until this module exists, `--plan` runs (pure Python) and `--build` fails with
-`MISSING SOL ADAPTER HOOK`.
+The canonical adapter is Sol-owned, committed in `6ff4079e` at
+`tools/map-variety-pipeline/{material_adapter,material_pack}.py`. Do not copy a
+different adapter into this namespace. Heavy production requires that committed
+adapter (plus its owner-approved fixes) in the integration worktree.
 
-## Exact interface
+## Exact callable and normalization
 
 ```python
-def load_materials(root: pathlib.Path, bindings: dict) -> tuple[dict, dict]:
-    ...
+load_materials(root, bindings, *, output_dir=None, with_report=False)
 ```
 
-* `bindings` is the per-map `variety_bindings.json` (`schema
-  map-variety-bindings/v1`). Materials are keyed by the **exact GLB material
-  name**.
-* Returns `(materials, density)`:
-  * `materials[name]` is a `bpy.types.Material` for every key, preserved
-    materials included;
-  * `density[name]` is that material's tiles-per-metre (`0 < d <= 16`), matching
-    `bindings['materials'][name].tilesPerMeter`.
+Canonical `bindings` is a PBR-only dictionary keyed by exact exported material
+name. Each value is `{material: packID, role: surface|team, normal: bool,
+metallic?: float}`; a team binding additionally requires
+`teamColorSource: COLOR_0`. With `with_report=True`, the result is
+`(materials, densities, receipt)`; otherwise it is `(materials, densities)`.
 
-## Resource resolution
+These candidates have a richer map registry (`variety_bindings.json`).
+`map_materials.adapter_bindings()` explicitly normalizes each surface binding's
+`resource` to `material`, supplies `normal: True`, and excludes preserved entries.
+Unknown registry roles/maps/preserved names fail closed. The canonical adapter
+deliberately rejects `preserve`; none are sent to it.
 
-For each non-preserved binding, resolve
-`manifest.materials[resource].channels[channel]` -> `manifest.textures[key].path`
-against the merged candidate pack
-(`assets/moth/map-variety-20261003/candidate-v2/manifest.json` plus the
-`candidate-v3` overlay). Bind by **ID/channel key**, never by array position or
-file glob. Reject unknown resource ids, missing channels and PNG hash mismatches.
+Map-owned `map_materials.PRESERVED` transcribes accepted Helix glass and Vesper
+glass/water/letter palette and BRDF constants with source references. Vesper's
+accepted letter material is opaque, not emissive. The new Helix grotto pool has
+an explicit candidate liquid BRDF using Helix's green palette; it does not claim
+an inherited accepted water material. Parallax's accepted opaque sea palette
+and BRDF are preserved too, including its original palette-to-linear exponent.
 
-## Channels and colour management
+The builder applies the registry's reviewed normal strengths and UV densities
+after loading; original pack densities remain in the adapter receipt, with map
+overrides recorded separately. No world-coordinate texture mapping is used.
 
-All five pack channels are **linear, including albedo**.
+## Colour, normals, roughness, and portable masters
 
-* Set every image `colorspace_settings.name = 'Non-Color'`.
-* Albedo connects to the shader's linear Base Color. The PNG bytes are **not**
-  re-encoded here; the glTF base-color sRGB encoding is the exporter stage's job.
-* Normal is OpenGL **+Y** (image rows down, UV v up) into a Normal Map node
-  (tangent space) at the binding `normalStrength`.
-* Roughness drives Roughness. Height/wear are decorative inputs only, never
-  collision authority.
-* Preserved materials (`glass`, `water`, emissive/`letter`) keep no Moth texture.
+All immutable pack channels are linear. The adapter resolves pack IDs/channel
+keys and verifies manifest hashes. It derives a separate sRGB-encoded albedo PNG
+and binds it as an sRGB image. Original PNGs remain unchanged. Normals are
+Non-Color OpenGL +Y; roughness reads the source red channel.
 
-## Why this must not be guessed
+`map_materials.load_reviewed_materials()` packs every bound texture image before
+saving the editable master and changes external image paths to relative packed
+references. Build and reopen-export both reject unpacked material images.
+The complete adapter receipt (pack hashes and source/converted image hashes),
+explicit preserved BRDFs, and map overrides are stored in the scene and report.
 
-The kit builder must not invent fallback colours, world-coordinate shaders or a
-global palette. Acceptance depends on the exported albedo/normal/roughness bytes
-matching the pack PNG hashes; a guessed adapter produces unbindable evidence.
+`export_audit.py` verifies actual embedded GLB images with standard-library PNG
+decoding: albedo RGB must equal IEC linear→sRGB transfer (one-byte quantization
+tolerance), alpha must be unchanged, normal pixels must match the immutable
+OpenGL source, and packed roughness G must match source roughness R. It verifies
+normal strength and tangent attributes too. Source and derived/export hashes
+are distinct evidence fields, never incorrectly required to be identical.
+
+Both export paths enforce actual complete GLB limits of 160000 triangles and
+64 primitives. Plans are unmodified-source estimates with evaluated acceptance
+explicitly pending; Blender evaluation and native acceptance run serially under
+the heavy owner after integration.

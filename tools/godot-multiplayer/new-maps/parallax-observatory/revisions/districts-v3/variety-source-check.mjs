@@ -3,6 +3,7 @@
 import {mkdirSync, writeFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {makeRecipe} from './recipe-v3.mjs';
+import {auditPhysicalRoutes} from '../../../map_variety/navigation_audit.mjs';
 import {loadPack, validateBindings, auditArena, writeCandidate, readJson, REPO_ROOT} from '../../../map_variety/variety_lib.mjs';
 
 export const MAP_ID = 'parallax-observatory';
@@ -17,6 +18,9 @@ export function generate() {
   const arena = makeRecipe();
   const varietyRoutes = arena.routes.filter(r => (arena.verification?.varietyRouteIds ?? []).includes(r.id));
   const audit = auditArena(arena, {bindings, pack, clearance: 0.5, label: MAP_ID, routes: varietyRoutes, visualCongruence: false});
+  const base = readJson('godot/multiplayer_worlds/generated/parallax-observatory.json');
+  audit.physical = auditPhysicalRoutes(arena, {...base.arena, routes:base.routes});
+  audit.failures.push(...audit.physical.failures.map(f=>JSON.stringify(f)));
   return {bindings, pack, validated, arena, audit};
 }
 
@@ -28,6 +32,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   }
   const report = {
     id: MAP_ID, revision: REVISION,
+    physicalRoutes: {routes:arena.routes.length, failures:audit.physical.failures, baselineDefects:audit.physical.baselineDefects, spacing:.25, capsuleRadius:.42, standingHeight:1.8},
+    kitCollisionLineage: arena.art.kitCollisionLineage,
     geometryHash: audit.geometryHash, recipeHash: audit.authority.recipeHash,
     moth: {base: pack.base, baseSha256: pack.baseSha, overlay: pack.overlay, overlaySha256: pack.overlaySha},
     bindings: validated.names, connectivity: {nodes: audit.connectivity.nodes, connected: audit.connectivity.connected},

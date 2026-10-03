@@ -33,7 +33,7 @@ def plan(max_triangles=MAX_TRIANGLES, out=None):
     result = kit_expander.plan(authority['arena']['art']['kit'], set(bindings['materials']), max_triangles)
     shell = kit_expander.shell_plan(authority['arena'])
     structures = kit_expander.structure_plan(authority['arena'])
-    summary = dict(result['summary'])
+    summary = kit_expander.scene_summary(authority['arena'], set(bindings['materials']), max_triangles)
     summary['authorityShellTriangles'] = shell['authorityTriangles']
     summary['structureBoxes'] = structures['boxes']
     summary['structureTriangles'] = structures['triangles']

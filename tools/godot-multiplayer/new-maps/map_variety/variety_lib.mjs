@@ -10,6 +10,7 @@ import {fileURLToPath} from 'node:url';
 import {dirname,resolve,posix} from 'node:path';
 import {terrainSupportAt, terrainWallSegments} from '../../../../game/terrain.mjs';
 import {canonical} from '../../../../port/multiplayer-worlds/catalog.mjs';
+import {physicalIndex, traceRoute} from './navigation_audit.mjs';
 
 export const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../../../..');
 export const PACK_ROOT = 'assets/moth/map-variety-20261003';
@@ -146,6 +147,7 @@ export function assertCollisionVisualCongruence(arena, failures) {
   }
   const collision = new Set();
   for (const wall of arena.terrain?.walls ?? []) {
+    if (wall.renderSource === 'kit') continue; // Independently captured from the exact rendered Kit ops.
     const vertices = wall.vertices ?? (wall.a && wall.b ? [wall.a, wall.b] : []);
     if (vertices.length === 3) collision.add(key(vertices));
   }
@@ -167,22 +169,18 @@ export function supportFailures(arena, points, label, failures) {
 
 /** Centerline clearance against the actual wall segments (player radius 0.42). */
 export function routeClearanceFailures(arena, routes, minimum, failures) {
-  const segments = terrainWallSegments(arena.terrain);
   for (const route of routes) {
-    for (const point of route.points ?? []) {
-      const [x, z] = Array.isArray(point) ? point : [point.x, point.z];
-      let nearest = Infinity;
-      for (const {a, b} of segments) nearest = Math.min(nearest, distancePointSegment(x, z, a, b));
-      if (nearest < minimum) { failures.push(`route ${route.id} point ${x.toFixed(1)},${z.toFixed(1)} is ${nearest.toFixed(3)} m from a wall (< ${minimum})`); break; }
-    }
+    const found = traceRoute(arena, route.points ?? []);
+    if (found.length) failures.push(`route ${route.id}: ${JSON.stringify(found[0])}`);
   }
+  void minimum; // Physical capsule radius/head height replace height-blind XZ distance.
 }
 
 /** Two playable nodes stacked over one XZ cell would break highest-floor reading. */
 export function stackedPlayableFailures(arena, failures) {
   const maxSlope = arena.terrain?.maxSlope ?? Infinity;
   const nodes = (arena.navNodes ?? []).filter(n => Number.isFinite(n.x) && Number.isFinite(n.z))
-    .map(n => ({...n, y: terrainSupportAt(n.x, n.z, arena.terrain, maxSlope)?.y}));
+    .map(n => ({...n, y: n.y ?? terrainSupportAt(n.x, n.z, arena.terrain, maxSlope)?.y}));
   for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
     const a = nodes[i], b = nodes[j];
     if (Math.hypot(a.x - b.x, a.z - b.z) > 0.75) continue;
@@ -192,8 +190,10 @@ export function stackedPlayableFailures(arena, failures) {
 
 /** Connectivity over authored nav nodes using the source's ~3 m route chord scale. */
 export function navConnectivity(arena, {chord = 5.0, rise = 1.6} = {}) {
+  const index = physicalIndex(arena);
   const nodes = (arena.navNodes ?? []).filter(n => Number.isFinite(n.x) && Number.isFinite(n.z))
-    .map(n => ({...n, y: terrainSupportAt(n.x, n.z, arena.terrain)?.y ?? 0}));
+    .map(n => ({...n, y: n.y ?? index.support(n.x, n.z)?.y}));
+  if (!nodes.length) return {nodes:0,connected:0,reachable:new Set()};
   const seen = new Set([0]);
   const queue = [0];
   while (queue.length) {
@@ -202,6 +202,7 @@ export function navConnectivity(arena, {chord = 5.0, rise = 1.6} = {}) {
       if (seen.has(j)) continue;
       if (Math.hypot(nodes[i].x - nodes[j].x, nodes[i].z - nodes[j].z) > chord) continue;
       if (Math.abs(nodes[i].y - nodes[j].y) > rise) continue;
+      if (!Number.isFinite(nodes[i].y) || !Number.isFinite(nodes[j].y) || traceRoute(arena,[nodes[i],nodes[j]]).length) continue;
       seen.add(j); queue.push(j);
     }
   }
@@ -238,7 +239,12 @@ export function portalFailures(arena, portals, failures) {
   };
   for (const portal of portals) {
     const [x, y, z] = portal.at;
-    const dir = portal.dir ?? [Math.sin(portal.yaw ?? 0), 0, Math.cos(portal.yaw ?? 0)];
+    const raw = portal.dir ?? [Math.sin(portal.yaw ?? 0), 0, Math.cos(portal.yaw ?? 0)];
+    const vector = Array.isArray(raw) && raw.length === 2 ? [raw[0], 0, raw[1]] : raw;
+    if (!Array.isArray(vector) || vector.length !== 3 || !vector.every(Number.isFinite) || Math.hypot(...vector) < 1e-9 || !Array.isArray(portal.at) || portal.at.length !== 3 || !portal.at.every(Number.isFinite) || ![portal.width??2,portal.depth??6].every(v=>Number.isFinite(v)&&v>0)) {
+      failures.push(`portal ${portal.id} has invalid direction/origin`); continue;
+    }
+    const length = Math.hypot(...vector), dir = vector.map(v => v/length);
     const half = (portal.width ?? 2) / 2;
     for (const offset of [-half * 0.55, 0, half * 0.55]) {
       for (const height of [0.9, 1.7]) {
@@ -257,6 +263,7 @@ export function materialNamesUsed(arena, bindings) {
   for (const block of arena.blocks ?? []) used.add(block.material);
   for (const piece of arena.art?.pieces ?? []) used.add(piece.material);
   for (const kit of arena.art?.kit ?? []) used.add(kit.material);
+  for (const label of arena.art?.labels ?? []) used.add(label.material);
   const missing = [...used].filter(name => name && !(name in bindings.materials));
   return {used: [...used].filter(Boolean).sort(), missing};
 }

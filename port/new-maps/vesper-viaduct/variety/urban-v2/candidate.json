@@ -11,8 +11,8 @@
   },
   "authority": {
     "path": "port/new-maps/vesper-viaduct/variety/urban-v2/authority.json",
-    "geometryHash": "64a4b3d44b0055743a7995ac4750ade7f86269efbb552e03597c47ff62ce7af9",
-    "recipeHash": "0a25a2dde064da592cd84b2df5b3fbbaf14f39ec1d1a5eddb66b0fe6c7e86859"
+    "geometryHash": "01ddc671cb0e8471da390d93a1b4dfbba507551ed29a588b249fe761af1a7ef7",
+    "recipeHash": "b2e4cb7476135d0727b287e54469b435eb032c3756beecf737a4c9a8ee075ace"
   },
   "materials": {
     "asphalt": {
@@ -64,10 +64,16 @@
       "normalStrength": 0.35
     },
     "glass": {
-      "role": "preserve"
+      "role": "preserve",
+      "tilesPerMeter": 1
     },
     "water": {
-      "role": "preserve"
+      "role": "preserve",
+      "tilesPerMeter": 1
+    },
+    "letter": {
+      "role": "preserve",
+      "tilesPerMeter": 1
     },
     "vesper.coping": {
       "role": "surface",
@@ -107,7 +113,7 @@
     }
   },
   "kit": {
-    "directives": 16,
+    "directives": 20,
     "classes": [
       "arch_bridge",
       "framed_bay",
@@ -118,10 +124,10 @@
   },
   "probes": {
     "connectivity": {
-      "nodes": 828,
-      "connected": 820
+      "nodes": 857,
+      "connected": 857
     },
-    "kit": 16,
+    "kit": 20,
     "portals": 3
   },
   "acceptance": "pending Blender master/GLB generation and native import; no mode acceptance inherited"

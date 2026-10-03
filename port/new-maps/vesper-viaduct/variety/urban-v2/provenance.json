@@ -1,8 +1,21 @@
 {
   "id": "vesper-viaduct",
   "revision": "urban-v2",
-  "geometryHash": "64a4b3d44b0055743a7995ac4750ade7f86269efbb552e03597c47ff62ce7af9",
-  "recipeHash": "0a25a2dde064da592cd84b2df5b3fbbaf14f39ec1d1a5eddb66b0fe6c7e86859",
+  "physicalRoutes": {
+    "routes": 26,
+    "failures": [],
+    "baselineDefects": [],
+    "spacing": 0.25,
+    "capsuleRadius": 0.42,
+    "standingHeight": 1.8
+  },
+  "kitCollisionLineage": {
+    "surfaces": 722,
+    "walls": 1206,
+    "source": "source_geometry.py / committed Kit methods / pre-bevel conservative boundary"
+  },
+  "geometryHash": "01ddc671cb0e8471da390d93a1b4dfbba507551ed29a588b249fe761af1a7ef7",
+  "recipeHash": "b2e4cb7476135d0727b287e54469b435eb032c3756beecf737a4c9a8ee075ace",
   "moth": {
     "base": "assets/moth/map-variety-20261003/candidate-v2/manifest.json",
     "baseSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9",
@@ -20,6 +33,7 @@
     "iron",
     "glass",
     "water",
+    "letter",
     "vesper.coping",
     "vesper.brick-era",
     "vesper.quay",
@@ -28,8 +42,8 @@
     "vesper.awning"
   ],
   "connectivity": {
-    "nodes": 828,
-    "connected": 820
+    "nodes": 857,
+    "connected": 857
   },
   "routes": [
     "canal-bridge--100",
@@ -75,12 +89,12 @@
     "retaining-terrace-banks",
     "rooftop-access"
   ],
-  "surfaces": 286,
-  "walls": 2154,
+  "surfaces": 1004,
+  "walls": 3326,
   "structures": 15,
-  "pieces": 338,
-  "navNodes": 828,
-  "kitDirectives": 16,
+  "pieces": 303,
+  "navNodes": 857,
+  "kitDirectives": 20,
   "portals": 3,
   "preservation": {
     "spawns": [

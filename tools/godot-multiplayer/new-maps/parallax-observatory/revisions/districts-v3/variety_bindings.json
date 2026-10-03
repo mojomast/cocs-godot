@@ -6,8 +6,9 @@
     "base": "assets/moth/map-variety-20261003/candidate-v2/manifest.json",
     "overlay": "assets/moth/map-variety-20261003/candidate-v3/manifest.json"
   },
-  "notes": "Astral institute surfaces. All channels linear; albedo stays Non-Color in Blender and is converted to glTF sRGB by the shared adapter. Normals OpenGL +Y.",
+  "notes": "Immutable pack channels are linear. Sol load_materials(root, bindings) derives sRGB albedo images and binds them as sRGB for Blender/glTF; source and derived hashes are separate and export RGB pixels are verified. Normals are Non-Color OpenGL +Y. Exact roles: surface or preserve; unknown roles fail.",
   "materials": {
+    "sea":      {"role": "preserve", "tilesPerMeter": 1},
     "saltstone": {"role": "surface", "resource": "salt-limestone",         "tilesPerMeter": 0.5,  "normalStrength": 0.4},
     "cistern":   {"role": "surface", "resource": "ceramic-enamel",         "tilesPerMeter": 0.5,  "normalStrength": 0.35},
     "metal":     {"role": "surface", "resource": "anodized-brush",         "tilesPerMeter": 0.5,  "normalStrength": 0.3},

@@ -6,7 +6,7 @@
     "base": "assets/moth/map-variety-20261003/candidate-v2/manifest.json",
     "overlay": "assets/moth/map-variety-20261003/candidate-v3/manifest.json"
   },
-  "notes": "Exact GLB material names bound to map-variety-20261003 resource ids. All channels linear; albedo PNG stays linear/Non-Color in Blender and is converted to glTF sRGB by the shared adapter. Normals are OpenGL +Y.",
+  "notes": "Immutable pack channels are linear. Sol load_materials(root, bindings) derives sRGB albedo images and binds them as sRGB for Blender/glTF; source and derived hashes are separate and export RGB pixels are verified. Normals are Non-Color OpenGL +Y. Exact roles: surface or preserve; unknown roles fail.",
   "materials": {
     "botanical":          {"role": "surface", "resource": "moss-lichen",     "tilesPerMeter": 0.5, "normalStrength": 0.35},
     "leaflight":          {"role": "surface", "resource": "moss-warm-weather","tilesPerMeter": 0.5, "normalStrength": 0.3},
@@ -17,8 +17,8 @@
     "gold":               {"role": "surface", "resource": "anodized-brush",  "tilesPerMeter": 0.5, "normalStrength": 0.3},
     "solar":              {"role": "surface", "resource": "prismatic-etch",  "tilesPerMeter": 0.5, "normalStrength": 0.25},
     "verdigris":          {"role": "surface", "resource": "copper-patina",   "tilesPerMeter": 0.5, "normalStrength": 0.4},
-    "glass":              {"role": "preserve"},
-    "water":              {"role": "preserve"},
+    "glass":              {"role": "preserve", "tilesPerMeter": 1},
+    "water":              {"role": "preserve", "tilesPerMeter": 1},
     "helix.grotto-rock":  {"role": "surface", "resource": "grotto-wet-rock", "tilesPerMeter": 0.25, "normalStrength": 0.55},
     "helix.soil":         {"role": "surface", "resource": "moss-lichen",     "tilesPerMeter": 0.25, "normalStrength": 0.45},
     "helix.trim":         {"role": "surface", "resource": "masonry-coping",  "tilesPerMeter": 0.5, "normalStrength": 0.35},

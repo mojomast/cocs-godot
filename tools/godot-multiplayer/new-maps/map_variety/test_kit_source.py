@@ -47,7 +47,7 @@ def check(map_id, out_dir, bindings_path):
     pieces = kit_expander.piece_plan(arena)
     for bucket in list(structures['buckets']) + list(pieces['buckets']):
         assert bucket in allowed, f'{map_id}: unbound structure material {bucket}'
-    total = shell['authorityTriangles'] + structures['triangles'] + pieces['triangles'] + result['summary']['triangles']
+    total = kit_expander.scene_summary(arena, allowed)['sourceSceneTriangles']
     print('OK', map_id, 'ops', result['summary']['ops'], 'kitTri', result['summary']['triangles'],
           'shellTri', shell['authorityTriangles'], 'totalTri', total, 'batches', result['summary']['batches'])
 
@@ -62,7 +62,7 @@ def check_unknown_class_rejected():
 
 def check_adapter_hook_reports_missing():
     try:
-        load_adapter('material_adapter')
+        load_adapter('__deliberately_missing_map_variety_adapter__')
     except MissingAdapter as error:
         assert 'load_materials' in str(error)
         return

@@ -1,8 +1,21 @@
 {
   "id": "helix-conservatory",
   "revision": "revision-3",
-  "geometryHash": "e1e7eb42f1193530df97692a1cd81fcc8aae64286d80bbf8e382b4df8a50b4f4",
-  "recipeHash": "bea8247be47e6240043c4f5e886fb96c003194318c986a04d090873e247a282f",
+  "physicalRoutes": {
+    "routes": 23,
+    "failures": [],
+    "baselineDefects": [],
+    "spacing": 0.25,
+    "capsuleRadius": 0.42,
+    "standingHeight": 1.8
+  },
+  "kitCollisionLineage": {
+    "surfaces": 2092,
+    "walls": 3896,
+    "source": "source_geometry.py / committed Kit methods / pre-bevel conservative boundary"
+  },
+  "geometryHash": "5755ec9fba17d4b88d99d90e1717d86ce5ae9983a5c2bc290a93b5b366585140",
+  "recipeHash": "d0a4936cef7414eb14daedc00f95aaf0263663014572d0314b0d4e112ae48562",
   "moth": {
     "base": "assets/moth/map-variety-20261003/candidate-v2/manifest.json",
     "baseSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9",
@@ -69,8 +82,8 @@
     "north-germination-pavilion",
     "lightwell-specimen-lantern"
   ],
-  "surfaces": 4732,
-  "walls": 3136,
+  "surfaces": 6816,
+  "walls": 6968,
   "navNodes": 2506,
   "kitDirectives": 43,
   "portals": 2,
