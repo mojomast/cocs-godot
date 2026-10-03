@@ -41,6 +41,9 @@ var selection_note := ""
 # Fingerprint of the read-only catalog projection last rendered into the map
 # row. A same-size replacement that changes ids/names/modes still differs here.
 var catalog_fingerprint := ""
+# Observer counter: increments only when room.editable actually changes. A
+# per-frame owner must leave this flat while the role/phase is stable.
+var room_editable_writes := 0
 
 # Catalog access is total: a failed `catalog.open()` leaves the shared entries
 # dictionary empty (and the manifest error on the catalog), so every lookup here
@@ -394,13 +397,20 @@ func on_operator_selected(_index: int) -> void:
 	if operator.disabled: return
 	apply_harness_lock()
 
-func populate_modes() -> void:
+# (Re)build the mode row for the selected map. `preferred` wins when supplied;
+# otherwise the map row never resets a user's mode on an unrelated catalog
+# change: the currently selected mode is kept whenever it is still offered, and
+# only an invalid/absent current mode falls back to the session's mode (or the
+# first offered mode).
+func populate_modes(preferred: String = "") -> void:
+	var keep := preferred if not preferred.is_empty() else str(modes.get_selected_metadata())
+	if keep.is_empty() or keep == "<null>": keep = session.selected_mode
 	modes.clear()
 	var offered := offered_modes(str(maps.get_selected_metadata()))
 	for mode: String in offered:
 		modes.add_item(Setup.MODE_NAMES.get(mode, mode) + (" — pending" if mode not in Setup.MODES else ""))
 		modes.set_item_metadata(modes.item_count - 1, mode)
-		if mode == session.selected_mode: modes.select(modes.item_count - 1)
+		if mode == keep: modes.select(modes.item_count - 1)
 
 # Single owner of the four top-level choice enabled states. Called once per
 # refresh after any catalog reconciliation, and again immediately after a user
@@ -531,7 +541,9 @@ func refresh() -> void:
 	var editable := phase in [-3, -1, -4]
 	# Conditional writes: the per-frame caller only touches a field when its value
 	# actually changed, and the shared choice setters are themselves idempotent.
-	for control: LineEdit in [endpoint, player_name, room]:
+	# `room` is excluded here: it has its own single writer below (guest-only), so
+	# leaving it in this loop would toggle a host field false->true->false.
+	for control: LineEdit in [endpoint, player_name]:
 		if control.editable != editable: control.editable = editable
 	# A live, failed or re-run catalog can invalidate the map row between frames;
 	# reconcile it before a missing/empty entry can reach populate_modes.
@@ -547,8 +559,11 @@ func refresh() -> void:
 	apply_choice_enablement()
 	# Owner of harness.disabled for both states, so a stale lock never sticks.
 	apply_harness_lock()
+	# Sole writer of room.editable for this refresh (guest-only join field).
 	var room_editable := editable and role.selected == 1
-	if room.editable != room_editable: room.editable = room_editable
+	if room.editable != room_editable:
+		room.editable = room_editable
+		room_editable_writes += 1
 	connect_button.visible = editable
 	connect_button.disabled = not editable or not can_launch
 	connect_button.text = "Retry with these settings" if phase == -1 else ("Join lobby" if role.selected == 1 else "Create lobby")

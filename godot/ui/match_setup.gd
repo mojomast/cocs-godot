@@ -50,6 +50,16 @@ func _ready() -> void:
 	resized.connect(center_panel)
 	call_deferred("center_panel")
 
+# Owner-visible catalog update path. configure() captures one fingerprint; if the
+# owner opens or replaces the catalog afterwards, this detects the change and
+# rebuilds the map/mode rows once without any caller invoking the private
+# populate_modes(). It does nothing while unchanged or while the body is
+# dismissed, and is inert before configure() (body is null).
+func _process(_delta: float) -> void:
+	if body == null or not is_inside_tree() or not body.visible: return
+	if catalog_signature() == catalog_fingerprint: return
+	populate_modes(selected_mode())
+
 static func validate(maps: Dictionary, map_id: String, mode: String) -> String:
 	if not maps.has(map_id): return "Unknown locked map: " + map_id
 	var entry: Variant = maps[map_id]
@@ -64,11 +74,13 @@ static func validate(maps: Dictionary, map_id: String, mode: String) -> String:
 	if mode not in MODES: return "Native mode pending: " + mode
 	return ""
 
-# The mode ids the locked catalog actually advertises for one entry. Non-string,
-# empty, over-long or control-bearing elements are dropped, duplicates collapse
-# and order is preserved. This is a read-only projection: a malformed `modes`
-# value never invents a mode and never raises an invalid-dictionary error, and
-# the shared catalog is never mutated.
+# The mode ids the locked catalog actually advertises for one entry. Each value
+# must be a String; `strip_edges()` first removes leading/trailing whitespace
+# (including newlines, so "\nfoo" is accepted as "foo"), then any remaining
+# interior control character rejects the entry. Empty and over-long ids are
+# dropped, duplicates collapse and order is preserved. This accepts exactly what
+# the catalog advertises (registry/standalone/lattice ids are not second-guessed
+# by an allowlist) and never invents a mode. Read-only: the catalog is untouched.
 static func valid_modes(entry: Variant) -> Array:
 	var result: Array = []
 	if not entry is Dictionary: return result
