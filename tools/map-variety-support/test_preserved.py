@@ -98,6 +98,16 @@ class PreservedContractTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             build_entry.verify_png_pixels(source, bytes((64, 0, 255, 0)), decode, srgb=False)
 
+    def test_exported_orm_green_is_immutable_linear_roughness_red(self):
+        decode = lambda data: (2, 1, bytearray(data))
+        source = bytes((139, 139, 139, 255, 41, 41, 41, 255))
+        gltf_orm = bytes((255, 139, 255, 255, 255, 41, 255, 255))
+        self.assertEqual(build_entry.verify_roughness_pixels(source, gltf_orm, decode), 2)
+        with self.assertRaisesRegex(ValueError, 'roughness G'):
+            build_entry.verify_roughness_pixels(source, bytes((255, 70, 255, 255, 255, 41, 255, 255)), decode)
+        with self.assertRaisesRegex(ValueError, 'Missing embedded'):
+            build_entry.verify_roughness_pixels(source, None, decode)
+
     def test_master_packs_before_save_and_reopen_requires_all_images_packed(self):
         order = inspect.getsource(build_entry.run)
         self.assertLess(order.index('bpy.ops.file.pack_all()'), order.index('bpy.ops.wm.save_as_mainfile('))

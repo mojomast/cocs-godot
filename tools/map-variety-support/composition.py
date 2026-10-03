@@ -59,7 +59,11 @@ def _abyssal_author_detail(arena):
     result = []
 
     def box(name, x, y, z, w, h, d, material, sector='legacy-detail'):
-        result.append(g.box_mesh_src(name, (x, y, z), (w, d, h), 0, material, sector, bevel=.008))
+        # Accepted hairline deck seams, thin cladding and instrument keys are
+        # finer than Blender's two-segment bevel would allow: a modifier there
+        # generates zero-area sliver triangles and invalid glTF tangents.
+        bevel = .008 if min(w, h, d) >= .12 else 0
+        result.append(g.box_mesh_src(name, (x, y, z), (w, d, h), 0, material, sector, bevel=bevel))
 
     def beam(name, a, b, radius, material, sector='legacy-detail'):
         result.append(g.pipe_spec(name, [a, b], radius, material, sector, sides=8))

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "bodyClearance": 0.52,
+  "forms": [
+    {
+      "id": "service-cave.0",
+      "deck": {"id": "service-terrace-sw", "x": -94, "z": -96, "w": 36, "d": 10, "y": 6},
+      "retainedSide": "south",
+      "ledge": {"center": [-94, 10.1, -103.4], "size": [32, 3, 0.4], "heading": 0},
+      "fins": {"firstCenter": [-106, 8, -102.3], "step": [5, 0, 0], "count": 6, "size": [0.22, 0.3, 4], "heading": 0}
+    },
+    {
+      "id": "service-cave.1",
+      "deck": {"id": "service-terrace-se", "x": 91, "z": -90, "w": 24, "d": 10, "y": 0},
+      "retainedSide": "east",
+      "ledge": {"center": [105.7, 4.1, -90], "size": [8, 3, 0.4], "heading": 1.5707963267948966},
+      "fins": {"firstCenter": [104.3, 2, -93.125], "step": [0, 0, 1.25], "count": 6, "size": [0.22, 0.3, 4], "heading": 1.5707963267948966}
+    }
+  ]
+}
