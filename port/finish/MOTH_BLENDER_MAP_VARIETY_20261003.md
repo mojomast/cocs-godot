@@ -1,5 +1,13 @@
 # New Moth resources and Blender-authored map variety
 
+**Coastal independent review complete:** Abyssal has one P1—new accessible terrace
+fins/ledges appear solid in the actual export but lack authority collision.
+Stormglass qualifies for staged integration, including actual new-relief clearance
+against all road triangles. The combined bundle remains unmerged. Sol owns a
+source-only Abyssal correction; any rebuilt evidence needs a later grant. Full
+findings, exact rays and acceptance boundaries: `map-variety/COASTAL_T_REVIEW.md`.
+Gallery status is being updated separately without altering original images.
+
 ## Current ownership — botanical U; coastal T released
 
 **`MOTH-BLENDER-20261003-U` is the sole active heavy grant**, Astra
