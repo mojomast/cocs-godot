@@ -7,6 +7,13 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
+**Overnight expansion directive:** the user requested Luna/DeepSeek fan-out and
+substantial implementation progress. Four bounded source-feature lanes are active
+alongside Abyssal production: Home discovery, controls setup, campaign guidance and
+Fighting training feedback. Ownership and integration sequence:
+`OVERNIGHT_20261003.md`. This supersedes the earlier restriction against starting
+additional feature lanes; the exclusive local heavy-slot policy remains in force.
+
 **Requested test build published:** `quiet-relay-fighting-vehicles-preview-2026-10-03`,
 candidate `cb6e4c9f6bff09aafe4d9ef6262c5996a6219329`, Windows/Linux public downloads.
 Focused actual Windows check `37093996218` passed; broader suite retains the Helix
@@ -49,7 +56,8 @@ boundaries.
 All workers run in the background, using existing sessions/checkouts. Source work
 may run in parallel. The parent owns merges, stage transitions, explicit heavy
 grants, rendered review and final publication. No extra speculative feature lanes
-are introduced by this directive.
+are introduced without the user's renewed scope. The subsequent overnight
+directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
