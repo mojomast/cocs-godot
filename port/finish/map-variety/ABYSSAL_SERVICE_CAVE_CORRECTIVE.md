@@ -171,3 +171,38 @@ points move with it, leaving the nav count at 501. The source tests assert
 that bounded diff. **Old V native art cannot certify this new identity**; a
 fresh namespaced master/GLB and stage are required, even if exported triangles
 later happen to match.
+
+### V grant result and review scope
+
+The successor was built **fresh**, under the exclusive V grant, to
+`/tmp/opencode/abyssal-corrective-v2-V-20261003-attempt-1` and selectively
+packaged at `native-V-20261003/abyssal-pressureworks/` for parent review.
+The master SHA-256 is `16e244942c84c810802fa56ec37efca5b39b95f2872d373175d68cc94e48d93f`;
+the GLB SHA-256 is `770c8622f6e9dc401fb6dc5cce4225efc5b930c1a88f29f9f0c324170db07f87`.
+The saved master reopened with **30 packed images** and independently exported
+a **byte-identical** GLB: **47** scene-backed primitives, **229,620** indexed
+triangles, 12 labels, no global hard triangle cap. Export report verifies
+immutable color, normal and roughness pixels and separately authored preserves.
+Actual GLB/source normals agree at all fourteen cave solids.
+
+Native `WorldMap` imported the exact new authority/GLB pair with **no art-owned
+physics**, passed the three historical P1 ray spans, **78** wall jump/body-band
+contacts, **four** clear wall-end crossings and **518** body-clearance samples.
+Nine ramp-adjacent samples used only a measured **0.15 m** lift; all others
+cleared at authored height. Eight paired camera views produced **16** original
+1280×720 PNGs with hash and backend receipts. The rendered stage uses the
+production Binder with a **copy-local candidate preserve-PBR profile** and
+`abyssal_presentation.gd`; no accepted Abyssal profile or WeatherService is
+present in this parent-based checkout. These are neutral stage captures, not
+production-weather approval. See the review gallery and `evidence-hashes.json`
+under the V artifact folder. Old `ee979520…` V attempts 1–5 retain their logs,
+receipts and failure reports there without copying their rejected master/GLB
+into this selective parent artifact set.
+
+Native **P1 inside playable wall/floor contact closure** is supported by the
+new actual GLB + imported-physics probes. Exterior fall/special traversal,
+swept chase camera, hosted journeys and all six final mode outcomes remain
+separate acceptance gates. Parent retains promotion and package inventory.
+Grant V was explicitly released after a nonwaiting lock check and three
+timestamped audits with no surviving V-owned process groups; see
+`grant-release.json`. No heavy process is queued.
