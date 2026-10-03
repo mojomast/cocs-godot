@@ -1,5 +1,39 @@
 # New Moth resources and Blender-authored map variety
 
+## Current checkpoint — U released; corrective Abyssal V active
+
+**`MOTH-BLENDER-20261003-V` is the sole active heavy grant**, Sol
+`ses_efd55bb5cffeJRWNA4xZq8O6cE`. Complete/check the corrective native harness,
+then build/reopen/export/import the reviewed Abyssal correction under a new V
+namespace, with actual-art/shield-wall/finite-body probes and matched captures.
+T evidence stays immutable. No other worker may launch engine/render jobs.
+
+U delivered source fixture `68e3f21e`, precision/export corrections `bdef2baf`,
+and built artifacts `243223d3`. **U released at 2026-10-03T19:47:25.728572Z**.
+Parent verified three timestamped empty audits across 45 owned groups, the
+supervisor-release hash, no current group members, and lock availability at
+19:55:25.974415Z. All **264 artifact hashes/sizes** match. None exceeds 100 MiB.
+Pre-existing viewer/display processes remain untouched.
+
+| U candidate | Actual exported triangles | Delivered disposition |
+|---|---:|---|
+| Helix | 157,166 | Build/reopen, geometry/material/lifecycle proofs, 32,763 capsules and eight matched pairs reported passing; independent artifact review active |
+| Parallax | 155,289 | Build/reopen produced; court-east aperture blocked by actual saltstone wall before native stage |
+| Vesper | 64,383 | Build/reopen produced; actual parapet differs from collision by 5 cm, over the 4 cm gate; native stage blocked |
+
+Triangle overages remain advisory. The U bundle is unmerged. Independent Astra
+`ses_efd0e4deaffeke8j2rdXdxtbbn` is reviewing Helix artifacts/source prerequisites.
+The original producer is correcting Parallax/Vesper in a new source-only branch,
+preserving all failed U artifacts. No blocked-map native acceptance is claimed.
+
+**Helix gallery:** <http://100.125.104.79:8796/helix-u/> — 16 original 1280×720
+PNGs / eight accepted-runtime versus staged-candidate pairs using production
+Binder/Weather. All 32 HTTP/hash checks passed. Parent inspected overview,
+greenhouse and grotto; the reviewer is checking apparently free-ended upper arch
+pieces against their source/actual anchors before classifying that observation.
+Hosted modes, actor/team readability, manual visual acceptance and promotion remain
+pending. The gallery contains no Parallax/Vesper native images.
+
 **Stormglass staged artifact integration:** worker `2ed7a012` is integrated as
 `c5c50a93`, confined to `port/finish/map-variety/stormglass-staged-T-20261003/`.
 Parent verified all 50 inventory hashes, exact original T bytes/subset lineage,
@@ -26,7 +60,7 @@ Gallery status now labels Abyssal **P1 blocked** and Stormglass **staged-qualifi
 All 46 HTTP/hash checks passed; the 30 original PNGs and historical reports remain
 unchanged. Separate record: <http://100.125.104.79:8796/coastal-t/review-status.json>.
 
-## Current ownership — botanical U; coastal T released
+## Historical grant — botanical U; coastal T released
 
 **`MOTH-BLENDER-20261003-U` is the sole active heavy grant**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, for actual Helix, Parallax and Vesper builds,
