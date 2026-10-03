@@ -111,7 +111,12 @@ func _ready() -> void:
 		# Start on the restored destination so keyboard/controller users can
 		# immediately browse and confirm it; categories remain one focus step away.
 		var arrival: Variant = route_buttons.get(str(current_route.get("id", "")))
-		if arrival is Button: arrival.call_deferred("grab_focus")
+		if arrival is Button: call_deferred("focus_arrival", arrival)
+
+func focus_arrival(arrival: Button) -> void:
+	if not is_instance_valid(arrival) or not arrival.is_visible_in_tree(): return
+	if get_viewport().gui_get_focus_owner() != null or SettingsAccess.overlay_open(): return
+	arrival.grab_focus()
 
 func caption(text: String) -> Label:
 	var item := Label.new()
