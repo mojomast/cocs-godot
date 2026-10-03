@@ -1,0 +1,21 @@
+{
+  "map": "stormglass-causeway",
+  "pack": {
+    "base": "assets/moth/map-variety-20261003/candidate-v2/manifest.json",
+    "overlay": "assets/moth/map-variety-20261003/candidate-v3/manifest.json"
+  },
+  "materials": {
+    "salt-limestone": {"role": "surface", "material": "salt-limestone", "normal": true},
+    "basalt-strata": {"role": "surface", "material": "basalt-strata", "normal": true},
+    "quay-damp-horizontal": {"role": "surface", "material": "quay-damp-horizontal", "normal": true},
+    "timber-weather": {"role": "surface", "material": "timber-weather", "normal": true},
+    "moss-warm-weather": {"role": "surface", "material": "moss-warm-weather", "normal": true},
+    "oxidized-iron": {"role": "surface", "material": "oxidized-iron", "normal": true},
+    "ceramic-enamel": {"role": "surface", "material": "ceramic-enamel", "normal": true},
+    "viaduct-asphalt": {"role": "surface", "material": "viaduct-asphalt", "normal": true},
+    "cobble-sett": {"role": "surface", "material": "cobble-sett", "normal": true},
+    "slate-shingle": {"role": "surface", "material": "slate-shingle", "normal": true},
+    "sea-flow": {"role": "surface", "material": "sea-flow", "normal": true},
+    "harbour-glass": {"role": "preserve"}
+  }
+}
