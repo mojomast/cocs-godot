@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "xvfb-run",
+    "-a",
+    "-s",
+    "-screen 0 1280x800x24",
+    "node",
+    "godot/tests/biome_assets/run_inspection.mjs",
+    "--granted"
+  ],
+  "started": "2026-10-03T01:16:55.334214+00:00",
+  "timeoutSeconds": 1560,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/port/expansion-four/scenery/production-f/20261003T011655.333931Z/capture-exterior.log",
+  "processGroup": 759559,
+  "exitCode": 0,
+  "ended": "2026-10-03T01:20:17.541305+00:00",
+  "ownedGroupTeardownRequested": true
+}

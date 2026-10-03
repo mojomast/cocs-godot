@@ -1,0 +1,309 @@
+{
+	"captures": [
+		{
+			"camera": "[X: (0.529368, 0.0, 0.848392), Y: (-0.262863, 0.95079, 0.164018), Z: (-0.806642, -0.309837, 0.503318), O: (-160.0, 43.25048, -59.27273)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 5707143,
+			"drawCalls": 1103.0,
+			"elapsedUsec": 957355,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-heatshield-tower-approach-before.png",
+			"frameSeconds": 0.220079,
+			"objects": 2289.0,
+			"uiScale": 150,
+			"videoMemory": 58707637.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.529368, 0.0, 0.848392), Y: (-0.262863, 0.95079, 0.164018), Z: (-0.806642, -0.309837, 0.503318), O: (-160.0, 43.25048, -59.27273)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 6564305,
+			"drawCalls": 1122.0,
+			"elapsedUsec": 1814517,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-heatshield-tower-approach-after.png",
+			"frameSeconds": 0.279541,
+			"objects": 2308.0,
+			"uiScale": 150,
+			"videoMemory": 58707637.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.529368, 0.0, 0.848392), Y: (-0.262863, 0.95079, 0.164018), Z: (-0.806642, -0.309837, 0.503318), O: (-160.0, 43.25048, -59.27273)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 7413036,
+			"drawCalls": 1122.0,
+			"elapsedUsec": 2663248,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-heatshield-tower-approach-reduced.png",
+			"frameSeconds": 0.28876,
+			"objects": 2308.0,
+			"uiScale": 150,
+			"videoMemory": 58707637.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (-0.037164, 0.0, 0.999309), Y: (-0.34539, 0.938371, -0.012845), Z: (-0.937723, -0.345629, -0.034874), O: (-160.0, 43.59201, -73.81818)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 8404677,
+			"drawCalls": 1496.0,
+			"elapsedUsec": 3654889,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-heatshield-tower-eye-before.png",
+			"frameSeconds": 0.28876,
+			"objects": 2686.0,
+			"uiScale": 150,
+			"videoMemory": 58707637.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (-0.037164, 0.0, 0.999309), Y: (-0.34539, 0.938371, -0.012845), Z: (-0.937723, -0.345629, -0.034874), O: (-160.0, 43.59201, -73.81818)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 9380613,
+			"drawCalls": 1520.0,
+			"elapsedUsec": 4630825,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-heatshield-tower-eye-after.png",
+			"frameSeconds": 0.311193,
+			"objects": 2710.0,
+			"uiScale": 150,
+			"videoMemory": 58707637.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (-0.037164, 0.0, 0.999309), Y: (-0.34539, 0.938371, -0.012845), Z: (-0.937723, -0.345629, -0.034874), O: (-160.0, 43.59201, -73.81818)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 10356214,
+			"drawCalls": 1520.0,
+			"elapsedUsec": 5606426,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-heatshield-tower-eye-reduced.png",
+			"frameSeconds": 0.306878,
+			"objects": 2710.0,
+			"uiScale": 150,
+			"videoMemory": 58707637.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.544257, 0.0, -0.838919), Y: (0.093203, 0.993809, 0.060467), Z: (0.833725, -0.111099, 0.540888), O: (-104.0, 37.5246, 19.27273)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 11001164,
+			"drawCalls": 509.0,
+			"elapsedUsec": 6251376,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-basalt-terrace-approach-before.png",
+			"frameSeconds": 0.30453,
+			"objects": 1722.0,
+			"uiScale": 150,
+			"videoMemory": 58707637.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.544257, 0.0, -0.838919), Y: (0.093203, 0.993809, 0.060467), Z: (0.833725, -0.111099, 0.540888), O: (-104.0, 37.5246, 19.27273)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 11645840,
+			"drawCalls": 524.0,
+			"elapsedUsec": 6896052,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-basalt-terrace-approach-after.png",
+			"frameSeconds": 0.225429,
+			"objects": 1737.0,
+			"uiScale": 150,
+			"videoMemory": 58707637.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.544257, 0.0, -0.838919), Y: (0.093203, 0.993809, 0.060467), Z: (0.833725, -0.111099, 0.540888), O: (-104.0, 37.5246, 19.27273)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 12282769,
+			"drawCalls": 521.0,
+			"elapsedUsec": 7532981,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-basalt-terrace-approach-reduced.png",
+			"frameSeconds": 0.227369,
+			"objects": 1734.0,
+			"uiScale": 150,
+			"videoMemory": 58707637.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (-0.012396, 0.0, -0.999923), Y: (0.121569, 0.992582, -0.001507), Z: (0.992506, -0.121579, -0.012304), O: (-104.0, 37.76131, 4.72727)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 12838024,
+			"drawCalls": 488.0,
+			"elapsedUsec": 8088236,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-basalt-terrace-eye-before.png",
+			"frameSeconds": 0.227369,
+			"objects": 1701.0,
+			"uiScale": 150,
+			"videoMemory": 58707637.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (-0.012396, 0.0, -0.999923), Y: (0.121569, 0.992582, -0.001507), Z: (0.992506, -0.121579, -0.012304), O: (-104.0, 37.76131, 4.72727)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 13405390,
+			"drawCalls": 500.0,
+			"elapsedUsec": 8655602,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-basalt-terrace-eye-after.png",
+			"frameSeconds": 0.220071,
+			"objects": 1713.0,
+			"uiScale": 150,
+			"videoMemory": 58707637.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (-0.012396, 0.0, -0.999923), Y: (0.121569, 0.992582, -0.001507), Z: (0.992506, -0.121579, -0.012304), O: (-104.0, 37.76131, 4.72727)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 13965138,
+			"drawCalls": 496.0,
+			"elapsedUsec": 9215350,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-basalt-terrace-eye-reduced.png",
+			"frameSeconds": 0.220071,
+			"objects": 1709.0,
+			"uiScale": 150,
+			"videoMemory": 58707637.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (-0.937616, 0.0, 0.347673), Y: (-0.076083, 0.975762, -0.205183), Z: (-0.339246, -0.218835, -0.91489), O: (84.59259, 53.25841, 21.62963)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 14715890,
+			"drawCalls": 666.0,
+			"elapsedUsec": 9966102,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-ceramic-exhaust-approach-before.png",
+			"frameSeconds": 0.207043,
+			"objects": 1855.0,
+			"uiScale": 150,
+			"videoMemory": 58707637.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (-0.937616, 0.0, 0.347673), Y: (-0.076083, 0.975762, -0.205183), Z: (-0.339246, -0.218835, -0.91489), O: (84.59259, 53.25841, 21.62963)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 15447661,
+			"drawCalls": 686.0,
+			"elapsedUsec": 10697873,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-ceramic-exhaust-approach-after.png",
+			"frameSeconds": 0.224874,
+			"objects": 1875.0,
+			"uiScale": 150,
+			"videoMemory": 58707637.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (-0.937616, 0.0, 0.347673), Y: (-0.076083, 0.975762, -0.205183), Z: (-0.339246, -0.218835, -0.91489), O: (84.59259, 53.25841, 21.62963)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 16161097,
+			"drawCalls": 686.0,
+			"elapsedUsec": 11411309,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-ceramic-exhaust-approach-reduced.png",
+			"frameSeconds": 0.224874,
+			"objects": 1875.0,
+			"uiScale": 150,
+			"videoMemory": 58707637.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (-0.976689, 0.0, -0.214659), Y: (0.060388, 0.959613, -0.274764), Z: (0.20599, -0.281322, -0.937244), O: (98.66667, 52.83321, 25.33333)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 16849873,
+			"drawCalls": 566.0,
+			"elapsedUsec": 12100085,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-ceramic-exhaust-eye-before.png",
+			"frameSeconds": 0.225751,
+			"objects": 1755.0,
+			"uiScale": 150,
+			"videoMemory": 58707637.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (-0.976689, 0.0, -0.214659), Y: (0.060388, 0.959613, -0.274764), Z: (0.20599, -0.281322, -0.937244), O: (98.66667, 52.83321, 25.33333)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 17539294,
+			"drawCalls": 582.0,
+			"elapsedUsec": 12789506,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-ceramic-exhaust-eye-after.png",
+			"frameSeconds": 0.210085,
+			"objects": 1771.0,
+			"uiScale": 150,
+			"videoMemory": 58707637.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (-0.976689, 0.0, -0.214659), Y: (0.060388, 0.959613, -0.274764), Z: (0.20599, -0.281322, -0.937244), O: (98.66667, 52.83321, 25.33333)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 18222839,
+			"drawCalls": 582.0,
+			"elapsedUsec": 13473051,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-ceramic-exhaust-eye-reduced.png",
+			"frameSeconds": 0.210085,
+			"objects": 1771.0,
+			"uiScale": 150,
+			"videoMemory": 58707637.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.520607, 0.0, 0.853796), Y: (0.0, 1.0, 0.0), Z: (-0.853796, 0.0, 0.520607), O: (-164.0, 37.45, 100.0)]",
+			"cameraKind": "production snapshot camera",
+			"capturedUsec": 19201860,
+			"drawCalls": 2040.0,
+			"elapsedUsec": 14452072,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/source-camera-return.png",
+			"frameSeconds": 0.212455,
+			"objects": 2244.0,
+			"uiScale": 150,
+			"videoMemory": 55550505.0,
+			"viewport": [
+				760,
+				520
+			]
+		}
+	],
+	"evidence": "staged production-session art inspection"
+}

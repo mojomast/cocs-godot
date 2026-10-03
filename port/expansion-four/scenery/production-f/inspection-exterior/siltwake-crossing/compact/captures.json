@@ -1,0 +1,309 @@
+{
+	"captures": [
+		{
+			"camera": "[X: (0.997056, 0.0, 0.076678), Y: (-0.014416, 0.982168, 0.187454), Z: (-0.07531, -0.188007, 0.979276), O: (-11.0, 23.15793, 85.0)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 5105157,
+			"drawCalls": 1950.0,
+			"elapsedUsec": 1001498,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-strata-wheelhouse-approach-before.png",
+			"frameSeconds": 0.222587,
+			"objects": 3167.0,
+			"uiScale": 150,
+			"videoMemory": 57657235.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.997056, 0.0, 0.076678), Y: (-0.014416, 0.982168, 0.187454), Z: (-0.07531, -0.188007, 0.979276), O: (-11.0, 23.15793, 85.0)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 5999825,
+			"drawCalls": 1997.0,
+			"elapsedUsec": 1896166,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-strata-wheelhouse-approach-after.png",
+			"frameSeconds": 0.290629,
+			"objects": 3214.0,
+			"uiScale": 150,
+			"videoMemory": 57657235.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.997056, 0.0, 0.076678), Y: (-0.014416, 0.982168, 0.187454), Z: (-0.07531, -0.188007, 0.979276), O: (-11.0, 23.15793, 85.0)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 6902443,
+			"drawCalls": 1987.0,
+			"elapsedUsec": 2798784,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-strata-wheelhouse-approach-reduced.png",
+			"frameSeconds": 0.301815,
+			"objects": 3204.0,
+			"uiScale": 150,
+			"videoMemory": 57657235.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.880471, 0.0, -0.4741), Y: (0.096362, 0.979126, 0.178959), Z: (0.464204, -0.203253, 0.862092), O: (2.0, 23.61522, 78.0)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 7752176,
+			"drawCalls": 1670.0,
+			"elapsedUsec": 3648517,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-strata-wheelhouse-eye-before.png",
+			"frameSeconds": 0.294885,
+			"objects": 2887.0,
+			"uiScale": 150,
+			"videoMemory": 57657235.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.880471, 0.0, -0.4741), Y: (0.096362, 0.979126, 0.178959), Z: (0.464204, -0.203253, 0.862092), O: (2.0, 23.61522, 78.0)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 8611746,
+			"drawCalls": 1717.0,
+			"elapsedUsec": 4508087,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-strata-wheelhouse-eye-after.png",
+			"frameSeconds": 0.282047,
+			"objects": 2934.0,
+			"uiScale": 150,
+			"videoMemory": 57657235.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.880471, 0.0, -0.4741), Y: (0.096362, 0.979126, 0.178959), Z: (0.464204, -0.203253, 0.862092), O: (2.0, 23.61522, 78.0)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 9511890,
+			"drawCalls": 1708.0,
+			"elapsedUsec": 5408231,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-strata-wheelhouse-eye-reduced.png",
+			"frameSeconds": 0.287319,
+			"objects": 2925.0,
+			"uiScale": 150,
+			"videoMemory": 57657235.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.982904, 0.0, 0.18412), Y: (-0.012432, 0.997718, 0.066366), Z: (-0.1837, -0.06752, 0.980661), O: (-24.0, 22.99694, 92.0)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 10406568,
+			"drawCalls": 2005.0,
+			"elapsedUsec": 6302909,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-sluice-bank-approach-before.png",
+			"frameSeconds": 0.300377,
+			"objects": 3222.0,
+			"uiScale": 150,
+			"videoMemory": 57657235.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.982904, 0.0, 0.18412), Y: (-0.012432, 0.997718, 0.066366), Z: (-0.1837, -0.06752, 0.980661), O: (-24.0, 22.99694, 92.0)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 11326568,
+			"drawCalls": 2052.0,
+			"elapsedUsec": 7222909,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-sluice-bank-approach-after.png",
+			"frameSeconds": 0.300377,
+			"objects": 3269.0,
+			"uiScale": 150,
+			"videoMemory": 57657235.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.982904, 0.0, 0.18412), Y: (-0.012432, 0.997718, 0.066366), Z: (-0.1837, -0.06752, 0.980661), O: (-24.0, 22.99694, 92.0)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 12248073,
+			"drawCalls": 2043.0,
+			"elapsedUsec": 8144414,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-sluice-bank-approach-reduced.png",
+			"frameSeconds": 0.310034,
+			"objects": 3260.0,
+			"uiScale": 150,
+			"videoMemory": 57657235.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.874202, 0.0, -0.485562), Y: (0.037769, 0.99697, 0.067999), Z: (0.484091, -0.077785, 0.871554), O: (-11.0, 23.15793, 85.0)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 13057336,
+			"drawCalls": 1525.0,
+			"elapsedUsec": 8953677,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-sluice-bank-eye-before.png",
+			"frameSeconds": 0.302601,
+			"objects": 2742.0,
+			"uiScale": 150,
+			"videoMemory": 57657235.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.874202, 0.0, -0.485562), Y: (0.037769, 0.99697, 0.067999), Z: (0.484091, -0.077785, 0.871554), O: (-11.0, 23.15793, 85.0)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 13888297,
+			"drawCalls": 1553.0,
+			"elapsedUsec": 9784638,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-sluice-bank-eye-after.png",
+			"frameSeconds": 0.285223,
+			"objects": 2770.0,
+			"uiScale": 150,
+			"videoMemory": 57657235.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.874202, 0.0, -0.485562), Y: (0.037769, 0.99697, 0.067999), Z: (0.484091, -0.077785, 0.871554), O: (-11.0, 23.15793, 85.0)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 14717671,
+			"drawCalls": 1549.0,
+			"elapsedUsec": 10614012,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-sluice-bank-eye-reduced.png",
+			"frameSeconds": 0.285486,
+			"objects": 2766.0,
+			"uiScale": 150,
+			"videoMemory": 57657235.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.979908, 0.0, 0.19945), Y: (0.02796, 0.990125, -0.13737), Z: (-0.197481, 0.140187, 0.970231), O: (2.0, 23.61522, 78.0)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 15612925,
+			"drawCalls": 1869.0,
+			"elapsedUsec": 11509266,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-flood-abutment-approach-before.png",
+			"frameSeconds": 0.287515,
+			"objects": 3059.0,
+			"uiScale": 150,
+			"videoMemory": 57657235.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.979908, 0.0, 0.19945), Y: (0.02796, 0.990125, -0.13737), Z: (-0.197481, 0.140187, 0.970231), O: (2.0, 23.61522, 78.0)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 16484806,
+			"drawCalls": 1916.0,
+			"elapsedUsec": 12381147,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-flood-abutment-approach-after.png",
+			"frameSeconds": 0.28212,
+			"objects": 3106.0,
+			"uiScale": 150,
+			"videoMemory": 57657235.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.979908, 0.0, 0.19945), Y: (0.02796, 0.990125, -0.13737), Z: (-0.197481, 0.140187, 0.970231), O: (2.0, 23.61522, 78.0)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 17364134,
+			"drawCalls": 1906.0,
+			"elapsedUsec": 13260475,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-flood-abutment-approach-reduced.png",
+			"frameSeconds": 0.28212,
+			"objects": 3096.0,
+			"uiScale": 150,
+			"videoMemory": 57657235.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.88659, 0.0, -0.462557), Y: (-0.096103, 0.978179, -0.184202), Z: (0.452463, 0.207764, 0.867243), O: (15.0, 24.12128, 71.0)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 18184510,
+			"drawCalls": 1692.0,
+			"elapsedUsec": 14080851,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-flood-abutment-eye-before.png",
+			"frameSeconds": 0.292815,
+			"objects": 2882.0,
+			"uiScale": 150,
+			"videoMemory": 57657235.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.88659, 0.0, -0.462557), Y: (-0.096103, 0.978179, -0.184202), Z: (0.452463, 0.207764, 0.867243), O: (15.0, 24.12128, 71.0)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 19021664,
+			"drawCalls": 1736.0,
+			"elapsedUsec": 14918005,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-flood-abutment-eye-after.png",
+			"frameSeconds": 0.277217,
+			"objects": 2926.0,
+			"uiScale": 150,
+			"videoMemory": 57657235.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (0.88659, 0.0, -0.462557), Y: (-0.096103, 0.978179, -0.184202), Z: (0.452463, 0.207764, 0.867243), O: (15.0, 24.12128, 71.0)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 19856467,
+			"drawCalls": 1727.0,
+			"elapsedUsec": 15752808,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-flood-abutment-eye-reduced.png",
+			"frameSeconds": 0.282147,
+			"objects": 2917.0,
+			"uiScale": 150,
+			"videoMemory": 57657235.0,
+			"viewport": [
+				760,
+				520
+			]
+		},
+		{
+			"camera": "[X: (-0.564684, 0.0, 0.825307), Y: (0.0, 1.0, 0.0), Z: (-0.825307, 0.0, -0.564684), O: (-152.0, 19.45, -104.0)]",
+			"cameraKind": "production snapshot camera",
+			"capturedUsec": 20573966,
+			"drawCalls": 1651.0,
+			"elapsedUsec": 16470307,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/source-camera-return.png",
+			"frameSeconds": 0.288415,
+			"objects": 1855.0,
+			"uiScale": 150,
+			"videoMemory": 54500103.0,
+			"viewport": [
+				760,
+				520
+			]
+		}
+	],
+	"evidence": "staged production-session art inspection"
+}

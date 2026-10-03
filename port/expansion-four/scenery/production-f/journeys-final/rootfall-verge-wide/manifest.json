@@ -1,0 +1,97 @@
+[
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/home-return.png",
+    "sha256": "a46f9d769dfcc33579c0e51e0a3d4ade93a5ecee8523be42d432da4d6d1f1422",
+    "bytes": 199260
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/home.json",
+    "sha256": "26a35412a22a7f56fc8dbff7b8760d86ef2734d800f837889a9139582bec01b2",
+    "bytes": 125
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/home.log",
+    "sha256": "a9df59af7b541e4cfa91a501f58d43665ded378e8014b3995bae70868c9f8b02",
+    "bytes": 470
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/journey.json",
+    "sha256": "ff446444c01e3ab721bba82f66c595cb93c2788449279d94904b206ab9e181f7",
+    "bytes": 232590
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/native-live.log",
+    "sha256": "80c59f980821a0e3ffb991893c66dd25435b7bc695062e329aa607b65281b7c0",
+    "bytes": 5504926
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/native.log",
+    "sha256": "80c59f980821a0e3ffb991893c66dd25435b7bc695062e329aa607b65281b7c0",
+    "bytes": 5504926
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/ordinary-combat-0.0.png",
+    "sha256": "0374dc1be308423db9475131bb58795b34e3d81ee0a44806d12cdf6dbe560d6c",
+    "bytes": 875470
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/ordinary-combat-1.0.png",
+    "sha256": "a616ae6d32cedb302d806be6c8eadb2db101f9ed2304dee15bd5b18777f0180a",
+    "bytes": 894819
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/ordinary-combat-2.0.png",
+    "sha256": "8d6f6854c4098f218e8eb45be3b98d54aa6211734c4fb896063c69851f67747e",
+    "bytes": 960451
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/plan.json",
+    "sha256": "f836b87bba216bab835cad6bd16808507d5a1be9ab202bc9035e3aa8fe010633",
+    "bytes": 42710
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/source-camera-return.png",
+    "sha256": "7bdc853fdccedf69d2e80d3074f9c0f33adb66692340ebcdc17e822e226e0a93",
+    "bytes": 870860
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/stage-0032.png",
+    "sha256": "ebd89a77b85feecc68a7640199de423ff72b40866d82b9f7e007808e8e479e40",
+    "bytes": 893782
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/stage-0060.png",
+    "sha256": "8334a30478abf3becfbe708a7f231138588bd232938422366f3b8aff4db99cc5",
+    "bytes": 703510
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/stage-0071.png",
+    "sha256": "40ae03134fd2b2f14ddf8e7ad63f0bb6a2d76b5c01f60a2fa7319b2c31c17f69",
+    "bytes": 717501
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/stage-0139.png",
+    "sha256": "1842ce6558fcabcd4325e294bfaae5d99f889278ae7c08b1828bf7a98ddb63a3",
+    "bytes": 903373
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/stage-0206.png",
+    "sha256": "962ec48a495cb60b40371c6ea5c049864e52fcf165d2bad6bdfbaf2b0d11ec4f",
+    "bytes": 889129
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/stage-0230.png",
+    "sha256": "889893f979e649d6358f57040310c955d9a1268a412d8a567f6e7392f7b59cae",
+    "bytes": 948606
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/start.png",
+    "sha256": "31a1e55891211f1d3703cc5861aed02c7508e53ce012635f62d64d3508da17aa",
+    "bytes": 758186
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-43-53.731Z-rootfall-verge/witness.json",
+    "sha256": "3ab2e87fa5cf338a02194cfe52f9685ce8ce2b234d88c81490b559b9e473a8dc",
+    "bytes": 178883
+  }
+]

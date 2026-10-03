@@ -1,0 +1,165 @@
+{
+	"captures": [
+		{
+			"camera": "[X: (0.999996, 0.0, -0.002924), Y: (0.001288, 0.897821, 0.440359), Z: (0.002626, -0.440361, 0.897817), O: (-101.7596, 10.60711, -11.48755)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 6019630,
+			"drawCalls": 1065.0,
+			"elapsedUsec": 1260792,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/rootfall-verge/wide/rootfall-canopy-relay-architecture-before.png",
+			"frameSeconds": 0.274504,
+			"objects": 2298.0,
+			"uiScale": 100,
+			"videoMemory": 68357929.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (0.999996, 0.0, -0.002924), Y: (0.001288, 0.897821, 0.440359), Z: (0.002626, -0.440361, 0.897817), O: (-101.7596, 10.60711, -11.48755)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 7183931,
+			"drawCalls": 1077.0,
+			"elapsedUsec": 2425093,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/rootfall-verge/wide/rootfall-canopy-relay-architecture-after.png",
+			"frameSeconds": 0.4136,
+			"objects": 2310.0,
+			"uiScale": 100,
+			"videoMemory": 68357929.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (0.999996, 0.0, -0.002924), Y: (0.001288, 0.897821, 0.440359), Z: (0.002626, -0.440361, 0.897817), O: (-101.7596, 10.60711, -11.48755)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 8350895,
+			"drawCalls": 1077.0,
+			"elapsedUsec": 3592057,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/rootfall-verge/wide/rootfall-canopy-relay-architecture-reduced.png",
+			"frameSeconds": 0.413833,
+			"objects": 2310.0,
+			"uiScale": 100,
+			"videoMemory": 68357929.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (-0.920582, 0.0, 0.390549), Y: (0.003239, 0.999966, 0.007634), Z: (-0.390536, 0.008292, -0.92055), O: (140.9708, 8.94343, -39.09555)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 9234569,
+			"drawCalls": 510.0,
+			"elapsedUsec": 4475731,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/rootfall-verge/wide/rootfall-root-archive-architecture-before.png",
+			"frameSeconds": 0.417172,
+			"objects": 1719.0,
+			"uiScale": 100,
+			"videoMemory": 68357929.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (-0.920582, 0.0, 0.390549), Y: (0.003239, 0.999966, 0.007634), Z: (-0.390536, 0.008292, -0.92055), O: (140.9708, 8.94343, -39.09555)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 10121935,
+			"drawCalls": 520.0,
+			"elapsedUsec": 5363097,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/rootfall-verge/wide/rootfall-root-archive-architecture-after.png",
+			"frameSeconds": 0.37444,
+			"objects": 1729.0,
+			"uiScale": 100,
+			"videoMemory": 68357929.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (-0.920582, 0.0, 0.390549), Y: (0.003239, 0.999966, 0.007634), Z: (-0.390536, 0.008292, -0.92055), O: (140.9708, 8.94343, -39.09555)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 11009412,
+			"drawCalls": 515.0,
+			"elapsedUsec": 6250574,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/rootfall-verge/wide/rootfall-root-archive-architecture-reduced.png",
+			"frameSeconds": 0.382061,
+			"objects": 1724.0,
+			"uiScale": 100,
+			"videoMemory": 68357929.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (-0.998977, 0.0, 0.045221), Y: (-0.025393, 0.827452, -0.560961), Z: (-0.037418, -0.561536, -0.826606), O: (23.84355, 7.92409, -55.892)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 12314540,
+			"drawCalls": 1210.0,
+			"elapsedUsec": 7555702,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/rootfall-verge/wide/rootfall-root-buttress-architecture-before.png",
+			"frameSeconds": 0.380647,
+			"objects": 2417.0,
+			"uiScale": 100,
+			"videoMemory": 68357929.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (-0.998977, 0.0, 0.045221), Y: (-0.025393, 0.827452, -0.560961), Z: (-0.037418, -0.561536, -0.826606), O: (23.84355, 7.92409, -55.892)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 13513746,
+			"drawCalls": 1216.0,
+			"elapsedUsec": 8754908,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/rootfall-verge/wide/rootfall-root-buttress-architecture-after.png",
+			"frameSeconds": 0.352281,
+			"objects": 2423.0,
+			"uiScale": 100,
+			"videoMemory": 68357929.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (-0.998977, 0.0, 0.045221), Y: (-0.025393, 0.827452, -0.560961), Z: (-0.037418, -0.561536, -0.826606), O: (23.84355, 7.92409, -55.892)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 14702144,
+			"drawCalls": 1216.0,
+			"elapsedUsec": 9943306,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/rootfall-verge/wide/rootfall-root-buttress-architecture-reduced.png",
+			"frameSeconds": 0.282627,
+			"objects": 2423.0,
+			"uiScale": 100,
+			"videoMemory": 68357929.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (-0.514496, 0.0, 0.857493), Y: (0.0, 1.0, 0.0), Z: (-0.857493, 0.0, -0.514496), O: (-140.0, 5.45, -84.0)]",
+			"cameraKind": "production snapshot camera",
+			"capturedUsec": 15932344,
+			"drawCalls": 1790.0,
+			"elapsedUsec": 11173506,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/rootfall-verge/wide/source-camera-return.png",
+			"frameSeconds": 0.355873,
+			"objects": 3024.0,
+			"uiScale": 100,
+			"videoMemory": 68357929.0,
+			"viewport": [
+				1280,
+				800
+			]
+		}
+	],
+	"evidence": "staged production-session art inspection"
+}

@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender",
+    "--python-exit-code",
+    "1",
+    "-b",
+    "-t",
+    "1",
+    "--python",
+    "tools/godot-biomes/expansion/reopen.py"
+  ],
+  "started": "2026-10-03T01:38:51.626110+00:00",
+  "timeoutSeconds": 300,
+  "log": "port/expansion-four/scenery/production-f/20261003T013851.515191Z/reopen-original.log",
+  "processGroup": 826763,
+  "exitCode": 0,
+  "ended": "2026-10-03T01:38:51.940494+00:00",
+  "ownedGroupTeardownRequested": true
+}

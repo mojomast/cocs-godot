@@ -1,0 +1,892 @@
+{
+  "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z",
+  "files": [
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/captures.json",
+      "sha256": "0788e6285bd45480b3bb13c2edd3ccce1b64ff24827bdbfe80e1940bd4e93116",
+      "bytes": 11771
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/crown-ceramic-lightwell-approach-after.png",
+      "sha256": "deda264d892efd0bd450c2059b93b05c80031d92c4d906aeb9b8c33b11d1228c",
+      "bytes": 415653
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/crown-ceramic-lightwell-approach-before.png",
+      "sha256": "735cd184df7f28c8b69dafbb205e35798be8ff34bb45b7e27c609e05b32557c4",
+      "bytes": 415312
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/crown-ceramic-lightwell-approach-reduced.png",
+      "sha256": "deda264d892efd0bd450c2059b93b05c80031d92c4d906aeb9b8c33b11d1228c",
+      "bytes": 415653
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/crown-ceramic-lightwell-eye-after.png",
+      "sha256": "cbb307c617f587530a61e40bfa3e14450af1eeba0d52454f5c8badfad1fbb6af",
+      "bytes": 403516
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/crown-ceramic-lightwell-eye-before.png",
+      "sha256": "41164c95d83a54dc8a1db30eb34de179d3ed3705f33e648efab976eafc58d3e6",
+      "bytes": 403276
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/crown-ceramic-lightwell-eye-reduced.png",
+      "sha256": "cbb307c617f587530a61e40bfa3e14450af1eeba0d52454f5c8badfad1fbb6af",
+      "bytes": 403516
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/crown-faceted-antenna-approach-after.png",
+      "sha256": "5393c328240a5232cd210a9ad807d1f4c05ce5262cff07daf80031ab2fca2f86",
+      "bytes": 468702
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/crown-faceted-antenna-approach-before.png",
+      "sha256": "64d0b3a192d03afca1849e92fe5a8cc14f3239cf84168b4f915f4df3d0f6d2ea",
+      "bytes": 468404
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/crown-faceted-antenna-approach-reduced.png",
+      "sha256": "5393c328240a5232cd210a9ad807d1f4c05ce5262cff07daf80031ab2fca2f86",
+      "bytes": 468702
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/crown-faceted-antenna-eye-after.png",
+      "sha256": "fb42cd8d6d339a595e85154fdf46b7f3c7a5c29e007219f4dff5095e39c9204b",
+      "bytes": 424825
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/crown-faceted-antenna-eye-before.png",
+      "sha256": "264588c5ceafcd75e4117b70bc1451e75e5e5432dc26468e74f223f494813e9c",
+      "bytes": 424271
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/crown-faceted-antenna-eye-reduced.png",
+      "sha256": "fb42cd8d6d339a595e85154fdf46b7f3c7a5c29e007219f4dff5095e39c9204b",
+      "bytes": 424825
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/crown-folio-archive-approach-after.png",
+      "sha256": "a2f8deaba8fd9ad641fac840657d1346dc1ced1a96f804fe95f11519ea1d3fd5",
+      "bytes": 437322
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/crown-folio-archive-approach-before.png",
+      "sha256": "080082c0501df2eb2e99fe69883429af57e099272c88c2a5651f9b22c2b93e9c",
+      "bytes": 437153
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/crown-folio-archive-approach-reduced.png",
+      "sha256": "9679322ade97da1ed09a86456175947a4534ec9233685813251a7b12172f50d8",
+      "bytes": 437361
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/crown-folio-archive-eye-after.png",
+      "sha256": "c5690968996b101036741de5a67639260eaff342c78f9089289c9859c0d04c5b",
+      "bytes": 384804
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/crown-folio-archive-eye-before.png",
+      "sha256": "cde345c5e3585e5f51a2c4bee529d67764f39f566eef0ead02907e93df4a8591",
+      "bytes": 384316
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/crown-folio-archive-eye-reduced.png",
+      "sha256": "d60e59301f3a1954f61e4a4389dbca528d860b5f1afb6273bbcacd3f6cb81fe7",
+      "bytes": 384488
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/native.log",
+      "sha256": "7d736ef709f498353bb42273ac556e9948b7eb6ce89f19bb90657a5ca00c5cad",
+      "bytes": 375
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/resources.json",
+      "sha256": "6685f779cf39d3a32272e870ec8651580372791e364c27e80c8f5355570db8d2",
+      "bytes": 303
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/compact/source-camera-return.png",
+      "sha256": "f32a1b919585fb26c5dbef04696c4baf1e4caa5dbc4fd3e4c5bf1d5dba7b5a7d",
+      "bytes": 203139
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/captures.json",
+      "sha256": "5f232b4d4bacf76ce7d6f8684fd478377c7e7d02700a99eecc6eff4a942491f4",
+      "bytes": 11739
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/crown-ceramic-lightwell-approach-after.png",
+      "sha256": "8f4f48e5ec8e97cbf481b3d5e9ded9cc3de39c6824ed581091fd7b3efc793f77",
+      "bytes": 803050
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/crown-ceramic-lightwell-approach-before.png",
+      "sha256": "5e8bfc14d3be4a3dfe291fbfa9e5fe8236b23df1368aa4bc6fa34baf3db50187",
+      "bytes": 802684
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/crown-ceramic-lightwell-approach-reduced.png",
+      "sha256": "8f4f48e5ec8e97cbf481b3d5e9ded9cc3de39c6824ed581091fd7b3efc793f77",
+      "bytes": 803050
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/crown-ceramic-lightwell-eye-after.png",
+      "sha256": "cff71ba7d019b5779acd7a1aa4a005c352efeafacd30ab35ad87600d1fcc45d5",
+      "bytes": 768415
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/crown-ceramic-lightwell-eye-before.png",
+      "sha256": "89cc3cae78fe13523744510722c8f8541212c242844a64affcbd0f1ecf83527e",
+      "bytes": 768019
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/crown-ceramic-lightwell-eye-reduced.png",
+      "sha256": "cff71ba7d019b5779acd7a1aa4a005c352efeafacd30ab35ad87600d1fcc45d5",
+      "bytes": 768415
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/crown-faceted-antenna-approach-after.png",
+      "sha256": "73096bf009fd28a4e587ab1dd2aa8671174eb106f7185da917f2eb028cb6b79a",
+      "bytes": 938012
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/crown-faceted-antenna-approach-before.png",
+      "sha256": "e1f3ab4375e4f2024c38e6c0283a9414235a3dd5ec2deff96607c7cc62afc050",
+      "bytes": 937615
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/crown-faceted-antenna-approach-reduced.png",
+      "sha256": "73096bf009fd28a4e587ab1dd2aa8671174eb106f7185da917f2eb028cb6b79a",
+      "bytes": 938012
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/crown-faceted-antenna-eye-after.png",
+      "sha256": "2be472ab208f65529cc6d2b9d4c71570e25355d1ab51ecd590c0a618eb0fa87a",
+      "bytes": 817349
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/crown-faceted-antenna-eye-before.png",
+      "sha256": "db438dfc0ac866fb4b14c999576f06178e52c111c89ae1cc8896f6673b247686",
+      "bytes": 815952
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/crown-faceted-antenna-eye-reduced.png",
+      "sha256": "2be472ab208f65529cc6d2b9d4c71570e25355d1ab51ecd590c0a618eb0fa87a",
+      "bytes": 817349
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/crown-folio-archive-approach-after.png",
+      "sha256": "615b17a6db72da0c8eac9f6b61f2b2b86be9aba580d8ef10a2d9150ae74da519",
+      "bytes": 852098
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/crown-folio-archive-approach-before.png",
+      "sha256": "c5b11e409204a6c01ec41a62a13300fe80d2fc331832cd2e55348d660a54eb6c",
+      "bytes": 852018
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/crown-folio-archive-approach-reduced.png",
+      "sha256": "adb1e2b01f57f02d48425778d37e93a3a52c96a7502d33f40d47e3b40e93151b",
+      "bytes": 852470
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/crown-folio-archive-eye-after.png",
+      "sha256": "6b5157289c2e217c1343e9d9d50d18706c52c893a4c8ee772488d41128db98b4",
+      "bytes": 708788
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/crown-folio-archive-eye-before.png",
+      "sha256": "c617d6c8325949f752bc9071a6682f6d7b07a189941ef9c6e9df277b497b1c8b",
+      "bytes": 707963
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/crown-folio-archive-eye-reduced.png",
+      "sha256": "1addef6c8e10cf3f105758115802b0cc7b92863c7bff9bad9079d3a68cec42b9",
+      "bytes": 708498
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/native.log",
+      "sha256": "7d736ef709f498353bb42273ac556e9948b7eb6ce89f19bb90657a5ca00c5cad",
+      "bytes": 375
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/resources.json",
+      "sha256": "d4ebc18914f74a30ca856d61bc9970c25bce1aba67e607eabaad19ae7e9d067f",
+      "bytes": 303
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/crown-array/wide/source-camera-return.png",
+      "sha256": "da1b8169a0b113895c28eea06648be34a2034afc57fb1371336f1f4b8320544e",
+      "bytes": 645967
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/captures.json",
+      "sha256": "812b71d267be0aad9f05625a9f0a15327ea0edde1caa8c8479aa0aafb3dfb52d",
+      "bytes": 11968
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-basalt-terrace-approach-after.png",
+      "sha256": "be67baf0ccc97785461084abc561e57cd65746680b6588dba11e3c2a9d87441f",
+      "bytes": 443708
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-basalt-terrace-approach-before.png",
+      "sha256": "fc30b6add5ec92a5a5f468fa8fed1050e7362309620c3a9dcf7c8a44ffa0262c",
+      "bytes": 443602
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-basalt-terrace-approach-reduced.png",
+      "sha256": "be67baf0ccc97785461084abc561e57cd65746680b6588dba11e3c2a9d87441f",
+      "bytes": 443708
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-basalt-terrace-eye-after.png",
+      "sha256": "b1f6fb5039a1f46448b8f0e5a4270302df7c247d480bbddc38a51184eed14827",
+      "bytes": 430238
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-basalt-terrace-eye-before.png",
+      "sha256": "5b2c1e997d1dc141dfc1d14851b721e7fd9f847270b34d1537900601e0d37be7",
+      "bytes": 430110
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-basalt-terrace-eye-reduced.png",
+      "sha256": "b1f6fb5039a1f46448b8f0e5a4270302df7c247d480bbddc38a51184eed14827",
+      "bytes": 430238
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-ceramic-exhaust-approach-after.png",
+      "sha256": "4cedd61ba4cd5a4a93e61aec90bb6611e22157912ee4618af3d907e498561e86",
+      "bytes": 330014
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-ceramic-exhaust-approach-before.png",
+      "sha256": "194e441fa96c7e2d2bf5226c768cad55ee3ce889c7f7bbb899da6422fc351571",
+      "bytes": 329688
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-ceramic-exhaust-approach-reduced.png",
+      "sha256": "55645cad4bb64d54b69f4061703a00fffa40e196c11e33423e96fc2827d7321c",
+      "bytes": 329950
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-ceramic-exhaust-eye-after.png",
+      "sha256": "f2c32e8dadb7381feb38e9b2814e35de5930ac8ecc6a2fd0c7a6c43693e6875f",
+      "bytes": 311285
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-ceramic-exhaust-eye-before.png",
+      "sha256": "64dd10705c2a2b3e3ed21e59cb7d0d9dfd72e606208d912c8542ca1cd4c98516",
+      "bytes": 310658
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-ceramic-exhaust-eye-reduced.png",
+      "sha256": "cf1ae735b5bad812ca7dbf42f2396df70ee7aa1bbfe95e32f17566db2657ddb4",
+      "bytes": 311268
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-heatshield-tower-approach-after.png",
+      "sha256": "9340f8c48c35d0667fdc79c462170554c39fa7e2eb7a0d447fe5d20484406ebd",
+      "bytes": 462805
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-heatshield-tower-approach-before.png",
+      "sha256": "1c08239fc76701b42628fb5073f249f2e9bbb71e484f3a3e93447a42a1b1835f",
+      "bytes": 462557
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-heatshield-tower-approach-reduced.png",
+      "sha256": "9340f8c48c35d0667fdc79c462170554c39fa7e2eb7a0d447fe5d20484406ebd",
+      "bytes": 462805
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-heatshield-tower-eye-after.png",
+      "sha256": "cf1e511566ae5ee9aed6648290a2e04c9c799c67b64b4752c98db8027897cf65",
+      "bytes": 450124
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-heatshield-tower-eye-before.png",
+      "sha256": "c467f56021b3a574fcd4c2e027e5bd828c7f9f62083ef957dc423085cb63578e",
+      "bytes": 449904
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/emberline-heatshield-tower-eye-reduced.png",
+      "sha256": "cf1e511566ae5ee9aed6648290a2e04c9c799c67b64b4752c98db8027897cf65",
+      "bytes": 450124
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/native.log",
+      "sha256": "7d736ef709f498353bb42273ac556e9948b7eb6ce89f19bb90657a5ca00c5cad",
+      "bytes": 375
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/resources.json",
+      "sha256": "0ab228eef95b899c61bb4f660690f3923be968800b99e7eb546fb1d2487a47c9",
+      "bytes": 303
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/compact/source-camera-return.png",
+      "sha256": "08e3ddbab16b1e5398c7eb9ca43fd7f22cc91497706cfddfb9024098a71a031b",
+      "bytes": 183898
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/captures.json",
+      "sha256": "3c29fce77e107ae35f71d9eb7cc57fbed75794c50f766bd154bd469a87f567ea",
+      "bytes": 11940
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/emberline-basalt-terrace-approach-after.png",
+      "sha256": "0256b5223a56f31536986a8cc35f5b0629d30787ef9c08f86a5b9ba62009fdfd",
+      "bytes": 894077
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/emberline-basalt-terrace-approach-before.png",
+      "sha256": "fdaf9e6170712648699079cffa9cf870709b3c30637f2880f74cb25f9fb466e5",
+      "bytes": 893728
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/emberline-basalt-terrace-approach-reduced.png",
+      "sha256": "0256b5223a56f31536986a8cc35f5b0629d30787ef9c08f86a5b9ba62009fdfd",
+      "bytes": 894077
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/emberline-basalt-terrace-eye-after.png",
+      "sha256": "66da32a5606cd8fdf3e46d130bb1601825947f5bc37c7d2633ea3d1449ff492a",
+      "bytes": 870019
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/emberline-basalt-terrace-eye-before.png",
+      "sha256": "4e9d5aad7ea94cf8b30410f181adae1743b3c893303b73190882c2e57f54d8dc",
+      "bytes": 868841
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/emberline-basalt-terrace-eye-reduced.png",
+      "sha256": "66da32a5606cd8fdf3e46d130bb1601825947f5bc37c7d2633ea3d1449ff492a",
+      "bytes": 870019
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/emberline-ceramic-exhaust-approach-after.png",
+      "sha256": "5d0463880102a6105075967cae7a7a7770bc6825039d03d57b651307edbc56aa",
+      "bytes": 564420
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/emberline-ceramic-exhaust-approach-before.png",
+      "sha256": "ba2f9ad90c505e0e153b9a4c481c540d5a9a61c4fe0c4ca798bafa90b8bce8d7",
+      "bytes": 563806
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/emberline-ceramic-exhaust-approach-reduced.png",
+      "sha256": "11e6836d5ea8f761ed06677b94fe259d87cb5dad34034b84dc2f4f211727241a",
+      "bytes": 564375
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/emberline-ceramic-exhaust-eye-after.png",
+      "sha256": "8490e04817c02212eb17fc7e5e001c74c428863ff14b7d6cb3b63d78177a8dcd",
+      "bytes": 519980
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/emberline-ceramic-exhaust-eye-before.png",
+      "sha256": "958f5f5b59324a443e47d098b43dc3359f625604addcae5a6e8d75532021305b",
+      "bytes": 518525
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/emberline-ceramic-exhaust-eye-reduced.png",
+      "sha256": "f0e7807526221ed71ba53b3e6c4c91d1a145fe5497308cf3d36275eefa4f5998",
+      "bytes": 519926
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/emberline-heatshield-tower-approach-after.png",
+      "sha256": "1da337db1e9d0fb31d280c321863b6a0d52ca8b9256c60d44d4492523ec738cd",
+      "bytes": 942502
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/emberline-heatshield-tower-approach-before.png",
+      "sha256": "75d2de53eba23f85439c92876ca395aac59f24cfac89806590d70e6a4caaac8f",
+      "bytes": 942323
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/emberline-heatshield-tower-approach-reduced.png",
+      "sha256": "1da337db1e9d0fb31d280c321863b6a0d52ca8b9256c60d44d4492523ec738cd",
+      "bytes": 942502
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/emberline-heatshield-tower-eye-after.png",
+      "sha256": "094663246814d133edd1324c261b0df271352e00250f0963a140f0805012a5ba",
+      "bytes": 926167
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/emberline-heatshield-tower-eye-before.png",
+      "sha256": "cd023cc43e9ad043ddfb80bc68ac0a7c3d5046c4d3bb0b89580e8a61892e48e5",
+      "bytes": 925902
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/emberline-heatshield-tower-eye-reduced.png",
+      "sha256": "094663246814d133edd1324c261b0df271352e00250f0963a140f0805012a5ba",
+      "bytes": 926167
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/native.log",
+      "sha256": "7d736ef709f498353bb42273ac556e9948b7eb6ce89f19bb90657a5ca00c5cad",
+      "bytes": 375
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/resources.json",
+      "sha256": "d8e54b63a253abfc6f2becec8ccfcd2daaf8efbdcdee8c545662b683c7aab902",
+      "bytes": 303
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/emberline-ascent/wide/source-camera-return.png",
+      "sha256": "bafb9c3ed470b9d9960d12a0fd24e75f8d52ed5af3d9800f8934f10f2b3a10ea",
+      "bytes": 607771
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/captures.json",
+      "sha256": "54ec42ed88bfcc3adf09815474d1bd10d1c496fc63d7fd34061c85ea23aefb71",
+      "bytes": 11807
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/native.log",
+      "sha256": "7d736ef709f498353bb42273ac556e9948b7eb6ce89f19bb90657a5ca00c5cad",
+      "bytes": 375
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/resources.json",
+      "sha256": "91425a860a191878ac68ef4697313cdaba8a28631aba6bc418210b04be47478f",
+      "bytes": 303
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/rootfall-canopy-relay-approach-after.png",
+      "sha256": "f91bb2c2728ffbc890c91aba5505c2b432324fd3e2efbf23edee49e24af605f2",
+      "bytes": 482373
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/rootfall-canopy-relay-approach-before.png",
+      "sha256": "20cde3f814af843d67805d3067c6c955f647255d364bcdadca1a6a96ea1da6d3",
+      "bytes": 482151
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/rootfall-canopy-relay-approach-reduced.png",
+      "sha256": "454d24a7db0d26977518f945aeb81ed35140d0423821a33f8ba3c78180961eeb",
+      "bytes": 482401
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/rootfall-canopy-relay-eye-after.png",
+      "sha256": "87e07c9ffd588f6814e2aac393394b872d42c1f59dbd5ae55113b41311233af9",
+      "bytes": 466078
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/rootfall-canopy-relay-eye-before.png",
+      "sha256": "81561e85a2cbaf4c0e9635f06be9bd4d14fd462583a8e7fe1fc92542e0b2f305",
+      "bytes": 465895
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/rootfall-canopy-relay-eye-reduced.png",
+      "sha256": "87e07c9ffd588f6814e2aac393394b872d42c1f59dbd5ae55113b41311233af9",
+      "bytes": 466078
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/rootfall-root-archive-approach-after.png",
+      "sha256": "0a355ba95dba20845432d564c0d309f8da16010a7ed89dadc70e28af485394e5",
+      "bytes": 456219
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/rootfall-root-archive-approach-before.png",
+      "sha256": "b2e6b140e569950c89f4685cd4b5826fea2bab8ad3d065fbf562c416aa556a5f",
+      "bytes": 456062
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/rootfall-root-archive-approach-reduced.png",
+      "sha256": "89c92b9131deb29b834321c322b352f42010af03c9832d5f114211c3e18cfca4",
+      "bytes": 456198
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/rootfall-root-archive-eye-after.png",
+      "sha256": "53f2ea50b22c5fef1480b65493be92d6aa7a923aefa74d5dd15773257db8b0f3",
+      "bytes": 443531
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/rootfall-root-archive-eye-before.png",
+      "sha256": "3b63fbd6216a4cdd3bbfd5529e7ec2f869c27ec976cec342810e9ae961bf5d0f",
+      "bytes": 443371
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/rootfall-root-archive-eye-reduced.png",
+      "sha256": "53f2ea50b22c5fef1480b65493be92d6aa7a923aefa74d5dd15773257db8b0f3",
+      "bytes": 443531
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/rootfall-root-buttress-approach-after.png",
+      "sha256": "7eeaac4d89d28dd016aa558fecc8991458c731740cc9cc86c08a52d414fd495c",
+      "bytes": 381303
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/rootfall-root-buttress-approach-before.png",
+      "sha256": "3711411e832e3e0c56be0f2db0f622c57182621e023948adb60abea3a9881e59",
+      "bytes": 381258
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/rootfall-root-buttress-approach-reduced.png",
+      "sha256": "7eeaac4d89d28dd016aa558fecc8991458c731740cc9cc86c08a52d414fd495c",
+      "bytes": 381303
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/rootfall-root-buttress-eye-after.png",
+      "sha256": "2f14bdfa78407fbe9113faf74457308e5680be63dbfbec2d3b766f8f6382d9d8",
+      "bytes": 361210
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/rootfall-root-buttress-eye-before.png",
+      "sha256": "c146dc965b5ce35736851ff259c7a775dc1b6f817db619f631e87efab451494c",
+      "bytes": 361177
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/rootfall-root-buttress-eye-reduced.png",
+      "sha256": "2f14bdfa78407fbe9113faf74457308e5680be63dbfbec2d3b766f8f6382d9d8",
+      "bytes": 361210
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/compact/source-camera-return.png",
+      "sha256": "16fde34040895eb0aa635503bdc812b014225499ac42fecb19c28b1f341d52d4",
+      "bytes": 155783
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/captures.json",
+      "sha256": "1e60af8596ffce57fdcf11c4efcfbcddbeb419058698bd92372ebdb801b90dd5",
+      "bytes": 11779
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/native.log",
+      "sha256": "7d736ef709f498353bb42273ac556e9948b7eb6ce89f19bb90657a5ca00c5cad",
+      "bytes": 375
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/resources.json",
+      "sha256": "e312e63d160bfc9a017fdba7d894e386eb7c521c64855154f47a2511de2a569c",
+      "bytes": 303
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/rootfall-canopy-relay-approach-after.png",
+      "sha256": "22ac96a58464ee43bac8dfdd248dbd9130d446fbf1b6387bef4a4508d13fd29c",
+      "bytes": 951795
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/rootfall-canopy-relay-approach-before.png",
+      "sha256": "8452b24b15ed1df1e6f04660d1126d66573ec93f70ec015e5bb34a0d41baf9f3",
+      "bytes": 951380
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/rootfall-canopy-relay-approach-reduced.png",
+      "sha256": "abf638b63690a2b9d2bc43aa4948e3e63a0631fb6844b6637f14268c52d5c983",
+      "bytes": 951753
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/rootfall-canopy-relay-eye-after.png",
+      "sha256": "68b6bd7476c9036e44bf5ae6856b2ab6fe95d0bec9802b244599c94cb176ee09",
+      "bytes": 919640
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/rootfall-canopy-relay-eye-before.png",
+      "sha256": "ed5b3739b51444df04368ed95eb439599afecacb5031b5d93024ccd8a7765f3d",
+      "bytes": 919257
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/rootfall-canopy-relay-eye-reduced.png",
+      "sha256": "68b6bd7476c9036e44bf5ae6856b2ab6fe95d0bec9802b244599c94cb176ee09",
+      "bytes": 919640
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/rootfall-root-archive-approach-after.png",
+      "sha256": "d5fbe9e1f237cb5a7995238542ffca5000dd1da58ed6b21bed6d5c9e2ecbc95b",
+      "bytes": 908658
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/rootfall-root-archive-approach-before.png",
+      "sha256": "ecd66119be2088c91eddb275e05b931edf108989d1adc8ae41e549a550876e0f",
+      "bytes": 908398
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/rootfall-root-archive-approach-reduced.png",
+      "sha256": "ad528b143934ad311ddb0e5724e5a840c38101337556dbfc444f8e0f5ce499d4",
+      "bytes": 908537
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/rootfall-root-archive-eye-after.png",
+      "sha256": "9b4dec1a94203cfa1d860a3af7bcf26a317e7e0cedf26c15689b5268b813b414",
+      "bytes": 916997
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/rootfall-root-archive-eye-before.png",
+      "sha256": "d899286441463e73aabd32e44873e8f3139545843cae76fa18813a3804d36a42",
+      "bytes": 916512
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/rootfall-root-archive-eye-reduced.png",
+      "sha256": "9b4dec1a94203cfa1d860a3af7bcf26a317e7e0cedf26c15689b5268b813b414",
+      "bytes": 916997
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/rootfall-root-buttress-approach-after.png",
+      "sha256": "e40ea1ea1282987ec667a0375fbb0a8ec57e564b30d9b5116ab7b789a5745529",
+      "bytes": 711172
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/rootfall-root-buttress-approach-before.png",
+      "sha256": "0537ce50ef63ed0bc01f44198e6b683c9ddc3ed70d01901e90db4c55e6b727db",
+      "bytes": 711136
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/rootfall-root-buttress-approach-reduced.png",
+      "sha256": "e40ea1ea1282987ec667a0375fbb0a8ec57e564b30d9b5116ab7b789a5745529",
+      "bytes": 711172
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/rootfall-root-buttress-eye-after.png",
+      "sha256": "a3963ed6362ebd2e546f99e905ac89824c029f77df09f190d0c99d164140af53",
+      "bytes": 635659
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/rootfall-root-buttress-eye-before.png",
+      "sha256": "e2bd316457e83a317a06090802c988037a1c0c0c4331e177d561b7a4917b5ee2",
+      "bytes": 635630
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/rootfall-root-buttress-eye-reduced.png",
+      "sha256": "a3963ed6362ebd2e546f99e905ac89824c029f77df09f190d0c99d164140af53",
+      "bytes": 635659
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/rootfall-verge/wide/source-camera-return.png",
+      "sha256": "cfbdd88dd5c465a1de913e0dd150f20a5430885425a134a45c468de8b2e91457",
+      "bytes": 488477
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/runs.json",
+      "sha256": "36a42d600068206d0e0d71f328dcc58109351fd289bd2458760047ad1b656063",
+      "bytes": 954
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/captures.json",
+      "sha256": "796d6797724ee0ce8a42b114b914c3a3229aad9d54abd6eb509c14ed2fc3d313",
+      "bytes": 11790
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/native.log",
+      "sha256": "7d736ef709f498353bb42273ac556e9948b7eb6ce89f19bb90657a5ca00c5cad",
+      "bytes": 375
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/resources.json",
+      "sha256": "f1d13ec4a5507b93f873903ce8ca1b7647c258abc969340adfcffdf6f30ceb3d",
+      "bytes": 303
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/siltwake-flood-abutment-approach-after.png",
+      "sha256": "96d5322a337832b34a00f389889780cb2021842324565ffc5ccc2795a3aff17e",
+      "bytes": 455676
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/siltwake-flood-abutment-approach-before.png",
+      "sha256": "cb4250d12e63ad5550f1cb1fe84e12c4adc653873dad97d85804bfaf481da98d",
+      "bytes": 454510
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/siltwake-flood-abutment-approach-reduced.png",
+      "sha256": "1b6c00cef0e440bfc9a02efa58bc3e25c94579a9a17cd230136a726c16129fb9",
+      "bytes": 455845
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/siltwake-flood-abutment-eye-after.png",
+      "sha256": "7a583e026a61934cb660508b9a4c90d41f8d5077dd1711293e7180fc1d544bec",
+      "bytes": 477999
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/siltwake-flood-abutment-eye-before.png",
+      "sha256": "abd2e844ced7db21ce0d561e93037fa6c54059b9b3ab192a0f13982be8edf7a2",
+      "bytes": 477247
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/siltwake-flood-abutment-eye-reduced.png",
+      "sha256": "4ebb229ae3f4b4579d51cacd963b89e3af6ea7bec0674cd8e235755ba7904727",
+      "bytes": 478030
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/siltwake-sluice-bank-approach-after.png",
+      "sha256": "497beae283837d3a11d9edbbd93d578853808ad424fe1d2669e38fb75a823901",
+      "bytes": 493045
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/siltwake-sluice-bank-approach-before.png",
+      "sha256": "8322717592a5a4c7eb098ee372bfcd90458c044cc1f7de379acf0821a62b3bc0",
+      "bytes": 491750
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/siltwake-sluice-bank-approach-reduced.png",
+      "sha256": "7e0f0d82f14df0a3daf19024434b612c499002155c6e5ed3a2c389153782e1ce",
+      "bytes": 492860
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/siltwake-sluice-bank-eye-after.png",
+      "sha256": "04b99b2dade27dcd8658f617aed688b744dcb246d9178ab6ae54776610d8a538",
+      "bytes": 529383
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/siltwake-sluice-bank-eye-before.png",
+      "sha256": "f67dc7eda3dde4a2041443617abb727111d00b6e2c223711f4c4c75d4cf398f9",
+      "bytes": 526124
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/siltwake-sluice-bank-eye-reduced.png",
+      "sha256": "858a226ccfc3fa59fc2c12d19560e6a33771204159e37bd646e716ae21f693d2",
+      "bytes": 529277
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/siltwake-strata-wheelhouse-approach-after.png",
+      "sha256": "aa53fe27ab4f16f71fa9b9e320f355f7d3743ecd7957f2aa88291ed78a14b691",
+      "bytes": 507555
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/siltwake-strata-wheelhouse-approach-before.png",
+      "sha256": "3cb3fd039553d15555222eb4f6f983b8d3b3368c9b2858ba80d12c742e2d91d9",
+      "bytes": 503672
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/siltwake-strata-wheelhouse-approach-reduced.png",
+      "sha256": "2918ffb2d77aabb237827daa8efb586e3654c787a6dfcfdcb75f052b0b244273",
+      "bytes": 507399
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/siltwake-strata-wheelhouse-eye-after.png",
+      "sha256": "5842256f497b56c862157478418a5324e7a585c262f8226a81ad6b4cd3524ed4",
+      "bytes": 518365
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/siltwake-strata-wheelhouse-eye-before.png",
+      "sha256": "4399d03e506e01bb41f5c8508049d86341b156d0a777d34a5a2f3cc8f447c12e",
+      "bytes": 515236
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/siltwake-strata-wheelhouse-eye-reduced.png",
+      "sha256": "a31f4c4776125d123fc159cd47a7846b8c88a032a036e3fe82f70129b075c4b6",
+      "bytes": 518176
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/compact/source-camera-return.png",
+      "sha256": "d5b4f637cb322ed6e6edc516003870f64f6dd035269ba0b241c0055c2797ebb3",
+      "bytes": 177318
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/captures.json",
+      "sha256": "223531d963ed01d4409ae6eff2258d7b1ea1266d69a26f9a0da7a9e6fd7a0603",
+      "bytes": 11762
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/native.log",
+      "sha256": "7d736ef709f498353bb42273ac556e9948b7eb6ce89f19bb90657a5ca00c5cad",
+      "bytes": 375
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/resources.json",
+      "sha256": "0d815563b9c0535451a8925013b5ae7364907968b5cc3ef42c81d4d44dc643a7",
+      "bytes": 303
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/siltwake-flood-abutment-approach-after.png",
+      "sha256": "6bdb434c4bfb2345e8ef196d40653a847cfa8152d0f81fce62d9c8af1b94cd3e",
+      "bytes": 869655
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/siltwake-flood-abutment-approach-before.png",
+      "sha256": "ac78dc835cb4aa7b7b2fdb8930986c5ea0d849ecd32e32a23d8f4f1539220adc",
+      "bytes": 865134
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/siltwake-flood-abutment-approach-reduced.png",
+      "sha256": "999288bb0d61e37c845a5048e98bff99fd4d5ea50fe03b41714f4681c0f7a03b",
+      "bytes": 869909
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/siltwake-flood-abutment-eye-after.png",
+      "sha256": "fa0f112ede61f072936167700e39781841f3a01eb748c29948ea205e69f27420",
+      "bytes": 949928
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/siltwake-flood-abutment-eye-before.png",
+      "sha256": "d67291ce20b9675eb30f1acd1744430db17b140eff1c448fb79bf29cf527b912",
+      "bytes": 947160
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/siltwake-flood-abutment-eye-reduced.png",
+      "sha256": "013111262ad2ec5142c66c5a242964c7686e782320303e5b0d13822404747e9e",
+      "bytes": 949808
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/siltwake-sluice-bank-approach-after.png",
+      "sha256": "86e6e46aac618af8e2984ee061795aed1f749666f8d2e5c2706df93a36f3f8db",
+      "bytes": 980119
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/siltwake-sluice-bank-approach-before.png",
+      "sha256": "15b8b8c4fd731711af4b2d983cb044705a2aff17a6aad9bacd9b7623ba88edb4",
+      "bytes": 975373
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/siltwake-sluice-bank-approach-reduced.png",
+      "sha256": "d88a2ca6c1df2a45d74f61ca71428b29bc3a86790401baac2ea6b97f3b5b0444",
+      "bytes": 979829
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/siltwake-sluice-bank-eye-after.png",
+      "sha256": "0584f1b2cde1536284ca6b2c93d739a9bd8dc0ae5ecef56f1e4a99a305df3cce",
+      "bytes": 1102780
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/siltwake-sluice-bank-eye-before.png",
+      "sha256": "381654e4f79ba7760d8122ad3dd1f7a8ab0f2fcfd49732c6b30230096681684d",
+      "bytes": 1090920
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/siltwake-sluice-bank-eye-reduced.png",
+      "sha256": "73f7d5062659e26da70f99807464058b3c7a570e59a75a481bb1d0ccdf68522d",
+      "bytes": 1102739
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/siltwake-strata-wheelhouse-approach-after.png",
+      "sha256": "848f3a5544a1512b2df7cc82eb6dbbce70f60f19ebdca83f98cb77b24b623294",
+      "bytes": 1034550
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/siltwake-strata-wheelhouse-approach-before.png",
+      "sha256": "b83b3de6b7a7d0ed9983160201e744886b932cbb52e4b4a3b4a524874d863dd9",
+      "bytes": 1027529
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/siltwake-strata-wheelhouse-approach-reduced.png",
+      "sha256": "68d90308ba33086a0e7aff915417f4a33be71b0513409a328b7f25b2afea02f6",
+      "bytes": 1034417
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/siltwake-strata-wheelhouse-eye-after.png",
+      "sha256": "d95997a71360f4358117e68d07bf08152942e8d12706e0b02813075d9b1c9acf",
+      "bytes": 1079442
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/siltwake-strata-wheelhouse-eye-before.png",
+      "sha256": "64576e78abca5c4ffcc0c58d878cd49c8ff09ada3f7990a72a77d43d87541869",
+      "bytes": 1071764
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/siltwake-strata-wheelhouse-eye-reduced.png",
+      "sha256": "0982e36e06082e23e1d752bf375189fad5735a14354df146548bc03458418899",
+      "bytes": 1079075
+    },
+    {
+      "path": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-03-43.868Z/siltwake-crossing/wide/source-camera-return.png",
+      "sha256": "a16b8c2ab82c4628fd920e2fe9957e6ac49523ce0e96c397fd245a403357450e",
+      "bytes": 603222
+    }
+  ],
+  "accepted": false,
+  "renderer": "llvmpipe"
+}

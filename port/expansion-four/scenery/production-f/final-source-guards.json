@@ -1,0 +1,15 @@
+{
+  "sourceOnly": true,
+  "all304ManifestFilesMatch": true,
+  "pythonAST": "passed",
+  "protectedDiffAgainst": "1f129ab2",
+  "protectedPaths": [
+    "game/",
+    "godot/campaign/terrain.gd",
+    "godot/campaign/robot_visual.gd",
+    "tools/asset-production/",
+    "tools/godot-robots/",
+    "tools/godot-package/"
+  ],
+  "protectedDiffEmpty": true
+}

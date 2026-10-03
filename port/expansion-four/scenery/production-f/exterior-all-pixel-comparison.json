@@ -1,0 +1,338 @@
+[
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/compact/crown-ceramic-lightwell-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/compact/crown-ceramic-lightwell-approach-after.png",
+    "changedPixelsOver2": 1668,
+    "pixelCount": 395200,
+    "maxChannelDelta": 168
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/compact/crown-ceramic-lightwell-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/compact/crown-ceramic-lightwell-eye-after.png",
+    "changedPixelsOver2": 2376,
+    "pixelCount": 395200,
+    "maxChannelDelta": 168
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/compact/crown-faceted-antenna-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/compact/crown-faceted-antenna-approach-after.png",
+    "changedPixelsOver2": 1490,
+    "pixelCount": 395200,
+    "maxChannelDelta": 166
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/compact/crown-faceted-antenna-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/compact/crown-faceted-antenna-eye-after.png",
+    "changedPixelsOver2": 3037,
+    "pixelCount": 395200,
+    "maxChannelDelta": 164
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/compact/crown-folio-archive-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/compact/crown-folio-archive-approach-after.png",
+    "changedPixelsOver2": 1540,
+    "pixelCount": 395200,
+    "maxChannelDelta": 74
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/compact/crown-folio-archive-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/compact/crown-folio-archive-eye-after.png",
+    "changedPixelsOver2": 2993,
+    "pixelCount": 395200,
+    "maxChannelDelta": 76
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/wide/crown-ceramic-lightwell-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/wide/crown-ceramic-lightwell-approach-after.png",
+    "changedPixelsOver2": 4007,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 167
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/wide/crown-ceramic-lightwell-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/wide/crown-ceramic-lightwell-eye-after.png",
+    "changedPixelsOver2": 5493,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 167
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/wide/crown-faceted-antenna-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/wide/crown-faceted-antenna-approach-after.png",
+    "changedPixelsOver2": 3627,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 162
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/wide/crown-faceted-antenna-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/wide/crown-faceted-antenna-eye-after.png",
+    "changedPixelsOver2": 7205,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 167
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/wide/crown-folio-archive-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/wide/crown-folio-archive-approach-after.png",
+    "changedPixelsOver2": 3838,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 77
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/wide/crown-folio-archive-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/crown-array/wide/crown-folio-archive-eye-after.png",
+    "changedPixelsOver2": 7157,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 77
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/compact/emberline-basalt-terrace-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/compact/emberline-basalt-terrace-approach-after.png",
+    "changedPixelsOver2": 2159,
+    "pixelCount": 395200,
+    "maxChannelDelta": 162
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/compact/emberline-basalt-terrace-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/compact/emberline-basalt-terrace-eye-after.png",
+    "changedPixelsOver2": 156,
+    "pixelCount": 395200,
+    "maxChannelDelta": 155
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/compact/emberline-ceramic-exhaust-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/compact/emberline-ceramic-exhaust-approach-after.png",
+    "changedPixelsOver2": 5063,
+    "pixelCount": 395200,
+    "maxChannelDelta": 177
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/compact/emberline-ceramic-exhaust-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/compact/emberline-ceramic-exhaust-eye-after.png",
+    "changedPixelsOver2": 7218,
+    "pixelCount": 395200,
+    "maxChannelDelta": 128
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/compact/emberline-heatshield-tower-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/compact/emberline-heatshield-tower-approach-after.png",
+    "changedPixelsOver2": 1835,
+    "pixelCount": 395200,
+    "maxChannelDelta": 168
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/compact/emberline-heatshield-tower-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/compact/emberline-heatshield-tower-eye-after.png",
+    "changedPixelsOver2": 1695,
+    "pixelCount": 395200,
+    "maxChannelDelta": 141
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/wide/emberline-basalt-terrace-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/wide/emberline-basalt-terrace-approach-after.png",
+    "changedPixelsOver2": 5262,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 187
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/wide/emberline-basalt-terrace-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/wide/emberline-basalt-terrace-eye-after.png",
+    "changedPixelsOver2": 349,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 160
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/wide/emberline-ceramic-exhaust-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/wide/emberline-ceramic-exhaust-approach-after.png",
+    "changedPixelsOver2": 12076,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 178
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/wide/emberline-ceramic-exhaust-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/wide/emberline-ceramic-exhaust-eye-after.png",
+    "changedPixelsOver2": 17238,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 129
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/wide/emberline-heatshield-tower-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/wide/emberline-heatshield-tower-approach-after.png",
+    "changedPixelsOver2": 4470,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 168
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/wide/emberline-heatshield-tower-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/emberline-ascent/wide/emberline-heatshield-tower-eye-after.png",
+    "changedPixelsOver2": 4356,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 141
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/compact/rootfall-canopy-relay-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/compact/rootfall-canopy-relay-approach-after.png",
+    "changedPixelsOver2": 2116,
+    "pixelCount": 395200,
+    "maxChannelDelta": 185
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/compact/rootfall-canopy-relay-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/compact/rootfall-canopy-relay-eye-after.png",
+    "changedPixelsOver2": 2579,
+    "pixelCount": 395200,
+    "maxChannelDelta": 165
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/compact/rootfall-root-archive-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/compact/rootfall-root-archive-approach-after.png",
+    "changedPixelsOver2": 456,
+    "pixelCount": 395200,
+    "maxChannelDelta": 130
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/compact/rootfall-root-archive-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/compact/rootfall-root-archive-eye-after.png",
+    "changedPixelsOver2": 211,
+    "pixelCount": 395200,
+    "maxChannelDelta": 135
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/compact/rootfall-root-buttress-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/compact/rootfall-root-buttress-approach-after.png",
+    "changedPixelsOver2": 569,
+    "pixelCount": 395200,
+    "maxChannelDelta": 79
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/compact/rootfall-root-buttress-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/compact/rootfall-root-buttress-eye-after.png",
+    "changedPixelsOver2": 1458,
+    "pixelCount": 395200,
+    "maxChannelDelta": 81
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/wide/rootfall-canopy-relay-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/wide/rootfall-canopy-relay-approach-after.png",
+    "changedPixelsOver2": 5359,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 220
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/wide/rootfall-canopy-relay-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/wide/rootfall-canopy-relay-eye-after.png",
+    "changedPixelsOver2": 6182,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 167
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/wide/rootfall-root-archive-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/wide/rootfall-root-archive-approach-after.png",
+    "changedPixelsOver2": 1000,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 128
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/wide/rootfall-root-archive-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/wide/rootfall-root-archive-eye-after.png",
+    "changedPixelsOver2": 478,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 135
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/wide/rootfall-root-buttress-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/wide/rootfall-root-buttress-approach-after.png",
+    "changedPixelsOver2": 1335,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 79
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/wide/rootfall-root-buttress-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/rootfall-verge/wide/rootfall-root-buttress-eye-after.png",
+    "changedPixelsOver2": 3434,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 81
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-flood-abutment-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-flood-abutment-approach-after.png",
+    "changedPixelsOver2": 12292,
+    "pixelCount": 395200,
+    "maxChannelDelta": 190
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-flood-abutment-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-flood-abutment-eye-after.png",
+    "changedPixelsOver2": 9774,
+    "pixelCount": 395200,
+    "maxChannelDelta": 166
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-sluice-bank-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-sluice-bank-approach-after.png",
+    "changedPixelsOver2": 10153,
+    "pixelCount": 395200,
+    "maxChannelDelta": 155
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-sluice-bank-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-sluice-bank-eye-after.png",
+    "changedPixelsOver2": 29101,
+    "pixelCount": 395200,
+    "maxChannelDelta": 197
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-strata-wheelhouse-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-strata-wheelhouse-approach-after.png",
+    "changedPixelsOver2": 23046,
+    "pixelCount": 395200,
+    "maxChannelDelta": 201
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-strata-wheelhouse-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/compact/siltwake-strata-wheelhouse-eye-after.png",
+    "changedPixelsOver2": 16951,
+    "pixelCount": 395200,
+    "maxChannelDelta": 218
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/wide/siltwake-flood-abutment-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/wide/siltwake-flood-abutment-approach-after.png",
+    "changedPixelsOver2": 35613,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 190
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/wide/siltwake-flood-abutment-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/wide/siltwake-flood-abutment-eye-after.png",
+    "changedPixelsOver2": 23079,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 174
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/wide/siltwake-sluice-bank-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/wide/siltwake-sluice-bank-approach-after.png",
+    "changedPixelsOver2": 24565,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 161
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/wide/siltwake-sluice-bank-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/wide/siltwake-sluice-bank-eye-after.png",
+    "changedPixelsOver2": 70001,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 199
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/wide/siltwake-strata-wheelhouse-approach-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/wide/siltwake-strata-wheelhouse-approach-after.png",
+    "changedPixelsOver2": 55234,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 196
+  },
+  {
+    "before": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/wide/siltwake-strata-wheelhouse-eye-before.png",
+    "after": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T01-16-55.963Z/siltwake-crossing/wide/siltwake-strata-wheelhouse-eye-after.png",
+    "changedPixelsOver2": 45200,
+    "pixelCount": 1024000,
+    "maxChannelDelta": 198
+  }
+]

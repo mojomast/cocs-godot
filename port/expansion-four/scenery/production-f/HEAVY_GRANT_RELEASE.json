@@ -1,0 +1,399 @@
+{
+  "grant": "SCENERY-ASSET-PRODUCTION-20261003-F",
+  "status": "released",
+  "releasedAt": "2026-10-03T02:09:19.541442+00:00",
+  "assetCommit": "b320c270",
+  "headAtAudit": "b320c270e03978167498eaa8ffe9ea32e724b431",
+  "ownedProcessGroupCount": 54,
+  "remainingOwnedProcesses": 0,
+  "members": [],
+  "auditMethod": "/proc stat process-group IDs for every retained process receipt; nonwaiting exclusive lock acquired",
+  "groups": [
+    {
+      "processGroup": 672987,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T005316.701714Z/baseline-import-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 676545,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T005356.187132Z/absent-fallback-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 677183,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T005401.681165Z/atomic-lifecycle-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 678198,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T005411.330171Z/representative-build-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 686162,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T005530.245657Z/build-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 686806,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T005537.215657Z/reopen-original-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 688239,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T005554.749924Z/independent-reopen-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 688869,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T005601.352606Z/resource-receipt-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 689430,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T005607.244893Z/import-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 690022,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T005615.201074Z/native-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 699867,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T005940.240458Z/native-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 703541,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T010052.264003Z/native-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 704950,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T010111.972102Z/native-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 706393,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T010135.868935Z/native-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 708085,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T010159.975221Z/build-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 708765,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T010208.267099Z/import-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 709554,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T010221.238244Z/native-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 710751,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T010240.952814Z/native-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 711237,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T010246.538217Z/capture-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 714563,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T010343.248457Z/capture-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 726928,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T010715.120624Z/journey-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 733294,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T010905.098573Z/journey-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 737930,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T011023.171965Z/journey-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 743682,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T011208.234938Z/journey-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 755526,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T011551.875996Z/build-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 756858,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T011615.957937Z/import-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 758031,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T011633.872436Z/native-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 758238,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T011634.577175Z/reopen-original-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 758318,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T011635.047166Z/independent-reopen-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 758494,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T011636.307562Z/resource-receipt-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 758513,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T011636.654766Z/atomic-lifecycle-final-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 759559,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T011655.333931Z/capture-exterior-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 771390,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T012030.492429Z/journey-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 780828,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T012337.687584Z/journey-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 791929,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T012721.795235Z/journey-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 804627,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T013141.804816Z/journey-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 814486,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T013455.165729Z/journey-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 824748,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T013818.992598Z/representative-color-build-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 826176,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T013846.105235Z/build-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 826530,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T013847.607165Z/import-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 826655,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T013850.814444Z/native-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 826763,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T013851.515191Z/reopen-original-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 826908,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T013851.972650Z/independent-reopen-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 827085,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T013853.176473Z/resource-receipt-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 827198,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T013853.532564Z/imported-material-lifecycle-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 828338,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T013912.912450Z/capture-final-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 841961,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T014338.034353Z/final-tangents-wet-restore-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 842738,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T014352.925522Z/journey-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 851990,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T014702.924793Z/journey-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 862786,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T015045.523152Z/journey-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 876748,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T015531.601970Z/journey-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 885940,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T015846.641512Z/journey-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 900855,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T020403.211450Z/architecture-final-process.json"
+      ],
+      "remainingMembers": 0
+    },
+    {
+      "processGroup": 906087,
+      "receipts": [
+        "port/expansion-four/scenery/production-f/20261003T020543.597319Z/package-receipt-process.json"
+      ],
+      "remainingMembers": 0
+    }
+  ],
+  "packageReceipt": "tools/godot-package/production_receipts/scenery.json",
+  "packageReceiptSHA256": "a2f0b0fe538e536724d10759f670a5fd50fbae6235cc61218e73f6b1d8ac935c",
+  "accepted": false,
+  "promotionChanged": false,
+  "limitations": [
+    "capture-paced llvmpipe journeys do not prove continuous rendered playability or human feel",
+    "parent visual review and package promotion pending"
+  ]
+}

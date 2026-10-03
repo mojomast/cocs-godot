@@ -96,8 +96,22 @@ func run() -> void:
 		var target := Pack.vector(placement.origin) + Vector3(0, float(placement.scale[1])*.5,0)
 		for p: Dictionary in route:
 			if Vector2(p.x,p.z).distance_to(Vector2(target.x,target.z)) < Vector2(near.x,near.z).distance_to(Vector2(target.x,target.z)): near = p
-		for view: String in ["approach", "eye"]:
+		var views: Array=["architecture"] if "--architecture-only" in OS.get_cmdline_user_args() else ["approach","eye"]
+		for view: String in views:
 			var eye := Vector3(near.x,near.y+1.65,near.z)
+			if view=="architecture":
+				# A supported authored-route viewpoint facing the relief plane,
+				# not an authority pose or an invented walkable camera location.
+				var score := INF
+				for authored_route: Dictionary in world.recipe.routes:
+					for point: Dictionary in authored_route.points:
+						var delta := Vector2(point.x-target.x,point.z-target.z)
+						var distance := delta.length()
+						if distance<maxf(4.0,float(placement.scale[1])*.7) or distance>60: continue
+						var candidate := distance+(1.0-absf(delta.y)/distance)*80.0
+						if candidate<score:
+							score=candidate
+							eye=Vector3(point.x,point.y+1.65,point.z)
 			if view == "approach":
 				var index := maxi(0,route.find(near)-5)
 				var p: Dictionary = route[index]
@@ -111,7 +125,7 @@ func run() -> void:
 				await capture(str(placement.asset)+"-"+view+"-"+phase,"staged supported eye; production scene/HUD")
 	pack.visible = true
 	pack.set_reduced_detail(false)
-	if str(world.recipe.id)=="emberline-ascent":
+	if str(world.recipe.id)=="emberline-ascent" and "--architecture-only" not in OS.get_cmdline_user_args():
 		var workshop: Node3D=world.get_node("SwitchyardWorkshop")
 		assert(workshop.installed.size()==6 and workshop.get_child_count()==6)
 		for prop: Node3D in workshop.get_children():

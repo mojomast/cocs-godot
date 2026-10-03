@@ -1,0 +1,148 @@
+Info: Saved as "rootfall-canopy-relay.blend"
+INFO Draco mesh compression is available, use library at /home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/4.5/scripts/addons_core/io_scene_gltf2/libextern_draco.so
+21:38:46 | INFO: Starting glTF 2.0 export
+21:38:46 | INFO: Extracting primitive: root-buttress--1--0.001
+21:38:46 | INFO: Primitives created: 3
+21:38:46 | INFO: Finished glTF 2.0 export in 0.006212949752807617 s
+
+21:38:46 | INFO: Starting glTF 2.0 export
+21:38:46 | INFO: Extracting primitive: root-buttress--1--0.002
+21:38:46 | INFO: Primitives created: 3
+21:38:46 | INFO: Finished glTF 2.0 export in 0.004644870758056641 s
+
+BIOME4_BUILT rootfall-canopy-relay 18
+Info: Saved as "rootfall-root-archive.blend"
+21:38:46 | INFO: Starting glTF 2.0 export
+21:38:46 | INFO: Extracting primitive: root-buttress--1--0.001
+21:38:46 | INFO: Primitives created: 2
+21:38:46 | INFO: Finished glTF 2.0 export in 0.005711555480957031 s
+
+21:38:46 | INFO: Starting glTF 2.0 export
+21:38:46 | INFO: Extracting primitive: root-buttress--1--0.002
+21:38:46 | INFO: Primitives created: 1
+21:38:46 | INFO: Finished glTF 2.0 export in 0.003368854522705078 s
+
+BIOME4_BUILT rootfall-root-archive 20
+Info: Saved as "rootfall-root-buttress.blend"
+21:38:46 | INFO: Starting glTF 2.0 export
+21:38:46 | INFO: Extracting primitive: root-buttress--1--0.001
+21:38:46 | INFO: Primitives created: 2
+21:38:46 | INFO: Finished glTF 2.0 export in 0.0055084228515625 s
+
+21:38:46 | INFO: Starting glTF 2.0 export
+21:38:46 | INFO: Extracting primitive: root-buttress--1--0.002
+21:38:46 | INFO: Primitives created: 2
+21:38:46 | INFO: Finished glTF 2.0 export in 0.003778219223022461 s
+
+BIOME4_BUILT rootfall-root-buttress 14
+Info: Saved as "siltwake-strata-wheelhouse.blend"
+21:38:46 | INFO: Starting glTF 2.0 export
+21:38:46 | INFO: Extracting primitive: stratified-bank--1-0.001
+21:38:46 | INFO: Primitives created: 4
+21:38:46 | INFO: Finished glTF 2.0 export in 0.008871316909790039 s
+
+21:38:46 | INFO: Starting glTF 2.0 export
+21:38:46 | INFO: Extracting primitive: stratified-bank--1-0.002
+21:38:46 | INFO: Primitives created: 3
+21:38:46 | INFO: Finished glTF 2.0 export in 0.006303310394287109 s
+
+BIOME4_BUILT siltwake-strata-wheelhouse 61
+Info: Saved as "siltwake-sluice-bank.blend"
+21:38:46 | INFO: Starting glTF 2.0 export
+21:38:46 | INFO: Extracting primitive: stratified-bank--1-0.001
+21:38:46 | INFO: Primitives created: 3
+21:38:46 | INFO: Finished glTF 2.0 export in 0.0065500736236572266 s
+
+21:38:46 | INFO: Starting glTF 2.0 export
+21:38:46 | INFO: Extracting primitive: stratified-bank--1-0.002
+21:38:46 | INFO: Primitives created: 3
+21:38:46 | INFO: Finished glTF 2.0 export in 0.007464885711669922 s
+
+BIOME4_BUILT siltwake-sluice-bank 25
+Info: Saved as "siltwake-flood-abutment.blend"
+21:38:46 | INFO: Starting glTF 2.0 export
+21:38:46 | INFO: Extracting primitive: stratified-bank--1-0.001
+21:38:46 | INFO: Primitives created: 3
+21:38:46 | INFO: Finished glTF 2.0 export in 0.006078004837036133 s
+
+21:38:46 | INFO: Starting glTF 2.0 export
+21:38:46 | INFO: Extracting primitive: stratified-bank--1-0.002
+21:38:46 | INFO: Primitives created: 2
+21:38:46 | INFO: Finished glTF 2.0 export in 0.00458073616027832 s
+
+BIOME4_BUILT siltwake-flood-abutment 21
+Info: Saved as "emberline-heatshield-tower.blend"
+21:38:47 | INFO: Starting glTF 2.0 export
+21:38:47 | INFO: Extracting primitive: basalt-column--0.35-0.001
+21:38:47 | INFO: Primitives created: 3
+21:38:47 | INFO: Finished glTF 2.0 export in 0.006175041198730469 s
+
+21:38:47 | INFO: Starting glTF 2.0 export
+21:38:47 | INFO: Extracting primitive: basalt-column--0.35-0.002
+21:38:47 | INFO: Primitives created: 3
+21:38:47 | INFO: Finished glTF 2.0 export in 0.029049158096313477 s
+
+BIOME4_BUILT emberline-heatshield-tower 34
+Info: Saved as "emberline-basalt-terrace.blend"
+21:38:47 | INFO: Starting glTF 2.0 export
+21:38:47 | INFO: Extracting primitive: basalt-column--0.35-0.001
+21:38:47 | INFO: Primitives created: 3
+21:38:47 | INFO: Finished glTF 2.0 export in 0.0060405731201171875 s
+
+21:38:47 | INFO: Starting glTF 2.0 export
+21:38:47 | INFO: Extracting primitive: basalt-column--0.35-0.002
+21:38:47 | INFO: Primitives created: 2
+21:38:47 | INFO: Finished glTF 2.0 export in 0.004394054412841797 s
+
+BIOME4_BUILT emberline-basalt-terrace 22
+Info: Saved as "emberline-ceramic-exhaust.blend"
+21:38:47 | INFO: Starting glTF 2.0 export
+21:38:47 | INFO: Extracting primitive: basalt-column--0.35-0.001
+21:38:47 | INFO: Primitives created: 4
+21:38:47 | INFO: Finished glTF 2.0 export in 0.007296323776245117 s
+
+21:38:47 | INFO: Starting glTF 2.0 export
+21:38:47 | INFO: Extracting primitive: basalt-column--0.35-0.002
+21:38:47 | INFO: Primitives created: 4
+21:38:47 | INFO: Finished glTF 2.0 export in 0.006743192672729492 s
+
+BIOME4_BUILT emberline-ceramic-exhaust 36
+Info: Saved as "crown-faceted-antenna.blend"
+21:38:47 | INFO: Starting glTF 2.0 export
+21:38:47 | INFO: Extracting primitive: ceramic-pilaster--0.38--0.001
+21:38:47 | INFO: Primitives created: 3
+21:38:47 | INFO: Finished glTF 2.0 export in 0.006433010101318359 s
+
+21:38:47 | INFO: Starting glTF 2.0 export
+21:38:47 | INFO: Extracting primitive: ceramic-pilaster--0.38--0.002
+21:38:47 | INFO: Primitives created: 3
+21:38:47 | INFO: Finished glTF 2.0 export in 0.00531768798828125 s
+
+BIOME4_BUILT crown-faceted-antenna 20
+Info: Saved as "crown-ceramic-lightwell.blend"
+21:38:47 | INFO: Starting glTF 2.0 export
+21:38:47 | INFO: Extracting primitive: ceramic-pilaster--0.38--0.001
+21:38:47 | INFO: Primitives created: 2
+21:38:47 | INFO: Finished glTF 2.0 export in 0.006237030029296875 s
+
+21:38:47 | INFO: Starting glTF 2.0 export
+21:38:47 | INFO: Extracting primitive: ceramic-pilaster--0.38--0.002
+21:38:47 | INFO: Primitives created: 2
+21:38:47 | INFO: Finished glTF 2.0 export in 0.00408172607421875 s
+
+BIOME4_BUILT crown-ceramic-lightwell 19
+Info: Saved as "crown-folio-archive.blend"
+21:38:47 | INFO: Starting glTF 2.0 export
+21:38:47 | INFO: Extracting primitive: ceramic-pilaster--0.38--0.001
+21:38:47 | INFO: Primitives created: 3
+21:38:47 | INFO: Finished glTF 2.0 export in 0.005861759185791016 s
+
+21:38:47 | INFO: Starting glTF 2.0 export
+21:38:47 | INFO: Extracting primitive: ceramic-pilaster--0.38--0.002
+21:38:47 | INFO: Primitives created: 1
+21:38:47 | INFO: Finished glTF 2.0 export in 0.0026297569274902344 s
+
+BIOME4_BUILT crown-folio-archive 24
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+
+Blender quit

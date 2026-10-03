@@ -1,0 +1,87 @@
+[
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-55-32.535Z-crown-array/home-return.png",
+    "sha256": "a46f9d769dfcc33579c0e51e0a3d4ade93a5ecee8523be42d432da4d6d1f1422",
+    "bytes": 199260
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-55-32.535Z-crown-array/home.json",
+    "sha256": "36a14089d2b2b0f3c8035873e12b32a8840cefb166b0aec32a4f15d2fcb81796",
+    "bytes": 125
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-55-32.535Z-crown-array/home.log",
+    "sha256": "a9df59af7b541e4cfa91a501f58d43665ded378e8014b3995bae70868c9f8b02",
+    "bytes": 470
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-55-32.535Z-crown-array/journey.json",
+    "sha256": "42b5a18c7e823abfb85ff2775cca43b02af85ef818d17d39fb47317a2b3e42e3",
+    "bytes": 266355
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-55-32.535Z-crown-array/native-live.log",
+    "sha256": "76d8f99087d0bd6ee7b66683662ed884f0746acdbd3f91fc1a23c8593c4d976c",
+    "bytes": 5504705
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-55-32.535Z-crown-array/native.log",
+    "sha256": "76d8f99087d0bd6ee7b66683662ed884f0746acdbd3f91fc1a23c8593c4d976c",
+    "bytes": 5504705
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-55-32.535Z-crown-array/ordinary-combat-0.0.png",
+    "sha256": "30c88a5c401917e6d5f392bc98d3fc1979af3756cbe2355d50ee0dd7a064c3aa",
+    "bytes": 938469
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-55-32.535Z-crown-array/ordinary-combat-1.0.png",
+    "sha256": "17c028e2946f52d0efa3cab302679e451cf941fedae11bad30c9f1b32772cd03",
+    "bytes": 957946
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-55-32.535Z-crown-array/plan.json",
+    "sha256": "1926e27a326b2bda19402ef95426d21399de4730192b6b67d0564ce3023fa6d7",
+    "bytes": 47258
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-55-32.535Z-crown-array/source-camera-return.png",
+    "sha256": "6518409685ee552643e90be473110d4bcc83bdeff0626948bd2af6485e26ac47",
+    "bytes": 916548
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-55-32.535Z-crown-array/stage-0069.png",
+    "sha256": "dddc6e10a8b69c94ff95c789f25015b02b7f47da2d0a979dfbed6399d0f9b2f1",
+    "bytes": 953549
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-55-32.535Z-crown-array/stage-0133.png",
+    "sha256": "551b12c005312001ef2cd33204c244c88418451542524f37207bf05b0f8903ed",
+    "bytes": 841032
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-55-32.535Z-crown-array/stage-0181.png",
+    "sha256": "2c25920b7d86dab21e6d0e42323dba8aced4248394a1eecd8ce5ad287e3092ca",
+    "bytes": 947711
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-55-32.535Z-crown-array/stage-0238.png",
+    "sha256": "3bd6a057308dc0b85d6a3c4648671430e6175adbd9680a130fcabfa9b36a28dd",
+    "bytes": 822640
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-55-32.535Z-crown-array/stage-0249.png",
+    "sha256": "b942c36c06a847cb4931b9185d7988674a05a3bcd5a280772412cfe95fd9ec98",
+    "bytes": 904402
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-55-32.535Z-crown-array/start.png",
+    "sha256": "6fef1b3037d98aea221ec3c8c45cca18b30b6e2aea6b2b8c9c476c5d097e620f",
+    "bytes": 967922
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-55-32.535Z-crown-array/witness.json",
+    "sha256": "e8259f4dcfc110c96e81d7db2bc98ca5870a1d7f2ae509c20ae3027fc5eb0606",
+    "bytes": 182848
+  }
+]

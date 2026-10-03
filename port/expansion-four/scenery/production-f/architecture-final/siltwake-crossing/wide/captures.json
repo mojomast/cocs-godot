@@ -1,0 +1,165 @@
+{
+	"captures": [
+		{
+			"camera": "[X: (0.986926, 0.0, -0.161176), Y: (0.085762, 0.846683, 0.525141), Z: (0.136465, -0.532098, 0.835613), O: (-6.92662, 23.42012, 69.85903)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 5852578,
+			"drawCalls": 1134.0,
+			"elapsedUsec": 1092839,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/siltwake-crossing/wide/siltwake-strata-wheelhouse-architecture-before.png",
+			"frameSeconds": 0.24301,
+			"objects": 2325.0,
+			"uiScale": 100,
+			"videoMemory": 69308633.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (0.986926, 0.0, -0.161176), Y: (0.085762, 0.846683, 0.525141), Z: (0.136465, -0.532098, 0.835613), O: (-6.92662, 23.42012, 69.85903)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 6979147,
+			"drawCalls": 1153.0,
+			"elapsedUsec": 2219408,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/siltwake-crossing/wide/siltwake-strata-wheelhouse-architecture-after.png",
+			"frameSeconds": 0.435537,
+			"objects": 2344.0,
+			"uiScale": 100,
+			"videoMemory": 69308633.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (0.986926, 0.0, -0.161176), Y: (0.085762, 0.846683, 0.525141), Z: (0.136465, -0.532098, 0.835613), O: (-6.92662, 23.42012, 69.85903)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 8133453,
+			"drawCalls": 1149.0,
+			"elapsedUsec": 3373714,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/siltwake-crossing/wide/siltwake-strata-wheelhouse-architecture-reduced.png",
+			"frameSeconds": 0.472314,
+			"objects": 2340.0,
+			"uiScale": 100,
+			"videoMemory": 69308633.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (0.998888, 0.0, -0.047139), Y: (0.003013, 0.997956, 0.063838), Z: (0.047043, -0.063909, 0.996846), O: (-18.8, 23.02512, 89.2)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 9478655,
+			"drawCalls": 2051.0,
+			"elapsedUsec": 4718916,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/siltwake-crossing/wide/siltwake-sluice-bank-architecture-before.png",
+			"frameSeconds": 0.442646,
+			"objects": 3270.0,
+			"uiScale": 100,
+			"videoMemory": 69308633.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (0.998888, 0.0, -0.047139), Y: (0.003013, 0.997956, 0.063838), Z: (0.047043, -0.063909, 0.996846), O: (-18.8, 23.02512, 89.2)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 10858348,
+			"drawCalls": 2101.0,
+			"elapsedUsec": 6098609,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/siltwake-crossing/wide/siltwake-sluice-bank-architecture-after.png",
+			"frameSeconds": 0.284203,
+			"objects": 3320.0,
+			"uiScale": 100,
+			"videoMemory": 69308633.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (0.998888, 0.0, -0.047139), Y: (0.003013, 0.997956, 0.063838), Z: (0.047043, -0.063909, 0.996846), O: (-18.8, 23.02512, 89.2)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 12253063,
+			"drawCalls": 2091.0,
+			"elapsedUsec": 7493324,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/siltwake-crossing/wide/siltwake-sluice-bank-architecture-reduced.png",
+			"frameSeconds": 0.521965,
+			"objects": 3310.0,
+			"uiScale": 100,
+			"videoMemory": 69308633.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (0.998455, 0.0, -0.055576), Y: (-0.022515, 0.914262, -0.404498), Z: (0.050811, 0.405125, 0.912849), O: (7.1643, 23.88876, 63.86167)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 13652217,
+			"drawCalls": 2193.0,
+			"elapsedUsec": 8892478,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/siltwake-crossing/wide/siltwake-flood-abutment-architecture-before.png",
+			"frameSeconds": 0.294825,
+			"objects": 3385.0,
+			"uiScale": 100,
+			"videoMemory": 69308633.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (0.998455, 0.0, -0.055576), Y: (-0.022515, 0.914262, -0.404498), Z: (0.050811, 0.405125, 0.912849), O: (7.1643, 23.88876, 63.86167)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 15000872,
+			"drawCalls": 2236.0,
+			"elapsedUsec": 10241133,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/siltwake-crossing/wide/siltwake-flood-abutment-architecture-after.png",
+			"frameSeconds": 0.485197,
+			"objects": 3428.0,
+			"uiScale": 100,
+			"videoMemory": 69308633.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (0.998455, 0.0, -0.055576), Y: (-0.022515, 0.914262, -0.404498), Z: (0.050811, 0.405125, 0.912849), O: (7.1643, 23.88876, 63.86167)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 16345312,
+			"drawCalls": 2227.0,
+			"elapsedUsec": 11585573,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/siltwake-crossing/wide/siltwake-flood-abutment-architecture-reduced.png",
+			"frameSeconds": 0.479775,
+			"objects": 3419.0,
+			"uiScale": 100,
+			"videoMemory": 69308633.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (-0.564684, 0.0, 0.825307), Y: (0.0, 1.0, 0.0), Z: (-0.825307, 0.0, -0.564684), O: (-152.0, 19.45, -104.0)]",
+			"cameraKind": "production snapshot camera",
+			"capturedUsec": 17535386,
+			"drawCalls": 1677.0,
+			"elapsedUsec": 12775647,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/siltwake-crossing/wide/source-camera-return.png",
+			"frameSeconds": 0.307503,
+			"objects": 1881.0,
+			"uiScale": 100,
+			"videoMemory": 65408759.0,
+			"viewport": [
+				1280,
+				800
+			]
+		}
+	],
+	"evidence": "staged production-session art inspection"
+}

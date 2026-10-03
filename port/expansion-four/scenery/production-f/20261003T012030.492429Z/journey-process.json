@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "xvfb-run",
+    "-a",
+    "-s",
+    "-screen 0 1280x800x24",
+    "node",
+    "tools/godot-biomes/expansion/connected-journey.mjs",
+    "rootfall-verge",
+    "--granted"
+  ],
+  "started": "20261003T012030.492429Z",
+  "map": "rootfall-verge",
+  "compact": false,
+  "processGroup": 771390,
+  "exitCode": 0,
+  "ended": "2026-10-03T01:23:37.661248+00:00"
+}

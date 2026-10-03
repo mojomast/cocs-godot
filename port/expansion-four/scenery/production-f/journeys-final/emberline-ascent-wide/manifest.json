@@ -1,0 +1,97 @@
+[
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/home-return.png",
+    "sha256": "a46f9d769dfcc33579c0e51e0a3d4ade93a5ecee8523be42d432da4d6d1f1422",
+    "bytes": 199260
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/home.json",
+    "sha256": "6da9707fe9ef23cdbe1d50e11d487c60c6e6891f9fb2e1a929ab72764d8aa1ba",
+    "bytes": 125
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/home.log",
+    "sha256": "a9df59af7b541e4cfa91a501f58d43665ded378e8014b3995bae70868c9f8b02",
+    "bytes": 470
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/journey.json",
+    "sha256": "166c6182dfd90f93bb01e4cdc00a6787376bf6e124395fbf08455c99e2da5623",
+    "bytes": 310011
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/native-live.log",
+    "sha256": "47511c472641edcd78202bff8573f12829429235d98d4c8419aa6a2181cabcbc",
+    "bytes": 5529729
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/native.log",
+    "sha256": "47511c472641edcd78202bff8573f12829429235d98d4c8419aa6a2181cabcbc",
+    "bytes": 5529729
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/ordinary-combat-0.0.png",
+    "sha256": "a5eeccec2452ec1b2cb5f916c8b6e80c21adec302f7398e571d1b3b72cc7bf68",
+    "bytes": 832791
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/ordinary-combat-1.0.png",
+    "sha256": "634e185f773ef3e3a86cf054270a7c3999f10ba4e918a17c3f6a9729d6f42bd5",
+    "bytes": 656042
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/ordinary-combat-2.0.png",
+    "sha256": "df2f5815b8f414d3d5feb8d562d57fdd3dd9f42a7e9cf4ddc6550886dd121ae0",
+    "bytes": 809184
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/plan.json",
+    "sha256": "b1530eeeb9820317637eeb9717103e474fafbe5ed19d59daa581b68bf84758a8",
+    "bytes": 59276
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/source-camera-return.png",
+    "sha256": "f0ee04d26939cfb19292c41a782a72deaab7292428c2464c11f0d197e41555e5",
+    "bytes": 727166
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/stage-0035.png",
+    "sha256": "8caf4ff3af703bc2ff8f62447bc45856a97c4dc7dbbfe46038c6867d3b7eb935",
+    "bytes": 948721
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/stage-0097.png",
+    "sha256": "5fc41104e7be9a10ccb36e2a5f4a393a13ff8046721884e09e412a30d698f74d",
+    "bytes": 875789
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/stage-0108.png",
+    "sha256": "00c76cf873defd63bc98ace10ecd32010e9ab17be42b865b8894f5a789bbbca0",
+    "bytes": 827164
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/stage-0176.png",
+    "sha256": "b7fc37a0362d61156e59499c240a4c1703f86a8a7159837658f305e926451dc2",
+    "bytes": 750993
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/stage-0282.png",
+    "sha256": "1c1ee486f6556577f9cc57234622b5ba91804b49c33c8e7a98115f72260b01a6",
+    "bytes": 825648
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/stage-0331.png",
+    "sha256": "7750a020df91277b18ffd1a9ada7b171c3a0807f269f4527576696142e45957e",
+    "bytes": 461337
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/start.png",
+    "sha256": "2f58bec82df8eb59767916d51ebf78c0c5c6c3e4a4e5197a32e59b37692c4cae",
+    "bytes": 901400
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-50-46.527Z-emberline-ascent/witness.json",
+    "sha256": "e7e6bf4847d89d2da499176cc2a13c3bcbedbd4af6c96eb9422c2d74b2e48c00",
+    "bytes": 272347
+  }
+]
