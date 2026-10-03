@@ -1,0 +1,5 @@
+{
+  "beforeSha256": "0a19ceee1e84623b881074a59796b5046741b1e46a451876ce68baed36526c79",
+  "afterSha256": "6dd8ac0b7bd970016aec586ebdccc5999495bcf67e545602129a44eb81374f26",
+  "policy": "Same settings as shared botanical pin_import.py: retain generated native UID; disable mesh compression and generated LODs. R5 sidecars unchanged."
+}

@@ -1,0 +1,28 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/overview-staged-r5-before.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/crusher-eye-staged-r5-before.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/crusher-maintenance-staged-r5-before.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/furnace-eye-staged-r5-before.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/transfer-eye-staged-r5-before.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/kiln-eye-staged-r5-before.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/crusher-roofline-staged-r5-before.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/furnace-skyline-staged-r5-before.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/cooling-eye-staged-r5-before.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/bunker-player-staged-r5-before.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/tipple-player-staged-r5-before.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/overview-candidate-runtime-r6.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/crusher-eye-candidate-runtime-r6.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/crusher-maintenance-candidate-runtime-r6.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/furnace-eye-candidate-runtime-r6.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/transfer-eye-candidate-runtime-r6.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/kiln-eye-candidate-runtime-r6.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/crusher-roofline-candidate-runtime-r6.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/furnace-skyline-candidate-runtime-r6.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/cooling-eye-candidate-runtime-r6.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/bunker-player-candidate-runtime-r6.png
+R6_NATIVE_CAPTURE res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/tipple-player-candidate-runtime-r6.png
+R6_CAPTURE_COMPLETE 22

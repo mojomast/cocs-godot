@@ -1,0 +1,1000 @@
+{
+  "grant": "MOTH-BLENDER-20261003-W",
+  "status": "Actual R6 production and native evidence complete; manual art acceptance and seven inherited zero-tangent substitutions remain pending",
+  "visualRevision": 6,
+  "artHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c",
+  "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879",
+  "builtVerification": {
+    "visualRevision": 6,
+    "artHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c",
+    "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879",
+    "triangles": 87566,
+    "primitives": 32,
+    "bytes": 15012396,
+    "exactR5PositionsNormalsTangentsAndOrientedTriangleMultiplicity": true,
+    "plannedUniformUVScaling": true,
+    "preservedOrangeExact": true,
+    "newMaterialsPixelChecked": [
+      "R6 / machine",
+      "R6 / ore-shell",
+      "R6 / plinth",
+      "R6 / refractory",
+      "R6 / wall",
+      "R6 / ground",
+      "R6 / roof"
+    ],
+    "nativeVisualAcceptance": "pending"
+  },
+  "master": {
+    "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/gravemill-foundry-revision6.blend",
+    "bytes": 6346401,
+    "sha256": "9922b7be04bbc64deda53f0082ec279a2b81f17d5e280d476e74d5b5d12252d8"
+  },
+  "reopen": {
+    "visualRevision": 6,
+    "masterSha256": "9922b7be04bbc64deda53f0082ec279a2b81f17d5e280d476e74d5b5d12252d8",
+    "editableTriangleRolesAndUVMatch": true,
+    "editableGeometrySources": 270,
+    "sourceCollectionHiddenFromRender": true,
+    "exportMeshObjects": 16,
+    "packedImages": 40,
+    "triangles": 87566,
+    "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879",
+    "maxPositionError": 0,
+    "maxUVError": 3.814697265625e-06,
+    "comparison": "Oriented per-corner raw error <=1e-5; avoids false inequality across decimal rounding boundaries; multiplicity retained",
+    "nativeVisualAcceptance": "pending"
+  },
+  "exactR5StreamByteProof": [
+    {
+      "node": "kit.new-hero.GM / soot.00",
+      "stream": "POSITION",
+      "sha256": "5d23f78532abd269591601cd9ca661f3edbf98574350b89239ea6ae38f15d975",
+      "bytes": 56496
+    },
+    {
+      "node": "kit.new-hero.GM / soot.00",
+      "stream": "NORMAL",
+      "sha256": "95a8db0784d5afd2fa613aafe28dcffde1221c64e0c61456bc9fac06f188d92a",
+      "bytes": 56496
+    },
+    {
+      "node": "kit.new-hero.GM / soot.00",
+      "stream": "TANGENT",
+      "sha256": "4dc7c1317623952c71790b6b9c35cc31258291d670ef88e4e9fdd312fbd33a0e",
+      "bytes": 75328
+    },
+    {
+      "node": "kit.new-hero.G4 / ribbed.00",
+      "stream": "POSITION",
+      "sha256": "1ba5ff44a3e44649106b7b263ffba291d20c6d7312b88b5f19b6d3a3c52b435c",
+      "bytes": 23232
+    },
+    {
+      "node": "kit.new-hero.G4 / ribbed.00",
+      "stream": "NORMAL",
+      "sha256": "798a628c934b860eeb2d5ba737796b2cb19ad741e2cdf9f43f8d18dcdf51e92a",
+      "bytes": 23232
+    },
+    {
+      "node": "kit.new-hero.G4 / ribbed.00",
+      "stream": "TANGENT",
+      "sha256": "b9835f082676d726ab511ac8e6d19b9f552d9cfe3caae6ea2b2a83e89f58e066",
+      "bytes": 30976
+    },
+    {
+      "node": "kit.new-hero.GM / brass.00",
+      "stream": "POSITION",
+      "sha256": "900f5d4d34f5b95a72d948c296f7931d306f5de8755a6dc38d8c10b85f92e097",
+      "bytes": 88308
+    },
+    {
+      "node": "kit.new-hero.GM / brass.00",
+      "stream": "NORMAL",
+      "sha256": "835d58c13b30b4cd61620d09607753f38f3702039a3b8cf5712fc7710e994701",
+      "bytes": 88308
+    },
+    {
+      "node": "kit.new-hero.GM / brass.00",
+      "stream": "TANGENT",
+      "sha256": "13912897adf2eae97e0323aa6d978d5e5b1bb46ca56e6a3f15dcc344ec8ee0e8",
+      "bytes": 117744
+    },
+    {
+      "node": "kit.new-hero.GM / copper.00",
+      "stream": "POSITION",
+      "sha256": "46d5e1438d3d016ebd6b9dd9c3356318a9b4aea88b6cae8a0986c1a71979eb18",
+      "bytes": 18912
+    },
+    {
+      "node": "kit.new-hero.GM / copper.00",
+      "stream": "NORMAL",
+      "sha256": "e54d40d8fd585315048301db0a6ff0c1987266fccf7b7eaed73a4fbc59b11b45",
+      "bytes": 18912
+    },
+    {
+      "node": "kit.new-hero.GM / copper.00",
+      "stream": "TANGENT",
+      "sha256": "2193b62cc5ae3795e82e915e1a6bd6a7492d313976fa260af584b1105c1b6797",
+      "bytes": 25216
+    },
+    {
+      "node": "kit.new-hero.G4 / grating.00",
+      "stream": "POSITION",
+      "sha256": "2622b2fe77c01874323b37a45b8e8a25a9313f8b9262e6c1f80069b7fbaf80e6",
+      "bytes": 2304
+    },
+    {
+      "node": "kit.new-hero.G4 / grating.00",
+      "stream": "NORMAL",
+      "sha256": "dbef5cd822a58d19472929dd58b4fe9f59bfb5892eca38839333628e342e2c47",
+      "bytes": 2304
+    },
+    {
+      "node": "kit.new-hero.G4 / grating.00",
+      "stream": "TANGENT",
+      "sha256": "7bf416091411b1e11290b68106c8dcc6f894405c9f18d8cfa1e006688b970048",
+      "bytes": 3072
+    },
+    {
+      "node": "kit.new-hero.GM / mineral.00",
+      "stream": "POSITION",
+      "sha256": "e1c1b5b49ca4a861db3aed6e7271b65f266f54546168d6571df6c3105aa31dad",
+      "bytes": 12768
+    },
+    {
+      "node": "kit.new-hero.GM / mineral.00",
+      "stream": "NORMAL",
+      "sha256": "384920fafabc62983db0a835ffeb9d6a9ca4a912869e4ec5c77d2537765cb994",
+      "bytes": 12768
+    },
+    {
+      "node": "kit.new-hero.GM / mineral.00",
+      "stream": "TANGENT",
+      "sha256": "a90eb4f30992f49860dd1638bcdd4bec2d32f80ac736e864bc905ceff95deb07",
+      "bytes": 17024
+    },
+    {
+      "node": "kit.new-hero.G4 / timber.00",
+      "stream": "POSITION",
+      "sha256": "e2934116f3bb7ac2547cac1ebfd5816ca5a9be51ad841e984ad63eba6c8f3179",
+      "bytes": 1152
+    },
+    {
+      "node": "kit.new-hero.G4 / timber.00",
+      "stream": "NORMAL",
+      "sha256": "260962266811af9cd792a750ed0082d390d48e4deb51839fd1a449d775cb4ed8",
+      "bytes": 1152
+    },
+    {
+      "node": "kit.new-hero.G4 / timber.00",
+      "stream": "TANGENT",
+      "sha256": "4a4e7b573c78a4c6312f1dbd562e07bc96ac3dcb3e6f9813257fa4fb61c00e29",
+      "bytes": 1536
+    },
+    {
+      "node": "kit.new-hero.GM / ore.00",
+      "stream": "POSITION",
+      "sha256": "de71e9e319b0a9188d360b502a0967cd2cf3a8224e140b90727233cd57d5f722",
+      "bytes": 5040
+    },
+    {
+      "node": "kit.new-hero.GM / ore.00",
+      "stream": "NORMAL",
+      "sha256": "cbe92d52394e33f82d7bca9eb8cc8af81603b28458731284c5626d1a53da8e7a",
+      "bytes": 5040
+    },
+    {
+      "node": "kit.new-hero.GM / ore.00",
+      "stream": "TANGENT",
+      "sha256": "2d7b433d079f82bb8edb735b7745b39382744c2ee2bbc934c38c578af27edc7c",
+      "bytes": 6720
+    },
+    {
+      "node": "Gravemill / soot",
+      "stream": "POSITION",
+      "sha256": "1e18cf07d47148eb44d97cf1f296cc05e55916b50d5b072a40409b72937d0c23",
+      "bytes": 326064
+    },
+    {
+      "node": "Gravemill / soot",
+      "stream": "NORMAL",
+      "sha256": "04080177638b4ca6ec151919219f2ceb06f7783a2950eff8f1b658f0ab1dbf55",
+      "bytes": 326064
+    },
+    {
+      "node": "Gravemill / soot",
+      "stream": "TANGENT",
+      "sha256": "01b3c80a077760d991dcdd394812bb2692305cdf6531fa0e774c015297d23d99",
+      "bytes": 434752
+    },
+    {
+      "node": "Gravemill / mineral",
+      "stream": "POSITION",
+      "sha256": "05942ffaa49bd922bd5de72bee53dd39acfb0532eca18225db328635b8b1bac9",
+      "bytes": 72444
+    },
+    {
+      "node": "Gravemill / mineral",
+      "stream": "NORMAL",
+      "sha256": "006f4e6a4a37e211336d364776f6b426f7c4224df5e6297e6c81d4797156e8d2",
+      "bytes": 72444
+    },
+    {
+      "node": "Gravemill / mineral",
+      "stream": "TANGENT",
+      "sha256": "129a6cc0dc14b0a82a680cf72de1d5e04811582b16e73fb7a8f10e95327defc1",
+      "bytes": 96592
+    },
+    {
+      "node": "Gravemill / copper",
+      "stream": "POSITION",
+      "sha256": "a9497e47ec0af26f3d3b092723de5d6f7bd82b5367c889958d9da8f498a100df",
+      "bytes": 105192
+    },
+    {
+      "node": "Gravemill / copper",
+      "stream": "NORMAL",
+      "sha256": "bb8e80319da5027b757ca86e69f1d094c3ec0d1adf4ff3c0fbad7f0faf4c84fa",
+      "bytes": 105192
+    },
+    {
+      "node": "Gravemill / copper",
+      "stream": "TANGENT",
+      "sha256": "2404c2264335740eadc9d4f8aa7145d23f4c5174175b62c2a7f586ac8f90587b",
+      "bytes": 140256
+    },
+    {
+      "node": "Gravemill / brass",
+      "stream": "POSITION",
+      "sha256": "655bd023332f9531d59d4939d8883c303ab36d9837274d2b025b691317928af7",
+      "bytes": 991956
+    },
+    {
+      "node": "Gravemill / brass",
+      "stream": "NORMAL",
+      "sha256": "75dc58cbfaa1c7ea66b9bb1b0fbc6d3db5a0acf864667437d59b6740a83c4792",
+      "bytes": 991956
+    },
+    {
+      "node": "Gravemill / brass",
+      "stream": "TANGENT",
+      "sha256": "e868d62fd246d2f4d0f604e67b058b873dfda244da9b77fdd6351e785422e835",
+      "bytes": 1322608
+    },
+    {
+      "node": "Gravemill / ore",
+      "stream": "POSITION",
+      "sha256": "0367cf8b6debf78001a9c1b46aa1bbab1daee147779dd4fb369d039e31b4d621",
+      "bytes": 79764
+    },
+    {
+      "node": "Gravemill / ore",
+      "stream": "NORMAL",
+      "sha256": "9846d95cd8a284d09987fa2e0551ad5a3171a31e57550fb912c4ac8a7d9deca1",
+      "bytes": 79764
+    },
+    {
+      "node": "Gravemill / ore",
+      "stream": "TANGENT",
+      "sha256": "08ea7e0cf7f3a6f59e0f8e3af396337f18297c083abf092c6f00be4cf1b8dc69",
+      "bytes": 106352
+    },
+    {
+      "node": "Gravemill / orange",
+      "stream": "POSITION",
+      "sha256": "c3a1991fae7b8e7e5764f13d65e32c3bcd83f3c41e97e64b63b71946dc13bc0a",
+      "bytes": 7776
+    },
+    {
+      "node": "Gravemill / orange",
+      "stream": "NORMAL",
+      "sha256": "b5aa473b315663866e898f95a0a86b2f597f3419629b5ae1e6e1b5e0874f4238",
+      "bytes": 7776
+    },
+    {
+      "node": "Gravemill / orange",
+      "stream": "TANGENT",
+      "sha256": "3a05e43a3c68af8a80c54273a4ef246c89f781d0f811df1026198829a79193ae",
+      "bytes": 10368
+    },
+    {
+      "node": "Gravemill / chalk",
+      "stream": "POSITION",
+      "sha256": "373b74575f8bf80ad3a4a9ebabeb46ee66775be6a01656d912683ad171744b81",
+      "bytes": 261624
+    },
+    {
+      "node": "Gravemill / chalk",
+      "stream": "NORMAL",
+      "sha256": "008debc67589d74865f878d37bb3be9c54f238dab1fe163148c35cffaab9d12e",
+      "bytes": 261624
+    },
+    {
+      "node": "Gravemill / chalk",
+      "stream": "TANGENT",
+      "sha256": "56b86131738221ddda166e484b0db89339e9a76c8bd3f4595a86b4150257d84f",
+      "bytes": 348832
+    },
+    {
+      "node": "Gravemill / cooling-floor",
+      "stream": "POSITION",
+      "sha256": "fa212a2a1cd4f00fbcdecaa6f8295164088c3ed4e77a34824b9a09c0d5772b41",
+      "bytes": 15396
+    },
+    {
+      "node": "Gravemill / cooling-floor",
+      "stream": "NORMAL",
+      "sha256": "dd53a534959e6c3d76242cecf565f0227f3e4af27dd4c3072da6fa8bab5ec7a4",
+      "bytes": 15396
+    },
+    {
+      "node": "Gravemill / cooling-floor",
+      "stream": "TANGENT",
+      "sha256": "5766e215b75034e859ea48911fa00e089f7b3941bf7224653a27999711a1528f",
+      "bytes": 20528
+    }
+  ],
+  "embeddedImages": 36,
+  "extractedImages": [
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_forge-steel-normal.png",
+      "sha256": "8662617c557392b63c6b061f957facfd116e5b87534884060fbde87f388388e5",
+      "bytes": 201913,
+      "importSha256": "465ddbb55c8684222b09e1a814e18306d1c72c7537471cddca5366413612449c"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_forge-steel-albedo-srgb.png",
+      "sha256": "fb4ac5ab0718b8a72f12b3db784b07dac3648cbe3400bbe9eb78b94c796150d8",
+      "bytes": 51149,
+      "importSha256": "d5402148e447f31dbd241873dc10bd4ba1e00007cd9a3f8c50d4b351bf679edb"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_forge-steel-roughness.png",
+      "sha256": "71197f0755dad4574a418feeb45719a8da927557c754aa7cd35252b5d16e2f8a",
+      "bytes": 67770,
+      "importSha256": "d95654421ff324ef3555b1568c5266d49e7099fcc9b9104e7147b9f447cfa429"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_ribbed-steel-normal.png",
+      "sha256": "8662617c557392b63c6b061f957facfd116e5b87534884060fbde87f388388e5",
+      "bytes": 201913,
+      "importSha256": "8bcdb144e2bfaf40f592ca2504fe521d26f76a751dfce73ea349ba96b7fd631b"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_ribbed-steel-albedo-srgb.png",
+      "sha256": "73170007ef781b95e072a0b23a9ed108f6c0e1fe98edf0ee6626bfbf80d7afd1",
+      "bytes": 54338,
+      "importSha256": "9f9a1c14feb5d91f5f69d2173e9c47153341eba8162efba11ee5798a8689e5d1"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_ribbed-steel-roughness.png",
+      "sha256": "5d0b1ab5ce135b12e1ea6864cd1c38f3e5792b7c4078422bf4b8f22754ef6fdf",
+      "bytes": 67136,
+      "importSha256": "1620f7afc4e681e84b4ecc3c7206f2a0855c6a3132a31a20d71341bb518576d7"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_copper-patina-normal.png",
+      "sha256": "7b2ec1c6a0837fdbbe67ed0779e2d39ad3637b405ed0a5186ac21b94db2dab9c",
+      "bytes": 261676,
+      "importSha256": "bbe1cd416183c119a57263793fde9bce3a2b146d9565045715dab8a639e8e6ab"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_copper-patina-albedo-srgb.png",
+      "sha256": "df08158f6dfced7e3e823f32b1a796ece7a2fed8f763505c6f43980cd82516e2",
+      "bytes": 103983,
+      "importSha256": "734e0eea7e13cca86809274fcbb0f0aa59f6c0f92e90e678942ef248e91d2902"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_copper-patina-roughness.png",
+      "sha256": "2d9934b2c971746003f84cc364c085cf55062a49e90d548a800496a416830698",
+      "bytes": 89497,
+      "importSha256": "db4c1a36cb136495c43a26a4da9f21678202241066952612899c01d16d79a513"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_copper-heat-oxide-normal.png",
+      "sha256": "0ab51bd3acd084e63b9461946a0877cc6b3d9133741b8237f6ae0565b2d850f3",
+      "bytes": 206566,
+      "importSha256": "249f7dc005732cf29f895266904da9cb8d22df20459e3696461942d88780a786"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_copper-heat-oxide-albedo-srgb.png",
+      "sha256": "4548638fe81233e2252aee8dbd3b4abda1783a4d8fa91c6f1fb748efe7e1f32a",
+      "bytes": 107940,
+      "importSha256": "dd211628537e683c2ff3d4fd5da1154425109c14cf8b27217983af7283f9ac77"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_copper-heat-oxide-roughness.png",
+      "sha256": "ea2bdc71963b13deb3a0cc6049b7675c4d83322d0f5ddc1611c691281c1fe8b4",
+      "bytes": 85855,
+      "importSha256": "51d74787a416ad4b1f76d669d336b295da7b581990ea8e401f1771659bf7e99e"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_iron-grate-normal.png",
+      "sha256": "ec09f5e04700822fd8640563a51ca2a8aa1bc88a568ac8ed87a1f8d2afdafaf7",
+      "bytes": 425261,
+      "importSha256": "11f9cb4933f577e696bfda028e6b56a8d45b897f3943ddcb60dcd3772d82849c"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_iron-grate-albedo-srgb.png",
+      "sha256": "c1059270b8fe47495739e77c562718250f124bbc88ebf916bdd4cb936a5c95a7",
+      "bytes": 59793,
+      "importSha256": "e42eed5c1c6e44cc47f7a474fb7500307187a933918c02f52779f9099e04e802"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_iron-grate-roughness.png",
+      "sha256": "65e51a2a8b4f2f659182df67f41fcd223f11868739816237155e33a8d6f81ec1",
+      "bytes": 61282,
+      "importSha256": "1bef8f433e27badefc74360032765576e2e081c368cd724a5e60c68c19528ca6"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_cast-seams-normal.png",
+      "sha256": "a65f9df057998d11ac92a24f05c5946eb794134f7cc12b9dfab035496c37a858",
+      "bytes": 101348,
+      "importSha256": "b48fa483954c34f66614be834cfee2a16b3e925a83a6d0a5673762a48fed6c56"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_cast-seams-albedo-srgb.png",
+      "sha256": "1a2bd1e1a063bb0b6d0f5c0fba268b00e6319bbb2843b351513c78e13ff4c897",
+      "bytes": 38874,
+      "importSha256": "f97a0a9825dbda60e5f32f972d4ff0ef728997ec975458185fcfd93c71e6b836"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_cast-seams-roughness.png",
+      "sha256": "80d59d5ac1afec0341c18b88b92e29936bd6ee83c9155d1810fbdef3ae36a58f",
+      "bytes": 45802,
+      "importSha256": "1b7d1f0eeedf91974ac3677624e9611be77164653323883e65a245c999e10d31"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_timber-weather-normal.png",
+      "sha256": "7a8f4b78d0c25eddb4def652c706110b27dceef69d8ff3c48f343abf41bd1a5b",
+      "bytes": 183882,
+      "importSha256": "f87a88d33789cf94bc133db653a39eb77db36081970cc85e5cc373b480d6a1c2"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_timber-weather-albedo-srgb.png",
+      "sha256": "fb6bad65ce1a09efa1efbdbb20395056a2c3d6dd185fb30d9798b12a35065b43",
+      "bytes": 91585,
+      "importSha256": "aadc960b53eca7c163eba5adbe47659b0c86d8a4c63d301aae0794d293403cfa"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_timber-weather-roughness.png",
+      "sha256": "1afcc0cd04efbf07b7e96e9b48314f0cc9fa4d1385cb33bc0776c8aa07b27be8",
+      "bytes": 59142,
+      "importSha256": "f0683035c36c42df9173b7d259b42df1bbb7abd6aab9e4cf343b5d902a9c1ffe"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_aggregate-normal.png",
+      "sha256": "61baadb1991cdc3ab47e1f025672c06f9e6f601c0d56552dee34da3e0f8444a4",
+      "bytes": 119069,
+      "importSha256": "f06e0f00ceb9abe62c09e7a1e6856b2820c72089bf7c42d0d679e8b85f881f7a"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_aggregate-albedo-srgb.png",
+      "sha256": "3abb29a4b5da6ed3a1f229c40914a29d0de48e111bcfb2421ee36d5bcb989c05",
+      "bytes": 50761,
+      "importSha256": "afd644b07488f2f0b4bb02816e23092be44dd44460d1e61c6ab631f56cd062fb"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_aggregate-roughness.png",
+      "sha256": "9e92173e1cf48db773511c9e60bb97ebd79d7286242c3adb7d5dae42efcf75d3",
+      "bytes": 56596,
+      "importSha256": "626db72ddd1c4381196d0dab972fff0a1be086549ef3d97fc711a9606edc8948"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_lime-plaster-normal.png",
+      "sha256": "d8630b11ec0b1baaaafefe6ca867e13577511fc3e0fc45fd546aa0b8e94930ef",
+      "bytes": 167240,
+      "importSha256": "242eab8f7150feb5473978537bb8c2c7d3f45c945dfdc2fb7afb24f24c74cc4b"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_lime-plaster-albedo-srgb.png",
+      "sha256": "245c7716dd9f96a2903bb4c0e285e48c48117ff0d6eb336f9561e1e37c661396",
+      "bytes": 76082,
+      "importSha256": "fbe4f504accf58f31c1e44a1ef74025a6ed2bf4d50ba864bc77962974c241d4e"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_lime-plaster-roughness.png",
+      "sha256": "3a46b6b089ac7da0ca0f49f90301177513c611adef5d3a3383c119e861462b8d",
+      "bytes": 84115,
+      "importSha256": "efd86e160eca52a40b3cb041de3c850a7225977460247e8401458cdf43195864"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_wet-soot-normal.png",
+      "sha256": "721cb3b4c8f5fd59869d86a99326ef5a0f4a6deddd98bbc78c3b56ed561fa3e1",
+      "bytes": 87738,
+      "importSha256": "a9910f38d4e5fa290530cec7c151bf55e1281f298d5125649c66e5db3050699d"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_wet-soot-albedo-srgb.png",
+      "sha256": "6a411f9d23a6d1047f3837059d11728b8fa7f59e5b946809bf9a7ffa2f5e6701",
+      "bytes": 57695,
+      "importSha256": "02bc93aba4fe286fb4b9b23573f214cfdac4b51bb4093c0b0ca5b2675e3f38ca"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_wet-soot-roughness.png",
+      "sha256": "59847f77bb1a108a9075aace1ea1089a126bb7defabcc0d6fea8a4c26334eb9e",
+      "bytes": 71232,
+      "importSha256": "0da3c7e44f7ba0d4027526e8438bb695045fe04cd3cb5b5ecb7e400e6dd0f4f7"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_oxidized-iron-normal.png",
+      "sha256": "db25a51dd6c649d7b155c51c64de0cb507306bf52641407581a850a79ffdc864",
+      "bytes": 198577,
+      "importSha256": "253c1f34ea5614f3f6fac7f52470d0e5093ce81e6df652b10cc85cf7a22089db"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_oxidized-iron-albedo-srgb.png",
+      "sha256": "4f794fd4eb20b706e4eda51cfc8533e5151b846bd73c5f251d9ab26d767f5914",
+      "bytes": 59980,
+      "importSha256": "4e7f5fa3c185033c975c3b163b2bab38fadd34dfaa60f70f2e1cfd26fe82959d"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_oxidized-iron-roughness.png",
+      "sha256": "270e0a5d2c215abb5e51e37e4665c09e26698aa47563a6cdba80c996dbab0818",
+      "bytes": 74877,
+      "importSha256": "174fdac2c03fa83d59937e100550f5e58699d8ca5031ec762cee1e7fc3fe031c"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_terracotta-normal.png",
+      "sha256": "a82b4af6b637ecd74953a0f4af261acc637eab255e80f6117a231f5d0b564ca5",
+      "bytes": 174659,
+      "importSha256": "083e97725fde36a051c93b0e15aa529138a9dd5422e88b69a4f2718b8dce927d"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_terracotta-albedo-srgb.png",
+      "sha256": "19efdd03cd0bc98d04405f04c04b8b9ac1293ca0751103c4e4a11e9ab4b92124",
+      "bytes": 53680,
+      "importSha256": "ce748c8deb16415ea0a2539825e590cfc28e0a35e29dadb6c3ef5aff3fd16ccd"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r6_terracotta-roughness.png",
+      "sha256": "3d8531df0143abe737299e022b6ccd643092c9d1851b23973be0ab4ef2a7d0ef",
+      "bytes": 54081,
+      "importSha256": "63d2ed5bc796f3b33caba7ce9746f2e3b4a5b81155551d88408854aaeb9888d3"
+    }
+  ],
+  "nativeImport": {
+    "loadInstantiateMicroseconds": 95529,
+    "meshNodes": 16,
+    "surfaces": 32,
+    "triangles": 87566,
+    "materialPixelMatches": 51,
+    "exactPositionsAndUV": true,
+    "maxNormalError": 0.00010782480239868164,
+    "maxDefinedTangentError": 0.0001665949821472168,
+    "undefinedTangentCorners": [
+      {
+        "role": "R6 / ground",
+        "position": [
+          -192.0,
+          7.270666122436523,
+          -21.58555793762207
+        ],
+        "sourceTangent": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "nativeTangent": [
+          -3.0518509447574615e-05,
+          0.0,
+          -1.0,
+          1.0
+        ],
+        "status": "Inherited undefined R5 tangent; native substitution recorded, not direction preservation"
+      },
+      {
+        "role": "GM / copper",
+        "position": [
+          -121.98336029052734,
+          34.099998474121094,
+          -22.598840713500977
+        ],
+        "sourceTangent": [
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "nativeTangent": [
+          -3.0518509447574615e-05,
+          0.0,
+          -1.0,
+          1.0
+        ],
+        "status": "Inherited undefined R5 tangent; native substitution recorded, not direction preservation"
+      },
+      {
+        "role": "GM / copper",
+        "position": [
+          121.99168395996094,
+          34.203922271728516,
+          11.739420890808105
+        ],
+        "sourceTangent": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "nativeTangent": [
+          -3.0518509447574615e-05,
+          0.0,
+          -1.0,
+          1.0
+        ],
+        "status": "Inherited undefined R5 tangent; native substitution recorded, not direction preservation"
+      },
+      {
+        "role": "GM / copper",
+        "position": [
+          -121.99168395996094,
+          34.203922271728516,
+          -22.539419174194336
+        ],
+        "sourceTangent": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "nativeTangent": [
+          -3.0518509447574615e-05,
+          0.0,
+          -1.0,
+          1.0
+        ],
+        "status": "Inherited undefined R5 tangent; native substitution recorded, not direction preservation"
+      },
+      {
+        "role": "GM / copper",
+        "position": [
+          -121.98336029052734,
+          34.099998474121094,
+          -19.79884147644043
+        ],
+        "sourceTangent": [
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "nativeTangent": [
+          -3.0518509447574615e-05,
+          0.0,
+          -1.0,
+          1.0
+        ],
+        "status": "Inherited undefined R5 tangent; native substitution recorded, not direction preservation"
+      },
+      {
+        "role": "GM / copper",
+        "position": [
+          121.99168395996094,
+          34.203922271728516,
+          14.539420127868652
+        ],
+        "sourceTangent": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "nativeTangent": [
+          -3.0518509447574615e-05,
+          0.0,
+          -1.0,
+          1.0
+        ],
+        "status": "Inherited undefined R5 tangent; native substitution recorded, not direction preservation"
+      },
+      {
+        "role": "GM / copper",
+        "position": [
+          -121.99168395996094,
+          34.203922271728516,
+          -19.73941993713379
+        ],
+        "sourceTangent": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "nativeTangent": [
+          -3.0518509447574615e-05,
+          0.0,
+          -1.0,
+          1.0
+        ],
+        "status": "Inherited undefined R5 tangent; native substitution recorded, not direction preservation"
+      }
+    ],
+    "tangentAcceptance": "Seven R5 zero vectors cannot preserve a native direction. GLB bytes remain exact; Godot substitutions are inventoried, not silently approved."
+  },
+  "nativeRays": {
+    "artHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c",
+    "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879",
+    "godot": {
+      "build": "official",
+      "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+      "hex": 263426,
+      "major": 4,
+      "minor": 5,
+      "patch": 2,
+      "status": "stable",
+      "string": "4.5.2-stable (official)",
+      "timestamp": 0
+    },
+    "rays": [
+      {
+        "distance": 3.20040893554688,
+        "expected": 3.2004078244866,
+        "id": "bunker-0-upper"
+      },
+      {
+        "distance": 2.70999908447266,
+        "expected": 2.71,
+        "id": "bunker-2-upper"
+      },
+      {
+        "distance": 1.0,
+        "expected": 1.0,
+        "id": "tipple-left-jamb"
+      },
+      {
+        "distance": 0.779998779296875,
+        "expected": 0.780000000000001,
+        "id": "tipple-right-jamb"
+      },
+      {
+        "distance": 5.0,
+        "expected": 5.0,
+        "id": "old-unsheared-conveyor"
+      },
+      {
+        "distance": 0.800000190734863,
+        "expected": 0.8,
+        "id": "sheared-conveyor"
+      },
+      {
+        "distance": 4.0,
+        "expected": 4.0,
+        "id": "tipple-51-clear-aperture"
+      },
+      {
+        "distance": 4.0,
+        "expected": 4.0,
+        "id": "tipple-82-clear-aperture"
+      }
+    ],
+    "scope": "Eight fresh native targeted R6-stage rays; previous R5 capsule report remains prior same-geometry evidence, not rerun here"
+  },
+  "priorCapsules": {
+    "path": "godot/tests/new_maps/gravemill_foundry/revision5/physics-report.json",
+    "status": "prior immutable same-geometry R5 evidence; not rerun for W"
+  },
+  "screenshots": [
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/overview-staged-r5-before.png",
+      "sha256": "8b264315e46611511251327df1650aebaf534091563cb722e15e3820d0d4af92",
+      "bytes": 315811,
+      "view": "overview",
+      "visualRevision": 5,
+      "artHash": "237dcc9d1b339116915d824f9896e6ee7daa57b0c13bab08c58da8d51445c9c8"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/crusher-eye-staged-r5-before.png",
+      "sha256": "5652f5f19cd3a3f287e23ee510dd3b68f756ab77fdb750b024bb82d84e8114fa",
+      "bytes": 920302,
+      "view": "crusher-eye",
+      "visualRevision": 5,
+      "artHash": "237dcc9d1b339116915d824f9896e6ee7daa57b0c13bab08c58da8d51445c9c8"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/crusher-maintenance-staged-r5-before.png",
+      "sha256": "ddb586340cfbc7d8aa172d884d6e22955471a1bb6fbe5c16df3ee12045295310",
+      "bytes": 1008574,
+      "view": "crusher-maintenance",
+      "visualRevision": 5,
+      "artHash": "237dcc9d1b339116915d824f9896e6ee7daa57b0c13bab08c58da8d51445c9c8"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/furnace-eye-staged-r5-before.png",
+      "sha256": "ab87729e1849c9b33fd7ba2337e078c108bca4e561b35d8255d9583fa5c5ffe3",
+      "bytes": 585547,
+      "view": "furnace-eye",
+      "visualRevision": 5,
+      "artHash": "237dcc9d1b339116915d824f9896e6ee7daa57b0c13bab08c58da8d51445c9c8"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/transfer-eye-staged-r5-before.png",
+      "sha256": "87f7385ae7f3839b26096ecd258be941bf9f5438b7d0c48c29b5cc4715e295b4",
+      "bytes": 633086,
+      "view": "transfer-eye",
+      "visualRevision": 5,
+      "artHash": "237dcc9d1b339116915d824f9896e6ee7daa57b0c13bab08c58da8d51445c9c8"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/kiln-eye-staged-r5-before.png",
+      "sha256": "4012cb666920a94cd0f1d882a4e4da90695a05072094af6412d28d857a8188f2",
+      "bytes": 514498,
+      "view": "kiln-eye",
+      "visualRevision": 5,
+      "artHash": "237dcc9d1b339116915d824f9896e6ee7daa57b0c13bab08c58da8d51445c9c8"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/crusher-roofline-staged-r5-before.png",
+      "sha256": "560fba7851986db26c7edd509515a9347a6936597bfbefa1d5c2a2e65e701c3f",
+      "bytes": 721919,
+      "view": "crusher-roofline",
+      "visualRevision": 5,
+      "artHash": "237dcc9d1b339116915d824f9896e6ee7daa57b0c13bab08c58da8d51445c9c8"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/furnace-skyline-staged-r5-before.png",
+      "sha256": "26321f01c9b2a1551ff028f90f0577e1464581891809dd82248cfe26299dc026",
+      "bytes": 708911,
+      "view": "furnace-skyline",
+      "visualRevision": 5,
+      "artHash": "237dcc9d1b339116915d824f9896e6ee7daa57b0c13bab08c58da8d51445c9c8"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/cooling-eye-staged-r5-before.png",
+      "sha256": "6f33f660390dc87f0577e32a09528202b8b23eeaf56b357356a89fdac42113b9",
+      "bytes": 805747,
+      "view": "cooling-eye",
+      "visualRevision": 5,
+      "artHash": "237dcc9d1b339116915d824f9896e6ee7daa57b0c13bab08c58da8d51445c9c8"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/bunker-player-staged-r5-before.png",
+      "sha256": "20d053a94d2ea1080bc3d1f80ac9d1ae579b191f591fdfa45d9d7a04f9c8de42",
+      "bytes": 414943,
+      "view": "bunker-player",
+      "visualRevision": 5,
+      "artHash": "237dcc9d1b339116915d824f9896e6ee7daa57b0c13bab08c58da8d51445c9c8"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/tipple-player-staged-r5-before.png",
+      "sha256": "39a8054d63620f5298f0f1fff41ae0851c5d92556c10058b701e813a20cf3021",
+      "bytes": 577686,
+      "view": "tipple-player",
+      "visualRevision": 5,
+      "artHash": "237dcc9d1b339116915d824f9896e6ee7daa57b0c13bab08c58da8d51445c9c8"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/overview-candidate-runtime-r6.png",
+      "sha256": "a3888fa646aa45bb0f9a9a04a2a8c60e7ff331af566f2e2cbdd2812b77a91f52",
+      "bytes": 339217,
+      "view": "overview",
+      "visualRevision": 6,
+      "artHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/crusher-eye-candidate-runtime-r6.png",
+      "sha256": "b6e0848dc19042bd9f131b33106fb62bd79b11f7ba564e45f6871161546002f6",
+      "bytes": 852147,
+      "view": "crusher-eye",
+      "visualRevision": 6,
+      "artHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/crusher-maintenance-candidate-runtime-r6.png",
+      "sha256": "866376ded85f1bf8710c1f117d502ffc75d00f5cef592095b6b73511398f1c03",
+      "bytes": 959541,
+      "view": "crusher-maintenance",
+      "visualRevision": 6,
+      "artHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/furnace-eye-candidate-runtime-r6.png",
+      "sha256": "ba58730c9a2114d995ee158e2846d86a27294a7614c25d7cb852b6dcfe45dbe3",
+      "bytes": 649416,
+      "view": "furnace-eye",
+      "visualRevision": 6,
+      "artHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/transfer-eye-candidate-runtime-r6.png",
+      "sha256": "947d0ca84b65e3efb555833ced243d3369b7f2c388bca216447149d816266511",
+      "bytes": 637053,
+      "view": "transfer-eye",
+      "visualRevision": 6,
+      "artHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/kiln-eye-candidate-runtime-r6.png",
+      "sha256": "a63876d10f78db0cd30a2e30058b6dacc2fff8621ff806ce5956e622eef25d02",
+      "bytes": 530556,
+      "view": "kiln-eye",
+      "visualRevision": 6,
+      "artHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/crusher-roofline-candidate-runtime-r6.png",
+      "sha256": "69b744217e51c490ee491b5b31aeb7206e03f2c4de6bdc2ad294ec2c716be528",
+      "bytes": 706672,
+      "view": "crusher-roofline",
+      "visualRevision": 6,
+      "artHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/furnace-skyline-candidate-runtime-r6.png",
+      "sha256": "fb4a7d8b4f117bc7a8c46851af8ec2607f18ad256185c9c9215148ede177e2dc",
+      "bytes": 724110,
+      "view": "furnace-skyline",
+      "visualRevision": 6,
+      "artHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/cooling-eye-candidate-runtime-r6.png",
+      "sha256": "fb2b5690b3cba1d43a31bf9edac0ebad3b33c02875f6b4476169d4bb39166c40",
+      "bytes": 787369,
+      "view": "cooling-eye",
+      "visualRevision": 6,
+      "artHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/bunker-player-candidate-runtime-r6.png",
+      "sha256": "e83259756348837a0d7a53510a5aeda288c4a55067a651232709f80d75d5d4d8",
+      "bytes": 410042,
+      "view": "bunker-player",
+      "visualRevision": 6,
+      "artHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/native/tipple-player-candidate-runtime-r6.png",
+      "sha256": "fd31bcd323b344c28bbbeeebc2d8048e0005168222884f465063171589dcfd36",
+      "bytes": 644405,
+      "view": "tipple-player",
+      "visualRevision": 6,
+      "artHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c"
+    }
+  ],
+  "performance": {
+    "5": {
+      "minMs": 119.543125,
+      "medianMs": 234.850875,
+      "maxMs": 330.81125,
+      "drawCallsRange": [
+        94.0,
+        147.0
+      ],
+      "peakVideoMemoryBytes": 66969327.0,
+      "peakStaticMemoryBytes": 120796320,
+      "backend": [
+        "llvmpipe (LLVM 20.1.8, 256 bits)"
+      ]
+    },
+    "6": {
+      "minMs": 124.2535,
+      "medianMs": 217.692,
+      "maxMs": 330.617625,
+      "drawCallsRange": [
+        112.0,
+        227.0
+      ],
+      "peakVideoMemoryBytes": 74140225.0,
+      "peakStaticMemoryBytes": 121319152,
+      "backend": [
+        "llvmpipe (LLVM 20.1.8, 256 bits)"
+      ]
+    }
+  },
+  "performanceScope": "Eight-frame static-view samples on software llvmpipe, one warmed-cache headless load; not hosted gameplay or dedicated-GPU performance",
+  "budget": {
+    "trianglePolicy": "150k advisory, useful detail retained",
+    "glbBytes": 15012396,
+    "bytesDesignTarget": 7000000,
+    "overDesignTarget": 8012396,
+    "explanation": "Original streams retained with material-specific indices/UV accessors, packed material textures; no detail reduction or quantization."
+  },
+  "manualArtAcceptance": "pending user review",
+  "publicPromotion": false,
+  "packagesExported": false,
+  "hostedSixModeMatrix": "not executed",
+  "shipping": "R6 staged revision needs a separate explicit parent inventory transaction; package policy unchanged"
+}

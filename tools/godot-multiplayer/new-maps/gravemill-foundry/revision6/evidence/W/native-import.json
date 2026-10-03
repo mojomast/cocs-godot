@@ -1,0 +1,801 @@
+{
+  "artHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c",
+  "godot": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "loadInstantiateMicroseconds": 95529,
+  "materials": {
+    "G4 / grating": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/G4-grating-albedo.png",
+          "sha256": "26b62a22cf7475addcb9977f4a36f4d1b6862977cd2d117d706bfff24eb7038a",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/G4-grating-normal.png",
+          "sha256": "c2dcba21d1b739cc28892b73731a28d58f01460e2c67ec68d92bed0cf164cfcd",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/G4-grating-roughness.png",
+          "sha256": "311a8c9e4bc344b3ff8c3aa28a835eba7e71f1bfe032e927c34dcf117bd5db0c",
+          "width": 512
+        }
+      },
+      "metallic": 0.449999988079071,
+      "normalScale": 1.0,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "G4 / ribbed": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/G4-ribbed-albedo.png",
+          "sha256": "8640a43e29ad78a3494efe16da066667e6401c6bac33ef3d9b05dc845cb8ea33",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/G4-ribbed-normal.png",
+          "sha256": "7ebc339b2d42c2353b48f70d2672237560ee32ac1141336a3606e9c6ab3cfbc1",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/G4-ribbed-roughness.png",
+          "sha256": "985d422637eeeac15e680a5f8c501eb1bdb38160627971d56db39ae16442de18",
+          "width": 512
+        }
+      },
+      "metallic": 0.400000005960464,
+      "normalScale": 1.0,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "G4 / timber": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/G4-timber-albedo.png",
+          "sha256": "46f629183e54a2be7477bb18b4ec0acddb8a31377ee5c36b9f52bc03c6a3eb57",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/G4-timber-normal.png",
+          "sha256": "0cd2b0ac4cce09862fe88cfeb9bd6db4a796332585657a200ae5e013b7f5a298",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/G4-timber-roughness.png",
+          "sha256": "166846f82cc8bbc8ef2062f1e620b49da75a9d83252e5ca389d1928b1a1e1694",
+          "width": 512
+        }
+      },
+      "metallic": 0.0,
+      "normalScale": 1.0,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "GM / brass": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-brass-albedo.png",
+          "sha256": "9b317ed17fa6d175c4a11e30e199d3b2b3f6372fe037a86c6617bd01c64c1c8f",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-brass-normal.png",
+          "sha256": "5ff8f16b7b213872d2b9a9aed0a45e822a60b4d1fd1b1375e689692de33ad285",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-brass-roughness.png",
+          "sha256": "4a50b640fd69f0ac2be714d4d95f0d6ec55502b7fbb8a6391a7be82fab904185",
+          "width": 512
+        }
+      },
+      "metallic": 0.5,
+      "normalScale": 1.0,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "GM / chalk": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-chalk-albedo.png",
+          "sha256": "17ccefa01cd3dabf54bc5801f6e19267dc796636105328c474bf656f98fb6844",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-chalk-normal.png",
+          "sha256": "a6e62ba75cebf3c973009ff1b4c15ba46fc778dbb8b722c856cf907e9b13028b",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-chalk-roughness.png",
+          "sha256": "468d897296bffa525d4d7c41269aac524344b949276688e84aa7f2218ec9c3bd",
+          "width": 512
+        }
+      },
+      "metallic": 0.0,
+      "normalScale": 0.349999994039536,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "GM / cooling-floor": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-cooling-floor-albedo.png",
+          "sha256": "0efaea60e42f281e3472dbb0d5f38e3791e899b9dcead233f663d5d62beeee27",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-cooling-floor-normal.png",
+          "sha256": "b33f5621a3d74bab1e62b8f667bde7c4f07a95267aa41b3c405d2ccc5910272a",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-cooling-floor-roughness.png",
+          "sha256": "f0ef5c841b5f71eccdcc0b5f0c485e28e8d14ffbf4c6a2de651c991c575d7e82",
+          "width": 512
+        }
+      },
+      "metallic": 0.0500000007450581,
+      "normalScale": 1.0,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "GM / copper": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-copper-albedo.png",
+          "sha256": "a7d8dd5158d5d82f533e6d2d1503748880cf5b3f830c8f22fa87e6625d272f0d",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-copper-normal.png",
+          "sha256": "ea03e445c4668f8fa5f194b53b1a43db05432eb3c2a399b2305874b3169295e8",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-copper-roughness.png",
+          "sha256": "8bfb233e45a5a8bc0be324991be588eee6ed3cb5f3530af758b70d1aab493efe",
+          "width": 512
+        }
+      },
+      "metallic": 0.449999988079071,
+      "normalScale": 1.0,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "GM / mineral": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-mineral-albedo.png",
+          "sha256": "a1ab418eefb6b6ae1a3c7a62281e6c9d1995629f820fbd6695bb6a72c0626485",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-mineral-normal.png",
+          "sha256": "180ab689712603672772dd3d2bbe331e32837afc5ab25d55955f2501b2703973",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-mineral-roughness.png",
+          "sha256": "37c9ffa81c8ae3eba5f88cdece5957ad74e3dd111a2a439f129a12f89a336ddc",
+          "width": 512
+        }
+      },
+      "metallic": 0.0,
+      "normalScale": 0.349999994039536,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "GM / orange": {
+      "albedo": "(0.9063, 0.4731, 0.1718, 1.0)",
+      "emission": "(1.0, 0.5246, 0.1939, 1.0)",
+      "emissionEnabled": true,
+      "emissionEnergy": 1.60000002384186,
+      "images": {
+
+      },
+      "metallic": 0.0,
+      "normalScale": 1.0,
+      "roughness": 0.529999971389771,
+      "roughnessChannel": 0
+    },
+    "GM / ore": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-ore-albedo.png",
+          "sha256": "acfa371ba596c8aac63a5f9ac98bb5e5e23aaa58601aed79e697f3e42c92373f",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-ore-normal.png",
+          "sha256": "3fde148e99f7c352a77da2916c0533cda652d74bbb763ecd57129db9eeaf3d25",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-ore-roughness.png",
+          "sha256": "b09c4a385e7d8b96d759f80dbe2b33f7f9bcfb0bd46487c652b1bdd08d90e5a7",
+          "width": 512
+        }
+      },
+      "metallic": 0.0,
+      "normalScale": 0.349999994039536,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "GM / soot": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-soot-albedo.png",
+          "sha256": "0ed6b7f2fc8d76975561a8a5283149dfa8d86b0bd3de156fcd877a189799d5cc",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-soot-normal.png",
+          "sha256": "7ebc339b2d42c2353b48f70d2672237560ee32ac1141336a3606e9c6ab3cfbc1",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/GM-soot-roughness.png",
+          "sha256": "01dc2d1756f41a508601718733660812cb5426181c8b75b47e544818ebd7ddde",
+          "width": 512
+        }
+      },
+      "metallic": 0.219999998807907,
+      "normalScale": 1.0,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "R6 / ground": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-ground-albedo.png",
+          "sha256": "acfa371ba596c8aac63a5f9ac98bb5e5e23aaa58601aed79e697f3e42c92373f",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-ground-normal.png",
+          "sha256": "3fde148e99f7c352a77da2916c0533cda652d74bbb763ecd57129db9eeaf3d25",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-ground-roughness.png",
+          "sha256": "b09c4a385e7d8b96d759f80dbe2b33f7f9bcfb0bd46487c652b1bdd08d90e5a7",
+          "width": 512
+        }
+      },
+      "metallic": 0.0,
+      "normalScale": 0.119999997317791,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "R6 / machine": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-machine-albedo.png",
+          "sha256": "0ed6b7f2fc8d76975561a8a5283149dfa8d86b0bd3de156fcd877a189799d5cc",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-machine-normal.png",
+          "sha256": "7ebc339b2d42c2353b48f70d2672237560ee32ac1141336a3606e9c6ab3cfbc1",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-machine-roughness.png",
+          "sha256": "01dc2d1756f41a508601718733660812cb5426181c8b75b47e544818ebd7ddde",
+          "width": 512
+        }
+      },
+      "metallic": 0.479999989271164,
+      "normalScale": 0.25,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "R6 / ore-shell": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-ore-shell-albedo.png",
+          "sha256": "d60c3f322262335878f83e3b470387c1cab25bdbbf513a2309bf1bed7c978782",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-ore-shell-normal.png",
+          "sha256": "cdca00edb6ac8bc8cca2bf4599241a552c470f8bc731b113a557ead4974fe4ef",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-ore-shell-roughness.png",
+          "sha256": "a78eb98a53bd96d8b561a92881b797699c8f6bb6c9793bc5121eee585b371c80",
+          "width": 512
+        }
+      },
+      "metallic": 0.25,
+      "normalScale": 0.300000011920929,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "R6 / plinth": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-plinth-albedo.png",
+          "sha256": "a1ab418eefb6b6ae1a3c7a62281e6c9d1995629f820fbd6695bb6a72c0626485",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-plinth-normal.png",
+          "sha256": "180ab689712603672772dd3d2bbe331e32837afc5ab25d55955f2501b2703973",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-plinth-roughness.png",
+          "sha256": "37c9ffa81c8ae3eba5f88cdece5957ad74e3dd111a2a439f129a12f89a336ddc",
+          "width": 512
+        }
+      },
+      "metallic": 0.0,
+      "normalScale": 0.200000002980232,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "R6 / refractory": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-refractory-albedo.png",
+          "sha256": "cbc29b4f5a8fb7fde035f7eeaa525b2592af3b1ded87071e5fbf1d8efed0befa",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-refractory-normal.png",
+          "sha256": "a199d9e734358647fbb91c9ee2df5840b9cbd1493490607d6fb0e3e5f4f792d6",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-refractory-roughness.png",
+          "sha256": "dad7de94eff28cad18fbd96a3206e29b1391aa6adc4d8f133a2b35eacbbee3a7",
+          "width": 512
+        }
+      },
+      "metallic": 0.0,
+      "normalScale": 0.300000011920929,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "R6 / roof": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-roof-albedo.png",
+          "sha256": "8640a43e29ad78a3494efe16da066667e6401c6bac33ef3d9b05dc845cb8ea33",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-roof-normal.png",
+          "sha256": "7ebc339b2d42c2353b48f70d2672237560ee32ac1141336a3606e9c6ab3cfbc1",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-roof-roughness.png",
+          "sha256": "985d422637eeeac15e680a5f8c501eb1bdb38160627971d56db39ae16442de18",
+          "width": 512
+        }
+      },
+      "metallic": 0.400000005960464,
+      "normalScale": 0.300000011920929,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "R6 / wall": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-wall-albedo.png",
+          "sha256": "acfa371ba596c8aac63a5f9ac98bb5e5e23aaa58601aed79e697f3e42c92373f",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-wall-normal.png",
+          "sha256": "3fde148e99f7c352a77da2916c0533cda652d74bbb763ecd57129db9eeaf3d25",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://../tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/pixels/R6-wall-roughness.png",
+          "sha256": "b09c4a385e7d8b96d759f80dbe2b33f7f9bcfb0bd46487c652b1bdd08d90e5a7",
+          "width": 512
+        }
+      },
+      "metallic": 0.0,
+      "normalScale": 0.200000002980232,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    }
+  },
+  "meshNodes": 16,
+  "staticMemoryBytes": 99235654,
+  "surfaces": [
+    {
+      "indices": 12624,
+      "material": "GM / soot",
+      "node": "kit_new-hero_GM _ soot_00",
+      "offset": 0,
+      "surface": 0,
+      "vertices": 4612
+    },
+    {
+      "indices": 264,
+      "material": "R6 / machine",
+      "node": "kit_new-hero_GM _ soot_00",
+      "offset": 271872,
+      "surface": 1,
+      "vertices": 96
+    },
+    {
+      "indices": 5520,
+      "material": "G4 / ribbed",
+      "node": "kit_new-hero_G4 _ ribbed_00",
+      "offset": 277536,
+      "surface": 0,
+      "vertices": 1936
+    },
+    {
+      "indices": 19872,
+      "material": "GM / brass",
+      "node": "kit_new-hero_GM _ brass_00",
+      "offset": 392544,
+      "surface": 0,
+      "vertices": 6015
+    },
+    {
+      "indices": 2376,
+      "material": "R6 / machine",
+      "node": "kit_new-hero_GM _ brass_00",
+      "offset": 760752,
+      "surface": 1,
+      "vertices": 864
+    },
+    {
+      "indices": 1320,
+      "material": "R6 / ore-shell",
+      "node": "kit_new-hero_GM _ brass_00",
+      "offset": 811728,
+      "surface": 2,
+      "vertices": 480
+    },
+    {
+      "indices": 1872,
+      "material": "GM / copper",
+      "node": "kit_new-hero_GM _ copper_00",
+      "offset": 840048,
+      "surface": 0,
+      "vertices": 544
+    },
+    {
+      "indices": 3096,
+      "material": "R6 / machine",
+      "node": "kit_new-hero_GM _ copper_00",
+      "offset": 873648,
+      "surface": 1,
+      "vertices": 840
+    },
+    {
+      "indices": 528,
+      "material": "R6 / ore-shell",
+      "node": "kit_new-hero_GM _ copper_00",
+      "offset": 926352,
+      "surface": 2,
+      "vertices": 192
+    },
+    {
+      "indices": 264,
+      "material": "G4 / grating",
+      "node": "kit_new-hero_G4 _ grating_00",
+      "offset": 937680,
+      "surface": 0,
+      "vertices": 96
+    },
+    {
+      "indices": 264,
+      "material": "R6 / machine",
+      "node": "kit_new-hero_G4 _ grating_00",
+      "offset": 943344,
+      "surface": 1,
+      "vertices": 96
+    },
+    {
+      "indices": 792,
+      "material": "R6 / plinth",
+      "node": "kit_new-hero_GM _ mineral_00",
+      "offset": 949008,
+      "surface": 0,
+      "vertices": 288
+    },
+    {
+      "indices": 2616,
+      "material": "R6 / refractory",
+      "node": "kit_new-hero_GM _ mineral_00",
+      "offset": 966000,
+      "surface": 1,
+      "vertices": 776
+    },
+    {
+      "indices": 264,
+      "material": "G4 / timber",
+      "node": "kit_new-hero_G4 _ timber_00",
+      "offset": 1013712,
+      "surface": 0,
+      "vertices": 96
+    },
+    {
+      "indices": 648,
+      "material": "R6 / machine",
+      "node": "kit_new-hero_GM _ ore_00",
+      "offset": 1019376,
+      "surface": 0,
+      "vertices": 184
+    },
+    {
+      "indices": 768,
+      "material": "R6 / ore-shell",
+      "node": "kit_new-hero_GM _ ore_00",
+      "offset": 1030800,
+      "surface": 1,
+      "vertices": 236
+    },
+    {
+      "indices": 17499,
+      "material": "GM / chalk",
+      "node": "Gravemill _ soot",
+      "offset": 1045200,
+      "surface": 0,
+      "vertices": 10680
+    },
+    {
+      "indices": 19872,
+      "material": "R6 / machine",
+      "node": "Gravemill _ soot",
+      "offset": 1627836,
+      "surface": 1,
+      "vertices": 15992
+    },
+    {
+      "indices": 108,
+      "material": "R6 / plinth",
+      "node": "Gravemill _ soot",
+      "offset": 2474940,
+      "surface": 2,
+      "vertices": 100
+    },
+    {
+      "indices": 6,
+      "material": "R6 / refractory",
+      "node": "Gravemill _ soot",
+      "offset": 2480172,
+      "surface": 3,
+      "vertices": 4
+    },
+    {
+      "indices": 444,
+      "material": "R6 / wall",
+      "node": "Gravemill _ soot",
+      "offset": 2480388,
+      "surface": 4,
+      "vertices": 396
+    },
+    {
+      "indices": 1821,
+      "material": "GM / mineral",
+      "node": "Gravemill _ mineral",
+      "offset": 2501172,
+      "surface": 0,
+      "vertices": 1541
+    },
+    {
+      "indices": 6003,
+      "material": "R6 / ground",
+      "node": "Gravemill _ mineral",
+      "offset": 2582424,
+      "surface": 1,
+      "vertices": 4240
+    },
+    {
+      "indices": 288,
+      "material": "R6 / plinth",
+      "node": "Gravemill _ mineral",
+      "offset": 2809956,
+      "surface": 2,
+      "vertices": 256
+    },
+    {
+      "indices": 11472,
+      "material": "GM / copper",
+      "node": "Gravemill _ copper",
+      "offset": 2823396,
+      "surface": 0,
+      "vertices": 8746
+    },
+    {
+      "indices": 30,
+      "material": "R6 / roof",
+      "node": "Gravemill _ copper",
+      "offset": 3289092,
+      "surface": 1,
+      "vertices": 20
+    },
+    {
+      "indices": 115704,
+      "material": "GM / brass",
+      "node": "Gravemill _ brass",
+      "offset": 3290172,
+      "surface": 0,
+      "vertices": 82663
+    },
+    {
+      "indices": 7374,
+      "material": "GM / ore",
+      "node": "Gravemill _ ore",
+      "offset": 7720812,
+      "surface": 0,
+      "vertices": 6449
+    },
+    {
+      "indices": 204,
+      "material": "R6 / refractory",
+      "node": "Gravemill _ ore",
+      "offset": 8059860,
+      "surface": 1,
+      "vertices": 198
+    },
+    {
+      "indices": 984,
+      "material": "GM / orange",
+      "node": "Gravemill _ orange",
+      "offset": 8070180,
+      "surface": 0,
+      "vertices": 648
+    },
+    {
+      "indices": 25872,
+      "material": "GM / chalk",
+      "node": "Gravemill _ chalk",
+      "offset": 8105220,
+      "surface": 0,
+      "vertices": 21802
+    },
+    {
+      "indices": 1929,
+      "material": "GM / cooling-floor",
+      "node": "Gravemill _ cooling-floor",
+      "offset": 9255204,
+      "surface": 0,
+      "vertices": 1283
+    }
+  ],
+  "triangles": 87566
+}

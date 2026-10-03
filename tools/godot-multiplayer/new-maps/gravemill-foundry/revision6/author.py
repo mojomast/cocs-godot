@@ -4,6 +4,7 @@ Open the packed R5 master read-only as input; save all results under revision6.
 Editable batch polygons retain exact topology; per-face slots store new roles.
 """
 import collections
+import json
 import sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
@@ -14,7 +15,10 @@ from compose import compose
 
 assert bpy.app.version[:3]==(4,5,14),bpy.app.version_string
 assert '--authorized-r6-build' in sys.argv,'Future exclusive grant required; source preparation does not authorize execution'
-p=plan();write(HERE/'finish-plan.json',p)
+p=plan()
+assert p==read(HERE/'finish-plan.json'),'Material direction changed; review and archive a new source plan explicitly'
+built_plan=HERE/'evidence/W/finish-plan-built.json';built_plan.parent.mkdir(parents=True,exist_ok=True)
+built_plan.write_text(json.dumps(p,separators=(',',':'))+'\n')
 bpy.ops.wm.open_mainfile(filepath=str(R5/'gravemill-foundry-revision5.blend'))
 bpy.context.preferences.filepaths.save_version=0
 bindings=read(HERE/'bindings.json')
@@ -50,7 +54,7 @@ for obj in exports:
             # editable master and stream-preserving artifact sample identically.
             uv.data[loop].uv=(u*scale,1-(1-v)*scale)
     assert not any(matched.values()),obj.name
-    obj['visualRevision']=6;obj['finish_plan_sha256']=sha((HERE/'finish-plan.json').read_bytes())
+    obj['visualRevision']=6;obj['finish_plan_sha256']=sha(built_plan.read_bytes())
     obj['source_geometry_hash']=p['geometryHash']
 bpy.context.scene['revision']=6;bpy.context.scene['visualRevision']=6
 bpy.context.scene['geometryHash']=p['geometryHash']

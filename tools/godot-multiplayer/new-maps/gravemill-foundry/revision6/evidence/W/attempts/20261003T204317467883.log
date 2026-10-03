@@ -1,0 +1,14 @@
+test_embedded_container_declared_length_and_chunk_bounds (test_contract.AdapterContract.test_embedded_container_declared_length_and_chunk_bounds) ... ok
+test_related_reference_stride_index_and_finite_contracts (test_contract.AdapterContract.test_related_reference_stride_index_and_finite_contracts) ... ok
+test_exact_repro_empty_default_scene (test_contract.RealR5Contract.test_exact_repro_empty_default_scene) ... ok
+test_exact_repro_one_byte_used_index_view (test_contract.RealR5Contract.test_exact_repro_one_byte_used_index_view) ... ok
+test_exact_repro_removed_root_mesh (test_contract.RealR5Contract.test_exact_repro_removed_root_mesh) ... ok
+test_valid_real_r5_composition_and_exact_stream_bytes (test_contract.RealR5Contract.test_valid_real_r5_composition_and_exact_stream_bytes) ... ok
+test_exact_oriented_geometry_and_basis_after_split (test_source.Composition.test_exact_oriented_geometry_and_basis_after_split) ... ok
+test_source_identity_and_coverage_fail_closed (test_source.Composition.test_source_identity_and_coverage_fail_closed) ... ok
+test_uv_scale_is_material_local (test_source.Composition.test_uv_scale_is_material_local) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 15.107s
+
+OK

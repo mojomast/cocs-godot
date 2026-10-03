@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/mojo/.tmp-on-disk/cocs-foundry-r6-W-20261003/tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/native_verify_w.py", line 62, in <module>
+    assert max_error[0]<=.0002 and max_error[1]<=.0002 and max_error[2]<=.00001,max_error
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [0.00010782480239868164, 2.0, 0]
