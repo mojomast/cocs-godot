@@ -7,6 +7,12 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
+**New research-led movement directive:** three Flash agents are researching
+arena movement, traversal/feedback, and native input responsiveness. Parent will
+assign Astra implementation after reviewing the findings. This runs alongside
+new Moth/Blender map production; exact owners and constraints are in
+`MOVEMENT_RESEARCH_20261003.md`.
+
 **New user-requested map production:** dedicated Astra is creating new Moth API
 resources and updating mothbake; two Flash audits are complete and Sol is preparing
 Blender modeling helpers and export verification for the six newer maps.
