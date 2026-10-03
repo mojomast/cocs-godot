@@ -46,6 +46,12 @@ Horde completion or hardware-GPU performance testing. Please report crashes,
 control issues, camera problems, clipping and performance observations with the
 mode/map, operator or vehicle, resolution/UI scale and reproduction steps.
 
+**Known verification issue:** the broader Windows suite timed out waiting for
+Helix Conservatory deathmatch startup. That case is under investigation. The
+same run passed all 23 baseline cases (including Home and all four Campaign
+chapter smoke checks) and all six Parallax mode startup checks. This preview
+does not claim that the broader suite passed.
+
 ## Build identity and checksums
 
 Both archives use candidate `cb6e4c9f6bff09aafe4d9ef6262c5996a6219329`.
@@ -58,5 +64,6 @@ Both archives use candidate `cb6e4c9f6bff09aafe4d9ef6262c5996a6219329`.
 Fresh extraction and recorded-commit artifact checks passed for both archives.
 The extracted Linux build passed the declared resource/nine-rig probe, graphical
 Home → Fighting AI/local/training → Home, Rootfall Campaign smoke and graphical
-Sunscar vehicle startup. Native Windows verification is recorded separately
+Sunscar vehicle startup. Windows recorded-artifact validation and source preflight
+passed. Focused graphical Windows Fighting/vehicle checks are recorded separately
 before this draft is published. Existing releases remain available.
