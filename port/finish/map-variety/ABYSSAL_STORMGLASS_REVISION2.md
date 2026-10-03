@@ -51,7 +51,7 @@ python3 -m unittest discover -s tools/map-variety-support -p test_preserved.py
 ```
 
 Current results: Abyssal 8 Node + 13 Python pass; Stormglass 6 Node + 16 Python
-pass, plus 4 preservation/adapter-source Python checks (14 Node + 33 Python total). Source identity:
+pass, plus 6 preservation/export-source Python checks (14 Node + 35 Python total). Source identity:
 
 - Abyssal `geometryHash` `5fea4aada721903cea26897fb6a17befaf146c576c095dc712feebef626adfa2`
   (base runtime `32366a6c…` untouched), 204 surfaces / 808 walls / 501 nav.
@@ -91,12 +91,21 @@ pass, plus 4 preservation/adapter-source Python checks (14 Node + 33 Python tota
   `export_tangents=True`.
 - When a native GLB exists, `build_entry.py` compares decoded embedded base-colour
   pixel channels with the independently computed linear→sRGB conversion from
-  immutable source bytes, and normal pixels with immutable linear source. It
-  checks adapter manifest provenance/derived hash and records actual GLB primitive
-  and triangle counts. Evaluated and exported triangle totals have an explicit
-  350,000-triangle default cap (configurable). The editable collection remains
-  accessible but hidden in the saved master viewport/render; export batches alone
-  render there. These are pending native execution, not source-verified results.
+  immutable source bytes, and normal pixels with immutable linear source. Roughness
+  pixel proof remains a later native-receipt check. It checks adapter manifest
+  provenance/derived hash; every GLB primitive must be indexed triangles, with
+  total triangles matching evaluated export batches and primitive count within
+  `--max-batches`. The total target defaults to **150,000 triangles**; pure source
+  estimates before modifiers/signs are 33,892 Abyssal and 21,488 Stormglass.
+  An evaluated overage is recorded as `triangleTargetExceeded`, not accepted or
+  failed without native review. The editable collection remains accessible but
+  hidden in the saved master viewport/render; export batches alone render there.
+  `bpy.ops.file.pack_all()` precedes the master save; its packed-image inventory,
+  master SHA-256 and bytes are recorded. Under a *later* serial Blender grant, run
+  `tools/map-variety-support/verify_master.py -- --blend <master.blend> --report
+  <material-report.json>` with Blender `-b -t 1 --python-exit-code 1 --python` to
+  reopen and require all file-backed images packed (no external worktree images).
+  These checks are pending native execution, not source-verified results.
 
 ## Authored content
 

@@ -65,11 +65,18 @@ def request_pack_materials(module, root, pack_bindings, output_dir, pack):
 
 def _glb_document(path):
     raw = pathlib.Path(path).read_bytes()
-    if raw[:4] != b'glTF' or len(raw) != int.from_bytes(raw[8:12], 'little'):
+    if (len(raw) < 28 or raw[:4] != b'glTF' or int.from_bytes(raw[4:8], 'little') != 2 or
+            len(raw) != int.from_bytes(raw[8:12], 'little')):
         raise ValueError('Malformed GLB header/length')
     size = int.from_bytes(raw[12:16], 'little')
+    if (size % 4 or raw[16:20] != b'JSON' or size + 28 > len(raw) or
+            raw[24 + size:28 + size] != b'BIN\x00' or
+            int.from_bytes(raw[20 + size:24 + size], 'little') != len(raw) - size - 28):
+        raise ValueError('Malformed GLB chunk layout')
     doc = json.loads(raw[20:20 + size])
     blob = raw[size + 28:]
+    if doc.get('buffers') and doc['buffers'][0].get('byteLength', 0) > len(blob):
+        raise ValueError('GLB BIN buffer shorter than declared')
     return doc, blob
 
 
@@ -109,6 +116,42 @@ def verify_png_pixels(source, embedded, decode, *, srgb):
             raise ValueError('Embedded %s channel differs from immutable Moth source at pixel channel %d' %
                              ('sRGB baseColor' if srgb else 'linear normal', index))
     return len(original) // 4
+
+
+def packed_image_count(images):
+    """Count all FILE images; fail if any reopened master would need disk bytes."""
+    file_images = [image for image in images if image.source == 'FILE']
+    if not file_images:
+        raise ValueError('No pack-backed Blender images in materialized master')
+    missing = [image.name for image in file_images
+               if not getattr(image, 'packed_file', None) and not getattr(image, 'packed_files', ())]
+    if missing:
+        raise ValueError('Master retains external images: ' + ', '.join(sorted(missing)))
+    return len(file_images)
+
+
+def glb_triangle_counts(document, max_batches, evaluated_triangles):
+    """Account for *every* GLB primitive, including unsupported modes/indices."""
+    meshes = document.get('meshes', [])
+    primitives = [primitive for mesh in meshes for primitive in mesh['primitives']]
+    if not primitives or len(primitives) > max_batches:
+        raise ValueError('GLB primitive count outside material-batch cap')
+    accessors = document['accessors']
+    counts = []
+    for primitive in primitives:
+        if primitive.get('mode', 4) != 4 or 'indices' not in primitive:
+            raise ValueError('Unsupported or unindexed GLB primitive')
+        index = primitive['indices']
+        if type(index) is not int or not 0 <= index < len(accessors):
+            raise ValueError('GLB indices accessor missing')
+        count = accessors[index]['count']
+        if type(count) is not int or count <= 0 or count % 3:
+            raise ValueError('GLB triangle index count invalid')
+        counts.append(count // 3)
+    if sum(counts) != evaluated_triangles:
+        raise ValueError('GLB triangle count differs from evaluated export batches: %d != %d' %
+                         (sum(counts), evaluated_triangles))
+    return len(primitives), sum(counts)
 
 
 def _emit_cameras(bpy, review, cameras):
@@ -176,7 +219,7 @@ def run(config, argv=None):
     parser.add_argument('--report', default=str(config['directory'] / 'material-report.json'))
     parser.add_argument('--max-batches', type=int, default=64)
     parser.add_argument('--max-triangles', type=int, default=12000)
-    parser.add_argument('--max-total-triangles', type=int, default=350000)
+    parser.add_argument('--max-total-triangles', type=int, default=150000)
     args = parser.parse_args(argv)
 
     import bpy
@@ -234,8 +277,9 @@ def run(config, argv=None):
     if not batches or len(batches) > args.max_batches:
         raise SystemExit('Export batch count outside reviewed cap: %d' % len(batches))
     evaluated_triangles = sum(sum(len(poly.vertices) - 2 for poly in batch.data.polygons) for batch in batches)
-    if args.max_total_triangles < 1 or evaluated_triangles > args.max_total_triangles:
-        raise ValueError('Evaluated export triangles outside total cap: %d > %d' % (evaluated_triangles, args.max_total_triangles))
+    if args.max_total_triangles < 1:
+        raise ValueError('Total triangle target must be positive')
+    triangle_target_exceeded = evaluated_triangles > args.max_total_triangles
 
     cameras = _emit_cameras(bpy, review, layout.PROBE_CAMERAS)
     signage = [batch for batch in batches if batch.get('kit_sector') == 'signage']
@@ -249,7 +293,10 @@ def run(config, argv=None):
     source.hide_viewport = True
     review.hide_render = True
     export.hide_render = False
+    bpy.ops.file.pack_all()
+    packed_images = packed_image_count(bpy.data.images)
     bpy.ops.wm.save_as_mainfile(filepath=args.blend)
+    master_bytes = pathlib.Path(args.blend).read_bytes()
     bpy.ops.object.select_all(action='DESELECT')
     for batch in batches:
         batch.select_set(True)
@@ -264,13 +311,7 @@ def run(config, argv=None):
     embedded = _glb_material_images(args.glb)
     from material_pack import linear_rgba, srgb_png
     document, _ = _glb_document(args.glb)
-    primitive_counts = [document['accessors'][p['indices']]['count'] // 3
-                        for mesh in document.get('meshes', []) for p in mesh['primitives']
-                        if p.get('mode', 4) == 4 and 'indices' in p]
-    actual_triangles = sum(primitive_counts)
-    if actual_triangles <= 0 or not primitive_counts or actual_triangles > args.max_total_triangles:
-        raise ValueError('Exported GLB triangle count outside cap: %d / %d' %
-                         (actual_triangles, args.max_total_triangles))
+    primitive_count, actual_triangles = glb_triangle_counts(document, args.max_batches, evaluated_triangles)
     report_materials = {}
     for name, binding in bindings.items():
         entry = {'role': binding.get('role')}
@@ -309,13 +350,16 @@ def run(config, argv=None):
                           'teamColorSource': resolved[name]['teamColorSource']})
         report_materials[name] = entry
     report = {'id': authority['id'], 'layoutRevision': authority['layoutRevision'],
-              'geometryHash': authority['geometryHash'], 'mothManifestSha256': pack.manifest_sha,
-              'glbSha256': _sha256(glb_bytes), 'glbBytes': len(glb_bytes),
+               'geometryHash': authority['geometryHash'], 'mothManifestSha256': pack.manifest_sha,
+               'masterSha256': _sha256(master_bytes), 'masterBytes': len(master_bytes),
+               'packedImages': packed_images,
+               'glbSha256': _sha256(glb_bytes), 'glbBytes': len(glb_bytes),
                'baseSpecs': len(composition.compose(authority['arena'])), 'authoredSpecs': len(layout.parts(authority['arena'])),
                'sourceTriangleEstimateBeforeLabelsAndModifiers': source_triangle_estimate(specs),
                'exportBatches': len(batches), 'exportTriangles': evaluated_triangles,
                'maxTotalTriangles': args.max_total_triangles,
-               'glbPrimitives': len(primitive_counts), 'glbTriangles': actual_triangles,
+               'triangleTargetExceeded': triangle_target_exceeded,
+               'glbPrimitives': primitive_count, 'glbTriangles': actual_triangles,
                'signageBatches': len(signage), 'probeCameras': cameras, 'labels': labels,
               'composition': 'complete revised authority + authored classes; physics independent JSON',
               'materials': report_materials}

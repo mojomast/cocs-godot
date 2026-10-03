@@ -1,7 +1,10 @@
 """Pure source contract checks for R adapter split and accepted map palettes."""
 import json
+import inspect
 import pathlib
+import struct
 import sys
+import tempfile
 import unittest
 from types import SimpleNamespace
 
@@ -94,6 +97,45 @@ class PreservedContractTests(unittest.TestCase):
         self.assertEqual(build_entry.verify_png_pixels(source, source, decode, srgb=False), 1)
         with self.assertRaises(ValueError):
             build_entry.verify_png_pixels(source, bytes((64, 0, 255, 0)), decode, srgb=False)
+
+    def test_master_packs_before_save_and_reopen_requires_all_images_packed(self):
+        order = inspect.getsource(build_entry.run)
+        self.assertLess(order.index('bpy.ops.file.pack_all()'), order.index('bpy.ops.wm.save_as_mainfile('))
+        self.assertLess(order.index('bpy.ops.wm.save_as_mainfile('), order.index('master_bytes = pathlib.Path(args.blend).read_bytes()'))
+        from verify_master import main as reopen  # bpy is imported only inside main
+        self.assertTrue(callable(reopen))
+        packed = SimpleNamespace(source='FILE', packed_file=object(), packed_files=(), name='packed')
+        generated = SimpleNamespace(source='GENERATED', name='generated')
+        self.assertEqual(build_entry.packed_image_count([packed, generated]), 1)
+        with self.assertRaisesRegex(ValueError, 'external images: missing'):
+            build_entry.packed_image_count([packed, SimpleNamespace(source='FILE', packed_file=None,
+                                                                    packed_files=(), name='missing')])
+        with self.assertRaisesRegex(ValueError, 'No pack-backed'):
+            build_entry.packed_image_count([generated])
+
+    def test_tiny_glb_counts_every_primitive_and_rejects_bad_modes(self):
+        doc = {'accessors': [{'count': 6}], 'meshes': [{'primitives': [{'indices': 0}]}]}
+        payload = json.dumps(doc).encode()
+        payload += b' ' * (-len(payload) % 4)
+        raw = b'glTF' + struct.pack('<II', 2, 28 + len(payload)) + struct.pack('<I4s', len(payload), b'JSON') + payload + struct.pack('<I4s', 0, b'BIN\x00')
+        with tempfile.TemporaryDirectory(dir='/tmp/opencode') as directory:
+            path = pathlib.Path(directory) / 'tiny.glb'
+            path.write_bytes(raw)
+            parsed, blob = build_entry._glb_document(path)
+            self.assertEqual(blob, b'')
+            self.assertEqual(build_entry.glb_triangle_counts(parsed, 1, 2), (1, 2))
+            path.write_bytes(raw[:-1])
+            with self.assertRaisesRegex(ValueError, 'Malformed GLB'):
+                build_entry._glb_document(path)
+        for bad in ({'mode': 1, 'indices': 0}, {'indices': 0, 'mode': 5},
+                    {'mode': 4}, {'indices': 1}):
+            with self.assertRaises(ValueError):
+                build_entry.glb_triangle_counts({'accessors': [{'count': 6}],
+                                                 'meshes': [{'primitives': [bad]}]}, 1, 2)
+        with self.assertRaisesRegex(ValueError, 'differs'):
+            build_entry.glb_triangle_counts(doc, 1, 3)
+        with self.assertRaisesRegex(ValueError, 'primitive count'):
+            build_entry.glb_triangle_counts(doc, 0, 2)
 
 
 if __name__ == '__main__':
