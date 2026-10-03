@@ -1,5 +1,15 @@
 # Released L — bounded package advance
 
+## Parent verification
+
+Worker `d5335f8b` integrated as **`623127c5`**. Parent independently passed all
+**52 source tests**, including committed-Git validation of the seven strict
+inventories, exact L history, unchanged 116 sidecars and rejection of forged or
+future input/evidence. Whitespace checks passed. No engine or build ran here.
+
+This closes package reconciliation for the reviewed L runtime correction. It does
+not discharge final-matrix, live-kick, remaining vehicle-input or release gates.
+
 Foundation: **`9cd1ac7201e6c96a4911659cb1e5e3deb46a4bd9`**. Parent's
 `6266702d` correction is the sole runtime change admitted here:
 `godot/ui/lobby_choice.gd` now always consumes Cancel on the focused row, even

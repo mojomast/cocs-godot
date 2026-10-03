@@ -15,11 +15,11 @@ recorded process groups. Five queue policy tests, eight script grammar checks,
 shader parity and diff checks pass after integration. Exact native stage hashes,
 failed attempts and capture boundaries: `polish/NATIVE_L.md`.
 
-L is released; **no heavy grant is currently active**. Package owner is making an
-explicit final advance for `godot/ui/lobby_choice.gd`. The cinematic owner is doing
-source-only preflight for the existing 75-second campaign film and eight Home
-clips, awaiting a new explicit grant after exact package closure. Sol is publishing
-the 27 before/after pairs without engine work. Live-kick timing, remaining vehicle
+L is released. Its final exact package advance is integrated at **`623127c5`**;
+parent passed all **52 source checks**, including seven-unit committed-Git closure.
+The cinematic owner `ses_f03411df4ffeEk7157dyOo57NZ` now has exclusive grant
+**`CINEMATIC-NATIVE-20261003-M`** to complete preflight and produce the existing
+75-second campaign film/eight Home clips. Live-kick timing, remaining vehicle
 input journeys, final 142-case obligations and fresh releases remain open.
 
 The real comparison gallery is published at
