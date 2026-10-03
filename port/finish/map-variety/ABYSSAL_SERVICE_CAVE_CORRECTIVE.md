@@ -1,5 +1,13 @@
 # Abyssal service-cave P1 · source-only corrective candidate
 
+## Current disposition — V successor staged-integrated
+
+Independent review approved V successor `b010a076…9ee3aa86` and closed the
+demonstrated T interior terrace-contact mismatch. Complete delivery `03b3db50`
+is integrated as **`873ad2ac`**. This does not approve the earlier `ee979520…`
+attempts. Full qualified review: `ABYSSAL_V_REVIEW.md`. The historical source-only
+checkpoints below remain a record of the preceding stages.
+
 **Parent integration:** `a8b3fe6b`, comprising four reviewed source prerequisites,
 the corrected authority/art sources and explicit archive verification. Parent
 reproduced 33 source/shipping checks, both old/corrective authority checks and the
@@ -157,8 +165,10 @@ enforces the 64-primitive bound, actual index count and declared POSITION bounds
 150k triangles is advisory. The staged Godot project is a **copy** within the
 attempt root and hashes the exact corrective JSON and new GLB. Its Binder uses
 a candidate-only copy-local identity/profile preserving the imported PBR
-materials; the parent snapshot has no accepted Abyssal profile or
-`WeatherService`, so this cannot be labeled production-weather acceptance.
+materials. WeatherService exists in the parent but is excluded from this isolated
+stage; its project does not install the production autoload configuration. The
+baseline has no eligible Abyssal Binder profile. This is not production-weather
+acceptance.
 Actual visual capture, outside-wall traversal, hosted modes and final finish
 remain explicit review gates until their own measured evidence is recorded.
 
@@ -198,8 +208,9 @@ Nine ramp-adjacent samples used only a measured **0.15 m** lift; all others
 cleared at authored height. Eight paired camera views produced **16** original
 1280×720 PNGs with hash and backend receipts. The rendered stage uses the
 production Binder with a **copy-local candidate preserve-PBR profile** and
-`abyssal_presentation.gd`; no accepted Abyssal profile or WeatherService is
-present in this parent-based checkout. These are neutral stage captures, not
+`abyssal_presentation.gd`. WeatherService exists in the parent but is excluded
+from this isolated stage, and the baseline has no eligible Abyssal Binder profile.
+These are neutral stage captures, not
 production-weather approval. See the review gallery and `evidence-hashes.json`
 under the V artifact folder. Old `ee979520…` V attempts 1–5 retain their logs,
 receipts and failure reports there without copying their rejected master/GLB

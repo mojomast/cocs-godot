@@ -6,7 +6,7 @@ const Presentation = preload("res://multiplayer_worlds/abyssal_presentation.gd")
 const DIR := "res://tests/new_maps/abyssal_pressureworks/corrective/"
 var output := ""
 var result := {"status": "started", "captures": [], "failures": [],
-	"finishScope": "WorldMap + Abyssal production presentation + candidate-only preserve-PBR Binder; no WeatherService in parent snapshot; not hosted play"}
+	"finishScope": "WorldMap + Abyssal production presentation + candidate-only preserve-PBR Binder; WeatherService exists in the parent but is excluded from this isolated stage; not hosted play"}
 
 func _initialize() -> void:
 	for arg: String in OS.get_cmdline_user_args():

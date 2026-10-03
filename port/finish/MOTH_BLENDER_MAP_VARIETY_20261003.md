@@ -1,5 +1,19 @@
 # New Moth resources and Blender-authored map variety
 
+**Abyssal V staged-approved and integrated:** independent review closed the
+demonstrated T interior terrace-contact P1 for `b010a076…9ee3aa86`. Complete
+delivery is merged as **`873ad2ac`**. Parent passed 29 source/shipping tests,
+generation and all 110 immutable evidence hashes. Static/ramp-placement and
+neutral-presentation qualifications remain; the WeatherService statement is
+corrected in source/docs with a separate annotation beside unchanged historical
+receipts. Full review: `map-variety/ABYSSAL_V_REVIEW.md`.
+
+**Botanical successors source-approved:** independent reviewer approved
+`f358e497` → `3002a9ba` → `da2e53eb`, including all 1,548 Helix frame triangles'
+exact render/authority correspondence. Explicit external-fixture follow-up remains
+under preparation and outside that approval; integration waits for its verification.
+No successor native acceptance is implied; W retains sole heavy ownership.
+
 **Botanical successor sources delivered:** `f358e497` / `3002a9ba` / `da2e53eb`
 author Parallax districts-v4's supported aperture/grade, Vesper urban-v3's explicit
 60-parapet ownership, and Helix revision-4's grounded five-rib frame with ten posts,

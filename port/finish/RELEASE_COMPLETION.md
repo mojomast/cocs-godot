@@ -39,7 +39,10 @@ Sol for source-only correction. Corrective `1cdf967e` passed independent source
 review and is integrated with selective tooling/archival fixtures as `a8b3fe6b`.
 Parent passed 33 source/shipping checks, both generator checks and the historical
 three-ray reproduction. The corrective native harness and actual build are now
-completed under V as `03b3db50` and is under independent artifact review. The new
+completed under V as `03b3db50`, passed independent staged artifact review and is
+integrated as `873ad2ac`. Parent passed 29 tests, generation and all 110 evidence
+hashes. The demonstrated interior terrace-contact P1 is closed for this successor.
+The new
 `b010a076…` successor moves one route endpoint inward after an actual native
 failure; prior attempts remain preserved. Parent verified 110 evidence hashes.
 Stormglass artifacts are selectively staged-integrated as `c5c50a93`: parent
