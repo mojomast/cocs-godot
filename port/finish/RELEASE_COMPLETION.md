@@ -23,7 +23,10 @@ and actual comparison sheets. **R completed and released** with Foundry staged
 master/GLB and 22 actual screenshots at worker `6ff4079e`, **rejected by independent
 Astra review** for exported geometry/collision defects and still unmerged. Astra
 completed corrective revision-5 production as `4a2f1201` and **released S** at
-18:20:11.138292Z. R5 is undergoing independent artifact review; its 22 native
+18:20:11.138292Z. R5 passed independent artifact review and is staged-integrated
+as `7ae3f2f5`; parent verified 235 files, authority/material receipts and strict
+seven-unit inventory. Hosted/manual/visual polish and public promotion remain
+pending, with staged-resource shipping exclusions under package-owner review. Its 22 native
 comparison images are at <http://100.125.104.79:8796/foundry-r5/>.
 The original Flash map lanes stopped after
 failed review: Astra owns botanical/urban repair, Sol owns coastal adapter integration

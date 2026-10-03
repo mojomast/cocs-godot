@@ -1,5 +1,16 @@
 # New Moth resources and Blender-authored map variety
 
+## Foundry R5 staged integration accepted
+
+Independent review found no P1 blocker; R5 is integrated as **`7ae3f2f5`** after
+shared prerequisites `bce5b834`. Parent reproduced all 235 file hashes/sizes,
+authority generation, built material receipt and seven-unit committed-Git closure.
+Full qualified approval: `map-variety/FOUNDRY_R5_REVIEW.md`. Hosted/manual/public
+promotion remain pending; broad pale/repetitive finishes still need visual work.
+Astra producer is implementing a bounded source-only revision-6 finish pass.
+Package owner is adding explicit shipping exclusion for unpromoted staged art.
+T remains the only active heavy grant, producing Abyssal and Stormglass.
+
 ## Active production — coastal T
 
 Shared-source prerequisite bundle `ef1692b5` is parent-integrated as **`bce5b834`**.
