@@ -1,5 +1,36 @@
 # Graphics, animation, presentation and QoL audit/implementation
 
+## Native completion — L released and integrated
+
+L final **`dc62c844`** merged as **`9cd1ac72`**. All nine primary polish fixtures
+passed; 30 latest passing gate IDs include import/typechecks and supplemental
+regressions, not final-matrix approvals. Lobby coverage includes 84 QoL and 63
+actual-scene popup/input checks. The runtime fix consumes Escape on a focused
+inline choice to prevent accidental global Settings/focus takeover.
+
+Parent reviewed the runtime diff and representative Lacuna before/after, compact
+filtered-lobby and explosion images, independently verified all 54 PNG hashes,
+and confirmed three empty release audits plus no current live members of L's 49
+recorded process groups. Five queue policy tests, eight script grammar checks,
+shader parity and diff checks pass after integration. Exact native stage hashes,
+failed attempts and capture boundaries: `polish/NATIVE_L.md`.
+
+L is released; **no heavy grant is currently active**. Package owner is making an
+explicit final advance for `godot/ui/lobby_choice.gd`. The cinematic owner is doing
+source-only preflight for the existing 75-second campaign film and eight Home
+clips, awaiting a new explicit grant after exact package closure. Sol is publishing
+the 27 before/after pairs without engine work. Live-kick timing, remaining vehicle
+input journeys, final 142-case obligations and fresh releases remain open.
+
+The real comparison gallery is published at
+<http://100.125.104.79:8796/native-polish-l/>: **27 pairs / 54 original PNGs**,
+original comparison manifest and per-stage provenance. All 60 HTTP/delivered-byte
+checks pass; parent also fetched the live gallery. Captures are controlled staged
+engine output, not connected gameplay or hardware-performance evidence. The
+existing 29-image K gallery remains intact.
+
+Earlier active-L/source-pending entries below are historical checkpoints.
+
 ## Current checkpoint — K released, six lanes integrated, native L active
 
 K final `4188e411` merged as `f06d65fc`; six-lane staging `5b8e1eb3` merged as
