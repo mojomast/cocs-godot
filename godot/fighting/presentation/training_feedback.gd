@@ -52,8 +52,8 @@ func reset(operator_ids: Array, roster: Dictionary) -> void:
 		_goals[p] = _build_goals(_profiles[p])
 
 func reset_transient() -> void:
-	# Clears per-tick observations and in-flight moves. Goal progress survives an
-	# ordinary round reset and recording playback; reset() clears it for a new match.
+	# Explicit transient cleanup; round/rewind reset() clears goal progress too.
+	# Recording playback restores the saved observation prefix instead.
 	_seen.clear()
 	_last_tick = -1
 	_last_round = -1
@@ -61,14 +61,36 @@ func reset_transient() -> void:
 		_history[p] = []
 		_pending[p] = {}
 		_results[p] = []
+	_tick_result = ["",""]
+
+func save_observation() -> Dictionary:
+	return {"history":_history.duplicate(true),"pending":_pending.duplicate(true),
+		"results":_results.duplicate(true),"goals":_goals.duplicate(true),
+		"seen":_seen.duplicate(true),"tick":_last_tick,"round":_last_round}
+
+func restore_observation(saved: Dictionary) -> void:
+	_history = saved.history.duplicate(true)
+	_pending = saved.pending.duplicate(true)
+	_results = saved.results.duplicate(true)
+	_goals = saved.goals.duplicate(true)
+	_seen = saved.seen.duplicate(true)
+	_last_tick = int(saved.tick)
+	_last_round = int(saved.round)
+	_tick_result = ["",""]
 
 func observe(state: Dictionary, commands: Array) -> void:
 	if state.is_empty():
 		return
 	var tick := int(state.get("tick",0))
 	var round_index := int(state.get("round_index",1))
-	if _last_tick != -1 and (tick <= _last_tick or round_index != _last_round):
-		reset_transient()
+	if tick == _last_tick and round_index == _last_round: return
+	if _last_tick != -1 and tick < _last_tick:
+		# A rewind without an explicit saved observation has no valid future goals.
+		reset(operators,{"operators":_profiles.duplicate(true)})
+	elif _last_tick != -1 and round_index != _last_round:
+		reset(operators,{"operators":_profiles.duplicate(true)})
+	for event: Dictionary in state.get("events",[]):
+		if str(event.get("type","")) in ["training_reset","training_place"]: reset_transient()
 	_last_round = round_index
 	if tick == _last_tick:
 		return
@@ -98,14 +120,18 @@ func _apply_event(event: Dictionary, state: Dictionary) -> void:
 	var target := int(event.get("target",-1))
 	var move_id := str(event.get("move_id",""))
 	match type:
+		"move_start":
+			if actor in [0,1]:
+				if not _pending[actor].is_empty(): _finalize(actor,move_id,_last_tick)
+				_pending[actor] = {}
 		"hit":
 			if actor in [0,1]:
-				_mark_result(actor,"hit",move_id,int(event.get("damage",0)),state)
-				_complete(actor,"move_land",move_id)
+				_mark_result(actor,"hit",move_id,int(event.get("damage",0)),state,int(event.get("projectile_id",-1))>=0)
+				if _owns_move_event(actor,event): _complete(actor,"move_land",move_id)
 				_tick_result[actor] = "HIT"
 		"block":
 			if actor in [0,1]:
-				_mark_result(actor,"block",move_id,0,state)
+				_mark_result(actor,"block",move_id,0,state,int(event.get("projectile_id",-1))>=0)
 				_tick_result[actor] = "BLK"
 			if target in [0,1]:
 				_complete(target,"block_incoming","")
@@ -118,7 +144,7 @@ func _apply_event(event: Dictionary, state: Dictionary) -> void:
 			for p: int in [actor,target]:
 				if p in [0,1]:
 					_mark_result(p,"tech","",0,state)
-					_complete(p,"tech","")
+					if p == target: _complete(p,"tech","")
 					_tick_result[p] = "TECH"
 		"counter":
 			if actor in [0,1]:
@@ -127,11 +153,30 @@ func _apply_event(event: Dictionary, state: Dictionary) -> void:
 				_tick_result[actor] = "CNTR"
 		"mobility":
 			if actor in [0,1]:
+				_mark_result(actor,"mobility",move_id,0,state)
 				_complete(actor,"mobility",move_id)
 				if move_id == "special2":
 					_tick_result[actor] = "MOVE"
 
-func _mark_result(p: int, outcome: String, move_id: String, damage: int, state: Dictionary) -> void:
+func _owns_move_event(p: int, event: Dictionary) -> bool:
+	if int(event.get("projectile_id",-1)) < 0: return true
+	var move: Dictionary = _profiles[p].get("moves",{}).get(str(event.get("move_id","")),{})
+	# Core emits the authored effect identity even after a reflection.
+	return not move.is_empty() and str(event.get("effect","")) == str(move.get("effect","missing"))
+
+func _mark_result(p: int, outcome: String, move_id: String, damage: int, state: Dictionary, projectile: bool = false) -> void:
+	# A projectile can land after recovery while a different move is running.
+	# Record that contact separately; never rename the current pending attack.
+	if projectile or (not _pending[p].is_empty() and str(_pending[p].get("move_id","")) != move_id):
+		var current: Dictionary = _pending[p]
+		_pending[p] = {}
+		_mark_result(p,outcome,move_id,damage,state)
+		_finalize(p,"",_last_tick)
+		# Reflection changes the credited actor, not the projectile's authored
+		# move. Its ID is factual; the new owner's roster name may be unrelated.
+		if projectile: _results[p][-1].name = "Projectile (%s)" % move_id
+		_pending[p] = current
+		return
 	if _pending[p].is_empty():
 		_pending[p] = {"move_id":move_id,"kind":str(_kinds[p].get(move_id,"")),"start_tick":_last_tick,
 			"outcome":"","damage":0,"chain":0,"chain_damage":0}
@@ -154,7 +199,7 @@ func _track_move(p: int, fighter: Dictionary, tick: int) -> void:
 				"outcome":"","damage":0,"chain":0,"chain_damage":0}
 		return
 	var previous := str(pending.get("move_id",""))
-	if mid == previous:
+	if mid == previous and not mid.is_empty():
 		return
 	_finalize(p,mid,tick)
 	if mid.is_empty():
@@ -163,7 +208,7 @@ func _track_move(p: int, fighter: Dictionary, tick: int) -> void:
 		_pending[p] = {"move_id":mid,"kind":str(_kinds[p].get(mid,"")),"start_tick":tick,
 			"outcome":"","damage":0,"chain":0,"chain_damage":0}
 
-func _finalize(p: int, next_id: String, tick: int) -> void:
+func _finalize(p: int, _next_id: String, tick: int) -> void:
 	var pending: Dictionary = _pending[p]
 	var move_id := str(pending.get("move_id",""))
 	var outcome := str(pending.get("outcome",""))
@@ -171,6 +216,7 @@ func _finalize(p: int, next_id: String, tick: int) -> void:
 		"kind":str(pending.get("kind","")),"damage":int(pending.get("damage",0)),
 		"chain":int(pending.get("chain",0)),"chain_damage":int(pending.get("chain_damage",0)),
 		"tick":tick,"next":""}
+	if move_id.is_empty(): result.name = "Throw tech" if outcome == "tech" else "Contact"
 	if outcome == "hit":
 		result.state = "hit"
 	elif outcome == "block":
@@ -181,11 +227,12 @@ func _finalize(p: int, next_id: String, tick: int) -> void:
 		result.state = "counter"
 	elif outcome == "tech":
 		result.state = "tech"
-	elif not next_id.is_empty():
-		result.state = "cancel"
-		result.next = str(_names[p].get(next_id,next_id))
+	elif outcome == "mobility":
+		result.state = "mobility"
 	else:
-		result.state = "whiff"
+		# End/replacement alone cannot prove a whiff or cancel (projectiles,
+		# interruption, round end and mobility can all clear move_id).
+		result.state = "no_contact"
 	_results[p].append(result)
 	if _results[p].size() > RESULT_LIMIT:
 		_results[p].pop_front()
@@ -286,10 +333,10 @@ func result_text(p: int) -> String:
 			text += " COUNTER"
 		"tech":
 			text += " TEC"
-		"cancel":
-			text += " CANCELLED → " + str(result.next)
+		"mobility":
+			text += " USED"
 		_:
-			text += " WHIFF"
+			text += " · no contact observed"
 	return text
 
 func goals(p: int) -> Array:
@@ -343,7 +390,7 @@ func _complete(p: int, kind: String, target: String) -> void:
 	for goal: Dictionary in _goals[p]:
 		if str(goal.kind) != kind:
 			continue
-		if not target.is_empty() and not str(goal.target).is_empty() and str(goal.target) != target:
+		if not str(goal.target).is_empty() and str(goal.target) != target:
 			continue
 		goal.count = int(goal.count) + 1
 		goal.done = true

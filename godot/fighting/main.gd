@@ -30,6 +30,7 @@ var cues: Array = []
 var timer_label: Label
 var phase_label: Label
 var input_label: Label
+var input_scroll: ScrollContainer
 var mode := "ai"
 var operators: Array = ["meta","mistral"]
 var stage_id := "basalt-reach"
@@ -56,6 +57,8 @@ var error_text := ""
 var box_display := false
 var training_boxes
 var feedback = TrainingFeedback.new()
+var recording_feedback: Dictionary = {}
+const RECORD_LIMIT := 18000 # Five minutes of 60 Hz commands, including slow play.
 var fx_session_serial := 0
 var fx_session_id := ""
 var fx_event_floor := 0
@@ -375,7 +378,9 @@ func _tick() -> void:
 			return
 		commands = record_inputs[replay_index].duplicate(true)
 		replay_index += 1
-	if recording: record_inputs.append(commands.duplicate(true))
+	if recording:
+		record_inputs.append(commands.duplicate(true))
+		if record_inputs.size() >= RECORD_LIMIT: recording = false
 	last_inputs = commands.duplicate(true)
 	history.append(last_inputs)
 	if history.size() > 12: history.pop_front()
@@ -479,14 +484,18 @@ func _build_hud() -> void:
 	timer_label = _text(hud,"",18)
 	phase_label = _text(hud,"",18)
 	input_label = Label.new()
-	input_label.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
-	input_label.offset_top = -70
-	input_label.offset_bottom = -6
-	input_label.offset_left = 12
-	input_label.offset_right = -12
+	input_scroll = ScrollContainer.new()
+	input_scroll.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
+	input_scroll.offset_top = -70
+	input_scroll.offset_bottom = -6
+	input_scroll.offset_left = 12
+	input_scroll.offset_right = -12
+	input_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	input_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	input_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	input_label.add_theme_font_size_override("font_size",14)
-	ui.add_child(input_label)
+	ui.add_child(input_scroll)
+	input_scroll.add_child(input_label)
 
 func _profile(id: String) -> Dictionary:
 	for item: Dictionary in roster.get("operators",[]):
@@ -507,7 +516,7 @@ func _update_hud() -> void:
 		var resource: Dictionary = profile.get("resource",{})
 		var resource_label := "%s %s" % [resource.get("id",""),str(fighter.resources.get(resource.get("id",""),"—"))]
 		cues[p].text = "%s %s · %d hits / %d dmg · %s" % [guard,tech,fighter.combo_hits,fighter.combo_damage,resource_label]
-	timer_label.text = "Round %d · %02d" % [int(state.round_index)+1,ceili(float(state.round_ticks_left)/60.0)]
+	timer_label.text = "Round %d · %02d" % [int(state.round_index),ceili(float(state.round_ticks_left)/60.0)]
 	phase_label.text = str(state.phase).replace("_"," ").to_upper()
 	var text := "Esc / Start: pause"
 	for p: int in 2:
@@ -518,6 +527,11 @@ func _update_hud() -> void:
 			var operator_name := str(_profile(str(operators[p])).get("name",operators[p]))
 			text += "\nP%d %s %s · %s · %s" % [p+1,operator_name,feedback.goal_summary(p),feedback.result_text(p),feedback.history_line(p,5)]
 	input_label.text = text
+	# The full history/goals remain in the scrollable Training controls. Bound the
+	# live overlay to the space below the real top HUD, including compact UI150.
+	var available := maxf(0.0, get_viewport().get_visible_rect().size.y - hud.get_global_rect().end.y - 20.0)
+	input_scroll.visible = available > 8.0
+	input_scroll.offset_top = -maxf(8.0,minf(available, 110.0 if mode == "training" else 70.0))
 
 func _command_label(command: Dictionary) -> String:
 	var text := "←" if int(command.axis_x) < 0 else "→" if int(command.axis_x) > 0 else "·"
@@ -564,10 +578,12 @@ func show_training() -> void:
 	_text(box,"Frame %d · hit/combo/guard information remains visible on resume. Frame advance executes one core step with neutral human input while this modal is open." % int(state.get("tick",0)))
 	_button(box,"Advance one frame",func(): frame_requests += 1)
 	_button(box,"Reset training match",start_match)
+	_text(box,"Recording keeps up to %d commands, then stops automatically. Saved inputs remain available for replay." % RECORD_LIMIT,14)
 	_button(box,"Stop recording" if recording else "Record inputs from this state",func():
 		if recording: recording = false
 		else:
 			recording_state = simulation.save_state()
+			recording_feedback = feedback.save_observation()
 			record_inputs.clear()
 			recording = true
 		resume_match())
@@ -576,7 +592,7 @@ func show_training() -> void:
 		recording = false
 		simulation.load_state(recording_state)
 		state = simulation.snapshot()
-		feedback.reset_transient()
+		feedback.restore_observation(recording_feedback)
 		camera.reset()
 		effects.reset()
 		fx_event_floor = int(state.tick)+1

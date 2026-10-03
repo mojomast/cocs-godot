@@ -80,7 +80,7 @@ class TrainingFeedbackSourceTest(unittest.TestCase):
         self.assertIn('var feedback = TrainingFeedback.new()', self.main)
         self.assertLess(self.main.index('simulation.step(commands)'), self.main.index('feedback.observe(state,last_inputs)'))
         self.assertIn('feedback.reset(operators,roster)', self.main)
-        self.assertIn('feedback.reset_transient()', self.main)
+        self.assertIn('feedback.restore_observation(recording_feedback)', self.main)
         self.assertIn('feedback.history_detail(', self.main)
         self.assertIn('feedback.goal_lines(', self.main)
         self.assertIn('feedback.result_text(', self.main)

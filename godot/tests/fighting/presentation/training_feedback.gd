@@ -59,19 +59,20 @@ func _initialize() -> void:
 	_check(fb.last_result(0).state == "hit", "real hit finalises as hit")
 	_start(fb,4,"stand_h")
 	_end(fb,5)
-	_check(fb.last_result(0).state == "whiff", "authored whiff is distinguished from hit")
+	_check(fb.last_result(0).state == "no_contact", "missing contact does not assert whiff")
 	_start(fb,6,"stand_l")
 	_start(fb,7,"special1")
-	_check(fb.last_result(0).state == "cancel" and str(fb.last_result(0).next) == str(roster.operators[0].moves.special1.name), "cancel records the real replacement move")
+	_check(fb.last_result(0).state == "no_contact", "replacement alone does not assert cancel")
 	_start(fb,8,"special1",[_block(0,1,"special1")])
 	_feed(fb,9,"",[_block(1,0,"stand_l")])
 	_check(fb.last_result(0).state == "block", "blocked contact is distinguished")
-	_check(fb.goals(0).any(func(goal): return str(goal.id) == "block_incoming" and bool(goal.done)), "blocking completes the defender goal")
+	_check(fb.goals(0).any(func(goal): return str(goal.id) == "block" and bool(goal.done)), "blocking completes the defender goal")
 	_start(fb,10,"throw_f",[_throw_hit(0,1,"throw_f",130)])
 	_end(fb,11)
 	_check(fb.last_result(0).state == "throw", "landed throw is distinguished")
 	_feed(fb,12,"",[_throw_tech(0,1)])
-	_feed(fb,13,"",[_mobility(0,1,"special2")])
+	_check(not fb.goals(0).any(func(goal): return str(goal.id) == "tech" and bool(goal.done)), "having a throw teched does not complete incoming-tech goal")
+	_feed(fb,13,"",[_throw_tech(1,0),_mobility(0,1,"special2")])
 	_start(fb,14,"super",[_hit(0,1,"super",240)],3,310)
 	_end(fb,15)
 	_check(fb.result_text(0).contains("chain 3"), "live hit chain comes from the core combo counters")
@@ -80,7 +81,7 @@ func _initialize() -> void:
 	_start(fb,18,"special1",[_hit(0,1,"special1",85)])
 	_end(fb,19)
 	_check(fb.goal_summary(0) == "7/7 goals", "all seven authored goals complete from real events")
-	_check(fb.goals(1).any(func(goal): return str(goal.id) == "block_incoming" and bool(goal.done)), "defender block goal completes from the target side")
+	_check(fb.goals(1).any(func(goal): return str(goal.id) == "block" and bool(goal.done)), "defender block goal completes from the target side")
 	_check(fb.goals(1).any(func(goal): return str(goal.id) == "tech" and bool(goal.done)), "tech goal completes for the teching defender")
 
 	# Reset/lifecycle: transient reset clears history but keeps practice progress;
@@ -97,7 +98,64 @@ func _initialize() -> void:
 	_check(fb.goal_summary(0) == "0/7 goals", "new match restarts goal progress")
 	_check(goal_contains(fb,str(roster.operators[7].moves.super.name)), "new operator goals rebuild from its authored data")
 
+	# Duplicate observations must be idempotent, including goal counts.
+	var saved := fb.save_observation()
+	var duplicate := _state(50,"special1",[_hit(0,1,"special1",85)])
+	fb.observe(duplicate,[_neutral(),_neutral()])
+	var once := JSON.stringify(fb.save_observation())
+	fb.observe(duplicate,[_neutral(),_neutral()])
+	_check(JSON.stringify(fb.save_observation()) == once,"same snapshot never awards twice")
+	fb.restore_observation(saved)
+	_check(JSON.stringify(fb.save_observation()) == JSON.stringify(saved),"replay restores exact observation prefix, not future goals")
+	_start(fb,51,"stand_h")
+	_feed(fb,52,"stand_h",[_hit(0,1,"special1",85)])
+	_check(fb._pending[0].move_id == "stand_h","delayed projectile cannot rename running move")
+	_check(fb.last_result(0).move_id == "special1","delayed contact keeps its event move")
+	_end(fb,53)
+	_check(fb.last_result(0).move_id == "stand_h" and fb.last_result(0).state == "no_contact","next move does not inherit projectile hit")
+	_start(fb,54,"special1")
+	var projectile := _hit(0,1,"special1",85)
+	projectile.projectile_id = 7
+	_feed(fb,55,"special1",[projectile])
+	_check(fb._pending[0].outcome=="" and fb.last_result(0).name=="Projectile (special1)","same-ID projectile contact is not credited to a new attempt or reflected owner's move name")
+	var new_round := _state(56,"",[])
+	new_round.round_index = 2
+	fb.observe(new_round,[_neutral(),_neutral()])
+	_check(fb.goal_summary(0)=="0/7 goals" and fb.last_result(0).is_empty(),"round boundary clears prior round counts and results")
+	_real_core_replay(roster)
 	_finish()
+
+func _real_core_replay(roster: Dictionary) -> void:
+	var core := preload("res://fighting/core/simulation.gd").new()
+	var rules: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://fighting/data/rules.json"))
+	core.configure(roster,rules)
+	core.start_match({"operators":["chatgpt","mistral"],"stage_id":"test","seed":17,"training":true,"simple_specials":true})
+	_check(core.last_error.is_empty(),"real core configured")
+	var fb := Feedback.new()
+	fb.reset(["chatgpt","mistral"],roster)
+	var prefix: Dictionary
+	var observed_prefix: Dictionary
+	var inputs: Array = []
+	var contacts := 0
+	for tick in 480:
+		if tick == 160:
+			prefix = core.save_state()
+			observed_prefix = fb.save_observation()
+		var command := {"axis_x":1 if tick < 150 else 0,"axis_y":0,"held":1 if tick%40==0 else 0,"pressed":1 if tick%40==0 else 0}
+		var commands := [command,_neutral()]
+		if tick >= 160: inputs.append(commands.duplicate(true))
+		var snapshot: Dictionary = core.step(commands)
+		var before := JSON.stringify(snapshot)
+		fb.observe(snapshot,commands)
+		_check(JSON.stringify(snapshot)==before,"observer leaves real snapshot untouched")
+		for event: Dictionary in snapshot.events:
+			if event.type=="hit": contacts += 1
+	_check(contacts>0,"ordinary-input real core produced contact")
+	var expected := JSON.stringify(fb.save_observation())
+	core.load_state(prefix)
+	fb.restore_observation(observed_prefix)
+	for commands: Array in inputs: fb.observe(core.step(commands),commands)
+	_check(JSON.stringify(fb.save_observation())==expected,"real core replay yields identical feedback and counts")
 
 func _start(fb: RefCounted, tick: int, move: String, events: Array = [], combo_hits: int = 0, combo_damage: int = 0) -> void:
 	fb.observe(_state(tick,move,events,combo_hits,combo_damage),[_neutral(),_neutral()])
