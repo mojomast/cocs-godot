@@ -1,0 +1,92 @@
+{
+  "recipeSHA256": "f46577afcc7fd0c57086cbcb624454787df4f903f62e70cad8bba296fe22f90d",
+  "accepted": false,
+  "rendering": "capture-paced llvmpipe; not continuous rendered playability",
+  "journeys": [
+    {
+      "chapter": "crown-array",
+      "compact": false,
+      "sourceElapsed": 186.583333333375,
+      "shots": 98,
+      "ack": 10847,
+      "workshops": [
+        "choir",
+        "garden"
+      ],
+      "clearSamples": 943,
+      "blockedSamples": 0,
+      "nativeExit": 0,
+      "homeExit": 0,
+      "returnedToStart": true,
+      "directory": "port/expansion-four/scenery/production-f/journeys-final/crown-array-wide"
+    },
+    {
+      "chapter": "emberline-ascent",
+      "compact": false,
+      "sourceElapsed": 277.850000000075,
+      "shots": 106,
+      "ack": 16090,
+      "workshops": [
+        "condenser",
+        "foundry"
+      ],
+      "clearSamples": 1399,
+      "blockedSamples": 0,
+      "nativeExit": 0,
+      "homeExit": 0,
+      "returnedToStart": true,
+      "directory": "port/expansion-four/scenery/production-f/journeys-final/emberline-ascent-wide"
+    },
+    {
+      "chapter": "rootfall-verge",
+      "compact": false,
+      "sourceElapsed": 182.600000000038,
+      "shots": 80,
+      "ack": 10474,
+      "workshops": [
+        "nursery",
+        "canopy"
+      ],
+      "clearSamples": 921,
+      "blockedSamples": 0,
+      "nativeExit": 0,
+      "homeExit": 0,
+      "returnedToStart": true,
+      "directory": "port/expansion-four/scenery/production-f/journeys-final/rootfall-verge-wide"
+    },
+    {
+      "chapter": "rootfall-verge",
+      "compact": true,
+      "sourceElapsed": 178.216666666701,
+      "shots": 91,
+      "ack": 10424,
+      "workshops": [
+        "nursery",
+        "canopy"
+      ],
+      "clearSamples": 898,
+      "blockedSamples": 0,
+      "nativeExit": 0,
+      "homeExit": 0,
+      "returnedToStart": true,
+      "directory": "port/expansion-four/scenery/production-f/journeys-final/rootfall-verge-compact"
+    },
+    {
+      "chapter": "siltwake-crossing",
+      "compact": false,
+      "sourceElapsed": 214.850000000064,
+      "shots": 131,
+      "ack": 12385,
+      "workshops": [
+        "waterwheel",
+        "ferry"
+      ],
+      "clearSamples": 1083,
+      "blockedSamples": 0,
+      "nativeExit": 0,
+      "homeExit": 0,
+      "returnedToStart": true,
+      "directory": "port/expansion-four/scenery/production-f/journeys-final/siltwake-crossing-wide"
+    }
+  ]
+}

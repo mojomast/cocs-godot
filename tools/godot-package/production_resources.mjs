@@ -7,6 +7,7 @@ import {join,resolve,posix} from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {robotImportPaths,verifyRobotImports} from './robot_imports.mjs';
 import {vehicleImportPaths,verifyVehicleImports,VEHICLE_EVIDENCE} from './vehicle_imports.mjs';
+import {sceneryImportPaths,verifySceneryImports,SCENERY_EVIDENCE} from './scenery_imports.mjs';
 export const REQUIREMENTS='tools/godot-package/production_requirements.json';
 export const REQUIRED_UNITS=Object.freeze(['parallax-interiors','robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
 const skins=['needle_surveyor','caisson_guard','kiln_tender'];
@@ -75,6 +76,7 @@ function specification(unit,read) {
     assert.equal(ids.length,12);assert.equal(new Set(ids).size,12);
     for(const name of ids){assert.match(name,/^[a-z0-9-]+$/);masters.push(`tools/godot-biomes/expansion/masters/${name}.blend`);for(let lod=0;lod<2;lod++)exports.push(`godot/biomes/expansion/art/${name}-${lod}.glb`);}
     inputs.push('tools/godot-biomes/expansion/compile.mjs','tools/godot-biomes/expansion/reopen.py','port/edge-effects/structure-faces.json','godot/biomes/expansion/scenery_pack.gd','godot/campaign/terrain.gd',...Object.keys(catalog.chapters).map(ch=>`godot/campaign/generated/${ch}.json`));
+    extra.push(...sceneryImportPaths(exports,read),...SCENERY_EVIDENCE);
   } else if(id==='parallax-interiors') {
     const base='tools/godot-multiplayer/new-maps/parallax-observatory/';
     masters.push(base+'revisions/interiors-v2/output/parallax-observatory.blend');
@@ -174,6 +176,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     assert.equal(new Set(receipt.rawFiles).size,receipt.rawFiles.length,'Duplicate production raw path');
     for(const path of receipt.rawFiles){assert.ok(Object.hasOwn(resources,path),'Undeclared production raw path');raw[path]=resources[path];}
     if(unit.id==='scenery') {
+      verifySceneryImports(spec.exports,read);
       const catalog=JSON.parse(read('godot/biomes/expansion/catalog.json'));
       assert.equal(catalog.recipeSha256,hash(read('tools/godot-biomes/expansion/meshes.json')),'Stale scenery mesh recipe');
       for(const [id,c]of Object.entries(catalog.chapters))assert.equal(c.recipeSha256,hash(read(`godot/campaign/generated/${id}.json`)),'Stale scenery chapter binding');

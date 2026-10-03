@@ -1,0 +1,1721 @@
+{
+  "unit": "scenery",
+  "sourceCommits": [
+    "36358d96",
+    "fe3f3b5a"
+  ],
+  "sourceHashes": {
+    "godot/biomes/expansion/catalog.json": "c3465701d272399b7976150ff85a3f1503beb35f4aebf318c05581e17de8753d",
+    "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
+    "tools/godot-biomes/expansion/build.py": "d1bb7746663e305d88f7b7aa5c35045ccc88cdb3f8c39bb73f2d76ce93d6aa08",
+    "tools/godot-biomes/expansion/meshes.json": "f46577afcc7fd0c57086cbcb624454787df4f903f62e70cad8bba296fe22f90d",
+    "tools/godot-biomes/expansion/recipe.mjs": "0b9398f3229da1e2e42f509a4e0fb54e29686611dee8bf814f17b91023c6fbad"
+  },
+  "sourceFingerprint": "376c5c392bf54a94e16ec93cb39a973e1311a7d1bb4b75be20e411aeaf0f41b1",
+  "masters": [
+    {
+      "path": "tools/godot-biomes/expansion/masters/crown-ceramic-lightwell.blend",
+      "sha256": "f29c92dbb0137c16bd5fe3fc0b5a9e16814151f979309056783b236745a1af85"
+    },
+    {
+      "path": "tools/godot-biomes/expansion/masters/crown-faceted-antenna.blend",
+      "sha256": "ab88024adcfbb556ef9a0131410eab89d45051314b6aff1621ca29baac5ccb5a"
+    },
+    {
+      "path": "tools/godot-biomes/expansion/masters/crown-folio-archive.blend",
+      "sha256": "e4cbd8822067e6d354b78511ee9c8298e0681c0106904c14c543b109f06127b5"
+    },
+    {
+      "path": "tools/godot-biomes/expansion/masters/emberline-basalt-terrace.blend",
+      "sha256": "a6e091790d188fa4ba6ae8556e91422dc61830a464a524e11d8c782acc9b0a12"
+    },
+    {
+      "path": "tools/godot-biomes/expansion/masters/emberline-ceramic-exhaust.blend",
+      "sha256": "d9cbb033a8b9151ae959e831a1debc24412ce1ea9dc61194b98a6c93b50547cd"
+    },
+    {
+      "path": "tools/godot-biomes/expansion/masters/emberline-heatshield-tower.blend",
+      "sha256": "f5ae0ce92d984697c30b38cd9f546bf03dbe2d03ba04d25ed58826412c7f5d51"
+    },
+    {
+      "path": "tools/godot-biomes/expansion/masters/rootfall-canopy-relay.blend",
+      "sha256": "3f733f4e481df1af5a7c04b9de3da77b341ed4d155f31929de224ea14b6ad364"
+    },
+    {
+      "path": "tools/godot-biomes/expansion/masters/rootfall-root-archive.blend",
+      "sha256": "e018e69a6aa73739b69193fc673aba3cf78887377657a026121d447f931e4a63"
+    },
+    {
+      "path": "tools/godot-biomes/expansion/masters/rootfall-root-buttress.blend",
+      "sha256": "f13ed4c2ee918f1ee885a2a59ae67100f28dcaf4489d5607dcd7d781125d5ec7"
+    },
+    {
+      "path": "tools/godot-biomes/expansion/masters/siltwake-flood-abutment.blend",
+      "sha256": "210d9f27cd7be33cbbaa175a282684d9ff3f3ab7fdf2e23237af8a7c57afff88"
+    },
+    {
+      "path": "tools/godot-biomes/expansion/masters/siltwake-sluice-bank.blend",
+      "sha256": "f94dbdf0add4e949e6e0d4f5bcfa32c073564273ae7c979ae1d4537ceaff6b23"
+    },
+    {
+      "path": "tools/godot-biomes/expansion/masters/siltwake-strata-wheelhouse.blend",
+      "sha256": "7da8427ac104bbeb410b05e4f8cb7404cf8386494c6b964da0daac8f9b00b5e7"
+    }
+  ],
+  "exports": [
+    {
+      "path": "godot/biomes/expansion/art/crown-ceramic-lightwell-0.glb",
+      "bytes": 43116,
+      "sha256": "39c0aa71afbb0c6d044c791dc105d278e895c4e75896fbcd0e69d61b57c89dc9",
+      "triangles": 436,
+      "surfaces": 2,
+      "texturedSurfaces": 2,
+      "textures": [
+        {
+          "name": "MothLocal_biome4_ceramic",
+          "bytes": 2670,
+          "sha256": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/crown-ceramic-lightwell-1.glb",
+      "bytes": 40568,
+      "sha256": "9e6689b226101cb6ca7ab188dbe1b4b48ddd11ace2ef55fbdd2dbd98edb00993",
+      "triangles": 396,
+      "surfaces": 2,
+      "texturedSurfaces": 2,
+      "textures": [
+        {
+          "name": "MothLocal_biome4_ceramic",
+          "bytes": 2670,
+          "sha256": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/crown-faceted-antenna-0.glb",
+      "bytes": 58592,
+      "sha256": "54fc76aec06bec41f208d4ebbd62491ddb2fc929b6280eaba16f8a1372f4f36e",
+      "triangles": 548,
+      "surfaces": 3,
+      "texturedSurfaces": 3,
+      "textures": [
+        {
+          "name": "MothLocal_biome4_ceramic",
+          "bytes": 2670,
+          "sha256": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48"
+        },
+        {
+          "name": "MothLocalNormal_biome4_iron",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_iron",
+          "bytes": 2404,
+          "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/crown-faceted-antenna-1.glb",
+      "bytes": 56044,
+      "sha256": "20f14b6a59f98ec0d1ffba18afdccc9564ba46257e18855e32ba9d1273dea7ce",
+      "triangles": 508,
+      "surfaces": 3,
+      "texturedSurfaces": 3,
+      "textures": [
+        {
+          "name": "MothLocal_biome4_ceramic",
+          "bytes": 2670,
+          "sha256": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48"
+        },
+        {
+          "name": "MothLocalNormal_biome4_iron",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_iron",
+          "bytes": 2404,
+          "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/crown-folio-archive-0.glb",
+      "bytes": 63164,
+      "sha256": "1cfebaa1727a56477db6ca74d55926dca2d18320663fb1a673110ba15b653ba9",
+      "triangles": 608,
+      "surfaces": 3,
+      "texturedSurfaces": 3,
+      "textures": [
+        {
+          "name": "MothLocal_biome4_ceramic",
+          "bytes": 2670,
+          "sha256": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48"
+        },
+        {
+          "name": "MothLocalNormal_biome4_iron",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_iron",
+          "bytes": 2404,
+          "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/crown-folio-archive-1.glb",
+      "bytes": 29908,
+      "sha256": "f6a1d758949545e19137cce5eef0060463dd92cd3d68940cee1311b0b33edad8",
+      "triangles": 400,
+      "surfaces": 1,
+      "texturedSurfaces": 1,
+      "textures": [
+        {
+          "name": "MothLocal_biome4_ceramic",
+          "bytes": 2670,
+          "sha256": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/emberline-basalt-terrace-0.glb",
+      "bytes": 59764,
+      "sha256": "0ec55615a6079c241e8c8868dd697cee43ec1086758cadcc8f16aa3ac0027a99",
+      "triangles": 440,
+      "surfaces": 3,
+      "texturedSurfaces": 3,
+      "textures": [
+        {
+          "name": "MothLocalNormal_biome4_basalt",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_biome4_basalt",
+          "bytes": 1378,
+          "sha256": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        },
+        {
+          "name": "MothLocalNormal_biome4_iron",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_iron",
+          "bytes": 2404,
+          "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/emberline-basalt-terrace-1.glb",
+      "bytes": 39720,
+      "sha256": "98c6c43f1db946b4f43d19fefc0d1e132e1b9ce37f2150c36aee25bcf59e0716",
+      "triangles": 272,
+      "surfaces": 2,
+      "texturedSurfaces": 2,
+      "textures": [
+        {
+          "name": "MothLocalNormal_biome4_basalt",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_biome4_basalt",
+          "bytes": 1378,
+          "sha256": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/emberline-ceramic-exhaust-0.glb",
+      "bytes": 80296,
+      "sha256": "1ba5cec1a0b05a2c28cd44eb091be421fe649dc0028b80fdcfb3a337fa0c3ca1",
+      "triangles": 688,
+      "surfaces": 4,
+      "texturedSurfaces": 4,
+      "textures": [
+        {
+          "name": "MothLocalNormal_biome4_basalt",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_biome4_basalt",
+          "bytes": 1378,
+          "sha256": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        },
+        {
+          "name": "MothLocalNormal_biome4_iron",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_iron",
+          "bytes": 2404,
+          "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8"
+        },
+        {
+          "name": "MothLocal_biome4_ceramic",
+          "bytes": 2670,
+          "sha256": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/emberline-ceramic-exhaust-1.glb",
+      "bytes": 70068,
+      "sha256": "08dc4dce1a3c5a2756a4b5c224c9f784400dad19815cf1ef499bd09f324f29ba",
+      "triangles": 520,
+      "surfaces": 4,
+      "texturedSurfaces": 4,
+      "textures": [
+        {
+          "name": "MothLocalNormal_biome4_basalt",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_biome4_basalt",
+          "bytes": 1378,
+          "sha256": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        },
+        {
+          "name": "MothLocalNormal_biome4_iron",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_iron",
+          "bytes": 2404,
+          "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8"
+        },
+        {
+          "name": "MothLocal_biome4_ceramic",
+          "bytes": 2670,
+          "sha256": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/emberline-heatshield-tower-0.glb",
+      "bytes": 72100,
+      "sha256": "713399cf7a9e3e921adb5715717504b7705639bfd28f71352c12cf7b6a054416",
+      "triangles": 616,
+      "surfaces": 3,
+      "texturedSurfaces": 3,
+      "textures": [
+        {
+          "name": "MothLocalNormal_biome4_basalt",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_biome4_basalt",
+          "bytes": 1378,
+          "sha256": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        },
+        {
+          "name": "MothLocalNormal_biome4_iron",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_iron",
+          "bytes": 2404,
+          "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/emberline-heatshield-tower-1.glb",
+      "bytes": 61876,
+      "sha256": "6fd410a048a22c554f66eb8116cc9b097d74642998febfdc42f9936bedeb6488",
+      "triangles": 448,
+      "surfaces": 3,
+      "texturedSurfaces": 3,
+      "textures": [
+        {
+          "name": "MothLocalNormal_biome4_basalt",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_biome4_basalt",
+          "bytes": 1378,
+          "sha256": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        },
+        {
+          "name": "MothLocalNormal_biome4_iron",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_iron",
+          "bytes": 2404,
+          "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/rootfall-canopy-relay-0.glb",
+      "bytes": 53872,
+      "sha256": "ef4b4fa2609017d3c1aea0cf31dc9bcc44c2354118ce398fa5e231a6f1a49644",
+      "triangles": 424,
+      "surfaces": 3,
+      "texturedSurfaces": 3,
+      "textures": [
+        {
+          "name": "MothLocalNormal_biome4_bark",
+          "bytes": 6122,
+          "sha256": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768"
+        },
+        {
+          "name": "MothLocal_biome4_bark",
+          "bytes": 1555,
+          "sha256": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        },
+        {
+          "name": "MothLocal_biome4_moss",
+          "bytes": 2679,
+          "sha256": "5c6dc4c1d75a2e5bb264b25e39c334c798a9880729550ad0092c18256544d620"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/rootfall-canopy-relay-1.glb",
+      "bytes": 48264,
+      "sha256": "fcdf1e9459a9577a108f134aadabda34d8f96b3132623fdd7f3c69d740eb4da2",
+      "triangles": 344,
+      "surfaces": 3,
+      "texturedSurfaces": 3,
+      "textures": [
+        {
+          "name": "MothLocalNormal_biome4_bark",
+          "bytes": 6122,
+          "sha256": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768"
+        },
+        {
+          "name": "MothLocal_biome4_bark",
+          "bytes": 1555,
+          "sha256": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6"
+        },
+        {
+          "name": "MothLocal_biome4_moss",
+          "bytes": 2679,
+          "sha256": "5c6dc4c1d75a2e5bb264b25e39c334c798a9880729550ad0092c18256544d620"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/rootfall-root-archive-0.glb",
+      "bytes": 60156,
+      "sha256": "8824dff6a08899f236ec8bb81834774a7e5636600b8414ab2bbf1d43d8d46f8e",
+      "triangles": 608,
+      "surfaces": 2,
+      "texturedSurfaces": 2,
+      "textures": [
+        {
+          "name": "MothLocalNormal_biome4_bark",
+          "bytes": 6122,
+          "sha256": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768"
+        },
+        {
+          "name": "MothLocal_biome4_bark",
+          "bytes": 1555,
+          "sha256": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/rootfall-root-archive-1.glb",
+      "bytes": 41336,
+      "sha256": "b01f1230dc11dfc73a6242fd730b9dd48102e795b32459cad98df2ae314f6f0d",
+      "triangles": 488,
+      "surfaces": 1,
+      "texturedSurfaces": 1,
+      "textures": [
+        {
+          "name": "MothLocalNormal_biome4_bark",
+          "bytes": 6122,
+          "sha256": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768"
+        },
+        {
+          "name": "MothLocal_biome4_bark",
+          "bytes": 1555,
+          "sha256": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/rootfall-root-buttress-0.glb",
+      "bytes": 52536,
+      "sha256": "a1e0e9c96b4ae4bbf904081516f12ff10e8cf7b07b585cd44b8aa026d1a63b25",
+      "triangles": 484,
+      "surfaces": 2,
+      "texturedSurfaces": 2,
+      "textures": [
+        {
+          "name": "MothLocalNormal_biome4_bark",
+          "bytes": 6122,
+          "sha256": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768"
+        },
+        {
+          "name": "MothLocal_biome4_bark",
+          "bytes": 1555,
+          "sha256": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/rootfall-root-buttress-1.glb",
+      "bytes": 46936,
+      "sha256": "b5f017ee36e70949512f31f147051706ff59a6ec9eb345b6077bbcd613bd30f5",
+      "triangles": 404,
+      "surfaces": 2,
+      "texturedSurfaces": 2,
+      "textures": [
+        {
+          "name": "MothLocalNormal_biome4_bark",
+          "bytes": 6122,
+          "sha256": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768"
+        },
+        {
+          "name": "MothLocal_biome4_bark",
+          "bytes": 1555,
+          "sha256": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/siltwake-flood-abutment-0.glb",
+      "bytes": 67548,
+      "sha256": "927213938aa494996c537c0faef4f5b2d00adbe7af87781a21c147b596c45693",
+      "triangles": 572,
+      "surfaces": 3,
+      "texturedSurfaces": 3,
+      "textures": [
+        {
+          "name": "MothLocalNormal_biome4_sandstone",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_biome4_sandstone",
+          "bytes": 3000,
+          "sha256": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66"
+        },
+        {
+          "name": "MothLocalNormal_biome4_silt",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_biome4_silt",
+          "bytes": 2445,
+          "sha256": "e000efd1793b08c484f03821eafe0398d1b661650e4990a77faa94832e053188"
+        },
+        {
+          "name": "MothLocalNormal_biome4_iron",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_iron",
+          "bytes": 2404,
+          "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/siltwake-flood-abutment-1.glb",
+      "bytes": 52620,
+      "sha256": "021a74c122dae71df297bba06b95725bbdf98c7edbd68f4778c4bbb9b5dd36cd",
+      "triangles": 488,
+      "surfaces": 2,
+      "texturedSurfaces": 2,
+      "textures": [
+        {
+          "name": "MothLocalNormal_biome4_sandstone",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_biome4_sandstone",
+          "bytes": 3000,
+          "sha256": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66"
+        },
+        {
+          "name": "MothLocalNormal_biome4_silt",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_biome4_silt",
+          "bytes": 2445,
+          "sha256": "e000efd1793b08c484f03821eafe0398d1b661650e4990a77faa94832e053188"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/siltwake-sluice-bank-0.glb",
+      "bytes": 74392,
+      "sha256": "de7e834aa4649355883aac1d5e1191b76bd86f9ad56c888067c379fc07455d4d",
+      "triangles": 684,
+      "surfaces": 3,
+      "texturedSurfaces": 3,
+      "textures": [
+        {
+          "name": "MothLocalNormal_biome4_sandstone",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_biome4_sandstone",
+          "bytes": 3000,
+          "sha256": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66"
+        },
+        {
+          "name": "MothLocalNormal_biome4_iron",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_iron",
+          "bytes": 2404,
+          "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/siltwake-sluice-bank-1.glb",
+      "bytes": 69276,
+      "sha256": "c04e2f6ff63aeeb8d3d4aa0489179c5d4aff56522e2c1152594e0d133f5c3060",
+      "triangles": 600,
+      "surfaces": 3,
+      "texturedSurfaces": 3,
+      "textures": [
+        {
+          "name": "MothLocalNormal_biome4_sandstone",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_biome4_sandstone",
+          "bytes": 3000,
+          "sha256": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66"
+        },
+        {
+          "name": "MothLocalNormal_biome4_iron",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_iron",
+          "bytes": 2404,
+          "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0.glb",
+      "bytes": 155040,
+      "sha256": "eb7315c37f03edd9846e56edb9ebbca1f017e3abd88391df6531e0a8555f1fd9",
+      "triangles": 1796,
+      "surfaces": 4,
+      "texturedSurfaces": 4,
+      "textures": [
+        {
+          "name": "MothLocalNormal_biome4_sandstone",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_biome4_sandstone",
+          "bytes": 3000,
+          "sha256": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        },
+        {
+          "name": "MothLocalNormal_biome4_iron",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_iron",
+          "bytes": 2404,
+          "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8"
+        },
+        {
+          "name": "MothLocalNormal_biome4_silt",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_biome4_silt",
+          "bytes": 2445,
+          "sha256": "e000efd1793b08c484f03821eafe0398d1b661650e4990a77faa94832e053188"
+        }
+      ]
+    },
+    {
+      "path": "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1.glb",
+      "bytes": 105368,
+      "sha256": "b40b8a3e2a24fbec0a5cd19614678ef0606c468585ae624a52e87416484b8e52",
+      "triangles": 1152,
+      "surfaces": 3,
+      "texturedSurfaces": 3,
+      "textures": [
+        {
+          "name": "MothLocalNormal_biome4_sandstone",
+          "bytes": 6429,
+          "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+        },
+        {
+          "name": "MothLocal_biome4_sandstone",
+          "bytes": 3000,
+          "sha256": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66"
+        },
+        {
+          "name": "MothLocalNormal_biome4_copper",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_copper",
+          "bytes": 3262,
+          "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b"
+        },
+        {
+          "name": "MothLocalNormal_biome4_iron",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_biome4_iron",
+          "bytes": 2404,
+          "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8"
+        }
+      ]
+    }
+  ],
+  "measuredGLBTriangles": 13924,
+  "configuredTriangleCap": 108000,
+  "accepted": false,
+  "pending": [
+    "new surfaces visible outside retained old facade",
+    "no objective/player/robot silhouette blockage",
+    "exact old collider IDs and shot windows",
+    "Moth normal/albedo import and wet-original restoration",
+    "continuous timestamped gameplay capture beyond staged stills"
+  ],
+  "packageInputHashes": {
+    "game/alt-fire.mjs": "d7f821f28f9cfe3d12da2da3461e053f698037aa8e44540324c76a58c2e02c5f",
+    "game/arsenal-maps.mjs": "fad8dff6d87dda4aef905969cd9b130e3a5c7c9776e8b1e6e0294a8dc6d63f3d",
+    "game/assault.mjs": "6e24f4a363ce8ccb1787057ec125d3695da2aefe133f7872bf3a4cde66daea70",
+    "game/attachments.mjs": "66c46bfb2bae119a61ba7ffcdd301e34fad42a50e2dc3c7833828b9abfdcef14",
+    "game/battle-maps.mjs": "3d4ac5b9a4dfc5e896e0679ba39a8da3d579285b0e551160e45687f9437dfaf8",
+    "game/blood-gulch.mjs": "2df956608fc6fe73c77410ccb5889f09266c722c236494f46d4d585730ea9a7b",
+    "game/bot-personalities.mjs": "173c86b85a7c688987a9f65dd72195042c75f0038bb9f10ef22a79f3dcc699c2",
+    "game/bots.mjs": "2a6d3fcd7960711fc4aeefe77aaa39dc1a318c6c36097ede7010894a411cf95a",
+    "game/campaign-anchors.mjs": "0d07d2cfb5e67049524870b1a8af2703d57b747cc7ca85f825a545dd47e9d8a7",
+    "game/campaign-data.mjs": "bac73e42b0d519d8929c1dbdf004c088a05c46ecb757f784b632859a7d4c380c",
+    "game/character-anim.mjs": "feaff9cd77a88174210957e871420d429c3523d5b2517592749b190e602bfa01",
+    "game/cocs-bots.mjs": "bdad004df06de288be3628528485f66d7f5ded589eeca8a0daafdbdddb461d7e",
+    "game/cocs-coop.mjs": "36038e1f524b1a25c9fd991990b0fddf62ccaae89c87566486f372e9e684e2a6",
+    "game/cocs-difficulty.mjs": "e3ca14ecea9333ab2d74b2ccf8f281f7a962bb67cc8c6b3d28eebbe5b37c42c0",
+    "game/cocs-director.mjs": "926af20afc920c3d3a6ff9870322d128414205a7c80b84d7c19073471069ed8d",
+    "game/cocs-economy.mjs": "1fdbdddeeabb32eff1dbb1d73bc34506d63c2e3e2ac6fb0a37851465865f8f93",
+    "game/cocs-roles.mjs": "3edaf3207b6a54bf0600ee0fb9eee732bdd494351d67f9cc85b1c8e66ade67fa",
+    "game/cocs-squads.mjs": "b6d234b007e6d80a670c4646c43fdaf6485e62120876fe6ccbe210ac026cd6a1",
+    "game/cocs-terminals.mjs": "7b96cad0dcbf2b0dfb5dd78cf1217298edaf70785e482fb3944745636d3efa3f",
+    "game/cocs-traversal.mjs": "555e742ff721549db974ac470a2b523ac6dad98659c40f7399a11e904c7672f7",
+    "game/cocs.mjs": "1224034a80181d83571f15034059aa979545afc171632e6588fe9d2ebf3724e6",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "game/core.mjs": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+    "game/cosmetics.mjs": "466d6eba56296a88b698a6036cc40b1381634b30d350fe04757832a15779b98a",
+    "game/ctf-maps.mjs": "4f91623e6cc6914b9cca688edd7b37a1ba0e804808943a40deb27525ab78107f",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+    "game/deaths.mjs": "2c97fa500f2dfe504b1b3c7ff5de8cc5699b44b9c79df4eedb1276107933c89c",
+    "game/destination-combat-maps.mjs": "a8964b89d4fa2dffac2d0b7ee49fe6fc70e9e261fd9a5078b2630370a5f7316b",
+    "game/destination-lattice-maps.mjs": "a7110177c2e4dca4b56f88f7e0d768b96df935661e0d4dfe87ba2970be8b1966",
+    "game/destination-maps.mjs": "e8ac0655a4ae8030f70a76f258784c5007ea2be808f0cb10547385c6ceffeda2",
+    "game/destination-objective-maps.mjs": "f995d7ec863f848ac7e3aa6a9a48e2a51b27f6fda7749e86877594665a1c79d8",
+    "game/destination-sports-maps.mjs": "bd3f486d57b188163b16193b4ce05401bac14ad19b40b73768525c9ca4d0e0b1",
+    "game/enemy-types.mjs": "92b600584061d0626b35dd44ae94e1903ba178b390f600a0254fbc5505685613",
+    "game/expansion-maps.mjs": "62b30255393daa473f5c6e46056e8922c1dc74c02c993499cbe6ac3e6439537f",
+    "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+    "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
+    "game/horde-stages.mjs": "132bb551f0e517ed037d2e97fbd8ff510802eaaa7163e39da10e59745d656afb",
+    "game/island-maps.mjs": "5fff90834c33d65bd8a06a70528aff45f7d5b09840b8eaa0a3a9c5f23f4d0cf7",
+    "game/kits.mjs": "e44908b88341bce5f4df8ffe9e896482202466dc502fd93059ba63e5b54c40bd",
+    "game/lattice-foundry.mjs": "5c63d3d1c36e9957a6181cc2e7f83f27056599040ad9f4f7714d43c5596b4c56",
+    "game/lattice-maps.mjs": "d3eae8ec886ed66dfc04c420d9a4e6051368dff385bc680cf238387545c91016",
+    "game/lattice-roles.mjs": "bd1f1165c3e2b3dfa3b33e3351f90db1039eaf264ddadab08e5e481dcee31340",
+    "game/lattice-support.mjs": "5d359bf2a7fb06a3e6f0085cf13c68d2db900297223298d2befffd8edb393f3a",
+    "game/levelgen.mjs": "3a5b2285b1a9703cded463bdffa0cc73f38b75b427e0ce9371919c646a4dd38b",
+    "game/map-schema.mjs": "e4b6ebc445912c6128eb1cbc658d91d07751b85650bc92fd0fd0764ae72716b8",
+    "game/maps.mjs": "729d94c4a3bc566d3c6b89c8c5c7d656babf338f2ab42edc988f383e021dd731",
+    "game/math.mjs": "a9f2e5f55f7e90c567d35b4c77d7ecdeae4c28b5174d52f8cf9a5e4e59170327",
+    "game/mode-data.mjs": "7598bfa2d5fb0495bbfcb615c3083245d4dff632a13aa1a42593da8023e91548",
+    "game/moth-assets.mjs": "736d5ff7e844f8210b273791f4806bae916a4e463494f64c78b94bd4cb2768ab",
+    "game/moth-baked.mjs": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2",
+    "game/moth-maps.mjs": "613cdeac0ea8f5f64c988f051698661825d2053268b75fe1151c7beacfcdc081",
+    "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
+    "game/nextgen-maps.mjs": "9a8dc8720a2395edf796a0d630f0033c9aa29d872d3fcf98db3aefabdac33727",
+    "game/objectives.mjs": "3e92ad1f85fb785362e15fd836d2b80f95060e0670e9f58a766f79ffa60742ec",
+    "game/operator-profiles.mjs": "b7c4aec4aac899626ad5d7a78f5870218513a5b1d38ff12f2312beacc32882ba",
+    "game/operator-verbs.mjs": "f3bbcd2e13bc04dabf2a81a74ddee3848d6835d11d8ac063e4603ea689bf96b3",
+    "game/outcome.mjs": "f66fe5ca09e8507939d407a7eb9defd4a2d23b643a221955e0d0ad584b17ec98",
+    "game/payload.mjs": "13e357516af38fdfe6596dfa7a43cbeaae2445f492ad41df934deb8840bc92bb",
+    "game/progression.mjs": "5b70fa168d8edb5192052ad9bed3243370db7ba8f13952a9401596a9d4bc1ce5",
+    "game/race-maps.mjs": "d14c6d5cf31728cb5bac4363b142d16a79705b727f7e015774d80a68d5abf4b3",
+    "game/race.mjs": "1c448a0f00e3354dd6fa32190f85dcc6c31883f428b07193773fcd02bf2effba",
+    "game/ragdoll.mjs": "10bd8cb43405d45a42d5034261ce89119a8bf05c24c3ca1f47f1b4b4202efa3d",
+    "game/singleplayer.mjs": "60ab39e4cc9dd07f38fed27c39f25b2383e0ea1257dba5ee29f2ebe7762189ce",
+    "game/soccer-maps.mjs": "9a57d95b9064c21d3c73303535379f006638aa3c476227bf92946541d1ca6669",
+    "game/soccer.mjs": "78da2d005207c5e744f56a2d3924d0bf82ed4c62b29bd0702b97513b74359972",
+    "game/spatial.mjs": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
+    "game/spawn-placement.mjs": "b0665e410e68eaf160c1a890558a69efa035e58abd76c45c28fcc01ae42b2361",
+    "game/spec-effects.mjs": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
+    "game/story.mjs": "6306ec902fbb8427dd0060ac79084c95bb7fc6999a49f28ec86cae9ddccf059b",
+    "game/structures.mjs": "445ace67e41028e602aab692578c9d200ca8fb58d1b3f9f8c1568c5ac2b5d1d2",
+    "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+    "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+    "game/vehicles.mjs": "e55dbed9969a9f4430b0471fefb4d294fddf0e75d8af853565c9361c106244db",
+    "godot/biomes/expansion/catalog.json": "c3465701d272399b7976150ff85a3f1503beb35f4aebf318c05581e17de8753d",
+    "godot/biomes/expansion/scenery_pack.gd": "8518e24c6397db09408e7e1d9bc38546be26572beb8baf753fac34bb646646c3",
+    "godot/biomes/foliage.gdshader": "5a47dae07b73dd0a8b27576493241bbbb1ee3f9d42b7d5cb73cda5b5be8ca085",
+    "godot/biomes/map.gd": "449137e35bd30b0f0125954866170fdc771c53a466a83b3988b1453456ce4d1c",
+    "godot/biomes/surface.gdshader": "72aa205f7781f7984efae2941b2636e6c755aa81f569c64d275c1b37f438d27e",
+    "godot/campaign/art/landmarks/crown-receiver.glb": "a4fe581adb2d2a3014d3a008935a47ce82805389a7912064530f2238d74f1370",
+    "godot/campaign/art/landmarks/fallen-relay.glb": "dc013e16360fb018fb28dcf76fc6faf74aa7fc1d5ef6a8f480f1f47f4f61b2cf",
+    "godot/campaign/environment_art.gd": "da891f287ca5be6659581c9542d5926283b77b6951d289836e307aa5e61b03ae",
+    "godot/campaign/generated/crown-array.json": "3dd834a233a400c8cfd6c48073bcae45a33de973ca63ceb87cac38f8f010b0e6",
+    "godot/campaign/generated/emberline-ascent.json": "4cc4a3ab87bfeba1f5406cbc937bb73de553f31325e37471e32ca63e04812840",
+    "godot/campaign/generated/rootfall-verge.json": "415d1c1aaee9ac7a7dbe486617e6b0bf174821c8ac83d4723de445ee52e95969",
+    "godot/campaign/generated/siltwake-crossing.json": "7f9512a16b1006da79811177892b7ee289fdc28ab2040a4712a5cff5600c736e",
+    "godot/campaign/materials/ground.gdshader": "d117afbd9d4557f446c1c66307ab0bb91888e608801b94034cafba4100f6abc4",
+    "godot/campaign/structure_art.gd": "98eebc5f6e29c1b188ed4ebccc7fd5530d811fe6334f306a9d390f4875517451",
+    "godot/campaign/terrain.gd": "3c32b16fdf5899802069828c683a69c37c0b6fed1dd393e4849fa0f2aaac8068",
+    "godot/moth/derived/manifest.json": "5be9ad6493455138464dc059dd64a32dc5d837f6fc4e460957f606f6d2a79887",
+    "godot/moth/generated/manifest.json": "c5589ff2f2ab68d982b2bb45c221c08d8e3f653953e5d5d446bfa4cd68380047",
+    "godot/native_arenas/maps/geometry.gd": "5879559142e2be1548c313b1902a2c4a89bcc4c37ca6fed5c41ab9aa61cab231",
+    "godot/robot_assets/switchyard/workshop.gd": "c105afbc0874fc2afb7d56b72a48bcd6546873e62669ec08cef037daa936e81e",
+    "godot/weapon_effects/conduit.gdshader": "c93b65ca24c795e84c8124e0f0d25ec477e7c56b1b7c7f8d0a0a33d7a6d314b0",
+    "port/edge-effects/structure-faces.json": "a188bcbc6d2d6232efbb8e5e22a7b6f7576216e3a02d55654c968175b9541fae",
+    "port/edge-effects/structure-rays.mjs": "e22f5f7c57339e8198c37791b7e9221d64987a3d77c6bcc338a66718a2e65d86",
+    "tools/asset-production/material-validation.mjs": "874e5d31c666a8af4a98b600bb182a4f4cb9c5e6b1488d80908f855b2584bb3d",
+    "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
+    "tools/asset-production/package-receipt.mjs": "e1917daa642b15e6e3290b537fbf9024ba72e6f5dfd18f4025d3e589d9702621",
+    "tools/asset-production/receipt.mjs": "9648c19d979b2486c78830628c2f2508a02b4b2874d1f64149966d88d7e5f9d8",
+    "tools/asset-production/reopen.py": "4628bc44122a690495766f3cc967a82d3ab7aeab52c272cca7a202be88e0f5de",
+    "tools/godot-biomes/expansion/build.py": "d1bb7746663e305d88f7b7aa5c35045ccc88cdb3f8c39bb73f2d76ce93d6aa08",
+    "tools/godot-biomes/expansion/compile.mjs": "597830e7fa4605c68f87890f4ffcc538cffe5418d575ab3b4fc75da13da7e1e0",
+    "tools/godot-biomes/expansion/meshes.json": "f46577afcc7fd0c57086cbcb624454787df4f903f62e70cad8bba296fe22f90d",
+    "tools/godot-biomes/expansion/recipe.mjs": "0b9398f3229da1e2e42f509a4e0fb54e29686611dee8bf814f17b91023c6fbad",
+    "tools/godot-biomes/expansion/reopen.py": "cee5760adf5640d118eec601b8f2ea0d64e0f35ee940d862e128623a948a617c",
+    "tools/godot-package/production_resources.mjs": "3dd106d42ffa298ff7ecbe501e7882e1f0017fcd86e12e1575b12d57c01146ea",
+    "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8"
+  },
+  "packageInputs": {
+    "game/alt-fire.mjs": "d7f821f28f9cfe3d12da2da3461e053f698037aa8e44540324c76a58c2e02c5f",
+    "game/arsenal-maps.mjs": "fad8dff6d87dda4aef905969cd9b130e3a5c7c9776e8b1e6e0294a8dc6d63f3d",
+    "game/assault.mjs": "6e24f4a363ce8ccb1787057ec125d3695da2aefe133f7872bf3a4cde66daea70",
+    "game/attachments.mjs": "66c46bfb2bae119a61ba7ffcdd301e34fad42a50e2dc3c7833828b9abfdcef14",
+    "game/battle-maps.mjs": "3d4ac5b9a4dfc5e896e0679ba39a8da3d579285b0e551160e45687f9437dfaf8",
+    "game/blood-gulch.mjs": "2df956608fc6fe73c77410ccb5889f09266c722c236494f46d4d585730ea9a7b",
+    "game/bot-personalities.mjs": "173c86b85a7c688987a9f65dd72195042c75f0038bb9f10ef22a79f3dcc699c2",
+    "game/bots.mjs": "2a6d3fcd7960711fc4aeefe77aaa39dc1a318c6c36097ede7010894a411cf95a",
+    "game/campaign-anchors.mjs": "0d07d2cfb5e67049524870b1a8af2703d57b747cc7ca85f825a545dd47e9d8a7",
+    "game/campaign-data.mjs": "bac73e42b0d519d8929c1dbdf004c088a05c46ecb757f784b632859a7d4c380c",
+    "game/character-anim.mjs": "feaff9cd77a88174210957e871420d429c3523d5b2517592749b190e602bfa01",
+    "game/cocs-bots.mjs": "bdad004df06de288be3628528485f66d7f5ded589eeca8a0daafdbdddb461d7e",
+    "game/cocs-coop.mjs": "36038e1f524b1a25c9fd991990b0fddf62ccaae89c87566486f372e9e684e2a6",
+    "game/cocs-difficulty.mjs": "e3ca14ecea9333ab2d74b2ccf8f281f7a962bb67cc8c6b3d28eebbe5b37c42c0",
+    "game/cocs-director.mjs": "926af20afc920c3d3a6ff9870322d128414205a7c80b84d7c19073471069ed8d",
+    "game/cocs-economy.mjs": "1fdbdddeeabb32eff1dbb1d73bc34506d63c2e3e2ac6fb0a37851465865f8f93",
+    "game/cocs-roles.mjs": "3edaf3207b6a54bf0600ee0fb9eee732bdd494351d67f9cc85b1c8e66ade67fa",
+    "game/cocs-squads.mjs": "b6d234b007e6d80a670c4646c43fdaf6485e62120876fe6ccbe210ac026cd6a1",
+    "game/cocs-terminals.mjs": "7b96cad0dcbf2b0dfb5dd78cf1217298edaf70785e482fb3944745636d3efa3f",
+    "game/cocs-traversal.mjs": "555e742ff721549db974ac470a2b523ac6dad98659c40f7399a11e904c7672f7",
+    "game/cocs.mjs": "1224034a80181d83571f15034059aa979545afc171632e6588fe9d2ebf3724e6",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "game/core.mjs": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+    "game/cosmetics.mjs": "466d6eba56296a88b698a6036cc40b1381634b30d350fe04757832a15779b98a",
+    "game/ctf-maps.mjs": "4f91623e6cc6914b9cca688edd7b37a1ba0e804808943a40deb27525ab78107f",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+    "game/deaths.mjs": "2c97fa500f2dfe504b1b3c7ff5de8cc5699b44b9c79df4eedb1276107933c89c",
+    "game/destination-combat-maps.mjs": "a8964b89d4fa2dffac2d0b7ee49fe6fc70e9e261fd9a5078b2630370a5f7316b",
+    "game/destination-lattice-maps.mjs": "a7110177c2e4dca4b56f88f7e0d768b96df935661e0d4dfe87ba2970be8b1966",
+    "game/destination-maps.mjs": "e8ac0655a4ae8030f70a76f258784c5007ea2be808f0cb10547385c6ceffeda2",
+    "game/destination-objective-maps.mjs": "f995d7ec863f848ac7e3aa6a9a48e2a51b27f6fda7749e86877594665a1c79d8",
+    "game/destination-sports-maps.mjs": "bd3f486d57b188163b16193b4ce05401bac14ad19b40b73768525c9ca4d0e0b1",
+    "game/enemy-types.mjs": "92b600584061d0626b35dd44ae94e1903ba178b390f600a0254fbc5505685613",
+    "game/expansion-maps.mjs": "62b30255393daa473f5c6e46056e8922c1dc74c02c993499cbe6ac3e6439537f",
+    "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+    "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
+    "game/horde-stages.mjs": "132bb551f0e517ed037d2e97fbd8ff510802eaaa7163e39da10e59745d656afb",
+    "game/island-maps.mjs": "5fff90834c33d65bd8a06a70528aff45f7d5b09840b8eaa0a3a9c5f23f4d0cf7",
+    "game/kits.mjs": "e44908b88341bce5f4df8ffe9e896482202466dc502fd93059ba63e5b54c40bd",
+    "game/lattice-foundry.mjs": "5c63d3d1c36e9957a6181cc2e7f83f27056599040ad9f4f7714d43c5596b4c56",
+    "game/lattice-maps.mjs": "d3eae8ec886ed66dfc04c420d9a4e6051368dff385bc680cf238387545c91016",
+    "game/lattice-roles.mjs": "bd1f1165c3e2b3dfa3b33e3351f90db1039eaf264ddadab08e5e481dcee31340",
+    "game/lattice-support.mjs": "5d359bf2a7fb06a3e6f0085cf13c68d2db900297223298d2befffd8edb393f3a",
+    "game/levelgen.mjs": "3a5b2285b1a9703cded463bdffa0cc73f38b75b427e0ce9371919c646a4dd38b",
+    "game/map-schema.mjs": "e4b6ebc445912c6128eb1cbc658d91d07751b85650bc92fd0fd0764ae72716b8",
+    "game/maps.mjs": "729d94c4a3bc566d3c6b89c8c5c7d656babf338f2ab42edc988f383e021dd731",
+    "game/math.mjs": "a9f2e5f55f7e90c567d35b4c77d7ecdeae4c28b5174d52f8cf9a5e4e59170327",
+    "game/mode-data.mjs": "7598bfa2d5fb0495bbfcb615c3083245d4dff632a13aa1a42593da8023e91548",
+    "game/moth-assets.mjs": "736d5ff7e844f8210b273791f4806bae916a4e463494f64c78b94bd4cb2768ab",
+    "game/moth-baked.mjs": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2",
+    "game/moth-maps.mjs": "613cdeac0ea8f5f64c988f051698661825d2053268b75fe1151c7beacfcdc081",
+    "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
+    "game/nextgen-maps.mjs": "9a8dc8720a2395edf796a0d630f0033c9aa29d872d3fcf98db3aefabdac33727",
+    "game/objectives.mjs": "3e92ad1f85fb785362e15fd836d2b80f95060e0670e9f58a766f79ffa60742ec",
+    "game/operator-profiles.mjs": "b7c4aec4aac899626ad5d7a78f5870218513a5b1d38ff12f2312beacc32882ba",
+    "game/operator-verbs.mjs": "f3bbcd2e13bc04dabf2a81a74ddee3848d6835d11d8ac063e4603ea689bf96b3",
+    "game/outcome.mjs": "f66fe5ca09e8507939d407a7eb9defd4a2d23b643a221955e0d0ad584b17ec98",
+    "game/payload.mjs": "13e357516af38fdfe6596dfa7a43cbeaae2445f492ad41df934deb8840bc92bb",
+    "game/progression.mjs": "5b70fa168d8edb5192052ad9bed3243370db7ba8f13952a9401596a9d4bc1ce5",
+    "game/race-maps.mjs": "d14c6d5cf31728cb5bac4363b142d16a79705b727f7e015774d80a68d5abf4b3",
+    "game/race.mjs": "1c448a0f00e3354dd6fa32190f85dcc6c31883f428b07193773fcd02bf2effba",
+    "game/ragdoll.mjs": "10bd8cb43405d45a42d5034261ce89119a8bf05c24c3ca1f47f1b4b4202efa3d",
+    "game/singleplayer.mjs": "60ab39e4cc9dd07f38fed27c39f25b2383e0ea1257dba5ee29f2ebe7762189ce",
+    "game/soccer-maps.mjs": "9a57d95b9064c21d3c73303535379f006638aa3c476227bf92946541d1ca6669",
+    "game/soccer.mjs": "78da2d005207c5e744f56a2d3924d0bf82ed4c62b29bd0702b97513b74359972",
+    "game/spatial.mjs": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
+    "game/spawn-placement.mjs": "b0665e410e68eaf160c1a890558a69efa035e58abd76c45c28fcc01ae42b2361",
+    "game/spec-effects.mjs": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
+    "game/story.mjs": "6306ec902fbb8427dd0060ac79084c95bb7fc6999a49f28ec86cae9ddccf059b",
+    "game/structures.mjs": "445ace67e41028e602aab692578c9d200ca8fb58d1b3f9f8c1568c5ac2b5d1d2",
+    "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+    "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+    "game/vehicles.mjs": "e55dbed9969a9f4430b0471fefb4d294fddf0e75d8af853565c9361c106244db",
+    "godot/biomes/expansion/art/crown-ceramic-lightwell-0.glb.import": "2e9257b9e833a7d259fafc3b78e21cbf779b6a3c414daf749c109c24eb323dd9",
+    "godot/biomes/expansion/art/crown-ceramic-lightwell-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/crown-ceramic-lightwell-0_MothLocalNormal_biome4_copper.png.import": "a7a810c07ed2af49aeb3fdec332d2f983d5b4a09c72025eee46bc18589cc1e61",
+    "godot/biomes/expansion/art/crown-ceramic-lightwell-0_MothLocal_biome4_ceramic.png": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+    "godot/biomes/expansion/art/crown-ceramic-lightwell-0_MothLocal_biome4_ceramic.png.import": "be8f71573eaf4e79580a6c674d3ead7e01370f54a90de9c9d8cecce270df8f64",
+    "godot/biomes/expansion/art/crown-ceramic-lightwell-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/crown-ceramic-lightwell-0_MothLocal_biome4_copper.png.import": "1d85157f4e7699d5294c9204c9bdef7b91f16fa4905cdb3c19bb8bf3aa39a530",
+    "godot/biomes/expansion/art/crown-ceramic-lightwell-1.glb.import": "2964f6052b3e9df4fa446c06218a8f8b922710de80e0be5322c7ef87dcabefd4",
+    "godot/biomes/expansion/art/crown-ceramic-lightwell-1_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/crown-ceramic-lightwell-1_MothLocalNormal_biome4_copper.png.import": "223f3e8ea5efc518a66c78d5d90ac2475f621f351a02a67c104c917e8a458f68",
+    "godot/biomes/expansion/art/crown-ceramic-lightwell-1_MothLocal_biome4_ceramic.png": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+    "godot/biomes/expansion/art/crown-ceramic-lightwell-1_MothLocal_biome4_ceramic.png.import": "ff807cd46d0cdde31259c5d44a1a62d573d01b3dd338f3eece723f7203008952",
+    "godot/biomes/expansion/art/crown-ceramic-lightwell-1_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/crown-ceramic-lightwell-1_MothLocal_biome4_copper.png.import": "9f8b26570fd14f842f270395019d41e3539c250e4023f31f68eb4afab94de203",
+    "godot/biomes/expansion/art/crown-faceted-antenna-0.glb.import": "a89bb5f0763b1d19e1269749ce6b3ddecb965a52dbbfb63bfb71272344b32ac6",
+    "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocalNormal_biome4_copper.png.import": "d5218c1d238a87f0cd38546b9134da01a5134d55695da6170f626d69b21fff86",
+    "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocalNormal_biome4_iron.png.import": "ac472dbe250c12bbbeea3398463fd76d99fa6bed898654649ddc8a7568b2d6bc",
+    "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocal_biome4_ceramic.png": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+    "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocal_biome4_ceramic.png.import": "daf040ff5278b00fa45739eca21893ca3f73d5c05e19b4700f6ee0a355001d65",
+    "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocal_biome4_copper.png.import": "3062f754a354b8586fe1b40be9e413d8b22cc9a532e2467a87b010aa0f59399d",
+    "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+    "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocal_biome4_iron.png.import": "760a1ec5866b119aa01e6f64217701c35c41eb2ffddb9072abd28576267703ed",
+    "godot/biomes/expansion/art/crown-faceted-antenna-1.glb.import": "3bbb4d872c0346f1bcb0d05cc8e15f4116aeb939cbc38fa58eb60c01966831c5",
+    "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocalNormal_biome4_copper.png.import": "c791e7f033bb1b7420db64d8badb6efa891c9ba6921e1d4b265600a27b563542",
+    "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocalNormal_biome4_iron.png.import": "564b2be37ab75dd1f6e7eb7ed5289dfe6aef149f4d9fb2aaaa47fc526b43e4c2",
+    "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocal_biome4_ceramic.png": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+    "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocal_biome4_ceramic.png.import": "13f815cc93149f28420e78ace2d809a117e12cf29971e757195ae01b8cfa13cb",
+    "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocal_biome4_copper.png.import": "78a2b7aa67a0874375b522ce080c0d2fc889e4fdbd35432d8d748356f966e8fe",
+    "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+    "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocal_biome4_iron.png.import": "3776d021721256254d80dab85643f8f2349d7d523db31de444972fff069edb9f",
+    "godot/biomes/expansion/art/crown-folio-archive-0.glb.import": "c7df27811cae489708c6e6cf5f028cd84ce1ebc2ea2315cc3f5bdf6aab2e9b3f",
+    "godot/biomes/expansion/art/crown-folio-archive-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/crown-folio-archive-0_MothLocalNormal_biome4_copper.png.import": "d533d5fe033f48a41bc4f2e5195c1d9cb14c9950de09c6d47f730139736b9f11",
+    "godot/biomes/expansion/art/crown-folio-archive-0_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/crown-folio-archive-0_MothLocalNormal_biome4_iron.png.import": "5dd443ac6d608a2436ce136cf639afe7c9fc9607a41cd29c7ee3c39e7e491841",
+    "godot/biomes/expansion/art/crown-folio-archive-0_MothLocal_biome4_ceramic.png": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+    "godot/biomes/expansion/art/crown-folio-archive-0_MothLocal_biome4_ceramic.png.import": "822897a866a84f8d7a68b16cc42a83c3042a9aa62cdfb531eff60e92b9c026c3",
+    "godot/biomes/expansion/art/crown-folio-archive-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/crown-folio-archive-0_MothLocal_biome4_copper.png.import": "dda13359dbaf4c1a85e3d153f1b787393a0d440459c01a758fa113f688ebb254",
+    "godot/biomes/expansion/art/crown-folio-archive-0_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+    "godot/biomes/expansion/art/crown-folio-archive-0_MothLocal_biome4_iron.png.import": "f631ccbb1f31faffc33bbb01976df654e4a8e3cf993904d37cdf8f8740a95b30",
+    "godot/biomes/expansion/art/crown-folio-archive-1.glb.import": "88fc1352befd274df661e0328893040d890fac9ba7d8b8e58987b084730f9979",
+    "godot/biomes/expansion/art/crown-folio-archive-1_MothLocal_biome4_ceramic.png": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+    "godot/biomes/expansion/art/crown-folio-archive-1_MothLocal_biome4_ceramic.png.import": "3bc4a69bc3e953b82bf203bb0414eecbf71538c92ffa4a3c513f0b617a20827c",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-0.glb.import": "c0e2241474ccd2473760f3146ec0ecaf3d8038a0353165e1689bae5192943d9f",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocalNormal_biome4_basalt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocalNormal_biome4_basalt.png.import": "5e027d09ae6c7cdbc2f2cb64b303cc756233acfd74e2ecd218257b7a24b1dc6f",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocalNormal_biome4_copper.png.import": "5c063adb6c43b58601dc7d8e166333f1e7301bea7f0dd596d1224160a83d3b9d",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocalNormal_biome4_iron.png.import": "b509f8ae1e4c150d4a4b1546e8822a15c73ddb2a47daaebc49f60f622c44b6a1",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocal_biome4_basalt.png": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocal_biome4_basalt.png.import": "bc96e756ac87c822b5df113c55104abfce72794d0344f74ffe12f77371cd2a20",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocal_biome4_copper.png.import": "76083e912e109dbbf2c6036aa1ea70a2212a31241f8d4a5158928a02c3ccce61",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocal_biome4_iron.png.import": "68b7da5ba48bc95a625d44c24465adeeb9a207cd7df51210cd5d4d637ef12c23",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-1.glb.import": "9660827075753747283d1d3a28822ded3dad31120f7bea8f1b3fad972e6b8320",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-1_MothLocalNormal_biome4_basalt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-1_MothLocalNormal_biome4_basalt.png.import": "b862f67756f04ca7f617bcce52678588fd7f3e722eabf8f6210a5de6837417ad",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-1_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-1_MothLocalNormal_biome4_copper.png.import": "059af8876dcaff19c56b6b0a57863b7523f394a81f8252ce70a45bb7c1d2027f",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-1_MothLocal_biome4_basalt.png": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-1_MothLocal_biome4_basalt.png.import": "f43bb3356998f806c30dbbdc0b44d1063c9b37c3e30b881cd633e7c250e033f0",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-1_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/emberline-basalt-terrace-1_MothLocal_biome4_copper.png.import": "192e29d131893e697d4cf3d482a333644ea283f4e31d77f6da1c8a5b3dac00c3",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-0.glb.import": "d77dda34beed058239b030f6a06690d2482a682dcb6cdeea4209b6904c0ed72c",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocalNormal_biome4_basalt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocalNormal_biome4_basalt.png.import": "b6d76ca26f1aaaab1773d8a54455ea4ba822427054c24209afa08890c5cbe45d",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocalNormal_biome4_copper.png.import": "71a95a648ca43cdd55f9f0f7d186d92cf45832fa6f1dd72e695b9da10c478ac1",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocalNormal_biome4_iron.png.import": "523d60a560e365a431b39b73ad53317157ccdcfa7b3b8ace43e2ee1d32fab092",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocal_biome4_basalt.png": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocal_biome4_basalt.png.import": "4af3ae6b2a74b05196ec0857d428b907ae8c91f2a2397fde3e20d7060c3f8f10",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocal_biome4_ceramic.png": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocal_biome4_ceramic.png.import": "003369208f872bc9c4fb8cb09b11e552b3704c75b1a5f715f4fdcd9e3ee6c189",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocal_biome4_copper.png.import": "175d48de890626463f4eefc7dae9220355367d89cb3753dda1d4b1985960d188",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocal_biome4_iron.png.import": "6cfbc8c37597ae574b5f8c6ed64d17d0cf47f623e7076806bd091edaf1861170",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-1.glb.import": "741dda8b97ceedbbe39569fa4e90e01f7a7ac1475bbb514cd5bfa15aa5540d4c",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocalNormal_biome4_basalt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocalNormal_biome4_basalt.png.import": "8dac79371e70b7a77c6997d6212d3d11b707079a7e90a24366cd3b86b3f6cffa",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocalNormal_biome4_copper.png.import": "ffee0c00506adf9fef036eab8d4fddeac8be9cc0ff722a373e0f2fa191248e7c",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocalNormal_biome4_iron.png.import": "fabce32606f02888f6fbcc3419b2c4b4cbbac918a562cda1c72a8fd0ae5704f2",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocal_biome4_basalt.png": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocal_biome4_basalt.png.import": "fe28ebe9e08470e6f9a7ff38e57b12aaf9a5ba8cc3b5b85c293b34e9a746538c",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocal_biome4_ceramic.png": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocal_biome4_ceramic.png.import": "40785daec5d635e20f751abaef81f012a272f282dfb68da8e5d006deaf44bb95",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocal_biome4_copper.png.import": "a3f33a2f1c0319c036b252b1e88f7d988fd36f0bd5907018e396fc0e99bffc57",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+    "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocal_biome4_iron.png.import": "07ea6be40e286f441f47551798cd41b42dfe5d084d665435dd700d56b47d8d59",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-0.glb.import": "da877dd5e35e321c5f5c8e114f1836ece640db3dc5b436010325b93150866400",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocalNormal_biome4_basalt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocalNormal_biome4_basalt.png.import": "ce2d572b7e8185030a6d793f958cbc658526d91c6cfe7bfac5c6b0ead9d22ffa",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocalNormal_biome4_copper.png.import": "118e41387fa577ef0f10fdcd8267d1ad168fc9bd12a7e9a0721c3e02cc4bbef4",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocalNormal_biome4_iron.png.import": "fbd723eb9fcbc91e586061bf6cfc743500a229e6b357f49a896ba7749431668b",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocal_biome4_basalt.png": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocal_biome4_basalt.png.import": "ae7a290bb4ffa0fb6d52d8926b63afc7a1a69fb2bd02521f5de14632fdc21593",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocal_biome4_copper.png.import": "3498e0e8cf8f061d32910ad5d6cced41d3cccf49ff49dc90fe86e50911753f8e",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocal_biome4_iron.png.import": "436cc61ced17de6d6cdb8af96b42f3645afd9845ebd6c5bce5ca91b6a25c5110",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-1.glb.import": "19dea9523454842e44d9422f54a088f9ac43337ea4f2ba3edcd31f6185cbb137",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocalNormal_biome4_basalt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocalNormal_biome4_basalt.png.import": "3c7546c0ce69e830e44c862d15bfad08370dacd72eb86e82e2c6f2229d87c2ed",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocalNormal_biome4_copper.png.import": "d69b1df0214114df71375de713af0b8ea0dbea2dd06c093e4c640b0f80e76bd4",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocalNormal_biome4_iron.png.import": "418ca9ab38476a05ffbeb1a293abac8ea49a67d4405805ea8bc720cb7ba17324",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocal_biome4_basalt.png": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocal_biome4_basalt.png.import": "51fe1111a80c4277029dba670c4405762593b92c732558646a7df7533eeffd6d",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocal_biome4_copper.png.import": "2d61792f3e8add33e40ebfdaf1c3608e0ebe137d45cbad1143b8173177e8c126",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+    "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocal_biome4_iron.png.import": "b6bb84df8d03451d17cd5bbb472fe725c34424d02781e18b4097b789d78f9f15",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-0.glb.import": "4dd5212d4192b3eedc9d0f47eefd72605336bc749f62a5b27647d49490592994",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocalNormal_biome4_bark.png": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocalNormal_biome4_bark.png.import": "b2ec5842575f31740d24b535fbb6f0470e2078e1b6dae2b92fe3280fe5eb3ee7",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocalNormal_biome4_copper.png.import": "1b6ffc60be41179c1aaadd118d9711fce7380899b52cd4d97b4a1be3d378dd82",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocal_biome4_bark.png": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocal_biome4_bark.png.import": "69ccc20e0a3aa07a0c120c3fc1f8fb4decc79798d4e6b880e017147790130ebd",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocal_biome4_copper.png.import": "92c2101f27c71106859e6937c7b1e3102214bc6926df16cf425ba080db54df95",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocal_biome4_moss.png": "5c6dc4c1d75a2e5bb264b25e39c334c798a9880729550ad0092c18256544d620",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocal_biome4_moss.png.import": "806518cd3651b1b30a3ce0b461584d32a084a287e300898b818221b31e464f09",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-1.glb.import": "0a8328f7796bd24b88422b8a913dd4528c57e0634fc4caed453cf422b8bb4e3d",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocalNormal_biome4_bark.png": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocalNormal_biome4_bark.png.import": "f558a620618783ef4e5c4b2ae8916dd5038a758b15d02e34bc4d264cd139996c",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocalNormal_biome4_copper.png.import": "c8457a3e1bdc942b6dea07061b4dbd72919afd4dce8cf66a72c44b8eccaee326",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocal_biome4_bark.png": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocal_biome4_bark.png.import": "f8e71dd7588d7b76a07b0b872aac52b9ab7bde1363f680e01fddfe191255cc1c",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocal_biome4_copper.png.import": "1526879da4f826110cc712ca72bf71a50885ed18931ce3dbf55594159808ade4",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocal_biome4_moss.png": "5c6dc4c1d75a2e5bb264b25e39c334c798a9880729550ad0092c18256544d620",
+    "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocal_biome4_moss.png.import": "2855baaed80eb6af7f843a3c34833a6125838539edac583a0c9796c87eb411bf",
+    "godot/biomes/expansion/art/rootfall-root-archive-0.glb.import": "d839aac73e844bfa61882ea4e0d02bff0e38f5db7b3328ead3024f57e049b640",
+    "godot/biomes/expansion/art/rootfall-root-archive-0_MothLocalNormal_biome4_bark.png": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+    "godot/biomes/expansion/art/rootfall-root-archive-0_MothLocalNormal_biome4_bark.png.import": "eb53fa263312ead5beb928a627b3545a93460b0eb3ba8677439bd70a3c74345c",
+    "godot/biomes/expansion/art/rootfall-root-archive-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/rootfall-root-archive-0_MothLocalNormal_biome4_copper.png.import": "ecf5547eb2b42e98aaf2ea9c5eeb643955b967abbd957f87c6039939c55cb132",
+    "godot/biomes/expansion/art/rootfall-root-archive-0_MothLocal_biome4_bark.png": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6",
+    "godot/biomes/expansion/art/rootfall-root-archive-0_MothLocal_biome4_bark.png.import": "be125fc644b262eb7c0f542fdd0043b5b9d54d6d69a29b0122320d0fbb75f84d",
+    "godot/biomes/expansion/art/rootfall-root-archive-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/rootfall-root-archive-0_MothLocal_biome4_copper.png.import": "0681e16a48a3b0dcbaf8d8602bd89e588512c8d1ff79131192cabcb9b657b95e",
+    "godot/biomes/expansion/art/rootfall-root-archive-1.glb.import": "16dfe442f677352b9b47d8ab3325fe264138ba8f8471b95f68e1c07186412b13",
+    "godot/biomes/expansion/art/rootfall-root-archive-1_MothLocalNormal_biome4_bark.png": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+    "godot/biomes/expansion/art/rootfall-root-archive-1_MothLocalNormal_biome4_bark.png.import": "420673ec093b4eb1bb2db457a6d013937f7a5cdfa112e730e90f86f0aaa5e7f7",
+    "godot/biomes/expansion/art/rootfall-root-archive-1_MothLocal_biome4_bark.png": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6",
+    "godot/biomes/expansion/art/rootfall-root-archive-1_MothLocal_biome4_bark.png.import": "298eb42a2c351f848ae3b5c53c691cca6d873d5947fe2e57e7c26e0209e22a99",
+    "godot/biomes/expansion/art/rootfall-root-buttress-0.glb.import": "b198b9171ff5a91e5eb1d38487a4e230945670187d750bfa8aaaf30de8f0fb1b",
+    "godot/biomes/expansion/art/rootfall-root-buttress-0_MothLocalNormal_biome4_bark.png": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+    "godot/biomes/expansion/art/rootfall-root-buttress-0_MothLocalNormal_biome4_bark.png.import": "1fcec0cea017314d0bcf669447d2da3b3272c29d758cb9f984f12179b69d8faf",
+    "godot/biomes/expansion/art/rootfall-root-buttress-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/rootfall-root-buttress-0_MothLocalNormal_biome4_copper.png.import": "10a46bc08d404a6f08dc4fe7e1225282de637f9b5112e9a0e643b22256097a15",
+    "godot/biomes/expansion/art/rootfall-root-buttress-0_MothLocal_biome4_bark.png": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6",
+    "godot/biomes/expansion/art/rootfall-root-buttress-0_MothLocal_biome4_bark.png.import": "5f8680d2acc2010b21f22db1d26060d0acbfc9e87cb797f0e27ad66926bfd216",
+    "godot/biomes/expansion/art/rootfall-root-buttress-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/rootfall-root-buttress-0_MothLocal_biome4_copper.png.import": "330ca422d38192e20b05d5ca75d83842a71a31d1b7fa17b072d5b1caa4ace976",
+    "godot/biomes/expansion/art/rootfall-root-buttress-1.glb.import": "be5803e1b41f5c84acfddc030e50f3246c47a95e33703967894cd27fbaf0d1d1",
+    "godot/biomes/expansion/art/rootfall-root-buttress-1_MothLocalNormal_biome4_bark.png": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+    "godot/biomes/expansion/art/rootfall-root-buttress-1_MothLocalNormal_biome4_bark.png.import": "ee3c7ac8db4e64b2dfdcec566bcc79c7641e36634588744024f606d3281928e1",
+    "godot/biomes/expansion/art/rootfall-root-buttress-1_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/rootfall-root-buttress-1_MothLocalNormal_biome4_copper.png.import": "2854356790839f912339d4a7ba6b18ab2813b4bb353541e961249929484d04fc",
+    "godot/biomes/expansion/art/rootfall-root-buttress-1_MothLocal_biome4_bark.png": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6",
+    "godot/biomes/expansion/art/rootfall-root-buttress-1_MothLocal_biome4_bark.png.import": "685abb5d3bfe84ab24ea92e1778f6a702ba24f71aac293af7bde3408c95b19d4",
+    "godot/biomes/expansion/art/rootfall-root-buttress-1_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/rootfall-root-buttress-1_MothLocal_biome4_copper.png.import": "944bb541d2bd65064683cc6cfb134ff5bccb355af92ece2fd66bca2a957e3557",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-0.glb.import": "ecc16a669282a7eb0b3f32c51992ab955cf79128e347f675b486e2a6f4567c20",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocalNormal_biome4_iron.png.import": "290bc8aff4bf9260964e26fe283f7a40d569ae2c7b1fc8c9a104f495737aba4e",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocalNormal_biome4_sandstone.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocalNormal_biome4_sandstone.png.import": "e344dc8b0a5b7dc963b33045a3f9ea96de5e1b9874a6adb6ff57e7762b318210",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocalNormal_biome4_silt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocalNormal_biome4_silt.png.import": "914d9a80f8acfad1dae0d50152aca3d82b80fa01f40d5fe131fb11d766c9f578",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocal_biome4_iron.png.import": "57747ec20fbe7181799e6807933bb2201f737f6eb015b4fea2d1e6d4a8ce5754",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocal_biome4_sandstone.png": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocal_biome4_sandstone.png.import": "0ebac4392366a6fa353542c7d5edf1bf7a9ce07bcf4d5be5d7a400fef6e9fee0",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocal_biome4_silt.png": "e000efd1793b08c484f03821eafe0398d1b661650e4990a77faa94832e053188",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocal_biome4_silt.png.import": "f37f495df893e8a91658cc61fe60bcd6d553646796bbbf5efb41b79b7449e1a5",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-1.glb.import": "100c7750ef638cf9263c0da1b1c4609f932a157f6a3d754c727b25ca59d2eb8f",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-1_MothLocalNormal_biome4_sandstone.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-1_MothLocalNormal_biome4_sandstone.png.import": "f89c30108ffa58517efdd339d8f4f9122b2aaf4e016f3fc2ab0dc8544c0752fd",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-1_MothLocalNormal_biome4_silt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-1_MothLocalNormal_biome4_silt.png.import": "43cc7fede5265c9d751ffebf2a4e6ecbd366ff754e9fcc83848cf09bf39b3d54",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-1_MothLocal_biome4_sandstone.png": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-1_MothLocal_biome4_sandstone.png.import": "5e27f304c5612f526b73d1147908e0508d8a5c13d7aa6671dafbeab9c4e28bd1",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-1_MothLocal_biome4_silt.png": "e000efd1793b08c484f03821eafe0398d1b661650e4990a77faa94832e053188",
+    "godot/biomes/expansion/art/siltwake-flood-abutment-1_MothLocal_biome4_silt.png.import": "df60d6df1569bc56584906db184bfc2878aecd35394ed177b7fbbd30a4112dc0",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-0.glb.import": "b05d16b006d7a64a000e26d7b973ec69e6666d92de8f059b99fb412ef1d14f84",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocalNormal_biome4_copper.png.import": "41458e4fb3205ad19f97b183fa0714ae80e5d2e8bb62071ab7ad8d69486ce03a",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocalNormal_biome4_iron.png.import": "1f4f3ba5cc6bb8ea4e412718283a78e9cb9fefb85180304c4fc53dbe2211156a",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocalNormal_biome4_sandstone.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocalNormal_biome4_sandstone.png.import": "e7fcce8477e10e37f4cc0478e12bba1014373232967962a2c474c1a0dc898716",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocal_biome4_copper.png.import": "f90443ebf676ccc3619b97c03c845e31fd57dba46734862f80c60a7360346ff5",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocal_biome4_iron.png.import": "8a64b131cdad04d5d6035a06bb041f6873c25d19e995d43ec4233672acf6c997",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocal_biome4_sandstone.png": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocal_biome4_sandstone.png.import": "f0040150f5399c851571f83029b7f1d96b5ba29ac9a0336dc1e1564ed2d49cd6",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-1.glb.import": "cecd6e8e0d1aa640198385bfaa12ef69a488d5a1b66a86f6d82a6c74a31a51b8",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocalNormal_biome4_copper.png.import": "69ad3cddf6d6a8a7234e0ca7974204ae82757640c8ace83c57b984f284ef0055",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocalNormal_biome4_iron.png.import": "ed79b252e447d41d081911a89852e2e900eeb5bb72341e8c6e0a63d41ac6689a",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocalNormal_biome4_sandstone.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocalNormal_biome4_sandstone.png.import": "68116711c1e5dc0cd0004aafbde6730ec2a1c8f638b4dda6a6567e102b89db3c",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocal_biome4_copper.png.import": "9db69c2abc4b33b1a004d5ad556bb3499f26be196c4e01ef976c693378a99afd",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocal_biome4_iron.png.import": "22f939ae7676cdcb079994eb35cb7335c00bbbe07c5336541fffeabb79cfa0c6",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocal_biome4_sandstone.png": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66",
+    "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocal_biome4_sandstone.png.import": "ec07b131658ca3581fd098373704a63ded2cba1ae4f662bc0881ac070f7649cc",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0.glb.import": "1abbfc57f3bc5bcd3047a74d0d8f1cab3f7b657f27c411ffae3b8b35d39bff8a",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocalNormal_biome4_copper.png.import": "baf657220bd5d5ff608bedaff42e780ad59c54d1be5310fc1560bfcc7bd81e44",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocalNormal_biome4_iron.png.import": "c375d3fac1c4af4230d7858d67187a4f7566c0f9032eb3af04bdbf3e2cbb7263",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocalNormal_biome4_sandstone.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocalNormal_biome4_sandstone.png.import": "066e20418c78802d496ee5999ed2a1e7b2dfaf90988fd609c481344b79b379d1",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocalNormal_biome4_silt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocalNormal_biome4_silt.png.import": "1999891bfb6d302aaf8b9a408923b5bfe76898922961964476b170bd846632e6",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocal_biome4_copper.png.import": "fd8558cf34a455105fb8c79b7901f944765e46233703bab091f487dadd550034",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocal_biome4_iron.png.import": "527addc6de450ee3106e964d03949af07c8a780662b3d5d32233521052a9db52",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocal_biome4_sandstone.png": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocal_biome4_sandstone.png.import": "a95770a7b3b0607f01036200fe426778788e65eeaa004192f0df0291465aabf9",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocal_biome4_silt.png": "e000efd1793b08c484f03821eafe0398d1b661650e4990a77faa94832e053188",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocal_biome4_silt.png.import": "483fc1bf2d22ebc88a88710161f487eb7909ec539bc44530da51e8060c010284",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1.glb.import": "af87c4627dd057e8e79e89f9364a6ba7cd930d6037463cded7150e640f82b9b2",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocalNormal_biome4_copper.png.import": "25046d8cdee92d296daec32dc1738cbec4e6ddfdc134a5fee9b415d16b4bf542",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocalNormal_biome4_iron.png.import": "8d431fd438264c7e2d4beffc63ba833be5c96d214ec8ad5547a1676f65f8172d",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocalNormal_biome4_sandstone.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocalNormal_biome4_sandstone.png.import": "7ffc9dddef8c1d39f0d1fed757ae5978d9982abda1c8a39d698339b34fa5fa48",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocal_biome4_copper.png.import": "6468461f10b07bba5b75ac6a98ad5b099bdc21ea5e3dd57c336d48589fc62fe2",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocal_biome4_iron.png.import": "c6e4389d62c1365be092fe2dc9c2f99661120a1e93dc38a473b3e64715257745",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocal_biome4_sandstone.png": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66",
+    "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocal_biome4_sandstone.png.import": "9f92d61ebb88c0293c5d922830c305a50e5cdfd5dd61a00343356a338f3dd9d2",
+    "godot/biomes/expansion/catalog.json": "c3465701d272399b7976150ff85a3f1503beb35f4aebf318c05581e17de8753d",
+    "godot/biomes/expansion/scenery_pack.gd": "8518e24c6397db09408e7e1d9bc38546be26572beb8baf753fac34bb646646c3",
+    "godot/biomes/foliage.gdshader": "5a47dae07b73dd0a8b27576493241bbbb1ee3f9d42b7d5cb73cda5b5be8ca085",
+    "godot/biomes/map.gd": "449137e35bd30b0f0125954866170fdc771c53a466a83b3988b1453456ce4d1c",
+    "godot/biomes/surface.gdshader": "72aa205f7781f7984efae2941b2636e6c755aa81f569c64d275c1b37f438d27e",
+    "godot/campaign/art/landmarks/crown-receiver.glb": "a4fe581adb2d2a3014d3a008935a47ce82805389a7912064530f2238d74f1370",
+    "godot/campaign/art/landmarks/fallen-relay.glb": "dc013e16360fb018fb28dcf76fc6faf74aa7fc1d5ef6a8f480f1f47f4f61b2cf",
+    "godot/campaign/environment_art.gd": "da891f287ca5be6659581c9542d5926283b77b6951d289836e307aa5e61b03ae",
+    "godot/campaign/generated/crown-array.json": "3dd834a233a400c8cfd6c48073bcae45a33de973ca63ceb87cac38f8f010b0e6",
+    "godot/campaign/generated/emberline-ascent.json": "4cc4a3ab87bfeba1f5406cbc937bb73de553f31325e37471e32ca63e04812840",
+    "godot/campaign/generated/rootfall-verge.json": "415d1c1aaee9ac7a7dbe486617e6b0bf174821c8ac83d4723de445ee52e95969",
+    "godot/campaign/generated/siltwake-crossing.json": "7f9512a16b1006da79811177892b7ee289fdc28ab2040a4712a5cff5600c736e",
+    "godot/campaign/materials/ground.gdshader": "d117afbd9d4557f446c1c66307ab0bb91888e608801b94034cafba4100f6abc4",
+    "godot/campaign/structure_art.gd": "98eebc5f6e29c1b188ed4ebccc7fd5530d811fe6334f306a9d390f4875517451",
+    "godot/campaign/terrain.gd": "3c32b16fdf5899802069828c683a69c37c0b6fed1dd393e4849fa0f2aaac8068",
+    "godot/moth/derived/manifest.json": "5be9ad6493455138464dc059dd64a32dc5d837f6fc4e460957f606f6d2a79887",
+    "godot/moth/generated/manifest.json": "c5589ff2f2ab68d982b2bb45c221c08d8e3f653953e5d5d446bfa4cd68380047",
+    "godot/native_arenas/maps/geometry.gd": "5879559142e2be1548c313b1902a2c4a89bcc4c37ca6fed5c41ab9aa61cab231",
+    "godot/robot_assets/switchyard/workshop.gd": "c105afbc0874fc2afb7d56b72a48bcd6546873e62669ec08cef037daa936e81e",
+    "godot/weapon_effects/conduit.gdshader": "c93b65ca24c795e84c8124e0f0d25ec477e7c56b1b7c7f8d0a0a33d7a6d314b0",
+    "port/edge-effects/structure-faces.json": "a188bcbc6d2d6232efbb8e5e22a7b6f7576216e3a02d55654c968175b9541fae",
+    "port/edge-effects/structure-rays.mjs": "e22f5f7c57339e8198c37791b7e9221d64987a3d77c6bcc338a66718a2e65d86",
+    "port/expansion-four/scenery/production-f/HEAVY_GRANT_RELEASE.json": "582694ae2559ca4578b1c16ba46224b1e3b7da7a518b4ed69e2da8c18551383e",
+    "port/expansion-four/scenery/production-f/architecture-final/manifest.json": "a6d27065f244699e73ceef31ffd931846a77022573bb21fccf8da61bec11c1da",
+    "port/expansion-four/scenery/production-f/final-assets.json": "f5e7b53a536c7198128f9ff6ce6a9b6fbd41470d57ace08e7ce753398b5daf7f",
+    "port/expansion-four/scenery/production-f/generic-receipt.json": "129b51454eab1a51e8910acfc5ed3c66a00f25cb8e7d5d93a3a4e2dbb6c3d10e",
+    "port/expansion-four/scenery/production-f/inspection-final/manifest.json": "392b8f13bbd0c6d498bf9743f2df3ba0c1edee1a5cce79d5bce93377ccf631e7",
+    "port/expansion-four/scenery/production-f/journeys-final/crown-array-wide/journey.json": "42b5a18c7e823abfb85ff2775cca43b02af85ef818d17d39fb47317a2b3e42e3",
+    "port/expansion-four/scenery/production-f/journeys-final/crown-array-wide/manifest.json": "be71d2f18886a171af9f3f702a5f9260e617c08e2b6b853dbcd37f46cc25e0c6",
+    "port/expansion-four/scenery/production-f/journeys-final/crown-array-wide/witness.json": "e8259f4dcfc110c96e81d7db2bc98ca5870a1d7f2ae509c20ae3027fc5eb0606",
+    "port/expansion-four/scenery/production-f/journeys-final/emberline-ascent-wide/journey.json": "166c6182dfd90f93bb01e4cdc00a6787376bf6e124395fbf08455c99e2da5623",
+    "port/expansion-four/scenery/production-f/journeys-final/emberline-ascent-wide/manifest.json": "c50ffc86f41be6ff8ee653000cf5d3912de3bc03023f510e2ab1f668da87d6ad",
+    "port/expansion-four/scenery/production-f/journeys-final/emberline-ascent-wide/witness.json": "e7e6bf4847d89d2da499176cc2a13c3bcbedbd4af6c96eb9422c2d74b2e48c00",
+    "port/expansion-four/scenery/production-f/journeys-final/rootfall-verge-compact/journey.json": "78ae7188c48a02ebf2ea563db5468494f8fa35d0a04148a885e2c21b1ee61929",
+    "port/expansion-four/scenery/production-f/journeys-final/rootfall-verge-compact/manifest.json": "d1eb247ebe50ed24e6216b192fa7a552783d84b6736695e7cecc6881fa098fe5",
+    "port/expansion-four/scenery/production-f/journeys-final/rootfall-verge-compact/witness.json": "c36db46002165cbc35300f6e2074d680b1a7539d1cf15e35844a9f6dc9eb7257",
+    "port/expansion-four/scenery/production-f/journeys-final/rootfall-verge-wide/journey.json": "ff446444c01e3ab721bba82f66c595cb93c2788449279d94904b206ab9e181f7",
+    "port/expansion-four/scenery/production-f/journeys-final/rootfall-verge-wide/manifest.json": "b23168d701e239e59fa549643d3b7e9e5bb8c321ba068b1792040ca5a19c998d",
+    "port/expansion-four/scenery/production-f/journeys-final/rootfall-verge-wide/witness.json": "3ab2e87fa5cf338a02194cfe52f9685ce8ce2b234d88c81490b559b9e473a8dc",
+    "port/expansion-four/scenery/production-f/journeys-final/siltwake-crossing-wide/journey.json": "5712c0760bc9b1554ab784dee239af8c9d9effdedfb027ffe3770c17850fe991",
+    "port/expansion-four/scenery/production-f/journeys-final/siltwake-crossing-wide/manifest.json": "b1a2e45be4b5a682f725cd16befdb0ee5484672e3072320b80746b39ff2bd550",
+    "port/expansion-four/scenery/production-f/journeys-final/siltwake-crossing-wide/witness.json": "6671c46387bdc5cba754414084700acb18f3f16b96167815a1a4b8272885d1bf",
+    "port/expansion-four/scenery/production-f/journeys-final/summary.json": "e970436cded987e40f25825cf8ce6d58f20922463486122c2a6ecfbc6d38df06",
+    "tools/asset-production/material-validation.mjs": "874e5d31c666a8af4a98b600bb182a4f4cb9c5e6b1488d80908f855b2584bb3d",
+    "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
+    "tools/asset-production/package-receipt.mjs": "e1917daa642b15e6e3290b537fbf9024ba72e6f5dfd18f4025d3e589d9702621",
+    "tools/asset-production/receipt.mjs": "9648c19d979b2486c78830628c2f2508a02b4b2874d1f64149966d88d7e5f9d8",
+    "tools/asset-production/reopen.py": "4628bc44122a690495766f3cc967a82d3ab7aeab52c272cca7a202be88e0f5de",
+    "tools/godot-biomes/expansion/build.py": "d1bb7746663e305d88f7b7aa5c35045ccc88cdb3f8c39bb73f2d76ce93d6aa08",
+    "tools/godot-biomes/expansion/compile.mjs": "597830e7fa4605c68f87890f4ffcc538cffe5418d575ab3b4fc75da13da7e1e0",
+    "tools/godot-biomes/expansion/meshes.json": "f46577afcc7fd0c57086cbcb624454787df4f903f62e70cad8bba296fe22f90d",
+    "tools/godot-biomes/expansion/recipe.mjs": "0b9398f3229da1e2e42f509a4e0fb54e29686611dee8bf814f17b91023c6fbad",
+    "tools/godot-biomes/expansion/reopen.py": "cee5760adf5640d118eec601b8f2ea0d64e0f35ee940d862e128623a948a617c",
+    "tools/godot-package/production_resources.mjs": "cc441a03e1db8060452c99960aaed8bee60cd9dcf6cdee1c48455554df671835",
+    "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
+    "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
+    "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1"
+  },
+  "runtimeHooks": {
+    "godot/biomes/expansion/scenery_pack.gd": "8518e24c6397db09408e7e1d9bc38546be26572beb8baf753fac34bb646646c3",
+    "godot/campaign/terrain.gd": "3c32b16fdf5899802069828c683a69c37c0b6fed1dd393e4849fa0f2aaac8068"
+  },
+  "rawFiles": [],
+  "sceneryPackageVerifierAdvance": {
+    "previousReceipt": {
+      "commit": "27f3afc3",
+      "path": "tools/godot-package/production_receipts/scenery.json",
+      "sha256": "a2f0b0fe538e536724d10759f670a5fd50fbae6235cc61218e73f6b1d8ac935c"
+    },
+    "changed": {
+      "tools/godot-package/production_resources.mjs": {
+        "before": "3dd106d42ffa298ff7ecbe501e7882e1f0017fcd86e12e1575b12d57c01146ea",
+        "after": "cc441a03e1db8060452c99960aaed8bee60cd9dcf6cdee1c48455554df671835"
+      }
+    },
+    "added": {
+      "godot/biomes/expansion/art/crown-ceramic-lightwell-0.glb.import": "2e9257b9e833a7d259fafc3b78e21cbf779b6a3c414daf749c109c24eb323dd9",
+      "godot/biomes/expansion/art/crown-ceramic-lightwell-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/crown-ceramic-lightwell-0_MothLocalNormal_biome4_copper.png.import": "a7a810c07ed2af49aeb3fdec332d2f983d5b4a09c72025eee46bc18589cc1e61",
+      "godot/biomes/expansion/art/crown-ceramic-lightwell-0_MothLocal_biome4_ceramic.png": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+      "godot/biomes/expansion/art/crown-ceramic-lightwell-0_MothLocal_biome4_ceramic.png.import": "be8f71573eaf4e79580a6c674d3ead7e01370f54a90de9c9d8cecce270df8f64",
+      "godot/biomes/expansion/art/crown-ceramic-lightwell-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/crown-ceramic-lightwell-0_MothLocal_biome4_copper.png.import": "1d85157f4e7699d5294c9204c9bdef7b91f16fa4905cdb3c19bb8bf3aa39a530",
+      "godot/biomes/expansion/art/crown-ceramic-lightwell-1.glb.import": "2964f6052b3e9df4fa446c06218a8f8b922710de80e0be5322c7ef87dcabefd4",
+      "godot/biomes/expansion/art/crown-ceramic-lightwell-1_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/crown-ceramic-lightwell-1_MothLocalNormal_biome4_copper.png.import": "223f3e8ea5efc518a66c78d5d90ac2475f621f351a02a67c104c917e8a458f68",
+      "godot/biomes/expansion/art/crown-ceramic-lightwell-1_MothLocal_biome4_ceramic.png": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+      "godot/biomes/expansion/art/crown-ceramic-lightwell-1_MothLocal_biome4_ceramic.png.import": "ff807cd46d0cdde31259c5d44a1a62d573d01b3dd338f3eece723f7203008952",
+      "godot/biomes/expansion/art/crown-ceramic-lightwell-1_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/crown-ceramic-lightwell-1_MothLocal_biome4_copper.png.import": "9f8b26570fd14f842f270395019d41e3539c250e4023f31f68eb4afab94de203",
+      "godot/biomes/expansion/art/crown-faceted-antenna-0.glb.import": "a89bb5f0763b1d19e1269749ce6b3ddecb965a52dbbfb63bfb71272344b32ac6",
+      "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocalNormal_biome4_copper.png.import": "d5218c1d238a87f0cd38546b9134da01a5134d55695da6170f626d69b21fff86",
+      "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocalNormal_biome4_iron.png.import": "ac472dbe250c12bbbeea3398463fd76d99fa6bed898654649ddc8a7568b2d6bc",
+      "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocal_biome4_ceramic.png": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+      "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocal_biome4_ceramic.png.import": "daf040ff5278b00fa45739eca21893ca3f73d5c05e19b4700f6ee0a355001d65",
+      "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocal_biome4_copper.png.import": "3062f754a354b8586fe1b40be9e413d8b22cc9a532e2467a87b010aa0f59399d",
+      "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+      "godot/biomes/expansion/art/crown-faceted-antenna-0_MothLocal_biome4_iron.png.import": "760a1ec5866b119aa01e6f64217701c35c41eb2ffddb9072abd28576267703ed",
+      "godot/biomes/expansion/art/crown-faceted-antenna-1.glb.import": "3bbb4d872c0346f1bcb0d05cc8e15f4116aeb939cbc38fa58eb60c01966831c5",
+      "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocalNormal_biome4_copper.png.import": "c791e7f033bb1b7420db64d8badb6efa891c9ba6921e1d4b265600a27b563542",
+      "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocalNormal_biome4_iron.png.import": "564b2be37ab75dd1f6e7eb7ed5289dfe6aef149f4d9fb2aaaa47fc526b43e4c2",
+      "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocal_biome4_ceramic.png": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+      "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocal_biome4_ceramic.png.import": "13f815cc93149f28420e78ace2d809a117e12cf29971e757195ae01b8cfa13cb",
+      "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocal_biome4_copper.png.import": "78a2b7aa67a0874375b522ce080c0d2fc889e4fdbd35432d8d748356f966e8fe",
+      "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+      "godot/biomes/expansion/art/crown-faceted-antenna-1_MothLocal_biome4_iron.png.import": "3776d021721256254d80dab85643f8f2349d7d523db31de444972fff069edb9f",
+      "godot/biomes/expansion/art/crown-folio-archive-0.glb.import": "c7df27811cae489708c6e6cf5f028cd84ce1ebc2ea2315cc3f5bdf6aab2e9b3f",
+      "godot/biomes/expansion/art/crown-folio-archive-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/crown-folio-archive-0_MothLocalNormal_biome4_copper.png.import": "d533d5fe033f48a41bc4f2e5195c1d9cb14c9950de09c6d47f730139736b9f11",
+      "godot/biomes/expansion/art/crown-folio-archive-0_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/crown-folio-archive-0_MothLocalNormal_biome4_iron.png.import": "5dd443ac6d608a2436ce136cf639afe7c9fc9607a41cd29c7ee3c39e7e491841",
+      "godot/biomes/expansion/art/crown-folio-archive-0_MothLocal_biome4_ceramic.png": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+      "godot/biomes/expansion/art/crown-folio-archive-0_MothLocal_biome4_ceramic.png.import": "822897a866a84f8d7a68b16cc42a83c3042a9aa62cdfb531eff60e92b9c026c3",
+      "godot/biomes/expansion/art/crown-folio-archive-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/crown-folio-archive-0_MothLocal_biome4_copper.png.import": "dda13359dbaf4c1a85e3d153f1b787393a0d440459c01a758fa113f688ebb254",
+      "godot/biomes/expansion/art/crown-folio-archive-0_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+      "godot/biomes/expansion/art/crown-folio-archive-0_MothLocal_biome4_iron.png.import": "f631ccbb1f31faffc33bbb01976df654e4a8e3cf993904d37cdf8f8740a95b30",
+      "godot/biomes/expansion/art/crown-folio-archive-1.glb.import": "88fc1352befd274df661e0328893040d890fac9ba7d8b8e58987b084730f9979",
+      "godot/biomes/expansion/art/crown-folio-archive-1_MothLocal_biome4_ceramic.png": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+      "godot/biomes/expansion/art/crown-folio-archive-1_MothLocal_biome4_ceramic.png.import": "3bc4a69bc3e953b82bf203bb0414eecbf71538c92ffa4a3c513f0b617a20827c",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-0.glb.import": "c0e2241474ccd2473760f3146ec0ecaf3d8038a0353165e1689bae5192943d9f",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocalNormal_biome4_basalt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocalNormal_biome4_basalt.png.import": "5e027d09ae6c7cdbc2f2cb64b303cc756233acfd74e2ecd218257b7a24b1dc6f",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocalNormal_biome4_copper.png.import": "5c063adb6c43b58601dc7d8e166333f1e7301bea7f0dd596d1224160a83d3b9d",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocalNormal_biome4_iron.png.import": "b509f8ae1e4c150d4a4b1546e8822a15c73ddb2a47daaebc49f60f622c44b6a1",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocal_biome4_basalt.png": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocal_biome4_basalt.png.import": "bc96e756ac87c822b5df113c55104abfce72794d0344f74ffe12f77371cd2a20",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocal_biome4_copper.png.import": "76083e912e109dbbf2c6036aa1ea70a2212a31241f8d4a5158928a02c3ccce61",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-0_MothLocal_biome4_iron.png.import": "68b7da5ba48bc95a625d44c24465adeeb9a207cd7df51210cd5d4d637ef12c23",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-1.glb.import": "9660827075753747283d1d3a28822ded3dad31120f7bea8f1b3fad972e6b8320",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-1_MothLocalNormal_biome4_basalt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-1_MothLocalNormal_biome4_basalt.png.import": "b862f67756f04ca7f617bcce52678588fd7f3e722eabf8f6210a5de6837417ad",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-1_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-1_MothLocalNormal_biome4_copper.png.import": "059af8876dcaff19c56b6b0a57863b7523f394a81f8252ce70a45bb7c1d2027f",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-1_MothLocal_biome4_basalt.png": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-1_MothLocal_biome4_basalt.png.import": "f43bb3356998f806c30dbbdc0b44d1063c9b37c3e30b881cd633e7c250e033f0",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-1_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/emberline-basalt-terrace-1_MothLocal_biome4_copper.png.import": "192e29d131893e697d4cf3d482a333644ea283f4e31d77f6da1c8a5b3dac00c3",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-0.glb.import": "d77dda34beed058239b030f6a06690d2482a682dcb6cdeea4209b6904c0ed72c",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocalNormal_biome4_basalt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocalNormal_biome4_basalt.png.import": "b6d76ca26f1aaaab1773d8a54455ea4ba822427054c24209afa08890c5cbe45d",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocalNormal_biome4_copper.png.import": "71a95a648ca43cdd55f9f0f7d186d92cf45832fa6f1dd72e695b9da10c478ac1",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocalNormal_biome4_iron.png.import": "523d60a560e365a431b39b73ad53317157ccdcfa7b3b8ace43e2ee1d32fab092",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocal_biome4_basalt.png": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocal_biome4_basalt.png.import": "4af3ae6b2a74b05196ec0857d428b907ae8c91f2a2397fde3e20d7060c3f8f10",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocal_biome4_ceramic.png": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocal_biome4_ceramic.png.import": "003369208f872bc9c4fb8cb09b11e552b3704c75b1a5f715f4fdcd9e3ee6c189",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocal_biome4_copper.png.import": "175d48de890626463f4eefc7dae9220355367d89cb3753dda1d4b1985960d188",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-0_MothLocal_biome4_iron.png.import": "6cfbc8c37597ae574b5f8c6ed64d17d0cf47f623e7076806bd091edaf1861170",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-1.glb.import": "741dda8b97ceedbbe39569fa4e90e01f7a7ac1475bbb514cd5bfa15aa5540d4c",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocalNormal_biome4_basalt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocalNormal_biome4_basalt.png.import": "8dac79371e70b7a77c6997d6212d3d11b707079a7e90a24366cd3b86b3f6cffa",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocalNormal_biome4_copper.png.import": "ffee0c00506adf9fef036eab8d4fddeac8be9cc0ff722a373e0f2fa191248e7c",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocalNormal_biome4_iron.png.import": "fabce32606f02888f6fbcc3419b2c4b4cbbac918a562cda1c72a8fd0ae5704f2",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocal_biome4_basalt.png": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocal_biome4_basalt.png.import": "fe28ebe9e08470e6f9a7ff38e57b12aaf9a5ba8cc3b5b85c293b34e9a746538c",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocal_biome4_ceramic.png": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocal_biome4_ceramic.png.import": "40785daec5d635e20f751abaef81f012a272f282dfb68da8e5d006deaf44bb95",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocal_biome4_copper.png.import": "a3f33a2f1c0319c036b252b1e88f7d988fd36f0bd5907018e396fc0e99bffc57",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+      "godot/biomes/expansion/art/emberline-ceramic-exhaust-1_MothLocal_biome4_iron.png.import": "07ea6be40e286f441f47551798cd41b42dfe5d084d665435dd700d56b47d8d59",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-0.glb.import": "da877dd5e35e321c5f5c8e114f1836ece640db3dc5b436010325b93150866400",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocalNormal_biome4_basalt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocalNormal_biome4_basalt.png.import": "ce2d572b7e8185030a6d793f958cbc658526d91c6cfe7bfac5c6b0ead9d22ffa",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocalNormal_biome4_copper.png.import": "118e41387fa577ef0f10fdcd8267d1ad168fc9bd12a7e9a0721c3e02cc4bbef4",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocalNormal_biome4_iron.png.import": "fbd723eb9fcbc91e586061bf6cfc743500a229e6b357f49a896ba7749431668b",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocal_biome4_basalt.png": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocal_biome4_basalt.png.import": "ae7a290bb4ffa0fb6d52d8926b63afc7a1a69fb2bd02521f5de14632fdc21593",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocal_biome4_copper.png.import": "3498e0e8cf8f061d32910ad5d6cced41d3cccf49ff49dc90fe86e50911753f8e",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-0_MothLocal_biome4_iron.png.import": "436cc61ced17de6d6cdb8af96b42f3645afd9845ebd6c5bce5ca91b6a25c5110",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-1.glb.import": "19dea9523454842e44d9422f54a088f9ac43337ea4f2ba3edcd31f6185cbb137",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocalNormal_biome4_basalt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocalNormal_biome4_basalt.png.import": "3c7546c0ce69e830e44c862d15bfad08370dacd72eb86e82e2c6f2229d87c2ed",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocalNormal_biome4_copper.png.import": "d69b1df0214114df71375de713af0b8ea0dbea2dd06c093e4c640b0f80e76bd4",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocalNormal_biome4_iron.png.import": "418ca9ab38476a05ffbeb1a293abac8ea49a67d4405805ea8bc720cb7ba17324",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocal_biome4_basalt.png": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocal_biome4_basalt.png.import": "51fe1111a80c4277029dba670c4405762593b92c732558646a7df7533eeffd6d",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocal_biome4_copper.png.import": "2d61792f3e8add33e40ebfdaf1c3608e0ebe137d45cbad1143b8173177e8c126",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+      "godot/biomes/expansion/art/emberline-heatshield-tower-1_MothLocal_biome4_iron.png.import": "b6bb84df8d03451d17cd5bbb472fe725c34424d02781e18b4097b789d78f9f15",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-0.glb.import": "4dd5212d4192b3eedc9d0f47eefd72605336bc749f62a5b27647d49490592994",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocalNormal_biome4_bark.png": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocalNormal_biome4_bark.png.import": "b2ec5842575f31740d24b535fbb6f0470e2078e1b6dae2b92fe3280fe5eb3ee7",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocalNormal_biome4_copper.png.import": "1b6ffc60be41179c1aaadd118d9711fce7380899b52cd4d97b4a1be3d378dd82",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocal_biome4_bark.png": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocal_biome4_bark.png.import": "69ccc20e0a3aa07a0c120c3fc1f8fb4decc79798d4e6b880e017147790130ebd",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocal_biome4_copper.png.import": "92c2101f27c71106859e6937c7b1e3102214bc6926df16cf425ba080db54df95",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocal_biome4_moss.png": "5c6dc4c1d75a2e5bb264b25e39c334c798a9880729550ad0092c18256544d620",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-0_MothLocal_biome4_moss.png.import": "806518cd3651b1b30a3ce0b461584d32a084a287e300898b818221b31e464f09",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-1.glb.import": "0a8328f7796bd24b88422b8a913dd4528c57e0634fc4caed453cf422b8bb4e3d",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocalNormal_biome4_bark.png": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocalNormal_biome4_bark.png.import": "f558a620618783ef4e5c4b2ae8916dd5038a758b15d02e34bc4d264cd139996c",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocalNormal_biome4_copper.png.import": "c8457a3e1bdc942b6dea07061b4dbd72919afd4dce8cf66a72c44b8eccaee326",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocal_biome4_bark.png": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocal_biome4_bark.png.import": "f8e71dd7588d7b76a07b0b872aac52b9ab7bde1363f680e01fddfe191255cc1c",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocal_biome4_copper.png.import": "1526879da4f826110cc712ca72bf71a50885ed18931ce3dbf55594159808ade4",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocal_biome4_moss.png": "5c6dc4c1d75a2e5bb264b25e39c334c798a9880729550ad0092c18256544d620",
+      "godot/biomes/expansion/art/rootfall-canopy-relay-1_MothLocal_biome4_moss.png.import": "2855baaed80eb6af7f843a3c34833a6125838539edac583a0c9796c87eb411bf",
+      "godot/biomes/expansion/art/rootfall-root-archive-0.glb.import": "d839aac73e844bfa61882ea4e0d02bff0e38f5db7b3328ead3024f57e049b640",
+      "godot/biomes/expansion/art/rootfall-root-archive-0_MothLocalNormal_biome4_bark.png": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+      "godot/biomes/expansion/art/rootfall-root-archive-0_MothLocalNormal_biome4_bark.png.import": "eb53fa263312ead5beb928a627b3545a93460b0eb3ba8677439bd70a3c74345c",
+      "godot/biomes/expansion/art/rootfall-root-archive-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/rootfall-root-archive-0_MothLocalNormal_biome4_copper.png.import": "ecf5547eb2b42e98aaf2ea9c5eeb643955b967abbd957f87c6039939c55cb132",
+      "godot/biomes/expansion/art/rootfall-root-archive-0_MothLocal_biome4_bark.png": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6",
+      "godot/biomes/expansion/art/rootfall-root-archive-0_MothLocal_biome4_bark.png.import": "be125fc644b262eb7c0f542fdd0043b5b9d54d6d69a29b0122320d0fbb75f84d",
+      "godot/biomes/expansion/art/rootfall-root-archive-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/rootfall-root-archive-0_MothLocal_biome4_copper.png.import": "0681e16a48a3b0dcbaf8d8602bd89e588512c8d1ff79131192cabcb9b657b95e",
+      "godot/biomes/expansion/art/rootfall-root-archive-1.glb.import": "16dfe442f677352b9b47d8ab3325fe264138ba8f8471b95f68e1c07186412b13",
+      "godot/biomes/expansion/art/rootfall-root-archive-1_MothLocalNormal_biome4_bark.png": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+      "godot/biomes/expansion/art/rootfall-root-archive-1_MothLocalNormal_biome4_bark.png.import": "420673ec093b4eb1bb2db457a6d013937f7a5cdfa112e730e90f86f0aaa5e7f7",
+      "godot/biomes/expansion/art/rootfall-root-archive-1_MothLocal_biome4_bark.png": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6",
+      "godot/biomes/expansion/art/rootfall-root-archive-1_MothLocal_biome4_bark.png.import": "298eb42a2c351f848ae3b5c53c691cca6d873d5947fe2e57e7c26e0209e22a99",
+      "godot/biomes/expansion/art/rootfall-root-buttress-0.glb.import": "b198b9171ff5a91e5eb1d38487a4e230945670187d750bfa8aaaf30de8f0fb1b",
+      "godot/biomes/expansion/art/rootfall-root-buttress-0_MothLocalNormal_biome4_bark.png": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+      "godot/biomes/expansion/art/rootfall-root-buttress-0_MothLocalNormal_biome4_bark.png.import": "1fcec0cea017314d0bcf669447d2da3b3272c29d758cb9f984f12179b69d8faf",
+      "godot/biomes/expansion/art/rootfall-root-buttress-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/rootfall-root-buttress-0_MothLocalNormal_biome4_copper.png.import": "10a46bc08d404a6f08dc4fe7e1225282de637f9b5112e9a0e643b22256097a15",
+      "godot/biomes/expansion/art/rootfall-root-buttress-0_MothLocal_biome4_bark.png": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6",
+      "godot/biomes/expansion/art/rootfall-root-buttress-0_MothLocal_biome4_bark.png.import": "5f8680d2acc2010b21f22db1d26060d0acbfc9e87cb797f0e27ad66926bfd216",
+      "godot/biomes/expansion/art/rootfall-root-buttress-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/rootfall-root-buttress-0_MothLocal_biome4_copper.png.import": "330ca422d38192e20b05d5ca75d83842a71a31d1b7fa17b072d5b1caa4ace976",
+      "godot/biomes/expansion/art/rootfall-root-buttress-1.glb.import": "be5803e1b41f5c84acfddc030e50f3246c47a95e33703967894cd27fbaf0d1d1",
+      "godot/biomes/expansion/art/rootfall-root-buttress-1_MothLocalNormal_biome4_bark.png": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+      "godot/biomes/expansion/art/rootfall-root-buttress-1_MothLocalNormal_biome4_bark.png.import": "ee3c7ac8db4e64b2dfdcec566bcc79c7641e36634588744024f606d3281928e1",
+      "godot/biomes/expansion/art/rootfall-root-buttress-1_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/rootfall-root-buttress-1_MothLocalNormal_biome4_copper.png.import": "2854356790839f912339d4a7ba6b18ab2813b4bb353541e961249929484d04fc",
+      "godot/biomes/expansion/art/rootfall-root-buttress-1_MothLocal_biome4_bark.png": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6",
+      "godot/biomes/expansion/art/rootfall-root-buttress-1_MothLocal_biome4_bark.png.import": "685abb5d3bfe84ab24ea92e1778f6a702ba24f71aac293af7bde3408c95b19d4",
+      "godot/biomes/expansion/art/rootfall-root-buttress-1_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/rootfall-root-buttress-1_MothLocal_biome4_copper.png.import": "944bb541d2bd65064683cc6cfb134ff5bccb355af92ece2fd66bca2a957e3557",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-0.glb.import": "ecc16a669282a7eb0b3f32c51992ab955cf79128e347f675b486e2a6f4567c20",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocalNormal_biome4_iron.png.import": "290bc8aff4bf9260964e26fe283f7a40d569ae2c7b1fc8c9a104f495737aba4e",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocalNormal_biome4_sandstone.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocalNormal_biome4_sandstone.png.import": "e344dc8b0a5b7dc963b33045a3f9ea96de5e1b9874a6adb6ff57e7762b318210",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocalNormal_biome4_silt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocalNormal_biome4_silt.png.import": "914d9a80f8acfad1dae0d50152aca3d82b80fa01f40d5fe131fb11d766c9f578",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocal_biome4_iron.png.import": "57747ec20fbe7181799e6807933bb2201f737f6eb015b4fea2d1e6d4a8ce5754",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocal_biome4_sandstone.png": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocal_biome4_sandstone.png.import": "0ebac4392366a6fa353542c7d5edf1bf7a9ce07bcf4d5be5d7a400fef6e9fee0",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocal_biome4_silt.png": "e000efd1793b08c484f03821eafe0398d1b661650e4990a77faa94832e053188",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-0_MothLocal_biome4_silt.png.import": "f37f495df893e8a91658cc61fe60bcd6d553646796bbbf5efb41b79b7449e1a5",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-1.glb.import": "100c7750ef638cf9263c0da1b1c4609f932a157f6a3d754c727b25ca59d2eb8f",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-1_MothLocalNormal_biome4_sandstone.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-1_MothLocalNormal_biome4_sandstone.png.import": "f89c30108ffa58517efdd339d8f4f9122b2aaf4e016f3fc2ab0dc8544c0752fd",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-1_MothLocalNormal_biome4_silt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-1_MothLocalNormal_biome4_silt.png.import": "43cc7fede5265c9d751ffebf2a4e6ecbd366ff754e9fcc83848cf09bf39b3d54",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-1_MothLocal_biome4_sandstone.png": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-1_MothLocal_biome4_sandstone.png.import": "5e27f304c5612f526b73d1147908e0508d8a5c13d7aa6671dafbeab9c4e28bd1",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-1_MothLocal_biome4_silt.png": "e000efd1793b08c484f03821eafe0398d1b661650e4990a77faa94832e053188",
+      "godot/biomes/expansion/art/siltwake-flood-abutment-1_MothLocal_biome4_silt.png.import": "df60d6df1569bc56584906db184bfc2878aecd35394ed177b7fbbd30a4112dc0",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-0.glb.import": "b05d16b006d7a64a000e26d7b973ec69e6666d92de8f059b99fb412ef1d14f84",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocalNormal_biome4_copper.png.import": "41458e4fb3205ad19f97b183fa0714ae80e5d2e8bb62071ab7ad8d69486ce03a",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocalNormal_biome4_iron.png.import": "1f4f3ba5cc6bb8ea4e412718283a78e9cb9fefb85180304c4fc53dbe2211156a",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocalNormal_biome4_sandstone.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocalNormal_biome4_sandstone.png.import": "e7fcce8477e10e37f4cc0478e12bba1014373232967962a2c474c1a0dc898716",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocal_biome4_copper.png.import": "f90443ebf676ccc3619b97c03c845e31fd57dba46734862f80c60a7360346ff5",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocal_biome4_iron.png.import": "8a64b131cdad04d5d6035a06bb041f6873c25d19e995d43ec4233672acf6c997",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocal_biome4_sandstone.png": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-0_MothLocal_biome4_sandstone.png.import": "f0040150f5399c851571f83029b7f1d96b5ba29ac9a0336dc1e1564ed2d49cd6",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-1.glb.import": "cecd6e8e0d1aa640198385bfaa12ef69a488d5a1b66a86f6d82a6c74a31a51b8",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocalNormal_biome4_copper.png.import": "69ad3cddf6d6a8a7234e0ca7974204ae82757640c8ace83c57b984f284ef0055",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocalNormal_biome4_iron.png.import": "ed79b252e447d41d081911a89852e2e900eeb5bb72341e8c6e0a63d41ac6689a",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocalNormal_biome4_sandstone.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocalNormal_biome4_sandstone.png.import": "68116711c1e5dc0cd0004aafbde6730ec2a1c8f638b4dda6a6567e102b89db3c",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocal_biome4_copper.png.import": "9db69c2abc4b33b1a004d5ad556bb3499f26be196c4e01ef976c693378a99afd",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocal_biome4_iron.png.import": "22f939ae7676cdcb079994eb35cb7335c00bbbe07c5336541fffeabb79cfa0c6",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocal_biome4_sandstone.png": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66",
+      "godot/biomes/expansion/art/siltwake-sluice-bank-1_MothLocal_biome4_sandstone.png.import": "ec07b131658ca3581fd098373704a63ded2cba1ae4f662bc0881ac070f7649cc",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0.glb.import": "1abbfc57f3bc5bcd3047a74d0d8f1cab3f7b657f27c411ffae3b8b35d39bff8a",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocalNormal_biome4_copper.png.import": "baf657220bd5d5ff608bedaff42e780ad59c54d1be5310fc1560bfcc7bd81e44",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocalNormal_biome4_iron.png.import": "c375d3fac1c4af4230d7858d67187a4f7566c0f9032eb3af04bdbf3e2cbb7263",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocalNormal_biome4_sandstone.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocalNormal_biome4_sandstone.png.import": "066e20418c78802d496ee5999ed2a1e7b2dfaf90988fd609c481344b79b379d1",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocalNormal_biome4_silt.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocalNormal_biome4_silt.png.import": "1999891bfb6d302aaf8b9a408923b5bfe76898922961964476b170bd846632e6",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocal_biome4_copper.png.import": "fd8558cf34a455105fb8c79b7901f944765e46233703bab091f487dadd550034",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocal_biome4_iron.png.import": "527addc6de450ee3106e964d03949af07c8a780662b3d5d32233521052a9db52",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocal_biome4_sandstone.png": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocal_biome4_sandstone.png.import": "a95770a7b3b0607f01036200fe426778788e65eeaa004192f0df0291465aabf9",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocal_biome4_silt.png": "e000efd1793b08c484f03821eafe0398d1b661650e4990a77faa94832e053188",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0_MothLocal_biome4_silt.png.import": "483fc1bf2d22ebc88a88710161f487eb7909ec539bc44530da51e8060c010284",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1.glb.import": "af87c4627dd057e8e79e89f9364a6ba7cd930d6037463cded7150e640f82b9b2",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocalNormal_biome4_copper.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocalNormal_biome4_copper.png.import": "25046d8cdee92d296daec32dc1738cbec4e6ddfdc134a5fee9b415d16b4bf542",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocalNormal_biome4_iron.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocalNormal_biome4_iron.png.import": "8d431fd438264c7e2d4beffc63ba833be5c96d214ec8ad5547a1676f65f8172d",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocalNormal_biome4_sandstone.png": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocalNormal_biome4_sandstone.png.import": "7ffc9dddef8c1d39f0d1fed757ae5978d9982abda1c8a39d698339b34fa5fa48",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocal_biome4_copper.png": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocal_biome4_copper.png.import": "6468461f10b07bba5b75ac6a98ad5b099bdc21ea5e3dd57c336d48589fc62fe2",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocal_biome4_iron.png": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocal_biome4_iron.png.import": "c6e4389d62c1365be092fe2dc9c2f99661120a1e93dc38a473b3e64715257745",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocal_biome4_sandstone.png": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66",
+      "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1_MothLocal_biome4_sandstone.png.import": "9f92d61ebb88c0293c5d922830c305a50e5cdfd5dd61a00343356a338f3dd9d2",
+      "port/expansion-four/scenery/production-f/HEAVY_GRANT_RELEASE.json": "582694ae2559ca4578b1c16ba46224b1e3b7da7a518b4ed69e2da8c18551383e",
+      "port/expansion-four/scenery/production-f/architecture-final/manifest.json": "a6d27065f244699e73ceef31ffd931846a77022573bb21fccf8da61bec11c1da",
+      "port/expansion-four/scenery/production-f/final-assets.json": "f5e7b53a536c7198128f9ff6ce6a9b6fbd41470d57ace08e7ce753398b5daf7f",
+      "port/expansion-four/scenery/production-f/generic-receipt.json": "129b51454eab1a51e8910acfc5ed3c66a00f25cb8e7d5d93a3a4e2dbb6c3d10e",
+      "port/expansion-four/scenery/production-f/inspection-final/manifest.json": "392b8f13bbd0c6d498bf9743f2df3ba0c1edee1a5cce79d5bce93377ccf631e7",
+      "port/expansion-four/scenery/production-f/journeys-final/crown-array-wide/journey.json": "42b5a18c7e823abfb85ff2775cca43b02af85ef818d17d39fb47317a2b3e42e3",
+      "port/expansion-four/scenery/production-f/journeys-final/crown-array-wide/manifest.json": "be71d2f18886a171af9f3f702a5f9260e617c08e2b6b853dbcd37f46cc25e0c6",
+      "port/expansion-four/scenery/production-f/journeys-final/crown-array-wide/witness.json": "e8259f4dcfc110c96e81d7db2bc98ca5870a1d7f2ae509c20ae3027fc5eb0606",
+      "port/expansion-four/scenery/production-f/journeys-final/emberline-ascent-wide/journey.json": "166c6182dfd90f93bb01e4cdc00a6787376bf6e124395fbf08455c99e2da5623",
+      "port/expansion-four/scenery/production-f/journeys-final/emberline-ascent-wide/manifest.json": "c50ffc86f41be6ff8ee653000cf5d3912de3bc03023f510e2ab1f668da87d6ad",
+      "port/expansion-four/scenery/production-f/journeys-final/emberline-ascent-wide/witness.json": "e7e6bf4847d89d2da499176cc2a13c3bcbedbd4af6c96eb9422c2d74b2e48c00",
+      "port/expansion-four/scenery/production-f/journeys-final/rootfall-verge-compact/journey.json": "78ae7188c48a02ebf2ea563db5468494f8fa35d0a04148a885e2c21b1ee61929",
+      "port/expansion-four/scenery/production-f/journeys-final/rootfall-verge-compact/manifest.json": "d1eb247ebe50ed24e6216b192fa7a552783d84b6736695e7cecc6881fa098fe5",
+      "port/expansion-four/scenery/production-f/journeys-final/rootfall-verge-compact/witness.json": "c36db46002165cbc35300f6e2074d680b1a7539d1cf15e35844a9f6dc9eb7257",
+      "port/expansion-four/scenery/production-f/journeys-final/rootfall-verge-wide/journey.json": "ff446444c01e3ab721bba82f66c595cb93c2788449279d94904b206ab9e181f7",
+      "port/expansion-four/scenery/production-f/journeys-final/rootfall-verge-wide/manifest.json": "b23168d701e239e59fa549643d3b7e9e5bb8c321ba068b1792040ca5a19c998d",
+      "port/expansion-four/scenery/production-f/journeys-final/rootfall-verge-wide/witness.json": "3ab2e87fa5cf338a02194cfe52f9685ce8ce2b234d88c81490b559b9e473a8dc",
+      "port/expansion-four/scenery/production-f/journeys-final/siltwake-crossing-wide/journey.json": "5712c0760bc9b1554ab784dee239af8c9d9effdedfb027ffe3770c17850fe991",
+      "port/expansion-four/scenery/production-f/journeys-final/siltwake-crossing-wide/manifest.json": "b1a2e45be4b5a682f725cd16befdb0ee5484672e3072320b80746b39ff2bd550",
+      "port/expansion-four/scenery/production-f/journeys-final/siltwake-crossing-wide/witness.json": "6671c46387bdc5cba754414084700acb18f3f16b96167815a1a4b8272885d1bf",
+      "port/expansion-four/scenery/production-f/journeys-final/summary.json": "e970436cded987e40f25825cf8ce6d58f20922463486122c2a6ecfbc6d38df06",
+      "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
+      "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1"
+    },
+    "previousPackageFingerprint": "7d30dc2c296575dea593d09c2184205f1c4e6976b5260a7c9c36c362570309ee",
+    "packageFingerprint": "a5d55c15af308add4c1a44223da324d8208d64ad0cadbbc116e6d5ac87910701",
+    "productionSourceCheckpoint": "b320c270",
+    "reason": "Parent accepted F visual review; source-only texture/import closure and supporting-input reconciliation. No new native attestation or build.",
+    "review": "port/finish/SCENERY_PACKAGE_PROMOTION.md"
+  },
+  "integrationReview": {
+    "acceptedBy": "parent explicit four-chapter and architecture image review",
+    "nativeRendering": "capture-paced llvmpipe; continuous rendered playability and human feel unproven",
+    "nativeEvidence": "port/expansion-four/scenery/production-f/journeys-final/summary.json"
+  }
+}

@@ -1,6 +1,7 @@
 extends SceneTree
 ## Engine contract with injected scenes, NOT native production-asset proof.
 const Pack = preload("res://biomes/expansion/scenery_pack.gd")
+const Geometry = preload("res://tests/biome_assets/imported_geometry.gd")
 
 class Host extends Node3D:
 	var recipe: Dictionary
@@ -41,6 +42,10 @@ class DoublePack extends "res://biomes/expansion/scenery_pack.gd":
 func _initialize() -> void: call_deferred("run")
 
 func run() -> void:
+	var triangle := [Vector3.ZERO,Vector3.RIGHT,Vector3.UP]
+	assert(Geometry.same_triangles([triangle],[triangle]))
+	assert(not Geometry.same_triangles([triangle],[]))
+	assert(not Geometry.same_triangles([[Vector3(0.01,0,0),Vector3.RIGHT,Vector3.UP]],[triangle]))
 	var host := Host.new()
 	host.recipe=JSON.parse_string(FileAccess.get_file_as_string("res://campaign/generated/rootfall-verge.json"))
 	var pack := DoublePack.new()

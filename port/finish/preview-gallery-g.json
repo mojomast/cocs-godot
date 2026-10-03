@@ -1,0 +1,17 @@
+{
+  "title": "Extracted preview build — native startup checks",
+  "source_commit": "a0866981d28ab5e4c2227bfa41d25aadeba0fe3b",
+  "evidence_root": "/home/mojo/.tmp-on-disk/cocs-preview-g-linux/smoke",
+  "notes": [
+    "Actual screenshots from the freshly extracted Linux preview archive. Candidate a0866981d28ab5e4c2227bfa41d25aadeba0fe3b; the Windows archive uses the same candidate.",
+    "These are bounded launch and scene-lifecycle checks using software rendering and Dummy audio. They do not establish hardware-GPU speed, audible mixing, full-match completion or the final four-stage visual acceptance."
+  ],
+  "files": [
+    {"kind":"image","path":"home.png","caption":"Extracted preview Home — Fighting entry visible"},
+    {"kind":"image","path":"fighting-ai.png","caption":"Production Fighting AI match startup"},
+    {"kind":"image","path":"fighting-local.png","caption":"Production Fighting local-versus startup"},
+    {"kind":"image","path":"fighting-training.png","caption":"Production Fighting training startup"},
+    {"kind":"image","path":"vehicle-startup.png","caption":"Sunscar Combined Arms — actual fleet and vehicle HUD"},
+    {"kind":"receipt","path":"final/final-result.json","caption":"Extracted resources and nine-rig probe result"}
+  ]
+}

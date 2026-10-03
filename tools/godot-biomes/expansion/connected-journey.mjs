@@ -1,7 +1,7 @@
 // Grant-only driver. Authority is unmodified; observe() is a read-only witness.
 import assert from 'node:assert/strict';
 import {spawn} from 'node:child_process';
-import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {readFileSync,writeFileSync,mkdirSync,appendFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {planJourney,sha} from './journey-plan.mjs';
@@ -35,9 +35,10 @@ try{
  await new Promise((r,j)=>{authority.server.once('error',j);authority.server.listen(0,'127.0.0.1',r);});
  const godot=process.env.GODOT_BIN??'/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64';
  const args=['--path',resolve(root,'godot'),'--audio-driver','Dummy','-s','res://tests/biome_assets/connected_journey.gd','--',`--map=${id}`,`--endpoint=ws://127.0.0.1:${authority.server.address().port}/native-campaign`,`--output=${output}`,`--journey-plan=${resolve(output,'plan.json')}`,...(process.argv.includes('--compact')?['--compact']:[])];
+ args.unshift('--rendering-driver','opengl3');args.push('--native-trace');
  child=spawn(godot,args,{cwd:root,env:{...process.env,LP_NUM_THREADS:'1',COCS_SETTINGS_PATH:resolve(output,'settings.json'),COCS_BINDINGS_PATH:resolve(output,'bindings.json')},stdio:['ignore','pipe','pipe']});
  child.on('error',e=>{spawnError=String(e);});
- for(const stream of [child.stdout,child.stderr])stream.on('data',b=>{log+=b;});
+ for(const stream of [child.stdout,child.stderr])stream.on('data',b=>{log+=b;appendFileSync(resolve(output,'native-live.log'),b);});
  done=new Promise(r=>child.on('close',(c,s)=>{closed=true;code=c;signal=s;r();}));
  timer=setTimeout(()=>{forced=true;child.kill('SIGKILL');},1100000);
  await done;clearTimeout(timer);
@@ -57,6 +58,7 @@ try{
  assert.equal(authority.wss.clients.size,0,'Campaign transport still connected after native exit');
  await authority.close();authority=null;
  const homeArgs=['--path',resolve(root,'godot'),'--audio-driver','Dummy','-s','res://tests/biome_assets/home_return.gd','--',`--output=${output}`,...(process.argv.includes('--compact')?['--compact']:[])];
+ homeArgs.unshift('--rendering-driver','opengl3');
  home=spawn(godot,homeArgs,{cwd:root,env:{...process.env,LP_NUM_THREADS:'1',COCS_SETTINGS_PATH:resolve(output,'settings.json'),COCS_BINDINGS_PATH:resolve(output,'bindings.json')},stdio:['ignore','pipe','pipe']});
  home.on('error',e=>{homeError=String(e);});
  for(const stream of [home.stdout,home.stderr])stream.on('data',b=>{homeLog+=b;});

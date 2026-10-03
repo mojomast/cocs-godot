@@ -147,6 +147,27 @@ function crown(a,kind) {
   for(const x of [-.22,.22])a.beam(`archive-index-rail-${x}`,'copper',[x,.19,-.46],[x,.88,-.46],.009,.009,6,true);
 }
 
+// Native grant-F review found the original closed structural shells occluded
+// the interior relief. Seat the same authored profiles on their outside faces,
+// inside the *unchanged* reviewed [-.5,.5] block envelope. X/Y silhouettes and
+// named topology remain authored; materials occupy separated depth bands so
+// stone courses cannot become coplanar with the wheel/spoke relief in front.
+// Central through-components receive matching front/back mounts rather than
+// crossing the retained service core. Never remove original facade geometry.
+function exteriorRelief(assembly) {
+  const depth={sandstone:.476,silt:.482,bark:.485,basalt:.478,ceramic:.484,moss:.490,iron:.491,copper:.497};
+  assembly.parts=assembly.parts.flatMap(part=>{
+    if(!Object.hasOwn(depth,part.material))throw Error('Unreviewed relief material '+part.material);
+    const zs=part.vertices.map(v=>v[2]),lo=Math.min(...zs),hi=Math.max(...zs);
+    const center=(lo+hi)/2;
+    const sides=Math.abs(center)<.025?[-1,1]:[Math.sign(center)];
+    const thickness=Math.min(part.material==='copper'?.0015:.002,(hi-lo)*.03);
+    return sides.map(side=>({...part,name:part.name+(sides.length===2?(side<0?'-front-mount':'-rear-mount'):''),
+      triangles:side<0?part.triangles.map(([a,b,c])=>[a,c,b]):part.triangles,
+      vertices:part.vertices.map(([x,y,z])=>[x,y,+(side*(depth[part.material]+thickness*2*(z-center)/(hi-lo||1))).toFixed(7)])}));
+  });
+}
+
 export function recipes() {
   const specs=[
     ['rootfall-canopy-relay',0,'hero','interlude-canopy-nursery-rib-2',root,'canopy'],
@@ -162,7 +183,7 @@ export function recipes() {
     ['crown-ceramic-lightwell',3,'support','interlude-garden-choir-pier-2',crown,'lightwell'],
     ['crown-folio-archive',3,'support','court-buttress-2--1',crown,'archive'],
   ];
-  return specs.map(([id,index,role,block,build,kind])=>{const a=new Assembly(id,maps[index],role,block);build(a,kind);return a;});
+  return specs.map(([id,index,role,block,build,kind])=>{const a=new Assembly(id,maps[index],role,block);build(a,kind);exteriorRelief(a);return a;});
 }
 
 export function faces(asset,lod=0) {

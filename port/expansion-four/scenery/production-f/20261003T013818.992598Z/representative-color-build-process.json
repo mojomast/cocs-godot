@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender",
+    "--python-exit-code",
+    "1",
+    "-b",
+    "-t",
+    "1",
+    "--python",
+    "tools/godot-biomes/expansion/build.py",
+    "--",
+    "--asset",
+    "rootfall-canopy-relay"
+  ],
+  "started": "2026-10-03T01:38:18.992992+00:00",
+  "timeoutSeconds": 600,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/port/expansion-four/scenery/production-f/20261003T013818.992598Z/representative-color-build.log",
+  "processGroup": 824748,
+  "exitCode": 0,
+  "ended": "2026-10-03T01:38:19.457700+00:00",
+  "ownedGroupTeardownRequested": true
+}

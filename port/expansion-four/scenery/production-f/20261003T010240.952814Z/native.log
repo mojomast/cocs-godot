@@ -1,0 +1,26 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+BIOME4_IMPORT rootfall-canopy-relay LOD0 { "meshes": 1, "surfaces": 3 } triangleKeys=404
+BIOME4_IMPORT rootfall-canopy-relay LOD1 { "meshes": 1, "surfaces": 3 } triangleKeys=324
+BIOME4_IMPORT rootfall-root-archive LOD0 { "meshes": 1, "surfaces": 2 } triangleKeys=608
+BIOME4_IMPORT rootfall-root-archive LOD1 { "meshes": 1, "surfaces": 1 } triangleKeys=488
+BIOME4_IMPORT rootfall-root-buttress LOD0 { "meshes": 1, "surfaces": 2 } triangleKeys=484
+BIOME4_IMPORT rootfall-root-buttress LOD1 { "meshes": 1, "surfaces": 2 } triangleKeys=404
+BIOME4_IMPORT siltwake-strata-wheelhouse LOD0 { "meshes": 1, "surfaces": 4 } triangleKeys=1776
+BIOME4_IMPORT siltwake-strata-wheelhouse LOD1 { "meshes": 1, "surfaces": 3 } triangleKeys=1132
+BIOME4_IMPORT siltwake-sluice-bank LOD0 { "meshes": 1, "surfaces": 3 } triangleKeys=684
+BIOME4_IMPORT siltwake-sluice-bank LOD1 { "meshes": 1, "surfaces": 3 } triangleKeys=600
+BIOME4_IMPORT siltwake-flood-abutment LOD0 { "meshes": 1, "surfaces": 3 } triangleKeys=544
+BIOME4_IMPORT siltwake-flood-abutment LOD1 { "meshes": 1, "surfaces": 2 } triangleKeys=460
+BIOME4_IMPORT emberline-heatshield-tower LOD0 { "meshes": 1, "surfaces": 3 } triangleKeys=576
+BIOME4_IMPORT emberline-heatshield-tower LOD1 { "meshes": 1, "surfaces": 3 } triangleKeys=408
+BIOME4_IMPORT emberline-basalt-terrace LOD0 { "meshes": 1, "surfaces": 3 } triangleKeys=440
+BIOME4_IMPORT emberline-basalt-terrace LOD1 { "meshes": 1, "surfaces": 2 } triangleKeys=272
+BIOME4_IMPORT emberline-ceramic-exhaust LOD0 { "meshes": 1, "surfaces": 4 } triangleKeys=588
+BIOME4_IMPORT emberline-ceramic-exhaust LOD1 { "meshes": 1, "surfaces": 4 } triangleKeys=420
+BIOME4_IMPORT crown-faceted-antenna LOD0 { "meshes": 1, "surfaces": 3 } triangleKeys=548
+BIOME4_IMPORT crown-faceted-antenna LOD1 { "meshes": 1, "surfaces": 3 } triangleKeys=508
+BIOME4_IMPORT crown-ceramic-lightwell LOD0 { "meshes": 1, "surfaces": 2 } triangleKeys=436
+BIOME4_IMPORT crown-ceramic-lightwell LOD1 { "meshes": 1, "surfaces": 2 } triangleKeys=396
+BIOME4_IMPORT crown-folio-archive LOD0 { "meshes": 1, "surfaces": 3 } triangleKeys=580
+BIOME4_IMPORT crown-folio-archive LOD1 { "meshes": 1, "surfaces": 1 } triangleKeys=372
