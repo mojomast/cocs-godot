@@ -1,5 +1,16 @@
 # New Moth resources and Blender-authored map variety
 
+**Foundry R6 source delivery:** `54caaed9` introduces functional finish partitions
+for steel roofs/machinery, warm kiln/tipple masonry and oxidized bunker shells,
+while retaining cooling copper and accepted orange. The worker reports exact
+oriented coverage of R5's 87,566 triangles, 32 planned material primitives and
+three passing in-memory composition tests. Independent Astra
+`ses_efd0e4deaffeke8j2rdXdxtbbn` is reviewing source correctness before integration.
+R6 is unmerged and has no actual export, master reopen or screenshots. Production
+is queued after coastal T and botanical builds under a future exclusive grant;
+S remains released. Actual R6 art identity must be separate from R5 despite the
+shared collision/geometry identity.
+
 **Botanical sources approved and integrated:** independent review closed all three
 remaining findings in `6f6b990f`; the complete repair series is merged as
 **`32eba401`**. Parent passed 25 Node / 27 Python tests and standalone Kit checks.

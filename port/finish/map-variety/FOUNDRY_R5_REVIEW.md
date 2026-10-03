@@ -62,10 +62,17 @@ Astra's producer now owns a **source-only revision-6 finish pass** to improve
 intentional district/material variation while preserving corrected geometry and
 R5 evidence. Actual new visuals require a later serial grant.
 
-Package owner is checking explicit exclusion of staged candidate resources: the
-current native-file collector includes the new `art/revisions` directory, so
-passing the existing seven-unit inventory alone does not establish that an
-unpromoted candidate stays out of a future export. No release build is authorized
-until that shipping policy is reconciled.
+That source follow-up is delivered as `54caaed9`, with 87,566 retained triangles,
+32 planned material primitives and three reported composition-test passes. The
+independent reviewer is checking its material partitioning, lossless composition,
+master/export consistency and distinct art-identity handling before integration.
+No R6 build/render approval is claimed. Its planned comparison is **R5 versus R6**,
+not accepted-runtime versus R6; R5 evidence remains immutable.
+
+The staged-resource packaging issue identified during integration is resolved by
+`96bc9758`: exact R5 file hashes and exclusions are enforced before copying and
+in export filters. Parent passed 54 checks on the current branch; details are in
+`FOUNDRY_R5_PACKAGE_STAGING.md`. Future built R6 resources require their own
+reviewed inventory transaction before integration into a release candidate.
 
 Gallery: <http://100.125.104.79:8796/foundry-r5/>.
