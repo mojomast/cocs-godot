@@ -76,7 +76,7 @@ def check_streams(artifact, report, raw):
                     break
             if match is None:
                 raise ValueError('Native normal/UV/tangent/handedness drift; no fallback waiver: '
-                    + str({'surface':surface['node'], 'role':surface['material'], 'triangle':start//3,
+                    + str({'surface':surface.get('node','unrecorded'), 'role':surface['material'], 'triangle':start//3,
                            'sourceChoices':len(choices), 'positions':[c[0] for c in cs],
                            'nativeTangents':[c[3] for c in cs],
                            'candidateErrors':[[max(abs(x-y) for c,d in zip(cs,want) for x,y in zip(c[j],d[j]))
