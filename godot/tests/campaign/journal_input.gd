@@ -32,9 +32,10 @@ func run() -> void:
 	var journal := Journal.new()
 	root.add_child(journal)
 	journal.bind_session(session)
-	check(journal.available(), "journal is available in an authoritative playing phase")
+	check(not journal.available(), "transport phase alone is not a campaign snapshot")
 
 	journal.observe(state("rootfall-verge", "playing", 2, beats(2, true, 0, false), story(["rootfall-verge-arrival"])))
+	check(journal.available(),"journal available with playing campaign state")
 	check(journal.model.chapter == "rootfall-verge", "observed chapter is the public map id")
 
 	journal._unhandled_input(key(KEY_I))
@@ -43,6 +44,12 @@ func run() -> void:
 	check(journal.route.text.contains("Rootfall Verge"), "route text renders chapter titles")
 	check(journal.workshop_list.get_child_count() == 2, "both optional workshops are listed")
 	check(journal.crew.text.contains("Mara") and journal.crew.text.contains("Patch"), "crew renders rescued companions")
+	var first_row := journal.workshop_list.get_child(0).get_instance_id()
+	for i in 12:
+		var update := state("rootfall-verge","playing",2,beats(2,true,0,false),story(["rootfall-verge-arrival"]))
+		update.elapsed = 11.5+i
+		journal.observe(update)
+	check(journal.workshop_list.get_child_count()==2 and journal.workshop_list.get_child(0).get_instance_id()==first_row,"timer updates reuse workshop nodes")
 
 	var cancel := InputEventKey.new()
 	cancel.keycode = KEY_ESCAPE
@@ -54,6 +61,16 @@ func run() -> void:
 	check(journal.open, "I reopens the journal")
 	journal._unhandled_input(key(KEY_I))
 	check(not journal.open, "I toggles the journal closed")
+	var bindings := root.get_node_or_null("InputBindings")
+	if bindings != null:
+		var original: Dictionary = bindings.values.duplicate(true)
+		bindings.apply_bindings(preload("res://input_bindings/model.gd").rebind(original,"fire","KeyI"))
+		journal._unhandled_input(key(KEY_I))
+		check(not journal.open and not journal.shortcut_available(),"rebound I is owned by gameplay")
+		journal.open_panel()
+		check(journal.open,"button access remains functional when I is rebound")
+		journal.close_panel()
+		bindings.apply_bindings(original)
 
 	session.phase = 4
 	journal._unhandled_input(key(KEY_I))

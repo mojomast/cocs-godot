@@ -54,6 +54,18 @@ func _initialize() -> void:
 	model.observe({"id": "quiet-relay", "mapId": "unknown-map"})
 	check(model.chapter == "siltwake-crossing", "invalid state cannot replace the observed chapter")
 	check(model.cleared("rootfall-verge"), "invalid state cannot erase the observed route")
+	# Completion without any optional objectives must still clear on a fresh
+	# playing snapshot. Optional-data disappearance is not restart evidence.
+	model.observe(state("rootfall-verge","level-complete",5,beats(0,false,0,false),story([])))
+	model.observe(state("rootfall-verge","playing",0,beats(0,false,0,false),story([])))
+	check(not model.cleared("rootfall-verge"),"fresh playing state cannot retain a stale clear")
+	var fractional := state("rootfall-verge","playing",0,beats(0,false,0,false),story([],1))
+	fractional.elapsed = 65.75
+	fractional.totalElapsed = 145.5
+	model.observe(fractional)
+	fractional.story.pets = 99
+	check(model.objective().elapsed==65 and model.objective().total==145,"fractional authority clocks display whole seconds")
+	check(model.crew().pets==1,"later caller mutation cannot change journal facts")
 
 	print("CAMPAIGN_JOURNAL_MODEL_OK" if failures == 0 else "CAMPAIGN_JOURNAL_MODEL_FAILED")
 	quit(0 if failures == 0 else 1)

@@ -3,11 +3,9 @@ extends RefCounted
 ## campaign snapshot or from an event this client actually observed. Nothing is
 ## simulated, predicted or advanced locally, and no authority message is sent.
 ##
-## Retention is keyed by chapter (scene). Optional workshops and story beats are
-## remembered once the authority reports them complete, so a death/retry that
-## carries the chapter forward keeps its recovered list. A restart is detected
-## the honest way: the authority regresses a previously completed workshop or
-## story beat to incomplete, which clears only that chapter's observed record.
+## Current chapter details are replaced by each public snapshot. Authority owns
+## retry continuity; missing/regressed optional data is not evidence of a restart.
+## Route marks remember only observed clears of other chapters in this session.
 const Catalog = preload("res://campaign/catalog.gd")
 
 class Record extends RefCounted:
@@ -15,7 +13,6 @@ class Record extends RefCounted:
 	var story: Dictionary = {}       # chapter-prefixed story beat id -> true
 	var pets := 0
 	var cleared := false             # authority reported level/campaign complete
-	var max_step := 0
 
 var records: Dictionary = {}         # chapter id -> Record
 var latest: Dictionary = {}          # last accepted campaign state
@@ -44,36 +41,20 @@ func cleared(map_id: String) -> bool:
 func observe(state: Variant) -> void:
 	if not state is Dictionary: return
 	if state.get("id") != "quiet-relay": return
+	if state.get("phase") not in ["playing","dead","level-complete","campaign-complete"]: return
 	var map_id := str(state.get("mapId", ""))
 	if not Catalog.MAP_IDS.has(map_id): return
 	chapter = map_id
-	latest = state
+	latest = state.duplicate(true)
 	accepted = true
-	var record := _record(map_id)
-	var restarted := false
+	var record := _blank()
+	records[map_id] = record
 
 	var beats: Array = state.get("interludes", {}).get("beats", []) if state.get("interludes") is Dictionary else []
 	var story: Dictionary = state.get("story", {}) if state.get("story") is Dictionary else {}
 	var completed_story: Array = story.get("completed", []) if story.get("completed") is Array else []
 
-	# Restart is an authoritative regression, never a local guess.
-	for beat: Variant in beats:
-		if not beat is Dictionary: continue
-		var id := str(beat.get("id", ""))
-		if id.is_empty(): continue
-		if beat.get("completed", false) == true: continue
-		if record.workshops.has(id): restarted = true
-	if not restarted and not record.story.is_empty():
-		var current := {}
-		for entry: Variant in completed_story: current[str(entry)] = true
-		for id: String in record.story:
-			if not current.has(id): restarted = true; break
-	if restarted:
-		record = _blank()
-		records[map_id] = record
-
-	# Record only what the authority currently reports. Completed stays completed
-	# until an observed regression above clears the chapter.
+	# Copy only current facts; no union, maximum, or inferred restart.
 	for beat: Variant in beats:
 		if not beat is Dictionary: continue
 		var id := str(beat.get("id", ""))
@@ -81,8 +62,7 @@ func observe(state: Variant) -> void:
 		record.workshops[id] = str(beat.get("choice", "")) if beat.get("choice") != null else ""
 	for entry: Variant in completed_story:
 		record.story[str(entry)] = true
-	record.pets = maxi(record.pets, int(story.get("pets", 0)) if _whole(story.get("pets")) else 0)
-	record.max_step = maxi(record.max_step, int(state.get("stepIndex", 0)) if _whole(state.get("stepIndex")) else 0)
+	record.pets = int(story.get("pets", 0)) if _whole(story.get("pets")) else 0
 	var phase := str(state.get("phase", ""))
 	if phase in ["level-complete", "campaign-complete"]: record.cleared = true
 
@@ -99,13 +79,16 @@ func objective() -> Dictionary:
 		"step": int(latest.get("stepIndex", 0)) if _whole(latest.get("stepIndex")) else 0,
 		"step_count": int(latest.get("stepCount", 0)) if _whole(latest.get("stepCount")) else 0,
 		"enemies": int(latest.get("enemiesRemaining", 0)) if _whole(latest.get("enemiesRemaining")) else 0,
-		"hold": float(latest.get("holdProgress", 0.0)) if latest.get("holdProgress") is float or _whole(latest.get("holdProgress")) else 0.0,
+		"hold": float(latest.get("holdProgress", 0.0)) if _finite(latest.get("holdProgress")) else 0.0,
 		"kills": int(latest.get("kills", 0)) if _whole(latest.get("kills")) else 0,
-		"elapsed": int(latest.get("elapsed", 0)) if _whole(latest.get("elapsed")) else 0,
-		"total": int(latest.get("totalElapsed", 0)) if _whole(latest.get("totalElapsed")) else 0,
+		"elapsed": int(latest.get("elapsed", 0)) if _finite(latest.get("elapsed")) else 0,
+		"total": int(latest.get("totalElapsed", 0)) if _finite(latest.get("totalElapsed")) else 0,
 		"phase": str(latest.get("phase", "")),
 		"next": str(latest.get("nextMapId", "")),
 	}
+
+static func _finite(value: Variant) -> bool:
+	return (value is int or value is float) and is_finite(float(value))
 
 func route() -> Array:
 	var out: Array = []

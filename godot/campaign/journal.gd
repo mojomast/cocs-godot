@@ -9,11 +9,14 @@ const Model = preload("res://campaign/journal_model.gd")
 const Settings = preload("res://ui/settings_access.gd")
 const ScrollKeys = preload("res://experience/scroll_keys.gd")
 const TOGGLE_KEY := KEY_I
+const Bindings = preload("res://input_bindings/access.gd")
 
 var model := Model.new()
 var session: Node
 var open := false
 var signature := ""
+var workshop_signature := ""
+var return_focus: Control
 
 var shade := ColorRect.new()
 var panel := PanelContainer.new()
@@ -109,12 +112,16 @@ func bind_session(value: Node) -> void:
 func available() -> bool:
 	if not is_instance_valid(session): return false
 	if not str(session.get("startup_error")).is_empty(): return false
-	if int(session.get("phase", -1)) != 3: return false
+	if int(session.get("phase")) != 3: return false
+	if "action_pending" in session and session.action_pending: return false
+	if "application_focused" in session and not session.application_focused: return false
+	if not model.accepted or model.objective().phase != "playing": return false
 	return not blocked()
 
 func blocked() -> bool:
+	if not is_instance_valid(session): return true
 	if Settings.overlay_open(): return true
-	if "social_capturing" in session and session.social_capturing(): return true
+	if session.has_method("social_capturing") and session.social_capturing(): return true
 	if "solo_cheats" in session:
 		var cheats: Variant = session.get("solo_cheats")
 		if is_instance_valid(cheats) and cheats.overlay.visible: return true
@@ -132,10 +139,13 @@ func observe(state: Variant) -> void:
 	if open: refresh()
 
 func open_panel() -> void:
-	if open: return
+	if open or not available(): return
+	return_focus = get_viewport().gui_get_focus_owner()
+	if return_focus == null and "journal_button" in get_parent(): return_focus = get_parent().journal_button
 	open = true
 	if is_instance_valid(session) and session.has_method("release_pointer"): session.release_pointer()
 	show()
+	footer.text = ("I or Esc closes" if shortcut_available() else "Esc closes · I is bound to gameplay") + " · Tab / stick moves focus · arrows or page keys scroll"
 	refresh()
 	body_scroll.grab_focus()
 
@@ -143,6 +153,15 @@ func close_panel() -> void:
 	if not open: return
 	open = false
 	hide()
+	_restore_focus.call_deferred()
+
+func _restore_focus() -> void:
+	await get_tree().process_frame # HUD makes its menu visible again on close.
+	if not open and is_instance_valid(return_focus) and return_focus.is_visible_in_tree() and not blocked(): return_focus.grab_focus()
+
+func shortcut_available() -> bool:
+	# I remains a convenience shortcut, never steals a rebound gameplay action.
+	return not Bindings.values().values().has("KeyI")
 
 func toggle_panel() -> void:
 	if open: close_panel()
@@ -156,7 +175,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 		return
 	if not event is InputEventKey or event.echo or not event.pressed: return
-	if event.keycode == TOGGLE_KEY:
+	var key: int = event.physical_keycode if event.physical_keycode != 0 else event.keycode
+	if key == TOGGLE_KEY and not event.alt_pressed and not event.ctrl_pressed and not event.meta_pressed and shortcut_available():
 		if not open and not available(): return
 		toggle_panel()
 		get_viewport().set_input_as_handled()
@@ -179,7 +199,7 @@ func resize() -> void:
 
 func refresh() -> void:
 	var next := _signature()
-	if next == signature and workshop_list.get_child_count() > 0: return
+	if next == signature: return
 	signature = next
 	var model_objective := model.objective()
 	title.text = "RELAY JOURNAL\n%s" % (model_objective.title if not str(model_objective.title).is_empty() else "The Quiet Relay")
@@ -193,7 +213,10 @@ func refresh() -> void:
 	if int(model_objective.kills) > 0: metrics.append("Disabled %d" % int(model_objective.kills))
 	metrics.append("Time %d:%02d" % [int(model_objective.elapsed) / 60, int(model_objective.elapsed) % 60])
 	progress.text = " · ".join(metrics)
-	_rebuild_workshops()
+	var workshops_key := JSON.stringify(model.workshops())
+	if workshops_key != workshop_signature:
+		workshop_signature = workshops_key
+		_rebuild_workshops()
 	var model_crew := model.crew()
 	var names: Array[String] = []
 	for entry: Dictionary in model_crew.entities: names.append("%s (%s)" % [entry.name, "companion" if entry.kind == "puppy" else "operator"])
@@ -208,7 +231,9 @@ func _route_text() -> String:
 	return "ROUTE  " + "   ".join(parts)
 
 func _rebuild_workshops() -> void:
-	for child: Node in workshop_list.get_children(): child.queue_free()
+	for child: Node in workshop_list.get_children():
+		workshop_list.remove_child(child)
+		child.queue_free()
 	for beat: Dictionary in model.workshops():
 		var label := Label.new()
 		_style(label)
@@ -230,7 +255,7 @@ func _signature() -> String:
 	for key: String in ["title", "objective", "detail", "step", "step_count", "enemies", "hold", "kills", "elapsed", "phase"]:
 		parts.append(str(model_objective.get(key, "")))
 	for entry: Dictionary in model.route(): parts.append("%s:%s" % [entry.id, entry.status])
-	for beat: Dictionary in model.workshops(): parts.append("%s:%s:%s" % [beat.id, beat.completed, beat.stage])
+	parts.append(JSON.stringify(model.workshops()))
 	var model_crew := model.crew()
-	parts.append("crew:%d:%d:%d" % [model_crew.entities.size(), int(model_crew.beats), int(model_crew.pets)])
+	parts.append(JSON.stringify(model_crew))
 	return "|".join(parts)

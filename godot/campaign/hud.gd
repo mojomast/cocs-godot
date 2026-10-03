@@ -96,13 +96,16 @@ func _ready() -> void:
 	card_route.mouse_filter = MOUSE_FILTER_IGNORE
 	card_route.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	card_route.add_theme_color_override("font_color", Color("ffd479"))
-	stack.add_child(card_route)
 	var scroll := ScrollContainer.new()
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	scroll.follow_focus = true
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	stack.add_child(scroll)
-	scroll.add_child(body)
+	var card_content := VBoxContainer.new()
+	card_content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(card_content)
+	card_content.add_child(card_route)
+	card_content.add_child(body)
 	body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	stack.add_child(primary)
 	stack.add_child(restart)
@@ -117,7 +120,7 @@ func _ready() -> void:
 	menu.add_child(settings)
 	menu.add_child(leave)
 	journal_button.text = "Journal"
-	journal_button.tooltip_text = "Read the current objective, optional workshops and route (I)"
+	journal_button.tooltip_text = "Read the current objective, optional workshops and route"
 	settings.text = "Settings"
 	leave.text = "Leave"
 	journal_button.pressed.connect(func() -> void:
@@ -231,7 +234,7 @@ func show_brief(id: String) -> void:
 	card.show()
 	heading.text = "THE QUIET RELAY\n" + Catalog.TITLES[Catalog.MAP_IDS.find(id)]
 	card_route.text = route_line(id)
-	preload("res://input_bindings/hints.gd").bind(body, "A surviving archive is calling through the quarantine. Follow ECHO along the power corridor, break the security cordon, and restore the network.\n\nWASD move · Shift sprint · Space jump\nMouse aim · LMB fire · RMB aim · R reload\nE interact · Q power · F melee · G grenade\n1–9 / wheel weapons · I journal · Esc cursor\n\nClick the world to take control after each checkpoint.")
+	preload("res://input_bindings/hints.gd").bind(body, "A surviving archive is calling through the quarantine. Follow ECHO along the power corridor, break the security cordon, and restore the network.\n\nWASD move · Shift sprint · Space jump\nMouse aim · LMB fire · RMB aim · R reload\nE interact · Q power · F melee · G grenade\n1–9 / wheel weapons · Journal button · Esc cursor\n\nClick the world to take control after each checkpoint.")
 	primary.text = "Begin chapter"
 	restart.hide()
 	objective_scroll.hide()
@@ -250,7 +253,7 @@ func refresh() -> void:
 	# record stays truthful even while the panel is closed.
 	if is_instance_valid(journal):
 		journal.observe(state)
-		if journal.open and (phase != "playing" or not session.startup_error.is_empty()): journal.close_panel()
+		if journal.open and (phase != "playing" or not session.startup_error.is_empty() or journal.blocked()): journal.close_panel()
 	objective.text = "%s · %s" % [state.get("title", "The Quiet Relay"), state.get("objective", "Connecting…")]
 	detail.text = str(state.get("detail", ""))
 	if state.get("enemiesRemaining", 0) > 0: detail.text += "  ·  Robots %d" % int(state.enemiesRemaining)
@@ -306,7 +309,9 @@ func _process(delta: float) -> void:
 	crosshair.visible = captured and session.campaign.playing() and not card.visible and not Settings.overlay_open() and not journal_open
 	menu.visible = not captured and not Settings.overlay_open() and not journal_open
 	journal_button.disabled = not (is_instance_valid(journal) and journal.available())
-	status.text = "Waiting for authority…" if session.action_pending else (session.snapshot_watch.message() if session.snapshot_watch.stale() and session.phase == 3 else ("Click to control · I journal · Esc: cursor / scroll comms" if session.phase == 3 and not captured and session.campaign.playing() else ""))
+	var journal_hint := "I journal" if is_instance_valid(journal) and journal.shortcut_available() else "Journal button"
+	journal_button.tooltip_text = "Read objective, workshops and route · " + journal_hint
+	status.text = "Waiting for authority…" if session.action_pending else (session.snapshot_watch.message() if session.snapshot_watch.stale() and session.phase == 3 else ("Click to control · " + journal_hint + " · Esc: cursor / scroll comms" if session.phase == 3 and not captured and session.campaign.playing() else ""))
 	if captured and comms.visible and comms_stack.get_combined_minimum_size().y > comms.size.y + 1: status.text = "Esc: scroll full comms"
 	if is_instance_valid(experience_status) and experience_status.visible and top.get_combined_minimum_size().y > objective_scroll.size.y + 1:
 		status.text += (" · " if not status.text.is_empty() else "") + "Esc: scroll operator kit"
