@@ -37,8 +37,11 @@ tracked sidecars, and only editor `filesystem_cache10` changed among 2,560 earli
 cache entries. Evidence root:
 `/home/mojo/.tmp-on-disk/cocs-release-matrix-P-20261003/`;
 ledger: `canonical-02/run-47ivx55a/report.json`.
-Diagnosis commits `cd2b2017` and `47b3633b` remain isolated and native-unverified;
-independent Flash source review is assigned before integration. **No heavy grant
+Diagnosis commits `cd2b2017`, `47b3633b` and combo follow-up `199d2641` were
+reviewed and integrated as `346e8db8`, `6252d4bf` and `8bf90885`;
+native verification remains pending. Parent passed **83 source checks**: 33
+Fighting acceptance/command/combo/UI, three diagnosis, seven spectator/process,
+35 runner/receipt and five Blender-toolkit tests. **No heavy grant
 is currently active.** New Moth/Blender production requires an explicit next grant
 after the resource pack is ready; its acceptance uses a fresh candidate.
 
@@ -96,7 +99,7 @@ Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
 **P has explicitly released; no local heavy grant is active.**
-F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P have released. P diagnosis is under source review;
+F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P have released. P diagnosis source fixes are integrated;
 the Windows owner retains remote preflight monitoring.
 Scenery delivery is preserved but not integrated into the preview. Final production
 and acceptance obligations remain; strict final packaging is unchanged.
@@ -123,7 +126,7 @@ boundaries.
 | Shared race UI/lifecycle repairs | Sol `ses_effc08498ffeMuhuRDvyAoXEpj` | Source-only production fixes for J findings: map title, responsive result panel, restart audio teardown and attachment ownership warnings |
 | Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Actual production at `1f129ab2`; E released; compact-HUD correction at `83ceaa62` passes six parent source checks/grammar, new native layout/screenshots pending |
 | Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base `b6ab6782` and ordinary-controller follow-up `da259d19` integrated; 26 parent acceptance tests and grammar pass; native execution awaits later grant and device access |
-| Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | P complete/released on `3e97453a`: 89 passed / 22 failed / 31 unrun; 142 obligations retained; diagnosis `cd2b2017` + `47b3633b` under independent source review, native verification pending |
+| Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | P complete/released on `3e97453a`: 89 passed / 22 failed / 31 unrun; 142 obligations retained; reviewed diagnosis/combo follow-up integrated through `8bf90885`, native verification pending |
 | Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Historical Windows graph evidence verified/integrated at `08f3b1f9`; new 13-world/73-pair source-only preflight `37125999742` awaits owner-reported completion; no local export under O |
 | Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | M complete/released, integrated at `701d4caf`; 75-second film published, 98 candidate/91 installed Home checks pass; human full-watch/listening and final-frozen receipt remain pending |
 

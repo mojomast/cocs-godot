@@ -47,8 +47,13 @@ follow-up migrates `combos()` the same way:
   and replay assertions below the fixture are unchanged.
 - A corner defender is placed at `stage_half_width - 350`: the exact x the
   simulation clamps to on the first step (`simulation.gd:139`) and the placement
-  API bound. The original `- 330` differed by 20 units and was immediately
-  clamped to the same value, so distance-dependent combo checks are identical.
+  API bound. This agrees with the existing authored-combo fixture in
+  `godot/tests/fighting/core/actual_content.gd:39-44` and preserves the authored
+  initial distance. The original `- 330` differed by 20 units; clamping only its
+  defender would change that distance, and contacts resolve before the end-of-step
+  clamp. Therefore identical traces to the old hypothetical placement are **not**
+  established. Fresh native contact/distance/replay checks must validate this
+  corrected reachable fixture; their assertions remain unchanged.
 - A rejected placement now records a real failure through
   `expect(sim.last_error.is_empty(), ...)` instead of silently deferring.
 - `fixture` is re-read from `sim.save_state()` after placement, so the evidence

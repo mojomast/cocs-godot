@@ -20,9 +20,9 @@ Source foundation: `55edd9f2`. All work is isolated from the live P candidate.
 | Work | Agent/session | Current responsibility |
 |---|---|---|
 | New Moth resources + mothbake | Astra `ses_efdbb8a90ffeBrpRZAFfraUSXv` | Authenticated live catalog/schema discovery, actual new API jobs, recorded outputs, deterministic material bakes, generic tool updates and handoff manifest |
-| Industrial/coastal variety | Flash `ses_efdbb1dfeffebxsWuzs9jbjzJv` | Audit completed; blueprint in `MAP_VARIETY_REVISION_BLUEPRINT_20261003.md`; application not started |
+| Industrial/coastal variety | Flash `ses_efdbb1dfeffebxsWuzs9jbjzJv` | Audit completed; blueprint in `MAP_VARIETY_REVISION_BLUEPRINT_20261003.md`; subsequent P review/combo fixture repair complete; map application not started |
 | Botanical/urban variety | Flash `ses_efdbaaa61ffesiVbXI7pmlS04Q` | Audit completed; findings summarized below; application not started |
-| Blender production integration | Sol `ses_efdba38e9ffeManqAN9zWiJ3va` | Initial receipt `c6db6393` delivered, not integrated; resumed for review corrections and source-only Blender modeling helpers |
+| Blender production integration | Sol `ses_efdba38e9ffeManqAN9zWiJ3va` | Source toolkit complete through `add8a2e5`, parent-reviewed with five source tests passing; Blender execution and actual assets pending |
 
 Flash/Sol application follows Astra's usable resource delivery and parent review.
 The current audit/preparation work does not substitute for actual asset production.
@@ -74,6 +74,22 @@ Implementation corrections to the proposed blueprints:
   source-to-packed-image checks before adoption. The parent requested focused
   rejection tests and genuine Blender modeling helpers; no built/native pass is
   implied by `c6db6393`.
+
+### Completed source-tool review
+
+Sol subsequently delivered `fb198d07` (referenced color/normal hashes, bounded
+GLB texture/accessor inspection, hashed builder-reported lineage and editable
+Blender modeling helpers) and `add8a2e5` (open portal perimeter geometry, robust
+pipe-frame construction and rigid linked instances). Parent ran all five toolkit
+tests successfully, including aperture rays, pipe ring geometry and rejected
+texture/normal lineage. Blender API behavior, modifiers, GLB exports, Moth
+appearance and native clearance remain unverified until actual production.
+
+Despite the isolation instruction and worker reports, Git history shows these
+three source-tool commits were authored directly on `feature/relay-campaign`.
+Parent preserved and reviewed those changes rather than overwriting them.
+Future application owners must verify their actual worktree and branch before
+editing; only parent integrates into the shared branch.
 
 ## Required production qualities
 

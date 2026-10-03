@@ -44,8 +44,10 @@ P has no active engine or queued native continuation. Parent may coordinate the
 next separately granted heavy producer. New Moth/Blender map production must use
 a fresh candidate and fresh native/package acceptance.
 
-Source-only follow-ups remain isolated on `finish/P-diagnosis`, including the
-earlier `cd2b2017` spectator changes and the findings in `P_NEW_FAILURES.md`.
+Source-only follow-ups were independently reviewed and parent-integrated as
+`346e8db8` (spectator), `6252d4bf` (Fighting/map command fixtures and diagnosis),
+and `8bf90885` (combo placement), preserving their original isolated commits
+`cd2b2017`, `47b3633b` and `199d2641`. Findings are in `P_NEW_FAILURES.md`.
 No native pass is claimed for those changes. Real Settings Home and spectator
 corrections require fresh native verification under a subsequent grant. Production
 runtime/package pins were not changed by this diagnosis.
