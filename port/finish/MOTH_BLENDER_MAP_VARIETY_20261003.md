@@ -4,9 +4,14 @@
 `c5c50a93`, confined to `port/finish/map-variety/stormglass-staged-T-20261003/`.
 Parent verified all 50 inventory hashes, exact original T bytes/subset lineage,
 and the committed-Git seven-unit shipping check. Public runtime promotion remains
-pending. Abyssal's source-only correction `1cdf967e` is under independent review;
+pending. Abyssal's source-only correction `1cdf967e` passed independent review;
 its two ledges/twelve fins are moved beyond retaining walls in a new corrective
 namespace. Fresh Blender/native evidence is still required to close the P1.
+Reviewer reproduced 17 Python / nine Node tests and generation, confirmed all
+84 solid faces outward, and checked 42 ordinary-jump approaches against the 4 m
+shield walls. Sol is preparing selective builder prerequisites and explicit
+hash-pinned archival fixture access before parent source integration. No rejected
+T artifact bundle is needed; U retains sole heavy ownership.
 
 **Coastal independent review complete:** Abyssal has one P1—new accessible terrace
 fins/ledges appear solid in the actual export but lack authority collision.

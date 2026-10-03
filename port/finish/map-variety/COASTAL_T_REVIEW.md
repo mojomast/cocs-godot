@@ -22,6 +22,26 @@ and required source dependencies before integration. The P1 remains open pending
 fresh actual-art/native evidence; the rejected T candidate remains immutable.
 U retains sole heavy ownership.
 
+### Corrective source review passed
+
+Independent Astra approved **`1cdf967e` for source integration**, reproducing
+17 Python / nine Node tests and `build.mjs --check`. All 84 faces of the fourteen
+solids are outward-wound. Floors/blocks are unchanged; only the two triangles of
+the southwest south wall extend to cover the full 36 m edge. Clearances exceed
+0.52 m body radius + 0.05 m bevel + 0.05 m margin; all 501 nav nodes connect.
+
+Forty-two additional ordinary-jump approaches using source movement were stopped
+by the 4 m retaining walls. Maximum head height was 3.251 m above deck; centers
+remained at least 0.423 m inside the boundary. Wall ends, falls, special traversal
+and native ledge-entry sweeps remain future checks, not universally proven exclusion.
+
+Selective integration needs four source-only T prerequisites (`build_entry.py`,
+`composition.py`, `verify_master.py`, `test_preserved.py`) and explicit read-only
+access to the hash-pinned historical T GLB/material report for regression tests.
+Sol is preparing a current-parent source branch with parameterized archival fixture
+access. No rejected T artifact bundle or frozen native runner is to be merged to
+satisfy that dependency. Artifact/native P1 closure still requires the later build.
+
 Independent Astra `ses_efd0e4deaffeke8j2rdXdxtbbn` reviewed `834ff85a` / `f2d34471`
 without editing files or running engines. **One Abyssal P1 blocks approval of the
 combined artifact bundle. Stormglass qualifies for staged integration.** Neither
