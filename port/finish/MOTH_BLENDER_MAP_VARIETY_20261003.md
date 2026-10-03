@@ -1,5 +1,17 @@
 # New Moth resources and Blender-authored map variety
 
+**Helix independent review: artifact approval withheld.** The five new greenhouse
+ribs have six disconnected ends; the two outer ends are over 8 m from any other
+exported geometry. Source/export agree, so this requires a connected authored
+assembly, not a transform fix. Astra is correcting it alongside Parallax/Vesper.
+Full evidence: `map-variety/HELIX_U_REVIEW.md`. Shared tooling was approved and
+integrated as `c7cd4331` / `fb2af58d`; parent passed 35 Python and two Node checks.
+The U artifact bundle remains unmerged, with historical bytes preserved. V retains
+the sole heavy slot for Abyssal's corrective build.
+Helix's gallery now prominently labels **BLOCKED WIP**, with a separate dated
+review record. All 25 follow-up HTTP/hash checks passed; the sixteen original
+PNGs and all historical reports/manifests are unchanged.
+
 ## Current checkpoint — U released; corrective Abyssal V active
 
 **`MOTH-BLENDER-20261003-V` is the sole active heavy grant**, Sol

@@ -45,11 +45,16 @@ verified 50 inventory hashes and strict seven-unit shipping closure. The combine
 coastal bundle remains unmerged; Abyssal needs fresh native evidence. T released at
 19:05:47.349432Z after three empty 27-group audits, verified by parent. Astra also
 released U at 19:47:25.728572Z: all three masters/exports are built. Helix reports
-32,763 capsule probes and eight native pairs passing; independent review is active.
+32,763 capsule probes and eight native pairs passing; independent review nevertheless
+found disconnected new greenhouse ribs, including outer ends over 8 m from adjoining
+geometry. Helix artifact approval is withheld and Astra owns the source correction.
 Parallax's aperture obstruction and Vesper's 5 cm parapet mismatch block those
 candidates before native acceptance. Parent verified 264 artifact hashes and
 three empty audits/45 groups. Sol now holds V for the corrected Abyssal build.
-Helix images: <http://100.125.104.79:8796/helix-u/> (32 HTTP/hash checks passed).
+Helix images: <http://100.125.104.79:8796/helix-u/> (32 initial HTTP/hash checks passed).
+Shared botanical export/staging tools are source-approved and integrated as
+`c7cd4331` / `fb2af58d`; parent passed 35 Python and two Node checks. Actual U
+artifacts remain unmerged; details are in `map-variety/HELIX_U_REVIEW.md`.
 Foundry R6 finish sources and the corrected scene-backed export validator are
 integrated as `99d44ede`; parent reproduced nine source tests and verified strict
 seven-unit shipping closure. Actual R6 build/render acceptance remains pending.
