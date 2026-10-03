@@ -209,6 +209,10 @@ class Kit:
                       (i, 2*n+i, 2*n+i+1, i+1),
                       (n+i, n+i+1, 3*n+i+1, 3*n+i)]
         faces += [(0,n,3*n,2*n), (segments,2*n+segments,3*n+segments,n+segments)]
+        # The XZ annulus and Blender Y-depth rings above run opposite to the
+        # winding of their outward normals. Reverse the complete closed shell,
+        # including end caps, before bevel/weighted-normal evaluation.
+        faces = [tuple(reversed(face)) for face in faces]
         return self.mesh(name, vertices, faces, material, sector=sector, bevel=.018)
 
     def pipe(self, name, points, radius, material, *, sector='default', sides=12):

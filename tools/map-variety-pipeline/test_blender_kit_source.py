@@ -31,6 +31,24 @@ class SourceKitTests(unittest.TestCase):
         self.assertEqual(len(faces), 82)
         self.assertGreater(max(v[2] for v in vertices), 4.1)
         self.assertEqual(len({tuple(round(n, 3) for n in v) for v in vertices}), 84)
+        def cross(a,b):return (a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0])
+        def dot(a,b):return sum(n*m for n,m in zip(a,b))
+        def sub(a,b):return tuple(n-m for n,m in zip(a,b))
+        signed_volume=0
+        for face in faces:
+            for i in range(1,len(face)-1):
+                a,b,c=(vertices[j] for j in (face[0],face[i],face[i+1]))
+                signed_volume += dot(a,cross(b,c))/6
+        expected=math.pi*(2.2**2-2**2)*.3/2
+        self.assertAlmostEqual(signed_volume, expected, delta=expected*.02)
+        # Fourth face of the first segment is the outer arc, which must face
+        # radially away from the annulus center rather than be hidden by cull.
+        outer=faces[3]
+        a,b,c=(vertices[j] for j in outer[:3])
+        normal=cross(sub(b,a),sub(c,a))
+        radial=(sum(vertices[j][0] for j in outer)/4,0,
+                sum(vertices[j][2]-2 for j in outer)/4)
+        self.assertGreater(dot(normal,radial),0)
 
     def intersects_portal(self, x, z):
         """Horizontal view ray at fixed X/Z against real face triangles."""
