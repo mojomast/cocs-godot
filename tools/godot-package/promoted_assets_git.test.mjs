@@ -7,7 +7,7 @@ import {productionResources} from './production_resources.mjs';
 const cwd=fileURLToPath(new URL('../../',import.meta.url));
 const git=args=>execFileSync('git',args,{cwd,maxBuffer:128*1024*1024});
 
-test('committed three-unit promotion and import bytes validate independently of worktree reads',()=>{
+test('committed four-unit promotion and import bytes validate independently of worktree reads',()=>{
   const commit=git(['rev-parse','HEAD']).toString().trim();
   const paths=new Set(git(['ls-tree','-r','--name-only',commit]).toString().trim().split('\n')),cache=new Map();
   const read=p=>{if(!cache.has(p))cache.set(p,git(['show',`${commit}:${p}`]));return cache.get(p);};
@@ -16,8 +16,18 @@ test('committed three-unit promotion and import bytes validate independently of 
   assert.match(registry,/"parallax-observatory"/);
   const options={read,has:p=>paths.has(p),worldIds:['parallax-observatory'],strict:false};
   const result=productionResources(options);
-  assert.deepEqual(result.pending,['scenery','vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
+  assert.deepEqual(result.pending,['vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
   assert.throws(()=>productionResources({...options,strict:true}),/remain pending/);
+  for(const id of ['scenery','robots','vehicles','parallax-interiors']) {
+    const receipt=JSON.parse(read(`tools/godot-package/production_receipts/${id}.json`));
+    const advance=receipt.sceneryPackageVerifierAdvance,previous=advance.previousReceipt;
+    const bytes=git(['show',`${previous.commit}:${previous.path}`]);
+    assert.equal(createHash('sha256').update(bytes).digest('hex'),previous.sha256);
+    const old=JSON.parse(bytes);
+    for(const [key,value]of Object.entries(old))if(key!=='packageInputs')assert.deepEqual(receipt[key],value);
+    assert.equal(createHash('sha256').update(JSON.stringify(old.packageInputs)).digest('hex'),advance.previousPackageFingerprint);
+    assert.equal(createHash('sha256').update(JSON.stringify(receipt.packageInputs)).digest('hex'),advance.packageFingerprint);
+  }
   const image='godot/robot_assets/switchyard/generated/needle_surveyor_MothLocal_Switchyard_vertex_enamel.png';
   assert.throws(()=>productionResources({...options,read:p=>p===image?Buffer.from('forged'):read(p)}),/content hash mismatch/);
   const vehicleSidecar='godot/vehicle_assets/generated/puma-lod0.glb.import';
