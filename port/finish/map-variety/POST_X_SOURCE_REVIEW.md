@@ -1,5 +1,25 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## AA actual delivery — local repair proved; full native gate failed
+
+AA completed through `b9c53e82` and released at 23:22:04.862755Z. Parent verified
+141 hashes/sizes, three empty audits/ten groups and lock availability. No heavy
+grant is active. The delivery is under independent review and remains unmerged.
+
+The new GLB `95e9da98a45565ca2aae90858a9e5027d9123e4ffd1347da98d5de8573141cd5`
+and master `2e6617840ec57d08685dd78e64a29bbe7f55db2b1a26da40b6c6a46cd4c0373d`
+passed producer build/fresh-reopen equivalence. Actual native evidence supports
+the three repaired corners and fourteen material field sets / 39 decoded channels.
+However, all-face verification fails on `wayfinding-2` face 963, with two tangent
+handedness mismatches; a separate import with tangent generation disabled repeats
+the failure. Full native approval remains blocked. Captures/rays/traversal were
+not run, and no larger tangent rewrite or exception was accepted.
+
+A separate Astra source/static investigation will inventory the discrepancy and
+propose a bounded remedy; independent artifact review checks the evidence and
+contract changes. The successful three-corner measurement does not replace the
+failed complete-mesh gate. Earlier source approval remains historical context.
+
 ## Current execution — Parallax AA; Vesper source feasibility only
 
 Parent reviewed the narrow `8a4d2563` native lookup fix and integrated it as

@@ -1,5 +1,32 @@
 # New Moth resources and Blender-authored map variety
 
+## Current checkpoint — AA released; Parallax full native gate blocked
+
+**No heavy grant is active.** AA delivered source `ed3582c6` / `bd0aa9c2` /
+`38106ce2` and evidence **`b9c53e82`**, still unmerged pending review. Parent
+verified all **141 manifest files**, the supervisor receipt hash, three empty
+audits across ten owned groups, no current survivors and lock availability at
+2026-10-03T23:32:12.751660Z. AA released at 23:22:04.862755Z.
+
+Actual AA02 GLB: `95e9da98a45565ca2aae90858a9e5027d9123e4ffd1347da98d5de8573141cd5`;
+packed master: `2e6617840ec57d08685dd78e64a29bbe7f55db2b1a26da40b6c6a46cd4c0373d`.
+Producer reports successful 155,553-face editable build/fresh-reopen audits and
+byte-identical canonical reexport, exactly five changed BIN bytes in the reviewed
+three records, actual native proof of those three repaired corners, fourteen
+material field sets and 39 decoded channels passing.
+
+**The strict all-face native check fails** at `wayfinding-2`, ochre face 963:
+two native handedness signs differ from both matching canonical choices. A fresh
+`ensure_tangents=false` import reproduced the mismatch. No waiver or expanded
+repair was applied. Matched captures, rays and traversal remain unrun. The original
+X capsule evidence is historical; AA has no full artifact approval or promotion.
+
+Independent Astra `ses_efd0e4deaffeke8j2rdXdxtbbn` is reviewing the actual failed
+delivery. Astra `ses_efd30e1f6ffeLbhHTPoh266kZW` is performing a source/static
+all-face mismatch census and root-cause proposal in a separate namespace. Vesper
+step-up feasibility remains source-only under its existing owner. Failed attempts,
+X/W/Y inventories and original contracts remain preserved.
+
 ## Current owner — Parallax tangent production AA
 
 **MOTH-BLENDER-20261003-AA is the sole heavy grant**, Sol

@@ -7,11 +7,13 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
-**Current heavy owner: Parallax tangent production AA**, Sol
-`ses_efd55bb5cffeJRWNA4xZq8O6cE`, foundation `d3a4c524`. Six source tests pass,
-including corrected bounded native position matching. Actual master/reopen/native
-proof and matched captures are authorized; acceptance remains pending. Vesper
-step-up feasibility work is source-only.
+**No active heavy grant. Parallax AA released with full native approval blocked.**
+Delivery `b9c53e82` reports successful build/reopen and native proof of the three
+repaired corners, but all-face tangent verification fails on wayfinding geometry.
+A fresh import with tangent generation disabled reproduces it. Captures/rays/
+traversal remain unrun. Parent verified 141 files and three empty audits/ten groups;
+lock availability was confirmed at 23:32:12Z. Artifact review and mismatch census
+are source/static only, as is Vesper step-up feasibility work.
 
 **Vesper Z released after its first failed native group.**
 Delivery `eba8b633` / `dd4fbbb8` records five downhill landing passes, five uphill
@@ -21,7 +23,8 @@ the lock was available at 23:05:00Z. Independent failed-evidence review approved
 integration as `f108afd4` / `bb9ececa`; parent passed 26 checks and all 253 hashes.
 Parallax contract and transform correction passed review and are integrated through
 `d8822447`; parent passed five source tests and strict shipping closure. A conservative
-native tolerance-lookup false rejection is corrected as `d3a4c524`; AA is now authorized.
+native tolerance-lookup false rejection is corrected as `d3a4c524`; AA subsequently
+built/reopened the successor but stopped at a separate wayfinding tangent mismatch.
 
 **Foundry R7 Y completed and released**, delivering
 `26da91b3` / `f3b51b2c`. Parent verified 237 hashes, three empty audits/16 groups,
@@ -205,7 +208,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P, Q, R, S, T, U, V, W, X, Y and Z have released; AA owns Parallax production.**
+**P, Q, R, S, T, U, V, W, X, Y, Z and AA have released; no heavy grant is active.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -247,11 +250,14 @@ directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
-**Active: `MOTH-BLENDER-20261003-AA`**, Sol
+**Released: `MOTH-BLENDER-20261003-AA`**, Sol
 `ses_efd55bb5cffeJRWNA4xZq8O6cE`, foundation `d3a4c524`. Exact three-corner
 Parallax tangent repair, audited editable master/fresh reopen, strict native local
 basis/material proof and matched X/AA captures. Preserve all prior evidence and
 shipping histories. Three empty owned-group audits and explicit release required.
+AA delivered through `b9c53e82` and released at 23:22:04.862755Z; parent verified
+141 manifest files and three empty audits/ten groups. Three-corner native repair
+passes, but full native tangent verification remains blocked on wayfinding geometry.
 
 **Released: `MOTH-BLENDER-20261003-Z`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `33afe0ec`. Exact accepted/X Vesper
