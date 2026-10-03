@@ -65,8 +65,9 @@
     "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/prepare_native.py": "994a8324838b4a405c3aaa88e4c4081a6a2fbdec7083b726815d011646bbbdc2",
     "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/reopen_candidate.py": "4ad9e40bdbe0e6d0321a259786f32b4ef14600b30ba4ebe0146091c7475b031a",
     "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/source-check.json": "299a068f800667feff17baa952cdbe08c44786b75fc9173b1782ace37c882534",
-    "tools/godot-package/production_resources.mjs": "dbd70fc8a048b9d80452042fc2a9448da03cb5e01730400cbb36c95d6f861e5a",
+    "tools/godot-package/production_resources.mjs": "cc441a03e1db8060452c99960aaed8bee60cd9dcf6cdee1c48455554df671835",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
+    "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
     "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1"
   },
   "masters": [
@@ -136,5 +137,26 @@
     },
     "reason": "Parent 1f129ab2 authorized bounded vehicle asset promotion and import closure; supporting verifier advance only for retained robot/Parallax promotions; no rebuilt assets or new native attestation",
     "review": "port/finish/VEHICLE_PACKAGE_PROMOTION.md"
+  },
+  "sceneryPackageVerifierAdvance": {
+    "previousReceipt": {
+      "commit": "27f3afc3",
+      "path": "tools/godot-package/production_receipts/parallax-interiors.json",
+      "sha256": "1073428540576e4b46421a84fa06b1b5aecab6c1c1d796790a92e13a0d8a8c5f"
+    },
+    "changed": {
+      "tools/godot-package/production_resources.mjs": {
+        "before": "dbd70fc8a048b9d80452042fc2a9448da03cb5e01730400cbb36c95d6f861e5a",
+        "after": "cc441a03e1db8060452c99960aaed8bee60cd9dcf6cdee1c48455554df671835"
+      }
+    },
+    "added": {
+      "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565"
+    },
+    "previousPackageFingerprint": "b7450b5f146fe25e73e8fae4e88caf67e86e128a39ddd6d3299e4d9aa46a98ff",
+    "packageFingerprint": "fe8586bc259ac117644319ce057ad4cb0a973bad02bccb3ded5e91789536d010",
+    "productionSourceCheckpoint": null,
+    "reason": "Parent accepted F visual review; source-only texture/import closure and supporting-input reconciliation. No new native attestation or build.",
+    "review": "port/finish/SCENERY_PACKAGE_PROMOTION.md"
   }
 }

@@ -713,8 +713,9 @@
     "tools/asset-production/package-receipt.mjs": "e1917daa642b15e6e3290b537fbf9024ba72e6f5dfd18f4025d3e589d9702621",
     "tools/asset-production/receipt.mjs": "9648c19d979b2486c78830628c2f2508a02b4b2874d1f64149966d88d7e5f9d8",
     "tools/asset-production/reopen.py": "4628bc44122a690495766f3cc967a82d3ab7aeab52c272cca7a202be88e0f5de",
-    "tools/godot-package/production_resources.mjs": "dbd70fc8a048b9d80452042fc2a9448da03cb5e01730400cbb36c95d6f861e5a",
+    "tools/godot-package/production_resources.mjs": "cc441a03e1db8060452c99960aaed8bee60cd9dcf6cdee1c48455554df671835",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
+    "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
     "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
     "tools/godot-vehicle-assets/build.py": "eb5e317409f27201b09800819e949ccb4afeae0e7ae95e9150bb6d294c2a6489",
     "tools/godot-vehicle-assets/generated/puma-lod0.json": "8d50eaba579eacb55a4db97a3727464ff91aed1803faed657ba4a6076c730fad",
@@ -926,5 +927,26 @@
     },
     "reason": "Parent 1f129ab2 authorized bounded vehicle asset promotion and import closure; supporting verifier advance only for retained robot/Parallax promotions; no rebuilt assets or new native attestation",
     "review": "port/finish/VEHICLE_PACKAGE_PROMOTION.md"
+  },
+  "sceneryPackageVerifierAdvance": {
+    "previousReceipt": {
+      "commit": "27f3afc3",
+      "path": "tools/godot-package/production_receipts/vehicles.json",
+      "sha256": "86d491cc2121ab85f02eb24f2027a9179359528508fdb317cff19b7b0c21876f"
+    },
+    "changed": {
+      "tools/godot-package/production_resources.mjs": {
+        "before": "dbd70fc8a048b9d80452042fc2a9448da03cb5e01730400cbb36c95d6f861e5a",
+        "after": "cc441a03e1db8060452c99960aaed8bee60cd9dcf6cdee1c48455554df671835"
+      }
+    },
+    "added": {
+      "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565"
+    },
+    "previousPackageFingerprint": "6ea8fd3c2eba39b58a4868c4344b43f8de1ced062f4acbd3f7d9d8dc424e6371",
+    "packageFingerprint": "4d9204d223cfbdd9d67af0fa2546bfcaddc5f133c8ebae41511345c055a45cbd",
+    "productionSourceCheckpoint": null,
+    "reason": "Parent accepted F visual review; source-only texture/import closure and supporting-input reconciliation. No new native attestation or build.",
+    "review": "port/finish/SCENERY_PACKAGE_PROMOTION.md"
   }
 }
