@@ -1,5 +1,9 @@
 """FUTURE GRANT ONLY Blender adapter. No process launch or lock acquisition."""
 import sys
+from pathlib import Path
+# Blender --python does not add the script directory to sys.path like Python's
+# CLI. Resolve only this checked-in adapter directory before sibling imports.
+sys.path.insert(0,str(Path(__file__).resolve().parent))
 from stage_bridge import validate_setup
 def run(action,attempt,ident):
     out,_,_=validate_setup(attempt,ident);master=out/'masters'/f'{ident}.blend'

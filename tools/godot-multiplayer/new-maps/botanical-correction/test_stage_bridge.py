@@ -3,6 +3,7 @@ import json
 import shutil
 import unittest
 import uuid
+import subprocess
 from unittest.mock import patch
 from stage_config import MAPS,ROOT,paths,source,sha,read
 from stage_bridge import setup,validate_setup,stage,render_scripts
@@ -38,6 +39,11 @@ class StageBridgeTests(unittest.TestCase):
         original=MAPS['helix-conservatory']
         with patch.dict(MAPS,{'helix-conservatory':(original[0],'0'*64,*original[2:])}):
             with self.assertRaisesRegex(ValueError,'identity'):source('helix-conservatory')
+
+    def test_blender_style_script_loading_without_sibling_import_path(self):
+        driver=ROOT/'tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py'
+        subprocess.run(['python3','-I','-B','-c',
+            'import runpy; runpy.run_path('+repr(str(driver))+', run_name="source_import_check")'],cwd=ROOT,check=True)
 
     def test_attempt_immutability_and_unbuilt_artifact_rejection(self):
         for m in MAPS:
