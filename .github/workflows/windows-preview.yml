@@ -1,5 +1,7 @@
 name: Windows focused preview verification
 on:
+  push:
+    branches: [preview/windows-focused-g3]
   workflow_dispatch:
     inputs:
       tag:
@@ -17,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.candidate }}
+          ref: ${{ inputs.candidate || 'cb6e4c9f6bff09aafe4d9ef6262c5996a6219329' }}
           path: candidate
           fetch-depth: 0
       - uses: actions/checkout@v4
@@ -28,8 +30,8 @@ jobs:
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
-          RELEASE_TAG: ${{ inputs.tag }}
-          CANDIDATE: ${{ inputs.candidate }}
+          RELEASE_TAG: ${{ inputs.tag || 'quiet-relay-fighting-vehicles-preview-2026-10-03' }}
+          CANDIDATE: ${{ inputs.candidate || 'cb6e4c9f6bff09aafe4d9ef6262c5996a6219329' }}
         run: |
           if ($env:CANDIDATE -cnotmatch '^[0-9a-f]{40}$') { throw 'Exact candidate required' }
           if ((git -C candidate rev-parse HEAD).Trim() -ne $env:CANDIDATE) { throw 'Candidate checkout mismatch' }
