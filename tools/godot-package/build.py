@@ -136,6 +136,12 @@ def main():
         derivative_env.pop("COCS_SOURCE_DERIVATIVE", None)
     derivative = json.loads(run(["node", "--input-type=module", "-e", verify], env=derivative_env))
     closure = json.loads(run(["node", "--no-warnings", "--experimental-vm-modules", ROOT / "tools/godot-package/discover.mjs", ROOT]))
+    # Source-only authoring approval must never widen the runtime-copy closure.
+    authoring_contract = "port/contracts/moth-authoring-resources.json"
+    authoring_files = json.loads((ROOT / authoring_contract).read_text())["files"]
+    for paths in closure.values():
+        if isinstance(paths, (list, dict)) and set(paths) & set(authoring_files):
+            raise RuntimeError("Authoring resources cannot enter runtime copy")
     write_json(logs / "server-closure.json", closure)
     arena_data = closure.get("dataFiles", [])
     identity_data = closure.get("identityDataFiles", [])
@@ -174,6 +180,7 @@ def main():
         if set(world_data) != allowed_world_data:
             raise RuntimeError("Multiplayer world adapter requires its accepted committed gameplay recipes")
     input_paths = set(closure["modules"])
+    input_paths.add(authoring_contract)
     if any(p.startswith("port/native-campaign/") for p in closure["adapterModules"]):
         if set(campaign_data) != allowed_campaign_data:
             raise RuntimeError("Campaign adapter requires all four committed chapter data files")

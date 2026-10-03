@@ -1,0 +1,3554 @@
+{
+  "schema_version": 1,
+  "status": "authoring-resources-not-runtime-map-adoption",
+  "reviewed_commit": "9dc08e53c97422b80c969615bbc31d7a05498196",
+  "reviewed_tree": "d61690d7907ba562e4fc7b87de7f4d3dec1c79d0",
+  "root": "assets/moth/map-variety-20261003",
+  "shipping": "excluded-from-runtime-copy",
+  "files": {
+    "assets/moth/map-variety-20261003/archive-response.mjs": {
+      "sha256": "06ae51c90a36399b59e7fd7b187710c0f369ac06a2976f6603d767047b3aa510",
+      "bytes": 2088
+    },
+    "assets/moth/map-variety-20261003/bake.mjs": {
+      "sha256": "ff560916b860262db979a6a3dadc5420bc2404092b086fd5a3fed2e6ae824129",
+      "bytes": 9999
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/contact-albedo.png": {
+      "sha256": "bdc3fd930b37f45c703cdee32bcd568b5082b0b0f1efa1c9eba88188d1964678",
+      "bytes": 618955
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/contact-masks.png": {
+      "sha256": "f25b496784051504cba245c93e159e82fd534eb5b865427429ed943b812fb05b",
+      "bytes": 881661
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/contact-normal.png": {
+      "sha256": "ae7cd7cca7d502cf7f125c0a4b610e47830eaf53348223d093756f26fa2ad7e1",
+      "bytes": 1113697
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/contact-tiled.png": {
+      "sha256": "4989055157f77b95b414f69acf33e9b4856940c955b347ccbfc7df863aa23efd",
+      "bytes": 896559
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/manifest.json": {
+      "sha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9",
+      "bytes": 188497
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/quality.json": {
+      "sha256": "e41701cbdaef3dfbbd6e24e5f978948caeca88124d4daf85d402f417988edd25",
+      "bytes": 277849
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/aggregate-height.png": {
+      "sha256": "17e479b40763227594b41511aa2fc683d9609f5c930591482f5ae11a80423a28",
+      "bytes": 12755
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/aggregate-mask.png": {
+      "sha256": "bf5a819c091eb6af22fc2f9c41746e9485e01ad922fd56e71ae9128a60663149",
+      "bytes": 11640
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/anodized-brush-height.png": {
+      "sha256": "97ce70625ad85403b624f71907868937080dff5a8b7e8c7b3de352505efaa801",
+      "bytes": 15846
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/anodized-brush-mask.png": {
+      "sha256": "800caa36d9ce5258ce927d0bf54fb1390de9cd549cb35f7b0ef3e3d5a5b93bee",
+      "bytes": 11578
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/bark-fibers-height.png": {
+      "sha256": "06fffdb673f10c0e7b082da591fc0e684a302f06c083df519b43ae6e5e53ef38",
+      "bytes": 18520
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/bark-fibers-mask.png": {
+      "sha256": "e1613f3292d70af516db62d949b4b40c35cd3ceffac48183ebe6b384fd93183a",
+      "bytes": 15092
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/basalt-strata-height.png": {
+      "sha256": "bcb5993d3e35a70c5b265b4559a29a3bf8168a9ffd7c2b5c5d6f8ddadf586b50",
+      "bytes": 15172
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/basalt-strata-mask.png": {
+      "sha256": "ca8b5e9380cccd84f4cfe7c01e7d922d567cd40c76a3cf27e0c9db378220a909",
+      "bytes": 14709
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/cast-seams-height.png": {
+      "sha256": "d0d68b598e7f5cb8f6694beb5380866c05d6eb695c47076852dbb3ff407da8b5",
+      "bytes": 12848
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/cast-seams-mask.png": {
+      "sha256": "44dc085b115c491272ffa16b1eee7e10ea29d0f14a97e4773b4ef7833149ffd6",
+      "bytes": 10315
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/ceramic-enamel-height.png": {
+      "sha256": "8a4d03bdb955a2687ce1577a3fd96cc7257914db783a5048c4564fb0dabcc311",
+      "bytes": 11696
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/ceramic-enamel-mask.png": {
+      "sha256": "e8cd8a85123305c1fd365290e464842f82932e6e5cb22db0393b07d160eb59aa",
+      "bytes": 15520
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/cobble-sett-height.png": {
+      "sha256": "209eca8f5b80fe96c10c94edabf2eb8a7b763f4188e286573d0194bccd068595",
+      "bytes": 14987
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/cobble-sett-mask.png": {
+      "sha256": "445e911481802f0dfd9acf84e18cddaf7b4cf3dd7bef880feaf6ff5603d6fa05",
+      "bytes": 16602
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/copper-patina-height.png": {
+      "sha256": "0926a84399fdc8ece33fbd0fa0d7a493b4a96d09741154a040161f505ba03d4b",
+      "bytes": 18402
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/copper-patina-mask.png": {
+      "sha256": "0e4c3a0163cbe5cf554dceb0e06078c6f7204060992d080a437e865c5e89d225",
+      "bytes": 14611
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/decal-stencil-height.png": {
+      "sha256": "836e8da87dd9251d4193a29933f69b1b18f15b7511bf8455f727f00f95b9922b",
+      "bytes": 10295
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/decal-stencil-mask.png": {
+      "sha256": "506d4dcc127d4ac8fe6a137e3b7e1df1e24b69fc5d122068694b53d8a9d3e12c",
+      "bytes": 5154
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/deep-silt-height.png": {
+      "sha256": "c2e736eb2a061280c7d97c6cd2121dd9aaf0579030370de056944ea85cd69559",
+      "bytes": 14040
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/deep-silt-mask.png": {
+      "sha256": "de9c78cad72c8cd1dbcec876cf17fe2222501e3736620c49e8ee2098c2518a21",
+      "bytes": 14891
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/dune-sand-height.png": {
+      "sha256": "0a1f1f7b1d58269b0d823709a576baa6c5648ebbfe511c5522fd236204a2f039",
+      "bytes": 19430
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/dune-sand-mask.png": {
+      "sha256": "1548ac36641efe514662d55ec580d6ce270d82681f5bf384a61693af87bc4264",
+      "bytes": 14613
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/fern-frond-height.png": {
+      "sha256": "6ff9cfcb00d570838651fc2fde7162aaa237757cb97209be20cfd5a03dc59185",
+      "bytes": 11931
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/fern-frond-mask.png": {
+      "sha256": "d9ba4212780651a9977811d2d9a5e6ec337ca6e84280b8b777b6cd514e818377",
+      "bytes": 1707
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/frosted-glass-height.png": {
+      "sha256": "2be1bb187861e922efe1cd64976d4d545270947ae48f1a92c5c4eaba76f5ac02",
+      "bytes": 20348
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/frosted-glass-mask.png": {
+      "sha256": "2fa448e25713c632447f53b32dd3551b0da1472157fc12489fb215ac59173687",
+      "bytes": 18253
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/iron-grate-height.png": {
+      "sha256": "4425a1511e26e4a81aab566a181aa52a70a03dde49d6a5bd1e28af896f627456",
+      "bytes": 15206
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/iron-grate-mask.png": {
+      "sha256": "7e3629b045605003cbcc87ae1f8c30d9627a047c425fceba6cec2d81e19b19c8",
+      "bytes": 510
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/leaf-veins-height.png": {
+      "sha256": "a1040a7444c120a1686260a23c3f574053fb9ef932b5e4f821c63ce154b391e6",
+      "bytes": 12554
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/leaf-veins-mask.png": {
+      "sha256": "4bea7c035943bb8932b62d5eb6fb53715992fb824cb373560ebca5c77ed35d50",
+      "bytes": 13996
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/lime-plaster-height.png": {
+      "sha256": "a7437af37f72f22161a7ba7408d90d9fcdbe519938b766d2fa1a3f25cc934e75",
+      "bytes": 17108
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/lime-plaster-mask.png": {
+      "sha256": "93595b6f240b8db1791cb4c8aa155f2bfbbd4d6bb2849ce20412de0686ff7389",
+      "bytes": 15585
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/moss-lichen-height.png": {
+      "sha256": "6875c3175139f4ecbe6a86be6663759ab9062b0558d3f8064c2cb470575fe954",
+      "bytes": 20704
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/moss-lichen-mask.png": {
+      "sha256": "69dad165857beca7faf6d2ce10a6db51f8f0ee1288541776579287768fc04494",
+      "bytes": 15120
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/oxidized-iron-height.png": {
+      "sha256": "7ba20ca78d193926b88147ce48ad6d1e29ac5f9cb7db5e1195235b0f23fb1f97",
+      "bytes": 18656
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/oxidized-iron-mask.png": {
+      "sha256": "f9061ed3edf0c9c75e76db21adab4faa7a354c9b82efe2886c8b0a591dbcb2ba",
+      "bytes": 13548
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/prismatic-etch-height.png": {
+      "sha256": "febf6c303aea4aa1c8f440285a24b4084ab31381df81ea5e0a0edb166d2e69f0",
+      "bytes": 14171
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/prismatic-etch-mask.png": {
+      "sha256": "c02383c3eb8d6a198e16f3c25a6b9782538ed4c9410f30b0811c4d6dbfa8a293",
+      "bytes": 14446
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/quay-waterline-height.png": {
+      "sha256": "0978e184cbb514b7a848e82a48918b357f52466e219bc07fa4d9609055e3e410",
+      "bytes": 13037
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/quay-waterline-mask.png": {
+      "sha256": "d885bd919396db52112958b9d7f35c3268910da46a40393fd915fed8e0febae3",
+      "bytes": 4893
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/ribbed-steel-height.png": {
+      "sha256": "2a02ee905d597cc17093d22b5b9f1a1d043157dd75c5553b87051b13b99ec439",
+      "bytes": 16815
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/ribbed-steel-mask.png": {
+      "sha256": "49c25e0ff6bcefaf86cb0697f8e081a5db42f07541f09745d97c931bdae97eaf",
+      "bytes": 15686
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/road-gravel-height.png": {
+      "sha256": "3cb394ba1f980ec2694eab3ef5346b5a506595fb840d99d1b0935a5b0f72334b",
+      "bytes": 22855
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/road-gravel-mask.png": {
+      "sha256": "e6f0c18a1af669c63afbed2c178543fc25c030e56f534fabb765e96fec5885ea",
+      "bytes": 17470
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/salt-limestone-height.png": {
+      "sha256": "a2ed5ee6f605edca2f6517bbe2c5fbcdda159883cc431b4870b18fc0b6695932",
+      "bytes": 18254
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/salt-limestone-mask.png": {
+      "sha256": "fa3359069bace7f26d05031d1d1b1e3d91fe258fb1e4ed14153e3a3432b989cf",
+      "bytes": 15606
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/sea-flow-height.png": {
+      "sha256": "005e7c50f9f76b9f08b60b182b21b416f985f5b42f3a3c794b99070f145c5f70",
+      "bytes": 15782
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/sea-flow-mask.png": {
+      "sha256": "fe4d8e57fe7d81f2cbe720d09b2521c1ee9cbed7a83a5d5a025138fc0a150575",
+      "bytes": 13907
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/slate-shingle-height.png": {
+      "sha256": "08029b1779ddc8ec3d76ee0988a0efdf749751d3a7817b2b2c536c4f9891e114",
+      "bytes": 14458
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/slate-shingle-mask.png": {
+      "sha256": "3323a33fe3085f8380ef7e3f2eac26c16e8977721dd99fab1061759f0e152907",
+      "bytes": 13899
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/terracotta-height.png": {
+      "sha256": "fd96dcc00ea147faa831b4873cd5278d99c0f0329f6f051348ecdf0d56ffd7d7",
+      "bytes": 10579
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/terracotta-mask.png": {
+      "sha256": "7baf7bf609dd235cd5bac0ec73778d786525d29a8a2822bd0f15f60b09c42711",
+      "bytes": 13302
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/timber-weather-height.png": {
+      "sha256": "71ccab189503b58c921dd4365465e9979656ec9c1167cbd877a5438d12d00103",
+      "bytes": 20017
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/timber-weather-mask.png": {
+      "sha256": "c1ea4890aefbbd989b1225e0d0867304fda0292f72f35723f0dad54c3ed452d6",
+      "bytes": 14693
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/trim-wear-height.png": {
+      "sha256": "c6de1ba4717f9156cb0cfed515af9283d61aaf4115f9534ef9b6cf0d7560dd9a",
+      "bytes": 14557
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/trim-wear-mask.png": {
+      "sha256": "48304df90ea36c87374ffcc13a623b55537eb4fc10dbad9a0d51ab985e4c7e64",
+      "bytes": 4080
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/viaduct-asphalt-height.png": {
+      "sha256": "05a1e717cf551482d9246681ece5d40f6be2035d446f9ee61916229edd904e1c",
+      "bytes": 21467
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/viaduct-asphalt-mask.png": {
+      "sha256": "87548df8082bb36f89398d43422e416827272291c10b8181248c36521fc6f364",
+      "bytes": 17086
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/wet-soot-height.png": {
+      "sha256": "78f9ccc823bb1dfa8c248c2d45265e9040aa5cf77b33e9877acb029448d2a103",
+      "bytes": 17171
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/sources/wet-soot-mask.png": {
+      "sha256": "88f89d4abd4c7195592b8f4b6b6e439e11ddb356da72f5b7be4cbd5f69ae2d9e",
+      "bytes": 19350
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/aggregate-albedo.png": {
+      "sha256": "1a0fccc16edd8ecc4825d47f59eadd477b0861606aa31af7642a9b177877f4e4",
+      "bytes": 51789
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/aggregate-height.png": {
+      "sha256": "26915fe7f778b770a40c736f324e63df72b72e787b784f6d5a6975343cf77502",
+      "bytes": 126894
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/aggregate-normal.png": {
+      "sha256": "61baadb1991cdc3ab47e1f025672c06f9e6f601c0d56552dee34da3e0f8444a4",
+      "bytes": 119069
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/aggregate-roughness.png": {
+      "sha256": "a33f12b68d468f75a8823818da8320d64c1a27c339f71dc26a5a16d7d2a47cff",
+      "bytes": 35417
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/aggregate-wear.png": {
+      "sha256": "2b27922cbecdf4cd20dbaba6f3f74669a3107e019240f62f215560b3e765272f",
+      "bytes": 115422
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/anodized-brush-albedo.png": {
+      "sha256": "1e3a2aab37bdc00b936e090f748a01caea2e3b30de33a972365328be6a03afdf",
+      "bytes": 57600
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/anodized-brush-height.png": {
+      "sha256": "c08f6fa02e8623e5c603baf1eefc2f9cd246b31fb195dcce65a5e683121d1072",
+      "bytes": 177770
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/anodized-brush-normal.png": {
+      "sha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+      "bytes": 119904
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/anodized-brush-roughness.png": {
+      "sha256": "dbcaa37ae370a5150dc588fc6189126bb52c4e1b8e2671b129ded5078252d99a",
+      "bytes": 49929
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/anodized-brush-wear.png": {
+      "sha256": "1bf2b6e0826f756c96019532c869c87c86e1678567527f41774b4fa78561034e",
+      "bytes": 155428
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/bark-fibers-albedo.png": {
+      "sha256": "be0211f29a3b4d0d5f8c401d6bf68d0e8d25052092c569fefde6524a79899fa7",
+      "bytes": 69697
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/bark-fibers-height.png": {
+      "sha256": "6012f83025a2187b02708507d773458bc5bbd0868f946f6737fc67e59f06372f",
+      "bytes": 189240
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/bark-fibers-normal.png": {
+      "sha256": "eb7687cc095b294658f7d1171dca8758eb2c4af20e71d5caa04f0cc3ce08bd68",
+      "bytes": 441055
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/bark-fibers-roughness.png": {
+      "sha256": "1527f27f53a868e9c3af107e6bf89e9f27ed784547603dc4aadc1575f3f84189",
+      "bytes": 57754
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/bark-fibers-wear.png": {
+      "sha256": "717fefd3db916e91a01ccb16dadf52d5abc973d0325f1f3f5a1e671d377afe56",
+      "bytes": 176917
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/basalt-strata-albedo.png": {
+      "sha256": "3a8121ed72b1989934ad32ee733f68b2e4af83372dfb1964efa9fd25c633091e",
+      "bytes": 51604
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/basalt-strata-height.png": {
+      "sha256": "1ba458a915b1ca6df10977b4b4844178a2c59dd5cb8d3ef567fb28a8d430e6f3",
+      "bytes": 141103
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/basalt-strata-normal.png": {
+      "sha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+      "bytes": 326596
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/basalt-strata-roughness.png": {
+      "sha256": "a5d214313015eef0cbbe497983753826b69aa568c3667a7298915a7c16188d07",
+      "bytes": 44380
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/basalt-strata-wear.png": {
+      "sha256": "5b4b392a0d37864edac3ae138c7c0a1f2510ce8af7b12ceebf28c5ff1514f069",
+      "bytes": 144298
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/cast-seams-albedo.png": {
+      "sha256": "4dcd77b6b90b3621375a21f725e9b881a2c8c46897762b358361ead4671c0ef8",
+      "bytes": 38869
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/cast-seams-height.png": {
+      "sha256": "871e41d7961fc3a65fd639b8bf080acc710e2101213f2ffb253c388d75117cde",
+      "bytes": 119402
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/cast-seams-normal.png": {
+      "sha256": "a65f9df057998d11ac92a24f05c5946eb794134f7cc12b9dfab035496c37a858",
+      "bytes": 101348
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/cast-seams-roughness.png": {
+      "sha256": "484ebd3f0ab9915be426cca687bc8fd5ff364eef2151a9e4d3e49c1ddb2410df",
+      "bytes": 30990
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/cast-seams-wear.png": {
+      "sha256": "9e780058c0261a05f4a8b054e2b10e5946b25cdc375620e8081e6c149138c214",
+      "bytes": 105478
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/ceramic-enamel-albedo.png": {
+      "sha256": "c8dfce6416c2b9eb145c63470331f6749e0338527fcb3045dfef15b435062702",
+      "bytes": 52319
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/ceramic-enamel-height.png": {
+      "sha256": "04688855a5f0fb576d3f2d41aa54c885db1c8844de3192d5c4370a8e2927d6d7",
+      "bytes": 125267
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/ceramic-enamel-normal.png": {
+      "sha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+      "bytes": 133720
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/ceramic-enamel-roughness.png": {
+      "sha256": "2c63bee56ac7600342fd93f52ed17aa5d096b4e5c1d659168bd5d0586ae1afc5",
+      "bytes": 38379
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/ceramic-enamel-wear.png": {
+      "sha256": "0b39e91fed9d805eb50ef2007a3e33aca1d0ab03c3a507daf5075a0f6f588370",
+      "bytes": 121199
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/cobble-sett-albedo.png": {
+      "sha256": "ba5c9cc8eab74d872da571027bb087088244fa62c06434315f931191ab5811fe",
+      "bytes": 73731
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/cobble-sett-height.png": {
+      "sha256": "a52d54604848ee294c5017ff1e2afdbe6a3de7a07a40e1433102a6075e305ace",
+      "bytes": 156874
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/cobble-sett-normal.png": {
+      "sha256": "0f81ac3722ca5aca9d0ee23c8e482590276e86b06b43950b8bb07d1340095491",
+      "bytes": 296899
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/cobble-sett-roughness.png": {
+      "sha256": "d95ad9082b4e982332a2f08d863185bb05e4a58b0fa6f41d41d36982885fdd3e",
+      "bytes": 50619
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/cobble-sett-wear.png": {
+      "sha256": "42ae12b1a2f2d516069d6cba65f80c9f03e852d3a8170462d0c007bca06e20a7",
+      "bytes": 169175
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/copper-patina-albedo.png": {
+      "sha256": "a11f66b6da6268c022fa8b88593d39c2b33c96197bd83be811ed7972672fad8f",
+      "bytes": 103892
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/copper-patina-height.png": {
+      "sha256": "e70f562efa93d97b5d69a89c4830369c56e345c5c2cde2684be3d69a4dbc9911",
+      "bytes": 224341
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/copper-patina-normal.png": {
+      "sha256": "7b2ec1c6a0837fdbbe67ed0779e2d39ad3637b405ed0a5186ac21b94db2dab9c",
+      "bytes": 261676
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/copper-patina-roughness.png": {
+      "sha256": "0b1951e5830a72bfd483555e1a06a7bacaaa8ac7e379818f8acdd86765caea8b",
+      "bytes": 69429
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/copper-patina-wear.png": {
+      "sha256": "aa1336a0637437f961c42b02394aaf1bd9f521cf5e455589e7fc33fb5a37caf9",
+      "bytes": 204561
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/decal-stencil-albedo.png": {
+      "sha256": "9dfbcb63dc80b13ff24e5b025f0a50a923b279ff48886586b9c8048ad706d330",
+      "bytes": 51651
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/decal-stencil-height.png": {
+      "sha256": "4831936c5062494b15f3ce5d3ba72ef88c712a5474a4dfeb6a9846e863064a87",
+      "bytes": 101921
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/decal-stencil-normal.png": {
+      "sha256": "82979f0e2bfc27c6889cc2d8bda6177a372b313b76c7734e7f1fca23a7ef620b",
+      "bytes": 32120
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/decal-stencil-roughness.png": {
+      "sha256": "fdc1e5ef968bbda1d37edb0872e29609f724fe63818eea0a415d3727873ab6cf",
+      "bytes": 24177
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/decal-stencil-wear.png": {
+      "sha256": "23e8bfdbe8f4425f42815ba33b0b87d6e895a081270268d02d400a1b1c8c1c6b",
+      "bytes": 85367
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/deep-silt-albedo.png": {
+      "sha256": "bf0fe3e051c6456bfda3380dfd21c314f2b6d9c87dff7d179bc3de95c3097c6c",
+      "bytes": 42655
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/deep-silt-height.png": {
+      "sha256": "82b93809062a687f54383c37f01e04e8cb4e5a58a2c6c87f709d24607685bf35",
+      "bytes": 154754
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/deep-silt-normal.png": {
+      "sha256": "00672f5592aa659fd26cf45ebc35de011e039dd717c437319b16698e957f98ae",
+      "bytes": 149561
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/deep-silt-roughness.png": {
+      "sha256": "5faf14a0a40bac50911e1db6b46c1224d8650ccee4d918eb8410d30057be892e",
+      "bytes": 43995
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/deep-silt-wear.png": {
+      "sha256": "0588948c29af591af076a7ba2b6a9d96573324e3bd8c522d875cbbb8fc9677e9",
+      "bytes": 140079
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/dune-sand-albedo.png": {
+      "sha256": "4bb50bbd53b4d700a7cb913e3726140510c2659d41148c25d5d69b791606f227",
+      "bytes": 96411
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/dune-sand-height.png": {
+      "sha256": "2fa5fbe9f9ad7d4df88b79aba019bec8536f36dde32860c57801ee2de50e3c3d",
+      "bytes": 208296
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/dune-sand-normal.png": {
+      "sha256": "696fecd2413620ef5221debd9cbbab94987d82939cd1dbd17eddb5fbbd112987",
+      "bytes": 422705
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/dune-sand-roughness.png": {
+      "sha256": "afe40d68f6842a5f856c77597652c36a1e993239f1716f7fa4dffb5398422d19",
+      "bytes": 62613
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/dune-sand-wear.png": {
+      "sha256": "0706e5111d1e6c791af17bde5a64fce7811d26cb8119d67214877cc8f2a3f4e3",
+      "bytes": 184969
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/fern-frond-albedo.png": {
+      "sha256": "119ae5f9763577a24b34ab9a1244926a080973161c339f153a55c713607971af",
+      "bytes": 47311
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/fern-frond-alpha.png": {
+      "sha256": "0f61e4f6a64192a1bb638261d1bc1f888dc14d3aca862efabc81a971172a17bb",
+      "bytes": 26286
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/fern-frond-height.png": {
+      "sha256": "da36870850b2d7bbcf5eff8cc12c42588a2d15994116b9426a09384e7dabc16f",
+      "bytes": 125149
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/fern-frond-normal.png": {
+      "sha256": "d60070f0af03f33c351a6049a871fe839a6fcacc39889e9ca5b1752be2f42771",
+      "bytes": 85180
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/fern-frond-roughness.png": {
+      "sha256": "8782a50aad763eb9be831334d97507fed2b70fc93f99c1bdf9f850d16f675817",
+      "bytes": 35464
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/fern-frond-wear.png": {
+      "sha256": "af30653f07b25f99bed15e06c0039e44ebfa80d271b1380215a4c97fd60770ad",
+      "bytes": 106812
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/forge-steel-albedo.png": {
+      "sha256": "0c1dec9f25b8df13628d3a2989e35f3ac42a6cff6137e2522f0655750d12c822",
+      "bytes": 51136
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/forge-steel-height.png": {
+      "sha256": "4e94d1541a801955f2103f9541b948b504daecba5b35a95837810d970cbbd141",
+      "bytes": 168076
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/forge-steel-normal.png": {
+      "sha256": "8662617c557392b63c6b061f957facfd116e5b87534884060fbde87f388388e5",
+      "bytes": 201913
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/forge-steel-roughness.png": {
+      "sha256": "95b14753e863ac71367c158cec2c3978b6b44a54fa35c25e0938f978321c774b",
+      "bytes": 57235
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/forge-steel-wear.png": {
+      "sha256": "0d0f309f7c024cfd3ed4bac4f67c707d1c082415452285b8601fb2ad8b5528b3",
+      "bytes": 184760
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/frosted-glass-albedo.png": {
+      "sha256": "bfb249ce1aab01033c3cec21b56141370454499667d2926bb2fce73c2cd862c9",
+      "bytes": 110126
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/frosted-glass-height.png": {
+      "sha256": "4c0921801626a2ec94d446f2db32596775e26fd1507bb30378765aa66cf8ae6f",
+      "bytes": 255784
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/frosted-glass-normal.png": {
+      "sha256": "2d73be97dcd93087d974245aee5389579f254b2c71697a098844b9721f51fb3f",
+      "bytes": 164492
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/frosted-glass-roughness.png": {
+      "sha256": "1e0a78dc9469061ad9572a32129876b75e427dd6beeae009104a849ff9737a4f",
+      "bytes": 85699
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/frosted-glass-wear.png": {
+      "sha256": "fa2225c68cc5f146ab28c681e2c908b4c354a8f65f393a4f3ff75b506aaa20a0",
+      "bytes": 236412
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/grotto-wet-rock-albedo.png": {
+      "sha256": "9217447e0249b9f37e5f739bbb8a36ab17525926070cdfdbfef1722e53dc5499",
+      "bytes": 40928
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/grotto-wet-rock-height.png": {
+      "sha256": "1ba458a915b1ca6df10977b4b4844178a2c59dd5cb8d3ef567fb28a8d430e6f3",
+      "bytes": 141103
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/grotto-wet-rock-normal.png": {
+      "sha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+      "bytes": 326596
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/grotto-wet-rock-roughness.png": {
+      "sha256": "81f6ff50750eea6604a5ded64aa9463b3e71f0e6f96f45c5990164a45fb759f7",
+      "bytes": 44260
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/grotto-wet-rock-wear.png": {
+      "sha256": "5b4b392a0d37864edac3ae138c7c0a1f2510ce8af7b12ceebf28c5ff1514f069",
+      "bytes": 144298
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/iron-grate-albedo.png": {
+      "sha256": "404748eb9dbb5783dc435beb1940ce77baab7cca13bf86c3e2f6df29de62f900",
+      "bytes": 59751
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/iron-grate-height.png": {
+      "sha256": "66501236138b8d5214bb5bbf2ecc872ecbe51337e70c43af82aa7a640f3dc298",
+      "bytes": 182211
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/iron-grate-normal.png": {
+      "sha256": "ec09f5e04700822fd8640563a51ca2a8aa1bc88a568ac8ed87a1f8d2afdafaf7",
+      "bytes": 425261
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/iron-grate-roughness.png": {
+      "sha256": "ab2e42adeeee331b2269800cbdbe0082b6056a81c87d9cf25f0d676e5ed6eef9",
+      "bytes": 48710
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/iron-grate-wear.png": {
+      "sha256": "427d2249f21df53fdd8f7c18ed3a46c435d558f52e0b49f07c9d57d2d3b2faae",
+      "bytes": 158168
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/leaf-veins-albedo.png": {
+      "sha256": "e082d13e9dd76d82331a2101beb6d3ed3424289d56c7086cb8e911f978f0a6bd",
+      "bytes": 74853
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/leaf-veins-height.png": {
+      "sha256": "31a326b7ddf0523c47de688283ccd6898f74332549e307dd3c0d4bcefe4d0ee3",
+      "bytes": 199968
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/leaf-veins-normal.png": {
+      "sha256": "e1f15185ed9a6b56f8fce828d244160a885469f1d578310eff2bcdab9df15cb5",
+      "bytes": 219125
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/leaf-veins-roughness.png": {
+      "sha256": "24c570f90754df312c24ee9f35064e24c2835b0fd3feea42f589d3eaf152a081",
+      "bytes": 67171
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/leaf-veins-wear.png": {
+      "sha256": "fa4601abf4eb48dbd525a0998407855cde777c4a16bb032141a43cb88400bfce",
+      "bytes": 196451
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/lime-plaster-albedo.png": {
+      "sha256": "20712018b81f70807f044c362860617b4db66da53ebf6f0a829131f836702983",
+      "bytes": 88133
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/lime-plaster-height.png": {
+      "sha256": "c80e0792910e86bae7b9096407d0bd804f656d4f0cdcd30ba53bb622b650206a",
+      "bytes": 191635
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/lime-plaster-normal.png": {
+      "sha256": "d8630b11ec0b1baaaafefe6ca867e13577511fc3e0fc45fd546aa0b8e94930ef",
+      "bytes": 167240
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/lime-plaster-roughness.png": {
+      "sha256": "8f9ec4bf33e91c11ccaef29bb0e06af0908f92f39d905276337140ef8f14fdb2",
+      "bytes": 60084
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/lime-plaster-wear.png": {
+      "sha256": "a02d69625c40bf99fdf247093e35afc647a6384884e35d8d21960dec65874020",
+      "bytes": 180871
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/masonry-coping-albedo.png": {
+      "sha256": "6c3243cea75aedf2e9b898bce33d1c89564cc51971ba574fea2b484ed512406c",
+      "bytes": 62902
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/masonry-coping-height.png": {
+      "sha256": "e083c7f21b842df01993648c5a432c95713677270324c27d8ad9c35cc0d0ee60",
+      "bytes": 126585
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/masonry-coping-normal.png": {
+      "sha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+      "bytes": 131879
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/masonry-coping-roughness.png": {
+      "sha256": "db409b5b75e132192fc142673dfc781eb2f0ed5e68e19bfccc16539601b86368",
+      "bytes": 26876
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/masonry-coping-wear.png": {
+      "sha256": "6732d48ba5ac2053f79d9aed270c156f7e8e2875a561e7d7c1f463f224f8022e",
+      "bytes": 92133
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/moss-lichen-albedo.png": {
+      "sha256": "a47ba407f957a55caa21956683d37d52b3353d1f7d5e56b629a7c02d8522a45b",
+      "bytes": 92999
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/moss-lichen-height.png": {
+      "sha256": "00fc5bde7eca74842377785d3b02565bafd485aeb6f1cfbbd4cc76eede48791b",
+      "bytes": 215487
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/moss-lichen-normal.png": {
+      "sha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+      "bytes": 419889
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/moss-lichen-roughness.png": {
+      "sha256": "8d32c4b57631916c5ed7e93d1365d71a24b4e8c4a2e63bea3c9a110e12477ebe",
+      "bytes": 67058
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/moss-lichen-wear.png": {
+      "sha256": "4985f4847ca8f72db756cfa4539514e69125b090cca387f3adb999ba16185529",
+      "bytes": 203005
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/optical-mirror-opaque-albedo.png": {
+      "sha256": "04e59645eb4b274341f7c33f4b5ad6d9ee6e1ed73e7f77459d3201bca35f20bb",
+      "bytes": 43403
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/optical-mirror-opaque-height.png": {
+      "sha256": "c08f6fa02e8623e5c603baf1eefc2f9cd246b31fb195dcce65a5e683121d1072",
+      "bytes": 177770
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/optical-mirror-opaque-normal.png": {
+      "sha256": "0e9012adf948ca4002ae0ec05e9ecf71a6cf1611882b48784d93b1906490471e",
+      "bytes": 40077
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/optical-mirror-opaque-roughness.png": {
+      "sha256": "ab2a3570a390d7f829bc2ad31416c363b03a9d379c70a3d2a296bd4dc42897bc",
+      "bytes": 49709
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/optical-mirror-opaque-wear.png": {
+      "sha256": "1bf2b6e0826f756c96019532c869c87c86e1678567527f41774b4fa78561034e",
+      "bytes": 155428
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/oxidized-iron-albedo.png": {
+      "sha256": "2514c52dad451a6ab8a9f7ee82099abcdb54a1be3df7f009f11b51044e3f8218",
+      "bytes": 60057
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/oxidized-iron-height.png": {
+      "sha256": "c5e822015cc32fa6ad5ed8f4ba2ed17134d6b667268203d7ed56465a67416c38",
+      "bytes": 161797
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/oxidized-iron-normal.png": {
+      "sha256": "db25a51dd6c649d7b155c51c64de0cb507306bf52641407581a850a79ffdc864",
+      "bytes": 198577
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/oxidized-iron-roughness.png": {
+      "sha256": "c43d822da97d4a2fefb389eec95681c2b596cf4d66160c5081668514bd2544a6",
+      "bytes": 47056
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/oxidized-iron-wear.png": {
+      "sha256": "f498e0c38f2395a7ed25a3fb8b3e755387851371b12e57ee5119cf4c9dbe96de",
+      "bytes": 143612
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/pool-scum-albedo.png": {
+      "sha256": "82ea69c56ecce904019d45a2d69959e8c5b7ad393fa86bed1914b8e9fdd1af8f",
+      "bytes": 59365
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/pool-scum-height.png": {
+      "sha256": "82b93809062a687f54383c37f01e04e8cb4e5a58a2c6c87f709d24607685bf35",
+      "bytes": 154754
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/pool-scum-normal.png": {
+      "sha256": "00672f5592aa659fd26cf45ebc35de011e039dd717c437319b16698e957f98ae",
+      "bytes": 149561
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/pool-scum-roughness.png": {
+      "sha256": "f9309389c58c37ccd77480f6b30490822fea5800b8b04c3f98eb9ae75e233202",
+      "bytes": 44136
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/pool-scum-wear.png": {
+      "sha256": "0588948c29af591af076a7ba2b6a9d96573324e3bd8c522d875cbbb8fc9677e9",
+      "bytes": 140079
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/prismatic-etch-albedo.png": {
+      "sha256": "64fbdfc9891608b6966049d3c4dc54dd6b7593868e08f89f4f9bfa36a0085a97",
+      "bytes": 97345
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/prismatic-etch-height.png": {
+      "sha256": "b33624c33dbd444677bf080fe706fff54bb88d91714724a29d99191fb4aeff29",
+      "bytes": 207794
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/prismatic-etch-normal.png": {
+      "sha256": "f1e48753f0784ad31eadbb496bdb559252c2e4e034653e02ddbb020fb4249401",
+      "bytes": 203698
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/prismatic-etch-roughness.png": {
+      "sha256": "5ed42766756361b029bfa13a6e7e29bde853b8dd661209d955f6a5a2f8885f7c",
+      "bytes": 75382
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/prismatic-etch-wear.png": {
+      "sha256": "2c390f64d5c83c590ccf8e05355f155341a27a27592c3ca9ea83bae73f5268b2",
+      "bytes": 204389
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/quay-waterline-albedo.png": {
+      "sha256": "612998501c72d9f2e6bd89fd081ce22de1e90cab21ed1cf629a77923cf8c3f5f",
+      "bytes": 57100
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/quay-waterline-height.png": {
+      "sha256": "646137ca3241d590791ba977b715d21804d0137e88532f3986860c7996d31b71",
+      "bytes": 105706
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/quay-waterline-normal.png": {
+      "sha256": "cdf86004af36324860d76a308e6594cb2ebc321606d19df96896b5513bc3d03a",
+      "bytes": 47158
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/quay-waterline-roughness.png": {
+      "sha256": "9fc5130869fd89b035d3d62022d7839c13fa3ef5495ee19d25c044f3a0b95ca0",
+      "bytes": 24599
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/quay-waterline-wear.png": {
+      "sha256": "20f1fe5a59041c0eb0bcf4cb7773e7227b8db00dd3759ff97439755c003ff14c",
+      "bytes": 88117
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/ribbed-steel-albedo.png": {
+      "sha256": "c313383b404a6ed622b3ff411f37f5225364f2158621f620e9ef76c15c209132",
+      "bytes": 54325
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/ribbed-steel-height.png": {
+      "sha256": "4e94d1541a801955f2103f9541b948b504daecba5b35a95837810d970cbbd141",
+      "bytes": 168076
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/ribbed-steel-normal.png": {
+      "sha256": "8662617c557392b63c6b061f957facfd116e5b87534884060fbde87f388388e5",
+      "bytes": 201913
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/ribbed-steel-roughness.png": {
+      "sha256": "5b5c681b84e6cd3b4fc58e5bdb2c46f308811e6b229c026b54f73c89f601e745",
+      "bytes": 56818
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/ribbed-steel-wear.png": {
+      "sha256": "0d0f309f7c024cfd3ed4bac4f67c707d1c082415452285b8601fb2ad8b5528b3",
+      "bytes": 184760
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/road-gravel-albedo.png": {
+      "sha256": "f77b90d9fb817255b277af4bf92e74dcf7abcfb4707c732894b9c8dde646cfd5",
+      "bytes": 148732
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/road-gravel-height.png": {
+      "sha256": "816da3d1b16bc3f72fdc523c56c2f7b4d2007f95b3b293f37e98e114171ca20e",
+      "bytes": 307378
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/road-gravel-normal.png": {
+      "sha256": "c3d82758149ccc852f5a4e2edd3b18a5f20ac6cd05efe81696f4cbefc0f93662",
+      "bytes": 654366
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/road-gravel-roughness.png": {
+      "sha256": "bd952f92790bacb6ccabf12a2ff948b7950f082994d8353cdca9c17ca48b6a60",
+      "bytes": 112361
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/road-gravel-wear.png": {
+      "sha256": "b11d4ae960187e46dfb95ba5a16df065dce02918fe6bfee4d12e18984094af68",
+      "bytes": 285273
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/salt-limestone-albedo.png": {
+      "sha256": "6bc2e95ea14074fed620bfcf9fb61bff4c4336747c062ce17f9d2b1108ae6042",
+      "bytes": 111688
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/salt-limestone-height.png": {
+      "sha256": "5fe7cf7b8bb1014ccd842b7a5506259d9f4dcabf6bbb5d922abc8c0fbb066460",
+      "bytes": 218439
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/salt-limestone-normal.png": {
+      "sha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+      "bytes": 485273
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/salt-limestone-roughness.png": {
+      "sha256": "d3a83a3eab2cdd5ef13cbd28e30fadb1c76ca11278996720304800db3d59da8a",
+      "bytes": 66022
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/salt-limestone-wear.png": {
+      "sha256": "af06915c8e4808f65fb6a29baee4c580fbdc4d5cee98b6d530739bc4aaafbcfc",
+      "bytes": 197473
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/sea-flow-albedo.png": {
+      "sha256": "bdfff1fc22d9bb826fcb446f1a3e590378c07bc2e516ea76891e425931cdd62d",
+      "bytes": 47212
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/sea-flow-height.png": {
+      "sha256": "12b21871f8b113aba2c2cd5b5ec651245835f83c32b2a8c1cacb2516d7ecb050",
+      "bytes": 157772
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/sea-flow-normal.png": {
+      "sha256": "538eb118742f2855b415e8d65b05b418a43fc8c2c865bf710105c8d7d6930b34",
+      "bytes": 87158
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/sea-flow-roughness.png": {
+      "sha256": "9189de1ddbd9f351027ff022ce6cbd5b8d71ad81fd485794d9778c83351bf889",
+      "bytes": 44959
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/sea-flow-wear.png": {
+      "sha256": "55eccf6b63ebe66d615f8d8ee64e14911da19993189829ebbe2452169482b0f3",
+      "bytes": 142200
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/shopfront-opaque-albedo.png": {
+      "sha256": "d9cc90c501010e024f3d376f72a15bc16abd30d3b6aff97c52d5f09fe2e755a2",
+      "bytes": 26076
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/shopfront-opaque-height.png": {
+      "sha256": "04688855a5f0fb576d3f2d41aa54c885db1c8844de3192d5c4370a8e2927d6d7",
+      "bytes": 125267
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/shopfront-opaque-normal.png": {
+      "sha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+      "bytes": 133720
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/shopfront-opaque-roughness.png": {
+      "sha256": "3ae0f36b5aa243e5eed67ba53e126179f59e30485be414b434814e3cfffc004a",
+      "bytes": 38183
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/shopfront-opaque-wear.png": {
+      "sha256": "0b39e91fed9d805eb50ef2007a3e33aca1d0ab03c3a507daf5075a0f6f588370",
+      "bytes": 121199
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/slate-shingle-albedo.png": {
+      "sha256": "4ab99b80aad48b6e5be03b7382ebd8c393cf7c2970cce20cab0d2099f812e82f",
+      "bytes": 56791
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/slate-shingle-height.png": {
+      "sha256": "42256c07dc3adcc83da5550b9231c7760185ed5f07f6f3389aca99ba3aa61737",
+      "bytes": 140300
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/slate-shingle-normal.png": {
+      "sha256": "b9ed311dfd009e04771060ed8a06a053a53c83da7aaac3cd44a6f50dc3d598f4",
+      "bytes": 182277
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/slate-shingle-roughness.png": {
+      "sha256": "90c1aeac8dfd3722036f8495ffd3969d4be24c7e6de82f5872c43f62b861b3fc",
+      "bytes": 40609
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/slate-shingle-wear.png": {
+      "sha256": "968cb993fa063c6a491a655bd9cd516148c127c035a7a14e845a8af214fa1c42",
+      "bytes": 129864
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/terracotta-albedo.png": {
+      "sha256": "e7cbef47acd9d54c61f57123824f477af4b0d42c17fdd514d0ad3fb185ae46a3",
+      "bytes": 56374
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/terracotta-height.png": {
+      "sha256": "7a2194601cf3e88a0d9304064505a115df7d27c355958b215d6af4e76c39edf7",
+      "bytes": 129716
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/terracotta-normal.png": {
+      "sha256": "a82b4af6b637ecd74953a0f4af261acc637eab255e80f6117a231f5d0b564ca5",
+      "bytes": 174659
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/terracotta-roughness.png": {
+      "sha256": "026e41ba5a566ab71f09ed19a6699c53442aaa2b569b32a0f61f1a2a7dd8fd16",
+      "bytes": 38483
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/terracotta-wear.png": {
+      "sha256": "8bdf4bead99463ab169a4b54b9ec9cb1ea6d1d9b4c0091e55a5a25eea11ac47d",
+      "bytes": 122404
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/timber-weather-albedo.png": {
+      "sha256": "032a68abe43f766ae98ab81b1a3a2acbe807d0a0313f55fdb82531cb12312310",
+      "bytes": 91531
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/timber-weather-height.png": {
+      "sha256": "09499536a7af41e1099e8610999b988e251cb89d67a1540c809314e955db392a",
+      "bytes": 221799
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/timber-weather-normal.png": {
+      "sha256": "7a8f4b78d0c25eddb4def652c706110b27dceef69d8ff3c48f343abf41bd1a5b",
+      "bytes": 183882
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/timber-weather-roughness.png": {
+      "sha256": "2d6e17973056f23f1f08ae580345558330cdd44b2de2727d4b8482cc171ecec5",
+      "bytes": 59977
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/timber-weather-wear.png": {
+      "sha256": "c1987c6569cafbbc8d8cb9ea263554cdb91c54768d0bf61fa117916e147acaad",
+      "bytes": 197484
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/trim-wear-albedo.png": {
+      "sha256": "3fb928bcb4dda60fb10b5a874e4b8e1ff1fa5cfcb8dd79de0321827abcb64b5c",
+      "bytes": 53392
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/trim-wear-height.png": {
+      "sha256": "e083c7f21b842df01993648c5a432c95713677270324c27d8ad9c35cc0d0ee60",
+      "bytes": 126585
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/trim-wear-normal.png": {
+      "sha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+      "bytes": 131879
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/trim-wear-roughness.png": {
+      "sha256": "e1ad3d9376571e1bf01573c4d9aa5dad04bcbff53832675c412e064218a22233",
+      "bytes": 26738
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/trim-wear-wear.png": {
+      "sha256": "6732d48ba5ac2053f79d9aed270c156f7e8e2875a561e7d7c1f463f224f8022e",
+      "bytes": 92133
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/viaduct-asphalt-albedo.png": {
+      "sha256": "9365b6b832ba39226bcc2980d704bc7dc9c72400847343ce18ed4bb33980f443",
+      "bytes": 107631
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/viaduct-asphalt-height.png": {
+      "sha256": "481933fbd0d499cfb6524747b1fc44d4ab7c33c0b81c4f5609dad042fd151a43",
+      "bytes": 281895
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/viaduct-asphalt-normal.png": {
+      "sha256": "697fd7497a1d8875dbcc834561ca4c7a313e45f831df0b6c63ff117106a92f87",
+      "bytes": 362575
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/viaduct-asphalt-roughness.png": {
+      "sha256": "ae1487542085ec7966f6d39e48d648611d623d930d487b831d9ffd20ecc9fa85",
+      "bytes": 100851
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/viaduct-asphalt-wear.png": {
+      "sha256": "6eff97a972c0bddaa86a97ce8a2126aa07da772c09786b92d5984fc0613a1bf7",
+      "bytes": 261000
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/wet-soot-albedo.png": {
+      "sha256": "73c40e38d7b632a4013a0b0d55ef7771c804eb7cab3ac47276b4be6a6b7e896e",
+      "bytes": 57658
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/wet-soot-height.png": {
+      "sha256": "f8debb12457890a1cce42925424fca1e79d6583ec3252400bd15f6f4426fa388",
+      "bytes": 185788
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/wet-soot-normal.png": {
+      "sha256": "721cb3b4c8f5fd59869d86a99326ef5a0f4a6deddd98bbc78c3b56ed561fa3e1",
+      "bytes": 87738
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/wet-soot-roughness.png": {
+      "sha256": "ef9248fa928c5231bbdae003d4e5a1f6d8571d0824cceafb8a81e04e6ad2b5d2",
+      "bytes": 61724
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/textures/wet-soot-wear.png": {
+      "sha256": "4d8906167f9f1471992b68afd8eda54d233dc2c816d08830b1cd46c8c574436d",
+      "bytes": 193679
+    },
+    "assets/moth/map-variety-20261003/candidate-v2/verification.json": {
+      "sha256": "54d1d56faca095d47ed9165d20289a8e234d26f2a38186fea16a33b810fe2e5f",
+      "bytes": 8040
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/auxiliary/instrument-lut-3-body/R_lut.exr": {
+      "sha256": "021bf6d492c413d5e3a8b8ec6415a6b3387461f8cc389a85fb46c42224026e7b",
+      "bytes": 1431
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/auxiliary/instrument-lut-3-body/R_lut.hdr": {
+      "sha256": "72c321ea326c583ae11384dc6a0afe0e6a7f911c0bd1dbd85066fe1eb921f2ee",
+      "bytes": 1071
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/auxiliary/instrument-lut-3-body/T_lut.exr": {
+      "sha256": "96dcf65710e0410b754078bfd4174dc98da05c2e6ddd20d2bc1aeee260b41ec9",
+      "bytes": 1432
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/auxiliary/instrument-lut-3-body/T_lut.hdr": {
+      "sha256": "481d069013cab9e71a861a65434463cc2322b2edd372d5a86fe974c2027a3754",
+      "bytes": 1071
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/auxiliary/instrument-lut-3-body/entanglement_texture.glsl": {
+      "sha256": "4ac8acd83bc038116a8b9dbeb7e257487e3149c6a505291eedf5142da1e0b930",
+      "bytes": 2692
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/auxiliary/instrument-lut-3-body/entanglement_texture.mtlx": {
+      "sha256": "6d1e29c4f9c8a438afb48a6dad3ceac65193ea135599bfb0d2d50933faeb5f7f",
+      "bytes": 9912
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/auxiliary/instrument-lut-3-body/entanglement_texture.osl": {
+      "sha256": "b0eac275a275dc11fa03e5d8cdf5b9accf6c44e1752f25db31648046ef97f0aa",
+      "bytes": 2900
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/auxiliary/instrument-lut-frustrated/R_lut.exr": {
+      "sha256": "9e77fe05912bf4a22f1380facdbb181559b74444b5d7aa4a00e141b3f906b44c",
+      "bytes": 1433
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/auxiliary/instrument-lut-frustrated/R_lut.hdr": {
+      "sha256": "e44842c62d4ea7ff172aae71890f78b7917cd304a4dfd25bfbd9f2f972ee8685",
+      "bytes": 1071
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/auxiliary/instrument-lut-frustrated/T_lut.exr": {
+      "sha256": "4ffeb6bc7472923631914f5144818d23e204f92aa4cccceff80c3f33640941b3",
+      "bytes": 1431
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/auxiliary/instrument-lut-frustrated/T_lut.hdr": {
+      "sha256": "ec7866022d204856dced25661b18b82cdc575acc8a7fee0352910120b8a7930c",
+      "bytes": 1071
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/auxiliary/instrument-lut-frustrated/entanglement_texture.glsl": {
+      "sha256": "4ac8acd83bc038116a8b9dbeb7e257487e3149c6a505291eedf5142da1e0b930",
+      "bytes": 2692
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/auxiliary/instrument-lut-frustrated/entanglement_texture.mtlx": {
+      "sha256": "6d1e29c4f9c8a438afb48a6dad3ceac65193ea135599bfb0d2d50933faeb5f7f",
+      "bytes": 9912
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/auxiliary/instrument-lut-frustrated/entanglement_texture.osl": {
+      "sha256": "b0eac275a275dc11fa03e5d8cdf5b9accf6c44e1752f25db31648046ef97f0aa",
+      "bytes": 2900
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/auxiliary/moss-lichen-qpixl.png": {
+      "sha256": "9ffb8ec4ee41e569e83f6973b4b7d61a584218a88f519f7f4cd32b21e8ee591a",
+      "bytes": 160380
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/auxiliary/quay-waterline-qpixl.png": {
+      "sha256": "eb7a3eff35101ac3f1f319477452ca8afe14c09b2ffea64f18465aea36d1a2e4",
+      "bytes": 38349
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/contact-albedo.png": {
+      "sha256": "841571109b38968f801698544ea95c3ca6af083cdaa36199996bd7bde81aa1ad",
+      "bytes": 113776
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/contact-normal.png": {
+      "sha256": "836deabf19f41ad801e136662eafa9c3cb1c42d11401784eeca7af1b72b06b88",
+      "bytes": 168016
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/contact-tiled.png": {
+      "sha256": "ffb20f9a58945671b1c96c8817993919ebec3c956fbf2cfa74e6c6525ff54d8e",
+      "bytes": 72554
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/manifest.json": {
+      "sha256": "86beb51736bea315b2bb35cd7772aff2daec7a1317b13c1eb498c981f2e8c5f0",
+      "bytes": 35895
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/copper-heat-oxide-albedo.png": {
+      "sha256": "61a16476395dd0cc066dd56f0fdf2fff03e29cb21db4831a885f72266035c873",
+      "bytes": 107900
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/copper-heat-oxide-height.png": {
+      "sha256": "ed0146bba305a5861e28b7516dc5d612906fd028cc79d7de59d4f130cc58df13",
+      "bytes": 214589
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/copper-heat-oxide-normal.png": {
+      "sha256": "0ab51bd3acd084e63b9461946a0877cc6b3d9133741b8237f6ae0565b2d850f3",
+      "bytes": 206566
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/copper-heat-oxide-roughness.png": {
+      "sha256": "d748665e7377609ee92e669c8d4e0d80842d526ae89f2bb3b7bbc7ed227a9794",
+      "bytes": 63200
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/copper-heat-oxide-wear.png": {
+      "sha256": "db4d574d2723df839998eb402471e642cb697252998db525937488a09e30b3c5",
+      "bytes": 190183
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/etched-coating-haze-albedo.png": {
+      "sha256": "1f8c094d8076b8d5fa311429fdea69244b3191281bee2bf578ef6546932db9a0",
+      "bytes": 87413
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/etched-coating-haze-height.png": {
+      "sha256": "5e8edbde1dec0b0dffa3f64e5c2231941d9cbdc1d958ae40654f69fbd64b3749",
+      "bytes": 195625
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/etched-coating-haze-normal.png": {
+      "sha256": "d89e3a00bc065b6416942305ec7a1dea4dc35e255a16a33202ac7d4b8dd65bb8",
+      "bytes": 152458
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/etched-coating-haze-roughness.png": {
+      "sha256": "533f8c142bf3b24cdf74046e8e2dbfffbfe6ad4b75e8239bddd085761d25d43a",
+      "bytes": 63457
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/etched-coating-haze-wear.png": {
+      "sha256": "c098e44fcba2e7f5209bb7733375d7a88cbf8ae357fb32affc282717452c051f",
+      "bytes": 183360
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/moss-warm-weather-albedo.png": {
+      "sha256": "8d23a9b4819d14969f3dfb20697c1fbb91e643f0aa3d030e12a238ed94a863a9",
+      "bytes": 113133
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/moss-warm-weather-height.png": {
+      "sha256": "6b00bf29c301226fa1c9dacfbd3f2a7d41cc8f69acf691ee8c855bc20a0e2026",
+      "bytes": 197961
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/moss-warm-weather-normal.png": {
+      "sha256": "b7051d968859c381dced9cfcb07c441bd1172e9d8ef133d689289e908f22958f",
+      "bytes": 355747
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/moss-warm-weather-roughness.png": {
+      "sha256": "9f4e9ec198900ed662603a77e599c10583d0d1a0d3a88825064d3d23308187e7",
+      "bytes": 61128
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/moss-warm-weather-wear.png": {
+      "sha256": "d412b9085918bfb6b9cce994e3270e1c9c431a2a7446c452529c9cae28f81933",
+      "bytes": 188049
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/quay-damp-horizontal-albedo.png": {
+      "sha256": "ad513e70a510af1b272e324130dd3ab204119488cce229d807528e1a7e258310",
+      "bytes": 55303
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/quay-damp-horizontal-height.png": {
+      "sha256": "9c53bedc61fcc071b968f7fb3697676ec907a3b00c2b76f4bcba277890e3d6dc",
+      "bytes": 95339
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/quay-damp-horizontal-normal.png": {
+      "sha256": "833f87b0e6ab7e864e928c18a32a16edbe868c59d77fe29b34606a2043f1f75e",
+      "bytes": 36065
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/quay-damp-horizontal-roughness.png": {
+      "sha256": "233747c5bf6a8beaa585d851326ce0caf7f5277f6729eef67d3ed10ec17647bc",
+      "bytes": 22023
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/textures/quay-damp-horizontal-wear.png": {
+      "sha256": "c14998dfa67e3bb91f69947d8e55911e9108e8601f1690b1763655de5bb9406a",
+      "bytes": 79677
+    },
+    "assets/moth/map-variety-20261003/candidate-v3/verification.json": {
+      "sha256": "abfa572853a3bf27d6779c359fec1150b2d2be6f789e8b2df6c114e6a00c90a0",
+      "bytes": 635
+    },
+    "assets/moth/map-variety-20261003/candidate/contact-albedo.png": {
+      "sha256": "74c0c0bca9eff64b97b9866f56488e9e56c028247979912f2c4f5043ff4afe7b",
+      "bytes": 756563
+    },
+    "assets/moth/map-variety-20261003/candidate/contact-masks.png": {
+      "sha256": "2a3061002f9f7251c8c18da1827bc44d6ca9a85dec36d667c987cd5ce092d351",
+      "bytes": 962263
+    },
+    "assets/moth/map-variety-20261003/candidate/contact-normal.png": {
+      "sha256": "52da5f15ad26ca77ae39a1ede7da5e67785eb4beea86c83fa1a0c1485f37f6af",
+      "bytes": 1450381
+    },
+    "assets/moth/map-variety-20261003/candidate/contact-tiled.png": {
+      "sha256": "35c9ad75a9011100215a55209c86b2d18107c0c84e4c2a90f3283f3c4d9ac9a4",
+      "bytes": 964449
+    },
+    "assets/moth/map-variety-20261003/candidate/manifest.json": {
+      "sha256": "0dca88c348607d8a9e24e6f8d9b6d7b76d2b5a136c164d86ac75900ca2d40689",
+      "bytes": 187365
+    },
+    "assets/moth/map-variety-20261003/candidate/quality.json": {
+      "sha256": "2f2ff8f7b80c523f0c62c5e507620c9d00e03a04dbde89a3a9a885df1385b9cc",
+      "bytes": 277363
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/aggregate-height.png": {
+      "sha256": "17e479b40763227594b41511aa2fc683d9609f5c930591482f5ae11a80423a28",
+      "bytes": 12755
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/aggregate-mask.png": {
+      "sha256": "bf5a819c091eb6af22fc2f9c41746e9485e01ad922fd56e71ae9128a60663149",
+      "bytes": 11640
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/anodized-brush-height.png": {
+      "sha256": "97ce70625ad85403b624f71907868937080dff5a8b7e8c7b3de352505efaa801",
+      "bytes": 15846
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/anodized-brush-mask.png": {
+      "sha256": "800caa36d9ce5258ce927d0bf54fb1390de9cd549cb35f7b0ef3e3d5a5b93bee",
+      "bytes": 11578
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/bark-fibers-height.png": {
+      "sha256": "06fffdb673f10c0e7b082da591fc0e684a302f06c083df519b43ae6e5e53ef38",
+      "bytes": 18520
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/bark-fibers-mask.png": {
+      "sha256": "e1613f3292d70af516db62d949b4b40c35cd3ceffac48183ebe6b384fd93183a",
+      "bytes": 15092
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/basalt-strata-height.png": {
+      "sha256": "bcb5993d3e35a70c5b265b4559a29a3bf8168a9ffd7c2b5c5d6f8ddadf586b50",
+      "bytes": 15172
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/basalt-strata-mask.png": {
+      "sha256": "ca8b5e9380cccd84f4cfe7c01e7d922d567cd40c76a3cf27e0c9db378220a909",
+      "bytes": 14709
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/cast-seams-height.png": {
+      "sha256": "d0d68b598e7f5cb8f6694beb5380866c05d6eb695c47076852dbb3ff407da8b5",
+      "bytes": 12848
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/cast-seams-mask.png": {
+      "sha256": "44dc085b115c491272ffa16b1eee7e10ea29d0f14a97e4773b4ef7833149ffd6",
+      "bytes": 10315
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/ceramic-enamel-height.png": {
+      "sha256": "8a4d03bdb955a2687ce1577a3fd96cc7257914db783a5048c4564fb0dabcc311",
+      "bytes": 11696
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/ceramic-enamel-mask.png": {
+      "sha256": "e8cd8a85123305c1fd365290e464842f82932e6e5cb22db0393b07d160eb59aa",
+      "bytes": 15520
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/cobble-sett-height.png": {
+      "sha256": "209eca8f5b80fe96c10c94edabf2eb8a7b763f4188e286573d0194bccd068595",
+      "bytes": 14987
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/cobble-sett-mask.png": {
+      "sha256": "445e911481802f0dfd9acf84e18cddaf7b4cf3dd7bef880feaf6ff5603d6fa05",
+      "bytes": 16602
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/copper-patina-height.png": {
+      "sha256": "0926a84399fdc8ece33fbd0fa0d7a493b4a96d09741154a040161f505ba03d4b",
+      "bytes": 18402
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/copper-patina-mask.png": {
+      "sha256": "0e4c3a0163cbe5cf554dceb0e06078c6f7204060992d080a437e865c5e89d225",
+      "bytes": 14611
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/decal-stencil-height.png": {
+      "sha256": "836e8da87dd9251d4193a29933f69b1b18f15b7511bf8455f727f00f95b9922b",
+      "bytes": 10295
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/decal-stencil-mask.png": {
+      "sha256": "506d4dcc127d4ac8fe6a137e3b7e1df1e24b69fc5d122068694b53d8a9d3e12c",
+      "bytes": 5154
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/deep-silt-height.png": {
+      "sha256": "c2e736eb2a061280c7d97c6cd2121dd9aaf0579030370de056944ea85cd69559",
+      "bytes": 14040
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/deep-silt-mask.png": {
+      "sha256": "de9c78cad72c8cd1dbcec876cf17fe2222501e3736620c49e8ee2098c2518a21",
+      "bytes": 14891
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/dune-sand-height.png": {
+      "sha256": "0a1f1f7b1d58269b0d823709a576baa6c5648ebbfe511c5522fd236204a2f039",
+      "bytes": 19430
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/dune-sand-mask.png": {
+      "sha256": "1548ac36641efe514662d55ec580d6ce270d82681f5bf384a61693af87bc4264",
+      "bytes": 14613
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/fern-frond-height.png": {
+      "sha256": "6ff9cfcb00d570838651fc2fde7162aaa237757cb97209be20cfd5a03dc59185",
+      "bytes": 11931
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/fern-frond-mask.png": {
+      "sha256": "d9ba4212780651a9977811d2d9a5e6ec337ca6e84280b8b777b6cd514e818377",
+      "bytes": 1707
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/frosted-glass-height.png": {
+      "sha256": "2be1bb187861e922efe1cd64976d4d545270947ae48f1a92c5c4eaba76f5ac02",
+      "bytes": 20348
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/frosted-glass-mask.png": {
+      "sha256": "2fa448e25713c632447f53b32dd3551b0da1472157fc12489fb215ac59173687",
+      "bytes": 18253
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/iron-grate-height.png": {
+      "sha256": "4425a1511e26e4a81aab566a181aa52a70a03dde49d6a5bd1e28af896f627456",
+      "bytes": 15206
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/iron-grate-mask.png": {
+      "sha256": "7e3629b045605003cbcc87ae1f8c30d9627a047c425fceba6cec2d81e19b19c8",
+      "bytes": 510
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/leaf-veins-height.png": {
+      "sha256": "a1040a7444c120a1686260a23c3f574053fb9ef932b5e4f821c63ce154b391e6",
+      "bytes": 12554
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/leaf-veins-mask.png": {
+      "sha256": "4bea7c035943bb8932b62d5eb6fb53715992fb824cb373560ebca5c77ed35d50",
+      "bytes": 13996
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/lime-plaster-height.png": {
+      "sha256": "a7437af37f72f22161a7ba7408d90d9fcdbe519938b766d2fa1a3f25cc934e75",
+      "bytes": 17108
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/lime-plaster-mask.png": {
+      "sha256": "93595b6f240b8db1791cb4c8aa155f2bfbbd4d6bb2849ce20412de0686ff7389",
+      "bytes": 15585
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/moss-lichen-height.png": {
+      "sha256": "6875c3175139f4ecbe6a86be6663759ab9062b0558d3f8064c2cb470575fe954",
+      "bytes": 20704
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/moss-lichen-mask.png": {
+      "sha256": "69dad165857beca7faf6d2ce10a6db51f8f0ee1288541776579287768fc04494",
+      "bytes": 15120
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/oxidized-iron-height.png": {
+      "sha256": "7ba20ca78d193926b88147ce48ad6d1e29ac5f9cb7db5e1195235b0f23fb1f97",
+      "bytes": 18656
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/oxidized-iron-mask.png": {
+      "sha256": "f9061ed3edf0c9c75e76db21adab4faa7a354c9b82efe2886c8b0a591dbcb2ba",
+      "bytes": 13548
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/prismatic-etch-height.png": {
+      "sha256": "febf6c303aea4aa1c8f440285a24b4084ab31381df81ea5e0a0edb166d2e69f0",
+      "bytes": 14171
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/prismatic-etch-mask.png": {
+      "sha256": "c02383c3eb8d6a198e16f3c25a6b9782538ed4c9410f30b0811c4d6dbfa8a293",
+      "bytes": 14446
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/quay-waterline-height.png": {
+      "sha256": "0978e184cbb514b7a848e82a48918b357f52466e219bc07fa4d9609055e3e410",
+      "bytes": 13037
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/quay-waterline-mask.png": {
+      "sha256": "d885bd919396db52112958b9d7f35c3268910da46a40393fd915fed8e0febae3",
+      "bytes": 4893
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/ribbed-steel-height.png": {
+      "sha256": "2a02ee905d597cc17093d22b5b9f1a1d043157dd75c5553b87051b13b99ec439",
+      "bytes": 16815
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/ribbed-steel-mask.png": {
+      "sha256": "49c25e0ff6bcefaf86cb0697f8e081a5db42f07541f09745d97c931bdae97eaf",
+      "bytes": 15686
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/road-gravel-height.png": {
+      "sha256": "3cb394ba1f980ec2694eab3ef5346b5a506595fb840d99d1b0935a5b0f72334b",
+      "bytes": 22855
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/road-gravel-mask.png": {
+      "sha256": "e6f0c18a1af669c63afbed2c178543fc25c030e56f534fabb765e96fec5885ea",
+      "bytes": 17470
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/salt-limestone-height.png": {
+      "sha256": "a2ed5ee6f605edca2f6517bbe2c5fbcdda159883cc431b4870b18fc0b6695932",
+      "bytes": 18254
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/salt-limestone-mask.png": {
+      "sha256": "fa3359069bace7f26d05031d1d1b1e3d91fe258fb1e4ed14153e3a3432b989cf",
+      "bytes": 15606
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/sea-flow-height.png": {
+      "sha256": "005e7c50f9f76b9f08b60b182b21b416f985f5b42f3a3c794b99070f145c5f70",
+      "bytes": 15782
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/sea-flow-mask.png": {
+      "sha256": "fe4d8e57fe7d81f2cbe720d09b2521c1ee9cbed7a83a5d5a025138fc0a150575",
+      "bytes": 13907
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/slate-shingle-height.png": {
+      "sha256": "08029b1779ddc8ec3d76ee0988a0efdf749751d3a7817b2b2c536c4f9891e114",
+      "bytes": 14458
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/slate-shingle-mask.png": {
+      "sha256": "3323a33fe3085f8380ef7e3f2eac26c16e8977721dd99fab1061759f0e152907",
+      "bytes": 13899
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/terracotta-height.png": {
+      "sha256": "fd96dcc00ea147faa831b4873cd5278d99c0f0329f6f051348ecdf0d56ffd7d7",
+      "bytes": 10579
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/terracotta-mask.png": {
+      "sha256": "7baf7bf609dd235cd5bac0ec73778d786525d29a8a2822bd0f15f60b09c42711",
+      "bytes": 13302
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/timber-weather-height.png": {
+      "sha256": "71ccab189503b58c921dd4365465e9979656ec9c1167cbd877a5438d12d00103",
+      "bytes": 20017
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/timber-weather-mask.png": {
+      "sha256": "c1ea4890aefbbd989b1225e0d0867304fda0292f72f35723f0dad54c3ed452d6",
+      "bytes": 14693
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/trim-wear-height.png": {
+      "sha256": "c6de1ba4717f9156cb0cfed515af9283d61aaf4115f9534ef9b6cf0d7560dd9a",
+      "bytes": 14557
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/trim-wear-mask.png": {
+      "sha256": "48304df90ea36c87374ffcc13a623b55537eb4fc10dbad9a0d51ab985e4c7e64",
+      "bytes": 4080
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/viaduct-asphalt-height.png": {
+      "sha256": "05a1e717cf551482d9246681ece5d40f6be2035d446f9ee61916229edd904e1c",
+      "bytes": 21467
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/viaduct-asphalt-mask.png": {
+      "sha256": "87548df8082bb36f89398d43422e416827272291c10b8181248c36521fc6f364",
+      "bytes": 17086
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/wet-soot-height.png": {
+      "sha256": "78f9ccc823bb1dfa8c248c2d45265e9040aa5cf77b33e9877acb029448d2a103",
+      "bytes": 17171
+    },
+    "assets/moth/map-variety-20261003/candidate/sources/wet-soot-mask.png": {
+      "sha256": "88f89d4abd4c7195592b8f4b6b6e439e11ddb356da72f5b7be4cbd5f69ae2d9e",
+      "bytes": 19350
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/aggregate-albedo.png": {
+      "sha256": "1a0fccc16edd8ecc4825d47f59eadd477b0861606aa31af7642a9b177877f4e4",
+      "bytes": 51789
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/aggregate-height.png": {
+      "sha256": "26915fe7f778b770a40c736f324e63df72b72e787b784f6d5a6975343cf77502",
+      "bytes": 126894
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/aggregate-normal.png": {
+      "sha256": "61baadb1991cdc3ab47e1f025672c06f9e6f601c0d56552dee34da3e0f8444a4",
+      "bytes": 119069
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/aggregate-roughness.png": {
+      "sha256": "a33f12b68d468f75a8823818da8320d64c1a27c339f71dc26a5a16d7d2a47cff",
+      "bytes": 35417
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/aggregate-wear.png": {
+      "sha256": "2b27922cbecdf4cd20dbaba6f3f74669a3107e019240f62f215560b3e765272f",
+      "bytes": 115422
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/anodized-brush-albedo.png": {
+      "sha256": "546b79c3ea42891134e3a73314c5c68de471580380e2dd2fb58d8f753980c978",
+      "bytes": 96504
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/anodized-brush-height.png": {
+      "sha256": "baf7c84096be28d95a65510a2760ebf303c4d0f3059d101179cddf56aba82114",
+      "bytes": 255921
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/anodized-brush-normal.png": {
+      "sha256": "625d9b549cc08fa1c81ad96ccd5418bfd7ded2727a925891d6034a01c2e35ce6",
+      "bytes": 236300
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/anodized-brush-roughness.png": {
+      "sha256": "46948ddc79f78c0ca8d909996fb1f72f899b80f53007ea6363f6ecfe2ccf9a6e",
+      "bytes": 86625
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/anodized-brush-wear.png": {
+      "sha256": "ae309da5656043a87c18deb25539c42ebe0df17a3b70cf9b7d736a41a5eb28f3",
+      "bytes": 243523
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/bark-fibers-albedo.png": {
+      "sha256": "be0211f29a3b4d0d5f8c401d6bf68d0e8d25052092c569fefde6524a79899fa7",
+      "bytes": 69697
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/bark-fibers-height.png": {
+      "sha256": "6012f83025a2187b02708507d773458bc5bbd0868f946f6737fc67e59f06372f",
+      "bytes": 189240
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/bark-fibers-normal.png": {
+      "sha256": "eb7687cc095b294658f7d1171dca8758eb2c4af20e71d5caa04f0cc3ce08bd68",
+      "bytes": 441055
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/bark-fibers-roughness.png": {
+      "sha256": "1527f27f53a868e9c3af107e6bf89e9f27ed784547603dc4aadc1575f3f84189",
+      "bytes": 57754
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/bark-fibers-wear.png": {
+      "sha256": "717fefd3db916e91a01ccb16dadf52d5abc973d0325f1f3f5a1e671d377afe56",
+      "bytes": 176917
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/basalt-strata-albedo.png": {
+      "sha256": "4867e58d57d8291ef30925a147d62515d08139e9301e5b8d337c8c2c716a10e7",
+      "bytes": 97122
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/basalt-strata-height.png": {
+      "sha256": "8cb5d3e84114dc16791f2b66532ada42259fd57583ffce1f00ba07fbcbe948df",
+      "bytes": 232267
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/basalt-strata-normal.png": {
+      "sha256": "458809d6771fc4981d7685458916604383eb0cd5d0337ed25d98f310c94ea91c",
+      "bytes": 743539
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/basalt-strata-roughness.png": {
+      "sha256": "5304b885a63b2eb2dcf076ac6b32efb7e4d67aaea135bb781d22838b4ebe9016",
+      "bytes": 84098
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/basalt-strata-wear.png": {
+      "sha256": "1367169f9a104bc99ad7da8dfbc116635cb0606919cba1d4f3aeaa46565d5d5b",
+      "bytes": 233727
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/cast-seams-albedo.png": {
+      "sha256": "8947904f5f4041c4a96e7b43d2dfc5d74ec9213865328e7fb1d936707fb9ab5d",
+      "bytes": 98952
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/cast-seams-height.png": {
+      "sha256": "007719c55e162a3fe31b9b28968d85b8347a60bf21b86070fbc3a6d376da2b29",
+      "bytes": 255428
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/cast-seams-normal.png": {
+      "sha256": "80e7890c778ffafaa8273c1295561d3b2449cd6fb99289220b467a73e596579f",
+      "bytes": 587428
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/cast-seams-roughness.png": {
+      "sha256": "93e696dfa6f9e223f13e99cf41c376476ca656d59450926f1f7cbf4d06f07b9f",
+      "bytes": 81573
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/cast-seams-wear.png": {
+      "sha256": "4ebdca860faf77f57280cd8b912167e9e48e2dea1d91679e362f2735a99d12db",
+      "bytes": 233732
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/ceramic-enamel-albedo.png": {
+      "sha256": "c8dfce6416c2b9eb145c63470331f6749e0338527fcb3045dfef15b435062702",
+      "bytes": 52319
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/ceramic-enamel-height.png": {
+      "sha256": "04688855a5f0fb576d3f2d41aa54c885db1c8844de3192d5c4370a8e2927d6d7",
+      "bytes": 125267
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/ceramic-enamel-normal.png": {
+      "sha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+      "bytes": 133720
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/ceramic-enamel-roughness.png": {
+      "sha256": "2c63bee56ac7600342fd93f52ed17aa5d096b4e5c1d659168bd5d0586ae1afc5",
+      "bytes": 38379
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/ceramic-enamel-wear.png": {
+      "sha256": "0b39e91fed9d805eb50ef2007a3e33aca1d0ab03c3a507daf5075a0f6f588370",
+      "bytes": 121199
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/cobble-sett-albedo.png": {
+      "sha256": "156b3dd99c2ee631377377cc7dbf522eaf95e447f096c4999d864e76c0830379",
+      "bytes": 138043
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/cobble-sett-height.png": {
+      "sha256": "ad5785496360f874ba9d6db4a81501ceb0b9f9926af985efda5a270342469fbc",
+      "bytes": 248912
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/cobble-sett-normal.png": {
+      "sha256": "a45948f4d07014a9c850e0a5ca591d8fda62ae0f1a2f48017ed1682992b80af6",
+      "bytes": 685850
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/cobble-sett-roughness.png": {
+      "sha256": "b34fe398eb2f268fdced7d3430372cb16393bd975a797bfbb8078cb7b65f8ba3",
+      "bytes": 89826
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/cobble-sett-wear.png": {
+      "sha256": "7a8dc684af404c66a2e71e6445bad8350e4e7c77c583e04bb2d03ddb2b82ba43",
+      "bytes": 248504
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/copper-patina-albedo.png": {
+      "sha256": "6e40da48adcdd5bb80116936154c727242dc00cb13f48b621dd9697b52732ddf",
+      "bytes": 127735
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/copper-patina-height.png": {
+      "sha256": "6a287eef8d471c848fa2c3032d5b78383bf0e5a55e83892fd4d610db2f32b93a",
+      "bytes": 254489
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/copper-patina-normal.png": {
+      "sha256": "2a5e9cb13dbc591b4e757678a0a1b2bc48096a7b32393cffa8b5de955761c061",
+      "bytes": 339167
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/copper-patina-roughness.png": {
+      "sha256": "c8cc12f3920614dbadd2e6d23f18cf99fb97d5b5d9d19bff544ae47f869a7330",
+      "bytes": 87452
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/copper-patina-wear.png": {
+      "sha256": "cc1edadbb3fefaf465b8d99cac710c751d349a1a2d43f6656728d2c3fc3f5650",
+      "bytes": 238788
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/decal-stencil-albedo.png": {
+      "sha256": "96e67566f6f07dc3329fef525d754ecacb5b0901cc73e26c88e88c6719be3fc2",
+      "bytes": 100472
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/decal-stencil-height.png": {
+      "sha256": "dfe5a6c40fd737c0a1fb0a0fefb1e9671f75e057b165263a0b774dc644db5ce9",
+      "bytes": 166931
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/decal-stencil-normal.png": {
+      "sha256": "8f945006121851c8ed49ed0d3aaf526130d2bda7b538da179e083b670b38818d",
+      "bytes": 58493
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/decal-stencil-roughness.png": {
+      "sha256": "20a620fb40eb2ca6f2dba6d3c31dd1d7c0b318fa1f69170a4c86e0ca268d2747",
+      "bytes": 51484
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/decal-stencil-wear.png": {
+      "sha256": "75477a875ec008273dd00b8559c8eda693b10bb869f701ef70d569f2e7e51a66",
+      "bytes": 156298
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/deep-silt-albedo.png": {
+      "sha256": "eede8437977b42ecd155a4b1c6d5e0cb05b69d3afcb3a05f005f0b1cc98ac980",
+      "bytes": 81717
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/deep-silt-height.png": {
+      "sha256": "ddfda42188a89d2c0c3dad1bf26e09a3b301d2889cf5ae6ca006e1aa5e50f4bc",
+      "bytes": 252258
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/deep-silt-normal.png": {
+      "sha256": "a1290b82b184d805446418102a4c67d0b0ecbfd64e06f1aa4612e96a689aceb6",
+      "bytes": 430203
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/deep-silt-roughness.png": {
+      "sha256": "ea27b5b72ee8bca659137c9ef1b42fcc31158272a13958d9c69e31b0bfc1d25c",
+      "bytes": 86284
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/deep-silt-wear.png": {
+      "sha256": "533f08a876f4fa6c6588a04762af33fe3e7ab2260726bffc473d069a7e8ebb99",
+      "bytes": 243645
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/dune-sand-albedo.png": {
+      "sha256": "4bb50bbd53b4d700a7cb913e3726140510c2659d41148c25d5d69b791606f227",
+      "bytes": 96411
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/dune-sand-height.png": {
+      "sha256": "2fa5fbe9f9ad7d4df88b79aba019bec8536f36dde32860c57801ee2de50e3c3d",
+      "bytes": 208296
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/dune-sand-normal.png": {
+      "sha256": "696fecd2413620ef5221debd9cbbab94987d82939cd1dbd17eddb5fbbd112987",
+      "bytes": 422705
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/dune-sand-roughness.png": {
+      "sha256": "afe40d68f6842a5f856c77597652c36a1e993239f1716f7fa4dffb5398422d19",
+      "bytes": 62613
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/dune-sand-wear.png": {
+      "sha256": "0706e5111d1e6c791af17bde5a64fce7811d26cb8119d67214877cc8f2a3f4e3",
+      "bytes": 184969
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/fern-frond-albedo.png": {
+      "sha256": "119ae5f9763577a24b34ab9a1244926a080973161c339f153a55c713607971af",
+      "bytes": 47311
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/fern-frond-alpha.png": {
+      "sha256": "0f61e4f6a64192a1bb638261d1bc1f888dc14d3aca862efabc81a971172a17bb",
+      "bytes": 26286
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/fern-frond-height.png": {
+      "sha256": "da36870850b2d7bbcf5eff8cc12c42588a2d15994116b9426a09384e7dabc16f",
+      "bytes": 125149
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/fern-frond-normal.png": {
+      "sha256": "d60070f0af03f33c351a6049a871fe839a6fcacc39889e9ca5b1752be2f42771",
+      "bytes": 85180
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/fern-frond-roughness.png": {
+      "sha256": "8782a50aad763eb9be831334d97507fed2b70fc93f99c1bdf9f850d16f675817",
+      "bytes": 35464
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/fern-frond-wear.png": {
+      "sha256": "af30653f07b25f99bed15e06c0039e44ebfa80d271b1380215a4c97fd60770ad",
+      "bytes": 106812
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/forge-steel-albedo.png": {
+      "sha256": "28a2f66299063c5351aeeb7cda18321ee92314ea58327a7c46f811839f32acaf",
+      "bytes": 101248
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/forge-steel-height.png": {
+      "sha256": "8fb475e6307086f76a2d0188c677bae95cf5f09298291b94df4f5e6cfa175cbb",
+      "bytes": 256186
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/forge-steel-normal.png": {
+      "sha256": "599b9f2b65adc2f123e2139f02a9d82cb35c285707babcca2a90621dd3ea6b7b",
+      "bytes": 616354
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/forge-steel-roughness.png": {
+      "sha256": "16bc3e7006072eddd07873d82e92eb39513b5dbe825a7d0ae7d615e175ed4809",
+      "bytes": 91920
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/forge-steel-wear.png": {
+      "sha256": "c9c1265f27526225653bb1dbc19fb93f1a5339a795afe1b4a49b64ca0147153d",
+      "bytes": 251968
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/frosted-glass-albedo.png": {
+      "sha256": "bfb249ce1aab01033c3cec21b56141370454499667d2926bb2fce73c2cd862c9",
+      "bytes": 110126
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/frosted-glass-height.png": {
+      "sha256": "4c0921801626a2ec94d446f2db32596775e26fd1507bb30378765aa66cf8ae6f",
+      "bytes": 255784
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/frosted-glass-normal.png": {
+      "sha256": "2d73be97dcd93087d974245aee5389579f254b2c71697a098844b9721f51fb3f",
+      "bytes": 164492
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/frosted-glass-roughness.png": {
+      "sha256": "1e0a78dc9469061ad9572a32129876b75e427dd6beeae009104a849ff9737a4f",
+      "bytes": 85699
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/frosted-glass-wear.png": {
+      "sha256": "fa2225c68cc5f146ab28c681e2c908b4c354a8f65f393a4f3ff75b506aaa20a0",
+      "bytes": 236412
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/grotto-wet-rock-albedo.png": {
+      "sha256": "2a422b94d1e66bd42b90649991c1fa29afef48ee7619ec5a85ab3d3e979ae7ea",
+      "bytes": 83813
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/grotto-wet-rock-height.png": {
+      "sha256": "8cb5d3e84114dc16791f2b66532ada42259fd57583ffce1f00ba07fbcbe948df",
+      "bytes": 232267
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/grotto-wet-rock-normal.png": {
+      "sha256": "458809d6771fc4981d7685458916604383eb0cd5d0337ed25d98f310c94ea91c",
+      "bytes": 743539
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/grotto-wet-rock-roughness.png": {
+      "sha256": "1ae024f8d0cf82c44dea209716e94b86c659704bc1c7dc2df27cb24bc62bb94b",
+      "bytes": 83966
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/grotto-wet-rock-wear.png": {
+      "sha256": "1367169f9a104bc99ad7da8dfbc116635cb0606919cba1d4f3aeaa46565d5d5b",
+      "bytes": 233727
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/iron-grate-albedo.png": {
+      "sha256": "404748eb9dbb5783dc435beb1940ce77baab7cca13bf86c3e2f6df29de62f900",
+      "bytes": 59751
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/iron-grate-height.png": {
+      "sha256": "66501236138b8d5214bb5bbf2ecc872ecbe51337e70c43af82aa7a640f3dc298",
+      "bytes": 182211
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/iron-grate-normal.png": {
+      "sha256": "ec09f5e04700822fd8640563a51ca2a8aa1bc88a568ac8ed87a1f8d2afdafaf7",
+      "bytes": 425261
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/iron-grate-roughness.png": {
+      "sha256": "ab2e42adeeee331b2269800cbdbe0082b6056a81c87d9cf25f0d676e5ed6eef9",
+      "bytes": 48710
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/iron-grate-wear.png": {
+      "sha256": "427d2249f21df53fdd8f7c18ed3a46c435d558f52e0b49f07c9d57d2d3b2faae",
+      "bytes": 158168
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/leaf-veins-albedo.png": {
+      "sha256": "fc1ad8faf83bb8c649c4a13536a83e2c84905285846ffb543ba84b549753992a",
+      "bytes": 90440
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/leaf-veins-height.png": {
+      "sha256": "2aa9ed5f7b210ba60df788f8beda2595043f2e4404bc7d2bea1dae0bb71782ac",
+      "bytes": 220269
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/leaf-veins-normal.png": {
+      "sha256": "e2112aeb5dd5f5b9c686dacdbb6d3098d81005e3b2a650f67b19016d51549c11",
+      "bytes": 290057
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/leaf-veins-roughness.png": {
+      "sha256": "a5b47511bac14db97923a1c0107e4d2ffb191afe623a717def1235ff3abddade",
+      "bytes": 79483
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/leaf-veins-wear.png": {
+      "sha256": "74634ef4064fc65608c455fa4566ed74a32172a9b5213f4fb9cae1fc265a37a0",
+      "bytes": 213328
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/lime-plaster-albedo.png": {
+      "sha256": "291858825b56a3242812d61322cf78ac146ab86ba597ca078f24cb03c7b36193",
+      "bytes": 121315
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/lime-plaster-height.png": {
+      "sha256": "1d2a51c5e851ab2cd2d4a13d308f5bf5478bde2a0204e324a616d16319a2fdfe",
+      "bytes": 240822
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/lime-plaster-normal.png": {
+      "sha256": "726c64311dc9cc87f90eecabc11ac660d74b3e7e1051c0f72b0fd7b54fa302af",
+      "bytes": 330158
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/lime-plaster-roughness.png": {
+      "sha256": "4ef31813168fe4c4dfa38743e10e1b4f90c270d14f680a522a6724bbe01f0ff3",
+      "bytes": 88345
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/lime-plaster-wear.png": {
+      "sha256": "3c83fc3fff1cdf1647b800cb31832e4cdec62281672cd0325ab822f200d0d5b4",
+      "bytes": 240408
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/masonry-coping-albedo.png": {
+      "sha256": "6c3243cea75aedf2e9b898bce33d1c89564cc51971ba574fea2b484ed512406c",
+      "bytes": 62902
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/masonry-coping-height.png": {
+      "sha256": "e083c7f21b842df01993648c5a432c95713677270324c27d8ad9c35cc0d0ee60",
+      "bytes": 126585
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/masonry-coping-normal.png": {
+      "sha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+      "bytes": 131879
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/masonry-coping-roughness.png": {
+      "sha256": "db409b5b75e132192fc142673dfc781eb2f0ed5e68e19bfccc16539601b86368",
+      "bytes": 26876
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/masonry-coping-wear.png": {
+      "sha256": "6732d48ba5ac2053f79d9aed270c156f7e8e2875a561e7d7c1f463f224f8022e",
+      "bytes": 92133
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/moss-lichen-albedo.png": {
+      "sha256": "7b9f5ec3faae026b5723249ced50b35af512a2483a622e869ec8656c6dbebf20",
+      "bytes": 112508
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/moss-lichen-height.png": {
+      "sha256": "a091579ede1f3a7039b1c80241745bba3d3076fa1af60ca2f0418e4f1db275ff",
+      "bytes": 238173
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/moss-lichen-normal.png": {
+      "sha256": "c237dd0219a26af290d045492fcdd47a317ebed1458583616d7277b4df8c372f",
+      "bytes": 589739
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/moss-lichen-roughness.png": {
+      "sha256": "141c99d1e3bfaae32b731ca198370ab0a27e142c4fa8b63a8083a9c4f8cbeac5",
+      "bytes": 86441
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/moss-lichen-wear.png": {
+      "sha256": "9ac1927c22a5617ca4162645ed91bdaf87783f70c222ca9364b49f58f3820cd2",
+      "bytes": 234073
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/optical-mirror-opaque-albedo.png": {
+      "sha256": "5cd44819fccd30ad3ee9208a363e28849f4e320e59bb2d9ec123c1df8985102b",
+      "bytes": 74727
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/optical-mirror-opaque-height.png": {
+      "sha256": "baf7c84096be28d95a65510a2760ebf303c4d0f3059d101179cddf56aba82114",
+      "bytes": 255921
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/optical-mirror-opaque-normal.png": {
+      "sha256": "dbde61a45afd1a17889ecca4db20d05255ac033cff097cd8043349e63a47db79",
+      "bytes": 60697
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/optical-mirror-opaque-roughness.png": {
+      "sha256": "e80ddb906da923ac1e48dd787b58f75a3d8be306239470312676477d699b2c03",
+      "bytes": 87019
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/optical-mirror-opaque-wear.png": {
+      "sha256": "ae309da5656043a87c18deb25539c42ebe0df17a3b70cf9b7d736a41a5eb28f3",
+      "bytes": 243523
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/oxidized-iron-albedo.png": {
+      "sha256": "2514c52dad451a6ab8a9f7ee82099abcdb54a1be3df7f009f11b51044e3f8218",
+      "bytes": 60057
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/oxidized-iron-height.png": {
+      "sha256": "c5e822015cc32fa6ad5ed8f4ba2ed17134d6b667268203d7ed56465a67416c38",
+      "bytes": 161797
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/oxidized-iron-normal.png": {
+      "sha256": "db25a51dd6c649d7b155c51c64de0cb507306bf52641407581a850a79ffdc864",
+      "bytes": 198577
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/oxidized-iron-roughness.png": {
+      "sha256": "c43d822da97d4a2fefb389eec95681c2b596cf4d66160c5081668514bd2544a6",
+      "bytes": 47056
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/oxidized-iron-wear.png": {
+      "sha256": "f498e0c38f2395a7ed25a3fb8b3e755387851371b12e57ee5119cf4c9dbe96de",
+      "bytes": 143612
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/pool-scum-albedo.png": {
+      "sha256": "232cfafe729e0d35a4c25ac395210d30ab8202da64b52ad2eabef2f7dbbb134f",
+      "bytes": 111224
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/pool-scum-height.png": {
+      "sha256": "ddfda42188a89d2c0c3dad1bf26e09a3b301d2889cf5ae6ca006e1aa5e50f4bc",
+      "bytes": 252258
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/pool-scum-normal.png": {
+      "sha256": "a1290b82b184d805446418102a4c67d0b0ecbfd64e06f1aa4612e96a689aceb6",
+      "bytes": 430203
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/pool-scum-roughness.png": {
+      "sha256": "e8d11371322d3e27efababeb739a5f8f1aa8cd03e183f18f4ca4b9a0807bb393",
+      "bytes": 86346
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/pool-scum-wear.png": {
+      "sha256": "533f08a876f4fa6c6588a04762af33fe3e7ab2260726bffc473d069a7e8ebb99",
+      "bytes": 243645
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/prismatic-etch-albedo.png": {
+      "sha256": "c9a48afd897ccb4ae5e9b3cddf75d157135aab03b829e6c60c8c21306f14137d",
+      "bytes": 127297
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/prismatic-etch-height.png": {
+      "sha256": "92a7a7f3f010e1806761df004dd0137b0f9c16018122e1b655e2265273cf0eec",
+      "bytes": 254206
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/prismatic-etch-normal.png": {
+      "sha256": "f5065badadc966c461c430647005ad64ea4615609ae573fe24c93b69da671c5c",
+      "bytes": 294381
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/prismatic-etch-roughness.png": {
+      "sha256": "a000403372b536a12e25e9bb40803c76da17724b45b784f9b49648b0effbab18",
+      "bytes": 95443
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/prismatic-etch-wear.png": {
+      "sha256": "feb2fad68c67d4dcde48e62ecef954ee502c64263f697e2a00ce98731d794c01",
+      "bytes": 245253
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/quay-waterline-albedo.png": {
+      "sha256": "6cd94eb858ba9a065cbac482c3d0774b3cd57de64089842b0665ffa84c650d6c",
+      "bytes": 138763
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/quay-waterline-height.png": {
+      "sha256": "c1bdb339296944dc6a8b8cec2ea58d4045c937aab1f6a8b02eed4331ed9c867e",
+      "bytes": 237358
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/quay-waterline-normal.png": {
+      "sha256": "d1910a6d6b0a1db039143fee9c5b93cd3e02979d963d84f779c92319693f1423",
+      "bytes": 284772
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/quay-waterline-roughness.png": {
+      "sha256": "bb56256c00586600053996630941f2475494befc579155743d1c05d4c6fa4035",
+      "bytes": 67218
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/quay-waterline-wear.png": {
+      "sha256": "11930cd79a64c8840401432c35b6014882df693e824214922789b1336e792e8a",
+      "bytes": 202616
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/ribbed-steel-albedo.png": {
+      "sha256": "e51ce738ffcd3ceabd6d9c0cfd981a2186d15b51464748e7f0d5c6e007753820",
+      "bytes": 100275
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/ribbed-steel-height.png": {
+      "sha256": "8fb475e6307086f76a2d0188c677bae95cf5f09298291b94df4f5e6cfa175cbb",
+      "bytes": 256186
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/ribbed-steel-normal.png": {
+      "sha256": "599b9f2b65adc2f123e2139f02a9d82cb35c285707babcca2a90621dd3ea6b7b",
+      "bytes": 616354
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/ribbed-steel-roughness.png": {
+      "sha256": "fe80cf09e165d00bec06170a6fdabae4106594780b9f013e9b55b6f13f0bb13b",
+      "bytes": 91743
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/ribbed-steel-wear.png": {
+      "sha256": "c9c1265f27526225653bb1dbc19fb93f1a5339a795afe1b4a49b64ca0147153d",
+      "bytes": 251968
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/road-gravel-albedo.png": {
+      "sha256": "f77b90d9fb817255b277af4bf92e74dcf7abcfb4707c732894b9c8dde646cfd5",
+      "bytes": 148732
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/road-gravel-height.png": {
+      "sha256": "816da3d1b16bc3f72fdc523c56c2f7b4d2007f95b3b293f37e98e114171ca20e",
+      "bytes": 307378
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/road-gravel-normal.png": {
+      "sha256": "c3d82758149ccc852f5a4e2edd3b18a5f20ac6cd05efe81696f4cbefc0f93662",
+      "bytes": 654366
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/road-gravel-roughness.png": {
+      "sha256": "bd952f92790bacb6ccabf12a2ff948b7950f082994d8353cdca9c17ca48b6a60",
+      "bytes": 112361
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/road-gravel-wear.png": {
+      "sha256": "b11d4ae960187e46dfb95ba5a16df065dce02918fe6bfee4d12e18984094af68",
+      "bytes": 285273
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/salt-limestone-albedo.png": {
+      "sha256": "6bc2e95ea14074fed620bfcf9fb61bff4c4336747c062ce17f9d2b1108ae6042",
+      "bytes": 111688
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/salt-limestone-height.png": {
+      "sha256": "5fe7cf7b8bb1014ccd842b7a5506259d9f4dcabf6bbb5d922abc8c0fbb066460",
+      "bytes": 218439
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/salt-limestone-normal.png": {
+      "sha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+      "bytes": 485273
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/salt-limestone-roughness.png": {
+      "sha256": "d3a83a3eab2cdd5ef13cbd28e30fadb1c76ca11278996720304800db3d59da8a",
+      "bytes": 66022
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/salt-limestone-wear.png": {
+      "sha256": "af06915c8e4808f65fb6a29baee4c580fbdc4d5cee98b6d530739bc4aaafbcfc",
+      "bytes": 197473
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/sea-flow-albedo.png": {
+      "sha256": "bb0b357f9968abe15e4bfc82b9677d1a2c43790957244c1c801a956303ad228c",
+      "bytes": 85288
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/sea-flow-height.png": {
+      "sha256": "5c717a534a969c00ab2aec355dbc72467a225fe5ad756e71893748d207af78e7",
+      "bytes": 244947
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/sea-flow-normal.png": {
+      "sha256": "6b12978bf9a93c005eacb1ddcc09b297d12b1e08e8abf66e08b3e984945eef4a",
+      "bytes": 347565
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/sea-flow-roughness.png": {
+      "sha256": "8e42feda43c341b1d0d9b614318efb2514c78b2e821bcb882bf260b2a6d10e2b",
+      "bytes": 85080
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/sea-flow-wear.png": {
+      "sha256": "85a7025ec3b4e186aeaf3d107f2b8d43f200e60c9977ad6db5e4f4e889ab9064",
+      "bytes": 235562
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/shopfront-opaque-albedo.png": {
+      "sha256": "d9cc90c501010e024f3d376f72a15bc16abd30d3b6aff97c52d5f09fe2e755a2",
+      "bytes": 26076
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/shopfront-opaque-height.png": {
+      "sha256": "04688855a5f0fb576d3f2d41aa54c885db1c8844de3192d5c4370a8e2927d6d7",
+      "bytes": 125267
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/shopfront-opaque-normal.png": {
+      "sha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+      "bytes": 133720
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/shopfront-opaque-roughness.png": {
+      "sha256": "3ae0f36b5aa243e5eed67ba53e126179f59e30485be414b434814e3cfffc004a",
+      "bytes": 38183
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/shopfront-opaque-wear.png": {
+      "sha256": "0b39e91fed9d805eb50ef2007a3e33aca1d0ab03c3a507daf5075a0f6f588370",
+      "bytes": 121199
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/slate-shingle-albedo.png": {
+      "sha256": "4ab99b80aad48b6e5be03b7382ebd8c393cf7c2970cce20cab0d2099f812e82f",
+      "bytes": 56791
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/slate-shingle-height.png": {
+      "sha256": "42256c07dc3adcc83da5550b9231c7760185ed5f07f6f3389aca99ba3aa61737",
+      "bytes": 140300
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/slate-shingle-normal.png": {
+      "sha256": "b9ed311dfd009e04771060ed8a06a053a53c83da7aaac3cd44a6f50dc3d598f4",
+      "bytes": 182277
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/slate-shingle-roughness.png": {
+      "sha256": "90c1aeac8dfd3722036f8495ffd3969d4be24c7e6de82f5872c43f62b861b3fc",
+      "bytes": 40609
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/slate-shingle-wear.png": {
+      "sha256": "968cb993fa063c6a491a655bd9cd516148c127c035a7a14e845a8af214fa1c42",
+      "bytes": 129864
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/terracotta-albedo.png": {
+      "sha256": "e7cbef47acd9d54c61f57123824f477af4b0d42c17fdd514d0ad3fb185ae46a3",
+      "bytes": 56374
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/terracotta-height.png": {
+      "sha256": "7a2194601cf3e88a0d9304064505a115df7d27c355958b215d6af4e76c39edf7",
+      "bytes": 129716
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/terracotta-normal.png": {
+      "sha256": "a82b4af6b637ecd74953a0f4af261acc637eab255e80f6117a231f5d0b564ca5",
+      "bytes": 174659
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/terracotta-roughness.png": {
+      "sha256": "026e41ba5a566ab71f09ed19a6699c53442aaa2b569b32a0f61f1a2a7dd8fd16",
+      "bytes": 38483
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/terracotta-wear.png": {
+      "sha256": "8bdf4bead99463ab169a4b54b9ec9cb1ea6d1d9b4c0091e55a5a25eea11ac47d",
+      "bytes": 122404
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/timber-weather-albedo.png": {
+      "sha256": "032a68abe43f766ae98ab81b1a3a2acbe807d0a0313f55fdb82531cb12312310",
+      "bytes": 91531
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/timber-weather-height.png": {
+      "sha256": "09499536a7af41e1099e8610999b988e251cb89d67a1540c809314e955db392a",
+      "bytes": 221799
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/timber-weather-normal.png": {
+      "sha256": "7a8f4b78d0c25eddb4def652c706110b27dceef69d8ff3c48f343abf41bd1a5b",
+      "bytes": 183882
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/timber-weather-roughness.png": {
+      "sha256": "2d6e17973056f23f1f08ae580345558330cdd44b2de2727d4b8482cc171ecec5",
+      "bytes": 59977
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/timber-weather-wear.png": {
+      "sha256": "c1987c6569cafbbc8d8cb9ea263554cdb91c54768d0bf61fa117916e147acaad",
+      "bytes": 197484
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/trim-wear-albedo.png": {
+      "sha256": "3fb928bcb4dda60fb10b5a874e4b8e1ff1fa5cfcb8dd79de0321827abcb64b5c",
+      "bytes": 53392
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/trim-wear-height.png": {
+      "sha256": "e083c7f21b842df01993648c5a432c95713677270324c27d8ad9c35cc0d0ee60",
+      "bytes": 126585
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/trim-wear-normal.png": {
+      "sha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+      "bytes": 131879
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/trim-wear-roughness.png": {
+      "sha256": "e1ad3d9376571e1bf01573c4d9aa5dad04bcbff53832675c412e064218a22233",
+      "bytes": 26738
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/trim-wear-wear.png": {
+      "sha256": "6732d48ba5ac2053f79d9aed270c156f7e8e2875a561e7d7c1f463f224f8022e",
+      "bytes": 92133
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/viaduct-asphalt-albedo.png": {
+      "sha256": "9365b6b832ba39226bcc2980d704bc7dc9c72400847343ce18ed4bb33980f443",
+      "bytes": 107631
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/viaduct-asphalt-height.png": {
+      "sha256": "481933fbd0d499cfb6524747b1fc44d4ab7c33c0b81c4f5609dad042fd151a43",
+      "bytes": 281895
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/viaduct-asphalt-normal.png": {
+      "sha256": "697fd7497a1d8875dbcc834561ca4c7a313e45f831df0b6c63ff117106a92f87",
+      "bytes": 362575
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/viaduct-asphalt-roughness.png": {
+      "sha256": "ae1487542085ec7966f6d39e48d648611d623d930d487b831d9ffd20ecc9fa85",
+      "bytes": 100851
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/viaduct-asphalt-wear.png": {
+      "sha256": "6eff97a972c0bddaa86a97ce8a2126aa07da772c09786b92d5984fc0613a1bf7",
+      "bytes": 261000
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/wet-soot-albedo.png": {
+      "sha256": "3959bc55e65330f7fe0b1c3449ebd2dd485d7a4066f61d16eb425c002c059d42",
+      "bytes": 87696
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/wet-soot-height.png": {
+      "sha256": "b07cbec3d2547cfc3e00c399fdb6a75488663c80040c12cf3fa6db1749e3ed22",
+      "bytes": 246824
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/wet-soot-normal.png": {
+      "sha256": "a48701b5e05b55e5887af5d35f6b84d32a525ff8fb4a2bf248db8bd44222c3ca",
+      "bytes": 237620
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/wet-soot-roughness.png": {
+      "sha256": "aec794159137c622b4b90dbceac8cf8d007eaddab092079727575040851dac0c",
+      "bytes": 88439
+    },
+    "assets/moth/map-variety-20261003/candidate/textures/wet-soot-wear.png": {
+      "sha256": "6be438a32f2f1ca37707afcad988e32a85e2b21f20b4d40ee99e152d59b06808",
+      "bytes": 242218
+    },
+    "assets/moth/map-variety-20261003/concurrency-trials.mjs": {
+      "sha256": "c60c42a7f9cc40048e91dd23a46f373970dbf0898e5041d9105d77091147490e",
+      "bytes": 8140
+    },
+    "assets/moth/map-variety-20261003/contact.mjs": {
+      "sha256": "bf0a9db4c2e6a5f11491726f240ab447129ee65c94bc580a1d54e4662c489431",
+      "bytes": 2856
+    },
+    "assets/moth/map-variety-20261003/contracts/engines.json": {
+      "sha256": "2d5881039e89ebe17b75144e16a2a690d7ae3455ae6db7fb6a8d71845aec07d9",
+      "bytes": 3745
+    },
+    "assets/moth/map-variety-20261003/contracts/openapi.json": {
+      "sha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+      "bytes": 387392
+    },
+    "assets/moth/map-variety-20261003/contracts/schema-identity.json": {
+      "sha256": "d61840f1c255e58a2b05829e1048c720fb164ab3028dc1f2e2aca91ab202e694",
+      "bytes": 93
+    },
+    "assets/moth/map-variety-20261003/engine-review/blur-core-v1.json": {
+      "sha256": "f7c7c84597c4f55d75512c24708b1d0199a6c5cb65a1c3c0235040ec51d52f18",
+      "bytes": 4537
+    },
+    "assets/moth/map-variety-20261003/engine-review/blur-midi-v1.json": {
+      "sha256": "f379fe3fc1d08c14be436ec9f7e7bd8bb68dbc76e568ea38306cb313383a85c9",
+      "bytes": 4613
+    },
+    "assets/moth/map-variety-20261003/engine-review/blur-v0.json": {
+      "sha256": "0cb1033896d9b0da3fdddcd997f05830ff55bc4f9be0fce9f17a712bc5a5be1d",
+      "bytes": 4878
+    },
+    "assets/moth/map-variety-20261003/engine-review/blur-v1.json": {
+      "sha256": "6a0dda924af6aaf9758aac0ce58b7d135cd037e1fbebd95347d45996118571fd",
+      "bytes": 5833
+    },
+    "assets/moth/map-variety-20261003/engine-review/catalog.json": {
+      "sha256": "38d64a69e76f6e0eecad9197e1b86923be003e62d3e2cb027a0189fd5dd1112f",
+      "bytes": 10709
+    },
+    "assets/moth/map-variety-20261003/engine-review/coin-toss-v1.json": {
+      "sha256": "8d30f365c90e88f3bee72212e18a00c93e793567a520155a3c8056eb1c7826d1",
+      "bytes": 2972
+    },
+    "assets/moth/map-variety-20261003/engine-review/comet-qrng-v1.json": {
+      "sha256": "6c01a90160acbbc2cc4c5e8e7e5dc9fe7d384fed334c97f7c77c7d2cd5d561f5",
+      "bytes": 7563
+    },
+    "assets/moth/map-variety-20261003/engine-review/contracts.json": {
+      "sha256": "e2afb98a6b8f7112bad47aed0592aad2b53cad52780c2d1b2d83bb633cd3ab34",
+      "bytes": 170224
+    },
+    "assets/moth/map-variety-20261003/engine-review/deep-fryer-v1.json": {
+      "sha256": "2688aaf06eaa4e9a9581bca85fc887d9812ac0d655a38e71a533140f1ce1b93b",
+      "bytes": 4089
+    },
+    "assets/moth/map-variety-20261003/engine-review/demo-callback-v1.json": {
+      "sha256": "f9e6db630207834c04c7aa31558a3b10e19c2e82717a300d8f0b16054e7fc85c",
+      "bytes": 597
+    },
+    "assets/moth/map-variety-20261003/engine-review/entanglement-shader-v0.json": {
+      "sha256": "d247890d75b2c8de3c3a08f67c9c579ac58ad2133c95663f14296cabd5ea1da0",
+      "bytes": 3309
+    },
+    "assets/moth/map-variety-20261003/engine-review/entanglement-shader-v1.json": {
+      "sha256": "16da902706a594cdc2a5ec530289b29a0b7f9120e56f7f02d28a05df4f1719f0",
+      "bytes": 3587
+    },
+    "assets/moth/map-variety-20261003/engine-review/graph-v1.json": {
+      "sha256": "c63762de41a5848b6936f73168e3f8b360a6c30f8878016642e6a14799b66a9e",
+      "bytes": 7152
+    },
+    "assets/moth/map-variety-20261003/engine-review/labyrinth-v1.json": {
+      "sha256": "e461ac5382f33848d99bfa0dbae8ed8436468461657ff09a2fefb201c88b71f2",
+      "bytes": 6165
+    },
+    "assets/moth/map-variety-20261003/engine-review/otoc-echo-v1.json": {
+      "sha256": "fa7cc33d4d46f9c12d73ac8c9f51ee5a75c78dedc5bc9b952ff68c48bcd8d0f0",
+      "bytes": 9574
+    },
+    "assets/moth/map-variety-20261003/engine-review/qdrive-api-v1.json": {
+      "sha256": "c7587757766843300f526d1f1117d0591aee8ed995a4b041a159fdc93e7f76fc",
+      "bytes": 5819
+    },
+    "assets/moth/map-variety-20261003/engine-review/qpixl-v1.json": {
+      "sha256": "f52417e687c9352863b3759314ff106a69b8651262cc7ce89555602029b24cc5",
+      "bytes": 6099
+    },
+    "assets/moth/map-variety-20261003/engine-review/qrc-audio-v1.json": {
+      "sha256": "3451c384ab7fdfeb4992e465be7b9e75d5010dde1727f4e206329834f46d1c92",
+      "bytes": 4296
+    },
+    "assets/moth/map-variety-20261003/engine-review/qrc-gen-v2.json": {
+      "sha256": "3796e6847f6fb94390f87eaa9363349db4f173c602a2bd728b8c23e5734daba8",
+      "bytes": 3470
+    },
+    "assets/moth/map-variety-20261003/engine-review/qrc-image-v1.json": {
+      "sha256": "01c50a5e1ccab6c33ec60283591ab1d532aa5e2c6bc42c980fa51571fad70d69",
+      "bytes": 3740
+    },
+    "assets/moth/map-variety-20261003/engine-review/qrc-midi-v1.json": {
+      "sha256": "a24cde1d498dda76d4c237fe728c91bcc4034de052d20dddebb2369b178a5c3a",
+      "bytes": 3419
+    },
+    "assets/moth/map-variety-20261003/engine-review/qrc-train-v2.json": {
+      "sha256": "8f8e07acbadbe39179d1a4278ad98ef612eaa0d125b5e98b102387bfbd31ca0f",
+      "bytes": 4550
+    },
+    "assets/moth/map-variety-20261003/engine-review/receipt.json": {
+      "sha256": "ad35ea50ab701c122258214d921c8c862772b83016b0b6e549d62b2ca09a1194",
+      "bytes": 2075
+    },
+    "assets/moth/map-variety-20261003/engine-review/retrocausal-echo-v1.json": {
+      "sha256": "fd11c07c7fb1bff4d56870354d8fde28c7933e08d6608d5341b02531c28383d3",
+      "bytes": 17701
+    },
+    "assets/moth/map-variety-20261003/engine-review/tamagotchi-v0.json": {
+      "sha256": "32298cef630193045e8d8df1e2f26e30b69f27b0d16e1d0351d44d029b982bf4",
+      "bytes": 2811
+    },
+    "assets/moth/map-variety-20261003/engine-review/tamagotchi-v1.json": {
+      "sha256": "88b633da8bd381499a9c8ca5995ae9ee48c36b643d31be5bd8a44b8dadef2bec",
+      "bytes": 2811
+    },
+    "assets/moth/map-variety-20261003/engine-review/telablur-v1.json": {
+      "sha256": "c4cfc6e5f46bb7ddc12ad8a2682597b14a91bd4695606a5a56e1942690251e1a",
+      "bytes": 5437
+    },
+    "assets/moth/map-variety-20261003/engine-review/tessa-image-v1-test.json": {
+      "sha256": "634a26850dc70a4164493928d68ce7e78319da6fff07ee14b87ebb97f6ba1691",
+      "bytes": 15775
+    },
+    "assets/moth/map-variety-20261003/engine-review/tessa-image-v1.json": {
+      "sha256": "581af35a6d0d25225b962baa4a5fb7837c865478048b17d71b2e757bae824f83",
+      "bytes": 5696
+    },
+    "assets/moth/map-variety-20261003/engine-review/test-binary-v1.json": {
+      "sha256": "8e98b9cc5fb8ab047576bd15226233074c5cfc0853b15a4afa3712abe4588cd1",
+      "bytes": 396
+    },
+    "assets/moth/map-variety-20261003/engine-review/test-engine-error-v1.json": {
+      "sha256": "894430bb86cba2643751fcf01fc0966ce265149fb320be713520412683a7f6fd",
+      "bytes": 299
+    },
+    "assets/moth/map-variety-20261003/engine-review/test-engine-fail-v1.json": {
+      "sha256": "e1e0248edd87ae0c61723cd99f16f77c0765b983fee3e163fb82ccff0922a90f",
+      "bytes": 297
+    },
+    "assets/moth/map-variety-20261003/engine-review/test-engine-submission-v1.json": {
+      "sha256": "336e60e4bb4b1904011299024f9ab37475f6f3c786564108028e0b544861217f",
+      "bytes": 537
+    },
+    "assets/moth/map-variety-20261003/engine-review/test-engine-v1.json": {
+      "sha256": "46670ecf739f3a7b45a1e78ab119f000181745b90f438cd1ea43d2bbec857bde",
+      "bytes": 287
+    },
+    "assets/moth/map-variety-20261003/engine-review/tomography-api-v2.json": {
+      "sha256": "564b3d6ebf434987a24898e44d46abaf705edc8f195d24080af5d53761c77b34",
+      "bytes": 2676
+    },
+    "assets/moth/map-variety-20261003/engine-trials/bake-overlay.mjs": {
+      "sha256": "1d1cd8ab2141262594dc7c86874bf710c3b482dc2e09189325afbd4dc00e3bc4",
+      "bytes": 7902
+    },
+    "assets/moth/map-variety-20261003/engine-trials/capture-scalar-http.mjs": {
+      "sha256": "beb8d0549f0269ab1892b03338e78c18e249ba4896e2df7af9637fafd0698bc5",
+      "bytes": 1819
+    },
+    "assets/moth/map-variety-20261003/engine-trials/compare.mjs": {
+      "sha256": "966e9ec2ceb9ae246b93c422eb00b92e24899624d3fa742372373329696a159c",
+      "bytes": 7130
+    },
+    "assets/moth/map-variety-20261003/engine-trials/comparison/all-variants-tiled.png": {
+      "sha256": "93a96f458137b9963a782fffef420cd98de035b14c73c1aabe190589330e3ebe",
+      "bytes": 512997
+    },
+    "assets/moth/map-variety-20261003/engine-trials/comparison/all-variants.png": {
+      "sha256": "95934d113efc4fdc1da74c8f9d3106a751359ad761037498bc03af3f8ac2e7cc",
+      "bytes": 385446
+    },
+    "assets/moth/map-variety-20261003/engine-trials/comparison/comparison-raw.png": {
+      "sha256": "4171cfdfbe51312368e46bf04c08b984e1ec435aeb57948da115d4cc9c761eb5",
+      "bytes": 205345
+    },
+    "assets/moth/map-variety-20261003/engine-trials/comparison/comparison-repaired.png": {
+      "sha256": "9c0df38dcbf3501cc04d011f0091c98c5a76e0bc3078eb8333682863a1804279",
+      "bytes": 313422
+    },
+    "assets/moth/map-variety-20261003/engine-trials/comparison/fields-luts.json": {
+      "sha256": "0565e114e97771c33d68694d29758a699910cc1d7f4c2681baf5b39611ea5578",
+      "bytes": 3875
+    },
+    "assets/moth/map-variety-20261003/engine-trials/comparison/instrument-lut-3-body-reflectance-parameter-preview.png": {
+      "sha256": "e61616504dd96c55a886656ad1622ee5b1333469e621c24a9d1c1bffe0a00e0d",
+      "bytes": 30982
+    },
+    "assets/moth/map-variety-20261003/engine-trials/comparison/instrument-lut-3-body-transmittance-parameter-preview.png": {
+      "sha256": "5fe82b3f33df3f939c088108eda9b0ab2de3f5d447fba36767426708226fc347",
+      "bytes": 39681
+    },
+    "assets/moth/map-variety-20261003/engine-trials/comparison/instrument-lut-frustrated-reflectance-parameter-preview.png": {
+      "sha256": "e9523fd12ed36c1c5deaccdd38388ad3e125daed44bff199b35282b6b06d069b",
+      "bytes": 23919
+    },
+    "assets/moth/map-variety-20261003/engine-trials/comparison/instrument-lut-frustrated-transmittance-parameter-preview.png": {
+      "sha256": "87a186393ce132cee7125990f5a9cba1adca606b3479d60b81e136f4ec9de1db",
+      "bytes": 40321
+    },
+    "assets/moth/map-variety-20261003/engine-trials/comparison/lut-comparison.png": {
+      "sha256": "82fc4c1a75667ec5e78115edd781f35eea06a05b9debcf6f57cee33b9f8548fd",
+      "bytes": 140045
+    },
+    "assets/moth/map-variety-20261003/engine-trials/comparison/mask-comparison.png": {
+      "sha256": "3bee97c2bdabd9f71f681b4628a0fde7517e048abb6c37895bbe5b7a5b02d641",
+      "bytes": 69091
+    },
+    "assets/moth/map-variety-20261003/engine-trials/comparison/metrics.json": {
+      "sha256": "2da63dcd7ad0fbe9e039147cc678bb8e53fc1c21aa5ad0aaf1d4d9be4f171b47",
+      "bytes": 54802
+    },
+    "assets/moth/map-variety-20261003/engine-trials/comparison/moss-lichen-qpixl-mask.png": {
+      "sha256": "9ffb8ec4ee41e569e83f6973b4b7d61a584218a88f519f7f4cd32b21e8ee591a",
+      "bytes": 160380
+    },
+    "assets/moth/map-variety-20261003/engine-trials/comparison/quay-waterline-qpixl-mask.png": {
+      "sha256": "eb7a3eff35101ac3f1f319477452ca8afe14c09b2ffea64f18465aea36d1a2e4",
+      "bytes": 38349
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/copper-patina-image-global.json": {
+      "sha256": "c460050a942025ff2f5da7f1972be93ee8606997fb7ed11b14cfe1632193b842",
+      "bytes": 1122
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/copper-patina-kernel-four.json": {
+      "sha256": "adf841fc2a9dc4ae33dbfc100fdd614f3bddbd4438dcdb3c4761e43f97068820",
+      "bytes": 3062
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/copper-patina-kernel-global.json": {
+      "sha256": "02cfdbdab7a7f7a3456242f7a1773951fc0d94ce4cdf1c67da945f6ffd783469",
+      "bytes": 5189
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/copper-patina-tele-global.json": {
+      "sha256": "f9f8db1d8702a07fec7dc451adc54dd88c3939ab4c0620ef7ecf00b335dcdb91",
+      "bytes": 1159
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/job-history-times.json": {
+      "sha256": "f9950322f89d3a91d4e379471f1400983d68db37521a124e7f713db9573d8cd0",
+      "bytes": 2403
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/plan.json": {
+      "sha256": "7a260b341c98f4108a7d46bbf5a9c8bda87301a280dd00078552024d68eb8a29",
+      "bytes": 2965
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/prismatic-etch-image-reach.json": {
+      "sha256": "362b588c88b943f3fd16b5d2612bc40760318c4a72c758b7f7971cb67d8d02bc",
+      "bytes": 920
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/quay-waterline-tele-strong.json": {
+      "sha256": "42e505857f44e31cab84d3cf0487aab6534d4a1a558adf99eed8144b0265c0c5",
+      "bytes": 1169
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/raw/copper-patina-image-global/.mothbake-archive.json": {
+      "sha256": "65b8c4a21860688fd4303ebbf66dbee4cbe726ceeed66be65a9d9ffc480ada82",
+      "bytes": 751
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/raw/copper-patina-image-global/result.png": {
+      "sha256": "c08757e1d50c77be2ec626e7f2035c61efdd16d0522dca5a1fe5c840f82bcc80",
+      "bytes": 4563
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/raw/copper-patina-kernel-four/.mothbake-archive.json": {
+      "sha256": "826ff59b839732e1dfa8608ae0917537f316ac61afca6d6a76792f354208db05",
+      "bytes": 756
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/raw/copper-patina-kernel-four/result.png": {
+      "sha256": "44b0acc6d176648583df1e9e726fab852c23872db48a8f7c1a86accde7095fcd",
+      "bytes": 5142
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/raw/copper-patina-kernel-global/.mothbake-archive.json": {
+      "sha256": "cd900b08e1ca1079a6bbdac03202dc9ede7bafee66d19e47e48137adfbd9687d",
+      "bytes": 758
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/raw/copper-patina-kernel-global/result.png": {
+      "sha256": "44b0acc6d176648583df1e9e726fab852c23872db48a8f7c1a86accde7095fcd",
+      "bytes": 5142
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/raw/copper-patina-tele-global/.mothbake-archive.json": {
+      "sha256": "dc7f667d1238c607c394c4cee5a17b031527ea7f3dc77f8ecfac56693b2b6480",
+      "bytes": 754
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/raw/copper-patina-tele-global/result.png": {
+      "sha256": "10dc642ec6ecd6cbb505b1c89cd4ed23159539cb11a9d9648684438b9b2a6099",
+      "bytes": 4611
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/raw/prismatic-etch-image-reach/.mothbake-archive.json": {
+      "sha256": "1e5248a61bd5d2ea0bb3cccfbeafcb8b477d7d714f707aa07fde081c6f3cd12b",
+      "bytes": 751
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/raw/prismatic-etch-image-reach/result.png": {
+      "sha256": "326531f81a30672976a839c6b52f5729d8ef9c2d7efe64d5c6356a4dc1ff75a9",
+      "bytes": 3366
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/raw/quay-waterline-tele-strong/.mothbake-archive.json": {
+      "sha256": "150e9afda38ecee41ee0d15148649c454946b1059c4c50bebdb02745e983d7f1",
+      "bytes": 755
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/raw/quay-waterline-tele-strong/result.png": {
+      "sha256": "85b4f5a92173649c246f0ae51cba6445f82fed8c6b131a79b1bc206d2926e143",
+      "bytes": 2977
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/report.json": {
+      "sha256": "7c368090ddd146bc7813250828d89373ed1e680f6fb3b6f860228c66f3d5c755",
+      "bytes": 2962
+    },
+    "assets/moth/map-variety-20261003/engine-trials/concurrency/uploads.json": {
+      "sha256": "c6052bfaef0bab40d56569edce35a86ac7d0ab68122c7ee23561e032e6f7b3d1",
+      "bytes": 911
+    },
+    "assets/moth/map-variety-20261003/engine-trials/evaluate-fields-luts.mjs": {
+      "sha256": "7dd0260db55b90bc45ef892d2944193cafa8f2a2b2c7fb7908a035a075452f57",
+      "bytes": 5436
+    },
+    "assets/moth/map-variety-20261003/engine-trials/fields.json": {
+      "sha256": "e8a51ffb8e9a22c743937e5a090a4cff5bb6d2139d3c8f49c33891d786533542",
+      "bytes": 448535
+    },
+    "assets/moth/map-variety-20261003/engine-trials/http-scalar/manifest.json": {
+      "sha256": "5924802cd414d6fb02f0e1bbf7ab0105b02a01e44c73fece4cdc518a9e4ad0cb",
+      "bytes": 730
+    },
+    "assets/moth/map-variety-20261003/engine-trials/http-scalar/moss-lichen-qpixl.json": {
+      "sha256": "f7eac7798bde49083c09d6781a10efc0ac75c4df718b2cdc8a594fc1fb1ad53a",
+      "bytes": 41670
+    },
+    "assets/moth/map-variety-20261003/engine-trials/http-scalar/quay-waterline-qpixl.json": {
+      "sha256": "2052276991a84498c84fc63a60b3d537c83874f4886d53c0bf06f1422b4dc28c",
+      "bytes": 20868
+    },
+    "assets/moth/map-variety-20261003/engine-trials/intensity-provider/raw/copper-patina-kernel-mid-global/.mothbake-archive.json": {
+      "sha256": "598862cf0246706cdf0fe1a6c0488cc47d13a783645ba9b2838a837ed969066f",
+      "bytes": 751
+    },
+    "assets/moth/map-variety-20261003/engine-trials/intensity-provider/raw/copper-patina-kernel-mid-global/result.png": {
+      "sha256": "32354010d5b33a81b032ba5951880d21bef8e5d80d1b0f4f8c2b947393fc4e49",
+      "bytes": 5259
+    },
+    "assets/moth/map-variety-20261003/engine-trials/intensity-provider/run-journal.json": {
+      "sha256": "9caf1f364d15851cbd459380fbd62c2b7b5fd235dfeefffa231218323d56810c",
+      "bytes": 1738
+    },
+    "assets/moth/map-variety-20261003/engine-trials/intensity.json": {
+      "sha256": "c88709c2785a2b43939d0deebc0d9d9c5de3b3a003249d284408383188e94306",
+      "bytes": 755
+    },
+    "assets/moth/map-variety-20261003/engine-trials/intensity.log": {
+      "sha256": "4020e7a819b1a5b0e0b09511d884c04563fb2a900ba393c7f3cacaea20664df2",
+      "bytes": 554
+    },
+    "assets/moth/map-variety-20261003/engine-trials/live.json": {
+      "sha256": "2f9cb5e2299d899c0d5ee7dbe3e293f9c3262947d90f6ba487d6e6e9c9000650",
+      "bytes": 164575
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/qpixl-repaired.json": {
+      "sha256": "60ea3302f815042ff2bba5041e28eab5f507f6a0fa9771fd17fc9c6180caee11",
+      "bytes": 155797
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/copper-patina-tessa-noisy/.mothbake-archive.json": {
+      "sha256": "1d874c5cad9d4b19af48c56829a6aa61332afcb7cd69f42dcc1e12200cb6b200",
+      "bytes": 745
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/copper-patina-tessa-noisy/result.png": {
+      "sha256": "36c45c0e3433b61e2913cdc2eaf7302ca27602cb4ac39ea917bfe0a1c2843ed0",
+      "bytes": 914
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/copper-patina-tessa-palette/.mothbake-archive.json": {
+      "sha256": "bc0fe6a62c4a8e82c1a1e859ebd337080032721bca57e09ddd28637f19b146bf",
+      "bytes": 748
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/copper-patina-tessa-palette/result.png": {
+      "sha256": "7592b936f53e8b01cbdbafdb01b4c32c8ca19b216105eb3185b6782754a30aab",
+      "bytes": 6017
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/instrument-lut-3-body/.mothbake-archive.json": {
+      "sha256": "68134e6cba150870ea38ced9907a31cf326116d2bbd605a78b0282a5498e4185",
+      "bytes": 757
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/instrument-lut-3-body/result.zip": {
+      "sha256": "bd2356be56d0df641b5000e1cce92e53fe077cf13ef0a8ff71ac6825cc01af0f",
+      "bytes": 10994
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/instrument-lut-frustrated/.mothbake-archive.json": {
+      "sha256": "18064ebd06f2db2d53f6fa99c86c5a09515b15edc8d3e738a010f59295be5cb4",
+      "bytes": 761
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/instrument-lut-frustrated/result.zip": {
+      "sha256": "92bc417d6a45a47488c8f0296e8143538ef6281554181138930ca46291e90566",
+      "bytes": 10962
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/moss-lichen-image-rx/.mothbake-archive.json": {
+      "sha256": "b543b007117d56081eda1386afefbd134c24fd1c5607bab90b43ed2710e990e7",
+      "bytes": 734
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/moss-lichen-image-rx/result.png": {
+      "sha256": "16704bd38c507746846ae666953f3e9c108e05059a681faefea8f814cb1cdd50",
+      "bytes": 4675
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/moss-lichen-kernel-low/.mothbake-archive.json": {
+      "sha256": "e277406b4a7db9887f7741fe9ec6126c5444982238702cd7d20908df444313e7",
+      "bytes": 742
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/moss-lichen-kernel-low/result.png": {
+      "sha256": "a8bd713de4ee6ab6812cdb4bbf60f4621325439d2c96b1b810507c5e18da34b3",
+      "bytes": 5384
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/moss-lichen-qpixl/.mothbake-archive.json": {
+      "sha256": "6e031398fb0bf7ae9369af21713631588ba0b868087bee0ee383f2f9398a7ddb",
+      "bytes": 690
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/moss-lichen-qpixl/inline-result.json": {
+      "sha256": "fffa6355bc240cbc68c571324d63298e095ad0350bb1c67c38ed43c29456bcbb",
+      "bytes": 62086
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/moss-lichen-tele-vertical/.mothbake-archive.json": {
+      "sha256": "700ee215f1ffb966d69edc9436b64564d0b916d091b03663dc67d9535a31d37f",
+      "bytes": 743
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/moss-lichen-tele-vertical/result.png": {
+      "sha256": "f719494e18e4e3b2c831b48511d6e2fa7eb747decc5b0a312eeb0a2b4d44b3a4",
+      "bytes": 4762
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/moss-lichen-tessa-palette/.mothbake-archive.json": {
+      "sha256": "b8e38ef35e6f58759cc1cfb20263f6bad9f91d38e89dc4130ea9cf8623388095",
+      "bytes": 746
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/moss-lichen-tessa-palette/result.png": {
+      "sha256": "2f6364b77389344aa78e84008ce740c16c2f019997e79cd582c44713885f8a0b",
+      "bytes": 5851
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/prismatic-etch-image-rx/.mothbake-archive.json": {
+      "sha256": "9cdc8b079bf200aa74bd8e4bd658f275b780ae48c4abde144e5960d3c6d6cd7c",
+      "bytes": 737
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/prismatic-etch-image-rx/result.png": {
+      "sha256": "e4ccce8f3e332874799cff6104cf3ffc0744cb3f41d6717d7ef156b23e1d304e",
+      "bytes": 3894
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/prismatic-etch-kernel-low/.mothbake-archive.json": {
+      "sha256": "37ab03ec44a880423dfd0c7047c1a67917f36d77f1a6bb95745262dfac7d44ac",
+      "bytes": 745
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/prismatic-etch-kernel-low/result.png": {
+      "sha256": "89717505551b6e77d4012efd70a9296a81085b65871307ffebbca0edd210f33d",
+      "bytes": 4500
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/prismatic-etch-tele-vertical/.mothbake-archive.json": {
+      "sha256": "a9c3d030c08c3ab7ef088164267b3cffaf8ab3eff1a99627144185135e31a9a0",
+      "bytes": 746
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/prismatic-etch-tele-vertical/result.png": {
+      "sha256": "cacd3021a5b2bfd0dcd49153644302daec020495da825cbe3edf580d8801fb03",
+      "bytes": 3756
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/prismatic-etch-tessa-palette/.mothbake-archive.json": {
+      "sha256": "72a21380d564bc76242c3664241f1725d9816c50a0d807f60f46015281c8e7ae",
+      "bytes": 749
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/prismatic-etch-tessa-palette/result.png": {
+      "sha256": "e7c83574066d05636a16ead4d14a79f137c64db201be47691f48d2dec0e75801",
+      "bytes": 4580
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/quay-waterline-image-rx/.mothbake-archive.json": {
+      "sha256": "72900f577d1c0b80d6c118ee12e2ab852a9f54737939f49341a526abe4c9797b",
+      "bytes": 737
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/quay-waterline-image-rx/result.png": {
+      "sha256": "732183436d4f95d4989d6634279c07bee9521994712ef5ca7dce16f1db03ab7a",
+      "bytes": 2965
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/quay-waterline-kernel-low/.mothbake-archive.json": {
+      "sha256": "5d433704cd55af395753ef87bdd8adac5a69415d434433a4f04ff3779b5c7590",
+      "bytes": 745
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/quay-waterline-kernel-low/result.png": {
+      "sha256": "7569d617aaea1e50655dd95e0250b8d6cb7151a9676fd2b915131ae3228bd1f4",
+      "bytes": 3240
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/quay-waterline-qpixl/.mothbake-archive.json": {
+      "sha256": "bdc765666d841d22851d25682d3aaa777d61ec18c83876093718e5f03f866b1f",
+      "bytes": 693
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/quay-waterline-qpixl/inline-result.json": {
+      "sha256": "060489bbe8d478f507c0a09a51dce2f5f3c443413f342fbb9af534fbd96f4f3d",
+      "bytes": 41284
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/quay-waterline-tele-horizontal/.mothbake-archive.json": {
+      "sha256": "115d465b8617452146f3d93e182f1490a2ee2d0e77e7d3402e097a4c947c687c",
+      "bytes": 748
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/quay-waterline-tele-horizontal/result.png": {
+      "sha256": "ee6000034fb306aef7a7480131eab2f7a2730dd9149a432ba51512ab6896a358",
+      "bytes": 3101
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/quay-waterline-tele-vertical/.mothbake-archive.json": {
+      "sha256": "4f22987f20b3c8babe7d8d31ab7fa080bb675eb9081cd4ca8189e73372e603f0",
+      "bytes": 746
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/quay-waterline-tele-vertical/result.png": {
+      "sha256": "dd67aabc6cb2e4438377c32c860a49c887fe7176b82379ddf053e6ea19618258",
+      "bytes": 3326
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/quay-waterline-tessa-palette/.mothbake-archive.json": {
+      "sha256": "390db7e9a8bed041f6cdb02bc9404422b8c761400fe450c44d27174c853148b4",
+      "bytes": 749
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/quay-waterline-tessa-palette/result.png": {
+      "sha256": "2d4dd41e2ac99c4076d1fe2578fe83fb562803e1d9d5c89ba357d530d9629859",
+      "bytes": 4591
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/terracotta-image-rx/.mothbake-archive.json": {
+      "sha256": "42118e2958f4ee854d8a70b8d0fed7fa634969e91c145c2243f3fc86022a0679",
+      "bytes": 733
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/terracotta-image-rx/result.png": {
+      "sha256": "9d11b84bb14799b426aff9d7d6b6fb46fb84dddadefd6808e14124f2cccacf98",
+      "bytes": 3003
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/terracotta-image-ry/.mothbake-archive.json": {
+      "sha256": "19143d7e0f45334edc718fe91778d0ecb248ed45e6ad2d81b3f59c9aecd483c3",
+      "bytes": 733
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/terracotta-image-ry/result.png": {
+      "sha256": "b3bf0ac9e11c5e5145199f0a4a252eecfdf9dd7285cda51ece440ebf5f72be45",
+      "bytes": 6055
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/terracotta-kernel-low/.mothbake-archive.json": {
+      "sha256": "419c2c118e258dbd401717dbdecba88e6bf016740a344dd72907f7c78cf044c2",
+      "bytes": 741
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/terracotta-kernel-low/result.png": {
+      "sha256": "b74c22f643196cef596aba22fbcf73cd59d09591ff10786808c6bee28c4fbc85",
+      "bytes": 3162
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/terracotta-tele-vertical/.mothbake-archive.json": {
+      "sha256": "6e452e9200cda6eebf1846f32543b400999e776c3efec7c30c1ee0e92c30df5f",
+      "bytes": 742
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/terracotta-tele-vertical/result.png": {
+      "sha256": "ec0842a5e63d5d94f827992454616ffc8dcb3bc5a50791349c05ed46a95c0996",
+      "bytes": 3592
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/terracotta-tessa-palette/.mothbake-archive.json": {
+      "sha256": "cf51c7242f8dac77bdbee3f2302041213ff5dcf12de5a0121719a38f9355d87a",
+      "bytes": 745
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/raw/terracotta-tessa-palette/result.png": {
+      "sha256": "bb3f598ba6bac39008b86158a5e0b83a218ae3eb3816be7a5867034aa0f0b2fc",
+      "bytes": 3536
+    },
+    "assets/moth/map-variety-20261003/engine-trials/provider/run-journal.json": {
+      "sha256": "09256962dede528fd3c5e245b8d68f8bf889837c7a713cc8ef33011ece504dd3",
+      "bytes": 43752
+    },
+    "assets/moth/map-variety-20261003/engine-trials/qpixl-repair.config.mjs": {
+      "sha256": "4119ad4de9a61685a5c7b5fa539bccb6a163323037813cb2474491dbf4dbd740",
+      "bytes": 426
+    },
+    "assets/moth/map-variety-20261003/engine-trials/raster.mjs": {
+      "sha256": "641daceaaeba3cc8b538f40878ceb3112f977e8da3182597725931528b229b66",
+      "bytes": 2272
+    },
+    "assets/moth/map-variety-20261003/engine-trials/receipt.json": {
+      "sha256": "7a79bf67f1adf7f536762e446f2e6bcd4415a6ad17e424a88ae3844bd2555a64",
+      "bytes": 15471
+    },
+    "assets/moth/map-variety-20261003/engine-trials/receipt.mjs": {
+      "sha256": "6ceebcf460948dc70a6ca1513068cbd5b5e068888eccb6b278ce12c0e6e58ef7",
+      "bytes": 3058
+    },
+    "assets/moth/map-variety-20261003/engine-trials/selection.json": {
+      "sha256": "0292f177979f51c0b358d11753a9bacf01f9195a4992568c42fe0e3e2e631a3f",
+      "bytes": 3396
+    },
+    "assets/moth/map-variety-20261003/engine-trials/serial.log": {
+      "sha256": "e9ab6baa71d3b1ce6e399e6da2e95a80d1dfb7fa67341de12125b5f9d086d358",
+      "bytes": 8639
+    },
+    "assets/moth/map-variety-20261003/engine-trials/sources/copper-patina-mask.png": {
+      "sha256": "35fa5af16dc93328534fcbff6de6b424d042f903b1ff13145e4d788fa7480760",
+      "bytes": 6384
+    },
+    "assets/moth/map-variety-20261003/engine-trials/sources/copper-patina-source.png": {
+      "sha256": "1511e4ee7d96a4c2173f0a22cf2972fc73264ffd5e5bbff41ba857b8f995f355",
+      "bytes": 4463
+    },
+    "assets/moth/map-variety-20261003/engine-trials/sources/copper-patina-target.png": {
+      "sha256": "78345f984dc1a24bf86510a0445744153ae289be7f03fcc153f684d9b14dbc35",
+      "bytes": 5597
+    },
+    "assets/moth/map-variety-20261003/engine-trials/sources/moss-lichen-mask.png": {
+      "sha256": "8c13a0270edc0958a0c2c8b20e974aa693daff040999577d19e0b151052b7829",
+      "bytes": 6561
+    },
+    "assets/moth/map-variety-20261003/engine-trials/sources/moss-lichen-source.png": {
+      "sha256": "21c06af76d2d2e6f33c6608f2ec24d85fd44ff4d84465a0980803865350f27c1",
+      "bytes": 5071
+    },
+    "assets/moth/map-variety-20261003/engine-trials/sources/moss-lichen-target.png": {
+      "sha256": "ba50881f7ea7353aa72c75ab87d526c2e4dd672ce36e89eed783ce7fa6fca5a6",
+      "bytes": 5440
+    },
+    "assets/moth/map-variety-20261003/engine-trials/sources/prismatic-etch-mask.png": {
+      "sha256": "17caa0c6ac9cf7d09e8beb5c4d9e8dccf3eacbfe7c77ff825411f1f05e0af144",
+      "bytes": 6380
+    },
+    "assets/moth/map-variety-20261003/engine-trials/sources/prismatic-etch-source.png": {
+      "sha256": "c0e2e5d7fb3615b457dca19367e2bc77ca79923be2e360ea232b197db607b07d",
+      "bytes": 3217
+    },
+    "assets/moth/map-variety-20261003/engine-trials/sources/prismatic-etch-target.png": {
+      "sha256": "489c4333459300ac0927e36baf2951ccfc9d2c3db4f389f5b481d36b3312819d",
+      "bytes": 3985
+    },
+    "assets/moth/map-variety-20261003/engine-trials/sources/quay-waterline-mask.png": {
+      "sha256": "0d89633deae0a37c823d2f6bfee4b22b33c44dbfa0534959734f14d7d5779ac5",
+      "bytes": 2024
+    },
+    "assets/moth/map-variety-20261003/engine-trials/sources/quay-waterline-source.png": {
+      "sha256": "8e84409cc00314ac4d765d21e0a40003f79b42206ff8d3c974dbba47bcf92017",
+      "bytes": 3387
+    },
+    "assets/moth/map-variety-20261003/engine-trials/sources/quay-waterline-target.png": {
+      "sha256": "b6e0ef13374d5032dd36f31586ffda29ec84634d88ccd0d460f8b362083a95db",
+      "bytes": 2588
+    },
+    "assets/moth/map-variety-20261003/engine-trials/sources/terracotta-mask.png": {
+      "sha256": "7f830a83af5bf0229f11c0b6b963adc5014bb16aa94a2ec9affe8148c8578054",
+      "bytes": 6164
+    },
+    "assets/moth/map-variety-20261003/engine-trials/sources/terracotta-source.png": {
+      "sha256": "fd31c44b940a780c7b17678ff4a0edda955a424bfed3a118c65c3dac5c9fa182",
+      "bytes": 2278
+    },
+    "assets/moth/map-variety-20261003/engine-trials/sources/terracotta-target.png": {
+      "sha256": "53d66766cba1f6880137026cf331a535321a939ff84b4f9410a2a29fcebfd1a5",
+      "bytes": 4279
+    },
+    "assets/moth/map-variety-20261003/engine-trials/tool-pin.json": {
+      "sha256": "ec61ce3440a60f181d0181c639b4aeae79200194b24e9623245adbb4943aa0f0",
+      "bytes": 185
+    },
+    "assets/moth/map-variety-20261003/engine-trials/tool.mjs": {
+      "sha256": "0da69a5427a1f3de9065cea291b4b79cbfa2b758a9abe63bbbdbfdc84cf6e213",
+      "bytes": 637
+    },
+    "assets/moth/map-variety-20261003/engine-trials/validation-summary.json": {
+      "sha256": "494f2b0289bec978f8bc6a54bf684b3639f35b6a46533dc59e7b7744615db3ee",
+      "bytes": 1187
+    },
+    "assets/moth/map-variety-20261003/engine-trials/verify-overlay.mjs": {
+      "sha256": "c90e389342c5169e60328ad3afc981aa400f89c359fcdd246bb9e8dac066372e",
+      "bytes": 3458
+    },
+    "assets/moth/map-variety-20261003/evidence/api-receipt.json": {
+      "sha256": "6936393d88ca3b777b0ee3144d187244dc4ff5e977bc09736cd8cd7796e607f6",
+      "bytes": 4446
+    },
+    "assets/moth/map-variety-20261003/evidence/initial.log": {
+      "sha256": "d631bc08ac2f260b781fa0bf20b92031d9af251e50b3b96c7535830557bd21e6",
+      "bytes": 4827
+    },
+    "assets/moth/map-variety-20261003/evidence/refined.log": {
+      "sha256": "04190e75542cca4c456bf84fc30d12f3c2603f212b2b6b168047fb73b371979b",
+      "bytes": 3258
+    },
+    "assets/moth/map-variety-20261003/evidence/supplemental.log": {
+      "sha256": "6a78839485eab503deae6149bcd8f18ad473ebb895237ef3fdfc5563ef5738c1",
+      "bytes": 1394
+    },
+    "assets/moth/map-variety-20261003/live.json": {
+      "sha256": "f0d66a0e355f87a02361a4e2a55306034be56a22b3b2c997024989c929c7fae8",
+      "bytes": 9085359
+    },
+    "assets/moth/map-variety-20261003/prepare-engine-trials.mjs": {
+      "sha256": "9d4ca3bf6cb8094ba4ee4caf9cd13790ed6c7f1c7841524e7f53f37b02da9677",
+      "bytes": 4411
+    },
+    "assets/moth/map-variety-20261003/prepare.mjs": {
+      "sha256": "807a3fb5bf8e7ea105a406471efbb2cdbdeec77f16e28e2000b66d272e32459c",
+      "bytes": 2041
+    },
+    "assets/moth/map-variety-20261003/provider/http-manifest.json": {
+      "sha256": "39cb884f0fdecc8a1496dd83adddc7c96fdc324425a9d9a91290dad6a90458c5",
+      "bytes": 11651
+    },
+    "assets/moth/map-variety-20261003/provider/http/aggregate.json": {
+      "sha256": "4bfcb497996ad74175d6e9ceda5148721c84922d09b969a227c1882d1bf36d75",
+      "bytes": 315925
+    },
+    "assets/moth/map-variety-20261003/provider/http/anodized-brush-x-refined.json": {
+      "sha256": "ff528c8467daa8bef1177710a77b23f68d0ad9a1a98d38db7dd6f3db75e12187",
+      "bytes": 313058
+    },
+    "assets/moth/map-variety-20261003/provider/http/anodized-brush.json": {
+      "sha256": "91e0983209da18391427b1dbc8a71d6a498c232310d32a3d3a42a547215ac090",
+      "bytes": 321705
+    },
+    "assets/moth/map-variety-20261003/provider/http/bark-fibers.json": {
+      "sha256": "5a0a3d05376773187b62022d932c31d9e9cf210f73a6f275d52677bffa78af91",
+      "bytes": 312957
+    },
+    "assets/moth/map-variety-20261003/provider/http/basalt-strata-x-refined.json": {
+      "sha256": "642b2df6e20903e25c9b979701b7c0916b9d58494a3d7c0a3716f041d647e22f",
+      "bytes": 312780
+    },
+    "assets/moth/map-variety-20261003/provider/http/basalt-strata.json": {
+      "sha256": "d0985e08fdd64beab65a976e8f1515dacd4968338f7aaec0bacdec2e198a09a8",
+      "bytes": 322678
+    },
+    "assets/moth/map-variety-20261003/provider/http/cast-seams-x-refined.json": {
+      "sha256": "1421e7ea61e4d6e50fe1a5f29d0da900cfeb1c606e5a51d8463dce3bbd9dc933",
+      "bytes": 312228
+    },
+    "assets/moth/map-variety-20261003/provider/http/cast-seams.json": {
+      "sha256": "d28dd8f4e3e3f2c5f33c534c9c357b28a8a94a6ed515dc706788e4ce11d45acc",
+      "bytes": 320594
+    },
+    "assets/moth/map-variety-20261003/provider/http/ceramic-enamel.json": {
+      "sha256": "0a479fa843064d9d9d63f08544eee99614607736a5427b4a7537d97f8f9049b7",
+      "bytes": 310332
+    },
+    "assets/moth/map-variety-20261003/provider/http/cobble-sett-x-refined.json": {
+      "sha256": "bee5769688f476796faa6d5c11241b04aeab9435f01317ea93e967d352ef3a08",
+      "bytes": 312587
+    },
+    "assets/moth/map-variety-20261003/provider/http/cobble-sett.json": {
+      "sha256": "47a74ae86a58860ae10be3b5757acb1032e84d97d8424b3594690cb01877f161",
+      "bytes": 320050
+    },
+    "assets/moth/map-variety-20261003/provider/http/copper-patina-x-refined.json": {
+      "sha256": "4b79da686b5f65c2a6d965397b345b0ddb5c45b6487ca87320f95a319beb7c1a",
+      "bytes": 313631
+    },
+    "assets/moth/map-variety-20261003/provider/http/copper-patina.json": {
+      "sha256": "ed6b57d572cab2d145f11f25947eb3e19a7ff968f1f2623afc32d6588e1fdcbe",
+      "bytes": 320940
+    },
+    "assets/moth/map-variety-20261003/provider/http/decal-stencil-x-refined.json": {
+      "sha256": "1795c7a9b66cf547577aa8aec72038700d7e74e1bd0961fadd45b3691bfb25a4",
+      "bytes": 319742
+    },
+    "assets/moth/map-variety-20261003/provider/http/decal-stencil.json": {
+      "sha256": "da25bdee41ee7f692c39b41bb07733b2b00e8e75791efc2b7d041ccb2cf697c5",
+      "bytes": 329561
+    },
+    "assets/moth/map-variety-20261003/provider/http/deep-silt-x-refined.json": {
+      "sha256": "e7a8e654f6eb7617f11003cf02b694e8d38ba93a21dd76095d3ac50f51642fd0",
+      "bytes": 315599
+    },
+    "assets/moth/map-variety-20261003/provider/http/deep-silt.json": {
+      "sha256": "643ddc52083dc6802b09a793312b97038a51505ce458241073c4e644d62f410f",
+      "bytes": 321015
+    },
+    "assets/moth/map-variety-20261003/provider/http/dune-sand.json": {
+      "sha256": "6c6a3009070e6428258e2e7f4323c6a675f2f4d80a73a467eebecf9282b3ca96",
+      "bytes": 313030
+    },
+    "assets/moth/map-variety-20261003/provider/http/fern-frond.json": {
+      "sha256": "62f411a7b02996a913ae2a72f06e398a309416a12c0db2eedd329ec1b13ad432",
+      "bytes": 323809
+    },
+    "assets/moth/map-variety-20261003/provider/http/frosted-glass.json": {
+      "sha256": "c50e60bfe0dbaf408de6e67eac38eaaa906225a857bac33dd46c4511a9fbfe7d",
+      "bytes": 314535
+    },
+    "assets/moth/map-variety-20261003/provider/http/iron-grate.json": {
+      "sha256": "127fa65f259069c00d72febddacedbba9bcd700960b8d8334a3dcaa312309426",
+      "bytes": 313439
+    },
+    "assets/moth/map-variety-20261003/provider/http/leaf-veins-x-refined.json": {
+      "sha256": "cdbf979856cbc28b6f9cac0bc83f66a557ae9bc6e9383353d0597d17559240fc",
+      "bytes": 320394
+    },
+    "assets/moth/map-variety-20261003/provider/http/leaf-veins.json": {
+      "sha256": "385823d6cb3370aa5afa1493f937f0765c39b002c54a0cdb0e7b55884c0a48eb",
+      "bytes": 323972
+    },
+    "assets/moth/map-variety-20261003/provider/http/lime-plaster-x-refined.json": {
+      "sha256": "fc0c5bb0cf0fb9eb63a95df98e6b655187c946b3a8d890b70db1f652634c6a50",
+      "bytes": 314740
+    },
+    "assets/moth/map-variety-20261003/provider/http/lime-plaster.json": {
+      "sha256": "baa48660f984fbc9f2fdd63d61022edb25e1846f23063f968475708c9f6852d5",
+      "bytes": 322877
+    },
+    "assets/moth/map-variety-20261003/provider/http/moss-lichen-x-refined.json": {
+      "sha256": "27052dcd154a49d551897608ab170d4f1681d223dd26ecc422a1f40b56e66426",
+      "bytes": 315092
+    },
+    "assets/moth/map-variety-20261003/provider/http/moss-lichen.json": {
+      "sha256": "7dab938683b9953a1520caab5470b6ae6f86b1d22bf1e9a7b284164785e9f521",
+      "bytes": 323677
+    },
+    "assets/moth/map-variety-20261003/provider/http/oxidized-iron.json": {
+      "sha256": "033124f7de41be2ff7d7845d5e1b6a980851d6f960f09e2e466c4f372629a6ab",
+      "bytes": 315484
+    },
+    "assets/moth/map-variety-20261003/provider/http/prismatic-etch-x-refined.json": {
+      "sha256": "1acc1b1bb9b1585b7bee098196673135b93cbb255f26bd1a3bcd1a687a216a1f",
+      "bytes": 321728
+    },
+    "assets/moth/map-variety-20261003/provider/http/prismatic-etch.json": {
+      "sha256": "22f6fe94c058800a6698b0b2e32ae670554418d6c94780fec0016f0fb8ca5795",
+      "bytes": 323336
+    },
+    "assets/moth/map-variety-20261003/provider/http/quay-waterline-x-refined.json": {
+      "sha256": "d11294aecb0ce13e1cf5c1a28f6040abf2e816a4eb5f881c75f1c345c76309f4",
+      "bytes": 311835
+    },
+    "assets/moth/map-variety-20261003/provider/http/quay-waterline.json": {
+      "sha256": "cab2ae6dd0e70b76dc54c1aeea5f4d9082f7d26bf2ebed71423333a1675d2614",
+      "bytes": 320155
+    },
+    "assets/moth/map-variety-20261003/provider/http/ribbed-steel-x-refined.json": {
+      "sha256": "82ad38084503a66d59d8dc52f35aadb84547491bc1ad4d1c07ae12abc6d46f2c",
+      "bytes": 312955
+    },
+    "assets/moth/map-variety-20261003/provider/http/ribbed-steel.json": {
+      "sha256": "bca3a77b5822e1bff4d9d753fd76406295523101b59585821b4aef9d8b4dbb7a",
+      "bytes": 320457
+    },
+    "assets/moth/map-variety-20261003/provider/http/road-gravel.json": {
+      "sha256": "329e15f8a56eab0aa6340032183f7db8afa0c5e495c0234df3eb2b3f3a652fc0",
+      "bytes": 315024
+    },
+    "assets/moth/map-variety-20261003/provider/http/salt-limestone.json": {
+      "sha256": "356d3bc07ced77e27609d24dbb9ea3b1e1161bd4c6bfc5822fc965927c79fce0",
+      "bytes": 314107
+    },
+    "assets/moth/map-variety-20261003/provider/http/sea-flow-x-refined.json": {
+      "sha256": "ee982b4679222d6ac3694aa7482257e6bbb8eb03965b2fd5e5dbcc9cce0bded9",
+      "bytes": 312392
+    },
+    "assets/moth/map-variety-20261003/provider/http/sea-flow.json": {
+      "sha256": "d5ad8b77182dd3760bb96432cc3530650560881b7754fafdd47a7785dc128c33",
+      "bytes": 322233
+    },
+    "assets/moth/map-variety-20261003/provider/http/slate-shingle.json": {
+      "sha256": "e46a2dfbed4b0e7724c71aed8cea5789c1edde147f8e211f4f0a71b0c19d0722",
+      "bytes": 310314
+    },
+    "assets/moth/map-variety-20261003/provider/http/terracotta.json": {
+      "sha256": "7a70928cfce6deeca38c4b056849ba44eaa53e5e17abf223500bf953c1b964fb",
+      "bytes": 310383
+    },
+    "assets/moth/map-variety-20261003/provider/http/timber-weather.json": {
+      "sha256": "b7b5ffb0166a23141ebc8e2881bc4db877a2edf4a783970984f4ebca41005a1d",
+      "bytes": 313595
+    },
+    "assets/moth/map-variety-20261003/provider/http/trim-wear.json": {
+      "sha256": "e75159ffb8600906910a6884e85515ea1ccacf8eff65334d5b1331fbfdba2e2e",
+      "bytes": 311652
+    },
+    "assets/moth/map-variety-20261003/provider/http/viaduct-asphalt.json": {
+      "sha256": "be42234b500997e6864e4710afe96bc4d2d8d17111640509248c878c59fa7f01",
+      "bytes": 314470
+    },
+    "assets/moth/map-variety-20261003/provider/http/wet-soot-x-refined.json": {
+      "sha256": "62373e11ca8fe35f4d21da59b5c294aa0feb6d6bdc362fe51a1e9a0a2037c549",
+      "bytes": 315312
+    },
+    "assets/moth/map-variety-20261003/provider/http/wet-soot.json": {
+      "sha256": "4b107bedbb122f62c53435d1f1299053f8f6b753d6e880f7f803256f8a74c20a",
+      "bytes": 321178
+    },
+    "assets/moth/map-variety-20261003/provider/raw/aggregate/.mothbake-archive.json": {
+      "sha256": "fd9867ab491aab484141d19230fd38ac0c25b81762cf8a86898d4e0c53f4fb10",
+      "bytes": 687
+    },
+    "assets/moth/map-variety-20261003/provider/raw/aggregate/inline-result.json": {
+      "sha256": "16e85479f1a60c64c08488dfda3c3dca51c281fa2decd11441c87a744805025c",
+      "bytes": 431817
+    },
+    "assets/moth/map-variety-20261003/provider/raw/anodized-brush-x-refined/.mothbake-archive.json": {
+      "sha256": "96b46dc8773479ebb325837b303ec1fed4d37e9f3ccb8224c4c5b8b8f44da6d1",
+      "bytes": 702
+    },
+    "assets/moth/map-variety-20261003/provider/raw/anodized-brush-x-refined/inline-result.json": {
+      "sha256": "0c210140d0de5251fb1dd81d827765980208f6b611b2c3bf84b9402000eb6e94",
+      "bytes": 428950
+    },
+    "assets/moth/map-variety-20261003/provider/raw/anodized-brush/.mothbake-archive.json": {
+      "sha256": "9e2d8c992ad279d68c843740f3c10dd88308ee784b80be442dae6f8bc5f7ca15",
+      "bytes": 692
+    },
+    "assets/moth/map-variety-20261003/provider/raw/anodized-brush/inline-result.json": {
+      "sha256": "d8c8521a80baca7c145159a5c03c1751806a107626f271febd8527e0ea3b5edc",
+      "bytes": 437597
+    },
+    "assets/moth/map-variety-20261003/provider/raw/bark-fibers/.mothbake-archive.json": {
+      "sha256": "bc3c3cd170165ad48abb1a44d4e2bc564072cc61ba13b9fd9b9585abaa0ee292",
+      "bytes": 689
+    },
+    "assets/moth/map-variety-20261003/provider/raw/bark-fibers/inline-result.json": {
+      "sha256": "50006f86e37b48c6c28fa956e22114f0803ca709a770f1c76efeec9fc201c01d",
+      "bytes": 428849
+    },
+    "assets/moth/map-variety-20261003/provider/raw/basalt-strata-x-refined/.mothbake-archive.json": {
+      "sha256": "2b6c8632dc9e3a716536f6ffd92b8b56fe24fcabf2ef962cea0b09675a98370f",
+      "bytes": 701
+    },
+    "assets/moth/map-variety-20261003/provider/raw/basalt-strata-x-refined/inline-result.json": {
+      "sha256": "10c640f1a24fbce1c693106c8b0c794b1f6851ad8a001bbdc2003753d43108f7",
+      "bytes": 428672
+    },
+    "assets/moth/map-variety-20261003/provider/raw/basalt-strata/.mothbake-archive.json": {
+      "sha256": "c05c021df0c966a8f5bc3d071e9f92f6b8ef8bc1ab133e0a1f7a9d9b8e465d6f",
+      "bytes": 691
+    },
+    "assets/moth/map-variety-20261003/provider/raw/basalt-strata/inline-result.json": {
+      "sha256": "1e8337b6c73d82ae2716c18b2511f9239b01b2e05fb577c6ffe85bdcc84ad6cf",
+      "bytes": 438570
+    },
+    "assets/moth/map-variety-20261003/provider/raw/cast-seams-x-refined/.mothbake-archive.json": {
+      "sha256": "e67a389687e6d77504efd49299c7790bc72bc8a90378d219350578dcaaa27a80",
+      "bytes": 698
+    },
+    "assets/moth/map-variety-20261003/provider/raw/cast-seams-x-refined/inline-result.json": {
+      "sha256": "abc371cf329d32d1603795fced69472b6bcdc09f7f29da2a700e208ac155c544",
+      "bytes": 428120
+    },
+    "assets/moth/map-variety-20261003/provider/raw/cast-seams/.mothbake-archive.json": {
+      "sha256": "c0110e6a3ff8cd3ccdac2ce81db559fb1d997b4e5dbc2bfe38062b3bdc82195b",
+      "bytes": 688
+    },
+    "assets/moth/map-variety-20261003/provider/raw/cast-seams/inline-result.json": {
+      "sha256": "fee145f06dfea17b3e9ac1a1d3a8513b4d824af4ae7d9a6f953c2bfacfbe99cf",
+      "bytes": 436486
+    },
+    "assets/moth/map-variety-20261003/provider/raw/ceramic-enamel/.mothbake-archive.json": {
+      "sha256": "5b6d997dea897ff3ffc2bc5ae03250d2aa9e59e9e9678d9d2c592f36197de805",
+      "bytes": 692
+    },
+    "assets/moth/map-variety-20261003/provider/raw/ceramic-enamel/inline-result.json": {
+      "sha256": "83b8f2ece9c628d36d00b995d68e25d45c91d09d10bfadbee2c523e5e883e388",
+      "bytes": 426224
+    },
+    "assets/moth/map-variety-20261003/provider/raw/cobble-sett-x-refined/.mothbake-archive.json": {
+      "sha256": "5e13a5bacb449c6239431dd991af92600c60f90b4c1231e95ab46f015ddd153e",
+      "bytes": 699
+    },
+    "assets/moth/map-variety-20261003/provider/raw/cobble-sett-x-refined/inline-result.json": {
+      "sha256": "04ae9ccb7df6abf9bef3f17a9635b47f374ea5004a8955d3b1e62f202b5bb411",
+      "bytes": 428479
+    },
+    "assets/moth/map-variety-20261003/provider/raw/cobble-sett/.mothbake-archive.json": {
+      "sha256": "4c54ee583055c454916dfc9f4426cd8f0bd9f96b8bfdf9395a02e31bcf4c1ac0",
+      "bytes": 689
+    },
+    "assets/moth/map-variety-20261003/provider/raw/cobble-sett/inline-result.json": {
+      "sha256": "671e2cae65710d695d2a306baaefb2eb4cf79166f99df8fa8c7bfb701908e454",
+      "bytes": 435942
+    },
+    "assets/moth/map-variety-20261003/provider/raw/copper-patina-x-refined/.mothbake-archive.json": {
+      "sha256": "3b83ca65583028ad17439cd4aa411d8ef71d74e4850c64994aa0802f981c8111",
+      "bytes": 701
+    },
+    "assets/moth/map-variety-20261003/provider/raw/copper-patina-x-refined/inline-result.json": {
+      "sha256": "5e811cb93cf3d998cfc7d0fcd87f84c11b059d1f583b5ab576f4335a55681eb6",
+      "bytes": 429523
+    },
+    "assets/moth/map-variety-20261003/provider/raw/copper-patina/.mothbake-archive.json": {
+      "sha256": "278fe65cf9dfeb89c38fd35e41a7766e0c5c0cdfaf10589d354cd0264188a9a8",
+      "bytes": 691
+    },
+    "assets/moth/map-variety-20261003/provider/raw/copper-patina/inline-result.json": {
+      "sha256": "e1e29a0bc3d9a859ec1be7dd832761cd9c6d2f8107d8711a0407e239ef419e5a",
+      "bytes": 436832
+    },
+    "assets/moth/map-variety-20261003/provider/raw/decal-stencil-x-refined/.mothbake-archive.json": {
+      "sha256": "5d8a0f49b0301764dbce0ab7af4e70c0efc471bd802a5e766e48e32efb602e33",
+      "bytes": 701
+    },
+    "assets/moth/map-variety-20261003/provider/raw/decal-stencil-x-refined/inline-result.json": {
+      "sha256": "7cecaa4918791361adef9346b18f1da0311d46d07c9f11ae6093a7569ff92a8a",
+      "bytes": 435634
+    },
+    "assets/moth/map-variety-20261003/provider/raw/decal-stencil/.mothbake-archive.json": {
+      "sha256": "9bf685ee6bfc77070a23494782d8c95c60c18ff324a83d04d1048ad6b10f31f1",
+      "bytes": 691
+    },
+    "assets/moth/map-variety-20261003/provider/raw/decal-stencil/inline-result.json": {
+      "sha256": "dfd53ad062f377a3c514b1f082ba5fb6db96ab7bf3fee4c078fc7deb0631cd7b",
+      "bytes": 445453
+    },
+    "assets/moth/map-variety-20261003/provider/raw/deep-silt-x-refined/.mothbake-archive.json": {
+      "sha256": "307326bf01721b0ee96f380b686a335b340de82a948c13d3b1c3b1826ed6ee7b",
+      "bytes": 697
+    },
+    "assets/moth/map-variety-20261003/provider/raw/deep-silt-x-refined/inline-result.json": {
+      "sha256": "6390708feb9c6e88c8c5f8cc5aff78f541b8f5fb31ac6169d9be0717a56d0b3d",
+      "bytes": 431491
+    },
+    "assets/moth/map-variety-20261003/provider/raw/deep-silt/.mothbake-archive.json": {
+      "sha256": "82737088bc199da2f1ad076271d762e06542a16a6121cd89c01261e86ea34558",
+      "bytes": 687
+    },
+    "assets/moth/map-variety-20261003/provider/raw/deep-silt/inline-result.json": {
+      "sha256": "eda48ba28f8ba061890f91d1260a588c03de77b6375907ba5c107127d270c4cf",
+      "bytes": 436907
+    },
+    "assets/moth/map-variety-20261003/provider/raw/dune-sand/.mothbake-archive.json": {
+      "sha256": "b0169ae34e02553137e6ff7c3a09b8be2354c1867990f7c2cc81dbff4fbf3d96",
+      "bytes": 687
+    },
+    "assets/moth/map-variety-20261003/provider/raw/dune-sand/inline-result.json": {
+      "sha256": "a9539c60b05be02332b9a9b9deb320b30d270c1cff48e483bc9f8f1fbcd1f0d2",
+      "bytes": 428922
+    },
+    "assets/moth/map-variety-20261003/provider/raw/fern-frond/.mothbake-archive.json": {
+      "sha256": "ee3959b1423634c2c2fb6a6cdf216f7f7137ebd8aeb372756ff36d7e664be985",
+      "bytes": 688
+    },
+    "assets/moth/map-variety-20261003/provider/raw/fern-frond/inline-result.json": {
+      "sha256": "6b5bb108077769555464733ad090bca15fd0694c19ac91c71b88736520e20798",
+      "bytes": 439701
+    },
+    "assets/moth/map-variety-20261003/provider/raw/frosted-glass/.mothbake-archive.json": {
+      "sha256": "df364d89ca2e3c53df315d0514c950d88e4fe8e8821bd4c9b1ef8960ee08f52c",
+      "bytes": 691
+    },
+    "assets/moth/map-variety-20261003/provider/raw/frosted-glass/inline-result.json": {
+      "sha256": "51af824fa72e3d4024a5a4437a901b35337ee4df74efca81dbb36677f30e3acf",
+      "bytes": 430427
+    },
+    "assets/moth/map-variety-20261003/provider/raw/iron-grate/.mothbake-archive.json": {
+      "sha256": "49ed81b74c6e2b1b0e3478ceb97ed78b6d76b74ee5c59285cd8a57715ac6ac04",
+      "bytes": 688
+    },
+    "assets/moth/map-variety-20261003/provider/raw/iron-grate/inline-result.json": {
+      "sha256": "a7df3f73f95e99dad2932e9be3c6d2683f05d970a2782363c0d8c01fca12a1eb",
+      "bytes": 429331
+    },
+    "assets/moth/map-variety-20261003/provider/raw/leaf-veins-x-refined/.mothbake-archive.json": {
+      "sha256": "7049ddc0bee6816879f81e2184c80de08360197703554b2edc2b4a65a396ce34",
+      "bytes": 698
+    },
+    "assets/moth/map-variety-20261003/provider/raw/leaf-veins-x-refined/inline-result.json": {
+      "sha256": "2acbe30da5f6d8e1ffca0890c2b27576bb81c7e64232215d81b6b2e9f1edb847",
+      "bytes": 436286
+    },
+    "assets/moth/map-variety-20261003/provider/raw/leaf-veins/.mothbake-archive.json": {
+      "sha256": "bb3fa61c063dcfe9981b1ce083548a4ddf16ba23737c6851f1f50d2f96731477",
+      "bytes": 688
+    },
+    "assets/moth/map-variety-20261003/provider/raw/leaf-veins/inline-result.json": {
+      "sha256": "7cbff250cdb6d58d94c06238747125f5b6162f4ab4017b2b21620637a19943c3",
+      "bytes": 439864
+    },
+    "assets/moth/map-variety-20261003/provider/raw/lime-plaster-x-refined/.mothbake-archive.json": {
+      "sha256": "f050160d6decfd41300baff26c73a81e8ccd3d620e19f20c8f3194c50d9bdc70",
+      "bytes": 700
+    },
+    "assets/moth/map-variety-20261003/provider/raw/lime-plaster-x-refined/inline-result.json": {
+      "sha256": "7f3f17910fc275c7680ac708ca9413e7aacca194890809030b1910981ee18aaa",
+      "bytes": 430632
+    },
+    "assets/moth/map-variety-20261003/provider/raw/lime-plaster/.mothbake-archive.json": {
+      "sha256": "5c35c8eb7939ba5e266445203681094c4c282c3eeefd978bc351c0222a6b4b27",
+      "bytes": 690
+    },
+    "assets/moth/map-variety-20261003/provider/raw/lime-plaster/inline-result.json": {
+      "sha256": "d64a1405c466aa6ad1bf4faa060141c6ef9440d9ad0ef5d98085adfde0cd4b38",
+      "bytes": 438769
+    },
+    "assets/moth/map-variety-20261003/provider/raw/moss-lichen-x-refined/.mothbake-archive.json": {
+      "sha256": "df1ecfbf9ede927f8b82b9ee8c2bce8ecd46f94130fb6d94e2b8ad495938ff2b",
+      "bytes": 699
+    },
+    "assets/moth/map-variety-20261003/provider/raw/moss-lichen-x-refined/inline-result.json": {
+      "sha256": "f0ebef7e20ff47d8b32d411c8d268048db380115590cec29f0b69f2a08bf69dc",
+      "bytes": 430984
+    },
+    "assets/moth/map-variety-20261003/provider/raw/moss-lichen/.mothbake-archive.json": {
+      "sha256": "a31896ce5bc1a4dce9244b64b8b8173fda3c230b816181a3048e3125a4aa0a2d",
+      "bytes": 689
+    },
+    "assets/moth/map-variety-20261003/provider/raw/moss-lichen/inline-result.json": {
+      "sha256": "9c6cb80a1413b5d524e1d4eda447666e5d47c8f7daf635960cfdc5c19a9c2df0",
+      "bytes": 439569
+    },
+    "assets/moth/map-variety-20261003/provider/raw/oxidized-iron/.mothbake-archive.json": {
+      "sha256": "e3814776a86d028a5913de79c753bd70b5f990ec540f02a3d3aa15faf1180f97",
+      "bytes": 691
+    },
+    "assets/moth/map-variety-20261003/provider/raw/oxidized-iron/inline-result.json": {
+      "sha256": "960527b3fa55e6272b9beb1597fee7d6f94ca4183351e1e85e66457a4c157f64",
+      "bytes": 431376
+    },
+    "assets/moth/map-variety-20261003/provider/raw/prismatic-etch-x-refined/.mothbake-archive.json": {
+      "sha256": "9e1a4225ea16680704357701ed6784dd5fe76e7d1c4ab1367dcc7edc805ec2d9",
+      "bytes": 702
+    },
+    "assets/moth/map-variety-20261003/provider/raw/prismatic-etch-x-refined/inline-result.json": {
+      "sha256": "1528ead23b73877e913c02714a160d0fd1ed3f518677068828d87b673825ed3c",
+      "bytes": 437620
+    },
+    "assets/moth/map-variety-20261003/provider/raw/prismatic-etch/.mothbake-archive.json": {
+      "sha256": "fabf203c720328cbd2af26263ce2da1eac064e2cc38a0932eb064ba0bd379287",
+      "bytes": 692
+    },
+    "assets/moth/map-variety-20261003/provider/raw/prismatic-etch/inline-result.json": {
+      "sha256": "9cf509485aff0b97d9773a9f290f7240482cdba32f193e27a4fbf7dbe82cb050",
+      "bytes": 439228
+    },
+    "assets/moth/map-variety-20261003/provider/raw/quay-waterline-x-refined/.mothbake-archive.json": {
+      "sha256": "5798f6ac3aaaa26ac0a5acfd97a6044a83106fe581112c159f04ec473c94a1cf",
+      "bytes": 702
+    },
+    "assets/moth/map-variety-20261003/provider/raw/quay-waterline-x-refined/inline-result.json": {
+      "sha256": "ffffd2745885afc3e21d0fbb29b254209fdf1a0a9d4de41fbe94e4e353742d7b",
+      "bytes": 427727
+    },
+    "assets/moth/map-variety-20261003/provider/raw/quay-waterline/.mothbake-archive.json": {
+      "sha256": "887b47a12e2f40ac55bef9c2aafe33df1919f626067b5182d00ce3ad9ec3ca5e",
+      "bytes": 692
+    },
+    "assets/moth/map-variety-20261003/provider/raw/quay-waterline/inline-result.json": {
+      "sha256": "2034ea8385c16fd3d39bd86a6d92d3592d2e8659cd41b0f8a3075a7ce10eb286",
+      "bytes": 436047
+    },
+    "assets/moth/map-variety-20261003/provider/raw/ribbed-steel-x-refined/.mothbake-archive.json": {
+      "sha256": "77bcf8f787e0b71727a24d098fbca48ca7167f5ce0d40c936ba99d01ac9ce05e",
+      "bytes": 700
+    },
+    "assets/moth/map-variety-20261003/provider/raw/ribbed-steel-x-refined/inline-result.json": {
+      "sha256": "5903eeed7d5529e4c46b1b7bca4ab89c711c2e265a15cda58dc2f472aa752db5",
+      "bytes": 428847
+    },
+    "assets/moth/map-variety-20261003/provider/raw/ribbed-steel/.mothbake-archive.json": {
+      "sha256": "11673d7e6b27e67b16529e005caa42fcb3f576cf05620bf144e4378102aadd40",
+      "bytes": 690
+    },
+    "assets/moth/map-variety-20261003/provider/raw/ribbed-steel/inline-result.json": {
+      "sha256": "bb4c4583d1c7a8e92c238b87d6e7638b01d8b05ed63459fe2a4776a9ddb03841",
+      "bytes": 436349
+    },
+    "assets/moth/map-variety-20261003/provider/raw/road-gravel/.mothbake-archive.json": {
+      "sha256": "2a2680cf0bb011c699cb9d631b0473bc02fc73c9d2ac0e3241d7f8459adf6062",
+      "bytes": 689
+    },
+    "assets/moth/map-variety-20261003/provider/raw/road-gravel/inline-result.json": {
+      "sha256": "a2b5ac1a3d835ae1a8e2bae66035daa46d27dfa90ed3e24cc33eac5904f778a8",
+      "bytes": 430916
+    },
+    "assets/moth/map-variety-20261003/provider/raw/salt-limestone/.mothbake-archive.json": {
+      "sha256": "b362fbc3541ef67439c3572f0b1798b2cb6423c90257b1f8dd6f274dae82454c",
+      "bytes": 692
+    },
+    "assets/moth/map-variety-20261003/provider/raw/salt-limestone/inline-result.json": {
+      "sha256": "6b6a06bc8bd069eaa88ba96b4db5b6f850fe49bc538d453157f7f33d11722908",
+      "bytes": 429999
+    },
+    "assets/moth/map-variety-20261003/provider/raw/sea-flow-x-refined/.mothbake-archive.json": {
+      "sha256": "07cfb15d1284b54d3a30586db69087ecbc7649dd2b114e85369fb4830377a78d",
+      "bytes": 696
+    },
+    "assets/moth/map-variety-20261003/provider/raw/sea-flow-x-refined/inline-result.json": {
+      "sha256": "297153fbb82123dfebdac75e9db5ce80ebce575b203d55fd40ddfdfe10bf13e2",
+      "bytes": 428284
+    },
+    "assets/moth/map-variety-20261003/provider/raw/sea-flow/.mothbake-archive.json": {
+      "sha256": "e7a1ab7091859bb1557570b86b8841a53112654773a660c645ba3ddf181110fd",
+      "bytes": 686
+    },
+    "assets/moth/map-variety-20261003/provider/raw/sea-flow/inline-result.json": {
+      "sha256": "54586d5d7b3d41494482974aa42560f35248fb849447c8223f0d2ca72bdc1ef1",
+      "bytes": 438125
+    },
+    "assets/moth/map-variety-20261003/provider/raw/slate-shingle/.mothbake-archive.json": {
+      "sha256": "8fd6cba907ad2390b3ee9ebc41d21594e2dbf6a29551ec4ab59ea9558466393b",
+      "bytes": 691
+    },
+    "assets/moth/map-variety-20261003/provider/raw/slate-shingle/inline-result.json": {
+      "sha256": "b2c6763d4b5d3ea0b2c6d44005810b1b563ac2d8870abb510065fb75b2139a9b",
+      "bytes": 426206
+    },
+    "assets/moth/map-variety-20261003/provider/raw/terracotta/.mothbake-archive.json": {
+      "sha256": "61343219be465de1b37ad84268e7a8f70772f86b7944b5704108acb1820430bc",
+      "bytes": 688
+    },
+    "assets/moth/map-variety-20261003/provider/raw/terracotta/inline-result.json": {
+      "sha256": "3d9534126aac38a8fd27360c95ff62e2ab96b91c25c5a8b83566eefdcdc7f5a1",
+      "bytes": 426275
+    },
+    "assets/moth/map-variety-20261003/provider/raw/timber-weather/.mothbake-archive.json": {
+      "sha256": "3c2bc99af3b5e59eba533ad45cd15487e41b4f440273c5753653e0a61ad7e7ac",
+      "bytes": 692
+    },
+    "assets/moth/map-variety-20261003/provider/raw/timber-weather/inline-result.json": {
+      "sha256": "d737797d0230c67fa64631beba50f56b83e4a40ffebf69a1b4a724bd1e827355",
+      "bytes": 429487
+    },
+    "assets/moth/map-variety-20261003/provider/raw/trim-wear/.mothbake-archive.json": {
+      "sha256": "1adceaa5dc4815d56e2cba676860bf31b3a387a858f4eed5447d0abaed2628e4",
+      "bytes": 687
+    },
+    "assets/moth/map-variety-20261003/provider/raw/trim-wear/inline-result.json": {
+      "sha256": "2c97880f37f271f8b7cf38b34dbe8ed8610124b662d386f5efba44c3846c35e6",
+      "bytes": 427544
+    },
+    "assets/moth/map-variety-20261003/provider/raw/viaduct-asphalt/.mothbake-archive.json": {
+      "sha256": "54d526102fd93651ba8aff901066ef64f5e61645d39872c7e461ac14d06f8037",
+      "bytes": 693
+    },
+    "assets/moth/map-variety-20261003/provider/raw/viaduct-asphalt/inline-result.json": {
+      "sha256": "788daaa5acdef6732832e7367ec78f4cc2568dc8cd9ddb96def222a784b9643c",
+      "bytes": 430362
+    },
+    "assets/moth/map-variety-20261003/provider/raw/wet-soot-x-refined/.mothbake-archive.json": {
+      "sha256": "4fe5dc13dd53e28b98af505bdc9159b2640c97469935f2016d724316de192c3a",
+      "bytes": 696
+    },
+    "assets/moth/map-variety-20261003/provider/raw/wet-soot-x-refined/inline-result.json": {
+      "sha256": "0dc9c24aaa0683cc2fc058a57e5ec1373b89cc5765ebc15f346905d387b5a7e3",
+      "bytes": 431204
+    },
+    "assets/moth/map-variety-20261003/provider/raw/wet-soot/.mothbake-archive.json": {
+      "sha256": "8f53c937f07846485896cb7731080064ea3ec01d1fcdb375015735899ccadce7",
+      "bytes": 686
+    },
+    "assets/moth/map-variety-20261003/provider/raw/wet-soot/inline-result.json": {
+      "sha256": "7a27e288331a023cd21b41b932beabb54ef82368aa37c7be135d2119031ff2b3",
+      "bytes": 437070
+    },
+    "assets/moth/map-variety-20261003/provider/run-journal.json": {
+      "sha256": "0a2779c40d759a6bf0646230d6b0f4e0bacf07de3b8995094074498cc307a7a8",
+      "bytes": 75944
+    },
+    "assets/moth/map-variety-20261003/receipt.mjs": {
+      "sha256": "38c291a41d9f5bf6c7d0504e8c05f155b0e26a52e0516dfd84b24e11fb7731a2",
+      "bytes": 2490
+    },
+    "assets/moth/map-variety-20261003/recipes.mjs": {
+      "sha256": "daef8300680150f1bb3c0f4b3c663c8579455e05dd0dfd8255d3ff62a7ad6d67",
+      "bytes": 7143
+    },
+    "assets/moth/map-variety-20261003/refine.mjs": {
+      "sha256": "ab968abcb4f1ac4a8959046e64a4c2a276229a719c79dd13c4510c7718e11f63",
+      "bytes": 871
+    },
+    "assets/moth/map-variety-20261003/refined.json": {
+      "sha256": "97390a323975b5ebcfc1c48d2efaa050d486519e56728e52b3d82fdc9df74233",
+      "bytes": 5678707
+    },
+    "assets/moth/map-variety-20261003/review-engines.mjs": {
+      "sha256": "d4c2a678b5d106ba804ff639cca2bce410c855aa41d00ede5061a105ec7d8b6d",
+      "bytes": 2124
+    },
+    "assets/moth/map-variety-20261003/seeds/aggregate.json": {
+      "sha256": "e0f456ccf9fbf661079fc36b9a58182e0a39112acd5243125a48e580aa356fa2",
+      "bytes": 254974
+    },
+    "assets/moth/map-variety-20261003/seeds/anodized-brush.json": {
+      "sha256": "6345b77a38007bf1ffd62ad015770b5b305d290c7c12d5bfdcde030f88574a1c",
+      "bytes": 268540
+    },
+    "assets/moth/map-variety-20261003/seeds/bark-fibers.json": {
+      "sha256": "3857fa4c0e3708ba63115fcd11e035e85ec8a87529df65f8e0d46e7fce8dea2d",
+      "bytes": 266931
+    },
+    "assets/moth/map-variety-20261003/seeds/basalt-strata.json": {
+      "sha256": "c70af9f9ab18e53948817f7f080cbb5e9c28aa466a1723564e1e92c77c4edef3",
+      "bytes": 269863
+    },
+    "assets/moth/map-variety-20261003/seeds/cast-seams.json": {
+      "sha256": "6ad89411ae472d3f5ebbb1ab057c2a0069c821d6dda1ec3b83a937774deecab9",
+      "bytes": 262180
+    },
+    "assets/moth/map-variety-20261003/seeds/ceramic-enamel.json": {
+      "sha256": "a8bbaa99377cc8b147da3463a17ca3ca060b8b1c7aa6d0afd0609d93f6953528",
+      "bytes": 272306
+    },
+    "assets/moth/map-variety-20261003/seeds/cobble-sett.json": {
+      "sha256": "19b2c8974201886610eb2a8d9d3ab036212e5826c37f2ff13baba8b3112289de",
+      "bytes": 285632
+    },
+    "assets/moth/map-variety-20261003/seeds/copper-patina.json": {
+      "sha256": "82b1aea18b5868fdaff95e4d8cae581f1ab657d4ebb442d21e62cfde8dcb97f3",
+      "bytes": 275970
+    },
+    "assets/moth/map-variety-20261003/seeds/decal-stencil.json": {
+      "sha256": "0d7e8a43f9c80e62a19590e99f8f70d402340c45db0f58fc6d309511a415eb84",
+      "bytes": 240882
+    },
+    "assets/moth/map-variety-20261003/seeds/deep-silt.json": {
+      "sha256": "5f6b020f1daa61db607ec7e8a19f482fc5c27781580407a84ad431229806774e",
+      "bytes": 280889
+    },
+    "assets/moth/map-variety-20261003/seeds/dune-sand.json": {
+      "sha256": "cd1dde776e3e2bf250db1fc5a0fe32b25f0fa8da768e3cf6a1f4aeac26c2ae2d",
+      "bytes": 267840
+    },
+    "assets/moth/map-variety-20261003/seeds/fern-frond.json": {
+      "sha256": "7b77a3a0f2c9182d5c176159a7a280f6be111231ca60eb3dda94e80b169a11d8",
+      "bytes": 201500
+    },
+    "assets/moth/map-variety-20261003/seeds/frosted-glass.json": {
+      "sha256": "db0335637e94937829c7158a7854f11c1f61aa648d2aeef51ae6e44dce9ab65f",
+      "bytes": 286806
+    },
+    "assets/moth/map-variety-20261003/seeds/iron-grate.json": {
+      "sha256": "5e9efe7f95eb50e3e723164d9544ddf1c9fc73f9258ebafc431a44f0656b588c",
+      "bytes": 232203
+    },
+    "assets/moth/map-variety-20261003/seeds/leaf-veins.json": {
+      "sha256": "482cd18d7cabd78e2366f08e5ad898916515af427653eeeb587c685856c70a38",
+      "bytes": 267762
+    },
+    "assets/moth/map-variety-20261003/seeds/lime-plaster.json": {
+      "sha256": "f59dcbcabc6c03b67610c551a622121fcb69f01b54fc9000224fb6c5aaa379d7",
+      "bytes": 275446
+    },
+    "assets/moth/map-variety-20261003/seeds/moss-lichen.json": {
+      "sha256": "00baa93b33679e1bbc21695217aa5c135fe5432337201ba1f7816a8f0b030bc0",
+      "bytes": 266182
+    },
+    "assets/moth/map-variety-20261003/seeds/oxidized-iron.json": {
+      "sha256": "a45ed007bf86a7fba7acc0dfec9402946d0cfd79f0627f4b033f9228ba8d496c",
+      "bytes": 277034
+    },
+    "assets/moth/map-variety-20261003/seeds/prismatic-etch.json": {
+      "sha256": "6d6ee0330dfa0fce6df3cde7f2d6944cb40a90858a9a7e2265ee1923d0fb14f3",
+      "bytes": 266329
+    },
+    "assets/moth/map-variety-20261003/seeds/quay-waterline.json": {
+      "sha256": "d54ca89929df53f2eb763deae5b00fbd65282f6353aee91d3f54a54a6b8c2103",
+      "bytes": 222055
+    },
+    "assets/moth/map-variety-20261003/seeds/ribbed-steel.json": {
+      "sha256": "818d045b198ff3958dc0058f3b63544f253592c6f165044e969ca5751e80dc4d",
+      "bytes": 267146
+    },
+    "assets/moth/map-variety-20261003/seeds/road-gravel.json": {
+      "sha256": "d1d9d95cdec2a38d90b311ef27f2f0a931202ca87f894726ce218c957794eb55",
+      "bytes": 274806
+    },
+    "assets/moth/map-variety-20261003/seeds/salt-limestone.json": {
+      "sha256": "ad3137467ac93ff70e15467382e7825d0a5dc861f709dda6a4c78921bb25dd8b",
+      "bytes": 289892
+    },
+    "assets/moth/map-variety-20261003/seeds/sea-flow.json": {
+      "sha256": "7fcf851000c64dfd49058ed6eaa10f85518ed466a455a8ce92726293343b24f5",
+      "bytes": 270937
+    },
+    "assets/moth/map-variety-20261003/seeds/slate-shingle.json": {
+      "sha256": "a179f3fda301023cd77bb2868c8179a6400fd8bb22b00f1a7cf2ea2c493f9b1c",
+      "bytes": 262490
+    },
+    "assets/moth/map-variety-20261003/seeds/terracotta.json": {
+      "sha256": "0ef0354649e095e8dbb3f2a5a9790e2e030a2da93874991c660841b67b17bc4a",
+      "bytes": 260927
+    },
+    "assets/moth/map-variety-20261003/seeds/timber-weather.json": {
+      "sha256": "52f8263207317623a25a08a00c35c3358b3dee3270ddcbfa4a27cba92749ea81",
+      "bytes": 268423
+    },
+    "assets/moth/map-variety-20261003/seeds/trim-wear.json": {
+      "sha256": "5b677ac4b9e38ccc0bee851f92da0e98ad239ece474c8f171a98acc66ffb5179",
+      "bytes": 231608
+    },
+    "assets/moth/map-variety-20261003/seeds/viaduct-asphalt.json": {
+      "sha256": "9e083a55ca84aef9de0698ef0640079fc6ce01297917ed5a1607ce959f763689",
+      "bytes": 276314
+    },
+    "assets/moth/map-variety-20261003/seeds/wet-soot.json": {
+      "sha256": "d941a368fbc1aa55b59394d7a3e8c1d287fe667fdde1c10e802e2696292a8d2e",
+      "bytes": 295772
+    },
+    "assets/moth/map-variety-20261003/supplemental.json": {
+      "sha256": "8de88ed310679f3196023c68c1949ab6bfd6305bce43b1622cceb186b9edfd3c",
+      "bytes": 2271427
+    },
+    "assets/moth/map-variety-20261003/tool-pin.json": {
+      "sha256": "43ad76d5cf74ee495456d62b4fcd297f4aa079f0dbeb57c8e89d259b5e4fab6b",
+      "bytes": 185
+    },
+    "assets/moth/map-variety-20261003/tool.mjs": {
+      "sha256": "0d7d38e618f256948d9b779bc8037860b8c99878ff8317fc66b257e61ab73d05",
+      "bytes": 712
+    },
+    "assets/moth/map-variety-20261003/verify.mjs": {
+      "sha256": "8552d975aae9de930781adb44091b75b66d500f09944b02a5e8a5ca514d2fefd",
+      "bytes": 3322
+    }
+  }
+}
