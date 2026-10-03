@@ -1,0 +1,32 @@
+{
+  "title": "Puma, Titan and Scout — produced vehicle review E",
+  "source_commit": "1c26b4bb7104480ad6383a083570435296c9f20b",
+  "evidence_root": "/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/expansion-four/vehicles/production-e",
+  "notes": [
+    "Actual Godot inspection and connected gameplay captures of nine authored vehicle LOD exports. The original images and outcome receipts are copied unchanged; click images for full resolution.",
+    "Close views are staged native inspections. Gameplay uses three native clients per case on Sunscar Convoy / Combined Arms and ordinary source simulation. Software-rendered gameplay disables shadows and uses 50% 3D resolution; these captures do not establish full-quality GPU performance or human handling feel.",
+    "Titan UI150 retains the original compact screenshot, including clipped bottom instructions. A source follow-up is assigned; this gallery does not claim that HUD issue is corrected. Vehicle package promotion and final Windows/Linux verification remain pending."
+  ],
+  "files": [
+    {"kind":"image","path":"inspection/puma-lod0-close.png","caption":"Puma close — LOD0"},
+    {"kind":"image","path":"inspection/puma-lod1-close.png","caption":"Puma close — LOD1"},
+    {"kind":"image","path":"inspection/puma-lod2-close.png","caption":"Puma close — LOD2"},
+    {"kind":"image","path":"inspection/titan-lod0-close.png","caption":"Titan close — LOD0"},
+    {"kind":"image","path":"inspection/titan-lod1-close.png","caption":"Titan close — LOD1"},
+    {"kind":"image","path":"inspection/titan-lod2-close.png","caption":"Titan close — LOD2"},
+    {"kind":"image","path":"inspection/scout-lod0-close.png","caption":"Scout close — LOD0"},
+    {"kind":"image","path":"inspection/scout-lod1-close.png","caption":"Scout close — LOD1"},
+    {"kind":"image","path":"inspection/scout-lod2-close.png","caption":"Scout close — LOD2"},
+    {"kind":"image","path":"inspection/puma-compact-rear.png","caption":"Puma rear inspection"},
+    {"kind":"image","path":"inspection/titan-compact-rear.png","caption":"Titan rear inspection"},
+    {"kind":"image","path":"inspection/scout-compact-rear.png","caption":"Scout rear inspection"},
+    {"kind":"image","path":"puma/gameplay-drive-bend.png","caption":"Puma — native connected driving"},
+    {"kind":"image","path":"titan/gameplay-drive-bend.png","caption":"Titan — native connected driving"},
+    {"kind":"image","path":"scout/gameplay-drive-bend.png","caption":"Scout — native connected driving"},
+    {"kind":"image","path":"titan-ui150.png","caption":"Titan compact UI150 — original lower-instruction clipping retained"},
+    {"kind":"receipt","path":"puma/outcome.json","caption":"Puma connected outcome"},
+    {"kind":"receipt","path":"titan/outcome.json","caption":"Titan connected outcome"},
+    {"kind":"receipt","path":"scout/outcome.json","caption":"Scout connected outcome"},
+    {"kind":"receipt","path":"HEAVY_GRANT_RELEASE.json","caption":"Vehicle-E process cleanup and release"}
+  ]
+}
