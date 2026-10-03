@@ -80,6 +80,9 @@ func run() -> void:
 		session.on_snapshot({"state":record.state})
 		session.ground_tells.apply_events(record.events)
 		session.combat.apply_events(record.events, 0)
+		# K's accepted-event operator pose bridge is now a real production recipient.
+		# Dispatch recorded events once through its existing eligibility checks.
+		session.presentation._on_melee_events(record.events)
 		session.av_events(record.events)
 		for visual: Node in session.presentation.actors.values():
 			var model: Variant = visual.get("model_id")

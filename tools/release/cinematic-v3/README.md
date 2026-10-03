@@ -16,11 +16,12 @@ grant under the current resume directive.
 ## Current scope and dependencies
 
 This is the existing 75-second four-chapter campaign story, not a montage of the
-ten registered multiplayer worlds or a new fighting story. Parent `5d33287a`
-is merged. Nine produced fighting rigs, quiet Moth revisions and Parallax C are
-real parent inputs; responsive fighting framing still needs native acceptance.
-No fighting footage is claimed or inserted. The six remaining production units
-must finish before final cinematic production, as RELEASE_COMPLETION requires.
+thirteen registered multiplayer worlds / 73 accepted pairs or a new fighting story.
+Parent `9cd1ac72` supplies all seven produced asset units, K's full nine-operator
+motion and L's nine native polish fixtures. The one-file L lobby-choice closure
+advance is packaging-owned and must be merged before strict production preflight.
+No fighting footage is inserted. K's unaccepted live-kick timing and supplemental
+world/combined-arms vehicle capture gap remain separate from this staged film.
 
 `--plan` audits actual packaging-owned promotion records, masters, exported GLB
 contents/fingerprints and runtime hooks using `productionResources()`; it reports
@@ -53,6 +54,21 @@ node tools/release/cinematic-v3/pipeline.mjs --edit --slot-granted --output="$E"
 # Inspect native footage, full movie, audio and menu images before installing.
 node tools/release/cinematic-v3/pipeline.mjs --install-menu --slot-granted --output="$E"
 ```
+
+Run each production invocation under the shared **nonwaiting** lock:
+`flock -n /tmp/opencode/cocs-finish-acceptance.lock node ...`. The pipeline does not
+take another lock internally. Native steps use the existing Xvfb helper's explicit
+TCP mode (K's Unix-listener workaround) and the existing `finish_runner.run_bounded`
+subreaper; no second Xvfb implementation or borrowed display is used. Display and
+native descendants share bounded ownership receipts and three post-exit audits.
+At the end of the granted batch, audit all retained engine/encoder groups:
+
+```sh
+python3 -B tools/release/cinematic-v3/release.py --evidence="$E" --grant=CINEMATIC-NATIVE-20261003-M
+```
+
+That read-only adapter reuses K/L's tag/PGID scanner and records three audits. It
+never kills unrelated services or issues an empty release without process receipts.
 
 Installation first revalidates every shot's actual PNGs, source-clock ledger,
 execution artifacts, candidate-menu proof and encoded master. It preserves the
