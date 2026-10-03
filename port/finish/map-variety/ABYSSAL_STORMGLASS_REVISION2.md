@@ -109,3 +109,17 @@ truthfully**; `game/race.mjs` and `game/vehicles.mjs` untouched; exactly
 
 Parent owns merge and any native grant. Sol runs the serial Blender build against
 the adapter above. No engine/render/import/native claim is made here.
+# Parent source-integration checkpoint
+
+Sol corrective commit `42e6cab4` was independently reviewed and merged as
+`18201a06`. Parent reproduced 14 Node, 29 Python and three shared-Kit source
+checks, plus both authority generation `--check` commands. The previous rejected
+deliveries and their findings remain historical; the corrected source is queued
+for actual production, not promoted into runtime.
+
+Actual Blender execution still requires the injected shared material adapter and
+the next exclusive heavy grant. Verify exported base-color pixels, source/derived
+image lineage, complete evaluated triangle/primitive budgets, signage inclusion,
+master/reopen visibility and player-height native captures. R currently remains
+scoped to Foundry. No coastal `.blend`, GLB, rendered acceptance or new runtime
+package is claimed by this source-integration checkpoint.

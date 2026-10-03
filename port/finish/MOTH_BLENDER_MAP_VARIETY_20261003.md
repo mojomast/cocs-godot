@@ -29,7 +29,7 @@ Source foundation: `55edd9f2`. All work is isolated from the live P candidate.
 | Work | Agent/session | Current responsibility |
 |---|---|---|
 | New Moth resources + mothbake | Astra `ses_efdbb8a90ffeBrpRZAFfraUSXv` | Complete through `9dc08e53`, parent-integrated; generic tool `69c62d7c`; base + multi-engine overlay reviewed for Blender application |
-| Abyssal/coastal variety | Sol `ses_efd55bb5cffeJRWNA4xZq8O6cE` | Corrective source implementation after failed Flash delivery; original Flash worker stopped |
+| Abyssal/coastal variety | Sol `ses_efd55bb5cffeJRWNA4xZq8O6cE` | Corrected source `42e6cab4`, parent-reviewed and merged as `18201a06`; 46 checks reproduced; queued for adapter integration and serial Blender production |
 | Botanical/urban variety | Astra `ses_efd55fd04ffedSQ6q14ztgmqaa` | Corrective source implementation after failed Flash delivery; original Flash worker stopped |
 | Blender production integration + Foundry | Sol `ses_efdba38e9ffeManqAN9zWiJ3va` | Sole heavy owner R: actual material adapter/Blender toolkit execution, Foundry revision-4 modeling, masters/GLB/reopen/render checks |
 
@@ -56,14 +56,25 @@ No revised map master, export or rendered acceptance is claimed at this checkpoi
   but found further blockers: 61 vertices from 25 Stormglass parts enter road
   polygons; terrain/art duplicates include all 137 terrain surfaces; 21 labels
   are created after batching and omitted from GLB selection; Abyssal top caps
-  face downward and nine original reef forms are omitted. Repairs are
-  now escalated to Sol reviewer for full-mesh placement, render deduplication, export membership,
-  outward winding and reef composition, with regression coverage. The revision
-  remains rejected pending review. Neither map-source delivery is integrated yet.
+  face downward and nine original reef forms are omitted. These findings were
+  repaired by Sol in `42e6cab4`, parent-reviewed and merged as **`18201a06`**.
+  Parent reproduced **14 Node + 29 Python + three shared-Kit source checks**, and
+  both authority generation `--check` commands. Low scenic meshes are checked
+  against every road triangle with edge-crossing tests and a four-metre margin;
+  terrain/art duplicate faces are removed, signs precede batching, top caps face
+  outward, and original reefs/detail are restored. Source acceptance is conditional
+  on later actual Blender/adapter/export verification; no native map promotion.
+  Botanical/urban source remains unmerged during Astra repair.
 - R continues Foundry production. The shared adapter must preserve original
   linear provider images while producing correctly sRGB-encoded GLB base-color
   images; botanical wording prohibiting all byte re-encoding is not acceptance
   of incorrectly encoded exports.
+- Coastal next-stage obligations include real material-adapter compatibility,
+  exported sRGB pixel verification, total evaluated geometry/primitive budgets,
+  master/reopened scene visibility, exported signage and player-height visual
+  review. Recording image hashes or pre-modifier estimates is not verification of
+  those properties. R's grant remains Foundry-scoped; coastal execution requires
+  the next explicit serial grant after release.
 - Movement package reconciliation `4cd806fa` passes 111/113 parent checks; two
   initially rejected this newly added authoring-resource inventory. Follow-up
   `a83f73f4` pins all 886 authoring files to `9dc08e53` and excludes them from
