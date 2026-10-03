@@ -1,5 +1,31 @@
 # Graphics, animation, presentation and QoL audit/implementation
 
+## Current checkpoint — K released, six lanes integrated, native L active
+
+K final `4188e411` merged as `f06d65fc`; six-lane staging `5b8e1eb3` merged as
+**`8921ed41`** without conflicts. Earlier unmerged/stable-K notes below are
+historical checkpoints, superseded by this integration.
+
+Parent verified K's release receipt (three empty audits, 74 recorded groups) and
+independently checked that none of those groups has a live member. Native owner
+`ses_f03a3885fffehx9yFhHubuPCft` now has exclusive grant
+**`POLISH-NATIVE-20261003-L`** for the combined candidate's focused import, native
+polish regression and graphical checks. Preserve exact before/after identities,
+failed runs and the unchanged live-kick acceptance failure. No package export,
+full final matrix, cinematic or asset production is authorized under L.
+
+Combined parent checks pass: five bounded motion-runner policy tests, shader-body
+parity, the five-script required-parser lobby source check, scene-generator
+freshness and whitespace checks. These supplement earlier source checks and do
+not establish native acceptance of the new polish.
+
+Package owner `ses_f03437da1ffeli91L87Q6CVyRP` is source-only reconciling exact
+seven-unit dependencies through `8921ed41`; subsequent L fixes require a separate
+reviewed advance. Gallery owner Sol `ses_eff6a3d9cffeTi9iQPn43laxo1` published
+29 original K PNGs and provenance under `/native-motion-k/`, with no heavy work.
+Its 32 HTTP/hash checks passed; real staged poses and ordinary-input Stormglass
+images are clearly distinguished, with live-kick timing failure retained.
+
 The user explicitly renewed parallel work: Flash agents should scour the codebase
 for improvements to graphics, animation, presentation, shaders, assets and QoL,
 then Flash, Sol and Luna should implement the selected findings alongside current

@@ -7,15 +7,15 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
-**New polish directive:** Flash audits of graphics/shaders/assets, animation/
-presentation and usability are active. Parent will assign the concrete findings
-to parallel Flash/Sol/Luna source implementations. See `POLISH_AUDIT_20261003.md`.
-Native K retains its current bounded scope and exclusive heavy slot.
+**Polish checkpoint:** All six Flash/Sol/Luna implementation lanes were reviewed
+and integrated with K's native fixes at `8921ed41`. Exclusive native grant L now
+verifies the combined candidate. See `POLISH_AUDIT_20261003.md`.
 
 **Motion/vehicle directive:** Flash research plus Sol/Astra implementation is
 active for natural operator locomotion, player movement feel, Puma controls and
 first-/third-person vehicle views, and articulated melee kick chains. Ownership:
-`MOTION_20261003.md`. Stormglass J has released; native motion/UI now owns grant K.
+`MOTION_20261003.md`. K released with 64 passed gate IDs and failed live-kick timing
+acceptance. Its fixes are integrated at `f06d65fc`; detailed evidence is retained.
 
 **Overnight expansion directive:** the user requested Luna/DeepSeek fan-out and
 substantial implementation progress. Four bounded source-feature lanes are active
@@ -33,11 +33,11 @@ at `2026-10-03T03:43:18.530036Z`, all three groups empty. Windows diagnostic
 navigation optimization integrated at `6b8c445f` and awaits remote Windows cold
 graph comparison plus subsequent new-package native verification. Published
 preview bytes still contain the original runtime.
-**Exclusive local heavy grant K belongs to native motion/UI owner
-`ses_f03a3885fffehx9yFhHubuPCft`** for integrated native feature checks, motion
-captures and ordinary-input kick/vehicle verification. J released at
-`2026-10-03T06:09:35.500713Z`, 19 groups checked empty three times.
-F/G/G2/G3/G4/H/I/J have released. See `MOTION_20261003.md`.
+**Exclusive local heavy grant `POLISH-NATIVE-20261003-L` belongs to
+`ses_f03a3885fffehx9yFhHubuPCft`** for combined polish native checks and captures.
+K's release receipt contains three empty audits over 74 retained process groups;
+parent independently confirmed those groups have no live members before granting L.
+F/G/G2/G3/G4/H/I/J/K have released. See `motion/NATIVE_QUEUE.md`.
 Scenery delivery is preserved but not integrated into the preview. Final production
 and acceptance obligations remain; strict final packaging is unchanged.
 
@@ -55,11 +55,11 @@ boundaries.
 | Fighting presentation and controls | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing at `1bff0281`; controller recovery integrated at `614a8a7f`, all 12 parent presentation source tests pass; native review pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
-| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | All seven strict asset closures and Stormglass registration integrated at `5b5c8791`; 47 parent source/import/history/coverage checks pass; later native fixes need exact reconciliation |
+| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Seven strict closures passed at `5b5c8791`; now source-only reconciling reviewed K/polish dependencies through `8921ed41`, preserving original native identities |
 | Vesper Viaduct | Astra `ses_f03a3885fffehx9yFhHubuPCft` | H production/evidence integrated through `04fbbfa5`; six native outcomes passed; parent review/registration at `99a4f597`; package-promoted at `b5d16351` |
 | Abyssal Pressureworks | Astra `ses_f03a3024cffeNO1Cc3Qr1zSLTG` | I delivery integrated through `f0e76bf7`; six native outcomes and parent visual review retained; six-mode registration/package promotion integrated at `c7c81c71` |
 | Stormglass Causeway | Astra `ses_f0342d1ffffeyUHJkcUj3vqP7p` | J completed/released; assets and private race evidence integrated through `997bc013`; one public Puma Race pair and exact package promotion integrated at `5b5c8791`, flat-road concession retained |
-| Integrated motion/UI native verification | Astra `ses_f03a3885fffehx9yFhHubuPCft` | Exclusive K: new UI/operator/vehicle/first-person native typing, regression checks, captures and live kick/input evidence |
+| Integrated motion/UI and polish native verification | Astra `ses_f03a3885fffehx9yFhHubuPCft` | K released: 64 gate IDs passed, live-kick timing failed; now exclusive L for combined polish checks and real captures |
 | Shared race UI/lifecycle repairs | Sol `ses_effc08498ffeMuhuRDvyAoXEpj` | Source-only production fixes for J findings: map title, responsive result panel, restart audio teardown and attachment ownership warnings |
 | Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Actual production at `1f129ab2`; E released; compact-HUD correction at `83ceaa62` passes six parent source checks/grammar, new native layout/screenshots pending |
 | Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base `b6ab6782` and ordinary-controller follow-up `da259d19` integrated; 26 parent acceptance tests and grammar pass; native execution awaits later grant and device access |
@@ -75,12 +75,13 @@ directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
-**`MOTION-UI-NATIVE-20261003-K` belongs to native review Astra
-`ses_f03a3885fffehx9yFhHubuPCft`.** Scope: integrated feature import/type checking,
-native motion/UI regressions, motion captures and live ordinary-input kick/vehicle
-checks. No map production, full final matrix, package export or cinematic grant.
+**`POLISH-NATIVE-20261003-L` belongs to native review Astra
+`ses_f03a3885fffehx9yFhHubuPCft`.** Foundation: `8921ed41`. Scope: combined polish
+import/type checking, targeted native regressions and actual graphical comparisons.
+Bounded remaining vehicle-input coverage may follow; live-kick failure is retained.
+No map production, full final matrix, package export or cinematic grant.
 Parent owns review, public registration and promotion; cinematic awaits a later slot.
-Scenery F, preview G/G2/G3/G4, Vesper H, Abyssal I and Stormglass J explicitly released. Current K supersedes
+Scenery F, preview G/G2/G3/G4, Vesper H, Abyssal I, Stormglass J and motion K explicitly released. Current L supersedes
 historical ownership metadata in production plans; do not mutate active-run inputs
 just to relabel ownership. All seven asset units are promoted and strict asset
 inventory passes at `5b5c8791`. Public coverage is 13 worlds / 73 pairs. This does
