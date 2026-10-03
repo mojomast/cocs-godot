@@ -20,14 +20,23 @@ test('committed six-unit promotion and import bytes validate independently of wo
   assert.throws(()=>productionResources({...options,strict:true}),/remain pending/);
   for(const id of ['abyssal-pressureworks','vesper-viaduct','scenery','robots','vehicles','parallax-interiors']) {
     const receipt=JSON.parse(read(`tools/godot-package/production_receipts/${id}.json`));
-    const advance=receipt.abyssalPackageVerifierAdvance,previous=advance.previousReceipt;
+    const advance=receipt.featureAdvance,previous=advance.previousReceipt;
     const bytes=git(['show',`${previous.commit}:${previous.path}`]);
     assert.equal(createHash('sha256').update(bytes).digest('hex'),previous.sha256);
     const old=JSON.parse(bytes);
+    assert.equal(previous.commit,'a5c26f25');
+    const changed={},added={};
+    for(const [p,sha]of Object.entries(old.packageInputs)) {
+      assert.ok(Object.hasOwn(receipt.packageInputs,p),'Previous input dropped: '+p);
+      if(receipt.packageInputs[p]!==sha)changed[p]={before:sha,after:receipt.packageInputs[p]};
+    }
+    for(const [p,sha]of Object.entries(receipt.packageInputs))if(!Object.hasOwn(old.packageInputs,p))added[p]=sha;
+    assert.deepEqual(advance.changed,changed);
+    assert.deepEqual(advance.added,added);
     for(const [key,value]of Object.entries(old))if(key!=='packageInputs'&&key!=='runtimeHooks')assert.deepEqual(receipt[key],value);
     for(const [p,sha]of Object.entries(old.runtimeHooks)) {
       const change=advance.runtimeChanged[p];
-      if(change){assert.ok(['parallax-interiors','vesper-viaduct'].includes(id));assert.equal(change.before,sha);assert.equal(change.after,receipt.runtimeHooks[p]);}
+      if(change){assert.ok(['robots','vehicles'].includes(id));assert.equal(change.before,sha);assert.equal(change.after,receipt.runtimeHooks[p]);}
       else assert.equal(receipt.runtimeHooks[p],sha);
     }
     assert.equal(createHash('sha256').update(JSON.stringify(old.packageInputs)).digest('hex'),advance.previousPackageFingerprint);
@@ -46,7 +55,7 @@ test('committed six-unit promotion and import bytes validate independently of wo
     assert.equal(createHash('sha256').update(oldBytes).digest('hex'),previous.sha256);
     const old=JSON.parse(oldBytes);
     for(const key of ['sourceHashes','sourceFingerprint','masters','exports','rawFiles'])assert.deepEqual(receipt[key],old[key],`${id}: production identity preserved: ${key}`);
-    for(const [p,sha]of Object.entries(old.runtimeHooks))assert.equal(receipt.vesperPackageVerifierAdvance.runtimeChanged[p]?.before??receipt.abyssalPackageVerifierAdvance.runtimeChanged[p]?.before??receipt.runtimeHooks[p],sha);
+    for(const [p,sha]of Object.entries(old.runtimeHooks))assert.equal(receipt.vesperPackageVerifierAdvance.runtimeChanged[p]?.before??receipt.abyssalPackageVerifierAdvance.runtimeChanged[p]?.before??receipt.featureAdvance.runtimeChanged[p]?.before??receipt.runtimeHooks[p],sha);
     assert.deepEqual(Object.keys(receipt.packageVerifierAdvance.changed),['tools/godot-package/production_resources.mjs']);
     if(id==='robots') {
       const revision=receipt.packageReconciliation.supportingRuntimeRevision;
