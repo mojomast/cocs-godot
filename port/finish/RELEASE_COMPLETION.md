@@ -7,11 +7,12 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
-**New research-led movement directive:** arena and traversal Flash research is
-complete; native input responsiveness research continues. Astra
-`ses_efd9f7a16ffebB54Qq3YBwuZ3t` is implementing the selected speed-bound fix,
-buffered landing slide and camera-neutral slide cue, with air-steering evaluation.
-This runs alongside
+**Research-led movement integrated:** all three Flash reports and Astra's
+implementation/review closure are complete, merged as `f61f6156`. Parent passed
+29 focused source tests plus generation/oracle checks. Independent native owner
+`ses_f0292f089ffeq9MnxeAHN0yrKb` now holds **`MOVEMENT-NATIVE-20261003-Q`** for
+bounded fresh import/input-flow/slide verification; package owner is reconciling
+dependencies source-only. This runs alongside
 new Moth/Blender map production; exact owners and constraints are in
 `MOVEMENT_RESEARCH_20261003.md`.
 
@@ -49,8 +50,8 @@ Diagnosis commits `cd2b2017`, `47b3633b` and combo follow-up `199d2641` were
 reviewed and integrated as `346e8db8`, `6252d4bf` and `8bf90885`;
 native verification remains pending. Parent passed **83 source checks**: 33
 Fighting acceptance/command/combo/UI, three diagnosis, seven spectator/process,
-35 runner/receipt and five Blender-toolkit tests. **No heavy grant
-is currently active.** New Moth/Blender production requires an explicit next grant
+35 runner/receipt and five Blender-toolkit tests. **Q is now the only active heavy
+grant**, scoped to the new movement candidate. New Moth/Blender production requires an explicit next grant
 after the resource pack is ready; its acceptance uses a fresh candidate.
 
 **Historical O/P foundation:** O repaired both N
@@ -106,7 +107,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P has explicitly released; no local heavy grant is active.**
+**P has explicitly released; movement verification Q now holds the local heavy slot.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P have released. P diagnosis source fixes are integrated;
 the Windows owner retains remote preflight monitoring.
 Scenery delivery is preserved but not integrated into the preview. Final production
@@ -146,7 +147,13 @@ directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
-**No active heavy grant.** `RELEASE-MATRIX-20261003-P`, owner
+**Active: `MOVEMENT-NATIVE-20261003-Q`**, owner
+`ses_f0292f089ffeq9MnxeAHN0yrKb`, candidate `f61f6156`. Scope: fresh isolated
+import readiness, bounded native input-flow and slide-pose tests, optional small
+staged cue captures. No full matrix, Blender production, package export or encoding.
+Three empty ownership audits and explicit release are required afterward.
+
+**Historical:** `RELEASE-MATRIX-20261003-P`, owner
 `ses_f0292f089ffeq9MnxeAHN0yrKb`, released at `2026-10-03T15:04:52.013061Z`.
 Its completed scope was remaining available registered acceptance,
 serial bounded native/source cohorts and minimal demonstrated defect corrections.

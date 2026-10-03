@@ -130,11 +130,21 @@ to consume unbounded local storage.
 **P completed and released** (`RELEASE-MATRIX-20261003-P`,
 `ses_f0292f089ffeq9MnxeAHN0yrKb`) at `2026-10-03T15:04:52.013061Z`.
 Parent inspected its three empty cleanup audits covering 239 owned process groups.
-No new heavy grant is active yet. New lanes may perform source work, remote Moth
+**Movement native verification Q now owns the heavy slot**:
+`MOVEMENT-NATIVE-20261003-Q`, owner `ses_f0292f089ffeq9MnxeAHN0yrKb`.
+Moth lanes may perform source work, remote Moth
 jobs and bounded low-resource image baking; no local Blender/Godot imports,
 rendering, encoding, servers or native benchmarks until a new explicit slot.
 The pinned Blender is the existing 4.5.14 toolchain. Actual Blender production is
 mandatory in the next phase, not replaced by a source-only generator claim.
+
+The user requested broader Moth engine evaluation after the initial resource
+delivery used only `blur-core-v1`; that follow-up and actual concurrent-generation
+testing remain with the resource owner. Initial pack delivery is not application
+approval. Parent independently verified concurrent authenticated catalog HTTP
+requests at batch sizes two and four, all 200 responses; this does not establish
+generation execution overlap. User cleanup subsequently freed 91 GiB on disk;
+the original 1.17 GB/late low-space figures above are historical.
 
 P finished its frozen candidate independently: 89 passed, 22 failed, 31 unrun;
 release readiness remains false. New resources and map

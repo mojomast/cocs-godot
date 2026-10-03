@@ -29,10 +29,10 @@ No engine, Blender, import, server or native benchmark is authorized by research
 
 ## Implementation handoff
 
-**Astra implementation is active:** `ses_efd9f7a16ffebB54Qq3YBwuZ3t`.
-The arena and traversal Flash reports are complete; native-input research remains
-in progress. Parent supplied both completed reports and the selected scope below.
-The implementation agent must verify its actual isolated
+**Astra implementation is complete:** `ses_efd9f7a16ffebB54Qq3YBwuZ3t` delivered
+`91f58a1c`, `9d95623d` and `54fc78ef`, merged by parent as **`f61f6156`**.
+All three Flash research lanes and two independent source reviews are complete.
+The implementation agent verified its isolated
 worktree/branch before editing; parent owns shared-branch integration.
 
 The renewed user request permits reviewed changes to infantry movement behavior,
@@ -46,10 +46,34 @@ deadlines to mask slow input delivery. P's Gemini and campaign delivery gaps are
 evidence to investigate, not proof that movement physics is wrong. Old acceptance
 results remain tied to their old candidate.
 
-P is released, but **no new heavy grant is active**. Source implementation can run
-alongside remote Moth generation. Parent coordinates serial Blender/native slots,
+P is released. **`MOVEMENT-NATIVE-20261003-Q` is the sole active heavy grant**,
+owned by `ses_f0292f089ffeq9MnxeAHN0yrKb`, starting from `f61f6156` in a fresh
+worktree. Its bounded scope is import readiness, native input-flow and slide-pose
+contracts, optional small staged cue captures, followed by explicit cleanup/release.
+Package owner `ses_f03437da1ffeli91L87Q6CVyRP` is reconciling exact dependencies
+source-only. Remote Moth generation continues separately. Parent coordinates slots,
 fresh movement evidence, changed dependency reconciliation and eventual packages.
 No source test or staged capture establishes human feel or hardware performance.
+
+## Integration verification
+
+- Independent authority review reproduced 217 implementation tests plus 107
+  broader regressions passing; one intentionally slow test remained skipped.
+- Native-input/cue source review found no blocking production defect. Its campaign
+  derivative drift finding is resolved by `9d95623d`; the ungated slide fixture
+  and two weak regression assertions are resolved by `54fc78ef`.
+- Parent merged the original commits (preserving source-contract ancestry) and
+  passed **29 focused tests** on the merged tree: 21 movement/cue/provenance/parity
+  and eight gate/report checks. Campaign generation `--check` and lattice oracle
+  (47 captions, four progress, 13 recovery, 13 hashes) also pass.
+- Walking self-speed budget is 17.6 m/s; grounded sprint budget is 24.2 m/s for
+  base speed eight. Incoming above-budget impulses remain supported. The 150 ms
+  configured landing-slide buffer is frame-quantized, not a universal measured
+  150 ms acceptance window.
+- User's completed cleanup freed **91 GiB on disk**, with **16 GiB in `/tmp`**.
+  Prior low-space reports are historical; no retained evidence was deleted by
+  the movement workers. Fresh Q native results and package reconciliation remain
+  pending; P's frozen 89/22/31 ledger is unchanged.
 
 ## Selected implementation scope
 
