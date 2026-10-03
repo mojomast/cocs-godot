@@ -2,9 +2,10 @@
 
 Bridges the pure source plan (``composition.compose`` base geometry +
 ``layout.parts`` authored classes) into a Blender editable master and a
-material-batched GLB. Requires the injected adapter
-``load_materials(root, bindings) -> (materials, density)``; unknown material is a
-hard error. This module imports bpy only inside ``run``.
+material-batched GLB. The injected adapter's
+``load_materials(root, pack_bindings, with_report=True)`` returns exact
+materials, repeat densities and converted-source proof. Preserved map colors
+are separately authored from reviewed binding entries. bpy is imported by run.
 """
 import argparse
 import hashlib
@@ -17,6 +18,7 @@ sys.path.insert(0, str(HERE))
 import composition  # noqa: E402
 import geometry  # noqa: E402
 import manifest  # noqa: E402
+import preserved  # noqa: E402
 
 
 def _sha256(data):
@@ -33,14 +35,32 @@ def source_triangle_estimate(specs):
 
 def _load_adapter(path):
     import importlib.util
-    if not pathlib.Path(path).is_file():
-        raise SystemExit('Material adapter not found: %s. Expected load_materials(root, bindings) -> (materials, density).' % path)
+    path = pathlib.Path(path).resolve()
+    if not path.is_file():
+        raise SystemExit('Material adapter not found: %s. Expected load_materials(root, bindings, with_report=True).' % path)
+    # R's adapter imports its sibling material_pack.py as a top-level module.
+    if str(path.parent) not in sys.path:
+        sys.path.insert(0, str(path.parent))
     spec = importlib.util.spec_from_file_location('map_variety_material_adapter', path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     if not hasattr(module, 'load_materials'):
-        raise SystemExit('Adapter %s does not expose load_materials(root, bindings).' % path)
+        raise SystemExit('Adapter %s does not expose load_materials(root, bindings, with_report=True).' % path)
     return module
+
+
+def request_pack_materials(module, root, pack_bindings, output_dir, pack):
+    """Invoke R's exact adapter contract only for reviewed surface/team roles."""
+    if any(b['role'] not in ('surface', 'team') for b in pack_bindings.values()):
+        raise ValueError('Preserved material passed into the Moth adapter')
+    materials, density, report = module.load_materials(
+        str(root), pack_bindings, output_dir=output_dir, with_report=True)
+    if (set(materials) != set(pack_bindings) or set(density) != set(pack_bindings) or
+            set(report['materials']) != set(pack_bindings) or
+            report['pack']['baseSha256'] != pack.base_sha or
+            report['pack']['overlaySha256'] != pack.overlay_sha):
+        raise ValueError('Moth adapter returned incomplete keys or different pack provenance')
+    return materials, density, report
 
 
 def _glb_document(path):
@@ -56,18 +76,39 @@ def _glb_document(path):
 def _glb_material_images(path):
     doc, blob = _glb_document(path)
 
-    def image_sha(index):
+    def image_bytes(index):
         view = doc['bufferViews'][doc['images'][doc['textures'][index]['source']]['bufferView']]
         start = view.get('byteOffset', 0)
-        return _sha256(blob[start:start + view['byteLength']])
+        return blob[start:start + view['byteLength']]
 
     result = {}
     for material in doc.get('materials', []):
         base = material.get('pbrMetallicRoughness', {}).get('baseColorTexture')
         normal = material.get('normalTexture')
-        result[material['name']] = {'color': image_sha(base['index']) if base else None,
-                                    'normal': image_sha(normal['index']) if normal else None}
+        result[material['name']] = {'color': image_bytes(base['index']) if base else None,
+                                    'normal': image_bytes(normal['index']) if normal else None}
     return result
+
+
+def verify_png_pixels(source, embedded, decode, *, srgb):
+    """Compare decoded channels; Blender may re-encode PNG bytes losslessly."""
+    if not embedded:
+        raise ValueError('Missing embedded PBR image')
+    width, height, original = decode(source)
+    out_width, out_height, exported = decode(embedded)
+    if (width, height) != (out_width, out_height) or len(original) != len(exported):
+        raise ValueError('Moth image dimensions changed in GLB')
+    for index, value in enumerate(original):
+        if srgb and index % 4 != 3:
+            linear = value / 255
+            encoded = 12.92 * linear if linear <= .0031308 else 1.055 * linear ** (1 / 2.4) - .055
+            expected = round(encoded * 255)
+        else:
+            expected = value
+        if abs(expected - exported[index]) > 1:
+            raise ValueError('Embedded %s channel differs from immutable Moth source at pixel channel %d' %
+                             ('sRGB baseColor' if srgb else 'linear normal', index))
+    return len(original) // 4
 
 
 def _emit_cameras(bpy, review, cameras):
@@ -135,6 +176,7 @@ def run(config, argv=None):
     parser.add_argument('--report', default=str(config['directory'] / 'material-report.json'))
     parser.add_argument('--max-batches', type=int, default=64)
     parser.add_argument('--max-triangles', type=int, default=12000)
+    parser.add_argument('--max-total-triangles', type=int, default=350000)
     args = parser.parse_args(argv)
 
     import bpy
@@ -145,6 +187,7 @@ def run(config, argv=None):
     module = _load_adapter(adapter_path)
     pack = manifest.load_pack(args.root)
     resolved = pack.bindings_plan(bindings)
+    pack_bindings, preserved_bindings = preserved.split_bindings(bindings, config['id'])
 
     specs = composition.compose_full(authority['arena'], layout)
     used = {spec['material'] for spec in specs}
@@ -162,7 +205,16 @@ def run(config, argv=None):
     bpy.context.scene.collection.children.link(export)
     bpy.context.scene.collection.children.link(review)
 
-    materials, density = module.load_materials(str(args.root), bindings)
+    materials, density, adapter_report = request_pack_materials(
+        module, args.root, pack_bindings,
+        pathlib.Path(args.report).resolve().parent / 'converted' / config['id'], pack)
+    authored, authored_density = preserved.make_materials(bpy, preserved_bindings)
+    if set(materials) & set(authored):
+        raise ValueError('Moth and authored preserved materials overlap')
+    materials.update(authored)
+    density.update(authored_density)
+    if set(materials) != set(bindings) or set(density) != set(bindings):
+        raise ValueError('Incomplete exact reviewed material registry')
     from blender_kit import Kit
     kit = Kit(source, export, materials, density)
 
@@ -181,12 +233,22 @@ def run(config, argv=None):
     batches = kit.build_export_batches(max_triangles=args.max_triangles)
     if not batches or len(batches) > args.max_batches:
         raise SystemExit('Export batch count outside reviewed cap: %d' % len(batches))
+    evaluated_triangles = sum(sum(len(poly.vertices) - 2 for poly in batch.data.polygons) for batch in batches)
+    if args.max_total_triangles < 1 or evaluated_triangles > args.max_total_triangles:
+        raise ValueError('Evaluated export triangles outside total cap: %d > %d' % (evaluated_triangles, args.max_total_triangles))
 
     cameras = _emit_cameras(bpy, review, layout.PROBE_CAMERAS)
     signage = [batch for batch in batches if batch.get('kit_sector') == 'signage']
     if labels and (not signage or sum(len(batch.data.polygons) for batch in signage) == 0):
         raise ValueError('Route labels absent from export batches')
 
+    # Editable meshes remain accessible in the master. Hide them in both the
+    # viewport and render to prevent duplicate silhouettes on reopen; only the
+    # baked export collection is visible and explicitly selected for glTF.
+    source.hide_render = True
+    source.hide_viewport = True
+    review.hide_render = True
+    export.hide_render = False
     bpy.ops.wm.save_as_mainfile(filepath=args.blend)
     bpy.ops.object.select_all(action='DESELECT')
     for batch in batches:
@@ -200,23 +262,49 @@ def run(config, argv=None):
 
     glb_bytes = pathlib.Path(args.glb).read_bytes()
     embedded = _glb_material_images(args.glb)
+    from material_pack import linear_rgba, srgb_png
     document, _ = _glb_document(args.glb)
     primitive_counts = [document['accessors'][p['indices']]['count'] // 3
                         for mesh in document.get('meshes', []) for p in mesh['primitives']
                         if p.get('mode', 4) == 4 and 'indices' in p]
     actual_triangles = sum(primitive_counts)
-    if actual_triangles <= 0 or not primitive_counts:
-        raise ValueError('Exported GLB has no indexed triangle primitives')
+    if actual_triangles <= 0 or not primitive_counts or actual_triangles > args.max_total_triangles:
+        raise ValueError('Exported GLB triangle count outside cap: %d / %d' %
+                         (actual_triangles, args.max_total_triangles))
     report_materials = {}
     for name, binding in bindings.items():
         entry = {'role': binding.get('role')}
-        if binding.get('role') != 'preserve':
+        if binding.get('role') == 'preserve':
+            entry.update({'colorSrgb': binding['colorSrgb'], 'alpha': binding['alpha'],
+                          'metallic': binding['metallic'], 'roughness': binding['roughness'],
+                          'emissionStrength': binding['emissionStrength'],
+                          'tilesPerMeter': binding['tilesPerMeter']})
+        else:
+            # Independently verify decoded exported pixels, rather than equating
+            # hashes of linear source PNG and derived sRGB glTF PNG containers.
+            color = embedded.get(name, {}).get('color')
+            normal = embedded.get(name, {}).get('normal')
+            if name in used:
+                immutable_color = pathlib.Path(resolved[name]['albedoFile']).read_bytes()
+                if (_sha256(immutable_color) != pack.textures[resolved[name]['albedoKey']]['sha256'] or
+                        _sha256(immutable_color) != adapter_report['materials'][name]['sourceColorSha256'] or
+                        _sha256(srgb_png(immutable_color)) != adapter_report['materials'][name]['convertedAlbedoSha256']):
+                    raise ValueError('Immutable source or adapter derived color changed: ' + name)
+                entry['verifiedColorPixels'] = verify_png_pixels(immutable_color, color, linear_rgba, srgb=True)
+                if resolved[name]['normalFile']:
+                    immutable_normal = pathlib.Path(resolved[name]['normalFile']).read_bytes()
+                    if _sha256(immutable_normal) != pack.textures[resolved[name]['normalKey']]['sha256']:
+                        raise ValueError('Immutable source normal changed: ' + name)
+                    entry['verifiedNormalPixels'] = verify_png_pixels(
+                        immutable_normal, normal, linear_rgba, srgb=False)
             entry.update({'sourceColorSha256': pack.textures[resolved[name]['albedoKey']]['sha256'],
-                           'sourceNormalSha256': pack.textures[resolved[name]['normalKey']]['sha256'] if resolved[name]['normalKey'] else None,
-                           'sourceColorEncoding': 'linear PNG (immutable)',
-                           'embeddedColorEncoding': 'glTF sRGB baseColor (derived by adapter)',
-                          'embeddedColorSha256': embedded.get(name, {}).get('color'),
-                          'embeddedNormalSha256': embedded.get(name, {}).get('normal'),
+                          'sourceNormalSha256': pack.textures[resolved[name]['normalKey']]['sha256'] if resolved[name]['normalKey'] else None,
+                          'sourceColorEncoding': 'linear PNG (immutable)',
+                          'embeddedColorEncoding': 'glTF sRGB baseColor (derived by adapter)',
+                          'embeddedColorSha256': _sha256(color) if color else None,
+                          'embeddedNormalSha256': _sha256(normal) if normal else None,
+                          'adapterConvertedColorSha256': adapter_report['materials'][name]['convertedAlbedoSha256'],
+                          'adapterSourceColorSha256': adapter_report['materials'][name]['sourceColorSha256'],
                           'tilesPerMeter': resolved[name]['tilesPerMeter'],
                           'teamColorSource': resolved[name]['teamColorSource']})
         report_materials[name] = entry
@@ -225,7 +313,8 @@ def run(config, argv=None):
               'glbSha256': _sha256(glb_bytes), 'glbBytes': len(glb_bytes),
                'baseSpecs': len(composition.compose(authority['arena'])), 'authoredSpecs': len(layout.parts(authority['arena'])),
                'sourceTriangleEstimateBeforeLabelsAndModifiers': source_triangle_estimate(specs),
-               'exportBatches': len(batches), 'exportTriangles': sum(sum(len(poly.vertices)-2 for poly in b.data.polygons) for b in batches),
+               'exportBatches': len(batches), 'exportTriangles': evaluated_triangles,
+               'maxTotalTriangles': args.max_total_triangles,
                'glbPrimitives': len(primitive_counts), 'glbTriangles': actual_triangles,
                'signageBatches': len(signage), 'probeCameras': cameras, 'labels': labels,
               'composition': 'complete revised authority + authored classes; physics independent JSON',

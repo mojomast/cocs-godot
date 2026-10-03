@@ -38,7 +38,7 @@ material adapter are **not** edited; this lane adds its own helpers under
 | Abyssal | `tools/godot-multiplayer/new-maps/abyssal-pressureworks/revision2/` | `build.mjs` (`--check`) → `arena.json`, `candidate.json`, `probes.json` | `author.py` → `build_entry.run` |
 | Stormglass | `tools/godot-multiplayer/new-maps/stormglass-causeway/revision2/` | `build.mjs` (`--check`) | `author.py` → `build_entry.run` |
 
-Shared source modules: `tools/map-variety-support/{manifest,geometry,composition,road,build_entry}.py`.
+Shared source modules: `tools/map-variety-support/{manifest,geometry,composition,road,preserved,build_entry}.py`.
 
 Bounded source tests (no engine):
 
@@ -47,10 +47,11 @@ node --test tools/godot-multiplayer/new-maps/abyssal-pressureworks/revision2/sou
 node --test tools/godot-multiplayer/new-maps/stormglass-causeway/revision2/source.test.mjs
 python3 -m unittest discover -s tools/godot-multiplayer/new-maps/abyssal-pressureworks/revision2 -p test_layout.py
 python3 -m unittest discover -s tools/godot-multiplayer/new-maps/stormglass-causeway/revision2 -p test_layout.py
+python3 -m unittest discover -s tools/map-variety-support -p test_preserved.py
 ```
 
 Current results: Abyssal 8 Node + 13 Python pass; Stormglass 6 Node + 16 Python
-pass (14 Node + 29 Python total). Source identity:
+pass, plus 4 preservation/adapter-source Python checks (14 Node + 33 Python total). Source identity:
 
 - Abyssal `geometryHash` `5fea4aada721903cea26897fb6a17befaf146c576c095dc712feebef626adfa2`
   (base runtime `32366a6c…` untouched), 204 surfaces / 808 walls / 501 nav.
@@ -59,10 +60,13 @@ pass (14 Node + 29 Python total). Source identity:
 
 ## Prerequisites for Sol's heavy run
 
-1. `tools/map-variety-pipeline/material_adapter.py` exposing
-   `load_materials(root, bindings) -> (materials: dict[str, bpy.Material], density: dict[str, float])`
-   keyed by the exact GLB material names in each `materials.bindings.json`.
-   Unknown names raise; no pinned `moth_finish.py` fallback.
+1. Reviewed R commit `6ff4079e` must land first: its
+   `tools/map-variety-pipeline/material_adapter.py` exposes
+   `load_materials(root, pack_bindings, *, output_dir, with_report=True) ->
+   (materials, density, proof)`. Only explicit `surface|team` bindings are sent;
+   the actual adapter rejects preserved roles. `preserved.py` authors every exact
+   accepted glass/emissive palette entry with its authored UV density. Missing,
+   unknown or incomplete roles fail closed; no pinned `moth_finish.py` fallback.
 2. One map per process:
    `blender -b -t 1 --python-exit-code 1 --python <author.py> -- --root <repo>`
    (Abyssal, then Stormglass; capture hashes before the next).
@@ -85,6 +89,14 @@ pass (14 Node + 29 Python total). Source identity:
   convert glTF base-colour to sRGB in a derived payload. `author.py` writes `material-report.json`
   (independent immutable-source vs derived-embedded hashes, `tilesPerMeter`, `teamColorSource`) and exports
   `export_tangents=True`.
+- When a native GLB exists, `build_entry.py` compares decoded embedded base-colour
+  pixel channels with the independently computed linear→sRGB conversion from
+  immutable source bytes, and normal pixels with immutable linear source. It
+  checks adapter manifest provenance/derived hash and records actual GLB primitive
+  and triangle counts. Evaluated and exported triangle totals have an explicit
+  350,000-triangle default cap (configurable). The editable collection remains
+  accessible but hidden in the saved master viewport/render; export batches alone
+  render there. These are pending native execution, not source-verified results.
 
 ## Authored content
 

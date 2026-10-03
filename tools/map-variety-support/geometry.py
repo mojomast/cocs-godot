@@ -49,7 +49,7 @@ def roundtrip(point):
 
 
 def prism_size_to_blender(size):
-    """Source (w_x, d_z, h_y) -> Blender (X, Y, Z) extents."""
+    """Source (X width, Y-up height, Z depth) -> Blender (X width, Y depth, Z height)."""
     return (size[0], size[2], size[1])
 
 
