@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "xvfb-run",
+    "-a",
+    "-s",
+    "-screen 0 1280x800x24",
+    "node",
+    "tools/asset-production/candidate-hosted.mjs",
+    "abyssal-pressureworks",
+    "ctf",
+    "--granted",
+    "--compact"
+  ],
+  "started": "2026-10-03T05:24:58.236690+00:00",
+  "timeoutSeconds": 960,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T052458.124034Z-hosted-ctf/hosted-ctf.log",
+  "processGroup": 1568340,
+  "exitCode": 0,
+  "ended": "2026-10-03T05:26:23.312910+00:00",
+  "ownedGroupTeardownRequested": true
+}

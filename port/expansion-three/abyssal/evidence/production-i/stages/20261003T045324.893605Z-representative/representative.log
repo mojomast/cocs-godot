@@ -1,0 +1,13 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+SCRIPT ERROR: Parse Error: Could not preload resource script "res://multiplayer_worlds/map.gd".
+          at: GDScript::reload (res://tests/new_maps/abyssal_pressureworks/inspection.gd:3)
+SCRIPT ERROR: Parse Error: Could not resolve script "res://multiplayer_worlds/map.gd".
+          at: GDScript::reload (res://tests/new_maps/abyssal_pressureworks/inspection.gd:3)
+SCRIPT ERROR: Parse Error: Cannot infer the type of "world" variable because the value doesn't have a set type.
+          at: GDScript::reload (res://tests/new_maps/abyssal_pressureworks/inspection.gd:29)
+ERROR: Failed to load script "res://tests/new_maps/abyssal_pressureworks/inspection.gd" with error "Parse error".
+   at: load (modules/gdscript/gdscript.cpp:3041)

@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "xvfb-run",
+    "-a",
+    "-s",
+    "-screen 0 1280x800x24",
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--path",
+    "godot",
+    "--audio-driver",
+    "Dummy",
+    "--resolution",
+    "1280x800",
+    "--script",
+    "res://tests/new_maps/abyssal_pressureworks/inspection.gd",
+    "--"
+  ],
+  "started": "2026-10-03T05:24:34.837738+00:00",
+  "timeoutSeconds": 240,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T052434.722110Z-inspection/inspection.log",
+  "processGroup": 1567183,
+  "exitCode": 0,
+  "ended": "2026-10-03T05:24:58.094602+00:00",
+  "ownedGroupTeardownRequested": true
+}

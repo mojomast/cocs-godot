@@ -1,0 +1,35 @@
+{
+  "title": "Campaign scenery update — four-chapter native screenshots",
+  "source_commit": "b320c270",
+  "evidence_root": "/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/expansion-four/scenery/production-f",
+  "notes": [
+    "Actual Godot captures retained from scenery production F. Twelve Blender-authored assemblies across Rootfall Verge, Siltwake Crossing, Emberline Ascent and Crown Array. These new scenery assets are integrated and package-approved for the next build; they are not in the published October 3 preview.",
+    "Each chapter comparison uses scenery off (before) versus full scenery (after). Architecture close-ups use staged inspection viewpoints. Existing campaign geometry, routes, workshops and robot props were preserved.",
+    "Screenshots use the normal render loop on Mesa llvmpipe. Separate connected chapter journeys used capture-paced rendering; these images do not establish hardware-GPU performance or human playtesting acceptance. Original asset identity b320c270 and evidence delivery b8ba1de8 are retained."
+  ],
+  "files": [
+    {"kind":"image","path":"inspection-final/rootfall-verge-after.png","caption":"Rootfall Verge — new scenery enabled"},
+    {"kind":"image","path":"inspection-final/rootfall-verge-before.png","caption":"Rootfall Verge — same view with new scenery disabled"},
+    {"kind":"image","path":"architecture-final/rootfall-verge/wide/rootfall-root-archive-architecture-after.png","caption":"Rootfall — root archive detail"},
+    {"kind":"image","path":"architecture-final/rootfall-verge/wide/rootfall-canopy-relay-architecture-after.png","caption":"Rootfall — canopy relay detail"},
+    {"kind":"image","path":"architecture-final/rootfall-verge/wide/rootfall-root-buttress-architecture-after.png","caption":"Rootfall — root buttress detail"},
+    {"kind":"image","path":"inspection-final/siltwake-crossing-after.png","caption":"Siltwake Crossing — new scenery enabled"},
+    {"kind":"image","path":"inspection-final/siltwake-crossing-before.png","caption":"Siltwake Crossing — same view with new scenery disabled"},
+    {"kind":"image","path":"architecture-final/siltwake-crossing/wide/siltwake-strata-wheelhouse-architecture-after.png","caption":"Siltwake — strata wheelhouse detail"},
+    {"kind":"image","path":"architecture-final/siltwake-crossing/wide/siltwake-sluice-bank-architecture-after.png","caption":"Siltwake — sluice bank detail"},
+    {"kind":"image","path":"architecture-final/siltwake-crossing/wide/siltwake-flood-abutment-architecture-after.png","caption":"Siltwake — flood abutment detail"},
+    {"kind":"image","path":"inspection-final/emberline-ascent-after.png","caption":"Emberline Ascent — new scenery enabled"},
+    {"kind":"image","path":"inspection-final/emberline-ascent-before.png","caption":"Emberline Ascent — same view with new scenery disabled"},
+    {"kind":"image","path":"architecture-final/emberline-ascent/wide/emberline-ceramic-exhaust-architecture-after.png","caption":"Emberline — ceramic exhaust detail"},
+    {"kind":"image","path":"architecture-final/emberline-ascent/wide/emberline-heatshield-tower-architecture-after.png","caption":"Emberline — heatshield tower detail"},
+    {"kind":"image","path":"architecture-final/emberline-ascent/wide/emberline-basalt-terrace-architecture-after.png","caption":"Emberline — basalt terrace detail"},
+    {"kind":"image","path":"inspection-final/crown-array-after.png","caption":"Crown Array — new scenery enabled"},
+    {"kind":"image","path":"inspection-final/crown-array-before.png","caption":"Crown Array — same view with new scenery disabled"},
+    {"kind":"image","path":"architecture-final/crown-array/wide/crown-folio-archive-architecture-after.png","caption":"Crown — folio archive detail"},
+    {"kind":"image","path":"architecture-final/crown-array/wide/crown-faceted-antenna-architecture-after.png","caption":"Crown — faceted antenna detail"},
+    {"kind":"image","path":"architecture-final/crown-array/wide/crown-ceramic-lightwell-architecture-after.png","caption":"Crown — ceramic lightwell detail"},
+    {"kind":"image","path":"inspection-final/rootfall-compact.png","caption":"Rootfall compact-layout inspection"},
+    {"kind":"receipt","path":"journeys-final/summary.json","caption":"Connected campaign journey summary and scope"},
+    {"kind":"receipt","path":"final-assets.json","caption":"Original production asset hashes"}
+  ]
+}

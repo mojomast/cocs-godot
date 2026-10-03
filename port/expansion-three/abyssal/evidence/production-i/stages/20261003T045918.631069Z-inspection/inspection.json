@@ -1,0 +1,426 @@
+{
+  "captures": [
+    {
+      "capturedUsec": 1037342,
+      "drawCalls": 7.0,
+      "eye": [
+        -178,
+        174,
+        182
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/overview.png",
+      "frameSeconds": 0.0,
+      "primitives": 32500.0,
+      "target": [
+        0,
+        10,
+        0
+      ],
+      "view": "overview"
+    },
+    {
+      "capturedUsec": 2365301,
+      "drawCalls": 30.0,
+      "eye": [
+        23,
+        11.65,
+        -11
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/equalizer.png",
+      "frameSeconds": 0.207287,
+      "primitives": 162460.0,
+      "target": [
+        44,
+        24,
+        8
+      ],
+      "view": "equalizer"
+    },
+    {
+      "capturedUsec": 3309978,
+      "drawCalls": 35.0,
+      "eye": [
+        -94,
+        7.65,
+        -70
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/reef-window.png",
+      "frameSeconds": 0.319909,
+      "primitives": 162500.0,
+      "target": [
+        -94,
+        9,
+        -101
+      ],
+      "view": "reef-window"
+    },
+    {
+      "capturedUsec": 4592153,
+      "drawCalls": 33.0,
+      "eye": [
+        -82,
+        11.65,
+        0
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/pump-spine.png",
+      "frameSeconds": 0.198264,
+      "primitives": 162484.0,
+      "target": [
+        -22,
+        14,
+        0
+      ],
+      "view": "pump-spine"
+    },
+    {
+      "capturedUsec": 5812824,
+      "drawCalls": 32.0,
+      "eye": [
+        -90,
+        21.65,
+        68
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/operations-gallery.png",
+      "frameSeconds": 0.29423,
+      "primitives": 162476.0,
+      "target": [
+        -37,
+        23,
+        78
+      ],
+      "view": "operations-gallery"
+    },
+    {
+      "capturedUsec": 7064672,
+      "drawCalls": 35.0,
+      "eye": [
+        -83,
+        7.65,
+        -68
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/maintenance-bypass.png",
+      "frameSeconds": 0.301515,
+      "primitives": 162500.0,
+      "target": [
+        -34,
+        6,
+        -78
+      ],
+      "view": "maintenance-bypass"
+    },
+    {
+      "capturedUsec": 8259211,
+      "drawCalls": 34.0,
+      "eye": [
+        30,
+        17.5,
+        36
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/reactor-overlook.png",
+      "frameSeconds": 0.305425,
+      "primitives": 162492.0,
+      "target": [
+        40,
+        13,
+        8
+      ],
+      "view": "reactor-overlook"
+    },
+    {
+      "capturedUsec": 9643811,
+      "drawCalls": 30.0,
+      "eye": [
+        -99.0,
+        7.65,
+        -71.0
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/vessel-0-0-interior.png",
+      "frameSeconds": 0.234578,
+      "primitives": 162460.0,
+      "target": [
+        -86.0,
+        9.0,
+        -56.0
+      ],
+      "view": "vessel-0-0-interior"
+    },
+    {
+      "capturedUsec": 11016160,
+      "drawCalls": 35.0,
+      "eye": [
+        -39.0,
+        5.65,
+        -81.0
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/vessel-0-1-interior.png",
+      "frameSeconds": 0.304386,
+      "primitives": 162500.0,
+      "target": [
+        -26.0,
+        7.0,
+        -66.0
+      ],
+      "view": "vessel-0-1-interior"
+    },
+    {
+      "capturedUsec": 12346928,
+      "drawCalls": 30.0,
+      "eye": [
+        26.0,
+        3.65,
+        -71.0
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/vessel-0-2-interior.png",
+      "frameSeconds": 0.306393,
+      "primitives": 162460.0,
+      "target": [
+        39.0,
+        5.0,
+        -56.0
+      ],
+      "view": "vessel-0-2-interior"
+    },
+    {
+      "capturedUsec": 13529712,
+      "drawCalls": 30.0,
+      "eye": [
+        86.0,
+        1.65,
+        -61.0
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/vessel-0-3-interior.png",
+      "frameSeconds": 0.184204,
+      "primitives": 162460.0,
+      "target": [
+        99.0,
+        3.0,
+        -46.0
+      ],
+      "view": "vessel-0-3-interior"
+    },
+    {
+      "capturedUsec": 14912829,
+      "drawCalls": 30.0,
+      "eye": [
+        -96.0,
+        11.65,
+        -3.0
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/vessel-1-0-interior.png",
+      "frameSeconds": 0.280576,
+      "primitives": 162460.0,
+      "target": [
+        -83.0,
+        13.0,
+        12.0
+      ],
+      "view": "vessel-1-0-interior"
+    },
+    {
+      "capturedUsec": 16281335,
+      "drawCalls": 30.0,
+      "eye": [
+        -37.0,
+        11.65,
+        -3.0
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/vessel-1-1-interior.png",
+      "frameSeconds": 0.314868,
+      "primitives": 162460.0,
+      "target": [
+        -24.0,
+        13.0,
+        12.0
+      ],
+      "view": "vessel-1-1-interior"
+    },
+    {
+      "capturedUsec": 17603460,
+      "drawCalls": 30.0,
+      "eye": [
+        29.0,
+        11.65,
+        -3.0
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/vessel-1-2-interior.png",
+      "frameSeconds": 0.203474,
+      "primitives": 162460.0,
+      "target": [
+        42.0,
+        13.0,
+        12.0
+      ],
+      "view": "vessel-1-2-interior"
+    },
+    {
+      "capturedUsec": 18725459,
+      "drawCalls": 30.0,
+      "eye": [
+        89.0,
+        11.65,
+        -3.0
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/vessel-1-3-interior.png",
+      "frameSeconds": 0.323115,
+      "primitives": 162460.0,
+      "target": [
+        102.0,
+        13.0,
+        12.0
+      ],
+      "view": "vessel-1-3-interior"
+    },
+    {
+      "capturedUsec": 19804476,
+      "drawCalls": 30.0,
+      "eye": [
+        -103.0,
+        21.65,
+        65.0
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/vessel-2-0-interior.png",
+      "frameSeconds": 0.278923,
+      "primitives": 162460.0,
+      "target": [
+        -90.0,
+        23.0,
+        80.0
+      ],
+      "view": "vessel-2-0-interior"
+    },
+    {
+      "capturedUsec": 20845584,
+      "drawCalls": 30.0,
+      "eye": [
+        -44.0,
+        21.65,
+        75.0
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/vessel-2-1-interior.png",
+      "frameSeconds": 0.263312,
+      "primitives": 162460.0,
+      "target": [
+        -31.0,
+        23.0,
+        90.0
+      ],
+      "view": "vessel-2-1-interior"
+    },
+    {
+      "capturedUsec": 21914465,
+      "drawCalls": 30.0,
+      "eye": [
+        21.0,
+        21.65,
+        61.0
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/vessel-2-2-interior.png",
+      "frameSeconds": 0.248004,
+      "primitives": 162460.0,
+      "target": [
+        34.0,
+        23.0,
+        76.0
+      ],
+      "view": "vessel-2-2-interior"
+    },
+    {
+      "capturedUsec": 22837068,
+      "drawCalls": 30.0,
+      "eye": [
+        82.0,
+        21.65,
+        69.0
+      ],
+      "file": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045918.631069Z-inspection/vessel-2-3-interior.png",
+      "frameSeconds": 0.25834,
+      "primitives": 162460.0,
+      "target": [
+        95.0,
+        23.0,
+        84.0
+      ],
+      "view": "vessel-2-3-interior"
+    }
+  ],
+  "collision": {
+    "art": "res://multiplayer_worlds/art/worlds/abyssal-pressureworks.glb",
+    "dressing": {
+      "errors": [],
+      "map_id": "abyssal-pressureworks",
+      "matched": [],
+      "motes": 0,
+      "panels": 0,
+      "preserved": [],
+      "resources": [],
+      "signs": 0,
+      "status": "ineligible",
+      "surfaces": 0,
+      "unmatched": [],
+      "unused_selectors": []
+    },
+    "gameplayTriangles": 3376,
+    "geometryHash": "32366a6c3df7f95f8d89281c5f83b24d9583cefeb4c0099790303d15349b53be"
+  },
+  "driver": "opengl3",
+  "geometryHash": "32366a6c3df7f95f8d89281c5f83b24d9583cefeb4c0099790303d15349b53be",
+  "importedStreams": [
+    {
+      "albedo": "res://multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_navy.png",
+      "material": "navy",
+      "normalEnabled": false,
+      "tangents": 23672,
+      "uv": 5918,
+      "vertices": 5918
+    },
+    {
+      "albedo": "res://multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_ivory.png",
+      "material": "ivory",
+      "normalEnabled": false,
+      "tangents": 60816,
+      "uv": 15204,
+      "vertices": 15204
+    },
+    {
+      "albedo": "preserved",
+      "material": "amber",
+      "normalEnabled": false,
+      "tangents": 81752,
+      "uv": 20438,
+      "vertices": 20438
+    },
+    {
+      "albedo": "res://multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_coral.png",
+      "material": "coral",
+      "normalEnabled": false,
+      "tangents": 9312,
+      "uv": 2328,
+      "vertices": 2328
+    },
+    {
+      "albedo": "res://multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_copper.png",
+      "material": "copper",
+      "normalEnabled": true,
+      "tangents": 64944,
+      "uv": 16236,
+      "vertices": 16236
+    },
+    {
+      "albedo": "preserved",
+      "material": "cyan",
+      "normalEnabled": false,
+      "tangents": 7776,
+      "uv": 1944,
+      "vertices": 1944
+    },
+    {
+      "albedo": "preserved",
+      "material": "glass",
+      "normalEnabled": false,
+      "tangents": 64,
+      "uv": 16,
+      "vertices": 16
+    }
+  ],
+  "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)"
+}

@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "godot",
+    "--editor",
+    "--import",
+    "--quit"
+  ],
+  "started": "2026-10-03T04:53:09.749714+00:00",
+  "timeoutSeconds": 600,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045309.631913Z/import.log",
+  "processGroup": 1470356,
+  "exitCode": 0,
+  "ended": "2026-10-03T04:53:12.668953+00:00",
+  "ownedGroupTeardownRequested": true
+}

@@ -1,0 +1,50 @@
+{
+  "grant": "ABYSSAL-ASSET-PRODUCTION-20261003-I",
+  "released": true,
+  "releasedAt": "2026-10-03T05:28:53.827101+00:00",
+  "ownedGroups": [
+    1431017,
+    1432180,
+    1441474,
+    1468568,
+    1470356,
+    1471307,
+    1474050,
+    1482060,
+    1486482,
+    1487540,
+    1488675,
+    1490229,
+    1494353,
+    1494820,
+    1530775,
+    1536935,
+    1542327,
+    1547409,
+    1551071,
+    1553093,
+    1567183,
+    1568340,
+    1580246
+  ],
+  "audits": [
+    {
+      "at": "2026-10-03T05:28:53.753608+00:00",
+      "ownedProcesses": []
+    },
+    {
+      "at": "2026-10-03T05:28:53.788407+00:00",
+      "ownedProcesses": []
+    },
+    {
+      "at": "2026-10-03T05:28:53.827076+00:00",
+      "ownedProcesses": []
+    }
+  ],
+  "allOwnedGroupsEmpty": true,
+  "heavyJobsRemaining": 0,
+  "accepted": false,
+  "head": "3e5d7d5f6f44d023a068494f592b3bb90ce54d74",
+  "geometrySha256": "c2acae268634f93e6f98f6abd6414289ff63852d2b9580482e2027595eecee76",
+  "glbSha256": "fa6888d11ed95dee670b3200b141962e74d6ea17523aef3bcbd7edee149f16b1"
+}

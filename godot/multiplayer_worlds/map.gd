@@ -109,6 +109,8 @@ func build(data: Dictionary) -> bool:
    art.name = "BlenderArtNoGameplayCollision"
    add_child(art)
    if str(data.id) == "helix-conservatory": Dressing.orient_helix_wayfinding(art)
+ if str(data.id) == "abyssal-pressureworks":
+  preload("res://multiplayer_worlds/abyssal_presentation.gd").attach(self,arena)
  metrics = {"geometryHash":geometry_hash,"gameplayTriangles":count,"art":art_path}
  metrics["dressing"] = Dressing.apply(self, str(data.id), geometry_hash)
  return true

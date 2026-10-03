@@ -1,0 +1,23 @@
+Info: Saved as "abyssal-pressureworks.blend"
+INFO Draco mesh compression is available, use library at /home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/4.5/scripts/addons_core/io_scene_gltf2/libextern_draco.so
+00:52:38 | INFO: Starting glTF 2.0 export
+00:52:38 | INFO: Extracting primitive: batch-navy
+00:52:38 | INFO: Primitives created: 1
+00:52:38 | INFO: Extracting primitive: batch-ivory
+00:52:38 | INFO: Primitives created: 1
+00:52:38 | INFO: Extracting primitive: batch-amber
+00:52:38 | INFO: Primitives created: 1
+00:52:38 | INFO: Extracting primitive: batch-coral
+00:52:38 | INFO: Primitives created: 1
+00:52:38 | INFO: Extracting primitive: batch-copper
+00:52:38 | INFO: Primitives created: 1
+00:52:38 | INFO: Extracting primitive: batch-cyan
+00:52:38 | INFO: Primitives created: 1
+00:52:38 | INFO: Extracting primitive: batch-glass
+00:52:38 | INFO: Primitives created: 1
+00:52:38 | INFO: Finished glTF 2.0 export in 0.04322004318237305 s
+
+ABYSSAL_EXPORT {"id": "abyssal-pressureworks", "recipeSha256": "0cf2dcf2ac16aa2c77b4adbe19f0716479ad5aee895287677aaaf289fa89cd8e", "blender": "4.5.14 LTS", "triangles": 32500, "materialBatches": 7, "editableObjects": 2532, "master": "tools/godot-multiplayer/new-maps/abyssal-pressureworks/masters/abyssal-pressureworks.blend", "glb": "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks.glb", "glbSha256": "ceca0ff296a346e57b47296c8999855aa04331424e570b9dc3c9d77f68ccd9b0", "glbBytes": 2208156, "inspection": "PENDING native views and master reopen"}
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+
+Blender quit

@@ -1,0 +1,10 @@
+{
+  "grant": "ABYSSAL-ASSET-PRODUCTION-20261003-I",
+  "failures": [
+    {"stage":"initial-preflight","result":"missing node package ws","evidence":"20261003T044039.305978Z/preflight.json","resolution":"Ignored symlink to existing canonical node_modules; no package installation"},
+    {"stage":"initial-combined-source-suite","tests":22,"passed":19,"failed":3,"result":"Historical Vesper-private and pre-promotion catalog assertions fail against canonical public Vesper","resolution":"Preserved public catalogs; three focused Abyssal contracts validate current admission and imported private derivative without constructing authority","rawLog":"Tool output retained in conversation; not retrospectively manufactured as a TAP file"},
+    {"stage":"first-native-representative","result":"Completed but visual revision needed","evidence":"20261003T044433.844034Z-representative","assets":"first-representative-assets","resolution":"Abyssal-only interior ribs/bays, authored details, reef scale, coating and worklight revisions"},
+    {"stage":"first-revised-source-suite","geometryHash":"5ba677d228987c03501d1a6a1997c8b405446239cd1d7a5b6cfb9714bd0a5df3","tests":15,"passed":8,"failed":7,"result":"Overhead AABB baseY was not honored by frozen source collision, blocking ordinary routes","resolution":"Represented ribs, canopies and equalizer cap with exact non-walkable triangle slabs instead; all fifteen tests passed","rawLog":"Tool output retained in conversation; not retrospectively manufactured as a TAP file"},
+    {"stage":"second-native-representative","result":"Failed parse of loader after accidental indentation in two hook-adjacent lines","evidence":"20261003T045324.893605Z-representative/representative.log","resolution":"Indentation corrected; next representative stage passed"}
+  ]
+}

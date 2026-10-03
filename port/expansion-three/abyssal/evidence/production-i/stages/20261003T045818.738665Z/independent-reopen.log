@@ -1,0 +1,15 @@
+ASSET_REOPEN masters tools/godot-multiplayer/new-maps/abyssal-pressureworks/masters/abyssal-pressureworks.blend 2539 2268
+00:58:19 | INFO: Data are loaded, start creating Blender stuff
+00:58:19 | INFO: Blender create Mesh node batch-navy
+00:58:19 | INFO: Blender create Mesh node batch-ivory
+00:58:19 | INFO: Blender create Mesh node batch-amber
+00:58:19 | INFO: Blender create Mesh node batch-coral
+00:58:19 | INFO: Blender create Mesh node batch-copper
+00:58:19 | INFO: Blender create Mesh node batch-cyan
+00:58:19 | INFO: Blender create Mesh node batch-glass
+00:58:19 | INFO: glTF import finished in 0.04s
+ASSET_REOPEN exports godot/multiplayer_worlds/art/worlds/abyssal-pressureworks.glb 7 4
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-20261002/tools/godot-multiplayer/new-maps/abyssal-pressureworks/masters/abyssal-pressureworks.blend"
+
+Blender quit

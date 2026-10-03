@@ -89,6 +89,26 @@ def beam(name, a, b, radius, material, decorative=False, sides=6):
     faces += [tuple(reversed(range(sides))), tuple(range(sides, 2*sides))]
     emit(name, verts, faces, material, decorative)
 
+def label(name, text, x, y, z, size=1):
+    curve = bpy.data.curves.new(name, 'FONT')
+    curve.body = text
+    curve.size = size
+    curve.align_x = 'CENTER'
+    curve.extrude = .012
+    curve.resolution_u = 2
+    obj = bpy.data.objects.new(name, curve)
+    editable.objects.link(obj)
+    obj.location = (x, -z, y)
+    obj.rotation_euler = (math.pi/2, 0, 0)
+    bpy.context.view_layer.update()
+    deps = bpy.context.evaluated_depsgraph_get()
+    mesh = bpy.data.meshes.new_from_object(obj.evaluated_get(deps))
+    verts = [obj.matrix_world @ v.co for v in mesh.vertices]
+    emit(name+'-letters', [(v.x,v.z,-v.y) for v in verts],
+         [tuple(p.vertices) for p in mesh.polygons], 'amber')
+    bpy.data.objects.remove(obj, do_unlink=True)
+    bpy.data.meshes.remove(mesh)
+
 # The shell, decks, gallery ramps, ceiling facets and source triangles are
 # emitted once. No generic flat-ground or overhead compiler is called here.
 for s in DATA['terrain']['surfaces']:
@@ -117,6 +137,20 @@ for sign in (-1, 1):
 for r in [s for s in DATA['structures'] if 'silhouette' in s]:
     x, y, z, w, d, h = (r[k] for k in ('x', 'y', 'z', 'w', 'd', 'h'))
     name = r['id']
+    label(name+'-district-sign', r['name'].upper(), x, y+7.8, z-d/2+.08, .78)
+    # Interior shell rings lie above all 7m portals. Their structural depth is
+    # exterior/flush; overhead cross-ribs and bay canopies are exact source solids.
+    outline = [(x-w/2+7,z-d/2),(x+w/2-7,z-d/2),(x+w/2,z-d/2+7),
+               (x+w/2,z+d/2-7),(x+w/2-7,z+d/2),(x-w/2+7,z+d/2),
+               (x-w/2,z+d/2-7),(x-w/2,z-d/2+7)]
+    for level in (7.6, h-.3):
+        for i, a in enumerate(outline):
+            b = outline[(i+1) % 8]
+            beam(f'{name}-pressure-ring-{level}-{i}', (a[0],y+level,a[1]),
+                 (b[0],y+level,b[1]), .24, 'copper')
+    for i, (px,pz) in enumerate(outline):
+        beam(f'{name}-external-load-rib-{i}', (px,y,pz), (px,y+h,pz), .4, 'ivory', True)
+        beam(f'{name}-bedrock-anchor-{i}', (px,-14,pz), (px,y-.15,pz), .75, 'navy', True)
     # Segmented pressure frames have inner ivory seals, copper dogs and visible
     # inspection fasteners; these occupy the source jamb/lintel surfaces.
     for side, port in r['ports'].items():
@@ -139,11 +173,35 @@ for r in [s for s in DATA['structures'] if 'silhouette' in s]:
         for stripe in range(3):
             box(f'{name}-equipment-vent-{sign}-{stripe}', x+sign*11,
                 y+.6+stripe*.4, z+8.49, 2.8, .12, .03, 'copper')
+        # Recessed bay cladding and district-specific machinery make each wing
+        # function legible. All lower details stay within source equipment/bay solids.
+        box(f'{name}-bay-door-{sign}', x+sign*11, y+1.2, z+6.19, 2.4,2.1,.05,'navy')
+        box(f'{name}-bay-status-{sign}', x+sign*11+1.65,y+1.7,z+6.18,.18,.5,.04,'cyan')
+        if r['district'] == 'terraced-laboratories':
+            for instrument in range(3):
+                box(f'{name}-specimen-{sign}-{instrument}',x+sign*11-1.25+instrument*1.25,y+3,z+8.48,.65,2,.06,'cyan')
+        elif r['district'] == 'pump-energy':
+            for pipe in range(3):
+                beam(f'{name}-pump-feed-{sign}-{pipe}',(x+sign*11-1.25+pipe*1.25,y+1,z+8.45),
+                     (x+sign*11-1.25+pipe*1.25,y+3.5,z+8.45),.15,'copper')
+        else:
+            for bunk in range(2):
+                box(f'{name}-bunk-reveal-{sign}-{bunk}',x+sign*11,y+.65+bunk,z+8.48,3.3,.65,.04,'ivory')
     # Low-cost flush wayfinding, with district-specific palette rather than
     # emissive floodlighting. These are nonblocking markings on existing floors.
     color = 'cyan' if r['district'] == 'terraced-laboratories' else 'amber'
     for sign in (-1, 1):
         box(name+f'-deck-lane-{sign}', x, y+.018, z+sign*3, 14, .018, .12, color)
+    for n in range(-3,4):
+        box(name+f'-deck-seam-{n}',x+n*4,y+.006,z,.035,.009,d-14,'copper')
+
+# Deep layered escarpment masses underneath the habitat, with an irregular
+# ridge beyond its dry footprint. Source support deliberately stops at the hull.
+for i in range(8):
+    x = -112+i*32
+    verts = [(x-20,-24,-105),(x+20,-24,-105),(x+23,-18,100),(x-16,-18,100),
+             (x-18,-10,-105),(x+17,-8,-105),(x+18,3,100),(x-13,6,100)]
+    emit(f'escarpment-bed-{i}',verts,[(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7),(4,5,6,7)],'navy',True)
 
 # Bounded, still ocean background: sculpted branching support reef and massive
 # faceted escarpment buttresses. No water simulation, no gameplay colliders.

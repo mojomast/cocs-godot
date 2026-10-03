@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender",
+    "--python-exit-code",
+    "1",
+    "-b",
+    "-t",
+    "1",
+    "--python",
+    "tools/godot-multiplayer/new-maps/abyssal-pressureworks/blender_author.py"
+  ],
+  "started": "2026-10-03T04:56:49.286488+00:00",
+  "timeoutSeconds": 900,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-three-abyssal-evidence-20261002/production-i/20261003T045649.162228Z/build.log",
+  "processGroup": 1482060,
+  "exitCode": 0,
+  "ended": "2026-10-03T04:56:51.910518+00:00",
+  "ownedGroupTeardownRequested": true
+}
