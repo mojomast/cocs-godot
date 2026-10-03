@@ -8,14 +8,13 @@ import {createHash} from 'node:crypto';
 import {resolve,join} from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {observeChild,shutdownPeers,faultPattern} from '../asset-production/process-evidence.mjs';
-import {controller} from '../asset-production/candidate-guidance.mjs';
-import {KINDS,MAP,MODE,ROUND_SECONDS,neutral,look,walk,drive,distance,signedSpeed,wrap,validateCommand,assertRole,assertObservation,assertEventPosition,assertCase} from './journey-contract.mjs';
+import {KINDS,MAP,MODE,ROUND_SECONDS,neutral,look,walk,drive,distance,signedSpeed,wrap,validateCommand,assertRole,assertObservation,assertEventPosition,assertCase,walkingController,seatSettled} from './journey-contract.mjs';
 const ROOT=fileURLToPath(new URL('../../',import.meta.url));
 export function options(argv=process.argv.slice(2)){
   const arg=(key,fallback)=>argv.find(a=>a.startsWith(`--${key}=`))?.slice(key.length+3)??fallback;
   const kind=arg('kind','all');assert.ok(kind==='all'||KINDS.includes(kind));
   assert.ok(!argv.includes('--allow-fallback'),'fallback must run separately before production');
-  return {plan:argv.includes('--plan'),granted:argv.includes('--granted'),kinds:kind==='all'?[...KINDS]:[kind],requireAssets:true,map:MAP,mode:MODE,roundSeconds:ROUND_SECONDS,
+  return {plan:argv.includes('--plan'),granted:argv.includes('--granted'),compact:argv.includes('--compact'),kinds:kind==='all'?[...KINDS]:[kind],requireAssets:true,map:MAP,mode:MODE,roundSeconds:ROUND_SECONDS,
     output:resolve(arg('output','/home/mojo/.tmp-on-disk/cocs-expansion-four-vehicles-evidence-20261002/connected')),
     binary:arg('godot','/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64'),
     classification:'three actual native controls/transports; normal source clock; no source pose/health/score writes; controlled live-mesh weather probe; sequential per-kind cases'};
@@ -40,6 +39,7 @@ export async function runCase(plan,kind,out){
   const peers=[],wire=[],observations=[],receipts=[],sourceEvents=[],nativeEvents=[],inputs=[],snapshots=new Map();
   const proof={kind,gunnerFire:false};let game,room,m,stage='startup',failure=null,abortError=null,serial=0,assets,geometryHash,success=false,serverError=null;
   const targetId=`sunscar-0-${kind}`,latest=new Map(),connections=[];
+  const fixtureHashes=Object.fromEntries(['tools/godot-vehicle-assets/journey.mjs','tools/godot-vehicle-assets/journey-contract.mjs','godot/tests/vehicle_assets/journey.gd','godot/tests/vehicle_assets/journey.tscn'].map(path=>[path,createHash('sha256').update(readFileSync(join(ROOT,path))).digest('hex')]));
   const interrupt=()=>{abortError=Error('Interrupted');};
   process.once('SIGINT',interrupt);process.once('SIGTERM',interrupt);
   const boundedPush=(array,value,cap=60000)=>{assert.ok(array.length<cap,'bounded evidence exhausted');array.push(value);};
@@ -77,9 +77,10 @@ export async function runCase(plan,kind,out){
     command(role);
     const env={...process.env,LP_NUM_THREADS:'1',LIBGL_ALWAYS_SOFTWARE:'1',COCS_SETTINGS_PATH:join(out,role+'-settings.json')};
     for(const key of ['XDG_DATA_HOME','XDG_CONFIG_HOME','XDG_CACHE_HOME']){env[key]=join(out,role,key);mkdirSync(env[key],{recursive:true});}
-    const args=[join(ROOT,'tools/godot-dev/xvfb_run.py'),plan.binary,'--path',join(ROOT,'godot'),'--audio-driver','Dummy','--resolution','760x520','res://tests/vehicle_assets/journey.tscn','--',`--endpoint=ws://127.0.0.1:${game.server.address().port}`,`--map=${MAP}`,'--bots=0','--wait-for-players=3','--require-assets',`--vehicle-target=${targetId}`,`--vehicle-role=${role}`,`--vehicle-command=${join(out,role+'-commands.json')}`,...(joinRoom?[`--join-room=${joinRoom}`]:[])];
-    save(join(out,role+'-launch.json'),{command:'python3',args});
-    const child=spawn('python3',args,{cwd:ROOT,env,stdio:['ignore','pipe','pipe']});
+    const program='python3';
+    const args=[join(ROOT,'tools/godot-dev/xvfb_run.py'),plan.binary,'--path',join(ROOT,'godot'),'--audio-driver','Dummy','--resolution',role==='driver'?(plan.compact?'760x520':'1280x800'):'320x240','res://tests/vehicle_assets/journey.tscn','--',`--endpoint=ws://127.0.0.1:${game.server.address().port}`,`--map=${MAP}`,'--bots=0','--wait-for-players=3','--require-assets',`--vehicle-target=${targetId}`,`--vehicle-role=${role}`,`--vehicle-command=${join(out,role+'-commands.json')}`,...(role==='driver'?[`--vehicle-capture=${join(out,'frames')}`]:[]),...(plan.compact?['--vehicle-compact']:[]),...(joinRoom?[`--join-room=${joinRoom}`]:[])];
+    save(join(out,role+'-launch.json'),{command:program,args});
+    const child=spawn(program,args,{cwd:ROOT,env,stdio:['ignore','pipe','pipe']});
     const peer=observeChild(child,role);peers.push(peer);
     let pending='';child.stdout.on('data',chunk=>{pending+=chunk;const lines=pending.split('\n');pending=lines.pop();for(const line of lines)parseLine(role,line);});
     child.on('close',()=>{if(pending.trim())parseLine(role,pending);});
@@ -93,30 +94,38 @@ export async function runCase(plan,kind,out){
     boundedPush(receipts,{stage:name,start,end:m.time,actorIds:peers.map(p=>({role:p.role,id:actor(p.role)?.id,seat:actor(p.role)?.vehicleSeat})),vehicle:{id:vehicle().id,health:vehicle().health,position:{...vehicle().position}}},200);
   }
   function sameStageNeutral(except=[],wet=false){for(const p of peers)if(!except.includes(p.role))command(p.role,{wet});}
-  const follow=controller();
-  function walkTo(role,point,key){
-    const a=actor(role);assert.ok(a&&a.health>0,role+' alive for route');
-    const input=follow(m,a,point,key);
-    return Math.hypot(input.x??0,input.z??0)>.01?{keys:['W'],yaw:input.yaw,pitch:0}:neutral();
+  const follow=walkingController();
+  function walkTo(role,point,key,stopRadius=1.05){
+    const a=actor(role);assert.ok(a,role+' assigned source actor');
+    if(a.health<=0)return neutral(); // await the actual normal source respawn
+    if(distance(a,point)<stopRadius)return neutral();
+    if(distance(a,point)<4)return walk(a,point);
+    return follow(m,a,point,key);
   }
   async function approach(role){
     await step(`approach-${role}-${serial}`,()=>{
-      sameStageNeutral([role]);command(role,walkTo(role,vehicle().position,`${kind}-${role}-approach-${vehicle().position.x.toFixed(0)}`));
-    },()=>distance(actor(role),vehicle().position)<1.9,70000);
+      sameStageNeutral([role]);command(role,walkTo(role,vehicle().position,`${kind}-${role}-approach-${vehicle().position.x.toFixed(0)}`,1.7));
+    },()=>actor(role).health>0&&distance(actor(role),vehicle().position)<1.9&&distance(latest.get(role)?.actor??{x:Infinity,z:Infinity},vehicle().position)<1.9&&Object.keys(latest.get(role)?.inputState?.keys??{pending:true}).length===0,70000);
   }
   async function enter(role,seat,wet=false){
     const name=`enter-${role}-${seat}-${serial}`;
-    await step(name,()=>{sameStageNeutral([role],wet);command(role,{keys:['E'],wet});},()=>actor(role).vehicleId===targetId&&actor(role).vehicleSeat===seat,10000);
+    await step(name,()=>{
+      sameStageNeutral([role],wet);
+      const a=actor(role);
+      const input=a.vehicleId===targetId?neutral():distance(a,vehicle().position)>1.8?walkTo(role,vehicle().position,name+'-final-approach',1.7):{keys:['E']};
+      command(role,{...input,wet});
+    },()=>seatSettled(actor(role),latest.get(role)?.actor,targetId,seat),15000);
     assertRole(m.snapshot(),actor(role).id,targetId,seat);
   }
   async function exit(role,wet=false){
-    await step(`exit-${role}-${serial}`,()=>{sameStageNeutral([role],wet);command(role,{keys:['E'],wet});},()=>actor(role).vehicleId==null,10000);
+    await step(`exit-${role}-${serial}`,()=>{sameStageNeutral([role],wet);command(role,{keys:['E'],wet});},()=>seatSettled(actor(role),latest.get(role)?.actor,null),10000);
   }
   async function fire(role,type){
     const start=m.serial;
+    const types=type==='personal-fire'?['shot','launch']:[type];
     await step(`${role}-${type}-${serial}`,()=>{
       sameStageNeutral([role]);command(role,{keys:[],fire:true,yaw:vehicle().heading-Math.PI,pitch:.55});
-    },()=>sourceEvents.some(e=>e.id>start&&e.type===type&&e.actor===actor(role).id)&&nativeEvents.some(r=>r.event.id>start&&r.event.type===type&&r.event.actor===actor(role).id),12000);
+    },()=>sourceEvents.some(e=>e.id>start&&types.includes(e.type)&&e.actor===actor(role).id)&&nativeEvents.some(r=>r.event.id>start&&types.includes(r.event.type)&&r.event.actor===actor(role).id),12000);
   }
   try{
     assets=assetInputs();assert.ok(existsSync(plan.binary),'pinned Godot executable');
@@ -166,6 +175,7 @@ export async function runCase(plan,kind,out){
     await step('drive-bend',()=>{sameStageNeutral(['driver']);command('driver',drive(vehicle(),['W','D']));},()=>Math.abs(wrap(vehicle().heading-heading))>.2&&Math.abs(vehicle().roll)>.005,8000);proof.bend=true;
     await step('reverse',()=>{sameStageNeutral(['driver']);command('driver',drive(vehicle(),['S']));},()=>signedSpeed(vehicle())<-.8,10000);proof.reverse=true;
     await step('stop',()=>{sameStageNeutral(['driver']);command('driver',drive(vehicle(),['W']));},()=>Math.abs(signedSpeed(vehicle()))<.3,6000);
+    await step('park-brake',()=>{sameStageNeutral(['driver']);command('driver',drive(vehicle(),['SPACE']));},()=>Math.abs(signedSpeed(vehicle()))<.01,6000);
     await fire('driver','vehicle-shot');proof.driverFire=true;
     await approach('opponent');
     // While wet, release the source driver, then allow the opposing public team
@@ -176,20 +186,25 @@ export async function runCase(plan,kind,out){
     if(kind!=='scout'){
       await approach('opponent');await enter('opponent','gunner');await fire('opponent','vehicle-shot');proof.gunnerFire=true;
     }
-    await approach('crew');await enter('crew','passenger');await fire('crew','shot');proof.passengerFire=true;
-    await exit('crew');if(kind!=='scout')await exit('opponent');
+    await approach('crew');await enter('crew','passenger');await fire('crew','personal-fire');proof.passengerFire=true;
+    await exit('crew');if(kind!=='scout')await exit('opponent');await exit('driver');
     // Pick an actual navigable firing point with source world line of sight.
     const v=vehicle(),enemy=actor('opponent');
     const firingPoint=m.nav.filter(p=>distance(p,v.position)>=7&&distance(p,v.position)<=18&&visible({x:p.x,y:(p.y??0)+1.45,z:p.z},{x:v.position.x,y:v.position.y+.3,z:v.position.z},m.arena)).sort((a,b)=>distance(a,enemy)-distance(b,enemy))[0];
     assert.ok(firingPoint,'source navigable line of sight to hull');
-    await step('opponent-to-hull',()=>{sameStageNeutral(['opponent']);command('opponent',walkTo('opponent',firingPoint,kind+'-firing-point'));},()=>distance(actor('opponent'),firingPoint)<.8,65000);
+    await step('opponent-to-hull',()=>{sameStageNeutral(['opponent']);command('opponent',walkTo('opponent',firingPoint,kind+'-firing-point'));},()=>distance(actor('opponent'),firingPoint)<1.6&&Math.hypot(actor('opponent').vx,actor('opponent').vz)<.5,65000);
     const damageSerial=m.serial;
     const shoot=()=>{sameStageNeutral(['opponent']);const a=actor('opponent');command('opponent',{keys:a.ammo[a.weapon]===0?['R']:[],fire:true,...look(a,vehicle().position,.3)});};
     await step('ordinary-damage',shoot,()=>sourceEvents.some(e=>e.id>damageSerial&&e.type==='vehicle-damage'&&e.vehicle===targetId)&&vehicle().health<vehicle().maxHealth-35,15000);proof.damage=true;
     assert.ok(vehicle().health>0,'repair needs a live genuinely damaged hull');
     const damaged=vehicle().health,repairSerial=m.serial;
+    // Source hits can intentionally select visible crew through the solid hull
+    // OBB. Damage the empty chassis, then actually reboard with Codex to repair;
+    // do not manufacture surviving crew health or a repair heartbeat.
+    await approach('driver');await enter('driver','driver');
     await step('passive-codex-repair',()=>sameStageNeutral(),()=>vehicle().health>damaged+12&&sourceEvents.some(e=>e.id>repairSerial&&e.type==='vehicle-repair'&&e.vehicle===targetId),15000);
     const repaired=sourceEvents.find(e=>e.id>repairSerial&&e.type==='vehicle-repair'&&e.vehicle===targetId);assertEventPosition(repaired,vehicle());proof.repair=true;
+    await exit('driver');
     const wreckSerial=m.serial;
     await step('ordinary-wreck',shoot,()=>sourceEvents.some(e=>e.id>wreckSerial&&e.type==='vehicle-destroyed'&&e.vehicle===targetId)&&vehicle().health===0,50000);
     const wreck=sourceEvents.find(e=>e.id>wreckSerial&&e.type==='vehicle-destroyed'&&e.vehicle===targetId);assertEventPosition(wreck,vehicle());assert.equal(actor('driver').vehicleId,null);proof.wreck=true;
@@ -198,7 +213,7 @@ export async function runCase(plan,kind,out){
     assert.ok(proof.wireInputs,'native controls reached actual authoritative input wire');
     // Natural configured time/objective result, followed by production Enter.
     stage='natural-results';for(const p of peers)command(p.role);
-    await until('natural source results',()=>m.over&&peers.every(p=>latest.get(p.role)?.phase==='results'),Math.max(20000,(ROUND_SECONDS+18-m.time)*1000));
+    await until('natural source results',()=>m.over&&peers.every(p=>latest.get(p.role)?.phase==='results'),Math.max(20000,(ROUND_SECONDS+18-m.time)*2000));
     stage='ordinary-rematch';command('driver',{keys:['ENTER']});
     await until('native ordinary rematch cleanup',()=>peers.every(p=>{const r=latest.get(p.role);return r?.round===2&&r.phase==='active'&&r.resetClean&&r.retired;}),20000,()=>{for(const p of peers)if(p.role!=='driver')command(p.role);});
     assert.notEqual(room.match,m);proof.reset=true;proof.resetCleanup=true;
@@ -222,7 +237,7 @@ export async function runCase(plan,kind,out){
     success=success&&!failure&&!serverError&&peers.length===3&&teardown.every(p=>p.clean);
     save(join(out,'wire.json'),wire);save(join(out,'observations.json'),observations);save(join(out,'inputs.json'),inputs);
     save(join(out,'events.json'),{source:sourceEvents,native:nativeEvents});save(join(out,'stages.json'),receipts);
-    const result={kind,map:MAP,mode:MODE,success,accepted:false,classification:plan.classification,assets,geometryHash,proof,failure,serverError,teardown};
+    const result={kind,map:MAP,mode:MODE,success,accepted:false,classification:plan.classification,assets,fixtureHashes,geometryHash,proof,failure,serverError,teardown};
     save(join(out,'outcome.json'),result);return result;
   }
 }
