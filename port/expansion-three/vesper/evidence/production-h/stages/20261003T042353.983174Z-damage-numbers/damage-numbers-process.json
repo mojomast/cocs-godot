@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "xvfb-run",
+    "-a",
+    "-s",
+    "-screen 0 1280x800x24",
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "godot",
+    "--script",
+    "res://tests/protocol/damage_numbers.gd"
+  ],
+  "started": "2026-10-03T04:23:54.100936+00:00",
+  "timeoutSeconds": 30,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-three-vesper-evidence-20261002/production-h/20261003T042353.983174Z-damage-numbers/damage-numbers.log",
+  "processGroup": 1372353,
+  "exitCode": 0,
+  "ended": "2026-10-03T04:23:54.466089+00:00",
+  "ownedGroupTeardownRequested": true
+}

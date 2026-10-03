@@ -48,7 +48,11 @@ def main():
         materials = {}
         for name, color in COLORS.items():
             mat = bpy.data.materials.new(name)
-            rgb = tuple(int(color[i:i+2], 16) / 255 for i in (1, 3, 5))
+            # Authored palette is sRGB; Blender Principled inputs are linear.
+            # Treating these bytes as linear made the first native brick orange.
+            def linear(v):
+                return v / 12.92 if v <= .04045 else ((v + .055) / 1.055) ** 2.4
+            rgb = tuple(linear(int(color[i:i+2], 16) / 255) for i in (1, 3, 5))
             mat.diffuse_color = (*rgb, 1)
             mat.use_nodes = True
             bsdf = mat.node_tree.nodes.get('Principled BSDF')
@@ -81,13 +85,8 @@ def main():
             return obj
 
         def cube(name, x, y, z, w, h, d, material, collection='Facade-detail'):
-            bpy.ops.mesh.primitive_cube_add(size=1, location=coord((x, y, z)))
-            obj = bpy.context.object
-            obj.name = name
-            obj.scale = (w, d, h)
-            obj.data.materials.append(materials[material])
-            link(obj, collection)
-            return obj
+            vertices=[(x+dx*w/2,y+dy*h/2,z+dz*d/2) for dy in (-1,1) for dx,dz in [(-1,-1),(1,-1),(1,1),(-1,1)]]
+            return mesh(name,vertices,[(0,1,2,3),(4,7,6,5),(0,4,5,1),(1,5,6,2),(2,6,7,3),(3,7,4,0)],material,collection)
 
         for surface in recipe['terrain']['surfaces']:
             mesh(surface['id'], surface['vertices'], surface['triangles'], surface['material'], 'AUTHORITY-surfaces', True)
@@ -96,15 +95,104 @@ def main():
             mesh(wall['id'], wall['vertices'], [(0, 1, 2)], wall['material'], 'AUTHORITY-walls', True)
         for piece in recipe['art']['pieces']:
             cube(piece['kind'], piece['x'], piece['y'], piece['z'], piece['w'], piece['h'], piece['d'], piece['material'])
+            if 'window' in piece['kind']:
+                for side in (-1,1):
+                    cube('window-reveal',piece['x']+side*(piece['w']/2+.12),piece['y'],piece['z']-.08,.22,piece['h']+.35,.26,'sandstone')
+                cube('window-sill',piece['x'],piece['y']-piece['h']/2-.12,piece['z']-.2,piece['w']+.5,.24,.5,'sandstone')
+
+        def beam(name, a, b, width=.16, material='iron'):
+            start, end = Vector(coord(a)), Vector(coord(b))
+            rotation=(end-start).to_track_quat('Z','Y')
+            points=[]
+            for center in (start,end):
+                for i in range(6):
+                    p=center+rotation@Vector((math.cos(i*math.tau/6)*width,math.sin(i*math.tau/6)*width,0))
+                    points.append((p.x,p.z,-p.y))
+            faces=[tuple(reversed(range(6))),tuple(range(6,12))]+[(i,(i+1)%6,(i+1)%6+6,i+6) for i in range(6)]
+            return mesh(name,points,faces,material,'Facade-detail')
+
         # Handbuilt window reveals and lintel trim remain outside actual apertures.
         for hall in recipe['structures']:
             y = 24 if hall['z'] > 65 else 0 if hall['z'] < -65 else 12
+            x0,x1 = hall['x']-hall['w']/2,hall['x']+hall['w']/2
             for side in (-1, 1):
                 z = hall['z'] + side * hall['d'] / 2
                 cube(hall['id'] + '-cornice', hall['x'], y + hall['height'] - .2, z, hall['w'], .4, .5, 'sandstone')
+                # Structural rhythm and deep reveals, aligned to real window bays.
+                for x in range(int(x0),int(x1)+1,8):
+                    if hall['id']=='platform-gallery' and -10 < x < 6:
+                        continue
+                    cube('brick-bay-buttress',x,y+hall['height']/2,z+side*.23,.75,hall['height'],.5,'brick')
+                    cube('pier-cap',x,y+hall['height']-.6,z+side*.35,1,.4,.7,'sandstone')
+                for left,right in ([(x0,-10),(6,x1)] if hall['id']=='platform-gallery' else [(x0,x1)]):
+                    cube('window-stone-sill',(left+right)/2,y+.95,z,right-left,.18,.5,'sandstone')
+                    cube('window-stone-header',(left+right)/2,y+3.9,z,right-left,.22,.45,'sandstone')
+                    # Bases never span the actual central north/south portals.
+                    cube('interior-dado',(left+right)/2,y+.35,z-side*.08,right-left,.7,.12,'sandstone')
+            for x in (x0,x1):
+                for side in (-1,1):
+                    cube('portal-stone-jamb',x,y+2.5,hall['z']+side*4.3,.7,5,.6,'sandstone')
+                    cube('portal-capital',x,y+4.7,hall['z']+side*4.3,1,.5,1,'sandstone')
+                cube('portal-stone-lintel',x,y+5.3,hall['z'],.8,.6,9.2,'sandstone')
+                cube('gable-stringcourse',x,y+hall['height']-.25,hall['z'],.5,.35,hall['d'],'sandstone')
+            for x in range(int(x0+4),int(x1),8):
+                low=y+hall['height']-.6
+                beam('roof-principal-rafter',(x,low,hall['z']-hall['d']/2),(x,low+4,hall['z']),.18)
+                beam('roof-principal-rafter',(x,low+4,hall['z']),(x,low,hall['z']+hall['d']/2),.18)
+                beam('king-post',(x,low,hall['z']),(x,low+4,hall['z']),.12)
+                beam('roof-tension-tie',(x,low,hall['z']-hall['d']/2),(x,low,hall['z']+hall['d']/2),.1)
+            # Purposeful furniture sits on the source side counters, leaving the
+            # six-metre central passage and every tested doorway clear.
+            for x in (hall['x']-hall['w']/3,hall['x'],hall['x']+hall['w']/3):
+                if hall['id']=='platform-gallery' and x==0:
+                    continue
+                for side in (-1,1):
+                    z=hall['z']+side*(hall['d']/2-4)
+                    cube('counter-worktop',x,y+1.14,z,5.1,.1,1.6,'sandstone')
+                    if 'station' in hall['id'] or 'ticket' in hall['id'] or 'gallery' in hall['id']:
+                        for dx in (-1.7,0,1.7):
+                            cube('ticket-desk-divider',x+dx,y+1.48,z+side*.6,.08,.65,1.1,'iron')
+                    else:
+                        cube('parcel-bay-label',x,y+.7,z-side*.77,3,.3,.03,'sandstone')
             # Deep steel roof trusses, supported on the actual wall line.
             for offset in (-hall['w']/3, 0, hall['w']/3):
                 cube(hall['id'] + '-tiebeam', hall['x'] + offset, y + hall['height'] - .5, hall['z'], .4, .5, hall['d'], 'iron')
+        # Attached row blocks have actual rear and side elevations, not one
+        # windowed face and three blank slabs. Source keeps these buildings solid.
+        for z in (-47,45,112):
+            depth=14 if z==112 else 22
+            base=24 if z>65 else 18 if z>25 else 6
+            for center in (-68,68):
+                for j in range(5):
+                    x=center+(j-2)*8
+                    top=(24 if z>65 else 12+(z+7-25)*.3 if z>25 else (z+7+65)*.3)+13+(j%3)*3
+                    for zz in (z-depth/2,z+depth/2):
+                        cube('row-roof-parapet',x,top+.35,zz,8,.7,.45,'brick')
+                        cube('row-ground-stringcourse',x,base+1,zz,8,.25,.4,'sandstone')
+                    for xx in (x-3.8,x+3.8):
+                        cube('row-corner-quoin',xx,(base+top)/2,z-depth/2-.14,.35,top-base,.3,'sandstone')
+                    for dx in (-2,2):
+                        for level in range(3):
+                            yy=top-3-level*3
+                            cube('rear-window',x+dx,yy,z+depth/2+.03,1.5,2,.08,'glass')
+                            cube('rear-window-lintel',x+dx,yy+1.15,z+depth/2+.08,1.9,.2,.26,'sandstone')
+                    if j in (0,4):
+                        side=-1 if j==0 else 1
+                        for zz in (z-5,z+2,z+7):
+                            for level in range(3):
+                                cube('end-elevation-window',x+side*4.03,top-3-level*3,zz,.08,2,1.6,'glass')
+        # Clock stages, masonry shoulders, and rail infrastructure reinforce the
+        # civic/industrial skyline rather than a lone unarticulated rectangular pole.
+        for y in (17,28,40,51):
+            cube('clock-belt-course',22,y,20,12.6,.45,12.6,'sandstone')
+        for x in (16.1,27.9):
+            cube('clock-quoin',x,35,14,.45,45,.55,'sandstone')
+        for z in range(28,65,4):
+            y=12+(z-25)*.3
+            for x in (29.6,34.4):
+                beam('stair-baluster',(x,y,z),(x,y+1,z),.055)
+        for x in (29.6,34.4):
+            beam('stair-handrail',(x,13.9,28),(x,24.7,64),.075)
         # Stair risers are visual infill of the actual source step elevations;
         # source movement intentionally uses treads, not blocking vertical walls.
         for i in range(80):
@@ -134,7 +222,7 @@ def main():
             curve.extrude = .015
             obj = bpy.data.objects.new(label['text'], curve)
             obj.location = coord((label['x'], label['y'], label['z']))
-            obj.rotation_euler = (math.pi/2, 0, 0)
+            obj.rotation_euler = (-math.pi/2, 0, 0)
             collections['Tram-and-wayfinding'].objects.link(obj)
             curve.materials.append(materials['letter'])
         clock = recipe['art']['clock']

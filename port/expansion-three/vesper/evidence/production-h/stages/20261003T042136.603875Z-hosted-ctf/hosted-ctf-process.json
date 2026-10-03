@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "xvfb-run",
+    "-a",
+    "-s",
+    "-screen 0 1280x800x24",
+    "node",
+    "tools/asset-production/candidate-hosted.mjs",
+    "vesper-viaduct",
+    "ctf",
+    "--granted",
+    "--compact"
+  ],
+  "started": "2026-10-03T04:21:36.714759+00:00",
+  "timeoutSeconds": 960,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-three-vesper-evidence-20261002/production-h/20261003T042136.603875Z-hosted-ctf/hosted-ctf.log",
+  "processGroup": 1365075,
+  "exitCode": 1,
+  "ended": "2026-10-03T04:22:12.098869+00:00",
+  "ownedGroupTeardownRequested": true
+}

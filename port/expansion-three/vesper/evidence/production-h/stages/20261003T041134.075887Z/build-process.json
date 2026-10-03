@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender",
+    "--python-exit-code",
+    "1",
+    "-b",
+    "-t",
+    "1",
+    "--python",
+    "tools/godot-multiplayer/new-maps/vesper-viaduct/author_blender.py",
+    "--",
+    "build"
+  ],
+  "started": "2026-10-03T04:11:34.194745+00:00",
+  "timeoutSeconds": 900,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-three-vesper-evidence-20261002/production-h/20261003T041134.075887Z/build.log",
+  "processGroup": 1332559,
+  "exitCode": 0,
+  "ended": "2026-10-03T04:12:05.940387+00:00",
+  "ownedGroupTeardownRequested": true
+}

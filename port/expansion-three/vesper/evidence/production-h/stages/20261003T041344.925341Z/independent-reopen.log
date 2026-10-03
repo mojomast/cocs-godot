@@ -1,0 +1,19 @@
+ASSET_REOPEN masters tools/godot-multiplayer/new-maps/vesper-viaduct/masters/vesper-viaduct.blend 4556 4022
+00:13:45 | INFO: Data are loaded, start creating Blender stuff
+00:13:45 | INFO: Blender create Mesh node city-grade--104--140.001
+00:13:45 | INFO: Blender create Mesh node city-grade--65--140.001
+00:13:45 | INFO: Blender create Mesh node city-grade-25--140.001
+00:13:45 | INFO: Blender create Mesh node civic-stair-0.001
+00:13:45 | INFO: Blender create Mesh node canal-bridge--100.001
+00:13:45 | INFO: Blender create Mesh node quay-rail-cap.006
+00:13:45 | INFO: Blender create Mesh node ticket-concourse-roof-west.001
+00:13:45 | INFO: Blender create Mesh node row--47--84-cap.001
+00:13:45 | INFO: Blender create Mesh node recess-window.180
+00:13:45 | INFO: Blender create Mesh node NONPLAYABLE-CANAL.001
+00:13:45 | INFO: Blender create Mesh node TICKET CONCOURSE.001
+00:13:45 | INFO: glTF import finished in 0.06s
+ASSET_REOPEN exports godot/multiplayer_worlds/art/worlds/vesper-viaduct.glb 11 8
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/mojo/.tmp-on-disk/cocs-expansion-three-vesper-20261002/tools/godot-multiplayer/new-maps/vesper-viaduct/masters/vesper-viaduct.blend"
+
+Blender quit

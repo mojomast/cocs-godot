@@ -4,6 +4,12 @@ Stable ID: `vesper-viaduct`. Owner lane: `expansion-three/vesper`.
 
 ## City structure
 
+H production adds four central mixed-use blocks, deepens the sloped row-building
+footprints and supplies source-solid side counters. It retains the reviewed
+bounds, terrain relief, spawn/flag/objective positions and 19-route topology.
+Native art now includes articulated jambs/capitals, window reveals, stone courses,
+roof trusses, counters, stair rails, clock stages and corrected facade lettering.
+
 280 × 240 m bounds, 24 m playable relief, 70 m civic clock silhouette.
 Seven through-buildings contain three connected rooms each: ticket concourse,
 platform gallery, east station, west courtyard, east post office, bonded
@@ -57,5 +63,6 @@ the recipe; Blender generation starts from those exact vertices rather than a
 separate coarse layout. Master collections keep source walls, source surfaces,
 facade detail, transit/signage and inspection cameras independently editable.
 
-Human street-level review is pending. Expect iteration after looking through the
-actual halls and across the hillside; source test success is not visual approval.
+H production has real native overview/eye-level inspection imagery and measured
+imported streams. Parent visual approval remains a separate gate; source test
+success and mechanical native checks do not imply that approval.

@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender",
+    "--python-exit-code",
+    "1",
+    "-b",
+    "-t",
+    "1",
+    "--python",
+    "tools/asset-production/reopen.py",
+    "--",
+    "--unit=vesper-viaduct"
+  ],
+  "started": "2026-10-03T04:13:45.042632+00:00",
+  "timeoutSeconds": 600,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-three-vesper-evidence-20261002/production-h/20261003T041344.925341Z/independent-reopen.log",
+  "processGroup": 1339685,
+  "exitCode": 0,
+  "ended": "2026-10-03T04:13:45.958167+00:00",
+  "ownedGroupTeardownRequested": true
+}

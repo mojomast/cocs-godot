@@ -33,6 +33,7 @@ export function recipe(){
   roof(id+'-roof-west',[[x0,y+h,z0],[x1,y+h,z0],[x1,y+h+4,z],[x0,y+h+4,z]],'slate');
   roof(id+'-roof-east',[[x0,y+h+4,z],[x1,y+h+4,z],[x1,y+h,z1],[x0,y+h,z1]],'slate');
   for(const xx of [x0,x1])face(id+'-gable',[[xx,y+h,z0],[xx,y+h+4,z],[xx,y+h,z1]],material);
+  for(const xx of [x-w/3,x,x+w/3])for(const side of [-1,1])if(id!=='platform-gallery'||xx!==0)box(id+'-side-counter',xx,z+side*(d/2-4),5,1.5,y,y+1.1,'iron');
   m.structures.push({id,type:'three-room-through-hall',x,z,w,d,height:h,rooms:3,doors:['east','west'],windowAperture:[1,3.8]});
   m.art.labels.push({text:id.toUpperCase().replaceAll('-',' '),x,y:y+5.4,z:z0-.1});
  };
@@ -54,12 +55,20 @@ export function recipe(){
  // Attached row-building districts terrace with the city. Breaks at every cross
  // street provide actual uphill traversal instead of painted ramp illusions.
  for(const z of [-47,45,112])for(const center of [-68,68])for(let j=0;j<5;j++){
-  const x=center+(j-2)*8,y=height(z-7),h=13+(j%3)*3;
-  box(`row-${z}-${x}`,x,z,8,14,y,height(z+7)+h,j%2?'brick':'plaster');
+  const x=center+(j-2)*8,y=height(z-(z===112?7:11)),h=13+(j%3)*3,front=z-(z===112?7:11);
+  box(`row-${z}-${x}`,x,z,8,z===112?14:22,y,height(z+7)+h,j%2?'brick':'plaster');
   // Raised cornices, recessed facade bays and chimney groups (authoring details).
-  m.art.pieces.push({kind:'cornice',x,y:height(z+7)+h-.4,z:z-7.25,w:8.3,h:.45,d:.55,material:'sandstone'});
-  for(const xx of [x-2,x+2])for(let level=0;level<3;level++)m.art.pieces.push({kind:'recess-window',x:xx,y:height(z+7)+3+level*3,z:z-7.02,w:1.5,h:2,d:.08,material:'glass'});
+  m.art.pieces.push({kind:'cornice',x,y:height(z+7)+h-.4,z:front-.25,w:8.3,h:.45,d:.55,material:'sandstone'});
+  for(const xx of [x-2,x+2])for(let level=0;level<3;level++)m.art.pieces.push({kind:'recess-window',x:xx,y:height(z+7)+3+level*3,z:front-.02,w:1.5,h:2,d:.08,material:'glass'});
   box('chimney',x+2,z,1.2,1.5,height(z+7)+h,height(z+7)+h+2,'brick');
+ }
+ // Close the formerly empty center of the slope with two genuinely solid mixed
+ // use blocks on each tier. The five cross streets remain separate clear slots.
+ for(const z of [-47,45])for(const x of [-16,16]){
+  const y=height(z-11),top=height(z+11)+16;
+  box('central-row-'+x+'-'+z,x,z,16,22,y,top,'brick');
+  m.art.pieces.push({kind:'central-cornice',x,y:top-.25,z:z-11.25,w:16.4,h:.5,d:.6,material:'sandstone'});
+  for(const dx of [-5,-1.6,1.6,5])for(let level=0;level<4;level++)m.art.pieces.push({kind:'central-window',x:x+dx,y:height(z+11)+2+level*3,z:z-11.02,w:1.5,h:2,d:.08,material:'glass'});
  }
  // Brick arcade at the northern station retaining edge. The vaulted ceiling is
  // non-walkable; piers carry it and never share a playable lower/upper footprint.

@@ -43,7 +43,10 @@ export function prepare(directory,request){
  const records={};
  for(const relative of sources){
   const original=resolve(ROOT,relative),bytes=readFileSync(original,'utf8');records[relative]=sha(bytes);
-  let text=bytes.replace(/(from\s*|import\s*)(['"])(\.[^'"]+)\2/g,(_,prefix,quote,spec)=>{
+  let text=bytes.replace(/(from\s*|import\s*)(['"])(\.[^'"]+|ws)\2/g,(_,prefix,quote,spec)=>{
+   // Evidence trees are outside the checkout's node_modules ancestry. Resolve
+   // this unchanged production dependency at its original module location.
+   if(spec==='ws')return prefix+quote+import.meta.resolve('ws')+quote;
    const target=resolve(dirname(original),spec);return prefix+quote+(destinations.get(target)??pathToFileURL(target).href)+quote;
   });
   if(relative.endsWith('/catalog.mjs')){

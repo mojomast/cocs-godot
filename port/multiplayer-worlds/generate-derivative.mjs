@@ -11,6 +11,9 @@ const emit=(name,text)=>{const target=new URL(`./derived/${name}.mjs`,import.met
  text=replace(text,"from '../../../game/payload.mjs'","from './payload.mjs'",'world payload');
  text="import {worldRace} from '../catalog.mjs';\n"+text;
  text=replace(text,'const track=getMap(mapId).race','const track=worldRace(mapId)','sports preflight');
+ text="import {wallCandidates} from '../wall_candidates.mjs';\n"+text;
+ text=replace(text,'terrainWallSegments(arena.terrain).some(({a,b})=>',
+    'wallCandidates(terrainWallSegments(arena.terrain),x,z,r).some(({a,b})=>','conservative terrain-wall broadphase');
  emit('core',text);
 }
 {

@@ -6,7 +6,10 @@ import {createHash} from 'node:crypto';
 import {canonical,worldEntry} from '../../port/multiplayer-worlds/catalog.mjs';
 const read=p=>readFileSync(new URL('../../'+p,import.meta.url),'utf8');
 const plan=JSON.parse(read('port/finish/ASSET_PRODUCTION.json'));
-const hashes=new Map([['vesper-viaduct','9b1d8b86'],['abyssal-pressureworks','67f79981'],['stormglass-causeway','e723b2fd']]);
+// H-grant Vesper production adds reviewed-bounds district depth and real side
+// counters. Freeze that exact authored revision; other candidates keep their
+// original source checkpoints. This does not admit any public candidate pair.
+const hashes=new Map([['vesper-viaduct','7e208359'],['abyssal-pressureworks','67f79981'],['stormglass-causeway','e723b2fd']]);
 test('candidate registration is fail closed and wrapper hashes match the CURRENT loader API',()=>{
   for(const [id,commit] of hashes){
     const data=JSON.parse(read(`godot/multiplayer_worlds/generated/${id}.json`));

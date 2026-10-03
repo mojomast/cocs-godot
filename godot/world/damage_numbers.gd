@@ -122,6 +122,9 @@ func advance(delta: float) -> void:
 	queue_redraw()
 
 static func layout_bounds(origin: Vector2, extent: Vector2, viewport: Vector2, occupied: Array[Rect2]) -> Rect2:
+	# Minimized/headless viewports can be smaller than the reserved margins.
+	# There is no drawable safe region; never pass a negative Rect2 to encloses.
+	if viewport.x <= 56 or viewport.y <= 0: return Rect2()
 	var safe := Rect2(Vector2(28, viewport.y*0.23), Vector2(viewport.x-56, viewport.y*0.53))
 	var crosshair := Rect2(viewport*0.5-Vector2(30, 26), Vector2(60, 52))
 	var bounds := Rect2(origin-extent*0.7-Vector2(8, 10), extent*1.4+Vector2(16, 20))

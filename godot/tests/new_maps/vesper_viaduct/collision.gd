@@ -38,5 +38,34 @@ func run() -> void:
   else:
    require(not hit.is_empty(),str(row[0])+" missing collision")
    if not hit.is_empty(): require(abs(origin.distance_to(hit.position)-float(row[4])) < 0.06,str(row[0])+" differs from source ray")
- print(JSON.stringify({"gate":"vesper-native-source-rays","cases":cases.size(),"failures":failures,"geometryHash":data.geometryHash}))
+ var probes: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/new_maps/vesper_viaduct/source-probes.json"))
+ require(probes.geometryHash == data.geometryHash,"route probe identity")
+ for point: Dictionary in probes.support:
+  var origin := Vector3(point.x,point.y+.25,point.z)
+  var hit := space.intersect_ray(PhysicsRayQueryParameters3D.create(origin,origin+Vector3.DOWN))
+  require(not hit.is_empty(),"route missing floor "+str(point))
+  if not hit.is_empty(): require(abs(float(hit.position.y)-float(point.y))<.025,"route floor disagreement "+str(point))
+ var contacts: Array = []
+ for item: Array in [["tall-wall",Vector3(-94,12.85,-10),Vector3.RIGHT],["open-door",Vector3(-94,12.85,0),Vector3.RIGHT],["ceiling",Vector3(-66,14,0),Vector3.UP]]:
+  var actor := CharacterBody3D.new()
+  var shape := CollisionShape3D.new()
+  var capsule := CapsuleShape3D.new()
+  capsule.radius = .42
+  capsule.height = 1.7
+  shape.shape = capsule
+  actor.add_child(shape)
+  world.add_child(actor)
+  actor.position = item[1]
+  await physics_frame
+  var impacts := 0
+  for tick in range(360):
+   var hit := actor.move_and_collide(item[2]*.04)
+   if hit != null: impacts += 1
+  if item[0] == "tall-wall": require(actor.position.x < -90 and impacts>100,"sustained native tall-wall body contact")
+  if item[0] == "open-door": require(actor.position.x > -88 and impacts==0,"native body doorway closed")
+  if item[0] == "ceiling": require(actor.position.y < 24.6 and impacts>0,"native body roof contact")
+  contacts.append({"id":item[0],"position":str(actor.position),"impacts":impacts})
+  actor.queue_free()
+  await physics_frame
+ print(JSON.stringify({"gate":"vesper-native-source-rays","cases":cases.size(),"routeSupports":probes.support.size(),"bodyContacts":contacts,"failures":failures,"geometryHash":data.geometryHash}))
  quit(0 if failures.is_empty() else 1)

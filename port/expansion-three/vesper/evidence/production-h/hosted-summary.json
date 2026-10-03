@@ -1,0 +1,480 @@
+{
+  "accepted": false,
+  "parentVisualApprovalPending": true,
+  "modes": [
+    {
+      "mode": "deathmatch",
+      "evidence": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/consolidation/hosted/2026-10-03T04-16-30.832Z-vesper-viaduct-deathmatch",
+      "geometryHash": "27c71cc8895eab2ca3a0b5cae3c2b8f96ed9afd75db3deec4a5c96bd2f395ea7",
+      "artSha": "6afe34c82d45f06c30dedc780f59ac6afa5200835b487d41705902d771fc0bfd",
+      "success": true,
+      "reason": "frag",
+      "sourceSeconds": 168.9333333333599,
+      "winner": null,
+      "leaders": [
+        "Godot"
+      ],
+      "host": {
+        "id": 0,
+        "frags": 5,
+        "deaths": 1,
+        "scoreStats": {
+          "captures": 0,
+          "flagPickups": 0,
+          "flagReturns": 0,
+          "flagDrops": 0,
+          "objectiveTime": 0,
+          "objectiveCaptures": 0,
+          "objectiveNeutralizations": 0,
+          "objectiveContests": 0,
+          "shots": 11,
+          "hits": 11,
+          "damage": 605
+        },
+        "x": 108.48170308073922,
+        "y": 12,
+        "z": 8.307316591895955e-34
+      },
+      "teardown": {
+        "success": true,
+        "accepted": false,
+        "journeyPassed": true,
+        "processFailed": false,
+        "serverError": null,
+        "peers": [
+          {
+            "role": "host",
+            "pid": 1348864,
+            "closed": true,
+            "code": 0,
+            "signal": null,
+            "spawnError": null,
+            "requested": true,
+            "forced": false,
+            "failures": [],
+            "clean": true
+          },
+          {
+            "role": "guest",
+            "pid": 1349005,
+            "closed": true,
+            "code": 0,
+            "signal": null,
+            "spawnError": null,
+            "requested": true,
+            "forced": false,
+            "failures": [],
+            "clean": true
+          }
+        ],
+        "at": "2026-10-03T04:19:22.650Z"
+      },
+      "captures": 149,
+      "maxClipCounter": 0,
+      "viewport": "(1280.0, 800.0)",
+      "captureCadence": {
+        "samples": 148,
+        "medianSeconds": 0.143,
+        "minSeconds": 0.101,
+        "maxSeconds": 0.246,
+        "measuredFPS": 6.899788781976062
+      },
+      "captureNote": "PNG capture cadence, not GPU frame rate; DM/TDM early capture predates corrected respawn trigger and canvas-scaled clip counter."
+    },
+    {
+      "mode": "teamdeathmatch",
+      "evidence": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/consolidation/hosted/2026-10-03T04-20-07.735Z-vesper-viaduct-teamdeathmatch",
+      "geometryHash": "27c71cc8895eab2ca3a0b5cae3c2b8f96ed9afd75db3deec4a5c96bd2f395ea7",
+      "artSha": "6afe34c82d45f06c30dedc780f59ac6afa5200835b487d41705902d771fc0bfd",
+      "success": true,
+      "reason": "frag",
+      "sourceSeconds": 83.83333333332986,
+      "winner": 0,
+      "leaders": [
+        "Godot"
+      ],
+      "host": {
+        "id": 0,
+        "frags": 5,
+        "deaths": 1,
+        "scoreStats": {
+          "captures": 0,
+          "flagPickups": 0,
+          "flagReturns": 0,
+          "flagDrops": 0,
+          "objectiveTime": 0,
+          "objectiveCaptures": 0,
+          "objectiveNeutralizations": 0,
+          "objectiveContests": 0,
+          "shots": 16,
+          "hits": 11,
+          "damage": 605
+        },
+        "x": 110.86710013614302,
+        "y": 12,
+        "z": -4.961701553595889
+      },
+      "teardown": {
+        "success": true,
+        "accepted": false,
+        "journeyPassed": true,
+        "processFailed": false,
+        "serverError": null,
+        "peers": [
+          {
+            "role": "host",
+            "pid": 1360174,
+            "closed": true,
+            "code": 0,
+            "signal": null,
+            "spawnError": null,
+            "requested": true,
+            "forced": false,
+            "failures": [],
+            "clean": true
+          },
+          {
+            "role": "guest",
+            "pid": 1360269,
+            "closed": true,
+            "code": 0,
+            "signal": null,
+            "spawnError": null,
+            "requested": true,
+            "forced": false,
+            "failures": [],
+            "clean": true
+          }
+        ],
+        "at": "2026-10-03T04:21:36.545Z"
+      },
+      "captures": 161,
+      "maxClipCounter": 0,
+      "viewport": "(1280.0, 800.0)",
+      "captureCadence": {
+        "samples": 160,
+        "medianSeconds": 0.137,
+        "minSeconds": 0.125,
+        "maxSeconds": 4.508,
+        "measuredFPS": 5.923552641382908
+      },
+      "captureNote": "PNG capture cadence, not GPU frame rate; DM/TDM early capture predates corrected respawn trigger and canvas-scaled clip counter."
+    },
+    {
+      "mode": "ctf",
+      "evidence": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/consolidation/hosted/2026-10-03T04-33-05.622Z-vesper-viaduct-ctf",
+      "geometryHash": "27c71cc8895eab2ca3a0b5cae3c2b8f96ed9afd75db3deec4a5c96bd2f395ea7",
+      "artSha": "6afe34c82d45f06c30dedc780f59ac6afa5200835b487d41705902d771fc0bfd",
+      "success": true,
+      "reason": "capture",
+      "sourceSeconds": 91.3999999999961,
+      "winner": 0,
+      "leaders": [
+        "Godot"
+      ],
+      "host": {
+        "id": 0,
+        "frags": 0,
+        "deaths": 1,
+        "scoreStats": {
+          "captures": 1,
+          "flagPickups": 1,
+          "flagReturns": 0,
+          "flagDrops": 0,
+          "objectiveTime": 0,
+          "objectiveCaptures": 0,
+          "objectiveNeutralizations": 0,
+          "objectiveContests": 0,
+          "shots": 0,
+          "hits": 0,
+          "damage": 0
+        },
+        "x": -118.78459183792683,
+        "y": 12,
+        "z": -1.9036419359242194e-33
+      },
+      "teardown": {
+        "success": true,
+        "accepted": false,
+        "journeyPassed": true,
+        "processFailed": false,
+        "serverError": null,
+        "peers": [
+          {
+            "role": "host",
+            "pid": 1399765,
+            "closed": true,
+            "code": 0,
+            "signal": null,
+            "spawnError": null,
+            "requested": true,
+            "forced": false,
+            "failures": [],
+            "clean": true
+          },
+          {
+            "role": "guest",
+            "pid": 1399921,
+            "closed": true,
+            "code": 0,
+            "signal": null,
+            "spawnError": null,
+            "requested": true,
+            "forced": false,
+            "failures": [],
+            "clean": true
+          }
+        ],
+        "at": "2026-10-03T04:34:42.257Z"
+      },
+      "captures": 389,
+      "maxClipCounter": 0,
+      "viewport": "(506.6667, 346.6667)",
+      "captureCadence": {
+        "samples": 388,
+        "medianSeconds": 0.091,
+        "minSeconds": 0.067,
+        "maxSeconds": 0.218,
+        "measuredFPS": 9.225708019452656
+      },
+      "captureNote": "PNG capture cadence, not GPU frame rate; post-source-respawn movement."
+    },
+    {
+      "mode": "domination",
+      "evidence": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/consolidation/hosted/2026-10-03T04-25-32.540Z-vesper-viaduct-domination",
+      "geometryHash": "27c71cc8895eab2ca3a0b5cae3c2b8f96ed9afd75db3deec4a5c96bd2f395ea7",
+      "artSha": "6afe34c82d45f06c30dedc780f59ac6afa5200835b487d41705902d771fc0bfd",
+      "success": true,
+      "reason": "objective",
+      "sourceSeconds": 41.29999999999894,
+      "winner": 0,
+      "leaders": [
+        "Godot"
+      ],
+      "host": {
+        "id": 0,
+        "frags": 0,
+        "deaths": 1,
+        "scoreStats": {
+          "captures": 0,
+          "flagPickups": 0,
+          "flagReturns": 0,
+          "flagDrops": 0,
+          "objectiveTime": 1.0000000000000013,
+          "objectiveCaptures": 1,
+          "objectiveNeutralizations": 0,
+          "objectiveContests": 0,
+          "shots": 0,
+          "hits": 0,
+          "damage": 0
+        },
+        "x": -100.74662469554241,
+        "y": 12.000000000000002,
+        "z": 0.002168587327417206
+      },
+      "teardown": {
+        "success": true,
+        "accepted": false,
+        "journeyPassed": true,
+        "processFailed": false,
+        "serverError": null,
+        "peers": [
+          {
+            "role": "host",
+            "pid": 1377319,
+            "closed": true,
+            "code": 0,
+            "signal": null,
+            "spawnError": null,
+            "requested": true,
+            "forced": false,
+            "failures": [],
+            "clean": true
+          },
+          {
+            "role": "guest",
+            "pid": 1377417,
+            "closed": true,
+            "code": 0,
+            "signal": null,
+            "spawnError": null,
+            "requested": true,
+            "forced": false,
+            "failures": [],
+            "clean": true
+          }
+        ],
+        "at": "2026-10-03T04:26:20.313Z"
+      },
+      "captures": 165,
+      "maxClipCounter": 0,
+      "viewport": "(1280.0, 800.0)",
+      "captureCadence": {
+        "samples": 164,
+        "medianSeconds": 0.14,
+        "minSeconds": 0.125,
+        "maxSeconds": 3.432,
+        "measuredFPS": 5.4246538871139505
+      },
+      "captureNote": "PNG capture cadence, not GPU frame rate; post-source-respawn movement."
+    },
+    {
+      "mode": "koth",
+      "evidence": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/consolidation/hosted/2026-10-03T04-26-20.540Z-vesper-viaduct-koth",
+      "geometryHash": "27c71cc8895eab2ca3a0b5cae3c2b8f96ed9afd75db3deec4a5c96bd2f395ea7",
+      "artSha": "6afe34c82d45f06c30dedc780f59ac6afa5200835b487d41705902d771fc0bfd",
+      "success": true,
+      "reason": "objective",
+      "sourceSeconds": 88.49999999999626,
+      "winner": 0,
+      "leaders": [
+        "Godot"
+      ],
+      "host": {
+        "id": 0,
+        "frags": 0,
+        "deaths": 1,
+        "scoreStats": {
+          "captures": 0,
+          "flagPickups": 0,
+          "flagReturns": 0,
+          "flagDrops": 0,
+          "objectiveTime": 1.0000000000000013,
+          "objectiveCaptures": 1,
+          "objectiveNeutralizations": 0,
+          "objectiveContests": 0,
+          "shots": 0,
+          "hits": 0,
+          "damage": 0
+        },
+        "x": -99.0966309487978,
+        "y": 12,
+        "z": -1.3122938779018264e-33
+      },
+      "teardown": {
+        "success": true,
+        "accepted": false,
+        "journeyPassed": true,
+        "processFailed": false,
+        "serverError": null,
+        "peers": [
+          {
+            "role": "host",
+            "pid": 1379890,
+            "closed": true,
+            "code": 0,
+            "signal": null,
+            "spawnError": null,
+            "requested": true,
+            "forced": false,
+            "failures": [],
+            "clean": true
+          },
+          {
+            "role": "guest",
+            "pid": 1379962,
+            "closed": true,
+            "code": 0,
+            "signal": null,
+            "spawnError": null,
+            "requested": true,
+            "forced": false,
+            "failures": [],
+            "clean": true
+          }
+        ],
+        "at": "2026-10-03T04:27:54.024Z"
+      },
+      "captures": 157,
+      "maxClipCounter": 0,
+      "viewport": "(1280.0, 800.0)",
+      "captureCadence": {
+        "samples": 156,
+        "medianSeconds": 0.136,
+        "minSeconds": 0.103,
+        "maxSeconds": 0.176,
+        "measuredFPS": 7.286916459028724
+      },
+      "captureNote": "PNG capture cadence, not GPU frame rate; post-source-respawn movement."
+    },
+    {
+      "mode": "uplink",
+      "evidence": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/consolidation/hosted/2026-10-03T04-27-54.283Z-vesper-viaduct-uplink",
+      "geometryHash": "27c71cc8895eab2ca3a0b5cae3c2b8f96ed9afd75db3deec4a5c96bd2f395ea7",
+      "artSha": "6afe34c82d45f06c30dedc780f59ac6afa5200835b487d41705902d771fc0bfd",
+      "success": true,
+      "reason": "objective",
+      "sourceSeconds": 69.11666666666403,
+      "winner": 0,
+      "leaders": [
+        "Godot"
+      ],
+      "host": {
+        "id": 0,
+        "frags": 0,
+        "deaths": 1,
+        "scoreStats": {
+          "captures": 0,
+          "flagPickups": 0,
+          "flagReturns": 0,
+          "flagDrops": 0,
+          "objectiveTime": 0,
+          "objectiveCaptures": 3,
+          "objectiveNeutralizations": 0,
+          "objectiveContests": 0,
+          "shots": 0,
+          "hits": 0,
+          "damage": 0
+        },
+        "x": 100.55883763839337,
+        "y": 12,
+        "z": 5.807083187645442e-27
+      },
+      "teardown": {
+        "success": true,
+        "accepted": false,
+        "journeyPassed": true,
+        "processFailed": false,
+        "serverError": null,
+        "peers": [
+          {
+            "role": "host",
+            "pid": 1384186,
+            "closed": true,
+            "code": 0,
+            "signal": null,
+            "spawnError": null,
+            "requested": true,
+            "forced": false,
+            "failures": [],
+            "clean": true
+          },
+          {
+            "role": "guest",
+            "pid": 1384397,
+            "closed": true,
+            "code": 0,
+            "signal": null,
+            "spawnError": null,
+            "requested": true,
+            "forced": false,
+            "failures": [],
+            "clean": true
+          }
+        ],
+        "at": "2026-10-03T04:29:09.043Z"
+      },
+      "captures": 160,
+      "maxClipCounter": 0,
+      "viewport": "(1280.0, 800.0)",
+      "captureCadence": {
+        "samples": 159,
+        "medianSeconds": 0.1375,
+        "minSeconds": 0.127,
+        "maxSeconds": 3.178,
+        "measuredFPS": 5.6344055345553095
+      },
+      "captureNote": "PNG capture cadence, not GPU frame rate; post-source-respawn movement."
+    }
+  ]
+}
