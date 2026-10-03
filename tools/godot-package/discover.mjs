@@ -28,7 +28,7 @@ const identityZoneAdapters = ['port/native-identity-zones/authority.mjs',
   'port/native-identity-zones/match.mjs', 'port/native-identity-zones/catalog.mjs'];
 const campaignAdapters = ['authority','maps','match','missions','enemies','story','schema','core.generated','feel','targeting','interludes','interlude-definitions']
   .map(name => `port/native-campaign/${name}.mjs`);
-const worldAdapters = ['catalog','match','derived/core','derived/payload','derived/room','derived/rooms','derived/game-server']
+const worldAdapters = ['catalog','match','wall_candidates','derived/core','derived/payload','derived/room','derived/rooms','derived/game-server']
   .map(name => `port/multiplayer-worlds/${name}.mjs`);
 const edgeAdapters = ['port/edge-effects/structure-rays.mjs'];
 const challengeAdapters = ['port/pass-two/modes/challenge-authority.mjs'];
