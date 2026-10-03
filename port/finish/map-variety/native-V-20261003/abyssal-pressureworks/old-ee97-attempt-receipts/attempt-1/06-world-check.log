@@ -1,0 +1,59 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+SCRIPT ERROR: Parse Error: Preload file "res://moth_scenery/motes.gdshader" does not exist.
+          at: GDScript::reload (res://multiplayer_worlds/dressing/binder.gd:6)
+SCRIPT ERROR: Parse Error: Preload file "res://moth_scenery/panel.gdshader" does not exist.
+          at: GDScript::reload (res://multiplayer_worlds/dressing/binder.gd:7)
+SCRIPT ERROR: Parse Error: Preload file "res://material_language/library.gd" does not exist.
+          at: GDScript::reload (res://multiplayer_worlds/dressing/binder.gd:9)
+SCRIPT ERROR: Parse Error: Cannot infer the type of "normal" variable because the value doesn't have a set type.
+          at: GDScript::reload (res://multiplayer_worlds/dressing/binder.gd:108)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://multiplayer_worlds/map.gd:0)
+SCRIPT ERROR: Parse Error: Preload file "res://moth_scenery/motes.gdshader" does not exist.
+          at: GDScript::reload (res://multiplayer_worlds/dressing/binder.gd:6)
+SCRIPT ERROR: Parse Error: Preload file "res://moth_scenery/panel.gdshader" does not exist.
+          at: GDScript::reload (res://multiplayer_worlds/dressing/binder.gd:7)
+SCRIPT ERROR: Parse Error: Preload file "res://material_language/library.gd" does not exist.
+          at: GDScript::reload (res://multiplayer_worlds/dressing/binder.gd:9)
+SCRIPT ERROR: Parse Error: Cannot infer the type of "normal" variable because the value doesn't have a set type.
+          at: GDScript::reload (res://multiplayer_worlds/dressing/binder.gd:108)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://tests/new_maps/abyssal_pressureworks/corrective/world_check.gd:0)
+ERROR: Failed to load script "res://tests/new_maps/abyssal_pressureworks/corrective/world_check.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:3041)
+ERROR: Attempt to open script 'res://debug/diagnostics.gd' resulted in error 'File not found'.
+   at: load_source_code (modules/gdscript/gdscript.cpp:1120)
+ERROR: Failed loading resource: res://debug/diagnostics.gd.
+   at: _load (core/io/resource_loader.cpp:343)
+ERROR: Failed to instantiate an autoload, can't load from path: res://debug/diagnostics.gd.
+   at: start (main/main.cpp:4329)
+ERROR: Attempt to open script 'res://input_bindings/service.gd' resulted in error 'File not found'.
+   at: load_source_code (modules/gdscript/gdscript.cpp:1120)
+ERROR: Failed loading resource: res://input_bindings/service.gd.
+   at: _load (core/io/resource_loader.cpp:343)
+ERROR: Failed to instantiate an autoload, can't load from path: res://input_bindings/service.gd.
+   at: start (main/main.cpp:4329)
+ERROR: Attempt to open script 'res://ui/local_settings.gd' resulted in error 'File not found'.
+   at: load_source_code (modules/gdscript/gdscript.cpp:1120)
+ERROR: Failed loading resource: res://ui/local_settings.gd.
+   at: _load (core/io/resource_loader.cpp:343)
+ERROR: Failed to instantiate an autoload, can't load from path: res://ui/local_settings.gd.
+   at: start (main/main.cpp:4329)
+ERROR: Attempt to open script 'res://career/service.gd' resulted in error 'File not found'.
+   at: load_source_code (modules/gdscript/gdscript.cpp:1120)
+ERROR: Failed loading resource: res://career/service.gd.
+   at: _load (core/io/resource_loader.cpp:343)
+ERROR: Failed to instantiate an autoload, can't load from path: res://career/service.gd.
+   at: start (main/main.cpp:4329)
+ERROR: Attempt to open script 'res://career/identity.gd' resulted in error 'File not found'.
+   at: load_source_code (modules/gdscript/gdscript.cpp:1120)
+ERROR: Failed loading resource: res://career/identity.gd.
+   at: _load (core/io/resource_loader.cpp:343)
+ERROR: Failed to instantiate an autoload, can't load from path: res://career/identity.gd.
+   at: start (main/main.cpp:4329)
+SCRIPT ERROR: Invalid call. Nonexistent function 'apply' in base 'GDScript'.
+          at: build (res://multiplayer_worlds/map.gd:115)
+          GDScript backtrace (most recent call first):
+              [0] build (res://multiplayer_worlds/map.gd:115)
+              [1] run (res://tests/new_maps/abyssal_pressureworks/corrective/world_check.gd:49)

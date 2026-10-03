@@ -1,0 +1,3605 @@
+{
+	"clearances": [
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": -94.0,
+				"y": 6.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": -34.0,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": 31.0,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": 91.0,
+				"y": 0.0,
+				"z": -58.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": -91.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": 34.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": 94.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": -98.0,
+				"y": 20.0,
+				"z": 68.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": -39.0,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": 26.0,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "spawn",
+			"overlapCount": 0,
+			"point": {
+				"x": 87.0,
+				"y": 20.0,
+				"z": 72.0
+			}
+		},
+		{
+			"name": "objective",
+			"overlapCount": 0,
+			"point": {
+				"id": "reef",
+				"label": "REEF LAB",
+				"radius": 7.0,
+				"x": -34.0,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "objective",
+			"overlapCount": 0,
+			"point": {
+				"id": "equalizer",
+				"label": "EQUALIZER",
+				"radius": 7.0,
+				"x": 34.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "objective",
+			"overlapCount": 0,
+			"point": {
+				"id": "operations",
+				"label": "OPERATIONS",
+				"radius": 7.0,
+				"x": 26.0,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "service-terrace",
+			"overlapCount": 0,
+			"point": {
+				"x": -94,
+				"y": 6,
+				"z": -96
+			}
+		},
+		{
+			"name": "service-terrace",
+			"overlapCount": 0,
+			"point": {
+				"x": 91,
+				"y": 0,
+				"z": -90
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -94.0,
+				"y": 6.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -91.1428571428571,
+				"y": 6.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -88.2857142857143,
+				"y": 6.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -85.4285714285714,
+				"y": 6.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -82.5714285714286,
+				"y": 6.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -79.7142857142857,
+				"y": 6.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -76.8571428571429,
+				"y": 6.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -74.0,
+				"y": 6.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -74.0,
+				"y": 6.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -71.5,
+				"y": 5.75,
+				"z": -69.25
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -69.0,
+				"y": 5.5,
+				"z": -70.5
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -66.5,
+				"y": 5.25,
+				"z": -71.75
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -64.0,
+				"y": 5.0,
+				"z": -73.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -61.5,
+				"y": 4.75,
+				"z": -74.25
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -59.0,
+				"y": 4.5,
+				"z": -75.5
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -56.5,
+				"y": 4.25,
+				"z": -76.75
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -54.0,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -54.0,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -51.1428571428571,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -48.2857142857143,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -45.4285714285714,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -42.5714285714286,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -39.7142857142857,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -36.8571428571429,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -34.0,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -34.0,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -31.1428571428571,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -28.2857142857143,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -25.4285714285714,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -22.5714285714286,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -19.7142857142857,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -16.8571428571429,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -14.0,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -14.0,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -11.2222222222222,
+				"y": 3.77777777777778,
+				"z": -76.8888888888889
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -8.44444444444444,
+				"y": 3.55555555555556,
+				"z": -75.7777777777778
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -5.66666666666667,
+				"y": 3.33333333333333,
+				"z": -74.6666666666667
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -2.88888888888889,
+				"y": 3.11111111111111,
+				"z": -73.5555555555556
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -0.111111111111111,
+				"y": 2.88888888888889,
+				"z": -72.4444444444444
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 2.66666666666667,
+				"y": 2.66666666666667,
+				"z": -71.3333333333333
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 5.44444444444444,
+				"y": 2.44444444444444,
+				"z": -70.2222222222222
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 8.22222222222222,
+				"y": 2.22222222222222,
+				"z": -69.1111111111111
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 11.0,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 11.0,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 13.8571428571429,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 16.7142857142857,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 19.5714285714286,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 22.4285714285714,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 25.2857142857143,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 28.1428571428571,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 31.0,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 31.0,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 33.8571428571429,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 36.7142857142857,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 39.5714285714286,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 42.4285714285714,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 45.2857142857143,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 48.1428571428571,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 51.0,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 51.0,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 53.5,
+				"y": 1.75,
+				"z": -66.75
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 56.0,
+				"y": 1.5,
+				"z": -65.5
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 58.5,
+				"y": 1.25,
+				"z": -64.25
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 61.0,
+				"y": 1.0,
+				"z": -63.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 63.5,
+				"y": 0.75,
+				"z": -61.75
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 66.0,
+				"y": 0.5,
+				"z": -60.5
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 68.5,
+				"y": 0.25,
+				"z": -59.25
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 71.0,
+				"y": 0.0,
+				"z": -58.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 71.0,
+				"y": 0.0,
+				"z": -58.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 73.8571428571429,
+				"y": 0.0,
+				"z": -58.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 76.7142857142857,
+				"y": 0.0,
+				"z": -58.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 79.5714285714286,
+				"y": 0.0,
+				"z": -58.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 82.4285714285714,
+				"y": 0.0,
+				"z": -58.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 85.2857142857143,
+				"y": 0.0,
+				"z": -58.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 88.1428571428571,
+				"y": 0.0,
+				"z": -58.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 91.0,
+				"y": 0.0,
+				"z": -58.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -91.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -88.25,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -85.5,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -82.75,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -80.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -77.25,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -74.5,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -71.75,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -69.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -69.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -66.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -63.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -60.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -57.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -54.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -54.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -51.25,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -48.5,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -45.75,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -43.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -40.25,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -37.5,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -34.75,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -29.25,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -26.5,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -23.75,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -21.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -18.25,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -15.5,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -12.75,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -10.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -10.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -7.25,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -4.5,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -1.75,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 1.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 3.75,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 6.5,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 9.25,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 12.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 12.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 14.75,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 17.5,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 20.25,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 23.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 25.75,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 28.5,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 31.25,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 34.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 34.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 36.75,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 39.5,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 42.25,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 45.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 47.75,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 50.5,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 53.25,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 56.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 56.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 58.6666666666667,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 61.3333333333333,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 64.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 66.6666666666667,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 69.3333333333333,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 72.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 72.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 74.75,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 77.5,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 80.25,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 83.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 85.75,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 88.5,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 91.25,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 94.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -98.0,
+				"y": 20.0,
+				"z": 68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -95.2857142857143,
+				"y": 20.0,
+				"z": 68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -92.5714285714286,
+				"y": 20.0,
+				"z": 68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -89.8571428571429,
+				"y": 20.0,
+				"z": 68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -87.1428571428571,
+				"y": 20.0,
+				"z": 68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -84.4285714285714,
+				"y": 20.0,
+				"z": 68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -81.7142857142857,
+				"y": 20.0,
+				"z": 68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -79.0,
+				"y": 20.0,
+				"z": 68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -79.0,
+				"y": 20.0,
+				"z": 68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -76.375,
+				"y": 20.0,
+				"z": 69.25
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -73.75,
+				"y": 20.0,
+				"z": 70.5
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -71.125,
+				"y": 20.0,
+				"z": 71.75
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -68.5,
+				"y": 20.0,
+				"z": 73.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -65.875,
+				"y": 20.0,
+				"z": 74.25
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -63.25,
+				"y": 20.0,
+				"z": 75.5
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -60.625,
+				"y": 20.0,
+				"z": 76.75
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -58.0,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -58.0,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -55.2857142857143,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -52.5714285714286,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -49.8571428571429,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -47.1428571428571,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -44.4285714285714,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -41.7142857142857,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -39.0,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -39.0,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -36.2857142857143,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -33.5714285714286,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -30.8571428571429,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -28.1428571428571,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -25.4285714285714,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -22.7142857142857,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -20.0,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -20.0,
+				"y": 20.0,
+				"z": 78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -17.5454545454545,
+				"y": 20.0,
+				"z": 76.7272727272727
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -15.0909090909091,
+				"y": 20.0,
+				"z": 75.4545454545455
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -12.6363636363636,
+				"y": 20.0,
+				"z": 74.1818181818182
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -10.1818181818182,
+				"y": 20.0,
+				"z": 72.9090909090909
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -7.72727272727273,
+				"y": 20.0,
+				"z": 71.6363636363636
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -5.27272727272727,
+				"y": 20.0,
+				"z": 70.3636363636364
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -2.81818181818182,
+				"y": 20.0,
+				"z": 69.0909090909091
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -0.363636363636363,
+				"y": 20.0,
+				"z": 67.8181818181818
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 2.09090909090909,
+				"y": 20.0,
+				"z": 66.5454545454545
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 4.54545454545455,
+				"y": 20.0,
+				"z": 65.2727272727273
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 7.0,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 7.0,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 9.71428571428572,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 12.4285714285714,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 15.1428571428571,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 17.8571428571429,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 20.5714285714286,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 23.2857142857143,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 26.0,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 26.0,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 28.7142857142857,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 31.4285714285714,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 34.1428571428571,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 36.8571428571429,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 39.5714285714286,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 42.2857142857143,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 45.0,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 45.0,
+				"y": 20.0,
+				"z": 64.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 47.5555555555556,
+				"y": 20.0,
+				"z": 64.8888888888889
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 50.1111111111111,
+				"y": 20.0,
+				"z": 65.7777777777778
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 52.6666666666667,
+				"y": 20.0,
+				"z": 66.6666666666667
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 55.2222222222222,
+				"y": 20.0,
+				"z": 67.5555555555556
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 57.7777777777778,
+				"y": 20.0,
+				"z": 68.4444444444444
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 60.3333333333333,
+				"y": 20.0,
+				"z": 69.3333333333333
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 62.8888888888889,
+				"y": 20.0,
+				"z": 70.2222222222222
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 65.4444444444444,
+				"y": 20.0,
+				"z": 71.1111111111111
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 68.0,
+				"y": 20.0,
+				"z": 72.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 68.0,
+				"y": 20.0,
+				"z": 72.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 70.7142857142857,
+				"y": 20.0,
+				"z": 72.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 73.4285714285714,
+				"y": 20.0,
+				"z": 72.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 76.1428571428571,
+				"y": 20.0,
+				"z": 72.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 78.8571428571429,
+				"y": 20.0,
+				"z": 72.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 81.5714285714286,
+				"y": 20.0,
+				"z": 72.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 84.2857142857143,
+				"y": 20.0,
+				"z": 72.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 87.0,
+				"y": 20.0,
+				"z": 72.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -94.0,
+				"y": 6.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -94.0,
+				"y": 6.0,
+				"z": -65.1428571428571
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -94.0,
+				"y": 6.0,
+				"z": -62.2857142857143
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -94.0,
+				"y": 6.0,
+				"z": -59.4285714285714
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -94.0,
+				"y": 6.0,
+				"z": -56.5714285714286
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -94.0,
+				"y": 6.0,
+				"z": -53.7142857142857
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -94.0,
+				"y": 6.0,
+				"z": -50.8571428571429
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -94.0,
+				"y": 6.0,
+				"z": -48.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -94.0,
+				"y": 6.0,
+				"z": -48.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -93.6666666666667,
+				"y": 6.44444444444444,
+				"z": -45.1111111111111
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -93.3333333333333,
+				"y": 6.88888888888889,
+				"z": -42.2222222222222
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -93.0,
+				"y": 7.33333333333333,
+				"z": -39.3333333333333
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -92.6666666666667,
+				"y": 7.77777777777778,
+				"z": -36.4444444444444
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -92.3333333333333,
+				"y": 8.22222222222222,
+				"z": -33.5555555555556
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -92.0,
+				"y": 8.66666666666667,
+				"z": -30.6666666666667
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -91.6666666666667,
+				"y": 9.11111111111111,
+				"z": -27.7777777777778
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -91.3333333333333,
+				"y": 9.55555555555556,
+				"z": -24.8888888888889
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -91.0,
+				"y": 10.0,
+				"z": -22.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -91.0,
+				"y": 10.0,
+				"z": -22.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -91.0,
+				"y": 10.0,
+				"z": -19.25
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -91.0,
+				"y": 10.0,
+				"z": -16.5
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -91.0,
+				"y": 10.0,
+				"z": -13.75
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -91.0,
+				"y": 10.0,
+				"z": -11.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -91.0,
+				"y": 10.0,
+				"z": -8.25
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -91.0,
+				"y": 10.0,
+				"z": -5.5
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -91.0,
+				"y": 10.0,
+				"z": -2.75
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -91.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -34.0,
+				"y": 4.0,
+				"z": -78.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -34.0,
+				"y": 4.0,
+				"z": -75.1428571428571
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -34.0,
+				"y": 4.0,
+				"z": -72.2857142857143
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -34.0,
+				"y": 4.0,
+				"z": -69.4285714285714
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -34.0,
+				"y": 4.0,
+				"z": -66.5714285714286
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -34.0,
+				"y": 4.0,
+				"z": -63.7142857142857
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -34.0,
+				"y": 4.0,
+				"z": -60.8571428571429
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -34.0,
+				"y": 4.0,
+				"z": -58.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -34.0,
+				"y": 4.0,
+				"z": -58.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -33.8461538461538,
+				"y": 4.46153846153846,
+				"z": -55.2307692307692
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -33.6923076923077,
+				"y": 4.92307692307692,
+				"z": -52.4615384615385
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -33.5384615384615,
+				"y": 5.38461538461539,
+				"z": -49.6923076923077
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -33.3846153846154,
+				"y": 5.84615384615385,
+				"z": -46.9230769230769
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -33.2307692307692,
+				"y": 6.30769230769231,
+				"z": -44.1538461538462
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -33.0769230769231,
+				"y": 6.76923076923077,
+				"z": -41.3846153846154
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.9230769230769,
+				"y": 7.23076923076923,
+				"z": -38.6153846153846
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.7692307692308,
+				"y": 7.69230769230769,
+				"z": -35.8461538461538
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.6153846153846,
+				"y": 8.15384615384615,
+				"z": -33.0769230769231
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.4615384615385,
+				"y": 8.61538461538461,
+				"z": -30.3076923076923
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.3076923076923,
+				"y": 9.07692307692308,
+				"z": -27.5384615384615
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.1538461538462,
+				"y": 9.53846153846154,
+				"z": -24.7692307692308
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.0,
+				"y": 10.0,
+				"z": -22.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.0,
+				"y": 10.0,
+				"z": -22.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.0,
+				"y": 10.0,
+				"z": -19.25
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.0,
+				"y": 10.0,
+				"z": -16.5
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.0,
+				"y": 10.0,
+				"z": -13.75
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.0,
+				"y": 10.0,
+				"z": -11.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.0,
+				"y": 10.0,
+				"z": -8.25
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.0,
+				"y": 10.0,
+				"z": -5.5
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.0,
+				"y": 10.0,
+				"z": -2.75
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": -32.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 31.0,
+				"y": 2.0,
+				"z": -68.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 31.0,
+				"y": 2.0,
+				"z": -65.1428571428571
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 31.0,
+				"y": 2.0,
+				"z": -62.2857142857143
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 31.0,
+				"y": 2.0,
+				"z": -59.4285714285714
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 31.0,
+				"y": 2.0,
+				"z": -56.5714285714286
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 31.0,
+				"y": 2.0,
+				"z": -53.7142857142857
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 31.0,
+				"y": 2.0,
+				"z": -50.8571428571429
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 31.0,
+				"y": 2.0,
+				"z": -48.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 31.0,
+				"y": 2.0,
+				"z": -48.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 31.3333333333333,
+				"y": 2.88888888888889,
+				"z": -45.1111111111111
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 31.6666666666667,
+				"y": 3.77777777777778,
+				"z": -42.2222222222222
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 32.0,
+				"y": 4.66666666666667,
+				"z": -39.3333333333333
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 32.3333333333333,
+				"y": 5.55555555555556,
+				"z": -36.4444444444444
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 32.6666666666667,
+				"y": 6.44444444444444,
+				"z": -33.5555555555556
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 33.0,
+				"y": 7.33333333333333,
+				"z": -30.6666666666667
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 33.3333333333333,
+				"y": 8.22222222222222,
+				"z": -27.7777777777778
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 33.6666666666667,
+				"y": 9.11111111111111,
+				"z": -24.8888888888889
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 34.0,
+				"y": 10.0,
+				"z": -22.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 34.0,
+				"y": 10.0,
+				"z": -22.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 34.0,
+				"y": 10.0,
+				"z": -19.25
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 34.0,
+				"y": 10.0,
+				"z": -16.5
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 34.0,
+				"y": 10.0,
+				"z": -13.75
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 34.0,
+				"y": 10.0,
+				"z": -11.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 34.0,
+				"y": 10.0,
+				"z": -8.25
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 34.0,
+				"y": 10.0,
+				"z": -5.5
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 34.0,
+				"y": 10.0,
+				"z": -2.75
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 34.0,
+				"y": 10.0,
+				"z": 0.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 91.0,
+				"y": 0.0,
+				"z": -58.0
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 91.0,
+				"y": 0.0,
+				"z": -55.1428571428571
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 91.0,
+				"y": 0.0,
+				"z": -52.2857142857143
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 91.0,
+				"y": 0.0,
+				"z": -49.4285714285714
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 91.0,
+				"y": 0.0,
+				"z": -46.5714285714286
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 91.0,
+				"y": 0.0,
+				"z": -43.7142857142857
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 0,
+			"point": {
+				"x": 91.0,
+				"y": 0.0,
+				"z": -40.8571428571429
+			}
+		},
+		{
+			"name": "route",
+			"overlapCount": 1,
+			"point": {
+				"x": 91.0,
+				"y": 0.0,
+				"z": -38.0
+			}
+		}
+	],
+	"errors": [
+		"finite-radius spawn/objective/terrace overlaps authority at { \"x\": 91.0, \"z\": -38.0, \"y\": 0.0 }"
+	],
+	"rays": [
+		{
+			"collider": "none",
+			"contact": "none",
+			"name": "old-silt-side"
+		},
+		{
+			"collider": "service-terrace-swCollider:<StaticBody3D#50767858115>",
+			"contact": "(-94.0, 6.0, -98.5)",
+			"name": "terrace-sw"
+		},
+		{
+			"collider": "service-terrace-seCollider:<StaticBody3D#50902075846>",
+			"contact": "(91.0, 0.0, -92.5)",
+			"name": "terrace-se"
+		},
+		{
+			"collider": "OverheadSide3254:<StaticBody3D#91133842211>",
+			"contact": "(-94.0, 7.2, -101.0)",
+			"name": "south-shield"
+		},
+		{
+			"collider": "OverheadSide3260:<StaticBody3D#91435832117>",
+			"contact": "(103.0, 1.2, -90.0)",
+			"name": "east-shield"
+		}
+	],
+	"status": "failed",
+	"wallBands": [
+		{
+			"hit": "(-110.0, 6.5, -101.0)",
+			"wall": "south-sw",
+			"x": -110.0,
+			"y": 6.5
+		},
+		{
+			"hit": "(-110.0, 7.8, -101.0)",
+			"wall": "south-sw",
+			"x": -110.0,
+			"y": 7.8
+		},
+		{
+			"hit": "(-110.0, 9.25, -101.0)",
+			"wall": "south-sw",
+			"x": -110.0,
+			"y": 9.25
+		},
+		{
+			"hit": "(-108.0, 6.5, -101.0)",
+			"wall": "south-sw",
+			"x": -108.0,
+			"y": 6.5
+		},
+		{
+			"hit": "(-108.0, 7.8, -101.0)",
+			"wall": "south-sw",
+			"x": -108.0,
+			"y": 7.8
+		},
+		{
+			"hit": "(-108.0, 9.25, -101.0)",
+			"wall": "south-sw",
+			"x": -108.0,
+			"y": 9.25
+		},
+		{
+			"hit": "(-106.0, 6.5, -101.0)",
+			"wall": "south-sw",
+			"x": -106.0,
+			"y": 6.5
+		},
+		{
+			"hit": "(-106.0, 7.8, -101.0)",
+			"wall": "south-sw",
+			"x": -106.0,
+			"y": 7.8
+		},
+		{
+			"hit": "(-106.0, 9.25, -101.0)",
+			"wall": "south-sw",
+			"x": -106.0,
+			"y": 9.25
+		},
+		{
+			"hit": "(-104.0, 6.5, -101.0)",
+			"wall": "south-sw",
+			"x": -104.0,
+			"y": 6.5
+		},
+		{
+			"hit": "(-104.0, 7.8, -101.0)",
+			"wall": "south-sw",
+			"x": -104.0,
+			"y": 7.8
+		},
+		{
+			"hit": "(-104.0, 9.25, -101.0)",
+			"wall": "south-sw",
+			"x": -104.0,
+			"y": 9.25
+		},
+		{
+			"hit": "(-102.0, 6.5, -101.0)",
+			"wall": "south-sw",
+			"x": -102.0,
+			"y": 6.5
+		},
+		{
+			"hit": "(-102.0, 7.8, -101.0)",
+			"wall": "south-sw",
+			"x": -102.0,
+			"y": 7.8
+		},
+		{
+			"hit": "(-102.0, 9.25, -101.0)",
+			"wall": "south-sw",
+			"x": -102.0,
+			"y": 9.25
+		},
+		{
+			"hit": "(-100.0, 6.5, -101.0)",
+			"wall": "south-sw",
+			"x": -100.0,
+			"y": 6.5
+		},
+		{
+			"hit": "(-100.0, 7.8, -101.0)",
+			"wall": "south-sw",
+			"x": -100.0,
+			"y": 7.8
+		},
+		{
+			"hit": "(-100.0, 9.25, -101.0)",
+			"wall": "south-sw",
+			"x": -100.0,
+			"y": 9.25
+		},
+		{
+			"hit": "(-98.0, 6.5, -101.0)",
+			"wall": "south-sw",
+			"x": -98.0,
+			"y": 6.5
+		},
+		{
+			"hit": "(-98.0, 7.8, -101.0)",
+			"wall": "south-sw",
+			"x": -98.0,
+			"y": 7.8
+		},
+		{
+			"hit": "(-98.0, 9.25, -101.0)",
+			"wall": "south-sw",
+			"x": -98.0,
+			"y": 9.25
+		},
+		{
+			"hit": "(-96.0, 6.5, -101.0)",
+			"wall": "south-sw",
+			"x": -96.0,
+			"y": 6.5
+		},
+		{
+			"hit": "(-96.0, 7.8, -101.0)",
+			"wall": "south-sw",
+			"x": -96.0,
+			"y": 7.8
+		},
+		{
+			"hit": "(-96.0, 9.25, -101.0)",
+			"wall": "south-sw",
+			"x": -96.0,
+			"y": 9.25
+		},
+		{
+			"hit": "(-94.0, 6.5, -101.0)",
+			"wall": "south-sw",
+			"x": -94.0,
+			"y": 6.5
+		},
+		{
+			"hit": "(-94.0, 7.8, -101.0)",
+			"wall": "south-sw",
+			"x": -94.0,
+			"y": 7.8
+		},
+		{
+			"hit": "(-94.0, 9.25, -101.0)",
+			"wall": "south-sw",
+			"x": -94.0,
+			"y": 9.25
+		},
+		{
+			"hit": "(-92.0, 6.5, -101.0)",
+			"wall": "south-sw",
+			"x": -92.0,
+			"y": 6.5
+		},
+		{
+			"hit": "(-92.0, 7.8, -101.0)",
+			"wall": "south-sw",
+			"x": -92.0,
+			"y": 7.8
+		},
+		{
+			"hit": "(-92.0, 9.25, -101.0)",
+			"wall": "south-sw",
+			"x": -92.0,
+			"y": 9.25
+		},
+		{
+			"hit": "(-90.0, 6.5, -101.0)",
+			"wall": "south-sw",
+			"x": -90.0,
+			"y": 6.5
+		},
+		{
+			"hit": "(-90.0, 7.8, -101.0)",
+			"wall": "south-sw",
+			"x": -90.0,
+			"y": 7.8
+		},
+		{
+			"hit": "(-90.0, 9.25, -101.0)",
+			"wall": "south-sw",
+			"x": -90.0,
+			"y": 9.25
+		},
+		{
+			"hit": "(-88.0, 6.5, -101.0)",
+			"wall": "south-sw",
+			"x": -88.0,
+			"y": 6.5
+		},
+		{
+			"hit": "(-88.0, 7.8, -101.0)",
+			"wall": "south-sw",
+			"x": -88.0,
+			"y": 7.8
+		},
+		{
+			"hit": "(-88.0, 9.25, -101.0)",
+			"wall": "south-sw",
+			"x": -88.0,
+			"y": 9.25
+		},
+		{
+			"hit": "(-86.0, 6.5, -101.0)",
+			"wall": "south-sw",
+			"x": -86.0,
+			"y": 6.5
+		},
+		{
+			"hit": "(-86.0, 7.8, -101.0)",
+			"wall": "south-sw",
+			"x": -86.0,
+			"y": 7.8
+		},
+		{
+			"hit": "(-86.0, 9.25, -101.0)",
+			"wall": "south-sw",
+			"x": -86.0,
+			"y": 9.25
+		},
+		{
+			"hit": "(-84.0, 6.5, -101.0)",
+			"wall": "south-sw",
+			"x": -84.0,
+			"y": 6.5
+		},
+		{
+			"hit": "(-84.0, 7.8, -101.0)",
+			"wall": "south-sw",
+			"x": -84.0,
+			"y": 7.8
+		},
+		{
+			"hit": "(-84.0, 9.25, -101.0)",
+			"wall": "south-sw",
+			"x": -84.0,
+			"y": 9.25
+		},
+		{
+			"hit": "(-82.0, 6.5, -101.0)",
+			"wall": "south-sw",
+			"x": -82.0,
+			"y": 6.5
+		},
+		{
+			"hit": "(-82.0, 7.8, -101.0)",
+			"wall": "south-sw",
+			"x": -82.0,
+			"y": 7.8
+		},
+		{
+			"hit": "(-82.0, 9.25, -101.0)",
+			"wall": "south-sw",
+			"x": -82.0,
+			"y": 9.25
+		},
+		{
+			"hit": "(-80.0, 6.5, -101.0)",
+			"wall": "south-sw",
+			"x": -80.0,
+			"y": 6.5
+		},
+		{
+			"hit": "(-80.0, 7.8, -101.0)",
+			"wall": "south-sw",
+			"x": -80.0,
+			"y": 7.8
+		},
+		{
+			"hit": "(-80.0, 9.25, -101.0)",
+			"wall": "south-sw",
+			"x": -80.0,
+			"y": 9.25
+		},
+		{
+			"hit": "(-78.0, 6.5, -101.0)",
+			"wall": "south-sw",
+			"x": -78.0,
+			"y": 6.5
+		},
+		{
+			"hit": "(-78.0, 7.8, -101.0)",
+			"wall": "south-sw",
+			"x": -78.0,
+			"y": 7.8
+		},
+		{
+			"hit": "(-78.0, 9.25, -101.0)",
+			"wall": "south-sw",
+			"x": -78.0,
+			"y": 9.25
+		},
+		{
+			"hit": "(103.0, 0.5, -94.0)",
+			"wall": "east-se",
+			"y": 0.5,
+			"z": -94.0
+		},
+		{
+			"hit": "(103.0, 1.8, -94.0)",
+			"wall": "east-se",
+			"y": 1.8,
+			"z": -94.0
+		},
+		{
+			"hit": "(103.0, 3.25, -94.0)",
+			"wall": "east-se",
+			"y": 3.25,
+			"z": -94.0
+		},
+		{
+			"hit": "(103.0, 0.5, -93.0)",
+			"wall": "east-se",
+			"y": 0.5,
+			"z": -93.0
+		},
+		{
+			"hit": "(103.0, 1.8, -93.0)",
+			"wall": "east-se",
+			"y": 1.8,
+			"z": -93.0
+		},
+		{
+			"hit": "(103.0, 3.25, -93.0)",
+			"wall": "east-se",
+			"y": 3.25,
+			"z": -93.0
+		},
+		{
+			"hit": "(103.0, 0.5, -92.0)",
+			"wall": "east-se",
+			"y": 0.5,
+			"z": -92.0
+		},
+		{
+			"hit": "(103.0, 1.8, -92.0)",
+			"wall": "east-se",
+			"y": 1.8,
+			"z": -92.0
+		},
+		{
+			"hit": "(103.0, 3.25, -92.0)",
+			"wall": "east-se",
+			"y": 3.25,
+			"z": -92.0
+		},
+		{
+			"hit": "(103.0, 0.5, -91.0)",
+			"wall": "east-se",
+			"y": 0.5,
+			"z": -91.0
+		},
+		{
+			"hit": "(103.0, 1.8, -91.0)",
+			"wall": "east-se",
+			"y": 1.8,
+			"z": -91.0
+		},
+		{
+			"hit": "(103.0, 3.25, -91.0)",
+			"wall": "east-se",
+			"y": 3.25,
+			"z": -91.0
+		},
+		{
+			"hit": "(103.0, 0.5, -90.0)",
+			"wall": "east-se",
+			"y": 0.5,
+			"z": -90.0
+		},
+		{
+			"hit": "(103.0, 1.8, -90.0)",
+			"wall": "east-se",
+			"y": 1.8,
+			"z": -90.0
+		},
+		{
+			"hit": "(103.0, 3.25, -90.0)",
+			"wall": "east-se",
+			"y": 3.25,
+			"z": -90.0
+		},
+		{
+			"hit": "(103.0, 0.5, -89.0)",
+			"wall": "east-se",
+			"y": 0.5,
+			"z": -89.0
+		},
+		{
+			"hit": "(103.0, 1.8, -89.0)",
+			"wall": "east-se",
+			"y": 1.8,
+			"z": -89.0
+		},
+		{
+			"hit": "(103.0, 3.25, -89.0)",
+			"wall": "east-se",
+			"y": 3.25,
+			"z": -89.0
+		},
+		{
+			"hit": "(103.0, 0.5, -88.0)",
+			"wall": "east-se",
+			"y": 0.5,
+			"z": -88.0
+		},
+		{
+			"hit": "(103.0, 1.8, -88.0)",
+			"wall": "east-se",
+			"y": 1.8,
+			"z": -88.0
+		},
+		{
+			"hit": "(103.0, 3.25, -88.0)",
+			"wall": "east-se",
+			"y": 3.25,
+			"z": -88.0
+		},
+		{
+			"hit": "(103.0, 0.5, -87.0)",
+			"wall": "east-se",
+			"y": 0.5,
+			"z": -87.0
+		},
+		{
+			"hit": "(103.0, 1.8, -87.0)",
+			"wall": "east-se",
+			"y": 1.8,
+			"z": -87.0
+		},
+		{
+			"hit": "(103.0, 3.25, -87.0)",
+			"wall": "east-se",
+			"y": 3.25,
+			"z": -87.0
+		},
+		{
+			"hit": "(103.0, 0.5, -86.0)",
+			"wall": "east-se",
+			"y": 0.5,
+			"z": -86.0
+		},
+		{
+			"hit": "(103.0, 1.8, -86.0)",
+			"wall": "east-se",
+			"y": 1.8,
+			"z": -86.0
+		},
+		{
+			"hit": "(103.0, 3.25, -86.0)",
+			"wall": "east-se",
+			"y": 3.25,
+			"z": -86.0
+		}
+	],
+	"wallEnds": [
+		{
+			"contact": "none",
+			"wall": "south-sw",
+			"x": -113.0
+		},
+		{
+			"contact": "none",
+			"wall": "south-sw",
+			"x": -75.0
+		},
+		{
+			"contact": "none",
+			"wall": "east-se",
+			"z": -96.0
+		},
+		{
+			"contact": "none",
+			"wall": "east-se",
+			"z": -84.0
+		}
+	]
+}

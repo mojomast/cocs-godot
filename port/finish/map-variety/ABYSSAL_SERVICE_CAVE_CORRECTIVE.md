@@ -130,3 +130,85 @@ the accepted art basename or reuse an old T report/hash for it.
 
 No Blender, Godot, importer, renderer, server, or native capture ran during
 this corrective source stage.
+
+## V grant corrective-native harness (new, separate from the frozen T source stage)
+
+The parent-based V branch adds `revision2-corrective/native_harness.py`,
+`reexport_master.py`, `audit_corrective.py`, source guard tests, and the
+test-only `godot/tests/new_maps/abyssal_pressureworks/corrective/world_check.gd`.
+Under **MOTH-BLENDER-20261003-V**, the actual command is:
+
+```sh
+LP_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 tools/godot-multiplayer/new-maps/abyssal-pressureworks/revision2-corrective/native_harness.py \
+  --grant MOTH-BLENDER-20261003-V \
+  --output-root /tmp/opencode/abyssal-corrective-V-20261003-attempt-1 \
+  --blender /home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender \
+  --godot /home/mojo/.tmp-on-disk/opencode/cocs-graphics-windows-final/toolchain/Godot_v4.5.2-stable_linux.x86_64 run
+```
+
+The new directory must not exist beforehand. A failed attempt keeps its
+`inputs.json`, ordered logs and receipts; a repair gets a new attempt root.
+The exclusive shared lock is nonwaiting; each child uses its own bounded
+session group with kernel start ticks and three empty owned-group audits.
+Builder verifies immutable color, normal and roughness pixels; the saved master
+is reopened, then exported again and compared across **all** triangles, named
+surfaces and decoded PBR pixels. The standalone full-scene embedded GLB validator
+enforces the 64-primitive bound, actual index count and declared POSITION bounds;
+150k triangles is advisory. The staged Godot project is a **copy** within the
+attempt root and hashes the exact corrective JSON and new GLB. Its Binder uses
+a candidate-only copy-local identity/profile preserving the imported PBR
+materials; the parent snapshot has no accepted Abyssal profile or
+`WeatherService`, so this cannot be labeled production-weather acceptance.
+Actual visual capture, outside-wall traversal, hosted modes and final finish
+remain explicit review gates until their own measured evidence is recorded.
+
+### V native-discovered route endpoint successor
+
+The V grant did build and independently reexport the original corrective
+`ee979520…` source as an immutable historical V attempt, then native testing of
+all 501 source nav points found the last southwest service-loop sample at
+`(-76, 6, -96)` **on** its preserved east retaining wall. The original
+`revision2-corrective/` source and V attempts remain as failure receipts.
+`revision2-corrective-v/` is a new candidate identity
+`b010a0764e3754b9d1e6ff3839e7c319d871336cf5b242a36cd512dd9ee3aa86`:
+the route endpoint moves to `(-77.5, -96)`, 1.5 m inside that wall, preserving
+every floor, wall, block, spawn, objective and art class; six interpolated nav
+points move with it, leaving the nav count at 501. The source tests assert
+that bounded diff. **Old V native art cannot certify this new identity**; a
+fresh namespaced master/GLB and stage are required, even if exported triangles
+later happen to match.
+
+### V grant result and review scope
+
+The successor was built **fresh**, under the exclusive V grant, to
+`/tmp/opencode/abyssal-corrective-v2-V-20261003-attempt-1` and selectively
+packaged at `native-V-20261003/abyssal-pressureworks/` for parent review.
+The master SHA-256 is `16e244942c84c810802fa56ec37efca5b39b95f2872d373175d68cc94e48d93f`;
+the GLB SHA-256 is `770c8622f6e9dc401fb6dc5cce4225efc5b930c1a88f29f9f0c324170db07f87`.
+The saved master reopened with **30 packed images** and independently exported
+a **byte-identical** GLB: **47** scene-backed primitives, **229,620** indexed
+triangles, 12 labels, no global hard triangle cap. Export report verifies
+immutable color, normal and roughness pixels and separately authored preserves.
+Actual GLB/source normals agree at all fourteen cave solids.
+
+Native `WorldMap` imported the exact new authority/GLB pair with **no art-owned
+physics**, passed the three historical P1 ray spans, **78** wall jump/body-band
+contacts, **four** clear wall-end crossings and **518** body-clearance samples.
+Nine ramp-adjacent samples used only a measured **0.15 m** lift; all others
+cleared at authored height. Eight paired camera views produced **16** original
+1280×720 PNGs with hash and backend receipts. The rendered stage uses the
+production Binder with a **copy-local candidate preserve-PBR profile** and
+`abyssal_presentation.gd`; no accepted Abyssal profile or WeatherService is
+present in this parent-based checkout. These are neutral stage captures, not
+production-weather approval. See the review gallery and `evidence-hashes.json`
+under the V artifact folder. Old `ee979520…` V attempts 1–5 retain their logs,
+receipts and failure reports there without copying their rejected master/GLB
+into this selective parent artifact set.
+
+Native **P1 inside playable wall/floor contact closure** is supported by the
+new actual GLB + imported-physics probes. Exterior fall/special traversal,
+swept chase camera, hosted journeys and all six final mode outcomes remain
+separate acceptance gates. Parent retains promotion and package inventory.
+Grant V was explicitly released after a nonwaiting lock check and three
+timestamped audits with no surviving V-owned process groups; see
+`grant-release.json`. No heavy process is queued.

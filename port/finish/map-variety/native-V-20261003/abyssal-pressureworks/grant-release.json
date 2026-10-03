@@ -1,0 +1,182 @@
+{
+  "grant": "MOTH-BLENDER-20261003-V",
+  "releaseStatus": "explicit release; no queued heavy work",
+  "attempts": [
+    "abyssal-corrective-V-20261003-attempt-1",
+    "abyssal-corrective-V-20261003-attempt-2",
+    "abyssal-corrective-V-20261003-attempt-3",
+    "abyssal-corrective-V-20261003-attempt-4",
+    "abyssal-corrective-V-20261003-attempt-5",
+    "abyssal-corrective-v2-V-20261003-attempt-1"
+  ],
+  "ownedGroups": [
+    {
+      "attempt": "abyssal-corrective-V-20261003-attempt-1",
+      "label": "06-world-check",
+      "pgid": 649542,
+      "startTicks": 624079160
+    },
+    {
+      "attempt": "abyssal-corrective-V-20261003-attempt-1",
+      "label": "05-import",
+      "pgid": 648995,
+      "startTicks": 624078267
+    },
+    {
+      "attempt": "abyssal-corrective-V-20261003-attempt-1",
+      "label": "04-geometry-audit",
+      "pgid": 648126,
+      "startTicks": 624076840
+    },
+    {
+      "attempt": "abyssal-corrective-V-20261003-attempt-1",
+      "label": "03-master-reexport",
+      "pgid": 647999,
+      "startTicks": 624076668
+    },
+    {
+      "attempt": "abyssal-corrective-V-20261003-attempt-1",
+      "label": "02-reopen",
+      "pgid": 647914,
+      "startTicks": 624076560
+    },
+    {
+      "attempt": "abyssal-corrective-V-20261003-attempt-1",
+      "label": "01-build",
+      "pgid": 645459,
+      "startTicks": 624072655
+    },
+    {
+      "attempt": "abyssal-corrective-V-20261003-attempt-2",
+      "label": "05-import",
+      "pgid": 661843,
+      "startTicks": 624101014
+    },
+    {
+      "attempt": "abyssal-corrective-V-20261003-attempt-2",
+      "label": "04-resumed-geometry-audit",
+      "pgid": 661153,
+      "startTicks": 624099423
+    },
+    {
+      "attempt": "abyssal-corrective-V-20261003-attempt-3",
+      "label": "07-paired-capture",
+      "pgid": 675305,
+      "startTicks": 624116056
+    },
+    {
+      "attempt": "abyssal-corrective-V-20261003-attempt-3",
+      "label": "06-world-check",
+      "pgid": 675243,
+      "startTicks": 624115950
+    },
+    {
+      "attempt": "abyssal-corrective-V-20261003-attempt-3",
+      "label": "05-import",
+      "pgid": 674868,
+      "startTicks": 624115448
+    },
+    {
+      "attempt": "abyssal-corrective-V-20261003-attempt-3",
+      "label": "04-resumed-geometry-audit",
+      "pgid": 674036,
+      "startTicks": 624113847
+    },
+    {
+      "attempt": "abyssal-corrective-V-20261003-attempt-4",
+      "label": "06-world-check",
+      "pgid": 686871,
+      "startTicks": 624134592
+    },
+    {
+      "attempt": "abyssal-corrective-V-20261003-attempt-4",
+      "label": "05-import",
+      "pgid": 686325,
+      "startTicks": 624134090
+    },
+    {
+      "attempt": "abyssal-corrective-V-20261003-attempt-4",
+      "label": "04-resumed-geometry-audit",
+      "pgid": 685708,
+      "startTicks": 624132511
+    },
+    {
+      "attempt": "abyssal-corrective-V-20261003-attempt-5",
+      "label": "06-world-check",
+      "pgid": 692043,
+      "startTicks": 624144007
+    },
+    {
+      "attempt": "abyssal-corrective-V-20261003-attempt-5",
+      "label": "05-import",
+      "pgid": 691626,
+      "startTicks": 624143485
+    },
+    {
+      "attempt": "abyssal-corrective-V-20261003-attempt-5",
+      "label": "04-resumed-geometry-audit",
+      "pgid": 690805,
+      "startTicks": 624141848
+    },
+    {
+      "attempt": "abyssal-corrective-v2-V-20261003-attempt-1",
+      "label": "07-paired-capture",
+      "pgid": 708350,
+      "startTicks": 624174247
+    },
+    {
+      "attempt": "abyssal-corrective-v2-V-20261003-attempt-1",
+      "label": "06-world-check",
+      "pgid": 708238,
+      "startTicks": 624174142
+    },
+    {
+      "attempt": "abyssal-corrective-v2-V-20261003-attempt-1",
+      "label": "05-import",
+      "pgid": 707957,
+      "startTicks": 624173641
+    },
+    {
+      "attempt": "abyssal-corrective-v2-V-20261003-attempt-1",
+      "label": "04-geometry-audit",
+      "pgid": 707228,
+      "startTicks": 624172057
+    },
+    {
+      "attempt": "abyssal-corrective-v2-V-20261003-attempt-1",
+      "label": "03-master-reexport",
+      "pgid": 707145,
+      "startTicks": 624171880
+    },
+    {
+      "attempt": "abyssal-corrective-v2-V-20261003-attempt-1",
+      "label": "02-reopen",
+      "pgid": 707083,
+      "startTicks": 624171774
+    },
+    {
+      "attempt": "abyssal-corrective-v2-V-20261003-attempt-1",
+      "label": "01-build",
+      "pgid": 704908,
+      "startTicks": 624168013
+    }
+  ],
+  "audits": [
+    {
+      "utc": "2026-10-03T20:19:23.514688+00:00",
+      "ownedSurvivors": [],
+      "otherMatchingCount": 17
+    },
+    {
+      "utc": "2026-10-03T20:19:23.890993+00:00",
+      "ownedSurvivors": [],
+      "otherMatchingCount": 17
+    },
+    {
+      "utc": "2026-10-03T20:19:24.266015+00:00",
+      "ownedSurvivors": [],
+      "otherMatchingCount": 17
+    }
+  ],
+  "lockAvailable": true
+}
