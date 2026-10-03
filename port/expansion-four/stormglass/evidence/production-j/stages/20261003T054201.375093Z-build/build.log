@@ -1,0 +1,69 @@
+Info: Saved as "stormglass-causeway.blend"
+INFO Draco mesh compression is available, use library at /home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/4.5/scripts/addons_core/io_scene_gltf2/libextern_draco.so
+01:42:04 | INFO: Starting glTF 2.0 export
+01:42:04 | INFO: Extracting primitive: batch-asphalt
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: batch-concrete
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: batch-salt
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: batch-amber
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: batch-teal
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: batch-glass
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: batch-steel
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: batch-brick
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: batch-ocean
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-0
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-1
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-2
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-3
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-4
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-5
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-6
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-7
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-8
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-9
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-10
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-11
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-12
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-13
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-14
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-15
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-16
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-17
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-18
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-19
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Extracting primitive: route-sign-20
+01:42:04 | INFO: Primitives created: 1
+01:42:04 | INFO: Finished glTF 2.0 export in 0.18704771995544434 s
+
+{"id": "stormglass-causeway", "master": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-20261002/tools/godot-multiplayer/new-maps/stormglass-causeway/stormglass-causeway.blend", "glb": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-20261002/godot/multiplayer_worlds/art/worlds/stormglass-causeway.glb", "glbSha256": "ff318582fd47ca633ef74da1aa4a6aa2b5b691800f12fb3210f3dac140cb5b33", "editableMeshes": 9682, "materialBatches": 9, "recipeTriangles": 19364, "acceptance": "export only; reopen/native/rendered acceptance still required"}
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+
+Blender quit

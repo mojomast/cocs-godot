@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "xvfb-run",
+    "-a",
+    "-s",
+    "-screen 0 1280x800x24",
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--path",
+    "godot",
+    "--audio-driver",
+    "Dummy",
+    "--resolution",
+    "1280x800",
+    "--script",
+    "res://tests/new_maps/stormglass_causeway/inspection.gd",
+    "--"
+  ],
+  "started": "2026-10-03T06:07:13.520607+00:00",
+  "timeoutSeconds": 240,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T060713.410748Z-inspection/inspection.log",
+  "processGroup": 1793086,
+  "exitCode": 0,
+  "ended": "2026-10-03T06:07:20.347417+00:00",
+  "ownedGroupTeardownRequested": true
+}

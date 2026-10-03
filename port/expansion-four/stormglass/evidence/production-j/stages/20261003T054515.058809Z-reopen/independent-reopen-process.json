@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender",
+    "--python-exit-code",
+    "1",
+    "-b",
+    "-t",
+    "1",
+    "--python",
+    "tools/asset-production/reopen.py",
+    "--",
+    "--unit=stormglass-causeway"
+  ],
+  "started": "2026-10-03T05:45:15.177384+00:00",
+  "timeoutSeconds": 600,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T054515.058809Z-reopen/independent-reopen.log",
+  "processGroup": 1695499,
+  "exitCode": 0,
+  "ended": "2026-10-03T05:45:15.992852+00:00",
+  "ownedGroupTeardownRequested": true
+}

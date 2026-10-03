@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "xvfb-run",
+    "-a",
+    "-s",
+    "-screen 0 1280x800x24",
+    "node",
+    "godot/tests/new_maps/stormglass_causeway/hosted.mjs",
+    "--compact"
+  ],
+  "started": "2026-10-03T05:50:29.850521+00:00",
+  "timeoutSeconds": 960,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T055029.731007Z-hosted-puma-race/hosted-puma-race.log",
+  "processGroup": 1719349,
+  "exitCode": 1,
+  "ended": "2026-10-03T05:52:20.092792+00:00",
+  "ownedGroupTeardownRequested": true
+}
