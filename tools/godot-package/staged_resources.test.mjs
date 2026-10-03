@@ -4,8 +4,10 @@ import {readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {stagedResources,gitStagedResources,rejectStagedInputs,rejectStagedReferences,STAGED_MANIFEST,STAGED_MANIFEST_SHA,STAGED_CANDIDATE} from './staged_resources.mjs';
+import {STAGED_ENTRIES} from './staged_resources.mjs';
 const read=p=>readFileSync(p),git=(...a)=>execFileSync('git',a,{maxBuffer:128*1024*1024});
-const paths=git('ls-files','-z','--','godot').toString().split('\0').filter(Boolean),options={paths,read,required:true};
+// Keep the original R5 fixture independent of later candidate inventories.
+const paths=git('ls-tree','-r','--name-only','-z','7ae3f2f5','--','godot').toString().split('\0').filter(Boolean),options={paths,read,required:true};
 test('exact R5 manifest and all 63 staged files match original artifact; accepted runtime remains selected',()=>{
  const manifest=git('show',`${STAGED_CANDIDATE}:${STAGED_MANIFEST}`);
  assert.equal(createHash('sha256').update(manifest).digest('hex'),STAGED_MANIFEST_SHA);
@@ -34,4 +36,41 @@ test('production path, basename and UID references reject; raw/import/data shipp
 test('recorded pre-R5 source ignores ambient candidate files and requires no new manifest',()=>{
  const p=gitStagedResources(process.cwd(),'4cd806fa');assert.deepEqual(p.files,{});assert.deepEqual(p.excludePaths,[]);
  assert.ok(p.nativeFiles.includes('godot/multiplayer_worlds/art/worlds/gravemill-foundry.glb'));
+});
+const r6=STAGED_ENTRIES.find(e=>e.id==='foundry-r6');
+const currentPaths=git('ls-files','-z','--','godot').toString().split('\0').filter(Boolean);
+const both={paths:currentPaths,read,required:['foundry-r5','foundry-r6']};
+test('R6 manifest exactly covers artifact Git diff; both candidates excluded and accepted native count unchanged',()=>{
+ const p=stagedResources(both),entry=p.entries.find(e=>e.id===r6.id);
+ const added=git('diff','--name-only',r6.candidate+'^',r6.candidate,'--','godot').toString().trim().split('\n').filter(p=>!p.startsWith('godot/tests/'));
+ assert.deepEqual([...entry.paths].sort(),added.sort());assert.equal(entry.paths.length,74);
+ assert.equal(entry.paths.filter(p=>p.endsWith('.png')).length,36);
+ assert.equal(entry.paths.filter(p=>p.endsWith('.import')).length,37);
+ assert.equal(entry.paths.reduce((n,f)=>n+p.files[f].bytes,0),19007243);
+ assert.equal(Object.keys(p.files).length,137);assert.equal(p.nativeFiles.length,2494);
+ assert.equal(entry.status,'unpromoted-artifact-review-pending');
+ for(const f of entry.paths){assert.deepEqual(read(f),git('show',`${r6.candidate}:${f}`));assert.ok(!p.nativeFiles.includes(f));assert.ok(p.excludePaths.includes(f.slice(6)));}
+ assert.deepEqual(read(r6.manifest),git('show',`${r6.candidate}:${r6.manifest}`));
+ git('merge-base','--is-ancestor',r6.source,r6.candidate);
+ const glb=entry.paths.find(p=>p.endsWith('.glb')),b=read(glb),doc=JSON.parse(b.subarray(20,20+b.readUInt32LE(12)));
+ assert.equal(doc.images.length,36);assert.equal(b.length,15012396);
+ assert.equal(p.files[glb].sha256,'945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c');
+});
+test('R6 missing/changed manifest, artifact and unknown revision reject without granting an exemption',()=>{
+ const p=stagedResources(both),first=p.entries.find(e=>e.id===r6.id).paths[0];
+ assert.throws(()=>stagedResources({...both,read:x=>x===r6.manifest?Buffer.from('{}'):read(x)}),/Exact R6 staged manifest/);
+ assert.throws(()=>stagedResources({...both,read:x=>{if(x===r6.manifest)throw Error('Missing R6 manifest');return read(x);}}),/Missing R6 manifest/);
+ assert.throws(()=>stagedResources({...both,read:x=>x===first?Buffer.alloc(p.files[first].bytes):read(x)}),/Staged hash/);
+ assert.throws(()=>stagedResources({...both,paths:currentPaths.filter(x=>x!==first)}),/Missing staged resource/);
+ assert.throws(()=>stagedResources({...both,paths:[...currentPaths,'godot/multiplayer_worlds/art/revisions/unreviewed-r7.glb']}),/Unreviewed staged revision/);
+ assert.throws(()=>stagedResources({...both,required:['foundry-r5']}),/Unreviewed staged revision/);
+});
+test('R6 production path/UID consumers and all raw/import/copy inputs reject',()=>{
+ const p=stagedResources(both),entry=p.entries.find(e=>e.id===r6.id),glb=entry.paths.find(p=>p.endsWith('.glb'));
+ for(const ref of ['res://'+glb.slice(6),read(glb+'.import').toString().match(/uid="([^"]+)"/)[1]])assert.throws(()=>stagedResources({...both,read:x=>x==='godot/ui/main_menu.gd'?Buffer.from('load("'+ref+'")'):read(x)}),/Production reference/);
+ for(const f of entry.paths)assert.throws(()=>rejectStagedInputs([f],p),/Staged resource in runtime/);
+});
+test('recorded pre-W base retains only R5; original W ancestry activates R6 independently of ambient HEAD',()=>{
+ const before=gitStagedResources(process.cwd(),'5f5a58c7');assert.equal(Object.keys(before.files).length,63);assert.equal(before.entries.length,1);
+ const after=gitStagedResources(process.cwd(),'HEAD');assert.equal(Object.keys(after.files).length,137);assert.equal(after.entries.length,2);
 });
