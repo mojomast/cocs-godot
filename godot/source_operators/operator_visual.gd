@@ -185,7 +185,7 @@ func weapon_cost() -> Dictionary:
 func apply_actor(actor: Dictionary) -> void:
 	apply_identity(actor)
 	if not snapshot.is_empty() and is_instance_valid(source):
-		var discontinuity := actor.get("id") != snapshot.get("id") or actor.get("vehicleId") != snapshot.get("vehicleId")
+		var discontinuity: bool = actor.get("id") != snapshot.get("id") or actor.get("vehicleId") != snapshot.get("vehicleId")
 		for key: String in ["spawnId","respawnCount","replayEpoch"]:
 			if actor.get(key) != snapshot.get(key): discontinuity = true
 		if float(actor.get("health",100)) > 0 and float(snapshot.get("health",100)) <= 0: discontinuity = true
