@@ -155,3 +155,19 @@ materials; the parent snapshot has no accepted Abyssal profile or
 `WeatherService`, so this cannot be labeled production-weather acceptance.
 Actual visual capture, outside-wall traversal, hosted modes and final finish
 remain explicit review gates until their own measured evidence is recorded.
+
+### V native-discovered route endpoint successor
+
+The V grant did build and independently reexport the original corrective
+`ee979520…` source as an immutable historical V attempt, then native testing of
+all 501 source nav points found the last southwest service-loop sample at
+`(-76, 6, -96)` **on** its preserved east retaining wall. The original
+`revision2-corrective/` source and V attempts remain as failure receipts.
+`revision2-corrective-v/` is a new candidate identity
+`b010a0764e3754b9d1e6ff3839e7c319d871336cf5b242a36cd512dd9ee3aa86`:
+the route endpoint moves to `(-77.5, -96)`, 1.5 m inside that wall, preserving
+every floor, wall, block, spawn, objective and art class; six interpolated nav
+points move with it, leaving the nav count at 501. The source tests assert
+that bounded diff. **Old V native art cannot certify this new identity**; a
+fresh namespaced master/GLB and stage are required, even if exported triangles
+later happen to match.
