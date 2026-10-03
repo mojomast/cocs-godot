@@ -25,6 +25,7 @@ import {FEATURE_JSON} from './feature_resources.mjs';
 import {DRESSING_IDS} from './dressing_resources.mjs';
 import {finalResources} from './final_resources.mjs';
 import {productionResources} from './production_resources.mjs';
+import {channelProduction,verifyChannelManifest,previewReadme} from './build_channel.mjs';
 import {fighterImports} from './fighter_imports.mjs';
 
 // The repository that contains this module, not the process working directory.
@@ -551,7 +552,16 @@ function verifyLauncherSurface(repo, identity, packageDir) {
   }
   requireSameBytes(repo, commit, 'port/contracts/map-selection.json', join(packageDir, 'catalog.json'), 'catalog.json');
   const play = target === 'windows' ? 'port/native-windows-package/PLAY.md' : 'port/native-linux-package/PLAY.md';
-  requireSameBytes(repo, commit, play, join(packageDir, 'README.md'), 'README.md');
+  const builder=git(repo,['ls-tree','--name-only',commit,'--','tools/godot-package/build.py'])?gitObjectBytes(repo,commit,'tools/godot-package/build.py').toString():'';
+  if(builder.includes('"build_channel"')) {
+    requireInventoryFile(packageDir,identity,'build-intent.json');
+    const intent=JSON.parse(readFileSync(join(packageDir,'build-intent.json'),'utf8'));
+    require_(canonicalJson(intent)===canonicalJson(identity.manifest.build_intent),'Packaged build intent differs from manifest');
+    require_(readFileSync(join(packageDir,'README.md'),'utf8')===previewReadme(intent,gitObjectBytes(repo,commit,play).toString()),'Channel README differs from recorded intent/source');
+  } else {
+    require_(identity.manifest.build_channel===undefined,'Historical build cannot be relabeled preview');
+    requireSameBytes(repo, commit, play, join(packageDir, 'README.md'), 'README.md');
+  }
   if (target === 'linux') {
     for (const name of LINUX_LAUNCHERS) {
       requireSameBytes(repo, commit, `tools/godot-package/${name}`, join(packageDir, name), name);
@@ -610,7 +620,10 @@ export function verifyProductionProvenance(repo,identity) {
   const paths=new Set(git(repo,['ls-tree','-r','--name-only',identity.port_commit,'--','godot','tools','port','game']).split('\n'));
   const read=path=>gitObjectBytes(repo,identity.port_commit,path),has=path=>paths.has(path);
   verifyFighterImportProvenance(repo,identity);
-  const expected=productionResources({read,has,worldIds:(identity.worldDataFiles??[]).map(p=>p.split('/').at(-1).slice(0,-5))});
+  const options={read,has,worldIds:(identity.worldDataFiles??[]).map(p=>p.split('/').at(-1).slice(0,-5))};
+  const channel=code.includes('"build_channel"')?identity.manifest.build_channel:'final';
+  const expected=channelProduction(options,channel);
+  verifyChannelManifest(identity.manifest,code,expected);
   for(const [field,key]of [['production_resource_sha256','resources'],['production_provenance_sha256','provenance'],['production_raw_resource_sha256','raw']])
     require_(canonicalJson(identity.manifest[field])===canonicalJson(expected[key]),`${field} differs from required recorded production closure`);
 }
