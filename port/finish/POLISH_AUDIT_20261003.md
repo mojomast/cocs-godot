@@ -154,3 +154,31 @@ GDScripts, with clean diff checks. Bundle **`03a64083` + `3059de9a`** is now
 source-ready and remains **unmerged**. Native shader reflection/compilation,
 weather restoration, Moth validation and Compatibility depth-pixel comparison
 are pending. No measured performance improvement is claimed.
+
+Support-cue correction **`1216527c` / `7ee7a33c`** is reviewed: immediate transient
+clear preserves pool/history, disabled preferences cannot resurrect cues, and
+the fixture checks actual inputs. Parent parsed all three scripts and diff checks
+passed. Its four-commit bundle is now source-ready.
+
+## Separate source integration
+
+Five reviewed lanes were assembled without conflicts in worktree
+`/home/mojo/.tmp-on-disk/cocs-polish-integration-20261003`, branch
+`integration/polish-20261003`, through **`6ac28c41`**, based on `5b5c8791`.
+Parent shader-parity check and **14 combined GDScript grammar checks** pass.
+This is not a merge into the main development branch or K's active candidate.
+Its `port/finish/polish/INTEGRATION.md` records exact commits and native follow-up.
+Lobby QoL remains with its existing worker. After K releases, adopt its verified
+runtime corrections before native polish checks and exact package reconciliation.
+
+Integration documentation committed as **`d70630a6`**, pushed to the separate
+`integration/polish-20261003` branch. Main development runtime remains unchanged.
+
+Lobby checkpoints **`cf6a792c` / `75e035ae`** are **not integrated**. Parent review
+found that guest/empty modes still toggle disabled false→true in each refresh;
+same-count catalog content changes are missed; setup cannot select a newly added
+fallback absent from old choice rows; malformed mode-array elements need guards.
+Returned for single-writer control state, actual catalog-content comparison and
+recovery fixtures covering these cases. The added native gate-registration line
+also needs deliberate integration with K's acceptance changes rather than blindly
+merging shared verifier edits.
