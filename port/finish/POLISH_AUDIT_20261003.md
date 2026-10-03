@@ -129,3 +129,12 @@ shader from weather wet-sheen recognition. Parent explicitly assigned the same
 owner narrow `ambience/weather_look.gd` / `wet_surface.gd` compatibility changes
 and both-variant lease/restore coverage. Identity atmosphere only changes the
 separate native environment installer, so those ownership scopes do not overlap.
+
+Flash muzzle checkpoint **`e5a0f710`** is reviewed and source-ready, **unmerged**.
+It subtracts the frame's sampled corner background for both sheet coverage and
+color, preserves the analytic core, and disables texture repeat at the card edge.
+The worker decoded the actual spark/arc PNGs and reported scalar coverage checks;
+these are not GPU output. Parent independently parsed the expanded graphical
+fixture and passed diff checks. Native shader compilation, real-frame transparent
+background/core/hue comparisons and captures remain pending. No original asset
+bytes or imports changed; the shader hash requires later package reconciliation.
