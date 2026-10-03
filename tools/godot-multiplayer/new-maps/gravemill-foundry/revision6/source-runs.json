@@ -1,0 +1,56 @@
+{
+  "scope": "source only; no actual R6 export/render/import",
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/finish.py"
+      ],
+      "start": "2026-10-03T18:55:42.643908+00:00",
+      "seconds": 0.9774654814973474,
+      "returncode": 0,
+      "stdout": "{\n  \"visualRevision\": 6,\n  \"status\": \"source plan; build/native visual acceptance pending\",\n  \"geometryHash\": \"61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879\",\n  \"sourceGLBSha256\": \"237dcc9d1b339116915d824f9896e6ee7daa57b0c13bab08c58da8d51445c9c8\",\n  \"sourceMasterSha256\": \"437dc16697554e5bcf46862dd9c01c071d103d42f93e2480f1331b1d11eaa83a\",\n  \"authoritySha256\": \"ce1a620bfe0e651a2172e93b359c217fd9b72cc760b8ee44e69f6412236234c5\",\n  \"bindingsSha256\": \"db636ac01e79f3849cff09b78d5a199c8b047c625e76e92933fc23ffe10dc2d3\",\n  \"pack\": {\n    \"overlaySha256\": \"86beb51736bea315b2bb35cd7772aff2daec7a1317b13c1eb498c981f2e8c5f0\",\n    \"baseSha256\": \"640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9\"\n  },\n  \"triangles\": 87566,\n  \"plannedPrimitives\": 32,\n  \"trianglesByRole\": {\n    \"GM / soot\": 4208,\n    \"R6 / machine\": 8840,\n    \"G4 / ribbed\": 1840,\n    \"R6 / ore-shell\": 872,\n    \"GM / brass\": 45192,\n    \"GM / copper\": 4448,\n    \"G4 / grating\": 88,\n    \"R6 / refractory\": 942,\n    \"R6 / plinth\": 396,\n    \"G4 / timber\": 88,\n    \"R6 / wall\": 148,\n    \"GM / chalk\": 14457,\n    \"GM / mineral\": 607,\n    \"R6 / ground\": 2001,\n    \"R6 / roof\": 10,\n    \"GM / ore\": 2458,\n    \"GM / orange\": 328,\n    \"GM / cooling-floor\": 643\n  },\n  \"squareMetresByRole\": {\n    \"GM / soot\": 1594.5400635649112,\n    \"R6 / machine\": 10560.57982559934,\n    \"G4 / ribbed\": 4755.758314344093,\n    \"R6 / ore-shell\": 613.0844724546625,\n    \"GM / brass\": 6615.2668865573005,\n    \"GM / copper\": 11845.140053000769,\n    \"G4 / grating\": 248.88773597139806,\n    \"R6 / refractory\": 5701.209218756805,\n    \"R6 / plinth\": 7192.023704803141,\n    \"G4 / timber\": 105.7645797931633,\n    \"R6 / wall\": 3386.3329332966077,\n    \"GM / chalk\": 37772.98255236176,\n    \"GM / mineral\": 68474.31706653803,\n    \"R6 / ground\": 141682.24230129697,\n    \"R6 / roof\": 4999.095291281133,\n    \"GM / ore\": 63537.22765816134,\n    \"GM / orange\": 34.41106304685496,\n    \"GM / cooling-floor\": 18971.82223669057\n  },\n  \"reasons\": {\n    \"retained R5 role\": 73719,\n    \"ore-bin dark discharge machinery\": 304,\n    \"localized handling wear\": 440,\n    \"ore-bin dark hood\": 792,\n    \"furnace service machinery\": 1120,\n    \"ore-bin oxidized iron shell\": 432,\n    \"tipple masonry frame\": 872,\n    \"ore-bin cast base\": 264,\n    \"cooling mineral structure\": 144,\n    \"assay guidance retained\": 290,\n    \"crusher cast foundation\": 24,\n    \"crusher rotating steel shell\": 184,\n    \"kiln warm refractory masonry\": 70,\n    \"crusher cast end frame\": 12,\n    \"crusher mineral infill\": 4,\n    \"legacy steel trim, not plaster\": 6440,\n    \"cooling splash-resistant base\": 96,\n    \"quiet aggregate ground instead of giant cast grid\": 2001,\n    \"cooling copper vault retained\": 20,\n    \"crusher folded ribbed steel roof\": 10,\n    \"preserved luminaire\": 328\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/prepare_stage.py"
+      ],
+      "start": "2026-10-03T18:55:43.621410+00:00",
+      "seconds": 0.031576198525726795,
+      "returncode": 0,
+      "stdout": "R6 staged sources prepared; art-identity.json requires the future actual build\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/check.py"
+      ],
+      "start": "2026-10-03T18:55:43.653017+00:00",
+      "seconds": 1.9870933387428522,
+      "returncode": 0,
+      "stdout": "{\"sourceChecks\": \"passed\", \"triangles\": 87566, \"plannedPrimitives\": 32, \"newRoleTriangles\": {\"R6 / machine\": 8840, \"R6 / roof\": 10, \"R6 / wall\": 148, \"R6 / plinth\": 396, \"R6 / refractory\": 942, \"R6 / ore-shell\": 872, \"R6 / ground\": 2001}, \"artHash\": null, \"nativeVisual\": \"pending\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/godot-multiplayer/new-maps/gravemill-foundry/revision6",
+        "-p",
+        "test_source.py",
+        "-v"
+      ],
+      "start": "2026-10-03T18:55:45.640144+00:00",
+      "seconds": 0.0534785371273756,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_exact_oriented_geometry_and_basis_after_split (test_source.Composition.test_exact_oriented_geometry_and_basis_after_split) ... ok\ntest_source_identity_and_coverage_fail_closed (test_source.Composition.test_source_identity_and_coverage_fail_closed) ... ok\ntest_uv_scale_is_material_local (test_source.Composition.test_uv_scale_is_material_local) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nOK\n"
+    }
+  ]
+}

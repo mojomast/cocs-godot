@@ -1,0 +1,24 @@
+{
+  "id": "gravemill-foundry-r6-finish",
+  "status": "source-ready; awaiting a new exclusive heavy grant after Coastal T and botanical builds",
+  "baseCommit": "7ae3f2f5",
+  "owner": "Astra",
+  "visualRevision": 6,
+  "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879",
+  "authority": "godot/multiplayer_worlds/generated/revisions/gravemill-foundry-r5.json",
+  "artHash": null,
+  "plannedTriangles": 87566,
+  "plannedPrimitives": 32,
+  "heavyGrant": null,
+  "priorGrant": "MOTH-BLENDER-20261003-S remains released",
+  "toolchain": {"blender":"4.5.14","godot":"4.5.2","LP_NUM_THREADS":"1","OMP_NUM_THREADS":"1"},
+  "sequence": [
+    {"entry":"revision6/author.py","tool":"Blender","timeoutSeconds":900,"flag":"--authorized-r6-build"},
+    {"entry":"revision6/reopen.py","tool":"Blender","timeoutSeconds":120,"flag":"--authorized-r6-build"},
+    {"entry":"isolated Godot project --headless --editor --import --quit","tool":"Godot","timeoutSeconds":600},
+    {"entry":"res://tests/new_maps/gravemill_foundry/revision6/capture.gd","tool":"Godot Compatibility owned display/process group","timeoutSeconds":210}
+  ],
+  "requiredReview": ["all eleven native R5/R6 matched views","crusher roofline wall/roof/machinery contrast","bunker base/shell/hood separation","player-height texture scale and repetition","emission/dressing/weather ownership","actual imported streams and material pixels","actual bytes, draw calls, memory and backend cadence"],
+  "manualArtAcceptance": "pending user review",
+  "publicPromotion": "pending"
+}

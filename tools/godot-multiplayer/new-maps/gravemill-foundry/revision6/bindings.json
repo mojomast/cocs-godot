@@ -1,0 +1,9 @@
+{
+  "R6 / machine": {"resource":"forge-steel","role":"surface","metallic":0.48,"normalStrength":0.25},
+  "R6 / roof": {"resource":"ribbed-steel","role":"surface","metallic":0.4,"normalStrength":0.3},
+  "R6 / wall": {"resource":"aggregate","role":"surface","metallic":0,"normalStrength":0.2},
+  "R6 / plinth": {"resource":"cast-seams","role":"surface","metallic":0,"normalStrength":0.2},
+  "R6 / refractory": {"resource":"terracotta","role":"surface","metallic":0,"normalStrength":0.3},
+  "R6 / ore-shell": {"resource":"oxidized-iron","role":"surface","metallic":0.25,"normalStrength":0.3},
+  "R6 / ground": {"resource":"aggregate","role":"surface","metallic":0,"normalStrength":0.12}
+}
