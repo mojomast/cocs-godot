@@ -135,12 +135,21 @@ def stage(output, report):
     import tarfile
     project.mkdir()
     archive = subprocess.Popen(['git', 'archive', 'HEAD', 'godot'], cwd=ROOT, stdout=subprocess.PIPE)
+    stage_prefixes = ('godot/moth/', 'godot/moth_scenery/', 'godot/material_language/',
+                      'godot/multiplayer_worlds/dressing/',
+                      'godot/tests/new_maps/abyssal_pressureworks/corrective/')
+    stage_exact = ('godot/multiplayer_worlds/map.gd',
+                   'godot/multiplayer_worlds/abyssal_presentation.gd',
+                   'godot/multiplayer_worlds/art/worlds/abyssal-pressureworks.glb',
+                   'godot/multiplayer_worlds/generated/abyssal-pressureworks.json')
     try:
         with tarfile.open(fileobj=archive.stdout, mode='r|') as tar:
             for member in tar:
                 relative = Path(member.name)
                 if not relative.parts or relative.parts[0] != 'godot' or '..' in relative.parts or member.issym() or member.islnk():
                     raise ValueError('Unexpected Git project archive member: ' + member.name)
+                if not member.name.startswith(stage_prefixes) and member.name not in stage_exact:
+                    continue
                 dest = project.joinpath(*relative.parts[1:])
                 if member.isdir():
                     dest.mkdir(parents=True, exist_ok=True)
@@ -155,6 +164,11 @@ def stage(output, report):
         if archive.poll() is None:
             archive.kill()
             archive.wait()
+    (project / 'project.godot').write_text(
+        'config_version=5\n[application]\nconfig/name="Abyssal Corrective V Isolated Test Stage"\n'
+        '[rendering]\nrenderer/rendering_method="gl_compatibility"\n'
+        'renderer/rendering_method.mobile="gl_compatibility"\n'
+        'environment/defaults/default_clear_color=Color(0.035, 0.05, 0.08, 1)\n')
     target = project / 'tests/new_maps/abyssal_pressureworks/corrective'
     target.mkdir(parents=True, exist_ok=True)
     shutil.copy2(output / 'corrective.glb', target / 'corrective.glb')
@@ -261,7 +275,16 @@ def main(argv=None):
         run_phase(output, '06-world-check', [args.godot, '--headless', '--path', str(project), '--script',
                   'res://tests/new_maps/abyssal_pressureworks/corrective/world_check.gd', '--',
                   '--report=' + str(output / 'world-check.json')], 360)
-        print(json.dumps({'status': 'native checks recorded; visual and host-mode review pending',
+        run_phase(output, '07-paired-capture', ['xvfb-run', '-a', '-s', '-screen 0 1280x720x24',
+                  args.godot, '--display-driver', 'x11', '--path', str(project), '--script',
+                  'res://tests/new_maps/abyssal_pressureworks/corrective/capture.gd', '--',
+                  '--output=' + str(output / 'captures')], 600)
+        capture = json.loads((output / 'captures/capture-report.json').read_text())
+        if len(capture['captures']) != 16 or any(
+                sha(item['file']) != item['sha256'] or item['width'] != 1280 or item['height'] != 720
+                for item in capture['captures']):
+            raise ValueError('Paired capture PNG inventory or original hashes incomplete')
+        print(json.dumps({'status': 'native checks and paired images recorded; host-mode review pending',
                           'output': str(output), 'manifest': str(output / 'stage-manifest.json')}))
 
 
