@@ -846,7 +846,7 @@
     "godot/sports/soccer_guidance.gd": "ee5b25a010f8095dcad4cb297651daf89599e7100f614ef11f424725670bc4ef",
     "godot/ui/attract/demo.gd": "d088705caec33f37bddeae84f5dd9068c41189aabe22bfa0221158706c705502",
     "godot/ui/loadout.gd": "4baf3dbb091819ebe6b57363bea756ab1d14d809abb55c50949b15e7ffa8aa77",
-    "godot/ui/lobby_choice.gd": "2f2b0264984c1f959f497877e63936f79765219d8d808cc2fb10d3c724f2d19a",
+    "godot/ui/lobby_choice.gd": "9eba4c8067e4b769a3486cf0949680a5e145c1620d00608f9ece1fad8b9d7e95",
     "godot/ui/lobby_menu.gd": "657087bc31cd8f8e22f7bb7d4907f21be14fc01191b2546c0cd94d1f9ae64a6a",
     "godot/ui/local_settings.gd": "569765028c3a7029c6fee7972d3b3926fe2d4af8cfec755012f595a212cf50a7",
     "godot/ui/main_menu.gd": "6779c48baccdeee929d82ed789ae2b88e3f08911f547327217f41dfdab43d240",
@@ -898,6 +898,9 @@
     "port/finish/polish/package-evidence-k/k-finish-binder/queue.json": "6ef663fabc164c49d334709618c1aa51d2bc2b9875bf6f86c0db1567a643f05e",
     "port/finish/polish/package-evidence-k/moth-import-policy.json": "fbc7f16fc1366d5a0033df86c5657102ca63e9f04167c71a7cf22c7ec93c73cb",
     "port/finish/polish/package-evidence-k/release-K.json": "4449eb3a707937ef77fecfdd89e77dc8291b5f5d21418bf8ed96659a1b105254",
+    "port/finish/polish/package-evidence-l/NATIVE_RESULTS_L.json": "2365f98ddf01a038503982febebc686c35812436ff37f9acdf6ac5619a6feae2",
+    "port/finish/polish/package-evidence-l/release-L.json": "819946192b5425341e3759d0f1ea0e00b03e6ee287b06ff6651eed6d3dc44675",
+    "port/finish/polish/package-evidence-l/sidecars-post-import.json": "6dd729453631d929094fb28ee1c027e740e180508a59958f6a2e78f0d53bdf5f",
     "port/native-campaign/core.generated.mjs": "2800bec533c3810a94d61e2f7f20f93574e44b13346dee2085200a0467759cca",
     "port/native-campaign/enemies.mjs": "f3bed6afe31c3ee87f05cf3f02f162916785eedf64171ed7bb7058d6668b6b7e",
     "port/native-campaign/feel.mjs": "0d4e9cc29f54fc372f266b13b79fd4b6615f6264a13929522b13feaa36873557",
@@ -912,7 +915,7 @@
     "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d",
     "tools/godot-package/feature_dependencies.mjs": "bc2a3d53839c38a9f63104554a7dae0bb9fc44a921bba1117ec05a42018a267d",
     "tools/godot-package/polish_8921_inventory.json": "81f8d2531486fcb88da14dc98cd19565a543e87a4fc389329cbdbb2de6109015",
-    "tools/godot-package/polish_dependencies.mjs": "4f835f52c05fbeb63966701a2f6f0ed5b3c3e9b8d8b8311aae7ffad04dabaf27",
+    "tools/godot-package/polish_dependencies.mjs": "c16c9b4196ffbf5c155fcc44726fa85902d17a7c3013c0deec688160de10c465",
     "tools/godot-package/production_resources.mjs": "24b13e6d80755417c230054c4126dd862d3fd5f347bd478fa7c64e65e9994076",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
@@ -1984,5 +1987,43 @@
       "document": "port/finish/polish/PACKAGE_RECONCILIATION.md"
     },
     "evidencePolicy": "Original asset acceptance, producer fingerprints, pending lists and all preceding histories remain immutable. K supplemental native records retain their historical anchors; staged gait/melee/FPS galleries differ from the actual public Stormglass journey. Combined polish native acceptance pending; live kick not accepted."
+  },
+  "lReviewAdvance": {
+    "previousReceipt": {
+      "commit": "9cd1ac72",
+      "path": "tools/godot-package/production_receipts/robots.json",
+      "sha256": "0ef85a2ad61f4c8e0d20bf67b845f339cf39a442870301b299224caa6dc24e3b"
+    },
+    "changed": {
+      "godot/ui/lobby_choice.gd": {
+        "before": "2f2b0264984c1f959f497877e63936f79765219d8d808cc2fb10d3c724f2d19a",
+        "after": "9eba4c8067e4b769a3486cf0949680a5e145c1620d00608f9ece1fad8b9d7e95"
+      },
+      "tools/godot-package/polish_dependencies.mjs": {
+        "before": "4f835f52c05fbeb63966701a2f6f0ed5b3c3e9b8d8b8311aae7ffad04dabaf27",
+        "after": "c16c9b4196ffbf5c155fcc44726fa85902d17a7c3013c0deec688160de10c465"
+      }
+    },
+    "added": {
+      "port/finish/polish/package-evidence-l/NATIVE_RESULTS_L.json": "2365f98ddf01a038503982febebc686c35812436ff37f9acdf6ac5619a6feae2",
+      "port/finish/polish/package-evidence-l/release-L.json": "819946192b5425341e3759d0f1ea0e00b03e6ee287b06ff6651eed6d3dc44675",
+      "port/finish/polish/package-evidence-l/sidecars-post-import.json": "6dd729453631d929094fb28ee1c027e740e180508a59958f6a2e78f0d53bdf5f"
+    },
+    "runtimeChanged": {},
+    "sourceChanged": {
+      "godot/ui/lobby_choice.gd": {
+        "before": "2f2b0264984c1f959f497877e63936f79765219d8d808cc2fb10d3c724f2d19a",
+        "after": "9eba4c8067e4b769a3486cf0949680a5e145c1620d00608f9ece1fad8b9d7e95"
+      }
+    },
+    "previousPackageFingerprint": "4dfad8b6f974081457d8b02fcea04a36ca91b6205b1e15d11052684a337d33b4",
+    "packageFingerprint": "bdf6375c5ff5627ad00958ec9a894b8c3c79a7c0423045c65bfa870493712a22",
+    "review": {
+      "foundation": "9cd1ac72",
+      "scope": "one reviewed lobby Cancel correction and retained supplemental L evidence",
+      "nativePolish": "L supplemental coverage passed; not final 142 acceptance",
+      "liveKickAcceptance": "not accepted",
+      "document": "port/finish/polish/L_PACKAGE_RECONCILIATION.md"
+    }
   }
 }
