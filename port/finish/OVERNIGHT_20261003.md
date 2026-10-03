@@ -34,6 +34,26 @@ swap feedback. The audit's initial "six actions" count was incorrect (current
 `Model.LABELS` exposes 16); the lane must correct it. Hidden adapter-owned fixed
 controls must not be presented as functional rebinding options.
 
+## Implemented source bundles awaiting review/native execution
+
+Parent integrated the returned bundles through `a78edd8d`:
+
+- Home shortcut/search: `31ba6076`, `d6cc624b` (original `d391dc5f`, `e59d981d`).
+- Binding search/modified overview/reset scope: `63d6cdeb`, `6669a124` (original
+  `c5043683`, `c2f4a4cb`). Corrected audit is `../OVERNIGHT_LUNA_CONTROLS.md`.
+- Campaign Relay Journal/route context: `1c84c843` (original `91903d85`).
+- Fighting live training feedback/practice goals/bind hints: `84d06344`,
+  `74f57d27`, `a78edd8d` (original `d344853d`, `63d4878c`, `1c346f7e`).
+
+Astra reviewer `ses_f03a3885fffehx9yFhHubuPCft` now owns a separate source-only
+integration review of these files and will fix concrete state/focus/event/closure
+bugs. Source/grammar reports are retained; **none of these features has yet passed
+its new native UI checks or shipped**. This review does not authorize engine runs.
+
+The user subsequently requested Flash research and Sol/Astra motion, vehicle and
+melee implementation. See `../MOTION_20261003.md`; those lanes are independent.
+Abyssal I has completed/released, and Stormglass owns the next heavy grant J.
+
 ## Production and integration sequence
 
 1. Abyssal continues under exclusive local heavy grant
