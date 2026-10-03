@@ -1,0 +1,10 @@
+{
+  "acceptedProfileSha256": "8d7f94f29f15e336fb1c9141b707a43718ce4c5a463eb03a13412e593eaa51e5",
+  "acceptedSchemaSha256": "ee41823e074ea8571e25d1671aedf5c3918ffa56af0427e24640a45a3662a59c",
+  "acceptedGeometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
+  "candidateGeometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879",
+  "candidateProfileSha256": "7e22713ef02a1233caa7ea626ad3e71121a4fc5c1d73a1ed0139111d7c32951e",
+  "candidateSchemaSha256": "03236691e988875ed5447a2a6b01b2fbcde039b8bc11aee0334cb0230639173a",
+  "policy": "Same R5 authority; distinct exact R6 art identity required in addition to geometryHash. Native visual approval pending.",
+  "visualRevision": 6
+}

@@ -1,0 +1,204 @@
+{
+  "visualRevision": 6,
+  "status": "source plan; build/native visual acceptance pending",
+  "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879",
+  "sourceGLBSha256": "237dcc9d1b339116915d824f9896e6ee7daa57b0c13bab08c58da8d51445c9c8",
+  "sourceMasterSha256": "437dc16697554e5bcf46862dd9c01c071d103d42f93e2480f1331b1d11eaa83a",
+  "authoritySha256": "ce1a620bfe0e651a2172e93b359c217fd9b72cc760b8ee44e69f6412236234c5",
+  "bindingsSha256": "db636ac01e79f3849cff09b78d5a199c8b047c625e76e92933fc23ffe10dc2d3",
+  "pack": {
+    "overlaySha256": "86beb51736bea315b2bb35cd7772aff2daec7a1317b13c1eb498c981f2e8c5f0",
+    "baseSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+  },
+  "triangles": 87566,
+  "plannedPrimitives": 32,
+  "trianglesByRole": {
+    "GM / soot": 4208,
+    "R6 / machine": 8840,
+    "G4 / ribbed": 1840,
+    "R6 / ore-shell": 872,
+    "GM / brass": 45192,
+    "GM / copper": 4448,
+    "G4 / grating": 88,
+    "R6 / refractory": 942,
+    "R6 / plinth": 396,
+    "G4 / timber": 88,
+    "R6 / wall": 148,
+    "GM / chalk": 14457,
+    "GM / mineral": 607,
+    "R6 / ground": 2001,
+    "R6 / roof": 10,
+    "GM / ore": 2458,
+    "GM / orange": 328,
+    "GM / cooling-floor": 643
+  },
+  "squareMetresByRole": {
+    "GM / soot": 1594.5400635649112,
+    "R6 / machine": 10560.57982559934,
+    "G4 / ribbed": 4755.758314344093,
+    "R6 / ore-shell": 613.0844724546625,
+    "GM / brass": 6615.2668865573005,
+    "GM / copper": 11845.140053000769,
+    "G4 / grating": 248.88773597139806,
+    "R6 / refractory": 5701.209218756805,
+    "R6 / plinth": 7192.023704803141,
+    "G4 / timber": 105.7645797931633,
+    "R6 / wall": 3386.3329332966077,
+    "GM / chalk": 37772.98255236176,
+    "GM / mineral": 68474.31706653803,
+    "R6 / ground": 141682.24230129697,
+    "R6 / roof": 4999.095291281133,
+    "GM / ore": 63537.22765816134,
+    "GM / orange": 34.41106304685496,
+    "GM / cooling-floor": 18971.82223669057
+  },
+  "reasons": {
+    "retained R5 role": 73719,
+    "ore-bin dark discharge machinery": 304,
+    "localized handling wear": 440,
+    "ore-bin dark hood": 792,
+    "furnace service machinery": 1120,
+    "ore-bin oxidized iron shell": 432,
+    "tipple masonry frame": 872,
+    "ore-bin cast base": 264,
+    "cooling mineral structure": 144,
+    "assay guidance retained": 290,
+    "crusher cast foundation": 24,
+    "crusher rotating steel shell": 184,
+    "kiln warm refractory masonry": 70,
+    "crusher cast end frame": 12,
+    "crusher mineral infill": 4,
+    "legacy steel trim, not plaster": 6440,
+    "cooling splash-resistant base": 96,
+    "quiet aggregate ground instead of giant cast grid": 2001,
+    "cooling copper vault retained": 20,
+    "crusher folded ribbed steel roof": 10,
+    "preserved luminaire": 328
+  },
+  "checks": {
+    "orientedTriangleCoverageExact": true,
+    "positionsUnchanged": true,
+    "normalAndTangentStreamsCopied": true,
+    "UVPolicy": "Positive uniform per-role scaling only; no rotation, reflection or new seams within a role. Tangent basis unchanged.",
+    "uvScales": [
+      0.5,
+      0.75,
+      1,
+      1.5,
+      2.0
+    ],
+    "allAuthoredRolesUsed": {
+      "R6 / machine": 8840,
+      "R6 / roof": 10,
+      "R6 / wall": 148,
+      "R6 / plinth": 396,
+      "R6 / refractory": 942,
+      "R6 / ore-shell": 872,
+      "R6 / ground": 2001
+    },
+    "syntax": "all R6 Python parsed"
+  },
+  "protectedInputs": {
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/candidate.json": "ce1a620bfe0e651a2172e93b359c217fd9b72cc760b8ee44e69f6412236234c5",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/gravemill-foundry-revision5.blend": "437dc16697554e5bcf46862dd9c01c071d103d42f93e2480f1331b1d11eaa83a",
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5.glb": "237dcc9d1b339116915d824f9896e6ee7daa57b0c13bab08c58da8d51445c9c8",
+    "godot/tests/new_maps/gravemill_foundry/revision5/staged.gd": "1b2ec28faa22851ab3d1e0900c905b73a6cafc9c50cd788758720131728704c7",
+    "godot/tests/new_maps/gravemill_foundry/revision5/lights.json": "ea910e36f8a9d8f89a439bdc912fb0f4d9889dd0943dc969d590358b4423ad2b"
+  },
+  "resourceChannels": {
+    "R6 / machine": {
+      "albedo": "0c1dec9f25b8df13628d3a2989e35f3ac42a6cff6137e2522f0655750d12c822",
+      "normal": "8662617c557392b63c6b061f957facfd116e5b87534884060fbde87f388388e5",
+      "roughness": "95b14753e863ac71367c158cec2c3978b6b44a54fa35c25e0938f978321c774b",
+      "height": "4e94d1541a801955f2103f9541b948b504daecba5b35a95837810d970cbbd141",
+      "wear": "0d0f309f7c024cfd3ed4bac4f67c707d1c082415452285b8601fb2ad8b5528b3"
+    },
+    "R6 / roof": {
+      "albedo": "c313383b404a6ed622b3ff411f37f5225364f2158621f620e9ef76c15c209132",
+      "normal": "8662617c557392b63c6b061f957facfd116e5b87534884060fbde87f388388e5",
+      "roughness": "5b5c681b84e6cd3b4fc58e5bdb2c46f308811e6b229c026b54f73c89f601e745",
+      "height": "4e94d1541a801955f2103f9541b948b504daecba5b35a95837810d970cbbd141",
+      "wear": "0d0f309f7c024cfd3ed4bac4f67c707d1c082415452285b8601fb2ad8b5528b3"
+    },
+    "R6 / wall": {
+      "albedo": "1a0fccc16edd8ecc4825d47f59eadd477b0861606aa31af7642a9b177877f4e4",
+      "normal": "61baadb1991cdc3ab47e1f025672c06f9e6f601c0d56552dee34da3e0f8444a4",
+      "roughness": "a33f12b68d468f75a8823818da8320d64c1a27c339f71dc26a5a16d7d2a47cff",
+      "height": "26915fe7f778b770a40c736f324e63df72b72e787b784f6d5a6975343cf77502",
+      "wear": "2b27922cbecdf4cd20dbaba6f3f74669a3107e019240f62f215560b3e765272f"
+    },
+    "R6 / plinth": {
+      "albedo": "4dcd77b6b90b3621375a21f725e9b881a2c8c46897762b358361ead4671c0ef8",
+      "normal": "a65f9df057998d11ac92a24f05c5946eb794134f7cc12b9dfab035496c37a858",
+      "roughness": "484ebd3f0ab9915be426cca687bc8fd5ff364eef2151a9e4d3e49c1ddb2410df",
+      "height": "871e41d7961fc3a65fd639b8bf080acc710e2101213f2ffb253c388d75117cde",
+      "wear": "9e780058c0261a05f4a8b054e2b10e5946b25cdc375620e8081e6c149138c214"
+    },
+    "R6 / refractory": {
+      "albedo": "e7cbef47acd9d54c61f57123824f477af4b0d42c17fdd514d0ad3fb185ae46a3",
+      "normal": "a82b4af6b637ecd74953a0f4af261acc637eab255e80f6117a231f5d0b564ca5",
+      "roughness": "026e41ba5a566ab71f09ed19a6699c53442aaa2b569b32a0f61f1a2a7dd8fd16",
+      "height": "7a2194601cf3e88a0d9304064505a115df7d27c355958b215d6af4e76c39edf7",
+      "wear": "8bdf4bead99463ab169a4b54b9ec9cb1ea6d1d9b4c0091e55a5a25eea11ac47d"
+    },
+    "R6 / ore-shell": {
+      "albedo": "2514c52dad451a6ab8a9f7ee82099abcdb54a1be3df7f009f11b51044e3f8218",
+      "normal": "db25a51dd6c649d7b155c51c64de0cb507306bf52641407581a850a79ffdc864",
+      "roughness": "c43d822da97d4a2fefb389eec95681c2b596cf4d66160c5081668514bd2544a6",
+      "height": "c5e822015cc32fa6ad5ed8f4ba2ed17134d6b667268203d7ed56465a67416c38",
+      "wear": "f498e0c38f2395a7ed25a3fb8b3e755387851371b12e57ee5119cf4c9dbe96de"
+    },
+    "R6 / ground": {
+      "albedo": "1a0fccc16edd8ecc4825d47f59eadd477b0861606aa31af7642a9b177877f4e4",
+      "normal": "61baadb1991cdc3ab47e1f025672c06f9e6f601c0d56552dee34da3e0f8444a4",
+      "roughness": "a33f12b68d468f75a8823818da8320d64c1a27c339f71dc26a5a16d7d2a47cff",
+      "height": "26915fe7f778b770a40c736f324e63df72b72e787b784f6d5a6975343cf77502",
+      "wear": "2b27922cbecdf4cd20dbaba6f3f74669a3107e019240f62f215560b3e765272f"
+    }
+  },
+  "reviewImages": {
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/bunker-player-accepted-finish-before.png": "fbdc8b97401d7a95217e401a821d2f9d4f5338e55b41604db8910011ddbc2caa",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/bunker-player-candidate-runtime-r5.png": "75bbf7625b1952de7895c78eec4dafed0c4fe3c2bf93a70365208943d87bb5bc",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/cooling-eye-accepted-finish-before.png": "735ec530fd6b0903e7f1ffd3a4a37f95e942b5033300a05d27170aa3abb0a0fa",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/cooling-eye-candidate-runtime-r5.png": "7bb7d2bbfa2cebce6219e5fe4c0ee0f9b5539308d466d0d98c8029c927f5e7ab",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/crusher-eye-accepted-finish-before.png": "b0a81647530f4fda9437b6e5c76e1b05216daa07e71f0ec13a5e9b355fff72d3",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/crusher-eye-candidate-runtime-r5.png": "a1d63ae33fe2fd50d41d59ad401c88c59ce1bebc7b8d20f88e24b03234ce7a51",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/crusher-maintenance-accepted-finish-before.png": "cbbf6c6f6bb57720fb088d5523bb08ab67f67a590b096a60c4659018efdb6147",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/crusher-maintenance-candidate-runtime-r5.png": "3ead8f2622634c7b223a88118d2daffae1f0218813dc2e168672705f91b07984",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/crusher-roofline-accepted-finish-before.png": "7c3833727ea4def8bfc151e0072e6797d4de85a13424d5e052ce80e57533a735",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/crusher-roofline-candidate-runtime-r5.png": "e56687d7aef89768bbf028ed7c426ca0f422c6876a4bc68abfc16090d85413da",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/furnace-eye-accepted-finish-before.png": "8a181bf36d173172930fab22c4d1cd4d33c80e7895f6cada205df2c3912ea0ab",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/furnace-eye-candidate-runtime-r5.png": "eed05110f68bcc47b1e60a9820ec3b7215a81d0bc86250c6d124d38830ce73cd",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/furnace-skyline-accepted-finish-before.png": "60a0ccf42104ab41ff208955cadbcaac23d479dddf3f889b275aa0f2c4141a75",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/furnace-skyline-candidate-runtime-r5.png": "725aba1699f04f1bee52cc6ec9bf830987ebba17eeff5b6bc120ea7d3cec1ed7",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/kiln-eye-accepted-finish-before.png": "5f7c8537698e6b3a33b9e94c978b8ee96e6d50d09bcfdb26f2b8b305705e92aa",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/kiln-eye-candidate-runtime-r5.png": "a92a0367fad36300aec5a6190029f750097376a2675ae28e7ca2010fea90fd21",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/overview-accepted-finish-before.png": "8aefecf91fa8284b0a9dbce54cbe9d7ea863340280e30c7ee9ff35aac80da11e",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/overview-candidate-runtime-r5.png": "91d5989259cbca9c027c96485538fcd195d62991c8b4c1ff8e477d5d5f61315e",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/tipple-player-accepted-finish-before.png": "f5ac7ac67936a618adcf2688c227d01a4318ffe6084ba83a9a568ea87bad9501",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/tipple-player-candidate-runtime-r5.png": "000be0b1441053ca9de681a37f7b4b5449852bed83584e4432f2ea45a0ddea64",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/transfer-eye-accepted-finish-before.png": "bf2a40955e17a259ac6e67e2067093c7c0bcce9152c09ca9cc8a9c3f5f08ec02",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/transfer-eye-candidate-runtime-r5.png": "e5a291281f956fb3b2612763bfc63fd0ef5c81769c6c02de2a83f4c1544633e2"
+  },
+  "reviewContactSheets": {
+    "assets/moth/map-variety-20261003/candidate/contact-albedo.png": "74c0c0bca9eff64b97b9866f56488e9e56c028247979912f2c4f5043ff4afe7b",
+    "assets/moth/map-variety-20261003/candidate-v2/contact-albedo.png": "bdc3fd930b37f45c703cdee32bcd568b5082b0b0f1efa1c9eba88188d1964678",
+    "assets/moth/map-variety-20261003/candidate-v3/contact-albedo.png": "841571109b38968f801698544ea95c3ca6af083cdaa36199996bd7bde81aa1ad"
+  },
+  "pending": [
+    "Blender build and packed-master reopen",
+    "actual R6 exported material pixels and native import",
+    "matched native renders and weather/dressing lifecycle",
+    "manual art acceptance",
+    "hosted gameplay cadence"
+  ],
+  "notExecuted": [
+    "Blender",
+    "Godot",
+    "import",
+    "render",
+    "server"
+  ],
+  "artHash": null,
+  "nativeVisualAcceptance": "pending; source tests cannot establish appearance"
+}
