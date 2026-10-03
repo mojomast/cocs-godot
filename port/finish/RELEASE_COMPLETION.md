@@ -23,10 +23,12 @@ as `5f41d68e`; parent verified 332 exact producer copies and twelve package chec
 Parallax retains one invalid tangent. Vesper's parapet mismatch
 is closed, but 184 stair contacts still block artifact approval.
 Vesper diagnosis is source-only. X gallery: <http://100.125.104.79:8796/botanical-x/>
-Diagnostic `902c3bbb` is under independent source review: 60 required authoritative
-stair trials report passing, while native exploration remains unproven. The 184
-static contacts remain recorded. A local Parallax three-corner tangent proposal is
-also awaiting review; no corrected artifact or new native acceptance is claimed.
+Diagnostic `902c3bbb` passed independent source review: 60 required authoritative
+stair trials pass, while native exploration remains unproven. Exact-art native
+readiness is withheld because the fixture loads accepted art without GLB pins;
+the producer is correcting binding. The 184 static contacts remain failed. The
+Parallax three-corner proposal is source-approved but unapplied; no corrected
+artifact or new native acceptance is claimed. See `map-variety/POST_X_SOURCE_REVIEW.md`.
 (70 original PNGs, 92 HTTP/hash checks passed). No full three-map acceptance.
 
 **Research-led movement integrated:** all three Flash reports and Astra's

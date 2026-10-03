@@ -1,5 +1,17 @@
 # New Moth resources and Blender-authored map variety
 
+**Post-X review:** `902c3bbb` is approved as source diagnosis and unapplied Parallax
+proposal, but exact-X native readiness is blocked: the journey fixture binds
+accepted art and does not pin either GLB. Astra is correcting test-only artifact
+binding before a new grant. Native cases are sixty walk-only controller diagnostics,
+not sprint/keyboard/hosted or whole-flight clearance acceptance. Full findings:
+`map-variety/POST_X_SOURCE_REVIEW.md`. No heavy grant is active.
+
+R7's gallery now records qualified staged approval and closure of all seven actual
+tangent defects. All 36 follow-up HTTP/hash checks passed; 26 original PNGs, six
+producer reports and the historical manifest remain unchanged. Current status:
+<http://100.125.104.79:8796/foundry-r7/current-review-status.json>.
+
 **R7 integrated with exact shipping exclusions:** approved Y is merged as
 **`dd76b82a`**, policy as **`dd6bc7c3`**. Parent passed 78 tests and all 237 Y
 hashes/sizes. All seven tangent defects are closed in actual art/native evidence.

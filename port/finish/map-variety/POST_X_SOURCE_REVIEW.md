@@ -1,0 +1,66 @@
+# Post-X source review — diagnosis approved; exact-art native fixture blocked
+
+Independent Astra `ses_efc89c2afffeKQvhqPUs4YwsaY` reviewed `902c3bbb` and
+approved the source-only Vesper diagnosis and unapplied Parallax proposal.
+**Exact-X native journey readiness is withheld** for the artifact-binding P1 below.
+Parent is awaiting the narrow correction before integrating the follow-up together.
+No heavy grant is active or implied.
+
+## P1: candidate journeys use accepted art, or can succeed without art
+
+`botanical-post-x/prepare_native.py:19–27` copies only accepted/candidate JSON and
+the journey script. Neither GLB is pinned. Both JSON files contain `recipeHash`,
+so `WorldMap.build` resolves the accepted `art/worlds/vesper-viaduct.glb`; the native
+journey does not substitute X's GLB. WorldMap can also succeed when art is absent.
+Thus a candidate geometry hash and successful journey can coexist with wrong or
+missing art. This does not invalidate JSON collision diagnosis, but cannot establish
+the requested exact JSON+GLB candidate-world result.
+
+The producer is correcting preparation and test-only stage binding to pin both
+GLBs, validate imported identities/policy, instantiate the selected variant and
+record those identities. Missing/tampered/unbound art must fail. No production
+movement or geometry change is required. Native execution awaits focused review
+and a separate explicit grant.
+
+## Vesper diagnosis independently supported
+
+- 170 civic contacts occur in accepted and candidate worlds. Fourteen candidate
+  roof contacts represent thirteen additional positions; at the remaining point,
+  accepted hits `OverheadSide2104/2105`, candidate hits `roof-ramp-step-4`.
+- Nav490 has approximately 8.69 cm penetration into the next tread; it is not a
+  seam/numeric tolerance issue. All 184 X static failures remain failed.
+- Actual imported production `moveActor` passes 60 required trials / 13,530 frames,
+  within the full 80-trial / 27,930-frame campaign. Progress is monotonic, lateral
+  drift zero, maximum horizontal displacement 0.183333 m/frame, landing-height
+  error at most 3.56e-15 m. No substitute step solver or endpoint teleport.
+- Twenty accepted-world trials along the candidate-only roof route fail as expected;
+  the injected-wall negative also stops the controller. Twelve Node tests pass.
+
+Prepared native tests use real `Walker.step`, initial spawn separation only,
+grounded landing checks and bounded stall/reset failure. They distinguish the
+unmodified 0.35 m exploration capsule from the test-only 0.42 m envelope. However,
+the **sixty native cases are walk-only**; source walk/sprint coverage is separate.
+Direct step injection is movement-API testing, not keyboard/focus/network handling.
+Intermediate support/contact logs are not a whole-flight headroom acceptance gate.
+After binding repair these are bounded native diagnostics, not full map acceptance.
+
+## Parallax three-corner proposal independently supported
+
+Pinned X GLB: `6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422`.
+Triangle 11823 exclusively owns vertices 24049/24050/24051. The proposal changes
+five BIN bytes in three tangent records (48 permitted positions); other streams
+and embedded images remain exact. UV derivatives +2X/+2Z with normal +Y require
+tangent +X and handedness −1 because cross(+Y,+X)=−Z. Copying neighboring +1
+handedness would perpetuate an inconsistent basis; the local three-corner repair
+is mathematically coherent.
+
+Reviewer reproduced three tangent tests and six literal-R7 solver parity cases,
+including mirrored UVs. This is an in-memory proposal only. Editable-master/export
+contract, successor identity, strict output validation, fresh reopen and native
+basis proof still require preparation and a future authorized build. The current
+readback targets original X and is not corrected-art acceptance.
+
+Six read-only Python and twelve Node tests were independently run; two scratch-
+writing fixture tests were not. All fifteen production dependencies match parent;
+post-X provenance hashes pass. Existing Helix/Parallax stage approval and Vesper's
+blocked artifact disposition are unchanged.
