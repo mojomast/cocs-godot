@@ -65,7 +65,8 @@
     "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/prepare_native.py": "994a8324838b4a405c3aaa88e4c4081a6a2fbdec7083b726815d011646bbbdc2",
     "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/reopen_candidate.py": "4ad9e40bdbe0e6d0321a259786f32b4ef14600b30ba4ebe0146091c7475b031a",
     "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/source-check.json": "299a068f800667feff17baa952cdbe08c44786b75fc9173b1782ace37c882534",
-    "tools/godot-package/production_resources.mjs": "7e369d87cb8c50c27b6d8c0c3087d5dca6041caacadacdee1fae17263a3e6571"
+    "tools/godot-package/production_resources.mjs": "3dd106d42ffa298ff7ecbe501e7882e1f0017fcd86e12e1575b12d57c01146ea",
+    "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8"
   },
   "masters": [
     {
@@ -98,5 +99,23 @@
     "sourceCommit": "b66f4ab3",
     "review": "port/finish/PARALLAX_PACKAGE_PROMOTION.md",
     "scope": "Parent-authorized bounded asset promotion only; no fresh six-mode or release attestation"
+  },
+  "packageReconciliation": {
+    "previousReceipt": {
+      "commit": "e59a762529bb4d76a92c363ab58fa4ca6bdfae55",
+      "path": "tools/godot-package/production_receipts/parallax-interiors.json",
+      "sha256": "f0d2b15ddb6c1d1609a2be5f1bc37cbf486b4b7034bf7fa6973577af9e79e6d0"
+    },
+    "changed": {
+      "tools/godot-package/production_resources.mjs": {
+        "before": "7e369d87cb8c50c27b6d8c0c3087d5dca6041caacadacdee1fae17263a3e6571",
+        "after": "3dd106d42ffa298ff7ecbe501e7882e1f0017fcd86e12e1575b12d57c01146ea"
+      }
+    },
+    "added": {
+      "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8"
+    },
+    "reason": "Parent-authorized verifier input advance and bounded robot import/extracted-image closure; no asset rebuild or new native attestation",
+    "review": "port/finish/ROBOT_PACKAGE_PROMOTION.md"
   }
 }

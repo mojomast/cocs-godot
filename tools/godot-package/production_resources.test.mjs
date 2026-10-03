@@ -12,7 +12,9 @@ const disk=p=>readFileSync(join(root,p)),exists=p=>existsSync(join(root,p));
 const worldIds=['helix-conservatory','gravemill-foundry'];
 
 test('all seven units remain required; a promotion without registry membership stays pending',()=>{
-  const result=productionResources({read:disk,has:exists,worldIds,strict:false});
+  const unpromoted=JSON.parse(disk(REQUIREMENTS));unpromoted.units.robots.promotion=null;
+  const read=p=>p===REQUIREMENTS?Buffer.from(JSON.stringify(unpromoted)):disk(p);
+  const result=productionResources({read,has:exists,worldIds,strict:false});
   assert.deepEqual([...result.pending].sort(),[...REQUIRED_UNITS].sort());
   assert.equal(result.units.robots.expected.exports.length,9);
   assert.equal(result.units.vehicles.expected.masters.length,9);
@@ -28,11 +30,11 @@ test('all seven units remain required; a promotion without registry membership s
   assert.throws(()=>productionResources({read:p=>p==='port/finish/ASSET_PRODUCTION.json'?Buffer.from(JSON.stringify(plan)):disk(p),has:exists,strict:false}),/builder\/recipe dropped/);
 });
 
-test('real Parallax promotion binds actual production bytes; six units remain pending',()=>{
+test('real Parallax and robot promotions bind actual production bytes; five units remain pending',()=>{
   const options={read:disk,has:exists,worldIds:Object.keys(WORLDS),strict:false};
   const result=productionResources(options);
   assert.equal(Object.keys(WORLDS).length,10);
-  assert.deepEqual(result.pending,REQUIRED_UNITS.filter(id=>id!=='parallax-interiors'));
+  assert.deepEqual(result.pending,REQUIRED_UNITS.filter(id=>!['parallax-interiors','robots'].includes(id)));
   const glb='godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb';
   assert.equal(result.raw[glb],'c1dffd357545206d3f70870f850e441c5be148e652830a4a69835185a75610bd');
   assert.ok(!Object.hasOwn(result.resources,glb+'.import'));

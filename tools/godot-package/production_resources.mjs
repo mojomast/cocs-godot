@@ -5,6 +5,7 @@ import {createHash} from 'node:crypto';
 import {existsSync,readFileSync} from 'node:fs';
 import {join,resolve,posix} from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
+import {robotImportPaths,verifyRobotImports} from './robot_imports.mjs';
 export const REQUIREMENTS='tools/godot-package/production_requirements.json';
 export const REQUIRED_UNITS=Object.freeze(['parallax-interiors','robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
 const skins=['needle_surveyor','caisson_guard','kiln_tender'];
@@ -55,6 +56,7 @@ function specification(unit,read) {
   if(id==='robots') {
     for(const name of [...skins,...props]){masters.push(`tools/godot-robots/masters/${name}.blend`);exports.push(`godot/robot_assets/switchyard/generated/${name}.glb`);}
     extra.push(...skins.map(name=>`tools/godot-robots/masters/${name}_skeletal.glb`),'godot/robot_assets/switchyard/generated/build-receipt.json','tools/godot-robots/generated/recipe.json');
+    extra.push(...robotImportPaths(exports),'tools/godot-robots/production-d.json','godot/biomes/expansion/scenery_pack.gd');
     inputs.push('tools/godot-robots/verify_blender.py','godot/robot_assets/switchyard/skin_adapter.gd');
     const contract=JSON.parse(read('godot/robot_assets/switchyard/contract.json'));
     inputs.push(...Object.keys(contract.source));
@@ -175,6 +177,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
       for(const [id,c]of Object.entries(catalog.chapters))assert.equal(c.recipeSha256,hash(read(`godot/campaign/generated/${id}.json`)),'Stale scenery chapter binding');
     }
     if(unit.id==='robots') {
+      verifyRobotImports(spec.exports,read);
       const contract=JSON.parse(read('godot/robot_assets/switchyard/contract.json'));
       for(const [path,sha]of Object.entries(contract.source))add(path,sha);
       const built=JSON.parse(read('godot/robot_assets/switchyard/generated/build-receipt.json'));

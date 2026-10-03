@@ -2,9 +2,32 @@ extends SceneTree
 ## Future engine-granted gate. Exercises the real mapper with real InputEvents.
 const Router = preload("res://fighting/presentation/input_router.gd")
 const Camera = preload("res://fighting/presentation/camera.gd")
+const DeviceChoices = preload("res://fighting/presentation/device_choices.gd")
 var failures: Array = []
 
 func _initialize() -> void:
+	var choices := Router.new()
+	_check(choices.assign(0,DeviceChoices.model(choices.devices,0,[0,1]).next),"P1 first pad through ordinary choice")
+	_check(choices.assign(1,DeviceChoices.model(choices.devices,1,[0,1]).next),"P2 skips owned pad through ordinary choice")
+	_check(choices.devices == [0,1],"ordinary P1 then P2 gets distinct pads")
+	_pad(choices,0,JOY_BUTTON_X,true)
+	_pad(choices,1,JOY_BUTTON_Y,true)
+	choices.unplug(0) # Mapper unit boundary, not a claimed hardware disconnect.
+	_check(choices.down == [{},{}] and choices.queued == [0,0],"disconnect clears BOTH actors and both tap latches")
+	_check(choices.command(0).held == 0 and choices.command(1).held == 0,"both actors released on disconnect")
+	var missing := DeviceChoices.model(choices.devices,0,[1])
+	_check(DeviceChoices.caption(missing,0,{}).contains("disconnected"),"missing assignment caption is truthful")
+	_check(not DeviceChoices.caption(missing,0,{}).begins_with("Keyboard"),"missing controller never impersonates Keyboard")
+	_check(choices.devices == [0,1],"caption refresh never changes route")
+	_pad(choices,0,JOY_BUTTON_X,true)
+	_pad(choices,1,JOY_BUTTON_Y,true)
+	_check(choices.command(0).held == 0 and choices.command(1).held == 0,"reconnection cannot repeat either held attack")
+	_pad(choices,0,JOY_BUTTON_X,false); _pad(choices,1,JOY_BUTTON_Y,false)
+	_pad(choices,0,JOY_BUTTON_X,true); _pad(choices,1,JOY_BUTTON_Y,true)
+	_check(choices.command(0).held == 1 and choices.command(1).held == 2,"both players rearm only after release and fresh press")
+	_check(choices.assign(0,int(missing.next)) and choices.devices == [-1,1],"one public choice recovers Keyboard without transferring P2")
+	_check(choices.command(1).held == 0,"reassignment releases other actor too")
+	_check(not choices.assign(-1,4) and not choices.assign(2,4) and not choices.assign(0,-2),"invalid assignment boundaries rejected")
 	var tap_router := Router.new()
 	_key(tap_router,KEY_F,true); _key(tap_router,KEY_F,false)
 	var tap := tap_router.command(0)
