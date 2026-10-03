@@ -1,0 +1,1212 @@
+{
+  "artHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c",
+  "triangles": 87566,
+  "exactPositionAndWindingMultiplicity": true,
+  "maxNormalTangentUVError": [
+    0.00010782480239868164,
+    2.0,
+    0
+  ],
+  "maxTangentXYZError": 1.0,
+  "tangentMismatchExamples": [
+    {
+      "role": "R6 / ground",
+      "points": [
+        [
+          -192.0,
+          7.270666122436523,
+          -21.58555793762207
+        ],
+        [
+          -186.58221435546875,
+          11.999687194824219,
+          -1.122811198234558
+        ],
+        [
+          -186.58311462402344,
+          12.0,
+          -1.1216362714767456
+        ]
+      ],
+      "actual": [
+        [
+          [
+            0.033509477972984314,
+            0.9707154035568237,
+            -0.23788373172283173
+          ],
+          [
+            -3.0518509447574615e-05,
+            0.0,
+            -1.0,
+            1.0
+          ],
+          [
+            -48.0,
+            -4.396389484405518
+          ]
+        ],
+        [
+          [
+            0.033509477972984314,
+            0.9707154035568237,
+            -0.23788373172283173
+          ],
+          [
+            0.9994078278541565,
+            -0.034408990293741226,
+            0.00011043534323107451,
+            1.0
+          ],
+          [
+            -46.64555358886719,
+            0.7192971706390381
+          ]
+        ],
+        [
+          [
+            0.033509477972984314,
+            0.9707154035568237,
+            -0.23788373172283173
+          ],
+          [
+            0.9994078278541565,
+            -0.034408990293741226,
+            0.00011043534323107451,
+            1.0
+          ],
+          [
+            -46.64577865600586,
+            0.7195909023284912
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          [
+            0.03350038081407547,
+            0.9707110524177551,
+            -0.2379027158021927
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            -48.0,
+            -4.396389484405518
+          ]
+        ],
+        [
+          [
+            0.03350038081407547,
+            0.9707110524177551,
+            -0.2379027158021927
+          ],
+          [
+            0.9994000196456909,
+            -0.03440000116825104,
+            9.999999747378752e-05,
+            1.0
+          ],
+          [
+            -46.64555358886719,
+            0.7192971706390381
+          ]
+        ],
+        [
+          [
+            0.03350038081407547,
+            0.9707110524177551,
+            -0.2379027158021927
+          ],
+          [
+            0.9994000196456909,
+            -0.03440000116825104,
+            9.999999747378752e-05,
+            1.0
+          ],
+          [
+            -46.64577865600586,
+            0.7195909023284912
+          ]
+        ]
+      ],
+      "xyzError": 1.0
+    },
+    {
+      "role": "GM / copper",
+      "points": [
+        [
+          -121.98336029052734,
+          34.099998474121094,
+          -22.598840713500977
+        ],
+        [
+          122.01663970947266,
+          34.099998474121094,
+          11.561159133911133
+        ],
+        [
+          122.00831604003906,
+          34.203922271728516,
+          11.620579719543457
+        ]
+      ],
+      "actual": [
+        [
+          [
+            0.12009648978710175,
+            0.5000039339065552,
+            -0.8576555252075195
+          ],
+          [
+            -3.0518509447574615e-05,
+            0.0,
+            -1.0,
+            1.0
+          ],
+          [
+            -60.99168014526367,
+            -16.049999237060547
+          ]
+        ],
+        [
+          [
+            0.12009648978710175,
+            0.5000039339065552,
+            -0.8576555252075195
+          ],
+          [
+            0.9903384447097778,
+            5.1684328354895115e-05,
+            0.13867120444774628,
+            -1.0
+          ],
+          [
+            61.00831985473633,
+            -16.049999237060547
+          ]
+        ],
+        [
+          [
+            0.12009648978710175,
+            0.5000039339065552,
+            -0.8576555252075195
+          ],
+          [
+            0.9903384447097778,
+            5.1684328354895115e-05,
+            0.13867120444774628,
+            -1.0
+          ],
+          [
+            61.00415802001953,
+            -16.101961135864258
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          [
+            0.12009560316801071,
+            0.49998170137405396,
+            -0.8576685786247253
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            -1.0
+          ],
+          [
+            -60.99168014526367,
+            -16.049999237060547
+          ]
+        ],
+        [
+          [
+            0.12009560316801071,
+            0.49998170137405396,
+            -0.8576685786247253
+          ],
+          [
+            0.9902999997138977,
+            0.0,
+            0.1386999934911728,
+            -1.0
+          ],
+          [
+            61.00831985473633,
+            -16.049999237060547
+          ]
+        ],
+        [
+          [
+            0.12009560316801071,
+            0.49998170137405396,
+            -0.8576685786247253
+          ],
+          [
+            0.9902999997138977,
+            0.0,
+            0.1386999934911728,
+            -1.0
+          ],
+          [
+            61.00415802001953,
+            -16.101961135864258
+          ]
+        ]
+      ],
+      "xyzError": 1.0
+    },
+    {
+      "role": "GM / copper",
+      "points": [
+        [
+          -122.00831604003906,
+          34.203922271728516,
+          -22.42057991027832
+        ],
+        [
+          -121.99168395996094,
+          34.203922271728516,
+          -22.539419174194336
+        ],
+        [
+          121.99168395996094,
+          34.203922271728516,
+          11.739420890808105
+        ]
+      ],
+      "actual": [
+        [
+          [
+            0.0,
+            1.0,
+            -1.5259021893143654e-05
+          ],
+          [
+            1.0,
+            0.0,
+            -1.5259021893143654e-05,
+            1.0
+          ],
+          [
+            -61.00415802001953,
+            -10.21028995513916
+          ]
+        ],
+        [
+          [
+            0.0,
+            1.0,
+            -1.5259021893143654e-05
+          ],
+          [
+            1.0,
+            0.0,
+            -1.5259021893143654e-05,
+            1.0
+          ],
+          [
+            -60.99584197998047,
+            -10.269709587097168
+          ]
+        ],
+        [
+          [
+            0.0,
+            1.0,
+            -1.5259021893143654e-05
+          ],
+          [
+            -3.0518509447574615e-05,
+            0.0,
+            -1.0,
+            1.0
+          ],
+          [
+            60.99584197998047,
+            6.869710445404053
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            -61.00415802001953,
+            -10.21028995513916
+          ]
+        ],
+        [
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            -60.99584197998047,
+            -10.269709587097168
+          ]
+        ],
+        [
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            60.99584197998047,
+            6.869710445404053
+          ]
+        ]
+      ],
+      "xyzError": 1.0
+    },
+    {
+      "role": "GM / copper",
+      "points": [
+        [
+          -121.99168395996094,
+          34.203922271728516,
+          -22.539419174194336
+        ],
+        [
+          122.00831604003906,
+          34.203922271728516,
+          11.620579719543457
+        ],
+        [
+          121.99168395996094,
+          34.203922271728516,
+          11.739420890808105
+        ]
+      ],
+      "actual": [
+        [
+          [
+            0.0,
+            1.0,
+            -1.5259021893143654e-05
+          ],
+          [
+            -3.0518509447574615e-05,
+            0.0,
+            -1.0,
+            1.0
+          ],
+          [
+            -60.99584197998047,
+            -10.269709587097168
+          ]
+        ],
+        [
+          [
+            0.0,
+            1.0,
+            -1.5259021893143654e-05
+          ],
+          [
+            1.0,
+            0.0,
+            -1.5259021893143654e-05,
+            1.0
+          ],
+          [
+            61.00415802001953,
+            6.8102898597717285
+          ]
+        ],
+        [
+          [
+            0.0,
+            1.0,
+            -1.5259021893143654e-05
+          ],
+          [
+            1.0,
+            0.0,
+            -1.5259021893143654e-05,
+            1.0
+          ],
+          [
+            60.99584197998047,
+            6.869710445404053
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            -60.99584197998047,
+            -10.269709587097168
+          ]
+        ],
+        [
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            61.00415802001953,
+            6.8102898597717285
+          ]
+        ],
+        [
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            60.99584197998047,
+            6.869710445404053
+          ]
+        ]
+      ],
+      "xyzError": 1.0
+    },
+    {
+      "role": "GM / copper",
+      "points": [
+        [
+          -121.98336029052734,
+          34.099998474121094,
+          -19.79884147644043
+        ],
+        [
+          122.01663970947266,
+          34.099998474121094,
+          14.36115837097168
+        ],
+        [
+          122.00831604003906,
+          34.203922271728516,
+          14.420578956604004
+        ]
+      ],
+      "actual": [
+        [
+          [
+            0.12009648978710175,
+            0.5000039339065552,
+            -0.8576555252075195
+          ],
+          [
+            -3.0518509447574615e-05,
+            0.0,
+            -1.0,
+            1.0
+          ],
+          [
+            -60.99168014526367,
+            -16.049999237060547
+          ]
+        ],
+        [
+          [
+            0.12009648978710175,
+            0.5000039339065552,
+            -0.8576555252075195
+          ],
+          [
+            0.9903384447097778,
+            5.1684328354895115e-05,
+            0.13867120444774628,
+            -1.0
+          ],
+          [
+            61.00831985473633,
+            -16.049999237060547
+          ]
+        ],
+        [
+          [
+            0.12009648978710175,
+            0.5000039339065552,
+            -0.8576555252075195
+          ],
+          [
+            0.9903384447097778,
+            5.1684328354895115e-05,
+            0.13867120444774628,
+            -1.0
+          ],
+          [
+            61.00415802001953,
+            -16.101961135864258
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          [
+            0.12009560316801071,
+            0.49998170137405396,
+            -0.8576685786247253
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            -1.0
+          ],
+          [
+            -60.99168014526367,
+            -16.049999237060547
+          ]
+        ],
+        [
+          [
+            0.12009560316801071,
+            0.49998170137405396,
+            -0.8576685786247253
+          ],
+          [
+            0.9902999997138977,
+            0.0,
+            0.1386999934911728,
+            -1.0
+          ],
+          [
+            61.00831985473633,
+            -16.049999237060547
+          ]
+        ],
+        [
+          [
+            0.12009560316801071,
+            0.49998170137405396,
+            -0.8576685786247253
+          ],
+          [
+            0.9902999997138977,
+            0.0,
+            0.1386999934911728,
+            -1.0
+          ],
+          [
+            61.00415802001953,
+            -16.101961135864258
+          ]
+        ]
+      ],
+      "xyzError": 1.0
+    },
+    {
+      "role": "GM / copper",
+      "points": [
+        [
+          -122.00831604003906,
+          34.203922271728516,
+          -19.620580673217773
+        ],
+        [
+          -121.99168395996094,
+          34.203922271728516,
+          -19.73941993713379
+        ],
+        [
+          121.99168395996094,
+          34.203922271728516,
+          14.539420127868652
+        ]
+      ],
+      "actual": [
+        [
+          [
+            0.0,
+            1.0,
+            -1.5259021893143654e-05
+          ],
+          [
+            1.0,
+            0.0,
+            -1.5259021893143654e-05,
+            1.0
+          ],
+          [
+            -61.00415802001953,
+            -8.810290336608887
+          ]
+        ],
+        [
+          [
+            0.0,
+            1.0,
+            -1.5259021893143654e-05
+          ],
+          [
+            1.0,
+            0.0,
+            -1.5259021893143654e-05,
+            1.0
+          ],
+          [
+            -60.99584197998047,
+            -8.869709968566895
+          ]
+        ],
+        [
+          [
+            0.0,
+            1.0,
+            -1.5259021893143654e-05
+          ],
+          [
+            -3.0518509447574615e-05,
+            0.0,
+            -1.0,
+            1.0
+          ],
+          [
+            60.99584197998047,
+            8.269710540771484
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            -61.00415802001953,
+            -8.810290336608887
+          ]
+        ],
+        [
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            -60.99584197998047,
+            -8.869709968566895
+          ]
+        ],
+        [
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            60.99584197998047,
+            8.269710540771484
+          ]
+        ]
+      ],
+      "xyzError": 1.0
+    },
+    {
+      "role": "GM / copper",
+      "points": [
+        [
+          -121.99168395996094,
+          34.203922271728516,
+          -19.73941993713379
+        ],
+        [
+          122.00831604003906,
+          34.203922271728516,
+          14.420578956604004
+        ],
+        [
+          121.99168395996094,
+          34.203922271728516,
+          14.539420127868652
+        ]
+      ],
+      "actual": [
+        [
+          [
+            0.0,
+            1.0,
+            -1.5259021893143654e-05
+          ],
+          [
+            -3.0518509447574615e-05,
+            0.0,
+            -1.0,
+            1.0
+          ],
+          [
+            -60.99584197998047,
+            -8.869709968566895
+          ]
+        ],
+        [
+          [
+            0.0,
+            1.0,
+            -1.5259021893143654e-05
+          ],
+          [
+            1.0,
+            0.0,
+            -1.5259021893143654e-05,
+            1.0
+          ],
+          [
+            61.00415802001953,
+            8.210289001464844
+          ]
+        ],
+        [
+          [
+            0.0,
+            1.0,
+            -1.5259021893143654e-05
+          ],
+          [
+            1.0,
+            0.0,
+            -1.5259021893143654e-05,
+            1.0
+          ],
+          [
+            60.99584197998047,
+            8.269710540771484
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            -60.99584197998047,
+            -8.869709968566895
+          ]
+        ],
+        [
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            61.00415802001953,
+            8.210289001464844
+          ]
+        ],
+        [
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            60.99584197998047,
+            8.269710540771484
+          ]
+        ]
+      ],
+      "xyzError": 1.0
+    }
+  ],
+  "pixelChecks": [
+    {
+      "material": "GM / soot",
+      "channel": "albedo",
+      "readbackSha256": "0ed6b7f2fc8d76975561a8a5283149dfa8d86b0bd3de156fcd877a189799d5cc",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / soot",
+      "channel": "normal",
+      "readbackSha256": "7ebc339b2d42c2353b48f70d2672237560ee32ac1141336a3606e9c6ab3cfbc1",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / soot",
+      "channel": "roughness",
+      "readbackSha256": "01dc2d1756f41a508601718733660812cb5426181c8b75b47e544818ebd7ddde",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "G4 / ribbed",
+      "channel": "albedo",
+      "readbackSha256": "8640a43e29ad78a3494efe16da066667e6401c6bac33ef3d9b05dc845cb8ea33",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "G4 / ribbed",
+      "channel": "normal",
+      "readbackSha256": "7ebc339b2d42c2353b48f70d2672237560ee32ac1141336a3606e9c6ab3cfbc1",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "G4 / ribbed",
+      "channel": "roughness",
+      "readbackSha256": "985d422637eeeac15e680a5f8c501eb1bdb38160627971d56db39ae16442de18",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / brass",
+      "channel": "albedo",
+      "readbackSha256": "9b317ed17fa6d175c4a11e30e199d3b2b3f6372fe037a86c6617bd01c64c1c8f",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / brass",
+      "channel": "normal",
+      "readbackSha256": "5ff8f16b7b213872d2b9a9aed0a45e822a60b4d1fd1b1375e689692de33ad285",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / brass",
+      "channel": "roughness",
+      "readbackSha256": "4a50b640fd69f0ac2be714d4d95f0d6ec55502b7fbb8a6391a7be82fab904185",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / copper",
+      "channel": "albedo",
+      "readbackSha256": "a7d8dd5158d5d82f533e6d2d1503748880cf5b3f830c8f22fa87e6625d272f0d",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / copper",
+      "channel": "normal",
+      "readbackSha256": "ea03e445c4668f8fa5f194b53b1a43db05432eb3c2a399b2305874b3169295e8",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / copper",
+      "channel": "roughness",
+      "readbackSha256": "8bfb233e45a5a8bc0be324991be588eee6ed3cb5f3530af758b70d1aab493efe",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "G4 / grating",
+      "channel": "albedo",
+      "readbackSha256": "26b62a22cf7475addcb9977f4a36f4d1b6862977cd2d117d706bfff24eb7038a",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "G4 / grating",
+      "channel": "normal",
+      "readbackSha256": "c2dcba21d1b739cc28892b73731a28d58f01460e2c67ec68d92bed0cf164cfcd",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "G4 / grating",
+      "channel": "roughness",
+      "readbackSha256": "311a8c9e4bc344b3ff8c3aa28a835eba7e71f1bfe032e927c34dcf117bd5db0c",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / mineral",
+      "channel": "albedo",
+      "readbackSha256": "a1ab418eefb6b6ae1a3c7a62281e6c9d1995629f820fbd6695bb6a72c0626485",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / mineral",
+      "channel": "normal",
+      "readbackSha256": "180ab689712603672772dd3d2bbe331e32837afc5ab25d55955f2501b2703973",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / mineral",
+      "channel": "roughness",
+      "readbackSha256": "37c9ffa81c8ae3eba5f88cdece5957ad74e3dd111a2a439f129a12f89a336ddc",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "G4 / timber",
+      "channel": "albedo",
+      "readbackSha256": "46f629183e54a2be7477bb18b4ec0acddb8a31377ee5c36b9f52bc03c6a3eb57",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "G4 / timber",
+      "channel": "normal",
+      "readbackSha256": "0cd2b0ac4cce09862fe88cfeb9bd6db4a796332585657a200ae5e013b7f5a298",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "G4 / timber",
+      "channel": "roughness",
+      "readbackSha256": "166846f82cc8bbc8ef2062f1e620b49da75a9d83252e5ca389d1928b1a1e1694",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / ore",
+      "channel": "albedo",
+      "readbackSha256": "acfa371ba596c8aac63a5f9ac98bb5e5e23aaa58601aed79e697f3e42c92373f",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / ore",
+      "channel": "normal",
+      "readbackSha256": "3fde148e99f7c352a77da2916c0533cda652d74bbb763ecd57129db9eeaf3d25",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / ore",
+      "channel": "roughness",
+      "readbackSha256": "b09c4a385e7d8b96d759f80dbe2b33f7f9bcfb0bd46487c652b1bdd08d90e5a7",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / chalk",
+      "channel": "albedo",
+      "readbackSha256": "17ccefa01cd3dabf54bc5801f6e19267dc796636105328c474bf656f98fb6844",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / chalk",
+      "channel": "normal",
+      "readbackSha256": "a6e62ba75cebf3c973009ff1b4c15ba46fc778dbb8b722c856cf907e9b13028b",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / chalk",
+      "channel": "roughness",
+      "readbackSha256": "468d897296bffa525d4d7c41269aac524344b949276688e84aa7f2218ec9c3bd",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / cooling-floor",
+      "channel": "albedo",
+      "readbackSha256": "0efaea60e42f281e3472dbb0d5f38e3791e899b9dcead233f663d5d62beeee27",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / cooling-floor",
+      "channel": "normal",
+      "readbackSha256": "b33f5621a3d74bab1e62b8f667bde7c4f07a95267aa41b3c405d2ccc5910272a",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "GM / cooling-floor",
+      "channel": "roughness",
+      "readbackSha256": "f0ef5c841b5f71eccdcc0b5f0c485e28e8d14ffbf4c6a2de651c991c575d7e82",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / machine",
+      "channel": "albedo",
+      "readbackSha256": "0ed6b7f2fc8d76975561a8a5283149dfa8d86b0bd3de156fcd877a189799d5cc",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / machine",
+      "channel": "normal",
+      "readbackSha256": "7ebc339b2d42c2353b48f70d2672237560ee32ac1141336a3606e9c6ab3cfbc1",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / machine",
+      "channel": "roughness",
+      "readbackSha256": "01dc2d1756f41a508601718733660812cb5426181c8b75b47e544818ebd7ddde",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / ore-shell",
+      "channel": "albedo",
+      "readbackSha256": "d60c3f322262335878f83e3b470387c1cab25bdbbf513a2309bf1bed7c978782",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / ore-shell",
+      "channel": "normal",
+      "readbackSha256": "cdca00edb6ac8bc8cca2bf4599241a552c470f8bc731b113a557ead4974fe4ef",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / ore-shell",
+      "channel": "roughness",
+      "readbackSha256": "a78eb98a53bd96d8b561a92881b797699c8f6bb6c9793bc5121eee585b371c80",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / plinth",
+      "channel": "albedo",
+      "readbackSha256": "a1ab418eefb6b6ae1a3c7a62281e6c9d1995629f820fbd6695bb6a72c0626485",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / plinth",
+      "channel": "normal",
+      "readbackSha256": "180ab689712603672772dd3d2bbe331e32837afc5ab25d55955f2501b2703973",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / plinth",
+      "channel": "roughness",
+      "readbackSha256": "37c9ffa81c8ae3eba5f88cdece5957ad74e3dd111a2a439f129a12f89a336ddc",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / refractory",
+      "channel": "albedo",
+      "readbackSha256": "cbc29b4f5a8fb7fde035f7eeaa525b2592af3b1ded87071e5fbf1d8efed0befa",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / refractory",
+      "channel": "normal",
+      "readbackSha256": "a199d9e734358647fbb91c9ee2df5840b9cbd1493490607d6fb0e3e5f4f792d6",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / refractory",
+      "channel": "roughness",
+      "readbackSha256": "dad7de94eff28cad18fbd96a3206e29b1391aa6adc4d8f133a2b35eacbbee3a7",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / wall",
+      "channel": "albedo",
+      "readbackSha256": "acfa371ba596c8aac63a5f9ac98bb5e5e23aaa58601aed79e697f3e42c92373f",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / wall",
+      "channel": "normal",
+      "readbackSha256": "3fde148e99f7c352a77da2916c0533cda652d74bbb763ecd57129db9eeaf3d25",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / wall",
+      "channel": "roughness",
+      "readbackSha256": "b09c4a385e7d8b96d759f80dbe2b33f7f9bcfb0bd46487c652b1bdd08d90e5a7",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / ground",
+      "channel": "albedo",
+      "readbackSha256": "acfa371ba596c8aac63a5f9ac98bb5e5e23aaa58601aed79e697f3e42c92373f",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / ground",
+      "channel": "normal",
+      "readbackSha256": "3fde148e99f7c352a77da2916c0533cda652d74bbb763ecd57129db9eeaf3d25",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / ground",
+      "channel": "roughness",
+      "readbackSha256": "b09c4a385e7d8b96d759f80dbe2b33f7f9bcfb0bd46487c652b1bdd08d90e5a7",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / roof",
+      "channel": "albedo",
+      "readbackSha256": "8640a43e29ad78a3494efe16da066667e6401c6bac33ef3d9b05dc845cb8ea33",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / roof",
+      "channel": "normal",
+      "readbackSha256": "7ebc339b2d42c2353b48f70d2672237560ee32ac1141336a3606e9c6ab3cfbc1",
+      "decodedPixelsEqual": true
+    },
+    {
+      "material": "R6 / roof",
+      "channel": "roughness",
+      "readbackSha256": "985d422637eeeac15e680a5f8c501eb1bdb38160627971d56db39ae16442de18",
+      "decodedPixelsEqual": true
+    }
+  ],
+  "nativeGeometryScope": "Actual full-precision native mesh arrays, Godot clockwise winding, no generated LODs",
+  "nativeVisualAcceptance": "pending manual review"
+}

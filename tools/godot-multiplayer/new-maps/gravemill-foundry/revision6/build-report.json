@@ -1,0 +1,122 @@
+{
+  "visualRevision": 6,
+  "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879",
+  "artHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c",
+  "masterSha256": "9922b7be04bbc64deda53f0082ec279a2b81f17d5e280d476e74d5b5d12252d8",
+  "sourceMasterSha256": "437dc16697554e5bcf46862dd9c01c071d103d42f93e2480f1331b1d11eaa83a",
+  "moth": {
+    "pack": {
+      "overlaySha256": "86beb51736bea315b2bb35cd7772aff2daec7a1317b13c1eb498c981f2e8c5f0",
+      "baseSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+    },
+    "materials": {
+      "R6 / machine": {
+        "resource": "forge-steel",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "0c1dec9f25b8df13628d3a2989e35f3ac42a6cff6137e2522f0655750d12c822",
+        "sourceNormalSha256": "8662617c557392b63c6b061f957facfd116e5b87534884060fbde87f388388e5",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "95b14753e863ac71367c158cec2c3978b6b44a54fa35c25e0938f978321c774b",
+        "convertedAlbedoSha256": "fb4ac5ab0718b8a72f12b3db784b07dac3648cbe3400bbe9eb78b94c796150d8",
+        "metallic": 0.48,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "R6 / roof": {
+        "resource": "ribbed-steel",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "c313383b404a6ed622b3ff411f37f5225364f2158621f620e9ef76c15c209132",
+        "sourceNormalSha256": "8662617c557392b63c6b061f957facfd116e5b87534884060fbde87f388388e5",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "5b5c681b84e6cd3b4fc58e5bdb2c46f308811e6b229c026b54f73c89f601e745",
+        "convertedAlbedoSha256": "73170007ef781b95e072a0b23a9ed108f6c0e1fe98edf0ee6626bfbf80d7afd1",
+        "metallic": 0.4,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "R6 / wall": {
+        "resource": "aggregate",
+        "role": "surface",
+        "tileMeters": 4,
+        "tilesPerMeter": 0.25,
+        "texelsPerMeter": 128,
+        "sourceColorSha256": "1a0fccc16edd8ecc4825d47f59eadd477b0861606aa31af7642a9b177877f4e4",
+        "sourceNormalSha256": "61baadb1991cdc3ab47e1f025672c06f9e6f601c0d56552dee34da3e0f8444a4",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "a33f12b68d468f75a8823818da8320d64c1a27c339f71dc26a5a16d7d2a47cff",
+        "convertedAlbedoSha256": "3abb29a4b5da6ed3a1f229c40914a29d0de48e111bcfb2421ee36d5bcb989c05",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "R6 / plinth": {
+        "resource": "cast-seams",
+        "role": "surface",
+        "tileMeters": 4,
+        "tilesPerMeter": 0.25,
+        "texelsPerMeter": 128,
+        "sourceColorSha256": "4dcd77b6b90b3621375a21f725e9b881a2c8c46897762b358361ead4671c0ef8",
+        "sourceNormalSha256": "a65f9df057998d11ac92a24f05c5946eb794134f7cc12b9dfab035496c37a858",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "484ebd3f0ab9915be426cca687bc8fd5ff364eef2151a9e4d3e49c1ddb2410df",
+        "convertedAlbedoSha256": "1a2bd1e1a063bb0b6d0f5c0fba268b00e6319bbb2843b351513c78e13ff4c897",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "R6 / refractory": {
+        "resource": "terracotta",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "e7cbef47acd9d54c61f57123824f477af4b0d42c17fdd514d0ad3fb185ae46a3",
+        "sourceNormalSha256": "a82b4af6b637ecd74953a0f4af261acc637eab255e80f6117a231f5d0b564ca5",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "026e41ba5a566ab71f09ed19a6699c53442aaa2b569b32a0f61f1a2a7dd8fd16",
+        "convertedAlbedoSha256": "19efdd03cd0bc98d04405f04c04b8b9ac1293ca0751103c4e4a11e9ab4b92124",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "R6 / ore-shell": {
+        "resource": "oxidized-iron",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "2514c52dad451a6ab8a9f7ee82099abcdb54a1be3df7f009f11b51044e3f8218",
+        "sourceNormalSha256": "db25a51dd6c649d7b155c51c64de0cb507306bf52641407581a850a79ffdc864",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "c43d822da97d4a2fefb389eec95681c2b596cf4d66160c5081668514bd2544a6",
+        "convertedAlbedoSha256": "4f794fd4eb20b706e4eda51cfc8533e5151b846bd73c5f251d9ab26d767f5914",
+        "metallic": 0.25,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "R6 / ground": {
+        "resource": "aggregate",
+        "role": "surface",
+        "tileMeters": 4,
+        "tilesPerMeter": 0.25,
+        "texelsPerMeter": 128,
+        "sourceColorSha256": "1a0fccc16edd8ecc4825d47f59eadd477b0861606aa31af7642a9b177877f4e4",
+        "sourceNormalSha256": "61baadb1991cdc3ab47e1f025672c06f9e6f601c0d56552dee34da3e0f8444a4",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "a33f12b68d468f75a8823818da8320d64c1a27c339f71dc26a5a16d7d2a47cff",
+        "convertedAlbedoSha256": "3abb29a4b5da6ed3a1f229c40914a29d0de48e111bcfb2421ee36d5bcb989c05",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      }
+    }
+  },
+  "nativeVisualAcceptance": "pending",
+  "geometryExport": "Exact original POSITION/NORMAL/TANGENT streams, original oriented index triples; material library only from Blender export"
+}

@@ -1,0 +1,15 @@
+{
+  "visualRevision": 6,
+  "masterSha256": "9922b7be04bbc64deda53f0082ec279a2b81f17d5e280d476e74d5b5d12252d8",
+  "editableTriangleRolesAndUVMatch": true,
+  "editableGeometrySources": 270,
+  "sourceCollectionHiddenFromRender": true,
+  "exportMeshObjects": 16,
+  "packedImages": 40,
+  "triangles": 87566,
+  "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879",
+  "maxPositionError": 0,
+  "maxUVError": 3.814697265625e-06,
+  "comparison": "Oriented per-corner raw error <=1e-5; avoids false inequality across decimal rounding boundaries; multiplicity retained",
+  "nativeVisualAcceptance": "pending"
+}

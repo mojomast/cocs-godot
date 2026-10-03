@@ -1,0 +1,43 @@
+Info: Packed 10 file(s)
+Info: Saved as "gravemill-foundry-revision6.blend"
+INFO Draco mesh compression is available, use library at /home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/4.5/scripts/addons_core/io_scene_gltf2/libextern_draco.so
+16:26:09 | INFO: Starting glTF 2.0 export
+16:26:09 | INFO: Extracting primitive: G1.headframe.0.cable.001
+16:26:09 | INFO: Primitives created: 2
+16:26:09 | INFO: Extracting primitive: G1.headframe.0.crossrail.001
+16:26:09 | INFO: Primitives created: 1
+16:26:09 | INFO: Extracting primitive: G1.headframe.0.hookblock.001
+16:26:09 | INFO: Primitives created: 3
+16:26:09 | INFO: Extracting primitive: G2.furnace.0.casing.003
+16:26:09 | INFO: Primitives created: 3
+16:26:09 | INFO: Extracting primitive: G2.furnace.0.tap-platform.001
+16:26:09 | INFO: Primitives created: 2
+16:26:09 | INFO: Extracting primitive: G3.tipple.51.arch.001
+16:26:09 | INFO: Primitives created: 2
+16:26:09 | INFO: Extracting primitive: G3.tipple.51.grain-deck.001
+16:26:09 | INFO: Primitives created: 1
+16:26:09 | INFO: Extracting primitive: G5.bunker.0.surge.001
+16:26:09 | INFO: Primitives created: 2
+16:26:09 | INFO: Extracting primitive: batch-soot
+16:26:09 | INFO: Primitives created: 5
+16:26:09 | INFO: Extracting primitive: batch-mineral
+16:26:09 | INFO: Primitives created: 3
+16:26:09 | INFO: Extracting primitive: batch-copper
+16:26:09 | INFO: Primitives created: 2
+16:26:09 | INFO: Extracting primitive: batch-brass
+16:26:09 | INFO: Primitives created: 1
+16:26:09 | INFO: Extracting primitive: batch-ore
+16:26:09 | INFO: Primitives created: 2
+16:26:09 | INFO: Extracting primitive: batch-orange
+16:26:09 | INFO: Primitives created: 1
+16:26:09 | INFO: Extracting primitive: batch-chalk
+16:26:09 | INFO: Primitives created: 1
+16:26:09 | INFO: Extracting primitive: batch-cooling-floor
+16:26:09 | INFO: Primitives created: 1
+16:26:09 | INFO: Finished glTF 2.0 export in 0.4961860179901123 s
+
+R6 staged sources prepared; art-identity.json requires the future actual build
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/mojo/.tmp-on-disk/cocs-foundry-r6-W-20261003/tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/gravemill-foundry-revision5.blend"
+
+Blender quit

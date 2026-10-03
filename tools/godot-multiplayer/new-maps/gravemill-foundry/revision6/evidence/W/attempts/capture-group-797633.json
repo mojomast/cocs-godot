@@ -1,0 +1,25 @@
+{
+  "start": "2026-10-03T20:38:42.484996+00:00",
+  "end": "2026-10-03T20:38:43.237501+00:00",
+  "pgid": 797633,
+  "members": [
+    {
+      "pid": 797633,
+      "ppid": 741328,
+      "pgid": 797633,
+      "startTicks": 624306643,
+      "comm": "python3",
+      "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/owned_capture_w.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/gravemill_foundry/revision6/rays.gd "
+    },
+    {
+      "pid": 797655,
+      "ppid": 797633,
+      "pgid": 797633,
+      "startTicks": 624306645,
+      "comm": "Godot_v4.5.2-st",
+      "argv": ""
+    }
+  ],
+  "scriptError": false,
+  "returncode": 0
+}

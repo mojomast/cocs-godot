@@ -1,0 +1,21 @@
+{
+  "visualRevision": 6,
+  "artHash": "945978699f7b7ee4519f6078b68a508177a75905541f463c1777bf10f5efc47c",
+  "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879",
+  "triangles": 87566,
+  "primitives": 32,
+  "bytes": 15012396,
+  "exactR5PositionsNormalsTangentsAndOrientedTriangleMultiplicity": true,
+  "plannedUniformUVScaling": true,
+  "preservedOrangeExact": true,
+  "newMaterialsPixelChecked": [
+    "R6 / machine",
+    "R6 / ore-shell",
+    "R6 / plinth",
+    "R6 / refractory",
+    "R6 / wall",
+    "R6 / ground",
+    "R6 / roof"
+  ],
+  "nativeVisualAcceptance": "pending"
+}
