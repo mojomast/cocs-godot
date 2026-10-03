@@ -5,6 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {productionResources} from './production_resources.mjs';
 import {verifySourceState} from './manifest_validation.mjs';
+import {gitStagedResources,rejectStagedInputs} from './staged_resources.mjs';
 const cwd=fileURLToPath(new URL('../../',import.meta.url));
 const git=args=>execFileSync('git',args,{cwd,maxBuffer:128*1024*1024});
 
@@ -17,6 +18,8 @@ test('committed seven-unit promotion and import bytes validate independently of 
   assert.match(registry,/"parallax-observatory"/);
   const options={read,has:p=>paths.has(p),worldIds:['parallax-observatory','vesper-viaduct','abyssal-pressureworks','stormglass-causeway'],strict:true};
   const result=productionResources(options);
+  const staged=gitStagedResources(cwd,commit);
+  rejectStagedInputs([...Object.keys(result.resources),...Object.keys(result.raw)],staged);
   verifySourceState(cwd,JSON.parse(read('port/contracts/source-lock.json')).source_commit,
     JSON.parse(read('port/contracts/movement-candidate-derivative.json')),{portCommit:commit});
   assert.deepEqual(result.pending,[]);

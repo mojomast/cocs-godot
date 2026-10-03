@@ -65,6 +65,28 @@ def download(url, target):
     partial.replace(target)
 
 
+def reject_staged_inputs(paths, policy):
+    if set(paths) & set(policy["files"]):
+        raise RuntimeError("Staged resource in runtime/raw/export inputs")
+
+
+def stage_native_project(root, project, policy):
+    reject_staged_inputs(policy["nativeFiles"], policy)
+    for p in policy["nativeFiles"]:
+        copy(root / p, project / Path(p).relative_to("godot"))
+    for p in policy["excludePaths"]:
+        if (project / p).exists():
+            raise RuntimeError(f"Staged resource leaked into export project: {p}")
+
+
+def exclude_staged_resources(preset, policy):
+    # Exact file exclusions are defense in depth for all_resources and wildcard
+    # JSON includes; the files are already absent from the isolated project.
+    if policy["excludePaths"]:
+        preset = preset.replace('exclude_filter="', 'exclude_filter="' + ",".join(policy["excludePaths"]) + ",")
+    return preset
+
+
 def tree(path):
     return {p.relative_to(path).as_posix(): digest(p) for p in sorted(path.rglob("*")) if p.is_file()}
 
@@ -285,7 +307,11 @@ def main():
                 or digest(ROOT / "public/moth/files/bed-ritual/clip.wav") != bed_hash
                 or digest(ROOT / "godot/audio/moth/bed-ritual.wav") != bed_hash):
             raise RuntimeError("Moth ritual bed differs from reviewed source asset")
-    native_files = [p for p in git("ls-files", "godot").splitlines() if not p.startswith(("godot/tests/", "godot/content/", "godot/.godot/")) and p not in ["godot/.gitignore", "godot/export_presets.cfg"]]
+    staged_policy = json.loads(run(["node", ROOT / "tools/godot-package/staged_resources.mjs", ROOT, port_commit, logs / "server-closure.json"]))
+    reject_staged_inputs(input_paths, staged_policy)
+    reject_staged_inputs(import_sensitive, staged_policy)
+    native_files = staged_policy["nativeFiles"]
+    input_paths.update(staged_policy["provenance"])
     input_paths.update(native_files)
     input_paths.update(p.relative_to(ROOT).as_posix() for p in (ROOT / "tools/godot-package").glob("*") if p.is_file())
     input_paths.add("port/native-linux-package/PLAY.md")
@@ -357,10 +383,10 @@ def main():
     (templates / template_name).chmod(0o755)
 
     project = work / "project"
-    for p in native_files:
-        copy(ROOT / p, project / Path(p).relative_to("godot"))
+    stage_native_project(ROOT, project, staged_policy)
     staged_overrides = {}
     raw_resources = {**final_content["raw"], **production_content["raw"]}
+    reject_staged_inputs(raw_resources, staged_policy)
     if raw_resources:
         # Explicit export-only plugin preserves raw PCM/GLB FileAccess reads in
         # addition to Godot's normal imported resources. No production script edit.
@@ -405,6 +431,7 @@ ssh_remote_deploy/enabled=false
     # remain covered by all_resources. Never export tests or arbitrary JSON.
     preset = preset.replace('include_filter="', 'include_filter="input_bindings/contexts.json,replay/admission.json,audio/telegraphs/manifest.json,')
     final_json = sorted({p.removeprefix("godot/") for p in [*final_content["resources"], *production_content["resources"]] if p.endswith(".json")})
+    reject_staged_inputs(["godot/" + p for p in final_json], staged_policy)
     if final_json:
         preset = preset.replace('include_filter="', 'include_filter="' + ",".join(final_json) + ',')
     preset = preset.replace('exclude_filter="', 'exclude_filter="addons/package_raw/*,')
@@ -416,6 +443,7 @@ ssh_remote_deploy/enabled=false
     if windows:
         preset = preset.replace('name="Private Linux Prototype"', f'name="{preset_name}"').replace('platform="Linux"', 'platform="Windows Desktop"')
         preset += '\ncodesign/enable=false\napplication/modify_resources=false\ndebug/export_console_wrapper=0\n'
+    preset = exclude_staged_resources(preset, staged_policy)
     (project / "export_presets.cfg").write_text(preset)
     run([editor, "--headless", "--path", project, "--editor", "--import"], env=env, log=logs / "import.log")
     for path, expected_hash in import_sensitive.items():

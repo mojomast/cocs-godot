@@ -13,6 +13,7 @@ import {channelProduction,buildIntent} from './build_channel.mjs';
 import {WORLDS} from '../../port/multiplayer-worlds/catalog.mjs';
 import {MOVEMENT_CONTRACT,resolveSourceDerivative} from './source_derivative.mjs';
 import {rejectAuthoringRuntime} from './authoring_resources.mjs';
+import {gitStagedResources,rejectStagedInputs} from './staged_resources.mjs';
 assert.equal(process.platform,'win32','Real Windows source preflight required');
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const git=args=>execFileSync('git',args,{cwd:root,maxBuffer:256*1024*1024});
@@ -43,6 +44,8 @@ for(const p of [...Object.keys(closure.modules),...Object.keys(closure.adapterMo
 const final=finalResources({read,has}),imports=fighterImports({read,has});
 const options={read,has,worldIds:closure.worldDataFiles.map(p=>p.split('/').at(-1).slice(0,-5))};
 const production=channelProduction(options,'final'),intent=buildIntent(commit,'final',production);
+const staged=gitStagedResources(root,commit,{consumers:[...Object.keys(closure.modules),...Object.keys(closure.adapterModules),...closure.worldDataFiles,...closure.campaignDataFiles,...closure.hordeDataFiles]});
+rejectStagedInputs([...Object.keys(final.resources),...Object.keys(final.raw),...Object.keys(imports),...Object.keys(production.resources),...Object.keys(production.raw)],staged);
 assert.deepEqual(production.pending,[]);
 const manifest={...intent,build_intent:intent,final_resource_sha256:final.resources,final_provenance_sha256:final.provenance,raw_resource_sha256:final.raw,
  raw_export_plugin_sha256:hash(read('tools/godot-package/raw_export_plugin.gd')),fighter_import_sha256:imports,
