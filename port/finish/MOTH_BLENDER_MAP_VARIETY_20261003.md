@@ -27,8 +27,11 @@ material-lineage evidence: `map-variety/FOUNDRY_R4_REVIEW.md`.
 Astra reviewer now owns corrective implementation and actual revision-5 rebuilding
 under **`MOTH-BLENDER-20261003-S`**. R4 artifacts stay immutable; S requires actual
 exported geometry/authority probes, preserved luminaires, fresh screenshots and
-timestamped owned-process audits. Coastal Sol delivered source adapter integration
-`e7895d7f`, pending parent review. Botanical Astra repairs continue source-only.
+timestamped owned-process audits. Coastal Sol's adapter/portable-master follow-ups
+`e7895d7f` and `b81730f7` are reviewed and integrated as `ba6bc7f8` and `ca17808f`.
+Parent reproduced **49 source checks** (14 Node / 35 Python). Actual adapter/Blender
+execution remains pending; the 150,000-triangle target records overages for review,
+not automatic acceptance. Botanical Astra repairs continue source-only.
 
 ## User directive and order of work
 

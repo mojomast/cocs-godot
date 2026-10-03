@@ -132,6 +132,21 @@ Parent owns merge and any native grant. Sol runs the serial Blender build agains
 the adapter above. No engine/render/import/native claim is made here.
 # Parent source-integration checkpoint
 
+Adapter/portable-master follow-ups are now integrated as `ba6bc7f8` and
+`ca17808f`, from Sol `e7895d7f` / `b81730f7`. Parent passed **49 source checks**:
+14 Node, 29 layout/composition Python and six preserved-material/export Python.
+The shared material adapter is still awaiting reviewed integration from corrective
+Foundry production; no coastal engine execution occurred. The total-triangle
+default of 150,000 is a review target: exceeding it records an explicit overage
+and still needs a production decision. Primitive/batch limits, unsupported or
+unindexed primitives, and evaluated-versus-exported triangle mismatches reject.
+
+`verify_master.py` must run in Blender after the actual build, separately proving
+that the exact saved master reopens with all file-backed images packed. Source
+ordering tests do not discharge this native requirement. Source/derived albedo
+hashes remain separate; actual exported color/normal pixel checks execute only
+when the builder produces a GLB.
+
 Sol corrective commit `42e6cab4` was independently reviewed and merged as
 `18201a06`. Parent reproduced 14 Node, 29 Python and three shared-Kit source
 checks, plus both authority generation `--check` commands. The previous rejected
