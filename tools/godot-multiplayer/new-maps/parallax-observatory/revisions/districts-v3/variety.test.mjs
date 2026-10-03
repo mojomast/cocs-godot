@@ -23,7 +23,7 @@ test('parallax districts-v3 preserves spawns, objectives, team frames and base r
 
 test('parallax districts-v3 adds the declared districts and kit', () => {
   assert.deepEqual(arena.verification.varietyRouteIds, ['court-approach', 'court-steps', 'lightwell-stair']);
-  assert.deepEqual([...new Set(arena.art.kit.map(k => k.class))].sort(), ['instrument_dish', 'lightwell', 'scientific_room', 'stepped_terrace', 'tower']);
+  assert.deepEqual([...new Set(arena.art.kit.map(k => k.class))].sort(), ['instrument_dish', 'landmark', 'lightwell', 'scientific_room', 'stepped_terrace', 'tower']);
   assert.ok(arena.art.portals.length >= 3);
 });
 

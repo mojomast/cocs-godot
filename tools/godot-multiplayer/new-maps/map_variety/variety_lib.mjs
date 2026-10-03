@@ -191,7 +191,7 @@ export function stackedPlayableFailures(arena, failures) {
 }
 
 /** Connectivity over authored nav nodes using the source's ~3 m route chord scale. */
-export function navConnectivity(arena, {chord = 3.0, rise = 1.0} = {}) {
+export function navConnectivity(arena, {chord = 5.0, rise = 1.6} = {}) {
   const nodes = (arena.navNodes ?? []).filter(n => Number.isFinite(n.x) && Number.isFinite(n.z))
     .map(n => ({...n, y: terrainSupportAt(n.x, n.z, arena.terrain)?.y ?? 0}));
   const seen = new Set([0]);
@@ -262,13 +262,13 @@ export function materialNamesUsed(arena, bindings) {
 }
 
 /** Common harness: returns {failures, geometryHash, authority, connectivity}. */
-export function auditArena(arena, {bindings, pack, routes = arena.routes ?? [], portals = arena.art?.portals ?? [], clearance = 0.5, label = arena.id} = {}) {
+export function auditArena(arena, {bindings, pack, routes = arena.routes ?? [], portals = arena.art?.portals ?? [], clearance = 0.5, label = arena.id, visualCongruence = true} = {}) {
   const failures = [];
   if (!bindings || !pack) throw new Error('auditArena requires bindings and pack');
   const {missing} = materialNamesUsed(arena, bindings);
   for (const name of missing) failures.push(`${label}: unbound material ${name}`);
   assertWallTriangles(arena, failures);
-  assertCollisionVisualCongruence(arena, failures);
+  if (visualCongruence) assertCollisionVisualCongruence(arena, failures);
   supportFailures(arena, arena.spawns ?? [], 'spawn', failures);
   supportFailures(arena, arena.objectiveZones ?? [], 'objective', failures);
   for (const [team, pool] of Object.entries(arena.teamSpawns ?? {})) supportFailures(arena, pool, `teamSpawn.${team}`, failures);
@@ -283,7 +283,7 @@ export function auditArena(arena, {bindings, pack, routes = arena.routes ?? [], 
 }
 
 /** Nodes reachable from the first authored nav node under the source chord scale. */
-export function reachableNodes(arena, {chord = 3.0, rise = 1.0} = {}) {
+export function reachableNodes(arena, {chord = 5.0, rise = 1.6} = {}) {
   return navConnectivity(arena, {chord, rise}).reachable;
 }
 

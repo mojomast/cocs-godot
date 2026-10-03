@@ -102,6 +102,17 @@ def build(root, authority_path, bindings_path, master_path, export_path, report_
         kit.mesh('authority.surface.' + material, bucket['vertices'], bucket['faces'], material, sector='authority', bevel=0.0, smooth=False)
     for material, bucket in sorted(shell['walls'].items()):
         kit.mesh('authority.wall.' + material, bucket['vertices'], bucket['faces'], material, sector='authority', bevel=0.0, smooth=False)
+    structures = kit_expander.structure_plan(arena)
+    for material, bucket in sorted(structures['buckets'].items()):
+        kit.mesh('authority.block.' + material, bucket['vertices'], bucket['faces'], material, sector='authority', bevel=0.0, smooth=False)
+    pieces = kit_expander.piece_plan(arena)
+    for material, bucket in sorted(pieces['buckets'].items()):
+        kit.mesh('authority.piece.' + material, bucket['vertices'], bucket['faces'], material, sector='authority', bevel=0.0, smooth=False)
+    water = arena.get('art', {}).get('water')
+    if water and 'water' in materials:
+        x, y, z, w, d = water['x'], water['y'], water['z'], water['w'], water['d']
+        vertices = [(x - w / 2, -(z - d / 2), y), (x - w / 2, -(z + d / 2), y), (x + w / 2, -(z + d / 2), y), (x + w / 2, -(z - d / 2), y)]
+        kit.mesh('authority.water', vertices, [(0, 1, 2, 3)], 'water', sector='authority', bevel=0.0, smooth=False)
 
     result = kit_expander.plan(arena['art']['kit'], expected, max_triangles)
     for op in result['ops']:
@@ -129,6 +140,10 @@ def build(root, authority_path, bindings_path, master_path, export_path, report_
         'moth': bindings.get('pack'),
         'materials': sorted(expected),
         'authorityShellTriangles': shell['authorityTriangles'],
+        'structureBoxes': structures['boxes'],
+        'structureTriangles': structures['triangles'],
+        'pieceCount': pieces['pieces'],
+        'pieceTriangles': pieces['triangles'],
         'kitTriangles': result['summary']['triangles'],
         'kitOps': result['summary']['ops'], 'kitBatches': result['summary']['batches'],
         'exportBatches': len(batches), 'labels': len(label_objects),

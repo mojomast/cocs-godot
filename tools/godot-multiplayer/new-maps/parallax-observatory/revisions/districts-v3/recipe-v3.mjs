@@ -85,6 +85,12 @@ export function makeRecipe() {
   kit('calibration-column', 'tower', 'parallax.stone', 'scientific', [-78, 12, 6.5], {radius: 2.2, height: 12, drums: 2, trimMaterial: 'parallax.trim'});
   kit('calibration-column-east', 'tower', 'parallax.stone', 'scientific', [78, 12, -6.5], {radius: 2.2, height: 12, drums: 2, trimMaterial: 'parallax.trim'});
 
+  // ---- Accepted landmarks re-expressed as authored kit forms ----------------
+  for (const landmark of a.art.landmarks) {
+    kit(landmark.id, 'landmark', landmark.kind === 'dome' ? 'parallax.enamel' : 'parallax.optics', 'landmarks',
+      [landmark.x, landmark.y, landmark.z], {kind: landmark.kind, radius: landmark.r, tilt: landmark.tilt ?? 0});
+  }
+
   // ---- New walkable crosslinks ---------------------------------------------
   route('court-approach', [[24, -2], [24, -24], [44, -24], [44, -44], [24, -44], [24, -2]], 4);
   route('court-steps', [[24, -34], [20, -34], [12, -34]], 4);

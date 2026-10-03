@@ -1,8 +1,8 @@
 {
   "id": "parallax-observatory",
   "revision": "districts-v3",
-  "geometryHash": "d2b0fb399cc73d9e4fab6ee4bb1b5d7499310a29134d544551752f9931f66de1",
-  "recipeHash": "79dd77aceebce29e87db5cb02b23e67ec3c5cd48bdb651e490ec0d3f3300cb2f",
+  "geometryHash": "29f0150f6f9d41f5829a2ce659fb12120609aca46f75bfe312ddb25d4e799601",
+  "recipeHash": "42a55d3fbf8031e7cb0f8a8a582591d36cb6b9f6c05ea3f93e5a5282abea368b",
   "moth": {
     "base": "assets/moth/map-variety-20261003/candidate-v2/manifest.json",
     "baseSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9",
@@ -58,7 +58,7 @@
   "blocks": 69,
   "overhead": 5,
   "navNodes": 532,
-  "kitDirectives": 17,
+  "kitDirectives": 22,
   "portals": 3,
   "preservation": {
     "spawns": [

@@ -178,6 +178,168 @@ def _pool(d, material):
     return [_mesh(d['id'], material, d['sector'], d['at'], d.get('rot', 0), vertices, [(0, 1, 2, 3)], 0.0, False)]
 
 
+def _tower(d, material):
+    p = d['params']
+    radius = float(p.get('radius', 4))
+    height = float(p.get('height', 24))
+    drums = int(p.get('drums', 3))
+    trim = p.get('trimMaterial', material)
+    at, rot = d['at'], d.get('rot', 0)
+    out = [_prism(d['id'] + '.plinth', material, d['sector'], [at[0], at[1] + 1.2, at[2]], rot, [radius * 2.4, radius * 2.4, 2.4], .06),
+           _prism(d['id'] + '.shaft', material, d['sector'], [at[0], at[1] + height * .5, at[2]], rot, [radius * 1.4, radius * 1.4, height], .08),
+           _curved_rib(d['id'] + '.crown', trim, d['sector'], [at[0], at[1] + height, at[2]], rot, radius * .55, radius * 1.15, radius * 2.0, 0, math.pi, 20),
+           _pipe(d['id'] + '.mast', trim, d['sector'], at, rot, radius * .16, 8,
+                 [[0, 0, height + radius * .5], [0, 0, height + radius * 2.6]])]
+    for drum in range(drums):
+        out.append(_prism(f"{d['id']}.drum{drum}", trim, d['sector'],
+                          [at[0], at[1] + 3 + drum * (height - 6) / max(1, drums), at[2]], rot,
+                          [radius * 1.6, radius * 1.6, .5], .03))
+    return out
+
+
+def _lightwell(d, material):
+    p = d['params']
+    radius = float(p.get('radius', 5))
+    ribs = int(p.get('ribs', 12))
+    glazing = p.get('glazingMaterial', material)
+    trim = p.get('trimMaterial', material)
+    at, rot = d['at'], d.get('rot', 0)
+    out = [_curved_rib(d['id'] + '.oculus', trim, d['sector'], at, rot, radius - .5, radius, .8, 0, math.tau, ribs * 2),
+           _curved_rib(d['id'] + '.inner-ring', trim, d['sector'], [at[0], at[1] + .6, at[2]], rot, radius - 1.1, radius - .7, .5, 0, math.tau, ribs * 2)]
+    vertices, faces = [], []
+    for index in range(ribs):
+        angle = index * math.tau / ribs
+        a = (radius * .2, 0, 0)
+        b = (radius * math.cos(angle) * .7, radius * math.sin(angle) * .7, .9)
+        c = (radius * math.cos(angle + math.tau / ribs) * .7, radius * math.sin(angle + math.tau / ribs) * .7, .9)
+        base = len(vertices)
+        vertices.extend([a, b, c])
+        faces.append((base, base + 1, base + 2))
+    out.append(_mesh(d['id'] + '.glazing', glazing, d['sector'], at, rot, vertices, faces, 0.0, False))
+    return out
+
+
+def _instrument_dish(d, material):
+    p = d['params']
+    radius = float(p.get('radius', 6))
+    trim = p.get('trimMaterial', material)
+    at, rot = d['at'], d.get('rot', 0)
+    return [
+        _prism(d['id'] + '.mount', trim, d['sector'], [at[0], at[1] + 1, at[2]], rot, [radius * .5, radius * .5, 2], .05),
+        _curved_rib(d['id'] + '.dish-outer', material, d['sector'], [at[0], at[1] + 3, at[2]], rot, radius - .45, radius, radius * .5, 0, math.pi, 24),
+        _curved_rib(d['id'] + '.dish-mid', material, d['sector'], [at[0], at[1] + 3.2, at[2]], rot, radius * .45, radius * .6, radius * .42, 0, math.pi, 20),
+        _curved_rib(d['id'] + '.dish-inner', trim, d['sector'], [at[0], at[1] + 3.4, at[2]], rot, radius * .18, radius * .28, radius * .3, 0, math.pi, 16),
+        _pipe(d['id'] + '.feed', trim, d['sector'], at, rot, radius * .08, 8, [[0, 0, 2], [0, 0, 6]]),
+    ]
+
+
+def _scientific_room(d, material):
+    p = d['params']
+    count = int(p.get('racks', 4))
+    spacing = float(p.get('spacing', 3))
+    trim = p.get('trimMaterial', material)
+    at, rot = d['at'], d.get('rot', 0)
+    out = []
+    for index in range(count):
+        offset = (index - (count - 1) / 2) * spacing
+        out.append(_prism(f"{d['id']}.rack{index}", material, d['sector'],
+                          [at[0] + offset, at[1] + .9, at[2]], rot, [1.6, 1.0, 1.8], .04))
+        out.append(_prism(f"{d['id']}.console{index}", trim, d['sector'],
+                          [at[0] + offset, at[1] + 1.85, at[2] + .2], rot, [1.4, .6, .2], .02))
+    return out
+
+
+def _stall_row(d, material):
+    p = d['params']
+    count = int(p.get('count', 4))
+    spacing = float(p.get('spacing', 3))
+    width = float(p.get('width', 2.4))
+    depth = float(p.get('depth', 1.6))
+    trim = p.get('trimMaterial', material)
+    at, rot = d['at'], d.get('rot', 0)
+    out = []
+    for index in range(count):
+        offset = (index - (count - 1) / 2) * spacing
+        out.append(_prism(f"{d['id']}.counter{index}", material, d['sector'],
+                          [at[0] + offset, at[1] + .55, at[2]], rot, [width, depth, 1.1], .04))
+        out.append(_prism(f"{d['id']}.awning{index}", trim, d['sector'],
+                          [at[0] + offset, at[1] + 2.5, at[2]], rot, [width + .5, depth + .9, .18], .03))
+        for side in (-1, 1):
+            out.append(_pipe(f"{d['id']}.post{index}.{side}", trim, d['sector'], at, rot, .06, 6,
+                             [[offset + side * (width / 2 - .1), -depth / 2 - .2, 0], [offset + side * (width / 2 - .1), -depth / 2 - .2, 2.4]]))
+    return out
+
+
+def _roof_run(d, material):
+    p = d['params']
+    length = float(p.get('length', 8))
+    width = float(p.get('width', 4))
+    rise = float(p.get('rise', 2))
+    style = p.get('style', 'pitched')
+    trim = p.get('trimMaterial', material)
+    at, rot = d['at'], d.get('rot', 0)
+    if style == 'parapet':
+        out = []
+        for side in (-1, 1):
+            out.append(_prism(f"{d['id']}.parapet{side}", material, d['sector'],
+                              [at[0], at[1] + .45, at[2] + side * width / 2], rot, [length, .35, .9], .03))
+        return out
+    l, w = length / 2, width / 2
+    vertices = [(-l, -w, 0), (l, -w, 0), (l, w, 0), (-l, w, 0), (-l, 0, rise), (l, 0, rise)]
+    faces = [(0, 1, 5, 4), (3, 4, 5, 2), (0, 4, 3), (1, 2, 5), (0, 3, 2, 1)]
+    return [_mesh(d['id'], material, d['sector'], at, rot, vertices, faces, .04, False)]
+
+
+def _arch_bridge(d, material):
+    p = d['params']
+    span = float(p.get('span', 12))
+    width = float(p.get('width', 6))
+    thickness = float(p.get('thickness', 1.2))
+    pier = float(p.get('pier', 3))
+    trim = p.get('trimMaterial', material)
+    at, rot = d['at'], d.get('rot', 0)
+    out = []
+    for side in (-1, 1):
+        out.append(_prism(f"{d['id']}.pier{side}", material, d['sector'],
+                          [at[0] + side * (span / 2), at[1] + pier / 2, at[2]], rot, [1.6, width, pier], .05))
+    out.append(_curved_rib(d['id'] + '.arch', material, d['sector'], [at[0], at[1] + pier, at[2]], rot,
+                           span / 2 - thickness, span / 2, width, 0, math.pi, 24))
+    out.append(_prism(d['id'] + '.deck', trim, d['sector'],
+                      [at[0], at[1] + pier + .3, at[2]], rot, [span + 1.5, width + .6, .5], .05))
+    return out
+
+
+def _retaining_wall(d, material):
+    p = d['params']
+    length = float(p.get('length', 10))
+    height = float(p.get('height', 2))
+    thickness = float(p.get('thickness', .8))
+    trim = p.get('trimMaterial', material)
+    at, rot = d['at'], d.get('rot', 0)
+    return [
+        _prism(d['id'] + '.wall', material, d['sector'], [at[0], at[1] + height / 2, at[2]], rot, [length, thickness, height], .05),
+        _prism(d['id'] + '.coping', trim, d['sector'], [at[0], at[1] + height + .12, at[2]], rot, [length + .2, thickness + .35, .24], .03),
+    ]
+
+
+def _landmark(d, material):
+    p = d['params']
+    kind = p.get('kind', 'dome')
+    radius = float(p.get('radius', 8))
+    at, rot = d['at'], d.get('rot', 0)
+    if kind == 'dome':
+        return [_curved_rib(d['id'] + '.dome', material, d['sector'], at, rot, radius * .9, radius, radius * .9, 0, math.pi, 24),
+                _prism(d['id'] + '.base', material, d['sector'], [at[0], at[1] + .4, at[2]], rot, [radius * 2, radius * 2, .8], .05)]
+    if kind == 'armillary':
+        return [_curved_rib(d['id'] + '.ring-a', material, d['sector'], at, rot, radius - .35, radius, radius * 1.6, 0, math.tau, 32),
+                _curved_rib(d['id'] + '.ring-b', material, d['sector'], at, rot + math.pi / 2, radius - .35, radius, radius * 1.6, 0, math.tau, 32),
+                _pipe(d['id'] + '.axis', material, d['sector'], at, rot, .35, 8, [[-radius * 1.2, 0, 0], [radius * 1.2, 0, 0]])]
+    return [_prism(d['id'] + '.mount', material, d['sector'], [at[0], at[1] + 1, at[2]], rot, [radius * .6, radius * .6, 2], .05),
+            _curved_rib(d['id'] + '.dish-outer', material, d['sector'], [at[0], at[1] + 3, at[2]], rot, radius - .4, radius, radius * .6, 0, math.pi, 28),
+            _curved_rib(d['id'] + '.dish-inner', material, d['sector'], [at[0], at[1] + 3.3, at[2]], rot, radius * .2, radius * .4, radius * .35, 0, math.pi, 20),
+            _pipe(d['id'] + '.mast', material, d['sector'], at, rot, .25, 8, [[0, 0, 3], [0, 0, 9]])]
+
+
 HANDLERS = {
     'prism': lambda d, m: [_prism(d['id'], m, d['sector'], d['at'], d.get('rot', 0), d['params']['size'], d['params'].get('bevel', .035))],
     'framed_bay': lambda d, m: [_framed(d['id'], m, d['sector'], d['at'], d.get('rot', 0), d['params']['width'], d['params']['height'], d['params']['depth'], d['params'].get('arch', False), d['params'].get('trimMaterial', m))],
@@ -189,6 +351,15 @@ HANDLERS = {
     'root_form': _root_form,
     'fern_card': _fern_card,
     'pool': _pool,
+    'tower': _tower,
+    'lightwell': _lightwell,
+    'instrument_dish': _instrument_dish,
+    'scientific_room': _scientific_room,
+    'stall_row': _stall_row,
+    'roof_run': _roof_run,
+    'arch_bridge': _arch_bridge,
+    'retaining_wall': _retaining_wall,
+    'landmark': _landmark,
 }
 
 
@@ -253,6 +424,40 @@ def plan(kit, allowed_materials, max_triangles=24000):
             'withinBudget': total <= 160000,
         },
     }
+
+
+def structure_plan(arena):
+    """Solid `blocks` and `overhead` slabs as batched boxes (Blender frame)."""
+    buckets = {}
+
+    def add(material, x, z, w, d, min_y, max_y):
+        bucket = buckets.setdefault(material, _empty())
+        base = len(bucket['vertices'])
+        vertices, faces = _box((0, 0, 0), (w, d, max_y - min_y))
+        vertices = [(x + vx, -z + vy, min_y + vz) for vx, vy, vz in vertices]
+        bucket['vertices'].extend(vertices)
+        bucket['faces'].extend(tuple(base + i for i in face) for face in faces)
+
+    for block in arena.get('blocks', []):
+        add(block.get('material', 'metal'), block['x'], block['z'], block['w'], block['d'], block.get('baseY', 0), block['h'])
+    for slab in arena.get('overhead', []):
+        add(slab.get('material', 'metal'), slab['x'], slab['z'], slab['w'], slab['d'], slab['minY'], slab['maxY'])
+    triangles = sum(_triangles(b['vertices'], b['faces']) for b in buckets.values())
+    return {'buckets': buckets, 'triangles': triangles, 'boxes': len(arena.get('blocks', [])) + len(arena.get('overhead', []))}
+
+
+def piece_plan(arena):
+    """Decorative `art.pieces` boxes as batched meshes per material."""
+    buckets = {}
+    for piece in arena.get('art', {}).get('pieces', []):
+        bucket = buckets.setdefault(piece.get('material', 'brick'), _empty())
+        base = len(bucket['vertices'])
+        vertices, faces = _box((0, 0, 0), (piece['w'], piece['d'], piece['h']))
+        vertices = [(piece['x'] + vx, -piece['z'] + vy, piece['y'] + vz) for vx, vy, vz in vertices]
+        bucket['vertices'].extend(vertices)
+        bucket['faces'].extend(tuple(base + i for i in face) for face in faces)
+    triangles = sum(_triangles(b['vertices'], b['faces']) for b in buckets.values())
+    return {'buckets': buckets, 'triangles': triangles, 'pieces': len(arena.get('art', {}).get('pieces', []))}
 
 
 def to_blender(vertex):

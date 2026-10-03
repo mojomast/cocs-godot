@@ -11,8 +11,8 @@
   },
   "authority": {
     "path": "port/new-maps/parallax-observatory/variety/districts-v3/authority.json",
-    "geometryHash": "d2b0fb399cc73d9e4fab6ee4bb1b5d7499310a29134d544551752f9931f66de1",
-    "recipeHash": "79dd77aceebce29e87db5cb02b23e67ec3c5cd48bdb651e490ec0d3f3300cb2f"
+    "geometryHash": "29f0150f6f9d41f5829a2ce659fb12120609aca46f75bfe312ddb25d4e799601",
+    "recipeHash": "42a55d3fbf8031e7cb0f8a8a582591d36cb6b9f6c05ea3f93e5a5282abea368b"
   },
   "materials": {
     "saltstone": {
@@ -95,9 +95,10 @@
     }
   },
   "kit": {
-    "directives": 17,
+    "directives": 22,
     "classes": [
       "instrument_dish",
+      "landmark",
       "lightwell",
       "scientific_room",
       "stepped_terrace",
@@ -109,7 +110,7 @@
       "nodes": 532,
       "connected": 532
     },
-    "kit": 17,
+    "kit": 22,
     "portals": 3
   },
   "acceptance": "pending Blender master/GLB generation and native import; no mode acceptance inherited"
