@@ -109,6 +109,11 @@ def build(root, kind, lod):
 
 if __name__ == '__main__':
     root = Path(sys.argv[sys.argv.index('--') + 1]).resolve()
-    for kind in ('puma', 'titan', 'scout'):
-        for lod in range(3):
+    options = sys.argv[sys.argv.index('--') + 2:]
+    kinds = [arg.split('=', 1)[1] for arg in options if arg.startswith('--kind=')] or ['puma', 'titan', 'scout']
+    lods = [int(arg.split('=', 1)[1]) for arg in options if arg.startswith('--lod=')] or list(range(3))
+    assert all(kind in ('puma', 'titan', 'scout') for kind in kinds)
+    assert all(lod in range(3) for lod in lods)
+    for kind in kinds:
+        for lod in lods:
             build(root, kind, lod)

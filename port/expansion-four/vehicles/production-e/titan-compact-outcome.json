@@ -1,0 +1,79 @@
+{
+  "kind": "titan",
+  "map": "sunscar-convoy",
+  "mode": "combined-arms",
+  "success": true,
+  "accepted": false,
+  "classification": "three actual native controls/transports; normal source clock; no source pose/health/score writes; controlled live-mesh weather probe; sequential per-kind cases",
+  "assets": {
+    "godot/vehicle_assets/generated/puma-lod0.glb": "ad1d0f76f85e340338828eec7167470ae2aeffe157ae8a29ef4dfa540fca76cc",
+    "godot/vehicle_assets/generated/puma-lod1.glb": "0d96072586ceed24ad99838ad134c4fc30464b42a4be131a84cfc3351ee84c1a",
+    "godot/vehicle_assets/generated/puma-lod2.glb": "edfe45b1a11e2ec1bfb3df38c111b8f44dbd2573eb5e354a884449cbc131be66",
+    "godot/vehicle_assets/generated/titan-lod0.glb": "c3667e6520a76e6c433f0a1caa4f73748dcae2c3f8c7fb93d953d41534ac2fe2",
+    "godot/vehicle_assets/generated/titan-lod1.glb": "e0fbe0373b654029c1859e5a8275f8a043262206bdc9fed4878bdfddc4256331",
+    "godot/vehicle_assets/generated/titan-lod2.glb": "be5784ff9a9c415ebdf8b7846e4ac9f3cbf9c83df3710e0f414e3a0653718b28",
+    "godot/vehicle_assets/generated/scout-lod0.glb": "64dc780c28e3487bdad1613274fe667e148e6f6f8f31bcc09cb36bb8609fbdf9",
+    "godot/vehicle_assets/generated/scout-lod1.glb": "b616d9fe5cca87fe657e47c032f1267e116a971830e6dcd23adc281ff0c1b11a",
+    "godot/vehicle_assets/generated/scout-lod2.glb": "1380f2103508ace2cd165e6c9688f33ad47b91a68ee145593e13963df1089c22"
+  },
+  "geometryHash": "d74a3ab27cadcc8ba205cb9ca6d3e0a7b640e66b793800931d29934fea941948",
+  "proof": {
+    "kind": "titan",
+    "gunnerFire": true,
+    "nativeAssets": true,
+    "driver": true,
+    "drive": true,
+    "bend": true,
+    "reverse": true,
+    "driverFire": true,
+    "teamSwapWet": true,
+    "passengerFire": true,
+    "damage": true,
+    "repair": true,
+    "wreck": true,
+    "respawn": true,
+    "wireInputs": true,
+    "reset": true,
+    "resetCleanup": true
+  },
+  "failure": null,
+  "serverError": null,
+  "teardown": [
+    {
+      "role": "driver",
+      "pid": 560199,
+      "closed": true,
+      "code": 0,
+      "signal": null,
+      "spawnError": null,
+      "requested": true,
+      "forced": false,
+      "failures": [],
+      "clean": true
+    },
+    {
+      "role": "opponent",
+      "pid": 560471,
+      "closed": true,
+      "code": 0,
+      "signal": null,
+      "spawnError": null,
+      "requested": true,
+      "forced": false,
+      "failures": [],
+      "clean": true
+    },
+    {
+      "role": "crew",
+      "pid": 560759,
+      "closed": true,
+      "code": 0,
+      "signal": null,
+      "spawnError": null,
+      "requested": true,
+      "forced": false,
+      "failures": [],
+      "clean": true
+    }
+  ]
+}

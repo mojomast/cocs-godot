@@ -1,0 +1,994 @@
+[
+  {
+    "stage": "approach-driver-3",
+    "start": 5.883333333333318,
+    "end": 10.033333333333411,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -62,
+        "y": 0,
+        "z": -4
+      }
+    }
+  },
+  {
+    "stage": "enter-driver-driver-243",
+    "start": 10.033333333333411,
+    "end": 14.250000000000288,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -62,
+        "y": 0,
+        "z": -4
+      }
+    }
+  },
+  {
+    "stage": "drive-boost",
+    "start": 14.250000000000288,
+    "end": 15.23333333333367,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -56.59347471279893,
+        "y": 0,
+        "z": -4
+      }
+    }
+  },
+  {
+    "stage": "drive-bend",
+    "start": 15.23333333333367,
+    "end": 15.666666666667025,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -48.887984290365694,
+        "y": 0,
+        "z": -4.046950982325658
+      }
+    }
+  },
+  {
+    "stage": "reverse",
+    "start": 15.666666666667025,
+    "end": 17.45000000000029,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.76822891468244,
+        "y": 0,
+        "z": -5.273750638673097
+      }
+    }
+  },
+  {
+    "stage": "stop",
+    "start": 17.45000000000029,
+    "end": 18.283333333333577,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -39.02667474136907,
+        "y": 0,
+        "z": -2.19547551902202
+      }
+    }
+  },
+  {
+    "stage": "park-brake",
+    "start": 18.283333333333577,
+    "end": 19.933333333333483,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "driver-vehicle-shot-825",
+    "start": 19.933333333333483,
+    "end": 20.266666666666797,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "approach-opponent-849",
+    "start": 20.266666666666797,
+    "end": 38.316666666665775,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "exit-driver-1806",
+    "start": 38.316666666665775,
+    "end": 39.86666666666569,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "enter-opponent-driver-1893",
+    "start": 39.86666666666569,
+    "end": 40.68333333333231,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": "driver"
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "team-swap-wet",
+    "start": 40.68333333333231,
+    "end": 41.03333333333229,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": "driver"
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "exit-opponent-1965",
+    "start": 41.03333333333229,
+    "end": 42.66666666666553,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "approach-driver-2055",
+    "start": 42.66666666666553,
+    "end": 42.96666666666551,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "enter-driver-driver-2076",
+    "start": 42.96666666666551,
+    "end": 43.49999999999881,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "approach-opponent-2109",
+    "start": 43.49999999999881,
+    "end": 43.73333333333213,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "enter-opponent-gunner-2127",
+    "start": 43.73333333333213,
+    "end": 44.083333333332114,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": "gunner"
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "opponent-vehicle-shot-2151",
+    "start": 44.083333333332114,
+    "end": 44.316666666665434,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": "gunner"
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "approach-crew-2169",
+    "start": 44.316666666665434,
+    "end": 50.06666666666511,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": "gunner"
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "enter-crew-passenger-2469",
+    "start": 50.06666666666511,
+    "end": 50.29999999999843,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": "gunner"
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": "passenger"
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "crew-personal-fire-2487",
+    "start": 50.29999999999843,
+    "end": 50.59999999999841,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": "gunner"
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": "passenger"
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "exit-crew-2508",
+    "start": 50.59999999999841,
+    "end": 50.83333333333173,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": "gunner"
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "exit-opponent-2526",
+    "start": 50.83333333333173,
+    "end": 51.083333333331716,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "exit-driver-2544",
+    "start": 51.083333333331716,
+    "end": 51.68333333333168,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "opponent-to-hull",
+    "start": 51.68333333333168,
+    "end": 52.89999999999828,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "ordinary-damage",
+    "start": 52.89999999999828,
+    "end": 54.01666666666488,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 181.2000000000001,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "approach-driver-2712",
+    "start": 54.01666666666488,
+    "end": 54.199999999998205,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 168.0000000000001,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "enter-driver-driver-2727",
+    "start": 54.199999999998205,
+    "end": 54.983333333331494,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 173.99999999999977,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "passive-codex-repair",
+    "start": 54.983333333331494,
+    "end": 56.649999999998066,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 193.99999999999864,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "exit-driver-2862",
+    "start": 56.649999999998066,
+    "end": 57.06666666666471,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 195.79999999999853,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "ordinary-wreck",
+    "start": 57.06666666666471,
+    "end": 58.84999999999794,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 0,
+      "position": {
+        "x": -40.19419769782478,
+        "y": 0,
+        "z": -4.259124714407942
+      }
+    }
+  },
+  {
+    "stage": "source-respawn",
+    "start": 58.84999999999794,
+    "end": 63.83333333333099,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-puma",
+      "health": 300,
+      "position": {
+        "x": -62,
+        "y": 0,
+        "z": -4
+      }
+    }
+  }
+]

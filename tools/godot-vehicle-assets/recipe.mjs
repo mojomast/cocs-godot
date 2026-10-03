@@ -33,6 +33,11 @@ export function recipe(kind, lod=0) {
     const vs=[-d,d].flatMap(z=>ring.map(([x,y])=>add(at,[x,y,z])));
     mesh(name,vs,[[7,6,5,4,3,2,1,0],[8,9,10,11,12,13,14,15],...ring.map((_,i)=>[i,(i+1)%8,(i+1)%8+8,i+8])],material,detail);
   }
+  function loft(name,rows,material='armor') {
+    const vs=rows.flatMap(([z,w,b,t])=>[[-w,b,z],[w,b,z],[w,t,z],[-w,t,z]]),fs=[[3,2,1,0]];
+    for(let k=0;k<rows.length-1;k++)for(let i=0;i<4;i++)fs.push([k*4+i,k*4+(i+1)%4,(k+1)*4+(i+1)%4,(k+1)*4+i]);
+    const end=(rows.length-1)*4;fs.push([end,end+1,end+2,end+3]);mesh(name,vs,fs,material);
+  }
   function tube(name,a,b,r,material='edge',detail=0,inner=0) {
     const axis=norm(sub(b,a)), u=norm(cross(axis,Math.abs(axis[1])<.9?[0,1,0]:[1,0,0])),v=cross(axis,u);
     const n=[20,12,8][lod], verts=[];
@@ -57,8 +62,8 @@ export function recipe(kind, lod=0) {
     for(const z of [-len*.33,0,len*.33])tube('crossmember',[-w*.4,heavy?.75:.4,z],[w*.4,heavy?.75:.4,z],.035,'recess');
   }
   if(heavy){
-    panel('faceted-siege-hull',[0,.98,0],[2.28,.55,4.8]);
-    panel('glacis',[0,1.26,1.8],[2.24,.22,1.24],'edge');
+    loft('faceted-siege-hull',[[-2.4,.99,.705,1.255],[-1.8,1.14,.705,1.255],[1.45,1.14,.705,1.255],[2.4,1.08,.75,1.04]]);
+    loft('sloping-glacis',[[1.2,1.12,1.25,1.36],[2.42,1.04,.99,1.1]],'edge');
     for(const s of [-1,1]){
       // Open wheel bays bounded by upper/lower belts and curved end shoes.
       for(const y of [.08,.82])panel('track-belt',[s*1.28,y,0],[.4,.1,4.6],'rubber');
@@ -72,13 +77,19 @@ export function recipe(kind, lod=0) {
       panel('periscope',[s*.58,1.4,.98],[.3,.08,.12],'recess',1);
     }
   }else{
-    panel('front-cowl',[0,compact?.57:.83,len*.32],[w,.22,len*.29]);
+    loft('sloping-front-cowl',compact?[[.23,w*.49,.46,.69],[.64,w*.46,.43,.61],[.92,w*.31,.38,.49]]:[[.55,w*.5,.72,.95],[1.22,w*.49,.7,.9],[1.55,w*.4,.65,.78]]);
+    for(const s of [-1,1]){
+      const y=compact?.66:.935,z=compact?.29:.62;
+      panel('hood-access-latch',[s*w*.32,y,z],[.08,.025,.16],'edge',1);
+      tube('hood-hinge',[s*w*.17,y+.012,z],[s*w*.27,y+.012,z],.018,'recess',1);
+    }
+    for(let i=0;i<(compact?4:7);i++)panel('radiator-fin',[(i-(compact?1.5:3))*.1,compact?.43:.69,compact?.929:1.56],[.026,compact?.08:.14,.018],'recess',1);
     panel('rear-service-deck',[0,compact?.5:.72,-len*.37],[w,.18,len*.23]);
     for(const s of [-1,1]){
       const x=s*w*.42, top=compact?1.08:1.59, zfront=compact?.28:.45, zrear=compact?-.6:-.7;
-      tube('cage-front',[x,.45,zfront],[x,top,zfront],.035);
+      tube('cage-front',[x,.45,zfront],[x,top,zfront-(compact?.17:0)],.035);
       tube('cage-rear',[x,.45,zrear],[x,top,zrear],.035);
-      tube('cage-roof',[x,top,zrear],[x,top,zfront],.035);
+      tube('cage-roof',[x,top,zrear],[x,top,zfront-(compact?.17:0)],.035);
       tube('cage-brace',[x,.53,zrear-.15],[x,top,zrear],.026,'recess');
       panel('sill',[s*w*.46,.51,0],[.07,.16,len*.65],'team_accent');
       tube('rear-cage-cross',[-w*.42,top,zrear],[w*.42,top,zrear],.03);
@@ -94,6 +105,8 @@ export function recipe(kind, lod=0) {
     for(const s of [-1,1])panel(`${name}-harness`,[p.x+s*width*.29,p.y+.53,p.z-.127],[.028,.3,.012],'recess',1);
   }
   const d=layout.driver;
+  panel('instrument-dash',[d.x,d.y+.45,d.z+.39],[compact?.26:.44,.13,.045],'recess',1);
+  for(const x of [-.075,.075])tube('instrument-dial',[d.x+x,d.y+.47,d.z+.36],[d.x+x,d.y+.47,d.z+.365],.037,'edge',2,.027);
   tube('steering-column',[d.x,d.y+.15,d.z+.32],[d.x,d.y+.58,d.z+.35],.024,'edge',1);
   tube('steering-rim',[d.x,d.y+.55,d.z+.34],[d.x,d.y+.55,d.z+.365],compact?.09:.14,'rubber',1,compact?.07:.115);
   for(const s of [-1,1]){
@@ -129,7 +142,8 @@ export function recipe(kind, lod=0) {
   joint='turret';
   const gunY=c.source.muzzles[0].y;
   tube('turret-ring',[0,gunY-.23,0],[0,gunY-.15,0],heavy?.79:compact?.16:.31,'recess');
-  panel('receiver',[0,gunY-.04,heavy?-.25:-.16],[heavy?1.7:compact?.22:.55,heavy?.48:.19,heavy?1.5:.42]);
+  if(heavy)loft('faceted-siege-receiver',[[-1,.62,1.24,1.65],[-.63,.85,1.22,1.78],[.18,.85,1.22,1.73],[.5,.59,1.27,1.6]]);
+  else panel('receiver',[0,gunY-.04,-.16],[compact?.22:.55,.19,.42]);
   if(heavy){
     tube('commander-hatch',[0,1.69,-.35],[0,1.79,-.35],.38,'armor');
     panel('optic-housing',[.42,1.84,.12],[.27,.24,.35],'recess');

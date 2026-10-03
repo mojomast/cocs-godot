@@ -1,0 +1,570 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
+
+WARNING: Adding 'body' as child to '' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'turret' as child to '@Node3D@349' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_0' as child to '@Node3D@333' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_1' as child to '@Node3D@337' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_2' as child to '@Node3D@341' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_3' as child to '@Node3D@345' will make owner 'puma-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@353' as child to '' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@354' as child to '@Node3D@349' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@355' as child to '@Node3D@333' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@356' as child to '@Node3D@337' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@357' as child to '@Node3D@341' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@358' as child to '@Node3D@345' will make owner 'puma-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@359' as child to '' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@360' as child to '@Node3D@349' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@361' as child to '@Node3D@333' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@362' as child to '@Node3D@337' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@363' as child to '@Node3D@341' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@364' as child to '@Node3D@345' will make owner 'puma-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://vehicles/puma.gd:93)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+VEHICLE_INSPECTION {"camera":"(5.2, 3.6, 6.5)","details":{"forcedLod":0,"purpose":"compare actual topology at equal visual scale"},"error":0,"frame":0,"name":"puma-lod0-close","ticksMs":653}
+VEHICLE_INSPECTION {"camera":"(5.2, 3.6, 6.5)","details":{"forcedLod":1,"purpose":"compare actual topology at equal visual scale"},"error":0,"frame":1,"name":"puma-lod1-close","ticksMs":807}
+VEHICLE_INSPECTION {"camera":"(5.2, 3.6, 6.5)","details":{"forcedLod":2,"purpose":"compare actual topology at equal visual scale"},"error":0,"frame":2,"name":"puma-lod2-close","ticksMs":951}
+VEHICLE_INSPECTION {"camera":"(12.89171, 4.726959, 17.18894)","details":{"distance":22.0,"forcedLod":false},"error":0,"frame":3,"name":"puma-distance-22","ticksMs":1084}
+VEHICLE_INSPECTION {"camera":"(15.23565, 5.586406, 20.31421)","details":{"distance":26.0,"forcedLod":false},"error":0,"frame":4,"name":"puma-distance-26","ticksMs":1209}
+VEHICLE_INSPECTION {"camera":"(36.91716, 13.53629, 49.22288)","details":{"distance":63.0,"forcedLod":false},"error":0,"frame":5,"name":"puma-distance-63","ticksMs":1330}
+VEHICLE_INSPECTION {"camera":"(39.26111, 14.39574, 52.34814)","details":{"distance":67.0,"forcedLod":false},"error":0,"frame":6,"name":"puma-distance-67","ticksMs":1443}
+VEHICLE_INSPECTION {"camera":"(-4.0, 2.1, -6.0)","details":{"purpose":"rear mechanical readability; not gameplay HUD"},"error":0,"frame":7,"name":"puma-compact-rear","ticksMs":1539}
+WARNING: Adding 'body' as child to '' will make owner 'titan-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'turret' as child to '@Node3D@458' will make owner 'titan-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_0' as child to '@Node3D@463' will make owner 'titan-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_1' as child to '@Node3D@466' will make owner 'titan-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_2' as child to '@Node3D@469' will make owner 'titan-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_3' as child to '@Node3D@472' will make owner 'titan-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_4' as child to '@Node3D@475' will make owner 'titan-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_5' as child to '@Node3D@478' will make owner 'titan-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_6' as child to '@Node3D@481' will make owner 'titan-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_7' as child to '@Node3D@484' will make owner 'titan-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_8' as child to '@Node3D@489' will make owner 'titan-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_9' as child to '@Node3D@492' will make owner 'titan-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_10' as child to '@Node3D@495' will make owner 'titan-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_11' as child to '@Node3D@498' will make owner 'titan-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_12' as child to '@Node3D@501' will make owner 'titan-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_13' as child to '@Node3D@504' will make owner 'titan-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_14' as child to '@Node3D@507' will make owner 'titan-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_15' as child to '@Node3D@510' will make owner 'titan-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@516' as child to '' will make owner 'titan-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@517' as child to '@Node3D@458' will make owner 'titan-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@518' as child to '@Node3D@463' will make owner 'titan-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@519' as child to '@Node3D@466' will make owner 'titan-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@520' as child to '@Node3D@469' will make owner 'titan-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@521' as child to '@Node3D@472' will make owner 'titan-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@522' as child to '@Node3D@475' will make owner 'titan-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@523' as child to '@Node3D@478' will make owner 'titan-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@524' as child to '@Node3D@481' will make owner 'titan-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@525' as child to '@Node3D@484' will make owner 'titan-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@526' as child to '@Node3D@489' will make owner 'titan-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@527' as child to '@Node3D@492' will make owner 'titan-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@528' as child to '@Node3D@495' will make owner 'titan-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@529' as child to '@Node3D@498' will make owner 'titan-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@530' as child to '@Node3D@501' will make owner 'titan-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@531' as child to '@Node3D@504' will make owner 'titan-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@532' as child to '@Node3D@507' will make owner 'titan-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@533' as child to '@Node3D@510' will make owner 'titan-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@534' as child to '' will make owner 'titan-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@535' as child to '@Node3D@458' will make owner 'titan-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@536' as child to '@Node3D@463' will make owner 'titan-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@537' as child to '@Node3D@466' will make owner 'titan-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@538' as child to '@Node3D@469' will make owner 'titan-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@539' as child to '@Node3D@472' will make owner 'titan-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@540' as child to '@Node3D@475' will make owner 'titan-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@541' as child to '@Node3D@478' will make owner 'titan-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@542' as child to '@Node3D@481' will make owner 'titan-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@543' as child to '@Node3D@484' will make owner 'titan-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@544' as child to '@Node3D@489' will make owner 'titan-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@545' as child to '@Node3D@492' will make owner 'titan-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@546' as child to '@Node3D@495' will make owner 'titan-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@547' as child to '@Node3D@498' will make owner 'titan-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@548' as child to '@Node3D@501' will make owner 'titan-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@549' as child to '@Node3D@504' will make owner 'titan-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@550' as child to '@Node3D@507' will make owner 'titan-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@551' as child to '@Node3D@510' will make owner 'titan-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+VEHICLE_INSPECTION {"camera":"(6.5, 4.5, 8.125)","details":{"forcedLod":0,"purpose":"compare actual topology at equal visual scale"},"error":0,"frame":9,"name":"titan-lod0-close","ticksMs":1981}
+VEHICLE_INSPECTION {"camera":"(6.5, 4.5, 8.125)","details":{"forcedLod":1,"purpose":"compare actual topology at equal visual scale"},"error":0,"frame":10,"name":"titan-lod1-close","ticksMs":2147}
+VEHICLE_INSPECTION {"camera":"(6.5, 4.5, 8.125)","details":{"forcedLod":2,"purpose":"compare actual topology at equal visual scale"},"error":0,"frame":11,"name":"titan-lod2-close","ticksMs":2304}
+VEHICLE_INSPECTION {"camera":"(12.89171, 4.726959, 17.18894)","details":{"distance":22.0,"forcedLod":false},"error":0,"frame":12,"name":"titan-distance-22","ticksMs":2450}
+VEHICLE_INSPECTION {"camera":"(15.23565, 5.586406, 20.31421)","details":{"distance":26.0,"forcedLod":false},"error":0,"frame":13,"name":"titan-distance-26","ticksMs":2602}
+VEHICLE_INSPECTION {"camera":"(36.91716, 13.53629, 49.22288)","details":{"distance":63.0,"forcedLod":false},"error":0,"frame":14,"name":"titan-distance-63","ticksMs":2722}
+VEHICLE_INSPECTION {"camera":"(39.26111, 14.39574, 52.34814)","details":{"distance":67.0,"forcedLod":false},"error":0,"frame":15,"name":"titan-distance-67","ticksMs":2840}
+VEHICLE_INSPECTION {"camera":"(-4.0, 2.1, -6.0)","details":{"purpose":"rear mechanical readability; not gameplay HUD"},"error":0,"frame":16,"name":"titan-compact-rear","ticksMs":2965}
+WARNING: Adding 'body' as child to '' will make owner 'scout-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'turret' as child to '@Node3D@553' will make owner 'scout-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_0' as child to '@Node3D@556' will make owner 'scout-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_1' as child to '@Node3D@559' will make owner 'scout-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_2' as child to '@Node3D@562' will make owner 'scout-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding 'wheel_3' as child to '@Node3D@565' will make owner 'scout-lod0' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@577' as child to '' will make owner 'scout-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@578' as child to '@Node3D@553' will make owner 'scout-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@579' as child to '@Node3D@556' will make owner 'scout-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@580' as child to '@Node3D@559' will make owner 'scout-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@581' as child to '@Node3D@562' will make owner 'scout-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@582' as child to '@Node3D@565' will make owner 'scout-lod1' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@583' as child to '' will make owner 'scout-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@584' as child to '@Node3D@553' will make owner 'scout-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@585' as child to '@Node3D@556' will make owner 'scout-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@586' as child to '@Node3D@559' will make owner 'scout-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@587' as child to '@Node3D@562' will make owner 'scout-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+WARNING: Adding '@MeshInstance3D@588' as child to '@Node3D@565' will make owner 'scout-lod2' inconsistent. Consider unsetting the owner beforehand.
+     at: add_child (scene/main/node.cpp:1696)
+     GDScript backtrace (most recent call first):
+         [0] install (res://vehicle_assets/attachment.gd:56)
+         [1] _init (res://combined_arms/chassis.gd:100)
+         [2] run (res://tests/vehicle_assets/inspection.gd:57)
+VEHICLE_INSPECTION {"camera":"(4.16, 2.88, 5.2)","details":{"forcedLod":0,"purpose":"compare actual topology at equal visual scale"},"error":0,"frame":18,"name":"scout-lod0-close","ticksMs":3319}
+VEHICLE_INSPECTION {"camera":"(4.16, 2.88, 5.2)","details":{"forcedLod":1,"purpose":"compare actual topology at equal visual scale"},"error":0,"frame":19,"name":"scout-lod1-close","ticksMs":3465}
+VEHICLE_INSPECTION {"camera":"(4.16, 2.88, 5.2)","details":{"forcedLod":2,"purpose":"compare actual topology at equal visual scale"},"error":0,"frame":20,"name":"scout-lod2-close","ticksMs":3611}
+VEHICLE_INSPECTION {"camera":"(12.89171, 4.726959, 17.18894)","details":{"distance":22.0,"forcedLod":false},"error":0,"frame":21,"name":"scout-distance-22","ticksMs":3740}
+VEHICLE_INSPECTION {"camera":"(15.23565, 5.586406, 20.31421)","details":{"distance":26.0,"forcedLod":false},"error":0,"frame":22,"name":"scout-distance-26","ticksMs":3862}
+VEHICLE_INSPECTION {"camera":"(36.91716, 13.53629, 49.22288)","details":{"distance":63.0,"forcedLod":false},"error":0,"frame":23,"name":"scout-distance-63","ticksMs":3975}
+VEHICLE_INSPECTION {"camera":"(39.26111, 14.39574, 52.34814)","details":{"distance":67.0,"forcedLod":false},"error":0,"frame":24,"name":"scout-distance-67","ticksMs":4085}
+VEHICLE_INSPECTION {"camera":"(-4.0, 2.1, -6.0)","details":{"purpose":"rear mechanical readability; not gameplay HUD"},"error":0,"frame":25,"name":"scout-compact-rear","ticksMs":4169}
+VEHICLE_INSPECTION_COMPLETE

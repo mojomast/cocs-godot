@@ -23,6 +23,7 @@ func _init() -> void:
 		bindings.append(row)
 
 func assign(player: int, device: int) -> bool:
+	if player < 0 or player > 1 or device < -1: return false
 	if device >= 0 and devices[1-player] == device: return false
 	release_all()
 	devices[player] = device

@@ -1,0 +1,994 @@
+[
+  {
+    "stage": "approach-driver-3",
+    "start": 5.8499999999999845,
+    "end": 14.883333333333653,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -52,
+        "y": 0,
+        "z": 8
+      }
+    }
+  },
+  {
+    "stage": "enter-driver-driver-513",
+    "start": 14.883333333333653,
+    "end": 15.933333333333705,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -52,
+        "y": 0,
+        "z": 8
+      }
+    }
+  },
+  {
+    "stage": "drive-boost",
+    "start": 15.933333333333705,
+    "end": 17.200000000000305,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -45.90483758736949,
+        "y": 0,
+        "z": 8
+      }
+    }
+  },
+  {
+    "stage": "drive-bend",
+    "start": 17.200000000000305,
+    "end": 20.616666666666777,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.09648367423315,
+        "y": 0,
+        "z": 7.850131336179376
+      }
+    }
+  },
+  {
+    "stage": "reverse",
+    "start": 20.616666666666777,
+    "end": 22.500000000000004,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.7029485085143,
+        "y": 0,
+        "z": 5.6365840873740005
+      }
+    }
+  },
+  {
+    "stage": "stop",
+    "start": 22.500000000000004,
+    "end": 23.233333333333295,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.410456262667864,
+        "y": 0,
+        "z": 6.598286796827938
+      }
+    }
+  },
+  {
+    "stage": "park-brake",
+    "start": 23.233333333333295,
+    "end": 24.11666666666658,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "driver-vehicle-shot-1050",
+    "start": 24.11666666666658,
+    "end": 24.516666666666556,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "approach-opponent-1077",
+    "start": 24.516666666666556,
+    "end": 40.34999999999899,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "exit-driver-1911",
+    "start": 40.34999999999899,
+    "end": 41.79999999999891,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "enter-opponent-driver-1992",
+    "start": 41.79999999999891,
+    "end": 42.21666666666555,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": "driver"
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "team-swap-wet",
+    "start": 42.21666666666555,
+    "end": 42.38333333333221,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": "driver"
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "exit-opponent-2034",
+    "start": 42.38333333333221,
+    "end": 42.73333333333219,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "approach-driver-2058",
+    "start": 42.73333333333219,
+    "end": 44.433333333332094,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "enter-driver-driver-2151",
+    "start": 44.433333333332094,
+    "end": 45.133333333332054,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "approach-opponent-2193",
+    "start": 45.133333333332054,
+    "end": 45.5499999999987,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "enter-opponent-gunner-2220",
+    "start": 45.5499999999987,
+    "end": 45.73333333333202,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": "gunner"
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "opponent-vehicle-shot-2235",
+    "start": 45.73333333333202,
+    "end": 46.083333333332,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": "gunner"
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "approach-crew-2259",
+    "start": 46.083333333332,
+    "end": 51.56666666666502,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": "gunner"
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "enter-crew-passenger-2547",
+    "start": 51.56666666666502,
+    "end": 51.866666666665004,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": "gunner"
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": "passenger"
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "crew-personal-fire-2568",
+    "start": 51.866666666665004,
+    "end": 52.16666666666499,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": "gunner"
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": "passenger"
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "exit-crew-2589",
+    "start": 52.16666666666499,
+    "end": 52.41666666666497,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": "gunner"
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "exit-opponent-2607",
+    "start": 52.41666666666497,
+    "end": 52.69999999999829,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "exit-driver-2628",
+    "start": 52.69999999999829,
+    "end": 53.23333333333159,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "opponent-to-hull",
+    "start": 53.23333333333159,
+    "end": 54.2999999999982,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "ordinary-damage",
+    "start": 54.2999999999982,
+    "end": 56.93333333333138,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 610.3999999999999,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "approach-driver-2862",
+    "start": 56.93333333333138,
+    "end": 63.56666666666434,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 610.3999999999999,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "enter-driver-driver-3201",
+    "start": 63.56666666666434,
+    "end": 64.2666666666643,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 613.4000000000005,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "passive-codex-repair",
+    "start": 64.2666666666643,
+    "end": 65.03333333333093,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": "driver"
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 622.6000000000026,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "exit-driver-3288",
+    "start": 65.03333333333093,
+    "end": 65.56666666666423,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 625.6000000000033,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "ordinary-wreck",
+    "start": 65.56666666666423,
+    "end": 72.34999999999718,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 0,
+      "position": {
+        "x": -35.55778458198528,
+        "y": 0,
+        "z": 6.1138772210820305
+      }
+    }
+  },
+  {
+    "stage": "source-respawn",
+    "start": 72.34999999999718,
+    "end": 82.31666666666328,
+    "actorIds": [
+      {
+        "role": "driver",
+        "id": 0,
+        "seat": null
+      },
+      {
+        "role": "opponent",
+        "id": 1,
+        "seat": null
+      },
+      {
+        "role": "crew",
+        "id": 2,
+        "seat": null
+      }
+    ],
+    "vehicle": {
+      "id": "sunscar-0-titan",
+      "health": 650,
+      "position": {
+        "x": -52,
+        "y": 0,
+        "z": 8
+      }
+    }
+  }
+]

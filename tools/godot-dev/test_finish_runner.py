@@ -183,6 +183,67 @@ class FinishRunnerTest(unittest.TestCase):
             self.assertEqual(data['attempts']['heavy'][0]['status'], 'unrun')
             self.assertFalse(data['release_ready'])
 
+    def test_ui_command_launch_anchor_is_saved_and_survives_ledger_updates(self):
+        """Intercept the actual proposed command; never launch UI/Godot/X11."""
+        root = Path(__file__).resolve().parents[2]
+        canonical = load_matrix(root / 'port/finish/final_matrix.json')
+        job = next(j for j in canonical['jobs'] if j['id'] == 'fighting-production-ui-journey')
+        self.assertIn('--finish-anchor', job['command'])
+        self.assertIn('--finish-matrix', job['command'])
+        review = next(j for j in canonical['jobs'] if j['id'] == 'fighting-four-stage-training-review')
+        self.assertIn(job['id'], review['after'])
+        path, data = self.fixture_repo()
+        # Only scheduling dependencies are removed in this synthetic repository.
+        # The real production command, timeout and anchor substitutions stay intact.
+        data['jobs'] = [{**job, 'after': [], 'requires': []}]
+        path.write_text(json.dumps(data))
+        sys.path.insert(0, str(root / 'tools/fighting/acceptance'))
+        try:
+            from ui_driver import anchor_identity
+            observed = {}
+
+            def inspect_launch(command, cwd, env, log_path, timeout):
+                self.assertEqual(command[1:3], ['tools/fighting/acceptance/ui_driver.py', 'native'])
+                anchor_path = Path(command[command.index('--finish-anchor') + 1])
+                matrix_path = Path(command[command.index('--finish-matrix') + 1])
+                self.assertEqual(matrix_path, path.resolve())
+                self.assertTrue(anchor_path.is_absolute())
+                self.assertEqual(anchor_path.name, 'report.json')
+                report = json.loads(anchor_path.read_text())
+                self.assertEqual(report['queue'], load_matrix(path)['jobs'])
+                self.assertEqual(report['attempts'][job['id']][-1]['status'], 'running')
+                self.assertEqual(report['attempts'][job['id']][-1]['command'], command)
+                identity, _ = anchor_identity(self.root, matrix_path, anchor_path)
+                observed.update(path=anchor_path, identity=identity,
+                                launch_sha=hashlib.sha256(anchor_path.read_bytes()).hexdigest())
+                log_path.write_text('Synthetic intercepted launch, never native evidence')
+                return {'status': 'failed', 'exit_code': 1, 'failure_reason': 'synthetic-interception'}
+
+            with patch.dict(os.environ, {'GODOT_BIN': '/not-executed'}), \
+                    patch('finish_runner.run_bounded', side_effect=inspect_launch) as launch:
+                result = main(['--root', str(self.root), '--matrix', str(path),
+                               '--evidence', str(self.root / 'evidence'), '--run',
+                               '--grant', 'engine', '--grant-reference', 'SYNTHETIC-NOT-A-GRANT'])
+            self.assertEqual(result, 1)
+            launch.assert_called_once()
+            self.assertNotEqual(observed['launch_sha'], hashlib.sha256(observed['path'].read_bytes()).hexdigest())
+            # Mutable status/attempt bytes changed; immutable identity+queue did not.
+            self.assertEqual(anchor_identity(self.root, path, observed['path'])[0], observed['identity'])
+            report = json.loads(observed['path'].read_text())
+            report['queue'][0]['timeout'] += 1
+            save_report(observed['path'], report)
+            with self.assertRaisesRegex(ValueError, 'queue differs'):
+                anchor_identity(self.root, path, observed['path'])
+            report['queue'] = load_matrix(path)['jobs']
+            report['input_identity']['sha256'] = 'wrong-anchor'
+            save_report(observed['path'], report)
+            with self.assertRaisesRegex(ValueError, 'anchor differs'):
+                anchor_identity(self.root, path, observed['path'])
+            with self.assertRaises(OSError):
+                anchor_identity(self.root, path, self.root / 'absent-anchor.json')
+        finally:
+            sys.path.pop(0)
+
     def test_changed_bytes_reject_resume_preserving_old_report(self):
         path, data = self.fixture_repo()
         first = input_identity(self.root, data, {})

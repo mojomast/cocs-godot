@@ -1,5 +1,10 @@
 # Independent fighting acceptance
 
+**Current follow-up:** canonical `ce084d50` and real produced rigs are now consumed.
+See [UI_HANDOFF.md](UI_HANDOFF.md) for the new bounded production-scene UI journey,
+source results, exact receipt integration and parent-only final-matrix proposal.
+The older preparation status below records the original pre-engine handoff.
+
 **Prepared for merged engine; native execution is unrun.** Base `37dd3da4` had no
 `godot/fighting/` implementation/data/assets. Content `827d24a8` + `79d98652` is
 now consumed: real data has 138 moves, 27 proposed combo routes and 25 paired

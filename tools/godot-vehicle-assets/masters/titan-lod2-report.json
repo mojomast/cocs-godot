@@ -1,0 +1,9 @@
+{
+  "kind": "titan",
+  "lod": 2,
+  "triangles": 3256,
+  "recipe_sha256": "8829f8107dccd1e983407013b755023eab07c478f67f5f50c933453ad91c1393",
+  "blender": "4.5.14 LTS",
+  "materials": 8,
+  "attachments": 18
+}

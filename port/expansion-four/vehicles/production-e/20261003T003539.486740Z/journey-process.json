@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "node",
+    "tools/godot-vehicle-assets/journey.mjs",
+    "--granted",
+    "--kind=all",
+    "--output=/home/mojo/.tmp-on-disk/cocs-expansion-four-vehicles-evidence-20261002/production-e/20261003T003539.486740Z/connected"
+  ],
+  "started": "2026-10-03T00:35:39.486882+00:00",
+  "timeoutSeconds": 1200,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-four-vehicles-evidence-20261002/production-e/20261003T003539.486740Z/journey.log",
+  "processGroup": 612304,
+  "exitCode": 0,
+  "ended": "2026-10-03T00:46:48.826253+00:00",
+  "ownedGroupTeardownRequested": true
+}

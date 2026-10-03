@@ -1,0 +1,41 @@
+{
+  "status": "source-prepared; native execution pending explicit fighting grant",
+  "parent_action": "Add this executable job before the existing receipt-only fighting-four-stage-training-review; add its ID to that review's after list. Do not replace human/GPU review with machine assertions.",
+  "job": {
+    "id": "fighting-production-ui-journey",
+    "cohort": "engine",
+    "owner": "Astra independent fighting acceptance",
+    "timeout": 730,
+    "after": ["native-import", "fighting-camera-native"],
+    "evidence_kind": "native-production-ui-input-lifecycle",
+    "needs_grant_reference": true,
+    "requires": [
+      "godot/fighting/main.tscn",
+      "godot/fighting/main.gd",
+      "godot/fighting/presentation/input_router.gd",
+      "godot/fighting/presentation/camera.gd",
+      "godot/fighting/presentation/pose_bounds.gd",
+      "godot/tests/fighting/presentation/camera_gate.gd",
+      "godot/tests/fighting/acceptance/ui_journey.gd",
+      "tools/fighting/acceptance/ui_driver.py",
+      "tools/fighting/acceptance/ui_os_bridge.py",
+      "tools/fighting/acceptance/ui_source.py",
+      "godot/fighting/assets/operators/meta.glb",
+      "godot/fighting/assets/operators/mistral.glb",
+      "godot/fighting/assets/operators/chatgpt.glb",
+      "godot/fighting/assets/operators/claude.glb",
+      "godot/fighting/assets/operators/grok.glb",
+      "godot/fighting/assets/operators/gemini.glb",
+      "godot/fighting/assets/operators/deepseek.glb",
+      "godot/fighting/assets/operators/kimi.glb",
+      "godot/fighting/assets/operators/qwen.glb"
+    ],
+    "units": ["four-stages-wide-compact150", "nine-real-rigs", "local-versus-two-sided-throw-tech", "training-reset-frame-record-replay", "AI-active-paused-inactive-counts", "real-application-focus-release", "two-actor-virtual-controller-loss", "responsive-camera-HUD-containment", "pose-cache-and-frame-timings", "live-Home-teardown"],
+    "command": ["{python}", "tools/fighting/acceptance/ui_driver.py", "native", "--root", "{root}", "--output", "{out}", "--godot", "{godot}", "--heavy-grant", "{grant_reference}"],
+    "success_marker": "FIGHTING_PRODUCTION_UI_DRIVER_OK",
+    "criteria": "Production main.tscn is driven by GUI activation and real keyboard/joypad events only. Existing camera_gate runs first. Four actual stages at wide fullscreen UI100 and compact UI150, representative nine rigs, positive throw/contact/tech outcomes on both actors, exact replay frames and AI clocks, real X11 focus notification path, actual Linux virtual-device enumeration/removal, all native pose projections inside measured HUD-safe bounds, freed worlds and live Home. Strict post-exit errors/leaks and candidate identity checks. Physical controllers, human art/feel, and hardware GPU review are not inferred.",
+    "next_action": "After robot production releases its slot, obtain explicit fighting engine/display grant and /dev/uinput access; run serially. Repair genuine failures with assigned owners without modifying accepted moves or immutable GLBs."
+  },
+  "prerequisites": ["Explicit fighting native grant, not ROBOT-ASSET-PRODUCTION-20261002-D", "Godot 4.5.2 binary", "Xvfb and xdotool", "libX11.so.6", "Linux /dev/uinput writable and resulting event nodes readable by native process"],
+  "receipt": "Existing owner-closure schema is reused by ui_driver.py receipt only for a run bound at launch to --finish-anchor, plus independently bound owner stage/readability/smoothing/GPU review. Unanchored runs cannot be restamped."
+}

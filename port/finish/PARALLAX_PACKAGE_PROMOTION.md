@@ -1,5 +1,9 @@
 # Parallax production-C: bounded package asset promotion
 
+Later auxiliary receipt reconciliation is recorded in
+[ROBOT_PACKAGE_PROMOTION.md](ROBOT_PACKAGE_PROMOTION.md). The original receipt
+hash below is retained as history; Parallax assets and acceptance scope are unchanged.
+
 Parent explicitly authorized source-only promotion of **Parallax interiors only**
 in this packaging session on 2026-10-02, after personally reviewing the full-size
 overview, archive interior/storage, pump interior/hydraulics and corrected Foundry

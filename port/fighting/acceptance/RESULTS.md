@@ -1,5 +1,9 @@
 # Source preparation result — 2026-10-02
 
+Later canonical/UI source follow-up: [UI_HANDOFF.md](UI_HANDOFF.md). Its real
+nine-export audit and 26 source/unit checks supersede the missing-export status
+of this original historical handoff. Native UI execution remains pending.
+
 **READY FOR MERGED ENGINE, not accepted for release.** No native executable,
 Blender, import, audio or capture process was launched. Foundry retains the
 exclusive resource. Core/rig implementations are absent from this worktree.

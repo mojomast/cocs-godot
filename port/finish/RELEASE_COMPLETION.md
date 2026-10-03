@@ -17,15 +17,15 @@ boundaries.
 |---|---|---|
 | Fighting production and native surface review | Astra `ses_f026e25e4ffezp2kvz5VGox7dz` | Complete and merged at `bb02e34b`; nine real rigs/masters and native comparisons; grant B released |
 | Parallax interior production | Astra `ses_f055a6b41ffe42yCL8AxbOL676` | Complete and reviewed at `b66f4ab3`; exact package promotion integrated at `5d33287a`; final-candidate regressions remain |
-| Robot/prop production | Astra `ses_f03a2843bffefDFoP3x1j1cxRO` | Exclusive grant D: real three-skin/six-prop masters, exports, native animation/LOD/placement and package-ready receipts |
-| Fighting camera readability | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing correction merged at `1bff0281`; six parent source checks pass, native four-stage comparison still pending |
+| Robot/prop production | Astra `ses_f03a2843bffefDFoP3x1j1cxRO` | Produced and reviewed through `2c39d1ad`; D released; actual texture/import-bound package promotion integrated at `e4b311fa` |
+| Fighting presentation and controls | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing at `1bff0281`; controller recovery integrated at `614a8a7f`, all 12 parent presentation source tests pass; native review pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
-| Scenery integration development | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Source-only atomic installation/failure bookkeeping fixes and connected four-chapter walk/shot/workshop verification fixtures |
-| Vehicle integration development | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Source-only connected Puma/Titan/Scout drive/crew/fire/repair/wreck fixtures and evidence-backed attachment fixes |
-| Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Source-only executable local/AI/training, throw/tech, input-release and four-stage presentation coverage using actual produced rigs |
-| Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Six new gates integrated at `0ffc853c`/`f70355d5`, preserving all original 135 jobs; fresh exact-input ledger required after candidate stabilizes |
-| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Actual Parallax receipt/promotion integrated; six other units still require production; native/export/Windows CI pending |
+| Scenery integration development | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Atomic installer and four-chapter connected journeys integrated at `cf0e8def`; nine parent source checks pass; awaits production/native grant after vehicles |
+| Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Exclusive grant E: complete source journey work, then actual nine masters/exports, native drive/crew/fire/repair/wreck and visual review |
+| Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base `b6ab6782` and ordinary-controller follow-up `da259d19` integrated; 26 parent acceptance tests and grammar pass; native execution awaits later grant and device access |
+| Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Launch-bound UI registration integrated through `2e355b93`; 142 jobs preserve all prior coverage; 35 parent runner/receipt tests pass; fresh ledger still required |
+| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Actual Parallax and robots promoted with reconciled import/image provenance; five other units still need production; final native/export/Windows CI remain pending |
 | Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | Prepared v3 pipeline integrated at `2902412b`; nine focused parent tests pass; real capture/edit/install awaits final assets and a later grant |
 
 All workers run in the background, using existing sessions/checkouts. Source work
@@ -35,14 +35,14 @@ are introduced by this directive.
 
 ## Exclusive heavy ownership
 
-**`ROBOT-ASSET-PRODUCTION-20261002-D` belongs to robot Astra
-`ses_f03a2843bffefDFoP3x1j1cxRO`.** Its scope is the robots unit: real Blender
-masters/exports and independent reopen, native role/prop/LOD/animation/placement
-review, integration hooks and actual package-ready receipts. Grant C explicitly
-released at `2026-10-02T22:23:17.018270Z`, with zero remaining owned processes
-across sixteen groups. Its Parallax and five light checks are integrated. A and B
-also explicitly released. Vehicles/scenery/maps await later grants; D does not
-grant an unbounded multi-unit batch.
+**`VEHICLE-ASSET-PRODUCTION-20261002-E` belongs to vehicle Astra
+`ses_f03440966ffeBzmLZZ3UkR4Oi7`.** Its scope is the vehicles unit: pre-build
+fallback proof, nine real masters/exports and independent reopen, native source/
+attachment/LOD/team/weather checks, connected gameplay and visual review, plus
+actual package-ready receipts. Robot D explicitly released at
+`2026-10-02T23:24:34.512076Z`, with zero remaining owned processes across 44 groups.
+Its assets and hooks are integrated. A/B/C also explicitly released. Scenery/maps
+await later grants; E does not grant an unbounded multi-unit batch.
 
 No other agent may run Godot, Blender, imports, rendering, audio capture or encoding
 before explicit teardown/release and a new grant. Asset integration, gameplay
@@ -489,3 +489,162 @@ while D uses them. No engine, Blender, import, render, encoder or authority jour
 is authorized for these source tasks. Native fixtures remain unaccepted until
 later explicit execution. Robot D remains the sole heavy owner; source development
 reduces the work left for subsequent vehicle/scenery/fighting native passes.
+
+## Robots delivered; vehicle production E
+
+Robot `3b6a3e79`, shared `93622961`, and receipt `8aeb610b` are integrated as
+`591e7354`, `536bd357`, `2c39d1ad`. Nine runtime GLBs contain three articulated
+three-LOD skins and six props; nine editable masters and three skeletal references
+are committed. Aggregate runtime geometry is 75,056 triangles / 6,382,544 bytes.
+Campaign/Horde deterministically select the three role skins; identity rebuilds
+retain opt-in, and six shallow Emberline fixtures preserve existing collision.
+The shared hook commit is integrated together with its hash-pinned asset contract.
+
+Retained D native results: 60,593 checks, 4,320 stock/new joint comparisons,
+51,168 Campaign and 86,016 Horde actual imported-sample targeting probes. Three
+controlled production-authority replay captures show source damage/death/artillery
+events; these do not establish hosted ordinary-input completion. Parent reran six
+robot contracts, actual export receipt validation and exact recipe serialization.
+Parent inspected anatomy, six props and all six production mounts and accepts the
+bounded produced art for integration.
+
+Gallery: **http://100.125.104.79:8796/native-robots-d/** — nine byte-identical files
+(1,965,013 bytes), all HTTP/hash verified. The animation movie uses 120 captures
+over 21.637081s and is labeled llvmpipe/controlled evidence, not hardware performance.
+
+Robot package receipt exists but is not yet promoted. Its output/source/runtime
+identities match the parent; one supporting verifier hash changed legitimately
+with the earlier Parallax closure. Packaging is authorized to reconcile that
+input, audit the actual extracted PNG/import dependencies and promote only robots
+after strict validation, preserving previous receipt identity. Scenery's active
+source owner received the exact four-line terrain workshop hook to preserve.
+
+Grant E now belongs to the vehicle owner. It extends that owner's source journey
+work into actual production at a safe committed boundary; fighting and scenery
+development remain source-only. No Windows export or final release attestation
+follows from the robot integration.
+
+## Scenery source integration complete
+
+Scenery `fa2e5fd8` is merged as `cf0e8def`. A chapter now publishes its installed
+groups, three asset IDs and recipe hash only after all six LOD instances validate.
+Failure frees pending nodes synchronously and leaves consistent empty bookkeeping;
+invalid resource/root/mesh/transform/collision/script cases produce explicit
+required-failure or optional-fallback diagnostics. Materials are instance-owned;
+clear/rebuild/detail switching retain their own resource ownership.
+
+Four connected chapter fixtures now require actual imported assets, ordinary
+input, shots, public workshop completion, acknowledgements, return travel and
+Leave/Home cleanup. The separate injected atomic-lifecycle fixture is labeled as
+a fixture, not proof of real art. Parent ran nine new/existing source and geometry
+contracts successfully. Godot compilation, real lifecycle/journeys and native
+performance remain unrun until the next scenery grant.
+
+Terrain, robot visual, all nine robot outputs and shared activation hooks remain
+unchanged. Packaging received the exact scenery adapter revision to reconcile
+robot supporting-input closure transparently; it must not reattribute D native
+evidence to this newer source. Vehicle E remains the exclusive heavy owner.
+
+## Two actual production units package-promoted
+
+Robot promotion follow-up `63ae35c8`, `bf9a46d0`, `ef5f18aa`, `784ddf84` is
+integrated through `0d45229c`. Robots bind 130 exact package inputs: nine extracted
+PNGs byte-identical to GLB embedded images, nine GLB and nine PNG import sidecars,
+actual tangent/source/vertex-color/local-UV policy, and the explicit scenery
+adapter revision. Original source fingerprints, masters, exports and activation
+hooks are unchanged. Prior receipt identities and each supporting-input advance
+remain recorded; no old native result is re-stamped.
+
+Current receipt hashes:
+- Robots: `e0667a6bc7295f30f337f571301f3e7747b84c265835e96c2a310b5ba5e00d85`.
+- Parallax: `3c7d26b851d031ff1509aa50e7aa81dc26df5f8836b5668e00ad7af2fef39ab5`.
+
+Parent reran nine focused real-asset/import/recorded-Git checks successfully;
+audit: `/tmp/opencode/parent-two-promoted-assets-audit.json`. The packaging lane
+passed 67 targeted tests and verified 29 retained robot evidence-file hashes.
+Strict export still rejects the five pending units: vehicles, scenery, Vesper,
+Abyssal and Stormglass. Robot D predates the scenery adapter correction; native
+compilation/runtime of that correction and full ordinary-input final acceptance
+remain pending. Details: `ROBOT_PACKAGE_PROMOTION.md`. No heavy tools, export or
+Windows CI ran in this packaging pass.
+
+## Production fighting UI journeys integrated
+
+Independent acceptance `14c40506` is integrated as `b6ab6782`. The fixture drives
+the real production scene through GUI controls and InputEvents: both-sided
+throws/techs, exact training recording/replay, AI active/paused/inactive clocks,
+actual X11 focus changes and kernel virtual-controller removal. Four stages at
+wide fullscreen/UI100 and compact/UI150 include representative use of all nine
+produced rigs, camera/HUD bounds, measurements and live Home teardown. These are
+executable source fixtures, not yet native passes.
+
+Parent reran all 26 Python acceptance tests and the new nine-rig source audit;
+both passed. Audit output is retained under
+`/tmp/opencode/fighting-ui-parent-source-b6ab6782/`. The original rig bytes and
+combat authority are unchanged.
+
+Two source-identified presentation bugs are assigned to the original presentation
+owner: a missing pad can display as Keyboard without changing routing, and P2's
+cycle can get stuck on P1's occupied first pad. Native fixtures expose these
+conditions; production fixes remain in progress. The final acceptance owner is
+registering the executable journey and binding its launch to the current ledger
+so a completed native run can supply the existing separate owner review receipt.
+The proposed job alone omitted that launch anchor; registration must close it.
+
+Environment probe: `/dev/uinput` exists but is neither readable nor writable by
+the parent. Real kernel virtual-device tests require accessible device/event nodes;
+there is no injected-signal substitute or claim of physical-controller coverage.
+Vehicle E remains exclusive. No fighting engine run, final-ledger pass or export
+has occurred in this integration.
+
+## Controller selection and recovery correction integrated
+
+Presentation `1ca6f39e` is integrated as `614a8a7f`. Disconnected assignments now
+display their actual missing pad ID; one explicit activation selects Keyboard.
+Controller cycling skips the other player's pad, enabling ordinary P1-first then
+P2-second selection. Choices are recalculated on activation and captions refresh
+on hotplug/focus without transferring ownership or automatically resuming play.
+The focused button survives cycling, and menu teardown clears stored references.
+Disconnect still releases both actors' held/queued input and blocks resume until
+the missing assignment is resolved.
+
+Parent ran all 12 presentation Python tests successfully (six camera, six device
+tests). The device tests execute the production pure helper through a narrow
+syntax/Array shim and inspect lifecycle wiring; they are not Godot or OS device
+evidence. The independent acceptance owner is replacing its prior P2-first
+workaround with ordinary assignment order and checking single-activation recovery
+while the other pad remains assigned. The final acceptance owner received the
+new helper/test dependencies. Native typing, hotplug, UI and responsive-camera
+execution remain pending under a later fighting grant and accessible uinput.
+
+Controller fixture follow-up `68bbe292` is integrated as `da259d19`. It now selects
+P1 before P2, checks exact exclusive routes, requires the truthful disconnected
+caption and recovers with exactly one GUI activation while retaining the other
+pad. It asserts button/focus preservation, both actors' released held/queued
+inputs, an unchanged paused clock and explicit Resume into mixed keyboard/pad
+routing before returning both players to keyboards. Only the fixture and its
+handoff documentation changed. Parent reran 26 acceptance tests and GDScript
+grammar parsing successfully; no native device or engine execution occurred.
+
+## Launch-bound UI registration complete
+
+Acceptance `e5f98a63` and `48dcaca1` are integrated as `135eeb5f` and `2e355b93`.
+The resolved matrix has 142 jobs, preserving the previous 141 and all original
+96 criticals. The executable UI journey requires native import, camera checks
+and receipt/source tests, and is a prerequisite for the separate four-stage owner
+review. The existing presentation source job now covers both camera and device
+tests; the device helper is an explicit UI dependency.
+
+The runner passes the actual ledger path and selected matrix at launch and saves
+the running attempt before the producer reads its anchor. Later ledger updates
+do not invalidate that stable path: identity and queue are verified independently
+of the changing report bytes. Unanchored historical runs remain ineligible for
+receipt promotion. Parent ran all 35 finish-runner/receipt source tests, including
+launch interception and mutable-ledger checks, successfully. Log:
+`/tmp/opencode/parent-finish-registration-tests-2e355b93.log`.
+
+Parent additionally resolved the 142-job matrix and verified prior extension IDs
+and both launch-anchor arguments. These tests use synthetic processes; no engine,
+virtual device, production ledger, export or Windows run was started. Vehicle E
+remains exclusive; final candidate freeze and native UI/device acceptance remain
+pending.

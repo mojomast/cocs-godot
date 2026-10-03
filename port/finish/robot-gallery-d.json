@@ -1,0 +1,21 @@
+{
+  "title": "Produced robot skins and service props — native D review",
+  "source_commit": "8aeb610b",
+  "evidence_root": "/home/mojo/.tmp-on-disk/cocs-expansion-three-robots-evidence-20261002/production-d",
+  "notes": [
+    "Actual Godot captures of Needle Surveyor (skirmisher), Caisson Guard (bulwark), Kiln Tender (mortar), their LODs and six support props. Images and video are copied unchanged from production D; click images for full resolution.",
+    "Production props are shallow service fixtures mounted on existing Emberline cover faces, preserving source collision. They do not introduce new repair or workshop mechanics.",
+    "Campaign views use controlled production-authority replay, not a hosted ordinary-input journey. Native animation video uses actual capture timestamps: 120 captures over 21.637081 seconds. Renderer: llvmpipe. This is not hardware-GPU performance or human-feel acceptance; final release verification remains pending."
+  ],
+  "files": [
+    {"kind":"image","path":"20261002T231436.880071Z/robot-anatomy.png","caption":"Three distinct roles — front, rear and underside"},
+    {"kind":"image","path":"20261002T231436.880071Z/lod-distance.png","caption":"Authored LOD bands and combat-distance views"},
+    {"kind":"image","path":"20261002T231436.880071Z/animation-contact.png","caption":"Native animation and contact studies"},
+    {"kind":"image","path":"20261002T231436.880071Z/props.png","caption":"Six produced support props"},
+    {"kind":"image","path":"20261002T231436.880071Z/production-mounts.png","caption":"Actual shallow mounts on existing Emberline cover"},
+    {"kind":"image","path":"20261002T231436.880071Z/campaign-source-events.png","caption":"Campaign composition with controlled source damage/death/artillery events"},
+    {"kind":"video","path":"20261002T231436.880071Z/native-animation-captured-cadence.mp4","caption":"Native animation at recorded capture cadence"},
+    {"kind":"receipt","path":"20261002T231436.880071Z/review.json","caption":"Review and capture-cadence receipt"},
+    {"kind":"receipt","path":"HEAVY_GRANT_RELEASE.json","caption":"Production-D cleanup and grant release"}
+  ]
+}
