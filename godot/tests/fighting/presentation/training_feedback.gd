@@ -141,7 +141,9 @@ func _real_core_replay(roster: Dictionary) -> void:
 		if tick == 160:
 			prefix = core.save_state()
 			observed_prefix = fb.save_observation()
-		var command := {"axis_x":1 if tick < 150 else 0,"axis_y":0,"held":1 if tick%40==0 else 0,"pressed":1 if tick%40==0 else 0}
+		# Keep approaching through the 90-frame intro and attack recovery;
+		# stopping at tick 150 leaves the fighters outside jab range.
+		var command := {"axis_x":1,"axis_y":0,"held":1 if tick%40==0 else 0,"pressed":1 if tick%40==0 else 0}
 		var commands := [command,_neutral()]
 		if tick >= 160: inputs.append(commands.duplicate(true))
 		var snapshot: Dictionary = core.step(commands)
