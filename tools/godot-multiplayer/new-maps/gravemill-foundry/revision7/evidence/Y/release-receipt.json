@@ -1,0 +1,331 @@
+{
+  "grant": "MOTH-BLENDER-20261003-Y",
+  "status": "released; no queued heavy work",
+  "time": "2026-10-03T21:58:35.653071+00:00",
+  "bootEpochSeconds": 1784816856,
+  "kernelClockTicksPerSecond": 100,
+  "ownedGroups": [
+    {
+      "pid": 1067532,
+      "ppid": 1066994,
+      "pgid": 1067532,
+      "startTicks": 624717115,
+      "comm": "blender",
+      "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/production.py -- --authorized-r7-build ",
+      "kernelStartUtc": "2026-10-03T21:47:07.150000+00:00"
+    },
+    {
+      "pid": 1069634,
+      "ppid": 1066994,
+      "pgid": 1069634,
+      "startTicks": 624720067,
+      "comm": "blender",
+      "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/production.py -- --authorized-r7-build --reopen ",
+      "kernelStartUtc": "2026-10-03T21:47:36.670000+00:00"
+    },
+    {
+      "pid": 1071271,
+      "ppid": 1066994,
+      "pgid": 1071271,
+      "startTicks": 624722514,
+      "comm": "Godot_v4.5.2-st",
+      "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --editor --import ",
+      "kernelStartUtc": "2026-10-03T21:48:01.140000+00:00"
+    },
+    {
+      "pid": 1073003,
+      "ppid": 1066994,
+      "pgid": 1073003,
+      "startTicks": 624725494,
+      "comm": "python3",
+      "argv": "",
+      "kernelStartUtc": "2026-10-03T21:48:30.940000+00:00"
+    },
+    {
+      "pid": 1073520,
+      "ppid": 1066994,
+      "pgid": 1073520,
+      "startTicks": 624726135,
+      "comm": "Godot_v4.5.2-st",
+      "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --editor --import ",
+      "kernelStartUtc": "2026-10-03T21:48:37.350000+00:00"
+    },
+    {
+      "pid": 1074415,
+      "ppid": 1066994,
+      "pgid": 1074415,
+      "startTicks": 624727158,
+      "comm": "python3",
+      "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/owned_capture_y.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/gravemill_foundry/revision7/import.gd ",
+      "kernelStartUtc": "2026-10-03T21:48:47.580000+00:00"
+    },
+    {
+      "pid": 1074894,
+      "ppid": 1066994,
+      "pgid": 1074894,
+      "startTicks": 624727806,
+      "comm": "python3",
+      "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/native_check.py ",
+      "kernelStartUtc": "2026-10-03T21:48:54.060000+00:00"
+    },
+    {
+      "pid": 1084674,
+      "ppid": 1066994,
+      "pgid": 1084674,
+      "startTicks": 624736027,
+      "comm": "python3",
+      "argv": "",
+      "kernelStartUtc": "2026-10-03T21:50:16.270000+00:00"
+    },
+    {
+      "pid": 1085289,
+      "ppid": 1066994,
+      "pgid": 1085289,
+      "startTicks": 624736878,
+      "comm": "python3",
+      "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/owned_capture_y.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/gravemill_foundry/revision7/rays.gd ",
+      "kernelStartUtc": "2026-10-03T21:50:24.780000+00:00"
+    },
+    {
+      "pid": 1085900,
+      "ppid": 1066994,
+      "pgid": 1085900,
+      "startTicks": 624737831,
+      "comm": "python3",
+      "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/owned_capture_y.py xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --rendering-method gl_compatibility --resolution 1280x720 --script res://tests/new_maps/gravemill_foundry/revision7/capture.gd ",
+      "kernelStartUtc": "2026-10-03T21:50:34.310000+00:00"
+    },
+    {
+      "pid": 1089487,
+      "ppid": 1066994,
+      "pgid": 1089487,
+      "startTicks": 624743573,
+      "comm": "python3",
+      "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/owned_capture_y.py xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --rendering-method gl_compatibility --audio-driver Dummy --resolution 1280x720 --script res://tests/new_maps/gravemill_foundry/revision7/targeted_capture.gd ",
+      "kernelStartUtc": "2026-10-03T21:51:31.730000+00:00"
+    },
+    {
+      "pid": 1096213,
+      "ppid": 1066994,
+      "pgid": 1096213,
+      "startTicks": 624752786,
+      "comm": "python3",
+      "argv": "python3 -m unittest discover -s tools/godot-multiplayer/new-maps/gravemill-foundry/revision7 -p test_*.py -v ",
+      "kernelStartUtc": "2026-10-03T21:53:03.860000+00:00"
+    },
+    {
+      "pid": 1102485,
+      "ppid": 1066994,
+      "pgid": 1102485,
+      "startTicks": 624762964,
+      "comm": "blender",
+      "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/master_inventory_y.py ",
+      "kernelStartUtc": "2026-10-03T21:54:45.640000+00:00"
+    },
+    {
+      "pid": 1120315,
+      "ppid": 1066994,
+      "pgid": 1120315,
+      "startTicks": 624776777,
+      "comm": "python3",
+      "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/collect_y.py ",
+      "kernelStartUtc": "2026-10-03T21:57:03.770000+00:00"
+    },
+    {
+      "pid": 1128767,
+      "ppid": 1066994,
+      "pgid": 1128767,
+      "startTicks": 624781419,
+      "comm": "python3",
+      "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/collect_y.py ",
+      "kernelStartUtc": "2026-10-03T21:57:50.190000+00:00"
+    },
+    {
+      "pid": 1136593,
+      "ppid": 1066994,
+      "pgid": 1136593,
+      "startTicks": 624784646,
+      "comm": "python3",
+      "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/cleanup_y.py ",
+      "kernelStartUtc": "2026-10-03T21:58:22.460000+00:00"
+    }
+  ],
+  "audits": [
+    {
+      "number": 1,
+      "time": "2026-10-03T21:58:34.912101+00:00",
+      "ownedGroupMembers": [],
+      "exclusiveLockAvailable": true
+    },
+    {
+      "number": 2,
+      "time": "2026-10-03T21:58:35.146237+00:00",
+      "ownedGroupMembers": [],
+      "exclusiveLockAvailable": true
+    },
+    {
+      "number": 3,
+      "time": "2026-10-03T21:58:35.382909+00:00",
+      "ownedGroupMembers": [],
+      "exclusiveLockAvailable": true
+    }
+  ],
+  "preexistingViewerUntouched": [
+    {
+      "pid": 2598700,
+      "ppid": 2598689,
+      "pgid": 2598689,
+      "startTicks": 522477875,
+      "comm": "godot-bin",
+      "argv": "/opt/viewer/godot-bin --path /home/browser/viewer --rendering-method gl_compatibility --audio-driver Dummy res://asset_viewer/viewer.tscn "
+    }
+  ],
+  "scope": "Exact PGIDs with kernel start-time guards, plus renderer descendant inventories in attempts/capture-group-*.json",
+  "preexistingViewerAndDisplaysUnchanged": [
+    {
+      "pid": 70662,
+      "ppid": 70408,
+      "pgid": 70662,
+      "startTicks": 511841716,
+      "comm": "Xvfb",
+      "argv": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 "
+    },
+    {
+      "pid": 175537,
+      "ppid": 175401,
+      "pgid": 175537,
+      "startTicks": 511960882,
+      "comm": "Xvfb",
+      "argv": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 "
+    },
+    {
+      "pid": 176009,
+      "ppid": 175913,
+      "pgid": 176009,
+      "startTicks": 511961172,
+      "comm": "Xvfb",
+      "argv": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 "
+    },
+    {
+      "pid": 176505,
+      "ppid": 176442,
+      "pgid": 176505,
+      "startTicks": 511961467,
+      "comm": "Xvfb",
+      "argv": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 "
+    },
+    {
+      "pid": 176934,
+      "ppid": 176864,
+      "pgid": 176934,
+      "startTicks": 511961759,
+      "comm": "Xvfb",
+      "argv": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 "
+    },
+    {
+      "pid": 177437,
+      "ppid": 177371,
+      "pgid": 177437,
+      "startTicks": 511962053,
+      "comm": "Xvfb",
+      "argv": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 "
+    },
+    {
+      "pid": 177961,
+      "ppid": 177827,
+      "pgid": 177961,
+      "startTicks": 511962341,
+      "comm": "Xvfb",
+      "argv": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 "
+    },
+    {
+      "pid": 178459,
+      "ppid": 178328,
+      "pgid": 178459,
+      "startTicks": 511962636,
+      "comm": "Xvfb",
+      "argv": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 "
+    },
+    {
+      "pid": 2492715,
+      "ppid": 2492587,
+      "pgid": 2492715,
+      "startTicks": 522362783,
+      "comm": "Xvfb",
+      "argv": "Xvfb-for-Xpra-100 -screen 0 8192x4096x24 +extension GLX +extension RANDR +extension RENDER +extension Composite -extension DOUBLE-BUFFER -nolisten tcp -noreset -auth /home/browser/.Xauthority -fakescreenfps 60 :100 "
+    },
+    {
+      "pid": 2523017,
+      "ppid": 2522902,
+      "pgid": 2522902,
+      "startTicks": 508677582,
+      "comm": "Xvfb",
+      "argv": "Xvfb :99 -screen 0 1440x900x24 -nolisten tcp "
+    },
+    {
+      "pid": 2585873,
+      "ppid": 2585868,
+      "pgid": 2585868,
+      "startTicks": 508830749,
+      "comm": "Xvfb",
+      "argv": "Xvfb :99 -screen 0 1440x900x24 -nolisten tcp "
+    },
+    {
+      "pid": 2598700,
+      "ppid": 2598689,
+      "pgid": 2598689,
+      "startTicks": 522477875,
+      "comm": "godot-bin",
+      "argv": "/opt/viewer/godot-bin --path /home/browser/viewer --rendering-method gl_compatibility --audio-driver Dummy res://asset_viewer/viewer.tscn "
+    },
+    {
+      "pid": 3002226,
+      "ppid": 9634,
+      "pgid": 3001069,
+      "startTicks": 528656103,
+      "comm": "Xvfb",
+      "argv": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix "
+    },
+    {
+      "pid": 3003879,
+      "ppid": 9634,
+      "pgid": 3003347,
+      "startTicks": 528658125,
+      "comm": "Xvfb",
+      "argv": "Xvfb :91 -screen 0 1280x800x24 -nolisten tcp "
+    },
+    {
+      "pid": 3005999,
+      "ppid": 9634,
+      "pgid": 3004479,
+      "startTicks": 528659838,
+      "comm": "Xvfb",
+      "argv": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix "
+    },
+    {
+      "pid": 3094547,
+      "ppid": 9634,
+      "pgid": 3093474,
+      "startTicks": 528806950,
+      "comm": "Xvfb",
+      "argv": "Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix "
+    },
+    {
+      "pid": 3113490,
+      "ppid": 9634,
+      "pgid": 3113486,
+      "startTicks": 528838460,
+      "comm": "Xvfb",
+      "argv": "Xvfb :78 -screen 0 1600x1000x24 -nolisten tcp "
+    }
+  ],
+  "managerIdentity": {
+    "pid": 1066994,
+    "ppid": 1066993,
+    "pgid": 1066993,
+    "startTicks": 624716445,
+    "comm": "python3",
+    "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/grant_y.py serve "
+  },
+  "managerExited": true
+}

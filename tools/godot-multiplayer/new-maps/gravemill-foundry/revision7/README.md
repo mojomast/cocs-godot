@@ -1,5 +1,9 @@
 # Foundry R7 — seven-entry tangent-only source successor
 
+Historical source-phase description below. Actual authorized Y production and
+release are documented separately in [PRODUCTION_Y.md](PRODUCTION_Y.md); original
+source receipts and the informational queue remain unchanged.
+
 Base: parent `9c5eca6d`. Isolated branch `astra/foundry-tangent-r7-source`.
 **Source only. No Blender, Godot, import, render, server, child agent, actual R7
 GLB/master, or native receipt has been produced. No heavy work is scheduled.**

@@ -1,0 +1,410 @@
+{
+  "grant": "MOTH-BLENDER-20261003-Y",
+  "time": "2026-10-03T21:58:29.060939+00:00",
+  "audits": [
+    {
+      "time": "2026-10-03T21:58:28.341493+00:00",
+      "ownedGroupMembers": [],
+      "groups": [
+        {
+          "pid": 1067532,
+          "ppid": 1066994,
+          "pgid": 1067532,
+          "startTicks": 624717115,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/production.py -- --authorized-r7-build "
+        },
+        {
+          "pid": 1069634,
+          "ppid": 1066994,
+          "pgid": 1069634,
+          "startTicks": 624720067,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/production.py -- --authorized-r7-build --reopen "
+        },
+        {
+          "pid": 1071271,
+          "ppid": 1066994,
+          "pgid": 1071271,
+          "startTicks": 624722514,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --editor --import "
+        },
+        {
+          "pid": 1073003,
+          "ppid": 1066994,
+          "pgid": 1073003,
+          "startTicks": 624725494,
+          "comm": "python3",
+          "argv": ""
+        },
+        {
+          "pid": 1073520,
+          "ppid": 1066994,
+          "pgid": 1073520,
+          "startTicks": 624726135,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --editor --import "
+        },
+        {
+          "pid": 1074415,
+          "ppid": 1066994,
+          "pgid": 1074415,
+          "startTicks": 624727158,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/owned_capture_y.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/gravemill_foundry/revision7/import.gd "
+        },
+        {
+          "pid": 1074894,
+          "ppid": 1066994,
+          "pgid": 1074894,
+          "startTicks": 624727806,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/native_check.py "
+        },
+        {
+          "pid": 1084674,
+          "ppid": 1066994,
+          "pgid": 1084674,
+          "startTicks": 624736027,
+          "comm": "python3",
+          "argv": ""
+        },
+        {
+          "pid": 1085289,
+          "ppid": 1066994,
+          "pgid": 1085289,
+          "startTicks": 624736878,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/owned_capture_y.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/gravemill_foundry/revision7/rays.gd "
+        },
+        {
+          "pid": 1085900,
+          "ppid": 1066994,
+          "pgid": 1085900,
+          "startTicks": 624737831,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/owned_capture_y.py xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --rendering-method gl_compatibility --resolution 1280x720 --script res://tests/new_maps/gravemill_foundry/revision7/capture.gd "
+        },
+        {
+          "pid": 1089487,
+          "ppid": 1066994,
+          "pgid": 1089487,
+          "startTicks": 624743573,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/owned_capture_y.py xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --rendering-method gl_compatibility --audio-driver Dummy --resolution 1280x720 --script res://tests/new_maps/gravemill_foundry/revision7/targeted_capture.gd "
+        },
+        {
+          "pid": 1096213,
+          "ppid": 1066994,
+          "pgid": 1096213,
+          "startTicks": 624752786,
+          "comm": "python3",
+          "argv": "python3 -m unittest discover -s tools/godot-multiplayer/new-maps/gravemill-foundry/revision7 -p test_*.py -v "
+        },
+        {
+          "pid": 1102485,
+          "ppid": 1066994,
+          "pgid": 1102485,
+          "startTicks": 624762964,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/master_inventory_y.py "
+        },
+        {
+          "pid": 1120315,
+          "ppid": 1066994,
+          "pgid": 1120315,
+          "startTicks": 624776777,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/collect_y.py "
+        },
+        {
+          "pid": 1128767,
+          "ppid": 1066994,
+          "pgid": 1128767,
+          "startTicks": 624781419,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/collect_y.py "
+        },
+        {
+          "pid": 1136593,
+          "ppid": 1066994,
+          "pgid": 1136593,
+          "startTicks": 624784646,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/cleanup_y.py "
+        }
+      ]
+    },
+    {
+      "time": "2026-10-03T21:58:28.575869+00:00",
+      "ownedGroupMembers": [],
+      "groups": [
+        {
+          "pid": 1067532,
+          "ppid": 1066994,
+          "pgid": 1067532,
+          "startTicks": 624717115,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/production.py -- --authorized-r7-build "
+        },
+        {
+          "pid": 1069634,
+          "ppid": 1066994,
+          "pgid": 1069634,
+          "startTicks": 624720067,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/production.py -- --authorized-r7-build --reopen "
+        },
+        {
+          "pid": 1071271,
+          "ppid": 1066994,
+          "pgid": 1071271,
+          "startTicks": 624722514,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --editor --import "
+        },
+        {
+          "pid": 1073003,
+          "ppid": 1066994,
+          "pgid": 1073003,
+          "startTicks": 624725494,
+          "comm": "python3",
+          "argv": ""
+        },
+        {
+          "pid": 1073520,
+          "ppid": 1066994,
+          "pgid": 1073520,
+          "startTicks": 624726135,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --editor --import "
+        },
+        {
+          "pid": 1074415,
+          "ppid": 1066994,
+          "pgid": 1074415,
+          "startTicks": 624727158,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/owned_capture_y.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/gravemill_foundry/revision7/import.gd "
+        },
+        {
+          "pid": 1074894,
+          "ppid": 1066994,
+          "pgid": 1074894,
+          "startTicks": 624727806,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/native_check.py "
+        },
+        {
+          "pid": 1084674,
+          "ppid": 1066994,
+          "pgid": 1084674,
+          "startTicks": 624736027,
+          "comm": "python3",
+          "argv": ""
+        },
+        {
+          "pid": 1085289,
+          "ppid": 1066994,
+          "pgid": 1085289,
+          "startTicks": 624736878,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/owned_capture_y.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/gravemill_foundry/revision7/rays.gd "
+        },
+        {
+          "pid": 1085900,
+          "ppid": 1066994,
+          "pgid": 1085900,
+          "startTicks": 624737831,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/owned_capture_y.py xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --rendering-method gl_compatibility --resolution 1280x720 --script res://tests/new_maps/gravemill_foundry/revision7/capture.gd "
+        },
+        {
+          "pid": 1089487,
+          "ppid": 1066994,
+          "pgid": 1089487,
+          "startTicks": 624743573,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/owned_capture_y.py xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --rendering-method gl_compatibility --audio-driver Dummy --resolution 1280x720 --script res://tests/new_maps/gravemill_foundry/revision7/targeted_capture.gd "
+        },
+        {
+          "pid": 1096213,
+          "ppid": 1066994,
+          "pgid": 1096213,
+          "startTicks": 624752786,
+          "comm": "python3",
+          "argv": "python3 -m unittest discover -s tools/godot-multiplayer/new-maps/gravemill-foundry/revision7 -p test_*.py -v "
+        },
+        {
+          "pid": 1102485,
+          "ppid": 1066994,
+          "pgid": 1102485,
+          "startTicks": 624762964,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/master_inventory_y.py "
+        },
+        {
+          "pid": 1120315,
+          "ppid": 1066994,
+          "pgid": 1120315,
+          "startTicks": 624776777,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/collect_y.py "
+        },
+        {
+          "pid": 1128767,
+          "ppid": 1066994,
+          "pgid": 1128767,
+          "startTicks": 624781419,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/collect_y.py "
+        },
+        {
+          "pid": 1136593,
+          "ppid": 1066994,
+          "pgid": 1136593,
+          "startTicks": 624784646,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/cleanup_y.py "
+        }
+      ]
+    },
+    {
+      "time": "2026-10-03T21:58:28.812537+00:00",
+      "ownedGroupMembers": [],
+      "groups": [
+        {
+          "pid": 1067532,
+          "ppid": 1066994,
+          "pgid": 1067532,
+          "startTicks": 624717115,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/production.py -- --authorized-r7-build "
+        },
+        {
+          "pid": 1069634,
+          "ppid": 1066994,
+          "pgid": 1069634,
+          "startTicks": 624720067,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/production.py -- --authorized-r7-build --reopen "
+        },
+        {
+          "pid": 1071271,
+          "ppid": 1066994,
+          "pgid": 1071271,
+          "startTicks": 624722514,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --editor --import "
+        },
+        {
+          "pid": 1073003,
+          "ppid": 1066994,
+          "pgid": 1073003,
+          "startTicks": 624725494,
+          "comm": "python3",
+          "argv": ""
+        },
+        {
+          "pid": 1073520,
+          "ppid": 1066994,
+          "pgid": 1073520,
+          "startTicks": 624726135,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --editor --import "
+        },
+        {
+          "pid": 1074415,
+          "ppid": 1066994,
+          "pgid": 1074415,
+          "startTicks": 624727158,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/owned_capture_y.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/gravemill_foundry/revision7/import.gd "
+        },
+        {
+          "pid": 1074894,
+          "ppid": 1066994,
+          "pgid": 1074894,
+          "startTicks": 624727806,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/native_check.py "
+        },
+        {
+          "pid": 1084674,
+          "ppid": 1066994,
+          "pgid": 1084674,
+          "startTicks": 624736027,
+          "comm": "python3",
+          "argv": ""
+        },
+        {
+          "pid": 1085289,
+          "ppid": 1066994,
+          "pgid": 1085289,
+          "startTicks": 624736878,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/owned_capture_y.py /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/gravemill_foundry/revision7/rays.gd "
+        },
+        {
+          "pid": 1085900,
+          "ppid": 1066994,
+          "pgid": 1085900,
+          "startTicks": 624737831,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/owned_capture_y.py xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --rendering-method gl_compatibility --resolution 1280x720 --script res://tests/new_maps/gravemill_foundry/revision7/capture.gd "
+        },
+        {
+          "pid": 1089487,
+          "ppid": 1066994,
+          "pgid": 1089487,
+          "startTicks": 624743573,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/owned_capture_y.py xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --rendering-method gl_compatibility --audio-driver Dummy --resolution 1280x720 --script res://tests/new_maps/gravemill_foundry/revision7/targeted_capture.gd "
+        },
+        {
+          "pid": 1096213,
+          "ppid": 1066994,
+          "pgid": 1096213,
+          "startTicks": 624752786,
+          "comm": "python3",
+          "argv": "python3 -m unittest discover -s tools/godot-multiplayer/new-maps/gravemill-foundry/revision7 -p test_*.py -v "
+        },
+        {
+          "pid": 1102485,
+          "ppid": 1066994,
+          "pgid": 1102485,
+          "startTicks": 624762964,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/master_inventory_y.py "
+        },
+        {
+          "pid": 1120315,
+          "ppid": 1066994,
+          "pgid": 1120315,
+          "startTicks": 624776777,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/collect_y.py "
+        },
+        {
+          "pid": 1128767,
+          "ppid": 1066994,
+          "pgid": 1128767,
+          "startTicks": 624781419,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/collect_y.py "
+        },
+        {
+          "pid": 1136593,
+          "ppid": 1066994,
+          "pgid": 1136593,
+          "startTicks": 624784646,
+          "comm": "python3",
+          "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/cleanup_y.py "
+        }
+      ]
+    }
+  ],
+  "noQueuedHeavyWork": true,
+  "ownership": "exact PGID plus kernel start ticks; preexisting excluded"
+}

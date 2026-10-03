@@ -1,0 +1,58 @@
+{
+  "artHash": "6325fdf0003813c5cb5a59aca3626f6756998fb53f8aaa143d9f3043f3caa44f",
+  "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879",
+  "godot": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "rays": [
+    {
+      "distance": 3.20040893554688,
+      "expected": 3.2004078244866,
+      "id": "bunker-0-upper"
+    },
+    {
+      "distance": 2.70999908447266,
+      "expected": 2.71,
+      "id": "bunker-2-upper"
+    },
+    {
+      "distance": 1.0,
+      "expected": 1.0,
+      "id": "tipple-left-jamb"
+    },
+    {
+      "distance": 0.779998779296875,
+      "expected": 0.780000000000001,
+      "id": "tipple-right-jamb"
+    },
+    {
+      "distance": 5.0,
+      "expected": 5.0,
+      "id": "old-unsheared-conveyor"
+    },
+    {
+      "distance": 0.800000190734863,
+      "expected": 0.8,
+      "id": "sheared-conveyor"
+    },
+    {
+      "distance": 4.0,
+      "expected": 4.0,
+      "id": "tipple-51-clear-aperture"
+    },
+    {
+      "distance": 4.0,
+      "expected": 4.0,
+      "id": "tipple-82-clear-aperture"
+    }
+  ],
+  "scope": "Eight fresh native targeted R7-stage rays; previous R5 capsule report remains prior same-geometry evidence, not rerun here"
+}

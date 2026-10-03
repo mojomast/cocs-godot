@@ -1,0 +1,21 @@
+test_actual_baseline_and_semantically_remapped_export_pass (test_material_contract.MaterialContract.test_actual_baseline_and_semantically_remapped_export_pass) ... ok
+test_actual_counterexamples_rejected_by_full_editable_audit (test_material_contract.MaterialContract.test_actual_counterexamples_rejected_by_full_editable_audit) ... ok
+test_actual_historical_native_field_schema_and_mutants (test_material_contract.MaterialContract.test_actual_historical_native_field_schema_and_mutants) ... ok
+test_emissive_binding_pixels_and_occlusion_strength_compared (test_material_contract.MaterialContract.test_emissive_binding_pixels_and_occlusion_strength_compared) ... ok
+test_sampler_defaults_enums_coordinates_and_unsupported_semantics (test_material_contract.MaterialContract.test_sampler_defaults_enums_coordinates_and_unsupported_semantics) ... ok
+test_all_other_bytes_and_materials_indices_are_unchanged (test_tangents.RealR6.test_all_other_bytes_and_materials_indices_are_unchanged) ... ok
+test_editable_export_audit_accepts_baseline_rejects_uv_and_material_drift (test_tangents.RealR6.test_editable_export_audit_accepts_baseline_rejects_uv_and_material_drift) ... ok
+test_exact_seven_corner_mapping_and_non_degeneracy (test_tangents.RealR6.test_exact_seven_corner_mapping_and_non_degeneracy) ... ok
+test_strict_gate_and_out_of_scope_tangent_change_reject (test_tangents.RealR6.test_strict_gate_and_out_of_scope_tangent_change_reject) ... ok
+test_wrong_godot_fallback_is_not_accepted (test_tangents.RealR6.test_wrong_godot_fallback_is_not_accepted) ... ok
+test_additional_zero_unknown_inventory_rejected (test_tangents.UVBasis.test_additional_zero_unknown_inventory_rejected) ... ok
+test_conflicting_shared_uv_handedness_rejected (test_tangents.UVBasis.test_conflicting_shared_uv_handedness_rejected) ... ok
+test_native_gate_has_no_fallback_waiver (test_tangents.UVBasis.test_native_gate_has_no_fallback_waiver) ... ok
+test_reflected_and_reversed_uv_orientation (test_tangents.UVBasis.test_reflected_and_reversed_uv_orientation) ... ok
+test_same_handedness_but_conflicting_shared_directions_rejected (test_tangents.UVBasis.test_same_handedness_but_conflicting_shared_directions_rejected) ... ok
+test_shared_vertex_accumulates_all_incidents (test_tangents.UVBasis.test_shared_vertex_accumulates_all_incidents) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 58.173s
+
+OK

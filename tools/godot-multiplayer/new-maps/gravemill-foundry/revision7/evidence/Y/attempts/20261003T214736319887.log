@@ -1,0 +1,40 @@
+INFO Draco mesh compression is available, use library at /home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/4.5/scripts/addons_core/io_scene_gltf2/libextern_draco.so
+17:47:37 | INFO: Starting glTF 2.0 export
+17:47:37 | INFO: Extracting primitive: G1.headframe.0.cable.001
+17:47:37 | INFO: Primitives created: 2
+17:47:37 | INFO: Extracting primitive: G1.headframe.0.crossrail.001
+17:47:37 | INFO: Primitives created: 1
+17:47:37 | INFO: Extracting primitive: G1.headframe.0.hookblock.001
+17:47:37 | INFO: Primitives created: 3
+17:47:37 | INFO: Extracting primitive: G2.furnace.0.casing.003
+17:47:37 | INFO: Primitives created: 3
+17:47:37 | INFO: Extracting primitive: G2.furnace.0.tap-platform.001
+17:47:37 | INFO: Primitives created: 2
+17:47:37 | INFO: Extracting primitive: G3.tipple.51.arch.001
+17:47:37 | INFO: Primitives created: 2
+17:47:37 | INFO: Extracting primitive: G3.tipple.51.grain-deck.001
+17:47:37 | INFO: Primitives created: 1
+17:47:37 | INFO: Extracting primitive: G5.bunker.0.surge.001
+17:47:37 | INFO: Primitives created: 2
+17:47:37 | INFO: Extracting primitive: batch-soot
+17:47:38 | INFO: Primitives created: 5
+17:47:38 | INFO: Extracting primitive: batch-mineral
+17:47:38 | INFO: Primitives created: 3
+17:47:38 | INFO: Extracting primitive: batch-copper
+17:47:38 | INFO: Primitives created: 2
+17:47:38 | INFO: Extracting primitive: batch-brass
+17:47:38 | INFO: Primitives created: 1
+17:47:38 | INFO: Extracting primitive: batch-ore
+17:47:38 | INFO: Primitives created: 2
+17:47:38 | INFO: Extracting primitive: batch-orange
+17:47:38 | INFO: Primitives created: 1
+17:47:38 | INFO: Extracting primitive: batch-chalk
+17:47:38 | INFO: Primitives created: 1
+17:47:38 | INFO: Extracting primitive: batch-cooling-floor
+17:47:38 | INFO: Primitives created: 1
+17:47:38 | INFO: Finished glTF 2.0 export in 0.5197288990020752 s
+
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/mojo/.tmp-on-disk/cocs-foundry-r7-Y/tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/gravemill-foundry-revision7.blend"
+
+Blender quit
