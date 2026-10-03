@@ -17,9 +17,11 @@ grant under the current resume directive.
 
 This is the existing 75-second four-chapter campaign story, not a montage of the
 thirteen registered multiplayer worlds / 73 accepted pairs or a new fighting story.
-Parent `9cd1ac72` supplies all seven produced asset units, K's full nine-operator
-motion and L's nine native polish fixtures. The one-file L lobby-choice closure
-advance is packaging-owned and must be merged before strict production preflight.
+Parent `623127c5` supplies all seven produced asset units, K's full nine-operator
+motion, L's nine native polish fixtures and the packaging-owned final L closure.
+Native M produced the full film and installed eight-clip Home successfully; see
+`port/finish/cinematic/M_PRODUCTION.md` for exact evidence and the remaining human
+watch/listen gate. M is released; a future frozen-candidate run needs a new grant.
 No fighting footage is inserted. K's unaccepted live-kick timing and supplemental
 world/combined-arms vehicle capture gap remain separate from this staged film.
 
