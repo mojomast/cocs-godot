@@ -92,6 +92,10 @@ func run() -> void:
 	for point in route:
 		var deadline := Time.get_ticks_msec() + 20000
 		while position().distance_to(point) > 0.8 and Time.get_ticks_msec() < deadline:
+			if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+				key(KEY_W, false)
+				engage()
+				await process_frame
 			aim(point)
 			key(KEY_W, true)
 			# Near a waypoint use discrete human-like taps and let the authoritative
