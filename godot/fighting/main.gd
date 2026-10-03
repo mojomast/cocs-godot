@@ -6,6 +6,7 @@ const Camera = preload("res://fighting/presentation/camera.gd")
 const Backdrop = preload("res://fighting/stages/backdrop.gd")
 const Stages = preload("res://fighting/stages/catalog.gd")
 const TrainingBoxes = preload("res://fighting/presentation/training_boxes.gd")
+const TrainingFeedback = preload("res://fighting/presentation/training_feedback.gd")
 const DEPENDENCIES := ["res://fighting/core/simulation.gd","res://fighting/core/ai.gd","res://fighting/visuals/fighter_visual.gd","res://fighting/effects/director.gd","res://fighting/data/roster.json","res://fighting/data/rules.json"]
 var router = Router.new()
 var simulation
@@ -54,6 +55,7 @@ var settings_document: Dictionary = {}
 var error_text := ""
 var box_display := false
 var training_boxes
+var feedback = TrainingFeedback.new()
 var fx_session_serial := 0
 var fx_session_id := ""
 var fx_event_floor := 0
@@ -324,6 +326,7 @@ func start_match() -> void:
 	effects.configure(_fx_options())
 	effects.set_paused(true)
 	state = simulation.snapshot()
+	feedback.reset(operators,roster)
 	fx_event_floor = int(state.tick)
 	_present_snapshot_effects()
 	history.clear()
@@ -388,6 +391,7 @@ func _tick() -> void:
 		if int(event.tick) < fx_event_floor: continue
 		if str(event.type) in ["throw_start","throw_capture","throw_attempt"] and int(event.target) in [0,1]: tech_until[int(event.target)] = int(event.tick)+10
 	_present_snapshot_effects()
+	feedback.observe(state,last_inputs)
 	_update_hud()
 	if str(state.phase) == "match_over": show_results()
 
@@ -508,7 +512,11 @@ func _update_hud() -> void:
 	var text := "Esc / Start: pause"
 	for p: int in 2:
 		if last_inputs.size() == 2: text += "  P%d %s" % [p+1,_command_label(last_inputs[p])]
-	if mode == "training": text = "TRAINING %.2fx · dummy %s · frame %d · advantage %s\n%s" % [training_speed,dummy,state.tick,str(state.get("frame_advantage","—")),text]
+	if mode == "training":
+		text = "TRAINING %.2fx · dummy %s · f%d · adv %s · Esc: pause" % [training_speed,dummy,state.tick,str(state.get("frame_advantage","—"))]
+		for p: int in 2:
+			var operator_name := str(_profile(str(operators[p])).get("name",operators[p]))
+			text += "\nP%d %s %s · %s · %s" % [p+1,operator_name,feedback.goal_summary(p),feedback.result_text(p),feedback.history_line(p,5)]
 	input_label.text = text
 
 func _command_label(command: Dictionary) -> String:
@@ -568,6 +576,7 @@ func show_training() -> void:
 		recording = false
 		simulation.load_state(recording_state)
 		state = simulation.snapshot()
+		feedback.reset_transient()
 		camera.reset()
 		effects.reset()
 		fx_event_floor = int(state.tick)+1
@@ -576,7 +585,20 @@ func show_training() -> void:
 		_present_snapshot_effects(false)
 		replay_index = 0
 		resume_match())
-	_text(box,"Input history (last 12 ticks): " + JSON.stringify(history),14)
+	_text(box,"Recording: %s · Replay: %s. Reset, record and replay are the buttons above; replay restores the exact saved core state and pauses when it completes." % ["active (%d commands)" % record_inputs.size() if recording else "idle","at command %d/%d" % [replay_index,record_inputs.size()] if replay_index >= 0 else "idle"],14)
+	_text(box,"Live input history · real ticks and recognised moves (read-only)",18)
+	_text(box,"Notation 5/6/4/2/8 mirrors facing; a trailing ! marks a new press on that tick.",14)
+	for p: int in 2:
+		var operator_name := str(_profile(str(operators[p])).get("name",operators[p]))
+		_text(box,"P%d %s · %s" % [p+1,operator_name,feedback.goal_summary(p)],18)
+		var history_lines: Array = feedback.history_detail(p)
+		if history_lines.is_empty(): _text(box,"no inputs yet",14)
+		for line: String in history_lines: _text(box,line,14)
+		_text(box,"Last attack: " + feedback.result_text(p),14)
+	_text(box,"Practice goals · derived from this operator's authored moves; no unverified combo is claimed",18)
+	for p: int in 2:
+		_text(box,"P%d" % (p+1),18)
+		for line: String in feedback.goal_lines(p): _text(box,line,14)
 	_button(box,"Back",show_pause).grab_focus()
 
 func show_settings() -> void:
