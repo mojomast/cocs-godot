@@ -191,3 +191,15 @@ three final corrections before staging: single ownership of `room.editable` too;
 actual frame-driven setup catalog recovery rather than test-only manual refresh;
 and preserving a chosen mode when unrelated catalog entries change. Further work
 must append commits; old reviewed checkpoints remain available for traceability.
+
+Lobby follow-ups **`f0a1fed7` / `e5b73ed6`** are reviewed and staged with their
+two prerequisite commits in the separate integration branch through **`24c1ff8b`**.
+Parent independently passed all five lobby script grammar checks, the required
+gdtoolkit source-contract check and **seven verifier unit tests**. The one-line
+gate registration `eda8a2da` remains deferred to acceptance-owner reconciliation.
+
+**All six requested implementation lanes are now assembled source-only.**
+Combined coverage is 19 script grammar checks, shader-body parity, the lobby
+source-contract check and seven verifier unit tests. Native checks, captures,
+adoption of K's runtime fixes, exact package reconciliation and new releases are
+still pending; the main development runtime and active K candidate are unchanged.
