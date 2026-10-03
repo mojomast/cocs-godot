@@ -97,3 +97,11 @@ scope. No new engine grants were issued.
 Each lane must return working commits, source checks and executable native
 follow-up requirements. Native/rendered results and package dependency updates
 remain pending; existing captures do not validate these new changes.
+
+## Review checkpoints
+
+Luna explosion checkpoint `60997c7c` is **not integrated**. Parent found that an
+unknown weaponless `alt:true` event would incorrectly take the generic branch,
+despite its new fixture asserting rejection. Returned for explicit fallback
+eligibility, quality-off consumption/replay checks and actual grammar validation.
+The native fixture remains unrun; a clean diff alone does not establish behavior.
