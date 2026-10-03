@@ -56,11 +56,14 @@ def check_streams(artifact, report, raw):
             if any(abs(math.sqrt(sum(v*v for v in c[3][:3]))-1) > .001 or c[3][3] not in (-1., 1.) for c in cs):
                 raise ValueError('Undefined/nonunit native tangent; zero waivers')
             cs = oriented(cs)
-            choices = expected[surface['material'], tuple(c[0] for c in cs)]
+            # An unseen key must not insert an empty defaultdict bucket: that
+            # phantom bucket would itself pass the positional fallback and
+            # make one real nearby face appear ambiguously matched.
+            choices = expected.get((surface['material'], tuple(c[0] for c in cs)))
             # Godot's mesh surfaces may round positions; search a small positional
             # tolerance within the same material rather than permitting reversed faces.
             if not choices:
-                candidates = [(k, v) for k, v in expected.items() if k[0] == surface['material'] and
+                candidates = [(k, v) for k, v in expected.items() if v and k[0] == surface['material'] and
                     all(max(abs(x-y) for x,y in zip(a,b)) <= 1e-5 for a,b in zip(k[1], (c[0] for c in cs)))]
                 if len(candidates) != 1: raise ValueError('Native oriented face/role not found')
                 choices = candidates[0][1]

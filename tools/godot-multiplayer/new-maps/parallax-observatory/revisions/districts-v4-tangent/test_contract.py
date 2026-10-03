@@ -2,9 +2,10 @@
 import copy
 import struct
 import unittest
-from contract import EmbeddedGlb, SOURCE_SHA, MASTER_SHA, TANGENT, VERTICES, encode, pinned, repair, verify, sha, source_face
+from contract import EmbeddedGlb, SOURCE_SHA, MASTER_SHA, TANGENT, VERTICES, encode, pinned, repair, verify, sha, source_face, stream
 from editable import audit, compare_materials
 from material_contract import verify_native_materials
+from native import check_streams
 
 class ParallaxContract(unittest.TestCase):
     @classmethod
@@ -114,5 +115,48 @@ class ParallaxContract(unittest.TestCase):
         self.assertEqual(verify_native_materials(g, report),14)
         report['materials']['saltstone']['normalScale'] = 0
         with self.assertRaisesRegex(ValueError, 'normalScale'): verify_native_materials(g, report)
+
+    def test_actual_x_in_memory_native_stream_ulp_and_handedness(self):
+        # Complete 155,553-face mesh-local fixture with the same interleaving
+        # and reversed triangle order as import.gd. It never opens Godot or
+        # writes an artifact. Only three local bytes are changed by mutants.
+        g = EmbeddedGlb(self.output)
+        binary = bytearray()
+        report = {'artHash':sha(self.output), 'triangles':155553, 'meshNodes':39, 'surfaces':[]}
+        for mesh in g.doc['meshes']:
+            for p in mesh['primitives']:
+                attributes = p['attributes']
+                count = len(stream(g, attributes['POSITION'], 'VEC3'))
+                offset = len(binary)
+                for key, shape, width in (('POSITION','VEC3',3),('NORMAL','VEC3',3),
+                                           ('TEXCOORD_0','VEC2',2),('TANGENT','VEC4',4)):
+                    for value in stream(g, attributes[key], shape):
+                        binary.extend(struct.pack('<' + 'f'*width, *value))
+                indices = [v[0] for v in stream(g, p['indices'], 'SCALAR', (5121,5123,5125))]
+                for i in range(0, len(indices), 3):
+                    binary.extend(struct.pack('<3I', *reversed(indices[i:i+3])))
+                report['surfaces'].append({'offset':offset, 'vertices':count, 'indices':len(indices),
+                    'material':g.doc['materials'][p['material']]['name']})
+        self.assertEqual(len(report['surfaces']),39)
+        self.assertEqual(check_streams(self.output, report, binary)['zeroTangentWaivers'],0)
+        saltstone = report['surfaces'][9]
+        pos_offset = saltstone['offset'] + 24049*12
+        original = struct.unpack_from('<f', binary, pos_offset)[0]
+        for ulps, accepted in ((1,True),(2,False)):
+            with self.subTest(positionUlps=ulps):
+                mutated = bytearray(binary)
+                struct.pack_into('<f',mutated,pos_offset, original + ulps*7.62939453125e-6)
+                if accepted:
+                    proof = check_streams(self.output,report,mutated)
+                    self.assertEqual(proof['maxLocalPositionNormalUVTangentError'][0],7.62939453125e-6)
+                    self.assertEqual(proof['repairedCornerMatchesAtLeast'],3)
+                else:
+                    with self.assertRaisesRegex(ValueError,'face/role not found'):
+                        check_streams(self.output,report,mutated)
+        wrong = bytearray(binary)
+        tangent_w = saltstone['offset'] + saltstone['vertices']*32 + 24050*16 + 12
+        struct.pack_into('<f',wrong,tangent_w,1.)
+        with self.assertRaisesRegex(ValueError,'handedness drift'):
+            check_streams(self.output,report,wrong)
 
 if __name__ == '__main__': unittest.main()
