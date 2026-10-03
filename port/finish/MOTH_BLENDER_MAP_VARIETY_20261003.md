@@ -1,5 +1,34 @@
 # New Moth resources and Blender-authored map variety
 
+## Latest corrective delivery — Foundry R5 / S released
+
+Astra delivered optional-normal receipt fix `77d3d16c` and corrective production
+`4a2f1201`, with R4 evidence unchanged. **S released at
+`2026-10-03T18:20:11.138292Z`**. Parent inspected three timestamped empty audits
+covering 43 recorded process groups, then independently confirmed no surviving
+members and lock availability. The unrelated environment viewer stays untouched.
+No heavy grant is active at this checkpoint.
+
+**New gallery:** <http://100.125.104.79:8796/foundry-r5/> — 22 original 1280×720
+native PNGs, 11 genuine accepted-runtime-finish versus staged-R5 pairs. All 33
+gallery HTTP/hash checks passed. Parent inspected overview, furnace, cooling,
+tipple and crusher views. This is a corrective candidate, not public promotion.
+
+Worker evidence reports 87,566 actual triangles / 16 batches / 12,394,520 bytes,
+270 editable source parts / 30 packed images and fresh master reopen. All 270
+components are matched against actual exported triangles, all 62 drums checked
+for outward faces/normals, 3,849 native capsule samples and eight targeted rays
+pass, and accepted orange survives staged weather/dressing lifecycle checks.
+Software-renderer static samples are 167–315 ms/frame, median 214 ms on llvmpipe;
+these are not dedicated-GPU or hosted gameplay performance acceptance.
+
+Independent Astra `ses_efd0e4deaffeke8j2rdXdxtbbn` is reviewing R5 artifacts and
+collision/runtime evidence. Sol `ses_efcf99baaffe4NRqQHq00WUHeW` is preparing the
+reviewed shared-source prerequisite bundle separately, avoiding integration of
+rejected R4 art. R5 remains unmerged during review. Coastal production can follow
+shared dependency integration under a fresh serial grant; botanical's three
+remaining source corrections continue with its Astra owner.
+
 ## Latest production checkpoint — Foundry R rejected; Astra S rebuilding
 
 R owner delivered **`6ff4079e`** and explicitly released. Parent inspected the
