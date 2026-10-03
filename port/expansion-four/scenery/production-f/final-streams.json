@@ -1,0 +1,6032 @@
+[
+  {
+    "path": "godot/biomes/expansion/art/crown-ceramic-lightwell-0.glb",
+    "sha256": "39c0aa71afbb0c6d044c791dc105d278e895c4e75896fbcd0e69d61b57c89dc9",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "coating",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/sand.png\": \"9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_ceramic",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0.07999999821186066,
+          "roughnessFactor": 0.7200000286102295
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 1,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -3.423179864883423,
+            4.310175895690918
+          ],
+          [
+            -37.462223052978516,
+            4.428421497344971
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -1.2383408546447754,
+            4.0304274559021
+          ],
+          [
+            -35.73228454589844,
+            -2.9078269004821777
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocal_biome4_ceramic",
+        "bytes": 2670,
+        "sha256": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+        "preview": "/tmp/opencode/MothLocal_biome4_ceramic.png",
+        "meanRGB": [
+          199.532958984375,
+          194.527587890625,
+          174.707763671875
+        ],
+        "rangeRGB": [
+          [
+            199,
+            201
+          ],
+          [
+            194,
+            196
+          ],
+          [
+            173,
+            175
+          ]
+        ],
+        "authoredSRGB": [
+          200,
+          195,
+          175
+        ],
+        "maxSwatchDifference": 0.472412109375
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/crown-ceramic-lightwell-1.glb",
+    "sha256": "9e6689b226101cb6ca7ab188dbe1b4b48ddd11ace2ef55fbdd2dbd98edb00993",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "coating",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/sand.png\": \"9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_ceramic",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0.07999999821186066,
+          "roughnessFactor": 0.7200000286102295
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 1,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -3.423179864883423,
+            4.310175895690918
+          ],
+          [
+            -37.462223052978516,
+            4.428421497344971
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            0.1396571546792984,
+            0.5596571564674377
+          ],
+          [
+            -30.95069694519043,
+            -2.964867115020752
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocal_biome4_ceramic",
+        "bytes": 2670,
+        "sha256": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+        "preview": "/tmp/opencode/MothLocal_biome4_ceramic.png",
+        "meanRGB": [
+          199.532958984375,
+          194.527587890625,
+          174.707763671875
+        ],
+        "rangeRGB": [
+          [
+            199,
+            201
+          ],
+          [
+            194,
+            196
+          ],
+          [
+            173,
+            175
+          ]
+        ],
+        "authoredSRGB": [
+          200,
+          195,
+          175
+        ],
+        "maxSwatchDifference": 0.472412109375
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/crown-faceted-antenna-0.glb",
+    "sha256": "54fc76aec06bec41f208d4ebbd62491ddb2fc929b6280eaba16f8a1372f4f36e",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "coating",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/sand.png\": \"9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_ceramic",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0.07999999821186066,
+          "roughnessFactor": 0.7200000286102295
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_iron",
+        "normalTexture": {
+          "index": 1,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0.44999998807907104,
+          "roughnessFactor": 0.7400000095367432
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 3,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 4
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -3.423179864883423,
+            4.310175895690918
+          ],
+          [
+            -35.268211364746094,
+            4.428421497344971
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -0.7554810643196106,
+            4.152696132659912
+          ],
+          [
+            -35.23746109008789,
+            -2.541672468185425
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 8,
+          "NORMAL": 9,
+          "TEXCOORD_0": 10
+        },
+        "uvBounds": [
+          [
+            -1.2383408546447754,
+            4.058778762817383
+          ],
+          [
+            -36.601715087890625,
+            -2.9078269004821777
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocal_biome4_ceramic",
+        "bytes": 2670,
+        "sha256": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+        "preview": "/tmp/opencode/MothLocal_biome4_ceramic.png",
+        "meanRGB": [
+          199.532958984375,
+          194.527587890625,
+          174.707763671875
+        ],
+        "rangeRGB": [
+          [
+            199,
+            201
+          ],
+          [
+            194,
+            196
+          ],
+          [
+            173,
+            175
+          ]
+        ],
+        "authoredSRGB": [
+          200,
+          195,
+          175
+        ],
+        "maxSwatchDifference": 0.472412109375
+      },
+      {
+        "name": "MothLocalNormal_biome4_iron",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_iron.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_iron",
+        "bytes": 2404,
+        "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+        "preview": "/tmp/opencode/MothLocal_biome4_iron.png",
+        "meanRGB": [
+          70.220703125,
+          85.010009765625,
+          98.70947265625
+        ],
+        "rangeRGB": [
+          [
+            69,
+            71
+          ],
+          [
+            83,
+            86
+          ],
+          [
+            98,
+            101
+          ]
+        ],
+        "authoredSRGB": [
+          70,
+          85,
+          99
+        ],
+        "maxSwatchDifference": 0.29052734375
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/crown-faceted-antenna-1.glb",
+    "sha256": "20f14b6a59f98ec0d1ffba18afdccc9564ba46257e18855e32ba9d1273dea7ce",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "coating",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/sand.png\": \"9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_ceramic",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0.07999999821186066,
+          "roughnessFactor": 0.7200000286102295
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_iron",
+        "normalTexture": {
+          "index": 1,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0.44999998807907104,
+          "roughnessFactor": 0.7400000095367432
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 3,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 4
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -3.423179864883423,
+            4.310175895690918
+          ],
+          [
+            -35.268211364746094,
+            4.428421497344971
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -0.7554810643196106,
+            4.152696132659912
+          ],
+          [
+            -35.23746109008789,
+            -2.541672468185425
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 8,
+          "NORMAL": 9,
+          "TEXCOORD_0": 10
+        },
+        "uvBounds": [
+          [
+            0.415432870388031,
+            4.058778762817383
+          ],
+          [
+            -36.601715087890625,
+            -3.137320041656494
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocal_biome4_ceramic",
+        "bytes": 2670,
+        "sha256": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+        "preview": "/tmp/opencode/MothLocal_biome4_ceramic.png",
+        "meanRGB": [
+          199.532958984375,
+          194.527587890625,
+          174.707763671875
+        ],
+        "rangeRGB": [
+          [
+            199,
+            201
+          ],
+          [
+            194,
+            196
+          ],
+          [
+            173,
+            175
+          ]
+        ],
+        "authoredSRGB": [
+          200,
+          195,
+          175
+        ],
+        "maxSwatchDifference": 0.472412109375
+      },
+      {
+        "name": "MothLocalNormal_biome4_iron",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_iron.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_iron",
+        "bytes": 2404,
+        "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+        "preview": "/tmp/opencode/MothLocal_biome4_iron.png",
+        "meanRGB": [
+          70.220703125,
+          85.010009765625,
+          98.70947265625
+        ],
+        "rangeRGB": [
+          [
+            69,
+            71
+          ],
+          [
+            83,
+            86
+          ],
+          [
+            98,
+            101
+          ]
+        ],
+        "authoredSRGB": [
+          70,
+          85,
+          99
+        ],
+        "maxSwatchDifference": 0.29052734375
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/crown-folio-archive-0.glb",
+    "sha256": "1cfebaa1727a56477db6ca74d55926dca2d18320663fb1a673110ba15b653ba9",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "coating",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/sand.png\": \"9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_ceramic",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0.07999999821186066,
+          "roughnessFactor": 0.7200000286102295
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_iron",
+        "normalTexture": {
+          "index": 1,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0.44999998807907104,
+          "roughnessFactor": 0.7400000095367432
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 3,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 4
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -5.752932071685791,
+            6.639927864074707
+          ],
+          [
+            -23.880006790161133,
+            6.760981559753418
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -1.6440324783325195,
+            6.719348430633545
+          ],
+          [
+            -17.732091903686523,
+            -5.074421405792236
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 8,
+          "NORMAL": 9,
+          "TEXCOORD_0": 10
+        },
+        "uvBounds": [
+          [
+            -1.5116939544677734,
+            6.417323589324951
+          ],
+          [
+            -21.368799209594727,
+            -4.018019199371338
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocal_biome4_ceramic",
+        "bytes": 2670,
+        "sha256": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+        "preview": "/tmp/opencode/MothLocal_biome4_ceramic.png",
+        "meanRGB": [
+          199.532958984375,
+          194.527587890625,
+          174.707763671875
+        ],
+        "rangeRGB": [
+          [
+            199,
+            201
+          ],
+          [
+            194,
+            196
+          ],
+          [
+            173,
+            175
+          ]
+        ],
+        "authoredSRGB": [
+          200,
+          195,
+          175
+        ],
+        "maxSwatchDifference": 0.472412109375
+      },
+      {
+        "name": "MothLocalNormal_biome4_iron",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_iron.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_iron",
+        "bytes": 2404,
+        "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+        "preview": "/tmp/opencode/MothLocal_biome4_iron.png",
+        "meanRGB": [
+          70.220703125,
+          85.010009765625,
+          98.70947265625
+        ],
+        "rangeRGB": [
+          [
+            69,
+            71
+          ],
+          [
+            83,
+            86
+          ],
+          [
+            98,
+            101
+          ]
+        ],
+        "authoredSRGB": [
+          70,
+          85,
+          99
+        ],
+        "maxSwatchDifference": 0.29052734375
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/crown-folio-archive-1.glb",
+    "sha256": "f6a1d758949545e19137cce5eef0060463dd92cd3d68940cee1311b0b33edad8",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "coating",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/sand.png\": \"9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_ceramic",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0.07999999821186066,
+          "roughnessFactor": 0.7200000286102295
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -5.752932071685791,
+            6.639927864074707
+          ],
+          [
+            -23.880006790161133,
+            6.760981559753418
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocal_biome4_ceramic",
+        "bytes": 2670,
+        "sha256": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+        "preview": "/tmp/opencode/MothLocal_biome4_ceramic.png",
+        "meanRGB": [
+          199.532958984375,
+          194.527587890625,
+          174.707763671875
+        ],
+        "rangeRGB": [
+          [
+            199,
+            201
+          ],
+          [
+            194,
+            196
+          ],
+          [
+            173,
+            175
+          ]
+        ],
+        "authoredSRGB": [
+          200,
+          195,
+          175
+        ],
+        "maxSwatchDifference": 0.472412109375
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/emberline-basalt-terrace-0.glb",
+    "sha256": "0ec55615a6079c241e8c8868dd697cee43ec1086758cadcc8f16aa3ac0027a99",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "mineral",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/weathered_concrete.png\": \"2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_basalt",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.10000000149011612
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.8799999952316284
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 2,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_iron",
+        "normalTexture": {
+          "index": 4,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 5
+          },
+          "metallicFactor": 0.44999998807907104,
+          "roughnessFactor": 0.7400000095367432
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -0.8479095101356506,
+            1.8190022706985474
+          ],
+          [
+            -5.43812894821167,
+            1.8903310298919678
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -2.84342622756958,
+            3.516441822052002
+          ],
+          [
+            -23.463420867919922,
+            -11.174019813537598
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 8,
+          "NORMAL": 9,
+          "TEXCOORD_0": 10
+        },
+        "uvBounds": [
+          [
+            -1.5525033473968506,
+            4.474452972412109
+          ],
+          [
+            -21.561674118041992,
+            -2.5476996898651123
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_basalt",
+        "bytes": 6429,
+        "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_basalt.png",
+        "meanRGB": [
+          127.51220703125,
+          127.502197265625,
+          254.9150390625
+        ],
+        "rangeRGB": [
+          [
+            112,
+            145
+          ],
+          [
+            107,
+            145
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_basalt",
+        "bytes": 1378,
+        "sha256": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2",
+        "preview": "/tmp/opencode/MothLocal_biome4_basalt.png",
+        "meanRGB": [
+          66.216064453125,
+          72.9384765625,
+          82.90087890625
+        ],
+        "rangeRGB": [
+          [
+            66,
+            69
+          ],
+          [
+            71,
+            75
+          ],
+          [
+            81,
+            85
+          ]
+        ],
+        "authoredSRGB": [
+          67,
+          73,
+          83
+        ],
+        "maxSwatchDifference": 0.783935546875
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      },
+      {
+        "name": "MothLocalNormal_biome4_iron",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_iron.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_iron",
+        "bytes": 2404,
+        "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+        "preview": "/tmp/opencode/MothLocal_biome4_iron.png",
+        "meanRGB": [
+          70.220703125,
+          85.010009765625,
+          98.70947265625
+        ],
+        "rangeRGB": [
+          [
+            69,
+            71
+          ],
+          [
+            83,
+            86
+          ],
+          [
+            98,
+            101
+          ]
+        ],
+        "authoredSRGB": [
+          70,
+          85,
+          99
+        ],
+        "maxSwatchDifference": 0.29052734375
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/emberline-basalt-terrace-1.glb",
+    "sha256": "98c6c43f1db946b4f43d19fefc0d1e132e1b9ce37f2150c36aee25bcf59e0716",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "mineral",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/weathered_concrete.png\": \"2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_basalt",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.10000000149011612
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.8799999952316284
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 2,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -0.8479095101356506,
+            1.8190022706985474
+          ],
+          [
+            -5.43812894821167,
+            1.8903310298919678
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -2.84342622756958,
+            3.516441822052002
+          ],
+          [
+            -23.463420867919922,
+            -11.174019813537598
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_basalt",
+        "bytes": 6429,
+        "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_basalt.png",
+        "meanRGB": [
+          127.51220703125,
+          127.502197265625,
+          254.9150390625
+        ],
+        "rangeRGB": [
+          [
+            112,
+            145
+          ],
+          [
+            107,
+            145
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_basalt",
+        "bytes": 1378,
+        "sha256": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2",
+        "preview": "/tmp/opencode/MothLocal_biome4_basalt.png",
+        "meanRGB": [
+          66.216064453125,
+          72.9384765625,
+          82.90087890625
+        ],
+        "rangeRGB": [
+          [
+            66,
+            69
+          ],
+          [
+            71,
+            75
+          ],
+          [
+            81,
+            85
+          ]
+        ],
+        "authoredSRGB": [
+          67,
+          73,
+          83
+        ],
+        "maxSwatchDifference": 0.783935546875
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/emberline-ceramic-exhaust-0.glb",
+    "sha256": "1ba5cec1a0b05a2c28cd44eb091be421fe649dc0028b80fdcfb3a337fa0c3ca1",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "mineral",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/weathered_concrete.png\": \"2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_basalt",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.10000000149011612
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.8799999952316284
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 2,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_iron",
+        "normalTexture": {
+          "index": 4,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 5
+          },
+          "metallicFactor": 0.44999998807907104,
+          "roughnessFactor": 0.7400000095367432
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "coating",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/sand.png\": \"9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_ceramic",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 6
+          },
+          "metallicFactor": 0.07999999821186066,
+          "roughnessFactor": 0.7200000286102295
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -1.4706095457077026,
+            2.441702365875244
+          ],
+          [
+            -8.307780265808105,
+            2.5143308639526367
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -2.6810853481292725,
+            3.70520281791687
+          ],
+          [
+            -38.240779876708984,
+            -17.39188003540039
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 8,
+          "NORMAL": 9,
+          "TEXCOORD_0": 10
+        },
+        "uvBounds": [
+          [
+            -3.1496803760528564,
+            6.833413124084473
+          ],
+          [
+            -42.39531707763672,
+            -4.900899887084961
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 12,
+          "NORMAL": 13,
+          "TEXCOORD_0": 14
+        },
+        "uvBounds": [
+          [
+            -5.110129356384277,
+            6.612868309020996
+          ],
+          [
+            -43.247989654541016,
+            6.768515586853027
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_basalt",
+        "bytes": 6429,
+        "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_basalt.png",
+        "meanRGB": [
+          127.51220703125,
+          127.502197265625,
+          254.9150390625
+        ],
+        "rangeRGB": [
+          [
+            112,
+            145
+          ],
+          [
+            107,
+            145
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_basalt",
+        "bytes": 1378,
+        "sha256": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2",
+        "preview": "/tmp/opencode/MothLocal_biome4_basalt.png",
+        "meanRGB": [
+          66.216064453125,
+          72.9384765625,
+          82.90087890625
+        ],
+        "rangeRGB": [
+          [
+            66,
+            69
+          ],
+          [
+            71,
+            75
+          ],
+          [
+            81,
+            85
+          ]
+        ],
+        "authoredSRGB": [
+          67,
+          73,
+          83
+        ],
+        "maxSwatchDifference": 0.783935546875
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      },
+      {
+        "name": "MothLocalNormal_biome4_iron",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_iron.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_iron",
+        "bytes": 2404,
+        "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+        "preview": "/tmp/opencode/MothLocal_biome4_iron.png",
+        "meanRGB": [
+          70.220703125,
+          85.010009765625,
+          98.70947265625
+        ],
+        "rangeRGB": [
+          [
+            69,
+            71
+          ],
+          [
+            83,
+            86
+          ],
+          [
+            98,
+            101
+          ]
+        ],
+        "authoredSRGB": [
+          70,
+          85,
+          99
+        ],
+        "maxSwatchDifference": 0.29052734375
+      },
+      {
+        "name": "MothLocal_biome4_ceramic",
+        "bytes": 2670,
+        "sha256": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+        "preview": "/tmp/opencode/MothLocal_biome4_ceramic.png",
+        "meanRGB": [
+          199.532958984375,
+          194.527587890625,
+          174.707763671875
+        ],
+        "rangeRGB": [
+          [
+            199,
+            201
+          ],
+          [
+            194,
+            196
+          ],
+          [
+            173,
+            175
+          ]
+        ],
+        "authoredSRGB": [
+          200,
+          195,
+          175
+        ],
+        "maxSwatchDifference": 0.472412109375
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/emberline-ceramic-exhaust-1.glb",
+    "sha256": "08dc4dce1a3c5a2756a4b5c224c9f784400dad19815cf1ef499bd09f324f29ba",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "mineral",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/weathered_concrete.png\": \"2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_basalt",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.10000000149011612
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.8799999952316284
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 2,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_iron",
+        "normalTexture": {
+          "index": 4,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 5
+          },
+          "metallicFactor": 0.44999998807907104,
+          "roughnessFactor": 0.7400000095367432
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "coating",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/sand.png\": \"9b6795d9d1fabc0ea307b2aca747106cb31a270bf613ce3dd781901720900f96\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_ceramic",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 6
+          },
+          "metallicFactor": 0.07999999821186066,
+          "roughnessFactor": 0.7200000286102295
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -1.4706095457077026,
+            2.441702365875244
+          ],
+          [
+            -8.307780265808105,
+            2.5143308639526367
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -2.6810853481292725,
+            3.70520281791687
+          ],
+          [
+            -38.240779876708984,
+            -17.39188003540039
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 8,
+          "NORMAL": 9,
+          "TEXCOORD_0": 10
+        },
+        "uvBounds": [
+          [
+            -3.1496803760528564,
+            3.84773325920105
+          ],
+          [
+            -42.39531707763672,
+            -12.336767196655273
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 12,
+          "NORMAL": 13,
+          "TEXCOORD_0": 14
+        },
+        "uvBounds": [
+          [
+            -5.110129356384277,
+            6.612868309020996
+          ],
+          [
+            -43.247989654541016,
+            6.768515586853027
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_basalt",
+        "bytes": 6429,
+        "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_basalt.png",
+        "meanRGB": [
+          127.51220703125,
+          127.502197265625,
+          254.9150390625
+        ],
+        "rangeRGB": [
+          [
+            112,
+            145
+          ],
+          [
+            107,
+            145
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_basalt",
+        "bytes": 1378,
+        "sha256": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2",
+        "preview": "/tmp/opencode/MothLocal_biome4_basalt.png",
+        "meanRGB": [
+          66.216064453125,
+          72.9384765625,
+          82.90087890625
+        ],
+        "rangeRGB": [
+          [
+            66,
+            69
+          ],
+          [
+            71,
+            75
+          ],
+          [
+            81,
+            85
+          ]
+        ],
+        "authoredSRGB": [
+          67,
+          73,
+          83
+        ],
+        "maxSwatchDifference": 0.783935546875
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      },
+      {
+        "name": "MothLocalNormal_biome4_iron",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_iron.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_iron",
+        "bytes": 2404,
+        "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+        "preview": "/tmp/opencode/MothLocal_biome4_iron.png",
+        "meanRGB": [
+          70.220703125,
+          85.010009765625,
+          98.70947265625
+        ],
+        "rangeRGB": [
+          [
+            69,
+            71
+          ],
+          [
+            83,
+            86
+          ],
+          [
+            98,
+            101
+          ]
+        ],
+        "authoredSRGB": [
+          70,
+          85,
+          99
+        ],
+        "maxSwatchDifference": 0.29052734375
+      },
+      {
+        "name": "MothLocal_biome4_ceramic",
+        "bytes": 2670,
+        "sha256": "6479552bc6cb90d8bb6c643b2313aefc990a6aa31f67239fe8d39e13c9f02c48",
+        "preview": "/tmp/opencode/MothLocal_biome4_ceramic.png",
+        "meanRGB": [
+          199.532958984375,
+          194.527587890625,
+          174.707763671875
+        ],
+        "rangeRGB": [
+          [
+            199,
+            201
+          ],
+          [
+            194,
+            196
+          ],
+          [
+            173,
+            175
+          ]
+        ],
+        "authoredSRGB": [
+          200,
+          195,
+          175
+        ],
+        "maxSwatchDifference": 0.472412109375
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/emberline-heatshield-tower-0.glb",
+    "sha256": "713399cf7a9e3e921adb5715717504b7705639bfd28f71352c12cf7b6a054416",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "mineral",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/weathered_concrete.png\": \"2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_basalt",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.10000000149011612
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.8799999952316284
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 2,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_iron",
+        "normalTexture": {
+          "index": 4,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 5
+          },
+          "metallicFactor": 0.44999998807907104,
+          "roughnessFactor": 0.7400000095367432
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -1.4706095457077026,
+            2.441702365875244
+          ],
+          [
+            -6.65023946762085,
+            2.5143308639526367
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -2.7685725688934326,
+            3.6980080604553223
+          ],
+          [
+            -31.5076904296875,
+            -13.80037784576416
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 8,
+          "NORMAL": 9,
+          "TEXCOORD_0": 10
+        },
+        "uvBounds": [
+          [
+            -3.1496803760528564,
+            6.833413124084473
+          ],
+          [
+            -33.924110412597656,
+            -4.900899887084961
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_basalt",
+        "bytes": 6429,
+        "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_basalt.png",
+        "meanRGB": [
+          127.51220703125,
+          127.502197265625,
+          254.9150390625
+        ],
+        "rangeRGB": [
+          [
+            112,
+            145
+          ],
+          [
+            107,
+            145
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_basalt",
+        "bytes": 1378,
+        "sha256": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2",
+        "preview": "/tmp/opencode/MothLocal_biome4_basalt.png",
+        "meanRGB": [
+          66.216064453125,
+          72.9384765625,
+          82.90087890625
+        ],
+        "rangeRGB": [
+          [
+            66,
+            69
+          ],
+          [
+            71,
+            75
+          ],
+          [
+            81,
+            85
+          ]
+        ],
+        "authoredSRGB": [
+          67,
+          73,
+          83
+        ],
+        "maxSwatchDifference": 0.783935546875
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      },
+      {
+        "name": "MothLocalNormal_biome4_iron",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_iron.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_iron",
+        "bytes": 2404,
+        "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+        "preview": "/tmp/opencode/MothLocal_biome4_iron.png",
+        "meanRGB": [
+          70.220703125,
+          85.010009765625,
+          98.70947265625
+        ],
+        "rangeRGB": [
+          [
+            69,
+            71
+          ],
+          [
+            83,
+            86
+          ],
+          [
+            98,
+            101
+          ]
+        ],
+        "authoredSRGB": [
+          70,
+          85,
+          99
+        ],
+        "maxSwatchDifference": 0.29052734375
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/emberline-heatshield-tower-1.glb",
+    "sha256": "6fd410a048a22c554f66eb8116cc9b097d74642998febfdc42f9936bedeb6488",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "mineral",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/weathered_concrete.png\": \"2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_basalt",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.10000000149011612
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.8799999952316284
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 2,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_iron",
+        "normalTexture": {
+          "index": 4,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 5
+          },
+          "metallicFactor": 0.44999998807907104,
+          "roughnessFactor": 0.7400000095367432
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -1.4706095457077026,
+            2.441702365875244
+          ],
+          [
+            -6.65023946762085,
+            2.5143308639526367
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -2.7685725688934326,
+            3.6980080604553223
+          ],
+          [
+            -31.5076904296875,
+            -13.80037784576416
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 8,
+          "NORMAL": 9,
+          "TEXCOORD_0": 10
+        },
+        "uvBounds": [
+          [
+            -3.1496803760528564,
+            3.84773325920105
+          ],
+          [
+            -33.924110412597656,
+            -9.718302726745605
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_basalt",
+        "bytes": 6429,
+        "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_basalt.png",
+        "meanRGB": [
+          127.51220703125,
+          127.502197265625,
+          254.9150390625
+        ],
+        "rangeRGB": [
+          [
+            112,
+            145
+          ],
+          [
+            107,
+            145
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_basalt",
+        "bytes": 1378,
+        "sha256": "2882ddf933a8a1ba375cc7962b636e7bb2aa43acaeb5a0d442001247ce0fe2a2",
+        "preview": "/tmp/opencode/MothLocal_biome4_basalt.png",
+        "meanRGB": [
+          66.216064453125,
+          72.9384765625,
+          82.90087890625
+        ],
+        "rangeRGB": [
+          [
+            66,
+            69
+          ],
+          [
+            71,
+            75
+          ],
+          [
+            81,
+            85
+          ]
+        ],
+        "authoredSRGB": [
+          67,
+          73,
+          83
+        ],
+        "maxSwatchDifference": 0.783935546875
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      },
+      {
+        "name": "MothLocalNormal_biome4_iron",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_iron.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_iron",
+        "bytes": 2404,
+        "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+        "preview": "/tmp/opencode/MothLocal_biome4_iron.png",
+        "meanRGB": [
+          70.220703125,
+          85.010009765625,
+          98.70947265625
+        ],
+        "rangeRGB": [
+          [
+            69,
+            71
+          ],
+          [
+            83,
+            86
+          ],
+          [
+            98,
+            101
+          ]
+        ],
+        "authoredSRGB": [
+          70,
+          85,
+          99
+        ],
+        "maxSwatchDifference": 0.29052734375
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/rootfall-canopy-relay-0.glb",
+    "sha256": "ef4b4fa2609017d3c1aea0cf31dc9bcc44c2354118ce398fa5e231a6f1a49644",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "bark",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/macro-organic.png\": \"de19687a5b14599a3e738f6006b08ad3380b023d6d19d4d2270b903350f5341a\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_bark",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.05999999865889549
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9200000166893005
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 2,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "foliage",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/grass.png\": \"b34ff20efcd0abad36323f9c6ffca4f30325dc91f7110a624ce7dac1d4f2fe64\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_moss",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 4
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9399999976158142
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -1.4227091073989868,
+            2.65693736076355
+          ],
+          [
+            -9.741388320922852,
+            2.0929079055786133
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -3.439422607421875,
+            4.565001487731934
+          ],
+          [
+            -21.92782211303711,
+            4.500130653381348
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 8,
+          "NORMAL": 9,
+          "TEXCOORD_0": 10
+        },
+        "uvBounds": [
+          [
+            -1.741463541984558,
+            2.5895917415618896
+          ],
+          [
+            -9.983316421508789,
+            2.7014267444610596
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_bark",
+        "bytes": 6122,
+        "sha256": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_bark.png",
+        "meanRGB": [
+          127.5107421875,
+          127.505615234375,
+          254.872802734375
+        ],
+        "rangeRGB": [
+          [
+            109,
+            149
+          ],
+          [
+            104,
+            150
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_bark",
+        "bytes": 1555,
+        "sha256": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6",
+        "preview": "/tmp/opencode/MothLocal_biome4_bark.png",
+        "meanRGB": [
+          80.88671875,
+          73.59619140625,
+          56.0
+        ],
+        "rangeRGB": [
+          [
+            79,
+            83
+          ],
+          [
+            73,
+            75
+          ],
+          [
+            56,
+            56
+          ]
+        ],
+        "authoredSRGB": [
+          81,
+          74,
+          56
+        ],
+        "maxSwatchDifference": 0.40380859375
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      },
+      {
+        "name": "MothLocal_biome4_moss",
+        "bytes": 2679,
+        "sha256": "5c6dc4c1d75a2e5bb264b25e39c334c798a9880729550ad0092c18256544d620",
+        "preview": "/tmp/opencode/MothLocal_biome4_moss.png",
+        "meanRGB": [
+          104.07421875,
+          119.651123046875,
+          85.016357421875
+        ],
+        "rangeRGB": [
+          [
+            102,
+            105
+          ],
+          [
+            118,
+            121
+          ],
+          [
+            83,
+            86
+          ]
+        ],
+        "authoredSRGB": [
+          104,
+          120,
+          85
+        ],
+        "maxSwatchDifference": 0.348876953125
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/rootfall-canopy-relay-1.glb",
+    "sha256": "fcdf1e9459a9577a108f134aadabda34d8f96b3132623fdd7f3c69d740eb4da2",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "bark",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/macro-organic.png\": \"de19687a5b14599a3e738f6006b08ad3380b023d6d19d4d2270b903350f5341a\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_bark",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.05999999865889549
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9200000166893005
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "foliage",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/grass.png\": \"b34ff20efcd0abad36323f9c6ffca4f30325dc91f7110a624ce7dac1d4f2fe64\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_moss",
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9399999976158142
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 3,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 4
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -1.4227091073989868,
+            2.65693736076355
+          ],
+          [
+            -9.741388320922852,
+            2.0929079055786133
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -1.741463541984558,
+            2.5895917415618896
+          ],
+          [
+            -9.983316421508789,
+            2.7014267444610596
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 8,
+          "NORMAL": 9,
+          "TEXCOORD_0": 10
+        },
+        "uvBounds": [
+          [
+            -3.193877935409546,
+            3.8577728271484375
+          ],
+          [
+            -21.92782211303711,
+            3.8906185626983643
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_bark",
+        "bytes": 6122,
+        "sha256": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_bark.png",
+        "meanRGB": [
+          127.5107421875,
+          127.505615234375,
+          254.872802734375
+        ],
+        "rangeRGB": [
+          [
+            109,
+            149
+          ],
+          [
+            104,
+            150
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_bark",
+        "bytes": 1555,
+        "sha256": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6",
+        "preview": "/tmp/opencode/MothLocal_biome4_bark.png",
+        "meanRGB": [
+          80.88671875,
+          73.59619140625,
+          56.0
+        ],
+        "rangeRGB": [
+          [
+            79,
+            83
+          ],
+          [
+            73,
+            75
+          ],
+          [
+            56,
+            56
+          ]
+        ],
+        "authoredSRGB": [
+          81,
+          74,
+          56
+        ],
+        "maxSwatchDifference": 0.40380859375
+      },
+      {
+        "name": "MothLocal_biome4_moss",
+        "bytes": 2679,
+        "sha256": "5c6dc4c1d75a2e5bb264b25e39c334c798a9880729550ad0092c18256544d620",
+        "preview": "/tmp/opencode/MothLocal_biome4_moss.png",
+        "meanRGB": [
+          104.07421875,
+          119.651123046875,
+          85.016357421875
+        ],
+        "rangeRGB": [
+          [
+            102,
+            105
+          ],
+          [
+            118,
+            121
+          ],
+          [
+            83,
+            86
+          ]
+        ],
+        "authoredSRGB": [
+          104,
+          120,
+          85
+        ],
+        "maxSwatchDifference": 0.348876953125
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/rootfall-root-archive-0.glb",
+    "sha256": "8824dff6a08899f236ec8bb81834774a7e5636600b8414ab2bbf1d43d8d46f8e",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "bark",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/macro-organic.png\": \"de19687a5b14599a3e738f6006b08ad3380b023d6d19d4d2270b903350f5341a\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_bark",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.05999999865889549
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9200000166893005
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 2,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -2.728581190109253,
+            3.8477330207824707
+          ],
+          [
+            -2.7783541679382324,
+            2.7348461151123047
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -4.4477362632751465,
+            5.902317523956299
+          ],
+          [
+            -5.177697658538818,
+            4.500130653381348
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_bark",
+        "bytes": 6122,
+        "sha256": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_bark.png",
+        "meanRGB": [
+          127.5107421875,
+          127.505615234375,
+          254.872802734375
+        ],
+        "rangeRGB": [
+          [
+            109,
+            149
+          ],
+          [
+            104,
+            150
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_bark",
+        "bytes": 1555,
+        "sha256": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6",
+        "preview": "/tmp/opencode/MothLocal_biome4_bark.png",
+        "meanRGB": [
+          80.88671875,
+          73.59619140625,
+          56.0
+        ],
+        "rangeRGB": [
+          [
+            79,
+            83
+          ],
+          [
+            73,
+            75
+          ],
+          [
+            56,
+            56
+          ]
+        ],
+        "authoredSRGB": [
+          81,
+          74,
+          56
+        ],
+        "maxSwatchDifference": 0.40380859375
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/rootfall-root-archive-1.glb",
+    "sha256": "b01f1230dc11dfc73a6242fd730b9dd48102e795b32459cad98df2ae314f6f0d",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "bark",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/macro-organic.png\": \"de19687a5b14599a3e738f6006b08ad3380b023d6d19d4d2270b903350f5341a\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_bark",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.05999999865889549
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9200000166893005
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -2.728581190109253,
+            3.8477330207824707
+          ],
+          [
+            -2.7783541679382324,
+            2.7348461151123047
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_bark",
+        "bytes": 6122,
+        "sha256": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_bark.png",
+        "meanRGB": [
+          127.5107421875,
+          127.505615234375,
+          254.872802734375
+        ],
+        "rangeRGB": [
+          [
+            109,
+            149
+          ],
+          [
+            104,
+            150
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_bark",
+        "bytes": 1555,
+        "sha256": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6",
+        "preview": "/tmp/opencode/MothLocal_biome4_bark.png",
+        "meanRGB": [
+          80.88671875,
+          73.59619140625,
+          56.0
+        ],
+        "rangeRGB": [
+          [
+            79,
+            83
+          ],
+          [
+            73,
+            75
+          ],
+          [
+            56,
+            56
+          ]
+        ],
+        "authoredSRGB": [
+          81,
+          74,
+          56
+        ],
+        "maxSwatchDifference": 0.40380859375
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/rootfall-root-buttress-0.glb",
+    "sha256": "a1e0e9c96b4ae4bbf904081516f12ff10e8cf7b07b585cd44b8aa026d1a63b25",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "bark",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/macro-organic.png\": \"de19687a5b14599a3e738f6006b08ad3380b023d6d19d4d2270b903350f5341a\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_bark",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.05999999865889549
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9200000166893005
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 2,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -1.6386363506317139,
+            2.65693736076355
+          ],
+          [
+            -9.176196098327637,
+            2.0929079055786133
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -3.439422607421875,
+            4.565001487731934
+          ],
+          [
+            -16.390443801879883,
+            4.500130653381348
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_bark",
+        "bytes": 6122,
+        "sha256": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_bark.png",
+        "meanRGB": [
+          127.5107421875,
+          127.505615234375,
+          254.872802734375
+        ],
+        "rangeRGB": [
+          [
+            109,
+            149
+          ],
+          [
+            104,
+            150
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_bark",
+        "bytes": 1555,
+        "sha256": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6",
+        "preview": "/tmp/opencode/MothLocal_biome4_bark.png",
+        "meanRGB": [
+          80.88671875,
+          73.59619140625,
+          56.0
+        ],
+        "rangeRGB": [
+          [
+            79,
+            83
+          ],
+          [
+            73,
+            75
+          ],
+          [
+            56,
+            56
+          ]
+        ],
+        "authoredSRGB": [
+          81,
+          74,
+          56
+        ],
+        "maxSwatchDifference": 0.40380859375
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/rootfall-root-buttress-1.glb",
+    "sha256": "b5f017ee36e70949512f31f147051706ff59a6ec9eb345b6077bbcd613bd30f5",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "bark",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/macro-organic.png\": \"de19687a5b14599a3e738f6006b08ad3380b023d6d19d4d2270b903350f5341a\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_bark",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.05999999865889549
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9200000166893005
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 2,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -1.6386363506317139,
+            2.65693736076355
+          ],
+          [
+            -9.176196098327637,
+            2.0929079055786133
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -0.886388897895813,
+            3.722810983657837
+          ],
+          [
+            -16.390443801879883,
+            -2.5756759643554688
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_bark",
+        "bytes": 6122,
+        "sha256": "db7cdef9c541f3ba80fec6e331bda244e5ef02d1ca19cd6bb0d3253f9efcc768",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_bark.png",
+        "meanRGB": [
+          127.5107421875,
+          127.505615234375,
+          254.872802734375
+        ],
+        "rangeRGB": [
+          [
+            109,
+            149
+          ],
+          [
+            104,
+            150
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_bark",
+        "bytes": 1555,
+        "sha256": "fc7ad823bfd0e184e6c3f49e07d75453f9b9c7c5eaf196bedc8fea5cb22229c6",
+        "preview": "/tmp/opencode/MothLocal_biome4_bark.png",
+        "meanRGB": [
+          80.88671875,
+          73.59619140625,
+          56.0
+        ],
+        "rangeRGB": [
+          [
+            79,
+            83
+          ],
+          [
+            73,
+            75
+          ],
+          [
+            56,
+            56
+          ]
+        ],
+        "authoredSRGB": [
+          81,
+          74,
+          56
+        ],
+        "maxSwatchDifference": 0.40380859375
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/siltwake-flood-abutment-0.glb",
+    "sha256": "927213938aa494996c537c0faef4f5b2d00adbe7af87781a21c147b596c45693",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "mineral",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/weathered_concrete.png\": \"2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_sandstone",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.10000000149011612
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.8999999761581421
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "mineral",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/weathered_concrete.png\": \"2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_silt",
+        "normalTexture": {
+          "index": 2,
+          "scale": 0.10000000149011612
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9599999785423279
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_iron",
+        "normalTexture": {
+          "index": 4,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 5
+          },
+          "metallicFactor": 0.44999998807907104,
+          "roughnessFactor": 0.7400000095367432
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -1.5505563020706177,
+            2.4693453311920166
+          ],
+          [
+            -3.841127395629883,
+            2.3030128479003906
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -1.2916789054870605,
+            1.178251028060913
+          ],
+          [
+            -3.245156764984131,
+            0.6523343324661255
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 8,
+          "NORMAL": 9,
+          "TEXCOORD_0": 10
+        },
+        "uvBounds": [
+          [
+            -1.8756849765777588,
+            6.3057708740234375
+          ],
+          [
+            -5.840994358062744,
+            -1.582606554031372
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_sandstone",
+        "bytes": 6429,
+        "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_sandstone.png",
+        "meanRGB": [
+          127.51220703125,
+          127.502197265625,
+          254.9150390625
+        ],
+        "rangeRGB": [
+          [
+            112,
+            145
+          ],
+          [
+            107,
+            145
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_sandstone",
+        "bytes": 3000,
+        "sha256": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66",
+        "preview": "/tmp/opencode/MothLocal_biome4_sandstone.png",
+        "meanRGB": [
+          166.654296875,
+          139.532958984375,
+          104.826904296875
+        ],
+        "rangeRGB": [
+          [
+            163,
+            170
+          ],
+          [
+            137,
+            142
+          ],
+          [
+            102,
+            106
+          ]
+        ],
+        "authoredSRGB": [
+          167,
+          140,
+          105
+        ],
+        "maxSwatchDifference": 0.467041015625
+      },
+      {
+        "name": "MothLocalNormal_biome4_silt",
+        "bytes": 6429,
+        "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_silt.png",
+        "meanRGB": [
+          127.51220703125,
+          127.502197265625,
+          254.9150390625
+        ],
+        "rangeRGB": [
+          [
+            112,
+            145
+          ],
+          [
+            107,
+            145
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_silt",
+        "bytes": 2445,
+        "sha256": "e000efd1793b08c484f03821eafe0398d1b661650e4990a77faa94832e053188",
+        "preview": "/tmp/opencode/MothLocal_biome4_silt.png",
+        "meanRGB": [
+          100.8759765625,
+          94.9248046875,
+          81.79443359375
+        ],
+        "rangeRGB": [
+          [
+            99,
+            102
+          ],
+          [
+            93,
+            96
+          ],
+          [
+            79,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          101,
+          95,
+          82
+        ],
+        "maxSwatchDifference": 0.20556640625
+      },
+      {
+        "name": "MothLocalNormal_biome4_iron",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_iron.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_iron",
+        "bytes": 2404,
+        "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+        "preview": "/tmp/opencode/MothLocal_biome4_iron.png",
+        "meanRGB": [
+          70.220703125,
+          85.010009765625,
+          98.70947265625
+        ],
+        "rangeRGB": [
+          [
+            69,
+            71
+          ],
+          [
+            83,
+            86
+          ],
+          [
+            98,
+            101
+          ]
+        ],
+        "authoredSRGB": [
+          70,
+          85,
+          99
+        ],
+        "maxSwatchDifference": 0.29052734375
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/siltwake-flood-abutment-1.glb",
+    "sha256": "021a74c122dae71df297bba06b95725bbdf98c7edbd68f4778c4bbb9b5dd36cd",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "mineral",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/weathered_concrete.png\": \"2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_sandstone",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.10000000149011612
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.8999999761581421
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "mineral",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/weathered_concrete.png\": \"2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_silt",
+        "normalTexture": {
+          "index": 2,
+          "scale": 0.10000000149011612
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9599999785423279
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -1.5505563020706177,
+            2.4693453311920166
+          ],
+          [
+            -3.841127395629883,
+            2.3030128479003906
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -1.2916789054870605,
+            1.178251028060913
+          ],
+          [
+            -3.245156764984131,
+            0.6523343324661255
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_sandstone",
+        "bytes": 6429,
+        "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_sandstone.png",
+        "meanRGB": [
+          127.51220703125,
+          127.502197265625,
+          254.9150390625
+        ],
+        "rangeRGB": [
+          [
+            112,
+            145
+          ],
+          [
+            107,
+            145
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_sandstone",
+        "bytes": 3000,
+        "sha256": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66",
+        "preview": "/tmp/opencode/MothLocal_biome4_sandstone.png",
+        "meanRGB": [
+          166.654296875,
+          139.532958984375,
+          104.826904296875
+        ],
+        "rangeRGB": [
+          [
+            163,
+            170
+          ],
+          [
+            137,
+            142
+          ],
+          [
+            102,
+            106
+          ]
+        ],
+        "authoredSRGB": [
+          167,
+          140,
+          105
+        ],
+        "maxSwatchDifference": 0.467041015625
+      },
+      {
+        "name": "MothLocalNormal_biome4_silt",
+        "bytes": 6429,
+        "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_silt.png",
+        "meanRGB": [
+          127.51220703125,
+          127.502197265625,
+          254.9150390625
+        ],
+        "rangeRGB": [
+          [
+            112,
+            145
+          ],
+          [
+            107,
+            145
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_silt",
+        "bytes": 2445,
+        "sha256": "e000efd1793b08c484f03821eafe0398d1b661650e4990a77faa94832e053188",
+        "preview": "/tmp/opencode/MothLocal_biome4_silt.png",
+        "meanRGB": [
+          100.8759765625,
+          94.9248046875,
+          81.79443359375
+        ],
+        "rangeRGB": [
+          [
+            99,
+            102
+          ],
+          [
+            93,
+            96
+          ],
+          [
+            79,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          101,
+          95,
+          82
+        ],
+        "maxSwatchDifference": 0.20556640625
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/siltwake-sluice-bank-0.glb",
+    "sha256": "de7e834aa4649355883aac1d5e1191b76bd86f9ad56c888067c379fc07455d4d",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "mineral",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/weathered_concrete.png\": \"2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_sandstone",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.10000000149011612
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.8999999761581421
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_iron",
+        "normalTexture": {
+          "index": 2,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0.44999998807907104,
+          "roughnessFactor": 0.7400000095367432
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 4,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 5
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -1.5505563020706177,
+            2.4693453311920166
+          ],
+          [
+            -2.4422969818115234,
+            2.3030128479003906
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -2.404099464416504,
+            6.408571243286133
+          ],
+          [
+            -11.051192283630371,
+            -0.39341235160827637
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 8,
+          "NORMAL": 9,
+          "TEXCOORD_0": 10
+        },
+        "uvBounds": [
+          [
+            -2.1371445655822754,
+            6.918882369995117
+          ],
+          [
+            -7.688722610473633,
+            -0.8909012079238892
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_sandstone",
+        "bytes": 6429,
+        "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_sandstone.png",
+        "meanRGB": [
+          127.51220703125,
+          127.502197265625,
+          254.9150390625
+        ],
+        "rangeRGB": [
+          [
+            112,
+            145
+          ],
+          [
+            107,
+            145
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_sandstone",
+        "bytes": 3000,
+        "sha256": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66",
+        "preview": "/tmp/opencode/MothLocal_biome4_sandstone.png",
+        "meanRGB": [
+          166.654296875,
+          139.532958984375,
+          104.826904296875
+        ],
+        "rangeRGB": [
+          [
+            163,
+            170
+          ],
+          [
+            137,
+            142
+          ],
+          [
+            102,
+            106
+          ]
+        ],
+        "authoredSRGB": [
+          167,
+          140,
+          105
+        ],
+        "maxSwatchDifference": 0.467041015625
+      },
+      {
+        "name": "MothLocalNormal_biome4_iron",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_iron.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_iron",
+        "bytes": 2404,
+        "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+        "preview": "/tmp/opencode/MothLocal_biome4_iron.png",
+        "meanRGB": [
+          70.220703125,
+          85.010009765625,
+          98.70947265625
+        ],
+        "rangeRGB": [
+          [
+            69,
+            71
+          ],
+          [
+            83,
+            86
+          ],
+          [
+            98,
+            101
+          ]
+        ],
+        "authoredSRGB": [
+          70,
+          85,
+          99
+        ],
+        "maxSwatchDifference": 0.29052734375
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/siltwake-sluice-bank-1.glb",
+    "sha256": "c04e2f6ff63aeeb8d3d4aa0489179c5d4aff56522e2c1152594e0d133f5c3060",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "mineral",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/weathered_concrete.png\": \"2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_sandstone",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.10000000149011612
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.8999999761581421
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_iron",
+        "normalTexture": {
+          "index": 2,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0.44999998807907104,
+          "roughnessFactor": 0.7400000095367432
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 4,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 5
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -1.5505563020706177,
+            2.4693453311920166
+          ],
+          [
+            -2.4422969818115234,
+            2.3030128479003906
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -2.404099464416504,
+            6.408571243286133
+          ],
+          [
+            -11.051192283630371,
+            -0.39341235160827637
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 8,
+          "NORMAL": 9,
+          "TEXCOORD_0": 10
+        },
+        "uvBounds": [
+          [
+            -2.1371445655822754,
+            6.918882369995117
+          ],
+          [
+            -7.688722610473633,
+            -0.8909012079238892
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_sandstone",
+        "bytes": 6429,
+        "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_sandstone.png",
+        "meanRGB": [
+          127.51220703125,
+          127.502197265625,
+          254.9150390625
+        ],
+        "rangeRGB": [
+          [
+            112,
+            145
+          ],
+          [
+            107,
+            145
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_sandstone",
+        "bytes": 3000,
+        "sha256": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66",
+        "preview": "/tmp/opencode/MothLocal_biome4_sandstone.png",
+        "meanRGB": [
+          166.654296875,
+          139.532958984375,
+          104.826904296875
+        ],
+        "rangeRGB": [
+          [
+            163,
+            170
+          ],
+          [
+            137,
+            142
+          ],
+          [
+            102,
+            106
+          ]
+        ],
+        "authoredSRGB": [
+          167,
+          140,
+          105
+        ],
+        "maxSwatchDifference": 0.467041015625
+      },
+      {
+        "name": "MothLocalNormal_biome4_iron",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_iron.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_iron",
+        "bytes": 2404,
+        "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+        "preview": "/tmp/opencode/MothLocal_biome4_iron.png",
+        "meanRGB": [
+          70.220703125,
+          85.010009765625,
+          98.70947265625
+        ],
+        "rangeRGB": [
+          [
+            69,
+            71
+          ],
+          [
+            83,
+            86
+          ],
+          [
+            98,
+            101
+          ]
+        ],
+        "authoredSRGB": [
+          70,
+          85,
+          99
+        ],
+        "maxSwatchDifference": 0.29052734375
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/siltwake-strata-wheelhouse-0.glb",
+    "sha256": "eb7315c37f03edd9846e56edb9ebbca1f017e3abd88391df6531e0a8555f1fd9",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "mineral",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/weathered_concrete.png\": \"2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_sandstone",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.10000000149011612
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.8999999761581421
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 2,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_iron",
+        "normalTexture": {
+          "index": 4,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 5
+          },
+          "metallicFactor": 0.44999998807907104,
+          "roughnessFactor": 0.7400000095367432
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "mineral",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/weathered_concrete.png\": \"2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_silt",
+        "normalTexture": {
+          "index": 6,
+          "scale": 0.10000000149011612
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 7
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9599999785423279
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -2.208817720413208,
+            3.3615353107452393
+          ],
+          [
+            -7.6172990798950195,
+            2.3030128479003906
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -5.555229187011719,
+            6.957021236419678
+          ],
+          [
+            -26.724613189697266,
+            6.642944812774658
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 8,
+          "NORMAL": 9,
+          "TEXCOORD_0": 10
+        },
+        "uvBounds": [
+          [
+            -5.68870210647583,
+            6.709331035614014
+          ],
+          [
+            -26.259675979614258,
+            6.840344429016113
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 12,
+          "NORMAL": 13,
+          "TEXCOORD_0": 14
+        },
+        "uvBounds": [
+          [
+            -1.6097853183746338,
+            2.5897367000579834
+          ],
+          [
+            -6.8712382316589355,
+            2.388798236846924
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_sandstone",
+        "bytes": 6429,
+        "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_sandstone.png",
+        "meanRGB": [
+          127.51220703125,
+          127.502197265625,
+          254.9150390625
+        ],
+        "rangeRGB": [
+          [
+            112,
+            145
+          ],
+          [
+            107,
+            145
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_sandstone",
+        "bytes": 3000,
+        "sha256": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66",
+        "preview": "/tmp/opencode/MothLocal_biome4_sandstone.png",
+        "meanRGB": [
+          166.654296875,
+          139.532958984375,
+          104.826904296875
+        ],
+        "rangeRGB": [
+          [
+            163,
+            170
+          ],
+          [
+            137,
+            142
+          ],
+          [
+            102,
+            106
+          ]
+        ],
+        "authoredSRGB": [
+          167,
+          140,
+          105
+        ],
+        "maxSwatchDifference": 0.467041015625
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      },
+      {
+        "name": "MothLocalNormal_biome4_iron",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_iron.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_iron",
+        "bytes": 2404,
+        "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+        "preview": "/tmp/opencode/MothLocal_biome4_iron.png",
+        "meanRGB": [
+          70.220703125,
+          85.010009765625,
+          98.70947265625
+        ],
+        "rangeRGB": [
+          [
+            69,
+            71
+          ],
+          [
+            83,
+            86
+          ],
+          [
+            98,
+            101
+          ]
+        ],
+        "authoredSRGB": [
+          70,
+          85,
+          99
+        ],
+        "maxSwatchDifference": 0.29052734375
+      },
+      {
+        "name": "MothLocalNormal_biome4_silt",
+        "bytes": 6429,
+        "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_silt.png",
+        "meanRGB": [
+          127.51220703125,
+          127.502197265625,
+          254.9150390625
+        ],
+        "rangeRGB": [
+          [
+            112,
+            145
+          ],
+          [
+            107,
+            145
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_silt",
+        "bytes": 2445,
+        "sha256": "e000efd1793b08c484f03821eafe0398d1b661650e4990a77faa94832e053188",
+        "preview": "/tmp/opencode/MothLocal_biome4_silt.png",
+        "meanRGB": [
+          100.8759765625,
+          94.9248046875,
+          81.79443359375
+        ],
+        "rangeRGB": [
+          [
+            99,
+            102
+          ],
+          [
+            93,
+            96
+          ],
+          [
+            79,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          101,
+          95,
+          82
+        ],
+        "maxSwatchDifference": 0.20556640625
+      }
+    ]
+  },
+  {
+    "path": "godot/biomes/expansion/art/siltwake-strata-wheelhouse-1.glb",
+    "sha256": "b40b8a3e2a24fbec0a5cd19614678ef0606c468585ae624a52e87416484b8e52",
+    "materials": [
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "mineral",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/weathered_concrete.png\": \"2edd039457bc3552a259ced78343edca1921bf3e810ea4cf265f84681824d550\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_sandstone",
+        "normalTexture": {
+          "index": 0,
+          "scale": 0.10000000149011612
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.8999999761581421
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_copper",
+        "normalTexture": {
+          "index": 2,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0.550000011920929,
+          "roughnessFactor": 0.6700000166893005
+        }
+      },
+      {
+        "doubleSided": true,
+        "extras": {
+          "moth_finish_version": 1,
+          "moth_finish_revision": 2,
+          "moth_family": "alloy",
+          "moth_resource_sha256": "{\"godot/moth/generated/textures/brushed_metal.png\": \"271950abeed1c50f30e84fdc78d64411257c97ce18f0596bec813af39345fc51\"}",
+          "moth_baked_master_sha256": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2"
+        },
+        "name": "biome4_iron",
+        "normalTexture": {
+          "index": 4,
+          "scale": 0.07999999821186066
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 5
+          },
+          "metallicFactor": 0.44999998807907104,
+          "roughnessFactor": 0.7400000095367432
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 1,
+          "TEXCOORD_0": 2
+        },
+        "uvBounds": [
+          [
+            -2.208817720413208,
+            3.3615353107452393
+          ],
+          [
+            -7.6172990798950195,
+            2.3030128479003906
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 4,
+          "NORMAL": 5,
+          "TEXCOORD_0": 6
+        },
+        "uvBounds": [
+          [
+            -5.555229187011719,
+            6.957021236419678
+          ],
+          [
+            -26.724613189697266,
+            6.642944812774658
+          ]
+        ]
+      },
+      {
+        "attributes": {
+          "POSITION": 8,
+          "NORMAL": 9,
+          "TEXCOORD_0": 10
+        },
+        "uvBounds": [
+          [
+            -5.68870210647583,
+            6.709331035614014
+          ],
+          [
+            -26.259675979614258,
+            6.840344429016113
+          ]
+        ]
+      }
+    ],
+    "images": [
+      {
+        "name": "MothLocalNormal_biome4_sandstone",
+        "bytes": 6429,
+        "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_sandstone.png",
+        "meanRGB": [
+          127.51220703125,
+          127.502197265625,
+          254.9150390625
+        ],
+        "rangeRGB": [
+          [
+            112,
+            145
+          ],
+          [
+            107,
+            145
+          ],
+          [
+            253,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_sandstone",
+        "bytes": 3000,
+        "sha256": "1425a7d45b2fc543cef398a661716ab0f5855663e066f4ffe347242cd6fdfb66",
+        "preview": "/tmp/opencode/MothLocal_biome4_sandstone.png",
+        "meanRGB": [
+          166.654296875,
+          139.532958984375,
+          104.826904296875
+        ],
+        "rangeRGB": [
+          [
+            163,
+            170
+          ],
+          [
+            137,
+            142
+          ],
+          [
+            102,
+            106
+          ]
+        ],
+        "authoredSRGB": [
+          167,
+          140,
+          105
+        ],
+        "maxSwatchDifference": 0.467041015625
+      },
+      {
+        "name": "MothLocalNormal_biome4_copper",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_copper.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_copper",
+        "bytes": 3262,
+        "sha256": "4256c94480cbb69aa052f9401eb7f7ab5ed51c47ae5e72f884325211d678fc9b",
+        "preview": "/tmp/opencode/MothLocal_biome4_copper.png",
+        "meanRGB": [
+          172.721923828125,
+          120.516845703125,
+          81.6171875
+        ],
+        "rangeRGB": [
+          [
+            170,
+            175
+          ],
+          [
+            119,
+            122
+          ],
+          [
+            81,
+            83
+          ]
+        ],
+        "authoredSRGB": [
+          173,
+          121,
+          82
+        ],
+        "maxSwatchDifference": 0.483154296875
+      },
+      {
+        "name": "MothLocalNormal_biome4_iron",
+        "bytes": 5817,
+        "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+        "preview": "/tmp/opencode/MothLocalNormal_biome4_iron.png",
+        "meanRGB": [
+          127.51171875,
+          127.50390625,
+          254.9443359375
+        ],
+        "rangeRGB": [
+          [
+            114,
+            141
+          ],
+          [
+            112,
+            140
+          ],
+          [
+            254,
+            255
+          ]
+        ]
+      },
+      {
+        "name": "MothLocal_biome4_iron",
+        "bytes": 2404,
+        "sha256": "ae1b043c858b11ab3c66fec923289916be2216e0ab40fa9466e1208ceac88bf8",
+        "preview": "/tmp/opencode/MothLocal_biome4_iron.png",
+        "meanRGB": [
+          70.220703125,
+          85.010009765625,
+          98.70947265625
+        ],
+        "rangeRGB": [
+          [
+            69,
+            71
+          ],
+          [
+            83,
+            86
+          ],
+          [
+            98,
+            101
+          ]
+        ],
+        "authoredSRGB": [
+          70,
+          85,
+          99
+        ],
+        "maxSwatchDifference": 0.29052734375
+      }
+    ]
+  }
+]

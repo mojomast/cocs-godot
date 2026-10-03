@@ -36,18 +36,19 @@ def pixels(path):
         previous = row
     return width, height, bpp, rows
 
-root = Path(sys.argv[1])
-report = []
-for before in sorted(root.glob('**/*-before.png')):
-    after = before.with_name(before.name.replace('-before.png','-after.png'))
-    w,h,bpp,a = pixels(before)
-    ww,hh,bb,b = pixels(after)
-    assert (w,h,bpp)==(ww,hh,bb)
-    changed, maximum = 0, 0
-    for y in range(h):
-        for x in range(w):
-            delta=max(abs(a[y][x*bpp+k]-b[y][x*bpp+k]) for k in range(3))
-            maximum=max(maximum,delta)
-            if delta>2: changed+=1
-    report.append({'before':str(before),'after':str(after),'changedPixelsOver2':changed,'pixelCount':w*h,'maxChannelDelta':maximum})
-print(json.dumps(report,indent=2))
+if __name__ == '__main__':
+    root = Path(sys.argv[1])
+    report = []
+    for before in sorted(root.glob('**/*-before.png')):
+        after = before.with_name(before.name.replace('-before.png','-after.png'))
+        w,h,bpp,a = pixels(before)
+        ww,hh,bb,b = pixels(after)
+        assert (w,h,bpp)==(ww,hh,bb)
+        changed, maximum = 0, 0
+        for y in range(h):
+            for x in range(w):
+                delta=max(abs(a[y][x*bpp+k]-b[y][x*bpp+k]) for k in range(3))
+                maximum=max(maximum,delta)
+                if delta>2: changed+=1
+        report.append({'before':str(before),'after':str(after),'changedPixelsOver2':changed,'pixelCount':w*h,'maxChannelDelta':maximum})
+    print(json.dumps(report,indent=2))
