@@ -1,0 +1,266 @@
+{
+  "baselineRef": "90be2af7",
+  "dt": 0.016666666666666666,
+  "sourceSha256": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+  "baseline": {
+    "airAccel": 3.5,
+    "airCap": 1.6,
+    "startTicks": 9,
+    "coastTicks": 24,
+    "airReverseTicks": 21,
+    "lateralHopMetres": 1.1666666666666654,
+    "hopTicks": 46,
+    "strafe": {
+      "seconds": 160,
+      "maxSpeed": 25.236305417218208,
+      "landings": 204,
+      "firstOverCapTick": 981,
+      "samples": [
+        {
+          "seconds": 10,
+          "speed": 14.661059534244668
+        },
+        {
+          "seconds": 20,
+          "speed": 17.850739169258226
+        },
+        {
+          "seconds": 30,
+          "speed": 18.48675201326621
+        },
+        {
+          "seconds": 40,
+          "speed": 19.101599700316058
+        },
+        {
+          "seconds": 50,
+          "speed": 19.652084989752225
+        },
+        {
+          "seconds": 60,
+          "speed": 20.23154852095013
+        },
+        {
+          "seconds": 70,
+          "speed": 20.794871162540893
+        },
+        {
+          "seconds": 80,
+          "speed": 21.343330990681523
+        },
+        {
+          "seconds": 90,
+          "speed": 21.8780458197
+        },
+        {
+          "seconds": 100,
+          "speed": 22.360282248268344
+        },
+        {
+          "seconds": 110,
+          "speed": 22.871233751884393
+        },
+        {
+          "seconds": 120,
+          "speed": 23.371017188912624
+        },
+        {
+          "seconds": 130,
+          "speed": 23.860334355485346
+        },
+        {
+          "seconds": 140,
+          "speed": 24.303269098804165
+        },
+        {
+          "seconds": 150,
+          "speed": 24.774180107523254
+        },
+        {
+          "seconds": 160,
+          "speed": 25.236305417218187
+        }
+      ]
+    },
+    "incoming24AfterTakeoff": 24.03700850309326,
+    "landingTap": {
+      "landingTick": 3,
+      "slideOnTick": null,
+      "speed": 7.2
+    }
+  },
+  "implemented": {
+    "airAccel": 4.5,
+    "airCap": 2.2,
+    "startTicks": 9,
+    "coastTicks": 24,
+    "airReverseTicks": 17,
+    "lateralHopMetres": 1.599999999999999,
+    "hopTicks": 46,
+    "strafe": {
+      "seconds": 160,
+      "maxSpeed": 17.60000000000002,
+      "landings": 204,
+      "firstOverCapTick": null,
+      "samples": [
+        {
+          "seconds": 10,
+          "speed": 17.275158786856665
+        },
+        {
+          "seconds": 20,
+          "speed": 17.599999999999998
+        },
+        {
+          "seconds": 30,
+          "speed": 17.600000000000005
+        },
+        {
+          "seconds": 40,
+          "speed": 17.6
+        },
+        {
+          "seconds": 50,
+          "speed": 17.6
+        },
+        {
+          "seconds": 60,
+          "speed": 17.599999999999998
+        },
+        {
+          "seconds": 70,
+          "speed": 17.6
+        },
+        {
+          "seconds": 80,
+          "speed": 17.600000000000005
+        },
+        {
+          "seconds": 90,
+          "speed": 17.6
+        },
+        {
+          "seconds": 100,
+          "speed": 17.600000000000005
+        },
+        {
+          "seconds": 110,
+          "speed": 17.600000000000005
+        },
+        {
+          "seconds": 120,
+          "speed": 17.600000000000005
+        },
+        {
+          "seconds": 130,
+          "speed": 17.599999999999998
+        },
+        {
+          "seconds": 140,
+          "speed": 17.6
+        },
+        {
+          "seconds": 150,
+          "speed": 17.600000000000005
+        },
+        {
+          "seconds": 160,
+          "speed": 17.600000000000012
+        }
+      ]
+    },
+    "incoming24AfterTakeoff": 24,
+    "landingTap": {
+      "landingTick": 3,
+      "slideOnTick": 4,
+      "speed": 9.2
+    }
+  },
+  "capAndBufferOnly": {
+    "airAccel": 3.5,
+    "airCap": 1.6,
+    "startTicks": 9,
+    "coastTicks": 24,
+    "airReverseTicks": 21,
+    "lateralHopMetres": 1.1666666666666654,
+    "hopTicks": 46,
+    "strafe": {
+      "seconds": 160,
+      "maxSpeed": 17.600000000000044,
+      "landings": 204,
+      "firstOverCapTick": null,
+      "samples": [
+        {
+          "seconds": 10,
+          "speed": 14.661059534244668
+        },
+        {
+          "seconds": 20,
+          "speed": 17.6
+        },
+        {
+          "seconds": 30,
+          "speed": 17.600000000000005
+        },
+        {
+          "seconds": 40,
+          "speed": 17.600000000000005
+        },
+        {
+          "seconds": 50,
+          "speed": 17.600000000000005
+        },
+        {
+          "seconds": 60,
+          "speed": 17.6
+        },
+        {
+          "seconds": 70,
+          "speed": 17.6
+        },
+        {
+          "seconds": 80,
+          "speed": 17.600000000000012
+        },
+        {
+          "seconds": 90,
+          "speed": 17.6
+        },
+        {
+          "seconds": 100,
+          "speed": 17.6
+        },
+        {
+          "seconds": 110,
+          "speed": 17.6
+        },
+        {
+          "seconds": 120,
+          "speed": 17.6
+        },
+        {
+          "seconds": 130,
+          "speed": 17.60000000000001
+        },
+        {
+          "seconds": 140,
+          "speed": 17.60000000000001
+        },
+        {
+          "seconds": 150,
+          "speed": 17.6
+        },
+        {
+          "seconds": 160,
+          "speed": 17.6
+        }
+      ]
+    },
+    "incoming24AfterTakeoff": 24,
+    "landingTap": {
+      "landingTick": 3,
+      "slideOnTick": 4,
+      "speed": 9.2
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "grant": "RELEASE-MATRIX-20261003-P",
+  "resource_released": true,
+  "released_at": "2026-10-03T15:04:52.013061Z",
+  "release_ready": false,
+  "canonical_obligations": 142,
+  "original_obligations_preserved": 96,
+  "phase": "bounded-canonical-complete-grant-released",
+  "adopted_parent": "b17360c97d06040f6aa44a4ec9eed8cb863d7eb7",
+  "fixture_candidate": "84ace28f",
+  "frozen_candidate": "3e97453abbb09a7f944669cab4126ee55dd28bec",
+  "frozen_counts": {"passed":89,"failed":22,"unrun":31,"running":0},
+  "cohorts": {"source":{"passed":34},"engine":{"passed":55,"failed":22,"unrun":8},"audio":{"unrun":4},"manual":{"unrun":13},"external":{"unrun":6}},
+  "canonical_report": "/home/mojo/.tmp-on-disk/cocs-release-matrix-P-20261003/canonical-02/run-47ivx55a/report.json",
+  "owner_and_next_action_inventory": "canonical_report.completion_ledger (all 142 rows)",
+  "omitted_available_source_engine_jobs": [],
+  "cleanup": {"audits":3,"owned_process_groups":239,"remaining":0,"evidence":"final-cleanup-audits.json"},
+  "integrity": {"identity_equal":true,"tracked_sidecars":712,"changed_sidecars":0,"cache_changes":["godot/.godot/editor/filesystem_cache10"],"evidence":"final-integrity.json"},
+  "evidence_root": "/home/mojo/.tmp-on-disk/cocs-release-matrix-P-20261003",
+  "active_stage": null,
+  "completed_stages": {
+    "source-preclosure": {"selected":29,"passed":27,"failed":2},
+    "warmup": {"selected":2,"passed":2,"failed":0},
+    "native-preclosure": {"selected":32,"passed":29,"failed":3},
+    "fixture-regressions": {"selected":5,"passed":5,"failed":0}
+  },
+  "remaining": [
+    "Parent acceptance owner: review isolated diagnosis fixes, create fresh candidate/ledger and obtain a new native grant for verification; retain all 22 failures.",
+    "Gameplay owner: Gemini double-jump timing and campaign round/epoch input gap require correction without weakened authority thresholds.",
+    "Horde owner: chain passed, rendered runs failed and registered boss lost at stage C wave 10; victory remains open.",
+    "Fighting owner: fixture fixes need native verification; paired-throw continuation and seven deferred mechanics families remain open.",
+    "Acceptance owner: verify spectator target cycling, unobstructed compact clicks and real Settings Return Home with isolated fixes.",
+    "Map production owner: new Moth API and Blender-authored art are separate future candidate work requiring fresh native/package acceptance.",
+    "Preserve canonical receipt-only owner requirements: full cinematic production is pending separate producer closure, not P recapture.",
+    "Real audio, physical controller, human/manual, GPU and extracted Windows obligations remain distinct; never substitute Dummy/software-rendered/source evidence."
+  ]
+}

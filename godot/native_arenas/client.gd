@@ -3,8 +3,13 @@ extends "res://net/client.gd"
 signal input_reset(reason: String)
 var input_epoch := 0
 var input_status: Dictionary = {}
+const MAX_OUTSTANDING_INPUTS := 4
+var outstanding_inputs: Array[int] = []
+var outstanding_epoch := 0
 
 func disconnect_server() -> void:
+	outstanding_inputs.clear()
+	outstanding_epoch = 0
 	input_epoch = 0
 	input_status.clear()
 	super.disconnect_server()
@@ -35,8 +40,11 @@ func decode_text(text: String) -> bool:
 			var changed := next_epoch != input_epoch
 			input_epoch = next_epoch
 			if frame.get("type") == "start":
+				outstanding_inputs.clear()
+				outstanding_epoch = input_epoch
 				input_status.clear()
 			elif changed:
+				input_status.clear()
 				input_reset.emit(str(frame.get("reason", "authority boundary")))
 		if frame.has("nativeArenaInput") and frame.get("type") in ["snapshot", "results"]:
 			if not frame.nativeArenaInput is Dictionary: return fail("Malformed native input status")
@@ -47,10 +55,22 @@ func decode_text(text: String) -> bool:
 
 func send_controls(controls: Dictionary, cancel: bool = false) -> Error:
 	if input_epoch < 1: return ERR_UNCONFIGURED
+	# Retire applied/cancelled samples, never merely received samples. The
+	# caller keeps one-shots on ERR_BUSY and resamples current held controls.
+	if outstanding_epoch != input_epoch:
+		outstanding_inputs.clear()
+		outstanding_epoch = input_epoch
+	var retired := maxi(int(input_status.get("appliedSeq", 0)), int(input_status.get("cancelledThrough", 0)))
+	while not outstanding_inputs.is_empty() and outstanding_inputs[0] <= retired:
+		outstanding_inputs.pop_front()
+	if not cancel and outstanding_inputs.size() >= MAX_OUTSTANDING_INPUTS: return ERR_BUSY
 	var next_seq := input_seq + 1
 	var result := send_frame({"type":"input", "seq":next_seq, "inputEpoch":input_epoch,
 		"cancel":cancel, "input":{} if cancel else controls})
-	if result == OK: input_seq = next_seq
+	if result == OK:
+		input_seq = next_seq
+		if cancel: outstanding_inputs.clear()
+		outstanding_inputs.append(input_seq)
 	return result
 
 func send_input(controls: Dictionary) -> Error:

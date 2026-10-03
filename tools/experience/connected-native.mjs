@@ -90,12 +90,10 @@ export async function run(plan) {
     const owned=ownProcess('python3',args,{log:join(dir,'native.log'),env});owned.name=name;children.push(owned);
   }
   async function home(name) {
-    const owned=children.findLast(c=>c.name===name);owned.allowExit=true;
-    await command(name,'home');await wait(()=>owned.closed,`${name} ordinary Settings Leave exits`,10000);
-    assert.equal(owned.child.exitCode,0,'ordinary Leave exit');
-    const count=reports.length;launch(name,room.id,true);
-    await wait(()=>reports.slice(count).some(r=>r.name===name&&r.id===0),`${name} supervised actual Home`);
-    const observed=latest(name);assert.equal(observed.scene,'res://ui/main_menu.tscn');
+    // O changed the production button to an in-process deferred Home transition.
+    // Witness that same live process instead of manufacturing Home by relaunch.
+    const observed=await command(name,'home');
+    assert.equal(observed.scene,'res://ui/main_menu.tscn');
     assert.deepEqual(observed.hits,[]);assert.deepEqual(observed.targets,[]);assert.equal(observed.held,0);assert.equal(Object.keys(observed.kit).length,0);
     await command(name,'capture',{label:'home'});
   }

@@ -7,6 +7,22 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
+**New research-led movement directive:** arena and traversal Flash research is
+complete; native input responsiveness research continues. Astra
+`ses_efd9f7a16ffebB54Qq3YBwuZ3t` is implementing the selected speed-bound fix,
+buffered landing slide and camera-neutral slide cue, with air-steering evaluation.
+This runs alongside
+new Moth/Blender map production; exact owners and constraints are in
+`MOVEMENT_RESEARCH_20261003.md`.
+
+**New user-requested map production:** dedicated Astra is creating new Moth API
+resources and updating mothbake; two Flash audits are complete and Sol is preparing
+Blender modeling helpers and export verification for the six newer maps.
+The user explicitly requires Blender-authored assets. Application follows the
+new resource pack, on isolated branches with fresh map validation. P has released;
+the next Blender grant awaits resource readiness. Exact owners,
+sequence and storage constraints: `MOTH_BLENDER_MAP_VARIETY_20261003.md`.
+
 **Current checkpoint (supersedes earlier M-in-progress entries below):** M actually
 completed and released at `2026-10-03T08:08:16.973785Z`; the parent missed its
 completion transition and later gave a stale capturing update. User's in-flight
@@ -14,13 +30,45 @@ question prompted a direct process/evidence check. No cinematic engine or encode
 was still running. Parent verified three empty audits/72 groups and the actual
 45,812,911-byte MP4 hash, merged M as **`701d4caf`**, and passed 11 pipeline tests.
 
-**Exclusive active grant: `GAMEPLAY-REPAIR-20261003-O`**, owner
-`ses_f0294303bffed6Fb8UJLKe4ZDz`, foundation **`17807ab9`**. N completed and
-released 48 groups after three empty audits, independently checked by parent.
-N's combined-arms ordinary-input journey and warmed campaign movement passed;
-the world/Payload vehicle approach and two 87,380-byte Controls GL texture leaks
-remain failed. O owns concrete diagnosis/fixes and targeted native regressions
-for those two failures. All 142 obligations and historical failures remain.
+**P completed and released:** `RELEASE-MATRIX-20261003-P`, owner
+`ses_f0292f089ffeq9MnxeAHN0yrKb`, frozen candidate **`3e97453a`**, released at
+`2026-10-03T15:04:52.013061Z`. The final canonical ledger has **89 passed,
+22 failed, 31 unrun = 142 obligations**. Source: 34 passed; engine: 55 passed,
+22 failed, eight unrun; audio/manual/external: four/13/six unrun.
+Every available command-backed source/engine job was attempted; release readiness
+remains false. Horde boss reached wave 10, four stations, 11 rewards and Warden
+phase 1 before an authoritative loss at 900.45 seconds.
+
+Parent inspected `final-cleanup-audits.json`: three empty audits of 239 owned
+groups. `final-integrity.json` records equal frozen input identity, 712 unchanged
+tracked sidecars, and only editor `filesystem_cache10` changed among 2,560 earlier
+cache entries. Evidence root:
+`/home/mojo/.tmp-on-disk/cocs-release-matrix-P-20261003/`;
+ledger: `canonical-02/run-47ivx55a/report.json`.
+Diagnosis commits `cd2b2017`, `47b3633b` and combo follow-up `199d2641` were
+reviewed and integrated as `346e8db8`, `6252d4bf` and `8bf90885`;
+native verification remains pending. Parent passed **83 source checks**: 33
+Fighting acceptance/command/combo/UI, three diagnosis, seven spectator/process,
+35 runner/receipt and five Blender-toolkit tests. **No heavy grant
+is currently active.** New Moth/Blender production requires an explicit next grant
+after the resource pack is ready; its acceptance uses a fresh candidate.
+
+**Historical O/P foundation:** O repaired both N
+failures and released 18 groups with three empty audits, independently checked
+by parent. World/combined ordinary vehicle journeys now pass through actual
+F12/Return Home. Controls passes 90 assertions with zero leaks after completing
+fixture-owned sky rendering before disposal. The real Settings quit-vs-Home bug
+is corrected. P executed available automatable acceptance serially;
+all 142 obligations and historical failures remain.
+
+**Historical P pre-freeze checkpoint (superseded above):** source batch 27/29 passed; NumPy/Pillow availability
+was corrected, with closure-dependent retry queued. Independent native batch
+29/32 passed initially; three fixture defects were corrected in `84ace28f` and
+all three regressions then passed. Parent reviewed/integrated those corrections
+as `4b2d87db` and passed their grammar checks. Fifteen connected canonical jobs
+were queued serially in `connected-preclosure`; this was before P's final release.
+O package closure is now verified at **`14d8a72d`**, with **55 parent checks**
+passed. P was told to adopt it at the next stage boundary before ledger freeze.
 
 Sol `ses_eff6a3d9cffeTi9iQPn43laxo1` published the completed movie at
 <http://100.125.104.79:8796/cinematic-m/> with 12 matching HTTP/hash checks.
@@ -58,15 +106,15 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**Exclusive local heavy grant O belongs to `ses_f0294303bffed6Fb8UJLKe4ZDz`.**
-F/G/G2/G3/G4/H/I/J/K/L/M/N have released. Native O and source/remote Windows
-preparation are active; source agents do not start local engines or exports.
+**P has explicitly released; no local heavy grant is active.**
+F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P have released. P diagnosis source fixes are integrated;
+the Windows owner retains remote preflight monitoring.
 Scenery delivery is preserved but not integrated into the preview. Final production
 and acceptance obligations remain; strict final packaging is unchanged.
 
 Current assignments below supersede the historical checkpoints later in this file.
 The owner renewed the execution directive: **use subagents to advance the missing
-production work**. Current workers start from committed parent `17807ab9` in their
+production work**. Current workers start from committed parent `b17360c9` in their
 existing checkouts; the active heavy worker adopts new inputs only at safe run
 boundaries.
 
@@ -77,8 +125,8 @@ boundaries.
 | Robot/prop production | Astra `ses_f03a2843bffefDFoP3x1j1cxRO` | Produced and reviewed through `2c39d1ad`; D released; actual texture/import-bound package promotion integrated at `e4b311fa` |
 | Fighting presentation and controls | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing at `1bff0281`; controller recovery integrated at `614a8a7f`, all 12 parent presentation source tests pass; native review pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
-| Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Exclusive O: fix world ordinary-vehicle approach/capture failure and attribute/fix two Controls GL texture leaks; use retained N evidence and targeted regressions |
-| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Final L seven-unit reconciliation integrated at `623127c5`; 52 parent checks pass, 116 released-K import sidecars unchanged; future pinned runtime changes require another exact advance |
+| Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | O complete/released; world/combined ordinary journeys and Controls clean teardown passed; Settings Return Home fix integrated at `3ee932e8`, report at `b17360c9` |
+| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Exact O advance integrated at `14d8a72d`; all 55 parent checks and seven committed-Git strict inventories pass; future runtime drift requires explicit reconciliation |
 | Vesper Viaduct | Astra `ses_f03a3885fffehx9yFhHubuPCft` | H production/evidence integrated through `04fbbfa5`; six native outcomes passed; parent review/registration at `99a4f597`; package-promoted at `b5d16351` |
 | Abyssal Pressureworks | Astra `ses_f03a3024cffeNO1Cc3Qr1zSLTG` | I delivery integrated through `f0e76bf7`; six native outcomes and parent visual review retained; six-mode registration/package promotion integrated at `c7c81c71` |
 | Stormglass Causeway | Astra `ses_f0342d1ffffeyUHJkcUj3vqP7p` | J completed/released; assets and private race evidence integrated through `997bc013`; one public Puma Race pair and exact package promotion integrated at `5b5c8791`, flat-road concession retained |
@@ -86,7 +134,7 @@ boundaries.
 | Shared race UI/lifecycle repairs | Sol `ses_effc08498ffeMuhuRDvyAoXEpj` | Source-only production fixes for J findings: map title, responsive result panel, restart audio teardown and attachment ownership warnings |
 | Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Actual production at `1f129ab2`; E released; compact-HUD correction at `83ceaa62` passes six parent source checks/grammar, new native layout/screenshots pending |
 | Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base `b6ab6782` and ordinary-controller follow-up `da259d19` integrated; 26 parent acceptance tests and grammar pass; native execution awaits later grant and device access |
-| Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | N released and merged at `17807ab9`; combined ordinary vehicle and campaign movement passed, two concrete failures handed to O; all 142 obligations/96 original gates preserved |
+| Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | P complete/released on `3e97453a`: 89 passed / 22 failed / 31 unrun; 142 obligations retained; reviewed diagnosis/combo follow-up integrated through `8bf90885`, native verification pending |
 | Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Historical Windows graph evidence verified/integrated at `08f3b1f9`; new 13-world/73-pair source-only preflight `37125999742` awaits owner-reported completion; no local export under O |
 | Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | M complete/released, integrated at `701d4caf`; 75-second film published, 98 candidate/91 installed Home checks pass; human full-watch/listening and final-frozen receipt remain pending |
 
@@ -98,18 +146,22 @@ directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
-**`GAMEPLAY-REPAIR-20261003-O`**, owner `ses_f0294303bffed6Fb8UJLKe4ZDz`, is the
-only active heavy grant. Scope: the two N failures and affected native regressions.
-No package export, cinematic, full final matrix, asset rebakes or authority changes.
+**No active heavy grant.** `RELEASE-MATRIX-20261003-P`, owner
+`ses_f0292f089ffeq9MnxeAHN0yrKb`, released at `2026-10-03T15:04:52.013061Z`.
+Its completed scope was remaining available registered acceptance,
+serial bounded native/source cohorts and minimal demonstrated defect corrections.
+No package export, cinematic recapture/encode, asset rebakes or authority changes.
+Package-bound jobs require the exact O pin advance; new runtime fixes need another
+reviewed reconciliation. A frozen ledger must not reuse earlier candidate passes.
 Use shared nonwaiting lock, bounded owned groups, exact source identities and
 `LP_NUM_THREADS=1`. Three empty audits and explicit release are required before
 the next heavy owner. Real audio, physical devices and human review remain separate.
 Parent owns review, public registration, promotion and release publication.
-Scenery F, preview G/G2/G3/G4, Vesper H, Abyssal I, Stormglass J, motion K, polish L, cinematic M and acceptance N explicitly released. This checkpoint supersedes
+Scenery F, preview G/G2/G3/G4, Vesper H, Abyssal I, Stormglass J, motion K, polish L, cinematic M, acceptance N, repair O and acceptance P explicitly released. This checkpoint supersedes
 historical ownership metadata in production plans; do not mutate active-run inputs
 just to relabel ownership. All seven asset units are promoted and strict asset
-inventory passes at `623127c5`, including the reviewed L correction through
-`9cd1ac72`. Public coverage is 13 worlds / 73 pairs. This does
+inventory passes at `14d8a72d`, including the reviewed O correction through
+`b17360c9`. Public coverage is 13 worlds / 73 pairs. This does
 not discharge final 142-job acceptance or new-feature native obligations.
 The authorized Windows navigation
 comparison runs on a separate remote host.

@@ -408,7 +408,7 @@ func aim_requested() -> bool:
 func release_pointer() -> void:
 	controls.focus(false)
 	if phase == 3 and not client.spectating and horde_client.input_epoch > 0 and client.peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
-		horde_client.send_controls({}, true) # immediate FIFO cancellation, not a fire release
+		horde_client.send_inactive_controls() # one ordered cancellation per inactive epoch
 	super.release_pointer()
 
 func on_lobby(frame: Dictionary) -> void:
@@ -644,10 +644,10 @@ func _process(delta: float) -> void:
 			var active := weapon_controls_active()
 			if not active: controls.clear()
 			var sample: Dictionary = controls.sample(yaw, pitch) if active else {}
-			var result: Error = horde_client.send_controls(sample, not active)
+			var result: Error = horde_client.send_controls(sample) if active else horde_client.send_inactive_controls()
 			if result == OK: controls.queued()
 			if trace_enabled: emit_native_trace(trace_input(sample, result))
-			if result != OK: on_error("Input could not be queued. Relaunch to reconnect.")
+			if result != OK and result != ERR_BUSY: on_error("Input could not be queued. Relaunch to reconnect.")
 	elif phase == 4: av_tick(delta)
 	horde_label.custom_minimum_size.x = maxf(240, get_viewport().get_visible_rect().size.x - 40)
 	horde_label.size.x = horde_label.custom_minimum_size.x

@@ -45,15 +45,22 @@ const nodes=[[0,0],[0.625,0.2],[0.1,0.83],[1.1,-1]].map((progress,i)=>({id:`fron
 const progress=cocsBoard({cocs:{nodes}},{id:0,team:0}).nodes.map((n,i)=>({node:nodes[i],percent:n.progressPercent}));
 assert.deepEqual(progress.map(n=>n.percent),[0,63,83,100]);
 const hash=path=>createHash('sha256').update(readFileSync(new URL(path,import.meta.url))).digest('hex');
-assert.equal(hash('../../../game/core.mjs'),'58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9');
 const derivative=JSON.parse(readFileSync(new URL('../../../port/contracts/lattice-catalog-derivative.json',import.meta.url)));
 assert.equal(derivative.source_commit,'515daf07589150dd3241f4ae1425cc1b093912f5');
 assert.equal(derivative.derivative_commit,'0326b435a2fdd88e6e7a01b8a7325feccc4d15cb');
-for(const [path,expected] of Object.entries(derivative.runtime_files))assert.equal(hash('../../../'+path),expected,path+' reviewed derivative hash');
+// Preserve the historical catalog contract; current source is an explicit
+// candidate overlay, not a rewrite of historical source or acceptance evidence.
+const candidate=JSON.parse(readFileSync(new URL('../../../port/contracts/movement-candidate-derivative.json',import.meta.url)));
+assert.equal(candidate.source_commit,derivative.source_commit);
+assert.equal(candidate.parent_derivative_commit,derivative.derivative_commit);
+assert.equal(candidate.derivative_commit,'91f58a1c5dcd85544574ba9cd11fcecd0d50d522');
+const runtime={...derivative.runtime_files,...Object.fromEntries(Object.entries(candidate.runtime_overrides).map(([path,entry])=>[path,entry.after]))};
+assert.equal(runtime['game/core.mjs'],'655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3');
+for(const [path,expected] of Object.entries(runtime))assert.equal(hash('../../../'+path),expected,path+' reviewed candidate hash');
 const output={schema:1,evidence:'direct frozen source function calls, not received events',
  hashes:{feedback:hash('../../../game/lattice-feedback.mjs'),hud:hash('../../../game/hud.mjs')},captions,progress,
  recovery:['contested','no-relay','flux','out-of-flux','slice','executor','thread','no-thread','dependency','target','no-response','blocked','wrong-team'].map(reason=>({reason,text:cocsOrderNextAction(reason,'HOLD')}))};
 const file=new URL('../../../godot/tests/lattice/fixtures/expansion_feedback.json',import.meta.url);
 if(process.argv.includes('--write'))writeFileSync(file,JSON.stringify(output,null,2)+'\n');
 else assert.deepEqual(JSON.parse(readFileSync(file)),output,'checked-in oracle matches current frozen source');
-console.log(JSON.stringify({captions:captions.length,progress:progress.length,recovery:output.recovery.length,coreHash:'verified',derivativeHashes:Object.keys(derivative.runtime_files).length,fixture:file.pathname}));
+console.log(JSON.stringify({captions:captions.length,progress:progress.length,recovery:output.recovery.length,coreHash:'verified',candidateCommit:candidate.derivative_commit,derivativeHashes:Object.keys(runtime).length,fixture:file.pathname}));

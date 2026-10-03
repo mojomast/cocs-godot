@@ -16,6 +16,7 @@ export class AdsController {
   // Per-controller scratch; no module-global mutable pose or per-frame geometry.
   this.targetPosition=new T.Vector3();this.targetQuaternion=new T.Quaternion();
   this.channelQuaternion=new T.Quaternion();
+  this.slideQuaternion=new T.Quaternion();
   this.state={progress:0,position:new T.Vector3(HIP.x,HIP.y,HIP.z),quaternion:new T.Quaternion(),fov:82,
    reticle:{adsOpacity:0,hipOpacity:1,ready:false,kind:'dot'}};
   this.initialized=false;
@@ -50,8 +51,13 @@ export class AdsController {
   position.x+=finite(translation.x,0)*(1-.8*t);
   position.y+=finite(translation.y,0)*(1-.8*t);
   position.z+=finite(translation.z,0)*(1-.5*t);
+  position.x+=finite(translation.slide?.x,0)*(1-t);
+  position.y+=finite(translation.slide?.y,0)*(1-t);
   composeAdsQuaternion(this.channelQuaternion,null,t,channels);
   quaternion.copy(s.quaternion).multiply(this.channelQuaternion);
+  const slideRoll=finite(translation.slide?.roll,0)*(1-t);
+  this.slideQuaternion.set(0,0,Math.sin(slideRoll/2),Math.cos(slideRoll/2));
+  quaternion.multiply(this.slideQuaternion);
  }
  reset(baseFov=82){
   const s=this.state;s.progress=0;s.position.set(HIP.x,HIP.y,HIP.z);s.quaternion.identity();

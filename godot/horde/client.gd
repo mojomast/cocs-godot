@@ -4,6 +4,10 @@ signal input_reset(reason: String)
 var input_epoch := 0
 var received_input := 0
 var input_status := {}
+const MAX_OUTSTANDING_INPUTS := 4
+var outstanding_inputs: Array[int] = []
+var outstanding_epoch := 0
+var inactive_cancel_epoch := -1
 ## Local Horde upgrade intent. The authority stays the only source of truth for
 ## which choices exist and which one applied: these fields only bound what this
 ## client may ask for, and what it is still waiting on. `pending_*` is set when
@@ -55,6 +59,9 @@ func reset_upgrade_state() -> void:
 	upgrade_sent = 0
 
 func disconnect_server() -> void:
+	inactive_cancel_epoch = -1
+	outstanding_inputs.clear()
+	outstanding_epoch = 0
 	input_epoch = 0
 	received_input = 0
 	input_status.clear()
@@ -151,25 +158,53 @@ func decode_text(text: String) -> bool:
 		if frame.get("type") in ["start", "snapshot", "results", "horde-input-reset"]:
 			if not wire_integer(frame.get("inputEpoch")) or frame.inputEpoch < 1:
 				return fail("Missing local Horde input epoch")
+			if int(frame.inputEpoch) < input_epoch: return fail("Local Horde input epoch regressed")
 			var changed: bool = int(frame.inputEpoch) != input_epoch
 			input_epoch = int(frame.inputEpoch)
 			if frame.get("type") == "start":
+				inactive_cancel_epoch = -1
+				outstanding_inputs.clear()
+				outstanding_epoch = input_epoch
 				received_input = 0
 				input_status.clear()
 			elif changed:
+				input_status.clear()
 				input_reset.emit(str(frame.get("reason", "authority boundary")))
 		if frame.get("hordeInput") is Dictionary:
+			for key: String in ["receivedSeq", "appliedSeq", "cancelledThrough", "queueDepth"]:
+				if not wire_integer(frame.hordeInput.get(key)): return fail("Malformed Horde input status")
 			input_status = frame.hordeInput.duplicate(true)
 			received_input = int(input_status.get("receivedSeq", 0))
 	return super.decode_text(text)
 
 func send_controls(controls: Dictionary, cancel: bool = false) -> Error:
 	if input_epoch < 1: return ERR_UNCONFIGURED
+	if not cancel: inactive_cancel_epoch = -1
+	# Same acknowledged window as native arenas/campaign. Receive ACK alone
+	# does not free FIFO capacity; cancellation must always bypass backpressure.
+	if outstanding_epoch != input_epoch:
+		outstanding_inputs.clear()
+		outstanding_epoch = input_epoch
+	var retired := maxi(int(input_status.get("appliedSeq", 0)), int(input_status.get("cancelledThrough", 0)))
+	while not outstanding_inputs.is_empty() and outstanding_inputs[0] <= retired:
+		outstanding_inputs.pop_front()
+	if not cancel and outstanding_inputs.size() >= MAX_OUTSTANDING_INPUTS: return ERR_BUSY
 	var next_seq := input_seq + 1
 	var result := send_frame({"type":"input", "seq":next_seq, "inputEpoch":input_epoch,
 		"cancel":cancel, "input":{} if cancel else controls})
-	if result == OK: input_seq = next_seq
+	if result == OK:
+		input_seq = next_seq
+		if cancel: outstanding_inputs.clear()
+		outstanding_inputs.append(input_seq)
 	return result
 
 func send_input(controls: Dictionary) -> Error:
 	return send_controls(controls)
+
+# Silence repeated inactive render frames. A new authority epoch still needs
+# its own ordered cancellation, and failed transport sends remain retryable.
+func send_inactive_controls() -> Error:
+	if inactive_cancel_epoch == input_epoch: return OK
+	var result := send_controls({}, true)
+	if result == OK: inactive_cancel_epoch = input_epoch
+	return result

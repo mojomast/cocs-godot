@@ -24,7 +24,10 @@ func run() -> void:
 		scene.audiovisual.apply_snapshot({"time":1.0,"over":false,"config":{"mode":scene.selected_mode,"timeLimit":300},
 			"actors":[{"id":7,"team":0,"health":100,"maxHealth":100,"vehicleId":null,"x":0.0,"z":0.0}],"vehicles":[]},7,true)
 		scene.bind_vehicle_shots()
-		assert(scene.client.events.get_connections().size() == 2,
+		var vehicle_listeners := 0
+		for connection: Dictionary in scene.client.events.get_connections():
+			if connection.callable.get_object() == scene.vehicle_shots: vehicle_listeners += 1
+		assert(vehicle_listeners == 1,
 			kind + " actual client signal also has its independent vehicle visual owner")
 		assert(audio_listener_count(scene) == 1, kind + " vehicle visuals must not duplicate audiovisual owner")
 		scene.client.events.emit([{"id":100,"type":beat,"team":0,"time":1.0}])

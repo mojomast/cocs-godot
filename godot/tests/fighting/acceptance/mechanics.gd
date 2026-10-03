@@ -5,20 +5,20 @@ extends "res://tests/fighting/acceptance/journeys.gd"
 const FAMILIES := ["stand_l", "stand_m", "stand_h", "crouch_l", "crouch_m", "crouch_h", "air_l", "air_m", "air_h", "throw_f", "throw_b", "special1", "special2", "special3", "super"]
 
 func fixture_sim(oid: String, actor: int, distance: int = 700, height: int = 0, meter: int = 0) -> Variant:
-	var sim: Variant = fresh([oid, oid])
+	var sim: Variant = fresh([oid, oid], 23017, true)
 	if not fight(sim):
 		return null
-	var saved: Dictionary = sim.save_state()
-	if not saved.has("fighters"):
-		unrun.append("core saved-state fighters fixture inventory absent")
-		return null
+	# save_state is a checksummed envelope, not a writable top-level fighter
+	# array. The public training placement API supplies the original fixture's
+	# exact x/y/meter setup without bypassing serialization integrity.
 	var facing := 1 if actor == 0 else -1
-	saved.fighters[actor].x = -int(distance / 2) * facing
-	saved.fighters[1 - actor].x = int(distance / 2) * facing
-	saved.fighters[actor].y = height
-	saved.fighters[1 - actor].y = height
-	saved.fighters[actor].meter = meter
-	sim.load_state(saved)
+	var placements := [{"x":0,"y":height,"meter":0},{"x":0,"y":height,"meter":0}]
+	placements[actor].x = -int(distance / 2) * facing
+	placements[1 - actor].x = int(distance / 2) * facing
+	placements[actor].meter = meter
+	sim.training_place({"fighters":placements})
+	if not expect(sim.last_error.is_empty(), "public training fixture placement accepted"):
+		return null
 	return sim
 
 func charge(sim: Variant, actor: int, move: Dictionary) -> void:

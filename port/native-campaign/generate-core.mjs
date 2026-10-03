@@ -3,7 +3,14 @@ import {readFileSync, writeFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {resolve} from 'node:path';
 
-export const SOURCE_SHA256='58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9';
+// Candidate overlay: port/contracts/movement-candidate-derivative.json, 91f58a1c.
+// Historical source-lock/lattice derivative and production receipts stay immutable.
+export const SOURCE_SHA256='655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3';
+export const MOVEMENT_DEPENDENCY_SHA256='357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e';
+export function verifyCampaignMovementDependency(source=readFileSync(new URL('../../game/operator-verbs.mjs',import.meta.url))) {
+  const hash=createHash('sha256').update(source).digest('hex');
+  if(hash!==MOVEMENT_DEPENDENCY_SHA256)throw new Error(`Locked operator dependency drift: expected ${MOVEMENT_DEPENDENCY_SHA256}, got ${hash}`);
+}
 const original="function actorHit(o,d,a,max){const s=Number.isFinite(a.hitScale)&&a.hitScale>0?a.hitScale:1;return boxHit(o,d,{x:a.x,z:a.z,w:.85*s,d:.85*s,h:1.8*s},max);}";
 const replacement=`function actorHit(o,d,a,max){
  const h=a.isNpc===true?a.npcHitVolume:null;
@@ -37,6 +44,7 @@ export function generateCampaignCore(source) {
     rewritten.replace(original,replacement).replace(before,after).replaceAll(candidate,confirmed);
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
+  verifyCampaignMovementDependency();
   const source=readFileSync(new URL('../../game/core.mjs',import.meta.url),'utf8');
   const output=new URL('./core.generated.mjs',import.meta.url), generated=generateCampaignCore(source);
   if(process.argv.includes('--check')) {

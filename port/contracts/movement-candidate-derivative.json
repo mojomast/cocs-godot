@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "status": "source-candidate-not-native-acceptance",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "parent_contract": "port/contracts/lattice-catalog-derivative.json",
+  "parent_derivative_commit": "0326b435a2fdd88e6e7a01b8a7325feccc4d15cb",
+  "baseline_commit": "90be2af7755674e470db638c3e4df63bbebbedab",
+  "derivative_commit": "91f58a1c5dcd85544574ba9cd11fcecd0d50d522",
+  "runtime_overrides": {
+    "game/core.mjs": {
+      "before": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+      "after": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3"
+    },
+    "game/operator-verbs.mjs": {
+      "before": "f3bbcd2e13bc04dabf2a81a74ddee3848d6835d11d8ac063e4603ea689bf96b3",
+      "after": "357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e"
+    },
+    "game/feedback.mjs": {
+      "before": "9b99d61463a0edc64ad681949c7eb4b6993f879f4ab7bf3f30383aa8043b193f",
+      "after": "bce79610e67236a16e135e05338809e6dd29411be40ac8aff4fbe99f9f69e923"
+    },
+    "game/weapon-ads.mjs": {
+      "before": "01d9eb7ddbb304b0bca39899e393730cbdf04fffb5024f28886399e76f20452b",
+      "after": "133a10f85e9c59928c16e5e25e240e1aa0e89200f81cecd77bb62482f6ef795f"
+    }
+  }
+}

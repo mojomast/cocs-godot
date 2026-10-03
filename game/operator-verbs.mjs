@@ -98,8 +98,8 @@ const NEUTRAL_REVIEW = deepFreeze({meter: 0, pool: 0, poolIn: 0, suppressed: fal
 // multiplier, so the §4.7 temporary-speed cap is untouched. Plan silent on the
 // exact multipliers; kept small and inside one movement family.
 // ---------------------------------------------------------------------------
-const EFFORTLESS_AIR_ACCEL_MULTIPLIER = 1.4; // chosen: MOVE.airAccel 3.5 -> 4.9
-const EFFORTLESS_AIR_CAP_MULTIPLIER = 1.2; // chosen: MOVE.airCap 1.6 -> 1.92
+const EFFORTLESS_AIR_ACCEL_MULTIPLIER = 1.4; // scales the shared MOVE.airAccel budget
+const EFFORTLESS_AIR_CAP_MULTIPLIER = 1.2; // scales the shared MOVE.airCap budget
 const EFFORTLESS_SLIDE_BOOST_MULTIPLIER = 1.15; // chosen: MOVE.slideBoost 9.6 -> 11.04
 const EFFORTLESS_SLIDE_FRICTION_MULTIPLIER = .8; // chosen: MOVE.slideFriction 2.5 -> 2.0
 const EFFORTLESS_SLIDE_MIN_BONUS = .12; // chosen: MOVE.slideMin .35 -> .47 s

@@ -7,29 +7,6 @@ var last_start_epoch := 0
 var draining_snapshots := false
 var pending_snapshot: Dictionary = {}
 var coalesced_snapshots := 0
-const MAX_OUTSTANDING_INPUTS := 4
-var outstanding_inputs: Array[int] = []
-var outstanding_epoch := 0
-
-# The authority consumes one FIFO sample per source tick. Render-time sampling
-# can outrun that clock or arrive in TCP bursts; keep a small acknowledged window
-# rather than filling its 16-entry queue. ERR_BUSY leaves UI pulses pending.
-func send_controls(controls: Dictionary, cancel: bool = false) -> Error:
-	if input_epoch < 1: return ERR_UNCONFIGURED
-	if outstanding_epoch != input_epoch:
-		outstanding_inputs.clear()
-		outstanding_epoch = input_epoch
-	var retired := maxi(int(input_status.get("appliedSeq", 0)), int(input_status.get("cancelledThrough", 0)))
-	while not outstanding_inputs.is_empty() and outstanding_inputs[0] <= retired:
-		outstanding_inputs.pop_front()
-	if not cancel and outstanding_inputs.size() >= MAX_OUTSTANDING_INPUTS:
-		return ERR_BUSY
-	var result := super.send_controls(controls, cancel)
-	if result == OK:
-		# Cancellation clears the server FIFO in the same ordered transport.
-		if cancel: outstanding_inputs.clear()
-		outstanding_inputs.append(input_seq)
-	return result
 
 # Validate and acknowledge every wire packet, but pose/terrain/HUD work only
 # needs the newest snapshot in a drained render-frame batch. Events retain their
@@ -55,8 +32,6 @@ func create_room(player_name: String = "Operator", character: String = "chatgpt"
 	return send_frame({"type":"create", "name":"The Quiet Relay", "playerName":player_name, "v":3, "delta":0, "nativeArenaInput":1})
 
 func disconnect_server() -> void:
-	outstanding_inputs.clear()
-	outstanding_epoch = 0
 	pending_snapshot.clear()
 	expected_next = ""
 	campaign_phase = ""

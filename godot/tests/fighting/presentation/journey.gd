@@ -11,6 +11,8 @@ func run() -> void:
 	var scene: PackedScene = load("res://fighting/main.tscn")
 	shell = scene.instantiate()
 	root.add_child(shell)
+	current_scene = shell
+	root.grab_focus()
 	await process_frame
 	await activate("Start match")
 	if not shell.active:
@@ -18,8 +20,10 @@ func run() -> void:
 		quit(2)
 		return
 	await ticks(120)
+	print("FIGHTING_GUARD_BOUNDARY ",JSON.stringify({"stage":"before","focused":shell.focused,"paused":shell.paused,"tick":shell.state.tick,"devices":shell.router.devices}))
 	key(KEY_C,true)
 	await ticks(2)
+	print("FIGHTING_GUARD_BOUNDARY ",JSON.stringify({"stage":"after","focused":shell.focused,"paused":shell.paused,"tick":shell.state.tick,"commands":shell.last_inputs}))
 	check((int(shell.last_inputs[0].held)&64) != 0,"guard input reaches actual core command")
 	key(KEY_C,false)
 	key(KEY_ESCAPE,true); key(KEY_ESCAPE,false)
@@ -80,6 +84,7 @@ func key(code: int, pressed: bool) -> void:
 	event.keycode = code
 	event.pressed = pressed
 	Input.parse_input_event(event)
+	Input.flush_buffered_events()
 
 func ticks(count: int) -> void:
 	for i: int in count: await physics_frame

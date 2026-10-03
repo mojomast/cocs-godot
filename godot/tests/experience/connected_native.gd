@@ -20,7 +20,6 @@ var source_snapshots := 0
 var began := 0
 var done := false
 var home_only := false
-var leave_after_report := false
 var watch_free_motion := false
 var last_free_position := Vector3.ZERO
 
@@ -66,6 +65,7 @@ func key(code: int, pressed: bool) -> void:
 	event.physical_keycode = code
 	event.pressed = pressed
 	Input.parse_input_event(event)
+	Input.flush_buffered_events()
 
 func tap(code: int) -> void:
 	key(code, true)
@@ -86,7 +86,9 @@ func pointer(position: Vector2, pressed: bool) -> void:
 	Input.parse_input_event(button)
 
 func world_click(pressed: bool) -> void:
-	pointer(root.get_visible_rect().size * Vector2(0.5, 0.65), pressed)
+	# O proved the center readout intentionally owns clicks. Use uncovered world
+	# above the spectator panel, including compact 150% logical viewports.
+	pointer(root.get_visible_rect().size * Vector2(0.85, 0.5), pressed)
 
 func release_focus() -> void:
 	var focus := root.gui_get_focus_owner()
@@ -150,14 +152,6 @@ func run() -> void:
 			await execute(command)
 			var observation := observe()
 			await http("/report/" + name_id, {"id":command.id, "action":command.action, "ok":failures.size() == before, "observation":observation, "failures":failures})
-			if leave_after_report:
-				# Settings Leave intentionally quits; the production launcher then
-				# opens Home. Node owns the same supervised handoff, not an override.
-				tap(KEY_SPACE)
-				await create_timer(3).timeout
-				check(false, "ordinary Settings Leave did not exit")
-				finish()
-				return
 			if command.action == "quit": finish(); return
 		await create_timer(0.1).timeout
 
@@ -224,7 +218,19 @@ func home() -> void:
 	settings.rows.leave.grab_focus()
 	await process_frame
 	await capture("leave-settings")
-	leave_after_report = true
+	tap(KEY_SPACE)
+	await wait_for(func() -> bool: return is_instance_valid(current_scene) and current_scene.scene_file_path == "res://ui/main_menu.tscn", "ordinary Settings Return Home", 10)
+	await process_frame
+
+func camera_diagnostic(boundary: String) -> void:
+	var owner: Node = info.spectator_camera
+	var focus := root.gui_get_focus_owner()
+	var hovered := root.gui_get_hovered_control()
+	print("SPECTATOR_INPUT_DIAGNOSTIC ", JSON.stringify({"boundary":boundary,
+		"available":owner.available(),"blocked":info.blocked(),"stale":info.stale(),
+		"window_focus":root.has_focus(),"gui_focus":str(focus),"hover":str(hovered),
+		"role":info.current_role(),"bound_role":info.role_key,"target":owner.model.target_id,
+		"actors":owner.model.actors,"pointer":Input.mouse_mode,"source_time":accepted.get("time")}))
 
 func execute(command: Dictionary) -> void:
 	var action: String = command.action
@@ -244,6 +250,7 @@ func execute(command: Dictionary) -> void:
 		world_click(true)
 		await create_timer(0.2).timeout
 		world_click(false)
+		camera_diagnostic("player-after-capture")
 		key(KEY_W, true)
 		await create_timer(0.25).timeout
 		key(KEY_W, false)
@@ -251,9 +258,12 @@ func execute(command: Dictionary) -> void:
 	elif action == "camera":
 		check(peer.spectating and live(), "camera commands require real spectator seat")
 		release_focus()
+		camera_diagnostic("before-cycle")
 		var before: Variant = info.spectator_camera.model.target_id
 		tap(KEY_BRACKETRIGHT)
+		camera_diagnostic("after-dispatched-cycle")
 		await process_frame
+		camera_diagnostic("after-frame-cycle")
 		check(info.spectator_camera.model.target_id != before, "ordinary keyboard target cycle")
 		tap(KEY_BRACKETLEFT)
 		await process_frame

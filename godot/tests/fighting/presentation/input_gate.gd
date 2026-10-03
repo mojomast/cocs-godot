@@ -110,8 +110,10 @@ func _initialize() -> void:
 		for left: int in range(-8000,8001,1000):
 			for right: int in range(left,8001,1000):
 				var frame := Camera.framing([{"x":left},{"x":right}],aspect)
-				_check(float(left)/1000.0-1.6 >= frame.center.x-frame.height*aspect*0.5,"left silhouette framed")
-				_check(float(right)/1000.0+1.6 <= frame.center.x+frame.height*aspect*0.5,"right silhouette framed")
+				# Rect2/Vector3 store float32 coordinates. Use the same 10-micrometre
+				# numerical epsilon as camera_gate.gd, not exact float64 boundaries.
+				_check(float(left)/1000.0-1.6 >= frame.center.x-frame.height*aspect*0.5-0.00001,"left silhouette framed")
+				_check(float(right)/1000.0+1.6 <= frame.center.x+frame.height*aspect*0.5+0.00001,"right silhouette framed")
 	print("FIGHTING_INPUT_GATE ",JSON.stringify({"passed":failures.is_empty(),"failures":failures}))
 	quit(0 if failures.is_empty() else 1)
 
