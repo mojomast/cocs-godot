@@ -117,6 +117,36 @@ The fixture asserts `valid_modes` drops non-strings/controls/duplicates and
 trims, and that a map with a malformed array recovers to its one valid mode with
 an interactive row and an enabled Start — no invalid-dictionary error.
 
+## Second-review corrections (appended)
+
+1. **Host `room.editable` double writer.** `refresh()` excluded `room` from the
+   generic `[endpoint, player_name, room]` loop; the guest-only join field now
+   has exactly one writer (`editable and role.selected == 1`). Without this a
+   host frame wrote `room.editable` true then false every frame. Because
+   `LineEdit` exposes no change signal, `lobby_menu.room_editable_writes`
+   (guarded observer counter) lets the fixture prove the value is written at
+   most once while idle for both host and guest.
+2. **`match_setup` had no live update path.** `sync_catalog()` was only reachable
+   through the private `populate_modes()`, so an owner that opened or populated
+   the catalog after `configure()` could not recover. `match_setup._process`
+   now detects `catalog_signature() != catalog_fingerprint`, guards on
+   `body`/`is_inside_tree()`/`body.visible`, and calls
+   `populate_modes(selected_mode())` exactly once per actual change. The fixture
+   mutates `entries` and awaits two process frames **without** calling
+   `populate_modes()`, including an initially-empty-then-populated catalog.
+3. **Mode reset on unrelated catalog change.** `lobby_menu.populate_modes()` now
+   captures the user's current mode first and keeps it when it is still offered;
+   only an invalid/absent current mode falls back to `session.selected_mode`
+   (or the first offered mode). The fixture sets the user mode to
+   `teamdeathmatch` (session stays `deathmatch`), renames an unrelated map
+   same-size, and asserts `teamdeathmatch` is preserved.
+4. **`valid_modes` contract comment.** Rewritten to match the code exactly:
+   `strip_edges()` runs first (so a leading newline is allowed), interior
+   control characters reject the entry, empty/over-long ids drop, duplicates
+   collapse, and the catalog's own advertised ids (including standalone/lattice
+   modes) are not second-guessed by an allowlist.
+5. Appended, not rewritten: the prior review commits stay intact.
+
 ## Catalog audit (`catalog.open` status / original error)
 
 Corrected per the parent audit; no false freshness promise:
@@ -203,11 +233,16 @@ register `lobby-popup-free` or fold it into `lobby-qol`.
 
 ## Commit layout
 
-1. runtime fixes (4 `.gd` files)
-2. tests + report + source check (no runner change)
-3. `chore(verify): register lobby-qol` (the one `tools/godot-dev/verify.py`
+1. `fix(lobby)`: runtime fixes (4 `.gd` files)
+2. `test(lobby)`: tests + report + source check (no runner change)
+3. `chore(verify)`: register `lobby-qol` (the one `tools/godot-dev/verify.py`
    line only) — kept separate so the parent can drop exactly this commit until
    K's native gate is stable.
+4. Appended second-review fixes (host room writer, match_setup live update,
+   mode preservation, `valid_modes` comment).
+5. Appended fixture/report update for the second-review corrections.
+
+Existing commits are not rewritten.
 
 ## Native acceptance checklist for K
 

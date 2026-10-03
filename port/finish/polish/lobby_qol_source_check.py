@@ -30,8 +30,8 @@ FILES = [
 CONTRACTS = {
     "godot/social/room_browser.gd": ["func filter_active", "func clear_filters(", "clear_filters_button", "func apply_selection_mark("],
     "godot/ui/lobby_choice.gd": ["var update_count", "var _disabled", "func refresh("],
-    "godot/ui/lobby_menu.gd": ["func map_entry(", "func offered_modes(", "func launchable(", "func catalog_error_text(", "func catalog_signature(", "func rebuild_map_choices(", "func sync_map_choices(", "func apply_choice_enablement("],
-    "godot/ui/match_setup.gd": ["func map_entry(", "func offered_modes(", "static func valid_modes(", "func catalog_signature(", "func rebuild_map_choices(", "func sync_catalog("],
+    "godot/ui/lobby_menu.gd": ["func map_entry(", "func offered_modes(", "func launchable(", "func catalog_error_text(", "func catalog_signature(", "func rebuild_map_choices(", "func sync_map_choices(", "func apply_choice_enablement(", "room_editable_writes"],
+    "godot/ui/match_setup.gd": ["func map_entry(", "func offered_modes(", "static func valid_modes(", "func catalog_signature(", "func rebuild_map_choices(", "func sync_catalog(", "func _process("],
     "godot/tests/protocol/lobby_qol.gd": ["PORT_LOBBY_QOL_OK", "update_count", "clear_filters", "new-arena", "valid_modes"],
 }
 

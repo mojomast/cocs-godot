@@ -199,20 +199,26 @@ func run() -> void:
 	await settle()
 	var rows: Array = [menu.role, menu.maps, menu.modes, menu.operator, menu.harness]
 	var host_before: Array = counts_of(rows)
+	var host_room_writes: int = menu.room_editable_writes
+	check(not menu.room.editable, "host join field is read-only")
 	for _i: int in 5:
 		menu.refresh()
 	await settle()
 	check(stable(rows, host_before), "five refreshes plus real frames leave a host menu untouched: " + str(host_before))
+	check(menu.room_editable_writes == host_room_writes, "the host room field is written at most once, not toggled false->true->false")
 
 	# Guest idle: the mode row must settle ONCE to disabled, then never toggle.
 	menu.role.select(1)
 	await settle()
 	check(menu.modes.disabled, "guest mode row is disabled")
+	check(menu.room.editable, "guest join field is editable")
 	var guest_before: Array = counts_of(rows)
+	var guest_room_writes: int = menu.room_editable_writes
 	for _i: int in 5:
 		menu.refresh()
 	await settle()
 	check(stable(rows, guest_before), "five refreshes plus real frames leave a guest menu untouched (no false<->true toggle): " + str(guest_before))
+	check(menu.room_editable_writes == guest_room_writes, "the guest room field is written at most once, not toggled every frame")
 	menu.role.select(0)
 	await settle()
 	live.free()
@@ -261,6 +267,16 @@ func run() -> void:
 	await settle()
 	check(str(content_menu.maps.get_selected_metadata()) == "meridian-exchange", "content menu starts on the session map")
 
+	# A user-chosen mode must survive an unrelated same-size map change; only an
+	# invalid/absent current mode falls back to session.selected_mode.
+	content_menu.select_mode("teamdeathmatch")
+	check(str(content_menu.modes.get_selected_metadata()) == "teamdeathmatch", "the user mode is selected")
+	check(content.session.selected_mode == "deathmatch", "the session mode is not the user's pick")
+	content.catalog.entries["verdant-reliquary"]["name"] = "Renamed Verdant"
+	content_menu.refresh()
+	check(str(content_menu.modes.get_selected_metadata()) == "teamdeathmatch", "an unrelated map rename preserves the user's mode, not session.selected_mode")
+	check(str(content_menu.maps.get_selected_metadata()) == "meridian-exchange", "an unrelated map rename keeps the selected map")
+
 	# Same size, changed name: the row label must update, selection preserved.
 	content.catalog.entries["meridian-exchange"]["name"] = "Renamed Exchange"
 	content_menu.refresh()
@@ -271,7 +287,7 @@ func run() -> void:
 	# Same size, changed modes for the selected map: modes must refresh.
 	content.catalog.entries["meridian-exchange"]["modes"] = ["rockets", "instagib"]
 	content_menu.refresh()
-	check(content_menu.mode_index("rockets") >= 0 and content_menu.mode_index("deathmatch") < 0, "a same-size modes replacement refreshes the selected map's modes")
+	check(content_menu.mode_index("rockets") >= 0 and content_menu.mode_index("deathmatch") < 0 and content_menu.mode_index("teamdeathmatch") < 0, "a same-size modes replacement refreshes the selected map's modes")
 	check(str(content_menu.maps.get_selected_metadata()) == "meridian-exchange", "a modes-only replacement keeps the selected map")
 
 	# Removed selected map plus a brand new key: the new key must be selectable.
@@ -301,6 +317,7 @@ func run() -> void:
 	check(Setup.valid_modes(null).is_empty(), "valid_modes rejects a null entry")
 	check(Setup.valid_modes({"modes": "nope"}).is_empty(), "valid_modes rejects a non-array modes value")
 	check(Setup.valid_modes({"modes": [null, 2, {}, "ok", "ok", "  spaced  ", "bad\u0007mode"]}) == ["ok", "spaced"], "valid_modes drops non-strings/controls/duplicates and trims")
+	check(Setup.valid_modes({"modes": ["\nfoo", "a\nb"]}) == ["foo"], "valid_modes trims a leading newline but rejects an interior control")
 
 	var setup := Setup.new()
 	root.add_child(setup)
@@ -323,25 +340,42 @@ func run() -> void:
 	check(good.mode_choice.item_count == 2 and not good.mode_choice.disabled, "setup restores an interactive mode row from a valid catalog")
 	check(not good.start.disabled, "setup enables Start from a valid catalog")
 
-	# Same size, changed name and modes: rows refresh, selection preserved.
+	# These recover through the live _process update path only: the fixture never
+	# calls populate_modes() here, proving the owner-visible path a later catalog
+	# open/populate relies on.
 	good.entries["meridian-exchange"]["name"] = "Renamed Exchange"
 	good.entries["meridian-exchange"]["modes"] = ["rockets", "instagib"]
-	good.populate_modes()
-	check(good.map_index("meridian-exchange") >= 0 and str(good.map_choice.get_item_text(good.map_index("meridian-exchange"))).contains("Renamed Exchange"), "setup detects a same-size name replacement")
-	check(good.mode_choice.item_count == 2 and good.mode_choice.get_item_metadata(0) == "rockets", "setup detects a same-size modes replacement")
+	await settle()
+	await settle()
+	check(good.map_index("meridian-exchange") >= 0 and str(good.map_choice.get_item_text(good.map_index("meridian-exchange"))).contains("Renamed Exchange"), "the live update path detects a same-size name replacement")
+	check(good.mode_choice.item_count == 2 and good.mode_choice.get_item_metadata(0) == "rockets", "the live update path detects a same-size modes replacement")
 	check(good.selected_map() == "meridian-exchange", "setup keeps the selected map across a same-size replacement")
 
 	# New key added after configure: absent from the old rows, now rebuildable.
 	good.entries["new-arena"] = {"name": "New Arena", "modes": ["deathmatch"]}
-	good.populate_modes()
-	check(good.map_choice.item_count == 3 and good.map_index("new-arena") >= 0, "setup rebuilds a newly added map into the row")
+	await settle()
+	await settle()
+	check(good.map_choice.item_count == 3 and good.map_index("new-arena") >= 0, "the live update path rebuilds a newly added map into the row")
 	check(good.selected_map() == "meridian-exchange", "setup keeps the selection when a new map is added")
 
 	# Removed selected map: must recover onto a rebuilt surviving row.
 	good.entries.erase("meridian-exchange")
-	good.populate_modes()
+	await settle()
+	await settle()
 	check(good.selected_map() == "verdant-reliquary", "setup recovers onto a surviving map when the selected is removed")
 	check(not good.start.disabled, "setup keeps Start usable on the recovered map")
+
+	# Initially empty then populated later: no manual call, it recovers on frames.
+	var late := Setup.new()
+	root.add_child(late)
+	late.configure({}, "", "")
+	await settle()
+	check(late.start.disabled and late.map_choice.item_count == 0, "setup starts with an empty catalog disabled")
+	late.entries["meridian-exchange"] = {"name": "Meridian Exchange", "modes": ["deathmatch"]}
+	await settle()
+	await settle()
+	check(late.map_choice.item_count == 1 and late.mode_choice.item_count == 1, "the live update path recovers an initially empty catalog")
+	check(not late.start.disabled, "setup re-enables Start after a later catalog population")
 
 	var broken := Setup.new()
 	root.add_child(broken)
