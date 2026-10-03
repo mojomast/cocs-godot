@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "dune-sand",
+  "engine": "blur-core-v1",
+  "jobId": "d813f780-d96e-4a4f-a78b-3b9c41c3ea70",
+  "recipeFingerprint": "f3177e0138496acd401a0f917e4a78f0952713682ff7dae831794dd98f99f726",
+  "generationFingerprint": "a367d4966cebf9afbb162f9b198853562efc041537aefde1476408a4362c0eaf",
+  "verification": "new-request",
+  "rawFingerprint": "2c346a586afc449901cb805662854b3fdb3f55a9f768c2a1dc849bfe28c55678",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 428922,
+    "sha256": "a9539c60b05be02332b9a9b9deb320b30d270c1cff48e483bc9f8f1fbcd1f0d2",
+    "jsonHash": "277cdebce3884dc78e26e67b357975ed5e2e447ef5dc81ae5b43e23ddb4b125d"
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "engineId": "blur-midi-v1",
+  "name": "Blur Jazz",
+  "version": null,
+  "creditsPerRun": 1,
+  "enabled": true,
+  "paramsSchema": {
+    "properties": {
+      "margin": {
+        "anyOf": [
+          {
+            "maximum": 1,
+            "minimum": 0,
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": 0.15,
+        "description": "Fraction of the active pitch span to pad above and below before blurring, giving the blur room to spread into adjacent pitches. `0` — no padding; blur is hard-clipped at the boundary notes. Default 0.15.",
+        "title": "Margin"
+      },
+      "mask": {
+        "anyOf": [
+          {
+            "items": {
+              "maxItems": 3,
+              "minItems": 3,
+              "prefixItems": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            "type": "array"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "List of regions to blur, each as [track_index, start_seconds, end_seconds]. When omitted every note track is blurred in full. Tracks and time ranges not covered by the mask pass through unchanged. Example: [[1, 0.5, 2.0], [2, 1.0, 3.5]].",
+        "title": "Mask"
+      },
+      "qubits": {
+        "default": 20,
+        "description": "Qubit budget per blur pass (4–20). Determines the largest piano-roll tile the quantum simulator handles in one shot; larger values avoid tiling but require more simulation memory. Default 20.",
+        "maximum": 20,
+        "minimum": 4,
+        "title": "Qubits",
+        "type": "integer"
+      },
+      "reach": {
+        "default": 0,
+        "description": "Non-locality of the blur:\n\n- `0` — fully local: only neighbouring pitches/times mix.\n- `1` — fully non-local: any pitch can mix with any other.",
+        "maximum": 1,
+        "minimum": 0,
+        "title": "Reach",
+        "type": "number"
+      },
+      "resolution": {
+        "default": 0,
+        "description": "Number of MIDI ticks per piano-roll step (integer ≥ 0). `0` (default) — auto: uses the 5th-percentile note duration, robust to sequencer-artefact grace notes. Any positive value sets the step size directly; larger values produce a coarser grid and faster blur.",
+        "minimum": 0,
+        "title": "Resolution",
+        "type": "integer"
+      },
+      "strength": {
+        "default": 0.5,
+        "description": "Blur strength (0 = unchanged, 1 = maximum).",
+        "maximum": 1,
+        "minimum": 0,
+        "title": "Strength",
+        "type": "number"
+      },
+      "threshold": {
+        "default": 0.1,
+        "description": "Relative noise gate: a velocity delta must exceed threshold × max_velocity_in_roll to emit a note. Scales with the loudest note so it suppresses artefacts proportionally regardless of the overall dynamic level. Default 0.1.",
+        "maximum": 1,
+        "minimum": 0,
+        "title": "Threshold",
+        "type": "number"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [
+    {
+      "name": "midi",
+      "mime_types": [
+        "audio/midi",
+        "audio/mid"
+      ],
+      "required": true,
+      "description": "The MIDI file to process. Supported formats: MIDI 0, 1, and 2. Output is returned in the same format and tick resolution as the input."
+    }
+  ],
+  "outputFiles": [
+    {
+      "name": "result",
+      "content_types": [
+        "audio/midi"
+      ],
+      "required": true,
+      "description": "The blurred MIDI file, in the same SMF type and tick resolution as the input."
+    }
+  ],
+  "runPolicy": {
+    "timeout": 18000,
+    "max_retries": 1,
+    "heartbeat": 18000
+  },
+  "errorCodes": [
+    {
+      "type": "invalid_midi",
+      "description": "The MIDI file could not be parsed (corrupt, truncated, or not a valid SMF file)."
+    },
+    {
+      "type": "no_notes",
+      "description": "The MIDI file contains no note_on events — nothing to blur."
+    },
+    {
+      "type": "invalid_params",
+      "description": "One or more params fields failed Pydantic validation."
+    },
+    {
+      "type": "blur_failed",
+      "description": "The quantum blur circuit failed on a piano-roll tile."
+    },
+    {
+      "type": "encoding_failed",
+      "description": "The blurred piano roll could not be re-encoded as a MIDI file."
+    }
+  ]
+}

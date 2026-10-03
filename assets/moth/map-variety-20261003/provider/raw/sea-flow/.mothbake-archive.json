@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "sea-flow",
+  "engine": "blur-core-v1",
+  "jobId": "a2a37484-b842-4404-a09e-bbc536f84002",
+  "recipeFingerprint": "e637f724dc40bc760e4e6843279b95380e1fcdaac8d0eb17f4ecb1624e1e9ae4",
+  "generationFingerprint": "e08538f2edac14a0e34957703336724f836655d157b484191f5eaeb26461c131",
+  "verification": "new-request",
+  "rawFingerprint": "f4065b757c7b099018d55958032b764eef14efe35af757bdd6f7aa5b4a7a7324",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 438125,
+    "sha256": "54586d5d7b3d41494482974aa42560f35248fb849447c8223f0d2ca72bdc1ef1",
+    "jsonHash": "17dc15bb62a6f479af5230e2ea31ae3af80d1d1cd2274943c09445bd822f0163"
+  }
+}

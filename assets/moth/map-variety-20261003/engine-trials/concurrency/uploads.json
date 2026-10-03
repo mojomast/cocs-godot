@@ -1,0 +1,22 @@
+{
+  "sources/copper-patina-source.png": {
+    "assetId": "cff21958-a161-4200-9585-7c4f09a50943",
+    "sha256": "1511e4ee7d96a4c2173f0a22cf2972fc73264ffd5e5bbff41ba857b8f995f355"
+  },
+  "sources/copper-patina-target.png": {
+    "assetId": "b39e3f7e-12f0-403f-afe7-f53eb68d8dc6",
+    "sha256": "78345f984dc1a24bf86510a0445744153ae289be7f03fcc153f684d9b14dbc35"
+  },
+  "sources/quay-waterline-source.png": {
+    "assetId": "b31fa11f-d286-44ec-b35f-ffebaf061d4a",
+    "sha256": "8e84409cc00314ac4d765d21e0a40003f79b42206ff8d3c974dbba47bcf92017"
+  },
+  "sources/quay-waterline-target.png": {
+    "assetId": "613e880f-012b-44ac-aa0c-b1ddf98b7752",
+    "sha256": "b6e0ef13374d5032dd36f31586ffda29ec84634d88ccd0d460f8b362083a95db"
+  },
+  "sources/prismatic-etch-source.png": {
+    "assetId": "853ff028-355f-4ce2-8917-03749e3cc0b8",
+    "sha256": "c0e2e5d7fb3615b457dca19367e2bc77ca79923be2e360ea232b197db607b07d"
+  }
+}

@@ -1,0 +1,5858 @@
+{
+  "schema": "moth-map-material-pack/v1",
+  "status": "candidate-awaiting-Blender-and-parent-review",
+  "packId": "map-variety-20261003",
+  "tool": {
+    "commit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+    "generationCommit": "93e182557c7c47b75c556477127fb27686fea20d",
+    "repository": "https://github.com/mojomast/mothbake",
+    "node": "22.23.1"
+  },
+  "materials": [
+    {
+      "id": "aggregate",
+      "baseFamily": "aggregate",
+      "derivedVariant": false,
+      "maps": [
+        "Helix",
+        "Vesper"
+      ],
+      "role": "noise",
+      "channels": {
+        "albedo": "aggregate.albedo",
+        "normal": "aggregate.normal",
+        "roughness": "aggregate.roughness",
+        "height": "aggregate.height",
+        "wear": "aggregate.wear"
+      },
+      "size": 512,
+      "tileMeters": 4,
+      "texelsPerMeter": 128,
+      "heightMeters": 0.035,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "macro-128-171px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 3,
+        "microCyclesPerTile": 19,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.22,
+          0.225,
+          0.2
+        ],
+        "high": [
+          0.34,
+          0.32,
+          0.27
+        ],
+        "roughness": 0.85
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "b6b43ff0-9962-49d4-be7a-a555d7ea7488",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.055,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/aggregate.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/aggregate.json",
+          "sha256": "e0f456ccf9fbf661079fc36b9a58182e0a39112acd5243125a48e580aa356fa2",
+          "seed": 61003,
+          "pattern": "noise"
+        },
+        "raw": {
+          "path": "provider/raw/aggregate/inline-result.json",
+          "sha256": "16e85479f1a60c64c08488dfda3c3dca51c281fa2decd11441c87a744805025c"
+        },
+        "http": {
+          "id": "aggregate",
+          "jobId": "b6b43ff0-9962-49d4-be7a-a555d7ea7488",
+          "path": "provider/http/aggregate.json",
+          "bytes": 315925,
+          "sha256": "4bfcb497996ad74175d6e9ceda5148721c84922d09b969a227c1882d1bf36d75"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "93e182557c7c47b75c556477127fb27686fea20d",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "dcb9208f5279a945d2463577abcb17c8da141819dce2c2369fe4f2a54f34fc29"
+      }
+    },
+    {
+      "id": "cast-seams",
+      "baseFamily": "cast-seams",
+      "derivedVariant": false,
+      "maps": [
+        "Gravemill",
+        "Abyssal"
+      ],
+      "role": "cast",
+      "channels": {
+        "albedo": "cast-seams.albedo",
+        "normal": "cast-seams.normal",
+        "roughness": "cast-seams.roughness",
+        "height": "cast-seams.height",
+        "wear": "cast-seams.wear"
+      },
+      "size": 512,
+      "tileMeters": 4,
+      "texelsPerMeter": 128,
+      "heightMeters": 0.045,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "macro-128-171px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 2,
+        "microCyclesPerTile": 9,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.15,
+          0.17,
+          0.17
+        ],
+        "high": [
+          0.25,
+          0.255,
+          0.23
+        ],
+        "roughness": 0.78
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "aa239b82-f2d7-4a0d-a50d-6984134e987f",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/cast-seams.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/cast-seams.json",
+          "sha256": "6ad89411ae472d3f5ebbb1ab057c2a0069c821d6dda1ec3b83a937774deecab9",
+          "seed": 61104,
+          "pattern": "cast"
+        },
+        "raw": {
+          "path": "provider/raw/cast-seams-x-refined/inline-result.json",
+          "sha256": "abc371cf329d32d1603795fced69472b6bcdc09f7f29da2a700e208ac155c544"
+        },
+        "http": {
+          "id": "cast-seams-x-refined",
+          "jobId": "aa239b82-f2d7-4a0d-a50d-6984134e987f",
+          "path": "provider/http/cast-seams-x-refined.json",
+          "bytes": 312228,
+          "sha256": "1421e7ea61e4d6e50fe1a5f29d0da900cfeb1c606e5a51d8463dce3bbd9dc933"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "7cf85ecfac8b668fdc7ca157bed0d5a8836d7938195834f6bf7c31444baa078d"
+      }
+    },
+    {
+      "id": "terracotta",
+      "baseFamily": "terracotta",
+      "derivedVariant": false,
+      "maps": [
+        "Helix",
+        "Vesper"
+      ],
+      "role": "brick",
+      "channels": {
+        "albedo": "terracotta.albedo",
+        "normal": "terracotta.normal",
+        "roughness": "terracotta.roughness",
+        "height": "terracotta.height",
+        "wear": "terracotta.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.018,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "surface-256px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 4,
+        "microCyclesPerTile": 17,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.24,
+          0.1,
+          0.055
+        ],
+        "high": [
+          0.36,
+          0.2,
+          0.115
+        ],
+        "roughness": 0.82
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "be436cfc-92ca-43ab-ad95-45c268bc7e95",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.08499999999999999,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/terracotta.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/terracotta.json",
+          "sha256": "0ef0354649e095e8dbb3f2a5a9790e2e030a2da93874991c660841b67b17bc4a",
+          "seed": 61205,
+          "pattern": "brick"
+        },
+        "raw": {
+          "path": "provider/raw/terracotta/inline-result.json",
+          "sha256": "3d9534126aac38a8fd27360c95ff62e2ab96b91c25c5a8b83566eefdcdc7f5a1"
+        },
+        "http": {
+          "id": "terracotta",
+          "jobId": "be436cfc-92ca-43ab-ad95-45c268bc7e95",
+          "path": "provider/http/terracotta.json",
+          "bytes": 310383,
+          "sha256": "7a70928cfce6deeca38c4b056849ba44eaa53e5e17abf223500bf953c1b964fb"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "93e182557c7c47b75c556477127fb27686fea20d",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "67af443d074c4c69035ad53b3de91c401e023e96995e32e35b1e363e53653567"
+      }
+    },
+    {
+      "id": "lime-plaster",
+      "baseFamily": "lime-plaster",
+      "derivedVariant": false,
+      "maps": [
+        "Helix",
+        "Vesper"
+      ],
+      "role": "plaster",
+      "channels": {
+        "albedo": "lime-plaster.albedo",
+        "normal": "lime-plaster.normal",
+        "roughness": "lime-plaster.roughness",
+        "height": "lime-plaster.height",
+        "wear": "lime-plaster.wear"
+      },
+      "size": 512,
+      "tileMeters": 3,
+      "texelsPerMeter": 170.66666666666666,
+      "heightMeters": 0.012,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "macro-128-171px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 5,
+        "microCyclesPerTile": 25,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.35,
+          0.34,
+          0.28
+        ],
+        "high": [
+          0.47,
+          0.455,
+          0.36
+        ],
+        "roughness": 0.86
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "6e0cbdce-4f12-48c3-8582-738b7cc1c8bd",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/lime-plaster.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/lime-plaster.json",
+          "sha256": "f59dcbcabc6c03b67610c551a622121fcb69f01b54fc9000224fb6c5aaa379d7",
+          "seed": 61306,
+          "pattern": "plaster"
+        },
+        "raw": {
+          "path": "provider/raw/lime-plaster-x-refined/inline-result.json",
+          "sha256": "7f3f17910fc275c7680ac708ca9413e7aacca194890809030b1910981ee18aaa"
+        },
+        "http": {
+          "id": "lime-plaster-x-refined",
+          "jobId": "6e0cbdce-4f12-48c3-8582-738b7cc1c8bd",
+          "path": "provider/http/lime-plaster-x-refined.json",
+          "bytes": 314740,
+          "sha256": "fc0c5bb0cf0fb9eb63a95df98e6b655187c946b3a8d890b70db1f652634c6a50"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "7dd7517c011f4fa66b8c7893c196d6f32fdd6bfeda7f79d5ef1d81c80e8429cf"
+      }
+    },
+    {
+      "id": "oxidized-iron",
+      "baseFamily": "oxidized-iron",
+      "derivedVariant": false,
+      "maps": [
+        "Gravemill",
+        "Abyssal"
+      ],
+      "role": "pits",
+      "channels": {
+        "albedo": "oxidized-iron.albedo",
+        "normal": "oxidized-iron.normal",
+        "roughness": "oxidized-iron.roughness",
+        "height": "oxidized-iron.height",
+        "wear": "oxidized-iron.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.014,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "surface-256px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 3,
+        "microCyclesPerTile": 29,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.07,
+          0.085,
+          0.09
+        ],
+        "high": [
+          0.22,
+          0.1,
+          0.045
+        ],
+        "roughness": 0.72
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "8a24b3ab-aa05-4e02-80a2-d7671a860530",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.055,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/oxidized-iron.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/oxidized-iron.json",
+          "sha256": "a45ed007bf86a7fba7acc0dfec9402946d0cfd79f0627f4b033f9228ba8d496c",
+          "seed": 61407,
+          "pattern": "pits"
+        },
+        "raw": {
+          "path": "provider/raw/oxidized-iron/inline-result.json",
+          "sha256": "960527b3fa55e6272b9beb1597fee7d6f94ca4183351e1e85e66457a4c157f64"
+        },
+        "http": {
+          "id": "oxidized-iron",
+          "jobId": "8a24b3ab-aa05-4e02-80a2-d7671a860530",
+          "path": "provider/http/oxidized-iron.json",
+          "bytes": 315484,
+          "sha256": "033124f7de41be2ff7d7845d5e1b6a980851d6f960f09e2e466c4f372629a6ab"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "93e182557c7c47b75c556477127fb27686fea20d",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "45171c2eeaf06eff44fe4b1ec1c93c56cbc4e7dbef60545537e689f9bc987bb1"
+      }
+    },
+    {
+      "id": "copper-patina",
+      "baseFamily": "copper-patina",
+      "derivedVariant": false,
+      "maps": [
+        "Helix",
+        "Parallax"
+      ],
+      "role": "cells",
+      "channels": {
+        "albedo": "copper-patina.albedo",
+        "normal": "copper-patina.normal",
+        "roughness": "copper-patina.roughness",
+        "height": "copper-patina.height",
+        "wear": "copper-patina.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.008,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "surface-256px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 4,
+        "microCyclesPerTile": 21,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.15,
+          0.105,
+          0.065
+        ],
+        "high": [
+          0.08,
+          0.23,
+          0.18
+        ],
+        "roughness": 0.56
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "77d16376-94cd-4779-bbd3-8dbd96823c18",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/copper-patina.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/copper-patina.json",
+          "sha256": "82b1aea18b5868fdaff95e4d8cae581f1ab657d4ebb442d21e62cfde8dcb97f3",
+          "seed": 61508,
+          "pattern": "cells"
+        },
+        "raw": {
+          "path": "provider/raw/copper-patina-x-refined/inline-result.json",
+          "sha256": "5e811cb93cf3d998cfc7d0fcd87f84c11b059d1f583b5ab576f4335a55681eb6"
+        },
+        "http": {
+          "id": "copper-patina-x-refined",
+          "jobId": "77d16376-94cd-4779-bbd3-8dbd96823c18",
+          "path": "provider/http/copper-patina-x-refined.json",
+          "bytes": 313631,
+          "sha256": "4b79da686b5f65c2a6d965397b345b0ddb5c45b6487ca87320f95a319beb7c1a"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "4c2589bc24d21155b3e2c9399b8c85d99ad939063928ede23c2a6c2038fe7cb9"
+      }
+    },
+    {
+      "id": "ceramic-enamel",
+      "baseFamily": "ceramic-enamel",
+      "derivedVariant": false,
+      "maps": [
+        "Helix",
+        "Parallax"
+      ],
+      "role": "ceramic",
+      "channels": {
+        "albedo": "ceramic-enamel.albedo",
+        "normal": "ceramic-enamel.normal",
+        "roughness": "ceramic-enamel.roughness",
+        "height": "ceramic-enamel.height",
+        "wear": "ceramic-enamel.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.014,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "surface-256px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 4,
+        "microCyclesPerTile": 24,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.25,
+          0.3,
+          0.28
+        ],
+        "high": [
+          0.38,
+          0.4,
+          0.34
+        ],
+        "roughness": 0.3
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "600a94e1-8a06-4435-aabb-8a7cd10d0baa",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.08499999999999999,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/ceramic-enamel.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/ceramic-enamel.json",
+          "sha256": "a8bbaa99377cc8b147da3463a17ca3ca060b8b1c7aa6d0afd0609d93f6953528",
+          "seed": 61609,
+          "pattern": "ceramic"
+        },
+        "raw": {
+          "path": "provider/raw/ceramic-enamel/inline-result.json",
+          "sha256": "83b8f2ece9c628d36d00b995d68e25d45c91d09d10bfadbee2c523e5e883e388"
+        },
+        "http": {
+          "id": "ceramic-enamel",
+          "jobId": "600a94e1-8a06-4435-aabb-8a7cd10d0baa",
+          "path": "provider/http/ceramic-enamel.json",
+          "bytes": 310332,
+          "sha256": "0a479fa843064d9d9d63f08544eee99614607736a5427b4a7537d97f8f9049b7"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "93e182557c7c47b75c556477127fb27686fea20d",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "5799ba63eadae94036d5213ee1dfed067bb1a0fd15fb305a22c88b60b5004311"
+      }
+    },
+    {
+      "id": "shopfront-opaque",
+      "baseFamily": "ceramic-enamel",
+      "derivedVariant": true,
+      "maps": [
+        "Vesper"
+      ],
+      "role": "opaque dark shopfront panels",
+      "channels": {
+        "albedo": "shopfront-opaque.albedo",
+        "normal": "shopfront-opaque.normal",
+        "roughness": "shopfront-opaque.roughness",
+        "height": "shopfront-opaque.height",
+        "wear": "shopfront-opaque.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.014,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "surface-256px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 4,
+        "microCyclesPerTile": 24,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.018,
+          0.025,
+          0.028
+        ],
+        "high": [
+          0.055,
+          0.065,
+          0.062
+        ],
+        "roughness": 0.33
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "600a94e1-8a06-4435-aabb-8a7cd10d0baa",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.08499999999999999,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/ceramic-enamel.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/ceramic-enamel.json",
+          "sha256": "a8bbaa99377cc8b147da3463a17ca3ca060b8b1c7aa6d0afd0609d93f6953528",
+          "seed": 61609,
+          "pattern": "ceramic"
+        },
+        "raw": {
+          "path": "provider/raw/ceramic-enamel/inline-result.json",
+          "sha256": "83b8f2ece9c628d36d00b995d68e25d45c91d09d10bfadbee2c523e5e883e388"
+        },
+        "http": {
+          "id": "ceramic-enamel",
+          "jobId": "600a94e1-8a06-4435-aabb-8a7cd10d0baa",
+          "path": "provider/http/ceramic-enamel.json",
+          "bytes": 310332,
+          "sha256": "0a479fa843064d9d9d63f08544eee99614607736a5427b4a7537d97f8f9049b7"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "93e182557c7c47b75c556477127fb27686fea20d",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "5799ba63eadae94036d5213ee1dfed067bb1a0fd15fb305a22c88b60b5004311"
+      }
+    },
+    {
+      "id": "anodized-brush",
+      "baseFamily": "anodized-brush",
+      "derivedVariant": false,
+      "maps": [
+        "Parallax",
+        "Vesper"
+      ],
+      "role": "brush",
+      "channels": {
+        "albedo": "anodized-brush.albedo",
+        "normal": "anodized-brush.normal",
+        "roughness": "anodized-brush.roughness",
+        "height": "anodized-brush.height",
+        "wear": "anodized-brush.wear"
+      },
+      "size": 512,
+      "tileMeters": 1,
+      "texelsPerMeter": 512,
+      "heightMeters": 0.002,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "detail-512px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 2,
+        "microCyclesPerTile": 48,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.105,
+          0.14,
+          0.17
+        ],
+        "high": [
+          0.17,
+          0.2,
+          0.23
+        ],
+        "roughness": 0.39
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "36dfc0ec-9ac0-40f1-9a34-746f0f671b71",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/anodized-brush.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/anodized-brush.json",
+          "sha256": "6345b77a38007bf1ffd62ad015770b5b305d290c7c12d5bfdcde030f88574a1c",
+          "seed": 61710,
+          "pattern": "brush"
+        },
+        "raw": {
+          "path": "provider/raw/anodized-brush-x-refined/inline-result.json",
+          "sha256": "0c210140d0de5251fb1dd81d827765980208f6b611b2c3bf84b9402000eb6e94"
+        },
+        "http": {
+          "id": "anodized-brush-x-refined",
+          "jobId": "36dfc0ec-9ac0-40f1-9a34-746f0f671b71",
+          "path": "provider/http/anodized-brush-x-refined.json",
+          "bytes": 313058,
+          "sha256": "ff528c8467daa8bef1177710a77b23f68d0ad9a1a98d38db7dd6f3db75e12187"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "abb41bdd3e7604db9e8bfd7e1723a36fb9c562c4a5f4395cf41f6757a0dcf761"
+      }
+    },
+    {
+      "id": "optical-mirror-opaque",
+      "baseFamily": "anodized-brush",
+      "derivedVariant": true,
+      "maps": [
+        "Parallax"
+      ],
+      "role": "opaque dark optical instrument insert",
+      "channels": {
+        "albedo": "optical-mirror-opaque.albedo",
+        "normal": "optical-mirror-opaque.normal",
+        "roughness": "optical-mirror-opaque.roughness",
+        "height": "optical-mirror-opaque.height",
+        "wear": "optical-mirror-opaque.wear"
+      },
+      "size": 512,
+      "tileMeters": 1,
+      "texelsPerMeter": 512,
+      "heightMeters": 0.0004,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "detail-512px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 2,
+        "microCyclesPerTile": 48,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.035,
+          0.045,
+          0.055
+        ],
+        "high": [
+          0.07,
+          0.085,
+          0.105
+        ],
+        "roughness": 0.12
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "36dfc0ec-9ac0-40f1-9a34-746f0f671b71",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/anodized-brush.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/anodized-brush.json",
+          "sha256": "6345b77a38007bf1ffd62ad015770b5b305d290c7c12d5bfdcde030f88574a1c",
+          "seed": 61710,
+          "pattern": "brush"
+        },
+        "raw": {
+          "path": "provider/raw/anodized-brush-x-refined/inline-result.json",
+          "sha256": "0c210140d0de5251fb1dd81d827765980208f6b611b2c3bf84b9402000eb6e94"
+        },
+        "http": {
+          "id": "anodized-brush-x-refined",
+          "jobId": "36dfc0ec-9ac0-40f1-9a34-746f0f671b71",
+          "path": "provider/http/anodized-brush-x-refined.json",
+          "bytes": 313058,
+          "sha256": "ff528c8467daa8bef1177710a77b23f68d0ad9a1a98d38db7dd6f3db75e12187"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "abb41bdd3e7604db9e8bfd7e1723a36fb9c562c4a5f4395cf41f6757a0dcf761"
+      }
+    },
+    {
+      "id": "iron-grate",
+      "baseFamily": "iron-grate",
+      "derivedVariant": false,
+      "maps": [
+        "Gravemill",
+        "Abyssal"
+      ],
+      "role": "grate",
+      "channels": {
+        "albedo": "iron-grate.albedo",
+        "normal": "iron-grate.normal",
+        "roughness": "iron-grate.roughness",
+        "height": "iron-grate.height",
+        "wear": "iron-grate.wear"
+      },
+      "size": 512,
+      "tileMeters": 1,
+      "texelsPerMeter": 512,
+      "heightMeters": 0.018,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "detail-512px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 8,
+        "microCyclesPerTile": 31,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.04,
+          0.05,
+          0.055
+        ],
+        "high": [
+          0.115,
+          0.12,
+          0.115
+        ],
+        "roughness": 0.68
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "8168939f-bf1c-47fc-ad5a-8173afe845e9",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.055,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/iron-grate.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/iron-grate.json",
+          "sha256": "5e9efe7f95eb50e3e723164d9544ddf1c9fc73f9258ebafc431a44f0656b588c",
+          "seed": 61811,
+          "pattern": "grate"
+        },
+        "raw": {
+          "path": "provider/raw/iron-grate/inline-result.json",
+          "sha256": "a7df3f73f95e99dad2932e9be3c6d2683f05d970a2782363c0d8c01fca12a1eb"
+        },
+        "http": {
+          "id": "iron-grate",
+          "jobId": "8168939f-bf1c-47fc-ad5a-8173afe845e9",
+          "path": "provider/http/iron-grate.json",
+          "bytes": 313439,
+          "sha256": "127fa65f259069c00d72febddacedbba9bcd700960b8d8334a3dcaa312309426"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "93e182557c7c47b75c556477127fb27686fea20d",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "f27273fe104004794620ce519a16b54f87b0cf2f7aac78ee472a3440e88f02e3"
+      }
+    },
+    {
+      "id": "wet-soot",
+      "baseFamily": "wet-soot",
+      "derivedVariant": false,
+      "maps": [
+        "Gravemill",
+        "Abyssal"
+      ],
+      "role": "streak",
+      "channels": {
+        "albedo": "wet-soot.albedo",
+        "normal": "wet-soot.normal",
+        "roughness": "wet-soot.roughness",
+        "height": "wet-soot.height",
+        "wear": "wet-soot.wear"
+      },
+      "size": 512,
+      "tileMeters": 3,
+      "texelsPerMeter": 170.66666666666666,
+      "heightMeters": 0.008,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "macro-128-171px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 3,
+        "microCyclesPerTile": 22,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.025,
+          0.03,
+          0.032
+        ],
+        "high": [
+          0.08,
+          0.09,
+          0.085
+        ],
+        "roughness": 0.36
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "b35d411c-5fca-4bdc-847b-efe6be2252cc",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/wet-soot.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/wet-soot.json",
+          "sha256": "d941a368fbc1aa55b59394d7a3e8c1d287fe667fdde1c10e802e2696292a8d2e",
+          "seed": 61912,
+          "pattern": "streak"
+        },
+        "raw": {
+          "path": "provider/raw/wet-soot-x-refined/inline-result.json",
+          "sha256": "0dc9c24aaa0683cc2fc058a57e5ec1373b89cc5765ebc15f346905d387b5a7e3"
+        },
+        "http": {
+          "id": "wet-soot-x-refined",
+          "jobId": "b35d411c-5fca-4bdc-847b-efe6be2252cc",
+          "path": "provider/http/wet-soot-x-refined.json",
+          "bytes": 315312,
+          "sha256": "62373e11ca8fe35f4d21da59b5c294aa0feb6d6bdc362fe51a1e9a0a2037c549"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "f4bd2a96cbb90b0a31bae9321bdb091e18bcfc935f2a5cc39a9ff02abcf4959d"
+      }
+    },
+    {
+      "id": "salt-limestone",
+      "baseFamily": "salt-limestone",
+      "derivedVariant": false,
+      "maps": [
+        "Stormglass",
+        "Vesper"
+      ],
+      "role": "salt",
+      "channels": {
+        "albedo": "salt-limestone.albedo",
+        "normal": "salt-limestone.normal",
+        "roughness": "salt-limestone.roughness",
+        "height": "salt-limestone.height",
+        "wear": "salt-limestone.wear"
+      },
+      "size": 512,
+      "tileMeters": 4,
+      "texelsPerMeter": 128,
+      "heightMeters": 0.055,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "macro-128-171px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 3,
+        "microCyclesPerTile": 18,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.29,
+          0.285,
+          0.24
+        ],
+        "high": [
+          0.43,
+          0.42,
+          0.35
+        ],
+        "roughness": 0.88
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "eea99f12-9127-405e-8638-2bb2163cef46",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.08499999999999999,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/salt-limestone.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/salt-limestone.json",
+          "sha256": "ad3137467ac93ff70e15467382e7825d0a5dc861f709dda6a4c78921bb25dd8b",
+          "seed": 62013,
+          "pattern": "salt"
+        },
+        "raw": {
+          "path": "provider/raw/salt-limestone/inline-result.json",
+          "sha256": "6b6a06bc8bd069eaa88ba96b4db5b6f850fe49bc538d453157f7f33d11722908"
+        },
+        "http": {
+          "id": "salt-limestone",
+          "jobId": "eea99f12-9127-405e-8638-2bb2163cef46",
+          "path": "provider/http/salt-limestone.json",
+          "bytes": 314107,
+          "sha256": "356d3bc07ced77e27609d24dbb9ea3b1e1161bd4c6bfc5822fc965927c79fce0"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "93e182557c7c47b75c556477127fb27686fea20d",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "7f7c5bf624102700daff6caaa927425b986fefe58691fc35225f436775387af0"
+      }
+    },
+    {
+      "id": "basalt-strata",
+      "baseFamily": "basalt-strata",
+      "derivedVariant": false,
+      "maps": [
+        "Stormglass",
+        "Abyssal"
+      ],
+      "role": "strata",
+      "channels": {
+        "albedo": "basalt-strata.albedo",
+        "normal": "basalt-strata.normal",
+        "roughness": "basalt-strata.roughness",
+        "height": "basalt-strata.height",
+        "wear": "basalt-strata.wear"
+      },
+      "size": 512,
+      "tileMeters": 4,
+      "texelsPerMeter": 128,
+      "heightMeters": 0.09,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "macro-128-171px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 5,
+        "microCyclesPerTile": 23,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.065,
+          0.085,
+          0.09
+        ],
+        "high": [
+          0.15,
+          0.17,
+          0.17
+        ],
+        "roughness": 0.85
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "f5e2c53e-2b64-4235-96ea-89815df02ca0",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/basalt-strata.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/basalt-strata.json",
+          "sha256": "c70af9f9ab18e53948817f7f080cbb5e9c28aa466a1723564e1e92c77c4edef3",
+          "seed": 62114,
+          "pattern": "strata"
+        },
+        "raw": {
+          "path": "provider/raw/basalt-strata-x-refined/inline-result.json",
+          "sha256": "10c640f1a24fbce1c693106c8b0c794b1f6851ad8a001bbdc2003753d43108f7"
+        },
+        "http": {
+          "id": "basalt-strata-x-refined",
+          "jobId": "f5e2c53e-2b64-4235-96ea-89815df02ca0",
+          "path": "provider/http/basalt-strata-x-refined.json",
+          "bytes": 312780,
+          "sha256": "642b2df6e20903e25c9b979701b7c0916b9d58494a3d7c0a3716f041d647e22f"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "bb917adfdf19ab77cc9713c3e04c4d8fe833b24f262ba106b1f76a11226488b1"
+      }
+    },
+    {
+      "id": "grotto-wet-rock",
+      "baseFamily": "basalt-strata",
+      "derivedVariant": true,
+      "maps": [
+        "Helix",
+        "Abyssal"
+      ],
+      "role": "damp grotto rock",
+      "channels": {
+        "albedo": "grotto-wet-rock.albedo",
+        "normal": "grotto-wet-rock.normal",
+        "roughness": "grotto-wet-rock.roughness",
+        "height": "grotto-wet-rock.height",
+        "wear": "grotto-wet-rock.wear"
+      },
+      "size": 512,
+      "tileMeters": 4,
+      "texelsPerMeter": 128,
+      "heightMeters": 0.09,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "macro-128-171px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 5,
+        "microCyclesPerTile": 23,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.035,
+          0.06,
+          0.055
+        ],
+        "high": [
+          0.095,
+          0.13,
+          0.105
+        ],
+        "roughness": 0.32
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "f5e2c53e-2b64-4235-96ea-89815df02ca0",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/basalt-strata.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/basalt-strata.json",
+          "sha256": "c70af9f9ab18e53948817f7f080cbb5e9c28aa466a1723564e1e92c77c4edef3",
+          "seed": 62114,
+          "pattern": "strata"
+        },
+        "raw": {
+          "path": "provider/raw/basalt-strata-x-refined/inline-result.json",
+          "sha256": "10c640f1a24fbce1c693106c8b0c794b1f6851ad8a001bbdc2003753d43108f7"
+        },
+        "http": {
+          "id": "basalt-strata-x-refined",
+          "jobId": "f5e2c53e-2b64-4235-96ea-89815df02ca0",
+          "path": "provider/http/basalt-strata-x-refined.json",
+          "bytes": 312780,
+          "sha256": "642b2df6e20903e25c9b979701b7c0916b9d58494a3d7c0a3716f041d647e22f"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "bb917adfdf19ab77cc9713c3e04c4d8fe833b24f262ba106b1f76a11226488b1"
+      }
+    },
+    {
+      "id": "dune-sand",
+      "baseFamily": "dune-sand",
+      "derivedVariant": false,
+      "maps": [
+        "Stormglass"
+      ],
+      "role": "dune",
+      "channels": {
+        "albedo": "dune-sand.albedo",
+        "normal": "dune-sand.normal",
+        "roughness": "dune-sand.roughness",
+        "height": "dune-sand.height",
+        "wear": "dune-sand.wear"
+      },
+      "size": 512,
+      "tileMeters": 4,
+      "texelsPerMeter": 128,
+      "heightMeters": 0.05,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "macro-128-171px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 6,
+        "microCyclesPerTile": 36,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.26,
+          0.22,
+          0.155
+        ],
+        "high": [
+          0.39,
+          0.33,
+          0.235
+        ],
+        "roughness": 0.9
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "d813f780-d96e-4a4f-a78b-3b9c41c3ea70",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.055,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/dune-sand.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/dune-sand.json",
+          "sha256": "cd1dde776e3e2bf250db1fc5a0fe32b25f0fa8da768e3cf6a1f4aeac26c2ae2d",
+          "seed": 62215,
+          "pattern": "dune"
+        },
+        "raw": {
+          "path": "provider/raw/dune-sand/inline-result.json",
+          "sha256": "a9539c60b05be02332b9a9b9deb320b30d270c1cff48e483bc9f8f1fbcd1f0d2"
+        },
+        "http": {
+          "id": "dune-sand",
+          "jobId": "d813f780-d96e-4a4f-a78b-3b9c41c3ea70",
+          "path": "provider/http/dune-sand.json",
+          "bytes": 313030,
+          "sha256": "6c6a3009070e6428258e2e7f4323c6a675f2f4d80a73a467eebecf9282b3ca96"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "93e182557c7c47b75c556477127fb27686fea20d",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "a367d4966cebf9afbb162f9b198853562efc041537aefde1476408a4362c0eaf"
+      }
+    },
+    {
+      "id": "deep-silt",
+      "baseFamily": "deep-silt",
+      "derivedVariant": false,
+      "maps": [
+        "Abyssal"
+      ],
+      "role": "silt",
+      "channels": {
+        "albedo": "deep-silt.albedo",
+        "normal": "deep-silt.normal",
+        "roughness": "deep-silt.roughness",
+        "height": "deep-silt.height",
+        "wear": "deep-silt.wear"
+      },
+      "size": 512,
+      "tileMeters": 4,
+      "texelsPerMeter": 128,
+      "heightMeters": 0.025,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "macro-128-171px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 3,
+        "microCyclesPerTile": 27,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.065,
+          0.09,
+          0.085
+        ],
+        "high": [
+          0.13,
+          0.15,
+          0.12
+        ],
+        "roughness": 0.79
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "76775a92-f80c-4da1-a32b-56dc33ab9e93",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/deep-silt.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/deep-silt.json",
+          "sha256": "5f6b020f1daa61db607ec7e8a19f482fc5c27781580407a84ad431229806774e",
+          "seed": 62316,
+          "pattern": "silt"
+        },
+        "raw": {
+          "path": "provider/raw/deep-silt-x-refined/inline-result.json",
+          "sha256": "6390708feb9c6e88c8c5f8cc5aff78f541b8f5fb31ac6169d9be0717a56d0b3d"
+        },
+        "http": {
+          "id": "deep-silt-x-refined",
+          "jobId": "76775a92-f80c-4da1-a32b-56dc33ab9e93",
+          "path": "provider/http/deep-silt-x-refined.json",
+          "bytes": 315599,
+          "sha256": "e7a8e654f6eb7617f11003cf02b694e8d38ba93a21dd76095d3ac50f51642fd0"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "28e1bf401b73bed4e6a7eb4916ae2db3d47be4596d5302e4df1d5f1ea97c2531"
+      }
+    },
+    {
+      "id": "pool-scum",
+      "baseFamily": "deep-silt",
+      "derivedVariant": true,
+      "maps": [
+        "Helix",
+        "Abyssal"
+      ],
+      "role": "pool perimeter scum/soil-bed overlay",
+      "channels": {
+        "albedo": "pool-scum.albedo",
+        "normal": "pool-scum.normal",
+        "roughness": "pool-scum.roughness",
+        "height": "pool-scum.height",
+        "wear": "pool-scum.wear"
+      },
+      "size": 512,
+      "tileMeters": 4,
+      "texelsPerMeter": 128,
+      "heightMeters": 0.025,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "macro-128-171px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 3,
+        "microCyclesPerTile": 27,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.04,
+          0.07,
+          0.02
+        ],
+        "high": [
+          0.14,
+          0.17,
+          0.055
+        ],
+        "roughness": 0.48
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "76775a92-f80c-4da1-a32b-56dc33ab9e93",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/deep-silt.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/deep-silt.json",
+          "sha256": "5f6b020f1daa61db607ec7e8a19f482fc5c27781580407a84ad431229806774e",
+          "seed": 62316,
+          "pattern": "silt"
+        },
+        "raw": {
+          "path": "provider/raw/deep-silt-x-refined/inline-result.json",
+          "sha256": "6390708feb9c6e88c8c5f8cc5aff78f541b8f5fb31ac6169d9be0717a56d0b3d"
+        },
+        "http": {
+          "id": "deep-silt-x-refined",
+          "jobId": "76775a92-f80c-4da1-a32b-56dc33ab9e93",
+          "path": "provider/http/deep-silt-x-refined.json",
+          "bytes": 315599,
+          "sha256": "e7a8e654f6eb7617f11003cf02b694e8d38ba93a21dd76095d3ac50f51642fd0"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "28e1bf401b73bed4e6a7eb4916ae2db3d47be4596d5302e4df1d5f1ea97c2531"
+      }
+    },
+    {
+      "id": "road-gravel",
+      "baseFamily": "road-gravel",
+      "derivedVariant": false,
+      "maps": [
+        "Stormglass",
+        "Vesper"
+      ],
+      "role": "gravel",
+      "channels": {
+        "albedo": "road-gravel.albedo",
+        "normal": "road-gravel.normal",
+        "roughness": "road-gravel.roughness",
+        "height": "road-gravel.height",
+        "wear": "road-gravel.wear"
+      },
+      "size": 512,
+      "tileMeters": 4,
+      "texelsPerMeter": 128,
+      "heightMeters": 0.04,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "macro-128-171px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 12,
+        "microCyclesPerTile": 41,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.08,
+          0.09,
+          0.095
+        ],
+        "high": [
+          0.17,
+          0.18,
+          0.17
+        ],
+        "roughness": 0.91
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "2a2ad170-c7f7-4d05-ba60-15c5c2f31a05",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.08499999999999999,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/road-gravel.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/road-gravel.json",
+          "sha256": "d1d9d95cdec2a38d90b311ef27f2f0a931202ca87f894726ce218c957794eb55",
+          "seed": 62417,
+          "pattern": "gravel"
+        },
+        "raw": {
+          "path": "provider/raw/road-gravel/inline-result.json",
+          "sha256": "a2b5ac1a3d835ae1a8e2bae66035daa46d27dfa90ed3e24cc33eac5904f778a8"
+        },
+        "http": {
+          "id": "road-gravel",
+          "jobId": "2a2ad170-c7f7-4d05-ba60-15c5c2f31a05",
+          "path": "provider/http/road-gravel.json",
+          "bytes": 315024,
+          "sha256": "329e15f8a56eab0aa6340032183f7db8afa0c5e495c0234df3eb2b3f3a652fc0"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "93e182557c7c47b75c556477127fb27686fea20d",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "2d20607a65e9e0fb7f87d944c3d94cf019f7fa4476d6b960cc6da884c189a67b"
+      }
+    },
+    {
+      "id": "moss-lichen",
+      "baseFamily": "moss-lichen",
+      "derivedVariant": false,
+      "maps": [
+        "Helix",
+        "Stormglass"
+      ],
+      "role": "lichen",
+      "channels": {
+        "albedo": "moss-lichen.albedo",
+        "normal": "moss-lichen.normal",
+        "roughness": "moss-lichen.roughness",
+        "height": "moss-lichen.height",
+        "wear": "moss-lichen.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.025,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "surface-256px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 7,
+        "microCyclesPerTile": 26,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.055,
+          0.085,
+          0.03
+        ],
+        "high": [
+          0.17,
+          0.21,
+          0.07
+        ],
+        "roughness": 0.91
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "7ff8cdc4-b802-4006-bdc9-7551bdac1e85",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/moss-lichen.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/moss-lichen.json",
+          "sha256": "00baa93b33679e1bbc21695217aa5c135fe5432337201ba1f7816a8f0b030bc0",
+          "seed": 62518,
+          "pattern": "lichen"
+        },
+        "raw": {
+          "path": "provider/raw/moss-lichen-x-refined/inline-result.json",
+          "sha256": "f0ebef7e20ff47d8b32d411c8d268048db380115590cec29f0b69f2a08bf69dc"
+        },
+        "http": {
+          "id": "moss-lichen-x-refined",
+          "jobId": "7ff8cdc4-b802-4006-bdc9-7551bdac1e85",
+          "path": "provider/http/moss-lichen-x-refined.json",
+          "bytes": 315092,
+          "sha256": "27052dcd154a49d551897608ab170d4f1681d223dd26ecc422a1f40b56e66426"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "7520d44ce5e89d812cc5703f62b5b23b3c89df251b32e501ddbbb48ec49b8818"
+      }
+    },
+    {
+      "id": "bark-fibers",
+      "baseFamily": "bark-fibers",
+      "derivedVariant": false,
+      "maps": [
+        "Helix"
+      ],
+      "role": "bark",
+      "channels": {
+        "albedo": "bark-fibers.albedo",
+        "normal": "bark-fibers.normal",
+        "roughness": "bark-fibers.roughness",
+        "height": "bark-fibers.height",
+        "wear": "bark-fibers.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.045,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "surface-256px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 6,
+        "microCyclesPerTile": 32,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.085,
+          0.055,
+          0.035
+        ],
+        "high": [
+          0.2,
+          0.13,
+          0.075
+        ],
+        "roughness": 0.92
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "d1bf63f6-1d30-4660-9091-34c66951dd6a",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.055,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/bark-fibers.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/bark-fibers.json",
+          "sha256": "3857fa4c0e3708ba63115fcd11e035e85ec8a87529df65f8e0d46e7fce8dea2d",
+          "seed": 62619,
+          "pattern": "bark"
+        },
+        "raw": {
+          "path": "provider/raw/bark-fibers/inline-result.json",
+          "sha256": "50006f86e37b48c6c28fa956e22114f0803ca709a770f1c76efeec9fc201c01d"
+        },
+        "http": {
+          "id": "bark-fibers",
+          "jobId": "d1bf63f6-1d30-4660-9091-34c66951dd6a",
+          "path": "provider/http/bark-fibers.json",
+          "bytes": 312957,
+          "sha256": "5a0a3d05376773187b62022d932c31d9e9cf210f73a6f275d52677bffa78af91"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "93e182557c7c47b75c556477127fb27686fea20d",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "326627eb4b74fd463b4207e23eba5d8cf235bf9851c62392e33f506fc91a6cdc"
+      }
+    },
+    {
+      "id": "leaf-veins",
+      "baseFamily": "leaf-veins",
+      "derivedVariant": false,
+      "maps": [
+        "Helix"
+      ],
+      "role": "leaf",
+      "channels": {
+        "albedo": "leaf-veins.albedo",
+        "normal": "leaf-veins.normal",
+        "roughness": "leaf-veins.roughness",
+        "height": "leaf-veins.height",
+        "wear": "leaf-veins.wear"
+      },
+      "size": 512,
+      "tileMeters": 1,
+      "texelsPerMeter": 512,
+      "heightMeters": 0.004,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "detail-512px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 4,
+        "microCyclesPerTile": 16,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.035,
+          0.085,
+          0.025
+        ],
+        "high": [
+          0.115,
+          0.19,
+          0.05
+        ],
+        "roughness": 0.66
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "306a53a2-2c18-444a-bf4a-458682d45cb9",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/leaf-veins.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/leaf-veins.json",
+          "sha256": "482cd18d7cabd78e2366f08e5ad898916515af427653eeeb587c685856c70a38",
+          "seed": 62720,
+          "pattern": "leaf"
+        },
+        "raw": {
+          "path": "provider/raw/leaf-veins-x-refined/inline-result.json",
+          "sha256": "2acbe30da5f6d8e1ffca0890c2b27576bb81c7e64232215d81b6b2e9f1edb847"
+        },
+        "http": {
+          "id": "leaf-veins-x-refined",
+          "jobId": "306a53a2-2c18-444a-bf4a-458682d45cb9",
+          "path": "provider/http/leaf-veins-x-refined.json",
+          "bytes": 320394,
+          "sha256": "cdbf979856cbc28b6f9cac0bc83f66a557ae9bc6e9383353d0597d17559240fc"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "347e48b616305e0725529f811d98354932d0eaaf0303fde29d4a58bce5a53a98"
+      }
+    },
+    {
+      "id": "frosted-glass",
+      "baseFamily": "frosted-glass",
+      "derivedVariant": false,
+      "maps": [
+        "Parallax",
+        "Stormglass"
+      ],
+      "role": "frost",
+      "channels": {
+        "albedo": "frosted-glass.albedo",
+        "normal": "frosted-glass.normal",
+        "roughness": "frosted-glass.roughness",
+        "height": "frosted-glass.height",
+        "wear": "frosted-glass.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.003,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "surface-256px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 7,
+        "microCyclesPerTile": 37,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.19,
+          0.255,
+          0.28
+        ],
+        "high": [
+          0.28,
+          0.34,
+          0.355
+        ],
+        "roughness": 0.45
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "70894686-ba2b-49ff-899e-e7fa37c51e4c",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.08499999999999999,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/frosted-glass.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/frosted-glass.json",
+          "sha256": "db0335637e94937829c7158a7854f11c1f61aa648d2aeef51ae6e44dce9ab65f",
+          "seed": 62821,
+          "pattern": "frost"
+        },
+        "raw": {
+          "path": "provider/raw/frosted-glass/inline-result.json",
+          "sha256": "51af824fa72e3d4024a5a4437a901b35337ee4df74efca81dbb36677f30e3acf"
+        },
+        "http": {
+          "id": "frosted-glass",
+          "jobId": "70894686-ba2b-49ff-899e-e7fa37c51e4c",
+          "path": "provider/http/frosted-glass.json",
+          "bytes": 314535,
+          "sha256": "c50e60bfe0dbaf408de6e67eac38eaaa906225a857bac33dd46c4511a9fbfe7d"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "93e182557c7c47b75c556477127fb27686fea20d",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "fcd653e7b509407279583de41c761e05327dba3cc7c95b2e89a1c028b09c777b"
+      }
+    },
+    {
+      "id": "prismatic-etch",
+      "baseFamily": "prismatic-etch",
+      "derivedVariant": false,
+      "maps": [
+        "Parallax"
+      ],
+      "role": "etch",
+      "channels": {
+        "albedo": "prismatic-etch.albedo",
+        "normal": "prismatic-etch.normal",
+        "roughness": "prismatic-etch.roughness",
+        "height": "prismatic-etch.height",
+        "wear": "prismatic-etch.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.005,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "surface-256px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 5,
+        "microCyclesPerTile": 30,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.1,
+          0.13,
+          0.17
+        ],
+        "high": [
+          0.18,
+          0.23,
+          0.26
+        ],
+        "roughness": 0.34
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "c1582bcf-edfd-40a4-9e2d-45cff9534aa7",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/prismatic-etch.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/prismatic-etch.json",
+          "sha256": "6d6ee0330dfa0fce6df3cde7f2d6944cb40a90858a9a7e2265ee1923d0fb14f3",
+          "seed": 62922,
+          "pattern": "etch"
+        },
+        "raw": {
+          "path": "provider/raw/prismatic-etch-x-refined/inline-result.json",
+          "sha256": "1528ead23b73877e913c02714a160d0fd1ed3f518677068828d87b673825ed3c"
+        },
+        "http": {
+          "id": "prismatic-etch-x-refined",
+          "jobId": "c1582bcf-edfd-40a4-9e2d-45cff9534aa7",
+          "path": "provider/http/prismatic-etch-x-refined.json",
+          "bytes": 321728,
+          "sha256": "1acc1b1bb9b1585b7bee098196673135b93cbb255f26bd1a3bcd1a687a216a1f"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "e7a41d727a07c0992dc0472cef5bcbca3f76fa97a3ff51b6752ce55b11d5ddf0"
+      }
+    },
+    {
+      "id": "viaduct-asphalt",
+      "baseFamily": "viaduct-asphalt",
+      "derivedVariant": false,
+      "maps": [
+        "Vesper",
+        "Stormglass"
+      ],
+      "role": "asphalt",
+      "channels": {
+        "albedo": "viaduct-asphalt.albedo",
+        "normal": "viaduct-asphalt.normal",
+        "roughness": "viaduct-asphalt.roughness",
+        "height": "viaduct-asphalt.height",
+        "wear": "viaduct-asphalt.wear"
+      },
+      "size": 512,
+      "tileMeters": 4,
+      "texelsPerMeter": 128,
+      "heightMeters": 0.013,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "macro-128-171px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 8,
+        "microCyclesPerTile": 47,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.035,
+          0.04,
+          0.045
+        ],
+        "high": [
+          0.09,
+          0.1,
+          0.105
+        ],
+        "roughness": 0.85
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "5023e7ff-76a3-49a1-a8e8-fc6d3c0cd6e6",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.055,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/viaduct-asphalt.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/viaduct-asphalt.json",
+          "sha256": "9e083a55ca84aef9de0698ef0640079fc6ce01297917ed5a1607ce959f763689",
+          "seed": 63023,
+          "pattern": "asphalt"
+        },
+        "raw": {
+          "path": "provider/raw/viaduct-asphalt/inline-result.json",
+          "sha256": "788daaa5acdef6732832e7367ec78f4cc2568dc8cd9ddb96def222a784b9643c"
+        },
+        "http": {
+          "id": "viaduct-asphalt",
+          "jobId": "5023e7ff-76a3-49a1-a8e8-fc6d3c0cd6e6",
+          "path": "provider/http/viaduct-asphalt.json",
+          "bytes": 314470,
+          "sha256": "be42234b500997e6864e4710afe96bc4d2d8d17111640509248c878c59fa7f01"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "93e182557c7c47b75c556477127fb27686fea20d",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "911b55a017702577750bc21dac64c805f0542d7393ab7a7708d6879e0c960696"
+      }
+    },
+    {
+      "id": "ribbed-steel",
+      "baseFamily": "ribbed-steel",
+      "derivedVariant": false,
+      "maps": [
+        "Gravemill",
+        "Abyssal"
+      ],
+      "role": "ribs",
+      "channels": {
+        "albedo": "ribbed-steel.albedo",
+        "normal": "ribbed-steel.normal",
+        "roughness": "ribbed-steel.roughness",
+        "height": "ribbed-steel.height",
+        "wear": "ribbed-steel.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.025,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "surface-256px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 8,
+        "microCyclesPerTile": 20,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.085,
+          0.105,
+          0.11
+        ],
+        "high": [
+          0.16,
+          0.18,
+          0.175
+        ],
+        "roughness": 0.56
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "67f6b325-ad6f-43e6-9c59-61e48d3c54ad",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/ribbed-steel.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/ribbed-steel.json",
+          "sha256": "818d045b198ff3958dc0058f3b63544f253592c6f165044e969ca5751e80dc4d",
+          "seed": 63124,
+          "pattern": "ribs"
+        },
+        "raw": {
+          "path": "provider/raw/ribbed-steel-x-refined/inline-result.json",
+          "sha256": "5903eeed7d5529e4c46b1b7bca4ab89c711c2e265a15cda58dc2f472aa752db5"
+        },
+        "http": {
+          "id": "ribbed-steel-x-refined",
+          "jobId": "67f6b325-ad6f-43e6-9c59-61e48d3c54ad",
+          "path": "provider/http/ribbed-steel-x-refined.json",
+          "bytes": 312955,
+          "sha256": "82ad38084503a66d59d8dc52f35aadb84547491bc1ad4d1c07ae12abc6d46f2c"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "5359f4fb643bb01a5843ae448f1ec76672b233259c1007e0d5799255f97ee4b7"
+      }
+    },
+    {
+      "id": "forge-steel",
+      "baseFamily": "ribbed-steel",
+      "derivedVariant": true,
+      "maps": [
+        "Gravemill"
+      ],
+      "role": "forge wall and machine casing",
+      "channels": {
+        "albedo": "forge-steel.albedo",
+        "normal": "forge-steel.normal",
+        "roughness": "forge-steel.roughness",
+        "height": "forge-steel.height",
+        "wear": "forge-steel.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.025,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "surface-256px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 8,
+        "microCyclesPerTile": 20,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.055,
+          0.065,
+          0.07
+        ],
+        "high": [
+          0.12,
+          0.13,
+          0.135
+        ],
+        "roughness": 0.61
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "67f6b325-ad6f-43e6-9c59-61e48d3c54ad",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/ribbed-steel.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/ribbed-steel.json",
+          "sha256": "818d045b198ff3958dc0058f3b63544f253592c6f165044e969ca5751e80dc4d",
+          "seed": 63124,
+          "pattern": "ribs"
+        },
+        "raw": {
+          "path": "provider/raw/ribbed-steel-x-refined/inline-result.json",
+          "sha256": "5903eeed7d5529e4c46b1b7bca4ab89c711c2e265a15cda58dc2f472aa752db5"
+        },
+        "http": {
+          "id": "ribbed-steel-x-refined",
+          "jobId": "67f6b325-ad6f-43e6-9c59-61e48d3c54ad",
+          "path": "provider/http/ribbed-steel-x-refined.json",
+          "bytes": 312955,
+          "sha256": "82ad38084503a66d59d8dc52f35aadb84547491bc1ad4d1c07ae12abc6d46f2c"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "5359f4fb643bb01a5843ae448f1ec76672b233259c1007e0d5799255f97ee4b7"
+      }
+    },
+    {
+      "id": "trim-wear",
+      "baseFamily": "trim-wear",
+      "derivedVariant": false,
+      "maps": [
+        "Helix",
+        "Gravemill",
+        "Parallax",
+        "Vesper",
+        "Abyssal",
+        "Stormglass"
+      ],
+      "role": "trim",
+      "channels": {
+        "albedo": "trim-wear.albedo",
+        "normal": "trim-wear.normal",
+        "roughness": "trim-wear.roughness",
+        "height": "trim-wear.height",
+        "wear": "trim-wear.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.014,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "surface-256px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 4,
+        "microCyclesPerTile": 28,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.1,
+          0.12,
+          0.13
+        ],
+        "high": [
+          0.22,
+          0.24,
+          0.23
+        ],
+        "roughness": 0.64
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "8cf0bdad-a78b-4bf7-9971-e385c2bc0462",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.08499999999999999,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/trim-wear.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/trim-wear.json",
+          "sha256": "5b677ac4b9e38ccc0bee851f92da0e98ad239ece474c8f171a98acc66ffb5179",
+          "seed": 63225,
+          "pattern": "trim"
+        },
+        "raw": {
+          "path": "provider/raw/trim-wear/inline-result.json",
+          "sha256": "2c97880f37f271f8b7cf38b34dbe8ed8610124b662d386f5efba44c3846c35e6"
+        },
+        "http": {
+          "id": "trim-wear",
+          "jobId": "8cf0bdad-a78b-4bf7-9971-e385c2bc0462",
+          "path": "provider/http/trim-wear.json",
+          "bytes": 311652,
+          "sha256": "e75159ffb8600906910a6884e85515ea1ccacf8eff65334d5b1331fbfdba2e2e"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "93e182557c7c47b75c556477127fb27686fea20d",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "c2bda9a1abcda695adf866be6b11acb1853b6db355393f1aa904471a3cbb678c"
+      }
+    },
+    {
+      "id": "masonry-coping",
+      "baseFamily": "trim-wear",
+      "derivedVariant": true,
+      "maps": [
+        "Helix",
+        "Vesper",
+        "Stormglass"
+      ],
+      "role": "cornice/stringcourse/coping/quoins/drip",
+      "channels": {
+        "albedo": "masonry-coping.albedo",
+        "normal": "masonry-coping.normal",
+        "roughness": "masonry-coping.roughness",
+        "height": "masonry-coping.height",
+        "wear": "masonry-coping.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.014,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "surface-256px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 4,
+        "microCyclesPerTile": 28,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.24,
+          0.235,
+          0.2
+        ],
+        "high": [
+          0.4,
+          0.385,
+          0.31
+        ],
+        "roughness": 0.83
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "8cf0bdad-a78b-4bf7-9971-e385c2bc0462",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.08499999999999999,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/trim-wear.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/trim-wear.json",
+          "sha256": "5b677ac4b9e38ccc0bee851f92da0e98ad239ece474c8f171a98acc66ffb5179",
+          "seed": 63225,
+          "pattern": "trim"
+        },
+        "raw": {
+          "path": "provider/raw/trim-wear/inline-result.json",
+          "sha256": "2c97880f37f271f8b7cf38b34dbe8ed8610124b662d386f5efba44c3846c35e6"
+        },
+        "http": {
+          "id": "trim-wear",
+          "jobId": "8cf0bdad-a78b-4bf7-9971-e385c2bc0462",
+          "path": "provider/http/trim-wear.json",
+          "bytes": 311652,
+          "sha256": "e75159ffb8600906910a6884e85515ea1ccacf8eff65334d5b1331fbfdba2e2e"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "93e182557c7c47b75c556477127fb27686fea20d",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "c2bda9a1abcda695adf866be6b11acb1853b6db355393f1aa904471a3cbb678c"
+      }
+    },
+    {
+      "id": "decal-stencil",
+      "baseFamily": "decal-stencil",
+      "derivedVariant": false,
+      "maps": [
+        "Helix",
+        "Gravemill",
+        "Parallax",
+        "Vesper",
+        "Abyssal",
+        "Stormglass"
+      ],
+      "role": "stencil",
+      "channels": {
+        "albedo": "decal-stencil.albedo",
+        "normal": "decal-stencil.normal",
+        "roughness": "decal-stencil.roughness",
+        "height": "decal-stencil.height",
+        "wear": "decal-stencil.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.002,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "surface-256px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 4,
+        "microCyclesPerTile": 15,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.18,
+          0.19,
+          0.17
+        ],
+        "high": [
+          0.34,
+          0.35,
+          0.29
+        ],
+        "roughness": 0.76
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "38374f90-91de-4c07-8e28-127a92b51431",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/decal-stencil.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/decal-stencil.json",
+          "sha256": "0d7e8a43f9c80e62a19590e99f8f70d402340c45db0f58fc6d309511a415eb84",
+          "seed": 63326,
+          "pattern": "stencil"
+        },
+        "raw": {
+          "path": "provider/raw/decal-stencil-x-refined/inline-result.json",
+          "sha256": "7cecaa4918791361adef9346b18f1da0311d46d07c9f11ae6093a7569ff92a8a"
+        },
+        "http": {
+          "id": "decal-stencil-x-refined",
+          "jobId": "38374f90-91de-4c07-8e28-127a92b51431",
+          "path": "provider/http/decal-stencil-x-refined.json",
+          "bytes": 319742,
+          "sha256": "1795c7a9b66cf547577aa8aec72038700d7e74e1bd0961fadd45b3691bfb25a4"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "923e44f7c04aa2d96e677f3aae5f3e3c8f4aebf2c914e805c85db8f236f36c95"
+      }
+    },
+    {
+      "id": "slate-shingle",
+      "baseFamily": "slate-shingle",
+      "derivedVariant": false,
+      "maps": [
+        "Vesper",
+        "Stormglass"
+      ],
+      "role": "slate",
+      "channels": {
+        "albedo": "slate-shingle.albedo",
+        "normal": "slate-shingle.normal",
+        "roughness": "slate-shingle.roughness",
+        "height": "slate-shingle.height",
+        "wear": "slate-shingle.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.016,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "surface-256px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 4,
+        "microCyclesPerTile": 28,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.06,
+          0.085,
+          0.105
+        ],
+        "high": [
+          0.15,
+          0.175,
+          0.19
+        ],
+        "roughness": 0.78
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "e6e2c413-fc42-4301-aee9-134d0060fdcc",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.055,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/slate-shingle.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/slate-shingle.json",
+          "sha256": "a179f3fda301023cd77bb2868c8179a6400fd8bb22b00f1a7cf2ea2c493f9b1c",
+          "seed": 63427,
+          "pattern": "slate"
+        },
+        "raw": {
+          "path": "provider/raw/slate-shingle/inline-result.json",
+          "sha256": "b2c6763d4b5d3ea0b2c6d44005810b1b563ac2d8870abb510065fb75b2139a9b"
+        },
+        "http": {
+          "id": "slate-shingle",
+          "jobId": "e6e2c413-fc42-4301-aee9-134d0060fdcc",
+          "path": "provider/http/slate-shingle.json",
+          "bytes": 310314,
+          "sha256": "e46a2dfbed4b0e7724c71aed8cea5789c1edde147f8e211f4f0a71b0c19d0722"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "93e182557c7c47b75c556477127fb27686fea20d",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "d62496af4fc8a4b21dbedb5a3897a086b3b0e904c8fe4bc390d8d1cc2550ef23"
+      }
+    },
+    {
+      "id": "cobble-sett",
+      "baseFamily": "cobble-sett",
+      "derivedVariant": false,
+      "maps": [
+        "Vesper",
+        "Stormglass"
+      ],
+      "role": "cobble",
+      "channels": {
+        "albedo": "cobble-sett.albedo",
+        "normal": "cobble-sett.normal",
+        "roughness": "cobble-sett.roughness",
+        "height": "cobble-sett.height",
+        "wear": "cobble-sett.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.035,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "surface-256px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 4,
+        "microCyclesPerTile": 19,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.12,
+          0.13,
+          0.12
+        ],
+        "high": [
+          0.27,
+          0.26,
+          0.22
+        ],
+        "roughness": 0.84
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "4c0663fa-0209-4c68-b480-f87d3d7e165d",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/cobble-sett.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/cobble-sett.json",
+          "sha256": "19b2c8974201886610eb2a8d9d3ab036212e5826c37f2ff13baba8b3112289de",
+          "seed": 63528,
+          "pattern": "cobble"
+        },
+        "raw": {
+          "path": "provider/raw/cobble-sett-x-refined/inline-result.json",
+          "sha256": "04ae9ccb7df6abf9bef3f17a9635b47f374ea5004a8955d3b1e62f202b5bb411"
+        },
+        "http": {
+          "id": "cobble-sett-x-refined",
+          "jobId": "4c0663fa-0209-4c68-b480-f87d3d7e165d",
+          "path": "provider/http/cobble-sett-x-refined.json",
+          "bytes": 312587,
+          "sha256": "bee5769688f476796faa6d5c11241b04aeab9435f01317ea93e967d352ef3a08"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "dac7beea0ddc16103ecda07f8c2b014769cb3e9b9d260c9f9e757fbe5823de63"
+      }
+    },
+    {
+      "id": "fern-frond",
+      "baseFamily": "fern-frond",
+      "derivedVariant": false,
+      "maps": [
+        "Helix"
+      ],
+      "role": "fern",
+      "channels": {
+        "albedo": "fern-frond.albedo",
+        "normal": "fern-frond.normal",
+        "roughness": "fern-frond.roughness",
+        "height": "fern-frond.height",
+        "wear": "fern-frond.wear",
+        "alpha": "fern-frond.alpha"
+      },
+      "size": 512,
+      "tileMeters": 1,
+      "texelsPerMeter": 512,
+      "heightMeters": 0.002,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "detail-512px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 4,
+        "microCyclesPerTile": 24,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.025,
+          0.06,
+          0.018
+        ],
+        "high": [
+          0.11,
+          0.19,
+          0.055
+        ],
+        "roughness": 0.65
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "20ec5563-3b66-436e-a345-ec907a37ad3c",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.08499999999999999,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/fern-frond.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/fern-frond.json",
+          "sha256": "7b77a3a0f2c9182d5c176159a7a280f6be111231ca60eb3dda94e80b169a11d8",
+          "seed": 63629,
+          "pattern": "fern"
+        },
+        "raw": {
+          "path": "provider/raw/fern-frond/inline-result.json",
+          "sha256": "6b5bb108077769555464733ad090bca15fd0694c19ac91c71b88736520e20798"
+        },
+        "http": {
+          "id": "fern-frond",
+          "jobId": "20ec5563-3b66-436e-a345-ec907a37ad3c",
+          "path": "provider/http/fern-frond.json",
+          "bytes": 323809,
+          "sha256": "62f411a7b02996a913ae2a72f06e398a309416a12c0db2eedd329ec1b13ad432"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "93e182557c7c47b75c556477127fb27686fea20d",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "20416e2ea0e6ff35a6b828ccbf32af74163248818c060ba8d18944bdb60fbf77"
+      }
+    },
+    {
+      "id": "sea-flow",
+      "baseFamily": "sea-flow",
+      "derivedVariant": false,
+      "maps": [
+        "Stormglass",
+        "Abyssal"
+      ],
+      "role": "wave",
+      "channels": {
+        "albedo": "sea-flow.albedo",
+        "normal": "sea-flow.normal",
+        "roughness": "sea-flow.roughness",
+        "height": "sea-flow.height",
+        "wear": "sea-flow.wear"
+      },
+      "size": 512,
+      "tileMeters": 4,
+      "texelsPerMeter": 128,
+      "heightMeters": 0.016,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "macro-128-171px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 4,
+        "microCyclesPerTile": 17,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.025,
+          0.075,
+          0.085
+        ],
+        "high": [
+          0.055,
+          0.14,
+          0.15
+        ],
+        "roughness": 0.22
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "dc6dd001-2ae7-411b-aa4f-e6eaad708cad",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/sea-flow.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/sea-flow.json",
+          "sha256": "7fcf851000c64dfd49058ed6eaa10f85518ed466a455a8ce92726293343b24f5",
+          "seed": 63730,
+          "pattern": "wave"
+        },
+        "raw": {
+          "path": "provider/raw/sea-flow-x-refined/inline-result.json",
+          "sha256": "297153fbb82123dfebdac75e9db5ce80ebce575b203d55fd40ddfdfe10bf13e2"
+        },
+        "http": {
+          "id": "sea-flow-x-refined",
+          "jobId": "dc6dd001-2ae7-411b-aa4f-e6eaad708cad",
+          "path": "provider/http/sea-flow-x-refined.json",
+          "bytes": 312392,
+          "sha256": "ee982b4679222d6ac3694aa7482257e6bbb8eb03965b2fd5e5dbcc9cce0bded9"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "ede9a811fb070e2449a132cc4cc78f7ebecf8b00f4927ca410a19a15bac1a3f7"
+      }
+    },
+    {
+      "id": "timber-weather",
+      "baseFamily": "timber-weather",
+      "derivedVariant": false,
+      "maps": [
+        "Vesper",
+        "Stormglass"
+      ],
+      "role": "timber",
+      "channels": {
+        "albedo": "timber-weather.albedo",
+        "normal": "timber-weather.normal",
+        "roughness": "timber-weather.roughness",
+        "height": "timber-weather.height",
+        "wear": "timber-weather.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.013,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "surface-256px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 4,
+        "microCyclesPerTile": 25,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.1,
+          0.08,
+          0.055
+        ],
+        "high": [
+          0.23,
+          0.195,
+          0.135
+        ],
+        "roughness": 0.83
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "3fd13eaf-e9b1-444b-9e15-364435aa7b2e",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.055,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/timber-weather.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/timber-weather.json",
+          "sha256": "52f8263207317623a25a08a00c35c3358b3dee3270ddcbfa4a27cba92749ea81",
+          "seed": 63831,
+          "pattern": "timber"
+        },
+        "raw": {
+          "path": "provider/raw/timber-weather/inline-result.json",
+          "sha256": "d737797d0230c67fa64631beba50f56b83e4a40ffebf69a1b4a724bd1e827355"
+        },
+        "http": {
+          "id": "timber-weather",
+          "jobId": "3fd13eaf-e9b1-444b-9e15-364435aa7b2e",
+          "path": "provider/http/timber-weather.json",
+          "bytes": 313595,
+          "sha256": "b7b5ffb0166a23141ebc8e2881bc4db877a2edf4a783970984f4ebca41005a1d"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "93e182557c7c47b75c556477127fb27686fea20d",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "d27c112d1d6467e3ccee01c47200c16c18939c961e07331e62b61c5c32105032"
+      }
+    },
+    {
+      "id": "quay-waterline",
+      "baseFamily": "quay-waterline",
+      "derivedVariant": false,
+      "maps": [
+        "Vesper",
+        "Abyssal",
+        "Stormglass"
+      ],
+      "role": "waterline",
+      "channels": {
+        "albedo": "quay-waterline.albedo",
+        "normal": "quay-waterline.normal",
+        "roughness": "quay-waterline.roughness",
+        "height": "quay-waterline.height",
+        "wear": "quay-waterline.wear"
+      },
+      "size": 512,
+      "tileMeters": 4,
+      "texelsPerMeter": 128,
+      "heightMeters": 0.015,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "densityTag": "macro-128-171px-per-meter",
+      "frequency": {
+        "macroCyclesPerTile": 3,
+        "microCyclesPerTile": 20,
+        "providerGrid": 128,
+        "outputPixels": 512
+      },
+      "authored": {
+        "low": [
+          0.07,
+          0.085,
+          0.07
+        ],
+        "high": [
+          0.24,
+          0.25,
+          0.2
+        ],
+        "roughness": 0.6
+      },
+      "provenance": {
+        "engine": "blur-core-v1",
+        "engineVersion": null,
+        "jobId": "8a66b95a-04ef-4017-b9e8-fd0f505c13c5",
+        "requestedMode": null,
+        "observedBackend": "not exposed; no hardware claim",
+        "estimatedCredits": 1,
+        "actualCredits": null,
+        "params": {
+          "strength": 0.085,
+          "reach": 0,
+          "style": "x",
+          "axes": [
+            0,
+            1
+          ],
+          "max_qubits": 14
+        },
+        "values": {
+          "path": "seeds/quay-waterline.json",
+          "field": "height"
+        },
+        "source": {
+          "path": "seeds/quay-waterline.json",
+          "sha256": "d54ca89929df53f2eb763deae5b00fbd65282f6353aee91d3f54a54a6b8c2103",
+          "seed": 63932,
+          "pattern": "waterline"
+        },
+        "raw": {
+          "path": "provider/raw/quay-waterline-x-refined/inline-result.json",
+          "sha256": "ffffd2745885afc3e21d0fbb29b254209fdf1a0a9d4de41fbe94e4e353742d7b"
+        },
+        "http": {
+          "id": "quay-waterline-x-refined",
+          "jobId": "8a66b95a-04ef-4017-b9e8-fd0f505c13c5",
+          "path": "provider/http/quay-waterline-x-refined.json",
+          "bytes": 311835,
+          "sha256": "d11294aecb0ce13e1cf5c1a28f6040abf2e816a4eb5f881c75f1c345c76309f4"
+        },
+        "schemaSha256": "3c9c7271133225d42739c0a9c45d04805b9f2e2335b85ab98f9d2c10bf13f2d3",
+        "generationToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "bakeToolCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+        "generationFingerprint": "cf05b2c0a278eea4e753532fdf092cbd7860a9cf1b64c0e48b054309f028c72e"
+      }
+    }
+  ],
+  "textures": {
+    "aggregate.albedo": {
+      "path": "textures/aggregate-albedo.png",
+      "sha256": "1a0fccc16edd8ecc4825d47f59eadd477b0861606aa31af7642a9b177877f4e4",
+      "bytes": 51789,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "aggregate.normal": {
+      "path": "textures/aggregate-normal.png",
+      "sha256": "61baadb1991cdc3ab47e1f025672c06f9e6f601c0d56552dee34da3e0f8444a4",
+      "bytes": 119069,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "aggregate.roughness": {
+      "path": "textures/aggregate-roughness.png",
+      "sha256": "a33f12b68d468f75a8823818da8320d64c1a27c339f71dc26a5a16d7d2a47cff",
+      "bytes": 35417,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "aggregate.height": {
+      "path": "textures/aggregate-height.png",
+      "sha256": "26915fe7f778b770a40c736f324e63df72b72e787b784f6d5a6975343cf77502",
+      "bytes": 126894,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "aggregate.wear": {
+      "path": "textures/aggregate-wear.png",
+      "sha256": "2b27922cbecdf4cd20dbaba6f3f74669a3107e019240f62f215560b3e765272f",
+      "bytes": 115422,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "cast-seams.albedo": {
+      "path": "textures/cast-seams-albedo.png",
+      "sha256": "4dcd77b6b90b3621375a21f725e9b881a2c8c46897762b358361ead4671c0ef8",
+      "bytes": 38869,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "cast-seams.normal": {
+      "path": "textures/cast-seams-normal.png",
+      "sha256": "a65f9df057998d11ac92a24f05c5946eb794134f7cc12b9dfab035496c37a858",
+      "bytes": 101348,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "cast-seams.roughness": {
+      "path": "textures/cast-seams-roughness.png",
+      "sha256": "484ebd3f0ab9915be426cca687bc8fd5ff364eef2151a9e4d3e49c1ddb2410df",
+      "bytes": 30990,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "cast-seams.height": {
+      "path": "textures/cast-seams-height.png",
+      "sha256": "871e41d7961fc3a65fd639b8bf080acc710e2101213f2ffb253c388d75117cde",
+      "bytes": 119402,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "cast-seams.wear": {
+      "path": "textures/cast-seams-wear.png",
+      "sha256": "9e780058c0261a05f4a8b054e2b10e5946b25cdc375620e8081e6c149138c214",
+      "bytes": 105478,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "terracotta.albedo": {
+      "path": "textures/terracotta-albedo.png",
+      "sha256": "e7cbef47acd9d54c61f57123824f477af4b0d42c17fdd514d0ad3fb185ae46a3",
+      "bytes": 56374,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "terracotta.normal": {
+      "path": "textures/terracotta-normal.png",
+      "sha256": "a82b4af6b637ecd74953a0f4af261acc637eab255e80f6117a231f5d0b564ca5",
+      "bytes": 174659,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "terracotta.roughness": {
+      "path": "textures/terracotta-roughness.png",
+      "sha256": "026e41ba5a566ab71f09ed19a6699c53442aaa2b569b32a0f61f1a2a7dd8fd16",
+      "bytes": 38483,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "terracotta.height": {
+      "path": "textures/terracotta-height.png",
+      "sha256": "7a2194601cf3e88a0d9304064505a115df7d27c355958b215d6af4e76c39edf7",
+      "bytes": 129716,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "terracotta.wear": {
+      "path": "textures/terracotta-wear.png",
+      "sha256": "8bdf4bead99463ab169a4b54b9ec9cb1ea6d1d9b4c0091e55a5a25eea11ac47d",
+      "bytes": 122404,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "lime-plaster.albedo": {
+      "path": "textures/lime-plaster-albedo.png",
+      "sha256": "20712018b81f70807f044c362860617b4db66da53ebf6f0a829131f836702983",
+      "bytes": 88133,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "lime-plaster.normal": {
+      "path": "textures/lime-plaster-normal.png",
+      "sha256": "d8630b11ec0b1baaaafefe6ca867e13577511fc3e0fc45fd546aa0b8e94930ef",
+      "bytes": 167240,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "lime-plaster.roughness": {
+      "path": "textures/lime-plaster-roughness.png",
+      "sha256": "8f9ec4bf33e91c11ccaef29bb0e06af0908f92f39d905276337140ef8f14fdb2",
+      "bytes": 60084,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "lime-plaster.height": {
+      "path": "textures/lime-plaster-height.png",
+      "sha256": "c80e0792910e86bae7b9096407d0bd804f656d4f0cdcd30ba53bb622b650206a",
+      "bytes": 191635,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "lime-plaster.wear": {
+      "path": "textures/lime-plaster-wear.png",
+      "sha256": "a02d69625c40bf99fdf247093e35afc647a6384884e35d8d21960dec65874020",
+      "bytes": 180871,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "oxidized-iron.albedo": {
+      "path": "textures/oxidized-iron-albedo.png",
+      "sha256": "2514c52dad451a6ab8a9f7ee82099abcdb54a1be3df7f009f11b51044e3f8218",
+      "bytes": 60057,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "oxidized-iron.normal": {
+      "path": "textures/oxidized-iron-normal.png",
+      "sha256": "db25a51dd6c649d7b155c51c64de0cb507306bf52641407581a850a79ffdc864",
+      "bytes": 198577,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "oxidized-iron.roughness": {
+      "path": "textures/oxidized-iron-roughness.png",
+      "sha256": "c43d822da97d4a2fefb389eec95681c2b596cf4d66160c5081668514bd2544a6",
+      "bytes": 47056,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "oxidized-iron.height": {
+      "path": "textures/oxidized-iron-height.png",
+      "sha256": "c5e822015cc32fa6ad5ed8f4ba2ed17134d6b667268203d7ed56465a67416c38",
+      "bytes": 161797,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "oxidized-iron.wear": {
+      "path": "textures/oxidized-iron-wear.png",
+      "sha256": "f498e0c38f2395a7ed25a3fb8b3e755387851371b12e57ee5119cf4c9dbe96de",
+      "bytes": 143612,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "copper-patina.albedo": {
+      "path": "textures/copper-patina-albedo.png",
+      "sha256": "a11f66b6da6268c022fa8b88593d39c2b33c96197bd83be811ed7972672fad8f",
+      "bytes": 103892,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "copper-patina.normal": {
+      "path": "textures/copper-patina-normal.png",
+      "sha256": "7b2ec1c6a0837fdbbe67ed0779e2d39ad3637b405ed0a5186ac21b94db2dab9c",
+      "bytes": 261676,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "copper-patina.roughness": {
+      "path": "textures/copper-patina-roughness.png",
+      "sha256": "0b1951e5830a72bfd483555e1a06a7bacaaa8ac7e379818f8acdd86765caea8b",
+      "bytes": 69429,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "copper-patina.height": {
+      "path": "textures/copper-patina-height.png",
+      "sha256": "e70f562efa93d97b5d69a89c4830369c56e345c5c2cde2684be3d69a4dbc9911",
+      "bytes": 224341,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "copper-patina.wear": {
+      "path": "textures/copper-patina-wear.png",
+      "sha256": "aa1336a0637437f961c42b02394aaf1bd9f521cf5e455589e7fc33fb5a37caf9",
+      "bytes": 204561,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "ceramic-enamel.albedo": {
+      "path": "textures/ceramic-enamel-albedo.png",
+      "sha256": "c8dfce6416c2b9eb145c63470331f6749e0338527fcb3045dfef15b435062702",
+      "bytes": 52319,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "ceramic-enamel.normal": {
+      "path": "textures/ceramic-enamel-normal.png",
+      "sha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+      "bytes": 133720,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "ceramic-enamel.roughness": {
+      "path": "textures/ceramic-enamel-roughness.png",
+      "sha256": "2c63bee56ac7600342fd93f52ed17aa5d096b4e5c1d659168bd5d0586ae1afc5",
+      "bytes": 38379,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "ceramic-enamel.height": {
+      "path": "textures/ceramic-enamel-height.png",
+      "sha256": "04688855a5f0fb576d3f2d41aa54c885db1c8844de3192d5c4370a8e2927d6d7",
+      "bytes": 125267,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "ceramic-enamel.wear": {
+      "path": "textures/ceramic-enamel-wear.png",
+      "sha256": "0b39e91fed9d805eb50ef2007a3e33aca1d0ab03c3a507daf5075a0f6f588370",
+      "bytes": 121199,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "shopfront-opaque.albedo": {
+      "path": "textures/shopfront-opaque-albedo.png",
+      "sha256": "d9cc90c501010e024f3d376f72a15bc16abd30d3b6aff97c52d5f09fe2e755a2",
+      "bytes": 26076,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "shopfront-opaque.normal": {
+      "path": "textures/shopfront-opaque-normal.png",
+      "sha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+      "bytes": 133720,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "shopfront-opaque.roughness": {
+      "path": "textures/shopfront-opaque-roughness.png",
+      "sha256": "3ae0f36b5aa243e5eed67ba53e126179f59e30485be414b434814e3cfffc004a",
+      "bytes": 38183,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "shopfront-opaque.height": {
+      "path": "textures/shopfront-opaque-height.png",
+      "sha256": "04688855a5f0fb576d3f2d41aa54c885db1c8844de3192d5c4370a8e2927d6d7",
+      "bytes": 125267,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "shopfront-opaque.wear": {
+      "path": "textures/shopfront-opaque-wear.png",
+      "sha256": "0b39e91fed9d805eb50ef2007a3e33aca1d0ab03c3a507daf5075a0f6f588370",
+      "bytes": 121199,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "anodized-brush.albedo": {
+      "path": "textures/anodized-brush-albedo.png",
+      "sha256": "1e3a2aab37bdc00b936e090f748a01caea2e3b30de33a972365328be6a03afdf",
+      "bytes": 57600,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "anodized-brush.normal": {
+      "path": "textures/anodized-brush-normal.png",
+      "sha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+      "bytes": 119904,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "anodized-brush.roughness": {
+      "path": "textures/anodized-brush-roughness.png",
+      "sha256": "dbcaa37ae370a5150dc588fc6189126bb52c4e1b8e2671b129ded5078252d99a",
+      "bytes": 49929,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "anodized-brush.height": {
+      "path": "textures/anodized-brush-height.png",
+      "sha256": "c08f6fa02e8623e5c603baf1eefc2f9cd246b31fb195dcce65a5e683121d1072",
+      "bytes": 177770,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "anodized-brush.wear": {
+      "path": "textures/anodized-brush-wear.png",
+      "sha256": "1bf2b6e0826f756c96019532c869c87c86e1678567527f41774b4fa78561034e",
+      "bytes": 155428,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "optical-mirror-opaque.albedo": {
+      "path": "textures/optical-mirror-opaque-albedo.png",
+      "sha256": "04e59645eb4b274341f7c33f4b5ad6d9ee6e1ed73e7f77459d3201bca35f20bb",
+      "bytes": 43403,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "optical-mirror-opaque.normal": {
+      "path": "textures/optical-mirror-opaque-normal.png",
+      "sha256": "0e9012adf948ca4002ae0ec05e9ecf71a6cf1611882b48784d93b1906490471e",
+      "bytes": 40077,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "optical-mirror-opaque.roughness": {
+      "path": "textures/optical-mirror-opaque-roughness.png",
+      "sha256": "ab2a3570a390d7f829bc2ad31416c363b03a9d379c70a3d2a296bd4dc42897bc",
+      "bytes": 49709,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "optical-mirror-opaque.height": {
+      "path": "textures/optical-mirror-opaque-height.png",
+      "sha256": "c08f6fa02e8623e5c603baf1eefc2f9cd246b31fb195dcce65a5e683121d1072",
+      "bytes": 177770,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "optical-mirror-opaque.wear": {
+      "path": "textures/optical-mirror-opaque-wear.png",
+      "sha256": "1bf2b6e0826f756c96019532c869c87c86e1678567527f41774b4fa78561034e",
+      "bytes": 155428,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "iron-grate.albedo": {
+      "path": "textures/iron-grate-albedo.png",
+      "sha256": "404748eb9dbb5783dc435beb1940ce77baab7cca13bf86c3e2f6df29de62f900",
+      "bytes": 59751,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "iron-grate.normal": {
+      "path": "textures/iron-grate-normal.png",
+      "sha256": "ec09f5e04700822fd8640563a51ca2a8aa1bc88a568ac8ed87a1f8d2afdafaf7",
+      "bytes": 425261,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "iron-grate.roughness": {
+      "path": "textures/iron-grate-roughness.png",
+      "sha256": "ab2e42adeeee331b2269800cbdbe0082b6056a81c87d9cf25f0d676e5ed6eef9",
+      "bytes": 48710,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "iron-grate.height": {
+      "path": "textures/iron-grate-height.png",
+      "sha256": "66501236138b8d5214bb5bbf2ecc872ecbe51337e70c43af82aa7a640f3dc298",
+      "bytes": 182211,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "iron-grate.wear": {
+      "path": "textures/iron-grate-wear.png",
+      "sha256": "427d2249f21df53fdd8f7c18ed3a46c435d558f52e0b49f07c9d57d2d3b2faae",
+      "bytes": 158168,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "wet-soot.albedo": {
+      "path": "textures/wet-soot-albedo.png",
+      "sha256": "73c40e38d7b632a4013a0b0d55ef7771c804eb7cab3ac47276b4be6a6b7e896e",
+      "bytes": 57658,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "wet-soot.normal": {
+      "path": "textures/wet-soot-normal.png",
+      "sha256": "721cb3b4c8f5fd59869d86a99326ef5a0f4a6deddd98bbc78c3b56ed561fa3e1",
+      "bytes": 87738,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "wet-soot.roughness": {
+      "path": "textures/wet-soot-roughness.png",
+      "sha256": "ef9248fa928c5231bbdae003d4e5a1f6d8571d0824cceafb8a81e04e6ad2b5d2",
+      "bytes": 61724,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "wet-soot.height": {
+      "path": "textures/wet-soot-height.png",
+      "sha256": "f8debb12457890a1cce42925424fca1e79d6583ec3252400bd15f6f4426fa388",
+      "bytes": 185788,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "wet-soot.wear": {
+      "path": "textures/wet-soot-wear.png",
+      "sha256": "4d8906167f9f1471992b68afd8eda54d233dc2c816d08830b1cd46c8c574436d",
+      "bytes": 193679,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "salt-limestone.albedo": {
+      "path": "textures/salt-limestone-albedo.png",
+      "sha256": "6bc2e95ea14074fed620bfcf9fb61bff4c4336747c062ce17f9d2b1108ae6042",
+      "bytes": 111688,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "salt-limestone.normal": {
+      "path": "textures/salt-limestone-normal.png",
+      "sha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+      "bytes": 485273,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "salt-limestone.roughness": {
+      "path": "textures/salt-limestone-roughness.png",
+      "sha256": "d3a83a3eab2cdd5ef13cbd28e30fadb1c76ca11278996720304800db3d59da8a",
+      "bytes": 66022,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "salt-limestone.height": {
+      "path": "textures/salt-limestone-height.png",
+      "sha256": "5fe7cf7b8bb1014ccd842b7a5506259d9f4dcabf6bbb5d922abc8c0fbb066460",
+      "bytes": 218439,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "salt-limestone.wear": {
+      "path": "textures/salt-limestone-wear.png",
+      "sha256": "af06915c8e4808f65fb6a29baee4c580fbdc4d5cee98b6d530739bc4aaafbcfc",
+      "bytes": 197473,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "basalt-strata.albedo": {
+      "path": "textures/basalt-strata-albedo.png",
+      "sha256": "3a8121ed72b1989934ad32ee733f68b2e4af83372dfb1964efa9fd25c633091e",
+      "bytes": 51604,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "basalt-strata.normal": {
+      "path": "textures/basalt-strata-normal.png",
+      "sha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+      "bytes": 326596,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "basalt-strata.roughness": {
+      "path": "textures/basalt-strata-roughness.png",
+      "sha256": "a5d214313015eef0cbbe497983753826b69aa568c3667a7298915a7c16188d07",
+      "bytes": 44380,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "basalt-strata.height": {
+      "path": "textures/basalt-strata-height.png",
+      "sha256": "1ba458a915b1ca6df10977b4b4844178a2c59dd5cb8d3ef567fb28a8d430e6f3",
+      "bytes": 141103,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "basalt-strata.wear": {
+      "path": "textures/basalt-strata-wear.png",
+      "sha256": "5b4b392a0d37864edac3ae138c7c0a1f2510ce8af7b12ceebf28c5ff1514f069",
+      "bytes": 144298,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "grotto-wet-rock.albedo": {
+      "path": "textures/grotto-wet-rock-albedo.png",
+      "sha256": "9217447e0249b9f37e5f739bbb8a36ab17525926070cdfdbfef1722e53dc5499",
+      "bytes": 40928,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "grotto-wet-rock.normal": {
+      "path": "textures/grotto-wet-rock-normal.png",
+      "sha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+      "bytes": 326596,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "grotto-wet-rock.roughness": {
+      "path": "textures/grotto-wet-rock-roughness.png",
+      "sha256": "81f6ff50750eea6604a5ded64aa9463b3e71f0e6f96f45c5990164a45fb759f7",
+      "bytes": 44260,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "grotto-wet-rock.height": {
+      "path": "textures/grotto-wet-rock-height.png",
+      "sha256": "1ba458a915b1ca6df10977b4b4844178a2c59dd5cb8d3ef567fb28a8d430e6f3",
+      "bytes": 141103,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "grotto-wet-rock.wear": {
+      "path": "textures/grotto-wet-rock-wear.png",
+      "sha256": "5b4b392a0d37864edac3ae138c7c0a1f2510ce8af7b12ceebf28c5ff1514f069",
+      "bytes": 144298,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "dune-sand.albedo": {
+      "path": "textures/dune-sand-albedo.png",
+      "sha256": "4bb50bbd53b4d700a7cb913e3726140510c2659d41148c25d5d69b791606f227",
+      "bytes": 96411,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "dune-sand.normal": {
+      "path": "textures/dune-sand-normal.png",
+      "sha256": "696fecd2413620ef5221debd9cbbab94987d82939cd1dbd17eddb5fbbd112987",
+      "bytes": 422705,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "dune-sand.roughness": {
+      "path": "textures/dune-sand-roughness.png",
+      "sha256": "afe40d68f6842a5f856c77597652c36a1e993239f1716f7fa4dffb5398422d19",
+      "bytes": 62613,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "dune-sand.height": {
+      "path": "textures/dune-sand-height.png",
+      "sha256": "2fa5fbe9f9ad7d4df88b79aba019bec8536f36dde32860c57801ee2de50e3c3d",
+      "bytes": 208296,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "dune-sand.wear": {
+      "path": "textures/dune-sand-wear.png",
+      "sha256": "0706e5111d1e6c791af17bde5a64fce7811d26cb8119d67214877cc8f2a3f4e3",
+      "bytes": 184969,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "deep-silt.albedo": {
+      "path": "textures/deep-silt-albedo.png",
+      "sha256": "bf0fe3e051c6456bfda3380dfd21c314f2b6d9c87dff7d179bc3de95c3097c6c",
+      "bytes": 42655,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "deep-silt.normal": {
+      "path": "textures/deep-silt-normal.png",
+      "sha256": "00672f5592aa659fd26cf45ebc35de011e039dd717c437319b16698e957f98ae",
+      "bytes": 149561,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "deep-silt.roughness": {
+      "path": "textures/deep-silt-roughness.png",
+      "sha256": "5faf14a0a40bac50911e1db6b46c1224d8650ccee4d918eb8410d30057be892e",
+      "bytes": 43995,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "deep-silt.height": {
+      "path": "textures/deep-silt-height.png",
+      "sha256": "82b93809062a687f54383c37f01e04e8cb4e5a58a2c6c87f709d24607685bf35",
+      "bytes": 154754,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "deep-silt.wear": {
+      "path": "textures/deep-silt-wear.png",
+      "sha256": "0588948c29af591af076a7ba2b6a9d96573324e3bd8c522d875cbbb8fc9677e9",
+      "bytes": 140079,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "pool-scum.albedo": {
+      "path": "textures/pool-scum-albedo.png",
+      "sha256": "82ea69c56ecce904019d45a2d69959e8c5b7ad393fa86bed1914b8e9fdd1af8f",
+      "bytes": 59365,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "pool-scum.normal": {
+      "path": "textures/pool-scum-normal.png",
+      "sha256": "00672f5592aa659fd26cf45ebc35de011e039dd717c437319b16698e957f98ae",
+      "bytes": 149561,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "pool-scum.roughness": {
+      "path": "textures/pool-scum-roughness.png",
+      "sha256": "f9309389c58c37ccd77480f6b30490822fea5800b8b04c3f98eb9ae75e233202",
+      "bytes": 44136,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "pool-scum.height": {
+      "path": "textures/pool-scum-height.png",
+      "sha256": "82b93809062a687f54383c37f01e04e8cb4e5a58a2c6c87f709d24607685bf35",
+      "bytes": 154754,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "pool-scum.wear": {
+      "path": "textures/pool-scum-wear.png",
+      "sha256": "0588948c29af591af076a7ba2b6a9d96573324e3bd8c522d875cbbb8fc9677e9",
+      "bytes": 140079,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "road-gravel.albedo": {
+      "path": "textures/road-gravel-albedo.png",
+      "sha256": "f77b90d9fb817255b277af4bf92e74dcf7abcfb4707c732894b9c8dde646cfd5",
+      "bytes": 148732,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "road-gravel.normal": {
+      "path": "textures/road-gravel-normal.png",
+      "sha256": "c3d82758149ccc852f5a4e2edd3b18a5f20ac6cd05efe81696f4cbefc0f93662",
+      "bytes": 654366,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "road-gravel.roughness": {
+      "path": "textures/road-gravel-roughness.png",
+      "sha256": "bd952f92790bacb6ccabf12a2ff948b7950f082994d8353cdca9c17ca48b6a60",
+      "bytes": 112361,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "road-gravel.height": {
+      "path": "textures/road-gravel-height.png",
+      "sha256": "816da3d1b16bc3f72fdc523c56c2f7b4d2007f95b3b293f37e98e114171ca20e",
+      "bytes": 307378,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "road-gravel.wear": {
+      "path": "textures/road-gravel-wear.png",
+      "sha256": "b11d4ae960187e46dfb95ba5a16df065dce02918fe6bfee4d12e18984094af68",
+      "bytes": 285273,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "moss-lichen.albedo": {
+      "path": "textures/moss-lichen-albedo.png",
+      "sha256": "a47ba407f957a55caa21956683d37d52b3353d1f7d5e56b629a7c02d8522a45b",
+      "bytes": 92999,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "moss-lichen.normal": {
+      "path": "textures/moss-lichen-normal.png",
+      "sha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+      "bytes": 419889,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "moss-lichen.roughness": {
+      "path": "textures/moss-lichen-roughness.png",
+      "sha256": "8d32c4b57631916c5ed7e93d1365d71a24b4e8c4a2e63bea3c9a110e12477ebe",
+      "bytes": 67058,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "moss-lichen.height": {
+      "path": "textures/moss-lichen-height.png",
+      "sha256": "00fc5bde7eca74842377785d3b02565bafd485aeb6f1cfbbd4cc76eede48791b",
+      "bytes": 215487,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "moss-lichen.wear": {
+      "path": "textures/moss-lichen-wear.png",
+      "sha256": "4985f4847ca8f72db756cfa4539514e69125b090cca387f3adb999ba16185529",
+      "bytes": 203005,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "bark-fibers.albedo": {
+      "path": "textures/bark-fibers-albedo.png",
+      "sha256": "be0211f29a3b4d0d5f8c401d6bf68d0e8d25052092c569fefde6524a79899fa7",
+      "bytes": 69697,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "bark-fibers.normal": {
+      "path": "textures/bark-fibers-normal.png",
+      "sha256": "eb7687cc095b294658f7d1171dca8758eb2c4af20e71d5caa04f0cc3ce08bd68",
+      "bytes": 441055,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "bark-fibers.roughness": {
+      "path": "textures/bark-fibers-roughness.png",
+      "sha256": "1527f27f53a868e9c3af107e6bf89e9f27ed784547603dc4aadc1575f3f84189",
+      "bytes": 57754,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "bark-fibers.height": {
+      "path": "textures/bark-fibers-height.png",
+      "sha256": "6012f83025a2187b02708507d773458bc5bbd0868f946f6737fc67e59f06372f",
+      "bytes": 189240,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "bark-fibers.wear": {
+      "path": "textures/bark-fibers-wear.png",
+      "sha256": "717fefd3db916e91a01ccb16dadf52d5abc973d0325f1f3f5a1e671d377afe56",
+      "bytes": 176917,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "leaf-veins.albedo": {
+      "path": "textures/leaf-veins-albedo.png",
+      "sha256": "e082d13e9dd76d82331a2101beb6d3ed3424289d56c7086cb8e911f978f0a6bd",
+      "bytes": 74853,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "leaf-veins.normal": {
+      "path": "textures/leaf-veins-normal.png",
+      "sha256": "e1f15185ed9a6b56f8fce828d244160a885469f1d578310eff2bcdab9df15cb5",
+      "bytes": 219125,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "leaf-veins.roughness": {
+      "path": "textures/leaf-veins-roughness.png",
+      "sha256": "24c570f90754df312c24ee9f35064e24c2835b0fd3feea42f589d3eaf152a081",
+      "bytes": 67171,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "leaf-veins.height": {
+      "path": "textures/leaf-veins-height.png",
+      "sha256": "31a326b7ddf0523c47de688283ccd6898f74332549e307dd3c0d4bcefe4d0ee3",
+      "bytes": 199968,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "leaf-veins.wear": {
+      "path": "textures/leaf-veins-wear.png",
+      "sha256": "fa4601abf4eb48dbd525a0998407855cde777c4a16bb032141a43cb88400bfce",
+      "bytes": 196451,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "frosted-glass.albedo": {
+      "path": "textures/frosted-glass-albedo.png",
+      "sha256": "bfb249ce1aab01033c3cec21b56141370454499667d2926bb2fce73c2cd862c9",
+      "bytes": 110126,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "frosted-glass.normal": {
+      "path": "textures/frosted-glass-normal.png",
+      "sha256": "2d73be97dcd93087d974245aee5389579f254b2c71697a098844b9721f51fb3f",
+      "bytes": 164492,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "frosted-glass.roughness": {
+      "path": "textures/frosted-glass-roughness.png",
+      "sha256": "1e0a78dc9469061ad9572a32129876b75e427dd6beeae009104a849ff9737a4f",
+      "bytes": 85699,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "frosted-glass.height": {
+      "path": "textures/frosted-glass-height.png",
+      "sha256": "4c0921801626a2ec94d446f2db32596775e26fd1507bb30378765aa66cf8ae6f",
+      "bytes": 255784,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "frosted-glass.wear": {
+      "path": "textures/frosted-glass-wear.png",
+      "sha256": "fa2225c68cc5f146ab28c681e2c908b4c354a8f65f393a4f3ff75b506aaa20a0",
+      "bytes": 236412,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "prismatic-etch.albedo": {
+      "path": "textures/prismatic-etch-albedo.png",
+      "sha256": "64fbdfc9891608b6966049d3c4dc54dd6b7593868e08f89f4f9bfa36a0085a97",
+      "bytes": 97345,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "prismatic-etch.normal": {
+      "path": "textures/prismatic-etch-normal.png",
+      "sha256": "f1e48753f0784ad31eadbb496bdb559252c2e4e034653e02ddbb020fb4249401",
+      "bytes": 203698,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "prismatic-etch.roughness": {
+      "path": "textures/prismatic-etch-roughness.png",
+      "sha256": "5ed42766756361b029bfa13a6e7e29bde853b8dd661209d955f6a5a2f8885f7c",
+      "bytes": 75382,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "prismatic-etch.height": {
+      "path": "textures/prismatic-etch-height.png",
+      "sha256": "b33624c33dbd444677bf080fe706fff54bb88d91714724a29d99191fb4aeff29",
+      "bytes": 207794,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "prismatic-etch.wear": {
+      "path": "textures/prismatic-etch-wear.png",
+      "sha256": "2c390f64d5c83c590ccf8e05355f155341a27a27592c3ca9ea83bae73f5268b2",
+      "bytes": 204389,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "viaduct-asphalt.albedo": {
+      "path": "textures/viaduct-asphalt-albedo.png",
+      "sha256": "9365b6b832ba39226bcc2980d704bc7dc9c72400847343ce18ed4bb33980f443",
+      "bytes": 107631,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "viaduct-asphalt.normal": {
+      "path": "textures/viaduct-asphalt-normal.png",
+      "sha256": "697fd7497a1d8875dbcc834561ca4c7a313e45f831df0b6c63ff117106a92f87",
+      "bytes": 362575,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "viaduct-asphalt.roughness": {
+      "path": "textures/viaduct-asphalt-roughness.png",
+      "sha256": "ae1487542085ec7966f6d39e48d648611d623d930d487b831d9ffd20ecc9fa85",
+      "bytes": 100851,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "viaduct-asphalt.height": {
+      "path": "textures/viaduct-asphalt-height.png",
+      "sha256": "481933fbd0d499cfb6524747b1fc44d4ab7c33c0b81c4f5609dad042fd151a43",
+      "bytes": 281895,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "viaduct-asphalt.wear": {
+      "path": "textures/viaduct-asphalt-wear.png",
+      "sha256": "6eff97a972c0bddaa86a97ce8a2126aa07da772c09786b92d5984fc0613a1bf7",
+      "bytes": 261000,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "ribbed-steel.albedo": {
+      "path": "textures/ribbed-steel-albedo.png",
+      "sha256": "c313383b404a6ed622b3ff411f37f5225364f2158621f620e9ef76c15c209132",
+      "bytes": 54325,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "ribbed-steel.normal": {
+      "path": "textures/ribbed-steel-normal.png",
+      "sha256": "8662617c557392b63c6b061f957facfd116e5b87534884060fbde87f388388e5",
+      "bytes": 201913,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "ribbed-steel.roughness": {
+      "path": "textures/ribbed-steel-roughness.png",
+      "sha256": "5b5c681b84e6cd3b4fc58e5bdb2c46f308811e6b229c026b54f73c89f601e745",
+      "bytes": 56818,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "ribbed-steel.height": {
+      "path": "textures/ribbed-steel-height.png",
+      "sha256": "4e94d1541a801955f2103f9541b948b504daecba5b35a95837810d970cbbd141",
+      "bytes": 168076,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "ribbed-steel.wear": {
+      "path": "textures/ribbed-steel-wear.png",
+      "sha256": "0d0f309f7c024cfd3ed4bac4f67c707d1c082415452285b8601fb2ad8b5528b3",
+      "bytes": 184760,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "forge-steel.albedo": {
+      "path": "textures/forge-steel-albedo.png",
+      "sha256": "0c1dec9f25b8df13628d3a2989e35f3ac42a6cff6137e2522f0655750d12c822",
+      "bytes": 51136,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "forge-steel.normal": {
+      "path": "textures/forge-steel-normal.png",
+      "sha256": "8662617c557392b63c6b061f957facfd116e5b87534884060fbde87f388388e5",
+      "bytes": 201913,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "forge-steel.roughness": {
+      "path": "textures/forge-steel-roughness.png",
+      "sha256": "95b14753e863ac71367c158cec2c3978b6b44a54fa35c25e0938f978321c774b",
+      "bytes": 57235,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "forge-steel.height": {
+      "path": "textures/forge-steel-height.png",
+      "sha256": "4e94d1541a801955f2103f9541b948b504daecba5b35a95837810d970cbbd141",
+      "bytes": 168076,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "forge-steel.wear": {
+      "path": "textures/forge-steel-wear.png",
+      "sha256": "0d0f309f7c024cfd3ed4bac4f67c707d1c082415452285b8601fb2ad8b5528b3",
+      "bytes": 184760,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "trim-wear.albedo": {
+      "path": "textures/trim-wear-albedo.png",
+      "sha256": "3fb928bcb4dda60fb10b5a874e4b8e1ff1fa5cfcb8dd79de0321827abcb64b5c",
+      "bytes": 53392,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "trim-wear.normal": {
+      "path": "textures/trim-wear-normal.png",
+      "sha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+      "bytes": 131879,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "trim-wear.roughness": {
+      "path": "textures/trim-wear-roughness.png",
+      "sha256": "e1ad3d9376571e1bf01573c4d9aa5dad04bcbff53832675c412e064218a22233",
+      "bytes": 26738,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "trim-wear.height": {
+      "path": "textures/trim-wear-height.png",
+      "sha256": "e083c7f21b842df01993648c5a432c95713677270324c27d8ad9c35cc0d0ee60",
+      "bytes": 126585,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "trim-wear.wear": {
+      "path": "textures/trim-wear-wear.png",
+      "sha256": "6732d48ba5ac2053f79d9aed270c156f7e8e2875a561e7d7c1f463f224f8022e",
+      "bytes": 92133,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "masonry-coping.albedo": {
+      "path": "textures/masonry-coping-albedo.png",
+      "sha256": "6c3243cea75aedf2e9b898bce33d1c89564cc51971ba574fea2b484ed512406c",
+      "bytes": 62902,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "masonry-coping.normal": {
+      "path": "textures/masonry-coping-normal.png",
+      "sha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+      "bytes": 131879,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "masonry-coping.roughness": {
+      "path": "textures/masonry-coping-roughness.png",
+      "sha256": "db409b5b75e132192fc142673dfc781eb2f0ed5e68e19bfccc16539601b86368",
+      "bytes": 26876,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "masonry-coping.height": {
+      "path": "textures/masonry-coping-height.png",
+      "sha256": "e083c7f21b842df01993648c5a432c95713677270324c27d8ad9c35cc0d0ee60",
+      "bytes": 126585,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "masonry-coping.wear": {
+      "path": "textures/masonry-coping-wear.png",
+      "sha256": "6732d48ba5ac2053f79d9aed270c156f7e8e2875a561e7d7c1f463f224f8022e",
+      "bytes": 92133,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "decal-stencil.albedo": {
+      "path": "textures/decal-stencil-albedo.png",
+      "sha256": "9dfbcb63dc80b13ff24e5b025f0a50a923b279ff48886586b9c8048ad706d330",
+      "bytes": 51651,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "decal-stencil.normal": {
+      "path": "textures/decal-stencil-normal.png",
+      "sha256": "82979f0e2bfc27c6889cc2d8bda6177a372b313b76c7734e7f1fca23a7ef620b",
+      "bytes": 32120,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "decal-stencil.roughness": {
+      "path": "textures/decal-stencil-roughness.png",
+      "sha256": "fdc1e5ef968bbda1d37edb0872e29609f724fe63818eea0a415d3727873ab6cf",
+      "bytes": 24177,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "decal-stencil.height": {
+      "path": "textures/decal-stencil-height.png",
+      "sha256": "4831936c5062494b15f3ce5d3ba72ef88c712a5474a4dfeb6a9846e863064a87",
+      "bytes": 101921,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "decal-stencil.wear": {
+      "path": "textures/decal-stencil-wear.png",
+      "sha256": "23e8bfdbe8f4425f42815ba33b0b87d6e895a081270268d02d400a1b1c8c1c6b",
+      "bytes": 85367,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "slate-shingle.albedo": {
+      "path": "textures/slate-shingle-albedo.png",
+      "sha256": "4ab99b80aad48b6e5be03b7382ebd8c393cf7c2970cce20cab0d2099f812e82f",
+      "bytes": 56791,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "slate-shingle.normal": {
+      "path": "textures/slate-shingle-normal.png",
+      "sha256": "b9ed311dfd009e04771060ed8a06a053a53c83da7aaac3cd44a6f50dc3d598f4",
+      "bytes": 182277,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "slate-shingle.roughness": {
+      "path": "textures/slate-shingle-roughness.png",
+      "sha256": "90c1aeac8dfd3722036f8495ffd3969d4be24c7e6de82f5872c43f62b861b3fc",
+      "bytes": 40609,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "slate-shingle.height": {
+      "path": "textures/slate-shingle-height.png",
+      "sha256": "42256c07dc3adcc83da5550b9231c7760185ed5f07f6f3389aca99ba3aa61737",
+      "bytes": 140300,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "slate-shingle.wear": {
+      "path": "textures/slate-shingle-wear.png",
+      "sha256": "968cb993fa063c6a491a655bd9cd516148c127c035a7a14e845a8af214fa1c42",
+      "bytes": 129864,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "cobble-sett.albedo": {
+      "path": "textures/cobble-sett-albedo.png",
+      "sha256": "ba5c9cc8eab74d872da571027bb087088244fa62c06434315f931191ab5811fe",
+      "bytes": 73731,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "cobble-sett.normal": {
+      "path": "textures/cobble-sett-normal.png",
+      "sha256": "0f81ac3722ca5aca9d0ee23c8e482590276e86b06b43950b8bb07d1340095491",
+      "bytes": 296899,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "cobble-sett.roughness": {
+      "path": "textures/cobble-sett-roughness.png",
+      "sha256": "d95ad9082b4e982332a2f08d863185bb05e4a58b0fa6f41d41d36982885fdd3e",
+      "bytes": 50619,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "cobble-sett.height": {
+      "path": "textures/cobble-sett-height.png",
+      "sha256": "a52d54604848ee294c5017ff1e2afdbe6a3de7a07a40e1433102a6075e305ace",
+      "bytes": 156874,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "cobble-sett.wear": {
+      "path": "textures/cobble-sett-wear.png",
+      "sha256": "42ae12b1a2f2d516069d6cba65f80c9f03e852d3a8170462d0c007bca06e20a7",
+      "bytes": 169175,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "fern-frond.albedo": {
+      "path": "textures/fern-frond-albedo.png",
+      "sha256": "119ae5f9763577a24b34ab9a1244926a080973161c339f153a55c713607971af",
+      "bytes": 47311,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "fern-frond.normal": {
+      "path": "textures/fern-frond-normal.png",
+      "sha256": "d60070f0af03f33c351a6049a871fe839a6fcacc39889e9ca5b1752be2f42771",
+      "bytes": 85180,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "fern-frond.roughness": {
+      "path": "textures/fern-frond-roughness.png",
+      "sha256": "8782a50aad763eb9be831334d97507fed2b70fc93f99c1bdf9f850d16f675817",
+      "bytes": 35464,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "fern-frond.height": {
+      "path": "textures/fern-frond-height.png",
+      "sha256": "da36870850b2d7bbcf5eff8cc12c42588a2d15994116b9426a09384e7dabc16f",
+      "bytes": 125149,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "fern-frond.wear": {
+      "path": "textures/fern-frond-wear.png",
+      "sha256": "af30653f07b25f99bed15e06c0039e44ebfa80d271b1380215a4c97fd60770ad",
+      "bytes": 106812,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "fern-frond.alpha": {
+      "path": "textures/fern-frond-alpha.png",
+      "sha256": "0f61e4f6a64192a1bb638261d1bc1f888dc14d3aca862efabc81a971172a17bb",
+      "bytes": 26286,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "coverage mask in RGB; use red channel for alpha clip"
+    },
+    "sea-flow.albedo": {
+      "path": "textures/sea-flow-albedo.png",
+      "sha256": "bdfff1fc22d9bb826fcb446f1a3e590378c07bc2e516ea76891e425931cdd62d",
+      "bytes": 47212,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "sea-flow.normal": {
+      "path": "textures/sea-flow-normal.png",
+      "sha256": "538eb118742f2855b415e8d65b05b418a43fc8c2c865bf710105c8d7d6930b34",
+      "bytes": 87158,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "sea-flow.roughness": {
+      "path": "textures/sea-flow-roughness.png",
+      "sha256": "9189de1ddbd9f351027ff022ce6cbd5b8d71ad81fd485794d9778c83351bf889",
+      "bytes": 44959,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "sea-flow.height": {
+      "path": "textures/sea-flow-height.png",
+      "sha256": "12b21871f8b113aba2c2cd5b5ec651245835f83c32b2a8c1cacb2516d7ecb050",
+      "bytes": 157772,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "sea-flow.wear": {
+      "path": "textures/sea-flow-wear.png",
+      "sha256": "55eccf6b63ebe66d615f8d8ee64e14911da19993189829ebbe2452169482b0f3",
+      "bytes": 142200,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "timber-weather.albedo": {
+      "path": "textures/timber-weather-albedo.png",
+      "sha256": "032a68abe43f766ae98ab81b1a3a2acbe807d0a0313f55fdb82531cb12312310",
+      "bytes": 91531,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "timber-weather.normal": {
+      "path": "textures/timber-weather-normal.png",
+      "sha256": "7a8f4b78d0c25eddb4def652c706110b27dceef69d8ff3c48f343abf41bd1a5b",
+      "bytes": 183882,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "timber-weather.roughness": {
+      "path": "textures/timber-weather-roughness.png",
+      "sha256": "2d6e17973056f23f1f08ae580345558330cdd44b2de2727d4b8482cc171ecec5",
+      "bytes": 59977,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "timber-weather.height": {
+      "path": "textures/timber-weather-height.png",
+      "sha256": "09499536a7af41e1099e8610999b988e251cb89d67a1540c809314e955db392a",
+      "bytes": 221799,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "timber-weather.wear": {
+      "path": "textures/timber-weather-wear.png",
+      "sha256": "c1987c6569cafbbc8d8cb9ea263554cdb91c54768d0bf61fa117916e147acaad",
+      "bytes": 197484,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "quay-waterline.albedo": {
+      "path": "textures/quay-waterline-albedo.png",
+      "sha256": "612998501c72d9f2e6bd89fd081ce22de1e90cab21ed1cf629a77923cf8c3f5f",
+      "bytes": 57100,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "quay-waterline.normal": {
+      "path": "textures/quay-waterline-normal.png",
+      "sha256": "cdf86004af36324860d76a308e6594cb2ebc321606d19df96896b5513bc3d03a",
+      "bytes": 47158,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "quay-waterline.roughness": {
+      "path": "textures/quay-waterline-roughness.png",
+      "sha256": "9fc5130869fd89b035d3d62022d7839c13fa3ef5495ee19d25c044f3a0b95ca0",
+      "bytes": 24599,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "quay-waterline.height": {
+      "path": "textures/quay-waterline-height.png",
+      "sha256": "646137ca3241d590791ba977b715d21804d0137e88532f3986860c7996d31b71",
+      "bytes": 105706,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "quay-waterline.wear": {
+      "path": "textures/quay-waterline-wear.png",
+      "sha256": "20f1fe5a59041c0eb0bcf4cb7773e7227b8db00dd3759ff97439755c003ff14c",
+      "bytes": 88117,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    }
+  },
+  "sources": [
+    {
+      "id": "aggregate",
+      "height": {
+        "path": "sources/aggregate-height.png",
+        "sha256": "17e479b40763227594b41511aa2fc683d9609f5c930591482f5ae11a80423a28",
+        "bytes": 12755,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/aggregate-mask.png",
+        "sha256": "bf5a819c091eb6af22fc2f9c41746e9485e01ad922fd56e71ae9128a60663149",
+        "bytes": 11640,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "cast-seams",
+      "height": {
+        "path": "sources/cast-seams-height.png",
+        "sha256": "d0d68b598e7f5cb8f6694beb5380866c05d6eb695c47076852dbb3ff407da8b5",
+        "bytes": 12848,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/cast-seams-mask.png",
+        "sha256": "44dc085b115c491272ffa16b1eee7e10ea29d0f14a97e4773b4ef7833149ffd6",
+        "bytes": 10315,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "terracotta",
+      "height": {
+        "path": "sources/terracotta-height.png",
+        "sha256": "fd96dcc00ea147faa831b4873cd5278d99c0f0329f6f051348ecdf0d56ffd7d7",
+        "bytes": 10579,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/terracotta-mask.png",
+        "sha256": "7baf7bf609dd235cd5bac0ec73778d786525d29a8a2822bd0f15f60b09c42711",
+        "bytes": 13302,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "lime-plaster",
+      "height": {
+        "path": "sources/lime-plaster-height.png",
+        "sha256": "a7437af37f72f22161a7ba7408d90d9fcdbe519938b766d2fa1a3f25cc934e75",
+        "bytes": 17108,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/lime-plaster-mask.png",
+        "sha256": "93595b6f240b8db1791cb4c8aa155f2bfbbd4d6bb2849ce20412de0686ff7389",
+        "bytes": 15585,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "oxidized-iron",
+      "height": {
+        "path": "sources/oxidized-iron-height.png",
+        "sha256": "7ba20ca78d193926b88147ce48ad6d1e29ac5f9cb7db5e1195235b0f23fb1f97",
+        "bytes": 18656,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/oxidized-iron-mask.png",
+        "sha256": "f9061ed3edf0c9c75e76db21adab4faa7a354c9b82efe2886c8b0a591dbcb2ba",
+        "bytes": 13548,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "copper-patina",
+      "height": {
+        "path": "sources/copper-patina-height.png",
+        "sha256": "0926a84399fdc8ece33fbd0fa0d7a493b4a96d09741154a040161f505ba03d4b",
+        "bytes": 18402,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/copper-patina-mask.png",
+        "sha256": "0e4c3a0163cbe5cf554dceb0e06078c6f7204060992d080a437e865c5e89d225",
+        "bytes": 14611,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "ceramic-enamel",
+      "height": {
+        "path": "sources/ceramic-enamel-height.png",
+        "sha256": "8a4d03bdb955a2687ce1577a3fd96cc7257914db783a5048c4564fb0dabcc311",
+        "bytes": 11696,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/ceramic-enamel-mask.png",
+        "sha256": "e8cd8a85123305c1fd365290e464842f82932e6e5cb22db0393b07d160eb59aa",
+        "bytes": 15520,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "anodized-brush",
+      "height": {
+        "path": "sources/anodized-brush-height.png",
+        "sha256": "97ce70625ad85403b624f71907868937080dff5a8b7e8c7b3de352505efaa801",
+        "bytes": 15846,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/anodized-brush-mask.png",
+        "sha256": "800caa36d9ce5258ce927d0bf54fb1390de9cd549cb35f7b0ef3e3d5a5b93bee",
+        "bytes": 11578,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "iron-grate",
+      "height": {
+        "path": "sources/iron-grate-height.png",
+        "sha256": "4425a1511e26e4a81aab566a181aa52a70a03dde49d6a5bd1e28af896f627456",
+        "bytes": 15206,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/iron-grate-mask.png",
+        "sha256": "7e3629b045605003cbcc87ae1f8c30d9627a047c425fceba6cec2d81e19b19c8",
+        "bytes": 510,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "wet-soot",
+      "height": {
+        "path": "sources/wet-soot-height.png",
+        "sha256": "78f9ccc823bb1dfa8c248c2d45265e9040aa5cf77b33e9877acb029448d2a103",
+        "bytes": 17171,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/wet-soot-mask.png",
+        "sha256": "88f89d4abd4c7195592b8f4b6b6e439e11ddb356da72f5b7be4cbd5f69ae2d9e",
+        "bytes": 19350,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "salt-limestone",
+      "height": {
+        "path": "sources/salt-limestone-height.png",
+        "sha256": "a2ed5ee6f605edca2f6517bbe2c5fbcdda159883cc431b4870b18fc0b6695932",
+        "bytes": 18254,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/salt-limestone-mask.png",
+        "sha256": "fa3359069bace7f26d05031d1d1b1e3d91fe258fb1e4ed14153e3a3432b989cf",
+        "bytes": 15606,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "basalt-strata",
+      "height": {
+        "path": "sources/basalt-strata-height.png",
+        "sha256": "bcb5993d3e35a70c5b265b4559a29a3bf8168a9ffd7c2b5c5d6f8ddadf586b50",
+        "bytes": 15172,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/basalt-strata-mask.png",
+        "sha256": "ca8b5e9380cccd84f4cfe7c01e7d922d567cd40c76a3cf27e0c9db378220a909",
+        "bytes": 14709,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "dune-sand",
+      "height": {
+        "path": "sources/dune-sand-height.png",
+        "sha256": "0a1f1f7b1d58269b0d823709a576baa6c5648ebbfe511c5522fd236204a2f039",
+        "bytes": 19430,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/dune-sand-mask.png",
+        "sha256": "1548ac36641efe514662d55ec580d6ce270d82681f5bf384a61693af87bc4264",
+        "bytes": 14613,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "deep-silt",
+      "height": {
+        "path": "sources/deep-silt-height.png",
+        "sha256": "c2e736eb2a061280c7d97c6cd2121dd9aaf0579030370de056944ea85cd69559",
+        "bytes": 14040,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/deep-silt-mask.png",
+        "sha256": "de9c78cad72c8cd1dbcec876cf17fe2222501e3736620c49e8ee2098c2518a21",
+        "bytes": 14891,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "road-gravel",
+      "height": {
+        "path": "sources/road-gravel-height.png",
+        "sha256": "3cb394ba1f980ec2694eab3ef5346b5a506595fb840d99d1b0935a5b0f72334b",
+        "bytes": 22855,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/road-gravel-mask.png",
+        "sha256": "e6f0c18a1af669c63afbed2c178543fc25c030e56f534fabb765e96fec5885ea",
+        "bytes": 17470,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "moss-lichen",
+      "height": {
+        "path": "sources/moss-lichen-height.png",
+        "sha256": "6875c3175139f4ecbe6a86be6663759ab9062b0558d3f8064c2cb470575fe954",
+        "bytes": 20704,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/moss-lichen-mask.png",
+        "sha256": "69dad165857beca7faf6d2ce10a6db51f8f0ee1288541776579287768fc04494",
+        "bytes": 15120,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "bark-fibers",
+      "height": {
+        "path": "sources/bark-fibers-height.png",
+        "sha256": "06fffdb673f10c0e7b082da591fc0e684a302f06c083df519b43ae6e5e53ef38",
+        "bytes": 18520,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/bark-fibers-mask.png",
+        "sha256": "e1613f3292d70af516db62d949b4b40c35cd3ceffac48183ebe6b384fd93183a",
+        "bytes": 15092,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "leaf-veins",
+      "height": {
+        "path": "sources/leaf-veins-height.png",
+        "sha256": "a1040a7444c120a1686260a23c3f574053fb9ef932b5e4f821c63ce154b391e6",
+        "bytes": 12554,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/leaf-veins-mask.png",
+        "sha256": "4bea7c035943bb8932b62d5eb6fb53715992fb824cb373560ebca5c77ed35d50",
+        "bytes": 13996,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "frosted-glass",
+      "height": {
+        "path": "sources/frosted-glass-height.png",
+        "sha256": "2be1bb187861e922efe1cd64976d4d545270947ae48f1a92c5c4eaba76f5ac02",
+        "bytes": 20348,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/frosted-glass-mask.png",
+        "sha256": "2fa448e25713c632447f53b32dd3551b0da1472157fc12489fb215ac59173687",
+        "bytes": 18253,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "prismatic-etch",
+      "height": {
+        "path": "sources/prismatic-etch-height.png",
+        "sha256": "febf6c303aea4aa1c8f440285a24b4084ab31381df81ea5e0a0edb166d2e69f0",
+        "bytes": 14171,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/prismatic-etch-mask.png",
+        "sha256": "c02383c3eb8d6a198e16f3c25a6b9782538ed4c9410f30b0811c4d6dbfa8a293",
+        "bytes": 14446,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "viaduct-asphalt",
+      "height": {
+        "path": "sources/viaduct-asphalt-height.png",
+        "sha256": "05a1e717cf551482d9246681ece5d40f6be2035d446f9ee61916229edd904e1c",
+        "bytes": 21467,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/viaduct-asphalt-mask.png",
+        "sha256": "87548df8082bb36f89398d43422e416827272291c10b8181248c36521fc6f364",
+        "bytes": 17086,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "ribbed-steel",
+      "height": {
+        "path": "sources/ribbed-steel-height.png",
+        "sha256": "2a02ee905d597cc17093d22b5b9f1a1d043157dd75c5553b87051b13b99ec439",
+        "bytes": 16815,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/ribbed-steel-mask.png",
+        "sha256": "49c25e0ff6bcefaf86cb0697f8e081a5db42f07541f09745d97c931bdae97eaf",
+        "bytes": 15686,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "trim-wear",
+      "height": {
+        "path": "sources/trim-wear-height.png",
+        "sha256": "c6de1ba4717f9156cb0cfed515af9283d61aaf4115f9534ef9b6cf0d7560dd9a",
+        "bytes": 14557,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/trim-wear-mask.png",
+        "sha256": "48304df90ea36c87374ffcc13a623b55537eb4fc10dbad9a0d51ab985e4c7e64",
+        "bytes": 4080,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "decal-stencil",
+      "height": {
+        "path": "sources/decal-stencil-height.png",
+        "sha256": "836e8da87dd9251d4193a29933f69b1b18f15b7511bf8455f727f00f95b9922b",
+        "bytes": 10295,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/decal-stencil-mask.png",
+        "sha256": "506d4dcc127d4ac8fe6a137e3b7e1df1e24b69fc5d122068694b53d8a9d3e12c",
+        "bytes": 5154,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "slate-shingle",
+      "height": {
+        "path": "sources/slate-shingle-height.png",
+        "sha256": "08029b1779ddc8ec3d76ee0988a0efdf749751d3a7817b2b2c536c4f9891e114",
+        "bytes": 14458,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/slate-shingle-mask.png",
+        "sha256": "3323a33fe3085f8380ef7e3f2eac26c16e8977721dd99fab1061759f0e152907",
+        "bytes": 13899,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "cobble-sett",
+      "height": {
+        "path": "sources/cobble-sett-height.png",
+        "sha256": "209eca8f5b80fe96c10c94edabf2eb8a7b763f4188e286573d0194bccd068595",
+        "bytes": 14987,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/cobble-sett-mask.png",
+        "sha256": "445e911481802f0dfd9acf84e18cddaf7b4cf3dd7bef880feaf6ff5603d6fa05",
+        "bytes": 16602,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "fern-frond",
+      "height": {
+        "path": "sources/fern-frond-height.png",
+        "sha256": "6ff9cfcb00d570838651fc2fde7162aaa237757cb97209be20cfd5a03dc59185",
+        "bytes": 11931,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/fern-frond-mask.png",
+        "sha256": "d9ba4212780651a9977811d2d9a5e6ec337ca6e84280b8b777b6cd514e818377",
+        "bytes": 1707,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "sea-flow",
+      "height": {
+        "path": "sources/sea-flow-height.png",
+        "sha256": "005e7c50f9f76b9f08b60b182b21b416f985f5b42f3a3c794b99070f145c5f70",
+        "bytes": 15782,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/sea-flow-mask.png",
+        "sha256": "fe4d8e57fe7d81f2cbe720d09b2521c1ee9cbed7a83a5d5a025138fc0a150575",
+        "bytes": 13907,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "timber-weather",
+      "height": {
+        "path": "sources/timber-weather-height.png",
+        "sha256": "71ccab189503b58c921dd4365465e9979656ec9c1167cbd877a5438d12d00103",
+        "bytes": 20017,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/timber-weather-mask.png",
+        "sha256": "c1ea4890aefbbd989b1225e0d0867304fda0292f72f35723f0dad54c3ed452d6",
+        "bytes": 14693,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    },
+    {
+      "id": "quay-waterline",
+      "height": {
+        "path": "sources/quay-waterline-height.png",
+        "sha256": "0978e184cbb514b7a848e82a48918b357f52466e219bc07fa4d9609055e3e410",
+        "bytes": 13037,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      },
+      "mask": {
+        "path": "sources/quay-waterline-mask.png",
+        "sha256": "d885bd919396db52112958b9d7f35c3268910da46a40393fd915fed8e0febae3",
+        "bytes": 4893,
+        "width": 128,
+        "height": 128,
+        "format": "rgba8",
+        "colorSpace": "linear"
+      }
+    }
+  ],
+  "providerChanges": [
+    {
+      "id": "aggregate",
+      "normalizedMeanAbsoluteChange": 0.00079557844329241
+    },
+    {
+      "id": "cast-seams",
+      "normalizedMeanAbsoluteChange": 0.0033236918233426533
+    },
+    {
+      "id": "terracotta",
+      "normalizedMeanAbsoluteChange": 0.010563354992909887
+    },
+    {
+      "id": "lime-plaster",
+      "normalizedMeanAbsoluteChange": 0.006080523897700179
+    },
+    {
+      "id": "oxidized-iron",
+      "normalizedMeanAbsoluteChange": 0.0015295951509256675
+    },
+    {
+      "id": "copper-patina",
+      "normalizedMeanAbsoluteChange": 0.006110677552702469
+    },
+    {
+      "id": "ceramic-enamel",
+      "normalizedMeanAbsoluteChange": 0.008088745706977865
+    },
+    {
+      "id": "anodized-brush",
+      "normalizedMeanAbsoluteChange": 0.006306684078834102
+    },
+    {
+      "id": "iron-grate",
+      "normalizedMeanAbsoluteChange": 0.003718921791434497
+    },
+    {
+      "id": "wet-soot",
+      "normalizedMeanAbsoluteChange": 0.0025266329493549107
+    },
+    {
+      "id": "salt-limestone",
+      "normalizedMeanAbsoluteChange": 0.00594697120282801
+    },
+    {
+      "id": "basalt-strata",
+      "normalizedMeanAbsoluteChange": 0.003849007259480792
+    },
+    {
+      "id": "dune-sand",
+      "normalizedMeanAbsoluteChange": 0.0023164152890526157
+    },
+    {
+      "id": "deep-silt",
+      "normalizedMeanAbsoluteChange": 0.0022717962422377684
+    },
+    {
+      "id": "road-gravel",
+      "normalizedMeanAbsoluteChange": 0.013821244520774052
+    },
+    {
+      "id": "moss-lichen",
+      "normalizedMeanAbsoluteChange": 0.0064046962087656875
+    },
+    {
+      "id": "bark-fibers",
+      "normalizedMeanAbsoluteChange": 0.001549965382667914
+    },
+    {
+      "id": "leaf-veins",
+      "normalizedMeanAbsoluteChange": 0.010248381220740458
+    },
+    {
+      "id": "frosted-glass",
+      "normalizedMeanAbsoluteChange": 0.0063840466419368015
+    },
+    {
+      "id": "prismatic-etch",
+      "normalizedMeanAbsoluteChange": 0.017381999583798352
+    },
+    {
+      "id": "viaduct-asphalt",
+      "normalizedMeanAbsoluteChange": 0.004068081749619904
+    },
+    {
+      "id": "ribbed-steel",
+      "normalizedMeanAbsoluteChange": 0.0056528415145760125
+    },
+    {
+      "id": "trim-wear",
+      "normalizedMeanAbsoluteChange": 0.004835535215303683
+    },
+    {
+      "id": "decal-stencil",
+      "normalizedMeanAbsoluteChange": 0.0037643248699795713
+    },
+    {
+      "id": "slate-shingle",
+      "normalizedMeanAbsoluteChange": 0.0039027290780576417
+    },
+    {
+      "id": "cobble-sett",
+      "normalizedMeanAbsoluteChange": 0.007515358358362543
+    },
+    {
+      "id": "fern-frond",
+      "normalizedMeanAbsoluteChange": 0.00412657686817253
+    },
+    {
+      "id": "sea-flow",
+      "normalizedMeanAbsoluteChange": 0.005812975556241385
+    },
+    {
+      "id": "timber-weather",
+      "normalizedMeanAbsoluteChange": 0.0038963709670345264
+    },
+    {
+      "id": "quay-waterline",
+      "normalizedMeanAbsoluteChange": 0.0020717135820687276
+    }
+  ],
+  "roleBindings": {
+    "linear-oxide": "oxidized-iron.wear",
+    "damp-watermark": "quay-waterline.wear",
+    "paint-chip": "trim-wear.wear",
+    "calibration-paint": "decal-stencil.wear",
+    "glass-grime": "frosted-glass.roughness",
+    "calcite-barnacle": "salt-limestone.wear",
+    "cosmetic-seawater-normal": "sea-flow.normal",
+    "cosmetic-seawater-flow": "sea-flow.wear",
+    "fern-alpha": "fern-frond.alpha",
+    "ore-aggregate": "road-gravel.height",
+    "soil-bed": "deep-silt.albedo",
+    "root-fibers": "bark-fibers.normal"
+  },
+  "channelRules": {
+    "albedo": "linear RGB, not sRGB encoded; Blender Non-Color, connect to base color",
+    "normal": "linear RGB OpenGL +Y; Blender Non-Color -> Normal Map tangent",
+    "roughness": "linear scalar in RGB, opaque alpha",
+    "height": "linear 8-bit detail only; never collision authority",
+    "wear": "linear synthesized mask; thresholds are consumer art controls",
+    "alpha": "separate linear scalar in RGB; use red for alpha clip; base albedo alpha remains opaque"
+  },
+  "publication": "isolated candidate; merge after review; existing full registry not rewritten",
+  "pathBases": {
+    "textures": ".",
+    "sources": ".",
+    "provenance": ".."
+  },
+  "consumerSources": {
+    "recipes.mjs": "daef8300680150f1bb3c0f4b3c663c8579455e05dd0dfd8255d3ff62a7ad6d67",
+    "bake.mjs": "ff560916b860262db979a6a3dadc5420bc2404092b086fd5a3fed2e6ae824129",
+    "tool.mjs": "0d7d38e618f256948d9b779bc8037860b8c99878ff8317fc66b257e61ab73d05"
+  },
+  "refinement": {
+    "supersedes": "../candidate/manifest.json",
+    "reason": "15 xy-gate responses had grid artifacts; replaced by separately archived x-only jobs"
+  }
+}

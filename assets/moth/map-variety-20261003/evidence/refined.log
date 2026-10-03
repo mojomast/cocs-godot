@@ -1,0 +1,92 @@
+
+> cast-seams-x-refined (blur-core-v1) — submit
+  submitted aa239b82-f2d7-4a0d-a50d-6984134e987f
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.cast-seams
+
+> lime-plaster-x-refined (blur-core-v1) — submit
+  submitted 6e0cbdce-4f12-48c3-8582-738b7cc1c8bd
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.lime-plaster
+
+> copper-patina-x-refined (blur-core-v1) — submit
+  submitted 77d16376-94cd-4779-bbd3-8dbd96823c18
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.copper-patina
+
+> anodized-brush-x-refined (blur-core-v1) — submit
+  submitted 36dfc0ec-9ac0-40f1-9a34-746f0f671b71
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.anodized-brush
+
+> wet-soot-x-refined (blur-core-v1) — submit
+  submitted b35d411c-5fca-4bdc-847b-efe6be2252cc
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.wet-soot
+
+> basalt-strata-x-refined (blur-core-v1) — submit
+  submitted f5e2c53e-2b64-4235-96ea-89815df02ca0
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.basalt-strata
+
+> deep-silt-x-refined (blur-core-v1) — submit
+  submitted 76775a92-f80c-4da1-a32b-56dc33ab9e93
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.deep-silt
+
+> moss-lichen-x-refined (blur-core-v1) — submit
+  submitted 7ff8cdc4-b802-4006-bdc9-7551bdac1e85
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.moss-lichen
+
+> leaf-veins-x-refined (blur-core-v1) — submit
+  submitted 306a53a2-2c18-444a-bf4a-458682d45cb9
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.leaf-veins
+
+> prismatic-etch-x-refined (blur-core-v1) — submit
+  submitted c1582bcf-edfd-40a4-9e2d-45cff9534aa7
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.prismatic-etch
+
+> ribbed-steel-x-refined (blur-core-v1) — submit
+  submitted 67f6b325-ad6f-43e6-9c59-61e48d3c54ad
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.ribbed-steel
+
+> decal-stencil-x-refined (blur-core-v1) — submit
+  submitted 38374f90-91de-4c07-8e28-127a92b51431
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.decal-stencil
+
+> cobble-sett-x-refined (blur-core-v1) — submit
+  submitted 4c0663fa-0209-4c68-b480-f87d3d7e165d
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.cobble-sett
+
+> sea-flow-x-refined (blur-core-v1) — submit
+  submitted dc6dd001-2ae7-411b-aa4f-e6eaad708cad
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.sea-flow
+
+> quay-waterline-x-refined (blur-core-v1) — submit
+  submitted 8a66b95a-04ef-4017-b9e8-fd0f505c13c5
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.quay-waterline
+recorded job ids in /tmp/opencode/cocs-moth-resources/assets/moth/map-variety-20261003/refined.json
+baked 15 record(s) from 15 job(s) into /tmp/opencode/cocs-moth-resources/assets/moth/map-variety-20261003/provider · {"grids":15} · failed: 0

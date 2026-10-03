@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "quay-waterline-qpixl",
+  "engine": "qpixl-v1",
+  "jobId": "10d07077-63c4-4b66-8623-c4d7de13ee74",
+  "recipeFingerprint": "c18ae0dd73f049b4f7b95422f683e7c984f5fbcd36aadee9f211980334e7aa46",
+  "generationFingerprint": "a42a4b435ef82f16d519b1715be84ad4762f87cd674f56a8203ed9bdf16ddb74",
+  "verification": "new-request",
+  "rawFingerprint": "0b7fdb1546f0f908bd778db6e9d7915c5db78f5f478d434fa8fc69bf85b119d1",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 41284,
+    "sha256": "060489bbe8d478f507c0a09a51dce2f5f3c443413f342fbb9af534fbd96f4f3d",
+    "jsonHash": "7a25d8060ac4c71abc35dc81006e4d19bb98af2079a4135d18a3f504c198d462"
+  }
+}

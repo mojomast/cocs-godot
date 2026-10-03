@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "moss-lichen-tessa-palette",
+  "engine": "tessa-image-v1",
+  "jobId": "75a41b6a-9586-4743-bedf-9bcbbf5806ed",
+  "recipeFingerprint": "70e640ec00e7ffc25f17559efafcde294d27fcdd1496c3c715f3dae041b7e22e",
+  "generationFingerprint": "415d4077223eefea343028c7d813a0e91a89af5511d28a7886c31203d37030db",
+  "verification": "new-request",
+  "rawFingerprint": "b9a81a62d7cd3cbaeedbcf5270861a60967395319d4fb739517cdcf3cc78de85",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "3d55185e-85fa-46ee-8622-dd1725d48743",
+      "bytes": 5851,
+      "sha256": "2f6364b77389344aa78e84008ce740c16c2f019997e79cd582c44713885f8a0b"
+    }
+  ],
+  "result": null
+}

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "copper-patina-tessa-palette",
+  "engine": "tessa-image-v1",
+  "jobId": "4f0a42b7-52da-4819-a224-70fafd75c70b",
+  "recipeFingerprint": "cf2c92a02862efac2e992689762309dab658e1840e1cde6a0b402837fcc5f003",
+  "generationFingerprint": "01aab3605f22da6090eb50bf8e6a072797b2c6fe789ceac6c4e6693c55c71850",
+  "verification": "new-request",
+  "rawFingerprint": "1321fcf3bb74054bfd8818676c4ebb852abe2e0f2445c62710757e326c693398",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "fbce1da8-487a-4516-b841-0a294bfb76a4",
+      "bytes": 6017,
+      "sha256": "7592b936f53e8b01cbdbafdb01b4c32c8ca19b216105eb3185b6782754a30aab"
+    }
+  ],
+  "result": null
+}

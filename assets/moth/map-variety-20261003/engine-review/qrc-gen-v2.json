@@ -1,0 +1,111 @@
+{
+  "engineId": "qrc-gen-v2",
+  "name": "QRC Generate",
+  "version": null,
+  "creditsPerRun": 1,
+  "enabled": true,
+  "paramsSchema": {
+    "properties": {
+      "initial_events": {
+        "anyOf": [
+          {
+            "items": {},
+            "type": "array"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Warm up the reservoir on these events before generating, instead of the whole vocabulary (the default for a fresh model). Tokens must belong to the model's vocabulary. Ignored when continuing from a `state` that is itself a prior qrc-gen-v1 output, unless given explicitly to deliberately re-seed the trajectory.",
+        "title": "Initial Events"
+      },
+      "length": {
+        "default": 10,
+        "description": "Number of tokens to generate",
+        "exclusiveMinimum": 0,
+        "title": "Length",
+        "type": "integer"
+      },
+      "random_seed": {
+        "anyOf": [
+          {
+            "maximum": 4294967295,
+            "minimum": 0,
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "RNG seed for this call's own generation randomness (softmax sampling) — applied after the model is loaded, not the seed the QRC was trained with (that one is always reused exactly, to reconstruct the reservoir faithfully). None = keep whatever RNG state the model already has (deterministic given the same inputs); give a value to force a specific, reproducible sampling trajectory.",
+        "title": "Random Seed"
+      },
+      "shots": {
+        "anyOf": [
+          {
+            "maximum": 8192,
+            "minimum": 1,
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Measurement shots during generation (backend.shots). None = keep whatever shots the model was trained (or last generated) with.",
+        "title": "Shots"
+      },
+      "variation": {
+        "default": 1,
+        "description": "Sampling temperature: low = deterministic/repetitive, high = random",
+        "exclusiveMinimum": 0,
+        "title": "Variation",
+        "type": "number"
+      },
+      "vocabulary": {
+        "anyOf": [
+          {
+            "items": {},
+            "type": "array"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Relabel the model's output space: the trained reservoir/readout only depend on vocabulary *size*, not identity, so any vocabulary with the same number of distinct tokens as the model's own can be swapped in — generation then emits from this vocabulary instead. A different size raises `incompatible_model` (readout shape mismatch).",
+        "title": "Vocabulary"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [
+    {
+      "name": "state",
+      "mime_types": [
+        "application/json"
+      ],
+      "required": true,
+      "description": ""
+    }
+  ],
+  "outputFiles": [
+    {
+      "name": "state",
+      "content_types": [
+        "application/json"
+      ],
+      "required": true,
+      "description": "Updated reservoir state; chain into a further qrc-gen-v2 call via input_files.state."
+    }
+  ],
+  "runPolicy": {
+    "timeout": 3600,
+    "max_retries": 1,
+    "heartbeat": 3000
+  },
+  "errorCodes": []
+}

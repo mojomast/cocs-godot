@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "leaf-veins",
+  "engine": "blur-core-v1",
+  "jobId": "a15acea2-9026-4e1a-a398-880a1f462394",
+  "recipeFingerprint": "22e3db2178da6128bb4c797f3eccc984517debd48169db4045c10798fecf7f33",
+  "generationFingerprint": "7643bd16a66264a56d8ff4d158404799bfeedfa497c84253eac6016bd5ee844a",
+  "verification": "new-request",
+  "rawFingerprint": "edd72e7b611cc310c8215661e616ebdca765bbc726439714cd441f262cebcf21",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 439864,
+    "sha256": "7cbff250cdb6d58d94c06238747125f5b6162f4ab4017b2b21620637a19943c3",
+    "jsonHash": "aa6491e38211ac669adc27f9b80e75c9312b877fddb32f4bf50e7b6949ab4d40"
+  }
+}

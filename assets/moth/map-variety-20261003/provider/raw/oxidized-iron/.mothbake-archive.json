@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "oxidized-iron",
+  "engine": "blur-core-v1",
+  "jobId": "8a24b3ab-aa05-4e02-80a2-d7671a860530",
+  "recipeFingerprint": "f33b2849cb2dd9c2fdf5492fcc07d9a9a06c68ae2528c1672e7859bd089fd34c",
+  "generationFingerprint": "45171c2eeaf06eff44fe4b1ec1c93c56cbc4e7dbef60545537e689f9bc987bb1",
+  "verification": "new-request",
+  "rawFingerprint": "bd6ea7c4691581cda48cf60df6d27756facf79d44ac6e125832ef9c7010b3934",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 431376,
+    "sha256": "960527b3fa55e6272b9beb1597fee7d6f94ca4183351e1e85e66457a4c157f64",
+    "jsonHash": "13a81c972defd21b1f96f7069e7f1599d297738b6764c3c65daaf61bb932760f"
+  }
+}

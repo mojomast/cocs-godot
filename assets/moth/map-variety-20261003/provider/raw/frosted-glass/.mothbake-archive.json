@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "frosted-glass",
+  "engine": "blur-core-v1",
+  "jobId": "70894686-ba2b-49ff-899e-e7fa37c51e4c",
+  "recipeFingerprint": "1a407afd8c00057c9208d406fd327d15b459254258f1d5238c2d9b994292a3dd",
+  "generationFingerprint": "fcd653e7b509407279583de41c761e05327dba3cc7c95b2e89a1c028b09c777b",
+  "verification": "new-request",
+  "rawFingerprint": "b5ae4bd3cd053dd99691248dbce9279f7bd46f79e214aac211b7f65b4b5f5e2b",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 430427,
+    "sha256": "51af824fa72e3d4024a5a4437a901b35337ee4df74efca81dbb36677f30e3acf",
+    "jsonHash": "60b84e2da5ec8f0a3d5f479bdc1f807b2f39625b780c6ff26c866e9bd3eb43ce"
+  }
+}

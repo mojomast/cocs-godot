@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "tool": {
+    "commit": "69c62d7c4bd754340623a4a7fa93bfa970e5ab73",
+    "generationCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+    "repository": "https://github.com/mojomast/mothbake",
+    "node": "22.23.1"
+  },
+  "masks": [
+    {
+      "id": "moss-lichen-qpixl",
+      "jobId": "83d8426a-ef39-4c5c-ae08-265f33191de3",
+      "engine": "qpixl-v1",
+      "observedBackend": "aer",
+      "qpuSeconds": 0,
+      "rawSha256": "fffa6355bc240cbc68c571324d63298e095ad0350bb1c67c38ed43c29456bcbb",
+      "meanAbsoluteError": 0.00912078160514535,
+      "thresholdHalfIoU": 0.9801777170198223,
+      "file": "moss-lichen-qpixl-mask.png",
+      "sha256": "9ffb8ec4ee41e569e83f6973b4b7d61a584218a88f519f7f4cd32b21e8ee591a",
+      "colorSpace": "linear",
+      "role": "optional coverage/wear reconstruction; do not use as collision",
+      "seam": {
+        "edgeMean": 0.0712890625,
+        "interiorMean": 2.321625412793542,
+        "ratio": 0.030706530910264294
+      },
+      "shapeRepair": "explicit 64x64 row-major, no new API call"
+    },
+    {
+      "id": "quay-waterline-qpixl",
+      "jobId": "10d07077-63c4-4b66-8623-c4d7de13ee74",
+      "engine": "qpixl-v1",
+      "observedBackend": "aer",
+      "qpuSeconds": 0,
+      "rawSha256": "060489bbe8d478f507c0a09a51dce2f5f3c443413f342fbb9af534fbd96f4f3d",
+      "meanAbsoluteError": 0.0035107353180091256,
+      "thresholdHalfIoU": 0.9983771502758845,
+      "file": "quay-waterline-qpixl-mask.png",
+      "sha256": "eb7a3eff35101ac3f1f319477452ca8afe14c09b2ffea64f18465aea36d1a2e4",
+      "colorSpace": "linear",
+      "role": "optional coverage/wear reconstruction; do not use as collision",
+      "seam": {
+        "edgeMean": 0.0009765625,
+        "interiorMean": 1.0673101914138943,
+        "ratio": 0.0009149753350582379
+      },
+      "shapeRepair": "explicit 64x64 row-major, no new API call"
+    }
+  ],
+  "luts": [
+    {
+      "id": "instrument-lut-3-body",
+      "jobId": "210cf363-bb9b-4a0a-a4d4-3436dc2ee279",
+      "engine": "entanglement-shader-v1",
+      "rawZip": {
+        "path": "provider/raw/instrument-lut-3-body/result.zip",
+        "sha256": "bd2356be56d0df641b5000e1cce92e53fe077cf13ef0a8ff71ac6825cc01af0f"
+      },
+      "dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "reflectance": {
+        "min": 0.3984375,
+        "max": 1.234375
+      },
+      "transmittance": {
+        "min": 6.661338147750939e-16,
+        "max": 0.1123046875
+      },
+      "preview": "fixed Reinhard then sRGB; x thickness 0..800 nm, y angle 0..pi/2; parameter-space diagnostic, not a rendered surface",
+      "axes": "provider GLSL: s phase periodic, t incident angle clamped; do not flip stored row order",
+      "decision": "retain immutable HDR/EXR/shader masters as review companions; no direct albedo/roughness binding; values above one remain in raw masters"
+    },
+    {
+      "id": "instrument-lut-frustrated",
+      "jobId": "c56014b8-3a3c-46d1-bd3b-55fcc30bf65c",
+      "engine": "entanglement-shader-v1",
+      "rawZip": {
+        "path": "provider/raw/instrument-lut-frustrated/result.zip",
+        "sha256": "92bc417d6a45a47488c8f0296e8143538ef6281554181138930ca46291e90566"
+      },
+      "dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "reflectance": {
+        "min": 0.3828125,
+        "max": 1
+      },
+      "transmittance": {
+        "min": 6.661338147750939e-16,
+        "max": 0.2265625
+      },
+      "preview": "fixed Reinhard then sRGB; x thickness 0..800 nm, y angle 0..pi/2; parameter-space diagnostic, not a rendered surface",
+      "axes": "provider GLSL: s phase periodic, t incident angle clamped; do not flip stored row order",
+      "decision": "retain immutable HDR/EXR/shader masters as review companions; no direct albedo/roughness binding; values above one remain in raw masters"
+    }
+  ],
+  "remoteCalls": 0
+}

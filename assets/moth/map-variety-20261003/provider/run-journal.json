@@ -1,0 +1,2210 @@
+{
+  "version": 1,
+  "jobs": {
+    "aggregate": {
+      "state": "published",
+      "jobId": "b6b43ff0-9962-49d4-be7a-a555d7ea7488",
+      "metadata": {
+        "recipeFingerprint": "42c3c7d8cf433f0a18286914c35910c4ff339e3b945b7815584725d1c4bbf7ae",
+        "bakeConfigFingerprint": "97227b5a3b896642e3912dcf796c443161f111db12d319de08e541471df1d89d",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "dcb9208f5279a945d2463577abcb17c8da141819dce2c2369fe4f2a54f34fc29",
+        "rawFingerprint": "cbd28e6b6fefc93c2a9b11743bd3f5e489767de10c377629ce612bcd43515505",
+        "bakeFingerprint": "6e79c0bd6afc909313dd76965c156239473865544089476a896c9f3d00789bdc",
+        "exportFingerprint": "8ce72806314530ad7a38a7b0da9570c4aef05b62116508ec0529eef6af07c475"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:04:11.556Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:04:11.576Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:04:13.403Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:04:13.404Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:04:17.504Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:04:19.538Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:04:19.539Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.940Z"
+        }
+      ]
+    },
+    "cast-seams": {
+      "state": "published",
+      "jobId": "e76045bb-c860-4874-a1c2-136b83fb58c4",
+      "metadata": {
+        "recipeFingerprint": "19ac167e1167be41a5a0ae1d74276c3c2c4fb0449fbb621b0a48c284e13164ca",
+        "bakeConfigFingerprint": "08117375a7569672bd73bd30b6f6dc99eb2df2dd55eb1845f0712e34e35cbaf3",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "618c45756fa043bb14cb3e07e72173a0c95ad50810a746f98b7c6c4a19f475b6",
+        "rawFingerprint": "708507f7d7143d0a81a4b09ead616a5e48ec5b60b2661efe7f0c6bad01f76d07",
+        "bakeFingerprint": "42630ae4b980134ee5ef235729dcb21ef8c4e3836bbc9cd0cde8cd195e86ca62",
+        "exportFingerprint": "0c443c61f73e1459d4760cb5a68091fb439103ad5937bab2833928a9701469bc"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:04:19.539Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:04:19.559Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:04:21.258Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:04:21.258Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:04:25.354Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:04:27.348Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:04:27.348Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.940Z"
+        }
+      ]
+    },
+    "terracotta": {
+      "state": "published",
+      "jobId": "be436cfc-92ca-43ab-ad95-45c268bc7e95",
+      "metadata": {
+        "recipeFingerprint": "4325f847ec8a4fd1b93760b257d801e9337ed830f9f2decc6f15e32044867bc2",
+        "bakeConfigFingerprint": "e7a474d42045a6e56b46a52d89fb263e9c4e6a96f1ce3f007ab581a3a588e851",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "67af443d074c4c69035ad53b3de91c401e023e96995e32e35b1e363e53653567",
+        "rawFingerprint": "25ebe1ff3379712c7cc50d84a59160173ce8aacf613a6ebec64f6a6d58eb715d",
+        "bakeFingerprint": "983c71d67b9b32b57e12d6c80358646336fbdac61ae6a19e190cf95ba817b394",
+        "exportFingerprint": "1eb694fccc0db9c332bdcc9ef85909e8138e7921624ab0650fe002b5b7e073be"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:04:27.349Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:04:27.369Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:04:28.969Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:04:28.969Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:04:32.857Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:04:34.765Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:04:34.765Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.941Z"
+        }
+      ]
+    },
+    "lime-plaster": {
+      "state": "published",
+      "jobId": "80c55a22-14c1-4fc4-923f-2c8cbf6d4fb5",
+      "metadata": {
+        "recipeFingerprint": "1f819dd49b6f8f4265932d15ddcc9533b0f2d6a76c468bc8671b49e91d92f9c7",
+        "bakeConfigFingerprint": "79f784558c3ece2c0064c32ece232cdd8d55244322a2ca1f7b3829fe1220c329",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "3d0f0efbdafe6b006681ac5e619407b3d2af770622b5e7a5b7a33d2b243957de",
+        "rawFingerprint": "68ea77c5f2a3166450f6693a44c2d2445dca35d9c6456c56bba2a86889b6fb1d",
+        "bakeFingerprint": "294624cb98f9ed4e7a23b3dc969dccfb5c9a79dc2e5f8ff038f33c92fcf2dcca",
+        "exportFingerprint": "0ed75653fabe2782b7a848e2dbfa21b209c302481e5a8dd6e222320b639ff397"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:04:34.765Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:04:34.785Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:04:36.486Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:04:36.487Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:04:40.593Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:04:42.387Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:04:42.388Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.941Z"
+        }
+      ]
+    },
+    "oxidized-iron": {
+      "state": "published",
+      "jobId": "8a24b3ab-aa05-4e02-80a2-d7671a860530",
+      "metadata": {
+        "recipeFingerprint": "f33b2849cb2dd9c2fdf5492fcc07d9a9a06c68ae2528c1672e7859bd089fd34c",
+        "bakeConfigFingerprint": "34a2c59545ac4a12d51636fa7a3907cc05c699cc830a1e5e40a5e7aae029f135",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "45171c2eeaf06eff44fe4b1ec1c93c56cbc4e7dbef60545537e689f9bc987bb1",
+        "rawFingerprint": "bd6ea7c4691581cda48cf60df6d27756facf79d44ac6e125832ef9c7010b3934",
+        "bakeFingerprint": "5bf81a4e1d2109bd98e1db3a998ff269ad702d922877b582151e1dbd2feb0e8f",
+        "exportFingerprint": "c900f8539d48df4633f2f5f2146e29d9e0f122ae4be2170e83877b3301a1491b"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:04:42.388Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:04:42.410Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:04:44.119Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:04:44.119Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:04:48.108Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:04:49.986Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:04:49.986Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.941Z"
+        }
+      ]
+    },
+    "copper-patina": {
+      "state": "published",
+      "jobId": "4ac2ba8f-f995-4068-ad8a-0f44063cb671",
+      "metadata": {
+        "recipeFingerprint": "cb1ed1c254962359aae59012d56809d2391cd0b661c47caf938d32189eb92ef7",
+        "bakeConfigFingerprint": "8b798ed28eacb88cae7e00ce22f0b369bb19d4d2be45fd16592d09c20277a5d6",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "5a6923808fe7fa9d1d61a7e1c49139d8dac153b87233f108f257b9643f74857e",
+        "rawFingerprint": "47c863f88eb4f7e2360651ad49e2979a0a3ed7c213dee3f43319ddfc35b2f51e",
+        "bakeFingerprint": "addb2c698c8cbd28521e83e5601521929e69cf00234d7ed37f5b3de454dc9162",
+        "exportFingerprint": "de6af85c735e4d556556278672953cf49778f411f085e3ab0c40ff6521cc5289"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:04:49.987Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:04:50.009Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:04:51.619Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:04:51.620Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:04:55.710Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:04:57.706Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:04:57.707Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.941Z"
+        }
+      ]
+    },
+    "ceramic-enamel": {
+      "state": "published",
+      "jobId": "600a94e1-8a06-4435-aabb-8a7cd10d0baa",
+      "metadata": {
+        "recipeFingerprint": "3895de1687ea51cf3d011bd30b2de650338f5657705c73441eee26890e25722c",
+        "bakeConfigFingerprint": "233829daedb88268f191cd1b51c978d0224e6f3a4bd661c1aaa67c47b7f572fb",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "5799ba63eadae94036d5213ee1dfed067bb1a0fd15fb305a22c88b60b5004311",
+        "rawFingerprint": "9e64029ec884680a9637d9825459b06301f81386d502d0b613ddc28f7208e86b",
+        "bakeFingerprint": "118be9deecd30c020561a5ea56675ac133883653abe8f371b691d71e65e10f6d",
+        "exportFingerprint": "10fb60148efcc9e485ee20ebff9ac60b9725223b873ae07eea7022552bc40d25"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:04:57.707Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:04:57.727Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:04:59.367Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:04:59.368Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:05:03.333Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:05:05.215Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:05:05.215Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.941Z"
+        }
+      ]
+    },
+    "anodized-brush": {
+      "state": "published",
+      "jobId": "b3839608-a32f-4c50-a729-6df967591e8e",
+      "metadata": {
+        "recipeFingerprint": "3faeaee6f3e20bd50354521c0bf1733f29fa86840b32666f70a97d12551e0f6e",
+        "bakeConfigFingerprint": "49be4825eed439c3b7589337c34af191516a5093a421a8aee4ef5dd3bd7af9f8",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "6a1179459fb8076a1b0cca9be49631b896b82af638b1f99ac65374777908e5dd",
+        "rawFingerprint": "904cfe36325f812f1f06ae3610018ce3b01e483c5d6b59f5a8ce65e8522eaac7",
+        "bakeFingerprint": "621a84a68a5a9559ec85b1fa6e0079b2dbb0fbf8cf13b1e361352aa5e20b7bfa",
+        "exportFingerprint": "2cc7a68fd5759c091be285d9b0327b5172b168dcf79e62fa7f5564559a51303c"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:05:05.215Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:05:05.234Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:05:06.867Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:05:06.867Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:05:10.962Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:05:12.961Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:05:12.962Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.941Z"
+        }
+      ]
+    },
+    "iron-grate": {
+      "state": "published",
+      "jobId": "8168939f-bf1c-47fc-ad5a-8173afe845e9",
+      "metadata": {
+        "recipeFingerprint": "024ba3900181f7084b44f5fb3c30dca9d981ce6fda057a04bf178399af2136cf",
+        "bakeConfigFingerprint": "4bc0368e2ae5986ec313f2ab887d1926e5f8573bbbe89d827d9e483cbd014a9b",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "f27273fe104004794620ce519a16b54f87b0cf2f7aac78ee472a3440e88f02e3",
+        "rawFingerprint": "c1417b28ec918d70547b4f7262caa3b62d891ad5a4acd6558a8c8af1254e623c",
+        "bakeFingerprint": "10fc8fab10febcbc5ee47eacd122fad8cba6a12b02d622c13020f0c7a5ce4a0c",
+        "exportFingerprint": "b50c89ef1eb2d5203d24d1ac8ad9654150862e3fa5650851fe3fc18aea13b741"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:05:12.962Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:05:12.984Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:05:14.591Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:05:14.592Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:05:18.507Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:05:20.540Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:05:20.541Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.941Z"
+        }
+      ]
+    },
+    "wet-soot": {
+      "state": "published",
+      "jobId": "f033bd87-7fe6-4240-b12c-1d8971aee927",
+      "metadata": {
+        "recipeFingerprint": "61f63f35134ca045a91167ffae88acb46e650f1f4f7602c56c9e399dab723c5f",
+        "bakeConfigFingerprint": "f726f0960f2b086388421fc6877a217ceefeaba9cec59f4a4d88f664e400791e",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "a77ca70aaf6570f5f4b879e78199b18e8a300bf20c0f95a94146be97b8a01ddb",
+        "rawFingerprint": "56544455bd9d645d61bf39c251068d2efeec26689d6ace363c8b633ea5b47a62",
+        "bakeFingerprint": "5deeca41a9b3a8fcd58ea5b4cd2e16f59031d85680ef57d5ef99e1a78feaae10",
+        "exportFingerprint": "8af11551b79771687ee7dd1d7941badfb25c1d9f37cb0f7a442ba5d3fbee7d11"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:05:20.541Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:05:20.560Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:05:22.263Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:05:22.263Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:05:26.316Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:05:28.371Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:05:28.372Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.941Z"
+        }
+      ]
+    },
+    "salt-limestone": {
+      "state": "published",
+      "jobId": "eea99f12-9127-405e-8638-2bb2163cef46",
+      "metadata": {
+        "recipeFingerprint": "c99854519157b3f7bb454ea9b25f99dab7cddd7aec64d3672e8c02f9793eecd7",
+        "bakeConfigFingerprint": "3664e1443b3db63fdf778247e2a5b16fd682e484dd2cd38b2bb067d30df64e24",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "7f7c5bf624102700daff6caaa927425b986fefe58691fc35225f436775387af0",
+        "rawFingerprint": "293a78a5e3206fe0da196a1fd78b04d759a3a3ae219829e76f14a966920e800c",
+        "bakeFingerprint": "2526ffa1d3eb7e4c4e29bb232b557a8dd04c4e7cb5384b5395453ae9dbefbd9b",
+        "exportFingerprint": "a926686aea977975d2ec5bcc1ca8ddf27b5fd8a98f42ed4111e66dbe491bd670"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:05:28.372Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:05:28.391Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:05:30.087Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:05:30.087Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:05:33.788Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:05:35.307Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:05:35.308Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.942Z"
+        }
+      ]
+    },
+    "basalt-strata": {
+      "state": "published",
+      "jobId": "17589d21-9a18-4dfe-a844-73a29100b240",
+      "metadata": {
+        "recipeFingerprint": "b775cbe9e5163c99d39776fc6ae007076c42ee12265c2e1ef48b518733cb564b",
+        "bakeConfigFingerprint": "9df3b18bec7224f8341af3697b704b3de4095a3987f2c8ac1fcafc8438fb8482",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "76de18344a252a02a510475f4e39c50e3b3bf673f2c6ce88e2eecb9339f33f35",
+        "rawFingerprint": "0b7c2e801a6adf833e98320d1607bf9e3b3ddc66387df5410a3d3f3410082b52",
+        "bakeFingerprint": "65bb0aa83c01eda56a000b17a3fc13ab5aaf793da217ab1cb416efb12d13defc",
+        "exportFingerprint": "0f41a095ee8bfe176c9642d21e713802e86888eb110e599a8f1f45308f4c18c0"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:05:35.308Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:05:35.330Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:05:37.029Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:05:37.029Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:05:41.126Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:05:42.859Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:05:42.859Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.942Z"
+        }
+      ]
+    },
+    "dune-sand": {
+      "state": "published",
+      "jobId": "d813f780-d96e-4a4f-a78b-3b9c41c3ea70",
+      "metadata": {
+        "recipeFingerprint": "f3177e0138496acd401a0f917e4a78f0952713682ff7dae831794dd98f99f726",
+        "bakeConfigFingerprint": "c76a8bc625c0bfd194ebf3b6e805e176cbaa43571b01092ec2eb8ccb16192cee",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "a367d4966cebf9afbb162f9b198853562efc041537aefde1476408a4362c0eaf",
+        "rawFingerprint": "2c346a586afc449901cb805662854b3fdb3f55a9f768c2a1dc849bfe28c55678",
+        "bakeFingerprint": "5d4409acdf53ca05cf6a5e26ea5bbfc891404101cfa10be14bf1556fe12b31ca",
+        "exportFingerprint": "7ae2304d140b50fb0ce4a777742aa2b338ad8b4664a0ade234a7131e94d493c0"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:05:42.860Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:05:42.879Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:05:44.580Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:05:44.580Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:05:48.566Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:05:50.461Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:05:50.462Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.942Z"
+        }
+      ]
+    },
+    "deep-silt": {
+      "state": "published",
+      "jobId": "ae462fc2-1aa5-41d1-9b77-4b2f90ae5f21",
+      "metadata": {
+        "recipeFingerprint": "74df575b758595f78d45f8f9788c9208cc9fdae1f4d3baa758fd9faa1eac4d05",
+        "bakeConfigFingerprint": "0765961b92d97b7d919da8022f896f39a2bb1e26cae777f105b538e7ab77b86e",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "8fca036a699c5b2ae3f6b7b4bf80a47f6fe3379678c526e7c0105bdc529b12b2",
+        "rawFingerprint": "cc96ccf3db9476bd881085f75cd74aa6782ffe1ca3c35ed7e59d5f2fa2a4de74",
+        "bakeFingerprint": "a0f7ef50ec43085bee69a1fe6cfd3a11b89fd8f32925b3e58b6d0fcba42af763",
+        "exportFingerprint": "364001c6788f91d820dac0d48c734f11d5fbaf042f55a63a11d976071658fdc7"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:05:50.462Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:05:50.481Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:05:52.443Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:05:52.443Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:05:56.625Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:05:58.664Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:05:58.664Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.942Z"
+        }
+      ]
+    },
+    "road-gravel": {
+      "state": "published",
+      "jobId": "2a2ad170-c7f7-4d05-ba60-15c5c2f31a05",
+      "metadata": {
+        "recipeFingerprint": "a16bab675ba60fe42b2683aa0dabf82b6057b3df6480ca17088d30308d0dea56",
+        "bakeConfigFingerprint": "9e5ac7fd3f66f62a1b3a67e61fe9026a6f8955d34e888b41824cb8377c085161",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "2d20607a65e9e0fb7f87d944c3d94cf019f7fa4476d6b960cc6da884c189a67b",
+        "rawFingerprint": "f1ff6528ba32f3cc8ab11fea42886c7503668f9e64859b5b7a81f56554b94704",
+        "bakeFingerprint": "3b18f3b5fda278d93276e290934d9649c8145849b7744e921be9c5927b9d80a4",
+        "exportFingerprint": "0e320e271394c6730f645f0fdd1763e455708b27a57245ce12b99e56c08a81bb"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:05:58.664Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:05:58.686Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:06:00.592Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:06:00.592Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:06:04.596Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:06:06.619Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:06:06.620Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.942Z"
+        }
+      ]
+    },
+    "moss-lichen": {
+      "state": "published",
+      "jobId": "a5e564a8-428a-4ae2-bc81-63861a6ad96b",
+      "metadata": {
+        "recipeFingerprint": "7b96bdf7c7c2b982edc2a20395b9a52a0362d6b456b803d40a0eb99fed5aed7a",
+        "bakeConfigFingerprint": "0750d67071a6f53bac6649a50fa5641671786f52503a39ddd1758f77e077bafc",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "5bef89aa958d5cd9df02ec34139d7715bb94b9f588eb08abbb93574ccde58b60",
+        "rawFingerprint": "2cecfd1f716592f67b2bbc61b0b672338d3730f0e15851ab12419123ca7d3d0c",
+        "bakeFingerprint": "2508f6d0250ad7c8f601549a6e3d8941dead853d436c16d9df9dabf51ec71723",
+        "exportFingerprint": "5bffd58214427c38d02ef3adf6d0c076b8ef183fa409bcfa84e9961d20c0cee8"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:06:06.620Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:06:06.640Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:06:08.508Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:06:08.509Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:06:12.602Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:06:14.661Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:06:14.662Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.942Z"
+        }
+      ]
+    },
+    "bark-fibers": {
+      "state": "published",
+      "jobId": "d1bf63f6-1d30-4660-9091-34c66951dd6a",
+      "metadata": {
+        "recipeFingerprint": "51f1147ddbe8045789530ada7a578a44b762ddeabbe9961a939c507570f18168",
+        "bakeConfigFingerprint": "9c8e0630f319c6a6266a2fcbe193426d6eb05d298e5e170ca80a117de628ae2f",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "326627eb4b74fd463b4207e23eba5d8cf235bf9851c62392e33f506fc91a6cdc",
+        "rawFingerprint": "1ff74a5525527fd1da7a5ad1d4c45c712f6d2b520ae464613b8e45b68016f668",
+        "bakeFingerprint": "3dc2216b7b76e4aab1bd4b146ad52443248849f7fc661b9f0cd299b625cf763b",
+        "exportFingerprint": "ba6421aa0e50708b79c53167ce3b9a4ef6f6c382d0036612a612360039b4170c"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:06:14.662Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:06:14.681Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:06:16.463Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:06:16.464Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:06:20.430Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:06:22.415Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:06:22.416Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.942Z"
+        }
+      ]
+    },
+    "leaf-veins": {
+      "state": "published",
+      "jobId": "a15acea2-9026-4e1a-a398-880a1f462394",
+      "metadata": {
+        "recipeFingerprint": "22e3db2178da6128bb4c797f3eccc984517debd48169db4045c10798fecf7f33",
+        "bakeConfigFingerprint": "9d99b51768843e1278add7c30255e9ba0602a4f70cebe49b275afd60c92e5561",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "7643bd16a66264a56d8ff4d158404799bfeedfa497c84253eac6016bd5ee844a",
+        "rawFingerprint": "edd72e7b611cc310c8215661e616ebdca765bbc726439714cd441f262cebcf21",
+        "bakeFingerprint": "bc3ff92a759c77c9bbe28f636fcd50bb00f8b22a1566254b89852e181daf270d",
+        "exportFingerprint": "a3cce96186c7f86c1116d8862b027f98e2eb40b4f63e5d00fef3255e33dd6482"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:06:22.416Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:06:22.436Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:06:24.084Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:06:24.085Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:06:28.211Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:06:30.117Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:06:30.117Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.942Z"
+        }
+      ]
+    },
+    "frosted-glass": {
+      "state": "published",
+      "jobId": "70894686-ba2b-49ff-899e-e7fa37c51e4c",
+      "metadata": {
+        "recipeFingerprint": "1a407afd8c00057c9208d406fd327d15b459254258f1d5238c2d9b994292a3dd",
+        "bakeConfigFingerprint": "972a3871116291577334907b5d8dd696dbde1bb4b92aead98180d449ce23add8",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "fcd653e7b509407279583de41c761e05327dba3cc7c95b2e89a1c028b09c777b",
+        "rawFingerprint": "b5ae4bd3cd053dd99691248dbce9279f7bd46f79e214aac211b7f65b4b5f5e2b",
+        "bakeFingerprint": "70e8648c558e9d0b0735cf3910ae32b96b4278471f2fee3b371b567f3db51292",
+        "exportFingerprint": "1c670b0acd96d7d84628de52d36e5a2b477cacb9ae3ca7a7c8394413ae240216"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:06:30.118Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:06:30.139Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:06:31.839Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:06:31.840Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:06:35.820Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:06:37.765Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:06:37.766Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.942Z"
+        }
+      ]
+    },
+    "prismatic-etch": {
+      "state": "published",
+      "jobId": "8be51b46-175c-492a-8ffb-87ee952fb3d3",
+      "metadata": {
+        "recipeFingerprint": "17e187d2f38a99c259d884be2828711574c62139f19f539450d4a7eca34b967d",
+        "bakeConfigFingerprint": "a57de95a5cf036df05070f2f76535186ec3ddea8e9b5f67d5620102075be3364",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "826a32c68acb2d48375beed6b415eb6c2f6a6e7b9db9f8ea1ab18f31aa6ac380",
+        "rawFingerprint": "5c143444744836cd4188a13b79b21ef126e56bd7d199c7dfd0dc2e825ef20a98",
+        "bakeFingerprint": "c0003587e0de4b05ca09666da25f2e0c213a4c5acc3da198354bc560e303ad3d",
+        "exportFingerprint": "177d320788891dbb40b94f47e3b7684ea7c05d6b7efae14350413e547c782aff"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:06:37.766Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:06:37.786Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:06:39.458Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:06:39.458Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:06:43.650Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:06:45.645Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:06:45.646Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.943Z"
+        }
+      ]
+    },
+    "viaduct-asphalt": {
+      "state": "published",
+      "jobId": "5023e7ff-76a3-49a1-a8e8-fc6d3c0cd6e6",
+      "metadata": {
+        "recipeFingerprint": "69b2c3f284170bc8639fa0defa1ca3519f5c56efcb130f5c07087e6f40f1dae5",
+        "bakeConfigFingerprint": "ebc73eb227301c4b1fe1d8c66259966c0a3af51d4c5543b53f75e56fdc763c6a",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "911b55a017702577750bc21dac64c805f0542d7393ab7a7708d6879e0c960696",
+        "rawFingerprint": "025006cc257d467ac1c67e81cb77902dfb2ab5c4ffb11b84822cdaef12e7653f",
+        "bakeFingerprint": "cc707a0d29d45085d24de96119048813d4c06cb0a5b0d1021b1ba3c913454524",
+        "exportFingerprint": "ae2bdf3fa59640271ce3ac3413f3facf475df2ec0a0d02a06f998e75a7ea57f2"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:06:45.646Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:06:45.667Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:06:47.364Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:06:47.364Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:06:51.265Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:06:53.220Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:06:53.221Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.943Z"
+        }
+      ]
+    },
+    "ribbed-steel": {
+      "state": "published",
+      "jobId": "9a489657-80b5-4236-8fd0-225c5ffa9f87",
+      "metadata": {
+        "recipeFingerprint": "05bc91e55d7bb3912eab31b2fa361859fd22b0d423e9c26a9776bb517fdb43f3",
+        "bakeConfigFingerprint": "f055edc4ce6b441956301bb3e6243d03c427baf8c81967d8fd50d76208c3eced",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "5faee4cf21dea52e89ce3a0823bb7a9977e9fec9a2c2a140adf3842985e8aaa1",
+        "rawFingerprint": "8a225df300fc5b9a0d5216a1f94e99fc33d6e4ce1fbe964031c14ff275f219df",
+        "bakeFingerprint": "8f3220b536936b7257f7303f35d8d2fc7470c458c4781a5907c699ebba8a7b07",
+        "exportFingerprint": "dc130b9ef7647972624293ea84bb6984cf0243bdb1f42ec7482e0a6486e9256c"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:06:53.221Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:06:53.242Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:06:54.955Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:06:54.955Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:06:58.795Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:07:00.613Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:07:00.614Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.943Z"
+        }
+      ]
+    },
+    "trim-wear": {
+      "state": "published",
+      "jobId": "8cf0bdad-a78b-4bf7-9971-e385c2bc0462",
+      "metadata": {
+        "recipeFingerprint": "d76572555e4323fe87b16a23699c849b1aaf77404fa58d9c90424ddff0775b6b",
+        "bakeConfigFingerprint": "428c86792b56bc3ec187f7f80cb85c93e625009abbe95c938dfd24cd4a3c66ff",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "c2bda9a1abcda695adf866be6b11acb1853b6db355393f1aa904471a3cbb678c",
+        "rawFingerprint": "6ca20fb8f1a1d7fc0fdd320ea2b31d180bbd24142469310fa0c1da20db62ea94",
+        "bakeFingerprint": "8a38cad236bd9146c96071cb197543d94560c1ca039885e741d6aec54acd02a6",
+        "exportFingerprint": "6e101b6315a14c2fd551b7cfd9e97c90ec89e8f485ed82d74ca65815554755ab"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:07:00.614Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:07:00.633Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:07:02.347Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:07:02.348Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:07:06.284Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:07:08.109Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:07:08.110Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.943Z"
+        }
+      ]
+    },
+    "decal-stencil": {
+      "state": "published",
+      "jobId": "36c11ff5-5828-4e21-a20b-49cd9395647d",
+      "metadata": {
+        "recipeFingerprint": "7dbabdb61ae70fcd8a38741279c190823e00540c975ba9059bd2e3654a7cd8fa",
+        "bakeConfigFingerprint": "539986bc0c911db32f10cf985475d5a5557ae2721d9e355340d31d6a0321a740",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "dbef1f332808a05289a5d3ad67c1be43086191fd91ac91750c8e1855550dfd60",
+        "rawFingerprint": "492123b1529eb01fbf052c7afceab81ba563ca7e61c84c56a4382bc4cf61efd0",
+        "bakeFingerprint": "a30976961a686b3845a9cb9736bd876bd33dbba4cf61dfe8d2de095fa52b6ae4",
+        "exportFingerprint": "ab598054a320f0bbd47a86603e64dc28b26331388a30cfc3995e6808afea02c9"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:07:08.110Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:07:08.129Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:07:09.836Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:07:09.836Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:07:13.949Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:07:15.939Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:07:15.940Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:07:15.943Z"
+        }
+      ]
+    },
+    "slate-shingle": {
+      "state": "published",
+      "jobId": "e6e2c413-fc42-4301-aee9-134d0060fdcc",
+      "metadata": {
+        "recipeFingerprint": "9b1de7948fb4fcc671bf501c504edbfeaaea46ae807ef02eab334af201ef4b4c",
+        "bakeConfigFingerprint": "2f6a18acddfb7950b46542fa012521d9db7aaa3aba7537d278fff52058a7f352",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "d62496af4fc8a4b21dbedb5a3897a086b3b0e904c8fe4bc390d8d1cc2550ef23",
+        "rawFingerprint": "d088b2d026eaefa7bf1e6abd2aba10241629e51c5f28d007dece15efadf41e3e",
+        "bakeFingerprint": "fc5fc3a6d2030ed0b7fd55c5b7e53f59329c9f5d2cef1b57fdf24a73a3a8761c",
+        "exportFingerprint": "ec41d9f6e30598541893127df4402c63a00396a527a8c08afd198a64cf69160c"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:09:11.262Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:09:11.284Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:09:13.100Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:09:13.100Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:09:17.106Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:09:19.132Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:09:19.133Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:09:57.270Z"
+        }
+      ]
+    },
+    "cobble-sett": {
+      "state": "published",
+      "jobId": "3fac8d90-53ed-483e-8907-3fc1cab78adf",
+      "metadata": {
+        "recipeFingerprint": "888ce51e3e99f3102b05a369cd4679a395194a90f20acaa67b41d6c76855784a",
+        "bakeConfigFingerprint": "0715086c6a1e338754dbe52812be3f265971d18fab6f7042a8d4ca8296869c5f",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "bdea5c1f5f099ac0d0f2184243c559685ac5741613a90390848de3cb5e9e6adf",
+        "rawFingerprint": "64131368b8f6f10ef6a2b52a519081c5ad07bc357d127bf19e19b0d56c68d951",
+        "bakeFingerprint": "6864be029a67f4a698a6019bb45a06d75c17216d8b6c4a82b36dc023912c80c7",
+        "exportFingerprint": "1065d62c5b6b89de69d78a187632fa11954c2ebd177b6b9d9f3608c278b00bdf"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:09:19.133Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:09:19.160Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:09:20.800Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:09:20.800Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:09:24.943Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:09:26.928Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:09:26.929Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:09:57.271Z"
+        }
+      ]
+    },
+    "fern-frond": {
+      "state": "published",
+      "jobId": "20ec5563-3b66-436e-a345-ec907a37ad3c",
+      "metadata": {
+        "recipeFingerprint": "e74194b14925236b9543e95bb6ac2171863b6380c000f79325ded375e45aac13",
+        "bakeConfigFingerprint": "cdf4baf41c29a9a400a8efad21856e6827fa4ee8979b9e67cc9d01ebccca3d27",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "20416e2ea0e6ff35a6b828ccbf32af74163248818c060ba8d18944bdb60fbf77",
+        "rawFingerprint": "bb6925c54e5946745cd092b7b061da92fe79a67d22b69499ac359f3e499f0b63",
+        "bakeFingerprint": "03ddda919bf85e6225eba31c04af4fa945266b71c4cce6491b4054f5d319f5f6",
+        "exportFingerprint": "a4ef3ef9a1baa3a3b778c15096aedeac41efaa21a77ba20ff86397ce3f54f75f"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:09:26.929Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:09:26.949Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:09:28.586Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:09:28.587Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:09:32.493Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:09:34.381Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:09:34.382Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:09:57.271Z"
+        }
+      ]
+    },
+    "sea-flow": {
+      "state": "published",
+      "jobId": "a2a37484-b842-4404-a09e-bbc536f84002",
+      "metadata": {
+        "recipeFingerprint": "e637f724dc40bc760e4e6843279b95380e1fcdaac8d0eb17f4ecb1624e1e9ae4",
+        "bakeConfigFingerprint": "59b381e5ba6c3fa672c1dcb568ac9b1d239304a2ab5cd9be253dcde34cc5eb1c",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "e08538f2edac14a0e34957703336724f836655d157b484191f5eaeb26461c131",
+        "rawFingerprint": "f4065b757c7b099018d55958032b764eef14efe35af757bdd6f7aa5b4a7a7324",
+        "bakeFingerprint": "6a56e603834eae6fe1402807e3272362e34c60bf2653817276ed9682163a2dee",
+        "exportFingerprint": "ad5196f98ad9cb926eb0c227c211400689d1c1c1d5c9a26a926cc9360f99fb1d"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:09:34.382Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:09:34.406Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:09:36.047Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:09:36.047Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:09:40.226Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:09:42.240Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:09:42.240Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:09:57.271Z"
+        }
+      ]
+    },
+    "timber-weather": {
+      "state": "published",
+      "jobId": "3fd13eaf-e9b1-444b-9e15-364435aa7b2e",
+      "metadata": {
+        "recipeFingerprint": "13b8abcddfdf9bc09992c67fc99ad57b5cf4bbc8814b2adb35027c410d4d9d94",
+        "bakeConfigFingerprint": "0a4a33e8a05b2a1ed9fe0d24a9d3f6e74c71b2d01e0eb0e07f432af39f4d9658",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "d27c112d1d6467e3ccee01c47200c16c18939c961e07331e62b61c5c32105032",
+        "rawFingerprint": "fdf8abba8e20b4562b79ff4cd1a5ad789e7a56c86b80d1f437844840803b20f6",
+        "bakeFingerprint": "bde26194bbebccd491df91e44792bb33f9e26f90de959fb1215e72b8f36f6d9f",
+        "exportFingerprint": "563ed4828aeb1e1442499238d05ee0e6a1b718bc42addc399e7ee237fa8924ad"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:09:42.240Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:09:42.259Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:09:43.969Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:09:43.969Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:09:47.769Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:09:49.571Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:09:49.572Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:09:57.271Z"
+        }
+      ]
+    },
+    "quay-waterline": {
+      "state": "published",
+      "jobId": "f28876be-f9e2-49c1-a8b4-fe3d49a0bdd8",
+      "metadata": {
+        "recipeFingerprint": "4dae98db5c407b341bb7b0a10ffd169d0494a7975aeb7c284180c3521964bedc",
+        "bakeConfigFingerprint": "538f46b8dde8659a7f63318130757a0a08f281b26dcf30112d9dd98d43d054e7",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "2279e0de4032de97eeda7f629b9470956ab85a9a1ed035356b03738087d0a6d2",
+        "rawFingerprint": "0ec9892a35f51765b0227f5cf22fe46be3cebc1c047cca97be99dcd4a2edd927",
+        "bakeFingerprint": "7f3532aad6d8e6ba5ad25e76ca1686e05c20d00b07bafa0a0113014c8b2e071f",
+        "exportFingerprint": "70f9c0009f23a26684c4899f59c77e89ebe09607e22552febb72d02e12be2f19"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:09:49.572Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:09:49.591Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:09:51.308Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:09:51.309Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:09:55.388Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:09:57.270Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:09:57.270Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:09:57.271Z"
+        }
+      ]
+    },
+    "cast-seams-x-refined": {
+      "state": "published",
+      "jobId": "aa239b82-f2d7-4a0d-a50d-6984134e987f",
+      "metadata": {
+        "recipeFingerprint": "e8258bdcf848fcddbce1cd58fccc2af9ed6ca29e8ce32283b5cfda55dcc1c37d",
+        "bakeConfigFingerprint": "08117375a7569672bd73bd30b6f6dc99eb2df2dd55eb1845f0712e34e35cbaf3",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "7cf85ecfac8b668fdc7ca157bed0d5a8836d7938195834f6bf7c31444baa078d",
+        "rawFingerprint": "aeab87ddb7fec2f7455227853968807e08294ecf1c5e077ac1eda33444cf70a4",
+        "bakeFingerprint": "f24866ff3546e3db75b01747c2eb23a7e4c2ad2f32ef6d2bc39b873efcacbd07",
+        "exportFingerprint": "3c71eb795e6cb4aedcb99b4e0b5671a8d8cf76ba514822a5321b3941abef7e8c"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:19:28.398Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:19:28.418Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:19:30.757Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:19:30.757Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:19:34.900Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:19:37.047Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:19:37.049Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:21:21.746Z"
+        }
+      ]
+    },
+    "lime-plaster-x-refined": {
+      "state": "published",
+      "jobId": "6e0cbdce-4f12-48c3-8582-738b7cc1c8bd",
+      "metadata": {
+        "recipeFingerprint": "2648ebac68117abe9b44874057004d7014f06d83f4af515aca3216aa14b12b3c",
+        "bakeConfigFingerprint": "79f784558c3ece2c0064c32ece232cdd8d55244322a2ca1f7b3829fe1220c329",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "7dd7517c011f4fa66b8c7893c196d6f32fdd6bfeda7f79d5ef1d81c80e8429cf",
+        "rawFingerprint": "74d7136f8ea617cc21e5922e33a3e353ce63c7d46f31d01c9f536f6c575a3895",
+        "bakeFingerprint": "850225ed010521ba0c741e698be7b2561b649d203a30ea8d47a7fd6dc419219b",
+        "exportFingerprint": "c9741b42de8b01db18d629703259df5b3616649d845f9b768a53af84eda29487"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:19:37.049Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:19:37.068Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:19:38.760Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:19:38.760Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:19:42.653Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:19:44.438Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:19:44.438Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:21:21.746Z"
+        }
+      ]
+    },
+    "copper-patina-x-refined": {
+      "state": "published",
+      "jobId": "77d16376-94cd-4779-bbd3-8dbd96823c18",
+      "metadata": {
+        "recipeFingerprint": "4c8d9795856e922f55041268554b45f636899ee02570eacdca2d5b6debf1b2cf",
+        "bakeConfigFingerprint": "8b798ed28eacb88cae7e00ce22f0b369bb19d4d2be45fd16592d09c20277a5d6",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "4c2589bc24d21155b3e2c9399b8c85d99ad939063928ede23c2a6c2038fe7cb9",
+        "rawFingerprint": "d68b8e159cadce568e53966e3eebd6cb06ed5649d0c51e3f87040a43703d6bc3",
+        "bakeFingerprint": "b166c7661f25f972977686a607e5978c1f44f9448074ba2548fb1126e7d1c874",
+        "exportFingerprint": "faec273d06df43e1dc0a10bfc99b79ce61e790935022708c07c143b367f88828"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:19:44.439Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:19:44.465Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:19:46.136Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:19:46.136Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:19:50.024Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:19:51.816Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:19:51.817Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:21:21.746Z"
+        }
+      ]
+    },
+    "anodized-brush-x-refined": {
+      "state": "published",
+      "jobId": "36dfc0ec-9ac0-40f1-9a34-746f0f671b71",
+      "metadata": {
+        "recipeFingerprint": "7a3b11ce16fb0e9f321dc700086c593fa0d425af5cc360214a5c9040f509fe52",
+        "bakeConfigFingerprint": "49be4825eed439c3b7589337c34af191516a5093a421a8aee4ef5dd3bd7af9f8",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "abb41bdd3e7604db9e8bfd7e1723a36fb9c562c4a5f4395cf41f6757a0dcf761",
+        "rawFingerprint": "f7af4332bdf22d3059023239d87a6f176e01e12f511126ef0dfc3067052677ff",
+        "bakeFingerprint": "52a582e8761b7c76c0eca3b5378e52daf557b81d2c19aa318f11ab03b4372e70",
+        "exportFingerprint": "f9c4fd6116282c7a4649c3fce0acce9d199535818724feec188f55c35abd9200"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:19:51.817Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:19:51.837Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:19:53.548Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:19:53.549Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:19:57.396Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:19:59.103Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:19:59.103Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:21:21.746Z"
+        }
+      ]
+    },
+    "wet-soot-x-refined": {
+      "state": "published",
+      "jobId": "b35d411c-5fca-4bdc-847b-efe6be2252cc",
+      "metadata": {
+        "recipeFingerprint": "1e7a763924e24ba9298f7d775e09422dbab53392205b470141d7114fc4ca0c4a",
+        "bakeConfigFingerprint": "f726f0960f2b086388421fc6877a217ceefeaba9cec59f4a4d88f664e400791e",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "f4bd2a96cbb90b0a31bae9321bdb091e18bcfc935f2a5cc39a9ff02abcf4959d",
+        "rawFingerprint": "1c00540416f3fe2c7c69eacb3a4a0392add11fed73bae1d5a895b150c2862402",
+        "bakeFingerprint": "f7bf5b068f84b36909a796327e00a87bbdc757e44b888afb8da8b1054774ea42",
+        "exportFingerprint": "0990aaf8d26b263265003cc707f63e214bd1e94bea059ebbf80ecb333c9cfa6e"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:19:59.103Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:19:59.126Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:20:00.913Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:20:00.914Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:20:04.875Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:20:06.904Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:20:06.904Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:21:21.746Z"
+        }
+      ]
+    },
+    "basalt-strata-x-refined": {
+      "state": "published",
+      "jobId": "f5e2c53e-2b64-4235-96ea-89815df02ca0",
+      "metadata": {
+        "recipeFingerprint": "de35e49319c9a5a54fee9da965df7a4d3a5325b80f086520e6d8d4468c0d4066",
+        "bakeConfigFingerprint": "9df3b18bec7224f8341af3697b704b3de4095a3987f2c8ac1fcafc8438fb8482",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "bb917adfdf19ab77cc9713c3e04c4d8fe833b24f262ba106b1f76a11226488b1",
+        "rawFingerprint": "8a0333616a3e95d84d7573cc127762012787763ff49cf2874d3970c23a45d51a",
+        "bakeFingerprint": "25011d117654ea79ced9d1424b2fbe26195633ad62275aadb8d598e11ac7fd3b",
+        "exportFingerprint": "41a8c9f7ba3529109fa65c5e05d3cf9ae7f1a899b8c4299a80dafc9510b7174d"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:20:06.904Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:20:06.924Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:20:08.643Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:20:08.643Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:20:12.568Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:20:14.469Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:20:14.469Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:21:21.747Z"
+        }
+      ]
+    },
+    "deep-silt-x-refined": {
+      "state": "published",
+      "jobId": "76775a92-f80c-4da1-a32b-56dc33ab9e93",
+      "metadata": {
+        "recipeFingerprint": "bb0cd89ad65efaf1d452809e1c47d28a1b83dec7ec7ae59a3784bfaeb29f5044",
+        "bakeConfigFingerprint": "0765961b92d97b7d919da8022f896f39a2bb1e26cae777f105b538e7ab77b86e",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "28e1bf401b73bed4e6a7eb4916ae2db3d47be4596d5302e4df1d5f1ea97c2531",
+        "rawFingerprint": "f1d0f939572bd1bb9a45ca47f1f0fd68cc3368339e89cbe19208c8ac5fe4c363",
+        "bakeFingerprint": "f838bdd21d0fea7c99c45fd3aef0ddc735e97b82763037f82647702922e53e83",
+        "exportFingerprint": "11e0f2aa34db6595974b331910d3526e23a9a4550d314c8df24956736830ffcd"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:20:14.469Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:20:14.493Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:20:16.264Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:20:16.265Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:20:20.201Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:20:22.003Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:20:22.004Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:21:21.747Z"
+        }
+      ]
+    },
+    "moss-lichen-x-refined": {
+      "state": "published",
+      "jobId": "7ff8cdc4-b802-4006-bdc9-7551bdac1e85",
+      "metadata": {
+        "recipeFingerprint": "29f7014e0877f438d44ce52333fc2238f30ffa6955ef1c991e04402b5cf0080b",
+        "bakeConfigFingerprint": "0750d67071a6f53bac6649a50fa5641671786f52503a39ddd1758f77e077bafc",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "7520d44ce5e89d812cc5703f62b5b23b3c89df251b32e501ddbbb48ec49b8818",
+        "rawFingerprint": "38bc7077e07e8b645d757f33cdcdf92a9aa816924a7c77f1fb652445769bfa15",
+        "bakeFingerprint": "63b7e85de4262b6afbf00c88c1bb861267f209c33f7ce5a4ac503584afb72eb1",
+        "exportFingerprint": "39fec6510fe90ae8c50a2cf78f4ffc599b3b5ac570f04e938d58ff9f10407f55"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:20:22.004Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:20:22.026Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:20:23.648Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:20:23.648Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:20:27.550Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:20:29.332Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:20:29.333Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:21:21.747Z"
+        }
+      ]
+    },
+    "leaf-veins-x-refined": {
+      "state": "published",
+      "jobId": "306a53a2-2c18-444a-bf4a-458682d45cb9",
+      "metadata": {
+        "recipeFingerprint": "4ea7cba102f7370ff16fdf7ddb12e9e3dd19f815925bc6d3e39a6852c55c015f",
+        "bakeConfigFingerprint": "9d99b51768843e1278add7c30255e9ba0602a4f70cebe49b275afd60c92e5561",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "347e48b616305e0725529f811d98354932d0eaaf0303fde29d4a58bce5a53a98",
+        "rawFingerprint": "fc71f8e0beb7680e6aaac33bbfaecc46e3aec3651efb64823fa6aa09fa42e974",
+        "bakeFingerprint": "8398f4f5c4b4f8161f3c51a4842187f72feefbf2b1731ce46cfa63ca69d78642",
+        "exportFingerprint": "08e7c0a42d2912d983b7e54c98aa29680b3672b00aaf0b4e44506a9a0d8ba1ce"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:20:29.333Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:20:29.352Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:20:30.950Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:20:30.950Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:20:34.990Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:20:36.830Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:20:36.830Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:21:21.747Z"
+        }
+      ]
+    },
+    "prismatic-etch-x-refined": {
+      "state": "published",
+      "jobId": "c1582bcf-edfd-40a4-9e2d-45cff9534aa7",
+      "metadata": {
+        "recipeFingerprint": "a7a50d5b4d20fdeae8b11102b8095d91a2005a7cc68a5ae569373a0ca2ade528",
+        "bakeConfigFingerprint": "a57de95a5cf036df05070f2f76535186ec3ddea8e9b5f67d5620102075be3364",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "e7a41d727a07c0992dc0472cef5bcbca3f76fa97a3ff51b6752ce55b11d5ddf0",
+        "rawFingerprint": "ebdd68d23fa3e7a27f8fd9ae2461b1c86fe7e559aa1444413e88079128dfe876",
+        "bakeFingerprint": "56aaf749e322b7472c838dcd09d29b2b8896e9ee8537de1085dd00741b4a8113",
+        "exportFingerprint": "770f3cb52b48ab770f849af70326a6231c4189f45180f274ab9770ea4442ce0a"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:20:36.831Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:20:36.852Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:20:38.476Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:20:38.476Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:20:42.452Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:20:44.303Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:20:44.304Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:21:21.748Z"
+        }
+      ]
+    },
+    "ribbed-steel-x-refined": {
+      "state": "published",
+      "jobId": "67f6b325-ad6f-43e6-9c59-61e48d3c54ad",
+      "metadata": {
+        "recipeFingerprint": "30c41f8cb310c60947cc22a02e641eb0c5dd4535a472b55294a34979de00aee1",
+        "bakeConfigFingerprint": "f055edc4ce6b441956301bb3e6243d03c427baf8c81967d8fd50d76208c3eced",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "5359f4fb643bb01a5843ae448f1ec76672b233259c1007e0d5799255f97ee4b7",
+        "rawFingerprint": "4c0fbf5f2706ef19b5c697e8492ada45c183f435bd85a24a5c05bd4ee560f4af",
+        "bakeFingerprint": "16f1bca3303242321049deddbaef1344abee668e46b0b10da64eeb0fb29cbb27",
+        "exportFingerprint": "11b6a245859f3ad753844c5b9e7770c700b17167b879c84de73855fe3c2434d0"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:20:44.304Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:20:44.323Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:20:46.146Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:20:46.147Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:20:50.106Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:20:51.723Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:20:51.724Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:21:21.748Z"
+        }
+      ]
+    },
+    "decal-stencil-x-refined": {
+      "state": "published",
+      "jobId": "38374f90-91de-4c07-8e28-127a92b51431",
+      "metadata": {
+        "recipeFingerprint": "3b44f1a522cea0f98cb0772a859399e5e2c78125fb4d05f73423e4657468403a",
+        "bakeConfigFingerprint": "539986bc0c911db32f10cf985475d5a5557ae2721d9e355340d31d6a0321a740",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "923e44f7c04aa2d96e677f3aae5f3e3c8f4aebf2c914e805c85db8f236f36c95",
+        "rawFingerprint": "09b553e2509f996e34de15f24c9cf5f23e26845a69a716e0d465ac84d33e4128",
+        "bakeFingerprint": "6b240e6481096e4c7b611447768ae2ea53e33745017d655d0b2dec691b0ab05c",
+        "exportFingerprint": "36a2b93da4f590add3c38b3071d4c2620acb791d7234feb55deceb9f8096dfb5"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:20:51.724Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:20:51.746Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:20:53.350Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:20:53.350Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:20:56.820Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:20:58.312Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:20:58.313Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:21:21.748Z"
+        }
+      ]
+    },
+    "cobble-sett-x-refined": {
+      "state": "published",
+      "jobId": "4c0663fa-0209-4c68-b480-f87d3d7e165d",
+      "metadata": {
+        "recipeFingerprint": "6f6c783c9d4445703ccb17cd6e0c7b5ba144db0af585f5a62eeb754fd8d8cd84",
+        "bakeConfigFingerprint": "0715086c6a1e338754dbe52812be3f265971d18fab6f7042a8d4ca8296869c5f",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "dac7beea0ddc16103ecda07f8c2b014769cb3e9b9d260c9f9e757fbe5823de63",
+        "rawFingerprint": "380154275cb945546227449109806a9b3278275cb748d49d18b4d356c32cff1c",
+        "bakeFingerprint": "92425eceedd54d7a53bbf447695e1161fb74c0bc626330bb104b85ca4655592f",
+        "exportFingerprint": "f0887a94049293b774f059f4e6865bb877f62b98728e648cce9558629996d213"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:20:58.313Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:20:58.332Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:20:59.943Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:20:59.943Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:21:04.223Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:21:06.597Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:21:06.598Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:21:21.748Z"
+        }
+      ]
+    },
+    "sea-flow-x-refined": {
+      "state": "published",
+      "jobId": "dc6dd001-2ae7-411b-aa4f-e6eaad708cad",
+      "metadata": {
+        "recipeFingerprint": "0acd7a590233158cffa779c943657b3c5700217d62bb92bb4cde0be456fecd7f",
+        "bakeConfigFingerprint": "59b381e5ba6c3fa672c1dcb568ac9b1d239304a2ab5cd9be253dcde34cc5eb1c",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "ede9a811fb070e2449a132cc4cc78f7ebecf8b00f4927ca410a19a15bac1a3f7",
+        "rawFingerprint": "3e2b26ac059c6ae76e58f2660f6b4a8ed7f48269c1c6d41fddba987e59ce1fd2",
+        "bakeFingerprint": "318d6c01d025de4abe25fe54a9b77bd81c7a14feba5d6109870effdf10dddbf6",
+        "exportFingerprint": "616ea955c67923b153b2e592629b90e82edf33b30c388e04fce70a3538010ac3"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:21:06.598Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:21:06.618Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:21:08.265Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:21:08.265Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:21:12.157Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:21:13.987Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:21:13.988Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:21:21.748Z"
+        }
+      ]
+    },
+    "quay-waterline-x-refined": {
+      "state": "published",
+      "jobId": "8a66b95a-04ef-4017-b9e8-fd0f505c13c5",
+      "metadata": {
+        "recipeFingerprint": "b3e674f71faf046325684a9c3308c2f0067f91e4ab81a4b57f2d2bb0b35f9ebd",
+        "bakeConfigFingerprint": "538f46b8dde8659a7f63318130757a0a08f281b26dcf30112d9dd98d43d054e7",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "cf05b2c0a278eea4e753532fdf092cbd7860a9cf1b64c0e48b054309f028c72e",
+        "rawFingerprint": "42e874b41475ae9ae51416798665e8d8a3f02d3e329fd86ce2bffff8abfd5497",
+        "bakeFingerprint": "0af12fdeeb51b0a838eb31eff56c46b1073caf9bfb5cb5ef00e672057ced84a0",
+        "exportFingerprint": "eb253653e264f0cfd558d2da2548639f163a45e6075770f9ea69f48b6d2f5ba5"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:21:13.988Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:21:14.011Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:21:15.725Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:21:15.725Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:21:19.736Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:21:21.744Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:21:21.745Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:21:21.748Z"
+        }
+      ]
+    }
+  }
+}

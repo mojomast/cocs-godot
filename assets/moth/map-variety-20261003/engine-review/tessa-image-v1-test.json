@@ -1,0 +1,231 @@
+{
+  "engineId": "tessa-image-v1-test",
+  "name": "Tessa Image",
+  "version": "0.1.3",
+  "creditsPerRun": 1,
+  "enabled": true,
+  "paramsSchema": {
+    "properties": {
+      "backend_name": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Backend/device to target. Required for mode='emu' (the real chip to simulate, e.g. 'sherbrooke') and mode='qpu' unless provider='ibm' (then omit to auto-select the least busy device). Ignored for mode='sim'.",
+        "title": "Backend Name"
+      },
+      "distortion": {
+        "default": 0,
+        "description": "Alpha for the exp(i*alpha/2*(P⊗Q)) gate applied between adjacent data qubits in transform_channels, where (P, Q) is `gate_pauli`.",
+        "title": "Distortion",
+        "type": "number"
+      },
+      "dynamical_decoupling": {
+        "default": true,
+        "description": "Whether mode='qpu' submissions get moth_backbone's dynamical_decoupling ('XY4') - pads idle-qubit time with pulses that cancel dephasing, no extra circuit executions, so it's on by default. Set False only to isolate its effect for a controlled comparison; normal callers should leave this on. Ignored for mode='sim'/'emu' (no idle-time dephasing to counteract either way).",
+        "title": "Dynamical Decoupling",
+        "type": "boolean"
+      },
+      "error_mitigation": {
+        "anyOf": [
+          {
+            "const": "zne",
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Real archaeo error mitigation, applied server-side by moth_backbone. Currently 'zne' (Zero-Noise Extrapolation) - genuine accuracy gain but runs the circuit at multiple noise-scaled variants, so real extra QPU time/cost. Opt-in only, never a silent default. Ignored for mode='sim'.",
+        "title": "Error Mitigation"
+      },
+      "fixed_palette": {
+        "default": false,
+        "description": "Import the image through a palette of its own colours (capped at 256) and run only the resulting per-pixel palette index through the device -- as exact, losslessly-quantized levels -- instead of decomposing it into the continuous colour-sphere coordinates. Good for flat-color/graphic-style images.",
+        "title": "Fixed Palette",
+        "type": "boolean"
+      },
+      "gate_pauli": {
+        "default": "XZ",
+        "description": "Which two-qubit Pauli pair (P, Q) to use for the exp(i*distortion/2*(P⊗Q)) gate applied between adjacent data qubits in transform_channels, e.g. 'XY', 'ZZ'.",
+        "pattern": "^[IXYZ]{2}$",
+        "title": "Gate Pauli",
+        "type": "string"
+      },
+      "max_tiles": {
+        "default": 16,
+        "description": "Safety cap on mode='emu'/'qpu' tiling (see the module's own tiling docstring): an oversized image for a fixed-capacity chip is now split into tiles instead of downsampled away, and real cost scales with the NUMBER of tiles (each is its own extra circuit in the shared submission, so real extra queue time/cost on mode='qpu'), not with pixel count directly - nothing bounds that automatically. Rejected outright (before any circuit runs) when the image would need more tiles than this. Raise explicitly to accept a bigger job's cost/time; ignored for mode='sim' (no fixed capacity to tile against - it grows its own lattice to fit instead, up to topology._MAX_LATTICE_DIM).",
+        "exclusiveMinimum": 0,
+        "title": "Max Tiles",
+        "type": "integer"
+      },
+      "mode": {
+        "default": "sim",
+        "description": "'sim' runs on a local noiseless simulator, sized to fit the image (no backend_name needed). 'emu' runs locally against a real IBM chip's own calibration snapshot via moth_backbone (needs an explicit backend_name, e.g. 'sherbrooke' - no 'fake_' prefix). 'qpu' submits to real hardware via moth_backbone.",
+        "enum": [
+          "sim",
+          "emu",
+          "qpu"
+        ],
+        "title": "Mode",
+        "type": "string"
+      },
+      "pole_clamp": {
+        "anyOf": [
+          {
+            "maximum": 1.5707963267948966,
+            "minimum": 0,
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "How far each single-field channel's (r/theta, or index for fixed_palette) encoded angle stays from the poles (theta=0/pi). HISTORICAL NOTE, why this defaults to 0 now: this field predates iqpixl's own linear-in-<Z> encoding fix (see Mode.angles' own docstring) - the ORIGINAL rationale was that theta=arccos(<Z>)'s decode slope is infinite at the poles, amplifying shot/readout noise hardest at extreme values, and a nonzero clamp bounded that slope. Once the encoding itself was changed so <Z> is linear in the value (no arccos anywhere in the decode path), that slope-blowup no longer exists, and re-measuring (same noisy local simulation, same realistic ~2-3%/qubit readout error this field's own earlier measurement used) found NO consistent benefit from a nonzero clamp any more - error was flat within noise across 0 to 0.2*pi. Shot-noise variance is actually LOWEST at the poles under the new encoding (a Bloch-sphere qubit's own measurement variance is (1-<Z>^2)/shots, minimized at <Z>=+-1), so clamping away from them now trades away real signal for no compensating benefit. Left as a settable escape hatch (e.g. for a systematic, non-shot-noise effect like T1 decay during measurement, which a per-cell affine/readout calibration - see codec.calibrate_readout - already corrects for anyway) rather than removed outright, but 0 is now the default for every mode, sim included (a field pinned exactly to a pole is a deterministic |0>/|1> measurement with ZERO shot variance regardless of shot count on a noiseless simulator - confirmed directly: a flat/grayscale image's exact noiseless round trip depends on this staying 0 there). Applies to every single-field channel (r always; theta/phi too when separate_rgb=True) - never to the paired theta/phi circuit (separate_rgb=False), whose own theta already gets iqpixl's own pair-mode default (0.2*pi) automatically, nor to fixed_palette's index channel, which stays exact (clamp=0) on purpose - quant_levels='auto' there promises a lossless round trip, and clamping would break that promise.",
+        "title": "Pole Clamp"
+      },
+      "provider": {
+        "anyOf": [
+          {
+            "enum": [
+              "ibm",
+              "iqm"
+            ],
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Execution family for mode='qpu'/'emu' - 'ibm' | 'iqm'. Omit for a real IBM device name (inferred), or for mode='emu' to reach IBM's fake_<chip> catalog; set 'iqm' for mode='emu' to reach IQM's own fake_<chip> catalog instead, or for mode='qpu' to target IQM hardware.",
+        "title": "Provider"
+      },
+      "range_correction": {
+        "default": false,
+        "description": "Stretch each decoded field back over its original dynamic range. Off by default -- the raw decoded values are used as-is, with no correction.",
+        "title": "Range Correction",
+        "type": "boolean"
+      },
+      "readout_calibration": {
+        "default": false,
+        "description": "Whether to measure and correct per-cell noise before decoding - iqpixl's own calibrate_affine: one real, GENERIC-data calibration circuit (same graph/mode/clamp as the real channels), fitting a per-cell affine <Z> gain/offset via least squares over that cell's own address configs. Its own circuits ride in the SAME combined submission as every channel this image decodes (see decode_channels) - not a separate batch, not once per channel or per cell. Corrects the real circuit's OWN accumulated gate error in addition to readout error (unlike a bare measurement-only calibration), because iqpixl's own linear-in-<Z> encoding (Mode.angles) makes a depolarizing-style contraction EXACTLY affine in the value. Confirmed empirically (noisy local simulation, realistic ~1%/qubit gate + ~2-3%/qubit readout error): mean reconstruction error dropped ~70% when enabled - confirm before assuming that figure holds at a different noise scale. Real, genuine extra cost (len(graph.groups) more circuits in the shared batch, at the same shots= as everything else) - opt-in, not a silent default, same reasoning as error_mitigation. KNOWN LIMITATION, not planned to change: the calibration circuits' shots are the SAME shots= as the real channels, with no independent knob - SubmitJobBatchRequest.shots is one value for the WHOLE batch by design (moth_backbone's own proto comment: a per-circuit override would silently split one real submission into several), and fixing that means either touching archaeo/moth_interconnect (out of scope) or giving calibration its own separate submission (a second real queue entry - exactly what batching this into one call exists to avoid). Low shots= can therefore under-shoot calibration's own stability - if that matters, use a higher shots= or leave this off. Ignored for mode='sim' (noiseless - the fit's own shot noise is then pure overhead with nothing to correct). With separate_rgb=False, the one paired theta/phi channel gets iqpixl's calibrate_readout (per-qubit confusion matrices) instead - calibrate_affine's own fit is tied to the clamp it was measured against, and that channel's own clamp differs from the other channels' (see decode_channels' own docstring). A fitted calibration is cached process-wide (keyed by backend/clamp/shots, with a TTL), so only the first image on a given backend/settings pays for it.",
+        "title": "Readout Calibration",
+        "type": "boolean"
+      },
+      "separate_rgb": {
+        "default": true,
+        "description": "Give each of the three colour coordinates its own circuit. Turn this off to put the two angles on one circuit instead: a qubit is cos(theta/2)|0> + e^(i phi)|1>, so the sphere's polar angle can ride in the rotation and hue in the phase of the same cell, turning three circuits into two at the cost of a second measurement setting and a noisier reconstruction. Ignored when fixed_palette is set.",
+        "title": "Separate Rgb",
+        "type": "boolean"
+      },
+      "shots": {
+        "default": 4096,
+        "description": "Base number of measurement shots to sample, per processed field. The ACTUAL submitted count scales with the graph's own worst-case cell degree (see decode_channels' own `_shots_for_graph`): every address config in a degree-d cell shares the SAME shot budget (one joint measurement setting reads all 2**d of them at once), so a higher-degree chip (e.g. IQM's square-lattice garnet) dilutes per-value precision more than a lower-degree one (e.g. IBM's heavy-hex fez) at the SAME nominal shots= - silently paying more error for the same setting. Scaled by 2**max_degree / 8 (degree 3 - the common heavy-hex case - is unchanged; higher-degree chips pay more shots, lower-degree ones fewer) so the same shots= means comparable per-value precision across backends, not the same literal circuit count.",
+        "exclusiveMinimum": 0,
+        "title": "Shots",
+        "type": "integer"
+      },
+      "simulator": {
+        "anyOf": [
+          {
+            "enum": [
+              "aer",
+              "pennylane_lightning",
+              "cudaq_sim"
+            ],
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "mode='sim' only - which local simulator moth_backbone executes circuits against. Defaults to 'aer'. 'pennylane_lightning' and 'cudaq_sim' are real, separate simulator backends (not aliases of aer) - useful to compare against aer's own time/fidelity, not just hardware's. Ignored for mode='emu'/'qpu'.",
+        "title": "Simulator"
+      },
+      "twirling": {
+        "default": true,
+        "description": "Whether mode='qpu' submissions get Pauli twirling on two-qubit gates - randomizes each physical CX/ECR instance's Pauli frame so coherent gate errors average into a stochastic channel across shots, no extra circuit executions, so it's on by default (same reasoning as dynamical_decoupling). IBM-only - real, already-wired archaeo capability (sampler.options.twirling); silently has no effect for provider='iqm' (logged server-side, not an error). Ignored for mode='sim'/'emu' (no gate-level noise model to twirl either way).",
+        "title": "Twirling",
+        "type": "boolean"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [
+    {
+      "name": "image",
+      "mime_types": [
+        "image/png",
+        "image/jpeg",
+        "image/webp",
+        "image/tiff",
+        "image/bmp"
+      ],
+      "required": true,
+      "description": "The image to encode. By default every pixel becomes a point on the colour sphere -- a radius and two angles, the same coordinates that describe a qubit's own state -- and each of those three goes through the quantum encode/measure/decode round trip, any that doesn't vary passed through unencoded, before the image is recomposed. With fixed_palette the image is instead quantized to a palette of its own colours (capped at 256) and only the per-pixel palette index makes the trip. The alpha channel, if any, passes through unchanged."
+    }
+  ],
+  "outputFiles": [
+    {
+      "name": "result",
+      "content_types": [
+        "image/png"
+      ],
+      "required": true,
+      "description": "The recomposed image after the quantum round trip."
+    }
+  ],
+  "runPolicy": {
+    "timeout": 18000,
+    "max_retries": 1,
+    "heartbeat": 6000
+  },
+  "errorCodes": [
+    {
+      "type": "invalid_image",
+      "description": "The image file could not be decoded."
+    },
+    {
+      "type": "distortion_without_hardware",
+      "description": "distortion is greater than 0 on a machine that reads out per-group (every machine except real IBM hardware) -- the cross-cell gate it adds is silently dropped there, so it would have no effect."
+    },
+    {
+      "type": "too_many_values",
+      "description": "mode='sim' only -- the image's pixel count exceeds the largest supported simulated lattice (64x64). \"sim\" sizes its own lattice to fit the image; this is what it hits instead once that growth runs out of room."
+    },
+    {
+      "type": "insufficient_qubits",
+      "description": "mode='sim' only -- the image's pixel count exceeds the data-qubit capacity of the largest lattice \"sim\" can grow to (see too_many_values). Not reachable for mode='emu'/'qpu', which tile an oversized image across a fixed-capacity chip instead (see too_many_tiles)."
+    },
+    {
+      "type": "too_many_tiles",
+      "description": "mode='emu'/'qpu' only -- the image needs more tiles than max_tiles allows to fit the selected machine's fixed data-qubit capacity. Each tile is a real backend submission, so this bounds real cost/time explicitly rather than tiling an arbitrarily large image for free; raise max_tiles to accept the extra cost, or shrink the image."
+    },
+    {
+      "type": "unsupported_machine",
+      "description": "the requested machine name isn't recognized."
+    },
+    {
+      "type": "ibm_connection_failed",
+      "description": "Could not authenticate/connect to IBM Quantum with the given token/instance."
+    },
+    {
+      "type": "submission_failed",
+      "description": "The transpiled circuit was rejected or the sampling job failed to submit."
+    },
+    {
+      "type": "encoding_failed",
+      "description": "The output image could not be encoded."
+    }
+  ]
+}

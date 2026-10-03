@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "wet-soot-x-refined",
+  "engine": "blur-core-v1",
+  "jobId": "b35d411c-5fca-4bdc-847b-efe6be2252cc",
+  "recipeFingerprint": "1e7a763924e24ba9298f7d775e09422dbab53392205b470141d7114fc4ca0c4a",
+  "generationFingerprint": "f4bd2a96cbb90b0a31bae9321bdb091e18bcfc935f2a5cc39a9ff02abcf4959d",
+  "verification": "new-request",
+  "rawFingerprint": "1c00540416f3fe2c7c69eacb3a4a0392add11fed73bae1d5a895b150c2862402",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 431204,
+    "sha256": "0dc9c24aaa0683cc2fc058a57e5ec1373b89cc5765ebc15f346905d387b5a7e3",
+    "jsonHash": "7994f91b375c65d7659e64b49cf48cb16c1e4d9584dc421c6c31da59116b4f56"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "records": [
+    {
+      "id": "moss-lichen-qpixl",
+      "jobId": "83d8426a-ef39-4c5c-ae08-265f33191de3",
+      "path": "http-scalar/moss-lichen-qpixl.json",
+      "bytes": 41670,
+      "sha256": "f7eac7798bde49083c09d6781a10efc0ac75c4df718b2cdc8a594fc1fb1ad53a",
+      "canonicalSha256": "fffa6355bc240cbc68c571324d63298e095ad0350bb1c67c38ed43c29456bcbb"
+    },
+    {
+      "id": "quay-waterline-qpixl",
+      "jobId": "10d07077-63c4-4b66-8623-c4d7de13ee74",
+      "path": "http-scalar/quay-waterline-qpixl.json",
+      "bytes": 20868,
+      "sha256": "2052276991a84498c84fc63a60b3d537c83874f4886d53c0bf06f1422b4dc28c",
+      "canonicalSha256": "060489bbe8d478f507c0a09a51dce2f5f3c443413f342fbb9af534fbd96f4f3d"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "engineId": "test-engine-submission-v1",
+  "name": "Test Engine Submission",
+  "version": null,
+  "creditsPerRun": 1,
+  "enabled": true,
+  "paramsSchema": {
+    "properties": {
+      "example": {
+        "default": "hello",
+        "description": "An example parameter",
+        "title": "Example",
+        "type": "string"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [],
+  "outputFiles": [],
+  "runPolicy": {
+    "timeout": 30,
+    "max_retries": 3,
+    "heartbeat": 60
+  },
+  "errorCodes": []
+}

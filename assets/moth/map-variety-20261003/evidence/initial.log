@@ -1,0 +1,146 @@
+
+> aggregate (blur-core-v1) — submit
+  submitted b6b43ff0-9962-49d4-be7a-a555d7ea7488
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.aggregate
+
+> cast-seams (blur-core-v1) — submit
+  submitted e76045bb-c860-4874-a1c2-136b83fb58c4
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.cast-seams
+
+> terracotta (blur-core-v1) — submit
+  submitted be436cfc-92ca-43ab-ad95-45c268bc7e95
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.terracotta
+
+> lime-plaster (blur-core-v1) — submit
+  submitted 80c55a22-14c1-4fc4-923f-2c8cbf6d4fb5
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.lime-plaster
+
+> oxidized-iron (blur-core-v1) — submit
+  submitted 8a24b3ab-aa05-4e02-80a2-d7671a860530
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.oxidized-iron
+
+> copper-patina (blur-core-v1) — submit
+  submitted 4ac2ba8f-f995-4068-ad8a-0f44063cb671
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.copper-patina
+
+> ceramic-enamel (blur-core-v1) — submit
+  submitted 600a94e1-8a06-4435-aabb-8a7cd10d0baa
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.ceramic-enamel
+
+> anodized-brush (blur-core-v1) — submit
+  submitted b3839608-a32f-4c50-a729-6df967591e8e
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.anodized-brush
+
+> iron-grate (blur-core-v1) — submit
+  submitted 8168939f-bf1c-47fc-ad5a-8173afe845e9
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.iron-grate
+
+> wet-soot (blur-core-v1) — submit
+  submitted f033bd87-7fe6-4240-b12c-1d8971aee927
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.wet-soot
+
+> salt-limestone (blur-core-v1) — submit
+  submitted eea99f12-9127-405e-8638-2bb2163cef46
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.salt-limestone
+
+> basalt-strata (blur-core-v1) — submit
+  submitted 17589d21-9a18-4dfe-a844-73a29100b240
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.basalt-strata
+
+> dune-sand (blur-core-v1) — submit
+  submitted d813f780-d96e-4a4f-a78b-3b9c41c3ea70
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.dune-sand
+
+> deep-silt (blur-core-v1) — submit
+  submitted ae462fc2-1aa5-41d1-9b77-4b2f90ae5f21
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.deep-silt
+
+> road-gravel (blur-core-v1) — submit
+  submitted 2a2ad170-c7f7-4d05-ba60-15c5c2f31a05
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.road-gravel
+
+> moss-lichen (blur-core-v1) — submit
+  submitted a5e564a8-428a-4ae2-bc81-63861a6ad96b
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.moss-lichen
+
+> bark-fibers (blur-core-v1) — submit
+  submitted d1bf63f6-1d30-4660-9091-34c66951dd6a
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.bark-fibers
+
+> leaf-veins (blur-core-v1) — submit
+  submitted a15acea2-9026-4e1a-a398-880a1f462394
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.leaf-veins
+
+> frosted-glass (blur-core-v1) — submit
+  submitted 70894686-ba2b-49ff-899e-e7fa37c51e4c
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.frosted-glass
+
+> prismatic-etch (blur-core-v1) — submit
+  submitted 8be51b46-175c-492a-8ffb-87ee952fb3d3
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.prismatic-etch
+
+> viaduct-asphalt (blur-core-v1) — submit
+  submitted 5023e7ff-76a3-49a1-a8e8-fc6d3c0cd6e6
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.viaduct-asphalt
+
+> ribbed-steel (blur-core-v1) — submit
+  submitted 9a489657-80b5-4236-8fd0-225c5ffa9f87
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.ribbed-steel
+
+> trim-wear (blur-core-v1) — submit
+  submitted 8cf0bdad-a78b-4bf7-9971-e385c2bc0462
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.trim-wear
+
+> decal-stencil (blur-core-v1) — submit
+  submitted 36c11ff5-5828-4e21-a20b-49cd9395647d
+  pending
+  completed (done) — Recovered 14-qubit grid from measurement
+  baked grids.decal-stencil
+recorded job ids in /tmp/opencode/cocs-moth-resources/assets/moth/map-variety-20261003/live.json
+baked 24 record(s) from 24 job(s) into /tmp/opencode/cocs-moth-resources/assets/moth/map-variety-20261003/provider · {"grids":24} · failed: 0

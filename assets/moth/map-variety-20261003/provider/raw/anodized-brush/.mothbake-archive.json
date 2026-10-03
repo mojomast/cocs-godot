@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "anodized-brush",
+  "engine": "blur-core-v1",
+  "jobId": "b3839608-a32f-4c50-a729-6df967591e8e",
+  "recipeFingerprint": "3faeaee6f3e20bd50354521c0bf1733f29fa86840b32666f70a97d12551e0f6e",
+  "generationFingerprint": "6a1179459fb8076a1b0cca9be49631b896b82af638b1f99ac65374777908e5dd",
+  "verification": "new-request",
+  "rawFingerprint": "904cfe36325f812f1f06ae3610018ce3b01e483c5d6b59f5a8ce65e8522eaac7",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 437597,
+    "sha256": "d8c8521a80baca7c145159a5c03c1751806a107626f271febd8527e0ea3b5edc",
+    "jsonHash": "cda810658df2bb72ebe0e9f49e3e3085b43e2a1c13e3e80bca7b9c63c86d210d"
+  }
+}

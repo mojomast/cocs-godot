@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "quay-waterline-tessa-palette",
+  "engine": "tessa-image-v1",
+  "jobId": "9bd0c9b1-397d-4a94-862e-c7a12048a2f0",
+  "recipeFingerprint": "5bfe8cd0e166d1c740388a275c5686fda16db819dee29dd64814286763bb57f5",
+  "generationFingerprint": "9f79186a699e74b2b6ea0ee894f32ae32468852c9c61300edf123b4644e99ca9",
+  "verification": "new-request",
+  "rawFingerprint": "849d15d1995fd79cea6ebc8d31c20efbc52ee00741197d2d847329215167bd7c",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "1cee9883-ddbc-4910-8a75-173581ce7260",
+      "bytes": 4591,
+      "sha256": "2d4dd41e2ac99c4076d1fe2578fe83fb562803e1d9d5c89ba357d530d9629859"
+    }
+  ],
+  "result": null
+}

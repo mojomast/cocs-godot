@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "quay-waterline-x-refined",
+  "engine": "blur-core-v1",
+  "jobId": "8a66b95a-04ef-4017-b9e8-fd0f505c13c5",
+  "recipeFingerprint": "b3e674f71faf046325684a9c3308c2f0067f91e4ab81a4b57f2d2bb0b35f9ebd",
+  "generationFingerprint": "cf05b2c0a278eea4e753532fdf092cbd7860a9cf1b64c0e48b054309f028c72e",
+  "verification": "new-request",
+  "rawFingerprint": "42e874b41475ae9ae51416798665e8d8a3f02d3e329fd86ce2bffff8abfd5497",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 427727,
+    "sha256": "ffffd2745885afc3e21d0fbb29b254209fdf1a0a9d4de41fbe94e4e353742d7b",
+    "jsonHash": "07cf6c93fe4991047f36cb8a39ec2a2f3caae70d3bd5f61223f2b0597b64496a"
+  }
+}

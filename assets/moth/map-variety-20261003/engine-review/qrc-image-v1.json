@@ -1,0 +1,134 @@
+{
+  "engineId": "qrc-image-v1",
+  "name": "QRC Image",
+  "version": null,
+  "creditsPerRun": 5,
+  "enabled": true,
+  "paramsSchema": {
+    "properties": {
+      "fps": {
+        "default": 4,
+        "description": "Frames per second for the generated GIF.",
+        "exclusiveMinimum": 0,
+        "maximum": 30,
+        "title": "Fps",
+        "type": "number"
+      },
+      "length": {
+        "default": 10,
+        "description": "Number of frames to generate",
+        "exclusiveMinimum": 0,
+        "maximum": 500,
+        "title": "Length",
+        "type": "integer"
+      },
+      "periodic": {
+        "default": true,
+        "description": "Allow training windows to wrap past the end of `training_sequence` back to the start, treating it as cyclic. Used only when training (state is absent); ignored otherwise.",
+        "title": "Periodic",
+        "type": "boolean"
+      },
+      "quality": {
+        "default": "moderate",
+        "description": "Training effort, used only when training (i.e. `state` is absent): fast is quick and rough, complete trains longest on the most data.",
+        "enum": [
+          "fast",
+          "moderate",
+          "complete"
+        ],
+        "title": "Quality",
+        "type": "string"
+      },
+      "seed": {
+        "anyOf": [
+          {
+            "maximum": 4294967295,
+            "minimum": 0,
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Top-level RNG seed for training. Used only when training (state is absent); None picks a random seed for this run, recorded in the returned state so the exact run can be reproduced later by passing it back explicitly. Ignored when continuing from a state — its own build seed is always reused, since a different value would reconstruct a different physical reservoir than the one the readout was trained against.",
+        "title": "Seed"
+      },
+      "training_sequence": {
+        "anyOf": [
+          {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Sequence of filenames from `vocabulary`, in training order. Required when `state` is not given (there's nothing yet to continue from); ignored otherwise.",
+        "title": "Training Sequence"
+      },
+      "variation": {
+        "default": 1,
+        "description": "Sampling temperature: low = deterministic/repetitive, high = random",
+        "exclusiveMinimum": 0,
+        "title": "Variation",
+        "type": "number"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [
+    {
+      "name": "vocabulary",
+      "mime_types": [
+        "application/zip"
+      ],
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "state",
+      "mime_types": [
+        "application/json"
+      ],
+      "required": false,
+      "description": ""
+    }
+  ],
+  "outputFiles": [
+    {
+      "name": "result",
+      "content_types": [
+        "image/gif"
+      ],
+      "required": true,
+      "description": "The generated GIF."
+    },
+    {
+      "name": "state",
+      "content_types": [
+        "application/json"
+      ],
+      "required": true,
+      "description": "Advanced reservoir state; reuse on a later call as job:<id>/state."
+    },
+    {
+      "name": "vocabulary",
+      "content_types": [
+        "application/zip"
+      ],
+      "required": true,
+      "description": "Frame vocabulary; reuse as job:<id>/vocabulary."
+    }
+  ],
+  "runPolicy": {
+    "timeout": 3600,
+    "max_retries": 1,
+    "heartbeat": 3000
+  },
+  "errorCodes": []
+}

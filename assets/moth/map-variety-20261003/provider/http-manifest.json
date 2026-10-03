@@ -1,0 +1,321 @@
+{
+  "version": 1,
+  "operation": "GET completed job results, no submissions",
+  "records": [
+    {
+      "id": "aggregate",
+      "jobId": "b6b43ff0-9962-49d4-be7a-a555d7ea7488",
+      "path": "provider/http/aggregate.json",
+      "bytes": 315925,
+      "sha256": "4bfcb497996ad74175d6e9ceda5148721c84922d09b969a227c1882d1bf36d75"
+    },
+    {
+      "id": "cast-seams",
+      "jobId": "e76045bb-c860-4874-a1c2-136b83fb58c4",
+      "path": "provider/http/cast-seams.json",
+      "bytes": 320594,
+      "sha256": "d28dd8f4e3e3f2c5f33c534c9c357b28a8a94a6ed515dc706788e4ce11d45acc"
+    },
+    {
+      "id": "terracotta",
+      "jobId": "be436cfc-92ca-43ab-ad95-45c268bc7e95",
+      "path": "provider/http/terracotta.json",
+      "bytes": 310383,
+      "sha256": "7a70928cfce6deeca38c4b056849ba44eaa53e5e17abf223500bf953c1b964fb"
+    },
+    {
+      "id": "lime-plaster",
+      "jobId": "80c55a22-14c1-4fc4-923f-2c8cbf6d4fb5",
+      "path": "provider/http/lime-plaster.json",
+      "bytes": 322877,
+      "sha256": "baa48660f984fbc9f2fdd63d61022edb25e1846f23063f968475708c9f6852d5"
+    },
+    {
+      "id": "oxidized-iron",
+      "jobId": "8a24b3ab-aa05-4e02-80a2-d7671a860530",
+      "path": "provider/http/oxidized-iron.json",
+      "bytes": 315484,
+      "sha256": "033124f7de41be2ff7d7845d5e1b6a980851d6f960f09e2e466c4f372629a6ab"
+    },
+    {
+      "id": "copper-patina",
+      "jobId": "4ac2ba8f-f995-4068-ad8a-0f44063cb671",
+      "path": "provider/http/copper-patina.json",
+      "bytes": 320940,
+      "sha256": "ed6b57d572cab2d145f11f25947eb3e19a7ff968f1f2623afc32d6588e1fdcbe"
+    },
+    {
+      "id": "ceramic-enamel",
+      "jobId": "600a94e1-8a06-4435-aabb-8a7cd10d0baa",
+      "path": "provider/http/ceramic-enamel.json",
+      "bytes": 310332,
+      "sha256": "0a479fa843064d9d9d63f08544eee99614607736a5427b4a7537d97f8f9049b7"
+    },
+    {
+      "id": "anodized-brush",
+      "jobId": "b3839608-a32f-4c50-a729-6df967591e8e",
+      "path": "provider/http/anodized-brush.json",
+      "bytes": 321705,
+      "sha256": "91e0983209da18391427b1dbc8a71d6a498c232310d32a3d3a42a547215ac090"
+    },
+    {
+      "id": "iron-grate",
+      "jobId": "8168939f-bf1c-47fc-ad5a-8173afe845e9",
+      "path": "provider/http/iron-grate.json",
+      "bytes": 313439,
+      "sha256": "127fa65f259069c00d72febddacedbba9bcd700960b8d8334a3dcaa312309426"
+    },
+    {
+      "id": "wet-soot",
+      "jobId": "f033bd87-7fe6-4240-b12c-1d8971aee927",
+      "path": "provider/http/wet-soot.json",
+      "bytes": 321178,
+      "sha256": "4b107bedbb122f62c53435d1f1299053f8f6b753d6e880f7f803256f8a74c20a"
+    },
+    {
+      "id": "salt-limestone",
+      "jobId": "eea99f12-9127-405e-8638-2bb2163cef46",
+      "path": "provider/http/salt-limestone.json",
+      "bytes": 314107,
+      "sha256": "356d3bc07ced77e27609d24dbb9ea3b1e1161bd4c6bfc5822fc965927c79fce0"
+    },
+    {
+      "id": "basalt-strata",
+      "jobId": "17589d21-9a18-4dfe-a844-73a29100b240",
+      "path": "provider/http/basalt-strata.json",
+      "bytes": 322678,
+      "sha256": "d0985e08fdd64beab65a976e8f1515dacd4968338f7aaec0bacdec2e198a09a8"
+    },
+    {
+      "id": "dune-sand",
+      "jobId": "d813f780-d96e-4a4f-a78b-3b9c41c3ea70",
+      "path": "provider/http/dune-sand.json",
+      "bytes": 313030,
+      "sha256": "6c6a3009070e6428258e2e7f4323c6a675f2f4d80a73a467eebecf9282b3ca96"
+    },
+    {
+      "id": "deep-silt",
+      "jobId": "ae462fc2-1aa5-41d1-9b77-4b2f90ae5f21",
+      "path": "provider/http/deep-silt.json",
+      "bytes": 321015,
+      "sha256": "643ddc52083dc6802b09a793312b97038a51505ce458241073c4e644d62f410f"
+    },
+    {
+      "id": "road-gravel",
+      "jobId": "2a2ad170-c7f7-4d05-ba60-15c5c2f31a05",
+      "path": "provider/http/road-gravel.json",
+      "bytes": 315024,
+      "sha256": "329e15f8a56eab0aa6340032183f7db8afa0c5e495c0234df3eb2b3f3a652fc0"
+    },
+    {
+      "id": "moss-lichen",
+      "jobId": "a5e564a8-428a-4ae2-bc81-63861a6ad96b",
+      "path": "provider/http/moss-lichen.json",
+      "bytes": 323677,
+      "sha256": "7dab938683b9953a1520caab5470b6ae6f86b1d22bf1e9a7b284164785e9f521"
+    },
+    {
+      "id": "bark-fibers",
+      "jobId": "d1bf63f6-1d30-4660-9091-34c66951dd6a",
+      "path": "provider/http/bark-fibers.json",
+      "bytes": 312957,
+      "sha256": "5a0a3d05376773187b62022d932c31d9e9cf210f73a6f275d52677bffa78af91"
+    },
+    {
+      "id": "leaf-veins",
+      "jobId": "a15acea2-9026-4e1a-a398-880a1f462394",
+      "path": "provider/http/leaf-veins.json",
+      "bytes": 323972,
+      "sha256": "385823d6cb3370aa5afa1493f937f0765c39b002c54a0cdb0e7b55884c0a48eb"
+    },
+    {
+      "id": "frosted-glass",
+      "jobId": "70894686-ba2b-49ff-899e-e7fa37c51e4c",
+      "path": "provider/http/frosted-glass.json",
+      "bytes": 314535,
+      "sha256": "c50e60bfe0dbaf408de6e67eac38eaaa906225a857bac33dd46c4511a9fbfe7d"
+    },
+    {
+      "id": "prismatic-etch",
+      "jobId": "8be51b46-175c-492a-8ffb-87ee952fb3d3",
+      "path": "provider/http/prismatic-etch.json",
+      "bytes": 323336,
+      "sha256": "22f6fe94c058800a6698b0b2e32ae670554418d6c94780fec0016f0fb8ca5795"
+    },
+    {
+      "id": "viaduct-asphalt",
+      "jobId": "5023e7ff-76a3-49a1-a8e8-fc6d3c0cd6e6",
+      "path": "provider/http/viaduct-asphalt.json",
+      "bytes": 314470,
+      "sha256": "be42234b500997e6864e4710afe96bc4d2d8d17111640509248c878c59fa7f01"
+    },
+    {
+      "id": "ribbed-steel",
+      "jobId": "9a489657-80b5-4236-8fd0-225c5ffa9f87",
+      "path": "provider/http/ribbed-steel.json",
+      "bytes": 320457,
+      "sha256": "bca3a77b5822e1bff4d9d753fd76406295523101b59585821b4aef9d8b4dbb7a"
+    },
+    {
+      "id": "trim-wear",
+      "jobId": "8cf0bdad-a78b-4bf7-9971-e385c2bc0462",
+      "path": "provider/http/trim-wear.json",
+      "bytes": 311652,
+      "sha256": "e75159ffb8600906910a6884e85515ea1ccacf8eff65334d5b1331fbfdba2e2e"
+    },
+    {
+      "id": "decal-stencil",
+      "jobId": "36c11ff5-5828-4e21-a20b-49cd9395647d",
+      "path": "provider/http/decal-stencil.json",
+      "bytes": 329561,
+      "sha256": "da25bdee41ee7f692c39b41bb07733b2b00e8e75791efc2b7d041ccb2cf697c5"
+    },
+    {
+      "id": "slate-shingle",
+      "jobId": "e6e2c413-fc42-4301-aee9-134d0060fdcc",
+      "path": "provider/http/slate-shingle.json",
+      "bytes": 310314,
+      "sha256": "e46a2dfbed4b0e7724c71aed8cea5789c1edde147f8e211f4f0a71b0c19d0722"
+    },
+    {
+      "id": "cobble-sett",
+      "jobId": "3fac8d90-53ed-483e-8907-3fc1cab78adf",
+      "path": "provider/http/cobble-sett.json",
+      "bytes": 320050,
+      "sha256": "47a74ae86a58860ae10be3b5757acb1032e84d97d8424b3594690cb01877f161"
+    },
+    {
+      "id": "fern-frond",
+      "jobId": "20ec5563-3b66-436e-a345-ec907a37ad3c",
+      "path": "provider/http/fern-frond.json",
+      "bytes": 323809,
+      "sha256": "62f411a7b02996a913ae2a72f06e398a309416a12c0db2eedd329ec1b13ad432"
+    },
+    {
+      "id": "sea-flow",
+      "jobId": "a2a37484-b842-4404-a09e-bbc536f84002",
+      "path": "provider/http/sea-flow.json",
+      "bytes": 322233,
+      "sha256": "d5ad8b77182dd3760bb96432cc3530650560881b7754fafdd47a7785dc128c33"
+    },
+    {
+      "id": "timber-weather",
+      "jobId": "3fd13eaf-e9b1-444b-9e15-364435aa7b2e",
+      "path": "provider/http/timber-weather.json",
+      "bytes": 313595,
+      "sha256": "b7b5ffb0166a23141ebc8e2881bc4db877a2edf4a783970984f4ebca41005a1d"
+    },
+    {
+      "id": "quay-waterline",
+      "jobId": "f28876be-f9e2-49c1-a8b4-fe3d49a0bdd8",
+      "path": "provider/http/quay-waterline.json",
+      "bytes": 320155,
+      "sha256": "cab2ae6dd0e70b76dc54c1aeea5f4d9082f7d26bf2ebed71423333a1675d2614"
+    },
+    {
+      "id": "cast-seams-x-refined",
+      "jobId": "aa239b82-f2d7-4a0d-a50d-6984134e987f",
+      "path": "provider/http/cast-seams-x-refined.json",
+      "bytes": 312228,
+      "sha256": "1421e7ea61e4d6e50fe1a5f29d0da900cfeb1c606e5a51d8463dce3bbd9dc933"
+    },
+    {
+      "id": "lime-plaster-x-refined",
+      "jobId": "6e0cbdce-4f12-48c3-8582-738b7cc1c8bd",
+      "path": "provider/http/lime-plaster-x-refined.json",
+      "bytes": 314740,
+      "sha256": "fc0c5bb0cf0fb9eb63a95df98e6b655187c946b3a8d890b70db1f652634c6a50"
+    },
+    {
+      "id": "copper-patina-x-refined",
+      "jobId": "77d16376-94cd-4779-bbd3-8dbd96823c18",
+      "path": "provider/http/copper-patina-x-refined.json",
+      "bytes": 313631,
+      "sha256": "4b79da686b5f65c2a6d965397b345b0ddb5c45b6487ca87320f95a319beb7c1a"
+    },
+    {
+      "id": "anodized-brush-x-refined",
+      "jobId": "36dfc0ec-9ac0-40f1-9a34-746f0f671b71",
+      "path": "provider/http/anodized-brush-x-refined.json",
+      "bytes": 313058,
+      "sha256": "ff528c8467daa8bef1177710a77b23f68d0ad9a1a98d38db7dd6f3db75e12187"
+    },
+    {
+      "id": "wet-soot-x-refined",
+      "jobId": "b35d411c-5fca-4bdc-847b-efe6be2252cc",
+      "path": "provider/http/wet-soot-x-refined.json",
+      "bytes": 315312,
+      "sha256": "62373e11ca8fe35f4d21da59b5c294aa0feb6d6bdc362fe51a1e9a0a2037c549"
+    },
+    {
+      "id": "basalt-strata-x-refined",
+      "jobId": "f5e2c53e-2b64-4235-96ea-89815df02ca0",
+      "path": "provider/http/basalt-strata-x-refined.json",
+      "bytes": 312780,
+      "sha256": "642b2df6e20903e25c9b979701b7c0916b9d58494a3d7c0a3716f041d647e22f"
+    },
+    {
+      "id": "deep-silt-x-refined",
+      "jobId": "76775a92-f80c-4da1-a32b-56dc33ab9e93",
+      "path": "provider/http/deep-silt-x-refined.json",
+      "bytes": 315599,
+      "sha256": "e7a8e654f6eb7617f11003cf02b694e8d38ba93a21dd76095d3ac50f51642fd0"
+    },
+    {
+      "id": "moss-lichen-x-refined",
+      "jobId": "7ff8cdc4-b802-4006-bdc9-7551bdac1e85",
+      "path": "provider/http/moss-lichen-x-refined.json",
+      "bytes": 315092,
+      "sha256": "27052dcd154a49d551897608ab170d4f1681d223dd26ecc422a1f40b56e66426"
+    },
+    {
+      "id": "leaf-veins-x-refined",
+      "jobId": "306a53a2-2c18-444a-bf4a-458682d45cb9",
+      "path": "provider/http/leaf-veins-x-refined.json",
+      "bytes": 320394,
+      "sha256": "cdbf979856cbc28b6f9cac0bc83f66a557ae9bc6e9383353d0597d17559240fc"
+    },
+    {
+      "id": "prismatic-etch-x-refined",
+      "jobId": "c1582bcf-edfd-40a4-9e2d-45cff9534aa7",
+      "path": "provider/http/prismatic-etch-x-refined.json",
+      "bytes": 321728,
+      "sha256": "1acc1b1bb9b1585b7bee098196673135b93cbb255f26bd1a3bcd1a687a216a1f"
+    },
+    {
+      "id": "ribbed-steel-x-refined",
+      "jobId": "67f6b325-ad6f-43e6-9c59-61e48d3c54ad",
+      "path": "provider/http/ribbed-steel-x-refined.json",
+      "bytes": 312955,
+      "sha256": "82ad38084503a66d59d8dc52f35aadb84547491bc1ad4d1c07ae12abc6d46f2c"
+    },
+    {
+      "id": "decal-stencil-x-refined",
+      "jobId": "38374f90-91de-4c07-8e28-127a92b51431",
+      "path": "provider/http/decal-stencil-x-refined.json",
+      "bytes": 319742,
+      "sha256": "1795c7a9b66cf547577aa8aec72038700d7e74e1bd0961fadd45b3691bfb25a4"
+    },
+    {
+      "id": "cobble-sett-x-refined",
+      "jobId": "4c0663fa-0209-4c68-b480-f87d3d7e165d",
+      "path": "provider/http/cobble-sett-x-refined.json",
+      "bytes": 312587,
+      "sha256": "bee5769688f476796faa6d5c11241b04aeab9435f01317ea93e967d352ef3a08"
+    },
+    {
+      "id": "sea-flow-x-refined",
+      "jobId": "dc6dd001-2ae7-411b-aa4f-e6eaad708cad",
+      "path": "provider/http/sea-flow-x-refined.json",
+      "bytes": 312392,
+      "sha256": "ee982b4679222d6ac3694aa7482257e6bbb8eb03965b2fd5e5dbcc9cce0bded9"
+    },
+    {
+      "id": "quay-waterline-x-refined",
+      "jobId": "8a66b95a-04ef-4017-b9e8-fd0f505c13c5",
+      "path": "provider/http/quay-waterline-x-refined.json",
+      "bytes": 311835,
+      "sha256": "d11294aecb0ce13e1cf5c1a28f6040abf2e816a4eb5f881c75f1c345c76309f4"
+    }
+  ]
+}

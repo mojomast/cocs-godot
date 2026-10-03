@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "copper-patina-tele-global",
+  "engine": "telablur-v1",
+  "jobId": "e95a4f5d-1871-4c56-a310-b62fd91591a7",
+  "recipeFingerprint": "fda3c0c3296ccb766a61022a7ca301489532475da3ca3dee4373bac9ce613448",
+  "generationFingerprint": "d5b47c542bb25140b9b66f88f14b874d02703b3de7cebce1fe4c1a4bcd42420f",
+  "verification": "concurrent-new-request",
+  "rawFingerprint": "5552b3880af0b3b85b0a75ad6e371567c3a6a2a9b0ac6e5f71e4506bd7234bd1",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "254510d0-5a26-48e3-aebd-f6ca4fe6837f",
+      "bytes": 4611,
+      "sha256": "10dc642ec6ecd6cbb505b1c89cd4ed23159539cb11a9d9648684438b9b2a6099"
+    }
+  ],
+  "result": null
+}

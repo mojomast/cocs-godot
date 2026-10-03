@@ -1,0 +1,129 @@
+{
+  "id": "copper-patina-kernel-four",
+  "batch": 4,
+  "engine": "deep-fryer-v1",
+  "params": {
+    "gates": [
+      [
+        "rx",
+        0.1
+      ]
+    ],
+    "tile_size": 4
+  },
+  "inputs": {
+    "image": "sources/copper-patina-source.png"
+  },
+  "recipeFingerprint": "61b66a05892286f95e64dd981c52e2e60b912ea840cff0588fbcc2a15d2d2142",
+  "state": "completed",
+  "jobId": "0813a770-dfac-4bc4-8f37-11aaa74308d4",
+  "attempts": [
+    {
+      "startMonotonicMs": 1791042352514.549,
+      "startUTC": "2026-10-03T15:45:52.514Z",
+      "endMonotonicMs": 1791042354093.1228,
+      "http": 202,
+      "durationMs": 1578.57373046875
+    }
+  ],
+  "observations": [
+    {
+      "atUTC": "2026-10-03T15:45:56.810Z",
+      "monotonicMs": 1791042356810.0623,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:46:03.161Z",
+      "monotonicMs": 1791042363161.5234,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:46:08.441Z",
+      "monotonicMs": 1791042368441.863,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:46:11.629Z",
+      "monotonicMs": 1791042371629.8994,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:46:15.581Z",
+      "monotonicMs": 1791042375581.3708,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:46:20.628Z",
+      "monotonicMs": 1791042380628.7058,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:46:26.367Z",
+      "monotonicMs": 1791042386367.0828,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:46:32.039Z",
+      "monotonicMs": 1791042392039.8586,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:46:37.792Z",
+      "monotonicMs": 1791042397792.3103,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:46:43.530Z",
+      "monotonicMs": 1791042403530.5957,
+      "status": "queued",
+      "step": null,
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:46:49.332Z",
+      "monotonicMs": 1791042409332.487,
+      "status": "processing",
+      "step": "run",
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:46:55.730Z",
+      "monotonicMs": 1791042415730.4966,
+      "status": "completed",
+      "step": "run",
+      "startedAt": null,
+      "completedAt": null
+    }
+  ],
+  "submittedAt": "2026-10-03T15:45:53Z",
+  "archived": true
+}

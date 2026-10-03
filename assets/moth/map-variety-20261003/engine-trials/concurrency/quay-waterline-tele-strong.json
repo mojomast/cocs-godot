@@ -1,0 +1,46 @@
+{
+  "id": "quay-waterline-tele-strong",
+  "batch": 4,
+  "engine": "telablur-v1",
+  "params": {
+    "strength": 0.55,
+    "direction": "horizontal",
+    "size": 64
+  },
+  "inputs": {
+    "image1": "sources/quay-waterline-source.png",
+    "image2": "sources/quay-waterline-target.png"
+  },
+  "recipeFingerprint": "2c9b5efec796606acd7354334f35d453e43e7ce1321dc189be6e9329cfa60a8f",
+  "state": "completed",
+  "jobId": "3a666634-4519-4984-a96b-84a11737fabd",
+  "attempts": [
+    {
+      "startMonotonicMs": 1791042352514.7708,
+      "startUTC": "2026-10-03T15:45:52.514Z",
+      "endMonotonicMs": 1791042355411.9548,
+      "http": 202,
+      "durationMs": 2897.18408203125
+    }
+  ],
+  "observations": [
+    {
+      "atUTC": "2026-10-03T15:45:57.573Z",
+      "monotonicMs": 1791042357574.012,
+      "status": "processing",
+      "step": "teleport",
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:46:05.130Z",
+      "monotonicMs": 1791042365130.0618,
+      "status": "completed",
+      "step": "encode",
+      "startedAt": null,
+      "completedAt": null
+    }
+  ],
+  "submittedAt": "2026-10-03T15:45:53Z",
+  "archived": true
+}

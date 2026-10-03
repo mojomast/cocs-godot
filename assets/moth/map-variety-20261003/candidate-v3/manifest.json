@@ -1,0 +1,952 @@
+{
+  "schema": "moth-map-material-overlay/v1",
+  "status": "candidate-awaiting-Blender-review",
+  "packId": "map-variety-20261003-image-overlay",
+  "basePack": {
+    "manifest": "../candidate-v2/manifest.json",
+    "sha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+  },
+  "tool": {
+    "commit": "69c62d7c4bd754340623a4a7fa93bfa970e5ab73",
+    "generationCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+    "repository": "https://github.com/mojomast/mothbake",
+    "node": "22.23.1"
+  },
+  "materials": [
+    {
+      "id": "copper-heat-oxide",
+      "trial": "copper-patina-kernel-global",
+      "role": "copper-patina",
+      "maps": [
+        "Helix",
+        "Gravemill",
+        "Parallax",
+        "Abyssal"
+      ],
+      "reason": "Useful warm oxide/green coating shift without losing mottled structure; luminance correlation .969 and gradient correlation .816. Select first result; tile-size-four comparison was byte-identical.",
+      "baseFamily": "copper-patina",
+      "derivedVariant": true,
+      "channels": {
+        "albedo": "copper-heat-oxide.albedo",
+        "normal": "copper-heat-oxide.normal",
+        "roughness": "copper-heat-oxide.roughness",
+        "height": "copper-heat-oxide.height",
+        "wear": "copper-heat-oxide.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.008,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "sourceColorSpace": "srgb",
+      "colorInterpretation": "provider RGB preserved in linear light; same explicit seam repair per channel",
+      "heightInterpretation": "0.9 authored structure + 0.09999999999999998 normalized provider luminance; heuristic, not measured relief",
+      "densityTag": "surface-256px-per-meter",
+      "quality": {
+        "albedo": {
+          "edgeMean": 0.005208333333333333,
+          "interiorMean": 0.17880203237116765,
+          "ratio": 0.029129049956890713
+        },
+        "normal": {
+          "edgeMean": 0.10709635416666667,
+          "interiorMean": 0.32726565048108286,
+          "ratio": 0.3272459361660298
+        },
+        "roughness": {
+          "edgeMean": 0.0107421875,
+          "interiorMean": 0.36588223153131116,
+          "ratio": 0.029359686189299725
+        },
+        "height": {
+          "edgeMean": 0.1005859375,
+          "interiorMean": 3.1811074333414875,
+          "ratio": 0.03161978638185849
+        },
+        "wear": {
+          "edgeMean": 0.0693359375,
+          "interiorMean": 2.2885866407778863,
+          "ratio": 0.030296400522740467
+        }
+      },
+      "comparisonMetrics": {
+        "linearRGBMeanAbsoluteChange": 0.01823870467069266,
+        "sourceLuminanceCorrelation": 0.9694828006363934,
+        "gradientFeatureCorrelation": 0.8161420910571997,
+        "sourceAxisRatio": 0.9927459195069306,
+        "resultAxisRatio": 0.9867794905504365,
+        "sourceCheckerAlternation": 0.000016716416447533102,
+        "resultCheckerAlternation": 0.000025122509303813852,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 0.9296875,
+          "interiorMean": 1.9735036375661377,
+          "ratio": 0.47108476635318264
+        },
+        "comparisonSeam": {
+          "edgeMean": 0.9296875,
+          "interiorMean": 1.9735036375661377,
+          "ratio": 0.47108476635318264
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.057291666666666664,
+          "interiorMean": 0.7027354002624672,
+          "ratio": 0.08152665518951883
+        },
+        "normalMeanAngularChangeDegrees": 0.10846381622557759
+      },
+      "provenance": {
+        "engine": "deep-fryer-v1",
+        "jobId": "f8a88453-7580-4384-8671-00eb9679231d",
+        "params": {
+          "gates": [
+            [
+              "rx",
+              0.1
+            ]
+          ],
+          "tile_size": 2
+        },
+        "inputs": {
+          "image": {
+            "path": "sources/copper-patina-source.png",
+            "sha256": "1511e4ee7d96a4c2173f0a22cf2972fc73264ffd5e5bbff41ba857b8f995f355"
+          }
+        },
+        "raw": {
+          "path": "concurrency/raw/copper-patina-kernel-global/result.png",
+          "sha256": "44b0acc6d176648583df1e9e726fab852c23872db48a8f7c1a86accde7095fcd",
+          "bytes": 5142,
+          "width": 64,
+          "height": 64
+        },
+        "contractSnapshotSha256": "e2afb98a6b8f7112bad47aed0592aad2b53cad52780c2d1b2d83bb633cd3ab34",
+        "bakeToolCommit": "69c62d7c4bd754340623a4a7fa93bfa970e5ab73",
+        "structureFields": {
+          "path": "fields.json",
+          "sha256": "e8a51ffb8e9a22c743937e5a090a4cff5bb6d2139d3c8f49c33891d786533542",
+          "role": "copper-patina"
+        },
+        "imageInterpretation": "actual provider RGB retained, decoded sRGB to linear; height is explicit .9 authored structure + .1 provider luminance, not measured PBR"
+      }
+    },
+    {
+      "id": "etched-coating-haze",
+      "trial": "prismatic-etch-kernel-low",
+      "role": "prismatic-etch",
+      "maps": [
+        "Parallax",
+        "Helix"
+      ],
+      "reason": "Restrained green coating haze preserves etched-line feature correlation .922; useful coated instrument/glass accent distinct from base gray etch. Not a physical iridescence claim.",
+      "baseFamily": "prismatic-etch",
+      "derivedVariant": true,
+      "channels": {
+        "albedo": "etched-coating-haze.albedo",
+        "normal": "etched-coating-haze.normal",
+        "roughness": "etched-coating-haze.roughness",
+        "height": "etched-coating-haze.height",
+        "wear": "etched-coating-haze.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.005,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "sourceColorSpace": "srgb",
+      "colorInterpretation": "provider RGB preserved in linear light; same explicit seam repair per channel",
+      "heightInterpretation": "0.9 authored structure + 0.09999999999999998 normalized provider luminance; heuristic, not measured relief",
+      "densityTag": "surface-256px-per-meter",
+      "quality": {
+        "albedo": {
+          "edgeMean": 0.0035807291666666665,
+          "interiorMean": 0.11580324017449445,
+          "ratio": 0.030920802917700385
+        },
+        "normal": {
+          "edgeMean": 0.10709635416666667,
+          "interiorMean": 0.24386479227821264,
+          "ratio": 0.4391628375960316
+        },
+        "roughness": {
+          "edgeMean": 0.0029296875,
+          "interiorMean": 0.3170426400440313,
+          "ratio": 0.009240673429899274
+        },
+        "height": {
+          "edgeMean": 0.0615234375,
+          "interiorMean": 2.5562641420009786,
+          "ratio": 0.024067715260380335
+        },
+        "wear": {
+          "edgeMean": 0.041015625,
+          "interiorMean": 1.9775562622309197,
+          "ratio": 0.02074056034882642
+        }
+      },
+      "comparisonMetrics": {
+        "linearRGBMeanAbsoluteChange": 0.008357005673821546,
+        "sourceLuminanceCorrelation": 0.7161237856125917,
+        "gradientFeatureCorrelation": 0.9223103374603571,
+        "sourceAxisRatio": 0.9978926682166528,
+        "resultAxisRatio": 1.004793154297144,
+        "sourceCheckerAlternation": 0.000023761015598816718,
+        "resultCheckerAlternation": 0.000040380000217848834,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 0.8098958333333334,
+          "interiorMean": 1.2039103835978835,
+          "ratio": 0.6727210300429185
+        },
+        "comparisonSeam": {
+          "edgeMean": 0.8098958333333334,
+          "interiorMean": 1.2039103835978835,
+          "ratio": 0.6727210300429185
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.020833333333333332,
+          "interiorMean": 0.4490239501312336,
+          "ratio": 0.046396931226596036
+        },
+        "normalMeanAngularChangeDegrees": 0.06135893129446393
+      },
+      "provenance": {
+        "engine": "deep-fryer-v1",
+        "jobId": "b98af9c8-7dac-4a1f-8f71-0525f2c5d177",
+        "params": {
+          "gates": [
+            [
+              "rx",
+              0.1
+            ]
+          ],
+          "tile_size": 2
+        },
+        "inputs": {
+          "image": {
+            "path": "sources/prismatic-etch-source.png",
+            "sha256": "c0e2e5d7fb3615b457dca19367e2bc77ca79923be2e360ea232b197db607b07d"
+          },
+          "mask": {
+            "path": "sources/prismatic-etch-mask.png",
+            "sha256": "17caa0c6ac9cf7d09e8beb5c4d9e8dccf3eacbfe7c77ff825411f1f05e0af144"
+          }
+        },
+        "raw": {
+          "path": "provider/raw/prismatic-etch-kernel-low/result.png",
+          "sha256": "89717505551b6e77d4012efd70a9296a81085b65871307ffebbca0edd210f33d",
+          "bytes": 4500,
+          "width": 64,
+          "height": 64
+        },
+        "contractSnapshotSha256": "e2afb98a6b8f7112bad47aed0592aad2b53cad52780c2d1b2d83bb633cd3ab34",
+        "bakeToolCommit": "69c62d7c4bd754340623a4a7fa93bfa970e5ab73",
+        "structureFields": {
+          "path": "fields.json",
+          "sha256": "e8a51ffb8e9a22c743937e5a090a4cff5bb6d2139d3c8f49c33891d786533542",
+          "role": "prismatic-etch"
+        },
+        "imageInterpretation": "actual provider RGB retained, decoded sRGB to linear; height is explicit .9 authored structure + .1 provider luminance, not measured PBR"
+      }
+    },
+    {
+      "id": "quay-damp-horizontal",
+      "trial": "quay-waterline-tele-horizontal",
+      "role": "quay-waterline",
+      "maps": [
+        "Vesper",
+        "Stormglass",
+        "Abyssal"
+      ],
+      "reason": "Horizontal dry-to-weathered morph retains band direction and .839 gradient correlation with .0065 linear RGB change; useful damp transition. Vertical/strong variants erase or multiply the meaningful waterline.",
+      "baseFamily": "quay-waterline",
+      "derivedVariant": true,
+      "channels": {
+        "albedo": "quay-damp-horizontal.albedo",
+        "normal": "quay-damp-horizontal.normal",
+        "roughness": "quay-damp-horizontal.roughness",
+        "height": "quay-damp-horizontal.height",
+        "wear": "quay-damp-horizontal.wear"
+      },
+      "size": 512,
+      "tileMeters": 4,
+      "texelsPerMeter": 128,
+      "heightMeters": 0.015,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "sourceColorSpace": "srgb",
+      "colorInterpretation": "provider RGB preserved in linear light; same explicit seam repair per channel",
+      "heightInterpretation": "0.9 authored structure + 0.09999999999999998 normalized provider luminance; heuristic, not measured relief",
+      "densityTag": "macro-128-171px-per-meter",
+      "quality": {
+        "albedo": {
+          "edgeMean": 0.0035807291666666665,
+          "interiorMean": 0.10276711819145466,
+          "ratio": 0.03484314077967804
+        },
+        "normal": {
+          "edgeMean": 0.030924479166666668,
+          "interiorMean": 0.052113273605675144,
+          "ratio": 0.5934088769909666
+        },
+        "roughness": {
+          "edgeMean": 0.00390625,
+          "interiorMean": 0.1634585983365949,
+          "ratio": 0.023897488659215267
+        },
+        "height": {
+          "edgeMean": 0.064453125,
+          "interiorMean": 1.027978228962818,
+          "ratio": 0.06269892025342812
+        },
+        "wear": {
+          "edgeMean": 0.03515625,
+          "interiorMean": 1.0263499877690803,
+          "ratio": 0.034253666311642075
+        }
+      },
+      "comparisonMetrics": {
+        "linearRGBMeanAbsoluteChange": 0.0065179940655096524,
+        "sourceLuminanceCorrelation": 0.9001865571902885,
+        "gradientFeatureCorrelation": 0.8393168284409062,
+        "sourceAxisRatio": 0.40477108749957963,
+        "resultAxisRatio": 0.45755628598631953,
+        "sourceCheckerAlternation": 0.000014078323170535467,
+        "resultCheckerAlternation": 5.301609012942177e-7,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 0.96875,
+          "interiorMean": 1.0150462962962963,
+          "ratio": 0.9543899657924744
+        },
+        "comparisonSeam": {
+          "edgeMean": 0.96875,
+          "interiorMean": 1.0150462962962963,
+          "ratio": 0.9543899657924744
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.041666666666666664,
+          "interiorMean": 0.40653707349081364,
+          "ratio": 0.10249167759507717
+        },
+        "normalMeanAngularChangeDegrees": 0.06527124477200284
+      },
+      "provenance": {
+        "engine": "telablur-v1",
+        "jobId": "2ba62d5f-208a-4413-84ad-f3876602d037",
+        "params": {
+          "strength": 0.3,
+          "direction": "horizontal",
+          "size": 64
+        },
+        "inputs": {
+          "image1": {
+            "path": "sources/quay-waterline-source.png",
+            "sha256": "8e84409cc00314ac4d765d21e0a40003f79b42206ff8d3c974dbba47bcf92017"
+          },
+          "image2": {
+            "path": "sources/quay-waterline-target.png",
+            "sha256": "b6e0ef13374d5032dd36f31586ffda29ec84634d88ccd0d460f8b362083a95db"
+          },
+          "mask": {
+            "path": "sources/quay-waterline-mask.png",
+            "sha256": "0d89633deae0a37c823d2f6bfee4b22b33c44dbfa0534959734f14d7d5779ac5"
+          }
+        },
+        "raw": {
+          "path": "provider/raw/quay-waterline-tele-horizontal/result.png",
+          "sha256": "ee6000034fb306aef7a7480131eab2f7a2730dd9149a432ba51512ab6896a358",
+          "bytes": 3101,
+          "width": 64,
+          "height": 64
+        },
+        "contractSnapshotSha256": "e2afb98a6b8f7112bad47aed0592aad2b53cad52780c2d1b2d83bb633cd3ab34",
+        "bakeToolCommit": "69c62d7c4bd754340623a4a7fa93bfa970e5ab73",
+        "structureFields": {
+          "path": "fields.json",
+          "sha256": "e8a51ffb8e9a22c743937e5a090a4cff5bb6d2139d3c8f49c33891d786533542",
+          "role": "quay-waterline"
+        },
+        "imageInterpretation": "actual provider RGB retained, decoded sRGB to linear; height is explicit .9 authored structure + .1 provider luminance, not measured PBR"
+      }
+    },
+    {
+      "id": "moss-warm-weather",
+      "trial": "moss-lichen-kernel-low",
+      "role": "moss-lichen",
+      "maps": [
+        "Helix",
+        "Stormglass"
+      ],
+      "reason": "Warmer green micro-coating variant retains .978 luminance and .902 gradient correlation; no saturated pixels. Apply locally in botanical/shore growth, not as blanket replacement.",
+      "baseFamily": "moss-lichen",
+      "derivedVariant": true,
+      "channels": {
+        "albedo": "moss-warm-weather.albedo",
+        "normal": "moss-warm-weather.normal",
+        "roughness": "moss-warm-weather.roughness",
+        "height": "moss-warm-weather.height",
+        "wear": "moss-warm-weather.wear"
+      },
+      "size": 512,
+      "tileMeters": 2,
+      "texelsPerMeter": 256,
+      "heightMeters": 0.025,
+      "normalConvention": "OpenGL +Y; image rows down, UV v up",
+      "colorSpace": "linear (including albedo)",
+      "seamRepair": "normalize; centered linear boundary ramps; four-source-sample C1 edge blend; periodic Catmull-Rom with clamped overshoot",
+      "interpretation": "height-derived heuristic material, not measured PBR or collision geometry",
+      "sourceColorSpace": "srgb",
+      "colorInterpretation": "provider RGB preserved in linear light; same explicit seam repair per channel",
+      "heightInterpretation": "0.9 authored structure + 0.09999999999999998 normalized provider luminance; heuristic, not measured relief",
+      "densityTag": "surface-256px-per-meter",
+      "quality": {
+        "albedo": {
+          "edgeMean": 0.007161458333333333,
+          "interiorMean": 0.22264096135029354,
+          "ratio": 0.032165951359084406
+        },
+        "normal": {
+          "edgeMean": 0.10319010416666667,
+          "interiorMean": 0.6340769987361383,
+          "ratio": 0.16274065195922316
+        },
+        "roughness": {
+          "edgeMean": 0.01171875,
+          "interiorMean": 0.3536264677103718,
+          "ratio": 0.033138780804150454
+        },
+        "height": {
+          "edgeMean": 0.072265625,
+          "interiorMean": 2.3213941719667317,
+          "ratio": 0.031130268987784662
+        },
+        "wear": {
+          "edgeMean": 0.072265625,
+          "interiorMean": 2.2073714224559686,
+          "ratio": 0.03273831683459765
+        }
+      },
+      "comparisonMetrics": {
+        "linearRGBMeanAbsoluteChange": 0.015245407079956572,
+        "sourceLuminanceCorrelation": 0.9778391096746927,
+        "gradientFeatureCorrelation": 0.9022203400169684,
+        "sourceAxisRatio": 1.0348717281706288,
+        "resultAxisRatio": 1.0335310390239887,
+        "sourceCheckerAlternation": 0.000005280113618240813,
+        "resultCheckerAlternation": 0.000014192361307914006,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 1.2578125,
+          "interiorMean": 2.7001901455026456,
+          "ratio": 0.4658236761936837
+        },
+        "comparisonSeam": {
+          "edgeMean": 1.2578125,
+          "interiorMean": 2.7001901455026456,
+          "ratio": 0.4658236761936837
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.07291666666666667,
+          "interiorMean": 0.8828125,
+          "ratio": 0.08259587020648967
+        },
+        "normalMeanAngularChangeDegrees": 0.2025195579066964
+      },
+      "provenance": {
+        "engine": "deep-fryer-v1",
+        "jobId": "ea5fd666-9b47-4dbd-887c-e9a964cb3dbd",
+        "params": {
+          "gates": [
+            [
+              "rx",
+              0.1
+            ]
+          ],
+          "tile_size": 2
+        },
+        "inputs": {
+          "image": {
+            "path": "sources/moss-lichen-source.png",
+            "sha256": "21c06af76d2d2e6f33c6608f2ec24d85fd44ff4d84465a0980803865350f27c1"
+          },
+          "mask": {
+            "path": "sources/moss-lichen-mask.png",
+            "sha256": "8c13a0270edc0958a0c2c8b20e974aa693daff040999577d19e0b151052b7829"
+          }
+        },
+        "raw": {
+          "path": "provider/raw/moss-lichen-kernel-low/result.png",
+          "sha256": "a8bd713de4ee6ab6812cdb4bbf60f4621325439d2c96b1b810507c5e18da34b3",
+          "bytes": 5384,
+          "width": 64,
+          "height": 64
+        },
+        "contractSnapshotSha256": "e2afb98a6b8f7112bad47aed0592aad2b53cad52780c2d1b2d83bb633cd3ab34",
+        "bakeToolCommit": "69c62d7c4bd754340623a4a7fa93bfa970e5ab73",
+        "structureFields": {
+          "path": "fields.json",
+          "sha256": "e8a51ffb8e9a22c743937e5a090a4cff5bb6d2139d3c8f49c33891d786533542",
+          "role": "moss-lichen"
+        },
+        "imageInterpretation": "actual provider RGB retained, decoded sRGB to linear; height is explicit .9 authored structure + .1 provider luminance, not measured PBR"
+      }
+    }
+  ],
+  "textures": {
+    "copper-heat-oxide.albedo": {
+      "path": "textures/copper-heat-oxide-albedo.png",
+      "sha256": "61a16476395dd0cc066dd56f0fdf2fff03e29cb21db4831a885f72266035c873",
+      "bytes": 107900,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "copper-heat-oxide.normal": {
+      "path": "textures/copper-heat-oxide-normal.png",
+      "sha256": "0ab51bd3acd084e63b9461946a0877cc6b3d9133741b8237f6ae0565b2d850f3",
+      "bytes": 206566,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "copper-heat-oxide.roughness": {
+      "path": "textures/copper-heat-oxide-roughness.png",
+      "sha256": "d748665e7377609ee92e669c8d4e0d80842d526ae89f2bb3b7bbc7ed227a9794",
+      "bytes": 63200,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "copper-heat-oxide.height": {
+      "path": "textures/copper-heat-oxide-height.png",
+      "sha256": "ed0146bba305a5861e28b7516dc5d612906fd028cc79d7de59d4f130cc58df13",
+      "bytes": 214589,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "copper-heat-oxide.wear": {
+      "path": "textures/copper-heat-oxide-wear.png",
+      "sha256": "db4d574d2723df839998eb402471e642cb697252998db525937488a09e30b3c5",
+      "bytes": 190183,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "etched-coating-haze.albedo": {
+      "path": "textures/etched-coating-haze-albedo.png",
+      "sha256": "1f8c094d8076b8d5fa311429fdea69244b3191281bee2bf578ef6546932db9a0",
+      "bytes": 87413,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "etched-coating-haze.normal": {
+      "path": "textures/etched-coating-haze-normal.png",
+      "sha256": "d89e3a00bc065b6416942305ec7a1dea4dc35e255a16a33202ac7d4b8dd65bb8",
+      "bytes": 152458,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "etched-coating-haze.roughness": {
+      "path": "textures/etched-coating-haze-roughness.png",
+      "sha256": "533f8c142bf3b24cdf74046e8e2dbfffbfe6ad4b75e8239bddd085761d25d43a",
+      "bytes": 63457,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "etched-coating-haze.height": {
+      "path": "textures/etched-coating-haze-height.png",
+      "sha256": "5e8edbde1dec0b0dffa3f64e5c2231941d9cbdc1d958ae40654f69fbd64b3749",
+      "bytes": 195625,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "etched-coating-haze.wear": {
+      "path": "textures/etched-coating-haze-wear.png",
+      "sha256": "c098e44fcba2e7f5209bb7733375d7a88cbf8ae357fb32affc282717452c051f",
+      "bytes": 183360,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "quay-damp-horizontal.albedo": {
+      "path": "textures/quay-damp-horizontal-albedo.png",
+      "sha256": "ad513e70a510af1b272e324130dd3ab204119488cce229d807528e1a7e258310",
+      "bytes": 55303,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "quay-damp-horizontal.normal": {
+      "path": "textures/quay-damp-horizontal-normal.png",
+      "sha256": "833f87b0e6ab7e864e928c18a32a16edbe868c59d77fe29b34606a2043f1f75e",
+      "bytes": 36065,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "quay-damp-horizontal.roughness": {
+      "path": "textures/quay-damp-horizontal-roughness.png",
+      "sha256": "233747c5bf6a8beaa585d851326ce0caf7f5277f6729eef67d3ed10ec17647bc",
+      "bytes": 22023,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "quay-damp-horizontal.height": {
+      "path": "textures/quay-damp-horizontal-height.png",
+      "sha256": "9c53bedc61fcc071b968f7fb3697676ec907a3b00c2b76f4bcba277890e3d6dc",
+      "bytes": 95339,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "quay-damp-horizontal.wear": {
+      "path": "textures/quay-damp-horizontal-wear.png",
+      "sha256": "c14998dfa67e3bb91f69947d8e55911e9108e8601f1690b1763655de5bb9406a",
+      "bytes": 79677,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    },
+    "moss-warm-weather.albedo": {
+      "path": "textures/moss-warm-weather-albedo.png",
+      "sha256": "8d23a9b4819d14969f3dfb20697c1fbb91e643f0aa3d030e12a238ed94a863a9",
+      "bytes": 113133,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "albedo"
+    },
+    "moss-warm-weather.normal": {
+      "path": "textures/moss-warm-weather-normal.png",
+      "sha256": "b7051d968859c381dced9cfcb07c441bd1172e9d8ef133d689289e908f22958f",
+      "bytes": 355747,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "normal",
+      "normalConvention": "OpenGL +Y"
+    },
+    "moss-warm-weather.roughness": {
+      "path": "textures/moss-warm-weather-roughness.png",
+      "sha256": "9f4e9ec198900ed662603a77e599c10583d0d1a0d3a88825064d3d23308187e7",
+      "bytes": 61128,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "roughness"
+    },
+    "moss-warm-weather.height": {
+      "path": "textures/moss-warm-weather-height.png",
+      "sha256": "6b00bf29c301226fa1c9dacfbd3f2a7d41cc8f69acf691ee8c855bc20a0e2026",
+      "bytes": 197961,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "height"
+    },
+    "moss-warm-weather.wear": {
+      "path": "textures/moss-warm-weather-wear.png",
+      "sha256": "d412b9085918bfb6b9cce994e3270e1c9c431a2a7446c452529c9cae28f81933",
+      "bytes": 188049,
+      "width": 512,
+      "height": 512,
+      "format": "rgba8",
+      "colorSpace": "linear",
+      "semantic": "wear"
+    }
+  },
+  "auxiliaryResources": {
+    "moss-lichen-qpixl": {
+      "kind": "measured-coverage-mask",
+      "file": {
+        "path": "auxiliary/moss-lichen-qpixl.png",
+        "sha256": "9ffb8ec4ee41e569e83f6973b4b7d61a584218a88f519f7f4cd32b21e8ee591a",
+        "bytes": 160380,
+        "width": 512,
+        "height": 512,
+        "colorSpace": "linear"
+      },
+      "engine": "qpixl-v1",
+      "jobId": "83d8426a-ef39-4c5c-ae08-265f33191de3",
+      "params": {
+        "mode": "emu",
+        "machine": "aer",
+        "shots": 4096,
+        "discretize": 0,
+        "dynamic_range": "percentile"
+      },
+      "values": {
+        "path": "fields.json",
+        "role": "moss-lichen",
+        "field": "mask",
+        "flatten": "row-major"
+      },
+      "observedBackend": "aer",
+      "raw": {
+        "path": "provider/raw/moss-lichen-qpixl/inline-result.json",
+        "sha256": "fffa6355bc240cbc68c571324d63298e095ad0350bb1c67c38ed43c29456bcbb"
+      },
+      "exactHTTP": {
+        "id": "moss-lichen-qpixl",
+        "jobId": "83d8426a-ef39-4c5c-ae08-265f33191de3",
+        "path": "http-scalar/moss-lichen-qpixl.json",
+        "bytes": 41670,
+        "sha256": "f7eac7798bde49083c09d6781a10efc0ac75c4df718b2cdc8a594fc1fb1ad53a",
+        "canonicalSha256": "fffa6355bc240cbc68c571324d63298e095ad0350bb1c67c38ed43c29456bcbb"
+      },
+      "contractSnapshotSha256": "e2afb98a6b8f7112bad47aed0592aad2b53cad52780c2d1b2d83bb633cd3ab34",
+      "thresholdHalfIoU": 0.9801777170198223,
+      "usage": "optional boundary-stipple coverage; not collision geometry"
+    },
+    "quay-waterline-qpixl": {
+      "kind": "measured-coverage-mask",
+      "file": {
+        "path": "auxiliary/quay-waterline-qpixl.png",
+        "sha256": "eb7a3eff35101ac3f1f319477452ca8afe14c09b2ffea64f18465aea36d1a2e4",
+        "bytes": 38349,
+        "width": 512,
+        "height": 512,
+        "colorSpace": "linear"
+      },
+      "engine": "qpixl-v1",
+      "jobId": "10d07077-63c4-4b66-8623-c4d7de13ee74",
+      "params": {
+        "mode": "emu",
+        "machine": "aer",
+        "shots": 4096,
+        "discretize": 0,
+        "dynamic_range": "percentile"
+      },
+      "values": {
+        "path": "fields.json",
+        "role": "quay-waterline",
+        "field": "mask",
+        "flatten": "row-major"
+      },
+      "observedBackend": "aer",
+      "raw": {
+        "path": "provider/raw/quay-waterline-qpixl/inline-result.json",
+        "sha256": "060489bbe8d478f507c0a09a51dce2f5f3c443413f342fbb9af534fbd96f4f3d"
+      },
+      "exactHTTP": {
+        "id": "quay-waterline-qpixl",
+        "jobId": "10d07077-63c4-4b66-8623-c4d7de13ee74",
+        "path": "http-scalar/quay-waterline-qpixl.json",
+        "bytes": 20868,
+        "sha256": "2052276991a84498c84fc63a60b3d537c83874f4886d53c0bf06f1422b4dc28c",
+        "canonicalSha256": "060489bbe8d478f507c0a09a51dce2f5f3c443413f342fbb9af534fbd96f4f3d"
+      },
+      "contractSnapshotSha256": "e2afb98a6b8f7112bad47aed0592aad2b53cad52780c2d1b2d83bb633cd3ab34",
+      "thresholdHalfIoU": 0.9983771502758845,
+      "usage": "optional boundary-stipple coverage; not collision geometry"
+    },
+    "instrument-lut-3-body": {
+      "kind": "view-dependent-lut-review-companion",
+      "engine": "entanglement-shader-v1",
+      "jobId": "210cf363-bb9b-4a0a-a4d4-3436dc2ee279",
+      "params": {
+        "layers": 2,
+        "incoming_rays": 4,
+        "reflectance": 0.35,
+        "absorption": 0.8,
+        "interaction": 0.5,
+        "resolution": 16,
+        "style": "3-body"
+      },
+      "rawArchive": {
+        "path": "provider/raw/instrument-lut-3-body/result.zip",
+        "sha256": "bd2356be56d0df641b5000e1cce92e53fe077cf13ef0a8ff71ac6825cc01af0f"
+      },
+      "contractSnapshotSha256": "e2afb98a6b8f7112bad47aed0592aad2b53cad52780c2d1b2d83bb633cd3ab34",
+      "files": [
+        {
+          "path": "auxiliary/instrument-lut-3-body/R_lut.hdr",
+          "sha256": "72c321ea326c583ae11384dc6a0afe0e6a7f911c0bd1dbd85066fe1eb921f2ee",
+          "bytes": 1071
+        },
+        {
+          "path": "auxiliary/instrument-lut-3-body/T_lut.hdr",
+          "sha256": "481d069013cab9e71a861a65434463cc2322b2edd372d5a86fe974c2027a3754",
+          "bytes": 1071
+        },
+        {
+          "path": "auxiliary/instrument-lut-3-body/R_lut.exr",
+          "sha256": "021bf6d492c413d5e3a8b8ec6415a6b3387461f8cc389a85fb46c42224026e7b",
+          "bytes": 1431
+        },
+        {
+          "path": "auxiliary/instrument-lut-3-body/T_lut.exr",
+          "sha256": "96dcf65710e0410b754078bfd4174dc98da05c2e6ddd20d2bc1aeee260b41ec9",
+          "bytes": 1432
+        },
+        {
+          "path": "auxiliary/instrument-lut-3-body/entanglement_texture.osl",
+          "sha256": "b0eac275a275dc11fa03e5d8cdf5b9accf6c44e1752f25db31648046ef97f0aa",
+          "bytes": 2900
+        },
+        {
+          "path": "auxiliary/instrument-lut-3-body/entanglement_texture.glsl",
+          "sha256": "4ac8acd83bc038116a8b9dbeb7e257487e3149c6a505291eedf5142da1e0b930",
+          "bytes": 2692
+        },
+        {
+          "path": "auxiliary/instrument-lut-3-body/entanglement_texture.mtlx",
+          "sha256": "6d1e29c4f9c8a438afb48a6dad3ceac65193ea135599bfb0d2d50933faeb5f7f",
+          "bytes": 9912
+        }
+      ],
+      "axes": "provider GLSL: s phase periodic, t incident angle clamped; do not flip stored row order",
+      "ranges": {
+        "reflectance": {
+          "min": 0.3984375,
+          "max": 1.234375
+        },
+        "transmittance": {
+          "min": 6.661338147750939e-16,
+          "max": 0.1123046875
+        }
+      },
+      "usage": "raw linear HDR/EXR plus provider shader references; not direct albedo/roughness; no runtime compatibility claim"
+    },
+    "instrument-lut-frustrated": {
+      "kind": "view-dependent-lut-review-companion",
+      "engine": "entanglement-shader-v1",
+      "jobId": "c56014b8-3a3c-46d1-bd3b-55fcc30bf65c",
+      "params": {
+        "layers": 2,
+        "incoming_rays": 4,
+        "reflectance": 0.35,
+        "absorption": 0.8,
+        "interaction": 0.5,
+        "resolution": 16,
+        "style": "frustrated"
+      },
+      "rawArchive": {
+        "path": "provider/raw/instrument-lut-frustrated/result.zip",
+        "sha256": "92bc417d6a45a47488c8f0296e8143538ef6281554181138930ca46291e90566"
+      },
+      "contractSnapshotSha256": "e2afb98a6b8f7112bad47aed0592aad2b53cad52780c2d1b2d83bb633cd3ab34",
+      "files": [
+        {
+          "path": "auxiliary/instrument-lut-frustrated/R_lut.hdr",
+          "sha256": "e44842c62d4ea7ff172aae71890f78b7917cd304a4dfd25bfbd9f2f972ee8685",
+          "bytes": 1071
+        },
+        {
+          "path": "auxiliary/instrument-lut-frustrated/T_lut.hdr",
+          "sha256": "ec7866022d204856dced25661b18b82cdc575acc8a7fee0352910120b8a7930c",
+          "bytes": 1071
+        },
+        {
+          "path": "auxiliary/instrument-lut-frustrated/R_lut.exr",
+          "sha256": "9e77fe05912bf4a22f1380facdbb181559b74444b5d7aa4a00e141b3f906b44c",
+          "bytes": 1433
+        },
+        {
+          "path": "auxiliary/instrument-lut-frustrated/T_lut.exr",
+          "sha256": "4ffeb6bc7472923631914f5144818d23e204f92aa4cccceff80c3f33640941b3",
+          "bytes": 1431
+        },
+        {
+          "path": "auxiliary/instrument-lut-frustrated/entanglement_texture.osl",
+          "sha256": "b0eac275a275dc11fa03e5d8cdf5b9accf6c44e1752f25db31648046ef97f0aa",
+          "bytes": 2900
+        },
+        {
+          "path": "auxiliary/instrument-lut-frustrated/entanglement_texture.glsl",
+          "sha256": "4ac8acd83bc038116a8b9dbeb7e257487e3149c6a505291eedf5142da1e0b930",
+          "bytes": 2692
+        },
+        {
+          "path": "auxiliary/instrument-lut-frustrated/entanglement_texture.mtlx",
+          "sha256": "6d1e29c4f9c8a438afb48a6dad3ceac65193ea135599bfb0d2d50933faeb5f7f",
+          "bytes": 9912
+        }
+      ],
+      "axes": "provider GLSL: s phase periodic, t incident angle clamped; do not flip stored row order",
+      "ranges": {
+        "reflectance": {
+          "min": 0.3828125,
+          "max": 1
+        },
+        "transmittance": {
+          "min": 6.661338147750939e-16,
+          "max": 0.2265625
+        }
+      },
+      "usage": "raw linear HDR/EXR plus provider shader references; not direct albedo/roughness; no runtime compatibility claim"
+    }
+  },
+  "pathBases": {
+    "textures": ".",
+    "auxiliaryFiles": ".",
+    "provenance": "../engine-trials"
+  },
+  "channelRules": {
+    "albedo": "linear RGB, not sRGB encoded; Blender Non-Color, connect to base color",
+    "normal": "linear RGB OpenGL +Y; Blender Non-Color -> Normal Map tangent",
+    "roughness": "linear scalar in RGB, opaque alpha",
+    "height": "linear 8-bit detail only; never collision authority",
+    "wear": "linear synthesized mask; thresholds are consumer art controls",
+    "alpha": "separate linear scalar in RGB; use red for alpha clip; base albedo alpha remains opaque"
+  },
+  "sourceHashes": {
+    "bake-overlay.mjs": "1d1cd8ab2141262594dc7c86874bf710c3b482dc2e09189325afbd4dc00e3bc4",
+    "selection.json": "0292f177979f51c0b358d11753a9bacf01f9195a4992568c42fe0e3e2e631a3f",
+    "tool.mjs": "0da69a5427a1f3de9065cea291b4b79cbfa2b758a9abe63bbbdbfdc84cf6e213",
+    "comparison/fields-luts.json": "0565e114e97771c33d68694d29758a699910cc1d7f4c2681baf5b39611ea5578"
+  },
+  "publication": "additive overlay only; base family IDs and files are inherited unchanged"
+}

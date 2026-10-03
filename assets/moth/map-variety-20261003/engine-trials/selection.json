@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "selectionMethod": "CPU raw/repaired/3x3 contacts plus structure, seam, directional and normal-stability diagnostics; candidate use still needs Blender light/world-scale review",
+  "materials": [
+    {"id":"copper-heat-oxide","trial":"copper-patina-kernel-global","role":"copper-patina","maps":["Helix","Gravemill","Parallax","Abyssal"],"reason":"Useful warm oxide/green coating shift without losing mottled structure; luminance correlation .969 and gradient correlation .816. Select first result; tile-size-four comparison was byte-identical."},
+    {"id":"etched-coating-haze","trial":"prismatic-etch-kernel-low","role":"prismatic-etch","maps":["Parallax","Helix"],"reason":"Restrained green coating haze preserves etched-line feature correlation .922; useful coated instrument/glass accent distinct from base gray etch. Not a physical iridescence claim."},
+    {"id":"quay-damp-horizontal","trial":"quay-waterline-tele-horizontal","role":"quay-waterline","maps":["Vesper","Stormglass","Abyssal"],"reason":"Horizontal dry-to-weathered morph retains band direction and .839 gradient correlation with .0065 linear RGB change; useful damp transition. Vertical/strong variants erase or multiply the meaningful waterline."},
+    {"id":"moss-warm-weather","trial":"moss-lichen-kernel-low","role":"moss-lichen","maps":["Helix","Stormglass"],"reason":"Warmer green micro-coating variant retains .978 luminance and .902 gradient correlation; no saturated pixels. Apply locally in botanical/shore growth, not as blanket replacement."}
+  ],
+  "retainedBaselineRoles": {
+    "terracotta":"Existing scalar baseline keeps authored mortar and readable contrast; Tessa is best image round-trip fidelity (.986 feature correlation) but near-identity change is not sufficient reason for an extra shipped variant.",
+    "prismatic-etch":"Base stays the clear etch; the haze is an optional coating variant. Nonlocal image blur loses too much line detail (.212 feature correlation).",
+    "moss-lichen":"Base stays the main botanical finish; Tessa's low-amplitude round-trip is useful evidence but not automatically an aesthetic improvement."
+  },
+  "rejections": {
+    "copper-patina-tessa-noisy":"The calibrated simulator reduced 64x64 input to 21x21 output. After documented diagnostic resampling, only .027 source-gradient correlation remains; retain as a capacity/noise finding, not improved patina.",
+    "copper-patina-kernel-mid-global":"Stronger .30 kernel visibly flips the coating/lightness relationship (luminance correlation -.677). Keep restrained .10 for readable oxide instead.",
+    "terracotta-image-ry":"Introduces directional grid artifacts; .652 feature correlation, compared with .924 for image rx and .986 for Tessa palette.",
+    "terracotta-tele-vertical":"Smears legible mortar into vertical banding; .159 luminance correlation.",
+    "quay-waterline-tele-vertical":"Exaggerated horizontal stripe stack and .349 feature correlation.",
+    "quay-waterline-tele-strong":"Loses the useful original waterline (.398 feature correlation).",
+    "copper-patina-tele-global":"Visual corrosion detail becomes redistributed speckle with negative source-feature correlation; do not infer better weathering from larger change.",
+    "copper-patina-kernel-four":"Byte-identical to kernel-global despite tile_size difference; preserve evidence, do not ship a fake new variant."
+  }
+}

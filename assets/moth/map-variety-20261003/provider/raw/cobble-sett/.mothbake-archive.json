@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "cobble-sett",
+  "engine": "blur-core-v1",
+  "jobId": "3fac8d90-53ed-483e-8907-3fc1cab78adf",
+  "recipeFingerprint": "888ce51e3e99f3102b05a369cd4679a395194a90f20acaa67b41d6c76855784a",
+  "generationFingerprint": "bdea5c1f5f099ac0d0f2184243c559685ac5741613a90390848de3cb5e9e6adf",
+  "verification": "new-request",
+  "rawFingerprint": "64131368b8f6f10ef6a2b52a519081c5ad07bc357d127bf19e19b0d56c68d951",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 435942,
+    "sha256": "671e2cae65710d695d2a306baaefb2eb4cf79166f99df8fa8c7bfb701908e454",
+    "jsonHash": "ac8545605a5a04f087065c52eb263d1702a74ca4b6639ba4e1cbec3793abf979"
+  }
+}

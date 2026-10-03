@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "jobs": {
+    "copper-patina-kernel-mid-global": {
+      "state": "published",
+      "jobId": "02fab9ce-3cc4-4e5b-bd90-beb58dc62e2c",
+      "metadata": {
+        "recipeFingerprint": "0265999d27dfca07c907264bafe1bf7357478cb216c606d2a90e3231e1fbcb08",
+        "bakeConfigFingerprint": "cc547a77aa55102cdd293b65ca151025ed8ba93b5af86e30a14887037ab239a3",
+        "exportConfigFingerprint": "648beb4bd3db5d365be636c9ac256ee81ce489efe5f0b2d276820ae920039be3",
+        "verification": "new-request",
+        "dependencies": {},
+        "generationFingerprint": "36042809973b63e38506f96ec8445dde78cc74f14cfa99b00d1e24ace6324f4b",
+        "rawFingerprint": "9fb530f9e0147d723ac3c791c49c9fe5be8811742511689f6dbeb739c74928e1",
+        "bakeFingerprint": "2890e9ad9377cb00e5c67a671fceb3bbc00fd39cf9730fb9014c7227456b95f3",
+        "exportFingerprint": "98198e441ef8807cbc9d1c4e048c1c62022bf5b33bb4c0a5add8f2d7a641f8ef"
+      },
+      "history": [
+        {
+          "state": "prepared",
+          "at": "2026-10-03T15:57:39.245Z"
+        },
+        {
+          "state": "submitting",
+          "at": "2026-10-03T15:57:41.059Z"
+        },
+        {
+          "state": "submitted",
+          "at": "2026-10-03T15:57:42.637Z"
+        },
+        {
+          "state": "polling",
+          "at": "2026-10-03T15:57:42.637Z"
+        },
+        {
+          "state": "completed",
+          "at": "2026-10-03T15:58:33.244Z"
+        },
+        {
+          "state": "downloaded",
+          "at": "2026-10-03T15:58:33.889Z"
+        },
+        {
+          "state": "baked",
+          "at": "2026-10-03T15:58:33.895Z"
+        },
+        {
+          "state": "published",
+          "at": "2026-10-03T15:58:33.896Z"
+        }
+      ]
+    }
+  }
+}

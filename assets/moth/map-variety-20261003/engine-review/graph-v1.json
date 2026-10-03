@@ -1,0 +1,265 @@
+{
+  "engineId": "graph-v1",
+  "name": "Quantum Graph Engine",
+  "version": null,
+  "creditsPerRun": 5,
+  "enabled": true,
+  "paramsSchema": {
+    "$defs": {
+      "BlochOperation": {
+        "properties": {
+          "fraction": {
+            "default": 1,
+            "description": "Fraction of the full rotation to apply.",
+            "title": "Fraction",
+            "type": "number"
+          },
+          "paulis": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "description": "Single-qubit Pauli targets, e.g. {'X': 1.0}.",
+            "title": "Paulis",
+            "type": "object"
+          },
+          "qubit": {
+            "description": "Target qubit.",
+            "minimum": 0,
+            "title": "Qubit",
+            "type": "integer"
+          },
+          "type": {
+            "const": "bloch",
+            "title": "Type",
+            "type": "string"
+          },
+          "update": {
+            "default": true,
+            "description": "Refresh tomography after this operation so later operations see its effect (QuantumGraph's default). False is faster but blind.",
+            "title": "Update",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "type",
+          "qubit",
+          "paulis"
+        ],
+        "title": "BlochOperation",
+        "type": "object"
+      },
+      "RelationshipOperation": {
+        "properties": {
+          "fraction": {
+            "default": 1,
+            "description": "Fraction of the full rotation to apply.",
+            "title": "Fraction",
+            "type": "number"
+          },
+          "paulis": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "description": "Two-qubit Pauli targets, e.g. {'ZZ': 1.0}.",
+            "title": "Paulis",
+            "type": "object"
+          },
+          "qubits": {
+            "description": "The coupled qubit pair.",
+            "items": {
+              "type": "integer"
+            },
+            "maxItems": 2,
+            "minItems": 2,
+            "title": "Qubits",
+            "type": "array"
+          },
+          "type": {
+            "const": "relationship",
+            "title": "Type",
+            "type": "string"
+          },
+          "update": {
+            "default": true,
+            "description": "Refresh tomography after this operation so later operations see its effect (QuantumGraph's default). False is faster but blind.",
+            "title": "Update",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "type",
+          "qubits",
+          "paulis"
+        ],
+        "title": "RelationshipOperation",
+        "type": "object"
+      }
+    },
+    "properties": {
+      "backend_name": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "IBM backend to target; omit to auto-select the least busy device. Ignored when mode='emu'.",
+        "title": "Backend Name"
+      },
+      "coupling_map": {
+        "anyOf": [
+          {
+            "items": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "type": "array"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Graph edges as qubit pairs; omit for a fully connected graph (QuantumGraph's default).",
+        "title": "Coupling Map"
+      },
+      "mode": {
+        "default": "emu",
+        "description": "'emu' runs on a local Aer simulator; 'qpu' submits to IBM hardware.",
+        "enum": [
+          "emu",
+          "qpu"
+        ],
+        "title": "Mode",
+        "type": "string"
+      },
+      "num_qubits": {
+        "default": 4,
+        "description": "Number of qubits (graph nodes), 2-20.",
+        "maximum": 20,
+        "minimum": 2,
+        "title": "Num Qubits",
+        "type": "integer"
+      },
+      "operations": {
+        "anyOf": [
+          {
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/BlochOperation"
+                },
+                {
+                  "$ref": "#/$defs/RelationshipOperation"
+                }
+              ]
+            },
+            "type": "array"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "State-preparation targets applied in order: 'bloch' sets single-qubit Pauli targets, 'relationship' sets two-qubit targets on a coupled pair. Omit for a random state drawn from 'seed'.",
+        "title": "Operations"
+      },
+      "qpu_instance": {
+        "anyOf": [
+          {
+            "format": "password",
+            "type": "string",
+            "writeOnly": true,
+            "sensitive": true
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "IBM Quantum instance CRN; required when mode='qpu'.",
+        "title": "Qpu Instance"
+      },
+      "qpu_token": {
+        "anyOf": [
+          {
+            "format": "password",
+            "type": "string",
+            "writeOnly": true,
+            "sensitive": true
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "IBM Quantum API token; required when mode='qpu'.",
+        "title": "Qpu Token"
+      },
+      "seed": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Seeds the random graph; the same seed always builds the same circuit. Omit for a fresh random graph.",
+        "title": "Seed"
+      },
+      "shots": {
+        "default": 1024,
+        "description": "Number of measurement shots.",
+        "exclusiveMinimum": 0,
+        "title": "Shots",
+        "type": "integer"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [],
+  "outputFiles": [],
+  "runPolicy": {
+    "timeout": 300,
+    "max_retries": 3,
+    "heartbeat": 60
+  },
+  "errorCodes": [
+    {
+      "type": "graph_init_failed",
+      "description": "QuantumGraph initialization failed."
+    },
+    {
+      "type": "prep_failed",
+      "description": "State-preparation operations failed — an operation could not be applied to the graph."
+    },
+    {
+      "type": "simulation_failed",
+      "description": "Aer simulation failed."
+    },
+    {
+      "type": "ibm_auth_failed",
+      "description": "IBM authentication failed — IBM_QUANTUM_TOKEN missing or invalid."
+    },
+    {
+      "type": "ibm_submission_failed",
+      "description": "Circuit submission to the IBM QPU failed."
+    },
+    {
+      "type": "ibm_collection_failed",
+      "description": "Could not retrieve QPU result — job may have been cancelled or backend errored."
+    },
+    {
+      "type": "invalid_params",
+      "description": "Parameter validation failed."
+    }
+  ]
+}

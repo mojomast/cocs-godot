@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "instrument-lut-3-body",
+  "engine": "entanglement-shader-v1",
+  "jobId": "210cf363-bb9b-4a0a-a4d4-3436dc2ee279",
+  "recipeFingerprint": "e8317dfda9346ea9e3d8e294eef181a51f1f893864c996506209f001118001b9",
+  "generationFingerprint": "0ce84ee728d35b9299570bdc6a3e1803aae84ff018ec1ab2152279b2451314a9",
+  "verification": "new-request",
+  "rawFingerprint": "120201e9553cf595101e9d7dc5dc50a307447f4f70521f34df26067df01fea55",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.zip",
+      "contentType": "application/zip",
+      "assetId": "2fd94532-5192-4723-80a2-826e6782f16c",
+      "bytes": 10994,
+      "sha256": "bd2356be56d0df641b5000e1cce92e53fe077cf13ef0a8ff71ac6825cc01af0f"
+    }
+  ],
+  "result": null
+}

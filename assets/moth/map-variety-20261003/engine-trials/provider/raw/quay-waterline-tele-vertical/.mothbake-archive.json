@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "quay-waterline-tele-vertical",
+  "engine": "telablur-v1",
+  "jobId": "0dec5762-44b8-4b9d-a15a-fe00cbb581cd",
+  "recipeFingerprint": "b4747f5234a7e635d5922116a21878055e473657c72f24a27fde7c81acdfdcba",
+  "generationFingerprint": "bee33c5ce383d4b23bb3b0fbe19d625f68b8eaef3cb5ebdc2fd02c1cfc31a143",
+  "verification": "new-request",
+  "rawFingerprint": "b6ead07e8966455cbb9d5178fa9add2420d172a78af4135b30f91b36196637a8",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "e63eee66-0342-4749-83d4-7ff9ebbcdb0f",
+      "bytes": 3326,
+      "sha256": "dd67aabc6cb2e4438377c32c860a49c887fe7176b82379ddf053e6ea19618258"
+    }
+  ],
+  "result": null
+}

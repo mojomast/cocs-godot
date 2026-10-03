@@ -1,0 +1,46 @@
+{
+  "id": "copper-patina-image-global",
+  "batch": 2,
+  "engine": "blur-v1",
+  "params": {
+    "style": "rx",
+    "strength": 0.22,
+    "reach": 0,
+    "size": 64
+  },
+  "inputs": {
+    "image": "sources/copper-patina-source.png"
+  },
+  "recipeFingerprint": "6dccd269a86fc97abfaf969c240df8a9bf509908f7c49e5328bf5cfd675457f9",
+  "state": "completed",
+  "jobId": "2bba80b9-3060-41cd-b65d-b8463f0e2cc6",
+  "attempts": [
+    {
+      "startMonotonicMs": 1791042231497.3955,
+      "startUTC": "2026-10-03T15:43:51.497Z",
+      "endMonotonicMs": 1791042233029.9978,
+      "http": 202,
+      "durationMs": 1532.602294921875
+    }
+  ],
+  "observations": [
+    {
+      "atUTC": "2026-10-03T15:43:54.205Z",
+      "monotonicMs": 1791042234205.9966,
+      "status": "processing",
+      "step": "processing",
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "atUTC": "2026-10-03T15:43:57.672Z",
+      "monotonicMs": 1791042237672.068,
+      "status": "completed",
+      "step": "exporting",
+      "startedAt": null,
+      "completedAt": null
+    }
+  ],
+  "submittedAt": "2026-10-03T15:43:52Z",
+  "archived": true
+}

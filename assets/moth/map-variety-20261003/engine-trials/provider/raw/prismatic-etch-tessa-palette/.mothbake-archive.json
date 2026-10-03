@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "prismatic-etch-tessa-palette",
+  "engine": "tessa-image-v1",
+  "jobId": "ce0b4765-f1b0-44b4-97d9-718ed3a62515",
+  "recipeFingerprint": "6abdc01d116eccc06956ff177c8f5424e6a64e4ce8cc4797266ca341d02c2c18",
+  "generationFingerprint": "872b1ae0a09caa10f981657484510276a281a2512be86fabb3b00963612c8fdd",
+  "verification": "new-request",
+  "rawFingerprint": "32d890288300ac78756ce3b59361c6697d0d5062b58971ff4d19ee46b22b2388",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "8cdf9051-d824-47cf-a0e7-6e5b09028d4f",
+      "bytes": 4580,
+      "sha256": "e7c83574066d05636a16ead4d14a79f137c64db201be47691f48d2dec0e75801"
+    }
+  ],
+  "result": null
+}

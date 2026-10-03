@@ -1,0 +1,23 @@
+{
+  "engineId": "test-binary-v1",
+  "name": "Test Binary",
+  "version": null,
+  "creditsPerRun": 0,
+  "enabled": true,
+  "paramsSchema": {},
+  "inputFiles": [
+    {
+      "name": "file",
+      "mime_types": [],
+      "required": true,
+      "description": ""
+    }
+  ],
+  "outputFiles": [],
+  "runPolicy": {
+    "timeout": 300,
+    "max_retries": 3,
+    "heartbeat": 60
+  },
+  "errorCodes": []
+}

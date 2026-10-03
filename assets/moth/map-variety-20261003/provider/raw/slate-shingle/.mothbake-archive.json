@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "slate-shingle",
+  "engine": "blur-core-v1",
+  "jobId": "e6e2c413-fc42-4301-aee9-134d0060fdcc",
+  "recipeFingerprint": "9b1de7948fb4fcc671bf501c504edbfeaaea46ae807ef02eab334af201ef4b4c",
+  "generationFingerprint": "d62496af4fc8a4b21dbedb5a3897a086b3b0e904c8fe4bc390d8d1cc2550ef23",
+  "verification": "new-request",
+  "rawFingerprint": "d088b2d026eaefa7bf1e6abd2aba10241629e51c5f28d007dece15efadf41e3e",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 426206,
+    "sha256": "b2c6763d4b5d3ea0b2c6d44005810b1b563ac2d8870abb510065fb75b2139a9b",
+    "jsonHash": "7816bf960fea61a609d6a9c5157b49bc95bf68bf4b5c70203e4f03c03327b619"
+  }
+}

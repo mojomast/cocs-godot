@@ -1,0 +1,479 @@
+{
+  "version": 1,
+  "attempted": 35,
+  "accepted": 31,
+  "remoteCompleted": 31,
+  "preSubmissionFailures": 4,
+  "remoteFailures": 0,
+  "perEngine": {
+    "blur-v1": {
+      "attempted": 8,
+      "accepted": 7,
+      "remoteCompleted": 7,
+      "preSubmissionFailures": 1
+    },
+    "deep-fryer-v1": {
+      "attempted": 9,
+      "accepted": 7,
+      "remoteCompleted": 7,
+      "preSubmissionFailures": 2
+    },
+    "telablur-v1": {
+      "attempted": 8,
+      "accepted": 7,
+      "remoteCompleted": 7,
+      "preSubmissionFailures": 1
+    },
+    "tessa-image-v1": {
+      "attempted": 6,
+      "accepted": 6,
+      "remoteCompleted": 6,
+      "preSubmissionFailures": 0
+    },
+    "qpixl-v1": {
+      "attempted": 2,
+      "accepted": 2,
+      "remoteCompleted": 2,
+      "preSubmissionFailures": 0
+    },
+    "entanglement-shader-v1": {
+      "attempted": 2,
+      "accepted": 2,
+      "remoteCompleted": 2,
+      "preSubmissionFailures": 0
+    }
+  },
+  "estimatedCreditsForAcceptedJobs": 31,
+  "actualChargedCredits": null,
+  "totalCampaignAcceptedJobsIncludingOriginal45": 76,
+  "requestAccounting": {
+    "authenticatedCatalogAndDefinitions": 33,
+    "assetInspectionGETs": 4,
+    "concurrencyJobHistoryGETs": 6,
+    "extraExactScalarResultGETs": 2,
+    "confirmedJobPOSTs": 31,
+    "exactTotal": null,
+    "note": "Upload requests, unchanged polling and retries are not fully instrumented; no exact overall HTTP count claimed"
+  },
+  "concurrency": [
+    {
+      "batch": 2,
+      "accepted": 2,
+      "completed": 2,
+      "jobIds": [
+        "2bba80b9-3060-41cd-b65d-b8463f0e2cc6",
+        "f8a88453-7580-4384-8671-00eb9679231d"
+      ],
+      "postOverlapMs": 1531.693603515625,
+      "postDurationsMs": [
+        1532.602294921875,
+        1943.8916015625
+      ],
+      "http429": 0,
+      "elapsedMs": 121016.8271484375,
+      "processingObservations": [
+        {
+          "id": "copper-patina-image-global",
+          "observations": [
+            {
+              "atUTC": "2026-10-03T15:43:54.205Z",
+              "monotonicMs": 1791042234205.9966,
+              "status": "processing",
+              "step": "processing",
+              "startedAt": null,
+              "completedAt": null
+            }
+          ]
+        },
+        {
+          "id": "copper-patina-kernel-global",
+          "observations": []
+        }
+      ],
+      "executionOverlap": "Only status observations supplied; POST overlap alone does not prove worker execution overlap"
+    },
+    {
+      "batch": 4,
+      "accepted": 4,
+      "completed": 4,
+      "jobIds": [
+        "e95a4f5d-1871-4c56-a310-b62fd91591a7",
+        "0813a770-dfac-4bc4-8f37-11aaa74308d4",
+        "3a666634-4519-4984-a96b-84a11737fabd",
+        "a93da26a-bbe4-47a9-821f-fd05f1efc028"
+      ],
+      "postOverlapMs": 1578.09619140625,
+      "postDurationsMs": [
+        2400.1962890625,
+        1578.57373046875,
+        2897.18408203125,
+        1974.347412109375
+      ],
+      "http429": 0,
+      "elapsedMs": 63870.382080078125,
+      "processingObservations": [
+        {
+          "id": "copper-patina-tele-global",
+          "observations": [
+            {
+              "atUTC": "2026-10-03T15:45:56.159Z",
+              "monotonicMs": 1791042356159.5679,
+              "status": "processing",
+              "step": "teleport",
+              "startedAt": null,
+              "completedAt": null
+            }
+          ]
+        },
+        {
+          "id": "copper-patina-kernel-four",
+          "observations": [
+            {
+              "atUTC": "2026-10-03T15:46:49.332Z",
+              "monotonicMs": 1791042409332.487,
+              "status": "processing",
+              "step": "run",
+              "startedAt": null,
+              "completedAt": null
+            }
+          ]
+        },
+        {
+          "id": "quay-waterline-tele-strong",
+          "observations": [
+            {
+              "atUTC": "2026-10-03T15:45:57.573Z",
+              "monotonicMs": 1791042357574.012,
+              "status": "processing",
+              "step": "teleport",
+              "startedAt": null,
+              "completedAt": null
+            }
+          ]
+        },
+        {
+          "id": "prismatic-etch-image-reach",
+          "observations": []
+        }
+      ],
+      "executionOverlap": "Only status observations supplied; POST overlap alone does not prove worker execution overlap"
+    }
+  ],
+  "records": [
+    {
+      "id": "copper-patina-image-rx",
+      "engine": "blur-v1",
+      "jobId": null,
+      "remoteCompleted": false,
+      "initialLocalState": "local-failed",
+      "rawArchive": null,
+      "localRepair": null
+    },
+    {
+      "id": "copper-patina-kernel-low",
+      "engine": "deep-fryer-v1",
+      "jobId": null,
+      "remoteCompleted": false,
+      "initialLocalState": "local-failed",
+      "rawArchive": null,
+      "localRepair": null
+    },
+    {
+      "id": "copper-patina-tele-vertical",
+      "engine": "telablur-v1",
+      "jobId": null,
+      "remoteCompleted": false,
+      "initialLocalState": "local-failed",
+      "rawArchive": null,
+      "localRepair": null
+    },
+    {
+      "id": "copper-patina-tessa-palette",
+      "engine": "tessa-image-v1",
+      "jobId": "4f0a42b7-52da-4819-a224-70fafd75c70b",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/copper-patina-tessa-palette/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "terracotta-image-rx",
+      "engine": "blur-v1",
+      "jobId": "5f8cdcd1-3bee-4c1e-a506-9007848646f5",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/terracotta-image-rx/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "terracotta-kernel-low",
+      "engine": "deep-fryer-v1",
+      "jobId": "3400ae3b-946d-4706-9252-a42ecc094452",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/terracotta-kernel-low/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "terracotta-tele-vertical",
+      "engine": "telablur-v1",
+      "jobId": "6847d958-6a42-4c30-b439-0ab1bf957c48",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/terracotta-tele-vertical/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "terracotta-tessa-palette",
+      "engine": "tessa-image-v1",
+      "jobId": "7b00a0d4-d07e-4fcc-b530-725e1129343d",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/terracotta-tessa-palette/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "prismatic-etch-image-rx",
+      "engine": "blur-v1",
+      "jobId": "12f6d86c-55a5-4c68-8ed6-77af53355de2",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/prismatic-etch-image-rx/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "prismatic-etch-kernel-low",
+      "engine": "deep-fryer-v1",
+      "jobId": "b98af9c8-7dac-4a1f-8f71-0525f2c5d177",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/prismatic-etch-kernel-low/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "prismatic-etch-tele-vertical",
+      "engine": "telablur-v1",
+      "jobId": "76822651-fc97-451a-8abb-39b7a7a09b24",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/prismatic-etch-tele-vertical/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "prismatic-etch-tessa-palette",
+      "engine": "tessa-image-v1",
+      "jobId": "ce0b4765-f1b0-44b4-97d9-718ed3a62515",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/prismatic-etch-tessa-palette/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "quay-waterline-image-rx",
+      "engine": "blur-v1",
+      "jobId": "ab9208cb-0a1a-46c1-a927-603f55050f29",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/quay-waterline-image-rx/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "quay-waterline-kernel-low",
+      "engine": "deep-fryer-v1",
+      "jobId": "6928c6c7-5023-4cc4-802b-dab52ab491d9",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/quay-waterline-kernel-low/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "quay-waterline-tele-vertical",
+      "engine": "telablur-v1",
+      "jobId": "0dec5762-44b8-4b9d-a15a-fe00cbb581cd",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/quay-waterline-tele-vertical/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "quay-waterline-tessa-palette",
+      "engine": "tessa-image-v1",
+      "jobId": "9bd0c9b1-397d-4a94-862e-c7a12048a2f0",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/quay-waterline-tessa-palette/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "moss-lichen-image-rx",
+      "engine": "blur-v1",
+      "jobId": "f935e1da-9b5a-43d6-b121-f3071cc796a2",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/moss-lichen-image-rx/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "moss-lichen-kernel-low",
+      "engine": "deep-fryer-v1",
+      "jobId": "ea5fd666-9b47-4dbd-887c-e9a964cb3dbd",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/moss-lichen-kernel-low/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "moss-lichen-tele-vertical",
+      "engine": "telablur-v1",
+      "jobId": "80fb36f9-d06a-4d88-82b6-9e3797b58157",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/moss-lichen-tele-vertical/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "moss-lichen-tessa-palette",
+      "engine": "tessa-image-v1",
+      "jobId": "75a41b6a-9586-4743-bedf-9bcbbf5806ed",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/moss-lichen-tessa-palette/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "terracotta-image-ry",
+      "engine": "blur-v1",
+      "jobId": "611112f2-638c-4c24-b9a7-2602ef3cba6c",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/terracotta-image-ry/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "copper-patina-kernel-mid",
+      "engine": "deep-fryer-v1",
+      "jobId": null,
+      "remoteCompleted": false,
+      "initialLocalState": "local-failed",
+      "rawArchive": null,
+      "localRepair": null
+    },
+    {
+      "id": "quay-waterline-tele-horizontal",
+      "engine": "telablur-v1",
+      "jobId": "2ba62d5f-208a-4413-84ad-f3876602d037",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/quay-waterline-tele-horizontal/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "copper-patina-tessa-noisy",
+      "engine": "tessa-image-v1",
+      "jobId": "79e73604-a523-40ec-879d-93e776e98304",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/copper-patina-tessa-noisy/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "moss-lichen-qpixl",
+      "engine": "qpixl-v1",
+      "jobId": "83d8426a-ef39-4c5c-ae08-265f33191de3",
+      "remoteCompleted": true,
+      "initialLocalState": "local-failed",
+      "rawArchive": "provider/raw/moss-lichen-qpixl/.mothbake-archive.json",
+      "localRepair": "explicit 64x64 reshape, provider/qpixl-repaired.json; no resubmission"
+    },
+    {
+      "id": "quay-waterline-qpixl",
+      "engine": "qpixl-v1",
+      "jobId": "10d07077-63c4-4b66-8623-c4d7de13ee74",
+      "remoteCompleted": true,
+      "initialLocalState": "local-failed",
+      "rawArchive": "provider/raw/quay-waterline-qpixl/.mothbake-archive.json",
+      "localRepair": "explicit 64x64 reshape, provider/qpixl-repaired.json; no resubmission"
+    },
+    {
+      "id": "instrument-lut-3-body",
+      "engine": "entanglement-shader-v1",
+      "jobId": "210cf363-bb9b-4a0a-a4d4-3436dc2ee279",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/instrument-lut-3-body/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "instrument-lut-frustrated",
+      "engine": "entanglement-shader-v1",
+      "jobId": "c56014b8-3a3c-46d1-bd3b-55fcc30bf65c",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "provider/raw/instrument-lut-frustrated/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "copper-patina-kernel-mid-global",
+      "engine": "deep-fryer-v1",
+      "jobId": "02fab9ce-3cc4-4e5b-bd90-beb58dc62e2c",
+      "remoteCompleted": true,
+      "initialLocalState": "published",
+      "rawArchive": "intensity-provider/raw/copper-patina-kernel-mid-global/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "copper-patina-image-global",
+      "engine": "blur-v1",
+      "jobId": "2bba80b9-3060-41cd-b65d-b8463f0e2cc6",
+      "remoteCompleted": true,
+      "initialLocalState": "completed",
+      "rawArchive": "concurrency/raw/copper-patina-image-global/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "copper-patina-kernel-global",
+      "engine": "deep-fryer-v1",
+      "jobId": "f8a88453-7580-4384-8671-00eb9679231d",
+      "remoteCompleted": true,
+      "initialLocalState": "completed",
+      "rawArchive": "concurrency/raw/copper-patina-kernel-global/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "copper-patina-tele-global",
+      "engine": "telablur-v1",
+      "jobId": "e95a4f5d-1871-4c56-a310-b62fd91591a7",
+      "remoteCompleted": true,
+      "initialLocalState": "completed",
+      "rawArchive": "concurrency/raw/copper-patina-tele-global/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "copper-patina-kernel-four",
+      "engine": "deep-fryer-v1",
+      "jobId": "0813a770-dfac-4bc4-8f37-11aaa74308d4",
+      "remoteCompleted": true,
+      "initialLocalState": "completed",
+      "rawArchive": "concurrency/raw/copper-patina-kernel-four/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "quay-waterline-tele-strong",
+      "engine": "telablur-v1",
+      "jobId": "3a666634-4519-4984-a96b-84a11737fabd",
+      "remoteCompleted": true,
+      "initialLocalState": "completed",
+      "rawArchive": "concurrency/raw/quay-waterline-tele-strong/.mothbake-archive.json",
+      "localRepair": null
+    },
+    {
+      "id": "prismatic-etch-image-reach",
+      "engine": "blur-v1",
+      "jobId": "a93da26a-bbe4-47a9-821f-fd05f1efc028",
+      "remoteCompleted": true,
+      "initialLocalState": "completed",
+      "rawArchive": "concurrency/raw/prismatic-etch-image-reach/.mothbake-archive.json",
+      "localRepair": null
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "quay-waterline-image-rx",
+  "engine": "blur-v1",
+  "jobId": "ab9208cb-0a1a-46c1-a927-603f55050f29",
+  "recipeFingerprint": "5be24137218f3bfa3c5ecc83e71fa470a5c91ec3d5166f0f780d71d8ec6e71a6",
+  "generationFingerprint": "b67dd88e8dfb42ac0a2314e9948b528307e6b24799d51d56a12fc8f9a98b3f7d",
+  "verification": "new-request",
+  "rawFingerprint": "40cd9d23d925486858c6cbdd0b8e652743ad77fbb916919920983fc82e6ebbe0",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "320f56ca-397c-41aa-927e-7e590598cbe8",
+      "bytes": 2965,
+      "sha256": "732183436d4f95d4989d6634279c07bee9521994712ef5ca7dce16f1db03ab7a"
+    }
+  ],
+  "result": null
+}

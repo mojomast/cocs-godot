@@ -1,0 +1,120 @@
+{
+  "definitions": [
+    {
+      "id": "copper-patina-image-global",
+      "batch": 2,
+      "engine": "blur-v1",
+      "params": {
+        "style": "rx",
+        "strength": 0.22,
+        "reach": 0,
+        "size": 64
+      },
+      "inputs": {
+        "image": "sources/copper-patina-source.png"
+      },
+      "inputHashes": {
+        "image": "1511e4ee7d96a4c2173f0a22cf2972fc73264ffd5e5bbff41ba857b8f995f355"
+      }
+    },
+    {
+      "id": "copper-patina-kernel-global",
+      "batch": 2,
+      "engine": "deep-fryer-v1",
+      "params": {
+        "gates": [
+          [
+            "rx",
+            0.1
+          ]
+        ],
+        "tile_size": 2
+      },
+      "inputs": {
+        "image": "sources/copper-patina-source.png"
+      },
+      "inputHashes": {
+        "image": "1511e4ee7d96a4c2173f0a22cf2972fc73264ffd5e5bbff41ba857b8f995f355"
+      }
+    },
+    {
+      "id": "copper-patina-tele-global",
+      "batch": 4,
+      "engine": "telablur-v1",
+      "params": {
+        "strength": 0.3,
+        "direction": "full",
+        "size": 64
+      },
+      "inputs": {
+        "image1": "sources/copper-patina-source.png",
+        "image2": "sources/copper-patina-target.png"
+      },
+      "inputHashes": {
+        "image1": "1511e4ee7d96a4c2173f0a22cf2972fc73264ffd5e5bbff41ba857b8f995f355",
+        "image2": "78345f984dc1a24bf86510a0445744153ae289be7f03fcc153f684d9b14dbc35"
+      }
+    },
+    {
+      "id": "copper-patina-kernel-four",
+      "batch": 4,
+      "engine": "deep-fryer-v1",
+      "params": {
+        "gates": [
+          [
+            "rx",
+            0.1
+          ]
+        ],
+        "tile_size": 4
+      },
+      "inputs": {
+        "image": "sources/copper-patina-source.png"
+      },
+      "inputHashes": {
+        "image": "1511e4ee7d96a4c2173f0a22cf2972fc73264ffd5e5bbff41ba857b8f995f355"
+      }
+    },
+    {
+      "id": "quay-waterline-tele-strong",
+      "batch": 4,
+      "engine": "telablur-v1",
+      "params": {
+        "strength": 0.55,
+        "direction": "horizontal",
+        "size": 64
+      },
+      "inputs": {
+        "image1": "sources/quay-waterline-source.png",
+        "image2": "sources/quay-waterline-target.png"
+      },
+      "inputHashes": {
+        "image1": "8e84409cc00314ac4d765d21e0a40003f79b42206ff8d3c974dbba47bcf92017",
+        "image2": "b6e0ef13374d5032dd36f31586ffda29ec84634d88ccd0d460f8b362083a95db"
+      }
+    },
+    {
+      "id": "prismatic-etch-image-reach",
+      "batch": 4,
+      "engine": "blur-v1",
+      "params": {
+        "strength": 0.18,
+        "reach": 0.08,
+        "style": "rx",
+        "size": 64
+      },
+      "inputs": {
+        "image": "sources/prismatic-etch-source.png"
+      },
+      "inputHashes": {
+        "image": "c0e2e5d7fb3615b457dca19367e2bc77ca79923be2e360ea232b197db607b07d"
+      }
+    }
+  ],
+  "estimatedCredits": 6,
+  "concurrencyStages": [
+    2,
+    4
+  ],
+  "fingerprint": "2a703feef1f86422f8a3fd0ac6205b75a5c7b90d830aaa7c02e7f195fede7193"
+}

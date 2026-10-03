@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "prismatic-etch-tele-vertical",
+  "engine": "telablur-v1",
+  "jobId": "76822651-fc97-451a-8abb-39b7a7a09b24",
+  "recipeFingerprint": "5e2ab0b2b31f826efb607e82d9fa7f3f1997ee20c06a2f3ab6fde3d02ce330b1",
+  "generationFingerprint": "aeafd4bd2c7e6054dffa72bd755194068f71fcde76d4053e88c58ebd4b2d1bde",
+  "verification": "new-request",
+  "rawFingerprint": "3c7690723c73db49b3eb139bcb3cad85b9e8c01bc7ab366c6dc4668234748973",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "17701e19-f0b5-4f5b-bb12-6a5aba6ed6b8",
+      "bytes": 3756,
+      "sha256": "cacd3021a5b2bfd0dcd49153644302daec020495da825cbe3edf580d8801fb03"
+    }
+  ],
+  "result": null
+}

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "quay-waterline-tele-horizontal",
+  "engine": "telablur-v1",
+  "jobId": "2ba62d5f-208a-4413-84ad-f3876602d037",
+  "recipeFingerprint": "c817b512ba41e51f47d150ef0af5e9660eeb20dc604889d08d7416e58ad1a85a",
+  "generationFingerprint": "f3264299b778e5a63258a90f12208de2b53abf6ec384bd96a1bc7ba7b49231a2",
+  "verification": "new-request",
+  "rawFingerprint": "d1782eae6cec16bfafbcbe0a464d994adb86f976f5301b7755d774cfcc8e1b55",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "36723304-8d39-433a-a888-dc270bcbfada",
+      "bytes": 3101,
+      "sha256": "ee6000034fb306aef7a7480131eab2f7a2730dd9149a432ba51512ab6896a358"
+    }
+  ],
+  "result": null
+}

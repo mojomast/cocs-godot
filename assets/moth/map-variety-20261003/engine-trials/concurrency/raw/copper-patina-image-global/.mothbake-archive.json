@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "copper-patina-image-global",
+  "engine": "blur-v1",
+  "jobId": "2bba80b9-3060-41cd-b65d-b8463f0e2cc6",
+  "recipeFingerprint": "6dccd269a86fc97abfaf969c240df8a9bf509908f7c49e5328bf5cfd675457f9",
+  "generationFingerprint": "0174a0c63fdda52e64dcc6cc155a86c332ce622d4bdd5df764e03dc63aa65de6",
+  "verification": "concurrent-new-request",
+  "rawFingerprint": "0e36e092a50c081f30f49a90b4e2d48fc759a2f851e25083a03ce322f030bc8b",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "115ff05d-38b7-4da1-896d-0344f3a3b440",
+      "bytes": 4563,
+      "sha256": "c08757e1d50c77be2ec626e7f2035c61efdd16d0522dca5a1fe5c840f82bcc80"
+    }
+  ],
+  "result": null
+}

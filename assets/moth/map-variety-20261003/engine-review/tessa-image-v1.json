@@ -1,0 +1,139 @@
+{
+  "engineId": "tessa-image-v1",
+  "name": "Tessa Image",
+  "version": null,
+  "creditsPerRun": 1,
+  "enabled": true,
+  "paramsSchema": {
+    "properties": {
+      "distortion": {
+        "default": 0,
+        "description": "Alpha for the exp(i*alpha/2*(P⊗Q)) gate applied between adjacent data qubits in transform_channels, where (P, Q) is `gate_pauli`.",
+        "title": "Distortion",
+        "type": "number"
+      },
+      "fixed_palette": {
+        "default": false,
+        "description": "Import the image through a palette of its own colours (capped at 256) and run only the resulting per-pixel palette index through the device -- as exact, losslessly-quantized levels -- instead of decomposing it into the continuous colour-sphere coordinates. Good for flat-color/graphic-style images.",
+        "title": "Fixed Palette",
+        "type": "boolean"
+      },
+      "gate_pauli": {
+        "default": "XZ",
+        "description": "Which two-qubit Pauli pair (P, Q) to use for the exp(i*distortion/2*(P⊗Q)) gate applied between adjacent data qubits in transform_channels, e.g. 'XY', 'ZZ'.",
+        "pattern": "^[IXYZ]{2}$",
+        "title": "Gate Pauli",
+        "type": "string"
+      },
+      "machine": {
+        "default": "aer",
+        "description": "Where to run the circuit. 'aer' is a noiseless local simulator. 'fake_<chip>' options (e.g. 'fake_fez', 'fake_sherbrooke', 'fake_torino') are local simulators calibrated to a real current IBM chip's noise. 'ibm_<chip>' options (e.g. 'ibm_fez', 'ibm_miami', 'ibm_marrakesh') submit to that real IBM Quantum hardware; 'least_busy' submits to whichever operational device currently has the shortest queue.",
+        "enum": [
+          "aer",
+          "ibm_fez",
+          "ibm_miami",
+          "ibm_marrakesh",
+          "least_busy",
+          "fake_fez",
+          "fake_marrakesh",
+          "fake_torino",
+          "fake_brisbane",
+          "fake_kyiv",
+          "fake_sherbrooke",
+          "fake_kyoto",
+          "fake_osaka",
+          "fake_quebec",
+          "fake_cusco",
+          "fake_strasbourg",
+          "fake_brussels"
+        ],
+        "title": "Machine",
+        "type": "string"
+      },
+      "range_correction": {
+        "default": false,
+        "description": "Stretch each decoded field back over its original dynamic range. Off by default -- the raw decoded values are used as-is, with no correction.",
+        "title": "Range Correction",
+        "type": "boolean"
+      },
+      "separate_rgb": {
+        "default": true,
+        "description": "Give each of the three colour coordinates its own circuit. Turn this off to put the two angles on one circuit instead: a qubit is cos(theta/2)|0> + e^(i phi)|1>, so the sphere's polar angle can ride in the rotation and hue in the phase of the same cell, turning three circuits into two at the cost of a second measurement setting and a noisier reconstruction. Ignored when fixed_palette is set.",
+        "title": "Separate Rgb",
+        "type": "boolean"
+      },
+      "shots": {
+        "default": 4096,
+        "description": "Number of measurement shots to sample, per processed field.",
+        "exclusiveMinimum": 0,
+        "title": "Shots",
+        "type": "integer"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [
+    {
+      "name": "image",
+      "mime_types": [
+        "image/png",
+        "image/jpeg",
+        "image/webp",
+        "image/tiff",
+        "image/bmp"
+      ],
+      "required": true,
+      "description": "The image to encode. By default every pixel becomes a point on the colour sphere -- a radius and two angles, the same coordinates that describe a qubit's own state -- and each of those three goes through the quantum encode/measure/decode round trip, any that doesn't vary passed through unencoded, before the image is recomposed. With fixed_palette the image is instead quantized to a palette of its own colours (capped at 256) and only the per-pixel palette index makes the trip. The alpha channel, if any, passes through unchanged."
+    }
+  ],
+  "outputFiles": [
+    {
+      "name": "result",
+      "content_types": [
+        "image/png"
+      ],
+      "required": true,
+      "description": "The recomposed image after the quantum round trip."
+    }
+  ],
+  "runPolicy": {
+    "timeout": 18000,
+    "max_retries": 1,
+    "heartbeat": 6000
+  },
+  "errorCodes": [
+    {
+      "type": "invalid_image",
+      "description": "The image file could not be decoded."
+    },
+    {
+      "type": "distortion_without_hardware",
+      "description": "distortion is greater than 0 on a machine that reads out per-group (every machine except real IBM hardware) -- the cross-cell gate it adds is silently dropped there, so it would have no effect."
+    },
+    {
+      "type": "too_many_values",
+      "description": "the image's pixel count exceeds the largest supported simulated lattice (64x64)."
+    },
+    {
+      "type": "insufficient_qubits",
+      "description": "the image still exceeds the selected machine's data-qubit capacity after being downsampled to fit it -- a degenerate-case fallback, not the normal outcome for an oversized image."
+    },
+    {
+      "type": "unsupported_machine",
+      "description": "the requested machine name isn't recognized."
+    },
+    {
+      "type": "ibm_connection_failed",
+      "description": "Could not authenticate/connect to IBM Quantum with the given token/instance."
+    },
+    {
+      "type": "submission_failed",
+      "description": "The transpiled circuit was rejected or the sampling job failed to submit."
+    },
+    {
+      "type": "encoding_failed",
+      "description": "The output image could not be encoded."
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "engineId": "qrc-train-v2",
+  "name": "QRC Train",
+  "version": null,
+  "creditsPerRun": 5,
+  "enabled": true,
+  "paramsSchema": {
+    "properties": {
+      "epochs": {
+        "default": 50,
+        "description": "Readout training epochs (readout.epoch)",
+        "maximum": 500,
+        "minimum": 1,
+        "title": "Epochs",
+        "type": "integer"
+      },
+      "mixing": {
+        "default": 0.7,
+        "description": "How much each reservoir step replaces its memory (reservoir.mixing); 1 = fully replaced",
+        "exclusiveMinimum": 0,
+        "maximum": 1,
+        "title": "Mixing",
+        "type": "number"
+      },
+      "mode": {
+        "default": "order",
+        "description": "Window-sampling mode (handler.mode)",
+        "enum": [
+          "random",
+          "order",
+          "stride"
+        ],
+        "title": "Mode",
+        "type": "string"
+      },
+      "num_qubits": {
+        "default": 5,
+        "description": "Reservoir qubits (reservoir.num_qubits)",
+        "maximum": 12,
+        "minimum": 2,
+        "title": "Num Qubits",
+        "type": "integer"
+      },
+      "num_random_gates": {
+        "default": 10,
+        "description": "Random gates mixed into each reservoir step (reservoir.num_random_gates)",
+        "maximum": 100,
+        "minimum": 0,
+        "title": "Num Random Gates",
+        "type": "integer"
+      },
+      "periodic": {
+        "default": true,
+        "description": "Allow windows to wrap past the end of the sequence (handler.periodic)",
+        "title": "Periodic",
+        "type": "boolean"
+      },
+      "sample_fraction": {
+        "default": 1,
+        "description": "Fraction of the candidate windows `mode` can produce that are kept, via quasi-random subsampling (handler.sample_fraction)",
+        "exclusiveMinimum": 0,
+        "maximum": 1,
+        "title": "Sample Fraction",
+        "type": "number"
+      },
+      "sample_length": {
+        "default": 15,
+        "description": "Window length (handler.sample_length)",
+        "maximum": 256,
+        "minimum": 1,
+        "title": "Sample Length",
+        "type": "integer"
+      },
+      "seed": {
+        "anyOf": [
+          {
+            "maximum": 4294967295,
+            "minimum": 0,
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Top-level RNG seed shared by every component that doesn't set its own (config.seed). None = pick a random seed for this run; it's recorded in the returned model's state, so the exact run can be reproduced later by passing it back explicitly.",
+        "title": "Seed"
+      },
+      "sequence": {
+        "default": [
+          1,
+          2,
+          3,
+          2,
+          1,
+          1,
+          2,
+          3,
+          2,
+          1,
+          1,
+          2,
+          3,
+          2,
+          1,
+          1,
+          2,
+          3,
+          2,
+          1
+        ],
+        "description": "Tokens to train on — any hashable values (ints, strings, ...) forming a unique set",
+        "items": {},
+        "title": "Sequence",
+        "type": "array"
+      },
+      "shots": {
+        "default": 3000,
+        "description": "Measurement shots (backend.shots)",
+        "maximum": 8192,
+        "minimum": 1,
+        "title": "Shots",
+        "type": "integer"
+      },
+      "vocabulary": {
+        "anyOf": [
+          {
+            "items": {},
+            "type": "array"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Fixed vocabulary covering the full input space (e.g. all MIDI pitches, all ascii chars). None = derive the vocabulary from the sequence's own distinct tokens, in the order they first appear (default).",
+        "title": "Vocabulary"
+      },
+      "washout": {
+        "default": 5,
+        "description": "Washout period; must be < sample_length (readout.washout).",
+        "exclusiveMinimum": 1,
+        "maximum": 255,
+        "title": "Washout",
+        "type": "integer"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [],
+  "outputFiles": [
+    {
+      "name": "state",
+      "content_types": [
+        "application/json"
+      ],
+      "required": true,
+      "description": "Trained reservoir state; reuse in qrc-gen-v2 via input_files.state (train once, generate many)."
+    }
+  ],
+  "runPolicy": {
+    "timeout": 3600,
+    "max_retries": 1,
+    "heartbeat": 3000
+  },
+  "errorCodes": []
+}

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "terracotta-kernel-low",
+  "engine": "deep-fryer-v1",
+  "jobId": "3400ae3b-946d-4706-9252-a42ecc094452",
+  "recipeFingerprint": "3c0bcce1d20642f39c1e719a47ada4f03a1b86cef0560f82d4651b49881e81ba",
+  "generationFingerprint": "cdd52b201b1af97c7f5e566cdb9048c903491ac5773457837b5b99739d37a04e",
+  "verification": "new-request",
+  "rawFingerprint": "0ea99811ad35c50e90a1035f24b5baa3b9f8caea4e4b5438669dd2aa288e3fec",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "73e08b7a-da40-4220-9626-132c742004ae",
+      "bytes": 3162,
+      "sha256": "b74c22f643196cef596aba22fbcf73cd59d09591ff10786808c6bee28c4fbc85"
+    }
+  ],
+  "result": null
+}

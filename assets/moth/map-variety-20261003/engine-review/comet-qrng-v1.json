@@ -1,0 +1,259 @@
+{
+  "engineId": "comet-qrng-v1",
+  "name": "Comet Quantum RNG Engine",
+  "version": "1.0.0",
+  "creditsPerRun": 5,
+  "enabled": true,
+  "paramsSchema": {
+    "$defs": {
+      "Derivation": {
+        "properties": {
+          "floats": {
+            "default": 0,
+            "description": "Uniform doubles in [0, 1) with 53-bit mantissas.",
+            "maximum": 100000,
+            "minimum": 0,
+            "title": "Floats",
+            "type": "integer"
+          },
+          "integers": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/IntegerDerivation"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Uniform integers in [min, max] via rejection sampling."
+          }
+        },
+        "title": "Derivation",
+        "type": "object"
+      },
+      "IntegerDerivation": {
+        "properties": {
+          "count": {
+            "description": "How many integers to derive.",
+            "maximum": 100000,
+            "minimum": 1,
+            "title": "Count",
+            "type": "integer"
+          },
+          "max": {
+            "description": "Inclusive upper bound.",
+            "title": "Max",
+            "type": "integer"
+          },
+          "min": {
+            "description": "Inclusive lower bound.",
+            "title": "Min",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "min",
+          "max",
+          "count"
+        ],
+        "title": "IntegerDerivation",
+        "type": "object"
+      }
+    },
+    "properties": {
+      "backend_name": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "IBM backend to target; omit to auto-select the least busy device. Ignored when mode='emu'.",
+        "title": "Backend Name"
+      },
+      "bell_witness": {
+        "default": true,
+        "description": "Add 8 qubits carrying four CHSH Bell pairs measured in the same job (fidelity witness).",
+        "title": "Bell Witness",
+        "type": "boolean"
+      },
+      "derive": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Derivation"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Optional unbiased integers/floats derived from the conditioned bytes."
+      },
+      "epsilon_log2": {
+        "default": 64,
+        "description": "Extractor security parameter: output is 2^-epsilon_log2-close to uniform.",
+        "maximum": 128,
+        "minimum": 32,
+        "title": "Epsilon Log2",
+        "type": "integer"
+      },
+      "include_raw_counts": {
+        "default": true,
+        "description": "Echo the raw counts so third parties can recompute the output.",
+        "title": "Include Raw Counts",
+        "type": "boolean"
+      },
+      "mode": {
+        "default": "emu",
+        "description": "'emu' samples on a local Aer simulator (classical baseline, uncertified); 'qpu' samples IBM hardware.",
+        "enum": [
+          "emu",
+          "qpu"
+        ],
+        "title": "Mode",
+        "type": "string"
+      },
+      "num_qubits": {
+        "default": 12,
+        "description": "Width of the randomness register (Born-rule bits per shot).",
+        "maximum": 256,
+        "minimum": 1,
+        "title": "Num Qubits",
+        "type": "integer"
+      },
+      "output_bytes": {
+        "default": 32,
+        "description": "Conditioned bytes requested. You receive min(output_bytes, extractable).",
+        "maximum": 1000000,
+        "minimum": 1,
+        "title": "Output Bytes",
+        "type": "integer"
+      },
+      "prev_pulse_hash": {
+        "anyOf": [
+          {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Previous beacon pulse hash to chain onto (hex).",
+        "title": "Prev Pulse Hash"
+      },
+      "public_seed": {
+        "default": "toeplitz-v1",
+        "description": "Toeplitz seed: a shipped seed id (default 'toeplitz-v1', uniform seed from a documented ceremony — information-theoretic mode) or any custom string (SHAKE-256 expanded — computational mode, labelled as such).",
+        "maxLength": 256,
+        "minLength": 1,
+        "title": "Public Seed",
+        "type": "string"
+      },
+      "pulse_index": {
+        "anyOf": [
+          {
+            "minimum": 0,
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Beacon pulse index, if chaining.",
+        "title": "Pulse Index"
+      },
+      "qpu_instance": {
+        "anyOf": [
+          {
+            "format": "password",
+            "type": "string",
+            "writeOnly": true,
+            "sensitive": true
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "IBM Quantum instance CRN; BYOK override, omit to use mothbackend's own shared IBM credentials.",
+        "title": "Qpu Instance"
+      },
+      "qpu_token": {
+        "anyOf": [
+          {
+            "format": "password",
+            "type": "string",
+            "writeOnly": true,
+            "sensitive": true
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "IBM Quantum API token; BYOK override, omit to use mothbackend's own shared IBM credentials.",
+        "title": "Qpu Token"
+      },
+      "require_assumption_free": {
+        "default": false,
+        "description": "Certify only on the assumption-free tier (whole-shot most-common-value bound, no independence assumed). Capped near log2(shots) bits per shot; ≈0 in counts mode, so this effectively needs per-shot memory readout.",
+        "title": "Require Assumption Free",
+        "type": "boolean"
+      },
+      "shots": {
+        "default": 4096,
+        "description": "Number of measurement shots (max 10,000). Raw bits = num_qubits × shots.",
+        "exclusiveMinimum": 0,
+        "maximum": 10000,
+        "title": "Shots",
+        "type": "integer"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [],
+  "outputFiles": [],
+  "runPolicy": {
+    "timeout": 300,
+    "max_retries": 3,
+    "heartbeat": 60
+  },
+  "errorCodes": [
+    {
+      "type": "invalid_params",
+      "description": "Parameter validation failed (e.g. circuit exceeds the EMU cap of 20 qubits)."
+    },
+    {
+      "type": "backend_too_small",
+      "description": "The circuit needs more qubits than the selected IBM backend provides."
+    },
+    {
+      "type": "missing_credentials",
+      "description": "IBM authentication failed — no usable token/instance (shared or BYOK)."
+    },
+    {
+      "type": "simulation_failed",
+      "description": "Aer simulation failed."
+    },
+    {
+      "type": "collection_failed",
+      "description": "Could not retrieve the QPU result — job cancelled, failed, or backend errored."
+    },
+    {
+      "type": "collection_timeout",
+      "description": "The QPU job did not reach a terminal state within the engine's 6000 s poll deadline; the provider job was cancelled."
+    },
+    {
+      "type": "result_malformed",
+      "description": "The backend returned counts that do not match the submitted circuit."
+    }
+  ]
+}

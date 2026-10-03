@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "terracotta-tele-vertical",
+  "engine": "telablur-v1",
+  "jobId": "6847d958-6a42-4c30-b439-0ab1bf957c48",
+  "recipeFingerprint": "0d3c4515bc1fe19e228fbc68ae7a6c26e20c413d8ec19ddaaa08d7279e9e181d",
+  "generationFingerprint": "1ee728c23835e793820590cdbbb28589160a9a87548f93c514bae564f3f0abe1",
+  "verification": "new-request",
+  "rawFingerprint": "aba638b9a89a83923a334b8702828a8ddc55fa7baf602cf9415f947857aee315",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "08e05f4b-c56c-4685-b485-245418f37149",
+      "bytes": 3592,
+      "sha256": "ec0842a5e63d5d94f827992454616ffc8dcb3bc5a50791349c05ed46a95c0996"
+    }
+  ],
+  "result": null
+}

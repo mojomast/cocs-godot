@@ -1,0 +1,196 @@
+
+> copper-patina-image-rx (blur-v1) — submit
+  FAILED: POST /api/v1/assets/4bcb530f-c839-4044-ad64-20f027f9ab55/complete -> 422: not a valid asset
+
+> copper-patina-kernel-low (deep-fryer-v1) — submit
+  FAILED: POST /api/v1/assets/7f6a7673-8e6e-4186-8eea-5f3919795c9a/complete -> 422: not a valid asset
+
+> copper-patina-tele-vertical (telablur-v1) — submit
+  FAILED: POST /api/v1/assets/23ce7aab-316d-4870-9c3b-4e33c5240c5f/complete -> 422: not a valid asset
+
+> copper-patina-tessa-palette (tessa-image-v1) — submit
+  submitted 4f0a42b7-52da-4819-a224-70fafd75c70b
+  queued
+  processing (decoding) — Measuring the circuits and reading the image back
+  completed (finishing) — Recomposing the image
+  saved raw/copper-patina-tessa-palette/result.png (6017 bytes)
+  baked textures.copper-patina-tessa-palette
+
+> terracotta-image-rx (blur-v1) — submit
+  submitted 5f8cdcd1-3bee-4c1e-a506-9007848646f5
+  queued
+  completed (exporting) — Encoding blurred image for output
+  saved raw/terracotta-image-rx/result.png (3003 bytes)
+  baked textures.terracotta-image-rx
+
+> terracotta-kernel-low (deep-fryer-v1) — submit
+  submitted 3400ae3b-946d-4706-9252-a42ecc094452
+  queued
+  completed (run) — region 1/1
+  saved raw/terracotta-kernel-low/result.png (3162 bytes)
+  baked textures.terracotta-kernel-low
+
+> terracotta-tele-vertical (telablur-v1) — submit
+  submitted 6847d958-6a42-4c30-b439-0ab1bf957c48
+  queued
+  completed (encode) — Encoding result
+  saved raw/terracotta-tele-vertical/result.png (3592 bytes)
+  baked textures.terracotta-tele-vertical
+
+> terracotta-tessa-palette (tessa-image-v1) — submit
+  submitted 7b00a0d4-d07e-4fcc-b530-725e1129343d
+  queued
+  processing (decoding) — Measuring the circuits and reading the image back
+  completed (finishing) — Recomposing the image
+  saved raw/terracotta-tessa-palette/result.png (3536 bytes)
+  baked textures.terracotta-tessa-palette
+
+> prismatic-etch-image-rx (blur-v1) — submit
+  submitted 12f6d86c-55a5-4c68-8ed6-77af53355de2
+  queued
+  completed (exporting) — Encoding blurred image for output
+  saved raw/prismatic-etch-image-rx/result.png (3894 bytes)
+  baked textures.prismatic-etch-image-rx
+
+> prismatic-etch-kernel-low (deep-fryer-v1) — submit
+  submitted b98af9c8-7dac-4a1f-8f71-0525f2c5d177
+  queued
+  completed (run) — region 1/1
+  saved raw/prismatic-etch-kernel-low/result.png (4500 bytes)
+  baked textures.prismatic-etch-kernel-low
+
+> prismatic-etch-tele-vertical (telablur-v1) — submit
+  submitted 76822651-fc97-451a-8abb-39b7a7a09b24
+  queued
+  completed (encode) — Encoding result
+  saved raw/prismatic-etch-tele-vertical/result.png (3756 bytes)
+  baked textures.prismatic-etch-tele-vertical
+
+> prismatic-etch-tessa-palette (tessa-image-v1) — submit
+  submitted ce0b4765-f1b0-44b4-97d9-718ed3a62515
+  queued
+  processing (decoding) — Measuring the circuits and reading the image back
+  completed (finishing) — Recomposing the image
+  saved raw/prismatic-etch-tessa-palette/result.png (4580 bytes)
+  baked textures.prismatic-etch-tessa-palette
+
+> quay-waterline-image-rx (blur-v1) — submit
+  submitted ab9208cb-0a1a-46c1-a927-603f55050f29
+  queued
+  completed (exporting) — Encoding blurred image for output
+  saved raw/quay-waterline-image-rx/result.png (2965 bytes)
+  baked textures.quay-waterline-image-rx
+
+> quay-waterline-kernel-low (deep-fryer-v1) — submit
+  submitted 6928c6c7-5023-4cc4-802b-dab52ab491d9
+  queued
+  completed (run) — region 1/1
+  saved raw/quay-waterline-kernel-low/result.png (3240 bytes)
+  baked textures.quay-waterline-kernel-low
+
+> quay-waterline-tele-vertical (telablur-v1) — submit
+  submitted 0dec5762-44b8-4b9d-a15a-fe00cbb581cd
+  queued
+  completed (encode) — Encoding result
+  saved raw/quay-waterline-tele-vertical/result.png (3326 bytes)
+  baked textures.quay-waterline-tele-vertical
+
+> quay-waterline-tessa-palette (tessa-image-v1) — submit
+  submitted 9bd0c9b1-397d-4a94-862e-c7a12048a2f0
+  queued
+  processing (decoding) — Measuring the circuits and reading the image back
+  completed (finishing) — Recomposing the image
+  saved raw/quay-waterline-tessa-palette/result.png (4591 bytes)
+  baked textures.quay-waterline-tessa-palette
+
+> moss-lichen-image-rx (blur-v1) — submit
+  submitted f935e1da-9b5a-43d6-b121-f3071cc796a2
+  queued
+  completed (exporting) — Encoding blurred image for output
+  saved raw/moss-lichen-image-rx/result.png (4675 bytes)
+  baked textures.moss-lichen-image-rx
+
+> moss-lichen-kernel-low (deep-fryer-v1) — submit
+  submitted ea5fd666-9b47-4dbd-887c-e9a964cb3dbd
+  queued
+  completed (run) — region 1/1
+  saved raw/moss-lichen-kernel-low/result.png (5384 bytes)
+  baked textures.moss-lichen-kernel-low
+
+> moss-lichen-tele-vertical (telablur-v1) — submit
+  submitted 80fb36f9-d06a-4d88-82b6-9e3797b58157
+  queued
+  completed (encode) — Encoding result
+  saved raw/moss-lichen-tele-vertical/result.png (4762 bytes)
+  baked textures.moss-lichen-tele-vertical
+
+> moss-lichen-tessa-palette (tessa-image-v1) — submit
+  submitted 75a41b6a-9586-4743-bedf-9bcbbf5806ed
+  queued
+  processing (decoding) — Measuring the circuits and reading the image back
+  completed (finishing) — Recomposing the image
+  saved raw/moss-lichen-tessa-palette/result.png (5851 bytes)
+  baked textures.moss-lichen-tessa-palette
+
+> terracotta-image-ry (blur-v1) — submit
+  submitted 611112f2-638c-4c24-b9a7-2602ef3cba6c
+  queued
+  completed (exporting) — Encoding blurred image for output
+  saved raw/terracotta-image-ry/result.png (6055 bytes)
+  baked textures.terracotta-image-ry
+
+> copper-patina-kernel-mid (deep-fryer-v1) — submit
+  FAILED: POST /api/v1/assets/09af9bc1-c698-41bd-bbc7-696866c7088c/complete -> 422: not a valid asset
+
+> quay-waterline-tele-horizontal (telablur-v1) — submit
+  submitted 2ba62d5f-208a-4413-84ad-f3876602d037
+  queued
+  completed (encode) — Encoding result
+  saved raw/quay-waterline-tele-horizontal/result.png (3101 bytes)
+  baked textures.quay-waterline-tele-horizontal
+
+> copper-patina-tessa-noisy (tessa-image-v1) — submit
+  submitted 79e73604-a523-40ec-879d-93e776e98304
+  queued
+  processing (decoding) — Measuring the circuits and reading the image back
+  completed (finishing) — Recomposing the image
+  saved raw/copper-patina-tessa-noisy/result.png (914 bytes)
+  baked textures.copper-patina-tessa-noisy
+
+> moss-lichen-qpixl (qpixl-v1) — submit
+  submitted 83d8426a-ef39-4c5c-ae08-265f33191de3
+  queued
+  processing (encoding) — 8/288 gcells executed
+  completed (finishing) — Restoring dynamic range and reshaping output
+  FAILED: raw-grid: no nonempty 2D grid found in the job result
+
+> quay-waterline-qpixl (qpixl-v1) — submit
+  submitted 10d07077-63c4-4b66-8623-c4d7de13ee74
+  queued
+  processing (encoding) — 9/288 gcells executed
+  completed (finishing) — Restoring dynamic range and reshaping output
+  FAILED: raw-grid: no nonempty 2D grid found in the job result
+
+> instrument-lut-3-body (entanglement-shader-v1) — submit
+  submitted 210cf363-bb9b-4a0a-a4d4-3436dc2ee279
+  queued
+  processing (process) — Executing quantum circuit on backend.
+  completed (prepare) — Setting up quantum circuit for scattering simulation.
+  saved raw/instrument-lut-3-body/result.zip (10994 bytes)
+  baked materials.instrument-lut-3-body
+
+> instrument-lut-frustrated (entanglement-shader-v1) — submit
+  submitted c56014b8-3a3c-46d1-bd3b-55fcc30bf65c
+  queued
+  processing (process) — Executing quantum circuit on backend.
+  completed (prepare) — Setting up quantum circuit for scattering simulation.
+  saved raw/instrument-lut-frustrated/result.zip (10962 bytes)
+  baked materials.instrument-lut-frustrated
+recorded job ids in /tmp/opencode/cocs-moth-resources/assets/moth/map-variety-20261003/engine-trials/live.json
+baked 22 record(s) from 22 job(s) into /tmp/opencode/cocs-moth-resources/assets/moth/map-variety-20261003/engine-trials/provider · {"textures":20,"materials":2} · failed: 6
+failed: copper-patina-image-rx — POST /api/v1/assets/4bcb530f-c839-4044-ad64-20f027f9ab55/complete -> 422: not a valid asset
+failed: copper-patina-kernel-low — POST /api/v1/assets/7f6a7673-8e6e-4186-8eea-5f3919795c9a/complete -> 422: not a valid asset
+failed: copper-patina-tele-vertical — POST /api/v1/assets/23ce7aab-316d-4870-9c3b-4e33c5240c5f/complete -> 422: not a valid asset
+failed: copper-patina-kernel-mid — POST /api/v1/assets/09af9bc1-c698-41bd-bbc7-696866c7088c/complete -> 422: not a valid asset
+failed: moss-lichen-qpixl — raw-grid: no nonempty 2D grid found in the job result
+failed: quay-waterline-qpixl — raw-grid: no nonempty 2D grid found in the job result

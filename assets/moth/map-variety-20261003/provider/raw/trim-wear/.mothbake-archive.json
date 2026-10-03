@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "trim-wear",
+  "engine": "blur-core-v1",
+  "jobId": "8cf0bdad-a78b-4bf7-9971-e385c2bc0462",
+  "recipeFingerprint": "d76572555e4323fe87b16a23699c849b1aaf77404fa58d9c90424ddff0775b6b",
+  "generationFingerprint": "c2bda9a1abcda695adf866be6b11acb1853b6db355393f1aa904471a3cbb678c",
+  "verification": "new-request",
+  "rawFingerprint": "6ca20fb8f1a1d7fc0fdd320ea2b31d180bbd24142469310fa0c1da20db62ea94",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 427544,
+    "sha256": "2c97880f37f271f8b7cf38b34dbe8ed8610124b662d386f5efba44c3846c35e6",
+    "jsonHash": "37e762d744bbe5c5dd10d48603c4e5aa26edce0e2f80f7736af9d3fcd225e24d"
+  }
+}

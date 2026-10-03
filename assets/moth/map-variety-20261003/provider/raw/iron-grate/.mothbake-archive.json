@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "iron-grate",
+  "engine": "blur-core-v1",
+  "jobId": "8168939f-bf1c-47fc-ad5a-8173afe845e9",
+  "recipeFingerprint": "024ba3900181f7084b44f5fb3c30dca9d981ce6fda057a04bf178399af2136cf",
+  "generationFingerprint": "f27273fe104004794620ce519a16b54f87b0cf2f7aac78ee472a3440e88f02e3",
+  "verification": "new-request",
+  "rawFingerprint": "c1417b28ec918d70547b4f7262caa3b62d891ad5a4acd6558a8c8af1254e623c",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 429331,
+    "sha256": "a7df3f73f95e99dad2932e9be3c6d2683f05d970a2782363c0d8c01fca12a1eb",
+    "jsonHash": "dd5853c5141f43814f4e32c7062af9316ecf4801871496aed08d057f33c54f86"
+  }
+}

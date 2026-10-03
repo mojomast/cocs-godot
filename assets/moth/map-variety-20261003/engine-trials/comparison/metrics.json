@@ -1,0 +1,1591 @@
+{
+  "version": 1,
+  "tool": {
+    "commit": "69c62d7c4bd754340623a4a7fa93bfa970e5ab73",
+    "generationCommit": "6de1880b898ead5f4b110ece2a7d4e834feaab4f",
+    "repository": "https://github.com/mojomast/mothbake",
+    "node": "22.23.1"
+  },
+  "method": "same source RGB per role; raw sRGB decoded to linear for metrics; image-adapter structureMix .9; 128px preview maps; no metric alone establishes artistic usefulness",
+  "records": [
+    {
+      "id": "copper-patina-image-rx",
+      "role": "copper-patina",
+      "engine": "blur-v1",
+      "status": "no-archive; consult journal for upload/worker status"
+    },
+    {
+      "id": "copper-patina-kernel-low",
+      "role": "copper-patina",
+      "engine": "deep-fryer-v1",
+      "status": "no-archive; consult journal for upload/worker status"
+    },
+    {
+      "id": "copper-patina-tele-vertical",
+      "role": "copper-patina",
+      "engine": "telablur-v1",
+      "status": "no-archive; consult journal for upload/worker status"
+    },
+    {
+      "id": "copper-patina-tessa-palette",
+      "role": "copper-patina",
+      "engine": "tessa-image-v1",
+      "jobId": "4f0a42b7-52da-4819-a224-70fafd75c70b",
+      "params": {
+        "machine": "aer",
+        "shots": 4096,
+        "fixed_palette": true,
+        "distortion": 0,
+        "range_correction": false
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/copper-patina-source.png",
+          "sha256": "1511e4ee7d96a4c2173f0a22cf2972fc73264ffd5e5bbff41ba857b8f995f355"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/copper-patina-tessa-palette/result.png",
+        "sha256": "7592b936f53e8b01cbdbafdb01b4c32c8ca19b216105eb3185b6782754a30aab",
+        "bytes": 6017,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.0016699660610571228,
+        "sourceLuminanceCorrelation": 0.9918276353395369,
+        "gradientFeatureCorrelation": 0.9456382557547724,
+        "sourceAxisRatio": 0.9927459195069306,
+        "resultAxisRatio": 0.9978077251824418,
+        "sourceCheckerAlternation": 0.000016716416447533102,
+        "resultCheckerAlternation": 0.000012126728175008266,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 1.421875,
+          "interiorMean": 2.560433201058201,
+          "ratio": 0.5553259500823351
+        },
+        "comparisonSeam": {
+          "edgeMean": 1.421875,
+          "interiorMean": 2.560433201058201,
+          "ratio": 0.5553259500823351
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.059895833333333336,
+          "interiorMean": 0.8636400918635171,
+          "ratio": 0.06935277078683698
+        },
+        "normalMeanAngularChangeDegrees": 0.07531722617407752
+      }
+    },
+    {
+      "id": "terracotta-image-rx",
+      "role": "terracotta",
+      "engine": "blur-v1",
+      "jobId": "5f8cdcd1-3bee-4c1e-a506-9007848646f5",
+      "params": {
+        "style": "rx",
+        "strength": 0.22,
+        "reach": 0,
+        "size": 64,
+        "downscale": true
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/terracotta-source.png",
+          "sha256": "fd31c44b940a780c7b17678ff4a0edda955a424bfed3a118c65c3dac5c9fa182"
+        },
+        "mask": {
+          "path": "sources/terracotta-mask.png",
+          "sha256": "7f830a83af5bf0229f11c0b6b963adc5014bb16aa94a2ec9affe8148c8578054"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/terracotta-image-rx/result.png",
+        "sha256": "9d11b84bb14799b426aff9d7d6b6fb46fb84dddadefd6808e14124f2cccacf98",
+        "bytes": 3003,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.0027743711494661906,
+        "sourceLuminanceCorrelation": 0.9608553524274579,
+        "gradientFeatureCorrelation": 0.9239268184629037,
+        "sourceAxisRatio": 0.5572918992717127,
+        "resultAxisRatio": 0.5581726177872044,
+        "sourceCheckerAlternation": 0.00008223490271972022,
+        "resultCheckerAlternation": 0.000025099121632316013,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 3.1744791666666665,
+          "interiorMean": 1.0603918650793651,
+          "ratio": 2.9936849491287565
+        },
+        "comparisonSeam": {
+          "edgeMean": 3.1744791666666665,
+          "interiorMean": 1.0603918650793651,
+          "ratio": 2.9936849491287565
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.005208333333333333,
+          "interiorMean": 0.44221620734908135,
+          "ratio": 0.011777798386348882
+        },
+        "normalMeanAngularChangeDegrees": 0.1928862806589662
+      }
+    },
+    {
+      "id": "terracotta-kernel-low",
+      "role": "terracotta",
+      "engine": "deep-fryer-v1",
+      "jobId": "3400ae3b-946d-4706-9252-a42ecc094452",
+      "params": {
+        "gates": [
+          [
+            "rx",
+            0.1
+          ]
+        ],
+        "tile_size": 2
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/terracotta-source.png",
+          "sha256": "fd31c44b940a780c7b17678ff4a0edda955a424bfed3a118c65c3dac5c9fa182"
+        },
+        "mask": {
+          "path": "sources/terracotta-mask.png",
+          "sha256": "7f830a83af5bf0229f11c0b6b963adc5014bb16aa94a2ec9affe8148c8578054"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/terracotta-kernel-low/result.png",
+        "sha256": "b74c22f643196cef596aba22fbcf73cd59d09591ff10786808c6bee28c4fbc85",
+        "bytes": 3162,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.011767412924284716,
+        "sourceLuminanceCorrelation": 0.5650388242911341,
+        "gradientFeatureCorrelation": 0.7687842782649636,
+        "sourceAxisRatio": 0.5572918992717127,
+        "resultAxisRatio": 0.7006537305307444,
+        "sourceCheckerAlternation": 0.00008223490271972022,
+        "resultCheckerAlternation": 0.00003201142756088474,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 2.4296875,
+          "interiorMean": 0.9289434523809523,
+          "ratio": 2.615538646375651
+        },
+        "comparisonSeam": {
+          "edgeMean": 2.4296875,
+          "interiorMean": 0.9289434523809523,
+          "ratio": 2.615538646375651
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.009114583333333334,
+          "interiorMean": 0.4054810531496063,
+          "ratio": 0.02247844446130117
+        },
+        "normalMeanAngularChangeDegrees": 0.3733390692956938
+      }
+    },
+    {
+      "id": "terracotta-tele-vertical",
+      "role": "terracotta",
+      "engine": "telablur-v1",
+      "jobId": "6847d958-6a42-4c30-b439-0ab1bf957c48",
+      "params": {
+        "strength": 0.3,
+        "direction": "vertical",
+        "size": 64,
+        "downscale": true
+      },
+      "inputHashes": {
+        "image1": {
+          "path": "sources/terracotta-source.png",
+          "sha256": "fd31c44b940a780c7b17678ff4a0edda955a424bfed3a118c65c3dac5c9fa182"
+        },
+        "image2": {
+          "path": "sources/terracotta-target.png",
+          "sha256": "53d66766cba1f6880137026cf331a535321a939ff84b4f9410a2a29fcebfd1a5"
+        },
+        "mask": {
+          "path": "sources/terracotta-mask.png",
+          "sha256": "7f830a83af5bf0229f11c0b6b963adc5014bb16aa94a2ec9affe8148c8578054"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/terracotta-tele-vertical/result.png",
+        "sha256": "ec0842a5e63d5d94f827992454616ffc8dcb3bc5a50791349c05ed46a95c0996",
+        "bytes": 3592,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.01536096104657114,
+        "sourceLuminanceCorrelation": 0.15908317313852774,
+        "gradientFeatureCorrelation": 0.601679866048464,
+        "sourceAxisRatio": 0.5572918992717127,
+        "resultAxisRatio": 0.7646110211542239,
+        "sourceCheckerAlternation": 0.00008223490271972022,
+        "resultCheckerAlternation": 0.000051870033178669166,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 2.7265625,
+          "interiorMean": 1.068163029100529,
+          "ratio": 2.5525714949111875
+        },
+        "comparisonSeam": {
+          "edgeMean": 2.7265625,
+          "interiorMean": 1.068163029100529,
+          "ratio": 2.5525714949111875
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.01171875,
+          "interiorMean": 0.4581795439632546,
+          "ratio": 0.02557676385687753
+        },
+        "normalMeanAngularChangeDegrees": 0.37182049773791004
+      }
+    },
+    {
+      "id": "terracotta-tessa-palette",
+      "role": "terracotta",
+      "engine": "tessa-image-v1",
+      "jobId": "7b00a0d4-d07e-4fcc-b530-725e1129343d",
+      "params": {
+        "machine": "aer",
+        "shots": 4096,
+        "fixed_palette": true,
+        "distortion": 0,
+        "range_correction": false
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/terracotta-source.png",
+          "sha256": "fd31c44b940a780c7b17678ff4a0edda955a424bfed3a118c65c3dac5c9fa182"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/terracotta-tessa-palette/result.png",
+        "sha256": "bb3f598ba6bac39008b86158a5e0b83a218ae3eb3816be7a5867034aa0f0b2fc",
+        "bytes": 3536,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.00044144665546860747,
+        "sourceLuminanceCorrelation": 0.9930791961379782,
+        "gradientFeatureCorrelation": 0.9861499132819364,
+        "sourceAxisRatio": 0.5572918992717127,
+        "resultAxisRatio": 0.588404813081922,
+        "sourceCheckerAlternation": 0.00008223490271972022,
+        "resultCheckerAlternation": 0.00008028882779549251,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 4.2109375,
+          "interiorMean": 1.2771577380952381,
+          "ratio": 3.2971162248762016
+        },
+        "comparisonSeam": {
+          "edgeMean": 4.2109375,
+          "interiorMean": 1.2771577380952381,
+          "ratio": 3.2971162248762016
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.009114583333333334,
+          "interiorMean": 0.5308091371391076,
+          "ratio": 0.017171112355861166
+        },
+        "normalMeanAngularChangeDegrees": 0.12060556331438141
+      }
+    },
+    {
+      "id": "prismatic-etch-image-rx",
+      "role": "prismatic-etch",
+      "engine": "blur-v1",
+      "jobId": "12f6d86c-55a5-4c68-8ed6-77af53355de2",
+      "params": {
+        "style": "rx",
+        "strength": 0.22,
+        "reach": 0,
+        "size": 64,
+        "downscale": true
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/prismatic-etch-source.png",
+          "sha256": "c0e2e5d7fb3615b457dca19367e2bc77ca79923be2e360ea232b197db607b07d"
+        },
+        "mask": {
+          "path": "sources/prismatic-etch-mask.png",
+          "sha256": "17caa0c6ac9cf7d09e8beb5c4d9e8dccf3eacbfe7c77ff825411f1f05e0af144"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/prismatic-etch-image-rx/result.png",
+        "sha256": "e4ccce8f3e332874799cff6104cf3ffc0744cb3f41d6717d7ef156b23e1d304e",
+        "bytes": 3894,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.0048870462762262475,
+        "sourceLuminanceCorrelation": 0.6948277213975398,
+        "gradientFeatureCorrelation": 0.647200484681183,
+        "sourceAxisRatio": 0.9978926682166528,
+        "resultAxisRatio": 1.0070994111416294,
+        "sourceCheckerAlternation": 0.000023761015598816718,
+        "resultCheckerAlternation": 0.000015541738393359998,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 0.6197916666666666,
+          "interiorMean": 0.8959160052910053,
+          "ratio": 0.6917966226815538
+        },
+        "comparisonSeam": {
+          "edgeMean": 0.6197916666666666,
+          "interiorMean": 0.8959160052910053,
+          "ratio": 0.6917966226815538
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.009114583333333334,
+          "interiorMean": 0.33588623687664043,
+          "ratio": 0.027135923811849455
+        },
+        "normalMeanAngularChangeDegrees": 0.08310946610545139
+      }
+    },
+    {
+      "id": "prismatic-etch-kernel-low",
+      "role": "prismatic-etch",
+      "engine": "deep-fryer-v1",
+      "jobId": "b98af9c8-7dac-4a1f-8f71-0525f2c5d177",
+      "params": {
+        "gates": [
+          [
+            "rx",
+            0.1
+          ]
+        ],
+        "tile_size": 2
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/prismatic-etch-source.png",
+          "sha256": "c0e2e5d7fb3615b457dca19367e2bc77ca79923be2e360ea232b197db607b07d"
+        },
+        "mask": {
+          "path": "sources/prismatic-etch-mask.png",
+          "sha256": "17caa0c6ac9cf7d09e8beb5c4d9e8dccf3eacbfe7c77ff825411f1f05e0af144"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/prismatic-etch-kernel-low/result.png",
+        "sha256": "89717505551b6e77d4012efd70a9296a81085b65871307ffebbca0edd210f33d",
+        "bytes": 4500,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.008357005673821546,
+        "sourceLuminanceCorrelation": 0.7161237856125917,
+        "gradientFeatureCorrelation": 0.9223103374603571,
+        "sourceAxisRatio": 0.9978926682166528,
+        "resultAxisRatio": 1.004793154297144,
+        "sourceCheckerAlternation": 0.000023761015598816718,
+        "resultCheckerAlternation": 0.000040380000217848834,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 0.8098958333333334,
+          "interiorMean": 1.2039103835978835,
+          "ratio": 0.6727210300429185
+        },
+        "comparisonSeam": {
+          "edgeMean": 0.8098958333333334,
+          "interiorMean": 1.2039103835978835,
+          "ratio": 0.6727210300429185
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.020833333333333332,
+          "interiorMean": 0.4490239501312336,
+          "ratio": 0.046396931226596036
+        },
+        "normalMeanAngularChangeDegrees": 0.06135893129446393
+      }
+    },
+    {
+      "id": "prismatic-etch-tele-vertical",
+      "role": "prismatic-etch",
+      "engine": "telablur-v1",
+      "jobId": "76822651-fc97-451a-8abb-39b7a7a09b24",
+      "params": {
+        "strength": 0.3,
+        "direction": "vertical",
+        "size": 64,
+        "downscale": true
+      },
+      "inputHashes": {
+        "image1": {
+          "path": "sources/prismatic-etch-source.png",
+          "sha256": "c0e2e5d7fb3615b457dca19367e2bc77ca79923be2e360ea232b197db607b07d"
+        },
+        "image2": {
+          "path": "sources/prismatic-etch-target.png",
+          "sha256": "489c4333459300ac0927e36baf2951ccfc9d2c3db4f389f5b481d36b3312819d"
+        },
+        "mask": {
+          "path": "sources/prismatic-etch-mask.png",
+          "sha256": "17caa0c6ac9cf7d09e8beb5c4d9e8dccf3eacbfe7c77ff825411f1f05e0af144"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/prismatic-etch-tele-vertical/result.png",
+        "sha256": "cacd3021a5b2bfd0dcd49153644302daec020495da825cbe3edf580d8801fb03",
+        "bytes": 3756,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.001984254540732685,
+        "sourceLuminanceCorrelation": 0.6753863223048475,
+        "gradientFeatureCorrelation": 0.6554052460011551,
+        "sourceAxisRatio": 0.9978926682166528,
+        "resultAxisRatio": 0.9311111428157731,
+        "sourceCheckerAlternation": 0.000023761015598816718,
+        "resultCheckerAlternation": 0.000010484588177349636,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 0.6015625,
+          "interiorMean": 0.7052331349206349,
+          "ratio": 0.8529980657640233
+        },
+        "comparisonSeam": {
+          "edgeMean": 0.6015625,
+          "interiorMean": 0.7052331349206349,
+          "ratio": 0.8529980657640233
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.014322916666666666,
+          "interiorMean": 0.26795234580052496,
+          "ratio": 0.05345322364645111
+        },
+        "normalMeanAngularChangeDegrees": 0.09383582343135355
+      }
+    },
+    {
+      "id": "prismatic-etch-tessa-palette",
+      "role": "prismatic-etch",
+      "engine": "tessa-image-v1",
+      "jobId": "ce0b4765-f1b0-44b4-97d9-718ed3a62515",
+      "params": {
+        "machine": "aer",
+        "shots": 4096,
+        "fixed_palette": true,
+        "distortion": 0,
+        "range_correction": false
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/prismatic-etch-source.png",
+          "sha256": "c0e2e5d7fb3615b457dca19367e2bc77ca79923be2e360ea232b197db607b07d"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/prismatic-etch-tessa-palette/result.png",
+        "sha256": "e7c83574066d05636a16ead4d14a79f137c64db201be47691f48d2dec0e75801",
+        "bytes": 4580,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.00044101075533963517,
+        "sourceLuminanceCorrelation": 0.9796933530740297,
+        "gradientFeatureCorrelation": 0.9660128915847317,
+        "sourceAxisRatio": 0.9978926682166528,
+        "resultAxisRatio": 0.9923542814551527,
+        "sourceCheckerAlternation": 0.000023761015598816718,
+        "resultCheckerAlternation": 0.000012776702304659504,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 0.7864583333333334,
+          "interiorMean": 1.1020998677248677,
+          "ratio": 0.7135998799789964
+        },
+        "comparisonSeam": {
+          "edgeMean": 0.7864583333333334,
+          "interiorMean": 1.1020998677248677,
+          "ratio": 0.7135998799789964
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.022135416666666668,
+          "interiorMean": 0.396356217191601,
+          "ratio": 0.055847280064150656
+        },
+        "normalMeanAngularChangeDegrees": 0.03713595231695961
+      }
+    },
+    {
+      "id": "quay-waterline-image-rx",
+      "role": "quay-waterline",
+      "engine": "blur-v1",
+      "jobId": "ab9208cb-0a1a-46c1-a927-603f55050f29",
+      "params": {
+        "style": "rx",
+        "strength": 0.22,
+        "reach": 0,
+        "size": 64,
+        "downscale": true
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/quay-waterline-source.png",
+          "sha256": "8e84409cc00314ac4d765d21e0a40003f79b42206ff8d3c974dbba47bcf92017"
+        },
+        "mask": {
+          "path": "sources/quay-waterline-mask.png",
+          "sha256": "0d89633deae0a37c823d2f6bfee4b22b33c44dbfa0534959734f14d7d5779ac5"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/quay-waterline-image-rx/result.png",
+        "sha256": "732183436d4f95d4989d6634279c07bee9521994712ef5ca7dce16f1db03ab7a",
+        "bytes": 2965,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.0015550107094102832,
+        "sourceLuminanceCorrelation": 0.9963967791345323,
+        "gradientFeatureCorrelation": 0.8541265413671613,
+        "sourceAxisRatio": 0.40477108749957963,
+        "resultAxisRatio": 0.36675096046160854,
+        "sourceCheckerAlternation": 0.000014078323170535467,
+        "resultCheckerAlternation": 0.00000838109324429405,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 0.3958333333333333,
+          "interiorMean": 0.9785879629629629,
+          "ratio": 0.4044943820224719
+        },
+        "comparisonSeam": {
+          "edgeMean": 0.3958333333333333,
+          "interiorMean": 0.9785879629629629,
+          "ratio": 0.4044943820224719
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.049479166666666664,
+          "interiorMean": 0.38892306430446194,
+          "ratio": 0.12722096272473243
+        },
+        "normalMeanAngularChangeDegrees": 0.03316323917668525
+      }
+    },
+    {
+      "id": "quay-waterline-kernel-low",
+      "role": "quay-waterline",
+      "engine": "deep-fryer-v1",
+      "jobId": "6928c6c7-5023-4cc4-802b-dab52ab491d9",
+      "params": {
+        "gates": [
+          [
+            "rx",
+            0.1
+          ]
+        ],
+        "tile_size": 2
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/quay-waterline-source.png",
+          "sha256": "8e84409cc00314ac4d765d21e0a40003f79b42206ff8d3c974dbba47bcf92017"
+        },
+        "mask": {
+          "path": "sources/quay-waterline-mask.png",
+          "sha256": "0d89633deae0a37c823d2f6bfee4b22b33c44dbfa0534959734f14d7d5779ac5"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/quay-waterline-kernel-low/result.png",
+        "sha256": "7569d617aaea1e50655dd95e0250b8d6cb7151a9676fd2b915131ae3228bd1f4",
+        "bytes": 3240,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.009176264642017028,
+        "sourceLuminanceCorrelation": 0.9905600965813096,
+        "gradientFeatureCorrelation": 0.9595801285507944,
+        "sourceAxisRatio": 0.40477108749957963,
+        "resultAxisRatio": 0.3194019495409607,
+        "sourceCheckerAlternation": 0.000014078323170535467,
+        "resultCheckerAlternation": 0.000011979185390896138,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 0.3307291666666667,
+          "interiorMean": 1.0689070767195767,
+          "ratio": 0.3094087165010248
+        },
+        "comparisonSeam": {
+          "edgeMean": 0.3307291666666667,
+          "interiorMean": 1.0689070767195767,
+          "ratio": 0.3094087165010248
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.041666666666666664,
+          "interiorMean": 0.42913385826771655,
+          "ratio": 0.09709480122324159
+        },
+        "normalMeanAngularChangeDegrees": 0.028060324512606538
+      }
+    },
+    {
+      "id": "quay-waterline-tele-vertical",
+      "role": "quay-waterline",
+      "engine": "telablur-v1",
+      "jobId": "0dec5762-44b8-4b9d-a15a-fe00cbb581cd",
+      "params": {
+        "strength": 0.3,
+        "direction": "vertical",
+        "size": 64,
+        "downscale": true
+      },
+      "inputHashes": {
+        "image1": {
+          "path": "sources/quay-waterline-source.png",
+          "sha256": "8e84409cc00314ac4d765d21e0a40003f79b42206ff8d3c974dbba47bcf92017"
+        },
+        "image2": {
+          "path": "sources/quay-waterline-target.png",
+          "sha256": "b6e0ef13374d5032dd36f31586ffda29ec84634d88ccd0d460f8b362083a95db"
+        },
+        "mask": {
+          "path": "sources/quay-waterline-mask.png",
+          "sha256": "0d89633deae0a37c823d2f6bfee4b22b33c44dbfa0534959734f14d7d5779ac5"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/quay-waterline-tele-vertical/result.png",
+        "sha256": "dd67aabc6cb2e4438377c32c860a49c887fe7176b82379ddf053e6ea19618258",
+        "bytes": 3326,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.01911669286221164,
+        "sourceLuminanceCorrelation": 0.612837777795456,
+        "gradientFeatureCorrelation": 0.3488414129841548,
+        "sourceAxisRatio": 0.40477108749957963,
+        "resultAxisRatio": 0.2412845145623861,
+        "sourceCheckerAlternation": 0.000014078323170535467,
+        "resultCheckerAlternation": 0.000007808631566327414,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 0.4088541666666667,
+          "interiorMean": 1.3037781084656084,
+          "ratio": 0.31359183285247777
+        },
+        "comparisonSeam": {
+          "edgeMean": 0.4088541666666667,
+          "interiorMean": 1.3037781084656084,
+          "ratio": 0.31359183285247777
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.032552083333333336,
+          "interiorMean": 0.4838726213910761,
+          "ratio": 0.06727407564360632
+        },
+        "normalMeanAngularChangeDegrees": 0.14210625632432083
+      }
+    },
+    {
+      "id": "quay-waterline-tessa-palette",
+      "role": "quay-waterline",
+      "engine": "tessa-image-v1",
+      "jobId": "9bd0c9b1-397d-4a94-862e-c7a12048a2f0",
+      "params": {
+        "machine": "aer",
+        "shots": 4096,
+        "fixed_palette": true,
+        "distortion": 0,
+        "range_correction": false
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/quay-waterline-source.png",
+          "sha256": "8e84409cc00314ac4d765d21e0a40003f79b42206ff8d3c974dbba47bcf92017"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/quay-waterline-tessa-palette/result.png",
+        "sha256": "2d4dd41e2ac99c4076d1fe2578fe83fb562803e1d9d5c89ba357d530d9629859",
+        "bytes": 4591,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.0015088679177242869,
+        "sourceLuminanceCorrelation": 0.9951436121381269,
+        "gradientFeatureCorrelation": 0.8291701489480127,
+        "sourceAxisRatio": 0.40477108749957963,
+        "resultAxisRatio": 0.5460676885159905,
+        "sourceCheckerAlternation": 0.000014078323170535467,
+        "resultCheckerAlternation": 0.0000593625381284696,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 0.78125,
+          "interiorMean": 1.336061507936508,
+          "ratio": 0.584741043252274
+        },
+        "comparisonSeam": {
+          "edgeMean": 0.78125,
+          "interiorMean": 1.336061507936508,
+          "ratio": 0.584741043252274
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.03515625,
+          "interiorMean": 0.5080893208661418,
+          "ratio": 0.06919305042678127
+        },
+        "normalMeanAngularChangeDegrees": 0.048510804749976086
+      }
+    },
+    {
+      "id": "moss-lichen-image-rx",
+      "role": "moss-lichen",
+      "engine": "blur-v1",
+      "jobId": "f935e1da-9b5a-43d6-b121-f3071cc796a2",
+      "params": {
+        "style": "rx",
+        "strength": 0.22,
+        "reach": 0,
+        "size": 64,
+        "downscale": true
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/moss-lichen-source.png",
+          "sha256": "21c06af76d2d2e6f33c6608f2ec24d85fd44ff4d84465a0980803865350f27c1"
+        },
+        "mask": {
+          "path": "sources/moss-lichen-mask.png",
+          "sha256": "8c13a0270edc0958a0c2c8b20e974aa693daff040999577d19e0b151052b7829"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/moss-lichen-image-rx/result.png",
+        "sha256": "16704bd38c507746846ae666953f3e9c108e05059a681faefea8f814cb1cdd50",
+        "bytes": 4675,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.0011780241803871344,
+        "sourceLuminanceCorrelation": 0.9928326257121216,
+        "gradientFeatureCorrelation": 0.894031735401137,
+        "sourceAxisRatio": 1.0348717281706288,
+        "resultAxisRatio": 1.0491137232563648,
+        "sourceCheckerAlternation": 0.000005280113618240813,
+        "resultCheckerAlternation": 0.00003756276554716809,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 1.515625,
+          "interiorMean": 2.0047123015873014,
+          "ratio": 0.7560311765433627
+        },
+        "comparisonSeam": {
+          "edgeMean": 1.515625,
+          "interiorMean": 2.0047123015873014,
+          "ratio": 0.7560311765433627
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.048177083333333336,
+          "interiorMean": 0.5891670767716536,
+          "ratio": 0.08177151309492735
+        },
+        "normalMeanAngularChangeDegrees": 0.15513525868733477
+      }
+    },
+    {
+      "id": "moss-lichen-kernel-low",
+      "role": "moss-lichen",
+      "engine": "deep-fryer-v1",
+      "jobId": "ea5fd666-9b47-4dbd-887c-e9a964cb3dbd",
+      "params": {
+        "gates": [
+          [
+            "rx",
+            0.1
+          ]
+        ],
+        "tile_size": 2
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/moss-lichen-source.png",
+          "sha256": "21c06af76d2d2e6f33c6608f2ec24d85fd44ff4d84465a0980803865350f27c1"
+        },
+        "mask": {
+          "path": "sources/moss-lichen-mask.png",
+          "sha256": "8c13a0270edc0958a0c2c8b20e974aa693daff040999577d19e0b151052b7829"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/moss-lichen-kernel-low/result.png",
+        "sha256": "a8bd713de4ee6ab6812cdb4bbf60f4621325439d2c96b1b810507c5e18da34b3",
+        "bytes": 5384,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.015245407079956572,
+        "sourceLuminanceCorrelation": 0.9778391096746927,
+        "gradientFeatureCorrelation": 0.9022203400169684,
+        "sourceAxisRatio": 1.0348717281706288,
+        "resultAxisRatio": 1.0335310390239887,
+        "sourceCheckerAlternation": 0.000005280113618240813,
+        "resultCheckerAlternation": 0.000014192361307914006,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 1.2578125,
+          "interiorMean": 2.7001901455026456,
+          "ratio": 0.4658236761936837
+        },
+        "comparisonSeam": {
+          "edgeMean": 1.2578125,
+          "interiorMean": 2.7001901455026456,
+          "ratio": 0.4658236761936837
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.07291666666666667,
+          "interiorMean": 0.8828125,
+          "ratio": 0.08259587020648967
+        },
+        "normalMeanAngularChangeDegrees": 0.2025195579066964
+      }
+    },
+    {
+      "id": "moss-lichen-tele-vertical",
+      "role": "moss-lichen",
+      "engine": "telablur-v1",
+      "jobId": "80fb36f9-d06a-4d88-82b6-9e3797b58157",
+      "params": {
+        "strength": 0.3,
+        "direction": "vertical",
+        "size": 64,
+        "downscale": true
+      },
+      "inputHashes": {
+        "image1": {
+          "path": "sources/moss-lichen-source.png",
+          "sha256": "21c06af76d2d2e6f33c6608f2ec24d85fd44ff4d84465a0980803865350f27c1"
+        },
+        "image2": {
+          "path": "sources/moss-lichen-target.png",
+          "sha256": "ba50881f7ea7353aa72c75ab87d526c2e4dd672ce36e89eed783ce7fa6fca5a6"
+        },
+        "mask": {
+          "path": "sources/moss-lichen-mask.png",
+          "sha256": "8c13a0270edc0958a0c2c8b20e974aa693daff040999577d19e0b151052b7829"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/moss-lichen-tele-vertical/result.png",
+        "sha256": "f719494e18e4e3b2c831b48511d6e2fa7eb747decc5b0a312eeb0a2b4d44b3a4",
+        "bytes": 4762,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.011282451718905219,
+        "sourceLuminanceCorrelation": 0.5612257093839865,
+        "gradientFeatureCorrelation": 0.517301412888042,
+        "sourceAxisRatio": 1.0348717281706288,
+        "resultAxisRatio": 0.8740708953845409,
+        "sourceCheckerAlternation": 0.000005280113618240813,
+        "resultCheckerAlternation": 0.0000027012508533201583,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 2.0755208333333335,
+          "interiorMean": 1.882647156084656,
+          "ratio": 1.1024481282248326
+        },
+        "comparisonSeam": {
+          "edgeMean": 2.0755208333333335,
+          "interiorMean": 1.882647156084656,
+          "ratio": 1.1024481282248326
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.029947916666666668,
+          "interiorMean": 0.525395751312336,
+          "ratio": 0.05700068299346278
+        },
+        "normalMeanAngularChangeDegrees": 0.45458790650976244
+      }
+    },
+    {
+      "id": "moss-lichen-tessa-palette",
+      "role": "moss-lichen",
+      "engine": "tessa-image-v1",
+      "jobId": "75a41b6a-9586-4743-bedf-9bcbbf5806ed",
+      "params": {
+        "machine": "aer",
+        "shots": 4096,
+        "fixed_palette": true,
+        "distortion": 0,
+        "range_correction": false
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/moss-lichen-source.png",
+          "sha256": "21c06af76d2d2e6f33c6608f2ec24d85fd44ff4d84465a0980803865350f27c1"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/moss-lichen-tessa-palette/result.png",
+        "sha256": "2f6364b77389344aa78e84008ce740c16c2f019997e79cd582c44713885f8a0b",
+        "bytes": 5851,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.0010705842140903065,
+        "sourceLuminanceCorrelation": 0.9963247925773735,
+        "gradientFeatureCorrelation": 0.9280708725072863,
+        "sourceAxisRatio": 1.0348717281706288,
+        "resultAxisRatio": 1.0290028037676928,
+        "sourceCheckerAlternation": 0.000005280113618240813,
+        "resultCheckerAlternation": 0.000015369059014831855,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 1.2994791666666667,
+          "interiorMean": 2.3387483465608465,
+          "ratio": 0.5556301808091342
+        },
+        "comparisonSeam": {
+          "edgeMean": 1.2994791666666667,
+          "interiorMean": 2.3387483465608465,
+          "ratio": 0.5556301808091342
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.046875,
+          "interiorMean": 0.6768987860892388,
+          "ratio": 0.06924964405804127
+        },
+        "normalMeanAngularChangeDegrees": 0.1470315239328595
+      }
+    },
+    {
+      "id": "terracotta-image-ry",
+      "role": "terracotta",
+      "engine": "blur-v1",
+      "jobId": "611112f2-638c-4c24-b9a7-2602ef3cba6c",
+      "params": {
+        "style": "ry",
+        "strength": 0.12,
+        "reach": 0,
+        "size": 64
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/terracotta-source.png",
+          "sha256": "fd31c44b940a780c7b17678ff4a0edda955a424bfed3a118c65c3dac5c9fa182"
+        },
+        "mask": {
+          "path": "sources/terracotta-mask.png",
+          "sha256": "7f830a83af5bf0229f11c0b6b963adc5014bb16aa94a2ec9affe8148c8578054"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/terracotta-image-ry/result.png",
+        "sha256": "b3bf0ac9e11c5e5145199f0a4a252eecfdf9dd7285cda51ece440ebf5f72be45",
+        "bytes": 6055,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.037717135886159533,
+        "sourceLuminanceCorrelation": 0.45509707250983944,
+        "gradientFeatureCorrelation": 0.6518080064368188,
+        "sourceAxisRatio": 0.5572918992717127,
+        "resultAxisRatio": 0.7983085716870676,
+        "sourceCheckerAlternation": 0.00008223490271972022,
+        "resultCheckerAlternation": 0.0001503961094449291,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 8.114583333333334,
+          "interiorMean": 5.400545634920635,
+          "ratio": 1.502548794489093
+        },
+        "comparisonSeam": {
+          "edgeMean": 8.114583333333334,
+          "interiorMean": 5.400545634920635,
+          "ratio": 1.502548794489093
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.078125,
+          "interiorMean": 1.8873031496062993,
+          "ratio": 0.04139504563233377
+        },
+        "normalMeanAngularChangeDegrees": 0.4876101123092744
+      }
+    },
+    {
+      "id": "copper-patina-kernel-mid",
+      "role": "copper-patina",
+      "engine": "deep-fryer-v1",
+      "status": "no-archive; consult journal for upload/worker status"
+    },
+    {
+      "id": "quay-waterline-tele-horizontal",
+      "role": "quay-waterline",
+      "engine": "telablur-v1",
+      "jobId": "2ba62d5f-208a-4413-84ad-f3876602d037",
+      "params": {
+        "strength": 0.3,
+        "direction": "horizontal",
+        "size": 64
+      },
+      "inputHashes": {
+        "image1": {
+          "path": "sources/quay-waterline-source.png",
+          "sha256": "8e84409cc00314ac4d765d21e0a40003f79b42206ff8d3c974dbba47bcf92017"
+        },
+        "image2": {
+          "path": "sources/quay-waterline-target.png",
+          "sha256": "b6e0ef13374d5032dd36f31586ffda29ec84634d88ccd0d460f8b362083a95db"
+        },
+        "mask": {
+          "path": "sources/quay-waterline-mask.png",
+          "sha256": "0d89633deae0a37c823d2f6bfee4b22b33c44dbfa0534959734f14d7d5779ac5"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/quay-waterline-tele-horizontal/result.png",
+        "sha256": "ee6000034fb306aef7a7480131eab2f7a2730dd9149a432ba51512ab6896a358",
+        "bytes": 3101,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.0065179940655096524,
+        "sourceLuminanceCorrelation": 0.9001865571902885,
+        "gradientFeatureCorrelation": 0.8393168284409062,
+        "sourceAxisRatio": 0.40477108749957963,
+        "resultAxisRatio": 0.45755628598631953,
+        "sourceCheckerAlternation": 0.000014078323170535467,
+        "resultCheckerAlternation": 5.301609012942177e-7,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 0.96875,
+          "interiorMean": 1.0150462962962963,
+          "ratio": 0.9543899657924744
+        },
+        "comparisonSeam": {
+          "edgeMean": 0.96875,
+          "interiorMean": 1.0150462962962963,
+          "ratio": 0.9543899657924744
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.041666666666666664,
+          "interiorMean": 0.40653707349081364,
+          "ratio": 0.10249167759507717
+        },
+        "normalMeanAngularChangeDegrees": 0.06527124477200284
+      }
+    },
+    {
+      "id": "copper-patina-tessa-noisy",
+      "role": "copper-patina",
+      "engine": "tessa-image-v1",
+      "jobId": "79e73604-a523-40ec-879d-93e776e98304",
+      "params": {
+        "machine": "fake_fez",
+        "shots": 4096,
+        "fixed_palette": false,
+        "distortion": 0,
+        "range_correction": true
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/copper-patina-source.png",
+          "sha256": "1511e4ee7d96a4c2173f0a22cf2972fc73264ffd5e5bbff41ba857b8f995f355"
+        }
+      },
+      "raw": {
+        "path": "provider/raw/copper-patina-tessa-noisy/result.png",
+        "sha256": "36c45c0e3433b61e2913cdc2eaf7302ca27602cb4ac39ea917bfe0a1c2843ed0",
+        "bytes": 914,
+        "width": 21,
+        "height": 21
+      },
+      "comparisonResample": "provider downscaled output; bilinear to 64 only for same-coordinate diagnostics",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.008896133674884817,
+        "sourceLuminanceCorrelation": 0.728876016850187,
+        "gradientFeatureCorrelation": 0.026840798846477304,
+        "sourceAxisRatio": 0.9927459195069306,
+        "resultAxisRatio": 0.8863296423753707,
+        "sourceCheckerAlternation": 0.000016716416447533102,
+        "resultCheckerAlternation": 0.00002884682136189785,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 3.5714285714285716,
+          "interiorMean": 3.5579365079365077,
+          "ratio": 1.0037921035021193
+        },
+        "comparisonSeam": {
+          "edgeMean": 3.03125,
+          "interiorMean": 0.9556878306878307,
+          "ratio": 3.1717993079584774
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.01953125,
+          "interiorMean": 0.3495837434383202,
+          "ratio": 0.05587001789013696
+        },
+        "normalMeanAngularChangeDegrees": 0.18172740986847805
+      }
+    },
+    {
+      "id": "moss-lichen-qpixl",
+      "role": "moss-lichen",
+      "engine": "qpixl-v1",
+      "status": "non-image output archived; separate evaluation"
+    },
+    {
+      "id": "quay-waterline-qpixl",
+      "role": "quay-waterline",
+      "engine": "qpixl-v1",
+      "status": "non-image output archived; separate evaluation"
+    },
+    {
+      "id": "copper-patina-kernel-mid-global",
+      "role": "copper-patina",
+      "engine": "deep-fryer-v1",
+      "jobId": "02fab9ce-3cc4-4e5b-bd90-beb58dc62e2c",
+      "params": {
+        "gates": [
+          [
+            "rx",
+            0.3
+          ]
+        ],
+        "tile_size": 2
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/copper-patina-source.png",
+          "sha256": "1511e4ee7d96a4c2173f0a22cf2972fc73264ffd5e5bbff41ba857b8f995f355"
+        }
+      },
+      "raw": {
+        "path": "intensity-provider/raw/copper-patina-kernel-mid-global/result.png",
+        "sha256": "32354010d5b33a81b032ba5951880d21bef8e5d80d1b0f4f8c2b947393fc4e49",
+        "bytes": 5259,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.055236366536345116,
+        "sourceLuminanceCorrelation": -0.6769164863152042,
+        "gradientFeatureCorrelation": 0.48628056577606743,
+        "sourceAxisRatio": 0.9927459195069306,
+        "resultAxisRatio": 0.9911998866753549,
+        "sourceCheckerAlternation": 0.000016716416447533102,
+        "resultCheckerAlternation": 0.0000643968889690837,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 1.0078125,
+          "interiorMean": 2.1281001984126986,
+          "ratio": 0.4735738010605442
+        },
+        "comparisonSeam": {
+          "edgeMean": 1.0078125,
+          "interiorMean": 2.1281001984126986,
+          "ratio": 0.4735738010605442
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.044270833333333336,
+          "interiorMean": 0.8087270341207349,
+          "ratio": 0.05474137931034483
+        },
+        "normalMeanAngularChangeDegrees": 0.24221839788307606
+      }
+    },
+    {
+      "id": "copper-patina-image-global",
+      "role": "copper-patina",
+      "engine": "blur-v1",
+      "jobId": "2bba80b9-3060-41cd-b65d-b8463f0e2cc6",
+      "params": {
+        "style": "rx",
+        "strength": 0.22,
+        "reach": 0,
+        "size": 64
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/copper-patina-source.png",
+          "sha256": "1511e4ee7d96a4c2173f0a22cf2972fc73264ffd5e5bbff41ba857b8f995f355"
+        }
+      },
+      "raw": {
+        "path": "concurrency/raw/copper-patina-image-global/result.png",
+        "sha256": "c08757e1d50c77be2ec626e7f2035c61efdd16d0522dca5a1fe5c840f82bcc80",
+        "bytes": 4563,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.004266728982210402,
+        "sourceLuminanceCorrelation": 0.9354369055649787,
+        "gradientFeatureCorrelation": 0.5236731370838672,
+        "sourceAxisRatio": 0.9927459195069306,
+        "resultAxisRatio": 0.9972985966361877,
+        "sourceCheckerAlternation": 0.000016716416447533102,
+        "resultCheckerAlternation": 0.00001487371474095579,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 1.8984375,
+          "interiorMean": 1.7917906746031746,
+          "ratio": 1.0595196899439407
+        },
+        "comparisonSeam": {
+          "edgeMean": 1.8984375,
+          "interiorMean": 1.7917906746031746,
+          "ratio": 1.0595196899439407
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.045572916666666664,
+          "interiorMean": 0.6288037237532809,
+          "ratio": 0.07247558331023463
+        },
+        "normalMeanAngularChangeDegrees": 0.14876818453775378
+      }
+    },
+    {
+      "id": "copper-patina-kernel-global",
+      "role": "copper-patina",
+      "engine": "deep-fryer-v1",
+      "jobId": "f8a88453-7580-4384-8671-00eb9679231d",
+      "params": {
+        "gates": [
+          [
+            "rx",
+            0.1
+          ]
+        ],
+        "tile_size": 2
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/copper-patina-source.png",
+          "sha256": "1511e4ee7d96a4c2173f0a22cf2972fc73264ffd5e5bbff41ba857b8f995f355"
+        }
+      },
+      "raw": {
+        "path": "concurrency/raw/copper-patina-kernel-global/result.png",
+        "sha256": "44b0acc6d176648583df1e9e726fab852c23872db48a8f7c1a86accde7095fcd",
+        "bytes": 5142,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.01823870467069266,
+        "sourceLuminanceCorrelation": 0.9694828006363934,
+        "gradientFeatureCorrelation": 0.8161420910571997,
+        "sourceAxisRatio": 0.9927459195069306,
+        "resultAxisRatio": 0.9867794905504365,
+        "sourceCheckerAlternation": 0.000016716416447533102,
+        "resultCheckerAlternation": 0.000025122509303813852,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 0.9296875,
+          "interiorMean": 1.9735036375661377,
+          "ratio": 0.47108476635318264
+        },
+        "comparisonSeam": {
+          "edgeMean": 0.9296875,
+          "interiorMean": 1.9735036375661377,
+          "ratio": 0.47108476635318264
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.057291666666666664,
+          "interiorMean": 0.7027354002624672,
+          "ratio": 0.08152665518951883
+        },
+        "normalMeanAngularChangeDegrees": 0.10846381622557759
+      }
+    },
+    {
+      "id": "copper-patina-tele-global",
+      "role": "copper-patina",
+      "engine": "telablur-v1",
+      "jobId": "e95a4f5d-1871-4c56-a310-b62fd91591a7",
+      "params": {
+        "strength": 0.3,
+        "direction": "full",
+        "size": 64
+      },
+      "inputHashes": {
+        "image1": {
+          "path": "sources/copper-patina-source.png",
+          "sha256": "1511e4ee7d96a4c2173f0a22cf2972fc73264ffd5e5bbff41ba857b8f995f355"
+        },
+        "image2": {
+          "path": "sources/copper-patina-target.png",
+          "sha256": "78345f984dc1a24bf86510a0445744153ae289be7f03fcc153f684d9b14dbc35"
+        }
+      },
+      "raw": {
+        "path": "concurrency/raw/copper-patina-tele-global/result.png",
+        "sha256": "10dc642ec6ecd6cbb505b1c89cd4ed23159539cb11a9d9648684438b9b2a6099",
+        "bytes": 4611,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.01808603876514806,
+        "sourceLuminanceCorrelation": -0.11273091641311184,
+        "gradientFeatureCorrelation": -0.01051267315687193,
+        "sourceAxisRatio": 0.9927459195069306,
+        "resultAxisRatio": 1.0130950338578066,
+        "sourceCheckerAlternation": 0.000016716416447533102,
+        "resultCheckerAlternation": 0.000012331075470557701,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 3.390625,
+          "interiorMean": 1.6026785714285714,
+          "ratio": 2.115598885793872
+        },
+        "comparisonSeam": {
+          "edgeMean": 3.390625,
+          "interiorMean": 1.6026785714285714,
+          "ratio": 2.115598885793872
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.016927083333333332,
+          "interiorMean": 0.5503916502624672,
+          "ratio": 0.03075461505504536
+        },
+        "normalMeanAngularChangeDegrees": 0.17795821155801886
+      }
+    },
+    {
+      "id": "copper-patina-kernel-four",
+      "role": "copper-patina",
+      "engine": "deep-fryer-v1",
+      "jobId": "0813a770-dfac-4bc4-8f37-11aaa74308d4",
+      "params": {
+        "gates": [
+          [
+            "rx",
+            0.1
+          ]
+        ],
+        "tile_size": 4
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/copper-patina-source.png",
+          "sha256": "1511e4ee7d96a4c2173f0a22cf2972fc73264ffd5e5bbff41ba857b8f995f355"
+        }
+      },
+      "raw": {
+        "path": "concurrency/raw/copper-patina-kernel-four/result.png",
+        "sha256": "44b0acc6d176648583df1e9e726fab852c23872db48a8f7c1a86accde7095fcd",
+        "bytes": 5142,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.01823870467069266,
+        "sourceLuminanceCorrelation": 0.9694828006363934,
+        "gradientFeatureCorrelation": 0.8161420910571997,
+        "sourceAxisRatio": 0.9927459195069306,
+        "resultAxisRatio": 0.9867794905504365,
+        "sourceCheckerAlternation": 0.000016716416447533102,
+        "resultCheckerAlternation": 0.000025122509303813852,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 0.9296875,
+          "interiorMean": 1.9735036375661377,
+          "ratio": 0.47108476635318264
+        },
+        "comparisonSeam": {
+          "edgeMean": 0.9296875,
+          "interiorMean": 1.9735036375661377,
+          "ratio": 0.47108476635318264
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.057291666666666664,
+          "interiorMean": 0.7027354002624672,
+          "ratio": 0.08152665518951883
+        },
+        "normalMeanAngularChangeDegrees": 0.10846381622557759
+      }
+    },
+    {
+      "id": "quay-waterline-tele-strong",
+      "role": "quay-waterline",
+      "engine": "telablur-v1",
+      "jobId": "3a666634-4519-4984-a96b-84a11737fabd",
+      "params": {
+        "strength": 0.55,
+        "direction": "horizontal",
+        "size": 64
+      },
+      "inputHashes": {
+        "image1": {
+          "path": "sources/quay-waterline-source.png",
+          "sha256": "8e84409cc00314ac4d765d21e0a40003f79b42206ff8d3c974dbba47bcf92017"
+        },
+        "image2": {
+          "path": "sources/quay-waterline-target.png",
+          "sha256": "b6e0ef13374d5032dd36f31586ffda29ec84634d88ccd0d460f8b362083a95db"
+        }
+      },
+      "raw": {
+        "path": "concurrency/raw/quay-waterline-tele-strong/result.png",
+        "sha256": "85b4f5a92173649c246f0ae51cba6445f82fed8c6b131a79b1bc206d2926e143",
+        "bytes": 2977,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.014747761106684042,
+        "sourceLuminanceCorrelation": 0.5602338272006986,
+        "gradientFeatureCorrelation": 0.39773026192094196,
+        "sourceAxisRatio": 0.40477108749957963,
+        "resultAxisRatio": 0.7190320753091214,
+        "sourceCheckerAlternation": 0.000014078323170535467,
+        "resultCheckerAlternation": 0.0000012170404727036784,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 1.9453125,
+          "interiorMean": 0.6616650132275133,
+          "ratio": 2.9400262385206473
+        },
+        "comparisonSeam": {
+          "edgeMean": 1.9453125,
+          "interiorMean": 0.6616650132275133,
+          "ratio": 2.9400262385206473
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.037760416666666664,
+          "interiorMean": 0.272463500656168,
+          "ratio": 0.13858889934148635
+        },
+        "normalMeanAngularChangeDegrees": 0.10115640717301151
+      }
+    },
+    {
+      "id": "prismatic-etch-image-reach",
+      "role": "prismatic-etch",
+      "engine": "blur-v1",
+      "jobId": "a93da26a-bbe4-47a9-821f-fd05f1efc028",
+      "params": {
+        "strength": 0.18,
+        "reach": 0.08,
+        "style": "rx",
+        "size": 64
+      },
+      "inputHashes": {
+        "image": {
+          "path": "sources/prismatic-etch-source.png",
+          "sha256": "c0e2e5d7fb3615b457dca19367e2bc77ca79923be2e360ea232b197db607b07d"
+        }
+      },
+      "raw": {
+        "path": "concurrency/raw/prismatic-etch-image-reach/result.png",
+        "sha256": "326531f81a30672976a839c6b52f5729d8ef9c2d7efe64d5c6356a4dc1ff75a9",
+        "bytes": 3366,
+        "width": 64,
+        "height": 64
+      },
+      "comparisonResample": "none",
+      "status": "decoded-real-provider-output",
+      "metrics": {
+        "linearRGBMeanAbsoluteChange": 0.013165644555104189,
+        "sourceLuminanceCorrelation": 0.6743746167092172,
+        "gradientFeatureCorrelation": 0.21155431315686699,
+        "sourceAxisRatio": 0.9978926682166528,
+        "resultAxisRatio": 1.010525344896711,
+        "sourceCheckerAlternation": 0.000023761015598816718,
+        "resultCheckerAlternation": 0.000028504625390301127,
+        "saturatedPixelFraction": 0,
+        "rawSeam": {
+          "edgeMean": 0.5546875,
+          "interiorMean": 0.6139632936507936,
+          "ratio": 0.9034538477075339
+        },
+        "comparisonSeam": {
+          "edgeMean": 0.5546875,
+          "interiorMean": 0.6139632936507936,
+          "ratio": 0.9034538477075339
+        },
+        "repairedAlbedoSeam": {
+          "edgeMean": 0.010416666666666666,
+          "interiorMean": 0.24446358267716536,
+          "ratio": 0.042610300285187044
+        },
+        "normalMeanAngularChangeDegrees": 0.12218303702268328
+      }
+    }
+  ]
+}

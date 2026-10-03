@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "road-gravel",
+  "engine": "blur-core-v1",
+  "jobId": "2a2ad170-c7f7-4d05-ba60-15c5c2f31a05",
+  "recipeFingerprint": "a16bab675ba60fe42b2683aa0dabf82b6057b3df6480ca17088d30308d0dea56",
+  "generationFingerprint": "2d20607a65e9e0fb7f87d944c3d94cf019f7fa4476d6b960cc6da884c189a67b",
+  "verification": "new-request",
+  "rawFingerprint": "f1ff6528ba32f3cc8ab11fea42886c7503668f9e64859b5b7a81f56554b94704",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 430916,
+    "sha256": "a2b5ac1a3d835ae1a8e2bae66035daa46d27dfa90ed3e24cc33eac5904f778a8",
+    "jsonHash": "f7752881f367821e1e81b746d0e8de933454afe0610c4fa345828a6a034e8558"
+  }
+}

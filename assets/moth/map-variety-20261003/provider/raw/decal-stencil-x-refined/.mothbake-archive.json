@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "decal-stencil-x-refined",
+  "engine": "blur-core-v1",
+  "jobId": "38374f90-91de-4c07-8e28-127a92b51431",
+  "recipeFingerprint": "3b44f1a522cea0f98cb0772a859399e5e2c78125fb4d05f73423e4657468403a",
+  "generationFingerprint": "923e44f7c04aa2d96e677f3aae5f3e3c8f4aebf2c914e805c85db8f236f36c95",
+  "verification": "new-request",
+  "rawFingerprint": "09b553e2509f996e34de15f24c9cf5f23e26845a69a716e0d465ac84d33e4128",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 435634,
+    "sha256": "7cecaa4918791361adef9346b18f1da0311d46d07c9f11ae6093a7569ff92a8a",
+    "jsonHash": "917ced0a0386dae3623ef44386b1307072e431c5adfd4bf7d2c8c37048531153"
+  }
+}

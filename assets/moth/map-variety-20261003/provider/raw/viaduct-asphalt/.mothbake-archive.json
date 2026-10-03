@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "viaduct-asphalt",
+  "engine": "blur-core-v1",
+  "jobId": "5023e7ff-76a3-49a1-a8e8-fc6d3c0cd6e6",
+  "recipeFingerprint": "69b2c3f284170bc8639fa0defa1ca3519f5c56efcb130f5c07087e6f40f1dae5",
+  "generationFingerprint": "911b55a017702577750bc21dac64c805f0542d7393ab7a7708d6879e0c960696",
+  "verification": "new-request",
+  "rawFingerprint": "025006cc257d467ac1c67e81cb77902dfb2ab5c4ffb11b84822cdaef12e7653f",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 430362,
+    "sha256": "788daaa5acdef6732832e7367ec78f4cc2568dc8cd9ddb96def222a784b9643c",
+    "jsonHash": "9b49815c69bfab4ef99150d991728da3971d0a87f4872743036d4f63e9cb31ab"
+  }
+}

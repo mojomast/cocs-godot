@@ -1,0 +1,115 @@
+{
+  "engineId": "tamagotchi-v1",
+  "name": "Tamagotchi",
+  "version": null,
+  "creditsPerRun": 0,
+  "enabled": true,
+  "paramsSchema": {
+    "$defs": {
+      "NoiseParams": {
+        "properties": {
+          "p_1q": {
+            "default": 0,
+            "description": "1-qubit gate depolarizing probability",
+            "title": "P 1Q",
+            "type": "number"
+          },
+          "p_gate": {
+            "default": 0,
+            "description": "2-qubit gate depolarizing probability",
+            "title": "P Gate",
+            "type": "number"
+          },
+          "p_idle": {
+            "default": 0,
+            "description": "idle depolarizing probability on data qubits",
+            "title": "P Idle",
+            "type": "number"
+          },
+          "p_meas": {
+            "default": 0,
+            "description": "measurement (readout) flip probability",
+            "title": "P Meas",
+            "type": "number"
+          }
+        },
+        "title": "NoiseParams",
+        "type": "object"
+      }
+    },
+    "properties": {
+      "actions": {
+        "description": "list of [gate, target] over logical qubits; gates: I,X,Z,H,S,CX,SE",
+        "items": {},
+        "title": "Actions",
+        "type": "array"
+      },
+      "code": {
+        "default": "steane",
+        "description": "CSS code key (see CODE_REGISTRY)",
+        "title": "Code",
+        "type": "string"
+      },
+      "expected": {
+        "anyOf": [
+          {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "optional expected per-logical outcome; auto-computed if omitted",
+        "title": "Expected"
+      },
+      "method": {
+        "default": "stabilizer",
+        "description": "Aer simulation method",
+        "title": "Method",
+        "type": "string"
+      },
+      "n_logical": {
+        "default": 1,
+        "description": "number of logical qubits",
+        "title": "N Logical",
+        "type": "integer"
+      },
+      "noise": {
+        "$ref": "#/$defs/NoiseParams"
+      },
+      "seed": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "simulator seed for reproducibility",
+        "title": "Seed"
+      },
+      "shots": {
+        "default": 1024,
+        "description": "number of measurement shots",
+        "title": "Shots",
+        "type": "integer"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [],
+  "outputFiles": [],
+  "runPolicy": {
+    "timeout": 30000,
+    "max_retries": 3,
+    "heartbeat": 60000
+  },
+  "errorCodes": []
+}

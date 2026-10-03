@@ -1,0 +1,135 @@
+{
+  "engineId": "deep-fryer-v1",
+  "name": "Deep Fryer",
+  "version": null,
+  "creditsPerRun": 1,
+  "enabled": true,
+  "paramsSchema": {
+    "properties": {
+      "gates": {
+        "default": [
+          [
+            "rx",
+            0.5
+          ]
+        ],
+        "description": "Sequence of (gate_name, intensity) pairs applied to each tile's qubit lattice, in order.",
+        "items": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "type": "array"
+        },
+        "title": "Gates",
+        "type": "array"
+      },
+      "mask_bin_size": {
+        "default": 4,
+        "description": "Mask quantisation step as a percentage of 255 (0-100). Pixel values below this threshold are treated as background, preventing near-zero JPEG/WebP compression artifacts from being detected as separate mask regions. Default 4 (~10/255).",
+        "maximum": 100,
+        "minimum": 0,
+        "title": "Mask Bin Size",
+        "type": "number"
+      },
+      "mask_min_region": {
+        "default": 16,
+        "description": "Minimum mask region size in pixels. Connected components smaller than this are discarded after quantisation, removing residual compression artifacts that survive the binning step. Default 16.",
+        "minimum": 1,
+        "title": "Mask Min Region",
+        "type": "integer"
+      },
+      "tile_size": {
+        "default": 4,
+        "description": "Side length of the square qubit lattice used as the per-tile processing kernel.",
+        "maximum": 4,
+        "minimum": 2,
+        "title": "Tile Size",
+        "type": "integer"
+      }
+    },
+    "title": "Params",
+    "type": "object"
+  },
+  "inputFiles": [
+    {
+      "name": "image",
+      "mime_types": [
+        "image/png",
+        "image/jpeg",
+        "image/webp",
+        "image/bmp",
+        "image/tiff"
+      ],
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "mask",
+      "mime_types": [
+        "image/png",
+        "image/jpeg",
+        "image/webp",
+        "image/bmp",
+        "image/tiff"
+      ],
+      "required": false,
+      "description": "Optional mask controlling where the effect is applied, on a per-pixel basis. Resized (Lanczos) to match `image` if it isn't already the same size. Brighter mask pixels take more of the quantum-processed color, darker pixels keep more of the original. The mask is split into disjoint connected regions and each is processed independently, scoped to its own bounding box. If omitted, the alpha channel of `image` is used instead (transparent pixels stay original, opaque pixels are processed); for RGB input with no alpha channel, the whole image is processed."
+    }
+  ],
+  "outputFiles": [
+    {
+      "name": "result",
+      "content_types": [
+        "image/png",
+        "image/jpeg",
+        "image/webp",
+        "image/bmp",
+        "image/tiff"
+      ],
+      "required": true,
+      "description": "The processed image."
+    }
+  ],
+  "runPolicy": {
+    "timeout": 30000,
+    "max_retries": 3,
+    "heartbeat": 60000
+  },
+  "errorCodes": [
+    {
+      "type": "invalid_image",
+      "description": "The image or mask file could not be decoded."
+    },
+    {
+      "type": "no_mask_region",
+      "description": "The provided mask has no non-zero regions after quantisation — nothing to process."
+    },
+    {
+      "type": "invalid_params",
+      "description": "One or more params fields failed Pydantic validation."
+    },
+    {
+      "type": "tile_too_large",
+      "description": "tile_size ** 2 exceeds the MAX_QUBITS simulation budget."
+    },
+    {
+      "type": "unsupported_gate",
+      "description": "A gate name in `gates` is not in the supported gate registry."
+    },
+    {
+      "type": "kernel_failed",
+      "description": "The quantum color kernel failed on a tile."
+    },
+    {
+      "type": "encoding_failed",
+      "description": "The output image could not be encoded in the input's format."
+    }
+  ]
+}
