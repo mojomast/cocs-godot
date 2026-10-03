@@ -1,0 +1,77 @@
+{
+  "scope": "Post-X source-only diagnosis; no new geometry, GLB/master, import, render or native execution",
+  "baseCommit": "171ffddbba288c091af1bd7a2aa7b881cfd3fb40",
+  "movement": {
+    "productionFunction": "game/core.mjs::moveActor",
+    "trials": 80,
+    "requiredPassed": 60,
+    "totalFrames": 27930,
+    "requiredFrames": 13530,
+    "staticFailuresRemain": 184,
+    "futureNativeJourneys": 60,
+    "nativeStatus": "pending; GDScript unparsed"
+  },
+  "tests": {
+    "python": 8,
+    "nodeCorrective": 2,
+    "nodeMovementRegression": 10,
+    "r7MathParityCases": 6
+  },
+  "r7Reference": {
+    "commit": "10d9938f",
+    "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/tangents.py",
+    "sha256": "e9ffbc04691c71acc777dbbe49c98d1b4c1b4be971292629b1350c587d655133",
+    "scope": "pure basis/solve math only, exact parity on three incident corners and mirrored UVs"
+  },
+  "parallax": {
+    "inMemoryProposedEntries": 3,
+    "changedBinaryBytes": 5,
+    "outputGlbSha256": null,
+    "nativeBasis": "unproven; stage qualification per independent review remains limited"
+  },
+  "frozen": {
+    "X": 600,
+    "U": 264,
+    "mismatches": 0
+  },
+  "dependencies": {
+    "game/core.mjs": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+    "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+    "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+    "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+    "game/spatial.mjs": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
+    "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
+    "game/operator-verbs.mjs": "357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e",
+    "game/spec-effects.mjs": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
+    "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "godot/exploration/walker.gd": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+    "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
+    "godot/world/session.gd": "32ff87d491dad9f47d555fa3eec701fbfbbfa47608075ebbc2796b5c291b549c",
+    "godot/multiplayer_worlds/demo.gd": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748"
+  },
+  "files": {
+    "tools/godot-multiplayer/new-maps/botanical-post-x/README.md": "bab47dd145b0874d8c70cda30372e8cc0fee57cfc06d72962bb89a1c698f3ce3",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/contacts-evidence.json": "e6f45977076df144a818c16d1dd0bae994329123a1ea29ce7d0179bc960a22da",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/diagnose_contacts.py": "77d01a594726d26d8df87018d69cbf36d7504284a1300267c4aadedf04be449c",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/fixture_inputs.py": "041b4fe720ae80c24d7454af951abcec95fdd86454df2436c8f0bd8bebb00604",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/frozen-integrity.json": "a57fb3bfeb2571f82cc5476d06828e336dc65dd44aa01627ccb3ab923d45d310",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/movement-evidence.json": "70f7d62e286c20d01ede414342c0e50883f654a16ad455b2f61ebede3a3953dc",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/movement.mjs": "3b4d6804575d26ce10261ff354be2f9dc97c153d57ec23e1d91c837761b80748",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/movement.test.mjs": "c149c39117d75660ea2cec26176ec2ddf5e0b4028cee8f3c3f4c798c04986a95",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/native_cases.mjs": "2b7f59a9f755c48d7cf620363dadbe2b6406ed675e4b1182c61c8723674ad22a",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/parallax-tangent-evidence-v2.json": "be3a3050394deac28152ce6bb3cdacc93fe98b889bbe0a3936fc39e52f205922",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/parallax-tangent-evidence.json": "72bae6c2f08e31fb74c3c95c8c102801d876f85a26ecd0b6fdc1033440a2a8b7",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/parallax_tangent.py": "3d9db4915f797e3063070c633543b51c3f6dffe543e111d946255596fce6fa61",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/prepare_native.py": "56ce86ffed88839f82afe1cd52f3c72140a9f8604fcae87aac768f4d94f61e36",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/test_contacts.py": "cfa80d50e76625d028f2467edda707916f157eae61e82be14ce89bf86cf56d36",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/test_native_fixture.py": "4ff9f56e5300c8ba1b7ea2e05594997a87c94410db8768b89bcda0f0b72d17c6",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/test_tangent.py": "4dbcc0f4098740802bb0614707ab8bcf70835a2ec6e73d990a09da6fd4527ba3",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/uv_basis.py": "4e857df8d84b239d78ce8f41fdfcafae922b1d977f7178087279afb3d8e5673c",
+    "tools/godot-multiplayer/new-maps/botanical-post-x/verify_frozen.py": "eaefe2509654b22fe3102b46dfe7f532d0fb23fad5238f001cff3def37fc37f9",
+    "godot/tests/new_maps/botanical_post_x/.gitignore": "db9d5bc636fe9c9e365ab1c2fb51b3262ba14e2368373e037f8cd96e7ffbfbf4",
+    "godot/tests/new_maps/botanical_post_x/controller_journey.gd": "346a51cc20b1bec5515ba2ae92e3b9a786cb4aeb8b12fa10e30f0e25daa2a9f1",
+    "godot/tests/new_maps/botanical_post_x/tangent_readback.gd": "f748950bc8c259a392d317014c4b791079b5c1085dd8b36b1238734cc7dfbaf8"
+  }
+}

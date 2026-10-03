@@ -1,0 +1,254 @@
+{
+  "scope": "in-memory source qualification only; no artifact written or native basis proved",
+  "sourceGlbSha256": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+  "artifactSha256": null,
+  "proposedVisualRevision": "parallax-tangent-local-v1",
+  "geometryHashUnchanged": true,
+  "material": "saltstone",
+  "normalTexture": {
+    "index": 18,
+    "scale": 0.4000000059604645
+  },
+  "identityTransformNode": "kit.authority.saltstone.00",
+  "mesh": "art.accepted-craft.saltstone.001",
+  "primitive": 0,
+  "primitiveLocalTriangle": 11823,
+  "indices": [
+    24049,
+    24050,
+    24051
+  ],
+  "positions": [
+    [
+      68.77897644042969,
+      24.0,
+      -66.25537872314453
+    ],
+    [
+      35.5203971862793,
+      24.0,
+      -84.05670928955078
+    ],
+    [
+      35.5,
+      24.0,
+      -84.06217956542969
+    ]
+  ],
+  "normals": [
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ]
+  ],
+  "uv": [
+    [
+      35.36811447143555,
+      -32.56804275512695
+    ],
+    [
+      18.73882484436035,
+      -41.46870803833008
+    ],
+    [
+      18.728626251220703,
+      -41.47144317626953
+    ]
+  ],
+  "changes": [
+    {
+      "accessor": 48,
+      "vertex": 24049,
+      "binOffset": 16458380,
+      "incidentTriangles": [
+        11823
+      ],
+      "before": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "proposed": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "basis": {
+        "t": [
+          1.0,
+          -0.0,
+          -0.0
+        ],
+        "b": [
+          -0.0,
+          -0.0,
+          1.0
+        ],
+        "projected": [
+          1.0,
+          -0.0,
+          -0.0
+        ],
+        "sign": -1.0,
+        "weight": 0.00012723973258645818,
+        "area": 0.09058172586082947,
+        "uvJacobian": -0.04529086293041473,
+        "normal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "dPdu": [
+          2.0,
+          -0.0,
+          -0.0
+        ],
+        "dPdv": [
+          -0.0,
+          -0.0,
+          2.0
+        ]
+      },
+      "reason": "zero tangent"
+    },
+    {
+      "accessor": 48,
+      "vertex": 24050,
+      "binOffset": 16458396,
+      "incidentTriangles": [
+        11823
+      ],
+      "before": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "proposed": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "basis": {
+        "t": [
+          1.0,
+          -0.0,
+          -0.0
+        ],
+        "b": [
+          -0.0,
+          -0.0,
+          1.0
+        ],
+        "projected": [
+          1.0,
+          -0.0,
+          -0.0
+        ],
+        "sign": -1.0,
+        "weight": 2.912173841838429,
+        "area": 0.09058172586082947,
+        "uvJacobian": -0.04529086293041473,
+        "normal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "dPdu": [
+          2.0,
+          -0.0,
+          -0.0
+        ],
+        "dPdv": [
+          -0.0,
+          -0.0,
+          2.0
+        ]
+      },
+      "reason": "valid direction but W disagrees with the actual exported UV derivative"
+    },
+    {
+      "accessor": 48,
+      "vertex": 24051,
+      "binOffset": 16458412,
+      "incidentTriangles": [
+        11823
+      ],
+      "before": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "proposed": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "basis": {
+        "t": [
+          1.0,
+          -0.0,
+          -0.0
+        ],
+        "b": [
+          -0.0,
+          -0.0,
+          1.0
+        ],
+        "projected": [
+          1.0,
+          -0.0,
+          -0.0
+        ],
+        "sign": -1.0,
+        "weight": 0.22929157201877778,
+        "area": 0.09058172586082947,
+        "uvJacobian": -0.04529086293041473,
+        "normal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "dPdu": [
+          2.0,
+          -0.0,
+          -0.0
+        ],
+        "dPdv": [
+          -0.0,
+          -0.0,
+          2.0
+        ]
+      },
+      "reason": "valid direction but W disagrees with the actual exported UV derivative"
+    }
+  ],
+  "changedBinaryByteOffsets": [
+    16458382,
+    16458383,
+    16458395,
+    16458411,
+    16458427
+  ],
+  "allowedTangentBytes": 48,
+  "allOtherBinaryBytesIdentical": true,
+  "materialsImagesPositionsNormalsUVIndicesUnchanged": true,
+  "nativeBasisStatus": "unproven; ensure_tangents and array presence are not per-corner basis proof",
+  "recommendation": "Review this three-corner local proposal; do not blindly copy neighboring +1 handedness into the zero corner"
+}
