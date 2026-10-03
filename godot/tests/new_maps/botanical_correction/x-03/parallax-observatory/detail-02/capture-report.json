@@ -1,0 +1,168 @@
+{
+  "captures": [
+    {
+      "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+      "drawCalls": 59.0,
+      "eightFrameMicroseconds": 3463235,
+      "eye": [
+        51.0,
+        13.45,
+        -34.0
+      ],
+      "fov": 68.0,
+      "geometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+      "glbSha256": "c1dffd357545206d3f70870f850e441c5be148e652830a4a69835185a75610bd",
+      "path": "res://tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-02/captures/east-aperture-inspection-accepted-runtime-before.png",
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "renderingMethod": "gl_compatibility",
+      "sha256": "756accabd2ae79f8c74211f666f26de7a039a617eaede868c2f036723b576f82",
+      "staticMemoryBytes": 98014206,
+      "staticViewMeanFrameMs": 432.904375,
+      "target": [
+        43.0,
+        13.45,
+        -34.0
+      ],
+      "variant": "accepted-runtime-before",
+      "videoMemoryBytes": 28447877.0,
+      "view": "east-aperture-inspection",
+      "weather": {
+        "audio_frames": 0,
+        "authoritative_time": true,
+        "biome": {
+          "biome": "canyon",
+          "mood": "hot",
+          "particles": "dust",
+          "tint": "#8a6a44"
+        },
+        "elapsed": 12.0,
+        "emits_per_tick_limit": 44,
+        "enabled": true,
+        "focused": true,
+        "lightning_flashes": 0,
+        "muted": true,
+        "native_weather_suppressed": true,
+        "particle_limit": 48,
+        "particles": 0,
+        "reduced_motion": false,
+        "seed": 0,
+        "thunder_count": 0,
+        "time": {
+          "blend": 0.0727272727272727,
+          "cycle": "day",
+          "from": "day",
+          "phase": "day",
+          "t": 0.0181818181818182,
+          "to": "dusk"
+        },
+        "wants_precipitation_handoff": false,
+        "weather": "clear",
+        "wind": 0.901890997343415
+      },
+      "weatherLook": {
+        "additional_colliders": 0,
+        "additional_geometry_nodes": 0,
+        "binding_cap": 16384,
+        "bindings": 11,
+        "capped": false,
+        "material_cap": 256,
+        "materials": 11,
+        "node_cap": 16384,
+        "uniform_writes": 44,
+        "visited": 66,
+        "wet_shader_variants": 0,
+        "wet_textures": 0,
+        "wetness": 0.0
+      }
+    },
+    {
+      "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+      "drawCalls": 150.0,
+      "eightFrameMicroseconds": 2688932,
+      "eye": [
+        51.0,
+        13.45,
+        -34.0
+      ],
+      "fov": 68.0,
+      "geometryHash": "3a5800e89876ebcc741381802def24415d5050651c0d3b831ea8b9ec3b77b4f9",
+      "glbSha256": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+      "path": "res://tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-02/captures/east-aperture-inspection-candidate-runtime-after.png",
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "renderingMethod": "gl_compatibility",
+      "sha256": "b7d70bf5858ed3db0629a5fb2f2ef30651b623e72458dd6be51a25bfabe3af94",
+      "staticMemoryBytes": 115977698,
+      "staticViewMeanFrameMs": 336.1165,
+      "target": [
+        43.0,
+        13.45,
+        -34.0
+      ],
+      "variant": "candidate-runtime-after",
+      "videoMemoryBytes": 64227039.0,
+      "view": "east-aperture-inspection",
+      "weather": {
+        "audio_frames": 0,
+        "authoritative_time": true,
+        "biome": {
+          "biome": "canyon",
+          "mood": "hot",
+          "particles": "dust",
+          "tint": "#8a6a44"
+        },
+        "elapsed": 12.0,
+        "emits_per_tick_limit": 44,
+        "enabled": true,
+        "focused": true,
+        "lightning_flashes": 0,
+        "muted": true,
+        "native_weather_suppressed": true,
+        "particle_limit": 48,
+        "particles": 0,
+        "reduced_motion": false,
+        "seed": 0,
+        "thunder_count": 0,
+        "time": {
+          "blend": 0.0727272727272727,
+          "cycle": "day",
+          "from": "day",
+          "phase": "day",
+          "t": 0.0181818181818182,
+          "to": "dusk"
+        },
+        "wants_precipitation_handoff": false,
+        "weather": "clear",
+        "wind": 0.901890997343415
+      },
+      "weatherLook": {
+        "additional_colliders": 0,
+        "additional_geometry_nodes": 0,
+        "binding_cap": 16384,
+        "bindings": 49,
+        "capped": false,
+        "material_cap": 256,
+        "materials": 49,
+        "node_cap": 16384,
+        "uniform_writes": 196,
+        "visited": 98,
+        "wet_shader_variants": 0,
+        "wet_textures": 0,
+        "wetness": 0.0
+      }
+    }
+  ],
+  "godot": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "manifestSha256": "7dcd8675be3c9ab6f6b4699e3cea454aeb4db5f742d35bd7041046a2fe639c74",
+  "map": "parallax-observatory",
+  "scope": "untouched matched native presentation pairs, labelled repositioning; static backend timings, not dedicated GPU/hosted FPS; human/team-readability review pending"
+}

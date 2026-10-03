@@ -1,0 +1,41 @@
+{
+  "start": "2026-10-03T21:25:30.661216+00:00",
+  "end": "2026-10-03T21:25:44.655621+00:00",
+  "pgid": 986244,
+  "members": [
+    {
+      "pid": 986244,
+      "ppid": 887927,
+      "pgid": 986244,
+      "startTicks": 624587427,
+      "comm": "python3",
+      "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 helix-conservatory "
+    },
+    {
+      "pid": 986278,
+      "ppid": 986244,
+      "pgid": 986244,
+      "startTicks": 624587462,
+      "comm": "xvfb-run",
+      "argv": ""
+    },
+    {
+      "pid": 986288,
+      "ppid": 986278,
+      "pgid": 986244,
+      "startTicks": 624587463,
+      "comm": "Xvfb",
+      "argv": "Xvfb :101 -screen 0 1280x720x24 -nolisten tcp -auth /tmp/xvfb-run.vWno7e/Xauthority "
+    },
+    {
+      "pid": 986291,
+      "ppid": 986278,
+      "pgid": 986244,
+      "startTicks": 624587465,
+      "comm": "Godot_v4.5.2-st",
+      "argv": ""
+    }
+  ],
+  "scriptError": false,
+  "returncode": 0
+}

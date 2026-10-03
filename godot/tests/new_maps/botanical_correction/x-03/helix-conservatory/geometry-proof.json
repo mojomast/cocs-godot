@@ -1,0 +1,5792 @@
+{
+  "evaluatedExportTriangles": 157518,
+  "usedMaterials": [
+    "botanical",
+    "brick",
+    "ceramic",
+    "glass",
+    "gold",
+    "helix.archive-stone",
+    "helix.bark",
+    "helix.fern",
+    "helix.greenhouse-frame",
+    "helix.grotto-rock",
+    "helix.soil",
+    "helix.trim",
+    "leaflight",
+    "soil",
+    "solar",
+    "stone",
+    "verdigris",
+    "water"
+  ],
+  "exportAudit": {
+    "triangles": 157518,
+    "triangleAdvisory": {
+      "policy": "advisory",
+      "measurement": "exported-glb",
+      "totalTriangles": 157518,
+      "targetTriangles": 150000,
+      "overTarget": true,
+      "overageTriangles": 7518,
+      "status": "pending-performance-visual-review"
+    },
+    "primitives": 27,
+    "usedMaterials": [
+      "botanical",
+      "brick",
+      "ceramic",
+      "glass",
+      "gold",
+      "helix.archive-stone",
+      "helix.bark",
+      "helix.fern",
+      "helix.greenhouse-frame",
+      "helix.grotto-rock",
+      "helix.soil",
+      "helix.trim",
+      "leaflight",
+      "soil",
+      "solar",
+      "stone",
+      "verdigris",
+      "water"
+    ],
+    "materialEvidence": {
+      "helix.archive-stone": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "helix.trim": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "botanical": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "ceramic": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "glass": {
+        "role": "preserve",
+        "geometryReferenced": true
+      },
+      "gold": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "leaflight": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "water": {
+        "role": "preserve",
+        "geometryReferenced": true
+      },
+      "brick": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "soil": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "solar": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "stone": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "verdigris": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "helix.soil": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "helix.greenhouse-frame": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "helix.grotto-rock": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "helix.fern": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "helix.bark": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      }
+    },
+    "albedo": {
+      "helix.archive-stone": {
+        "sourceLinearSha256": "c8dfce6416c2b9eb145c63470331f6749e0338527fcb3045dfef15b435062702",
+        "exportSrgbSha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+        "maxByteError": 0,
+        "normalSourceSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "normalExportSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "roughnessSourceSha256": "2c63bee56ac7600342fd93f52ed17aa5d096b4e5c1d659168bd5d0586ae1afc5",
+        "metallicRoughnessExportSha256": "71bde5b9fa079061ce35291730a2f385a9c7bbe709e5b9f546844ac6861694bb"
+      },
+      "helix.trim": {
+        "sourceLinearSha256": "6c3243cea75aedf2e9b898bce33d1c89564cc51971ba574fea2b484ed512406c",
+        "exportSrgbSha256": "a3888e7190c86f73f6c3863b84610a34f1b6cc58d4384f6c77fc0d784d5f33d3",
+        "maxByteError": 0,
+        "normalSourceSha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+        "normalExportSha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+        "roughnessSourceSha256": "db409b5b75e132192fc142673dfc781eb2f0ed5e68e19bfccc16539601b86368",
+        "metallicRoughnessExportSha256": "ac19978333cc91117da8a23650dc1ed916fc3ae97ab6b1a5bfffe1e8669cae86"
+      },
+      "botanical": {
+        "sourceLinearSha256": "a47ba407f957a55caa21956683d37d52b3353d1f7d5e56b629a7c02d8522a45b",
+        "exportSrgbSha256": "52052d69c0f0bfd3fc750b7ff11c49ccad82bf06b169a63ed3a78da57a58d14c",
+        "maxByteError": 0,
+        "normalSourceSha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+        "normalExportSha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+        "roughnessSourceSha256": "8d32c4b57631916c5ed7e93d1365d71a24b4e8c4a2e63bea3c9a110e12477ebe",
+        "metallicRoughnessExportSha256": "1baff9fef6df67a9357eca48d51f45501a7710833cc461d0d58fd85a2916b9fe"
+      },
+      "ceramic": {
+        "sourceLinearSha256": "c8dfce6416c2b9eb145c63470331f6749e0338527fcb3045dfef15b435062702",
+        "exportSrgbSha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+        "maxByteError": 0,
+        "normalSourceSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "normalExportSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "roughnessSourceSha256": "2c63bee56ac7600342fd93f52ed17aa5d096b4e5c1d659168bd5d0586ae1afc5",
+        "metallicRoughnessExportSha256": "71bde5b9fa079061ce35291730a2f385a9c7bbe709e5b9f546844ac6861694bb"
+      },
+      "gold": {
+        "sourceLinearSha256": "1e3a2aab37bdc00b936e090f748a01caea2e3b30de33a972365328be6a03afdf",
+        "exportSrgbSha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+        "maxByteError": 0,
+        "normalSourceSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "normalExportSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "roughnessSourceSha256": "dbcaa37ae370a5150dc588fc6189126bb52c4e1b8e2671b129ded5078252d99a",
+        "metallicRoughnessExportSha256": "67503e7fe7d49b24e173c84bdf86895e7397702d3399772150136dddfc65aa75"
+      },
+      "leaflight": {
+        "sourceLinearSha256": "8d23a9b4819d14969f3dfb20697c1fbb91e643f0aa3d030e12a238ed94a863a9",
+        "exportSrgbSha256": "7e3d11e8311ecc5d52a910038cead50d3383a68bfb7c6412d6c8f19c72d7eedd",
+        "maxByteError": 0,
+        "normalSourceSha256": "b7051d968859c381dced9cfcb07c441bd1172e9d8ef133d689289e908f22958f",
+        "normalExportSha256": "b7051d968859c381dced9cfcb07c441bd1172e9d8ef133d689289e908f22958f",
+        "roughnessSourceSha256": "9f4e9ec198900ed662603a77e599c10583d0d1a0d3a88825064d3d23308187e7",
+        "metallicRoughnessExportSha256": "a161bdedf82c43ba685ac624c9ffcaba8a86b5535de18e7a0cb4c0e324e391a6"
+      },
+      "brick": {
+        "sourceLinearSha256": "e7cbef47acd9d54c61f57123824f477af4b0d42c17fdd514d0ad3fb185ae46a3",
+        "exportSrgbSha256": "19efdd03cd0bc98d04405f04c04b8b9ac1293ca0751103c4e4a11e9ab4b92124",
+        "maxByteError": 0,
+        "normalSourceSha256": "a82b4af6b637ecd74953a0f4af261acc637eab255e80f6117a231f5d0b564ca5",
+        "normalExportSha256": "a82b4af6b637ecd74953a0f4af261acc637eab255e80f6117a231f5d0b564ca5",
+        "roughnessSourceSha256": "026e41ba5a566ab71f09ed19a6699c53442aaa2b569b32a0f61f1a2a7dd8fd16",
+        "metallicRoughnessExportSha256": "3d8531df0143abe737299e022b6ccd643092c9d1851b23973be0ab4ef2a7d0ef"
+      },
+      "soil": {
+        "sourceLinearSha256": "a47ba407f957a55caa21956683d37d52b3353d1f7d5e56b629a7c02d8522a45b",
+        "exportSrgbSha256": "52052d69c0f0bfd3fc750b7ff11c49ccad82bf06b169a63ed3a78da57a58d14c",
+        "maxByteError": 0,
+        "normalSourceSha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+        "normalExportSha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+        "roughnessSourceSha256": "8d32c4b57631916c5ed7e93d1365d71a24b4e8c4a2e63bea3c9a110e12477ebe",
+        "metallicRoughnessExportSha256": "1baff9fef6df67a9357eca48d51f45501a7710833cc461d0d58fd85a2916b9fe"
+      },
+      "solar": {
+        "sourceLinearSha256": "64fbdfc9891608b6966049d3c4dc54dd6b7593868e08f89f4f9bfa36a0085a97",
+        "exportSrgbSha256": "526808c6be3d9794759f14a5660bb6a87a157420827d31cca03e6d625819e8f9",
+        "maxByteError": 0,
+        "normalSourceSha256": "f1e48753f0784ad31eadbb496bdb559252c2e4e034653e02ddbb020fb4249401",
+        "normalExportSha256": "f1e48753f0784ad31eadbb496bdb559252c2e4e034653e02ddbb020fb4249401",
+        "roughnessSourceSha256": "5ed42766756361b029bfa13a6e7e29bde853b8dd661209d955f6a5a2f8885f7c",
+        "metallicRoughnessExportSha256": "589fb767fa2aba1669225ff5f63e512358278c5f3022ca2b8e26c67000407009"
+      },
+      "stone": {
+        "sourceLinearSha256": "9217447e0249b9f37e5f739bbb8a36ab17525926070cdfdbfef1722e53dc5499",
+        "exportSrgbSha256": "a1af71522942bb686c9179744d34832a1223759730c8920f96140895c3aba7ce",
+        "maxByteError": 0,
+        "normalSourceSha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+        "normalExportSha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+        "roughnessSourceSha256": "81f6ff50750eea6604a5ded64aa9463b3e71f0e6f96f45c5990164a45fb759f7",
+        "metallicRoughnessExportSha256": "0f473df2e1651818d95033b65fb66e6d4470dea19390c4fd663b07a1e88ae214"
+      },
+      "verdigris": {
+        "sourceLinearSha256": "a11f66b6da6268c022fa8b88593d39c2b33c96197bd83be811ed7972672fad8f",
+        "exportSrgbSha256": "df08158f6dfced7e3e823f32b1a796ece7a2fed8f763505c6f43980cd82516e2",
+        "maxByteError": 0,
+        "normalSourceSha256": "7b2ec1c6a0837fdbbe67ed0779e2d39ad3637b405ed0a5186ac21b94db2dab9c",
+        "normalExportSha256": "7b2ec1c6a0837fdbbe67ed0779e2d39ad3637b405ed0a5186ac21b94db2dab9c",
+        "roughnessSourceSha256": "0b1951e5830a72bfd483555e1a06a7bacaaa8ac7e379818f8acdd86765caea8b",
+        "metallicRoughnessExportSha256": "2d9934b2c971746003f84cc364c085cf55062a49e90d548a800496a416830698"
+      },
+      "helix.soil": {
+        "sourceLinearSha256": "a47ba407f957a55caa21956683d37d52b3353d1f7d5e56b629a7c02d8522a45b",
+        "exportSrgbSha256": "52052d69c0f0bfd3fc750b7ff11c49ccad82bf06b169a63ed3a78da57a58d14c",
+        "maxByteError": 0,
+        "normalSourceSha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+        "normalExportSha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+        "roughnessSourceSha256": "8d32c4b57631916c5ed7e93d1365d71a24b4e8c4a2e63bea3c9a110e12477ebe",
+        "metallicRoughnessExportSha256": "1baff9fef6df67a9357eca48d51f45501a7710833cc461d0d58fd85a2916b9fe"
+      },
+      "helix.greenhouse-frame": {
+        "sourceLinearSha256": "1e3a2aab37bdc00b936e090f748a01caea2e3b30de33a972365328be6a03afdf",
+        "exportSrgbSha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+        "maxByteError": 0,
+        "normalSourceSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "normalExportSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "roughnessSourceSha256": "dbcaa37ae370a5150dc588fc6189126bb52c4e1b8e2671b129ded5078252d99a",
+        "metallicRoughnessExportSha256": "67503e7fe7d49b24e173c84bdf86895e7397702d3399772150136dddfc65aa75"
+      },
+      "helix.grotto-rock": {
+        "sourceLinearSha256": "9217447e0249b9f37e5f739bbb8a36ab17525926070cdfdbfef1722e53dc5499",
+        "exportSrgbSha256": "a1af71522942bb686c9179744d34832a1223759730c8920f96140895c3aba7ce",
+        "maxByteError": 0,
+        "normalSourceSha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+        "normalExportSha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+        "roughnessSourceSha256": "81f6ff50750eea6604a5ded64aa9463b3e71f0e6f96f45c5990164a45fb759f7",
+        "metallicRoughnessExportSha256": "0f473df2e1651818d95033b65fb66e6d4470dea19390c4fd663b07a1e88ae214"
+      },
+      "helix.fern": {
+        "sourceLinearSha256": "119ae5f9763577a24b34ab9a1244926a080973161c339f153a55c713607971af",
+        "exportSrgbSha256": "00ee4e4c13507056a52866ac24a57605e06d5e9f1cb40f13177153486a689d7a",
+        "maxByteError": 0,
+        "normalSourceSha256": "d60070f0af03f33c351a6049a871fe839a6fcacc39889e9ca5b1752be2f42771",
+        "normalExportSha256": "d60070f0af03f33c351a6049a871fe839a6fcacc39889e9ca5b1752be2f42771",
+        "roughnessSourceSha256": "8782a50aad763eb9be831334d97507fed2b70fc93f99c1bdf9f850d16f675817",
+        "metallicRoughnessExportSha256": "f1886e518ac4881e34f7ddbfaf99a5467f666c2d0d2640afccf7af4c7a04d98d"
+      },
+      "helix.bark": {
+        "sourceLinearSha256": "be0211f29a3b4d0d5f8c401d6bf68d0e8d25052092c569fefde6524a79899fa7",
+        "exportSrgbSha256": "992962a0a31a62c6f3d2629485781441b28d0fed62f9069ce9b284cd5970cd21",
+        "maxByteError": 0,
+        "normalSourceSha256": "eb7687cc095b294658f7d1171dca8758eb2c4af20e71d5caa04f0cc3ce08bd68",
+        "normalExportSha256": "eb7687cc095b294658f7d1171dca8758eb2c4af20e71d5caa04f0cc3ce08bd68",
+        "roughnessSourceSha256": "1527f27f53a868e9c3af107e6bf89e9f27ed784547603dc4aadc1575f3f84189",
+        "metallicRoughnessExportSha256": "628c59ced159e99590f04a525e2436cb273c2eee9eadc5fc73b32f9ff1475641"
+      }
+    },
+    "evaluatedTriangleDelta": 0,
+    "geometryValidation": "scene-referenced embedded accessor bytes verified; non-instanced static export"
+  },
+  "geometryHash": "f5a3d0d7b2872fa7c7fa6bb2727ee31915a717ffbc160343acf491fe3b9bc49e",
+  "glbSha256": "4943e353f4626a11f1e515b9046c92df30985ef725f399f651a8d8ddad953995",
+  "masterSha256": "46fe68d6ccb97c349812b6c4a5a600c3c9c90f19c50bee217378cb8f9029c856",
+  "rays": [
+    {
+      "id": "portal:grotto-mouth-0:-0.35:0.5",
+      "kind": "portal",
+      "origin": [
+        -19.71832673266839,
+        8.5,
+        -52.96600410512138
+      ],
+      "direction": [
+        -0.32556815445715664,
+        0,
+        -0.9455185755993168
+      ],
+      "max": 5,
+      "authority": 4.70211830686058,
+      "glb": 4.702118648470233,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "portal:grotto-mouth-0:-0.35:1.5",
+      "kind": "portal",
+      "origin": [
+        -19.71832673266839,
+        9.5,
+        -52.96600410512138
+      ],
+      "direction": [
+        -0.32556815445715664,
+        0,
+        -0.9455185755993168
+      ],
+      "max": 5,
+      "authority": 5,
+      "glb": 5,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "portal:grotto-mouth-0:0:0.5",
+      "kind": "portal",
+      "origin": [
+        -18.39460072682935,
+        8.5,
+        -53.4217995213614
+      ],
+      "direction": [
+        -0.32556815445715664,
+        0,
+        -0.9455185755993168
+      ],
+      "max": 5,
+      "authority": 4.741835197076893,
+      "glb": 4.74183475741074,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "portal:grotto-mouth-0:0:1.5",
+      "kind": "portal",
+      "origin": [
+        -18.39460072682935,
+        9.5,
+        -53.4217995213614
+      ],
+      "direction": [
+        -0.32556815445715664,
+        0,
+        -0.9455185755993168
+      ],
+      "max": 5,
+      "authority": 5,
+      "glb": 5,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "portal:grotto-mouth-0:0.35:0.5",
+      "kind": "portal",
+      "origin": [
+        -17.070874720990307,
+        8.5,
+        -53.87759493760142
+      ],
+      "direction": [
+        -0.32556815445715664,
+        0,
+        -0.9455185755993168
+      ],
+      "max": 5,
+      "authority": 4.70738605924645,
+      "glb": 4.707385778412745,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "portal:grotto-mouth-0:0.35:1.5",
+      "kind": "portal",
+      "origin": [
+        -17.070874720990307,
+        9.5,
+        -53.87759493760142
+      ],
+      "direction": [
+        -0.32556815445715664,
+        0,
+        -0.9455185755993168
+      ],
+      "max": 5,
+      "authority": 5,
+      "glb": 5,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "portal:grotto-mouth-1:-0.35:0.5",
+      "kind": "portal",
+      "origin": [
+        0.5726744058645887,
+        8.5,
+        -56.51444102196241
+      ],
+      "direction": [
+        0.034899496702501275,
+        0,
+        -0.9993908270190955
+      ],
+      "max": 5,
+      "authority": 4.714297338330519,
+      "glb": 4.714297340474801,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "portal:grotto-mouth-1:-0.35:1.5",
+      "kind": "portal",
+      "origin": [
+        0.5726744058645887,
+        9.5,
+        -56.51444102196241
+      ],
+      "direction": [
+        0.034899496702501275,
+        0,
+        -0.9993908270190955
+      ],
+      "max": 5,
+      "authority": 5,
+      "glb": 5,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "portal:grotto-mouth-1:0:0.5",
+      "kind": "portal",
+      "origin": [
+        1.9718215636913223,
+        8.5,
+        -56.46558172657891
+      ],
+      "direction": [
+        0.034899496702501275,
+        0,
+        -0.9993908270190955
+      ],
+      "max": 5,
+      "authority": 4.71735166936736,
+      "glb": 4.717351977109758,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "portal:grotto-mouth-1:0:1.5",
+      "kind": "portal",
+      "origin": [
+        1.9718215636913223,
+        9.5,
+        -56.46558172657891
+      ],
+      "direction": [
+        0.034899496702501275,
+        0,
+        -0.9993908270190955
+      ],
+      "max": 5,
+      "authority": 5,
+      "glb": 5,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "portal:grotto-mouth-1:0.35:0.5",
+      "kind": "portal",
+      "origin": [
+        3.370968721518056,
+        8.5,
+        -56.41672243119541
+      ],
+      "direction": [
+        0.034899496702501275,
+        0,
+        -0.9993908270190955
+      ],
+      "max": 5,
+      "authority": 4.720406000404199,
+      "glb": 4.720406613744714,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "portal:grotto-mouth-1:0.35:1.5",
+      "kind": "portal",
+      "origin": [
+        3.370968721518056,
+        9.5,
+        -56.41672243119541
+      ],
+      "direction": [
+        0.034899496702501275,
+        0,
+        -0.9993908270190955
+      ],
+      "max": 5,
+      "authority": 5,
+      "glb": 5,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:70:80.8:0.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        27.582891624471095,
+        16.5,
+        74.92853422474681
+      ],
+      "direction": [
+        0.052335956242943966,
+        0,
+        0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5817232974051362,
+      "glb": 0.5817205155104684,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:70:80.8:0.5:1",
+      "kind": "frame-post",
+      "origin": [
+        27.687563536956986,
+        16.5,
+        76.92579329425595
+      ],
+      "direction": [
+        -0.052335956242943966,
+        0,
+        -0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5817232974051361,
+      "glb": 0.5817239084003997,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:70:80.8:1.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        27.582891624471095,
+        17.5,
+        74.92853422474681
+      ],
+      "direction": [
+        0.052335956242943966,
+        0,
+        0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5817232974051361,
+      "glb": 0.5817205155104684,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:70:80.8:1.5:1",
+      "kind": "frame-post",
+      "origin": [
+        27.687563536956986,
+        17.5,
+        76.92579329425595
+      ],
+      "direction": [
+        -0.052335956242943966,
+        0,
+        -0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5817232974051361,
+      "glb": 0.5817239084003997,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:70:80.8:2.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        27.582891624471095,
+        18.5,
+        74.92853422474681
+      ],
+      "direction": [
+        0.052335956242943966,
+        0,
+        0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5817232974051361,
+      "glb": 0.5817205155104684,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:70:80.8:2.5:1",
+      "kind": "frame-post",
+      "origin": [
+        27.687563536956986,
+        18.5,
+        76.92579329425595
+      ],
+      "direction": [
+        -0.052335956242943966,
+        0,
+        -0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5817232974051361,
+      "glb": 0.5817239084003997,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:70:93.2:0.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        31.82394140170939,
+        16.5,
+        86.58072272249208
+      ],
+      "direction": [
+        0.052335956242943966,
+        0,
+        0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5817232974051362,
+      "glb": 0.5817239162123515,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:70:93.2:0.5:1",
+      "kind": "frame-post",
+      "origin": [
+        31.92861331419528,
+        16.5,
+        88.57798179200122
+      ],
+      "direction": [
+        -0.052335956242943966,
+        0,
+        -0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.578088404045405,
+      "glb": 0.578089544627523,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:70:93.2:1.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        31.82394140170939,
+        17.5,
+        86.58072272249208
+      ],
+      "direction": [
+        0.052335956242943966,
+        0,
+        0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5817232974051361,
+      "glb": 0.5817239162123515,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:70:93.2:1.5:1",
+      "kind": "frame-post",
+      "origin": [
+        31.92861331419528,
+        17.5,
+        88.57798179200122
+      ],
+      "direction": [
+        -0.052335956242943966,
+        0,
+        -0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.578088404045405,
+      "glb": 0.578089544627523,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:70:93.2:2.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        31.82394140170939,
+        18.5,
+        86.58072272249208
+      ],
+      "direction": [
+        0.052335956242943966,
+        0,
+        0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5817232974051361,
+      "glb": 0.5817239162123515,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:70:93.2:2.5:1",
+      "kind": "frame-post",
+      "origin": [
+        31.92861331419528,
+        18.5,
+        88.57798179200122
+      ],
+      "direction": [
+        -0.052335956242943966,
+        0,
+        -0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.578088404045405,
+      "glb": 0.578089544627523,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:76:80.8:0.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        19.599625120696107,
+        16.5,
+        77.40126514834594
+      ],
+      "direction": [
+        -0.05233595624294362,
+        0,
+        0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5408406125274914,
+      "glb": 0.5408427832137598,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:76:80.8:0.5:1",
+      "kind": "frame-post",
+      "origin": [
+        19.494953208210223,
+        16.5,
+        79.39852421785508
+      ],
+      "direction": [
+        0.05233595624294362,
+        0,
+        -0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5817232974051371,
+      "glb": 0.5817233445255903,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:76:80.8:1.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        19.599625120696107,
+        17.5,
+        77.40126514834594
+      ],
+      "direction": [
+        -0.05233595624294362,
+        0,
+        0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5408406125274914,
+      "glb": 0.5408427832137598,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:76:80.8:1.5:1",
+      "kind": "frame-post",
+      "origin": [
+        19.494953208210223,
+        17.5,
+        79.39852421785508
+      ],
+      "direction": [
+        0.05233595624294362,
+        0,
+        -0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5817232974051371,
+      "glb": 0.5817233445255903,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:76:80.8:2.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        19.599625120696107,
+        18.5,
+        77.40126514834594
+      ],
+      "direction": [
+        -0.05233595624294362,
+        0,
+        0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5408406125274914,
+      "glb": 0.5408427832137598,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:76:80.8:2.5:1",
+      "kind": "frame-post",
+      "origin": [
+        19.494953208210223,
+        18.5,
+        79.39852421785508
+      ],
+      "direction": [
+        0.05233595624294362,
+        0,
+        -0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5817232974051371,
+      "glb": 0.5817233445255903,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:76:93.2:0.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        22.59945662613199,
+        16.5,
+        89.4329321541683
+      ],
+      "direction": [
+        -0.05233595624294362,
+        0,
+        0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.581723297405128,
+      "glb": 0.5817260844172777,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:76:93.2:0.5:1",
+      "kind": "frame-post",
+      "origin": [
+        22.494784713646105,
+        16.5,
+        91.43019122367744
+      ],
+      "direction": [
+        0.05233595624294362,
+        0,
+        -0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5817232974051371,
+      "glb": 0.5817205315544397,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:76:93.2:1.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        22.59945662613199,
+        17.5,
+        89.4329321541683
+      ],
+      "direction": [
+        -0.05233595624294362,
+        0,
+        0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5817232974051281,
+      "glb": 0.5817260844172777,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:76:93.2:1.5:1",
+      "kind": "frame-post",
+      "origin": [
+        22.494784713646105,
+        17.5,
+        91.43019122367744
+      ],
+      "direction": [
+        0.05233595624294362,
+        0,
+        -0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5817232974051371,
+      "glb": 0.5817205315544397,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:76:93.2:2.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        22.59945662613199,
+        18.5,
+        89.4329321541683
+      ],
+      "direction": [
+        -0.05233595624294362,
+        0,
+        0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.581723297405128,
+      "glb": 0.5817260844172777,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:76:93.2:2.5:1",
+      "kind": "frame-post",
+      "origin": [
+        22.494784713646105,
+        18.5,
+        91.43019122367744
+      ],
+      "direction": [
+        0.05233595624294362,
+        0,
+        -0.9986295347545738
+      ],
+      "max": 2,
+      "authority": 0.5817232974051371,
+      "glb": 0.5817205315544397,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:82:80.8:0.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        11.401621022613538,
+        16.5,
+        79.02597161372373
+      ],
+      "direction": [
+        -0.1564344650402306,
+        0,
+        0.9876883405951378
+      ],
+      "max": 2,
+      "authority": 0.5522353522030399,
+      "glb": 0.5522357247879917,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:82:80.8:0.5:1",
+      "kind": "frame-post",
+      "origin": [
+        11.088752092533076,
+        16.5,
+        81.00134829491401
+      ],
+      "direction": [
+        0.1564344650402306,
+        0,
+        -0.9876883405951378
+      ],
+      "max": 2,
+      "authority": 0.5817232974051344,
+      "glb": 0.5817276639081796,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:82:80.8:1.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        11.401621022613538,
+        17.5,
+        79.02597161372373
+      ],
+      "direction": [
+        -0.1564344650402306,
+        0,
+        0.9876883405951378
+      ],
+      "max": 2,
+      "authority": 0.5522353522030399,
+      "glb": 0.5522357247879917,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:82:80.8:1.5:1",
+      "kind": "frame-post",
+      "origin": [
+        11.088752092533076,
+        17.5,
+        81.00134829491401
+      ],
+      "direction": [
+        0.1564344650402306,
+        0,
+        -0.9876883405951378
+      ],
+      "max": 2,
+      "authority": 0.5817232974051344,
+      "glb": 0.5817276639081796,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:82:80.8:2.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        11.401621022613538,
+        18.5,
+        79.02597161372373
+      ],
+      "direction": [
+        -0.1564344650402306,
+        0,
+        0.9876883405951378
+      ],
+      "max": 2,
+      "authority": 0.5522353522030399,
+      "glb": 0.5522357247879917,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:82:80.8:2.5:1",
+      "kind": "frame-post",
+      "origin": [
+        11.088752092533076,
+        18.5,
+        81.00134829491401
+      ],
+      "direction": [
+        0.1564344650402306,
+        0,
+        -0.9876883405951378
+      ],
+      "max": 2,
+      "authority": 0.5817232974051344,
+      "glb": 0.5817276639081796,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:82:93.2:0.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        13.127367474518353,
+        16.5,
+        91.3052956661192
+      ],
+      "direction": [
+        -0.1564344650402306,
+        0,
+        0.9876883405951378
+      ],
+      "max": 2,
+      "authority": 0.5817232974051585,
+      "glb": 0.5817242383840856,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:82:93.2:0.5:1",
+      "kind": "frame-post",
+      "origin": [
+        12.81449854443789,
+        16.5,
+        93.28067234730949
+      ],
+      "direction": [
+        0.1564344650402306,
+        0,
+        -0.9876883405951378
+      ],
+      "max": 2,
+      "authority": 0.558877028859597,
+      "glb": 0.5588806354301955,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:82:93.2:1.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        13.127367474518353,
+        17.5,
+        91.3052956661192
+      ],
+      "direction": [
+        -0.1564344650402306,
+        0,
+        0.9876883405951378
+      ],
+      "max": 2,
+      "authority": 0.5817232974051585,
+      "glb": 0.5817242383840856,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:82:93.2:1.5:1",
+      "kind": "frame-post",
+      "origin": [
+        12.81449854443789,
+        17.5,
+        93.28067234730949
+      ],
+      "direction": [
+        0.1564344650402306,
+        0,
+        -0.9876883405951378
+      ],
+      "max": 2,
+      "authority": 0.558877028859597,
+      "glb": 0.5588806354301955,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:82:93.2:2.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        13.127367474518353,
+        18.5,
+        91.3052956661192
+      ],
+      "direction": [
+        -0.1564344650402306,
+        0,
+        0.9876883405951378
+      ],
+      "max": 2,
+      "authority": 0.5817232974051585,
+      "glb": 0.5817242383840856,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:82:93.2:2.5:1",
+      "kind": "frame-post",
+      "origin": [
+        12.81449854443789,
+        18.5,
+        93.28067234730949
+      ],
+      "direction": [
+        0.1564344650402306,
+        0,
+        -0.9876883405951378
+      ],
+      "max": 2,
+      "authority": 0.558877028859597,
+      "glb": 0.5588806354301955,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:88:80.8:0.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        3.078698378664608,
+        16.5,
+        79.78485299685387
+      ],
+      "direction": [
+        -0.25881904510252063,
+        0,
+        0.9659258262890683
+      ],
+      "max": 2,
+      "authority": 0.5457152518206185,
+      "glb": 0.5457143625155463,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:88:80.8:0.5:1",
+      "kind": "frame-post",
+      "origin": [
+        2.5610602884595663,
+        16.5,
+        81.716704649432
+      ],
+      "direction": [
+        0.25881904510252063,
+        0,
+        -0.9659258262890683
+      ],
+      "max": 2,
+      "authority": 0.5817232974051433,
+      "glb": 0.5817222141037093,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:88:80.8:1.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        3.078698378664608,
+        17.5,
+        79.78485299685387
+      ],
+      "direction": [
+        -0.25881904510252063,
+        0,
+        0.9659258262890683
+      ],
+      "max": 2,
+      "authority": 0.5457152518206185,
+      "glb": 0.5457143625155463,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:88:80.8:1.5:1",
+      "kind": "frame-post",
+      "origin": [
+        2.5610602884595663,
+        17.5,
+        81.716704649432
+      ],
+      "direction": [
+        0.25881904510252063,
+        0,
+        -0.9659258262890683
+      ],
+      "max": 2,
+      "authority": 0.5817232974051433,
+      "glb": 0.5817222141037093,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:88:80.8:2.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        3.078698378664608,
+        18.5,
+        79.78485299685387
+      ],
+      "direction": [
+        -0.25881904510252063,
+        0,
+        0.9659258262890683
+      ],
+      "max": 2,
+      "authority": 0.5457152518206185,
+      "glb": 0.5457143625155463,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:88:80.8:2.5:1",
+      "kind": "frame-post",
+      "origin": [
+        2.5610602884595663,
+        18.5,
+        81.716704649432
+      ],
+      "direction": [
+        0.25881904510252063,
+        0,
+        -0.9659258262890683
+      ],
+      "max": 2,
+      "authority": 0.5817232974051433,
+      "glb": 0.5817222141037093,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:88:93.2:0.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        3.5114521377756214,
+        16.5,
+        92.17729925189066
+      ],
+      "direction": [
+        -0.25881904510252063,
+        0,
+        0.9659258262890683
+      ],
+      "max": 2,
+      "authority": 0.5817232974051432,
+      "glb": 0.5817231746433548,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:88:93.2:0.5:1",
+      "kind": "frame-post",
+      "origin": [
+        2.99381404757058,
+        16.5,
+        94.10915090446879
+      ],
+      "direction": [
+        0.25881904510252063,
+        0,
+        -0.9659258262890683
+      ],
+      "max": 2,
+      "authority": 0.5721801940873341,
+      "glb": 0.5721782021970785,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:88:93.2:1.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        3.5114521377756214,
+        17.5,
+        92.17729925189066
+      ],
+      "direction": [
+        -0.25881904510252063,
+        0,
+        0.9659258262890683
+      ],
+      "max": 2,
+      "authority": 0.5817232974051432,
+      "glb": 0.5817231746433548,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:88:93.2:1.5:1",
+      "kind": "frame-post",
+      "origin": [
+        2.99381404757058,
+        17.5,
+        94.10915090446879
+      ],
+      "direction": [
+        0.25881904510252063,
+        0,
+        -0.9659258262890683
+      ],
+      "max": 2,
+      "authority": 0.5721801940873341,
+      "glb": 0.5721782021970785,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:88:93.2:2.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        3.5114521377756214,
+        18.5,
+        92.17729925189066
+      ],
+      "direction": [
+        -0.25881904510252063,
+        0,
+        0.9659258262890683
+      ],
+      "max": 2,
+      "authority": 0.5817232974051431,
+      "glb": 0.5817231746433548,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:88:93.2:2.5:1",
+      "kind": "frame-post",
+      "origin": [
+        2.99381404757058,
+        18.5,
+        94.10915090446879
+      ],
+      "direction": [
+        0.25881904510252063,
+        0,
+        -0.9659258262890683
+      ],
+      "max": 2,
+      "authority": 0.5721801940873341,
+      "glb": 0.5721782021970785,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:94:80.8:0.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        -5.277955128980026,
+        16.5,
+        79.66959483449659
+      ],
+      "direction": [
+        -0.35836794954530027,
+        0,
+        0.9335804264972017
+      ],
+      "max": 2,
+      "authority": 0.5365829588963029,
+      "glb": 0.5365860882532096,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:94:80.8:0.5:1",
+      "kind": "frame-post",
+      "origin": [
+        -5.994691028070627,
+        16.5,
+        81.536755687491
+      ],
+      "direction": [
+        0.35836794954530027,
+        0,
+        -0.9335804264972017
+      ],
+      "max": 2,
+      "authority": 0.5817232974051451,
+      "glb": 0.5817264754861475,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:94:80.8:1.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        -5.277955128980026,
+        17.5,
+        79.66959483449659
+      ],
+      "direction": [
+        -0.35836794954530027,
+        0,
+        0.9335804264972017
+      ],
+      "max": 2,
+      "authority": 0.5365829588963029,
+      "glb": 0.5365860882532096,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:94:80.8:1.5:1",
+      "kind": "frame-post",
+      "origin": [
+        -5.994691028070627,
+        17.5,
+        81.536755687491
+      ],
+      "direction": [
+        0.35836794954530027,
+        0,
+        -0.9335804264972017
+      ],
+      "max": 2,
+      "authority": 0.5817232974051451,
+      "glb": 0.5817264754861475,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:94:80.8:2.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        -5.277955128980026,
+        18.5,
+        79.66959483449659
+      ],
+      "direction": [
+        -0.35836794954530027,
+        0,
+        0.9335804264972017
+      ],
+      "max": 2,
+      "authority": 0.5365829588963029,
+      "glb": 0.5365860882532096,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:94:80.8:2.5:1",
+      "kind": "frame-post",
+      "origin": [
+        -5.994691028070627,
+        18.5,
+        81.536755687491
+      ],
+      "direction": [
+        0.35836794954530027,
+        0,
+        -0.9335804264972017
+      ],
+      "max": 2,
+      "authority": 0.5817232974051451,
+      "glb": 0.5817264754861475,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:94:93.2:0.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        -6.14293540340718,
+        16.5,
+        92.03938905771842
+      ],
+      "direction": [
+        -0.35836794954530027,
+        0,
+        0.9335804264972017
+      ],
+      "max": 2,
+      "authority": 0.581723297405145,
+      "glb": 0.5817229225371507,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:94:93.2:0.5:1",
+      "kind": "frame-post",
+      "origin": [
+        -6.859671302497781,
+        16.5,
+        93.90654991071283
+      ],
+      "direction": [
+        0.35836794954530027,
+        0,
+        -0.9335804264972017
+      ],
+      "max": 2,
+      "authority": 0.5807814682462459,
+      "glb": 0.5807791235055018,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:94:93.2:1.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        -6.14293540340718,
+        17.5,
+        92.03938905771842
+      ],
+      "direction": [
+        -0.35836794954530027,
+        0,
+        0.9335804264972017
+      ],
+      "max": 2,
+      "authority": 0.581723297405145,
+      "glb": 0.5817229225371507,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:94:93.2:1.5:1",
+      "kind": "frame-post",
+      "origin": [
+        -6.859671302497781,
+        17.5,
+        93.90654991071283
+      ],
+      "direction": [
+        0.35836794954530027,
+        0,
+        -0.9335804264972017
+      ],
+      "max": 2,
+      "authority": 0.5807814682462459,
+      "glb": 0.5807791235055018,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:94:93.2:2.5:-1",
+      "kind": "frame-post",
+      "origin": [
+        -6.14293540340718,
+        18.5,
+        92.03938905771842
+      ],
+      "direction": [
+        -0.35836794954530027,
+        0,
+        0.9335804264972017
+      ],
+      "max": 2,
+      "authority": 0.581723297405145,
+      "glb": 0.5817229225371507,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "post:94:93.2:2.5:1",
+      "kind": "frame-post",
+      "origin": [
+        -6.859671302497781,
+        18.5,
+        93.90654991071283
+      ],
+      "direction": [
+        0.35836794954530027,
+        0,
+        -0.9335804264972017
+      ],
+      "max": 2,
+      "authority": 0.5807814682462459,
+      "glb": 0.5807791235055018,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:grotto-arch-0.band",
+      "kind": "solid",
+      "origin": [
+        -17.418272996887968,
+        9.75,
+        -57.03660023007931
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999858,
+      "glb": 0.14999961853027344,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:grotto-arch-0.reveal",
+      "kind": "solid",
+      "origin": [
+        -18.120451613853238,
+        9.75,
+        -57.048649706281424
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000033,
+      "glb": 0.14999961853027344,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:grotto-arch-0.springer-1",
+      "kind": "solid",
+      "origin": [
+        -21.424252588076207,
+        9.266666666666666,
+        -54.388086021134356
+      ],
+      "direction": [
+        0.9455185755993166,
+        -0.0,
+        -0.32556815445715703
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000005,
+      "glb": 0.14999964568364618,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:grotto-arch-0.springer1",
+      "kind": "solid",
+      "origin": [
+        -17.736730143238873,
+        9.266666666666666,
+        -55.65780182351726
+      ],
+      "direction": [
+        0.9455185755993166,
+        -0.0,
+        -0.32556815445715703
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000005,
+      "glb": 0.14999959380668929,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:grotto-arch-1.band",
+      "kind": "solid",
+      "origin": [
+        4.178730740209178,
+        9.75,
+        -59.49040434726285
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999858,
+      "glb": 0.14999961853027344,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:grotto-arch-1.reveal",
+      "kind": "solid",
+      "origin": [
+        0.649263091770178,
+        9.75,
+        -59.85380236407429
+      ],
+      "direction": [
+        3.945054957353875e-15,
+        1.0,
+        1.3776435479803304e-16
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000152,
+      "glb": 0.14999961853027344,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:grotto-arch-1.springer-1",
+      "kind": "solid",
+      "origin": [
+        -0.5103160014726195,
+        9.266666666666666,
+        -58.453418014506575
+      ],
+      "direction": [
+        0.9993908270190958,
+        -0.0,
+        0.03489949670250121
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000002,
+      "glb": 0.1500000961327823,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:grotto-arch-1.springer1",
+      "kind": "solid",
+      "origin": [
+        3.387308223901854,
+        9.266666666666666,
+        -58.31730997736682
+      ],
+      "direction": [
+        0.9993908270190958,
+        -0.0,
+        0.03489949670250118
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000013,
+      "glb": 0.1500003069206998,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:botanical-shelf-1-rim.tier0",
+      "kind": "solid",
+      "origin": [
+        -20.268372626652937,
+        8.525,
+        52.56850307467001
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000036,
+      "glb": 0.14999923706054652,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:botanical-shelf-1-rim.tier1",
+      "kind": "solid",
+      "origin": [
+        -20.4043595919894,
+        8.75,
+        52.51356077430234
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000003,
+      "glb": 0.15000057220458982,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:botanical-shelf-1-rim.cap",
+      "kind": "solid",
+      "origin": [
+        -22.247978167302417,
+        9.59,
+        52.59197203968293
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000036,
+      "glb": 0.1499997711181642,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:botanical-shelf-2-rim.tier0",
+      "kind": "solid",
+      "origin": [
+        -27.38724380326066,
+        8.525,
+        49.23609774652338
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000038,
+      "glb": 0.14999923706054652,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:botanical-shelf-2-rim.tier1",
+      "kind": "solid",
+      "origin": [
+        -29.1857391375176,
+        8.75,
+        49.044516375965294
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000036,
+      "glb": 0.15000057220458984,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:botanical-shelf-2-rim.cap",
+      "kind": "solid",
+      "origin": [
+        -27.349149792493076,
+        9.59,
+        49.22345031774318
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000033,
+      "glb": 0.1499997711181642,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:botanical-shelf-3-rim.tier0",
+      "kind": "solid",
+      "origin": [
+        -33.97305343176603,
+        8.525,
+        44.945367780971765
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000033,
+      "glb": 0.1499992370605465,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:botanical-shelf-3-rim.tier1",
+      "kind": "solid",
+      "origin": [
+        -34.08862834229502,
+        8.75,
+        44.855070764590664
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000033,
+      "glb": 0.15000057220458987,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:botanical-shelf-3-rim.cap",
+      "kind": "solid",
+      "origin": [
+        -33.93356996741009,
+        9.59,
+        44.93814509770558
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000033,
+      "glb": 0.14999977111816423,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:botanical-shelf-4-rim.tier0",
+      "kind": "solid",
+      "origin": [
+        -39.89761621899759,
+        8.525,
+        39.779827356161626
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000036,
+      "glb": 0.14999923706054652,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:botanical-shelf-4-rim.tier1",
+      "kind": "solid",
+      "origin": [
+        -39.99949944666491,
+        8.75,
+        39.67432418544529
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000036,
+      "glb": 0.15000057220458984,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:botanical-shelf-4-rim.cap",
+      "kind": "solid",
+      "origin": [
+        -39.85751180177519,
+        9.59,
+        39.77816999972355
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000033,
+      "glb": 0.14999977111816423,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:botanical-shelf-5-rim.tier0",
+      "kind": "solid",
+      "origin": [
+        -45.04561728939214,
+        8.525,
+        33.84001784074678
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000038,
+      "glb": 0.14999923706054652,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:botanical-shelf-5-rim.tier1",
+      "kind": "solid",
+      "origin": [
+        -45.1318257930617,
+        8.75,
+        33.72136201490512
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000036,
+      "glb": 0.15000057220458984,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:botanical-shelf-5-rim.cap",
+      "kind": "solid",
+      "origin": [
+        -45.005672506166434,
+        9.59,
+        33.84395806969467
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000036,
+      "glb": 0.1499997711181642,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay0.jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -56.41282233011254,
+        18.345717134009618,
+        24.64228351717391
+      ],
+      "direction": [
+        -0.3090169943749477,
+        0.0,
+        -0.9510565162951534
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999705,
+      "glb": 0.15000015319130827,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay0.pilaster.-1",
+      "kind": "solid",
+      "origin": [
+        -56.10346490145174,
+        18.133381227463968,
+        24.507068942026194
+      ],
+      "direction": [
+        -0.30901699437492386,
+        0.0,
+        -0.9510565162951613
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000158,
+      "glb": 0.15000052237513486,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay0.reveal-jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -56.924632443146095,
+        18.345717134009618,
+        24.577259014297287
+      ],
+      "direction": [
+        -0.30901699437494273,
+        0.0,
+        -0.9510565162951552
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999974,
+      "glb": 0.1499994554390806,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay0.jamb.1",
+      "kind": "solid",
+      "origin": [
+        -57.260409159883125,
+        18.345717134009618,
+        22.03367948486243
+      ],
+      "direction": [
+        -0.3090169943749477,
+        0.0,
+        -0.9510565162951534
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000047,
+      "glb": 0.15000076602901719,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay0.pilaster.1",
+      "kind": "solid",
+      "origin": [
+        -56.95105173122232,
+        18.133381227463968,
+        21.898464909714708
+      ],
+      "direction": [
+        -0.30901699437492386,
+        0.0,
+        -0.9510565162951613
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000158,
+      "glb": 0.15000113521797348,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay0.reveal-jamb.1",
+      "kind": "solid",
+      "origin": [
+        -57.687919436851196,
+        18.345717134009618,
+        22.228103199631118
+      ],
+      "direction": [
+        -0.30901699437494273,
+        0.0,
+        -0.9510565162951552
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999783,
+      "glb": 0.15000007754252523,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay0.arched-lintel",
+      "kind": "solid",
+      "origin": [
+        -57.04596103833,
+        21.491438513567008,
+        22.69368293814462
+      ],
+      "direction": [
+        0.07213858468951774,
+        -0.9723699203976767,
+        0.22201973449405135
+      ],
+      "max": 0.3,
+      "authority": 0.09403675663847484,
+      "glb": 0.0940371489477361,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay0.reveal-arch",
+      "kind": "solid",
+      "origin": [
+        -57.73697108797453,
+        20.625882450917562,
+        22.077137740497545
+      ],
+      "direction": [
+        0.26348030087205926,
+        -0.522498564715946,
+        0.8109089843639331
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999858,
+      "glb": 0.14999952007026868,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay0.stepped-sill",
+      "kind": "solid",
+      "origin": [
+        -56.956519512605645,
+        15.0863,
+        23.642057788726234
+      ],
+      "direction": [
+        0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000033,
+      "glb": 0.1499995147705082,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.pier0",
+      "kind": "solid",
+      "origin": [
+        -56.17299132068945,
+        19.333333333333336,
+        25.38040746657947
+      ],
+      "direction": [
+        -0.3090169943749477,
+        0.0,
+        -0.9510565162951535
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999705,
+      "glb": 0.15000138067633403,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay1.jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -57.74008174803808,
+        18.037087071720958,
+        20.557399057063652
+      ],
+      "direction": [
+        -0.3090169943749477,
+        0.0,
+        -0.9510565162951535
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999925,
+      "glb": 0.15000021820203316,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay1.pilaster.-1",
+      "kind": "solid",
+      "origin": [
+        -57.43072431937728,
+        17.84558369437979,
+        20.422184481915934
+      ],
+      "direction": [
+        -0.30901699437492386,
+        0.0,
+        -0.9510565162951613
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000377,
+      "glb": 0.15000058738246488,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay1.reveal-jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -58.25189186107164,
+        18.037087071720958,
+        20.492374554187027
+      ],
+      "direction": [
+        -0.30901699437494273,
+        0.0,
+        -0.9510565162951551
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999747,
+      "glb": 0.14999955641795523,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay1.jamb.1",
+      "kind": "solid",
+      "origin": [
+        -58.87378438047526,
+        18.037087071720958,
+        17.068221129159532
+      ],
+      "direction": [
+        -0.3090169943749477,
+        0.0,
+        -0.9510565162951535
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999702,
+      "glb": 0.15000041170916575,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay1.pilaster.1",
+      "kind": "solid",
+      "origin": [
+        -58.564426951814454,
+        17.84558369437979,
+        16.933006554011815
+      ],
+      "direction": [
+        -0.30901699437492386,
+        0.0,
+        -0.9510565162951613
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000016,
+      "glb": 0.15000028510479438,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay1.reveal-jamb.1",
+      "kind": "solid",
+      "origin": [
+        -59.30129465744333,
+        18.037087071720958,
+        17.262644843928225
+      ],
+      "direction": [
+        -0.30901699437494273,
+        0.0,
+        -0.9510565162951551
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999978,
+      "glb": 0.14999976378061394,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay1.arched-lintel",
+      "kind": "solid",
+      "origin": [
+        -59.2830138146847,
+        19.67017706243634,
+        16.671693897232164
+      ],
+      "direction": [
+        0.3080643981104977,
+        -0.0784590957278519,
+        0.9481247264544811
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000002,
+      "glb": 0.1500000395794144,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay1.reveal-arch",
+      "kind": "solid",
+      "origin": [
+        -59.351787325409965,
+        20.470660431934164,
+        17.228057595472546
+      ],
+      "direction": [
+        0.2634803008720601,
+        -0.5224985647159419,
+        0.8109089843639355
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999866,
+      "glb": 0.1500001650068393,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay1.stepped-sill",
+      "kind": "solid",
+      "origin": [
+        -58.3791508647534,
+        15.0863,
+        19.263648696751762
+      ],
+      "direction": [
+        0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000038,
+      "glb": 0.1499995147705082,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.pier1",
+      "kind": "solid",
+      "origin": [
+        -57.44461711031871,
+        19.333333333333336,
+        21.466745708389997
+      ],
+      "direction": [
+        -0.3090169943749477,
+        0.0,
+        -0.9510565162951535
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999705,
+      "glb": 0.15000148586205383,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay2.jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -59.32007679165244,
+        18.530895171382813,
+        15.694674322513233
+      ],
+      "direction": [
+        -0.3090169943749477,
+        0.0,
+        -0.9510565162951535
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999925,
+      "glb": 0.1500007275416919,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay2.pilaster.-1",
+      "kind": "solid",
+      "origin": [
+        -59.010564466850866,
+        18.306059747314475,
+        15.55993646866795
+      ],
+      "direction": [
+        -0.30901699437494207,
+        0.0,
+        -0.9510565162951553
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000094,
+      "glb": 0.15000017134804722,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay2.reveal-jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -59.83085426374749,
+        18.530895171382813,
+        15.632827961652866
+      ],
+      "direction": [
+        -0.3090169943749427,
+        0.0,
+        -0.951056516295155
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000133,
+      "glb": 0.1500001089765314,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay2.jamb.1",
+      "kind": "solid",
+      "origin": [
+        -59.99702678076159,
+        18.530895171382813,
+        13.611236485541067
+      ],
+      "direction": [
+        -0.3090169943749477,
+        0.0,
+        -0.9510565162951535
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999708,
+      "glb": 0.14999973678995648,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay2.pilaster.1",
+      "kind": "solid",
+      "origin": [
+        -59.68751445596001,
+        18.306059747314475,
+        13.476498631695785
+      ],
+      "direction": [
+        -0.30901699437494207,
+        0.0,
+        -0.9510565162951553
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999875,
+      "glb": 0.150000668267904,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay2.reveal-jamb.1",
+      "kind": "solid",
+      "origin": [
+        -60.4247848915549,
+        18.530895171382813,
+        13.804897446225858
+      ],
+      "direction": [
+        -0.3090169943749427,
+        0.0,
+        -0.951056516295155
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999995,
+      "glb": 0.15000048537896613,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay2.arched-lintel",
+      "kind": "solid",
+      "origin": [
+        -59.64236144442872,
+        20.04634275707422,
+        15.565735613046053
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999858,
+      "glb": 0.14999971118749755,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay2.reveal-arch",
+      "kind": "solid",
+      "origin": [
+        -60.56641810765154,
+        20.311045388799325,
+        13.489808433221361
+      ],
+      "direction": [
+        0.3080643981104931,
+        -0.07845909572784085,
+        0.9481247264544835
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000022,
+      "glb": 0.14999938537446741,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.bay2.stepped-sill",
+      "kind": "solid",
+      "origin": [
+        -59.80663686702379,
+        15.085748620114895,
+        14.87029852801606
+      ],
+      "direction": [
+        0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000033,
+      "glb": 0.14999967090072985,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.pier2",
+      "kind": "solid",
+      "origin": [
+        -59.11362595920713,
+        19.333333333333336,
+        16.330064650766314
+      ],
+      "direction": [
+        -0.3090169943749477,
+        0.0,
+        -0.9510565162951535
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999705,
+      "glb": 0.15000145940111023,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.pier-end",
+      "kind": "solid",
+      "origin": [
+        -60.146821913280895,
+        19.333333333333336,
+        13.150214472237368
+      ],
+      "direction": [
+        -0.3090169943749477,
+        0.0,
+        -0.9510565162951535
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000097,
+      "glb": 0.150000464088267,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-0.cornice",
+      "kind": "solid",
+      "origin": [
+        -57.87364856813043,
+        20.75,
+        21.19804474644001
+      ],
+      "direction": [
+        0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999858,
+      "glb": 0.14999961853027347,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay0.jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -60.1064308552326,
+        19.214819389414487,
+        12.539689441909598
+      ],
+      "direction": [
+        -0.1391731009600638,
+        0.0,
+        -0.9902680687415706
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999913,
+      "glb": 0.15000024018917082,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay0.pilaster.-1",
+      "kind": "solid",
+      "origin": [
+        -59.777411923578924,
+        18.94381908062901,
+        12.466521150755238
+      ],
+      "direction": [
+        -0.13917310096006058,
+        0.0,
+        -0.990268068741571
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000038,
+      "glb": 0.1500001606733001,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay0.reveal-jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -60.59329688360196,
+        19.214819389414487,
+        12.428596027479104
+      ],
+      "direction": [
+        -0.13917310096005855,
+        0.0,
+        -0.9902680687415713
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000009,
+      "glb": 0.15000008195373846,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay0.jamb.1",
+      "kind": "solid",
+      "origin": [
+        -60.356589143645856,
+        19.214819389414487,
+        10.75972073073042
+      ],
+      "direction": [
+        -0.1391731009600638,
+        0.0,
+        -0.9902680687415706
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000013,
+      "glb": 0.15000047703962988,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay0.pilaster.1",
+      "kind": "solid",
+      "origin": [
+        -60.027570211992185,
+        18.94381908062901,
+        10.686552439576058
+      ],
+      "direction": [
+        -0.13917310096006058,
+        0.0,
+        -0.990268068741571
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000038,
+      "glb": 0.15000078658213237,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay0.reveal-jamb.1",
+      "kind": "solid",
+      "origin": [
+        -60.81277641928233,
+        19.214819389414487,
+        10.866917984615963
+      ],
+      "direction": [
+        -0.13917310096005855,
+        0.0,
+        -0.9902680687415713
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000016,
+      "glb": 0.1500005257568195,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay0.lintel",
+      "kind": "solid",
+      "origin": [
+        -60.31057296573431,
+        21.072229084121734,
+        11.087142849782113
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999855,
+      "glb": 0.14999991978451632,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay0.reveal-head",
+      "kind": "solid",
+      "origin": [
+        -60.7262819762423,
+        21.029564064310946,
+        11.75060899639238
+      ],
+      "direction": [
+        0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999986,
+      "glb": 0.1499994580279207,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay0.stepped-sill",
+      "kind": "solid",
+      "origin": [
+        -60.42285390721843,
+        15.079332201119911,
+        11.782764117485364
+      ],
+      "direction": [
+        0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000021,
+      "glb": 0.14999976909493284,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.pier0",
+      "kind": "solid",
+      "origin": [
+        -60.025143609311264,
+        19.333333333333336,
+        13.118078250354317
+      ],
+      "direction": [
+        -0.13917310096006377,
+        0.0,
+        -0.9902680687415706
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999913,
+      "glb": 0.14999984251750728,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay1.jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -60.504939270268224,
+        19.186666666666667,
+        9.704154731449787
+      ],
+      "direction": [
+        -0.1391731009600638,
+        0.0,
+        -0.9902680687415707
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000013,
+      "glb": 0.1499996131151557,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay1.pilaster.-1",
+      "kind": "solid",
+      "origin": [
+        -60.176801911502736,
+        18.91756666666667,
+        9.624713723258733
+      ],
+      "direction": [
+        -0.13917310096006055,
+        0.0,
+        -0.9902680687415709
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000036,
+      "glb": 0.1499997334052371,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay1.reveal-jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -60.9976824512255,
+        19.186666666666667,
+        9.551243203441338
+      ],
+      "direction": [
+        -0.13917310096005853,
+        0.0,
+        -0.9902680687415713
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000016,
+      "glb": 0.14999935444482287,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay1.jamb.1",
+      "kind": "solid",
+      "origin": [
+        -60.83512641172998,
+        19.186666666666667,
+        7.354751142372194
+      ],
+      "direction": [
+        -0.13917310096006597,
+        0.0,
+        -0.9902680687415703
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000044,
+      "glb": 0.1500002809886889,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay1.pilaster.1",
+      "kind": "solid",
+      "origin": [
+        -60.5069890529645,
+        18.91756666666667,
+        7.27531013418114
+      ],
+      "direction": [
+        -0.13917310096006552,
+        0.0,
+        -0.9902680687415704
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000008,
+      "glb": 0.14999987790247532,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay1.reveal-jamb.1",
+      "kind": "solid",
+      "origin": [
+        -61.289903170745355,
+        19.186666666666667,
+        7.471984743516445
+      ],
+      "direction": [
+        -0.1391731009600663,
+        0.0,
+        -0.9902680687415703
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999983,
+      "glb": 0.14999959290195417,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay1.lintel",
+      "kind": "solid",
+      "origin": [
+        -60.76635205119421,
+        21.03,
+        7.844106145004726
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999986,
+      "glb": 0.1500003051757801,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay1.reveal-head",
+      "kind": "solid",
+      "origin": [
+        -61.21827112253654,
+        20.9772,
+        7.981673250493805
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.13304863573888304,
+      "glb": 0.1330485760130056,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay1.stepped-sill",
+      "kind": "solid",
+      "origin": [
+        -60.84950789475054,
+        15.0863,
+        8.746963252664926
+      ],
+      "direction": [
+        0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000036,
+      "glb": 0.1499995147705082,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.pier1",
+      "kind": "solid",
+      "origin": [
+        -60.406948078806465,
+        19.333333333333336,
+        10.401398288237134
+      ],
+      "direction": [
+        -0.13917310096006377,
+        0.0,
+        -0.9902680687415706
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000001,
+      "glb": 0.15000053391272694,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay2.jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -60.97933132361602,
+        19.23704075389927,
+        6.3286798785191865
+      ],
+      "direction": [
+        -0.139173100960066,
+        0.0,
+        -0.9902680687415704
+      ],
+      "max": 0.3,
+      "authority": 0.03794071479701958,
+      "glb": 0.03794052308243112,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay2.pilaster.-1",
+      "kind": "solid",
+      "origin": [
+        -60.64961655331669,
+        18.96454050301107,
+        6.260462736595785
+      ],
+      "direction": [
+        -0.13917310096006552,
+        0.0,
+        -0.9902680687415704
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000001,
+      "glb": 0.15000012043232586,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay2.reveal-jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -61.461558427681005,
+        19.23704075389927,
+        6.250594125628414
+      ],
+      "direction": [
+        -0.13917310096006633,
+        0.0,
+        -0.9902680687415703
+      ],
+      "max": 0.3,
+      "authority": 0.005561130848906659,
+      "glb": 0.005561383428690011,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay2.jamb.1",
+      "kind": "solid",
+      "origin": [
+        -61.1825849329518,
+        19.23704075389927,
+        4.882455300686105
+      ],
+      "direction": [
+        -0.139173100960066,
+        0.0,
+        -0.9902680687415704
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000004,
+      "glb": 0.1500001127534108,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay2.pilaster.1",
+      "kind": "solid",
+      "origin": [
+        -60.852870162652465,
+        18.96454050301107,
+        4.814238158762702
+      ],
+      "direction": [
+        -0.13917310096006552,
+        0.0,
+        -0.9902680687415704
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000001,
+      "glb": 0.14999999370488387,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay2.reveal-jamb.1",
+      "kind": "solid",
+      "origin": [
+        -61.63988555042132,
+        19.23704075389927,
+        4.981730715802114
+      ],
+      "direction": [
+        -0.13917310096006633,
+        0.0,
+        -0.9902680687415703
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999983,
+      "glb": 0.14999969657385703,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay2.lintel",
+      "kind": "solid",
+      "origin": [
+        -61.33873064530935,
+        21.10556113084891,
+        5.687499902517785
+      ],
+      "direction": [
+        0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999858,
+      "glb": 0.1500006977643729,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay2.reveal-head",
+      "kind": "solid",
+      "origin": [
+        -61.58045493539699,
+        21.070895802252643,
+        5.672852585143818
+      ],
+      "direction": [
+        0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.1348269487582526,
+      "glb": 0.1348274896269329,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.bay2.stepped-sill",
+      "kind": "solid",
+      "origin": [
+        -61.27895975149994,
+        15.07383241340993,
+        5.691254513928584
+      ],
+      "direction": [
+        0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000033,
+      "glb": 0.14999971702219916,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.pier2",
+      "kind": "solid",
+      "origin": [
+        -60.90806644501893,
+        19.333333333333336,
+        6.835755837958331
+      ],
+      "direction": [
+        -0.13917310096006594,
+        0.0,
+        -0.9902680687415703
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000004,
+      "glb": 0.15000002839356108,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.pier-end",
+      "kind": "solid",
+      "origin": [
+        -61.21828257648379,
+        19.333333333333336,
+        4.628453368738119
+      ],
+      "direction": [
+        -0.13917310096006594,
+        0.0,
+        -0.9902680687415703
+      ],
+      "max": 0.3,
+      "authority": 0.03794071479701958,
+      "glb": 0.03794032766718101,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-1.cornice",
+      "kind": "solid",
+      "origin": [
+        -60.774847892584454,
+        20.75,
+        10.118876466066931
+      ],
+      "direction": [
+        0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999858,
+      "glb": 0.1499996185302734,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay0.jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -61.54797103440215,
+        18.181114434122332,
+        3.7632829634769305
+      ],
+      "direction": [
+        0.0523359562429441,
+        -0.0,
+        -0.9986295347545738
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999995,
+      "glb": 0.1500001215116725,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay0.pilaster.-1",
+      "kind": "solid",
+      "origin": [
+        -61.21070442416859,
+        17.979889209819074,
+        3.747913070127659
+      ],
+      "direction": [
+        0.052335956242943335,
+        -0.0,
+        -0.9986295347545738
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999998,
+      "glb": 0.14999990206302752,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay0.reveal-jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -62.002484240247504,
+        18.181114434122332,
+        3.5191610195842173
+      ],
+      "direction": [
+        0.052335956242939075,
+        -0.0,
+        -0.9986295347545742
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999974,
+      "glb": 0.15000016087452095,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay0.jamb.1",
+      "kind": "solid",
+      "origin": [
+        -61.3785775111014,
+        18.181114434122332,
+        0.5310619913594066
+      ],
+      "direction": [
+        0.05233595624294437,
+        -0.0,
+        -0.9986295347545738
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999966,
+      "glb": 0.15000000099891322,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay0.pilaster.1",
+      "kind": "solid",
+      "origin": [
+        -61.04131090086785,
+        17.979889209819074,
+        0.5156920980101348
+      ],
+      "direction": [
+        0.0523359562429446,
+        -0.0,
+        -0.9986295347545738
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000016,
+      "glb": 0.14999986552265493,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay0.reveal-jamb.1",
+      "kind": "solid",
+      "origin": [
+        -61.84736796580983,
+        18.181114434122332,
+        0.5593661845477408
+      ],
+      "direction": [
+        0.05233595624294254,
+        -0.0,
+        -0.9986295347545739
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999997,
+      "glb": 0.15000015856058502,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay0.arched-lintel",
+      "kind": "solid",
+      "origin": [
+        -61.81387683174248,
+        19.77356388909633,
+        3.7417817994410387
+      ],
+      "direction": [
+        0.052174621956089476,
+        -0.07845909572784572,
+        -0.9955510931746837
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000036,
+      "glb": 0.1500000566714344,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay0.reveal-arch",
+      "kind": "solid",
+      "origin": [
+        -61.86930260283148,
+        20.096072697133792,
+        0.26456394767315666
+      ],
+      "direction": [
+        -0.05088990960588638,
+        -0.23344536385590411,
+        0.9710373212160742
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999977,
+      "glb": 0.1499996625038413,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay0.stepped-sill",
+      "kind": "solid",
+      "origin": [
+        -61.285405588017845,
+        15.0863,
+        1.3008788061166163
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000033,
+      "glb": 0.1499995147705082,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.pier0",
+      "kind": "solid",
+      "origin": [
+        -61.593614671087394,
+        19.333333333333336,
+        4.634215433992977
+      ],
+      "direction": [
+        0.0523359562429441,
+        -0.0,
+        -0.9986295347545739
+      ],
+      "max": 0.3,
+      "authority": 0.10540647150037555,
+      "glb": 0.10540629463230271,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay1.jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -61.2857180706557,
+        17.82104602811889,
+        -1.2408016845309655
+      ],
+      "direction": [
+        0.052335956242944084,
+        -0.0,
+        -0.9986295347545737
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000033,
+      "glb": 0.15000021627107105,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay1.pilaster.-1",
+      "kind": "solid",
+      "origin": [
+        -60.94845146042214,
+        17.644125421220867,
+        -1.2561715778802371
+      ],
+      "direction": [
+        0.0523359562429446,
+        -0.0,
+        -0.9986295347545739
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000047,
+      "glb": 0.1500000075408374,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay1.reveal-jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -61.740231276501056,
+        17.82104602811889,
+        -1.4849236284236786
+      ],
+      "direction": [
+        0.05233595624294302,
+        -0.0,
+        -0.9986295347545738
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000047,
+      "glb": 0.15000009187616106,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay1.jamb.1",
+      "kind": "solid",
+      "origin": [
+        -61.05979097433176,
+        17.82104602811889,
+        -5.551747490949594
+      ],
+      "direction": [
+        0.052335956242944084,
+        -0.0,
+        -0.9986295347545737
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000033,
+      "glb": 0.14999980763402243,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay1.pilaster.1",
+      "kind": "solid",
+      "origin": [
+        -60.7225243640982,
+        17.644125421220867,
+        -5.5671173842988635
+      ],
+      "direction": [
+        0.052335956242948366,
+        -0.0,
+        -0.9986295347545737
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000055,
+      "glb": 0.14999988315527774,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay1.reveal-jamb.1",
+      "kind": "solid",
+      "origin": [
+        -61.52858142904019,
+        17.82104602811889,
+        -5.523443297761259
+      ],
+      "direction": [
+        0.05233595624294698,
+        -0.0,
+        -0.9986295347545736
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999996,
+      "glb": 0.15000002974583204,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay1.arched-lintel",
+      "kind": "solid",
+      "origin": [
+        -61.34584582877254,
+        21.00377037162405,
+        -5.188781742322687
+      ],
+      "direction": [
+        -0.03398948463947409,
+        -0.7604059656000282,
+        0.6485580023512404
+      ],
+      "max": 0.3,
+      "authority": 0.13646706669662614,
+      "glb": 0.13646756836250254,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay1.reveal-arch",
+      "kind": "solid",
+      "origin": [
+        -61.730094800038394,
+        20.019950345772262,
+        -1.678339121339652
+      ],
+      "direction": [
+        0.04835211878726141,
+        -0.38268343236508745,
+        -0.9226133877210204
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000085,
+      "glb": 0.15000025555972207,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay1.stepped-sill",
+      "kind": "solid",
+      "origin": [
+        -60.98546357558926,
+        15.0863,
+        -4.422355731425349
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000033,
+      "glb": 0.1499995147705082,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.pier1",
+      "kind": "solid",
+      "origin": [
+        -61.34235434653989,
+        19.333333333333336,
+        -0.16011716290081615
+      ],
+      "direction": [
+        0.052335956242944376,
+        -0.0,
+        -0.9986295347545739
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000013,
+      "glb": 0.14999991492347456,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay2.jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -60.97352711740543,
+        18.397155477724393,
+        -7.1977599361715034
+      ],
+      "direction": [
+        0.052335956242944084,
+        -0.0,
+        -0.9986295347545737
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000033,
+      "glb": 0.1500001720085931,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay2.pilaster.-1",
+      "kind": "solid",
+      "origin": [
+        -60.636260507171876,
+        18.181347482977998,
+        -7.213129829520775
+      ],
+      "direction": [
+        0.05233595624294838,
+        -0.0,
+        -0.9986295347545736
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000002,
+      "glb": 0.1499999418410896,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay2.reveal-jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -61.42804032325078,
+        18.397155477724393,
+        -7.441881880064217
+      ],
+      "direction": [
+        0.05233595624294698,
+        -0.0,
+        -0.9986295347545736
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999963,
+      "glb": 0.15000030899342734,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay2.jamb.1",
+      "kind": "solid",
+      "origin": [
+        -60.83805373791859,
+        18.397155477724393,
+        -9.782746007708367
+      ],
+      "direction": [
+        0.052335956242944084,
+        -0.0,
+        -0.9986295347545737
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999944,
+      "glb": 0.15000026595241156,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay2.pilaster.1",
+      "kind": "solid",
+      "origin": [
+        -60.50078712768503,
+        18.181347482977998,
+        -9.798115901057638
+      ],
+      "direction": [
+        0.05233595624294838,
+        -0.0,
+        -0.9986295347545736
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999966,
+      "glb": 0.15000034147571892,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay2.reveal-jamb.1",
+      "kind": "solid",
+      "origin": [
+        -61.30684419262702,
+        18.397155477724393,
+        -9.754441814520032
+      ],
+      "direction": [
+        0.05233595624293907,
+        -0.0,
+        -0.998629534754574
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999997,
+      "glb": 0.15000014415718238,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay2.arched-lintel",
+      "kind": "solid",
+      "origin": [
+        -61.237809188856865,
+        20.32184793676,
+        -7.2502436358365205
+      ],
+      "direction": [
+        0.050889909605887865,
+        -0.23344536385590317,
+        -0.9710373212160744
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999986,
+      "glb": 0.15000032470027636,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay2.reveal-arch",
+      "kind": "solid",
+      "origin": [
+        -61.34359113196525,
+        20.883450656049934,
+        -9.766608486232098
+      ],
+      "direction": [
+        -0.03979657334251319,
+        -0.6494480483301804,
+        0.7593638556517645
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999991,
+      "glb": 0.14999999205189676,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.bay2.stepped-sill",
+      "kind": "solid",
+      "origin": [
+        -61.125355396442295,
+        15.0863,
+        -8.275026893540344
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000036,
+      "glb": 0.1499995147705082,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.pier2",
+      "kind": "solid",
+      "origin": [
+        -61.01257517057129,
+        19.333333333333336,
+        -6.452678696323919
+      ],
+      "direction": [
+        0.0523359562429441,
+        -0.0,
+        -0.9986295347545739
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999905,
+      "glb": 0.15000003598440584,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.pier-end",
+      "kind": "solid",
+      "origin": [
+        -60.80842615687645,
+        19.333333333333336,
+        -10.348073931300126
+      ],
+      "direction": [
+        0.0523359562429441,
+        -0.0,
+        -0.9986295347545739
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999944,
+      "glb": 0.1499999922243577,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-2.cornice",
+      "kind": "solid",
+      "origin": [
+        -61.64510030795967,
+        20.75,
+        -0.5932599394138384
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999855,
+      "glb": 0.14999961853027344,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay0.jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -60.427162588933896,
+        19.214819389414487,
+        -10.889667713247539
+      ],
+      "direction": [
+        0.24192189559966626,
+        -0.0,
+        -0.9702957262759967
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000027,
+      "glb": 0.1500000816667158,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay0.pilaster.-1",
+      "kind": "solid",
+      "origin": [
+        -60.09469222336239,
+        18.94381908062901,
+        -10.834255510315979
+      ],
+      "direction": [
+        0.24192189559966099,
+        -0.0,
+        -0.9702957262759982
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999977,
+      "glb": 0.14999966313445898,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay0.reveal-jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -60.83696058424426,
+        19.214819389414487,
+        -11.175054957793572
+      ],
+      "direction": [
+        0.24192189559967042,
+        -0.0,
+        -0.9702957262759958
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999863,
+      "glb": 0.14999955815510932,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay0.jamb.1",
+      "kind": "solid",
+      "origin": [
+        -59.99231729975498,
+        19.214819389414487,
+        -12.633736908124176
+      ],
+      "direction": [
+        0.24192189559966626,
+        -0.0,
+        -0.9702957262759967
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999925,
+      "glb": 0.14999991200557553,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay0.pilaster.1",
+      "kind": "solid",
+      "origin": [
+        -59.659846934183484,
+        18.94381908062901,
+        -12.578324705192612
+      ],
+      "direction": [
+        0.24192189559966099,
+        -0.0,
+        -0.9702957262759982
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000015,
+      "glb": 0.15000017157621498,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay0.reveal-jamb.1",
+      "kind": "solid",
+      "origin": [
+        -60.45544357448554,
+        19.214819389414487,
+        -12.70523610635347
+      ],
+      "direction": [
+        0.24192189559967042,
+        -0.0,
+        -0.9702957262759958
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000094,
+      "glb": 0.1500002163004749,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay0.lintel",
+      "kind": "solid",
+      "origin": [
+        -60.07230632717349,
+        21.072229084121734,
+        -12.31291844206193
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999855,
+      "glb": 0.14999991978451632,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay0.reveal-head",
+      "kind": "solid",
+      "origin": [
+        -60.70628380294289,
+        21.029564064310946,
+        -11.853490679151951
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999858,
+      "glb": 0.1499994580279207,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay0.stepped-sill",
+      "kind": "solid",
+      "origin": [
+        -60.436995716695094,
+        15.079332201119911,
+        -11.710010814749095
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000213,
+      "glb": 0.14999976909493284,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.pier0",
+      "kind": "solid",
+      "origin": [
+        -60.568462628134775,
+        19.333333333333336,
+        -10.322944210112714
+      ],
+      "direction": [
+        0.2419218955996663,
+        -0.0,
+        -0.9702957262759969
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000009,
+      "glb": 0.14999964262067622,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay1.jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -59.73444315886599,
+        19.186666666666667,
+        -13.668013595653655
+      ],
+      "direction": [
+        0.24192189559966631,
+        -0.0,
+        -0.9702957262759969
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000097,
+      "glb": 0.1499993956059955,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay1.pilaster.-1",
+      "kind": "solid",
+      "origin": [
+        -59.40044037228247,
+        18.91756666666667,
+        -13.618747597699274
+      ],
+      "direction": [
+        0.24192189559966096,
+        -0.0,
+        -0.9702957262759982
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999998,
+      "glb": 0.15000009584077112,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay1.reveal-jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -60.13402501409621,
+        19.186666666666667,
+        -13.994375540047553
+      ],
+      "direction": [
+        0.24192189559967045,
+        -0.0,
+        -0.9702957262759958
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000004,
+      "glb": 0.14999933603701693,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay1.jamb.1",
+      "kind": "solid",
+      "origin": [
+        -59.16048527035142,
+        19.186666666666667,
+        -15.97003295156039
+      ],
+      "direction": [
+        0.24192189559967045,
+        -0.0,
+        -0.9702957262759958
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000004,
+      "glb": 0.14999980859765538,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay1.pilaster.1",
+      "kind": "solid",
+      "origin": [
+        -58.826482483767904,
+        18.91756666666667,
+        -15.92076695360601
+      ],
+      "direction": [
+        0.24192189559967048,
+        -0.0,
+        -0.9702957262759958
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999863,
+      "glb": 0.1499995443013868,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay1.reveal-jamb.1",
+      "kind": "solid",
+      "origin": [
+        -59.62606341870123,
+        19.186666666666667,
+        -16.031698221826193
+      ],
+      "direction": [
+        0.24192189559967045,
+        -0.0,
+        -0.9702957262759958
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000266,
+      "glb": 0.150000541610669,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay1.lintel",
+      "kind": "solid",
+      "origin": [
+        -59.74784016635081,
+        21.03,
+        -14.71656526531745
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999858,
+      "glb": 0.1500003051757801,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay1.reveal-head",
+      "kind": "solid",
+      "origin": [
+        -59.96038274637633,
+        20.9772,
+        -14.845136415133345
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999858,
+      "glb": 0.14999917297363297,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay1.stepped-sill",
+      "kind": "solid",
+      "origin": [
+        -59.69535138516195,
+        15.0863,
+        -14.684583759127209
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000036,
+      "glb": 0.1499995147705082,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.pier1",
+      "kind": "solid",
+      "origin": [
+        -59.90477934184219,
+        19.333333333333336,
+        -12.98483248068145
+      ],
+      "direction": [
+        0.2419218955996663,
+        -0.0,
+        -0.9702957262759969
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000263,
+      "glb": 0.1499998760853263,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay2.jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -58.909816675647455,
+        19.23704075389927,
+        -16.975409771835306
+      ],
+      "direction": [
+        0.24192189559967048,
+        -0.0,
+        -0.9702957262759958
+      ],
+      "max": 0.3,
+      "authority": 0.037940714797023246,
+      "glb": 0.037939569115547675,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay2.pilaster.-1",
+      "kind": "solid",
+      "origin": [
+        -58.57855587286522,
+        18.96454050301107,
+        -16.915146277530635
+      ],
+      "direction": [
+        0.24192189559967045,
+        -0.0,
+        -0.9702957262759958
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000038,
+      "glb": 0.14999926370670175,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay2.reveal-jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -59.32767842288628,
+        19.23704075389927,
+        -17.228455073893926
+      ],
+      "direction": [
+        0.24192189559967045,
+        -0.0,
+        -0.9702957262759957
+      ],
+      "max": 0.3,
+      "authority": 0.0055611308489095165,
+      "glb": 0.005560660720982612,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay2.jamb.1",
+      "kind": "solid",
+      "origin": [
+        -58.556504878189585,
+        19.23704075389927,
+        -18.392465992672573
+      ],
+      "direction": [
+        0.24192189559967048,
+        -0.0,
+        -0.9702957262759958
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999863,
+      "glb": 0.1500001701365441,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay2.pilaster.1",
+      "kind": "solid",
+      "origin": [
+        -58.22524407540736,
+        18.96454050301107,
+        -18.332202498367902
+      ],
+      "direction": [
+        0.24192189559967045,
+        -0.0,
+        -0.9702957262759958
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000038,
+      "glb": 0.1500004547894546,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay2.reveal-jamb.1",
+      "kind": "solid",
+      "origin": [
+        -59.017695852457315,
+        19.23704075389927,
+        -18.47172725709884
+      ],
+      "direction": [
+        0.24192189559967045,
+        -0.0,
+        -0.9702957262759957
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000097,
+      "glb": 0.14999939634671206,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay2.lintel",
+      "kind": "solid",
+      "origin": [
+        -59.00285567748737,
+        21.10556113084891,
+        -17.704534849030853
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999858,
+      "glb": 0.15000069776437286,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay2.reveal-head",
+      "kind": "solid",
+      "origin": [
+        -59.22149155484911,
+        21.070895802252643,
+        -17.80866711806832
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999855,
+      "glb": 0.1499999649592709,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.bay2.stepped-sill",
+      "kind": "solid",
+      "origin": [
+        -58.94884357196446,
+        15.07383241340993,
+        -17.67866306303522
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000036,
+      "glb": 0.14999971702219916,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.pier2",
+      "kind": "solid",
+      "origin": [
+        -59.03369502858317,
+        19.333333333333336,
+        -16.478560835802913
+      ],
+      "direction": [
+        0.24192189559967045,
+        -0.0,
+        -0.9702957262759958
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000385,
+      "glb": 0.14999966464354927,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.pier-end",
+      "kind": "solid",
+      "origin": [
+        -58.49445235847043,
+        19.333333333333336,
+        -18.64134505564001
+      ],
+      "direction": [
+        0.24192189559967045,
+        -0.0,
+        -0.9702957262759958
+      ],
+      "max": 0.3,
+      "authority": 0.03794071479702152,
+      "glb": 0.03794085390620893,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-3.cornice",
+      "kind": "solid",
+      "origin": [
+        -59.01225961478594,
+        20.75,
+        -16.323408930920998
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999986,
+      "glb": 0.14999961853027344,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay0.jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -58.47603563545019,
+        18.181114434122332,
+        -19.56702055695656
+      ],
+      "direction": [
+        0.4226182617406987,
+        -0.0,
+        -0.9063077870366504
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999528,
+      "glb": 0.15000002679853774,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay0.pilaster.-1",
+      "kind": "solid",
+      "origin": [
+        -58.15756981636844,
+        17.979889209819074,
+        -19.454928977983897
+      ],
+      "direction": [
+        0.42261826174070866,
+        -0.0,
+        -0.9063077870366456
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999994,
+      "glb": 0.15000053640328306,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay0.reveal-jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -58.80600325181767,
+        18.181114434122332,
+        -19.963630125583613
+      ],
+      "direction": [
+        0.4226182617406657,
+        -0.0,
+        -0.9063077870366656
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999883,
+      "glb": 0.14999943272425412,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay0.jamb.1",
+      "kind": "solid",
+      "origin": [
+        -57.108165408045146,
+        18.181114434122332,
+        -22.500427725985684
+      ],
+      "direction": [
+        0.4226182617406987,
+        -0.0,
+        -0.9063077870366504
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999825,
+      "glb": 0.14999976308423327,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay0.pilaster.1",
+      "kind": "solid",
+      "origin": [
+        -56.78969958896338,
+        17.979889209819074,
+        -22.388336147013018
+      ],
+      "direction": [
+        0.42261826174070866,
+        -0.0,
+        -0.9063077870366456
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999964,
+      "glb": 0.15000027268966065,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay0.reveal-jamb.1",
+      "kind": "solid",
+      "origin": [
+        -57.55342328621548,
+        18.181114434122332,
+        -22.64979653030914
+      ],
+      "direction": [
+        0.4226182617406657,
+        -0.0,
+        -0.9063077870366656
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999975,
+      "glb": 0.15000084993337817,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay0.arched-lintel",
+      "kind": "solid",
+      "origin": [
+        -57.33439796470033,
+        20.92245929366087,
+        -22.64625753143473
+      ],
+      "direction": [
+        -0.3213614473991406,
+        -0.6494480483301892,
+        0.689161847932427
+      ],
+      "max": 0.3,
+      "authority": 0.034582125111652214,
+      "glb": 0.03458271248692591,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay0.reveal-arch",
+      "kind": "solid",
+      "origin": [
+        -57.88695324512032,
+        21.214567384101212,
+        -22.022877417678163
+      ],
+      "direction": [
+        -0.1617290069830967,
+        -0.923879532511286,
+        0.34682897472239715
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999987,
+      "glb": 0.15000035400011946,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay0.stepped-sill",
+      "kind": "solid",
+      "origin": [
+        -57.310156359793616,
+        15.0863,
+        -21.751763187660426
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000036,
+      "glb": 0.14999951477050824,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.pier0",
+      "kind": "solid",
+      "origin": [
+        -58.84461272432378,
+        19.333333333333336,
+        -18.77660443912589
+      ],
+      "direction": [
+        0.4226182617406987,
+        -0.0,
+        -0.9063077870366504
+      ],
+      "max": 0.3,
+      "authority": 0.10540647150034692,
+      "glb": 0.10540624046661443,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay1.jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -56.35831581849709,
+        17.82104602811889,
+        -24.108485360112724
+      ],
+      "direction": [
+        0.42261826174069866,
+        -0.0,
+        -0.9063077870366503
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000152,
+      "glb": 0.1500004400233787,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay1.pilaster.-1",
+      "kind": "solid",
+      "origin": [
+        -56.03984999941534,
+        17.644125421220867,
+        -23.99639378114006
+      ],
+      "direction": [
+        0.4226182617407086,
+        -0.0,
+        -0.9063077870366456
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999938,
+      "glb": 0.15000040993922664,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay1.reveal-jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -56.68828343486456,
+        17.82104602811889,
+        -24.505094928739776
+      ],
+      "direction": [
+        0.4226182617406657,
+        -0.0,
+        -0.9063077870366657
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999608,
+      "glb": 0.14999978640674086,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay1.jamb.1",
+      "kind": "solid",
+      "origin": [
+        -54.53393113953328,
+        17.82104602811889,
+        -28.020890929822215
+      ],
+      "direction": [
+        0.42261826174069866,
+        -0.0,
+        -0.9063077870366503
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999852,
+      "glb": 0.15000032366695532,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay1.pilaster.1",
+      "kind": "solid",
+      "origin": [
+        -54.21546532045153,
+        17.644125421220867,
+        -27.90879935084955
+      ],
+      "direction": [
+        0.4226182617407086,
+        -0.0,
+        -0.9063077870366456
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000255,
+      "glb": 0.14999956648246338,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay1.reveal-jamb.1",
+      "kind": "solid",
+      "origin": [
+        -54.97918901770362,
+        17.82104602811889,
+        -28.17025973414567
+      ],
+      "direction": [
+        0.4226182617406657,
+        -0.0,
+        -0.9063077870366657
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999772,
+      "glb": 0.15000016203859645,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay1.arched-lintel",
+      "kind": "solid",
+      "origin": [
+        -55.06681495516706,
+        21.218655987372756,
+        -27.509104988208705
+      ],
+      "direction": [
+        -0.22081743518226155,
+        -0.8526401643540963,
+        0.4735445179175317
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000088,
+      "glb": 0.14999997464480622,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay1.reveal-arch",
+      "kind": "solid",
+      "origin": [
+        -56.16846801791687,
+        21.13631907410639,
+        -25.70818088020937
+      ],
+      "direction": [
+        0.16172900698309572,
+        -0.923879532511287,
+        -0.34682897472239493
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999998,
+      "glb": 0.15000058495180502,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay1.stepped-sill",
+      "kind": "solid",
+      "origin": [
+        -55.852062868222596,
+        15.0863,
+        -25.686318244800464
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000036,
+      "glb": 0.1499995147705082,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.pier1",
+      "kind": "solid",
+      "origin": [
+        -56.815659606284875,
+        19.333333333333336,
+        -23.127708442149757
+      ],
+      "direction": [
+        0.4226182617406987,
+        -0.0,
+        -0.9063077870366504
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999852,
+      "glb": 0.14999784254441528,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay2.jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -53.837341569333766,
+        18.397155477724393,
+        -29.514732083869877
+      ],
+      "direction": [
+        0.4226182617406987,
+        -0.0,
+        -0.9063077870366503
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000152,
+      "glb": 0.1499989712807082,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay2.pilaster.-1",
+      "kind": "solid",
+      "origin": [
+        -53.518875750252015,
+        18.181347482977998,
+        -29.402640504897217
+      ],
+      "direction": [
+        0.4226182617407086,
+        -0.0,
+        -0.9063077870366456
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999938,
+      "glb": 0.14999948088909384,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay2.reveal-jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -54.16730918570125,
+        18.397155477724393,
+        -29.911341652496933
+      ],
+      "direction": [
+        0.42261826174069184,
+        -0.0,
+        -0.9063077870366537
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999833,
+      "glb": 0.14999837720199555,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay2.jamb.1",
+      "kind": "solid",
+      "origin": [
+        -52.74338001286396,
+        18.397155477724393,
+        -31.86074021249078
+      ],
+      "direction": [
+        0.4226182617406987,
+        -0.0,
+        -0.9063077870366503
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999852,
+      "glb": 0.1499983885245908,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay2.pilaster.1",
+      "kind": "solid",
+      "origin": [
+        -52.4249141937822,
+        18.181347482977998,
+        -31.74864863351812
+      ],
+      "direction": [
+        0.4226182617407086,
+        -0.0,
+        -0.9063077870366456
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999636,
+      "glb": 0.14999889812818662,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay2.reveal-jamb.1",
+      "kind": "solid",
+      "origin": [
+        -53.18863789103431,
+        18.397155477724393,
+        -32.01010901681423
+      ],
+      "direction": [
+        0.42261826174069184,
+        -0.0,
+        -0.9063077870366537
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000158,
+      "glb": 0.14999774672766475,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay2.arched-lintel",
+      "kind": "solid",
+      "origin": [
+        -52.82293103880805,
+        20.62279901752469,
+        -32.32112957566071
+      ],
+      "direction": [
+        -0.3904483620877256,
+        -0.38268343236511093,
+        0.8373192145987514
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000455,
+      "glb": 0.15000119009105,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay2.reveal-arch",
+      "kind": "solid",
+      "origin": [
+        -53.16462242710158,
+        20.717386324283083,
+        -32.14994853785493
+      ],
+      "direction": [
+        -0.3603413041496164,
+        -0.5224985647159788,
+        0.7727544204943093
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999664,
+      "glb": 0.1500012045598261,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.bay2.stepped-sill",
+      "kind": "solid",
+      "origin": [
+        -53.57456299322394,
+        15.0863,
+        -30.570432488194758
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000036,
+      "glb": 0.14999951477050824,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.pier2",
+      "kind": "solid",
+      "origin": [
+        -54.15265863885883,
+        19.333333333333336,
+        -28.838532446118588
+      ],
+      "direction": [
+        0.4226182617406987,
+        -0.0,
+        -0.9063077870366504
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999983,
+      "glb": 0.14999915720124657,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.pier-end",
+      "kind": "solid",
+      "origin": [
+        -52.50413423045222,
+        19.333333333333336,
+        -32.37380444857548
+      ],
+      "direction": [
+        0.4226182617406987,
+        -0.0,
+        -0.9063077870366504
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999983,
+      "glb": 0.14999776630754103,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-4.cornice",
+      "kind": "solid",
+      "origin": [
+        -56.934102633776355,
+        20.75,
+        -23.64272206453275
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999858,
+      "glb": 0.14999961853027344,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay0.jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -51.94774820425078,
+        19.214819389414487,
+        -32.73313761255032
+      ],
+      "direction": [
+        0.5877852522924679,
+        -0.0,
+        -0.8090169943749511
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000166,
+      "glb": 0.1499998555621964,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay0.pilaster.-1",
+      "kind": "solid",
+      "origin": [
+        -51.660244825744826,
+        18.94381908062901,
+        -32.55721472158771
+      ],
+      "direction": [
+        0.5877852522924772,
+        -0.0,
+        -0.8090169943749446
+      ],
+      "max": 0.3,
+      "authority": 0.149999999999998,
+      "glb": 0.14999983293688077,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay0.reveal-jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -52.220798345652646,
+        19.214819389414487,
+        -33.151257089004595
+      ],
+      "direction": [
+        0.5877852522924758,
+        -0.0,
+        -0.8090169943749455
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999963,
+      "glb": 0.1500002137110029,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay0.jamb.1",
+      "kind": "solid",
+      "origin": [
+        -50.891226853115306,
+        19.214819389414487,
+        -34.18731449884496
+      ],
+      "direction": [
+        0.5877852522924679,
+        -0.0,
+        -0.8090169943749511
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000166,
+      "glb": 0.15000053890683035,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay0.pilaster.1",
+      "kind": "solid",
+      "origin": [
+        -50.60372347460935,
+        18.94381908062901,
+        -34.01139160788236
+      ],
+      "direction": [
+        0.5877852522924772,
+        -0.0,
+        -0.8090169943749446
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000216,
+      "glb": 0.15000121631922664,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay0.reveal-jamb.1",
+      "kind": "solid",
+      "origin": [
+        -51.2938459865905,
+        19.214819389414487,
+        -34.427097557155854
+      ],
+      "direction": [
+        0.5877852522924758,
+        -0.0,
+        -0.8090169943749455
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000163,
+      "glb": 0.15000046676698445,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay0.lintel",
+      "kind": "solid",
+      "origin": [
+        -51.688314123648475,
+        21.072229084121734,
+        -33.54389842176647
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999858,
+      "glb": 0.14999991978451635,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay0.reveal-head",
+      "kind": "solid",
+      "origin": [
+        -51.845490449433534,
+        21.029564064310946,
+        -33.731339352327595
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999858,
+      "glb": 0.1499994580279207,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay0.stepped-sill",
+      "kind": "solid",
+      "origin": [
+        -51.64955938686512,
+        15.079332201119911,
+        -33.49743004596105
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000213,
+      "glb": 0.14999976909493287,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.pier0",
+      "kind": "solid",
+      "origin": [
+        -52.29105768016557,
+        19.333333333333336,
+        -32.26061265677477
+      ],
+      "direction": [
+        0.587785252292468,
+        -0.0,
+        -0.8090169943749511
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000166,
+      "glb": 0.1499976372981043,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay1.jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -50.26468324660784,
+        19.186666666666667,
+        -35.04967779122864
+      ],
+      "direction": [
+        0.5877852522924679,
+        -0.0,
+        -0.809016994374951
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999752,
+      "glb": 0.1500009100120507,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay1.pilaster.-1",
+      "kind": "solid",
+      "origin": [
+        -49.97345662317221,
+        18.91756666666667,
+        -34.87887950727274
+      ],
+      "direction": [
+        0.5877852522924771,
+        -0.0,
+        -0.8090169943749445
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000022,
+      "glb": 0.15000190184168788,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay1.reveal-jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -50.51291175514515,
+        19.186666666666667,
+        -35.50196131439428
+      ],
+      "direction": [
+        0.5877852522924758,
+        -0.0,
+        -0.8090169943749455
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000047,
+      "glb": 0.15000186276017546,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay1.jamb.1",
+      "kind": "solid",
+      "origin": [
+        -48.87016713028218,
+        19.186666666666667,
+        -36.96906456154496
+      ],
+      "direction": [
+        0.5877852522924679,
+        -0.0,
+        -0.809016994374951
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000327,
+      "glb": 0.15000168356563398,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay1.pilaster.1",
+      "kind": "solid",
+      "origin": [
+        -48.57894050684654,
+        18.91756666666667,
+        -36.798266277589065
+      ],
+      "direction": [
+        0.5877852522924771,
+        -0.0,
+        -0.8090169943749445
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000022,
+      "glb": 0.1500004138394078,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay1.reveal-jamb.1",
+      "kind": "solid",
+      "origin": [
+        -49.27874345564487,
+        19.186666666666667,
+        -37.20064824864512
+      ],
+      "direction": [
+        0.5877852522924758,
+        -0.0,
+        -0.8090169943749455
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000166,
+      "glb": 0.15000363485173748,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay1.lintel",
+      "kind": "solid",
+      "origin": [
+        -49.88431036665395,
+        21.03,
+        -36.02689657735581
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        0.0
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999986,
+      "glb": 0.1500003051757801,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay1.reveal-head",
+      "kind": "solid",
+      "origin": [
+        -49.58127506008706,
+        20.9772,
+        -36.78424921791975
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999838,
+      "glb": 0.14999917297363263,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay1.stepped-sill",
+      "kind": "solid",
+      "origin": [
+        -49.84762409927598,
+        15.0863,
+        -35.97758119765778
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000036,
+      "glb": 0.1499995147705082,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.pier1",
+      "kind": "solid",
+      "origin": [
+        -50.67854035547773,
+        19.333333333333336,
+        -34.48005234892166
+      ],
+      "direction": [
+        0.587785252292468,
+        -0.0,
+        -0.8090169943749511
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000166,
+      "glb": 0.14999883814343962,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay2.jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -48.26113047068319,
+        19.23704075389927,
+        -37.80733160872116
+      ],
+      "direction": [
+        0.5877852522924679,
+        -0.0,
+        -0.8090169943749511
+      ],
+      "max": 0.3,
+      "authority": 0.03794071479701272,
+      "glb": 0.03794012556328396,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay2.pilaster.-1",
+      "kind": "solid",
+      "origin": [
+        -47.976565905001486,
+        18.96454050301107,
+        -37.62736378891961
+      ],
+      "direction": [
+        0.5877852522924772,
+        -0.0,
+        -0.8090169943749446
+      ],
+      "max": 0.3,
+      "authority": 0.149999999999998,
+      "glb": 0.15000085711849642,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay2.reveal-jamb.-1",
+      "kind": "solid",
+      "origin": [
+        -48.55377269758003,
+        19.23704075389927,
+        -38.198484892915836
+      ],
+      "direction": [
+        0.5877852522924758,
+        -0.0,
+        -0.8090169943749455
+      ],
+      "max": 0.3,
+      "authority": 0.005561130848914438,
+      "glb": 0.0055633938532278,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay2.jamb.1",
+      "kind": "solid",
+      "origin": [
+        -47.402706872885624,
+        19.23704075389927,
+        -38.98885032883555
+      ],
+      "direction": [
+        0.5877852522924679,
+        -0.0,
+        -0.8090169943749511
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000074,
+      "glb": 0.15000052528377597,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay2.pilaster.1",
+      "kind": "solid",
+      "origin": [
+        -47.11814230720392,
+        18.96454050301107,
+        -38.808882509034014
+      ],
+      "direction": [
+        0.5877852522924772,
+        -0.0,
+        -0.8090169943749446
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000216,
+      "glb": 0.14999998686722674,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay2.reveal-jamb.1",
+      "kind": "solid",
+      "origin": [
+        -47.80062390584202,
+        19.23704075389927,
+        -39.23510527328874
+      ],
+      "direction": [
+        0.5877852522924758,
+        -0.0,
+        -0.8090169943749455
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000163,
+      "glb": 0.15000108351874175,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay2.lintel",
+      "kind": "solid",
+      "origin": [
+        -48.07425966969185,
+        21.10556113084891,
+        -38.5182176317907
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        0.0
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999986,
+      "glb": 0.15000069776437286,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay2.reveal-head",
+      "kind": "solid",
+      "origin": [
+        -48.237966690641905,
+        21.070895802252643,
+        -38.696669831598626
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        0.0
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999986,
+      "glb": 0.14999996495927093,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.bay2.stepped-sill",
+      "kind": "solid",
+      "origin": [
+        -48.03387225911725,
+        15.07383241340993,
+        -38.47399643867357
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        0.0
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000036,
+      "glb": 0.14999971702219916,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.pier2",
+      "kind": "solid",
+      "origin": [
+        -48.56211136682493,
+        19.333333333333336,
+        -37.39306694486446
+      ],
+      "direction": [
+        0.587785252292468,
+        -0.0,
+        -0.8090169943749511
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999747,
+      "glb": 0.14999755717955415,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.pier-end",
+      "kind": "solid",
+      "origin": [
+        -47.251941040516066,
+        19.333333333333336,
+        -39.1963616947338
+      ],
+      "direction": [
+        0.587785252292468,
+        -0.0,
+        -0.8090169943749511
+      ],
+      "max": 0.3,
+      "authority": 0.03794071479702682,
+      "glb": 0.03794037884508691,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:archive-bay-5.cornice",
+      "kind": "solid",
+      "origin": [
+        -48.600357723786,
+        20.75,
+        -37.24118275631162
+      ],
+      "direction": [
+        -0.0,
+        1.0,
+        -0.0
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999858,
+      "glb": 0.1499996185302735,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:greenhouse-rib-70",
+      "kind": "solid",
+      "origin": [
+        29.895981511744516,
+        25.106245363696612,
+        83.45424611602428
+      ],
+      "direction": [
+        0.9396926207859086,
+        -4.695005048869218e-16,
+        -0.34202014332566794
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999658,
+      "glb": 0.15000096158709342,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:greenhouse-post-70--1",
+      "kind": "solid",
+      "origin": [
+        27.3218241524468,
+        18.013333333333335,
+        75.4559355038459
+      ],
+      "direction": [
+        0.3420201433256742,
+        -0.0,
+        0.9396926207859063
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999575,
+      "glb": 0.14999861550141966,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:greenhouse-post-70-1",
+      "kind": "solid",
+      "origin": [
+        31.562873929685097,
+        18.013333333333335,
+        87.10812400159116
+      ],
+      "direction": [
+        0.3420201433256742,
+        -0.0,
+        0.9396926207859063
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999575,
+      "glb": 0.1500016591549276,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:greenhouse-rib-76",
+      "kind": "solid",
+      "origin": [
+        22.200859822730596,
+        24.58679789229889,
+        87.18268081261243
+      ],
+      "direction": [
+        -0.9702957262759964,
+        -1.784101918570304e-15,
+        0.24192189559966792
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999636,
+      "glb": 0.14999972382466786,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:greenhouse-post-76--1",
+      "kind": "solid",
+      "origin": [
+        19.045882767747973,
+        17.006666666666668,
+        78.66232448918379
+      ],
+      "direction": [
+        0.9702957262759968,
+        -0.0,
+        -0.24192189559966631
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999866,
+      "glb": 0.15000037933809462,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:greenhouse-post-76-1",
+      "kind": "solid",
+      "origin": [
+        22.045714273183854,
+        17.006666666666668,
+        90.69399149500613
+      ],
+      "direction": [
+        0.9702957262759968,
+        -0.0,
+        -0.24192189559966631
+      ],
+      "max": 0.3,
+      "authority": 0.1499999999999952,
+      "glb": 0.1500003763525165,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:greenhouse-rib-82",
+      "kind": "solid",
+      "origin": [
+        11.500152873168103,
+        25.215868898783338,
+        85.06122299697756
+      ],
+      "direction": [
+        0.9902680687415708,
+        1.878002019547674e-16,
+        -0.1391731009600629
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000135,
+      "glb": 0.15000070481605188,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:greenhouse-post-82--1",
+      "kind": "solid",
+      "origin": [
+        10.719095533226767,
+        17.006666666666668,
+        80.22224090234579
+      ],
+      "direction": [
+        0.9902680687415706,
+        -0.0,
+        -0.1391731009600638
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000013,
+      "glb": 0.15000097619014538,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:greenhouse-post-82-1",
+      "kind": "solid",
+      "origin": [
+        12.44484198513158,
+        17.006666666666668,
+        92.50156495474127
+      ],
+      "direction": [
+        0.9902680687415706,
+        -0.0,
+        -0.1391731009600638
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000013,
+      "glb": 0.150000217097339,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:greenhouse-rib-88",
+      "kind": "solid",
+      "origin": [
+        2.6439877251831043,
+        25.106245363696612,
+        88.60807093179268
+      ],
+      "direction": [
+        0.9993908270190957,
+        1.2324388253281614e-16,
+        -0.034899496702500955
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000003,
+      "glb": 0.15000007573529595,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:greenhouse-post-88--1",
+      "kind": "solid",
+      "origin": [
+        2.6674325001064987,
+        18.013333333333335,
+        80.20576713450943
+      ],
+      "direction": [
+        0.03489949670250071,
+        -0.0,
+        0.9993908270190958
+      ],
+      "max": 0.3,
+      "authority": 0.11091961093122363,
+      "glb": 0.11091866335573831,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:greenhouse-post-88-1",
+      "kind": "solid",
+      "origin": [
+        3.1001862592175127,
+        18.013333333333335,
+        92.59821338954622
+      ],
+      "direction": [
+        0.03489949670250071,
+        -0.0,
+        0.9993908270190958
+      ],
+      "max": 0.3,
+      "authority": 0.1500000000000101,
+      "glb": 0.15000115609100506,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:greenhouse-rib-94",
+      "kind": "solid",
+      "origin": [
+        -6.218155842491015,
+        23.642737290334065,
+        82.47275727389571
+      ],
+      "direction": [
+        0.9975640502598243,
+        5.555144645712792e-16,
+        0.06975647374412429
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999866,
+      "glb": 0.14999987173455012,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:greenhouse-post-94--1",
+      "kind": "solid",
+      "origin": [
+        -5.730965558000698,
+        18.013333333333335,
+        80.045214170185
+      ],
+      "direction": [
+        -0.0697564737441424,
+        -0.0,
+        0.9975640502598231
+      ],
+      "max": 0.3,
+      "authority": 0.10401686500879367,
+      "glb": 0.10401983417643497,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:greenhouse-post-94-1",
+      "kind": "solid",
+      "origin": [
+        -6.595945832427852,
+        18.013333333333335,
+        92.41500839340684
+      ],
+      "direction": [
+        -0.0697564737441424,
+        -0.0,
+        0.9975640502598231
+      ],
+      "max": 0.3,
+      "authority": 0.15000000000000221,
+      "glb": 0.1500008407397677,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:greenhouse-inner-eave",
+      "kind": "solid",
+      "origin": [
+        16.84409443463602,
+        19.018541019662496,
+        79.25230530045476
+      ],
+      "direction": [
+        -0.19080899537654566,
+        0.0,
+        -0.9816271834476638
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999999428,
+      "glb": 0.14999947754328122,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:greenhouse-outer-eave",
+      "kind": "solid",
+      "origin": [
+        19.419230922228213,
+        19.018541019662496,
+        91.36652465513482
+      ],
+      "direction": [
+        -0.19080899537654636,
+        0.0,
+        -0.9816271834476635
+      ],
+      "max": 0.3,
+      "authority": 0.14999999999998978,
+      "glb": 0.1500016052973143,
+      "toleranceMetres": 0.04
+    },
+    {
+      "id": "solid:greenhouse-ridge",
+      "kind": "solid",
+      "origin": [
+        18.131662678432114,
+        25.218541019662496,
+        85.3094149777948
+      ],
+      "direction": [
+        -0.19080899537654605,
+        0.0,
+        -0.9816271834476638
+      ],
+      "max": 0.3,
+      "authority": 0.149999999999999,
+      "glb": 0.15000054142047836,
+      "toleranceMetres": 0.04
+    }
+  ],
+  "fullAuthorityShell": "verified against actual GLB",
+  "attachments": "verified for Helix",
+  "nativeStatus": "pending"
+}

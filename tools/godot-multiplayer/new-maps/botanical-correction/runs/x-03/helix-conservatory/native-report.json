@@ -1,0 +1,16 @@
+{
+  "attempt": "x-03",
+  "map": "helix-conservatory",
+  "geometryHash": "f5a3d0d7b2872fa7c7fa6bb2727ee31915a717ffbc160343acf491fe3b9bc49e",
+  "manifestSha256": "11736b1029567fabc9c91956ab361ac1ad411398285e1713dfb4de941efed9e8",
+  "nativeReports": {
+    "import": "be8c46df343eb9d9559f6f5a0a6526cdbe1362d5c058153045ebf073dec92bae",
+    "physics": "5df2c60c7e2c854bad47c33a89de6bda91ea90230e37657f40e7d79d5c72c93d",
+    "capture": "75a0f0cdf307d179f29ec73e2d293b5ddf973f3d73e07e02da35537c2c2acf7a"
+  },
+  "pairs": 8,
+  "finiteCapsules": 32763,
+  "hostedModes": "pending",
+  "manualVisualAcceptance": "pending",
+  "performance": "static backend measurements only; not gameplay FPS"
+}

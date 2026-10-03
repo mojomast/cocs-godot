@@ -1,0 +1,1470 @@
+{
+  "version": 1,
+  "map_id": "helix-conservatory",
+  "geometry_hash": "f5a3d0d7b2872fa7c7fa6bb2727ee31915a717ffbc160343acf491fe3b9bc49e",
+  "materials": [],
+  "panels": [
+    {
+      "id": "archive-damp-foot-0",
+      "position": [
+        -40.733186,
+        7.838969,
+        16.91011
+      ],
+      "rotation_degrees": [
+        0,
+        -67.454545,
+        0
+      ],
+      "size": [
+        1.567201,
+        0.24
+      ],
+      "essential": false,
+      "texture": "weathered_concrete-worn",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
+      "seed": 610022
+    },
+    {
+      "id": "archive-damp-foot-1",
+      "position": [
+        -41.149305,
+        7.833637,
+        -15.870695
+      ],
+      "rotation_degrees": [
+        0,
+        -111.090909,
+        0
+      ],
+      "size": [
+        1.567207,
+        0.24
+      ],
+      "essential": false,
+      "texture": "weathered_concrete-worn",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
+      "seed": 610023
+    },
+    {
+      "id": "archive-damp-foot-2",
+      "position": [
+        -38.264788,
+        7.838886,
+        -21.930579
+      ],
+      "rotation_degrees": [
+        0,
+        -119.818182,
+        0
+      ],
+      "size": [
+        1.567201,
+        0.24
+      ],
+      "essential": false,
+      "texture": "weathered_concrete-worn",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
+      "seed": 610024
+    },
+    {
+      "id": "archive-damp-foot-3",
+      "position": [
+        -35.844524,
+        7.833762,
+        -25.696584
+      ],
+      "rotation_degrees": [
+        0,
+        -125.636364,
+        0
+      ],
+      "size": [
+        1.567201,
+        0.24
+      ],
+      "essential": false,
+      "texture": "weathered_concrete-worn",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
+      "seed": 610025
+    },
+    {
+      "id": "archive-damp-foot-4",
+      "position": [
+        -43.306777,
+        7.838662,
+        8.346697
+      ],
+      "rotation_degrees": [
+        0,
+        -79.090909,
+        0
+      ],
+      "size": [
+        1.567201,
+        0.24
+      ],
+      "essential": false,
+      "texture": "weathered_concrete-worn",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
+      "seed": 610026
+    },
+    {
+      "id": "archive-damp-foot-5",
+      "position": [
+        -44.071817,
+        7.83351,
+        1.679063
+      ],
+      "rotation_degrees": [
+        0,
+        -87.818182,
+        0
+      ],
+      "size": [
+        1.567204,
+        0.24
+      ],
+      "essential": false,
+      "texture": "weathered_concrete-worn",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
+      "seed": 610027
+    },
+    {
+      "id": "irrigation-damp-foot-0",
+      "position": [
+        40.72948,
+        7.838935,
+        -16.919714
+      ],
+      "rotation_degrees": [
+        0,
+        112.558824,
+        0
+      ],
+      "size": [
+        1.552799,
+        0.24
+      ],
+      "essential": false,
+      "texture": "weathered_concrete-worn",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.099,
+      "feather": 0.4,
+      "seed": 610028
+    },
+    {
+      "id": "irrigation-damp-foot-1",
+      "position": [
+        43.840677,
+        7.834842,
+        4.812723
+      ],
+      "rotation_degrees": [
+        0,
+        83.735294,
+        0
+      ],
+      "size": [
+        1.552805,
+        0.24
+      ],
+      "essential": false,
+      "texture": "weathered_concrete-worn",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.099,
+      "feather": 0.4,
+      "seed": 610029
+    },
+    {
+      "id": "irrigation-damp-foot-2",
+      "position": [
+        42.222975,
+        7.833849,
+        -12.743138
+      ],
+      "rotation_degrees": [
+        0,
+        106.794118,
+        0
+      ],
+      "size": [
+        1.5528,
+        0.24
+      ],
+      "essential": false,
+      "texture": "weathered_concrete-worn",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.099,
+      "feather": 0.4,
+      "seed": 610030
+    },
+    {
+      "id": "irrigation-damp-foot-3",
+      "position": [
+        43.289409,
+        7.838813,
+        -8.437672
+      ],
+      "rotation_degrees": [
+        0,
+        101.029412,
+        0
+      ],
+      "size": [
+        1.5528,
+        0.24
+      ],
+      "essential": false,
+      "texture": "weathered_concrete-worn",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.099,
+      "feather": 0.4,
+      "seed": 610031
+    },
+    {
+      "id": "irrigation-damp-foot-4",
+      "position": [
+        43.917993,
+        7.833518,
+        -4.046864
+      ],
+      "rotation_degrees": [
+        0,
+        95.264706,
+        0
+      ],
+      "size": [
+        1.552804,
+        0.24
+      ],
+      "essential": false,
+      "texture": "weathered_concrete-worn",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.099,
+      "feather": 0.4,
+      "seed": 610032
+    },
+    {
+      "id": "irrigation-damp-foot-5",
+      "position": [
+        44.102371,
+        7.838272,
+        0.384876
+      ],
+      "rotation_degrees": [
+        0,
+        89.5,
+        0
+      ],
+      "size": [
+        1.5528,
+        0.24
+      ],
+      "essential": false,
+      "texture": "weathered_concrete-worn",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.099,
+      "feather": 0.4,
+      "seed": 610033
+    },
+    {
+      "id": "pavilion-damp-foot-0",
+      "position": [
+        24.339225,
+        16.051587,
+        75.80781
+      ],
+      "rotation_degrees": [
+        0,
+        17.8,
+        0
+      ],
+      "size": [
+        1.8,
+        0.24
+      ],
+      "essential": false,
+      "texture": "weathered_concrete-worn",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
+      "seed": 610034
+    },
+    {
+      "id": "pavilion-damp-foot-1",
+      "position": [
+        20.606973,
+        16.055967,
+        76.906272
+      ],
+      "rotation_degrees": [
+        0,
+        15.0,
+        0
+      ],
+      "size": [
+        1.8,
+        0.24
+      ],
+      "essential": false,
+      "texture": "weathered_concrete-worn",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
+      "seed": 610035
+    },
+    {
+      "id": "pavilion-damp-foot-2",
+      "position": [
+        16.825518,
+        16.051587,
+        77.821102
+      ],
+      "rotation_degrees": [
+        0,
+        12.2,
+        0
+      ],
+      "size": [
+        1.8,
+        0.24
+      ],
+      "essential": false,
+      "texture": "weathered_concrete-worn",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
+      "seed": 610036
+    },
+    {
+      "id": "pavilion-damp-foot-3",
+      "position": [
+        13.003888,
+        16.047546,
+        78.550117
+      ],
+      "rotation_degrees": [
+        0,
+        9.4,
+        0
+      ],
+      "size": [
+        1.8,
+        0.24
+      ],
+      "essential": false,
+      "texture": "weathered_concrete-worn",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
+      "seed": 610037
+    },
+    {
+      "id": "pavilion-damp-foot-4",
+      "position": [
+        9.151208,
+        16.052036,
+        79.091576
+      ],
+      "rotation_degrees": [
+        0,
+        6.6,
+        0
+      ],
+      "size": [
+        1.8,
+        0.24
+      ],
+      "essential": false,
+      "texture": "weathered_concrete-worn",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
+      "seed": 610038
+    },
+    {
+      "id": "pavilion-damp-foot-5",
+      "position": [
+        5.276677,
+        16.055955,
+        79.444186
+      ],
+      "rotation_degrees": [
+        0,
+        3.8,
+        0
+      ],
+      "size": [
+        1.8,
+        0.24
+      ],
+      "essential": false,
+      "texture": "weathered_concrete-worn",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.121,
+      "feather": 0.4,
+      "seed": 610039
+    },
+    {
+      "id": "pump-access-0",
+      "position": [
+        61.616308,
+        11.813577,
+        -24.734285
+      ],
+      "rotation_degrees": [
+        0,
+        0.0,
+        0
+      ],
+      "size": [
+        1.4,
+        0.75
+      ],
+      "essential": false,
+      "texture": "brushed_metal",
+      "tint": "a49f8d",
+      "normal": "baked:metal"
+    },
+    {
+      "id": "pump-access-1",
+      "position": [
+        64.557742,
+        11.809051,
+        -14.804172
+      ],
+      "rotation_degrees": [
+        0,
+        0.0,
+        0
+      ],
+      "size": [
+        1.4,
+        0.75
+      ],
+      "essential": false,
+      "texture": "brushed_metal",
+      "tint": "a49f8d",
+      "normal": "baked:metal"
+    },
+    {
+      "id": "pump-access-2",
+      "position": [
+        65.909549,
+        11.809051,
+        -4.536173
+      ],
+      "rotation_degrees": [
+        0,
+        0.0,
+        0
+      ],
+      "size": [
+        1.4,
+        0.75
+      ],
+      "essential": false,
+      "texture": "brushed_metal",
+      "tint": "a49f8d",
+      "normal": "baked:metal"
+    },
+    {
+      "id": "settling-vault-waterline-7",
+      "position": [
+        62.347311,
+        12.71472,
+        -19.450061
+      ],
+      "rotation_degrees": [
+        0,
+        101.25,
+        0
+      ],
+      "size": [
+        1.186149,
+        0.18
+      ],
+      "essential": false,
+      "texture": "metal-oxide",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.099,
+      "feather": 0.4,
+      "seed": 610043
+    },
+    {
+      "id": "settling-vault-waterline-8",
+      "position": [
+        62.347311,
+        12.71472,
+        -20.897235
+      ],
+      "rotation_degrees": [
+        0,
+        78.75,
+        0
+      ],
+      "size": [
+        1.186149,
+        0.18
+      ],
+      "essential": false,
+      "texture": "metal-oxide",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.099,
+      "feather": 0.4,
+      "seed": 610044
+    },
+    {
+      "id": "settling-vault-waterline-9",
+      "position": [
+        62.901121,
+        12.71472,
+        -22.234249
+      ],
+      "rotation_degrees": [
+        0,
+        56.25,
+        0
+      ],
+      "size": [
+        1.186149,
+        0.18
+      ],
+      "essential": false,
+      "texture": "metal-oxide",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.099,
+      "feather": 0.4,
+      "seed": 610045
+    },
+    {
+      "id": "filter-vault-waterline-7",
+      "position": [
+        68.764059,
+        13.70384,
+        -4.413684
+      ],
+      "rotation_degrees": [
+        0,
+        101.25,
+        0
+      ],
+      "size": [
+        0.998862,
+        0.18
+      ],
+      "essential": false,
+      "texture": "metal-oxide",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.099,
+      "feather": 0.4,
+      "seed": 610046
+    },
+    {
+      "id": "filter-vault-waterline-8",
+      "position": [
+        68.764059,
+        13.70384,
+        -5.631248
+      ],
+      "rotation_degrees": [
+        0,
+        78.75,
+        0
+      ],
+      "size": [
+        0.998862,
+        0.18
+      ],
+      "essential": false,
+      "texture": "metal-oxide",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.099,
+      "feather": 0.4,
+      "seed": 610047
+    },
+    {
+      "id": "filter-vault-waterline-9",
+      "position": [
+        69.23,
+        13.70384,
+        -6.75613
+      ],
+      "rotation_degrees": [
+        0,
+        56.25,
+        0
+      ],
+      "size": [
+        0.998862,
+        0.18
+      ],
+      "essential": false,
+      "texture": "metal-oxide",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.099,
+      "feather": 0.4,
+      "seed": 610048
+    },
+    {
+      "id": "water-pressure-tower-waterline-7",
+      "position": [
+        65.450238,
+        12.012952,
+        6.382299
+      ],
+      "rotation_degrees": [
+        0,
+        101.25,
+        0
+      ],
+      "size": [
+        0.749147,
+        0.18
+      ],
+      "essential": false,
+      "texture": "metal-oxide",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.099,
+      "feather": 0.4,
+      "seed": 610049
+    },
+    {
+      "id": "water-pressure-tower-waterline-8",
+      "position": [
+        65.450238,
+        12.012952,
+        5.470882
+      ],
+      "rotation_degrees": [
+        0,
+        78.75,
+        0
+      ],
+      "size": [
+        0.749147,
+        0.18
+      ],
+      "essential": false,
+      "texture": "metal-oxide",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.099,
+      "feather": 0.4,
+      "seed": 610050
+    },
+    {
+      "id": "water-pressure-tower-waterline-9",
+      "position": [
+        65.799022,
+        12.012952,
+        4.628843
+      ],
+      "rotation_degrees": [
+        0,
+        56.25,
+        0
+      ],
+      "size": [
+        0.749147,
+        0.18
+      ],
+      "essential": false,
+      "texture": "metal-oxide",
+      "tint": "a49f8d",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.099,
+      "feather": 0.4,
+      "seed": 610051
+    },
+    {
+      "id": "root-stain-0",
+      "position": [
+        20.808756,
+        1.365013,
+        18.736288
+      ],
+      "rotation_degrees": [
+        0,
+        48.0,
+        0
+      ],
+      "size": [
+        0.85,
+        0.23
+      ],
+      "essential": false,
+      "texture": "rock-moss",
+      "tint": "858575",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.165,
+      "feather": 0.4,
+      "seed": 610052
+    },
+    {
+      "id": "root-stain-1",
+      "position": [
+        22.575148,
+        3.164952,
+        23.37725
+      ],
+      "rotation_degrees": [
+        0,
+        44.0,
+        0
+      ],
+      "size": [
+        0.85,
+        0.23
+      ],
+      "essential": false,
+      "texture": "rock-moss",
+      "tint": "858575",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.165,
+      "feather": 0.4,
+      "seed": 610053
+    },
+    {
+      "id": "root-stain-2",
+      "position": [
+        92.623858,
+        21.96314,
+        53.476409
+      ],
+      "rotation_degrees": [
+        0,
+        60.0,
+        0
+      ],
+      "size": [
+        0.85,
+        0.23
+      ],
+      "essential": false,
+      "texture": "rock-moss",
+      "tint": "858575",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.165,
+      "feather": 0.4,
+      "seed": 610054
+    },
+    {
+      "id": "root-stain-3",
+      "position": [
+        27.492985,
+        4.966624,
+        24.754795
+      ],
+      "rotation_degrees": [
+        0,
+        48.0,
+        0
+      ],
+      "size": [
+        0.85,
+        0.23
+      ],
+      "essential": false,
+      "texture": "rock-moss",
+      "tint": "858575",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.165,
+      "feather": 0.4,
+      "seed": 610055
+    },
+    {
+      "id": "root-stain-4",
+      "position": [
+        -17.998659,
+        1.363306,
+        21.449967
+      ],
+      "rotation_degrees": [
+        0,
+        -40.0,
+        0
+      ],
+      "size": [
+        0.85,
+        0.23
+      ],
+      "essential": false,
+      "texture": "rock-moss",
+      "tint": "858575",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.165,
+      "feather": 0.4,
+      "seed": 610056
+    },
+    {
+      "id": "root-stain-5",
+      "position": [
+        -37.60592,
+        9.764876,
+        51.760109
+      ],
+      "rotation_degrees": [
+        0,
+        -36.0,
+        0
+      ],
+      "size": [
+        0.85,
+        0.23
+      ],
+      "essential": false,
+      "texture": "rock-moss",
+      "tint": "858575",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.165,
+      "feather": 0.4,
+      "seed": 610057
+    },
+    {
+      "id": "root-stain-6",
+      "position": [
+        -68.047554,
+        17.954369,
+        70.465305
+      ],
+      "rotation_degrees": [
+        0,
+        -44.0,
+        0
+      ],
+      "size": [
+        0.85,
+        0.23
+      ],
+      "essential": false,
+      "texture": "rock-moss",
+      "tint": "858575",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.165,
+      "feather": 0.4,
+      "seed": 610058
+    },
+    {
+      "id": "root-stain-7",
+      "position": [
+        -44.443557,
+        9.769752,
+        46.02265
+      ],
+      "rotation_degrees": [
+        0,
+        -44.0,
+        0
+      ],
+      "size": [
+        0.85,
+        0.23
+      ],
+      "essential": false,
+      "texture": "rock-moss",
+      "tint": "858575",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.165,
+      "feather": 0.4,
+      "seed": 610059
+    },
+    {
+      "id": "root-stain-8",
+      "position": [
+        -33.797035,
+        4.962819,
+        -15.047409
+      ],
+      "rotation_degrees": [
+        0,
+        -114.0,
+        0
+      ],
+      "size": [
+        0.85,
+        0.23
+      ],
+      "essential": false,
+      "texture": "rock-moss",
+      "tint": "858575",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.165,
+      "feather": 0.4,
+      "seed": 610060
+    },
+    {
+      "id": "root-stain-9",
+      "position": [
+        -35.187822,
+        6.761107,
+        -21.987791
+      ],
+      "rotation_degrees": [
+        0,
+        -122.0,
+        0
+      ],
+      "size": [
+        0.85,
+        0.23
+      ],
+      "essential": false,
+      "texture": "rock-moss",
+      "tint": "858575",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.165,
+      "feather": 0.4,
+      "seed": 610061
+    },
+    {
+      "id": "root-stain-10",
+      "position": [
+        -70.465305,
+        17.954369,
+        -68.047554
+      ],
+      "rotation_degrees": [
+        0,
+        -134.0,
+        0
+      ],
+      "size": [
+        0.85,
+        0.23
+      ],
+      "essential": false,
+      "texture": "rock-moss",
+      "tint": "858575",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.165,
+      "feather": 0.4,
+      "seed": 610062
+    },
+    {
+      "id": "root-stain-11",
+      "position": [
+        -36.635897,
+        6.761107,
+        -19.479652
+      ],
+      "rotation_degrees": [
+        0,
+        -118.0,
+        0
+      ],
+      "size": [
+        0.85,
+        0.23
+      ],
+      "essential": false,
+      "texture": "rock-moss",
+      "tint": "858575",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.165,
+      "feather": 0.4,
+      "seed": 610063
+    },
+    {
+      "id": "root-stain-12",
+      "position": [
+        25.699206,
+        4.965638,
+        -26.612307
+      ],
+      "rotation_degrees": [
+        0,
+        136.0,
+        0
+      ],
+      "size": [
+        0.85,
+        0.23
+      ],
+      "essential": false,
+      "texture": "rock-moss",
+      "tint": "858575",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.165,
+      "feather": 0.4,
+      "seed": 610064
+    },
+    {
+      "id": "root-stain-13",
+      "position": [
+        54.293175,
+        19.940815,
+        -86.887242
+      ],
+      "rotation_degrees": [
+        0,
+        148.0,
+        0
+      ],
+      "size": [
+        0.85,
+        0.23
+      ],
+      "essential": false,
+      "texture": "rock-moss",
+      "tint": "858575",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.165,
+      "feather": 0.4,
+      "seed": 610065
+    },
+    {
+      "id": "root-stain-14",
+      "position": [
+        47.567615,
+        11.570438,
+        -49.257708
+      ],
+      "rotation_degrees": [
+        0,
+        136.0,
+        0
+      ],
+      "size": [
+        0.85,
+        0.23
+      ],
+      "essential": false,
+      "texture": "rock-moss",
+      "tint": "858575",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.165,
+      "feather": 0.4,
+      "seed": 610066
+    },
+    {
+      "id": "root-stain-15",
+      "position": [
+        34.258997,
+        13.361946,
+        -64.431803
+      ],
+      "rotation_degrees": [
+        0,
+        152.0,
+        0
+      ],
+      "size": [
+        0.85,
+        0.23
+      ],
+      "essential": false,
+      "texture": "rock-moss",
+      "tint": "858575",
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.165,
+      "feather": 0.4,
+      "seed": 610067
+    }
+  ],
+  "signs": [
+    {
+      "id": "archive-route-0",
+      "position": [
+        -40.733186,
+        9.218969,
+        16.91011
+      ],
+      "rotation_degrees": [
+        0,
+        -67.454545,
+        0
+      ],
+      "size": [
+        1.567201,
+        0.66
+      ],
+      "essential": true,
+      "text": "01 / SEED\nARCHIVE",
+      "foreground": "e4ebd8",
+      "background": "233e35"
+    },
+    {
+      "id": "archive-route-1",
+      "position": [
+        -41.149305,
+        9.213637,
+        -15.870695
+      ],
+      "rotation_degrees": [
+        0,
+        -111.090909,
+        0
+      ],
+      "size": [
+        1.567207,
+        0.66
+      ],
+      "essential": true,
+      "text": "RESEARCH\nAISLE",
+      "foreground": "e4ebd8",
+      "background": "233e35"
+    },
+    {
+      "id": "archive-route-2",
+      "position": [
+        -38.264788,
+        9.218886,
+        -21.930579
+      ],
+      "rotation_degrees": [
+        0,
+        -119.818182,
+        0
+      ],
+      "size": [
+        1.567201,
+        0.66
+      ],
+      "essential": true,
+      "text": "SERVICE\nAISLE",
+      "foreground": "e4ebd8",
+      "background": "233e35"
+    },
+    {
+      "id": "irrigation-route-0",
+      "position": [
+        40.72948,
+        9.218935,
+        -16.919714
+      ],
+      "rotation_degrees": [
+        0,
+        112.558824,
+        0
+      ],
+      "size": [
+        1.552799,
+        0.66
+      ],
+      "essential": true,
+      "text": "02 /\nFILTRATION",
+      "foreground": "e4ebd8",
+      "background": "233e35"
+    },
+    {
+      "id": "irrigation-route-1",
+      "position": [
+        43.840677,
+        9.214842,
+        4.812723
+      ],
+      "rotation_degrees": [
+        0,
+        83.735294,
+        0
+      ],
+      "size": [
+        1.552805,
+        0.66
+      ],
+      "essential": true,
+      "text": "MAINTENANCE\nLOOP",
+      "foreground": "e4ebd8",
+      "background": "233e35"
+    },
+    {
+      "id": "irrigation-route-2",
+      "position": [
+        42.222975,
+        9.213849,
+        -12.743138
+      ],
+      "rotation_degrees": [
+        0,
+        106.794118,
+        0
+      ],
+      "size": [
+        1.5528,
+        0.66
+      ],
+      "essential": true,
+      "text": "ARCHIVE\nRING",
+      "foreground": "e4ebd8",
+      "background": "233e35"
+    },
+    {
+      "id": "pavilion-route-0",
+      "position": [
+        24.339225,
+        17.431587,
+        75.80781
+      ],
+      "rotation_degrees": [
+        0,
+        17.8,
+        0
+      ],
+      "size": [
+        1.8,
+        0.66
+      ],
+      "essential": true,
+      "text": "03 /\nGERMINATION",
+      "foreground": "e4ebd8",
+      "background": "233e35"
+    },
+    {
+      "id": "pavilion-route-1",
+      "position": [
+        20.606973,
+        17.435967,
+        76.906272
+      ],
+      "rotation_degrees": [
+        0,
+        15.0,
+        0
+      ],
+      "size": [
+        1.8,
+        0.66
+      ],
+      "essential": true,
+      "text": "CANOPY\nRING",
+      "foreground": "e4ebd8",
+      "background": "233e35"
+    },
+    {
+      "id": "pavilion-route-2",
+      "position": [
+        16.825518,
+        17.431587,
+        77.821102
+      ],
+      "rotation_degrees": [
+        0,
+        12.2,
+        0
+      ],
+      "size": [
+        1.8,
+        0.66
+      ],
+      "essential": true,
+      "text": "INNER\nCHAMBER",
+      "foreground": "e4ebd8",
+      "background": "233e35"
+    },
+    {
+      "id": "pump-record-0",
+      "position": [
+        61.616308,
+        13.113577,
+        -24.734285
+      ],
+      "rotation_degrees": [
+        0,
+        0.0,
+        0
+      ],
+      "size": [
+        1.4,
+        0.48
+      ],
+      "essential": true,
+      "text": "PUMP 01\nISOLATION",
+      "foreground": "e4ebd8",
+      "background": "233e35"
+    },
+    {
+      "id": "pump-record-1",
+      "position": [
+        64.557742,
+        13.109051,
+        -14.804172
+      ],
+      "rotation_degrees": [
+        0,
+        0.0,
+        0
+      ],
+      "size": [
+        1.4,
+        0.48
+      ],
+      "essential": true,
+      "text": "PUMP 02\nISOLATION",
+      "foreground": "e4ebd8",
+      "background": "233e35"
+    },
+    {
+      "id": "pump-record-2",
+      "position": [
+        65.909549,
+        13.109051,
+        -4.536173
+      ],
+      "rotation_degrees": [
+        0,
+        0.0,
+        0
+      ],
+      "size": [
+        1.4,
+        0.48
+      ],
+      "essential": true,
+      "text": "PUMP 03\nISOLATION",
+      "foreground": "e4ebd8",
+      "background": "233e35"
+    },
+    {
+      "id": "lightwell-specimen-record",
+      "position": [
+        6.436528,
+        1.8,
+        4.938921
+      ],
+      "rotation_degrees": [
+        0,
+        52.5,
+        0
+      ],
+      "size": [
+        0.48,
+        0.75
+      ],
+      "essential": true,
+      "text": "04\nCORE",
+      "foreground": "e4ebd8",
+      "background": "233e35"
+    }
+  ],
+  "pockets": [
+    {
+      "id": "plant-pollen-0",
+      "kind": "pollen",
+      "position": [
+        22.305993,
+        3.815365,
+        20.183026
+      ],
+      "size": [
+        1.4,
+        1.6,
+        1.4
+      ],
+      "color": "c6c68a",
+      "count": 12
+    },
+    {
+      "id": "plant-pollen-1",
+      "kind": "pollen",
+      "position": [
+        -19.392263,
+        3.813594,
+        22.996782
+      ],
+      "size": [
+        1.4,
+        1.6,
+        1.4
+      ],
+      "color": "c6c68a",
+      "count": 12
+    },
+    {
+      "id": "plant-pollen-2",
+      "kind": "pollen",
+      "position": [
+        -35.668059,
+        7.412931,
+        -15.960668
+      ],
+      "size": [
+        1.4,
+        1.6,
+        1.4
+      ],
+      "color": "c6c68a",
+      "count": 12
+    },
+    {
+      "id": "plant-pollen-3",
+      "kind": "pollen",
+      "position": [
+        27.197316,
+        7.41599,
+        -28.058142
+      ],
+      "size": [
+        1.4,
+        1.6,
+        1.4
+      ],
+      "color": "c6c68a",
+      "count": 12
+    }
+  ],
+  "preserve_materials": [
+    "botanical",
+    "brick",
+    "ceramic",
+    "glass",
+    "gold",
+    "helix.archive-stone",
+    "helix.bark",
+    "helix.fern",
+    "helix.greenhouse-frame",
+    "helix.grotto-rock",
+    "helix.soil",
+    "helix.trim",
+    "leaflight",
+    "soil",
+    "solar",
+    "stone",
+    "verdigris",
+    "water"
+  ],
+  "budgets": {
+    "material_variants": 0,
+    "panels": 64,
+    "signs": 20,
+    "motes": 72
+  }
+}

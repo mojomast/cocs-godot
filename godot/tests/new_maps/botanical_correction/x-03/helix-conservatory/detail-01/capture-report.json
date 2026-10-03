@@ -1,0 +1,168 @@
+{
+  "captures": [
+    {
+      "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+      "drawCalls": 161.0,
+      "eightFrameMicroseconds": 5571393,
+      "eye": [
+        36.0,
+        32.0,
+        111.0
+      ],
+      "fov": 68.0,
+      "geometryHash": "f068d1abe262907659f1f02205e2bf56b7c5dbe298191f66d008b420965fa9b2",
+      "glbSha256": "0c462ffa475f02aa388101c38339d6d81eb3df9549a7d664ca65ec390c802d88",
+      "path": "res://tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-01/captures/grounded-frame-exterior-accepted-runtime-before.png",
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "renderingMethod": "gl_compatibility",
+      "sha256": "1236290d2addebee5293913c61ec852fa4c04fc1b2e166a6bc08eba4173da3ac",
+      "staticMemoryBytes": 352729881,
+      "staticViewMeanFrameMs": 696.424125,
+      "target": [
+        12.0,
+        20.5,
+        85.0
+      ],
+      "variant": "accepted-runtime-before",
+      "videoMemoryBytes": 32366373.0,
+      "view": "grounded-frame-exterior",
+      "weather": {
+        "audio_frames": 0,
+        "authoritative_time": true,
+        "biome": {
+          "biome": "canyon",
+          "mood": "hot",
+          "particles": "dust",
+          "tint": "#8a6a44"
+        },
+        "elapsed": 12.0,
+        "emits_per_tick_limit": 44,
+        "enabled": true,
+        "focused": true,
+        "lightning_flashes": 0,
+        "muted": true,
+        "native_weather_suppressed": true,
+        "particle_limit": 48,
+        "particles": 0,
+        "reduced_motion": false,
+        "seed": 61002,
+        "thunder_count": 0,
+        "time": {
+          "blend": 0.0761904761904762,
+          "cycle": "day",
+          "from": "day",
+          "phase": "day",
+          "t": 0.019047619047619,
+          "to": "dusk"
+        },
+        "wants_precipitation_handoff": false,
+        "weather": "clear",
+        "wind": 0.88973063205927
+      },
+      "weatherLook": {
+        "additional_colliders": 0,
+        "additional_geometry_nodes": 0,
+        "binding_cap": 16384,
+        "bindings": 16,
+        "capped": false,
+        "material_cap": 256,
+        "materials": 16,
+        "node_cap": 16384,
+        "uniform_writes": 64,
+        "visited": 104,
+        "wet_shader_variants": 0,
+        "wet_textures": 0,
+        "wetness": 0.0
+      }
+    },
+    {
+      "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+      "drawCalls": 150.0,
+      "eightFrameMicroseconds": 3980956,
+      "eye": [
+        36.0,
+        32.0,
+        111.0
+      ],
+      "fov": 68.0,
+      "geometryHash": "f5a3d0d7b2872fa7c7fa6bb2727ee31915a717ffbc160343acf491fe3b9bc49e",
+      "glbSha256": "4943e353f4626a11f1e515b9046c92df30985ef725f399f651a8d8ddad953995",
+      "path": "res://tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-01/captures/grounded-frame-exterior-candidate-runtime-after.png",
+      "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+      "renderingMethod": "gl_compatibility",
+      "sha256": "ab52fd4b6494f986c2ff066ac0fd7b2d0c17285ff3c24398bd2d3c827a13efb0",
+      "staticMemoryBytes": 444118545,
+      "staticViewMeanFrameMs": 497.6195,
+      "target": [
+        12.0,
+        20.5,
+        85.0
+      ],
+      "variant": "candidate-runtime-after",
+      "videoMemoryBytes": 78473202.0,
+      "view": "grounded-frame-exterior",
+      "weather": {
+        "audio_frames": 0,
+        "authoritative_time": true,
+        "biome": {
+          "biome": "canyon",
+          "mood": "hot",
+          "particles": "dust",
+          "tint": "#8a6a44"
+        },
+        "elapsed": 12.0,
+        "emits_per_tick_limit": 44,
+        "enabled": true,
+        "focused": true,
+        "lightning_flashes": 0,
+        "muted": true,
+        "native_weather_suppressed": true,
+        "particle_limit": 48,
+        "particles": 0,
+        "reduced_motion": false,
+        "seed": 61002,
+        "thunder_count": 0,
+        "time": {
+          "blend": 0.0761904761904762,
+          "cycle": "day",
+          "from": "day",
+          "phase": "day",
+          "t": 0.019047619047619,
+          "to": "dusk"
+        },
+        "wants_precipitation_handoff": false,
+        "weather": "clear",
+        "wind": 0.88973063205927
+      },
+      "weatherLook": {
+        "additional_colliders": 0,
+        "additional_geometry_nodes": 0,
+        "binding_cap": 16384,
+        "bindings": 38,
+        "capped": false,
+        "material_cap": 256,
+        "materials": 38,
+        "node_cap": 16384,
+        "uniform_writes": 152,
+        "visited": 106,
+        "wet_shader_variants": 0,
+        "wet_textures": 0,
+        "wetness": 0.0
+      }
+    }
+  ],
+  "godot": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "manifestSha256": "11736b1029567fabc9c91956ab361ac1ad411398285e1713dfb4de941efed9e8",
+  "map": "helix-conservatory",
+  "scope": "untouched matched native presentation pairs, labelled repositioning; static backend timings, not dedicated GPU/hosted FPS; human/team-readability review pending"
+}

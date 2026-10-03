@@ -1,0 +1,26 @@
+{
+  "cameras": [
+    {
+      "id": "grounded-frame-exterior",
+      "eye": [
+        36,
+        32,
+        111
+      ],
+      "beforeEye": [
+        36,
+        32,
+        111
+      ],
+      "target": [
+        12,
+        20.5,
+        85
+      ],
+      "player": false,
+      "fov": 68,
+      "comparison": "matched exterior inspection; not a player-height or supported-standing claim"
+    }
+  ],
+  "scope": "additive exterior composition; all original probes and failed views retained"
+}

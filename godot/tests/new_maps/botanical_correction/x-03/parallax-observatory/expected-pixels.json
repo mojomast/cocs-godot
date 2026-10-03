@@ -1,0 +1,224 @@
+{
+  "parallax.etch": {
+    "albedo": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "f24ab109281d87edd799c4d209e12b96d81dfde1d6370f7403d2309aaf1f5dee"
+    },
+    "normal": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "38baa38c580085512e0b8b45986a459dcdbc6b6f589f35244110ac8844f6c85e"
+    },
+    "roughness": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "7fd1c88c02b250bf5b850b1df32e50d47004bfaf08680e59c63c43b0ceb5e077"
+    }
+  },
+  "parallax.enamel": {
+    "albedo": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "c909cceb732a8691217e76ad1696beed75bd4c8e57c3c2c6b9073fc3cd03e8fa"
+    },
+    "normal": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "7102ac0e861be6ccb24f0792a1d7684dda26baeb950df4558645785ba59edf8a"
+    },
+    "roughness": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "992c9884ab75d594120a603065554fefc9110393aa310603f4a3adf131a308cb"
+    }
+  },
+  "metal": {
+    "albedo": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "9ac0fb55d28f14de9b1fe3dfc8b819e471e7249e2f9dfc817e61c0bb70293b28"
+    },
+    "normal": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "f8144423636939cb7d27d21504161ad7b7476bf7fcebf02415d182a200acfc4b"
+    },
+    "roughness": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "092b6f37c2cd7b9bf01912226723f4597e8e700559486a4422b93cd53e69948d"
+    }
+  },
+  "mirror": {
+    "albedo": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "fa9f61aa3b1768a986b6efad9ca9352949f681df61af67cd6fa96ca21dd47b92"
+    },
+    "normal": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "48a7f5b7b1e2cc92953fb8a8dc34656f2599ba9fe07f54f522ca888aa8dbe1ca"
+    },
+    "roughness": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "3c3142e1136f462b97f2656acae18c81bd9eadd8b7a8dc9dd7b0ce3b808c1994"
+    }
+  },
+  "ochre": {
+    "albedo": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "9ac0fb55d28f14de9b1fe3dfc8b819e471e7249e2f9dfc817e61c0bb70293b28"
+    },
+    "normal": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "f8144423636939cb7d27d21504161ad7b7476bf7fcebf02415d182a200acfc4b"
+    },
+    "roughness": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "092b6f37c2cd7b9bf01912226723f4597e8e700559486a4422b93cd53e69948d"
+    }
+  },
+  "paving": {
+    "albedo": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "80f575926ad287a8c9e0af52a0f4fed17d2fcfd6106c52092845c51593317954"
+    },
+    "normal": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "29877da689b5f19a59035f8dc961fc83ec366b7cc1e286dd079f78b17820a1b2"
+    },
+    "roughness": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "9fc283f02bd74283c7cf1cb03836cc4a782026085761321eeff6150d4a89f497"
+    }
+  },
+  "saltstone": {
+    "albedo": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "040cbe903da85617723f40f492b241878a9dd671efeb32629bdf027890345d2c"
+    },
+    "normal": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "fcb6b6f0d4957d97e2f6de73053caf339bb9f42599362dec3a785331fc50c9a3"
+    },
+    "roughness": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "39a453e3605397bab316d0f6ebd82d8531d52570fe6f3791865ff1c8cb0ea92e"
+    }
+  },
+  "sea": {},
+  "cistern": {
+    "albedo": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "c909cceb732a8691217e76ad1696beed75bd4c8e57c3c2c6b9073fc3cd03e8fa"
+    },
+    "normal": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "7102ac0e861be6ccb24f0792a1d7684dda26baeb950df4558645785ba59edf8a"
+    },
+    "roughness": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "992c9884ab75d594120a603065554fefc9110393aa310603f4a3adf131a308cb"
+    }
+  },
+  "parallax.instrument-alloy": {
+    "albedo": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "9ac0fb55d28f14de9b1fe3dfc8b819e471e7249e2f9dfc817e61c0bb70293b28"
+    },
+    "normal": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "f8144423636939cb7d27d21504161ad7b7476bf7fcebf02415d182a200acfc4b"
+    },
+    "roughness": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "092b6f37c2cd7b9bf01912226723f4597e8e700559486a4422b93cd53e69948d"
+    }
+  },
+  "parallax.optics": {
+    "albedo": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "fa9f61aa3b1768a986b6efad9ca9352949f681df61af67cd6fa96ca21dd47b92"
+    },
+    "normal": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "48a7f5b7b1e2cc92953fb8a8dc34656f2599ba9fe07f54f522ca888aa8dbe1ca"
+    },
+    "roughness": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "3c3142e1136f462b97f2656acae18c81bd9eadd8b7a8dc9dd7b0ce3b808c1994"
+    }
+  },
+  "parallax.stone": {
+    "albedo": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "040cbe903da85617723f40f492b241878a9dd671efeb32629bdf027890345d2c"
+    },
+    "normal": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "fcb6b6f0d4957d97e2f6de73053caf339bb9f42599362dec3a785331fc50c9a3"
+    },
+    "roughness": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "39a453e3605397bab316d0f6ebd82d8531d52570fe6f3791865ff1c8cb0ea92e"
+    }
+  },
+  "parallax.trim": {
+    "albedo": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "adb711aa8d980b644c0c7e78f5c85b60c47450fa9f9dd5e961830d06b3d084cf"
+    },
+    "normal": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "e1c218dd1f3c4811833a6f7016df7e7c32daf180283697d6cf1fb7ed1b37b8fb"
+    },
+    "roughness": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "a9b49345020d05941d53796e9e33085145cff4738caaa85e0ec99577e01b80ad"
+    }
+  },
+  "parallax.glazing": {
+    "albedo": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "8d4488d0ddfa5ea3fae4031346e180d9c3cb276819b2ec43c37ad1228b4a2561"
+    },
+    "normal": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "b73bb7f8d2548379eacd0a85608bc96684aa6e5fa46849d3ce8c14db5a24e907"
+    },
+    "roughness": {
+      "width": 512,
+      "height": 512,
+      "rgba8Sha256": "72d7a49e1fae96a4db47cb85be1a516ce5b6fb5fbeb5def6b6d4f5810727a323"
+    }
+  }
+}

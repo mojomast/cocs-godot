@@ -1,0 +1,227 @@
+{
+  "reopened": "/home/mojo/.tmp-on-disk/cocs-botanical-source-correction/tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/parallax-observatory.blend",
+  "geometryHash": "3a5800e89876ebcc741381802def24415d5050651c0d3b831ea8b9ec3b77b4f9",
+  "exportBatches": 39,
+  "glbSha256": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+  "exportAudit": {
+    "triangles": 155553,
+    "triangleAdvisory": {
+      "policy": "advisory",
+      "measurement": "exported-glb",
+      "totalTriangles": 155553,
+      "targetTriangles": 150000,
+      "overTarget": true,
+      "overageTriangles": 5553,
+      "status": "pending-performance-visual-review"
+    },
+    "primitives": 39,
+    "usedMaterials": [
+      "cistern",
+      "metal",
+      "mirror",
+      "ochre",
+      "parallax.enamel",
+      "parallax.etch",
+      "parallax.glazing",
+      "parallax.instrument-alloy",
+      "parallax.optics",
+      "parallax.stone",
+      "parallax.trim",
+      "paving",
+      "saltstone",
+      "sea"
+    ],
+    "materialEvidence": {
+      "parallax.etch": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "parallax.enamel": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "metal": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "mirror": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "ochre": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "paving": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "saltstone": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "sea": {
+        "role": "preserve",
+        "geometryReferenced": true
+      },
+      "cistern": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "parallax.instrument-alloy": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "parallax.optics": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "parallax.stone": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "parallax.trim": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "parallax.glazing": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      }
+    },
+    "albedo": {
+      "parallax.etch": {
+        "sourceLinearSha256": "1f8c094d8076b8d5fa311429fdea69244b3191281bee2bf578ef6546932db9a0",
+        "exportSrgbSha256": "3650ca3b1f2912c15592ce96ae8ac1060230f7e2afcbc5c69058f4a0ef39d152",
+        "maxByteError": 0,
+        "normalSourceSha256": "d89e3a00bc065b6416942305ec7a1dea4dc35e255a16a33202ac7d4b8dd65bb8",
+        "normalExportSha256": "d89e3a00bc065b6416942305ec7a1dea4dc35e255a16a33202ac7d4b8dd65bb8",
+        "roughnessSourceSha256": "533f8c142bf3b24cdf74046e8e2dbfffbfe6ad4b75e8239bddd085761d25d43a",
+        "metallicRoughnessExportSha256": "c6d4f6d89e8e1939f03fd2ab6f48833ab616145621bae67169069de8fa5c4906"
+      },
+      "parallax.enamel": {
+        "sourceLinearSha256": "c8dfce6416c2b9eb145c63470331f6749e0338527fcb3045dfef15b435062702",
+        "exportSrgbSha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+        "maxByteError": 0,
+        "normalSourceSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "normalExportSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "roughnessSourceSha256": "2c63bee56ac7600342fd93f52ed17aa5d096b4e5c1d659168bd5d0586ae1afc5",
+        "metallicRoughnessExportSha256": "71bde5b9fa079061ce35291730a2f385a9c7bbe709e5b9f546844ac6861694bb"
+      },
+      "metal": {
+        "sourceLinearSha256": "1e3a2aab37bdc00b936e090f748a01caea2e3b30de33a972365328be6a03afdf",
+        "exportSrgbSha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+        "maxByteError": 0,
+        "normalSourceSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "normalExportSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "roughnessSourceSha256": "dbcaa37ae370a5150dc588fc6189126bb52c4e1b8e2671b129ded5078252d99a",
+        "metallicRoughnessExportSha256": "67503e7fe7d49b24e173c84bdf86895e7397702d3399772150136dddfc65aa75"
+      },
+      "mirror": {
+        "sourceLinearSha256": "04e59645eb4b274341f7c33f4b5ad6d9ee6e1ed73e7f77459d3201bca35f20bb",
+        "exportSrgbSha256": "4f6e5eac683c7514dbb923552cd810789d046c0be9716dded91c4aba533e9ad9",
+        "maxByteError": 0,
+        "normalSourceSha256": "0e9012adf948ca4002ae0ec05e9ecf71a6cf1611882b48784d93b1906490471e",
+        "normalExportSha256": "0e9012adf948ca4002ae0ec05e9ecf71a6cf1611882b48784d93b1906490471e",
+        "roughnessSourceSha256": "ab2a3570a390d7f829bc2ad31416c363b03a9d379c70a3d2a296bd4dc42897bc",
+        "metallicRoughnessExportSha256": "ac51f0038b9e13507615ed8e5fd78c24f704bc51eee5a7eebbeef9fc7e636838"
+      },
+      "ochre": {
+        "sourceLinearSha256": "1e3a2aab37bdc00b936e090f748a01caea2e3b30de33a972365328be6a03afdf",
+        "exportSrgbSha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+        "maxByteError": 0,
+        "normalSourceSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "normalExportSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "roughnessSourceSha256": "dbcaa37ae370a5150dc588fc6189126bb52c4e1b8e2671b129ded5078252d99a",
+        "metallicRoughnessExportSha256": "67503e7fe7d49b24e173c84bdf86895e7397702d3399772150136dddfc65aa75"
+      },
+      "paving": {
+        "sourceLinearSha256": "3a8121ed72b1989934ad32ee733f68b2e4af83372dfb1964efa9fd25c633091e",
+        "exportSrgbSha256": "b294342e60378d7fc2d45a9c631c42bde77de529b168f35fbc6194e5998252ae",
+        "maxByteError": 0,
+        "normalSourceSha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+        "normalExportSha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+        "roughnessSourceSha256": "a5d214313015eef0cbbe497983753826b69aa568c3667a7298915a7c16188d07",
+        "metallicRoughnessExportSha256": "6a222a03f8c50f54d7767c9e88be930c9a8d9b29c71d2db5493a9b23b209a2e3"
+      },
+      "saltstone": {
+        "sourceLinearSha256": "6bc2e95ea14074fed620bfcf9fb61bff4c4336747c062ce17f9d2b1108ae6042",
+        "exportSrgbSha256": "fa9d87ca9e5a26b74c480a1134f64a982d8230e0e59ecc50e64b1de5cbfc3d7d",
+        "maxByteError": 0,
+        "normalSourceSha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+        "normalExportSha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+        "roughnessSourceSha256": "d3a83a3eab2cdd5ef13cbd28e30fadb1c76ca11278996720304800db3d59da8a",
+        "metallicRoughnessExportSha256": "1c75ff4425dd7d13e8225cf6e09f7ff498c535f291b64a2f60ba69fdc8d6baa8"
+      },
+      "cistern": {
+        "sourceLinearSha256": "c8dfce6416c2b9eb145c63470331f6749e0338527fcb3045dfef15b435062702",
+        "exportSrgbSha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+        "maxByteError": 0,
+        "normalSourceSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "normalExportSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "roughnessSourceSha256": "2c63bee56ac7600342fd93f52ed17aa5d096b4e5c1d659168bd5d0586ae1afc5",
+        "metallicRoughnessExportSha256": "71bde5b9fa079061ce35291730a2f385a9c7bbe709e5b9f546844ac6861694bb"
+      },
+      "parallax.instrument-alloy": {
+        "sourceLinearSha256": "1e3a2aab37bdc00b936e090f748a01caea2e3b30de33a972365328be6a03afdf",
+        "exportSrgbSha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+        "maxByteError": 0,
+        "normalSourceSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "normalExportSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "roughnessSourceSha256": "dbcaa37ae370a5150dc588fc6189126bb52c4e1b8e2671b129ded5078252d99a",
+        "metallicRoughnessExportSha256": "67503e7fe7d49b24e173c84bdf86895e7397702d3399772150136dddfc65aa75"
+      },
+      "parallax.optics": {
+        "sourceLinearSha256": "04e59645eb4b274341f7c33f4b5ad6d9ee6e1ed73e7f77459d3201bca35f20bb",
+        "exportSrgbSha256": "4f6e5eac683c7514dbb923552cd810789d046c0be9716dded91c4aba533e9ad9",
+        "maxByteError": 0,
+        "normalSourceSha256": "0e9012adf948ca4002ae0ec05e9ecf71a6cf1611882b48784d93b1906490471e",
+        "normalExportSha256": "0e9012adf948ca4002ae0ec05e9ecf71a6cf1611882b48784d93b1906490471e",
+        "roughnessSourceSha256": "ab2a3570a390d7f829bc2ad31416c363b03a9d379c70a3d2a296bd4dc42897bc",
+        "metallicRoughnessExportSha256": "ac51f0038b9e13507615ed8e5fd78c24f704bc51eee5a7eebbeef9fc7e636838"
+      },
+      "parallax.stone": {
+        "sourceLinearSha256": "6bc2e95ea14074fed620bfcf9fb61bff4c4336747c062ce17f9d2b1108ae6042",
+        "exportSrgbSha256": "fa9d87ca9e5a26b74c480a1134f64a982d8230e0e59ecc50e64b1de5cbfc3d7d",
+        "maxByteError": 0,
+        "normalSourceSha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+        "normalExportSha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+        "roughnessSourceSha256": "d3a83a3eab2cdd5ef13cbd28e30fadb1c76ca11278996720304800db3d59da8a",
+        "metallicRoughnessExportSha256": "1c75ff4425dd7d13e8225cf6e09f7ff498c535f291b64a2f60ba69fdc8d6baa8"
+      },
+      "parallax.trim": {
+        "sourceLinearSha256": "3fb928bcb4dda60fb10b5a874e4b8e1ff1fa5cfcb8dd79de0321827abcb64b5c",
+        "exportSrgbSha256": "7ec0ff69d1060e45b2338f4c2add68d729625405f9801701d78239dded35f131",
+        "maxByteError": 0,
+        "normalSourceSha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+        "normalExportSha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+        "roughnessSourceSha256": "e1ad3d9376571e1bf01573c4d9aa5dad04bcbff53832675c412e064218a22233",
+        "metallicRoughnessExportSha256": "aafa178f61e21e1b86899d79151263b01e71441ba6ba13361f124b408c285f0b"
+      },
+      "parallax.glazing": {
+        "sourceLinearSha256": "bfb249ce1aab01033c3cec21b56141370454499667d2926bb2fce73c2cd862c9",
+        "exportSrgbSha256": "a823f19423db40ca2d79d5a243a5ae00994aaf183e463c176b7982609a5127ed",
+        "maxByteError": 0,
+        "normalSourceSha256": "2d73be97dcd93087d974245aee5389579f254b2c71697a098844b9721f51fb3f",
+        "normalExportSha256": "2d73be97dcd93087d974245aee5389579f254b2c71697a098844b9721f51fb3f",
+        "roughnessSourceSha256": "1e0a78dc9469061ad9572a32129876b75e427dd6beeae009104a849ff9737a4f",
+        "metallicRoughnessExportSha256": "1b39432d14089e6c4d560626cfd40a400865a9d9559be011ea3371b03a087874"
+      }
+    },
+    "evaluatedTriangleDelta": 0,
+    "geometryValidation": "scene-referenced embedded accessor bytes verified; non-instanced static export"
+  }
+}

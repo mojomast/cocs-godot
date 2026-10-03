@@ -1,0 +1,2014 @@
+{
+  "scope": "Selective actual X Helix/Parallax evidence and historical Helix/combined receipts only; no Vesper artifact approval or runtime promotion",
+  "producerCommit": "171ffddbba288c091af1bd7a2aa7b881cfd3fb40",
+  "baseCommit": "2f64d2de",
+  "producerWorktreeAtCopy": "/home/mojo/.tmp-on-disk/cocs-botanical-source-correction",
+  "selectedFileCount": 332,
+  "groupCounts": {
+    "x-03/helix-conservatory": 159,
+    "x-03/parallax-observatory": 146,
+    "historical-helix-x-01": 3,
+    "historical-helix-x-02": 19,
+    "historical-combined-X": 5
+  },
+  "originalFullInventory": {
+    "path": "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/artifact-inventory.json",
+    "sha256": "440a1291201eaa3ee55f9c0218503ac4588028bfae7fee5c46364673bf94bd78",
+    "entryCount": 600,
+    "scope": "historical complete X inventory; Vesper entries absent from this selective branch"
+  },
+  "files": {
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/authority.json": {
+      "sha256": "1e5847c04d1a18165333a900e77db33ff24017d87eb87e5efed779d59d52d2bb",
+      "bytes": 46690271,
+      "producerBlobOid": "ecaca1aabce841c997bb23dc1e5d6d6db921ff8d",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate.glb": {
+      "sha256": "4943e353f4626a11f1e515b9046c92df30985ef725f399f651a8d8ddad953995",
+      "bytes": 24336616,
+      "producerBlobOid": "e78c189644767c0ebf02f381d3a8d0fa37ce22c7",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate.glb.import": {
+      "sha256": "9f7c7330e193703027ad63cbdd8d266e031e919097f0c32b973491eeb8eda584",
+      "bytes": 1093,
+      "producerBlobOid": "b2c7200bfe33eaca6775086c8d7f73de184a88ce",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_anodized-brush-albedo-srgb.png": {
+      "sha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+      "bytes": 57595,
+      "producerBlobOid": "5390b9803911b967c27959df02491cad02435f87",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_anodized-brush-albedo-srgb.png.import": {
+      "sha256": "3efaf09556352a98336724faad199ba48b5fecb827c55f7e17a8a8f4281eb133",
+      "bytes": 1137,
+      "producerBlobOid": "ae0815ff2f96c2415fcf44dd042e976ee8a84ff5",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_anodized-brush-normal.png": {
+      "sha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+      "bytes": 119904,
+      "producerBlobOid": "845585dea92333b1bc8b1c6f12eaaea8cc5ca6f4",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_anodized-brush-normal.png.import": {
+      "sha256": "80c1c4bdb59e34d50be7a0620918b2806536f62dce9c4e7621d35b2d5eb43d07",
+      "bytes": 1123,
+      "producerBlobOid": "ce93d2cfd84f67dfd02ec9758cee22f245e81356",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_anodized-brush-roughness.png": {
+      "sha256": "67503e7fe7d49b24e173c84bdf86895e7397702d3399772150136dddfc65aa75",
+      "bytes": 81358,
+      "producerBlobOid": "170e9929a603c795ef07575f4f308b36f2d9801f",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_anodized-brush-roughness.png.import": {
+      "sha256": "0851b2a9e4e5eaad79019f9ff484c782c19e8d3c0f0df25cd6ea5c1c8fb4d4b8",
+      "bytes": 1132,
+      "producerBlobOid": "33ad44ad6faee2e50e27540dc63d41e4e0affcd6",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_bark-fibers-albedo-srgb.png": {
+      "sha256": "992962a0a31a62c6f3d2629485781441b28d0fed62f9069ce9b284cd5970cd21",
+      "bytes": 69723,
+      "producerBlobOid": "577710dd71d0fad61d59fec229643c82f3e27639",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_bark-fibers-albedo-srgb.png.import": {
+      "sha256": "3906b4dc57bc5810f5ae5853e5881aaa9ff274aef44e7e4098e7b6ee38a1e821",
+      "bytes": 1128,
+      "producerBlobOid": "93473ea15e414c5c90466282a8d9e443bfe6f6b4",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_bark-fibers-normal.png": {
+      "sha256": "eb7687cc095b294658f7d1171dca8758eb2c4af20e71d5caa04f0cc3ce08bd68",
+      "bytes": 441055,
+      "producerBlobOid": "8ea55716b6a8fe3c62242bb71651005f24c3fc1b",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_bark-fibers-normal.png.import": {
+      "sha256": "819e93b9c7a63b62ae91f651f06241d840ffe3f9603c437479ce932141a52060",
+      "bytes": 1114,
+      "producerBlobOid": "0bcaf76d361e6e1d031306f29c6d7fb1c0354acc",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_bark-fibers-roughness.png": {
+      "sha256": "628c59ced159e99590f04a525e2436cb273c2eee9eadc5fc73b32f9ff1475641",
+      "bytes": 75242,
+      "producerBlobOid": "6e6dfa0e8c793395647aab98246533704d2abf48",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_bark-fibers-roughness.png.import": {
+      "sha256": "c1b212c3f84131fa5d927bb941881fd63c76735309c01422f85689aa93f631d5",
+      "bytes": 1122,
+      "producerBlobOid": "ae66f8eef6b0c12063bf6fd9e35c74e268e628a2",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_ceramic-enamel-albedo-srgb.png": {
+      "sha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+      "bytes": 47156,
+      "producerBlobOid": "422eda3b7a3ed2642a9e51fff5cb31e14b9f77cb",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_ceramic-enamel-albedo-srgb.png.import": {
+      "sha256": "fd475bbbd0f4ad5eb50205d6ae3d4af4fab87ba3193978ea19825901115f7608",
+      "bytes": 1137,
+      "producerBlobOid": "1dab1187310b6cba20c4f62d2884946d8c0855b8",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_ceramic-enamel-normal.png": {
+      "sha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+      "bytes": 133720,
+      "producerBlobOid": "c50482b4cbff89c1086e3e626c0c9cb28dedeb41",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_ceramic-enamel-normal.png.import": {
+      "sha256": "c7175d4ff2ad0544899c94ee89a4fc09aea142a57d098efa73bac2b3c4e7c26f",
+      "bytes": 1122,
+      "producerBlobOid": "2efef69898c5bd7e4bde24764be0a38fa1b27023",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_ceramic-enamel-roughness.png": {
+      "sha256": "71bde5b9fa079061ce35291730a2f385a9c7bbe709e5b9f546844ac6861694bb",
+      "bytes": 55437,
+      "producerBlobOid": "9fb63e5243fecc829354df1d707495c004da0cb3",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_ceramic-enamel-roughness.png.import": {
+      "sha256": "0e1d7d328bf05b242bde9048f9bff6b9b7c3df69e8b70097fa1f3ed017231df1",
+      "bytes": 1132,
+      "producerBlobOid": "587c6e2b9b8186780d973a42c7ca6a9caa4bafab",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_copper-patina-albedo-srgb.png": {
+      "sha256": "df08158f6dfced7e3e823f32b1a796ece7a2fed8f763505c6f43980cd82516e2",
+      "bytes": 103983,
+      "producerBlobOid": "3a360f133b8923a0f3ed672bbbbdba28a3ce5102",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_copper-patina-albedo-srgb.png.import": {
+      "sha256": "c58ec3b53f1e9d511dcd3fd6a650358db7833e67f0194ea34ddfa26a33e43f32",
+      "bytes": 1135,
+      "producerBlobOid": "a7de240fb4088ce3cc773a7a7c9195c446ca0a1c",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_copper-patina-normal.png": {
+      "sha256": "7b2ec1c6a0837fdbbe67ed0779e2d39ad3637b405ed0a5186ac21b94db2dab9c",
+      "bytes": 261676,
+      "producerBlobOid": "b89be9774cd526ae63697ea1a6d5eb84f48681e1",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_copper-patina-normal.png.import": {
+      "sha256": "3af2d43ce1c46a22240cfd65fb23a9915b059e899c2ac2a085be2932737cac3a",
+      "bytes": 1119,
+      "producerBlobOid": "c1d342f771aa2bce311f2f6272b2aeb5c43d0809",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_copper-patina-roughness.png": {
+      "sha256": "2d9934b2c971746003f84cc364c085cf55062a49e90d548a800496a416830698",
+      "bytes": 89497,
+      "producerBlobOid": "3ed28296e028675af4c16dab10309992707b591f",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_copper-patina-roughness.png.import": {
+      "sha256": "62646c8caf2cbe35873b94fda06b1d96f78c3d401e8aa5bdecd8e2b873dd6598",
+      "bytes": 1128,
+      "producerBlobOid": "26000adecb77e4682e257e2c16205ab1633a04aa",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_fern-frond-albedo-srgb.png": {
+      "sha256": "00ee4e4c13507056a52866ac24a57605e06d5e9f1cb40f13177153486a689d7a",
+      "bytes": 47387,
+      "producerBlobOid": "3198b08a5e59323dc00aaad31b8102f6a69166df",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_fern-frond-albedo-srgb.png.import": {
+      "sha256": "0aae7d25dee34f4ec5549332f34818db48e092b3daccdf4fc7b7f5ebfdb50114",
+      "bytes": 1126,
+      "producerBlobOid": "5922354f007f745ca85fa8c7d852614ee59b76d5",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_fern-frond-normal.png": {
+      "sha256": "d60070f0af03f33c351a6049a871fe839a6fcacc39889e9ca5b1752be2f42771",
+      "bytes": 85180,
+      "producerBlobOid": "cacf5d263a8d70888ba4ba7d20aed8bab0aa9f29",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_fern-frond-normal.png.import": {
+      "sha256": "669c67e62520d23566714e400be3f77b518ab86c176b904d66c942cd53a18103",
+      "bytes": 1111,
+      "producerBlobOid": "7aec66116d1a6fd66d03d819615319857b2f203e",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_fern-frond-roughness.png": {
+      "sha256": "f1886e518ac4881e34f7ddbfaf99a5467f666c2d0d2640afccf7af4c7a04d98d",
+      "bytes": 50935,
+      "producerBlobOid": "e110f6d299293e3bcc902bd4816c9462eea3218f",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_fern-frond-roughness.png.import": {
+      "sha256": "27771188a488bbb3d66ef63640091501f6d97690949e4ccfda6d2c9389686de4",
+      "bytes": 1120,
+      "producerBlobOid": "5542e30d05939391db9c2b5378ffee90d22e5382",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_grotto-wet-rock-albedo-srgb.png": {
+      "sha256": "a1af71522942bb686c9179744d34832a1223759730c8920f96140895c3aba7ce",
+      "bytes": 40944,
+      "producerBlobOid": "954a156ff53d8adf0eeb3ad7a9021e352368c66f",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_grotto-wet-rock-albedo-srgb.png.import": {
+      "sha256": "bcb11e2361160cec43184e9618c4a8c4a38f4c4c77341091a6abb3d26f23059b",
+      "bytes": 1140,
+      "producerBlobOid": "7b97cd1da2237eaf5337314dc54c1d2fafdae439",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_grotto-wet-rock-normal.png": {
+      "sha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+      "bytes": 326596,
+      "producerBlobOid": "2b514576bf6ccd2ce04a406c7b31b26bb645ba5a",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_grotto-wet-rock-normal.png.import": {
+      "sha256": "54a6ed0f54cc5bf1f87fe5ce29545a898e16090c9cfb10f46bda5143ef6db1fc",
+      "bytes": 1125,
+      "producerBlobOid": "ebecc085323aaf3b84050fb80c5d70e927c5139a",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_grotto-wet-rock-roughness.png": {
+      "sha256": "0f473df2e1651818d95033b65fb66e6d4470dea19390c4fd663b07a1e88ae214",
+      "bytes": 76440,
+      "producerBlobOid": "5b1e221be0c684830b0c93cbfd0b8136b4a16ec0",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_grotto-wet-rock-roughness.png.import": {
+      "sha256": "155cf60b081a620ba294f6983d5373ed12b159dcb18bf00720675d609061305d",
+      "bytes": 1135,
+      "producerBlobOid": "c5c9cc4d4f2ecffe7ac11ae3f46275277ee77700",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_masonry-coping-albedo-srgb.png": {
+      "sha256": "a3888e7190c86f73f6c3863b84610a34f1b6cc58d4384f6c77fc0d784d5f33d3",
+      "bytes": 57224,
+      "producerBlobOid": "9829e32766d34286fc6d8e468b77981544b18aa0",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_masonry-coping-albedo-srgb.png.import": {
+      "sha256": "7fbbafc44bdcab81f39039fd74b018ae26cbd78ece89290a95f36ed1e00a2aa2",
+      "bytes": 1138,
+      "producerBlobOid": "aba9c4e14a89cf4ac98125f3086b11f78000d285",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_masonry-coping-normal.png": {
+      "sha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+      "bytes": 131879,
+      "producerBlobOid": "06b207c19b3cb97936268c1c82ca5596168a2b93",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_masonry-coping-normal.png.import": {
+      "sha256": "9ab9c87c8f0be4fbdd82b522dbcb8cfaa69482aa2a132b218fc2324f6cea6a23",
+      "bytes": 1121,
+      "producerBlobOid": "6c7970c80b8db6fb67e1a4c014a33ffa938b3973",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_masonry-coping-roughness.png": {
+      "sha256": "ac19978333cc91117da8a23650dc1ed916fc3ae97ab6b1a5bfffe1e8669cae86",
+      "bytes": 48277,
+      "producerBlobOid": "6532f1036c6aff408afc8f9099ddbdab17c7454a",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_masonry-coping-roughness.png.import": {
+      "sha256": "169803881e8a91b5e2c49012f997ba2ed144d629558326fae6c0718e23ba7c96",
+      "bytes": 1132,
+      "producerBlobOid": "199cba023d6c52cf6f2db65ffc8af1d65aec4791",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-lichen-albedo-srgb.png": {
+      "sha256": "52052d69c0f0bfd3fc750b7ff11c49ccad82bf06b169a63ed3a78da57a58d14c",
+      "bytes": 93045,
+      "producerBlobOid": "456bd3458993f2ef7c355b61c02126bc7f8aa623",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-lichen-albedo-srgb.png.import": {
+      "sha256": "77cb79d7f25c3edd2581e05a46bbd411afb416b417bb35611675c770f0209d4b",
+      "bytes": 1129,
+      "producerBlobOid": "2e44502ff4d2a920f6fc65c9f7c45bea95277632",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-lichen-normal.png": {
+      "sha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+      "bytes": 419889,
+      "producerBlobOid": "214826b4efa5a28769ccddc88ca6509c93d0b70c",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-lichen-normal.png.import": {
+      "sha256": "98e3dded86fef50191bfec3cc57940d654ffa5f64f605c114c76e1635099bc60",
+      "bytes": 1114,
+      "producerBlobOid": "02b72b2cebf05af16cd1b5bf70be1e6323b0ac73",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-lichen-roughness.png": {
+      "sha256": "1baff9fef6df67a9357eca48d51f45501a7710833cc461d0d58fd85a2916b9fe",
+      "bytes": 89138,
+      "producerBlobOid": "c3dcf1aa78e4d7f17688277c3ab1883f201fd431",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-lichen-roughness.png.import": {
+      "sha256": "35406ba4123697239699f8c95d217e11768cfd42e96319941fe75bed0e633c29",
+      "bytes": 1123,
+      "producerBlobOid": "d9e5b990a82ce4220e6da47cd04fc66557302af6",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-warm-weather-albedo-srgb.png": {
+      "sha256": "7e3d11e8311ecc5d52a910038cead50d3383a68bfb7c6412d6c8f19c72d7eedd",
+      "bytes": 113185,
+      "producerBlobOid": "28b92eff1f05abbaaae9612c02f112949955de2e",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-warm-weather-albedo-srgb.png.import": {
+      "sha256": "8946e1b9921b1235f038d02e941cfd570b72cd71138baf1984ca2deca9b3558e",
+      "bytes": 1147,
+      "producerBlobOid": "c9638932a4c30ac4882bbad20690276a62e6e251",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-warm-weather-normal.png": {
+      "sha256": "b7051d968859c381dced9cfcb07c441bd1172e9d8ef133d689289e908f22958f",
+      "bytes": 355747,
+      "producerBlobOid": "36c07a8cc6f684bca0edf7a03ab6f18cef742634",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-warm-weather-normal.png.import": {
+      "sha256": "5e9a4f0857617178e258b2480a962c199c992cbd7b79173d6eaf68ae80c4095b",
+      "bytes": 1132,
+      "producerBlobOid": "4fe7c3434ab323d9b2fd4ba081d8f4b5fc9e0334",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-warm-weather-roughness.png": {
+      "sha256": "a161bdedf82c43ba685ac624c9ffcaba8a86b5535de18e7a0cb4c0e324e391a6",
+      "bytes": 83380,
+      "producerBlobOid": "4af3c3fec7e77b67570f250a0890533338b3d51f",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-warm-weather-roughness.png.import": {
+      "sha256": "30ffa76ce7fae4490d623a72d24b4da4aabeb9d66402c353cc147a3788f46d20",
+      "bytes": 1140,
+      "producerBlobOid": "c60b31f64221ab255e958539ed6b25055d34caff",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_prismatic-etch-albedo-srgb.png": {
+      "sha256": "526808c6be3d9794759f14a5660bb6a87a157420827d31cca03e6d625819e8f9",
+      "bytes": 97393,
+      "producerBlobOid": "9214d28022dd0202dae321ff1140c36d650e6e68",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_prismatic-etch-albedo-srgb.png.import": {
+      "sha256": "4b0abe38c70866f8af01d672de42be514960aedf543a479d00a96196155e54d7",
+      "bytes": 1137,
+      "producerBlobOid": "f6b5569c5b179d4316d805643e63ec2414c76fcf",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_prismatic-etch-normal.png": {
+      "sha256": "f1e48753f0784ad31eadbb496bdb559252c2e4e034653e02ddbb020fb4249401",
+      "bytes": 203698,
+      "producerBlobOid": "278f54692f7acd90da79930676728a7b7a1897b9",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_prismatic-etch-normal.png.import": {
+      "sha256": "ead78eb820bff2fe9803a8cb0ce89b3a474d86d182e7825b0ad46d0c3a202b96",
+      "bytes": 1123,
+      "producerBlobOid": "d02dee75987336a8bfe52a260e5696552673b359",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_prismatic-etch-roughness.png": {
+      "sha256": "589fb767fa2aba1669225ff5f63e512358278c5f3022ca2b8e26c67000407009",
+      "bytes": 99940,
+      "producerBlobOid": "426d35759cf02058a0c8da5703ba3d5e4161ed6a",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_prismatic-etch-roughness.png.import": {
+      "sha256": "aa7dc864c6ea7280428c91f47f2a90730e0419bc0c241607d9d04d23cad4de3d",
+      "bytes": 1132,
+      "producerBlobOid": "8dede84611390a673f4f0242dd75bd0a3743b277",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_terracotta-albedo-srgb.png": {
+      "sha256": "19efdd03cd0bc98d04405f04c04b8b9ac1293ca0751103c4e4a11e9ab4b92124",
+      "bytes": 53680,
+      "producerBlobOid": "19ead8921476498664f54aeddd804825eafc13e0",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_terracotta-albedo-srgb.png.import": {
+      "sha256": "f997b7eb791d080f8c9a41fbc938cc9296ede40b610d5261eb201b45324c08cc",
+      "bytes": 1126,
+      "producerBlobOid": "66f1b9ecb8e3fa8de5643b974aeb69e203160703",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_terracotta-normal.png": {
+      "sha256": "a82b4af6b637ecd74953a0f4af261acc637eab255e80f6117a231f5d0b564ca5",
+      "bytes": 174659,
+      "producerBlobOid": "e4c53fe50c9d8499f45eb07a33cf753c11d82c14",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_terracotta-normal.png.import": {
+      "sha256": "86698e90e162af78b68013ebb47fefc6748d08b8a167172a6887fd52f703350d",
+      "bytes": 1111,
+      "producerBlobOid": "3422d58eee464dbe161238847b687dad343b5528",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_terracotta-roughness.png": {
+      "sha256": "3d8531df0143abe737299e022b6ccd643092c9d1851b23973be0ab4ef2a7d0ef",
+      "bytes": 54081,
+      "producerBlobOid": "1d78513c538b7887f54d8ec86758031187a4a569",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_terracotta-roughness.png.import": {
+      "sha256": "4d5dc7a1e58cab6f2bf9f3949afe2f126a14bc60b2f41c59d8184413e9c7ced6",
+      "bytes": 1120,
+      "producerBlobOid": "115b54a9e134e1e0473dc4de196fdf30c0a8910d",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/capture-report.json": {
+      "sha256": "75a0f0cdf307d179f29ec73e2d293b5ddf973f3d73e07e02da35537c2c2acf7a",
+      "bytes": 36770,
+      "producerBlobOid": "b0575f9d6d33ec009d163723205a8029f5a3ceed",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/capture.gd": {
+      "sha256": "920d1dbc5418d810fb5e7f68afb69e2f144e451e89517c0e21c15ceef378c213",
+      "bytes": 4768,
+      "producerBlobOid": "16057b30c12fe949e16f312407288b110d2c81c0",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/capture.gd.uid": {
+      "sha256": "45912cbc523347af11ee1e97ac319002ea4bb6aead1c69dcacae569d02f1f2c0",
+      "bytes": 20,
+      "producerBlobOid": "a5ecba35ddc20254d377b055a8d085246834bf57",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/archive-player-accepted-runtime-before.png": {
+      "sha256": "4f7dfd37150c3d23a7b19b2b84ffed25aeabe7b19d7b014e1d96055572269a67",
+      "bytes": 612760,
+      "producerBlobOid": "c46cf376cd5f367c042774f82ac94da01613a9c4",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/archive-player-accepted-runtime-before.png.import": {
+      "sha256": "7d63b63fdf1fc9d49252c7aadb0684a9beeb236660a607aecb14be9d199a5b29",
+      "bytes": 1087,
+      "producerBlobOid": "ae81ad4da51cd69c1482239646b42ad34d392448",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/archive-player-candidate-runtime-after.png": {
+      "sha256": "78e153f2b503af39a07e3c4dc4e024881553c6c0bf329006eeefe97bdd13f9c3",
+      "bytes": 662370,
+      "producerBlobOid": "032f4607df92401a31977783a9096f2f43af365d",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/archive-player-candidate-runtime-after.png.import": {
+      "sha256": "1738a4845769a11b6cc8d0d5f4d46b0e858f41ab2287404d519fa1f872b5fe82",
+      "bytes": 1087,
+      "producerBlobOid": "97e9246c41ddf1ae2a204a253138420a24e7f058",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/botanical-eye-accepted-runtime-before.png": {
+      "sha256": "d132a1d86aa9bc57f27ea17a1b983f74160360fd5b5a44bff89a7629d6617e3a",
+      "bytes": 612025,
+      "producerBlobOid": "747e770987cf171d2f2c67f417b645cca7f05751",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/botanical-eye-accepted-runtime-before.png.import": {
+      "sha256": "c4dd8215e15e14c3e8a15446cf9ef33d7948772164b7ca4be25e7f1a6780daf4",
+      "bytes": 1083,
+      "producerBlobOid": "341b30b4d4b22ae2166832a20ea67570186c4182",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/botanical-eye-candidate-runtime-after.png": {
+      "sha256": "fb338c7bf75e20b962b152924fe8f9d8b82f0615ddef0da9b6a6fe1458be74ea",
+      "bytes": 750814,
+      "producerBlobOid": "3dae15f313305f41cbb662438a0de90ab25c4597",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/botanical-eye-candidate-runtime-after.png.import": {
+      "sha256": "1c138dc50785a7dc7292587c5de36bff31b0d97dfe71c36320ef655c435c107a",
+      "bytes": 1084,
+      "producerBlobOid": "10ff4498dbd418d544fad4ecdc640469abffcefb",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/canopy-player-accepted-runtime-before.png": {
+      "sha256": "c845172746ab1e8c085f53d310ed6aa6f6ebceefcf5560be64539e95a25235c2",
+      "bytes": 572598,
+      "producerBlobOid": "8d62e3200584eaebabc23094dd255395430f29a1",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/canopy-player-accepted-runtime-before.png.import": {
+      "sha256": "d0b1860ae79a408b5c03abc1a8d2fa93ee32200725fa672c7077f6570958ff55",
+      "bytes": 1084,
+      "producerBlobOid": "a9ea1f90d830e5fb9dc87d9d745fefcef77828a2",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/canopy-player-candidate-runtime-after.png": {
+      "sha256": "d900e5c9f2209c6bf6b637dd90e378c779030e1d32da92f887619109921fa1d4",
+      "bytes": 864997,
+      "producerBlobOid": "0436b36e2a296ae175fc8d40e33b173db87f4ca5",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/canopy-player-candidate-runtime-after.png.import": {
+      "sha256": "46e9e961aac58f3ea0e723ce36cea0950309d8affaa526baf4100261251e3385",
+      "bytes": 1084,
+      "producerBlobOid": "cb90540991cef0f2d80a6894c819346904a134a9",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/crown-player-accepted-runtime-before.png": {
+      "sha256": "4780b87e091265974bc0747a9d16ff4185de210253652a71a0ab6f22dbe80e3c",
+      "bytes": 575177,
+      "producerBlobOid": "17b762d7bc17179af0d9996fe9981ebe6b782d73",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/crown-player-accepted-runtime-before.png.import": {
+      "sha256": "df1e39464be3bacf70fa5eeb81e8a0bb04436ebe83912d0cfd2d36b8bac60917",
+      "bytes": 1081,
+      "producerBlobOid": "e91303ca7afeb8c26944ffba04f2225eb5ff6255",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/crown-player-candidate-runtime-after.png": {
+      "sha256": "b8924adb372d4d575197b44b521da714cd8aca51556c827a477435c43226a0e2",
+      "bytes": 811431,
+      "producerBlobOid": "b50151c870b2655fd4cc1987be2d0e2fcf839fc8",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/crown-player-candidate-runtime-after.png.import": {
+      "sha256": "264f80cf98595bb1cc065f60e8afc722a3886ce6a1f31c5af359cbc2906e9327",
+      "bytes": 1081,
+      "producerBlobOid": "d5ba69497e2c77d6794dd60e8e85529f1ce7fdb2",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/greenhouse-eye-accepted-runtime-before.png": {
+      "sha256": "e0eb6a8a21bc4834eb3ea3de22dd85ecc3fdcf55bcfdf297166c094fb90d192d",
+      "bytes": 517671,
+      "producerBlobOid": "ec565a939fa8a2f894185a986dd3fd4dde7bcfd6",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/greenhouse-eye-accepted-runtime-before.png.import": {
+      "sha256": "d9823a5112af0f4ba615c0edcebc46fb0b6ac2017441134e0bcb4fd86fd1572f",
+      "bytes": 1086,
+      "producerBlobOid": "6acc211addb7747e01a2fd9cd569ce69d7302158",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/greenhouse-eye-candidate-runtime-after.png": {
+      "sha256": "97e295734c938e6e620c81206936d0aab89496a52c8e5c23e6e18bca9d52e258",
+      "bytes": 761291,
+      "producerBlobOid": "d079dc9f4008e16ac04f6da9c0eddbb649899e56",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/greenhouse-eye-candidate-runtime-after.png.import": {
+      "sha256": "d8b449a17ef06fb2760b26d563f06b9dec01fdef2c3c238c64effeaea009624c",
+      "bytes": 1087,
+      "producerBlobOid": "6d8e6882e7b52b94cc7a4bb06ccd3899efc94ed9",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/grotto-eye-accepted-runtime-before.png": {
+      "sha256": "4c857129fff5785d95cc4d1ec9ff7d61792c899ac9953d954d73e1cfbd6140c3",
+      "bytes": 551980,
+      "producerBlobOid": "32928ea040b29c0ab898b114f7fa118b9fd6d830",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/grotto-eye-accepted-runtime-before.png.import": {
+      "sha256": "97e433b5f0d4debfcf5f86281db103ee65695be6d54ec22b5ad49e10f2aa1b4c",
+      "bytes": 1074,
+      "producerBlobOid": "070889cf16755e3ebb8d936ba37115fc0d870370",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/grotto-eye-candidate-runtime-after.png": {
+      "sha256": "970f7f24d80340f8d24b99492f268532e5bfbcd17d8d8532c7634ea4147fc26a",
+      "bytes": 830261,
+      "producerBlobOid": "0314cec9cbacb515c3a330b6be443b5349a45f8f",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/grotto-eye-candidate-runtime-after.png.import": {
+      "sha256": "8b3687b3946ac6c8e0706a99bfd5b84ad4e1305f228c07183abd3bd8dabfc200",
+      "bytes": 1075,
+      "producerBlobOid": "7c46099e9188db3157691afa8e351c468c299605",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/lightwell-player-accepted-runtime-before.png": {
+      "sha256": "46b8a7dbbd3aa7f000caa9b405d7657fe77a0bd8df494a7b2ed0456c0cb79deb",
+      "bytes": 629243,
+      "producerBlobOid": "a4890aee6cfc566b91e4ba2e2f73f9afe5eb16e0",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/lightwell-player-accepted-runtime-before.png.import": {
+      "sha256": "eec057892a15cee9984aed0c4596c5bbb5914a5fad33e42eacb1be61c2fe73c8",
+      "bytes": 1093,
+      "producerBlobOid": "0baf7f08603d574af7bc6c67a6d2b68931bad4cc",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/lightwell-player-candidate-runtime-after.png": {
+      "sha256": "2d06059b9b80c6907d306bb3a548b8acc46e548e296caaddecb9e93d7d8993b4",
+      "bytes": 966898,
+      "producerBlobOid": "10f90c950fbe13f9c2ea4ecf5e03906771d734a2",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/lightwell-player-candidate-runtime-after.png.import": {
+      "sha256": "44604ef2259fe264d284259f9d936a1de529c03a1d724e24380ef16fcf906a06",
+      "bytes": 1093,
+      "producerBlobOid": "1d6ca7259b5daf24b3bc4b9373b953bc2417d931",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/overview-accepted-runtime-before.png": {
+      "sha256": "c9fad543dba9614f4fb46a7b880abc25cad71cbd056b463b9a0dc82804d32655",
+      "bytes": 325753,
+      "producerBlobOid": "36492647e164787dad5dd82ade2883f31e4eecfd",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/overview-accepted-runtime-before.png.import": {
+      "sha256": "3bff82dae7b26530f63c207dc8cb2eadbc4f20158f47be40542b1aa89ad3b468",
+      "bytes": 1068,
+      "producerBlobOid": "ac4fa7c8533db4146489a77b408321709fac290f",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/overview-candidate-runtime-after.png": {
+      "sha256": "347b2bc41525784888112632c87af7e2e8c7cbedca27a791ef08810972e59738",
+      "bytes": 549304,
+      "producerBlobOid": "5e61dc81c7b444852200e73988582c4abb071a8e",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/overview-candidate-runtime-after.png.import": {
+      "sha256": "2eda0c6ced6f99741195007dd95fdf0f6bace2218429db8d73c3266c78b5046c",
+      "bytes": 1068,
+      "producerBlobOid": "6b7eb07de409ea5951d05def2f5bf398d1307918",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-01/capture-report.json": {
+      "sha256": "4db0c790d3417a9c49e3423ba6a195ae18c7d2e525db48917e8e647b746d1366",
+      "bytes": 5256,
+      "producerBlobOid": "9a0045e8f93fb6826639fb0726564577cf472c22",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-01/capture.gd": {
+      "sha256": "f6092f45918078bd2f24a91a61aa2aac609329a7ac634842daa9706e3b8bf6f7",
+      "bytes": 4814,
+      "producerBlobOid": "986fe4748333fe4d640912f202912d083b88bc0b",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-01/captures/grounded-frame-exterior-accepted-runtime-before.png": {
+      "sha256": "1236290d2addebee5293913c61ec852fa4c04fc1b2e166a6bc08eba4173da3ac",
+      "bytes": 788313,
+      "producerBlobOid": "5c38b1bf03227e6687426ec92dd073682c227fab",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-01/captures/grounded-frame-exterior-candidate-runtime-after.png": {
+      "sha256": "ab52fd4b6494f986c2ff066ac0fd7b2d0c17285ff3c24398bd2d3c827a13efb0",
+      "bytes": 1119446,
+      "producerBlobOid": "59a5b68d4903232132ad792f3953a306c8a5d81d",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-01/probes.json": {
+      "sha256": "02464072b95fb55bf7eb4dfa4f234bf489a4043ed700312c49d53e888a8d065f",
+      "bytes": 494,
+      "producerBlobOid": "f5005d1d97ee140c1f7e953f1036ab5cf2623888",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-01/source.json": {
+      "sha256": "c14db196a9120d6f7722a3c822b14507c815ad9b4f98d88b4ee228620afd1c99",
+      "bytes": 391,
+      "producerBlobOid": "9ee9f5284e1e74ce078a33e1269a11998bbdfc9b",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-02/capture-report.json": {
+      "sha256": "eb169c98c3cbee3734c59382d94ef9fcfa2b442fcd05a09841c11cd9eb140098",
+      "bytes": 5238,
+      "producerBlobOid": "1c568e3788e2234a4a4cfa0a938ab58dc5c8e336",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-02/capture.gd": {
+      "sha256": "f836a7475129d227db01c1db89a9f93aeddae06afc1dbbf0ce14c8dd33e18d5f",
+      "bytes": 4814,
+      "producerBlobOid": "2470a316017330feed5b39a833b1447738e09acf",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-02/captures/grounded-frame-side-accepted-runtime-before.png": {
+      "sha256": "23c16339646f729ca84723cfdef1d49bfdb4a2583a2f800af48f1722205bd950",
+      "bytes": 278407,
+      "producerBlobOid": "9dfbc52e1c7671824cbd9f847216e793302ec01a",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-02/captures/grounded-frame-side-candidate-runtime-after.png": {
+      "sha256": "a944e8a428e2ff6eeda295878b2a5e334a3a55238c6c58936b1907fd4461e387",
+      "bytes": 275799,
+      "producerBlobOid": "dcb735812dc6208ed27eada09e1fc83abcd3e3fc",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-02/probes.json": {
+      "sha256": "8fa4ff448d01fe7e2711f2d7f7dd6d1842636c1bbcad8cf1c2cf2fdc6c71b396",
+      "bytes": 488,
+      "producerBlobOid": "8d1450257bb20d047530298e9b58a067eea084e8",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-02/source.json": {
+      "sha256": "a3e7eac0e01aea8b061a3939ea1edb4273cb0f94641d0ada21917a618d8c8d90",
+      "bytes": 391,
+      "producerBlobOid": "32323a86e4755d6032eefe98b695a4866164d8b9",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/expected-pixels.json": {
+      "sha256": "ad963e85ce6d3a9e977d519b392994920439d5fd2c6251c4681f0cf5d1fdd046",
+      "bytes": 7724,
+      "producerBlobOid": "5bb3d7df696f0fa5e873501976105d0974fd4620",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/geometry-proof.json": {
+      "sha256": "04efb37f22f6ee368631b3801a70de85dfe1df6eac17d835b0b807cd6adf5566",
+      "bytes": 137031,
+      "producerBlobOid": "128282a9e86581f943802d7a94af85e7ed906463",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/import-policy.json": {
+      "sha256": "12b3ff9f645956a634b300e77a25e6fcb9a4c23663e9599b76ae7b0c16a6c617",
+      "bytes": 226,
+      "producerBlobOid": "1cf208768add6cdbec6474adb5573842033b96ab",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/import-report.json": {
+      "sha256": "be8c46df343eb9d9559f6f5a0a6526cdbe1362d5c058153045ebf073dec92bae",
+      "bytes": 11242,
+      "producerBlobOid": "84396d7badba074d6e17d11a3c02dc304fa08dd5",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/import.gd": {
+      "sha256": "2d73f549001cee8a6fe9149307d9e65c21419990a0b5063c338962ec5e3c4f4a",
+      "bytes": 4191,
+      "producerBlobOid": "5e5cf214d46e9ab226e9262a8313551cf7fd5829",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/import.gd.uid": {
+      "sha256": "d066ff73d4874cbc3aa0fb776e3f84611b6caca0e4a52844b88084e24e82e114",
+      "bytes": 20,
+      "producerBlobOid": "a2ac668d8cb6c1e697651528709e064cf05120c3",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/manifest.json": {
+      "sha256": "11736b1029567fabc9c91956ab361ac1ad411398285e1713dfb4de941efed9e8",
+      "bytes": 140682,
+      "producerBlobOid": "467476c6be6f15b92a522b543f44471162bafa70",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/physics-report.json": {
+      "sha256": "5df2c60c7e2c854bad47c33a89de6bda91ea90230e37657f40e7d79d5c72c93d",
+      "bytes": 51444,
+      "producerBlobOid": "86731640723a862fa619940b6fe1c7bfffd8ce7e",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/physics.gd": {
+      "sha256": "f6941c4f0a48647df309b382e565ba3fcd862be1beb815405b6cbab1a54333a3",
+      "bytes": 5265,
+      "producerBlobOid": "e6e8a07ab7513d38fc3981a6f5854a212b065cad",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/physics.gd.uid": {
+      "sha256": "210f703e13c3ee119822e378f2e31697c1e234f89102a2b48fc19e0901a889d8",
+      "bytes": 20,
+      "producerBlobOid": "8a4ce1930acad9086416e3f326e54aeb88fdfa00",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/probes.json": {
+      "sha256": "ff3ea17cc367fc8456c1ce0a04280ff4653ae79ae4a8098aa9f6fd978293447d",
+      "bytes": 5749484,
+      "producerBlobOid": "1b4a03907d095e7655c80996d90e13b041e6efd4",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/profile.json": {
+      "sha256": "d5987c061ee05ab83d317116150cc23bfe783c16c8ba545191eee6f7a4498a15",
+      "bytes": 27185,
+      "producerBlobOid": "63f088b85daa3265a0559ff72c3baaed461ce157",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/profile_schema.gd": {
+      "sha256": "ab628561105b50b827c85ee40bd5f1af7f3ae5e0f5aa6c1a85a635f00e8ef982",
+      "bytes": 9404,
+      "producerBlobOid": "8cfb05abc699eea96e48c2df49f9778629cdc661",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/profile_schema.gd.uid": {
+      "sha256": "dd0e48bc3b7b28533dbfd8c5ba5210ff2c699c0624b5b815cd084f3c8166b929",
+      "bytes": 19,
+      "producerBlobOid": "1159d16ed778a3cee81dc96ded180b4d3e960043",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/source-probes.json": {
+      "sha256": "ac9e62fb03351d87e4347be17f1e131b43a2959c1a3c8934530c5850f2faf2ec",
+      "bytes": 5647280,
+      "producerBlobOid": "4e3cd1177331ae7df53a2be24927efeb7b0f5b54",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/staged.gd": {
+      "sha256": "b5aa2df9c3be693fe16cbeb2319da9f360e07fa4df5c0900df9928029a0d5038",
+      "bytes": 8159,
+      "producerBlobOid": "521f8e97c19004197999570d54dd641de9dc4410",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/staged.gd.uid": {
+      "sha256": "f9eb6fd28631e459ee7811375bbee2628d7f601fc248ae91b02b2138b308484f",
+      "bytes": 20,
+      "producerBlobOid": "f582f9e21c32a651dc7179364b0c329991be5c34",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/authority.json": {
+      "sha256": "cd62bdf5c2eafa8dfb25ef29691226c43eef0bb40ca67492110a7bc8c68f6aeb",
+      "bytes": 2377668,
+      "producerBlobOid": "576e3db13e8fd1174d7575458cc3cb933d1ea435",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate.glb": {
+      "sha256": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+      "bytes": 19004120,
+      "producerBlobOid": "2a41a58037545f6d46acacdd6e6837e5bb4d8ec5",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate.glb.import": {
+      "sha256": "57b9b6d3c3abd3a19d1fa10d088d378f27ea5025e7d3e1a45375bbabcf534974",
+      "bytes": 1095,
+      "producerBlobOid": "0a018bf7413aec6934f7700ca1e449bf3a0c4222",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_anodized-brush-albedo-srgb.png": {
+      "sha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+      "bytes": 57595,
+      "producerBlobOid": "5390b9803911b967c27959df02491cad02435f87",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_anodized-brush-albedo-srgb.png.import": {
+      "sha256": "79ed24938356e8bcc955086348a144175b5184ca699975702e48fbc9bd790b19",
+      "bytes": 1140,
+      "producerBlobOid": "632b61af38785559a60788555b2d04590646cae4",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_anodized-brush-normal.png": {
+      "sha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+      "bytes": 119904,
+      "producerBlobOid": "845585dea92333b1bc8b1c6f12eaaea8cc5ca6f4",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_anodized-brush-normal.png.import": {
+      "sha256": "a29d4ef81cb001680fe3f1c14cf09a15d1950ef2bc535a8625bf8efbea8632f0",
+      "bytes": 1125,
+      "producerBlobOid": "7d6c6d3229f052a2edabef65b6abd819fbb5882e",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_anodized-brush-roughness.png": {
+      "sha256": "67503e7fe7d49b24e173c84bdf86895e7397702d3399772150136dddfc65aa75",
+      "bytes": 81358,
+      "producerBlobOid": "170e9929a603c795ef07575f4f308b36f2d9801f",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_anodized-brush-roughness.png.import": {
+      "sha256": "8d79fd85636dd6461a06447ccc5cc9b27e3e4125d81cf13ecafba85ed6f9af3d",
+      "bytes": 1133,
+      "producerBlobOid": "b7281786eede7bf7a04ac3d722f392cad1d61c40",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_basalt-strata-albedo-srgb.png": {
+      "sha256": "b294342e60378d7fc2d45a9c631c42bde77de529b168f35fbc6194e5998252ae",
+      "bytes": 51628,
+      "producerBlobOid": "aa594275abcbdf24c024876d17beaf0e4caae795",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_basalt-strata-albedo-srgb.png.import": {
+      "sha256": "a69d416dec1eb72542071db5cd87ecb49a99c85d5c568cc6b9326495a9efbfeb",
+      "bytes": 1137,
+      "producerBlobOid": "b67d47adb60395a4f7489b7dbb303e8aa402462c",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_basalt-strata-normal.png": {
+      "sha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+      "bytes": 326596,
+      "producerBlobOid": "2b514576bf6ccd2ce04a406c7b31b26bb645ba5a",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_basalt-strata-normal.png.import": {
+      "sha256": "ee68f65fdb1a73eef687c37fce10e24b709a98f33a03bf8a8d01b4ff71cdea57",
+      "bytes": 1122,
+      "producerBlobOid": "484960a1bd4263151e7760794a3dac2fabddfd21",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_basalt-strata-roughness.png": {
+      "sha256": "6a222a03f8c50f54d7767c9e88be930c9a8d9b29c71d2db5493a9b23b209a2e3",
+      "bytes": 76607,
+      "producerBlobOid": "a86ea2adba88af4c95d27fee1a42e181c1436a8c",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_basalt-strata-roughness.png.import": {
+      "sha256": "dacb1746f0d5197a2a997b0c0c7516b0250dc5ebc8374afbcc4b1179b1fcf08f",
+      "bytes": 1131,
+      "producerBlobOid": "b27ca69913d80486173d2acf7089e21cfb2e44f3",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_ceramic-enamel-albedo-srgb.png": {
+      "sha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+      "bytes": 47156,
+      "producerBlobOid": "422eda3b7a3ed2642a9e51fff5cb31e14b9f77cb",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_ceramic-enamel-albedo-srgb.png.import": {
+      "sha256": "380eb0a1726982e6eccb46c68bd981d39bc5a39f26f140e928d44b8bbd55bcdc",
+      "bytes": 1140,
+      "producerBlobOid": "b276dd8435259c22d3fa59bbd1ef66c6a56776a4",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_ceramic-enamel-normal.png": {
+      "sha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+      "bytes": 133720,
+      "producerBlobOid": "c50482b4cbff89c1086e3e626c0c9cb28dedeb41",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_ceramic-enamel-normal.png.import": {
+      "sha256": "3c49c2e950e1c984664223e109eee4161fb50e2e8cc938b71b2e91fc47bbc5ab",
+      "bytes": 1125,
+      "producerBlobOid": "c907ee44411d20939e5389ac1f765a727ce07a14",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_ceramic-enamel-roughness.png": {
+      "sha256": "71bde5b9fa079061ce35291730a2f385a9c7bbe709e5b9f546844ac6861694bb",
+      "bytes": 55437,
+      "producerBlobOid": "9fb63e5243fecc829354df1d707495c004da0cb3",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_ceramic-enamel-roughness.png.import": {
+      "sha256": "ec59d8836d2290b8599432309aef92bb893681878159aa29c142a270ff03f23b",
+      "bytes": 1134,
+      "producerBlobOid": "42cf72314eb9e547a7daf6c148cc4ba2242c535c",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_etched-coating-haze-albedo-srgb.png": {
+      "sha256": "3650ca3b1f2912c15592ce96ae8ac1060230f7e2afcbc5c69058f4a0ef39d152",
+      "bytes": 87450,
+      "producerBlobOid": "3552820c94e6638620102d8572614cf7140e3ff6",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_etched-coating-haze-albedo-srgb.png.import": {
+      "sha256": "d816531f62b2383b090ef46b21c97aaa4c83dd223d221d901f0914c9ca9b77e0",
+      "bytes": 1154,
+      "producerBlobOid": "2711fe606db5348db2a45bb780e4e3f3f47bdc26",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_etched-coating-haze-normal.png": {
+      "sha256": "d89e3a00bc065b6416942305ec7a1dea4dc35e255a16a33202ac7d4b8dd65bb8",
+      "bytes": 152458,
+      "producerBlobOid": "3fa236c795e42b4e9c717575dfdb576b3fc34127",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_etched-coating-haze-normal.png.import": {
+      "sha256": "b07eb47b240c8b4ec6d419ce9847b3f23b62e79c42cadc81db15a987fbd30b9c",
+      "bytes": 1139,
+      "producerBlobOid": "f366f3cc7b880c80e12317bb64a16667e67305b8",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_etched-coating-haze-roughness.png": {
+      "sha256": "c6d4f6d89e8e1939f03fd2ab6f48833ab616145621bae67169069de8fa5c4906",
+      "bytes": 87157,
+      "producerBlobOid": "2b63d3c289ca433abb93ebede71b3a653870a41c",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_etched-coating-haze-roughness.png.import": {
+      "sha256": "16cc174e787c744bf67eecce17d50c4d1bd29c6db2abab6e8952e95b158ed34c",
+      "bytes": 1148,
+      "producerBlobOid": "8c819ee0a3001f8f3961f11e48bebd264ae1e8ea",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_frosted-glass-albedo-srgb.png": {
+      "sha256": "a823f19423db40ca2d79d5a243a5ae00994aaf183e463c176b7982609a5127ed",
+      "bytes": 106021,
+      "producerBlobOid": "255a5dd52e03651f758fea4290c28d7c3e5f2bfe",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_frosted-glass-albedo-srgb.png.import": {
+      "sha256": "e09a618629418f499af41bb2763c202f298ddfbfd46451d8d454c5b95ea05af7",
+      "bytes": 1137,
+      "producerBlobOid": "c0dc03c6062dc70556a0595d25f4f0b6c755afb9",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_frosted-glass-normal.png": {
+      "sha256": "2d73be97dcd93087d974245aee5389579f254b2c71697a098844b9721f51fb3f",
+      "bytes": 164492,
+      "producerBlobOid": "301a353d618d9b3fb7436824a859321b707f021f",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_frosted-glass-normal.png.import": {
+      "sha256": "2414d8a7b0f370be026aeb044a34158c197dff661df214ad1e68198917ffc241",
+      "bytes": 1122,
+      "producerBlobOid": "719ee1aa4e7783d50e7a27160a14cc6919156206",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_frosted-glass-roughness.png": {
+      "sha256": "1b39432d14089e6c4d560626cfd40a400865a9d9559be011ea3371b03a087874",
+      "bytes": 104211,
+      "producerBlobOid": "746c8508406ed16f71cfe207f8e2c38835fac028",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_frosted-glass-roughness.png.import": {
+      "sha256": "b45280c6d99852719760fac46c737518836e632325e143037bdabb996443854e",
+      "bytes": 1131,
+      "producerBlobOid": "a138c76dfcfc3d0944dc246f9f115180bb71c343",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_optical-mirror-opaque-albedo-srgb.png": {
+      "sha256": "4f6e5eac683c7514dbb923552cd810789d046c0be9716dded91c4aba533e9ad9",
+      "bytes": 43393,
+      "producerBlobOid": "d08830eb5efc22f35f8981f320826b212af2ab4f",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_optical-mirror-opaque-albedo-srgb.png.import": {
+      "sha256": "c28182ec11f597e8cc70eef49227d3364872cc239f1418903bf4af24047427a4",
+      "bytes": 1160,
+      "producerBlobOid": "2aa15f4ab1ec0c430a81e143244ce0fd6e7511fa",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_optical-mirror-opaque-normal.png": {
+      "sha256": "0e9012adf948ca4002ae0ec05e9ecf71a6cf1611882b48784d93b1906490471e",
+      "bytes": 40077,
+      "producerBlobOid": "36ed4ad543e335f82a8476194aa2b8978e2d31bf",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_optical-mirror-opaque-normal.png.import": {
+      "sha256": "e8dca92484e3e165dc9b5469a9cac60623b525611029d29765234a6321f9aa0b",
+      "bytes": 1146,
+      "producerBlobOid": "31f95fb31b38fd4d8f77f28e1133952477933cf2",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_optical-mirror-opaque-roughness.png": {
+      "sha256": "ac51f0038b9e13507615ed8e5fd78c24f704bc51eee5a7eebbeef9fc7e636838",
+      "bytes": 81189,
+      "producerBlobOid": "250461163c773888f1359cdc2936b859d8af23d0",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_optical-mirror-opaque-roughness.png.import": {
+      "sha256": "8ced62040c3621e15853e3236d935ff4f1013e5804fdeab150f466009c33b90f",
+      "bytes": 1155,
+      "producerBlobOid": "2edbcaa1ff8570901f8c28d212d8bec1a8ea02b9",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_salt-limestone-albedo-srgb.png": {
+      "sha256": "fa9d87ca9e5a26b74c480a1134f64a982d8230e0e59ecc50e64b1de5cbfc3d7d",
+      "bytes": 101313,
+      "producerBlobOid": "14fc66795127dd948a2eeaca8eb2a00a0f98c1d1",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_salt-limestone-albedo-srgb.png.import": {
+      "sha256": "56b86932dee749fcbc1d291bc1a036f0368919db1dd37d4e14ad08beb659a858",
+      "bytes": 1140,
+      "producerBlobOid": "851aae6a25fac2cc25ccb5a854e7cb0b5a437633",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_salt-limestone-normal.png": {
+      "sha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+      "bytes": 485273,
+      "producerBlobOid": "897ecd5a7a99b2474293830bbb4e58b1ef56d935",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_salt-limestone-normal.png.import": {
+      "sha256": "b70062fe2cc14ae76dc6dc73aec11167a29695a6c7a5bebd4d84081420fe223c",
+      "bytes": 1125,
+      "producerBlobOid": "03a60989fdcb5c4f4bd707f3a2d7f6d0abf7462e",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_salt-limestone-roughness.png": {
+      "sha256": "1c75ff4425dd7d13e8225cf6e09f7ff498c535f291b64a2f60ba69fdc8d6baa8",
+      "bytes": 85778,
+      "producerBlobOid": "c3aee9436e568540c754949293174bc5bdfca2ce",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_salt-limestone-roughness.png.import": {
+      "sha256": "5f38caacb582c4486c041e5acb5c323de8c47d68a555b74be0ca08f3a069d565",
+      "bytes": 1134,
+      "producerBlobOid": "d5b0d36547718da62996f7f80a63695fb1ef57ad",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_trim-wear-albedo-srgb.png": {
+      "sha256": "7ec0ff69d1060e45b2338f4c2add68d729625405f9801701d78239dded35f131",
+      "bytes": 53395,
+      "producerBlobOid": "9e52b64c5bd4428fbdf834d17890f1b1d21fd78e",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_trim-wear-albedo-srgb.png.import": {
+      "sha256": "c696581239ecc69f6fce03a9ca1a34a3c5bc674b32deb5b2eba99e88124c2fb8",
+      "bytes": 1125,
+      "producerBlobOid": "8fd3145dfd065e37885bf290c5d3e4d7ce789d2b",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_trim-wear-normal.png": {
+      "sha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+      "bytes": 131879,
+      "producerBlobOid": "06b207c19b3cb97936268c1c82ca5596168a2b93",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_trim-wear-normal.png.import": {
+      "sha256": "0cf8a1ec5295d155cb2286a9e4560130940934990f856f997b5f49c7ec571f77",
+      "bytes": 1110,
+      "producerBlobOid": "ef855602259c196bf7cc51395acae409e46d5e38",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_trim-wear-roughness.png": {
+      "sha256": "aafa178f61e21e1b86899d79151263b01e71441ba6ba13361f124b408c285f0b",
+      "bytes": 48119,
+      "producerBlobOid": "7c194a11a4338f14b017eddf6175f50e8f95d608",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_trim-wear-roughness.png.import": {
+      "sha256": "4f57f3cc60e3f31ed5aaa87b578feafdce90f8dc9c735f03d028ae70ffa6d560",
+      "bytes": 1119,
+      "producerBlobOid": "4eec621cead188eb1acde9a7ffcd1ca0cc022293",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/capture-report.json": {
+      "sha256": "216a1a43f8b95c262939d7d3340ab735985a01df7a7b250592eb273e82c63e30",
+      "bytes": 45905,
+      "producerBlobOid": "3e6d5d75ed70ef631821f5ccdba9d4639345a73c",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/capture.gd": {
+      "sha256": "957909e88470c45daf3bdcb6aea8a395c3cc88d695b2e0f2afbb8cd7dcfe04ee",
+      "bytes": 4770,
+      "producerBlobOid": "054038e0a14fe573c22376c7ca3753f71cda7e8c",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/capture.gd.uid": {
+      "sha256": "bb597182b8ba7f3965900b66a31a16cb3b485e3c33b0322448348dc1aea86da3",
+      "bytes": 20,
+      "producerBlobOid": "13e3e6ccce4b0c2109d06912856f4006abcff27d",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arcade-eye-accepted-runtime-before.png": {
+      "sha256": "501208794283ba810ff56a129cccfa18930d9d34206fd7111637a323c8159e44",
+      "bytes": 606065,
+      "producerBlobOid": "af90734c0290789f7125ca0c9b60957aaeb77cfd",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arcade-eye-accepted-runtime-before.png.import": {
+      "sha256": "58b06fe28be195ed1ba86ac054de05d9b07c7be0eac1b68e643ce5a1a619225a",
+      "bytes": 1077,
+      "producerBlobOid": "0033f1aeb0428d88356ea66bb07d37f02ba983ca",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arcade-eye-candidate-runtime-after.png": {
+      "sha256": "a7d1f22fe34ba5b260990e56fe0f7bb055671ff87d1e85783b13c5493c938cfe",
+      "bytes": 688400,
+      "producerBlobOid": "7aedc0191671f27d5faaa4bef5fc19087abf4e44",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arcade-eye-candidate-runtime-after.png.import": {
+      "sha256": "0086373a028ef9b7e0ce6ad6e5e6955de79da3da4e119bef8b0fb1c3a481de49",
+      "bytes": 1076,
+      "producerBlobOid": "451c46efafb08afea6885cf31067b35e1fa206c0",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/archive-interior-accepted-runtime-before.png": {
+      "sha256": "2696744b1262e6cb2ab07d5e4d7e1b5488f86841010de5244266d6e8e312eab7",
+      "bytes": 692569,
+      "producerBlobOid": "73119d3e5ccedd4bde6bfaabec22fa4f5c918a34",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/archive-interior-accepted-runtime-before.png.import": {
+      "sha256": "21c559f06919fdea5fe17c2e61131ea148c6f73b77b9dc2579b66b542926203a",
+      "bytes": 1094,
+      "producerBlobOid": "8eea83f64ea66193a9f9fccdb087f7c5d31c5b32",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/archive-interior-candidate-runtime-after.png": {
+      "sha256": "3c3c750f83b6b2626a9cc29ec6384a84995d44bada9567d691486e0cae409f12",
+      "bytes": 770431,
+      "producerBlobOid": "a9bb6186031291cda54105b3a03c3964c62f6684",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/archive-interior-candidate-runtime-after.png.import": {
+      "sha256": "47d1c19ee2e14c48148340bd4d32917ee0a198ff243383eb096cddf16a5e5ed0",
+      "bytes": 1094,
+      "producerBlobOid": "79fe9a89bb7646eeca5c185bfe70fba1e9711cab",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arrival-eye-accepted-runtime-before.png": {
+      "sha256": "5311dd26e0427d00a4dae9c57a9442ea65f16444c4ac190f845f688047680e3d",
+      "bytes": 549696,
+      "producerBlobOid": "2a77843c33caba57116a0dd5989e234a3ad12225",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arrival-eye-accepted-runtime-before.png.import": {
+      "sha256": "501f0a40e53fcd544f4ece6b28fa34474f91bcbf951c333fa8015620e4f732fa",
+      "bytes": 1080,
+      "producerBlobOid": "0a606209f0655808f274af38599355eafed86554",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arrival-eye-candidate-runtime-after.png": {
+      "sha256": "4bea5c8cb8b301867d1b04d74d46a8b4db875abd13a6bb481fc5ad7cf45ec56e",
+      "bytes": 685757,
+      "producerBlobOid": "5d3e08ee3168816f77e64994161b24b3db3bc6f8",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arrival-eye-candidate-runtime-after.png.import": {
+      "sha256": "5348f05dff36510ad250f07eaff8b93a3e701d7cc99da8f2a0c88a2bea3d94ee",
+      "bytes": 1079,
+      "producerBlobOid": "9ddc953e8b7c56b44b6acf2d290db46c8db35c06",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/cistern-eye-accepted-runtime-before.png": {
+      "sha256": "236234b20cbd13439d25325ffee4828559e1fb0cf99c631af0329c942989e940",
+      "bytes": 494874,
+      "producerBlobOid": "ed999d54d46cb1c6af6e4fc2bc39c5ab025217ef",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/cistern-eye-accepted-runtime-before.png.import": {
+      "sha256": "4778dea3813331a0e99ef0294abd8a6e449fadb987bc11dd87cd9d3fecfd7347",
+      "bytes": 1080,
+      "producerBlobOid": "66b2a962d9b1343fa4ec1082416c1e9bc86a32b1",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/cistern-eye-candidate-runtime-after.png": {
+      "sha256": "00578c6662226fa93b45f96e12bb11fe42c6a2efc516475c9ba0ec39aa028f5b",
+      "bytes": 517906,
+      "producerBlobOid": "4ef21531b3010f85d78931e872185cc8eeab7aef",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/cistern-eye-candidate-runtime-after.png.import": {
+      "sha256": "6544dbb732d28f06708d5f9edbe1bf372a4ea7748132fb38b64ed67d5850cf6a",
+      "bytes": 1080,
+      "producerBlobOid": "4f1dd86120a1e52413150bed151e6e10ef5f28f7",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/court-relief-accepted-runtime-before.png": {
+      "sha256": "4153dff52cb69d83c744385318e849b78bbd24710b8bbc9f31e3080abd54ccff",
+      "bytes": 581180,
+      "producerBlobOid": "6a00d4e8f1ef45b926e22baa4e0446ba756472d7",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/court-relief-accepted-runtime-before.png.import": {
+      "sha256": "29cb6185d649cd6033a9ae462ce34c89756618ff8f5328c805b625d01e7563a8",
+      "bytes": 1083,
+      "producerBlobOid": "6b3e60f9b8fbbf01d4de2704bc2cb2d917cd4b92",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/court-relief-candidate-runtime-after.png": {
+      "sha256": "d603ddeab6ef3fa4c3f6f2c7b3395db092b6c336e73608e78804883568872242",
+      "bytes": 496380,
+      "producerBlobOid": "0a13680d830c39659c72ff6a7cdca81b6b15e912",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/court-relief-candidate-runtime-after.png.import": {
+      "sha256": "dd89cf9720dd129dd045b792b6de395f3e7559355f8325cc394e63d936e17c0a",
+      "bytes": 1083,
+      "producerBlobOid": "bc84407008c37988e0936fdb3231c19cdbb1c796",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/lens-eye-accepted-runtime-before.png": {
+      "sha256": "b6adfcf6884a8f7cd4de4752180fd781c2f8d7d7ec5b8bc04ebb336341853316",
+      "bytes": 565611,
+      "producerBlobOid": "4cb210d6692cddc4ed4305d171b881c7c2abf5f2",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/lens-eye-accepted-runtime-before.png.import": {
+      "sha256": "dd4a3ab64851f3168a44e22c5c0c9c3e3efabe0677a0bcac251b3e7e251ccce4",
+      "bytes": 1071,
+      "producerBlobOid": "0671f40a6fe2aa092f4e32c023e0c4bf15711ca6",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/lens-eye-candidate-runtime-after.png": {
+      "sha256": "9d47246ccf876c5ef88590ffd8a6de0586ccac56bf9a7b90bd4911f14a406289",
+      "bytes": 675086,
+      "producerBlobOid": "091ab795bff87db107890cc716f6d4b9ee1ef01e",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/lens-eye-candidate-runtime-after.png.import": {
+      "sha256": "5eb14325b26dac1c4963e98cab04df7d1529dbf11c71e0fe1f37a5f259827643",
+      "bytes": 1071,
+      "producerBlobOid": "335ba69e740c056691bb1741edb143f0ba6d7574",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/overview-accepted-runtime-before.png": {
+      "sha256": "c5410d12d6f7fb19a969f6637419fb950ae98e801dd200a2d5906050c606ada4",
+      "bytes": 122265,
+      "producerBlobOid": "b2557855b1901dc9d97ee83e0f3bccdc53395414",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/overview-accepted-runtime-before.png.import": {
+      "sha256": "b60141fcd7a4189bbb7fa04b93d8da2cefbf94c370db3a1c4d6bc54b19383166",
+      "bytes": 1071,
+      "producerBlobOid": "d1f2d547234cffb89613cef9128e58985957e821",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/overview-candidate-runtime-after.png": {
+      "sha256": "4b2f18f688a46b779cbe202c31b1d67c83f5d12eb8aabe40903a4bead1f4616e",
+      "bytes": 173939,
+      "producerBlobOid": "a9369e56c124ac320cfc6c3396da35f0d8cb08f5",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/overview-candidate-runtime-after.png.import": {
+      "sha256": "8eecfcbbb7d182b1521d29d7bec7d50b5616c0b6c40dc5d4e872ae6de7bd72d0",
+      "bytes": 1071,
+      "producerBlobOid": "7be61a09527c8d6c6b8c7318c8a1aaa87478a8e4",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/polar-interior-accepted-runtime-before.png": {
+      "sha256": "ce39a966d15804e12bbe97aa79f51cc31c933c33029d05d202fffc9c581d7dc5",
+      "bytes": 583096,
+      "producerBlobOid": "2ec9e44e58592414683ce058681e82d0a12e2d42",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/polar-interior-accepted-runtime-before.png.import": {
+      "sha256": "c4685952390bfcc027465e9bfb2c3f7a5f5b8a20c02928ce417ca2b04d2ecf6a",
+      "bytes": 1088,
+      "producerBlobOid": "ac45527732fb5a2a49f425335d0952c3311a5ee4",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/polar-interior-candidate-runtime-after.png": {
+      "sha256": "d82e181325cf3054db64323028adc549b59d4ca0219fc6e7c3129f82ca26ba46",
+      "bytes": 699697,
+      "producerBlobOid": "0b1260b2b7a536567c5ee29b76ff94b89d746fe6",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/polar-interior-candidate-runtime-after.png.import": {
+      "sha256": "3a687982cd2acd45e3b2b130ef2ea3b9f582f190c5ddea36de629da4d550ae54",
+      "bytes": 1088,
+      "producerBlobOid": "ea8d1a06b2530c250f05d9c235e52e91265b8deb",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/pump-interior-accepted-runtime-before.png": {
+      "sha256": "97e43fdd862a92b6b27c989dd7677c59d725e21926666f4138347a87a5e48c96",
+      "bytes": 647504,
+      "producerBlobOid": "f4ea5dc6d023f4aec18d747e87d900aa49422abf",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/pump-interior-accepted-runtime-before.png.import": {
+      "sha256": "4d59d494eefd9c9af5983be2653b75c744572c7e91ef91bc964f97d15ef9966d",
+      "bytes": 1085,
+      "producerBlobOid": "223bb37eae146bdecd251cf0240f18739755591d",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/pump-interior-candidate-runtime-after.png": {
+      "sha256": "2e81837e61f5519f07f8c2fe6f1e3d9a005613aa69f5ddedd2153f0a6cc972dc",
+      "bytes": 710511,
+      "producerBlobOid": "528836b5efe4c0a8a6e65751d23dc0651dca70f8",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/pump-interior-candidate-runtime-after.png.import": {
+      "sha256": "92a7b1713202e90a2e6be6dfda8e6fa17e73deedf5e9bd24151485c6330556e8",
+      "bytes": 1086,
+      "producerBlobOid": "bdf055040c3e4069773565c918245bd07b817729",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/well-descent-accepted-runtime-before.png": {
+      "sha256": "27ec3c49f622d64b103622e0c866f29dee54dd1e90d3c19213cd99cca63ba43f",
+      "bytes": 565211,
+      "producerBlobOid": "15285c77d98e0bc4e7ce890c622d199db536e456",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/well-descent-accepted-runtime-before.png.import": {
+      "sha256": "f68686ba1a7a7d9c09e08aa143049a2e9518732917048fbadf22651c07078fac",
+      "bytes": 1083,
+      "producerBlobOid": "fac71a291d6af5fa49a33415feb9abe16559b336",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/well-descent-candidate-runtime-after.png": {
+      "sha256": "90bc08afaa8962f3da6074653ef383667a72807889af24a8c22a739b302aea52",
+      "bytes": 706504,
+      "producerBlobOid": "d5b07e0dd04b970eba0026fac9ad35657ead433a",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/well-descent-candidate-runtime-after.png.import": {
+      "sha256": "e1b86ef65e728930b64b163c3f29172dabebbdb2901cd216918d3416448264b9",
+      "bytes": 1083,
+      "producerBlobOid": "d93c484b9dab59dd6af6aa5ccbebca5750fa62cf",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-01/capture-report.json": {
+      "sha256": "fa5c20398b67d6e8d9fb7a871ac10c5373a54c880372f51515d53a1b1028f835",
+      "bytes": 5250,
+      "producerBlobOid": "1d4df4be7464f8ab34517ebb06e77ebf1f83333c",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-01/capture.gd": {
+      "sha256": "2ee5ae300b517342cbf9a5b76bafb041395750f87e44a82cd5e4f424c364459a",
+      "bytes": 4816,
+      "producerBlobOid": "85a4476d7ca3199083ad85c107ae364890cadad3",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-01/captures/east-landing-exterior-accepted-runtime-before.png": {
+      "sha256": "3f019b6c36070f4218aa37acf494851fef7fa0f67afa7adfbeacc0c9d1eae662",
+      "bytes": 944038,
+      "producerBlobOid": "31141a4f278a4d0fef0c96300d6f82112f989d15",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-01/captures/east-landing-exterior-candidate-runtime-after.png": {
+      "sha256": "6bf4a164ae9e868bd50f0562b87ff37f5028b72b8b44970d7d514f961debdec2",
+      "bytes": 456394,
+      "producerBlobOid": "c316d96ec43eeb54884a22b8c6948a7c8767785a",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-01/probes.json": {
+      "sha256": "9657c5d7776ef00c62b17ebcb801de48b9b7494c47efd409c9c1a59ce1367bf6",
+      "bytes": 491,
+      "producerBlobOid": "69b0110133ba91cd1e0a46f09c83c29d20124bf4",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-01/source.json": {
+      "sha256": "67a797d7976a98610900b6f302e798f0aad38f7b5c1fa1c53c2e815a163c3ade",
+      "bytes": 391,
+      "producerBlobOid": "37e1c3cfb14b71f85d3250a256a71dfd5770e574",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-02/capture-report.json": {
+      "sha256": "92915e735bed01a664333cbcad0f28bf73dc78a2c672b544a6002ccde5d5bb74",
+      "bytes": 5264,
+      "producerBlobOid": "9defc23d7828db46a46658825689616fabdd7352",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-02/capture.gd": {
+      "sha256": "65174793f197d12e7e0885fbfb5fef6e9cf7db3ecd807ad310fadce6a8f4f59e",
+      "bytes": 4816,
+      "producerBlobOid": "a2358f4b66b1b239fb002f7654f662e0b6c8da98",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-02/captures/east-aperture-inspection-accepted-runtime-before.png": {
+      "sha256": "756accabd2ae79f8c74211f666f26de7a039a617eaede868c2f036723b576f82",
+      "bytes": 436874,
+      "producerBlobOid": "2bfa3d10d9b6ebff35b9ec7d527828d9cc080dd1",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-02/captures/east-aperture-inspection-candidate-runtime-after.png": {
+      "sha256": "b7d70bf5858ed3db0629a5fb2f2ef30651b623e72458dd6be51a25bfabe3af94",
+      "bytes": 720982,
+      "producerBlobOid": "13c23321e73307b98f062d56560a4a4992b2bf32",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-02/probes.json": {
+      "sha256": "bf136a717890df5b7a04373663049f21ab3ea106cdd87aa3d0b64a86808cee6b",
+      "bytes": 503,
+      "producerBlobOid": "73c5cf75cfdae9f44ee29cca1348793c50931e5e",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-02/source.json": {
+      "sha256": "07d64381ff510ab848040aa4a0892d031b1b357a7e297c1c59fe7d170ad11f5e",
+      "bytes": 391,
+      "producerBlobOid": "d242de40f0e85a3703842348bc6642fe04ec915f",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/expected-pixels.json": {
+      "sha256": "f901fb2c3fdcf828f8aa927124ebbda9ae9d20a4fc97f73646c049aad2d708c9",
+      "bytes": 6288,
+      "producerBlobOid": "85abd6bf6f4a19d7a9602e3289678b52bb174b59",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/geometry-proof.json": {
+      "sha256": "689004ccbf6ac56971f39e8f2cd541af76ce2840e89c0043d98b1e93ef88d8c1",
+      "bytes": 354187,
+      "producerBlobOid": "c4edda7ebfbcf587000001e08b1b118de8944c7d",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/import-policy.json": {
+      "sha256": "5ed29e19288bd8f0ab1ee92b7840f930bb42762c5e489422acc693dcd6496403",
+      "bytes": 226,
+      "producerBlobOid": "cea94abb759b31113be88d9f8dce88b590a29b10",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/import-report.json": {
+      "sha256": "0e4718ba9c200e62446657eec9ff646af39a83cbb24ee85e520aa74aa611cfe0",
+      "bytes": 9652,
+      "producerBlobOid": "dc7ec93ac88718d95b6345149ba6d4fa0a2dbe32",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/import.gd": {
+      "sha256": "205f4d76afa3341b7dc07b0c8bc2cac5f9bf301278b3e2b50ea6bdfd883dfc6e",
+      "bytes": 4193,
+      "producerBlobOid": "bca7a7781e5ad81b7096fbbed37b0d2cbf756c9c",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/import.gd.uid": {
+      "sha256": "40a109e921a7fa24d3c553d3dc7f0ac606760c7d4718317e5e3563f26a6ca666",
+      "bytes": 20,
+      "producerBlobOid": "6a6e5d7cffbc71f2bbe1ada32b5d41e8ab334660",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/manifest.json": {
+      "sha256": "7dcd8675be3c9ab6f6b4699e3cea454aeb4db5f742d35bd7041046a2fe639c74",
+      "bytes": 357883,
+      "producerBlobOid": "474efe189d1dafb4af0a7015d36bb15ced28844c",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/physics-report.json": {
+      "sha256": "e6474177e0b3d3b8e0099be619f62630d5a11840603db151f4cfe8ecaf2be3dd",
+      "bytes": 129545,
+      "producerBlobOid": "0c16d5161cfa93e52c2e41ff84aac7227e53dc8e",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/physics.gd": {
+      "sha256": "f5df296a22eec4bd675945ae48d70d453f526d93f87188dea7c83a111a093fcd",
+      "bytes": 5267,
+      "producerBlobOid": "34ded3abff74658ed106ea9582ccff49f19101e1",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/physics.gd.uid": {
+      "sha256": "399806132c6866caad238610d9a00acb41604f00937d7776b55873357c7ddec5",
+      "bytes": 19,
+      "producerBlobOid": "dbb2ba8ef079c045caa1794f444f00f6c99908b3",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/probes.json": {
+      "sha256": "ab8f61c56e1ea17cd0e0a577c35362d934a308a17afba312558f5a3fba0fc859",
+      "bytes": 2452122,
+      "producerBlobOid": "182cda76cf34d383eb8e72b597f61de1ece0be37",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/profile.json": {
+      "sha256": "a47ab771bc3ff6c9aef97d2ac7fd20b6be97d0fef2551bd388d002b9965cca1c",
+      "bytes": 15364,
+      "producerBlobOid": "cd4824463233644a6691b7d9dd5b6c1b9d0ddec8",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/profile_schema.gd": {
+      "sha256": "ab628561105b50b827c85ee40bd5f1af7f3ae5e0f5aa6c1a85a635f00e8ef982",
+      "bytes": 9404,
+      "producerBlobOid": "8cfb05abc699eea96e48c2df49f9778629cdc661",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/profile_schema.gd.uid": {
+      "sha256": "e5e8bb32d9872b4f45cb1e12ddcab2964e2aead6f4944e7c139134cfc6bbfedf",
+      "bytes": 20,
+      "producerBlobOid": "0643ebec8f883294ed57f974403549e108ece1f0",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/source-probes.json": {
+      "sha256": "f8749f19e819676e560d752aaebd2f9e750c5b477b4dac73bae7a8000ab4fa3a",
+      "bytes": 2338174,
+      "producerBlobOid": "c0678382c29cd2671fba9c3f60fe493b0babb8bf",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/staged.gd": {
+      "sha256": "446212c46e475e4c1dd5f7b1c7efb0e948680b9280306af9be3f0360edc7de02",
+      "bytes": 8165,
+      "producerBlobOid": "680237ff628f6fda7c12ef766a970a508d428ab8",
+      "originalInventoryEntry": true
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/staged.gd.uid": {
+      "sha256": "c29b1c564c4894c944be3d86311f1ea2ef835a6b543b6c0c654b157131f59482",
+      "bytes": 20,
+      "producerBlobOid": "21c86a4a7013c816fb4a5a5e8acccd6e9c59e411",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-01/helix-conservatory/authority.json": {
+      "sha256": "1e5847c04d1a18165333a900e77db33ff24017d87eb87e5efed779d59d52d2bb",
+      "bytes": 46690271,
+      "producerBlobOid": "ecaca1aabce841c997bb23dc1e5d6d6db921ff8d",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-01/helix-conservatory/bindings.json": {
+      "sha256": "760122242dbf875974b4bec1646da2a60f2c5ee41bb89d3fb496896f4afbc7c2",
+      "bytes": 3050,
+      "producerBlobOid": "1bd110942fe13c4c5c0d25c2c7f08f19d4999314",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-01/helix-conservatory/source.json": {
+      "sha256": "d0431581240a2211016e36c88865064d827849ca838aaea653ca2119e6b0bfeb",
+      "bytes": 7936,
+      "producerBlobOid": "e4f1e882fbf256f1302fbf7686b98a4f8c0f3ab7",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/authority.json": {
+      "sha256": "1e5847c04d1a18165333a900e77db33ff24017d87eb87e5efed779d59d52d2bb",
+      "bytes": 46690271,
+      "producerBlobOid": "ecaca1aabce841c997bb23dc1e5d6d6db921ff8d",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/bindings.json": {
+      "sha256": "760122242dbf875974b4bec1646da2a60f2c5ee41bb89d3fb496896f4afbc7c2",
+      "bytes": 3050,
+      "producerBlobOid": "1bd110942fe13c4c5c0d25c2c7f08f19d4999314",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/build-report.json": {
+      "sha256": "e809ba11e3e8fede581e6599237ea037019306145aeb48d3377ff4ec6647fd56",
+      "bytes": 30878,
+      "producerBlobOid": "cba6a9881fc0a8af0da7671b5f6da4ce3e14ed73",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/evaluated-proof.json": {
+      "sha256": "e04f0856cdf80ee89593417c5cb1b4363682d154a5cbea84d948eaf6f875c8ae",
+      "bytes": 37746948,
+      "producerBlobOid": "7544e4a4a656947280c7d70e7923e30d1ba911cb",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/helix-conservatory.glb": {
+      "sha256": "7e9136c8140e418fd1b72ce55d2181d8cd9f1c81dac7a74caf56eba7ef048353",
+      "bytes": 24336616,
+      "producerBlobOid": "ec70a04bfb7e1561fe455f79c1979b382a32bce8",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/helix-conservatory.blend": {
+      "sha256": "57f2209a9a56ea21e5f00ec59fdd16804902ef34cf71766ae50fbb5cd1065c0f",
+      "bytes": 34461754,
+      "producerBlobOid": "b87a1758cf4f40d88d6b98ff4905db5a06b720aa",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/anodized-brush-albedo-srgb.png": {
+      "sha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+      "bytes": 57595,
+      "producerBlobOid": "5390b9803911b967c27959df02491cad02435f87",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/bark-fibers-albedo-srgb.png": {
+      "sha256": "992962a0a31a62c6f3d2629485781441b28d0fed62f9069ce9b284cd5970cd21",
+      "bytes": 69723,
+      "producerBlobOid": "577710dd71d0fad61d59fec229643c82f3e27639",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/ceramic-enamel-albedo-srgb.png": {
+      "sha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+      "bytes": 47156,
+      "producerBlobOid": "422eda3b7a3ed2642a9e51fff5cb31e14b9f77cb",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/copper-patina-albedo-srgb.png": {
+      "sha256": "df08158f6dfced7e3e823f32b1a796ece7a2fed8f763505c6f43980cd82516e2",
+      "bytes": 103983,
+      "producerBlobOid": "3a360f133b8923a0f3ed672bbbbdba28a3ce5102",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/fern-frond-albedo-srgb.png": {
+      "sha256": "00ee4e4c13507056a52866ac24a57605e06d5e9f1cb40f13177153486a689d7a",
+      "bytes": 47387,
+      "producerBlobOid": "3198b08a5e59323dc00aaad31b8102f6a69166df",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/grotto-wet-rock-albedo-srgb.png": {
+      "sha256": "a1af71522942bb686c9179744d34832a1223759730c8920f96140895c3aba7ce",
+      "bytes": 40944,
+      "producerBlobOid": "954a156ff53d8adf0eeb3ad7a9021e352368c66f",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/masonry-coping-albedo-srgb.png": {
+      "sha256": "a3888e7190c86f73f6c3863b84610a34f1b6cc58d4384f6c77fc0d784d5f33d3",
+      "bytes": 57224,
+      "producerBlobOid": "9829e32766d34286fc6d8e468b77981544b18aa0",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/moss-lichen-albedo-srgb.png": {
+      "sha256": "52052d69c0f0bfd3fc750b7ff11c49ccad82bf06b169a63ed3a78da57a58d14c",
+      "bytes": 93045,
+      "producerBlobOid": "456bd3458993f2ef7c355b61c02126bc7f8aa623",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/moss-warm-weather-albedo-srgb.png": {
+      "sha256": "7e3d11e8311ecc5d52a910038cead50d3383a68bfb7c6412d6c8f19c72d7eedd",
+      "bytes": 113185,
+      "producerBlobOid": "28b92eff1f05abbaaae9612c02f112949955de2e",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/prismatic-etch-albedo-srgb.png": {
+      "sha256": "526808c6be3d9794759f14a5660bb6a87a157420827d31cca03e6d625819e8f9",
+      "bytes": 97393,
+      "producerBlobOid": "9214d28022dd0202dae321ff1140c36d650e6e68",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/terracotta-albedo-srgb.png": {
+      "sha256": "19efdd03cd0bc98d04405f04c04b8b9ac1293ca0751103c4e4a11e9ab4b92124",
+      "bytes": 53680,
+      "producerBlobOid": "19ead8921476498664f54aeddd804825eafc13e0",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/reopen-report.json": {
+      "sha256": "0cff7a5b984b4755c35404d917d4656dfb63d1cc72f5360d66c941e4e6f2d541",
+      "bytes": 13977,
+      "producerBlobOid": "f0107604d3b96a58df0b8873420602af8bc0e276",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/source.json": {
+      "sha256": "effec3e45763f8a22f5f699b8b0bf39006304e58418a8d61b836deee256a2b2a",
+      "bytes": 7936,
+      "producerBlobOid": "a8b28ab20407e53017ef8513cbfa4846343f85de",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/authority.json": {
+      "sha256": "1e5847c04d1a18165333a900e77db33ff24017d87eb87e5efed779d59d52d2bb",
+      "bytes": 46690271,
+      "producerBlobOid": "ecaca1aabce841c997bb23dc1e5d6d6db921ff8d",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/bindings.json": {
+      "sha256": "760122242dbf875974b4bec1646da2a60f2c5ee41bb89d3fb496896f4afbc7c2",
+      "bytes": 3050,
+      "producerBlobOid": "1bd110942fe13c4c5c0d25c2c7f08f19d4999314",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/build-report.json": {
+      "sha256": "bd53617500b2726cf2c90446e0daa4b2ccf89d95c0255d8eb158223e4088b86a",
+      "bytes": 30878,
+      "producerBlobOid": "72925a0414fbdd3a4ad2085004431b377267c448",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/detail-01/evidence/attempts/capture-group-986244.json": {
+      "sha256": "538412d4cf94d0612cf2197ba88a6a71846d1ce985dc1297fb2487b06dfddf2a",
+      "bytes": 977,
+      "producerBlobOid": "b19cecf0bc0d7d53e215ff9bad2daf169e916aac",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/detail-02/evidence/attempts/capture-group-996667.json": {
+      "sha256": "4547e4143b740c1ffa1a71744fadd71ee2dbd7e8d302e5e994bd8c9900e2a877",
+      "bytes": 1299,
+      "producerBlobOid": "11834f69dc7bfa165127f032fda4b0a494e43b2d",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/evaluated-proof.json": {
+      "sha256": "8fbfb2cdd6ff46c2f3b84682c5ca020db0459cfb99de0f6b660b7c51ca9ccdb2",
+      "bytes": 37746948,
+      "producerBlobOid": "1bd004e7baf14136dd4e17092f7ad7593d98cbe9",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/evidence/attempts/capture-group-933977.json": {
+      "sha256": "d87d988d0985dd0095dbc1420921d01bf77c6d289138f61436081d32256e3114",
+      "bytes": 1277,
+      "producerBlobOid": "52c3353f840a3789bf4283f4ea0fba169c47a499",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/helix-conservatory.glb": {
+      "sha256": "4943e353f4626a11f1e515b9046c92df30985ef725f399f651a8d8ddad953995",
+      "bytes": 24336616,
+      "producerBlobOid": "e78c189644767c0ebf02f381d3a8d0fa37ce22c7",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/helix-conservatory.blend": {
+      "sha256": "46fe68d6ccb97c349812b6c4a5a600c3c9c90f19c50bee217378cb8f9029c856",
+      "bytes": 34461754,
+      "producerBlobOid": "c148d4389359c20984882c4d9b8c7ab668086973",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/anodized-brush-albedo-srgb.png": {
+      "sha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+      "bytes": 57595,
+      "producerBlobOid": "5390b9803911b967c27959df02491cad02435f87",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/bark-fibers-albedo-srgb.png": {
+      "sha256": "992962a0a31a62c6f3d2629485781441b28d0fed62f9069ce9b284cd5970cd21",
+      "bytes": 69723,
+      "producerBlobOid": "577710dd71d0fad61d59fec229643c82f3e27639",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/ceramic-enamel-albedo-srgb.png": {
+      "sha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+      "bytes": 47156,
+      "producerBlobOid": "422eda3b7a3ed2642a9e51fff5cb31e14b9f77cb",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/copper-patina-albedo-srgb.png": {
+      "sha256": "df08158f6dfced7e3e823f32b1a796ece7a2fed8f763505c6f43980cd82516e2",
+      "bytes": 103983,
+      "producerBlobOid": "3a360f133b8923a0f3ed672bbbbdba28a3ce5102",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/fern-frond-albedo-srgb.png": {
+      "sha256": "00ee4e4c13507056a52866ac24a57605e06d5e9f1cb40f13177153486a689d7a",
+      "bytes": 47387,
+      "producerBlobOid": "3198b08a5e59323dc00aaad31b8102f6a69166df",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/grotto-wet-rock-albedo-srgb.png": {
+      "sha256": "a1af71522942bb686c9179744d34832a1223759730c8920f96140895c3aba7ce",
+      "bytes": 40944,
+      "producerBlobOid": "954a156ff53d8adf0eeb3ad7a9021e352368c66f",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/masonry-coping-albedo-srgb.png": {
+      "sha256": "a3888e7190c86f73f6c3863b84610a34f1b6cc58d4384f6c77fc0d784d5f33d3",
+      "bytes": 57224,
+      "producerBlobOid": "9829e32766d34286fc6d8e468b77981544b18aa0",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/moss-lichen-albedo-srgb.png": {
+      "sha256": "52052d69c0f0bfd3fc750b7ff11c49ccad82bf06b169a63ed3a78da57a58d14c",
+      "bytes": 93045,
+      "producerBlobOid": "456bd3458993f2ef7c355b61c02126bc7f8aa623",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/moss-warm-weather-albedo-srgb.png": {
+      "sha256": "7e3d11e8311ecc5d52a910038cead50d3383a68bfb7c6412d6c8f19c72d7eedd",
+      "bytes": 113185,
+      "producerBlobOid": "28b92eff1f05abbaaae9612c02f112949955de2e",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/prismatic-etch-albedo-srgb.png": {
+      "sha256": "526808c6be3d9794759f14a5660bb6a87a157420827d31cca03e6d625819e8f9",
+      "bytes": 97393,
+      "producerBlobOid": "9214d28022dd0202dae321ff1140c36d650e6e68",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/terracotta-albedo-srgb.png": {
+      "sha256": "19efdd03cd0bc98d04405f04c04b8b9ac1293ca0751103c4e4a11e9ab4b92124",
+      "bytes": 53680,
+      "producerBlobOid": "19ead8921476498664f54aeddd804825eafc13e0",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/native-report.json": {
+      "sha256": "04c59ac3efa854ccc46e0191614d229b1cf634aadb901e879e625b97bc6f55e4",
+      "bytes": 681,
+      "producerBlobOid": "f94b41e3ce758484e6c509ed8fc439919213234c",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/reopen-report.json": {
+      "sha256": "aa3b92340daebcd873470ea093e898bbb89c03a05c5dc1f1fc4f7555257a49ac",
+      "bytes": 13977,
+      "producerBlobOid": "5ef4c0b7b48ad01fc44fea02e65404366eebe8d2",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/source.json": {
+      "sha256": "a787102077ce2d31bf825162c2135644c58ef48d43fd73c6263723009f8d4d35",
+      "bytes": 7936,
+      "producerBlobOid": "34a010cd7a67a8deba961d9fcadd091b94849da3",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/vector-census.json": {
+      "sha256": "3054f342ecfd68cd60ceebc58ae143be42122981884867dd982827245f9b01d2",
+      "bytes": 376,
+      "producerBlobOid": "b1124b7dd96589031b555717eea106210421239f",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/x-readback-v2.json": {
+      "sha256": "fd6507392643dff0342b02288eaafc4f16144b2ea7ddbc8027a58811efbce471",
+      "bytes": 18166,
+      "producerBlobOid": "701a27d7d78204db40da36189aa825749c65c2f2",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/x-readback.json": {
+      "sha256": "35391f8c936cb5a27e434f358085bb4c66f82f062eb9a5783a7c9271329deb19",
+      "bytes": 18078,
+      "producerBlobOid": "8a3b4b5fcb0f9974b6a5b7e6da5f3f7229d8fcb4",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/authority.json": {
+      "sha256": "cd62bdf5c2eafa8dfb25ef29691226c43eef0bb40ca67492110a7bc8c68f6aeb",
+      "bytes": 2377668,
+      "producerBlobOid": "576e3db13e8fd1174d7575458cc3cb933d1ea435",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/bindings.json": {
+      "sha256": "14f7baa4fffb03cd9979eefe2bae660530ad8ac33e625a9e39a19787a66564c7",
+      "bytes": 2592,
+      "producerBlobOid": "d41a8fd3e9d17b192862935f150590bdf842b254",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/build-report.json": {
+      "sha256": "b037c7cdad39158d8c13396282707a889e73e56b8b0d31d7152b715199b9d802",
+      "bytes": 79369,
+      "producerBlobOid": "8fd4d0df38e4756031e3b8b11274b885162e706e",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/detail-01/evidence/attempts/capture-group-987092.json": {
+      "sha256": "6448fd91647e9728871d39bb7729b26264807dfd9ee386a81fbf5e26ca07e931",
+      "bytes": 1295,
+      "producerBlobOid": "5f71512932cc445f314f8ec979ee847a08c8d217",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/detail-02/evidence/attempts/capture-group-997385.json": {
+      "sha256": "f4d89e33e1279c7bc4d77f03579442b76fcd590dd94eb05243c12030554e9616",
+      "bytes": 989,
+      "producerBlobOid": "7b6b4c307abb17d1fb382f145e57287994ab0ffc",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/evaluated-proof.json": {
+      "sha256": "4691952a53564071266dfa7354662e63109f8781b161f05c317983bd2c0d23ad",
+      "bytes": 31680227,
+      "producerBlobOid": "1152986a94a9cec1a62e6a0447ea58307a0ee582",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/evidence/attempts/capture-group-951975.json": {
+      "sha256": "ac4c10c87abda2e361f6ac37aa106590dbc0b57163cebbae2432121955c6244c",
+      "bytes": 1283,
+      "producerBlobOid": "335856a55fe6bbdc865b6c36ed81654995e61a5a",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/parallax-observatory.blend": {
+      "sha256": "9957ca8cc3e4e7f2bca00f7b82a48ed88d031e9e3949259ebf5603f584141051",
+      "bytes": 30881495,
+      "producerBlobOid": "742280fab129b2fcb7603c5667538f314cfd69aa",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/textures/anodized-brush-albedo-srgb.png": {
+      "sha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+      "bytes": 57595,
+      "producerBlobOid": "5390b9803911b967c27959df02491cad02435f87",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/textures/basalt-strata-albedo-srgb.png": {
+      "sha256": "b294342e60378d7fc2d45a9c631c42bde77de529b168f35fbc6194e5998252ae",
+      "bytes": 51628,
+      "producerBlobOid": "aa594275abcbdf24c024876d17beaf0e4caae795",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/textures/ceramic-enamel-albedo-srgb.png": {
+      "sha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+      "bytes": 47156,
+      "producerBlobOid": "422eda3b7a3ed2642a9e51fff5cb31e14b9f77cb",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/textures/etched-coating-haze-albedo-srgb.png": {
+      "sha256": "3650ca3b1f2912c15592ce96ae8ac1060230f7e2afcbc5c69058f4a0ef39d152",
+      "bytes": 87450,
+      "producerBlobOid": "3552820c94e6638620102d8572614cf7140e3ff6",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/textures/frosted-glass-albedo-srgb.png": {
+      "sha256": "a823f19423db40ca2d79d5a243a5ae00994aaf183e463c176b7982609a5127ed",
+      "bytes": 106021,
+      "producerBlobOid": "255a5dd52e03651f758fea4290c28d7c3e5f2bfe",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/textures/optical-mirror-opaque-albedo-srgb.png": {
+      "sha256": "4f6e5eac683c7514dbb923552cd810789d046c0be9716dded91c4aba533e9ad9",
+      "bytes": 43393,
+      "producerBlobOid": "d08830eb5efc22f35f8981f320826b212af2ab4f",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/textures/salt-limestone-albedo-srgb.png": {
+      "sha256": "fa9d87ca9e5a26b74c480a1134f64a982d8230e0e59ecc50e64b1de5cbfc3d7d",
+      "bytes": 101313,
+      "producerBlobOid": "14fc66795127dd948a2eeaca8eb2a00a0f98c1d1",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/textures/trim-wear-albedo-srgb.png": {
+      "sha256": "7ec0ff69d1060e45b2338f4c2add68d729625405f9801701d78239dded35f131",
+      "bytes": 53395,
+      "producerBlobOid": "9e52b64c5bd4428fbdf834d17890f1b1d21fd78e",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/native-report.json": {
+      "sha256": "e4adb735b71b688cc590b13a4073fdd309d2747823a0cdafd7c5e27711cb528e",
+      "bytes": 684,
+      "producerBlobOid": "f37034e20c2953b03a3e8e048c5ca0dc3235339b",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/parallax-observatory.glb": {
+      "sha256": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+      "bytes": 19004120,
+      "producerBlobOid": "2a41a58037545f6d46acacdd6e6837e5bb4d8ec5",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/reopen-report.json": {
+      "sha256": "ca601bb6be405bd2e3bc86cbc3a5ee8506a5a81e1012854a96d194b6d663e418",
+      "bytes": 11539,
+      "producerBlobOid": "0f72073f52fd5e5a22bebbd49286fc7f8aaa9e09",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/source.json": {
+      "sha256": "18da791a9814cb0ea14907f481f82ae83c3f8edf3228fa4ce582d0acafe69dcd",
+      "bytes": 7973,
+      "producerBlobOid": "2b4d0c36a4c5f5e6634487f6066ad702d53ebf45",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/vector-census.json": {
+      "sha256": "184c4db32d7144c22b7bddcfb70b89303920ba99be84742e757445edcaa19a35",
+      "bytes": 1596,
+      "producerBlobOid": "77da23d61386df70ece5e7c57dcb7b1f44bf76fc",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/x-readback-v2.json": {
+      "sha256": "31d2ad1410d1a25449ae39d53f7d3fbfeef3db5c8d1caedc7d136d8185b86612",
+      "bytes": 824,
+      "producerBlobOid": "3a128bfd9e892777b28b3429267312f44e51a041",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/x-readback.json": {
+      "sha256": "90bd2ccf2f6a1d02e8c141a61f6cc6b6532dd82157447ac2a19a3472b3585524",
+      "bytes": 736,
+      "producerBlobOid": "fd7410023ed93e79dcad895c7352c9c2c300e8c8",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/artifact-inventory.json": {
+      "sha256": "440a1291201eaa3ee55f9c0218503ac4588028bfae7fee5c46364673bf94bd78",
+      "bytes": 135476,
+      "producerBlobOid": "f175551972109aea583982299e0c46811908af0d",
+      "originalInventoryEntry": false
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/frozen-u-check.json": {
+      "sha256": "3a1031c0fa409f155dd8dc24ee846c2ebfd89966cf11fc48299ac3ea0e6ecdef",
+      "bytes": 420,
+      "producerBlobOid": "e4d35455efef0d932cbe17ca42b3039c1e5e24d2",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/release-receipt.json": {
+      "sha256": "ea74899209c485a0ae04ef032110d51e11b844bb5de441196f3ce76425c70ba0",
+      "bytes": 52780,
+      "producerBlobOid": "b6b93cbdce60b402c4b27d1e2da45e32949768e4",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/results.json": {
+      "sha256": "8878809d158225980a02998c10d11b6885e1913c9d11d8aa1e918fefd692e350",
+      "bytes": 92361,
+      "producerBlobOid": "1004e26151bcee02d6f913a6562f139287b2f0e8",
+      "originalInventoryEntry": true
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/sidecar-cleanup.json": {
+      "sha256": "b43d560aad4f5f9260ed5e56aa65acdac76446d130ca1caef4f74269da2920ec",
+      "bytes": 82350,
+      "producerBlobOid": "84fb93c1e0d78ddab11e652428be7206bd8b6758",
+      "originalInventoryEntry": true
+    }
+  }
+}

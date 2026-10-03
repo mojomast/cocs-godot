@@ -1,0 +1,26 @@
+{
+  "cameras": [
+    {
+      "id": "east-aperture-inspection",
+      "eye": [
+        51,
+        13.45,
+        -34
+      ],
+      "beforeEye": [
+        51,
+        13.45,
+        -34
+      ],
+      "target": [
+        43,
+        13.45,
+        -34
+      ],
+      "player": false,
+      "fov": 68,
+      "comparison": "matched exterior inspection; not a player-height or supported-standing claim"
+    }
+  ],
+  "scope": "additive exterior composition; all original probes and failed views retained"
+}

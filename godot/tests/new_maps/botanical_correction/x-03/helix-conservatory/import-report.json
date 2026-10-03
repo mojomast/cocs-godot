@@ -1,0 +1,382 @@
+{
+  "dressing": {
+    "batches": 63,
+    "detail": 2,
+    "errors": [],
+    "geometryHash": "f5a3d0d7b2872fa7c7fa6bb2727ee31915a717ffbc160343acf491fe3b9bc49e",
+    "map_id": "helix-conservatory",
+    "matched": [],
+    "motes": 48,
+    "panels": 46,
+    "preserved": [
+      "helix.archive-stone",
+      "helix.trim",
+      "botanical",
+      "ceramic",
+      "glass",
+      "gold",
+      "leaflight",
+      "water",
+      "brick",
+      "soil",
+      "solar",
+      "stone",
+      "verdigris",
+      "helix.soil",
+      "helix.greenhouse-frame",
+      "helix.grotto-rock",
+      "helix.fern",
+      "helix.bark"
+    ],
+    "resources": [
+      "res://moth/generated/textures/weathered_concrete.png",
+      "res://moth/generated/textures/weathered_concrete-worn.png",
+      "res://moth/derived/normals/weathered_concrete-worn.png",
+      "res://moth/generated/textures/brushed_metal.png",
+      "res://moth/generated/normals/metal.png",
+      "res://moth/generated/textures/metal-oxide.png",
+      "res://moth/derived/normals/metal-oxide.png",
+      "res://moth/generated/textures/rock-moss.png",
+      "res://moth/derived/normals/rock-moss.png",
+      "res://moth/generated/textures/dust-field.png",
+      "res://moth/generated/textures/flow-field.png"
+    ],
+    "signs": 13,
+    "status": "staged",
+    "surfaces": 0,
+    "unmatched": [],
+    "unused_selectors": []
+  },
+  "geometryHash": "f5a3d0d7b2872fa7c7fa6bb2727ee31915a717ffbc160343acf491fe3b9bc49e",
+  "glbSha256": "4943e353f4626a11f1e515b9046c92df30985ef725f399f651a8d8ddad953995",
+  "godot": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "importedPixelEvidence": {
+    "botanical": {
+      "albedo": {
+        "height": 512.0,
+        "rgba8Sha256": "42045d8e3ab24263ebfe0acd55018b0108f2c62178d41dffa5cffb2ef17687aa",
+        "width": 512.0
+      },
+      "normal": {
+        "height": 512.0,
+        "rgba8Sha256": "b51cd516246e09c6898b69042d910e2978cf055b5be71479ee6ad54cb8d61c0b",
+        "width": 512.0
+      },
+      "roughness": {
+        "height": 512.0,
+        "rgba8Sha256": "0959a03f53986e5784bb4177bd37901b2a07806aa50df88c652beb8725493e06",
+        "width": 512.0
+      }
+    },
+    "brick": {
+      "albedo": {
+        "height": 512.0,
+        "rgba8Sha256": "547ce1fa0c6fa953ba0c3cbeb05149ae533bae13c8a3e8daa35b4dda7a50de86",
+        "width": 512.0
+      },
+      "normal": {
+        "height": 512.0,
+        "rgba8Sha256": "6273489de68791a7cbcd5a990d6d3b6578a7fd228a605e3045cbcd80c98c5ff3",
+        "width": 512.0
+      },
+      "roughness": {
+        "height": 512.0,
+        "rgba8Sha256": "5cd333b154106073951a5a9d02e98075690d9816c9f6fb1cd1ed264802eed245",
+        "width": 512.0
+      }
+    },
+    "ceramic": {
+      "albedo": {
+        "height": 512.0,
+        "rgba8Sha256": "c909cceb732a8691217e76ad1696beed75bd4c8e57c3c2c6b9073fc3cd03e8fa",
+        "width": 512.0
+      },
+      "normal": {
+        "height": 512.0,
+        "rgba8Sha256": "7102ac0e861be6ccb24f0792a1d7684dda26baeb950df4558645785ba59edf8a",
+        "width": 512.0
+      },
+      "roughness": {
+        "height": 512.0,
+        "rgba8Sha256": "992c9884ab75d594120a603065554fefc9110393aa310603f4a3adf131a308cb",
+        "width": 512.0
+      }
+    },
+    "glass": {
+
+    },
+    "gold": {
+      "albedo": {
+        "height": 512.0,
+        "rgba8Sha256": "9ac0fb55d28f14de9b1fe3dfc8b819e471e7249e2f9dfc817e61c0bb70293b28",
+        "width": 512.0
+      },
+      "normal": {
+        "height": 512.0,
+        "rgba8Sha256": "f8144423636939cb7d27d21504161ad7b7476bf7fcebf02415d182a200acfc4b",
+        "width": 512.0
+      },
+      "roughness": {
+        "height": 512.0,
+        "rgba8Sha256": "092b6f37c2cd7b9bf01912226723f4597e8e700559486a4422b93cd53e69948d",
+        "width": 512.0
+      }
+    },
+    "helix.archive-stone": {
+      "albedo": {
+        "height": 512.0,
+        "rgba8Sha256": "c909cceb732a8691217e76ad1696beed75bd4c8e57c3c2c6b9073fc3cd03e8fa",
+        "width": 512.0
+      },
+      "normal": {
+        "height": 512.0,
+        "rgba8Sha256": "7102ac0e861be6ccb24f0792a1d7684dda26baeb950df4558645785ba59edf8a",
+        "width": 512.0
+      },
+      "roughness": {
+        "height": 512.0,
+        "rgba8Sha256": "992c9884ab75d594120a603065554fefc9110393aa310603f4a3adf131a308cb",
+        "width": 512.0
+      }
+    },
+    "helix.bark": {
+      "albedo": {
+        "height": 512.0,
+        "rgba8Sha256": "41fedbe2021523ccc25bbb92a5bdddaf74313df4a61426172336fff07ef7c243",
+        "width": 512.0
+      },
+      "normal": {
+        "height": 512.0,
+        "rgba8Sha256": "de704fb81a48c955b9722aa7a11cb33720f2b426ccbaf34020df944e8dc2a65a",
+        "width": 512.0
+      },
+      "roughness": {
+        "height": 512.0,
+        "rgba8Sha256": "d0d80bb071e973110927b73049cd9a5b3e71d409530b91d9586e870d9cb44fe9",
+        "width": 512.0
+      }
+    },
+    "helix.fern": {
+      "albedo": {
+        "height": 512.0,
+        "rgba8Sha256": "30fa99810c03171825404f83c99b057810ba78eeef438a4b051ea227af295391",
+        "width": 512.0
+      },
+      "normal": {
+        "height": 512.0,
+        "rgba8Sha256": "166be157063cc6d9b50d9fc22aa42118877d3052b9eb869709d2f40120506eed",
+        "width": 512.0
+      },
+      "roughness": {
+        "height": 512.0,
+        "rgba8Sha256": "a72f672f61505c982901a8055eec9c6c6bf3ae10a0d08ae5e8632a1f08dc1113",
+        "width": 512.0
+      }
+    },
+    "helix.greenhouse-frame": {
+      "albedo": {
+        "height": 512.0,
+        "rgba8Sha256": "9ac0fb55d28f14de9b1fe3dfc8b819e471e7249e2f9dfc817e61c0bb70293b28",
+        "width": 512.0
+      },
+      "normal": {
+        "height": 512.0,
+        "rgba8Sha256": "f8144423636939cb7d27d21504161ad7b7476bf7fcebf02415d182a200acfc4b",
+        "width": 512.0
+      },
+      "roughness": {
+        "height": 512.0,
+        "rgba8Sha256": "092b6f37c2cd7b9bf01912226723f4597e8e700559486a4422b93cd53e69948d",
+        "width": 512.0
+      }
+    },
+    "helix.grotto-rock": {
+      "albedo": {
+        "height": 512.0,
+        "rgba8Sha256": "6e72bba5120b5df3b51c2830efba65b9e325f661445f50c6b972f041631ab973",
+        "width": 512.0
+      },
+      "normal": {
+        "height": 512.0,
+        "rgba8Sha256": "29877da689b5f19a59035f8dc961fc83ec366b7cc1e286dd079f78b17820a1b2",
+        "width": 512.0
+      },
+      "roughness": {
+        "height": 512.0,
+        "rgba8Sha256": "82d7da8aef2141c71758f49d13aa726a989fd78f32b0fed2510748b10af0c8f6",
+        "width": 512.0
+      }
+    },
+    "helix.soil": {
+      "albedo": {
+        "height": 512.0,
+        "rgba8Sha256": "42045d8e3ab24263ebfe0acd55018b0108f2c62178d41dffa5cffb2ef17687aa",
+        "width": 512.0
+      },
+      "normal": {
+        "height": 512.0,
+        "rgba8Sha256": "b51cd516246e09c6898b69042d910e2978cf055b5be71479ee6ad54cb8d61c0b",
+        "width": 512.0
+      },
+      "roughness": {
+        "height": 512.0,
+        "rgba8Sha256": "0959a03f53986e5784bb4177bd37901b2a07806aa50df88c652beb8725493e06",
+        "width": 512.0
+      }
+    },
+    "helix.trim": {
+      "albedo": {
+        "height": 512.0,
+        "rgba8Sha256": "998e217c6c428bff5eae1f6dc812aaf56814de022fcecbf0a6c535b1dcfa593c",
+        "width": 512.0
+      },
+      "normal": {
+        "height": 512.0,
+        "rgba8Sha256": "e1c218dd1f3c4811833a6f7016df7e7c32daf180283697d6cf1fb7ed1b37b8fb",
+        "width": 512.0
+      },
+      "roughness": {
+        "height": 512.0,
+        "rgba8Sha256": "d331a491724c1d9c7e04936fdab3ef480f38f3cb4685466870f0aca818b4f0fc",
+        "width": 512.0
+      }
+    },
+    "leaflight": {
+      "albedo": {
+        "height": 512.0,
+        "rgba8Sha256": "9b1c65722ff8959dcea01153f02843b402d4f1b279111486d450338b841b6f39",
+        "width": 512.0
+      },
+      "normal": {
+        "height": 512.0,
+        "rgba8Sha256": "ea4e22fb436a8f4aadb544e09d6b5b13224f2fa72016b508bf6141905608e887",
+        "width": 512.0
+      },
+      "roughness": {
+        "height": 512.0,
+        "rgba8Sha256": "b9302ce0c632ea620d81308458a6e2234944f2782cdb612f9ced8715c40f43a3",
+        "width": 512.0
+      }
+    },
+    "soil": {
+      "albedo": {
+        "height": 512.0,
+        "rgba8Sha256": "42045d8e3ab24263ebfe0acd55018b0108f2c62178d41dffa5cffb2ef17687aa",
+        "width": 512.0
+      },
+      "normal": {
+        "height": 512.0,
+        "rgba8Sha256": "b51cd516246e09c6898b69042d910e2978cf055b5be71479ee6ad54cb8d61c0b",
+        "width": 512.0
+      },
+      "roughness": {
+        "height": 512.0,
+        "rgba8Sha256": "0959a03f53986e5784bb4177bd37901b2a07806aa50df88c652beb8725493e06",
+        "width": 512.0
+      }
+    },
+    "solar": {
+      "albedo": {
+        "height": 512.0,
+        "rgba8Sha256": "931bf6b29be15daed7bd03fdb82cde6bad0576b2530f1c0861ca9f52fe747538",
+        "width": 512.0
+      },
+      "normal": {
+        "height": 512.0,
+        "rgba8Sha256": "f6794df2ccc40c8bb678cad27be028a382e150ab19d393e6f8b4ce485858d010",
+        "width": 512.0
+      },
+      "roughness": {
+        "height": 512.0,
+        "rgba8Sha256": "25d66e40b97ad8af4cb493d9d69171f01bbc189a4fac077753f6f960ef07349c",
+        "width": 512.0
+      }
+    },
+    "stone": {
+      "albedo": {
+        "height": 512.0,
+        "rgba8Sha256": "6e72bba5120b5df3b51c2830efba65b9e325f661445f50c6b972f041631ab973",
+        "width": 512.0
+      },
+      "normal": {
+        "height": 512.0,
+        "rgba8Sha256": "29877da689b5f19a59035f8dc961fc83ec366b7cc1e286dd079f78b17820a1b2",
+        "width": 512.0
+      },
+      "roughness": {
+        "height": 512.0,
+        "rgba8Sha256": "82d7da8aef2141c71758f49d13aa726a989fd78f32b0fed2510748b10af0c8f6",
+        "width": 512.0
+      }
+    },
+    "verdigris": {
+      "albedo": {
+        "height": 512.0,
+        "rgba8Sha256": "b55a48d7e8e0db697db1f9df87877cb9f1b4c681ed97a441aa6b8eaf2d93808e",
+        "width": 512.0
+      },
+      "normal": {
+        "height": 512.0,
+        "rgba8Sha256": "2f77a718a71688570d587b0452480fba225266635ca1624b38d91babb53849b3",
+        "width": 512.0
+      },
+      "roughness": {
+        "height": 512.0,
+        "rgba8Sha256": "8294cfe076c24d6b1780fd31418e2069c6a1bf3b6816e8aa46734c73682ddc25",
+        "width": 512.0
+      }
+    },
+    "water": {
+
+    }
+  },
+  "manifestSha256": "11736b1029567fabc9c91956ab361ac1ad411398285e1713dfb4de941efed9e8",
+  "materialInstancesRestored": 27,
+  "materials": [
+    "botanical",
+    "brick",
+    "ceramic",
+    "glass",
+    "gold",
+    "helix.archive-stone",
+    "helix.bark",
+    "helix.fern",
+    "helix.greenhouse-frame",
+    "helix.grotto-rock",
+    "helix.soil",
+    "helix.trim",
+    "leaflight",
+    "soil",
+    "solar",
+    "stone",
+    "verdigris",
+    "water"
+  ],
+  "scope": "actual imported GLB/schema/Binder/Weather lifecycle; rendering and hosted play are separate pending gates",
+  "triangles": 157518,
+  "weatherLook": {
+    "additional_colliders": 0,
+    "additional_geometry_nodes": 0,
+    "binding_cap": 16384,
+    "bindings": 38,
+    "capped": false,
+    "material_cap": 256,
+    "materials": 38,
+    "node_cap": 16384,
+    "uniform_writes": 152,
+    "visited": 106,
+    "wet_shader_variants": 0,
+    "wet_textures": 0,
+    "wetness": 0.0
+  }
+}

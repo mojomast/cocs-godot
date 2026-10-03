@@ -1,0 +1,26 @@
+{
+  "cameras": [
+    {
+      "id": "east-landing-exterior",
+      "eye": [
+        68,
+        27,
+        -21
+      ],
+      "beforeEye": [
+        68,
+        27,
+        -21
+      ],
+      "target": [
+        47,
+        14,
+        -39
+      ],
+      "player": false,
+      "fov": 68,
+      "comparison": "matched exterior inspection; not a player-height or supported-standing claim"
+    }
+  ],
+  "scope": "additive exterior composition; all original probes and failed views retained"
+}

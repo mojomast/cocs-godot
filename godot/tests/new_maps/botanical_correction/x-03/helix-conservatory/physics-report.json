@@ -1,0 +1,1927 @@
+{
+  "errors": [],
+  "expected": 32763,
+  "finiteCapsules": 32763,
+  "geometryHash": "f5a3d0d7b2872fa7c7fa6bb2727ee31915a717ffbc160343acf491fe3b9bc49e",
+  "glbSha256": "4943e353f4626a11f1e515b9046c92df30985ef725f399f651a8d8ddad953995",
+  "godot": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "groups": {
+    "accepted-nav": 2334,
+    "accepted-route": 13611,
+    "camera": 7,
+    "candidate-nav": 2506,
+    "candidate-route": 14284,
+    "flags": 2,
+    "objectives": 3,
+    "spawns": 10,
+    "teamSpawns": 6
+  },
+  "manifestSha256": "11736b1029567fabc9c91956ab361ac1ad411398285e1713dfb4de941efed9e8",
+  "modeSupport": [
+    {
+      "hostedJourney": "pending",
+      "mode": "deathmatch",
+      "scope": "shared native spawn/team/objective support only"
+    },
+    {
+      "hostedJourney": "pending",
+      "mode": "teamdeathmatch",
+      "scope": "shared native spawn/team/objective support only"
+    },
+    {
+      "hostedJourney": "pending",
+      "mode": "ctf",
+      "scope": "shared native spawn/team/objective support only"
+    },
+    {
+      "hostedJourney": "pending",
+      "mode": "domination",
+      "scope": "shared native spawn/team/objective support only"
+    },
+    {
+      "hostedJourney": "pending",
+      "mode": "koth",
+      "scope": "shared native spawn/team/objective support only"
+    }
+  ],
+  "rays": [
+    {
+      "id": "portal:grotto-mouth-0:-0.35:0.5",
+      "nativeAuthority": 4.70211935043335,
+      "nativeGLB": 4.7021312713623
+    },
+    {
+      "id": "portal:grotto-mouth-0:-0.35:1.5",
+      "nativeAuthority": 5.0,
+      "nativeGLB": 5.0
+    },
+    {
+      "id": "portal:grotto-mouth-0:0:0.5",
+      "nativeAuthority": 4.74183559417725,
+      "nativeGLB": 4.74183988571167
+    },
+    {
+      "id": "portal:grotto-mouth-0:0:1.5",
+      "nativeAuthority": 5.0,
+      "nativeGLB": 5.0
+    },
+    {
+      "id": "portal:grotto-mouth-0:0.35:0.5",
+      "nativeAuthority": 4.70738554000854,
+      "nativeGLB": 4.70739650726318
+    },
+    {
+      "id": "portal:grotto-mouth-0:0.35:1.5",
+      "nativeAuthority": 5.0,
+      "nativeGLB": 5.0
+    },
+    {
+      "id": "portal:grotto-mouth-1:-0.35:0.5",
+      "nativeAuthority": 4.71429777145386,
+      "nativeGLB": 4.71428966522217
+    },
+    {
+      "id": "portal:grotto-mouth-1:-0.35:1.5",
+      "nativeAuthority": 5.0,
+      "nativeGLB": 5.0
+    },
+    {
+      "id": "portal:grotto-mouth-1:0:0.5",
+      "nativeAuthority": 4.7173547744751,
+      "nativeGLB": 4.71733570098877
+    },
+    {
+      "id": "portal:grotto-mouth-1:0:1.5",
+      "nativeAuthority": 5.0,
+      "nativeGLB": 5.0
+    },
+    {
+      "id": "portal:grotto-mouth-1:0.35:0.5",
+      "nativeAuthority": 4.72040891647339,
+      "nativeGLB": 4.720374584198
+    },
+    {
+      "id": "portal:grotto-mouth-1:0.35:1.5",
+      "nativeAuthority": 5.0,
+      "nativeGLB": 5.0
+    },
+    {
+      "id": "post:70:80.8:0.5:-1",
+      "nativeAuthority": 0.58172219991684,
+      "nativeGLB": 0.581729829311371
+    },
+    {
+      "id": "post:70:80.8:0.5:1",
+      "nativeAuthority": 0.581729829311371,
+      "nativeGLB": 0.581699252128601
+    },
+    {
+      "id": "post:70:80.8:1.5:-1",
+      "nativeAuthority": 0.58172219991684,
+      "nativeGLB": 0.581729829311371
+    },
+    {
+      "id": "post:70:80.8:1.5:1",
+      "nativeAuthority": 0.581729829311371,
+      "nativeGLB": 0.581699252128601
+    },
+    {
+      "id": "post:70:80.8:2.5:-1",
+      "nativeAuthority": 0.58172219991684,
+      "nativeGLB": 0.581729829311371
+    },
+    {
+      "id": "post:70:80.8:2.5:1",
+      "nativeAuthority": 0.581729829311371,
+      "nativeGLB": 0.581699252128601
+    },
+    {
+      "id": "post:70:93.2:0.5:-1",
+      "nativeAuthority": 0.581729829311371,
+      "nativeGLB": 0.581745088100433
+    },
+    {
+      "id": "post:70:93.2:0.5:1",
+      "nativeAuthority": 0.578085601329803,
+      "nativeGLB": 0.578131437301636
+    },
+    {
+      "id": "post:70:93.2:1.5:-1",
+      "nativeAuthority": 0.581729829311371,
+      "nativeGLB": 0.581745088100433
+    },
+    {
+      "id": "post:70:93.2:1.5:1",
+      "nativeAuthority": 0.578085601329803,
+      "nativeGLB": 0.578131437301636
+    },
+    {
+      "id": "post:70:93.2:2.5:-1",
+      "nativeAuthority": 0.581729829311371,
+      "nativeGLB": 0.581745088100433
+    },
+    {
+      "id": "post:70:93.2:2.5:1",
+      "nativeAuthority": 0.578085601329803,
+      "nativeGLB": 0.578131437301636
+    },
+    {
+      "id": "post:76:80.8:0.5:-1",
+      "nativeAuthority": 0.540841281414032,
+      "nativeGLB": 0.540864229202271
+    },
+    {
+      "id": "post:76:80.8:0.5:1",
+      "nativeAuthority": 0.58172219991684,
+      "nativeGLB": 0.581729829311371
+    },
+    {
+      "id": "post:76:80.8:1.5:-1",
+      "nativeAuthority": 0.540841281414032,
+      "nativeGLB": 0.540864229202271
+    },
+    {
+      "id": "post:76:80.8:1.5:1",
+      "nativeAuthority": 0.58172219991684,
+      "nativeGLB": 0.581729829311371
+    },
+    {
+      "id": "post:76:80.8:2.5:-1",
+      "nativeAuthority": 0.540841281414032,
+      "nativeGLB": 0.540864229202271
+    },
+    {
+      "id": "post:76:80.8:2.5:1",
+      "nativeAuthority": 0.58172219991684,
+      "nativeGLB": 0.581729829311371
+    },
+    {
+      "id": "post:76:93.2:0.5:-1",
+      "nativeAuthority": 0.581729829311371,
+      "nativeGLB": 0.581737458705902
+    },
+    {
+      "id": "post:76:93.2:0.5:1",
+      "nativeAuthority": 0.58172219991684,
+      "nativeGLB": 0.58169162273407
+    },
+    {
+      "id": "post:76:93.2:1.5:-1",
+      "nativeAuthority": 0.581729829311371,
+      "nativeGLB": 0.581737458705902
+    },
+    {
+      "id": "post:76:93.2:1.5:1",
+      "nativeAuthority": 0.58172219991684,
+      "nativeGLB": 0.58169162273407
+    },
+    {
+      "id": "post:76:93.2:2.5:-1",
+      "nativeAuthority": 0.581729829311371,
+      "nativeGLB": 0.581737458705902
+    },
+    {
+      "id": "post:76:93.2:2.5:1",
+      "nativeAuthority": 0.58172219991684,
+      "nativeGLB": 0.58169162273407
+    },
+    {
+      "id": "post:82:80.8:0.5:-1",
+      "nativeAuthority": 0.552239537239075,
+      "nativeGLB": 0.552231848239899
+    },
+    {
+      "id": "post:82:80.8:0.5:1",
+      "nativeAuthority": 0.581724047660828,
+      "nativeGLB": 0.581754922866821
+    },
+    {
+      "id": "post:82:80.8:1.5:-1",
+      "nativeAuthority": 0.552239537239075,
+      "nativeGLB": 0.552231848239899
+    },
+    {
+      "id": "post:82:80.8:1.5:1",
+      "nativeAuthority": 0.581724047660828,
+      "nativeGLB": 0.581754922866821
+    },
+    {
+      "id": "post:82:80.8:2.5:-1",
+      "nativeAuthority": 0.552239537239075,
+      "nativeGLB": 0.552231848239899
+    },
+    {
+      "id": "post:82:80.8:2.5:1",
+      "nativeAuthority": 0.581724047660828,
+      "nativeGLB": 0.581754922866821
+    },
+    {
+      "id": "post:82:93.2:0.5:-1",
+      "nativeAuthority": 0.581724047660828,
+      "nativeGLB": 0.581700801849365
+    },
+    {
+      "id": "post:82:93.2:0.5:1",
+      "nativeAuthority": 0.55887508392334,
+      "nativeGLB": 0.55892139673233
+    },
+    {
+      "id": "post:82:93.2:1.5:-1",
+      "nativeAuthority": 0.581724047660828,
+      "nativeGLB": 0.581700801849365
+    },
+    {
+      "id": "post:82:93.2:1.5:1",
+      "nativeAuthority": 0.55887508392334,
+      "nativeGLB": 0.55892139673233
+    },
+    {
+      "id": "post:82:93.2:2.5:-1",
+      "nativeAuthority": 0.581724047660828,
+      "nativeGLB": 0.581700801849365
+    },
+    {
+      "id": "post:82:93.2:2.5:1",
+      "nativeAuthority": 0.55887508392334,
+      "nativeGLB": 0.55892139673233
+    },
+    {
+      "id": "post:88:80.8:0.5:-1",
+      "nativeAuthority": 0.545717239379883,
+      "nativeGLB": 0.545709609985352
+    },
+    {
+      "id": "post:88:80.8:0.5:1",
+      "nativeAuthority": 0.581726431846619,
+      "nativeGLB": 0.581711113452911
+    },
+    {
+      "id": "post:88:80.8:1.5:-1",
+      "nativeAuthority": 0.545717239379883,
+      "nativeGLB": 0.545709609985352
+    },
+    {
+      "id": "post:88:80.8:1.5:1",
+      "nativeAuthority": 0.581726431846619,
+      "nativeGLB": 0.581711113452911
+    },
+    {
+      "id": "post:88:80.8:2.5:-1",
+      "nativeAuthority": 0.545717239379883,
+      "nativeGLB": 0.545709609985352
+    },
+    {
+      "id": "post:88:80.8:2.5:1",
+      "nativeAuthority": 0.581726431846619,
+      "nativeGLB": 0.581711113452911
+    },
+    {
+      "id": "post:88:93.2:0.5:-1",
+      "nativeAuthority": 0.581726491451263,
+      "nativeGLB": 0.581703186035156
+    },
+    {
+      "id": "post:88:93.2:0.5:1",
+      "nativeAuthority": 0.572177648544312,
+      "nativeGLB": 0.572161853313446
+    },
+    {
+      "id": "post:88:93.2:1.5:-1",
+      "nativeAuthority": 0.581726491451263,
+      "nativeGLB": 0.581703186035156
+    },
+    {
+      "id": "post:88:93.2:1.5:1",
+      "nativeAuthority": 0.572177648544312,
+      "nativeGLB": 0.572161853313446
+    },
+    {
+      "id": "post:88:93.2:2.5:-1",
+      "nativeAuthority": 0.581726491451263,
+      "nativeGLB": 0.581703186035156
+    },
+    {
+      "id": "post:88:93.2:2.5:1",
+      "nativeAuthority": 0.572177648544312,
+      "nativeGLB": 0.572161853313446
+    },
+    {
+      "id": "post:94:80.8:0.5:-1",
+      "nativeAuthority": 0.536585807800293,
+      "nativeGLB": 0.536602079868317
+    },
+    {
+      "id": "post:94:80.8:0.5:1",
+      "nativeAuthority": 0.581728875637054,
+      "nativeGLB": 0.581728875637054
+    },
+    {
+      "id": "post:94:80.8:1.5:-1",
+      "nativeAuthority": 0.536585807800293,
+      "nativeGLB": 0.536602079868317
+    },
+    {
+      "id": "post:94:80.8:1.5:1",
+      "nativeAuthority": 0.581728875637054,
+      "nativeGLB": 0.581728875637054
+    },
+    {
+      "id": "post:94:80.8:2.5:-1",
+      "nativeAuthority": 0.536585807800293,
+      "nativeGLB": 0.536602079868317
+    },
+    {
+      "id": "post:94:80.8:2.5:1",
+      "nativeAuthority": 0.581728875637054,
+      "nativeGLB": 0.581728875637054
+    },
+    {
+      "id": "post:94:93.2:0.5:-1",
+      "nativeAuthority": 0.581720769405365,
+      "nativeGLB": 0.581672072410583
+    },
+    {
+      "id": "post:94:93.2:0.5:1",
+      "nativeAuthority": 0.580773174762726,
+      "nativeGLB": 0.580797135829926
+    },
+    {
+      "id": "post:94:93.2:1.5:-1",
+      "nativeAuthority": 0.581720769405365,
+      "nativeGLB": 0.581672072410583
+    },
+    {
+      "id": "post:94:93.2:1.5:1",
+      "nativeAuthority": 0.580773174762726,
+      "nativeGLB": 0.580797135829926
+    },
+    {
+      "id": "post:94:93.2:2.5:-1",
+      "nativeAuthority": 0.581720769405365,
+      "nativeGLB": 0.581672072410583
+    },
+    {
+      "id": "post:94:93.2:2.5:1",
+      "nativeAuthority": 0.580773174762726,
+      "nativeGLB": 0.580797135829926
+    },
+    {
+      "id": "solid:grotto-arch-0.band",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:grotto-arch-0.reveal",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:grotto-arch-0.springer-1",
+      "nativeAuthority": 0.150000885128975,
+      "nativeGLB": 0.150025010108948
+    },
+    {
+      "id": "solid:grotto-arch-0.springer1",
+      "nativeAuthority": 0.150000885128975,
+      "nativeGLB": 0.149997279047966
+    },
+    {
+      "id": "solid:grotto-arch-1.band",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:grotto-arch-1.reveal",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:grotto-arch-1.springer-1",
+      "nativeAuthority": 0.150000140070915,
+      "nativeGLB": 0.15002515912056
+    },
+    {
+      "id": "solid:grotto-arch-1.springer1",
+      "nativeAuthority": 0.150000244379044,
+      "nativeGLB": 0.150001674890518
+    },
+    {
+      "id": "solid:botanical-shelf-1-rim.tier0",
+      "nativeAuthority": 0.15000057220459,
+      "nativeGLB": 0.15000057220459
+    },
+    {
+      "id": "solid:botanical-shelf-1-rim.tier1",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:botanical-shelf-1-rim.cap",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:botanical-shelf-2-rim.tier0",
+      "nativeAuthority": 0.15000057220459,
+      "nativeGLB": 0.15000057220459
+    },
+    {
+      "id": "solid:botanical-shelf-2-rim.tier1",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:botanical-shelf-2-rim.cap",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:botanical-shelf-3-rim.tier0",
+      "nativeAuthority": 0.15000057220459,
+      "nativeGLB": 0.15000057220459
+    },
+    {
+      "id": "solid:botanical-shelf-3-rim.tier1",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:botanical-shelf-3-rim.cap",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:botanical-shelf-4-rim.tier0",
+      "nativeAuthority": 0.15000057220459,
+      "nativeGLB": 0.15000057220459
+    },
+    {
+      "id": "solid:botanical-shelf-4-rim.tier1",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:botanical-shelf-4-rim.cap",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:botanical-shelf-5-rim.tier0",
+      "nativeAuthority": 0.15000057220459,
+      "nativeGLB": 0.15000057220459
+    },
+    {
+      "id": "solid:botanical-shelf-5-rim.tier1",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:botanical-shelf-5-rim.cap",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-0.bay0.jamb.-1",
+      "nativeAuthority": 0.149999722838402,
+      "nativeGLB": 0.15003590285778
+    },
+    {
+      "id": "solid:archive-bay-0.bay0.pilaster.-1",
+      "nativeAuthority": 0.149999722838402,
+      "nativeGLB": 0.150011777877808
+    },
+    {
+      "id": "solid:archive-bay-0.bay0.reveal-jamb.-1",
+      "nativeAuthority": 0.149999722838402,
+      "nativeGLB": 0.149999722838402
+    },
+    {
+      "id": "solid:archive-bay-0.bay0.jamb.1",
+      "nativeAuthority": 0.149999722838402,
+      "nativeGLB": 0.150011777877808
+    },
+    {
+      "id": "solid:archive-bay-0.bay0.pilaster.1",
+      "nativeAuthority": 0.149999722838402,
+      "nativeGLB": 0.150011777877808
+    },
+    {
+      "id": "solid:archive-bay-0.bay0.reveal-jamb.1",
+      "nativeAuthority": 0.149999722838402,
+      "nativeGLB": 0.150027468800545
+    },
+    {
+      "id": "solid:archive-bay-0.bay0.arched-lintel",
+      "nativeAuthority": 0.0940364226698875,
+      "nativeGLB": 0.0940364226698875
+    },
+    {
+      "id": "solid:archive-bay-0.bay0.reveal-arch",
+      "nativeAuthority": 0.150001376867294,
+      "nativeGLB": 0.150012105703354
+    },
+    {
+      "id": "solid:archive-bay-0.bay0.stepped-sill",
+      "nativeAuthority": 0.15000057220459,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-0.pier0",
+      "nativeAuthority": 0.149999722838402,
+      "nativeGLB": 0.150009959936142
+    },
+    {
+      "id": "solid:archive-bay-0.bay1.jamb.-1",
+      "nativeAuthority": 0.149999722838402,
+      "nativeGLB": 0.150041341781616
+    },
+    {
+      "id": "solid:archive-bay-0.bay1.pilaster.-1",
+      "nativeAuthority": 0.149999722838402,
+      "nativeGLB": 0.150013595819473
+    },
+    {
+      "id": "solid:archive-bay-0.bay1.reveal-jamb.-1",
+      "nativeAuthority": 0.149999722838402,
+      "nativeGLB": 0.14999608695507
+    },
+    {
+      "id": "solid:archive-bay-0.bay1.jamb.1",
+      "nativeAuthority": 0.150001540780067,
+      "nativeGLB": 0.149965345859528
+    },
+    {
+      "id": "solid:archive-bay-0.bay1.pilaster.1",
+      "nativeAuthority": 0.149999722838402,
+      "nativeGLB": 0.15003590285778
+    },
+    {
+      "id": "solid:archive-bay-0.bay1.reveal-jamb.1",
+      "nativeAuthority": 0.149999722838402,
+      "nativeGLB": 0.149999722838402
+    },
+    {
+      "id": "solid:archive-bay-0.bay1.arched-lintel",
+      "nativeAuthority": 0.150001391768456,
+      "nativeGLB": 0.149998262524605
+    },
+    {
+      "id": "solid:archive-bay-0.bay1.reveal-arch",
+      "nativeAuthority": 0.14999882876873,
+      "nativeGLB": 0.149985566735268
+    },
+    {
+      "id": "solid:archive-bay-0.bay1.stepped-sill",
+      "nativeAuthority": 0.15000057220459,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-0.pier1",
+      "nativeAuthority": 0.149999722838402,
+      "nativeGLB": 0.149984031915665
+    },
+    {
+      "id": "solid:archive-bay-0.bay2.jamb.-1",
+      "nativeAuthority": 0.150000631809235,
+      "nativeGLB": 0.150017231702805
+    },
+    {
+      "id": "solid:archive-bay-0.bay2.pilaster.-1",
+      "nativeAuthority": 0.150000631809235,
+      "nativeGLB": 0.149984031915665
+    },
+    {
+      "id": "solid:archive-bay-0.bay2.reveal-jamb.-1",
+      "nativeAuthority": 0.149999722838402,
+      "nativeGLB": 0.149962618947029
+    },
+    {
+      "id": "solid:archive-bay-0.bay2.jamb.1",
+      "nativeAuthority": 0.149999722838402,
+      "nativeGLB": 0.149987652897835
+    },
+    {
+      "id": "solid:archive-bay-0.bay2.pilaster.1",
+      "nativeAuthority": 0.149999722838402,
+      "nativeGLB": 0.150030180811882
+    },
+    {
+      "id": "solid:archive-bay-0.bay2.reveal-jamb.1",
+      "nativeAuthority": 0.149999722838402,
+      "nativeGLB": 0.150001540780067
+    },
+    {
+      "id": "solid:archive-bay-0.bay2.arched-lintel",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149955749511719
+    },
+    {
+      "id": "solid:archive-bay-0.bay2.reveal-arch",
+      "nativeAuthority": 0.149999156594276,
+      "nativeGLB": 0.150008618831635
+    },
+    {
+      "id": "solid:archive-bay-0.bay2.stepped-sill",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149950981140137
+    },
+    {
+      "id": "solid:archive-bay-0.pier2",
+      "nativeAuthority": 0.150001540780067,
+      "nativeGLB": 0.149999722838402
+    },
+    {
+      "id": "solid:archive-bay-0.pier-end",
+      "nativeAuthority": 0.150000631809235,
+      "nativeGLB": 0.150016322731972
+    },
+    {
+      "id": "solid:archive-bay-0.cornice",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-1.bay0.jamb.-1",
+      "nativeAuthority": 0.149999067187309,
+      "nativeGLB": 0.150003373622894
+    },
+    {
+      "id": "solid:archive-bay-1.bay0.pilaster.-1",
+      "nativeAuthority": 0.150000542402267,
+      "nativeGLB": 0.150009036064148
+    },
+    {
+      "id": "solid:archive-bay-1.bay0.reveal-jamb.-1",
+      "nativeAuthority": 0.150000542402267,
+      "nativeGLB": 0.14996737241745
+    },
+    {
+      "id": "solid:archive-bay-1.bay0.jamb.1",
+      "nativeAuthority": 0.149999067187309,
+      "nativeGLB": 0.150036960840225
+    },
+    {
+      "id": "solid:archive-bay-1.bay0.pilaster.1",
+      "nativeAuthority": 0.149999067187309,
+      "nativeGLB": 0.150009989738464
+    },
+    {
+      "id": "solid:archive-bay-1.bay0.reveal-jamb.1",
+      "nativeAuthority": 0.149999067187309,
+      "nativeGLB": 0.150021329522133
+    },
+    {
+      "id": "solid:archive-bay-1.bay0.lintel",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149971008300781
+    },
+    {
+      "id": "solid:archive-bay-1.bay0.reveal-head",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.150035858154297
+    },
+    {
+      "id": "solid:archive-bay-1.bay0.stepped-sill",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149967193603516
+    },
+    {
+      "id": "solid:archive-bay-1.pier0",
+      "nativeAuthority": 0.149999067187309,
+      "nativeGLB": 0.150003373622894
+    },
+    {
+      "id": "solid:archive-bay-1.bay1.jamb.-1",
+      "nativeAuthority": 0.150000542402267,
+      "nativeGLB": 0.149968326091766
+    },
+    {
+      "id": "solid:archive-bay-1.bay1.pilaster.-1",
+      "nativeAuthority": 0.150000542402267,
+      "nativeGLB": 0.149993404746056
+    },
+    {
+      "id": "solid:archive-bay-1.bay1.reveal-jamb.-1",
+      "nativeAuthority": 0.149999067187309,
+      "nativeGLB": 0.149983957409859
+    },
+    {
+      "id": "solid:archive-bay-1.bay1.jamb.1",
+      "nativeAuthority": 0.150000542402267,
+      "nativeGLB": 0.149966433644295
+    },
+    {
+      "id": "solid:archive-bay-1.bay1.pilaster.1",
+      "nativeAuthority": 0.149999544024467,
+      "nativeGLB": 0.149991050362587
+    },
+    {
+      "id": "solid:archive-bay-1.bay1.reveal-jamb.1",
+      "nativeAuthority": 0.150000542402267,
+      "nativeGLB": 0.149999067187309
+    },
+    {
+      "id": "solid:archive-bay-1.bay1.lintel",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-1.bay1.reveal-head",
+      "nativeAuthority": 0.133047103881836,
+      "nativeGLB": 0.133050918579102
+    },
+    {
+      "id": "solid:archive-bay-1.bay1.stepped-sill",
+      "nativeAuthority": 0.15000057220459,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-1.pier1",
+      "nativeAuthority": 0.150000542402267,
+      "nativeGLB": 0.150022268295288
+    },
+    {
+      "id": "solid:archive-bay-1.bay2.jamb.-1",
+      "nativeAuthority": 0.0379405580461025,
+      "nativeGLB": 0.0379017777740955
+    },
+    {
+      "id": "solid:archive-bay-1.bay2.pilaster.-1",
+      "nativeAuthority": 0.149999544024467,
+      "nativeGLB": 0.150023683905602
+    },
+    {
+      "id": "solid:archive-bay-1.bay2.reveal-jamb.-1",
+      "nativeAuthority": 0.00556117203086615,
+      "nativeGLB": 0.00556494994089007
+    },
+    {
+      "id": "solid:archive-bay-1.bay2.jamb.1",
+      "nativeAuthority": 0.149999544024467,
+      "nativeGLB": 0.14997161924839
+    },
+    {
+      "id": "solid:archive-bay-1.bay2.pilaster.1",
+      "nativeAuthority": 0.149999544024467,
+      "nativeGLB": 0.150021329522133
+    },
+    {
+      "id": "solid:archive-bay-1.bay2.reveal-jamb.1",
+      "nativeAuthority": 0.150000542402267,
+      "nativeGLB": 0.150043576955795
+    },
+    {
+      "id": "solid:archive-bay-1.bay2.lintel",
+      "nativeAuthority": 0.150001525878906,
+      "nativeGLB": 0.150039672851562
+    },
+    {
+      "id": "solid:archive-bay-1.bay2.reveal-head",
+      "nativeAuthority": 0.134828567504883,
+      "nativeGLB": 0.134819030761719
+    },
+    {
+      "id": "solid:archive-bay-1.bay2.stepped-sill",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149967193603516
+    },
+    {
+      "id": "solid:archive-bay-1.pier2",
+      "nativeAuthority": 0.150000542402267,
+      "nativeGLB": 0.149977818131447
+    },
+    {
+      "id": "solid:archive-bay-1.pier-end",
+      "nativeAuthority": 0.0379405580461025,
+      "nativeGLB": 0.0379789248108864
+    },
+    {
+      "id": "solid:archive-bay-1.cornice",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-2.bay0.jamb.-1",
+      "nativeAuthority": 0.149999916553497,
+      "nativeGLB": 0.150001108646393
+    },
+    {
+      "id": "solid:archive-bay-2.bay0.pilaster.-1",
+      "nativeAuthority": 0.150000169873238,
+      "nativeGLB": 0.149983257055283
+    },
+    {
+      "id": "solid:archive-bay-2.bay0.reveal-jamb.-1",
+      "nativeAuthority": 0.149999916553497,
+      "nativeGLB": 0.149990409612656
+    },
+    {
+      "id": "solid:archive-bay-2.bay0.jamb.1",
+      "nativeAuthority": 0.150000020861626,
+      "nativeGLB": 0.149980425834656
+    },
+    {
+      "id": "solid:archive-bay-2.bay0.pilaster.1",
+      "nativeAuthority": 0.149999991059303,
+      "nativeGLB": 0.149962291121483
+    },
+    {
+      "id": "solid:archive-bay-2.bay0.reveal-jamb.1",
+      "nativeAuthority": 0.149999916553497,
+      "nativeGLB": 0.149994567036629
+    },
+    {
+      "id": "solid:archive-bay-2.bay0.arched-lintel",
+      "nativeAuthority": 0.149999693036079,
+      "nativeGLB": 0.149993762373924
+    },
+    {
+      "id": "solid:archive-bay-2.bay0.reveal-arch",
+      "nativeAuthority": 0.150000005960464,
+      "nativeGLB": 0.14997099339962
+    },
+    {
+      "id": "solid:archive-bay-2.bay0.stepped-sill",
+      "nativeAuthority": 0.15000057220459,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-2.pier0",
+      "nativeAuthority": 0.105405755341053,
+      "nativeGLB": 0.105372898280621
+    },
+    {
+      "id": "solid:archive-bay-2.bay1.jamb.-1",
+      "nativeAuthority": 0.149999916553497,
+      "nativeGLB": 0.150018498301506
+    },
+    {
+      "id": "solid:archive-bay-2.bay1.pilaster.-1",
+      "nativeAuthority": 0.150000050663948,
+      "nativeGLB": 0.14999695122242
+    },
+    {
+      "id": "solid:archive-bay-2.bay1.reveal-jamb.-1",
+      "nativeAuthority": 0.149999916553497,
+      "nativeGLB": 0.150002896785736
+    },
+    {
+      "id": "solid:archive-bay-2.bay1.jamb.1",
+      "nativeAuthority": 0.150000169873238,
+      "nativeGLB": 0.149972066283226
+    },
+    {
+      "id": "solid:archive-bay-2.bay1.pilaster.1",
+      "nativeAuthority": 0.150000169873238,
+      "nativeGLB": 0.150023013353348
+    },
+    {
+      "id": "solid:archive-bay-2.bay1.reveal-jamb.1",
+      "nativeAuthority": 0.150000169873238,
+      "nativeGLB": 0.149985879659653
+    },
+    {
+      "id": "solid:archive-bay-2.bay1.arched-lintel",
+      "nativeAuthority": 0.136467948555946,
+      "nativeGLB": 0.136467948555946
+    },
+    {
+      "id": "solid:archive-bay-2.bay1.reveal-arch",
+      "nativeAuthority": 0.15000082552433,
+      "nativeGLB": 0.149994567036629
+    },
+    {
+      "id": "solid:archive-bay-2.bay1.stepped-sill",
+      "nativeAuthority": 0.15000057220459,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-2.pier1",
+      "nativeAuthority": 0.14999994635582,
+      "nativeGLB": 0.149996936321259
+    },
+    {
+      "id": "solid:archive-bay-2.bay2.jamb.-1",
+      "nativeAuthority": 0.149999693036079,
+      "nativeGLB": 0.150029212236404
+    },
+    {
+      "id": "solid:archive-bay-2.bay2.pilaster.-1",
+      "nativeAuthority": 0.149999693036079,
+      "nativeGLB": 0.150038927793503
+    },
+    {
+      "id": "solid:archive-bay-2.bay2.reveal-jamb.-1",
+      "nativeAuthority": 0.150000169873238,
+      "nativeGLB": 0.149993017315865
+    },
+    {
+      "id": "solid:archive-bay-2.bay2.jamb.1",
+      "nativeAuthority": 0.14999920129776,
+      "nativeGLB": 0.149973496794701
+    },
+    {
+      "id": "solid:archive-bay-2.bay2.pilaster.1",
+      "nativeAuthority": 0.150000169873238,
+      "nativeGLB": 0.149954244494438
+    },
+    {
+      "id": "solid:archive-bay-2.bay2.reveal-jamb.1",
+      "nativeAuthority": 0.150000169873238,
+      "nativeGLB": 0.149984925985336
+    },
+    {
+      "id": "solid:archive-bay-2.bay2.arched-lintel",
+      "nativeAuthority": 0.150000065565109,
+      "nativeGLB": 0.150014847517014
+    },
+    {
+      "id": "solid:archive-bay-2.bay2.reveal-arch",
+      "nativeAuthority": 0.150000706315041,
+      "nativeGLB": 0.150020956993103
+    },
+    {
+      "id": "solid:archive-bay-2.bay2.stepped-sill",
+      "nativeAuthority": 0.15000057220459,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-2.pier2",
+      "nativeAuthority": 0.150000169873238,
+      "nativeGLB": 0.150003015995026
+    },
+    {
+      "id": "solid:archive-bay-2.pier-end",
+      "nativeAuthority": 0.150000169873238,
+      "nativeGLB": 0.15000969171524
+    },
+    {
+      "id": "solid:archive-bay-2.cornice",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-3.bay0.jamb.-1",
+      "nativeAuthority": 0.149999931454659,
+      "nativeGLB": 0.150022134184837
+    },
+    {
+      "id": "solid:archive-bay-3.bay0.pilaster.-1",
+      "nativeAuthority": 0.149999931454659,
+      "nativeGLB": 0.150028601288795
+    },
+    {
+      "id": "solid:archive-bay-3.bay0.reveal-jamb.-1",
+      "nativeAuthority": 0.149999931454659,
+      "nativeGLB": 0.149961993098259
+    },
+    {
+      "id": "solid:archive-bay-3.bay0.jamb.1",
+      "nativeAuthority": 0.149999931454659,
+      "nativeGLB": 0.150028601288795
+    },
+    {
+      "id": "solid:archive-bay-3.bay0.pilaster.1",
+      "nativeAuthority": 0.150000855326653,
+      "nativeGLB": 0.14997772872448
+    },
+    {
+      "id": "solid:archive-bay-3.bay0.reveal-jamb.1",
+      "nativeAuthority": 0.149999931454659,
+      "nativeGLB": 0.149989739060402
+    },
+    {
+      "id": "solid:archive-bay-3.bay0.lintel",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149971008300781
+    },
+    {
+      "id": "solid:archive-bay-3.bay0.reveal-head",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.150035858154297
+    },
+    {
+      "id": "solid:archive-bay-3.bay0.stepped-sill",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149967193603516
+    },
+    {
+      "id": "solid:archive-bay-3.pier0",
+      "nativeAuthority": 0.149999931454659,
+      "nativeGLB": 0.149994373321533
+    },
+    {
+      "id": "solid:archive-bay-3.bay1.jamb.-1",
+      "nativeAuthority": 0.149999931454659,
+      "nativeGLB": 0.149974018335342
+    },
+    {
+      "id": "solid:archive-bay-3.bay1.pilaster.-1",
+      "nativeAuthority": 0.149999931454659,
+      "nativeGLB": 0.149959221482277
+    },
+    {
+      "id": "solid:archive-bay-3.bay1.reveal-jamb.-1",
+      "nativeAuthority": 0.150000855326653,
+      "nativeGLB": 0.150017514824867
+    },
+    {
+      "id": "solid:archive-bay-3.bay1.jamb.1",
+      "nativeAuthority": 0.150000855326653,
+      "nativeGLB": 0.150032296776772
+    },
+    {
+      "id": "solid:archive-bay-3.bay1.pilaster.1",
+      "nativeAuthority": 0.149999931454659,
+      "nativeGLB": 0.150039702653885
+    },
+    {
+      "id": "solid:archive-bay-3.bay1.reveal-jamb.1",
+      "nativeAuthority": 0.149999931454659,
+      "nativeGLB": 0.150005474686623
+    },
+    {
+      "id": "solid:archive-bay-3.bay1.lintel",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-3.bay1.reveal-head",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-3.bay1.stepped-sill",
+      "nativeAuthority": 0.15000057220459,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-3.pier1",
+      "nativeAuthority": 0.149999931454659,
+      "nativeGLB": 0.149962916970253
+    },
+    {
+      "id": "solid:archive-bay-3.bay2.jamb.-1",
+      "nativeAuthority": 0.0379387550055981,
+      "nativeGLB": 0.0379665121436119
+    },
+    {
+      "id": "solid:archive-bay-3.bay2.pilaster.-1",
+      "nativeAuthority": 0.149999931454659,
+      "nativeGLB": 0.149958297610283
+    },
+    {
+      "id": "solid:archive-bay-3.bay2.reveal-jamb.-1",
+      "nativeAuthority": 0.00556137738749385,
+      "nativeGLB": 0.00555675337091088
+    },
+    {
+      "id": "solid:archive-bay-3.bay2.jamb.1",
+      "nativeAuthority": 0.149999931454659,
+      "nativeGLB": 0.150003626942635
+    },
+    {
+      "id": "solid:archive-bay-3.bay2.pilaster.1",
+      "nativeAuthority": 0.149999931454659,
+      "nativeGLB": 0.150001779198647
+    },
+    {
+      "id": "solid:archive-bay-3.bay2.reveal-jamb.1",
+      "nativeAuthority": 0.149999931454659,
+      "nativeGLB": 0.149960145354271
+    },
+    {
+      "id": "solid:archive-bay-3.bay2.lintel",
+      "nativeAuthority": 0.150001525878906,
+      "nativeGLB": 0.150039672851562
+    },
+    {
+      "id": "solid:archive-bay-3.bay2.reveal-head",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.150003433227539
+    },
+    {
+      "id": "solid:archive-bay-3.bay2.stepped-sill",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149967193603516
+    },
+    {
+      "id": "solid:archive-bay-3.pier2",
+      "nativeAuthority": 0.149999931454659,
+      "nativeGLB": 0.150035083293915
+    },
+    {
+      "id": "solid:archive-bay-3.pier-end",
+      "nativeAuthority": 0.0379387550055981,
+      "nativeGLB": 0.0379174798727036
+    },
+    {
+      "id": "solid:archive-bay-3.cornice",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-4.bay0.jamb.-1",
+      "nativeAuthority": 0.150001779198647,
+      "nativeGLB": 0.150012031197548
+    },
+    {
+      "id": "solid:archive-bay-4.bay0.pilaster.-1",
+      "nativeAuthority": 0.150000050663948,
+      "nativeGLB": 0.149953961372375
+    },
+    {
+      "id": "solid:archive-bay-4.bay0.reveal-jamb.-1",
+      "nativeAuthority": 0.14999832212925,
+      "nativeGLB": 0.14994889497757
+    },
+    {
+      "id": "solid:archive-bay-4.bay0.jamb.1",
+      "nativeAuthority": 0.150001779198647,
+      "nativeGLB": 0.150005117058754
+    },
+    {
+      "id": "solid:archive-bay-4.bay0.pilaster.1",
+      "nativeAuthority": 0.150000050663948,
+      "nativeGLB": 0.150027364492416
+    },
+    {
+      "id": "solid:archive-bay-4.bay0.reveal-jamb.1",
+      "nativeAuthority": 0.150000050663948,
+      "nativeGLB": 0.150012031197548
+    },
+    {
+      "id": "solid:archive-bay-4.bay0.arched-lintel",
+      "nativeAuthority": 0.0345813371241093,
+      "nativeGLB": 0.0345813371241093
+    },
+    {
+      "id": "solid:archive-bay-4.bay0.reveal-arch",
+      "nativeAuthority": 0.150000780820847,
+      "nativeGLB": 0.149981662631035
+    },
+    {
+      "id": "solid:archive-bay-4.bay0.stepped-sill",
+      "nativeAuthority": 0.15000057220459,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-4.pier0",
+      "nativeAuthority": 0.105407722294331,
+      "nativeGLB": 0.105443559587002
+    },
+    {
+      "id": "solid:archive-bay-4.bay1.jamb.-1",
+      "nativeAuthority": 0.14999832212925,
+      "nativeGLB": 0.150034159421921
+    },
+    {
+      "id": "solid:archive-bay-4.bay1.pilaster.-1",
+      "nativeAuthority": 0.150000050663948,
+      "nativeGLB": 0.150018826127052
+    },
+    {
+      "id": "solid:archive-bay-4.bay1.reveal-jamb.-1",
+      "nativeAuthority": 0.14999832212925,
+      "nativeGLB": 0.150012031197548
+    },
+    {
+      "id": "solid:archive-bay-4.bay1.jamb.1",
+      "nativeAuthority": 0.150000050663948,
+      "nativeGLB": 0.150035887956619
+    },
+    {
+      "id": "solid:archive-bay-4.bay1.pilaster.1",
+      "nativeAuthority": 0.150000050663948,
+      "nativeGLB": 0.149979531764984
+    },
+    {
+      "id": "solid:archive-bay-4.bay1.reveal-jamb.1",
+      "nativeAuthority": 0.150000050663948,
+      "nativeGLB": 0.149941980838776
+    },
+    {
+      "id": "solid:archive-bay-4.bay1.arched-lintel",
+      "nativeAuthority": 0.150001093745232,
+      "nativeGLB": 0.149969413876534
+    },
+    {
+      "id": "solid:archive-bay-4.bay1.reveal-arch",
+      "nativeAuthority": 0.149999514222145,
+      "nativeGLB": 0.15003114938736
+    },
+    {
+      "id": "solid:archive-bay-4.bay1.stepped-sill",
+      "nativeAuthority": 0.15000057220459,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-4.pier1",
+      "nativeAuthority": 0.150000050663948,
+      "nativeGLB": 0.149983003735542
+    },
+    {
+      "id": "solid:archive-bay-4.bay2.jamb.-1",
+      "nativeAuthority": 0.14999832212925,
+      "nativeGLB": 0.150001779198647
+    },
+    {
+      "id": "solid:archive-bay-4.bay2.pilaster.-1",
+      "nativeAuthority": 0.150000050663948,
+      "nativeGLB": 0.150010302662849
+    },
+    {
+      "id": "solid:archive-bay-4.bay2.reveal-jamb.-1",
+      "nativeAuthority": 0.150000050663948,
+      "nativeGLB": 0.149940356612206
+    },
+    {
+      "id": "solid:archive-bay-4.bay2.jamb.1",
+      "nativeAuthority": 0.150000050663948,
+      "nativeGLB": 0.14999832212925
+    },
+    {
+      "id": "solid:archive-bay-4.bay2.pilaster.1",
+      "nativeAuthority": 0.150000050663948,
+      "nativeGLB": 0.150023907423019
+    },
+    {
+      "id": "solid:archive-bay-4.bay2.reveal-jamb.1",
+      "nativeAuthority": 0.14999832212925,
+      "nativeGLB": 0.150006860494614
+    },
+    {
+      "id": "solid:archive-bay-4.bay2.arched-lintel",
+      "nativeAuthority": 0.150001183152199,
+      "nativeGLB": 0.149973168969154
+    },
+    {
+      "id": "solid:archive-bay-4.bay2.reveal-arch",
+      "nativeAuthority": 0.14999994635582,
+      "nativeGLB": 0.149980425834656
+    },
+    {
+      "id": "solid:archive-bay-4.bay2.stepped-sill",
+      "nativeAuthority": 0.15000057220459,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-4.pier2",
+      "nativeAuthority": 0.150001779198647,
+      "nativeGLB": 0.150025635957718
+    },
+    {
+      "id": "solid:archive-bay-4.pier-end",
+      "nativeAuthority": 0.14999832212925,
+      "nativeGLB": 0.149976208806038
+    },
+    {
+      "id": "solid:archive-bay-4.cornice",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-5.bay0.jamb.-1",
+      "nativeAuthority": 0.149999007582664,
+      "nativeGLB": 0.150004342198372
+    },
+    {
+      "id": "solid:archive-bay-5.bay0.pilaster.-1",
+      "nativeAuthority": 0.150001257658005,
+      "nativeGLB": 0.150018081068993
+    },
+    {
+      "id": "solid:archive-bay-5.bay0.reveal-jamb.-1",
+      "nativeAuthority": 0.149999007582664,
+      "nativeGLB": 0.149938702583313
+    },
+    {
+      "id": "solid:archive-bay-5.bay0.jamb.1",
+      "nativeAuthority": 0.150001257658005,
+      "nativeGLB": 0.150031819939613
+    },
+    {
+      "id": "solid:archive-bay-5.bay0.pilaster.1",
+      "nativeAuthority": 0.149999007582664,
+      "nativeGLB": 0.1500234156847
+    },
+    {
+      "id": "solid:archive-bay-5.bay0.reveal-jamb.1",
+      "nativeAuthority": 0.149999007582664,
+      "nativeGLB": 0.149971529841423
+    },
+    {
+      "id": "solid:archive-bay-5.bay0.lintel",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149971008300781
+    },
+    {
+      "id": "solid:archive-bay-5.bay0.reveal-head",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.150035858154297
+    },
+    {
+      "id": "solid:archive-bay-5.bay0.stepped-sill",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149967193603516
+    },
+    {
+      "id": "solid:archive-bay-5.pier0",
+      "nativeAuthority": 0.150001257658005,
+      "nativeGLB": 0.150028735399246
+    },
+    {
+      "id": "solid:archive-bay-5.bay1.jamb.-1",
+      "nativeAuthority": 0.149999007582664,
+      "nativeGLB": 0.149976849555969
+    },
+    {
+      "id": "solid:archive-bay-5.bay1.pilaster.-1",
+      "nativeAuthority": 0.150001257658005,
+      "nativeGLB": 0.149952456355095
+    },
+    {
+      "id": "solid:archive-bay-5.bay1.reveal-jamb.-1",
+      "nativeAuthority": 0.149999007582664,
+      "nativeGLB": 0.149999007582664
+    },
+    {
+      "id": "solid:archive-bay-5.bay1.jamb.1",
+      "nativeAuthority": 0.150001257658005,
+      "nativeGLB": 0.149979934096336
+    },
+    {
+      "id": "solid:archive-bay-5.bay1.pilaster.1",
+      "nativeAuthority": 0.150001257658005,
+      "nativeGLB": 0.149995923042297
+    },
+    {
+      "id": "solid:archive-bay-5.bay1.reveal-jamb.1",
+      "nativeAuthority": 0.149999007582664,
+      "nativeGLB": 0.150009676814079
+    },
+    {
+      "id": "solid:archive-bay-5.bay1.lintel",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-5.bay1.reveal-head",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-5.bay1.stepped-sill",
+      "nativeAuthority": 0.15000057220459,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:archive-bay-5.pier1",
+      "nativeAuthority": 0.150001257658005,
+      "nativeGLB": 0.150009676814079
+    },
+    {
+      "id": "solid:archive-bay-5.bay2.jamb.-1",
+      "nativeAuthority": 0.037942323833704,
+      "nativeGLB": 0.037928581237793
+    },
+    {
+      "id": "solid:archive-bay-5.bay2.pilaster.-1",
+      "nativeAuthority": 0.150001257658005,
+      "nativeGLB": 0.149968445301056
+    },
+    {
+      "id": "solid:archive-bay-5.bay2.reveal-jamb.-1",
+      "nativeAuthority": 0.00555791985243559,
+      "nativeGLB": 0.00556324794888496
+    },
+    {
+      "id": "solid:archive-bay-5.bay2.jamb.1",
+      "nativeAuthority": 0.150001257658005,
+      "nativeGLB": 0.149990603327751
+    },
+    {
+      "id": "solid:archive-bay-5.bay2.pilaster.1",
+      "nativeAuthority": 0.149999007582664,
+      "nativeGLB": 0.149982184171677
+    },
+    {
+      "id": "solid:archive-bay-5.bay2.reveal-jamb.1",
+      "nativeAuthority": 0.150004342198372,
+      "nativeGLB": 0.149968445301056
+    },
+    {
+      "id": "solid:archive-bay-5.bay2.lintel",
+      "nativeAuthority": 0.150001525878906,
+      "nativeGLB": 0.150039672851562
+    },
+    {
+      "id": "solid:archive-bay-5.bay2.reveal-head",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.150003433227539
+    },
+    {
+      "id": "solid:archive-bay-5.bay2.stepped-sill",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149967193603516
+    },
+    {
+      "id": "solid:archive-bay-5.pier2",
+      "nativeAuthority": 0.150001257658005,
+      "nativeGLB": 0.149982184171677
+    },
+    {
+      "id": "solid:archive-bay-5.pier-end",
+      "nativeAuthority": 0.037942323833704,
+      "nativeGLB": 0.0379667207598686
+    },
+    {
+      "id": "solid:archive-bay-5.cornice",
+      "nativeAuthority": 0.149999618530273,
+      "nativeGLB": 0.149999618530273
+    },
+    {
+      "id": "solid:greenhouse-rib-70",
+      "nativeAuthority": 0.150002598762512,
+      "nativeGLB": 0.150002598762512
+    },
+    {
+      "id": "solid:greenhouse-post-70--1",
+      "nativeAuthority": 0.150006681680679,
+      "nativeGLB": 0.149998858571053
+    },
+    {
+      "id": "solid:greenhouse-post-70-1",
+      "nativeAuthority": 0.149999514222145,
+      "nativeGLB": 0.15001580119133
+    },
+    {
+      "id": "solid:greenhouse-rib-76",
+      "nativeAuthority": 0.150000855326653,
+      "nativeGLB": 0.14998234808445
+    },
+    {
+      "id": "solid:greenhouse-post-76--1",
+      "nativeAuthority": 0.149999007582664,
+      "nativeGLB": 0.149974942207336
+    },
+    {
+      "id": "solid:greenhouse-post-76-1",
+      "nativeAuthority": 0.150000855326653,
+      "nativeGLB": 0.150002703070641
+    },
+    {
+      "id": "solid:greenhouse-rib-82",
+      "nativeAuthority": 0.15000107884407,
+      "nativeGLB": 0.150009572505951
+    },
+    {
+      "id": "solid:greenhouse-post-82--1",
+      "nativeAuthority": 0.15000107884407,
+      "nativeGLB": 0.149969801306725
+    },
+    {
+      "id": "solid:greenhouse-post-82-1",
+      "nativeAuthority": 0.149999067187309,
+      "nativeGLB": 0.150016188621521
+    },
+    {
+      "id": "solid:greenhouse-rib-88",
+      "nativeAuthority": 0.150000110268593,
+      "nativeGLB": 0.150003686547279
+    },
+    {
+      "id": "solid:greenhouse-post-88--1",
+      "nativeAuthority": 0.110922664403915,
+      "nativeGLB": 0.110915042459965
+    },
+    {
+      "id": "solid:greenhouse-post-88-1",
+      "nativeAuthority": 0.150001347064972,
+      "nativeGLB": 0.149978443980217
+    },
+    {
+      "id": "solid:greenhouse-rib-94",
+      "nativeAuthority": 0.150000512599945,
+      "nativeGLB": 0.150020018219948
+    },
+    {
+      "id": "solid:greenhouse-post-94--1",
+      "nativeAuthority": 0.104020774364471,
+      "nativeGLB": 0.104036062955856
+    },
+    {
+      "id": "solid:greenhouse-post-94-1",
+      "nativeAuthority": 0.150000691413879,
+      "nativeGLB": 0.149954825639725
+    },
+    {
+      "id": "solid:greenhouse-inner-eave",
+      "nativeAuthority": 0.149995744228363,
+      "nativeGLB": 0.150003239512444
+    },
+    {
+      "id": "solid:greenhouse-outer-eave",
+      "nativeAuthority": 0.150003239512444,
+      "nativeGLB": 0.149987891316414
+    },
+    {
+      "id": "solid:greenhouse-ridge",
+      "nativeAuthority": 0.150003239512444,
+      "nativeGLB": 0.150042504072189
+    }
+  ],
+  "scope": "native finite capsule/static ray probes; movement dynamics and hosted modes pending",
+  "seamSupport": [
+    {
+      "id": "accepted-nav-95",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-nav-191",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-nav-551",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-nav-552",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-nav-623",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-nav-624",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-nav-695",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-nav-696",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-nav-767",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-nav-95",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-nav-191",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-nav-551",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-nav-552",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-nav-623",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-nav-624",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-nav-695",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-nav-696",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-nav-767",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:lightwell-loop:48:4",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:lightwell-loop:96:4",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:canopy-ring:24:23",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:canopy-ring:25:0",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:canopy-ring:48:23",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:canopy-ring:49:0",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:canopy-ring:72:23",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:canopy-ring:73:0",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:canopy-ring:96:23",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:garden-ramp-0:26:13",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:garden-ramp-1:5:4",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:garden-ramp-1:5:14",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:garden-ramp-1:13:16",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:garden-ramp-1:14:2",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:garden-ramp-2:26:13",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:garden-ramp-3:3:8",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:garden-ramp-3:3:11",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:garden-ramp-3:13:16",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:garden-ramp-3:14:2",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:garden-ramp-4:26:13",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:garden-ramp-5:13:16",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:garden-ramp-5:14:2",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:garden-ramp-6:26:13",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:garden-ramp-7:13:16",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "accepted-route:garden-ramp-7:14:11",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:lightwell-loop:48:4",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:lightwell-loop:96:4",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:canopy-ring:24:23",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:canopy-ring:25:0",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:canopy-ring:48:23",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:canopy-ring:49:0",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:canopy-ring:72:23",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:canopy-ring:73:0",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:canopy-ring:96:23",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:garden-ramp-0:26:13",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:garden-ramp-1:5:4",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:garden-ramp-1:5:14",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:garden-ramp-1:13:16",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:garden-ramp-1:14:2",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:garden-ramp-2:26:13",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:garden-ramp-3:3:8",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:garden-ramp-3:3:11",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:garden-ramp-3:13:16",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:garden-ramp-3:14:2",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:garden-ramp-4:26:13",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:garden-ramp-5:13:16",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:garden-ramp-5:14:2",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:garden-ramp-6:26:13",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:garden-ramp-7:13:16",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    },
+    {
+      "id": "candidate-route:garden-ramp-7:14:11",
+      "neighbors": 4,
+      "offsetMetres": 0.005
+    }
+  ]
+}

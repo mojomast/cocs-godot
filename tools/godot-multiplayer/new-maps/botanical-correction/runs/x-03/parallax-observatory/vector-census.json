@@ -1,0 +1,67 @@
+{
+  "counts": {
+    "NORMAL": 319065,
+    "TANGENT": 319065,
+    "TANGENTZero": 1
+  },
+  "exceptions": [
+    {
+      "mesh": "art.accepted-craft.saltstone.001",
+      "material": "saltstone",
+      "accessor": 48,
+      "vertex": 24049,
+      "attribute": "TANGENT",
+      "value": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "position": [
+        68.77897644042969,
+        24.0,
+        -66.25537872314453
+      ],
+      "uv": [
+        35.36811447143555,
+        -32.56804275512695
+      ]
+    }
+  ],
+  "glbSha256": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+  "verifierSha256": "37bb8148b639d443a013be634cab5609a4eab0729f9e044c79d1b03f0cbe8555",
+  "scope": "strict finite actual accessors; unit vectors checked, exceptions are not waived",
+  "frozenUComparison": {
+    "counts": {
+      "NORMAL": 317697,
+      "TANGENT": 317697,
+      "TANGENTZero": 1
+    },
+    "exceptions": [
+      {
+        "mesh": "art.accepted-craft.saltstone.001",
+        "material": "saltstone",
+        "accessor": 48,
+        "vertex": 24168,
+        "attribute": "TANGENT",
+        "value": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "position": [
+          68.77897644042969,
+          24.0,
+          -66.25537872314453
+        ],
+        "uv": [
+          35.36811447143555,
+          -32.56804275512695
+        ]
+      }
+    ]
+  },
+  "exceptionAtSameFrozenUPosition": true,
+  "disposition": "One inherited zero tangent on saltstone accepted-craft vertex; localized PBR tangent qualification pending, not a blanket pass"
+}

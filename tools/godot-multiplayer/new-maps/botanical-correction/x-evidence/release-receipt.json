@@ -1,0 +1,1228 @@
+{
+  "grant": "MOTH-BLENDER-20261003-X",
+  "released": "2026-10-03T21:31:43.664418+00:00",
+  "audits": [
+    {
+      "time": "2026-10-03T21:31:36.300556+00:00",
+      "ownedGroupMembers": [],
+      "groups": [
+        {
+          "pid": 890186,
+          "ppid": 887927,
+          "pgid": 890186,
+          "startTicks": 624437674,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- build x-01 helix-conservatory "
+        },
+        {
+          "pid": 906362,
+          "ppid": 887927,
+          "pgid": 906362,
+          "startTicks": 624446865,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- build x-02 helix-conservatory "
+        },
+        {
+          "pid": 908730,
+          "ppid": 887927,
+          "pgid": 908730,
+          "startTicks": 624450832,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- reopen-export x-02 helix-conservatory "
+        },
+        {
+          "pid": 910342,
+          "ppid": 887927,
+          "pgid": 910342,
+          "startTicks": 624453850,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- measure x-02 helix-conservatory "
+        },
+        {
+          "pid": 911372,
+          "ppid": 887927,
+          "pgid": 911372,
+          "startTicks": 624455242,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py stage x-02 helix-conservatory "
+        },
+        {
+          "pid": 921759,
+          "ppid": 887927,
+          "pgid": 921759,
+          "startTicks": 624474244,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- build x-03 helix-conservatory "
+        },
+        {
+          "pid": 923877,
+          "ppid": 887927,
+          "pgid": 923877,
+          "startTicks": 624477297,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- reopen-export x-03 helix-conservatory "
+        },
+        {
+          "pid": 925327,
+          "ppid": 887927,
+          "pgid": 925327,
+          "startTicks": 624479560,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- measure x-03 helix-conservatory "
+        },
+        {
+          "pid": 925809,
+          "ppid": 887927,
+          "pgid": 925809,
+          "startTicks": 624479946,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py stage x-03 helix-conservatory "
+        },
+        {
+          "pid": 928907,
+          "ppid": 887927,
+          "pgid": 928907,
+          "startTicks": 624484982,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 932480,
+          "ppid": 887927,
+          "pgid": 932480,
+          "startTicks": 624490668,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 932761,
+          "ppid": 887927,
+          "pgid": 932761,
+          "startTicks": 624491012,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py pin-import x-03 helix-conservatory "
+        },
+        {
+          "pid": 932795,
+          "ppid": 887927,
+          "pgid": 932795,
+          "startTicks": 624491102,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 933026,
+          "ppid": 887927,
+          "pgid": 933026,
+          "startTicks": 624491481,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/x-03/helix-conservatory/import.gd -- --map=helix-conservatory "
+        },
+        {
+          "pid": 933153,
+          "ppid": 887927,
+          "pgid": 933153,
+          "startTicks": 624491790,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/x-03/helix-conservatory/physics.gd -- --map=helix-conservatory "
+        },
+        {
+          "pid": 933977,
+          "ppid": 887927,
+          "pgid": 933977,
+          "startTicks": 624493066,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_capture.py x-03 helix-conservatory "
+        },
+        {
+          "pid": 946251,
+          "ppid": 887927,
+          "pgid": 946251,
+          "startTicks": 624517235,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- build x-03 parallax-observatory "
+        },
+        {
+          "pid": 947617,
+          "ppid": 887927,
+          "pgid": 947617,
+          "startTicks": 624519800,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- reopen-export x-03 parallax-observatory "
+        },
+        {
+          "pid": 948576,
+          "ppid": 887927,
+          "pgid": 948576,
+          "startTicks": 624521562,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- measure x-03 parallax-observatory "
+        },
+        {
+          "pid": 948766,
+          "ppid": 887927,
+          "pgid": 948766,
+          "startTicks": 624521839,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py stage x-03 parallax-observatory "
+        },
+        {
+          "pid": 950949,
+          "ppid": 887927,
+          "pgid": 950949,
+          "startTicks": 624525997,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 951321,
+          "ppid": 887927,
+          "pgid": 951321,
+          "startTicks": 624526487,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py pin-import x-03 parallax-observatory "
+        },
+        {
+          "pid": 951384,
+          "ppid": 887927,
+          "pgid": 951384,
+          "startTicks": 624526534,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 951708,
+          "ppid": 887927,
+          "pgid": 951708,
+          "startTicks": 624526920,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/x-03/parallax-observatory/import.gd -- --map=parallax-observatory "
+        },
+        {
+          "pid": 951881,
+          "ppid": 887927,
+          "pgid": 951881,
+          "startTicks": 624527085,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/x-03/parallax-observatory/physics.gd -- --map=parallax-observatory "
+        },
+        {
+          "pid": 951975,
+          "ppid": 887927,
+          "pgid": 951975,
+          "startTicks": 624527251,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_capture.py x-03 parallax-observatory "
+        },
+        {
+          "pid": 955517,
+          "ppid": 887927,
+          "pgid": 955517,
+          "startTicks": 624533207,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_collect.py x-03 parallax-observatory "
+        },
+        {
+          "pid": 958358,
+          "ppid": 887927,
+          "pgid": 958358,
+          "startTicks": 624537712,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- build x-03 vesper-viaduct "
+        },
+        {
+          "pid": 959707,
+          "ppid": 887927,
+          "pgid": 959707,
+          "startTicks": 624540052,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- reopen-export x-03 vesper-viaduct "
+        },
+        {
+          "pid": 960740,
+          "ppid": 887927,
+          "pgid": 960740,
+          "startTicks": 624541823,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- measure x-03 vesper-viaduct "
+        },
+        {
+          "pid": 960840,
+          "ppid": 887927,
+          "pgid": 960840,
+          "startTicks": 624541997,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py stage x-03 vesper-viaduct "
+        },
+        {
+          "pid": 962418,
+          "ppid": 887927,
+          "pgid": 962418,
+          "startTicks": 624544579,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 962718,
+          "ppid": 887927,
+          "pgid": 962718,
+          "startTicks": 624545088,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py pin-import x-03 vesper-viaduct "
+        },
+        {
+          "pid": 962752,
+          "ppid": 887927,
+          "pgid": 962752,
+          "startTicks": 624545150,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 962887,
+          "ppid": 887927,
+          "pgid": 962887,
+          "startTicks": 624545519,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/x-03/vesper-viaduct/import.gd -- --map=vesper-viaduct "
+        },
+        {
+          "pid": 963055,
+          "ppid": 887927,
+          "pgid": 963055,
+          "startTicks": 624545660,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/x-03/vesper-viaduct/physics.gd -- --map=vesper-viaduct "
+        },
+        {
+          "pid": 967666,
+          "ppid": 887927,
+          "pgid": 967666,
+          "startTicks": 624554379,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_readback.py x-03 helix-conservatory "
+        },
+        {
+          "pid": 968434,
+          "ppid": 887927,
+          "pgid": 968434,
+          "startTicks": 624555635,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_readback.py x-03 parallax-observatory "
+        },
+        {
+          "pid": 969237,
+          "ppid": 887927,
+          "pgid": 969237,
+          "startTicks": 624557160,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_capture.py x-03 vesper-viaduct "
+        },
+        {
+          "pid": 976719,
+          "ppid": 887927,
+          "pgid": 976719,
+          "startTicks": 624570896,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/stair_diagnostic.gd -- --map=vesper-viaduct --stage=res://tests/new_maps/botanical_correction/x-03/vesper-viaduct/ "
+        },
+        {
+          "pid": 977153,
+          "ppid": 887927,
+          "pgid": 977153,
+          "startTicks": 624571610,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_readback.py x-03 vesper-viaduct "
+        },
+        {
+          "pid": 986244,
+          "ppid": 887927,
+          "pgid": 986244,
+          "startTicks": 624587427,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 helix-conservatory "
+        },
+        {
+          "pid": 987092,
+          "ppid": 887927,
+          "pgid": 987092,
+          "startTicks": 624588922,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 parallax-observatory "
+        },
+        {
+          "pid": 987878,
+          "ppid": 887927,
+          "pgid": 987878,
+          "startTicks": 624589966,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 vesper-viaduct "
+        },
+        {
+          "pid": 990398,
+          "ppid": 887927,
+          "pgid": 990398,
+          "startTicks": 624592867,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_readback.py x-03 helix-conservatory "
+        },
+        {
+          "pid": 990654,
+          "ppid": 887927,
+          "pgid": 990654,
+          "startTicks": 624593395,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_readback.py x-03 parallax-observatory "
+        },
+        {
+          "pid": 991021,
+          "ppid": 887927,
+          "pgid": 991021,
+          "startTicks": 624593863,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_readback.py x-03 vesper-viaduct "
+        },
+        {
+          "pid": 996667,
+          "ppid": 887927,
+          "pgid": 996667,
+          "startTicks": 624604053,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 helix-conservatory detail-02 "
+        },
+        {
+          "pid": 997385,
+          "ppid": 887927,
+          "pgid": 997385,
+          "startTicks": 624605075,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 parallax-observatory detail-02 "
+        },
+        {
+          "pid": 997982,
+          "ppid": 887927,
+          "pgid": 997982,
+          "startTicks": 624605973,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 vesper-viaduct detail-02 "
+        }
+      ]
+    },
+    {
+      "time": "2026-10-03T21:31:36.534012+00:00",
+      "ownedGroupMembers": [],
+      "groups": [
+        {
+          "pid": 890186,
+          "ppid": 887927,
+          "pgid": 890186,
+          "startTicks": 624437674,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- build x-01 helix-conservatory "
+        },
+        {
+          "pid": 906362,
+          "ppid": 887927,
+          "pgid": 906362,
+          "startTicks": 624446865,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- build x-02 helix-conservatory "
+        },
+        {
+          "pid": 908730,
+          "ppid": 887927,
+          "pgid": 908730,
+          "startTicks": 624450832,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- reopen-export x-02 helix-conservatory "
+        },
+        {
+          "pid": 910342,
+          "ppid": 887927,
+          "pgid": 910342,
+          "startTicks": 624453850,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- measure x-02 helix-conservatory "
+        },
+        {
+          "pid": 911372,
+          "ppid": 887927,
+          "pgid": 911372,
+          "startTicks": 624455242,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py stage x-02 helix-conservatory "
+        },
+        {
+          "pid": 921759,
+          "ppid": 887927,
+          "pgid": 921759,
+          "startTicks": 624474244,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- build x-03 helix-conservatory "
+        },
+        {
+          "pid": 923877,
+          "ppid": 887927,
+          "pgid": 923877,
+          "startTicks": 624477297,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- reopen-export x-03 helix-conservatory "
+        },
+        {
+          "pid": 925327,
+          "ppid": 887927,
+          "pgid": 925327,
+          "startTicks": 624479560,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- measure x-03 helix-conservatory "
+        },
+        {
+          "pid": 925809,
+          "ppid": 887927,
+          "pgid": 925809,
+          "startTicks": 624479946,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py stage x-03 helix-conservatory "
+        },
+        {
+          "pid": 928907,
+          "ppid": 887927,
+          "pgid": 928907,
+          "startTicks": 624484982,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 932480,
+          "ppid": 887927,
+          "pgid": 932480,
+          "startTicks": 624490668,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 932761,
+          "ppid": 887927,
+          "pgid": 932761,
+          "startTicks": 624491012,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py pin-import x-03 helix-conservatory "
+        },
+        {
+          "pid": 932795,
+          "ppid": 887927,
+          "pgid": 932795,
+          "startTicks": 624491102,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 933026,
+          "ppid": 887927,
+          "pgid": 933026,
+          "startTicks": 624491481,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/x-03/helix-conservatory/import.gd -- --map=helix-conservatory "
+        },
+        {
+          "pid": 933153,
+          "ppid": 887927,
+          "pgid": 933153,
+          "startTicks": 624491790,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/x-03/helix-conservatory/physics.gd -- --map=helix-conservatory "
+        },
+        {
+          "pid": 933977,
+          "ppid": 887927,
+          "pgid": 933977,
+          "startTicks": 624493066,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_capture.py x-03 helix-conservatory "
+        },
+        {
+          "pid": 946251,
+          "ppid": 887927,
+          "pgid": 946251,
+          "startTicks": 624517235,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- build x-03 parallax-observatory "
+        },
+        {
+          "pid": 947617,
+          "ppid": 887927,
+          "pgid": 947617,
+          "startTicks": 624519800,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- reopen-export x-03 parallax-observatory "
+        },
+        {
+          "pid": 948576,
+          "ppid": 887927,
+          "pgid": 948576,
+          "startTicks": 624521562,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- measure x-03 parallax-observatory "
+        },
+        {
+          "pid": 948766,
+          "ppid": 887927,
+          "pgid": 948766,
+          "startTicks": 624521839,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py stage x-03 parallax-observatory "
+        },
+        {
+          "pid": 950949,
+          "ppid": 887927,
+          "pgid": 950949,
+          "startTicks": 624525997,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 951321,
+          "ppid": 887927,
+          "pgid": 951321,
+          "startTicks": 624526487,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py pin-import x-03 parallax-observatory "
+        },
+        {
+          "pid": 951384,
+          "ppid": 887927,
+          "pgid": 951384,
+          "startTicks": 624526534,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 951708,
+          "ppid": 887927,
+          "pgid": 951708,
+          "startTicks": 624526920,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/x-03/parallax-observatory/import.gd -- --map=parallax-observatory "
+        },
+        {
+          "pid": 951881,
+          "ppid": 887927,
+          "pgid": 951881,
+          "startTicks": 624527085,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/x-03/parallax-observatory/physics.gd -- --map=parallax-observatory "
+        },
+        {
+          "pid": 951975,
+          "ppid": 887927,
+          "pgid": 951975,
+          "startTicks": 624527251,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_capture.py x-03 parallax-observatory "
+        },
+        {
+          "pid": 955517,
+          "ppid": 887927,
+          "pgid": 955517,
+          "startTicks": 624533207,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_collect.py x-03 parallax-observatory "
+        },
+        {
+          "pid": 958358,
+          "ppid": 887927,
+          "pgid": 958358,
+          "startTicks": 624537712,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- build x-03 vesper-viaduct "
+        },
+        {
+          "pid": 959707,
+          "ppid": 887927,
+          "pgid": 959707,
+          "startTicks": 624540052,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- reopen-export x-03 vesper-viaduct "
+        },
+        {
+          "pid": 960740,
+          "ppid": 887927,
+          "pgid": 960740,
+          "startTicks": 624541823,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- measure x-03 vesper-viaduct "
+        },
+        {
+          "pid": 960840,
+          "ppid": 887927,
+          "pgid": 960840,
+          "startTicks": 624541997,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py stage x-03 vesper-viaduct "
+        },
+        {
+          "pid": 962418,
+          "ppid": 887927,
+          "pgid": 962418,
+          "startTicks": 624544579,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 962718,
+          "ppid": 887927,
+          "pgid": 962718,
+          "startTicks": 624545088,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py pin-import x-03 vesper-viaduct "
+        },
+        {
+          "pid": 962752,
+          "ppid": 887927,
+          "pgid": 962752,
+          "startTicks": 624545150,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 962887,
+          "ppid": 887927,
+          "pgid": 962887,
+          "startTicks": 624545519,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/x-03/vesper-viaduct/import.gd -- --map=vesper-viaduct "
+        },
+        {
+          "pid": 963055,
+          "ppid": 887927,
+          "pgid": 963055,
+          "startTicks": 624545660,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/x-03/vesper-viaduct/physics.gd -- --map=vesper-viaduct "
+        },
+        {
+          "pid": 967666,
+          "ppid": 887927,
+          "pgid": 967666,
+          "startTicks": 624554379,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_readback.py x-03 helix-conservatory "
+        },
+        {
+          "pid": 968434,
+          "ppid": 887927,
+          "pgid": 968434,
+          "startTicks": 624555635,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_readback.py x-03 parallax-observatory "
+        },
+        {
+          "pid": 969237,
+          "ppid": 887927,
+          "pgid": 969237,
+          "startTicks": 624557160,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_capture.py x-03 vesper-viaduct "
+        },
+        {
+          "pid": 976719,
+          "ppid": 887927,
+          "pgid": 976719,
+          "startTicks": 624570896,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/stair_diagnostic.gd -- --map=vesper-viaduct --stage=res://tests/new_maps/botanical_correction/x-03/vesper-viaduct/ "
+        },
+        {
+          "pid": 977153,
+          "ppid": 887927,
+          "pgid": 977153,
+          "startTicks": 624571610,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_readback.py x-03 vesper-viaduct "
+        },
+        {
+          "pid": 986244,
+          "ppid": 887927,
+          "pgid": 986244,
+          "startTicks": 624587427,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 helix-conservatory "
+        },
+        {
+          "pid": 987092,
+          "ppid": 887927,
+          "pgid": 987092,
+          "startTicks": 624588922,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 parallax-observatory "
+        },
+        {
+          "pid": 987878,
+          "ppid": 887927,
+          "pgid": 987878,
+          "startTicks": 624589966,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 vesper-viaduct "
+        },
+        {
+          "pid": 990398,
+          "ppid": 887927,
+          "pgid": 990398,
+          "startTicks": 624592867,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_readback.py x-03 helix-conservatory "
+        },
+        {
+          "pid": 990654,
+          "ppid": 887927,
+          "pgid": 990654,
+          "startTicks": 624593395,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_readback.py x-03 parallax-observatory "
+        },
+        {
+          "pid": 991021,
+          "ppid": 887927,
+          "pgid": 991021,
+          "startTicks": 624593863,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_readback.py x-03 vesper-viaduct "
+        },
+        {
+          "pid": 996667,
+          "ppid": 887927,
+          "pgid": 996667,
+          "startTicks": 624604053,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 helix-conservatory detail-02 "
+        },
+        {
+          "pid": 997385,
+          "ppid": 887927,
+          "pgid": 997385,
+          "startTicks": 624605075,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 parallax-observatory detail-02 "
+        },
+        {
+          "pid": 997982,
+          "ppid": 887927,
+          "pgid": 997982,
+          "startTicks": 624605973,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 vesper-viaduct detail-02 "
+        }
+      ]
+    },
+    {
+      "time": "2026-10-03T21:31:36.765832+00:00",
+      "ownedGroupMembers": [],
+      "groups": [
+        {
+          "pid": 890186,
+          "ppid": 887927,
+          "pgid": 890186,
+          "startTicks": 624437674,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- build x-01 helix-conservatory "
+        },
+        {
+          "pid": 906362,
+          "ppid": 887927,
+          "pgid": 906362,
+          "startTicks": 624446865,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- build x-02 helix-conservatory "
+        },
+        {
+          "pid": 908730,
+          "ppid": 887927,
+          "pgid": 908730,
+          "startTicks": 624450832,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- reopen-export x-02 helix-conservatory "
+        },
+        {
+          "pid": 910342,
+          "ppid": 887927,
+          "pgid": 910342,
+          "startTicks": 624453850,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- measure x-02 helix-conservatory "
+        },
+        {
+          "pid": 911372,
+          "ppid": 887927,
+          "pgid": 911372,
+          "startTicks": 624455242,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py stage x-02 helix-conservatory "
+        },
+        {
+          "pid": 921759,
+          "ppid": 887927,
+          "pgid": 921759,
+          "startTicks": 624474244,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- build x-03 helix-conservatory "
+        },
+        {
+          "pid": 923877,
+          "ppid": 887927,
+          "pgid": 923877,
+          "startTicks": 624477297,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- reopen-export x-03 helix-conservatory "
+        },
+        {
+          "pid": 925327,
+          "ppid": 887927,
+          "pgid": 925327,
+          "startTicks": 624479560,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- measure x-03 helix-conservatory "
+        },
+        {
+          "pid": 925809,
+          "ppid": 887927,
+          "pgid": 925809,
+          "startTicks": 624479946,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py stage x-03 helix-conservatory "
+        },
+        {
+          "pid": 928907,
+          "ppid": 887927,
+          "pgid": 928907,
+          "startTicks": 624484982,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 932480,
+          "ppid": 887927,
+          "pgid": 932480,
+          "startTicks": 624490668,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 932761,
+          "ppid": 887927,
+          "pgid": 932761,
+          "startTicks": 624491012,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py pin-import x-03 helix-conservatory "
+        },
+        {
+          "pid": 932795,
+          "ppid": 887927,
+          "pgid": 932795,
+          "startTicks": 624491102,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 933026,
+          "ppid": 887927,
+          "pgid": 933026,
+          "startTicks": 624491481,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/x-03/helix-conservatory/import.gd -- --map=helix-conservatory "
+        },
+        {
+          "pid": 933153,
+          "ppid": 887927,
+          "pgid": 933153,
+          "startTicks": 624491790,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/x-03/helix-conservatory/physics.gd -- --map=helix-conservatory "
+        },
+        {
+          "pid": 933977,
+          "ppid": 887927,
+          "pgid": 933977,
+          "startTicks": 624493066,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_capture.py x-03 helix-conservatory "
+        },
+        {
+          "pid": 946251,
+          "ppid": 887927,
+          "pgid": 946251,
+          "startTicks": 624517235,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- build x-03 parallax-observatory "
+        },
+        {
+          "pid": 947617,
+          "ppid": 887927,
+          "pgid": 947617,
+          "startTicks": 624519800,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- reopen-export x-03 parallax-observatory "
+        },
+        {
+          "pid": 948576,
+          "ppid": 887927,
+          "pgid": 948576,
+          "startTicks": 624521562,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- measure x-03 parallax-observatory "
+        },
+        {
+          "pid": 948766,
+          "ppid": 887927,
+          "pgid": 948766,
+          "startTicks": 624521839,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py stage x-03 parallax-observatory "
+        },
+        {
+          "pid": 950949,
+          "ppid": 887927,
+          "pgid": 950949,
+          "startTicks": 624525997,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 951321,
+          "ppid": 887927,
+          "pgid": 951321,
+          "startTicks": 624526487,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py pin-import x-03 parallax-observatory "
+        },
+        {
+          "pid": 951384,
+          "ppid": 887927,
+          "pgid": 951384,
+          "startTicks": 624526534,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 951708,
+          "ppid": 887927,
+          "pgid": 951708,
+          "startTicks": 624526920,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/x-03/parallax-observatory/import.gd -- --map=parallax-observatory "
+        },
+        {
+          "pid": 951881,
+          "ppid": 887927,
+          "pgid": 951881,
+          "startTicks": 624527085,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/x-03/parallax-observatory/physics.gd -- --map=parallax-observatory "
+        },
+        {
+          "pid": 951975,
+          "ppid": 887927,
+          "pgid": 951975,
+          "startTicks": 624527251,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_capture.py x-03 parallax-observatory "
+        },
+        {
+          "pid": 955517,
+          "ppid": 887927,
+          "pgid": 955517,
+          "startTicks": 624533207,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_collect.py x-03 parallax-observatory "
+        },
+        {
+          "pid": 958358,
+          "ppid": 887927,
+          "pgid": 958358,
+          "startTicks": 624537712,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- build x-03 vesper-viaduct "
+        },
+        {
+          "pid": 959707,
+          "ppid": 887927,
+          "pgid": 959707,
+          "startTicks": 624540052,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- reopen-export x-03 vesper-viaduct "
+        },
+        {
+          "pid": 960740,
+          "ppid": 887927,
+          "pgid": 960740,
+          "startTicks": 624541823,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --python-exit-code 1 --python tools/godot-multiplayer/new-maps/botanical-correction/attempt_job.py -- measure x-03 vesper-viaduct "
+        },
+        {
+          "pid": 960840,
+          "ppid": 887927,
+          "pgid": 960840,
+          "startTicks": 624541997,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py stage x-03 vesper-viaduct "
+        },
+        {
+          "pid": 962418,
+          "ppid": 887927,
+          "pgid": 962418,
+          "startTicks": 624544579,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 962718,
+          "ppid": 887927,
+          "pgid": 962718,
+          "startTicks": 624545088,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_bridge.py pin-import x-03 vesper-viaduct "
+        },
+        {
+          "pid": 962752,
+          "ppid": 887927,
+          "pgid": 962752,
+          "startTicks": 624545150,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import --quit "
+        },
+        {
+          "pid": 962887,
+          "ppid": 887927,
+          "pgid": 962887,
+          "startTicks": 624545519,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/x-03/vesper-viaduct/import.gd -- --map=vesper-viaduct "
+        },
+        {
+          "pid": 963055,
+          "ppid": 887927,
+          "pgid": 963055,
+          "startTicks": 624545660,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/x-03/vesper-viaduct/physics.gd -- --map=vesper-viaduct "
+        },
+        {
+          "pid": 967666,
+          "ppid": 887927,
+          "pgid": 967666,
+          "startTicks": 624554379,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_readback.py x-03 helix-conservatory "
+        },
+        {
+          "pid": 968434,
+          "ppid": 887927,
+          "pgid": 968434,
+          "startTicks": 624555635,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_readback.py x-03 parallax-observatory "
+        },
+        {
+          "pid": 969237,
+          "ppid": 887927,
+          "pgid": 969237,
+          "startTicks": 624557160,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/stage_capture.py x-03 vesper-viaduct "
+        },
+        {
+          "pid": 976719,
+          "ppid": 887927,
+          "pgid": 976719,
+          "startTicks": 624570896,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --path godot --script res://tests/new_maps/botanical_correction/stair_diagnostic.gd -- --map=vesper-viaduct --stage=res://tests/new_maps/botanical_correction/x-03/vesper-viaduct/ "
+        },
+        {
+          "pid": 977153,
+          "ppid": 887927,
+          "pgid": 977153,
+          "startTicks": 624571610,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_readback.py x-03 vesper-viaduct "
+        },
+        {
+          "pid": 986244,
+          "ppid": 887927,
+          "pgid": 986244,
+          "startTicks": 624587427,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 helix-conservatory "
+        },
+        {
+          "pid": 987092,
+          "ppid": 887927,
+          "pgid": 987092,
+          "startTicks": 624588922,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 parallax-observatory "
+        },
+        {
+          "pid": 987878,
+          "ppid": 887927,
+          "pgid": 987878,
+          "startTicks": 624589966,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 vesper-viaduct "
+        },
+        {
+          "pid": 990398,
+          "ppid": 887927,
+          "pgid": 990398,
+          "startTicks": 624592867,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_readback.py x-03 helix-conservatory "
+        },
+        {
+          "pid": 990654,
+          "ppid": 887927,
+          "pgid": 990654,
+          "startTicks": 624593395,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_readback.py x-03 parallax-observatory "
+        },
+        {
+          "pid": 991021,
+          "ppid": 887927,
+          "pgid": 991021,
+          "startTicks": 624593863,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_readback.py x-03 vesper-viaduct "
+        },
+        {
+          "pid": 996667,
+          "ppid": 887927,
+          "pgid": 996667,
+          "startTicks": 624604053,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 helix-conservatory detail-02 "
+        },
+        {
+          "pid": 997385,
+          "ppid": 887927,
+          "pgid": 997385,
+          "startTicks": 624605075,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 parallax-observatory detail-02 "
+        },
+        {
+          "pid": 997982,
+          "ppid": 887927,
+          "pgid": 997982,
+          "startTicks": 624605973,
+          "comm": "python3",
+          "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 vesper-viaduct detail-02 "
+        }
+      ]
+    }
+  ],
+  "currentOwnedMembers": [],
+  "nonwaitingLockAvailableAt": "2026-10-03T21:31:43.664389+00:00",
+  "supervisorReceiptSha256": "fa93986312f0172862043d89fc4f4b9464479e12d6b801f11945963d7185cbf6",
+  "noQueuedHeavyWork": true
+}

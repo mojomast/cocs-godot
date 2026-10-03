@@ -1,0 +1,41 @@
+{
+  "start": "2026-10-03T21:28:26.837813+00:00",
+  "end": "2026-10-03T21:28:35.146547+00:00",
+  "pgid": 997385,
+  "members": [
+    {
+      "pid": 997385,
+      "ppid": 887927,
+      "pgid": 997385,
+      "startTicks": 624605075,
+      "comm": "python3",
+      "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 parallax-observatory detail-02 "
+    },
+    {
+      "pid": 997386,
+      "ppid": 997385,
+      "pgid": 997385,
+      "startTicks": 624605080,
+      "comm": "xvfb-run",
+      "argv": ""
+    },
+    {
+      "pid": 997396,
+      "ppid": 997386,
+      "pgid": 997385,
+      "startTicks": 624605081,
+      "comm": "Xvfb",
+      "argv": "Xvfb :101 -screen 0 1280x720x24 -nolisten tcp -auth /tmp/xvfb-run.zSC1CQ/Xauthority "
+    },
+    {
+      "pid": 997399,
+      "ppid": 997386,
+      "pgid": 997385,
+      "startTicks": 624605082,
+      "comm": "Godot_v4.5.2-st",
+      "argv": ""
+    }
+  ],
+  "scriptError": false,
+  "returncode": 0
+}

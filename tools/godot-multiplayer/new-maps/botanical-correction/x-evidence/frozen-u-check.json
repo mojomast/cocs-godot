@@ -1,0 +1,16 @@
+{
+  "time": "2026-10-03T21:28:56.273223+00:00",
+  "inventorySha256": "ce0dd0ec8a87340cc31bfcb88cdfc7b11fb5aad1ce6efd317b9bb43ec22289ef",
+  "results": [
+    {
+      "root": "/home/mojo/.tmp-on-disk/cocs-botanical-source-correction",
+      "checked": 264,
+      "mismatches": []
+    },
+    {
+      "root": "/home/mojo/.tmp-on-disk/cocs-map-variety-botanical-astra",
+      "checked": 264,
+      "mismatches": []
+    }
+  ]
+}

@@ -1,0 +1,695 @@
+{
+  "id": "helix-conservatory",
+  "revision": "revision-4",
+  "geometryHash": "f5a3d0d7b2872fa7c7fa6bb2727ee31915a717ffbc160343acf491fe3b9bc49e",
+  "recipeHash": "87ea1588103afb516bffa5bec9ab51601eb89109ec034ac10f2947ccacf6d2e2",
+  "moth": {
+    "base": "assets/moth/map-variety-20261003/candidate-v2/manifest.json",
+    "overlay": "assets/moth/map-variety-20261003/candidate-v3/manifest.json"
+  },
+  "materials": [
+    "botanical",
+    "brick",
+    "ceramic",
+    "glass",
+    "gold",
+    "helix.archive-stone",
+    "helix.bark",
+    "helix.fern",
+    "helix.greenhouse-frame",
+    "helix.grotto-rock",
+    "helix.soil",
+    "helix.trim",
+    "leaflight",
+    "soil",
+    "solar",
+    "stone",
+    "verdigris",
+    "water"
+  ],
+  "authorityShellTriangles": 37316,
+  "floorUnion": null,
+  "structureBoxes": 0,
+  "structureTriangles": 0,
+  "pieceCount": 0,
+  "pieceTriangles": 0,
+  "decorativeMeshes": 5240,
+  "decorativeTriangles": 100874,
+  "baseCraftParts": 0,
+  "baseCraftTriangles": 0,
+  "baseCraftSourceSha256": null,
+  "baseCraftCandidateCuts": [],
+  "evaluatedSceneTriangles": 157518,
+  "evaluatedTriangleAdvisory": {
+    "policy": "advisory",
+    "measurement": "evaluated-scene",
+    "totalTriangles": 157518,
+    "targetTriangles": 150000,
+    "overTarget": true,
+    "overageTriangles": 7518,
+    "status": "pending-performance-visual-review"
+  },
+  "exportAudit": {
+    "triangles": 157518,
+    "triangleAdvisory": {
+      "policy": "advisory",
+      "measurement": "exported-glb",
+      "totalTriangles": 157518,
+      "targetTriangles": 150000,
+      "overTarget": true,
+      "overageTriangles": 7518,
+      "status": "pending-performance-visual-review"
+    },
+    "primitives": 27,
+    "usedMaterials": [
+      "botanical",
+      "brick",
+      "ceramic",
+      "glass",
+      "gold",
+      "helix.archive-stone",
+      "helix.bark",
+      "helix.fern",
+      "helix.greenhouse-frame",
+      "helix.grotto-rock",
+      "helix.soil",
+      "helix.trim",
+      "leaflight",
+      "soil",
+      "solar",
+      "stone",
+      "verdigris",
+      "water"
+    ],
+    "materialEvidence": {
+      "helix.archive-stone": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "helix.trim": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "botanical": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "ceramic": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "glass": {
+        "role": "preserve",
+        "geometryReferenced": true
+      },
+      "gold": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "leaflight": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "water": {
+        "role": "preserve",
+        "geometryReferenced": true
+      },
+      "brick": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "soil": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "solar": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "stone": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "verdigris": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "helix.soil": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "helix.greenhouse-frame": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "helix.grotto-rock": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "helix.fern": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "helix.bark": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      }
+    },
+    "albedo": {
+      "helix.archive-stone": {
+        "sourceLinearSha256": "c8dfce6416c2b9eb145c63470331f6749e0338527fcb3045dfef15b435062702",
+        "exportSrgbSha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+        "maxByteError": 0,
+        "normalSourceSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "normalExportSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "roughnessSourceSha256": "2c63bee56ac7600342fd93f52ed17aa5d096b4e5c1d659168bd5d0586ae1afc5",
+        "metallicRoughnessExportSha256": "71bde5b9fa079061ce35291730a2f385a9c7bbe709e5b9f546844ac6861694bb"
+      },
+      "helix.trim": {
+        "sourceLinearSha256": "6c3243cea75aedf2e9b898bce33d1c89564cc51971ba574fea2b484ed512406c",
+        "exportSrgbSha256": "a3888e7190c86f73f6c3863b84610a34f1b6cc58d4384f6c77fc0d784d5f33d3",
+        "maxByteError": 0,
+        "normalSourceSha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+        "normalExportSha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+        "roughnessSourceSha256": "db409b5b75e132192fc142673dfc781eb2f0ed5e68e19bfccc16539601b86368",
+        "metallicRoughnessExportSha256": "ac19978333cc91117da8a23650dc1ed916fc3ae97ab6b1a5bfffe1e8669cae86"
+      },
+      "botanical": {
+        "sourceLinearSha256": "a47ba407f957a55caa21956683d37d52b3353d1f7d5e56b629a7c02d8522a45b",
+        "exportSrgbSha256": "52052d69c0f0bfd3fc750b7ff11c49ccad82bf06b169a63ed3a78da57a58d14c",
+        "maxByteError": 0,
+        "normalSourceSha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+        "normalExportSha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+        "roughnessSourceSha256": "8d32c4b57631916c5ed7e93d1365d71a24b4e8c4a2e63bea3c9a110e12477ebe",
+        "metallicRoughnessExportSha256": "1baff9fef6df67a9357eca48d51f45501a7710833cc461d0d58fd85a2916b9fe"
+      },
+      "ceramic": {
+        "sourceLinearSha256": "c8dfce6416c2b9eb145c63470331f6749e0338527fcb3045dfef15b435062702",
+        "exportSrgbSha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+        "maxByteError": 0,
+        "normalSourceSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "normalExportSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "roughnessSourceSha256": "2c63bee56ac7600342fd93f52ed17aa5d096b4e5c1d659168bd5d0586ae1afc5",
+        "metallicRoughnessExportSha256": "71bde5b9fa079061ce35291730a2f385a9c7bbe709e5b9f546844ac6861694bb"
+      },
+      "gold": {
+        "sourceLinearSha256": "1e3a2aab37bdc00b936e090f748a01caea2e3b30de33a972365328be6a03afdf",
+        "exportSrgbSha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+        "maxByteError": 0,
+        "normalSourceSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "normalExportSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "roughnessSourceSha256": "dbcaa37ae370a5150dc588fc6189126bb52c4e1b8e2671b129ded5078252d99a",
+        "metallicRoughnessExportSha256": "67503e7fe7d49b24e173c84bdf86895e7397702d3399772150136dddfc65aa75"
+      },
+      "leaflight": {
+        "sourceLinearSha256": "8d23a9b4819d14969f3dfb20697c1fbb91e643f0aa3d030e12a238ed94a863a9",
+        "exportSrgbSha256": "7e3d11e8311ecc5d52a910038cead50d3383a68bfb7c6412d6c8f19c72d7eedd",
+        "maxByteError": 0,
+        "normalSourceSha256": "b7051d968859c381dced9cfcb07c441bd1172e9d8ef133d689289e908f22958f",
+        "normalExportSha256": "b7051d968859c381dced9cfcb07c441bd1172e9d8ef133d689289e908f22958f",
+        "roughnessSourceSha256": "9f4e9ec198900ed662603a77e599c10583d0d1a0d3a88825064d3d23308187e7",
+        "metallicRoughnessExportSha256": "a161bdedf82c43ba685ac624c9ffcaba8a86b5535de18e7a0cb4c0e324e391a6"
+      },
+      "brick": {
+        "sourceLinearSha256": "e7cbef47acd9d54c61f57123824f477af4b0d42c17fdd514d0ad3fb185ae46a3",
+        "exportSrgbSha256": "19efdd03cd0bc98d04405f04c04b8b9ac1293ca0751103c4e4a11e9ab4b92124",
+        "maxByteError": 0,
+        "normalSourceSha256": "a82b4af6b637ecd74953a0f4af261acc637eab255e80f6117a231f5d0b564ca5",
+        "normalExportSha256": "a82b4af6b637ecd74953a0f4af261acc637eab255e80f6117a231f5d0b564ca5",
+        "roughnessSourceSha256": "026e41ba5a566ab71f09ed19a6699c53442aaa2b569b32a0f61f1a2a7dd8fd16",
+        "metallicRoughnessExportSha256": "3d8531df0143abe737299e022b6ccd643092c9d1851b23973be0ab4ef2a7d0ef"
+      },
+      "soil": {
+        "sourceLinearSha256": "a47ba407f957a55caa21956683d37d52b3353d1f7d5e56b629a7c02d8522a45b",
+        "exportSrgbSha256": "52052d69c0f0bfd3fc750b7ff11c49ccad82bf06b169a63ed3a78da57a58d14c",
+        "maxByteError": 0,
+        "normalSourceSha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+        "normalExportSha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+        "roughnessSourceSha256": "8d32c4b57631916c5ed7e93d1365d71a24b4e8c4a2e63bea3c9a110e12477ebe",
+        "metallicRoughnessExportSha256": "1baff9fef6df67a9357eca48d51f45501a7710833cc461d0d58fd85a2916b9fe"
+      },
+      "solar": {
+        "sourceLinearSha256": "64fbdfc9891608b6966049d3c4dc54dd6b7593868e08f89f4f9bfa36a0085a97",
+        "exportSrgbSha256": "526808c6be3d9794759f14a5660bb6a87a157420827d31cca03e6d625819e8f9",
+        "maxByteError": 0,
+        "normalSourceSha256": "f1e48753f0784ad31eadbb496bdb559252c2e4e034653e02ddbb020fb4249401",
+        "normalExportSha256": "f1e48753f0784ad31eadbb496bdb559252c2e4e034653e02ddbb020fb4249401",
+        "roughnessSourceSha256": "5ed42766756361b029bfa13a6e7e29bde853b8dd661209d955f6a5a2f8885f7c",
+        "metallicRoughnessExportSha256": "589fb767fa2aba1669225ff5f63e512358278c5f3022ca2b8e26c67000407009"
+      },
+      "stone": {
+        "sourceLinearSha256": "9217447e0249b9f37e5f739bbb8a36ab17525926070cdfdbfef1722e53dc5499",
+        "exportSrgbSha256": "a1af71522942bb686c9179744d34832a1223759730c8920f96140895c3aba7ce",
+        "maxByteError": 0,
+        "normalSourceSha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+        "normalExportSha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+        "roughnessSourceSha256": "81f6ff50750eea6604a5ded64aa9463b3e71f0e6f96f45c5990164a45fb759f7",
+        "metallicRoughnessExportSha256": "0f473df2e1651818d95033b65fb66e6d4470dea19390c4fd663b07a1e88ae214"
+      },
+      "verdigris": {
+        "sourceLinearSha256": "a11f66b6da6268c022fa8b88593d39c2b33c96197bd83be811ed7972672fad8f",
+        "exportSrgbSha256": "df08158f6dfced7e3e823f32b1a796ece7a2fed8f763505c6f43980cd82516e2",
+        "maxByteError": 0,
+        "normalSourceSha256": "7b2ec1c6a0837fdbbe67ed0779e2d39ad3637b405ed0a5186ac21b94db2dab9c",
+        "normalExportSha256": "7b2ec1c6a0837fdbbe67ed0779e2d39ad3637b405ed0a5186ac21b94db2dab9c",
+        "roughnessSourceSha256": "0b1951e5830a72bfd483555e1a06a7bacaaa8ac7e379818f8acdd86765caea8b",
+        "metallicRoughnessExportSha256": "2d9934b2c971746003f84cc364c085cf55062a49e90d548a800496a416830698"
+      },
+      "helix.soil": {
+        "sourceLinearSha256": "a47ba407f957a55caa21956683d37d52b3353d1f7d5e56b629a7c02d8522a45b",
+        "exportSrgbSha256": "52052d69c0f0bfd3fc750b7ff11c49ccad82bf06b169a63ed3a78da57a58d14c",
+        "maxByteError": 0,
+        "normalSourceSha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+        "normalExportSha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+        "roughnessSourceSha256": "8d32c4b57631916c5ed7e93d1365d71a24b4e8c4a2e63bea3c9a110e12477ebe",
+        "metallicRoughnessExportSha256": "1baff9fef6df67a9357eca48d51f45501a7710833cc461d0d58fd85a2916b9fe"
+      },
+      "helix.greenhouse-frame": {
+        "sourceLinearSha256": "1e3a2aab37bdc00b936e090f748a01caea2e3b30de33a972365328be6a03afdf",
+        "exportSrgbSha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+        "maxByteError": 0,
+        "normalSourceSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "normalExportSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "roughnessSourceSha256": "dbcaa37ae370a5150dc588fc6189126bb52c4e1b8e2671b129ded5078252d99a",
+        "metallicRoughnessExportSha256": "67503e7fe7d49b24e173c84bdf86895e7397702d3399772150136dddfc65aa75"
+      },
+      "helix.grotto-rock": {
+        "sourceLinearSha256": "9217447e0249b9f37e5f739bbb8a36ab17525926070cdfdbfef1722e53dc5499",
+        "exportSrgbSha256": "a1af71522942bb686c9179744d34832a1223759730c8920f96140895c3aba7ce",
+        "maxByteError": 0,
+        "normalSourceSha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+        "normalExportSha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+        "roughnessSourceSha256": "81f6ff50750eea6604a5ded64aa9463b3e71f0e6f96f45c5990164a45fb759f7",
+        "metallicRoughnessExportSha256": "0f473df2e1651818d95033b65fb66e6d4470dea19390c4fd663b07a1e88ae214"
+      },
+      "helix.fern": {
+        "sourceLinearSha256": "119ae5f9763577a24b34ab9a1244926a080973161c339f153a55c713607971af",
+        "exportSrgbSha256": "00ee4e4c13507056a52866ac24a57605e06d5e9f1cb40f13177153486a689d7a",
+        "maxByteError": 0,
+        "normalSourceSha256": "d60070f0af03f33c351a6049a871fe839a6fcacc39889e9ca5b1752be2f42771",
+        "normalExportSha256": "d60070f0af03f33c351a6049a871fe839a6fcacc39889e9ca5b1752be2f42771",
+        "roughnessSourceSha256": "8782a50aad763eb9be831334d97507fed2b70fc93f99c1bdf9f850d16f675817",
+        "metallicRoughnessExportSha256": "f1886e518ac4881e34f7ddbfaf99a5467f666c2d0d2640afccf7af4c7a04d98d"
+      },
+      "helix.bark": {
+        "sourceLinearSha256": "be0211f29a3b4d0d5f8c401d6bf68d0e8d25052092c569fefde6524a79899fa7",
+        "exportSrgbSha256": "992962a0a31a62c6f3d2629485781441b28d0fed62f9069ce9b284cd5970cd21",
+        "maxByteError": 0,
+        "normalSourceSha256": "eb7687cc095b294658f7d1171dca8758eb2c4af20e71d5caa04f0cc3ce08bd68",
+        "normalExportSha256": "eb7687cc095b294658f7d1171dca8758eb2c4af20e71d5caa04f0cc3ce08bd68",
+        "roughnessSourceSha256": "1527f27f53a868e9c3af107e6bf89e9f27ed784547603dc4aadc1575f3f84189",
+        "metallicRoughnessExportSha256": "628c59ced159e99590f04a525e2436cb273c2eee9eadc5fc73b32f9ff1475641"
+      }
+    },
+    "evaluatedTriangleDelta": 0,
+    "geometryValidation": "scene-referenced embedded accessor bytes verified; non-instanced static export"
+  },
+  "materialReceipt": {
+    "pack": {
+      "overlaySha256": "86beb51736bea315b2bb35cd7772aff2daec7a1317b13c1eb498c981f2e8c5f0",
+      "baseSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+    },
+    "materials": {
+      "botanical": {
+        "resource": "moss-lichen",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "a47ba407f957a55caa21956683d37d52b3353d1f7d5e56b629a7c02d8522a45b",
+        "sourceNormalSha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "8d32c4b57631916c5ed7e93d1365d71a24b4e8c4a2e63bea3c9a110e12477ebe",
+        "convertedAlbedoSha256": "52052d69c0f0bfd3fc750b7ff11c49ccad82bf06b169a63ed3a78da57a58d14c",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "leaflight": {
+        "resource": "moss-warm-weather",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "8d23a9b4819d14969f3dfb20697c1fbb91e643f0aa3d030e12a238ed94a863a9",
+        "sourceNormalSha256": "b7051d968859c381dced9cfcb07c441bd1172e9d8ef133d689289e908f22958f",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "9f4e9ec198900ed662603a77e599c10583d0d1a0d3a88825064d3d23308187e7",
+        "convertedAlbedoSha256": "7e3d11e8311ecc5d52a910038cead50d3383a68bfb7c6412d6c8f19c72d7eedd",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "86beb51736bea315b2bb35cd7772aff2daec7a1317b13c1eb498c981f2e8c5f0"
+      },
+      "soil": {
+        "resource": "moss-lichen",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "a47ba407f957a55caa21956683d37d52b3353d1f7d5e56b629a7c02d8522a45b",
+        "sourceNormalSha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "8d32c4b57631916c5ed7e93d1365d71a24b4e8c4a2e63bea3c9a110e12477ebe",
+        "convertedAlbedoSha256": "52052d69c0f0bfd3fc750b7ff11c49ccad82bf06b169a63ed3a78da57a58d14c",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "stone": {
+        "resource": "grotto-wet-rock",
+        "role": "surface",
+        "tileMeters": 4,
+        "tilesPerMeter": 0.25,
+        "texelsPerMeter": 128,
+        "sourceColorSha256": "9217447e0249b9f37e5f739bbb8a36ab17525926070cdfdbfef1722e53dc5499",
+        "sourceNormalSha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "81f6ff50750eea6604a5ded64aa9463b3e71f0e6f96f45c5990164a45fb759f7",
+        "convertedAlbedoSha256": "a1af71522942bb686c9179744d34832a1223759730c8920f96140895c3aba7ce",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "ceramic": {
+        "resource": "ceramic-enamel",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "c8dfce6416c2b9eb145c63470331f6749e0338527fcb3045dfef15b435062702",
+        "sourceNormalSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "2c63bee56ac7600342fd93f52ed17aa5d096b4e5c1d659168bd5d0586ae1afc5",
+        "convertedAlbedoSha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "brick": {
+        "resource": "terracotta",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "e7cbef47acd9d54c61f57123824f477af4b0d42c17fdd514d0ad3fb185ae46a3",
+        "sourceNormalSha256": "a82b4af6b637ecd74953a0f4af261acc637eab255e80f6117a231f5d0b564ca5",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "026e41ba5a566ab71f09ed19a6699c53442aaa2b569b32a0f61f1a2a7dd8fd16",
+        "convertedAlbedoSha256": "19efdd03cd0bc98d04405f04c04b8b9ac1293ca0751103c4e4a11e9ab4b92124",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "gold": {
+        "resource": "anodized-brush",
+        "role": "surface",
+        "tileMeters": 1,
+        "tilesPerMeter": 1.0,
+        "texelsPerMeter": 512,
+        "sourceColorSha256": "1e3a2aab37bdc00b936e090f748a01caea2e3b30de33a972365328be6a03afdf",
+        "sourceNormalSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "dbcaa37ae370a5150dc588fc6189126bb52c4e1b8e2671b129ded5078252d99a",
+        "convertedAlbedoSha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+        "metallic": 0.65,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "solar": {
+        "resource": "prismatic-etch",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "64fbdfc9891608b6966049d3c4dc54dd6b7593868e08f89f4f9bfa36a0085a97",
+        "sourceNormalSha256": "f1e48753f0784ad31eadbb496bdb559252c2e4e034653e02ddbb020fb4249401",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "5ed42766756361b029bfa13a6e7e29bde853b8dd661209d955f6a5a2f8885f7c",
+        "convertedAlbedoSha256": "526808c6be3d9794759f14a5660bb6a87a157420827d31cca03e6d625819e8f9",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "verdigris": {
+        "resource": "copper-patina",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "a11f66b6da6268c022fa8b88593d39c2b33c96197bd83be811ed7972672fad8f",
+        "sourceNormalSha256": "7b2ec1c6a0837fdbbe67ed0779e2d39ad3637b405ed0a5186ac21b94db2dab9c",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "0b1951e5830a72bfd483555e1a06a7bacaaa8ac7e379818f8acdd86765caea8b",
+        "convertedAlbedoSha256": "df08158f6dfced7e3e823f32b1a796ece7a2fed8f763505c6f43980cd82516e2",
+        "metallic": 0.65,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "helix.grotto-rock": {
+        "resource": "grotto-wet-rock",
+        "role": "surface",
+        "tileMeters": 4,
+        "tilesPerMeter": 0.25,
+        "texelsPerMeter": 128,
+        "sourceColorSha256": "9217447e0249b9f37e5f739bbb8a36ab17525926070cdfdbfef1722e53dc5499",
+        "sourceNormalSha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "81f6ff50750eea6604a5ded64aa9463b3e71f0e6f96f45c5990164a45fb759f7",
+        "convertedAlbedoSha256": "a1af71522942bb686c9179744d34832a1223759730c8920f96140895c3aba7ce",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "helix.soil": {
+        "resource": "moss-lichen",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "a47ba407f957a55caa21956683d37d52b3353d1f7d5e56b629a7c02d8522a45b",
+        "sourceNormalSha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "8d32c4b57631916c5ed7e93d1365d71a24b4e8c4a2e63bea3c9a110e12477ebe",
+        "convertedAlbedoSha256": "52052d69c0f0bfd3fc750b7ff11c49ccad82bf06b169a63ed3a78da57a58d14c",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "helix.trim": {
+        "resource": "masonry-coping",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "6c3243cea75aedf2e9b898bce33d1c89564cc51971ba574fea2b484ed512406c",
+        "sourceNormalSha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "db409b5b75e132192fc142673dfc781eb2f0ed5e68e19bfccc16539601b86368",
+        "convertedAlbedoSha256": "a3888e7190c86f73f6c3863b84610a34f1b6cc58d4384f6c77fc0d784d5f33d3",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "helix.archive-stone": {
+        "resource": "ceramic-enamel",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "c8dfce6416c2b9eb145c63470331f6749e0338527fcb3045dfef15b435062702",
+        "sourceNormalSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "2c63bee56ac7600342fd93f52ed17aa5d096b4e5c1d659168bd5d0586ae1afc5",
+        "convertedAlbedoSha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "helix.bark": {
+        "resource": "bark-fibers",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "be0211f29a3b4d0d5f8c401d6bf68d0e8d25052092c569fefde6524a79899fa7",
+        "sourceNormalSha256": "eb7687cc095b294658f7d1171dca8758eb2c4af20e71d5caa04f0cc3ce08bd68",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "1527f27f53a868e9c3af107e6bf89e9f27ed784547603dc4aadc1575f3f84189",
+        "convertedAlbedoSha256": "992962a0a31a62c6f3d2629485781441b28d0fed62f9069ce9b284cd5970cd21",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "helix.fern": {
+        "resource": "fern-frond",
+        "role": "surface",
+        "tileMeters": 1,
+        "tilesPerMeter": 1.0,
+        "texelsPerMeter": 512,
+        "sourceColorSha256": "119ae5f9763577a24b34ab9a1244926a080973161c339f153a55c713607971af",
+        "sourceNormalSha256": "d60070f0af03f33c351a6049a871fe839a6fcacc39889e9ca5b1752be2f42771",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "8782a50aad763eb9be831334d97507fed2b70fc93f99c1bdf9f850d16f675817",
+        "convertedAlbedoSha256": "00ee4e4c13507056a52866ac24a57605e06d5e9f1cb40f13177153486a689d7a",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "helix.greenhouse-frame": {
+        "resource": "anodized-brush",
+        "role": "surface",
+        "tileMeters": 1,
+        "tilesPerMeter": 1.0,
+        "texelsPerMeter": 512,
+        "sourceColorSha256": "1e3a2aab37bdc00b936e090f748a01caea2e3b30de33a972365328be6a03afdf",
+        "sourceNormalSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "dbcaa37ae370a5150dc588fc6189126bb52c4e1b8e2671b129ded5078252d99a",
+        "convertedAlbedoSha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+        "metallic": 0.65,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      }
+    },
+    "preserved": {
+      "glass": {
+        "color": [
+          0.15,
+          0.36,
+          0.32,
+          0.08
+        ],
+        "roughness": 0.72,
+        "metallic": 0,
+        "alpha": 0.08,
+        "source": "helix-conservatory/blender_author.py:29-50"
+      },
+      "water": {
+        "color": [
+          0.15,
+          0.36,
+          0.32,
+          0.65
+        ],
+        "roughness": 0.18,
+        "metallic": 0,
+        "alpha": 0.65,
+        "transmission": 0.25,
+        "ior": 1.333,
+        "source": "revision-3 new grotto pool; explicit Helix green palette / liquid BRDF"
+      }
+    },
+    "mapOverrides": {
+      "botanical": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.35
+      },
+      "leaflight": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.3
+      },
+      "soil": {
+        "tilesPerMeter": 0.25,
+        "normalStrength": 0.45
+      },
+      "stone": {
+        "tilesPerMeter": 0.25,
+        "normalStrength": 0.5
+      },
+      "ceramic": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.35
+      },
+      "brick": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.45
+      },
+      "gold": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.3
+      },
+      "solar": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.25
+      },
+      "verdigris": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.4
+      },
+      "glass": {
+        "tilesPerMeter": 1,
+        "normalStrength": null
+      },
+      "water": {
+        "tilesPerMeter": 1,
+        "normalStrength": null
+      },
+      "helix.grotto-rock": {
+        "tilesPerMeter": 0.25,
+        "normalStrength": 0.55
+      },
+      "helix.soil": {
+        "tilesPerMeter": 0.25,
+        "normalStrength": 0.45
+      },
+      "helix.trim": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.35
+      },
+      "helix.archive-stone": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.35
+      },
+      "helix.bark": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.5
+      },
+      "helix.fern": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.3
+      },
+      "helix.greenhouse-frame": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.3
+      }
+    },
+    "packedImages": 33
+  },
+  "kitTriangleMeasurement": "unmodified-source-estimate",
+  "kitTriangles": 9188,
+  "kitOps": 138,
+  "kitBatches": 9,
+  "exportBatches": 24,
+  "labels": 3,
+  "nonTriangleWalls": 0,
+  "intended": {
+    "master": "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/helix-conservatory.blend",
+    "glb": "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/helix-conservatory.glb",
+    "maxPrimitives": 64
+  },
+  "files": {
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/helix-conservatory.blend": "57f2209a9a56ea21e5f00ec59fdd16804902ef34cf71766ae50fbb5cd1065c0f",
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/helix-conservatory.glb": "7e9136c8140e418fd1b72ce55d2181d8cd9f1c81dac7a74caf56eba7ef048353"
+  },
+  "sizes": {
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/helix-conservatory.blend": 34461754,
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/helix-conservatory.glb": 24336616
+  },
+  "nativeAcceptance": "pending; editable master/GLB not yet imported or rendered"
+}

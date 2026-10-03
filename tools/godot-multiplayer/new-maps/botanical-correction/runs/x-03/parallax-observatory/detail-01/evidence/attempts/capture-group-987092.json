@@ -1,0 +1,41 @@
+{
+  "start": "2026-10-03T21:25:45.302331+00:00",
+  "end": "2026-10-03T21:25:55.073637+00:00",
+  "pgid": 987092,
+  "members": [
+    {
+      "pid": 987092,
+      "ppid": 887927,
+      "pgid": 987092,
+      "startTicks": 624588922,
+      "comm": "python3",
+      "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 parallax-observatory "
+    },
+    {
+      "pid": 987094,
+      "ppid": 987092,
+      "pgid": 987092,
+      "startTicks": 624588926,
+      "comm": "xvfb-run",
+      "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --rendering-method gl_compatibility --script res://tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-01/capture.gd -- --map=parallax-observatory "
+    },
+    {
+      "pid": 987104,
+      "ppid": 987094,
+      "pgid": 987092,
+      "startTicks": 624588927,
+      "comm": "Xvfb",
+      "argv": "Xvfb :101 -screen 0 1280x720x24 -nolisten tcp -auth /tmp/xvfb-run.rtV8lR/Xauthority "
+    },
+    {
+      "pid": 987107,
+      "ppid": 987094,
+      "pgid": 987092,
+      "startTicks": 624588928,
+      "comm": "Godot_v4.5.2-st",
+      "argv": ""
+    }
+  ],
+  "scriptError": false,
+  "returncode": 0
+}

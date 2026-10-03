@@ -1,0 +1,41 @@
+{
+  "start": "2026-10-03T21:28:16.932776+00:00",
+  "end": "2026-10-03T21:28:26.296457+00:00",
+  "pgid": 996667,
+  "members": [
+    {
+      "pid": 996667,
+      "ppid": 887927,
+      "pgid": 996667,
+      "startTicks": 624604053,
+      "comm": "python3",
+      "argv": "python3 -B tools/godot-multiplayer/new-maps/botanical-correction/x_detail.py render x-03 helix-conservatory detail-02 "
+    },
+    {
+      "pid": 996670,
+      "ppid": 996667,
+      "pgid": 996667,
+      "startTicks": 624604089,
+      "comm": "xvfb-run",
+      "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --rendering-method gl_compatibility --script res://tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-02/capture.gd -- --map=helix-conservatory "
+    },
+    {
+      "pid": 996680,
+      "ppid": 996670,
+      "pgid": 996667,
+      "startTicks": 624604090,
+      "comm": "Xvfb",
+      "argv": "Xvfb :101 -screen 0 1280x720x24 -nolisten tcp -auth /tmp/xvfb-run.ri4arZ/Xauthority "
+    },
+    {
+      "pid": 996683,
+      "ppid": 996670,
+      "pgid": 996667,
+      "startTicks": 624604092,
+      "comm": "Godot_v4.5.2-st",
+      "argv": ""
+    }
+  ],
+  "scriptError": false,
+  "returncode": 0
+}

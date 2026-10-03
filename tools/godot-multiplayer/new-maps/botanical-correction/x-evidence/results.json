@@ -1,0 +1,1777 @@
+{
+  "grant": "MOTH-BLENDER-20261003-X",
+  "time": "2026-10-03T21:35:37.272324+00:00",
+  "maps": {
+    "helix-conservatory": {
+      "geometryHash": "f5a3d0d7b2872fa7c7fa6bb2727ee31915a717ffbc160343acf491fe3b9bc49e",
+      "master": "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/helix-conservatory.blend",
+      "glb": "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/helix-conservatory.glb",
+      "masterSha256": "46fe68d6ccb97c349812b6c4a5a600c3c9c90f19c50bee217378cb8f9029c856",
+      "glbSha256": "4943e353f4626a11f1e515b9046c92df30985ef725f399f651a8d8ddad953995",
+      "evaluatedExportTriangles": 157518,
+      "usedMaterials": [
+        "botanical",
+        "brick",
+        "ceramic",
+        "glass",
+        "gold",
+        "helix.archive-stone",
+        "helix.bark",
+        "helix.fern",
+        "helix.greenhouse-frame",
+        "helix.grotto-rock",
+        "helix.soil",
+        "helix.trim",
+        "leaflight",
+        "soil",
+        "solar",
+        "stone",
+        "verdigris",
+        "water"
+      ],
+      "finiteCapsules": 32763,
+      "finiteCapsuleErrors": [],
+      "nativeRays": 305,
+      "nativeGroundSeams": 68,
+      "registeredModes": [
+        "deathmatch",
+        "teamdeathmatch",
+        "ctf",
+        "domination",
+        "koth"
+      ],
+      "materialInstancesRestored": 27,
+      "vectorCensus": {
+        "counts": {
+          "NORMAL": 388863,
+          "TANGENT": 388863
+        },
+        "exceptions": [],
+        "glbSha256": "4943e353f4626a11f1e515b9046c92df30985ef725f399f651a8d8ddad953995",
+        "verifierSha256": "37bb8148b639d443a013be634cab5609a4eab0729f9e044c79d1b03f0cbe8555",
+        "scope": "strict finite actual accessors; unit vectors checked, exceptions are not waived",
+        "disposition": "pass"
+      },
+      "actualReadbackSha256": "fd6507392643dff0342b02288eaafc4f16144b2ea7ddbc8027a58811efbce471",
+      "nativePhysics": "passed",
+      "fullHumanArtAcceptance": "pending; see X_HANDOFF.md view limitations",
+      "hostedModes": "pending",
+      "images": [
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/overview-accepted-runtime-before.png",
+          "sha256": "c9fad543dba9614f4fb46a7b880abc25cad71cbd056b463b9a0dc82804d32655",
+          "view": "overview",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-overview",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/grotto-eye-accepted-runtime-before.png",
+          "sha256": "4c857129fff5785d95cc4d1ec9ff7d61792c899ac9953d954d73e1cfbd6140c3",
+          "view": "grotto-eye",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/botanical-eye-accepted-runtime-before.png",
+          "sha256": "d132a1d86aa9bc57f27ea17a1b983f74160360fd5b5a44bff89a7629d6617e3a",
+          "view": "botanical-eye",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/greenhouse-eye-accepted-runtime-before.png",
+          "sha256": "e0eb6a8a21bc4834eb3ea3de22dd85ecc3fdcf55bcfdf297166c094fb90d192d",
+          "view": "greenhouse-eye",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/lightwell-player-accepted-runtime-before.png",
+          "sha256": "46b8a7dbbd3aa7f000caa9b405d7657fe77a0bd8df494a7b2ed0456c0cb79deb",
+          "view": "lightwell-player",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/archive-player-accepted-runtime-before.png",
+          "sha256": "4f7dfd37150c3d23a7b19b2b84ffed25aeabe7b19d7b014e1d96055572269a67",
+          "view": "archive-player",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/canopy-player-accepted-runtime-before.png",
+          "sha256": "c845172746ab1e8c085f53d310ed6aa6f6ebceefcf5560be64539e95a25235c2",
+          "view": "canopy-player",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/crown-player-accepted-runtime-before.png",
+          "sha256": "4780b87e091265974bc0747a9d16ff4185de210253652a71a0ab6f22dbe80e3c",
+          "view": "crown-player",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/overview-candidate-runtime-after.png",
+          "sha256": "347b2bc41525784888112632c87af7e2e8c7cbedca27a791ef08810972e59738",
+          "view": "overview",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-overview",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/grotto-eye-candidate-runtime-after.png",
+          "sha256": "970f7f24d80340f8d24b99492f268532e5bfbcd17d8d8532c7634ea4147fc26a",
+          "view": "grotto-eye",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/botanical-eye-candidate-runtime-after.png",
+          "sha256": "fb338c7bf75e20b962b152924fe8f9d8b82f0615ddef0da9b6a6fe1458be74ea",
+          "view": "botanical-eye",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/greenhouse-eye-candidate-runtime-after.png",
+          "sha256": "97e295734c938e6e620c81206936d0aab89496a52c8e5c23e6e18bca9d52e258",
+          "view": "greenhouse-eye",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/lightwell-player-candidate-runtime-after.png",
+          "sha256": "2d06059b9b80c6907d306bb3a548b8acc46e548e296caaddecb9e93d7d8993b4",
+          "view": "lightwell-player",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/archive-player-candidate-runtime-after.png",
+          "sha256": "78e153f2b503af39a07e3c4dc4e024881553c6c0bf329006eeefe97bdd13f9c3",
+          "view": "archive-player",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/canopy-player-candidate-runtime-after.png",
+          "sha256": "d900e5c9f2209c6bf6b637dd90e378c779030e1d32da92f887619109921fa1d4",
+          "view": "canopy-player",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/crown-player-candidate-runtime-after.png",
+          "sha256": "b8924adb372d4d575197b44b521da714cd8aca51556c827a477435c43226a0e2",
+          "view": "crown-player",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-01/captures/grounded-frame-exterior-accepted-runtime-before.png",
+          "sha256": "1236290d2addebee5293913c61ec852fa4c04fc1b2e166a6bc08eba4173da3ac",
+          "view": "grounded-frame-exterior",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-01/captures/grounded-frame-exterior-candidate-runtime-after.png",
+          "sha256": "ab52fd4b6494f986c2ff066ac0fd7b2d0c17285ff3c24398bd2d3c827a13efb0",
+          "view": "grounded-frame-exterior",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-02/captures/grounded-frame-side-accepted-runtime-before.png",
+          "sha256": "23c16339646f729ca84723cfdef1d49bfdb4a2583a2f800af48f1722205bd950",
+          "view": "grounded-frame-side",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-02/captures/grounded-frame-side-candidate-runtime-after.png",
+          "sha256": "a944e8a428e2ff6eeda295878b2a5e334a3a55238c6c58936b1907fd4461e387",
+          "view": "grounded-frame-side",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+          "inspectedOriginal": true
+        }
+      ],
+      "staticPerformance": {
+        "drawCalls": {
+          "min": 94.0,
+          "max": 155.0
+        },
+        "staticViewMeanFrameMs": {
+          "min": 226.445375,
+          "max": 497.6195
+        },
+        "videoMemoryBytes": {
+          "min": 78473202.0,
+          "max": 78473202.0
+        },
+        "staticMemoryBytes": {
+          "min": 444115057,
+          "max": 484817169
+        },
+        "renderer": [
+          "llvmpipe (LLVM 20.1.8, 256 bits)"
+        ],
+        "scope": "8-frame static llvmpipe cadence/memory/draw calls; not gameplay FPS or dedicated-GPU qualification"
+      }
+    },
+    "parallax-observatory": {
+      "geometryHash": "3a5800e89876ebcc741381802def24415d5050651c0d3b831ea8b9ec3b77b4f9",
+      "master": "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/parallax-observatory.blend",
+      "glb": "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/parallax-observatory.glb",
+      "masterSha256": "9957ca8cc3e4e7f2bca00f7b82a48ed88d031e9e3949259ebf5603f584141051",
+      "glbSha256": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+      "evaluatedExportTriangles": 155553,
+      "usedMaterials": [
+        "cistern",
+        "metal",
+        "mirror",
+        "ochre",
+        "parallax.enamel",
+        "parallax.etch",
+        "parallax.glazing",
+        "parallax.instrument-alloy",
+        "parallax.optics",
+        "parallax.stone",
+        "parallax.trim",
+        "paving",
+        "saltstone",
+        "sea"
+      ],
+      "finiteCapsules": 13587,
+      "finiteCapsuleErrors": [],
+      "nativeRays": 1070,
+      "nativeGroundSeams": 0,
+      "registeredModes": [
+        "deathmatch",
+        "teamdeathmatch",
+        "ctf",
+        "koth",
+        "uplink",
+        "holdout"
+      ],
+      "materialInstancesRestored": 39,
+      "vectorCensus": {
+        "counts": {
+          "NORMAL": 319065,
+          "TANGENT": 319065,
+          "TANGENTZero": 1
+        },
+        "exceptions": [
+          {
+            "mesh": "art.accepted-craft.saltstone.001",
+            "material": "saltstone",
+            "accessor": 48,
+            "vertex": 24049,
+            "attribute": "TANGENT",
+            "value": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "position": [
+              68.77897644042969,
+              24.0,
+              -66.25537872314453
+            ],
+            "uv": [
+              35.36811447143555,
+              -32.56804275512695
+            ]
+          }
+        ],
+        "glbSha256": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+        "verifierSha256": "37bb8148b639d443a013be634cab5609a4eab0729f9e044c79d1b03f0cbe8555",
+        "scope": "strict finite actual accessors; unit vectors checked, exceptions are not waived",
+        "frozenUComparison": {
+          "counts": {
+            "NORMAL": 317697,
+            "TANGENT": 317697,
+            "TANGENTZero": 1
+          },
+          "exceptions": [
+            {
+              "mesh": "art.accepted-craft.saltstone.001",
+              "material": "saltstone",
+              "accessor": 48,
+              "vertex": 24168,
+              "attribute": "TANGENT",
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "position": [
+                68.77897644042969,
+                24.0,
+                -66.25537872314453
+              ],
+              "uv": [
+                35.36811447143555,
+                -32.56804275512695
+              ]
+            }
+          ]
+        },
+        "exceptionAtSameFrozenUPosition": true,
+        "disposition": "One inherited zero tangent on saltstone accepted-craft vertex; localized PBR tangent qualification pending, not a blanket pass"
+      },
+      "actualReadbackSha256": "31d2ad1410d1a25449ae39d53f7d3fbfeef3db5c8d1caedc7d136d8185b86612",
+      "nativePhysics": "passed",
+      "fullHumanArtAcceptance": "pending; see X_HANDOFF.md view limitations",
+      "hostedModes": "pending",
+      "images": [
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arrival-eye-accepted-runtime-before.png",
+          "sha256": "5311dd26e0427d00a4dae9c57a9442ea65f16444c4ac190f845f688047680e3d",
+          "view": "arrival-eye",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/lens-eye-accepted-runtime-before.png",
+          "sha256": "b6adfcf6884a8f7cd4de4752180fd781c2f8d7d7ec5b8bc04ebb336341853316",
+          "view": "lens-eye",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/cistern-eye-accepted-runtime-before.png",
+          "sha256": "236234b20cbd13439d25325ffee4828559e1fb0cf99c631af0329c942989e940",
+          "view": "cistern-eye",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/overview-accepted-runtime-before.png",
+          "sha256": "c5410d12d6f7fb19a969f6637419fb950ae98e801dd200a2d5906050c606ada4",
+          "view": "overview",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-overview",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/archive-interior-accepted-runtime-before.png",
+          "sha256": "2696744b1262e6cb2ab07d5e4d7e1b5488f86841010de5244266d6e8e312eab7",
+          "view": "archive-interior",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/polar-interior-accepted-runtime-before.png",
+          "sha256": "ce39a966d15804e12bbe97aa79f51cc31c933c33029d05d202fffc9c581d7dc5",
+          "view": "polar-interior",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arcade-eye-accepted-runtime-before.png",
+          "sha256": "501208794283ba810ff56a129cccfa18930d9d34206fd7111637a323c8159e44",
+          "view": "arcade-eye",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/pump-interior-accepted-runtime-before.png",
+          "sha256": "97e43fdd862a92b6b27c989dd7677c59d725e21926666f4138347a87a5e48c96",
+          "view": "pump-interior",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/well-descent-accepted-runtime-before.png",
+          "sha256": "27ec3c49f622d64b103622e0c866f29dee54dd1e90d3c19213cd99cca63ba43f",
+          "view": "well-descent",
+          "variant": "accepted-runtime-before",
+          "comparison": "repositioned: new court/well has no accepted ground; before uses polar crosslink",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/court-relief-accepted-runtime-before.png",
+          "sha256": "4153dff52cb69d83c744385318e849b78bbd24710b8bbc9f31e3080abd54ccff",
+          "view": "court-relief",
+          "variant": "accepted-runtime-before",
+          "comparison": "repositioned: new court/well has no accepted ground; before uses polar crosslink",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arrival-eye-candidate-runtime-after.png",
+          "sha256": "4bea5c8cb8b301867d1b04d74d46a8b4db875abd13a6bb481fc5ad7cf45ec56e",
+          "view": "arrival-eye",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/lens-eye-candidate-runtime-after.png",
+          "sha256": "9d47246ccf876c5ef88590ffd8a6de0586ccac56bf9a7b90bd4911f14a406289",
+          "view": "lens-eye",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/cistern-eye-candidate-runtime-after.png",
+          "sha256": "00578c6662226fa93b45f96e12bb11fe42c6a2efc516475c9ba0ec39aa028f5b",
+          "view": "cistern-eye",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/overview-candidate-runtime-after.png",
+          "sha256": "4b2f18f688a46b779cbe202c31b1d67c83f5d12eb8aabe40903a4bead1f4616e",
+          "view": "overview",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-overview",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/archive-interior-candidate-runtime-after.png",
+          "sha256": "3c3c750f83b6b2626a9cc29ec6384a84995d44bada9567d691486e0cae409f12",
+          "view": "archive-interior",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/polar-interior-candidate-runtime-after.png",
+          "sha256": "d82e181325cf3054db64323028adc549b59d4ca0219fc6e7c3129f82ca26ba46",
+          "view": "polar-interior",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arcade-eye-candidate-runtime-after.png",
+          "sha256": "a7d1f22fe34ba5b260990e56fe0f7bb055671ff87d1e85783b13c5493c938cfe",
+          "view": "arcade-eye",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/pump-interior-candidate-runtime-after.png",
+          "sha256": "2e81837e61f5519f07f8c2fe6f1e3d9a005613aa69f5ddedd2153f0a6cc972dc",
+          "view": "pump-interior",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/well-descent-candidate-runtime-after.png",
+          "sha256": "90bc08afaa8962f3da6074653ef383667a72807889af24a8c22a739b302aea52",
+          "view": "well-descent",
+          "variant": "candidate-runtime-after",
+          "comparison": "repositioned: new court/well has no accepted ground; before uses polar crosslink",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/court-relief-candidate-runtime-after.png",
+          "sha256": "d603ddeab6ef3fa4c3f6f2c7b3395db092b6c336e73608e78804883568872242",
+          "view": "court-relief",
+          "variant": "candidate-runtime-after",
+          "comparison": "repositioned: new court/well has no accepted ground; before uses polar crosslink",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-01/captures/east-landing-exterior-accepted-runtime-before.png",
+          "sha256": "3f019b6c36070f4218aa37acf494851fef7fa0f67afa7adfbeacc0c9d1eae662",
+          "view": "east-landing-exterior",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-01/captures/east-landing-exterior-candidate-runtime-after.png",
+          "sha256": "6bf4a164ae9e868bd50f0562b87ff37f5028b72b8b44970d7d514f961debdec2",
+          "view": "east-landing-exterior",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-02/captures/east-aperture-inspection-accepted-runtime-before.png",
+          "sha256": "756accabd2ae79f8c74211f666f26de7a039a617eaede868c2f036723b576f82",
+          "view": "east-aperture-inspection",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-02/captures/east-aperture-inspection-candidate-runtime-after.png",
+          "sha256": "b7d70bf5858ed3db0629a5fb2f2ef30651b623e72458dd6be51a25bfabe3af94",
+          "view": "east-aperture-inspection",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+          "inspectedOriginal": true
+        }
+      ],
+      "staticPerformance": {
+        "drawCalls": {
+          "min": 94.0,
+          "max": 166.0
+        },
+        "staticViewMeanFrameMs": {
+          "min": 154.62575,
+          "max": 414.0295
+        },
+        "videoMemoryBytes": {
+          "min": 64227039.0,
+          "max": 64227039.0
+        },
+        "staticMemoryBytes": {
+          "min": 115977506,
+          "max": 135143682
+        },
+        "renderer": [
+          "llvmpipe (LLVM 20.1.8, 256 bits)"
+        ],
+        "scope": "8-frame static llvmpipe cadence/memory/draw calls; not gameplay FPS or dedicated-GPU qualification"
+      }
+    },
+    "vesper-viaduct": {
+      "geometryHash": "fd8e7134c8933e908336d7b0409c66bdc90f4adc03fcfc6e596d5b4579f1c740",
+      "master": "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/masters/vesper-viaduct.blend",
+      "glb": "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/vesper-viaduct.glb",
+      "masterSha256": "ed91be82d2c1c99acef99644ad5151b67aa891e826121537193b67f2dcef42b3",
+      "glbSha256": "f859d49cc1b462b4a88e351d915518c49940ce24a7b8c2047c2d8f94f419e1db",
+      "evaluatedExportTriangles": 64311,
+      "usedMaterials": [
+        "asphalt",
+        "brick",
+        "cobbles",
+        "glass",
+        "iron",
+        "letter",
+        "plaster",
+        "quay",
+        "sandstone",
+        "slate",
+        "vesper.awning",
+        "vesper.brick-era",
+        "vesper.coping",
+        "vesper.quay",
+        "vesper.slate",
+        "vesper.stall",
+        "water"
+      ],
+      "finiteCapsules": 20157,
+      "finiteCapsuleErrors": [
+        {
+          "contacts": "[{ \"rid\": RID(65154653880339), \"collider_id\": 121819369083, \"collider\": civic-stair-12Collider:<StaticBody3D#121819369083>, \"shape\": 0 }]",
+          "id": "accepted-nav-490",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65257733095451), \"collider_id\": 122356240019, \"collider\": civic-stair-20Collider:<StaticBody3D#122356240019>, \"shape\": 0 }]",
+          "id": "accepted-nav-491",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65554085838898), \"collider_id\": 123899743960, \"collider\": civic-stair-43Collider:<StaticBody3D#123899743960>, \"shape\": 0 }]",
+          "id": "accepted-nav-494",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65850438582345), \"collider_id\": 125443247901, \"collider\": civic-stair-66Collider:<StaticBody3D#125443247901>, \"shape\": 0 }]",
+          "id": "accepted-nav-497",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65953517797457), \"collider_id\": 125980118837, \"collider\": civic-stair-74Collider:<StaticBody3D#125980118837>, \"shape\": 0 }]",
+          "id": "accepted-nav-498",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65154653880339), \"collider_id\": 121819369083, \"collider\": civic-stair-12Collider:<StaticBody3D#121819369083>, \"shape\": 0 }]",
+          "id": "candidate-nav-490",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65257733095451), \"collider_id\": 122356240019, \"collider\": civic-stair-20Collider:<StaticBody3D#122356240019>, \"shape\": 0 }]",
+          "id": "candidate-nav-491",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65554085838898), \"collider_id\": 123899743960, \"collider\": civic-stair-43Collider:<StaticBody3D#123899743960>, \"shape\": 0 }]",
+          "id": "candidate-nav-494",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65850438582345), \"collider_id\": 125443247901, \"collider\": civic-stair-66Collider:<StaticBody3D#125443247901>, \"shape\": 0 }]",
+          "id": "candidate-nav-497",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65953517797457), \"collider_id\": 125980118837, \"collider\": civic-stair-74Collider:<StaticBody3D#125980118837>, \"shape\": 0 }]",
+          "id": "candidate-nav-498",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65000035057671), \"collider_id\": 121014062682, \"collider\": civic-stair-0Collider:<StaticBody3D#121014062682>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:99",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65012919959560), \"collider_id\": 121081171545, \"collider\": civic-stair-1Collider:<StaticBody3D#121081171545>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:101",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65025804861449), \"collider_id\": 121148280413, \"collider\": civic-stair-2Collider:<StaticBody3D#121148280413>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:103",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65038689763338), \"collider_id\": 121215389280, \"collider\": civic-stair-3Collider:<StaticBody3D#121215389280>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:105",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65051574665227), \"collider_id\": 121282498147, \"collider\": civic-stair-4Collider:<StaticBody3D#121282498147>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:107",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65064459567116), \"collider_id\": 121349607014, \"collider\": civic-stair-5Collider:<StaticBody3D#121349607014>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:109",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65077344469005), \"collider_id\": 121416715881, \"collider\": civic-stair-6Collider:<StaticBody3D#121416715881>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:111",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65090229370894), \"collider_id\": 121483824748, \"collider\": civic-stair-7Collider:<StaticBody3D#121483824748>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:113",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65103114272783), \"collider_id\": 121550933615, \"collider\": civic-stair-8Collider:<StaticBody3D#121550933615>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:115",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65115999174672), \"collider_id\": 121618042482, \"collider\": civic-stair-9Collider:<StaticBody3D#121618042482>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:117",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65128884076561), \"collider_id\": 121685151349, \"collider\": civic-stair-10Collider:<StaticBody3D#121685151349>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:119",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65141768978450), \"collider_id\": 121752260216, \"collider\": civic-stair-11Collider:<StaticBody3D#121752260216>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:121",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65154653880339), \"collider_id\": 121819369083, \"collider\": civic-stair-12Collider:<StaticBody3D#121819369083>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:123",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65167538782228), \"collider_id\": 121886477950, \"collider\": civic-stair-13Collider:<StaticBody3D#121886477950>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:125",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65180423684117), \"collider_id\": 121953586817, \"collider\": civic-stair-14Collider:<StaticBody3D#121953586817>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:127",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65193308586006), \"collider_id\": 122020695684, \"collider\": civic-stair-15Collider:<StaticBody3D#122020695684>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:129",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65206193487895), \"collider_id\": 122087804551, \"collider\": civic-stair-16Collider:<StaticBody3D#122087804551>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:131",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65219078389784), \"collider_id\": 122154913418, \"collider\": civic-stair-17Collider:<StaticBody3D#122154913418>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:133",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65231963291673), \"collider_id\": 122222022285, \"collider\": civic-stair-18Collider:<StaticBody3D#122222022285>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:135",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65244848193562), \"collider_id\": 122289131152, \"collider\": civic-stair-19Collider:<StaticBody3D#122289131152>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:137",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65257733095451), \"collider_id\": 122356240019, \"collider\": civic-stair-20Collider:<StaticBody3D#122356240019>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:139",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65270617997340), \"collider_id\": 122423348886, \"collider\": civic-stair-21Collider:<StaticBody3D#122423348886>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:141",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65283502899229), \"collider_id\": 122490457753, \"collider\": civic-stair-22Collider:<StaticBody3D#122490457753>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:143",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65296387801118), \"collider_id\": 122557566620, \"collider\": civic-stair-23Collider:<StaticBody3D#122557566620>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:145",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65309272703007), \"collider_id\": 122624675487, \"collider\": civic-stair-24Collider:<StaticBody3D#122624675487>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:147",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65322157604896), \"collider_id\": 122691784354, \"collider\": civic-stair-25Collider:<StaticBody3D#122691784354>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:149",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65335042506785), \"collider_id\": 122758893221, \"collider\": civic-stair-26Collider:<StaticBody3D#122758893221>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:151",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65347927408674), \"collider_id\": 122826002088, \"collider\": civic-stair-27Collider:<StaticBody3D#122826002088>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:153",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65360812310563), \"collider_id\": 122893110955, \"collider\": civic-stair-28Collider:<StaticBody3D#122893110955>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:155",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65373697212452), \"collider_id\": 122960219822, \"collider\": civic-stair-29Collider:<StaticBody3D#122960219822>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:157",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65386582114341), \"collider_id\": 123027328689, \"collider\": civic-stair-30Collider:<StaticBody3D#123027328689>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:159",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65399467016230), \"collider_id\": 123094437556, \"collider\": civic-stair-31Collider:<StaticBody3D#123094437556>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:161",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65412351918119), \"collider_id\": 123161546423, \"collider\": civic-stair-32Collider:<StaticBody3D#123161546423>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:163",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65425236820008), \"collider_id\": 123228655290, \"collider\": civic-stair-33Collider:<StaticBody3D#123228655290>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:165",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65438121721897), \"collider_id\": 123295764157, \"collider\": civic-stair-34Collider:<StaticBody3D#123295764157>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:167",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65451006623786), \"collider_id\": 123362873024, \"collider\": civic-stair-35Collider:<StaticBody3D#123362873024>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:169",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65463891525675), \"collider_id\": 123429981891, \"collider\": civic-stair-36Collider:<StaticBody3D#123429981891>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:171",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65476776427564), \"collider_id\": 123497090758, \"collider\": civic-stair-37Collider:<StaticBody3D#123497090758>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:173",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65489661329453), \"collider_id\": 123564199625, \"collider\": civic-stair-38Collider:<StaticBody3D#123564199625>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:175",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65502546231342), \"collider_id\": 123631308492, \"collider\": civic-stair-39Collider:<StaticBody3D#123631308492>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:177",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65515431133231), \"collider_id\": 123698417359, \"collider\": civic-stair-40Collider:<StaticBody3D#123698417359>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:179",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65528316035120), \"collider_id\": 123765526226, \"collider\": civic-stair-41Collider:<StaticBody3D#123765526226>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:181",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65541200937009), \"collider_id\": 123832635093, \"collider\": civic-stair-42Collider:<StaticBody3D#123832635093>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:183",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65554085838898), \"collider_id\": 123899743960, \"collider\": civic-stair-43Collider:<StaticBody3D#123899743960>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:185",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65566970740787), \"collider_id\": 123966852827, \"collider\": civic-stair-44Collider:<StaticBody3D#123966852827>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:187",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65579855642676), \"collider_id\": 124033961694, \"collider\": civic-stair-45Collider:<StaticBody3D#124033961694>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:189",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65592740544565), \"collider_id\": 124101070561, \"collider\": civic-stair-46Collider:<StaticBody3D#124101070561>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:191",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65605625446454), \"collider_id\": 124168179428, \"collider\": civic-stair-47Collider:<StaticBody3D#124168179428>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:193",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65618510348343), \"collider_id\": 124235288295, \"collider\": civic-stair-48Collider:<StaticBody3D#124235288295>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:195",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65631395250232), \"collider_id\": 124302397162, \"collider\": civic-stair-49Collider:<StaticBody3D#124302397162>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:197",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65644280152121), \"collider_id\": 124369506029, \"collider\": civic-stair-50Collider:<StaticBody3D#124369506029>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:199",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65657165054010), \"collider_id\": 124436614896, \"collider\": civic-stair-51Collider:<StaticBody3D#124436614896>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:201",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65670049955899), \"collider_id\": 124503723763, \"collider\": civic-stair-52Collider:<StaticBody3D#124503723763>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:203",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65682934857788), \"collider_id\": 124570832630, \"collider\": civic-stair-53Collider:<StaticBody3D#124570832630>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:205",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65695819759677), \"collider_id\": 124637941497, \"collider\": civic-stair-54Collider:<StaticBody3D#124637941497>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:207",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65708704661566), \"collider_id\": 124705050364, \"collider\": civic-stair-55Collider:<StaticBody3D#124705050364>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:209",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65721589563455), \"collider_id\": 124772159231, \"collider\": civic-stair-56Collider:<StaticBody3D#124772159231>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:211",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65734474465344), \"collider_id\": 124839268098, \"collider\": civic-stair-57Collider:<StaticBody3D#124839268098>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:213",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65747359367233), \"collider_id\": 124906376965, \"collider\": civic-stair-58Collider:<StaticBody3D#124906376965>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:215",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65760244269122), \"collider_id\": 124973485832, \"collider\": civic-stair-59Collider:<StaticBody3D#124973485832>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:217",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65773129171011), \"collider_id\": 125040594699, \"collider\": civic-stair-60Collider:<StaticBody3D#125040594699>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:219",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65786014072900), \"collider_id\": 125107703566, \"collider\": civic-stair-61Collider:<StaticBody3D#125107703566>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:221",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65798898974789), \"collider_id\": 125174812433, \"collider\": civic-stair-62Collider:<StaticBody3D#125174812433>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:223",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65811783876678), \"collider_id\": 125241921300, \"collider\": civic-stair-63Collider:<StaticBody3D#125241921300>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:225",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65824668778567), \"collider_id\": 125309030167, \"collider\": civic-stair-64Collider:<StaticBody3D#125309030167>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:227",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65837553680456), \"collider_id\": 125376139034, \"collider\": civic-stair-65Collider:<StaticBody3D#125376139034>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:229",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65850438582345), \"collider_id\": 125443247901, \"collider\": civic-stair-66Collider:<StaticBody3D#125443247901>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:231",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65863323484234), \"collider_id\": 125510356768, \"collider\": civic-stair-67Collider:<StaticBody3D#125510356768>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:233",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65876208386123), \"collider_id\": 125577465635, \"collider\": civic-stair-68Collider:<StaticBody3D#125577465635>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:235",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65889093288012), \"collider_id\": 125644574502, \"collider\": civic-stair-69Collider:<StaticBody3D#125644574502>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:237",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65901978189901), \"collider_id\": 125711683369, \"collider\": civic-stair-70Collider:<StaticBody3D#125711683369>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:239",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65914863091790), \"collider_id\": 125778792236, \"collider\": civic-stair-71Collider:<StaticBody3D#125778792236>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:241",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65927747993679), \"collider_id\": 125845901103, \"collider\": civic-stair-72Collider:<StaticBody3D#125845901103>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:243",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65940632895568), \"collider_id\": 125913009970, \"collider\": civic-stair-73Collider:<StaticBody3D#125913009970>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:245",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65953517797457), \"collider_id\": 125980118837, \"collider\": civic-stair-74Collider:<StaticBody3D#125980118837>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:247",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65966402699346), \"collider_id\": 126047227704, \"collider\": civic-stair-75Collider:<StaticBody3D#126047227704>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:249",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65979287601235), \"collider_id\": 126114336571, \"collider\": civic-stair-76Collider:<StaticBody3D#126114336571>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:251",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65992172503124), \"collider_id\": 126181445438, \"collider\": civic-stair-77Collider:<StaticBody3D#126181445438>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:253",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(66005057405013), \"collider_id\": 126248554305, \"collider\": civic-stair-78Collider:<StaticBody3D#126248554305>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:255",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(66017942306902), \"collider_id\": 126315663172, \"collider\": civic-stair-79Collider:<StaticBody3D#126315663172>, \"shape\": 0 }]",
+          "id": "accepted-route:upper-crosslink-32:1:257",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65000035057671), \"collider_id\": 121014062682, \"collider\": civic-stair-0Collider:<StaticBody3D#121014062682>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:99",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65012919959560), \"collider_id\": 121081171545, \"collider\": civic-stair-1Collider:<StaticBody3D#121081171545>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:101",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65025804861449), \"collider_id\": 121148280413, \"collider\": civic-stair-2Collider:<StaticBody3D#121148280413>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:103",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65038689763338), \"collider_id\": 121215389280, \"collider\": civic-stair-3Collider:<StaticBody3D#121215389280>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:105",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65051574665227), \"collider_id\": 121282498147, \"collider\": civic-stair-4Collider:<StaticBody3D#121282498147>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:107",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65064459567116), \"collider_id\": 121349607014, \"collider\": civic-stair-5Collider:<StaticBody3D#121349607014>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:109",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65077344469005), \"collider_id\": 121416715881, \"collider\": civic-stair-6Collider:<StaticBody3D#121416715881>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:111",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65090229370894), \"collider_id\": 121483824748, \"collider\": civic-stair-7Collider:<StaticBody3D#121483824748>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:113",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65103114272783), \"collider_id\": 121550933615, \"collider\": civic-stair-8Collider:<StaticBody3D#121550933615>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:115",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65115999174672), \"collider_id\": 121618042482, \"collider\": civic-stair-9Collider:<StaticBody3D#121618042482>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:117",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65128884076561), \"collider_id\": 121685151349, \"collider\": civic-stair-10Collider:<StaticBody3D#121685151349>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:119",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65141768978450), \"collider_id\": 121752260216, \"collider\": civic-stair-11Collider:<StaticBody3D#121752260216>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:121",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65154653880339), \"collider_id\": 121819369083, \"collider\": civic-stair-12Collider:<StaticBody3D#121819369083>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:123",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65167538782228), \"collider_id\": 121886477950, \"collider\": civic-stair-13Collider:<StaticBody3D#121886477950>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:125",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65180423684117), \"collider_id\": 121953586817, \"collider\": civic-stair-14Collider:<StaticBody3D#121953586817>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:127",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65193308586006), \"collider_id\": 122020695684, \"collider\": civic-stair-15Collider:<StaticBody3D#122020695684>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:129",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65206193487895), \"collider_id\": 122087804551, \"collider\": civic-stair-16Collider:<StaticBody3D#122087804551>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:131",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65219078389784), \"collider_id\": 122154913418, \"collider\": civic-stair-17Collider:<StaticBody3D#122154913418>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:133",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65231963291673), \"collider_id\": 122222022285, \"collider\": civic-stair-18Collider:<StaticBody3D#122222022285>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:135",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65244848193562), \"collider_id\": 122289131152, \"collider\": civic-stair-19Collider:<StaticBody3D#122289131152>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:137",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65257733095451), \"collider_id\": 122356240019, \"collider\": civic-stair-20Collider:<StaticBody3D#122356240019>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:139",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65270617997340), \"collider_id\": 122423348886, \"collider\": civic-stair-21Collider:<StaticBody3D#122423348886>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:141",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65283502899229), \"collider_id\": 122490457753, \"collider\": civic-stair-22Collider:<StaticBody3D#122490457753>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:143",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65296387801118), \"collider_id\": 122557566620, \"collider\": civic-stair-23Collider:<StaticBody3D#122557566620>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:145",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65309272703007), \"collider_id\": 122624675487, \"collider\": civic-stair-24Collider:<StaticBody3D#122624675487>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:147",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65322157604896), \"collider_id\": 122691784354, \"collider\": civic-stair-25Collider:<StaticBody3D#122691784354>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:149",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65335042506785), \"collider_id\": 122758893221, \"collider\": civic-stair-26Collider:<StaticBody3D#122758893221>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:151",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65347927408674), \"collider_id\": 122826002088, \"collider\": civic-stair-27Collider:<StaticBody3D#122826002088>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:153",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65360812310563), \"collider_id\": 122893110955, \"collider\": civic-stair-28Collider:<StaticBody3D#122893110955>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:155",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65373697212452), \"collider_id\": 122960219822, \"collider\": civic-stair-29Collider:<StaticBody3D#122960219822>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:157",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65386582114341), \"collider_id\": 123027328689, \"collider\": civic-stair-30Collider:<StaticBody3D#123027328689>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:159",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65399467016230), \"collider_id\": 123094437556, \"collider\": civic-stair-31Collider:<StaticBody3D#123094437556>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:161",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65412351918119), \"collider_id\": 123161546423, \"collider\": civic-stair-32Collider:<StaticBody3D#123161546423>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:163",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65425236820008), \"collider_id\": 123228655290, \"collider\": civic-stair-33Collider:<StaticBody3D#123228655290>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:165",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65438121721897), \"collider_id\": 123295764157, \"collider\": civic-stair-34Collider:<StaticBody3D#123295764157>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:167",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65451006623786), \"collider_id\": 123362873024, \"collider\": civic-stair-35Collider:<StaticBody3D#123362873024>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:169",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65463891525675), \"collider_id\": 123429981891, \"collider\": civic-stair-36Collider:<StaticBody3D#123429981891>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:171",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65476776427564), \"collider_id\": 123497090758, \"collider\": civic-stair-37Collider:<StaticBody3D#123497090758>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:173",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65489661329453), \"collider_id\": 123564199625, \"collider\": civic-stair-38Collider:<StaticBody3D#123564199625>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:175",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65502546231342), \"collider_id\": 123631308492, \"collider\": civic-stair-39Collider:<StaticBody3D#123631308492>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:177",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65515431133231), \"collider_id\": 123698417359, \"collider\": civic-stair-40Collider:<StaticBody3D#123698417359>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:179",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65528316035120), \"collider_id\": 123765526226, \"collider\": civic-stair-41Collider:<StaticBody3D#123765526226>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:181",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65541200937009), \"collider_id\": 123832635093, \"collider\": civic-stair-42Collider:<StaticBody3D#123832635093>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:183",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65554085838898), \"collider_id\": 123899743960, \"collider\": civic-stair-43Collider:<StaticBody3D#123899743960>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:185",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65566970740787), \"collider_id\": 123966852827, \"collider\": civic-stair-44Collider:<StaticBody3D#123966852827>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:187",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65579855642676), \"collider_id\": 124033961694, \"collider\": civic-stair-45Collider:<StaticBody3D#124033961694>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:189",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65592740544565), \"collider_id\": 124101070561, \"collider\": civic-stair-46Collider:<StaticBody3D#124101070561>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:191",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65605625446454), \"collider_id\": 124168179428, \"collider\": civic-stair-47Collider:<StaticBody3D#124168179428>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:193",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65618510348343), \"collider_id\": 124235288295, \"collider\": civic-stair-48Collider:<StaticBody3D#124235288295>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:195",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65631395250232), \"collider_id\": 124302397162, \"collider\": civic-stair-49Collider:<StaticBody3D#124302397162>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:197",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65644280152121), \"collider_id\": 124369506029, \"collider\": civic-stair-50Collider:<StaticBody3D#124369506029>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:199",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65657165054010), \"collider_id\": 124436614896, \"collider\": civic-stair-51Collider:<StaticBody3D#124436614896>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:201",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65670049955899), \"collider_id\": 124503723763, \"collider\": civic-stair-52Collider:<StaticBody3D#124503723763>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:203",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65682934857788), \"collider_id\": 124570832630, \"collider\": civic-stair-53Collider:<StaticBody3D#124570832630>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:205",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65695819759677), \"collider_id\": 124637941497, \"collider\": civic-stair-54Collider:<StaticBody3D#124637941497>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:207",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65708704661566), \"collider_id\": 124705050364, \"collider\": civic-stair-55Collider:<StaticBody3D#124705050364>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:209",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65721589563455), \"collider_id\": 124772159231, \"collider\": civic-stair-56Collider:<StaticBody3D#124772159231>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:211",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65734474465344), \"collider_id\": 124839268098, \"collider\": civic-stair-57Collider:<StaticBody3D#124839268098>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:213",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65747359367233), \"collider_id\": 124906376965, \"collider\": civic-stair-58Collider:<StaticBody3D#124906376965>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:215",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65760244269122), \"collider_id\": 124973485832, \"collider\": civic-stair-59Collider:<StaticBody3D#124973485832>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:217",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65773129171011), \"collider_id\": 125040594699, \"collider\": civic-stair-60Collider:<StaticBody3D#125040594699>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:219",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65786014072900), \"collider_id\": 125107703566, \"collider\": civic-stair-61Collider:<StaticBody3D#125107703566>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:221",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65798898974789), \"collider_id\": 125174812433, \"collider\": civic-stair-62Collider:<StaticBody3D#125174812433>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:223",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65811783876678), \"collider_id\": 125241921300, \"collider\": civic-stair-63Collider:<StaticBody3D#125241921300>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:225",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65824668778567), \"collider_id\": 125309030167, \"collider\": civic-stair-64Collider:<StaticBody3D#125309030167>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:227",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65837553680456), \"collider_id\": 125376139034, \"collider\": civic-stair-65Collider:<StaticBody3D#125376139034>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:229",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65850438582345), \"collider_id\": 125443247901, \"collider\": civic-stair-66Collider:<StaticBody3D#125443247901>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:231",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65863323484234), \"collider_id\": 125510356768, \"collider\": civic-stair-67Collider:<StaticBody3D#125510356768>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:233",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65876208386123), \"collider_id\": 125577465635, \"collider\": civic-stair-68Collider:<StaticBody3D#125577465635>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:235",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65889093288012), \"collider_id\": 125644574502, \"collider\": civic-stair-69Collider:<StaticBody3D#125644574502>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:237",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65901978189901), \"collider_id\": 125711683369, \"collider\": civic-stair-70Collider:<StaticBody3D#125711683369>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:239",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65914863091790), \"collider_id\": 125778792236, \"collider\": civic-stair-71Collider:<StaticBody3D#125778792236>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:241",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65927747993679), \"collider_id\": 125845901103, \"collider\": civic-stair-72Collider:<StaticBody3D#125845901103>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:243",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65940632895568), \"collider_id\": 125913009970, \"collider\": civic-stair-73Collider:<StaticBody3D#125913009970>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:245",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65953517797457), \"collider_id\": 125980118837, \"collider\": civic-stair-74Collider:<StaticBody3D#125980118837>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:247",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65966402699346), \"collider_id\": 126047227704, \"collider\": civic-stair-75Collider:<StaticBody3D#126047227704>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:249",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65979287601235), \"collider_id\": 126114336571, \"collider\": civic-stair-76Collider:<StaticBody3D#126114336571>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:251",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(65992172503124), \"collider_id\": 126181445438, \"collider\": civic-stair-77Collider:<StaticBody3D#126181445438>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:253",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(66005057405013), \"collider_id\": 126248554305, \"collider\": civic-stair-78Collider:<StaticBody3D#126248554305>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:255",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(66017942306902), \"collider_id\": 126315663172, \"collider\": civic-stair-79Collider:<StaticBody3D#126315663172>, \"shape\": 0 }]",
+          "id": "candidate-route:upper-crosslink-32:1:257",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(68547678044441), \"collider_id\": 139469001105, \"collider\": roof-ramp-step-13Collider:<StaticBody3D#139469001105>, \"shape\": 0 }]",
+          "id": "candidate-route:roof-access-ramp:2:4",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(68534793142552), \"collider_id\": 139401892238, \"collider\": roof-ramp-step-12Collider:<StaticBody3D#139401892238>, \"shape\": 0 }]",
+          "id": "candidate-route:roof-access-ramp:2:7",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(68521908240663), \"collider_id\": 139334783371, \"collider\": roof-ramp-step-11Collider:<StaticBody3D#139334783371>, \"shape\": 0 }]",
+          "id": "candidate-route:roof-access-ramp:2:11",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(68509023338774), \"collider_id\": 139267674504, \"collider\": roof-ramp-step-10Collider:<StaticBody3D#139267674504>, \"shape\": 0 }]",
+          "id": "candidate-route:roof-access-ramp:2:14",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(68496138436885), \"collider_id\": 139200565637, \"collider\": roof-ramp-step-9Collider:<StaticBody3D#139200565637>, \"shape\": 0 }]",
+          "id": "candidate-route:roof-access-ramp:2:18",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(68483253534996), \"collider_id\": 139133456770, \"collider\": roof-ramp-step-8Collider:<StaticBody3D#139133456770>, \"shape\": 0 }]",
+          "id": "candidate-route:roof-access-ramp:2:21",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(68470368633107), \"collider_id\": 139066347903, \"collider\": roof-ramp-step-7Collider:<StaticBody3D#139066347903>, \"shape\": 0 }]",
+          "id": "candidate-route:roof-access-ramp:2:25",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(68457483731218), \"collider_id\": 138999239036, \"collider\": roof-ramp-step-6Collider:<StaticBody3D#138999239036>, \"shape\": 0 }]",
+          "id": "candidate-route:roof-access-ramp:2:28",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(68444598829329), \"collider_id\": 138932130169, \"collider\": roof-ramp-step-5Collider:<StaticBody3D#138932130169>, \"shape\": 0 }]",
+          "id": "candidate-route:roof-access-ramp:2:31",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(68431713927440), \"collider_id\": 138865021302, \"collider\": roof-ramp-step-4Collider:<StaticBody3D#138865021302>, \"shape\": 0 }]",
+          "id": "candidate-route:roof-access-ramp:2:35",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(68418829025551), \"collider_id\": 138797912435, \"collider\": roof-ramp-step-3Collider:<StaticBody3D#138797912435>, \"shape\": 0 }]",
+          "id": "candidate-route:roof-access-ramp:2:38",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(68405944123662), \"collider_id\": 138730803568, \"collider\": roof-ramp-step-2Collider:<StaticBody3D#138730803568>, \"shape\": 0 }]",
+          "id": "candidate-route:roof-access-ramp:2:42",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(68393059221773), \"collider_id\": 138663694701, \"collider\": roof-ramp-step-1Collider:<StaticBody3D#138663694701>, \"shape\": 0 }]",
+          "id": "candidate-route:roof-access-ramp:2:45",
+          "kind": "finite-capsule"
+        },
+        {
+          "contacts": "[{ \"rid\": RID(68380174319884), \"collider_id\": 138596585834, \"collider\": roof-ramp-step-0Collider:<StaticBody3D#138596585834>, \"shape\": 0 }]",
+          "id": "candidate-route:roof-access-ramp:3:1",
+          "kind": "finite-capsule"
+        }
+      ],
+      "nativeRays": 442,
+      "nativeGroundSeams": 0,
+      "registeredModes": [
+        "deathmatch",
+        "teamdeathmatch",
+        "ctf",
+        "domination",
+        "koth",
+        "uplink"
+      ],
+      "materialInstancesRestored": 29,
+      "vectorCensus": {
+        "counts": {
+          "NORMAL": 94101,
+          "TANGENT": 94101
+        },
+        "exceptions": [],
+        "glbSha256": "f859d49cc1b462b4a88e351d915518c49940ce24a7b8c2047c2d8f94f419e1db",
+        "verifierSha256": "37bb8148b639d443a013be634cab5609a4eab0729f9e044c79d1b03f0cbe8555",
+        "scope": "strict finite actual accessors; unit vectors checked, exceptions are not waived",
+        "disposition": "pass"
+      },
+      "actualReadbackSha256": "879979d7d3c2637cb0fc2e9c7b0ad513fafbbf12b73a969caa14a3f5369f62f3",
+      "nativePhysics": "blocked",
+      "fullHumanArtAcceptance": "pending; see X_HANDOFF.md view limitations",
+      "hostedModes": "pending",
+      "images": [
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/overview-accepted-runtime-before.png",
+          "sha256": "317aee706a808e659951ce4461dbcbb03954b3bbbf7e62d737663d03f2e57e65",
+          "view": "overview",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-overview",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/canal-accepted-runtime-before.png",
+          "sha256": "039d9d9be744c69b40edc8367da57595e5a6ae31a69acb479562437292d01e14",
+          "view": "canal",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/civic-accepted-runtime-before.png",
+          "sha256": "17c77aa0fc0889ccce6c440b20f51c7472307646c8691fc8f88f8c8e2447846a",
+          "view": "civic",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/concourse-accepted-runtime-before.png",
+          "sha256": "3ab4e9e0da7aebb4de5faca87394f754a6e27ed82494e1eee3d0cc936749c03d",
+          "view": "concourse",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/arcade-accepted-runtime-before.png",
+          "sha256": "c4c29178f308e517f1da92ecb99c09d58b3929df41741dc96324213359a389aa",
+          "view": "arcade",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/market-player-accepted-runtime-before.png",
+          "sha256": "a15f3f2caa605ca4436eafd1bfe8f551e6e1e36af22d894473925c718549346b",
+          "view": "market-player",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/roof-player-accepted-runtime-before.png",
+          "sha256": "3bcd0160859e50035529c08b8077cb68e273655a52854c3ded209edb9a0a4cd1",
+          "view": "roof-player",
+          "variant": "accepted-runtime-before",
+          "comparison": "repositioned-height: changed candidate support",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/canal-arch-player-accepted-runtime-before.png",
+          "sha256": "4e04f4ddbb809855cdb17b91dd6cc1e3cd66b7815f96cc5dfec792357030be29",
+          "view": "canal-arch-player",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/retaining-player-accepted-runtime-before.png",
+          "sha256": "2cda09ac120a83e26c70c43930c822a286440175e1bcc49857b0aa873f77d356",
+          "view": "retaining-player",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/overview-candidate-runtime-after.png",
+          "sha256": "406efd5d46e24c08ea7ec219d7f443dc11c268bbc526bb55bca8aaf315f0e637",
+          "view": "overview",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-overview",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/canal-candidate-runtime-after.png",
+          "sha256": "af3d715e9793190446a2fbdf3b696eaecc6c05ee5ff68d89cfd5a1e453b7c56f",
+          "view": "canal",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/civic-candidate-runtime-after.png",
+          "sha256": "ec885196e17ae7319032aa7f4dde9aa04690c6c6f919eecedb218ac7dd28bdad",
+          "view": "civic",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/concourse-candidate-runtime-after.png",
+          "sha256": "a198d9cbbb11c723326e71fa512b1419f2d810b65f6b1416ee60b90a33d17b70",
+          "view": "concourse",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/arcade-candidate-runtime-after.png",
+          "sha256": "21e3570066ff493f760896971c3090fbc4a2c41d60efcbf9b2d51bd5707c84cb",
+          "view": "arcade",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/market-player-candidate-runtime-after.png",
+          "sha256": "a9287fd5edd0c3f16a7e6a9ac74c652ee6bfccd1cd7251dcb932a484f253108d",
+          "view": "market-player",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/roof-player-candidate-runtime-after.png",
+          "sha256": "86b40cc929bcfef7927f47a8356d6de317fb4b46fc5ddd6c322e87d845f885b1",
+          "view": "roof-player",
+          "variant": "candidate-runtime-after",
+          "comparison": "repositioned-height: changed candidate support",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/canal-arch-player-candidate-runtime-after.png",
+          "sha256": "373b1d24204249d6e2533680b8a77db2928b4b32b71c692b6ceffab5dd234e62",
+          "view": "canal-arch-player",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/retaining-player-candidate-runtime-after.png",
+          "sha256": "31f6197463d51d966c5355f6e48e35d8fba3e32c07d3f0b39afbbc2e35ceb581",
+          "view": "retaining-player",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched-player-camera",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-01/captures/roof-parapets-exterior-accepted-runtime-before.png",
+          "sha256": "c630acc29c827cc9a4f4746bca0cbceeea3548bc317d81b6ad9149e96b30f559",
+          "view": "roof-parapets-exterior",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-01/captures/canal-arches-exterior-accepted-runtime-before.png",
+          "sha256": "2a873ff5edba40f77814bb45c18f08a086d7c919c5fae978e37f9b3696eb14c9",
+          "view": "canal-arches-exterior",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-01/captures/arcade-exterior-accepted-runtime-before.png",
+          "sha256": "eb0c2174f3ce0437b9da04c08bdace04b97915350a825b4a1fb7f95e82fc9625",
+          "view": "arcade-exterior",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-01/captures/roof-parapets-exterior-candidate-runtime-after.png",
+          "sha256": "932723e8b2bca569d722ce5078742bec8378b9438ffddcea80efeef9c906687c",
+          "view": "roof-parapets-exterior",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-01/captures/canal-arches-exterior-candidate-runtime-after.png",
+          "sha256": "a41228c2718b3422f0c826d065d5a046e161bdd12ea44f23c99645d29186aa2a",
+          "view": "canal-arches-exterior",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-01/captures/arcade-exterior-candidate-runtime-after.png",
+          "sha256": "189f41fa24457d8459bb1a0c978e2695ad115056ca17146073e27a42f1a6891d",
+          "view": "arcade-exterior",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-02/captures/canonical-parapet-inspection-accepted-runtime-before.png",
+          "sha256": "d039305bad685617d50acb4198afb0ab7511dda96cc8d2d37586691da6c64c80",
+          "view": "canonical-parapet-inspection",
+          "variant": "accepted-runtime-before",
+          "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+          "inspectedOriginal": true
+        },
+        {
+          "path": "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-02/captures/canonical-parapet-inspection-candidate-runtime-after.png",
+          "sha256": "c22ebcdff34653ea9e082c559dcbf6b0d2c0228785f83f3b15d329c542a4b73e",
+          "view": "canonical-parapet-inspection",
+          "variant": "candidate-runtime-after",
+          "comparison": "matched exterior inspection; not a player-height or supported-standing claim",
+          "inspectedOriginal": true
+        }
+      ],
+      "staticPerformance": {
+        "drawCalls": {
+          "min": 29.0,
+          "max": 105.0
+        },
+        "staticViewMeanFrameMs": {
+          "min": 79.5215,
+          "max": 232.680375
+        },
+        "videoMemoryBytes": {
+          "min": 62537949.0,
+          "max": 62537949.0
+        },
+        "staticMemoryBytes": {
+          "min": 113480809,
+          "max": 139214509
+        },
+        "renderer": [
+          "llvmpipe (LLVM 20.1.8, 256 bits)"
+        ],
+        "scope": "8-frame static llvmpipe cadence/memory/draw calls; not gameplay FPS or dedicated-GPU qualification"
+      }
+    }
+  }
+}

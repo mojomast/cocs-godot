@@ -1,0 +1,2405 @@
+{
+  "scope": "X fresh and failed attempts, measured masters/exports, original captures, failure diagnostics and release; no acceptance or promotion claim",
+  "files": {
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-01/helix-conservatory/authority.json": {
+      "sha256": "1e5847c04d1a18165333a900e77db33ff24017d87eb87e5efed779d59d52d2bb",
+      "bytes": 46690271
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-01/helix-conservatory/bindings.json": {
+      "sha256": "760122242dbf875974b4bec1646da2a60f2c5ee41bb89d3fb496896f4afbc7c2",
+      "bytes": 3050
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-01/helix-conservatory/source.json": {
+      "sha256": "d0431581240a2211016e36c88865064d827849ca838aaea653ca2119e6b0bfeb",
+      "bytes": 7936
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/authority.json": {
+      "sha256": "1e5847c04d1a18165333a900e77db33ff24017d87eb87e5efed779d59d52d2bb",
+      "bytes": 46690271
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/bindings.json": {
+      "sha256": "760122242dbf875974b4bec1646da2a60f2c5ee41bb89d3fb496896f4afbc7c2",
+      "bytes": 3050
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/build-report.json": {
+      "sha256": "e809ba11e3e8fede581e6599237ea037019306145aeb48d3377ff4ec6647fd56",
+      "bytes": 30878
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/evaluated-proof.json": {
+      "sha256": "e04f0856cdf80ee89593417c5cb1b4363682d154a5cbea84d948eaf6f875c8ae",
+      "bytes": 37746948
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/helix-conservatory.glb": {
+      "sha256": "7e9136c8140e418fd1b72ce55d2181d8cd9f1c81dac7a74caf56eba7ef048353",
+      "bytes": 24336616
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/helix-conservatory.blend": {
+      "sha256": "57f2209a9a56ea21e5f00ec59fdd16804902ef34cf71766ae50fbb5cd1065c0f",
+      "bytes": 34461754
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/anodized-brush-albedo-srgb.png": {
+      "sha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+      "bytes": 57595
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/bark-fibers-albedo-srgb.png": {
+      "sha256": "992962a0a31a62c6f3d2629485781441b28d0fed62f9069ce9b284cd5970cd21",
+      "bytes": 69723
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/ceramic-enamel-albedo-srgb.png": {
+      "sha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+      "bytes": 47156
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/copper-patina-albedo-srgb.png": {
+      "sha256": "df08158f6dfced7e3e823f32b1a796ece7a2fed8f763505c6f43980cd82516e2",
+      "bytes": 103983
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/fern-frond-albedo-srgb.png": {
+      "sha256": "00ee4e4c13507056a52866ac24a57605e06d5e9f1cb40f13177153486a689d7a",
+      "bytes": 47387
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/grotto-wet-rock-albedo-srgb.png": {
+      "sha256": "a1af71522942bb686c9179744d34832a1223759730c8920f96140895c3aba7ce",
+      "bytes": 40944
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/masonry-coping-albedo-srgb.png": {
+      "sha256": "a3888e7190c86f73f6c3863b84610a34f1b6cc58d4384f6c77fc0d784d5f33d3",
+      "bytes": 57224
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/moss-lichen-albedo-srgb.png": {
+      "sha256": "52052d69c0f0bfd3fc750b7ff11c49ccad82bf06b169a63ed3a78da57a58d14c",
+      "bytes": 93045
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/moss-warm-weather-albedo-srgb.png": {
+      "sha256": "7e3d11e8311ecc5d52a910038cead50d3383a68bfb7c6412d6c8f19c72d7eedd",
+      "bytes": 113185
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/prismatic-etch-albedo-srgb.png": {
+      "sha256": "526808c6be3d9794759f14a5660bb6a87a157420827d31cca03e6d625819e8f9",
+      "bytes": 97393
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/masters/textures/terracotta-albedo-srgb.png": {
+      "sha256": "19efdd03cd0bc98d04405f04c04b8b9ac1293ca0751103c4e4a11e9ab4b92124",
+      "bytes": 53680
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/reopen-report.json": {
+      "sha256": "0cff7a5b984b4755c35404d917d4656dfb63d1cc72f5360d66c941e4e6f2d541",
+      "bytes": 13977
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-02/helix-conservatory/source.json": {
+      "sha256": "effec3e45763f8a22f5f699b8b0bf39006304e58418a8d61b836deee256a2b2a",
+      "bytes": 7936
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/authority.json": {
+      "sha256": "1e5847c04d1a18165333a900e77db33ff24017d87eb87e5efed779d59d52d2bb",
+      "bytes": 46690271
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/bindings.json": {
+      "sha256": "760122242dbf875974b4bec1646da2a60f2c5ee41bb89d3fb496896f4afbc7c2",
+      "bytes": 3050
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/build-report.json": {
+      "sha256": "bd53617500b2726cf2c90446e0daa4b2ccf89d95c0255d8eb158223e4088b86a",
+      "bytes": 30878
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/detail-01/evidence/attempts/capture-group-986244.json": {
+      "sha256": "538412d4cf94d0612cf2197ba88a6a71846d1ce985dc1297fb2487b06dfddf2a",
+      "bytes": 977
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/detail-02/evidence/attempts/capture-group-996667.json": {
+      "sha256": "4547e4143b740c1ffa1a71744fadd71ee2dbd7e8d302e5e994bd8c9900e2a877",
+      "bytes": 1299
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/evaluated-proof.json": {
+      "sha256": "8fbfb2cdd6ff46c2f3b84682c5ca020db0459cfb99de0f6b660b7c51ca9ccdb2",
+      "bytes": 37746948
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/evidence/attempts/capture-group-933977.json": {
+      "sha256": "d87d988d0985dd0095dbc1420921d01bf77c6d289138f61436081d32256e3114",
+      "bytes": 1277
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/helix-conservatory.glb": {
+      "sha256": "4943e353f4626a11f1e515b9046c92df30985ef725f399f651a8d8ddad953995",
+      "bytes": 24336616
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/helix-conservatory.blend": {
+      "sha256": "46fe68d6ccb97c349812b6c4a5a600c3c9c90f19c50bee217378cb8f9029c856",
+      "bytes": 34461754
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/anodized-brush-albedo-srgb.png": {
+      "sha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+      "bytes": 57595
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/bark-fibers-albedo-srgb.png": {
+      "sha256": "992962a0a31a62c6f3d2629485781441b28d0fed62f9069ce9b284cd5970cd21",
+      "bytes": 69723
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/ceramic-enamel-albedo-srgb.png": {
+      "sha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+      "bytes": 47156
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/copper-patina-albedo-srgb.png": {
+      "sha256": "df08158f6dfced7e3e823f32b1a796ece7a2fed8f763505c6f43980cd82516e2",
+      "bytes": 103983
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/fern-frond-albedo-srgb.png": {
+      "sha256": "00ee4e4c13507056a52866ac24a57605e06d5e9f1cb40f13177153486a689d7a",
+      "bytes": 47387
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/grotto-wet-rock-albedo-srgb.png": {
+      "sha256": "a1af71522942bb686c9179744d34832a1223759730c8920f96140895c3aba7ce",
+      "bytes": 40944
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/masonry-coping-albedo-srgb.png": {
+      "sha256": "a3888e7190c86f73f6c3863b84610a34f1b6cc58d4384f6c77fc0d784d5f33d3",
+      "bytes": 57224
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/moss-lichen-albedo-srgb.png": {
+      "sha256": "52052d69c0f0bfd3fc750b7ff11c49ccad82bf06b169a63ed3a78da57a58d14c",
+      "bytes": 93045
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/moss-warm-weather-albedo-srgb.png": {
+      "sha256": "7e3d11e8311ecc5d52a910038cead50d3383a68bfb7c6412d6c8f19c72d7eedd",
+      "bytes": 113185
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/prismatic-etch-albedo-srgb.png": {
+      "sha256": "526808c6be3d9794759f14a5660bb6a87a157420827d31cca03e6d625819e8f9",
+      "bytes": 97393
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/masters/textures/terracotta-albedo-srgb.png": {
+      "sha256": "19efdd03cd0bc98d04405f04c04b8b9ac1293ca0751103c4e4a11e9ab4b92124",
+      "bytes": 53680
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/native-report.json": {
+      "sha256": "04c59ac3efa854ccc46e0191614d229b1cf634aadb901e879e625b97bc6f55e4",
+      "bytes": 681
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/reopen-report.json": {
+      "sha256": "aa3b92340daebcd873470ea093e898bbb89c03a05c5dc1f1fc4f7555257a49ac",
+      "bytes": 13977
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/source.json": {
+      "sha256": "a787102077ce2d31bf825162c2135644c58ef48d43fd73c6263723009f8d4d35",
+      "bytes": 7936
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/vector-census.json": {
+      "sha256": "3054f342ecfd68cd60ceebc58ae143be42122981884867dd982827245f9b01d2",
+      "bytes": 376
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/x-readback-v2.json": {
+      "sha256": "fd6507392643dff0342b02288eaafc4f16144b2ea7ddbc8027a58811efbce471",
+      "bytes": 18166
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/helix-conservatory/x-readback.json": {
+      "sha256": "35391f8c936cb5a27e434f358085bb4c66f82f062eb9a5783a7c9271329deb19",
+      "bytes": 18078
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/authority.json": {
+      "sha256": "cd62bdf5c2eafa8dfb25ef29691226c43eef0bb40ca67492110a7bc8c68f6aeb",
+      "bytes": 2377668
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/bindings.json": {
+      "sha256": "14f7baa4fffb03cd9979eefe2bae660530ad8ac33e625a9e39a19787a66564c7",
+      "bytes": 2592
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/build-report.json": {
+      "sha256": "b037c7cdad39158d8c13396282707a889e73e56b8b0d31d7152b715199b9d802",
+      "bytes": 79369
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/detail-01/evidence/attempts/capture-group-987092.json": {
+      "sha256": "6448fd91647e9728871d39bb7729b26264807dfd9ee386a81fbf5e26ca07e931",
+      "bytes": 1295
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/detail-02/evidence/attempts/capture-group-997385.json": {
+      "sha256": "f4d89e33e1279c7bc4d77f03579442b76fcd590dd94eb05243c12030554e9616",
+      "bytes": 989
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/evaluated-proof.json": {
+      "sha256": "4691952a53564071266dfa7354662e63109f8781b161f05c317983bd2c0d23ad",
+      "bytes": 31680227
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/evidence/attempts/capture-group-951975.json": {
+      "sha256": "ac4c10c87abda2e361f6ac37aa106590dbc0b57163cebbae2432121955c6244c",
+      "bytes": 1283
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/parallax-observatory.blend": {
+      "sha256": "9957ca8cc3e4e7f2bca00f7b82a48ed88d031e9e3949259ebf5603f584141051",
+      "bytes": 30881495
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/textures/anodized-brush-albedo-srgb.png": {
+      "sha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+      "bytes": 57595
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/textures/basalt-strata-albedo-srgb.png": {
+      "sha256": "b294342e60378d7fc2d45a9c631c42bde77de529b168f35fbc6194e5998252ae",
+      "bytes": 51628
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/textures/ceramic-enamel-albedo-srgb.png": {
+      "sha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+      "bytes": 47156
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/textures/etched-coating-haze-albedo-srgb.png": {
+      "sha256": "3650ca3b1f2912c15592ce96ae8ac1060230f7e2afcbc5c69058f4a0ef39d152",
+      "bytes": 87450
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/textures/frosted-glass-albedo-srgb.png": {
+      "sha256": "a823f19423db40ca2d79d5a243a5ae00994aaf183e463c176b7982609a5127ed",
+      "bytes": 106021
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/textures/optical-mirror-opaque-albedo-srgb.png": {
+      "sha256": "4f6e5eac683c7514dbb923552cd810789d046c0be9716dded91c4aba533e9ad9",
+      "bytes": 43393
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/textures/salt-limestone-albedo-srgb.png": {
+      "sha256": "fa9d87ca9e5a26b74c480a1134f64a982d8230e0e59ecc50e64b1de5cbfc3d7d",
+      "bytes": 101313
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/textures/trim-wear-albedo-srgb.png": {
+      "sha256": "7ec0ff69d1060e45b2338f4c2add68d729625405f9801701d78239dded35f131",
+      "bytes": 53395
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/native-report.json": {
+      "sha256": "e4adb735b71b688cc590b13a4073fdd309d2747823a0cdafd7c5e27711cb528e",
+      "bytes": 684
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/parallax-observatory.glb": {
+      "sha256": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+      "bytes": 19004120
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/reopen-report.json": {
+      "sha256": "ca601bb6be405bd2e3bc86cbc3a5ee8506a5a81e1012854a96d194b6d663e418",
+      "bytes": 11539
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/source.json": {
+      "sha256": "18da791a9814cb0ea14907f481f82ae83c3f8edf3228fa4ce582d0acafe69dcd",
+      "bytes": 7973
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/vector-census.json": {
+      "sha256": "184c4db32d7144c22b7bddcfb70b89303920ba99be84742e757445edcaa19a35",
+      "bytes": 1596
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/x-readback-v2.json": {
+      "sha256": "31d2ad1410d1a25449ae39d53f7d3fbfeef3db5c8d1caedc7d136d8185b86612",
+      "bytes": 824
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/x-readback.json": {
+      "sha256": "90bd2ccf2f6a1d02e8c141a61f6cc6b6532dd82157447ac2a19a3472b3585524",
+      "bytes": 736
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/authority.json": {
+      "sha256": "397cedc8f5583a229bb3f65ed94d9a8c74c30fd4132b57bd4e754299a47c67ec",
+      "bytes": 2482198
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/bindings.json": {
+      "sha256": "b57feb9ee8042e57294e82ca15bac9a3c5dcbcbd0e2a9f99429ab333b670dda2",
+      "bytes": 2834
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/build-report.json": {
+      "sha256": "a543c15feddf13e466d7cc9962d1cdd32ecdbcfdb948a33d8b1825152bb9ecdb",
+      "bytes": 40098
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/detail-01/evidence/attempts/capture-group-987878.json": {
+      "sha256": "d7c83923091dfdb1d01a10f57ed8a2ce975743245059d62bd0290b8a0bfa8102",
+      "bytes": 1277
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/detail-02/evidence/attempts/capture-group-997982.json": {
+      "sha256": "340aca0f54ba6f9818c32dc3348910d9295ed8391e8c1de7f60ba4b93cb69e70",
+      "bytes": 983
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/evaluated-proof.json": {
+      "sha256": "4742b04c60a306468b1d25c68767a75824928850eba58a14d9608889fd78ead3",
+      "bytes": 15182319
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/evidence/attempts/capture-group-969237.json": {
+      "sha256": "7a397d3f6fa693677a18d66b312c25c74ca2ac816dbd22506bd13cac1692d22c",
+      "bytes": 1265
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/masters/textures/ceramic-enamel-albedo-srgb.png": {
+      "sha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+      "bytes": 47156
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/masters/textures/cobble-sett-albedo-srgb.png": {
+      "sha256": "b36d2118321adad9c446b092593d95ae0066e80c79605974bb9085d5fb176e32",
+      "bytes": 73776
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/masters/textures/lime-plaster-albedo-srgb.png": {
+      "sha256": "245c7716dd9f96a2903bb4c0e285e48c48117ff0d6eb336f9561e1e37c661396",
+      "bytes": 76082
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/masters/textures/masonry-coping-albedo-srgb.png": {
+      "sha256": "a3888e7190c86f73f6c3863b84610a34f1b6cc58d4384f6c77fc0d784d5f33d3",
+      "bytes": 57224
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/masters/textures/oxidized-iron-albedo-srgb.png": {
+      "sha256": "4f794fd4eb20b706e4eda51cfc8533e5151b846bd73c5f251d9ab26d767f5914",
+      "bytes": 59980
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/masters/textures/quay-damp-horizontal-albedo-srgb.png": {
+      "sha256": "2a46ae0a056798fd75405e2338079b049a6f74cfeb69c06f0e53197a14c30c38",
+      "bytes": 55318
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/masters/textures/slate-shingle-albedo-srgb.png": {
+      "sha256": "69974fba40f6c647c9a5e6c44ea26cfafa3e598516ef0107836ecf98efa0248a",
+      "bytes": 56839
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/masters/textures/terracotta-albedo-srgb.png": {
+      "sha256": "19efdd03cd0bc98d04405f04c04b8b9ac1293ca0751103c4e4a11e9ab4b92124",
+      "bytes": 53680
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/masters/textures/timber-weather-albedo-srgb.png": {
+      "sha256": "fb6bad65ce1a09efa1efbdbb20395056a2c3d6dd185fb30d9798b12a35065b43",
+      "bytes": 91585
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/masters/textures/viaduct-asphalt-albedo-srgb.png": {
+      "sha256": "509ca2ca6cfec8d3df4ebaf91487f78ba05d3960da9b3ba03f5598ad7f58de5b",
+      "bytes": 107685
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/masters/vesper-viaduct.blend": {
+      "sha256": "ed91be82d2c1c99acef99644ad5151b67aa891e826121537193b67f2dcef42b3",
+      "bytes": 12977136
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/reopen-report.json": {
+      "sha256": "aa2ccb24088e73d982f1570a39f58966a43f7a00e4f4e366cfb9c164173c8127",
+      "bytes": 12437
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/source.json": {
+      "sha256": "a8097fc70562002b59c4726ec34b43cbd1ef56acc2e07df98c3a2e2d490b669c",
+      "bytes": 7752
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/vector-census.json": {
+      "sha256": "6bed544df19d4d082c778c4ad768cded7624a4ba42f7f753120030d5fa12abcb",
+      "bytes": 374
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/vesper-viaduct.glb": {
+      "sha256": "f859d49cc1b462b4a88e351d915518c49940ce24a7b8c2047c2d8f94f419e1db",
+      "bytes": 8159564
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/x-readback-v2.json": {
+      "sha256": "879979d7d3c2637cb0fc2e9c7b0ad513fafbbf12b73a969caa14a3f5369f62f3",
+      "bytes": 617
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/x-readback.json": {
+      "sha256": "65484416e2ff77d10c80b58669fb7fd6f0e6f737753a00034062310e532461f7",
+      "bytes": 529
+    },
+    "godot/tests/new_maps/botanical_correction/x-01/helix-conservatory/capture.gd": {
+      "sha256": "b652b8d7b1348e0fd0d2f40af32b89c316f99eb90785626792e600c769b684dc",
+      "bytes": 4768
+    },
+    "godot/tests/new_maps/botanical_correction/x-01/helix-conservatory/capture.gd.uid": {
+      "sha256": "18d63f7f78d79338aaa599b6449b2db15d1d8f8867b3aef2513df28b6de6983b",
+      "bytes": 19
+    },
+    "godot/tests/new_maps/botanical_correction/x-01/helix-conservatory/import.gd": {
+      "sha256": "2883e3bc382cff341e1a78ab259d565c67042436c5ea7608a9c5e455eb883b8e",
+      "bytes": 4191
+    },
+    "godot/tests/new_maps/botanical_correction/x-01/helix-conservatory/import.gd.uid": {
+      "sha256": "1765c8b18e71a09a976ed2a1e0988f53139f92e3c52f48a195a5df4263578875",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-01/helix-conservatory/physics.gd": {
+      "sha256": "c14e017e3a37a5e4d29e29c4b915ba9e166b0b430adab232e02a6ca82f926077",
+      "bytes": 5265
+    },
+    "godot/tests/new_maps/botanical_correction/x-01/helix-conservatory/physics.gd.uid": {
+      "sha256": "1106a675ce3dea6b713b13a20e0ee7b845d3a8dbf490097fbbb489e260edc6b6",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-01/helix-conservatory/profile_schema.gd": {
+      "sha256": "ab628561105b50b827c85ee40bd5f1af7f3ae5e0f5aa6c1a85a635f00e8ef982",
+      "bytes": 9404
+    },
+    "godot/tests/new_maps/botanical_correction/x-01/helix-conservatory/profile_schema.gd.uid": {
+      "sha256": "ded26b87557584919b86268bd93779b8fbcf8d3d05a4a73cf7611cb70094fa06",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-01/helix-conservatory/source-probes.json": {
+      "sha256": "0e23c61d9140fbebe7d716a7085aab2d110f9f847677c2973818cab65467f9a1",
+      "bytes": 5647253
+    },
+    "godot/tests/new_maps/botanical_correction/x-01/helix-conservatory/staged.gd": {
+      "sha256": "11702f92c69c4c8126ec80c719f18df62bd74c3c315271e0bdf74b39292be649",
+      "bytes": 8159
+    },
+    "godot/tests/new_maps/botanical_correction/x-01/helix-conservatory/staged.gd.uid": {
+      "sha256": "7063e64ecde3c52f3d15e423a507c7a59c31221682662a2087c38e59dcdad8bf",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-02/helix-conservatory/capture.gd": {
+      "sha256": "188ecf658fc51a3beaec092335e8227e4bf081e361013a6123ba1e5dc6ddbaaa",
+      "bytes": 4768
+    },
+    "godot/tests/new_maps/botanical_correction/x-02/helix-conservatory/capture.gd.uid": {
+      "sha256": "ffc1a0c28740cae9c980b3ef8890134b9a2382733ddb7fbe67fc69ba72991caf",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-02/helix-conservatory/import.gd": {
+      "sha256": "d3aceb1abcdfc8fe6d6e7bcd98deb0fac743725749018966cdb49ac929d6c02f",
+      "bytes": 4191
+    },
+    "godot/tests/new_maps/botanical_correction/x-02/helix-conservatory/import.gd.uid": {
+      "sha256": "9a7b7d2b80299b0a59406af793474d4a87454507393f03e87ec1ff8b6a4a0be4",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-02/helix-conservatory/physics.gd": {
+      "sha256": "e19213d71a5dc81fc1fbc4c31aaa8bac8493077fedabc32276147bc2145d4f42",
+      "bytes": 5265
+    },
+    "godot/tests/new_maps/botanical_correction/x-02/helix-conservatory/physics.gd.uid": {
+      "sha256": "962f8b53da5270904e4d1b0f5c6e2ae8fae0004d5c349b0d1d80c73a34cc7bf0",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-02/helix-conservatory/profile_schema.gd": {
+      "sha256": "ab628561105b50b827c85ee40bd5f1af7f3ae5e0f5aa6c1a85a635f00e8ef982",
+      "bytes": 9404
+    },
+    "godot/tests/new_maps/botanical_correction/x-02/helix-conservatory/profile_schema.gd.uid": {
+      "sha256": "6a28ae59be88b31bcc1d208265376fc2cf8e0006c9451682b8a1429796f6f2e9",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-02/helix-conservatory/source-probes.json": {
+      "sha256": "0e23c61d9140fbebe7d716a7085aab2d110f9f847677c2973818cab65467f9a1",
+      "bytes": 5647253
+    },
+    "godot/tests/new_maps/botanical_correction/x-02/helix-conservatory/staged.gd": {
+      "sha256": "9e26e8d1ccf49339d8db6e90cf5d2c177ba74daa4721b6c763c443b9f3ff87d3",
+      "bytes": 8159
+    },
+    "godot/tests/new_maps/botanical_correction/x-02/helix-conservatory/staged.gd.uid": {
+      "sha256": "7be68bcbc6dbc42cdc469a7edf453232a1cbdfabde7464d1cbf5985ded3d2f54",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/authority.json": {
+      "sha256": "1e5847c04d1a18165333a900e77db33ff24017d87eb87e5efed779d59d52d2bb",
+      "bytes": 46690271
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate.glb": {
+      "sha256": "4943e353f4626a11f1e515b9046c92df30985ef725f399f651a8d8ddad953995",
+      "bytes": 24336616
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate.glb.import": {
+      "sha256": "9f7c7330e193703027ad63cbdd8d266e031e919097f0c32b973491eeb8eda584",
+      "bytes": 1093
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_anodized-brush-albedo-srgb.png": {
+      "sha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+      "bytes": 57595
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_anodized-brush-albedo-srgb.png.import": {
+      "sha256": "3efaf09556352a98336724faad199ba48b5fecb827c55f7e17a8a8f4281eb133",
+      "bytes": 1137
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_anodized-brush-normal.png": {
+      "sha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+      "bytes": 119904
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_anodized-brush-normal.png.import": {
+      "sha256": "80c1c4bdb59e34d50be7a0620918b2806536f62dce9c4e7621d35b2d5eb43d07",
+      "bytes": 1123
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_anodized-brush-roughness.png": {
+      "sha256": "67503e7fe7d49b24e173c84bdf86895e7397702d3399772150136dddfc65aa75",
+      "bytes": 81358
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_anodized-brush-roughness.png.import": {
+      "sha256": "0851b2a9e4e5eaad79019f9ff484c782c19e8d3c0f0df25cd6ea5c1c8fb4d4b8",
+      "bytes": 1132
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_bark-fibers-albedo-srgb.png": {
+      "sha256": "992962a0a31a62c6f3d2629485781441b28d0fed62f9069ce9b284cd5970cd21",
+      "bytes": 69723
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_bark-fibers-albedo-srgb.png.import": {
+      "sha256": "3906b4dc57bc5810f5ae5853e5881aaa9ff274aef44e7e4098e7b6ee38a1e821",
+      "bytes": 1128
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_bark-fibers-normal.png": {
+      "sha256": "eb7687cc095b294658f7d1171dca8758eb2c4af20e71d5caa04f0cc3ce08bd68",
+      "bytes": 441055
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_bark-fibers-normal.png.import": {
+      "sha256": "819e93b9c7a63b62ae91f651f06241d840ffe3f9603c437479ce932141a52060",
+      "bytes": 1114
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_bark-fibers-roughness.png": {
+      "sha256": "628c59ced159e99590f04a525e2436cb273c2eee9eadc5fc73b32f9ff1475641",
+      "bytes": 75242
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_bark-fibers-roughness.png.import": {
+      "sha256": "c1b212c3f84131fa5d927bb941881fd63c76735309c01422f85689aa93f631d5",
+      "bytes": 1122
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_ceramic-enamel-albedo-srgb.png": {
+      "sha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+      "bytes": 47156
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_ceramic-enamel-albedo-srgb.png.import": {
+      "sha256": "fd475bbbd0f4ad5eb50205d6ae3d4af4fab87ba3193978ea19825901115f7608",
+      "bytes": 1137
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_ceramic-enamel-normal.png": {
+      "sha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+      "bytes": 133720
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_ceramic-enamel-normal.png.import": {
+      "sha256": "c7175d4ff2ad0544899c94ee89a4fc09aea142a57d098efa73bac2b3c4e7c26f",
+      "bytes": 1122
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_ceramic-enamel-roughness.png": {
+      "sha256": "71bde5b9fa079061ce35291730a2f385a9c7bbe709e5b9f546844ac6861694bb",
+      "bytes": 55437
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_ceramic-enamel-roughness.png.import": {
+      "sha256": "0e1d7d328bf05b242bde9048f9bff6b9b7c3df69e8b70097fa1f3ed017231df1",
+      "bytes": 1132
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_copper-patina-albedo-srgb.png": {
+      "sha256": "df08158f6dfced7e3e823f32b1a796ece7a2fed8f763505c6f43980cd82516e2",
+      "bytes": 103983
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_copper-patina-albedo-srgb.png.import": {
+      "sha256": "c58ec3b53f1e9d511dcd3fd6a650358db7833e67f0194ea34ddfa26a33e43f32",
+      "bytes": 1135
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_copper-patina-normal.png": {
+      "sha256": "7b2ec1c6a0837fdbbe67ed0779e2d39ad3637b405ed0a5186ac21b94db2dab9c",
+      "bytes": 261676
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_copper-patina-normal.png.import": {
+      "sha256": "3af2d43ce1c46a22240cfd65fb23a9915b059e899c2ac2a085be2932737cac3a",
+      "bytes": 1119
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_copper-patina-roughness.png": {
+      "sha256": "2d9934b2c971746003f84cc364c085cf55062a49e90d548a800496a416830698",
+      "bytes": 89497
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_copper-patina-roughness.png.import": {
+      "sha256": "62646c8caf2cbe35873b94fda06b1d96f78c3d401e8aa5bdecd8e2b873dd6598",
+      "bytes": 1128
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_fern-frond-albedo-srgb.png": {
+      "sha256": "00ee4e4c13507056a52866ac24a57605e06d5e9f1cb40f13177153486a689d7a",
+      "bytes": 47387
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_fern-frond-albedo-srgb.png.import": {
+      "sha256": "0aae7d25dee34f4ec5549332f34818db48e092b3daccdf4fc7b7f5ebfdb50114",
+      "bytes": 1126
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_fern-frond-normal.png": {
+      "sha256": "d60070f0af03f33c351a6049a871fe839a6fcacc39889e9ca5b1752be2f42771",
+      "bytes": 85180
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_fern-frond-normal.png.import": {
+      "sha256": "669c67e62520d23566714e400be3f77b518ab86c176b904d66c942cd53a18103",
+      "bytes": 1111
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_fern-frond-roughness.png": {
+      "sha256": "f1886e518ac4881e34f7ddbfaf99a5467f666c2d0d2640afccf7af4c7a04d98d",
+      "bytes": 50935
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_fern-frond-roughness.png.import": {
+      "sha256": "27771188a488bbb3d66ef63640091501f6d97690949e4ccfda6d2c9389686de4",
+      "bytes": 1120
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_grotto-wet-rock-albedo-srgb.png": {
+      "sha256": "a1af71522942bb686c9179744d34832a1223759730c8920f96140895c3aba7ce",
+      "bytes": 40944
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_grotto-wet-rock-albedo-srgb.png.import": {
+      "sha256": "bcb11e2361160cec43184e9618c4a8c4a38f4c4c77341091a6abb3d26f23059b",
+      "bytes": 1140
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_grotto-wet-rock-normal.png": {
+      "sha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+      "bytes": 326596
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_grotto-wet-rock-normal.png.import": {
+      "sha256": "54a6ed0f54cc5bf1f87fe5ce29545a898e16090c9cfb10f46bda5143ef6db1fc",
+      "bytes": 1125
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_grotto-wet-rock-roughness.png": {
+      "sha256": "0f473df2e1651818d95033b65fb66e6d4470dea19390c4fd663b07a1e88ae214",
+      "bytes": 76440
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_grotto-wet-rock-roughness.png.import": {
+      "sha256": "155cf60b081a620ba294f6983d5373ed12b159dcb18bf00720675d609061305d",
+      "bytes": 1135
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_masonry-coping-albedo-srgb.png": {
+      "sha256": "a3888e7190c86f73f6c3863b84610a34f1b6cc58d4384f6c77fc0d784d5f33d3",
+      "bytes": 57224
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_masonry-coping-albedo-srgb.png.import": {
+      "sha256": "7fbbafc44bdcab81f39039fd74b018ae26cbd78ece89290a95f36ed1e00a2aa2",
+      "bytes": 1138
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_masonry-coping-normal.png": {
+      "sha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+      "bytes": 131879
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_masonry-coping-normal.png.import": {
+      "sha256": "9ab9c87c8f0be4fbdd82b522dbcb8cfaa69482aa2a132b218fc2324f6cea6a23",
+      "bytes": 1121
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_masonry-coping-roughness.png": {
+      "sha256": "ac19978333cc91117da8a23650dc1ed916fc3ae97ab6b1a5bfffe1e8669cae86",
+      "bytes": 48277
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_masonry-coping-roughness.png.import": {
+      "sha256": "169803881e8a91b5e2c49012f997ba2ed144d629558326fae6c0718e23ba7c96",
+      "bytes": 1132
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-lichen-albedo-srgb.png": {
+      "sha256": "52052d69c0f0bfd3fc750b7ff11c49ccad82bf06b169a63ed3a78da57a58d14c",
+      "bytes": 93045
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-lichen-albedo-srgb.png.import": {
+      "sha256": "77cb79d7f25c3edd2581e05a46bbd411afb416b417bb35611675c770f0209d4b",
+      "bytes": 1129
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-lichen-normal.png": {
+      "sha256": "80dbf157972e6aad8b70de1576cc7ad335c2d8d4f3419550b288990bc52b83e4",
+      "bytes": 419889
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-lichen-normal.png.import": {
+      "sha256": "98e3dded86fef50191bfec3cc57940d654ffa5f64f605c114c76e1635099bc60",
+      "bytes": 1114
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-lichen-roughness.png": {
+      "sha256": "1baff9fef6df67a9357eca48d51f45501a7710833cc461d0d58fd85a2916b9fe",
+      "bytes": 89138
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-lichen-roughness.png.import": {
+      "sha256": "35406ba4123697239699f8c95d217e11768cfd42e96319941fe75bed0e633c29",
+      "bytes": 1123
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-warm-weather-albedo-srgb.png": {
+      "sha256": "7e3d11e8311ecc5d52a910038cead50d3383a68bfb7c6412d6c8f19c72d7eedd",
+      "bytes": 113185
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-warm-weather-albedo-srgb.png.import": {
+      "sha256": "8946e1b9921b1235f038d02e941cfd570b72cd71138baf1984ca2deca9b3558e",
+      "bytes": 1147
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-warm-weather-normal.png": {
+      "sha256": "b7051d968859c381dced9cfcb07c441bd1172e9d8ef133d689289e908f22958f",
+      "bytes": 355747
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-warm-weather-normal.png.import": {
+      "sha256": "5e9a4f0857617178e258b2480a962c199c992cbd7b79173d6eaf68ae80c4095b",
+      "bytes": 1132
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-warm-weather-roughness.png": {
+      "sha256": "a161bdedf82c43ba685ac624c9ffcaba8a86b5535de18e7a0cb4c0e324e391a6",
+      "bytes": 83380
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_moss-warm-weather-roughness.png.import": {
+      "sha256": "30ffa76ce7fae4490d623a72d24b4da4aabeb9d66402c353cc147a3788f46d20",
+      "bytes": 1140
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_prismatic-etch-albedo-srgb.png": {
+      "sha256": "526808c6be3d9794759f14a5660bb6a87a157420827d31cca03e6d625819e8f9",
+      "bytes": 97393
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_prismatic-etch-albedo-srgb.png.import": {
+      "sha256": "4b0abe38c70866f8af01d672de42be514960aedf543a479d00a96196155e54d7",
+      "bytes": 1137
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_prismatic-etch-normal.png": {
+      "sha256": "f1e48753f0784ad31eadbb496bdb559252c2e4e034653e02ddbb020fb4249401",
+      "bytes": 203698
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_prismatic-etch-normal.png.import": {
+      "sha256": "ead78eb820bff2fe9803a8cb0ce89b3a474d86d182e7825b0ad46d0c3a202b96",
+      "bytes": 1123
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_prismatic-etch-roughness.png": {
+      "sha256": "589fb767fa2aba1669225ff5f63e512358278c5f3022ca2b8e26c67000407009",
+      "bytes": 99940
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_prismatic-etch-roughness.png.import": {
+      "sha256": "aa7dc864c6ea7280428c91f47f2a90730e0419bc0c241607d9d04d23cad4de3d",
+      "bytes": 1132
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_terracotta-albedo-srgb.png": {
+      "sha256": "19efdd03cd0bc98d04405f04c04b8b9ac1293ca0751103c4e4a11e9ab4b92124",
+      "bytes": 53680
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_terracotta-albedo-srgb.png.import": {
+      "sha256": "f997b7eb791d080f8c9a41fbc938cc9296ede40b610d5261eb201b45324c08cc",
+      "bytes": 1126
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_terracotta-normal.png": {
+      "sha256": "a82b4af6b637ecd74953a0f4af261acc637eab255e80f6117a231f5d0b564ca5",
+      "bytes": 174659
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_terracotta-normal.png.import": {
+      "sha256": "86698e90e162af78b68013ebb47fefc6748d08b8a167172a6887fd52f703350d",
+      "bytes": 1111
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_terracotta-roughness.png": {
+      "sha256": "3d8531df0143abe737299e022b6ccd643092c9d1851b23973be0ab4ef2a7d0ef",
+      "bytes": 54081
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/candidate_terracotta-roughness.png.import": {
+      "sha256": "4d5dc7a1e58cab6f2bf9f3949afe2f126a14bc60b2f41c59d8184413e9c7ced6",
+      "bytes": 1120
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/capture-report.json": {
+      "sha256": "75a0f0cdf307d179f29ec73e2d293b5ddf973f3d73e07e02da35537c2c2acf7a",
+      "bytes": 36770
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/capture.gd": {
+      "sha256": "920d1dbc5418d810fb5e7f68afb69e2f144e451e89517c0e21c15ceef378c213",
+      "bytes": 4768
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/capture.gd.uid": {
+      "sha256": "45912cbc523347af11ee1e97ac319002ea4bb6aead1c69dcacae569d02f1f2c0",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/archive-player-accepted-runtime-before.png": {
+      "sha256": "4f7dfd37150c3d23a7b19b2b84ffed25aeabe7b19d7b014e1d96055572269a67",
+      "bytes": 612760
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/archive-player-accepted-runtime-before.png.import": {
+      "sha256": "7d63b63fdf1fc9d49252c7aadb0684a9beeb236660a607aecb14be9d199a5b29",
+      "bytes": 1087
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/archive-player-candidate-runtime-after.png": {
+      "sha256": "78e153f2b503af39a07e3c4dc4e024881553c6c0bf329006eeefe97bdd13f9c3",
+      "bytes": 662370
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/archive-player-candidate-runtime-after.png.import": {
+      "sha256": "1738a4845769a11b6cc8d0d5f4d46b0e858f41ab2287404d519fa1f872b5fe82",
+      "bytes": 1087
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/botanical-eye-accepted-runtime-before.png": {
+      "sha256": "d132a1d86aa9bc57f27ea17a1b983f74160360fd5b5a44bff89a7629d6617e3a",
+      "bytes": 612025
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/botanical-eye-accepted-runtime-before.png.import": {
+      "sha256": "c4dd8215e15e14c3e8a15446cf9ef33d7948772164b7ca4be25e7f1a6780daf4",
+      "bytes": 1083
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/botanical-eye-candidate-runtime-after.png": {
+      "sha256": "fb338c7bf75e20b962b152924fe8f9d8b82f0615ddef0da9b6a6fe1458be74ea",
+      "bytes": 750814
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/botanical-eye-candidate-runtime-after.png.import": {
+      "sha256": "1c138dc50785a7dc7292587c5de36bff31b0d97dfe71c36320ef655c435c107a",
+      "bytes": 1084
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/canopy-player-accepted-runtime-before.png": {
+      "sha256": "c845172746ab1e8c085f53d310ed6aa6f6ebceefcf5560be64539e95a25235c2",
+      "bytes": 572598
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/canopy-player-accepted-runtime-before.png.import": {
+      "sha256": "d0b1860ae79a408b5c03abc1a8d2fa93ee32200725fa672c7077f6570958ff55",
+      "bytes": 1084
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/canopy-player-candidate-runtime-after.png": {
+      "sha256": "d900e5c9f2209c6bf6b637dd90e378c779030e1d32da92f887619109921fa1d4",
+      "bytes": 864997
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/canopy-player-candidate-runtime-after.png.import": {
+      "sha256": "46e9e961aac58f3ea0e723ce36cea0950309d8affaa526baf4100261251e3385",
+      "bytes": 1084
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/crown-player-accepted-runtime-before.png": {
+      "sha256": "4780b87e091265974bc0747a9d16ff4185de210253652a71a0ab6f22dbe80e3c",
+      "bytes": 575177
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/crown-player-accepted-runtime-before.png.import": {
+      "sha256": "df1e39464be3bacf70fa5eeb81e8a0bb04436ebe83912d0cfd2d36b8bac60917",
+      "bytes": 1081
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/crown-player-candidate-runtime-after.png": {
+      "sha256": "b8924adb372d4d575197b44b521da714cd8aca51556c827a477435c43226a0e2",
+      "bytes": 811431
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/crown-player-candidate-runtime-after.png.import": {
+      "sha256": "264f80cf98595bb1cc065f60e8afc722a3886ce6a1f31c5af359cbc2906e9327",
+      "bytes": 1081
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/greenhouse-eye-accepted-runtime-before.png": {
+      "sha256": "e0eb6a8a21bc4834eb3ea3de22dd85ecc3fdcf55bcfdf297166c094fb90d192d",
+      "bytes": 517671
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/greenhouse-eye-accepted-runtime-before.png.import": {
+      "sha256": "d9823a5112af0f4ba615c0edcebc46fb0b6ac2017441134e0bcb4fd86fd1572f",
+      "bytes": 1086
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/greenhouse-eye-candidate-runtime-after.png": {
+      "sha256": "97e295734c938e6e620c81206936d0aab89496a52c8e5c23e6e18bca9d52e258",
+      "bytes": 761291
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/greenhouse-eye-candidate-runtime-after.png.import": {
+      "sha256": "d8b449a17ef06fb2760b26d563f06b9dec01fdef2c3c238c64effeaea009624c",
+      "bytes": 1087
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/grotto-eye-accepted-runtime-before.png": {
+      "sha256": "4c857129fff5785d95cc4d1ec9ff7d61792c899ac9953d954d73e1cfbd6140c3",
+      "bytes": 551980
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/grotto-eye-accepted-runtime-before.png.import": {
+      "sha256": "97e433b5f0d4debfcf5f86281db103ee65695be6d54ec22b5ad49e10f2aa1b4c",
+      "bytes": 1074
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/grotto-eye-candidate-runtime-after.png": {
+      "sha256": "970f7f24d80340f8d24b99492f268532e5bfbcd17d8d8532c7634ea4147fc26a",
+      "bytes": 830261
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/grotto-eye-candidate-runtime-after.png.import": {
+      "sha256": "8b3687b3946ac6c8e0706a99bfd5b84ad4e1305f228c07183abd3bd8dabfc200",
+      "bytes": 1075
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/lightwell-player-accepted-runtime-before.png": {
+      "sha256": "46b8a7dbbd3aa7f000caa9b405d7657fe77a0bd8df494a7b2ed0456c0cb79deb",
+      "bytes": 629243
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/lightwell-player-accepted-runtime-before.png.import": {
+      "sha256": "eec057892a15cee9984aed0c4596c5bbb5914a5fad33e42eacb1be61c2fe73c8",
+      "bytes": 1093
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/lightwell-player-candidate-runtime-after.png": {
+      "sha256": "2d06059b9b80c6907d306bb3a548b8acc46e548e296caaddecb9e93d7d8993b4",
+      "bytes": 966898
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/lightwell-player-candidate-runtime-after.png.import": {
+      "sha256": "44604ef2259fe264d284259f9d936a1de529c03a1d724e24380ef16fcf906a06",
+      "bytes": 1093
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/overview-accepted-runtime-before.png": {
+      "sha256": "c9fad543dba9614f4fb46a7b880abc25cad71cbd056b463b9a0dc82804d32655",
+      "bytes": 325753
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/overview-accepted-runtime-before.png.import": {
+      "sha256": "3bff82dae7b26530f63c207dc8cb2eadbc4f20158f47be40542b1aa89ad3b468",
+      "bytes": 1068
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/overview-candidate-runtime-after.png": {
+      "sha256": "347b2bc41525784888112632c87af7e2e8c7cbedca27a791ef08810972e59738",
+      "bytes": 549304
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/captures/overview-candidate-runtime-after.png.import": {
+      "sha256": "2eda0c6ced6f99741195007dd95fdf0f6bace2218429db8d73c3266c78b5046c",
+      "bytes": 1068
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-01/capture-report.json": {
+      "sha256": "4db0c790d3417a9c49e3423ba6a195ae18c7d2e525db48917e8e647b746d1366",
+      "bytes": 5256
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-01/capture.gd": {
+      "sha256": "f6092f45918078bd2f24a91a61aa2aac609329a7ac634842daa9706e3b8bf6f7",
+      "bytes": 4814
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-01/captures/grounded-frame-exterior-accepted-runtime-before.png": {
+      "sha256": "1236290d2addebee5293913c61ec852fa4c04fc1b2e166a6bc08eba4173da3ac",
+      "bytes": 788313
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-01/captures/grounded-frame-exterior-candidate-runtime-after.png": {
+      "sha256": "ab52fd4b6494f986c2ff066ac0fd7b2d0c17285ff3c24398bd2d3c827a13efb0",
+      "bytes": 1119446
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-01/probes.json": {
+      "sha256": "02464072b95fb55bf7eb4dfa4f234bf489a4043ed700312c49d53e888a8d065f",
+      "bytes": 494
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-01/source.json": {
+      "sha256": "c14db196a9120d6f7722a3c822b14507c815ad9b4f98d88b4ee228620afd1c99",
+      "bytes": 391
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-02/capture-report.json": {
+      "sha256": "eb169c98c3cbee3734c59382d94ef9fcfa2b442fcd05a09841c11cd9eb140098",
+      "bytes": 5238
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-02/capture.gd": {
+      "sha256": "f836a7475129d227db01c1db89a9f93aeddae06afc1dbbf0ce14c8dd33e18d5f",
+      "bytes": 4814
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-02/captures/grounded-frame-side-accepted-runtime-before.png": {
+      "sha256": "23c16339646f729ca84723cfdef1d49bfdb4a2583a2f800af48f1722205bd950",
+      "bytes": 278407
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-02/captures/grounded-frame-side-candidate-runtime-after.png": {
+      "sha256": "a944e8a428e2ff6eeda295878b2a5e334a3a55238c6c58936b1907fd4461e387",
+      "bytes": 275799
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-02/probes.json": {
+      "sha256": "8fa4ff448d01fe7e2711f2d7f7dd6d1842636c1bbcad8cf1c2cf2fdc6c71b396",
+      "bytes": 488
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/detail-02/source.json": {
+      "sha256": "a3e7eac0e01aea8b061a3939ea1edb4273cb0f94641d0ada21917a618d8c8d90",
+      "bytes": 391
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/expected-pixels.json": {
+      "sha256": "ad963e85ce6d3a9e977d519b392994920439d5fd2c6251c4681f0cf5d1fdd046",
+      "bytes": 7724
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/geometry-proof.json": {
+      "sha256": "04efb37f22f6ee368631b3801a70de85dfe1df6eac17d835b0b807cd6adf5566",
+      "bytes": 137031
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/import-policy.json": {
+      "sha256": "12b3ff9f645956a634b300e77a25e6fcb9a4c23663e9599b76ae7b0c16a6c617",
+      "bytes": 226
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/import-report.json": {
+      "sha256": "be8c46df343eb9d9559f6f5a0a6526cdbe1362d5c058153045ebf073dec92bae",
+      "bytes": 11242
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/import.gd": {
+      "sha256": "2d73f549001cee8a6fe9149307d9e65c21419990a0b5063c338962ec5e3c4f4a",
+      "bytes": 4191
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/import.gd.uid": {
+      "sha256": "d066ff73d4874cbc3aa0fb776e3f84611b6caca0e4a52844b88084e24e82e114",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/manifest.json": {
+      "sha256": "11736b1029567fabc9c91956ab361ac1ad411398285e1713dfb4de941efed9e8",
+      "bytes": 140682
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/physics-report.json": {
+      "sha256": "5df2c60c7e2c854bad47c33a89de6bda91ea90230e37657f40e7d79d5c72c93d",
+      "bytes": 51444
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/physics.gd": {
+      "sha256": "f6941c4f0a48647df309b382e565ba3fcd862be1beb815405b6cbab1a54333a3",
+      "bytes": 5265
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/physics.gd.uid": {
+      "sha256": "210f703e13c3ee119822e378f2e31697c1e234f89102a2b48fc19e0901a889d8",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/probes.json": {
+      "sha256": "ff3ea17cc367fc8456c1ce0a04280ff4653ae79ae4a8098aa9f6fd978293447d",
+      "bytes": 5749484
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/profile.json": {
+      "sha256": "d5987c061ee05ab83d317116150cc23bfe783c16c8ba545191eee6f7a4498a15",
+      "bytes": 27185
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/profile_schema.gd": {
+      "sha256": "ab628561105b50b827c85ee40bd5f1af7f3ae5e0f5aa6c1a85a635f00e8ef982",
+      "bytes": 9404
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/profile_schema.gd.uid": {
+      "sha256": "dd0e48bc3b7b28533dbfd8c5ba5210ff2c699c0624b5b815cd084f3c8166b929",
+      "bytes": 19
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/source-probes.json": {
+      "sha256": "ac9e62fb03351d87e4347be17f1e131b43a2959c1a3c8934530c5850f2faf2ec",
+      "bytes": 5647280
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/staged.gd": {
+      "sha256": "b5aa2df9c3be693fe16cbeb2319da9f360e07fa4df5c0900df9928029a0d5038",
+      "bytes": 8159
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/helix-conservatory/staged.gd.uid": {
+      "sha256": "f9eb6fd28631e459ee7811375bbee2628d7f601fc248ae91b02b2138b308484f",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/authority.json": {
+      "sha256": "cd62bdf5c2eafa8dfb25ef29691226c43eef0bb40ca67492110a7bc8c68f6aeb",
+      "bytes": 2377668
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate.glb": {
+      "sha256": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+      "bytes": 19004120
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate.glb.import": {
+      "sha256": "57b9b6d3c3abd3a19d1fa10d088d378f27ea5025e7d3e1a45375bbabcf534974",
+      "bytes": 1095
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_anodized-brush-albedo-srgb.png": {
+      "sha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+      "bytes": 57595
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_anodized-brush-albedo-srgb.png.import": {
+      "sha256": "79ed24938356e8bcc955086348a144175b5184ca699975702e48fbc9bd790b19",
+      "bytes": 1140
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_anodized-brush-normal.png": {
+      "sha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+      "bytes": 119904
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_anodized-brush-normal.png.import": {
+      "sha256": "a29d4ef81cb001680fe3f1c14cf09a15d1950ef2bc535a8625bf8efbea8632f0",
+      "bytes": 1125
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_anodized-brush-roughness.png": {
+      "sha256": "67503e7fe7d49b24e173c84bdf86895e7397702d3399772150136dddfc65aa75",
+      "bytes": 81358
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_anodized-brush-roughness.png.import": {
+      "sha256": "8d79fd85636dd6461a06447ccc5cc9b27e3e4125d81cf13ecafba85ed6f9af3d",
+      "bytes": 1133
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_basalt-strata-albedo-srgb.png": {
+      "sha256": "b294342e60378d7fc2d45a9c631c42bde77de529b168f35fbc6194e5998252ae",
+      "bytes": 51628
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_basalt-strata-albedo-srgb.png.import": {
+      "sha256": "a69d416dec1eb72542071db5cd87ecb49a99c85d5c568cc6b9326495a9efbfeb",
+      "bytes": 1137
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_basalt-strata-normal.png": {
+      "sha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+      "bytes": 326596
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_basalt-strata-normal.png.import": {
+      "sha256": "ee68f65fdb1a73eef687c37fce10e24b709a98f33a03bf8a8d01b4ff71cdea57",
+      "bytes": 1122
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_basalt-strata-roughness.png": {
+      "sha256": "6a222a03f8c50f54d7767c9e88be930c9a8d9b29c71d2db5493a9b23b209a2e3",
+      "bytes": 76607
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_basalt-strata-roughness.png.import": {
+      "sha256": "dacb1746f0d5197a2a997b0c0c7516b0250dc5ebc8374afbcc4b1179b1fcf08f",
+      "bytes": 1131
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_ceramic-enamel-albedo-srgb.png": {
+      "sha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+      "bytes": 47156
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_ceramic-enamel-albedo-srgb.png.import": {
+      "sha256": "380eb0a1726982e6eccb46c68bd981d39bc5a39f26f140e928d44b8bbd55bcdc",
+      "bytes": 1140
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_ceramic-enamel-normal.png": {
+      "sha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+      "bytes": 133720
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_ceramic-enamel-normal.png.import": {
+      "sha256": "3c49c2e950e1c984664223e109eee4161fb50e2e8cc938b71b2e91fc47bbc5ab",
+      "bytes": 1125
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_ceramic-enamel-roughness.png": {
+      "sha256": "71bde5b9fa079061ce35291730a2f385a9c7bbe709e5b9f546844ac6861694bb",
+      "bytes": 55437
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_ceramic-enamel-roughness.png.import": {
+      "sha256": "ec59d8836d2290b8599432309aef92bb893681878159aa29c142a270ff03f23b",
+      "bytes": 1134
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_etched-coating-haze-albedo-srgb.png": {
+      "sha256": "3650ca3b1f2912c15592ce96ae8ac1060230f7e2afcbc5c69058f4a0ef39d152",
+      "bytes": 87450
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_etched-coating-haze-albedo-srgb.png.import": {
+      "sha256": "d816531f62b2383b090ef46b21c97aaa4c83dd223d221d901f0914c9ca9b77e0",
+      "bytes": 1154
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_etched-coating-haze-normal.png": {
+      "sha256": "d89e3a00bc065b6416942305ec7a1dea4dc35e255a16a33202ac7d4b8dd65bb8",
+      "bytes": 152458
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_etched-coating-haze-normal.png.import": {
+      "sha256": "b07eb47b240c8b4ec6d419ce9847b3f23b62e79c42cadc81db15a987fbd30b9c",
+      "bytes": 1139
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_etched-coating-haze-roughness.png": {
+      "sha256": "c6d4f6d89e8e1939f03fd2ab6f48833ab616145621bae67169069de8fa5c4906",
+      "bytes": 87157
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_etched-coating-haze-roughness.png.import": {
+      "sha256": "16cc174e787c744bf67eecce17d50c4d1bd29c6db2abab6e8952e95b158ed34c",
+      "bytes": 1148
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_frosted-glass-albedo-srgb.png": {
+      "sha256": "a823f19423db40ca2d79d5a243a5ae00994aaf183e463c176b7982609a5127ed",
+      "bytes": 106021
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_frosted-glass-albedo-srgb.png.import": {
+      "sha256": "e09a618629418f499af41bb2763c202f298ddfbfd46451d8d454c5b95ea05af7",
+      "bytes": 1137
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_frosted-glass-normal.png": {
+      "sha256": "2d73be97dcd93087d974245aee5389579f254b2c71697a098844b9721f51fb3f",
+      "bytes": 164492
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_frosted-glass-normal.png.import": {
+      "sha256": "2414d8a7b0f370be026aeb044a34158c197dff661df214ad1e68198917ffc241",
+      "bytes": 1122
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_frosted-glass-roughness.png": {
+      "sha256": "1b39432d14089e6c4d560626cfd40a400865a9d9559be011ea3371b03a087874",
+      "bytes": 104211
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_frosted-glass-roughness.png.import": {
+      "sha256": "b45280c6d99852719760fac46c737518836e632325e143037bdabb996443854e",
+      "bytes": 1131
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_optical-mirror-opaque-albedo-srgb.png": {
+      "sha256": "4f6e5eac683c7514dbb923552cd810789d046c0be9716dded91c4aba533e9ad9",
+      "bytes": 43393
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_optical-mirror-opaque-albedo-srgb.png.import": {
+      "sha256": "c28182ec11f597e8cc70eef49227d3364872cc239f1418903bf4af24047427a4",
+      "bytes": 1160
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_optical-mirror-opaque-normal.png": {
+      "sha256": "0e9012adf948ca4002ae0ec05e9ecf71a6cf1611882b48784d93b1906490471e",
+      "bytes": 40077
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_optical-mirror-opaque-normal.png.import": {
+      "sha256": "e8dca92484e3e165dc9b5469a9cac60623b525611029d29765234a6321f9aa0b",
+      "bytes": 1146
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_optical-mirror-opaque-roughness.png": {
+      "sha256": "ac51f0038b9e13507615ed8e5fd78c24f704bc51eee5a7eebbeef9fc7e636838",
+      "bytes": 81189
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_optical-mirror-opaque-roughness.png.import": {
+      "sha256": "8ced62040c3621e15853e3236d935ff4f1013e5804fdeab150f466009c33b90f",
+      "bytes": 1155
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_salt-limestone-albedo-srgb.png": {
+      "sha256": "fa9d87ca9e5a26b74c480a1134f64a982d8230e0e59ecc50e64b1de5cbfc3d7d",
+      "bytes": 101313
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_salt-limestone-albedo-srgb.png.import": {
+      "sha256": "56b86932dee749fcbc1d291bc1a036f0368919db1dd37d4e14ad08beb659a858",
+      "bytes": 1140
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_salt-limestone-normal.png": {
+      "sha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+      "bytes": 485273
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_salt-limestone-normal.png.import": {
+      "sha256": "b70062fe2cc14ae76dc6dc73aec11167a29695a6c7a5bebd4d84081420fe223c",
+      "bytes": 1125
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_salt-limestone-roughness.png": {
+      "sha256": "1c75ff4425dd7d13e8225cf6e09f7ff498c535f291b64a2f60ba69fdc8d6baa8",
+      "bytes": 85778
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_salt-limestone-roughness.png.import": {
+      "sha256": "5f38caacb582c4486c041e5acb5c323de8c47d68a555b74be0ca08f3a069d565",
+      "bytes": 1134
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_trim-wear-albedo-srgb.png": {
+      "sha256": "7ec0ff69d1060e45b2338f4c2add68d729625405f9801701d78239dded35f131",
+      "bytes": 53395
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_trim-wear-albedo-srgb.png.import": {
+      "sha256": "c696581239ecc69f6fce03a9ca1a34a3c5bc674b32deb5b2eba99e88124c2fb8",
+      "bytes": 1125
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_trim-wear-normal.png": {
+      "sha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+      "bytes": 131879
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_trim-wear-normal.png.import": {
+      "sha256": "0cf8a1ec5295d155cb2286a9e4560130940934990f856f997b5f49c7ec571f77",
+      "bytes": 1110
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_trim-wear-roughness.png": {
+      "sha256": "aafa178f61e21e1b86899d79151263b01e71441ba6ba13361f124b408c285f0b",
+      "bytes": 48119
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/candidate_trim-wear-roughness.png.import": {
+      "sha256": "4f57f3cc60e3f31ed5aaa87b578feafdce90f8dc9c735f03d028ae70ffa6d560",
+      "bytes": 1119
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/capture-report.json": {
+      "sha256": "216a1a43f8b95c262939d7d3340ab735985a01df7a7b250592eb273e82c63e30",
+      "bytes": 45905
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/capture.gd": {
+      "sha256": "957909e88470c45daf3bdcb6aea8a395c3cc88d695b2e0f2afbb8cd7dcfe04ee",
+      "bytes": 4770
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/capture.gd.uid": {
+      "sha256": "bb597182b8ba7f3965900b66a31a16cb3b485e3c33b0322448348dc1aea86da3",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arcade-eye-accepted-runtime-before.png": {
+      "sha256": "501208794283ba810ff56a129cccfa18930d9d34206fd7111637a323c8159e44",
+      "bytes": 606065
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arcade-eye-accepted-runtime-before.png.import": {
+      "sha256": "58b06fe28be195ed1ba86ac054de05d9b07c7be0eac1b68e643ce5a1a619225a",
+      "bytes": 1077
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arcade-eye-candidate-runtime-after.png": {
+      "sha256": "a7d1f22fe34ba5b260990e56fe0f7bb055671ff87d1e85783b13c5493c938cfe",
+      "bytes": 688400
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arcade-eye-candidate-runtime-after.png.import": {
+      "sha256": "0086373a028ef9b7e0ce6ad6e5e6955de79da3da4e119bef8b0fb1c3a481de49",
+      "bytes": 1076
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/archive-interior-accepted-runtime-before.png": {
+      "sha256": "2696744b1262e6cb2ab07d5e4d7e1b5488f86841010de5244266d6e8e312eab7",
+      "bytes": 692569
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/archive-interior-accepted-runtime-before.png.import": {
+      "sha256": "21c559f06919fdea5fe17c2e61131ea148c6f73b77b9dc2579b66b542926203a",
+      "bytes": 1094
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/archive-interior-candidate-runtime-after.png": {
+      "sha256": "3c3c750f83b6b2626a9cc29ec6384a84995d44bada9567d691486e0cae409f12",
+      "bytes": 770431
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/archive-interior-candidate-runtime-after.png.import": {
+      "sha256": "47d1c19ee2e14c48148340bd4d32917ee0a198ff243383eb096cddf16a5e5ed0",
+      "bytes": 1094
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arrival-eye-accepted-runtime-before.png": {
+      "sha256": "5311dd26e0427d00a4dae9c57a9442ea65f16444c4ac190f845f688047680e3d",
+      "bytes": 549696
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arrival-eye-accepted-runtime-before.png.import": {
+      "sha256": "501f0a40e53fcd544f4ece6b28fa34474f91bcbf951c333fa8015620e4f732fa",
+      "bytes": 1080
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arrival-eye-candidate-runtime-after.png": {
+      "sha256": "4bea5c8cb8b301867d1b04d74d46a8b4db875abd13a6bb481fc5ad7cf45ec56e",
+      "bytes": 685757
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/arrival-eye-candidate-runtime-after.png.import": {
+      "sha256": "5348f05dff36510ad250f07eaff8b93a3e701d7cc99da8f2a0c88a2bea3d94ee",
+      "bytes": 1079
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/cistern-eye-accepted-runtime-before.png": {
+      "sha256": "236234b20cbd13439d25325ffee4828559e1fb0cf99c631af0329c942989e940",
+      "bytes": 494874
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/cistern-eye-accepted-runtime-before.png.import": {
+      "sha256": "4778dea3813331a0e99ef0294abd8a6e449fadb987bc11dd87cd9d3fecfd7347",
+      "bytes": 1080
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/cistern-eye-candidate-runtime-after.png": {
+      "sha256": "00578c6662226fa93b45f96e12bb11fe42c6a2efc516475c9ba0ec39aa028f5b",
+      "bytes": 517906
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/cistern-eye-candidate-runtime-after.png.import": {
+      "sha256": "6544dbb732d28f06708d5f9edbe1bf372a4ea7748132fb38b64ed67d5850cf6a",
+      "bytes": 1080
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/court-relief-accepted-runtime-before.png": {
+      "sha256": "4153dff52cb69d83c744385318e849b78bbd24710b8bbc9f31e3080abd54ccff",
+      "bytes": 581180
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/court-relief-accepted-runtime-before.png.import": {
+      "sha256": "29cb6185d649cd6033a9ae462ce34c89756618ff8f5328c805b625d01e7563a8",
+      "bytes": 1083
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/court-relief-candidate-runtime-after.png": {
+      "sha256": "d603ddeab6ef3fa4c3f6f2c7b3395db092b6c336e73608e78804883568872242",
+      "bytes": 496380
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/court-relief-candidate-runtime-after.png.import": {
+      "sha256": "dd89cf9720dd129dd045b792b6de395f3e7559355f8325cc394e63d936e17c0a",
+      "bytes": 1083
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/lens-eye-accepted-runtime-before.png": {
+      "sha256": "b6adfcf6884a8f7cd4de4752180fd781c2f8d7d7ec5b8bc04ebb336341853316",
+      "bytes": 565611
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/lens-eye-accepted-runtime-before.png.import": {
+      "sha256": "dd4a3ab64851f3168a44e22c5c0c9c3e3efabe0677a0bcac251b3e7e251ccce4",
+      "bytes": 1071
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/lens-eye-candidate-runtime-after.png": {
+      "sha256": "9d47246ccf876c5ef88590ffd8a6de0586ccac56bf9a7b90bd4911f14a406289",
+      "bytes": 675086
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/lens-eye-candidate-runtime-after.png.import": {
+      "sha256": "5eb14325b26dac1c4963e98cab04df7d1529dbf11c71e0fe1f37a5f259827643",
+      "bytes": 1071
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/overview-accepted-runtime-before.png": {
+      "sha256": "c5410d12d6f7fb19a969f6637419fb950ae98e801dd200a2d5906050c606ada4",
+      "bytes": 122265
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/overview-accepted-runtime-before.png.import": {
+      "sha256": "b60141fcd7a4189bbb7fa04b93d8da2cefbf94c370db3a1c4d6bc54b19383166",
+      "bytes": 1071
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/overview-candidate-runtime-after.png": {
+      "sha256": "4b2f18f688a46b779cbe202c31b1d67c83f5d12eb8aabe40903a4bead1f4616e",
+      "bytes": 173939
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/overview-candidate-runtime-after.png.import": {
+      "sha256": "8eecfcbbb7d182b1521d29d7bec7d50b5616c0b6c40dc5d4e872ae6de7bd72d0",
+      "bytes": 1071
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/polar-interior-accepted-runtime-before.png": {
+      "sha256": "ce39a966d15804e12bbe97aa79f51cc31c933c33029d05d202fffc9c581d7dc5",
+      "bytes": 583096
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/polar-interior-accepted-runtime-before.png.import": {
+      "sha256": "c4685952390bfcc027465e9bfb2c3f7a5f5b8a20c02928ce417ca2b04d2ecf6a",
+      "bytes": 1088
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/polar-interior-candidate-runtime-after.png": {
+      "sha256": "d82e181325cf3054db64323028adc549b59d4ca0219fc6e7c3129f82ca26ba46",
+      "bytes": 699697
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/polar-interior-candidate-runtime-after.png.import": {
+      "sha256": "3a687982cd2acd45e3b2b130ef2ea3b9f582f190c5ddea36de629da4d550ae54",
+      "bytes": 1088
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/pump-interior-accepted-runtime-before.png": {
+      "sha256": "97e43fdd862a92b6b27c989dd7677c59d725e21926666f4138347a87a5e48c96",
+      "bytes": 647504
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/pump-interior-accepted-runtime-before.png.import": {
+      "sha256": "4d59d494eefd9c9af5983be2653b75c744572c7e91ef91bc964f97d15ef9966d",
+      "bytes": 1085
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/pump-interior-candidate-runtime-after.png": {
+      "sha256": "2e81837e61f5519f07f8c2fe6f1e3d9a005613aa69f5ddedd2153f0a6cc972dc",
+      "bytes": 710511
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/pump-interior-candidate-runtime-after.png.import": {
+      "sha256": "92a7b1713202e90a2e6be6dfda8e6fa17e73deedf5e9bd24151485c6330556e8",
+      "bytes": 1086
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/well-descent-accepted-runtime-before.png": {
+      "sha256": "27ec3c49f622d64b103622e0c866f29dee54dd1e90d3c19213cd99cca63ba43f",
+      "bytes": 565211
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/well-descent-accepted-runtime-before.png.import": {
+      "sha256": "f68686ba1a7a7d9c09e08aa143049a2e9518732917048fbadf22651c07078fac",
+      "bytes": 1083
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/well-descent-candidate-runtime-after.png": {
+      "sha256": "90bc08afaa8962f3da6074653ef383667a72807889af24a8c22a739b302aea52",
+      "bytes": 706504
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/captures/well-descent-candidate-runtime-after.png.import": {
+      "sha256": "e1b86ef65e728930b64b163c3f29172dabebbdb2901cd216918d3416448264b9",
+      "bytes": 1083
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-01/capture-report.json": {
+      "sha256": "fa5c20398b67d6e8d9fb7a871ac10c5373a54c880372f51515d53a1b1028f835",
+      "bytes": 5250
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-01/capture.gd": {
+      "sha256": "2ee5ae300b517342cbf9a5b76bafb041395750f87e44a82cd5e4f424c364459a",
+      "bytes": 4816
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-01/captures/east-landing-exterior-accepted-runtime-before.png": {
+      "sha256": "3f019b6c36070f4218aa37acf494851fef7fa0f67afa7adfbeacc0c9d1eae662",
+      "bytes": 944038
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-01/captures/east-landing-exterior-candidate-runtime-after.png": {
+      "sha256": "6bf4a164ae9e868bd50f0562b87ff37f5028b72b8b44970d7d514f961debdec2",
+      "bytes": 456394
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-01/probes.json": {
+      "sha256": "9657c5d7776ef00c62b17ebcb801de48b9b7494c47efd409c9c1a59ce1367bf6",
+      "bytes": 491
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-01/source.json": {
+      "sha256": "67a797d7976a98610900b6f302e798f0aad38f7b5c1fa1c53c2e815a163c3ade",
+      "bytes": 391
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-02/capture-report.json": {
+      "sha256": "92915e735bed01a664333cbcad0f28bf73dc78a2c672b544a6002ccde5d5bb74",
+      "bytes": 5264
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-02/capture.gd": {
+      "sha256": "65174793f197d12e7e0885fbfb5fef6e9cf7db3ecd807ad310fadce6a8f4f59e",
+      "bytes": 4816
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-02/captures/east-aperture-inspection-accepted-runtime-before.png": {
+      "sha256": "756accabd2ae79f8c74211f666f26de7a039a617eaede868c2f036723b576f82",
+      "bytes": 436874
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-02/captures/east-aperture-inspection-candidate-runtime-after.png": {
+      "sha256": "b7d70bf5858ed3db0629a5fb2f2ef30651b623e72458dd6be51a25bfabe3af94",
+      "bytes": 720982
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-02/probes.json": {
+      "sha256": "bf136a717890df5b7a04373663049f21ab3ea106cdd87aa3d0b64a86808cee6b",
+      "bytes": 503
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/detail-02/source.json": {
+      "sha256": "07d64381ff510ab848040aa4a0892d031b1b357a7e297c1c59fe7d170ad11f5e",
+      "bytes": 391
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/expected-pixels.json": {
+      "sha256": "f901fb2c3fdcf828f8aa927124ebbda9ae9d20a4fc97f73646c049aad2d708c9",
+      "bytes": 6288
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/geometry-proof.json": {
+      "sha256": "689004ccbf6ac56971f39e8f2cd541af76ce2840e89c0043d98b1e93ef88d8c1",
+      "bytes": 354187
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/import-policy.json": {
+      "sha256": "5ed29e19288bd8f0ab1ee92b7840f930bb42762c5e489422acc693dcd6496403",
+      "bytes": 226
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/import-report.json": {
+      "sha256": "0e4718ba9c200e62446657eec9ff646af39a83cbb24ee85e520aa74aa611cfe0",
+      "bytes": 9652
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/import.gd": {
+      "sha256": "205f4d76afa3341b7dc07b0c8bc2cac5f9bf301278b3e2b50ea6bdfd883dfc6e",
+      "bytes": 4193
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/import.gd.uid": {
+      "sha256": "40a109e921a7fa24d3c553d3dc7f0ac606760c7d4718317e5e3563f26a6ca666",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/manifest.json": {
+      "sha256": "7dcd8675be3c9ab6f6b4699e3cea454aeb4db5f742d35bd7041046a2fe639c74",
+      "bytes": 357883
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/physics-report.json": {
+      "sha256": "e6474177e0b3d3b8e0099be619f62630d5a11840603db151f4cfe8ecaf2be3dd",
+      "bytes": 129545
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/physics.gd": {
+      "sha256": "f5df296a22eec4bd675945ae48d70d453f526d93f87188dea7c83a111a093fcd",
+      "bytes": 5267
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/physics.gd.uid": {
+      "sha256": "399806132c6866caad238610d9a00acb41604f00937d7776b55873357c7ddec5",
+      "bytes": 19
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/probes.json": {
+      "sha256": "ab8f61c56e1ea17cd0e0a577c35362d934a308a17afba312558f5a3fba0fc859",
+      "bytes": 2452122
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/profile.json": {
+      "sha256": "a47ab771bc3ff6c9aef97d2ac7fd20b6be97d0fef2551bd388d002b9965cca1c",
+      "bytes": 15364
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/profile_schema.gd": {
+      "sha256": "ab628561105b50b827c85ee40bd5f1af7f3ae5e0f5aa6c1a85a635f00e8ef982",
+      "bytes": 9404
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/profile_schema.gd.uid": {
+      "sha256": "e5e8bb32d9872b4f45cb1e12ddcab2964e2aead6f4944e7c139134cfc6bbfedf",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/source-probes.json": {
+      "sha256": "f8749f19e819676e560d752aaebd2f9e750c5b477b4dac73bae7a8000ab4fa3a",
+      "bytes": 2338174
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/staged.gd": {
+      "sha256": "446212c46e475e4c1dd5f7b1c7efb0e948680b9280306af9be3f0360edc7de02",
+      "bytes": 8165
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/parallax-observatory/staged.gd.uid": {
+      "sha256": "c29b1c564c4894c944be3d86311f1ea2ef835a6b543b6c0c654b157131f59482",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/authority.json": {
+      "sha256": "397cedc8f5583a229bb3f65ed94d9a8c74c30fd4132b57bd4e754299a47c67ec",
+      "bytes": 2482198
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate.glb": {
+      "sha256": "f859d49cc1b462b4a88e351d915518c49940ce24a7b8c2047c2d8f94f419e1db",
+      "bytes": 8159564
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate.glb.import": {
+      "sha256": "9619c4742bfb34bc6af175aae47d2132afc53912fc4c7409502282b234a0476c",
+      "bytes": 1088
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_ceramic-enamel-albedo-srgb.png": {
+      "sha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+      "bytes": 47156
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_ceramic-enamel-albedo-srgb.png.import": {
+      "sha256": "965d0157abdc01341e0ba3f1f0cdd346186eee75f116aa7df7111a1b8d08fc91",
+      "bytes": 1134
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_ceramic-enamel-normal.png": {
+      "sha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+      "bytes": 133720
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_ceramic-enamel-normal.png.import": {
+      "sha256": "d91e8bb54188e6dee551c651656c7368eacc873e09e6c9e7b3d3072c629b44e6",
+      "bytes": 1118
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_ceramic-enamel-roughness.png": {
+      "sha256": "71bde5b9fa079061ce35291730a2f385a9c7bbe709e5b9f546844ac6861694bb",
+      "bytes": 55437
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_ceramic-enamel-roughness.png.import": {
+      "sha256": "1435b7acf5e3508442bd297b505fa058610b2af09f6cac020dd7cc0bc2eb57c1",
+      "bytes": 1128
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_cobble-sett-albedo-srgb.png": {
+      "sha256": "b36d2118321adad9c446b092593d95ae0066e80c79605974bb9085d5fb176e32",
+      "bytes": 73776
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_cobble-sett-albedo-srgb.png.import": {
+      "sha256": "f4d67a43b505b5dfa7efaeb4b22925fd3ef3ae890544475bfd0c634918e14c6c",
+      "bytes": 1125
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_cobble-sett-normal.png": {
+      "sha256": "0f81ac3722ca5aca9d0ee23c8e482590276e86b06b43950b8bb07d1340095491",
+      "bytes": 296899
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_cobble-sett-normal.png.import": {
+      "sha256": "15746424d8954265352e220a94f18970c10d1aa9e54e092434008b5330bace9d",
+      "bytes": 1110
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_cobble-sett-roughness.png": {
+      "sha256": "e032d7485f9088907d967da027264b5ac651b0744515c8f0f280af69126804de",
+      "bytes": 66365
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_cobble-sett-roughness.png.import": {
+      "sha256": "0c040bc2e84ba755f69c2dcde0073f7909748919850650812f0374cc418c010d",
+      "bytes": 1119
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_lime-plaster-albedo-srgb.png": {
+      "sha256": "245c7716dd9f96a2903bb4c0e285e48c48117ff0d6eb336f9561e1e37c661396",
+      "bytes": 76082
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_lime-plaster-albedo-srgb.png.import": {
+      "sha256": "771997ad3fbe4b7c67da6055fa12448d0f68a4765ed2407c6b315127b574a122",
+      "bytes": 1128
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_lime-plaster-normal.png": {
+      "sha256": "d8630b11ec0b1baaaafefe6ca867e13577511fc3e0fc45fd546aa0b8e94930ef",
+      "bytes": 167240
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_lime-plaster-normal.png.import": {
+      "sha256": "702007e8d666eaaaf2deb746468161c4443d3875cd2804bfa7cd1b30db16f483",
+      "bytes": 1113
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_lime-plaster-roughness.png": {
+      "sha256": "3a46b6b089ac7da0ca0f49f90301177513c611adef5d3a3383c119e861462b8d",
+      "bytes": 84115
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_lime-plaster-roughness.png.import": {
+      "sha256": "e5a6308a5e9a08c729743732ccf1fef242a21bc1e4be8f272428e2aeabbcd71d",
+      "bytes": 1122
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_masonry-coping-albedo-srgb.png": {
+      "sha256": "a3888e7190c86f73f6c3863b84610a34f1b6cc58d4384f6c77fc0d784d5f33d3",
+      "bytes": 57224
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_masonry-coping-albedo-srgb.png.import": {
+      "sha256": "fee4161e9cd44d14e377d5d9accbc3446f8763eb56873b5842465718d26b3a65",
+      "bytes": 1134
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_masonry-coping-normal.png": {
+      "sha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+      "bytes": 131879
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_masonry-coping-normal.png.import": {
+      "sha256": "03e4aea933b2a775dc74ed7bfd78c8695efb2f0b28544c46b5b9dccf83abc907",
+      "bytes": 1118
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_masonry-coping-roughness.png": {
+      "sha256": "ac19978333cc91117da8a23650dc1ed916fc3ae97ab6b1a5bfffe1e8669cae86",
+      "bytes": 48277
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_masonry-coping-roughness.png.import": {
+      "sha256": "4af9fd243388c8f339a53c21f08411b66e4927eff101634afc7ad0c4c5a4b34b",
+      "bytes": 1128
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_oxidized-iron-albedo-srgb.png": {
+      "sha256": "4f794fd4eb20b706e4eda51cfc8533e5151b846bd73c5f251d9ab26d767f5914",
+      "bytes": 59980
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_oxidized-iron-albedo-srgb.png.import": {
+      "sha256": "305c2b3c538dc617c200fe053dd1ec0e78e2d661fe2abdd3cac54a804a990105",
+      "bytes": 1130
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_oxidized-iron-normal.png": {
+      "sha256": "db25a51dd6c649d7b155c51c64de0cb507306bf52641407581a850a79ffdc864",
+      "bytes": 198577
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_oxidized-iron-normal.png.import": {
+      "sha256": "66a54e636dd03f979ad4eee84715ef24ec28c3d9e6bc541f049fa0df9efbf353",
+      "bytes": 1116
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_oxidized-iron-roughness.png": {
+      "sha256": "270e0a5d2c215abb5e51e37e4665c09e26698aa47563a6cdba80c996dbab0818",
+      "bytes": 74877
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_oxidized-iron-roughness.png.import": {
+      "sha256": "a4a3ed005789e483deef2da233feba183a7356c3a18f41f5d59881ad38a33b66",
+      "bytes": 1125
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_quay-damp-horizontal-albedo-srgb.png": {
+      "sha256": "2a46ae0a056798fd75405e2338079b049a6f74cfeb69c06f0e53197a14c30c38",
+      "bytes": 55318
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_quay-damp-horizontal-albedo-srgb.png.import": {
+      "sha256": "2d786025ab390b925e48bcc1098f215587cb33e4aab6aab467c141e7fc36235a",
+      "bytes": 1152
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_quay-damp-horizontal-normal.png": {
+      "sha256": "833f87b0e6ab7e864e928c18a32a16edbe868c59d77fe29b34606a2043f1f75e",
+      "bytes": 36065
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_quay-damp-horizontal-normal.png.import": {
+      "sha256": "5a592384bd2fd6d21fbda3f1248ed5f5b80c48f6f5e174d2c41a2e766a56b906",
+      "bytes": 1137
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_quay-damp-horizontal-roughness.png": {
+      "sha256": "3bbfdfe862f176ff29578078b67423e29f9c4a73aa11b597c6878bb47d05e586",
+      "bytes": 39834
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_quay-damp-horizontal-roughness.png.import": {
+      "sha256": "58260314f1386bc963ed648785f9d69b06511910213380c44796b6898b7f2f0e",
+      "bytes": 1146
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_slate-shingle-albedo-srgb.png": {
+      "sha256": "69974fba40f6c647c9a5e6c44ea26cfafa3e598516ef0107836ecf98efa0248a",
+      "bytes": 56839
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_slate-shingle-albedo-srgb.png.import": {
+      "sha256": "06c59e29527d7d36764a0259a1d6d21ece53df9cfd73c46e69b3e4cb53eb915e",
+      "bytes": 1130
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_slate-shingle-normal.png": {
+      "sha256": "b9ed311dfd009e04771060ed8a06a053a53c83da7aaac3cd44a6f50dc3d598f4",
+      "bytes": 182277
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_slate-shingle-normal.png.import": {
+      "sha256": "c6dec0ba17f8686efaf811f7cd409775f326c9474fd669cec0ef31c8d6b9f9fb",
+      "bytes": 1116
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_slate-shingle-roughness.png": {
+      "sha256": "bd90b5d264bfb164ccca8c02fbb4dfe166d0033b370ad306e8c1dd4a133c36d4",
+      "bytes": 57424
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_slate-shingle-roughness.png.import": {
+      "sha256": "573d3a87d8b4cf0d131596996a0bcd4e54dfbddbece8ea6853de1992f41c159f",
+      "bytes": 1125
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_terracotta-albedo-srgb.png": {
+      "sha256": "19efdd03cd0bc98d04405f04c04b8b9ac1293ca0751103c4e4a11e9ab4b92124",
+      "bytes": 53680
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_terracotta-albedo-srgb.png.import": {
+      "sha256": "b820c4a2423de65c87de822ef820223eff4cddb0a7bbf71086e3833fd88307f4",
+      "bytes": 1122
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_terracotta-normal.png": {
+      "sha256": "a82b4af6b637ecd74953a0f4af261acc637eab255e80f6117a231f5d0b564ca5",
+      "bytes": 174659
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_terracotta-normal.png.import": {
+      "sha256": "cfc45e12515291c7191eba2152422b1da2de942afe1fe986df1cf1bdd1e49264",
+      "bytes": 1107
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_terracotta-roughness.png": {
+      "sha256": "3d8531df0143abe737299e022b6ccd643092c9d1851b23973be0ab4ef2a7d0ef",
+      "bytes": 54081
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_terracotta-roughness.png.import": {
+      "sha256": "5426422831b20702415516b067fc68a62b4caa119294d600e61975191d33159c",
+      "bytes": 1115
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_timber-weather-albedo-srgb.png": {
+      "sha256": "fb6bad65ce1a09efa1efbdbb20395056a2c3d6dd185fb30d9798b12a35065b43",
+      "bytes": 91585
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_timber-weather-albedo-srgb.png.import": {
+      "sha256": "0d967af80974db812675a9465253af70fccccc31fe804367988aad56b4f88224",
+      "bytes": 1134
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_timber-weather-normal.png": {
+      "sha256": "7a8f4b78d0c25eddb4def652c706110b27dceef69d8ff3c48f343abf41bd1a5b",
+      "bytes": 183882
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_timber-weather-normal.png.import": {
+      "sha256": "025d52a87b8ed470a28edc45d3128fb69657f7b85ec68db718ddc87d72343232",
+      "bytes": 1119
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_timber-weather-roughness.png": {
+      "sha256": "1afcc0cd04efbf07b7e96e9b48314f0cc9fa4d1385cb33bc0776c8aa07b27be8",
+      "bytes": 59142
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_timber-weather-roughness.png.import": {
+      "sha256": "04ef8454f382a6d1f36c152ac4586a35e99dc7583cb48337d753da322b286565",
+      "bytes": 1128
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_viaduct-asphalt-albedo-srgb.png": {
+      "sha256": "509ca2ca6cfec8d3df4ebaf91487f78ba05d3960da9b3ba03f5598ad7f58de5b",
+      "bytes": 107685
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_viaduct-asphalt-albedo-srgb.png.import": {
+      "sha256": "6e36e9daef9b73b653cb6f47f21ee1b3e7818689af5cc9394f42097a5f8b59a3",
+      "bytes": 1137
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_viaduct-asphalt-normal.png": {
+      "sha256": "697fd7497a1d8875dbcc834561ca4c7a313e45f831df0b6c63ff117106a92f87",
+      "bytes": 362575
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_viaduct-asphalt-normal.png.import": {
+      "sha256": "789b60614b43e904a4efb052a73a6167c0a625d8ac3d792cc9229b0576aae4a2",
+      "bytes": 1122
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_viaduct-asphalt-roughness.png": {
+      "sha256": "b56d60e6e5e8588b28c2291c1b4db650840823c5f20fbde7f1d806e099a25558",
+      "bytes": 116567
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/candidate_viaduct-asphalt-roughness.png.import": {
+      "sha256": "e8587be3d23dd53ff085ce0d134bbd4e027c3ad31ab160ccabe7c3a1d91835bb",
+      "bytes": 1130
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/capture-report.json": {
+      "sha256": "3515f82a2d5f1b7b6f4adb19259e622a61b2cf8cb8dd69e5e23e9b001f562efa",
+      "bytes": 41037
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/capture.gd": {
+      "sha256": "8c9297a808bf14cc425d4a94e594f12b724f166997147172aaa17cf2ee8b70b2",
+      "bytes": 4764
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/capture.gd.uid": {
+      "sha256": "b17e107856efe0ae206a98c7413c36dded986e7014b87ab9e98ae1f91bc72207",
+      "bytes": 19
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/arcade-accepted-runtime-before.png": {
+      "sha256": "c4c29178f308e517f1da92ecb99c09d58b3929df41741dc96324213359a389aa",
+      "bytes": 461820
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/arcade-candidate-runtime-after.png": {
+      "sha256": "21e3570066ff493f760896971c3090fbc4a2c41d60efcbf9b2d51bd5707c84cb",
+      "bytes": 921985
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/canal-accepted-runtime-before.png": {
+      "sha256": "039d9d9be744c69b40edc8367da57595e5a6ae31a69acb479562437292d01e14",
+      "bytes": 339614
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/canal-arch-player-accepted-runtime-before.png": {
+      "sha256": "4e04f4ddbb809855cdb17b91dd6cc1e3cd66b7815f96cc5dfec792357030be29",
+      "bytes": 43908
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/canal-arch-player-candidate-runtime-after.png": {
+      "sha256": "373b1d24204249d6e2533680b8a77db2928b4b32b71c692b6ceffab5dd234e62",
+      "bytes": 253152
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/canal-candidate-runtime-after.png": {
+      "sha256": "af3d715e9793190446a2fbdf3b696eaecc6c05ee5ff68d89cfd5a1e453b7c56f",
+      "bytes": 669670
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/civic-accepted-runtime-before.png": {
+      "sha256": "17c77aa0fc0889ccce6c440b20f51c7472307646c8691fc8f88f8c8e2447846a",
+      "bytes": 377818
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/civic-candidate-runtime-after.png": {
+      "sha256": "ec885196e17ae7319032aa7f4dde9aa04690c6c6f919eecedb218ac7dd28bdad",
+      "bytes": 796156
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/concourse-accepted-runtime-before.png": {
+      "sha256": "3ab4e9e0da7aebb4de5faca87394f754a6e27ed82494e1eee3d0cc936749c03d",
+      "bytes": 365635
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/concourse-candidate-runtime-after.png": {
+      "sha256": "a198d9cbbb11c723326e71fa512b1419f2d810b65f6b1416ee60b90a33d17b70",
+      "bytes": 842422
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/market-player-accepted-runtime-before.png": {
+      "sha256": "a15f3f2caa605ca4436eafd1bfe8f551e6e1e36af22d894473925c718549346b",
+      "bytes": 277309
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/market-player-candidate-runtime-after.png": {
+      "sha256": "a9287fd5edd0c3f16a7e6a9ac74c652ee6bfccd1cd7251dcb932a484f253108d",
+      "bytes": 592456
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/overview-accepted-runtime-before.png": {
+      "sha256": "317aee706a808e659951ce4461dbcbb03954b3bbbf7e62d737663d03f2e57e65",
+      "bytes": 95841
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/overview-candidate-runtime-after.png": {
+      "sha256": "406efd5d46e24c08ea7ec219d7f443dc11c268bbc526bb55bca8aaf315f0e637",
+      "bytes": 226887
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/retaining-player-accepted-runtime-before.png": {
+      "sha256": "2cda09ac120a83e26c70c43930c822a286440175e1bcc49857b0aa873f77d356",
+      "bytes": 282448
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/retaining-player-candidate-runtime-after.png": {
+      "sha256": "31f6197463d51d966c5355f6e48e35d8fba3e32c07d3f0b39afbbc2e35ceb581",
+      "bytes": 469219
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/roof-player-accepted-runtime-before.png": {
+      "sha256": "3bcd0160859e50035529c08b8077cb68e273655a52854c3ded209edb9a0a4cd1",
+      "bytes": 327225
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/captures/roof-player-candidate-runtime-after.png": {
+      "sha256": "86b40cc929bcfef7927f47a8356d6de317fb4b46fc5ddd6c322e87d845f885b1",
+      "bytes": 693374
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-01/capture-report.json": {
+      "sha256": "fac5e36e7e0f1d00c1108ba78a3a8c1716ea8b9ea8e817d9c1031e7f026dacef",
+      "bytes": 14544
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-01/capture.gd": {
+      "sha256": "bdc9bfa7eced90800898b0215b8098ad1613a511d88f172f15057ee0f6cb3732",
+      "bytes": 4810
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-01/captures/arcade-exterior-accepted-runtime-before.png": {
+      "sha256": "eb0c2174f3ce0437b9da04c08bdace04b97915350a825b4a1fb7f95e82fc9625",
+      "bytes": 285294
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-01/captures/arcade-exterior-candidate-runtime-after.png": {
+      "sha256": "189f41fa24457d8459bb1a0c978e2695ad115056ca17146073e27a42f1a6891d",
+      "bytes": 797982
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-01/captures/canal-arches-exterior-accepted-runtime-before.png": {
+      "sha256": "2a873ff5edba40f77814bb45c18f08a086d7c919c5fae978e37f9b3696eb14c9",
+      "bytes": 228778
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-01/captures/canal-arches-exterior-candidate-runtime-after.png": {
+      "sha256": "a41228c2718b3422f0c826d065d5a046e161bdd12ea44f23c99645d29186aa2a",
+      "bytes": 490187
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-01/captures/roof-parapets-exterior-accepted-runtime-before.png": {
+      "sha256": "c630acc29c827cc9a4f4746bca0cbceeea3548bc317d81b6ad9149e96b30f559",
+      "bytes": 429552
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-01/captures/roof-parapets-exterior-candidate-runtime-after.png": {
+      "sha256": "932723e8b2bca569d722ce5078742bec8378b9438ffddcea80efeef9c906687c",
+      "bytes": 1011309
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-01/probes.json": {
+      "sha256": "26c5923515d0bf35eec5192342f025b8e2ecbd6c5c9e0cb6aacafce2d8b198de",
+      "bytes": 1243
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-01/source.json": {
+      "sha256": "debad7261cf0b72445f8d0d63ebb26e87ed35c29bc9d18a743738b8f8e4c8131",
+      "bytes": 391
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-02/capture-report.json": {
+      "sha256": "fdd207afb56beb61fe7c34b351241d8d1c4d2cf5635e11dfc6d2eae106c38596",
+      "bytes": 5259
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-02/capture.gd": {
+      "sha256": "8e8b94d75b31f87d6d6b57724593a00cfda62d6c3c3fbc1d452f361d23201018",
+      "bytes": 4810
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-02/captures/canonical-parapet-inspection-accepted-runtime-before.png": {
+      "sha256": "d039305bad685617d50acb4198afb0ab7511dda96cc8d2d37586691da6c64c80",
+      "bytes": 316709
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-02/captures/canonical-parapet-inspection-candidate-runtime-after.png": {
+      "sha256": "c22ebcdff34653ea9e082c559dcbf6b0d2c0228785f83f3b15d329c542a4b73e",
+      "bytes": 575164
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-02/probes.json": {
+      "sha256": "44d3829123ac71559384aaa37ac3763852bd0b9f22a9fc521f34bc0ea2d7f46b",
+      "bytes": 501
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/detail-02/source.json": {
+      "sha256": "001807a60b2478bb7b769fc4a8728905e079d8a427f65fc6906ab7639432af76",
+      "bytes": 391
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/expected-pixels.json": {
+      "sha256": "06632fad50c77ee0e41bd942bcc9844e1457012006f948ea6839eb0cf2e6f81f",
+      "bytes": 6768
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/geometry-proof.json": {
+      "sha256": "03263b9b124a97dcfebf750d8cf01645905d49d34f0b9756055d173ae05f0879",
+      "bytes": 174458
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/import-policy.json": {
+      "sha256": "27b023438618a43fb56e710234cf8c82f39da1dd48f51332cd641bc04e65b5d7",
+      "bytes": 226
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/import-report.json": {
+      "sha256": "789ca94ba2e8f72050a0ea3426cff8944f590f8f4c5f0ea520e6cbf5fc61812c",
+      "bytes": 9506
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/import.gd": {
+      "sha256": "65550d53f32e672d87678394205a2c2fbd870439f987ff4a2bb6ede92b8dc1a3",
+      "bytes": 4187
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/import.gd.uid": {
+      "sha256": "fb3e6690b87fc2034f42cf1d70d7af540ff25eb61d04840f7e58c4084d2b95bd",
+      "bytes": 19
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/manifest.json": {
+      "sha256": "c0c2170386c945af029ab50a8f4e8ac51886ab20f64c50285beddd35b8d4c363",
+      "bytes": 177909
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/physics-report.json": {
+      "sha256": "ecb42d0cce67ba7dfc3e802f96acc8f80dd61f1a31c9ca9ba4f858b19caa123a",
+      "bytes": 115956
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/physics.gd": {
+      "sha256": "ecd78da0eaaab3c346f6c034ae68ec08a88a93aaa50354023e5f6af392a15152",
+      "bytes": 5261
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/physics.gd.uid": {
+      "sha256": "e8140e214471349694aa8f67ab1275c90b4ae08703e230a2a5512321a2810d22",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/probes.json": {
+      "sha256": "e8848dfbddff815cedcf0b2b6bca88a35328973ab7c1b57cf615cdc828560c73",
+      "bytes": 3174756
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/profile.json": {
+      "sha256": "6523c3e34d733c2e6f6ade13d3d9b735f802fc51895847b433001d9070226658",
+      "bytes": 606
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/profile_schema.gd": {
+      "sha256": "ab628561105b50b827c85ee40bd5f1af7f3ae5e0f5aa6c1a85a635f00e8ef982",
+      "bytes": 9404
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/profile_schema.gd.uid": {
+      "sha256": "109f74999354674f26efa74f1a2624a659033adbe377c500d500c64725931f64",
+      "bytes": 19
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/source-probes.json": {
+      "sha256": "b08ea03f02dac4b196c9dce944272579b765d72c6ade031db6a8e1f14d3fdecd",
+      "bytes": 3101541
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/staged.gd": {
+      "sha256": "2b12bcf6b58f63cabdd772bcaf7b5c3e7514206bacf33543b4c09d87c57eb1b7",
+      "bytes": 8147
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/staged.gd.uid": {
+      "sha256": "37d9a48cc4f8f65b0c94106f62678fada4ea2aabf2daf8b8e563b855d1aa9344",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/botanical_correction/x-03/vesper-viaduct/stair-diagnostic.json": {
+      "sha256": "25942eb5b958bcf78a779f32a47f2621c31f354588adfbb356ff0ec2a157e146",
+      "bytes": 67733
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210032642347.json": {
+      "sha256": "023a5c0df3bbeb7aefe87e9ed54efa7fd8e9469977d4b3905a72977033e3eeb4",
+      "bytes": 6475
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210032642347.log": {
+      "sha256": "14229c570415384b1059c59bdd3fe3de40e3e76fe55482d15ed0f3f8ec6af14e",
+      "bytes": 476
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210204504692.json": {
+      "sha256": "411bf58e158ca127320645ceb24e99bb021eceb9a6ea4d5ba53e206dc5122872",
+      "bytes": 8091
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210204504692.log": {
+      "sha256": "214b9fd6ea606aaf604f5e25474808c33fdcfc387942ff8472b2f85e794121d5",
+      "bytes": 34126
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210244238142.json": {
+      "sha256": "ad04e287b724f30cfda41442395e9540282ba56a0b380f8c8fe8e8d6f3f74273",
+      "bytes": 8458
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210244238142.log": {
+      "sha256": "f97656b20a078e2f3c77fd50aaf83483dc5890aa5ea5d34ea910bd0a793a5cae",
+      "bytes": 17370
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210314348549.json": {
+      "sha256": "3acea85c40bb68bab954929d71b234610c52a1c502f4e62f343b474c4159f6a2",
+      "bytes": 8799
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210314348549.log": {
+      "sha256": "45239406d428bc722f9c29c0d140adbf141b7df11116eb582322f740950177fe",
+      "bytes": 266
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210328279451.json": {
+      "sha256": "15f355845c679130a9f0f85fb30e3a6af9811255883178a61acfc68d0fbaa149",
+      "bytes": 8890
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210328279451.log": {
+      "sha256": "e2f6b2f33d0963ce248c942ddc6c6adbedb25f5d9653474d3d0a2eae5d18f2d6",
+      "bytes": 1303
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210638245768.json": {
+      "sha256": "f8eb2737d987becafcca92b346dd50c19130adac5202a3b69cb4100bd95a73a6",
+      "bytes": 10767
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210638245768.log": {
+      "sha256": "b7f66e3f6e4ff2d9a98fb9012955a10f7662343604d93b8d51878e3a50e329c9",
+      "bytes": 34126
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210708730318.json": {
+      "sha256": "9fbdc2cfb2031d5747fdb2eca9f95b797352034f3a3c0e7d0ae7f3d27649b499",
+      "bytes": 11134
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210708730318.log": {
+      "sha256": "1b4f4fb153ceb708d4e29025df63f1b83ccb099248ffa79955b692d07641871d",
+      "bytes": 17370
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210731406420.json": {
+      "sha256": "ef8152c59c633364dc62dab9d20dd370b0f1e836049d47ce63974cb4cc331108",
+      "bytes": 11475
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210731406420.log": {
+      "sha256": "26b0b0b8e72e41900fb5b91ae80a540943c8d3e19c1317b78a0137116019c216",
+      "bytes": 266
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210735265085.json": {
+      "sha256": "e10ac51bc7f13389f52523ff70674606969904b60b7823c3dc5bd6ed700e5ab4",
+      "bytes": 11566
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210735265085.log": {
+      "sha256": "727b431af855c3fb551f69fb26b37dd3d8a08bb165b81cf7865cf8763b4b438d",
+      "bytes": 177
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210825534273.json": {
+      "sha256": "d1033330dd950974d4a13dbd0647e32df4ec1092a64e55d9d739618bca015754",
+      "bytes": 12800
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210825534273.log": {
+      "sha256": "0c9d34df58053597f78c3dd563d7582130473a506468147d4b58098dfa4acf74",
+      "bytes": 358374
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210922373025.json": {
+      "sha256": "a14ffad7c5d89f28afdb522ba68f320ba6e05eb5c0cf1b96fce2fb705bd67746",
+      "bytes": 12975
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210922373025.log": {
+      "sha256": "97ed4f7854c9e51add353600add79dd9eef01a1f0fd747801844efb77f57c57a",
+      "bytes": 944
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210925840422.json": {
+      "sha256": "7408f7ef5c3a36140d658b1fbfbfe3536a7ecac8259ad51cc61bf4013bce553e",
+      "bytes": 13044
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210925840422.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210926710637.json": {
+      "sha256": "ca58190c88031e4542666547598781547ce2879055eff8bb9c9048b2497446fd",
+      "bytes": 13487
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210926710637.log": {
+      "sha256": "49b00b2d95a88a9c29b1e2e7b1d86ab65f45fb89f978aafc84ae72e550598662",
+      "bytes": 7278
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210930573302.json": {
+      "sha256": "5df093d3e4ae1b385eeeee90ec9ef120a5f2dc8519489ad09bcbd5555d3ca06c",
+      "bytes": 13791
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210930573302.log": {
+      "sha256": "65ec644c02a57524e69e8f20df6368ca083f14d20383077affa8d9072c3413b9",
+      "bytes": 8387
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210933638775.json": {
+      "sha256": "d0e4f9fcdd3c2b42457676b936c502e9408e26326a6ce4fc1d4f6a49b941e3da",
+      "bytes": 14129
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210933638775.log": {
+      "sha256": "34659448664fa5d848b78cf640004c06ec7967a2038c831585993ead0efd7134",
+      "bytes": 133
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210946384470.json": {
+      "sha256": "87022c05278d44057ac3404bb1fa8130c6a78daeadbf4ce51a4653ce77b2cc58",
+      "bytes": 14203
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T210946384470.log": {
+      "sha256": "41a573d2a259d97f0854699d2d7182fbfb740f0cda5d228642c4e490434a33d4",
+      "bytes": 1345
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211348063015.json": {
+      "sha256": "74ce66cde2eb65a55f415ead6d830b5530372b55232e848fe93ee0983cacc4ef",
+      "bytes": 16280
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211348063015.log": {
+      "sha256": "4883fa34a992c2c37906591e0968950d61260cae89524fc280fec449c653c232",
+      "bytes": 83868
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211413740521.json": {
+      "sha256": "9e88b2afff238f41096d821768b7b4499e401d0cbbaec661ad8e6cec08eb5bfe",
+      "bytes": 16649
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211413740521.log": {
+      "sha256": "893a8aaa24572365e0f3c103500b2f7a804e4d300345a69fb9cf963613172dd6",
+      "bytes": 16185
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211431416750.json": {
+      "sha256": "db602a388fb3d80112bee41179607226c9517f1e05462bd3128b5e80218f28bd",
+      "bytes": 16992
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211431416750.log": {
+      "sha256": "d15f5886e2b23c7d5670eb2b70c6826ee3b96da784c7d0bae925b377382590c0",
+      "bytes": 270
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211434076975.json": {
+      "sha256": "bb838b852806664f5e6bdf49132400a9b88e5953266987c0ea0cd303a08dee82",
+      "bytes": 17085
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211434076975.log": {
+      "sha256": "0505409aab8cc55533ad370cb268a4b4a566b4a3b5bc03ad737b8cf53b9ed252",
+      "bytes": 106
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211515766926.json": {
+      "sha256": "e1822b942d92b428f826368c7177492ebed7bb58d8678e4a1a153e27d5ba1997",
+      "bytes": 18326
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211515766926.log": {
+      "sha256": "38cf976a4edc65a00c5fee40cac90afbb3b7e26a8299b395a2b052b152970baa",
+      "bytes": 6595
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211520628698.json": {
+      "sha256": "8cd2a58cb77eb2331ad1349877286d0147d134c7747d483758844c6818c4cd76",
+      "bytes": 18399
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211520628698.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211521096404.json": {
+      "sha256": "3b2b937e9ca3b721adc003fc5b46d531eedbd5785753b8040d2940c711329bb8",
+      "bytes": 18840
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211521096404.log": {
+      "sha256": "0f76b1c2282e1032d3ec90539648672691cea0f64abc4bd90bd82963f813ced4",
+      "bytes": 5925
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211524957343.json": {
+      "sha256": "990faadf3d61fc20ea37fae7b95360fd6810b5d7b29ea8a3e67e65a7193dc183",
+      "bytes": 19152
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211524957343.log": {
+      "sha256": "d31eb6f2a7b1587daeeca30fad114018276c73893665b5e33f9792b0f0a8fccb",
+      "bytes": 7288
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211526619199.json": {
+      "sha256": "0e4477858e332ebce9f4f16744aa7aa1c39fdc978b41ae2430d33335a1cb30ed",
+      "bytes": 19492
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211526619199.log": {
+      "sha256": "6d1a16e73d918098a79b46ff0b01989631a41f8c823e005be5139f7d3f5d88ff",
+      "bytes": 135
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211528277743.json": {
+      "sha256": "51d803a09a8061594ad019a6c299c1fa19351bf11cb8d8404476df521835eacf",
+      "bytes": 19564
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211528277743.log": {
+      "sha256": "95aaed4b27ca9c36298c963ce375000bfd558219ef7a2d4e713e95b9d1b7c84d",
+      "bytes": 1347
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211627775465.json": {
+      "sha256": "097ef1acc71cab448ef209c5e0ce122f3a2d7e2e9c13237a7ed6d7f2e6c87fa8",
+      "bytes": 20080
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211627775465.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211712807577.json": {
+      "sha256": "b226fd80aa956376f3e57dd9ff53fc7fabcc6f6e827af506256fa261262a468b",
+      "bytes": 22105
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211712807577.log": {
+      "sha256": "1570da118a69d3db457ccfdf5359b0a7060c8cc92c58613e69a3c2a5cc785c0e",
+      "bytes": 43445
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211736278124.json": {
+      "sha256": "88ab66ae1a7ce0025f03ac6e9ad36f59689bf16ad35cfd201315c6013ba7d73b",
+      "bytes": 22468
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211736278124.log": {
+      "sha256": "6c6b2bf206e3c3ffa807b3b9efbcacf7d66ed52eeb4054629ead8973d02dd354",
+      "bytes": 15926
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211753945241.json": {
+      "sha256": "9657cd30857cfb4e1042923c8887966c2d6895ce149207d9bace15bbcd5b383f",
+      "bytes": 22805
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211753945241.log": {
+      "sha256": "0c1c564553d57565a667af10b8cc481fdc4e46f527be50fc885b38e444fbd48e",
+      "bytes": 258
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211755615103.json": {
+      "sha256": "2470fa89078ef542940fed71fad5d687c87c648e4821f4f552c828ac24d2e6f7",
+      "bytes": 22892
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211755615103.log": {
+      "sha256": "5e70317407d478f891beac92f71d596acbfd432048d9b05aa882dcb2f0ceacdb",
+      "bytes": 100
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211821485181.json": {
+      "sha256": "2b70501b2c8868f87f724cacaf4e052c30657ec290488640e3fc9b2eb6e505b3",
+      "bytes": 24109
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211821485181.log": {
+      "sha256": "d63d05f5dae522a415c96a1929892c5089e60d0a1ee6036a289b0fb0040cadb1",
+      "bytes": 7575
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211826545407.json": {
+      "sha256": "f921f4fe80a861c6834782ef5470983c8fd05401554859f7f5e73a9c8f9ad2f4",
+      "bytes": 24170
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211826545407.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211827207292.json": {
+      "sha256": "a89922d8c953ac7a7fb31964aff565af676810d5d1fc902119cc2a694c588f62",
+      "bytes": 24617
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211827207292.log": {
+      "sha256": "0dfaf06b1db2a17515dc82f3dd18023a20f34a02df9f386a49aa4ba6074641f0",
+      "bytes": 6832
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211830875633.json": {
+      "sha256": "4333dcac43f48d856d8cd831ba5a6142ed5ac03baba79c34b345df9f4bb7f2a1",
+      "bytes": 24905
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211830875633.log": {
+      "sha256": "7a5168bde8139d8b254f84f8c5f85e8ee81485600cf1108e35e4d099c4f0ecfd",
+      "bytes": 7025
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211832338282.json": {
+      "sha256": "210d0027b77542335af62d4c89165dd8ed3685dc51e30392e1742a5151d29034",
+      "bytes": 25239
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211832338282.log": {
+      "sha256": "5aef9dae82de2ae3af4d5adfbba478d1321ecb81602c561b1463ac42031089db",
+      "bytes": 131
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211959476850.json": {
+      "sha256": "dea33edb654842907242cad8076e90b97f5be3c531f515e86a7eac1b57c76374",
+      "bytes": 25462
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T211959476850.log": {
+      "sha256": "3eee3f39ad16c0e351287ae4f7b951342a4a57794f27d69f0c7cabecc3969ecc",
+      "bytes": 54
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212012087268.json": {
+      "sha256": "0a8a889755c246a91e2f832df4f88ccfdc76537490144713dada52741579fbd8",
+      "bytes": 25816
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212012087268.log": {
+      "sha256": "45f7773e3b8df589014e5228fadd1d3437a620910ec6ed23b0494ac5a1a0171e",
+      "bytes": 56
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212027283429.json": {
+      "sha256": "8bdc8d74806a90e437c4d424c6c3ffb3069c93663216ebebf7dccdc5d2646ad6",
+      "bytes": 26162
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212027283429.log": {
+      "sha256": "55a708a0b8eca7f0e6076ac6ae41e551007300d9d8bfb61b54d60aa8794f0d00",
+      "bytes": 1341
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212244635090.json": {
+      "sha256": "afe9bc202f662104e758e6e51e8dfbd78fecdaa83a3a53e149adcd9b2d8b96be",
+      "bytes": 27014
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212244635090.log": {
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "bytes": 73
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212251813087.json": {
+      "sha256": "94d8e1af3d01a365a18ed91d29a185650a8ce97807b490fc90c7bede4ef71664",
+      "bytes": 26961
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212251813087.log": {
+      "sha256": "c98e0c24621f1e1f2137cf2c511a868a3fc0180030e9935ad31a80df6263f4f5",
+      "bytes": 50
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212530025384.json": {
+      "sha256": "341e237973f3053bf8e7c76169de510a19e0a7d3f752c255d65041ba92ea4975",
+      "bytes": 28931
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212530025384.log": {
+      "sha256": "058818935ab555ac6c52fcdb470bef8b7814d26fd4d84aadcdff68a54cd48287",
+      "bytes": 1344
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212544890356.json": {
+      "sha256": "610d37c77b07d7795624b62a00948eb60bff0d32245f21458f9c26a07eaacb7d",
+      "bytes": 29282
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212544890356.log": {
+      "sha256": "d1124d72e4252812dd3bf0db9e64e4712d31a4a277c1d4d1672f739a8d7d019f",
+      "bytes": 1346
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212555355154.json": {
+      "sha256": "0f651613120270a56a0e42d69c5be57f4bd233e5f4410c9e30ed5276989d1dd1",
+      "bytes": 29619
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212555355154.log": {
+      "sha256": "bed4ddc9a5295529b2a0b52fb9bd924525499ec13fc16f290c5f8ef03c023b8d",
+      "bytes": 1340
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212624416870.json": {
+      "sha256": "054c32d13a47a8a4fe558d4bbbf7e578769ce2577edb4bde98602fa6850fc0a0",
+      "bytes": 29953
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212624416870.log": {
+      "sha256": "3eee3f39ad16c0e351287ae4f7b951342a4a57794f27d69f0c7cabecc3969ecc",
+      "bytes": 54
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212629687514.json": {
+      "sha256": "b0686b10206fd9566b10d4c2082b87b1443938384ac5d8f4d9f8aedcbe053e21",
+      "bytes": 30310
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212629687514.log": {
+      "sha256": "45f7773e3b8df589014e5228fadd1d3437a620910ec6ed23b0494ac5a1a0171e",
+      "bytes": 56
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212634346119.json": {
+      "sha256": "202c6ed3fc4c4f94a2cf626ecb1242cb1726c0392b877f6f0973ae406264b535",
+      "bytes": 30653
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212634346119.log": {
+      "sha256": "c98e0c24621f1e1f2137cf2c511a868a3fc0180030e9935ad31a80df6263f4f5",
+      "bytes": 50
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212816233919.json": {
+      "sha256": "a9131ddf11ae9a1ad0b2009480b8c3306c068be72d0b39398c124d9f71fa3267",
+      "bytes": 31542
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212816233919.log": {
+      "sha256": "058818935ab555ac6c52fcdb470bef8b7814d26fd4d84aadcdff68a54cd48287",
+      "bytes": 1344
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212826514763.json": {
+      "sha256": "a5e1904a12c60403682cb6d029c3aaf5d41fab67c8dcdae5fd3fa0878b71321b",
+      "bytes": 32387
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212826514763.log": {
+      "sha256": "d1124d72e4252812dd3bf0db9e64e4712d31a4a277c1d4d1672f739a8d7d019f",
+      "bytes": 1346
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212835392805.json": {
+      "sha256": "21a6c77db39d64337f3625411a5242ca3ed0a560c18162a2cffbdb9f383ff648",
+      "bytes": 33200
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/20261003T212835392805.log": {
+      "sha256": "b7535816c3bdbb6d67ac88fa3653b505335fa14143e00ec4d56b96c2a1aca77f",
+      "bytes": 1340
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/grant-start.json": {
+      "sha256": "7cf5aadc9796b6a7403e438b4da4b9405eb81b966c6bc20c3f3a5ad08686e105",
+      "bytes": 5391
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/release.json": {
+      "sha256": "fa93986312f0172862043d89fc4f4b9464479e12d6b801f11945963d7185cbf6",
+      "bytes": 52658
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/sidecars-after.json": {
+      "sha256": "00497320a1dadd4d4ef3ecb3d8e63d22727df68a7a438949686e30e227a8bd50",
+      "bytes": 284466
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/attempts/sidecars-before.json": {
+      "sha256": "e415538521fc870d04990d4f7cd4ce715d30723535f4ec3bc61baedcbfefe5ce",
+      "bytes": 173123
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/frozen-u-check.json": {
+      "sha256": "3a1031c0fa409f155dd8dc24ee846c2ebfd89966cf11fc48299ac3ea0e6ecdef",
+      "bytes": 420
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/gallery.html": {
+      "sha256": "b92bf871852380d8bdfeaa297fe5e2d964d083dfde896eac709ad297d2d10063",
+      "bytes": 31418
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/release-receipt.json": {
+      "sha256": "ea74899209c485a0ae04ef032110d51e11b844bb5de441196f3ce76425c70ba0",
+      "bytes": 52780
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/results.json": {
+      "sha256": "8878809d158225980a02998c10d11b6885e1913c9d11d8aa1e918fefd692e350",
+      "bytes": 92361
+    },
+    "tools/godot-multiplayer/new-maps/botanical-correction/x-evidence/sidecar-cleanup.json": {
+      "sha256": "b43d560aad4f5f9260ed5e56aa65acdac76446d130ca1caef4f74269da2920ec",
+      "bytes": 82350
+    }
+  }
+}

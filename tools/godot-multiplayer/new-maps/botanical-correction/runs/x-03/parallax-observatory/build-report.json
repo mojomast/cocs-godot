@@ -1,0 +1,2255 @@
+{
+  "id": "parallax-observatory",
+  "revision": "districts-v4",
+  "geometryHash": "3a5800e89876ebcc741381802def24415d5050651c0d3b831ea8b9ec3b77b4f9",
+  "recipeHash": "1ab621ab38da21dda40e987c5b0478f5bc3a3e9b58950ab589180ebf353b1fc2",
+  "moth": {
+    "base": "assets/moth/map-variety-20261003/candidate-v2/manifest.json",
+    "overlay": "assets/moth/map-variety-20261003/candidate-v3/manifest.json"
+  },
+  "materials": [
+    "cistern",
+    "metal",
+    "mirror",
+    "ochre",
+    "parallax.enamel",
+    "parallax.etch",
+    "parallax.glazing",
+    "parallax.instrument-alloy",
+    "parallax.optics",
+    "parallax.stone",
+    "parallax.trim",
+    "paving",
+    "saltstone",
+    "sea"
+  ],
+  "authorityShellTriangles": 5467,
+  "floorUnion": {
+    "policy": "coplanar-first-authored-surface-wins",
+    "materialPriority": "terrain.surfaces order, preserving accepted author order before candidate additions",
+    "inputTriangles": 637,
+    "renderTriangles": 1179,
+    "inputProjectedArea": 29825.495472442053,
+    "renderProjectedArea": 18530.18388167457,
+    "overlapRemovedProjectedArea": 11295.311590767484,
+    "discardedSubprecisionProjectedArea": 0,
+    "lineage": [
+      {
+        "sourceId": "meridian-lens-joint-0--12",
+        "material": "saltstone",
+        "priority": 0,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 242.99999999999994,
+        "renderProjectedArea": 242.99999999999994
+      },
+      {
+        "sourceId": "meridian-lens-joint-1--12",
+        "material": "saltstone",
+        "priority": 1,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 242.99999999999994,
+        "renderProjectedArea": 242.99999999999994
+      },
+      {
+        "sourceId": "meridian-lens-joint-2--12",
+        "material": "saltstone",
+        "priority": 2,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 242.99999999999997,
+        "renderProjectedArea": 242.99999999999997
+      },
+      {
+        "sourceId": "meridian-lens-joint-3--12",
+        "material": "saltstone",
+        "priority": 3,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 243.0,
+        "renderProjectedArea": 243.0
+      },
+      {
+        "sourceId": "meridian-lens-joint-4--12",
+        "material": "saltstone",
+        "priority": 4,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 243.00000000000006,
+        "renderProjectedArea": 243.00000000000006
+      },
+      {
+        "sourceId": "meridian-lens-joint-5--12",
+        "material": "saltstone",
+        "priority": 5,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 243.00000000000006,
+        "renderProjectedArea": 243.00000000000006
+      },
+      {
+        "sourceId": "meridian-lens-joint-6--12",
+        "material": "saltstone",
+        "priority": 6,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 243.0000000000001,
+        "renderProjectedArea": 243.0000000000001
+      },
+      {
+        "sourceId": "meridian-lens-span-1--12",
+        "material": "saltstone",
+        "priority": 7,
+        "inputTriangles": 2,
+        "renderTriangles": 14,
+        "inputProjectedArea": 648.0,
+        "renderProjectedArea": 405.0
+      },
+      {
+        "sourceId": "meridian-lens-span-2--12",
+        "material": "saltstone",
+        "priority": 8,
+        "inputTriangles": 2,
+        "renderTriangles": 14,
+        "inputProjectedArea": 648.0,
+        "renderProjectedArea": 404.99999999999994
+      },
+      {
+        "sourceId": "meridian-lens-span-3--12",
+        "material": "saltstone",
+        "priority": 9,
+        "inputTriangles": 2,
+        "renderTriangles": 14,
+        "inputProjectedArea": 648.0,
+        "renderProjectedArea": 405.00000000000006
+      },
+      {
+        "sourceId": "meridian-lens-span-4--12",
+        "material": "saltstone",
+        "priority": 10,
+        "inputTriangles": 6,
+        "renderTriangles": 26,
+        "inputProjectedArea": 640.0,
+        "renderProjectedArea": 397.00000000000006
+      },
+      {
+        "sourceId": "meridian-lens-span-5--12",
+        "material": "saltstone",
+        "priority": 11,
+        "inputTriangles": 2,
+        "renderTriangles": 14,
+        "inputProjectedArea": 648.0,
+        "renderProjectedArea": 404.99999999999994
+      },
+      {
+        "sourceId": "meridian-lens-span-6--12",
+        "material": "saltstone",
+        "priority": 12,
+        "inputTriangles": 2,
+        "renderTriangles": 14,
+        "inputProjectedArea": 648.0,
+        "renderProjectedArea": 405.0
+      },
+      {
+        "sourceId": "armillary-arc-joint-0--12",
+        "material": "saltstone",
+        "priority": 13,
+        "inputTriangles": 10,
+        "renderTriangles": 0,
+        "inputProjectedArea": 146.9999999999999,
+        "renderProjectedArea": 0.0
+      },
+      {
+        "sourceId": "armillary-arc-joint-1--60",
+        "material": "saltstone",
+        "priority": 14,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 146.9999999999999,
+        "renderProjectedArea": 146.9999999999999
+      },
+      {
+        "sourceId": "armillary-arc-joint-2--200",
+        "material": "saltstone",
+        "priority": 15,
+        "inputTriangles": 5,
+        "renderTriangles": 5,
+        "inputProjectedArea": 73.49999999999977,
+        "renderProjectedArea": 73.49999999999977
+      },
+      {
+        "sourceId": "armillary-arc-joint-2--60",
+        "material": "saltstone",
+        "priority": 16,
+        "inputTriangles": 5,
+        "renderTriangles": 5,
+        "inputProjectedArea": 73.5,
+        "renderProjectedArea": 73.5
+      },
+      {
+        "sourceId": "armillary-arc-joint-3--200",
+        "material": "saltstone",
+        "priority": 17,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 147.0,
+        "renderProjectedArea": 147.0
+      },
+      {
+        "sourceId": "armillary-arc-joint-4--200",
+        "material": "saltstone",
+        "priority": 18,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 146.99999999999991,
+        "renderProjectedArea": 146.99999999999991
+      },
+      {
+        "sourceId": "armillary-arc-joint-5--200",
+        "material": "saltstone",
+        "priority": 19,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 147.0000000000001,
+        "renderProjectedArea": 147.0000000000001
+      },
+      {
+        "sourceId": "armillary-arc-joint-6--200",
+        "material": "saltstone",
+        "priority": 20,
+        "inputTriangles": 5,
+        "renderTriangles": 5,
+        "inputProjectedArea": 73.49999999999977,
+        "renderProjectedArea": 73.49999999999977
+      },
+      {
+        "sourceId": "armillary-arc-joint-6--60",
+        "material": "saltstone",
+        "priority": 21,
+        "inputTriangles": 5,
+        "renderTriangles": 5,
+        "inputProjectedArea": 73.5,
+        "renderProjectedArea": 73.5
+      },
+      {
+        "sourceId": "armillary-arc-joint-7--60",
+        "material": "saltstone",
+        "priority": 22,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 146.99999999999977,
+        "renderProjectedArea": 146.99999999999977
+      },
+      {
+        "sourceId": "armillary-arc-joint-8--12",
+        "material": "saltstone",
+        "priority": 23,
+        "inputTriangles": 10,
+        "renderTriangles": 0,
+        "inputProjectedArea": 146.99999999999997,
+        "renderProjectedArea": 0.0
+      },
+      {
+        "sourceId": "armillary-arc-span-1--60",
+        "material": "saltstone",
+        "priority": 24,
+        "inputTriangles": 2,
+        "renderTriangles": 14,
+        "inputProjectedArea": 187.8297101099821,
+        "renderProjectedArea": 114.32971010998244
+      },
+      {
+        "sourceId": "armillary-arc-span-1--12",
+        "material": "saltstone",
+        "priority": 25,
+        "inputTriangles": 2,
+        "renderTriangles": 5,
+        "inputProjectedArea": 187.82971010998256,
+        "renderProjectedArea": 48.66901242629234
+      },
+      {
+        "sourceId": "armillary-arc-span-2--200",
+        "material": "saltstone",
+        "priority": 26,
+        "inputTriangles": 1,
+        "renderTriangles": 3,
+        "inputProjectedArea": 20.41666666666697,
+        "renderProjectedArea": 4.11974041179019
+      },
+      {
+        "sourceId": "armillary-arc-span-2--60",
+        "material": "saltstone",
+        "priority": 27,
+        "inputTriangles": 3,
+        "renderTriangles": 23,
+        "inputProjectedArea": 635.6443061094924,
+        "renderProjectedArea": 504.7483948238855
+      },
+      {
+        "sourceId": "armillary-arc-span-3--200",
+        "material": "saltstone",
+        "priority": 28,
+        "inputTriangles": 3,
+        "renderTriangles": 21,
+        "inputProjectedArea": 492.3129759490199,
+        "renderProjectedArea": 370.70375514696343
+      },
+      {
+        "sourceId": "armillary-arc-span-3--60",
+        "material": "saltstone",
+        "priority": 29,
+        "inputTriangles": 1,
+        "renderTriangles": 4,
+        "inputProjectedArea": 46.2777777777776,
+        "renderProjectedArea": 20.32428214488732
+      },
+      {
+        "sourceId": "armillary-arc-span-4--200",
+        "material": "saltstone",
+        "priority": 30,
+        "inputTriangles": 2,
+        "renderTriangles": 22,
+        "inputProjectedArea": 455.80697669079154,
+        "renderProjectedArea": 308.3476944451303
+      },
+      {
+        "sourceId": "armillary-arc-span-5--200",
+        "material": "saltstone",
+        "priority": 31,
+        "inputTriangles": 2,
+        "renderTriangles": 29,
+        "inputProjectedArea": 455.8069766907915,
+        "renderProjectedArea": 308.36747320312816
+      },
+      {
+        "sourceId": "armillary-arc-span-6--200",
+        "material": "saltstone",
+        "priority": 32,
+        "inputTriangles": 6,
+        "renderTriangles": 24,
+        "inputProjectedArea": 481.6315725384277,
+        "renderProjectedArea": 359.5630694907095
+      },
+      {
+        "sourceId": "armillary-arc-span-6--60",
+        "material": "saltstone",
+        "priority": 33,
+        "inputTriangles": 2,
+        "renderTriangles": 8,
+        "inputProjectedArea": 46.03339047316422,
+        "renderProjectedArea": 20.642611275221725
+      },
+      {
+        "sourceId": "armillary-arc-span-7--200",
+        "material": "saltstone",
+        "priority": 34,
+        "inputTriangles": 1,
+        "renderTriangles": 3,
+        "inputProjectedArea": 20.41666666666697,
+        "renderProjectedArea": 4.11974041179019
+      },
+      {
+        "sourceId": "armillary-arc-span-7--60",
+        "material": "saltstone",
+        "priority": 35,
+        "inputTriangles": 3,
+        "renderTriangles": 24,
+        "inputProjectedArea": 635.6443061094924,
+        "renderProjectedArea": 504.37851592942036
+      },
+      {
+        "sourceId": "armillary-arc-span-8--60",
+        "material": "saltstone",
+        "priority": 36,
+        "inputTriangles": 2,
+        "renderTriangles": 13,
+        "inputProjectedArea": 187.8297101099821,
+        "renderProjectedArea": 114.13687256949845
+      },
+      {
+        "sourceId": "armillary-arc-span-8--12",
+        "material": "saltstone",
+        "priority": 37,
+        "inputTriangles": 2,
+        "renderTriangles": 4,
+        "inputProjectedArea": 187.82971010998256,
+        "renderProjectedArea": 48.6690124262924
+      },
+      {
+        "sourceId": "tidal-cistern-joint-0--12",
+        "material": "cistern",
+        "priority": 38,
+        "inputTriangles": 10,
+        "renderTriangles": 0,
+        "inputProjectedArea": 146.9999999999999,
+        "renderProjectedArea": 0.0
+      },
+      {
+        "sourceId": "tidal-cistern-joint-1-12",
+        "material": "cistern",
+        "priority": 39,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 147.0000000000001,
+        "renderProjectedArea": 147.0000000000001
+      },
+      {
+        "sourceId": "tidal-cistern-joint-2-12",
+        "material": "cistern",
+        "priority": 40,
+        "inputTriangles": 3,
+        "renderTriangles": 3,
+        "inputProjectedArea": 3.7214884748259465,
+        "renderProjectedArea": 3.7214884748259465
+      },
+      {
+        "sourceId": "tidal-cistern-joint-2-60",
+        "material": "cistern",
+        "priority": 41,
+        "inputTriangles": 9,
+        "renderTriangles": 9,
+        "inputProjectedArea": 143.27851152517383,
+        "renderProjectedArea": 143.27851152517383
+      },
+      {
+        "sourceId": "tidal-cistern-joint-3-60",
+        "material": "cistern",
+        "priority": 42,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 147.0,
+        "renderProjectedArea": 147.0
+      },
+      {
+        "sourceId": "tidal-cistern-joint-4-60",
+        "material": "cistern",
+        "priority": 43,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 146.9999999999999,
+        "renderProjectedArea": 146.9999999999999
+      },
+      {
+        "sourceId": "tidal-cistern-joint-5-60",
+        "material": "cistern",
+        "priority": 44,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 146.99999999999977,
+        "renderProjectedArea": 146.99999999999977
+      },
+      {
+        "sourceId": "tidal-cistern-joint-6-12",
+        "material": "cistern",
+        "priority": 45,
+        "inputTriangles": 3,
+        "renderTriangles": 3,
+        "inputProjectedArea": 3.7214884748259465,
+        "renderProjectedArea": 3.7214884748259465
+      },
+      {
+        "sourceId": "tidal-cistern-joint-6-60",
+        "material": "cistern",
+        "priority": 46,
+        "inputTriangles": 9,
+        "renderTriangles": 9,
+        "inputProjectedArea": 143.27851152517383,
+        "renderProjectedArea": 143.27851152517383
+      },
+      {
+        "sourceId": "tidal-cistern-joint-7-12",
+        "material": "cistern",
+        "priority": 47,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 147.0000000000001,
+        "renderProjectedArea": 147.0000000000001
+      },
+      {
+        "sourceId": "tidal-cistern-joint-8--12",
+        "material": "cistern",
+        "priority": 48,
+        "inputTriangles": 10,
+        "renderTriangles": 0,
+        "inputProjectedArea": 146.99999999999997,
+        "renderProjectedArea": 0.0
+      },
+      {
+        "sourceId": "tidal-cistern-span-1--12",
+        "material": "cistern",
+        "priority": 49,
+        "inputTriangles": 2,
+        "renderTriangles": 6,
+        "inputProjectedArea": 195.91998366680224,
+        "renderProjectedArea": 50.19900668936839
+      },
+      {
+        "sourceId": "tidal-cistern-span-1-12",
+        "material": "cistern",
+        "priority": 50,
+        "inputTriangles": 2,
+        "renderTriangles": 12,
+        "inputProjectedArea": 293.87997550020316,
+        "renderProjectedArea": 220.3799755002026
+      },
+      {
+        "sourceId": "tidal-cistern-span-2-12",
+        "material": "cistern",
+        "priority": 51,
+        "inputTriangles": 2,
+        "renderTriangles": 18,
+        "inputProjectedArea": 546.7174773134655,
+        "renderProjectedArea": 469.3442868640061
+      },
+      {
+        "sourceId": "tidal-cistern-span-2-60",
+        "material": "cistern",
+        "priority": 52,
+        "inputTriangles": 2,
+        "renderTriangles": 9,
+        "inputProjectedArea": 109.34349546269277,
+        "renderProjectedArea": 39.56498393751781
+      },
+      {
+        "sourceId": "tidal-cistern-span-3-12",
+        "material": "cistern",
+        "priority": 53,
+        "inputTriangles": 1,
+        "renderTriangles": 1,
+        "inputProjectedArea": 0.6843382729280165,
+        "renderProjectedArea": 0.00013276434719955432
+      },
+      {
+        "sourceId": "tidal-cistern-span-3-60",
+        "material": "cistern",
+        "priority": 54,
+        "inputTriangles": 3,
+        "renderTriangles": 25,
+        "inputProjectedArea": 530.5783086353595,
+        "renderProjectedArea": 383.279244734647
+      },
+      {
+        "sourceId": "tidal-cistern-span-4-60",
+        "material": "cistern",
+        "priority": 55,
+        "inputTriangles": 2,
+        "renderTriangles": 16,
+        "inputProjectedArea": 672.0,
+        "renderProjectedArea": 524.5454512329062
+      },
+      {
+        "sourceId": "tidal-cistern-span-5-60",
+        "material": "cistern",
+        "priority": 56,
+        "inputTriangles": 2,
+        "renderTriangles": 14,
+        "inputProjectedArea": 252.0,
+        "renderProjectedArea": 105.00000000000045
+      },
+      {
+        "sourceId": "tidal-cistern-span-6-60",
+        "material": "cistern",
+        "priority": 57,
+        "inputTriangles": 2,
+        "renderTriangles": 22,
+        "inputProjectedArea": 302.8663071389751,
+        "renderProjectedArea": 154.83353865083677
+      },
+      {
+        "sourceId": "tidal-cistern-span-7-12",
+        "material": "cistern",
+        "priority": 58,
+        "inputTriangles": 2,
+        "renderTriangles": 19,
+        "inputProjectedArea": 546.7174773134652,
+        "renderProjectedArea": 469.4959888386395
+      },
+      {
+        "sourceId": "tidal-cistern-span-7-60",
+        "material": "cistern",
+        "priority": 59,
+        "inputTriangles": 2,
+        "renderTriangles": 10,
+        "inputProjectedArea": 109.34349546269277,
+        "renderProjectedArea": 39.10825387788759
+      },
+      {
+        "sourceId": "tidal-cistern-span-8--12",
+        "material": "cistern",
+        "priority": 60,
+        "inputTriangles": 2,
+        "renderTriangles": 14,
+        "inputProjectedArea": 195.91998366680218,
+        "renderProjectedArea": 50.199006689368616
+      },
+      {
+        "sourceId": "tidal-cistern-span-8-12",
+        "material": "cistern",
+        "priority": 61,
+        "inputTriangles": 2,
+        "renderTriangles": 15,
+        "inputProjectedArea": 293.87997550020316,
+        "renderProjectedArea": 220.22827352557124
+      },
+      {
+        "sourceId": "west-calibration-joint-0--200",
+        "material": "saltstone",
+        "priority": 62,
+        "inputTriangles": 10,
+        "renderTriangles": 6,
+        "inputProjectedArea": 108.00000000000023,
+        "renderProjectedArea": 7.035075936398243
+      },
+      {
+        "sourceId": "west-calibration-joint-1--60",
+        "material": "saltstone",
+        "priority": 63,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 108.00000000000011,
+        "renderProjectedArea": 108.00000000000011
+      },
+      {
+        "sourceId": "west-calibration-joint-2--12",
+        "material": "saltstone",
+        "priority": 64,
+        "inputTriangles": 10,
+        "renderTriangles": 0,
+        "inputProjectedArea": 108.00000000000001,
+        "renderProjectedArea": 0.0
+      },
+      {
+        "sourceId": "west-calibration-joint-3-12",
+        "material": "saltstone",
+        "priority": 65,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 108.00000000000011,
+        "renderProjectedArea": 108.00000000000011
+      },
+      {
+        "sourceId": "west-calibration-joint-4-60",
+        "material": "saltstone",
+        "priority": 66,
+        "inputTriangles": 10,
+        "renderTriangles": 0,
+        "inputProjectedArea": 108.00000000000023,
+        "renderProjectedArea": 0.0
+      },
+      {
+        "sourceId": "west-calibration-span-1--200",
+        "material": "saltstone",
+        "priority": 67,
+        "inputTriangles": 2,
+        "renderTriangles": 0,
+        "inputProjectedArea": 73.4258809957364,
+        "renderProjectedArea": 0.0
+      },
+      {
+        "sourceId": "west-calibration-span-1--60",
+        "material": "saltstone",
+        "priority": 68,
+        "inputTriangles": 2,
+        "renderTriangles": 18,
+        "inputProjectedArea": 293.70352398294426,
+        "renderProjectedArea": 192.93785711515488
+      },
+      {
+        "sourceId": "west-calibration-span-2--60",
+        "material": "saltstone",
+        "priority": 69,
+        "inputTriangles": 2,
+        "renderTriangles": 10,
+        "inputProjectedArea": 288.0,
+        "renderProjectedArea": 233.85218695709966
+      },
+      {
+        "sourceId": "west-calibration-span-2--12",
+        "material": "saltstone",
+        "priority": 70,
+        "inputTriangles": 2,
+        "renderTriangles": 3,
+        "inputProjectedArea": 144.0,
+        "renderProjectedArea": 36.0
+      },
+      {
+        "sourceId": "west-calibration-span-3--12",
+        "material": "saltstone",
+        "priority": 71,
+        "inputTriangles": 2,
+        "renderTriangles": 3,
+        "inputProjectedArea": 144.0,
+        "renderProjectedArea": 36.0
+      },
+      {
+        "sourceId": "west-calibration-span-3-12",
+        "material": "saltstone",
+        "priority": 72,
+        "inputTriangles": 2,
+        "renderTriangles": 10,
+        "inputProjectedArea": 288.0,
+        "renderProjectedArea": 234.0000000000001
+      },
+      {
+        "sourceId": "west-calibration-span-4-12",
+        "material": "saltstone",
+        "priority": 73,
+        "inputTriangles": 2,
+        "renderTriangles": 16,
+        "inputProjectedArea": 293.70352398294426,
+        "renderProjectedArea": 200.09347550772293
+      },
+      {
+        "sourceId": "west-calibration-span-4-60",
+        "material": "saltstone",
+        "priority": 74,
+        "inputTriangles": 2,
+        "renderTriangles": 3,
+        "inputProjectedArea": 73.4258809957364,
+        "renderProjectedArea": 1.5829255922287757
+      },
+      {
+        "sourceId": "east-instrument-joint-0--200",
+        "material": "saltstone",
+        "priority": 75,
+        "inputTriangles": 10,
+        "renderTriangles": 11,
+        "inputProjectedArea": 108.00000000000023,
+        "renderProjectedArea": 7.035075936398243
+      },
+      {
+        "sourceId": "east-instrument-joint-1--60",
+        "material": "saltstone",
+        "priority": 76,
+        "inputTriangles": 21,
+        "renderTriangles": 21,
+        "inputProjectedArea": 76.9282032302757,
+        "renderProjectedArea": 76.9282032302757
+      },
+      {
+        "sourceId": "east-instrument-joint-2--12",
+        "material": "saltstone",
+        "priority": 77,
+        "inputTriangles": 10,
+        "renderTriangles": 0,
+        "inputProjectedArea": 108.00000000000001,
+        "renderProjectedArea": 0.0
+      },
+      {
+        "sourceId": "east-instrument-joint-3-12",
+        "material": "saltstone",
+        "priority": 78,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 108.00000000000011,
+        "renderProjectedArea": 108.00000000000011
+      },
+      {
+        "sourceId": "east-instrument-joint-4-60",
+        "material": "saltstone",
+        "priority": 79,
+        "inputTriangles": 10,
+        "renderTriangles": 0,
+        "inputProjectedArea": 108.00000000000023,
+        "renderProjectedArea": 0.0
+      },
+      {
+        "sourceId": "east-instrument-span-1--200",
+        "material": "saltstone",
+        "priority": 80,
+        "inputTriangles": 2,
+        "renderTriangles": 0,
+        "inputProjectedArea": 73.4258809957364,
+        "renderProjectedArea": 0.0
+      },
+      {
+        "sourceId": "east-instrument-span-1--60",
+        "material": "saltstone",
+        "priority": 81,
+        "inputTriangles": 5,
+        "renderTriangles": 24,
+        "inputProjectedArea": 254.49175814605735,
+        "renderProjectedArea": 166.24510021669062
+      },
+      {
+        "sourceId": "east-instrument-span-2--60",
+        "material": "saltstone",
+        "priority": 82,
+        "inputTriangles": 7,
+        "renderTriangles": 13,
+        "inputProjectedArea": 266.0,
+        "renderProjectedArea": 227.38808534196198
+      },
+      {
+        "sourceId": "east-instrument-span-2--12",
+        "material": "saltstone",
+        "priority": 83,
+        "inputTriangles": 2,
+        "renderTriangles": 3,
+        "inputProjectedArea": 144.0,
+        "renderProjectedArea": 36.0
+      },
+      {
+        "sourceId": "east-instrument-span-3--12",
+        "material": "saltstone",
+        "priority": 84,
+        "inputTriangles": 2,
+        "renderTriangles": 3,
+        "inputProjectedArea": 144.0,
+        "renderProjectedArea": 36.0
+      },
+      {
+        "sourceId": "east-instrument-span-3-12",
+        "material": "saltstone",
+        "priority": 85,
+        "inputTriangles": 2,
+        "renderTriangles": 10,
+        "inputProjectedArea": 288.0,
+        "renderProjectedArea": 233.99999999999977
+      },
+      {
+        "sourceId": "east-instrument-span-4-12",
+        "material": "saltstone",
+        "priority": 86,
+        "inputTriangles": 2,
+        "renderTriangles": 17,
+        "inputProjectedArea": 293.70352398294426,
+        "renderProjectedArea": 200.09360827207092
+      },
+      {
+        "sourceId": "east-instrument-span-4-60",
+        "material": "saltstone",
+        "priority": 87,
+        "inputTriangles": 2,
+        "renderTriangles": 3,
+        "inputProjectedArea": 73.4258809957364,
+        "renderProjectedArea": 3.8432134151144055
+      },
+      {
+        "sourceId": "polar-crosslink-joint-0--200",
+        "material": "saltstone",
+        "priority": 88,
+        "inputTriangles": 10,
+        "renderTriangles": 0,
+        "inputProjectedArea": 107.99999999999994,
+        "renderProjectedArea": 0.0
+      },
+      {
+        "sourceId": "polar-crosslink-joint-1--60",
+        "material": "saltstone",
+        "priority": 89,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 107.99999999999999,
+        "renderProjectedArea": 107.99999999999999
+      },
+      {
+        "sourceId": "polar-crosslink-joint-2--12",
+        "material": "saltstone",
+        "priority": 90,
+        "inputTriangles": 10,
+        "renderTriangles": 0,
+        "inputProjectedArea": 108.0,
+        "renderProjectedArea": 0.0
+      },
+      {
+        "sourceId": "polar-crosslink-joint-3-12",
+        "material": "saltstone",
+        "priority": 91,
+        "inputTriangles": 10,
+        "renderTriangles": 10,
+        "inputProjectedArea": 107.99999999999997,
+        "renderProjectedArea": 107.99999999999997
+      },
+      {
+        "sourceId": "polar-crosslink-joint-4-60",
+        "material": "saltstone",
+        "priority": 92,
+        "inputTriangles": 10,
+        "renderTriangles": 0,
+        "inputProjectedArea": 107.99999999999996,
+        "renderProjectedArea": 0.0
+      },
+      {
+        "sourceId": "polar-crosslink-span-1--200",
+        "material": "saltstone",
+        "priority": 93,
+        "inputTriangles": 2,
+        "renderTriangles": 16,
+        "inputProjectedArea": 288.0,
+        "renderProjectedArea": 195.78619187047656
+      },
+      {
+        "sourceId": "polar-crosslink-span-1--60",
+        "material": "saltstone",
+        "priority": 94,
+        "inputTriangles": 2,
+        "renderTriangles": 7,
+        "inputProjectedArea": 144.0,
+        "renderProjectedArea": 90.0
+      },
+      {
+        "sourceId": "polar-crosslink-span-2--60",
+        "material": "saltstone",
+        "priority": 95,
+        "inputTriangles": 2,
+        "renderTriangles": 8,
+        "inputProjectedArea": 432.0,
+        "renderProjectedArea": 377.99999999999994
+      },
+      {
+        "sourceId": "polar-crosslink-span-2--12",
+        "material": "saltstone",
+        "priority": 96,
+        "inputTriangles": 2,
+        "renderTriangles": 6,
+        "inputProjectedArea": 144.0,
+        "renderProjectedArea": 36.0
+      },
+      {
+        "sourceId": "polar-crosslink-span-3--12",
+        "material": "saltstone",
+        "priority": 97,
+        "inputTriangles": 2,
+        "renderTriangles": 12,
+        "inputProjectedArea": 144.0,
+        "renderProjectedArea": 36.0
+      },
+      {
+        "sourceId": "polar-crosslink-span-3-12",
+        "material": "saltstone",
+        "priority": 98,
+        "inputTriangles": 2,
+        "renderTriangles": 10,
+        "inputProjectedArea": 360.0,
+        "renderProjectedArea": 305.99999999999994
+      },
+      {
+        "sourceId": "polar-crosslink-span-4-12",
+        "material": "saltstone",
+        "priority": 99,
+        "inputTriangles": 2,
+        "renderTriangles": 10,
+        "inputProjectedArea": 216.0,
+        "renderProjectedArea": 161.99999999999997
+      },
+      {
+        "sourceId": "polar-crosslink-span-4-60",
+        "material": "saltstone",
+        "priority": 100,
+        "inputTriangles": 2,
+        "renderTriangles": 3,
+        "inputProjectedArea": 216.0,
+        "renderProjectedArea": 131.99999999999997
+      },
+      {
+        "sourceId": "arrival-plaza--60",
+        "material": "saltstone",
+        "priority": 101,
+        "inputTriangles": 3,
+        "renderTriangles": 8,
+        "inputProjectedArea": 161.51288694035736,
+        "renderProjectedArea": 82.33255266732272
+      },
+      {
+        "sourceId": "arrival-plaza--12",
+        "material": "saltstone",
+        "priority": 102,
+        "inputTriangles": 8,
+        "renderTriangles": 35,
+        "inputProjectedArea": 876.9742261192854,
+        "renderProjectedArea": 318.3106646981718
+      },
+      {
+        "sourceId": "arrival-plaza-12",
+        "material": "saltstone",
+        "priority": 103,
+        "inputTriangles": 3,
+        "renderTriangles": 4,
+        "inputProjectedArea": 161.51288694035725,
+        "renderProjectedArea": 90.5508159860799
+      },
+      {
+        "sourceId": "vault-district--60",
+        "material": "metal",
+        "priority": 104,
+        "inputTriangles": 3,
+        "renderTriangles": 4,
+        "inputProjectedArea": 85.85194719060826,
+        "renderProjectedArea": 40.73216712919873
+      },
+      {
+        "sourceId": "vault-district--12",
+        "material": "metal",
+        "priority": 105,
+        "inputTriangles": 4,
+        "renderTriangles": 20,
+        "inputProjectedArea": 744.7064940365489,
+        "renderProjectedArea": 236.92237232443398
+      },
+      {
+        "sourceId": "vault-district-12",
+        "material": "metal",
+        "priority": 106,
+        "inputTriangles": 3,
+        "renderTriangles": 5,
+        "inputProjectedArea": 85.85194719060837,
+        "renderProjectedArea": 46.792772280907
+      },
+      {
+        "sourceId": "central-lens-dais--60",
+        "material": "mirror",
+        "priority": 107,
+        "inputTriangles": 5,
+        "renderTriangles": 11,
+        "inputProjectedArea": 135.7327314133141,
+        "renderProjectedArea": 58.89357663898177
+      },
+      {
+        "sourceId": "central-lens-dais--12",
+        "material": "mirror",
+        "priority": 108,
+        "inputTriangles": 8,
+        "renderTriangles": 15,
+        "inputProjectedArea": 833.7242898437511,
+        "renderProjectedArea": 112.75382900171493
+      },
+      {
+        "sourceId": "central-lens-dais-12",
+        "material": "mirror",
+        "priority": 109,
+        "inputTriangles": 5,
+        "renderTriangles": 11,
+        "inputProjectedArea": 135.73273141331407,
+        "renderProjectedArea": 58.8935766389818
+      },
+      {
+        "sourceId": "ephemeris-vault--12",
+        "material": "cistern",
+        "priority": 110,
+        "inputTriangles": 2,
+        "renderTriangles": 0,
+        "inputProjectedArea": 416.0,
+        "renderProjectedArea": 0.0
+      },
+      {
+        "sourceId": "tidal-pump-vault-60",
+        "material": "cistern",
+        "priority": 111,
+        "inputTriangles": 2,
+        "renderTriangles": 17,
+        "inputProjectedArea": 416.0,
+        "renderProjectedArea": 52.0
+      },
+      {
+        "sourceId": "polar-hall-foundation--200",
+        "material": "paving",
+        "priority": 112,
+        "inputTriangles": 2,
+        "renderTriangles": 17,
+        "inputProjectedArea": 988.0,
+        "renderProjectedArea": 383.3825267968714
+      },
+      {
+        "sourceId": "court-floor",
+        "material": "paving",
+        "priority": 113,
+        "inputTriangles": 26,
+        "renderTriangles": 29,
+        "inputProjectedArea": 938.0,
+        "renderProjectedArea": 754.0
+      },
+      {
+        "sourceId": "court-terrace-ramp",
+        "material": "saltstone",
+        "priority": 114,
+        "inputTriangles": 2,
+        "renderTriangles": 2,
+        "inputProjectedArea": 540.0,
+        "renderProjectedArea": 540.0
+      },
+      {
+        "sourceId": "lightwell-floor",
+        "material": "cistern",
+        "priority": 115,
+        "inputTriangles": 4,
+        "renderTriangles": 4,
+        "inputProjectedArea": 48.0,
+        "renderProjectedArea": 48.0
+      },
+      {
+        "sourceId": "lightwell-access-ramp",
+        "material": "saltstone",
+        "priority": 116,
+        "inputTriangles": 4,
+        "renderTriangles": 4,
+        "inputProjectedArea": 64.0,
+        "renderProjectedArea": 64.0
+      },
+      {
+        "sourceId": "court-entry",
+        "material": "paving",
+        "priority": 117,
+        "inputTriangles": 4,
+        "renderTriangles": 5,
+        "inputProjectedArea": 24.0,
+        "renderProjectedArea": 16.0
+      },
+      {
+        "sourceId": "court-east-landing-v4",
+        "material": "saltstone",
+        "priority": 118,
+        "inputTriangles": 2,
+        "renderTriangles": 2,
+        "inputProjectedArea": 56.0,
+        "renderProjectedArea": 56.0
+      },
+      {
+        "sourceId": "court-east-grade-v4",
+        "material": "saltstone",
+        "priority": 119,
+        "inputTriangles": 2,
+        "renderTriangles": 2,
+        "inputProjectedArea": 127.5,
+        "renderProjectedArea": 127.5
+      }
+    ],
+    "producerReference": {
+      "path": "tools/godot-multiplayer/new-maps/parallax-observatory/blender_author.py",
+      "sha256": "9cec1edaab54477d9999eb7888c921d527f0ee3f1248f2adf9c2a6a7cf5897cc",
+      "rule": "accepted first-authored floor/material ownership, applied to candidate coplanar geometry"
+    }
+  },
+  "structureBoxes": 74,
+  "structureTriangles": 888,
+  "pieceCount": 0,
+  "pieceTriangles": 0,
+  "decorativeMeshes": 0,
+  "decorativeTriangles": 0,
+  "baseCraftParts": 22134,
+  "baseCraftTriangles": 134814,
+  "baseCraftSourceSha256": "9cec1edaab54477d9999eb7888c921d527f0ee3f1248f2adf9c2a6a7cf5897cc",
+  "baseCraftCandidateCuts": [
+    {
+      "name": "ochre-edge.parapet-meridian-lens-span-4--12-2-3-tri-1",
+      "cutout": "court-entry-opening"
+    },
+    {
+      "name": "ochre-edge.parapet-meridian-lens-span-4--12-2-4-tri-1",
+      "cutout": "court-entry-opening"
+    },
+    {
+      "name": "chalk-stratum.parapet-armillary-arc-span-6--200-0-6-tri-0.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-armillary-arc-span-6--200-0-6-tri-0.2",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-armillary-arc-span-6--200-0-6-tri-020.0",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--200-0-6-tri-020.0-0.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--200-0-6-tri-020.00",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--200-0-6-tri-020.00.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-armillary-arc-span-6--200-0-6-tri-014.0",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--200-0-6-tri-014.0-0.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--200-0-6-tri-014.00",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--200-0-6-tri-014.00.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "ochre-edge.parapet-armillary-arc-span-6--200-0-6-tri-1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-armillary-arc-span-6--200-0-7-tri-0.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-armillary-arc-span-6--200-0-7-tri-0.2",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-armillary-arc-span-6--200-0-7-tri-020.0",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--200-0-7-tri-020.0-0.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--200-0-7-tri-020.00",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--200-0-7-tri-020.00.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-armillary-arc-span-6--200-0-7-tri-014.0",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--200-0-7-tri-014.0-0.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--200-0-7-tri-014.00",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--200-0-7-tri-014.00.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "cliff-pilaster.parapet-armillary-arc-span-6--200-0-7-tri-0",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "ochre-edge.parapet-armillary-arc-span-6--200-0-7-tri-1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-armillary-arc-span-6--200-0-8-tri-0.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-armillary-arc-span-6--200-0-8-tri-0.2",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-armillary-arc-span-6--200-0-8-tri-020.0",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--200-0-8-tri-020.0-0.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--200-0-8-tri-020.00",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--200-0-8-tri-020.00.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-armillary-arc-span-6--200-0-8-tri-014.0",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--200-0-8-tri-014.0-0.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--200-0-8-tri-014.00",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--200-0-8-tri-014.00.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "cliff-pilaster.parapet-armillary-arc-span-6--200-0-8-tri-0",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "ochre-edge.parapet-armillary-arc-span-6--200-0-8-tri-1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-armillary-arc-span-6--60-0-0-tri-0.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-armillary-arc-span-6--60-0-0-tri-0.2",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-armillary-arc-span-6--60-0-0-tri-019.845337114639264",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--60-0-0-tri-019.845337114639264-0.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--60-0-0-tri-019.8453371146392640",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--60-0-0-tri-019.8453371146392640.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-armillary-arc-span-6--60-0-0-tri-013.845337114639264",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--60-0-0-tri-013.845337114639264-0.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--60-0-0-tri-013.8453371146392640",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-armillary-arc-span-6--60-0-0-tri-013.8453371146392640.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "cliff-pilaster.parapet-armillary-arc-span-6--60-0-0-tri-0",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "ochre-edge.parapet-armillary-arc-span-6--60-0-0-tri-1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-joint-1--60-4-0-tri-0.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-joint-1--60-4-0-tri-0.2",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "ochre-edge.parapet-east-instrument-joint-1--60-4-0-tri-1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-joint-1--60-4-1-tri-0.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-joint-1--60-4-1-tri-0.2",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "ochre-edge.parapet-east-instrument-joint-1--60-4-1-tri-1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-joint-1--60-5-0-tri-0.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-joint-1--60-5-0-tri-0.2",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "ochre-edge.parapet-east-instrument-joint-1--60-5-0-tri-1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-joint-1--60-5-1-tri-0.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "ochre-edge.parapet-east-instrument-joint-1--60-5-1-tri-1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-span-1--60-0-1-tri-0.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-span-1--60-0-1-tri-0.2",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-east-instrument-span-1--60-0-1-tri-018.930157663007613",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-1-tri-018.930157663007613-0.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-1-tri-018.9301576630076130",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-1-tri-018.9301576630076130.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-east-instrument-span-1--60-0-1-tri-012.930157663007613",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-1-tri-012.930157663007613-0.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-1-tri-012.9301576630076130",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-1-tri-012.9301576630076130.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "ochre-edge.parapet-east-instrument-span-1--60-0-1-tri-1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-span-1--60-0-2-tri-0.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-span-1--60-0-2-tri-0.2",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-east-instrument-span-1--60-0-2-tri-018.21692943834602",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-2-tri-018.21692943834602-0.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-2-tri-018.216929438346020",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-2-tri-018.216929438346020.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-east-instrument-span-1--60-0-2-tri-012.216929438346021",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-2-tri-012.2169294383460210",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-2-tri-012.2169294383460210.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "cliff-pilaster.parapet-east-instrument-span-1--60-0-2-tri-0",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "ochre-edge.parapet-east-instrument-span-1--60-0-2-tri-1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-span-1--60-0-3-tri-0.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-span-1--60-0-3-tri-0.2",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-east-instrument-span-1--60-0-3-tri-017.503701213684433",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-3-tri-017.503701213684433-0.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-3-tri-017.5037012136844330",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-3-tri-017.5037012136844330.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-east-instrument-span-1--60-0-3-tri-011.503701213684433",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-3-tri-011.5037012136844330.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "cliff-pilaster.parapet-east-instrument-span-1--60-0-3-tri-0",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "ochre-edge.parapet-east-instrument-span-1--60-0-3-tri-1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-span-1--60-0-4-tri-0.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-span-1--60-0-4-tri-0.2",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-east-instrument-span-1--60-0-4-tri-016.790472989022845",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-4-tri-016.790472989022845-0.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-4-tri-016.7904729890228450",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-4-tri-016.7904729890228450.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-east-instrument-span-1--60-0-4-tri-010.790472989022845",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "cliff-pilaster.parapet-east-instrument-span-1--60-0-4-tri-0",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "ochre-edge.parapet-east-instrument-span-1--60-0-4-tri-1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-span-1--60-0-5-tri-0.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-span-1--60-0-5-tri-0.2",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-east-instrument-span-1--60-0-5-tri-016.077244764361254",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-5-tri-016.077244764361254-0.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-5-tri-016.0772447643612540",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-5-tri-016.0772447643612540.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "cliff-pilaster.parapet-east-instrument-span-1--60-0-5-tri-0",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "ochre-edge.parapet-east-instrument-span-1--60-0-5-tri-1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-span-1--60-0-6-tri-0.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-span-1--60-0-6-tri-0.2",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-east-instrument-span-1--60-0-6-tri-015.364016539699662",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-6-tri-015.364016539699662-0.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-6-tri-015.3640165396996620",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-6-tri-015.3640165396996620.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "cliff-pilaster.parapet-east-instrument-span-1--60-0-6-tri-0",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "ochre-edge.parapet-east-instrument-span-1--60-0-6-tri-1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-span-1--60-0-7-tri-0.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-span-1--60-0-7-tri-0.2",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-east-instrument-span-1--60-0-7-tri-014.65078831503807",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-7-tri-014.65078831503807-0.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-7-tri-014.650788315038070",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-1--60-0-7-tri-014.650788315038070.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "cliff-pilaster.parapet-east-instrument-span-1--60-0-7-tri-0",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "ochre-edge.parapet-east-instrument-span-1--60-0-7-tri-1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-span-2--60-0-0-tri-0.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-span-2--60-0-0-tri-0.2",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-east-instrument-span-2--60-0-0-tri-013.625",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-2--60-0-0-tri-013.625-0.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-2--60-0-0-tri-013.6250",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-2--60-0-0-tri-013.6250.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "cliff-pilaster.parapet-east-instrument-span-2--60-0-0-tri-0",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "ochre-edge.parapet-east-instrument-span-2--60-0-0-tri-1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "chalk-stratum.parapet-east-instrument-span-2--60-0-1-tri-0.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "blind-cliff-bay.parapet-east-instrument-span-2--60-0-1-tri-012.875",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-2--60-0-1-tri-012.875-0.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-2--60-0-1-tri-012.8750",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "bay-transom.parapet-east-instrument-span-2--60-0-1-tri-012.8750.8",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "cliff-pilaster.parapet-east-instrument-span-2--60-0-1-tri-0",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "ochre-edge.parapet-east-instrument-span-2--60-0-1-tri-1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "armillary-arc.survey-tick.5.7.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "east-instrument.survey-tick.0.6.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "east-instrument.survey-tick.0.7.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "east-instrument.survey-tick.0.8.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "east-instrument.survey-tick.0.9.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "east-instrument.survey-tick.1.0.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "east-instrument.survey-tick.1.1.1",
+      "cutout": "court-east-connection-v4"
+    },
+    {
+      "name": "survey-inlay.armillary-arc551",
+      "cutout": "court-east-connection-v4"
+    }
+  ],
+  "evaluatedSceneTriangles": 155553,
+  "evaluatedTriangleAdvisory": {
+    "policy": "advisory",
+    "measurement": "evaluated-scene",
+    "totalTriangles": 155553,
+    "targetTriangles": 150000,
+    "overTarget": true,
+    "overageTriangles": 5553,
+    "status": "pending-performance-visual-review"
+  },
+  "exportAudit": {
+    "triangles": 155553,
+    "triangleAdvisory": {
+      "policy": "advisory",
+      "measurement": "exported-glb",
+      "totalTriangles": 155553,
+      "targetTriangles": 150000,
+      "overTarget": true,
+      "overageTriangles": 5553,
+      "status": "pending-performance-visual-review"
+    },
+    "primitives": 39,
+    "usedMaterials": [
+      "cistern",
+      "metal",
+      "mirror",
+      "ochre",
+      "parallax.enamel",
+      "parallax.etch",
+      "parallax.glazing",
+      "parallax.instrument-alloy",
+      "parallax.optics",
+      "parallax.stone",
+      "parallax.trim",
+      "paving",
+      "saltstone",
+      "sea"
+    ],
+    "materialEvidence": {
+      "parallax.etch": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "parallax.enamel": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "metal": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "mirror": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "ochre": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "paving": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "saltstone": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "sea": {
+        "role": "preserve",
+        "geometryReferenced": true
+      },
+      "cistern": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "parallax.instrument-alloy": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "parallax.optics": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "parallax.stone": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "parallax.trim": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      },
+      "parallax.glazing": {
+        "role": "surface",
+        "geometryReferenced": true,
+        "pixelsVerified": true
+      }
+    },
+    "albedo": {
+      "parallax.etch": {
+        "sourceLinearSha256": "1f8c094d8076b8d5fa311429fdea69244b3191281bee2bf578ef6546932db9a0",
+        "exportSrgbSha256": "3650ca3b1f2912c15592ce96ae8ac1060230f7e2afcbc5c69058f4a0ef39d152",
+        "maxByteError": 0,
+        "normalSourceSha256": "d89e3a00bc065b6416942305ec7a1dea4dc35e255a16a33202ac7d4b8dd65bb8",
+        "normalExportSha256": "d89e3a00bc065b6416942305ec7a1dea4dc35e255a16a33202ac7d4b8dd65bb8",
+        "roughnessSourceSha256": "533f8c142bf3b24cdf74046e8e2dbfffbfe6ad4b75e8239bddd085761d25d43a",
+        "metallicRoughnessExportSha256": "c6d4f6d89e8e1939f03fd2ab6f48833ab616145621bae67169069de8fa5c4906"
+      },
+      "parallax.enamel": {
+        "sourceLinearSha256": "c8dfce6416c2b9eb145c63470331f6749e0338527fcb3045dfef15b435062702",
+        "exportSrgbSha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+        "maxByteError": 0,
+        "normalSourceSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "normalExportSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "roughnessSourceSha256": "2c63bee56ac7600342fd93f52ed17aa5d096b4e5c1d659168bd5d0586ae1afc5",
+        "metallicRoughnessExportSha256": "71bde5b9fa079061ce35291730a2f385a9c7bbe709e5b9f546844ac6861694bb"
+      },
+      "metal": {
+        "sourceLinearSha256": "1e3a2aab37bdc00b936e090f748a01caea2e3b30de33a972365328be6a03afdf",
+        "exportSrgbSha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+        "maxByteError": 0,
+        "normalSourceSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "normalExportSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "roughnessSourceSha256": "dbcaa37ae370a5150dc588fc6189126bb52c4e1b8e2671b129ded5078252d99a",
+        "metallicRoughnessExportSha256": "67503e7fe7d49b24e173c84bdf86895e7397702d3399772150136dddfc65aa75"
+      },
+      "mirror": {
+        "sourceLinearSha256": "04e59645eb4b274341f7c33f4b5ad6d9ee6e1ed73e7f77459d3201bca35f20bb",
+        "exportSrgbSha256": "4f6e5eac683c7514dbb923552cd810789d046c0be9716dded91c4aba533e9ad9",
+        "maxByteError": 0,
+        "normalSourceSha256": "0e9012adf948ca4002ae0ec05e9ecf71a6cf1611882b48784d93b1906490471e",
+        "normalExportSha256": "0e9012adf948ca4002ae0ec05e9ecf71a6cf1611882b48784d93b1906490471e",
+        "roughnessSourceSha256": "ab2a3570a390d7f829bc2ad31416c363b03a9d379c70a3d2a296bd4dc42897bc",
+        "metallicRoughnessExportSha256": "ac51f0038b9e13507615ed8e5fd78c24f704bc51eee5a7eebbeef9fc7e636838"
+      },
+      "ochre": {
+        "sourceLinearSha256": "1e3a2aab37bdc00b936e090f748a01caea2e3b30de33a972365328be6a03afdf",
+        "exportSrgbSha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+        "maxByteError": 0,
+        "normalSourceSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "normalExportSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "roughnessSourceSha256": "dbcaa37ae370a5150dc588fc6189126bb52c4e1b8e2671b129ded5078252d99a",
+        "metallicRoughnessExportSha256": "67503e7fe7d49b24e173c84bdf86895e7397702d3399772150136dddfc65aa75"
+      },
+      "paving": {
+        "sourceLinearSha256": "3a8121ed72b1989934ad32ee733f68b2e4af83372dfb1964efa9fd25c633091e",
+        "exportSrgbSha256": "b294342e60378d7fc2d45a9c631c42bde77de529b168f35fbc6194e5998252ae",
+        "maxByteError": 0,
+        "normalSourceSha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+        "normalExportSha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+        "roughnessSourceSha256": "a5d214313015eef0cbbe497983753826b69aa568c3667a7298915a7c16188d07",
+        "metallicRoughnessExportSha256": "6a222a03f8c50f54d7767c9e88be930c9a8d9b29c71d2db5493a9b23b209a2e3"
+      },
+      "saltstone": {
+        "sourceLinearSha256": "6bc2e95ea14074fed620bfcf9fb61bff4c4336747c062ce17f9d2b1108ae6042",
+        "exportSrgbSha256": "fa9d87ca9e5a26b74c480a1134f64a982d8230e0e59ecc50e64b1de5cbfc3d7d",
+        "maxByteError": 0,
+        "normalSourceSha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+        "normalExportSha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+        "roughnessSourceSha256": "d3a83a3eab2cdd5ef13cbd28e30fadb1c76ca11278996720304800db3d59da8a",
+        "metallicRoughnessExportSha256": "1c75ff4425dd7d13e8225cf6e09f7ff498c535f291b64a2f60ba69fdc8d6baa8"
+      },
+      "cistern": {
+        "sourceLinearSha256": "c8dfce6416c2b9eb145c63470331f6749e0338527fcb3045dfef15b435062702",
+        "exportSrgbSha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+        "maxByteError": 0,
+        "normalSourceSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "normalExportSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "roughnessSourceSha256": "2c63bee56ac7600342fd93f52ed17aa5d096b4e5c1d659168bd5d0586ae1afc5",
+        "metallicRoughnessExportSha256": "71bde5b9fa079061ce35291730a2f385a9c7bbe709e5b9f546844ac6861694bb"
+      },
+      "parallax.instrument-alloy": {
+        "sourceLinearSha256": "1e3a2aab37bdc00b936e090f748a01caea2e3b30de33a972365328be6a03afdf",
+        "exportSrgbSha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+        "maxByteError": 0,
+        "normalSourceSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "normalExportSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "roughnessSourceSha256": "dbcaa37ae370a5150dc588fc6189126bb52c4e1b8e2671b129ded5078252d99a",
+        "metallicRoughnessExportSha256": "67503e7fe7d49b24e173c84bdf86895e7397702d3399772150136dddfc65aa75"
+      },
+      "parallax.optics": {
+        "sourceLinearSha256": "04e59645eb4b274341f7c33f4b5ad6d9ee6e1ed73e7f77459d3201bca35f20bb",
+        "exportSrgbSha256": "4f6e5eac683c7514dbb923552cd810789d046c0be9716dded91c4aba533e9ad9",
+        "maxByteError": 0,
+        "normalSourceSha256": "0e9012adf948ca4002ae0ec05e9ecf71a6cf1611882b48784d93b1906490471e",
+        "normalExportSha256": "0e9012adf948ca4002ae0ec05e9ecf71a6cf1611882b48784d93b1906490471e",
+        "roughnessSourceSha256": "ab2a3570a390d7f829bc2ad31416c363b03a9d379c70a3d2a296bd4dc42897bc",
+        "metallicRoughnessExportSha256": "ac51f0038b9e13507615ed8e5fd78c24f704bc51eee5a7eebbeef9fc7e636838"
+      },
+      "parallax.stone": {
+        "sourceLinearSha256": "6bc2e95ea14074fed620bfcf9fb61bff4c4336747c062ce17f9d2b1108ae6042",
+        "exportSrgbSha256": "fa9d87ca9e5a26b74c480a1134f64a982d8230e0e59ecc50e64b1de5cbfc3d7d",
+        "maxByteError": 0,
+        "normalSourceSha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+        "normalExportSha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+        "roughnessSourceSha256": "d3a83a3eab2cdd5ef13cbd28e30fadb1c76ca11278996720304800db3d59da8a",
+        "metallicRoughnessExportSha256": "1c75ff4425dd7d13e8225cf6e09f7ff498c535f291b64a2f60ba69fdc8d6baa8"
+      },
+      "parallax.trim": {
+        "sourceLinearSha256": "3fb928bcb4dda60fb10b5a874e4b8e1ff1fa5cfcb8dd79de0321827abcb64b5c",
+        "exportSrgbSha256": "7ec0ff69d1060e45b2338f4c2add68d729625405f9801701d78239dded35f131",
+        "maxByteError": 0,
+        "normalSourceSha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+        "normalExportSha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+        "roughnessSourceSha256": "e1ad3d9376571e1bf01573c4d9aa5dad04bcbff53832675c412e064218a22233",
+        "metallicRoughnessExportSha256": "aafa178f61e21e1b86899d79151263b01e71441ba6ba13361f124b408c285f0b"
+      },
+      "parallax.glazing": {
+        "sourceLinearSha256": "bfb249ce1aab01033c3cec21b56141370454499667d2926bb2fce73c2cd862c9",
+        "exportSrgbSha256": "a823f19423db40ca2d79d5a243a5ae00994aaf183e463c176b7982609a5127ed",
+        "maxByteError": 0,
+        "normalSourceSha256": "2d73be97dcd93087d974245aee5389579f254b2c71697a098844b9721f51fb3f",
+        "normalExportSha256": "2d73be97dcd93087d974245aee5389579f254b2c71697a098844b9721f51fb3f",
+        "roughnessSourceSha256": "1e0a78dc9469061ad9572a32129876b75e427dd6beeae009104a849ff9737a4f",
+        "metallicRoughnessExportSha256": "1b39432d14089e6c4d560626cfd40a400865a9d9559be011ea3371b03a087874"
+      }
+    },
+    "evaluatedTriangleDelta": 0,
+    "geometryValidation": "scene-referenced embedded accessor bytes verified; non-instanced static export"
+  },
+  "materialReceipt": {
+    "pack": {
+      "overlaySha256": "86beb51736bea315b2bb35cd7772aff2daec7a1317b13c1eb498c981f2e8c5f0",
+      "baseSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+    },
+    "materials": {
+      "saltstone": {
+        "resource": "salt-limestone",
+        "role": "surface",
+        "tileMeters": 4,
+        "tilesPerMeter": 0.25,
+        "texelsPerMeter": 128,
+        "sourceColorSha256": "6bc2e95ea14074fed620bfcf9fb61bff4c4336747c062ce17f9d2b1108ae6042",
+        "sourceNormalSha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "d3a83a3eab2cdd5ef13cbd28e30fadb1c76ca11278996720304800db3d59da8a",
+        "convertedAlbedoSha256": "fa9d87ca9e5a26b74c480a1134f64a982d8230e0e59ecc50e64b1de5cbfc3d7d",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "cistern": {
+        "resource": "ceramic-enamel",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "c8dfce6416c2b9eb145c63470331f6749e0338527fcb3045dfef15b435062702",
+        "sourceNormalSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "2c63bee56ac7600342fd93f52ed17aa5d096b4e5c1d659168bd5d0586ae1afc5",
+        "convertedAlbedoSha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "metal": {
+        "resource": "anodized-brush",
+        "role": "surface",
+        "tileMeters": 1,
+        "tilesPerMeter": 1.0,
+        "texelsPerMeter": 512,
+        "sourceColorSha256": "1e3a2aab37bdc00b936e090f748a01caea2e3b30de33a972365328be6a03afdf",
+        "sourceNormalSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "dbcaa37ae370a5150dc588fc6189126bb52c4e1b8e2671b129ded5078252d99a",
+        "convertedAlbedoSha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+        "metallic": 0.65,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "mirror": {
+        "resource": "optical-mirror-opaque",
+        "role": "surface",
+        "tileMeters": 1,
+        "tilesPerMeter": 1.0,
+        "texelsPerMeter": 512,
+        "sourceColorSha256": "04e59645eb4b274341f7c33f4b5ad6d9ee6e1ed73e7f77459d3201bca35f20bb",
+        "sourceNormalSha256": "0e9012adf948ca4002ae0ec05e9ecf71a6cf1611882b48784d93b1906490471e",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "ab2a3570a390d7f829bc2ad31416c363b03a9d379c70a3d2a296bd4dc42897bc",
+        "convertedAlbedoSha256": "4f6e5eac683c7514dbb923552cd810789d046c0be9716dded91c4aba533e9ad9",
+        "metallic": 0.65,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "paving": {
+        "resource": "basalt-strata",
+        "role": "surface",
+        "tileMeters": 4,
+        "tilesPerMeter": 0.25,
+        "texelsPerMeter": 128,
+        "sourceColorSha256": "3a8121ed72b1989934ad32ee733f68b2e4af83372dfb1964efa9fd25c633091e",
+        "sourceNormalSha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "a5d214313015eef0cbbe497983753826b69aa568c3667a7298915a7c16188d07",
+        "convertedAlbedoSha256": "b294342e60378d7fc2d45a9c631c42bde77de529b168f35fbc6194e5998252ae",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "ochre": {
+        "resource": "anodized-brush",
+        "role": "surface",
+        "tileMeters": 1,
+        "tilesPerMeter": 1.0,
+        "texelsPerMeter": 512,
+        "sourceColorSha256": "1e3a2aab37bdc00b936e090f748a01caea2e3b30de33a972365328be6a03afdf",
+        "sourceNormalSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "dbcaa37ae370a5150dc588fc6189126bb52c4e1b8e2671b129ded5078252d99a",
+        "convertedAlbedoSha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+        "metallic": 0.65,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "parallax.instrument-alloy": {
+        "resource": "anodized-brush",
+        "role": "surface",
+        "tileMeters": 1,
+        "tilesPerMeter": 1.0,
+        "texelsPerMeter": 512,
+        "sourceColorSha256": "1e3a2aab37bdc00b936e090f748a01caea2e3b30de33a972365328be6a03afdf",
+        "sourceNormalSha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "dbcaa37ae370a5150dc588fc6189126bb52c4e1b8e2671b129ded5078252d99a",
+        "convertedAlbedoSha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+        "metallic": 0.65,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "parallax.enamel": {
+        "resource": "ceramic-enamel",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "c8dfce6416c2b9eb145c63470331f6749e0338527fcb3045dfef15b435062702",
+        "sourceNormalSha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "2c63bee56ac7600342fd93f52ed17aa5d096b4e5c1d659168bd5d0586ae1afc5",
+        "convertedAlbedoSha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "parallax.etch": {
+        "resource": "etched-coating-haze",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "1f8c094d8076b8d5fa311429fdea69244b3191281bee2bf578ef6546932db9a0",
+        "sourceNormalSha256": "d89e3a00bc065b6416942305ec7a1dea4dc35e255a16a33202ac7d4b8dd65bb8",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "533f8c142bf3b24cdf74046e8e2dbfffbfe6ad4b75e8239bddd085761d25d43a",
+        "convertedAlbedoSha256": "3650ca3b1f2912c15592ce96ae8ac1060230f7e2afcbc5c69058f4a0ef39d152",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "86beb51736bea315b2bb35cd7772aff2daec7a1317b13c1eb498c981f2e8c5f0"
+      },
+      "parallax.optics": {
+        "resource": "optical-mirror-opaque",
+        "role": "surface",
+        "tileMeters": 1,
+        "tilesPerMeter": 1.0,
+        "texelsPerMeter": 512,
+        "sourceColorSha256": "04e59645eb4b274341f7c33f4b5ad6d9ee6e1ed73e7f77459d3201bca35f20bb",
+        "sourceNormalSha256": "0e9012adf948ca4002ae0ec05e9ecf71a6cf1611882b48784d93b1906490471e",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "ab2a3570a390d7f829bc2ad31416c363b03a9d379c70a3d2a296bd4dc42897bc",
+        "convertedAlbedoSha256": "4f6e5eac683c7514dbb923552cd810789d046c0be9716dded91c4aba533e9ad9",
+        "metallic": 0.65,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "parallax.glazing": {
+        "resource": "frosted-glass",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "bfb249ce1aab01033c3cec21b56141370454499667d2926bb2fce73c2cd862c9",
+        "sourceNormalSha256": "2d73be97dcd93087d974245aee5389579f254b2c71697a098844b9721f51fb3f",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "1e0a78dc9469061ad9572a32129876b75e427dd6beeae009104a849ff9737a4f",
+        "convertedAlbedoSha256": "a823f19423db40ca2d79d5a243a5ae00994aaf183e463c176b7982609a5127ed",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "parallax.stone": {
+        "resource": "salt-limestone",
+        "role": "surface",
+        "tileMeters": 4,
+        "tilesPerMeter": 0.25,
+        "texelsPerMeter": 128,
+        "sourceColorSha256": "6bc2e95ea14074fed620bfcf9fb61bff4c4336747c062ce17f9d2b1108ae6042",
+        "sourceNormalSha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "d3a83a3eab2cdd5ef13cbd28e30fadb1c76ca11278996720304800db3d59da8a",
+        "convertedAlbedoSha256": "fa9d87ca9e5a26b74c480a1134f64a982d8230e0e59ecc50e64b1de5cbfc3d7d",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "parallax.trim": {
+        "resource": "trim-wear",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "3fb928bcb4dda60fb10b5a874e4b8e1ff1fa5cfcb8dd79de0321827abcb64b5c",
+        "sourceNormalSha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "e1ad3d9376571e1bf01573c4d9aa5dad04bcbff53832675c412e064218a22233",
+        "convertedAlbedoSha256": "7ec0ff69d1060e45b2338f4c2add68d729625405f9801701d78239dded35f131",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      }
+    },
+    "preserved": {
+      "sea": {
+        "color": [
+          0.013473396940142641,
+          0.020951131914781092,
+          0.06381487094867724,
+          1
+        ],
+        "roughness": 0.78,
+        "metallic": 0.05,
+        "alpha": 1,
+        "source": "parallax-observatory/blender_author.py:38-46 / accepted palette sea"
+      }
+    },
+    "mapOverrides": {
+      "sea": {
+        "tilesPerMeter": 1,
+        "normalStrength": null
+      },
+      "saltstone": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.4
+      },
+      "cistern": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.35
+      },
+      "metal": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.3
+      },
+      "mirror": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.2
+      },
+      "paving": {
+        "tilesPerMeter": 0.25,
+        "normalStrength": 0.45
+      },
+      "ochre": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.3
+      },
+      "parallax.instrument-alloy": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.3
+      },
+      "parallax.enamel": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.35
+      },
+      "parallax.etch": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.25
+      },
+      "parallax.optics": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.2
+      },
+      "parallax.glazing": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.2
+      },
+      "parallax.stone": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.4
+      },
+      "parallax.trim": {
+        "tilesPerMeter": 0.5,
+        "normalStrength": 0.35
+      }
+    },
+    "packedImages": 24
+  },
+  "kitTriangleMeasurement": "unmodified-source-estimate",
+  "kitTriangles": 3416,
+  "kitOps": 80,
+  "kitBatches": 15,
+  "exportBatches": 31,
+  "labels": 8,
+  "nonTriangleWalls": 0,
+  "intended": {
+    "master": "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/parallax-observatory.blend",
+    "glb": "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/parallax-observatory.glb",
+    "maxPrimitives": 64
+  },
+  "files": {
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/parallax-observatory.blend": "9957ca8cc3e4e7f2bca00f7b82a48ed88d031e9e3949259ebf5603f584141051",
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/parallax-observatory.glb": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422"
+  },
+  "sizes": {
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/masters/parallax-observatory.blend": 30881495,
+    "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/parallax-observatory.glb": 19004120
+  },
+  "nativeAcceptance": "pending; editable master/GLB not yet imported or rendered"
+}

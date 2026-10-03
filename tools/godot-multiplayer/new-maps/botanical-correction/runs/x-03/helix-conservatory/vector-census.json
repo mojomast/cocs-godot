@@ -1,0 +1,11 @@
+{
+  "counts": {
+    "NORMAL": 388863,
+    "TANGENT": 388863
+  },
+  "exceptions": [],
+  "glbSha256": "4943e353f4626a11f1e515b9046c92df30985ef725f399f651a8d8ddad953995",
+  "verifierSha256": "37bb8148b639d443a013be634cab5609a4eab0729f9e044c79d1b03f0cbe8555",
+  "scope": "strict finite actual accessors; unit vectors checked, exceptions are not waived",
+  "disposition": "pass"
+}

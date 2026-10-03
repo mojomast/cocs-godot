@@ -1,0 +1,16 @@
+{
+  "attempt": "x-03",
+  "map": "parallax-observatory",
+  "geometryHash": "3a5800e89876ebcc741381802def24415d5050651c0d3b831ea8b9ec3b77b4f9",
+  "manifestSha256": "7dcd8675be3c9ab6f6b4699e3cea454aeb4db5f742d35bd7041046a2fe639c74",
+  "nativeReports": {
+    "import": "0e4718ba9c200e62446657eec9ff646af39a83cbb24ee85e520aa74aa611cfe0",
+    "physics": "e6474177e0b3d3b8e0099be619f62630d5a11840603db151f4cfe8ecaf2be3dd",
+    "capture": "216a1a43f8b95c262939d7d3340ab735985a01df7a7b250592eb273e82c63e30"
+  },
+  "pairs": 10,
+  "finiteCapsules": 13587,
+  "hostedModes": "pending",
+  "manualVisualAcceptance": "pending",
+  "performance": "static backend measurements only; not gameplay FPS"
+}

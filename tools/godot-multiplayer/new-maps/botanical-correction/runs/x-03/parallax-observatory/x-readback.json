@@ -1,0 +1,17 @@
+{
+  "map": "parallax-observatory",
+  "attempt": "x-03",
+  "geometryHash": "3a5800e89876ebcc741381802def24415d5050651c0d3b831ea8b9ec3b77b4f9",
+  "glbSha256": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+  "masterSha256": "9957ca8cc3e4e7f2bca00f7b82a48ed88d031e9e3949259ebf5603f584141051",
+  "completeAuthorityShellFaces": 6355,
+  "numericToleranceMetres": 0.0001,
+  "visualBevelLimitMetres": 0.04,
+  "actualShellCapsules": 1920,
+  "capsuleRadius": 0.42,
+  "capsuleHeight": 1.8,
+  "groundSeparation": 0.05,
+  "maximumSlopeRequiredSeparation": 0.04418138681079368,
+  "supportSeams": [],
+  "scope": "actual exported complete authority shell; authored foot Y unchanged; static capsules, controller dynamics pending"
+}
