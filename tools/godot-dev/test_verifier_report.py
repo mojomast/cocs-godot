@@ -121,6 +121,23 @@ class VerifierReportTest(unittest.TestCase):
         self.assertEqual(report["failed_gate_names"], ["fixture-fail"])
         self.assertEqual([g["passed"] for g in report["gates"]], [True, False, True, True])
 
+    def test_slide_gate_missing_weapon_is_failed_without_launching_fixture(self):
+        self.fake_version_probe(self.lock["godot_version"])
+        path = self.root / "tools/godot-dev/verify.py"
+        tree = ast.parse(path.read_text())
+        inventory = next(node for node in tree.body if isinstance(node, ast.Assign)
+                         and any(isinstance(t, ast.Name) and t.id == "commands" for t in node.targets))
+        inventory.value.elts = [node for node in inventory.value.elts
+                                if node.elts[0].value == "first-person-slide"]
+        path.write_text(ast.unparse(tree))
+        report = self.run_verifier()
+        gate = report["gates"][-1]
+        self.assertEqual(gate["gate"], "first-person-slide")
+        self.assertEqual(gate["failure_reason"], "missing-prerequisite")
+        self.assertIsNone(gate["exit_code"])
+        self.assertEqual(gate["duration_seconds"], 0)
+        self.assertIn("weapon-0.glb", (self.root / "port/reports/first-person-slide.log").read_text())
+
 
 if __name__ == "__main__":
     unittest.main()

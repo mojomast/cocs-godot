@@ -92,6 +92,8 @@ class PlayableGatesTest(unittest.TestCase):
             "lattice-flagship-l3-static": "godot/tests/lattice/flagship_l3_contract.mjs",
             "lattice-flagship-l5-static": "godot/tests/lattice/flagship_l5_contract.mjs",
             "local-render-motion": "res://tests/world_motion/unit.gd",
+            "first-person-slide": "res://tests/first_person/slide.gd",
+            "campaign-input-flow": "res://tests/campaign/input_flow.gd",
             "muzzle-sight-geometry": "res://tests/first_person/muzzle_geometry.gd",
             "muzzle-path-geometry": "res://tests/weapon_effects/muzzle_path_geometry.gd",
             "horde-death-wire": "port/native-horde-deaths/wire.test.mjs",
@@ -148,6 +150,16 @@ class PlayableGatesTest(unittest.TestCase):
         self.assertLess(names.index("lattice-req-catalog-check"), names.index("semantic-export"))
         self.assertLess(names.index("semantic-export"), names.index("lattice-req-catalog"))
         self.assertIn("--check", commands["lattice-req-catalog-check"])
+        self.assertIn("--headless", commands["first-person-slide"])
+        options = next(node.value for node in tree.body if isinstance(node, ast.Assign)
+                       and any(isinstance(target, ast.Name) and target.id == "gate_options" for target in node.targets))
+        options = ast.literal_eval(options)
+        for gate in ("campaign-input-flow", "first-person-slide"):
+            self.assertEqual(options[gate]["timeout"], 60)
+        prerequisites = next(node.value for node in tree.body if isinstance(node, ast.Assign)
+                             and any(isinstance(target, ast.Name) and target.id == "gate_prerequisites" for target in node.targets))
+        self.assertEqual(ast.literal_eval(prerequisites)["first-person-slide"],
+                         ["godot/first_person/generated/weapon-0.glb"])
         focused = (Path(__file__).resolve().parents[2] / "port/tools/native_lattice_flagship/verify.py").read_text()
         for name in ("req_catalog_contract.gd", "req_purchase_contract.gd", "world_tactical_contract.gd",
                      "flagship_asset_contract.gd", "flagship_l1_contract.gd", "flagship_l2_contract.gd",

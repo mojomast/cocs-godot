@@ -77,6 +77,13 @@ test('expired, slow, cooldown, traversal and crouch-owned verb landings do not c
   const {a}=landTap(extra);assert.equal(a.sliding,false,JSON.stringify(extra));assert.equal(a.slideIntent,0);
  }
  const a=actor({grounded:false,y:20});
+ moveActor(a,{crouch:true,sprint:true},1/60,arena);
+ assert.ok(Math.abs(a.slideIntent-.15)<1e-9);
+ for(let i=1;i<=3;i++){
+  moveActor(a,{crouch:true,sprint:true},1/60,arena);
+  assert.equal(a.grounded,false);
+  assert.ok(Math.abs(a.slideIntent-(.15-i/60))<1e-9,'held crouch decays without a new press edge');
+ }
  for(let i=0;i<30;i++)moveActor(a,{crouch:true,sprint:true},1/60,arena);
  assert.equal(a.slideIntent,0,'holding crouch never refreshes the intent timer');
 });
@@ -87,8 +94,12 @@ test('buffered slide can hop immediately, and held-crouch slides keep their rele
  assert.equal(b.sliding,true);moveActor(b,{},1/60,arena);assert.equal(b.sliding,false);
 });
 test('teleport, death, fall, spawn and vehicle transitions clear pending tap intent',()=>{
- const a=actor({vehicleId:null,slideIntent:.1,slideCrouchHeld:true});
+ const a=actor({vehicleId:null,slideIntent:.1,slideCrouchHeld:true,sliding:true,slideTap:true,slideTimer:.3});
+ const control=structuredClone(a);moveActor(control,{},1/60,arena);
+ assert.equal(control.sliding,true);assert.equal(control.slideTap,true,'ordinary grounded tick retains committed tap slide');
  moveActor(a,{},1/60,{...arena,traversal:{teleporters:[{x:0,z:0,to:{x:10,y:0,z:0}}]}});
+ assert.equal(a.traversalEvent.type,'teleport');assert.equal(a.x,10);
+ assert.equal(a.sliding,false);assert.equal(a.slideTap,false,'teleport specifically clears the committed slide');
  assert.equal(a.slideIntent,0);assert.equal(a.slideCrouchHeld,false);
  const match=new Match('chatgpt','openclaw',()=>.5,'exchange',{botCount:0,humanCount:1});
  const p=match.actors[0];

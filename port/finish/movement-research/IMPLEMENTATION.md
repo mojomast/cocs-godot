@@ -19,6 +19,8 @@ and branch were verified before edits. No child agents or engines were run.
    carriers and Effortless keep their existing budget composition. Slide bursts
    happen before the sample; launchers happen after movement; cable rides retain
    their early-return owner. The terminal multiplier remains **2.2**.
+   This is a stance-dependent budget, **not a global 17.6 m/s ceiling**:
+   base-8 walking permits 17.6 m/s; grounded sprint permits **24.2 m/s**.
 2. **More useful midair corrections:** `airAccel` 3.5 → **4.5**, `airCap` 1.6 →
    **2.2**, selected after the bounded comparison below. Base speed, ground
    acceleration/friction, slide boost/friction and jump forgiveness stay at
@@ -37,6 +39,13 @@ and branch were verified before edits. No child agents or engines were run.
    vehicle entry/exit and teleports clear pending/committed tap state. The three
    added actor fields (`slideIntent`, `slideCrouchHeld`, `slideTap`) travel in the
    existing actor snapshot spread; no wire input or epoch semantics changed.
+   The configured 150 ms is frame-quantized: landing is consumed by the next
+   movement tick, whose timer decrement runs first. A flat-floor initial-height
+   sweep (0.001–0.800 m, initial vertical speed zero) found the latest successful
+   landing **133 ms after the press-processing tick at 60 Hz**, and **100 ms at
+   30 Hz**. Those are observed landing offsets, not a guarantee of a continuous
+   150 ms landing window. Authority remains fixed 60 Hz; this follow-up does not
+   retune the window.
 4. **Readable slide posture:** a damped weapon-only cant of **0.08 rad**
    with **18 mm right / 25 mm down** default offset in native and web presentation
    (web also respects the existing bounded weapon-bob preference).
@@ -70,7 +79,7 @@ These are pure-source mechanics measurements, not native or human fun ratings.
 | 8 → negative air-cap reversal | 21 ticks to −1.6 | 17 ticks to −2.2 |
 | Lateral correction during one full hop | 1.167 m | 1.600 m |
 | Full-hop duration | 46 ticks | 46 ticks |
-| Orthogonal real-ground autohop, 160 s | 25.236 m/s | 17.600 m/s |
+| Orthogonal real-ground walking autohop, 160 s | 25.236 m/s | 17.600 m/s |
 | Actual landings during that trace | 204 | 204 |
 | Incoming 24 m/s after orthogonal takeoff | 24.037 m/s | 24.000 m/s |
 | Released late landing tap | no slide, 7.2 m/s | slide on tick 4, 9.2 m/s |
