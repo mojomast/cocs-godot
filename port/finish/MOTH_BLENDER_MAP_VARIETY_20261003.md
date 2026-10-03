@@ -15,13 +15,22 @@ Observatory, Vesper Viaduct, Abyssal Pressureworks and Stormglass Causeway.
 
 ## Owners and completed preparation
 
+**User-directed escalation rule:** when Flash implementation fails review, resume
+the repair with Sol or Astra rather than returning corrective implementation to
+Flash. Both Flash map workers have now stopped and preserved their partial edits.
+Astra reviewer `ses_efd55fd04ffedSQ6q14ztgmqaa` owns botanical/urban repairs in a
+new isolated worktree from `0351e1d1`; Sol reviewer
+`ses_efd55bb5cffeJRWNA4xZq8O6cE` owns coastal repairs in a new isolated worktree
+from `7a7ce64e`. Partial Flash edits are unverified reference material, not accepted
+fixes. These repair assignments are source-only; R retains the sole heavy slot.
+
 Source foundation: `55edd9f2`. All work is isolated from the live P candidate.
 
 | Work | Agent/session | Current responsibility |
 |---|---|---|
 | New Moth resources + mothbake | Astra `ses_efdbb8a90ffeBrpRZAFfraUSXv` | Complete through `9dc08e53`, parent-integrated; generic tool `69c62d7c`; base + multi-engine overlay reviewed for Blender application |
-| Abyssal/coastal variety | Flash `ses_efdbb1dfeffebxsWuzs9jbjzJv` | Active source implementation: Abyssal/Stormglass versioned Blender builders, composition and authority-safe layout revisions |
-| Botanical/urban variety | Flash `ses_efdbaaa61ffesiVbXI7pmlS04Q` | Active source implementation: Helix/Parallax/Vesper versioned Blender builders and matching terrain/layout authority |
+| Abyssal/coastal variety | Sol `ses_efd55bb5cffeJRWNA4xZq8O6cE` | Corrective source implementation after failed Flash delivery; original Flash worker stopped |
+| Botanical/urban variety | Astra `ses_efd55fd04ffedSQ6q14ztgmqaa` | Corrective source implementation after failed Flash delivery; original Flash worker stopped |
 | Blender production integration + Foundry | Sol `ses_efdba38e9ffeManqAN9zWiJ3va` | Sole heavy owner R: actual material adapter/Blender toolkit execution, Foundry revision-4 modeling, masters/GLB/reopen/render checks |
 
 Flash/Sol application has now been assigned after Astra's resource delivery and
@@ -38,7 +47,8 @@ No revised map master, export or rendered acceptance is claimed at this checkpoi
   three revisions** for deterministic build failures, misplaced/omitted geometry,
   invalid traversal probes, a covered lightwell and inconsistent export contracts.
   Complete corrective scope: `map-variety/BOTANICAL_SOURCE_REVIEW.md`. Original
-  Flash owner is correcting its source; Sol owns the inherited Kit rib-winding fix.
+  Astra reviewer now owns corrective implementation; Sol R owns the inherited
+  Kit rib-winding fix. The original Flash owner has stopped.
 - Coastal initial source `6675a2ce` was rejected by parent for incorrect coordinate
   conversion, invalid mesh faces/arch dimensions and incomplete full-map assembly.
   Corrective `7a7ce64e` reports full authority composition and 37 source checks.
@@ -46,8 +56,8 @@ No revised map master, export or rendered acceptance is claimed at this checkpoi
   but found further blockers: 61 vertices from 25 Stormglass parts enter road
   polygons; terrain/art duplicates include all 137 terrain surfaces; 21 labels
   are created after batching and omitted from GLB selection; Abyssal top caps
-  face downward and nine original reef forms are omitted. Coastal owner is
-  correcting full-mesh placement, render deduplication, export membership,
+  face downward and nine original reef forms are omitted. Repairs are
+  now escalated to Sol reviewer for full-mesh placement, render deduplication, export membership,
   outward winding and reef composition, with regression coverage. The revision
   remains rejected pending review. Neither map-source delivery is integrated yet.
 - R continues Foundry production. The shared adapter must preserve original

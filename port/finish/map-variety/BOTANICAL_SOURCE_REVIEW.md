@@ -4,8 +4,11 @@ Independent reviewer: Astra `ses_efd55fd04ffedSQ6q14ztgmqaa`.
 Reviewed commits: `8cff03b0`, `ddf8c70d`, `0351e1d1`, foundation `190fa2a2`.
 The reviewer reproduced 18 passing Node tests using source-only probes. No Blender,
 Godot, import, render or server ran. The passing tests do not establish buildability
-or traversability. Parent returned the complete findings to the original Flash
-owner, `ses_efdbaaa61ffesiVbXI7pmlS04Q`, for correction before integration.
+or traversability. Following the user's escalation instruction, Astra reviewer
+`ses_efd55fd04ffedSQ6q14ztgmqaa` now owns corrective implementation in a fresh
+isolated worktree. Original Flash owner `ses_efdbaaa61ffesiVbXI7pmlS04Q` stopped
+at `0351e1d1`, preserving one unverified partial edit to `kit_expander.py` in its
+own worktree. That incomplete patch is not an accepted correction.
 
 Paths below are relative to `tools/godot-multiplayer/new-maps/`, except the shared
 Kit at `tools/map-variety-pipeline/blender_kit.py`.
