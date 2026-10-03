@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
+import {readFileSync,writeFileSync,mkdtempSync,rmSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {stagedResources,gitStagedResources,rejectStagedInputs,rejectStagedReferences,STAGED_MANIFEST,STAGED_MANIFEST_SHA,STAGED_CANDIDATE} from './staged_resources.mjs';
@@ -38,7 +38,8 @@ test('recorded pre-R5 source ignores ambient candidate files and requires no new
  assert.ok(p.nativeFiles.includes('godot/multiplayer_worlds/art/worlds/gravemill-foundry.glb'));
 });
 const r6=STAGED_ENTRIES.find(e=>e.id==='foundry-r6');
-const currentPaths=git('ls-files','-z','--','godot').toString().split('\0').filter(Boolean);
+// Fixed pre-Y source keeps the R6 cases meaningful after later additions.
+const currentPaths=git('ls-tree','-r','--name-only','-z','167ac4bc','--','godot').toString().split('\0').filter(Boolean);
 const both={paths:currentPaths,read,required:['foundry-r5','foundry-r6']};
 test('R6 manifest exactly covers artifact Git diff; both candidates excluded and accepted native count unchanged',()=>{
  const p=stagedResources(both),entry=p.entries.find(e=>e.id===r6.id);
@@ -72,5 +73,52 @@ test('R6 production path/UID consumers and all raw/import/copy inputs reject',()
 });
 test('recorded pre-W base retains only R5; original W ancestry activates R6 independently of ambient HEAD',()=>{
  const before=gitStagedResources(process.cwd(),'5f5a58c7');assert.equal(Object.keys(before.files).length,63);assert.equal(before.entries.length,1);
- const after=gitStagedResources(process.cwd(),'HEAD');assert.equal(Object.keys(after.files).length,137);assert.equal(after.entries.length,2);
+ const after=gitStagedResources(process.cwd(),'167ac4bc');assert.equal(Object.keys(after.files).length,137);assert.equal(after.entries.length,2);
+});
+const r7=STAGED_ENTRIES.find(e=>e.id==='foundry-r7');
+const yPaths=git('ls-tree','-r','--name-only','-z','HEAD','--','godot').toString().split('\0').filter(Boolean);
+const all={paths:yPaths,read,required:['foundry-r5','foundry-r6','foundry-r7']};
+test('R7 exact Git artifact inventory adds 74 exclusions; combined 211 leave accepted native selection unchanged',()=>{
+ const p=stagedResources(all),entry=p.entries.find(e=>e.id===r7.id);
+ const added=git('diff','--name-only',r7.candidate+'^',r7.candidate,'--','godot').toString().trim().split('\n').filter(p=>!p.startsWith('godot/tests/'));
+ assert.deepEqual([...entry.paths].sort(),added.sort());assert.equal(entry.paths.length,74);
+ assert.equal(entry.paths.filter(p=>p.endsWith('.png')).length,36);assert.equal(entry.paths.filter(p=>p.endsWith('.import')).length,37);
+ assert.equal(entry.paths.reduce((n,f)=>n+p.files[f].bytes,0),19007438);
+ assert.equal(Object.keys(p.files).length,211);assert.equal(Object.values(p.files).reduce((n,r)=>n+r.bytes,0),54926437);
+ assert.deepEqual(p.nativeFiles,stagedResources(both).nativeFiles);assert.equal(p.nativeFiles.length,2494);
+ assert.equal(entry.status,'unpromoted-artifact-review-pending');
+ for(const f of entry.paths){assert.deepEqual(read(f),git('show',`${r7.candidate}:${f}`));assert.ok(!p.nativeFiles.includes(f));assert.ok(p.excludePaths.includes(f.slice(6)));}
+ assert.deepEqual(read(r7.manifest),git('show',`${r7.candidate}:${r7.manifest}`));git('merge-base','--is-ancestor',r7.source,r7.candidate);
+ const glb=entry.paths.find(p=>p.endsWith('.glb')),b=read(glb),doc=JSON.parse(b.subarray(20,20+b.readUInt32LE(12)));
+ assert.equal(doc.images.length,36);assert.equal(b.length,15012592);
+ assert.equal(p.files[glb].sha256,'6325fdf0003813c5cb5a59aca3626f6756998fb53f8aaa143d9f3043f3caa44f');
+});
+test('R7 manifest/artifact tampering, missing inventory and unknown revisions reject',()=>{
+ const p=stagedResources(all),first=p.entries.find(e=>e.id===r7.id).paths[0];
+ assert.throws(()=>stagedResources({...all,read:x=>x===r7.manifest?Buffer.from('{}'):read(x)}),/Exact R7 staged manifest/);
+ assert.throws(()=>stagedResources({...all,read:x=>{if(x===r7.manifest)throw Error('Missing Y manifest');return read(x);}}),/Missing Y manifest/);
+ assert.throws(()=>stagedResources({...all,read:x=>x===first?Buffer.alloc(p.files[first].bytes):read(x)}),/Staged hash/);
+ assert.throws(()=>stagedResources({...all,paths:yPaths.filter(x=>x!==first)}),/Missing staged resource/);
+ assert.throws(()=>stagedResources({...all,paths:[...yPaths,'godot/multiplayer_worlds/art/revisions/unreviewed-r8.glb']}),/Unreviewed staged revision/);
+ assert.throws(()=>stagedResources({...all,required:['foundry-r5','foundry-r6']}),/Unreviewed staged revision/);
+});
+test('R7 production paths, filenames, UIDs and raw/import/copy attempts reject',()=>{
+ const p=stagedResources(all),entry=p.entries.find(e=>e.id===r7.id),glb=entry.paths.find(p=>p.endsWith('.glb'));
+ for(const ref of ['res://'+glb.slice(6),glb.split('/').at(-1),read(glb+'.import').toString().match(/uid="([^"]+)"/)[1]])assert.throws(()=>stagedResources({...all,read:x=>x==='godot/ui/main_menu.gd'?Buffer.from('load("'+ref+'")'):read(x)}),/Production reference/);
+ for(const f of entry.paths)assert.throws(()=>rejectStagedInputs([f],p),/Staged resource in runtime/);
+ assert.throws(()=>rejectStagedReferences(['port/runtime-consumer.mjs'],x=>x.endsWith('.mjs')?Buffer.from('read("'+glb+'")'):read(x),p.files),/Production reference/);
+});
+test('pre-Y recorded source requires only R5/R6 while original Y ancestry enables R7',()=>{
+ const before=gitStagedResources(process.cwd(),'167ac4bc');assert.equal(Object.keys(before.files).length,137);assert.deepEqual(before.provenance,STAGED_ENTRIES.slice(0,2).map(e=>e.manifest));
+ const after=gitStagedResources(process.cwd(),'HEAD');assert.equal(Object.keys(after.files).length,211);assert.equal(after.entries.length,3);
+ // Same integrated artifact tree with a pre-Y parent simulates copying or
+ // cherry-picking Y without preserving its activation ancestry. Git metadata
+ // only: no asset checkout, copied binaries or source repository ref changes.
+ const dir=mkdtempSync('/tmp/opencode/r7-no-ancestry-');
+ const g=(args,input)=>execFileSync('git',args,{cwd:dir,input,env:{...process.env,GIT_AUTHOR_NAME:'Fixture',GIT_AUTHOR_EMAIL:'fixture@invalid',GIT_COMMITTER_NAME:'Fixture',GIT_COMMITTER_EMAIL:'fixture@invalid'},stdio:['pipe','pipe','pipe']});
+ try{
+  g(['init','-q']);writeFileSync(dir+'/.git/objects/info/alternates',git('rev-parse','--path-format=absolute','--git-path','objects').toString().trim()+'\n');
+  const synthetic=g(['commit-tree',git('rev-parse','HEAD^{tree}').toString().trim(),'-p',git('rev-parse','167ac4bc').toString().trim()],'no Y ancestry fixture\n').toString().trim();
+  assert.throws(()=>gitStagedResources(dir,synthetic),/Unreviewed staged revision/);
+ }finally{rmSync(dir,{recursive:true,force:true});}
 });
