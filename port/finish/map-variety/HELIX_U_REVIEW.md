@@ -1,5 +1,11 @@
 # Helix U artifact review — greenhouse assembly P1
 
+**Corrective source delivered:** `da2e53eb` introduces Helix revision-4's radial,
+grounded greenhouse frame with intended attachment checks and future actual-export
+proof tools. It is under independent source review along with Parallax/Vesper
+successors. U's artifact blocker remains open until a rebuilt successor passes
+actual geometry/native review; no U image or result is restamped as corrected.
+
 Independent Astra `ses_efd0e4deaffeke8j2rdXdxtbbn` reviewed `243223d3` and its
 source prerequisites. **Helix artifact approval is withheld.** Shared export and
 staging corrections are approved for source integration; they are integrated as

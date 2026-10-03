@@ -1,6 +1,38 @@
 # Botanical/urban source review — corrective source approved
 
-## Current disposition: integrated, production pending
+## Post-U successor review in progress
+
+The source approval below led to actual U builds, which exposed three assembly/
+geometry failures; it does not establish approval of those artifacts. The latest
+successors are `f358e497` / `3002a9ba` / `da2e53eb` and remain unmerged pending
+independent review by `ses_efc89c2afffeKQvhqPUs4YwsaY`:
+
+- **Helix revision-4:** five detailed radial arches on ten terrace-grounded posts,
+  connected by two eaves and a ridge; intended full-bearing/attachment tests and
+  49,553 reported finite-capsule source samples. All 5,240 decorations retained.
+- **Parallax districts-v4:** a supported entry landing, retaining-wall aperture
+  cut and graded upper-terrace connection; original portal probes/endpoints and
+  lightwell descent retained.
+- **Vesper urban-v3:** six legacy parapet ends replaced by Kit and 54 retained
+  with canonical render/collision boundaries, checked before suppressing duplicate
+  craft geometry. No blanket tolerance change.
+
+Reported checks: 13 corrective Python / five Node, 27 existing Python / eight U
+fixture Python / 25 existing Node, standalone Kit checks and deterministic
+generation. Frozen U failures are reproduced from their actual GLBs; all 264 U
+hashes remain unchanged. A narrow follow-up is making archival inputs explicit
+without merging rejected U artifacts. No successor has a built master/GLB or
+native acceptance yet. W owns the heavy slot for Foundry R6.
+
+Successor source identities:
+
+| Map | Geometry hash |
+|---|---|
+| Helix | `f5a3d0d7b2872fa7c7fa6bb2727ee31915a717ffbc160343acf491fe3b9bc49e` |
+| Parallax | `3a5800e89876ebcc741381802def24415d5050651c0d3b831ea8b9ec3b77b4f9` |
+| Vesper | `fd8e7134c8933e908336d7b0409c66bdc90f4adc03fcfc6e596d5b4579f1c740` |
+
+## Pre-U source disposition: integrated, superseded by actual build findings
 
 Independent Astra `ses_efd0e4deaffeke8j2rdXdxtbbn` approved corrective commit
 `6f6b990fafd486c0f4d8960359049a3e4ff2ae22`: all three remaining P1 findings are

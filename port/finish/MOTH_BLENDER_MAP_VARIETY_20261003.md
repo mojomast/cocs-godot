@@ -1,5 +1,15 @@
 # New Moth resources and Blender-authored map variety
 
+**Botanical successor sources delivered:** `f358e497` / `3002a9ba` / `da2e53eb`
+author Parallax districts-v4's supported aperture/grade, Vesper urban-v3's explicit
+60-parapet ownership, and Helix revision-4's grounded five-rib frame with ten posts,
+two eaves and crown ridge. The worker reports 13 corrective Python / five Node
+passes plus compatibility checks; all 264 frozen U artifact hashes remain intact.
+Independent Astra `ses_efc89c2afffeKQvhqPUs4YwsaY` is reviewing source geometry
+before integration. The producer is also making frozen-U regression fixture access
+explicit so parent need not import the rejected U artifact bundle. Actual successor
+master/GLB paths are absent and their hashes are null. W remains the sole heavy grant.
+
 ## Active grant W — Foundry R6; Abyssal V delivered
 
 **`MOTH-BLENDER-20261003-W` is the sole active heavy grant**, Astra
