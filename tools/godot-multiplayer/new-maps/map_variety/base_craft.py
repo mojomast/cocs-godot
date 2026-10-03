@@ -12,6 +12,7 @@ import hashlib
 import json
 import math
 import random
+from collections import Counter
 from pathlib import Path
 
 import kit_expander as k
@@ -65,7 +66,22 @@ def base_craft_plan(arena, root):
                 if not any(k['id']==replacement['id'] and k['class']=='roof_run' and k['params']['style']=='parapet'
                            for k in arena['art']['kit']):raise ValueError('Missing replacement Kit parapet')
             elif replacement['kind']=='authority':
-                if not any(s['id']==d['id']+'-top' for s in arena['terrain']['surfaces']):raise ValueError('Missing canonical parapet shell')
+                x0,y0,z0=d['min'];x1,y1,z1=d['max']
+                v=[[x0,y0,z0],[x1,y0,z0],[x1,y0,z1],[x0,y0,z1],
+                   [x0,y1,z0],[x1,y1,z0],[x1,y1,z1],[x0,y1,z1]]
+                faces=[[0,1,5,4],[1,2,6,5],[2,3,7,6],[3,0,4,7],[4,7,6,5],[0,1,2,3]]
+                key=lambda t:tuple(sorted(tuple(round(c,9) for c in p) for p in t))
+                expected=Counter(key([v[i] for i in (f[0],f[j],f[j+1])]) for f in faces for j in (1,2))
+                actual=[]
+                for wall in arena['terrain']['walls']:
+                    if wall.get('id','').startswith(d['id']+'-w'):
+                        if wall['material']!=material:raise ValueError('Canonical parapet material changed')
+                        actual.append(wall['vertices'])
+                for surface in arena['terrain']['surfaces']:
+                    if surface.get('id') in (d['id']+'-top',d['id']+'-bottom'):
+                        if surface['material']!=material:raise ValueError('Canonical parapet material changed')
+                        actual.extend([[surface['vertices'][i] for i in f] for f in surface['triangles']])
+                if Counter(key(t) for t in actual)!=expected:raise ValueError('Incomplete canonical parapet shell')
             else:raise ValueError('Unknown canonical parapet owner')
             matched.add(d['id']);cut_lineage.append({'name':name,'canonical':d['id'],'replacement':replacement})
             return

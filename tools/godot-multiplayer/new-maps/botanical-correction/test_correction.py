@@ -88,6 +88,15 @@ class CorrectionTests(unittest.TestCase):
             self.assertEqual(actual,expected)
             self.assertEqual(shell['nonTriangleWalls'],0)
 
+    def test_compiled_floor_union_keeps_the_open_lightwell(self):
+        rows,_,shell=self.scenes['parallax-observatory']
+        self.assertIsNotNone(shell['floorUnion'])
+        visual=RayIndex([r['vertices'] for r in rows])
+        # A ray starting above court level must reach the actual descended
+        # floor/ramp, not an old coplanar union slab left across the well.
+        for x,y in [(32,8),(40,10),(43.5,11.75)]:
+            self.assertAlmostEqual(visual.ray([x,12.2,-34.13],[0,-1,0],5),12.2-y,places=6)
+
     def test_craft_policy_is_opt_in_and_preserves_domes_dishes(self):
         old=base_craft_plan(self.old['parallax-observatory'],ROOT)
         new=self.scenes['parallax-observatory'][1]
@@ -96,5 +105,9 @@ class CorrectionTests(unittest.TestCase):
         a=copy.deepcopy(self.new['vesper-viaduct'])
         a['art']['baseCraft']['canonicalSolids']['descriptors'][0]['min'][0]+=.05
         with self.assertRaisesRegex(ValueError,'canonical parapet'):base_craft_plan(a,ROOT)
+        a=copy.deepcopy(self.new['vesper-viaduct'])
+        missing=next(w for w in a['terrain']['walls'] if w.get('id','').startswith('canonical-row-parapet-'))
+        a['terrain']['walls'].remove(missing)
+        with self.assertRaisesRegex(ValueError,'canonical parapet shell'):base_craft_plan(a,ROOT)
 
 if __name__=='__main__':unittest.main()
