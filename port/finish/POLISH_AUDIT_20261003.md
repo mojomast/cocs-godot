@@ -138,3 +138,11 @@ these are not GPU output. Parent independently parsed the expanded graphical
 fixture and passed diff checks. Native shader compilation, real-frame transparent
 background/core/hue comparisons and captures remain pending. No original asset
 bytes or imports changed; the shader hash requires later package reconciliation.
+
+Flash support-cue checkpoints **`e31de5d7` / `cebc8d33`** remain **unmerged pending
+correction**. Routing admits only heal/pickup/teleport cues through the integrated
+fresh-event pipeline and leaves existing damage/explosion owners intact. Parent
+requested immediate clearing of active cues when quality is disabled or reduced
+motion enabled, retaining consumed event IDs so toggling cannot replay them.
+The fixture must compare the actual passed snapshot for immutability and must not
+print `authored_not_executed:true` when executed. Native validation remains pending.
