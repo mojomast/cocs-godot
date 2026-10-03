@@ -13,7 +13,9 @@ Focused actual Windows check `37093996218` passed; broader suite retains the Hel
 startup timeout after 23 baseline and six Parallax passes. G4 explicitly released
 at `2026-10-03T03:43:18.530036Z`, all three groups empty. Windows diagnostic
 `37094406934` confirms synchronous authority startup exceeds the client deadline;
-packaging is preparing a source-only navigation optimization.
+navigation optimization integrated at `6b8c445f` and awaits remote Windows cold
+graph comparison plus subsequent new-package native verification. Published
+preview bytes still contain the original runtime.
 **Exclusive local heavy grant H belongs to Vesper owner
 `ses_f03a3885fffehx9yFhHubuPCft`** for Vesper production and six private hosted
 journeys. F/G/G2/G3/G4 have released. See `PREVIEW_20261003.md`.
@@ -34,12 +36,12 @@ boundaries.
 | Fighting presentation and controls | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing at `1bff0281`; controller recovery integrated at `614a8a7f`, all 12 parent presentation source tests pass; native review pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
-| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | F integrated through `27f3afc3`; parent inspected four chapter views and four architectural details; source-only exact texture/import package promotion active, capture-paced limitations retained |
+| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | F integrated through `27f3afc3` and package-promoted at `b62f7562`; 118 PNGs/142 sidecars exact closure; parent review and capture-paced limitations retained |
 | Vesper Viaduct | Astra `ses_f03a3885fffehx9yFhHubuPCft` | Exclusive H: production, reopen, native geometry/visual review and six private hosted mode journeys; public registration awaits proof |
 | Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Actual production at `1f129ab2`; E released; compact-HUD correction at `83ceaa62` passes six parent source checks/grammar, new native layout/screenshots pending |
 | Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base `b6ab6782` and ordinary-controller follow-up `da259d19` integrated; 26 parent acceptance tests and grammar pass; native execution awaits later grant and device access |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Launch-bound UI registration integrated through `2e355b93`; 142 jobs preserve all prior coverage; 35 parent runner/receipt tests pass; fresh ledger still required |
-| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | G3 preview published with focused Windows pass; source-only Helix cold-navigation optimization active after G4 diagnostic; final release remains pending |
+| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | G3 preview published; Helix candidate integrated at `6b8c445f`; remote Windows source graph/timing comparison authorized, new-package native verification pending |
 | Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | Prepared v3 pipeline integrated at `2902412b`; nine focused parent tests pass; real capture/edit/install awaits final assets and a later grant |
 
 All workers run in the background, using existing sessions/checkouts. Source work
