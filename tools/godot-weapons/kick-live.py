@@ -213,7 +213,13 @@ def run(args):
                 raise RuntimeError('Source changed during tracked staging')
             summary['executing_input_sha256'] = {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
                 for name in ['tools/godot-weapons/kick-live.py', 'tools/godot-weapons/kick-live-server.mjs',
-                             'godot/tests/first_person/kick_live.gd']}
+                              'godot/tests/first_person/kick_live.gd']}
+            # The public world/session viewer requires locked semantic map JSON.
+            # It is generated/ignored and therefore absent from a tracked copy.
+            # Generate it from the existing validated derivative into this stage.
+            semantic_env = {**env, 'COCS_SOURCE_DERIVATIVE': str(ROOT/'port/contracts/lattice-catalog-derivative.json')}
+            bounded(['node','tools/godot-export/semantic.mjs',str(project/'content/generated')], 'semantic.log', semantic_env, 60)
+            summary['semantic_manifest_sha256'] = hashlib.sha256((project/'content/generated/manifest.json').read_bytes()).hexdigest()
             bounded([args.godot, '--headless', '--path', str(project), '--editor', '--import'], 'import.log', env, 600)
             for fixture in ['first_person/kick_chains', 'first_person/lifecycle', 'protocol/melee_feedback']:
                 bounded([args.godot, '--headless', '--path', str(project), '--script', f'res://tests/{fixture}.gd'], fixture.replace('/', '-')+'.log', env, 30)
