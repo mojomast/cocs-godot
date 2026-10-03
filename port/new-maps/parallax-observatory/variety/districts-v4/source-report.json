@@ -1,0 +1,14 @@
+{
+  "map": "parallax-observatory",
+  "revision": "districts-v4",
+  "predecessor": "abaea5a6f13cca985f380d9c2f98c856ae5264325e219303219328ee47ab900c",
+  "geometryHash": "3a5800e89876ebcc741381802def24415d5050651c0d3b831ea8b9ec3b77b4f9",
+  "recipeHash": "1ab621ab38da21dda40e987c5b0478f5bc3a3e9b58950ab589180ebf353b1fc2",
+  "physical": {
+    "failures": [],
+    "baselineDefects": []
+  },
+  "status": "source-only; U native acceptance does not apply",
+  "glbSha256": null,
+  "masterSha256": null
+}

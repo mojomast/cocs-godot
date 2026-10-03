@@ -1,0 +1,94 @@
+{
+  "schema": "map-variety-bindings/v1",
+  "mapId": "parallax-observatory",
+  "revision": "districts-v4",
+  "pack": {
+    "base": "assets/moth/map-variety-20261003/candidate-v2/manifest.json",
+    "overlay": "assets/moth/map-variety-20261003/candidate-v3/manifest.json"
+  },
+  "notes": "Immutable pack channels are linear. Sol load_materials(root, bindings) derives sRGB albedo images and binds them as sRGB for Blender/glTF; source and derived hashes are separate and export RGB pixels are verified. Normals are Non-Color OpenGL +Y. Exact roles: surface or preserve; unknown roles fail.",
+  "materials": {
+    "sea": {
+      "role": "preserve",
+      "tilesPerMeter": 1
+    },
+    "saltstone": {
+      "role": "surface",
+      "resource": "salt-limestone",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.4
+    },
+    "cistern": {
+      "role": "surface",
+      "resource": "ceramic-enamel",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.35
+    },
+    "metal": {
+      "role": "surface",
+      "resource": "anodized-brush",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.3
+    },
+    "mirror": {
+      "role": "surface",
+      "resource": "optical-mirror-opaque",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.2
+    },
+    "paving": {
+      "role": "surface",
+      "resource": "basalt-strata",
+      "tilesPerMeter": 0.25,
+      "normalStrength": 0.45
+    },
+    "ochre": {
+      "role": "surface",
+      "resource": "anodized-brush",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.3
+    },
+    "parallax.instrument-alloy": {
+      "role": "surface",
+      "resource": "anodized-brush",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.3
+    },
+    "parallax.enamel": {
+      "role": "surface",
+      "resource": "ceramic-enamel",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.35
+    },
+    "parallax.etch": {
+      "role": "surface",
+      "resource": "etched-coating-haze",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.25
+    },
+    "parallax.optics": {
+      "role": "surface",
+      "resource": "optical-mirror-opaque",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.2
+    },
+    "parallax.glazing": {
+      "role": "surface",
+      "resource": "frosted-glass",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.2
+    },
+    "parallax.stone": {
+      "role": "surface",
+      "resource": "salt-limestone",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.4
+    },
+    "parallax.trim": {
+      "role": "surface",
+      "resource": "trim-wear",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.35
+    }
+  }
+}

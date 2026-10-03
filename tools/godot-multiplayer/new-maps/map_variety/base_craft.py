@@ -48,8 +48,27 @@ def base_craft_plan(arena, root):
     if hashlib.sha256(raw).hexdigest()!=digest:raise ValueError('Accepted craft author changed; review capture boundary: '+str(path))
     tree=ast.parse(raw,filename=str(path))
     buckets,lineage,labels,cut_lineage={ },[],[],[]
+    canonical=arena.get('art',{}).get('baseCraft',{}).get('canonicalSolids')
+    matched=set()
+    if canonical and (ident!='vesper-viaduct' or canonical.get('version')!=1 or canonical.get('role')!='row-roof-parapet'):
+        raise ValueError('Unknown candidate canonical craft policy')
     def emit(name,vertices,faces,material='saltstone',authority=False):
         if authority:return
+        if canonical and name==canonical['role']:
+            lo=[min(v[i] for v in vertices) for i in range(3)]
+            hi=[max(v[i] for v in vertices) for i in range(3)]
+            matches=[d for d in canonical['descriptors'] if d['name']==name and d['material']==material
+                     and all(abs(a-b)<1e-8 for a,b in zip(lo+hi,d['min']+d['max']))]
+            if len(matches)!=1 or matches[0]['id'] in matched:raise ValueError('Ambiguous canonical parapet capture')
+            d=matches[0];replacement=d['replacement']
+            if replacement['kind']=='kit':
+                if not any(k['id']==replacement['id'] and k['class']=='roof_run' and k['params']['style']=='parapet'
+                           for k in arena['art']['kit']):raise ValueError('Missing replacement Kit parapet')
+            elif replacement['kind']=='authority':
+                if not any(s['id']==d['id']+'-top' for s in arena['terrain']['surfaces']):raise ValueError('Missing canonical parapet shell')
+            else:raise ValueError('Unknown canonical parapet owner')
+            matched.add(d['id']);cut_lineage.append({'name':name,'canonical':d['id'],'replacement':replacement})
+            return
         for cut in arena.get('art',{}).get('baseCraft',{}).get('cutouts',[]):
             if all(max(v[i] for v in vertices)>cut['min'][i] and min(v[i] for v in vertices)<cut['max'][i] for i in range(3)):
                 cut_lineage.append({'name':name,'cutout':cut['id']})
@@ -102,6 +121,7 @@ def base_craft_plan(arena, root):
         raise ValueError('Nongeometry operation in accepted craft capture')
     module=ast.fix_missing_locations(ast.Module(body=nodes,type_ignores=[]))
     exec(compile(module,str(path)+' [geometry-only capture]','exec'),env)
+    if canonical and matched!={d['id'] for d in canonical['descriptors']}:raise ValueError('Incomplete canonical parapet capture')
     return {'buckets':buckets,'lineage':lineage,'labels':labels,
             'triangles':sum(k._triangles(b['vertices'],b['faces']) for b in buckets.values()),
             'sourceSha256':digest,'candidateCutLineage':cut_lineage}

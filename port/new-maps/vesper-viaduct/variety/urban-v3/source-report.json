@@ -1,0 +1,14 @@
+{
+  "map": "vesper-viaduct",
+  "revision": "urban-v3",
+  "predecessor": "c044bc54cfd96e99e3b29d61c5bc66bc9c470f8f3823176c063d2fe6ee9474ad",
+  "geometryHash": "fd8e7134c8933e908336d7b0409c66bdc90f4adc03fcfc6e596d5b4579f1c740",
+  "recipeHash": "f22b863cab4caec974602b81548b11e7fd60e221d441e136c47c35df144220e2",
+  "physical": {
+    "failures": [],
+    "baselineDefects": []
+  },
+  "status": "source-only; U native acceptance does not apply",
+  "glbSha256": null,
+  "masterSha256": null
+}

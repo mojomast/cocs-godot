@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "kind": "map-variety-candidate/v1",
+  "mapId": "parallax-observatory",
+  "revision": "districts-v4",
+  "moth": {
+    "base": "assets/moth/map-variety-20261003/candidate-v2/manifest.json",
+    "baseSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9",
+    "overlay": "assets/moth/map-variety-20261003/candidate-v3/manifest.json",
+    "overlaySha256": "86beb51736bea315b2bb35cd7772aff2daec7a1317b13c1eb498c981f2e8c5f0"
+  },
+  "authority": {
+    "path": "port/new-maps/parallax-observatory/variety/districts-v4/authority.json",
+    "geometryHash": "3a5800e89876ebcc741381802def24415d5050651c0d3b831ea8b9ec3b77b4f9",
+    "recipeHash": "1ab621ab38da21dda40e987c5b0478f5bc3a3e9b58950ab589180ebf353b1fc2"
+  },
+  "materials": {
+    "sea": {
+      "role": "preserve",
+      "tilesPerMeter": 1
+    },
+    "saltstone": {
+      "role": "surface",
+      "resource": "salt-limestone",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.4
+    },
+    "cistern": {
+      "role": "surface",
+      "resource": "ceramic-enamel",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.35
+    },
+    "metal": {
+      "role": "surface",
+      "resource": "anodized-brush",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.3
+    },
+    "mirror": {
+      "role": "surface",
+      "resource": "optical-mirror-opaque",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.2
+    },
+    "paving": {
+      "role": "surface",
+      "resource": "basalt-strata",
+      "tilesPerMeter": 0.25,
+      "normalStrength": 0.45
+    },
+    "ochre": {
+      "role": "surface",
+      "resource": "anodized-brush",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.3
+    },
+    "parallax.instrument-alloy": {
+      "role": "surface",
+      "resource": "anodized-brush",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.3
+    },
+    "parallax.enamel": {
+      "role": "surface",
+      "resource": "ceramic-enamel",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.35
+    },
+    "parallax.etch": {
+      "role": "surface",
+      "resource": "etched-coating-haze",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.25
+    },
+    "parallax.optics": {
+      "role": "surface",
+      "resource": "optical-mirror-opaque",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.2
+    },
+    "parallax.glazing": {
+      "role": "surface",
+      "resource": "frosted-glass",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.2
+    },
+    "parallax.stone": {
+      "role": "surface",
+      "resource": "salt-limestone",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.4
+    },
+    "parallax.trim": {
+      "role": "surface",
+      "resource": "trim-wear",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.35
+    }
+  },
+  "kit": {
+    "directives": 22,
+    "classes": [
+      "instrument_dish",
+      "landmark",
+      "lightwell",
+      "scientific_room",
+      "stepped_terrace",
+      "tower"
+    ]
+  },
+  "probes": {
+    "status": "source-only; actual successor build/native pending"
+  },
+  "acceptance": "pending Blender master/GLB generation and native import; no mode acceptance inherited"
+}

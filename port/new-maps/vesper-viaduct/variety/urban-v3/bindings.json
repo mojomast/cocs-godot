@@ -1,0 +1,108 @@
+{
+  "schema": "map-variety-bindings/v1",
+  "mapId": "vesper-viaduct",
+  "revision": "urban-v3",
+  "pack": {
+    "base": "assets/moth/map-variety-20261003/candidate-v2/manifest.json",
+    "overlay": "assets/moth/map-variety-20261003/candidate-v3/manifest.json"
+  },
+  "notes": "Immutable pack channels are linear. Sol load_materials(root, bindings) derives sRGB albedo images and binds them as sRGB for Blender/glTF; source and derived hashes are separate and export RGB pixels are verified. Normals are Non-Color OpenGL +Y. Exact roles: surface or preserve; unknown roles fail.",
+  "materials": {
+    "asphalt": {
+      "role": "surface",
+      "resource": "viaduct-asphalt",
+      "tilesPerMeter": 0.25,
+      "normalStrength": 0.4
+    },
+    "brick": {
+      "role": "surface",
+      "resource": "terracotta",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.45
+    },
+    "cobbles": {
+      "role": "surface",
+      "resource": "cobble-sett",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.45
+    },
+    "plaster": {
+      "role": "surface",
+      "resource": "lime-plaster",
+      "tilesPerMeter": 0.3333,
+      "normalStrength": 0.35
+    },
+    "slate": {
+      "role": "surface",
+      "resource": "slate-shingle",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.45
+    },
+    "quay": {
+      "role": "surface",
+      "resource": "quay-damp-horizontal",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.4
+    },
+    "sandstone": {
+      "role": "surface",
+      "resource": "masonry-coping",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.35
+    },
+    "iron": {
+      "role": "surface",
+      "resource": "oxidized-iron",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.35
+    },
+    "glass": {
+      "role": "preserve",
+      "tilesPerMeter": 1
+    },
+    "water": {
+      "role": "preserve",
+      "tilesPerMeter": 1
+    },
+    "letter": {
+      "role": "preserve",
+      "tilesPerMeter": 1
+    },
+    "vesper.coping": {
+      "role": "surface",
+      "resource": "masonry-coping",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.35
+    },
+    "vesper.brick-era": {
+      "role": "surface",
+      "resource": "terracotta",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.45
+    },
+    "vesper.quay": {
+      "role": "surface",
+      "resource": "quay-damp-horizontal",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.4
+    },
+    "vesper.slate": {
+      "role": "surface",
+      "resource": "slate-shingle",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.45
+    },
+    "vesper.stall": {
+      "role": "surface",
+      "resource": "ceramic-enamel",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.3
+    },
+    "vesper.awning": {
+      "role": "surface",
+      "resource": "timber-weather",
+      "tilesPerMeter": 0.5,
+      "normalStrength": 0.35
+    }
+  }
+}
