@@ -1,6 +1,7 @@
 extends RefCounted
 const Library = preload("res://moth/library.gd")
-const SURFACE = preload("res://moth/surface.gdshader")
+const SURFACE = preload("res://moth/surface_opaque.gdshader")
+const PRIORITY_SURFACE = preload("res://moth/surface.gdshader")
 const NORMAL_FAMILY := {
 	"weathered_concrete-worn": "weathered_concrete", "weathered_concrete-damp": "weathered_concrete",
 	"metal-oxide": "metal", "riveted_armor-scorched": "metal", "riveted_armor": "metal",
@@ -8,9 +9,9 @@ const NORMAL_FAMILY := {
 	"rough_stucco-weathered": "rough_stucco", "brushed_metal": "metal",
 }
 
-static func create_surface(key: String, color: Color, vertex_tint: bool = false) -> ShaderMaterial:
+static func create_surface(key: String, color: Color, vertex_tint: bool = false, priority: bool = false) -> ShaderMaterial:
 	var material := ShaderMaterial.new()
-	material.shader = SURFACE
+	material.shader = PRIORITY_SURFACE if priority else SURFACE
 	material.set_shader_parameter("tint", color if _finite_color(color) else Color.WHITE)
 	material.set_shader_parameter("vertex_tint", vertex_tint)
 	var albedo := Library.texture(key)

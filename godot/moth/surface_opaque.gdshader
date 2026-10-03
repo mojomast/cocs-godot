@@ -1,7 +1,7 @@
 shader_type spatial;
 render_mode cull_disabled;
-// Priority variant for authored coplanar terrain. Keep the surface body in sync
-// with surface_opaque.gdshader; only the final DEPTH assignment differs.
+// General opaque variant. Identical to surface.gdshader except for its lack of
+// a fragment DEPTH write, so ordinary geometry can use fixed-function depth.
 
 uniform vec4 tint : source_color = vec4(1.0);
 uniform bool vertex_tint = false;
@@ -79,6 +79,4 @@ void fragment() {
 		float fresnel = pow(1.0 - clamp(dot(normalize(VIEW), NORMAL), 0.0, 1.0), 3.0);
 		EMISSION = mix(texture(lut_r, vec2(fresnel, fract(lut_phase))).rgb, texture(lut_t, vec2(fresnel, fract(lut_phase + 0.5))).rgb, 0.5) * lut_intensity;
 	}
-	// Match semantic support-surface priority exactly. Opaque world pass; no displacement or visibility change.
-	DEPTH = FRAGCOORD.z + (vertex_tint ? UV.x * 0.000001 : 0.0);
 }
