@@ -6,6 +6,7 @@ import {existsSync,readFileSync} from 'node:fs';
 import {join,resolve,posix} from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {robotImportPaths,verifyRobotImports} from './robot_imports.mjs';
+import {vehicleImportPaths,verifyVehicleImports,VEHICLE_EVIDENCE} from './vehicle_imports.mjs';
 export const REQUIREMENTS='tools/godot-package/production_requirements.json';
 export const REQUIRED_UNITS=Object.freeze(['parallax-interiors','robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
 const skins=['needle_surveyor','caisson_guard','kiln_tender'];
@@ -67,6 +68,7 @@ function specification(unit,read) {
       extra.push(`tools/godot-vehicle-assets/generated/${stem}.json`,`tools/godot-vehicle-assets/masters/${stem}-report.json`);
     }
     inputs.push('tools/godot-vehicle-assets/write-recipes.mjs','godot/vehicle_assets/attachment.gd','godot/vehicles/puma.gd','godot/vehicles/renderer.gd','godot/combined_arms/chassis.gd','godot/combined_arms/fleet.gd','game/vehicles.mjs');
+    extra.push(...vehicleImportPaths(exports),...VEHICLE_EVIDENCE);
   } else if(id==='scenery') {
     const catalog=JSON.parse(read('godot/biomes/expansion/catalog.json'));
     const ids=Object.values(catalog.chapters).flatMap(c=>c.placements.map(p=>p.asset));
@@ -188,6 +190,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
       equal(Object.keys(built.assets),[...skins,...props],'Incomplete robot builder receipt');
       for(const [name,row]of Object.entries(built.assets))assert.equal(row.sha256,resources[`godot/robot_assets/switchyard/generated/${name}.glb`],'Stale robot export receipt');
     }
+    if(unit.id==='vehicles')verifyVehicleImports(spec.exports,read);
     if(unit.id==='vehicles')for(const kind of ['puma','titan','scout'])for(let lod=0;lod<3;lod++) {
       const stem=`${kind}-lod${lod}`,report=JSON.parse(read(`tools/godot-vehicle-assets/masters/${stem}-report.json`));
       assert.equal(report.kind,kind);assert.equal(report.lod,lod);

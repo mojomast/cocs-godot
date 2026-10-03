@@ -13,6 +13,7 @@ const worldIds=['helix-conservatory','gravemill-foundry'];
 
 test('all seven units remain required; a promotion without registry membership stays pending',()=>{
   const unpromoted=JSON.parse(disk(REQUIREMENTS));unpromoted.units.robots.promotion=null;
+  unpromoted.units.vehicles.promotion=null;
   const read=p=>p===REQUIREMENTS?Buffer.from(JSON.stringify(unpromoted)):disk(p);
   const result=productionResources({read,has:exists,worldIds,strict:false});
   assert.deepEqual([...result.pending].sort(),[...REQUIRED_UNITS].sort());
@@ -30,11 +31,11 @@ test('all seven units remain required; a promotion without registry membership s
   assert.throws(()=>productionResources({read:p=>p==='port/finish/ASSET_PRODUCTION.json'?Buffer.from(JSON.stringify(plan)):disk(p),has:exists,strict:false}),/builder\/recipe dropped/);
 });
 
-test('real Parallax and robot promotions bind actual production bytes; five units remain pending',()=>{
+test('three real promotions bind actual production bytes; four units remain pending',()=>{
   const options={read:disk,has:exists,worldIds:Object.keys(WORLDS),strict:false};
   const result=productionResources(options);
   assert.equal(Object.keys(WORLDS).length,10);
-  assert.deepEqual(result.pending,REQUIRED_UNITS.filter(id=>!['parallax-interiors','robots'].includes(id)));
+  assert.deepEqual(result.pending,REQUIRED_UNITS.filter(id=>!['parallax-interiors','robots','vehicles'].includes(id)));
   const glb='godot/multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb';
   assert.equal(result.raw[glb],'c1dffd357545206d3f70870f850e441c5be148e652830a4a69835185a75610bd');
   assert.ok(!Object.hasOwn(result.resources,glb+'.import'));
@@ -61,19 +62,10 @@ function fixtureGlb(fingerprint) {
 }
 function vehicleFixture() {
   const files=new Map(),read=p=>files.has(p)?files.get(p):disk(p),has=p=>files.has(p)||exists(p);
-  const req=JSON.parse(disk(REQUIREMENTS)),plan=JSON.parse(disk(req.plan));
-  const unit=plan.units.find(u=>u.id==='vehicles');
-  const sourceHashes=Object.fromEntries([...unit.recipePaths,plan.common.finishScript].sort().map(p=>[p,sha(read(p))]));
-  const sourceFingerprint=sha(JSON.stringify(sourceHashes));
+  const req=JSON.parse(disk(REQUIREMENTS));
   const spec=productionResources({read,has,strict:false}).units.vehicles.expected;
-  for(const kind of ['puma','titan','scout'])for(let lod=0;lod<3;lod++) {
-    const stem=`${kind}-lod${lod}`,recipe=Buffer.from(JSON.stringify({kind,lod,fixture:true}));
-    files.set(`tools/godot-vehicle-assets/generated/${stem}.json`,recipe);
-    files.set(`tools/godot-vehicle-assets/masters/${stem}-report.json`,Buffer.from(JSON.stringify({kind,lod,recipe_sha256:sha(recipe)})));
-  }
-  for(const p of spec.masters)files.set(p,Buffer.from('integrity fixture, not an actual master'));
-  for(const p of spec.exports)files.set(p,fixtureGlb(sourceFingerprint));
-  const receipt={unit:'vehicles',sourceHashes,sourceFingerprint,packageInputs:Object.fromEntries(spec.packageInputs.map(p=>[p,sha(read(p))])),masters:spec.masters.map(path=>({path,sha256:sha(read(path))})),exports:spec.exports.map(path=>({path,sha256:sha(read(path)),textures:inspectProductionGlb(read(path),sourceFingerprint)})),runtimeHooks:{'godot/vehicle_assets/attachment.gd':sha(read('godot/vehicle_assets/attachment.gd'))},rawFiles:[spec.exports[0]]};
+  const receipt=JSON.parse(disk('tools/godot-package/production_receipts/vehicles.json'));
+  receipt.rawFiles=[spec.exports[0]]; // Synthetic raw-reader scenario on real assets.
   const refresh=()=>{const path='tools/godot-package/production_receipts/vehicles.json',bytes=Buffer.from(JSON.stringify(receipt));files.set(path,bytes);req.units.vehicles.promotion={receipt:path,sha256:sha(bytes)};files.set(REQUIREMENTS,Buffer.from(JSON.stringify(req)));};
   refresh();return {files,read,has,receipt,refresh,spec};
 }
@@ -84,7 +76,7 @@ test('promoted identity enumerates exact masters/exports and raw bytes; stale he
   for(const helper of ['tools/asset-production/moth_finish.py','tools/godot-vehicle-assets/write-recipes.mjs']) {
     f.files.set(helper,Buffer.from('changed helper'));assert.throws(check,/content hash mismatch/);f.files.delete(helper);
   }
-  const recipe='tools/godot-vehicle-assets/generated/puma-lod0.json';const original=f.files.get(recipe);f.files.set(recipe,Buffer.from('{}'));
+  const recipe='tools/godot-vehicle-assets/generated/puma-lod0.json';const original=f.read(recipe);f.files.set(recipe,Buffer.from('{}'));
   assert.throws(check,/content hash mismatch/);f.files.set(recipe,original);
   f.receipt.exports[0].sha256='0'.repeat(64);f.refresh();assert.throws(check,/content hash mismatch/);
 });
