@@ -1,6 +1,21 @@
-extends "res://tests/protocol/lobby_qol.gd"
+extends SceneTree
 ## Real controls and routed keyboard focus; controlled advertised-room records.
+const RoomBrowser = preload("res://social/room_browser.gd")
+var failures := 0
 var output := ""
+
+func _initialize() -> void: call_deferred("run")
+func settle() -> void:
+	for frame in 3: await process_frame
+func check(ok: bool, message: String) -> void:
+	if not ok:
+		failures+=1
+		push_error(message)
+func room_rows() -> Array:
+	return [
+		{"roomId":"AB12","name":"Alpha","mapId":"meridian-exchange","players":2,"started":false,"config":{"mode":"teamdeathmatch"}},
+		{"roomId":"CD34","name":"Bravo","mapId":"verdant-reliquary","players":1,"started":true,"config":{"mode":"deathmatch"}},
+		{"roomId":"EF56","name":"Echo","mapId":"meridian-exchange","players":3,"started":false,"config":{"mode":"deathmatch"}}]
 
 func save_frame(name: String) -> void:
 	await settle()

@@ -27,6 +27,7 @@ func run() -> void:
 		{"id":2,"type":"teleport","actor":2,"from":{"x":-1,"y":1,"z":0},"to":{"x":1,"y":1,"z":0}},
 		{"id":3,"type":"explosion","pos":{"x":0,"y":1,"z":0},"radius":2.0}]
 	for event: Dictionary in events:
+		event.time=1.0
 		var context := Context.new()
 		root.add_child(context)
 		context.add_child(context.world)
@@ -51,6 +52,8 @@ func run() -> void:
 		feedback.apply_state(state)
 		feedback.apply_events([event],0)
 		feedback.flush_effects()
+		if event.type=="explosion":
+			print("POLISH_GENERIC_BLASTS ",feedback.weapon_effects.blasts," rejected=",feedback.weapon_effects.rejected)
 		feedback.weapon_effects.advance(0.08)
 		var moth: Variant = feedback.get("moth_effects") if "moth_effects" in feedback else null
 		if is_instance_valid(moth): moth.advance(0.08)
