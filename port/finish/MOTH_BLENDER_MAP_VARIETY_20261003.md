@@ -1,5 +1,29 @@
 # New Moth resources and Blender-authored map variety
 
+## Current owner — Parallax tangent production AA
+
+**MOTH-BLENDER-20261003-AA is the sole heavy grant**, Sol
+`ses_efd55bb5cffeJRWNA4xZq8O6cE`, foundation **`d3a4c524`**. The reviewed source
+contract and parent-reviewed conservative lookup fix passed all six source tests.
+Actual packed master, fresh reopen, native basis/material proof and matched X/AA
+captures are authorized. Parent confirmed lock availability and only the preserved
+viewer at 23:13:36.755692Z. No successor acceptance or promotion is claimed yet.
+
+Z failed-diagnostic evidence is independently approved and integrated as
+**`f108afd4` / `bb9ececa`**; all 253 integrated files match and 26 source/package
+tests pass. Five downhill landing passes, five uphill failures and fifty unrun
+trials remain the exact outcome. Candidate traversal and .42 m tests are unrun.
+Vesper remains withheld. Astra is preparing a source-only swept step-up feasibility
+proposal; AA is the only authorized engine work.
+
+**Parallax tangent contract approved and integrated:** `ca84e802` / `d8822447`
+close the ancestor-transform P1; parent passed five source tests and strict shipping
+closure. The reviewer found a nonblocking false rejection of in-tolerance native
+position differences caused by an empty lookup bucket. Sol is correcting it before
+production, without changing the 1e-5 m bound. Native proof remains mesh-local;
+no successor artifact or heavy authorization is implied. Z evidence review continues
+and no heavy grant is active.
+
 ## Current checkpoint — Z released after genuine uphill failures
 
 **No heavy grant is active.** Z delivered `eba8b633` / `dd4fbbb8` and released

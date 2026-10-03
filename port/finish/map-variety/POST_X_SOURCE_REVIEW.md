@@ -1,5 +1,53 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Current execution — Parallax AA; Vesper source feasibility only
+
+Parent reviewed the narrow `8a4d2563` native lookup fix and integrated it as
+**`d3a4c524`**. Non-inserting lookup and exclusion of exhausted buckets preserve
+unique matching and the 1e-5 m bound. All **six source tests** pass, including the
+full 155,553-face fixture with a measured 7.62939453125e-6 m displacement accepted,
+over-bound displacement rejected and wrong handedness rejected.
+
+**MOTH-BLENDER-20261003-AA** is authorized to Sol
+`ses_efd55bb5cffeJRWNA4xZq8O6cE`, from `d3a4c524`, for actual Parallax master,
+fresh reopen/export, native basis/material proof and matched X/successor captures.
+AA is the sole heavy owner. Parent confirmed lock availability and only the
+pre-existing viewer at 23:13:36.755692Z. No actual successor acceptance is implied.
+
+Z independently passed review as a **measured failed experiment**, integrated as
+**`f108afd4` / `bb9ececa`**. All 253 files match after integration; thirteen Python
+and thirteen Node staging/shipping checks pass. Ten trials ran (five downhill
+landing passes, five uphill failures), fifty remain unrun. Candidate movement and
+the .42 m envelope remain untested. The 200 settling calls are established by
+source/frame spans, not individually serialized traces. Existing static failures
+remain failed; no Vesper artifact approval or runtime promotion follows.
+
+Astra `ses_efd55fd04ffedSQ6q14ztgmqaa` is assigned a source-only bounded step-up
+feasibility proposal using explicit up/forward/down collision sweeps and headroom
+checks, preserving the 46° floor limit and baseline behavior. No engine grant or
+production-controller change is authorized by that source task.
+
+## Parallax contract approved and integrated; tolerance lookup follow-up
+
+Focused independent re-review approved **`48c7e6c1` + `3a0da75e`**, integrated
+as **`ca84e802` / `d8822447`**. The actual X baseline passes all 155,553 triangles
+with zero editable position/normal/UV error; translated and identity parent
+wrappers now reject. Exactly 39 direct active-scene mesh roots are required,
+retaining their supported leaf transforms. Parent passed all five source tests
+and strict committed-Git shipping closure.
+
+The synthetic native exact-stream fixture passes, with zero reported local errors
+and no tangent waivers. Native scope explicitly excludes node/world transforms
+and permits measured local position error ≤1e-5 m.
+
+A separate **conservative false rejection** remains in `native.py`: indexing a
+`defaultdict` inserts an empty bucket before tolerance search, so one in-bound
+float32 displacement of 7.62939453125e-6 m appears ambiguous with that empty bucket.
+This does not allow bad geometry to pass or reopen the transform P1. Sol is fixing
+the non-inserting lookup and excluding exhausted candidate lists, with in-bound
+and over-bound regressions. No tolerance widening is authorized. Production waits
+for this narrow correction; no new master/GLB or heavy grant exists.
+
 ## Z native outcome and Parallax correction delivery
 
 Z completed as `eba8b633` / `dd4fbbb8`, released, and is under independent
