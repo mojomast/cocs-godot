@@ -4,6 +4,7 @@ extends SceneTree
 const Visual = preload("res://source_operators/operator_visual.gd")
 const Catalog = preload("res://source_operators/generated/catalog.gd")
 var capture_dir := ""
+var captures := 0
 
 func _init() -> void:
 	for arg: String in OS.get_cmdline_user_args():
@@ -90,5 +91,15 @@ func run() -> void:
 					await RenderingServer.frame_post_draw
 					var file := "%s/%s-%s-%02d.png" % [capture_dir,identity,action,frame]
 					var result := root.get_texture().get_image().save_png(file)
+					if result != OK:
+						push_error("Motion PNG write failed: "+file)
+						quit(1)
+						return
+					captures += 1
 					print(JSON.stringify({"capture":file,"result":result,"contacts":visual.locomotion.contacts,"grips":visual.grip_error}))
+	if not capture_dir.is_empty() and captures != 216:
+		push_error("Expected 216 operator motion phase images")
+		quit(1)
+		return
+	print("OPERATOR_MOTION_GALLERY_OK captures=",captures)
 	quit()

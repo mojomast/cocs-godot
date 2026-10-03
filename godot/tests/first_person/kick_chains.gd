@@ -2,18 +2,21 @@ extends SceneTree
 const Motion = preload("res://first_person/kick_motion.gd")
 const Leg = preload("res://first_person/kick_rig.gd")
 var checks := 0
+var failures := 0
 
 func check(ok: bool, label: String) -> void:
 	checks += 1
 	if not ok:
+		failures += 1
 		push_error(label)
-		quit(1)
-		assert(ok, label)
 
 func event(id: int, time: float, hit: Variant = 8) -> Dictionary:
 	return {"type":"melee", "id":id, "time":time, "actor":7, "hit":hit}
 
 func _initialize() -> void:
+	call_deferred("run")
+
+func run() -> void:
 	var motion := Motion.new()
 	check(motion.accept(event(1, 1.0)) and motion.step == 0, "first accepted press starts lead")
 	check(not motion.accept(event(1, 1.0)) and motion.accepted == 1, "duplicate cannot restart pose")
@@ -57,5 +60,5 @@ func _initialize() -> void:
 	check(leg.knee.get_parent() == leg.hip and leg.ankle.get_parent() == leg.knee and leg.toe.get_parent() == leg.ankle, "articulation hierarchy")
 	for mesh: MeshInstance3D in leg.find_children("*", "MeshInstance3D", true, false): mesh.mesh = null
 	leg.free()
-	print("KICK_CHAINS_OK checks=", checks)
-	quit(0)
+	print("KICK_CHAINS_OK checks=", checks, " failures=", failures)
+	quit(0 if failures == 0 else 1)

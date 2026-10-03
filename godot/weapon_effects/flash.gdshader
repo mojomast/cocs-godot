@@ -6,7 +6,7 @@ uniform int kind = 0;
 uniform float opacity = 1.0;
 uniform bool billboard = true;
 uniform bool use_sheet = false;
-uniform sampler2D frame_texture : source_color, filter_linear;
+uniform sampler2D frame_texture : source_color, filter_linear, repeat_disable;
 // Weapon-oomph additions: per-weapon core gain (bigger, hotter white core) and
 // an overall brightness multiplier. Defaults preserve the original card.
 uniform float core_gain = 1.0;
@@ -45,11 +45,22 @@ void fragment() {
 	vec3 color = mix(tint.rgb, vec3(1.0,0.96,0.85), clamp(core*0.8,0.0,1.0)) * brightness;
 	if (use_sheet) {
 		vec4 tex = texture(frame_texture, UV);
-		// Moth frames can have opaque black backgrounds: derive soft coverage,
-		// retain their alpha, and taper edges rather than drawing opaque cards.
-		float coverage = smoothstep(0.035,0.32,max(tex.r,max(tex.g,tex.b)));
-		shape = max(shape*0.35, coverage*tex.a);
-		color = mix(color, tex.rgb*tint.rgb, 0.6);
+		// Baked Moth effect frames carry an opaque uniform background (the source
+		// ran additive): spark-impact sits on (26,8,6), arc-burst on (10,4,30),
+		// both alpha 1.0. Recover the authored signal by subtracting the frame's
+		// own corner background, exactly as graphics_fx/moth_world.gdshader does,
+		// so neither coverage nor colour inherits the card. Source alpha is fully
+		// opaque, so contrast, not alpha, must drive coverage.
+		vec3 background = texture(frame_texture, vec2(0.0)).rgb;
+		vec3 signal_color = max(tex.rgb - background, vec3(0.0));
+		float contrast = max(max(signal_color.r, signal_color.g), signal_color.b);
+		float coverage = smoothstep(0.0005, 0.015, contrast) * tex.a;
+		shape = max(shape*0.35, coverage);
+		// Source-ratio exposure (shared with the world lane) keeps the baked
+		// ember/plasma ratios; the weapon tint still carries profile identity.
+		// Weight by coverage so zero-signal background leaves the analytic colour
+		// (and therefore core identity) untouched.
+		color = mix(color, (vec3(1.0) - exp(-signal_color*10.0))*tint.rgb, 0.6*coverage);
 	}
 	float edge = 1.0-smoothstep(0.65,1.0,r);
 	ALBEDO = color;

@@ -24,6 +24,14 @@ var overflow := 0
 var duplicates := 0
 var rejected := 0
 var serial := 0
+## Presentation preferences. Defaults preserve every existing direct caller; the
+## integrated CombatFeedback owner propagates the live quality and reduced-motion
+## choice. Disabling a preference immediately hides live cues and drops new ones
+## while their accepted event ID is still consumed, so a later preference change
+## cannot replay a hidden event or resurrect an old cue. Source parity: every
+## Moth accent in view.mjs is guarded by `!reduced`.
+var quality := 2
+var reduced_motion := false
 
 func _init() -> void:
 	id_slots.resize(ID_WINDOW)
@@ -53,6 +61,19 @@ func configure_resources(resources: Dictionary) -> void:
 			if not frame is Texture2D or frame.get_width() <= 0 or frame.get_height() <= 0: valid = false
 		if valid: sheets[key] = {"frames": frames.duplicate(), "fps": float(fps)}
 
+func set_quality(level: int) -> void:
+	var next := clampi(level, 0, 2)
+	if next == quality: return
+	quality = next
+	# Disabling stops live cues at once; restoring never resurrects them.
+	if quality <= 0: clear_transient()
+
+func set_reduced_motion(value: bool) -> void:
+	var next := value == true
+	if next == reduced_motion: return
+	reduced_motion = next
+	if reduced_motion: clear_transient()
+
 static func number(value: Variant) -> bool:
 	return (value is int or value is float) and is_finite(float(value))
 
@@ -65,6 +86,19 @@ static func point(value: Variant) -> Variant:
 	for key: String in ["x", "y", "z"]:
 		if not number(value.get(key)) or absf(float(value[key])) > 100000.0: return null
 	return Vector3(value.x, value.y, value.z)
+
+# Supplemental world cues this module owns in the integrated pipeline: health
+# and megahealth pickups, mender heals and teleport end-points. Damage sparks and
+# explosions are deliberately excluded because weapon_effects and
+# player_fx/impacts already present those beats; routing them here would double
+# the presentation. Kept static so CombatFeedback can filter without another bus.
+static func support_only(event: Variant) -> bool:
+	if not event is Dictionary: return false
+	match str(event.get("type", "")):
+		"teleport", "teleporter": return true
+		"mender-heal": return true
+		"pickup": return event.get("kind") in ["health", "megahealth"]
+	return false
 
 # actors must be the latest PUBLIC authoritative snapshot actors, not predicted
 # or interpolated render nodes. Positions are read only; cues do not follow actors.
@@ -98,6 +132,9 @@ func consume(events: Array, _local_id: int = -1, actors: Array = []) -> void:
 		if id_slots[bucket] >= 0: seen.erase(id_slots[bucket])
 		id_slots[bucket] = id
 		seen[id] = true
+		# Presentation preference gate. The ID is already consumed above, so a
+		# dropped cue stays dropped when quality/reduced motion later changes.
+		if reduced_motion or quality <= 0: continue
 		_present(event, positions)
 
 func _present(event: Dictionary, positions: Dictionary) -> void:
@@ -193,6 +230,18 @@ func active_count() -> int:
 	for slot: Dictionary in slots:
 		if slot.remaining > 0: count += 1
 	return count
+
+## Immediately stop every live cue without surrendering the bounded reusable
+## pool, the accepted-ID history (seen/sliding floor) or the injected sheets.
+## Counters stay monotonic so the transient clear is not a round boundary. This
+## is the preference/focus clear; reset() is reserved for round boundaries where
+## public IDs may legitimately be reused.
+func clear_transient() -> void:
+	for slot: Dictionary in slots:
+		if slot.remaining <= 0: continue
+		slot.remaining = 0.0
+		slot.node.visible = false
+		slot.material.set_shader_parameter("frame_texture", null)
 
 func reset() -> void:
 	# Immediate release at round boundary; normal expiry retains bounded reusable

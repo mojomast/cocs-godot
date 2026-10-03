@@ -3,6 +3,7 @@ const Wet = preload("res://ambience/wet_surface.gd")
 const Look = preload("res://ambience/weather_look.gd")
 const Contact = preload("res://ambience/rain_contact.gd")
 const Weather = preload("res://ambience/weather_service.gd")
+const Surfaces = preload("res://moth/surfaces.gd")
 
 class OracleContact extends "res://ambience/rain_contact.gd":
 	func _support(position: Vector3) -> Dictionary:
@@ -80,9 +81,18 @@ func verify_materials() -> void:
 		meshes.append(node)
 	var shader_nodes: Array[MeshInstance3D] = []
 	var originals: Array[ShaderMaterial] = []
-	for path: String in Wet.TARGETS:
-		var mat := ShaderMaterial.new()
-		mat.shader = load(path)
+	var paths := ["res://moth/surface.gdshader", "res://moth/surface_opaque.gdshader",
+		"res://material_language/family.gdshader", "res://campaign/materials/ground.gdshader"]
+	assert(Wet.TARGETS.size() == paths.size())
+	for path: String in paths:
+		var mat: ShaderMaterial
+		if path.begins_with("res://moth/"):
+			mat = Surfaces.create_surface("brushed_metal", Color("91aabb"), true, path == paths[0])
+			Surfaces.apply_lut(mat, "entanglement-ceramic", 0.035, 0.7)
+		else:
+			mat = ShaderMaterial.new()
+			mat.shader = load(path)
+		assert(mat.shader.resource_path == path)
 		originals.append(mat)
 		var node := MeshInstance3D.new()
 		node.mesh = BoxMesh.new()
@@ -93,21 +103,42 @@ func verify_materials() -> void:
 	for cycle in 12:
 		look.bind(world,environment,null,7)
 		look.apply("storm",0.0,true)
-		assert(look.diagnostics().materials == 4)
-		assert(look.diagnostics().wet_textures == 1 and look.diagnostics().wet_shader_variants == 3)
+		assert(look.diagnostics().materials == 5)
+		assert(look.diagnostics().wet_textures == 1 and look.diagnostics().wet_shader_variants == 4)
 		assert(meshes[0].material_override == meshes[1].material_override)
 		assert(meshes[0].material_override.roughness_texture != texture)
 		assert(original.roughness_texture == texture and original.roughness_texture_channel == BaseMaterial3D.TEXTURE_CHANNEL_BLUE)
-		for i in 3:
-			assert(shader_nodes[i].material_override.shader != originals[i].shader)
-			assert(shader_nodes[i].material_override.get_shader_parameter("weather_has_roughness") == true)
+		for i in paths.size():
+			var wet := shader_nodes[i].material_override as ShaderMaterial
+			assert(wet != originals[i] and wet.shader != originals[i].shader)
+			var names := PackedStringArray()
+			for reflected: Dictionary in wet.shader.get_shader_uniform_list(): names.append(str(reflected.name))
+			# Dummy headless rendering can omit shader reflection; the graphical
+			# Compatibility run checks the actual reflected parameter names.
+			if names.is_empty() and DisplayServer.get_name() == "headless":
+				var declaration := RegEx.create_from_string("uniform\\s+\\w+\\s+(\\w+)\\s*(?:[:;=])")
+				for match_result: RegExMatch in declaration.search_all(wet.shader.code): names.append(match_result.get_string(1))
+			assert("weather_has_roughness" in names and "weather_roughness_map" in names)
+			assert(wet.get_shader_parameter("weather_has_roughness") == true)
+			assert(wet.get_shader_parameter("weather_roughness_map") == look.surface.texture)
 			assert(not originals[i].shader.code.contains("weather_has_roughness"))
+			if i < 2:
+				for name in ["tint", "vertex_tint", "normal_map", "has_normal", "lut_r", "lut_t"]: assert(name in names)
+				assert(wet.shader.code.contains("DEPTH = FRAGCOORD.z") == (i == 0))
+				for uniform in ["tint", "vertex_tint", "albedo_map", "normal_map", "has_albedo", "has_normal", "albedo_gain", "roughness", "metallic", "has_lut", "lut_r", "lut_t", "lut_intensity", "lut_phase"]:
+					if uniform in ["roughness", "metallic"]:
+						assert(wet.get_shader_parameter(uniform) != originals[i].get_shader_parameter(uniform))
+					else:
+						assert(wet.get_shader_parameter(uniform) == originals[i].get_shader_parameter(uniform), "weather changed " + uniform)
 		look.apply("clear",0.0,true)
 		assert(meshes[0].material_override.roughness_texture == texture)
 		assert(meshes[0].material_override.roughness_texture_channel == BaseMaterial3D.TEXTURE_CHANNEL_BLUE)
+		for i in paths.size():
+			assert(shader_nodes[i].material_override.get_shader_parameter("weather_has_roughness") == false)
 		look.clear()
 		assert(look.diagnostics().wet_textures == 0 and look.diagnostics().wet_shader_variants == 0)
 		assert(meshes[0].material_override == original)
+		for i in paths.size(): assert(shader_nodes[i].material_override == originals[i])
 	world.free()
 	await process_frame
 

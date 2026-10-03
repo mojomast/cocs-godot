@@ -17,6 +17,7 @@ func run() -> void:
 	root.add_child(shell)
 	shell.roster = JSON.parse_string(FileAccess.get_file_as_string("res://fighting/data/roster.json"))
 	var rules: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://fighting/data/rules.json"))
+	shell.simulation = preload("res://fighting/core/simulation.gd").new()
 	shell.simulation.configure(shell.roster,rules)
 	shell.simulation.start_match({"operators":shell.operators,"stage_id":"test","seed":17,"training":true})
 	shell.state = shell.simulation.snapshot()

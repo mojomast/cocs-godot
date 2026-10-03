@@ -42,6 +42,11 @@ func run() -> void:
 		var visual := Visual.new()
 		root.add_child(visual)
 		visual.automatic_animation = false
+		visual.configure(actor_at(identity,Vector3(0,0.9,0),Vector2.ZERO))
+		for side: String in ["L","R"]:
+			for prefix: String in ["legUpper","legLower","foot"]:
+				check(visual.nodes.has(prefix+side) and visual.source.is_ancestor_of(visual.nodes[prefix+side]),identity+" imported pivot membership "+prefix+side)
+			check(absf(float(visual.rig.anatomy[side].length)-0.69)<0.0001,identity+" thigh+shin must include translated intermediate pivots")
 		for hz: int in [30,60,144]:
 			for speed: float in [1.0,2.0,4.0,8.0,11.0]:
 				for direction: Vector2 in [Vector2(0,-1),Vector2(0,1),Vector2(1,0),Vector2(-1,-1).normalized()]:
@@ -59,6 +64,8 @@ func run() -> void:
 						drive(visual,actor,dt)
 						for side: String in ["L","R"]:
 							var contact: Dictionary = visual.locomotion.contacts[side]
+							check((contact.ankle as Vector3).is_finite() and (contact.knee as Vector3).is_finite(),identity+" finite native leg pose")
+							check(visual.grip_error.has(side),identity+" missing actual grip sample")
 							if frame > hz and contact.planted:
 								error = maxf(error,float(contact.error))
 								if previous.has(side) and previous[side].planted and (previous[side].target as Vector3).is_equal_approx(contact.target):

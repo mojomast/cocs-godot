@@ -1,12 +1,13 @@
 extends Node3D
-## Documented shared environment for identity maps.
+## Composition-owned environment for identity maps and the two biome maps.
 ##
 ## identity_maps/map.gd is a geometry/collision builder: it deliberately ships
 ## no lights and no WorldEnvironment. This composition-owned layer installs
 ## exactly one DirectionalLight3D and one WorldEnvironment per identity-map
-## session, so a session always has one sun and one sky. The native builders
-## keep their own authored atmosphere, so all six Deathmatch maps have exactly
-## one environment each. Colors come from the validated recipe palette.
+## session. The three identity maps use the same authored Style environment as
+## inspection; canopy/basalt retain their native procedural-sky look. Other
+## native builders keep their own atmosphere.
+const Style = preload("res://identity_maps/style.gd")
 const FALLBACK := ["a4a8ac", "b7b0a0", "202c59", "ad7045"]
 var sun := DirectionalLight3D.new()
 var world_environment := WorldEnvironment.new()
@@ -20,6 +21,17 @@ static func palette_color(palette: Array, index: int, fallback: String) -> Color
 
 func build(recipe: Dictionary) -> bool:
 	if built: return true
+	var map_id := str(recipe.get("id", ""))
+	if Style.ENVIRONMENTS.has(map_id):
+		# The style creates a new Environment/Sky for these two owned nodes.
+		# Keeping them under this map root lets weather find exactly one pair,
+		# lease the baseline during play and restore it on return to Home.
+		Style.configure_environment(map_id, world_environment, sun)
+		name = "IdentityEnvironment"
+		add_child(sun)
+		add_child(world_environment)
+		built = true
+		return true
 	built = true
 	var palette: Array = recipe.get("palette", [])
 	var floor_color := palette_color(palette, 0, FALLBACK[0])

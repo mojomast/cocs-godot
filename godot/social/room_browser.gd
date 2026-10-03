@@ -23,6 +23,7 @@ var search := LineEdit.new()
 var hide_started := CheckButton.new()
 var list_box := VBoxContainer.new()
 var empty_note := Label.new()
+var clear_filters_button := Button.new()
 var controls := BoxContainer.new()
 
 var all_rooms: Array = []
@@ -31,6 +32,9 @@ var connected := true
 var awaiting := false
 var elapsed := 0.0
 var dirty := true
+# The room the user last selected, kept only for the in-list highlight. It is
+# never used to auto-join and is cleared on disconnect like the advertised list.
+var selected_room_id := ""
 
 func _ready() -> void:
 	add_theme_constant_override("separation", 4)
@@ -57,8 +61,12 @@ func _ready() -> void:
 	controls.add_child(hide_started)
 	empty_note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	empty_note.add_theme_color_override("font_color", Color(0.68, 0.76, 0.82))
+	clear_filters_button.text = "Clear filters"
+	clear_filters_button.tooltip_text = "Clear the room search and the in-progress filter"
+	clear_filters_button.visible = false
+	clear_filters_button.pressed.connect(clear_filters)
 	list_box.add_theme_constant_override("separation", 2)
-	for node: Control in [caption, endpoint_label, status, controls, empty_note, list_box]:
+	for node: Control in [caption, endpoint_label, status, controls, clear_filters_button, empty_note, list_box]:
 		add_child(node)
 	sync(false)
 	rebuild()
@@ -66,9 +74,26 @@ func _ready() -> void:
 func set_compact(compact: bool) -> void:
 	controls.set_vertical(compact)
 
+# True when the user has narrowed the list: a search query and/or the
+# "Hide in progress" toggle. Drives the truthful empty-filter note.
+func filter_active() -> bool:
+	return not search.text.strip_edges().is_empty() or hide_started.button_pressed
+
+# One explicit, focusable recovery path for a filtered-to-empty list. It only
+# clears the browser's own filters: it never selects a room, changes role or
+# touches the current join selection, and it keeps the typed query in place until
+# the user chooses to clear it.
+func clear_filters() -> void:
+	search.text = ""
+	hide_started.set_pressed_no_signal(false)
+	dirty = true
+	search.grab_focus()
+
 # The endpoint this browser is actually bound to (the open connection), not the
-# editable field text. Set every frame by the lobby.
+# editable field text. Set every frame by the lobby; only writes on a change so a
+# stable endpoint does not re-shape the label every frame.
 func set_endpoint(label: String) -> void:
+	if endpoint_label.text == label: return
 	endpoint_label.text = label
 
 # Called every frame by the lobby with the live connection state. Status text is
@@ -80,6 +105,7 @@ func sync(open: bool) -> void:
 	elapsed = 0.0
 	if not connected:
 		all_rooms.clear()
+		selected_room_id = ""
 		status.text = "Not connected — press Browse / Refresh to connect to the entered endpoint."
 	else:
 		status.text = "Connected · press Browse / Refresh to list rooms on this server."
@@ -111,6 +137,10 @@ func fail(message: String) -> void:
 
 func select_room(record: Dictionary) -> void:
 	if record.is_empty(): return
+	selected_room_id = str(record.get("roomId", ""))
+	# Update the existing rows in place: the pressed row keeps focus and the
+	# highlight appears immediately, without a rebuild and without re-emitting.
+	apply_selection_mark()
 	room_selected.emit(record)
 
 func visible_rooms() -> Array:
@@ -122,8 +152,19 @@ func rebuild() -> void:
 		list_box.remove_child(child)
 		child.queue_free()
 	var rooms: Array = visible_rooms()
-	if all_rooms.is_empty():
-		empty_note.text = "" if awaiting or not connected else "No rooms to show."
+	var filtering := filter_active()
+	# The clear path is offered whenever a filter is active, so it is reachable
+	# even from a populated list, and it stays put while the result is empty.
+	clear_filters_button.visible = filtering
+	# Truthful empty state: an in-flight request and an unconnected browse stay
+	# blank (their status line already explains them); an empty advertised list
+	# is distinct from a filter that simply matched nothing.
+	if awaiting or not connected:
+		empty_note.text = ""
+	elif all_rooms.is_empty():
+		empty_note.text = "No rooms to show."
+	elif rooms.is_empty():
+		empty_note.text = "No rooms match the current filters."
 	else:
 		empty_note.text = ""
 	var shown: int = mini(rooms.size(), Model.ROOM_ROWS_LIMIT)
@@ -136,6 +177,9 @@ func rebuild() -> void:
 		more.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		more.add_theme_color_override("font_color", Color(0.68, 0.76, 0.82))
 		list_box.add_child(more)
+	# row_for() marks the current selection; re-assert after the batch so the
+	# marker is consistent even if selected_room_id changed out of band.
+	apply_selection_mark()
 	dirty = false
 
 func row_for(room: Dictionary) -> Control:
@@ -149,13 +193,33 @@ func row_for(room: Dictionary) -> Control:
 	row.add_child(code)
 	var name := str(room.get("name", ""))
 	if name.is_empty(): name = "(unnamed room)"
+	var base := "%s · %s" % [name, Model.room_label(room)]
 	var details := Label.new()
-	details.text = "%s · %s" % [name, Model.room_label(room)]
+	# The unmarked base text is cached so apply_selection_mark() can toggle the
+	# marker in place without rebuilding the row or dropping focus.
+	details.set_meta("base_text", base)
+	var selected := not selected_room_id.is_empty() and code.text == selected_room_id
+	details.text = ("▸ " + base) if selected else base
 	details.tooltip_text = details.text
 	details.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	details.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(details)
 	return row
+
+# Toggle the selected-room marker on the existing rows without rebuilding them,
+# so a click keeps focus on the pressed row and the highlight updates at once.
+func apply_selection_mark() -> void:
+	for row: Node in list_box.get_children():
+		if row.get_child_count() < 2: continue
+		var code := row.get_child(0) as Button
+		var details := row.get_child(1) as Label
+		if code == null or details == null or not details.has_meta("base_text"): continue
+		var base := str(details.get_meta("base_text"))
+		var marked := not selected_room_id.is_empty() and code.text == selected_room_id
+		var text := ("▸ " + base) if marked else base
+		if details.text != text:
+			details.text = text
+			details.tooltip_text = text
 
 func _process(delta: float) -> void:
 	if dirty: rebuild()

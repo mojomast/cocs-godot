@@ -1,10 +1,11 @@
 extends RefCounted
 ## game/textures.mjs wetSheenTexture. Bounded map-local data; no frame noise work.
 const SIZE := 128
-# Explicit final roughness anchors in the three reviewed production shaders.
+# Explicit final roughness anchors in the reviewed production shaders.
 # Fail closed if their implementation changes; never infer uniform names.
 const TARGETS := {
 	"res://moth/surface.gdshader": "\tROUGHNESS = roughness;",
+	"res://moth/surface_opaque.gdshader": "\tROUGHNESS = roughness;",
 	"res://material_language/family.gdshader": "\tROUGHNESS = clamp(mix(roughness, derived_roughness, roughness_variation), 0.03, 1.0);",
 	"res://campaign/materials/ground.gdshader": " ROUGHNESS=clamp(.92-moisture*.14-rock*.10+grains*.03,.65,1.)*(1.-weather_wetness*.55);",
 }

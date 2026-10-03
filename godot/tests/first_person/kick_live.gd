@@ -129,10 +129,15 @@ func run() -> void:
 	session = load("res://world/session.tscn").instantiate()
 	root.add_child(session)
 	current_scene = session
+	# Bounded software-render evidence profile. Keep source clock/input and
+	# physical screenshot dimensions unchanged; record this below, never FPS feel.
+	root.scaling_3d_scale = 0.5
 	session.client.snapshot.connect(func(frame: Dictionary) -> void: state = frame.get("state",{}))
 	session.client.events.connect(observe)
 	session.client.connection_error.connect(func(message: String) -> void: finish(message))
 	if not await wait_for(func() -> bool: return session.phase == 3 and session.received_pose and absf(float(session.presentation.local_actor.get("x",0))+44) < 0.1,12,"controlled match ready"): return
+	session.first_person.rig.viewport.scaling_3d_scale = 0.5
+	session.first_person.rig.viewport.msaa_3d = Viewport.MSAA_DISABLED
 	root.grab_focus()
 	await pause(0.15)
 	mouse(MOUSE_BUTTON_LEFT,true)
@@ -198,7 +203,8 @@ func finish(error: String) -> void:
 	for button: int in [MOUSE_BUTTON_LEFT,MOUSE_BUTTON_RIGHT]: mouse(button,false)
 	var report := {"revision":revision,"scenario":scenario,"passed":error.is_empty(),"error":error,
 		"checks":checks,"events":events,"captures":captures,"frames":frames,"inputs":inputs,
-		"visual_contact_seconds":0.095,"damage_timing":"authority acceptance; visual contact follows receipt"}
+		"visual_contact_seconds":0.095,"damage_timing":"authority acceptance; visual contact follows receipt",
+		"software_render_profile":{"scale_3d":0.5,"weapon_msaa":false,"physical_size":"1280x720","source_clock":"normal"}}
 	if not output.is_empty():
 		var file := FileAccess.open(output.path_join("native-report.json"),FileAccess.WRITE)
 		if file != null: file.store_string(JSON.stringify(report,"\t"))

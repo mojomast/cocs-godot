@@ -70,7 +70,19 @@ func apply(rig: RefCounted, state: Dictionary, actor: Dictionary, dt: float) -> 
 	if grounded and not mounted:
 		# No speedNorm multiplication on horizontal stride. During stance,
 		# d(foot along travel)/dt == -distance/dt, exactly.
-		distance_phase = fposmod(distance_phase+maxf(0,distance)*TAU/gait.x,TAU)
+		# Integrate stride length across the velocity filter's trajectory. Using
+		# only its end-of-frame speed assigns a different stride to the same
+		# travelled distance at 30/60/144 Hz during acceleration or a turn.
+		var phase_delta := 0.0
+		var steps_count := maxi(1,ceili(dt*240.0))
+		var previous: Vector2 = state.get("previousTravelVelocity",velocity)
+		var target_velocity: Vector2 = state.get("targetTravelVelocity",velocity)
+		for step_index in steps_count:
+			var at_time := (float(step_index)+0.5)*dt/steps_count
+			var at_velocity := previous.lerp(target_velocity,1.0-exp(-12.0*at_time))
+			var at_gait := Motion.gait(at_velocity.length(),crouch,length)
+			phase_delta += maxf(0,distance)*TAU/(at_gait.x*steps_count)
+		distance_phase = fposmod(distance_phase+phase_delta,TAU)
 		if turning: distance_phase = fposmod(distance_phase+absf(yaw_delta)*2.4,TAU)
 	if not previous_grounded and grounded:
 		landing_velocity -= clampf(maxf(0,-previous_vertical_speed)*0.32,0.25,2.4)

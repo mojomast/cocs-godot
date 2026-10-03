@@ -257,6 +257,7 @@ def run_bounded(command, cwd, env, log, timeout):
             reason = 'engine-error'
     return {'status': 'passed' if reason is None else 'failed', 'failure_reason': reason,
             'exit_code': code, 'duration_seconds': round(time.monotonic() - start, 3),
+            'owned_process_group': process.pid if process is not None else None,
             'cleanup': cleanup}
 
 

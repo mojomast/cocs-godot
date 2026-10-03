@@ -6,6 +6,7 @@ const ActorVisual = preload("res://source_operators/operator_visual.gd")
 const RemoteMotion = preload("res://world/remote_motion.gd")
 const LocalLifecycle = preload("res://world/local_lifecycle.gd")
 const MeleeEvents = preload("res://source_operators/melee_events.gd")
+const SettingsAccess = preload("res://ui/settings_access.gd")
 var melee_events := MeleeEvents.new()
 var melee_client: Node
 var melee_feedback: Node
@@ -97,6 +98,8 @@ func apply_state(state: Dictionary, local_id: int) -> void:
 	local_actor = {}
 	current_pose_npcs.clear()
 	var solo: bool = str(state.get("config", {}).get("mode", "")) in ["campaign", "horde"]
+	var settings := SettingsAccess.service()
+	var reduced: bool = settings != null and bool(settings.values.get("reduced_motion",false))
 	for actor: Dictionary in state.get("actors", []):
 		var id: int = int(actor.id)
 		# Local authoritative solo targets must not trail their collision by 100ms.
@@ -111,7 +114,9 @@ func apply_state(state: Dictionary, local_id: int) -> void:
 		var visual: Node3D = actors[id]
 		if "local_id" in visual: visual.local_id = local_id
 		# Snapshot-driven source pose; the host still owns position and body yaw.
-		visual.apply_actor(actor)
+		var presentation_actor := actor.duplicate(true)
+		presentation_actor.reduced = reduced or bool(actor.get("reduced",false))
+		visual.apply_actor(presentation_actor)
 		var position: Vector3 = Vector3(actor.x, actor.y + 0.9, actor.z)
 		var body_yaw: float = float(actor.get("bodyYaw", actor.get("yaw", 0)))
 		var alive: bool = LocalLifecycle.actor_alive(actor)

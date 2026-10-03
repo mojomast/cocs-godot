@@ -1,5 +1,7 @@
 shader_type spatial;
 render_mode cull_disabled;
+// Priority variant for authored coplanar terrain. Keep the surface body in sync
+// with surface_opaque.gdshader; only the final DEPTH assignment differs.
 
 uniform vec4 tint : source_color = vec4(1.0);
 uniform bool vertex_tint = false;
