@@ -91,6 +91,7 @@ def main():
     parser.add_argument("--archive-directory", type=Path, help="optional read-only source of editor.zip/templates.tpz; official hashes required")
     parser.add_argument("--target", choices=["linux", "windows"], default="linux")
     parser.add_argument("--candidate", help="optional exact 40-hex frozen commit; release preparation should always supply it")
+    parser.add_argument("--preview", action="store_true", help="explicit non-final test build; pending unpromoted assets remain declared, promoted assets stay mandatory")
     parser.add_argument("--source-derivative", action="store_true", help="opt into the reviewed combined LATTICE/Horde source derivative; the original source lock stays unchanged")
     parser.add_argument("--operator-models", choices=["source-operators", "baseline", "candidate"], default="source-operators",
                         help="source-operators (default) ships the released presentation.gd source-operator preload; baseline is an accepted alias; candidate is retired")
@@ -197,7 +198,8 @@ def main():
     fighter_import_generator = "tools/fighting/animation/prepare_native.py"
     if fighter_imports:
         input_paths.add(fighter_import_generator)
-    production_content = json.loads(run(["node", ROOT / "tools/godot-package/production_resources.mjs", ROOT]))
+    production_content = json.loads(run(["node", ROOT / "tools/godot-package/build_channel.mjs", ROOT, port_commit, *(["--preview"] if args.preview else [])]))
+    build_intent = production_content["build_intent"]
     input_paths.update(production_content["resources"])
     input_paths.update(production_content["provenance"])
     import_sensitive = {**fighter_imports, **{
@@ -451,6 +453,13 @@ ssh_remote_deploy/enabled=false
         copy(ROOT / "tools/godot-package" / name, package / name)
     copy(ROOT / "port/contracts/map-selection.json", package / "catalog.json")
     copy(ROOT / ("port/native-windows-package/PLAY.md" if windows else "port/native-linux-package/PLAY.md"), package / "README.md")
+    write_json(package / "build-intent.json", build_intent)
+    if args.preview:
+        original = (package / "README.md").read_text()
+        header = ("# PREVIEW — non-final test build\n\nCandidate: " + port_commit
+                  + "\n\nPending production: " + (", ".join(build_intent["pending_production"]) or "none")
+                  + ".\n\n" + "\n".join("- " + s for s in build_intent["verification_limits"]) + "\n\n---\n\n")
+        (package / "README.md").write_text(header + original)
     notices = package / "licenses"
     notices.mkdir()
     bundled_node = None
@@ -506,6 +515,9 @@ ssh_remote_deploy/enabled=false
         raise RuntimeError("Reviewed revision changed during packaging")
     manifest = {
         "schema_version":1, "kind":"windows-playable-demo" if windows else "private-local-linux-prototype", "release_ready":False,
+        "build_channel":build_intent["build_channel"], "build_flags":build_intent["build_flags"],
+        "pending_production":build_intent["pending_production"], "verification_limits":build_intent["verification_limits"],
+        "build_intent":build_intent,
         "target":args.target, "operator_models":args.operator_models, "staged_native_overrides":staged_overrides,
         "redistribution_rights":"unresolved; local use only; no asset rights asserted",
         "source_commit":lock["source_commit"], "source_derivative_commit":derivative["derivative_commit"] if derivative else None,
