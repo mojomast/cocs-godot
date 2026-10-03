@@ -21,11 +21,11 @@ boundaries.
 | Fighting presentation and controls | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing at `1bff0281`; controller recovery integrated at `614a8a7f`, all 12 parent presentation source tests pass; native review pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
-| Scenery integration development | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Atomic installer and four-chapter connected journeys integrated at `cf0e8def`; nine parent source checks pass; awaits production/native grant after vehicles |
-| Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Exclusive grant E: complete source journey work, then actual nine masters/exports, native drive/crew/fire/repair/wreck and visual review |
+| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Exclusive grant F: twelve assemblies/24 LOD exports, masters/reopen, atomic lifecycle, four connected chapter journeys and visual review |
+| Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Actual production integrated at `1f129ab2`; E released, 22 parent source checks pass; source-only compact-HUD clipping correction active |
 | Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base `b6ab6782` and ordinary-controller follow-up `da259d19` integrated; 26 parent acceptance tests and grammar pass; native execution awaits later grant and device access |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Launch-bound UI registration integrated through `2e355b93`; 142 jobs preserve all prior coverage; 35 parent runner/receipt tests pass; fresh ledger still required |
-| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Actual Parallax and robots promoted with reconciled import/image provenance; five other units still need production; final native/export/Windows CI remain pending |
+| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Parallax and robots promoted; actual vehicle promotion and extracted texture/import audit active; scenery/three maps still need production; final export/Windows CI pending |
 | Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | Prepared v3 pipeline integrated at `2902412b`; nine focused parent tests pass; real capture/edit/install awaits final assets and a later grant |
 
 All workers run in the background, using existing sessions/checkouts. Source work
@@ -35,14 +35,14 @@ are introduced by this directive.
 
 ## Exclusive heavy ownership
 
-**`VEHICLE-ASSET-PRODUCTION-20261002-E` belongs to vehicle Astra
-`ses_f03440966ffeBzmLZZ3UkR4Oi7`.** Its scope is the vehicles unit: pre-build
-fallback proof, nine real masters/exports and independent reopen, native source/
-attachment/LOD/team/weather checks, connected gameplay and visual review, plus
-actual package-ready receipts. Robot D explicitly released at
-`2026-10-02T23:24:34.512076Z`, with zero remaining owned processes across 44 groups.
-Its assets and hooks are integrated. A/B/C also explicitly released. Scenery/maps
-await later grants; E does not grant an unbounded multi-unit batch.
+**`SCENERY-ASSET-PRODUCTION-20261003-F` belongs to scenery Astra
+`ses_f03437da1ffeli91L87Q6CVyRP`.** Its scope is the scenery unit: twelve authored
+assemblies/24 LOD exports and editable masters, independent reopen, native geometry/
+atomic lifecycle checks, connected four-chapter gameplay and visual review, plus
+actual package-ready receipts. Vehicle E explicitly released at
+`2026-10-03T00:49:06.525631Z`, with zero remaining processes across 36 owned groups.
+Its assets and journeys are integrated. A/B/C/D also explicitly released. Maps
+await later grants; F does not grant an unbounded multi-unit batch.
 
 No other agent may run Godot, Blender, imports, rendering, audio capture or encoding
 before explicit teardown/release and a new grant. Asset integration, gameplay
@@ -648,3 +648,37 @@ and both launch-anchor arguments. These tests use synthetic processes; no engine
 virtual device, production ledger, export or Windows run was started. Vehicle E
 remains exclusive; final candidate freeze and native UI/device acceptance remain
 pending.
+
+## Vehicle E delivered; scenery F active
+
+Vehicle `105e4083` and `1c26b4bb` are integrated as `0cb3a4e7` and `1f129ab2`.
+Nine actual Blender masters, nine GLBs, recipes and builder reports are committed.
+The fleet totals 163,612 post-modifier triangles against its 456,000 aggregate cap.
+Independent reopen/reimport, required-asset bounds/LOD/material/source-origin
+checks and controlled 64-vehicle lifecycle cleanup passed under E.
+
+Three serialized native cases on Sunscar Convoy / Combined Arms passed driving,
+boost/bend/reverse, applicable driver/gunner/passenger fire, team takeover,
+controlled wet restoration, ordinary damage/Codex repair/wreck/respawn, natural
+results and Enter rematch. All nine final clients exited cleanly. These results
+retain their original E inputs; no final-ledger acceptance is inferred. Parent
+reran all 22 vehicle source tests and the authority-free plan successfully.
+
+Parent inspected all three close LOD0 views and Titan UI150. Distinct bounded
+vehicle art is accepted for package review; the compact image exposes clipped
+bottom instructions, assigned to the vehicle owner as a source-only correction.
+That screenshot remains intact. Software gameplay uses no shadows and half-scale
+3D resolution; full-quality GPU performance and human handling remain unaccepted.
+
+Gallery: **http://100.125.104.79:8796/native-vehicles-e/** — twenty unchanged files,
+3,083,044 bytes, all HTTP/SHA-256 verified. Packaging is authorized to validate
+and promote actual vehicles, including extracted albedo/normal PNG and import
+dependencies. The original unpromoted receipt is
+`6981afdfd64b22455abe3c36a706667ab94ed842b2509bccf94fb9cc390b1668`.
+It binds 38 inputs and six unchanged runtime hooks; supporting verifier advances
+must remain explicit. Parallax and robot promotions stay preserved.
+
+The original scenery owner now holds exclusive F, starting from `1f129ab2` with
+the integrated atomic loader and connected journeys. It must build/reopen all
+real outputs and execute native four-chapter/LOD/lifecycle/shot/workshop/cleanup
+coverage before handing back actual receipts and an explicit process release.
