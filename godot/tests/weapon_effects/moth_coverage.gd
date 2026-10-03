@@ -82,6 +82,11 @@ func render(texture: Texture2D, kind: int, tint: Color, sheet: bool) -> Image:
 	return rendered
 
 func run() -> void:
+	if not output.is_empty():
+		if DirAccess.make_dir_recursive_absolute(output) != OK:
+			push_error("Cannot create muzzle evidence directory: "+output)
+			quit(1)
+			return
 	# ---------------------------------------------------------- synthetic ---
 	var image := Image.create(64, 64, false, Image.FORMAT_RGBA8)
 	image.fill(Color.BLACK)
@@ -102,7 +107,7 @@ func run() -> void:
 		"corner_alpha":corner_alpha, "black_edge_alpha":black_edge_alpha, "center_alpha":center_alpha,
 	}
 	if not output.is_empty():
-		rendered.save_png(output.path_join("moth-opaque-coverage.png"))
+		check(rendered.save_png(output.path_join("moth-opaque-coverage.png"))==OK,"synthetic PNG saved")
 	# ------------------------------------------------------------- real ---
 	var real: Array = []
 	for entry: Dictionary in real_frames:
@@ -166,7 +171,7 @@ func run() -> void:
 			"hue_to_tint":snappedf(to_tint, 0.001), "hue_to_background":snappedf(to_background, 0.001),
 			"center_shift":snappedf(centre_shift, 0.0001)})
 		if not output.is_empty():
-			sheet_image.save_png(output.path_join("moth-%s-coverage.png" % name))
+			check(sheet_image.save_png(output.path_join("moth-%s-coverage.png" % name))==OK,name+": real PNG saved")
 	result["real_frames"] = real
 	result["passed"] = failures == 0
 	if not output.is_empty():

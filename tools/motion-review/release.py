@@ -37,6 +37,8 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--evidence',type=Path,required=True)
     parser.add_argument('--grant',required=True)
+    parser.add_argument('--receipt-name',default='release-K')
+    parser.add_argument('--extra-workspace',action='append',default=[])
     args=parser.parse_args()
     groups=set(); receipts=[]; legacy=0
     for path in args.evidence.glob('*/queue.json'):
@@ -57,6 +59,10 @@ def main():
     audits=[]
     for index in range(3):
         found,foreign=processes(groups,str(Path(__file__).resolve().parents[2]),str(args.evidence.resolve()))
+        for workspace in args.extra_workspace:
+            extra,_=processes(groups,str(Path(workspace).resolve()),str(args.evidence.resolve()))
+            known={row['pid'] for row in found}
+            found.extend(row for row in extra if row['pid'] not in known)
         audits.append({'at':datetime.now(timezone.utc).isoformat(),'matches':found,'unowned_native_observations':foreign})
         if found: break
         if index<2: time.sleep(0.3)
@@ -64,7 +70,7 @@ def main():
     result={'grant':args.grant,'released':released,'owned_groups':sorted(groups),
             'legacy_attempts_with_reaped_descendant_receipts_but_no_pgid':legacy,
             'receipts':receipts,'audits':audits,'scope':'all retained groups and lane command/environment/cwd tags; unrelated browser/viewer native services recorded separately, never signalled'}
-    target=args.evidence/('release-K.json' if released else 'release-K-blocked.json')
+    target=args.evidence/(args.receipt_name+('.json' if released else '-blocked.json'))
     with target.open('x') as stream: json.dump(result,stream,indent=2)
     print(json.dumps({'released':released,'groups':len(groups),'audits':len(audits),'path':str(target)}))
     return 0 if released else 1

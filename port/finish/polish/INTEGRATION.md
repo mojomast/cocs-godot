@@ -1,5 +1,15 @@
 # Reviewed polish source integration
 
+## Main-branch adoption
+
+After K's audited release, parent merged K `4188e411` as `f06d65fc` and this
+six-lane staging branch `5b8e1eb3` as **`8921ed41`**. No merge conflicts occurred.
+The separate-branch restrictions below describe historical staging; current
+native verification is authorized under **`POLISH-NATIVE-20261003-L`**, owned by
+`ses_f03a3885fffehx9yFhHubuPCft`. Package inputs are being reconciled separately.
+K's 64 passed gate IDs do not establish the new polish; its live-kick timing
+failure remains open. No new package or final-matrix result is claimed.
+
 Branch: `integration/polish-20261003`, foundation `5b5c8791`.
 Six reviewed lanes assembled without conflicts through `24c1ff8b`:
 

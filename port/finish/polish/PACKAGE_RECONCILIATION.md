@@ -1,5 +1,17 @@
 # K corrections + six-lane polish — exact source-only package reconciliation
 
+## Parent integration
+
+Worker transaction `c1ae4528` integrated as **`224a256f`**. Parent independently
+passed **49 source checks**, including committed-Git verification of all seven
+strict inventories, plus scene-generator freshness, shader-body parity and
+whitespace checks. Parent inspected all 116 selected sidecars' compression/normal
+policy and confirmed no conflicting local files would be overwritten.
+
+L was notified to adopt this metadata only at a safe stage boundary and retain
+exact candidate identities. L's runtime corrections, if any, still require a
+separate reconciliation. This integration is not a package build or native pass.
+
 **Reviewed foundation: `8921ed4124756c368cecfc637ca183bf8d3ec262`.** Previous
 seven-unit promotion: parent `5b5c8791` (worker `a012ec50`). This transaction
 reconciles only this foundation, including K's integrated runtime corrections and
