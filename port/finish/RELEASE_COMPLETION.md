@@ -23,6 +23,15 @@ fixture-owned sky rendering before disposal. The real Settings quit-vs-Home bug
 is corrected. P executes remaining available automatable acceptance serially;
 all 142 obligations and historical failures remain.
 
+**P in-progress checkpoint:** source batch 27/29 passed; NumPy/Pillow availability
+was corrected, with closure-dependent retry queued. Independent native batch
+29/32 passed initially; three fixture defects were corrected in `84ace28f` and
+all three regressions then passed. Parent reviewed/integrated those corrections
+as `4b2d87db` and passed their grammar checks. Fifteen connected canonical jobs
+are running serially in `connected-preclosure`. P remains active, not released.
+O package closure is now verified at **`14d8a72d`**, with **55 parent checks**
+passed. P was told to adopt it at the next stage boundary before ledger freeze.
+
 Sol `ses_eff6a3d9cffeTi9iQPn43laxo1` published the completed movie at
 <http://100.125.104.79:8796/cinematic-m/> with 12 matching HTTP/hash checks.
 The original MP4 is unchanged; static publication used no heavy work. The movie and installed
@@ -79,7 +88,7 @@ boundaries.
 | Fighting presentation and controls | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing at `1bff0281`; controller recovery integrated at `614a8a7f`, all 12 parent presentation source tests pass; native review pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | O complete/released; world/combined ordinary journeys and Controls clean teardown passed; Settings Return Home fix integrated at `3ee932e8`, report at `b17360c9` |
-| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Source-only exact O advance for `godot/ui/local_settings.gd` active; previous L seven-unit reconciliation passed 52 parent checks at `623127c5` |
+| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Exact O advance integrated at `14d8a72d`; all 55 parent checks and seven committed-Git strict inventories pass; future runtime drift requires explicit reconciliation |
 | Vesper Viaduct | Astra `ses_f03a3885fffehx9yFhHubuPCft` | H production/evidence integrated through `04fbbfa5`; six native outcomes passed; parent review/registration at `99a4f597`; package-promoted at `b5d16351` |
 | Abyssal Pressureworks | Astra `ses_f03a3024cffeNO1Cc3Qr1zSLTG` | I delivery integrated through `f0e76bf7`; six native outcomes and parent visual review retained; six-mode registration/package promotion integrated at `c7c81c71` |
 | Stormglass Causeway | Astra `ses_f0342d1ffffeyUHJkcUj3vqP7p` | J completed/released; assets and private race evidence integrated through `997bc013`; one public Puma Race pair and exact package promotion integrated at `5b5c8791`, flat-road concession retained |
@@ -112,8 +121,8 @@ Parent owns review, public registration, promotion and release publication.
 Scenery F, preview G/G2/G3/G4, Vesper H, Abyssal I, Stormglass J, motion K, polish L, cinematic M, acceptance N and repair O explicitly released. This checkpoint supersedes
 historical ownership metadata in production plans; do not mutate active-run inputs
 just to relabel ownership. All seven asset units are promoted and strict asset
-inventory passes at `623127c5`, including the reviewed L correction through
-`9cd1ac72`. Public coverage is 13 worlds / 73 pairs. This does
+inventory passes at `14d8a72d`, including the reviewed O correction through
+`b17360c9`. Public coverage is 13 worlds / 73 pairs. This does
 not discharge final 142-job acceptance or new-feature native obligations.
 The authorized Windows navigation
 comparison runs on a separate remote host.

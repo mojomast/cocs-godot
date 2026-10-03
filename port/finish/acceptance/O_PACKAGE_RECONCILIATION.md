@@ -1,5 +1,14 @@
 # O — exact Settings Return Home package advance
 
+## Parent verification
+
+Worker `76591715` integrated as **`14d8a72d`**. Parent independently passed all
+**55 source tests**, including committed-Git verification of seven strict asset
+inventories, exact O predecessor/evidence and rejection of future source drift.
+Whitespace checks passed. P was notified to adopt the closure only after its
+active connected batch, then stabilize candidate/import identity for a fresh
+canonical ledger. No native acceptance was rerun or reassigned by this transaction.
+
 Foundation: **`b17360c97d06040f6aa44a4ec9eed8cb863d7eb7`**, including parent
 `3ee932e8` / original O candidate `f22fcc1e95c0b890f1ad656f16ab2b406b5b069b`.
 Previous L closure was integrated as `623127c5` (worker `d5335f8b`).
