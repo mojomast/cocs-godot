@@ -20,11 +20,11 @@ test('committed seven-unit promotion and import bytes validate independently of 
   assert.throws(()=>productionResources({...options,worldIds:options.worldIds.slice(0,-1)}),/remain pending/);
   for(const id of ['abyssal-pressureworks','vesper-viaduct','scenery','robots','vehicles','parallax-interiors','stormglass-causeway']) {
     const receipt=JSON.parse(read(`tools/godot-package/production_receipts/${id}.json`));
-    const advance=receipt.stormglassPackageVerifierAdvance,previous=advance.previousReceipt;
+    const advance=receipt.polishAdvance,previous=advance.previousReceipt;
     const bytes=git(['show',`${previous.commit}:${previous.path}`]);
     assert.equal(createHash('sha256').update(bytes).digest('hex'),previous.sha256);
     const old=JSON.parse(bytes);
-    assert.equal(previous.commit,'38dfb3bd');
+    assert.equal(previous.commit,'8921ed41');
     const oldInputs=old.packageInputs??old.packageInputHashes;
     const changed={},added={};
     for(const [p,sha]of Object.entries(oldInputs)) {
@@ -37,7 +37,7 @@ test('committed seven-unit promotion and import bytes validate independently of 
     for(const [key,value]of Object.entries(old))if(key!=='packageInputs'&&key!=='runtimeHooks')assert.deepEqual(receipt[key],value);
     for(const [p,sha]of Object.entries(old.runtimeHooks??receipt.nativeRuntimeHooks)) {
       const change=advance.runtimeChanged[p];
-      if(change){assert.ok(['parallax-interiors','vehicles','stormglass-causeway'].includes(id));assert.equal(change.before,sha);assert.equal(change.after,receipt.runtimeHooks[p]);}
+      if(change){assert.equal(id,'stormglass-causeway');assert.equal(change.before,sha);assert.equal(change.after,receipt.runtimeHooks[p]);}
       else assert.equal(receipt.runtimeHooks[p],sha);
     }
     assert.equal(createHash('sha256').update(JSON.stringify(oldInputs)).digest('hex'),advance.previousPackageFingerprint);
