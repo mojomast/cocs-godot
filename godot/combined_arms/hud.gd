@@ -6,6 +6,14 @@ var prompt := Label.new()
 var aim := Label.new()
 var top_scroll := ScrollContainer.new()
 var bottom_scroll := ScrollContainer.new()
+var top_rows := VBoxContainer.new()
+var bottom_rows := VBoxContainer.new()
+var scroll_hint := Label.new()
+var was_captured := false
+# Logical pixels: LocalSettings' bottom-right F12 hint occupies the last 27.
+const FOOTER_SAFE := 36.0
+const HUD_MARGIN := 16.0
+const HUD_GAP := 12.0
 const SOURCE_SEATS := {"puma":4, "hornet":3, "titan":3, "scout":2, "transport":6}
 
 func vehicle_card(v: Dictionary, seat: Variant) -> String:
@@ -29,7 +37,7 @@ func vehicle_card(v: Dictionary, seat: Variant) -> String:
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	for label in [title, info, help, prompt, aim]:
+	for label in [title, info, help, prompt, aim, scroll_hint]:
 		add_child(label)
 		label.add_theme_color_override("font_color", Color("f9eed7"))
 		label.add_theme_color_override("font_shadow_color", Color.BLACK)
@@ -43,8 +51,9 @@ func _ready() -> void:
 		add_child(scroll)
 		scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 		scroll.focus_mode = Control.FOCUS_ALL
+		scroll.follow_focus = true
 		preload("res://experience/scroll_keys.gd").bind(scroll)
-		var rows := VBoxContainer.new()
+		var rows := top_rows if scroll == top_scroll else bottom_rows
 		rows.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		scroll.add_child(rows)
 		for label: Label in ([title, info] if scroll == top_scroll else [prompt, help]):
@@ -53,6 +62,13 @@ func _ready() -> void:
 			label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	prompt.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	prompt.add_theme_font_size_override("font_size", 22)
+	scroll_hint.text = "Esc releases · Tab selects text · ↑/↓ / PgUp/PgDn scroll"
+	scroll_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	scroll_hint.hide()
+	top_scroll.focus_next = top_scroll.get_path_to(bottom_scroll)
+	top_scroll.focus_previous = top_scroll.focus_next
+	bottom_scroll.focus_next = bottom_scroll.get_path_to(top_scroll)
+	bottom_scroll.focus_previous = bottom_scroll.focus_next
 	aim.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 	aim.offset_left = -10
 	aim.offset_right = 10
@@ -64,13 +80,35 @@ func _ready() -> void:
 
 func layout() -> void:
 	var view := get_viewport().get_visible_rect().size
-	top_scroll.position = Vector2(20, 16)
-	top_scroll.size = Vector2(view.x - 40, view.y * 0.28)
-	bottom_scroll.position = Vector2(20, view.y * 0.66)
-	bottom_scroll.size = Vector2(view.x - 40, view.y * 0.34 - 16)
+	var width := maxf(1.0, view.x - 40.0)
+	scroll_hint.size.x = width
+	var top_needed := top_rows.get_combined_minimum_size().y
+	var bottom_needed := bottom_rows.get_combined_minimum_size().y
+	var available := maxf(0.0, view.y - HUD_MARGIN - FOOTER_SAFE - HUD_GAP)
+	var overflow := top_needed + bottom_needed > available
+	var hint_height := scroll_hint.get_combined_minimum_size().y + HUD_GAP if overflow else 0.0
+	available = maxf(0.0, available - hint_height)
+	# Share genuinely constrained space, but let either region use the other's
+	# unused share. At compact UI150 ordinary text fits without scrolling.
+	var top_height := minf(top_needed, maxf(available * 0.45, available - bottom_needed))
+	var bottom_height := minf(bottom_needed, maxf(0.0, available - top_height))
+	top_scroll.position = Vector2(20, HUD_MARGIN)
+	top_scroll.size = Vector2(width, top_height)
+	bottom_scroll.position = Vector2(20, view.y - FOOTER_SAFE - hint_height - bottom_height)
+	bottom_scroll.size = Vector2(width, bottom_height)
+	scroll_hint.visible = overflow
+	scroll_hint.position = Vector2(20, view.y - FOOTER_SAFE - hint_height + HUD_GAP)
 
 func _process(_delta: float) -> void:
+	# Containers remeasure after width, text, bindings or accessibility changes.
+	# Use those wrapped minimums instead of physical window pixels/font scaling.
+	layout()
 	var released := Input.mouse_mode != Input.MOUSE_MODE_CAPTURED
+	if not released and not was_captured:
+		top_scroll.scroll_vertical = 0
+		bottom_scroll.scroll_vertical = 0
+		for scroll: ScrollContainer in [top_scroll, bottom_scroll]: scroll.release_focus()
+	was_captured = not released
 	for scroll: ScrollContainer in [top_scroll, bottom_scroll]:
 		scroll.mouse_filter = Control.MOUSE_FILTER_STOP if released else Control.MOUSE_FILTER_IGNORE
 		scroll.focus_mode = Control.FOCUS_ALL if released else Control.FOCUS_NONE

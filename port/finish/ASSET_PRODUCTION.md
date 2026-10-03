@@ -1,10 +1,10 @@
 # Consolidated asset production queue
 
-**Current production: grant E belongs to the original vehicle owner for the
-vehicles unit only.** Robot D explicitly released after real build/reopen/native
-review; its assets/hooks/receipt are integrated through `2c39d1ad`. Parallax is
-already produced and package-promoted. Scenery and the remaining three maps await
-subsequent explicit grants. Source consolidation work described
+**Current production: grant F belongs to the original scenery owner for the
+scenery unit only.** Vehicle E explicitly released after real build/reopen/native
+journeys; its nine masters/exports and evidence are integrated at `1f129ab2`.
+Parallax, robots and vehicles are package-promoted.
+The remaining three maps await subsequent explicit grants. Source consolidation work described
 below launched no heavy tools; see `RELEASE_COMPLETION.md` for later production
 results and the current ownership table.
 

@@ -65,8 +65,9 @@
     "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/prepare_native.py": "994a8324838b4a405c3aaa88e4c4081a6a2fbdec7083b726815d011646bbbdc2",
     "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/reopen_candidate.py": "4ad9e40bdbe0e6d0321a259786f32b4ef14600b30ba4ebe0146091c7475b031a",
     "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/source-check.json": "299a068f800667feff17baa952cdbe08c44786b75fc9173b1782ace37c882534",
-    "tools/godot-package/production_resources.mjs": "3dd106d42ffa298ff7ecbe501e7882e1f0017fcd86e12e1575b12d57c01146ea",
-    "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8"
+    "tools/godot-package/production_resources.mjs": "dbd70fc8a048b9d80452042fc2a9448da03cb5e01730400cbb36c95d6f861e5a",
+    "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
+    "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1"
   },
   "masters": [
     {
@@ -117,5 +118,23 @@
     },
     "reason": "Parent-authorized verifier input advance and bounded robot import/extracted-image closure; no asset rebuild or new native attestation",
     "review": "port/finish/ROBOT_PACKAGE_PROMOTION.md"
+  },
+  "packageVerifierAdvance": {
+    "previousReceipt": {
+      "commit": "6e6395a2c4d4e204b7d017cfd59c5d8748daea16",
+      "path": "tools/godot-package/production_receipts/parallax-interiors.json",
+      "sha256": "3c7d26b851d031ff1509aa50e7aa81dc26df5f8836b5668e00ad7af2fef39ab5"
+    },
+    "changed": {
+      "tools/godot-package/production_resources.mjs": {
+        "before": "3dd106d42ffa298ff7ecbe501e7882e1f0017fcd86e12e1575b12d57c01146ea",
+        "after": "dbd70fc8a048b9d80452042fc2a9448da03cb5e01730400cbb36c95d6f861e5a"
+      }
+    },
+    "added": {
+      "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1"
+    },
+    "reason": "Parent 1f129ab2 authorized bounded vehicle asset promotion and import closure; supporting verifier advance only for retained robot/Parallax promotions; no rebuilt assets or new native attestation",
+    "review": "port/finish/VEHICLE_PACKAGE_PROMOTION.md"
   }
 }

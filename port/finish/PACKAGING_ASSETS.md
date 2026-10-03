@@ -1,11 +1,12 @@
 # Required production assets and fighter import settings
 
-**Latest:** [Robot package promotion](ROBOT_PACKAGE_PROMOTION.md) records the
-parent-authorized production-D promotion after `2c39d1ad`, explicit extracted
-image/import closure, and auxiliary reconciliation of the retained
-[Parallax promotion](PARALLAX_PACKAGE_PROMOTION.md). The current inventory has
-**two promoted / five pending**, superseding the checkpoint below. Native closure,
-final manual/audio acceptance and release remain pending.
+**Latest:** [Vehicle package promotion](VEHICLE_PACKAGE_PROMOTION.md) records the
+parent-authorized production-E promotion after `1f129ab2`, exact albedo/normal
+extract/import closure and auxiliary verifier reconciliation for retained
+[robot](ROBOT_PACKAGE_PROMOTION.md) and [Parallax](PARALLAX_PACKAGE_PROMOTION.md)
+promotions. The current inventory has **three promoted / four pending**,
+superseding the checkpoint below. Native freeze, final manual/audio acceptance,
+Windows verification and release remain pending.
 
 Source-only packaging follow-up after merging committed parent `652b8f3c`, then
 the actual nine-rig production parent `bb02e34b` (merge `af652afa`). No active

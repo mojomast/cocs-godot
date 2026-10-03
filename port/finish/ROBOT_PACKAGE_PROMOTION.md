@@ -1,5 +1,9 @@
 # Robot production-D: bounded package asset promotion
 
+Later verifier-only receipt reconciliation is recorded in
+[VEHICLE_PACKAGE_PROMOTION.md](VEHICLE_PACKAGE_PROMOTION.md). Receipt hashes below
+are retained history; robot asset identities and bounded acceptance are unchanged.
+
 Parent explicitly authorized source-only robot promotion after reviewing the
 full robot-anatomy front/rear/underside, props and production-mounts images.
 Parent `2c39d1ad` was merged as `e59a7625`, retaining the earlier Parallax promotion.

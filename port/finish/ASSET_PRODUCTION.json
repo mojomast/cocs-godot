@@ -3,8 +3,8 @@
   "canonicalBase": "e38b3662",
   "consolidatedRecipeRevision": "652b8f3c",
   "archive": "archive/scenery-source-fe3f3b5a",
-  "slotOwnerAtHandoff": "E — original vehicle owner; D explicitly released 2026-10-02T23:24:34.512076Z",
-  "grant": "VEHICLE-ASSET-PRODUCTION-20261002-E; vehicles unit only; other units await a new explicit grant",
+  "slotOwnerAtHandoff": "F — original scenery owner; E explicitly released 2026-10-03T00:49:06.525631Z",
+  "grant": "SCENERY-ASSET-PRODUCTION-20261003-F; scenery unit only; other units await a new explicit grant",
   "tools": {
     "blender": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender",
     "godot": "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64"

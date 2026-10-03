@@ -8,7 +8,7 @@ import {tmpdir} from 'node:os';
 import {fileURLToPath} from 'node:url';
 import {once} from 'node:events';
 import {WebSocket} from 'ws';
-import {coverage,sourceModeCoverage,gracefulAuthority,waitExit,forceStop} from './verify_expansion.mjs';
+import {coverage,sourceModeCoverage,gracefulAuthority,waitExit,forceStop,diagnosticRows} from './verify_expansion.mjs';
 import {EXPERIENCES} from './options.mjs';
 import {Room as SourceRoom} from '../../server/room.mjs';
 import {WORLDS,readWorld} from '../../port/multiplayer-worlds/catalog.mjs';
@@ -18,6 +18,12 @@ import {readBlackwater} from '../../port/native-horde/blackwater-schema.mjs';
 
 const files=Object.keys(WORLDS).map(id=>`godot/multiplayer_worlds/generated/${id}.json`);
 const manifest={server_closure:{worldDataFiles:files,hordeDataFiles:['godot/horde_maps/generated/blackwater-reclamation.json']}};
+test('single-case diagnostics select only a registered pair; default retains full coverage',()=>{
+  const rows=coverage(manifest,WORLDS);
+  assert.equal(diagnosticRows(rows),rows);
+  assert.deepEqual(diagnosticRows(rows,'helix-conservatory/deathmatch'),[{map:'helix-conservatory',mode:'deathmatch'}]);
+  for(const bad of ['', 'unknown/deathmatch','helix-conservatory/payload','../deathmatch'])assert.throws(()=>diagnosticRows(rows,bad));
+});
 test('the extracted manifest retains 43 original pairs, 11 Helix/Foundry and six historical Parallax pairs',()=>{
   const pairs=coverage(manifest,WORLDS);
   const original=['switchyard-ward','rainmarket-exchange','breakwater-exchange','thermal-divide','sirocco-circuit','copper-bowl','tern-archipelago'];
