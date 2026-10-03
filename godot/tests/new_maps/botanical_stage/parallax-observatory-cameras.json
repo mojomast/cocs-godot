@@ -1,0 +1,287 @@
+{
+  "geometryHash": "abaea5a6f13cca985f380d9c2f98c856ae5264325e219303219328ee47ab900c",
+  "cameras": [
+    {
+      "id": "arrival-eye",
+      "eye": [
+        -111,
+        13.65,
+        -3
+      ],
+      "target": [
+        0,
+        20,
+        -60
+      ],
+      "beforeEye": [
+        -111,
+        13.65,
+        -3
+      ],
+      "player": true,
+      "fov": 68,
+      "authoredEye": [
+        -111,
+        13.65,
+        -3
+      ],
+      "ground": 12,
+      "beforeGround": 12,
+      "comparison": "matched-player-camera",
+      "sourceCameraAdjustment": "none"
+    },
+    {
+      "id": "lens-eye",
+      "eye": [
+        8,
+        13.65,
+        5
+      ],
+      "target": [
+        -50,
+        30,
+        -85
+      ],
+      "beforeEye": [
+        8,
+        13.65,
+        5
+      ],
+      "player": true,
+      "fov": 68,
+      "authoredEye": [
+        8,
+        13.65,
+        5
+      ],
+      "ground": 12,
+      "beforeGround": 12,
+      "comparison": "matched-player-camera",
+      "sourceCameraAdjustment": "none"
+    },
+    {
+      "id": "cistern-eye",
+      "eye": [
+        -10,
+        1.65,
+        78
+      ],
+      "target": [
+        24,
+        2,
+        78
+      ],
+      "beforeEye": [
+        -10,
+        1.65,
+        78
+      ],
+      "player": true,
+      "fov": 68,
+      "authoredEye": [
+        -10,
+        1.65,
+        78
+      ],
+      "ground": 0,
+      "beforeGround": 0,
+      "comparison": "matched-player-camera",
+      "sourceCameraAdjustment": "none"
+    },
+    {
+      "id": "overview",
+      "eye": [
+        185,
+        160,
+        210
+      ],
+      "target": [
+        0,
+        10,
+        0
+      ],
+      "beforeEye": [
+        185,
+        160,
+        210
+      ],
+      "comparison": "matched-overview",
+      "player": false,
+      "fov": 68
+    },
+    {
+      "id": "archive-interior",
+      "eye": [
+        -45,
+        13.65,
+        0
+      ],
+      "target": [
+        -25,
+        14,
+        3
+      ],
+      "beforeEye": [
+        -45,
+        13.65,
+        0
+      ],
+      "player": true,
+      "fov": 68,
+      "authoredEye": [
+        -45,
+        13.65,
+        0
+      ],
+      "ground": 12,
+      "beforeGround": 12,
+      "comparison": "matched-player-camera",
+      "sourceCameraAdjustment": "none"
+    },
+    {
+      "id": "polar-interior",
+      "eye": [
+        -12,
+        25.65,
+        -84
+      ],
+      "target": [
+        13,
+        28,
+        -80
+      ],
+      "beforeEye": [
+        -12,
+        25.65,
+        -84
+      ],
+      "player": true,
+      "fov": 68,
+      "authoredEye": [
+        -12,
+        25.65,
+        -84
+      ],
+      "ground": 24,
+      "beforeGround": 24,
+      "comparison": "matched-player-camera",
+      "sourceCameraAdjustment": "none"
+    },
+    {
+      "id": "arcade-eye",
+      "eye": [
+        54,
+        13.65,
+        0
+      ],
+      "target": [
+        89,
+        16,
+        0
+      ],
+      "beforeEye": [
+        54,
+        13.65,
+        0
+      ],
+      "player": true,
+      "fov": 68,
+      "authoredEye": [
+        54,
+        13.65,
+        0
+      ],
+      "ground": 12,
+      "beforeGround": 12,
+      "comparison": "matched-player-camera",
+      "sourceCameraAdjustment": "none"
+    },
+    {
+      "id": "pump-interior",
+      "eye": [
+        15,
+        1.65,
+        78
+      ],
+      "target": [
+        34,
+        2.5,
+        81
+      ],
+      "beforeEye": [
+        15,
+        1.65,
+        78
+      ],
+      "player": true,
+      "fov": 68,
+      "authoredEye": [
+        15,
+        1.65,
+        78
+      ],
+      "ground": 0,
+      "beforeGround": 0,
+      "comparison": "matched-player-camera",
+      "sourceCameraAdjustment": "none"
+    },
+    {
+      "id": "well-descent",
+      "eye": [
+        32,
+        9.65,
+        -34
+      ],
+      "target": [
+        43,
+        12,
+        -34
+      ],
+      "beforeEye": [
+        0,
+        19.15,
+        -34
+      ],
+      "player": true,
+      "fov": 68,
+      "authoredEye": [
+        32,
+        9.65,
+        -34
+      ],
+      "ground": 8,
+      "beforeGround": 17.5,
+      "comparison": "repositioned: new court/well has no accepted ground; before uses polar crosslink",
+      "sourceCameraAdjustment": "none"
+    },
+    {
+      "id": "court-relief",
+      "eye": [
+        24,
+        13.65,
+        -34
+      ],
+      "target": [
+        10,
+        17,
+        -34
+      ],
+      "beforeEye": [
+        0,
+        19.15,
+        -34
+      ],
+      "player": true,
+      "fov": 68,
+      "authoredEye": [
+        24,
+        13.65,
+        -34
+      ],
+      "ground": 12,
+      "beforeGround": 17.5,
+      "comparison": "repositioned: new court/well has no accepted ground; before uses polar crosslink",
+      "sourceCameraAdjustment": "none"
+    }
+  ]
+}

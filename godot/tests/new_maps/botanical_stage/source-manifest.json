@@ -1,0 +1,82 @@
+{
+  "schema": "botanical-stage/v1",
+  "status": "source-only-prepared",
+  "foundation": "32eba401155856e50e31698b41d132f6ded0a50c",
+  "r5Reference": "7ae3f2f5",
+  "maps": {
+    "helix-conservatory": {
+      "revision": "revision-3",
+      "geometryHash": "5755ec9fba17d4b88d99d90e1717d86ce5ae9983a5c2bc290a93b5b366585140",
+      "authority": "port/new-maps/helix-conservatory/variety/revision-3/authority.json",
+      "authoritySha256": "85f5ea81669eaa2ade979698f89caf90d04e470023de754c3f83adc2e545c66d",
+      "author": "tools/godot-multiplayer/new-maps/helix-conservatory/asset_author.py",
+      "master": "tools/godot-multiplayer/new-maps/helix-conservatory/masters/revision-3/helix-conservatory.blend",
+      "glb": "port/new-maps/helix-conservatory/variety/revision-3/helix-conservatory.glb",
+      "acceptedAuthority": "res://multiplayer_worlds/generated/helix-conservatory.json",
+      "acceptedAuthoritySha256": "82d7d3a00fbcfa6538589655f605bd18c0b072e6c2d73546add3893dee49995a",
+      "acceptedGeometryHash": "f068d1abe262907659f1f02205e2bf56b7c5dbe298191f66d008b420965fa9b2",
+      "acceptedArt": "res://multiplayer_worlds/art/helix-conservatory/helix-conservatory.glb",
+      "acceptedArtSha256": "0c462ffa475f02aa388101c38339d6d81eb3df9549a7d664ca65ec390c802d88",
+      "modes": [
+        "deathmatch",
+        "teamdeathmatch",
+        "ctf",
+        "domination",
+        "koth"
+      ],
+      "artifactStatus": "pending-build",
+      "glbSha256": null,
+      "nativeStatus": "pending-grant-and-engine-validation"
+    },
+    "parallax-observatory": {
+      "revision": "districts-v3",
+      "geometryHash": "abaea5a6f13cca985f380d9c2f98c856ae5264325e219303219328ee47ab900c",
+      "authority": "port/new-maps/parallax-observatory/variety/districts-v3/authority.json",
+      "authoritySha256": "543a6469aad3993a6bab920aad6570aaaeeaf9b7925172a57229add489c2285a",
+      "author": "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v3/asset_author.py",
+      "master": "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v3/masters/parallax-observatory.blend",
+      "glb": "port/new-maps/parallax-observatory/variety/districts-v3/parallax-observatory.glb",
+      "acceptedAuthority": "res://multiplayer_worlds/generated/parallax-observatory.json",
+      "acceptedAuthoritySha256": "13c0b91156aaa2fd713dea7dfafe8f9f48d92b2b414ff9c4b583efb047bdabc4",
+      "acceptedGeometryHash": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
+      "acceptedArt": "res://multiplayer_worlds/art/parallax-observatory/parallax-observatory.glb",
+      "acceptedArtSha256": "c1dffd357545206d3f70870f850e441c5be148e652830a4a69835185a75610bd",
+      "modes": [
+        "deathmatch",
+        "teamdeathmatch",
+        "ctf",
+        "koth",
+        "uplink",
+        "holdout"
+      ],
+      "artifactStatus": "pending-build",
+      "glbSha256": null,
+      "nativeStatus": "pending-grant-and-engine-validation"
+    },
+    "vesper-viaduct": {
+      "revision": "urban-v2",
+      "geometryHash": "c044bc54cfd96e99e3b29d61c5bc66bc9c470f8f3823176c063d2fe6ee9474ad",
+      "authority": "port/new-maps/vesper-viaduct/variety/urban-v2/authority.json",
+      "authoritySha256": "2f0017dddfdc857c591b970850d00721746e1d50560053c3b208c2de9601eae6",
+      "author": "tools/godot-multiplayer/new-maps/vesper-viaduct/revisions/urban-v2/asset_author.py",
+      "master": "tools/godot-multiplayer/new-maps/vesper-viaduct/revisions/urban-v2/masters/vesper-viaduct.blend",
+      "glb": "port/new-maps/vesper-viaduct/variety/urban-v2/vesper-viaduct.glb",
+      "acceptedAuthority": "res://multiplayer_worlds/generated/vesper-viaduct.json",
+      "acceptedAuthoritySha256": "e273264a789036b26bda83bf8e390c8ae53f78e4357da241ce4a49368e8af885",
+      "acceptedGeometryHash": "27c71cc8895eab2ca3a0b5cae3c2b8f96ed9afd75db3deec4a5c96bd2f395ea7",
+      "acceptedArt": "res://multiplayer_worlds/art/worlds/vesper-viaduct.glb",
+      "acceptedArtSha256": "6afe34c82d45f06c30dedc780f59ac6afa5200835b487d41705902d771fc0bfd",
+      "modes": [
+        "deathmatch",
+        "teamdeathmatch",
+        "ctf",
+        "domination",
+        "koth",
+        "uplink"
+      ],
+      "artifactStatus": "pending-build",
+      "glbSha256": null,
+      "nativeStatus": "pending-grant-and-engine-validation"
+    }
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "geometryHash": "5755ec9fba17d4b88d99d90e1717d86ce5ae9983a5c2bc290a93b5b366585140",
+  "cameras": [
+    {
+      "id": "overview",
+      "eye": [
+        125,
+        100,
+        125
+      ],
+      "target": [
+        0,
+        12,
+        0
+      ],
+      "beforeEye": [
+        125,
+        100,
+        125
+      ],
+      "comparison": "matched-overview",
+      "player": false,
+      "fov": 68
+    },
+    {
+      "id": "grotto-eye",
+      "eye": [
+        -24,
+        9.65,
+        -45
+      ],
+      "target": [
+        -15,
+        10,
+        -56
+      ],
+      "beforeEye": [
+        -24,
+        9.65,
+        -45
+      ],
+      "player": true,
+      "fov": 68,
+      "authoredEye": [
+        -24,
+        9.65,
+        -45
+      ],
+      "ground": 8,
+      "beforeGround": 8,
+      "comparison": "matched-player-camera",
+      "sourceCameraAdjustment": "none"
+    },
+    {
+      "id": "botanical-eye",
+      "eye": [
+        -29.5,
+        9.65,
+        46.5
+      ],
+      "target": [
+        -41,
+        10,
+        41
+      ],
+      "repositionReason": "0.71m lateral move to clear candidate shelf rim; both variants use this same location",
+      "beforeEye": [
+        -29.5,
+        9.65,
+        46.5
+      ],
+      "player": true,
+      "fov": 68,
+      "authoredEye": [
+        -30,
+        9.65,
+        47
+      ],
+      "ground": 8,
+      "beforeGround": 8,
+      "comparison": "matched-player-camera",
+      "sourceCameraAdjustment": "none"
+    },
+    {
+      "id": "greenhouse-eye",
+      "eye": [
+        30,
+        17.65,
+        78
+      ],
+      "target": [
+        0,
+        30,
+        87
+      ],
+      "beforeEye": [
+        30,
+        17.65,
+        78
+      ],
+      "player": true,
+      "fov": 68,
+      "authoredEye": [
+        30,
+        26.45,
+        78
+      ],
+      "ground": 16,
+      "beforeGround": 16,
+      "comparison": "matched-player-camera",
+      "sourceCameraAdjustment": "source-support correction; original retained in authoredEye"
+    },
+    {
+      "id": "lightwell-player",
+      "eye": [
+        0,
+        1.65,
+        10
+      ],
+      "target": [
+        0,
+        3,
+        -8
+      ],
+      "beforeEye": [
+        0,
+        1.65,
+        10
+      ],
+      "player": true,
+      "fov": 68,
+      "authoredEye": [
+        0,
+        1.65,
+        10
+      ],
+      "ground": 0,
+      "beforeGround": 0,
+      "comparison": "matched-player-camera",
+      "sourceCameraAdjustment": "none"
+    },
+    {
+      "id": "archive-player",
+      "eye": [
+        52,
+        9.65,
+        0
+      ],
+      "target": [
+        43,
+        13,
+        10
+      ],
+      "beforeEye": [
+        52,
+        9.65,
+        0
+      ],
+      "player": true,
+      "fov": 68,
+      "authoredEye": [
+        52,
+        9.65,
+        0
+      ],
+      "ground": 8,
+      "beforeGround": 8,
+      "comparison": "matched-player-camera",
+      "sourceCameraAdjustment": "none"
+    },
+    {
+      "id": "canopy-player",
+      "eye": [
+        86,
+        17.65,
+        0
+      ],
+      "target": [
+        72,
+        27,
+        0
+      ],
+      "beforeEye": [
+        86,
+        17.65,
+        0
+      ],
+      "player": true,
+      "fov": 68,
+      "authoredEye": [
+        86,
+        17.65,
+        0
+      ],
+      "ground": 16,
+      "beforeGround": 16,
+      "comparison": "matched-player-camera",
+      "sourceCameraAdjustment": "none"
+    },
+    {
+      "id": "crown-player",
+      "eye": [
+        116,
+        25.65,
+        0
+      ],
+      "target": [
+        96,
+        39,
+        10
+      ],
+      "beforeEye": [
+        116,
+        25.65,
+        0
+      ],
+      "player": true,
+      "fov": 68,
+      "authoredEye": [
+        116,
+        25.65,
+        0
+      ],
+      "ground": 24,
+      "beforeGround": 24,
+      "comparison": "matched-player-camera",
+      "sourceCameraAdjustment": "none"
+    }
+  ]
+}
