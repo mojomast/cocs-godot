@@ -78,11 +78,14 @@ func capture(label: String) -> void:
 func run() -> void:
 	DirAccess.make_dir_recursive_absolute(output)
 	root.size = Vector2i(960, 600)
-	change_scene_to_file("res://combined_arms/demo.tscn" if kind == "combined" else "res://world/session.tscn")
+	# Sunscar's admitted world/session-derived route is Objectives/Payload;
+	# generic Combat deliberately rejects this map in MatchSetup.MAPS.
+	change_scene_to_file("res://combined_arms/demo.tscn" if kind == "combined" else "res://objectives/demo.tscn")
 	await scene_changed
 	session = current_scene
 	if not await wait_for(func() -> bool: return not actor().is_empty(), 25):
-		check(false, "actual source actor arrival"); finish(); return
+		check(false, "actual source actor arrival; phase=" + str(session.phase))
+		finish(); return
 	engage()
 	await process_frame
 	var route: Array[Vector2] = [Vector2(-80, position().y), Vector2(-80, -10), Vector2(-62, -10), Vector2(-62, -6)]
