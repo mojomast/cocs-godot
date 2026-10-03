@@ -11,7 +11,7 @@ PINS={
  'godot/multiplayer_worlds/dressing/binder.gd':'b3e707af9da73f21b3c791c1d7deca9caad5472b422f263d9998ac961444a87d',
 }
 def setup(attempt):
-    if not re.fullmatch(r'[a-z][a-z0-9-]{2,47}',attempt):raise ValueError('Explicit fresh lowercase attempt required')
+    if not re.fullmatch(r'(?:[a-z][a-z0-9-]{2,47}|vesper-Z-[0-9]{2})',attempt):raise ValueError('Explicit fresh attempt required')
     dest=ROOT/'godot/tests/new_maps/botanical_post_x'/attempt
     if dest.resolve()!=dest.absolute() or dest.exists():raise FileExistsError('Existing/symlinked attempt refused')
     for path,digest in PINS.items():
@@ -40,7 +40,7 @@ def setup(attempt):
     return dest
 
 def pin_import(attempt):
-    if not re.fullmatch(r'[a-z][a-z0-9-]{2,47}',attempt):raise ValueError('Invalid attempt')
+    if not re.fullmatch(r'(?:[a-z][a-z0-9-]{2,47}|vesper-Z-[0-9]{2})',attempt):raise ValueError('Invalid attempt')
     dest=ROOT/'godot/tests/new_maps/botanical_post_x'/attempt
     if dest.resolve()!=dest.absolute():raise ValueError('Symlinked attempt')
     config=validate_prepared(dest);receipt=dest/'import-policy.json'
