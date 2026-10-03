@@ -14,6 +14,45 @@ def _phase(identity):
             int.from_bytes(raw[4:8], 'big') / 2**32)
 
 
+def _pipe_rings(points, radius, sides):
+    """Pure-Python transported pipe rings; reject zero-length and U-turn cusps."""
+    def dot(a, b): return sum(x*y for x, y in zip(a, b))
+    def sub(a, b): return tuple(x-y for x, y in zip(a, b))
+    def cross(a, b): return (a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0])
+    def normalized(a):
+        length = math.sqrt(dot(a, a))
+        if length < 1e-7: raise ValueError('Degenerate pipe frame')
+        return tuple(x/length for x in a)
+    if len(points) < 2 or not math.isfinite(radius) or radius <= 0 or not 8 <= sides <= 24:
+        raise ValueError('Invalid manifold profile')
+    if any(len(p) != 3 or any(not math.isfinite(v) for v in p) for p in points):
+        raise ValueError('Non-finite manifold control point')
+    segments = [sub(b, a) for a, b in zip(points, points[1:])]
+    if any(math.sqrt(dot(v, v)) < .01 for v in segments):
+        raise ValueError('Coincident manifold control points')
+    directions = [normalized(v) for v in segments]
+    if any(dot(a,b) < -.98 for a,b in zip(directions,directions[1:])):
+        raise ValueError('U-turn manifold cusp requires a separate elbow')
+    tangents = [directions[0]] + [normalized(tuple(a+b for a,b in zip(left,right)))
+                                 for left,right in zip(directions,directions[1:])] + [directions[-1]]
+    rings = []
+    previous = None
+    for point, tangent in zip(points, tangents):
+        # Project the transported normal; on perpendicular alignment choose
+        # the least-parallel axis rather than creating zero-radius rings.
+        candidate = previous if previous is not None else min(((1,0,0),(0,1,0),(0,0,1)), key=lambda a: abs(dot(a,tangent)))
+        projected = sub(candidate, tuple(tangent[i]*dot(candidate,tangent) for i in range(3)))
+        if dot(projected,projected) < 1e-8:
+            candidate = min(((1,0,0),(0,1,0),(0,0,1)), key=lambda a: abs(dot(a,tangent)))
+            projected = sub(candidate, tuple(tangent[i]*dot(candidate,tangent) for i in range(3)))
+        normal = normalized(projected)
+        across = normalized(cross(tangent, normal))
+        rings.append([tuple(point[i]+radius*(normal[i]*math.cos(j*math.tau/sides)
+                         +across[i]*math.sin(j*math.tau/sides)) for i in range(3)) for j in range(sides)])
+        previous = normal
+    return rings
+
+
 class Kit:
     def __init__(self, source, export, materials, density):
         """Collections, exact Blender materials and reviewed tiles/metre table.
@@ -72,7 +111,7 @@ class Kit:
     def prism(self, name, center, size, material, **kwargs):
         x, y, z = center
         w, d, h = size
-        if min(size) <= 0:
+        if any(not math.isfinite(n) for n in (*center, *size)) or min(size) <= 0:
             raise ValueError('Prism size must be positive')
         vertices = [(x+sx*w/2, y+sy*d/2, z+sz*h/2)
                     for sz in (-1, 1) for sy in (-1, 1) for sx in (-1, 1)]
@@ -82,8 +121,10 @@ class Kit:
 
     def instance(self, master, name, location, *, sector=None, rotation_z=0, scale=(1, 1, 1)):
         import bpy
-        if master not in self.source.objects[:] or min(scale) <= 0:
-            raise ValueError('Only positive-scale linked source instances are supported')
+        if (master not in self.source.objects[:] or len(location) != 3 or len(scale) != 3
+            or any(not math.isfinite(n) for n in (*location, rotation_z, *scale))
+            or any(abs(n-1) > 1e-8 for n in scale)):
+            raise ValueError('Linked source instances require finite rigid transforms and unit scale')
         obj = bpy.data.objects.new(name, master.data)
         self.source.objects.link(obj)
         obj.location = location
@@ -112,29 +153,37 @@ class Kit:
         """Three-dimensional portal bay: jambs, lintel, recessed reveal and sill.
 
         The opening remains empty; calling builder owns the actual wall/collider.
-        Optional arch uses a curved multi-ring extruded span, not a flat decal.
+        `height` is total outside height. The arched spring line is at
+        height-width/2; opening width is width-2*rail below that line.
         """
-        if min(width, height, depth) <= 0 or width < 1.2 or height < 1.8:
+        if any(not math.isfinite(n) for n in (*origin, width, height, depth)) or min(width, height, depth) <= 0 or width < 1.2 or height < (width/2+1.8 if arch else 1.8):
             raise ValueError('Invalid portal dimensions')
         x, y, z = origin
         rail = min(.22, width * .09)
+        spring = height-width/2 if arch else height-rail
         columns = []
         for side in (-1, 1):
             columns.append(self.prism(f'{label}.jamb.{side}',
-                (x+side*(width/2-rail/2), y, z+height/2),
-                (rail, depth, height), frame, sector=sector, bevel=.045))
+                (x+side*(width/2-rail/2), y, z+spring/2),
+                (rail, depth, spring), frame, sector=sector, bevel=.045))
             self.prism(f'{label}.pilaster.{side}',
-                (x+side*(width/2-rail*.5), y-depth*.55, z+height*.53),
-                (rail*.7, depth*.22, height*.73), trim, sector=sector, bevel=.025)
+                (x+side*(width/2-rail*.5), y-depth*.55, z+spring*.5),
+                (rail*.7, depth*.22, spring*.73), trim, sector=sector, bevel=.025)
+            self.prism(f'{label}.reveal-jamb.{side}',
+                (x+side*(width/2-rail*1.12), y+depth*.44, z+spring*.5),
+                (rail*.24, depth*.14, spring), trim, sector=sector, bevel=.014)
         if arch:
-            self.curved_rib(f'{label}.arched-lintel', (x, y, z+height*.76),
-                            width*.46, width*.46+rail, depth, 0, math.pi,
+            self.curved_rib(f'{label}.arched-lintel', (x, y, z+spring),
+                            width/2-rail, width/2, depth, 0, math.pi,
                             frame, sector=sector, segments=20)
+            self.curved_rib(f'{label}.reveal-arch', (x, y+depth*.44, z+spring),
+                            width/2-rail*1.22, width/2-rail, depth*.14, 0, math.pi,
+                            trim, sector=sector, segments=20)
         else:
             self.prism(f'{label}.lintel', (x, y, z+height-rail/2),
                        (width, depth, rail), frame, sector=sector, bevel=.045)
-        self.prism(f'{label}.reveal', (x, y+depth*.42, z+height*.55),
-                   (width-2*rail, depth*.13, height*.7), trim, sector=sector, bevel=.025)
+            self.prism(f'{label}.reveal-head', (x, y+depth*.44, z+height-rail*1.12),
+                       (width-2*rail, depth*.14, rail*.24), trim, sector=sector, bevel=.014)
         self.prism(f'{label}.stepped-sill', (x, y-depth*.12, z+rail*.44),
                    (width+rail*.5, depth*1.28, rail*.55), trim, sector=sector, bevel=.035)
         return columns
@@ -142,7 +191,7 @@ class Kit:
     def curved_rib(self, name, center, inner, outer, depth, start, stop, material,
                    *, sector='default', segments=24):
         """Extruded annular rib in XZ, e.g. greenhouse hoop or vaulted pipe roof."""
-        if not 0 < inner < outer or depth <= 0 or not 0 < stop-start <= 2*math.pi or not 6 <= segments <= 96:
+        if any(not math.isfinite(n) for n in (*center, inner, outer, depth, start, stop)) or not 0 < inner < outer or depth <= 0 or not 0 < stop-start <= 2*math.pi or not 6 <= segments <= 96:
             raise ValueError('Invalid curved rib')
         cx, cy, cz = center
         vertices = []
@@ -164,30 +213,15 @@ class Kit:
 
     def pipe(self, name, points, radius, material, *, sector='default', sides=12):
         """Closed faceted manifold through 3D control points, parallel-transport rings."""
-        from mathutils import Vector
-        if len(points) < 2 or radius <= 0 or not 8 <= sides <= 24:
-            raise ValueError('Invalid manifold profile')
-        path = [Vector(p) for p in points]
-        if any((b-a).length < .01 for a,b in zip(path, path[1:])):
-            raise ValueError('Coincident manifold control points')
-        rings = []
-        previous = None
-        for i, point in enumerate(path):
-            tangent = ((path[min(i+1,len(path)-1)]-path[max(i-1,0)]).normalized())
-            normal = (Vector((0,0,1)) if abs(tangent.z) < .9 else Vector((1,0,0)))
-            normal = (normal-tangent*normal.dot(tangent)).normalized() if previous is None else previous
-            normal = (normal-tangent*normal.dot(tangent)).normalized()
-            across = tangent.cross(normal).normalized()
-            rings.extend([tuple(point+radius*(normal*math.cos(j*math.tau/sides)+across*math.sin(j*math.tau/sides)))
-                          for j in range(sides)])
-            previous = normal
+        rings = _pipe_rings(points, radius, sides)
+        vertices = [vertex for ring in rings for vertex in ring]
         faces = [tuple(reversed(range(sides)))]
-        for i in range(len(path)-1):
+        for i in range(len(rings)-1):
             for j in range(sides):
                 nxt = (j+1)%sides
                 faces.append((i*sides+j,i*sides+nxt,(i+1)*sides+nxt,(i+1)*sides+j))
-        faces.append(tuple((len(path)-1)*sides+j for j in range(sides)))
-        return self.mesh(name, rings, faces, material, sector=sector, bevel=.012)
+        faces.append(tuple((len(rings)-1)*sides+j for j in range(sides)))
+        return self.mesh(name, vertices, faces, material, sector=sector, bevel=.012)
 
     def build_export_batches(self, *, max_triangles=24000):
         """Apply bevel/normals to copies; join by sector/material for bounded art.
