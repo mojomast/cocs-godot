@@ -1,0 +1,50 @@
+TAP version 13
+# {"id":"rootfall-verge","sweeps":1845,"sourceClear":627,"routePoints":627,"visibleApproachRays":2761,"baselineOccluded":4324,"edgeWindows":8}
+# {"id":"siltwake-crossing","sweeps":2055,"sourceClear":697,"routePoints":697,"visibleApproachRays":2530,"baselineOccluded":3897,"edgeWindows":0}
+# {"id":"emberline-ascent","sweeps":2220,"sourceClear":752,"routePoints":752,"visibleApproachRays":2198,"baselineOccluded":3984,"edgeWindows":0}
+# {"id":"crown-array","sweeps":2217,"sourceClear":751,"routePoints":751,"visibleApproachRays":2628,"baselineOccluded":5186,"edgeWindows":0}
+# Subtest: 12 additive authored assemblies, bounded nondegenerate geometry, allowlisted opaque palette and reduced LOD
+ok 1 - 12 additive authored assemblies, bounded nondegenerate geometry, allowlisted opaque palette and reduced LOD
+  ---
+  duration_ms: 8.922917
+  type: 'test'
+  ...
+# Subtest: generated recipe/catalog reproducible and original production authority/art bytes unchanged from assigned base
+ok 2 - generated recipe/catalog reproducible and original production authority/art bytes unchanged from assigned base
+  ---
+  duration_ms: 46.424531
+  type: 'test'
+  ...
+# Subtest: rootfall-verge: exact imported facade baseline, all authored route sweeps, spawn/objective clearance and prospective triangle visibility
+ok 3 - rootfall-verge: exact imported facade baseline, all authored route sweeps, spawn/objective clearance and prospective triangle visibility
+  ---
+  duration_ms: 171.612097
+  type: 'test'
+  ...
+# Subtest: siltwake-crossing: exact imported facade baseline, all authored route sweeps, spawn/objective clearance and prospective triangle visibility
+ok 4 - siltwake-crossing: exact imported facade baseline, all authored route sweeps, spawn/objective clearance and prospective triangle visibility
+  ---
+  duration_ms: 183.505658
+  type: 'test'
+  ...
+# Subtest: emberline-ascent: exact imported facade baseline, all authored route sweeps, spawn/objective clearance and prospective triangle visibility
+ok 5 - emberline-ascent: exact imported facade baseline, all authored route sweeps, spawn/objective clearance and prospective triangle visibility
+  ---
+  duration_ms: 210.895209
+  type: 'test'
+  ...
+# Subtest: crown-array: exact imported facade baseline, all authored route sweeps, spawn/objective clearance and prospective triangle visibility
+ok 6 - crown-array: exact imported facade baseline, all authored route sweeps, spawn/objective clearance and prospective triangle visibility
+  ---
+  duration_ms: 229.750422
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1511.008683

@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "node",
+    "tools/asset-production/package-receipt.mjs",
+    "scenery",
+    "port/expansion-four/scenery/production-f/generic-receipt.json",
+    "--runtime-hook=godot/campaign/terrain.gd",
+    "--runtime-hook=godot/biomes/expansion/scenery_pack.gd"
+  ],
+  "started": "2026-10-03T02:05:43.713278+00:00",
+  "timeoutSeconds": 60,
+  "log": "port/expansion-four/scenery/production-f/20261003T020543.597319Z/package-receipt.log",
+  "processGroup": 906087,
+  "exitCode": 0,
+  "ended": "2026-10-03T02:05:43.877398+00:00",
+  "ownedGroupTeardownRequested": true
+}

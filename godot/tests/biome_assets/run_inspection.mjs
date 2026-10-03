@@ -25,6 +25,7 @@ try {
     const endpoint=`ws://127.0.0.1:${authority.server.address().port}/native-campaign`;
     const args=['--path',root+'godot','--rendering-driver','opengl3','-s','res://tests/biome_assets/native_inspection.gd','--',`--map=${map}`,`--endpoint=${endpoint}`,`--output=${directory}`];
     if(profile==='compact')args.push('--compact');
+    if(process.argv.includes('--architecture-only'))args.push('--architecture-only');
     args.unshift('--audio-driver','Dummy');
     let log='';
     child=spawn(godot,args,{cwd:root,env:{...process.env,LP_NUM_THREADS:'1'},stdio:['ignore','pipe','pipe']});

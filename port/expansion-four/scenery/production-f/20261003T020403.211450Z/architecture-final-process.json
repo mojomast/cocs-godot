@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "xvfb-run",
+    "-a",
+    "-s",
+    "-screen 0 1280x800x24",
+    "node",
+    "godot/tests/biome_assets/run_inspection.mjs",
+    "--granted",
+    "--wide-only",
+    "--architecture-only"
+  ],
+  "started": "2026-10-03T02:04:03.211725+00:00",
+  "timeoutSeconds": 780,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/port/expansion-four/scenery/production-f/20261003T020403.211450Z/architecture-final.log",
+  "processGroup": 900855,
+  "exitCode": 0,
+  "ended": "2026-10-03T02:05:14.919959+00:00",
+  "ownedGroupTeardownRequested": true
+}

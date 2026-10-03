@@ -1,0 +1,165 @@
+{
+	"captures": [
+		{
+			"camera": "[X: (-0.990712, 0.0, -0.13598), Y: (0.087839, 0.76336, -0.639973), Z: (0.103802, -0.645973, -0.75627), O: (73.70799, 68.31327, -70.17008)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 7806836,
+			"drawCalls": 612.0,
+			"elapsedUsec": 955702,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/crown-array/wide/crown-faceted-antenna-architecture-before.png",
+			"frameSeconds": 0.439398,
+			"objects": 1836.0,
+			"uiScale": 100,
+			"videoMemory": 69740751.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (-0.990712, 0.0, -0.13598), Y: (0.087839, 0.76336, -0.639973), Z: (0.103802, -0.645973, -0.75627), O: (73.70799, 68.31327, -70.17008)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 8690197,
+			"drawCalls": 627.0,
+			"elapsedUsec": 1839063,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/crown-array/wide/crown-faceted-antenna-architecture-after.png",
+			"frameSeconds": 0.314335,
+			"objects": 1851.0,
+			"uiScale": 100,
+			"videoMemory": 69740751.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (-0.990712, 0.0, -0.13598), Y: (0.087839, 0.76336, -0.639973), Z: (0.103802, -0.645973, -0.75627), O: (73.70799, 68.31327, -70.17008)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 9564430,
+			"drawCalls": 627.0,
+			"elapsedUsec": 2713296,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/crown-array/wide/crown-faceted-antenna-architecture-reduced.png",
+			"frameSeconds": 0.313096,
+			"objects": 1851.0,
+			"uiScale": 100,
+			"videoMemory": 69740751.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (0.994381, 0.0, 0.105859), Y: (-0.090069, 0.525431, 0.846056), Z: (-0.055622, -0.850836, 0.522478), O: (82.57437, 63.23857, 78.86608)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 10226028,
+			"drawCalls": 276.0,
+			"elapsedUsec": 3374894,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/crown-array/wide/crown-ceramic-lightwell-architecture-before.png",
+			"frameSeconds": 0.313096,
+			"objects": 1473.0,
+			"uiScale": 100,
+			"videoMemory": 69740751.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (0.994381, 0.0, 0.105859), Y: (-0.090069, 0.525431, 0.846056), Z: (-0.055622, -0.850836, 0.522478), O: (82.57437, 63.23857, 78.86608)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 10912528,
+			"drawCalls": 284.0,
+			"elapsedUsec": 4061394,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/crown-array/wide/crown-ceramic-lightwell-architecture-after.png",
+			"frameSeconds": 0.315266,
+			"objects": 1481.0,
+			"uiScale": 100,
+			"videoMemory": 69740751.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (0.994381, 0.0, 0.105859), Y: (-0.090069, 0.525431, 0.846056), Z: (-0.055622, -0.850836, 0.522478), O: (82.57437, 63.23857, 78.86608)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 11590013,
+			"drawCalls": 284.0,
+			"elapsedUsec": 4738879,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/crown-array/wide/crown-ceramic-lightwell-architecture-reduced.png",
+			"frameSeconds": 0.266914,
+			"objects": 1481.0,
+			"uiScale": 100,
+			"videoMemory": 69740751.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (-0.999614, 0.0, 0.027779), Y: (-0.007476, 0.963105, -0.269023), Z: (-0.026754, -0.269126, -0.962733), O: (-73.85711, 66.38652, 79.63953)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 12507630,
+			"drawCalls": 466.0,
+			"elapsedUsec": 5656496,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/crown-array/wide/crown-folio-archive-architecture-before.png",
+			"frameSeconds": 0.271796,
+			"objects": 1663.0,
+			"uiScale": 100,
+			"videoMemory": 69740751.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (-0.999614, 0.0, 0.027779), Y: (-0.007476, 0.963105, -0.269023), Z: (-0.026754, -0.269126, -0.962733), O: (-73.85711, 66.38652, 79.63953)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 13439475,
+			"drawCalls": 478.0,
+			"elapsedUsec": 6588341,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/crown-array/wide/crown-folio-archive-architecture-after.png",
+			"frameSeconds": 0.343498,
+			"objects": 1675.0,
+			"uiScale": 100,
+			"videoMemory": 69740751.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (-0.999614, 0.0, 0.027779), Y: (-0.007476, 0.963105, -0.269023), Z: (-0.026754, -0.269126, -0.962733), O: (-73.85711, 66.38652, 79.63953)]",
+			"cameraKind": "staged supported eye; production scene/HUD",
+			"capturedUsec": 14381407,
+			"drawCalls": 470.0,
+			"elapsedUsec": 7530273,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/crown-array/wide/crown-folio-archive-architecture-reduced.png",
+			"frameSeconds": 0.343498,
+			"objects": 1667.0,
+			"uiScale": 100,
+			"videoMemory": 69740751.0,
+			"viewport": [
+				1280,
+				800
+			]
+		},
+		{
+			"camera": "[X: (0.500278, 0.0, 0.865865), Y: (0.0, 1.0, 0.0), Z: (-0.865865, 0.0, 0.500278), O: (-154.8, 63.45, 89.44)]",
+			"cameraKind": "production snapshot camera",
+			"capturedUsec": 15952184,
+			"drawCalls": 3200.0,
+			"elapsedUsec": 9101050,
+			"file": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/native/2026-10-03T02-04-03.852Z/crown-array/wide/source-camera-return.png",
+			"frameSeconds": 0.367157,
+			"objects": 4425.0,
+			"uiScale": 100,
+			"videoMemory": 69740751.0,
+			"viewport": [
+				1280,
+				800
+			]
+		}
+	],
+	"evidence": "staged production-session art inspection"
+}

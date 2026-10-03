@@ -1,0 +1,32 @@
+[
+  {
+    "map": "rootfall-verge",
+    "compact": false,
+    "exitCode": 0,
+    "recipeSHA256": "f46577afcc7fd0c57086cbcb624454787df4f903f62e70cad8bba296fe22f90d"
+  },
+  {
+    "map": "siltwake-crossing",
+    "compact": false,
+    "exitCode": 0,
+    "recipeSHA256": "f46577afcc7fd0c57086cbcb624454787df4f903f62e70cad8bba296fe22f90d"
+  },
+  {
+    "map": "emberline-ascent",
+    "compact": false,
+    "exitCode": 0,
+    "recipeSHA256": "f46577afcc7fd0c57086cbcb624454787df4f903f62e70cad8bba296fe22f90d"
+  },
+  {
+    "map": "crown-array",
+    "compact": false,
+    "exitCode": 0,
+    "recipeSHA256": "f46577afcc7fd0c57086cbcb624454787df4f903f62e70cad8bba296fe22f90d"
+  },
+  {
+    "map": "rootfall-verge",
+    "compact": true,
+    "exitCode": 0,
+    "recipeSHA256": "f46577afcc7fd0c57086cbcb624454787df4f903f62e70cad8bba296fe22f90d"
+  }
+]

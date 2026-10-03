@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "xvfb-run",
+    "-a",
+    "-s",
+    "-screen 0 1280x800x24",
+    "node",
+    "tools/godot-biomes/expansion/connected-journey.mjs",
+    "crown-array",
+    "--granted"
+  ],
+  "started": "20261003T013141.804816Z",
+  "map": "crown-array",
+  "compact": false,
+  "processGroup": 804627,
+  "exitCode": 0,
+  "ended": "2026-10-03T01:34:55.140972+00:00"
+}

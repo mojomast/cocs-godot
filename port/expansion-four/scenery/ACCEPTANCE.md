@@ -1,5 +1,10 @@
 # Scenery source checkpoint
 
+**Production update:** grant F produced and verified the actual assets. See
+[production-f/RESULTS.md](production-f/RESULTS.md) for final-byte native outcomes,
+captures, hashes and remaining rendering/review gates. The source-only checkpoint
+below is retained as historical evidence.
+
 **READY FOR BLENDER. No Blender, Godot, import, rendering, baking, video or nested
 agent ran.** No heavy slot is requested implicitly by this handoff.
 

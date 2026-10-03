@@ -1,0 +1,27 @@
+[
+  {
+    "map": "rootfall-verge",
+    "compact": false,
+    "exitCode": 0
+  },
+  {
+    "map": "siltwake-crossing",
+    "compact": false,
+    "exitCode": 0
+  },
+  {
+    "map": "emberline-ascent",
+    "compact": false,
+    "exitCode": 0
+  },
+  {
+    "map": "crown-array",
+    "compact": false,
+    "exitCode": 0
+  },
+  {
+    "map": "rootfall-verge",
+    "compact": true,
+    "exitCode": 0
+  }
+]
