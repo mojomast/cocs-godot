@@ -150,9 +150,21 @@ func run() -> void:
 		q.transform = Transform3D(Basis.IDENTITY, Vector3(float(point.x), float(point.y) + 0.95, float(point.z)))
 		q.margin = 0.001
 		var overlaps := space.intersect_shape(q, 16)
-		result.clearances.append({"name": entry.name, "point": point, "overlapCount": overlaps.size()})
+		var names: Array[String] = []
+		for hit: Dictionary in overlaps: names.append(str(hit.get("collider").name))
+		var ramp_lift := 0.0
+		if entry.name == "route" and not overlaps.is_empty() and names.all(func(name: String) -> bool: return "-ramp" in name):
+			for lift: float in [.15, .30, .45]:
+				q.transform.origin.y = float(point.y) + .95 + lift
+				var raised := space.intersect_shape(q, 16)
+				if raised.is_empty():
+					overlaps = raised
+					ramp_lift = lift
+					break
+		result.clearances.append({"name": entry.name, "point": point, "collidersAtSourceHeight": names,
+			"rampLift": ramp_lift, "remainingOverlaps": overlaps.size()})
 		if not overlaps.is_empty():
-			fail("finite-radius spawn/objective/terrace overlaps authority at " + str(point))
+			fail("finite-radius route/spawn/objective/terrace overlaps authority at " + str(point) + " : " + str(names))
 			return
 	result.status = "imported art + corrected WorldMap physics + candidate Binder checks passed; host and finish pending"
 	result.geometryHash = IDENTITY
