@@ -34,7 +34,7 @@ function launch(role,extra=[]){
  const compact=process.argv.includes('--compact');
  const args=['--path',resolve(ROOT,'godot'),'--audio-driver','Dummy',
   ...(role==='guest'?['--headless']:['--resolution',compact?'760x520':'1280x800']),
-   id==='vesper-viaduct'?'res://tests/new_maps/vesper_viaduct/hosted.tscn':'res://tests/asset_production/hosted.tscn','--',`--endpoint=${endpoint}`,`--map=${id}`,`--mode=${mode}`,'--bots=0','--candidate-private',
+    id==='vesper-viaduct'?'res://tests/new_maps/vesper_viaduct/hosted.tscn':id==='abyssal-pressureworks'?'res://tests/new_maps/abyssal_pressureworks/hosted.tscn':'res://tests/asset_production/hosted.tscn','--',`--endpoint=${endpoint}`,`--map=${id}`,`--mode=${mode}`,'--bots=0','--candidate-private',
   `--candidate-sha=${permit.expectedSha}`,`--candidate-geometry=${permit.data.geometryHash}`,
   `--foundry-role=${role}`,`--foundry-controls=${resolve(out,role+'-controls.json')}`,
   ...(role==='host'?[`--foundry-capture=${resolve(out,'frames')}`]:[]),...(compact?['--foundry-compact']:[]),...extra];

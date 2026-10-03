@@ -171,6 +171,8 @@ func load_map(id: String) -> bool:
  world = next
  current_id = id
  expected_hash = str(data.geometryHash)
+ if id == "abyssal-pressureworks":
+  preload("res://multiplayer_worlds/abyssal_presentation.gd").configure(sun,environment.environment)
  if id == "parallax-observatory":
   var look := preload("res://multiplayer_worlds/art/parallax-observatory/presentation.gd").new()
   next.add_child(look)
