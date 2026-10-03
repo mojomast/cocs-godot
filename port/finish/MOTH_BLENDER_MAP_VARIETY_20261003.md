@@ -1,5 +1,14 @@
 # New Moth resources and Blender-authored map variety
 
+**Vesper swept-step proposal delivered source-only:** `161f5e9e` adds a test-only
+Walker subclass with explicit up/forward/down collision planning. Producer reports
+sixteen source tests and 940 tread-support checks. Native recovery/floor-snap
+agreement and whole-frame velocity/displacement accounting remain promotion
+blockers. Independent source/experiment-readiness review is active before any
+integration or engine grant. Seventy future reference/experimental walks are
+planned, not run. Parallax AA mismatch diagnosis continues source-only; no heavy
+grant is active.
+
 **AA integrated as failed-attempt evidence, not an approved successor:** source
 `1b7dff8a` / `673d0a0f` / `badfedc3`, archive **`dec159d4`**. Parent passed nineteen
 checks and all 141 integrated hashes. Independent review confirms the three

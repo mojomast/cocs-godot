@@ -16,6 +16,10 @@ lock availability was confirmed at 23:32:12Z. Parent passed nineteen checks and
 all 141 integrated hashes. Review corrects the first mismatch to one native +1
 corner versus canonical −1; full native approval stays withheld. Mismatch census
 and Vesper step-up feasibility remain source/static only. See `map-variety/PARALLAX_AA_REVIEW.md`.
+Vesper source proposal `161f5e9e` is under independent review: test-only swept
+step-up, sixteen reported source tests, and seventy proposed reference/experimental
+walks. Native recovery/snap and velocity-reporting semantics remain open; no actual
+native success, production-controller change or new heavy grant is claimed.
 
 **Vesper Z released after its first failed native group.**
 Delivery `eba8b633` / `dd4fbbb8` records five downhill landing passes, five uphill

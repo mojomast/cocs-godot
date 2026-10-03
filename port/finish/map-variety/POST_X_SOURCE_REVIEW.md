@@ -1,5 +1,35 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Vesper swept-step source proposal received
+
+Astra delivered **`161f5e9e`** on `astra/walker-step-up-source`, based on
+`d8822447`. Independent reviewer `ses_efc89c2afffeKQvhqPUs4YwsaY` is checking
+source integration and bounded native experiment readiness. The proposal remains
+unmerged, engine-unparsed and unrun. No heavy grant is active.
+
+It adds a test-only subclass of unchanged Walker and a read-only motion planner:
+grounded non-jumping intent, physical finite-capsule support, a low head-on riser,
+continuous static landing, strict <.25 m rise / <.3 m admission and complete
+up/raised-forward/down sweeps. Only a proved upward `move_and_collide` is applied;
+original `Walker.step` then runs once to own forward motion, sliding and snap.
+No forced grounding or position assignment is proposed. The 46° floor limit and
+production movement code remain unchanged.
+
+Producer reports sixteen source tests and 940 actual tread support-strip checks
+(94 faces × five lanes × two radii), including clipped roof treads with more than
+two triangles. These are source geometry/API checks, not native success.
+
+Two explicit production blockers remain: agreement of native recovery/parent
+floor snap with the planned path, and separately applied lift missing from parent
+`get_real_velocity()` / `get_position_delta()` accounting. Whole-frame telemetry
+is proposed for review; reporting/interpolation semantics are not approved.
+
+The proposed future plan has seventy walks: ten unchanged-controller references
+and sixty experimental civic/roof walks at .35 m and labeled .42 m radii. A failed
+reference stays failed; continuing into experiments requires explicit authorization.
+Z's five uphill failures and X's 184 static contacts retain their original status.
+No engine or production promotion is authorized by this source delivery.
+
 ## AA failed archive integrated; diagnostic correction
 
 Independent review approved AA sources and failed evidence, integrated through
