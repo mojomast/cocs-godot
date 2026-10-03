@@ -1,5 +1,14 @@
 # New Moth resources and Blender-authored map variety
 
+**Foundry R6 staged-approved and integrated:** independent review found no new
+blocking P1 and approved W with seven invalid tangent bases retained as a staged
+shading limitation. W is merged as **`5641fec9`**, exact exclusions as **`9c5eca6d`**.
+Parent passed 67 tests and all 226 manifest hashes/sizes. Combined R5/R6 exclusions
+cover 137 files; seven production receipts remain unchanged. Full review:
+`map-variety/FOUNDRY_R6_REVIEW.md`. Astra is preparing a source-only tangent
+successor; botanical X retains sole heavy ownership. Gameplay/manual-art/public
+promotion acceptance remains pending.
+
 ## Current ownership — botanical successor X; W released
 
 **`MOTH-BLENDER-20261003-X` is the sole active heavy grant**, Astra

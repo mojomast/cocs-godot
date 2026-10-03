@@ -1,5 +1,15 @@
 # Foundry R6 — unpromoted artifact exclusion
 
+## Parent integration
+
+W passed independent qualified staged review and is merged as **`5641fec9`**,
+preserving `fceaac00` ancestry. Package-only `af648e8a` is integrated as
+**`9c5eca6d`**. Parent passed all 58 package checks (55 Node including committed-Git
+closure, three Python builder tests), plus nine R6 source tests. All 226 original
+W manifest files remain byte-identical. Seven invalid tangent bases remain a
+documented staged limitation; see `FOUNDRY_R6_REVIEW.md`. The original registry
+review-pending status records this exclusion transaction's history, not promotion.
+
 Package-fixture branch: `package/foundry-r6-staging`, in the isolated scenery
 worktree. Started at parent **`5f5a58c7`** and merged W artifact history as
 **`6d2596f8c993d00977da0cfa17ddb0fee25885f6`** solely for source packaging checks.

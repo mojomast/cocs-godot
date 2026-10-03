@@ -59,8 +59,10 @@ three empty audits/45 groups. V also released after three empty audits/25 groups
 verified at 20:23:44Z. Foundry W subsequently delivered `b5dfe08e` / `fceaac00`,
 with 22 matched R5/R6 screenshots, and released at 20:47:04.704425Z. Parent verified
 226 manifest files, three empty audits/18 groups and current lock availability.
-R6 artifact review includes seven inherited zero-tangent substitutions; exact staged
-shipping policy is being prepared. Astra now holds X for botanical successors.
+R6 passed independent qualified staged review and is integrated as `5641fec9`,
+with exact shipping exclusions `9c5eca6d`. Parent passed 67 tests and all 226
+manifest hashes. Seven invalid tangent bases remain a staged shading limitation;
+Astra is preparing a source-only tangent successor. X owns botanical production.
 Helix images: <http://100.125.104.79:8796/helix-u/> (32 initial HTTP/hash checks passed).
 Shared botanical export/staging tools are source-approved and integrated as
 `c7cd4331` / `fb2af58d`; parent passed 35 Python and two Node checks. Actual U
@@ -71,7 +73,8 @@ inputs. Parent passed 74 tests and the archived three-failure/49,553-capsule
 reproduction. Successor staging and actual builds are authorized serially under X.
 Foundry R6 finish sources and the corrected scene-backed export validator are
 integrated as `99d44ede`; parent reproduced nine source tests and verified strict
-seven-unit shipping closure. Actual R6 build/render acceptance remains pending.
+seven-unit shipping closure. R6's subsequent actual staged review is recorded in
+`map-variety/FOUNDRY_R6_REVIEW.md`; final art/gameplay/public promotion remain pending.
 The user explicitly requires Blender-authored assets. Application follows the
 new resource pack, on isolated branches with fresh map validation. P, Q and R released;
 S, T, U, V and W also released; botanical X owns the sole heavy slot. Exact owners,
@@ -218,7 +221,8 @@ are source/artifact-only. Timestamped owned-group logs and three empty release
 audits required.
 W delivered `b5dfe08e` / `fceaac00` and released at `2026-10-03T20:47:04.704425Z`.
 Parent verified 226 files, three empty audits/18 groups, no current members and
-available lock. R6 is under independent artifact/tangent review before integration.
+available lock. R6 subsequently passed qualified staged review and is integrated
+as `5641fec9`, with exact exclusions `9c5eca6d` and tangent follow-up still pending.
 
 **Released: `MOTH-BLENDER-20261003-V`**, Sol
 `ses_efd55bb5cffeJRWNA4xZq8O6cE`. Finish/check the new corrective harness and
