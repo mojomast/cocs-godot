@@ -104,23 +104,38 @@ func run() -> void:
 	check(operator.handling_weight.x>0.9 and operator.grip_error.R<0.03,"Reload service keeps right-hand grip")
 	operator.free()
 	var operator_feet: Array[Vector3] = []
+	var rate_paths: Array = []
 	for fps: int in [30,60,144]:
 		var visual := Operator.new(); visual.automatic_animation=false; root.add_child(visual)
 		visual.configure({"id":1,"character":"claude","health":100,"weapon":0})
 		var previous := Vector3.ZERO
 		var maximum_jump := 0.0
+		var path: Array[Vector3] = []
 		for frame in fps*3:
 			var section: int = frame/(fps/2)
 			var moving := section in [1,2,3]
 			var snapshot := {"id":1,"character":"claude","health":100,"weapon":0,"grounded":section!=3,"vy":-4.0,"vx":3.0 if section==2 else 0.0,"vz":-3.0 if moving and section!=2 else 0.0,"crouching":section==5,"ads":section>=4}
 			visual.apply_actor(snapshot); visual.advance(1.0/fps)
 			var current: Vector3 = visual.nodes.footL.global_position
+			check(current.is_finite(),"Operator transition ankle finite")
+			for side: String in ["L","R"]:
+				var contact: Dictionary = visual.locomotion.contacts[side]
+				check((contact.ankle as Vector3).distance_to(contact.hip)<=float(visual.rig.anatomy[side].length)+0.005,"Ankle remains inside measured authored leg reach")
+				check(not contact.planted,"Coordinate-free no-floor fixture cannot fabricate support")
+				check(visual.grip_error.has(side),"Transition grip sample exists")
+				check(float(visual.grip_error[side])-float(visual.grip_clamp.get("clamped"+side,0))<=0.003,"Transition hand matches measured grip reach")
 			if frame>0: maximum_jump=maxf(maximum_jump,current.distance_to(previous))
 			previous=current
+			if (frame+1)%(fps/2)==0: path.append(current)
 		operator_feet.append(previous)
+		rate_paths.append(path)
 		print("OPERATOR_TRANSITION fps=",fps," maximum_adjacent_foot_metres=",maximum_jump)
-		check(maximum_jump<3.8/fps,"Operator transition travel scales with frame duration")
 		visual.free()
+	# Compare the same six physical times, rather than imposing the discarded
+	# shortened-stride implementation's 3.8 m/s swing-speed cap.
+	for i in [1,2]:
+		check(rate_paths[i].size()==6,"Six transition-time samples required")
+		for sample in 6: check(rate_paths[i][sample].distance_to(rate_paths[0][sample])<0.03,"Transition ankle paths converge within 3 cm across render rates")
 	for i in [1,2]: check(operator_feet[i].distance_to(operator_feet[0])<0.005,"Operator final terrain-foot rate invariance")
 	var gesture := Gesture.new(); gesture.select("wave"); gesture.advance(0.9)
 	var before: Dictionary = gesture.sample(); gesture.select("work")

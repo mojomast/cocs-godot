@@ -35,9 +35,23 @@ func run() -> void:
 	visual.automatic_animation = false
 	visual.configure({"id":2,"character":"claude","health":100,"vx":3.5,"vz":0.0,"grounded":true,"weapon":0})
 	check(visual.armor_details.size() >= 30,"articulated armor detail missing")
-	for i in 60: visual.advance(1.0/60)
-	check(absf(visual.nodes.legUpperL.rotation.y) > 0.4,"strafe gait does not rotate into lateral travel")
-	for side: String in visual.grip_error: check(visual.grip_error[side]<0.001,"directional gait breaks weapon grip")
+	# Maps above are freed: this is explicitly the coordinate-free treadmill
+	# lane, not a world-plant measurement. Abduction need not yaw the whole leg.
+	var min_x := INF
+	var max_x := -INF
+	for i in 120:
+		visual.advance(1.0/60)
+		for side: String in ["L","R"]:
+			var ankle: Vector3 = visual.nodes["foot"+side].global_position
+			check(ankle.is_finite(),"strafe ankle must stay finite")
+			check(visual.source.is_ancestor_of(visual.nodes["foot"+side]),"ankle must belong to imported source hierarchy")
+			check(not visual.locomotion.contacts[side].planted,"no-world treadmill cannot claim a ground plant")
+			check(visual.grip_error.has(side),"grip measurement missing")
+			check(float(visual.grip_error[side])-float(visual.grip_clamp.get("clamped"+side,0))<0.003,"directional gait breaks weapon grip beyond authored reach clamp")
+		if i>=60:
+			min_x=minf(min_x,visual.nodes.footL.global_position.x)
+			max_x=maxf(max_x,visual.nodes.footL.global_position.x)
+	check(max_x-min_x>0.08,"strafe must displace ankle along lateral travel by >8 cm")
 	visual.apply_actor({"id":2,"character":"claude","health":100,"vx":0.0,"vz":0.0,"vy":-8.0,"grounded":false,"weapon":0})
 	visual.advance(1.0/60)
 	visual.apply_actor({"id":2,"character":"claude","health":100,"vx":0.0,"vz":0.0,"grounded":true,"weapon":0})

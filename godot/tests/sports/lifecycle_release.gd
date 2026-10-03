@@ -40,17 +40,24 @@ func run() -> void:
 	check(audio.voice_status() == {"playing":0,"streams":0}, "leave detaches all stream handles")
 	var hud := HUD.new()
 	root.add_child(hud)
-	hud.size = Vector2(506, 346) # 760x520 at 150% logical canvas scale.
+	root.size = Vector2i(760,520)
+	root.content_scale_factor = 1.5
+	for frame in 4: await process_frame
 	hud.layout_results()
 	var race := {"phase":"finished", "standings":[]}
 	for i in 8: race.standings.append({"actorId":i, "position":i+1, "completedLaps":2})
 	var state := {"mapId":"sirocco-circuit", "mapName":"Sirocco Circuit", "race":race, "overReason":"race-finish"}
 	hud.update({"mode":"puma-race", "map_id":"sirocco-circuit", "map_name":"Sirocco Circuit", "state":state, "phase":"results", "actor_id":0})
+	for frame in 4: await process_frame
+	check(hud.result_panel.size.x > 0 and hud.result_panel.size.y > 0, "laid-out result panel has physical size")
 	check(hud.result_panel.visible and not hud.top_panel.visible and not hud.bottom_panel.visible, "results own compact viewport")
 	check(hud.result_panel.position.x >= 0 and hud.result_panel.position.y >= 0 and hud.result_panel.position.x + hud.result_panel.size.x <= hud.size.x + 0.1 and hud.result_panel.position.y + hud.result_panel.size.y <= hud.size.y + 0.1, "result panel remains inside UI150 viewport")
 	check(hud.result_label.autowrap_mode != TextServer.AUTOWRAP_OFF and hud.result_label.text.contains("F5") and hud.title.text.contains("Sirocco"), "wrapped standings, restart and public venue")
-	hud.size = Vector2(1280, 800)
+	root.size = Vector2i(1280,800)
+	root.content_scale_factor = 1.0
+	for frame in 4: await process_frame
 	hud.layout_results()
+	for frame in 4: await process_frame
 	check(hud.result_panel.size.x <= 680 and hud.result_panel.position.x >= 0, "wide panel remains bounded after resize")
 	root.remove_child(hud)
 	hud.free()

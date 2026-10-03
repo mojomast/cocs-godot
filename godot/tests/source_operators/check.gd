@@ -55,6 +55,15 @@ func run() -> void:
 			visual.rig.update(fixture.updateSequence[index])
 			if operator.sequence.has(str(index)):
 				compare(visual,operator.sequence[str(index)],operator.id+" damped sequence "+str(index))
+		# Legacy standalone update remains covered above. Live locomotion opts out
+		# of pose application so two solvers cannot write the imported pivots.
+		visual.reset_pose()
+		var before_channels: Dictionary = {}
+		for joint: String in visual.rig.joints:
+			before_channels[joint] = visual.rig.joints[joint].transform
+		visual.rig.update({"dt":0.1,"speed":3.0,"grounded":true},false)
+		for joint: String in before_channels:
+			check((visual.rig.joints[joint].transform as Transform3D).is_equal_approx(before_channels[joint]),operator.id+" channels-only update moved "+joint)
 		for mesh: MeshInstance3D in visual.batches:
 			for batch: Dictionary in Catalog.OPERATORS[operator.id].batches:
 				if batch.name == str(mesh.name):
