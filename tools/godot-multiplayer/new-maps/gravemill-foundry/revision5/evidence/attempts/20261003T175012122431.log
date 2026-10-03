@@ -1,0 +1,52 @@
+13:50:17 | INFO: Data are loaded, start creating Blender stuff
+13:50:17 | INFO: Blender create Mesh node batch-soot
+13:50:17 | INFO: Blender create Mesh node batch-mineral
+13:50:17 | INFO: Blender create Mesh node batch-copper
+13:50:17 | INFO: Blender create Mesh node batch-brass
+13:50:17 | INFO: Blender create Mesh node batch-ore
+13:50:17 | INFO: Blender create Mesh node batch-orange
+13:50:17 | INFO: Blender create Mesh node batch-chalk
+13:50:17 | INFO: Blender create Mesh node batch-cooling-floor
+13:50:17 | INFO: glTF import finished in 0.09s
+Info: Packed 30 file(s)
+Info: Saved as "gravemill-foundry-revision5.blend"
+INFO Draco mesh compression is available, use library at /home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/4.5/scripts/addons_core/io_scene_gltf2/libextern_draco.so
+13:50:17 | INFO: Starting glTF 2.0 export
+13:50:17 | INFO: Extracting primitive: G1.headframe.0.cable.001
+13:50:17 | INFO: Primitives created: 1
+13:50:17 | INFO: Extracting primitive: G1.headframe.0.crossrail.001
+13:50:17 | INFO: Primitives created: 1
+13:50:17 | INFO: Extracting primitive: G1.headframe.0.hookblock.001
+13:50:17 | INFO: Primitives created: 1
+13:50:17 | INFO: Extracting primitive: G2.furnace.0.casing.003
+13:50:17 | INFO: Primitives created: 1
+13:50:17 | INFO: Extracting primitive: G2.furnace.0.tap-platform.001
+13:50:17 | INFO: Primitives created: 1
+13:50:17 | INFO: Extracting primitive: G3.tipple.51.arch.001
+13:50:17 | INFO: Primitives created: 1
+13:50:17 | INFO: Extracting primitive: G3.tipple.51.grain-deck.001
+13:50:17 | INFO: Primitives created: 1
+13:50:17 | INFO: Extracting primitive: G5.bunker.0.surge.001
+13:50:17 | INFO: Primitives created: 1
+13:50:17 | INFO: Extracting primitive: batch-soot
+13:50:17 | INFO: Primitives created: 1
+13:50:17 | INFO: Extracting primitive: batch-mineral
+13:50:17 | INFO: Primitives created: 1
+13:50:17 | INFO: Extracting primitive: batch-copper
+13:50:17 | INFO: Primitives created: 1
+13:50:17 | INFO: Extracting primitive: batch-brass
+13:50:18 | INFO: Primitives created: 1
+13:50:18 | INFO: Extracting primitive: batch-ore
+13:50:18 | INFO: Primitives created: 1
+13:50:18 | INFO: Extracting primitive: batch-orange
+13:50:18 | INFO: Primitives created: 1
+13:50:18 | INFO: Extracting primitive: batch-chalk
+13:50:18 | INFO: Primitives created: 1
+13:50:18 | INFO: Extracting primitive: batch-cooling-floor
+13:50:18 | INFO: Primitives created: 1
+13:50:18 | INFO: Finished glTF 2.0 export in 0.29888033866882324 s
+
+FOUNDRY_R5_EXPORT {"sourceObjects": 270, "exportBatches": 16, "master": {"sha256": "5eb975d315ec8e782681174fc2739677e202bdfba79b7d6b52cd650fe0fd1ce1", "bytes": 5932564}, "glb": {"sha256": "85f5e06a88eed0a83c26f495b8a1e088ab3afa8bd9678b55bd1ca4f540e9b052", "bytes": 12389716}}
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+
+Blender quit

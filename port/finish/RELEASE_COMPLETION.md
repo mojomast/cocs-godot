@@ -12,18 +12,25 @@ implementation/review closure are complete, merged as `f61f6156`. Parent passed
 29 focused source tests plus generation/oracle checks. Q completed on `f61f6156`
 with **1,970 input-flow and 10 slide-pose checks passing**, zero engine errors or
 warnings, and explicitly released after three empty audits. Report integrated as
-`190fa2a2`; package owner is reconciling dependencies source-only. This runs alongside
+`190fa2a2`; package reconciliation now passes 116 parent source checks through
+`a83f73f4`. This runs alongside
 new Moth/Blender map production; exact owners and constraints are in
 `MOVEMENT_RESEARCH_20261003.md`.
 
 **New user-requested map production:** Astra's Moth base/compared multi-engine pack
 and mothbake updates are complete and integrated. Parent verified 201 PNG hashes
-and actual comparison sheets. Sol holds **`MOTH-BLENDER-20261003-R`** for real
-Foundry production/shared material binding; two Flash lanes implement the other
-five maps' Blender sources and terrain/layout revisions.
+and actual comparison sheets. **R completed and released** with Foundry staged
+master/GLB and 22 actual screenshots at worker `6ff4079e`, **rejected by independent
+Astra review** for exported geometry/collision defects and still unmerged. Astra
+completed corrective revision-5 production as `4a2f1201` and **released S** at
+18:20:11.138292Z. R5 is undergoing independent artifact review; its 22 native
+comparison images are at <http://100.125.104.79:8796/foundry-r5/>.
+The original Flash map lanes stopped after
+failed review: Astra owns botanical/urban repair, Sol owns coastal adapter integration
+after the corrected coastal sources were merged as `18201a06`.
 The user explicitly requires Blender-authored assets. Application follows the
-new resource pack, on isolated branches with fresh map validation. P and Q released;
-R is the sole heavy grant. Exact owners,
+new resource pack, on isolated branches with fresh map validation. P, Q and R released;
+S also released; coastal T now owns the sole heavy slot. Exact owners,
 sequence and storage constraints: `MOTH_BLENDER_MAP_VARIETY_20261003.md`.
 
 **Current checkpoint (supersedes earlier M-in-progress entries below):** M actually
@@ -52,9 +59,8 @@ Diagnosis commits `cd2b2017`, `47b3633b` and combo follow-up `199d2641` were
 reviewed and integrated as `346e8db8`, `6252d4bf` and `8bf90885`;
 native verification remains pending. Parent passed **83 source checks**: 33
 Fighting acceptance/command/combo/UI, three diagnosis, seven spectator/process,
-35 runner/receipt and five Blender-toolkit tests. **R is now the only active heavy
-grant**, scoped to new Moth/Blender map production. Further production requires an explicit next grant
-after the resource pack is ready; its acceptance uses a fresh candidate.
+35 runner/receipt and five Blender-toolkit tests. **R and S are released; T owns
+coastal Blender/native production.** Further heavy production needs its next grant.
 
 **Historical O/P foundation:** O repaired both N
 failures and released 18 groups with three empty audits, independently checked
@@ -109,9 +115,11 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P and Q have explicitly released; Blender production R holds the local heavy slot.**
+**P, Q, R and S have explicitly released; coastal T holds the local heavy slot.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
-the Windows owner retains remote preflight monitoring.
+Parent independently confirmed Windows source-only preflight `37125999742`
+completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
+Its successful source/inventory checks do not cover the newer movement/Moth tree.
 Scenery delivery is preserved but not integrated into the preview. Final production
 and acceptance obligations remain; strict final packaging is unchanged.
 
@@ -129,7 +137,7 @@ boundaries.
 | Fighting presentation and controls | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing at `1bff0281`; controller recovery integrated at `614a8a7f`, all 12 parent presentation source tests pass; native review pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | O complete/released; world/combined ordinary journeys and Controls clean teardown passed; Settings Return Home fix integrated at `3ee932e8`, report at `b17360c9` |
-| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Exact O advance integrated at `14d8a72d`; all 55 parent checks and seven committed-Git strict inventories pass; future runtime drift requires explicit reconciliation |
+| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Movement advance `4cd806fa` plus exact Moth authoring inventory `a83f73f4`; parent 116/116 source checks pass including committed-Git seven-unit closure; earlier 111/113 integration failures resolved |
 | Vesper Viaduct | Astra `ses_f03a3885fffehx9yFhHubuPCft` | H production/evidence integrated through `04fbbfa5`; six native outcomes passed; parent review/registration at `99a4f597`; package-promoted at `b5d16351` |
 | Abyssal Pressureworks | Astra `ses_f03a3024cffeNO1Cc3Qr1zSLTG` | I delivery integrated through `f0e76bf7`; six native outcomes and parent visual review retained; six-mode registration/package promotion integrated at `c7c81c71` |
 | Stormglass Causeway | Astra `ses_f0342d1ffffeyUHJkcUj3vqP7p` | J completed/released; assets and private race evidence integrated through `997bc013`; one public Puma Race pair and exact package promotion integrated at `5b5c8791`, flat-road concession retained |
@@ -138,7 +146,7 @@ boundaries.
 | Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Actual production at `1f129ab2`; E released; compact-HUD correction at `83ceaa62` passes six parent source checks/grammar, new native layout/screenshots pending |
 | Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base `b6ab6782` and ordinary-controller follow-up `da259d19` integrated; 26 parent acceptance tests and grammar pass; native execution awaits later grant and device access |
 | Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | P complete/released on `3e97453a`: 89 passed / 22 failed / 31 unrun; 142 obligations retained; reviewed diagnosis/combo follow-up integrated through `8bf90885`, native verification pending |
-| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Historical Windows graph evidence verified/integrated at `08f3b1f9`; new 13-world/73-pair source-only preflight `37125999742` awaits owner-reported completion; no local export under O |
+| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Historical Windows graph evidence verified/integrated at `08f3b1f9`; parent confirmed source-only preflight `37125999742` succeeded on `c1aa94ef` at 13:29:07Z; newer movement/Moth candidate still needs fresh verification and exports |
 | Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | M complete/released, integrated at `701d4caf`; 75-second film published, 98 candidate/91 installed Home checks pass; human full-watch/listening and final-frozen receipt remain pending |
 
 All workers run in the background, using existing sessions/checkouts. Source work
@@ -149,12 +157,38 @@ directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
-**Active: `MOTH-BLENDER-20261003-R`**, owner
+**Active: `MOTH-BLENDER-20261003-T`**, Sol
+`ses_efd55bb5cffeJRWNA4xZq8O6cE`, foundation `bce5b834`. Actual Abyssal then
+Stormglass production: Blender masters/exports, packed-image reopen, embedded
+material/export geometry checks, staged native collision/runtime review and real
+matched captures. No public promotion/package export or full matrix. Other agents
+remain source/artifact-only. Preserve attempts and emit three timestamped empty
+owned-process-group audits plus explicit release at completion.
+
+**Released: `MOTH-BLENDER-20261003-S`**, Astra
+`ses_efd30e1f6ffeLbhHTPoh266kZW`, corrective Foundry revision-5 production from
+rejected `6ff4079e` in a fresh isolated worktree. Scope: fix geometry/authority
+alignment and normals, preserved luminaires, generic optional-normal receipt,
+actual Blender rebuild/reopen/GLB/import, targeted physics and new captures.
+Preserve R4 evidence. No package exports or full matrix. Other workers source-only.
+Parent pre-grant check found the lock free; only matching Godot was the unrelated
+September-21 environment viewer, explicitly excluded and left untouched. Require
+bounded owned groups and timestamped three empty audits before S release.
+S delivered `4a2f1201` and released at `2026-10-03T18:20:11.138292Z`. Parent
+confirmed all three timestamped audits are empty across 43 recorded groups,
+no current surviving group members, and lock availability. Independent artifact
+review is active; coastal T now holds the subsequent heavy grant.
+
+**Released: `MOTH-BLENDER-20261003-R`**, owner
 `ses_efdba38e9ffeManqAN9zWiJ3va`, foundation `190fa2a2`. Scope: material adapter
 and toolkit execution, actual Foundry Blender modeling/master/GLB/reopen, bounded
 native material/physics review and captures. Other map workers remain source-only.
 No full matrix, package export or encoding.
-Three empty ownership audits and explicit release are required afterward.
+Worker delivered `6ff4079e` and explicitly released. Parent inspected three empty
+process-scan/available-lock audits and the staged import integrity receipt. These
+R audits do not contain per-group IDs or timestamps. Independent production review
+rejected the complete candidate; Astra is rebuilding under S. Actual rejected-WIP screenshots:
+<http://100.125.104.79:8796/foundry-r4/> (22 PNGs, 30 HTTP/hash checks).
 
 **Historical:** `RELEASE-MATRIX-20261003-P`, owner
 `ses_f0292f089ffeq9MnxeAHN0yrKb`, released at `2026-10-03T15:04:52.013061Z`.

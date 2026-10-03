@@ -11,6 +11,7 @@ import math
 from pathlib import Path
 import re
 import struct
+import sys
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -37,6 +38,12 @@ def checked(relative, expected):
     if digest(contents) != expected:
         raise ValueError('Hash mismatch: ' + relative)
     return contents
+
+
+def blend_header(raw):
+    """Recognize Blender plain or Blender-Zstd saved masters (reopen proves full data)."""
+    offset=0 if raw.startswith(b'BLENDER') else raw[:32].find(b'BLENDER') if raw[:4]==b'\x28\xb5\x2f\xfd' else -1
+    return offset>=0 and len(raw)>64 and raw[offset+9:offset+12].isdigit()
 
 
 def glb_parts(raw):
@@ -175,6 +182,8 @@ def inspect_art(raw, bindings, cap):
 
 
 def verify(candidate, built=False):
+    if candidate.get('schemaVersion') == 2:
+        return verify_pack(candidate, built)
     if candidate.get('schemaVersion') != 1 or not candidate.get('maps'):
         raise ValueError('Expected nonempty map-variety candidate v1')
     manifest_bytes = checked(candidate['moth']['manifest'], candidate['moth']['sha256'])
@@ -228,7 +237,7 @@ def verify(candidate, built=False):
             if art['maxPrimitives'] < 1 or art['maxPrimitives'] > 128:
                 raise ValueError('Unbounded art primitive budget: ' + ident)
             blend = checked(art['blend'], art['blendSha256'])
-            if not blend.startswith(b'BLENDER') or len(blend) < 12 or blend[9:12].isdigit() is False:
+            if not blend_header(blend):
                 raise ValueError('Not a Blender master file: ' + art['blend'])
             glb = checked(art['glb'], art['glbSha256'])
             inspection = inspect_art(glb, bindings, art['maxPrimitives'])
@@ -252,6 +261,93 @@ def verify(candidate, built=False):
         reports.append(report)
     return {'kind': 'source-only-map-variety-receipt', 'mothSource': candidate['moth']['manifest'],
             'maps': reports, 'nativeAcceptance': 'pending'}
+
+
+def verify_pack(candidate, built=False):
+    """Actual v2 linear material pack plus additive v3 overlay, never legacy aliases."""
+    sys.path.insert(0,str(Path(__file__).parent))
+    from material_pack import load_pack,linear_rgba,srgb_png
+    overlay = candidate['moth']['manifest']
+    checked(overlay,candidate['moth']['sha256'])
+    registry,pack_hashes=load_pack(ROOT,overlay)
+    if pack_hashes['overlaySha256']!=candidate['moth']['sha256']:
+        raise ValueError('Overlay manifest identity mismatch')
+    if not candidate.get('maps'):raise ValueError('No maps in actual pack candidate')
+    reports=[]
+    for map_data in candidate['maps']:
+        authority=map_data['authority']
+        data=json.loads(checked(authority['path'],authority['sha256']))
+        if data['id']!=map_data['id'] or data['geometryHash']!=authority['geometryHash']:
+            raise ValueError('Revised authority mismatch')
+        bindings=map_data['materials']
+        if not bindings or len(bindings)>64:raise ValueError('Unbounded reviewed material registry')
+        for name,binding in bindings.items():
+            if binding['role']=='preserve':
+                if binding.get('resource') or binding.get('normal'):
+                    raise ValueError('Preserved material includes Moth input: '+name)
+                continue
+            if binding['role'] not in ('surface','team') or not isinstance(binding.get('normal'),bool):
+                raise ValueError('Unreviewed Moth binding '+name)
+            if binding['role']=='team' and binding.get('teamColorSource')!='COLOR_0':
+                raise ValueError('Team binding needs COLOR_0')
+            resource=registry[binding['resource']]
+            if binding.get('tileMeters')!=resource['tileMeters']:
+                raise ValueError('Moth density mismatch: '+name)
+        entry={'id':map_data['id'],'geometryHash':data['geometryHash'],
+               'mothOverlaySha256':pack_hashes['overlaySha256'],
+               'reviewedMaterials':len(bindings),'built':False}
+        if built:
+            art=map_data['art']
+            master=checked(art['blend'],art['blendSha256'])
+            glb=checked(art['glb'],art['glbSha256'])
+            if not blend_header(master):
+                raise ValueError('Missing actual Blender master')
+            if art['maxPrimitives']<1 or art['maxPrimitives']>128:
+                raise ValueError('Invalid primitive cap')
+            inspection=inspect_art(glb,{name:{'role':b['role'],'normal':b.get('normal',False)}
+                                        for name,b in bindings.items()},art['maxPrimitives'])
+            doc,blob=glb_parts(glb)
+            lineage=json.loads(checked(art['lineage'],art['lineageSha256']))
+            if lineage.get('glbSha256')!=art['glbSha256'] or lineage.get('geometryHash')!=data['geometryHash'] or lineage.get('pack')!=pack_hashes:
+                raise ValueError('Source/packed lineage identity mismatch')
+            if set(lineage['materialLineage'])!={name for name,b in bindings.items() if b['role']!='preserve'}:
+                raise ValueError('Source/packed lineage coverage mismatch')
+            def image_bytes(slot):
+                textures=doc['textures']
+                if not isinstance(slot,dict) or type(slot.get('index')) is not int or not 0<=slot['index']<len(textures):
+                    raise ValueError('Invalid PBR texture index')
+                index=textures[slot['index']]['source']
+                view=doc['bufferViews'][doc['images'][index]['bufferView']]
+                at=view.get('byteOffset',0)
+                return blob[at:at+view['byteLength']]
+            for mat in doc['materials']:
+                name=mat['name']
+                binding=bindings[name]
+                if binding['role']=='preserve':continue
+                resource=registry[binding['resource']]['channels']
+                color=image_bytes(mat['pbrMetallicRoughness']['baseColorTexture'])
+                expected=srgb_png(resource['albedo']['path'].read_bytes())
+                normal=image_bytes(mat['normalTexture']) if binding['normal'] else None
+                if color!=expected or binding['normal'] and digest(normal)!=resource['normal']['sha256']:
+                    raise ValueError('Actual Moth color/normal GLB bytes mismatch: '+name)
+                packed=image_bytes(mat['pbrMetallicRoughness']['metallicRoughnessTexture'])
+                w,h,source=linear_rgba(resource['roughness']['path'].read_bytes())
+                ew,eh,output=linear_rgba(packed)
+                if (w,h)!=(ew,eh) or any(abs(source[i]-output[i+1])>1 for i in range(0,len(source),4)):
+                    raise ValueError('Moth packed roughness differs: '+name)
+                evidence=lineage['materialLineage'][name]
+                if (evidence['sourceAlbedoSha256']!=resource['albedo']['sha256'] or
+                    evidence['embeddedSrgbAlbedoSha256']!=digest(color) or
+                    evidence['normalSourceAndEmbeddedSha256']!=(digest(normal) if binding['normal'] else None) or
+                    evidence['sourceRoughnessSha256']!=resource['roughness']['sha256'] or
+                    evidence['embeddedPackedRoughnessSha256']!=digest(packed)):
+                    raise ValueError('Builder report differs from independently resolved GLB bytes: '+name)
+            entry.update({'built':True,'blendBytes':len(master),'glbBytes':len(glb),
+                          'primitives':inspection['primitives'],'lineageSha256':art['lineageSha256'],
+                          'inspectionScope':'actual decoded source-to-GLB channels; native gameplay review separate'})
+        reports.append(entry)
+    return {'kind':'actual-Moth-pack-source-and-export-receipt','pack':pack_hashes,'maps':reports,
+            'nativeAcceptance':'pending hosted journeys and visual signoff'}
 
 
 if __name__ == '__main__':

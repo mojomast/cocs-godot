@@ -1,0 +1,41 @@
+{
+  "start": "2026-10-03T18:12:20.166291+00:00",
+  "end": "2026-10-03T18:12:26.881073+00:00",
+  "pgid": 209185,
+  "members": [
+    {
+      "pid": 209185,
+      "ppid": 92828,
+      "pgid": 209185,
+      "startTicks": 623428411,
+      "comm": "python3",
+      "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/owned_capture.py xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --rendering-method gl_compatibility --audio-driver Dummy --resolution 1280x720 --script res://tests/new_maps/gravemill_foundry/revision5/capture.gd -- --view=tipple-player "
+    },
+    {
+      "pid": 209186,
+      "ppid": 209185,
+      "pgid": 209185,
+      "startTicks": 623428413,
+      "comm": "xvfb-run",
+      "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --rendering-method gl_compatibility --audio-driver Dummy --resolution 1280x720 --script res://tests/new_maps/gravemill_foundry/revision5/capture.gd -- --view=tipple-player "
+    },
+    {
+      "pid": 209196,
+      "ppid": 209186,
+      "pgid": 209185,
+      "startTicks": 623428414,
+      "comm": "Xvfb",
+      "argv": "Xvfb :101 -screen 0 1280x720x24 -nolisten tcp -auth /tmp/xvfb-run.tHEDAm/Xauthority "
+    },
+    {
+      "pid": 209203,
+      "ppid": 209186,
+      "pgid": 209185,
+      "startTicks": 623428415,
+      "comm": "Godot_v4.5.2-st",
+      "argv": ""
+    }
+  ],
+  "scriptError": false,
+  "returncode": 0
+}

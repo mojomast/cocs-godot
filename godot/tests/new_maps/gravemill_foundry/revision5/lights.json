@@ -1,0 +1,52 @@
+{
+  "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879",
+  "acceptedArtSha256": "46bf1648b32d23e337cd11b2c639a47f17d36c41361aab9434e1e621361e5935",
+  "fixtureSource": "Accepted orange batch: cooling fixtures x=-89+6.5*i, y=23.5, z=36+.14*x; lights offset 0.4m below existing faces.",
+  "lights": [
+    {
+      "id": "cooling-fixture-0",
+      "position": [
+        -89,
+        23.1,
+        23.54
+      ],
+      "color": "ffd9a3",
+      "energy": 3.5,
+      "range": 18
+    },
+    {
+      "id": "cooling-fixture-1",
+      "position": [
+        -76,
+        23.1,
+        25.36
+      ],
+      "color": "ffd9a3",
+      "energy": 3.5,
+      "range": 18
+    },
+    {
+      "id": "cooling-fixture-2",
+      "position": [
+        -63,
+        23.1,
+        27.18
+      ],
+      "color": "ffd9a3",
+      "energy": 3.5,
+      "range": 18
+    },
+    {
+      "id": "cooling-fixture-3",
+      "position": [
+        -50,
+        23.1,
+        29.0
+      ],
+      "color": "ffd9a3",
+      "energy": 3.5,
+      "range": 18
+    }
+  ],
+  "scope": "Bounded staged runtime presentation, not capture-only lights; no emitter material mutation"
+}

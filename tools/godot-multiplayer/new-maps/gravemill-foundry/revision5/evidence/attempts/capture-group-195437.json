@@ -1,0 +1,41 @@
+{
+  "start": "2026-10-03T18:08:48.966596+00:00",
+  "end": "2026-10-03T18:09:47.869126+00:00",
+  "pgid": 195437,
+  "members": [
+    {
+      "pid": 195437,
+      "ppid": 92828,
+      "pgid": 195437,
+      "startTicks": 623407291,
+      "comm": "python3",
+      "argv": "python3 tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/owned_capture.py xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --rendering-method gl_compatibility --audio-driver Dummy --resolution 1280x720 --script res://tests/new_maps/gravemill_foundry/revision5/capture.gd "
+    },
+    {
+      "pid": 195439,
+      "ppid": 195437,
+      "pgid": 195437,
+      "startTicks": 623407293,
+      "comm": "xvfb-run",
+      "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --rendering-method gl_compatibility --audio-driver Dummy --resolution 1280x720 --script res://tests/new_maps/gravemill_foundry/revision5/capture.gd "
+    },
+    {
+      "pid": 195449,
+      "ppid": 195439,
+      "pgid": 195437,
+      "startTicks": 623407294,
+      "comm": "Xvfb",
+      "argv": "Xvfb :101 -screen 0 1280x720x24 -nolisten tcp -auth /tmp/xvfb-run.Iv17m8/Xauthority "
+    },
+    {
+      "pid": 195452,
+      "ppid": 195439,
+      "pgid": 195437,
+      "startTicks": 623407295,
+      "comm": "Godot_v4.5.2-st",
+      "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --rendering-method gl_compatibility --audio-driver Dummy --resolution 1280x720 --script res://tests/new_maps/gravemill_foundry/revision5/capture.gd "
+    }
+  ],
+  "scriptError": false,
+  "returncode": 0
+}

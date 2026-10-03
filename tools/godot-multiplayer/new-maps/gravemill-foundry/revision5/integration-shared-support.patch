@@ -1,0 +1,545 @@
+diff --git a/tools/map-variety-pipeline/blender_kit.py b/tools/map-variety-pipeline/blender_kit.py
+index 6679ccbe..9d9bad61 100644
+--- a/tools/map-variety-pipeline/blender_kit.py
++++ b/tools/map-variety-pipeline/blender_kit.py
+@@ -209,6 +209,10 @@ class Kit:
+                       (i, 2*n+i, 2*n+i+1, i+1),
+                       (n+i, n+i+1, 3*n+i+1, 3*n+i)]
+         faces += [(0,n,3*n,2*n), (segments,2*n+segments,3*n+segments,n+segments)]
++        # The XZ annulus and Blender Y-depth rings above run opposite to the
++        # winding of their outward normals. Reverse the complete closed shell,
++        # including end caps, before bevel/weighted-normal evaluation.
++        faces = [tuple(reversed(face)) for face in faces]
+         return self.mesh(name, vertices, faces, material, sector=sector, bevel=.018)
+ 
+     def pipe(self, name, points, radius, material, *, sector='default', sides=12):
+diff --git a/tools/map-variety-pipeline/material_adapter.py b/tools/map-variety-pipeline/material_adapter.py
+new file mode 100644
+index 00000000..d8ae7bac
+--- /dev/null
++++ b/tools/map-variety-pipeline/material_adapter.py
+@@ -0,0 +1,31 @@
++"""Small builder-facing material API for the reviewed v2 + additive v3 pack.
++
++load_materials(root, bindings) -> (materials, tiles_per_metre)
++Bindings map exact exported names to {material: pack ID, role: surface|team,
++normal: bool, metallic: optional explicit 0..1}; team requires teamColorSource=COLOR_0.
++Preserved glass/emissive is explicitly authored by each map builder instead.
++The detailed proof report is available via load_materials(..., with_report=True).
++"""
++from pathlib import Path
++from material_pack import load_materials as _load
++
++# Reviewed semantic defaults apply only after a stable pack ID resolves. This
++# is a scalar BRDF starting point, never a material/resource-name fallback.
++METAL_RESOURCES=frozenset(('anodized-brush','copper-heat-oxide','copper-patina',
++    'forge-steel','iron-grate','optical-mirror-opaque','oxidized-iron','ribbed-steel'))
++
++
++def load_materials(root, bindings, *, output_dir=None, with_report=False):
++    converted = {}
++    for name, binding in bindings.items():
++        if binding['role']=='preserve':
++            raise ValueError('Author preserved glass/emissive explicitly outside Moth adapter: '+name)
++        if not isinstance(binding.get('normal'),bool):
++            raise ValueError('Normal attachment must be explicitly reviewed for '+name)
++        converted[name]={'resource':binding['material'],'role':binding['role'],
++                         'metallic':binding.get('metallic',.65 if binding['material'] in METAL_RESOURCES else 0),
++                         'normal':binding['normal']}
++        if binding['role']=='team':converted[name]['teamColorSource']=binding['teamColorSource']
++    path=output_dir or Path(root)/'tools/map-variety-pipeline/converted'
++    materials,densities,report=_load(root,converted,path)
++    return (materials,densities,report) if with_report else (materials,densities)
+diff --git a/tools/map-variety-pipeline/material_pack.py b/tools/map-variety-pipeline/material_pack.py
+new file mode 100644
+index 00000000..f87e792e
+--- /dev/null
++++ b/tools/map-variety-pipeline/material_pack.py
+@@ -0,0 +1,182 @@
++"""Reviewed map-variety Moth pack -> Blender PBR, without legacy registry aliases.
++
++Call load_materials(root, bindings, output_dir) inside Blender. Each binding is
++{resource, role, metallic}; role is surface/team/preserve. No fallback names.
++Albedo source PNG is linear RGBA8 and MUST be sRGB encoded for glTF baseColor.
++"""
++import hashlib
++import json
++from pathlib import Path
++import struct
++import zlib
++
++
++PACK = 'assets/moth/map-variety-20261003/candidate-v3/manifest.json'
++
++
++def sha(data): return hashlib.sha256(data).hexdigest()
++
++
++def _chunks(raw):
++    if raw[:8] != b'\x89PNG\r\n\x1a\n': raise ValueError('Not PNG')
++    at = 8
++    while at < len(raw):
++        size = struct.unpack_from('>I', raw, at)[0]
++        name = raw[at+4:at+8]
++        body = raw[at+8:at+8+size]
++        if len(body) != size or struct.unpack_from('>I', raw, at+8+size)[0] != zlib.crc32(name+body):
++            raise ValueError('Invalid PNG chunk')
++        at += size+12
++        yield name, body
++        if name == b'IEND': break
++
++
++def linear_rgba(linear):
++    """Decode bounded RGBA8 PNG with all standard lossless PNG scanline filters."""
++    chunks = list(_chunks(linear))
++    width,height,depth,color,*_ = struct.unpack('>IIBBBBB', next(v for k,v in chunks if k==b'IHDR'))
++    if depth != 8 or color not in (2,6) or width*height > 1024*1024:
++        raise ValueError('Expected bounded RGB/RGBA8 linear PNG')
++    packed = zlib.decompress(b''.join(v for k,v in chunks if k==b'IDAT'))
++    bpp=4 if color==6 else 3
++    stride = width*bpp
++    raw = bytearray()
++    previous = bytearray(stride)
++    at = 0
++    for _ in range(height):
++        mode = packed[at]
++        row = bytearray(packed[at+1:at+1+stride])
++        if len(row) != stride: raise ValueError('Truncated PNG scanline')
++        at += stride+1
++        for i in range(stride):
++            a = row[i-bpp] if i>=bpp else 0
++            b = previous[i]
++            c = previous[i-bpp] if i>=bpp else 0
++            if mode == 1: delta = a
++            elif mode == 2: delta = b
++            elif mode == 3: delta = (a+b)//2
++            elif mode == 4:
++                p=a+b-c
++                da,db,dc=abs(p-a),abs(p-b),abs(p-c)
++                delta = a if da<=db and da<=dc else b if db<=dc else c
++            elif mode == 0: delta = 0
++            else: raise ValueError('Invalid PNG filter')
++            row[i] = (row[i]+delta)&255
++        previous = row[:]
++        if bpp==4:raw.extend(row)
++        else:
++            for i in range(0,stride,3):raw.extend(row[i:i+3]+b'\xff')
++    if at != len(packed): raise ValueError('Unexpected PNG payload')
++    return width,height,raw
++
++
++def srgb_png(linear):
++    """RGBA8 linear PNG -> RGBA8 sRGB PNG; alpha unmodified, no PIL dependency."""
++    width,height,pixels = linear_rgba(linear)
++    raw = bytearray()
++    stride=width*4
++    for y in range(height):
++        row=pixels[y*stride:(y+1)*stride]
++        for i in range(0,stride,4):
++            for channel in range(3):
++                value = row[i+channel]/255
++                transformed = 12.92*value if value<=.0031308 else 1.055*value**(1/2.4)-.055
++                row[i+channel] = max(0,min(255,round(transformed*255)))
++        raw.extend(b'\0'+row)
++    def chunk(kind, body): return struct.pack('>I',len(body))+kind+body+struct.pack('>I',zlib.crc32(kind+body))
++    header = struct.pack('>IIBBBBB',width,height,8,6,0,0,0)
++    return b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',header)+chunk(b'IDAT',zlib.compress(bytes(raw),9))+chunk(b'IEND',b'')
++
++
++def load_pack(root, manifest=PACK):
++    root = Path(root).resolve()
++    overlay_path = (root/manifest).resolve()
++    if not overlay_path.is_relative_to(root): raise ValueError('Manifest outside root')
++    overlay_bytes = overlay_path.read_bytes()
++    overlay = json.loads(overlay_bytes)
++    if overlay.get('schema') != 'moth-map-material-overlay/v1': raise ValueError('Wrong Moth overlay schema')
++    base_path = (overlay_path.parent/overlay['basePack']['manifest']).resolve()
++    if not base_path.is_relative_to(root): raise ValueError('Base manifest outside root')
++    base_bytes = base_path.read_bytes()
++    if sha(base_bytes) != overlay['basePack']['sha256']: raise ValueError('Moth base manifest hash mismatch')
++    base = json.loads(base_bytes)
++    if base.get('schema') != 'moth-map-material-pack/v1': raise ValueError('Wrong Moth base schema')
++    materials = {}
++    for doc,path in ((base,base_path),(overlay,overlay_path)):
++        for item in doc['materials']:
++            ident = item['id']
++            if ident in materials: raise ValueError('Duplicate Moth ID: '+ident)
++            channels = {}
++            for role,key in item['channels'].items():
++                meta = doc['textures'][key]
++                source = (path.parent/meta['path']).resolve()
++                if not source.is_relative_to(root): raise ValueError('Moth texture escapes root')
++                data = source.read_bytes()
++                semantic = 'coverage mask in RGB; use red channel for alpha clip' if role == 'alpha' else role
++                if sha(data) != meta['sha256'] or len(data) != meta['bytes'] or meta['semantic'] != semantic or meta['colorSpace'] != 'linear':
++                    raise ValueError('Moth texture identity/semantics mismatch: '+key)
++                channels[role] = {'path': source, 'sha256': meta['sha256'], 'bytes': len(data)}
++            if not all(k in channels for k in ('albedo','normal','roughness')):
++                raise ValueError('Incomplete PBR Moth resource: '+ident)
++            materials[ident] = {'channels': channels, 'tileMeters':item['tileMeters'],
++                                'texelsPerMeter':item['texelsPerMeter'], 'manifestSha256':sha(path.read_bytes())}
++    return materials, {'overlaySha256':sha(overlay_bytes),'baseSha256':sha(base_bytes)}
++
++
++def load_materials(root, bindings, output_dir, *, manifest=PACK):
++    import bpy
++    resources, pack = load_pack(root, manifest)
++    output_dir = Path(output_dir)
++    output_dir.mkdir(parents=True, exist_ok=True)
++    materials, densities, report = {}, {}, {}
++    for name,binding in bindings.items():
++        if binding['role'] == 'preserve':
++            raise ValueError('Preserved glass/emissive materials must be explicitly authored outside pack: '+name)
++        resource = resources[binding['resource']]
++        if binding['role'] not in ('surface','team') or binding['role']=='team' and binding.get('teamColorSource')!='COLOR_0':
++            raise ValueError('Unreviewed Moth role '+name)
++        metallic = binding['metallic']
++        if not isinstance(metallic,(int,float)) or isinstance(metallic,bool) or not 0<=metallic<=1:
++            raise ValueError('Invalid metallic scalar '+name)
++        converted = srgb_png(resource['channels']['albedo']['path'].read_bytes())
++        color_path = output_dir/(binding['resource']+'-albedo-srgb.png')
++        if color_path.exists() and color_path.read_bytes()!=converted:
++            raise ValueError('Different converted albedo at '+str(color_path))
++        color_path.write_bytes(converted)
++        mat = bpy.data.materials.new(name)
++        mat.use_nodes = True
++        nodes = mat.node_tree.nodes
++        links = mat.node_tree.links
++        bs = nodes.get('Principled BSDF')
++        bs.inputs['Metallic'].default_value = metallic
++        uv = nodes.new('ShaderNodeUVMap'); uv.uv_map = 'MothLocal'
++        def image(path, space, label):
++            node=nodes.new('ShaderNodeTexImage')
++            node.image=bpy.data.images.load(str(path),check_existing=True)
++            node.image.colorspace_settings.name=space
++            node.extension='REPEAT'
++            node.label=label
++            links.new(uv.outputs['UV'],node.inputs['Vector'])
++            return node
++        albedo=image(color_path,'sRGB','Moth linear albedo -> sRGB encoded glTF bytes')
++        links.new(albedo.outputs['Color'],bs.inputs['Base Color'])
++        if binding.get('normal',True):
++            normal=image(resource['channels']['normal']['path'],'Non-Color','Moth OpenGL +Y normal')
++            normal_map=nodes.new('ShaderNodeNormalMap');normal_map.uv_map='MothLocal'
++            links.new(normal.outputs['Color'],normal_map.inputs['Color'])
++            links.new(normal_map.outputs['Normal'],bs.inputs['Normal'])
++        rough=image(resource['channels']['roughness']['path'],'Non-Color','Moth scalar roughness')
++        separate=nodes.new('ShaderNodeSeparateColor');links.new(rough.outputs['Color'],separate.inputs['Color'])
++        links.new(separate.outputs['Red'],bs.inputs['Roughness'])
++        materials[name]=mat
++        densities[name]=1/resource['tileMeters']
++        report[name]={'resource':binding['resource'],'role':binding['role'],'tileMeters':resource['tileMeters'],
++                      'tilesPerMeter':densities[name],'texelsPerMeter':resource['texelsPerMeter'],
++                      'sourceColorSha256':resource['channels']['albedo']['sha256'],
++                      'sourceNormalSha256':resource['channels']['normal']['sha256'],
++                      'normalAttached':bool(binding.get('normal',True)),
++                      'sourceRoughnessSha256':resource['channels']['roughness']['sha256'],
++                      'convertedAlbedoSha256':sha(converted),'metallic':metallic,
++                      'teamColorSource':binding.get('teamColorSource'),
++                      'manifestSha256':resource['manifestSha256']}
++    return materials,densities,{'pack':pack,'materials':report}
+diff --git a/tools/map-variety-pipeline/receipt.py b/tools/map-variety-pipeline/receipt.py
+index 6e1a7e24..ae08e945 100644
+--- a/tools/map-variety-pipeline/receipt.py
++++ b/tools/map-variety-pipeline/receipt.py
+@@ -11,6 +11,7 @@ import math
+ from pathlib import Path
+ import re
+ import struct
++import sys
+ 
+ 
+ ROOT = Path(__file__).resolve().parents[2]
+@@ -39,6 +40,12 @@ def checked(relative, expected):
+     return contents
+ 
+ 
++def blend_header(raw):
++    """Recognize Blender plain or Blender-Zstd saved masters (reopen proves full data)."""
++    offset=0 if raw.startswith(b'BLENDER') else raw[:32].find(b'BLENDER') if raw[:4]==b'\x28\xb5\x2f\xfd' else -1
++    return offset>=0 and len(raw)>64 and raw[offset+9:offset+12].isdigit()
++
++
+ def glb_parts(raw):
+     if len(raw) < 20 or raw[:4] != b'glTF' or struct.unpack_from('<II', raw, 4) != (2, len(raw)):
+         raise ValueError('Invalid GLB header')
+@@ -175,6 +182,8 @@ def inspect_art(raw, bindings, cap):
+ 
+ 
+ def verify(candidate, built=False):
++    if candidate.get('schemaVersion') == 2:
++        return verify_pack(candidate, built)
+     if candidate.get('schemaVersion') != 1 or not candidate.get('maps'):
+         raise ValueError('Expected nonempty map-variety candidate v1')
+     manifest_bytes = checked(candidate['moth']['manifest'], candidate['moth']['sha256'])
+@@ -228,7 +237,7 @@ def verify(candidate, built=False):
+             if art['maxPrimitives'] < 1 or art['maxPrimitives'] > 128:
+                 raise ValueError('Unbounded art primitive budget: ' + ident)
+             blend = checked(art['blend'], art['blendSha256'])
+-            if not blend.startswith(b'BLENDER') or len(blend) < 12 or blend[9:12].isdigit() is False:
++            if not blend_header(blend):
+                 raise ValueError('Not a Blender master file: ' + art['blend'])
+             glb = checked(art['glb'], art['glbSha256'])
+             inspection = inspect_art(glb, bindings, art['maxPrimitives'])
+@@ -254,6 +263,93 @@ def verify(candidate, built=False):
+             'maps': reports, 'nativeAcceptance': 'pending'}
+ 
+ 
++def verify_pack(candidate, built=False):
++    """Actual v2 linear material pack plus additive v3 overlay, never legacy aliases."""
++    sys.path.insert(0,str(Path(__file__).parent))
++    from material_pack import load_pack,linear_rgba,srgb_png
++    overlay = candidate['moth']['manifest']
++    checked(overlay,candidate['moth']['sha256'])
++    registry,pack_hashes=load_pack(ROOT,overlay)
++    if pack_hashes['overlaySha256']!=candidate['moth']['sha256']:
++        raise ValueError('Overlay manifest identity mismatch')
++    if not candidate.get('maps'):raise ValueError('No maps in actual pack candidate')
++    reports=[]
++    for map_data in candidate['maps']:
++        authority=map_data['authority']
++        data=json.loads(checked(authority['path'],authority['sha256']))
++        if data['id']!=map_data['id'] or data['geometryHash']!=authority['geometryHash']:
++            raise ValueError('Revised authority mismatch')
++        bindings=map_data['materials']
++        if not bindings or len(bindings)>64:raise ValueError('Unbounded reviewed material registry')
++        for name,binding in bindings.items():
++            if binding['role']=='preserve':
++                if binding.get('resource') or binding.get('normal'):
++                    raise ValueError('Preserved material includes Moth input: '+name)
++                continue
++            if binding['role'] not in ('surface','team') or not isinstance(binding.get('normal'),bool):
++                raise ValueError('Unreviewed Moth binding '+name)
++            if binding['role']=='team' and binding.get('teamColorSource')!='COLOR_0':
++                raise ValueError('Team binding needs COLOR_0')
++            resource=registry[binding['resource']]
++            if binding.get('tileMeters')!=resource['tileMeters']:
++                raise ValueError('Moth density mismatch: '+name)
++        entry={'id':map_data['id'],'geometryHash':data['geometryHash'],
++               'mothOverlaySha256':pack_hashes['overlaySha256'],
++               'reviewedMaterials':len(bindings),'built':False}
++        if built:
++            art=map_data['art']
++            master=checked(art['blend'],art['blendSha256'])
++            glb=checked(art['glb'],art['glbSha256'])
++            if not blend_header(master):
++                raise ValueError('Missing actual Blender master')
++            if art['maxPrimitives']<1 or art['maxPrimitives']>128:
++                raise ValueError('Invalid primitive cap')
++            inspection=inspect_art(glb,{name:{'role':b['role'],'normal':b.get('normal',False)}
++                                        for name,b in bindings.items()},art['maxPrimitives'])
++            doc,blob=glb_parts(glb)
++            lineage=json.loads(checked(art['lineage'],art['lineageSha256']))
++            if lineage.get('glbSha256')!=art['glbSha256'] or lineage.get('geometryHash')!=data['geometryHash'] or lineage.get('pack')!=pack_hashes:
++                raise ValueError('Source/packed lineage identity mismatch')
++            if set(lineage['materialLineage'])!={name for name,b in bindings.items() if b['role']!='preserve'}:
++                raise ValueError('Source/packed lineage coverage mismatch')
++            def image_bytes(slot):
++                textures=doc['textures']
++                if not isinstance(slot,dict) or type(slot.get('index')) is not int or not 0<=slot['index']<len(textures):
++                    raise ValueError('Invalid PBR texture index')
++                index=textures[slot['index']]['source']
++                view=doc['bufferViews'][doc['images'][index]['bufferView']]
++                at=view.get('byteOffset',0)
++                return blob[at:at+view['byteLength']]
++            for mat in doc['materials']:
++                name=mat['name']
++                binding=bindings[name]
++                if binding['role']=='preserve':continue
++                resource=registry[binding['resource']]['channels']
++                color=image_bytes(mat['pbrMetallicRoughness']['baseColorTexture'])
++                expected=srgb_png(resource['albedo']['path'].read_bytes())
++                normal=image_bytes(mat['normalTexture']) if binding['normal'] else None
++                if color!=expected or binding['normal'] and digest(normal)!=resource['normal']['sha256']:
++                    raise ValueError('Actual Moth color/normal GLB bytes mismatch: '+name)
++                packed=image_bytes(mat['pbrMetallicRoughness']['metallicRoughnessTexture'])
++                w,h,source=linear_rgba(resource['roughness']['path'].read_bytes())
++                ew,eh,output=linear_rgba(packed)
++                if (w,h)!=(ew,eh) or any(abs(source[i]-output[i+1])>1 for i in range(0,len(source),4)):
++                    raise ValueError('Moth packed roughness differs: '+name)
++                evidence=lineage['materialLineage'][name]
++                if (evidence['sourceAlbedoSha256']!=resource['albedo']['sha256'] or
++                    evidence['embeddedSrgbAlbedoSha256']!=digest(color) or
++                    evidence['normalSourceAndEmbeddedSha256']!=(digest(normal) if binding['normal'] else None) or
++                    evidence['sourceRoughnessSha256']!=resource['roughness']['sha256'] or
++                    evidence['embeddedPackedRoughnessSha256']!=digest(packed)):
++                    raise ValueError('Builder report differs from independently resolved GLB bytes: '+name)
++            entry.update({'built':True,'blendBytes':len(master),'glbBytes':len(glb),
++                          'primitives':inspection['primitives'],'lineageSha256':art['lineageSha256'],
++                          'inspectionScope':'actual decoded source-to-GLB channels; native gameplay review separate'})
++        reports.append(entry)
++    return {'kind':'actual-Moth-pack-source-and-export-receipt','pack':pack_hashes,'maps':reports,
++            'nativeAcceptance':'pending hosted journeys and visual signoff'}
++
++
+ if __name__ == '__main__':
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('candidate', help='Repository-relative candidate JSON')
+diff --git a/tools/map-variety-pipeline/test_blender_kit_source.py b/tools/map-variety-pipeline/test_blender_kit_source.py
+index d0c1d410..4e30e1b2 100644
+--- a/tools/map-variety-pipeline/test_blender_kit_source.py
++++ b/tools/map-variety-pipeline/test_blender_kit_source.py
+@@ -31,6 +31,24 @@ class SourceKitTests(unittest.TestCase):
+         self.assertEqual(len(faces), 82)
+         self.assertGreater(max(v[2] for v in vertices), 4.1)
+         self.assertEqual(len({tuple(round(n, 3) for n in v) for v in vertices}), 84)
++        def cross(a,b):return (a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0])
++        def dot(a,b):return sum(n*m for n,m in zip(a,b))
++        def sub(a,b):return tuple(n-m for n,m in zip(a,b))
++        signed_volume=0
++        for face in faces:
++            for i in range(1,len(face)-1):
++                a,b,c=(vertices[j] for j in (face[0],face[i],face[i+1]))
++                signed_volume += dot(a,cross(b,c))/6
++        expected=math.pi*(2.2**2-2**2)*.3/2
++        self.assertAlmostEqual(signed_volume, expected, delta=expected*.02)
++        # Fourth face of the first segment is the outer arc, which must face
++        # radially away from the annulus center rather than be hidden by cull.
++        outer=faces[3]
++        a,b,c=(vertices[j] for j in outer[:3])
++        normal=cross(sub(b,a),sub(c,a))
++        radial=(sum(vertices[j][0] for j in outer)/4,0,
++                sum(vertices[j][2]-2 for j in outer)/4)
++        self.assertGreater(dot(normal,radial),0)
+ 
+     def intersects_portal(self, x, z):
+         """Horizontal view ray at fixed X/Z against real face triangles."""
+diff --git a/tools/map-variety-pipeline/test_material_pack.py b/tools/map-variety-pipeline/test_material_pack.py
+new file mode 100644
+index 00000000..375d1035
+--- /dev/null
++++ b/tools/map-variety-pipeline/test_material_pack.py
+@@ -0,0 +1,34 @@
++"""Linear Moth bytes -> glTF sRGB bytes -> shader-linear round-trip proof."""
++import importlib.util
++from pathlib import Path
++import struct
++import unittest
++import zlib
++
++SPEC=importlib.util.spec_from_file_location('material_pack',Path(__file__).with_name('material_pack.py'))
++pack=importlib.util.module_from_spec(SPEC)
++SPEC.loader.exec_module(pack)
++
++
++def png(pixels):
++    def chunk(kind,body):return struct.pack('>I',len(body))+kind+body+struct.pack('>I',zlib.crc32(kind+body))
++    header=struct.pack('>IIBBBBB',len(pixels)//4,1,8,6,0,0,0)
++    return b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',header)+chunk(b'IDAT',zlib.compress(b'\0'+pixels))+chunk(b'IEND',b'')
++
++
++class PackTests(unittest.TestCase):
++    def test_true_linear_to_srgb_to_native_linear(self):
++        source=bytes([0,64,128,255,64,128,192,123,128,192,255,0])
++        width,height,output=pack.linear_rgba(pack.srgb_png(png(source)))
++        self.assertEqual((width,height),(3,1))
++        self.assertNotEqual(output[:3],source[:3])
++        for index,value in enumerate(source):
++            if index%4==3:
++                self.assertEqual(output[index],value)
++            else:
++                srgb=output[index]/255
++                linear=srgb/12.92 if srgb<=.04045 else ((srgb+.055)/1.055)**2.4
++                self.assertLessEqual(abs(linear-value/255),.004)
++
++
++if __name__=='__main__':unittest.main()
+diff --git a/tools/map-variety-pipeline/test_receipt.py b/tools/map-variety-pipeline/test_receipt.py
+index 977ad31d..0eac702b 100644
+--- a/tools/map-variety-pipeline/test_receipt.py
++++ b/tools/map-variety-pipeline/test_receipt.py
+@@ -43,6 +43,18 @@ def glb_doc(*, color=True, normal=True, invalid_index=False):
+ 
+ 
+ class ReceiptTests(unittest.TestCase):
++    def test_actual_pack_revision_rejects_wrong_density_and_glb_hash(self):
++        path=receipt.ROOT/'tools/godot-multiplayer/new-maps/gravemill-foundry/revision4/pack-candidate.json'
++        if not path.is_file():self.skipTest('Foundry revision not staged')
++        candidate=json.loads(path.read_text())
++        self.assertEqual(receipt.verify(candidate)['maps'][0]['geometryHash'],candidate['maps'][0]['authority']['geometryHash'])
++        key=next(name for name,b in candidate['maps'][0]['materials'].items() if b['role']=='surface')
++        candidate['maps'][0]['materials'][key]['tileMeters']=9
++        with self.assertRaisesRegex(ValueError,'density mismatch'):receipt.verify(candidate)
++        candidate=json.loads(path.read_text())
++        candidate['maps'][0]['art']['glbSha256']='0'*64
++        with self.assertRaisesRegex(ValueError,'Hash mismatch'):receipt.verify(candidate,True)
++
+     def test_texture_slots_resolve_to_real_embedded_bytes(self):
+         binding = {'stone': {'role': 'surface', 'normal': 'rock'}}
+         report = receipt.inspect_art(glb_doc(), binding, 4)
+@@ -70,7 +82,7 @@ class ReceiptTests(unittest.TestCase):
+                 mh = put('manifest.json', json.dumps(manifest).encode())
+                 authority = {'id': 'example', 'geometryHash': 'a'*64}
+                 ah = put('map.json', json.dumps(authority).encode())
+-                bh = put('example.blend', b'BLENDER-v450' + b'editable geometry')
++                bh = put('example.blend', b'BLENDER-v450' + b'editable geometry'*4)
+                 gh = put('example.glb', glb_doc())
+                 report = {'id': 'example', 'geometryHash': 'a'*64, 'mothManifestSha256': mh, 'glbSha256': gh,
+                           'materials': {'stone': {'sourceColorSha256': color, 'sourceNormalSha256': normal,
+diff --git a/tools/map-variety-pipeline/test_receipt_pack_normals.py b/tools/map-variety-pipeline/test_receipt_pack_normals.py
+new file mode 100644
+index 00000000..b3709154
+--- /dev/null
++++ b/tools/map-variety-pipeline/test_receipt_pack_normals.py
+@@ -0,0 +1,61 @@
++"""Full v2 built receipt: real PNG channels with normals enabled AND disabled."""
++import json
++from pathlib import Path
++import struct
++import tempfile
++import unittest
++from unittest.mock import patch
++import receipt
++import material_pack
++from test_material_pack import png
++from test_receipt import glb_doc
++
++def encode(doc,blob):
++    text=json.dumps(doc).encode();text+=b' '*(-len(text)%4);blob+=b'\0'*(-len(blob)%4)
++    return b'glTF'+struct.pack('<II',2,28+len(text)+len(blob))+struct.pack('<I4s',len(text),b'JSON')+text+struct.pack('<I4s',len(blob),b'BIN\0')+blob
++
++class OptionalNormals(unittest.TestCase):
++    def test_built_enabled_disabled_and_false_lineage(self):
++        for enabled in (True,False):
++            with self.subTest(enabled=enabled),tempfile.TemporaryDirectory(dir='/tmp/opencode') as tmp:
++                root=Path(tmp)
++                def put(name,raw):
++                    (root/name).write_bytes(raw);return receipt.digest(raw)
++                linear=png(bytes([64,128,192,255]));color=material_pack.srgb_png(linear)
++                normal=png(bytes([128,128,255,255]));rough=png(bytes([128,128,128,255]))
++                resources={'stone':{'channels':{role:{'path':root/(role+'.png'),'sha256':put(role+'.png',raw)} for role,raw in [('albedo',linear),('normal',normal),('roughness',rough)]},'tileMeters':2}}
++                overlay=put('manifest.json',b'checked overlay');hashes={'overlaySha256':overlay,'baseSha256':'base'}
++                doc,_=receipt.glb_parts(glb_doc(normal=enabled));blob=bytes(256)
++                doc['images']=[];doc['textures']=[];doc['bufferViews']=doc['bufferViews'][:1]
++                for raw in (color,normal,rough):
++                    doc['bufferViews'].append({'buffer':0,'byteOffset':len(blob),'byteLength':len(raw)})
++                    doc['images'].append({'bufferView':len(doc['bufferViews'])-1,'mimeType':'image/png'})
++                    doc['textures'].append({'source':len(doc['images'])-1});blob+=raw
++                doc['buffers']=[{'byteLength':len(blob)}]
++                doc['materials'][0]['pbrMetallicRoughness']['metallicRoughnessTexture']={'index':2}
++                gh=put('art.glb',encode(doc,blob));bh=put('master.blend',b'BLENDER-v450'+b'fixture'*20)
++                ah=put('authority.json',json.dumps({'id':'fixture','geometryHash':'g'}).encode())
++                evidence={'sourceAlbedoSha256':receipt.digest(linear),'embeddedSrgbAlbedoSha256':receipt.digest(color),
++                    'normalSourceAndEmbeddedSha256':receipt.digest(normal) if enabled else None,
++                    'sourceRoughnessSha256':receipt.digest(rough),'embeddedPackedRoughnessSha256':receipt.digest(rough)}
++                lineage={'glbSha256':gh,'geometryHash':'g','pack':hashes,'materialLineage':{'stone':evidence}}
++                lh=put('lineage.json',json.dumps(lineage).encode())
++                c={'schemaVersion':2,'moth':{'manifest':'manifest.json','sha256':overlay},'maps':[{'id':'fixture',
++                    'authority':{'path':'authority.json','sha256':ah,'geometryHash':'g'},
++                    'materials':{'stone':{'role':'surface','normal':enabled,'resource':'stone','tileMeters':2}},
++                    'art':{'blend':'master.blend','blendSha256':bh,'glb':'art.glb','glbSha256':gh,'lineage':'lineage.json','lineageSha256':lh,'maxPrimitives':4}}]}
++                with patch.object(receipt,'ROOT',root),patch.object(material_pack,'load_pack',return_value=(resources,hashes)):
++                    self.assertTrue(receipt.verify(c,True)['maps'][0]['built'])
++                    if enabled:
++                        resources['stone']['channels']['normal']['sha256']='0'*64
++                        with self.assertRaisesRegex(ValueError,'color/normal GLB bytes mismatch'):receipt.verify(c,True)
++                        resources['stone']['channels']['normal']['sha256']=receipt.digest(normal)
++                    evidence['normalSourceAndEmbeddedSha256']='forged'
++                    c['maps'][0]['art']['lineageSha256']=put('lineage.json',json.dumps(lineage).encode())
++                    with self.assertRaisesRegex(ValueError,'report differs'):receipt.verify(c,True)
++                    evidence['normalSourceAndEmbeddedSha256']=receipt.digest(normal) if enabled else None
++                    c['maps'][0]['art']['lineageSha256']=put('lineage.json',json.dumps(lineage).encode())
++                    c['maps'][0]['materials']['stone']['normal']=not enabled
++                    with self.assertRaises(ValueError):receipt.verify(c,True)
++
++if __name__=='__main__':unittest.main()

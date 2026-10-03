@@ -1,6 +1,107 @@
 # New Moth resources and Blender-authored map variety
 
+## Active production — coastal T
+
+Shared-source prerequisite bundle `ef1692b5` is parent-integrated as **`bce5b834`**.
+All eight files exactly match the reviewed S support; parent passed seven shared
+tests plus six coastal adapter tests, with one expected R4-artifact-dependent skip.
+Rejected R4 map artifacts were not integrated.
+
+**`MOTH-BLENDER-20261003-T` is now the sole active heavy grant**, Sol
+`ses_efd55bb5cffeJRWNA4xZq8O6cE`, foundation `bce5b834` in a new isolated worktree.
+Scope: actual Abyssal then Stormglass Blender production, packed-master reopen,
+exported geometry/material validation, staged native physics/runtime integration,
+matched before/after screenshots and explicit release. Global triangles remain
+advisory. No package promotion/export or full release matrix is authorized.
+Other agents remain source/artifact-only. T requires bounded owned process groups,
+timestamped logs, preserved attempts and three empty audits before release.
+
+## Latest corrective delivery — Foundry R5 / S released
+
+Astra delivered optional-normal receipt fix `77d3d16c` and corrective production
+`4a2f1201`, with R4 evidence unchanged. **S released at
+`2026-10-03T18:20:11.138292Z`**. Parent inspected three timestamped empty audits
+covering 43 recorded process groups, then independently confirmed no surviving
+members and lock availability. The unrelated environment viewer stays untouched.
+That released slot is now assigned to coastal T as recorded above.
+
+**New gallery:** <http://100.125.104.79:8796/foundry-r5/> — 22 original 1280×720
+native PNGs, 11 genuine accepted-runtime-finish versus staged-R5 pairs. All 33
+gallery HTTP/hash checks passed. Parent inspected overview, furnace, cooling,
+tipple and crusher views. This is a corrective candidate, not public promotion.
+
+Worker evidence reports 87,566 actual triangles / 16 batches / 12,394,520 bytes,
+270 editable source parts / 30 packed images and fresh master reopen. All 270
+components are matched against actual exported triangles, all 62 drums checked
+for outward faces/normals, 3,849 native capsule samples and eight targeted rays
+pass, and accepted orange survives staged weather/dressing lifecycle checks.
+Software-renderer static samples are 167–315 ms/frame, median 214 ms on llvmpipe;
+these are not dedicated-GPU or hosted gameplay performance acceptance.
+
+Independent Astra `ses_efd0e4deaffeke8j2rdXdxtbbn` is reviewing R5 artifacts and
+collision/runtime evidence. Sol `ses_efcf99baaffe4NRqQHq00WUHeW` is preparing the
+reviewed shared-source prerequisite bundle separately, avoiding integration of
+rejected R4 art. R5 remains unmerged during review. Coastal production can follow
+shared dependency integration under a fresh serial grant; botanical's three
+remaining source corrections continue with its Astra owner.
+
+## Latest production checkpoint — Foundry R rejected; Astra S rebuilding
+
+R owner delivered **`6ff4079e`** and explicitly released. Parent inspected the
+release receipt's three empty process scans and available locks, plus several
+actual Blender/native images. The receipt does not enumerate owned process-group
+IDs or audit timestamps. **S is now the sole active heavy grant**; references to
+R's scope below describe its completed grant.
+
+**Screenshots:** <http://100.125.104.79:8796/foundry-r4/> — 22 original PNGs
+(eight same-camera Blender base/candidate pairs and six native candidate stills).
+Gallery owner verified 30 HTTP/hash checks. Independent review rejected R4 for
+misplaced structures, inward drums and art/collision mismatches. The gallery now
+explicitly labels it **REJECTED WIP**, with a separate dated review record; 26 new
+HTTP checks confirm original PNGs, manifest and producer report remain unchanged.
+The Blender before pairs use new materials in both frames (geometry-only comparison).
+
+Delivered artifacts: editable packed master (276 source objects / 30 images),
+GLB with 111,454 triangles / 16 batches / 13,363,544 bytes, exact material encoding
+receipt, staged authority, native import and 1,026 grounded nav probes / six bunker
+contacts. The GLB exceeds its 7 MB design target; no budget exception or hosted
+six-mode acceptance has been granted. Worker commit remains **unmerged** following
+independent Astra review `ses_efd30e1f6ffeLbhHTPoh266kZW`. Full findings and positive
+material-lineage evidence: `map-variety/FOUNDRY_R4_REVIEW.md`.
+
+Astra reviewer now owns corrective implementation and actual revision-5 rebuilding
+under **`MOTH-BLENDER-20261003-S`**. R4 artifacts stay immutable; S requires actual
+exported geometry/authority probes, preserved luminaires, fresh screenshots and
+timestamped owned-process audits. Coastal Sol's adapter/portable-master follow-ups
+`e7895d7f` and `b81730f7` are reviewed and integrated as `ba6bc7f8` and `ca17808f`.
+Parent reproduced **49 source checks** (14 Node / 35 Python). Actual adapter/Blender
+execution remains pending; the 150,000-triangle target records overages for review,
+not automatic acceptance. Botanical Astra repairs continue source-only.
+
 ## User directive and order of work
+
+**Triangle-count guidance:** the user explicitly accepts more triangles. Treat
+150,000-triangle totals as advisory design targets, not automatic rejection.
+Retain useful visual detail and judge actual rendering, loading, memory and
+gameplay evidence. Continue reporting pre-modifier estimates separately from
+evaluated/exported totals. Geometry validity, material correctness, collision
+agreement and technical mesh batching remain required; do not infer hardware
+performance from source counts. S owner has received this guidance.
+
+**Botanical repair delivery:** Astra `f6687255` / `4e2b83bc` reports closure of
+the 13 source findings, 25 Node / 16 Python repair passes, standalone Kit checks,
+all generators and plans. Pre-modifier complete estimates are Helix 147,026,
+Parallax 143,782, Vesper 40,688 triangles. Independent reviewer
+`ses_efd0e4deaffeke8j2rdXdxtbbn` is verifying the implementation before merge.
+Global triangle gates are now advisory in follow-up `dd05f50c`. Parent reviewed
+the diff and reproduced both focused policy/export regressions: a 160,001-triangle
+fixture reports a 10,001-triangle overage without failing for its total, while
+invalid counts and malformed triangle counts reject. The independent review now
+includes this follow-up and has now finished: most repairs are supported, but
+Parallax floor-union composition, the duplicated Vesper terrace top and empty/
+malformed GLB acceptance still block approval. Original Astra repair owner is
+correcting those three; full findings are in `map-variety/BOTANICAL_SOURCE_REVIEW.md`.
+The candidate remains source-only and unmerged; triangle counts are not blockers.
 
 The user explicitly requested Flash/Sol subagents to populate the newer maps with
 Moth assets, reduce monotony/repetition, and add varied terrain, structures and
@@ -15,13 +116,22 @@ Observatory, Vesper Viaduct, Abyssal Pressureworks and Stormglass Causeway.
 
 ## Owners and completed preparation
 
+**User-directed escalation rule:** when Flash implementation fails review, resume
+the repair with Sol or Astra rather than returning corrective implementation to
+Flash. Both Flash map workers have now stopped and preserved their partial edits.
+Astra reviewer `ses_efd55fd04ffedSQ6q14ztgmqaa` owns botanical/urban repairs in a
+new isolated worktree from `0351e1d1`; Sol reviewer
+`ses_efd55bb5cffeJRWNA4xZq8O6cE` owns coastal repairs in a new isolated worktree
+from `7a7ce64e`. Partial Flash edits are unverified reference material, not accepted
+fixes. These repair assignments are source-only; R retains the sole heavy slot.
+
 Source foundation: `55edd9f2`. All work is isolated from the live P candidate.
 
 | Work | Agent/session | Current responsibility |
 |---|---|---|
 | New Moth resources + mothbake | Astra `ses_efdbb8a90ffeBrpRZAFfraUSXv` | Complete through `9dc08e53`, parent-integrated; generic tool `69c62d7c`; base + multi-engine overlay reviewed for Blender application |
-| Abyssal/coastal variety | Flash `ses_efdbb1dfeffebxsWuzs9jbjzJv` | Active source implementation: Abyssal/Stormglass versioned Blender builders, composition and authority-safe layout revisions |
-| Botanical/urban variety | Flash `ses_efdbaaa61ffesiVbXI7pmlS04Q` | Active source implementation: Helix/Parallax/Vesper versioned Blender builders and matching terrain/layout authority |
+| Abyssal/coastal variety | Sol `ses_efd55bb5cffeJRWNA4xZq8O6cE` | Corrected source `42e6cab4`, parent-reviewed and merged as `18201a06`; 46 checks reproduced; queued for adapter integration and serial Blender production |
+| Botanical/urban variety | Astra `ses_efd55fd04ffedSQ6q14ztgmqaa` | Corrective source implementation after failed Flash delivery; original Flash worker stopped |
 | Blender production integration + Foundry | Sol `ses_efdba38e9ffeManqAN9zWiJ3va` | Sole heavy owner R: actual material adapter/Blender toolkit execution, Foundry revision-4 modeling, masters/GLB/reopen/render checks |
 
 Flash/Sol application has now been assigned after Astra's resource delivery and
@@ -29,6 +139,48 @@ parent review. Foundation is `190fa2a2`, including the resource merge and Q repo
 Flash lanes author source only; Sol executes Blender serially under R, starting
 with Foundry. The other five maps require later serial execution of their builders.
 No revised map master, export or rendered acceptance is claimed at this checkpoint.
+
+### Source-delivery review checkpoint
+
+- Botanical/urban source delivered as `8cff03b0`, `ddf8c70d`, `0351e1d1`, with
+  18 reported Node passes and a Python source suite. Independent Astra review
+  `ses_efd55fd04ffedSQ6q14ztgmqaa` reproduced the Node passes but **rejected all
+  three revisions** for deterministic build failures, misplaced/omitted geometry,
+  invalid traversal probes, a covered lightwell and inconsistent export contracts.
+  Complete corrective scope: `map-variety/BOTANICAL_SOURCE_REVIEW.md`. Original
+  Astra reviewer now owns corrective implementation; Sol R owns the inherited
+  Kit rib-winding fix. The original Flash owner has stopped.
+- Coastal initial source `6675a2ce` was rejected by parent for incorrect coordinate
+  conversion, invalid mesh faces/arch dimensions and incomplete full-map assembly.
+  Corrective `7a7ce64e` reports full authority composition and 37 source checks.
+  Independent Sol review `ses_efd55bb5cffeJRWNA4xZq8O6cE` reproduced all 37 checks
+  but found further blockers: 61 vertices from 25 Stormglass parts enter road
+  polygons; terrain/art duplicates include all 137 terrain surfaces; 21 labels
+  are created after batching and omitted from GLB selection; Abyssal top caps
+  face downward and nine original reef forms are omitted. These findings were
+  repaired by Sol in `42e6cab4`, parent-reviewed and merged as **`18201a06`**.
+  Parent reproduced **14 Node + 29 Python + three shared-Kit source checks**, and
+  both authority generation `--check` commands. Low scenic meshes are checked
+  against every road triangle with edge-crossing tests and a four-metre margin;
+  terrain/art duplicate faces are removed, signs precede batching, top caps face
+  outward, and original reefs/detail are restored. Source acceptance is conditional
+  on later actual Blender/adapter/export verification; no native map promotion.
+  Botanical/urban source remains unmerged during Astra repair.
+- R continues Foundry production. The shared adapter must preserve original
+  linear provider images while producing correctly sRGB-encoded GLB base-color
+  images; botanical wording prohibiting all byte re-encoding is not acceptance
+  of incorrectly encoded exports.
+- Coastal next-stage obligations include real material-adapter compatibility,
+  exported sRGB pixel verification, total evaluated geometry/primitive budgets,
+  master/reopened scene visibility, exported signage and player-height visual
+  review. Recording image hashes or pre-modifier estimates is not verification of
+  those properties. R's grant remains Foundry-scoped; coastal execution requires
+  the next explicit serial grant after release.
+- Movement package reconciliation `4cd806fa` passes 111/113 parent checks; two
+  initially rejected this newly added authoring-resource inventory. Follow-up
+  `a83f73f4` pins all 886 authoring files to `9dc08e53` and excludes them from
+  runtime packaging. Parent passed **116/116 source tests**, including committed-
+  Git seven-unit strict closure. This does not treat revised maps as produced.
 
 ## Reviewed resource delivery and real concurrency
 

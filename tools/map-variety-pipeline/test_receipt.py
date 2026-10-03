@@ -43,6 +43,18 @@ def glb_doc(*, color=True, normal=True, invalid_index=False):
 
 
 class ReceiptTests(unittest.TestCase):
+    def test_actual_pack_revision_rejects_wrong_density_and_glb_hash(self):
+        path=receipt.ROOT/'tools/godot-multiplayer/new-maps/gravemill-foundry/revision4/pack-candidate.json'
+        if not path.is_file():self.skipTest('Foundry revision not staged')
+        candidate=json.loads(path.read_text())
+        self.assertEqual(receipt.verify(candidate)['maps'][0]['geometryHash'],candidate['maps'][0]['authority']['geometryHash'])
+        key=next(name for name,b in candidate['maps'][0]['materials'].items() if b['role']=='surface')
+        candidate['maps'][0]['materials'][key]['tileMeters']=9
+        with self.assertRaisesRegex(ValueError,'density mismatch'):receipt.verify(candidate)
+        candidate=json.loads(path.read_text())
+        candidate['maps'][0]['art']['glbSha256']='0'*64
+        with self.assertRaisesRegex(ValueError,'Hash mismatch'):receipt.verify(candidate,True)
+
     def test_texture_slots_resolve_to_real_embedded_bytes(self):
         binding = {'stone': {'role': 'surface', 'normal': 'rock'}}
         report = receipt.inspect_art(glb_doc(), binding, 4)
@@ -70,7 +82,7 @@ class ReceiptTests(unittest.TestCase):
                 mh = put('manifest.json', json.dumps(manifest).encode())
                 authority = {'id': 'example', 'geometryHash': 'a'*64}
                 ah = put('map.json', json.dumps(authority).encode())
-                bh = put('example.blend', b'BLENDER-v450' + b'editable geometry')
+                bh = put('example.blend', b'BLENDER-v450' + b'editable geometry'*4)
                 gh = put('example.glb', glb_doc())
                 report = {'id': 'example', 'geometryHash': 'a'*64, 'mothManifestSha256': mh, 'glbSha256': gh,
                           'materials': {'stone': {'sourceColorSha256': color, 'sourceNormalSha256': normal,

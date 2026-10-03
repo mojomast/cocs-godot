@@ -1,0 +1,29 @@
+{
+  "time": "2026-10-03T18:00:57.713421+00:00",
+  "members": [
+    {
+      "pid": 162931,
+      "ppid": 92828,
+      "pgid": 162931,
+      "startTicks": 623353487,
+      "comm": "xvfb-run",
+      "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --rendering-method gl_compatibility --audio-driver Dummy --resolution 1280x720 --script res://tests/new_maps/gravemill_foundry/revision5/capture.gd "
+    },
+    {
+      "pid": 162941,
+      "ppid": 162931,
+      "pgid": 162931,
+      "startTicks": 623353488,
+      "comm": "Xvfb",
+      "argv": "Xvfb :101 -screen 0 1280x720x24 -nolisten tcp -auth /tmp/xvfb-run.f3WxRC/Xauthority "
+    },
+    {
+      "pid": 162966,
+      "ppid": 162931,
+      "pgid": 162931,
+      "startTicks": 623353489,
+      "comm": "Godot_v4.5.2-st",
+      "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --path godot --rendering-method gl_compatibility --audio-driver Dummy --resolution 1280x720 --script res://tests/new_maps/gravemill_foundry/revision5/capture.gd "
+    }
+  ]
+}

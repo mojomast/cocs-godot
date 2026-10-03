@@ -1,0 +1,102 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registering global classes... (2 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  33% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (31 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   3% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   6% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   9% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  12% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  15% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  18% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  21% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  25% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  28% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  31% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  34% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  37% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  40% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  43% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  46% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  50% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  53% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  56% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  59% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  62% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  65% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  68% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  71% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  75% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  78% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  81% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  84% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  87% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  90% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  93% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing pre-reimport operations...[39m[0m
+[   0% ] [90m[1mpreload_reimporting_scene[22m | Started Preparing scenes for reload (1 steps)[39m[0m
+[   0% ] [90m[1mpreload_reimporting_scene[22m | Analyzing scene [empty][39m[0m
+[  50% ] [90m[1mpreload_reimporting_scene[22m | Preparation done.[39m[0m
+[92m[ DONE ][39m [1mpreload_reimporting_scene[22m
+[0m
+[   0% ] [90m[1mreimport[22m | gravemill-foundry-r5_wet-soot-normal.png[39m[0m
+[   3% ] [90m[1mreimport[22m | gravemill-foundry-r5_wet-soot-roughness.png[39m[0m
+[   6% ] [90m[1mreimport[22m | gravemill-foundry-r5_wet-soot-albedo-srgb.png[39m[0m
+[   9% ] [90m[1mreimport[22m | gravemill-foundry-r5_lime-plaster-normal.png[39m[0m
+[  12% ] [90m[1mreimport[22m | gravemill-foundry-r5_lime-plaster-roughness.png[39m[0m
+[  15% ] [90m[1mreimport[22m | gravemill-foundry-r5_lime-plaster-albedo-srgb.png[39m[0m
+[  18% ] [90m[1mreimport[22m | gravemill-foundry-r5_aggregate-normal.png[39m[0m
+[  21% ] [90m[1mreimport[22m | gravemill-foundry-r5_aggregate-roughness.png[39m[0m
+[  25% ] [90m[1mreimport[22m | gravemill-foundry-r5_aggregate-albedo-srgb.png[39m[0m
+[  28% ] [90m[1mreimport[22m | gravemill-foundry-r5_timber-weather-normal.png[39m[0m
+[  31% ] [90m[1mreimport[22m | gravemill-foundry-r5_timber-weather-roughness.png[39m[0m
+[  34% ] [90m[1mreimport[22m | gravemill-foundry-r5_timber-weather-albedo-srgb.png[39m[0m
+[  37% ] [90m[1mreimport[22m | gravemill-foundry-r5_cast-seams-normal.png[39m[0m
+[  40% ] [90m[1mreimport[22m | gravemill-foundry-r5_cast-seams-roughness.png[39m[0m
+[  43% ] [90m[1mreimport[22m | gravemill-foundry-r5_cast-seams-albedo-srgb.png[39m[0m
+[  46% ] [90m[1mreimport[22m | gravemill-foundry-r5_iron-grate-normal.png[39m[0m
+[  50% ] [90m[1mreimport[22m | gravemill-foundry-r5_iron-grate-roughness.png[39m[0m
+[  53% ] [90m[1mreimport[22m | gravemill-foundry-r5_iron-grate-albedo-srgb.png[39m[0m
+[  56% ] [90m[1mreimport[22m | gravemill-foundry-r5_copper-heat-oxide-normal.png[39m[0m
+[  59% ] [90m[1mreimport[22m | gravemill-foundry-r5_copper-heat-oxide-roughness.png[39m[0m
+[  62% ] [90m[1mreimport[22m | gravemill-foundry-r5_copper-heat-oxide-albedo-srgb.png[39m[0m
+[  65% ] [90m[1mreimport[22m | gravemill-foundry-r5_copper-patina-normal.png[39m[0m
+[  68% ] [90m[1mreimport[22m | gravemill-foundry-r5_copper-patina-roughness.png[39m[0m
+[  71% ] [90m[1mreimport[22m | gravemill-foundry-r5_copper-patina-albedo-srgb.png[39m[0m
+[  75% ] [90m[1mreimport[22m | gravemill-foundry-r5_ribbed-steel-normal.png[39m[0m
+[  78% ] [90m[1mreimport[22m | gravemill-foundry-r5_ribbed-steel-roughness.png[39m[0m
+[  81% ] [90m[1mreimport[22m | gravemill-foundry-r5_ribbed-steel-albedo-srgb.png[39m[0m
+[  84% ] [90m[1mreimport[22m | gravemill-foundry-r5_forge-steel-normal.png[39m[0m
+[  87% ] [90m[1mreimport[22m | gravemill-foundry-r5_forge-steel-roughness.png[39m[0m
+[  90% ] [90m[1mreimport[22m | gravemill-foundry-r5_forge-steel-albedo-srgb.png[39m[0m
+[  93% ] [90m[1mreimport[22m | gravemill-foundry-r5.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  96% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (31 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m

@@ -1,0 +1,31 @@
+{
+  "art": "res://multiplayer_worlds/art/revisions/gravemill-foundry-r5.glb",
+  "errors": [],
+  "godot": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "materials": {
+    "G4 / grating": 1,
+    "G4 / ribbed": 1,
+    "G4 / timber": 1,
+    "GM / brass": 2,
+    "GM / chalk": 2,
+    "GM / cooling-floor": 1,
+    "GM / copper": 2,
+    "GM / mineral": 2,
+    "GM / orange": 1,
+    "GM / ore": 2,
+    "GM / soot": 1
+  },
+  "meshNodes": 16,
+  "texturedSurfaces": 15,
+  "triangles": 87566
+}

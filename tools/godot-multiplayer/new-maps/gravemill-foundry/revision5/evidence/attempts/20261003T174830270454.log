@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/mojo/.tmp-on-disk/cocs-map-foundry-astra-S-20261003/tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/verify.py", line 113, in <module>
+    if __name__=='__main__':verify()
+                            ~~~~~~^^
+  File "/home/mojo/.tmp-on-disk/cocs-map-foundry-astra-S-20261003/tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/verify.py", line 65, in verify
+    index,c=matches[0];used.add(index);assert c['volume']>0,(shape['id'],c['volume'])
+                                              ^^^^^^^^^^^^^
+AssertionError: ('G3.tipple.51.roof-eave.-1', -32.7445436639997)

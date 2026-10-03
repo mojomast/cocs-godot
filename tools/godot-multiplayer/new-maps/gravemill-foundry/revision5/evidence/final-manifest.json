@@ -1,0 +1,952 @@
+{
+  "time": "2026-10-03T18:25:42.652375+00:00",
+  "immutableBaseline": "6ff4079e",
+  "existingTrackedModifications": [
+    "M\ttools/map-variety-pipeline/receipt.py"
+  ],
+  "allOtherBaselineTrackedFilesUnchanged": true,
+  "stagedScope": "R5-only; shared receipt fix committed separately",
+  "files": {
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5.glb": {
+      "sha256": "237dcc9d1b339116915d824f9896e6ee7daa57b0c13bab08c58da8d51445c9c8",
+      "bytes": 12394520
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5.glb.import": {
+      "sha256": "31bfcb7810638cfbc822d1280d603d416d5c264dd4e20cb9c50e2ef24d185522",
+      "bytes": 1099
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_aggregate-albedo-srgb.png": {
+      "sha256": "3abb29a4b5da6ed3a1f229c40914a29d0de48e111bcfb2421ee36d5bcb989c05",
+      "bytes": 50761
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_aggregate-albedo-srgb.png.import": {
+      "sha256": "e77b9bb0673f429b3464bcea4b73d55cd2a8032b45cb2dcd7444a921f1a76452",
+      "bytes": 1129
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_aggregate-normal.png": {
+      "sha256": "61baadb1991cdc3ab47e1f025672c06f9e6f601c0d56552dee34da3e0f8444a4",
+      "bytes": 119069
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_aggregate-normal.png.import": {
+      "sha256": "0a2d276a33220e7ea17e793f7435dc29953d4b2f0fcc6901a706c13e3843b23e",
+      "bytes": 1113
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_aggregate-roughness.png": {
+      "sha256": "9e92173e1cf48db773511c9e60bb97ebd79d7286242c3adb7d5dae42efcf75d3",
+      "bytes": 56596
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_aggregate-roughness.png.import": {
+      "sha256": "c952e35246d855062a749720c82814633ed3482bb6190e86e15c796645921c0a",
+      "bytes": 1123
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_cast-seams-albedo-srgb.png": {
+      "sha256": "1a2bd1e1a063bb0b6d0f5c0fba268b00e6319bbb2843b351513c78e13ff4c897",
+      "bytes": 38874
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_cast-seams-albedo-srgb.png.import": {
+      "sha256": "ef7834353bed009c54ba97e772a5f53328f77cc430bb4e0258ae80df7d67acdd",
+      "bytes": 1132
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_cast-seams-normal.png": {
+      "sha256": "a65f9df057998d11ac92a24f05c5946eb794134f7cc12b9dfab035496c37a858",
+      "bytes": 101348
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_cast-seams-normal.png.import": {
+      "sha256": "19e7d0fad527bf2477630e8e654c6bcd8120f1b98f5dd129254fb0cf41d8479f",
+      "bytes": 1117
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_cast-seams-roughness.png": {
+      "sha256": "80d59d5ac1afec0341c18b88b92e29936bd6ee83c9155d1810fbdef3ae36a58f",
+      "bytes": 45802
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_cast-seams-roughness.png.import": {
+      "sha256": "9e037107222278e433ac8f4ee0b2a4ca0a7d5ce70707637bd262da739606f7e5",
+      "bytes": 1126
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_copper-heat-oxide-albedo-srgb.png": {
+      "sha256": "4548638fe81233e2252aee8dbd3b4abda1783a4d8fa91c6f1fb748efe7e1f32a",
+      "bytes": 107940
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_copper-heat-oxide-albedo-srgb.png.import": {
+      "sha256": "7f77518332771c9aec57a124a0f6fce77e4dabf2b1997c133e1ec3394ce075f3",
+      "bytes": 1153
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_copper-heat-oxide-normal.png": {
+      "sha256": "0ab51bd3acd084e63b9461946a0877cc6b3d9133741b8237f6ae0565b2d850f3",
+      "bytes": 206566
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_copper-heat-oxide-normal.png.import": {
+      "sha256": "1d1d8ebca4d1923720002b212f131fe9a2bda7afa78cd09b13c5cd5b74d7744a",
+      "bytes": 1138
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_copper-heat-oxide-roughness.png": {
+      "sha256": "ea2bdc71963b13deb3a0cc6049b7675c4d83322d0f5ddc1611c691281c1fe8b4",
+      "bytes": 85855
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_copper-heat-oxide-roughness.png.import": {
+      "sha256": "29a761ecf68251baea57fd0f338e275b80822521b1b174a52fe255b0522d215b",
+      "bytes": 1147
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_copper-patina-albedo-srgb.png": {
+      "sha256": "df08158f6dfced7e3e823f32b1a796ece7a2fed8f763505c6f43980cd82516e2",
+      "bytes": 103983
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_copper-patina-albedo-srgb.png.import": {
+      "sha256": "20267860e5ca05c0e74471bdcd11da161891934f7b7814a0b5ee64c44e70504c",
+      "bytes": 1141
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_copper-patina-normal.png": {
+      "sha256": "7b2ec1c6a0837fdbbe67ed0779e2d39ad3637b405ed0a5186ac21b94db2dab9c",
+      "bytes": 261676
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_copper-patina-normal.png.import": {
+      "sha256": "867c88018c5f4806ccde864e0ad6a90bd310eb353044e028aa2d5bb36fabb7a3",
+      "bytes": 1126
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_copper-patina-roughness.png": {
+      "sha256": "2d9934b2c971746003f84cc364c085cf55062a49e90d548a800496a416830698",
+      "bytes": 89497
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_copper-patina-roughness.png.import": {
+      "sha256": "c37e9d46ebf7146f3b1651f6304073b50b9dc9e803880ec1d2b422389e7a829b",
+      "bytes": 1135
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_forge-steel-albedo-srgb.png": {
+      "sha256": "fb4ac5ab0718b8a72f12b3db784b07dac3648cbe3400bbe9eb78b94c796150d8",
+      "bytes": 51149
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_forge-steel-albedo-srgb.png.import": {
+      "sha256": "b957f359c337e9723b6d26ae5904e07d79e8d4cbef33e1884fe3879ed0b6d5e2",
+      "bytes": 1135
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_forge-steel-normal.png": {
+      "sha256": "8662617c557392b63c6b061f957facfd116e5b87534884060fbde87f388388e5",
+      "bytes": 201913
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_forge-steel-normal.png.import": {
+      "sha256": "99fcf5e219cbd38eee74b885737cb14016e0b5b266cbec0bf56e7423400d0ed8",
+      "bytes": 1120
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_forge-steel-roughness.png": {
+      "sha256": "71197f0755dad4574a418feeb45719a8da927557c754aa7cd35252b5d16e2f8a",
+      "bytes": 67770
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_forge-steel-roughness.png.import": {
+      "sha256": "135fe5f0d4fc2720e0253aa7c0bc6519e35702e2dc970c14604f5da38cd6055f",
+      "bytes": 1128
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_iron-grate-albedo-srgb.png": {
+      "sha256": "c1059270b8fe47495739e77c562718250f124bbc88ebf916bdd4cb936a5c95a7",
+      "bytes": 59793
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_iron-grate-albedo-srgb.png.import": {
+      "sha256": "8e4862cf2e72184a35a8031d3702ee90b6f0c45e1f9512d8ab18d5f35db79a14",
+      "bytes": 1131
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_iron-grate-normal.png": {
+      "sha256": "ec09f5e04700822fd8640563a51ca2a8aa1bc88a568ac8ed87a1f8d2afdafaf7",
+      "bytes": 425261
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_iron-grate-normal.png.import": {
+      "sha256": "2a0bd27144faa214434f489228be397522b34b28c221e0c4627f72e38b3dcfff",
+      "bytes": 1117
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_iron-grate-roughness.png": {
+      "sha256": "65e51a2a8b4f2f659182df67f41fcd223f11868739816237155e33a8d6f81ec1",
+      "bytes": 61282
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_iron-grate-roughness.png.import": {
+      "sha256": "9118d26a3bb963227922af4f2f8ea18387571b2088190178472ba1e506df56f5",
+      "bytes": 1126
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_lime-plaster-albedo-srgb.png": {
+      "sha256": "245c7716dd9f96a2903bb4c0e285e48c48117ff0d6eb336f9561e1e37c661396",
+      "bytes": 76082
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_lime-plaster-albedo-srgb.png.import": {
+      "sha256": "5542ee790340e64b64a77d540f9b59daa1494d6330f252f7a0b58a8dedfd187c",
+      "bytes": 1138
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_lime-plaster-normal.png": {
+      "sha256": "d8630b11ec0b1baaaafefe6ca867e13577511fc3e0fc45fd546aa0b8e94930ef",
+      "bytes": 167240
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_lime-plaster-normal.png.import": {
+      "sha256": "ae077f46083908b03bdc505c5802b93466630f2a6433f81f7cf48b07a592d5fd",
+      "bytes": 1122
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_lime-plaster-roughness.png": {
+      "sha256": "3a46b6b089ac7da0ca0f49f90301177513c611adef5d3a3383c119e861462b8d",
+      "bytes": 84115
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_lime-plaster-roughness.png.import": {
+      "sha256": "6e29118a02a358bedcb925cb56932a436c110abead4545011c64f737d4c6f698",
+      "bytes": 1132
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_ribbed-steel-albedo-srgb.png": {
+      "sha256": "73170007ef781b95e072a0b23a9ed108f6c0e1fe98edf0ee6626bfbf80d7afd1",
+      "bytes": 54338
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_ribbed-steel-albedo-srgb.png.import": {
+      "sha256": "178018b16a0adff39095b7fedc14611d917cd9e9e3475fdea338b6c68ec3f6a0",
+      "bytes": 1138
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_ribbed-steel-normal.png": {
+      "sha256": "8662617c557392b63c6b061f957facfd116e5b87534884060fbde87f388388e5",
+      "bytes": 201913
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_ribbed-steel-normal.png.import": {
+      "sha256": "9332a50e8a62752e18a09fa994f651aa493708f31083879ef20e67fa46f5fc51",
+      "bytes": 1123
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_ribbed-steel-roughness.png": {
+      "sha256": "5d0b1ab5ce135b12e1ea6864cd1c38f3e5792b7c4078422bf4b8f22754ef6fdf",
+      "bytes": 67136
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_ribbed-steel-roughness.png.import": {
+      "sha256": "7f25c0410b674ac08c5cf7298523c4b3f5a55591cf5a59a92de2bb31be33bc92",
+      "bytes": 1131
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_timber-weather-albedo-srgb.png": {
+      "sha256": "fb6bad65ce1a09efa1efbdbb20395056a2c3d6dd185fb30d9798b12a35065b43",
+      "bytes": 91585
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_timber-weather-albedo-srgb.png.import": {
+      "sha256": "a1cb5d2b59ae8fe6b19fd6c59baed8fa3dfd258ee6b49d312c96844b7ef4e089",
+      "bytes": 1144
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_timber-weather-normal.png": {
+      "sha256": "7a8f4b78d0c25eddb4def652c706110b27dceef69d8ff3c48f343abf41bd1a5b",
+      "bytes": 183882
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_timber-weather-normal.png.import": {
+      "sha256": "c58fa76a68cdc7c2076b00c67fc9f271d74ea9abe3b997fd14ad08f27a08cb62",
+      "bytes": 1129
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_timber-weather-roughness.png": {
+      "sha256": "1afcc0cd04efbf07b7e96e9b48314f0cc9fa4d1385cb33bc0776c8aa07b27be8",
+      "bytes": 59142
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_timber-weather-roughness.png.import": {
+      "sha256": "41e3cbce1ee2b3c4b7bd507434ce308b48a6f8b93167fc02ef9bdf082b0e19f9",
+      "bytes": 1138
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_wet-soot-albedo-srgb.png": {
+      "sha256": "6a411f9d23a6d1047f3837059d11728b8fa7f59e5b946809bf9a7ffa2f5e6701",
+      "bytes": 57695
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_wet-soot-albedo-srgb.png.import": {
+      "sha256": "cb23664ffdb998ec317da4604d2f0f5c8498057d8ff429b34759e01192c64b0e",
+      "bytes": 1125
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_wet-soot-normal.png": {
+      "sha256": "721cb3b4c8f5fd59869d86a99326ef5a0f4a6deddd98bbc78c3b56ed561fa3e1",
+      "bytes": 87738
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_wet-soot-normal.png.import": {
+      "sha256": "94546f09f16917b1dc580401c56f6d361b1ecf1d5f5891002b98cb507e1b42da",
+      "bytes": 1111
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_wet-soot-roughness.png": {
+      "sha256": "59847f77bb1a108a9075aace1ea1089a126bb7defabcc0d6fea8a4c26334eb9e",
+      "bytes": 71232
+    },
+    "godot/multiplayer_worlds/art/revisions/gravemill-foundry-r5_wet-soot-roughness.png.import": {
+      "sha256": "879e9d1a02fc27cd5b09d0c010972296c2b05d9ceb9a968e252a32ad87e2da60",
+      "bytes": 1119
+    },
+    "godot/multiplayer_worlds/generated/revisions/gravemill-foundry-r5.json": {
+      "sha256": "ce1a620bfe0e651a2172e93b359c217fd9b72cc760b8ee44e69f6412236234c5",
+      "bytes": 1145017
+    },
+    "godot/tests/new_maps/gravemill_foundry/revision5/capture-report.json": {
+      "sha256": "b38a3645d32ccb60d3543aa8aa745ffcd18f9031588e70a17bcbf0a95a075985",
+      "bytes": 69119
+    },
+    "godot/tests/new_maps/gravemill_foundry/revision5/capture.gd": {
+      "sha256": "624285a96ffc02348dba08b6c8c94a688303e4c5baa8d6b03a156861a5f134eb",
+      "bytes": 5065
+    },
+    "godot/tests/new_maps/gravemill_foundry/revision5/capture.gd.uid": {
+      "sha256": "3faa1166d671fc34188b419b4371b999ab580d8fbc2fb039d5a26751dd3e577c",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/gravemill_foundry/revision5/import-report.json": {
+      "sha256": "f215f495ebb3611ffefd66d9dfa568b0cadc0208781f60d680c61708761fccb6",
+      "bytes": 677
+    },
+    "godot/tests/new_maps/gravemill_foundry/revision5/import.gd": {
+      "sha256": "94ae6957f22b10b71fcb77ff1518c80dc7fa262c4012c355c1ef60a7a84d157c",
+      "bytes": 1807
+    },
+    "godot/tests/new_maps/gravemill_foundry/revision5/import.gd.uid": {
+      "sha256": "090063a882cb33570854bca918542fefe2b3dd5e582543e98f94e51bc6a5f5ea",
+      "bytes": 19
+    },
+    "godot/tests/new_maps/gravemill_foundry/revision5/lights.json": {
+      "sha256": "ea910e36f8a9d8f89a439bdc912fb0f4d9889dd0943dc969d590358b4423ad2b",
+      "bytes": 1158
+    },
+    "godot/tests/new_maps/gravemill_foundry/revision5/physics-report.json": {
+      "sha256": "3314022d9257da3cd0b30063c5752d2b5fd3635e58f6b86da8858f34717a8dd5",
+      "bytes": 1319
+    },
+    "godot/tests/new_maps/gravemill_foundry/revision5/physics.gd": {
+      "sha256": "93a9661c91b160af1c01f0d55d5a679617342221cff6da97292c09f05a34cdbd",
+      "bytes": 3222
+    },
+    "godot/tests/new_maps/gravemill_foundry/revision5/physics.gd.uid": {
+      "sha256": "f6ab0b07ff11fe644eca06f0a478df404cd38c033969d0efdea47eff695df5de",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/gravemill_foundry/revision5/probes.json": {
+      "sha256": "ea450efb7ea6e5fdc4eef7c62d55e376d79ec97ba41035b662c3169e54f205ed",
+      "bytes": 302019
+    },
+    "godot/tests/new_maps/gravemill_foundry/revision5/profile-lineage.json": {
+      "sha256": "5a4e6bb75bfbf81b22bef15602d37bdc399c8f0976e092dd37101a7bb6749f0f",
+      "bytes": 748
+    },
+    "godot/tests/new_maps/gravemill_foundry/revision5/profile.json": {
+      "sha256": "68ef9015ae1ef6e24e7872332188cd14ae28892e8f3e7049956f41f3bf23465c",
+      "bytes": 23481
+    },
+    "godot/tests/new_maps/gravemill_foundry/revision5/profile_schema.gd": {
+      "sha256": "03236691e988875ed5447a2a6b01b2fbcde039b8bc11aee0334cb0230639173a",
+      "bytes": 9418
+    },
+    "godot/tests/new_maps/gravemill_foundry/revision5/profile_schema.gd.uid": {
+      "sha256": "93e3cb5855fc0fe94015e69dba2239ffcb4072c5f0851b129309169dc654af40",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/gravemill_foundry/revision5/staged.gd": {
+      "sha256": "1b2ec28faa22851ab3d1e0900c905b73a6cafc9c50cd788758720131728704c7",
+      "bytes": 4005
+    },
+    "godot/tests/new_maps/gravemill_foundry/revision5/staged.gd.uid": {
+      "sha256": "ac39644fab4e7a4d2a6f1aac2179cc3249bc3850b25d1a644fa53cf9824bcd93",
+      "bytes": 19
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/.gitignore": {
+      "sha256": "af6d07ae2fbc9b3e1b6e2530ca99cf334f7c27af3996388526cd39a97e7b9257",
+      "bytes": 11
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/README.md": {
+      "sha256": "ce61146caa93f6bb9958752e055808102ff7e59a1d9434c6348979a51c551a0d",
+      "bytes": 8429
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/archive.py": {
+      "sha256": "7967fdc239f38ec59c8434ef31d40e69365fd269fc6320b5e01857fbf05be1ba",
+      "bytes": 783
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/author.py": {
+      "sha256": "12861b28c025289e652457d333b1d4300bf1beca21ee4d0f5538a1a5b307496b",
+      "bytes": 7190
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/build.mjs": {
+      "sha256": "3dc9c8c8187a433d64e805e57586bea52a1e391f19c4035999784b335cde9ca6",
+      "bytes": 1852
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/candidate.json": {
+      "sha256": "ce1a620bfe0e651a2172e93b359c217fd9b72cc760b8ee44e69f6412236234c5",
+      "bytes": 1145017
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/check.mjs": {
+      "sha256": "0125f6cb3e7cc74bf29b86f3f8b98cffc09a2eda511752d4d198f86e0024c76d",
+      "bytes": 4509
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/clean_sidecars.py": {
+      "sha256": "8d8f5901d24659cfb4c0932591b9bd8692f2f9f4da5d0b7572008cb0b797b70c",
+      "bytes": 1199
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/collect.py": {
+      "sha256": "78c02a043ff9a92c091806899ba55acbb8ce88cae8bd3a89134072d4164b4057",
+      "bytes": 7253
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/component-triangles.json": {
+      "sha256": "e2db1e95b184f7c545bbb7028f7dc511d5df3cf719bf5e7a08c1a8141d0e4a3f",
+      "bytes": 3050064
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T174351034734.json": {
+      "sha256": "4411eb9b57645868e484e08b935e1b6f665b148ab8e649f2cb87f7190548bfea",
+      "bytes": 1252
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T174351034734.log": {
+      "sha256": "c68d7ac03f202ef2c8e842675eb20c83cd99ea3f06fc48871f439b428a1a4da2",
+      "bytes": 868
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T174356144127.json": {
+      "sha256": "d3de254111cd38f00ff194e289412e455dada1c79b096d5db710d6a70f0ba2af",
+      "bytes": 1391
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T174356144127.log": {
+      "sha256": "6235d188aaa17811c5ed41f96f8cbd4b1809aa686634c0a870ae983df2b643cc",
+      "bytes": 359
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T174407260741.json": {
+      "sha256": "22f8e38ebe0115d10ee84b73bcf79f4698a8dbc0f664aa823821fc14d3e3a8cd",
+      "bytes": 1814
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T174407260741.log": {
+      "sha256": "f89e9be42ff9384f8620071a5a3d8e0d4f2559b5b6d9aee1bc5a21945edd62e2",
+      "bytes": 2839
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T174619955270.json": {
+      "sha256": "18cb8a8dc720e5cb8da1183617e7ac3c2adc25eb9a19ee764a3d522a35f665e0",
+      "bytes": 1853
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T174619955270.log": {
+      "sha256": "352841ef48b34ebef473763b6aad4a3c4cc50532cd02ed5e89acd26ca6a83421",
+      "bytes": 607
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T174830270454.json": {
+      "sha256": "17bc40bd970fabe562443c657fc93446d230c4510b72d995c8265fc985281aa1",
+      "bytes": 1999
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T174830270454.log": {
+      "sha256": "7a05ba9f9a790396de7360b94cef78dbcfe51376194ccc259852b3bd5e998276",
+      "bytes": 639
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175012122431.json": {
+      "sha256": "081e7c75e51de58cd2ad5a8899ea946e5b6f792b923a9de0a71e8e8530eb6157",
+      "bytes": 2261
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175012122431.log": {
+      "sha256": "0809eb2c2fb37ac7c5917105fabcfe46b5f2f18907e6a880a0e4e5c46f411eae",
+      "bytes": 2840
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175023318816.json": {
+      "sha256": "1eaa11b8d5ae90ba0348d023fecf92521798ae990231a4a1f449ee4390c971ca",
+      "bytes": 2160
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175023318816.log": {
+      "sha256": "0986147002cb7c601634e113f092e5c7a7311987d412cf207ff3cb5aa1269103",
+      "bytes": 257
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175034856855.json": {
+      "sha256": "5d3ef03704db0e64f4f031fa4459cef7afdd1e16d749274be69ca84cc141a915",
+      "bytes": 2623
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175034856855.log": {
+      "sha256": "40a6797e22dc124c91b43e4db809fddd77e7f3d9d2447633a5f495a53320fb41",
+      "bytes": 2331
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175337703517.json": {
+      "sha256": "0c32e9dfdb8949905d365d5fa7a60cfaaeb00d646cd210766517949babbf76b9",
+      "bytes": 3508
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175337703517.log": {
+      "sha256": "f9260e59a47ca7dab6d013e57c74c7e4c96d8c8f7b1a068dd337762c678a12c2",
+      "bytes": 732
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175352922393.json": {
+      "sha256": "5688093abe2450a007f702d968a5b7b9f221ba79957635136dc67dc38a97e193",
+      "bytes": 3937
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175352922393.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175400710150.json": {
+      "sha256": "7a2b5a26757bab0fa6f01a3d43b496dcb4834089323759ae7498d5230e1841b5",
+      "bytes": 4072
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175400710150.log": {
+      "sha256": "3f84121feff0f099c9836a1ba1f56c40a3bc64e52749f9813b9e363e642b6919",
+      "bytes": 181007
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175430859800.json": {
+      "sha256": "26ee1b08a34e63dd63bd4a6c4c4892f9b8e30ebe6d370507b132bf2fac9219b1",
+      "bytes": 4153
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175430859800.log": {
+      "sha256": "76292f785339837e95d590e4466c9d5a2b1c5e80b16ea6020e1b5ac951b986ea",
+      "bytes": 1238
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175516501550.json": {
+      "sha256": "9001f288a563841da15b611ee669c4596c146a8411476a5b9c6c511978719120",
+      "bytes": 4297
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175516501550.log": {
+      "sha256": "7a427847d2a9fc0ab353036ed65cd3907a7522f4f0f4bf8d6477c04673084c40",
+      "bytes": 1489
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175652336501.json": {
+      "sha256": "e078fe06ea4b272557ba69753142f919b1d04570a00ff0b46f80f09b9cd5adc9",
+      "bytes": 4492
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175652336501.log": {
+      "sha256": "96a63db5ce0fd6fce0dca02c846b39c97c794ed5591819bfae3a060ce4a3d9ea",
+      "bytes": 57
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175653159143.json": {
+      "sha256": "adf5b4f118cc8e50f304f83468db2a4a07c6659010a78f95f88b80960e22308b",
+      "bytes": 4490
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175653159143.log": {
+      "sha256": "c68d7ac03f202ef2c8e842675eb20c83cd99ea3f06fc48871f439b428a1a4da2",
+      "bytes": 868
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175653582174.json": {
+      "sha256": "b95488f0d7aa1d593d1af6719b4e86c11c3caac85fc563e40a1dca0b03169f39",
+      "bytes": 4463
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175653582174.log": {
+      "sha256": "826e5f86efabf8e9dc909661ddfd20eb245e00fcff1ffeae819becc67ceabe1c",
+      "bytes": 359
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175654008592.json": {
+      "sha256": "d9195438c433c8b71a76c3c5dca06e5b3528f82639aff5c94e49e7a5eef1bc7d",
+      "bytes": 4735
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175654008592.log": {
+      "sha256": "4a5055c09f2c8192ca2d165229c911acf688c1485e9cac0d36c051582aea2e1d",
+      "bytes": 2839
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175700235735.json": {
+      "sha256": "184f0e4bf52f2528d2737e5a6868b670ee43c2b0c11d52bb224c5427ca053681",
+      "bytes": 4491
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175700235735.log": {
+      "sha256": "1f83e982db9560c501c76cf20d416a3b2270a50b0ead38bc18e24d4f6fb17632",
+      "bytes": 257
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175706465861.json": {
+      "sha256": "db9d08e5b15922326a2edc949579c364d93c382a147f7ee55003c82ddc41b8a7",
+      "bytes": 4464
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175706465861.log": {
+      "sha256": "78ef37a5b55a92c4a320ef8139dd6efa70e445b63778032087b96c8810a0a7cb",
+      "bytes": 2331
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175707490128.json": {
+      "sha256": "a590a51b65ab9d0cd94297b4e8e68e9228431a9c49c475f8ad22be697be6726e",
+      "bytes": 4504
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175707490128.log": {
+      "sha256": "95eb2e4e102ffeec0f06eb365e52236f9bba660c1e14ae1350d7488bc2ea9f52",
+      "bytes": 732
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175707716292.json": {
+      "sha256": "1beec9a395935bf7ddeadf71b4d05dd7edf6c5356b026914a498c826703f3bdc",
+      "bytes": 4735
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175707716292.log": {
+      "sha256": "7396ff7c803cc9463213b0837a5be4ae06e0a2c21deb1ce9939732b834928ad6",
+      "bytes": 509
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175708337814.json": {
+      "sha256": "ed3196a1a19eb6fddfb8144a83d0a92ee680bef212bd1ad66cd6c5da9aa74bf3",
+      "bytes": 4665
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175708337814.log": {
+      "sha256": "25d93750699e042a509612a9ee00b84a32b0abe1cfdd7150568215fd51f1db16",
+      "bytes": 7390
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175711767864.json": {
+      "sha256": "78e70beed12457f9f6980d5de78e73c83982a91fc6d255ec9750956fa00a63aa",
+      "bytes": 4746
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175711767864.log": {
+      "sha256": "c9b43bec5b4a8f0f2d7f32838298cd4dec91eac927b3faeb8a2f6b9d428510b5",
+      "bytes": 1064
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175950837485.json": {
+      "sha256": "569ddb886ae51a2650218fd2185b9a13953460a12e4965cec264cb6fbcfd7333",
+      "bytes": 5166
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T175950837485.log": {
+      "sha256": "c1dd90f05f750fa74d3b6af71b9371fcfdeb6bcc26b28b12808354e467589877",
+      "bytes": 1069
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180248529816.json": {
+      "sha256": "13a32f2d07ce1edfa786af0af82bd32413638c093c3998a5fa785e7f9e4e6eeb",
+      "bytes": 5619
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180248529816.log": {
+      "sha256": "ab3fdcedc591a70551108c99d1c6abdb19dd1ab230f32b323b6ab8fc1df8c1f3",
+      "bytes": 3554
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180800216556.json": {
+      "sha256": "254f3ca390e4924a2cdc68e873d3ed3bbbf34fcd39e0702c34be7925435a69c6",
+      "bytes": 5213
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180800216556.log": {
+      "sha256": "9da1603e448cb17dacae64b4699fccd6632d48c96f4e956726352bbc673db62e",
+      "bytes": 57
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180801245546.json": {
+      "sha256": "e22a238d2dae5377f8305e00068204ce187ebb0f4c5edc0454ec50e09b6fa6dc",
+      "bytes": 5211
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180801245546.log": {
+      "sha256": "c68d7ac03f202ef2c8e842675eb20c83cd99ea3f06fc48871f439b428a1a4da2",
+      "bytes": 868
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180801471638.json": {
+      "sha256": "1d1783cd98bf58f8c035eead1202f8e7db9d98aca6896b049ac4641c1e7ad8ff",
+      "bytes": 5184
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180801471638.log": {
+      "sha256": "0fdb2c380db6e9a2c26e64e228dadc0c7cf32f49e2454a0e349ac19ebb467985",
+      "bytes": 384
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180801898327.json": {
+      "sha256": "02ab7d94a1825737c2983a6b6366f2306d7a38269aad9b2e3f24dcb335dcd961",
+      "bytes": 5456
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180801898327.log": {
+      "sha256": "49074997a0aca3af4c03589891a8adaf43a0ca0c2aea6f7382d876aae38e02ec",
+      "bytes": 2839
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180808328007.json": {
+      "sha256": "ad6381ed346b1c9408cf9d5356e3a1b4b5788464d442a181531a9ec199a815bc",
+      "bytes": 5212
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180808328007.log": {
+      "sha256": "f183b608fb4f93ff3afa4cdf875241d8fed5b2600b8307c342e73e584bf89894",
+      "bytes": 455
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180814760655.json": {
+      "sha256": "ace726b261591facb40f4a2a47048237018033e3fa8466d2e9a43098087c9ef0",
+      "bytes": 5185
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180814760655.log": {
+      "sha256": "1b28acee176b2ee529160f5f84c38b4984f22c71663417d5aaa86180c9839798",
+      "bytes": 2331
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180815784889.json": {
+      "sha256": "3273c619fa98ec5cf948622630d7b38101afab5e3f5286f84673f07c9c98d0ae",
+      "bytes": 5225
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180815784889.log": {
+      "sha256": "379a063f8dff1bfb8e044fe239c94037d978c4d4b509f4260f7f3619dac0dd25",
+      "bytes": 732
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180816012682.json": {
+      "sha256": "28edf076ebd366d3d77b87460f5531f1ce6877de84358694375d0f2a722fe87a",
+      "bytes": 5592
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180816012682.log": {
+      "sha256": "0fe4bed6c85ccc43443a49ad321eebe23e3ab10b975cec6a1ded13e5d5e061a7",
+      "bytes": 509
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180816639555.json": {
+      "sha256": "3b7342e95937c40273c35e19d0c05d3d4cb563692ff0207d10f008fb01bb0042",
+      "bytes": 5367
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180816639555.log": {
+      "sha256": "d243b393f99855afb0d2493609740d76039eec92e1563fea9a39564045a47f68",
+      "bytes": 7506
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180820068516.json": {
+      "sha256": "88eebd84c5ed82601f42a0af81c9579c593311ccecf21aa826af0e2c2c394945",
+      "bytes": 5448
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180820068516.log": {
+      "sha256": "a871311a683d3d6d7ab2144181ef0549dc489aec45bcd6b2135ad42aa82b5102",
+      "bytes": 1064
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180838291234.json": {
+      "sha256": "3251492dcd678a14feface8805e1433909776f7d404161ec9ee62f074e11f023",
+      "bytes": 5445
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180838291234.log": {
+      "sha256": "1f51f556c0ec3f7465515231ef3d49f1d10235a82af34d26ea24c775c2b60a3e",
+      "bytes": 612
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180848895594.json": {
+      "sha256": "4ec701c2a92cefa2a5d33db665f7064e0ab6454f913ed850ee37c5713b5ccdcd",
+      "bytes": 6042
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180848895594.log": {
+      "sha256": "ab3fdcedc591a70551108c99d1c6abdb19dd1ab230f32b323b6ab8fc1df8c1f3",
+      "bytes": 3554
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180952631224.json": {
+      "sha256": "771a347050a3778b58e13b529b7e25d17f646f45750cbb157e91a1f880a01215",
+      "bytes": 5493
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T180952631224.log": {
+      "sha256": "b7e0c314cbca2f34600a3c6fe80915a9491c2aeaf663b83e66aa1f106f4d5d60",
+      "bytes": 106
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T181145535852.json": {
+      "sha256": "adbf0a4e0699cf2c8a15ca60f3b2159f9cb17b725c1d5ab986c0ee037aa28868",
+      "bytes": 5348
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T181145535852.log": {
+      "sha256": "812eb11444321f806634257ed4c6d6fdfa8ec44ca1f456c88fe3a00fd3a61fdc",
+      "bytes": 2331
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T181153585480.json": {
+      "sha256": "073b565d78465817b496cf9492577e817095ad66840710c8362c6eb47f868f7b",
+      "bytes": 5591
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T181153585480.log": {
+      "sha256": "88dc1590be14b09594ccb6278c4591104510705072ce020f00fb81c71a81b186",
+      "bytes": 1064
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T181220079317.json": {
+      "sha256": "ba5d32bbc762c3e9e5121d9ee626c70f969c138cc7b214ef1613f9ea18490de6",
+      "bytes": 6103
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T181220079317.log": {
+      "sha256": "aaefbbfeaf0d765a26e514be8e1525f410dc6c9abc7c67cd3863283fe41ebe82",
+      "bytes": 686
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T181450137024.json": {
+      "sha256": "8801fd75be9b7d715bac6a03280032569b103d798f249715d07609009ae4578e",
+      "bytes": 5506
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T181450137024.log": {
+      "sha256": "152dfc72df9e59eff5fdd8d8ae40c85446ddf1693701db51a576a19947857e82",
+      "bytes": 544
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T181955188175.json": {
+      "sha256": "465bc06a05750b707e1ca5e82e91f4e2767b75f4ec7d57f67a0461a21de41988",
+      "bytes": 6140
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/20261003T181955188175.log": {
+      "sha256": "667b37894a528f6989f4d7c889c634f79cff8af3c11b2278f89cd7016b82ec31",
+      "bytes": 78
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/capture-before-tipple-reframe.tar.gz": {
+      "sha256": "72255f384d787dd9345444d0645d0ee118da68b895ef0d2aa7e73d0d43bb511d",
+      "bytes": 753145
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/capture-failed-cancel.json": {
+      "sha256": "062546453980c8c31b2234f84ea6ee8d92950e5ea7de39c826ad55b22b8a143f",
+      "bytes": 654
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/capture-group-172614.json": {
+      "sha256": "146ab302be176ccab7c4230a2802541633e7d0bd16487dc1f1c3a07a7c1fde86",
+      "bytes": 1783
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/capture-group-195437.json": {
+      "sha256": "5e50b19a3052a746f12f384f120f5a56f0fc16173a9349249b85654bf0bf4b6e",
+      "bytes": 1783
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/capture-group-209185.json": {
+      "sha256": "efc0dc4e8c818354f8a3ab29ecfb52d4cd7a19601b77d7be1c3f01db9c14a17e",
+      "bytes": 1585
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/capture-live-ownership.json": {
+      "sha256": "555279bdfd1549e5e454a38081450f1fa037c27544e43fedec56577d0e27a749",
+      "bytes": 1156
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/grant-start.json": {
+      "sha256": "ac730867f409ade55749dd8f5d2bc0e49c92cc7e6043ef50a2a21b3777528ee7",
+      "bytes": 5390
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/initial-export-before-component-proof.tar.gz": {
+      "sha256": "f5d9f2562c13c9ffbda568c82c554a214df34178b693f407d18251c4d189c3b9",
+      "bytes": 10703090
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/release.json": {
+      "sha256": "01992c85293140e20916ceb22754796310cc75396b95e94b5106ad7cccb01e73",
+      "bytes": 45092
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/sidecar-cleanup.json": {
+      "sha256": "b4ded7d3908a74d1f8afcb526165d65229b2e307a7234cb277ad77ed1961ec51",
+      "bytes": 82431
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/sidecars-after.json": {
+      "sha256": "1b5a4564fba4d6d7c3e6f5083145d60ee9d96f180996dd6626a3cb11a158343a",
+      "bytes": 171814
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/sidecars-before.json": {
+      "sha256": "43e5f9033d3d1a10c14c965d95bdd3d530a30b0ab24e24776e69318d9fe2c3a1",
+      "bytes": 165992
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/sidecars-precleanup.json": {
+      "sha256": "22a3c2c24127116495bbd07be8b18a0f663adc678425bd1e0603b66ba57d86e9",
+      "bytes": 252612
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/superseded-20261003T175652.tar.gz": {
+      "sha256": "1d8599355cd45a44c0e0586991bea85a65dcba909490c8034d99b95917c910c6",
+      "bytes": 11310514
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/attempts/superseded-20261003T180800.tar.gz": {
+      "sha256": "7f52bee23dd432ab3079678b5f8ee36034c60d5e650da4bec8ee67dc18a09485",
+      "bytes": 24005457
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/image-manifest.json": {
+      "sha256": "280b35423b207b757aba37cdb71de74ef3ace5e3542116874c05d5fa8315593e",
+      "bytes": 11121
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/bunker-player-accepted-finish-before.png": {
+      "sha256": "fbdc8b97401d7a95217e401a821d2f9d4f5338e55b41604db8910011ddbc2caa",
+      "bytes": 387672
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/bunker-player-candidate-runtime-r5.png": {
+      "sha256": "75bbf7625b1952de7895c78eec4dafed0c4fe3c2bf93a70365208943d87bb5bc",
+      "bytes": 415006
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/cooling-eye-accepted-finish-before.png": {
+      "sha256": "735ec530fd6b0903e7f1ffd3a4a37f95e942b5033300a05d27170aa3abb0a0fa",
+      "bytes": 575905
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/cooling-eye-candidate-runtime-r5.png": {
+      "sha256": "7bb7d2bbfa2cebce6219e5fe4c0ee0f9b5539308d466d0d98c8029c927f5e7ab",
+      "bytes": 805765
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/crusher-eye-accepted-finish-before.png": {
+      "sha256": "b0a81647530f4fda9437b6e5c76e1b05216daa07e71f0ec13a5e9b355fff72d3",
+      "bytes": 728843
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/crusher-eye-candidate-runtime-r5.png": {
+      "sha256": "a1d63ae33fe2fd50d41d59ad401c88c59ce1bebc7b8d20f88e24b03234ce7a51",
+      "bytes": 920298
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/crusher-maintenance-accepted-finish-before.png": {
+      "sha256": "cbbf6c6f6bb57720fb088d5523bb08ab67f67a590b096a60c4659018efdb6147",
+      "bytes": 822590
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/crusher-maintenance-candidate-runtime-r5.png": {
+      "sha256": "3ead8f2622634c7b223a88118d2daffae1f0218813dc2e168672705f91b07984",
+      "bytes": 1008579
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/crusher-roofline-accepted-finish-before.png": {
+      "sha256": "7c3833727ea4def8bfc151e0072e6797d4de85a13424d5e052ce80e57533a735",
+      "bytes": 566397
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/crusher-roofline-candidate-runtime-r5.png": {
+      "sha256": "e56687d7aef89768bbf028ed7c426ca0f422c6876a4bc68abfc16090d85413da",
+      "bytes": 722595
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/furnace-eye-accepted-finish-before.png": {
+      "sha256": "8a181bf36d173172930fab22c4d1cd4d33c80e7895f6cada205df2c3912ea0ab",
+      "bytes": 543991
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/furnace-eye-candidate-runtime-r5.png": {
+      "sha256": "eed05110f68bcc47b1e60a9820ec3b7215a81d0bc86250c6d124d38830ce73cd",
+      "bytes": 585560
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/furnace-skyline-accepted-finish-before.png": {
+      "sha256": "60a0ccf42104ab41ff208955cadbcaac23d479dddf3f889b275aa0f2c4141a75",
+      "bytes": 541270
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/furnace-skyline-candidate-runtime-r5.png": {
+      "sha256": "725aba1699f04f1bee52cc6ec9bf830987ebba17eeff5b6bc120ea7d3cec1ed7",
+      "bytes": 709074
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/kiln-eye-accepted-finish-before.png": {
+      "sha256": "5f7c8537698e6b3a33b9e94c978b8ee96e6d50d09bcfdb26f2b8b305705e92aa",
+      "bytes": 442369
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/kiln-eye-candidate-runtime-r5.png": {
+      "sha256": "a92a0367fad36300aec5a6190029f750097376a2675ae28e7ca2010fea90fd21",
+      "bytes": 514549
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/overview-accepted-finish-before.png": {
+      "sha256": "8aefecf91fa8284b0a9dbce54cbe9d7ea863340280e30c7ee9ff35aac80da11e",
+      "bytes": 204652
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/overview-candidate-runtime-r5.png": {
+      "sha256": "91d5989259cbca9c027c96485538fcd195d62991c8b4c1ff8e477d5d5f61315e",
+      "bytes": 316389
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/tipple-player-accepted-finish-before.png": {
+      "sha256": "f5ac7ac67936a618adcf2688c227d01a4318ffe6084ba83a9a568ea87bad9501",
+      "bytes": 415939
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/tipple-player-candidate-runtime-r5.png": {
+      "sha256": "000be0b1441053ca9de681a37f7b4b5449852bed83584e4432f2ea45a0ddea64",
+      "bytes": 577739
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/transfer-eye-accepted-finish-before.png": {
+      "sha256": "bf2a40955e17a259ac6e67e2067093c7c0bcce9152c09ca9cc8a9c3f5f08ec02",
+      "bytes": 550297
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/transfer-eye-candidate-runtime-r5.png": {
+      "sha256": "e5a291281f956fb3b2612763bfc63fd0ef5c81769c6c02de2a83f4c1544633e2",
+      "bytes": 633090
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/release-receipt.json": {
+      "sha256": "2dfbbe5649ed334b961346692a1ac263dea62e91bd3477f574125f94d1367ec2",
+      "bytes": 17192
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/export-report.json": {
+      "sha256": "96654d092e746ac513541b2a472441acde6810ccf27ad8daeb125c62aa169491",
+      "bytes": 44834
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/grant.py": {
+      "sha256": "8d919347092909d266ef1bca504e074a0b786e949dbb677c6f03847d59be916f",
+      "bytes": 6341
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/gravemill-foundry-revision5.blend": {
+      "sha256": "437dc16697554e5bcf46862dd9c01c071d103d42f93e2480f1331b1d11eaa83a",
+      "bytes": 5933855
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/integration-shared-support.json": {
+      "sha256": "e5bfc7b1dcd412a85914e77f90558d726c5de1d35379db61378595a39c2d62b9",
+      "bytes": 1280
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/integration-shared-support.patch": {
+      "sha256": "bdd396af8397292192f4a0d88840ff7a2177dd71c2c74465278efc672ca3e895",
+      "bytes": 31320
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/material-lineage.json": {
+      "sha256": "1163720175d4db840ba1706409e328137a679451fa24530593da756ab166c019",
+      "bytes": 117568
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/owned_capture.py": {
+      "sha256": "0c1b342c3c964a9f303da98b115beddd07914960477850d0a21b7d902b3f70b6",
+      "bytes": 1416
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/pack-candidate.json": {
+      "sha256": "b7b3567400ce9dbe4237fda4dbb450f8575de0d9517183121ec9ad89d3882b7e",
+      "bytes": 2834
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/pack-receipt.json": {
+      "sha256": "9891bd5f006f46abb1b90bba6e0a7685ff7b4697db0fde5b21f962a2d4370b41",
+      "bytes": 887
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/prepare_stage.py": {
+      "sha256": "ba66007a3812785cb817be79ee38aea4d2018c01aa22482882bf92b55df66c02",
+      "bytes": 2235
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/produce.py": {
+      "sha256": "146788bf10474e049ffefaf6766fc8d2946f6f95aeaf88cee04cd1cdaa33b5fb",
+      "bytes": 1178
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/production-report.json": {
+      "sha256": "a197a6eff46ac5ae000be043692001e4a6fb3508f6d06ab443087e9e89e52143",
+      "bytes": 43240
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/release_verify.py": {
+      "sha256": "37f8eeebc0b029c896d18d6280d73a0c53aaebe47b4a2cc062fd6de86d0cda27",
+      "bytes": 1994
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/reopen-report.json": {
+      "sha256": "a18361319bbe5b7d7a3dc3b6e3a308c62d52985185a7685f965ba9ef715935ce",
+      "bytes": 269
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/reopen.py": {
+      "sha256": "f3c2191e7014789f5265fb4285dae5f6ffc28df6a775f45714d413d975e1329f",
+      "bytes": 1480
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/shapes.json": {
+      "sha256": "5f8dabbae916e5c186d6e18d366a00d4517d3fd301226cc561a1ea85d396d7e2",
+      "bytes": 266297
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/shapes.py": {
+      "sha256": "be21db055afa1f857364bfa3fd501f9204ff3c66729f8080d47ba57ec7e30e4b",
+      "bytes": 8762
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/source-validation.json": {
+      "sha256": "559676f6b9934e1c24f19d889469375529cc52979d857cc222dcfbabf33335d1",
+      "bytes": 4712
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/verify.py": {
+      "sha256": "11fb159f6a59d326f1756f0176075789f3b9a0f56a92005a635e7717d1a8c43f",
+      "bytes": 8980
+    },
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/visual-triangles.json": {
+      "sha256": "04f2683cee26303bad3a93df76506dcb04496952efbcd9b5320be10f70844cf5",
+      "bytes": 3042785
+    }
+  },
+  "whitespaceCheck": "Passed excluding embedded .patch, whose blank unified-diff context lines require their leading space."
+}

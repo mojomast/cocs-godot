@@ -1,0 +1,48 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "/home/mojo/.tmp-on-disk/cocs-map-foundry-astra-S-20261003/tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/archive.py"
+  ],
+  "timeoutSeconds": 60,
+  "start": "2026-10-03T17:56:52.338159+00:00",
+  "git": "6ff4079e49dca75ef0cbcf480bf627deb28f4b53",
+  "inputDiffSha256": "08b71958b79890e9654e7152e37050f2b44b17b2c703d3cc4b4d451fc3a94a2e",
+  "sourceHashes": {
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/grant.py": "0ac98e8d97bf292864c2bd8829242a9e7ce6e347708d1fdcff881b9d5a35adb7",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/shapes.py": "be21db055afa1f857364bfa3fd501f9204ff3c66729f8080d47ba57ec7e30e4b",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/build.mjs": "6dcf21ed87cad460d91e563329da2c943f4eb886f71ec06a5596821831aa9347",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/author.py": "209ff522f56757a45d18837641bb3cb48b9aad497f5fbcef59651f911b58d515",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/shapes.json": "9f3a51f18f631556c6614cdcfe2eefa4024af0fa7724c27312af4332772db3fa",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/candidate.json": "93bd0f03f245d55ba2d5a2889f06b189eb2bc6c4bf65e6f8a5f2361dba0f5a67",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/export-report.json": "b3dad3fb65d42b72b02f7f6c3ea94cd55ae90defaaf1c3545515acae8b4a8930",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/verify.py": "66cdb56c2dd5bfb2be356d69bdc3edef3eeb30e1c00c2db01b4d259a3c47ecc2",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/check.mjs": "ee6a5e1aa3691e5302f98beaa1159e1f7ec93bf3ac5facea01731f6b7485b68b",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/component-triangles.json": "9ee4c93803acb0c77e7e57e764fb69d87b1284e83d945c06e624a50a4670af21",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/material-lineage.json": "ebcd6b5c14e0550b8dc4878c23ff793ca44b96e7ddede3be78ff8966cadb4e9c",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/visual-triangles.json": "8bc1f3810990938c27cc3b5cf14a20807362ff5a2af00db9ad391d6e7e91e683",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/pack-candidate.json": "5448901659bcf02d5002237f1fea8f797e3a227d7f9711d7eada559a3c7390d2",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/source-validation.json": "b9b9f03a47f8458bb1ef3d3086acc1f6ce49a7d639f0903671c40e2fd305bf5c",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/prepare_stage.py": "847566017e61f97835e52b3b8db11c82a26a8325a66ace4a93e28815e04ef149",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/reopen.py": "f3c2191e7014789f5265fb4285dae5f6ffc28df6a775f45714d413d975e1329f",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/archive.py": "3c4b197c9517efc2bf68ef834187cf4f21f6a2f920354a3d0f29e58d25486c67",
+    "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/produce.py": "146788bf10474e049ffefaf6766fc8d2946f6f95aeaf88cee04cd1cdaa33b5fb",
+    "godot/tests/new_maps/gravemill_foundry/revision5/probes.json": "a4a4fca46f83771815a74e187c59029624d3cb397f42aedf391eb4a39868fbe2",
+    "godot/tests/new_maps/gravemill_foundry/revision5/staged.gd": "c584ea63e84a6365139d0377af8807ff8a24b9a87e29a5f6e682b67fd729ff12",
+    "godot/tests/new_maps/gravemill_foundry/revision5/physics.gd": "93a9661c91b160af1c01f0d55d5a679617342221cff6da97292c09f05a34cdbd",
+    "godot/tests/new_maps/gravemill_foundry/revision5/profile.json": "0556d52247c0f14a6a4e15da40ac58eac238c09a18d1c7025e4ae7341dba06cc",
+    "godot/tests/new_maps/gravemill_foundry/revision5/profile_schema.gd": "9d503ed0014d409d8bc7906bd7b3be83f998197e3f46e8271ef71ceeee0b87df",
+    "godot/tests/new_maps/gravemill_foundry/revision5/profile-lineage.json": "aaf3f69a3d294dd2806a9df8b3c11473f49dc2dea296a7a5124fba7c2bc035ea",
+    "godot/tests/new_maps/gravemill_foundry/revision5/physics-report.json": "20d48e0ab31c51b98ebcc4df3a8281d94959fd5c520e9dfbd0757758bd1912d7"
+  },
+  "owner": {
+    "pid": 153160,
+    "ppid": 92828,
+    "pgid": 153160,
+    "startTicks": 623335631,
+    "comm": "python3",
+    "argv": "/usr/bin/python3 /home/mojo/.tmp-on-disk/cocs-map-foundry-astra-S-20261003/tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/archive.py "
+  },
+  "end": "2026-10-03T17:56:52.982049+00:00",
+  "returncode": 0,
+  "remainingGroupMembers": []
+}

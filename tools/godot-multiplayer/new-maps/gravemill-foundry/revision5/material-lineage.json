@@ -1,0 +1,5533 @@
+{
+  "kind": "actual-R5-GLB-shape-and-pixel-proof",
+  "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879",
+  "glbSha256": "237dcc9d1b339116915d824f9896e6ee7daa57b0c13bab08c58da8d51445c9c8",
+  "masterSha256": "437dc16697554e5bcf46862dd9c01c071d103d42f93e2480f1331b1d11eaa83a",
+  "pack": {
+    "overlaySha256": "86beb51736bea315b2bb35cd7772aff2daec7a1317b13c1eb498c981f2e8c5f0",
+    "baseSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+  },
+  "materialLineage": {
+    "GM / soot": {
+      "resource": "forge-steel",
+      "sourceAlbedoSha256": "0c1dec9f25b8df13628d3a2989e35f3ac42a6cff6137e2522f0655750d12c822",
+      "embeddedSrgbAlbedoSha256": "fb4ac5ab0718b8a72f12b3db784b07dac3648cbe3400bbe9eb78b94c796150d8",
+      "normalSourceAndEmbeddedSha256": "8662617c557392b63c6b061f957facfd116e5b87534884060fbde87f388388e5",
+      "sourceRoughnessSha256": "95b14753e863ac71367c158cec2c3978b6b44a54fa35c25e0938f978321c774b",
+      "embeddedPackedRoughnessSha256": "71197f0755dad4574a418feeb45719a8da927557c754aa7cd35252b5d16e2f8a",
+      "roughnessMaxQuantizationError": 0,
+      "tileMeters": 2
+    },
+    "G4 / ribbed": {
+      "resource": "ribbed-steel",
+      "sourceAlbedoSha256": "c313383b404a6ed622b3ff411f37f5225364f2158621f620e9ef76c15c209132",
+      "embeddedSrgbAlbedoSha256": "73170007ef781b95e072a0b23a9ed108f6c0e1fe98edf0ee6626bfbf80d7afd1",
+      "normalSourceAndEmbeddedSha256": "8662617c557392b63c6b061f957facfd116e5b87534884060fbde87f388388e5",
+      "sourceRoughnessSha256": "5b5c681b84e6cd3b4fc58e5bdb2c46f308811e6b229c026b54f73c89f601e745",
+      "embeddedPackedRoughnessSha256": "5d0b1ab5ce135b12e1ea6864cd1c38f3e5792b7c4078422bf4b8f22754ef6fdf",
+      "roughnessMaxQuantizationError": 0,
+      "tileMeters": 2
+    },
+    "GM / brass": {
+      "resource": "copper-patina",
+      "sourceAlbedoSha256": "a11f66b6da6268c022fa8b88593d39c2b33c96197bd83be811ed7972672fad8f",
+      "embeddedSrgbAlbedoSha256": "df08158f6dfced7e3e823f32b1a796ece7a2fed8f763505c6f43980cd82516e2",
+      "normalSourceAndEmbeddedSha256": "7b2ec1c6a0837fdbbe67ed0779e2d39ad3637b405ed0a5186ac21b94db2dab9c",
+      "sourceRoughnessSha256": "0b1951e5830a72bfd483555e1a06a7bacaaa8ac7e379818f8acdd86765caea8b",
+      "embeddedPackedRoughnessSha256": "2d9934b2c971746003f84cc364c085cf55062a49e90d548a800496a416830698",
+      "roughnessMaxQuantizationError": 0,
+      "tileMeters": 2
+    },
+    "GM / copper": {
+      "resource": "copper-heat-oxide",
+      "sourceAlbedoSha256": "61a16476395dd0cc066dd56f0fdf2fff03e29cb21db4831a885f72266035c873",
+      "embeddedSrgbAlbedoSha256": "4548638fe81233e2252aee8dbd3b4abda1783a4d8fa91c6f1fb748efe7e1f32a",
+      "normalSourceAndEmbeddedSha256": "0ab51bd3acd084e63b9461946a0877cc6b3d9133741b8237f6ae0565b2d850f3",
+      "sourceRoughnessSha256": "d748665e7377609ee92e669c8d4e0d80842d526ae89f2bb3b7bbc7ed227a9794",
+      "embeddedPackedRoughnessSha256": "ea2bdc71963b13deb3a0cc6049b7675c4d83322d0f5ddc1611c691281c1fe8b4",
+      "roughnessMaxQuantizationError": 0,
+      "tileMeters": 2
+    },
+    "G4 / grating": {
+      "resource": "iron-grate",
+      "sourceAlbedoSha256": "404748eb9dbb5783dc435beb1940ce77baab7cca13bf86c3e2f6df29de62f900",
+      "embeddedSrgbAlbedoSha256": "c1059270b8fe47495739e77c562718250f124bbc88ebf916bdd4cb936a5c95a7",
+      "normalSourceAndEmbeddedSha256": "ec09f5e04700822fd8640563a51ca2a8aa1bc88a568ac8ed87a1f8d2afdafaf7",
+      "sourceRoughnessSha256": "ab2e42adeeee331b2269800cbdbe0082b6056a81c87d9cf25f0d676e5ed6eef9",
+      "embeddedPackedRoughnessSha256": "65e51a2a8b4f2f659182df67f41fcd223f11868739816237155e33a8d6f81ec1",
+      "roughnessMaxQuantizationError": 0,
+      "tileMeters": 1
+    },
+    "GM / mineral": {
+      "resource": "cast-seams",
+      "sourceAlbedoSha256": "4dcd77b6b90b3621375a21f725e9b881a2c8c46897762b358361ead4671c0ef8",
+      "embeddedSrgbAlbedoSha256": "1a2bd1e1a063bb0b6d0f5c0fba268b00e6319bbb2843b351513c78e13ff4c897",
+      "normalSourceAndEmbeddedSha256": "a65f9df057998d11ac92a24f05c5946eb794134f7cc12b9dfab035496c37a858",
+      "sourceRoughnessSha256": "484ebd3f0ab9915be426cca687bc8fd5ff364eef2151a9e4d3e49c1ddb2410df",
+      "embeddedPackedRoughnessSha256": "80d59d5ac1afec0341c18b88b92e29936bd6ee83c9155d1810fbdef3ae36a58f",
+      "roughnessMaxQuantizationError": 0,
+      "tileMeters": 4
+    },
+    "G4 / timber": {
+      "resource": "timber-weather",
+      "sourceAlbedoSha256": "032a68abe43f766ae98ab81b1a3a2acbe807d0a0313f55fdb82531cb12312310",
+      "embeddedSrgbAlbedoSha256": "fb6bad65ce1a09efa1efbdbb20395056a2c3d6dd185fb30d9798b12a35065b43",
+      "normalSourceAndEmbeddedSha256": "7a8f4b78d0c25eddb4def652c706110b27dceef69d8ff3c48f343abf41bd1a5b",
+      "sourceRoughnessSha256": "2d6e17973056f23f1f08ae580345558330cdd44b2de2727d4b8482cc171ecec5",
+      "embeddedPackedRoughnessSha256": "1afcc0cd04efbf07b7e96e9b48314f0cc9fa4d1385cb33bc0776c8aa07b27be8",
+      "roughnessMaxQuantizationError": 0,
+      "tileMeters": 2
+    },
+    "GM / ore": {
+      "resource": "aggregate",
+      "sourceAlbedoSha256": "1a0fccc16edd8ecc4825d47f59eadd477b0861606aa31af7642a9b177877f4e4",
+      "embeddedSrgbAlbedoSha256": "3abb29a4b5da6ed3a1f229c40914a29d0de48e111bcfb2421ee36d5bcb989c05",
+      "normalSourceAndEmbeddedSha256": "61baadb1991cdc3ab47e1f025672c06f9e6f601c0d56552dee34da3e0f8444a4",
+      "sourceRoughnessSha256": "a33f12b68d468f75a8823818da8320d64c1a27c339f71dc26a5a16d7d2a47cff",
+      "embeddedPackedRoughnessSha256": "9e92173e1cf48db773511c9e60bb97ebd79d7286242c3adb7d5dae42efcf75d3",
+      "roughnessMaxQuantizationError": 0,
+      "tileMeters": 4
+    },
+    "GM / chalk": {
+      "resource": "lime-plaster",
+      "sourceAlbedoSha256": "20712018b81f70807f044c362860617b4db66da53ebf6f0a829131f836702983",
+      "embeddedSrgbAlbedoSha256": "245c7716dd9f96a2903bb4c0e285e48c48117ff0d6eb336f9561e1e37c661396",
+      "normalSourceAndEmbeddedSha256": "d8630b11ec0b1baaaafefe6ca867e13577511fc3e0fc45fd546aa0b8e94930ef",
+      "sourceRoughnessSha256": "8f9ec4bf33e91c11ccaef29bb0e06af0908f92f39d905276337140ef8f14fdb2",
+      "embeddedPackedRoughnessSha256": "3a46b6b089ac7da0ca0f49f90301177513c611adef5d3a3383c119e861462b8d",
+      "roughnessMaxQuantizationError": 0,
+      "tileMeters": 3
+    },
+    "GM / cooling-floor": {
+      "resource": "wet-soot",
+      "sourceAlbedoSha256": "73c40e38d7b632a4013a0b0d55ef7771c804eb7cab3ac47276b4be6a6b7e896e",
+      "embeddedSrgbAlbedoSha256": "6a411f9d23a6d1047f3837059d11728b8fa7f59e5b946809bf9a7ffa2f5e6701",
+      "normalSourceAndEmbeddedSha256": "721cb3b4c8f5fd59869d86a99326ef5a0f4a6deddd98bbc78c3b56ed561fa3e1",
+      "sourceRoughnessSha256": "ef9248fa928c5231bbdae003d4e5a1f6d8571d0824cceafb8a81e04e6ad2b5d2",
+      "embeddedPackedRoughnessSha256": "59847f77bb1a108a9075aace1ea1089a126bb7defabcc0d6fea8a4c26334eb9e",
+      "roughnessMaxQuantizationError": 0,
+      "tileMeters": 3
+    }
+  },
+  "shapes": [
+    {
+      "id": "G1.headframe.0.shoe.-1.-1",
+      "kind": "box",
+      "bounds": [
+        [
+          -91.5,
+          24.917999267578125,
+          -38.099998474121094
+        ],
+        [
+          -90.5,
+          25.158000946044922,
+          -37.099998474121094
+        ]
+      ],
+      "signedVolume": 0.23858131616230005,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.0.leg.-1.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -91.30227661132812,
+          24.91794776916504,
+          -37.906097412109375
+        ],
+        [
+          -87.49772644042969,
+          44.04005432128906,
+          -35.89390563964844
+        ]
+      ],
+      "signedVolume": 4.447352366553529,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.0.shoe.-1.1",
+      "kind": "box",
+      "bounds": [
+        [
+          -91.5,
+          23.357999801635742,
+          -32.900001525878906
+        ],
+        [
+          -90.5,
+          23.597999572753906,
+          -31.899999618530273
+        ]
+      ],
+      "signedVolume": 0.23857990749963365,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.0.leg.-1.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -91.30300903320312,
+          23.36089324951172,
+          -34.10639953613281
+        ],
+        [
+          -87.49699401855469,
+          44.037109375,
+          -32.093597412109375
+        ]
+      ],
+      "signedVolume": 4.80025030182137,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.0.shoe.1.-1",
+      "kind": "box",
+      "bounds": [
+        [
+          -81.5,
+          24.586666107177734,
+          -38.099998474121094
+        ],
+        [
+          -80.5,
+          24.8266658782959,
+          -37.099998474121094
+        ]
+      ],
+      "signedVolume": 0.23857941004958094,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.0.leg.1.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -84.50244140625,
+          24.587276458740234,
+          -37.90616989135742
+        ],
+        [
+          -80.69755554199219,
+          44.03938674926758,
+          -35.89383316040039
+        ]
+      ],
+      "signedVolume": 4.522227580021767,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.0.shoe.1.1",
+      "kind": "box",
+      "bounds": [
+        [
+          -81.5,
+          23.777999877929688,
+          -32.900001525878906
+        ],
+        [
+          -80.5,
+          24.01799964904785,
+          -31.899999618530273
+        ]
+      ],
+      "signedVolume": 0.23857990749963365,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.0.leg.1.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -84.50282287597656,
+          23.78014373779297,
+          -34.1063232421875
+        ],
+        [
+          -80.69717407226562,
+          44.03785705566406,
+          -32.09367370605469
+        ]
+      ],
+      "signedVolume": 4.705177035198614,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.0.crossrail.38",
+      "kind": "strut",
+      "bounds": [
+        [
+          -88.5,
+          37.84000015258789,
+          -35.15999984741211
+        ],
+        [
+          -83.5,
+          38.15999984741211,
+          -34.84000015258789
+        ]
+      ],
+      "signedVolume": 0.5083748651589941,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.0.crossrail.43",
+      "kind": "strut",
+      "bounds": [
+        [
+          -88.5,
+          42.84000015258789,
+          -35.15999984741211
+        ],
+        [
+          -83.5,
+          43.15999984741211,
+          -34.84000015258789
+        ]
+      ],
+      "signedVolume": 0.5083748651589941,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.0.sheave",
+      "kind": "drum",
+      "bounds": [
+        [
+          -86.32499694824219,
+          42.400001525878906,
+          -36.599998474121094
+        ],
+        [
+          -85.67500305175781,
+          45.599998474121094,
+          -33.400001525878906
+        ]
+      ],
+      "signedVolume": 5.138758497562391,
+      "triangles": 156,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 156,
+      "outwardNormals": 468,
+      "vertexNormals": 468
+    },
+    {
+      "id": "G1.headframe.0.cable",
+      "kind": "strut",
+      "bounds": [
+        [
+          -86.04000091552734,
+          37.0,
+          -35.040000915527344
+        ],
+        [
+          -85.95999908447266,
+          43.19999694824219,
+          -34.959999084472656
+        ]
+      ],
+      "signedVolume": 0.03559178712189848,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.0.hookblock",
+      "kind": "box",
+      "bounds": [
+        [
+          -86.44999694824219,
+          36.25,
+          -35.400001525878906
+        ],
+        [
+          -85.55000305175781,
+          37.75,
+          -34.599998474121094
+        ]
+      ],
+      "signedVolume": 1.077954260355769,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.1.shoe.-1.-1",
+      "kind": "box",
+      "bounds": [
+        [
+          -58.5,
+          22.26588249206543,
+          -23.100000381469727
+        ],
+        [
+          -57.5,
+          22.505882263183594,
+          -22.100000381469727
+        ]
+      ],
+      "signedVolume": 0.2385793282015867,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.1.leg.-1.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -58.23616027832031,
+          22.267906188964844,
+          -22.840116500854492
+        ],
+        [
+          -54.5638427734375,
+          49.03797912597656,
+          -20.959882736206055
+        ]
+      ],
+      "signedVolume": 6.184716817596594,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.1.shoe.-1.1",
+      "kind": "box",
+      "bounds": [
+        [
+          -58.5,
+          25.324705123901367,
+          -17.899999618530273
+        ],
+        [
+          -57.5,
+          25.564706802368164,
+          -16.899999618530273
+        ]
+      ],
+      "signedVolume": 0.23858123431417483,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.1.leg.-1.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -58.3040885925293,
+          25.332252502441406,
+          -19.106849670410156
+        ],
+        [
+          -54.495914459228516,
+          49.03245544433594,
+          -17.093151092529297
+        ]
+      ],
+      "signedVolume": 5.488653147105174,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.1.shoe.1.-1",
+      "kind": "box",
+      "bounds": [
+        [
+          -48.5,
+          22.224000930786133,
+          -23.100000381469727
+        ],
+        [
+          -47.5,
+          22.464000701904297,
+          -22.100000381469727
+        ]
+      ],
+      "signedVolume": 0.2385793282015867,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.1.leg.1.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -51.43616485595703,
+          22.22608184814453,
+          -22.84011459350586
+        ],
+        [
+          -47.763832092285156,
+          49.03791809082031,
+          -20.959884643554688
+        ]
+      ],
+      "signedVolume": 6.194265622569942,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.1.shoe.1.1",
+      "kind": "box",
+      "bounds": [
+        [
+          -48.5,
+          24.501176834106445,
+          -17.899999618530273
+        ],
+        [
+          -47.5,
+          24.74117660522461,
+          -16.899999618530273
+        ]
+      ],
+      "signedVolume": 0.2385793282015867,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.1.leg.1.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -51.50431823730469,
+          24.50979232788086,
+          -19.10694694519043
+        ],
+        [
+          -47.6956787109375,
+          49.0313835144043,
+          -17.093053817749023
+        ]
+      ],
+      "signedVolume": 5.675893303263161,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.1.crossrail.43",
+      "kind": "strut",
+      "bounds": [
+        [
+          -55.5,
+          42.84000015258789,
+          -20.15999984741211
+        ],
+        [
+          -50.5,
+          43.15999984741211,
+          -19.84000015258789
+        ]
+      ],
+      "signedVolume": 0.5083751458842968,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.1.crossrail.48",
+      "kind": "strut",
+      "bounds": [
+        [
+          -55.5,
+          47.84000015258789,
+          -20.15999984741211
+        ],
+        [
+          -50.5,
+          48.15999984741211,
+          -19.84000015258789
+        ]
+      ],
+      "signedVolume": 0.5083751458842968,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.1.sheave",
+      "kind": "drum",
+      "bounds": [
+        [
+          -53.32500076293945,
+          47.400001525878906,
+          -21.600000381469727
+        ],
+        [
+          -52.67499923706055,
+          50.599998474121094,
+          -18.399999618530273
+        ]
+      ],
+      "signedVolume": 5.138821220219688,
+      "triangles": 156,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 156,
+      "outwardNormals": 468,
+      "vertexNormals": 468
+    },
+    {
+      "id": "G1.headframe.1.cable",
+      "kind": "strut",
+      "bounds": [
+        [
+          -53.040000915527344,
+          42.0,
+          -20.040000915527344
+        ],
+        [
+          -52.959999084472656,
+          48.19999694824219,
+          -19.959999084472656
+        ]
+      ],
+      "signedVolume": 0.03559093121460544,
+      "triangles": 44
+    },
+    {
+      "id": "G1.headframe.1.hookblock",
+      "kind": "box",
+      "bounds": [
+        [
+          -53.45000076293945,
+          41.25,
+          -20.399999618530273
+        ],
+        [
+          -52.54999923706055,
+          42.75,
+          -19.600000381469727
+        ]
+      ],
+      "signedVolume": 1.0779581155628206,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.0.casing.0",
+      "kind": "drum",
+      "bounds": [
+        [
+          52.45000076293945,
+          3.890000104904175,
+          -10.59000015258789
+        ],
+        [
+          75.55000305175781,
+          4.989999771118164,
+          12.510000228881836
+        ]
+      ],
+      "signedVolume": 453.436512578728,
+      "triangles": 156,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "outwardFaces": 156,
+      "outwardNormals": 468,
+      "vertexNormals": 468
+    },
+    {
+      "id": "G2.furnace.0.casing.1",
+      "kind": "drum",
+      "bounds": [
+        [
+          53.65999984741211,
+          9.890000343322754,
+          -9.380000114440918
+        ],
+        [
+          74.33999633789062,
+          10.989999771118164,
+          11.300000190734863
+        ]
+      ],
+      "signedVolume": 363.40491802015026,
+      "triangles": 156,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "outwardFaces": 156,
+      "outwardNormals": 468,
+      "vertexNormals": 468
+    },
+    {
+      "id": "G2.furnace.0.casing.2",
+      "kind": "drum",
+      "bounds": [
+        [
+          55.41999816894531,
+          15.890000343322754,
+          -7.619999885559082
+        ],
+        [
+          72.58000183105469,
+          16.989999771118164,
+          9.539999961853027
+        ]
+      ],
+      "signedVolume": 250.21841138163455,
+      "triangles": 156,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "outwardFaces": 156,
+      "outwardNormals": 468,
+      "vertexNormals": 468
+    },
+    {
+      "id": "G2.furnace.0.rib.0",
+      "kind": "strut",
+      "bounds": [
+        [
+          74.33999633789062,
+          3.439999580383301,
+          0.8499999642372131
+        ],
+        [
+          74.55999755859375,
+          18.439998626708984,
+          1.0699999332427979
+        ]
+      ],
+      "signedVolume": 0.7160311114108708,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.0.rib.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          71.8951644897461,
+          3.439999580383301,
+          7.5671305656433105
+        ],
+        [
+          72.11516571044922,
+          18.439998626708984,
+          7.787130832672119
+        ]
+      ],
+      "signedVolume": 0.7160320133209285,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.0.rib.2",
+      "kind": "strut",
+      "bounds": [
+        [
+          65.70462036132812,
+          3.439999580383301,
+          11.141241073608398
+        ],
+        [
+          65.92462158203125,
+          18.439998626708984,
+          11.36124038696289
+        ]
+      ],
+      "signedVolume": 0.716029127208747,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.0.rib.3",
+      "kind": "strut",
+      "bounds": [
+        [
+          58.665000915527344,
+          3.439999580383301,
+          9.8999662399292
+        ],
+        [
+          58.88500213623047,
+          18.439998626708984,
+          10.119965553283691
+        ]
+      ],
+      "signedVolume": 0.7160270436920259,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.0.rib.4",
+      "kind": "strut",
+      "bounds": [
+        [
+          54.070213317871094,
+          3.439999580383301,
+          4.424110412597656
+        ],
+        [
+          54.29021453857422,
+          18.439998626708984,
+          4.644110679626465
+        ]
+      ],
+      "signedVolume": 0.7160299297496812,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.0.rib.5",
+      "kind": "strut",
+      "bounds": [
+        [
+          54.070213317871094,
+          3.439999580383301,
+          -2.7241103649139404
+        ],
+        [
+          54.29021453857422,
+          18.439998626708984,
+          -2.50411057472229
+        ]
+      ],
+      "signedVolume": 0.7160284867208535,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.0.rib.6",
+      "kind": "strut",
+      "bounds": [
+        [
+          58.665000915527344,
+          3.439999580383301,
+          -8.199965476989746
+        ],
+        [
+          58.88500213623047,
+          18.439998626708984,
+          -7.979965686798096
+        ]
+      ],
+      "signedVolume": 0.7160284867208535,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.0.rib.7",
+      "kind": "strut",
+      "bounds": [
+        [
+          65.70462036132812,
+          3.439999580383301,
+          -9.441240310668945
+        ],
+        [
+          65.92462158203125,
+          18.439998626708984,
+          -9.221240997314453
+        ]
+      ],
+      "signedVolume": 0.716029127208747,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.0.rib.8",
+      "kind": "strut",
+      "bounds": [
+        [
+          71.8951644897461,
+          3.439999580383301,
+          -5.867130756378174
+        ],
+        [
+          72.11516571044922,
+          18.439998626708984,
+          -5.647130489349365
+        ]
+      ],
+      "signedVolume": 0.7160320133209285,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.0.chimney",
+      "kind": "drum",
+      "bounds": [
+        [
+          65.77999877929688,
+          25.940000534057617,
+          -1.440000057220459
+        ],
+        [
+          70.58000183105469,
+          44.939998626708984,
+          3.359999895095825
+        ]
+      ],
+      "signedVolume": 335.04220218251714,
+      "triangles": 124,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "outwardFaces": 124,
+      "outwardNormals": 372,
+      "vertexNormals": 372
+    },
+    {
+      "id": "G2.furnace.0.band.27.44",
+      "kind": "drum",
+      "bounds": [
+        [
+          65.52999877929688,
+          27.229999542236328,
+          -1.690000057220459
+        ],
+        [
+          70.83000183105469,
+          27.649999618530273,
+          3.609999895095825
+        ]
+      ],
+      "signedVolume": 9.024301702317825,
+      "triangles": 124,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "outwardFaces": 124,
+      "outwardNormals": 372,
+      "vertexNormals": 372
+    },
+    {
+      "id": "G2.furnace.0.band.40.44",
+      "kind": "drum",
+      "bounds": [
+        [
+          65.52999877929688,
+          40.22999954223633,
+          -1.690000057220459
+        ],
+        [
+          70.83000183105469,
+          40.650001525878906,
+          3.609999895095825
+        ]
+      ],
+      "signedVolume": 9.024342145741265,
+      "triangles": 124,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "outwardFaces": 124,
+      "outwardNormals": 372,
+      "vertexNormals": 372
+    },
+    {
+      "id": "G2.furnace.0.tap-platform",
+      "kind": "box",
+      "bounds": [
+        [
+          60.5,
+          9.21500015258789,
+          -8.140000343322754
+        ],
+        [
+          67.5,
+          9.664999961853027,
+          -5.340000152587891
+        ]
+      ],
+      "signedVolume": 8.813386160061462,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.0.launder",
+      "kind": "box",
+      "bounds": [
+        [
+          62.900001525878906,
+          8.0649995803833,
+          -17.34000015258789
+        ],
+        [
+          65.0999984741211,
+          8.414999961853027,
+          -9.34000015258789
+        ]
+      ],
+      "signedVolume": 6.153193139427631,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.1.casing.0",
+      "kind": "drum",
+      "bounds": [
+        [
+          85.5999984741211,
+          8.449999809265137,
+          12.760000228881836
+        ],
+        [
+          102.4000015258789,
+          9.550000190734863,
+          29.559999465942383
+        ]
+      ],
+      "signedVolume": 241.04503083339026,
+      "triangles": 188,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "outwardFaces": 188,
+      "outwardNormals": 564,
+      "vertexNormals": 564
+    },
+    {
+      "id": "G2.furnace.1.casing.1",
+      "kind": "drum",
+      "bounds": [
+        [
+          86.4800033569336,
+          14.449999809265137,
+          13.640000343322754
+        ],
+        [
+          101.5199966430664,
+          15.550000190734863,
+          28.68000030517578
+        ]
+      ],
+      "signedVolume": 193.18426502554914,
+      "triangles": 188,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "outwardFaces": 188,
+      "outwardNormals": 564,
+      "vertexNormals": 564
+    },
+    {
+      "id": "G2.furnace.1.casing.2",
+      "kind": "drum",
+      "bounds": [
+        [
+          87.76000213623047,
+          20.450000762939453,
+          14.920000076293945
+        ],
+        [
+          100.23999786376953,
+          21.549999237060547,
+          27.399999618530273
+        ]
+      ],
+      "signedVolume": 133.01400283796718,
+      "triangles": 188,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "outwardFaces": 188,
+      "outwardNormals": 564,
+      "vertexNormals": 564
+    },
+    {
+      "id": "G2.furnace.1.rib.0",
+      "kind": "strut",
+      "bounds": [
+        [
+          101.48999786376953,
+          8.0,
+          21.049999237060547
+        ],
+        [
+          101.70999908447266,
+          23.0,
+          21.270000457763672
+        ]
+      ],
+      "signedVolume": 0.7160344275131778,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.1.rib.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          100.28352355957031,
+          8.0,
+          25.15886878967285
+        ],
+        [
+          100.50352478027344,
+          23.0,
+          25.378870010375977
+        ]
+      ],
+      "signedVolume": 0.7160349504437206,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.1.rib.2",
+      "kind": "strut",
+      "bounds": [
+        [
+          97.04715728759766,
+          8.0,
+          27.96320343017578
+        ],
+        [
+          97.26715850830078,
+          23.0,
+          28.183204650878906
+        ]
+      ],
+      "signedVolume": 0.7160344275131778,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.1.rib.3",
+      "kind": "strut",
+      "bounds": [
+        [
+          92.80840301513672,
+          8.0,
+          28.572643280029297
+        ],
+        [
+          93.02840423583984,
+          23.0,
+          28.792644500732422
+        ]
+      ],
+      "signedVolume": 0.7160344275131778,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.1.rib.4",
+      "kind": "strut",
+      "bounds": [
+        [
+          88.91305541992188,
+          8.0,
+          26.7936954498291
+        ],
+        [
+          89.133056640625,
+          23.0,
+          27.013696670532227
+        ]
+      ],
+      "signedVolume": 0.7160349504437206,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.1.rib.5",
+      "kind": "strut",
+      "bounds": [
+        [
+          86.59785461425781,
+          8.0,
+          23.191165924072266
+        ],
+        [
+          86.81785583496094,
+          23.0,
+          23.41116714477539
+        ]
+      ],
+      "signedVolume": 0.7160344275131778,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.1.rib.6",
+      "kind": "strut",
+      "bounds": [
+        [
+          86.59785461425781,
+          8.0,
+          18.908832550048828
+        ],
+        [
+          86.81785583496094,
+          23.0,
+          19.128833770751953
+        ]
+      ],
+      "signedVolume": 0.7160344275131778,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.1.rib.7",
+      "kind": "strut",
+      "bounds": [
+        [
+          88.91305541992188,
+          8.0,
+          15.306303977966309
+        ],
+        [
+          89.133056640625,
+          23.0,
+          15.5263032913208
+        ]
+      ],
+      "signedVolume": 0.7160291761131582,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.1.rib.8",
+      "kind": "strut",
+      "bounds": [
+        [
+          92.80840301513672,
+          8.0,
+          13.52735710144043
+        ],
+        [
+          93.02840423583984,
+          23.0,
+          13.747356414794922
+        ]
+      ],
+      "signedVolume": 0.7160291761131582,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.1.rib.9",
+      "kind": "strut",
+      "bounds": [
+        [
+          97.04715728759766,
+          8.0,
+          14.136796951293945
+        ],
+        [
+          97.26715850830078,
+          23.0,
+          14.356796264648438
+        ]
+      ],
+      "signedVolume": 0.7160291761131582,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.1.rib.10",
+      "kind": "strut",
+      "bounds": [
+        [
+          100.28352355957031,
+          8.0,
+          16.941129684448242
+        ],
+        [
+          100.50352478027344,
+          23.0,
+          17.161130905151367
+        ]
+      ],
+      "signedVolume": 0.7160349472851143,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.1.chimney",
+      "kind": "drum",
+      "bounds": [
+        [
+          94.63999938964844,
+          34.5,
+          18.760000228881836
+        ],
+        [
+          99.44000244140625,
+          53.5,
+          23.559999465942383
+        ]
+      ],
+      "signedVolume": 335.04200094247585,
+      "triangles": 124,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "outwardFaces": 124,
+      "outwardNormals": 372,
+      "vertexNormals": 372
+    },
+    {
+      "id": "G2.furnace.1.band.35",
+      "kind": "drum",
+      "bounds": [
+        [
+          94.38999938964844,
+          34.790000915527344,
+          18.510000228881836
+        ],
+        [
+          99.69000244140625,
+          35.209999084472656,
+          23.809999465942383
+        ]
+      ],
+      "signedVolume": 9.024255850623382,
+      "triangles": 124,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "outwardFaces": 124,
+      "outwardNormals": 372,
+      "vertexNormals": 372
+    },
+    {
+      "id": "G2.furnace.1.band.49",
+      "kind": "drum",
+      "bounds": [
+        [
+          94.38999938964844,
+          48.790000915527344,
+          18.510000228881836
+        ],
+        [
+          99.69000244140625,
+          49.209999084472656,
+          23.809999465942383
+        ]
+      ],
+      "signedVolume": 9.024255850623382,
+      "triangles": 124,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "outwardFaces": 124,
+      "outwardNormals": 372,
+      "vertexNormals": 372
+    },
+    {
+      "id": "G2.furnace.1.tap-platform",
+      "kind": "box",
+      "bounds": [
+        [
+          90.5,
+          13.774999618530273,
+          14.15999984741211
+        ],
+        [
+          97.5,
+          14.225000381469727,
+          16.959999084472656
+        ]
+      ],
+      "signedVolume": 8.81340213139046,
+      "triangles": 44
+    },
+    {
+      "id": "G2.furnace.1.launder",
+      "kind": "box",
+      "bounds": [
+        [
+          92.9000015258789,
+          12.625,
+          6.760000228881836
+        ],
+        [
+          95.0999984741211,
+          12.975000381469727,
+          14.760000228881836
+        ]
+      ],
+      "signedVolume": 6.153193687995578,
+      "triangles": 44
+    },
+    {
+      "id": "G3.tipple.51.jamb.-1",
+      "kind": "box",
+      "bounds": [
+        [
+          45.0,
+          0.0,
+          -30.549999237060547
+        ],
+        [
+          45.220001220703125,
+          5.0,
+          -29.450000762939453
+        ]
+      ],
+      "signedVolume": 1.205940502978891,
+      "triangles": 44
+    },
+    {
+      "id": "G3.tipple.51.roof-eave.-1",
+      "kind": "box",
+      "bounds": [
+        [
+          44.279998779296875,
+          11.8100004196167,
+          -35.0
+        ],
+        [
+          51.0,
+          12.1899995803833,
+          -25.0
+        ]
+      ],
+      "signedVolume": 17.847040783927472,
+      "triangles": 44
+    },
+    {
+      "id": "G3.tipple.51.guide.-1",
+      "kind": "box",
+      "bounds": [
+        [
+          46.79999923706055,
+          -0.1550000011920929,
+          -39.5
+        ],
+        [
+          47.040000915527344,
+          0.004999999888241291,
+          -28.5
+        ]
+      ],
+      "signedVolume": 0.4150462285528567,
+      "triangles": 44
+    },
+    {
+      "id": "G3.tipple.51.jamb.1",
+      "kind": "box",
+      "bounds": [
+        [
+          56.779998779296875,
+          0.0,
+          -30.549999237060547
+        ],
+        [
+          57.0,
+          5.0,
+          -29.450000762939453
+        ]
+      ],
+      "signedVolume": 1.205940502978891,
+      "triangles": 44
+    },
+    {
+      "id": "G3.tipple.51.roof-eave.1",
+      "kind": "box",
+      "bounds": [
+        [
+          51.0,
+          11.8100004196167,
+          -35.0
+        ],
+        [
+          57.720001220703125,
+          12.1899995803833,
+          -25.0
+        ]
+      ],
+      "signedVolume": 17.847040783927472,
+      "triangles": 44
+    },
+    {
+      "id": "G3.tipple.51.guide.1",
+      "kind": "box",
+      "bounds": [
+        [
+          54.959999084472656,
+          -0.1550000011920929,
+          -39.5
+        ],
+        [
+          55.20000076293945,
+          0.004999999888241291,
+          -28.5
+        ]
+      ],
+      "signedVolume": 0.4150462285528567,
+      "triangles": 44
+    },
+    {
+      "id": "G3.tipple.51.arch",
+      "kind": "arch",
+      "bounds": [
+        [
+          45.00141143798828,
+          5.0,
+          -30.549999237060547
+        ],
+        [
+          56.99858856201172,
+          11.0,
+          -29.450000762939453
+        ]
+      ],
+      "signedVolume": 4.446764367306393,
+      "triangles": 348
+    },
+    {
+      "id": "G3.tipple.51.grain-deck",
+      "kind": "box",
+      "bounds": [
+        [
+          46.20000076293945,
+          8.800000190734863,
+          -28.0
+        ],
+        [
+          55.79999923706055,
+          9.199999809265137,
+          -26.0
+        ]
+      ],
+      "signedVolume": 7.67224670021969,
+      "triangles": 44
+    },
+    {
+      "id": "G3.tipple.82.jamb.-1",
+      "kind": "box",
+      "bounds": [
+        [
+          74.5,
+          0.0,
+          -32.54999923706055
+        ],
+        [
+          74.72000122070312,
+          3.5,
+          -31.450000762939453
+        ]
+      ],
+      "signedVolume": 0.8439115619720233,
+      "triangles": 44
+    },
+    {
+      "id": "G3.tipple.82.roof-eave.-1",
+      "kind": "box",
+      "bounds": [
+        [
+          73.5999984741211,
+          11.8100004196167,
+          -37.0
+        ],
+        [
+          82.0,
+          12.1899995803833,
+          -27.0
+        ]
+      ],
+      "signedVolume": 22.3104762977229,
+      "triangles": 44
+    },
+    {
+      "id": "G3.tipple.82.guide.-1",
+      "kind": "box",
+      "bounds": [
+        [
+          76.77999877929688,
+          -0.1550000011920929,
+          -41.5
+        ],
+        [
+          77.0199966430664,
+          0.004999999888241291,
+          -30.5
+        ]
+      ],
+      "signedVolume": 0.4150410431618243,
+      "triangles": 44
+    },
+    {
+      "id": "G3.tipple.82.jamb.1",
+      "kind": "box",
+      "bounds": [
+        [
+          89.27999877929688,
+          0.0,
+          -32.54999923706055
+        ],
+        [
+          89.5,
+          3.5,
+          -31.450000762939453
+        ]
+      ],
+      "signedVolume": 0.8439115619720233,
+      "triangles": 44
+    },
+    {
+      "id": "G3.tipple.82.roof-eave.1",
+      "kind": "box",
+      "bounds": [
+        [
+          82.0,
+          11.8100004196167,
+          -37.0
+        ],
+        [
+          90.4000015258789,
+          12.1899995803833,
+          -27.0
+        ]
+      ],
+      "signedVolume": 22.3104762977229,
+      "triangles": 44
+    },
+    {
+      "id": "G3.tipple.82.guide.1",
+      "kind": "box",
+      "bounds": [
+        [
+          86.9800033569336,
+          -0.1550000011920929,
+          -41.5
+        ],
+        [
+          87.22000122070312,
+          0.004999999888241291,
+          -30.5
+        ]
+      ],
+      "signedVolume": 0.4150410431618243,
+      "triangles": 44
+    },
+    {
+      "id": "G3.tipple.82.arch",
+      "kind": "arch",
+      "bounds": [
+        [
+          74.50141143798828,
+          3.5,
+          -32.54999923706055
+        ],
+        [
+          89.49858856201172,
+          11.0,
+          -31.450000762939453
+        ]
+      ],
+      "signedVolume": 5.5794416308813055,
+      "triangles": 348
+    },
+    {
+      "id": "G3.tipple.82.grain-deck",
+      "kind": "box",
+      "bounds": [
+        [
+          76.0,
+          8.800000190734863,
+          -30.0
+        ],
+        [
+          88.0,
+          9.199999809265137,
+          -28.0
+        ]
+      ],
+      "signedVolume": 9.590691272513999,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.0.trestle.0.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -26.4674015045166,
+          6.99075174331665,
+          -98.78303527832031
+        ],
+        [
+          -25.612600326538086,
+          13.009248733520508,
+          -98.50816345214844
+        ]
+      ],
+      "signedVolume": 0.19155379450909563,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.0.trestle.0.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -22.387399673461914,
+          6.99075174331665,
+          -98.21183776855469
+        ],
+        [
+          -21.5325984954834,
+          13.009248733520508,
+          -97.93696594238281
+        ]
+      ],
+      "signedVolume": 0.19155388739949644,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.0.roller.0",
+      "kind": "drum",
+      "bounds": [
+        [
+          -25.600000381469727,
+          12.785562515258789,
+          -98.68335723876953
+        ],
+        [
+          -22.399999618530273,
+          13.454437255859375,
+          -98.0366439819336
+        ]
+      ],
+      "signedVolume": 1.0834643454371558,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.0.trestle.1.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -26.4674015045166,
+          6.99075174331665,
+          -86.78303527832031
+        ],
+        [
+          -25.612600326538086,
+          13.009248733520508,
+          -86.50816345214844
+        ]
+      ],
+      "signedVolume": 0.1915538817975826,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.0.trestle.1.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -22.387399673461914,
+          6.99075174331665,
+          -86.21183776855469
+        ],
+        [
+          -21.5325984954834,
+          13.009248733520508,
+          -85.93696594238281
+        ]
+      ],
+      "signedVolume": 0.19155383699789633,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.0.roller.1",
+      "kind": "drum",
+      "bounds": [
+        [
+          -25.600000381469727,
+          12.785562515258789,
+          -86.68335723876953
+        ],
+        [
+          -22.399999618530273,
+          13.454437255859375,
+          -86.0366439819336
+        ]
+      ],
+      "signedVolume": 1.0834643454371558,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.0.trestle.2.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -26.4674015045166,
+          6.99075174331665,
+          -74.78303527832031
+        ],
+        [
+          -25.612600326538086,
+          13.009248733520508,
+          -74.50816345214844
+        ]
+      ],
+      "signedVolume": 0.19155391627533655,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.0.trestle.2.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -22.387399673461914,
+          6.99075174331665,
+          -74.21183776855469
+        ],
+        [
+          -21.5325984954834,
+          13.009248733520508,
+          -73.93696594238281
+        ]
+      ],
+      "signedVolume": 0.19155384869877384,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.0.roller.2",
+      "kind": "drum",
+      "bounds": [
+        [
+          -25.600000381469727,
+          12.785562515258789,
+          -74.68335723876953
+        ],
+        [
+          -22.399999618530273,
+          13.454437255859375,
+          -74.0366439819336
+        ]
+      ],
+      "signedVolume": 1.0834643448491244,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.0.trestle.3.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -26.4674015045166,
+          6.99075174331665,
+          -62.78303146362305
+        ],
+        [
+          -25.612600326538086,
+          13.009248733520508,
+          -62.5081672668457
+        ]
+      ],
+      "signedVolume": 0.19155381379476458,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.0.trestle.3.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -22.387399673461914,
+          6.99075174331665,
+          -62.21183395385742
+        ],
+        [
+          -21.5325984954834,
+          13.009248733520508,
+          -61.93696975708008
+        ]
+      ],
+      "signedVolume": 0.19155386466244606,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.0.roller.3",
+      "kind": "drum",
+      "bounds": [
+        [
+          -25.600000381469727,
+          12.785562515258789,
+          -62.6833610534668
+        ],
+        [
+          -22.399999618530273,
+          13.454437255859375,
+          -62.03664016723633
+        ]
+      ],
+      "signedVolume": 1.0834793312315623,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.0.trestle.4.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -26.4674015045166,
+          6.99075174331665,
+          -50.78303146362305
+        ],
+        [
+          -25.612600326538086,
+          13.009248733520508,
+          -50.5081672668457
+        ]
+      ],
+      "signedVolume": 0.19155373220121202,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.0.trestle.4.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -22.387399673461914,
+          6.99075174331665,
+          -50.21183395385742
+        ],
+        [
+          -21.5325984954834,
+          13.009248733520508,
+          -49.93696975708008
+        ]
+      ],
+      "signedVolume": 0.19155394998965264,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.0.roller.4",
+      "kind": "drum",
+      "bounds": [
+        [
+          -25.600000381469727,
+          12.785562515258789,
+          -50.6833610534668
+        ],
+        [
+          -22.399999618530273,
+          13.454437255859375,
+          -50.03664016723633
+        ]
+      ],
+      "signedVolume": 1.0834793330135988,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.0.belt",
+      "kind": "box",
+      "bounds": [
+        [
+          -25.700000762939453,
+          12.90999984741211,
+          -98.59550476074219
+        ],
+        [
+          -22.299999237060547,
+          13.09000015258789,
+          -44.12449645996094
+        ]
+      ],
+      "signedVolume": 33.0107710518492,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.1.trestle.0.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          21.5325984954834,
+          18.990751266479492,
+          -9.063034057617188
+        ],
+        [
+          22.387399673461914,
+          25.009248733520508,
+          -8.788166046142578
+        ]
+      ],
+      "signedVolume": 0.19155380225321875,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.1.trestle.0.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          25.612600326538086,
+          18.990751266479492,
+          -8.491833686828613
+        ],
+        [
+          26.4674015045166,
+          25.009248733520508,
+          -8.216965675354004
+        ]
+      ],
+      "signedVolume": 0.19155378551072622,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.1.roller.0",
+      "kind": "drum",
+      "bounds": [
+        [
+          22.399999618530273,
+          24.78556251525879,
+          -8.963358879089355
+        ],
+        [
+          25.600000381469727,
+          25.454437255859375,
+          -8.316640853881836
+        ]
+      ],
+      "signedVolume": 1.0834724825070696,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.1.trestle.1.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          21.5325984954834,
+          18.990751266479492,
+          2.9369664192199707
+        ],
+        [
+          22.387399673461914,
+          25.009248733520508,
+          3.2118334770202637
+        ]
+      ],
+      "signedVolume": 0.1915536036118555,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.1.trestle.1.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          25.612600326538086,
+          18.990751266479492,
+          3.508166551589966
+        ],
+        [
+          26.4674015045166,
+          25.009248733520508,
+          3.783033609390259
+        ]
+      ],
+      "signedVolume": 0.19155360160789808,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.1.roller.1",
+      "kind": "drum",
+      "bounds": [
+        [
+          22.399999618530273,
+          24.78556251525879,
+          3.0366408824920654
+        ],
+        [
+          25.600000381469727,
+          25.454437255859375,
+          3.683359146118164
+        ]
+      ],
+      "signedVolume": 1.0834731894826235,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.1.trestle.2.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          21.5325984954834,
+          18.990751266479492,
+          14.936965942382812
+        ],
+        [
+          22.387399673461914,
+          25.009248733520508,
+          15.211833953857422
+        ]
+      ],
+      "signedVolume": 0.19155373764423597,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.1.trestle.2.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          25.612600326538086,
+          18.990751266479492,
+          15.508166313171387
+        ],
+        [
+          26.4674015045166,
+          25.009248733520508,
+          15.783034324645996
+        ]
+      ],
+      "signedVolume": 0.19155378450652447,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.1.roller.2",
+      "kind": "drum",
+      "bounds": [
+        [
+          22.399999618530273,
+          24.78556251525879,
+          15.036641120910645
+        ],
+        [
+          25.600000381469727,
+          25.454437255859375,
+          15.683359146118164
+        ]
+      ],
+      "signedVolume": 1.083472482196585,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.1.trestle.3.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          21.5325984954834,
+          18.990751266479492,
+          26.936965942382812
+        ],
+        [
+          22.387399673461914,
+          25.009248733520508,
+          27.211833953857422
+        ]
+      ],
+      "signedVolume": 0.19155378708854426,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.1.trestle.3.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          25.612600326538086,
+          18.990751266479492,
+          27.50816535949707
+        ],
+        [
+          26.4674015045166,
+          25.009248733520508,
+          27.78303337097168
+        ]
+      ],
+      "signedVolume": 0.19155385188005475,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.1.roller.3",
+      "kind": "drum",
+      "bounds": [
+        [
+          22.399999618530273,
+          24.78556251525879,
+          27.036640167236328
+        ],
+        [
+          25.600000381469727,
+          25.454437255859375,
+          27.683359146118164
+        ]
+      ],
+      "signedVolume": 1.0834744783736912,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.1.trestle.4.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          21.5325984954834,
+          18.990751266479492,
+          38.93696975708008
+        ],
+        [
+          22.387399673461914,
+          25.009248733520508,
+          39.21183395385742
+        ]
+      ],
+      "signedVolume": 0.1915538166385267,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.1.trestle.4.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          25.612600326538086,
+          18.990751266479492,
+          39.5081672668457
+        ],
+        [
+          26.4674015045166,
+          25.009248733520508,
+          39.78303146362305
+        ]
+      ],
+      "signedVolume": 0.19155374436113726,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.1.roller.4",
+      "kind": "drum",
+      "bounds": [
+        [
+          22.399999618530273,
+          24.78556251525879,
+          39.03664016723633
+        ],
+        [
+          25.600000381469727,
+          25.454437255859375,
+          39.6833610534668
+        ]
+      ],
+      "signedVolume": 1.0834778372271108,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.1.trestle.5.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          21.5325984954834,
+          18.990751266479492,
+          50.93696975708008
+        ],
+        [
+          22.387399673461914,
+          25.009248733520508,
+          51.21183395385742
+        ]
+      ],
+      "signedVolume": 0.19155381821934608,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.1.trestle.5.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          25.612600326538086,
+          18.990751266479492,
+          51.5081672668457
+        ],
+        [
+          26.4674015045166,
+          25.009248733520508,
+          51.78303146362305
+        ]
+      ],
+      "signedVolume": 0.1915537816317513,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.1.roller.5",
+      "kind": "drum",
+      "bounds": [
+        [
+          22.399999618530273,
+          24.78556251525879,
+          51.03664016723633
+        ],
+        [
+          25.600000381469727,
+          25.454437255859375,
+          51.6833610534668
+        ]
+      ],
+      "signedVolume": 1.0834778369438343,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.1.trestle.6.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          21.5325984954834,
+          18.990751266479492,
+          62.93696975708008
+        ],
+        [
+          22.387399673461914,
+          25.009248733520508,
+          63.21183395385742
+        ]
+      ],
+      "signedVolume": 0.1915538553562801,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.1.trestle.6.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          25.612600326538086,
+          18.990751266479492,
+          63.5081672668457
+        ],
+        [
+          26.4674015045166,
+          25.009248733520508,
+          63.78303146362305
+        ]
+      ],
+      "signedVolume": 0.19155374607563663,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.1.roller.6",
+      "kind": "drum",
+      "bounds": [
+        [
+          22.399999618530273,
+          24.78556251525879,
+          63.03664016723633
+        ],
+        [
+          25.600000381469727,
+          25.454437255859375,
+          63.6833610534668
+        ]
+      ],
+      "signedVolume": 1.0834778390458393,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.1.trestle.7.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          21.5325984954834,
+          18.990751266479492,
+          74.93696594238281
+        ],
+        [
+          22.387399673461914,
+          25.009248733520508,
+          75.21183776855469
+        ]
+      ],
+      "signedVolume": 0.19155381698118804,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.1.trestle.7.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          25.612600326538086,
+          18.990751266479492,
+          75.50816345214844
+        ],
+        [
+          26.4674015045166,
+          25.009248733520508,
+          75.78303527832031
+        ]
+      ],
+      "signedVolume": 0.19155375453636855,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.1.roller.7",
+      "kind": "drum",
+      "bounds": [
+        [
+          22.399999618530273,
+          24.78556251525879,
+          75.0366439819336
+        ],
+        [
+          25.600000381469727,
+          25.454437255859375,
+          75.68335723876953
+        ]
+      ],
+      "signedVolume": 1.083462771750368,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.1.belt",
+      "kind": "box",
+      "bounds": [
+        [
+          22.299999237060547,
+          24.90999984741211,
+          -8.875504493713379
+        ],
+        [
+          25.700000762939453,
+          25.09000015258789,
+          83.59550476074219
+        ]
+      ],
+      "signedVolume": 56.24219844677075,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.2.trestle.0.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -124.46739959716797,
+          26.89984130859375,
+          48.49696731567383
+        ],
+        [
+          -123.61260223388672,
+          32.918338775634766,
+          48.77183151245117
+        ]
+      ],
+      "signedVolume": 0.19155363174007242,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.2.trestle.0.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -120.38739776611328,
+          26.89984130859375,
+          49.06816864013672
+        ],
+        [
+          -119.53260040283203,
+          32.918338775634766,
+          49.34303283691406
+        ]
+      ],
+      "signedVolume": 0.19155339002462374,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.2.roller.0",
+      "kind": "drum",
+      "bounds": [
+        [
+          -123.5999984741211,
+          32.69465255737305,
+          48.596641540527344
+        ],
+        [
+          -120.4000015258789,
+          33.363529205322266,
+          49.24335861206055
+        ]
+      ],
+      "signedVolume": 1.0834732423241054,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.2.trestle.1.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -124.46739959716797,
+          26.89984130859375,
+          60.49696731567383
+        ],
+        [
+          -123.61260223388672,
+          32.918338775634766,
+          60.77183151245117
+        ]
+      ],
+      "signedVolume": 0.19155332648231627,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.2.trestle.1.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -120.38739776611328,
+          26.89984130859375,
+          61.06816864013672
+        ],
+        [
+          -119.53260040283203,
+          32.918338775634766,
+          61.34303283691406
+        ]
+      ],
+      "signedVolume": 0.19155342307102247,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.2.roller.1",
+      "kind": "drum",
+      "bounds": [
+        [
+          -123.5999984741211,
+          32.69465255737305,
+          60.596641540527344
+        ],
+        [
+          -120.4000015258789,
+          33.363529205322266,
+          61.24335861206055
+        ]
+      ],
+      "signedVolume": 1.083473239219873,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.2.trestle.2.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -124.46739959716797,
+          26.89984130859375,
+          72.49696350097656
+        ],
+        [
+          -123.61260223388672,
+          32.918338775634766,
+          72.77183532714844
+        ]
+      ],
+      "signedVolume": 0.19155370212077336,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.2.trestle.2.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -120.38739776611328,
+          26.89984130859375,
+          73.06816101074219
+        ],
+        [
+          -119.53260040283203,
+          32.918338775634766,
+          73.34303283691406
+        ]
+      ],
+      "signedVolume": 0.1915536964783125,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.2.roller.2",
+      "kind": "drum",
+      "bounds": [
+        [
+          -123.5999984741211,
+          32.69465255737305,
+          72.59664154052734
+        ],
+        [
+          -120.4000015258789,
+          33.363529205322266,
+          73.24336242675781
+        ]
+      ],
+      "signedVolume": 1.0834805775462197,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.2.trestle.3.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -124.46739959716797,
+          26.89984130859375,
+          84.49696350097656
+        ],
+        [
+          -123.61260223388672,
+          32.918338775634766,
+          84.77183532714844
+        ]
+      ],
+      "signedVolume": 0.19155367044042584,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.2.trestle.3.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -120.38739776611328,
+          26.89984130859375,
+          85.06816101074219
+        ],
+        [
+          -119.53260040283203,
+          32.918338775634766,
+          85.34303283691406
+        ]
+      ],
+      "signedVolume": 0.19155343296169638,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.2.roller.3",
+      "kind": "drum",
+      "bounds": [
+        [
+          -123.5999984741211,
+          32.69465255737305,
+          84.59664154052734
+        ],
+        [
+          -120.4000015258789,
+          33.363529205322266,
+          85.24336242675781
+        ]
+      ],
+      "signedVolume": 1.0834805717568847,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.2.belt",
+      "kind": "box",
+      "bounds": [
+        [
+          -123.69999694824219,
+          32.819091796875,
+          48.68449401855469
+        ],
+        [
+          -120.30000305175781,
+          32.999088287353516,
+          85.15550231933594
+        ]
+      ],
+      "signedVolume": 22.005893018707397,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.3.trestle.0.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          119.53260040283203,
+          26.89984130859375,
+          82.65696716308594
+        ],
+        [
+          120.38739776611328,
+          32.918338775634766,
+          82.93183898925781
+        ]
+      ],
+      "signedVolume": 0.19155367020784114,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.3.trestle.0.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          123.61260223388672,
+          26.89984130859375,
+          83.22816467285156
+        ],
+        [
+          124.46739959716797,
+          32.918338775634766,
+          83.50303649902344
+        ]
+      ],
+      "signedVolume": 0.19155366682235117,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.3.roller.0",
+      "kind": "drum",
+      "bounds": [
+        [
+          120.4000015258789,
+          32.69465255737305,
+          82.75663757324219
+        ],
+        [
+          123.5999984741211,
+          33.363529205322266,
+          83.40335845947266
+        ]
+      ],
+      "signedVolume": 1.0834805798770568,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.3.trestle.1.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          119.53260040283203,
+          26.89984130859375,
+          94.65696716308594
+        ],
+        [
+          120.38739776611328,
+          32.918338775634766,
+          94.93183898925781
+        ]
+      ],
+      "signedVolume": 0.19155356091220982,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.3.trestle.1.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          123.61260223388672,
+          26.89984130859375,
+          95.22816467285156
+        ],
+        [
+          124.46739959716797,
+          32.918338775634766,
+          95.50303649902344
+        ]
+      ],
+      "signedVolume": 0.19155339480419625,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.3.roller.1",
+      "kind": "drum",
+      "bounds": [
+        [
+          120.4000015258789,
+          32.69465255737305,
+          94.75663757324219
+        ],
+        [
+          123.5999984741211,
+          33.363529205322266,
+          95.40335845947266
+        ]
+      ],
+      "signedVolume": 1.0834805806670393,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.3.trestle.2.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          119.53260040283203,
+          26.89984130859375,
+          106.65696716308594
+        ],
+        [
+          120.38739776611328,
+          32.918338775634766,
+          106.93183898925781
+        ]
+      ],
+      "signedVolume": 0.19155369825778287,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.3.trestle.2.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          123.61260223388672,
+          26.89984130859375,
+          107.22816467285156
+        ],
+        [
+          124.46739959716797,
+          32.918338775634766,
+          107.50303649902344
+        ]
+      ],
+      "signedVolume": 0.19155353030688854,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.3.roller.2",
+      "kind": "drum",
+      "bounds": [
+        [
+          120.4000015258789,
+          32.69465255737305,
+          106.75663757324219
+        ],
+        [
+          123.5999984741211,
+          33.363529205322266,
+          107.40335845947266
+        ]
+      ],
+      "signedVolume": 1.0834805825705403,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.3.trestle.3.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          119.53260040283203,
+          26.89984130859375,
+          118.65696716308594
+        ],
+        [
+          120.38739776611328,
+          32.918338775634766,
+          118.93183898925781
+        ]
+      ],
+      "signedVolume": 0.19155353034498943,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.3.trestle.3.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          123.61260223388672,
+          26.89984130859375,
+          119.22816467285156
+        ],
+        [
+          124.46739959716797,
+          32.918338775634766,
+          119.50303649902344
+        ]
+      ],
+      "signedVolume": 0.19155370094423582,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.3.roller.3",
+      "kind": "drum",
+      "bounds": [
+        [
+          120.4000015258789,
+          32.69465255737305,
+          118.75663757324219
+        ],
+        [
+          123.5999984741211,
+          33.363529205322266,
+          119.40335845947266
+        ]
+      ],
+      "signedVolume": 1.0834805738370819,
+      "triangles": 116,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.3.belt",
+      "kind": "box",
+      "bounds": [
+        [
+          120.30000305175781,
+          32.819091796875,
+          82.84449768066406
+        ],
+        [
+          123.69999694824219,
+          32.999088287353516,
+          119.31550598144531
+        ]
+      ],
+      "signedVolume": 22.005893886108257,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.trestle.0.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -50.09000015258789,
+          26.991891860961914,
+          -13.467400550842285
+        ],
+        [
+          -49.90999984741211,
+          33.00811004638672,
+          -12.61259937286377
+        ]
+      ],
+      "signedVolume": 0.19152930861364512,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.trestle.0.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -50.09000015258789,
+          26.991891860961914,
+          -9.38740062713623
+        ],
+        [
+          -49.90999984741211,
+          33.00811004638672,
+          -8.532599449157715
+        ]
+      ],
+      "signedVolume": 0.19152930256139866,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.roller.0",
+      "kind": "drum",
+      "bounds": [
+        [
+          -50.33443832397461,
+          32.7966423034668,
+          -12.600000381469727
+        ],
+        [
+          -49.66556167602539,
+          33.443359375,
+          -9.399999618530273
+        ]
+      ],
+      "signedVolume": 1.0834731205297308,
+      "triangles": 116,
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.4.trestle.1.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -38.09000015258789,
+          26.991891860961914,
+          -11.787400245666504
+        ],
+        [
+          -37.90999984741211,
+          33.00811004638672,
+          -10.932599067687988
+        ]
+      ],
+      "signedVolume": 0.19152931193527234,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.trestle.1.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -38.09000015258789,
+          26.991891860961914,
+          -7.707400798797607
+        ],
+        [
+          -37.90999984741211,
+          33.00811004638672,
+          -6.852599620819092
+        ]
+      ],
+      "signedVolume": 0.1915292479660687,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.roller.1",
+      "kind": "drum",
+      "bounds": [
+        [
+          -38.33443832397461,
+          32.7966423034668,
+          -10.920000076293945
+        ],
+        [
+          -37.66556167602539,
+          33.443359375,
+          -7.71999979019165
+        ]
+      ],
+      "signedVolume": 1.0834729489946373,
+      "triangles": 116,
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.4.trestle.2.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -26.09000015258789,
+          26.991891860961914,
+          -10.107400894165039
+        ],
+        [
+          -25.90999984741211,
+          33.00811004638672,
+          -9.252599716186523
+        ]
+      ],
+      "signedVolume": 0.19152973779938035,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.trestle.2.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -26.09000015258789,
+          26.991891860961914,
+          -6.027400493621826
+        ],
+        [
+          -25.90999984741211,
+          33.00811004638672,
+          -5.1725993156433105
+        ]
+      ],
+      "signedVolume": 0.19152969481453053,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.roller.2",
+      "kind": "drum",
+      "bounds": [
+        [
+          -26.33443832397461,
+          32.7966423034668,
+          -9.239999771118164
+        ],
+        [
+          -25.66556167602539,
+          33.443359375,
+          -6.039999961853027
+        ]
+      ],
+      "signedVolume": 1.0834739476541801,
+      "triangles": 116,
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.4.trestle.3.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -14.09000015258789,
+          26.991891860961914,
+          -8.427400588989258
+        ],
+        [
+          -13.90999984741211,
+          33.00811004638672,
+          -7.572599411010742
+        ]
+      ],
+      "signedVolume": 0.19152954165148192,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.trestle.3.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -14.09000015258789,
+          26.991891860961914,
+          -4.347400665283203
+        ],
+        [
+          -13.90999984741211,
+          33.00811004638672,
+          -3.4925994873046875
+        ]
+      ],
+      "signedVolume": 0.19152961846112676,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.roller.3",
+      "kind": "drum",
+      "bounds": [
+        [
+          -14.334437370300293,
+          32.7966423034668,
+          -7.559999942779541
+        ],
+        [
+          -13.665562629699707,
+          33.443359375,
+          -4.360000133514404
+        ]
+      ],
+      "signedVolume": 1.083471113109423,
+      "triangles": 116,
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.4.trestle.4.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -2.0899999141693115,
+          26.991891860961914,
+          -6.747400760650635
+        ],
+        [
+          -1.909999966621399,
+          33.00811004638672,
+          -5.892599582672119
+        ]
+      ],
+      "signedVolume": 0.19152920903437012,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.trestle.4.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -2.0899999141693115,
+          26.991891860961914,
+          -2.667400360107422
+        ],
+        [
+          -1.909999966621399,
+          33.00811004638672,
+          -1.812599539756775
+        ]
+      ],
+      "signedVolume": 0.19152928295745178,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.roller.4",
+      "kind": "drum",
+      "bounds": [
+        [
+          -2.334437608718872,
+          32.7966423034668,
+          -5.880000114440918
+        ],
+        [
+          -1.6655622720718384,
+          33.443359375,
+          -2.680000066757202
+        ]
+      ],
+      "signedVolume": 1.083471991570002,
+      "triangles": 116,
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.4.trestle.5.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          9.90999984741211,
+          26.991891860961914,
+          -5.0674004554748535
+        ],
+        [
+          10.09000015258789,
+          33.00811004638672,
+          -4.212599277496338
+        ]
+      ],
+      "signedVolume": 0.19152950338393937,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.trestle.5.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          9.90999984741211,
+          26.991891860961914,
+          -0.987400472164154
+        ],
+        [
+          10.09000015258789,
+          33.00811004638672,
+          -0.13259953260421753
+        ]
+      ],
+      "signedVolume": 0.19152955437765504,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.roller.5",
+      "kind": "drum",
+      "bounds": [
+        [
+          9.665562629699707,
+          32.7966423034668,
+          -4.199999809265137
+        ],
+        [
+          10.334437370300293,
+          33.443359375,
+          -1.0
+        ]
+      ],
+      "signedVolume": 1.083471113725152,
+      "triangles": 116,
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.4.trestle.6.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          21.90999984741211,
+          26.991891860961914,
+          -3.3874006271362305
+        ],
+        [
+          22.09000015258789,
+          33.00811004638672,
+          -2.532599449157715
+        ]
+      ],
+      "signedVolume": 0.19152991376530581,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.trestle.6.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          21.90999984741211,
+          26.991891860961914,
+          0.6925995349884033
+        ],
+        [
+          22.09000015258789,
+          33.00811004638672,
+          1.5474004745483398
+        ]
+      ],
+      "signedVolume": 0.1915297702103287,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.roller.6",
+      "kind": "drum",
+      "bounds": [
+        [
+          21.66556167602539,
+          32.7966423034668,
+          -2.5199999809265137
+        ],
+        [
+          22.33443832397461,
+          33.443359375,
+          0.6800000071525574
+        ]
+      ],
+      "signedVolume": 1.083474003909197,
+      "triangles": 116,
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.4.trestle.7.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          33.90999984741211,
+          26.991891860961914,
+          -1.7074004411697388
+        ],
+        [
+          34.09000015258789,
+          33.00811004638672,
+          -0.8525995016098022
+        ]
+      ],
+      "signedVolume": 0.19152936738783982,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.trestle.7.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          33.90999984741211,
+          26.991891860961914,
+          2.3725996017456055
+        ],
+        [
+          34.09000015258789,
+          33.00811004638672,
+          3.227400302886963
+        ]
+      ],
+      "signedVolume": 0.19152925190195239,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.roller.7",
+      "kind": "drum",
+      "bounds": [
+        [
+          33.66556167602539,
+          32.7966423034668,
+          -0.8399999737739563
+        ],
+        [
+          34.33443832397461,
+          33.443359375,
+          2.359999895095825
+        ]
+      ],
+      "signedVolume": 1.0834728074259001,
+      "triangles": 116,
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.4.trestle.8.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          45.90999984741211,
+          26.991891860961914,
+          -0.027400463819503784
+        ],
+        [
+          46.09000015258789,
+          33.00811004638672,
+          0.8274004459381104
+        ]
+      ],
+      "signedVolume": 0.1915293221881072,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.trestle.8.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          45.90999984741211,
+          26.991891860961914,
+          4.0525994300842285
+        ],
+        [
+          46.09000015258789,
+          33.00811004638672,
+          4.907400608062744
+        ]
+      ],
+      "signedVolume": 0.19152926036683238,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.4.roller.8",
+      "kind": "drum",
+      "bounds": [
+        [
+          45.66556167602539,
+          32.7966423034668,
+          0.8399999737739563
+        ],
+        [
+          46.33443832397461,
+          33.443359375,
+          4.039999961853027
+        ]
+      ],
+      "signedVolume": 1.0834728430581497,
+      "triangles": 116,
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.4.belt",
+      "kind": "box",
+      "bounds": [
+        [
+          -50.0,
+          32.90999984741211,
+          -12.697504043579102
+        ],
+        [
+          50.0,
+          33.09000015258789,
+          4.697504043579102
+        ]
+      ],
+      "signedVolume": 61.13237266991254,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.5.trestle.0.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -45.09000015258789,
+          37.99188995361328,
+          71.23260498046875
+        ],
+        [
+          -44.90999984741211,
+          44.00811004638672,
+          72.08740234375
+        ]
+      ],
+      "signedVolume": 0.19153000357752337,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.5.trestle.0.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -45.09000015258789,
+          37.99188995361328,
+          75.3125991821289
+        ],
+        [
+          -44.90999984741211,
+          44.00811004638672,
+          76.16739654541016
+        ]
+      ],
+      "signedVolume": 0.1915298670553381,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.5.roller.0",
+      "kind": "drum",
+      "bounds": [
+        [
+          -45.33443832397461,
+          43.7966423034668,
+          72.0999984741211
+        ],
+        [
+          -44.66556167602539,
+          44.443359375,
+          75.30000305175781
+        ]
+      ],
+      "signedVolume": 1.083474481283337,
+      "triangles": 116,
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.5.trestle.1.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -33.09000015258789,
+          37.99188995361328,
+          72.91259765625
+        ],
+        [
+          -32.90999984741211,
+          44.00811004638672,
+          73.76739501953125
+        ]
+      ],
+      "signedVolume": 0.1915297330659289,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.5.trestle.1.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -33.09000015258789,
+          37.99188995361328,
+          76.99259948730469
+        ],
+        [
+          -32.90999984741211,
+          44.00811004638672,
+          77.84739685058594
+        ]
+      ],
+      "signedVolume": 0.19152959781013168,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.5.roller.1",
+      "kind": "drum",
+      "bounds": [
+        [
+          -33.33443832397461,
+          43.7966423034668,
+          73.77999877929688
+        ],
+        [
+          -32.66556167602539,
+          44.443359375,
+          76.9800033569336
+        ]
+      ],
+      "signedVolume": 1.0834744803228564,
+      "triangles": 116,
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.5.trestle.2.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -21.09000015258789,
+          37.99188995361328,
+          74.59259796142578
+        ],
+        [
+          -20.90999984741211,
+          44.00811004638672,
+          75.44739532470703
+        ]
+      ],
+      "signedVolume": 0.1915302920289811,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.5.trestle.2.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -21.09000015258789,
+          37.99188995361328,
+          78.67259979248047
+        ],
+        [
+          -20.90999984741211,
+          44.00811004638672,
+          79.52739715576172
+        ]
+      ],
+      "signedVolume": 0.1915300202797947,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.5.roller.2",
+      "kind": "drum",
+      "bounds": [
+        [
+          -21.33443832397461,
+          43.7966423034668,
+          75.45999908447266
+        ],
+        [
+          -20.66556167602539,
+          44.443359375,
+          78.66000366210938
+        ]
+      ],
+      "signedVolume": 1.0834756343068939,
+      "triangles": 116,
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.5.trestle.3.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -9.09000015258789,
+          37.99188995361328,
+          76.27259826660156
+        ],
+        [
+          -8.90999984741211,
+          44.00811004638672,
+          77.12739562988281
+        ]
+      ],
+      "signedVolume": 0.19153025366751075,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.5.trestle.3.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -9.09000015258789,
+          37.99188995361328,
+          80.35260009765625
+        ],
+        [
+          -8.90999984741211,
+          44.00811004638672,
+          81.2073974609375
+        ]
+      ],
+      "signedVolume": 0.19153025366751075,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.5.roller.3",
+      "kind": "drum",
+      "bounds": [
+        [
+          -9.334437370300293,
+          43.7966423034668,
+          77.13999938964844
+        ],
+        [
+          -8.665562629699707,
+          44.443359375,
+          80.33999633789062
+        ]
+      ],
+      "signedVolume": 1.0834702267127412,
+      "triangles": 116,
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.5.trestle.4.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          2.9100000858306885,
+          37.99188995361328,
+          77.95259857177734
+        ],
+        [
+          3.0899999141693115,
+          44.00811004638672,
+          78.8073959350586
+        ]
+      ],
+      "signedVolume": 0.19152958584871904,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.5.trestle.4.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          2.9100000858306885,
+          37.99188995361328,
+          82.03260040283203
+        ],
+        [
+          3.0899999141693115,
+          44.00811004638672,
+          82.88739776611328
+        ]
+      ],
+      "signedVolume": 0.19152985633523428,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.5.roller.4",
+      "kind": "drum",
+      "bounds": [
+        [
+          2.665562391281128,
+          43.7966423034668,
+          78.81999969482422
+        ],
+        [
+          3.334437608718872,
+          44.443359375,
+          82.0199966430664
+        ]
+      ],
+      "signedVolume": 1.0834708314582888,
+      "triangles": 116,
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.5.trestle.5.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          14.90999984741211,
+          37.99188995361328,
+          79.63259887695312
+        ],
+        [
+          15.09000015258789,
+          44.00811004638672,
+          80.48739624023438
+        ]
+      ],
+      "signedVolume": 0.19153024986854786,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.5.trestle.5.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          14.90999984741211,
+          37.99188995361328,
+          83.71260070800781
+        ],
+        [
+          15.09000015258789,
+          44.00811004638672,
+          84.56739807128906
+        ]
+      ],
+      "signedVolume": 0.19153024986854786,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.5.roller.5",
+      "kind": "drum",
+      "bounds": [
+        [
+          14.665562629699707,
+          43.7966423034668,
+          80.5
+        ],
+        [
+          15.334437370300293,
+          44.443359375,
+          83.69999694824219
+        ]
+      ],
+      "signedVolume": 1.0834702266267828,
+      "triangles": 116,
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.5.trestle.6.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          26.90999984741211,
+          37.99188995361328,
+          81.3125991821289
+        ],
+        [
+          27.09000015258789,
+          44.00811004638672,
+          82.16739654541016
+        ]
+      ],
+      "signedVolume": 0.19153029456148882,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.5.trestle.6.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          26.90999984741211,
+          37.99188995361328,
+          85.3926010131836
+        ],
+        [
+          27.09000015258789,
+          44.00811004638672,
+          86.24739837646484
+        ]
+      ],
+      "signedVolume": 0.1915302920289811,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.5.roller.6",
+      "kind": "drum",
+      "bounds": [
+        [
+          26.66556167602539,
+          43.7966423034668,
+          82.18000030517578
+        ],
+        [
+          27.33443832397461,
+          44.443359375,
+          85.37999725341797
+        ]
+      ],
+      "signedVolume": 1.0834730512031736,
+      "triangles": 116,
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.5.trestle.7.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          38.90999984741211,
+          37.99188995361328,
+          82.99259948730469
+        ],
+        [
+          39.09000015258789,
+          44.00811004638672,
+          83.84739685058594
+        ]
+      ],
+      "signedVolume": 0.1915298670553381,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.5.trestle.7.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          38.90999984741211,
+          37.99188995361328,
+          87.07260131835938
+        ],
+        [
+          39.09000015258789,
+          44.00811004638672,
+          87.92739868164062
+        ]
+      ],
+      "signedVolume": 0.1915297305331528,
+      "triangles": 44
+    },
+    {
+      "id": "G4.conveyor.5.roller.7",
+      "kind": "drum",
+      "bounds": [
+        [
+          38.66556167602539,
+          43.7966423034668,
+          83.86000061035156
+        ],
+        [
+          39.33443832397461,
+          44.443359375,
+          87.05999755859375
+        ]
+      ],
+      "signedVolume": 1.083471897504605,
+      "triangles": 116,
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "outwardFaces": 116,
+      "outwardNormals": 348,
+      "vertexNormals": 348
+    },
+    {
+      "id": "G4.conveyor.5.belt",
+      "kind": "box",
+      "bounds": [
+        [
+          -45.0,
+          43.90999984741211,
+          72.00249481201172
+        ],
+        [
+          45.0,
+          44.09000015258789,
+          87.99750518798828
+        ]
+      ],
+      "signedVolume": 55.01892914721916,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.0.foot",
+      "kind": "box",
+      "bounds": [
+        [
+          -137.5,
+          0.15000000596046448,
+          -117.18000030517578
+        ],
+        [
+          -126.5,
+          2.25,
+          -107.77999877929688
+        ]
+      ],
+      "signedVolume": 217.1254861927521,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.0.surge",
+      "kind": "drum",
+      "bounds": [
+        [
+          -135.79959106445312,
+          2.4000000953674316,
+          -116.39713287353516
+        ],
+        [
+          -128.04505920410156,
+          8.600000381469727,
+          -108.56287384033203
+        ]
+      ],
+      "signedVolume": 289.0898171275634,
+      "triangles": 128,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "outwardFaces": 128,
+      "outwardNormals": 384,
+      "vertexNormals": 384
+    },
+    {
+      "id": "G5.bunker.0.cap.0",
+      "kind": "box",
+      "bounds": [
+        [
+          -138.60000610351562,
+          7.284999847412109,
+          -114.9800033569336
+        ],
+        [
+          -127.5999984741211,
+          7.514999866485596,
+          -109.9800033569336
+        ]
+      ],
+      "signedVolume": 12.639524428338515,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.0.cap.1",
+      "kind": "box",
+      "bounds": [
+        [
+          -137.0500030517578,
+          7.684999942779541,
+          -114.68000030517578
+        ],
+        [
+          -126.94999694824219,
+          7.914999961853027,
+          -110.27999877929688
+        ]
+      ],
+      "signedVolume": 10.211697141742043,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.1.foot",
+      "kind": "box",
+      "bounds": [
+        [
+          -100.1500015258789,
+          0.15000000596046448,
+          -111.86000061035156
+        ],
+        [
+          -87.8499984741211,
+          2.25,
+          -102.45999908447266
+        ]
+      ],
+      "signedVolume": 242.78670980611537,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.1.hopper.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -99.3634262084961,
+          2.187000036239624,
+          -107.4000015258789
+        ],
+        [
+          -95.8935775756836,
+          7.61299991607666,
+          -106.92000579833984
+        ]
+      ],
+      "signedVolume": 1.3873765304212577,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.1.hopper.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          -92.1064224243164,
+          2.187000036239624,
+          -107.4000015258789
+        ],
+        [
+          -88.6365737915039,
+          7.61299991607666,
+          -106.92000579833984
+        ]
+      ],
+      "signedVolume": 1.3873765304212577,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.1.grate",
+      "kind": "box",
+      "bounds": [
+        [
+          -100.1500015258789,
+          7.070000171661377,
+          -109.66000366210938
+        ],
+        [
+          -87.8499984741211,
+          7.329999923706055,
+          -104.66000366210938
+        ]
+      ],
+      "signedVolume": 15.978642302976779,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.1.cap.0",
+      "kind": "box",
+      "bounds": [
+        [
+          -101.25,
+          7.284999847412109,
+          -109.66000366210938
+        ],
+        [
+          -88.94999694824219,
+          7.514999866485596,
+          -104.66000366210938
+        ]
+      ],
+      "signedVolume": 14.133677702438293,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.1.cap.1",
+      "kind": "box",
+      "bounds": [
+        [
+          -99.69999694824219,
+          7.684999942779541,
+          -109.36000061035156
+        ],
+        [
+          -88.30000305175781,
+          7.914999961853027,
+          -104.95999908447266
+        ]
+      ],
+      "signedVolume": 11.526443690509499,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.1.cap.2",
+      "kind": "box",
+      "bounds": [
+        [
+          -98.1500015258789,
+          8.085000038146973,
+          -109.05999755859375
+        ],
+        [
+          -87.6500015258789,
+          8.3149995803833,
+          -105.26000213623047
+        ]
+      ],
+      "signedVolume": 9.167587719726619,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.2.foot",
+      "kind": "box",
+      "bounds": [
+        [
+          -55.5,
+          0.15000000596046448,
+          -105.69999694824219
+        ],
+        [
+          -44.5,
+          2.25,
+          -96.30000305175781
+        ]
+      ],
+      "signedVolume": 217.1253099586832,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.2.live-bottom",
+      "kind": "drum",
+      "bounds": [
+        [
+          -54.290000915527344,
+          1.9500000476837158,
+          -105.18244171142578
+        ],
+        [
+          -45.709999084472656,
+          6.050000190734863,
+          -96.81755828857422
+        ]
+      ],
+      "signedVolume": 229.1677940230271,
+      "triangles": 108,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "outwardFaces": 108,
+      "outwardNormals": 324,
+      "vertexNormals": 324
+    },
+    {
+      "id": "G5.bunker.2.discharge",
+      "kind": "strut",
+      "bounds": [
+        [
+          -50.21159362792969,
+          1.7772036790847778,
+          -102.29951477050781
+        ],
+        [
+          -46.78840637207031,
+          4.222796440124512,
+          -100.70048522949219
+        ]
+      ],
+      "signedVolume": 1.1287479767386677,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.2.cap.0",
+      "kind": "box",
+      "bounds": [
+        [
+          -56.599998474121094,
+          7.284999847412109,
+          -103.5
+        ],
+        [
+          -45.599998474121094,
+          7.514999866485596,
+          -98.5
+        ]
+      ],
+      "signedVolume": 12.639515659477338,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.2.cap.1",
+      "kind": "box",
+      "bounds": [
+        [
+          -55.04999923706055,
+          7.684999942779541,
+          -103.19999694824219
+        ],
+        [
+          -44.95000076293945,
+          7.914999961853027,
+          -98.80000305175781
+        ]
+      ],
+      "signedVolume": 10.211671707596743,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.2.cap.2",
+      "kind": "box",
+      "bounds": [
+        [
+          -53.5,
+          8.085000038146973,
+          -102.9000015258789
+        ],
+        [
+          -44.29999923706055,
+          8.3149995803833,
+          -99.0999984741211
+        ]
+      ],
+      "signedVolume": 8.032249885984724,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.2.cap.3",
+      "kind": "box",
+      "bounds": [
+        [
+          -51.95000076293945,
+          8.484999656677246,
+          -102.5999984741211
+        ],
+        [
+          -43.650001525878906,
+          8.71500015258789,
+          -99.4000015258789
+        ]
+      ],
+      "signedVolume": 6.10123749495669,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.3.foot",
+      "kind": "box",
+      "bounds": [
+        [
+          15.850000381469727,
+          0.15000000596046448,
+          -95.62000274658203
+        ],
+        [
+          28.149999618530273,
+          2.25,
+          -86.22000122070312
+        ]
+      ],
+      "signedVolume": 242.78663372012397,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.3.surge",
+      "kind": "drum",
+      "bounds": [
+        [
+          17.751365661621094,
+          2.4000000953674316,
+          -95.30036926269531
+        ],
+        [
+          26.422927856445312,
+          8.600000381469727,
+          -86.53963470458984
+        ]
+      ],
+      "signedVolume": 361.4603950730389,
+      "triangles": 128,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "outwardFaces": 128,
+      "outwardNormals": 384,
+      "vertexNormals": 384
+    },
+    {
+      "id": "G5.bunker.3.cap.0",
+      "kind": "box",
+      "bounds": [
+        [
+          14.75,
+          7.284999847412109,
+          -93.41999816894531
+        ],
+        [
+          27.049999237060547,
+          7.514999866485596,
+          -88.41999816894531
+        ]
+      ],
+      "signedVolume": 14.133672962187191,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.3.cap.1",
+      "kind": "box",
+      "bounds": [
+        [
+          16.299999237060547,
+          7.684999942779541,
+          -93.12000274658203
+        ],
+        [
+          27.700000762939453,
+          7.914999961853027,
+          -88.72000122070312
+        ]
+      ],
+      "signedVolume": 11.52645109189522,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.4.foot",
+      "kind": "box",
+      "bounds": [
+        [
+          90.5,
+          0.15000000596046448,
+          -85.26000213623047
+        ],
+        [
+          101.5,
+          2.25,
+          -75.86000061035156
+        ]
+      ],
+      "signedVolume": 217.12548776540604,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.4.hopper.-1",
+      "kind": "strut",
+      "bounds": [
+        [
+          91.17625427246094,
+          2.1962156295776367,
+          -80.79999542236328
+        ],
+        [
+          94.333740234375,
+          7.603784561157227,
+          -80.31999969482422
+        ]
+      ],
+      "signedVolume": 1.3508850429312143,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.4.hopper.1",
+      "kind": "strut",
+      "bounds": [
+        [
+          97.666259765625,
+          2.1962156295776367,
+          -80.79999542236328
+        ],
+        [
+          100.82374572753906,
+          7.603784561157227,
+          -80.31999969482422
+        ]
+      ],
+      "signedVolume": 1.3508850429312143,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.4.grate",
+      "kind": "box",
+      "bounds": [
+        [
+          90.5,
+          7.070000171661377,
+          -83.05999755859375
+        ],
+        [
+          101.5,
+          7.329999923706055,
+          -78.05999755859375
+        ]
+      ],
+      "signedVolume": 14.289482249584507,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.4.cap.0",
+      "kind": "box",
+      "bounds": [
+        [
+          89.4000015258789,
+          7.284999847412109,
+          -83.05999755859375
+        ],
+        [
+          100.4000015258789,
+          7.514999866485596,
+          -78.05999755859375
+        ]
+      ],
+      "signedVolume": 12.639516371118365,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.4.cap.1",
+      "kind": "box",
+      "bounds": [
+        [
+          90.94999694824219,
+          7.684999942779541,
+          -82.76000213623047
+        ],
+        [
+          101.05000305175781,
+          7.914999961853027,
+          -78.36000061035156
+        ]
+      ],
+      "signedVolume": 10.211697770985243,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.4.cap.2",
+      "kind": "box",
+      "bounds": [
+        [
+          92.5,
+          8.085000038146973,
+          -82.45999908447266
+        ],
+        [
+          101.69999694824219,
+          8.3149995803833,
+          -78.66000366210938
+        ]
+      ],
+      "signedVolume": 8.032230962428283,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.5.foot",
+      "kind": "box",
+      "bounds": [
+        [
+          127.8499984741211,
+          0.15000000596046448,
+          -79.94000244140625
+        ],
+        [
+          140.14999389648438,
+          2.25,
+          -70.54000091552734
+        ]
+      ],
+      "signedVolume": 242.78655763413255,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.5.live-bottom",
+      "kind": "drum",
+      "bounds": [
+        [
+          129.2030029296875,
+          1.9500000476837158,
+          -79.91673278808594
+        ],
+        [
+          138.7969970703125,
+          6.050000190734863,
+          -70.56327056884766
+        ]
+      ],
+      "signedVolume": 286.5363919701221,
+      "triangles": 108,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "outwardFaces": 108,
+      "outwardNormals": 324,
+      "vertexNormals": 324
+    },
+    {
+      "id": "G5.bunker.5.discharge",
+      "kind": "strut",
+      "bounds": [
+        [
+          133.7884063720703,
+          1.7772036790847778,
+          -76.53951263427734
+        ],
+        [
+          137.2115936279297,
+          4.222796440124512,
+          -74.94048309326172
+        ]
+      ],
+      "signedVolume": 1.1287452875603141,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.5.cap.0",
+      "kind": "box",
+      "bounds": [
+        [
+          126.75,
+          7.284999847412109,
+          -77.73999786376953
+        ],
+        [
+          139.0500030517578,
+          7.514999866485596,
+          -72.73999786376953
+        ]
+      ],
+      "signedVolume": 14.133676990797266,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.5.cap.1",
+      "kind": "box",
+      "bounds": [
+        [
+          128.3000030517578,
+          7.684999942779541,
+          -77.44000244140625
+        ],
+        [
+          139.6999969482422,
+          7.914999961853027,
+          -73.04000091552734
+        ]
+      ],
+      "signedVolume": 11.5264424320231,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.5.cap.2",
+      "kind": "box",
+      "bounds": [
+        [
+          129.85000610351562,
+          8.085000038146973,
+          -77.13999938964844
+        ],
+        [
+          140.35000610351562,
+          8.3149995803833,
+          -73.33999633789062
+        ]
+      ],
+      "signedVolume": 9.167605046071296,
+      "triangles": 44
+    },
+    {
+      "id": "G5.bunker.5.cap.3",
+      "kind": "box",
+      "bounds": [
+        [
+          131.39999389648438,
+          8.484999656677246,
+          -76.83999633789062
+        ],
+        [
+          141.0,
+          8.71500015258789,
+          -73.63999938964844
+        ]
+      ],
+      "signedVolume": 7.057200952411496,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.0.toothed-drum",
+      "kind": "drum",
+      "bounds": [
+        [
+          -77.0,
+          14.199999809265137,
+          -22.22707176208496
+        ],
+        [
+          -67.0,
+          24.600000381469727,
+          -11.932928085327148
+        ]
+      ],
+      "signedVolume": 837.9748351848485,
+      "triangles": 172,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 172,
+      "outwardNormals": 516,
+      "vertexNormals": 516
+    },
+    {
+      "id": "G6.crusher.0.tooth.0",
+      "kind": "box",
+      "bounds": [
+        [
+          -77.0,
+          24.360000610351562,
+          -17.270000457763672
+        ],
+        [
+          -67.0,
+          24.739999771118164,
+          -16.889999389648438
+        ]
+      ],
+      "signedVolume": 1.4370598125496872,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.0.tooth.1",
+      "kind": "box",
+      "bounds": [
+        [
+          -77.0,
+          23.67003059387207,
+          -14.694999694824219
+        ],
+        [
+          -67.0,
+          24.050031661987305,
+          -14.3149995803833
+        ]
+      ],
+      "signedVolume": 1.4370634359043846,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.0.tooth.2",
+      "kind": "box",
+      "bounds": [
+        [
+          -77.0,
+          21.78499984741211,
+          -12.809968948364258
+        ],
+        [
+          -67.0,
+          22.165000915527344,
+          -12.42996883392334
+        ]
+      ],
+      "signedVolume": 1.4370634359043846,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.0.tooth.3",
+      "kind": "box",
+      "bounds": [
+        [
+          -77.0,
+          19.209999084472656,
+          -12.119999885559082
+        ],
+        [
+          -67.0,
+          19.59000015258789,
+          -11.739999771118164
+        ]
+      ],
+      "signedVolume": 1.4370634359043846,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.0.tooth.4",
+      "kind": "box",
+      "bounds": [
+        [
+          -77.0,
+          16.635000228881836,
+          -12.809968948364258
+        ],
+        [
+          -67.0,
+          17.014999389648438,
+          -12.42996883392334
+        ]
+      ],
+      "signedVolume": 1.4370561892131797,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.0.tooth.5",
+      "kind": "box",
+      "bounds": [
+        [
+          -77.0,
+          14.749969482421875,
+          -14.694999694824219
+        ],
+        [
+          -67.0,
+          15.129969596862793,
+          -14.3149995803833
+        ]
+      ],
+      "signedVolume": 1.4370598125587821,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.0.tooth.6",
+      "kind": "box",
+      "bounds": [
+        [
+          -77.0,
+          14.0600004196167,
+          -17.270000457763672
+        ],
+        [
+          -67.0,
+          14.4399995803833,
+          -16.889999389648438
+        ]
+      ],
+      "signedVolume": 1.4370598125496872,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.0.tooth.7",
+      "kind": "box",
+      "bounds": [
+        [
+          -77.0,
+          14.749969482421875,
+          -19.844999313354492
+        ],
+        [
+          -67.0,
+          15.129969596862793,
+          -19.46500015258789
+        ]
+      ],
+      "signedVolume": 1.4370561892131797,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.0.tooth.8",
+      "kind": "box",
+      "bounds": [
+        [
+          -77.0,
+          16.635000228881836,
+          -21.730030059814453
+        ],
+        [
+          -67.0,
+          17.014999389648438,
+          -21.35003089904785
+        ]
+      ],
+      "signedVolume": 1.4370525658766724,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.0.tooth.9",
+      "kind": "box",
+      "bounds": [
+        [
+          -77.0,
+          19.209999084472656,
+          -22.420000076293945
+        ],
+        [
+          -67.0,
+          19.59000015258789,
+          -22.040000915527344
+        ]
+      ],
+      "signedVolume": 1.4370598125496872,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.0.tooth.10",
+      "kind": "box",
+      "bounds": [
+        [
+          -77.0,
+          21.78499984741211,
+          -21.730030059814453
+        ],
+        [
+          -67.0,
+          22.165000915527344,
+          -21.35003089904785
+        ]
+      ],
+      "signedVolume": 1.4370598125496872,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.0.tooth.11",
+      "kind": "box",
+      "bounds": [
+        [
+          -77.0,
+          23.67003059387207,
+          -19.844999313354492
+        ],
+        [
+          -67.0,
+          24.050031661987305,
+          -19.46500015258789
+        ]
+      ],
+      "signedVolume": 1.4370598125496872,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.0.gear.-1",
+      "kind": "drum",
+      "bounds": [
+        [
+          -78.4000015258789,
+          15.600000381469727,
+          -19.8799991607666
+        ],
+        [
+          -77.5999984741211,
+          21.200000762939453,
+          -14.279999732971191
+        ]
+      ],
+      "signedVolume": 19.375955411042113,
+      "triangles": 156,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 156,
+      "outwardNormals": 468,
+      "vertexNormals": 468
+    },
+    {
+      "id": "G6.crusher.0.gearbox.-1",
+      "kind": "box",
+      "bounds": [
+        [
+          -81.5,
+          15.399999618530273,
+          -14.829999923706055
+        ],
+        [
+          -78.5,
+          19.399999618530273,
+          -11.329999923706055
+        ]
+      ],
+      "signedVolume": 41.99322787917625,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.0.gear.1",
+      "kind": "drum",
+      "bounds": [
+        [
+          -66.4000015258789,
+          15.600000381469727,
+          -19.8799991607666
+        ],
+        [
+          -65.5999984741211,
+          21.200000762939453,
+          -14.279999732971191
+        ]
+      ],
+      "signedVolume": 19.37595540738084,
+      "triangles": 156,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 156,
+      "outwardNormals": 468,
+      "vertexNormals": 468
+    },
+    {
+      "id": "G6.crusher.0.gearbox.1",
+      "kind": "box",
+      "bounds": [
+        [
+          -65.5,
+          15.399999618530273,
+          -14.829999923706055
+        ],
+        [
+          -62.5,
+          19.399999618530273,
+          -11.329999923706055
+        ]
+      ],
+      "signedVolume": 41.99322736749794,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.0.safety-house",
+      "kind": "box",
+      "bounds": [
+        [
+          -78.0,
+          23.100000381469727,
+          -10.579999923706055
+        ],
+        [
+          -66.0,
+          23.700000762939453,
+          -5.579999923706055
+        ]
+      ],
+      "signedVolume": 35.98864990832549,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.1.toothed-drum",
+      "kind": "drum",
+      "bounds": [
+        [
+          -53.0,
+          16.479999542236328,
+          -11.273179054260254
+        ],
+        [
+          -43.0,
+          25.68000030517578,
+          -2.1668214797973633
+        ]
+      ],
+      "signedVolume": 655.7514171245085,
+      "triangles": 172,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 172,
+      "outwardNormals": 516,
+      "vertexNormals": 516
+    },
+    {
+      "id": "G6.crusher.1.tooth.0",
+      "kind": "box",
+      "bounds": [
+        [
+          -53.0,
+          26.040000915527344,
+          -6.909999847412109
+        ],
+        [
+          -43.0,
+          26.420000076293945,
+          -6.53000020980835
+        ]
+      ],
+      "signedVolume": 1.4370541024108665,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.1.tooth.1",
+      "kind": "box",
+      "bounds": [
+        [
+          -53.0,
+          25.35003089904785,
+          -4.335000038146973
+        ],
+        [
+          -43.0,
+          25.730030059814453,
+          -3.9549999237060547
+        ]
+      ],
+      "signedVolume": 1.4370559584184752,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.1.tooth.2",
+      "kind": "box",
+      "bounds": [
+        [
+          -53.0,
+          23.46500015258789,
+          -2.4499690532684326
+        ],
+        [
+          -43.0,
+          23.844999313354492,
+          -2.0699691772460938
+        ]
+      ],
+      "signedVolume": 1.4370550969238016,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.1.tooth.3",
+      "kind": "box",
+      "bounds": [
+        [
+          -53.0,
+          20.889999389648438,
+          -1.7599999904632568
+        ],
+        [
+          -43.0,
+          21.270000457763672,
+          -1.3799999952316284
+        ]
+      ],
+      "signedVolume": 1.4370627521900727,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.1.tooth.4",
+      "kind": "box",
+      "bounds": [
+        [
+          -53.0,
+          18.315000534057617,
+          -2.4499690532684326
+        ],
+        [
+          -43.0,
+          18.69499969482422,
+          -2.0699691772460938
+        ]
+      ],
+      "signedVolume": 1.4370550969238016,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.1.tooth.5",
+      "kind": "box",
+      "bounds": [
+        [
+          -53.0,
+          16.429969787597656,
+          -4.335000038146973
+        ],
+        [
+          -43.0,
+          16.809968948364258,
+          -3.9549999237060547
+        ]
+      ],
+      "signedVolume": 1.4370559584184752,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.1.tooth.6",
+      "kind": "box",
+      "bounds": [
+        [
+          -53.0,
+          15.739999771118164,
+          -6.909999847412109
+        ],
+        [
+          -43.0,
+          16.1200008392334,
+          -6.53000020980835
+        ]
+      ],
+      "signedVolume": 1.4370613490926818,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.1.tooth.7",
+      "kind": "box",
+      "bounds": [
+        [
+          -53.0,
+          16.429969787597656,
+          -9.484999656677246
+        ],
+        [
+          -43.0,
+          16.809968948364258,
+          -9.104999542236328
+        ]
+      ],
+      "signedVolume": 1.437056091436737,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.1.tooth.8",
+      "kind": "box",
+      "bounds": [
+        [
+          -53.0,
+          18.315000534057617,
+          -11.370030403137207
+        ],
+        [
+          -43.0,
+          18.69499969482422,
+          -10.990031242370605
+        ]
+      ],
+      "signedVolume": 1.4370524681003605,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.1.tooth.9",
+      "kind": "box",
+      "bounds": [
+        [
+          -53.0,
+          20.889999389648438,
+          -12.0600004196167
+        ],
+        [
+          -43.0,
+          21.270000457763672,
+          -11.680000305175781
+        ]
+      ],
+      "signedVolume": 1.4370633381276798,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.1.tooth.10",
+      "kind": "box",
+      "bounds": [
+        [
+          -53.0,
+          23.46500015258789,
+          -11.370030403137207
+        ],
+        [
+          -43.0,
+          23.844999313354492,
+          -10.990031242370605
+        ]
+      ],
+      "signedVolume": 1.4370524681003605,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.1.tooth.11",
+      "kind": "box",
+      "bounds": [
+        [
+          -53.0,
+          25.35003089904785,
+          -9.484999656677246
+        ],
+        [
+          -43.0,
+          25.730030059814453,
+          -9.104999542236328
+        ]
+      ],
+      "signedVolume": 1.437056091436737,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.1.gear.-1",
+      "kind": "drum",
+      "bounds": [
+        [
+          -54.400001525878906,
+          17.280000686645508,
+          -9.520000457763672
+        ],
+        [
+          -53.599998474121094,
+          22.8799991607666,
+          -3.9200000762939453
+        ]
+      ],
+      "signedVolume": 19.37595410783401,
+      "triangles": 156,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 156,
+      "outwardNormals": 468,
+      "vertexNormals": 468
+    },
+    {
+      "id": "G6.crusher.1.gearbox.-1",
+      "kind": "box",
+      "bounds": [
+        [
+          -57.5,
+          17.079999923706055,
+          -4.46999979019165
+        ],
+        [
+          -54.5,
+          21.079999923706055,
+          -0.9700000286102295
+        ]
+      ],
+      "signedVolume": 41.99322389052529,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.1.gear.1",
+      "kind": "drum",
+      "bounds": [
+        [
+          -42.400001525878906,
+          17.280000686645508,
+          -9.520000457763672
+        ],
+        [
+          -41.599998474121094,
+          22.8799991607666,
+          -3.9200000762939453
+        ]
+      ],
+      "signedVolume": 19.375954104886112,
+      "triangles": 156,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "outwardFaces": 156,
+      "outwardNormals": 468,
+      "vertexNormals": 468
+    },
+    {
+      "id": "G6.crusher.1.gearbox.1",
+      "kind": "box",
+      "bounds": [
+        [
+          -41.5,
+          17.079999923706055,
+          -4.46999979019165
+        ],
+        [
+          -38.5,
+          21.079999923706055,
+          -0.9700000286102295
+        ]
+      ],
+      "signedVolume": 41.99322389052529,
+      "triangles": 44
+    },
+    {
+      "id": "G6.crusher.1.safety-house",
+      "kind": "box",
+      "bounds": [
+        [
+          -54.0,
+          24.780000686645508,
+          -0.2199999988079071
+        ],
+        [
+          -42.0,
+          25.3799991607666,
+          4.78000020980835
+        ]
+      ],
+      "signedVolume": 35.98853612730432,
+      "triangles": 44
+    }
+  ],
+  "triangles": 87566,
+  "batches": 16,
+  "images": 30,
+  "glbBytes": 12394520,
+  "preservedEmission": {
+    "accepted": {
+      "doubleSided": true,
+      "emissiveFactor": [
+        1,
+        0.23749999348074208,
+        0.03125
+      ],
+      "extensions": {
+        "KHR_materials_emissive_strength": {
+          "emissiveStrength": 1.600000023841858
+        }
+      },
+      "name": "GM / orange",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.800000011920929,
+          0.1899999976158142,
+          0.02500000037252903,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5299999713897705
+      }
+    },
+    "candidate": {
+      "doubleSided": true,
+      "emissiveFactor": [
+        1,
+        0.23749999701976776,
+        0.03125
+      ],
+      "extensions": {
+        "KHR_materials_emissive_strength": {
+          "emissiveStrength": 1.600000023841858
+        }
+      },
+      "name": "GM / orange",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.800000011920929,
+          0.1899999976158142,
+          0.02500000037252903,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5299999713897705
+      }
+    },
+    "equalWithin": 1e-06
+  },
+  "budget": {
+    "trianglesGuideline": 150000,
+    "trianglePolicy": "User permits useful higher detail; evaluated cost and correctness govern review, not a hard triangle ceiling.",
+    "batchesTarget": 16,
+    "bytesDesignTarget": 7000000,
+    "bytesOverTarget": 5394520,
+    "review": "Measured backend/load/cadence review; design target is not a correctness failure."
+  }
+}
