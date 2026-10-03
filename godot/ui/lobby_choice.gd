@@ -14,8 +14,14 @@ var current_label := Label.new()
 var next := Button.new()
 var items: Array[Dictionary] = []
 var _selected := -1
+var _disabled := false
 var browse := false
 var browse_index := -1
+# Diagnostic/observer counter: increments only when refresh() actually applies a
+# new visual state. Repeated no-op assignments (same disabled, same selection)
+# leave it untouched, so a per-frame owner can assign freely without churn.
+var update_count := 0
+var _rendered_state := ""
 var selected: int:
 	get: return _selected
 	set(value): select(value)
@@ -23,9 +29,12 @@ var item_count: int:
 	get: return items.size()
 var text: String:
 	get: return get_item_text(_selected)
-var disabled := false:
+# Idempotent property: assigning the value it already holds performs no work.
+var disabled: bool:
+	get: return _disabled
 	set(value):
-		disabled = value
+		if value == _disabled: return
+		_disabled = value
 		refresh()
 
 func _init() -> void:
@@ -79,9 +88,10 @@ func _gui_input(event: InputEvent) -> void:
 			move_browse(-1 if event.is_action_pressed("ui_up") else 1)
 			accept_event()
 	elif row_focused and event.is_action_pressed("ui_cancel"):
-		if browse:
-			cancel_browse()
-			accept_event()
+		cancel_browse()
+		# The focused inline chooser owns Cancel even outside browse mode.
+		# Letting it bubble opens the global settings overlay and loses focus.
+		accept_event()
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		cancel_browse()
 		grab_focus()
@@ -113,17 +123,25 @@ func cycle(direction: int) -> void:
 	item_selected.emit(_selected)
 
 func refresh() -> void:
-	var interactive := not disabled and items.size() > 1
+	var interactive := not _disabled and items.size() > 1
+	var index: int = browse_index if browse else _selected
+	# Single value-of-record for everything refresh() draws. When it is unchanged
+	# the whole body is skipped, so a per-frame caller cannot repaint, rebuild
+	# tooltips or steal focus while the user is typing or navigating.
+	var label_text := "No choices"
+	if index >= 0:
+		label_text = "%s%s  (%d/%d)" % ["▸ " if browse else "", get_item_text(index), index + 1, items.size()]
+	var state := "%d:%d:%d:%d:%s" % [int(_disabled), int(interactive), index, int(browse), label_text]
+	if state == _rendered_state:
+		return
+	_rendered_state = state
+	update_count += 1
 	focus_mode = Control.FOCUS_ALL if interactive else Control.FOCUS_NONE
 	for button: Button in [previous, next]:
 		button.disabled = not interactive
 		button.focus_mode = Control.FOCUS_ALL if interactive else Control.FOCUS_NONE
-	var index: int = browse_index if browse else _selected
-	if index >= 0:
-		current_label.text = "%s%s  (%d/%d)" % ["▸ " if browse else "", get_item_text(index), index + 1, items.size()]
-	else:
-		current_label.text = "No choices"
-	current_label.modulate = Color(1,1,1,0.5) if disabled else Color.WHITE
+	current_label.text = label_text
+	current_label.modulate = Color(1,1,1,0.5) if _disabled else Color.WHITE
 	current_label.tooltip_text = get_item_text(index)
 	previous.tooltip_text = "Previous choice · Left arrow"
 	next.tooltip_text = "Next choice · Right arrow"
@@ -143,6 +161,9 @@ func add_item(label: String) -> void:
 
 func select(index: int) -> void:
 	if index < -1 or index >= items.size(): return
+	# Selecting the already-active entry with no browse open changes nothing;
+	# skip the render so a per-frame owner can re-assert the same index safely.
+	if _selected == index and not browse: return
 	_selected = index
 	browse = false
 	browse_index = -1

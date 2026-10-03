@@ -25,11 +25,10 @@ Parent owns registries, shared loaders and final packaging. No shared edits are
 included in this lane. After visual/native approval:
 
 1. Register `vesper-viaduct` / `Vesper Viaduct` with only verified modes.
-2. Resolve `res://multiplayer_worlds/art/vesper-viaduct/vesper-viaduct.glb`.
-   Current `map.gd` hardcodes flat `art/worlds/<id>.glb`; the named-folder art path
-   needs the parent's shared resolver work. The existing `art.ground` marker
-   indicates that the GLB contains all visible source surfaces, avoiding double
-   drawing once that path resolves.
+2. Canonical consolidation already corrected the asset target to
+   `res://multiplayer_worlds/art/worlds/vesper-viaduct.glb`; production `map.gd`
+   loads it without a resolver change. The existing `art.ground` marker indicates
+   that the GLB contains visible source surfaces, avoiding double drawing.
 3. Include the generated JSON and GLB in the usual shared manifests and package
    audit. Exclude tests and keep the `.blend` outside `godot/`.
 

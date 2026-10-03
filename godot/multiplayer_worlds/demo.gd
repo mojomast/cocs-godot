@@ -73,7 +73,7 @@ func _process(delta: float) -> void:
   client.send_input({"x":0.0,"z":1.0,"sprint":true})
 
 func foundry_hud_layout() -> void:
- if current_id != "gravemill-foundry" or not is_instance_valid(objective_text.get_parent()): return
+ if current_id not in ["gravemill-foundry","vesper-viaduct","abyssal-pressureworks"] or not is_instance_valid(objective_text.get_parent()): return
  var width := get_viewport().get_visible_rect().size.x - 32
  var panel: Control = objective_text.get_parent()
  panel.size.x = maxf(240, width)
@@ -81,6 +81,10 @@ func foundry_hud_layout() -> void:
   text.custom_minimum_size.x = 0
   text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
   text.add_theme_font_size_override("font_size",12 if width < 700 else 16)
+ if current_id == "abyssal-pressureworks" and phase == 3:
+  # Keep actual health/armour/weapon/frags and acknowledgement visible. The long
+  # prototype control catalogue otherwise occupies most of a UI150 viewport.
+  label.text = presentation.hud_text + "\n" + selected_mode.to_upper() + " · ACK " + str(client.last_ack)
 
 func _init() -> void:
  catalog = WorldCatalog.new()
@@ -171,6 +175,8 @@ func load_map(id: String) -> bool:
  world = next
  current_id = id
  expected_hash = str(data.geometryHash)
+ if id == "abyssal-pressureworks":
+  preload("res://multiplayer_worlds/abyssal_presentation.gd").configure(sun,environment.environment)
  if id == "parallax-observatory":
   var look := preload("res://multiplayer_worlds/art/parallax-observatory/presentation.gd").new()
   next.add_child(look)
@@ -217,6 +223,7 @@ func on_snapshot(frame: Dictionary) -> void:
   if zones.apply(frame.state,client.actor_id,current_id,selected_mode):
    zone_renderer.apply(zones.projection)
    objective_text.text = "%s / %s | score %s" % [current_id,selected_mode,str(zones.projection.scores)]
+ if current_id == "abyssal-pressureworks": foundry_hud_layout()
  if evidence:
   print("WORLD_NATIVE ",JSON.stringify({"map":current_id,"mode":selected_mode,"hash":expected_hash,"round":round_starts,"peer":client.peer_id,"actor":client.actor_id,"ack":client.last_ack,"phase":phase,"state":frame.state.get("objectives",{})}))
  if not urban_capture_path.is_empty() and not urban_capture_queued:

@@ -6,10 +6,18 @@ previous acceptance work was preserved. This follow-up adds only acceptance
 fixtures, tools and documentation. Production `main.gd`, camera, rigs, FX, all nine
 GLBs/manifests/import settings, core, combo stats/timing and final matrix are unchanged.
 
-**Resource status:** `ROBOT-ASSET-PRODUCTION-20261002-D` belongs exclusively to robot
-production. No Godot, Blender, imports, rendering, encoding, audio, authority or
-native journeys ran for this follow-up. No nested agents. `gdparse` is grammar
-proof, not Godot static-type/runtime proof.
+Controller follow-up: canonical `614a8a7f`, including presentation fix `1ca6f39e`,
+is now merged. The original checkout and prior work were preserved. This narrow
+follow-up changes only `ui_journey.gd` and this handoff; driver/anchor functions,
+final-matrix registration, production main/helper/router and other journeys are
+left to their respective owners.
+
+**Current resource status:** the exclusive E slot belongs to vehicle production.
+This controller follow-up is source-only. No Godot, Blender, imports, rendering,
+encoding, audio, authority journeys, X11 focus changes or kernel device injection
+ran. `/dev/uinput` access remains unavailable on the current parent environment;
+native validation is pending. No nested agents. `gdparse` is grammar proof, not
+Godot static-type/runtime proof.
 
 ## New executable coverage
 
@@ -55,11 +63,18 @@ reappear on resume, and fresh edges must work.
 For controller loss, two Linux **kernel virtual** pads are created sequentially
 with uinput. Each is bound to the actual newly enumerated Godot device ID, avoiding
 assumptions about mapping-database display names. They are selected through the
-Settings device controls. Actual `InputEventJoypadButton` objects exercise both
+Settings device controls in ordinary **P1 first, then P2** order, checking each
+actual route and exclusive ownership. Actual `InputEventJoypadButton` objects exercise both
 routed actor commands; destroying each owned kernel device in turn must trigger
 the production OS disconnect signal, release **both** actors, pause, and prevent
-resume while the disconnected device is assigned. Return to keyboards via UI and
-verify no stale pad buttons. All owned virtual devices/windows are closed.
+resume while the disconnected device is assigned. Require the exact truthful
+`Pad <id> · disconnected` caption and unchanged missing-device route. **One actual
+button activation** must select Keyboard while the other player's connected pad
+remains assigned. The same focused button must survive refresh; device selection
+must leave simulation paused and both actors' held/queued input released. Only
+explicit Back/Resume may continue the keyboard-plus-pad match. After checking
+fresh ticks and no stale buttons, release the other assignment through public
+Settings for the later all-keyboard case. All owned virtual devices/windows are closed.
 
 This is **virtual-controller enumeration/removal and event routing**, not physical
 controller unplug or hardware compatibility evidence. `/dev/uinput` must be writable
@@ -181,22 +196,30 @@ sets. It emits a typed reference consumable by the unchanged
 
 ## Source results actually obtained
 
-**Presentation-owner finding (source-identified, native pending):**
-`main.gd:device_choice()` uses `maxi(0, devices.find(router.devices[p]))` to display
-a disconnected assignment as the first entry, “Keyboard”, without assigning -1.
-`_device_changed()` only calls `router.unplug()`, which releases held input but
-retains the missing device ID. `resume_match()` therefore still blocks. A naive
-text-matching fixture would falsely claim keyboard recovery. The new fixture
-checks actual routing, explicitly fails a misleading keyboard caption, and frees
-the other assigned pad via UI before cycling the missing assignment. Presentation
-owner should correct this label/recovery behavior; acceptance does not write the
-router or modify production to hide it. Expect this assertion to fail on the
-unfixed canonical scene before the expensive remainder of the visual matrix.
-Related source UX issue: assigning P1 to the first pad before selecting P2's
-second pad leaves the cycle widget repeatedly rejecting the occupied first pad,
-never reaching the second. The fixture uses the public workaround (select P2's
-second pad first, then P1's first) so it can reach actual hotplug coverage. This
-is not proof that the ordinary P1-then-P2 selection order is usable.
+**Earlier presentation findings now fixed in source (`1ca6f39e`):** the pure
+`device_choices.gd` model preserves a truthful missing-pad caption, makes its next
+choice Keyboard, and skips the other actor's occupied pad. Production refresh
+updates the existing button rather than rebuilding the row. The fixture's HBox
+caption/button lookup remains compatible with this row shape.
+
+Both acceptance workarounds have been removed: P2 is no longer assigned first,
+and the other actor's pad is no longer released before missing-device recovery.
+Actual routes, exact caption, one-activation transition, focus preservation,
+explicit Resume and both actors' released input are now asserted. These assertions
+are prepared native checks, not a claim that kernel hotplug has executed.
+
+No `ui_driver.py` change is needed: its existing required disconnected-caption
+label is retained and strengthened, and all emitted checks must pass. New check
+labels add measured routing/focus/resume detail. Driver anchor/receipt work remains
+with the acceptance owner registering the 142nd job; no changes to those sections
+or the final matrix are included here.
+
+Controller follow-up checks on merged `614a8a7f`: `gdparse` passed for the updated
+fixture, all **26 acceptance Python tests** passed, and all **12 presentation
+source tests** passed (including device choice/recovery and real nine-rig camera
+source checks). `git diff --check` is clean. These checks performed no native or
+OS-input execution; actual kernel hotplug, focus and single-click recovery remain
+pending the later fighting grant and `/dev/uinput` access.
 
 * `gdparse ui_journey.gd`: **passed**; Godot runtime/type validation still pending.
 * Independent Python acceptance suite: **26 passed**. New negative checks cover

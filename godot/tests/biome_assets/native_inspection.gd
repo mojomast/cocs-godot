@@ -82,7 +82,7 @@ func run() -> void:
 	var placements: Array = catalog.chapters[str(world.recipe.id)].placements
 	var counts := {"meshes":0,"surfaces":0,"triangles":0}
 	mesh_counts(pack, counts)
-	assert(counts.meshes <= 6 and counts.surfaces <= 24 and counts.triangles < 27000)
+	assert(counts.meshes == 6 and pack.loaded_assets.size()==3 and counts.surfaces <= 24 and counts.triangles < 27000)
 	var after: Array = []
 	collider_signature(world, after)
 	assert(after == baseline, "Original collider IDs, transforms and geometry changed")
@@ -93,11 +93,25 @@ func run() -> void:
 	for placement: Dictionary in placements:
 		var route: Array = world.recipe.campaign.criticalPath
 		var near: Dictionary = route[0]
-		var target := Pack.vector(placement.origin) + Vector3(0, minf(4.5,float(placement.scale[1])*.55),0)
+		var target := Pack.vector(placement.origin) + Vector3(0, float(placement.scale[1])*.5,0)
 		for p: Dictionary in route:
 			if Vector2(p.x,p.z).distance_to(Vector2(target.x,target.z)) < Vector2(near.x,near.z).distance_to(Vector2(target.x,target.z)): near = p
-		for view: String in ["approach", "eye"]:
+		var views: Array=["architecture"] if "--architecture-only" in OS.get_cmdline_user_args() else ["approach","eye"]
+		for view: String in views:
 			var eye := Vector3(near.x,near.y+1.65,near.z)
+			if view=="architecture":
+				# A supported authored-route viewpoint facing the relief plane,
+				# not an authority pose or an invented walkable camera location.
+				var score := INF
+				for authored_route: Dictionary in world.recipe.routes:
+					for point: Dictionary in authored_route.points:
+						var delta := Vector2(point.x-target.x,point.z-target.z)
+						var distance := delta.length()
+						if distance<maxf(4.0,float(placement.scale[1])*.7) or distance>60: continue
+						var candidate := distance+(1.0-absf(delta.y)/distance)*80.0
+						if candidate<score:
+							score=candidate
+							eye=Vector3(point.x,point.y+1.65,point.z)
 			if view == "approach":
 				var index := maxi(0,route.find(near)-5)
 				var p: Dictionary = route[index]
@@ -111,6 +125,16 @@ func run() -> void:
 				await capture(str(placement.asset)+"-"+view+"-"+phase,"staged supported eye; production scene/HUD")
 	pack.visible = true
 	pack.set_reduced_detail(false)
+	if str(world.recipe.id)=="emberline-ascent" and "--architecture-only" not in OS.get_cmdline_user_args():
+		var workshop: Node3D=world.get_node("SwitchyardWorkshop")
+		assert(workshop.installed.size()==6 and workshop.get_child_count()==6)
+		for prop: Node3D in workshop.get_children():
+			var near: Dictionary=world.recipe.campaign.criticalPath[0]
+			for point: Dictionary in world.recipe.campaign.criticalPath:
+				if Vector2(point.x,point.z).distance_to(Vector2(prop.global_position.x,prop.global_position.z))<Vector2(near.x,near.z).distance_to(Vector2(prop.global_position.x,prop.global_position.z)): near=point
+			session.camera.global_position=Vector3(near.x,near.y+1.65,near.z)
+			session.camera.look_at(prop.global_position+Vector3(0,0.6,0))
+			await capture("preserved-robot-prop-"+str(prop.name),"staged supported route; unchanged original robot workshop prop")
 	session.camera.global_transform = original_pose
 	session.camera.fov = original_fov
 	session.process_mode = Node.PROCESS_MODE_INHERIT

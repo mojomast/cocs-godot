@@ -1,0 +1,123 @@
+ASSET_REOPEN masters tools/godot-biomes/expansion/masters/crown-ceramic-lightwell.blend 19 19
+ASSET_REOPEN masters tools/godot-biomes/expansion/masters/crown-faceted-antenna.blend 20 20
+ASSET_REOPEN masters tools/godot-biomes/expansion/masters/crown-folio-archive.blend 24 24
+ASSET_REOPEN masters tools/godot-biomes/expansion/masters/emberline-basalt-terrace.blend 22 22
+ASSET_REOPEN masters tools/godot-biomes/expansion/masters/emberline-ceramic-exhaust.blend 36 36
+ASSET_REOPEN masters tools/godot-biomes/expansion/masters/emberline-heatshield-tower.blend 34 34
+ASSET_REOPEN masters tools/godot-biomes/expansion/masters/rootfall-canopy-relay.blend 18 18
+ASSET_REOPEN masters tools/godot-biomes/expansion/masters/rootfall-root-archive.blend 20 20
+ASSET_REOPEN masters tools/godot-biomes/expansion/masters/rootfall-root-buttress.blend 14 14
+ASSET_REOPEN masters tools/godot-biomes/expansion/masters/siltwake-flood-abutment.blend 21 21
+ASSET_REOPEN masters tools/godot-biomes/expansion/masters/siltwake-sluice-bank.blend 25 25
+ASSET_REOPEN masters tools/godot-biomes/expansion/masters/siltwake-strata-wheelhouse.blend 61 61
+21:16:35 | INFO: Data are loaded, start creating Blender stuff
+21:16:35 | INFO: Blender create Mesh node ceramic-pilaster--0.38--0.001
+21:16:35 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/crown-ceramic-lightwell-0.glb 1 2
+21:16:35 | INFO: Data are loaded, start creating Blender stuff
+21:16:35 | INFO: Blender create Mesh node ceramic-pilaster--0.38--0.002
+21:16:35 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/crown-ceramic-lightwell-1.glb 1 2
+21:16:35 | INFO: Data are loaded, start creating Blender stuff
+21:16:35 | INFO: Blender create Mesh node ceramic-pilaster--0.38--0.001
+21:16:35 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/crown-faceted-antenna-0.glb 1 3
+21:16:35 | INFO: Data are loaded, start creating Blender stuff
+21:16:35 | INFO: Blender create Mesh node ceramic-pilaster--0.38--0.002
+21:16:35 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/crown-faceted-antenna-1.glb 1 3
+21:16:35 | INFO: Data are loaded, start creating Blender stuff
+21:16:35 | INFO: Blender create Mesh node ceramic-pilaster--0.38--0.001
+21:16:35 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/crown-folio-archive-0.glb 1 3
+21:16:35 | INFO: Data are loaded, start creating Blender stuff
+21:16:35 | INFO: Blender create Mesh node ceramic-pilaster--0.38--0.002
+21:16:35 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/crown-folio-archive-1.glb 1 1
+21:16:35 | INFO: Data are loaded, start creating Blender stuff
+21:16:35 | INFO: Blender create Mesh node basalt-column--0.35-0.001
+21:16:35 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/emberline-basalt-terrace-0.glb 1 3
+21:16:35 | INFO: Data are loaded, start creating Blender stuff
+21:16:35 | INFO: Blender create Mesh node basalt-column--0.35-0.002
+21:16:35 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/emberline-basalt-terrace-1.glb 1 2
+21:16:35 | INFO: Data are loaded, start creating Blender stuff
+21:16:35 | INFO: Blender create Mesh node basalt-column--0.35-0.001
+21:16:35 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/emberline-ceramic-exhaust-0.glb 1 4
+21:16:35 | INFO: Data are loaded, start creating Blender stuff
+21:16:35 | INFO: Blender create Mesh node basalt-column--0.35-0.002
+21:16:35 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/emberline-ceramic-exhaust-1.glb 1 4
+21:16:35 | INFO: Data are loaded, start creating Blender stuff
+21:16:35 | INFO: Blender create Mesh node basalt-column--0.35-0.001
+21:16:35 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/emberline-heatshield-tower-0.glb 1 3
+21:16:35 | INFO: Data are loaded, start creating Blender stuff
+21:16:35 | INFO: Blender create Mesh node basalt-column--0.35-0.002
+21:16:35 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/emberline-heatshield-tower-1.glb 1 3
+21:16:35 | INFO: Data are loaded, start creating Blender stuff
+21:16:35 | INFO: Blender create Mesh node root-buttress--1--0.001
+21:16:35 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/rootfall-canopy-relay-0.glb 1 3
+21:16:35 | INFO: Data are loaded, start creating Blender stuff
+21:16:35 | INFO: Blender create Mesh node root-buttress--1--0.002
+21:16:35 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/rootfall-canopy-relay-1.glb 1 3
+21:16:35 | INFO: Data are loaded, start creating Blender stuff
+21:16:35 | INFO: Blender create Mesh node root-buttress--1--0.001
+21:16:35 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/rootfall-root-archive-0.glb 1 2
+21:16:35 | INFO: Data are loaded, start creating Blender stuff
+21:16:35 | INFO: Blender create Mesh node root-buttress--1--0.002
+21:16:35 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/rootfall-root-archive-1.glb 1 1
+21:16:35 | INFO: Data are loaded, start creating Blender stuff
+21:16:35 | INFO: Blender create Mesh node root-buttress--1--0.001
+21:16:35 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/rootfall-root-buttress-0.glb 1 2
+21:16:36 | INFO: Data are loaded, start creating Blender stuff
+21:16:36 | INFO: Blender create Mesh node root-buttress--1--0.002
+21:16:36 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/rootfall-root-buttress-1.glb 1 2
+21:16:36 | INFO: Data are loaded, start creating Blender stuff
+21:16:36 | INFO: Blender create Mesh node stratified-bank--1-0.001
+21:16:36 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/siltwake-flood-abutment-0.glb 1 3
+21:16:36 | INFO: Data are loaded, start creating Blender stuff
+21:16:36 | INFO: Blender create Mesh node stratified-bank--1-0.002
+21:16:36 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/siltwake-flood-abutment-1.glb 1 2
+21:16:36 | INFO: Data are loaded, start creating Blender stuff
+21:16:36 | INFO: Blender create Mesh node stratified-bank--1-0.001
+21:16:36 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/siltwake-sluice-bank-0.glb 1 3
+21:16:36 | INFO: Data are loaded, start creating Blender stuff
+21:16:36 | INFO: Blender create Mesh node stratified-bank--1-0.002
+21:16:36 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/siltwake-sluice-bank-1.glb 1 3
+21:16:36 | INFO: Data are loaded, start creating Blender stuff
+21:16:36 | INFO: Blender create Mesh node stratified-bank--1-0.001
+21:16:36 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/siltwake-strata-wheelhouse-0.glb 1 4
+21:16:36 | INFO: Data are loaded, start creating Blender stuff
+21:16:36 | INFO: Blender create Mesh node stratified-bank--1-0.002
+21:16:36 | INFO: glTF import finished in 0.00s
+ASSET_REOPEN exports godot/biomes/expansion/art/siltwake-strata-wheelhouse-1.glb 1 3
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/tools/godot-biomes/expansion/masters/crown-ceramic-lightwell.blend"
+Read blend: "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/tools/godot-biomes/expansion/masters/crown-faceted-antenna.blend"
+Read blend: "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/tools/godot-biomes/expansion/masters/crown-folio-archive.blend"
+Read blend: "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/tools/godot-biomes/expansion/masters/emberline-basalt-terrace.blend"
+Read blend: "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/tools/godot-biomes/expansion/masters/emberline-ceramic-exhaust.blend"
+Read blend: "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/tools/godot-biomes/expansion/masters/emberline-heatshield-tower.blend"
+Read blend: "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/tools/godot-biomes/expansion/masters/rootfall-canopy-relay.blend"
+Read blend: "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/tools/godot-biomes/expansion/masters/rootfall-root-archive.blend"
+Read blend: "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/tools/godot-biomes/expansion/masters/rootfall-root-buttress.blend"
+Read blend: "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/tools/godot-biomes/expansion/masters/siltwake-flood-abutment.blend"
+Read blend: "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/tools/godot-biomes/expansion/masters/siltwake-sluice-bank.blend"
+Read blend: "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/tools/godot-biomes/expansion/masters/siltwake-strata-wheelhouse.blend"
+
+Blender quit

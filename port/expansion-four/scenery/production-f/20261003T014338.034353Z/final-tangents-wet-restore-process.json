@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "godot",
+    "-s",
+    "res://tests/biome_assets/imported_material_lifecycle.gd"
+  ],
+  "started": "2026-10-03T01:43:38.034683+00:00",
+  "timeoutSeconds": 90,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/port/expansion-four/scenery/production-f/20261003T014338.034353Z/final-tangents-wet-restore.log",
+  "processGroup": 841961,
+  "exitCode": 0,
+  "ended": "2026-10-03T01:43:40.804849+00:00",
+  "ownedGroupTeardownRequested": true
+}

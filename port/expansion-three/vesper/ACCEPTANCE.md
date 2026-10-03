@@ -1,4 +1,8 @@
-# READY FOR BLENDER — awaiting explicit grant
+# Historical source checkpoint — 2026-10-02
+
+**Superseded by actual H-grant production:** see [PRODUCTION_H.md](PRODUCTION_H.md)
+and the production-H receipts/evidence. The source-only results below are retained
+as the original checkpoint; their geometry hashes and pending-art status are historical.
 
 Slot status: Parallax owns the heavy slot. This lane has run Node and Python AST
 checks only. No Blender, Godot, imports, bakes, rendering or exports have run.

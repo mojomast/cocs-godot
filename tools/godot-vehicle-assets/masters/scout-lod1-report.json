@@ -1,0 +1,9 @@
+{
+  "kind": "scout",
+  "lod": 1,
+  "triangles": 6640,
+  "recipe_sha256": "1374ebe1d0b2ebd95b5b7685d0315cc907a61a7bd4d4b53f877dbfe593263d33",
+  "blender": "4.5.14 LTS",
+  "materials": 8,
+  "attachments": 6
+}

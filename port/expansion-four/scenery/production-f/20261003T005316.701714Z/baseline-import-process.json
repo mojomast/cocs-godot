@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "godot",
+    "--editor",
+    "--import",
+    "--quit"
+  ],
+  "started": "2026-10-03T00:53:16.702018+00:00",
+  "timeoutSeconds": 600,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-20261002/port/expansion-four/scenery/production-f/20261003T005316.701714Z/baseline-import.log",
+  "processGroup": 672987,
+  "exitCode": -6,
+  "ended": "2026-10-03T00:53:24.280438+00:00",
+  "ownedGroupTeardownRequested": true
+}

@@ -29,6 +29,9 @@ func run() -> void:
 	demo.current_id = "rootfall-verge"
 	hud.show_brief("rootfall-verge")
 	assert(hud.card.visible and hud.primary.text == "Begin chapter")
+	assert(hud.journal_button.text == "Journal" and not hud.journal.visible, "journal entry point is present and starts closed")
+	assert(hud.card_route.text.begins_with("◆ 1 Rootfall Verge"), "brief marks the current chapter on the route strip")
+	assert(hud.card_route.text.contains("4 Crown Array"), "brief lists the full four-chapter route")
 	hud.hide_brief()
 	hud.observe_boss({"singleplayer":{"boss":{"alive":true,"hp":750,"maxHp":1000,"phase":2}}})
 	assert(hud.boss.visible and hud.boss.text.contains("75%") and hud.boss.text.contains("Phase 2"))

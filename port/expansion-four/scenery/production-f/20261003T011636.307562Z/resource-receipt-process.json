@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "node",
+    "tools/asset-production/receipt.mjs",
+    "scenery"
+  ],
+  "started": "2026-10-03T01:16:36.411793+00:00",
+  "timeoutSeconds": 60,
+  "log": "port/expansion-four/scenery/production-f/20261003T011636.307562Z/resource-receipt.log",
+  "processGroup": 758494,
+  "exitCode": 0,
+  "ended": "2026-10-03T01:16:36.625905+00:00",
+  "ownedGroupTeardownRequested": true
+}

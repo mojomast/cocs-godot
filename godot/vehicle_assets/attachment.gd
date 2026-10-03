@@ -52,8 +52,13 @@ static func install(host: Node3D, kind: String) -> bool:
 	for lod in 3:
 		for key: String in targets:
 			var mesh: MeshInstance3D = collected[lod][key]
+			# Imported meshes still belong to the staged PackedScene root. Drop
+			# that owner before reparenting, then assign the persistent host owner;
+			# freeing the staged root must not retain a foreign scene owner.
+			mesh.owner = null
 			mesh.get_parent().remove_child(mesh)
 			targets[key].add_child(mesh)
+			mesh.owner = host
 			mesh.transform = Transform3D.IDENTITY
 			mesh.visibility_range_begin = [0.0, 24.0, 65.0][lod]
 			mesh.visibility_range_end = [24.0, 65.0, 0.0][lod]

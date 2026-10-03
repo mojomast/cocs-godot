@@ -2,6 +2,10 @@ extends VBoxContainer
 const Model = preload("res://input_bindings/model.gd")
 const Access = preload("res://input_bindings/access.gd")
 var choices: Dictionary = {}
+var rows: Dictionary = {}
+var search: LineEdit
+var search_status: Label
+var changes_summary: Label
 var note: Label
 
 func _ready() -> void:
@@ -14,10 +18,38 @@ func _ready() -> void:
 	note.accessibility_live = DisplayServer.LIVE_POLITE
 	note.text = "Live combat and sports controls. Physical keys; modifiers are held actions, not shortcut chords. Choosing an occupied input swaps the two actions. C and middle mouse remain alternate crouch / alt fire. Escape, F3, F12, chat, weapon selection, spectator and mode menus keep their controls."
 	add_child(note)
+	var search_row := HBoxContainer.new()
+	search = LineEdit.new()
+	search.name = "BindingSearch"
+	search.placeholder_text = "Search actions or current bindings"
+	search.clear_button_enabled = true
+	search.accessibility_name = "Search keyboard and mouse bindings"
+	search.accessibility_description = "Filters the editable actions by action name, stable action ID, or current key/button. Typing does not change bindings."
+	search.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	search.text_changed.connect(_filter_rows)
+	search_row.add_child(search)
+	var clear_search := Button.new()
+	clear_search.name = "ClearBindingSearch"
+	clear_search.text = "Clear"
+	clear_search.accessibility_description = "Clear binding search"
+	clear_search.pressed.connect(func() -> void: search.clear(); search.grab_focus())
+	search_row.add_child(clear_search)
+	add_child(search_row)
+	search_status = Label.new()
+	search_status.accessibility_live = DisplayServer.LIVE_POLITE
+	add_child(search_status)
+	changes_summary = Label.new()
+	changes_summary.name = "BindingChangesSummary"
+	changes_summary.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	changes_summary.accessibility_live = DisplayServer.LIVE_POLITE
+	add_child(changes_summary)
 	for action: String in Model.LABELS:
+		var row := VBoxContainer.new()
+		row.name = "BindingRow_" + action
 		var caption := Label.new()
 		caption.text = Model.LABELS[action]
-		add_child(caption)
+		caption.name = "BindingLabel_" + action
+		row.add_child(caption)
 		var choice := OptionButton.new()
 		choice.name = "Binding_" + action
 		choice.focus_mode = Control.FOCUS_ALL
@@ -28,26 +60,21 @@ func _ready() -> void:
 		for code: String in Model.editable_options():
 			choice.add_item(Model.label(code))
 			choice.set_item_metadata(choice.item_count - 1, code)
-		choice.item_selected.connect(func(index: int) -> void:
-			var service := Access.service()
-			if service != null:
-				var code: String = choice.get_item_metadata(index)
-				var swapped := ""
-				for other: String in Model.LABELS:
-					if other != action and service.values[other] == code: swapped = " Swapped with " + Model.LABELS[other] + "."
-				var saved: bool = service.set_binding(action, code)
-				note.text = ("Binding applied and saved." if saved else "Binding applied for this session; could not save preferences.") + swapped + " Release held inputs before resuming."
-			refresh())
+		choice.item_selected.connect(func(index: int) -> void: _apply_choice(action, choice, index))
 		choices[action] = choice
-		add_child(choice)
+		rows[action] = row
+		row.add_child(choice)
+		add_child(row)
 	var reset := Button.new()
 	reset.name = "ResetInputBindings"
-	reset.text = "Reset keyboard / mouse defaults"
+	reset.text = "Reset all keyboard / mouse bindings"
 	reset.custom_minimum_size.y = 40
+	reset.tooltip_text = "Restore every keyboard / mouse action to its default, including command, cursor, and voice controls not shown on this page."
+	reset.accessibility_description = reset.tooltip_text
 	reset.pressed.connect(func() -> void:
 		var service := Access.service()
 		if service != null:
-			note.text = "Default bindings saved." if service.reset_defaults() else "Defaults applied; could not save preferences."
+			note.text = "All keyboard / mouse bindings restored and saved." if service.reset_defaults() else "All defaults applied; could not save preferences."
 		refresh())
 	add_child(reset)
 	var binding_service := Access.service()
@@ -56,10 +83,13 @@ func _ready() -> void:
 
 func refresh() -> void:
 	var bindings := Access.values()
+	var changed_rows: Array[String] = []
 	for action: String in choices:
 		var choice: OptionButton = choices[action]
 		var code: String = bindings[action]
-		choice.accessibility_description = "Current binding: " + Model.label(code) + ". Choosing an occupied input swaps actions."
+		var changed: bool = code != Model.DEFAULTS[action]
+		choice.accessibility_description = "Current binding: " + Model.label(code) + (". Changed from default " + Model.label(Model.DEFAULTS[action]) if changed else ". Default binding") + ". Choosing an occupied input swaps actions."
+		if changed: changed_rows.append(Model.LABELS[action] + " (" + action + "): " + Model.label(code) + " · default " + Model.label(Model.DEFAULTS[action]))
 		var found := false
 		for index in choice.item_count:
 			if choice.get_item_metadata(index) == code:
@@ -70,3 +100,38 @@ func refresh() -> void:
 			choice.add_item(Model.label(code))
 			choice.set_item_metadata(choice.item_count - 1, code)
 			choice.select(choice.item_count - 1)
+	changes_summary.text = "Modified from defaults: %d of %d editable bindings." % [changed_rows.size(), choices.size()]
+	if not changed_rows.is_empty(): changes_summary.text += "\n" + "\n".join(changed_rows)
+	_filter_rows(search.text)
+
+func _filter_rows(query: String) -> void:
+	var normalized := query.strip_edges().to_lower()
+	var shown := 0
+	var owner := get_viewport().gui_get_focus_owner()
+	var bindings := Access.values()
+	for action: String in rows:
+		var searchable: String = (Model.LABELS[action] + " " + action + " " + Model.label(str(bindings.get(action, Model.DEFAULTS[action])))).to_lower()
+		var matches: bool = normalized.is_empty() or searchable.contains(normalized)
+		if not matches and is_instance_valid(owner) and rows[action].is_ancestor_of(owner): search.grab_focus()
+		rows[action].visible = matches
+		if matches: shown += 1
+	search_status.text = "%d of %d editable actions" % [shown, rows.size()] if normalized.is_empty() or shown > 0 else "No matching bindings. Clear search to show all actions."
+
+func _apply_choice(action: String, choice: OptionButton, index: int) -> void:
+	var service := Access.service()
+	if service != null:
+		var code: String = choice.get_item_metadata(index)
+		var swapped := ""
+		for other: String in Model.DEFAULTS:
+			if other != action and service.values.get(other) == code:
+				var other_label: String = Model.LABELS.get(other, "Other profile action ‘" + other + "’ (not editable here)")
+				swapped = " Swapped with " + other_label + "."
+				break
+		var saved: bool = service.set_binding(action, code)
+		note.text = ("Binding applied and saved." if saved else "Binding applied for this session; could not save preferences.") + swapped + " Release held inputs before resuming."
+	refresh()
+	_restore_choice_focus.call_deferred(choice)
+
+func _restore_choice_focus(choice: OptionButton) -> void:
+	if choice.is_visible_in_tree(): choice.grab_focus()
+	else: search.grab_focus()

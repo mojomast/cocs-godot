@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "xvfb-run",
+    "-a",
+    "-s",
+    "-screen 0 1280x800x24",
+    "node",
+    "tools/godot-biomes/expansion/connected-journey.mjs",
+    "siltwake-crossing",
+    "--granted"
+  ],
+  "started": "20261003T014702.924793Z",
+  "map": "siltwake-crossing",
+  "compact": false,
+  "processGroup": 851990,
+  "exitCode": 0,
+  "ended": "2026-10-03T01:50:45.500344+00:00"
+}

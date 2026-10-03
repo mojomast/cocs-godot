@@ -1,5 +1,14 @@
 # Scenery transaction and connected campaign journey
 
+**Grant-F production update:** actual execution and retained failures now live in
+`production-f/README.md`. The geometry oracle uses actual imported surface arrays
+(not `get_faces()`'s snapped TriangleMesh), with one-to-one 1e-6-local-unit vertex
+matching. The gameplay driver uses explicit capture-paced rendering on llvmpipe
+because continuous frames exceeded the unchanged 250 ms input TTL. Native input,
+transport and authority remain real-time and unmodified. This mode does not prove
+continuous rendered playability. The historical source-only status below describes
+the original implementation handoff, not the current production stage.
+
 Source-only implementation started on canonical `ce084d50`. Robot grant D has
 completed; grant E now belongs exclusively to the vehicle producer. No Blender,
 engine, import, render, audio, encoding or

@@ -1,0 +1,10 @@
+{
+  "id": "stormglass-causeway",
+  "master": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-20261002/tools/godot-multiplayer/new-maps/stormglass-causeway/stormglass-causeway.blend",
+  "glb": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-20261002/godot/multiplayer_worlds/art/worlds/stormglass-causeway.glb",
+  "glbSha256": "ff318582fd47ca633ef74da1aa4a6aa2b5b691800f12fb3210f3dac140cb5b33",
+  "editableMeshes": 9682,
+  "materialBatches": 9,
+  "recipeTriangles": 19364,
+  "acceptance": "export only; reopen/native/rendered acceptance still required"
+}

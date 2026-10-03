@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "xvfb-run",
+    "-a",
+    "-s",
+    "-screen 0 1280x800x24",
+    "node",
+    "tools/asset-production/candidate-hosted.mjs",
+    "vesper-viaduct",
+    "uplink",
+    "--granted"
+  ],
+  "started": "2026-10-03T04:27:54.235984+00:00",
+  "timeoutSeconds": 960,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-three-vesper-evidence-20261002/production-h/20261003T042754.118680Z-hosted-uplink/hosted-uplink.log",
+  "processGroup": 1384104,
+  "exitCode": 0,
+  "ended": "2026-10-03T04:29:09.096669+00:00",
+  "ownedGroupTeardownRequested": true
+}

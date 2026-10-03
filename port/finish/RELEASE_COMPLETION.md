@@ -7,6 +7,42 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
+**Polish checkpoint:** All six lanes passed native verification under L, integrated
+at `9cd1ac72`. Nine primary fixtures and 30 latest gate IDs passed, with 27 real
+before/after image pairs. Final L package reconciliation integrated at `623127c5`
+with 52 parent source checks passed. Cinematic M is active; see below.
+
+**Motion/vehicle directive:** Flash research plus Sol/Astra implementation is
+active for natural operator locomotion, player movement feel, Puma controls and
+first-/third-person vehicle views, and articulated melee kick chains. Ownership:
+`MOTION_20261003.md`. K released with 64 passed gate IDs and failed live-kick timing
+acceptance. Its fixes are integrated at `f06d65fc`; detailed evidence is retained.
+
+**Overnight expansion directive:** the user requested Luna/DeepSeek fan-out and
+substantial implementation progress. Four bounded source-feature lanes are active
+alongside Abyssal production: Home discovery, controls setup, campaign guidance and
+Fighting training feedback. Ownership and integration sequence:
+`OVERNIGHT_20261003.md`. This supersedes the earlier restriction against starting
+additional feature lanes; the exclusive local heavy-slot policy remains in force.
+
+**Requested test build published:** `quiet-relay-fighting-vehicles-preview-2026-10-03`,
+candidate `cb6e4c9f6bff09aafe4d9ef6262c5996a6219329`, Windows/Linux public downloads.
+Focused actual Windows check `37093996218` passed; broader suite retains the Helix
+startup timeout after 23 baseline and six Parallax passes. G4 explicitly released
+at `2026-10-03T03:43:18.530036Z`, all three groups empty. Windows diagnostic
+`37094406934` confirms synchronous authority startup exceeds the client deadline;
+navigation optimization integrated at `6b8c445f` and awaits remote Windows cold
+graph comparison plus subsequent new-package native verification. Published
+preview bytes still contain the original runtime.
+**Exclusive local heavy grant `CINEMATIC-NATIVE-20261003-M` belongs to
+`ses_f03411df4ffeEk7157dyOo57NZ`.** L released at `2026-10-03T07:30:42.252132Z`.
+Parent independently confirmed three empty audits and no live members of its 49
+recorded process groups. F/G/G2/G3/G4/H/I/J/K/L have released. M adopts `623127c5`,
+finishes preflight and produces the existing cinematic/Home sequence with exact
+source/frame evidence, preserved previous menu bytes and bounded cleanup.
+Scenery delivery is preserved but not integrated into the preview. Final production
+and acceptance obligations remain; strict final packaging is unchanged.
+
 Current assignments below supersede the historical checkpoints later in this file.
 The owner renewed the execution directive: **use subagents to advance the missing
 production work**. Source workers start from committed parent `652b8f3c` in their
@@ -18,31 +54,46 @@ boundaries.
 | Fighting production and native surface review | Astra `ses_f026e25e4ffezp2kvz5VGox7dz` | Complete and merged at `bb02e34b`; nine real rigs/masters and native comparisons; grant B released |
 | Parallax interior production | Astra `ses_f055a6b41ffe42yCL8AxbOL676` | Complete and reviewed at `b66f4ab3`; exact package promotion integrated at `5d33287a`; final-candidate regressions remain |
 | Robot/prop production | Astra `ses_f03a2843bffefDFoP3x1j1cxRO` | Produced and reviewed through `2c39d1ad`; D released; actual texture/import-bound package promotion integrated at `e4b311fa` |
-| Fighting presentation and controls | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing merged at `1bff0281`; source-only correction of disconnected-device labels/routing and occupied-controller cycling now active; native review pending |
+| Fighting presentation and controls | Astra `ses_f026d6c45ffefUJ0hXFvdcTgG3` | Responsive framing at `1bff0281`; controller recovery integrated at `614a8a7f`, all 12 parent presentation source tests pass; native review pending |
 | Foundry light preservation | Astra `ses_f019cb7d5ffeWwj5kCIG2C9Fn5` | All five native checks passed in C; parent inspected restored cooling lights; evidence integrated |
 | Remaining gameplay defects | Astra `ses_f0294303bffed6Fb8UJLKe4ZDz` | Targeted campaign input-chain and weak texture-ownership diagnostics integrated; awaiting next explicit native grant, neither defect claimed fixed |
-| Scenery integration development | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Atomic installer and four-chapter connected journeys integrated at `cf0e8def`; nine parent source checks pass; awaits production/native grant after vehicles |
-| Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Exclusive grant E: complete source journey work, then actual nine masters/exports, native drive/crew/fire/repair/wreck and visual review |
-| Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Integrated at `b6ab6782`; 26 parent Python checks and real-rig source audit pass; production UI/native execution awaits later grant and device access |
-| Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Source-only registration of executable fighting UI journey and launch-bound finish anchor; preserve existing 141 jobs and all original criticals; fresh ledger still required |
-| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | Actual Parallax and robots promoted with reconciled import/image provenance; five other units still need production; final native/export/Windows CI remain pending |
-| Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | Prepared v3 pipeline integrated at `2902412b`; nine focused parent tests pass; real capture/edit/install awaits final assets and a later grant |
+| Scenery production/integration | Astra `ses_f03437da1ffeli91L87Q6CVyRP` | Final L seven-unit reconciliation integrated at `623127c5`; 52 parent checks pass, 116 released-K import sidecars unchanged; future pinned runtime changes require another exact advance |
+| Vesper Viaduct | Astra `ses_f03a3885fffehx9yFhHubuPCft` | H production/evidence integrated through `04fbbfa5`; six native outcomes passed; parent review/registration at `99a4f597`; package-promoted at `b5d16351` |
+| Abyssal Pressureworks | Astra `ses_f03a3024cffeNO1Cc3Qr1zSLTG` | I delivery integrated through `f0e76bf7`; six native outcomes and parent visual review retained; six-mode registration/package promotion integrated at `c7c81c71` |
+| Stormglass Causeway | Astra `ses_f0342d1ffffeyUHJkcUj3vqP7p` | J completed/released; assets and private race evidence integrated through `997bc013`; one public Puma Race pair and exact package promotion integrated at `5b5c8791`, flat-road concession retained |
+| Integrated motion/UI and polish native verification | Astra `ses_f03a3885fffehx9yFhHubuPCft` | K/L released: K 64 passed gate IDs; L nine primary fixtures/30 gate IDs passed, 54 comparison PNGs; live-kick timing and remaining ordinary vehicle journeys remain open |
+| Shared race UI/lifecycle repairs | Sol `ses_effc08498ffeMuhuRDvyAoXEpj` | Source-only production fixes for J findings: map title, responsive result panel, restart audio teardown and attachment ownership warnings |
+| Vehicle production/integration | Astra `ses_f03440966ffeBzmLZZ3UkR4Oi7` | Actual production at `1f129ab2`; E released; compact-HUD correction at `83ceaa62` passes six parent source checks/grammar, new native layout/screenshots pending |
+| Fighting journey completion | Astra `ses_f026c14a5ffeK3WZVDmpQEEylH` | Base `b6ab6782` and ordinary-controller follow-up `da259d19` integrated; 26 parent acceptance tests and grammar pass; native execution awaits later grant and device access |
+| Final acceptance coverage | Astra `ses_f0292f089ffeq9MnxeAHN0yrKb` | Launch-bound UI registration integrated through `2e355b93`; 142 jobs preserve all prior coverage; 35 parent runner/receipt tests pass; fresh ledger still required |
+| Windows/Linux release packaging | Astra `ses_f02938d29ffe6I9QBl4ledVW0a` | G3 preview published; Helix candidate integrated at `6b8c445f`; remote Windows source graph/timing comparison authorized, new-package native verification pending |
+| Cinematic/menu pipeline | Astra `ses_f03411df4ffeEk7157dyOo57NZ` | Exclusive M: attempt-02 capturing; 116 import hashes stable, prior movies/menu and failed attempt retained. Two fixture corrections integrated through `0646c936`; 10 parent source tests pass. Encoding/install/release pending; see `cinematic/M_CHECKPOINT.md` |
 
 All workers run in the background, using existing sessions/checkouts. Source work
 may run in parallel. The parent owns merges, stage transitions, explicit heavy
 grants, rendered review and final publication. No extra speculative feature lanes
-are introduced by this directive.
+are introduced without the user's renewed scope. The subsequent overnight
+directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
-**`VEHICLE-ASSET-PRODUCTION-20261002-E` belongs to vehicle Astra
-`ses_f03440966ffeBzmLZZ3UkR4Oi7`.** Its scope is the vehicles unit: pre-build
-fallback proof, nine real masters/exports and independent reopen, native source/
-attachment/LOD/team/weather checks, connected gameplay and visual review, plus
-actual package-ready receipts. Robot D explicitly released at
-`2026-10-02T23:24:34.512076Z`, with zero remaining owned processes across 44 groups.
-Its assets and hooks are integrated. A/B/C also explicitly released. Scenery/maps
-await later grants; E does not grant an unbounded multi-unit batch.
+**`CINEMATIC-NATIVE-20261003-M`**, owner `ses_f03411df4ffeEk7157dyOo57NZ`, is the
+only active heavy grant. Scope: cinematic preflight/ordinary-source preparation,
+native import/capture, encode, candidate/installed Home proof and atomic menu
+installation. No package export, final 142-case execution, asset rebakes or new
+gameplay authority. Use shared nonwaiting lock, bounded owned process groups,
+exact candidate/frame identities and `LP_NUM_THREADS=1`. Three empty audits and
+explicit release are required before the next heavy owner. Technical audio checks
+do not substitute for the independent human listening gate.
+Parent owns review, public registration and promotion; cinematic awaits a later slot.
+Scenery F, preview G/G2/G3/G4, Vesper H, Abyssal I, Stormglass J, motion K and polish L explicitly released. This checkpoint supersedes
+historical ownership metadata in production plans; do not mutate active-run inputs
+just to relabel ownership. All seven asset units are promoted and strict asset
+inventory passes at `623127c5`, including the reviewed L correction through
+`9cd1ac72`. Public coverage is 13 worlds / 73 pairs. This does
+not discharge final 142-job acceptance or new-feature native obligations.
+The authorized Windows navigation
+comparison runs on a separate remote host.
 
 No other agent may run Godot, Blender, imports, rendering, audio capture or encoding
 before explicit teardown/release and a new grant. Asset integration, gameplay
@@ -596,3 +647,121 @@ the parent. Real kernel virtual-device tests require accessible device/event nod
 there is no injected-signal substitute or claim of physical-controller coverage.
 Vehicle E remains exclusive. No fighting engine run, final-ledger pass or export
 has occurred in this integration.
+
+## Controller selection and recovery correction integrated
+
+Presentation `1ca6f39e` is integrated as `614a8a7f`. Disconnected assignments now
+display their actual missing pad ID; one explicit activation selects Keyboard.
+Controller cycling skips the other player's pad, enabling ordinary P1-first then
+P2-second selection. Choices are recalculated on activation and captions refresh
+on hotplug/focus without transferring ownership or automatically resuming play.
+The focused button survives cycling, and menu teardown clears stored references.
+Disconnect still releases both actors' held/queued input and blocks resume until
+the missing assignment is resolved.
+
+Parent ran all 12 presentation Python tests successfully (six camera, six device
+tests). The device tests execute the production pure helper through a narrow
+syntax/Array shim and inspect lifecycle wiring; they are not Godot or OS device
+evidence. The independent acceptance owner is replacing its prior P2-first
+workaround with ordinary assignment order and checking single-activation recovery
+while the other pad remains assigned. The final acceptance owner received the
+new helper/test dependencies. Native typing, hotplug, UI and responsive-camera
+execution remain pending under a later fighting grant and accessible uinput.
+
+Controller fixture follow-up `68bbe292` is integrated as `da259d19`. It now selects
+P1 before P2, checks exact exclusive routes, requires the truthful disconnected
+caption and recovers with exactly one GUI activation while retaining the other
+pad. It asserts button/focus preservation, both actors' released held/queued
+inputs, an unchanged paused clock and explicit Resume into mixed keyboard/pad
+routing before returning both players to keyboards. Only the fixture and its
+handoff documentation changed. Parent reran 26 acceptance tests and GDScript
+grammar parsing successfully; no native device or engine execution occurred.
+
+## Launch-bound UI registration complete
+
+Acceptance `e5f98a63` and `48dcaca1` are integrated as `135eeb5f` and `2e355b93`.
+The resolved matrix has 142 jobs, preserving the previous 141 and all original
+96 criticals. The executable UI journey requires native import, camera checks
+and receipt/source tests, and is a prerequisite for the separate four-stage owner
+review. The existing presentation source job now covers both camera and device
+tests; the device helper is an explicit UI dependency.
+
+The runner passes the actual ledger path and selected matrix at launch and saves
+the running attempt before the producer reads its anchor. Later ledger updates
+do not invalidate that stable path: identity and queue are verified independently
+of the changing report bytes. Unanchored historical runs remain ineligible for
+receipt promotion. Parent ran all 35 finish-runner/receipt source tests, including
+launch interception and mutable-ledger checks, successfully. Log:
+`/tmp/opencode/parent-finish-registration-tests-2e355b93.log`.
+
+Parent additionally resolved the 142-job matrix and verified prior extension IDs
+and both launch-anchor arguments. These tests use synthetic processes; no engine,
+virtual device, production ledger, export or Windows run was started. Vehicle E
+remains exclusive; final candidate freeze and native UI/device acceptance remain
+pending.
+
+## Vehicle E delivered; scenery F active
+
+Vehicle `105e4083` and `1c26b4bb` are integrated as `0cb3a4e7` and `1f129ab2`.
+Nine actual Blender masters, nine GLBs, recipes and builder reports are committed.
+The fleet totals 163,612 post-modifier triangles against its 456,000 aggregate cap.
+Independent reopen/reimport, required-asset bounds/LOD/material/source-origin
+checks and controlled 64-vehicle lifecycle cleanup passed under E.
+
+Three serialized native cases on Sunscar Convoy / Combined Arms passed driving,
+boost/bend/reverse, applicable driver/gunner/passenger fire, team takeover,
+controlled wet restoration, ordinary damage/Codex repair/wreck/respawn, natural
+results and Enter rematch. All nine final clients exited cleanly. These results
+retain their original E inputs; no final-ledger acceptance is inferred. Parent
+reran all 22 vehicle source tests and the authority-free plan successfully.
+
+Parent inspected all three close LOD0 views and Titan UI150. Distinct bounded
+vehicle art is accepted for package review; the compact image exposes clipped
+bottom instructions, assigned to the vehicle owner as a source-only correction.
+That screenshot remains intact. Software gameplay uses no shadows and half-scale
+3D resolution; full-quality GPU performance and human handling remain unaccepted.
+
+Gallery: **http://100.125.104.79:8796/native-vehicles-e/** — twenty unchanged files,
+3,083,044 bytes, all HTTP/SHA-256 verified. Packaging is authorized to validate
+and promote actual vehicles, including extracted albedo/normal PNG and import
+dependencies. The original unpromoted receipt is
+`6981afdfd64b22455abe3c36a706667ab94ed842b2509bccf94fb9cc390b1668`.
+It binds 38 inputs and six unchanged runtime hooks; supporting verifier advances
+must remain explicit. Parallax and robot promotions stay preserved.
+
+The original scenery owner now holds exclusive F, starting from `1f129ab2` with
+the integrated atomic loader and connected journeys. It must build/reopen all
+real outputs and execute native four-chapter/LOD/lifecycle/shot/workshop/cleanup
+coverage before handing back actual receipts and an explicit process release.
+
+Compact-HUD follow-up `d3ef89dc` is integrated as `83ceaa62`. The only changed
+production path is `godot/combined_arms/hud.gd`: it uses wrapped content heights,
+reserves 36 logical pixels for F12, retains font/user scale and all instructions,
+and provides bounded overflow navigation/focus with scroll reset on recapture.
+Parent passed six layout/contract source tests and grammar parsing for both the
+HUD and its new native fixture. Actual font/container measurements and replacement
+compact/wide screenshots remain pending under a later grant; the original E
+image remains defect evidence. Packaging received the exact changed dependency
+for explicit receipt reconciliation without reattributing E native results.
+Commands and scope: `../expansion-four/vehicles/HUD_COMPACT_SOURCE_FIX.md`.
+
+Vehicle promotion `3a1523c5`, `bbcdae18`, `ca9e072d` is integrated as `f7c2bccb`,
+`9cf15a14`, `5f00bca2`. Vehicles bind 201 package inputs including 69 extracted
+PNGs (60 albedo, nine normal) and 78 import sidecars. Extracted pixels match the
+embedded GLB bytes; import identities, tangents, UV0 and selective normals are
+checked against the actual vehicle material contract. Robot-specific vertex-color
+requirements are not imposed on these material-colored assets.
+
+Parent passed all 13 focused vehicle/robot/import/production/recorded-Git checks.
+The audit is `/tmp/opencode/parent-three-unit-promotion-audit.json`; it confirms
+three promoted units and four pending: scenery, Vesper, Abyssal and Stormglass.
+The packaging owner passed 70 targeted source tests. Current receipt SHA-256s:
+- Vehicles: `86d491cc2121ab85f02eb24f2027a9179359528508fdb317cff19b7b0c21876f`.
+- Robots: `6dcc7c4d4049c86863f6ed03025d08d97e83499dd1183fcb77759486a8f0ef48`.
+- Parallax: `1073428540576e4b46421a84fa06b1b5aecab6c1c1d796790a92e13a0d8a8c5f`.
+
+Prior hashes/supporting-input history are retained. The HUD file is covered by
+full-package tracked-native hashing, not the asset receipt input set; its change
+introduced no asset-receipt drift. E's native evidence predates that correction,
+whose native layout/screenshots remain pending. No production freeze, engine,
+Windows CI or export occurred in this promotion pass. Scenery F remains exclusive.

@@ -326,11 +326,14 @@ func virtual_disconnects() -> void:
 				return
 			pad_ids.append(added[0])
 		await activate("Fighting Settings & bindings")
-		# Select the second pad first so the current cycle widget can traverse
-		# pad 0 before it is assigned to player 1 (occupied IDs are rejected).
-		for actor in [1, 0]:
+		# Ordinary selection order must work: P1 owns pad 0 before P2 cycles.
+		for actor in [0, 1]:
 			await select_device(actor, int(pad_ids[actor]))
-		check(shell.router.devices[0] != shell.router.devices[1] and shell.router.devices.all(func(id): return id >= 0), "distinct real enumerated virtual pads selected via settings")
+			check(int(shell.router.devices[actor]) == int(pad_ids[actor]) and
+				int(shell.router.devices[1-actor]) == (-1 if actor == 0 else int(pad_ids[0])),
+				"P1-first then P2-second selection preserves exclusive ownership",
+				{"selected_actor": actor, "expected_pads": pad_ids.duplicate(), "routes": shell.router.devices.duplicate()})
+		check(shell.router.devices == pad_ids and shell.router.devices[0] != shell.router.devices[1], "distinct real enumerated virtual pads selected via settings")
 		await activate("Back")
 		await activate("Resume")
 		for actor in 2:
@@ -352,16 +355,42 @@ func virtual_disconnects() -> void:
 		check(shell.paused, "cannot resume with missing assigned device")
 		await activate("Fighting Settings & bindings")
 		var caption := choice_button(shell.ui, "Player %d device" % (disconnected+1))
-		check(not caption.text.begins_with("Keyboard") or shell.router.devices[disconnected] == -1,
-			"device label never claims keyboard while routing disconnected pad", {"caption": caption.text, "route": shell.router.devices[disconnected]})
-		# Free the other pad before cycling the missing binding; occupied-device
-		# rejection must not be bypassed by writing router.devices in the fixture.
-		await select_device(1-disconnected, -1)
-		await select_device(disconnected, -1)
+		var other := 1-disconnected
+		var other_pad := int(pad_ids[other])
+		check(caption.text == "Pad %d · disconnected" % unplugged_id and
+			int(shell.router.devices[disconnected]) == unplugged_id and
+			int(shell.router.devices[other]) == other_pad and Input.get_connected_joypads().has(other_pad),
+			"device label never claims keyboard while routing disconnected pad",
+			{"caption": caption.text, "route": shell.router.devices[disconnected], "other_route": shell.router.devices[other]})
+		# Exactly one real GUI activation, not select_device's retry/cycling loop.
+		var recovery_tick := int(shell.state.tick)
+		await activate_button(caption)
+		check(int(shell.router.devices[disconnected]) == -1 and int(shell.router.devices[other]) == other_pad and
+			caption.text == "Keyboard %d" % (disconnected+1),
+			"one activation recovers missing pad to Keyboard without releasing other assignment",
+			{"disconnected_actor": disconnected, "routes": shell.router.devices.duplicate(), "other_pad": other_pad})
+		check(is_instance_valid(caption) and caption.has_focus() and
+			choice_button(shell.ui, "Player %d device" % (disconnected+1)) == caption,
+			"device recovery refresh preserves the focused button")
+		await frame(5)
+		check(shell.paused and int(shell.state.tick) == recovery_tick,
+			"device selection remains paused until explicit Resume")
+		check(shell.router.down.all(func(d): return d.is_empty()) and shell.router.queued == [0,0],
+			"single-activation recovery keeps both actors held and queued inputs released")
+		await activate("Back")
+		await activate("Resume")
+		check(not shell.paused and int(shell.router.devices[disconnected]) == -1 and int(shell.router.devices[other]) == other_pad,
+			"explicit Resume accepts recovered keyboard plus still-assigned other pad")
+		await wait_ticks(2)
+		check(shell.last_inputs.all(func(c): return c.held == 0), "keyboard recovery does not retain pad buttons")
+		# Only now release the other assignment for the later all-keyboard case.
+		await pause()
+		await activate("Fighting Settings & bindings")
+		await select_device(other, -1)
+		check(shell.router.devices == [-1,-1], "both keyboards selected after mixed-device recovery proof")
 		await activate("Back")
 		await activate("Resume")
 		await wait_ticks(2)
-		check(shell.last_inputs.all(func(c): return c.held == 0), "keyboard recovery does not retain pad buttons")
 		await bridge("pads-destroy")
 
 func training_journey() -> void:

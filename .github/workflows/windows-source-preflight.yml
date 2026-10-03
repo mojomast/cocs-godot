@@ -1,0 +1,24 @@
+name: Windows source-only packaging preflight
+on:
+  push:
+    branches: [preview/windows-source-preflight-g3]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-preflight:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - name: Preserve exact committed bytes
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.0'
+      - name: Path and locked-source regressions
+        run: node --test tools/godot-package/dependency_path.test.mjs tools/godot-package/source_state_windows.test.mjs
+      - name: Recorded discovery and strict promoted asset preflight (no engine)
+        run: node tools/godot-package/windows_source_preflight.mjs

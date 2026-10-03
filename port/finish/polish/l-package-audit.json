@@ -1,0 +1,61 @@
+{
+  "foundation": "9cd1ac72",
+  "units": [
+    {
+      "unit": "parallax-interiors",
+      "previousInputs": 551,
+      "inputs": 554,
+      "changed": 2,
+      "added": 3,
+      "sha256": "d6012654bb2236af66eef7ef36e7dd2c5a1ab6ea7aca8c081eb1a0524f65a86d"
+    },
+    {
+      "unit": "robots",
+      "previousInputs": 629,
+      "inputs": 632,
+      "changed": 2,
+      "added": 3,
+      "sha256": "9fcef298dfe4b141a33d36cf11aa40fc921a3fcb304dcc426884afb2c981927a"
+    },
+    {
+      "unit": "vehicles",
+      "previousInputs": 699,
+      "inputs": 702,
+      "changed": 2,
+      "added": 3,
+      "sha256": "d3c5b37919b0119d3c51076b7d985ffc5b6c71af1a521dffb6d840580e36380f"
+    },
+    {
+      "unit": "scenery",
+      "previousInputs": 880,
+      "inputs": 883,
+      "changed": 2,
+      "added": 3,
+      "sha256": "429fae356e7b2a788dcc21083f07f0f13e32136d07cd13878cff4ebcfedf482b"
+    },
+    {
+      "unit": "vesper-viaduct",
+      "previousInputs": 644,
+      "inputs": 647,
+      "changed": 2,
+      "added": 3,
+      "sha256": "710f2742a7a94f7828cdb8ca4e4d8d3bbb27ad5f0df9b3bc3973ad101e5f9706"
+    },
+    {
+      "unit": "abyssal-pressureworks",
+      "previousInputs": 628,
+      "inputs": 631,
+      "changed": 2,
+      "added": 3,
+      "sha256": "20c15bdf99cea56edb95daf1a6c8724ec9bf5e23838b9235bf2af11fd3b5904e"
+    },
+    {
+      "unit": "stormglass-causeway",
+      "previousInputs": 569,
+      "inputs": 572,
+      "changed": 2,
+      "added": 3,
+      "sha256": "4736b2d686ae9c4a39d05a77f2f238cc6e0b23d76a3e0571230c80e2b6ae5602"
+    }
+  ]
+}

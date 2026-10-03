@@ -1,0 +1,38 @@
+ASSET_REOPEN masters tools/godot-multiplayer/new-maps/stormglass-causeway/stormglass-causeway.blend 11446 8189
+01:45:15 | INFO: Data are loaded, start creating Blender stuff
+01:45:15 | INFO: Blender create Mesh node batch-asphalt
+01:45:15 | INFO: Blender create Mesh node batch-concrete
+01:45:15 | INFO: Blender create Mesh node batch-salt
+01:45:15 | INFO: Blender create Mesh node batch-amber
+01:45:15 | INFO: Blender create Mesh node batch-teal
+01:45:15 | INFO: Blender create Mesh node batch-glass
+01:45:15 | INFO: Blender create Mesh node batch-steel
+01:45:15 | INFO: Blender create Mesh node batch-brick
+01:45:15 | INFO: Blender create Mesh node batch-ocean
+01:45:15 | INFO: Blender create Mesh node route-sign-0
+01:45:15 | INFO: Blender create Mesh node route-sign-1
+01:45:15 | INFO: Blender create Mesh node route-sign-2
+01:45:15 | INFO: Blender create Mesh node route-sign-3
+01:45:15 | INFO: Blender create Mesh node route-sign-4
+01:45:15 | INFO: Blender create Mesh node route-sign-5
+01:45:15 | INFO: Blender create Mesh node route-sign-6
+01:45:15 | INFO: Blender create Mesh node route-sign-7
+01:45:15 | INFO: Blender create Mesh node route-sign-8
+01:45:15 | INFO: Blender create Mesh node route-sign-9
+01:45:15 | INFO: Blender create Mesh node route-sign-10
+01:45:15 | INFO: Blender create Mesh node route-sign-11
+01:45:15 | INFO: Blender create Mesh node route-sign-12
+01:45:15 | INFO: Blender create Mesh node route-sign-13
+01:45:15 | INFO: Blender create Mesh node route-sign-14
+01:45:15 | INFO: Blender create Mesh node route-sign-15
+01:45:15 | INFO: Blender create Mesh node route-sign-16
+01:45:15 | INFO: Blender create Mesh node route-sign-17
+01:45:15 | INFO: Blender create Mesh node route-sign-18
+01:45:15 | INFO: Blender create Mesh node route-sign-19
+01:45:15 | INFO: Blender create Mesh node route-sign-20
+01:45:15 | INFO: glTF import finished in 0.07s
+ASSET_REOPEN exports godot/multiplayer_worlds/art/worlds/stormglass-causeway.glb 30 6
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-20261002/tools/godot-multiplayer/new-maps/stormglass-causeway/stormglass-causeway.blend"
+
+Blender quit

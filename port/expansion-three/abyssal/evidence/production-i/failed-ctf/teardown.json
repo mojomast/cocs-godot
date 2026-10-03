@@ -1,0 +1,36 @@
+{
+  "success": false,
+  "accepted": false,
+  "journeyPassed": false,
+  "processFailed": true,
+  "serverError": null,
+  "peers": [
+    {
+      "role": "host",
+      "pid": 1494937,
+      "closed": true,
+      "code": 0,
+      "signal": null,
+      "spawnError": null,
+      "requested": true,
+      "forced": false,
+      "failures": [],
+      "clean": true
+    },
+    {
+      "role": "guest",
+      "pid": 1495014,
+      "closed": true,
+      "code": 0,
+      "signal": null,
+      "spawnError": null,
+      "requested": false,
+      "forced": false,
+      "failures": [
+        "unexpected-exit"
+      ],
+      "clean": false
+    }
+  ],
+  "at": "2026-10-03T05:10:53.438Z"
+}

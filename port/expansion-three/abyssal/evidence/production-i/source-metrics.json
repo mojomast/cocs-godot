@@ -1,0 +1,14 @@
+{
+  "geometryHash": "32366a6c3df7f95f8d89281c5f83b24d9583cefeb4c0099790303d15349b53be",
+  "recipeHash": "5119ea83e8defa9f726fa70d2d478785111a51fcf0aefaf72c5117b4fde320af",
+  "navNodes": 908,
+  "navEdges": 2838,
+  "sourceCoreSha256": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+  "bounds": {
+    "minX": -120,
+    "maxX": 120,
+    "minZ": -110,
+    "maxZ": 110
+  },
+  "relief": 20
+}

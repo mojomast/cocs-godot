@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: six Abyssal capabilities remain private; promoted Vesper uses public admission
+ok 1 - six Abyssal capabilities remain private; promoted Vesper uses public admission
+  ---
+  duration_ms: 90.692943
+  type: 'test'
+  ...
+# Subtest: current private cloner imports actual new broadphase dependency and ws without constructing authority
+ok 2 - current private cloner imports actual new broadphase dependency and ws without constructing authority
+  ---
+  duration_ms: 771.612087
+  type: 'test'
+  ...
+# Subtest: frozen authority, shared finish, public catalogs and other producer receipts preserve merged canonical bytes
+ok 3 - frozen authority, shared finish, public catalogs and other producer receipts preserve merged canonical bytes
+  ---
+  duration_ms: 7.33618
+  type: 'test'
+  ...
+# Subtest: actual Godot-extracted images match embedded export bytes and keep lossless normal policies
+ok 4 - actual Godot-extracted images match embedded export bytes and keep lossless normal policies
+  ---
+  duration_ms: 1.309552
+  type: 'test'
+  ...
+# Subtest: deterministic schema, dry 20m terraces, 12 chambers / 17 galleries
+ok 5 - deterministic schema, dry 20m terraces, 12 chambers / 17 galleries
+  ---
+  duration_ms: 11.242847
+  type: 'test'
+  ...
+# Subtest: ordinary source moveActor walks every route in both directions and never leaves dry support
+ok 6 - ordinary source moveActor walks every route in both directions and never leaves dry support
+  ---
+  duration_ms: 367.738745
+  type: 'test'
+  ...
+# Subtest: source bot graph connects all spawns, flags and objectives
+ok 7 - source bot graph connects all spawns, flags and objectives
+  ---
+  duration_ms: 642.42608
+  type: 'test'
+  ...
+# Subtest: actual standing body contact, portal rays, exact ceiling and transparent glazing
+ok 8 - actual standing body contact, portal rays, exact ceiling and transparent glazing
+  ---
+  duration_ms: 10.808013
+  type: 'test'
+  ...
+# Subtest: every full shell segment sustains standing contact; all chamber ceilings and portals ray-test
+ok 9 - every full shell segment sustains standing contact; all chamber ceilings and portals ray-test
+  ---
+  duration_ms: 147.611668
+  type: 'test'
+  ...
+# Subtest: walkable support polygons have no overlapping interiors
+ok 10 - walkable support polygons have no overlapping interiors
+  ---
+  duration_ms: 17.960459
+  type: 'test'
+  ...
+# Subtest: elevated control approach and reactor floor have reciprocal counterfire sightlines
+ok 11 - elevated control approach and reactor floor have reciprocal counterfire sightlines
+  ---
+  duration_ms: 0.347039
+  type: 'test'
+  ...
+# Subtest: physical CTF carry round through ordinary Match.step input
+ok 12 - physical CTF carry round through ordinary Match.step input
+  ---
+  duration_ms: 693.8157
+  type: 'test'
+  ...
+# Subtest: koth: source-input approach, capture and objective round win
+ok 13 - koth: source-input approach, capture and objective round win
+  ---
+  duration_ms: 38.910116
+  type: 'test'
+  ...
+# Subtest: domination: source-input approach, capture and objective round win
+ok 14 - domination: source-input approach, capture and objective round win
+  ---
+  duration_ms: 37.18762
+  type: 'test'
+  ...
+# Subtest: holdout: source-input approach, capture and objective round win
+ok 15 - holdout: source-input approach, capture and objective round win
+  ---
+  duration_ms: 119.534943
+  type: 'test'
+  ...
+# Subtest: all candidate modes construct on authored support; autonomous source bots leave spawn rooms
+ok 16 - all candidate modes construct on authored support; autonomous source bots leave spawn rooms
+  ---
+  duration_ms: 964.477885
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3747.286194

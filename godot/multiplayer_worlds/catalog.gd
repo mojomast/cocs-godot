@@ -1,6 +1,9 @@
 extends "res://world/catalog.gd"
 const WORLD_ROOT := "res://multiplayer_worlds/generated/"
 const MODES := {
+ "stormglass-causeway": ["puma-race"],
+ "abyssal-pressureworks": ["deathmatch","teamdeathmatch","ctf","koth","domination","holdout"],
+ "vesper-viaduct": ["deathmatch","teamdeathmatch","ctf","domination","koth","uplink"],
  "parallax-observatory": ["deathmatch","teamdeathmatch","ctf","koth","uplink","holdout"],
  "helix-conservatory": ["deathmatch","teamdeathmatch","ctf","domination","koth"],
  "gravemill-foundry": ["deathmatch","teamdeathmatch","domination","assault","payload","combined-arms"],

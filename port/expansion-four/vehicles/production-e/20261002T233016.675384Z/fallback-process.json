@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "godot",
+    "--script",
+    "res://tests/vehicle_assets/native.gd"
+  ],
+  "started": "2026-10-02T23:30:16.778615+00:00",
+  "timeoutSeconds": 180,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-four-vehicles-evidence-20261002/production-e/20261002T233016.675384Z/fallback.log",
+  "processGroup": 390955,
+  "exitCode": 0,
+  "ended": "2026-10-02T23:30:17.142923+00:00",
+  "ownedGroupTeardownRequested": true
+}

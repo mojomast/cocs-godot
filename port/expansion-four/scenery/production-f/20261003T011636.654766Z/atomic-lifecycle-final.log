@@ -1,0 +1,6 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+TRIANGLE_COUNT_MISMATCH 1 expected 0
+UNMATCHED_TRIANGLE [(0.01, 0.0, 0.0), (1.0, 0.0, 0.0), (0.0, 1.0, 0.0)] cell (33, 33, 0)
+NEAREST [(0.0, 0.0, 0.0), (1.0, 0.0, 0.0), (0.0, 1.0, 0.0)] delta 0.00999999977648
+BIOME4_DOUBLE_LIFECYCLE_OK not-production-asset-proof

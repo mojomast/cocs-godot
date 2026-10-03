@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "pack": "campaign-biome-expansion-four",
-  "recipeSha256": "e8aea379d5d12de3b2566f2af5b5a0312bcc5db3f4847c258c19294a93a8f577",
+  "recipeSha256": "f46577afcc7fd0c57086cbcb624454787df4f903f62e70cad8bba296fe22f90d",
   "collision": "none; retain all original facade triangles, frames, props and IDs",
   "materialAllowlist": [
     "biome4_bark",
@@ -34,8 +34,8 @@
             3
           ],
           "lodTriangles": [
-            404,
-            324
+            424,
+            344
           ],
           "materials": [
             "bark",
@@ -110,8 +110,8 @@
             5
           ],
           "lodTriangles": [
-            1776,
-            1132
+            1796,
+            1152
           ],
           "materials": [
             "sandstone",
@@ -159,8 +159,8 @@
             5
           ],
           "lodTriangles": [
-            544,
-            460
+            572,
+            488
           ],
           "materials": [
             "sandstone",
@@ -189,8 +189,8 @@
             5
           ],
           "lodTriangles": [
-            576,
-            408
+            616,
+            448
           ],
           "materials": [
             "basalt",
@@ -237,8 +237,8 @@
             5
           ],
           "lodTriangles": [
-            588,
-            420
+            688,
+            520
           ],
           "materials": [
             "basalt",
@@ -315,8 +315,8 @@
             5
           ],
           "lodTriangles": [
-            580,
-            372
+            608,
+            400
           ],
           "materials": [
             "ceramic",

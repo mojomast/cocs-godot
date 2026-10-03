@@ -7,38 +7,53 @@
       "map": "parallax-observatory",
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/parallax-interiors.json",
-        "sha256": "3c7d26b851d031ff1509aa50e7aa81dc26df5f8836b5668e00ad7af2fef39ab5"
+        "sha256": "d6012654bb2236af66eef7ef36e7dd2c5a1ab6ea7aca8c081eb1a0524f65a86d"
       }
     },
     "robots": {
       "required": true,
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/robots.json",
-        "sha256": "e0667a6bc7295f30f337f571301f3e7747b84c265835e96c2a310b5ba5e00d85"
+        "sha256": "9fcef298dfe4b141a33d36cf11aa40fc921a3fcb304dcc426884afb2c981927a"
       }
     },
     "vehicles": {
       "required": true,
-      "promotion": null
+      "promotion": {
+        "receipt": "tools/godot-package/production_receipts/vehicles.json",
+        "sha256": "d3c5b37919b0119d3c51076b7d985ffc5b6c71af1a521dffb6d840580e36380f"
+      }
     },
     "scenery": {
       "required": true,
-      "promotion": null
+      "promotion": {
+        "receipt": "tools/godot-package/production_receipts/scenery.json",
+        "sha256": "429fae356e7b2a788dcc21083f07f0f13e32136d07cd13878cff4ebcfedf482b"
+      }
     },
     "vesper-viaduct": {
       "required": true,
       "map": "vesper-viaduct",
-      "promotion": null
+      "promotion": {
+        "receipt": "tools/godot-package/production_receipts/vesper-viaduct.json",
+        "sha256": "710f2742a7a94f7828cdb8ca4e4d8d3bbb27ad5f0df9b3bc3973ad101e5f9706"
+      }
     },
     "abyssal-pressureworks": {
       "required": true,
       "map": "abyssal-pressureworks",
-      "promotion": null
+      "promotion": {
+        "receipt": "tools/godot-package/production_receipts/abyssal-pressureworks.json",
+        "sha256": "20c15bdf99cea56edb95daf1a6c8724ec9bf5e23838b9235bf2af11fd3b5904e"
+      }
     },
     "stormglass-causeway": {
       "required": true,
       "map": "stormglass-causeway",
-      "promotion": null
+      "promotion": {
+        "receipt": "tools/godot-package/production_receipts/stormglass-causeway.json",
+        "sha256": "4736b2d686ae9c4a39d05a77f2f238cc6e0b23d76a3e0571230c80e2b6ae5602"
+      }
     }
   }
 }

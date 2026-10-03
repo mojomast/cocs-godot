@@ -1,0 +1,177 @@
+{
+  "sourceCommit": "99a4f597",
+  "productionAssetCommit": "8adb9f05",
+  "policy": "Exact committed H import bytes; no engine reimport",
+  "files": [
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct.glb",
+      "bytes": 3647280,
+      "sha256": "6afe34c82d45f06c30dedc780f59ac6afa5200835b487d41705902d771fc0bfd"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct.glb.import",
+      "bytes": 1078,
+      "sha256": "9ae7828bdad842441b9c1a09af5a836e3428ebef7614c0e51d36e6f8d7b723c8"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocalNormal_asphalt.png",
+      "bytes": 6429,
+      "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocalNormal_asphalt.png.import",
+      "bytes": 1114,
+      "sha256": "efc81ba6279e62083370ee47c8e5df2a833d5746e03ea193c23e9f5ac024a599"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocalNormal_brick.png",
+      "bytes": 6429,
+      "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocalNormal_brick.png.import",
+      "bytes": 1107,
+      "sha256": "1fb145e97ba72d89571d73ea208d24a30ef7c5d1e12f822fbc4c18c9a65f0f9c"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocalNormal_cobbles.png",
+      "bytes": 6429,
+      "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocalNormal_cobbles.png.import",
+      "bytes": 1114,
+      "sha256": "199552c7aea0d02f44a5fbb1826f9edc0cc7d5db92cb1c7f3417b287431d7adb"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocalNormal_iron.png",
+      "bytes": 5817,
+      "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocalNormal_iron.png.import",
+      "bytes": 1105,
+      "sha256": "2e919f03d6636635b0cdc8ab054c04d7b2b320fc8b92f7f032e230c8a22beedd"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocalNormal_plaster.png",
+      "bytes": 6429,
+      "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocalNormal_plaster.png.import",
+      "bytes": 1114,
+      "sha256": "ea25ee00308feb11886095fc34f3a041435b9a5cc40f137a737b2ab2d509326b"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocalNormal_quay.png",
+      "bytes": 6429,
+      "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocalNormal_quay.png.import",
+      "bytes": 1105,
+      "sha256": "e82d0739bc3e431a864dbf62ec6a75aa4e459073846bdaab5021a88f044fec8c"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocalNormal_sandstone.png",
+      "bytes": 6429,
+      "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocalNormal_sandstone.png.import",
+      "bytes": 1119,
+      "sha256": "5475835e79a38a8cf0da6d22c111daa3e4f42b347a26f02450224b8cc9bcb0fe"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocalNormal_slate.png",
+      "bytes": 6429,
+      "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocalNormal_slate.png.import",
+      "bytes": 1108,
+      "sha256": "0820d3ac5fd78cf8eaf4ba24e76a58683c7837099fe4aea379dfc63789675a3c"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_asphalt.png",
+      "bytes": 1569,
+      "sha256": "1183cbca2fad5854765525cdf11444a2ec1e700d7825fcad1ab0bf36f02ca7d8"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_asphalt.png.import",
+      "bytes": 1094,
+      "sha256": "8c8eeb8ca59a079f0293c57ca045b634249cfa8cf8aba9ae15a20e9c2811dbcc"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_brick.png",
+      "bytes": 2630,
+      "sha256": "b17fb5e5b7f1313c84bbdc31599e13df805711438bc279c99ce01f0674e93f69"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_brick.png.import",
+      "bytes": 1089,
+      "sha256": "0f9bcf3b8ddc50314370aac77d4b31d4d6b1347337c9e1b307b8309fdc9954ea"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_cobbles.png",
+      "bytes": 2359,
+      "sha256": "a08edc569defaf7beda76f8c5a3b99c76be688cd526253b9dcc0a7d5c6ad6255"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_cobbles.png.import",
+      "bytes": 1096,
+      "sha256": "757c94314ab1cec12076b44eb5a17bda35c4a0572790810671360ecac0be4260"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_iron.png",
+      "bytes": 524,
+      "sha256": "d38a1b6c9e5bf5c8213b5b6e6b29bc7e8407659c57df6e4b06f2ac8c905006b5"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_iron.png.import",
+      "bytes": 1087,
+      "sha256": "d62a5078de88ee5c27018fd99e4589afc8f3bc6909c1bc2cd2c531f768c3e554"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_plaster.png",
+      "bytes": 3270,
+      "sha256": "c0f2391e421ed27f7850e8552b56d6929992ca8e6a5eafcc398099a1977c552b"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_plaster.png.import",
+      "bytes": 1096,
+      "sha256": "dd34b6a8da22eb2c5cb740e7e39c4a68c43ccfe3260f803b9336fa215af83f5a"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_quay.png",
+      "bytes": 2228,
+      "sha256": "3f3b61fbc63dc243aabd06c7b4bedcf880777400629839d2d1ea744b798cbe15"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_quay.png.import",
+      "bytes": 1087,
+      "sha256": "461837e17e3b62744e64c42b84b18b9e9c7eadf0e61ec5b60118ce802404f12a"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_sandstone.png",
+      "bytes": 3419,
+      "sha256": "d0cd8e9760bad826da4744c48a5046895f343c88ad39a46afa07d816afbe3ee1"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_sandstone.png.import",
+      "bytes": 1102,
+      "sha256": "9a3481bf64ab75999ea5e30032606e08f6680f9ab3cd71a0b395aa75727ca5ec"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_slate.png",
+      "bytes": 811,
+      "sha256": "d08d2214eaa02f364d6c50b6f036fa1f26116d0e0cb884e61aeffcef3de7d597"
+    },
+    {
+      "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_slate.png.import",
+      "bytes": 1090,
+      "sha256": "c051851e3e030aabff523844003499d6bf860bffbe38f98b7e210bea9c87dc06"
+    }
+  ]
+}

@@ -17,6 +17,14 @@ static func sensitivity() -> float:
 	var settings := service()
 	return settings.sensitivity() if settings != null else 1.0
 
+static func vehicle_view() -> String:
+	var settings := service()
+	return str(settings.values.get("vehicle_view", "third")) if settings != null else "third"
+
+static func save_vehicle_view(mode: String) -> void:
+	var settings := service()
+	if settings != null: settings.set_value("vehicle_view", mode)
+
 static func open_panel(from_menu: bool = false, previous_focus: Control = null) -> void:
 	var settings := service()
 	if settings != null and not overlay_open(): settings.open_panel(from_menu, previous_focus)

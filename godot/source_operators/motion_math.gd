@@ -20,6 +20,32 @@ static func contact(phase: float, cycle_length: float, lift: float) -> Vector2:
 	var swing := (t - 0.62) / 0.38
 	return Vector2(lerpf(-reach, reach, smooth(swing)), lift * pow(sin(PI * swing), 2.0))
 
+## Operator-only velocity-continuous gait. Legacy robot/puppy contact stays above.
+static func stride_contact(phase: float, cycle_length: float, lift: float, stance: float) -> Vector2:
+	var t := fposmod(phase / TAU, 1.0)
+	stance = clampf(stance,0.18,0.75)
+	var reach := cycle_length * stance * 0.5
+	if t < stance: return Vector2(lerpf(reach, -reach, t / stance), 0.0)
+	var swing := (t - stance) / (1.0 - stance)
+	# Match the stance velocity at both ends of swing. A zero-tangent lerp
+	# makes the world foot abruptly accelerate on lift-off and skid at touchdown.
+	var tangent := -cycle_length*(1.0-stance)
+	# Localize the endpoint tangent: a full-span Hermite would overshoot the
+	# short stance reach by tens of centimetres at sprint duty factors.
+	var edge := swing*pow(1.0-swing,12.0)-(1.0-swing)*pow(swing,12.0)
+	var along := lerpf(-reach,reach,smooth(swing))+tangent*edge
+	return Vector2(along, lift * pow(sin(PI * swing), 2.0))
+
+## One complete left/right cycle. Running shortens support, rather than scaling
+## foot travel a second time (which makes the planted foot skate).
+static func gait(speed: float, crouch: float, leg_length: float) -> Vector3:
+	var run := smooth((speed-1.8)/4.5)
+	var stance := lerpf(0.64,0.24,run)
+	var cadence := lerpf(1.25,2.8,run)
+	var cycle := clampf(speed/cadence,0.32,leg_length/stance)
+	cycle *= lerpf(1.0,0.7,crouch)
+	return Vector3(cycle,stance,lerpf(0.055,0.16,run)*(1.0-crouch*0.45))
+
 ## Two rigid links, preferred knee plane. Returns rotations from authored vectors.
 static func two_link(upper: Vector3, lower: Vector3, target: Vector3, pole: Vector3) -> Array[Quaternion]:
 	var a := upper.length()

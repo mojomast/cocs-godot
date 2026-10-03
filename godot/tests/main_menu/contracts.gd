@@ -231,6 +231,9 @@ func check_tree(routes: Array, categories: Array) -> void:
 	check(quit_node != null and quit_node is Button, "QUIT control is a Button")
 	check(count_named(menu, "Settings") == 1, "Home has one keyboard-focusable Settings button")
 	check(find_named(menu, "Settings") is Button, "Settings is a native Button")
+	check(find_named(menu, "Campaign") is Button, "Home features a direct Campaign destination button")
+	check(find_named(menu, "DestinationSearchField") is LineEdit,
+		"Home exposes a focusable destination and map search field")
 	var capability_label := find_named(menu, "RouteCapability")
 	check(capability_label is Label, "menu renders generated route authority summary")
 	if capability_label is Label and not menu.current_route.is_empty():
@@ -247,6 +250,44 @@ func check_tree(routes: Array, categories: Array) -> void:
 	var lobby_toggles: Array = menu.params_box.get_children().filter(func(child: Node) -> bool:
 		return child is CheckButton and not child.is_queued_for_deletion())
 	check(lobby_toggles.size() == 1, "multiplayer lobby displays read-only diagnostics without a cheat switch")
+	menu.select_route("combat")
+	menu.selections.bots = 7
+	var before_search: Dictionary = menu.selections.duplicate(true)
+	menu._on_search_changed("campaign")
+	check(str(menu.current_route.get("id", "")) == "combat" and menu.selections == before_search,
+		"typing a search filters results without replacing the selected route or its options")
+	menu.search_field.grab_focus()
+	menu.search_field.text = "campaign"
+	var escape := InputEventKey.new()
+	escape.pressed = true
+	escape.keycode = KEY_ESCAPE
+	menu._input(escape)
+	check(menu.search_field.text.is_empty() and not menu.quitting,
+		"Escape clears a focused nonempty search before Home quit handling")
+	menu._input(escape)
+	check(not menu.quitting and not menu.search_field.has_focus(),"Escape from empty search leaves field rather than quitting")
+	menu._on_search_changed("東京 🌙 écho")
+	check(menu.selections==before_search and not menu.quitting,"Unicode search remains a query, never a launch or selection")
+	menu._on_search_submitted("campaign")
+	check(not menu.quitting, "Enter in search cannot launch or quit Home")
+	menu._on_search_changed("no-such-destination")
+	check(menu.search_result_buttons.is_empty() and find_named(menu, "SearchNoResults") != null,
+		"zero-result query displays an explicit empty state")
+	menu._on_search_changed("Prism Foundry")
+	var map_result: Button
+	for result_button: Button in menu.search_result_buttons:
+		if result_button.text.contains("Prism Foundry"):
+			map_result = result_button
+			break
+	check(map_result != null, "real map display-name search offers a selectable route/map result")
+	if map_result != null: map_result.emit_signal("pressed")
+	check(str(menu.selections.get("map", "")) == "prism-foundry"
+		and menu.registry.validate_route(menu.current_route, menu.selections).is_empty(),
+		"map result selects through ordinary route options and keeps a registry-valid selection")
+	menu.quick_select_route("campaign")
+	check(str(menu.current_route.get("id", "")) == "campaign" and menu.current_category == "play"
+		and menu.registry.validate_route(menu.current_route, menu.selections).is_empty(),
+		"featured Campaign action selects a catalog-proven route with valid default chapter/options")
 	await check_responsive_layout(menu)
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(menu.preferences_path))
 	root.remove_child(menu)

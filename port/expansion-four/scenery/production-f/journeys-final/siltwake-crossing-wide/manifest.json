@@ -1,0 +1,97 @@
+[
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/home-return.png",
+    "sha256": "a46f9d769dfcc33579c0e51e0a3d4ade93a5ecee8523be42d432da4d6d1f1422",
+    "bytes": 199260
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/home.json",
+    "sha256": "8f7a7b7d2fada75a15f1d0449e0208dc703cab6324a2734dba8f080aaa1f1ec3",
+    "bytes": 125
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/home.log",
+    "sha256": "a9df59af7b541e4cfa91a501f58d43665ded378e8014b3995bae70868c9f8b02",
+    "bytes": 470
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/journey.json",
+    "sha256": "5712c0760bc9b1554ab784dee239af8c9d9effdedfb027ffe3770c17850fe991",
+    "bytes": 334485
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/native-live.log",
+    "sha256": "85140e7819270d5f14726617f8116f28c64a31c47fe48f6c4ffe1e64acabc867",
+    "bytes": 5507562
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/native.log",
+    "sha256": "85140e7819270d5f14726617f8116f28c64a31c47fe48f6c4ffe1e64acabc867",
+    "bytes": 5507562
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/ordinary-combat-0.0.png",
+    "sha256": "182dbac72a1e3cfabbe8fb299988b33156a60cb8a5a90a40908e92501cf4bd93",
+    "bytes": 910862
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/ordinary-combat-1.0.png",
+    "sha256": "ec4748f1ab23ff3acd61e476b67921ad7c16e3c8b5926c02d669b0649a46910d",
+    "bytes": 951593
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/ordinary-combat-2.0.png",
+    "sha256": "c63c805d7d182b50b684f6d5d5cb8c26491af35f3b56505533f1b60d18bf60a4",
+    "bytes": 875398
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/plan.json",
+    "sha256": "b8c7a09629b0ffffac349f347555f2c5b5314af44dca1f5a7fb66a7143d7e70b",
+    "bytes": 49438
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/source-camera-return.png",
+    "sha256": "f662a4cf5ec6c7abdca4d422505a51b440ace21de28db2974d9b997564570d59",
+    "bytes": 966107
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/stage-0053.png",
+    "sha256": "5048b90dc13dd649977953ac57f6418511bbed8ed546faabaac602d3745c18ce",
+    "bytes": 929385
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/stage-0105.png",
+    "sha256": "a5ffe281b7a400b87e9734bceac4d4cd2c71ba54f73f946dc30111e3e67d46d5",
+    "bytes": 911534
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/stage-0153.png",
+    "sha256": "674fc0a48ce2539b8debc108b1ae56bcf10833db4ea6e40065a194da04ce892e",
+    "bytes": 957171
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/stage-0164.png",
+    "sha256": "2337ecd02b38deb9548bf3c6a351423349442f118a70af405b235df3bcf02484",
+    "bytes": 952159
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/stage-0235.png",
+    "sha256": "406a64dad3a0a5a82d915d80acc8267a3c81cbc4413ac122fdb9f2063bc73088",
+    "bytes": 799410
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/stage-0276.png",
+    "sha256": "fcc348632c55d0d048395092e49fd2f242378f52ef6a8033b5c613fecea9be83",
+    "bytes": 856283
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/start.png",
+    "sha256": "920b108975a375836aea16e1ebe872426900888ef19ac5b217644de449a74496",
+    "bytes": 913821
+  },
+  {
+    "source": "/home/mojo/.tmp-on-disk/cocs-expansion-four-scenery-evidence-20261002/connected/2026-10-03T01-47-03.814Z-siltwake-crossing/witness.json",
+    "sha256": "6671c46387bdc5cba754414084700acb18f3f16b96167815a1a4b8272885d1bf",
+    "bytes": 210421
+  }
+]

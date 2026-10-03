@@ -1,0 +1,538 @@
+{
+  "unit": "vehicles",
+  "sourceCommits": [
+    "91fb48e4",
+    "ce739609"
+  ],
+  "sourceHashes": {
+    "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
+    "tools/godot-vehicle-assets/build.py": "eb5e317409f27201b09800819e949ccb4afeae0e7ae95e9150bb6d294c2a6489",
+    "tools/godot-vehicle-assets/recipe.mjs": "cec0637184315458ef0dc2016ecbcafbc3f4c8ff2f82dfe05fec77be4ce632d7"
+  },
+  "sourceFingerprint": "43053f7a3d5c7791204433d89de08504134d23fbbc7184fe868a2f812b3b1c2c",
+  "masters": [
+    {
+      "path": "tools/godot-vehicle-assets/masters/puma-lod0.blend",
+      "sha256": "5ce0b8aba8056d3cf1ea9e8a2218cf1115e58ac719f6caebcf728d2fe751c80d"
+    },
+    {
+      "path": "tools/godot-vehicle-assets/masters/puma-lod1.blend",
+      "sha256": "b6d1ffd1b2e103a1d749b16119386a616833b2f3030e9b4124cae0e62cb64f03"
+    },
+    {
+      "path": "tools/godot-vehicle-assets/masters/puma-lod2.blend",
+      "sha256": "17db27a7335adbb3ff18bba970925f26c2c0a95da3ec728e4fb3457a7d9d3f58"
+    },
+    {
+      "path": "tools/godot-vehicle-assets/masters/scout-lod0.blend",
+      "sha256": "dd9c05d74fcd858ff53f1ce6f84a2d8ae0be5689749b5e925b455e7fa3597027"
+    },
+    {
+      "path": "tools/godot-vehicle-assets/masters/scout-lod1.blend",
+      "sha256": "8bf0aa28eb7b061a87e042798d6f406c0d5fd1f083d5af735579a22c68332098"
+    },
+    {
+      "path": "tools/godot-vehicle-assets/masters/scout-lod2.blend",
+      "sha256": "5600196bb719be3011cbe200a8de01798ad18eee87a98cb79212c8e242000b40"
+    },
+    {
+      "path": "tools/godot-vehicle-assets/masters/titan-lod0.blend",
+      "sha256": "cadb7217f8e7a61eae13f68f182f1cfcaf6803701680d121cc3a61ff8af4303d"
+    },
+    {
+      "path": "tools/godot-vehicle-assets/masters/titan-lod1.blend",
+      "sha256": "5cc54d75cf190b00fb0a335b9a51c007ef53337c7d33de51fb3140b16dd5fa84"
+    },
+    {
+      "path": "tools/godot-vehicle-assets/masters/titan-lod2.blend",
+      "sha256": "1966309e7ede294bb3e77fdb0a8b38b74dbbcecd87319f36f6221021413d263a"
+    }
+  ],
+  "exports": [
+    {
+      "path": "godot/vehicle_assets/generated/puma-lod0.glb",
+      "bytes": 2270272,
+      "sha256": "ad1d0f76f85e340338828eec7167470ae2aeffe157ae8a29ef4dfa540fca76cc",
+      "triangles": 35688,
+      "surfaces": 25,
+      "texturedSurfaces": 24,
+      "textures": [
+        {
+          "name": "MothLocal_armor",
+          "bytes": 1117,
+          "sha256": "a83439d9126888558e3d04d2dafccaada789bfbce1aab53f5858d25fd2545087"
+        },
+        {
+          "name": "MothLocalNormal_edge",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_edge",
+          "bytes": 3712,
+          "sha256": "b98a16e65894e38256927074af2749c6614c403f368c6447dbecb3ae95966707"
+        },
+        {
+          "name": "MothLocal_rubber",
+          "bytes": 339,
+          "sha256": "0b6cbb04a3e9704d0fd207aa7f0c1b6d5de73d07e498005f7061c6646b3523dc"
+        },
+        {
+          "name": "MothLocal_recess",
+          "bytes": 341,
+          "sha256": "628e6c502247bf36aae4b3fd4fb9e438ce16aa08ef28f083aa6d58e1fd230537"
+        },
+        {
+          "name": "MothLocal_seat",
+          "bytes": 340,
+          "sha256": "0ff20909892ef2910a11d4a146253441eac851542ac21e6077dcbcc733a028c4"
+        },
+        {
+          "name": "MothLocal_team_accent",
+          "bytes": 3261,
+          "sha256": "8b0a4f74c802ce07a56fcb8f2ea920ef1da667215b5a56da5e527cac7d36613a"
+        },
+        {
+          "name": "MothLocal_red",
+          "bytes": 1738,
+          "sha256": "0a92e537392cf889918914c5cc51a717be70ae69ef0646a0a6d856d5810faff5"
+        }
+      ]
+    },
+    {
+      "path": "godot/vehicle_assets/generated/puma-lod1.glb",
+      "bytes": 459840,
+      "sha256": "0d96072586ceed24ad99838ad134c4fc30464b42a4be131a84cfc3351ee84c1a",
+      "triangles": 7424,
+      "surfaces": 25,
+      "texturedSurfaces": 24,
+      "textures": [
+        {
+          "name": "MothLocal_armor",
+          "bytes": 1117,
+          "sha256": "a83439d9126888558e3d04d2dafccaada789bfbce1aab53f5858d25fd2545087"
+        },
+        {
+          "name": "MothLocalNormal_edge",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_edge",
+          "bytes": 3712,
+          "sha256": "b98a16e65894e38256927074af2749c6614c403f368c6447dbecb3ae95966707"
+        },
+        {
+          "name": "MothLocal_rubber",
+          "bytes": 339,
+          "sha256": "0b6cbb04a3e9704d0fd207aa7f0c1b6d5de73d07e498005f7061c6646b3523dc"
+        },
+        {
+          "name": "MothLocal_recess",
+          "bytes": 341,
+          "sha256": "628e6c502247bf36aae4b3fd4fb9e438ce16aa08ef28f083aa6d58e1fd230537"
+        },
+        {
+          "name": "MothLocal_seat",
+          "bytes": 340,
+          "sha256": "0ff20909892ef2910a11d4a146253441eac851542ac21e6077dcbcc733a028c4"
+        },
+        {
+          "name": "MothLocal_team_accent",
+          "bytes": 3261,
+          "sha256": "8b0a4f74c802ce07a56fcb8f2ea920ef1da667215b5a56da5e527cac7d36613a"
+        },
+        {
+          "name": "MothLocal_red",
+          "bytes": 1738,
+          "sha256": "0a92e537392cf889918914c5cc51a717be70ae69ef0646a0a6d856d5810faff5"
+        }
+      ]
+    },
+    {
+      "path": "godot/vehicle_assets/generated/puma-lod2.glb",
+      "bytes": 146896,
+      "sha256": "edfe45b1a11e2ec1bfb3df38c111b8f44dbd2573eb5e354a884449cbc131be66",
+      "triangles": 1900,
+      "surfaces": 21,
+      "texturedSurfaces": 20,
+      "textures": [
+        {
+          "name": "MothLocal_armor",
+          "bytes": 1117,
+          "sha256": "a83439d9126888558e3d04d2dafccaada789bfbce1aab53f5858d25fd2545087"
+        },
+        {
+          "name": "MothLocalNormal_edge",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_edge",
+          "bytes": 3712,
+          "sha256": "b98a16e65894e38256927074af2749c6614c403f368c6447dbecb3ae95966707"
+        },
+        {
+          "name": "MothLocal_recess",
+          "bytes": 341,
+          "sha256": "628e6c502247bf36aae4b3fd4fb9e438ce16aa08ef28f083aa6d58e1fd230537"
+        },
+        {
+          "name": "MothLocal_seat",
+          "bytes": 340,
+          "sha256": "0ff20909892ef2910a11d4a146253441eac851542ac21e6077dcbcc733a028c4"
+        },
+        {
+          "name": "MothLocal_team_accent",
+          "bytes": 3261,
+          "sha256": "8b0a4f74c802ce07a56fcb8f2ea920ef1da667215b5a56da5e527cac7d36613a"
+        },
+        {
+          "name": "MothLocal_rubber",
+          "bytes": 339,
+          "sha256": "0b6cbb04a3e9704d0fd207aa7f0c1b6d5de73d07e498005f7061c6646b3523dc"
+        }
+      ]
+    },
+    {
+      "path": "godot/vehicle_assets/generated/scout-lod0.glb",
+      "bytes": 2095540,
+      "sha256": "64dc780c28e3487bdad1613274fe667e148e6f6f8f31bcc09cb36bb8609fbdf9",
+      "triangles": 33064,
+      "surfaces": 24,
+      "texturedSurfaces": 23,
+      "textures": [
+        {
+          "name": "MothLocal_armor",
+          "bytes": 1117,
+          "sha256": "a83439d9126888558e3d04d2dafccaada789bfbce1aab53f5858d25fd2545087"
+        },
+        {
+          "name": "MothLocalNormal_edge",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_edge",
+          "bytes": 3712,
+          "sha256": "b98a16e65894e38256927074af2749c6614c403f368c6447dbecb3ae95966707"
+        },
+        {
+          "name": "MothLocal_rubber",
+          "bytes": 339,
+          "sha256": "0b6cbb04a3e9704d0fd207aa7f0c1b6d5de73d07e498005f7061c6646b3523dc"
+        },
+        {
+          "name": "MothLocal_recess",
+          "bytes": 341,
+          "sha256": "628e6c502247bf36aae4b3fd4fb9e438ce16aa08ef28f083aa6d58e1fd230537"
+        },
+        {
+          "name": "MothLocal_seat",
+          "bytes": 340,
+          "sha256": "0ff20909892ef2910a11d4a146253441eac851542ac21e6077dcbcc733a028c4"
+        },
+        {
+          "name": "MothLocal_team_accent",
+          "bytes": 3261,
+          "sha256": "8b0a4f74c802ce07a56fcb8f2ea920ef1da667215b5a56da5e527cac7d36613a"
+        },
+        {
+          "name": "MothLocal_red",
+          "bytes": 1738,
+          "sha256": "0a92e537392cf889918914c5cc51a717be70ae69ef0646a0a6d856d5810faff5"
+        }
+      ]
+    },
+    {
+      "path": "godot/vehicle_assets/generated/scout-lod1.glb",
+      "bytes": 413740,
+      "sha256": "b616d9fe5cca87fe657e47c032f1267e116a971830e6dcd23adc281ff0c1b11a",
+      "triangles": 6640,
+      "surfaces": 24,
+      "texturedSurfaces": 23,
+      "textures": [
+        {
+          "name": "MothLocal_armor",
+          "bytes": 1117,
+          "sha256": "a83439d9126888558e3d04d2dafccaada789bfbce1aab53f5858d25fd2545087"
+        },
+        {
+          "name": "MothLocalNormal_edge",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_edge",
+          "bytes": 3712,
+          "sha256": "b98a16e65894e38256927074af2749c6614c403f368c6447dbecb3ae95966707"
+        },
+        {
+          "name": "MothLocal_rubber",
+          "bytes": 339,
+          "sha256": "0b6cbb04a3e9704d0fd207aa7f0c1b6d5de73d07e498005f7061c6646b3523dc"
+        },
+        {
+          "name": "MothLocal_recess",
+          "bytes": 341,
+          "sha256": "628e6c502247bf36aae4b3fd4fb9e438ce16aa08ef28f083aa6d58e1fd230537"
+        },
+        {
+          "name": "MothLocal_seat",
+          "bytes": 340,
+          "sha256": "0ff20909892ef2910a11d4a146253441eac851542ac21e6077dcbcc733a028c4"
+        },
+        {
+          "name": "MothLocal_team_accent",
+          "bytes": 3261,
+          "sha256": "8b0a4f74c802ce07a56fcb8f2ea920ef1da667215b5a56da5e527cac7d36613a"
+        },
+        {
+          "name": "MothLocal_red",
+          "bytes": 1738,
+          "sha256": "0a92e537392cf889918914c5cc51a717be70ae69ef0646a0a6d856d5810faff5"
+        }
+      ]
+    },
+    {
+      "path": "godot/vehicle_assets/generated/scout-lod2.glb",
+      "bytes": 134432,
+      "sha256": "1380f2103508ace2cd165e6c9688f33ad47b91a68ee145593e13963df1089c22",
+      "triangles": 1696,
+      "surfaces": 21,
+      "texturedSurfaces": 20,
+      "textures": [
+        {
+          "name": "MothLocal_armor",
+          "bytes": 1117,
+          "sha256": "a83439d9126888558e3d04d2dafccaada789bfbce1aab53f5858d25fd2545087"
+        },
+        {
+          "name": "MothLocalNormal_edge",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_edge",
+          "bytes": 3712,
+          "sha256": "b98a16e65894e38256927074af2749c6614c403f368c6447dbecb3ae95966707"
+        },
+        {
+          "name": "MothLocal_recess",
+          "bytes": 341,
+          "sha256": "628e6c502247bf36aae4b3fd4fb9e438ce16aa08ef28f083aa6d58e1fd230537"
+        },
+        {
+          "name": "MothLocal_seat",
+          "bytes": 340,
+          "sha256": "0ff20909892ef2910a11d4a146253441eac851542ac21e6077dcbcc733a028c4"
+        },
+        {
+          "name": "MothLocal_team_accent",
+          "bytes": 3261,
+          "sha256": "8b0a4f74c802ce07a56fcb8f2ea920ef1da667215b5a56da5e527cac7d36613a"
+        },
+        {
+          "name": "MothLocal_rubber",
+          "bytes": 339,
+          "sha256": "0b6cbb04a3e9704d0fd207aa7f0c1b6d5de73d07e498005f7061c6646b3523dc"
+        }
+      ]
+    },
+    {
+      "path": "godot/vehicle_assets/generated/titan-lod0.glb",
+      "bytes": 3932340,
+      "sha256": "c3667e6520a76e6c433f0a1caa4f73748dcae2c3f8c7fb93d953d41534ac2fe2",
+      "triangles": 60900,
+      "surfaces": 62,
+      "texturedSurfaces": 60,
+      "textures": [
+        {
+          "name": "MothLocal_armor",
+          "bytes": 1117,
+          "sha256": "a83439d9126888558e3d04d2dafccaada789bfbce1aab53f5858d25fd2545087"
+        },
+        {
+          "name": "MothLocalNormal_edge",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_edge",
+          "bytes": 3712,
+          "sha256": "b98a16e65894e38256927074af2749c6614c403f368c6447dbecb3ae95966707"
+        },
+        {
+          "name": "MothLocal_rubber",
+          "bytes": 339,
+          "sha256": "0b6cbb04a3e9704d0fd207aa7f0c1b6d5de73d07e498005f7061c6646b3523dc"
+        },
+        {
+          "name": "MothLocal_recess",
+          "bytes": 341,
+          "sha256": "628e6c502247bf36aae4b3fd4fb9e438ce16aa08ef28f083aa6d58e1fd230537"
+        },
+        {
+          "name": "MothLocal_seat",
+          "bytes": 340,
+          "sha256": "0ff20909892ef2910a11d4a146253441eac851542ac21e6077dcbcc733a028c4"
+        },
+        {
+          "name": "MothLocal_team_accent",
+          "bytes": 3261,
+          "sha256": "8b0a4f74c802ce07a56fcb8f2ea920ef1da667215b5a56da5e527cac7d36613a"
+        },
+        {
+          "name": "MothLocal_red",
+          "bytes": 1738,
+          "sha256": "0a92e537392cf889918914c5cc51a717be70ae69ef0646a0a6d856d5810faff5"
+        }
+      ]
+    },
+    {
+      "path": "godot/vehicle_assets/generated/titan-lod1.glb",
+      "bytes": 815772,
+      "sha256": "e0fbe0373b654029c1859e5a8275f8a043262206bdc9fed4878bdfddc4256331",
+      "triangles": 13044,
+      "surfaces": 62,
+      "texturedSurfaces": 60,
+      "textures": [
+        {
+          "name": "MothLocal_armor",
+          "bytes": 1117,
+          "sha256": "a83439d9126888558e3d04d2dafccaada789bfbce1aab53f5858d25fd2545087"
+        },
+        {
+          "name": "MothLocalNormal_edge",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_edge",
+          "bytes": 3712,
+          "sha256": "b98a16e65894e38256927074af2749c6614c403f368c6447dbecb3ae95966707"
+        },
+        {
+          "name": "MothLocal_rubber",
+          "bytes": 339,
+          "sha256": "0b6cbb04a3e9704d0fd207aa7f0c1b6d5de73d07e498005f7061c6646b3523dc"
+        },
+        {
+          "name": "MothLocal_recess",
+          "bytes": 341,
+          "sha256": "628e6c502247bf36aae4b3fd4fb9e438ce16aa08ef28f083aa6d58e1fd230537"
+        },
+        {
+          "name": "MothLocal_seat",
+          "bytes": 340,
+          "sha256": "0ff20909892ef2910a11d4a146253441eac851542ac21e6077dcbcc733a028c4"
+        },
+        {
+          "name": "MothLocal_team_accent",
+          "bytes": 3261,
+          "sha256": "8b0a4f74c802ce07a56fcb8f2ea920ef1da667215b5a56da5e527cac7d36613a"
+        },
+        {
+          "name": "MothLocal_red",
+          "bytes": 1738,
+          "sha256": "0a92e537392cf889918914c5cc51a717be70ae69ef0646a0a6d856d5810faff5"
+        }
+      ]
+    },
+    {
+      "path": "godot/vehicle_assets/generated/titan-lod2.glb",
+      "bytes": 243780,
+      "sha256": "be5784ff9a9c415ebdf8b7846e4ac9f3cbf9c83df3710e0f414e3a0653718b28",
+      "triangles": 3256,
+      "surfaces": 58,
+      "texturedSurfaces": 57,
+      "textures": [
+        {
+          "name": "MothLocal_armor",
+          "bytes": 1117,
+          "sha256": "a83439d9126888558e3d04d2dafccaada789bfbce1aab53f5858d25fd2545087"
+        },
+        {
+          "name": "MothLocalNormal_edge",
+          "bytes": 5817,
+          "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d"
+        },
+        {
+          "name": "MothLocal_edge",
+          "bytes": 3712,
+          "sha256": "b98a16e65894e38256927074af2749c6614c403f368c6447dbecb3ae95966707"
+        },
+        {
+          "name": "MothLocal_rubber",
+          "bytes": 339,
+          "sha256": "0b6cbb04a3e9704d0fd207aa7f0c1b6d5de73d07e498005f7061c6646b3523dc"
+        },
+        {
+          "name": "MothLocal_recess",
+          "bytes": 341,
+          "sha256": "628e6c502247bf36aae4b3fd4fb9e438ce16aa08ef28f083aa6d58e1fd230537"
+        },
+        {
+          "name": "MothLocal_seat",
+          "bytes": 340,
+          "sha256": "0ff20909892ef2910a11d4a146253441eac851542ac21e6077dcbcc733a028c4"
+        },
+        {
+          "name": "MothLocal_team_accent",
+          "bytes": 3261,
+          "sha256": "8b0a4f74c802ce07a56fcb8f2ea920ef1da667215b5a56da5e527cac7d36613a"
+        }
+      ]
+    }
+  ],
+  "measuredGLBTriangles": 163612,
+  "configuredTriangleCap": 456000,
+  "accepted": false,
+  "pending": [
+    "independent generic master + GLB reopen",
+    "correct source pivots/wheel roll/muzzles and crew clearance",
+    "team accent retains textures while wet",
+    "64 vehicle stress and reconnect cleanup",
+    "LOD24/65m and compact chase-camera review"
+  ],
+  "packageInputHashes": {
+    "game/math.mjs": "a9f2e5f55f7e90c567d35b4c77d7ecdeae4c28b5174d52f8cf9a5e4e59170327",
+    "game/moth-baked.mjs": "da55ae89e0c4f36882a3256565113c4c93164378a7fe9d684b521c037fde0eb2",
+    "game/vehicles.mjs": "e55dbed9969a9f4430b0471fefb4d294fddf0e75d8af853565c9361c106244db",
+    "godot/combined_arms/chassis.gd": "7529c5d505f18383edbcbfa406c21e1dfe33449bd56ec8853a5122973916b5e3",
+    "godot/combined_arms/fleet.gd": "66535c7fa95081ce23197fc2b1a9deb6b124589f04deafcabeeb0008f0dab146",
+    "godot/moth/derived/manifest.json": "5be9ad6493455138464dc059dd64a32dc5d837f6fc4e460957f606f6d2a79887",
+    "godot/moth/generated/manifest.json": "c5589ff2f2ab68d982b2bb45c221c08d8e3f653953e5d5d446bfa4cd68380047",
+    "godot/ui/settings_access.gd": "9c66e7a957a86695fd4ffc5e3d339cdf59bbbc587bbff23f6a688eabaf530d02",
+    "godot/vehicle_assets/attachment.gd": "13fc00ebd1d5495769df1d120329e5462724cf09487697a6258f92a1545f3a63",
+    "godot/vehicles/puma.gd": "dece0e0b743fcb6377bb58fcb7dcc963fca9c7d047baa87bc89469162b2934fe",
+    "godot/vehicles/renderer.gd": "3d185e80ddf005278721966d0ccd9cc027aec2cf1a6a0f1c2ce6f6d5676cf975",
+    "tools/asset-production/material-validation.mjs": "874e5d31c666a8af4a98b600bb182a4f4cb9c5e6b1488d80908f855b2584bb3d",
+    "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
+    "tools/asset-production/package-receipt.mjs": "e1917daa642b15e6e3290b537fbf9024ba72e6f5dfd18f4025d3e589d9702621",
+    "tools/asset-production/receipt.mjs": "9648c19d979b2486c78830628c2f2508a02b4b2874d1f64149966d88d7e5f9d8",
+    "tools/asset-production/reopen.py": "4628bc44122a690495766f3cc967a82d3ab7aeab52c272cca7a202be88e0f5de",
+    "tools/godot-package/production_resources.mjs": "7e369d87cb8c50c27b6d8c0c3087d5dca6041caacadacdee1fae17263a3e6571",
+    "tools/godot-vehicle-assets/build.py": "eb5e317409f27201b09800819e949ccb4afeae0e7ae95e9150bb6d294c2a6489",
+    "tools/godot-vehicle-assets/generated/puma-lod0.json": "8d50eaba579eacb55a4db97a3727464ff91aed1803faed657ba4a6076c730fad",
+    "tools/godot-vehicle-assets/generated/puma-lod1.json": "7a3ff67eaa29fa0a1e6154f0da3b59355b6cea5ee6e9381f59480064858b9989",
+    "tools/godot-vehicle-assets/generated/puma-lod2.json": "c876a7929e8ed10fb72644d6ca9cf3f9ad192f86d18193ae36bc3f82b59677f7",
+    "tools/godot-vehicle-assets/generated/scout-lod0.json": "0ec9621f18f903d0c3740c1f1efd01a46877e17ef58bf22e67f053b98d83c78a",
+    "tools/godot-vehicle-assets/generated/scout-lod1.json": "1374ebe1d0b2ebd95b5b7685d0315cc907a61a7bd4d4b53f877dbfe593263d33",
+    "tools/godot-vehicle-assets/generated/scout-lod2.json": "59008aac46c4a35dac55dd137feed72ae3be4400888f2c485d322af0d64c4fc2",
+    "tools/godot-vehicle-assets/generated/titan-lod0.json": "638eb57e48225ffb1a65a5ccfe9a9886e9dcb8913d6b4405d99c6cb705e67e30",
+    "tools/godot-vehicle-assets/generated/titan-lod1.json": "043acb87b6aecda8d4021a75b23b3a307ce90278337057b3aa2cdb1254e51878",
+    "tools/godot-vehicle-assets/generated/titan-lod2.json": "8829f8107dccd1e983407013b755023eab07c478f67f5f50c933453ad91c1393",
+    "tools/godot-vehicle-assets/masters/puma-lod0-report.json": "50768f11b243339726a52dcc8fb6b5245b92fa9cfb5326946d1c45036d644bf8",
+    "tools/godot-vehicle-assets/masters/puma-lod1-report.json": "61d0b6c2c0e7a9be6d5f40f5475f0310330219717dee5ea8db50b69fd8269349",
+    "tools/godot-vehicle-assets/masters/puma-lod2-report.json": "f444af82e172e551c60555c43534585911d5b5875cb381327b18da11816c1437",
+    "tools/godot-vehicle-assets/masters/scout-lod0-report.json": "7c27fda96aea616a144c189cfc0af5c1c857ea5e61c3a8883950f4996e8ffad5",
+    "tools/godot-vehicle-assets/masters/scout-lod1-report.json": "a237fa9c8394cde0cf666a9381d4cff5e8a7c52aca5b8f4a94111a5d5e1f8b37",
+    "tools/godot-vehicle-assets/masters/scout-lod2-report.json": "fa5553bcfcfdcd9797a534c3714a916c56bbd264901de368646c4d207fa6adec",
+    "tools/godot-vehicle-assets/masters/titan-lod0-report.json": "42d341f25f82c11e70fdbe3fa7ab9f0ab81a1001729a347d8f89e24c6fc478e2",
+    "tools/godot-vehicle-assets/masters/titan-lod1-report.json": "02b171e74e97ace610aec138a679da675faa6d074f48f1603144b0518b96d70e",
+    "tools/godot-vehicle-assets/masters/titan-lod2-report.json": "9323513c7fa250ae04f67adc2e356af0ad576854fa237f2655adf2057d665f45",
+    "tools/godot-vehicle-assets/recipe.mjs": "cec0637184315458ef0dc2016ecbcafbc3f4c8ff2f82dfe05fec77be4ce632d7",
+    "tools/godot-vehicle-assets/write-recipes.mjs": "7ad20fc262570d9c18522da9abbe3f660902105ce92d1ead88896fe5c62d78b3"
+  }
+}

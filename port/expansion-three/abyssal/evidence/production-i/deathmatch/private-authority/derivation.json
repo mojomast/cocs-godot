@@ -1,0 +1,18 @@
+{
+  "request": {
+    "id": "abyssal-pressureworks",
+    "mode": "deathmatch",
+    "enabled": true,
+    "expectedSha": "c2acae268634f93e6f98f6abd6414289ff63852d2b9580482e2027595eecee76"
+  },
+  "sources": {
+    "port/multiplayer-worlds/catalog.mjs": "d2919c888433f16d8183ed33c408514b3894272d8ac7d35ba04c85b61fb7c4f2",
+    "port/multiplayer-worlds/match.mjs": "438999204ec1c01aa1d1f71fa927779fcfe02679cf08ac6e398d53facb68e8b1",
+    "port/multiplayer-worlds/derived/core.mjs": "6e68d618777e4e0f0b43ef9e2512aeb7fdacc58e82d526b5fbd5f9f52afc1862",
+    "port/multiplayer-worlds/derived/payload.mjs": "8877973eca102affe99e32d6259acceab8cefda06e5844d302ab144b936b69ff",
+    "port/multiplayer-worlds/derived/room.mjs": "a2005202bb6bd39f31342bb72db1273ca2c2ef7b55e22824f887845af0011402",
+    "port/multiplayer-worlds/derived/rooms.mjs": "03742940c623cfd9b4882d7c7a40426d0c47480256f0348372ecbbbbba3390cb",
+    "port/multiplayer-worlds/derived/game-server.mjs": "ae5537bf2ccec93448d1555be243635167381b837c776a16c71c7d56e17893d8"
+  },
+  "policy": "only static import edges and private catalog admission; exact production validation and simulation"
+}

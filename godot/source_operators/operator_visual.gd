@@ -12,7 +12,8 @@ const ArmorDetail = preload("res://source_operators/armor_detail.gd")
 const MothFinish = preload("res://source_operators/moth_finish/binder.gd")
 const Locomotion = preload("res://source_operators/locomotion.gd")
 const Motion = preload("res://source_operators/motion_math.gd")
-const Ground = preload("res://source_operators/ground_contact.gd")
+const MeleePose = preload("res://source_operators/melee_pose.gd")
+const MeleeEvents = preload("res://source_operators/melee_events.gd")
 const WORLD_WEAPON_DIR := "res://source_operators/generated/world_weapons/"
 const DEATH_DURATION := 0.8
 var identity_key: String = ""
@@ -47,6 +48,11 @@ var finish_report: Dictionary = {}
 var locomotion := Locomotion.new()
 var handling_weight := Vector3.ZERO
 var handling_velocity := Vector3.ZERO
+var travel_initialized := false
+var previous_position := Vector3.ZERO
+var travel_velocity := Vector2.ZERO
+var motion_variant := 0.0
+var world_melee := MeleePose.new()
 
 func apply_identity(actor: Dictionary) -> void:
 	if Catalog.OPERATORS.is_empty(): return
@@ -62,6 +68,7 @@ func apply_identity(actor: Dictionary) -> void:
 		if not finish_report.get("installed",false): ArmorDetail.apply_team(armor_details,team_material)
 		return
 	_clear_death_animation()
+	interrupt_world_melee()
 	moth_finish.clear()
 	if is_instance_valid(source):
 		remove_child(source)
@@ -73,6 +80,8 @@ func apply_identity(actor: Dictionary) -> void:
 	grip_error.clear()
 	grip_clamp.clear()
 	character = next
+	# Stable identity variation, never random or dependent on spawn order.
+	motion_variant = float(Catalog.OPERATORS.keys().find(character))/maxf(1.0,Catalog.OPERATORS.size()-1)
 	var path: String = "res://source_operators/generated/%s.glb" % character
 	if not ResourceLoader.exists(path):
 		# Unknown/missing character assets fall back to the first exported identity.
@@ -94,6 +103,8 @@ func apply_identity(actor: Dictionary) -> void:
 	finish_report = moth_finish.bind(source,character)
 	if not finish_report.get("installed",false): push_warning("Operator Moth finish fallback %s: %s" % [character,finish_report.get("errors",[])])
 	locomotion.reset()
+	travel_initialized = false
+	travel_velocity = Vector2.ZERO
 	handling_weight = Vector3.ZERO; handling_velocity = Vector3.ZERO
 	rig.configure(nodes)
 	lod_level = -1
@@ -177,12 +188,22 @@ func weapon_cost() -> Dictionary:
 
 func apply_actor(actor: Dictionary) -> void:
 	apply_identity(actor)
+	if not snapshot.is_empty() and is_instance_valid(source):
+		var discontinuity: bool = actor.get("id") != snapshot.get("id") or actor.get("vehicleId") != snapshot.get("vehicleId")
+		for key: String in ["spawnId","respawnCount","replayEpoch"]:
+			if actor.get(key) != snapshot.get(key): discontinuity = true
+		if float(actor.get("health",100)) > 0 and float(snapshot.get("health",100)) <= 0: discontinuity = true
+		if actor.has("x") and snapshot.has("x"):
+			var change := Vector3(float(actor.x)-float(snapshot.x),float(actor.get("y",0))-float(snapshot.get("y",0)),float(actor.get("z",0))-float(snapshot.get("z",0)))
+			if change.length() > 3.0: discontinuity = true
+		if discontinuity: reset_pose()
 	snapshot = actor.duplicate()
 	visible = int(actor.get("id",-2)) != local_id
 	if not is_instance_valid(source):
 		visible = false
 		return
 	if float(actor.get("health",100)) <= 0:
+		interrupt_world_melee()
 		if not death_active and not rig.dead:
 			last_live_pose = _capture_pose()
 			rig.apply_source_death(Catalog.OPERATORS[character].deathPose)
@@ -195,17 +216,34 @@ func apply_actor(actor: Dictionary) -> void:
 
 func reset_pose() -> void:
 	_clear_death_animation()
+	interrupt_world_melee()
 	rig.reset()
 	locomotion.reset()
 	handling_weight = Vector3.ZERO; handling_velocity = Vector3.ZERO
 	recoil = 0.0
+	elapsed = 0.0
+	travel_initialized = false
+	travel_velocity = Vector2.ZERO
 	if is_instance_valid(source): last_live_pose = _capture_pose()
+
+## Replay callers with a retained visual must supply their discontinuity epoch
+## (replayEpoch) or call this on seek. Warm-start solely from the requested
+## sample; repeated seeks cannot inherit footsteps, recoil, death or springs.
+func seek_pose(actor: Dictionary, presentation_time: float = 0.0) -> void:
+	reset_pose()
+	apply_actor(actor)
+	# An isolated seek has no historical travel to integrate. Use a neutral
+	# phase, warm the channels deterministically, then restore the sample clock.
+	for i in 24: advance(1.0/60.0)
+	elapsed = maxf(0.0,presentation_time)
+	advance(1.0/60.0)
 
 ## Start a presentation-only fall from the latest living pose, even if a dead
 ## snapshot already applied the static source pose. Repeated calls do not restart it.
 ## advance(dt) drives the transition; the final fallen pose remains until reset/respawn.
 func begin_death(duration: float = DEATH_DURATION) -> void:
 	if death_active or not is_instance_valid(source) or not Catalog.OPERATORS.has(character): return
+	interrupt_world_melee()
 	death_duration = maxf(0.01, duration)
 	death_elapsed = 0.0
 	death_start = last_live_pose.duplicate() if rig.dead and not last_live_pose.is_empty() else _capture_pose()
@@ -251,6 +289,28 @@ func kick(amount: float = 1.0) -> void:
 	# Presentation-only bounded recoil overlay, on the source weapon mount.
 	recoil = minf(1.0,recoil+maxf(0.0,amount))
 
+func can_accept_world_melee() -> bool:
+	return is_instance_valid(source) and is_visible_in_tree() and not snapshot.is_empty() and not death_active and not rig.dead and float(snapshot.get("health",0)) > 0 and snapshot.get("vehicleId") == null
+
+func accept_world_melee(event: Dictionary) -> bool:
+	if not MeleeEvents.valid(event) or event.get("actor") != snapshot.get("id"): return false
+	if not can_accept_world_melee():
+		interrupt_world_melee()
+		return false
+	return world_melee.accept(event)
+
+func interrupt_world_melee() -> void:
+	# Keep consumed IDs/times across local interruptions. Only a new visual/round
+	# owns a fresh sequence; hidden snapshots cannot resurrect a consumed attack.
+	world_melee.interrupt()
+
+func reset_world_melee_epoch() -> void:
+	# Only the round/replay recipient may admit reused authoritative event IDs.
+	world_melee.reset_epoch()
+
+func set_world_melee_clock(time: float) -> void:
+	if is_finite(time): world_melee.sample_clock = time
+
 func _process(dt: float) -> void:
 	if not is_instance_valid(source): return
 	if automatic_animation and not snapshot.is_empty(): advance(dt)
@@ -259,10 +319,16 @@ func _process(dt: float) -> void:
 
 func advance(dt: float) -> void:
 	if not is_finite(dt) or dt <= 0.0: return
+	# Pauses/seeks must not inject metres of stale velocity or landing impulses.
+	if dt > 0.25 and not death_active and not rig.dead:
+		reset_pose()
+		dt = 1.0/60.0
 	if death_active:
 		_advance_death(dt)
 		return
 	if rig.dead or snapshot.is_empty(): return
+	if not can_accept_world_melee(): interrupt_world_melee()
+	world_melee.advance(dt)
 	elapsed += dt
 	var a: Dictionary = snapshot
 	var yaw: float = float(a.get("yaw",0))
@@ -272,13 +338,27 @@ func advance(dt: float) -> void:
 	var mounted: bool = a.get("vehicleId") != null
 	var state: Dictionary = {"dt":dt,"time":elapsed,"speed":0 if mounted else Vector2(vx,vz).length(),"maxSpeed":a.get("moveSpeed",8),"grounded":true if mounted else a.get("grounded",true),"crouch":not mounted and a.get("crouching",false),"ads":not mounted and a.get("ads",false),"reload":1 if not mounted and a.get("reloading",false) else 0,"strafe":0 if mounted else clampf((vx*cos(body_yaw)-vz*sin(body_yaw))/3.0,-1,1),"forward":0 if mounted else clampf(-(vx*sin(body_yaw)+vz*cos(body_yaw))/3.0,-1,1),"focusYaw":focus,"focusPitch":-float(a.get("pitch",0)),"bank":clampf((yaw-body_yaw)*1.1,-1,1),"hit":a.get("hit",0),"sliding":a.get("sliding",false),"reduced":a.get("reduced",false)}
 	if state.reduced: state.bank = 0.0
-	rig.update(state)
-	if state.grounded and not mounted:
-		for i in 2:
-			var point := source.to_global(Vector3(-0.14 if i==0 else 0.14,0,0))
-			var floor_height := Ground.offset(self,point,source.global_position.y)
-			locomotion.floor_offsets[i] = lerpf(locomotion.floor_offsets[i],floor_height,1.0-exp(-18.0*dt))
+	var delta := global_position-previous_position if travel_initialized else Vector3.ZERO
+	if travel_initialized and delta.length() > maxf(2.0,Vector2(vx,vz).length()*dt*4.0+0.5):
+		reset_pose()
+		delta = Vector3.ZERO
+	previous_position = global_position
+	travel_initialized = true
+	# Live actors carry coordinates: animate actual interpolated visual travel,
+	# not newer snapshot velocity. Coordinate-free galleries retain treadmill API.
+	var travel := Vector2(delta.x,delta.z) if a.has("x") and a.has("z") else Vector2(vx,vz)*dt
+	if mounted: travel = Vector2.ZERO
+	state.travelDistance = travel.length()
+	state.previousTravelVelocity = travel_velocity
+	state.targetTravelVelocity = travel/dt
+	travel_velocity = travel_velocity.lerp(travel/dt,1.0-exp(-12.0*dt))
+	state.travelVelocity = travel_velocity
+	state.speed = travel_velocity.length()
+	state.motionVariant = motion_variant
+	state.kickingSide = world_melee.side()
+	rig.update(state,false)
 	locomotion.apply(rig,state,a,dt)
+	world_melee.apply(rig,locomotion,state.grounded,state.reduced)
 	recoil *= exp(-dt*14.0)
 	var handling_target := Vector3(1.0 if a.get("reloading",false) else 0.0,clampf(float(a.get("weaponSwitch",0))*5.0,0,1),clampf(float(a.get("melee",0))*4.0,0,1)) if not mounted and not state.reduced else Vector3.ZERO
 	for i in 3:

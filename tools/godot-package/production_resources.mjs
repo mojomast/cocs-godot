@@ -6,6 +6,13 @@ import {existsSync,readFileSync} from 'node:fs';
 import {join,resolve,posix} from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {robotImportPaths,verifyRobotImports} from './robot_imports.mjs';
+import {vehicleImportPaths,verifyVehicleImports,VEHICLE_EVIDENCE} from './vehicle_imports.mjs';
+import {sceneryImportPaths,verifySceneryImports,SCENERY_EVIDENCE} from './scenery_imports.mjs';
+import {vesperImportPaths,verifyVesperImports,VESPER_EVIDENCE,VESPER_SUPPORTING_RUNTIME} from './vesper_imports.mjs';
+import {abyssalImportPaths,verifyAbyssalImports,ABYSSAL_EVIDENCE,ABYSSAL_SUPPORTING_RUNTIME} from './abyssal_imports.mjs';
+import {FEATURE_ROOTS,verifyFeatureAdvance,robotSupportingHash} from './feature_dependencies.mjs';
+import {stormglassImportPaths,verifyStormglassImports,verifyStormglassAdvance,STORMGLASS_EVIDENCE,STORMGLASS_SUPPORTING_RUNTIME} from './stormglass_imports.mjs';
+import {polishPaths,verifyPolishAdvance,verifyOperatorFinishImports} from './polish_dependencies.mjs';
 export const REQUIREMENTS='tools/godot-package/production_requirements.json';
 export const REQUIRED_UNITS=Object.freeze(['parallax-interiors','robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
 const skins=['needle_surveyor','caisson_guard','kiln_tender'];
@@ -67,12 +74,14 @@ function specification(unit,read) {
       extra.push(`tools/godot-vehicle-assets/generated/${stem}.json`,`tools/godot-vehicle-assets/masters/${stem}-report.json`);
     }
     inputs.push('tools/godot-vehicle-assets/write-recipes.mjs','godot/vehicle_assets/attachment.gd','godot/vehicles/puma.gd','godot/vehicles/renderer.gd','godot/combined_arms/chassis.gd','godot/combined_arms/fleet.gd','game/vehicles.mjs');
+    extra.push(...vehicleImportPaths(exports),...VEHICLE_EVIDENCE);
   } else if(id==='scenery') {
     const catalog=JSON.parse(read('godot/biomes/expansion/catalog.json'));
     const ids=Object.values(catalog.chapters).flatMap(c=>c.placements.map(p=>p.asset));
     assert.equal(ids.length,12);assert.equal(new Set(ids).size,12);
     for(const name of ids){assert.match(name,/^[a-z0-9-]+$/);masters.push(`tools/godot-biomes/expansion/masters/${name}.blend`);for(let lod=0;lod<2;lod++)exports.push(`godot/biomes/expansion/art/${name}-${lod}.glb`);}
     inputs.push('tools/godot-biomes/expansion/compile.mjs','tools/godot-biomes/expansion/reopen.py','port/edge-effects/structure-faces.json','godot/biomes/expansion/scenery_pack.gd','godot/campaign/terrain.gd',...Object.keys(catalog.chapters).map(ch=>`godot/campaign/generated/${ch}.json`));
+    extra.push(...sceneryImportPaths(exports,read),...SCENERY_EVIDENCE);
   } else if(id==='parallax-interiors') {
     const base='tools/godot-multiplayer/new-maps/parallax-observatory/';
     masters.push(base+'revisions/interiors-v2/output/parallax-observatory.blend');
@@ -88,6 +97,9 @@ function specification(unit,read) {
     masters.push(base+(id==='stormglass-causeway'?'':'masters/')+id+'.blend');
     exports.push(`godot/multiplayer_worlds/art/worlds/${id}.glb`);
     inputs.push(base+'build.mjs',`port/native-multiplayer-worlds/worlds/${id}.json`,`godot/multiplayer_worlds/generated/${id}.json`);
+    if(id==='vesper-viaduct')extra.push(...vesperImportPaths(),...VESPER_EVIDENCE,'godot/multiplayer_worlds/catalog.gd','port/multiplayer-worlds/catalog.mjs');
+    if(id==='abyssal-pressureworks')extra.push(...abyssalImportPaths(),...ABYSSAL_EVIDENCE,'godot/multiplayer_worlds/catalog.gd','port/multiplayer-worlds/catalog.mjs','godot/multiplayer_worlds/abyssal_presentation.gd');
+    if(id==='stormglass-causeway')extra.push(...stormglassImportPaths(),...STORMGLASS_EVIDENCE,base+'architecture.py','godot/multiplayer_worlds/catalog.gd','port/multiplayer-worlds/catalog.mjs');
   }
   return {inputs:[...new Set(inputs)].sort(),masters:masters.sort(),exports:exports.sort(),extra:extra.sort()};
 }
@@ -97,9 +109,14 @@ function helperClosure(paths,read,has) {
   while(todo.length) {
     const path=todo.pop();safe(path);if(seen.has(path))continue;seen.add(path);
     if(!has(path))continue;
-    const source=path.endsWith('.mjs')||path.endsWith('.gd')?read(path).toString():'';
+    const source=/\.(mjs|gd|tscn|tres|gdshader|gdshaderinc)$/.test(path)?read(path).toString():'';
     if(path.endsWith('.mjs'))for(const m of source.matchAll(/\b(?:from\s*|import\s*)['"](\.[^'"]+)['"]/g))todo.push(posix.normalize(posix.join(posix.dirname(path),m[1])));
-    if(path.endsWith('.gd'))for(const m of source.matchAll(/(?:preload|load)\("res:\/\/([^"%{}]+)"\)/g))todo.push('godot/'+m[1]);
+    if(path.endsWith('.gd')) {
+      for(const m of source.matchAll(/(?:preload|load)\("res:\/\/([^"%{}]+)"\)/g))todo.push('godot/'+m[1]);
+      for(const m of source.matchAll(/^extends\s+"res:\/\/([^"%{}]+)"/gm))todo.push('godot/'+m[1]);
+    }
+    if(/\.(tscn|tres)$/.test(path))for(const m of source.matchAll(/\[ext_resource\b[^\]\n]*\bpath="res:\/\/([^"%{}]+)"/g))todo.push('godot/'+m[1]);
+    if(/\.(gdshader|gdshaderinc)$/.test(path))for(const m of source.matchAll(/^\s*#include\s+"res:\/\/([^"%{}]+)"/gm))todo.push('godot/'+m[1]);
   }
   return [...seen].sort();
 }
@@ -128,7 +145,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     // External Parallax recipes are not read from its active worktree. Pending
     // absence is reported until parent imports reviewed committed revision bytes.
     try {spec=specification(unit,read);}catch(error){if(requirement.promotion)throw error;missing.push('specification: '+error.message);spec={inputs:unit.recipePaths,masters:[],exports:[],extra:[]};}
-    const inputs=helperClosure([...spec.inputs,...spec.extra,plan.common.finishScript,'tools/asset-production/receipt.mjs','tools/asset-production/reopen.py','godot/moth/generated/manifest.json','godot/moth/derived/manifest.json','game/moth-baked.mjs'],read,has);
+    const inputs=helperClosure([...spec.inputs,...spec.extra,...FEATURE_ROOTS,...polishPaths(read),'godot/replay/stage.gd',plan.common.finishScript,'tools/asset-production/receipt.mjs','tools/asset-production/reopen.py','godot/moth/generated/manifest.json','godot/moth/derived/manifest.json','game/moth-baked.mjs'],read,has);
     spec.packageInputs=inputs;
     for(const path of [...inputs,...spec.masters,...spec.exports]){safe(path);if(!has(path))missing.push(path);}
     const registered=!expectedMap||worldIds.includes(expectedMap);
@@ -137,10 +154,23 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     if(!promotion||!registered||missing.length){pending.push(unit.id);continue;}
     assert.equal(promotion.receipt,`tools/godot-package/production_receipts/${unit.id}.json`,'Promotion receipt must have its fixed committed path');
     const receipt=JSON.parse(add(promotion.receipt,promotion.sha256));assert.equal(receipt.unit,unit.id);
+    verifyPolishAdvance(receipt,read);
+    verifyStormglassAdvance(receipt);
+    if(['parallax-interiors','robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks'].includes(unit.id))verifyFeatureAdvance(receipt);
     if(unit.id==='parallax-interiors') {
       const evidence=JSON.parse(read('port/new-maps/parallax-observatory/production-c.json'));
       for(const [path,sha]of Object.entries(evidence.inputHashes))add(path,sha);
-      for(const [path,sha]of Object.entries(evidence.runtimeHooks))if(!path.startsWith('godot/tests/'))add(path,sha);
+      for(const [path,sha]of Object.entries(evidence.runtimeHooks))if(!path.startsWith('godot/tests/')) {
+        let expected=sha;
+        for(const [record,policy]of [[receipt.vesperPackageVerifierAdvance,VESPER_SUPPORTING_RUNTIME],[receipt.abyssalPackageVerifierAdvance,ABYSSAL_SUPPORTING_RUNTIME],[receipt.stormglassPackageVerifierAdvance,STORMGLASS_SUPPORTING_RUNTIME]]) {
+          const advance=record?.runtimeChanged?.[path];
+          if(!advance)continue;
+          assert.deepEqual(advance,policy[path],'Unreviewed supporting runtime advance');
+          assert.equal(advance.before,expected,'Broken Parallax native-to-supporting history');
+          expected=advance.after;
+        }
+        assert.equal(receipt.runtimeHooks[path],expected);add(path,expected);
+      }
       assert.deepEqual(receipt.masters,evidence.masters,'Parallax production master identity');
       assert.deepEqual(receipt.exports,evidence.exports,'Parallax production export identity');
       assert.ok(receipt.rawFiles?.includes(spec.exports[0]),'Parallax native audit requires raw GLB bytes');
@@ -172,6 +202,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     assert.equal(new Set(receipt.rawFiles).size,receipt.rawFiles.length,'Duplicate production raw path');
     for(const path of receipt.rawFiles){assert.ok(Object.hasOwn(resources,path),'Undeclared production raw path');raw[path]=resources[path];}
     if(unit.id==='scenery') {
+      verifySceneryImports(spec.exports,read);
       const catalog=JSON.parse(read('godot/biomes/expansion/catalog.json'));
       assert.equal(catalog.recipeSha256,hash(read('tools/godot-biomes/expansion/meshes.json')),'Stale scenery mesh recipe');
       for(const [id,c]of Object.entries(catalog.chapters))assert.equal(c.recipeSha256,hash(read(`godot/campaign/generated/${id}.json`)),'Stale scenery chapter binding');
@@ -179,7 +210,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     if(unit.id==='robots') {
       verifyRobotImports(spec.exports,read);
       const contract=JSON.parse(read('godot/robot_assets/switchyard/contract.json'));
-      for(const [path,sha]of Object.entries(contract.source))add(path,sha);
+      for(const [path,sha]of Object.entries(contract.source))add(path,robotSupportingHash(path,sha,receipt,read));
       const built=JSON.parse(read('godot/robot_assets/switchyard/generated/build-receipt.json'));
       // Archive the exact Python json.dumps(manifest(), sort_keys=True) bytes
       // used by the builder, so verification needs no Python/Blender on Windows.
@@ -188,6 +219,10 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
       equal(Object.keys(built.assets),[...skins,...props],'Incomplete robot builder receipt');
       for(const [name,row]of Object.entries(built.assets))assert.equal(row.sha256,resources[`godot/robot_assets/switchyard/generated/${name}.glb`],'Stale robot export receipt');
     }
+    if(unit.id==='vehicles')verifyVehicleImports(spec.exports,read);
+    if(unit.id==='vesper-viaduct')verifyVesperImports(read);
+    if(unit.id==='abyssal-pressureworks')verifyAbyssalImports(read);
+    if(unit.id==='stormglass-causeway')verifyStormglassImports(read,receipt);
     if(unit.id==='vehicles')for(const kind of ['puma','titan','scout'])for(let lod=0;lod<3;lod++) {
       const stem=`${kind}-lod${lod}`,report=JSON.parse(read(`tools/godot-vehicle-assets/masters/${stem}-report.json`));
       assert.equal(report.kind,kind);assert.equal(report.lod,lod);
@@ -195,6 +230,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     }
   }
   // Private shader is an actual preload dependency, not a new route/acceptance.
+  if(!pending.length)verifyOperatorFinishImports(read);
   if(has('godot/multiplayer_worlds/dressing/surface.gd')) {
     add('godot/multiplayer_worlds/dressing/surface.gd');
     add('godot/multiplayer_worlds/dressing/surface.gdshader');

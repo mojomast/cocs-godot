@@ -1,0 +1,136 @@
+{
+  "grant": "STORMGLASS-ASSET-PRODUCTION-20261003-J",
+  "accepted": false,
+  "runs": [
+    {
+      "id": "2026-10-03T05-45-39.100Z-stormglass-causeway-puma-race",
+      "success": true,
+      "journeyPassed": true,
+      "finishTime": 105.25009254924726,
+      "respawn": {
+        "countdownObserved": true,
+        "resetPassed": 0,
+        "raceReset": true,
+        "raceRecovered": true
+      },
+      "processFailed": false
+    },
+    {
+      "id": "2026-10-03T05-50-29.890Z-stormglass-causeway-puma-race",
+      "success": false,
+      "journeyPassed": true,
+      "finishTime": 105.13166906981085,
+      "respawn": {
+        "countdownObserved": true,
+        "resetPassed": 0,
+        "raceReset": true,
+        "raceRecovered": true,
+        "restartObserved": true
+      },
+      "processFailed": true
+    },
+    {
+      "id": "2026-10-03T05-53-38.671Z-stormglass-causeway-puma-race",
+      "success": false,
+      "journeyPassed": true,
+      "finishTime": 105.24407815198946,
+      "respawn": {
+        "countdownObserved": true,
+        "resetPassed": 0,
+        "raceReset": true,
+        "raceRecovered": true,
+        "restartObserved": true
+      },
+      "processFailed": true
+    },
+    {
+      "id": "2026-10-03T05-56-12.867Z-stormglass-causeway-puma-race",
+      "success": false,
+      "journeyPassed": true,
+      "finishTime": 104.99007002502077,
+      "respawn": {
+        "countdownObserved": true,
+        "resetPassed": 0,
+        "raceReset": true,
+        "raceRecovered": true,
+        "restartObserved": true
+      },
+      "processFailed": true
+    },
+    {
+      "id": "2026-10-03T05-59-03.606Z-stormglass-causeway-puma-race",
+      "success": true,
+      "journeyPassed": true,
+      "finishTime": 105.23213769522464,
+      "respawn": {
+        "countdownObserved": true,
+        "resetPassed": 0,
+        "raceReset": true,
+        "raceRecovered": true,
+        "restartObserved": true
+      },
+      "processFailed": false
+    },
+    {
+      "id": "2026-10-03T06-00-57.076Z-stormglass-causeway-puma-race",
+      "success": true,
+      "journeyPassed": true,
+      "finishTime": 104.89935651531673,
+      "respawn": {
+        "countdownObserved": true,
+        "resetPassed": 0,
+        "raceReset": true,
+        "raceRecovered": true,
+        "restartObserved": true
+      },
+      "processFailed": false
+    }
+  ],
+  "clip": {
+    "frames": 155,
+    "seconds": 21.168,
+    "sampledFps": 7.275132275132275,
+    "maxGapSeconds": 0.165,
+    "minGapSeconds": 0.115,
+    "renderer": "llvmpipe (LLVM 20.1.8, 256 bits)",
+    "viewport": "(1280.0, 800.0)",
+    "maxCameraSampleStepMetres": 2.429211991968805,
+    "classification": "actual software-rendered native capture; VFR timestamp encoding; not GPU performance"
+  },
+  "assetHashes": {
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/stormglass-causeway.blend": "970d244fbec4d352dd3148c5e68f927037c224fa680c680050c83c8984d84e40",
+    "godot/multiplayer_worlds/art/worlds/stormglass-causeway.glb": "ff318582fd47ca633ef74da1aa4a6aa2b5b691800f12fb3210f3dac140cb5b33"
+  },
+  "runtimeAndFixtureHashes": {
+    "game/core.mjs": "58ff1b9c7467a53da00638f16edfd3df2e1e6fd06480ff081ad13c88fb64bdb9",
+    "game/race.mjs": "1c448a0f00e3354dd6fa32190f85dcc6c31883f428b07193773fcd02bf2effba",
+    "game/vehicles.mjs": "e55dbed9969a9f4430b0471fefb4d294fddf0e75d8af853565c9361c106244db",
+    "port/multiplayer-worlds/derived/core.mjs": "6e68d618777e4e0f0b43ef9e2512aeb7fdacc58e82d526b5fbd5f9f52afc1862",
+    "port/multiplayer-worlds/wall_candidates.mjs": "ab78bfbfe4accd20158956969c0e7474d902044120cf5b9a473e93ba65f080d7",
+    "tools/asset-production/candidate-hosted.mjs": "5532c11702b7ed27fd2d1e7aa11ba17b031678e2fa21178f1161749e1d0a1076",
+    "tools/asset-production/candidate-admission.mjs": "f052846034b96409919f552e5dc6a9592ade3a4597747cc37dd5f3d4bccaa234",
+    "tools/asset-production/candidate-guidance.mjs": "e148085a9b2fef03003da4456768a5a2ffc528c12e4f40bf253d439fe2007ebd",
+    "godot/multiplayer_worlds/sports_demo.gd": "78b86c3874bbc7e91069ac6c8d65fb9468fecbfcf7cbe34f63fcbdd8c13232b9",
+    "godot/sports/chase.gd": "57b92456b701f39f75e84864eedc03809238adbe849f0675240abdf03a5f3abc",
+    "godot/sports/controls.gd": "6c55e17862ce148b23998a7725d848d2f3744af4342217108f81105373a21822",
+    "godot/sports/hud.gd": "08ffcb18b690917ae0740d3fb2dc91a9c13c04f5f9c8aa9aa05924407ff02250",
+    "godot/vehicles/renderer.gd": "3d185e80ddf005278721966d0ccd9cc027aec2cf1a6a0f1c2ce6f6d5676cf975",
+    "godot/vehicles/puma.gd": "dece0e0b743fcb6377bb58fcb7dcc963fca9c7d047baa87bc89469162b2934fe",
+    "godot/vehicle_assets/attachment.gd": "13fc00ebd1d5495769df1d120329e5462724cf09487697a6258f92a1545f3a63",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/architecture.py": "1fbdb7a6198e4fcfae4adc2fbebcf28933e504fe4aa98002d42692742cc68664",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/blender_export.py": "e58de79ab845d95663a2d5cd8ed1b9dceba932cd0fc8f47829d1896ea760e8ec",
+    "godot/vehicle_assets/generated/puma-lod0.glb": "ad1d0f76f85e340338828eec7167470ae2aeffe157ae8a29ef4dfa540fca76cc",
+    "godot/vehicle_assets/generated/puma-lod1.glb": "0d96072586ceed24ad99838ad134c4fc30464b42a4be131a84cfc3351ee84c1a",
+    "godot/vehicle_assets/generated/puma-lod2.glb": "edfe45b1a11e2ec1bfb3df38c111b8f44dbd2573eb5e354a884449cbc131be66",
+    "godot/tests/new_maps/stormglass_causeway/source.test.mjs": "452c56030ef425d9ed0cfea0216731542e518777abc8ee275e68fe1279876302",
+    "godot/tests/new_maps/stormglass_causeway/route_probe.gd": "c7e850b4360086cbdad66ffa0f7d8c78b80e7dc6b22a599f211382b288ea801f",
+    "godot/tests/new_maps/stormglass_causeway/stage.py": "7c7ef218ca8219022e9464822871f4020d6c8a7039e90fc7bca634391d493639",
+    "godot/tests/new_maps/stormglass_causeway/inspection.gd": "7e74a9db3f8bdd794ce39c849c4603c1925e9c506905539bbd664ec77c7dd547",
+    "godot/tests/new_maps/stormglass_causeway/fixture_controls.gd": "80e12a4585a4975901de77bbc8785bf8bca40c7d15f5ad4d38881f03f506894d",
+    "godot/tests/new_maps/stormglass_causeway/hosted.gd": "edb8fb87391094e79c49de8f1afaf9b2ac695a444fcfe7b982961c687cce068d",
+    "godot/tests/new_maps/stormglass_causeway/hosted.mjs": "fc9f8cec6387906a9498552e75a8cc795c43e232f0b3cc77a36304d3c939642b",
+    "godot/tests/new_maps/stormglass_causeway/art_audit.mjs": "a3aeb3f46a5878e70d5894a3e8adc1416dcf09acd087a7d4421f039a4abb8443",
+    "godot/tests/new_maps/stormglass_causeway/retain.py": "4b5db9fe3ed98992958615400c350f46b0cb357e578767e044c36367d233d58e",
+    "godot/tests/new_maps/stormglass_causeway/release.py": "5d7eff7ba0501264b0d813e352715c48e48a00f5965fce9d3ce88d369ca10557"
+  }
+}

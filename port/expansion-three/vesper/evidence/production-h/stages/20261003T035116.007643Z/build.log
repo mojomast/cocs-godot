@@ -1,0 +1,32 @@
+Info: Saved as "vesper-viaduct.blend"
+Warning: No mesh data to join
+INFO Draco mesh compression is available, use library at /home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/4.5/scripts/addons_core/io_scene_gltf2/libextern_draco.so
+23:52:23 | INFO: Starting glTF 2.0 export
+23:52:23 | INFO: Extracting primitive: city-grade--104--140.001
+23:52:23 | INFO: Primitives created: 1
+23:52:23 | INFO: Extracting primitive: city-grade--65--140.001
+23:52:23 | INFO: Primitives created: 1
+23:52:23 | INFO: Extracting primitive: city-grade-25--140.001
+23:52:23 | INFO: Primitives created: 1
+23:52:23 | INFO: Extracting primitive: civic-stair-0.001
+23:52:23 | INFO: Primitives created: 1
+23:52:23 | INFO: Extracting primitive: canal-bridge--100.001
+23:52:23 | INFO: Primitives created: 1
+23:52:23 | INFO: Extracting primitive: quay-rail-cap.006
+23:52:23 | INFO: Primitives created: 1
+23:52:23 | INFO: Extracting primitive: ticket-concourse-roof-west.001
+23:52:23 | INFO: Primitives created: 1
+23:52:23 | INFO: Extracting primitive: row--47--84-cap.001
+23:52:23 | INFO: Primitives created: 1
+23:52:23 | INFO: Extracting primitive: Cube.330
+23:52:23 | INFO: Primitives created: 1
+23:52:23 | INFO: Extracting primitive: Cube.654
+23:52:23 | INFO: Primitives created: 1
+23:52:23 | INFO: Extracting primitive: TICKET CONCOURSE.001
+23:52:23 | INFO: Primitives created: 1
+23:52:23 | INFO: Finished glTF 2.0 export in 0.053105831146240234 s
+
+{"objects": 2122, "sourceWalls": 1558, "sourceSurfaces": 209, "glbBytes": 1793532, "recipeSHA256": "6bd6fe0dc62c8dca941b3e110bf038dda5fb1be2896aa753959ebf4fb550a560", "masterSHA256": "c2eaa14e7616400e15b4d90ac79d0416cae96309d5834bcd121915f0f164d7d4", "glbSHA256": "01f4ca774bd1d28c9c2f809b8ddbe3d92c610b678b6fea0b34dcd9d43286f4cb", "action": "build"}
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+
+Blender quit

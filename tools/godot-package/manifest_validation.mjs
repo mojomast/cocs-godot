@@ -25,6 +25,7 @@ import {FEATURE_JSON} from './feature_resources.mjs';
 import {DRESSING_IDS} from './dressing_resources.mjs';
 import {finalResources} from './final_resources.mjs';
 import {productionResources} from './production_resources.mjs';
+import {channelProduction,verifyChannelManifest,previewReadme} from './build_channel.mjs';
 import {fighterImports} from './fighter_imports.mjs';
 
 // The repository that contains this module, not the process working directory.
@@ -419,15 +420,17 @@ export function verifySourceState(repo, sourceCommit, derivative, {portCommit, h
   require_(HEX40.test(portCommit ?? ''), 'verifySourceState requires an explicit portCommit');
   require_(git(repo, ['merge-base', sourceCommit, head]) === sourceCommit,
     'Manifested port commit is not based on the manifested source commit');
-  const tracked = git(repo, ['ls-tree', '-r', '--name-only', sourceCommit])
-    .split('\n')
-    .filter(path => /^(game\/|server\/|assets\/|public\/|package.*json$)/.test(path));
-  const changed = tracked.length
-    ? git(repo, ['diff', '--name-only', sourceCommit, head, '--', ...tracked]).split('\n').filter(Boolean)
-    : [];
-  const added = git(repo, ['diff', '--name-only', '--diff-filter=A', sourceCommit, head,
+  const tracked = new Set(git(repo, ['ls-tree', '-r', '--name-only', '-z', sourceCommit])
+    .split('\0')
+    .filter(path => /^(game\/|server\/|assets\/|public\/|package.*json$)/.test(path)));
+  // Never send the full source inventory as argv: it exceeds Windows' 32K
+  // command-line limit. Diff the recorded commits once and filter exact paths.
+  // NUL output preserves spaces/non-ASCII; no-renames exposes deleted originals.
+  const changed = git(repo, ['diff', '--name-only', '-z', '--no-renames', sourceCommit, head])
+    .split('\0').filter(path => tracked.has(path));
+  const added = git(repo, ['diff', '--name-only', '-z', '--no-renames', '--diff-filter=A', sourceCommit, head,
     '--', 'game', 'server', 'assets', 'public', 'package.json', 'package-lock.json'])
-    .split('\n').filter(path => path && !path.endsWith('.test.mjs'));
+    .split('\0').filter(path => path && !path.endsWith('.test.mjs'));
   if (!derivative) {
     require_(changed.length === 0, `Recorded port commit changes locked source: ${changed.join(', ')}`);
     require_(added.length === 0, `Recorded port commit adds uninventoried source: ${added.join(', ')}`);
@@ -447,7 +450,7 @@ export function verifySourceState(repo, sourceCommit, derivative, {portCommit, h
   requireSortedEqual(actual, Object.keys(runtimeFiles), 'Derivative source inventory');
   for (const [path, hash] of Object.entries(runtimeFiles)) {
     require_(/^(game|server)\/[a-z0-9-]+\.mjs$/.test(path), `Invalid derivative source entry: ${path}`);
-    require_(tracked.includes(path) || added.includes(path), `Derivative source is not present in the recorded port commit: ${path}`);
+    require_(tracked.has(path) || added.includes(path), `Derivative source is not present in the recorded port commit: ${path}`);
     require_(HEX64.test(hash), `Derivative source hash must be 64-hex: ${path}`);
     require_(gitObjectHash(repo, derivative.derivative_commit, path) === hash, `Derivative source byte mismatch: ${path}`);
   }
@@ -551,7 +554,16 @@ function verifyLauncherSurface(repo, identity, packageDir) {
   }
   requireSameBytes(repo, commit, 'port/contracts/map-selection.json', join(packageDir, 'catalog.json'), 'catalog.json');
   const play = target === 'windows' ? 'port/native-windows-package/PLAY.md' : 'port/native-linux-package/PLAY.md';
-  requireSameBytes(repo, commit, play, join(packageDir, 'README.md'), 'README.md');
+  const builder=git(repo,['ls-tree','--name-only',commit,'--','tools/godot-package/build.py'])?gitObjectBytes(repo,commit,'tools/godot-package/build.py').toString():'';
+  if(builder.includes('"build_channel"')) {
+    requireInventoryFile(packageDir,identity,'build-intent.json');
+    const intent=JSON.parse(readFileSync(join(packageDir,'build-intent.json'),'utf8'));
+    require_(canonicalJson(intent)===canonicalJson(identity.manifest.build_intent),'Packaged build intent differs from manifest');
+    require_(readFileSync(join(packageDir,'README.md'),'utf8')===previewReadme(intent,gitObjectBytes(repo,commit,play).toString()),'Channel README differs from recorded intent/source');
+  } else {
+    require_(identity.manifest.build_channel===undefined,'Historical build cannot be relabeled preview');
+    requireSameBytes(repo, commit, play, join(packageDir, 'README.md'), 'README.md');
+  }
   if (target === 'linux') {
     for (const name of LINUX_LAUNCHERS) {
       requireSameBytes(repo, commit, `tools/godot-package/${name}`, join(packageDir, name), name);
@@ -610,7 +622,10 @@ export function verifyProductionProvenance(repo,identity) {
   const paths=new Set(git(repo,['ls-tree','-r','--name-only',identity.port_commit,'--','godot','tools','port','game']).split('\n'));
   const read=path=>gitObjectBytes(repo,identity.port_commit,path),has=path=>paths.has(path);
   verifyFighterImportProvenance(repo,identity);
-  const expected=productionResources({read,has,worldIds:(identity.worldDataFiles??[]).map(p=>p.split('/').at(-1).slice(0,-5))});
+  const options={read,has,worldIds:(identity.worldDataFiles??[]).map(p=>p.split('/').at(-1).slice(0,-5))};
+  const channel=code.includes('"build_channel"')?identity.manifest.build_channel:'final';
+  const expected=channelProduction(options,channel);
+  verifyChannelManifest(identity.manifest,code,expected);
   for(const [field,key]of [['production_resource_sha256','resources'],['production_provenance_sha256','provenance'],['production_raw_resource_sha256','raw']])
     require_(canonicalJson(identity.manifest[field])===canonicalJson(expected[key]),`${field} differs from required recorded production closure`);
 }

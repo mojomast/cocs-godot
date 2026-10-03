@@ -20,6 +20,7 @@ func key(code: int, shift := false) -> void:
 		Input.parse_input_event(event)
 		await process_frame
 	await settle()
+	print("LOBBY_KEY_FOCUS ",code," shift=",shift," owner=",str(root.gui_get_focus_owner().get_path()) if root.gui_get_focus_owner()!=null else "none")
 func click(control: Control) -> void:
 	for pressed: bool in [true,false]:
 		var event := InputEventMouseButton.new()

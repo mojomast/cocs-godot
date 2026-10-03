@@ -2,10 +2,11 @@
 // Invoke with node --experimental-vm-modules. Nothing here is shipped at play time.
 import {SourceTextModule} from 'node:vm';
 import {readFileSync, existsSync} from 'node:fs';
-import {resolve, dirname, relative} from 'node:path';
+import {resolve} from 'node:path';
 import {isBuiltin} from 'node:module';
 import {pathToFileURL} from 'node:url';
 import {worldClosure} from './world_closure.mjs';
+import {dependencyPath} from './dependency_path.mjs';
 const root = resolve(process.argv[2]);
 const hordeAdapters = ['port/native-horde/authority.mjs', 'port/native-horde/input-buffer.mjs', 'port/native-horde/cinderwake-schema.mjs', 'port/native-horde/robot-roles.mjs', 'port/native-horde/blackwater-schema.mjs', 'port/native-horde/blackwater-director.mjs'];
 // Reviewed port-owned runtime inputs only. New helpers require a manifest edit.
@@ -27,7 +28,7 @@ const identityZoneAdapters = ['port/native-identity-zones/authority.mjs',
   'port/native-identity-zones/match.mjs', 'port/native-identity-zones/catalog.mjs'];
 const campaignAdapters = ['authority','maps','match','missions','enemies','story','schema','core.generated','feel','targeting','interludes','interlude-definitions']
   .map(name => `port/native-campaign/${name}.mjs`);
-const worldAdapters = ['catalog','match','derived/core','derived/payload','derived/room','derived/rooms','derived/game-server']
+const worldAdapters = ['catalog','match','wall_candidates','derived/core','derived/payload','derived/room','derived/rooms','derived/game-server']
   .map(name => `port/multiplayer-worlds/${name}.mjs`);
 const edgeAdapters = ['port/edge-effects/structure-rays.mjs'];
 const challengeAdapters = ['port/pass-two/modes/challenge-authority.mjs'];
@@ -54,7 +55,7 @@ function discover(entry) {
     const parsedModule = new SourceTextModule(source, {identifier:path});
     modules[path] = [...parsedModule.dependencySpecifiers];
     for (const spec of parsedModule.dependencySpecifiers) {
-      if (spec.startsWith('.')) pending.push(relative(root, resolve(root, dirname(path), spec)));
+      if (spec.startsWith('.')) pending.push(dependencyPath(root,path,spec));
       else if (!isBuiltin(spec)) external.add(spec);
     }
   }

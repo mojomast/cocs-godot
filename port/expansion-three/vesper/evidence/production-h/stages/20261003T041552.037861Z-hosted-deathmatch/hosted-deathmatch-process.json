@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "xvfb-run",
+    "-a",
+    "-s",
+    "-screen 0 1280x800x24",
+    "node",
+    "tools/asset-production/candidate-hosted.mjs",
+    "vesper-viaduct",
+    "deathmatch",
+    "--granted"
+  ],
+  "started": "2026-10-03T04:15:52.154515+00:00",
+  "timeoutSeconds": 960,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-three-vesper-evidence-20261002/production-h/20261003T041552.037861Z-hosted-deathmatch/hosted-deathmatch.log",
+  "processGroup": 1346421,
+  "exitCode": 1,
+  "ended": "2026-10-03T04:15:52.519194+00:00",
+  "ownedGroupTeardownRequested": true
+}

@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender",
+    "--python-exit-code",
+    "1",
+    "-b",
+    "-t",
+    "1",
+    "--python",
+    "tools/godot-multiplayer/new-maps/stormglass-causeway/blender_export.py"
+  ],
+  "started": "2026-10-03T05:42:01.496412+00:00",
+  "timeoutSeconds": 900,
+  "log": "/home/mojo/.tmp-on-disk/cocs-expansion-four-stormglass-evidence-20261002/production-j/20261003T054201.375093Z-build/build.log",
+  "processGroup": 1676060,
+  "exitCode": 0,
+  "ended": "2026-10-03T05:42:04.866235+00:00",
+  "ownedGroupTeardownRequested": true
+}

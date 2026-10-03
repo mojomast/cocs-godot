@@ -1,0 +1,24 @@
+{
+  "title": "Vesper Viaduct — production H native review",
+  "source_commit": "3fe016a1b0a985a78a6d81e72ba194ca3ee50d2c",
+  "evidence_root": "/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/expansion-three/vesper/evidence/production-h",
+  "notes": [
+    "Actual Godot captures of the Blender-authored Vesper map, retained from production H. Architecture views are staged inspection cameras; gameplay frames and the CTF clip come from ordinary native-input journeys.",
+    "Six private mode journeys passed, including death/respawn and clean peer/server teardown. Parent reviewed these views for development integration. Package promotion and final-candidate native regression remain pending.",
+    "Software-rendered capture cadence was 5.42–9.23 fps with stalls retained. The clip uses recorded frame durations. This is not hardware-GPU performance or human playtesting acceptance.",
+    "These assets target a future build; the published October 3 preview does not contain Vesper."
+  ],
+  "files": [
+    {"kind":"image","path":"overview.png","caption":"City layout overview — clock tower, station blocks and canal"},
+    {"kind":"image","path":"ticket-concourse-interior.png","caption":"Ticket concourse interior and structural shadows"},
+    {"kind":"image","path":"civic.png","caption":"Civic frontage and entrance"},
+    {"kind":"image","path":"civic-stair.png","caption":"Traversable civic stair and handrails"},
+    {"kind":"image","path":"arcade-front.png","caption":"Arcade street and facade detail"},
+    {"kind":"image","path":"canal-bridge.png","caption":"Canal bridge approach"},
+    {"kind":"image","path":"deathmatch/frame-000074.png","caption":"Native deathmatch gameplay frame"},
+    {"kind":"image","path":"ctf/results.png","caption":"Compact UI150 capture-the-flag result — no clipped instructions"},
+    {"kind":"video","path":"ctf/ordinary-input.mp4","caption":"CTF ordinary-input clip with recorded frame durations"},
+    {"kind":"receipt","path":"hosted-summary.json","caption":"Six private native-mode outcomes and evidence identities"},
+    {"kind":"receipt","path":"release-h.json","caption":"Grant H release: 27 process groups, three empty audits"}
+  ]
+}

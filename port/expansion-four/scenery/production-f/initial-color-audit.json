@@ -1,0 +1,41 @@
+[
+  {
+    "material": "bark",
+    "exportedMeanRGB": [
+      20.943359375,
+      17.298095703125,
+      10.0
+    ],
+    "authoredSRGB": [
+      81,
+      74,
+      56
+    ]
+  },
+  {
+    "material": "copper",
+    "exportedMeanRGB": [
+      106.025390625,
+      48.516845703125,
+      21.30859375
+    ],
+    "authoredSRGB": [
+      173,
+      121,
+      82
+    ]
+  },
+  {
+    "material": "moss",
+    "exportedMeanRGB": [
+      35.1123046875,
+      47.651123046875,
+      23.022216796875
+    ],
+    "authoredSRGB": [
+      104,
+      120,
+      85
+    ]
+  }
+]

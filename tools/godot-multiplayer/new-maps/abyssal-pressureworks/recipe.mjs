@@ -7,6 +7,11 @@ export function recipe(){
  const wall=(id,a,b,c,d,material='navy')=>{for(const [i,vertices] of [[0,[a,b,c]],[1,[a,c,d]]])m.terrain.walls.push({id:`${id}-${i}`,material,vertices});};
  const panel=(id,a,b,base,top,material='navy')=>wall(id,p(a[0],base,a[1]),p(b[0],base,b[1]),p(b[0],top,b[1]),p(a[0],top,a[1]),material);
  const solid=(id,x,y,z,w,h,d,material)=>{m.blocks.push({id,x,z,w,d,baseY:y,h:y+h,kind:'equipment'});m.art.pieces.push({id,kind:'box',x,y:y+h/2,z,w,h,d,material});};
+ const slab=(id,x,y,z,w,h,d,material)=>{
+  const lower=[[x-w/2,y,z-d/2],[x+w/2,y,z-d/2],[x+w/2,y,z+d/2],[x-w/2,y,z+d/2]],upper=lower.map(([a,b,c])=>[a,b+h,c]);
+  surface(id+'-underside',lower,material);surface(id+'-top',upper.slice().reverse(),material);
+  for(let i=0;i<4;i++){const j=(i+1)%4;wall(id+'-side-'+i,lower[i],lower[j],upper[j],upper[i],material);}
+ };
  const trace=(id,width,points)=>{m.routes.push({id,width,points});for(let i=1;i<points.length;i++){const a=points[i-1],b=points[i],n=Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/3);for(let j=0;j<=n;j++)m.navNodes.push({x:a[0]+(b[0]-a[0])*j/n,z:a[1]+(b[1]-a[1])*j/n});}};
  const rooms=[];
  const names=[['Intake quarantine','Spectrometry','Reef observation','Sample archive'],['Freight lock','Pump cathedral','Equalizer atrium','Distribution hall'],['Residential commons','Medical operations','Mission control','Emergency refuge']];
@@ -15,7 +20,7 @@ export function recipe(){
   const x=xs[row][col],z=[[-68,-78,-68,-58],[0,0,0,0],[68,78,64,72]][row][col],y=row===0?6-col*2:row*10,w=[40,44,38][row],d=[40,44,36][row],h=row===1&&col===2?24:[10,15,9][row],id=`vessel-${row}-${col}`,gap=row===1?14:10,c=7;
   const r={id,name:names[row][col],district:['terraced-laboratories','pump-energy','residential-operations'][row],x,y,z,w,d,h,ports:{},silhouette:['splayed-observation-vault','tall-ribbed-pressure-vessel','low-faceted-habitat'][row]};rooms.push(r);
   const poly=[[-w/2+c,-d/2],[w/2-c,-d/2],[w/2,-d/2+c],[w/2,d/2-c],[w/2-c,d/2],[-w/2+c,d/2],[-w/2,d/2-c],[-w/2,-d/2+c]].map(([a,b])=>[x+a,z+b]);
-  surface(`${id}-deck`,poly.map(([a,b])=>p(a,y,b)).reverse(),'ivory',true);
+  surface(`${id}-deck`,poly.map(([a,b])=>p(a,y,b)).reverse(),'navy',true);
   // Eight sloped roof facets terminate at a small crown, with an exact closed underside.
   const crown=poly.map(([a,b])=>[x+(a-x)*[.8,.58,.35][row],z+(b-z)*[.8,.58,.35][row]]),rise=[3,5,1.5][row];
   surface(`${id}-crown`,crown.map(([a,b])=>p(a,y+h+rise,b)),'navy');
@@ -38,12 +43,15 @@ export function recipe(){
   // Purposeful side bays leave the central axes and all portals clear.
   for(const sign of [-1,1]){
    solid(`${id}-workstation-${sign}`,x+sign*10,y,z-10,5,1.5,3,row===0?'ivory':'coral');
-   solid(`${id}-equipment-${sign}`,x+sign*11,y,z+10,4,row===1?4:2.4,3,'navy');
+   solid(`${id}-equipment-${sign}`,x+sign*11,y,z+10,4,row===0?4.8:row===1?4:2.4,3,'navy');
+   solid(`${id}-bay-screen-${sign}`,x+sign*11,y,z+6.5,7,2.4,.55,'coral');
+   slab(`${id}-bay-canopy-${sign}`,x+sign*11,y+5.4,z+10,8,.4,7,'ivory');
+   slab(`${id}-overhead-rib-${sign}`,x+sign*w*.22,y+h-.8,z,.7,.65,d-2,'ivory');
    m.art.pieces.push({id:`${id}-instrument-${sign}`,kind:'box',x:x+sign*10,y:y+1.58,z:z-10,w:3,h:.12,d:1.7,material:'cyan'});
   }
   // Structural ribs are visible exact solids, deliberately outside traffic.
   for(const sign of [-1,1])solid(`${id}-rib-${sign}`,x+sign*(w/2-1),y,z+9,1,h,2,'ivory');
-  if(row===1&&col===2){solid('pressure-equalizer-core',x+10,y,z+8,6,20,6,'copper');solid('core-pressure-cap',x+10,y+20,z+8,8,2,8,'amber');}
+  if(row===1&&col===2){solid('pressure-equalizer-core',x+10,y,z+8,6,20,6,'copper');slab('core-pressure-cap',x+10,y+20,z+8,8,2,8,'amber');}
   m.structures.push(r);
   m.spawns.push([x,z]);
  }
@@ -51,7 +59,7 @@ export function recipe(){
   const A=a.ports[sa],B=b.ports[sb];
   // Opposite polygon windings yield matching corridor edges after reversal.
   const va=p(A.a[0],a.y,A.a[1]),vb=p(A.b[0],a.y,A.b[1]),vc=p(B.a[0],b.y,B.a[1]),vd=p(B.b[0],b.y,B.b[1]);
-  surface(`${id}-ramp`,[va,vb,vc,vd],'ivory',true);
+  surface(`${id}-ramp`,[va,vb,vc,vd],'navy',true);
   const up=v=>[v[0],v[1]+7,v[2]];
   surface(`${id}-ceiling`,[up(vd),up(vc),up(vb),up(va)],'navy');
   wall(`${id}-side-a`,vb,vc,up(vc),up(vb),'coral');wall(`${id}-side-b`,vd,va,up(va),up(vd),'coral');
@@ -63,7 +71,10 @@ export function recipe(){
  m.teamSpawns={0:[4,0,8].map(i=>[rooms[i].x,rooms[i].z]),1:[7,3,11].map(i=>[rooms[i].x,rooms[i].z])};m.flagSpawns={0:{x:-91,z:0},1:{x:94,z:0}};
  m.objectiveZones=[['reef',1,'REEF LAB'],['equalizer',6,'EQUALIZER'],['operations',10,'OPERATIONS']].map(([id,i,label])=>({id,x:rooms[i].x,y:rooms[i].y,z:rooms[i].z,radius:7,label}));
  m.pickups=[['health',1],['armor',10],['rocket',5],['rail',2],['health',11],['armor',0]].map(([kind,i])=>[kind,rooms[i].x,rooms[i].z]);
- for(let i=0;i<9;i++)m.art.reefs.push({x:-110+i*27,y:-12-i%3*3,z:-102-i%2*6,radius:5+i%3,height:14+i%4*3});
+ for(let i=0;i<9;i++)m.art.reefs.push({x:-110+i*27,y:-12-i%3*3,z:-110-i%2*6,radius:7+i%3,height:42+i%4*4});
+ // Native packed-texture review: lift the coating's value while retaining its
+ // cool navy hue, so deck/roof facets remain readable under habitat worklights.
+ m.art.palette.navy='#6d8b9c';
  m.design={walkableRelief:20,primaryRoutes:3,crosslinks:8,windowPolicy:'Transparent observation glazing is nonblocking for source shots and native physics; exterior has no walkable support.',budgets:{materials:7,triangles:100000,drawCalls:48},physics:'Dry habitat; ordinary source movement and gravity.'};
  // Design candidates are not published native bindings.
  m.candidateModes=Object.values(m.modeBindings).flat();

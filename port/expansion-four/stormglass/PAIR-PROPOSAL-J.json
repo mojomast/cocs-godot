@@ -1,0 +1,24 @@
+{
+  "proposalOnly": true,
+  "accepted": false,
+  "publicRegistrationApplied": false,
+  "pair": {"map": "stormglass-causeway", "mode": "puma-race"},
+  "assetsCommit": "05ffd362",
+  "nativeEvidenceCommit": "b594432d",
+  "canonicalBase": "f0e76bf7",
+  "geometryHash": "6afb8a36ee954ff9457a5522a7412c809191fb070eb7fe9eda4d379753acce48",
+  "glbSha256": "ff318582fd47ca633ef74da1aa4a6aa2b5b691800f12fb3210f3dac140cb5b33",
+  "privateOutcome": "Two-native-client source race finish, reset/recovery, standings and F5 restart passed in wide and compact profiles; both peers/server closed cleanly.",
+  "evidence": "port/expansion-four/stormglass/PRODUCTION-J.md",
+  "parentPrerequisites": [
+    "Inspect actual architecture, wide/compact results and 21.168-second native clip; approve visual sufficiency.",
+    "Accept the source-required flat-road concession; no elevation/jump claim.",
+    "Resolve or explicitly track production sports HUD hardcoded map name and UI150 fixed result width; current corrections are private-fixture-only.",
+    "Review immediate-post-restart audio drain and promoted Puma owner warnings with current owners.",
+    "Perform latest natural-input/backwards/chase-camera review with SOL before transferring this frozen-base proof to changed motion code.",
+    "Parent extends actual sports scene generator, authority and native map catalogs, manifests, resource closure and package tests for exactly this one pair.",
+    "Regenerate canonical wrappers/hashes if parent elects to change modeBindings; do not relabel current private hash as a newly registered hash."
+  ],
+  "excludedPairs": "All infantry, soccer and other modes remain unproposed.",
+  "slot": "J released 2026-10-03T06:09:35.500713Z; no further heavy execution authorized by this proposal."
+}

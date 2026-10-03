@@ -74,6 +74,8 @@ func run() -> void:
 	fx.consume([event(5000)], 1, actors)
 	fx.consume([event(1)], 1, actors)
 	check(fx.seen.size() == 1 and count(fx) == 1, "dedup storage bounded; stale IDs cannot replay")
+	for viewport: Vector2 in [Vector2.ZERO, Vector2(20, 60), Vector2(56, 520)]:
+		check(not Numbers.layout_bounds(Vector2.ZERO, Vector2(30, 20), viewport, []).has_area(), "headless/minimized viewport has no safe damage-number region")
 	for viewport: Vector2 in [Vector2(760, 520)/1.5, Vector2(1280, 800)]:
 		var occupied: Array[Rect2] = []
 		var extent := fx.font.get_string_size("84", HORIZONTAL_ALIGNMENT_LEFT, -1, 32)

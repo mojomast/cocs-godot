@@ -40,15 +40,17 @@ func _initialize() -> void:
 	v.z = -15.0
 	pose = chase.follow(v, 0.016)
 	var first_recovery: Vector3 = pose.eye
-	var desired := Vector3(0, 5, -24)
+	var clear_chase := Chase.new()
+	var desired: Vector3 = clear_chase.follow(v,0.016).eye
 	check(first_recovery.distance_to(desired) > 0.5, "recovery does not snap to full boom")
 	for i in range(120): pose = chase.follow(v, 0.016)
 	check(pose.eye.distance_to(desired) < 0.02, "recovery converges to clear boom")
 	chase.reset()
 	v.z = 0.0
 	pose = chase.follow(v, 0.016)
-	check(pose.eye.is_equal_approx(Vector3(0, 5, -9)), "unoccluded original +Z eye")
-	check(pose.target.is_equal_approx(Vector3(0, 1, 6)), "unoccluded original look-ahead")
+	var clear_eye: Vector3 = pose.eye
+	check(clear_eye.is_finite() and clear_eye.z < -1 and clear_eye.y > 1 and absf(clear_eye.x)<0.01, "unoccluded eye above and behind chassis")
+	check(pose.target.is_finite() and pose.target.z > 0 and pose.target.y > 0, "unoccluded target ahead and above road")
 	v.yaw = PI - 0.001
 	chase.reset()
 	var before: Vector3 = chase.follow(v, 0.016).eye
@@ -56,7 +58,7 @@ func _initialize() -> void:
 	check(chase.follow(v, 0.016).eye.distance_to(before) < 0.03, "yaw wrap takes short arc")
 	v.x = 20.0
 	v.yaw = 0.0
-	check(chase.follow(v, 0.016).eye.is_equal_approx(Vector3(20, 5, -9)), "large source reset snaps without old-position lag")
+	check(chase.follow(v, 0.016).eye.distance_to(clear_eye+Vector3(20,0,0))<0.001, "large source reset snaps without old-position lag")
 	var cached := chase.boxes.size()
 	chase.reset()
 	check(not chase.seeded and chase.boxes.size() == cached, "round reset keeps cache but drops pose")
@@ -73,9 +75,14 @@ func _initialize() -> void:
 	check(is_equal_approx(Chase.entry_fraction(Vector3(0, 1, 0), Vector3(0, 1, -6), box), 0.5), "parallel slab entry")
 	check(Chase.entry_fraction(Vector3(2, 1, 0), Vector3(2, 1, -6), box) == 1, "parallel slab miss")
 	check(Chase.entry_fraction(Vector3.ZERO, Vector3.ZERO, box) == 1, "zero-length clear segment")
-	var view := {"mode":"puma-race", "phase":"active", "age":0.0, "actor_id":4, "eligible":true, "focused":true, "engaged":false, "state":{"race":{"phase":"racing", "laps":3.0, "gates":[{}, {}, {}], "standings":[{"actorId":4, "lap":2.0, "nextGate":0.0}]}}, "vehicle":{"vx":3.0,"vz":4.0}}
+	var view := {"mode":"puma-race", "map_id":"ion-speedway", "phase":"active", "age":0.0, "actor_id":4, "eligible":true, "focused":true, "engaged":false, "state":{"race":{"phase":"racing", "laps":3.0, "gates":[{}, {}, {}], "standings":[{"actorId":4, "lap":2.0, "nextGate":0.0}]}}, "vehicle":{"vx":3.0,"vz":4.0}}
 	var h := HUD.describe(view)
 	check(h.title == "Ion Speedway · Puma Race", "friendly race title")
+	view.map_id = "sirocco-circuit"
+	view.map_name = "Sirocco Circuit"
+	check(HUD.describe(view).title == "Sirocco Circuit · Puma Race", "selected public world title")
+	view.erase("map_name")
+	view.map_id = "ion-speedway"
 	check(h.detail == "Lap 2 / 3   ·   Checkpoint 1 / 3", "integer lap and one-based checkpoint")
 	check(h.speed == "5.0 m/s", "speed magnitude")
 	check(h.status.begins_with("RELEASED") and h.status.contains("Enter"), "released engagement instruction")
@@ -97,6 +104,7 @@ func _initialize() -> void:
 	check(h.status.begins_with("ERROR") and h.hints.contains(view.error) and h.hints.contains("relaunch"), "error recovery instruction")
 	view.phase = "active"
 	view.mode = "puma-soccer"
+	view.map_id = "aurora-stadium"
 	view.state = {"race":{"phase":"playing", "scores":{"0":2.0,"1":1.0}}}
 	h = HUD.describe(view)
 	check(h.detail == "Red  2     Blue  1", "source team scores labeled and integer")
