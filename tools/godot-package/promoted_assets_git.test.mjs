@@ -7,24 +7,29 @@ import {productionResources} from './production_resources.mjs';
 const cwd=fileURLToPath(new URL('../../',import.meta.url));
 const git=args=>execFileSync('git',args,{cwd,maxBuffer:128*1024*1024});
 
-test('committed four-unit promotion and import bytes validate independently of worktree reads',()=>{
+test('committed five-unit promotion and import bytes validate independently of worktree reads',()=>{
   const commit=git(['rev-parse','HEAD']).toString().trim();
   const paths=new Set(git(['ls-tree','-r','--name-only',commit]).toString().trim().split('\n')),cache=new Map();
   const read=p=>{if(!cache.has(p))cache.set(p,git(['show',`${commit}:${p}`]));return cache.get(p);};
   // Recorded native registry, independently of the current JS catalog module.
   const registry=read('godot/multiplayer_worlds/catalog.gd').toString();
   assert.match(registry,/"parallax-observatory"/);
-  const options={read,has:p=>paths.has(p),worldIds:['parallax-observatory'],strict:false};
+  const options={read,has:p=>paths.has(p),worldIds:['parallax-observatory','vesper-viaduct'],strict:false};
   const result=productionResources(options);
-  assert.deepEqual(result.pending,['vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
+  assert.deepEqual(result.pending,['abyssal-pressureworks','stormglass-causeway']);
   assert.throws(()=>productionResources({...options,strict:true}),/remain pending/);
-  for(const id of ['scenery','robots','vehicles','parallax-interiors']) {
+  for(const id of ['vesper-viaduct','scenery','robots','vehicles','parallax-interiors']) {
     const receipt=JSON.parse(read(`tools/godot-package/production_receipts/${id}.json`));
-    const advance=receipt.sceneryPackageVerifierAdvance,previous=advance.previousReceipt;
+    const advance=receipt.vesperPackageVerifierAdvance,previous=advance.previousReceipt;
     const bytes=git(['show',`${previous.commit}:${previous.path}`]);
     assert.equal(createHash('sha256').update(bytes).digest('hex'),previous.sha256);
     const old=JSON.parse(bytes);
-    for(const [key,value]of Object.entries(old))if(key!=='packageInputs')assert.deepEqual(receipt[key],value);
+    for(const [key,value]of Object.entries(old))if(key!=='packageInputs'&&key!=='runtimeHooks')assert.deepEqual(receipt[key],value);
+    for(const [p,sha]of Object.entries(old.runtimeHooks)) {
+      const change=advance.runtimeChanged[p];
+      if(change){assert.equal(id,'parallax-interiors');assert.equal(change.before,sha);assert.equal(change.after,receipt.runtimeHooks[p]);}
+      else assert.equal(receipt.runtimeHooks[p],sha);
+    }
     assert.equal(createHash('sha256').update(JSON.stringify(old.packageInputs)).digest('hex'),advance.previousPackageFingerprint);
     assert.equal(createHash('sha256').update(JSON.stringify(receipt.packageInputs)).digest('hex'),advance.packageFingerprint);
   }
@@ -40,7 +45,8 @@ test('committed four-unit promotion and import bytes validate independently of w
     const oldBytes=git(['show',`${previous.commit}:${previous.path}`]);
     assert.equal(createHash('sha256').update(oldBytes).digest('hex'),previous.sha256);
     const old=JSON.parse(oldBytes);
-    for(const key of ['sourceHashes','sourceFingerprint','masters','exports','runtimeHooks','rawFiles'])assert.deepEqual(receipt[key],old[key],`${id}: production identity preserved: ${key}`);
+    for(const key of ['sourceHashes','sourceFingerprint','masters','exports','rawFiles'])assert.deepEqual(receipt[key],old[key],`${id}: production identity preserved: ${key}`);
+    for(const [p,sha]of Object.entries(old.runtimeHooks))assert.equal(receipt.vesperPackageVerifierAdvance.runtimeChanged[p]?.before??receipt.runtimeHooks[p],sha);
     assert.deepEqual(Object.keys(receipt.packageVerifierAdvance.changed),['tools/godot-package/production_resources.mjs']);
     if(id==='robots') {
       const revision=receipt.packageReconciliation.supportingRuntimeRevision;

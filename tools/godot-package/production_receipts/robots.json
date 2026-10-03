@@ -418,10 +418,11 @@
     "tools/asset-production/receipt.mjs": "9648c19d979b2486c78830628c2f2508a02b4b2874d1f64149966d88d7e5f9d8",
     "tools/asset-production/reopen.py": "4628bc44122a690495766f3cc967a82d3ab7aeab52c272cca7a202be88e0f5de",
     "tools/godot-campaign/robot-art/build.py": "470a45d39dd24d13fac9f7bd5e1cffd395a8aa9f4de2f2ecddca365be908815e",
-    "tools/godot-package/production_resources.mjs": "cc441a03e1db8060452c99960aaed8bee60cd9dcf6cdee1c48455554df671835",
+    "tools/godot-package/production_resources.mjs": "0a95ddacb4af6f0b3dc053e4963e6b4201324cecf2dbe8a02617aafb21fbe219",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
     "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
+    "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba",
     "tools/godot-robots/build.py": "d3b6244b32a8aa65b984e72db6390c07b8391fc02dd366e94c3f8c293465e1a9",
     "tools/godot-robots/generated/recipe.json": "7510a2a78e0f54e3609af9d4a030da292ad8734605e592db048b95cbfb3bb76a",
     "tools/godot-robots/masters/caisson_guard_skeletal.glb": "26e814a10d49997b599628f30afc068331482e62573f69aaff02391c79e24e26",
@@ -532,5 +533,26 @@
     "productionSourceCheckpoint": null,
     "reason": "Parent accepted F visual review; source-only texture/import closure and supporting-input reconciliation. No new native attestation or build.",
     "review": "port/finish/SCENERY_PACKAGE_PROMOTION.md"
+  },
+  "vesperPackageVerifierAdvance": {
+    "previousReceipt": {
+      "commit": "99a4f597",
+      "path": "tools/godot-package/production_receipts/robots.json",
+      "sha256": "6d2ce07555b2f0848876f3e1b1e2a1075372bfbb03ba3c21bd85aef210bbd8b2"
+    },
+    "changed": {
+      "tools/godot-package/production_resources.mjs": {
+        "before": "cc441a03e1db8060452c99960aaed8bee60cd9dcf6cdee1c48455554df671835",
+        "after": "0a95ddacb4af6f0b3dc053e4963e6b4201324cecf2dbe8a02617aafb21fbe219"
+      }
+    },
+    "added": {
+      "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba"
+    },
+    "runtimeChanged": {},
+    "previousPackageFingerprint": "e42bdf7b3c79dac2f3860d34f05ec23d492f3b04bb4e4da77394a6ed9ed9e7ee",
+    "packageFingerprint": "01d9eab47564195867a770a2e3bcb49f06dbd1a5f9ba8fd2944eb796c3c48d06",
+    "reason": "Parent accepted Vesper H integration/public six-mode registration; supporting verifier/catalog/demo reconciliation only. H native evidence used the original frozen authority, not the later Helix navigation optimization.",
+    "review": "port/finish/VESPER_PACKAGE_PROMOTION.md"
   }
 }
