@@ -6,9 +6,13 @@ from pathlib import Path
 from source_scene import ROOT,k,load
 from asset_author import MAPS,paths
 from test_greenhouse import attachments
+from archived_fixture import archive_bytes,PROBES
 HERE=Path(__file__).resolve().parent
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
+    # Full-count evidence is an explicit archive operation, unlike portable
+    # positive tests. Fail before writing if the archive is absent or changed.
+    fixture_bytes=archive_bytes(PROBES)
     records={}
     for ident,revision in MAPS.items():
         out,master=paths(ident);a=load(ident,revision)
@@ -24,9 +28,8 @@ def main():
         'numericToleranceMetres':1e-8,'futureActualToleranceMetres':.0001,
         'futureRule':'Match named evaluated components to actual GLB triangles, then test their measured complete bearing sections and longitudinal rings'}
     points=json.loads(subprocess.check_output(['node',str(HERE/'route_points.mjs')],cwd=ROOT))
-    fixture=ROOT/'godot/tests/new_maps/botanical_stage/artifacts/helix-conservatory/probes.json'
-    records['helix-conservatory']['newFrameFiniteCapsuleSamples']=len(points)+len(json.loads(fixture.read_text())['points'])
-    records['helix-conservatory']['frozenUProbeSha256']=sha(fixture)
+    records['helix-conservatory']['newFrameFiniteCapsuleSamples']=len(points)+len(json.loads(fixture_bytes)['points'])
+    records['helix-conservatory']['frozenUProbeSha256']=hashlib.sha256(fixture_bytes).hexdigest()
     records['helix-conservatory']['finiteCapsule']={'radius':.42,'height':1.8,'spacing':.25,
         'scope':'all original route/nav plus frozen U fixture including mode spawns/objectives against every new frame triangle; complete native physics pending'}
     paths_to_hash=list(HERE.glob('*.py'))+list(HERE.glob('*.mjs'))+[

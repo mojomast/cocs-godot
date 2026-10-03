@@ -1,0 +1,24 @@
+{
+  "scope": "Fixture portability only; no geometry regeneration or engine execution",
+  "geometryReviewBaseline": "da2e53eb",
+  "archivedArtifactCommit": "243223d3",
+  "archivedInventorySha256": "ce0dd0ec8a87340cc31bfcb88cdfc7b11fb5aad1ce6efd317b9bb43ec22289ef",
+  "fixtureRootEnvironment": "COCS_BOTANICAL_U_FIXTURE_ROOT",
+  "fixtureRootMeaning": "Explicit frozen repository/worktree root; exact relative paths and SHA256 in archived_fixture.py",
+  "frozenSourceEvidenceSha256": "a049bb3075fb69c7c9ba3abee9d57f85e03cded9ab23b2a2dfc10debe0474078",
+  "portableTests": 16,
+  "portableHelixCapsuleSamples": 16790,
+  "explicitArchiveHelixCapsuleSamples": 49553,
+  "includedFrozenUFixturePoints": 32763,
+  "successorMasterSha256": null,
+  "successorGlbSha256": null,
+  "nativeStatus": "pending new grant; no U acceptance reused",
+  "filesRelativeToThisDirectory": {
+    "archived_fixture.py": "1c2f19a5cecc32e219da760aabacda1021f994e5f804a534f9d2b3824e6e139c",
+    "verify_archived_u.py": "100203a1588bff3a3928032395275a4ab336bc23efed7887bc30b4fe85beb211",
+    "test_archived_fixture.py": "8fd7d4b508ecf674420b1575f1e91dcb1011b066388e8a8caae8fdf981681ee4",
+    "test_correction.py": "61f301532083b06c9daebe20e57d781948f4ffc5073e1d2e62ff87951c2c2442",
+    "test_greenhouse.py": "710f8c29394ed644815a9d420a1621dfb539205831dcc186d238ccba84402427",
+    "source_evidence.py": "0054de548c953f178bd0766006cb1c043e93df3370cf0b85160bd8e5811df33d"
+  }
+}

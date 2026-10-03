@@ -7,6 +7,7 @@ from source_scene import ROOT,load,scene,k,RayIndex,authority_triangles
 from geometry import glb_triangles,ray_distance,normal,center
 from base_craft import base_craft_plan
 from capsule import Capsules,segment_triangle
+from archived_fixture import archive_bytes
 
 class CorrectionTests(unittest.TestCase):
     @classmethod
@@ -15,11 +16,11 @@ class CorrectionTests(unittest.TestCase):
         cls.new={m:load(m,r)['arena'] for m,r in [('parallax-observatory','districts-v4'),('vesper-viaduct','urban-v3')]}
         cls.scenes={m:scene(a) for m,a in cls.new.items()}
 
-    def test_01_frozen_actual_U_counterexamples(self):
+    def verify_frozen_actual_U_counterexamples(self):
         for m,rev,o,d,max_dist,expected in [
             ('parallax-observatory','districts-v3',[48,12.5,-31.9],[-1,0,0],4,0),
             ('vesper-viaduct','urban-v2',[-66.66666666666667,26.8,-57.675],[0,0,-1],.3,.1000015258789)]:
-            rows=glb_triangles((ROOT/f'port/new-maps/{m}/variety/{rev}/{m}.glb').read_bytes())
+            rows=glb_triangles(archive_bytes(f'port/new-maps/{m}/variety/{rev}/{m}.glb'))
             actual=RayIndex([r['vertices'] for r in rows]).ray(o,d,max_dist)
             collision=RayIndex(authority_triangles(self.old[m])).ray(o,d,max_dist)
             self.assertAlmostEqual(actual,expected,places=5)

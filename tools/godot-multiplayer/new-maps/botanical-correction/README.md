@@ -78,20 +78,53 @@ take the original path. There is no global wall thickness or tolerance change.
 node tools/godot-multiplayer/new-maps/botanical-correction/generate.mjs
 python3 -B tools/godot-multiplayer/new-maps/botanical-correction/test_correction.py
 python3 -B tools/godot-multiplayer/new-maps/botanical-correction/test_greenhouse.py
+python3 -B tools/godot-multiplayer/new-maps/botanical-correction/test_archived_fixture.py
 node --test tools/godot-multiplayer/new-maps/botanical-correction/correction.test.mjs
 python3 -B tools/godot-multiplayer/new-maps/botanical-correction/asset_author.py parallax-observatory plan
 python3 -B tools/godot-multiplayer/new-maps/botanical-correction/asset_author.py vesper-viaduct plan
 python3 -B tools/godot-multiplayer/new-maps/botanical-correction/asset_author.py helix-conservatory plan
-python3 -B tools/godot-multiplayer/new-maps/botanical-correction/source_evidence.py
 ```
 
-Python tests first read the **actual frozen U GLBs** and reproduce both failures.
-They then test the complete anticipated source scene: authority shell, blocks,
+Portable Python tests cover the complete anticipated source scene: authority shell, blocks,
 pieces, accepted craft and real unmodified Kit triangles. Tests cover the whole
 portal width/standing height in both directions, .42m-radius / 1.8m finite
 capsules against actual source triangles, all retained parapet faces, and every
 legacy authority wall triangle across both worlds. These are source predictions,
 not actual successor export or native acceptance.
+
+### Explicit archived regressions (no rejected-bundle merge)
+
+The archive root is **always a frozen repository/worktree root**, with the
+repository-relative layout recorded in `archived_fixture.py`. It is not an
+`evidence/` directory or a map artifact directory. Set it explicitly:
+
+```sh
+COCS_BOTANICAL_U_FIXTURE_ROOT=/home/mojo/.tmp-on-disk/cocs-map-variety-botanical-astra \
+  python3 -B tools/godot-multiplayer/new-maps/botanical-correction/verify_archived_u.py
+```
+
+This read-only command reproduces all three actual-U failures and runs the full
+**49,553** successor-frame capsule checks: 16,790 source-derived route/nav points
+plus all **32,763** pinned U fixture points, including mode spawns, team
+objectives and supported cameras. Portable `test_greenhouse.py` runs the 16,790
+source-derived route/nav samples; it does not claim archived mode-anchor coverage.
+No covered mode anchors were replaced with stubs or silently dropped. The full
+coverage moved to the explicit archive command and remains mandatory for it.
+
+The five GLB/evaluated/probe inputs are SHA256-pinned to the actual `243223d3`
+inventory in `archived_fixture.py`. Every file is checked before its bytes are
+parsed, and all inputs are preflighted before the archived tests start. Missing
+root/file, wrong bytes, unpinned paths and symlink escapes fail closed. There is
+no repository-local fallback, search, download or skip. Portable loader tests
+exercise these failure cases without requiring any archived assets.
+
+For an explicitly requested refresh of full-count source evidence, use the same
+environment assignment with `source_evidence.py`; it now fails before writing
+when the pinned archive is unavailable. **This integration follow-up leaves
+`source-evidence.json` frozen at `da2e53eb`**, including that baseline's dependency
+hashes and null successor artifact identities. Current fixture/test input changes
+are recorded separately in `fixture-input-provenance.json`; no geometry JSON or
+baseline source evidence is regenerated during independent geometry review.
 
 ## Future heavy commands — documentation only, NOT queued
 
@@ -156,3 +189,19 @@ No parent shared completion document is modified here.
 before suppressing the legacy craft box. A missing side fails closed. The
 complete anticipated render scene is also tested with bidirectional capsules on
 the entire new Parallax grade using exact sloped-plane capsule contact geometry.
+
+### Fixture portability follow-up
+
+The counts above describe the reviewed `da2e53eb` baseline. After separating the
+archived cases, portable suites contain **7 geometry + 4 greenhouse + 5 loader
+Python tests**. The explicit archive command preserves the three actual-failure
+regressions and full 49,553-point coverage. Node/geometry helpers are unchanged.
+
+Parent integration is selective: apply source commits `f358e497`, `3002a9ba`,
+`da2e53eb`, then this fixture follow-up, on top of the already integrated U
+source prerequisites (`c7cd4331` / `fb2af58d`, corresponding to `68e3f21e` /
+`bdef2baf`). Do **not** merge all U ancestry or the rejected `243223d3` bundle
+to supply tests. Run the archive command against the frozen worktree above.
+Existing imports of source helpers from `map_variety` and U fixture source
+`botanical-stage/geometry.py` remain required; this follow-up adds no engine,
+runtime, adapter, geometry-helper or model dependency.

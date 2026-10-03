@@ -6,6 +6,7 @@ import subprocess
 from source_scene import ROOT,load,k,kit_build,CaptureKit,world_vertices
 from geometry import RayIndex,glb_triangles,TriangleInventory
 from capsule import segment_triangle,Capsules
+from archived_fixture import archive_bytes,archive_json,EVALUATED,PROBES
 
 def components(arena):
     bindings=json.loads((ROOT/'tools/godot-multiplayer/new-maps/helix-conservatory/variety_bindings.json').read_text())
@@ -71,12 +72,11 @@ def attachments(arena,measured=None,tolerance=1e-8):
     return result,edges
 
 class GreenhouseTests(unittest.TestCase):
-    def test_U_actual_outer_end_is_floating(self):
+    def verify_U_actual_outer_end_is_floating(self):
         # Independent review's exact outer endpoint. Exclude actual triangles
         # of this rib, preserving every other real scene primitive.
-        root=ROOT/'tools/godot-multiplayer/new-maps/botanical-stage/evidence/helix-conservatory'
-        measured=json.loads((root/'evaluated.json').read_text())
-        rows=glb_triangles((ROOT/'port/new-maps/helix-conservatory/variety/revision-3/helix-conservatory.glb').read_bytes())
+        measured=archive_json(EVALUATED)
+        rows=glb_triangles(archive_bytes('port/new-maps/helix-conservatory/variety/revision-3/helix-conservatory.glb'))
         inventory=TriangleInventory(rows);gaps=[]
         bounds=[([min(v[k] for v in r['vertices']) for k in range(3)],
                  [max(v[k] for v in r['vertices']) for k in range(3)]) for r in rows]
@@ -121,6 +121,9 @@ class GreenhouseTests(unittest.TestCase):
         self.assertEqual(old['art']['portals'],new['art']['portals'])
 
     def test_dense_finite_capsules_do_not_hit_any_new_frame_member(self):
+        self.check_dense_frame()
+
+    def check_dense_frame(self,include_archive=False):
         arena=load('helix-conservatory','revision-4')['arena'];objects=components(arena)
         triangles=[]
         for o in objects.values():
@@ -131,8 +134,11 @@ class GreenhouseTests(unittest.TestCase):
         self.assertGreater(len(points),15000)
         # Frozen U's exact fixture also supplies mode spawns/team objectives,
         # accepted routes and supported camera origins; never regenerate it.
-        fixture=ROOT/'godot/tests/new_maps/botanical_stage/artifacts/helix-conservatory/probes.json'
-        points+=json.loads(fixture.read_text())['points']
+        if include_archive:
+            points+=archive_json(PROBES)['points']
+            self.assertEqual(len(points),49553)
+        else:self.assertEqual(len(points),16790)
         for p in points:self.assertIsNone(query.overlaps(p['x'],p['y']+.001,p['z']),p)
+        return len(points)
 
 if __name__=='__main__':unittest.main()
