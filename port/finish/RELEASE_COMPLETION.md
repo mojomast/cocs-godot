@@ -12,8 +12,9 @@ R7 source/material gate correction passed independent review and is integrated
 through `10d9938f`; parent passed sixteen source tests and strict shipping closure.
 Botanical X delivered all three actual successors as `171ffddb` and released at
 21:31:43.664418Z. Parent verified 600 artifact hashes and three empty audits/50
-groups. Helix/Parallax passed qualified staged review; selective integration is
-being prepared. Parallax retains one invalid tangent. Vesper's parapet mismatch
+groups. Helix/Parallax passed qualified staged review and are selectively integrated
+as `5f41d68e`; parent verified 332 exact producer copies and twelve package checks.
+Parallax retains one invalid tangent. Vesper's parapet mismatch
 is closed, but 184 stair contacts still block artifact approval.
 Vesper diagnosis is source-only. X gallery: <http://100.125.104.79:8796/botanical-x/>
 (70 original PNGs, 92 HTTP/hash checks passed). No full three-map acceptance.

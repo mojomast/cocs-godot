@@ -1,5 +1,12 @@
 # New Moth resources and Blender-authored map variety
 
+**Helix/Parallax X artifacts selectively integrated as `5f41d68e`.** All 332
+copies match producer `171ffddb` blobs, hashes and sizes; parent passed twelve
+package checks. The 2,494-file accepted native selection and 137 R5/R6 exclusions
+are preserved. Historical attempts/combined records retain their qualifications.
+Parallax's invalid tangent and Vesper's 184 stair contacts remain follow-up work;
+Vesper artifacts were not admitted through this subset. Foundry R7 Y remains active.
+
 **X selective artifact approval:** Helix and Parallax's actual frame/aperture P1s
 are closed; Parallax retains one measured tangent limitation. Vesper's parapet
 P1 is closed, but 184 contacts still block artifact approval. Full findings:

@@ -1,5 +1,21 @@
 # Botanical X — selective staged approval
 
+## Parent selective artifact integration
+
+Worker `49462324` is integrated as **`5f41d68e`**. Parent verified all 332 copied
+files against exact `171ffddb` Git blob identities, SHA-256 and byte lengths;
+commit coverage is exactly those copies plus the two selective review/inventory
+documents. All integrated filesystem hashes/sizes match. Nine Node staging/strict
+shipping checks and three Python builder fixtures pass (**12 checks**).
+
+The subset includes Helix/Parallax X-03 proofs, editable masters, exports and
+captures; earlier Helix X-01/X-02 attempts; and five combined records preserved
+as historical provenance. The original 600-entry inventory is explicitly historical,
+not a claim that all its entries are present locally. No Vesper master, GLB or
+captures were copied. Native selection remains 2,494 files with 137 R5/R6 exclusions.
+Details: `BOTANICAL_X_SELECTIVE_INVENTORY.json` and `BOTANICAL_X_SELECTIVE_REVIEW.md`.
+All acceptance limitations below remain in force.
+
 Independent Astra `ses_efc89c2afffeKQvhqPUs4YwsaY` approved **Helix revision-4 and
 Parallax districts-v4**, attempt `x-03` from `171ffddb`, for staged integration.
 Their original frame/aperture P1s are closed by actual-export evidence. Parallax
