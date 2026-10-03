@@ -1,0 +1,175 @@
+{
+  "id": "helix-conservatory",
+  "revision": "revision-3",
+  "physicalRoutes": {
+    "routes": 23,
+    "failures": [],
+    "baselineDefects": [],
+    "spacing": 0.25,
+    "capsuleRadius": 0.42,
+    "standingHeight": 1.8
+  },
+  "kitCollisionLineage": {
+    "surfaces": 2092,
+    "walls": 3896,
+    "source": "source_geometry.py / committed Kit methods / pre-bevel conservative boundary"
+  },
+  "geometryHash": "5755ec9fba17d4b88d99d90e1717d86ce5ae9983a5c2bc290a93b5b366585140",
+  "recipeHash": "d0a4936cef7414eb14daedc00f95aaf0263663014572d0314b0d4e112ae48562",
+  "moth": {
+    "base": "assets/moth/map-variety-20261003/candidate-v2/manifest.json",
+    "baseSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9",
+    "overlay": "assets/moth/map-variety-20261003/candidate-v3/manifest.json",
+    "overlaySha256": "86beb51736bea315b2bb35cd7772aff2daec7a1317b13c1eb498c981f2e8c5f0"
+  },
+  "bindings": [
+    "botanical",
+    "leaflight",
+    "soil",
+    "stone",
+    "ceramic",
+    "brick",
+    "gold",
+    "solar",
+    "verdigris",
+    "glass",
+    "water",
+    "helix.grotto-rock",
+    "helix.soil",
+    "helix.trim",
+    "helix.archive-stone",
+    "helix.bark",
+    "helix.fern",
+    "helix.greenhouse-frame"
+  ],
+  "connectivity": {
+    "nodes": 2506,
+    "connected": 2506
+  },
+  "routes": [
+    "lightwell-loop",
+    "archive-ring",
+    "canopy-ring",
+    "crown-ring",
+    "garden-ramp-0",
+    "garden-ramp-1",
+    "garden-ramp-2",
+    "garden-ramp-3",
+    "garden-ramp-4",
+    "garden-ramp-5",
+    "garden-ramp-6",
+    "garden-ramp-7",
+    "spiral-promenade--1",
+    "spiral-promenade-1",
+    "lightwell-axis",
+    "archive-inner-research-loop",
+    "archive-outer-service-loop",
+    "irrigation-maintenance-bypass",
+    "irrigation-external-service",
+    "pavilion-inner-chamber-aisle",
+    "botanical-terrace-cross",
+    "grotto-loop",
+    "grotto-spur"
+  ],
+  "varietyRoutes": [
+    "botanical-terrace-cross",
+    "grotto-loop",
+    "grotto-spur"
+  ],
+  "structures": [
+    "seed-archive-crescent",
+    "irrigation-filtration-works",
+    "north-germination-pavilion",
+    "lightwell-specimen-lantern"
+  ],
+  "surfaces": 6816,
+  "walls": 6968,
+  "navNodes": 2506,
+  "kitDirectives": 43,
+  "portals": 2,
+  "preservation": {
+    "spawns": [
+      [
+        -86,
+        0
+      ],
+      [
+        -85,
+        5
+      ],
+      [
+        -85,
+        -5
+      ],
+      [
+        86,
+        0
+      ],
+      [
+        85,
+        5
+      ],
+      [
+        85,
+        -5
+      ],
+      [
+        0,
+        86
+      ],
+      [
+        0,
+        -86
+      ],
+      [
+        0,
+        12
+      ],
+      [
+        0,
+        -12
+      ]
+    ],
+    "objectiveZones": [
+      {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "radius": 7,
+        "label": "LIGHTWELL"
+      },
+      {
+        "x": 0,
+        "y": 16,
+        "z": 86,
+        "radius": 6,
+        "label": "CANOPY NORTH"
+      },
+      {
+        "x": 0,
+        "y": 16,
+        "z": -86,
+        "radius": 6,
+        "label": "CANOPY SOUTH"
+      }
+    ],
+    "flagSpawns": {
+      "0": {
+        "x": -86,
+        "z": 0
+      },
+      "1": {
+        "x": 86,
+        "z": 0
+      }
+    },
+    "registeredModes": [
+      "deathmatch",
+      "teamdeathmatch",
+      "ctf",
+      "domination",
+      "koth"
+    ]
+  },
+  "status": "source-candidate; Blender master/GLB and native acceptance pending"
+}

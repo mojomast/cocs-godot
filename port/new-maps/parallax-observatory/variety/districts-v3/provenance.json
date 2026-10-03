@@ -1,0 +1,199 @@
+{
+  "id": "parallax-observatory",
+  "revision": "districts-v3",
+  "physicalRoutes": {
+    "routes": 9,
+    "failures": [],
+    "baselineDefects": [],
+    "spacing": 0.25,
+    "capsuleRadius": 0.42,
+    "standingHeight": 1.8
+  },
+  "kitCollisionLineage": {
+    "surfaces": 504,
+    "walls": 912,
+    "source": "source_geometry.py / committed Kit methods / pre-bevel conservative boundary"
+  },
+  "geometryHash": "abaea5a6f13cca985f380d9c2f98c856ae5264325e219303219328ee47ab900c",
+  "recipeHash": "908a103e203600021653d603056b77ac1d9515015cdc96e165e36040967817a6",
+  "moth": {
+    "base": "assets/moth/map-variety-20261003/candidate-v2/manifest.json",
+    "baseSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9",
+    "overlay": "assets/moth/map-variety-20261003/candidate-v3/manifest.json",
+    "overlaySha256": "86beb51736bea315b2bb35cd7772aff2daec7a1317b13c1eb498c981f2e8c5f0"
+  },
+  "bindings": [
+    "sea",
+    "saltstone",
+    "cistern",
+    "metal",
+    "mirror",
+    "paving",
+    "ochre",
+    "parallax.instrument-alloy",
+    "parallax.enamel",
+    "parallax.etch",
+    "parallax.optics",
+    "parallax.glazing",
+    "parallax.stone",
+    "parallax.trim"
+  ],
+  "connectivity": {
+    "nodes": 532,
+    "connected": 532
+  },
+  "routes": [
+    "meridian-lens",
+    "armillary-arc",
+    "tidal-cistern",
+    "west-calibration",
+    "east-instrument",
+    "polar-crosslink",
+    "court-approach",
+    "court-steps",
+    "lightwell-stair"
+  ],
+  "varietyRoutes": [
+    "court-approach",
+    "court-steps",
+    "lightwell-stair"
+  ],
+  "preservedRoutes": [
+    "meridian-lens",
+    "armillary-arc",
+    "tidal-cistern",
+    "west-calibration",
+    "east-instrument",
+    "polar-crosslink"
+  ],
+  "varietyDistricts": [
+    "sunken-instrument-court",
+    "traversable-lightwell",
+    "differentiated-wing-massing",
+    "instrument-towers",
+    "scientific-room-clusters"
+  ],
+  "surfaces": 632,
+  "walls": 4308,
+  "blocks": 69,
+  "overhead": 5,
+  "navNodes": 532,
+  "kitDirectives": 22,
+  "portals": 3,
+  "preservation": {
+    "spawns": [
+      [
+        -116,
+        0
+      ],
+      [
+        116,
+        0
+      ],
+      [
+        -108,
+        -8
+      ],
+      [
+        108,
+        -8
+      ],
+      [
+        -101,
+        7
+      ],
+      [
+        101,
+        7
+      ],
+      [
+        -120,
+        5
+      ],
+      [
+        120,
+        3
+      ]
+    ],
+    "objectiveZones": [
+      {
+        "id": "lens-dais",
+        "x": 0,
+        "y": 12,
+        "z": 0,
+        "radius": 7
+      },
+      {
+        "id": "armillary",
+        "x": 0,
+        "y": 24,
+        "z": -84,
+        "radius": 5
+      },
+      {
+        "id": "cistern",
+        "x": 0,
+        "y": 0,
+        "z": 78,
+        "radius": 5
+      }
+    ],
+    "flagSpawns": {
+      "0": {
+        "x": -108,
+        "z": 0
+      },
+      "1": {
+        "x": 108,
+        "z": 0
+      }
+    },
+    "teamSpawns": {
+      "0": [
+        [
+          -116,
+          0
+        ],
+        [
+          -108,
+          -8
+        ],
+        [
+          -101,
+          7
+        ],
+        [
+          -120,
+          5
+        ]
+      ],
+      "1": [
+        [
+          116,
+          0
+        ],
+        [
+          108,
+          -8
+        ],
+        [
+          101,
+          7
+        ],
+        [
+          120,
+          3
+        ]
+      ]
+    },
+    "registeredModes": [
+      "deathmatch",
+      "teamdeathmatch",
+      "ctf",
+      "koth",
+      "uplink",
+      "holdout"
+    ]
+  },
+  "status": "source-candidate; Blender master/GLB and native acceptance pending"
+}

@@ -1,0 +1,199 @@
+{
+  "id": "vesper-viaduct",
+  "revision": "urban-v2",
+  "physicalRoutes": {
+    "routes": 26,
+    "failures": [],
+    "baselineDefects": [],
+    "spacing": 0.25,
+    "capsuleRadius": 0.42,
+    "standingHeight": 1.8
+  },
+  "kitCollisionLineage": {
+    "surfaces": 722,
+    "walls": 1206,
+    "source": "source_geometry.py / committed Kit methods / pre-bevel conservative boundary"
+  },
+  "geometryHash": "c044bc54cfd96e99e3b29d61c5bc66bc9c470f8f3823176c063d2fe6ee9474ad",
+  "recipeHash": "56e38263844367736c3f478ed813da85fdbefbc17cbcb162cdc7455a6ae3e8d9",
+  "moth": {
+    "base": "assets/moth/map-variety-20261003/candidate-v2/manifest.json",
+    "baseSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9",
+    "overlay": "assets/moth/map-variety-20261003/candidate-v3/manifest.json",
+    "overlaySha256": "86beb51736bea315b2bb35cd7772aff2daec7a1317b13c1eb498c981f2e8c5f0"
+  },
+  "bindings": [
+    "asphalt",
+    "brick",
+    "cobbles",
+    "plaster",
+    "slate",
+    "quay",
+    "sandstone",
+    "iron",
+    "glass",
+    "water",
+    "letter",
+    "vesper.coping",
+    "vesper.brick-era",
+    "vesper.quay",
+    "vesper.slate",
+    "vesper.stall",
+    "vesper.awning"
+  ],
+  "connectivity": {
+    "nodes": 857,
+    "connected": 857
+  },
+  "routes": [
+    "canal-bridge--100",
+    "canal-bridge-100",
+    "station-boulevard",
+    "civic-street",
+    "canal-cut",
+    "lower-crosslink--100",
+    "upper-crosslink--100",
+    "lower-crosslink--32",
+    "upper-crosslink--32",
+    "lower-crosslink-0",
+    "upper-crosslink-0",
+    "lower-crosslink-32",
+    "upper-crosslink-32",
+    "lower-crosslink-100",
+    "upper-crosslink-100",
+    "spawn-exit--1",
+    "spawn-flank--1",
+    "spawn-exit-1",
+    "spawn-flank-1",
+    "retaining-bank--1",
+    "retaining-bank-1",
+    "canal-arch-approach--33",
+    "canal-arch-approach-33",
+    "era-street",
+    "roof-access-ramp",
+    "roof-terrace-loop"
+  ],
+  "varietyRoutes": [
+    "retaining-bank--1",
+    "retaining-bank-1",
+    "canal-arch-approach--33",
+    "canal-arch-approach-33",
+    "era-street",
+    "roof-access-ramp",
+    "roof-terrace-loop"
+  ],
+  "varietyDistricts": [
+    "era-facade-row",
+    "covered-market-arcade",
+    "canal-arch-and-quay",
+    "retaining-terrace-banks",
+    "rooftop-access"
+  ],
+  "surfaces": 1003,
+  "walls": 3326,
+  "structures": 15,
+  "pieces": 303,
+  "navNodes": 857,
+  "kitDirectives": 20,
+  "portals": 3,
+  "preservation": {
+    "spawns": [
+      [
+        -127,
+        -8
+      ],
+      [
+        -127,
+        8
+      ],
+      [
+        -120,
+        0
+      ],
+      [
+        127,
+        -8
+      ],
+      [
+        127,
+        8
+      ],
+      [
+        120,
+        0
+      ]
+    ],
+    "objectiveZones": [
+      {
+        "x": -100,
+        "z": 0,
+        "y": 12,
+        "radius": 7,
+        "label": "WEST STEPS"
+      },
+      {
+        "x": 0,
+        "z": 0,
+        "y": 12,
+        "radius": 7,
+        "label": "CLOCK SQUARE"
+      },
+      {
+        "x": 100,
+        "z": 0,
+        "y": 12,
+        "radius": 7,
+        "label": "EAST STEPS"
+      }
+    ],
+    "flagSpawns": {
+      "0": {
+        "x": -120,
+        "z": 0
+      },
+      "1": {
+        "x": 120,
+        "z": 0
+      }
+    },
+    "teamSpawns": {
+      "0": [
+        [
+          -127,
+          -8
+        ],
+        [
+          -127,
+          8
+        ],
+        [
+          -120,
+          0
+        ]
+      ],
+      "1": [
+        [
+          127,
+          -8
+        ],
+        [
+          127,
+          8
+        ],
+        [
+          120,
+          0
+        ]
+      ]
+    },
+    "registeredModes": [
+      "deathmatch",
+      "teamdeathmatch",
+      "ctf",
+      "domination",
+      "koth",
+      "uplink"
+    ]
+  },
+  "status": "source-candidate; Blender master/GLB and native acceptance pending"
+}
