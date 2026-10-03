@@ -7,6 +7,14 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
+**User priority: immediate testing build.** Exclusive
+`PREVIEW-PACKAGE-20261003-G` now belongs to packaging Astra. Scenery F has
+explicitly released (54 groups, zero survivors; owner re-audit at
+`2026-10-03T02:49:41.230553Z`). The source table below describes production work;
+this preview handoff supersedes its older F ownership. See `PREVIEW_20261003.md`.
+Scenery delivery is preserved but not integrated into the preview. Final production
+and release obligations remain; preview packaging must preserve strict final mode.
+
 Current assignments below supersede the historical checkpoints later in this file.
 The owner renewed the execution directive: **use subagents to advance the missing
 production work**. Source workers start from committed parent `652b8f3c` in their
