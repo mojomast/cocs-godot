@@ -13,6 +13,13 @@ import {worldClosure,worldArt} from './world_closure.mjs';
 
 const IDS=['switchyard-ward','rainmarket-exchange','breakwater-exchange','thermal-divide','sirocco-circuit','copper-bowl','tern-archipelago'];
 const HEX=/^[a-f0-9]{64}$/;
+export function diagnosticRows(rows,only=null) {
+  if(only===null)return rows;
+  assert.ok(typeof only==='string'&&/^[a-z0-9-]+\/[a-z0-9-]+$/.test(only),'Invalid diagnostic case');
+  const selected=rows.filter(row=>`${row.map}/${row.mode}`===only);
+  assert.equal(selected.length,1,'Requested diagnostic case must be registered exactly once');
+  return selected;
+}
 export function sourceModeCoverage(experiences) {
   const route=experiences['mode-expansion'];
   assert.equal(route?.scene,'res://mode_expansion/demo.tscn','Source-mode product route missing');
@@ -35,11 +42,23 @@ export function coverage(manifest, worlds) {
   return pairs;
 }
 
-async function authority(entry) {
+async function authority(entry,diagnostics=false) {
   // This mode runs under packaged node.exe on Windows, system Node on Linux.
   // The sole dynamic import is an absolute file URL inside extracted runtime/.
   const {createGameServer,createAuthority}=await import(pathToFileURL(resolve(entry)).href);
   const game=createGameServer?createGameServer({historyPath:null,progressionPath:null}):createAuthority();
+  if(diagnostics) {
+    const start=Date.now();
+    const trace=(stage,extra={})=>console.log('EXPANSION_AUTHORITY_TRACE '+JSON.stringify({stage,wall_ms:Date.now()-start,...extra}));
+    game.wss?.on('connection',socket=>{
+      trace('connection');const seen=new Set();
+      // Observe before the production handler so synchronous construction time
+      // cannot be mistaken for a delayed inbound start packet.
+      socket.prependListener('message',bytes=>{try{const data=JSON.parse(String(bytes));if(!seen.has(data.type)){seen.add(data.type);trace('inbound',{type:data.type});}}catch{trace('non_json');}});
+      socket.on('close',(code)=>trace('socket_closed',{code}));
+    });
+    const heartbeat=setInterval(()=>trace('heartbeat',{clients:game.wss?.clients?.size??null}),5000);heartbeat.unref();
+  }
   await new Promise((ok,fail)=>{game.server.once('error',fail);game.server.listen(0,'127.0.0.1',ok);});
   console.log('EXPANSION_AUTHORITY_READY '+JSON.stringify({port:game.server.address().port,pid:process.pid}));
   // Windows child.kill('SIGTERM') is TerminateProcess, not a Node signal.
@@ -117,6 +136,8 @@ async function marker(process,prefix,ms) {
 
 export async function verify(root,output,{node=process.platform==='win32'?join(root,'node.exe'):process.execPath,
   engine=join(root,process.platform==='win32'?'cocs.exe':'cocs.x86_64'),
+  only=null,
+  diagnostics=false,
   probe=fileURLToPath(new URL('../../godot/tests/package_expansion.gd',import.meta.url))}={}) {
   root=resolve(root);output=resolve(output);
   await mkdir(output,{recursive:true});
@@ -139,7 +160,9 @@ export async function verify(root,output,{node=process.platform==='win32'?join(r
     const pairs=coverage(manifest,catalog.WORLDS);
     const packagedOptions=await import(pathToFileURL(join(root,'options.mjs')).href);
     const sourcePairs=sourceModeCoverage(packagedOptions.EXPERIENCES);
-    const rows=[...pairs,{map:'blackwater-reclamation',mode:'horde'},...sourcePairs];
+    const allRows=[...pairs,{map:'blackwater-reclamation',mode:'horde'},...sourcePairs];
+    const rows=diagnosticRows(allRows,only);
+    if(only){report.scope='single registered case diagnostic; not complete expansion acceptance';report.only=only;}
     const blackwater=JSON.parse(await readFile(join(root,'runtime/godot/horde_maps/generated/blackwater-reclamation.json'),'utf8'));
     assert.match(blackwater.geometryHash,HEX);
     for(const [index,{map,mode,sourceMode=false}] of rows.entries()){
@@ -152,11 +175,12 @@ export async function verify(root,output,{node=process.platform==='win32'?join(r
       const entry=join(root,sourceMode?'runtime/server/game-server.mjs':horde?'runtime/port/native-horde/authority.mjs':'runtime/port/multiplayer-worlds/derived/game-server.mjs');
       let server,native,port;
       try{
-        server=await launch(node,[fileURLToPath(import.meta.url),'--authority',entry],sandbox,env);active.push(server.child);
+        server=await launch(node,[...(diagnostics?['--cpu-prof',`--cpu-prof-dir=${output}`]:[]),fileURLToPath(import.meta.url),'--authority',entry,...(diagnostics?['--diagnostics']:[])],sandbox,env);active.push(server.child);
         const ready=await marker(server,'EXPANSION_AUTHORITY_READY ',15000);port=ready.port;
         const health=await (await fetch(`http://127.0.0.1:${port}/`,{signal:AbortSignal.timeout(5000)})).json();
         assert.equal(health.port,port);
         const args=['--headless','--audio-driver','Dummy','--main-pack',join(root,'cocs.pck'),'--script',probe,'--',
+          ...(diagnostics?['--expansion-diagnostics']:[]),
           `--endpoint=ws://127.0.0.1:${port}`,`--map=${map}`,`--mode=${mode}`,
           ...(!sourceMode&&!horde?[`--expect-art=${worldArt(map)}`]:[]),
           ...(sourceMode?['--source-mode','--bots=2']:[`--expect-hash=${data.geometryHash}`])];
@@ -196,7 +220,7 @@ export async function verify(root,output,{node=process.platform==='win32'?join(r
         if(teardownError)throw teardownError;
       }
     }
-    report.status='passed';report.pairs=pairs.length;report.blackwater=true;report.source_mode_pairs=sourcePairs.length;
+    report.status='passed';report.pairs=only?rows.filter(r=>!r.sourceMode&&r.mode!=='horde').length:pairs.length;report.blackwater=rows.some(r=>r.mode==='horde');report.source_mode_pairs=rows.filter(r=>r.sourceMode).length;
   }catch(error){report.status='failed';report.error=error.stack;throw error;}
   finally{
     for(const child of active)await forceStop(child);
@@ -210,10 +234,11 @@ export async function verify(root,output,{node=process.platform==='win32'?join(r
 }
 
 if(process.argv[1] && resolve(process.argv[1])===fileURLToPath(import.meta.url)){
-  if(process.argv[2]==='--authority') await authority(process.argv[3]);
+  if(process.argv[2]==='--authority') await authority(process.argv[3],process.argv[4]==='--diagnostics');
   else {
     assert.ok(process.argv[2]&&process.argv[3],'Usage: verify_expansion.mjs EXTRACTED_PACKAGE OUTPUT');
-    try{console.log(JSON.stringify(await verify(process.argv[2],process.argv[3]),null,2));}
+    const flags=process.argv.slice(4);assert.ok(flags.every(f=>f==='--diagnostics'||f.startsWith('--case='))&&flags.filter(f=>f.startsWith('--case=')).length<=1,'Only --case=map/mode and --diagnostics are supported');
+    try{console.log(JSON.stringify(await verify(process.argv[2],process.argv[3],{only:flags.find(f=>f.startsWith('--case='))?.slice(7)??null,diagnostics:flags.includes('--diagnostics')}),null,2));}
     catch(error){console.error(error);process.exitCode=1;}
   }
 }
