@@ -264,6 +264,10 @@ func check_tree(routes: Array, categories: Array) -> void:
 	menu._input(escape)
 	check(menu.search_field.text.is_empty() and not menu.quitting,
 		"Escape clears a focused nonempty search before Home quit handling")
+	menu._input(escape)
+	check(not menu.quitting and not menu.search_field.has_focus(),"Escape from empty search leaves field rather than quitting")
+	menu._on_search_changed("東京 🌙 écho")
+	check(menu.selections==before_search and not menu.quitting,"Unicode search remains a query, never a launch or selection")
 	menu._on_search_submitted("campaign")
 	check(not menu.quitting, "Enter in search cannot launch or quit Home")
 	menu._on_search_changed("no-such-destination")

@@ -107,9 +107,12 @@ func refresh() -> void:
 func _filter_rows(query: String) -> void:
 	var normalized := query.strip_edges().to_lower()
 	var shown := 0
+	var owner := get_viewport().gui_get_focus_owner()
+	var bindings := Access.values()
 	for action: String in rows:
-		var searchable := (Model.LABELS[action] + " " + action + " " + Model.label(str(Access.values().get(action, Model.DEFAULTS[action])))).to_lower()
+		var searchable := (Model.LABELS[action] + " " + action + " " + Model.label(str(bindings.get(action, Model.DEFAULTS[action])))).to_lower()
 		var matches := normalized.is_empty() or searchable.contains(normalized)
+		if not matches and is_instance_valid(owner) and rows[action].is_ancestor_of(owner): search.grab_focus()
 		rows[action].visible = matches
 		if matches: shown += 1
 	search_status.text = "%d of %d editable actions" % [shown, rows.size()] if normalized.is_empty() or shown > 0 else "No matching bindings. Clear search to show all actions."
@@ -127,4 +130,8 @@ func _apply_choice(action: String, choice: OptionButton, index: int) -> void:
 		var saved: bool = service.set_binding(action, code)
 		note.text = ("Binding applied and saved." if saved else "Binding applied for this session; could not save preferences.") + swapped + " Release held inputs before resuming."
 	refresh()
-	choice.call_deferred("grab_focus")
+	_restore_choice_focus.call_deferred(choice)
+
+func _restore_choice_focus(choice: OptionButton) -> void:
+	if choice.is_visible_in_tree(): choice.grab_focus()
+	else: search.grab_focus()

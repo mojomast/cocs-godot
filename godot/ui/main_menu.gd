@@ -110,7 +110,8 @@ func _ready() -> void:
 	if not current_route.is_empty():
 		# Start on the restored destination so keyboard/controller users can
 		# immediately browse and confirm it; categories remain one focus step away.
-		route_buttons[str(current_route.get("id", ""))].call_deferred("grab_focus")
+		var arrival: Variant = route_buttons.get(str(current_route.get("id", "")))
+		if arrival is Button: arrival.call_deferred("grab_focus")
 
 func caption(text: String) -> Label:
 	var item := Label.new()
@@ -698,10 +699,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _input(event: InputEvent) -> void:
-	if release_key(event) and search_field.has_focus() and not SettingsAccess.overlay_open() and not search_field.text.is_empty():
-		# Consume Escape before LineEdit/Control defaults can close Home; a
-		# subsequent Escape from the now-empty field follows normal quit behavior.
-		search_field.clear()
+	if release_key(event) and search_field.has_focus() and not SettingsAccess.overlay_open():
+		# Escape edits/leaves the search before the outer Home quit shortcut.
+		if not search_field.text.is_empty(): search_field.clear()
+		else:
+			search_field.release_focus()
+			var destination: Variant = route_buttons.get(str(current_route.get("id", "")))
+			if destination is Button: destination.grab_focus()
 		get_viewport().set_input_as_handled()
 		return
 	if event is InputEventKey or event is InputEventMouseButton:

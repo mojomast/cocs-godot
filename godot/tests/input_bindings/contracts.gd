@@ -170,6 +170,14 @@ func run() -> void:
 	check(panel.note.text.contains("Other profile action ‘commandGo’ (not editable here)"), "swap note identifies hidden affected action")
 	check(panel.changes_summary.text.begins_with("Modified from defaults: 1 of %d" % Model.LABELS.size()) and panel.changes_summary.text.contains("Move forward (forward): I"), "changed summary names changed action and current binding")
 	check(hint_store.reset_defaults() and panel.changes_summary.text.begins_with("Modified from defaults: 0 of %d" % Model.LABELS.size()), "changed summary clears on whole-profile reset signal")
+	hint_store.apply_bindings(Model.rebind(Model.DEFAULTS,"forward","ArrowUp"))
+	panel.search.text = "up"
+	panel._filter_rows(panel.search.text)
+	forward_choice.grab_focus()
+	panel._apply_choice("forward",forward_choice,key_index)
+	await process_frame
+	await process_frame
+	check(not panel.rows.forward.visible and root.gui_get_focus_owner()==panel.search,"binding-filtered focused row returns focus to search after deferred selection")
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(hint_store.path))
 	hint_store.path = previous_store_path
 	for action: String in panel.choices:
