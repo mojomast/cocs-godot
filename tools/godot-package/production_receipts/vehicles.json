@@ -713,10 +713,11 @@
     "tools/asset-production/package-receipt.mjs": "e1917daa642b15e6e3290b537fbf9024ba72e6f5dfd18f4025d3e589d9702621",
     "tools/asset-production/receipt.mjs": "9648c19d979b2486c78830628c2f2508a02b4b2874d1f64149966d88d7e5f9d8",
     "tools/asset-production/reopen.py": "4628bc44122a690495766f3cc967a82d3ab7aeab52c272cca7a202be88e0f5de",
-    "tools/godot-package/production_resources.mjs": "cc441a03e1db8060452c99960aaed8bee60cd9dcf6cdee1c48455554df671835",
+    "tools/godot-package/production_resources.mjs": "0a95ddacb4af6f0b3dc053e4963e6b4201324cecf2dbe8a02617aafb21fbe219",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
     "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
+    "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba",
     "tools/godot-vehicle-assets/build.py": "eb5e317409f27201b09800819e949ccb4afeae0e7ae95e9150bb6d294c2a6489",
     "tools/godot-vehicle-assets/generated/puma-lod0.json": "8d50eaba579eacb55a4db97a3727464ff91aed1803faed657ba4a6076c730fad",
     "tools/godot-vehicle-assets/generated/puma-lod1.json": "7a3ff67eaa29fa0a1e6154f0da3b59355b6cea5ee6e9381f59480064858b9989",
@@ -948,5 +949,26 @@
     "productionSourceCheckpoint": null,
     "reason": "Parent accepted F visual review; source-only texture/import closure and supporting-input reconciliation. No new native attestation or build.",
     "review": "port/finish/SCENERY_PACKAGE_PROMOTION.md"
+  },
+  "vesperPackageVerifierAdvance": {
+    "previousReceipt": {
+      "commit": "99a4f597",
+      "path": "tools/godot-package/production_receipts/vehicles.json",
+      "sha256": "5e3dcb74f8cf031e34e909e7ae788ced7627617eb458938d918909ad371aef50"
+    },
+    "changed": {
+      "tools/godot-package/production_resources.mjs": {
+        "before": "cc441a03e1db8060452c99960aaed8bee60cd9dcf6cdee1c48455554df671835",
+        "after": "0a95ddacb4af6f0b3dc053e4963e6b4201324cecf2dbe8a02617aafb21fbe219"
+      }
+    },
+    "added": {
+      "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba"
+    },
+    "runtimeChanged": {},
+    "previousPackageFingerprint": "4d9204d223cfbdd9d67af0fa2546bfcaddc5f133c8ebae41511345c055a45cbd",
+    "packageFingerprint": "16e3516b8acdc83f6f727db0aea4d3bed1364ecaf617d0de13cfc7c462bdeb97",
+    "reason": "Parent accepted Vesper H integration/public six-mode registration; supporting verifier/catalog/demo reconciliation only. H native evidence used the original frozen authority, not the later Helix navigation optimization.",
+    "review": "port/finish/VESPER_PACKAGE_PROMOTION.md"
   }
 }

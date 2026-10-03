@@ -7,34 +7,37 @@
       "map": "parallax-observatory",
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/parallax-interiors.json",
-        "sha256": "1c768e8bf75f937060301725802aebc899db228eb575f564b484e943caddbf69"
+        "sha256": "0e1d3815e6a47411a8dc52b9bf8d04f21d12cef8d97693f53e61f3f59e12e116"
       }
     },
     "robots": {
       "required": true,
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/robots.json",
-        "sha256": "6d2ce07555b2f0848876f3e1b1e2a1075372bfbb03ba3c21bd85aef210bbd8b2"
+        "sha256": "15d1e1fa1b8b03ae91091ed6bc69d83a7432eb2250e012cdaff608955c8ab827"
       }
     },
     "vehicles": {
       "required": true,
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/vehicles.json",
-        "sha256": "5e3dcb74f8cf031e34e909e7ae788ced7627617eb458938d918909ad371aef50"
+        "sha256": "73f4e885a0d2fe32e530cf23886984412b565d8bce3660e93d5b2d97bbf956d7"
       }
     },
     "scenery": {
       "required": true,
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/scenery.json",
-        "sha256": "ee945cd0574184ffccaec3d974f100f2a86f3446b56c1d1a3c8cacc9ce964b09"
+        "sha256": "67c235f345e6c447818ae2fb7ec425bce91cd3a99ae5625547194cbd483b9fc8"
       }
     },
     "vesper-viaduct": {
       "required": true,
       "map": "vesper-viaduct",
-      "promotion": null
+      "promotion": {
+        "receipt": "tools/godot-package/production_receipts/vesper-viaduct.json",
+        "sha256": "a732d1f38393a4317d8ef5ba6527e35634abe25d64b7f83aafbbe7061d72d689"
+      }
     },
     "abyssal-pressureworks": {
       "required": true,

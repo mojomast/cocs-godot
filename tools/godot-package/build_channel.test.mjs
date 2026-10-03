@@ -9,7 +9,7 @@ const read=p=>readFileSync(root+p),has=p=>existsSync(root+p);
 const options={read,has,worldIds:Object.keys(WORLDS)},commit='a'.repeat(40);
 test('preview permits exactly unpromoted pending production; final remains strict',()=>{
   const result=channelProduction(options,'preview');
-  assert.deepEqual(result.pending,['vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
+  assert.deepEqual(result.pending,['abyssal-pressureworks','stormglass-causeway']);
   assert.throws(()=>channelProduction(options),/remain pending/);
   assert.throws(()=>channelProduction(options,'unknown'),/Unknown build channel/);
   const path='godot/vehicle_assets/generated/puma-lod0.glb';
@@ -24,6 +24,6 @@ test('channel, flag, pending names and recorded intent must agree; historical fi
     assert.throws(()=>verifyChannelManifest({...manifest,...change},builder,result));
   assert.throws(()=>verifyChannelManifest(manifest,'historical strict builder',result),/Historical/);
   assert.match(previewReadme(intent,'Original instructions'),/^# PREVIEW/);
-  assert.match(previewReadme(intent,'Original instructions'),/vesper-viaduct, abyssal-pressureworks/);
+  assert.match(previewReadme(intent,'Original instructions'),/abyssal-pressureworks, stormglass-causeway/);
   assert.equal(previewReadme(buildIntent(commit,'final',{pending:[]}),'Original instructions'),'Original instructions');
 });

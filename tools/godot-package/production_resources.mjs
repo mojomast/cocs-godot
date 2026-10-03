@@ -8,6 +8,7 @@ import {fileURLToPath,pathToFileURL} from 'node:url';
 import {robotImportPaths,verifyRobotImports} from './robot_imports.mjs';
 import {vehicleImportPaths,verifyVehicleImports,VEHICLE_EVIDENCE} from './vehicle_imports.mjs';
 import {sceneryImportPaths,verifySceneryImports,SCENERY_EVIDENCE} from './scenery_imports.mjs';
+import {vesperImportPaths,verifyVesperImports,VESPER_EVIDENCE,VESPER_SUPPORTING_RUNTIME} from './vesper_imports.mjs';
 export const REQUIREMENTS='tools/godot-package/production_requirements.json';
 export const REQUIRED_UNITS=Object.freeze(['parallax-interiors','robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
 const skins=['needle_surveyor','caisson_guard','kiln_tender'];
@@ -92,6 +93,7 @@ function specification(unit,read) {
     masters.push(base+(id==='stormglass-causeway'?'':'masters/')+id+'.blend');
     exports.push(`godot/multiplayer_worlds/art/worlds/${id}.glb`);
     inputs.push(base+'build.mjs',`port/native-multiplayer-worlds/worlds/${id}.json`,`godot/multiplayer_worlds/generated/${id}.json`);
+    if(id==='vesper-viaduct')extra.push(...vesperImportPaths(),...VESPER_EVIDENCE,'godot/multiplayer_worlds/catalog.gd','port/multiplayer-worlds/catalog.mjs');
   }
   return {inputs:[...new Set(inputs)].sort(),masters:masters.sort(),exports:exports.sort(),extra:extra.sort()};
 }
@@ -144,7 +146,14 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     if(unit.id==='parallax-interiors') {
       const evidence=JSON.parse(read('port/new-maps/parallax-observatory/production-c.json'));
       for(const [path,sha]of Object.entries(evidence.inputHashes))add(path,sha);
-      for(const [path,sha]of Object.entries(evidence.runtimeHooks))if(!path.startsWith('godot/tests/'))add(path,sha);
+      for(const [path,sha]of Object.entries(evidence.runtimeHooks))if(!path.startsWith('godot/tests/')) {
+        const advance=receipt.vesperPackageVerifierAdvance?.runtimeChanged?.[path];
+        if(advance){
+          assert.deepEqual(advance,VESPER_SUPPORTING_RUNTIME[path],'Unreviewed supporting runtime advance');
+          assert.equal(advance.before,sha,'Original Parallax native hook identity');
+          assert.equal(receipt.runtimeHooks[path],advance.after);add(path,advance.after);
+        }else add(path,sha);
+      }
       assert.deepEqual(receipt.masters,evidence.masters,'Parallax production master identity');
       assert.deepEqual(receipt.exports,evidence.exports,'Parallax production export identity');
       assert.ok(receipt.rawFiles?.includes(spec.exports[0]),'Parallax native audit requires raw GLB bytes');
@@ -194,6 +203,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
       for(const [name,row]of Object.entries(built.assets))assert.equal(row.sha256,resources[`godot/robot_assets/switchyard/generated/${name}.glb`],'Stale robot export receipt');
     }
     if(unit.id==='vehicles')verifyVehicleImports(spec.exports,read);
+    if(unit.id==='vesper-viaduct')verifyVesperImports(read);
     if(unit.id==='vehicles')for(const kind of ['puma','titan','scout'])for(let lod=0;lod<3;lod++) {
       const stem=`${kind}-lod${lod}`,report=JSON.parse(read(`tools/godot-vehicle-assets/masters/${stem}-report.json`));
       assert.equal(report.kind,kind);assert.equal(report.lod,lod);
