@@ -518,6 +518,7 @@ func _ready() -> void:
 	label.get_parent().add_child(combat_label)
 	combat_label.position = Vector2(24, 170)
 	combat_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	presentation.bind_melee_events(client,combat)
 	client.events.connect(func(items: Array) -> void:
 		if phase == 3:
 			combat.apply_events(items, client.actor_id)

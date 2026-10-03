@@ -151,6 +151,7 @@ func apply(rig: RefCounted, state: Dictionary, actor: Dictionary, dt: float) -> 
 		var target := frame.to_global(local_target)
 		var stance := fposmod((distance_phase+i*PI)/TAU,1.0)<gait.y
 		if speed < 0.15 and not turning: stance = true
+		var kicking: bool = state.get("kickingSide","") == side
 		# Finish a stop with alternating small recovery steps. Keeping both old
 		# world pins forever strands the actor in a split stance after braking.
 		if stop_age > 0.10+i*0.24 and foot_state.locked and not foot_state.settling:
@@ -171,6 +172,9 @@ func apply(rig: RefCounted, state: Dictionary, actor: Dictionary, dt: float) -> 
 			foot_state.locked = false
 			foot_state.settling = not stance
 			foot_state.target = local_target
+		if kicking:
+			stance = false
+			foot_state.settling = false
 		var hit: Dictionary = {}
 		if grounded and not mounted:
 			var query_point: Vector3 = foot_state.point if foot_state.locked else target
