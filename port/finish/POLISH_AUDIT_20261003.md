@@ -114,3 +114,18 @@ weather lease fixture and actual style signature, then independently parsed both
 changed/new GDScripts and passed diff checks. Native single-environment ownership,
 weather restoration and gameplay/inspection image parity remain pending. Report:
 worker `port/finish/polish/IDENTITY_ATMOSPHERE.md`.
+
+Luna correction **`8caa5cd9`** now excludes unknown alt markers from generic
+explosions and remembers valid events while quality is zero. Parent reviewed the
+dispatch and independently parsed controller/fixture. Source-contract assertions
+were reported by the worker; the native fixture is still pending. Parent added
+documentation correction **`7dab8fe8`**: the existing controller is hash-pinned,
+so no new preload does not mean no package reconciliation. This three-commit
+bundle (`60997c7c`, `8caa5cd9`, `7dab8fe8`) is source-ready, **unmerged**.
+
+Sol depth checkpoint **`03a64083`** is **not yet accepted**. It preserves terrain
+bias and routes general materials through a no-DEPTH shader, but omits the new
+shader from weather wet-sheen recognition. Parent explicitly assigned the same
+owner narrow `ambience/weather_look.gd` / `wet_surface.gd` compatibility changes
+and both-variant lease/restore coverage. Identity atmosphere only changes the
+separate native environment installer, so those ownership scopes do not overlap.
