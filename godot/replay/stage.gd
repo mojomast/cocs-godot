@@ -67,6 +67,8 @@ func apply_sample(value: Dictionary) -> bool:
 	generation = int(value.generation)
 	state = incoming
 	presentation.apply_state(state, -1)
+	# Replay kick age uses the admitted sample clock, not wall/render time.
+	presentation.set_melee_clock(float(state.get("time",0.0)))
 	pickups.apply_state(state)
 	if is_instance_valid(combat.projectiles): combat.projectiles.apply_state(state)
 	# Every cue was selected by source eventsBetween with its absolute time offset.
@@ -74,11 +76,13 @@ func apply_sample(value: Dictionary) -> bool:
 		combat.apply_events([event], -1)
 		if event.get("type") in ["shot", "launch"] and is_instance_valid(combat.audio_feedback):
 			combat.audio_feedback.apply_events([event], int(event.get("actor", -1)))
+	presentation.apply_events(value.get("events",[]),not value.get("clear",false) and not value.get("paused",false))
 	update_camera()
 	return true
 
 func clear_cues() -> void:
 	combat.clear_round()
+	presentation.interrupt_melee()
 
 func cycle_subject() -> void:
 	var actors: Array = state.get("actors", [])
