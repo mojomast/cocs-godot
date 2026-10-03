@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "prismatic-etch-image-rx",
+  "engine": "blur-v1",
+  "jobId": "12f6d86c-55a5-4c68-8ed6-77af53355de2",
+  "recipeFingerprint": "47c4df26837066f1e0d526703d8cfa174c41f5d671dbd9196cfd48b2016b230c",
+  "generationFingerprint": "37434215f993da450a3cc9448a35b34455a98067ed0ffff970c8a9410e161a3a",
+  "verification": "new-request",
+  "rawFingerprint": "055fb245854d5947c57ea4f96b1a86aa6f03d838414f4cd62855006a1dffaf54",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "1f7c69af-cedb-4303-8842-e1e42e93dfdb",
+      "bytes": 3894,
+      "sha256": "e4ccce8f3e332874799cff6104cf3ffc0744cb3f41d6717d7ef156b23e1d304e"
+    }
+  ],
+  "result": null
+}

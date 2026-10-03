@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rawName": "moss-lichen-qpixl",
+  "engine": "qpixl-v1",
+  "jobId": "83d8426a-ef39-4c5c-ae08-265f33191de3",
+  "recipeFingerprint": "64c81d496dfb5b0ef55fd4a1a8897df697a5648ee0b5bd28278f9cfec5da3813",
+  "generationFingerprint": "00c15e503907d31f2e428b96fdb9b2ec06691301cb4cd97d9b78dae3015b5eba",
+  "verification": "new-request",
+  "rawFingerprint": "4e8e1fe3281024948eedb215c3c87ad08070a9e4493b5b567a77998585a396c0",
+  "outputs": [],
+  "result": {
+    "file": "inline-result.json",
+    "bytes": 62086,
+    "sha256": "fffa6355bc240cbc68c571324d63298e095ad0350bb1c67c38ed43c29456bcbb",
+    "jsonHash": "2a9f912ea2d8934496af5c21ba4800adf82dff87740849bc23e06377f4f29172"
+  }
+}

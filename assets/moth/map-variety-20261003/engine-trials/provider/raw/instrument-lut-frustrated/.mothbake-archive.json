@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "instrument-lut-frustrated",
+  "engine": "entanglement-shader-v1",
+  "jobId": "c56014b8-3a3c-46d1-bd3b-55fcc30bf65c",
+  "recipeFingerprint": "826cf2c182602cc1d4adef7badc7efb1274c017ed13784ce70f50b443960af1c",
+  "generationFingerprint": "a970c42f015d0a1c48969b706841b3efe3bcb5d7e85f216852477e84cf3e3583",
+  "verification": "new-request",
+  "rawFingerprint": "6cf493f89cd6af163cd5249bc5ec35d190b8819fde5159813f3bf8ca484ecb36",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.zip",
+      "contentType": "application/zip",
+      "assetId": "55581f3d-ec0b-49b7-a4e1-6742f6fe36dc",
+      "bytes": 10962,
+      "sha256": "92bc417d6a45a47488c8f0296e8143538ef6281554181138930ca46291e90566"
+    }
+  ],
+  "result": null
+}

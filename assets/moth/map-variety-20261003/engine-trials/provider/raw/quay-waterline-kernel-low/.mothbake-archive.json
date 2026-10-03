@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rawName": "quay-waterline-kernel-low",
+  "engine": "deep-fryer-v1",
+  "jobId": "6928c6c7-5023-4cc4-802b-dab52ab491d9",
+  "recipeFingerprint": "8cd1af9107d3cd5a3282c07d60973a06e6cd2ad9a9d9cb9eb011cad5753cc6ed",
+  "generationFingerprint": "cdbd38b6c16a3fa14c9d48a1f4013fc990aea8311afcc61562ab27ca83702fa0",
+  "verification": "new-request",
+  "rawFingerprint": "146cfa7a98e2c09d4d334ba396be0ba412967ac1438424d73a0e3dbad2315673",
+  "outputs": [
+    {
+      "slot": "result",
+      "file": "result.png",
+      "contentType": "image/png",
+      "assetId": "bf94e5d8-5e5b-458d-8a30-ffc1c264ec41",
+      "bytes": 3240,
+      "sha256": "7569d617aaea1e50655dd95e0250b8d6cb7151a9676fd2b915131ae3228bd1f4"
+    }
+  ],
+  "result": null
+}

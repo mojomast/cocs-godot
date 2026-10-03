@@ -67,7 +67,7 @@ than equate a different hash with a useful variation.
 
 ## Observed input-service blocker
 
-The first three copper trials failed **before job submission**: upload completion
+Four masked copper trials failed **before job submission**: upload completion
 of `copper-patina-mask.png` returned HTTP 422. Read-only asset inspections returned
 HTTP 200 and `status: rejected` for each of the three asset IDs; metadata contained
 no reason. The same PNG decodes locally as 64² RGB, but local decoding does not
@@ -76,6 +76,89 @@ by Tessa; terracotta's image and mask were accepted by the other image engines.
 This is an observed input-specific rejection, not evidence those engines are
 unavailable. The rejected uploads and original attempts are preserved. Subsequent
 explicit unmasked copper trials are separately named intent, not silent retries.
+
+## Completed comparison results
+
+The original 28-intent matrix, six useful concurrency trials and one unmasked
+kernel-intensity follow-up total **35 intents**. **31 jobs were accepted and all
+31 completed remotely** across six engines. The four failures above occurred
+before any job POST. Catalog estimate for the 31 accepted jobs is **31 credits**;
+actual charged credits are not exposed. Together with the original pack there
+are **76 accepted/completed jobs**, with 76 estimated credits, not claimed billing.
+See `engine-trials/receipt.json` for the per-engine counts and exact IDs.
+
+| Engine | Accepted/completed | Observed use |
+|---|---|---|
+| `blur-v1` | 7/7 | Image rx preserves structures better than ry on brick; nonlocal etch blur loses useful lines |
+| `deep-fryer-v1` | 7/7 | Restrained RGB kernel produces useful coating/oxide variants; stronger .30 flips the patina/lightness relationship |
+| `telablur-v1` | 7/7 | Horizontal waterline morph is useful; vertical/strong alternatives smear or multiply meaningful bands |
+| `tessa-image-v1` | 6/6 | Palette mode best preserves brick features; calibrated-noise case reduces 64² input to 21² and loses fine patina detail |
+| `qpixl-v1` | 2/2 | Actual output is a flat 4096-value vector, not a 2D grid; explicitly reshaped offline, no resubmission |
+| `entanglement-shader-v1` | 2/2 | Genuine HDR/EXR R/T LUTs and shader masters; usable review companions for view-dependent coatings |
+
+The serial runner exited 1 because it reported four upload failures and two
+**local** Qpixl bake-shape failures. These were not six failed remote jobs. The
+Qpixl raw responses had already been archived successfully. Generic `raw-grid`
+now accepts an explicit bounded shape; an actual zero-network `mothbake repair`
+rebuilt both measured fields with width/height 64. Results also report backend
+`aer` and `qpu_seconds: 0`, so those two simulator identities are observed, not
+merely requested. Exact scalar HTTP response bytes were separately captured.
+
+### Role-specific selection, rather than engine-count quotas
+
+The **small `candidate-v3` overlay** adds four image-derived finishes to the
+unchanged `candidate-v2` base. Actual provider RGB is preserved in linear light;
+relief explicitly mixes 90% authored structure and 10% provider luminance.
+
+| Selected resource | Source trial | Evidence and intended use |
+|---|---|---|
+| `copper-heat-oxide` | Deep Fryer, global rx .10 | Warm oxide/green coating; source luminance correlation .969, gradient-feature correlation .816 |
+| `etched-coating-haze` | Deep Fryer, masked rx .10 | Restrained coating haze preserves etched-line feature correlation .922; useful Parallax/Helix instrument accent |
+| `quay-damp-horizontal` | Teleblur, horizontal .30 | Damp transition with gradient-feature correlation .839; preserves meaningful waterline orientation |
+| `moss-warm-weather` | Deep Fryer, masked rx .10 | Botanical/shore growth variation; luminance correlation .978, gradient correlation .902, no saturated pixels |
+
+The two copper kernel tile sizes returned **byte-identical PNGs**; only one is
+selected. Tessa palette retains brick features well (.986 gradient correlation)
+but its mean linear RGB change is only .0004. It is not automatically a better
+extra asset than the existing readable brick baseline. The noisy Tessa result's
+native 21² resolution is recorded; comparison metrics explicitly resample it for
+matching coordinates, rather than claiming native 64² detail. Its gradient
+correlation is only .027. Stronger copper kernel .30 has negative luminance
+correlation (-.677), so the restrained .10 variant was preferred.
+
+Two **optional measured coverage masks** are exported under v3 auxiliary resources:
+Qpixl moss retains .980 threshold-.5 intersection-over-union with the authored
+mask; waterline retains .998. They add small measured boundary perturbations,
+not a radically new surface or collision field. Both are real API outputs and
+have explicit numerical provenance. The original masks remain available.
+
+Two **LUT review companion sets** include exact provider HDR, EXR, GLSL, OSL and
+MaterialX master bytes. These are angle/phase data, not direct albedo/roughness.
+The 3-body reflectance master reaches 1.234375; its HDR values are preserved,
+not clamped and falsely called energy-conserving PBR. Parameter-space previews
+use fixed Reinhard display mapping and the provider's wavelength/phase equations.
+Blender material interpretation, grazing-light review and runtime compatibility
+remain next-stage work.
+
+### Comparison artifacts and checks
+
+Under `engine-trials/comparison/`:
+
+- `comparison-raw.png`: same-role source, scalar baseline and actual image outputs.
+- `comparison-repaired.png`, `all-variants.png`, `all-variants-tiled.png`: explicit
+  local seam reconstruction and tiled usefulness review.
+- `metrics.json`: linear RGB changes, luminance/gradient preservation, directional
+  gradients, checker alternation, raw/repaired seams and normal angular changes.
+- `mask-comparison.png`, `fields-luts.json`: measured mask stability and ranges.
+- `lut-comparison.png`: angle/thickness parameter diagnostics, not a rendered scene.
+
+No single correlation metric is an aesthetic pass: image contacts were inspected
+alongside metrics. Candidate-v3 has only 20 new material PNGs (~2.67 MB), two
+coverage masks and small LUT master files; it does not duplicate the old pack.
+All 20 PNGs and the manifest/contacts reproduce byte-for-byte offline. Sixteen
+auxiliary files (two masks and fourteen LUT/shader masters) are hash-verified and
+byte-identical on fresh reconstruction. Base seam ratio max .593409, quantized
+normal-length error max .005170; one coarse-mip diagnostic remains visible.
 
 ## User-requested real job concurrency experiment
 
@@ -113,8 +196,12 @@ no `started_at`. Some jobs were observed processing, but observations alone do n
 establish a reliable shared execution interval. Do not call these timings a
 throughput benchmark or conclude the service serializes all work.
 
-The image-adapter follow-up is generic mothbake commit
-`64b5f90eebfdec575cbe0797bb297c10fb609428`, extending `6de1880`.
+The final generic mothbake pin is
+`69c62d7c4bd754340623a4a7fa93bfa970e5ab73`, extending the image-adapter commit
+`64b5f90eebfdec575cbe0797bb297c10fb609428` and original `6de1880`.
 It preserves actual provider RGB in linear light and offers explicit authored
 structure mixing; it does not replace all image outputs with recolored scalar
 noise. The original generic checkout remains pinned for candidate-v2 rebuilds.
+The final generic suite passed **372 Node tests**, **three Python tests**, syntax
+checks, offline examples, whitespace checks and package dry-run. No Blender,
+Godot or other local engine/render process was used for this comparison.

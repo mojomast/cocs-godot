@@ -1,5 +1,46 @@
 # New map Moth resource pack — 2026-10-03
 
+## Multi-engine follow-up
+
+The first pack's single-engine choice was insufficiently compared. The complete
+32-engine catalog/contract review, controlled image/field/LUT trials and successful
+2/4-job concurrency experiment are documented in [MOTH_ENGINE_REVIEW.md](MOTH_ENGINE_REVIEW.md).
+
+`candidate-v2/manifest.json` remains the immutable base pack. The small
+**`candidate-v3/manifest.json` additive overlay** supplies four useful image-engine
+finishes, 20 additional PNGs (~2.67 MB), based on actual Deep Fryer and Teleblur
+RGB outputs. It references the exact base manifest hash; it does **not** duplicate
+the base pack. Schema is `moth-map-material-overlay/v1`: resolve inherited
+resources from `basePack.manifest` and local keys from the overlay's `textures`.
+The overlay's provenance paths resolve against `../engine-trials`.
+
+Additional stable IDs: `copper-heat-oxide`, `etched-coating-haze`,
+`quay-damp-horizontal`, `moss-warm-weather`. Their color is provider RGB decoded
+from sRGB into linear space. Their relief explicitly mixes 90% authored structure
+and 10% normalized provider luminance; this keeps geometric detail stable while
+the image engines alter color. It is a heuristic, not recovered physical relief.
+
+The overlay also declares `auxiliaryResources`: two measured Qpixl coverage masks
+and two exact HDR/EXR/shader LUT companion sets. These have their own semantics
+and hashes; do not register LUT parameter images as ordinary tiling albedo.
+
+Use generic mothbake `69c62d7c4bd754340623a4a7fa93bfa970e5ab73` for this overlay,
+with `MOTHBAKE_IMAGE_ROOT` pointing at that checkout. Keep the original
+`MOTHBAKE_ROOT`/`6de1880` pin for the v2 rebuild. Example:
+
+```sh
+export MOTHBAKE_IMAGE_ROOT=/path/to/mothbake-at-69c62d7
+node assets/moth/map-variety-20261003/engine-trials/bake-overlay.mjs /tmp/opencode/image-rebake
+node assets/moth/map-variety-20261003/engine-trials/verify-overlay.mjs \
+  assets/moth/map-variety-20261003/candidate-v3 /tmp/opencode/image-rebake
+```
+
+Overlay checks passed: 20/20 PNGs decoded/hashed and byte-identical on fresh
+offline rebuild; contacts and manifest also byte-identical. Maximum base seam
+ratio 0.593409; maximum normal-length error 0.005170. One coarse-mip warning is
+retained. Sixteen auxiliary files also match their hashes and fresh rebuild bytes.
+The final generic tool passed 372 Node tests and three Python tests.
+
 ## Consumer contract (candidate; Blender application follows parent review)
 
 Delivered: **30 distinct base families, 6 derived finishes, 181 lossless PNG
