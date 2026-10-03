@@ -110,8 +110,8 @@ func _filter_rows(query: String) -> void:
 	var owner := get_viewport().gui_get_focus_owner()
 	var bindings := Access.values()
 	for action: String in rows:
-		var searchable := (Model.LABELS[action] + " " + action + " " + Model.label(str(bindings.get(action, Model.DEFAULTS[action])))).to_lower()
-		var matches := normalized.is_empty() or searchable.contains(normalized)
+		var searchable: String = (Model.LABELS[action] + " " + action + " " + Model.label(str(bindings.get(action, Model.DEFAULTS[action])))).to_lower()
+		var matches: bool = normalized.is_empty() or searchable.contains(normalized)
 		if not matches and is_instance_valid(owner) and rows[action].is_ancestor_of(owner): search.grab_focus()
 		rows[action].visible = matches
 		if matches: shown += 1
