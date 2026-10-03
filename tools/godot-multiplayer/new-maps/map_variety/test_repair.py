@@ -21,6 +21,7 @@ from source_geometry import solid_geometry, world_vertices
 from map_materials import adapter_bindings, load_reviewed_materials, assert_packed_materials, PRESERVED
 from base_craft import base_craft_plan
 from triangle_policy import triangle_advisory
+from glb_test_fixtures import geometry_fixture, encode_glb, preserved_bindings
 
 
 class MeshObject:
@@ -143,13 +144,11 @@ class RepairTests(unittest.TestCase):
 
     def test_glb_triangle_overage_is_advisory_but_primitive_and_count_validation_remain_strict(self):
         def fixture(primitives,count):
-            document={'meshes':[{'primitives':[{'indices':0,'attributes':{'POSITION':1}} for _ in range(primitives)]}],'accessors':[{'count':count}]}
-            data=json.dumps(document).encode();data+=b' '*((-len(data))%4)
-            blob=struct.pack('<III',0x46546c67,2,20+len(data))+struct.pack('<II',len(data),0x4e4f534a)+data
+            document,binary=geometry_fixture(count if type(count) is int and count>=3 else 3,primitives)
+            document['accessors'][-1]['count']=count
+            blob=encode_glb(document,binary)
             return SimpleNamespace(read_bytes=lambda:blob)
-        bindings={'schema':'map-variety-bindings/v1','materials':{},'pack':{
-            'base':'assets/moth/map-variety-20261003/candidate-v2/manifest.json',
-            'overlay':'assets/moth/map-variety-20261003/candidate-v3/manifest.json'}}
+        bindings=preserved_bindings()
         with self.assertRaisesRegex(ValueError,'64 primitives'):audit_glb(fixture(65,3),ROOT,bindings)
         report=audit_glb(fixture(1,480003),ROOT,bindings)
         self.assertEqual(report['triangles'],160001)

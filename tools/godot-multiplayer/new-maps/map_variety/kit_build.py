@@ -206,6 +206,9 @@ def build(root, authority_path, bindings_path, master_path, export_path, report_
     source.hide_viewport = True
     evaluated_triangles = sum(sum(len(p.vertices)-2 for p in obj.data.polygons) for obj in export.objects)
     evaluated_advisory = triangle_advisory(evaluated_triangles, 'evaluated-scene')
+    expected_export_materials=sorted({obj.data.materials[p.material_index].name for obj in export.objects for p in obj.data.polygons})
+    scene['export_materials']=json.dumps(expected_export_materials)
+    scene['export_triangles']=evaluated_triangles
 
     master_path = Path(master_path)
     master_path.parent.mkdir(parents=True, exist_ok=True)
@@ -221,7 +224,7 @@ def build(root, authority_path, bindings_path, master_path, export_path, report_
         bpy.context.view_layer.objects.active = export.objects[0]
     bpy.ops.export_scene.gltf(filepath=str(export_path), export_format='GLB', use_selection=True, export_yup=True, export_extras=True, export_normals=True, export_tangents=True)
     from export_audit import audit_glb
-    export_audit = audit_glb(export_path, root, bindings)
+    export_audit = audit_glb(export_path, root, bindings, expected_materials=expected_export_materials, expected_triangles=evaluated_triangles)
 
     report = {
         'id': authority['id'], 'revision': bindings.get('revision'),
@@ -229,6 +232,7 @@ def build(root, authority_path, bindings_path, master_path, export_path, report_
         'moth': bindings.get('pack'),
         'materials': sorted(expected),
         'authorityShellTriangles': shell['authorityTriangles'],
+        'floorUnion': shell['floorUnion'],
         'structureBoxes': structures['boxes'],
         'structureTriangles': structures['triangles'],
         'pieceCount': pieces['pieces'],
@@ -273,7 +277,7 @@ def reopen_export(root, master_path, export_path, report_path, authority_path):
     bpy.ops.export_scene.gltf(filepath=str(export_path), export_format='GLB', use_selection=True, export_yup=True, export_extras=True, export_normals=True, export_tangents=True)
     from export_audit import audit_glb
     bindings = json.loads(scene['material_bindings'])
-    verified = audit_glb(export_path, root, bindings)
+    verified = audit_glb(export_path, root, bindings, expected_materials=json.loads(scene['export_materials']), expected_triangles=scene['export_triangles'])
     report = {'reopened': bpy.data.filepath, 'geometryHash': scene['geometry_hash'],
               'exportBatches': len(export.objects), 'glbSha256': _sha256(export_path), 'exportAudit': verified}
     Path(report_path).write_text(json.dumps(report, indent=2) + '\n')

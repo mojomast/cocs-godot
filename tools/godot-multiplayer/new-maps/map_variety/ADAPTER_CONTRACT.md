@@ -66,3 +66,23 @@ The 24000-triangle per-source/batch constraints, 64-primitive limit, valid integ
 counts, export topology and material/pixel checks remain strict. Plans are
 unmodified-source estimates, not measurements; Blender evaluation and native
 acceptance run serially under the heavy owner after integration.
+
+## Embedded scene validation
+
+`glb_geometry.py` accepts the builders' static, non-instanced embedded GLB
+contract. A real default scene and nonempty referenced geometry are required;
+orphan meshes, cycles, duplicate node parents, mesh instancing, external buffer
+or image URIs, sparse/compressed/skinned/morphed geometry are rejected. JSON/BIN
+chunk lengths, buffer/view bounds, offsets, strides, accessor types/counts and
+actual index values are checked against bytes before iterating declared counts.
+POSITION, normal, tangent and selected texture-coordinate values must be finite.
+PNG chunk bounds/CRC and bounded decoded byte counts are checked too.
+
+Every scene-used primitive needs a valid named material in the reviewed bindings.
+Only used materials require pixel evidence; unused registry entries are allowed.
+Used PBR materials require embedded, verified albedo/normal/roughness images and
+the UV stream actually selected by their texture bindings. Build records the
+evaluated material-name set and triangle total in the packed master; build and
+reopen-export compare those to the real exported scene. `evaluatedTriangleDelta`
+must be zero when this producer reference is supplied, irrespective of advisory
+target overage. Missing geometry/evidence cannot be an acceptance success.

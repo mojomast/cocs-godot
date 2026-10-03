@@ -114,7 +114,10 @@ export function makeRecipe() {
   // Renovate this one closed base building into the accessible terrace.
   // Its old tall shell/windows must not remain inside the new playable roof.
   box('roof-terrace-block', 18, 45, 22, 16, terraceBase, terraceTop, 'brick');
-  surf('roof-terrace-deck', 'slate', 7, 29, 37, 53, terraceTop);
+  // The box already provides the supported top. Select slate for that one
+  // surface rather than layering a second, differently materialed coplanar cap.
+  Object.assign(a.terrain.surfaces.at(-1), {id:'roof-terrace-deck',material:'slate',
+    renderLineage:{replaces:'roof-terrace-block-cap',selection:'single supported slate deck'}});
   retain('roof-terrace-parapet-n', 'sandstone', [7, 37], [29, 37], terraceTop, terraceTop + 1);
   retain('roof-terrace-parapet-w', 'sandstone', [7, 37], [7, 53], terraceTop, terraceTop + 1);
   // Connect the roof to the upper district, away from the preserved x=32 civic

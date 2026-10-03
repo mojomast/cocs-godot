@@ -494,6 +494,7 @@ def scene_summary(arena, allowed, cap=24000):
                    labelsPendingTessellation=len(arena.get('art',{}).get('labels',[]))+len(craft['labels']),
                    evaluatedAcceptance='pending Blender evaluation and GLB pixel/primitive audit')
     summary['triangleAdvisory'] = triangle_advisory(summary['sourceSceneTriangles'], 'source-estimate')
+    summary['floorUnion'] = shell['floorUnion']
     return summary
 
 
@@ -602,8 +603,23 @@ def infrastructure_plan(arena):
 def shell_plan(arena):
     """World-space authority surfaces/walls as one batched mesh per material."""
     surfaces, walls, miscount = {}, {}, 0
+    floor_union = None
+    union_enabled = arena.get('id') == 'parallax-observatory'
+    if union_enabled:
+        from floor_union import union_floors
+        floors=[s for s in arena['terrain']['surfaces'] if s.get('walkable',True) and s.get('renderSource')!='kit']
+        rendered,floor_union=union_floors(floors)
+        floor_union['producerReference'] = {
+            'path':'tools/godot-multiplayer/new-maps/parallax-observatory/blender_author.py',
+            'sha256':arena['art']['baseCraft']['sha256'],
+            'rule':'accepted first-authored floor/material ownership, applied to candidate coplanar geometry',
+        }
+        for triangle in rendered:
+            _add(surfaces.setdefault(triangle['material'],_empty()),[to_blender(v) for v in triangle['vertices']],[(0,1,2)])
     for surface in arena['terrain']['surfaces']:
         if surface.get('renderSource') == 'kit':
+            continue
+        if union_enabled and surface.get('walkable',True):
             continue
         bucket = surfaces.setdefault(surface['material'], _empty())
         base = len(bucket['vertices'])
@@ -626,6 +642,7 @@ def shell_plan(arena):
         'surfaces': surfaces, 'walls': walls, 'nonTriangleWalls': miscount,
         'surfaceTriangles': surface_triangles, 'wallTriangles': wall_triangles,
         'authorityTriangles': surface_triangles + wall_triangles,
+        'floorUnion': floor_union,
     }
 
 

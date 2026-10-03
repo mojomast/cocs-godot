@@ -85,14 +85,15 @@ failures and zero baseline defects; every authored nav node is connected:
 | Candidate | Connected nodes | Full unmodified source triangles* | Geometry hash |
 |---|---:|---:|---|
 | Helix revision-3 | 2506 / 2506 | 147026 | `5755ec9fba17d4b88d99d90e1717d86ce5ae9983a5c2bc290a93b5b366585140` |
-| Parallax districts-v3 | 532 / 532 | 143782 | `abaea5a6f13cca985f380d9c2f98c856ae5264325e219303219328ee47ab900c` |
-| Vesper urban-v2 | 857 / 857 | 40688 | `01ddc671cb0e8471da390d93a1b4dfbba507551ed29a588b249fe761af1a7ef7` |
+| Parallax districts-v3 | 532 / 532 | 144321 | `abaea5a6f13cca985f380d9c2f98c856ae5264325e219303219328ee47ab900c` |
+| Vesper urban-v2 | 857 / 857 | 40686 | `c044bc54cfd96e99e3b29d61c5bc66bc9c470f8f3823176c063d2fe6ee9474ad` |
 
 *These are source estimates, excluding font tessellation and evaluated modifiers.
 They are not exported triangle measurements or native acceptance claims.
 
-Passing regressions: **25 Node tests** (18 existing + 7 new), **16 Python repair
-tests**, and the standalone kit-source checks. All three Python `asset_author.py
+Passing regressions: **25 Node tests** (18 existing + 7 new), **17 Python repair
+tests**, **10 independent-review correction tests**, and the standalone kit-source
+checks. All three Python `asset_author.py
 plan` entrypoints were exercised; source estimates now include accepted craft.
 Spawn/team-spawn/flag/objective support heights remain unchanged, and standing
 clearance is checked at those locations.
@@ -102,6 +103,7 @@ node tools/godot-multiplayer/new-maps/helix-conservatory/variety-source-check.mj
 node tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v3/variety-source-check.mjs
 node tools/godot-multiplayer/new-maps/vesper-viaduct/revisions/urban-v2/variety-source-check.mjs
 python3 -B tools/godot-multiplayer/new-maps/map_variety/test_repair.py
+python3 -B tools/godot-multiplayer/new-maps/map_variety/test_review_corrections.py
 python3 -B tools/godot-multiplayer/new-maps/map_variety/test_kit_source.py
 node --test tools/godot-multiplayer/new-maps/map_variety/repair.test.mjs tools/godot-multiplayer/new-maps/helix-conservatory/variety.test.mjs tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v3/variety.test.mjs tools/godot-multiplayer/new-maps/vesper-viaduct/revisions/urban-v2/variety.test.mjs
 ```
@@ -137,3 +139,50 @@ run for this follow-up: advisory overage/count validation, pending-review status
 unchanged source chunking, complete-source estimate reporting, and strict albedo
 pixel validation. All passed. Geometry, generated authorities and shared Kit
 files were not changed, and no heavy/native execution occurred.
+
+## Independent-review P1 corrections
+
+Review of `f6687255`, `4e2b83bc` and `dd05f50c` identified three remaining
+counterexamples; this follow-up changes only their source implementation,
+validation, tests and evidence.
+
+1. **Parallax floor ownership — corrected.** `floor_union.py` clips later
+   coplanar playable triangles against earlier coverage, preserving accepted
+   `terrain.surfaces` order and therefore material priority. This is polygon
+   subtraction for partial overlaps, not exact-triangle hashing. Different
+   planes/heights remain separate. Physics authority is unchanged. Shell/plan/
+   build reports include per-source material/priority/input/render lineage and
+   reference the unchanged accepted author SHA
+   `9cec1edaab54477d9999eb7888c921d527f0ee3f1248f2adf9c2a6a7cf5897cc`.
+   Candidate playable input: 606 triangles, summed projected area
+   29759.204825763867 m². Render union: 1145 triangles, projected area
+   18435.83832767311 m²; overlapping coverage removed is
+   11323.366498090756 m², with zero discarded subprecision area. Fragmentation
+   increases triangle count while removing overlap. Both reported duplicate
+   tidal-cistern joints render zero later-owned triangles. Exact/partial/sloped
+   fixtures and actual candidate interiors are disjoint, material priority and
+   area are verified, support heights are preserved, and the well remains open.
+2. **Vesper terrace — corrected.** The box's sole top is renamed to
+   `roof-terrace-deck`, assigned slate and given explicit replacement lineage.
+   The second overlapping surface is removed. Actual shell output is exactly
+   two slate triangles covering 352 m² at y22; no brick cap remains. Candidate
+   authority/recipe/provenance were regenerated. All roof and preserved-route
+   physical checks still pass; accepted/runtime files were not restamped.
+3. **GLB acceptance — corrected.** Empty/JSON-only scenes can no longer pass.
+   Validation follows the actual default scene through bounded node/mesh/
+   accessor/material references, verifies embedded bytes and finite positions,
+   checks index values, and requires evidence for every used PBR material.
+   The static exporter contract rejects mesh instancing rather than undercounting
+   it. Optional evaluated producer material/count references are supplied by both
+   builder export paths. The over-target regression is now a real GLB with
+   backed vertices and repeated valid triangle indices, not a fabricated count.
+   Its 160001 total remains advisory; malformed counts/topology still fail.
+
+Checks: all 25 Node tests, all 17 Python repair tests, all 10 correction tests,
+standalone kit-source checks, Vesper generation, and both affected `plan`
+entrypoints passed. The correction tests include missing scene/POSITION/material/
+images, orphan/cyclic/instanced graphs, invalid accessor type/count/offset/stride,
+out-of-range indices, nonfinite positions, container bounds and external URIs,
+plus valid strided geometry and real PBR pixel evidence (including selected UV1).
+No Blender/Godot/import/render/server/native run occurred; portable reopen,
+actual map export pixels and native acceptance remain pending the heavy owner.

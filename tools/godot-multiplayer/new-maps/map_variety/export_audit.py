@@ -5,24 +5,39 @@ import math
 import struct
 import zlib
 from triangle_policy import triangle_advisory
+from glb_geometry import EmbeddedGlb, finite_vector, integer
 
 
 def png_pixels(raw):
     if raw[:8] != b'\x89PNG\r\n\x1a\n':
         raise ValueError('Expected lossless PNG')
-    pos, compressed = 8, bytearray()
+    pos, compressed, header, ended = 8, bytearray(), None, False
     while pos < len(raw):
+        if pos+12>len(raw):raise ValueError('Truncated PNG chunk')
         size = struct.unpack_from('>I', raw, pos)[0]
+        if pos+size+12>len(raw):raise ValueError('PNG chunk exceeds image bytes')
         kind, data = raw[pos+4:pos+8], raw[pos+8:pos+8+size]
+        if struct.unpack_from('>I',raw,pos+8+size)[0]!=zlib.crc32(kind+data):raise ValueError('PNG CRC mismatch')
         if kind == b'IHDR':
-            w, h, depth, color, _, _, interlace = struct.unpack('>IIBBBBB', data)
+            if header is not None or pos!=8 or size!=13:raise ValueError('Invalid PNG header')
+            header=struct.unpack('>IIBBBBB',data)
         if kind == b'IDAT':
             compressed.extend(data)
         pos += size+12
-    if depth != 8 or color not in (0, 2, 4, 6) or interlace:
+        if kind==b'IEND':
+            if size or pos!=len(raw):raise ValueError('Invalid PNG end')
+            ended=True;break
+    if header is None or not ended:raise ValueError('Incomplete PNG')
+    w,h,depth,color,compression,filter_method,interlace=header
+    if depth != 8 or color not in (0, 2, 4, 6) or interlace or compression or filter_method:
         raise ValueError('Only noninterlaced 8-bit channel PNGs are accepted')
+    if not w or not h or w*h>1024*1024:raise ValueError('PNG exceeds reviewed pack dimensions')
     channels = {0: 1, 2: 3, 4: 2, 6: 4}[color]
-    data, stride = zlib.decompress(compressed), w*channels
+    stride=w*channels;expected=(stride+1)*h
+    decoder=zlib.decompressobj()
+    try:data=decoder.decompress(compressed,expected+1)
+    except zlib.error as error:raise ValueError('Invalid PNG compressed data') from error
+    if len(data)!=expected or not decoder.eof or decoder.unused_data:raise ValueError('PNG decoded byte count mismatch')
     previous, pixels, pos = bytearray(stride), [], 0
     for _ in range(h):
         filter_type, row = data[pos], bytearray(data[pos+1:pos+1+stride])
@@ -81,53 +96,51 @@ def validate_bindings(bindings):
             raise ValueError('Unknown binding role: '+str(role))
 
 
-def audit_glb(path, root, bindings):
+def audit_glb(path, root, bindings, *, expected_materials=None, expected_triangles=None):
     validate_bindings(bindings)
     raw = path.read_bytes()
-    magic, version, size = struct.unpack_from('<III',raw)
-    if magic != 0x46546c67 or version != 2 or size != len(raw):
-        raise ValueError('Malformed GLB')
-    pos, binary, gltf = 12, None, None
-    while pos < len(raw):
-        n, kind = struct.unpack_from('<II',raw,pos)
-        data = raw[pos+8:pos+8+n]
-        if kind == 0x4e4f534a: gltf = json.loads(data)
-        elif kind == 0x004e4942: binary = data
-        pos += n+8
-    primitives = [p for mesh in gltf['meshes'] for p in mesh['primitives']]
-    if len(primitives) > 64:
-        raise ValueError(f'GLB exceeds 64 primitives: {len(primitives)}')
-    triangles = 0
-    for p in primitives:
-        if p.get('mode',4) != 4: raise ValueError('Nontriangle export primitive')
-        count = gltf['accessors'][p['indices']]['count'] if 'indices' in p else gltf['accessors'][p['attributes']['POSITION']]['count']
-        if type(count) is not int or count < 0:
-            raise ValueError('Unknown or invalid primitive element count')
-        if count % 3:
-            raise ValueError('Incomplete triangle primitive')
-        triangles += count//3
+    container=EmbeddedGlb(raw)
+    gltf=container.doc
+    primitives,triangles,used_materials=container.geometry()
     advisory = triangle_advisory(triangles, 'exported-glb')
+    if expected_triangles is not None:
+        triangle_advisory(expected_triangles,'evaluated-scene')
+        if triangles!=expected_triangles:raise ValueError('Export triangle count differs from evaluated build selection')
+    used_names=[]
+    for index in sorted(used_materials):
+        name=gltf['materials'][index].get('name')
+        if not isinstance(name,str) or name not in bindings['materials']:raise ValueError('Unbound used material: '+str(name))
+        if name in used_names:raise ValueError('Ambiguous duplicate used material name: '+name)
+        used_names.append(name)
+    if expected_materials is not None and set(used_names)!=set(expected_materials):
+        raise ValueError('Exported used materials differ from evaluated build selection')
     resources, textures = {}, {}
     for key in ('base','overlay'):
         manifest_path = root / bindings['pack'][key]
         manifest = json.loads(manifest_path.read_text())
         resources.update({m['id']:m for m in manifest['materials']})
         textures.update({k:(manifest_path.parent,v) for k,v in manifest['textures'].items()})
-    evidence = {}
+    evidence,material_evidence = {},{}
     def image_bytes(texture):
-        image = gltf['images'][gltf['textures'][texture['index']]['source']]
-        view = gltf['bufferViews'][image['bufferView']]
-        start = view.get('byteOffset',0)
-        return binary[start:start+view['byteLength']]
-    for material in gltf.get('materials',[]):
+        if not isinstance(texture,dict):raise ValueError('Missing texture binding')
+        uv='TEXCOORD_'+str(integer(texture.get('texCoord',0),'texture coordinate index'))
+        if any(uv not in p['attributes'] for p in primitives if p['material']==material_index):
+            raise ValueError('Textured primitive lost selected UV coordinates: '+name)
+        return container.image_bytes(texture)
+    for material_index in sorted(used_materials):
+        material=gltf['materials'][material_index]
         name = material['name']
         binding = bindings['materials'][name]
         texture = material.get('pbrMetallicRoughness',{}).get('baseColorTexture')
         if binding['role'] == 'preserve':
-            if texture: raise ValueError('Preserved material acquired albedo texture: '+name)
+            if texture or any(material.get(k) for k in ('normalTexture','emissiveTexture','occlusionTexture')) or material.get('pbrMetallicRoughness',{}).get('metallicRoughnessTexture'):
+                raise ValueError('Preserved material acquired an unreviewed texture: '+name)
+            material_evidence[name]={'role':'preserve','geometryReferenced':True}
             continue
         if not texture: raise ValueError('Surface missing base color texture: '+name)
-        factor = material.get('pbrMetallicRoughness',{}).get('baseColorFactor',[1,1,1,1])
+        if any('TANGENT' not in p['attributes'] for p in primitives if p['material']==material_index):
+            raise ValueError('Textured primitive lost tangents: '+name)
+        factor = finite_vector(material.get('pbrMetallicRoughness',{}).get('baseColorFactor',[1,1,1,1]),4,'baseColorFactor')
         if any(abs(v-1)>1e-6 for v in factor[:3]):
             raise ValueError('Unreviewed albedo multiplier: '+name)
         resource = resources[binding['resource']]
@@ -137,7 +150,8 @@ def audit_glb(path, root, bindings):
             raise ValueError('Immutable source PNG hash mismatch')
         evidence[name] = verify_albedo(source,image_bytes(texture))
         normal = material.get('normalTexture')
-        if not normal or abs(normal.get('scale',1)-binding.get('normalStrength',1))>1e-6:
+        scale=normal.get('scale',1) if normal else None
+        if type(scale) not in (int,float) or not math.isfinite(scale) or abs(scale-binding.get('normalStrength',1))>1e-6:
             raise ValueError('Missing/incorrect tangent normal binding: '+name)
         normal_dir, normal_entry = textures[resource['channels']['normal']]
         normal_source = (normal_dir/normal_entry['path']).read_bytes()
@@ -147,7 +161,8 @@ def audit_glb(path, root, bindings):
         evidence[name]['normalSourceSha256']=normal_entry['sha256']
         evidence[name]['normalExportSha256']=hashlib.sha256(normal_export).hexdigest()
         rough_texture=material.get('pbrMetallicRoughness',{}).get('metallicRoughnessTexture')
-        if not rough_texture or abs(material.get('pbrMetallicRoughness',{}).get('roughnessFactor',1)-1)>1e-6:
+        rough_factor=material.get('pbrMetallicRoughness',{}).get('roughnessFactor',1)
+        if not rough_texture or type(rough_factor) not in (int,float) or not math.isfinite(rough_factor) or abs(rough_factor-1)>1e-6:
             raise ValueError('Missing/modified roughness texture: '+name)
         rough_dir,rough_entry=textures[resource['channels']['roughness']]
         rough_source=(rough_dir/rough_entry['path']).read_bytes()
@@ -158,7 +173,8 @@ def audit_glb(path, root, bindings):
             raise ValueError('glTF roughness G does not match immutable roughness R: '+name)
         evidence[name]['roughnessSourceSha256']=rough_entry['sha256']
         evidence[name]['metallicRoughnessExportSha256']=hashlib.sha256(rough_export).hexdigest()
-        material_index=gltf['materials'].index(material)
-        if any('TANGENT' not in p['attributes'] for p in primitives if p.get('material')==material_index):
-            raise ValueError('Normal-mapped primitive lost tangents: '+name)
-    return {'triangles':triangles,'triangleAdvisory':advisory,'primitives':len(primitives),'albedo':evidence}
+        material_evidence[name]={'role':'surface','geometryReferenced':True,'pixelsVerified':True}
+    return {'triangles':triangles,'triangleAdvisory':advisory,'primitives':len(primitives),
+            'usedMaterials':sorted(used_names),'materialEvidence':material_evidence,'albedo':evidence,
+            'evaluatedTriangleDelta':None if expected_triangles is None else triangles-expected_triangles,
+            'geometryValidation':'scene-referenced embedded accessor bytes verified; non-instanced static export'}
