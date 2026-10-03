@@ -1,5 +1,18 @@
 # Gameplay repair O — two gates repaired
 
+## Parent integration
+
+Worker commits `5235e5f4`, `f22fcc1e`, `7d23d413` integrated as `e966d6c0`,
+`3ee932e8`, **`b17360c9`**. Parent reviewed all diffs, passed four grammar parses
+and whitespace checks, verified the three final passing receipts and three empty
+release audits, and independently found no live members of 18 retained PGIDs.
+Parent inspected world-route first-person and returned-Home captures; this is not
+full visual/human performance approval.
+
+Package owner is reconciling the one production settings dependency. Exclusive
+next grant `RELEASE-MATRIX-20261003-P` belongs to final acceptance owner
+`ses_f0292f089ffeq9MnxeAHN0yrKb` for remaining available automatable checks.
+
 Grant `GAMEPLAY-REPAIR-20261003-O`; owner `ses_f0294303bffed6Fb8UJLKe4ZDz`.
 Adopted `17807ab977cacb4d2a43d2621999b143fb597a2c` as merge `a8494ece`.
 Runtime/fixture candidate: `f22fcc1e95c0b890f1ad656f16ab2b406b5b069b`.
