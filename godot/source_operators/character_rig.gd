@@ -9,12 +9,23 @@ var phase: float = 0.0
 var channels: Dictionary = {}
 var last_grounded: bool = true
 var dead: bool = false
+var anatomy: Dictionary = {}
 
 func configure(nodes: Dictionary) -> void:
 	joints = nodes
 	bind.clear()
 	for key: String in joints:
 		bind[key] = joints[key].transform
+	anatomy.clear()
+	for side: String in ["L","R"]:
+		var upper: Node3D = joints["legUpper"+side]
+		var lower: Node3D = joints["legLower"+side]
+		var foot: Node3D = joints["foot"+side]
+		var frame: Node3D = joints.root.get_parent()
+		# Exported hierarchy has a translated rigPivot BETWEEN upper and lower.
+		var thigh := upper.to_local(lower.global_position)
+		var shin := lower.to_local(foot.global_position)
+		anatomy[side] = {"upper":thigh,"lower":shin,"ankle":frame.to_local(foot.global_position),"hip":frame.to_local(upper.global_position),"length":thigh.length()+shin.length()}
 	reset()
 
 func reset() -> void:
@@ -28,9 +39,9 @@ func reset() -> void:
 static func damp(a: float, b: float, rate: float, dt: float) -> float:
 	return lerpf(a, b, 1.0 - exp(-rate * dt))
 
-func update(state: Dictionary) -> void:
+func update(state: Dictionary, apply: bool = true) -> void:
 	if dead: return
-	var dt: float = clampf(float(state.get("dt", 0.0)), 0.0, 0.1)
+	var dt: float = maxf(float(state.get("dt", 0.0)), 0.0)
 	var previous_speed: float = channels.speedNorm
 	var previous_strafe: float = channels.strafe
 	var speed: float = clampf(float(state.get("speed", 0.0)) / maxf(0.001, float(state.get("maxSpeed", 8.0))), 0.0, 1.0)
@@ -55,7 +66,7 @@ func update(state: Dictionary) -> void:
 	if grounded: phase = fposmod(phase + lerpf(1.35, 3.4, channels.speedNorm) * TAU * dt, TAU)
 	var inputs: Dictionary = channels.duplicate()
 	inputs.merge({"phase":phase,"grounded":grounded,"contactGait":true,"time":state.get("time",0.0),"focusYaw":state.get("focusYaw",0.0),"focusPitch":state.get("focusPitch",0.0),"reduced":state.get("reduced",false)}, true)
-	apply_pose(solve(inputs))
+	if apply: apply_pose(solve(inputs))
 
 static func solve(s: Dictionary) -> Dictionary:
 	var speed: float = clampf(float(s.get("speedNorm",0.0)),0.0,1.0)
