@@ -1,0 +1,271 @@
+{
+  "scope": "True accepted runtime finish before vs exact staged R5 runtime services; parent visual review pending",
+  "images": [
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/overview-accepted-finish-before.png",
+      "sha256": "8aefecf91fa8284b0a9dbce54cbe9d7ea863340280e30c7ee9ff35aac80da11e",
+      "bytes": 204652,
+      "width": 1280,
+      "height": 720,
+      "view": "overview",
+      "variant": "accepted-finish-before",
+      "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/crusher-eye-accepted-finish-before.png",
+      "sha256": "b0a81647530f4fda9437b6e5c76e1b05216daa07e71f0ec13a5e9b355fff72d3",
+      "bytes": 728843,
+      "width": 1280,
+      "height": 720,
+      "view": "crusher-eye",
+      "variant": "accepted-finish-before",
+      "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/crusher-maintenance-accepted-finish-before.png",
+      "sha256": "cbbf6c6f6bb57720fb088d5523bb08ab67f67a590b096a60c4659018efdb6147",
+      "bytes": 822590,
+      "width": 1280,
+      "height": 720,
+      "view": "crusher-maintenance",
+      "variant": "accepted-finish-before",
+      "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/furnace-eye-accepted-finish-before.png",
+      "sha256": "8a181bf36d173172930fab22c4d1cd4d33c80e7895f6cada205df2c3912ea0ab",
+      "bytes": 543991,
+      "width": 1280,
+      "height": 720,
+      "view": "furnace-eye",
+      "variant": "accepted-finish-before",
+      "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/transfer-eye-accepted-finish-before.png",
+      "sha256": "bf2a40955e17a259ac6e67e2067093c7c0bcce9152c09ca9cc8a9c3f5f08ec02",
+      "bytes": 550297,
+      "width": 1280,
+      "height": 720,
+      "view": "transfer-eye",
+      "variant": "accepted-finish-before",
+      "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/kiln-eye-accepted-finish-before.png",
+      "sha256": "5f7c8537698e6b3a33b9e94c978b8ee96e6d50d09bcfdb26f2b8b305705e92aa",
+      "bytes": 442369,
+      "width": 1280,
+      "height": 720,
+      "view": "kiln-eye",
+      "variant": "accepted-finish-before",
+      "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/crusher-roofline-accepted-finish-before.png",
+      "sha256": "7c3833727ea4def8bfc151e0072e6797d4de85a13424d5e052ce80e57533a735",
+      "bytes": 566397,
+      "width": 1280,
+      "height": 720,
+      "view": "crusher-roofline",
+      "variant": "accepted-finish-before",
+      "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/furnace-skyline-accepted-finish-before.png",
+      "sha256": "60a0ccf42104ab41ff208955cadbcaac23d479dddf3f889b275aa0f2c4141a75",
+      "bytes": 541270,
+      "width": 1280,
+      "height": 720,
+      "view": "furnace-skyline",
+      "variant": "accepted-finish-before",
+      "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/cooling-eye-accepted-finish-before.png",
+      "sha256": "735ec530fd6b0903e7f1ffd3a4a37f95e942b5033300a05d27170aa3abb0a0fa",
+      "bytes": 575905,
+      "width": 1280,
+      "height": 720,
+      "view": "cooling-eye",
+      "variant": "accepted-finish-before",
+      "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/bunker-player-accepted-finish-before.png",
+      "sha256": "fbdc8b97401d7a95217e401a821d2f9d4f5338e55b41604db8910011ddbc2caa",
+      "bytes": 387672,
+      "width": 1280,
+      "height": 720,
+      "view": "bunker-player",
+      "variant": "accepted-finish-before",
+      "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/overview-candidate-runtime-r5.png",
+      "sha256": "91d5989259cbca9c027c96485538fcd195d62991c8b4c1ff8e477d5d5f61315e",
+      "bytes": 316389,
+      "width": 1280,
+      "height": 720,
+      "view": "overview",
+      "variant": "candidate-runtime-r5",
+      "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/crusher-eye-candidate-runtime-r5.png",
+      "sha256": "a1d63ae33fe2fd50d41d59ad401c88c59ce1bebc7b8d20f88e24b03234ce7a51",
+      "bytes": 920298,
+      "width": 1280,
+      "height": 720,
+      "view": "crusher-eye",
+      "variant": "candidate-runtime-r5",
+      "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/crusher-maintenance-candidate-runtime-r5.png",
+      "sha256": "3ead8f2622634c7b223a88118d2daffae1f0218813dc2e168672705f91b07984",
+      "bytes": 1008579,
+      "width": 1280,
+      "height": 720,
+      "view": "crusher-maintenance",
+      "variant": "candidate-runtime-r5",
+      "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/furnace-eye-candidate-runtime-r5.png",
+      "sha256": "eed05110f68bcc47b1e60a9820ec3b7215a81d0bc86250c6d124d38830ce73cd",
+      "bytes": 585560,
+      "width": 1280,
+      "height": 720,
+      "view": "furnace-eye",
+      "variant": "candidate-runtime-r5",
+      "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/transfer-eye-candidate-runtime-r5.png",
+      "sha256": "e5a291281f956fb3b2612763bfc63fd0ef5c81769c6c02de2a83f4c1544633e2",
+      "bytes": 633090,
+      "width": 1280,
+      "height": 720,
+      "view": "transfer-eye",
+      "variant": "candidate-runtime-r5",
+      "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/kiln-eye-candidate-runtime-r5.png",
+      "sha256": "a92a0367fad36300aec5a6190029f750097376a2675ae28e7ca2010fea90fd21",
+      "bytes": 514549,
+      "width": 1280,
+      "height": 720,
+      "view": "kiln-eye",
+      "variant": "candidate-runtime-r5",
+      "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/crusher-roofline-candidate-runtime-r5.png",
+      "sha256": "e56687d7aef89768bbf028ed7c426ca0f422c6876a4bc68abfc16090d85413da",
+      "bytes": 722595,
+      "width": 1280,
+      "height": 720,
+      "view": "crusher-roofline",
+      "variant": "candidate-runtime-r5",
+      "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/furnace-skyline-candidate-runtime-r5.png",
+      "sha256": "725aba1699f04f1bee52cc6ec9bf830987ebba17eeff5b6bc120ea7d3cec1ed7",
+      "bytes": 709074,
+      "width": 1280,
+      "height": 720,
+      "view": "furnace-skyline",
+      "variant": "candidate-runtime-r5",
+      "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/cooling-eye-candidate-runtime-r5.png",
+      "sha256": "7bb7d2bbfa2cebce6219e5fe4c0ee0f9b5539308d466d0d98c8029c927f5e7ab",
+      "bytes": 805765,
+      "width": 1280,
+      "height": 720,
+      "view": "cooling-eye",
+      "variant": "candidate-runtime-r5",
+      "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/bunker-player-candidate-runtime-r5.png",
+      "sha256": "75bbf7625b1952de7895c78eec4dafed0c4fe3c2bf93a70365208943d87bb5bc",
+      "bytes": 415006,
+      "width": 1280,
+      "height": 720,
+      "view": "bunker-player",
+      "variant": "candidate-runtime-r5",
+      "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/tipple-player-accepted-finish-before.png",
+      "sha256": "f5ac7ac67936a618adcf2688c227d01a4318ffe6084ba83a9a568ea87bad9501",
+      "bytes": 415939,
+      "width": 1280,
+      "height": 720,
+      "view": "tipple-player",
+      "variant": "accepted-finish-before",
+      "geometryHash": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f"
+    },
+    {
+      "path": "tools/godot-multiplayer/new-maps/gravemill-foundry/revision5/evidence/native/tipple-player-candidate-runtime-r5.png",
+      "sha256": "000be0b1441053ca9de681a37f7b4b5449852bed83584e4432f2ea45a0ddea64",
+      "bytes": 577739,
+      "width": 1280,
+      "height": 720,
+      "view": "tipple-player",
+      "variant": "candidate-runtime-r5",
+      "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879"
+    }
+  ],
+  "decodedPixelComparisons": [
+    {
+      "view": "overview",
+      "actualDifferingPixels": 214849
+    },
+    {
+      "view": "crusher-eye",
+      "actualDifferingPixels": 877128
+    },
+    {
+      "view": "crusher-maintenance",
+      "actualDifferingPixels": 911359
+    },
+    {
+      "view": "furnace-eye",
+      "actualDifferingPixels": 727726
+    },
+    {
+      "view": "transfer-eye",
+      "actualDifferingPixels": 689106
+    },
+    {
+      "view": "kiln-eye",
+      "actualDifferingPixels": 506590
+    },
+    {
+      "view": "crusher-roofline",
+      "actualDifferingPixels": 479834
+    },
+    {
+      "view": "furnace-skyline",
+      "actualDifferingPixels": 512947
+    },
+    {
+      "view": "cooling-eye",
+      "actualDifferingPixels": 893028
+    },
+    {
+      "view": "bunker-player",
+      "actualDifferingPixels": 483499
+    },
+    {
+      "view": "tipple-player",
+      "actualDifferingPixels": 653686
+    }
+  ]
+}

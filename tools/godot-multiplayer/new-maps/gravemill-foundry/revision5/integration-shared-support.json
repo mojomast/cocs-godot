@@ -1,0 +1,18 @@
+{
+  "time": "2026-10-03T18:22:18.495264+00:00",
+  "base": "190fa2a2",
+  "containsReceiptFix": "77d3d16c",
+  "applyCheckParent": "325df524",
+  "applyCheck": "passed on temporary copies; parent untouched",
+  "patchSha256": "bdd396af8397292192f4a0d88840ff7a2177dd71c2c74465278efc672ca3e895",
+  "files": {
+    "tools/map-variety-pipeline/blender_kit.py": "f35f6e2222777c5482b549c2bad8d2b394147b416055b0d2888ac59a3846d442",
+    "tools/map-variety-pipeline/material_adapter.py": "c599f8d1eec6a7fbf3ff653b61a4dd689c90ce4a6ae44e869bc964d48987b88e",
+    "tools/map-variety-pipeline/material_pack.py": "2755948c9a132de6d189cfc8b2579554a5d7f03cfc0e343e237210dc4328f2a6",
+    "tools/map-variety-pipeline/receipt.py": "d896b550f95dd0265277b6e5f9ecca7640f3eaced1e5ded53f8a53a41a9a8e77",
+    "tools/map-variety-pipeline/test_blender_kit_source.py": "75a771278a8756dbcafde9511c45b243209d1411c52055bfb29b453f1ede2086",
+    "tools/map-variety-pipeline/test_material_pack.py": "0d3593b52f5120d5dd72288b7237b1b5c7c04cf92400e01bfb9f3c712ed0d0a8",
+    "tools/map-variety-pipeline/test_receipt.py": "df89fc77bfcc0ba2aa1448d78f5ff652f3f1df60a9ce0b031ea0f4c635fd736d",
+    "tools/map-variety-pipeline/test_receipt_pack_normals.py": "868e4945880c2be3241f0fd4dbeabc06c2115f3100f3adb8292f332c68350ca9"
+  }
+}

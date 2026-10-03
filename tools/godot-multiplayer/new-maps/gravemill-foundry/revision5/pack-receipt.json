@@ -1,0 +1,22 @@
+{
+  "kind": "actual-Moth-pack-source-and-export-receipt",
+  "pack": {
+    "overlaySha256": "86beb51736bea315b2bb35cd7772aff2daec7a1317b13c1eb498c981f2e8c5f0",
+    "baseSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+  },
+  "maps": [
+    {
+      "id": "gravemill-foundry",
+      "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879",
+      "mothOverlaySha256": "86beb51736bea315b2bb35cd7772aff2daec7a1317b13c1eb498c981f2e8c5f0",
+      "reviewedMaterials": 11,
+      "built": true,
+      "blendBytes": 5933855,
+      "glbBytes": 12394520,
+      "primitives": 16,
+      "lineageSha256": "1163720175d4db840ba1706409e328137a679451fa24530593da756ab166c019",
+      "inspectionScope": "actual decoded source-to-GLB channels; native gameplay review separate"
+    }
+  ],
+  "nativeAcceptance": "pending hosted journeys and visual signoff"
+}

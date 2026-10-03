@@ -1,0 +1,9 @@
+{
+  "masterSha256": "437dc16697554e5bcf46862dd9c01c071d103d42f93e2480f1331b1d11eaa83a",
+  "sourceObjects": 270,
+  "exportBatches": 16,
+  "packedImages": 30,
+  "allSourceVerticesAndRigidEndpointsMatch": true,
+  "duplicateSourceHidden": true,
+  "blender": "4.5.14 LTS"
+}

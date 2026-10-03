@@ -1,0 +1,1819 @@
+{
+  "visualRevision": 5,
+  "geometryHash": "61bf7574860285223dd110fec9a8a3ec239b1b3d7102887020009e24d4ae0879",
+  "authoritySha256": "ce1a620bfe0e651a2172e93b359c217fd9b72cc760b8ee44e69f6412236234c5",
+  "authorityChange": {
+    "status": "staged-corrective-production",
+    "sharedShapeSpecSha256": "5f8dabbae916e5c186d6e18d366a00d4517d3fd301226cc561a1ea85d396d7e2",
+    "sourceRevision": 3,
+    "rejectedRevision": 4,
+    "acceptedWalls": 2320,
+    "addedWallPolygons": 2346,
+    "addedWallTriangles": 5840,
+    "walkableGrades": "unchanged",
+    "extraWalkableDecks": 0
+  },
+  "sourceGLBSha256": "46bf1648b32d23e337cd11b2c639a47f17d36c41361aab9434e1e621361e5935",
+  "moth": {
+    "pack": {
+      "overlaySha256": "86beb51736bea315b2bb35cd7772aff2daec7a1317b13c1eb498c981f2e8c5f0",
+      "baseSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+    },
+    "materials": {
+      "GM / soot": {
+        "resource": "forge-steel",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "0c1dec9f25b8df13628d3a2989e35f3ac42a6cff6137e2522f0655750d12c822",
+        "sourceNormalSha256": "8662617c557392b63c6b061f957facfd116e5b87534884060fbde87f388388e5",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "95b14753e863ac71367c158cec2c3978b6b44a54fa35c25e0938f978321c774b",
+        "convertedAlbedoSha256": "fb4ac5ab0718b8a72f12b3db784b07dac3648cbe3400bbe9eb78b94c796150d8",
+        "metallic": 0.22,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "GM / mineral": {
+        "resource": "cast-seams",
+        "role": "surface",
+        "tileMeters": 4,
+        "tilesPerMeter": 0.25,
+        "texelsPerMeter": 128,
+        "sourceColorSha256": "4dcd77b6b90b3621375a21f725e9b881a2c8c46897762b358361ead4671c0ef8",
+        "sourceNormalSha256": "a65f9df057998d11ac92a24f05c5946eb794134f7cc12b9dfab035496c37a858",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "484ebd3f0ab9915be426cca687bc8fd5ff364eef2151a9e4d3e49c1ddb2410df",
+        "convertedAlbedoSha256": "1a2bd1e1a063bb0b6d0f5c0fba268b00e6319bbb2843b351513c78e13ff4c897",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9",
+        "normalStrength": 0.35
+      },
+      "GM / copper": {
+        "resource": "copper-heat-oxide",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "61a16476395dd0cc066dd56f0fdf2fff03e29cb21db4831a885f72266035c873",
+        "sourceNormalSha256": "0ab51bd3acd084e63b9461946a0877cc6b3d9133741b8237f6ae0565b2d850f3",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "d748665e7377609ee92e669c8d4e0d80842d526ae89f2bb3b7bbc7ed227a9794",
+        "convertedAlbedoSha256": "4548638fe81233e2252aee8dbd3b4abda1783a4d8fa91c6f1fb748efe7e1f32a",
+        "metallic": 0.45,
+        "teamColorSource": null,
+        "manifestSha256": "86beb51736bea315b2bb35cd7772aff2daec7a1317b13c1eb498c981f2e8c5f0"
+      },
+      "GM / brass": {
+        "resource": "copper-patina",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "a11f66b6da6268c022fa8b88593d39c2b33c96197bd83be811ed7972672fad8f",
+        "sourceNormalSha256": "7b2ec1c6a0837fdbbe67ed0779e2d39ad3637b405ed0a5186ac21b94db2dab9c",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "0b1951e5830a72bfd483555e1a06a7bacaaa8ac7e379818f8acdd86765caea8b",
+        "convertedAlbedoSha256": "df08158f6dfced7e3e823f32b1a796ece7a2fed8f763505c6f43980cd82516e2",
+        "metallic": 0.5,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "GM / ore": {
+        "resource": "aggregate",
+        "role": "surface",
+        "tileMeters": 4,
+        "tilesPerMeter": 0.25,
+        "texelsPerMeter": 128,
+        "sourceColorSha256": "1a0fccc16edd8ecc4825d47f59eadd477b0861606aa31af7642a9b177877f4e4",
+        "sourceNormalSha256": "61baadb1991cdc3ab47e1f025672c06f9e6f601c0d56552dee34da3e0f8444a4",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "a33f12b68d468f75a8823818da8320d64c1a27c339f71dc26a5a16d7d2a47cff",
+        "convertedAlbedoSha256": "3abb29a4b5da6ed3a1f229c40914a29d0de48e111bcfb2421ee36d5bcb989c05",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9",
+        "normalStrength": 0.35
+      },
+      "GM / chalk": {
+        "resource": "lime-plaster",
+        "role": "surface",
+        "tileMeters": 3,
+        "tilesPerMeter": 0.3333333333333333,
+        "texelsPerMeter": 170.66666666666666,
+        "sourceColorSha256": "20712018b81f70807f044c362860617b4db66da53ebf6f0a829131f836702983",
+        "sourceNormalSha256": "d8630b11ec0b1baaaafefe6ca867e13577511fc3e0fc45fd546aa0b8e94930ef",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "8f9ec4bf33e91c11ccaef29bb0e06af0908f92f39d905276337140ef8f14fdb2",
+        "convertedAlbedoSha256": "245c7716dd9f96a2903bb4c0e285e48c48117ff0d6eb336f9561e1e37c661396",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9",
+        "normalStrength": 0.35
+      },
+      "GM / cooling-floor": {
+        "resource": "wet-soot",
+        "role": "surface",
+        "tileMeters": 3,
+        "tilesPerMeter": 0.3333333333333333,
+        "texelsPerMeter": 170.66666666666666,
+        "sourceColorSha256": "73c40e38d7b632a4013a0b0d55ef7771c804eb7cab3ac47276b4be6a6b7e896e",
+        "sourceNormalSha256": "721cb3b4c8f5fd59869d86a99326ef5a0f4a6deddd98bbc78c3b56ed561fa3e1",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "ef9248fa928c5231bbdae003d4e5a1f6d8571d0824cceafb8a81e04e6ad2b5d2",
+        "convertedAlbedoSha256": "6a411f9d23a6d1047f3837059d11728b8fa7f59e5b946809bf9a7ffa2f5e6701",
+        "metallic": 0.05,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "G4 / ribbed": {
+        "resource": "ribbed-steel",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "c313383b404a6ed622b3ff411f37f5225364f2158621f620e9ef76c15c209132",
+        "sourceNormalSha256": "8662617c557392b63c6b061f957facfd116e5b87534884060fbde87f388388e5",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "5b5c681b84e6cd3b4fc58e5bdb2c46f308811e6b229c026b54f73c89f601e745",
+        "convertedAlbedoSha256": "73170007ef781b95e072a0b23a9ed108f6c0e1fe98edf0ee6626bfbf80d7afd1",
+        "metallic": 0.4,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "G4 / timber": {
+        "resource": "timber-weather",
+        "role": "surface",
+        "tileMeters": 2,
+        "tilesPerMeter": 0.5,
+        "texelsPerMeter": 256,
+        "sourceColorSha256": "032a68abe43f766ae98ab81b1a3a2acbe807d0a0313f55fdb82531cb12312310",
+        "sourceNormalSha256": "7a8f4b78d0c25eddb4def652c706110b27dceef69d8ff3c48f343abf41bd1a5b",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "2d6e17973056f23f1f08ae580345558330cdd44b2de2727d4b8482cc171ecec5",
+        "convertedAlbedoSha256": "fb6bad65ce1a09efa1efbdbb20395056a2c3d6dd185fb30d9798b12a35065b43",
+        "metallic": 0,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      },
+      "G4 / grating": {
+        "resource": "iron-grate",
+        "role": "surface",
+        "tileMeters": 1,
+        "tilesPerMeter": 1.0,
+        "texelsPerMeter": 512,
+        "sourceColorSha256": "404748eb9dbb5783dc435beb1940ce77baab7cca13bf86c3e2f6df29de62f900",
+        "sourceNormalSha256": "ec09f5e04700822fd8640563a51ca2a8aa1bc88a568ac8ed87a1f8d2afdafaf7",
+        "normalAttached": true,
+        "sourceRoughnessSha256": "ab2e42adeeee331b2269800cbdbe0082b6056a81c87d9cf25f0d676e5ed6eef9",
+        "convertedAlbedoSha256": "c1059270b8fe47495739e77c562718250f124bbc88ebf916bdd4cb936a5c95a7",
+        "metallic": 0.45,
+        "teamColorSource": null,
+        "manifestSha256": "640b69273f0cd17b2ae349e2723f222cac17fc13e5198a68da6b39538583f2a9"
+      }
+    }
+  },
+  "sourceObjects": 270,
+  "exportBatches": 16,
+  "newBatches": 8,
+  "master": {
+    "sha256": "437dc16697554e5bcf46862dd9c01c071d103d42f93e2480f1331b1d11eaa83a",
+    "bytes": 5933855
+  },
+  "glb": {
+    "sha256": "237dcc9d1b339116915d824f9896e6ee7daa57b0c13bab08c58da8d51445c9c8",
+    "bytes": 12394520
+  },
+  "blenderVersion": "4.5.14 LTS",
+  "constructionChecks": [
+    {
+      "id": "G1.headframe.0.shoe.-1.-1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.0.leg.-1.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.0.shoe.-1.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.0.leg.-1.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.0.shoe.1.-1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.0.leg.1.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.0.shoe.1.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.0.leg.1.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.0.crossrail.38",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.0.crossrail.43",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.0.sheave",
+      "kind": "drum",
+      "vertices": 40,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.0.cable",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.0.hookblock",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.1.shoe.-1.-1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.1.leg.-1.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.1.shoe.-1.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.1.leg.-1.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.1.shoe.1.-1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.1.leg.1.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.1.shoe.1.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.1.leg.1.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.1.crossrail.43",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.1.crossrail.48",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.1.sheave",
+      "kind": "drum",
+      "vertices": 40,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.1.cable",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G1.headframe.1.hookblock",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.0.casing.0",
+      "kind": "drum",
+      "vertices": 40,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.0.casing.1",
+      "kind": "drum",
+      "vertices": 40,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.0.casing.2",
+      "kind": "drum",
+      "vertices": 40,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.0.rib.0",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.0.rib.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.0.rib.2",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.0.rib.3",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.0.rib.4",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.0.rib.5",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.0.rib.6",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.0.rib.7",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.0.rib.8",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.0.chimney",
+      "kind": "drum",
+      "vertices": 32,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.0.band.27.44",
+      "kind": "drum",
+      "vertices": 32,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.0.band.40.44",
+      "kind": "drum",
+      "vertices": 32,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.0.tap-platform",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.0.launder",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.casing.0",
+      "kind": "drum",
+      "vertices": 48,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.casing.1",
+      "kind": "drum",
+      "vertices": 48,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.casing.2",
+      "kind": "drum",
+      "vertices": 48,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.rib.0",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.rib.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.rib.2",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.rib.3",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.rib.4",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.rib.5",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.rib.6",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.rib.7",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.rib.8",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.rib.9",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.rib.10",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.chimney",
+      "kind": "drum",
+      "vertices": 32,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.band.35",
+      "kind": "drum",
+      "vertices": 32,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.band.49",
+      "kind": "drum",
+      "vertices": 32,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.tap-platform",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G2.furnace.1.launder",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G3.tipple.51.jamb.-1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G3.tipple.51.roof-eave.-1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G3.tipple.51.guide.-1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G3.tipple.51.jamb.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G3.tipple.51.roof-eave.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G3.tipple.51.guide.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G3.tipple.51.arch",
+      "kind": "arch",
+      "vertices": 84,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G3.tipple.51.grain-deck",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G3.tipple.82.jamb.-1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G3.tipple.82.roof-eave.-1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G3.tipple.82.guide.-1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G3.tipple.82.jamb.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G3.tipple.82.roof-eave.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G3.tipple.82.guide.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G3.tipple.82.arch",
+      "kind": "arch",
+      "vertices": 84,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G3.tipple.82.grain-deck",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.0.trestle.0.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.0.trestle.0.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.0.roller.0",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.0.trestle.1.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.0.trestle.1.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.0.roller.1",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.0.trestle.2.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.0.trestle.2.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.0.roller.2",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.0.trestle.3.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.0.trestle.3.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.0.roller.3",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.0.trestle.4.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.0.trestle.4.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.0.roller.4",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.0.belt",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.trestle.0.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.trestle.0.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.roller.0",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.trestle.1.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.trestle.1.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.roller.1",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.trestle.2.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.trestle.2.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.roller.2",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.trestle.3.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.trestle.3.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.roller.3",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.trestle.4.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.trestle.4.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.roller.4",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.trestle.5.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.trestle.5.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.roller.5",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.trestle.6.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.trestle.6.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.roller.6",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.trestle.7.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.trestle.7.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.roller.7",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.1.belt",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.2.trestle.0.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.2.trestle.0.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.2.roller.0",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.2.trestle.1.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.2.trestle.1.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.2.roller.1",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.2.trestle.2.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.2.trestle.2.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.2.roller.2",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.2.trestle.3.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.2.trestle.3.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.2.roller.3",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.2.belt",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.3.trestle.0.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.3.trestle.0.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.3.roller.0",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.3.trestle.1.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.3.trestle.1.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.3.roller.1",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.3.trestle.2.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.3.trestle.2.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.3.roller.2",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.3.trestle.3.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.3.trestle.3.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.3.roller.3",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.3.belt",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.trestle.0.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.trestle.0.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.roller.0",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.trestle.1.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.trestle.1.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.roller.1",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.trestle.2.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.trestle.2.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.roller.2",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.trestle.3.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.trestle.3.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.roller.3",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.trestle.4.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.trestle.4.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.roller.4",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.trestle.5.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.trestle.5.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.roller.5",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.trestle.6.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.trestle.6.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.roller.6",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.trestle.7.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.trestle.7.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.roller.7",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.trestle.8.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.trestle.8.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.roller.8",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.4.belt",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.trestle.0.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.trestle.0.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.roller.0",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.trestle.1.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.trestle.1.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.roller.1",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.trestle.2.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.trestle.2.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.roller.2",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.trestle.3.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.trestle.3.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.roller.3",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.trestle.4.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.trestle.4.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.roller.4",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.trestle.5.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.trestle.5.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.roller.5",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.trestle.6.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.trestle.6.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.roller.6",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.trestle.7.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.trestle.7.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.roller.7",
+      "kind": "drum",
+      "vertices": 20,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G4.conveyor.5.belt",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.0.foot",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.0.surge",
+      "kind": "drum",
+      "vertices": 22,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.0.cap.0",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.0.cap.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.1.foot",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.1.hopper.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.1.hopper.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.1.grate",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.1.cap.0",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.1.cap.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.1.cap.2",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.2.foot",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.2.live-bottom",
+      "kind": "drum",
+      "vertices": 28,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.2.discharge",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.2.cap.0",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.2.cap.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.2.cap.2",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.2.cap.3",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.3.foot",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.3.surge",
+      "kind": "drum",
+      "vertices": 22,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.3.cap.0",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.3.cap.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.4.foot",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.4.hopper.-1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.4.hopper.1",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.4.grate",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.4.cap.0",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.4.cap.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.4.cap.2",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.5.foot",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.5.live-bottom",
+      "kind": "drum",
+      "vertices": 28,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.5.discharge",
+      "kind": "strut",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.5.cap.0",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.5.cap.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.5.cap.2",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G5.bunker.5.cap.3",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.0.toothed-drum",
+      "kind": "drum",
+      "vertices": 44,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.0.tooth.0",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.0.tooth.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.0.tooth.2",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.0.tooth.3",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.0.tooth.4",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.0.tooth.5",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.0.tooth.6",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.0.tooth.7",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.0.tooth.8",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.0.tooth.9",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.0.tooth.10",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.0.tooth.11",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.0.gear.-1",
+      "kind": "drum",
+      "vertices": 40,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.0.gearbox.-1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.0.gear.1",
+      "kind": "drum",
+      "vertices": 40,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.0.gearbox.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.0.safety-house",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.1.toothed-drum",
+      "kind": "drum",
+      "vertices": 44,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.1.tooth.0",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.1.tooth.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.1.tooth.2",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.1.tooth.3",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.1.tooth.4",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.1.tooth.5",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.1.tooth.6",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.1.tooth.7",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.1.tooth.8",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.1.tooth.9",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.1.tooth.10",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.1.tooth.11",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.1.gear.-1",
+      "kind": "drum",
+      "vertices": 40,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.1.gearbox.-1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.1.gear.1",
+      "kind": "drum",
+      "vertices": 40,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.1.gearbox.1",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    },
+    {
+      "id": "G6.crusher.1.safety-house",
+      "kind": "box",
+      "vertices": 8,
+      "endpointAndBoundsMatch": true
+    }
+  ],
+  "nativeAcceptance": "pending",
+  "baselineMaterialRoles": {
+    "remap": {
+      "GM / soot": "GM / chalk"
+    },
+    "reason": "Accepted runtime uses pale cast architecture; lime-plaster on legacy architectural soot restores that role. New structural steel retains forge-steel. Mineral normal relief .35; source normal bytes unchanged."
+  }
+}
