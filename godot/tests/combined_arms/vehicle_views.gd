@@ -3,6 +3,7 @@ const SportsControls = preload("res://sports/controls.gd")
 const ArmsControls = preload("res://combined_arms/controls.gd")
 const Chase = preload("res://sports/chase.gd")
 const LocalSettings = preload("res://ui/local_settings.gd")
+const SessionStub = preload("res://tests/combined_arms/session_stub.gd")
 var failures := 0
 
 func check(ok: bool, label: String) -> void:
@@ -84,5 +85,40 @@ func run() -> void:
 	chase.cells = {Vector2i(0, -1):[0], Vector2i(-1, -1):[0]}
 	chase.follow(vehicle(), 1.0 / 60.0)
 	check(chase.obstructed and chase.eye.z > -5, "chase boom pulls ahead of wall")
+	# Exercise the actual world/session camera compositor, not merely its chase
+	# helper. The source driver yaw follows chassis heading - PI after a turn.
+	var session := SessionStub.new()
+	session.add_child(session.camera)
+	root.add_child(session)
+	session.phase = 3
+	session.received_pose = true
+	session.client.actor_id = 0
+	session.snapshot_watch.observe()
+	var mounted_actor := {"id":0, "vehicleId":7, "vehicleSeat":"driver", "vehicleSeatIndex":0, "health":100, "dead":0}
+	var mounted_vehicle := vehicle()
+	mounted_vehicle.id = 7
+	mounted_vehicle.driver = 0
+	mounted_vehicle.gunner = null
+	mounted_vehicle.passengers = []
+	mounted_vehicle.health = 300
+	mounted_vehicle.respawnTimer = 0
+	session.presentation.local_actor = mounted_actor
+	session.vehicle_bridge.observe({"actors":[mounted_actor], "vehicles":[mounted_vehicle]}, 0)
+	session.yaw = -PI
+	session.pitch = 0.0
+	session.render_local_translation(1.0)
+	check(session.camera.position.z < -8 and (session.camera.global_basis * Vector3.FORWARD).z > 0.99, "world session owns chase eye and forward sight")
+	mounted_vehicle.yaw = PI / 2
+	session.yaw = -PI / 2
+	session.vehicle_bridge.observe({"actors":[mounted_actor], "vehicles":[mounted_vehicle]}, 0)
+	session.render_local_translation(1.016)
+	check((session.camera.global_basis * Vector3.FORWARD).x > 0.99, "source turn rotates world mounted sight as well as eye")
+	session._process(0.001)
+	check((session.camera.global_basis * Vector3.FORWARD).x > 0.99, "session process cannot overwrite mounted pose orientation")
+	session.vehicle_camera.toggle_view()
+	session.render_local_translation(1.032)
+	check(session.camera.position.y > 1.4 and (session.camera.global_basis * Vector3.FORWARD).x > 0.99, "world cockpit tracks source aim")
+	root.remove_child(session)
+	session.free()
 	print("VEHICLE VIEWS failures=", failures)
 	quit(1 if failures else 0)
