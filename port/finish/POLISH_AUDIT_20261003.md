@@ -182,3 +182,12 @@ Returned for single-writer control state, actual catalog-content comparison and
 recovery fixtures covering these cases. The added native gate-registration line
 also needs deliberate integration with K's acceptance changes rather than blindly
 merging shared verifier edits.
+
+Lobby worker superseded its unmerged original checkpoints with **`2f87d812`**
+(runtime), **`0a79068d`** (tests/report), and isolated **`eda8a2da`** (gate line).
+Parent review confirms single choice-state ownership, content-based catalog
+reconciliation, sanitized modes and in-place room highlighting, but requested
+three final corrections before staging: single ownership of `room.editable` too;
+actual frame-driven setup catalog recovery rather than test-only manual refresh;
+and preserving a chosen mode when unrelated catalog entries change. Further work
+must append commits; old reviewed checkpoints remain available for traceability.
