@@ -7,19 +7,22 @@
       "map": "parallax-observatory",
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/parallax-interiors.json",
-        "sha256": "3c7d26b851d031ff1509aa50e7aa81dc26df5f8836b5668e00ad7af2fef39ab5"
+        "sha256": "1073428540576e4b46421a84fa06b1b5aecab6c1c1d796790a92e13a0d8a8c5f"
       }
     },
     "robots": {
       "required": true,
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/robots.json",
-        "sha256": "e0667a6bc7295f30f337f571301f3e7747b84c265835e96c2a310b5ba5e00d85"
+        "sha256": "6dcc7c4d4049c86863f6ed03025d08d97e83499dd1183fcb77759486a8f0ef48"
       }
     },
     "vehicles": {
       "required": true,
-      "promotion": null
+      "promotion": {
+        "receipt": "tools/godot-package/production_receipts/vehicles.json",
+        "sha256": "86d491cc2121ab85f02eb24f2027a9179359528508fdb317cff19b7b0c21876f"
+      }
     },
     "scenery": {
       "required": true,

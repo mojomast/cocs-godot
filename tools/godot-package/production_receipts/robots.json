@@ -418,8 +418,9 @@
     "tools/asset-production/receipt.mjs": "9648c19d979b2486c78830628c2f2508a02b4b2874d1f64149966d88d7e5f9d8",
     "tools/asset-production/reopen.py": "4628bc44122a690495766f3cc967a82d3ab7aeab52c272cca7a202be88e0f5de",
     "tools/godot-campaign/robot-art/build.py": "470a45d39dd24d13fac9f7bd5e1cffd395a8aa9f4de2f2ecddca365be908815e",
-    "tools/godot-package/production_resources.mjs": "3dd106d42ffa298ff7ecbe501e7882e1f0017fcd86e12e1575b12d57c01146ea",
+    "tools/godot-package/production_resources.mjs": "dbd70fc8a048b9d80452042fc2a9448da03cb5e01730400cbb36c95d6f861e5a",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
+    "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
     "tools/godot-robots/build.py": "d3b6244b32a8aa65b984e72db6390c07b8391fc02dd366e94c3f8c293465e1a9",
     "tools/godot-robots/generated/recipe.json": "7510a2a78e0f54e3609af9d4a030da292ad8734605e592db048b95cbfb3bb76a",
     "tools/godot-robots/masters/caisson_guard_skeletal.glb": "26e814a10d49997b599628f30afc068331482e62573f69aaff02391c79e24e26",
@@ -491,5 +492,23 @@
       "after": "8518e24c6397db09408e7e1d9bc38546be26572beb8baf753fac34bb646646c3",
       "nativeValidation": "Pending; D native evidence predates this scenery adapter"
     }
+  },
+  "packageVerifierAdvance": {
+    "previousReceipt": {
+      "commit": "6e6395a2c4d4e204b7d017cfd59c5d8748daea16",
+      "path": "tools/godot-package/production_receipts/robots.json",
+      "sha256": "e0667a6bc7295f30f337f571301f3e7747b84c265835e96c2a310b5ba5e00d85"
+    },
+    "changed": {
+      "tools/godot-package/production_resources.mjs": {
+        "before": "3dd106d42ffa298ff7ecbe501e7882e1f0017fcd86e12e1575b12d57c01146ea",
+        "after": "dbd70fc8a048b9d80452042fc2a9448da03cb5e01730400cbb36c95d6f861e5a"
+      }
+    },
+    "added": {
+      "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1"
+    },
+    "reason": "Parent 1f129ab2 authorized bounded vehicle asset promotion and import closure; supporting verifier advance only for retained robot/Parallax promotions; no rebuilt assets or new native attestation",
+    "review": "port/finish/VEHICLE_PACKAGE_PROMOTION.md"
   }
 }
