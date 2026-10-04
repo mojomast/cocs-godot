@@ -1,0 +1,38 @@
+{
+  "phase": "parity-response-only-v1",
+  "mode": "single-response",
+  "group": "parity-response",
+  "argv": [
+    "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--single-threaded-scene",
+    "--path",
+    "/home/mojo/.tmp-on-disk/cocs-walker-parity-response-ag/godot/tests/walker_parity_response/parity-response-ag-01",
+    "--script",
+    "res://tests/walker_parity_response/driver.gd",
+    "--",
+    "--group=parity-response",
+    "--mode=single-response",
+    "--grant-id=AG",
+    "--grant-sha256=193374d8085792857b15806ec0877c9fa499fb970c5af8bc7d61c9afb763819a"
+  ],
+  "grantSha256": "193374d8085792857b15806ec0877c9fa499fb970c5af8bc7d61c9afb763819a",
+  "sourceSha256": "11932ce5036a4ccd352ed0d68f881e5b8917de01279f08e763382be54711e45f",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "lockAcquiredUnix": 1791084377.5387475,
+  "timeoutSeconds": 180,
+  "autoRetry": false,
+  "queued": false,
+  "releaseAudits": [],
+  "processGroupTrace": [],
+  "environment": {
+    "LP_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "failed": true,
+  "owned": {
+    "pid": 2400970,
+    "pgid": 2400970,
+    "startTicks": 626752150
+  }
+}

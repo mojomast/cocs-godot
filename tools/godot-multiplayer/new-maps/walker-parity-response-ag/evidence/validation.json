@@ -1,0 +1,28 @@
+{
+  "sourceTestsPassed": 89,
+  "suites": {
+    "walker-parity-response": 24,
+    "walker-snap-compare": 18,
+    "walker-snap-parity": 8,
+    "walker-admission": 7,
+    "walker-step-up": 32
+  },
+  "analysisAssertionsPassed": true,
+  "nativeInvocations": 1,
+  "nativeScriptCorrections": 0,
+  "sourceRuntimeInputsMatchApprovedParent": "829aa08b",
+  "historicalProvenanceUnchanged": {
+    "tools/godot-multiplayer/new-maps/walker-parity-response/source-provenance.json": "c5612a746d6618ef7a865dca3ecad1da3078b73bfde99a2e6c64014f1207af68",
+    "tools/godot-multiplayer/new-maps/walker-parity-response/review-pins.json": "f1a8138dc563eddc8600dfba57e5843d3234fa6a6daf041c0aa9b017e7bbfb85",
+    "tools/godot-multiplayer/new-maps/walker-snap-compare-af/evidence/artifact-inventory.json": "f3272f5bfe4417c5bf884eaab6c704e21b18dc8c8e7d0e849c14482a5e032189",
+    "tools/godot-multiplayer/new-maps/walker-snap-compare/wiring-provenance.json": "a859a24c960c84487b9d785be095fda9d02a11b3d0a96573e2e406bbc0c5b7bb",
+    "tools/godot-multiplayer/new-maps/walker-snap-compare/cleanup-correction-provenance.json": "c9cb080b36c16787fce371ca1a750c041187f2102649979cc328bc9ceebb7d2e",
+    "tools/godot-multiplayer/new-maps/walker-snap-parity/source-provenance.json": "0068a95211ff69217fc5fb8a5b26eecfb943c103643161e1ebe3f6411b2092e7"
+  },
+  "stageScripts": 13,
+  "stageCacheExists": false,
+  "sidecarsOrCachesDeleted": 0,
+  "rawEngineLogPreservedVerbatim": true,
+  "rawLogFinalBlankLineExpected": true,
+  "allChangesAdditive": true
+}

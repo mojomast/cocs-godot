@@ -1,0 +1,121 @@
+{
+  "scope": "AG delivered files; self-excludes artifact-inventory.json",
+  "files": {
+    "godot/tests/walker_parity_response/parity-response-ag-01/exploration/walker.gd": {
+      "sha256": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+      "bytes": 4222
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/grant.json": {
+      "sha256": "193374d8085792857b15806ec0877c9fa499fb970c5af8bc7d61c9afb763819a",
+      "bytes": 367
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/project.godot": {
+      "sha256": "f90d05dd10f0f28ff049d9627f22d90e1181609e41f5c1284631cf0df34614c5",
+      "bytes": 219
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/response-result.json": {
+      "sha256": "0c6c2492f6dc54ce42be28f575da81970b4be772a8ee8157f93ceb1b11b8fafc",
+      "bytes": 161592
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/source.json": {
+      "sha256": "11932ce5036a4ccd352ed0d68f881e5b8917de01279f08e763382be54711e45f",
+      "bytes": 4156
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/supervisor-result.json": {
+      "sha256": "9cee5eb1b7a3cff145b4377709cfa4dcdf515ce94d670b19abf8b5e7f9b77568",
+      "bytes": 4029
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/supervisor-start.json": {
+      "sha256": "ff676be309be626baa3f1bef0eea499e6389644a3fdc762fca9144f213f59cb3",
+      "bytes": 1235
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/supervisor.log": {
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "bytes": 73
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/tests/walker_admission/fixtures_v4.gd": {
+      "sha256": "c4c175420aaca975acfa8ee277b2088796c2f0f8279751bbc8f2939154070e04",
+      "bytes": 2020
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/tests/walker_admission/slide_telemetry.gd": {
+      "sha256": "b7c04249dd44574c5c14627766983cb571542879b17c39afc458c115178b2df0",
+      "bytes": 884
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/tests/walker_parity_response/candidate.gd": {
+      "sha256": "5fde54de8590834a4bb740aa729dcefcc3d76ad19bcb62cc0ce9de585d50ca16",
+      "bytes": 5665
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/tests/walker_parity_response/driver.gd": {
+      "sha256": "87b1699bd2c68aaba5cb927a4e3693332cf1921dc9fa5c46dc78076921ec0d6a",
+      "bytes": 8781
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/tests/walker_parity_response/planner.gd": {
+      "sha256": "7dadd0a3fb018de12afe867ff5a688663347e99bd6335f92353519d136e76b31",
+      "bytes": 992
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/tests/walker_parity_response/policy.gd": {
+      "sha256": "ca56446dd5043886a8fecfb3d0d68f1f6a5d2bf98941cfb217fd65a070ebacf0",
+      "bytes": 1313
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/tests/walker_snap_parity/planner.gd": {
+      "sha256": "9d61d505822208aaacc03bbb8017d4458d068e5430389aa5849eae7b6fdf01e6",
+      "bytes": 3386
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/tests/walker_snap_parity/query_pair.gd": {
+      "sha256": "91f427d0ea0d47e9397a7331dd49f798d8041d5d93e31e11331da6ad31a475f7",
+      "bytes": 3619
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/tests/walker_step_up/response_guard.gd": {
+      "sha256": "ff242f1c352755e3655666440731115911b59dc431f0ec7c37807e8c8ec281b0",
+      "bytes": 4299
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/tests/walker_step_up/sweep_proposal.gd": {
+      "sha256": "b253464820a84d8de7e1cfc5abf7d3852f392e055ac6e71d42ce6a678d538d41",
+      "bytes": 17360
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/ui/mouse_motion.gd": {
+      "sha256": "1edc97f26ccf98a6c5f776bf72968cf5fd1258d129566006c0c3ae1222716581",
+      "bytes": 333
+    },
+    "godot/tests/walker_parity_response/parity-response-ag-01/ui/settings_access.gd": {
+      "sha256": "2bb46c9e6ee5dabbdef7a4cd864bf4afcae2a3c8dd7be93d0180a907da7920e0",
+      "bytes": 1385
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-response-ag/README.md": {
+      "sha256": "909cf2c5027812b530a5a68b69c288633d34e41340047e500e9be9477f4fded0",
+      "bytes": 10185
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-response-ag/analyze.py": {
+      "sha256": "ebf98dd02b81eedc8c060c71032eaece457a53d96214d420a8cd0b1d330e1ed7",
+      "bytes": 10451
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-response-ag/evidence/after.json": {
+      "sha256": "5df93e30f417a0d396178a6ea7c72f15ece3e27681ee6fdaab469a1fabb82376",
+      "bytes": 1396059
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-response-ag/evidence/analysis.json": {
+      "sha256": "31c23f189795ef508d4e5ac527808b070add497022582fc643cada9bf3396903",
+      "bytes": 14237
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-response-ag/evidence/authorization.json": {
+      "sha256": "a10df3f79b6178ac0cbc15a3d4ea08808c720b0f31b3d8af990cf7eaf43ff0c6",
+      "bytes": 677
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-response-ag/evidence/before.json": {
+      "sha256": "afa3d5d5e729c95833d37d216497cb7b115b2d84bdf5d210bedb6723c361238a",
+      "bytes": 1395752
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-response-ag/evidence/release.json": {
+      "sha256": "26333f702485a5019673641f4d496b134c4d2c649c36ab70280432cb2cf9de80",
+      "bytes": 837
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-response-ag/evidence/validation.json": {
+      "sha256": "936264d9008218776b71a344a79a1fb9a28178e799f257a99c921b776f849e85",
+      "bytes": 1510
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-response-ag/evidence.py": {
+      "sha256": "ece90ae000fe5fec69255c1ebfa8276a8bb15a41090298198316c771d91ffecb",
+      "bytes": 3656
+    }
+  }
+}

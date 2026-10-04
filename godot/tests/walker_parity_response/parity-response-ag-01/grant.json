@@ -1,0 +1,12 @@
+{
+  "phase": "parity-response-only-v1",
+  "mode": "single-response",
+  "allowedGroups": [
+    "parity-response"
+  ],
+  "grantId": "AG",
+  "authorized": true,
+  "expiresUnix": 1791085269.517978,
+  "sourceSha256": "11932ce5036a4ccd352ed0d68f881e5b8917de01279f08e763382be54711e45f",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae"
+}

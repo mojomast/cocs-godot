@@ -1,0 +1,668 @@
+{
+  "status": "one completed guarded parity response passed; not positive admission",
+  "completedInstrumentedPath": true,
+  "counterInterpretation": "post-return counts valid for this completed error-free path; default zeros on interrupted paths would be unknown",
+  "records": 28,
+  "settleFrames": 20,
+  "inputResponses": 8,
+  "ordinaryApproachResponses": 27,
+  "ordinaryApproachInputResponses": 7,
+  "candidateAttempts": 1,
+  "appliedUpCount": 1,
+  "candidateParentResponses": 1,
+  "firstEligibleFrame": 29,
+  "tick": 27,
+  "candidateResponseCollected": true,
+  "responseGuardPassed": true,
+  "positiveAdmission": false,
+  "nativeStepAdmission": false,
+  "candidateMapWalksRun": 0,
+  "allGuardChecksReached": true,
+  "guardChecksNotReached": [],
+  "rawTraceSha256": "0c6c2492f6dc54ce42be28f575da81970b4be772a8ee8157f93ceb1b11b8fafc",
+  "sourceSha256": "11932ce5036a4ccd352ed0d68f881e5b8917de01279f08e763382be54711e45f",
+  "grantSha256": "193374d8085792857b15806ec0877c9fa499fb970c5af8bc7d61c9afb763819a",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "epsilon": 1e-06,
+  "actualEndpointFloat32": [
+    0.14142125844955444,
+    0.0877559557557106,
+    -0.14142125844955444
+  ],
+  "parityExpectedEndpointFloat32": [
+    0.14142125844955444,
+    0.0877559557557106,
+    -0.14142125844955444
+  ],
+  "endpointErrorFloat32": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "endpointErrorLength": 0.0,
+  "oldExpectedEndpointFloat32": [
+    0.14142125844955444,
+    0.08777780085802078,
+    -0.14142125844955444
+  ],
+  "actualMinusOldEndpointFloat32": [
+    0.0,
+    -2.1845102310180664e-05,
+    0.0
+  ],
+  "actualUpTravelFloat32": [
+    0.0,
+    0.1554642915725708,
+    0.0
+  ],
+  "actualRaisedMinusModeledRaisedFloat32": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parentLastMotionMinusModeledForwardFloat32": [
+    -7.450580596923828e-09,
+    0.0,
+    7.450580596923828e-09
+  ],
+  "forwardErrorLength": 1.0536712127723509e-08,
+  "wholeFrameDeltaFloat32": [
+    -0.070710688829422,
+    0.07108929008245468,
+    0.070710688829422
+  ],
+  "parentPositionDeltaFloat32": [
+    -0.070710688829422,
+    -0.08437500149011612,
+    0.070710688829422
+  ],
+  "wholeMinusParentEqualsActualUp": true,
+  "parentRealVelocity": [
+    -4.24264097213745,
+    -5.0625,
+    4.24264097213745
+  ],
+  "actualGroundedVelocity": [
+    -4.24264049530029,
+    0.0,
+    4.24264049530029
+  ],
+  "liveFinalSupportGuardPassed": true,
+  "finalSupportQuery": {
+    "collideSeparationRay": true,
+    "contacts": [
+      {
+        "collider": "/root/@Node3D@2/PositiveTread",
+        "colliderId": 29645342078,
+        "colliderShape": 0,
+        "depth": 0.0197234023362398,
+        "localShape": 0,
+        "normal": [
+          0.422360450029373,
+          0.802012085914612,
+          -0.422360450029373
+        ],
+        "point": [
+          -1.19209289550781e-07,
+          0.150000005960464,
+          -1.19209289550781e-07
+        ],
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "from": {
+      "basis": [
+        [
+          0.70710676908493,
+          0.0,
+          0.70710676908493
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.70710676908493,
+          0.0,
+          0.70710676908493
+        ]
+      ],
+      "origin": [
+        0.141421258449554,
+        0.0877559557557106,
+        -0.141421258449554
+      ]
+    },
+    "hit": true,
+    "margin": 0.0199999995529652,
+    "maxCollisions": 32,
+    "motion": [
+      0.0,
+      -0.0200999993830919,
+      0.0
+    ],
+    "name": "actual-final-support",
+    "recoveryAsCollision": true,
+    "remainder": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "safeFraction": 1.0,
+    "travel": [
+      0.00652162730693817,
+      -0.00682989694178104,
+      -0.00652182102203369
+    ],
+    "unsafeFraction": 1.0,
+    "validResult": true
+  },
+  "finalSupportIdentities": [
+    {
+      "colliderId": 29645342078,
+      "colliderRid": 115964116994,
+      "colliderShapeIndex": 0,
+      "localShapeIndex": 0,
+      "ridResolved": true
+    }
+  ],
+  "supportNormalAngleDegrees": 36.67732902787887,
+  "supportPlaneError": 0.0,
+  "supportQueryTravelApplied": false,
+  "finalSupportQueryDidNotMutateObservedBody": true,
+  "parentSlideCount": 0,
+  "parentSlides": [],
+  "modeledParentQueries": {
+    "actualDelta": 0.0166666666666667,
+    "backendImplementationVerified": false,
+    "bodyUnchanged": true,
+    "cancellationWrapperExecuted": false,
+    "configuredPhysicsEngineSetting": "DEFAULT",
+    "edgeSource": "predicted pose, not observed internal pre-snap transform",
+    "engine": {
+      "build": "official",
+      "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+      "hex": 263426,
+      "major": 4,
+      "minor": 5,
+      "patch": 2,
+      "status": "stable",
+      "string": "4.5.2-stable (official)",
+      "timestamp": 0
+    },
+    "expectedFinal": [
+      0.141421258449554,
+      0.0877559557557106,
+      -0.141421258449554
+    ],
+    "frame": 29,
+    "parentForward6": {
+      "actualShape": {
+        "height": 1.79999995231628,
+        "radius": 0.349999994039536
+      },
+      "bodyExceptions": [],
+      "bodyRid": 124554051587,
+      "collideSeparationRay": false,
+      "collisionMask": 1,
+      "contacts": [],
+      "excludeBodies": [],
+      "excludeObjects": [],
+      "from": {
+        "basis": [
+          [
+            0.70710676908493,
+            0.0,
+            0.70710676908493
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            -0.70710676908493,
+            0.0,
+            0.70710676908493
+          ]
+        ],
+        "origin": [
+          0.212131947278976,
+          0.172130957245827,
+          -0.212131947278976
+        ]
+      },
+      "hit": false,
+      "margin": 0.0199999995529652,
+      "maxCollisions": 6,
+      "motion": [
+        -0.0707106813788414,
+        0.0,
+        0.0707106813788414
+      ],
+      "name": "query-parity",
+      "recoveryAsCollision": true,
+      "remainder": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "safeFraction": 1.0,
+      "shapeRid": 133143986178,
+      "shapeTransform": {
+        "basis": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "origin": [
+          0.0,
+          0.899999976158142,
+          0.0
+        ]
+      },
+      "travel": [
+        -0.0707106813788414,
+        0.0,
+        0.0707106813788414
+      ],
+      "unsafeFraction": 1.0,
+      "validResult": true
+    },
+    "parentSnap4": {
+      "actualShape": {
+        "height": 1.79999995231628,
+        "radius": 0.349999994039536
+      },
+      "bodyExceptions": [],
+      "bodyRid": 124554051587,
+      "collideSeparationRay": true,
+      "collisionMask": 1,
+      "contacts": [
+        {
+          "collider": "/root/@Node3D@2/PositiveTread",
+          "colliderId": 29645342078,
+          "colliderRid": 115964116994,
+          "colliderShape": 0,
+          "depth": 0.020528394728899,
+          "localShape": 0,
+          "normal": [
+            0.40467157959938,
+            0.82004988193512,
+            -0.40467157959938
+          ],
+          "point": [
+            -1.19209289550781e-07,
+            0.150000005960464,
+            -1.19209289550781e-07
+          ],
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "excludeBodies": [],
+      "excludeObjects": [],
+      "from": {
+        "basis": [
+          [
+            0.70710676908493,
+            0.0,
+            0.70710676908493
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            -0.70710676908493,
+            0.0,
+            0.70710676908493
+          ]
+        ],
+        "origin": [
+          0.141421258449554,
+          0.172130957245827,
+          -0.141421258449554
+        ]
+      },
+      "hit": true,
+      "margin": 0.0199999995529652,
+      "maxCollisions": 4,
+      "motion": [
+        0.0,
+        -0.300000011920929,
+        0.0
+      ],
+      "name": "query-parity",
+      "recoveryAsCollision": true,
+      "remainder": [
+        0.0,
+        -0.215625017881393,
+        0.0
+      ],
+      "safeFraction": 0.28125,
+      "shapeRid": 133143986178,
+      "shapeTransform": {
+        "basis": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "origin": [
+          0.0,
+          0.899999976158142,
+          0.0
+        ]
+      },
+      "travel": [
+        0.0,
+        -0.0843750014901161,
+        0.0
+      ],
+      "unsafeFraction": 0.28515625,
+      "validResult": true
+    },
+    "parentSnapProjectedTravel": [
+      0.0,
+      -0.0843750014901161,
+      0.0
+    ],
+    "physicsHz": 60,
+    "selected": "parentSnap4_projected",
+    "short32": {
+      "actualShape": {
+        "height": 1.79999995231628,
+        "radius": 0.349999994039536
+      },
+      "bodyExceptions": [],
+      "bodyRid": 124554051587,
+      "collideSeparationRay": true,
+      "collisionMask": 1,
+      "contacts": [
+        {
+          "collider": "/root/@Node3D@2/PositiveTread",
+          "colliderId": 29645342078,
+          "colliderRid": 115964116994,
+          "colliderShape": 0,
+          "depth": 0.0201117899268866,
+          "localShape": 0,
+          "normal": [
+            0.404189735651016,
+            0.820524990558624,
+            -0.404189735651016
+          ],
+          "point": [
+            -1.19209289550781e-07,
+            0.150000005960464,
+            -1.19209289550781e-07
+          ],
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "excludeBodies": [],
+      "excludeObjects": [],
+      "from": {
+        "basis": [
+          [
+            0.70710676908493,
+            0.0,
+            0.70710676908493
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            -0.70710676908493,
+            0.0,
+            0.70710676908493
+          ]
+        ],
+        "origin": [
+          0.141421258449554,
+          0.172130957245827,
+          -0.141421258449554
+        ]
+      },
+      "hit": true,
+      "margin": 0.0199999995529652,
+      "maxCollisions": 32,
+      "motion": [
+        0.0,
+        -0.175564289093018,
+        0.0
+      ],
+      "name": "query-parity",
+      "recoveryAsCollision": true,
+      "remainder": [
+        0.0,
+        -0.0912111327052116,
+        0.0
+      ],
+      "safeFraction": 0.48046875,
+      "shapeRid": 133143986178,
+      "shapeTransform": {
+        "basis": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "origin": [
+          0.0,
+          0.899999976158142,
+          0.0
+        ]
+      },
+      "travel": [
+        0.0,
+        -0.0843531563878059,
+        0.0
+      ],
+      "unsafeFraction": 0.484375,
+      "validResult": true
+    },
+    "timeScale": 1.0
+  },
+  "actualUpBefore": {
+    "floorNormal": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "grounded": true,
+    "lastMotion": [
+      -0.070710688829422,
+      0.0,
+      0.070710688829422
+    ],
+    "onCeiling": false,
+    "onWall": false,
+    "parentPositionDelta": [
+      -0.070710688829422,
+      0.0,
+      0.070710688829422
+    ],
+    "parentRealVelocity": [
+      -4.24264097213745,
+      0.0,
+      4.24264097213745
+    ],
+    "platformAngularVelocity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "platformVelocity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "resetCount": 1,
+    "slideCount": 1,
+    "transform": {
+      "basis": [
+        [
+          0.70710676908493,
+          0.0,
+          0.70710676908493
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.70710676908493,
+          0.0,
+          0.70710676908493
+        ]
+      ],
+      "origin": [
+        0.212131947278976,
+        0.0166666638106108,
+        -0.212131947278976
+      ]
+    },
+    "velocity": [
+      -4.24264049530029,
+      0.0,
+      4.24264049530029
+    ]
+  },
+  "actualUpAfter": {
+    "floorNormal": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "grounded": true,
+    "lastMotion": [
+      -0.070710688829422,
+      0.0,
+      0.070710688829422
+    ],
+    "onCeiling": false,
+    "onWall": false,
+    "parentPositionDelta": [
+      -0.070710688829422,
+      0.155464291572571,
+      0.070710688829422
+    ],
+    "parentRealVelocity": [
+      -4.24264097213745,
+      0.0,
+      4.24264097213745
+    ],
+    "platformAngularVelocity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "platformVelocity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "resetCount": 1,
+    "slideCount": 1,
+    "transform": {
+      "basis": [
+        [
+          0.70710676908493,
+          0.0,
+          0.70710676908493
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.70710676908493,
+          0.0,
+          0.70710676908493
+        ]
+      ],
+      "origin": [
+        0.212131947278976,
+        0.172130957245827,
+        -0.212131947278976
+      ]
+    },
+    "velocity": [
+      -4.24264049530029,
+      0.0,
+      4.24264049530029
+    ]
+  },
+  "internalParentCallsTraced": false,
+  "cancellationWrapperObserved": false,
+  "configuredPhysicsEngineSetting": "DEFAULT",
+  "backendImplementationVerified": false,
+  "fullTreadLandingQualified": false,
+  "productionAccountingLimitationRemains": true,
+  "uniqueAERootCauseProved": false,
+  "preservation": {
+    "sidecarsUnchanged": 4953,
+    "sidecarsDeleted": 0,
+    "cleanupPerformed": false,
+    "viewer": {
+      "pid": 2598700,
+      "pgid": 2598689,
+      "startTicks": 522477875
+    },
+    "displaysUnchanged": true,
+    "historicalArchivesUnchanged": true,
+    "all15ProductionDependenciesUnchanged": true
+  }
+}
