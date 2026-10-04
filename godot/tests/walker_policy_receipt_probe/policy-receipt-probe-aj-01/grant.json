@@ -1,0 +1,12 @@
+{
+  "phase": "policy-receipt-probe-v1",
+  "mode": "frozen-receipt",
+  "allowedGroups": [
+    "numeric-membership"
+  ],
+  "grantId": "MOTH-BLENDER-20261004-AJ",
+  "authorized": true,
+  "expiresUnix": 1791101202.1618917,
+  "sourceSha256": "7bad2204e82a553be344756758aee97f876a976dcd25c7a335cea948eb22c3c5",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae"
+}

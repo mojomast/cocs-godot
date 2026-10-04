@@ -1,0 +1,18 @@
+{
+  "phase": "policy-receipt-probe-v1",
+  "mode": "frozen-receipt",
+  "group": "numeric-membership",
+  "namespace": "policy-receipt-probe-aj-01",
+  "files": {
+    "tests/walker_parity_admission/evidence.gd": "acbab472c5042bbe5d3d996fe45e9d71f1114dd24bc8f6316ba891bbaacdb96f",
+    "tests/walker_parity_admission/policy.gd": "6fab2f142b3b849b3902a506a54c95d31f19a7dfecbab0202acb1896572f757f",
+    "probe/cloned_evidence.gd": "19b7c024e3f15a365cd0289bef45fc069f3908fd9325359dccffc556a3242be8",
+    "probe/cloned_policy.gd": "4ce9292d8669d63ff22cfc90b4225cd4fd16635fa6c11d9f33fe2dc0aed5aa0c",
+    "probe/diagnostic.gd": "0a73ac7874798181bfa47bcb9e99509552391577f22b60fffcc60a71eb868bab",
+    "probe/driver.gd": "6931f781ebedc305ca173736489a55348816e9312a389117118fd474530847f6",
+    "project.godot": "7cd444f8cd9502be786451077c59d83c5ea771262449757b55c214941e002dd7"
+  },
+  "receiptSha256": "708fda878f694b46c0ae1968aca653a206ac7b39e9f3af61e0807154cf2922f4",
+  "AIManifestSha256": "e9f57119b10ac400430573e59253d78e714832743855094013ecba57797abd96",
+  "hostPinsSha256": "8c6be04aa050374a0b45f786c74a1b0249fc71600a2e1aba06c89218b71201d5"
+}

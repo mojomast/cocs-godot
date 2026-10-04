@@ -1,0 +1,228 @@
+{
+  "utc": "2026-10-04T07:07:27.168889+00:00",
+  "phase": "policy-receipt-probe-v1",
+  "invocations": 1,
+  "supervisorFailed": false,
+  "nativeReturnCode": 0,
+  "nativeReceiptPresent": true,
+  "hostCollectionReplay": true,
+  "observations": {
+    "candidateMapWalks": 0,
+    "candidateRecords": 678,
+    "cloneEvidenceSha256": "19b7c024e3f15a365cd0289bef45fc069f3908fd9325359dccffc556a3242be8",
+    "clonePolicySha256": "4ce9292d8669d63ff22cfc90b4225cd4fd16635fa6c11d9f33fe2dc0aed5aa0c",
+    "controls": [
+      {
+        "integerGuard": true,
+        "name": "int0",
+        "numericDomain": true,
+        "originalMembership": true,
+        "type": 2
+      },
+      {
+        "integerGuard": true,
+        "name": "int1",
+        "numericDomain": true,
+        "originalMembership": true,
+        "type": 2
+      },
+      {
+        "integerGuard": true,
+        "name": "json0",
+        "numericDomain": true,
+        "originalMembership": false,
+        "type": 3
+      },
+      {
+        "integerGuard": true,
+        "name": "json1",
+        "numericDomain": true,
+        "originalMembership": false,
+        "type": 3
+      },
+      {
+        "integerGuard": true,
+        "name": "minus1",
+        "numericDomain": false,
+        "originalMembership": false,
+        "type": 2
+      },
+      {
+        "integerGuard": true,
+        "name": "two",
+        "numericDomain": false,
+        "originalMembership": false,
+        "type": 2
+      },
+      {
+        "integerGuard": false,
+        "name": "half",
+        "numericDomain": false,
+        "originalMembership": false,
+        "type": 3
+      },
+      {
+        "integerGuard": false,
+        "name": "false",
+        "numericDomain": false,
+        "originalMembership": false,
+        "type": 1
+      },
+      {
+        "integerGuard": false,
+        "name": "true",
+        "numericDomain": false,
+        "originalMembership": false,
+        "type": 1
+      },
+      {
+        "integerGuard": false,
+        "name": "string0",
+        "numericDomain": false,
+        "originalMembership": false,
+        "type": 4
+      },
+      {
+        "integerGuard": false,
+        "name": "string1",
+        "numericDomain": false,
+        "originalMembership": false,
+        "type": 4
+      },
+      {
+        "integerGuard": false,
+        "name": "null",
+        "numericDomain": false,
+        "originalMembership": false,
+        "type": 0
+      },
+      {
+        "integerGuard": false,
+        "name": "nan",
+        "numericDomain": false,
+        "originalMembership": false,
+        "type": 3
+      },
+      {
+        "integerGuard": false,
+        "name": "inf",
+        "numericDomain": false,
+        "originalMembership": false,
+        "type": 3
+      },
+      {
+        "integerGuard": false,
+        "name": "minus_inf",
+        "numericDomain": false,
+        "originalMembership": false,
+        "type": 3
+      }
+    ],
+    "correctedPolicyResult": true,
+    "diagnostic": {
+      "allowed": [
+        {
+          "number": 0,
+          "type": 2
+        },
+        {
+          "number": 1,
+          "type": 2
+        }
+      ],
+      "caseIndex": 0,
+      "checkOrder": [
+        "returned",
+        "frame",
+        "integer_up",
+        "up_membership",
+        "parent_calls",
+        "accepted_type"
+      ],
+      "checks": [
+        true,
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "location": "Evidence.profile.lifecycle_invariant",
+      "nativeCountersKnown": false,
+      "numericAlternative": true,
+      "originalPolicyResult": false,
+      "physicalCallCounts": null,
+      "profileIndex": 1,
+      "recordIndex": 0,
+      "recordSection": "settle",
+      "schema": "ai-policy-source-diagnostic-v1",
+      "sourceLine": 139,
+      "up": {
+        "number": 0.0,
+        "type": 3
+      }
+    },
+    "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+    "grantSha256": "fc3c3a85fe17b208599526f7e946893ea88d638f8d4df71964df6d57c237cfb0",
+    "group": "numeric-membership",
+    "hypothesisConfirmed": true,
+    "membershipFailures": 678,
+    "mode": "frozen-receipt",
+    "mutantRejectionsPass": true,
+    "mutants": [
+      {
+        "correctedPolicyResult": false,
+        "name": "minus1"
+      },
+      {
+        "correctedPolicyResult": false,
+        "name": "half"
+      },
+      {
+        "correctedPolicyResult": false,
+        "name": "false"
+      },
+      {
+        "correctedPolicyResult": false,
+        "name": "missing_record"
+      },
+      {
+        "correctedPolicyResult": false,
+        "name": "duplicate_case"
+      },
+      {
+        "correctedPolicyResult": false,
+        "name": "wrong_hash"
+      },
+      {
+        "correctedPolicyResult": false,
+        "name": "wrong_outcome"
+      }
+    ],
+    "nativeStepAdmission": false,
+    "originalEvidenceSha256": "acbab472c5042bbe5d3d996fe45e9d71f1114dd24bc8f6316ba891bbaacdb96f",
+    "originalGrantSha256": "3750e6dba14af411547f9880343bb72813ea5b35275d7e4db4c7737866e561f5",
+    "originalPolicyResult": false,
+    "originalPolicySha256": "6fab2f142b3b849b3902a506a54c95d31f19a7dfecbab0202acb1896572f757f",
+    "originalSourceSha256": "59b3d7fefd040fc006f6c8d2067ae35f56d583d2a603a14534d726b5b6cf088d",
+    "phase": "policy-receipt-probe-v1",
+    "positiveAdmission": false,
+    "probeCollected": true,
+    "productionPromotion": false,
+    "receiptSha256": "708fda878f694b46c0ae1968aca653a206ac7b39e9f3af61e0807154cf2922f4",
+    "sourceSha256": "7bad2204e82a553be344756758aee97f876a976dcd25c7a335cea948eb22c3c5",
+    "variantAgreementPass": true
+  },
+  "rawResultLines": [
+    "PROBE_RESULT {\"candidateMapWalks\":0,\"candidateRecords\":678,\"cloneEvidenceSha256\":\"19b7c024e3f15a365cd0289bef45fc069f3908fd9325359dccffc556a3242be8\",\"clonePolicySha256\":\"4ce9292d8669d63ff22cfc90b4225cd4fd16635fa6c11d9f33fe2dc0aed5aa0c\",\"controls\":[{\"integerGuard\":true,\"name\":\"int0\",\"numericDomain\":true,\"originalMembership\":true,\"type\":2},{\"integerGuard\":true,\"name\":\"int1\",\"numericDomain\":true,\"originalMembership\":true,\"type\":2},{\"integerGuard\":true,\"name\":\"json0\",\"numericDomain\":true,\"originalMembership\":false,\"type\":3},{\"integerGuard\":true,\"name\":\"json1\",\"numericDomain\":true,\"originalMembership\":false,\"type\":3},{\"integerGuard\":true,\"name\":\"minus1\",\"numericDomain\":false,\"originalMembership\":false,\"type\":2},{\"integerGuard\":true,\"name\":\"two\",\"numericDomain\":false,\"originalMembership\":false,\"type\":2},{\"integerGuard\":false,\"name\":\"half\",\"numericDomain\":false,\"originalMembership\":false,\"type\":3},{\"integerGuard\":false,\"name\":\"false\",\"numericDomain\":false,\"originalMembership\":false,\"type\":1},{\"integerGuard\":false,\"name\":\"true\",\"numericDomain\":false,\"originalMembership\":false,\"type\":1},{\"integerGuard\":false,\"name\":\"string0\",\"numericDomain\":false,\"originalMembership\":false,\"type\":4},{\"integerGuard\":false,\"name\":\"string1\",\"numericDomain\":false,\"originalMembership\":false,\"type\":4},{\"integerGuard\":false,\"name\":\"null\",\"numericDomain\":false,\"originalMembership\":false,\"type\":0},{\"integerGuard\":false,\"name\":\"nan\",\"numericDomain\":false,\"originalMembership\":false,\"type\":3},{\"integerGuard\":false,\"name\":\"inf\",\"numericDomain\":false,\"originalMembership\":false,\"type\":3},{\"integerGuard\":false,\"name\":\"minus_inf\",\"numericDomain\":false,\"originalMembership\":false,\"type\":3}],\"correctedPolicyResult\":true,\"diagnostic\":{\"allowed\":[{\"number\":0,\"type\":2},{\"number\":1,\"type\":2}],\"caseIndex\":0,\"checkOrder\":[\"returned\",\"frame\",\"integer_up\",\"up_membership\",\"parent_calls\",\"accepted_type\"],\"checks\":[true,true,true,false,true,true],\"location\":\"Evidence.profile.lifecycle_invariant\",\"nativeCountersKnown\":false,\"numericAlternative\":true,\"originalPolicyResult\":false,\"physicalCallCounts\":null,\"profileIndex\":1,\"recordIndex\":0,\"recordSection\":\"settle\",\"schema\":\"ai-policy-source-diagnostic-v1\",\"sourceLine\":139,\"up\":{\"number\":0.0,\"type\":3}},\"engineSha256\":\"5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae\",\"grantSha256\":\"fc3c3a85fe17b208599526f7e946893ea88d638f8d4df71964df6d57c237cfb0\",\"group\":\"numeric-membership\",\"hypothesisConfirmed\":true,\"membershipFailures\":678,\"mode\":\"frozen-receipt\",\"mutantRejectionsPass\":true,\"mutants\":[{\"correctedPolicyResult\":false,\"name\":\"minus1\"},{\"correctedPolicyResult\":false,\"name\":\"half\"},{\"correctedPolicyResult\":false,\"name\":\"false\"},{\"correctedPolicyResult\":false,\"name\":\"missing_record\"},{\"correctedPolicyResult\":false,\"name\":\"duplicate_case\"},{\"correctedPolicyResult\":false,\"name\":\"wrong_hash\"},{\"correctedPolicyResult\":false,\"name\":\"wrong_outcome\"}],\"nativeStepAdmission\":false,\"originalEvidenceSha256\":\"acbab472c5042bbe5d3d996fe45e9d71f1114dd24bc8f6316ba891bbaacdb96f\",\"originalGrantSha256\":\"3750e6dba14af411547f9880343bb72813ea5b35275d7e4db4c7737866e561f5\",\"originalPolicyResult\":false,\"originalPolicySha256\":\"6fab2f142b3b849b3902a506a54c95d31f19a7dfecbab0202acb1896572f757f\",\"originalSourceSha256\":\"59b3d7fefd040fc006f6c8d2067ae35f56d583d2a603a14534d726b5b6cf088d\",\"phase\":\"policy-receipt-probe-v1\",\"positiveAdmission\":false,\"probeCollected\":true,\"productionPromotion\":false,\"receiptSha256\":\"708fda878f694b46c0ae1968aca653a206ac7b39e9f3af61e0807154cf2922f4\",\"sourceSha256\":\"7bad2204e82a553be344756758aee97f876a976dcd25c7a335cea948eb22c3c5\",\"variantAgreementPass\":true}"
+  ],
+  "logErrors": [],
+  "qualification": "Receipt-only native observations. Helper locates independent invariant, not first executed rejection. Original AI/AH failed results and unknown counters unchanged. No pre/post serialization immutability measurement claimed.",
+  "releasedUtc": "2026-10-04T07:07:14.880139+00:00",
+  "positivePairsUnrun": 4,
+  "positiveProfilesUnrun": 8,
+  "candidateMapJourneysUnrun": 60,
+  "productionAccountingOpen": true,
+  "noRetry": true,
+  "noSourceCorrection": true
+}

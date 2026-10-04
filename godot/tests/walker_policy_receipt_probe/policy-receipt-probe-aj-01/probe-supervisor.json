@@ -1,0 +1,244 @@
+{
+  "phase": "policy-receipt-probe-v1",
+  "mode": "frozen-receipt",
+  "group": "numeric-membership",
+  "sourceSha256": "7bad2204e82a553be344756758aee97f876a976dcd25c7a335cea948eb22c3c5",
+  "grantSha256": "fc3c3a85fe17b208599526f7e946893ea88d638f8d4df71964df6d57c237cfb0",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "failed": false,
+  "probeCollected": true,
+  "positiveAdmission": false,
+  "nativeStepAdmission": false,
+  "productionPromotion": false,
+  "autoRetry": false,
+  "queued": false,
+  "releaseAudits": [
+    {
+      "utc": "2026-10-04T07:06:54.152277+00:00",
+      "members": [],
+      "measured": true
+    },
+    {
+      "utc": "2026-10-04T07:06:54.370046+00:00",
+      "members": [],
+      "measured": true
+    },
+    {
+      "utc": "2026-10-04T07:06:54.590745+00:00",
+      "members": [],
+      "measured": true
+    }
+  ],
+  "processGroupTrace": [
+    {
+      "unix": 1791097612.8589072,
+      "members": [
+        {
+          "pid": 3162248,
+          "pgid": 3162248,
+          "startTicks": 628075682
+        }
+      ]
+    },
+    {
+      "unix": 1791097612.9284744,
+      "members": [
+        {
+          "pid": 3162248,
+          "pgid": 3162248,
+          "startTicks": 628075682
+        }
+      ]
+    },
+    {
+      "unix": 1791097612.9984818,
+      "members": [
+        {
+          "pid": 3162248,
+          "pgid": 3162248,
+          "startTicks": 628075682
+        }
+      ]
+    },
+    {
+      "unix": 1791097613.068901,
+      "members": [
+        {
+          "pid": 3162248,
+          "pgid": 3162248,
+          "startTicks": 628075682
+        }
+      ]
+    },
+    {
+      "unix": 1791097613.139497,
+      "members": [
+        {
+          "pid": 3162248,
+          "pgid": 3162248,
+          "startTicks": 628075682
+        }
+      ]
+    },
+    {
+      "unix": 1791097613.2092755,
+      "members": [
+        {
+          "pid": 3162248,
+          "pgid": 3162248,
+          "startTicks": 628075682
+        }
+      ]
+    },
+    {
+      "unix": 1791097613.2790504,
+      "members": [
+        {
+          "pid": 3162248,
+          "pgid": 3162248,
+          "startTicks": 628075682
+        }
+      ]
+    },
+    {
+      "unix": 1791097613.3506434,
+      "members": [
+        {
+          "pid": 3162248,
+          "pgid": 3162248,
+          "startTicks": 628075682
+        }
+      ]
+    },
+    {
+      "unix": 1791097613.423998,
+      "members": [
+        {
+          "pid": 3162248,
+          "pgid": 3162248,
+          "startTicks": 628075682
+        }
+      ]
+    },
+    {
+      "unix": 1791097613.4944248,
+      "members": [
+        {
+          "pid": 3162248,
+          "pgid": 3162248,
+          "startTicks": 628075682
+        }
+      ]
+    },
+    {
+      "unix": 1791097613.5660505,
+      "members": [
+        {
+          "pid": 3162248,
+          "pgid": 3162248,
+          "startTicks": 628075682
+        }
+      ]
+    },
+    {
+      "unix": 1791097613.6357384,
+      "members": [
+        {
+          "pid": 3162248,
+          "pgid": 3162248,
+          "startTicks": 628075682
+        }
+      ]
+    },
+    {
+      "unix": 1791097613.7065578,
+      "members": [
+        {
+          "pid": 3162248,
+          "pgid": 3162248,
+          "startTicks": 628075682
+        }
+      ]
+    },
+    {
+      "unix": 1791097613.776597,
+      "members": [
+        {
+          "pid": 3162248,
+          "pgid": 3162248,
+          "startTicks": 628075682
+        }
+      ]
+    },
+    {
+      "unix": 1791097613.8498242,
+      "members": [
+        {
+          "pid": 3162248,
+          "pgid": 3162248,
+          "startTicks": 628075682
+        }
+      ]
+    },
+    {
+      "unix": 1791097613.9223495,
+      "members": [
+        {
+          "pid": 3162248,
+          "pgid": 3162248,
+          "startTicks": 628075682
+        }
+      ]
+    },
+    {
+      "unix": 1791097613.991877,
+      "members": [
+        {
+          "pid": 3162248,
+          "pgid": 3162248,
+          "startTicks": 628075682
+        }
+      ]
+    },
+    {
+      "unix": 1791097614.0633802,
+      "members": [
+        {
+          "pid": 3162248,
+          "pgid": 3162248,
+          "startTicks": 628075682
+        }
+      ]
+    }
+  ],
+  "timeoutSeconds": 180,
+  "environment": {
+    "LP_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "lockAcquiredUnix": 1791097612.857961,
+  "argv": [
+    "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--single-threaded-scene",
+    "--path",
+    "/home/mojo/.tmp-on-disk/cocs-walker-policy-receipt-probe-aj/godot/tests/walker_policy_receipt_probe/policy-receipt-probe-aj-01",
+    "--script",
+    "res://probe/driver.gd",
+    "--",
+    "--group=numeric-membership",
+    "--mode=frozen-receipt",
+    "--grant-id=MOTH-BLENDER-20261004-AJ",
+    "--grant-sha256=fc3c3a85fe17b208599526f7e946893ea88d638f8d4df71964df6d57c237cfb0"
+  ],
+  "owned": {
+    "pid": 3162248,
+    "pgid": 3162248,
+    "startTicks": 628075682
+  },
+  "returnCode": 0,
+  "releasedCleanly": true,
+  "nativeReceiptSha256": "d923e1dda20e2492ff413138dfc20a49434cb3792927f7d6f394b475c239c588",
+  "hypothesisConfirmed": true,
+  "lockReleasePendingUnix": 1791097614.8149688
+}

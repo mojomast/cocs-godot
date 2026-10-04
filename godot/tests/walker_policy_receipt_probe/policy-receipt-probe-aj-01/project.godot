@@ -1,0 +1,7 @@
+config_version=5
+[application]
+config/name="Frozen receipt numeric probe"
+[threading]
+worker_pool/max_threads=1
+[rendering]
+renderer/rendering_method="gl_compatibility"

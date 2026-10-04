@@ -1,0 +1,37 @@
+{
+  "phase": "policy-receipt-probe-v1",
+  "mode": "frozen-receipt",
+  "group": "numeric-membership",
+  "sourceSha256": "7bad2204e82a553be344756758aee97f876a976dcd25c7a335cea948eb22c3c5",
+  "grantSha256": "fc3c3a85fe17b208599526f7e946893ea88d638f8d4df71964df6d57c237cfb0",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "failed": true,
+  "probeCollected": false,
+  "positiveAdmission": false,
+  "nativeStepAdmission": false,
+  "productionPromotion": false,
+  "autoRetry": false,
+  "queued": false,
+  "releaseAudits": [],
+  "processGroupTrace": [],
+  "timeoutSeconds": 180,
+  "environment": {
+    "LP_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "lockAcquiredUnix": 1791097612.857961,
+  "argv": [
+    "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--single-threaded-scene",
+    "--path",
+    "/home/mojo/.tmp-on-disk/cocs-walker-policy-receipt-probe-aj/godot/tests/walker_policy_receipt_probe/policy-receipt-probe-aj-01",
+    "--script",
+    "res://probe/driver.gd",
+    "--",
+    "--group=numeric-membership",
+    "--mode=frozen-receipt",
+    "--grant-id=MOTH-BLENDER-20261004-AJ",
+    "--grant-sha256=fc3c3a85fe17b208599526f7e946893ea88d638f8d4df71964df6d57c237cfb0"
+  ]
+}

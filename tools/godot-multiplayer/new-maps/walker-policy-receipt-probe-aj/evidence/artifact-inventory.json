@@ -1,0 +1,97 @@
+{
+  "scope": "AJ delivery, inventory self-excluded",
+  "files": {
+    "godot/tests/walker_policy_receipt_probe/policy-receipt-probe-aj-01/frozen-negative.json": {
+      "sha256": "708fda878f694b46c0ae1968aca653a206ac7b39e9f3af61e0807154cf2922f4",
+      "bytes": 9645590
+    },
+    "godot/tests/walker_policy_receipt_probe/policy-receipt-probe-aj-01/grant.json": {
+      "sha256": "fc3c3a85fe17b208599526f7e946893ea88d638f8d4df71964df6d57c237cfb0",
+      "bytes": 392
+    },
+    "godot/tests/walker_policy_receipt_probe/policy-receipt-probe-aj-01/probe/cloned_evidence.gd": {
+      "sha256": "19b7c024e3f15a365cd0289bef45fc069f3908fd9325359dccffc556a3242be8",
+      "bytes": 26842
+    },
+    "godot/tests/walker_policy_receipt_probe/policy-receipt-probe-aj-01/probe/cloned_policy.gd": {
+      "sha256": "4ce9292d8669d63ff22cfc90b4225cd4fd16635fa6c11d9f33fe2dc0aed5aa0c",
+      "bytes": 4067
+    },
+    "godot/tests/walker_policy_receipt_probe/policy-receipt-probe-aj-01/probe/diagnostic.gd": {
+      "sha256": "0a73ac7874798181bfa47bcb9e99509552391577f22b60fffcc60a71eb868bab",
+      "bytes": 3152
+    },
+    "godot/tests/walker_policy_receipt_probe/policy-receipt-probe-aj-01/probe/driver.gd": {
+      "sha256": "6931f781ebedc305ca173736489a55348816e9312a389117118fd474530847f6",
+      "bytes": 8097
+    },
+    "godot/tests/walker_policy_receipt_probe/policy-receipt-probe-aj-01/probe-result.json": {
+      "sha256": "d923e1dda20e2492ff413138dfc20a49434cb3792927f7d6f394b475c239c588",
+      "bytes": 4938
+    },
+    "godot/tests/walker_policy_receipt_probe/policy-receipt-probe-aj-01/probe-start.json": {
+      "sha256": "452a71c9680d0cd2612ca685a2b55a92174354e70c2eb5d559558ef10813582f",
+      "bytes": 1286
+    },
+    "godot/tests/walker_policy_receipt_probe/policy-receipt-probe-aj-01/probe-supervisor.json": {
+      "sha256": "6a20af8d1657e3f8d8b7bac5d37f044e823dbf896445845ee065d76d61484efd",
+      "bytes": 5166
+    },
+    "godot/tests/walker_policy_receipt_probe/policy-receipt-probe-aj-01/probe.log": {
+      "sha256": "ca7f9585f3936d3db0a49671eb2772e28435313d64915d51b1939981336c6518",
+      "bytes": 3692
+    },
+    "godot/tests/walker_policy_receipt_probe/policy-receipt-probe-aj-01/project.godot": {
+      "sha256": "7cd444f8cd9502be786451077c59d83c5ea771262449757b55c214941e002dd7",
+      "bytes": 169
+    },
+    "godot/tests/walker_policy_receipt_probe/policy-receipt-probe-aj-01/source.json": {
+      "sha256": "7bad2204e82a553be344756758aee97f876a976dcd25c7a335cea948eb22c3c5",
+      "bytes": 1134
+    },
+    "godot/tests/walker_policy_receipt_probe/policy-receipt-probe-aj-01/tests/walker_parity_admission/evidence.gd": {
+      "sha256": "acbab472c5042bbe5d3d996fe45e9d71f1114dd24bc8f6316ba891bbaacdb96f",
+      "bytes": 26836
+    },
+    "godot/tests/walker_policy_receipt_probe/policy-receipt-probe-aj-01/tests/walker_parity_admission/policy.gd": {
+      "sha256": "6fab2f142b3b849b3902a506a54c95d31f19a7dfecbab0202acb1896572f757f",
+      "bytes": 4060
+    },
+    "tools/godot-multiplayer/new-maps/walker-policy-receipt-probe-aj/README.md": {
+      "sha256": "357e5e1fe9380cf8521a99549a87f3d4b103cc48af888517bb8b134f48e7242a",
+      "bytes": 5240
+    },
+    "tools/godot-multiplayer/new-maps/walker-policy-receipt-probe-aj/audit_aj.py": {
+      "sha256": "d9b2dc901bb305e436aed7c3c7838eddc80127565bc35d82a2266818764d9890",
+      "bytes": 6232
+    },
+    "tools/godot-multiplayer/new-maps/walker-policy-receipt-probe-aj/evidence/AJ-release.json": {
+      "sha256": "0b403dd51471fee34e6bdb4c0ad70e2fb750e1d536ad2fb50ecff6dd09f9f8fc",
+      "bytes": 1060
+    },
+    "tools/godot-multiplayer/new-maps/walker-policy-receipt-probe-aj/evidence/after.json": {
+      "sha256": "1fd9ef39524d11862b41b83d847cceb4d43521b48d497e447ce1442c45727956",
+      "bytes": 7081251
+    },
+    "tools/godot-multiplayer/new-maps/walker-policy-receipt-probe-aj/evidence/analysis.json": {
+      "sha256": "ef3f9ce2000d4a4462025ed88516580159c6b7a755371dd9838f5e0717ab846b",
+      "bytes": 10104
+    },
+    "tools/godot-multiplayer/new-maps/walker-policy-receipt-probe-aj/evidence/authorization.json": {
+      "sha256": "3341301291ada72d8fa30d8a4b478310a5992781341f2a1baddf2cb7d5e266e9",
+      "bytes": 1769
+    },
+    "tools/godot-multiplayer/new-maps/walker-policy-receipt-probe-aj/evidence/before.json": {
+      "sha256": "8dcc739683b6d72a9138606900ef4a1a4790fdb32bc50f0d15c4c8152dd5d33d",
+      "bytes": 7083416
+    },
+    "tools/godot-multiplayer/new-maps/walker-policy-receipt-probe-aj/evidence/execution-record.json": {
+      "sha256": "d540633c9c2476151127b55bacc026777473d00c3dd7a8c9e1c240693b9181db",
+      "bytes": 2620
+    },
+    "tools/godot-multiplayer/new-maps/walker-policy-receipt-probe-aj/evidence/preservation.json": {
+      "sha256": "8befed54277016e1a654e7577d6b17bc18dec28acc7a39d0be3d733a6c9170e2",
+      "bytes": 987
+    }
+  }
+}
