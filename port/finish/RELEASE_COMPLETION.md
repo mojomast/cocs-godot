@@ -8,14 +8,16 @@ finishing and verifying the new candidate.
 ## Active work and ownership
 
 Parallax's reviewed AA-plus-16 contract is integrated as `3520bbdc`, with twelve
-parent source/material/shipping checks passing. It awaits AB release and a separate
-grant; no actual successor, authored-X appearance equivalence or native acceptance.
+parent source/material/shipping checks passing. AC is now authorized after verified
+AB release; actual successor/native evidence and authored-X appearance remain pending.
 
-**Current heavy owner: controls/reference AB**, Astra
-`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8251b512`. Reviewed overhang/phase
-correction passed 32 source tests and strict shipping closure. Authorization covers
-fresh setup/imports, rejection controls, then unchanged reference only. Candidate
-map walks remain excluded; expected reference uphill failures remain failed evidence.
+**Current heavy owner: Parallax glyph production AC**, Astra
+`ses_efd30e1f6ffeLbhHTPoh266kZW`, foundation `672f3377`. Build/reopen, complete
+native basis/material checks and subsequent matched captures are authorized.
+AB delivered `0dd335b0` / `5fb9ae68` and released: parent verified 140 hashes and
+three empty audits/four groups. Negative controls pass 34/34; reference preserves
+five downhill passes/five uphill failures. All sixty candidate map walks remain
+unrun. AB evidence review and next Vesper control preparation are source-only.
 
 **Parallax AA released with full native approval blocked.**
 Delivery `b9c53e82`, integrated as failed evidence `dec159d4`, has reviewed build/reopen and native proof of the three
@@ -43,7 +45,7 @@ post-response guard/driver WIP is integrated through `deebb1da` with 24 source t
 and strict shipping closure passing. A missed-overhang rejection fixture blocks
 native readiness; it is being corrected before a controls/reference-only grant.
 Candidate walks require additional inclined-landing and rotated-success controls.
-AB now owns the limited controls/reference native sequence; results remain pending.
+AB is released; its evidence is under review. AC now owns Parallax production.
 
 **Vesper Z released after its first failed native group.**
 Delivery `eba8b633` / `dd4fbbb8` records five downhill landing passes, five uphill
@@ -238,7 +240,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P, Q, R, S, T, U, V, W, X, Y, Z and AA have released; AB owns controls/reference.**
+**P, Q, R, S, T, U, V, W, X, Y, Z, AA and AB have released; AC owns Parallax production.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -280,11 +282,19 @@ directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
-**Active: `MOTH-BLENDER-20261004-AB`**, Astra
+**Active: `MOTH-BLENDER-20261004-AC`**, Astra
+`ses_efd30e1f6ffeLbhHTPoh266kZW`, foundation `672f3377`. Reviewed AA-plus-16
+glyph policy, fresh master/reopen, complete node-scoped native basis/material
+checks, then twelve matched pairs. Preserve historical artifacts and qualifications;
+three empty owned-group audits and explicit release required.
+
+**Released: `MOTH-BLENDER-20261004-AB`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8251b512`. Fresh setup/imports,
 34 paired rejection controls, then ten unchanged-reference walks only if controls
 pass. Preserve expected failed reference and all prior evidence; no candidate
 groups. Three empty owned-group audits and explicit release required.
+AB released at 00:45:07.795447Z; parent verified 140 inventory files, three empty
+audits/four groups and lock availability at 00:50:09Z. Review remains pending.
 
 **Released: `MOTH-BLENDER-20261003-AA`**, Sol
 `ses_efd55bb5cffeJRWNA4xZq8O6cE`, foundation `d3a4c524`. Exact three-corner

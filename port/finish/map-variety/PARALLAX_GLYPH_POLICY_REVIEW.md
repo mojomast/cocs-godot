@@ -1,5 +1,12 @@
 # Parallax singular-glyph policy — source approved, production contract pending
 
+**Production authorized as AC:** following parent verification of AB release,
+`MOTH-BLENDER-20261004-AC` is granted to Astra `ses_efd30e1f6ffeLbhHTPoh266kZW`
+from `672f3377`. Scope is the reviewed master/reopen/native/material sequence,
+then matched captures only after complete gates pass. AC is the sole heavy owner;
+all appearance/material/source-basis qualifications remain in force. Actual
+successor identities and evidence are pending.
+
 ## Successor contract approved and integrated
 
 Independent review approved **`81490089`**, integrated as **`3520bbdc`**, for

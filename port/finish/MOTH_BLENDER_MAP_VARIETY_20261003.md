@@ -1,5 +1,29 @@
 # New Moth resources and Blender-authored map variety
 
+## Current owner — Parallax glyph production AC; AB released
+
+**MOTH-BLENDER-20261004-AC is the sole heavy grant**, Astra
+`ses_efd30e1f6ffeLbhHTPoh266kZW`, foundation `672f3377`. The approved AA-plus-16
+contract is authorized for actual master/build/fresh reopen, full native basis and
+material proof, then twelve matched capture pairs only after those gates pass.
+No repair expansion, sign waiver or authored-X appearance equivalence is granted.
+
+AB delivered **`0dd335b0` / `5fb9ae68`**, released at 00:45:07.795447Z. Parent
+verified all **140 inventory files**, three empty audits/four groups, no current
+survivors and lock availability at 00:50:09.159597Z. Independent evidence review
+is active; delivery remains unmerged. All 34 paired rejection controls pass and
+the unchanged reference retains five downhill passes/five uphill failures,
+`failed:true`, `referenceExpected:true`, exit 1. Both overhang controls hit the
+intended forward obstacle after clear up sweeps within the certified envelope.
+All sixty experimental map walks remain unrun; no positive lift is qualified.
+
+AB documents a legacy slide-shape telemetry field containing an Object rather than
+an index; proposal PhysicsTestMotion shape indices remain numeric. Original raw
+evidence is preserved. Astra is preparing source-only inclined-landing rejection
+and rotated positive-step controls, plus a future telemetry-field correction.
+Those controls and production motion-accounting questions remain open; only AC
+may run engines.
+
 **AA-plus-16 source contract approved and integrated as `3520bbdc`.** Parent passed
 six successor tests, five material tests and strict shipping closure. Independent
 review supports a separately granted build/reopen/native/capture attempt, preserving

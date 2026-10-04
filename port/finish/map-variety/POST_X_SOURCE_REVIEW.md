@@ -1,5 +1,23 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## AB delivered; next controls source-only
+
+AB `0dd335b0` / `5fb9ae68` reports 34/34 negative controls passing and the exact
+expected unchanged-reference failure (five downhill landings/five uphill stalls).
+All sixty experimental map walks remain unrun. The actual overhang queries hit
+`ForwardOverhang` only on the raised-forward leg; native poses stay inside the
+source envelope. Parent verified 140 hashes, three empty audits/four groups and
+release at 00:45:07.795447Z. Independent source/evidence review is active.
+
+No positive candidate lift/post-response success is established. A legacy slide
+telemetry shape field captured an Object; the separate proposal shape indices
+remain numeric. The producer is preparing future source-only inclined-landing
+and rotated-positive controls and explicit numeric slide-shape telemetry, without
+rewriting AB receipts. Candidate map phases remain unavailable.
+
+**Parallax AC now owns the sole heavy slot**, `ses_efd30e1f6ffeLbhHTPoh266kZW`,
+under the approved glyph contract from `672f3377`. Vesper work stays source-only.
+
 **Parallax next-production contract is approved:** `81490089` integrated as
 `3520bbdc`; parent passed twelve source/material/shipping checks. Exact node-scoped
 native geometry keys, all-face basis/material gates and fresh master provenance
