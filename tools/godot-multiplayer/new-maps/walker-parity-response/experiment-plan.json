@@ -1,0 +1,28 @@
+{
+  "status": "SOURCE ONLY; new GDScript unparsed and unrun; independent review required",
+  "base": "278f9dd2",
+  "phase": "parity-response-only-v1",
+  "mode": "single-response",
+  "allowedGroups": ["parity-response"],
+  "grant": null,
+  "autoStart": false,
+  "queued": false,
+  "attemptNamespace": "parity-response-[a-z0-9]+(?:-[a-z0-9]+)*; maximum64 characters",
+  "fixture": {"radius": 0.35, "yawDegrees": -45, "rise": 0.15, "source": "unchanged walker_admission/fixtures_v4.gd"},
+  "bounds": {"settleFrames": 20, "maximumInputFrames": 40, "maximumCandidateAttempts": 1, "maximumAppliedUpCalls": 1, "maximumCandidateParentResponses": 1, "internalSeconds": 170, "externalSeconds": 180},
+  "controllerLifecycle": "One candidate-derived Walker body only. Before first original eligible proof, call ordinary_step -> unchanged Walker.step directly. On first eligibility call candidate.step once and stop on any terminal outcome; no body replacement or second lift.",
+  "lineage": {"explicitFrozenAFRootRequired": true, "manifestProducer": "b80273a7", "files": 24, "grantsDoNotTransfer": true},
+  "outcomes": {
+    "neverEligible": "failed:true; candidateResponseCollected:false; appliedUpCount:0; responseGuardPassed:false",
+    "parityPolicyRejected": "failed:true; candidateResponseCollected:true; appliedUpCount:0; responseGuardPassed:false; retain reason and live queries",
+    "upMismatch": "failed:true; appliedUpCount:1; parentResponseCount:0; responseGuardPassed:false; no rollback",
+    "responseGuardFault": "failed:true; appliedUpCount:1; parentResponseCount:1; responseGuardPassed:false; retain actual final support only if guard reached that query",
+    "postGuardFault": "failed:true; responseGuardPassed may be true; this does not override a later candidate postcondition failure",
+    "singleResponsePassed": "failed:false only with candidateResponseCollected:true, responseGuardPassed:true, candidateAttempts/appliedUpCount/parentResponseCount each1 and all remaining candidate checks passed"
+  },
+  "positiveAdmission": false,
+  "nativeStepAdmission": false,
+  "productionPromotion": false,
+  "candidateMapWalksAllowed": false,
+  "futureExecution": "Separately authorized single supervisor invocation only after source review; script/parse/runtime/timeout failure is retained with no correction, rollback, retry or continuation. Parent evidence review precedes any next request."
+}
