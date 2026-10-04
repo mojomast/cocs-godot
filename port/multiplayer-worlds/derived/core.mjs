@@ -175,7 +175,7 @@ export function traversalTables(arena){
   const segmentDistance=(x,z,a,b)=>{const dx=b.x-a.x,dz=b.z-a.z,length=dx*dx+dz*dz;if(length<=1e-9)return Math.hypot(x-a.x,z-a.z);const t=clamp(((x-a.x)*dx+(z-a.z)*dz)/length,0,1);return Math.hypot(x-(a.x+dx*t),z-(a.z+dz*t));};
   const terrainObstructed=(x,y,z,r,arena)=>arena.terrain?.walls?.length>0&&wallCandidates(terrainWallSegments(arena.terrain),x,z,r).some(({a,b})=>y<Math.max(a.y,b.y)-1e-6&&y+RULES.height>Math.min(a.y,b.y)+1e-6&&segmentDistance(x,z,a,b)<r);
  export function obstructed(x,y,z,r=RULES.radius,arena=MAPS[0]){return blockObstructed(arena,x,y,z,r)||terrainObstructed(x,y,z,r,arena);}
-export const MOVE={friction:6,stopSpeed:2,groundAccel:10,airAccel:3.5,airCap:1.6,sprint:1.375,crouch:.4,slideBoost:9.6,slideMin:.35,slideFriction:2.5,slideCooldown:.5,terminal:2.2,eyeStanding:1.45,eyeCrouch:.95,baseHeight:1.8};
+export const MOVE={friction:6,stopSpeed:2,groundAccel:10,airAccel:4.5,airCap:2.2,sprint:1.375,crouch:.4,slideBoost:9.6,slideMin:.35,slideFriction:2.5,slideCooldown:.5,terminal:2.2,eyeStanding:1.45,eyeCrouch:.95,baseHeight:1.8};
 // Point-blank melee: a short forward arc, no ammo, brief cooldown. Gives every
 // loadout an answer inside its own face and a reason to finish hurt targets.
 // `arc` is the minimum forward alignment (a dot threshold: larger is tighter);
@@ -207,6 +207,12 @@ export function meleeKnockback(a,direction,arena,distance=MELEE.knockback){
 }
 const canStand=(x,y,z,r,arena)=>!candidates(arena,x,z,r).some(b=>Math.abs(x-b.x)<b.w/2+r&&Math.abs(z-b.z)<b.d/2+r&&y<b.h-1e-6&&b.h<y+MOVE.baseHeight);
 const accelerate=(a,ix,iz,wishSpeed,accel,dt)=>{const add=wishSpeed-(a.vx*ix+a.vz*iz);if(add<=0)return;const amount=Math.min(accel*dt*wishSpeed,add);a.vx+=ix*amount;a.vz+=iz*amount;};
+// Limit only speed gained by this input sample. Capture after friction, before
+// acceleration: takeoff must not promote its own gain into next tick's budget.
+// Incoming launches/knockback and slide bursts may steer without being erased.
+const limitInputSpeed=(a,before,budget)=>{const next=Math.hypot(a.vx,a.vz),limit=Math.max(before,budget);if(next>limit&&next>1e-9){a.vx*=limit/next;a.vz*=limit/next;}};
+export const SLIDE_INTENT_SECONDS=.15;
+const resetSlideIntent=a=>{a.slideIntent=0;a.slideCrouchHeld=false;if(a.slideTap)a.sliding=false;a.slideTap=false;};
 export const SELF_BLAST_MARGIN=1.15;
 // Linear damage falloff for hitscan weapons: full damage inside `start`, tapering
 // to `min` at `end` and beyond. Weapons without falloff always deal full damage.
@@ -221,6 +227,14 @@ const zipWorldFor=arena=>({
  radius:RULES.radius,
 });
 export function moveActor(a,input,dt,arena=MAPS[0],config={speed:1,gravity:1},ropeLines=null){
+ // Released crouch intent may cross a landing, but cannot commandeer a verb.
+ const slideIntentAllowed=a.health!==0&&a.vehicleId==null&&!a.zipRide&&!a.traversalFlight&&!(a.active>0&&abilityOf(a.harness)?.kind==='dash')&&(!a.movement||a.movement.phase==='ready'&&!['super-jump','brace-slam'].includes(a.movement.verb));
+ if(!slideIntentAllowed)resetSlideIntent(a);
+ else{
+  a.slideIntent=Math.max(0,(a.slideIntent||0)-dt);
+  if(!a.grounded&&input.crouch===true&&!a.slideCrouchHeld&&(input.sprint===true||a.sprinting))a.slideIntent=SLIDE_INTENT_SECONDS;
+ }
+ a.slideCrouchHeld=input.crouch===true;
  // Recover corrected/older embedded state without lifting actors through tall solids.
  for(const b of candidates(arena,a.x,a.z,RULES.radius))if(Math.abs(a.x-b.x)<b.w/2+RULES.radius&&Math.abs(a.z-b.z)<b.d/2+RULES.radius&&a.y<b.h-1e-6){
   const spots=[{x:b.x-b.w/2-RULES.radius-1e-6,y:a.y,z:a.z},{x:b.x+b.w/2+RULES.radius+1e-6,y:a.y,z:a.z},{x:a.x,y:a.y,z:b.z-b.d/2-RULES.radius-1e-6},{x:a.x,y:a.y,z:b.z+b.d/2+RULES.radius+1e-6}];
@@ -267,7 +281,8 @@ export function moveActor(a,input,dt,arena=MAPS[0],config={speed:1,gravity:1},ro
  const speed=(baseSpeed+riderSpeed)*config.speed*(a.speedMultiplier||1)*(activeBuff(a,'speed')??1)*(a.slow>0?(a.slowMultiplier??.55):1)*(a.gearSpeed||1)*(a.carryingFlag?(a.carrySpeedMultiplier??.9):1);
  const len=Math.hypot(input.x||0,input.z||0),ix=len?(input.x||0)/len:0,iz=len?(input.z||0)/len:0;
  // Crouch is sticky while there is no headroom to stand.
- let crouching=input.crouch===true;
+ const bufferedSlide=slideIntentAllowed&&a.slideIntent>0&&a.grounded&&input.jump!==true&&!(a.jumpBuffer>0)&&(a.slideCooldown||0)<=0&&Math.hypot(a.vx,a.vz)>6;
+ let crouching=input.crouch===true||bufferedSlide||a.slideTap&&a.slideTimer>dt&&input.jump!==true;
  if(!crouching&&a.crouching&&!canStand(a.x,a.y,a.z,RULES.radius,arena))crouching=true;
  // Hermes Express is the only passive that lets an actor sprint while a reload
  // is running; every other spec loses the sprint posture until the magazine is in.
@@ -278,7 +293,8 @@ export function moveActor(a,input,dt,arena=MAPS[0],config={speed:1,gravity:1},ro
 // window (movement-only; neutral for every other class, §3.2).
  let horizontal=Math.hypot(a.vx,a.vz);
  const effortlessSlide=EFFORTLESS.slide(a.verbState),effortlessHop=EFFORTLESS.hopWindow(a.verbState),passiveSlide=passiveBonus(a.harness,'slide'),slideBoost=MOVE.slideBoost*effortlessSlide.boostMultiplier,slideFriction=MOVE.slideFriction*effortlessSlide.frictionMultiplier;
- if(crouching&&a.grounded&&!a.sliding&&(a.slideCooldown||0)<=0&&(input.sprint===true||a.sprinting)&&horizontal>6){
+ if(crouching&&a.grounded&&!a.sliding&&(a.slideCooldown||0)<=0&&(input.sprint===true||a.sprinting||bufferedSlide)&&horizontal>6){
+  a.slideTap=bufferedSlide&&input.crouch!==true;a.slideIntent=0;
   a.sliding=true;a.slideTimer=MOVE.slideMin+effortlessSlide.minSecondsBonus+passiveSlide;
   if(horizontal>1e-4&&horizontal<slideBoost){const burst=slideBoost/horizontal;a.vx*=burst;a.vz*=burst;}
   else if(horizontal<=1e-4){a.vx=-Math.sin(a.yaw||0)*slideBoost;a.vz=-Math.cos(a.yaw||0)*slideBoost;}
@@ -286,19 +302,22 @@ export function moveActor(a,input,dt,arena=MAPS[0],config={speed:1,gravity:1},ro
  }
  a.crouching=crouching;a.sprinting=sprint;a.ads=ads;a.eyeHeight=crouching||a.sliding?MOVE.eyeCrouch:MOVE.eyeStanding;a.baseHeight=MOVE.baseHeight;
  a.sliding=a.sliding===true;a.slideTimer=Math.max(0,(a.slideTimer||0)-dt);a.slideCooldown=Math.max(0,(a.slideCooldown||0)-dt);
+ if(a.grounded)a.slideIntent=0;
+ if(a.slideTap&&(input.jump===true||a.jumpBuffer>0||a.slideTimer<=0)){
+  a.slideTap=false;if(!crouching){a.sliding=false;a.slideCooldown=Math.max(a.slideCooldown,MOVE.slideCooldown);}
+ }
  if(a.grounded){
   a.coyote=.1+effortlessHop.coyoteBonus;
   // A held or buffered hop landing this frame skips ground friction so repeated
   // hops keep their speed instead of bleeding it on every landing.
   const hopNow=(input.jump===true||a.jumpBuffer>0)&&a.coyote>0;
   if(!hopNow){const h=Math.hypot(a.vx,a.vz),friction=a.sliding?slideFriction:MOVE.friction,control=Math.max(h,MOVE.stopSpeed),drop=control*friction*dt;if(h>1e-9){const scale=Math.max(0,h-drop)/h;a.vx*=scale;a.vz*=scale;}}
-  if(ix||iz)accelerate(a,ix,iz,wishSpeed,a.sliding?MOVE.groundAccel*.4:MOVE.groundAccel,dt);
+  if(ix||iz){const before=Math.hypot(a.vx,a.vz);accelerate(a,ix,iz,wishSpeed,a.sliding?MOVE.groundAccel*.4:MOVE.groundAccel,dt);limitInputSpeed(a,before,maxSpeed*MOVE.terminal);}
  }else{
   a.coyote=Math.max(0,a.coyote-dt);
   if(ix||iz){const before=Math.hypot(a.vx,a.vz),projection=a.vx*ix+a.vz*iz,airControl=EFFORTLESS.airControl(a.verbState),passiveAir=passiveScale(a.harness,'air-control'),airAccel=MOVE.airAccel*airControl.airAccelMultiplier*passiveAir,airCap=a.glideSteer>0?a.glideSteer:MOVE.airCap*airControl.airCapMultiplier*passiveAir,add=Math.min(wishSpeed,airCap)-projection;
    if(add>0){const amount=Math.min(airAccel*dt*wishSpeed,add);a.vx+=ix*amount;a.vz+=iz*amount;}
-   const terminal=Math.max(maxSpeed*MOVE.terminal,before),next=Math.hypot(a.vx,a.vz);
-   if(next>terminal&&next>1e-9){const s=terminal/next;a.vx*=s;a.vz*=s;}
+   limitInputSpeed(a,before,maxSpeed*MOVE.terminal);
   }
  }
  let jumpTriggered=false;
@@ -325,7 +344,7 @@ export function moveActor(a,input,dt,arena=MAPS[0],config={speed:1,gravity:1},ro
    if(nextY>a.y){const ceiling=bodyCeiling(a.x,a.y,a.z,RULES.radius,arena,RULES.height+nextY-a.y);if(nextY+RULES.height>ceiling){nextY=Math.max(a.y,ceiling-RULES.height);a.vy=0;}}
   // A solid top is a landing surface only when the feet cross it while falling.
   for(const b of candidates(arena,a.x,a.z,RULES.radius))if(Math.abs(a.x-b.x)<b.w/2+RULES.radius&&Math.abs(a.z-b.z)<b.d/2+RULES.radius&&a.y>=b.h-1e-6&&nextY<=b.h)f=Math.max(f??-Infinity,b.h);
-   if(f!==null&&nextY<=f){a.y=f;a.vy=0;a.grounded=true;a.sliding=a.sliding&&input.crouch===true;a.traversalFlight=false;a.traversalTarget=null;}else{a.y=nextY;a.grounded=false;}
+    if(f!==null&&nextY<=f){a.y=f;a.vy=0;a.grounded=true;a.sliding=a.sliding&&(input.crouch===true||a.slideTap&&a.slideTimer>0);a.traversalFlight=false;a.traversalTarget=null;}else{a.y=nextY;a.grounded=false;}
    const target=a.traversalTarget,targetFloor=target&&floorAt(target.x,target.z,arena);if(a.traversalFlight&&target&&targetFloor!==null&&a.vy<=0&&Math.hypot(a.x-target.x,a.z-target.z)<=.9&&a.y<=targetFloor+.35){a.x=target.x;a.z=target.z;a.y=targetFloor;a.vx=a.vy=a.vz=0;a.grounded=true;a.traversalFlight=false;a.traversalTarget=null;a.traversalEvent={type:'launcher-arrival',id:a.traversalPad??null,from:null,to:{x:a.x,y:a.y,z:a.z}};}
   const bounds=boundsOf(arena);a.x=clamp(a.x,bounds.minX,bounds.maxX);a.z=clamp(a.z,bounds.minZ,bounds.maxZ);
  }
@@ -342,7 +361,8 @@ export function moveActor(a,input,dt,arena=MAPS[0],config={speed:1,gravity:1},ro
      else {const gravity=RULES.gravity*(config.gravity??1),target=pad.target,deltaY=(target?.y??0)-a.y,launchY=pad.vy??(pad.power??14)*.55,discriminant=launchY*launchY-2*gravity*deltaY,time=target&&discriminant>=0?(launchY+Math.sqrt(discriminant))/gravity:null,d=target&&time>0?norm(v((target.x-a.x)/time,0,(target.z-a.z)/time)):norm(v(pad.dir?.[0]??0,0,pad.dir?.[1]??0)),horizontal=target?Math.hypot(target.x-a.x,target.z-a.z)/(time||1):pad.power??14;a.vx=d.x*horizontal;a.vz=d.z*horizontal;a.vy=launchY;a.traversalTarget=target||null;}
     a.grounded=false;a.traversalFlight=pad.type==='boost';a.traversalCooldown=pad.cooldown??1;a.traversalPad=pad.id;
    }else if(!pad)a.traversalPad=null;
-    a.traversalCooldown=Math.max(0,(a.traversalCooldown||0)-dt);
+     if(a.zipRide||a.traversalFlight||a.traversalEvent?.type==='teleport'||pad&&a.traversalPad===pad.id)resetSlideIntent(a);
+     a.traversalCooldown=Math.max(0,(a.traversalCooldown||0)-dt);
    const support=supportAt(a.x,a.z,arena);if(a.grounded&&support!==null&&Math.abs(a.y-support)<.35)a.lastValid={x:a.x,y:a.y,z:a.z};
 }
 function boxHit(o,d,b,max){let lo=0,hi=max;for(const k of ['x','y','z']){const c=k==='y'?b.h/2:b[k],s=k==='x'?b.w/2:k==='z'?b.d/2:b.h/2;if(Math.abs(d[k])<1e-8){if(o[k]<c-s||o[k]>c+s)return null;}else{let t1=(c-s-o[k])/d[k],t2=(c+s-o[k])/d[k];if(t1>t2)[t1,t2]=[t2,t1];lo=Math.max(lo,t1);hi=Math.min(hi,t2);if(lo>hi)return null;}}return lo;}
@@ -613,7 +633,7 @@ export class Match{
      }
      return id%2;
     }
-    actor(id,character,harness){const l=resolveLoadout(character,harness),actor={id,...l,team:teamMode(this.config)?this.seatTeam(id):undefined,name:CHARACTERS.find(c=>c.id===l.character).name,frags:0,deaths:0,streak:0,ladder:0,scoreStats:{captures:0,flagPickups:0,flagReturns:0,flagDrops:0,objectiveTime:0,objectiveCaptures:0,objectiveNeutralizations:0,objectiveContests:0,shots:0,hits:0,damage:0},x:0,y:0,z:0,lastValid:null,vx:0,vy:0,vz:0,yaw:0,pitch:0,bodyYaw:0,grounded:true,coyote:0,jumpBuffer:0,health:0,armor:0,spawnArmor:0,dead:0,vehicleId:null,vehicleSeat:null,vehicleSeatIndex:0,weapon:this.startingLoadout().weapon,ammo:this.startingLoadout().ammo,cooldown:0,active:0,slow:0,slowMultiplier:.55,shotWait:0,grenadeCooldown:0,protection:0,shots:0,traversalCooldown:0,traversalPad:null,traversalTarget:null,zipRide:null,carryingFlag:false,carrySpeedMultiplier:1,spread:0,punchYaw:0,punchPitch:0,punchVelYaw:0,punchVelPitch:0,reloading:false,reloadTimer:0,reloadDuration:0,reloadWeapon:-1,melee:0,weaponSwitch:0,burst:0,burstTimer:0,sprinting:false,crouching:false,sliding:false,slideTimer:0,slideCooldown:0,eyeHeight:MOVE.eyeStanding,baseHeight:MOVE.baseHeight,ads:false,jumpHeld:false,jumpCutArmed:false,powerups:{},speedMultiplier:1,damageMultiplier:1,cooldownMultiplier:1,temporaryShield:0,activeSpeedMultiplier:1,hitScale:this.mutators.bigHead?1.5:1,juggernaut:false,juggernautShield:0,juggernautDamage:1,upgradeWeapon:null,upgradeTimer:0,upgradeBase:-1,movement:null,verbState:null,threatPing:0,riderSpeedBonus:0,riderSpeedTimer:0,holsterSkip:0,braceTimer:0,braceMitigation:0,braceKnockbackScale:1,alt:false,firingThisTick:false,movementLanded:false,glideSteer:0,inputJump:false,inputCrouch:false,inputMobility:false,bot:this.aiSeats!==true&&id<this.humanCount?null:{route:[],think:0,target:-1,memory:0,reaction:0,stuck:0,last:v(),state:'roam',patrol:0,flank:null,flankDone:false,recover:0,suppressed:0,threat:-1,standoff:null,strafeReverse:-99,weaponCommitUntil:0,coverCache:null,coverCacheAt:-99}};applyHarnessProfile(actor);actor.botScan=botScanRange(this.difficulty,this.arena);if(actor.bot&&this.botPolicy)actor.bot.policy=this.botPolicy;actor.movement=createMovementState({character:actor.character,harness:actor.harness},{mode:this.config.mode,npc:actor.isNpc===true});actor.verbState=createOperatorVerbState(actor.character);return actor;}
+    actor(id,character,harness){const l=resolveLoadout(character,harness),actor={id,...l,team:teamMode(this.config)?this.seatTeam(id):undefined,name:CHARACTERS.find(c=>c.id===l.character).name,frags:0,deaths:0,streak:0,ladder:0,scoreStats:{captures:0,flagPickups:0,flagReturns:0,flagDrops:0,objectiveTime:0,objectiveCaptures:0,objectiveNeutralizations:0,objectiveContests:0,shots:0,hits:0,damage:0},x:0,y:0,z:0,lastValid:null,vx:0,vy:0,vz:0,yaw:0,pitch:0,bodyYaw:0,grounded:true,coyote:0,jumpBuffer:0,health:0,armor:0,spawnArmor:0,dead:0,vehicleId:null,vehicleSeat:null,vehicleSeatIndex:0,weapon:this.startingLoadout().weapon,ammo:this.startingLoadout().ammo,cooldown:0,active:0,slow:0,slowMultiplier:.55,shotWait:0,grenadeCooldown:0,protection:0,shots:0,traversalCooldown:0,traversalPad:null,traversalTarget:null,zipRide:null,carryingFlag:false,carrySpeedMultiplier:1,spread:0,punchYaw:0,punchPitch:0,punchVelYaw:0,punchVelPitch:0,reloading:false,reloadTimer:0,reloadDuration:0,reloadWeapon:-1,melee:0,weaponSwitch:0,burst:0,burstTimer:0,sprinting:false,crouching:false,sliding:false,slideTimer:0,slideCooldown:0,eyeHeight:MOVE.eyeStanding,baseHeight:MOVE.baseHeight,ads:false,jumpHeld:false,jumpCutArmed:false,powerups:{},speedMultiplier:1,damageMultiplier:1,cooldownMultiplier:1,temporaryShield:0,activeSpeedMultiplier:1,hitScale:this.mutators.bigHead?1.5:1,juggernaut:false,juggernautShield:0,juggernautDamage:1,upgradeWeapon:null,upgradeTimer:0,upgradeBase:-1,movement:null,verbState:null,threatPing:0,riderSpeedBonus:0,riderSpeedTimer:0,holsterSkip:0,braceTimer:0,braceMitigation:0,braceKnockbackScale:1,alt:false,firingThisTick:false,movementLanded:false,glideSteer:0,inputJump:false,inputCrouch:false,inputMobility:false,bot:this.aiSeats!==true&&id<this.humanCount?null:{route:[],think:0,target:-1,memory:0,reaction:0,stuck:0,last:v(),state:'roam',patrol:0,flank:null,flankDone:false,recover:0,suppressed:0,threat:-1,standoff:null,strafeReverse:-99,weaponCommitUntil:0,coverCache:null,coverCacheAt:-99}};resetSlideIntent(actor);applyHarnessProfile(actor);actor.botScan=botScanRange(this.difficulty,this.arena);if(actor.bot&&this.botPolicy)actor.bot.policy=this.botPolicy;actor.movement=createMovementState({character:actor.character,harness:actor.harness},{mode:this.config.mode,npc:actor.isNpc===true});actor.verbState=createOperatorVerbState(actor.character);return actor;}
   // ---------------------------------------------------------------------
   // Phase 2 class wiring (docs/design/CLASS_OVERHAUL.md §3.2, §3.4, §3.6,
   // §3.7, §4.4, §4.7; module contracts in movement.mjs / operator-verbs.mjs).
@@ -727,7 +747,8 @@ export class Match{
     return false;
    });
   }
-  _clearRopes(a){this._ropeRemove(a,null);}
+  // Spawn/death/fall/boarding all discard movement attachments and pending intent.
+  _clearRopes(a){this._ropeRemove(a,null);resetSlideIntent(a);}
   // Area effects the movement module returns as `frame.actions`. Enemies only;
   // Braced's crouch/no-fire knockback cut is the one per-victim modifier (§4.7
   // mitigation stays max-not-sum, so the strongest reduction wins).
@@ -806,6 +827,7 @@ export class Match{
     syncVehicleActor(a,vehicle){a.vehicleId=vehicle.id;const seat=vehicleMounted(vehicle,a.id);a.vehicleSeat=seat?.role??'passenger';a.vehicleSeatIndex=seat?.index??0;const p=vehicleSeatPosition(vehicle,a.vehicleSeat,a.vehicleSeatIndex);a.x=p.x;a.y=p.y;a.z=p.z;if(a.vehicleSeat!=='driver'&&a.vehicleSeat!=='gunner')a.yaw=p.yaw;a.vx=vehicle.velocity.x;a.vz=vehicle.velocity.z;a.vy=0;a.grounded=true;a.lastValid={x:a.x,y:a.y,z:a.z};}
     releaseVehicle(a,vehicle=this.vehicleById(a.vehicleId),reason='exit'){
     if(this.race)return false;
+    resetSlideIntent(a);
     if(!vehicle){a.vehicleId=null;a.vehicleSeat=null;a.vehicleSeatIndex=0;a.vx=a.vy=a.vz=0;a.grounded=true;resetMovement(this._movementState(a),this._kitOptions(a));return false;}leaveVehicleSeat(vehicle,a.id);const dismount=vehicleDismountStun(vehicle,reason,vehicle.config?.flight===true);if(dismount.duration>0){a.slow=Math.max(a.slow||0,dismount.duration);a.slowMultiplier=Math.min(a.slowMultiplier??.55,dismount.multiplier);}const flight=vehicle.config?.flight===true,size=vehicle.config?.dimensions||GUNTRUCK.dimensions,right=v(Math.cos(vehicle.heading),0,-Math.sin(vehicle.heading)),candidates=[add(vehicle.position,right,size.width/2+RULES.radius+.18),add(vehicle.position,right,-(size.width/2+RULES.radius+.18)),add(vehicle.position,right,0)];let chosen=flight?{x:vehicle.position.x,y:vehicle.position.y,z:vehicle.position.z}:null;if(!chosen)for(const candidate of candidates){const y=floorAt(candidate.x,candidate.z,this.arena);if(y!==null&&!obstructed(candidate.x,y,candidate.z,RULES.radius,this.arena)){chosen={x:candidate.x,y,z:candidate.z};break;}}a.vehicleId=null;a.vehicleSeat=null;a.vehicleSeatIndex=0;if(chosen){Object.assign(a,chosen);a.lastValid={...chosen};}a.vx=a.vy=a.vz=0;a.grounded=!flight;a.movementLanded=false;resetMovement(this._movementState(a),this._kitOptions(a));a.glideSteer=0;this._clearRopes(a);this.emit('vehicle-exit',{actor:a.id,vehicle:vehicle.id,reason});return true;}
     // Field repair (§4.7): a driver owns the wheel repairs; riders in the
     // passenger/gunner seats patch the same hull at their own harness/class
