@@ -1,5 +1,27 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Final-support query diagnosis/design delivered for review
+
+**`7c1f196b`** reports .42/.18/−45 normals of45.776894° (original DOWN32),
+45.646724° (parity full4 and returned parent floor), and47.476992° (fresh guard).
+The fresh query starts at the exact actual/predicted endpoint; normalization does
+not explain the difference. Identity passes, stationary velocity is valid, the
+normal fails and plane guard remains unreached. Successful .35 cases also differ:
+34.910213° parent floor versus36.677326° fresh support.
+
+Pinned GodotPhysics source obtains rest contacts at a recovered transform advanced
+by unsafe fraction. Recorded fresh-query lateral recovery and fractions1/1 support
+a conditional reconstruction of a steeper sampled contact. The active backend/path
+was not verified; no unique cause or claim that actual support is unwalkable follows.
+
+A fixed read-only comparison is proposed: predicted-endpoint query before UP versus
+actual endpoint afterward, optionally zero-motion recovery after API-semantics review.
+No preflight result exists in AM; guard failure must remain unchanged. Conservative
+rejection before applying a lift would not prove successful stepping. Producer reports
+eight offline tests and unchanged archives/dependencies. Source receipt SHA is
+`25382b4dd0d51b1e671a97a1478bb8bee5daaf0fff305ea024016d2c94082c40`.
+Independent review is active; no native execution, runtime change or heavy grant.
+
 **AM failed-positive archive approved/integrated through `ebbb7d20`.** Parent
 passed 43 checks and all 60 hashes/manifest identity. Independent review confirms
 normal failure after identity acceptance, with landing-plane check unreached.

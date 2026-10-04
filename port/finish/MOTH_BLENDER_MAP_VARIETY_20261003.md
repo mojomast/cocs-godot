@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**Support-query diagnosis `7c1f196b` is under review.** Planner/parent and fresh
+support queries report different normals; pinned recovery/contact-pose semantics
+offer a conditional explanation without tracing the active backend. A fixed
+read-only comparison is proposed, preserving the guard and historical failure.
+Producer reports eight offline tests. No heavy grant or runtime change exists.
+
 **AM independently approved/integrated through `ebbb7d20`.** Parent passed 43
 checks and all 60 hashes/manifest. Final-support identity passed, normal failed,
 and plane guard was not reached; zero endpoint error does not waive the failure.

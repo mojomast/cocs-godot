@@ -16,6 +16,10 @@ Parent passed 43 checks and all 60 hashes/manifest. Negative34 and inclined4 pas
 .42/.18/−45 candidate fails support normal47.476992° versus46° despite zero
 endpoint error. Identity passed; plane guard was not reached. Source-only query
 diagnosis continues without guard changes or retry. See `map-variety/WALKER_AM_REVIEW.md`.
+Source diagnosis `7c1f196b` is under independent review. Recorded planner/parent
+normals differ from the fresh short support query; pinned GodotPhysics recovery/
+unsafe-fraction semantics provide a conditional explanation, not a traced backend
+cause. A fixed observational comparison is proposed; no runnable grant exists.
 
 **AL completed baseline characterization and released.**
 Delivery `75271920` / `068705de` passed independent review and is integrated through
