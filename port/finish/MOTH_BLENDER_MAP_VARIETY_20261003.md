@@ -1,5 +1,10 @@
 # New Moth resources and Blender-authored map variety
 
+**Baseline-only correction and runner delivered:** `2e8fc0bc` / `9b3b0c04`
+are under focused independent review. The producer reports 59 source tests and
+a sealed compare-only phase that cannot select the parity candidate. Native
+execution remains unapproved; sources are unmerged and no heavy grant is active.
+
 **Snap-parity observation P1:** independent review approves `2b0f1f6a` only as
 source diagnosis/WIP. Its observation branch instantiates the candidate and can
 apply UP, conflicting with the required baseline-only comparison. Astra is

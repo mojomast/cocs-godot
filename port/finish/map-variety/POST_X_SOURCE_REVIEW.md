@@ -1,5 +1,24 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Baseline correction and compare-only wiring under re-review
+
+Producer delivered **`2e8fc0bc` / `9b3b0c04`** atop `2b0f1f6a`. Focused
+independent review is checking the corrected Baseline factory/collection path
+and new sealed comparison runner. These sources remain unmerged pending review.
+
+The proposed first phase is `snap-query-compare-only-v1`, mode `compare-only`,
+group `query-compare`, fixed .35 m / −45° synthetic fixture. It collects modeled
+short32/snap4/forward6 requests with actual state separate from hypothetical poses,
+checks query side effects, then executes at most one unchanged Walker response.
+`comparisonCollected` denotes collection only—not agreement, support or admission.
+Parity-candidate execution is outside the grantable phase.
+
+Producer reports 59 source tests passing, including write-once preparation and
+mock-child deadline/lock checks. The runner specifies a nonwaiting lock, binary/
+source/grant hashes, owned process identity, 170/180-second deadlines and three
+release audits. No engine, native attempt or grant has been created; GDScript is
+unparsed/unrun. No heavy grant is active, and the original guard/epsilon remain.
+
 ## Snap-parity source review — baseline observation P1
 
 Independent review approves **`2b0f1f6a` as diagnosis/experimental WIP only**.
