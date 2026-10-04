@@ -11,11 +11,12 @@ Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
 **No active heavy grant. AH passed negatives, failed its inclined invocation and released.**
-Delivery `560fff1e` / `c3c922f9` / `22841f8c` is under independent review. All
-34 negative pairs passed; inclined Godot exit 2 produced no native receipt, so
-internal progress/counters remain unknown. Positive admission was unrun. Parent
-verified 42 hashes and three measured empty audits/two groups. Admission diagnosis
-is source-only; no retry or map continuation. Production accounting remains open.
+Delivery `560fff1e` / `c3c922f9` / `22841f8c` passed independent archive review
+and is fully integrated through `58138256`. All 34 negative pairs passed; inclined
+exit 2 produced no native receipt, so internal progress/counters remain unknown.
+Positive admission was unrun. Parent passed 151 checks and all 42 hashes. Admission
+diagnosis is source-only; no retry or map continuation. Production accounting remains
+open. See `map-variety/WALKER_AH_REVIEW.md`.
 
 **AG delivered one guarded response and released.**
 Delivery `c30c0e13` / `139f5618` / `362803a8` passed independent one-response

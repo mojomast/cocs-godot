@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**AH independently reviewed and fully integrated through `58138256`.** Parent
+passed 151 source/package checks and all 42 hashes. Negative34 pairs PASS;
+inclined invocation FAIL with internal counts unknown; positive4 pairs UNRUN.
+Review: `map-variety/WALKER_AH_REVIEW.md`. Admission diagnosis remains source-only;
+no heavy grant or retry is active, and all sixty map journeys remain unrun.
+
 ## Current checkpoint — AH stopped and released
 
 **No heavy grant is active.** AH `560fff1e` / `c3c922f9` / `22841f8c` reports

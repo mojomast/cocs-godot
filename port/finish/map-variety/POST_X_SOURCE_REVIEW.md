@@ -1,5 +1,12 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**AH stopped-campaign archive approved and integrated through `58138256`.**
+Helpers/analysis/evidence are `58138256` / `d1aa4b63` / `dcda8780`; parent passed
+138 Python and thirteen package checks and all 42 hashes. Independent classification
+is negatives PASS, inclined invocation FAIL with unknown internal progress, positive
+UNRUN. See `WALKER_AH_REVIEW.md`. Source-only admission diagnosis continues; no
+engine grant, retry or inferred native predecessor acceptance is authorized.
+
 ## AH delivered/released — negatives pass; inclined invocation failed
 
 AH delivered helpers **`560fff1e` / `c3c922f9`** and evidence **`22841f8c`**.
