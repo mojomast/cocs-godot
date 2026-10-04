@@ -150,5 +150,62 @@ class SupervisorTests(unittest.TestCase):
             with self.assertRaises(BlockingIOError):supervisor.main(args)
             launch.assert_not_called()
         self.assertFalse((dest/'supervisor-start.json').exists())
+    def run_residual_cleanup(self,*,signal_error=None,audits=None,reused=False,write_error=False):
+        dest,args=self.setup_invocation()
+        owned={'pid':123456789,'pgid':123456789,'startTicks':777}
+        residual={**owned,'pid':123456790,'startTicks':778}
+        handlers={n:supervisor.signal.getsignal(n) for n in [supervisor.signal.SIGTERM,supervisor.signal.SIGHUP,supervisor.signal.SIGINT]}
+        real_write=supervisor.write
+        def write_receipt(path,value):
+            # Receipt attempts take place while the nonwaiting lock is still held.
+            with (self.base/'lock').open('a+') as other:
+                with self.assertRaises(BlockingIOError):fcntl.flock(other,fcntl.LOCK_EX|fcntl.LOCK_NB)
+            if write_error and path.name=='supervisor-result.json':raise OSError('receipt disk failure')
+            real_write(path,value)
+        def completed_child(**kwargs):
+            (dest/'comparison-result.json').write_text(json.dumps({'comparisonCollected':True,'failed':False,'mode':MODE,'group':GROUP,'sourceSha256':sha(dest/'source.json'),'grantSha256':args.grant_sha256}))
+            return 0
+        with contextlib.ExitStack() as stack:
+            self.supervisor_context(stack)
+            launch=stack.enter_context(patch.object(supervisor.subprocess,'Popen'))
+            launch.return_value.pid=owned['pid'];launch.return_value.poll.return_value=0;launch.return_value.wait.side_effect=completed_child
+            stack.enter_context(patch.object(supervisor,'identity',side_effect=[owned,{**owned,'startTicks':999} if reused else None]))
+            census=stack.enter_context(patch.object(supervisor,'members',side_effect=[[residual]]+(audits if audits is not None else [[],[],[]])))
+            stack.enter_context(patch.object(supervisor.time,'sleep'))
+            kill=stack.enter_context(patch.object(supervisor.os,'killpg',side_effect=signal_error))
+            stack.enter_context(patch.object(supervisor,'write',side_effect=write_receipt))
+            stderr=stack.enter_context(contextlib.redirect_stderr(io.StringIO()))
+            code=supervisor.main(args)
+            self.assertEqual(census.call_count,4)
+            if reused:kill.assert_not_called()
+            else:kill.assert_called_once_with(owned['pgid'],supervisor.signal.SIGKILL)
+        self.assertEqual({n:supervisor.signal.getsignal(n) for n in handlers},handlers)
+        with (self.base/'lock').open('a+') as other:fcntl.flock(other,fcntl.LOCK_EX|fcntl.LOCK_NB)
+        report=json.loads(stderr.getvalue()) if write_error else load(dest/'supervisor-result.json')
+        self.assertEqual(len(report['releaseAudits']),3)
+        return code,report
+    def test_residual_exit_esrch_requires_three_empty_audits(self):
+        code,report=self.run_residual_cleanup(signal_error=ProcessLookupError('already exited'))
+        self.assertEqual(code,0);self.assertFalse(report['failed']);self.assertTrue(report['releasedCleanly'])
+        self.assertTrue(report['residualGroupDisappearedBeforeSignal'])
+        self.assertTrue(all(a['measured'] and a['members']==[] for a in report['releaseAudits']))
+    def test_permission_error_fails_even_with_empty_audits(self):
+        code,report=self.run_residual_cleanup(signal_error=PermissionError('denied'))
+        self.assertEqual(code,1);self.assertTrue(report['failed']);self.assertFalse(report['releasedCleanly'])
+        self.assertIn('PermissionError',report['cleanupErrors'][0]['error'])
+    def test_esrch_with_survivor_is_not_release_proof(self):
+        code,report=self.run_residual_cleanup(signal_error=ProcessLookupError(),audits=[[],[{'pid':123456790}],[]])
+        self.assertEqual(code,1);self.assertFalse(report['releasedCleanly'])
+    def test_audit_error_records_unknown_and_continues(self):
+        code,report=self.run_residual_cleanup(audits=[PermissionError('proc denied'),[],[]])
+        self.assertEqual(code,1);self.assertFalse(report['releasedCleanly'])
+        self.assertIsNone(report['releaseAudits'][0]['members']);self.assertFalse(report['releaseAudits'][0]['measured'])
+    def test_reused_leader_never_signalled_even_if_later_audits_empty(self):
+        code,report=self.run_residual_cleanup(reused=True)
+        self.assertEqual(code,1);self.assertFalse(report['releasedCleanly'])
+    def test_receipt_write_failure_restores_handlers_releases_lock_and_reports_failure(self):
+        code,report=self.run_residual_cleanup(write_error=True)
+        self.assertEqual(code,1);self.assertTrue(report['failed'])
+        self.assertEqual(report['cleanupErrors'][-1]['operation'],'write_result')
 
 if __name__=='__main__':unittest.main()

@@ -35,6 +35,6 @@
   "hostInputs": {
     "tools/godot-multiplayer/new-maps/walker-snap-compare/prepare.py": "68c3bde44e0ec8d2836644405c1e3acf51c3fe5efa92d9cb53d193d7e255e0d5",
     "tools/godot-multiplayer/new-maps/walker-snap-compare/policy.py": "bb3fce22945ec3a4ad67bc68d433abf0786995f87dd50329ef9c57b668c8ea58",
-    "tools/godot-multiplayer/new-maps/walker-snap-compare/supervisor.py": "21d43a3309a33e661db2608b3f46f3b6b90b831771bcce91b5286777f473195b"
+    "tools/godot-multiplayer/new-maps/walker-snap-compare/supervisor.py": "421638e35b5fcf8de03589091a60b21bb77ab8a0cb1f7743fad7154aa0fbfd56"
   }
 }
