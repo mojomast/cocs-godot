@@ -1,5 +1,10 @@
 # New Moth resources and Blender-authored map variety
 
+**Supervisor correction `c3cd5833` is under focused re-review.** Eighteen wiring
+tests reportedly pass, including the residual-exit race and cleanup/reporting
+failures. Release requires fresh audits rather than signal results, and handlers
+restore independently. Native readiness remains pending; no heavy grant is active.
+
 **Baseline observation P1 closed; cleanup race found:** independent review confirms
 the compare-only stage cannot apply an assist, but an exiting residual process can
 make supervisor `killpg` raise before release audits/receipt/handler restoration.

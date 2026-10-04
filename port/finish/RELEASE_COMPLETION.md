@@ -29,6 +29,9 @@ That review closed the baseline-only P1 but reproduced a supervisor cleanup race
 an already-exited residual group can interrupt finalization before release audits
 and the result receipt. Correction and a mocked regression are in progress; the
 execution package remains unmerged and no native grant is authorized.
+Corrective commit `c3cd5833` is now under focused re-review, with eighteen mocked
+wiring tests reported passing. Three fresh audits, fail-closed ownership/error
+handling and independent signal-handler restoration are required before readiness.
 AC passed qualified independent artifact review and is integrated as `464604bb` /
 `388812d7`; parent passed nineteen checks and all 265 hashes. Complete mesh-local
 basis parity passes without waivers; appearance/final-art qualifications remain.

@@ -1,5 +1,15 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**Cleanup correction delivered:** `c3cd5833` is under focused independent
+re-review. It handles the disappearing-residual race, then requires three fresh
+membership audits; permission/ownership/audit/survivor errors remain failed and
+nonreleased. Handler restoration is independent of receipt-writing success, and
+the lifetime lock covers finalization and the receipt attempt. Producer reports
+eighteen wiring tests passing, including six new mocked failure-path regressions.
+Updated review pins bind the supervisor; nine staged scripts and historical
+provenance remain unchanged. The complete source package is still unmerged, with
+no native grant or engine execution authorized.
+
 ## Baseline P1 closed; supervisor finalization race blocks readiness
 
 Focused review closes the observation-controller P1 in `2e8fc0bc`. The new
