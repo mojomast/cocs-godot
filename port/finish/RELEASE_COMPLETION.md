@@ -15,9 +15,11 @@ AB release; actual successor/native evidence and authored-X appearance remain pe
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8d5641fc`. Fresh setup/imports and
 one inclined-rejection group are authorized, then release. Positive admission and
 all map/reference walks are excluded pending subsequent evidence review/grant.
-AC delivered `cb769d81` / `ebca944d` with reported full native parity and 24 captures;
-parent verified 265 files and three empty audits/twenty groups. Independent artifact
-review is active; final receipt is 01:01:24.904000Z and AC is released.
+AC passed qualified independent artifact review and is integrated as `464604bb` /
+`388812d7`; parent passed nineteen checks and all 265 hashes. Complete mesh-local
+basis parity passes without waivers; appearance/final-art qualifications remain.
+Final release receipt is 01:01:24.904000Z, parent-verified across twenty groups.
+See `map-variety/PARALLAX_AC_REVIEW.md`; nine fresh rays are AC-only authority checks.
 AB delivered `0dd335b0` / `5fb9ae68` and released: parent verified 140 hashes and
 three empty audits/four groups. Negative controls pass 34/34; reference preserves
 five downhill passes/five uphill failures. All sixty candidate map walks remain

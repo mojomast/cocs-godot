@@ -1,5 +1,11 @@
 # Parallax singular-glyph policy — source approved, production contract pending
 
+**Actual AC now independently approved and integrated as `464604bb` / `388812d7`.**
+The complete native basis-equivalence gate passes without waivers; parent passed
+nineteen source/package checks and all 265 hashes. See `PARALLAX_AC_REVIEW.md` for
+the actual identities, independent mapping, image limitations and AC-only ray scope.
+This remains qualified staged acceptance, not authored-X appearance or final art.
+
 ## Actual AC delivered; independent review pending
 
 AC `cb769d81` / `ebca944d` produced GLB

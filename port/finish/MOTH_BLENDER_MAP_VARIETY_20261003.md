@@ -1,5 +1,13 @@
 # New Moth resources and Blender-authored map variety
 
+**Parallax AC qualified artifact approval integrated:** tooling `464604bb`,
+artifacts **`388812d7`**. Independent review closes the complete native basis gate
+without waivers; parent passed nineteen checks and all 265 manifest hashes. New
+Godot resources remain test-only. Full review: `map-variety/PARALLAX_AC_REVIEW.md`.
+Fresh nine rays are AC-only authority checks, not both-variant visual/capsule proof.
+Authored-X appearance, 4,729 inherited nonorthogonal entries and final-art/hosted/
+weather acceptance remain qualified. AD retains sole heavy ownership.
+
 **Parallax AC gallery live:** <http://100.125.104.79:8796/parallax-ac/> — twelve
 matched pairs / all 24 original 1280×720 PNGs, with failed-AA-before labels and
 obstructed/mirrored/dark/striping views retained. All 54 HTTP/hash checks passed,
