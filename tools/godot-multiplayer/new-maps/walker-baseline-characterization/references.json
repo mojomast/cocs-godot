@@ -1,0 +1,11 @@
+{
+  "qualification": "Read-only pinned upstream source inspection; no execution or internal backend tracing",
+  "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/scene/3d/physics/character_body_3d.cpp",
+  "sha256": "15ecd597a988b01b860479ae5d8392d06e73d7dcacd453c855c0b8d5ee90a40d",
+  "facts": [
+    {"lines":"37-38","fact":"FLOOR_ANGLE_THRESHOLD is0.01 radians, described as tolerance around angle limits."},
+    {"lines":"537-551","fact":"Grounded collision classification accepts floor_angle <= floor_max_angle + FLOOR_ANGLE_THRESHOLD; selected floor normal uses collision depth."},
+    {"lines":"213-248","fact":"Wall branch can cancel or project travel and invoke floor snapping. This explains why last-motion/contact travel need not equal whole-response displacement; exact AK branch execution was not traced."},
+    {"lines":"492-518","fact":"Snap dispatch is conditional; snap queries use max(floor_snap_length,margin), recovery_as_collision and collide_separation_ray. Recorded snap=.3 is not proof of an upward .3 step or of a particular snap invocation."}
+  ]
+}

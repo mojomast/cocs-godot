@@ -1,0 +1,926 @@
+{
+  "qualification": "Frozen native arrays; angles/along are offline reconstruction. No engine internal branch trace.",
+  "AKManifestSha256": "827dd68b00c400b7ec17f9ab0e5a2067929277c3bb22e1681d38a1d5143a5ee1",
+  "nativeSha256": "76130effe1da05bfc800fa8e14bea5b0382b87b130899a3cc1b52e2dab9bb6d7",
+  "sourceSha256": "4449860481a195133653b37b2ec6776dc3663fdb3bc1592ae9a46aa3283fc838",
+  "sourceFiles": {
+    "res://exploration/walker.gd": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+    "res://tests/walker_admission/fixtures_v4.gd": "c4c175420aaca975acfa8ee277b2088796c2f0f8279751bbc8f2939154070e04",
+    "res://tests/walker_admission/slide_telemetry.gd": "b7c04249dd44574c5c14627766983cb571542879b17c39afc458c115178b2df0",
+    "res://tests/walker_parity_admission/candidate.gd": "0aae2ac30347e21286e09fc1b8f1a6b8937f37aef447d99af083a12700261314",
+    "res://tests/walker_parity_admission/driver.gd": "83e4bb4d9359066ce1a3041aa9c3e6e07284cb627d583068f849f41c60b3490e",
+    "res://tests/walker_parity_admission/evidence.gd": "19b7c024e3f15a365cd0289bef45fc069f3908fd9325359dccffc556a3242be8",
+    "res://tests/walker_parity_admission/observe.gd": "8a03fffa0cc46dcd34f83b9c811c781efb93b2b7f33fc4143d7526c7f9d2f5f8",
+    "res://tests/walker_parity_admission/policy.gd": "6fab2f142b3b849b3902a506a54c95d31f19a7dfecbab0202acb1896572f757f",
+    "res://tests/walker_parity_response/planner.gd": "7dadd0a3fb018de12afe867ff5a688663347e99bd6335f92353519d136e76b31",
+    "res://tests/walker_snap_parity/planner.gd": "9d61d505822208aaacc03bbb8017d4458d068e5430389aa5849eae7b6fdf01e6",
+    "res://tests/walker_snap_parity/query_pair.gd": "91f427d0ea0d47e9397a7331dd49f798d8041d5d93e31e11331da6ad31a475f7",
+    "res://tests/walker_step_up/controls_v2.gd": "90e69221eecf657c6cd158e4db5cbbe89ebfce0440be1f7f00ec230ce9e88965",
+    "res://tests/walker_step_up/response_guard.gd": "ff242f1c352755e3655666440731115911b59dc431f0ec7c37807e8c8ec281b0",
+    "res://tests/walker_step_up/sweep_proposal.gd": "b253464820a84d8de7e1cfc5abf7d3852f392e055ac6e71d42ce6a678d538d41",
+    "res://ui/mouse_motion.gd": "1edc97f26ccf98a6c5f776bf72968cf5fd1258d129566006c0c3ae1222716581",
+    "res://ui/settings_access.gd": "2bb46c9e6ee5dabbdef7a4cd864bf4afcae2a3c8dd7be93d0180a907da7920e0",
+    "res://project.godot": "c366dc92671de8b71c2e52d4d61fa89b621390a9183090338316ad79bff0cf0d"
+  },
+  "outcome": "unexpected_baseline_arrival",
+  "radius042Plus45": "UNRUN; no symmetry inference",
+  "profiles": [
+    {
+      "caseIndex": 0,
+      "role": 0,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.35:-45.0",
+        "incline": 0.0,
+        "maxResponses": 240,
+        "radius": 0.35,
+        "start": -1.0,
+        "yaw": -0.785398163397448
+      },
+      "parameters": {
+        "bodyRid": 124554051587,
+        "floorAngle": 0.802851438522339,
+        "gravity": 20.0,
+        "jump": 6.5,
+        "layer": 1,
+        "margin": 0.0199999995529652,
+        "mask": 1,
+        "offset": {
+          "basis": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "origin": [
+            0.0,
+            0.899999976158142,
+            0.0
+          ]
+        },
+        "shape": {
+          "height": 1.79999995231628,
+          "radius": 0.349999994039536
+        },
+        "shapeRid": 133143986178,
+        "snap": 0.300000011920929,
+        "sprint": 10.0,
+        "walk": 6.0
+      },
+      "inputResponses": 127,
+      "settlingResponses": 20,
+      "thresholdDegrees": 45.9999990033369,
+      "engineAngleThresholdDegrees": 46.57295679846773,
+      "firstTargetSlide": {
+        "caseIndex": 0,
+        "role": "baseline",
+        "radius": 0.35,
+        "yawDegrees": -45,
+        "inputIndex": 7,
+        "frame": 29,
+        "delta": 0.0166666666666667,
+        "along": -0.2999998768545422,
+        "y": 0.0166666638106108,
+        "dy": 0.0,
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "parentDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "parentRealVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "lastMotion": [
+          -0.0187825262546539,
+          0.0,
+          0.0187825262546539
+        ],
+        "grounded": true,
+        "onWall": true,
+        "floorNormal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "targetContactAngles": [
+          51.30689215669124
+        ],
+        "intentQueryTargetAngles": [
+          51.30689215669124
+        ],
+        "targetContactsStrict46Compatible": 0,
+        "targetContactsEngineAngleCompatible": 0,
+        "proposalAccepted": true,
+        "proposalReason": "three_sweeps_and_continuous_static_landing",
+        "applied": 0,
+        "ordinary": true
+      },
+      "targetSlideAngleMin": 51.30689215669124,
+      "targetSlideAngleMax": 51.30689215669124,
+      "last": {
+        "caseIndex": 0,
+        "role": "baseline",
+        "radius": 0.35,
+        "yawDegrees": -45,
+        "inputIndex": 126,
+        "frame": 148,
+        "delta": 0.0166666666666667,
+        "along": -0.2999998768545422,
+        "y": 0.0166666638106108,
+        "dy": 0.0,
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "parentDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "parentRealVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "lastMotion": [
+          -0.0187825262546539,
+          0.0,
+          0.0187825262546539
+        ],
+        "grounded": true,
+        "onWall": true,
+        "floorNormal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "targetContactAngles": [
+          51.30689215669124
+        ],
+        "intentQueryTargetAngles": [
+          51.30689215669124
+        ],
+        "targetContactsStrict46Compatible": 0,
+        "targetContactsEngineAngleCompatible": 0,
+        "proposalAccepted": true,
+        "proposalReason": "three_sweeps_and_continuous_static_landing",
+        "applied": 0,
+        "ordinary": true
+      },
+      "positiveYFrames": [],
+      "appliedFrames": [],
+      "faults": [],
+      "appliedUpCount": 0,
+      "verifiedLifts": 0,
+      "stallCount": 120,
+      "landingStreak": 0,
+      "reached": false,
+      "status": "completed",
+      "tailSevenOrdinaryGrounded": true
+    },
+    {
+      "caseIndex": 0,
+      "role": 1,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.35:-45.0",
+        "incline": 0.0,
+        "maxResponses": 240,
+        "radius": 0.35,
+        "start": -1.0,
+        "yaw": -0.785398163397448
+      },
+      "parameters": {
+        "bodyRid": 154618822659,
+        "floorAngle": 0.802851438522339,
+        "gravity": 20.0,
+        "jump": 6.5,
+        "layer": 1,
+        "margin": 0.0199999995529652,
+        "mask": 1,
+        "offset": {
+          "basis": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "origin": [
+            0.0,
+            0.899999976158142,
+            0.0
+          ]
+        },
+        "shape": {
+          "height": 1.79999995231628,
+          "radius": 0.349999994039536
+        },
+        "shapeRid": 163208757249,
+        "snap": 0.300000011920929,
+        "sprint": 10.0,
+        "walk": 6.0
+      },
+      "inputResponses": 21,
+      "settlingResponses": 20,
+      "thresholdDegrees": 45.9999990033369,
+      "engineAngleThresholdDegrees": 46.57295679846773,
+      "firstTargetSlide": {
+        "caseIndex": 0,
+        "role": "candidate",
+        "radius": 0.35,
+        "yawDegrees": -45,
+        "inputIndex": 8,
+        "frame": 177,
+        "delta": 0.0166666666666667,
+        "along": -0.1319097734765468,
+        "y": 0.14460888504982,
+        "dy": 0.0568529292941093,
+        "velocity": [
+          -4.24264049530029,
+          0.0,
+          4.24264049530029
+        ],
+        "parentDelta": [
+          -0.0481470823287964,
+          0.0568529292941093,
+          0.0481468439102173
+        ],
+        "parentRealVelocity": [
+          -2.8888247013092,
+          3.41117548942566,
+          2.88881039619446
+        ],
+        "lastMotion": [
+          -0.0214103236794472,
+          0.0344928205013275,
+          0.0214102938771248
+        ],
+        "grounded": true,
+        "onWall": false,
+        "floorNormal": [
+          0.25278103351593,
+          0.933918356895447,
+          -0.25278103351593
+        ],
+        "targetContactAngles": [
+          30.647545359505788,
+          27.564595861445923,
+          20.945905238816067
+        ],
+        "intentQueryTargetAngles": [
+          30.647545359505788
+        ],
+        "targetContactsStrict46Compatible": 3,
+        "targetContactsEngineAngleCompatible": 3,
+        "proposalAccepted": false,
+        "proposalReason": "ordinary_walkable_contact",
+        "applied": 0,
+        "ordinary": true
+      },
+      "targetSlideAngleMin": 0.0,
+      "targetSlideAngleMax": 30.647545359505788,
+      "last": {
+        "caseIndex": 0,
+        "role": "candidate",
+        "radius": 0.35,
+        "yawDegrees": -45,
+        "inputIndex": 20,
+        "frame": 189,
+        "delta": 0.0166666666666667,
+        "along": 1.0652300702701605,
+        "y": 0.167980521917343,
+        "dy": 0.0,
+        "velocity": [
+          -4.24264049530029,
+          0.0,
+          4.24264049530029
+        ],
+        "parentDelta": [
+          -0.0707106590270996,
+          0.0,
+          0.0707106590270996
+        ],
+        "parentRealVelocity": [
+          -4.24263954162598,
+          0.0,
+          4.24263954162598
+        ],
+        "lastMotion": [
+          -0.070710688829422,
+          0.0,
+          0.070710688829422
+        ],
+        "grounded": true,
+        "onWall": false,
+        "floorNormal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "targetContactAngles": [
+          0.0
+        ],
+        "intentQueryTargetAngles": [],
+        "targetContactsStrict46Compatible": 1,
+        "targetContactsEngineAngleCompatible": 1,
+        "proposalAccepted": false,
+        "proposalReason": "no_bounded_riser",
+        "applied": 0,
+        "ordinary": true
+      },
+      "positiveYFrames": [
+        176,
+        177,
+        178,
+        179
+      ],
+      "appliedFrames": [
+        176
+      ],
+      "faults": [],
+      "appliedUpCount": 1,
+      "verifiedLifts": 1,
+      "stallCount": 0,
+      "landingStreak": 7,
+      "reached": true,
+      "status": "completed",
+      "tailSevenOrdinaryGrounded": true
+    },
+    {
+      "caseIndex": 1,
+      "role": 0,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.35:45.0",
+        "incline": 0.0,
+        "maxResponses": 240,
+        "radius": 0.35,
+        "start": -1.0,
+        "yaw": 0.785398163397448
+      },
+      "parameters": {
+        "bodyRid": 184683593731,
+        "floorAngle": 0.802851438522339,
+        "gravity": 20.0,
+        "jump": 6.5,
+        "layer": 1,
+        "margin": 0.0199999995529652,
+        "mask": 1,
+        "offset": {
+          "basis": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "origin": [
+            0.0,
+            0.899999976158142,
+            0.0
+          ]
+        },
+        "shape": {
+          "height": 1.79999995231628,
+          "radius": 0.349999994039536
+        },
+        "shapeRid": 193273528321,
+        "snap": 0.300000011920929,
+        "sprint": 10.0,
+        "walk": 6.0
+      },
+      "inputResponses": 127,
+      "settlingResponses": 20,
+      "thresholdDegrees": 45.9999990033369,
+      "engineAngleThresholdDegrees": 46.57295679846773,
+      "firstTargetSlide": {
+        "caseIndex": 1,
+        "role": "baseline",
+        "radius": 0.35,
+        "yawDegrees": 45,
+        "inputIndex": 7,
+        "frame": 217,
+        "delta": 0.0166666666666667,
+        "along": -0.2999998768545422,
+        "y": 0.0166666638106108,
+        "dy": 0.0,
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "parentDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "parentRealVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "lastMotion": [
+          0.0187825262546539,
+          0.0,
+          0.0187825262546539
+        ],
+        "grounded": true,
+        "onWall": true,
+        "floorNormal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "targetContactAngles": [
+          51.30689215669124
+        ],
+        "intentQueryTargetAngles": [
+          51.30689215669124
+        ],
+        "targetContactsStrict46Compatible": 0,
+        "targetContactsEngineAngleCompatible": 0,
+        "proposalAccepted": true,
+        "proposalReason": "three_sweeps_and_continuous_static_landing",
+        "applied": 0,
+        "ordinary": true
+      },
+      "targetSlideAngleMin": 51.30689215669124,
+      "targetSlideAngleMax": 51.30689215669124,
+      "last": {
+        "caseIndex": 1,
+        "role": "baseline",
+        "radius": 0.35,
+        "yawDegrees": 45,
+        "inputIndex": 126,
+        "frame": 336,
+        "delta": 0.0166666666666667,
+        "along": -0.2999998768545422,
+        "y": 0.0166666638106108,
+        "dy": 0.0,
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "parentDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "parentRealVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "lastMotion": [
+          0.0187825262546539,
+          0.0,
+          0.0187825262546539
+        ],
+        "grounded": true,
+        "onWall": true,
+        "floorNormal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "targetContactAngles": [
+          51.30689215669124
+        ],
+        "intentQueryTargetAngles": [
+          51.30689215669124
+        ],
+        "targetContactsStrict46Compatible": 0,
+        "targetContactsEngineAngleCompatible": 0,
+        "proposalAccepted": true,
+        "proposalReason": "three_sweeps_and_continuous_static_landing",
+        "applied": 0,
+        "ordinary": true
+      },
+      "positiveYFrames": [],
+      "appliedFrames": [],
+      "faults": [],
+      "appliedUpCount": 0,
+      "verifiedLifts": 0,
+      "stallCount": 120,
+      "landingStreak": 0,
+      "reached": false,
+      "status": "completed",
+      "tailSevenOrdinaryGrounded": true
+    },
+    {
+      "caseIndex": 1,
+      "role": 1,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.35:45.0",
+        "incline": 0.0,
+        "maxResponses": 240,
+        "radius": 0.35,
+        "start": -1.0,
+        "yaw": 0.785398163397448
+      },
+      "parameters": {
+        "bodyRid": 214748364803,
+        "floorAngle": 0.802851438522339,
+        "gravity": 20.0,
+        "jump": 6.5,
+        "layer": 1,
+        "margin": 0.0199999995529652,
+        "mask": 1,
+        "offset": {
+          "basis": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "origin": [
+            0.0,
+            0.899999976158142,
+            0.0
+          ]
+        },
+        "shape": {
+          "height": 1.79999995231628,
+          "radius": 0.349999994039536
+        },
+        "shapeRid": 223338299392,
+        "snap": 0.300000011920929,
+        "sprint": 10.0,
+        "walk": 6.0
+      },
+      "inputResponses": 21,
+      "settlingResponses": 20,
+      "thresholdDegrees": 45.9999990033369,
+      "engineAngleThresholdDegrees": 46.57295679846773,
+      "firstTargetSlide": {
+        "caseIndex": 1,
+        "role": "candidate",
+        "radius": 0.35,
+        "yawDegrees": 45,
+        "inputIndex": 8,
+        "frame": 365,
+        "delta": 0.0166666666666667,
+        "along": -0.13190977347654684,
+        "y": 0.14460888504982,
+        "dy": 0.0568529292941093,
+        "velocity": [
+          4.24264049530029,
+          0.0,
+          4.24264049530029
+        ],
+        "parentDelta": [
+          0.0481468439102173,
+          0.0568529292941093,
+          0.0481470823287964
+        ],
+        "parentRealVelocity": [
+          2.88881039619446,
+          3.41117548942566,
+          2.8888247013092
+        ],
+        "lastMotion": [
+          0.0214102938771248,
+          0.0344928205013275,
+          0.0214103236794472
+        ],
+        "grounded": true,
+        "onWall": false,
+        "floorNormal": [
+          -0.25278103351593,
+          0.933918356895447,
+          -0.25278103351593
+        ],
+        "targetContactAngles": [
+          30.647545359505788,
+          27.564595861445923,
+          20.945905238816067
+        ],
+        "intentQueryTargetAngles": [
+          30.647545359505788
+        ],
+        "targetContactsStrict46Compatible": 3,
+        "targetContactsEngineAngleCompatible": 3,
+        "proposalAccepted": false,
+        "proposalReason": "ordinary_walkable_contact",
+        "applied": 0,
+        "ordinary": true
+      },
+      "targetSlideAngleMin": 0.0,
+      "targetSlideAngleMax": 30.647545359505788,
+      "last": {
+        "caseIndex": 1,
+        "role": "candidate",
+        "radius": 0.35,
+        "yawDegrees": 45,
+        "inputIndex": 20,
+        "frame": 377,
+        "delta": 0.0166666666666667,
+        "along": 1.0651912108758332,
+        "y": 0.167940884828568,
+        "dy": 0.0,
+        "velocity": [
+          4.24264049530029,
+          0.0,
+          4.24264049530029
+        ],
+        "parentDelta": [
+          0.0707106590270996,
+          0.0,
+          0.0707106590270996
+        ],
+        "parentRealVelocity": [
+          4.24263954162598,
+          0.0,
+          4.24263954162598
+        ],
+        "lastMotion": [
+          0.070710688829422,
+          0.0,
+          0.070710688829422
+        ],
+        "grounded": true,
+        "onWall": false,
+        "floorNormal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "targetContactAngles": [
+          0.0
+        ],
+        "intentQueryTargetAngles": [],
+        "targetContactsStrict46Compatible": 1,
+        "targetContactsEngineAngleCompatible": 1,
+        "proposalAccepted": false,
+        "proposalReason": "no_bounded_riser",
+        "applied": 0,
+        "ordinary": true
+      },
+      "positiveYFrames": [
+        364,
+        365,
+        366,
+        367
+      ],
+      "appliedFrames": [
+        364
+      ],
+      "faults": [],
+      "appliedUpCount": 1,
+      "verifiedLifts": 1,
+      "stallCount": 0,
+      "landingStreak": 7,
+      "reached": true,
+      "status": "completed",
+      "tailSevenOrdinaryGrounded": true
+    },
+    {
+      "caseIndex": 2,
+      "role": 0,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.42:-45.0",
+        "incline": 0.0,
+        "maxResponses": 240,
+        "radius": 0.42,
+        "start": -1.0,
+        "yaw": -0.785398163397448
+      },
+      "parameters": {
+        "bodyRid": 244813135875,
+        "floorAngle": 0.802851438522339,
+        "gravity": 20.0,
+        "jump": 6.5,
+        "layer": 1,
+        "margin": 0.0199999995529652,
+        "mask": 1,
+        "offset": {
+          "basis": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "origin": [
+            0.0,
+            0.899999976158142,
+            0.0
+          ]
+        },
+        "shape": {
+          "height": 1.79999995231628,
+          "radius": 0.419999986886978
+        },
+        "shapeRid": 253403070464,
+        "snap": 0.300000011920929,
+        "sprint": 10.0,
+        "walk": 6.0
+      },
+      "inputResponses": 21,
+      "settlingResponses": 20,
+      "thresholdDegrees": 45.9999990033369,
+      "engineAngleThresholdDegrees": 46.57295679846773,
+      "firstTargetSlide": {
+        "caseIndex": 2,
+        "role": "baseline",
+        "radius": 0.42,
+        "yawDegrees": -45,
+        "inputIndex": 6,
+        "frame": 404,
+        "delta": 0.0166666666666667,
+        "along": -0.3125054157901802,
+        "y": 0.0293711498379707,
+        "dy": 0.01270448602736,
+        "velocity": [
+          -4.24264049530029,
+          0.0,
+          4.24264049530029
+        ],
+        "parentDelta": [
+          -0.0618680119514465,
+          0.01270448602736,
+          0.0618678629398346
+        ],
+        "parentRealVelocity": [
+          -3.71208047866821,
+          0.762269139289856,
+          3.71207165718079
+        ],
+        "lastMotion": [
+          0.00525190681219101,
+          0.01270448602736,
+          -0.00525204092264175
+        ],
+        "grounded": true,
+        "onWall": false,
+        "floorNormal": [
+          0.510615170001984,
+          0.691769003868103,
+          -0.510615170001984
+        ],
+        "targetContactAngles": [
+          46.55273250251933,
+          46.22969550799202
+        ],
+        "intentQueryTargetAngles": [
+          46.55273250251933
+        ],
+        "targetContactsStrict46Compatible": 0,
+        "targetContactsEngineAngleCompatible": 2,
+        "proposalAccepted": true,
+        "proposalReason": "three_sweeps_and_continuous_static_landing",
+        "applied": 0,
+        "ordinary": true
+      },
+      "targetSlideAngleMin": 0.0,
+      "targetSlideAngleMax": 46.55273250251933,
+      "last": {
+        "caseIndex": 2,
+        "role": "baseline",
+        "radius": 0.42,
+        "yawDegrees": -45,
+        "inputIndex": 20,
+        "frame": 418,
+        "delta": 0.0166666666666667,
+        "along": 1.0081223549433544,
+        "y": 0.165543973445892,
+        "dy": 0.0,
+        "velocity": [
+          -4.24264049530029,
+          0.0,
+          4.24264049530029
+        ],
+        "parentDelta": [
+          -0.0707106590270996,
+          0.0,
+          0.0707106590270996
+        ],
+        "parentRealVelocity": [
+          -4.24263954162598,
+          0.0,
+          4.24263954162598
+        ],
+        "lastMotion": [
+          -0.070710688829422,
+          0.0,
+          0.070710688829422
+        ],
+        "grounded": true,
+        "onWall": false,
+        "floorNormal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "targetContactAngles": [
+          0.0
+        ],
+        "intentQueryTargetAngles": [],
+        "targetContactsStrict46Compatible": 1,
+        "targetContactsEngineAngleCompatible": 1,
+        "proposalAccepted": false,
+        "proposalReason": "no_bounded_riser",
+        "applied": 0,
+        "ordinary": true
+      },
+      "positiveYFrames": [
+        404,
+        405,
+        406,
+        407,
+        408
+      ],
+      "appliedFrames": [],
+      "faults": [],
+      "appliedUpCount": 0,
+      "verifiedLifts": 0,
+      "stallCount": 0,
+      "landingStreak": 6,
+      "reached": true,
+      "status": "failed",
+      "tailSevenOrdinaryGrounded": true
+    }
+  ],
+  "heuristic": {
+    "formula": "h_critical = bottom_clearance + radius*(1-cos(theta)); ideal sphere-edge contact, no margin/recovery model",
+    "bottomClearance": 0.0166666638106108,
+    "nominal46": {
+      "0.35": 0.12353623414996176,
+      "0.42": 0.14491014821783194
+    },
+    "engine46Plus001Rad": {
+      "0.35": 0.1260660379100475,
+      "0.42": 0.14794591272993482
+    },
+    "proposedHeights": [
+      0.15,
+      0.18,
+      0.2
+    ],
+    "strictPlannerRiseUpperBound": 0.2499
+  }
+}
