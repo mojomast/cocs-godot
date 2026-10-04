@@ -1,0 +1,791 @@
+{
+  "status": "SOURCE ONLY; no native engine or GDScript execution",
+  "base": "5b01702e",
+  "AHManifestSha256": "2eb06da778a5e7218451067592f7293180212eaedabada19885460d8c3f6f495",
+  "AHInventoryVerified": 42,
+  "parentAHApproval": {
+    "helpers": "58138256",
+    "analysis": "d1aa4b63",
+    "evidence": "dcda8780"
+  },
+  "bindings": {
+    "sourceSha256": "2bf47230230d4804507dd00257ce66b43adb72c30425af7872e6c5a5394ecbc0",
+    "grantSha256": "26b8d535721f8cf2a5513edf020a50aaedc50681a545e7f90ebf56e48bd25323",
+    "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+    "negativeNativeSha256": "16ed25f39227d968fe08793083a7bdc12def96767812e1886e37eed8c2c252c9",
+    "negativeSupervisorSha256": "5a521547c29524ac445ae87a0fa4ec66a9d4bb4afea251171d522f8bfb0a28f7",
+    "inclinedDependenciesSha256": "5bc0e79c0e3e637791b294d994649af68eecbc332458128c92627ebc7e89885e"
+  },
+  "gateTable": [
+    {
+      "gate": "_initialize args count/keys/group/mode",
+      "status": "data_pass",
+      "basis": "Actual archived argv: five unique reviewed keys; inclined group; synthetic-controls. No native branch trace."
+    },
+    {
+      "gate": "_initialize output does not exist",
+      "status": "archive_absent",
+      "basis": "Inclined result absent in frozen AH. No manufactured native receipt."
+    },
+    {
+      "gate": "run grant hash/schema/phase/group/binary/expiry",
+      "status": "host_pass",
+      "basis": "Both historical invocation endpoints precede expiry; exact CLI/file SHA binding. Grant is now released, not reusable."
+    },
+    {
+      "gate": "run source schema/order and17 file hashes",
+      "status": "bytes_pass",
+      "basis": "Actual16 scripts + project bytes match SHA values in frozen source.json; no dict reserialization hashing."
+    },
+    {
+      "gate": "predecessors dependency hash/bindings/count/member/native+supervisor hashes",
+      "status": "host_pass",
+      "basis": "Actual dependency JSON equals strict reader reconstruction and contains exactly negative-controls."
+    },
+    {
+      "gate": "Policy.successful top-level counters/roles/census",
+      "status": "host_pass",
+      "basis": "Actual receipt and all-JSON-numbers-as-double Python model both pass. This is not Godot evaluation."
+    },
+    {
+      "gate": "Evidence.campaign/profile all34x2; selected paired state agreement",
+      "status": "host_pass",
+      "basis": "All68 profiles satisfy current Python parameter/clock/state/lifecycle/stage predicates; serialized-number model also passes. GD arithmetic/equality not executed."
+    },
+    {
+      "gate": "Evidence.supervisor_ok bindings/flags/errors/return/owned/interval",
+      "status": "host_pass",
+      "basis": "Actual negative supervisor passes strict host check; return0, failedfalse, releaseclean, positiveAdmissionfalse, no failure fields."
+    },
+    {
+      "gate": "Evidence.supervisor_ok timestamp format/round-trip/fraction/order",
+      "status": "source_model_pass",
+      "basis": "Staged GD explicitly adds parsed six-digit fraction. Valid UTC calendar source model yields distinct epochs, strict ordering and interval containment. Not a measured GD result."
+    },
+    {
+      "gate": "actual native rejecting predicate",
+      "status": "unobserved",
+      "basis": "Engine exit2; banner only; no native receipt/label. No unique branch or cause established by this offline inspection."
+    }
+  ],
+  "profileChecks": [
+    {
+      "caseIndex": 0,
+      "fixture": "ceiling-up",
+      "radius": 0.35,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "up_blocked_or_lateral_recovery",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 0,
+      "fixture": "ceiling-up",
+      "radius": 0.35,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "up_blocked_or_lateral_recovery",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 1,
+      "fixture": "ceiling-up",
+      "radius": 0.42,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "up_blocked_or_lateral_recovery",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 1,
+      "fixture": "ceiling-up",
+      "radius": 0.42,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "up_blocked_or_lateral_recovery",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 2,
+      "fixture": "overhang-forward",
+      "radius": 0.35,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "raised_path_blocked",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 2,
+      "fixture": "overhang-forward",
+      "radius": 0.35,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "raised_path_blocked",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 3,
+      "fixture": "overhang-forward",
+      "radius": 0.42,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "raised_path_blocked",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 3,
+      "fixture": "overhang-forward",
+      "radius": 0.42,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "raised_path_blocked",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 4,
+      "fixture": "height-025",
+      "radius": 0.35,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "not_low_riser_band",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 4,
+      "fixture": "height-025",
+      "radius": 0.35,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "not_low_riser_band",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 5,
+      "fixture": "height-025",
+      "radius": 0.42,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "not_low_riser_band",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 5,
+      "fixture": "height-025",
+      "radius": 0.42,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "not_low_riser_band",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 6,
+      "fixture": "height-030",
+      "radius": 0.35,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "not_low_riser_band",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 6,
+      "fixture": "height-030",
+      "radius": 0.35,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "not_low_riser_band",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 7,
+      "fixture": "height-030",
+      "radius": 0.42,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "not_low_riser_band",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 7,
+      "fixture": "height-030",
+      "radius": 0.42,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "not_low_riser_band",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 8,
+      "fixture": "height-031",
+      "radius": 0.35,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "not_low_riser_band",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 8,
+      "fixture": "height-031",
+      "radius": 0.35,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "not_low_riser_band",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 9,
+      "fixture": "height-031",
+      "radius": 0.42,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "not_low_riser_band",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 9,
+      "fixture": "height-031",
+      "radius": 0.42,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "not_low_riser_band",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 10,
+      "fixture": "height-guard",
+      "radius": 0.35,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "not_low_riser_band",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 10,
+      "fixture": "height-guard",
+      "radius": 0.35,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "not_low_riser_band",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 11,
+      "fixture": "height-guard",
+      "radius": 0.42,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "not_low_riser_band",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 11,
+      "fixture": "height-guard",
+      "radius": 0.42,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "not_low_riser_band",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 12,
+      "fixture": "narrow-width",
+      "radius": 0.35,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "unsupported_or_narrow_landing",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 12,
+      "fixture": "narrow-width",
+      "radius": 0.35,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "unsupported_or_narrow_landing",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 13,
+      "fixture": "narrow-width",
+      "radius": 0.42,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "unsupported_or_narrow_landing",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 13,
+      "fixture": "narrow-width",
+      "radius": 0.42,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "unsupported_or_narrow_landing",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 14,
+      "fixture": "narrow-depth",
+      "radius": 0.35,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "unsupported_or_narrow_landing",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 14,
+      "fixture": "narrow-depth",
+      "radius": 0.35,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "unsupported_or_narrow_landing",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 15,
+      "fixture": "narrow-depth",
+      "radius": 0.42,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "unsupported_or_narrow_landing",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 15,
+      "fixture": "narrow-depth",
+      "radius": 0.42,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "unsupported_or_narrow_landing",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 16,
+      "fixture": "hole",
+      "radius": 0.35,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "no_continuous_flat_landing",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 16,
+      "fixture": "hole",
+      "radius": 0.35,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "no_continuous_flat_landing",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 17,
+      "fixture": "hole",
+      "radius": 0.42,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "no_continuous_flat_landing",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 17,
+      "fixture": "hole",
+      "radius": 0.42,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "no_continuous_flat_landing",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 18,
+      "fixture": "pit",
+      "radius": 0.35,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "no_bounded_riser",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 18,
+      "fixture": "pit",
+      "radius": 0.35,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "no_bounded_riser",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 19,
+      "fixture": "pit",
+      "radius": 0.42,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "no_bounded_riser",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 19,
+      "fixture": "pit",
+      "radius": 0.42,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "no_bounded_riser",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 20,
+      "fixture": "lateral",
+      "radius": 0.35,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "lateral_wall_or_corner",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 20,
+      "fixture": "lateral",
+      "radius": 0.35,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "lateral_wall_or_corner",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 21,
+      "fixture": "lateral",
+      "radius": 0.42,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "lateral_wall_or_corner",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 21,
+      "fixture": "lateral",
+      "radius": 0.42,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "lateral_wall_or_corner",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 22,
+      "fixture": "no-input",
+      "radius": 0.35,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "no_input",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 22,
+      "fixture": "no-input",
+      "radius": 0.35,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "no_input",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 23,
+      "fixture": "no-input",
+      "radius": 0.42,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "no_input",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 23,
+      "fixture": "no-input",
+      "radius": 0.42,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "no_input",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 24,
+      "fixture": "airborne",
+      "radius": 0.35,
+      "experimental": false,
+      "settles": 1,
+      "inputs": 1,
+      "terminalReason": "not_stationary_grounded_intent",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 24,
+      "fixture": "airborne",
+      "radius": 0.35,
+      "experimental": true,
+      "settles": 1,
+      "inputs": 1,
+      "terminalReason": "not_stationary_grounded_intent",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 25,
+      "fixture": "airborne",
+      "radius": 0.42,
+      "experimental": false,
+      "settles": 1,
+      "inputs": 1,
+      "terminalReason": "not_stationary_grounded_intent",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 25,
+      "fixture": "airborne",
+      "radius": 0.42,
+      "experimental": true,
+      "settles": 1,
+      "inputs": 1,
+      "terminalReason": "not_stationary_grounded_intent",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 26,
+      "fixture": "jumping",
+      "radius": 0.35,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 2,
+      "terminalReason": "not_stationary_grounded_intent",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 26,
+      "fixture": "jumping",
+      "radius": 0.35,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 2,
+      "terminalReason": "not_stationary_grounded_intent",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 27,
+      "fixture": "jumping",
+      "radius": 0.42,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 2,
+      "terminalReason": "not_stationary_grounded_intent",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 27,
+      "fixture": "jumping",
+      "radius": 0.42,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 2,
+      "terminalReason": "not_stationary_grounded_intent",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 28,
+      "fixture": "tilted-body",
+      "radius": 0.35,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "non_yaw_rotation",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 28,
+      "fixture": "tilted-body",
+      "radius": 0.35,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "non_yaw_rotation",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 29,
+      "fixture": "tilted-body",
+      "radius": 0.42,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "non_yaw_rotation",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 29,
+      "fixture": "tilted-body",
+      "radius": 0.42,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "non_yaw_rotation",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 30,
+      "fixture": "transformed-parent",
+      "radius": 0.35,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "transformed_parent",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 30,
+      "fixture": "transformed-parent",
+      "radius": 0.35,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "transformed_parent",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 31,
+      "fixture": "transformed-parent",
+      "radius": 0.42,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "transformed_parent",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 31,
+      "fixture": "transformed-parent",
+      "radius": 0.42,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "transformed_parent",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 32,
+      "fixture": "moving-floor",
+      "radius": 0.35,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "moving_platform",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 32,
+      "fixture": "moving-floor",
+      "radius": 0.35,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "moving_platform",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 33,
+      "fixture": "moving-floor",
+      "radius": 0.42,
+      "experimental": false,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "moving_platform",
+      "pythonProfile": true
+    },
+    {
+      "caseIndex": 33,
+      "fixture": "moving-floor",
+      "radius": 0.42,
+      "experimental": true,
+      "settles": 20,
+      "inputs": 1,
+      "terminalReason": "moving_platform",
+      "pythonProfile": true
+    }
+  ],
+  "auditSourceModel": [
+    {
+      "utc": "2026-10-04T05:31:35.735655+00:00",
+      "wholeEpochSeconds": 1791091895,
+      "integerMicroseconds": 1791091895735655,
+      "binary64Reconstruction": 1791091895.735655,
+      "gapMicroseconds": null,
+      "binary64UlpMicroseconds": 0.2384185791015625,
+      "withinRecordedLockInterval": true
+    },
+    {
+      "utc": "2026-10-04T05:31:35.952341+00:00",
+      "wholeEpochSeconds": 1791091895,
+      "integerMicroseconds": 1791091895952341,
+      "binary64Reconstruction": 1791091895.952341,
+      "gapMicroseconds": 216686,
+      "binary64UlpMicroseconds": 0.2384185791015625,
+      "withinRecordedLockInterval": true
+    },
+    {
+      "utc": "2026-10-04T05:31:36.171950+00:00",
+      "wholeEpochSeconds": 1791091896,
+      "integerMicroseconds": 1791091896171950,
+      "binary64Reconstruction": 1791091896.17195,
+      "gapMicroseconds": 219609,
+      "binary64UlpMicroseconds": 0.2384185791015625,
+      "withinRecordedLockInterval": true
+    }
+  ],
+  "expiryUnix": 1791095461.281656,
+  "inclinedInvocationUnix": [
+    1791091988.604121,
+    1791091989.989664
+  ],
+  "conclusion": "No concrete cross-language rejection established. Fraction-truncation/collapse hypothesis unsupported by actual staged source and timestamps. Add diagnostic stderr at silent admission gates without changing predicates.",
+  "accounting": "AH inclined internal attempted/completed/failed/interrupted/call counts remain unknown; zero instrumented completion is not an internal zero count. Positive4/8 remains unrun.",
+  "newNativeGrant": null,
+  "freshSourceRequiresFreshGrantAndNegativeRerun": true
+}

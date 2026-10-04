@@ -13,6 +13,8 @@ var mode := ""
 var grant_id := ""
 var grant_hash := ""
 var deps_hash := ""
+var admission_failure_reported := false
+var admission_hashes: Dictionary = {}
 var ready := false
 var previous_frame := -1
 var active_pair: Dictionary = {}
@@ -26,7 +28,7 @@ func _initialize() -> void:
 	var seen := {}
 	for arg: String in OS.get_cmdline_user_args():
 		var key := arg.get_slice("=",0)
-		if seen.has(key) or not "=" in arg: quit(2);return
+		if seen.has(key) or not "=" in arg: fail_admission("args.duplicate_or_malformed");return
 		seen[key] = true
 		match key:
 			"--group": group = arg.trim_prefix("--group=")
@@ -34,9 +36,28 @@ func _initialize() -> void:
 			"--grant-id": grant_id = arg.trim_prefix("--grant-id=")
 			"--grant-sha256": grant_hash = arg.trim_prefix("--grant-sha256=")
 			"--dependencies-sha256": deps_hash = arg.trim_prefix("--dependencies-sha256=")
-			_: quit(2);return
-	if seen.size()!=5 or not group in Policy.GROUPS or mode!=Policy.MODE or FileAccess.file_exists("res://"+group+"-result.json"): quit(2);return
+			_: fail_admission("args.unknown");return
+	if seen.size()!=5: fail_admission("args.count");return
+	if not group in Policy.GROUPS: fail_admission("args.group");return
+	if mode!=Policy.MODE: fail_admission("args.mode");return
+	if FileAccess.file_exists("res://"+group+"-result.json"): fail_admission("output.exists");return
 	call_deferred("run")
+
+func fail_admission(code: String, details: Dictionary = {}) -> bool:
+	# Diagnostic only: no file writes, world construction or caller text/paths.
+	# The supervisor already captures stderr in its write-once owned log.
+	if not admission_failure_reported:
+		admission_failure_reported = true
+		var diagnostic := {"schema":"parity-admission-gate-failure-v1","stage":"pre_world_admission",
+			"code":code,"phase":Policy.PHASE,"mode":Policy.MODE,"group":group if group in Policy.GROUPS else null,
+			"failed":true,"exitCode":2,"nativeCountersKnown":false,"physicalCallCounts":null,
+			"hashes":admission_hashes.duplicate(),"details":{}}
+		# Bounded fixed-schema metadata only. Invalid CLI values are never echoed.
+		for key: String in ["predecessor","predicate","inputSha256","expectedSha256"]:
+			if details.has(key): diagnostic.details[key] = details[key]
+		printerr("ADMISSION_FAILURE "+JSON.stringify(diagnostic))
+	quit(2)
+	return false
 
 func finish(reason: String, failed: bool, code: int) -> void:
 	if ready:
@@ -60,31 +81,42 @@ func finish(reason: String, failed: bool, code: int) -> void:
 
 func predecessors(source_hash: String, engine_hash: String) -> bool:
 	var path := "res://"+group+"-dependencies.json"
-	if FileAccess.get_sha256(path)!=deps_hash: return false
+	var actual_dependencies_hash := FileAccess.get_sha256(path)
+	admission_hashes.dependenciesSha256 = actual_dependencies_hash
+	if actual_dependencies_hash!=deps_hash: return fail_admission("dependencies.hash",{"inputSha256":actual_dependencies_hash,"expectedSha256":deps_hash if Policy.hash_valid(deps_hash) else null})
 	var d := Observe.read_json(path)
-	if d.get("phase")!=Policy.PHASE or d.get("group")!=group or d.get("sourceSha256")!=source_hash or d.get("grantSha256")!=grant_hash or d.get("engineSha256")!=engine_hash or not d.get("predecessors") is Dictionary: return false
+	if d.get("phase")!=Policy.PHASE or d.get("group")!=group or d.get("sourceSha256")!=source_hash or d.get("grantSha256")!=grant_hash or d.get("engineSha256")!=engine_hash or not d.get("predecessors") is Dictionary: return fail_admission("dependencies.binding_schema")
 	var index := Policy.GROUPS.find(group)
-	if d.predecessors.size()!=index: return false
+	if d.predecessors.size()!=index: return fail_admission("dependencies.predecessor_count")
 	for i in range(index):
 		var prior: String = Policy.GROUPS[i]
-		if not d.predecessors.has(prior): return false
+		if not d.predecessors.has(prior): return fail_admission("dependencies.predecessor_missing",{"predecessor":prior})
 		var rpath := "res://"+prior+"-result.json"
 		var spath := "res://"+prior+"-supervisor.json"
+		if not d.predecessors[prior] is Dictionary: return fail_admission("dependencies.predecessor_schema",{"predecessor":prior})
 		var h: Dictionary = d.predecessors[prior]
-		if FileAccess.get_sha256(rpath)!=h.get("resultSha256") or FileAccess.get_sha256(spath)!=h.get("supervisorSha256"): return false
+		var native_hash := FileAccess.get_sha256(rpath)
+		var supervisor_hash := FileAccess.get_sha256(spath)
+		admission_hashes.predecessorNativeSha256 = native_hash
+		admission_hashes.predecessorSupervisorSha256 = supervisor_hash
+		if native_hash!=h.get("resultSha256"): return fail_admission("predecessor.native_hash",{"predecessor":prior})
+		if supervisor_hash!=h.get("supervisorSha256"): return fail_admission("predecessor.supervisor_hash",{"predecessor":prior})
 		var r := Observe.read_json(rpath);var s := Observe.read_json(spath)
-		if not Policy.successful(r,prior,source_hash,grant_hash,engine_hash): return false
-		if not Policy.Evidence.supervisor_ok(s,prior,source_hash,grant_hash,engine_hash,h.resultSha256): return false
+		if not Policy.successful(r,prior,source_hash,grant_hash,engine_hash): return fail_admission("predecessor.native_policy",{"predecessor":prior,"predicate":"Policy.successful"})
+		if not Policy.Evidence.supervisor_ok(s,prior,source_hash,grant_hash,engine_hash,h.resultSha256): return fail_admission("predecessor.supervisor_policy",{"predecessor":prior,"predicate":"Evidence.supervisor_ok"})
 	return true
 
 func run() -> void:
 	var config := Observe.read_json("res://source.json");var grant := Observe.read_json("res://grant.json")
 	var source_hash := FileAccess.get_sha256("res://source.json");var engine_hash := FileAccess.get_sha256(OS.get_executable_path())
-	if FileAccess.get_sha256("res://grant.json")!=grant_hash or not Policy.grant_valid(grant,group,mode,grant_id,source_hash,engine_hash,Time.get_unix_time_from_system()): quit(2);return
-	if config.get("phase")!=Policy.PHASE or config.get("mode")!=Policy.MODE or config.get("order")!=Policy.GROUPS or not config.get("files") is Dictionary: quit(2);return
+	admission_hashes = {"sourceSha256":source_hash,"engineSha256":engine_hash,"grantSha256":FileAccess.get_sha256("res://grant.json")}
+	if admission_hashes.grantSha256!=grant_hash: fail_admission("grant.hash");return
+	if not Policy.grant_valid(grant,group,mode,grant_id,source_hash,engine_hash,Time.get_unix_time_from_system()): fail_admission("grant.policy",{"predicate":"Policy.grant_valid"});return
+	if config.get("phase")!=Policy.PHASE or config.get("mode")!=Policy.MODE or config.get("order")!=Policy.GROUPS or not config.get("files") is Dictionary: fail_admission("source.binding_schema");return
 	for path: String in config.files:
-		if not path.begins_with("res://") or ".." in path or FileAccess.get_sha256(path)!=config.files[path]: quit(2);return
-	if not predecessors(source_hash,engine_hash): quit(2);return
+		if not path.begins_with("res://") or ".." in path: fail_admission("source.input_namespace");return
+		if FileAccess.get_sha256(path)!=config.files[path]: fail_admission("source.input_hash",{"inputSha256":FileAccess.get_sha256(path)});return
+	if not predecessors(source_hash,engine_hash): return
 	ready = true
 	var n: int = Policy.COUNTS[Policy.GROUPS.find(group)]
 	receipt.unrunPairs = n;receipt.unrunProfiles = 2*n

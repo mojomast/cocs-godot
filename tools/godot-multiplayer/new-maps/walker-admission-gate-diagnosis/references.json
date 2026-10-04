@@ -1,0 +1,19 @@
+{
+  "qualification": "Read-only source references; no engine executed. Godot tag matches AH banner v4.5.2.stable.official.6ce3de25a.",
+  "references": [
+    {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/core/os/time.cpp",
+      "sha256": "8199906f4398362d95a14cba1911a628fa6c2ee38a27544860600ddd55cc52ab",
+      "facts": [
+        "Lines299-303 get_unix_time_from_datetime_string parses/validates date and returns integral seconds.",
+        "Lines247 onward get_datetime_string_from_unix_time chooses T separator when use_space=false.",
+        "Line395 binds use_space defaultfalse. The staged code already extracts fractional digits and adds them explicitly after the whole-second conversion."
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/core/variant/variant.h",
+      "sha256": "1900b23d56f95468e1ba4e25d8d32c9564b7a53ad081ebca198014b8fb48aa61",
+      "facts": ["Line267 stores FLOAT payload as double _float, not float32 Vector3 components. Binary64 timestamp spacing at AH epoch is about0.238419 microseconds, far below its audit gaps."]
+    }
+  ]
+}

@@ -62,6 +62,7 @@ def main(a):
                 runtime.audit_release(owned,report)
                 text=path('.log').read_text(errors='replace')
                 if 'SCRIPT ERROR:' in text or 'Parse Error:' in text:report['stopReason']='engine_script_error'
+                elif 'ADMISSION_FAILURE ' in text:report['stopReason']='admission_failure'
                 try:
                     native=load(path('-result.json')) if path('-result.json').is_file() else {}
                     if not isinstance(native,dict):raise ValueError('native receipt must be object')

@@ -135,7 +135,7 @@ class SupervisorTests(unittest.TestCase):
             r=passed(group,sha(dest/'source.json'),a.grant_sha256,sha(engine));r['dependenciesSha256']=sha(dest/(group+'-dependencies.json'));(dest/(group+'-result.json')).write_text(json.dumps(r))
             if native_mutation:
                 native_mutation(r);(dest/(group+'-result.json')).write_text(json.dumps(r))
-            if fast_error:(dest/(group+'.log')).write_text('SCRIPT ERROR: mock\n')
+            if fast_error:(dest/(group+'.log')).write_text(fast_error if isinstance(fast_error,str) else 'SCRIPT ERROR: mock\n')
             return -9 if deadline else 0
         with contextlib.ExitStack() as stack:
             stack.enter_context(patch.object(supervisor,'ROOT',self.root));stack.enter_context(patch.object(supervisor,'LOCK',self.base/'lock'))
