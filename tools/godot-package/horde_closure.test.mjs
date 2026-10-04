@@ -6,7 +6,7 @@ import {resolve, dirname, join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {Room} from '../../server/room.mjs';
 import {verifySource} from '../godot-export/semantic.mjs';
-import {resolveReviewedDerivative} from './racing_dependencies.mjs';
+import {resolveReviewedDerivative} from './racing_derivative.mjs';
 const root = resolve(import.meta.dirname, '../..');
 const discover = path => JSON.parse(execFileSync(process.execPath, ['--no-warnings','--experimental-vm-modules',join(root,'tools/godot-package/discover.mjs'),path], {encoding:'utf8',stdio:['ignore','pipe','pipe']}));
 
