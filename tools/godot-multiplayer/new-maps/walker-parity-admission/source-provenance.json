@@ -1,0 +1,193 @@
+{
+  "status": "SOURCE ONLY; new GDScript unparsed/unrun; no runnable native stage or execution grant",
+  "base": "5ac4dcb3",
+  "phase": "parity-admission-synthetic-v1",
+  "mode": "synthetic-controls",
+  "groups": [
+    "negative-controls",
+    "inclined-landing-rejections",
+    "positive-step-admission"
+  ],
+  "pairCounts": [
+    34,
+    4,
+    4
+  ],
+  "grant": null,
+  "autoStart": false,
+  "queued": false,
+  "queueIdentity": null,
+  "positiveAdmission": false,
+  "nativeStepAdmission": false,
+  "productionPromotion": false,
+  "candidateMapWalksRun": 0,
+  "sourceTestsPassed": 115,
+  "testBreakdown": {
+    "newSyntheticAdmission": 26,
+    "singleResponse": 24,
+    "compare": 18,
+    "parity": 8,
+    "admission": 7,
+    "stepUp": 32
+  },
+  "testPreparationScope": "temporary synthetic29/24 inventories and mock nonexecutable binary only; no actual child creation or engine",
+  "archives": {
+    "AF": {
+      "filesVerified": 24,
+      "root": "/home/mojo/.tmp-on-disk/cocs-walker-snap-compare-af",
+      "manifestSha256": "f3272f5bfe4417c5bf884eaab6c704e21b18dc8c8e7d0e849c14482a5e032189",
+      "producer": "b80273a7"
+    },
+    "AE": {
+      "manifestSha256": "b1a4be3789341ca87bc4e24664c016bc5a95519806a8179e686a3fac5c0a1387",
+      "filesVerified": 46,
+      "root": "/home/mojo/.tmp-on-disk/cocs-walker-admission-ae"
+    },
+    "AD": {
+      "manifestSha256": "912a8d5a6346e194c66b501daaaf43574eee1bad6a1a9d9f3cc49c964263d6fe",
+      "filesVerified": 45,
+      "root": "/home/mojo/.tmp-on-disk/cocs-walker-admission-ad"
+    },
+    "AB": {
+      "manifestSha256": "27ef00702b95c74b54bba5d9c03030254e4e76a7875f6519ec6bfd97a976b2a6",
+      "filesVerified": 140,
+      "root": "/home/mojo/.tmp-on-disk/cocs-walker-step-ab"
+    },
+    "Z": {
+      "manifestSha256": "288aaa809d4d655bd5037bec5eee7b6ea7dd8c824cb57d5382534a736cc89b38",
+      "filesVerified": 253,
+      "root": "/home/mojo/.tmp-on-disk/cocs-vesper-native-z"
+    },
+    "AA": {
+      "manifestSha256": "5e41067f590e79e54dd8b122840766630655a27595390f75b4213a9e0dc989b8",
+      "filesVerified": 141,
+      "root": "/home/mojo/.tmp-on-disk/cocs-parallax-tangent-native-AA-20261003"
+    },
+    "AC": {
+      "manifestSha256": "c55d288008626ecb8a9ec99e005b4c9db52a8f3d55a6342e539c9602f706b386",
+      "filesVerified": 265,
+      "root": "/home/mojo/.tmp-on-disk/cocs-parallax-glyph-AC"
+    },
+    "AG": {
+      "root": "/home/mojo/.tmp-on-disk/cocs-walker-parity-response-ag",
+      "filesVerified": 29,
+      "manifestSha256": "1f371963407d42dd7e55985b79b0af1cc21128493d4ecedb1fd5df59697a3505",
+      "producer": "362803a8"
+    }
+  },
+  "frozen": {
+    "X": {
+      "root": "/home/mojo/.tmp-on-disk/cocs-botanical-source-correction",
+      "inventorySha256": "440a1291201eaa3ee55f9c0218503ac4588028bfae7fee5c46364673bf94bd78",
+      "verifiedFiles": 600,
+      "mismatches": 0
+    },
+    "U": {
+      "root": "/home/mojo/.tmp-on-disk/cocs-map-variety-botanical-astra",
+      "inventorySha256": "ce0dd0ec8a87340cc31bfcb88cdfc7b11fb5aad1ce6efd317b9bb43ec22289ef",
+      "verifiedFiles": 264,
+      "mismatches": 0
+    }
+  },
+  "original15Dependencies": {
+    "game/core.mjs": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+    "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+    "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+    "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+    "game/spatial.mjs": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
+    "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
+    "game/operator-verbs.mjs": "357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e",
+    "game/spec-effects.mjs": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
+    "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "godot/exploration/walker.gd": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+    "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
+    "godot/world/session.gd": "32ff87d491dad9f47d555fa3eec701fbfbbfa47608075ebbc2796b5c291b549c",
+    "godot/multiplayer_worlds/demo.gd": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748"
+  },
+  "frozenInputsMatchParent": {
+    "godot/exploration/walker.gd": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+    "godot/tests/walker_admission/fixtures_v4.gd": "c4c175420aaca975acfa8ee277b2088796c2f0f8279751bbc8f2939154070e04",
+    "godot/tests/walker_admission/slide_telemetry.gd": "b7c04249dd44574c5c14627766983cb571542879b17c39afc458c115178b2df0",
+    "godot/tests/walker_parity_response/planner.gd": "7dadd0a3fb018de12afe867ff5a688663347e99bd6335f92353519d136e76b31",
+    "godot/tests/walker_snap_parity/planner.gd": "9d61d505822208aaacc03bbb8017d4458d068e5430389aa5849eae7b6fdf01e6",
+    "godot/tests/walker_snap_parity/query_pair.gd": "91f427d0ea0d47e9397a7331dd49f798d8041d5d93e31e11331da6ad31a475f7",
+    "godot/tests/walker_step_up/controls_v2.gd": "90e69221eecf657c6cd158e4db5cbbe89ebfce0440be1f7f00ec230ce9e88965",
+    "godot/tests/walker_step_up/response_guard.gd": "ff242f1c352755e3655666440731115911b59dc431f0ec7c37807e8c8ec281b0",
+    "godot/tests/walker_step_up/sweep_proposal.gd": "b253464820a84d8de7e1cfc5abf7d3852f392e055ac6e71d42ce6a678d538d41",
+    "godot/ui/mouse_motion.gd": "1edc97f26ccf98a6c5f776bf72968cf5fd1258d129566006c0c3ae1222716581",
+    "godot/ui/settings_access.gd": "2bb46c9e6ee5dabbdef7a4cd864bf4afcae2a3c8dd7be93d0180a907da7920e0",
+    "tools/godot-multiplayer/new-maps/walker-parity-response/policy.py": "118118284431fdd6c505ae9b480a314fd39b12ce3a2fdb6a2936de941638c3bc",
+    "tools/godot-multiplayer/new-maps/walker-parity-response/prepare.py": "2d8676025219662d322032fd46eb422771f89b420176eb863c6376079041f152",
+    "tools/godot-multiplayer/new-maps/walker-parity-response/supervisor.py": "fa0008bd30604fe05a0bbdfcaa9ee29f04ad554bcac92a3ffc1e7efc83b35f10"
+  },
+  "historicalProvenanceUnchanged": {
+    "tools/godot-multiplayer/new-maps/walker-parity-response/source-provenance.json": "c5612a746d6618ef7a865dca3ecad1da3078b73bfde99a2e6c64014f1207af68",
+    "tools/godot-multiplayer/new-maps/walker-parity-response/review-pins.json": "f1a8138dc563eddc8600dfba57e5843d3234fa6a6daf041c0aa9b017e7bbfb85",
+    "tools/godot-multiplayer/new-maps/walker-parity-response-ag/evidence/artifact-inventory.json": "1f371963407d42dd7e55985b79b0af1cc21128493d4ecedb1fd5df59697a3505",
+    "tools/godot-multiplayer/new-maps/walker-snap-compare-af/evidence/artifact-inventory.json": "f3272f5bfe4417c5bf884eaab6c704e21b18dc8c8e7d0e849c14482a5e032189",
+    "tools/godot-multiplayer/new-maps/walker-snap-compare/wiring-provenance.json": "a859a24c960c84487b9d785be095fda9d02a11b3d0a96573e2e406bbc0c5b7bb",
+    "tools/godot-multiplayer/new-maps/walker-snap-compare/cleanup-correction-provenance.json": "c9cb080b36c16787fce371ca1a750c041187f2102649979cc328bc9ceebb7d2e",
+    "tools/godot-multiplayer/new-maps/walker-snap-parity/source-provenance.json": "0068a95211ff69217fc5fb8a5b26eecfb943c103643161e1ebe3f6411b2092e7",
+    "tools/godot-multiplayer/new-maps/walker-step-up/post-response-provenance.json": "186bdff98ef2726d1da639afc803db80e9bde2af82c5804d06c6d856eb49aa62"
+  },
+  "AGApplicationReferenceSha256": "5fde54de8590834a4bb740aa729dcefcc3d76ad19bcb62cc0ce9de585d50ca16",
+  "AGApplicationCopyVerifiedExactExceptMethodName": true,
+  "stageScriptCount": 15,
+  "allParentTrackedBytesUnchanged": true,
+  "files": {
+    "godot/tests/walker_parity_admission/candidate.gd": {
+      "sha256": "0aae2ac30347e21286e09fc1b8f1a6b8937f37aef447d99af083a12700261314",
+      "bytes": 9468
+    },
+    "godot/tests/walker_parity_admission/driver.gd": {
+      "sha256": "8e586c5551e43b4c2e3d00c317feaebad85bdc1e7a3110957412074fcf4ceab1",
+      "bytes": 17427
+    },
+    "godot/tests/walker_parity_admission/observe.gd": {
+      "sha256": "f282661ba08bb1754b05f166fd42849a3987799c36250704cb0e406313ff4b7b",
+      "bytes": 3404
+    },
+    "godot/tests/walker_parity_admission/policy.gd": {
+      "sha256": "9927ad8091cf3ad7e6dbffe8f8011c5041f4651beb0fd62c3cb6199921686ddc",
+      "bytes": 3998
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission/README.md": {
+      "sha256": "8e70c1f29ceefeb11cf8e91dbb04bc4cd385f22b26184b7de650716dd87a4697",
+      "bytes": 12857
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission/audit.py": {
+      "sha256": "91f7324ce46dad35be1a69d7a784caa0dcb12c31b31fc214c3aebcff69792551",
+      "bytes": 2168
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission/experiment-plan.json": {
+      "sha256": "06ab8b69b648cd4ef0c50719ae896f666053580770ba6efa08e1bb2a46297349",
+      "bytes": 2773
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission/frozen.py": {
+      "sha256": "240d5a91eecb41c928e2ef1bedf03ab17f9187385d8566dd0b57c61fb0fb9bb2",
+      "bytes": 1048
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission/policy.py": {
+      "sha256": "4ce67bfec416d88f70f5094952560185e6a19fbcdcdf149af68df9b3d3dbb64b",
+      "bytes": 3713
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission/prepare.py": {
+      "sha256": "fa944d5473734a85d75d896797576c051a088d552f69eb24f634944873ed767b",
+      "bytes": 5595
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission/review-pins.json": {
+      "sha256": "622ecaf2a24b36e7e40a644aac50ba9282423ee9db1ce78a4fd9c5118954ffd7",
+      "bytes": 4859
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission/supervisor.py": {
+      "sha256": "938507d07aaad37d3c90d759f3be3124f4a806b3cee2a67a5af2cd630f3f700a",
+      "bytes": 7180
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission/test_admission.py": {
+      "sha256": "e8281b972739d6d7a2a2da13ef3c03587309f7ee54b60a29c4ed9e1bfd36dd61",
+      "bytes": 19570
+    }
+  }
+}
