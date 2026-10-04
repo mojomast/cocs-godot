@@ -1,5 +1,36 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**AE failed evidence approved and integrated as `0b212499` / `41d32dcb`.** Parent
+passed 52 source/package checks and all 46 hashes. The physical pre-lift is proved,
+but zero lifts satisfy the complete guard. Planned foot below the tread is an
+admissible rounded-edge proposal, not a landing; actual final support remains
+unverified. Full independent review: `WALKER_AE_REVIEW.md`. Query-parity follow-up
+is source-only, with no epsilon widening or native grant.
+
+## AE delivered/released — first positive pair failed
+
+AE `4ede40dc` / `c0761dbe` reports fresh inclined controls passing all four
+pairs, with the recorded inspection/replay checkpoint before positive invocation.
+The first positive pair (.35 m, −45°) then failed; three pairs/six profiles remain
+unrun. Baseline completed its expected 120-response stall. Candidate accepted one
+proposal and physically applied its up sweep, but response eight faulted as
+**`endpoint_differs_from_proof`**. This is zero fully guard-verified lifts and no
+successful candidate landing, not positive admission.
+
+Expected Y was 0.0877778008580208, actual 0.0877559557557106: −21.845102 µm versus
+the reviewed 1 µm tolerance. X/Z match and parent slide count is zero. The planner
+queried downward 0.175564289 m with 32 contacts, while parent floor snap uses about
+.3 m and four contacts. This observed query difference is not a uniquely isolated
+backend cause. Guard failure preceded final support lookup; actual support identity
+remains unqualified. No retry or tolerance change occurred.
+
+Parent verified **46 inventory files**, three empty audits/two groups, no current
+survivors and available lock at 01:47:38.848486Z. Release is 01:38:07.391307Z.
+Independent source/evidence review is active; delivery remains unmerged. No heavy
+grant is active. Astra is preparing a source-only query-parity investigation and
+bounded proposal, preserving the guard and failed evidence. All sixty map walks
+remain unrun and production motion reporting remains unresolved.
+
 ## AD integrated; AE conditional two-control sequence authorized
 
 AD passed independent review as **physical inclined rejection PASS only**, selected

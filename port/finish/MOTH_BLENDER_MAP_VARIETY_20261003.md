@@ -1,5 +1,26 @@
 # New Moth resources and Blender-authored map variety
 
+**AE failed-experiment archive integrated through `41d32dcb`.** Independent review
+confirms fresh inclined PASS and first positive pair FAILED with one applied up
+sweep but zero guard-verified lifts. Parent passed 52 checks and all 46 hashes.
+Three positive pairs/six profiles and sixty map journeys remain unrun. Review:
+`map-variety/WALKER_AE_REVIEW.md`. No heavy grant is active; query-parity diagnosis
+continues source-only and actual final support remains unqualified.
+
+## Current checkpoint — AE released; positive admission failed
+
+**No heavy grant is active.** AE delivered `4ede40dc` / `c0761dbe`: fresh inclined
+controls passed, but the first positive pair failed after an upward sweep. Final
+Y differed from proof by 21.845102 µm against a 1 µm bound; no guard-verified lift
+or candidate landing was accepted. Three positive pairs/six profiles and all sixty
+map walks remain unrun. Parent verified 46 files and three empty audits/two groups,
+with lock available at 01:47:38.848486Z; release was 01:38:07.391307Z.
+
+Independent evidence review is active. The planner and parent use differing down-
+query lengths/contact limits, but unique causality is not established. A source-
+only query-parity investigation is assigned; no tolerance widening, retry, map
+acceptance or production-controller promotion is authorized.
+
 ## Current owner — paired admission experiment AE
 
 **MOTH-BLENDER-20261004-AE is the sole heavy grant**, Astra
