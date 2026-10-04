@@ -1,5 +1,14 @@
 # New Moth resources and Blender-authored map variety
 
+## Current owner — corrected synthetic campaign AK
+
+**MOTH-BLENDER-20261004-AK is the sole heavy grant**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation **`8a355e98`**. The exact numeric
+correction passed review and 156 parent checks. Fresh negatives → inclined →
+positive groups require separate invocations and recorded passing checkpoints.
+Stop on any failure; no retry/maps. Movement/guard criteria remain unchanged,
+and synthetic success would not resolve production accounting or map acceptance.
+
 **Campaign correction `25766619` is under source review.** The one-clause change
 retains finite-integer validation and matches AJ's exercised clone exactly.
 Producer reports 143 corrected-source tests plus forty historical tests in the

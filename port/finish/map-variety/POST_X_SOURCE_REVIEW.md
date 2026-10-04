@@ -1,5 +1,27 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Numeric correction approved/integrated; AK authorized
+
+Independent review approved `25766619`, integrated as **`8a355e98`**. Parent
+passed **156 checks**: 143 corrected-source Python and thirteen package checks.
+The only runtime change is explicit numeric equality in place of membership,
+retaining finite-integer validation. Evidence bytes equal AJ's exercised clone;
+the current stage pin changes accordingly. Physical guard/controller and strict
+receipt conditions are unchanged. Historical tooling remains version-bound.
+
+**MOTH-BLENDER-20261004-AK** is the sole heavy grant, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8a355e98`. Free lock and only the
+preserved viewer were confirmed at 07:22:58.602029Z. Fresh negative34, inclined4
+and positive4 pairs run separately, one invocation per group, with complete passing
+native/supervisor evidence replay and recorded owner inspection before advancement.
+Bindings must match the new source/grant/engine; old receipts cannot substitute.
+
+Any failure stops the campaign; no retry or map continuation. Per-frame application
+limits, nine/eleven profile caps, full-footprint arrival and three ordinary grounded
+responses remain strict. Even complete synthetic admission leaves production motion
+accounting and all sixty map journeys unresolved. Final measured audits/release
+are required across every owned group.
+
 ## Campaign numeric correction delivered for review
 
 **`25766619`** applies only `not up in [0,1]` → `(up != 0 and up != 1)` with

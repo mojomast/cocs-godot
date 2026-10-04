@@ -10,17 +10,22 @@ finishing and verifying the new candidate.
 Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
-**No active heavy grant. AJ confirmed the receipt-only hypothesis and released.**
+**Current heavy owner: corrected synthetic campaign AK**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8a355e98`. The exact numeric clause
+passed review and 156 parent checks. Fresh negative34 → inclined4 → positive4
+pairs require separate invocations and passing-evidence checkpoints. Stop on any
+failure; no retry/maps. Physical guard, movement and production accounting unchanged.
+
+**AJ confirmed the receipt-only hypothesis and released.**
 Delivery `bb403edf` / `bfb32d4e` passed independent review and is integrated through
 `0b420dc1`. Parent passed 93 checks and all 23 hashes/manifest identity. Original
 policy rejects and the isolated clone accepts, with fifteen controls passing and
 seven mutants rejected. Campaign correction is being prepared source-only; no
 movement grant. See `map-variety/WALKER_AJ_REVIEW.md`.
-Actual correction `25766619` is under independent source review. Only the numeric
-membership clause and its current stage pin change; the entire Evidence file
-matches AJ's exercised clone. Producer reports 143 corrected-checkout tests and
-40 original-checkout historical tests. Historical tooling intentionally remains
-pinned to old source and fails closed here. No fresh campaign grant exists.
+Actual correction `25766619` passed review and is integrated as `8a355e98`.
+Only the numeric clause and stage pin change; the entire Evidence file matches
+AJ's exercised clone. Parent passed 143 corrected-source tests and thirteen package
+checks. Historical tooling stays pinned to old source and fails closed here.
 
 **AI passed negatives, localized a native policy failure and released.**
 Delivery `cc2b72fd` / `0a644c92` passed independent archive review and is integrated
@@ -345,7 +350,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P through AJ have released; no heavy grant is active.**
+**P through AJ have released; AK owns the corrected synthetic campaign.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -386,6 +391,12 @@ are introduced without the user's renewed scope. The subsequent overnight
 directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
+
+**Active: `MOTH-BLENDER-20261004-AK`**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8a355e98`. Three ordered groups,
+one invocation each, passing native/supervisor checkpoints under fresh same-source/
+grant/engine bindings. Stop on failure; no retry/maps. Final three measured audits
+across all owned groups and explicit lock release required.
 
 **Released: `MOTH-BLENDER-20261004-AJ`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `b424af67`. Phase
