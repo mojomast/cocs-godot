@@ -240,6 +240,7 @@ static func propose(body: CharacterBody3D, delta: float, axes: Vector2, sprint: 
 	var final_origin: Vector3 = edge.origin+down.travel
 	if final_origin.y<=start.origin.y+GUARD or final_origin.y-start.origin.y+GUARD>=STEP_LIMIT: return reject("no_bounded_net_rise",stages)
 	return {"accepted":true,"reason":"three_sweeps_and_continuous_static_landing","stages":stages,
+		"supportRid":collider.get_rid(),"supportShape":collider_shape,
 		"from":start,"raised":raised,"expectedFinal":final_origin,"upMotion":up.motion,"horizontalBudget":motion,
 		"surfaceRise":rise,"baseSupport":support.position,"landingY":quad.y,"shapeRadius":capsule.radius,"shapeHeight":capsule.height,
 		"landingCertificate":quad,"riserCollider":str(collider.get_path()),"riserShape":collider_shape,"foot":foot,"actualShapeData":shape_data,"shapeOffset":offset,

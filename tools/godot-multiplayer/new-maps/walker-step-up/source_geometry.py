@@ -85,4 +85,4 @@ def support_patch(triangles,contact,radius=.35,margin=.02):
     poly=certified_patch(triangles)
     if poly is None:return False
     corners=[(contact[0]+x,contact[2]+z) for x in [-radius-margin,radius+margin] for z in [margin+GUARD,radius+3*margin+GUARD]]
-    return all(all(cross(poly[i],poly[(i+1)%4],p)>=0 for i in range(4)) for p in corners)
+    return all(all(cross(poly[i],poly[(i+1)%len(poly)],p)>=0 for i in range(len(poly))) for p in corners)

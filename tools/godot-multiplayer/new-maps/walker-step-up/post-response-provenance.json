@@ -1,0 +1,32 @@
+{
+  "status": "SOURCE ONLY; GDScript unparsed/unrun",
+  "parentReference": "a4299caa",
+  "original15DependenciesMatchParent": {
+    "game/core.mjs": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+    "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+    "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+    "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+    "game/spatial.mjs": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
+    "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
+    "game/operator-verbs.mjs": "357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e",
+    "game/spec-effects.mjs": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
+    "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "godot/exploration/walker.gd": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+    "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
+    "godot/world/session.gd": "32ff87d491dad9f47d555fa3eec701fbfbbfa47608075ebbc2796b5c291b549c",
+    "godot/multiplayer_worlds/demo.gd": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748"
+  },
+  "sourceTestsPassed": 21,
+  "originalProvenanceSha256": "412a19f5dc3a70e0b74e40c78b35a0966b72e297ecb169ee551834af498d7c1b",
+  "files": {
+    "godot/tests/walker_step_up/candidate_walker.gd": "9d7707e1429486e0e6343eee765e0b57383e5c08c03c0fbd7f6780771fe72698",
+    "godot/tests/walker_step_up/sweep_proposal.gd": "b253464820a84d8de7e1cfc5abf7d3852f392e055ac6e71d42ce6a678d538d41",
+    "godot/tests/walker_step_up/response_guard.gd": "ff242f1c352755e3655666440731115911b59dc431f0ec7c37807e8c8ec281b0",
+    "tools/godot-multiplayer/new-maps/walker-step-up/source_geometry.py": "ce293eaff65393a654267e4e970efb584a93ccd63b148b9fd5105559c9885c02",
+    "tools/godot-multiplayer/new-maps/walker-step-up/response_oracle.py": "07a156f5b10381f11c3bf7dc282783af7d6edb8efc6d4361f2f2438d8bd6d109",
+    "tools/godot-multiplayer/new-maps/walker-step-up/test_response_guard.py": "6ac56a8fb8d833c2e8588f1bbe4c329f67452786be49125a4b974277a1164963",
+    "tools/godot-multiplayer/new-maps/walker-step-up/POST_RESPONSE_REVIEW.md": "1f54d7b43fe58ae4975e09874732e1c551da479e0336edb6b603fcbb158cb5d2"
+  }
+}
