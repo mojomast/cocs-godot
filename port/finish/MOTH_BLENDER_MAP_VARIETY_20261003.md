@@ -1,5 +1,12 @@
 # New Moth resources and Blender-authored map variety
 
+**V4 admission controls approved and integrated as `1fb612ef`.** Parent passed
+forty source/shipping checks. A future grant may run inclined rejection, then
+positive admission only after reviewing passing inclined evidence, then stop.
+Neither synthetic group admits reference/candidate-map walks. Fatal clock/timeout
+receipts remain interrupted failures, not completed-case counts. No native result
+or grant exists; **AC retains sole heavy ownership** for Parallax production.
+
 **Vesper admission controls source delivered:** `a38c38e4` prepares inclined-
 landing rejection and rotated positive-step admission at both radii, with numeric
 shape telemetry and explicit map-walk exclusion. Independent source/readiness

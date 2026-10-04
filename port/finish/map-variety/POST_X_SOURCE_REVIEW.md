@@ -1,5 +1,33 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Admission-control source approved and integrated
+
+Independent review approved `a38c38e4`, selected as **`1fb612ef`**, for source
+integration and a separately authorized v4 synthetic-control experiment. Parent
+passed **forty checks**: seven new source tests, 32 existing source tests and
+strict committed-Git shipping closure. AC retains the sole heavy slot; no v4
+native grant or staged attempt is issued.
+
+The permitted future order is inclined-landing rejection, review of its passing
+receipt, then a separate positive-admission invocation, and stop. Both supervisor
+and driver exclude reference/map walks and legacy continuation fields; positive
+admission requires the same-source/grant passing four-case inclined receipt.
+
+The 47° physical slope, .15 m leading edge and world-baked ±45° courses match
+Walker input conventions. Negative acceptance requires the actual target/shape-0
+low-band contact plus `no_continuous_flat_landing`; approach-only rejection cannot
+pass. Positive acceptance requires blocked baseline, actual applied lift with the
+unchanged guard passing, and grounded arrival/fresh support on the certified target.
+Ordinary rounding, wrong support or arrival without assistance cannot pass.
+
+The adapter replaces only diagnostic metadata after one existing candidate step;
+numeric shape indices use the verified Godot API. Source preparation copies AB
+lineage receipts for synthetic controls and does not instantiate either map.
+Clock/timeout fatal paths may leave an active case outside `failedTrials`; such
+receipts are interrupted/fatal traces, **not a complete case census**. They retain
+failure and cannot grant admission. Actual .42 baseline behavior and guard/native
+snap agreement may still truthfully fail. All sixty map journeys remain unrun.
+
 ## Admission controls delivered for independent source review
 
 `a38c38e4` prepares phase **`admission-controls-only-v4`**, allowing only
