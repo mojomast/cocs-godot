@@ -1,0 +1,738 @@
+{
+  "counts": {
+    "matchedGeometryFaces": 155553,
+    "duplicateGroups": 228,
+    "strictEquivalentFaces": 155553,
+    "mismatchedFaces": 0,
+    "ambiguousBasisGroups": 0,
+    "missingGeometryGroups": 0
+  },
+  "maxLocalPNUVTError": [
+    0.0,
+    0.00010138750076293945,
+    0.0,
+    0.0001799166202545166
+  ],
+  "repairedMappings": [
+    {
+      "accessor": 48,
+      "vertex": 24051,
+      "sourceFace": 11823,
+      "nativeNode": "kit_authority_saltstone_00",
+      "nativeFace": 11823,
+      "nativeVertex": 24050,
+      "nativeT": [
+        1.0,
+        0.0,
+        -4.5778462663292885e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 48,
+      "vertex": 24050,
+      "sourceFace": 11823,
+      "nativeNode": "kit_authority_saltstone_00",
+      "nativeFace": 11823,
+      "nativeVertex": 24051,
+      "nativeT": [
+        1.0,
+        0.0,
+        -4.5778462663292885e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 48,
+      "vertex": 24049,
+      "sourceFace": 11823,
+      "nativeNode": "kit_authority_saltstone_00",
+      "nativeFace": 11823,
+      "nativeVertex": 24049,
+      "nativeT": [
+        1.0,
+        0.0,
+        -4.5778462663292885e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1026,
+      "sourceFace": 964,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 965,
+      "nativeVertex": 1025,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1027,
+      "sourceFace": 964,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 965,
+      "nativeVertex": 1027,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1026,
+      "sourceFace": 965,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 963,
+      "nativeVertex": 1025,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1027,
+      "sourceFace": 966,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 969,
+      "nativeVertex": 1027,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1026,
+      "sourceFace": 967,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 967,
+      "nativeVertex": 1025,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1027,
+      "sourceFace": 967,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 967,
+      "nativeVertex": 1027,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1038,
+      "sourceFace": 976,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 982,
+      "nativeVertex": 1042,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1039,
+      "sourceFace": 976,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 982,
+      "nativeVertex": 1040,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1038,
+      "sourceFace": 977,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 984,
+      "nativeVertex": 1042,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1039,
+      "sourceFace": 978,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 978,
+      "nativeVertex": 1040,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1039,
+      "sourceFace": 979,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 980,
+      "nativeVertex": 1040,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1038,
+      "sourceFace": 979,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 980,
+      "nativeVertex": 1042,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1050,
+      "sourceFace": 988,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 989,
+      "nativeVertex": 1049,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1051,
+      "sourceFace": 988,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 989,
+      "nativeVertex": 1051,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1050,
+      "sourceFace": 989,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 987,
+      "nativeVertex": 1049,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1051,
+      "sourceFace": 990,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 993,
+      "nativeVertex": 1051,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1050,
+      "sourceFace": 991,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 991,
+      "nativeVertex": 1049,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1051,
+      "sourceFace": 991,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 991,
+      "nativeVertex": 1051,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1062,
+      "sourceFace": 1000,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 1006,
+      "nativeVertex": 1066,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1063,
+      "sourceFace": 1000,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 1006,
+      "nativeVertex": 1064,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1062,
+      "sourceFace": 1001,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 1008,
+      "nativeVertex": 1066,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1063,
+      "sourceFace": 1002,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 1002,
+      "nativeVertex": 1064,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1063,
+      "sourceFace": 1003,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 1004,
+      "nativeVertex": 1064,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1062,
+      "sourceFace": 1003,
+      "nativeNode": "wayfinding-2",
+      "nativeFace": 1004,
+      "nativeVertex": 1066,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1026,
+      "sourceFace": 964,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 965,
+      "nativeVertex": 1025,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1027,
+      "sourceFace": 964,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 965,
+      "nativeVertex": 1027,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1026,
+      "sourceFace": 965,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 963,
+      "nativeVertex": 1025,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1027,
+      "sourceFace": 966,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 969,
+      "nativeVertex": 1027,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1026,
+      "sourceFace": 967,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 967,
+      "nativeVertex": 1025,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1027,
+      "sourceFace": 967,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 967,
+      "nativeVertex": 1027,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1038,
+      "sourceFace": 976,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 982,
+      "nativeVertex": 1042,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1039,
+      "sourceFace": 976,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 982,
+      "nativeVertex": 1040,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1038,
+      "sourceFace": 977,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 984,
+      "nativeVertex": 1042,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1039,
+      "sourceFace": 978,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 978,
+      "nativeVertex": 1040,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1039,
+      "sourceFace": 979,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 980,
+      "nativeVertex": 1040,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1038,
+      "sourceFace": 979,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 980,
+      "nativeVertex": 1042,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1050,
+      "sourceFace": 988,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 989,
+      "nativeVertex": 1049,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1051,
+      "sourceFace": 988,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 989,
+      "nativeVertex": 1051,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1050,
+      "sourceFace": 989,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 987,
+      "nativeVertex": 1049,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1051,
+      "sourceFace": 990,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 993,
+      "nativeVertex": 1051,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1050,
+      "sourceFace": 991,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 991,
+      "nativeVertex": 1049,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1051,
+      "sourceFace": 991,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 991,
+      "nativeVertex": 1051,
+      "nativeT": [
+        -1.5260186046361923e-05,
+        -1.0,
+        7.630093023180962e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1062,
+      "sourceFace": 1000,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 1006,
+      "nativeVertex": 1066,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1063,
+      "sourceFace": 1000,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 1006,
+      "nativeVertex": 1064,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1062,
+      "sourceFace": 1001,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 1008,
+      "nativeVertex": 1066,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1063,
+      "sourceFace": 1002,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 1002,
+      "nativeVertex": 1064,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1063,
+      "sourceFace": 1003,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 1004,
+      "nativeVertex": 1064,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1062,
+      "sourceFace": 1003,
+      "nativeNode": "wayfinding-3",
+      "nativeFace": 1004,
+      "nativeVertex": 1066,
+      "nativeT": [
+        0.0,
+        1.0,
+        -1.5259021893143654e-05,
+        -1.0
+      ]
+    }
+  ],
+  "parallelNativeCorners": 0,
+  "scope": "Mesh-local only; native world transforms not recorded",
+  "universalUVBasisValidity": false,
+  "manualAcceptance": "pending",
+  "materialFieldSets": 14,
+  "materialChannels": 39
+}

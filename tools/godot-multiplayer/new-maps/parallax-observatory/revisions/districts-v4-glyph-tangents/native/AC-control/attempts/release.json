@@ -1,0 +1,506 @@
+{
+  "grant": "MOTH-BLENDER-20261004-AC",
+  "time": "2026-10-04T01:01:19.200750+00:00",
+  "audits": [
+    {
+      "time": "2026-10-04T01:01:18.463065+00:00",
+      "ownedGroupMembers": [],
+      "groups": [
+        {
+          "pid": 1822096,
+          "ppid": 1820159,
+          "pgid": 1822096,
+          "startTicks": 625830856,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --factory-startup --python-exit-code 70 --python tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/build.py -- --grant-receipt tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-grant.json --attempt AC01 "
+        },
+        {
+          "pid": 1826790,
+          "ppid": 1820159,
+          "pgid": 1826790,
+          "startTicks": 625838107,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --factory-startup --python-exit-code 70 --python tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/build.py -- --grant-receipt tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-grant.json --attempt AC01 --reopen "
+        },
+        {
+          "pid": 1833999,
+          "ppid": 1820159,
+          "pgid": 1833999,
+          "startTicks": 625844942,
+          "comm": "python3",
+          "argv": "python3 -c import sys;sys.path.insert(0,'tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents');from stage import *;print(prepare('AC01',HERE/'native/AC-grant.json')) "
+        },
+        {
+          "pid": 1842476,
+          "ppid": 1820159,
+          "pgid": 1842476,
+          "startTicks": 625848103,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import "
+        },
+        {
+          "pid": 1846163,
+          "ppid": 1820159,
+          "pgid": 1846163,
+          "startTicks": 625851918,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import "
+        },
+        {
+          "pid": 1846903,
+          "ppid": 1820159,
+          "pgid": 1846903,
+          "startTicks": 625853127,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --script res://tests/new_maps/parallax_glyph/AC01/import.gd "
+        },
+        {
+          "pid": 1847590,
+          "ppid": 1820159,
+          "pgid": 1847590,
+          "startTicks": 625854325,
+          "comm": "python3",
+          "argv": "python3 -c import sys;sys.path.insert(0,'tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents');from native_gate import *;s=ROOT/'godot/tests/new_maps/parallax_glyph/AC01';r=check((s/'candidate.glb').read_bytes(),json.loads((s/'evidence/native-import.json').read_text()),(s/'evidence/native-streams.bin').read_bytes(),s);(HERE/'native/AC01/native-proof.json').write_text(json.dumps(r,indent=2)+'\\n');print({k:v for k,v in r.items() if k!='repairedMappings'}) "
+        },
+        {
+          "pid": 1855444,
+          "ppid": 1820159,
+          "pgid": 1855444,
+          "startTicks": 625867870,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --script res://tests/new_maps/parallax_glyph/AC01/targeted_rays.gd -- --map=parallax-observatory "
+        },
+        {
+          "pid": 1856396,
+          "ppid": 1820159,
+          "pgid": 1856396,
+          "startTicks": 625869373,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=arrival-eye "
+        },
+        {
+          "pid": 1857891,
+          "ppid": 1820159,
+          "pgid": 1857891,
+          "startTicks": 625872234,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=lens-eye "
+        },
+        {
+          "pid": 1858291,
+          "ppid": 1820159,
+          "pgid": 1858291,
+          "startTicks": 625873000,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=cistern-eye "
+        },
+        {
+          "pid": 1858702,
+          "ppid": 1820159,
+          "pgid": 1858702,
+          "startTicks": 625873691,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=overview "
+        },
+        {
+          "pid": 1859030,
+          "ppid": 1820159,
+          "pgid": 1859030,
+          "startTicks": 625874217,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=archive-interior "
+        },
+        {
+          "pid": 1859913,
+          "ppid": 1820159,
+          "pgid": 1859913,
+          "startTicks": 625875188,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=polar-interior "
+        },
+        {
+          "pid": 1860451,
+          "ppid": 1820159,
+          "pgid": 1860451,
+          "startTicks": 625876035,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=arcade-eye "
+        },
+        {
+          "pid": 1860916,
+          "ppid": 1820159,
+          "pgid": 1860916,
+          "startTicks": 625876806,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=pump-interior "
+        },
+        {
+          "pid": 1861372,
+          "ppid": 1820159,
+          "pgid": 1861372,
+          "startTicks": 625877607,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=well-descent "
+        },
+        {
+          "pid": 1861765,
+          "ppid": 1820159,
+          "pgid": 1861765,
+          "startTicks": 625878329,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=court-relief "
+        },
+        {
+          "pid": 1862125,
+          "ppid": 1820159,
+          "pgid": 1862125,
+          "startTicks": 625879010,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=wayfinding-2-glyph-close "
+        },
+        {
+          "pid": 1862710,
+          "ppid": 1820159,
+          "pgid": 1862710,
+          "startTicks": 625879907,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=wayfinding-3-glyph-close "
+        }
+      ]
+    },
+    {
+      "time": "2026-10-04T01:01:18.699574+00:00",
+      "ownedGroupMembers": [],
+      "groups": [
+        {
+          "pid": 1822096,
+          "ppid": 1820159,
+          "pgid": 1822096,
+          "startTicks": 625830856,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --factory-startup --python-exit-code 70 --python tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/build.py -- --grant-receipt tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-grant.json --attempt AC01 "
+        },
+        {
+          "pid": 1826790,
+          "ppid": 1820159,
+          "pgid": 1826790,
+          "startTicks": 625838107,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --factory-startup --python-exit-code 70 --python tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/build.py -- --grant-receipt tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-grant.json --attempt AC01 --reopen "
+        },
+        {
+          "pid": 1833999,
+          "ppid": 1820159,
+          "pgid": 1833999,
+          "startTicks": 625844942,
+          "comm": "python3",
+          "argv": "python3 -c import sys;sys.path.insert(0,'tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents');from stage import *;print(prepare('AC01',HERE/'native/AC-grant.json')) "
+        },
+        {
+          "pid": 1842476,
+          "ppid": 1820159,
+          "pgid": 1842476,
+          "startTicks": 625848103,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import "
+        },
+        {
+          "pid": 1846163,
+          "ppid": 1820159,
+          "pgid": 1846163,
+          "startTicks": 625851918,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import "
+        },
+        {
+          "pid": 1846903,
+          "ppid": 1820159,
+          "pgid": 1846903,
+          "startTicks": 625853127,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --script res://tests/new_maps/parallax_glyph/AC01/import.gd "
+        },
+        {
+          "pid": 1847590,
+          "ppid": 1820159,
+          "pgid": 1847590,
+          "startTicks": 625854325,
+          "comm": "python3",
+          "argv": "python3 -c import sys;sys.path.insert(0,'tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents');from native_gate import *;s=ROOT/'godot/tests/new_maps/parallax_glyph/AC01';r=check((s/'candidate.glb').read_bytes(),json.loads((s/'evidence/native-import.json').read_text()),(s/'evidence/native-streams.bin').read_bytes(),s);(HERE/'native/AC01/native-proof.json').write_text(json.dumps(r,indent=2)+'\\n');print({k:v for k,v in r.items() if k!='repairedMappings'}) "
+        },
+        {
+          "pid": 1855444,
+          "ppid": 1820159,
+          "pgid": 1855444,
+          "startTicks": 625867870,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --script res://tests/new_maps/parallax_glyph/AC01/targeted_rays.gd -- --map=parallax-observatory "
+        },
+        {
+          "pid": 1856396,
+          "ppid": 1820159,
+          "pgid": 1856396,
+          "startTicks": 625869373,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=arrival-eye "
+        },
+        {
+          "pid": 1857891,
+          "ppid": 1820159,
+          "pgid": 1857891,
+          "startTicks": 625872234,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=lens-eye "
+        },
+        {
+          "pid": 1858291,
+          "ppid": 1820159,
+          "pgid": 1858291,
+          "startTicks": 625873000,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=cistern-eye "
+        },
+        {
+          "pid": 1858702,
+          "ppid": 1820159,
+          "pgid": 1858702,
+          "startTicks": 625873691,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=overview "
+        },
+        {
+          "pid": 1859030,
+          "ppid": 1820159,
+          "pgid": 1859030,
+          "startTicks": 625874217,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=archive-interior "
+        },
+        {
+          "pid": 1859913,
+          "ppid": 1820159,
+          "pgid": 1859913,
+          "startTicks": 625875188,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=polar-interior "
+        },
+        {
+          "pid": 1860451,
+          "ppid": 1820159,
+          "pgid": 1860451,
+          "startTicks": 625876035,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=arcade-eye "
+        },
+        {
+          "pid": 1860916,
+          "ppid": 1820159,
+          "pgid": 1860916,
+          "startTicks": 625876806,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=pump-interior "
+        },
+        {
+          "pid": 1861372,
+          "ppid": 1820159,
+          "pgid": 1861372,
+          "startTicks": 625877607,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=well-descent "
+        },
+        {
+          "pid": 1861765,
+          "ppid": 1820159,
+          "pgid": 1861765,
+          "startTicks": 625878329,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=court-relief "
+        },
+        {
+          "pid": 1862125,
+          "ppid": 1820159,
+          "pgid": 1862125,
+          "startTicks": 625879010,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=wayfinding-2-glyph-close "
+        },
+        {
+          "pid": 1862710,
+          "ppid": 1820159,
+          "pgid": 1862710,
+          "startTicks": 625879907,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=wayfinding-3-glyph-close "
+        }
+      ]
+    },
+    {
+      "time": "2026-10-04T01:01:18.932694+00:00",
+      "ownedGroupMembers": [],
+      "groups": [
+        {
+          "pid": 1822096,
+          "ppid": 1820159,
+          "pgid": 1822096,
+          "startTicks": 625830856,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --factory-startup --python-exit-code 70 --python tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/build.py -- --grant-receipt tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-grant.json --attempt AC01 "
+        },
+        {
+          "pid": 1826790,
+          "ppid": 1820159,
+          "pgid": 1826790,
+          "startTicks": 625838107,
+          "comm": "blender",
+          "argv": "/home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/blender -b -t 1 --factory-startup --python-exit-code 70 --python tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/build.py -- --grant-receipt tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-grant.json --attempt AC01 --reopen "
+        },
+        {
+          "pid": 1833999,
+          "ppid": 1820159,
+          "pgid": 1833999,
+          "startTicks": 625844942,
+          "comm": "python3",
+          "argv": "python3 -c import sys;sys.path.insert(0,'tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents');from stage import *;print(prepare('AC01',HERE/'native/AC-grant.json')) "
+        },
+        {
+          "pid": 1842476,
+          "ppid": 1820159,
+          "pgid": 1842476,
+          "startTicks": 625848103,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import "
+        },
+        {
+          "pid": 1846163,
+          "ppid": 1820159,
+          "pgid": 1846163,
+          "startTicks": 625851918,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --editor --import "
+        },
+        {
+          "pid": 1846903,
+          "ppid": 1820159,
+          "pgid": 1846903,
+          "startTicks": 625853127,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --script res://tests/new_maps/parallax_glyph/AC01/import.gd "
+        },
+        {
+          "pid": 1847590,
+          "ppid": 1820159,
+          "pgid": 1847590,
+          "startTicks": 625854325,
+          "comm": "python3",
+          "argv": "python3 -c import sys;sys.path.insert(0,'tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents');from native_gate import *;s=ROOT/'godot/tests/new_maps/parallax_glyph/AC01';r=check((s/'candidate.glb').read_bytes(),json.loads((s/'evidence/native-import.json').read_text()),(s/'evidence/native-streams.bin').read_bytes(),s);(HERE/'native/AC01/native-proof.json').write_text(json.dumps(r,indent=2)+'\\n');print({k:v for k,v in r.items() if k!='repairedMappings'}) "
+        },
+        {
+          "pid": 1855444,
+          "ppid": 1820159,
+          "pgid": 1855444,
+          "startTicks": 625867870,
+          "comm": "Godot_v4.5.2-st",
+          "argv": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --headless --single-threaded-scene --path godot --script res://tests/new_maps/parallax_glyph/AC01/targeted_rays.gd -- --map=parallax-observatory "
+        },
+        {
+          "pid": 1856396,
+          "ppid": 1820159,
+          "pgid": 1856396,
+          "startTicks": 625869373,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=arrival-eye "
+        },
+        {
+          "pid": 1857891,
+          "ppid": 1820159,
+          "pgid": 1857891,
+          "startTicks": 625872234,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=lens-eye "
+        },
+        {
+          "pid": 1858291,
+          "ppid": 1820159,
+          "pgid": 1858291,
+          "startTicks": 625873000,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=cistern-eye "
+        },
+        {
+          "pid": 1858702,
+          "ppid": 1820159,
+          "pgid": 1858702,
+          "startTicks": 625873691,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=overview "
+        },
+        {
+          "pid": 1859030,
+          "ppid": 1820159,
+          "pgid": 1859030,
+          "startTicks": 625874217,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=archive-interior "
+        },
+        {
+          "pid": 1859913,
+          "ppid": 1820159,
+          "pgid": 1859913,
+          "startTicks": 625875188,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=polar-interior "
+        },
+        {
+          "pid": 1860451,
+          "ppid": 1820159,
+          "pgid": 1860451,
+          "startTicks": 625876035,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=arcade-eye "
+        },
+        {
+          "pid": 1860916,
+          "ppid": 1820159,
+          "pgid": 1860916,
+          "startTicks": 625876806,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=pump-interior "
+        },
+        {
+          "pid": 1861372,
+          "ppid": 1820159,
+          "pgid": 1861372,
+          "startTicks": 625877607,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=well-descent "
+        },
+        {
+          "pid": 1861765,
+          "ppid": 1820159,
+          "pgid": 1861765,
+          "startTicks": 625878329,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=court-relief "
+        },
+        {
+          "pid": 1862125,
+          "ppid": 1820159,
+          "pgid": 1862125,
+          "startTicks": 625879010,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=wayfinding-2-glyph-close "
+        },
+        {
+          "pid": 1862710,
+          "ppid": 1820159,
+          "pgid": 1862710,
+          "startTicks": 625879907,
+          "comm": "xvfb-run",
+          "argv": "/bin/sh /usr/bin/xvfb-run -a -s -screen 0 1280x720x24 /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --single-threaded-scene --path godot --rendering-method gl_compatibility --script res://tests/new_maps/parallax_glyph/AC01/capture.gd -- --map=parallax-observatory --view=wayfinding-3-glyph-close "
+        }
+      ]
+    }
+  ],
+  "noQueuedHeavyWork": true,
+  "ownership": "exact PGID plus kernel start ticks; preexisting excluded"
+}

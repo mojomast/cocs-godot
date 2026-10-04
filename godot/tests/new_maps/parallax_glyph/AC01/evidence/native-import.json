@@ -1,0 +1,735 @@
+{
+  "artHash": "0903dc4f8487ff9011204a63421a398b3f647bd8b5baca4d1552aa67d00a660b",
+  "godot": {
+    "build": "official",
+    "hash": "6ce3de25aa58466e14ef354703ba8d9791a417da",
+    "hex": 263426,
+    "major": 4,
+    "minor": 5,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.5.2-stable (official)",
+    "timestamp": 0
+  },
+  "materials": {
+    "cistern": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/cistern-albedo.png",
+          "sha256": "f1e57fe7a55dd368f842da87a6b0e29cddc17fbee6d1de270a2495420e404fc4",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/cistern-normal.png",
+          "sha256": "cefc7028357f0ce95237661fe14d3b770a1e1281625d6084076f9bc57c5adf2c",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/cistern-roughness.png",
+          "sha256": "f5a6ffd3c1aee57c4fe6b4fe109d2fd8a9f2a195a2d422aedc6adcf50800bcd5",
+          "width": 512
+        }
+      },
+      "metallic": 0.0,
+      "normalScale": 0.349999994039536,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "metal": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/metal-albedo.png",
+          "sha256": "ab04b391eb94586c23da20231297de02d95d348f1f404d14ef681c209b825c9c",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/metal-normal.png",
+          "sha256": "c47b83ad9b7e17b8c7988d7c7b0a1bb0a8e6bef40529ef1ea7ffd530c9eff7b2",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/metal-roughness.png",
+          "sha256": "464f9bff645329438a799af990878615d1253e3e880c23932fd168bd9d4fb8d3",
+          "width": 512
+        }
+      },
+      "metallic": 0.649999976158142,
+      "normalScale": 0.300000011920929,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "mirror": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/mirror-albedo.png",
+          "sha256": "adb12e192a8a42b87786a1509c30500f7b36bae98c62b8ca659efeb627a664ae",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/mirror-normal.png",
+          "sha256": "59a563153d512b9fef5f4182394c870628d998c9344afbdf0cb5da2f929505e5",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/mirror-roughness.png",
+          "sha256": "fe06f4495f96fc1fc3e8adf8547a9f11e7b6667d6905ac26d0c03f0bb709a8b2",
+          "width": 512
+        }
+      },
+      "metallic": 0.649999976158142,
+      "normalScale": 0.200000002980232,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "ochre": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/ochre-albedo.png",
+          "sha256": "ab04b391eb94586c23da20231297de02d95d348f1f404d14ef681c209b825c9c",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/ochre-normal.png",
+          "sha256": "c47b83ad9b7e17b8c7988d7c7b0a1bb0a8e6bef40529ef1ea7ffd530c9eff7b2",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/ochre-roughness.png",
+          "sha256": "464f9bff645329438a799af990878615d1253e3e880c23932fd168bd9d4fb8d3",
+          "width": 512
+        }
+      },
+      "metallic": 0.649999976158142,
+      "normalScale": 0.300000011920929,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "parallax.enamel": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-enamel-albedo.png",
+          "sha256": "f1e57fe7a55dd368f842da87a6b0e29cddc17fbee6d1de270a2495420e404fc4",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-enamel-normal.png",
+          "sha256": "cefc7028357f0ce95237661fe14d3b770a1e1281625d6084076f9bc57c5adf2c",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-enamel-roughness.png",
+          "sha256": "f5a6ffd3c1aee57c4fe6b4fe109d2fd8a9f2a195a2d422aedc6adcf50800bcd5",
+          "width": 512
+        }
+      },
+      "metallic": 0.0,
+      "normalScale": 0.349999994039536,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "parallax.etch": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-etch-albedo.png",
+          "sha256": "6dbd981c07b1610bef99759c900af77047c2f2ffa64ef88b06bc185a250d062a",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-etch-normal.png",
+          "sha256": "a7fdc0751a467ae5c32036fe6d149ad5cd7b62adc95c76d63a9429a1168c800d",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-etch-roughness.png",
+          "sha256": "0e7a6d22530ac4d5bf7a2fa2beb1c28ee219de28a3ef3915f1217807f90a3b6f",
+          "width": 512
+        }
+      },
+      "metallic": 0.0,
+      "normalScale": 0.25,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "parallax.glazing": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-glazing-albedo.png",
+          "sha256": "0cedd933075d714638b3c12b6c2d567a5494f6b82f68e64d150037a0a0c95092",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-glazing-normal.png",
+          "sha256": "3f74ccfd9b3eec449be12f581863fc5bb26d54be430b327ca129c276586dd133",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-glazing-roughness.png",
+          "sha256": "20cb01c9492a2c41460d90bd6ed88878987c0bd57f1159897960ad5351d0033c",
+          "width": 512
+        }
+      },
+      "metallic": 0.0,
+      "normalScale": 0.200000002980232,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "parallax.instrument-alloy": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-instrument-alloy-albedo.png",
+          "sha256": "ab04b391eb94586c23da20231297de02d95d348f1f404d14ef681c209b825c9c",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-instrument-alloy-normal.png",
+          "sha256": "c47b83ad9b7e17b8c7988d7c7b0a1bb0a8e6bef40529ef1ea7ffd530c9eff7b2",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-instrument-alloy-roughness.png",
+          "sha256": "464f9bff645329438a799af990878615d1253e3e880c23932fd168bd9d4fb8d3",
+          "width": 512
+        }
+      },
+      "metallic": 0.649999976158142,
+      "normalScale": 0.300000011920929,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "parallax.optics": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-optics-albedo.png",
+          "sha256": "adb12e192a8a42b87786a1509c30500f7b36bae98c62b8ca659efeb627a664ae",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-optics-normal.png",
+          "sha256": "59a563153d512b9fef5f4182394c870628d998c9344afbdf0cb5da2f929505e5",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-optics-roughness.png",
+          "sha256": "fe06f4495f96fc1fc3e8adf8547a9f11e7b6667d6905ac26d0c03f0bb709a8b2",
+          "width": 512
+        }
+      },
+      "metallic": 0.649999976158142,
+      "normalScale": 0.200000002980232,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "parallax.stone": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-stone-albedo.png",
+          "sha256": "f20ef602a6c578e44647e0ecac127f9967b97e7cba60957bd9675f479d829030",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-stone-normal.png",
+          "sha256": "f34fd80e0192c54a9be5a157d1870ce77ba546cebcabd11bbfaf48cdb470891f",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-stone-roughness.png",
+          "sha256": "afd9a154ab266413bbc7597b3104eb74e059dcab009e85d2b60f2602e91c9fd0",
+          "width": 512
+        }
+      },
+      "metallic": 0.0,
+      "normalScale": 0.400000005960464,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "parallax.trim": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-trim-albedo.png",
+          "sha256": "6ddadd96ccde836cb6289061cc0c39c56d71571b5abe655e38f15548729e9ca4",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-trim-normal.png",
+          "sha256": "d920fe72968cf4de75637376eea9ebe94f548a6109aca04ebd3e36a7b6594095",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-trim-roughness.png",
+          "sha256": "5d669d57d975ea09ca76c54f979f0465d105bb8541e8f47ed3752012fbab2173",
+          "width": 512
+        }
+      },
+      "metallic": 0.0,
+      "normalScale": 0.349999994039536,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "paving": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/paving-albedo.png",
+          "sha256": "78ec0cbb79c128948e3bad1a5b49ef2f4d01b02179089695827f466b8996a3b5",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/paving-normal.png",
+          "sha256": "aa76d1a4e5c709aea7604d4ee8c46859d355d7c213f3bfa8cb81d4ea140cdb87",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/paving-roughness.png",
+          "sha256": "6ccdfb387a38b5f88666bb189f392a85c58dc6580d4c2d71f1ecee75d503c91a",
+          "width": 512
+        }
+      },
+      "metallic": 0.0,
+      "normalScale": 0.449999988079071,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "saltstone": {
+      "albedo": "(1.0, 1.0, 1.0, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+        "albedo": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/saltstone-albedo.png",
+          "sha256": "f20ef602a6c578e44647e0ecac127f9967b97e7cba60957bd9675f479d829030",
+          "width": 512
+        },
+        "normal": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/saltstone-normal.png",
+          "sha256": "f34fd80e0192c54a9be5a157d1870ce77ba546cebcabd11bbfaf48cdb470891f",
+          "width": 512
+        },
+        "roughness": {
+          "height": 512,
+          "path": "res://tests/new_maps/parallax_glyph/AC01/evidence/pixels/saltstone-roughness.png",
+          "sha256": "afd9a154ab266413bbc7597b3104eb74e059dcab009e85d2b60f2602e91c9fd0",
+          "width": 512
+        }
+      },
+      "metallic": 0.0,
+      "normalScale": 0.400000005960464,
+      "roughness": 1.0,
+      "roughnessChannel": 1
+    },
+    "sea": {
+      "albedo": "(0.1203, 0.1557, 0.2802, 1.0)",
+      "emission": "(0.0, 0.0, 0.0, 1.0)",
+      "emissionEnabled": false,
+      "emissionEnergy": 1.0,
+      "images": {
+
+      },
+      "metallic": 0.0500000007450581,
+      "normalScale": 1.0,
+      "roughness": 0.779999971389771,
+      "roughnessChannel": 0
+    }
+  },
+  "meshNodes": 39,
+  "surfaces": [
+    {
+      "indices": 2004,
+      "material": "parallax.etch",
+      "node": "kit_scientific_parallax_etch_00",
+      "offset": 0,
+      "surface": 0,
+      "vertices": 736
+    },
+    {
+      "indices": 528,
+      "material": "parallax.enamel",
+      "node": "kit_scientific_parallax_enamel_00",
+      "offset": 43344,
+      "surface": 0,
+      "vertices": 192
+    },
+    {
+      "indices": 55233,
+      "material": "metal",
+      "node": "kit_authority_metal_00",
+      "offset": 54672,
+      "surface": 0,
+      "vertices": 38273
+    },
+    {
+      "indices": 26931,
+      "material": "mirror",
+      "node": "kit_authority_mirror_00",
+      "offset": 2112708,
+      "surface": 0,
+      "vertices": 18799
+    },
+    {
+      "indices": 72000,
+      "material": "ochre",
+      "node": "kit_authority_ochre_00",
+      "offset": 3122784,
+      "surface": 0,
+      "vertices": 49630
+    },
+    {
+      "indices": 72000,
+      "material": "ochre",
+      "node": "kit_authority_ochre_01",
+      "offset": 5793024,
+      "surface": 0,
+      "vertices": 51836
+    },
+    {
+      "indices": 13818,
+      "material": "ochre",
+      "node": "kit_authority_ochre_02",
+      "offset": 8569152,
+      "surface": 0,
+      "vertices": 10246
+    },
+    {
+      "indices": 72000,
+      "material": "paving",
+      "node": "kit_authority_paving_00",
+      "offset": 9116232,
+      "surface": 0,
+      "vertices": 52780
+    },
+    {
+      "indices": 61239,
+      "material": "paving",
+      "node": "kit_authority_paving_01",
+      "offset": 11937672,
+      "surface": 0,
+      "vertices": 43171
+    },
+    {
+      "indices": 46686,
+      "material": "saltstone",
+      "node": "kit_authority_saltstone_00",
+      "offset": 14254836,
+      "surface": 0,
+      "vertices": 35266
+    },
+    {
+      "indices": 36,
+      "material": "sea",
+      "node": "kit_authority_sea_00",
+      "offset": 16134348,
+      "surface": 0,
+      "vertices": 24
+    },
+    {
+      "indices": 828,
+      "material": "cistern",
+      "node": "kit_authority_cistern_00",
+      "offset": 16135644,
+      "surface": 0,
+      "vertices": 828
+    },
+    {
+      "indices": 192,
+      "material": "parallax.enamel",
+      "node": "kit_authority_parallax_enamel_00",
+      "offset": 16178700,
+      "surface": 0,
+      "vertices": 192
+    },
+    {
+      "indices": 168,
+      "material": "parallax.etch",
+      "node": "kit_authority_parallax_etch_00",
+      "offset": 16188684,
+      "surface": 0,
+      "vertices": 168
+    },
+    {
+      "indices": 168,
+      "material": "parallax.instrument-alloy",
+      "node": "kit_authority_parallax_instrument-alloy_00",
+      "offset": 16197420,
+      "surface": 0,
+      "vertices": 168
+    },
+    {
+      "indices": 72,
+      "material": "parallax.optics",
+      "node": "kit_authority_parallax_optics_00",
+      "offset": 16206156,
+      "surface": 0,
+      "vertices": 72
+    },
+    {
+      "indices": 192,
+      "material": "parallax.stone",
+      "node": "kit_authority_parallax_stone_00",
+      "offset": 16209900,
+      "surface": 0,
+      "vertices": 192
+    },
+    {
+      "indices": 1944,
+      "material": "parallax.trim",
+      "node": "kit_authority_parallax_trim_00",
+      "offset": 16219884,
+      "surface": 0,
+      "vertices": 1944
+    },
+    {
+      "indices": 2688,
+      "material": "parallax.trim",
+      "node": "kit_scientific_parallax_trim_00",
+      "offset": 16320972,
+      "surface": 0,
+      "vertices": 1024
+    },
+    {
+      "indices": 528,
+      "material": "parallax.stone",
+      "node": "kit_scientific_parallax_stone_00",
+      "offset": 16380876,
+      "surface": 0,
+      "vertices": 192
+    },
+    {
+      "indices": 1224,
+      "material": "parallax.etch",
+      "node": "kit_instruments_parallax_etch_00",
+      "offset": 16392204,
+      "surface": 0,
+      "vertices": 480
+    },
+    {
+      "indices": 2160,
+      "material": "parallax.optics",
+      "node": "kit_instruments_parallax_optics_00",
+      "offset": 16420140,
+      "surface": 0,
+      "vertices": 800
+    },
+    {
+      "indices": 2208,
+      "material": "parallax.trim",
+      "node": "kit_instruments_parallax_trim_00",
+      "offset": 16467180,
+      "surface": 0,
+      "vertices": 832
+    },
+    {
+      "indices": 528,
+      "material": "parallax.instrument-alloy",
+      "node": "kit_instruments_parallax_instrument-alloy_00",
+      "offset": 16515948,
+      "surface": 0,
+      "vertices": 192
+    },
+    {
+      "indices": 36,
+      "material": "parallax.glazing",
+      "node": "kit_court_parallax_glazing_00",
+      "offset": 16527276,
+      "surface": 0,
+      "vertices": 36
+    },
+    {
+      "indices": 1176,
+      "material": "parallax.instrument-alloy",
+      "node": "kit_court_parallax_instrument-alloy_00",
+      "offset": 16529148,
+      "surface": 0,
+      "vertices": 448
+    },
+    {
+      "indices": 396,
+      "material": "parallax.optics",
+      "node": "kit_scientific_parallax_optics_00",
+      "offset": 16555356,
+      "surface": 0,
+      "vertices": 144
+    },
+    {
+      "indices": 396,
+      "material": "parallax.instrument-alloy",
+      "node": "kit_scientific_parallax_instrument-alloy_00",
+      "offset": 16563852,
+      "surface": 0,
+      "vertices": 144
+    },
+    {
+      "indices": 792,
+      "material": "parallax.trim",
+      "node": "kit_institutes_parallax_trim_00",
+      "offset": 16572348,
+      "surface": 0,
+      "vertices": 288
+    },
+    {
+      "indices": 528,
+      "material": "parallax.stone",
+      "node": "kit_institutes_parallax_stone_00",
+      "offset": 16589340,
+      "surface": 0,
+      "vertices": 192
+    },
+    {
+      "indices": 528,
+      "material": "parallax.enamel",
+      "node": "kit_institutes_parallax_enamel_00",
+      "offset": 16600668,
+      "surface": 0,
+      "vertices": 192
+    },
+    {
+      "indices": 3576,
+      "material": "ochre",
+      "node": "wayfinding-0",
+      "offset": 16611996,
+      "surface": 0,
+      "vertices": 1260
+    },
+    {
+      "indices": 3576,
+      "material": "ochre",
+      "node": "wayfinding-1",
+      "offset": 16686780,
+      "surface": 0,
+      "vertices": 1260
+    },
+    {
+      "indices": 3264,
+      "material": "ochre",
+      "node": "wayfinding-2",
+      "offset": 16761564,
+      "surface": 0,
+      "vertices": 1148
+    },
+    {
+      "indices": 3264,
+      "material": "ochre",
+      "node": "wayfinding-3",
+      "offset": 16829724,
+      "surface": 0,
+      "vertices": 1148
+    },
+    {
+      "indices": 3768,
+      "material": "ochre",
+      "node": "wayfinding-4",
+      "offset": 16897884,
+      "surface": 0,
+      "vertices": 1300
+    },
+    {
+      "indices": 3768,
+      "material": "ochre",
+      "node": "wayfinding-5",
+      "offset": 16975356,
+      "surface": 0,
+      "vertices": 1300
+    },
+    {
+      "indices": 3108,
+      "material": "ochre",
+      "node": "wayfinding-6",
+      "offset": 17052828,
+      "surface": 0,
+      "vertices": 1084
+    },
+    {
+      "indices": 3108,
+      "material": "ochre",
+      "node": "wayfinding-7",
+      "offset": 17117292,
+      "surface": 0,
+      "vertices": 1084
+    }
+  ],
+  "triangles": 155553
+}

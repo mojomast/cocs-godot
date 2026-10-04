@@ -1,0 +1,18 @@
+{
+  "candidate.glb.import": {
+    "sidecarSha256": "6e1140b89359054207bc20a4dddebd227add9e18114e025e2f4fe5aadaca1883",
+    "uid": "uid://d1rwedsjg1jwf",
+    "cachePath": "godot/.godot/imported/candidate.glb-4c73fdbd39aa53fbc5292cc9fa1e9e36.scn",
+    "cacheSha256": "f5e0d44a0859c62816e825bd43fd64a3f80d3f051834883988a309f7a8b71a21",
+    "cacheBytes": 3747202,
+    "cacheCommitted": false
+  },
+  "before-AA-failed.glb.import": {
+    "sidecarSha256": "716202e1838f2bf3878ce63920376bd7dc5615ff2db629b50ef57b8952845ca2",
+    "uid": "uid://bruhcwc3203qy",
+    "cachePath": "godot/.godot/imported/before-AA-failed.glb-598f7e32d3f8a059b8a81bde11768e97.scn",
+    "cacheSha256": "db44c6aea3285620316feeac83a55ee8efe77c6c1d60973f4f88ba2f5836558d",
+    "cacheBytes": 3747148,
+    "cacheCommitted": false
+  }
+}

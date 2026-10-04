@@ -1,0 +1,1071 @@
+{
+  "grant": "MOTH-BLENDER-20261004-AC",
+  "created": "2026-10-04T01:11:26.989279+00:00",
+  "baseCommit": "672f3377",
+  "sourceExecutionCommit": "cb769d8141ea9f7c9511e022d934467a678f624a",
+  "scope": "AC actual build/fresh reopen/native full-face+materials qualification and bounded staged dry captures; independent artifact/appearance acceptance pending",
+  "manifestSelfExcluded": true,
+  "fileCount": 265,
+  "files": {
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/AC_EXECUTION.md": {
+      "sha256": "19d15c7258fdbbf987fb28020dcf065601b51fe839e378f71ef4849ee315c480",
+      "bytes": 2558
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/AC_REVIEW.md": {
+      "sha256": "654880b20b737c1e5aca84e5fbc34548b292e0994da4e964ec2279e3a9f0b9e4",
+      "bytes": 8032
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/README.md": {
+      "sha256": "d7a02c6e9e6a2910cb91cda2a282de57461c3549fe26e7b522957fd202fc6f5d",
+      "bytes": 8021
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/build.py": {
+      "sha256": "7268e72207dbba4c3656068c1b9ceb287f5dcabbc903961189bcb7fe9f937697",
+      "bytes": 5394
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/dependencies.py": {
+      "sha256": "70331e301065dba4c0a57783ceaf155ec2c65e48008d95c768f1b596c8942953",
+      "bytes": 1819
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/dependency-lock.json": {
+      "sha256": "a2f9628828a6b5f09de4d30425d0590094ade7169f9b367da5d2042f8ad9dfb7",
+      "bytes": 2632
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/grant_AC.py": {
+      "sha256": "6983ccdd9dd525e900a30d31b2b116d0fada18e43e176d19984bd07e9e7c6125",
+      "bytes": 559
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005243603875.json": {
+      "sha256": "1eebb4172fb85a5d7fc4be641015941a2edb833e29d58a3d5ee7c824f9b4ce44",
+      "bytes": 5459
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005243603875.log": {
+      "sha256": "41d77d4f3c407b71dde5abffbb4eef920bb3a9b0a6f2189d99de956c6d626b27",
+      "bytes": 4731
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005356219399.json": {
+      "sha256": "e639647ac2aa0bd7f553022f99302d51e19ee88de692c1314bcc4729c9052f41",
+      "bytes": 5902
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005356219399.log": {
+      "sha256": "8e3f0f74a761e98e49733ed1b8652622298ece10bbfc89f08ef8cf2337d2a719",
+      "bytes": 4651
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005504558275.json": {
+      "sha256": "2d2998d3d1f0f9dbe0c62192697f7ac96cc69f15a68d45f7dea671e11ac4dc9a",
+      "bytes": 5861
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005504558275.log": {
+      "sha256": "d3627a86104865a48aa8530bf35681a66f581ea3234227fd934c660519b1ff9f",
+      "bytes": 88
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005536130828.json": {
+      "sha256": "76dd975f800b139de4955d3a4702ca8aa0f3e52368fa47f3a1822544ed988eeb",
+      "bytes": 6008
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005536130828.log": {
+      "sha256": "16c28d85c259a8f814712df2e7cf0df78cb2f763c696bf87d0e5321cc4921079",
+      "bytes": 420756
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005613400261.json": {
+      "sha256": "50bb1d18c8e778631814b7e057282e9f6e078a7a344e37fadeaaf12baf45b704",
+      "bytes": 6229
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005613400261.log": {
+      "sha256": "8deb138ad8783a1f5d38a6fddc72731aa83ed16f0ad5d6a337e76070e357ebf7",
+      "bytes": 10565
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005627232206.json": {
+      "sha256": "ce5369b0104f132a675a98d083d5423d9593abc285452073cc21bf91a4961b4a",
+      "bytes": 6534
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005627232206.log": {
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "bytes": 73
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005639135977.json": {
+      "sha256": "8922f08c011f187a63d63fa2477a9bada25803400f7b3b0f5e69e0274bdbc241",
+      "bytes": 7331
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005639135977.log": {
+      "sha256": "f7133a3488b9f1525bd114dc86bf0a4c5386f05d5e4b1a6822c63a799e3372c2",
+      "bytes": 469
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005854659724.json": {
+      "sha256": "359cc325ed6df2f16d8c553d7856ac88a4ece7d4fdc66e976ad31e455568c291",
+      "bytes": 7261
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005854659724.log": {
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "bytes": 73
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005909685959.json": {
+      "sha256": "04c294e03a09e27f2b3fe335a0e7d3df12b2eee7ab2a4a008973518fe8eaba81",
+      "bytes": 7684
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005909685959.log": {
+      "sha256": "d1124d72e4252812dd3bf0db9e64e4712d31a4a277c1d4d1672f739a8d7d019f",
+      "bytes": 1346
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005938325555.json": {
+      "sha256": "a9079a8361fc2c682cafa6d89296d00b1e0ab42e6296f1f0a496eefaa0ca8758",
+      "bytes": 7899
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005938325555.log": {
+      "sha256": "d1124d72e4252812dd3bf0db9e64e4712d31a4a277c1d4d1672f739a8d7d019f",
+      "bytes": 1346
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005945968098.json": {
+      "sha256": "72c97106677655b9d40e53279aa62d6ba924731d92d305f4ebedb89369b31d89",
+      "bytes": 8126
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005945968098.log": {
+      "sha256": "d1124d72e4252812dd3bf0db9e64e4712d31a4a277c1d4d1672f739a8d7d019f",
+      "bytes": 1346
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005952811761.json": {
+      "sha256": "892be876c9b5f92f4bd6d6848e104c661e585213fd406e5bedeb9f24023ebe8e",
+      "bytes": 8341
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005952811761.log": {
+      "sha256": "d1124d72e4252812dd3bf0db9e64e4712d31a4a277c1d4d1672f739a8d7d019f",
+      "bytes": 1346
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005958049916.json": {
+      "sha256": "e9602ffc3c2932fac481edf6d93f366d24169947f8dd3a1d32754d9913d2f156",
+      "bytes": 8578
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T005958049916.log": {
+      "sha256": "d1124d72e4252812dd3bf0db9e64e4712d31a4a277c1d4d1672f739a8d7d019f",
+      "bytes": 1346
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T010007892403.json": {
+      "sha256": "26d96d6941d5e79c59aae7440b664bfb90b0a2e0afbf38f35e70a2686469a0d2",
+      "bytes": 8795
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T010007892403.log": {
+      "sha256": "d1124d72e4252812dd3bf0db9e64e4712d31a4a277c1d4d1672f739a8d7d019f",
+      "bytes": 1346
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T010016336974.json": {
+      "sha256": "4699bb39d25da2207a0718e4a548e3e0bd7407970badec01432e83f0a2c629b4",
+      "bytes": 9008
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T010016336974.log": {
+      "sha256": "d1124d72e4252812dd3bf0db9e64e4712d31a4a277c1d4d1672f739a8d7d019f",
+      "bytes": 1346
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T010023978161.json": {
+      "sha256": "4052e195f7e8ed4ce11eae1c01dd67a57b428f0d20a90551a6475519148871ef",
+      "bytes": 9235
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T010023978161.log": {
+      "sha256": "d1124d72e4252812dd3bf0db9e64e4712d31a4a277c1d4d1672f739a8d7d019f",
+      "bytes": 1346
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T010032020505.json": {
+      "sha256": "4fdb5bc756098c9c7f9dceb77eeee7efccd4ed4a5f7b246ad0629b56380ed07e",
+      "bytes": 9454
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T010032020505.log": {
+      "sha256": "d1124d72e4252812dd3bf0db9e64e4712d31a4a277c1d4d1672f739a8d7d019f",
+      "bytes": 1346
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T010039259952.json": {
+      "sha256": "53e196e31a22dac0dd509856d28833af4e08508d67b38d6c0b4af2708f070c7d",
+      "bytes": 9675
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T010039259952.log": {
+      "sha256": "d1124d72e4252812dd3bf0db9e64e4712d31a4a277c1d4d1672f739a8d7d019f",
+      "bytes": 1346
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T010046102081.json": {
+      "sha256": "4d16e578614bbb44fbc549f4e3302c8b67d53fd72986d98913b539fc4b7e8a90",
+      "bytes": 9920
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T010046102081.log": {
+      "sha256": "d1124d72e4252812dd3bf0db9e64e4712d31a4a277c1d4d1672f739a8d7d019f",
+      "bytes": 1346
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T010054943729.json": {
+      "sha256": "16932088ad1ec16e032883b347e3cce5b27bf40754e81b21d5deecf050481c8d",
+      "bytes": 10141
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/20261004T010054943729.log": {
+      "sha256": "d1124d72e4252812dd3bf0db9e64e4712d31a4a277c1d4d1672f739a8d7d019f",
+      "bytes": 1346
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/grant-start.json": {
+      "sha256": "c3c39386befdecc6998bda10be1d4d280ab1284bf26481d63728c183e5d4af08",
+      "bytes": 5431
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/release.json": {
+      "sha256": "8b084cdf0b50b58fd5e58fe50a86fa770be7a8aacb9048fba1cb7e715f632f7c",
+      "bytes": 30171
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/sidecars-after.json": {
+      "sha256": "2c7dfcbb91eca72304175f0f00fa858fec748e48527b94f5736bace9dc822f7c",
+      "bytes": 312235
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/attempts/sidecars-before.json": {
+      "sha256": "e7c550fd36367239db9fa4d182d2d17334ab6c4c54730b7cf577d63d20915387",
+      "bytes": 211434
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/release-receipt.json": {
+      "sha256": "142d69f69e7264d04bc53cfe33dd31a5b50522840d6a36fbb76dd062a76ea2d1",
+      "bytes": 30293
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/sidecar-cleanup.json": {
+      "sha256": "634f81e8c23b13cff7bae60ec474fe83f8127606d14739edbde8a8c05ba4ae39",
+      "bytes": 91432
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-grant.json": {
+      "sha256": "d326660e5b31a583fe90182e307db75c14c3dac843e88e0646ef36c705cd15f6",
+      "bytes": 277
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC01/build-editable.glb": {
+      "sha256": "9c91b28e5572e6f6d63e748eee5209b95ad2ee76f53c85222dcf46b8f11df8d4",
+      "bytes": 19008848
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC01/build-report.json": {
+      "sha256": "23d6d24b4159b32a6af6e9d560adabb8bcd527510525d7de43d6bfb9c8410ef0",
+      "bytes": 21029
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC01/cache-references.json": {
+      "sha256": "d023489734807dc1e29f70f1aa3ee2c9a61177c57b175098fd6b743a60c3b1b9",
+      "bytes": 799
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC01/capture-summary.json": {
+      "sha256": "6f696393d4c06447f0f90a26ad0cea7545a787e6e23a337b436094aeac7327dc",
+      "bytes": 771
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC01/gallery.html": {
+      "sha256": "d3ef0b4a42e8eb6b4e9bdd8af736caea3cdf94ce919237173a6cf57d2cf20d47",
+      "bytes": 7924
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC01/image-review.json": {
+      "sha256": "2b115602842dffa666e57ef5137a04c9014a1f70d7e08ede9b1cdac835cd5a4c",
+      "bytes": 11304
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC01/native-proof.json": {
+      "sha256": "2c63094ae6718a1241e29e5d2af647817f0e49468c33907cebf18d42051eea2f",
+      "bytes": 14921
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC01/parallax-glyph-tangents.blend": {
+      "sha256": "3d5e9da74264a929e01b69f45d2c19e784d81d143516624b20e9a35c6a009fc5",
+      "bytes": 9327296
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC01/parallax-glyph-tangents.glb": {
+      "sha256": "0903dc4f8487ff9011204a63421a398b3f647bd8b5baca4d1552aa67d00a660b",
+      "bytes": 19006932
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC01/preexisting-preservation.json": {
+      "sha256": "3a94d67967d2fc36370aaa93795ee7518ab5cda0ea61e8cfbbca3d374c75c21c",
+      "bytes": 6472
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC01/preservation.json": {
+      "sha256": "c655a89407d6296ac0dbb4fdedd448d7292f42ecf744c63012099435ce3a4bc9",
+      "bytes": 30565
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC01/reopen-editable.glb": {
+      "sha256": "9c91b28e5572e6f6d63e748eee5209b95ad2ee76f53c85222dcf46b8f11df8d4",
+      "bytes": 19008848
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC01/reopen-report.json": {
+      "sha256": "0f49c0701f86691c874cc391799186680cb35b04821cb43b71353cbc3cb9ed5a",
+      "bytes": 21029
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native_gate.py": {
+      "sha256": "15355cf13f917e88f693c45f3e62437199abc8c62343a546626c8fec3e571490",
+      "bytes": 3664
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/queue.json": {
+      "sha256": "c5756bb8e198281ac28a71fbe1106a71f425a7ac22f734e0f7a421690d9e99c1",
+      "bytes": 375
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/stage.py": {
+      "sha256": "3baae5e387305e4bc0268d10c85e53deadf451c7bc076d3af3acda0cff6a4906",
+      "bytes": 4736
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/successor.py": {
+      "sha256": "c2fe27a0a6a53f451498db3ce08740c4b07adba3f8acc62f0031ba191507b120",
+      "bytes": 4287
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/test_successor.py": {
+      "sha256": "1d456bf06b971886dccdd156b99808cac85c76080becbc35bf24deaa2e13578a",
+      "bytes": 6123
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/validation.json": {
+      "sha256": "900014bce6726c3512d43efe71c77b7f5ea49cfd45e9c47ab43daed80e440550",
+      "bytes": 737
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/authority.json": {
+      "sha256": "cd62bdf5c2eafa8dfb25ef29691226c43eef0bb40ca67492110a7bc8c68f6aeb",
+      "bytes": 2377668
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed.glb": {
+      "sha256": "95e9da98a45565ca2aae90858a9e5027d9123e4ffd1347da98d5de8573141cd5",
+      "bytes": 19006480
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed.glb.import": {
+      "sha256": "716202e1838f2bf3878ce63920376bd7dc5615ff2db629b50ef57b8952845ca2",
+      "bytes": 1089
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_anodized-brush-albedo-srgb.png": {
+      "sha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+      "bytes": 57595
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_anodized-brush-albedo-srgb.png.import": {
+      "sha256": "228c16bfbff265380464e571bdfd745a0aaee5bdee8c0cf35ecc60243207163c",
+      "bytes": 1134
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_anodized-brush-normal.png": {
+      "sha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+      "bytes": 119904
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_anodized-brush-normal.png.import": {
+      "sha256": "f309a669f76d6165fd112d20a427e606cae128732c61acb7fe27ab92aea8e4ea",
+      "bytes": 1119
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_anodized-brush-roughness.png": {
+      "sha256": "67503e7fe7d49b24e173c84bdf86895e7397702d3399772150136dddfc65aa75",
+      "bytes": 81358
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_anodized-brush-roughness.png.import": {
+      "sha256": "a39cfe2e7a989cd0a97b9f5ab62b3f4b0bb1ec68e2bc2a83762d96b93fef2961",
+      "bytes": 1128
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_basalt-strata-albedo-srgb.png": {
+      "sha256": "b294342e60378d7fc2d45a9c631c42bde77de529b168f35fbc6194e5998252ae",
+      "bytes": 51628
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_basalt-strata-albedo-srgb.png.import": {
+      "sha256": "de88a3505f0740e13cda0fece491fd195805650516efb0e3dab6fb2c692578f7",
+      "bytes": 1131
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_basalt-strata-normal.png": {
+      "sha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+      "bytes": 326596
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_basalt-strata-normal.png.import": {
+      "sha256": "b719864bb3c47d00e87378675c37bb5fe08b48c449ce4c0a6933adee0ede8a27",
+      "bytes": 1114
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_basalt-strata-roughness.png": {
+      "sha256": "6a222a03f8c50f54d7767c9e88be930c9a8d9b29c71d2db5493a9b23b209a2e3",
+      "bytes": 76607
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_basalt-strata-roughness.png.import": {
+      "sha256": "e51026813ab27f72cd8488d3c0b102f032c402c70b4e1329867b8caddd502a05",
+      "bytes": 1125
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_ceramic-enamel-albedo-srgb.png": {
+      "sha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+      "bytes": 47156
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_ceramic-enamel-albedo-srgb.png.import": {
+      "sha256": "4a9ed44298cc3321df17c7e654fcda7860363ff7158a1db04817481394e9a6ae",
+      "bytes": 1134
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_ceramic-enamel-normal.png": {
+      "sha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+      "bytes": 133720
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_ceramic-enamel-normal.png.import": {
+      "sha256": "8ad00d17d341a8e88195cbc904cbb36ccd9da6b6b8404ed8935d015be3daeca6",
+      "bytes": 1119
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_ceramic-enamel-roughness.png": {
+      "sha256": "71bde5b9fa079061ce35291730a2f385a9c7bbe709e5b9f546844ac6861694bb",
+      "bytes": 55437
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_ceramic-enamel-roughness.png.import": {
+      "sha256": "fb41cfd6e9dd17d50244519293d49733af164a2dab68ce73617bfbaf27e274ec",
+      "bytes": 1128
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_etched-coating-haze-albedo-srgb.png": {
+      "sha256": "3650ca3b1f2912c15592ce96ae8ac1060230f7e2afcbc5c69058f4a0ef39d152",
+      "bytes": 87450
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_etched-coating-haze-albedo-srgb.png.import": {
+      "sha256": "8af9f54ad671d51ca537088da42717934e8c648340b3f9a09d7007685d46665f",
+      "bytes": 1148
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_etched-coating-haze-normal.png": {
+      "sha256": "d89e3a00bc065b6416942305ec7a1dea4dc35e255a16a33202ac7d4b8dd65bb8",
+      "bytes": 152458
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_etched-coating-haze-normal.png.import": {
+      "sha256": "2a8cd94bbf4334b0c4e81fb1bb9d4e546eadd68aaccb0b5693e21fd7de7ca682",
+      "bytes": 1134
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_etched-coating-haze-roughness.png": {
+      "sha256": "c6d4f6d89e8e1939f03fd2ab6f48833ab616145621bae67169069de8fa5c4906",
+      "bytes": 87157
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_etched-coating-haze-roughness.png.import": {
+      "sha256": "25954da2fca212468d34f59082b6ab3a050dcde73eec1f66e2c960c35fc5150c",
+      "bytes": 1143
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_frosted-glass-albedo-srgb.png": {
+      "sha256": "a823f19423db40ca2d79d5a243a5ae00994aaf183e463c176b7982609a5127ed",
+      "bytes": 106021
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_frosted-glass-albedo-srgb.png.import": {
+      "sha256": "5f432b4a77414faada1be9f9f0183329ca0c8accec022310b4ecaf9b064370c3",
+      "bytes": 1131
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_frosted-glass-normal.png": {
+      "sha256": "2d73be97dcd93087d974245aee5389579f254b2c71697a098844b9721f51fb3f",
+      "bytes": 164492
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_frosted-glass-normal.png.import": {
+      "sha256": "9880c6daea57a8fd2c0bc90ddd7fd61996da6e61b9d41dd26a00d5c3bbe045f4",
+      "bytes": 1116
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_frosted-glass-roughness.png": {
+      "sha256": "1b39432d14089e6c4d560626cfd40a400865a9d9559be011ea3371b03a087874",
+      "bytes": 104211
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_frosted-glass-roughness.png.import": {
+      "sha256": "8cd070fa8c8b0ec1441efc1607801af911c83a2a8b5ed1c1333f50cb6a02cdcb",
+      "bytes": 1124
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_optical-mirror-opaque-albedo-srgb.png": {
+      "sha256": "4f6e5eac683c7514dbb923552cd810789d046c0be9716dded91c4aba533e9ad9",
+      "bytes": 43393
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_optical-mirror-opaque-albedo-srgb.png.import": {
+      "sha256": "375eca80cf13b53d2ab086b5e8d22fb10cada45cdacf5f872d4d11b16c0b5747",
+      "bytes": 1155
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_optical-mirror-opaque-normal.png": {
+      "sha256": "0e9012adf948ca4002ae0ec05e9ecf71a6cf1611882b48784d93b1906490471e",
+      "bytes": 40077
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_optical-mirror-opaque-normal.png.import": {
+      "sha256": "e8a3dd90de63ded4dd2f5bf8457d48c3082a9f8427a8b1f6f437b8e447070105",
+      "bytes": 1140
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_optical-mirror-opaque-roughness.png": {
+      "sha256": "ac51f0038b9e13507615ed8e5fd78c24f704bc51eee5a7eebbeef9fc7e636838",
+      "bytes": 81189
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_optical-mirror-opaque-roughness.png.import": {
+      "sha256": "7f32454a580142a2eb8e9bd257eada8edebdb4362b6a84ce13d5b0b3687efe4d",
+      "bytes": 1149
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_salt-limestone-albedo-srgb.png": {
+      "sha256": "fa9d87ca9e5a26b74c480a1134f64a982d8230e0e59ecc50e64b1de5cbfc3d7d",
+      "bytes": 101313
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_salt-limestone-albedo-srgb.png.import": {
+      "sha256": "a4ad6a6c6ddf74792dacb9fc2fcd2b039cb21d49a91f11c7c6924d74a5c4864d",
+      "bytes": 1134
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_salt-limestone-normal.png": {
+      "sha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+      "bytes": 485273
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_salt-limestone-normal.png.import": {
+      "sha256": "f507d1b92929106b46af0814af052a9e27ee2f1ca3e6665a9f5f6234e27c7946",
+      "bytes": 1119
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_salt-limestone-roughness.png": {
+      "sha256": "1c75ff4425dd7d13e8225cf6e09f7ff498c535f291b64a2f60ba69fdc8d6baa8",
+      "bytes": 85778
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_salt-limestone-roughness.png.import": {
+      "sha256": "8d41f2f8ef674612ac206041b2906e21e186131079b4a4f1f1409f25f794eec0",
+      "bytes": 1128
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_trim-wear-albedo-srgb.png": {
+      "sha256": "7ec0ff69d1060e45b2338f4c2add68d729625405f9801701d78239dded35f131",
+      "bytes": 53395
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_trim-wear-albedo-srgb.png.import": {
+      "sha256": "f2522b5e799e844ab4526e54ac3b36391f73960d60f892e2770467f49773619e",
+      "bytes": 1118
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_trim-wear-normal.png": {
+      "sha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+      "bytes": 131879
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_trim-wear-normal.png.import": {
+      "sha256": "7e72c8739aaf8dba785a3a1ee9942195f47364bc145105a6f15a23d17f8bb598",
+      "bytes": 1104
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_trim-wear-roughness.png": {
+      "sha256": "aafa178f61e21e1b86899d79151263b01e71441ba6ba13361f124b408c285f0b",
+      "bytes": 48119
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/before-AA-failed_trim-wear-roughness.png.import": {
+      "sha256": "aca4691844ba4372bd35d5e66aad60e70021706e8fc24741402e69d6cf01da77",
+      "bytes": 1113
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate.glb": {
+      "sha256": "0903dc4f8487ff9011204a63421a398b3f647bd8b5baca4d1552aa67d00a660b",
+      "bytes": 19006932
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate.glb.import": {
+      "sha256": "6e1140b89359054207bc20a4dddebd227add9e18114e025e2f4fe5aadaca1883",
+      "bytes": 1068
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_anodized-brush-albedo-srgb.png": {
+      "sha256": "90eb2e0248e686cb6ae6aa210824464ff067ddd2c0a5d7cbb617a3d9820d09bf",
+      "bytes": 57595
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_anodized-brush-albedo-srgb.png.import": {
+      "sha256": "bbba5e93bec231850afccc147a2d683c3089b86fe96179f948469131e79498e2",
+      "bytes": 1113
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_anodized-brush-normal.png": {
+      "sha256": "89b0c1c867058158a2a85ee7d50fbf44550f5a31db5035f9da7135abc417e255",
+      "bytes": 119904
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_anodized-brush-normal.png.import": {
+      "sha256": "d91f237674a185bc86587c919f86eb0004cc8b79d18d38bdf46f9a4b0f0c3c1a",
+      "bytes": 1097
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_anodized-brush-roughness.png": {
+      "sha256": "67503e7fe7d49b24e173c84bdf86895e7397702d3399772150136dddfc65aa75",
+      "bytes": 81358
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_anodized-brush-roughness.png.import": {
+      "sha256": "a32349aed3568a06d66bb38cb8a172cbc3659ac9caf819e5f5b3c3503671d5f3",
+      "bytes": 1107
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_basalt-strata-albedo-srgb.png": {
+      "sha256": "b294342e60378d7fc2d45a9c631c42bde77de529b168f35fbc6194e5998252ae",
+      "bytes": 51628
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_basalt-strata-albedo-srgb.png.import": {
+      "sha256": "e3e5173cab80709548bcadaf67c63e23a10f6dca0274a1129161965ccf55ced1",
+      "bytes": 1110
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_basalt-strata-normal.png": {
+      "sha256": "44ae7df6a026cc2b12d412be0487a1c8757019c8d08766530b503289cb09a355",
+      "bytes": 326596
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_basalt-strata-normal.png.import": {
+      "sha256": "942b4c067992384188e294585c5f726d3ced6a3764366504e20f9c205bc2f777",
+      "bytes": 1095
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_basalt-strata-roughness.png": {
+      "sha256": "6a222a03f8c50f54d7767c9e88be930c9a8d9b29c71d2db5493a9b23b209a2e3",
+      "bytes": 76607
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_basalt-strata-roughness.png.import": {
+      "sha256": "4c5783f82aa22ef9c4d4ad14710d49ec2910abe8e899954392cddb2d688a82a0",
+      "bytes": 1103
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_ceramic-enamel-albedo-srgb.png": {
+      "sha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+      "bytes": 47156
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_ceramic-enamel-albedo-srgb.png.import": {
+      "sha256": "43d3d6dcdcb33d4fd1d497c67ecd0ef2031b837c7e4f6a30e9ca74a4a9255369",
+      "bytes": 1113
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_ceramic-enamel-normal.png": {
+      "sha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+      "bytes": 133720
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_ceramic-enamel-normal.png.import": {
+      "sha256": "93743c422869d341b5bfdc2c4de217875c69dbe47e95f4b4a238077c28b27bd0",
+      "bytes": 1097
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_ceramic-enamel-roughness.png": {
+      "sha256": "71bde5b9fa079061ce35291730a2f385a9c7bbe709e5b9f546844ac6861694bb",
+      "bytes": 55437
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_ceramic-enamel-roughness.png.import": {
+      "sha256": "358f9d855e95c8993307bfe0dd71e3b18c8126369d7d5db3cc03ea1a543368a0",
+      "bytes": 1107
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_etched-coating-haze-albedo-srgb.png": {
+      "sha256": "3650ca3b1f2912c15592ce96ae8ac1060230f7e2afcbc5c69058f4a0ef39d152",
+      "bytes": 87450
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_etched-coating-haze-albedo-srgb.png.import": {
+      "sha256": "b6a5cc36f5155694682fd74d7a48760e109c26ec50bfa0fbfbf011d37840c48f",
+      "bytes": 1127
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_etched-coating-haze-normal.png": {
+      "sha256": "d89e3a00bc065b6416942305ec7a1dea4dc35e255a16a33202ac7d4b8dd65bb8",
+      "bytes": 152458
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_etched-coating-haze-normal.png.import": {
+      "sha256": "a02acfce1ae5e3cae596b24f26711e52daa7144b7173478709800ec1c58c574e",
+      "bytes": 1113
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_etched-coating-haze-roughness.png": {
+      "sha256": "c6d4f6d89e8e1939f03fd2ab6f48833ab616145621bae67169069de8fa5c4906",
+      "bytes": 87157
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_etched-coating-haze-roughness.png.import": {
+      "sha256": "d0ed96898c52105011d368c19a28a9671257901bd3f5981b02923d2bf00a5524",
+      "bytes": 1122
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_frosted-glass-albedo-srgb.png": {
+      "sha256": "a823f19423db40ca2d79d5a243a5ae00994aaf183e463c176b7982609a5127ed",
+      "bytes": 106021
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_frosted-glass-albedo-srgb.png.import": {
+      "sha256": "6ed3b4766d3e3572976050e0d7adc4a9264c4c894666faf2de0ba83dc33e764a",
+      "bytes": 1110
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_frosted-glass-normal.png": {
+      "sha256": "2d73be97dcd93087d974245aee5389579f254b2c71697a098844b9721f51fb3f",
+      "bytes": 164492
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_frosted-glass-normal.png.import": {
+      "sha256": "d83fa7c7c77a6769d71b15b0279448b8f4f01a1ced9eeb411704bdaff425201f",
+      "bytes": 1094
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_frosted-glass-roughness.png": {
+      "sha256": "1b39432d14089e6c4d560626cfd40a400865a9d9559be011ea3371b03a087874",
+      "bytes": 104211
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_frosted-glass-roughness.png.import": {
+      "sha256": "18d582eedc7ec2d3cf9ad57db745aeb946a5570bfd1b02357eea82781cbf7ccf",
+      "bytes": 1104
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_optical-mirror-opaque-albedo-srgb.png": {
+      "sha256": "4f6e5eac683c7514dbb923552cd810789d046c0be9716dded91c4aba533e9ad9",
+      "bytes": 43393
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_optical-mirror-opaque-albedo-srgb.png.import": {
+      "sha256": "2fc2b4069118735e8eb281f9b73bb3e794c5e60174d4b77bb067b6af4af93628",
+      "bytes": 1134
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_optical-mirror-opaque-normal.png": {
+      "sha256": "0e9012adf948ca4002ae0ec05e9ecf71a6cf1611882b48784d93b1906490471e",
+      "bytes": 40077
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_optical-mirror-opaque-normal.png.import": {
+      "sha256": "ca766dd3ba9b2bf5324c2c19c05610952c26edd9c30bdec2937ee49f733b6cad",
+      "bytes": 1119
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_optical-mirror-opaque-roughness.png": {
+      "sha256": "ac51f0038b9e13507615ed8e5fd78c24f704bc51eee5a7eebbeef9fc7e636838",
+      "bytes": 81189
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_optical-mirror-opaque-roughness.png.import": {
+      "sha256": "15fa91d74d662bed4f996c00d5f62059d1e055649ede161ab3904793b77ebe86",
+      "bytes": 1128
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_salt-limestone-albedo-srgb.png": {
+      "sha256": "fa9d87ca9e5a26b74c480a1134f64a982d8230e0e59ecc50e64b1de5cbfc3d7d",
+      "bytes": 101313
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_salt-limestone-albedo-srgb.png.import": {
+      "sha256": "22a94e1f52b7c53d72ac226ccdc801935b384ec1008733b09a2a0b64b749edbc",
+      "bytes": 1113
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_salt-limestone-normal.png": {
+      "sha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+      "bytes": 485273
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_salt-limestone-normal.png.import": {
+      "sha256": "e5fc50735b2259ec5f7f270df67d58eaf9b62bb092aa24a3e093eecab1c3b298",
+      "bytes": 1098
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_salt-limestone-roughness.png": {
+      "sha256": "1c75ff4425dd7d13e8225cf6e09f7ff498c535f291b64a2f60ba69fdc8d6baa8",
+      "bytes": 85778
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_salt-limestone-roughness.png.import": {
+      "sha256": "d6764c21b1a5dcc4458177cf9bfcf5ddacf1a99d32212fd1543051f4c1efc5b3",
+      "bytes": 1106
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_trim-wear-albedo-srgb.png": {
+      "sha256": "7ec0ff69d1060e45b2338f4c2add68d729625405f9801701d78239dded35f131",
+      "bytes": 53395
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_trim-wear-albedo-srgb.png.import": {
+      "sha256": "408db5fa58a8afa2b1e302071307d13e0294a901e45874699ff13a1ecae08b2c",
+      "bytes": 1098
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_trim-wear-normal.png": {
+      "sha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+      "bytes": 131879
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_trim-wear-normal.png.import": {
+      "sha256": "99fef349590be1e85ea274fb489cc703bba7fe1cb4d28dbf33ce527817211790",
+      "bytes": 1082
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_trim-wear-roughness.png": {
+      "sha256": "aafa178f61e21e1b86899d79151263b01e71441ba6ba13361f124b408c285f0b",
+      "bytes": 48119
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/candidate_trim-wear-roughness.png.import": {
+      "sha256": "4a53e9a7e790b921c2e7cc159a59905c993a09d04f6cd4864d8a2849fd743d19",
+      "bytes": 1092
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/capture-arcade-eye-report.json": {
+      "sha256": "931562cb994b9d43ad688b500c91e1188d54b837140aac6f20fe9618ada6824b",
+      "bytes": 9938
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/capture-archive-interior-report.json": {
+      "sha256": "c13268ca5f26d4bf7f2e9af99cc23657c266a99da4aad16063031af02dab86c2",
+      "bytes": 9966
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/capture-arrival-eye-report.json": {
+      "sha256": "58bad7749a304b990d3de8f9ea76857a7aea2ba06db74bca96a7d33f2d36cfa1",
+      "bytes": 9951
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/capture-cistern-eye-report.json": {
+      "sha256": "09dcfe57c86bd1b0542c5b3308b9b7fcd96c43bd8d3ce4b88cb1e4ba9f43dd55",
+      "bytes": 9943
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/capture-court-relief-report.json": {
+      "sha256": "d2b844eae1c772d48a797113248775182f98d286822fc3b71b6c17b18d3244d3",
+      "bytes": 9953
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/capture-lens-eye-report.json": {
+      "sha256": "96dfb9dc6f58877ca26e1e9dbbc51c76bc0180e9518bd3d3d00c74210b2bbfd8",
+      "bytes": 9935
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/capture-overview-report.json": {
+      "sha256": "f51af5b4881e07c7a835245f7e017bee73fd8ddb697c1b23e0f4b0d6c3085152",
+      "bytes": 9934
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/capture-polar-interior-report.json": {
+      "sha256": "dc4dfa26e4fa88e916f35ce4d8731f1cca9a685b9142cf50a398716268b5e3b9",
+      "bytes": 9964
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/capture-pump-interior-report.json": {
+      "sha256": "56d70f776df3fa1a77a1b5310b5b9acc4084d8e648f9ec51249ed572e38be418",
+      "bytes": 9947
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/capture-wayfinding-2-glyph-close-report.json": {
+      "sha256": "43a73d22315a14cacb1e04c225a4ea53ef3d253168180c704eb9bee60ad8ce55",
+      "bytes": 10098
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/capture-wayfinding-3-glyph-close-report.json": {
+      "sha256": "afba2b5b1f7ebc80fcabc35bff3accf903b0c12718d26a9f6ab3d46894d222c8",
+      "bytes": 10099
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/capture-well-descent-report.json": {
+      "sha256": "2616fa7f2e0c8835038a4a81c8c468f94bb745fb198ecbcd7d6559886d3ce87c",
+      "bytes": 9952
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/capture.gd": {
+      "sha256": "456095b66cdbce1a439d3704dbb6c14ea30c4fd095ea09b0d0f2657fb5f2bc9f",
+      "bytes": 5320
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/capture.gd.uid": {
+      "sha256": "b12567a49a1e93c40b950aef8d0618ac5329738d582fab2df88ff395019cb80a",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/arcade-eye-candidate-runtime-after.png": {
+      "sha256": "ebbfeee35a011bb278e5b5763acbccad06b1134b80e94e01dd3aa5b8818a28c5",
+      "bytes": 689528
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/arcade-eye-failed-AA-before.png": {
+      "sha256": "a7d1f22fe34ba5b260990e56fe0f7bb055671ff87d1e85783b13c5493c938cfe",
+      "bytes": 688400
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/archive-interior-candidate-runtime-after.png": {
+      "sha256": "2c070c913797487c2630bf2593f284c4770bd94ef901a9a2b3f64d0f101c461b",
+      "bytes": 767850
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/archive-interior-failed-AA-before.png": {
+      "sha256": "3c3c750f83b6b2626a9cc29ec6384a84995d44bada9567d691486e0cae409f12",
+      "bytes": 770431
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/arrival-eye-candidate-runtime-after.png": {
+      "sha256": "0d211a7918c604228ba9c983d9ca5251d7f6811fd1cc82654085ab3ec17d77ee",
+      "bytes": 684311
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/arrival-eye-failed-AA-before.png": {
+      "sha256": "4bea5c8cb8b301867d1b04d74d46a8b4db875abd13a6bb481fc5ad7cf45ec56e",
+      "bytes": 685757
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/cistern-eye-candidate-runtime-after.png": {
+      "sha256": "2e47c6f00a17bdd01f22f1970415901cc2dec9f52957dbf16463df841e6eb8e2",
+      "bytes": 518173
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/cistern-eye-failed-AA-before.png": {
+      "sha256": "00578c6662226fa93b45f96e12bb11fe42c6a2efc516475c9ba0ec39aa028f5b",
+      "bytes": 517906
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/court-relief-candidate-runtime-after.png": {
+      "sha256": "45fe5d93730b7a5f0f36057ff5938667f7e2e745a5e14cddd982ef98dc15e259",
+      "bytes": 496433
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/court-relief-failed-AA-before.png": {
+      "sha256": "d603ddeab6ef3fa4c3f6f2c7b3395db092b6c336e73608e78804883568872242",
+      "bytes": 496380
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/lens-eye-candidate-runtime-after.png": {
+      "sha256": "ddd5769f5f55bd429e8cbf59949b4420d523fa2c090185f6e94428f270998180",
+      "bytes": 675553
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/lens-eye-failed-AA-before.png": {
+      "sha256": "9d47246ccf876c5ef88590ffd8a6de0586ccac56bf9a7b90bd4911f14a406289",
+      "bytes": 675086
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/overview-candidate-runtime-after.png": {
+      "sha256": "67bc8b43b7d7ac49b8f0cd4eebdfd4aa8c9caa082c9d50ec952ef764275296a6",
+      "bytes": 174568
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/overview-failed-AA-before.png": {
+      "sha256": "924343e55467e4d2e52be36ad0ba9654d62edf9763c21e3a6c0daca2dd739902",
+      "bytes": 173958
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/polar-interior-candidate-runtime-after.png": {
+      "sha256": "ef2a9cafece3437340d1432c988f1caf809e2aeced4c8ad5e1d699f6c596b40e",
+      "bytes": 699168
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/polar-interior-failed-AA-before.png": {
+      "sha256": "d82e181325cf3054db64323028adc549b59d4ca0219fc6e7c3129f82ca26ba46",
+      "bytes": 699697
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/pump-interior-candidate-runtime-after.png": {
+      "sha256": "e7e32b616040e3ecd40e25e24a647b54a4fadf9e865ae7c209894a507de88f65",
+      "bytes": 708983
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/pump-interior-failed-AA-before.png": {
+      "sha256": "2e81837e61f5519f07f8c2fe6f1e3d9a005613aa69f5ddedd2153f0a6cc972dc",
+      "bytes": 710511
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/wayfinding-2-glyph-close-candidate-runtime-after.png": {
+      "sha256": "bd1ec422976a393e7e55f54c1faebd6151a98b837b058a718ee827aff5dc77e5",
+      "bytes": 955880
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/wayfinding-2-glyph-close-failed-AA-before.png": {
+      "sha256": "3b0e4e2eb5bffd31c207c0f3d1d173c65a75497543b1724445973d218b2c8ef7",
+      "bytes": 954139
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/wayfinding-3-glyph-close-candidate-runtime-after.png": {
+      "sha256": "9f3d29d491d42b3f3111da63fa1c41de7408024ef2b2c3b6b754cb1727f34222",
+      "bytes": 694309
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/wayfinding-3-glyph-close-failed-AA-before.png": {
+      "sha256": "fcf6ca42828478521e1fb0cff9de93ad34881051283a943b814499023cf0c9b2",
+      "bytes": 694467
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/well-descent-candidate-runtime-after.png": {
+      "sha256": "62b4416cb7f1f2c50634e961b3cd9c83bd4890c885bb9cf38589f37e9caa2f3a",
+      "bytes": 707221
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/captures/well-descent-failed-AA-before.png": {
+      "sha256": "90bc08afaa8962f3da6074653ef383667a72807889af24a8c22a739b302aea52",
+      "bytes": 706504
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/native-import.json": {
+      "sha256": "c1582431eb750a1b8e9995800d7dba830cf10e81981531abee2e5df0a2b52cd3",
+      "bytes": 22488
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/native-streams.bin": {
+      "sha256": "0f66044a230898ef6345c452ce342d2aef21e851252bf37c24b0566a69ec6cc2",
+      "bytes": 17181756
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/cistern-albedo.png": {
+      "sha256": "f1e57fe7a55dd368f842da87a6b0e29cddc17fbee6d1de270a2495420e404fc4",
+      "bytes": 50813
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/cistern-normal.png": {
+      "sha256": "cefc7028357f0ce95237661fe14d3b770a1e1281625d6084076f9bc57c5adf2c",
+      "bytes": 83234
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/cistern-roughness.png": {
+      "sha256": "f5a6ffd3c1aee57c4fe6b4fe109d2fd8a9f2a195a2d422aedc6adcf50800bcd5",
+      "bytes": 34375
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/metal-albedo.png": {
+      "sha256": "ab04b391eb94586c23da20231297de02d95d348f1f404d14ef681c209b825c9c",
+      "bytes": 98866
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/metal-normal.png": {
+      "sha256": "c47b83ad9b7e17b8c7988d7c7b0a1bb0a8e6bef40529ef1ea7ffd530c9eff7b2",
+      "bytes": 88825
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/metal-roughness.png": {
+      "sha256": "464f9bff645329438a799af990878615d1253e3e880c23932fd168bd9d4fb8d3",
+      "bytes": 51513
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/mirror-albedo.png": {
+      "sha256": "adb12e192a8a42b87786a1509c30500f7b36bae98c62b8ca659efeb627a664ae",
+      "bytes": 78297
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/mirror-normal.png": {
+      "sha256": "59a563153d512b9fef5f4182394c870628d998c9344afbdf0cb5da2f929505e5",
+      "bytes": 42941
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/mirror-roughness.png": {
+      "sha256": "fe06f4495f96fc1fc3e8adf8547a9f11e7b6667d6905ac26d0c03f0bb709a8b2",
+      "bytes": 51258
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/ochre-albedo.png": {
+      "sha256": "ab04b391eb94586c23da20231297de02d95d348f1f404d14ef681c209b825c9c",
+      "bytes": 98866
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/ochre-normal.png": {
+      "sha256": "c47b83ad9b7e17b8c7988d7c7b0a1bb0a8e6bef40529ef1ea7ffd530c9eff7b2",
+      "bytes": 88825
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/ochre-roughness.png": {
+      "sha256": "464f9bff645329438a799af990878615d1253e3e880c23932fd168bd9d4fb8d3",
+      "bytes": 51513
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-enamel-albedo.png": {
+      "sha256": "f1e57fe7a55dd368f842da87a6b0e29cddc17fbee6d1de270a2495420e404fc4",
+      "bytes": 50813
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-enamel-normal.png": {
+      "sha256": "cefc7028357f0ce95237661fe14d3b770a1e1281625d6084076f9bc57c5adf2c",
+      "bytes": 83234
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-enamel-roughness.png": {
+      "sha256": "f5a6ffd3c1aee57c4fe6b4fe109d2fd8a9f2a195a2d422aedc6adcf50800bcd5",
+      "bytes": 34375
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-etch-albedo.png": {
+      "sha256": "6dbd981c07b1610bef99759c900af77047c2f2ffa64ef88b06bc185a250d062a",
+      "bytes": 95224
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-etch-normal.png": {
+      "sha256": "a7fdc0751a467ae5c32036fe6d149ad5cd7b62adc95c76d63a9429a1168c800d",
+      "bytes": 108505
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-etch-roughness.png": {
+      "sha256": "0e7a6d22530ac4d5bf7a2fa2beb1c28ee219de28a3ef3915f1217807f90a3b6f",
+      "bytes": 56970
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-glazing-albedo.png": {
+      "sha256": "0cedd933075d714638b3c12b6c2d567a5494f6b82f68e64d150037a0a0c95092",
+      "bytes": 141005
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-glazing-normal.png": {
+      "sha256": "3f74ccfd9b3eec449be12f581863fc5bb26d54be430b327ca129c276586dd133",
+      "bytes": 121335
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-glazing-roughness.png": {
+      "sha256": "20cb01c9492a2c41460d90bd6ed88878987c0bd57f1159897960ad5351d0033c",
+      "bytes": 69875
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-instrument-alloy-albedo.png": {
+      "sha256": "ab04b391eb94586c23da20231297de02d95d348f1f404d14ef681c209b825c9c",
+      "bytes": 98866
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-instrument-alloy-normal.png": {
+      "sha256": "c47b83ad9b7e17b8c7988d7c7b0a1bb0a8e6bef40529ef1ea7ffd530c9eff7b2",
+      "bytes": 88825
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-instrument-alloy-roughness.png": {
+      "sha256": "464f9bff645329438a799af990878615d1253e3e880c23932fd168bd9d4fb8d3",
+      "bytes": 51513
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-optics-albedo.png": {
+      "sha256": "adb12e192a8a42b87786a1509c30500f7b36bae98c62b8ca659efeb627a664ae",
+      "bytes": 78297
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-optics-normal.png": {
+      "sha256": "59a563153d512b9fef5f4182394c870628d998c9344afbdf0cb5da2f929505e5",
+      "bytes": 42941
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-optics-roughness.png": {
+      "sha256": "fe06f4495f96fc1fc3e8adf8547a9f11e7b6667d6905ac26d0c03f0bb709a8b2",
+      "bytes": 51258
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-stone-albedo.png": {
+      "sha256": "f20ef602a6c578e44647e0ecac127f9967b97e7cba60957bd9675f479d829030",
+      "bytes": 126727
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-stone-normal.png": {
+      "sha256": "f34fd80e0192c54a9be5a157d1870ce77ba546cebcabd11bbfaf48cdb470891f",
+      "bytes": 252740
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-stone-roughness.png": {
+      "sha256": "afd9a154ab266413bbc7597b3104eb74e059dcab009e85d2b60f2602e91c9fd0",
+      "bytes": 55902
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-trim-albedo.png": {
+      "sha256": "6ddadd96ccde836cb6289061cc0c39c56d71571b5abe655e38f15548729e9ca4",
+      "bytes": 72677
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-trim-normal.png": {
+      "sha256": "d920fe72968cf4de75637376eea9ebe94f548a6109aca04ebd3e36a7b6594095",
+      "bytes": 91852
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/parallax-trim-roughness.png": {
+      "sha256": "5d669d57d975ea09ca76c54f979f0465d105bb8541e8f47ed3752012fbab2173",
+      "bytes": 29206
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/paving-albedo.png": {
+      "sha256": "78ec0cbb79c128948e3bad1a5b49ef2f4d01b02179089695827f466b8996a3b5",
+      "bytes": 86521
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/paving-normal.png": {
+      "sha256": "aa76d1a4e5c709aea7604d4ee8c46859d355d7c213f3bfa8cb81d4ea140cdb87",
+      "bytes": 168449
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/paving-roughness.png": {
+      "sha256": "6ccdfb387a38b5f88666bb189f392a85c58dc6580d4c2d71f1ecee75d503c91a",
+      "bytes": 46508
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/saltstone-albedo.png": {
+      "sha256": "f20ef602a6c578e44647e0ecac127f9967b97e7cba60957bd9675f479d829030",
+      "bytes": 126727
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/saltstone-normal.png": {
+      "sha256": "f34fd80e0192c54a9be5a157d1870ce77ba546cebcabd11bbfaf48cdb470891f",
+      "bytes": 252740
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/evidence/pixels/saltstone-roughness.png": {
+      "sha256": "afd9a154ab266413bbc7597b3104eb74e059dcab009e85d2b60f2602e91c9fd0",
+      "bytes": 55902
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/import.gd": {
+      "sha256": "4ce9fb7a7a67c7ee29c64130d8adbd87de3dfc69a3702e42067e6640906b72b7",
+      "bytes": 3167
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/import.gd.uid": {
+      "sha256": "db201f25a4483b89890597610b4bb1d5eea58563e9c8f97e37ed24d49f1fff20",
+      "bytes": 19
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/manifest.json": {
+      "sha256": "65f15b7bf7d7eb82120729f2e7d7b8f1f43a2095ae0c89091895d21760f7bc16",
+      "bytes": 2650
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/probes.json": {
+      "sha256": "2fe0227fa24a78be181aed69078bf446dfe97b2068ac169d2cfa7a1e21c781d6",
+      "bytes": 2453624
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/profile.json": {
+      "sha256": "a47ab771bc3ff6c9aef97d2ac7fd20b6be97d0fef2551bd388d002b9965cca1c",
+      "bytes": 15364
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/profile_schema.gd": {
+      "sha256": "ab628561105b50b827c85ee40bd5f1af7f3ae5e0f5aa6c1a85a635f00e8ef982",
+      "bytes": 9404
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/profile_schema.gd.uid": {
+      "sha256": "9e5a647a6faae2f786c581f92a6c98a424c41195544d71d2e6c24e06e7321493",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/staged.gd": {
+      "sha256": "6dddba53811ef7606404e1375008d86f8a965ba709e9b624621f7b3f2f4bdf6d",
+      "bytes": 8604
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/staged.gd.uid": {
+      "sha256": "6bc5a7353493ebb1bee268b9ab968bd468f0e8fd2ca8ee60be83c4e1e9d836c0",
+      "bytes": 20
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/targeted-rays.json": {
+      "sha256": "f8374d67b070271faabd31bcba3d71de1d550709158a7b7e1897e526530a0efa",
+      "bytes": 1762
+    },
+    "godot/tests/new_maps/parallax_glyph/AC01/targeted_rays.gd": {
+      "sha256": "da724eb0a1f0837b955ecccbc50caafdff47f12438bc98f4c60f3c37fa6f68f1",
+      "bytes": 1628
+    },
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC-control/python-cache-cleanup.json": {
+      "sha256": "2e6944c825fc2b0ea96b34ed6cadac7a9227a04674ac3b11a2bb7998ac151cb9",
+      "bytes": 597
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "map": "parallax-observatory",
+  "geometryHash": "3a5800e89876ebcc741381802def24415d5050651c0d3b831ea8b9ec3b77b4f9",
+  "modes": [
+    "deathmatch",
+    "teamdeathmatch",
+    "ctf",
+    "koth",
+    "uplink",
+    "holdout"
+  ],
+  "source": {
+    "acceptedAuthority": "res://tests/new_maps/parallax_glyph/AC01/authority.json",
+    "acceptedAuthoritySha256": "cd62bdf5c2eafa8dfb25ef29691226c43eef0bb40ca67492110a7bc8c68f6aeb",
+    "acceptedGeometryHash": "3a5800e89876ebcc741381802def24415d5050651c0d3b831ea8b9ec3b77b4f9",
+    "acceptedArt": "res://tests/new_maps/parallax_glyph/AC01/before-AA-failed.glb",
+    "acceptedArtSha256": "95e9da98a45565ca2aae90858a9e5027d9123e4ffd1347da98d5de8573141cd5"
+  },
+  "status": "artifacts-verified-native-pending",
+  "actualArtHash": "0903dc4f8487ff9011204a63421a398b3f647bd8b5baca4d1552aa67d00a660b",
+  "glbSha256": "0903dc4f8487ff9011204a63421a398b3f647bd8b5baca4d1552aa67d00a660b",
+  "beforeMeaning": "FAILED AA candidate, not approved runtime",
+  "visualRevision": "parallax-districts-v4-glyph-tangents-v1",
+  "files": {
+    "res://tests/new_maps/parallax_glyph/AC01/candidate.glb": "0903dc4f8487ff9011204a63421a398b3f647bd8b5baca4d1552aa67d00a660b",
+    "res://tests/new_maps/parallax_glyph/AC01/before-AA-failed.glb": "95e9da98a45565ca2aae90858a9e5027d9123e4ffd1347da98d5de8573141cd5",
+    "res://tests/new_maps/parallax_glyph/AC01/authority.json": "cd62bdf5c2eafa8dfb25ef29691226c43eef0bb40ca67492110a7bc8c68f6aeb",
+    "res://tests/new_maps/parallax_glyph/AC01/profile.json": "a47ab771bc3ff6c9aef97d2ac7fd20b6be97d0fef2551bd388d002b9965cca1c",
+    "res://tests/new_maps/parallax_glyph/AC01/profile_schema.gd": "ab628561105b50b827c85ee40bd5f1af7f3ae5e0f5aa6c1a85a635f00e8ef982",
+    "res://tests/new_maps/parallax_glyph/AC01/staged.gd": "6dddba53811ef7606404e1375008d86f8a965ba709e9b624621f7b3f2f4bdf6d",
+    "res://tests/new_maps/parallax_glyph/AC01/capture.gd": "456095b66cdbce1a439d3704dbb6c14ea30c4fd095ea09b0d0f2657fb5f2bc9f",
+    "res://tests/new_maps/parallax_glyph/AC01/import.gd": "4ce9fb7a7a67c7ee29c64130d8adbd87de3dfc69a3702e42067e6640906b72b7",
+    "res://tests/new_maps/parallax_glyph/AC01/probes.json": "2fe0227fa24a78be181aed69078bf446dfe97b2068ac169d2cfa7a1e21c781d6",
+    "res://tests/new_maps/parallax_glyph/AC01/targeted_rays.gd": "da724eb0a1f0837b955ecccbc50caafdff47f12438bc98f4c60f3c37fa6f68f1",
+    "res://tests/new_maps/parallax_glyph/AC01/candidate.glb.import": "6e1140b89359054207bc20a4dddebd227add9e18114e025e2f4fe5aadaca1883",
+    "res://tests/new_maps/parallax_glyph/AC01/before-AA-failed.glb.import": "716202e1838f2bf3878ce63920376bd7dc5615ff2db629b50ef57b8952845ca2"
+  }
+}

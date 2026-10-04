@@ -1,0 +1,221 @@
+{
+  "images": [
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/arrival-eye-failed-AA-before.png",
+      "sha256": "4bea5c8cb8b301867d1b04d74d46a8b4db875abd13a6bb481fc5ad7cf45ec56e",
+      "bytes": 685757,
+      "view": "arrival-eye",
+      "variant": "failed-AA-before",
+      "originalInspected": true,
+      "note": "Broad arrival ramps/dishes readable; fine striping/surface interference present in both. No claimed glyph improvement at this scale."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/arrival-eye-candidate-runtime-after.png",
+      "sha256": "0d211a7918c604228ba9c983d9ca5251d7f6811fd1cc82654085ab3ec17d77ee",
+      "bytes": 684311,
+      "view": "arrival-eye",
+      "variant": "candidate-runtime-after",
+      "originalInspected": true,
+      "note": "Broad arrival ramps/dishes readable; fine striping/surface interference present in both. No claimed glyph improvement at this scale."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/lens-eye-failed-AA-before.png",
+      "sha256": "9d47246ccf876c5ef88590ffd8a6de0586ccac56bf9a7b90bd4911f14a406289",
+      "bytes": 675086,
+      "view": "lens-eye",
+      "variant": "failed-AA-before",
+      "originalInspected": true,
+      "note": "Central lens/dish/ramp composition visible; glyph repair below inspection scale."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/lens-eye-candidate-runtime-after.png",
+      "sha256": "ddd5769f5f55bd429e8cbf59949b4420d523fa2c090185f6e94428f270998180",
+      "bytes": 675553,
+      "view": "lens-eye",
+      "variant": "candidate-runtime-after",
+      "originalInspected": true,
+      "note": "Central lens/dish/ramp composition visible; glyph repair below inspection scale."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/cistern-eye-failed-AA-before.png",
+      "sha256": "00578c6662226fa93b45f96e12bb11fe42c6a2efc516475c9ba0ec39aa028f5b",
+      "bytes": 517906,
+      "view": "cistern-eye",
+      "variant": "failed-AA-before",
+      "originalInspected": true,
+      "note": "Cistern approach and distant sign visible; sign has low contrast at this distance."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/cistern-eye-candidate-runtime-after.png",
+      "sha256": "2e47c6f00a17bdd01f22f1970415901cc2dec9f52957dbf16463df841e6eb8e2",
+      "bytes": 518173,
+      "view": "cistern-eye",
+      "variant": "candidate-runtime-after",
+      "originalInspected": true,
+      "note": "Cistern approach and distant sign visible; sign has low contrast at this distance."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/overview-failed-AA-before.png",
+      "sha256": "924343e55467e4d2e52be36ad0ba9654d62edf9763c21e3a6c0daca2dd739902",
+      "bytes": 173958,
+      "view": "overview",
+      "variant": "failed-AA-before",
+      "originalInspected": true,
+      "note": "Complete exterior footprint visible, small in frame; not a glyph-detail proof."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/overview-candidate-runtime-after.png",
+      "sha256": "67bc8b43b7d7ac49b8f0cd4eebdfd4aa8c9caa082c9d50ec952ef764275296a6",
+      "bytes": 174568,
+      "view": "overview",
+      "variant": "candidate-runtime-after",
+      "originalInspected": true,
+      "note": "Complete exterior footprint visible, small in frame; not a glyph-detail proof."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/archive-interior-failed-AA-before.png",
+      "sha256": "3c3c750f83b6b2626a9cc29ec6384a84995d44bada9567d691486e0cae409f12",
+      "bytes": 770431,
+      "view": "archive-interior",
+      "variant": "failed-AA-before",
+      "originalInspected": true,
+      "note": "Room and racks visible; conspicuous striped/moire-like interference on right racks in both variants, with differing pattern. Retained unresolved visual limitation."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/archive-interior-candidate-runtime-after.png",
+      "sha256": "2c070c913797487c2630bf2593f284c4770bd94ef901a9a2b3f64d0f101c461b",
+      "bytes": 767850,
+      "view": "archive-interior",
+      "variant": "candidate-runtime-after",
+      "originalInspected": true,
+      "note": "Room and racks visible; conspicuous striped/moire-like interference on right racks in both variants, with differing pattern. Retained unresolved visual limitation."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/polar-interior-failed-AA-before.png",
+      "sha256": "d82e181325cf3054db64323028adc549b59d4ca0219fc6e7c3129f82ca26ba46",
+      "bytes": 699697,
+      "view": "polar-interior",
+      "variant": "failed-AA-before",
+      "originalInspected": true,
+      "note": "Rotunda ceiling, wall wheels and passage visible; dark ceiling detail and fine surface interference remain."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/polar-interior-candidate-runtime-after.png",
+      "sha256": "ef2a9cafece3437340d1432c988f1caf809e2aeced4c8ad5e1d699f6c596b40e",
+      "bytes": 699168,
+      "view": "polar-interior",
+      "variant": "candidate-runtime-after",
+      "originalInspected": true,
+      "note": "Rotunda ceiling, wall wheels and passage visible; dark ceiling detail and fine surface interference remain."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/arcade-eye-failed-AA-before.png",
+      "sha256": "a7d1f22fe34ba5b260990e56fe0f7bb055671ff87d1e85783b13c5493c938cfe",
+      "bytes": 688400,
+      "view": "arcade-eye",
+      "variant": "failed-AA-before",
+      "originalInspected": true,
+      "note": "Long passage visible; localized light/ceiling striping differs between variants. Cause not attributed to glyph repair."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/arcade-eye-candidate-runtime-after.png",
+      "sha256": "ebbfeee35a011bb278e5b5763acbccad06b1134b80e94e01dd3aa5b8818a28c5",
+      "bytes": 689528,
+      "view": "arcade-eye",
+      "variant": "candidate-runtime-after",
+      "originalInspected": true,
+      "note": "Long passage visible; localized light/ceiling striping differs between variants. Cause not attributed to glyph repair."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/pump-interior-failed-AA-before.png",
+      "sha256": "2e81837e61f5519f07f8c2fe6f1e3d9a005613aa69f5ddedd2153f0a6cc972dc",
+      "bytes": 710511,
+      "view": "pump-interior",
+      "variant": "failed-AA-before",
+      "originalInspected": true,
+      "note": "Pump room and equipment visible; matched broad composition, fine surface interference remains."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/pump-interior-candidate-runtime-after.png",
+      "sha256": "e7e32b616040e3ecd40e25e24a647b54a4fadf9e865ae7c209894a507de88f65",
+      "bytes": 708983,
+      "view": "pump-interior",
+      "variant": "candidate-runtime-after",
+      "originalInspected": true,
+      "note": "Pump room and equipment visible; matched broad composition, fine surface interference remains."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/well-descent-failed-AA-before.png",
+      "sha256": "90bc08afaa8962f3da6074653ef383667a72807889af24a8c22a739b302aea52",
+      "bytes": 706504,
+      "view": "well-descent",
+      "variant": "failed-AA-before",
+      "originalInspected": true,
+      "note": "Nearby sloped floor and high walls dominate and limit sightline. Retained original constrained view, not replaced."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/well-descent-candidate-runtime-after.png",
+      "sha256": "62b4416cb7f1f2c50634e961b3cd9c83bd4890c885bb9cf38589f37e9caa2f3a",
+      "bytes": 707221,
+      "view": "well-descent",
+      "variant": "candidate-runtime-after",
+      "originalInspected": true,
+      "note": "Nearby sloped floor and high walls dominate and limit sightline. Retained original constrained view, not replaced."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/court-relief-failed-AA-before.png",
+      "sha256": "d603ddeab6ef3fa4c3f6f2c7b3395db092b6c336e73608e78804883568872242",
+      "bytes": 496380,
+      "view": "court-relief",
+      "variant": "failed-AA-before",
+      "originalInspected": true,
+      "note": "Foreground floor/parapet obscures intended wider court relief. Both original obstructed views retained."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/court-relief-candidate-runtime-after.png",
+      "sha256": "45fe5d93730b7a5f0f36057ff5938667f7e2e745a5e14cddd982ef98dc15e259",
+      "bytes": 496433,
+      "view": "court-relief",
+      "variant": "candidate-runtime-after",
+      "originalInspected": true,
+      "note": "Foreground floor/parapet obscures intended wider court relief. Both original obstructed views retained."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/wayfinding-2-glyph-close-failed-AA-before.png",
+      "sha256": "3b0e4e2eb5bffd31c207c0f3d1d173c65a75497543b1724445973d218b2c8ef7",
+      "bytes": 954139,
+      "view": "wayfinding-2-glyph-close",
+      "variant": "failed-AA-before",
+      "originalInspected": true,
+      "note": "Glyph extrusion visible from rear; label is mirrored/reversed from this camera. Not a front-readability approval. Tiny side-shading delta not visually certified."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/wayfinding-2-glyph-close-candidate-runtime-after.png",
+      "sha256": "bd1ec422976a393e7e55f54c1faebd6151a98b837b058a718ee827aff5dc77e5",
+      "bytes": 955880,
+      "view": "wayfinding-2-glyph-close",
+      "variant": "candidate-runtime-after",
+      "originalInspected": true,
+      "note": "Glyph extrusion visible from rear; label is mirrored/reversed from this camera. Not a front-readability approval. Tiny side-shading delta not visually certified."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/wayfinding-3-glyph-close-failed-AA-before.png",
+      "sha256": "fcf6ca42828478521e1fb0cff9de93ad34881051283a943b814499023cf0c9b2",
+      "bytes": 694467,
+      "view": "wayfinding-3-glyph-close",
+      "variant": "failed-AA-before",
+      "originalInspected": true,
+      "note": "03 glyph visible obliquely with dark low-contrast side surfaces; left label cropped and lower geometry partially masks glyph. Native all-corner basis is primary proof."
+    },
+    {
+      "path": "godot/tests/new_maps/parallax_glyph/AC01/captures/wayfinding-3-glyph-close-candidate-runtime-after.png",
+      "sha256": "9f3d29d491d42b3f3111da63fa1c41de7408024ef2b2c3b6b754cb1727f34222",
+      "bytes": 694309,
+      "view": "wayfinding-3-glyph-close",
+      "variant": "candidate-runtime-after",
+      "originalInspected": true,
+      "note": "03 glyph visible obliquely with dark low-contrast side surfaces; left label cropped and lower geometry partially masks glyph. Native all-corner basis is primary proof."
+    }
+  ],
+  "scope": "All 24 original full-resolution PNGs inspected; limitations retained; no visual acceptance or asserted improvement"
+}

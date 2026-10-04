@@ -1,0 +1,951 @@
+{
+  "visualRevision": "parallax-districts-v4-glyph-tangents-v1",
+  "actualArtHash": "0903dc4f8487ff9011204a63421a398b3f647bd8b5baca4d1552aa67d00a660b",
+  "geometryHash": "3a5800e89876ebcc741381802def24415d5050651c0d3b831ea8b9ec3b77b4f9",
+  "triangles": 155553,
+  "primitives": 39,
+  "AAChangedBINBytes": 64,
+  "AAPermittedPositions": 256,
+  "XChangedBINBytes": 69,
+  "XPermittedPositions": 304,
+  "glyphRecords": [
+    {
+      "accessor": 165,
+      "vertex": 1026,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18636336,
+      "incidents": [
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 964,
+          "corner": 2,
+          "area": 0.0005361037606939759,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 965,
+          "corner": 1,
+          "area": 0.0005361037606939759,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 967,
+          "corner": 2,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1027,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18636352,
+      "incidents": [
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 964,
+          "corner": 1,
+          "area": 0.0005361037606939759,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 966,
+          "corner": 0,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 967,
+          "corner": 0,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1038,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        -1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18636528,
+      "incidents": [
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 976,
+          "corner": 2,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 977,
+          "corner": 1,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 979,
+          "corner": 2,
+          "area": 0.0005361038048996075,
+          "uvJacobian": -0.0
+        }
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1039,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        -1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18636544,
+      "incidents": [
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 976,
+          "corner": 1,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 978,
+          "corner": 0,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 979,
+          "corner": 0,
+          "area": 0.0005361038048996075,
+          "uvJacobian": -0.0
+        }
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1050,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        -1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18636720,
+      "incidents": [
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 988,
+          "corner": 2,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 989,
+          "corner": 1,
+          "area": 0.00039895860499591934,
+          "uvJacobian": -0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 991,
+          "corner": 2,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1051,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        -1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18636736,
+      "incidents": [
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 988,
+          "corner": 1,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 990,
+          "corner": 0,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 991,
+          "corner": 0,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1062,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18636912,
+      "incidents": [
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 1000,
+          "corner": 2,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 1001,
+          "corner": 1,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 1003,
+          "corner": 2,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 165,
+      "vertex": 1063,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18636928,
+      "incidents": [
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 1000,
+          "corner": 1,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 1002,
+          "corner": 0,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-2",
+          "mesh": 33,
+          "primitive": 0,
+          "face": 1003,
+          "corner": 0,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1026,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18697968,
+      "incidents": [
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 964,
+          "corner": 2,
+          "area": 0.0005361037606939759,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 965,
+          "corner": 1,
+          "area": 0.0005361037606939759,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 967,
+          "corner": 2,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1027,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18697984,
+      "incidents": [
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 964,
+          "corner": 1,
+          "area": 0.0005361037606939759,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 966,
+          "corner": 0,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 967,
+          "corner": 0,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1038,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        -1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18698160,
+      "incidents": [
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 976,
+          "corner": 2,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 977,
+          "corner": 1,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 979,
+          "corner": 2,
+          "area": 0.0005361038048996075,
+          "uvJacobian": -0.0
+        }
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1039,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        -1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18698176,
+      "incidents": [
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 976,
+          "corner": 1,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 978,
+          "corner": 0,
+          "area": 0.0005361038048996075,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 979,
+          "corner": 0,
+          "area": 0.0005361038048996075,
+          "uvJacobian": -0.0
+        }
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1050,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        -1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18698352,
+      "incidents": [
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 988,
+          "corner": 2,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 989,
+          "corner": 1,
+          "area": 0.00039895860499591934,
+          "uvJacobian": -0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 991,
+          "corner": 2,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1051,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        -1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18698368,
+      "incidents": [
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 988,
+          "corner": 1,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 990,
+          "corner": 0,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 991,
+          "corner": 0,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1062,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18698544,
+      "incidents": [
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 1000,
+          "corner": 2,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 1001,
+          "corner": 1,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 1003,
+          "corner": 2,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        }
+      ]
+    },
+    {
+      "accessor": 170,
+      "vertex": 1063,
+      "old": [
+        1.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "N": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "proposed": [
+        0.0,
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "binOffset": 18698560,
+      "incidents": [
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 1000,
+          "corner": 1,
+          "area": 0.0003989585160965766,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 1002,
+          "corner": 0,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        },
+        {
+          "node": "wayfinding-3",
+          "mesh": 34,
+          "primitive": 0,
+          "face": 1003,
+          "corner": 0,
+          "area": 0.00039895860499591934,
+          "uvJacobian": 0.0
+        }
+      ]
+    }
+  ],
+  "zeroTangents": 0,
+  "fullyParallelNT": 0,
+  "remainingNonorthogonalEntries": 4729,
+  "scope": "Actual authorized production; native/manual pending",
+  "actualMasterHash": "3d5e9da74264a929e01b69f45d2c19e784d81d143516624b20e9a35c6a009fc5",
+  "processId": 1826790,
+  "editable": {
+    "triangles": 155553,
+    "maxWorldPositionNormalUVError": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "materialPixelsSamplersPBREmissionEquivalent": true,
+    "flatRoots": 39
+  },
+  "recipe": {
+    "visualRevision": "parallax-districts-v4-glyph-tangents-v1",
+    "policy": "rank-one-glyph-extrusion-preserve-w-align-positive-v-v1",
+    "sourceAAArtSha256": "95e9da98a45565ca2aae90858a9e5027d9123e4ffd1347da98d5de8573141cd5",
+    "sourceAAMasterSha256": "2e6617840ec57d08685dd78e64a29bbe7f55db2b1a26da40b6c6a46cd4c0373d",
+    "geometryHash": "3a5800e89876ebcc741381802def24415d5050651c0d3b831ea8b9ec3b77b4f9",
+    "originalAARecipe": {
+      "visualRevision": "parallax-districts-v4-tangent-v1",
+      "sourceGlbSha256": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+      "sourcePackedMasterSha256": "9957ca8cc3e4e7f2bca00f7b82a48ed88d031e9e3949259ebf5603f584141051",
+      "geometryHash": "3a5800e89876ebcc741381802def24415d5050651c0d3b831ea8b9ec3b77b4f9",
+      "compilerSha256": "b605657915f5b26b6fbf8dffbff02178af5840e96fa1d69b24602df9adb24c62",
+      "editableAuditSha256": "cda3a9dcc924b2419da22f6edc25cb20a0584eb29a4851a23dcdac2eaeeb33cf",
+      "uvBasisSha256": "4e857df8d84b239d78ce8f41fdfcafae922b1d977f7178087279afb3d8e5673c",
+      "materialGateSha256": "da587a73ea7af6bfd471aaa9cf1f540d6e143974d14753cf387a34aece1bf3d4",
+      "policy": "Export all 39 editable X meshes; semantic audit, then deterministic three-corner compiler against exact X GLB. Plain Blender glTF is intermediate."
+    },
+    "sourceCompilerSha256": "c2fe27a0a6a53f451498db3ce08740c4b07adba3f8acc62f0031ba191507b120",
+    "newSourceFiles": {
+      "build.py": "7268e72207dbba4c3656068c1b9ceb287f5dcabbc903961189bcb7fe9f937697",
+      "dependencies.py": "70331e301065dba4c0a57783ceaf155ec2c65e48008d95c768f1b596c8942953",
+      "native_gate.py": "15355cf13f917e88f693c45f3e62437199abc8c62343a546626c8fec3e571490",
+      "stage.py": "3baae5e387305e4bc0268d10c85e53deadf451c7bc076d3af3acda0cff6a4906",
+      "successor.py": "c2fe27a0a6a53f451498db3ce08740c4b07adba3f8acc62f0031ba191507b120",
+      "test_successor.py": "1d456bf06b971886dccdd156b99808cac85c76080becbc35bf24deaa2e13578a",
+      "grant_AC.py": "6983ccdd9dd525e900a30d31b2b116d0fada18e43e176d19984bd07e9e7c6125"
+    },
+    "dependencyLockSha256": "a2f9628828a6b5f09de4d30425d0590094ade7169f9b367da5d2042f8ad9dfb7",
+    "dependencies": {
+      "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/contract.py": "b605657915f5b26b6fbf8dffbff02178af5840e96fa1d69b24602df9adb24c62",
+      "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/editable.py": "cda3a9dcc924b2419da22f6edc25cb20a0584eb29a4851a23dcdac2eaeeb33cf",
+      "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-tangent/production.py": "9b32b0bcad4f2b246466efb3c3d45fadec5309e476718e49deec27f31fee695d",
+      "tools/godot-multiplayer/new-maps/botanical-parallax-aa-diagnosis/census.py": "6ca4bdf968186fdfd72a6c18e1c7f2fbfc5de87e62d5f0c45aa47bcb849ae8d1",
+      "tools/godot-multiplayer/new-maps/botanical-parallax-aa-diagnosis/proposal.py": "44401bb41ab9e99db112fd09096d75f4a90437147b9ec028ee6d5c009666bd45",
+      "tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/material_contract.py": "da587a73ea7af6bfd471aaa9cf1f540d6e143974d14753cf387a34aece1bf3d4",
+      "tools/godot-multiplayer/new-maps/map_variety/glb_geometry.py": "7cf1a9b7199f6390ef49068b35e5472996da7d26648527e6a04eebd3b0a63cb0"
+    },
+    "entrySet": [
+      [
+        165,
+        1026
+      ],
+      [
+        165,
+        1027
+      ],
+      [
+        165,
+        1038
+      ],
+      [
+        165,
+        1039
+      ],
+      [
+        165,
+        1050
+      ],
+      [
+        165,
+        1051
+      ],
+      [
+        165,
+        1062
+      ],
+      [
+        165,
+        1063
+      ],
+      [
+        170,
+        1026
+      ],
+      [
+        170,
+        1027
+      ],
+      [
+        170,
+        1038
+      ],
+      [
+        170,
+        1039
+      ],
+      [
+        170,
+        1050
+      ],
+      [
+        170,
+        1051
+      ],
+      [
+        170,
+        1062
+      ],
+      [
+        170,
+        1063
+      ]
+    ],
+    "policyMeaning": "Explicit all-incident geometric fallback for singular rank-one UVs, not a unique Mikk/dUV basis",
+    "pipeline": "Audit actual editable export against AA, then deterministic AA+16; original X+3 remains unchanged provenance"
+  }
+}

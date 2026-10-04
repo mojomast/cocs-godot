@@ -1,0 +1,8 @@
+{
+  "scope": "Fresh private worktree generated ignored Python bytecode in new AC source namespace; hashes matched pre-cleanup AC inventory, no tracked files removed",
+  "removed": [
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/__pycache__/dependencies.cpython-311.pyc",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/__pycache__/stage.cpython-311.pyc",
+    "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/__pycache__/successor.cpython-311.pyc"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "pairs": 12,
+  "originalPNGs": 24,
+  "restoredLifecycleInstances": 24,
+  "eachMaterialInstances": 39,
+  "eachRoles": 14,
+  "binderPanels": 26,
+  "binderSigns": 10,
+  "binderMotes": 32,
+  "weather": "clear, native effects suppressed, wetness zero; full weather pending",
+  "metrics": {
+    "drawCalls": {
+      "min": 82.0,
+      "max": 166.0
+    },
+    "staticViewMeanFrameMs": {
+      "min": 175.622375,
+      "max": 453.321375
+    },
+    "videoMemoryBytes": {
+      "min": 64105033.0,
+      "max": 64105033.0
+    },
+    "staticMemoryBytes": {
+      "min": 132670058,
+      "max": 132786322
+    },
+    "renderer": [
+      "llvmpipe (LLVM 20.1.8, 256 bits)"
+    ],
+    "scope": "Eight-frame static llvmpipe samples, not game FPS or dedicated-GPU qualification"
+  }
+}

@@ -1,0 +1,86 @@
+INFO Draco mesh compression is available, use library at /home/mojo/.tmp-on-disk/cocs-blender-toolchain/blender-4.5.14-linux-x64/4.5/scripts/addons_core/io_scene_gltf2/libextern_draco.so
+20:53:57 | INFO: Starting glTF 2.0 export
+20:53:57 | INFO: Extracting primitive: archive-cluster.console0.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: archive-cluster.rack0.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: art.accepted-craft.metal.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: art.accepted-craft.mirror.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: art.accepted-craft.ochre.003
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: art.accepted-craft.ochre.004
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: art.accepted-craft.ochre.005
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: art.accepted-craft.paving.002
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: art.accepted-craft.paving.003
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: art.accepted-craft.saltstone.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: art.accepted-craft.sea.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: authority.surface.cistern.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: authority.wall.parallax.enamel.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: authority.wall.parallax.etch.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: authority.wall.parallax.instrument-alloy.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: authority.wall.parallax.optics.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: authority.wall.parallax.stone.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: authority.wall.parallax.trim.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: calibration-column-east.crown.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: calibration-column-east.plinth.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: instrument-dish-0.dish-inner.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: instrument-dish-0.dish-mid.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: instrument-tower-0.crown.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: instrument-tower-0.plinth.001
+20:53:57 | INFO: Primitives created: 1
+20:53:57 | INFO: Extracting primitive: lightwell-oculus.glazing.001
+20:53:58 | INFO: Primitives created: 1
+20:53:58 | INFO: Extracting primitive: lightwell-oculus.inner-ring.001
+20:53:58 | INFO: Primitives created: 1
+20:53:58 | INFO: Extracting primitive: optics-cluster.rack0.001
+20:53:58 | INFO: Primitives created: 1
+20:53:58 | INFO: Extracting primitive: pump-cluster.rack0.001
+20:53:58 | INFO: Primitives created: 1
+20:53:58 | INFO: Extracting primitive: wing-crest-0.cap.001
+20:53:58 | INFO: Primitives created: 1
+20:53:58 | INFO: Extracting primitive: wing-crest-0.tier0.001
+20:53:58 | INFO: Primitives created: 1
+20:53:58 | INFO: Extracting primitive: wing-crest-1.tier0.001
+20:53:58 | INFO: Primitives created: 1
+20:53:58 | INFO: Extracting primitive: wayfinding-0
+20:53:58 | INFO: Primitives created: 1
+20:53:58 | INFO: Extracting primitive: wayfinding-1
+20:53:58 | INFO: Primitives created: 1
+20:53:58 | INFO: Extracting primitive: wayfinding-2
+20:53:58 | INFO: Primitives created: 1
+20:53:58 | INFO: Extracting primitive: wayfinding-3
+20:53:58 | INFO: Primitives created: 1
+20:53:58 | INFO: Extracting primitive: wayfinding-4
+20:53:58 | INFO: Primitives created: 1
+20:53:58 | INFO: Extracting primitive: wayfinding-5
+20:53:58 | INFO: Primitives created: 1
+20:53:58 | INFO: Extracting primitive: wayfinding-6
+20:53:58 | INFO: Primitives created: 1
+20:53:58 | INFO: Extracting primitive: wayfinding-7
+20:53:58 | INFO: Primitives created: 1
+20:53:58 | INFO: Finished glTF 2.0 export in 0.46604037284851074 s
+
+Blender 4.5.14 LTS (hash 62c1db4208e8 built 2026-09-15 01:31:19)
+Read blend: "/home/mojo/.tmp-on-disk/cocs-parallax-glyph-AC/tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC01/parallax-glyph-tangents.blend"
+
+Blender quit

@@ -1,0 +1,113 @@
+{
+  "rays": [
+    {
+      "clear": true,
+      "end": [
+        48.0,
+        13.5,
+        -37.0
+      ],
+      "origin": [
+        44.0,
+        13.5,
+        -37.0
+      ]
+    },
+    {
+      "clear": true,
+      "end": [
+        44.0,
+        13.5,
+        -37.0
+      ],
+      "origin": [
+        48.0,
+        13.5,
+        -37.0
+      ]
+    },
+    {
+      "gradeY": 12.0,
+      "origin": [
+        46.0,
+        12.1000003814697,
+        -37.0
+      ]
+    },
+    {
+      "clear": true,
+      "end": [
+        48.0,
+        13.5,
+        -34.0
+      ],
+      "origin": [
+        44.0,
+        13.5,
+        -34.0
+      ]
+    },
+    {
+      "clear": true,
+      "end": [
+        44.0,
+        13.5,
+        -34.0
+      ],
+      "origin": [
+        48.0,
+        13.5,
+        -34.0
+      ]
+    },
+    {
+      "gradeY": 12.0,
+      "origin": [
+        46.0,
+        12.1000003814697,
+        -34.0
+      ]
+    },
+    {
+      "clear": true,
+      "end": [
+        48.0,
+        13.5,
+        -31.0
+      ],
+      "origin": [
+        44.0,
+        13.5,
+        -31.0
+      ]
+    },
+    {
+      "clear": true,
+      "end": [
+        44.0,
+        13.5,
+        -31.0
+      ],
+      "origin": [
+        48.0,
+        13.5,
+        -31.0
+      ]
+    },
+    {
+      "gradeY": 12.0,
+      "origin": [
+        46.0,
+        12.1000003814697,
+        -31.0
+      ]
+    }
+  ],
+  "scope": "six 4m aperture and three grade rays on actual WorldMap authority colliders; not the historical 13587 capsule suite or visual-mesh collision proof",
+  "selectedArt": {
+    "fallbackRemoved": true,
+    "meshInstances": 39,
+    "path": "res://tests/new_maps/parallax_glyph/AC01/candidate.glb",
+    "sha256": "0903dc4f8487ff9011204a63421a398b3f647bd8b5baca4d1552aa67d00a660b"
+  }
+}
