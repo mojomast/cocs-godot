@@ -1,0 +1,124 @@
+{
+  "utc": "2026-10-04T07:34:23.498367+00:00",
+  "preparationCommand": "python3 -B tools/godot-multiplayer/new-maps/walker-parity-admission/prepare.py parity-admission-ak-01 --ag-root /home/mojo/.tmp-on-disk/cocs-walker-parity-response-ag --af-root /home/mojo/.tmp-on-disk/cocs-walker-snap-compare-af",
+  "invocations": [
+    {
+      "group": "negative-controls",
+      "command": "python3 -B tools/godot-multiplayer/new-maps/walker-parity-admission/supervisor.py --fixture /home/mojo/.tmp-on-disk/cocs-walker-parity-admission-ak/godot/tests/walker_parity_admission/parity-admission-ak-01 --ag-root /home/mojo/.tmp-on-disk/cocs-walker-parity-response-ag --af-root /home/mojo/.tmp-on-disk/cocs-walker-snap-compare-af --engine /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --group negative-controls --mode synthetic-controls --grant-id MOTH-BLENDER-20261004-AK --grant-sha256 174cef441f20917519a460f2b65c8706f91b986e903f97f933a5ebfaec304dc3",
+      "nativeArgv": [
+        "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--single-threaded-scene",
+        "--path",
+        "/home/mojo/.tmp-on-disk/cocs-walker-parity-admission-ak/godot/tests/walker_parity_admission/parity-admission-ak-01",
+        "--script",
+        "res://tests/walker_parity_admission/driver.gd",
+        "--",
+        "--group=negative-controls",
+        "--mode=synthetic-controls",
+        "--grant-id=MOTH-BLENDER-20261004-AK",
+        "--grant-sha256=174cef441f20917519a460f2b65c8706f91b986e903f97f933a5ebfaec304dc3",
+        "--dependencies-sha256=dfd8d056c89dcc826ffbbe7332e925cee102e05524c9be3073d4d058c3176394"
+      ],
+      "environment": {
+        "LP_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1"
+      },
+      "owned": {
+        "pid": 3250966,
+        "pgid": 3250966,
+        "startTicks": 628195976
+      },
+      "nativeReturnCode": 0,
+      "supervisorReturnCode": 0,
+      "nativeSha256": "0585366753c69be5144721cc6a76e4553ada143c611aebb3cd3328fb46b43ee1",
+      "supervisorSha256": "30e6c0a7c0e1b922fafd2c7aeab9cb94cf4190975e25941b9399ec2e0cc12501",
+      "logSha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    {
+      "group": "inclined-landing-rejections",
+      "command": "python3 -B tools/godot-multiplayer/new-maps/walker-parity-admission/supervisor.py --fixture /home/mojo/.tmp-on-disk/cocs-walker-parity-admission-ak/godot/tests/walker_parity_admission/parity-admission-ak-01 --ag-root /home/mojo/.tmp-on-disk/cocs-walker-parity-response-ag --af-root /home/mojo/.tmp-on-disk/cocs-walker-snap-compare-af --engine /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --group inclined-landing-rejections --mode synthetic-controls --grant-id MOTH-BLENDER-20261004-AK --grant-sha256 174cef441f20917519a460f2b65c8706f91b986e903f97f933a5ebfaec304dc3",
+      "nativeArgv": [
+        "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--single-threaded-scene",
+        "--path",
+        "/home/mojo/.tmp-on-disk/cocs-walker-parity-admission-ak/godot/tests/walker_parity_admission/parity-admission-ak-01",
+        "--script",
+        "res://tests/walker_parity_admission/driver.gd",
+        "--",
+        "--group=inclined-landing-rejections",
+        "--mode=synthetic-controls",
+        "--grant-id=MOTH-BLENDER-20261004-AK",
+        "--grant-sha256=174cef441f20917519a460f2b65c8706f91b986e903f97f933a5ebfaec304dc3",
+        "--dependencies-sha256=0772710f0637b2866c0e3cbf243663607da04d488bd9f327b0ad2a2e3938fc29"
+      ],
+      "environment": {
+        "LP_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1"
+      },
+      "owned": {
+        "pid": 3255760,
+        "pgid": 3255760,
+        "startTicks": 628205156
+      },
+      "nativeReturnCode": 0,
+      "supervisorReturnCode": 0,
+      "nativeSha256": "c281083c3c71075412a0e9c7a7945daec7e0b90d050988a87af96a83c172075a",
+      "supervisorSha256": "92f8036dd18ee4e4fc8f46016506904aa40a5904d6d3e468c5708583b2ef0fba",
+      "logSha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    {
+      "group": "positive-step-admission",
+      "command": "python3 -B tools/godot-multiplayer/new-maps/walker-parity-admission/supervisor.py --fixture /home/mojo/.tmp-on-disk/cocs-walker-parity-admission-ak/godot/tests/walker_parity_admission/parity-admission-ak-01 --ag-root /home/mojo/.tmp-on-disk/cocs-walker-parity-response-ag --af-root /home/mojo/.tmp-on-disk/cocs-walker-snap-compare-af --engine /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --group positive-step-admission --mode synthetic-controls --grant-id MOTH-BLENDER-20261004-AK --grant-sha256 174cef441f20917519a460f2b65c8706f91b986e903f97f933a5ebfaec304dc3",
+      "nativeArgv": [
+        "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--single-threaded-scene",
+        "--path",
+        "/home/mojo/.tmp-on-disk/cocs-walker-parity-admission-ak/godot/tests/walker_parity_admission/parity-admission-ak-01",
+        "--script",
+        "res://tests/walker_parity_admission/driver.gd",
+        "--",
+        "--group=positive-step-admission",
+        "--mode=synthetic-controls",
+        "--grant-id=MOTH-BLENDER-20261004-AK",
+        "--grant-sha256=174cef441f20917519a460f2b65c8706f91b986e903f97f933a5ebfaec304dc3",
+        "--dependencies-sha256=31edeee035702b43b4f510df2b6f71a4a9d62c953461cfa670535b27949cbc80"
+      ],
+      "environment": {
+        "LP_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1"
+      },
+      "owned": {
+        "pid": 3260758,
+        "pgid": 3260758,
+        "startTicks": 628214435
+      },
+      "nativeReturnCode": 1,
+      "supervisorReturnCode": 1,
+      "nativeSha256": "76130effe1da05bfc800fa8e14bea5b0382b87b130899a3cc1b52e2dab9bb6d7",
+      "supervisorSha256": "082f91881c21031008b09f68238e55802a3916e04a99380b17e6dd9cb169c678",
+      "logSha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    }
+  ],
+  "toolTimeoutMs": 210000,
+  "supervisorTimeoutSeconds": 180,
+  "internalSeconds": 170,
+  "ownerCheckpointsAfterPriorReleaseBeforeNextLaunchVerified": true,
+  "noSeparateParser": true,
+  "noErrorsOrAdmissionMarkersInLogs": true,
+  "noRetryOrSourceCorrection": true,
+  "noEngineAfterRelease": true,
+  "pythonTestsPassed": 143,
+  "pythonSuiteCounts": [
+    5,
+    49,
+    24,
+    18,
+    8,
+    7,
+    32
+  ],
+  "pythonIsNotNativeProof": true
+}

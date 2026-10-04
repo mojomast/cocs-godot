@@ -1,0 +1,193 @@
+{
+  "utc": "2026-10-04T07:28:53.016310+00:00",
+  "group": "inclined-landing-rejections",
+  "sourceSha256": "4449860481a195133653b37b2ec6776dc3663fdb3bc1592ae9a46aa3283fc838",
+  "grantSha256": "174cef441f20917519a460f2b65c8706f91b986e903f97f933a5ebfaec304dc3",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "nativeSha256": "c281083c3c71075412a0e9c7a7945daec7e0b90d050988a87af96a83c172075a",
+  "supervisorSha256": "92f8036dd18ee4e4fc8f46016506904aa40a5904d6d3e468c5708583b2ef0fba",
+  "logSha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+  "nativeStrictReplay": true,
+  "supervisorStrictReplay": true,
+  "logErrors": [],
+  "banner": [
+    "Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org",
+    ""
+  ],
+  "passed": true,
+  "records": [
+    {
+      "caseIndex": 0,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.35:-45.0",
+        "incline": 47.0,
+        "maxResponses": 240,
+        "radius": 0.35,
+        "start": -1.0,
+        "yaw": -0.785398163397448
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_inclined_rejection_and_block",
+          "settles": 20,
+          "frames": 127,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_continuous_flat_landing"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_inclined_rejection_and_block",
+          "settles": 20,
+          "frames": 127,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_continuous_flat_landing"
+        }
+      ]
+    },
+    {
+      "caseIndex": 1,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.35:45.0",
+        "incline": 47.0,
+        "maxResponses": 240,
+        "radius": 0.35,
+        "start": -1.0,
+        "yaw": 0.785398163397448
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_inclined_rejection_and_block",
+          "settles": 20,
+          "frames": 127,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_continuous_flat_landing"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_inclined_rejection_and_block",
+          "settles": 20,
+          "frames": 127,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_continuous_flat_landing"
+        }
+      ]
+    },
+    {
+      "caseIndex": 2,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.42:-45.0",
+        "incline": 47.0,
+        "maxResponses": 240,
+        "radius": 0.42,
+        "start": -1.0,
+        "yaw": -0.785398163397448
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_inclined_rejection_and_block",
+          "settles": 20,
+          "frames": 126,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_continuous_flat_landing"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_inclined_rejection_and_block",
+          "settles": 20,
+          "frames": 126,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_continuous_flat_landing"
+        }
+      ]
+    },
+    {
+      "caseIndex": 3,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.42:45.0",
+        "incline": 47.0,
+        "maxResponses": 240,
+        "radius": 0.42,
+        "start": -1.0,
+        "yaw": 0.785398163397448
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_inclined_rejection_and_block",
+          "settles": 20,
+          "frames": 126,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_continuous_flat_landing"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_inclined_rejection_and_block",
+          "settles": 20,
+          "frames": 126,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_continuous_flat_landing"
+        }
+      ]
+    }
+  ],
+  "nativeCounters": {
+    "attemptedPairs": 4,
+    "attemptedProfiles": 8,
+    "completedPairs": 4,
+    "completedProfiles": 8,
+    "failedPairs": 0,
+    "failedProfiles": 0,
+    "interruptedPairs": 0,
+    "interruptedProfiles": 0,
+    "passedPairs": 4,
+    "unrunPairs": 0,
+    "unrunProfiles": 0
+  },
+  "notes": "Strict predicate replay only; owner must inspect raw records and save inspection notes before any next invocation.",
+  "nextDependencyReplay": {
+    "phase": "parity-admission-synthetic-v1",
+    "group": "positive-step-admission",
+    "sourceSha256": "4449860481a195133653b37b2ec6776dc3663fdb3bc1592ae9a46aa3283fc838",
+    "grantSha256": "174cef441f20917519a460f2b65c8706f91b986e903f97f933a5ebfaec304dc3",
+    "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+    "predecessors": {
+      "negative-controls": {
+        "resultSha256": "0585366753c69be5144721cc6a76e4553ada143c611aebb3cd3328fb46b43ee1",
+        "supervisorSha256": "30e6c0a7c0e1b922fafd2c7aeab9cb94cf4190975e25941b9399ec2e0cc12501"
+      },
+      "inclined-landing-rejections": {
+        "resultSha256": "c281083c3c71075412a0e9c7a7945daec7e0b90d050988a87af96a83c172075a",
+        "supervisorSha256": "92f8036dd18ee4e4fc8f46016506904aa40a5904d6d3e468c5708583b2ef0fba"
+      }
+    }
+  },
+  "admissionFailureLines": [],
+  "inappropriateProbeMarkers": []
+}

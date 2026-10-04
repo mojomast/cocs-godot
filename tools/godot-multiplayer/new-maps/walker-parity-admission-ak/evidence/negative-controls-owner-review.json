@@ -1,0 +1,26 @@
+{
+  "utc": "2026-10-04T07:28:12.608564+00:00",
+  "checkpointSha256": "d579f3967d1c08f4bb011a3b61501e99996b303530157e3e74abae8ba9222d76",
+  "sourceSha256": "4449860481a195133653b37b2ec6776dc3663fdb3bc1592ae9a46aa3283fc838",
+  "grantSha256": "174cef441f20917519a460f2b65c8706f91b986e903f97f933a5ebfaec304dc3",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "nativeSha256": "0585366753c69be5144721cc6a76e4553ada143c611aebb3cd3328fb46b43ee1",
+  "supervisorSha256": "30e6c0a7c0e1b922fafd2c7aeab9cb94cf4190975e25941b9399ec2e0cc12501",
+  "passed": true,
+  "decision": "Proceed only to one separately invoked inclined group; positive remains conditional on its saved owner checkpoint.",
+  "inspection": {
+    "canonicalPairs": 34,
+    "completedProfiles": 68,
+    "settlingRecords": 1284,
+    "inputRecordsIncludingJumpLaunch": 72,
+    "candidateOrdinaryResponses": 678,
+    "appliedUp": 0,
+    "verifiedLifts": 0,
+    "pairedPositionVelocityGroundedExact": true,
+    "allClocksConsecutive60HzTimeScale1": true,
+    "resetCountOne": true,
+    "mechanisms": "All17 fixtures x2 radii inspected in actual raw receipt; ceiling blocked UP; overhang clear UP/blocked forward; actual overhang frontZ=.0800000131; expected height/narrow/hole/pit/lateral/noinput/airborne/jump/tilt/parent/platform reasons and stage sequences; no raw contradiction. Positive ordinary Y at radius.42 is baseline motion, not assist.",
+    "supervisor": "exit0 failedfalse; exact native/source/grant/engine hashes, no error fields; three distinct measured empty audits within lock interval; strict current native and supervisor host replay true; new inclined dependency replay true.",
+    "log": "Official4.5.2 banner only; no admission/script/probe error marker."
+  }
+}

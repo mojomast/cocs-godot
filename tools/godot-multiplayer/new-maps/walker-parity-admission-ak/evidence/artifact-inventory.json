@@ -1,0 +1,209 @@
+{
+  "scope": "AK delivery; inventory self-excluded",
+  "files": {
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/exploration/walker.gd": {
+      "sha256": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+      "bytes": 4222
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/grant.json": {
+      "sha256": "174cef441f20917519a460f2b65c8706f91b986e903f97f933a5ebfaec304dc3",
+      "bytes": 464
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/inclined-landing-rejections-dependencies.json": {
+      "sha256": "0772710f0637b2866c0e3cbf243663607da04d488bd9f327b0ad2a2e3938fc29",
+      "bytes": 587
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/inclined-landing-rejections-result.json": {
+      "sha256": "c281083c3c71075412a0e9c7a7945daec7e0b90d050988a87af96a83c172075a",
+      "bytes": 15013559
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/inclined-landing-rejections-start.json": {
+      "sha256": "ef78c2ac50434dd0498cd6498dbd71ca798a5eca0626366549f712b2a3f6f0a5",
+      "bytes": 1483
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/inclined-landing-rejections-supervisor.json": {
+      "sha256": "92f8036dd18ee4e4fc8f46016506904aa40a5904d6d3e468c5708583b2ef0fba",
+      "bytes": 54251
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/inclined-landing-rejections.log": {
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "bytes": 73
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/negative-controls-dependencies.json": {
+      "sha256": "dfd8d056c89dcc826ffbbe7332e925cee102e05524c9be3073d4d058c3176394",
+      "bytes": 358
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/negative-controls-result.json": {
+      "sha256": "0585366753c69be5144721cc6a76e4553ada143c611aebb3cd3328fb46b43ee1",
+      "bytes": 9645591
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/negative-controls-start.json": {
+      "sha256": "a0c4242649909a54b4e0819dd396476b1aee9fa616225c76a9c85bffed83d9e7",
+      "bytes": 1463
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/negative-controls-supervisor.json": {
+      "sha256": "30e6c0a7c0e1b922fafd2c7aeab9cb94cf4190975e25941b9399ec2e0cc12501",
+      "bytes": 60913
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/negative-controls.log": {
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "bytes": 73
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/positive-step-admission-dependencies.json": {
+      "sha256": "31edeee035702b43b4f510df2b6f71a4a9d62c953461cfa670535b27949cbc80",
+      "bytes": 810
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/positive-step-admission-result.json": {
+      "sha256": "76130effe1da05bfc800fa8e14bea5b0382b87b130899a3cc1b52e2dab9bb6d7",
+      "bytes": 5975284
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/positive-step-admission-start.json": {
+      "sha256": "772b95320ef5c3482d80307a38b56e8831798818ce1498b2eb290d377f31e870",
+      "bytes": 1475
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/positive-step-admission-supervisor.json": {
+      "sha256": "082f91881c21031008b09f68238e55802a3916e04a99380b17e6dd9cb169c678",
+      "bytes": 24067
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/positive-step-admission.log": {
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "bytes": 73
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/project.godot": {
+      "sha256": "c366dc92671de8b71c2e52d4d61fa89b621390a9183090338316ad79bff0cf0d",
+      "bytes": 221
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/source.json": {
+      "sha256": "4449860481a195133653b37b2ec6776dc3663fdb3bc1592ae9a46aa3283fc838",
+      "bytes": 5579
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/tests/walker_admission/fixtures_v4.gd": {
+      "sha256": "c4c175420aaca975acfa8ee277b2088796c2f0f8279751bbc8f2939154070e04",
+      "bytes": 2020
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/tests/walker_admission/slide_telemetry.gd": {
+      "sha256": "b7c04249dd44574c5c14627766983cb571542879b17c39afc458c115178b2df0",
+      "bytes": 884
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/tests/walker_parity_admission/candidate.gd": {
+      "sha256": "0aae2ac30347e21286e09fc1b8f1a6b8937f37aef447d99af083a12700261314",
+      "bytes": 9468
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/tests/walker_parity_admission/driver.gd": {
+      "sha256": "83e4bb4d9359066ce1a3041aa9c3e6e07284cb627d583068f849f41c60b3490e",
+      "bytes": 20388
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/tests/walker_parity_admission/evidence.gd": {
+      "sha256": "19b7c024e3f15a365cd0289bef45fc069f3908fd9325359dccffc556a3242be8",
+      "bytes": 26842
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/tests/walker_parity_admission/observe.gd": {
+      "sha256": "8a03fffa0cc46dcd34f83b9c811c781efb93b2b7f33fc4143d7526c7f9d2f5f8",
+      "bytes": 3591
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/tests/walker_parity_admission/policy.gd": {
+      "sha256": "6fab2f142b3b849b3902a506a54c95d31f19a7dfecbab0202acb1896572f757f",
+      "bytes": 4060
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/tests/walker_parity_response/planner.gd": {
+      "sha256": "7dadd0a3fb018de12afe867ff5a688663347e99bd6335f92353519d136e76b31",
+      "bytes": 992
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/tests/walker_snap_parity/planner.gd": {
+      "sha256": "9d61d505822208aaacc03bbb8017d4458d068e5430389aa5849eae7b6fdf01e6",
+      "bytes": 3386
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/tests/walker_snap_parity/query_pair.gd": {
+      "sha256": "91f427d0ea0d47e9397a7331dd49f798d8041d5d93e31e11331da6ad31a475f7",
+      "bytes": 3619
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/tests/walker_step_up/controls_v2.gd": {
+      "sha256": "90e69221eecf657c6cd158e4db5cbbe89ebfce0440be1f7f00ec230ce9e88965",
+      "bytes": 3228
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/tests/walker_step_up/response_guard.gd": {
+      "sha256": "ff242f1c352755e3655666440731115911b59dc431f0ec7c37807e8c8ec281b0",
+      "bytes": 4299
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/tests/walker_step_up/sweep_proposal.gd": {
+      "sha256": "b253464820a84d8de7e1cfc5abf7d3852f392e055ac6e71d42ce6a678d538d41",
+      "bytes": 17360
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/ui/mouse_motion.gd": {
+      "sha256": "1edc97f26ccf98a6c5f776bf72968cf5fd1258d129566006c0c3ae1222716581",
+      "bytes": 333
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ak-01/ui/settings_access.gd": {
+      "sha256": "2bb46c9e6ee5dabbdef7a4cd864bf4afcae2a3c8dd7be93d0180a907da7920e0",
+      "bytes": 1385
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ak/README.md": {
+      "sha256": "f7de8ee00afdaa091aeb329e62e09845e3c7716c16dc98f37daa86c4937bb994",
+      "bytes": 7672
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ak/audit_ak.py": {
+      "sha256": "6e3ad53c03b852ed3f178ced40454de02d95a3048583e0ca90af7a391ab032b4",
+      "bytes": 6303
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ak/evidence/AK-release.json": {
+      "sha256": "936c5cda6f9ff261ee2af30e43d853c4ef3921c24b6fd7ccf42d1a86542615f6",
+      "bytes": 2478
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ak/evidence/after.json": {
+      "sha256": "b7b9b2255b16ebc1a87ada1b668880b60fe2fa11484b3d05ba86895b7f3bd8d5",
+      "bytes": 6635380
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ak/evidence/analysis.json": {
+      "sha256": "6a5b1cb127b5816af26f32afb468ceab0fa910000a5317f1c7907fcbdd331517",
+      "bytes": 3485
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ak/evidence/authorization.json": {
+      "sha256": "6d5f3a80e218d4927bd99cd7e191d2fc499b5a57565ab52e74748928f91afe69",
+      "bytes": 3025
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ak/evidence/before.json": {
+      "sha256": "13e8d98d966ef292e16ea4193b03387e468b351bc73238fd38c9f68f7c67cb5a",
+      "bytes": 6685440
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ak/evidence/execution-record.json": {
+      "sha256": "3b662a52941c44d6c9f39ecb5a7fc68b6ce2df82c7fad4e2cd894152b776ddaf",
+      "bytes": 6595
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ak/evidence/inclined-landing-rejections-checkpoint.json": {
+      "sha256": "28fd4c5c1350be2c0e35dad8eb5763696c53838c9471ecfbb87f4f31c0bcd983",
+      "bytes": 5794
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ak/evidence/inclined-landing-rejections-owner-review.json": {
+      "sha256": "07f24546fa132ee91d6ccc2b3aabc92c4a6438d0dc245e5ee002d74f8ec4ed27",
+      "bytes": 2009
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ak/evidence/negative-controls-checkpoint.json": {
+      "sha256": "d579f3967d1c08f4bb011a3b61501e99996b303530157e3e74abae8ba9222d76",
+      "bytes": 28412
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ak/evidence/negative-controls-owner-review.json": {
+      "sha256": "7f218c79eabcb3e1aee5cc09d2eaf6e403ec9f480a539639b183bd6d07e564c2",
+      "bytes": 1775
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ak/evidence/positive-detail.json": {
+      "sha256": "cd97facb1be5af113ebde836c8b038ac830169e3b8e4bb575c27458f283ff285",
+      "bytes": 40505
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ak/evidence/positive-step-admission-checkpoint.json": {
+      "sha256": "afa2f225dee37098ace7c05892786a556843eecc2037bbc0b65e6b194ccfc4fb",
+      "bytes": 3637
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ak/evidence/positive-step-admission-owner-review.json": {
+      "sha256": "ec934b68cdbb14ace622dc6366f4fd8007cda69d21a5b4bbbaf22b5e0df6464d",
+      "bytes": 2034
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ak/evidence/preservation.json": {
+      "sha256": "e03a51d913a743c5eafef641cbd2abe79717118fd4cd1549ad485a5fd5db86cd",
+      "bytes": 986
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ak/inspect_positive.py": {
+      "sha256": "a7bea452b8ebb647fcf0977826a7003c45bebbfb7fc292daeda939045acadd31",
+      "bytes": 4826
+    }
+  }
+}

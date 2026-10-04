@@ -1,0 +1,131 @@
+{
+  "utc": "2026-10-04T07:30:12.846672+00:00",
+  "group": "positive-step-admission",
+  "sourceSha256": "4449860481a195133653b37b2ec6776dc3663fdb3bc1592ae9a46aa3283fc838",
+  "grantSha256": "174cef441f20917519a460f2b65c8706f91b986e903f97f933a5ebfaec304dc3",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "nativeSha256": "76130effe1da05bfc800fa8e14bea5b0382b87b130899a3cc1b52e2dab9bb6d7",
+  "supervisorSha256": "082f91881c21031008b09f68238e55802a3916e04a99380b17e6dd9cb169c678",
+  "logSha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+  "nativeStrictReplay": false,
+  "supervisorStrictReplay": false,
+  "logErrors": [],
+  "banner": [
+    "Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org",
+    ""
+  ],
+  "passed": false,
+  "records": [
+    {
+      "caseIndex": 0,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.35:-45.0",
+        "incline": 0.0,
+        "maxResponses": 240,
+        "radius": 0.35,
+        "start": -1.0,
+        "yaw": -0.785398163397448
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_baseline_blocked",
+          "settles": 20,
+          "frames": 127,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "three_sweeps_and_continuous_static_landing"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "full_tread_guarded_arrival",
+          "settles": 20,
+          "frames": 21,
+          "applied": 1,
+          "verified": 1,
+          "finalReason": "no_bounded_riser"
+        }
+      ]
+    },
+    {
+      "caseIndex": 1,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.35:45.0",
+        "incline": 0.0,
+        "maxResponses": 240,
+        "radius": 0.35,
+        "start": -1.0,
+        "yaw": 0.785398163397448
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_baseline_blocked",
+          "settles": 20,
+          "frames": 127,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "three_sweeps_and_continuous_static_landing"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "full_tread_guarded_arrival",
+          "settles": 20,
+          "frames": 21,
+          "applied": 1,
+          "verified": 1,
+          "finalReason": "no_bounded_riser"
+        }
+      ]
+    },
+    {
+      "caseIndex": 2,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.42:-45.0",
+        "incline": 0.0,
+        "maxResponses": 240,
+        "radius": 0.42,
+        "start": -1.0,
+        "yaw": -0.785398163397448
+      },
+      "status": "failed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "failed",
+          "outcome": null,
+          "settles": 20,
+          "frames": 21,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_bounded_riser"
+        }
+      ]
+    }
+  ],
+  "nativeCounters": {
+    "attemptedPairs": 3,
+    "attemptedProfiles": 5,
+    "completedPairs": 3,
+    "completedProfiles": 5,
+    "failedPairs": 1,
+    "failedProfiles": 1,
+    "interruptedPairs": 0,
+    "interruptedProfiles": 0,
+    "passedPairs": 2,
+    "unrunPairs": 1,
+    "unrunProfiles": 3
+  },
+  "notes": "Strict predicate replay only; owner must inspect raw records and save inspection notes before any next invocation.",
+  "admissionFailureLines": [],
+  "inappropriateProbeMarkers": []
+}

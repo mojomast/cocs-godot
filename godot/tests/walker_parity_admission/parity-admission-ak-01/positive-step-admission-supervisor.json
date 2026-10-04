@@ -1,0 +1,1277 @@
+{
+  "phase": "parity-admission-synthetic-v1",
+  "mode": "synthetic-controls",
+  "group": "positive-step-admission",
+  "sourceSha256": "4449860481a195133653b37b2ec6776dc3663fdb3bc1592ae9a46aa3283fc838",
+  "grantSha256": "174cef441f20917519a460f2b65c8706f91b986e903f97f933a5ebfaec304dc3",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "dependenciesSha256": "31edeee035702b43b4f510df2b6f71a4a9d62c953461cfa670535b27949cbc80",
+  "argv": [
+    "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--single-threaded-scene",
+    "--path",
+    "/home/mojo/.tmp-on-disk/cocs-walker-parity-admission-ak/godot/tests/walker_parity_admission/parity-admission-ak-01",
+    "--script",
+    "res://tests/walker_parity_admission/driver.gd",
+    "--",
+    "--group=positive-step-admission",
+    "--mode=synthetic-controls",
+    "--grant-id=MOTH-BLENDER-20261004-AK",
+    "--grant-sha256=174cef441f20917519a460f2b65c8706f91b986e903f97f933a5ebfaec304dc3",
+    "--dependencies-sha256=31edeee035702b43b4f510df2b6f71a4a9d62c953461cfa670535b27949cbc80"
+  ],
+  "lockAcquiredUnix": 1791099000.3866909,
+  "timeoutSeconds": 180,
+  "autoRetry": false,
+  "queued": false,
+  "releaseAudits": [
+    {
+      "utc": "2026-10-04T07:30:08.369977+00:00",
+      "members": [],
+      "measured": true
+    },
+    {
+      "utc": "2026-10-04T07:30:08.586909+00:00",
+      "members": [],
+      "measured": true
+    },
+    {
+      "utc": "2026-10-04T07:30:08.804532+00:00",
+      "members": [],
+      "measured": true
+    }
+  ],
+  "processGroupTrace": [
+    {
+      "unix": 1791099000.387449,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099000.4546971,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099000.5217628,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099000.5871928,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099000.6548638,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099000.7210073,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099000.787639,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099000.8548121,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099000.919996,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099000.985421,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099001.053937,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099001.1192071,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099001.185181,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099001.253087,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099001.3184175,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099001.38426,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099001.4519868,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099001.5207899,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099001.5862691,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099001.65378,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099001.719237,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099001.7846653,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099001.851775,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099001.9197226,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099001.9826608,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099002.0494964,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099002.1147854,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099002.179983,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099002.246817,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099002.3118014,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099002.3765848,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099002.4414377,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099002.506594,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099002.5718145,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099002.6367717,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099002.7018306,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099002.7668135,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099002.8320932,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099002.8974872,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099002.9634695,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099003.0284646,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099003.0934315,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099003.1603482,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099003.225145,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099003.2914352,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099003.3598201,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099003.4251714,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099003.4899535,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099003.557184,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099003.6211455,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099003.6861486,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099003.752868,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099003.8180816,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099003.8832633,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099003.9502647,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099004.015134,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099004.0810785,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099004.1468787,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099004.212538,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099004.277567,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099004.3438895,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099004.4093454,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099004.4743261,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099004.539276,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099004.6043973,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099004.6694741,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099004.734733,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099004.7996318,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099004.8646946,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099004.9298046,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099004.9949415,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099005.0611103,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099005.1263118,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099005.1912036,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099005.2569897,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099005.3225987,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099005.3877165,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099005.4548976,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099005.52078,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099005.5860703,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099005.6532643,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099005.7183979,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099005.7841218,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099005.8508716,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099005.916951,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099005.9810624,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099006.04702,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099006.1123252,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099006.180042,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099006.2460036,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099006.3114455,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099006.3767502,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099006.4428291,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099006.5079355,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099006.5755713,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099006.640984,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099006.706115,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099006.7716024,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099006.8365598,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099006.9018753,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099006.96722,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099007.0328665,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099007.0987747,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099007.164562,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099007.2306557,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099007.2961836,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099007.3621335,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099007.4268703,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099007.4918792,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099007.5588753,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099007.6238334,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099007.6891108,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099007.7573287,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099007.8226066,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099007.8874981,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099007.9539773,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099008.018763,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099008.0836005,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099008.1527865,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099008.2180498,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    },
+    {
+      "unix": 1791099008.2834334,
+      "members": [
+        {
+          "pid": 3260758,
+          "pgid": 3260758,
+          "startTicks": 628214435
+        }
+      ]
+    }
+  ],
+  "failed": true,
+  "environment": {
+    "LP_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "owned": {
+    "pid": 3260758,
+    "pgid": 3260758,
+    "startTicks": 628214435
+  },
+  "returnCode": 1,
+  "releasedCleanly": true,
+  "nativeReceiptSha256": "76130effe1da05bfc800fa8e14bea5b0382b87b130899a3cc1b52e2dab9bb6d7",
+  "partialCountersMayBeUnknown": false,
+  "nativeOutcome": "unexpected_baseline_arrival",
+  "positiveAdmission": false,
+  "nativeStepAdmission": false,
+  "productionPromotion": false,
+  "scope": "synthetic-admission",
+  "lockReleasePendingUnix": 1791099009.0499625
+}

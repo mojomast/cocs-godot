@@ -1,0 +1,41 @@
+{
+  "utc": "2026-10-04T07:34:23.498884+00:00",
+  "checkpointSha256": "afa2f225dee37098ace7c05892786a556843eecc2037bbc0b65e6b194ccfc4fb",
+  "detailSha256": "cd97facb1be5af113ebde836c8b038ac830169e3b8e4bb575c27458f283ff285",
+  "sourceSha256": "4449860481a195133653b37b2ec6776dc3663fdb3bc1592ae9a46aa3283fc838",
+  "grantSha256": "174cef441f20917519a460f2b65c8706f91b986e903f97f933a5ebfaec304dc3",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "nativeSha256": "76130effe1da05bfc800fa8e14bea5b0382b87b130899a3cc1b52e2dab9bb6d7",
+  "supervisorSha256": "082f91881c21031008b09f68238e55802a3916e04a99380b17e6dd9cb169c678",
+  "passed": false,
+  "decision": "STOP and release; no retry or relaxation. Positive admission false.",
+  "firstFailure": {
+    "caseIndex": 2,
+    "profileIndex": 0,
+    "frame": 418,
+    "expected": "baseline blocked with120 stalled responses and reachedfalse",
+    "actual": "baseline reached goal with fresh exclusive target support, full footprint and zero assist",
+    "along": 1.0081223549433544,
+    "goal": 1.0,
+    "stallCount": 0,
+    "ordinaryLandingStreak": 6,
+    "driverSourceLine": 286,
+    "candidateGuardFailure": false,
+    "candidateApplicationGuard": "not applicable to this baseline profile",
+    "freshArrivalSupportReached": true,
+    "freshArrivalSupportPassed": true,
+    "radius042CandidateProfileInvoked": false
+  },
+  "alongQualification": "Host reconstruction from serialized yaw/state, not separately recorded native scalar. Native unexpected_baseline_arrival outcome and fresh support record establish the failed baseline condition.",
+  "strictIndividualCompletedProfileReplays": 4,
+  "candidateGuardedApplications": 2,
+  "guardEndpointErrors": [
+    0.0,
+    0.0
+  ],
+  "guardEpsilons": [
+    1e-06,
+    1e-06
+  ],
+  "unknownQualification": "No interrupted/fatal path reported here; native partialCountersMayBeUnknownfalse. Instrumented counters are recorded, internal engine physical calls remain untraced. AH/AI unknown counters unchanged."
+}

@@ -1,0 +1,92 @@
+{
+  "utc": "2026-10-04T07:32:40.394238+00:00",
+  "groups": {
+    "negative-controls": {
+      "invocations": 1,
+      "returnCode": 0,
+      "failed": false,
+      "releasedCleanly": true,
+      "nativeReceiptPresent": true,
+      "nativeOutcome": "negative_control_group_pass",
+      "instrumentedCounters": {
+        "attemptedPairs": 34,
+        "attemptedProfiles": 68,
+        "completedPairs": 34,
+        "completedProfiles": 68,
+        "failedPairs": 0,
+        "failedProfiles": 0,
+        "interruptedPairs": 0,
+        "interruptedProfiles": 0,
+        "passedPairs": 34,
+        "unrunPairs": 0,
+        "unrunProfiles": 0
+      },
+      "internalCountersMayBeUnknown": false,
+      "physicalCallCounts": null,
+      "nativeSha256": "0585366753c69be5144721cc6a76e4553ada143c611aebb3cd3328fb46b43ee1",
+      "supervisorSha256": "30e6c0a7c0e1b922fafd2c7aeab9cb94cf4190975e25941b9399ec2e0cc12501",
+      "logSha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "inclined-landing-rejections": {
+      "invocations": 1,
+      "returnCode": 0,
+      "failed": false,
+      "releasedCleanly": true,
+      "nativeReceiptPresent": true,
+      "nativeOutcome": "synthetic_group_pass",
+      "instrumentedCounters": {
+        "attemptedPairs": 4,
+        "attemptedProfiles": 8,
+        "completedPairs": 4,
+        "completedProfiles": 8,
+        "failedPairs": 0,
+        "failedProfiles": 0,
+        "interruptedPairs": 0,
+        "interruptedProfiles": 0,
+        "passedPairs": 4,
+        "unrunPairs": 0,
+        "unrunProfiles": 0
+      },
+      "internalCountersMayBeUnknown": false,
+      "physicalCallCounts": null,
+      "nativeSha256": "c281083c3c71075412a0e9c7a7945daec7e0b90d050988a87af96a83c172075a",
+      "supervisorSha256": "92f8036dd18ee4e4fc8f46016506904aa40a5904d6d3e468c5708583b2ef0fba",
+      "logSha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    },
+    "positive-step-admission": {
+      "invocations": 1,
+      "returnCode": 1,
+      "failed": true,
+      "releasedCleanly": true,
+      "nativeReceiptPresent": true,
+      "nativeOutcome": "unexpected_baseline_arrival",
+      "instrumentedCounters": {
+        "attemptedPairs": 3,
+        "attemptedProfiles": 5,
+        "completedPairs": 3,
+        "completedProfiles": 5,
+        "failedPairs": 1,
+        "failedProfiles": 1,
+        "interruptedPairs": 0,
+        "interruptedProfiles": 0,
+        "passedPairs": 2,
+        "unrunPairs": 1,
+        "unrunProfiles": 3
+      },
+      "internalCountersMayBeUnknown": false,
+      "physicalCallCounts": null,
+      "nativeSha256": "76130effe1da05bfc800fa8e14bea5b0382b87b130899a3cc1b52e2dab9bb6d7",
+      "supervisorSha256": "082f91881c21031008b09f68238e55802a3916e04a99380b17e6dd9cb169c678",
+      "logSha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
+    }
+  },
+  "qualification": "Native post-return/instrumented counters only. Fatal/interrupted paths may have unknown internal physical calls; missing receipt is not zero work.",
+  "sourceSha256": "4449860481a195133653b37b2ec6776dc3663fdb3bc1592ae9a46aa3283fc838",
+  "grantSha256": "174cef441f20917519a460f2b65c8706f91b986e903f97f933a5ebfaec304dc3",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "releasedUtc": "2026-10-04T07:30:40.505018+00:00",
+  "nativeRetries": 0,
+  "nativeSourceCorrections": 0,
+  "candidateMapJourneysRun": 0,
+  "productionAccountingOpen": true
+}

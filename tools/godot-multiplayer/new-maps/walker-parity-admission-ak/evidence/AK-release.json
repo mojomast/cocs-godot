@@ -1,0 +1,120 @@
+{
+  "grant": "MOTH-BLENDER-20261004-AK",
+  "ownedGroups": [
+    {
+      "pid": 3255760,
+      "pgid": 3255760,
+      "startTicks": 628205156
+    },
+    {
+      "pid": 3250966,
+      "pgid": 3250966,
+      "startTicks": 628195976
+    },
+    {
+      "pid": 3260758,
+      "pgid": 3260758,
+      "startTicks": 628214435
+    }
+  ],
+  "releaseAudits": [
+    {
+      "utc": "2026-10-04T07:30:39.771807+00:00",
+      "measured": true,
+      "groups": [
+        {
+          "owned": {
+            "pid": 3255760,
+            "pgid": 3255760,
+            "startTicks": 628205156
+          },
+          "members": []
+        },
+        {
+          "owned": {
+            "pid": 3250966,
+            "pgid": 3250966,
+            "startTicks": 628195976
+          },
+          "members": []
+        },
+        {
+          "owned": {
+            "pid": 3260758,
+            "pgid": 3260758,
+            "startTicks": 628214435
+          },
+          "members": []
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-04T07:30:40.017281+00:00",
+      "measured": true,
+      "groups": [
+        {
+          "owned": {
+            "pid": 3255760,
+            "pgid": 3255760,
+            "startTicks": 628205156
+          },
+          "members": []
+        },
+        {
+          "owned": {
+            "pid": 3250966,
+            "pgid": 3250966,
+            "startTicks": 628195976
+          },
+          "members": []
+        },
+        {
+          "owned": {
+            "pid": 3260758,
+            "pgid": 3260758,
+            "startTicks": 628214435
+          },
+          "members": []
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-04T07:30:40.260778+00:00",
+      "measured": true,
+      "groups": [
+        {
+          "owned": {
+            "pid": 3255760,
+            "pgid": 3255760,
+            "startTicks": 628205156
+          },
+          "members": []
+        },
+        {
+          "owned": {
+            "pid": 3250966,
+            "pgid": 3250966,
+            "startTicks": 628195976
+          },
+          "members": []
+        },
+        {
+          "owned": {
+            "pid": 3260758,
+            "pgid": 3260758,
+            "startTicks": 628214435
+          },
+          "members": []
+        }
+      ]
+    }
+  ],
+  "lock": {
+    "available": true,
+    "measuredUtc": "2026-10-04T07:30:40.504985+00:00"
+  },
+  "releasedUtc": "2026-10-04T07:30:40.505018+00:00",
+  "remainingAuthorization": false,
+  "queuedWork": false,
+  "noFurtherEngineInvocations": true
+}
