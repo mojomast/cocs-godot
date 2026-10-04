@@ -1,5 +1,25 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Calibrated contract approved/integrated; AM authorized
+
+Independent review approved `3b03b390`, integrated as **`3dcdbb27`**. Parent
+passed **225 checks** (212 Python, thirteen package), 22 delivery bindings and
+source-receipt identity. Seventeen-script closure, unchanged movement/guard methods,
+per-rise geometry and strict fresh predecessor requirements passed review.
+
+**MOTH-BLENDER-20261004-AM** is the sole heavy grant, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `3dcdbb27`. Free lock and only the
+preserved viewer were confirmed at 09:29:49.188481Z. The new calibrated phase
+permits fresh negative34, inclined4 and positive4 pairs, each separately invoked
+only after passing-evidence replay and recorded owner checkpoint. Positive order
+is .35/.15 at both yaws, then .42/.18 at both yaws.
+
+Every counted positive baseline stall needs grounding and an actual intended-target
+witness; this remains the paired campaign protocol, not AL's separate per-response
+base-support protocol. Physical guard, one-UP/parent limits and nine/eleven caps
+remain unchanged. Candidate feasibility at .18 is unknown. Any failure stops;
+no retry, .20 fallback or map continuation. Final audits and release remain mandatory.
+
 ## Calibrated admission package delivered for review
 
 **`3b03b390`** implements distinct `parity-admission-calibrated-v1` /

@@ -10,16 +10,22 @@ finishing and verifying the new candidate.
 Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
-**No active heavy grant. AL completed baseline characterization and released.**
+**Current heavy owner: calibrated synthetic campaign AM**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `3dcdbb27`. Source review passed;
+parent passed 225 checks and 22 delivery bindings. Fresh negative34 → inclined4
+→ positive4 groups run separately with passing-evidence checkpoints. Stop on
+failure; no retry, alternate height or maps. Candidate .18 feasibility is unproved.
+
+**AL completed baseline characterization and released.**
 Delivery `75271920` / `068705de` passed independent review and is integrated through
 `0d8822ee`. Parent passed 52 checks and 33 hashes/manifest. Eight profiles qualify:
 six blocked, two ordinary arrivals, 960 responses/support observations. Review selects
 .18 for the next .42 source fixture only; candidate feasibility remains unproved.
 Versioned admission source preparation is active. See `map-variety/WALKER_AL_REVIEW.md`.
-Calibrated package `3b03b390` is now under independent source review. The new phase
-fixes .35/.15 and .42/.18 positive cases, fresh 34/4/4 prerequisites, rise-derived
-checks and target-witnessed baseline stalls. Producer reports 212 Python checks;
-candidate/planners/physical guard stay unchanged. No native grant exists.
+Calibrated package `3b03b390` passed review and is integrated as `3dcdbb27`.
+The new phase fixes .35/.15 and .42/.18 positives, fresh 34/4/4 prerequisites,
+rise-derived checks and target-witnessed baseline stalls. Candidate/planners/
+physical guard stay unchanged; AM supplies only the bounded synthetic authority.
 
 **AK passed negatives/inclined, failed positive admission and released.**
 Delivery `4b83de0b` / `c2e83163` / `50271f7c` passed independent review and is
@@ -370,7 +376,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P through AL have released; no heavy grant is active.**
+**P through AL have released; AM owns calibrated synthetic admission.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -411,6 +417,12 @@ are introduced without the user's renewed scope. The subsequent overnight
 directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
+
+**Active: `MOTH-BLENDER-20261004-AM`**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `3dcdbb27`. Calibrated phase only:
+one invocation per ordered group, fresh same-source/grant/engine prerequisite
+receipts and recorded owner inspections. Stop on failure; no retries/fallback/maps.
+Final three measured empty audits across all groups and explicit release required.
 
 **Released: `MOTH-BLENDER-20261004-AL`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `b5deca56`. Phase

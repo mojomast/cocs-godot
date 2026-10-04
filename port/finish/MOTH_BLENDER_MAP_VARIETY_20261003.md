@@ -1,5 +1,13 @@
 # New Moth resources and Blender-authored map variety
 
+## Current owner — calibrated synthetic campaign AM
+
+**MOTH-BLENDER-20261004-AM is the sole heavy grant**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation **`3dcdbb27`**. Independent source
+review passed; parent passed 225 checks/22 bindings. Fresh negative → inclined →
+positive groups require separate invocations and passing checkpoints. No retry,
+alternate height or maps; .18 candidate feasibility awaits this bounded experiment.
+
 **Calibrated admission `3b03b390` is under source review.** The distinct phase
 fixes .35/.15 and .42/.18 paired positives with fresh negative/inclined prerequisites.
 Rise-derived checks and target-witnessed baseline stalls retain unchanged candidate/
