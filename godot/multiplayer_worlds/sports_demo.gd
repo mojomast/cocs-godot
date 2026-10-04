@@ -270,6 +270,7 @@ func _process(delta: float) -> void:
 		var pose: Dictionary = chase.follow(vehicle, delta, float(vehicle.get("yaw", 0.0)) - PI, 0.0, "driver", 0, reduced)
 		world.camera.position = pose.eye
 		world.camera.look_at(pose.target)
+		world.camera.fov = pose.fov
 	guidance.apply(state.get("race", {}), net.actor_id, phase == "active" and age < 0.5 and not state.get("over", false))
 	var soccer_target := soccer_guidance.apply(state, net.actor_id, vehicle, mode == "puma-soccer" and phase == "active" and age < 0.5)
 	hud.update({"mode":mode, "map_id":map_id, "map_name":world.catalog.entries.get(map_id, {}).get("name", ""), "state":state, "vehicle":vehicle, "actor_id":net.actor_id, "phase":phase, "age":age, "eligible":eligible(), "engaged":controls.engaged, "focused":controls.focused, "error":error, "message":progression.message, "soccer_guidance":soccer_target})
