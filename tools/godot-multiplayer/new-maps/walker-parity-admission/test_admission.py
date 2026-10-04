@@ -117,10 +117,13 @@ class LifecycleTests(unittest.TestCase):
 
 class SupervisorTests(unittest.TestCase):
     setUp=PreparationTests.setUp;tearDown=PreparationTests.tearDown;build=PreparationTests.build
-    def invoke(self,*,signal_error=None,audits=None,reused=False,write_error=False,deadline=False,held=False,fast_error=False,native_mutation=None,check_dependency=False):
+    def invoke(self,*,signal_error=None,audits=None,reused=False,write_error=False,deadline=False,held=False,fast_error=False,native_mutation=None,check_dependency=False,group_override=None):
         self.stage=self.root/'godot/tests/walker_parity_admission';self.stage.mkdir(parents=True);dest=self.build();engine=self.base/'binary';engine.write_bytes(b'nonexecutable mock')
-        group=GROUPS[0];g={'phase':PHASE,'mode':MODE,'allowedGroups':[group],'grantId':'unit','authorized':True,'expiresUnix':9999999999,'sourceSha256':sha(dest/'source.json'),'engineSha256':sha(engine)};(dest/'grant.json').write_text(json.dumps(g))
+        group=group_override or GROUPS[0];g={'phase':PHASE,'mode':MODE,'allowedGroups':GROUPS[:GROUPS.index(group)+1],'grantId':'unit','authorized':True,'expiresUnix':9999999999,'sourceSha256':sha(dest/'source.json'),'engineSha256':sha(engine)};(dest/'grant.json').write_text(json.dumps(g))
         a=supervisor.parser().parse_args(['--fixture',str(dest),'--ag-root',str(self.base/'AG'),'--af-root',str(self.base/'AF'),'--engine',str(engine),'--group',group,'--mode',MODE,'--grant-id','unit','--grant-sha256',sha(dest/'grant.json')])
+        for prior in GROUPS[:GROUPS.index(group)]:
+            native=dest/(prior+'-result.json');native.write_text(json.dumps(passed(prior,g['sourceSha256'],a.grant_sha256,g['engineSha256'])))
+            (dest/(prior+'-supervisor.json')).write_text(json.dumps(supervisor_fixture(prior,g['sourceSha256'],a.grant_sha256,g['engineSha256'],sha(native))))
         owned={'pid':123456789,'pgid':123456789,'startTicks':777};residual={**owned,'pid':123456790,'startTicks':778};runtime=supervisor.runtime
         handlers={n:supervisor.signal.getsignal(n) for n in [supervisor.signal.SIGTERM,supervisor.signal.SIGHUP,supervisor.signal.SIGINT]};real_write=supervisor.write
         def writer(path,value):

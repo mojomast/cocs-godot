@@ -1,5 +1,10 @@
 # Bounded synthetic parity admission — source proposal
 
+**Latest follow-up:** [P1-SUPPORT-CORRECTION.md](P1-SUPPORT-CORRECTION.md) binds
+serialized guard/arrival queries to actual body transforms and validates mandatory
+guard operands. Current verification is in `support-correction-receipt.json`;
+both earlier receipts remain historical. Focused readiness review is still pending.
+
 **Review correction:** [P1-CORRECTION.md](P1-CORRECTION.md) documents the follow-up
 to the blocking receipt-admission review of8de9d63a. Current validators require
 the ordered case census and recorded execution operands, and reject contradictory

@@ -33,6 +33,8 @@ static func landing(body: Walker, fixture: Dictionary) -> Dictionary:
 	if not result.footprintInside or not body.is_on_floor() or absf(body.global_position.y-.15)>body.safe_margin+.0001: result.reason = "arrival_pose";return result
 	var q := Proposal.sweep(body,body.global_transform,-Vector3.UP*(body.safe_margin+.0001),true)
 	result.query = Proposal.log_sweep("fresh-full-tread-support",q);result.bodyAfter = state(body)
+	result.query.bodyRid = body.get_rid() # serialization only; same body passed to sweep
+	result.query.excludeBodies = [];result.query.excludeObjects = [] # pinned fresh-parameter defaults
 	var hit: PhysicsTestMotionResult3D = q.result
 	if result.bodyBefore!=result.bodyAfter or not q.valid or not q.hit or hit.get_collision_count()==0 or hit.get_collision_count()>=32: result.reason = "support_missing_or_mutated";return result
 	var epsilon := Guard.numeric_budget([body.global_position]);result.epsilon = epsilon

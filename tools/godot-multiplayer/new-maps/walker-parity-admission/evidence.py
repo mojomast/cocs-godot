@@ -23,8 +23,30 @@ def footprint(s,spec):
     if not state(s):return False
     x,y,z=origin(s);yaw=spec['yaw'];along=math.sin(yaw)*x+math.cos(yaw)*z
     return spec['radius']+.02<=along<=3-spec['radius']-.02 and abs(math.cos(yaw)*x-math.sin(yaw)*z)<=2-spec['radius']-.02 and s['grounded'] is True and abs(y-.15)<=.0201
-def support(q,rid):
-    return isinstance(q,dict) and q.get('hit') is True and q.get('validResult') is True and isinstance(q.get('contacts'),list) and 0<len(q['contacts'])<32 and all(near(c.get('colliderRid'),rid,0) and near(c.get('colliderShape'),0,0) and near(c.get('localShape'),0,0) and vec(c.get('point')) and abs(c['point'][1]-.15)<=1e-6 and vec(c.get('normal')) and c['normal'][1]>=math.cos(math.radians(46)) and distance(c.get('velocity'),[0,0,0])<=1e-6 for c in q['contacts'])
+def transform(t):
+    return isinstance(t,dict) and vec(t.get('origin')) and isinstance(t.get('basis'),list) and len(t['basis'])==3 and all(vec(v) for v in t['basis'])
+def same_transform(a,b,epsilon):
+    return transform(a) and transform(b) and distance(a['origin'],b['origin'])<=epsilon and all(distance(x,y)<=epsilon for x,y in zip(a['basis'],b['basis']))
+def zero(v):return vec(v) and all(abs(x)<.00001 for x in v) # Godot Vector3.is_zero_approx, componentwise CMP_EPSILON
+def budget(points):
+    if not all(vec(p) for p in points):return -1
+    magnitude=max(1.,*(abs(x) for p in points for x in p));value=8*2**(math.floor(math.log(magnitude)/math.log(2))-23)
+    return max(.000001,value) if value<=.0001 else -1
+def support(q,rid,body_transform,params,epsilon,plane,name):
+    # Both reviewed support sweeps use safe_margin + GUARD, NOT floor_snap_length.
+    if not isinstance(q,dict) or epsilon<0 or q.get('name')!=name or q.get('hit') is not True or q.get('validResult') is not True:return False
+    if not same_transform(q.get('from'),body_transform,epsilon) or distance(q.get('motion'),[0,-(params['margin']+.0001),0])>epsilon:return False
+    if not near(q.get('margin'),params['margin'],epsilon) or not near(q.get('maxCollisions'),32,0) or q.get('recoveryAsCollision') is not True or q.get('collideSeparationRay') is not True:return False
+    if not integer(params.get('bodyRid')) or params['bodyRid']<=0 or not near(q.get('bodyRid'),params['bodyRid'],0):return False
+    if q.get('excludeBodies')!=[] or q.get('excludeObjects')!=[] or q.get('testOnly',True) is not True:return False
+    if not vec(q.get('travel')) or not vec(q.get('remainder')) or not num(q.get('safeFraction')) or not num(q.get('unsafeFraction')) or not 0<=q['safeFraction']<=q['unsafeFraction']<=1:return False
+    contacts=q.get('contacts')
+    if not isinstance(contacts,list) or not 0<len(contacts)<32 or not near(q.get('collisionCount',len(contacts)),len(contacts),0):return False
+    for c in contacts:
+        if not isinstance(c,dict) or not near(c.get('colliderRid'),rid,0) or not near(c.get('colliderShape'),0,0) or not near(c.get('localShape'),0,0):return False
+        if not vec(c.get('point')) or not num(plane) or abs(c['point'][1]-plane)>epsilon or not vec(c.get('normal')) or abs(distance(c['normal'],[0,0,0])-1)>=.0001 or c['normal'][1]<math.cos(params['floorAngle']):return False
+        if not zero(c.get('velocity')) or not num(c.get('depth')) or c['depth']<0:return False
+    return True
 def witness(plan):
     return any(s.get('name')=='intent' and s.get('hit') is True and s.get('validResult') is True and isinstance(s.get('contacts'),list) and len(s['contacts'])>0 for s in plan['stages'])
 def negative_stages(plan,id):
@@ -60,19 +82,54 @@ def inclined_witness(plan,t):
     return False
 def guarded(row,p):
     plan=row['proposal'];g=plan['responseGuard'];t=row['telemetry']
-    if g.get('reason')!='endpoint_and_pinned_clear_branch_and_live_support_agree' or not near(g.get('epsilon'),1e-6,0) or not near(g.get('slideCount'),0,0) or g.get('observedSlides')!=[]:return False
-    if distance(g.get('actualFinal'),origin(row['after']))>1e-6 or distance(g.get('expectedFinal'),plan['expectedFinal'])>1e-6:return False
+    if not guard_operands(row,p):return False
+    if g.get('reason')!='endpoint_and_pinned_clear_branch_and_live_support_agree' or not near(g.get('slideCount'),0,0) or g.get('observedSlides')!=[]:return False
+    if distance(g.get('actualFinal'),origin(row['after']))>g['epsilon'] or distance(g.get('expectedFinal'),plan['expectedFinal'])>g['epsilon']:return False
     if t.get('beforePlanning')!=row['before'] or t.get('afterPlanning')!=row['before'] or t.get('afterParent')!=row['after'] or t.get('beforeParent')!=t['upAfter']:return False
     if t.get('upCollisionReturned') is not False or t.get('upContacts')!=[] or t['upRequest'].get('before')!=row['before']:return False
     travel=[b-a for a,b in zip(origin(row['before']),origin(t['upAfter']))]
-    if distance(t['actualUpTravel'],travel)>1e-6:return False
+    if distance(t['actualUpTravel'],travel)>g['epsilon']:return False
     q=g['support'];identities=t['finalSupportIdentities']
     if not isinstance(q.get('contacts'),list) or not isinstance(identities,list) or len(q['contacts'])!=len(identities):return False
     contacts=[]
     for c,identity in zip(q['contacts'],identities):
         if identity.get('ridResolved') is not True or not near(identity.get('colliderId'),c.get('colliderId'),0) or not near(identity.get('colliderShapeIndex'),c.get('colliderShape'),0) or not near(identity.get('localShapeIndex'),c.get('localShape'),0):return False
         contacts.append({**c,'colliderRid':identity.get('colliderRid')})
-    return support({**q,'contacts':contacts},p['targetRid'])
+    return support({**q,'contacts':contacts},p['targetRid'],row['after']['transform'],p['parameters'],g['epsilon'],plan['landingY'],'actual-final-support')
+def guard_operands(row,p):
+    plan=row['proposal'];g=plan['responseGuard'];t=row['telemetry'];after=row['after'];before=row['before'];params=p['parameters']
+    horizontal=plan.get('horizontalBudget');raised=plan.get('raised');start=plan.get('from');expected=plan.get('expectedFinal')
+    if not vec(horizontal) or not transform(raised) or not transform(start) or not vec(expected) or not state(after) or not state(before):return False
+    endpoint=[a+b for a,b in zip(raised['origin'],horizontal)]
+    epsilon=budget([start['origin'],raised['origin'],endpoint,expected,origin(after)])
+    if epsilon<0 or epsilon>params['margin']/100 or not near(g.get('epsilon'),epsilon,0):return False
+    if not same_transform(start,before['transform'],epsilon) or distance(origin(after),expected)>epsilon:return False
+    axes=row.get('input')
+    if not vec(axes,2) or row.get('sprint') is not False or row.get('jump') is not False or not near(row.get('actualDelta'),1/60,1e-8):return False
+    scale=max(1.,math.hypot(*axes));basis=before['transform']['basis']
+    requested=[(basis[0][i]*axes[0]-basis[2][i]*axes[1])/scale*params['walk']*row['actualDelta'] for i in range(3)]
+    if distance(horizontal,requested)>epsilon:return False
+    if not near(after.get('slideCount'),0,0) or not near(g.get('slideCount'),0,0) or row.get('slides')!=[] or g.get('observedSlides')!=[]:return False
+    if not zero(after.get('platformVelocity')) or not zero(after.get('platformAngularVelocity')) or row.get('floorConstantSpeed') is not False:return False
+    if not near(row.get('bodyRid'),params.get('bodyRid'),0) or not integer(row.get('bodyRid')) or row['bodyRid']<=0:return False
+    if distance(g.get('lastMotion'),horizontal)>epsilon or distance(after.get('lastMotion'),horizontal)>epsilon or distance(g.get('lastMotion'),after['lastMotion'])>epsilon:return False
+    if math.hypot(origin(after)[0]-endpoint[0],origin(after)[2]-endpoint[2])>epsilon:return False
+    if after.get('grounded') is not True or not vec(after.get('floorNormal')) or after['floorNormal'][1]<math.cos(params['floorAngle']):return False
+    request=t['upRequest'];up=plan.get('upMotion')
+    if not vec(up) or up[0]!=0 or up[2]!=0 or not 0<up[1]<=.25+params['margin']:return False
+    if not same_transform(request.get('from'),before['transform'],epsilon) or not same_transform(request.get('modeledRaised'),raised,epsilon) or distance(request.get('motion'),up)>epsilon:return False
+    if not near(request.get('bodyRid'),params['bodyRid'],0) or not near(request.get('margin'),params['margin'],epsilon) or not near(request.get('maxCollisions'),32,0) or request.get('testOnly') is not False or request.get('recoveryAsCollision') is not False or request.get('collideSeparationRay') is not False:return False
+    up_epsilon=budget([origin(before),raised['origin'],expected])
+    if up_epsilon<0 or not near(request.get('epsilon'),up_epsilon,0) or distance(origin(t['upAfter']),raised['origin'])>up_epsilon:return False
+    travel=t.get('actualUpTravel')
+    if not vec(travel) or math.hypot(travel[0],travel[2])>.0001 or travel[1]-up[1]<-.0001 or travel[1]-up[1]>params['margin']+.0001:return False
+    actual=[b-a for a,b in zip(origin(before),origin(after))]
+    if math.hypot(actual[0],actual[2])>distance(horizontal,[0,0,0])+.0001 or actual[0]*horizontal[0]+actual[2]*horizontal[2]<=0 or actual[1]<=0 or actual[1]+.0001>=.25 or abs(after['velocity'][1])>.0001:return False
+    for value in [row.get('wholeFrameDelta'),plan.get('actualWholeFrameDelta'),t.get('wholeFrameDelta')]:
+        if distance(value,actual)>epsilon:return False
+    for key,field in [('parentPositionDelta','parentPositionDelta'),('parentRealVelocity','parentRealVelocity'),('actualVelocity','velocity')]:
+        if not vec(after.get(field)) or distance(plan.get(key),after[field])>epsilon:return False
+    return plan.get('actualGrounded') is True
 def profile(p,spec,group,experimental):
     negative=group=='negative-controls';inclined=group=='inclined-landing-rejections'
     expected='expected_original_rejection_and_ordinary_response' if negative else 'expected_inclined_rejection_and_block' if inclined else 'full_tread_guarded_arrival' if experimental else 'expected_baseline_blocked'
@@ -102,6 +159,7 @@ def profile(p,spec,group,experimental):
         previous=row['frame']
         if not near(row.get('actualDelta'),1/60,1e-8) or not near(row.get('physicsHz'),60,0) or not near(row.get('timeScale'),1,0) or not integer(row.get('usec')):return False
         if not state(row['before']) or not state(row['after']) or not vec(row.get('wholeFrameDelta')) or not isinstance(row.get('slides'),list):return False
+        if not negative and not inclined and (not integer(row.get('bodyRid')) or row['bodyRid']<=0 or not near(row['bodyRid'],params.get('bodyRid'),0) or row.get('floorConstantSpeed') is not False):return False
         if distance(row['wholeFrameDelta'],[b-a for a,b in zip(origin(row['before']),origin(row['after']))])>1e-6:return False
         plan=row['proposal']
         if type(plan.get('accepted')) is not bool or not isinstance(plan.get('stages'),list):return False
@@ -146,7 +204,7 @@ def profile(p,spec,group,experimental):
         final=p['finalSupport'];last=frames[-1]['after'];pos=origin(last);along=math.sin(spec['yaw'])*pos[0]+math.cos(spec['yaw'])*pos[2]
         if verified<1 or verified!=applied or p.get('reached') is not True or holds<3 or along<spec['goal'] or not near(p.get('ordinaryLandingStreak'),holds,0):return False
         if not integer(p.get('targetRid')) or p['targetRid']<=0 or not near(p.get('targetShape'),0,0) or final.get('passed') is not True or final.get('footprintInside') is not True or final.get('reason')!='full_footprint_and_fresh_target_support':return False
-        if final.get('bodyBefore')!=last or final.get('bodyAfter')!=last or not near(final.get('epsilon'),1e-6,0) or not support(final.get('query'),p['targetRid']):return False
+        if final.get('bodyBefore')!=last or final.get('bodyAfter')!=last or not near(final.get('epsilon'),budget([origin(last)]),0) or not support(final.get('query'),p['targetRid'],last['transform'],params,final['epsilon'],.15,'fresh-full-tread-support'):return False
     else:
         pos=origin(frames[-1]['after']);along=math.sin(spec['yaw'])*pos[0]+math.cos(spec['yaw'])*pos[2]
         if stall!=120 or p.get('reached') is not False or applied or along>=spec['goal']:return False

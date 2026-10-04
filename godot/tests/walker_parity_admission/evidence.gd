@@ -48,12 +48,42 @@ static func footprint(s: Variant,spec: Dictionary) -> bool:
 	var p: Array = origin(s)
 	var along: float = sin(spec.yaw)*p[0]+cos(spec.yaw)*p[2]
 	return along>=spec.radius+.02 and along<=3-spec.radius-.02 and absf(cos(spec.yaw)*p[0]-sin(spec.yaw)*p[2])<=2-spec.radius-.02 and flag(s.grounded,true) and absf(p[1]-.15)<=.0201
-static func support(q: Variant,rid: Variant) -> bool:
-	if not flag(getv(q,"hit"),true) or not flag(getv(q,"validResult"),true): return false
+static func transform(t: Variant) -> bool:
+	if not vec(getv(t,"origin")) or not getv(t,"basis") is Array or t.basis.size()!=3: return false
+	for v: Variant in t.basis:
+		if not vec(v): return false
+	return true
+static func same_transform(a: Variant,b: Variant,epsilon: float) -> bool:
+	if not transform(a) or not transform(b) or distance(a.origin,b.origin)>epsilon: return false
+	for i in range(3):
+		if distance(a.basis[i],b.basis[i])>epsilon: return false
+	return true
+static func zero(v: Variant) -> bool:
+	if not vec(v): return false
+	for x: float in v:
+		if absf(x)>=.00001: return false
+	return true
+static func budget(points: Array) -> float:
+	var magnitude := 1.0
+	for p: Variant in points:
+		if not vec(p): return -1.0
+		for x: float in p: magnitude = maxf(magnitude,absf(x))
+	var value := 8.0*pow(2.0,floor(log(magnitude)/log(2.0))-23.0)
+	return maxf(.000001,value) if value<=.0001 else -1.0
+static func support(q: Variant,rid: Variant,body_transform: Variant,params: Dictionary,epsilon: float,plane: float,name: String) -> bool:
+	# Both support requests use safe_margin + GUARD, not floor_snap_length.
+	if epsilon<0 or getv(q,"name")!=name or not flag(getv(q,"hit"),true) or not flag(getv(q,"validResult"),true): return false
+	if not same_transform(getv(q,"from"),body_transform,epsilon) or distance(getv(q,"motion"),[0,-(params.margin+.0001),0])>epsilon: return false
+	if not near(getv(q,"margin"),params.margin,epsilon) or not near(getv(q,"maxCollisions"),32,0) or not flag(getv(q,"recoveryAsCollision"),true) or not flag(getv(q,"collideSeparationRay"),true): return false
+	if not integer(params.get("bodyRid")) or params.bodyRid<=0 or not near(getv(q,"bodyRid"),params.bodyRid,0): return false
+	if getv(q,"excludeBodies")!=[] or getv(q,"excludeObjects")!=[] or not flag(getv(q,"testOnly",true),true): return false
+	if not vec(getv(q,"travel")) or not vec(getv(q,"remainder")) or not num(getv(q,"safeFraction")) or not num(getv(q,"unsafeFraction")) or q.safeFraction<0 or q.safeFraction>q.unsafeFraction or q.unsafeFraction>1: return false
 	var contacts: Variant = getv(q,"contacts")
-	if not contacts is Array or contacts.is_empty() or contacts.size()>=32: return false
+	if not contacts is Array or contacts.is_empty() or contacts.size()>=32 or not near(getv(q,"collisionCount",contacts.size()),contacts.size(),0): return false
 	for c: Variant in contacts:
-		if not near(getv(c,"colliderRid"),rid,0) or not near(getv(c,"colliderShape"),0,0) or not near(getv(c,"localShape"),0,0) or not vec(getv(c,"point")) or absf(c.point[1]-.15)>1e-6 or not vec(getv(c,"normal")) or c.normal[1]<cos(deg_to_rad(46.0)) or distance(getv(c,"velocity"),[0,0,0])>1e-6: return false
+		if not near(getv(c,"colliderRid"),rid,0) or not near(getv(c,"colliderShape"),0,0) or not near(getv(c,"localShape"),0,0): return false
+		if not vec(getv(c,"point")) or not is_finite(plane) or absf(c.point[1]-plane)>epsilon or not vec(getv(c,"normal")) or absf(distance(c.normal,[0,0,0])-1)>=.0001 or c.normal[1]<cos(params.floorAngle): return false
+		if not zero(getv(c,"velocity")) or not num(getv(c,"depth")) or c.depth<0: return false
 	return true
 static func witness(plan: Dictionary) -> bool:
 	for s: Variant in plan.stages:
@@ -97,6 +127,7 @@ static func profile(p: Dictionary,spec: Dictionary,group: String,experimental: b
 		previous = int(row.frame)
 		if not near(getv(row,"actualDelta"),1.0/60.0,1e-8) or not near(getv(row,"physicsHz"),60,0) or not near(getv(row,"timeScale"),1,0) or not integer(getv(row,"usec")): return false
 		if not state(getv(row,"before")) or not state(getv(row,"after")) or not vec(getv(row,"wholeFrameDelta")) or not getv(row,"slides") is Array: return false
+		if not negative and not inclined and (not integer(getv(row,"bodyRid")) or row.bodyRid<=0 or not near(row.bodyRid,params.get("bodyRid"),0) or not flag(getv(row,"floorConstantSpeed"),false)): return false
 		var a: Array = origin(row.before);var b: Array = origin(row.after)
 		if distance(row.wholeFrameDelta,[b[0]-a[0],b[1]-a[1],b[2]-a[2]])>1e-6: return false
 		var plan: Variant = getv(row,"proposal")
@@ -144,7 +175,7 @@ static func profile(p: Dictionary,spec: Dictionary,group: String,experimental: b
 		var along: float = sin(spec.yaw)*pos[0]+cos(spec.yaw)*pos[2]
 		if verified<1 or verified!=applied or not flag(p.get("reached"),true) or holds<3 or along<spec.goal or not near(p.get("ordinaryLandingStreak"),holds,0): return false
 		if not integer(p.get("targetRid")) or p.targetRid<=0 or not near(p.get("targetShape"),0,0) or not flag(getv(final,"passed"),true) or not flag(getv(final,"footprintInside"),true) or getv(final,"reason")!="full_footprint_and_fresh_target_support": return false
-		if getv(final,"bodyBefore")!=last or getv(final,"bodyAfter")!=last or not near(getv(final,"epsilon"),1e-6,0) or not support(getv(final,"query"),p.targetRid): return false
+		if getv(final,"bodyBefore")!=last or getv(final,"bodyAfter")!=last or not near(getv(final,"epsilon"),budget([origin(last)]),0) or not support(getv(final,"query"),p.targetRid,last.transform,params,final.epsilon,.15,"fresh-full-tread-support"): return false
 	else:
 		var pos: Array = origin(frames[-1].after)
 		var along: float = sin(spec.yaw)*pos[0]+cos(spec.yaw)*pos[2]
@@ -216,12 +247,13 @@ static func campaign(r: Dictionary,group: String) -> bool:
 	return true
 static func guarded(row: Dictionary,p: Dictionary) -> bool:
 	var plan: Dictionary = row.proposal;var g: Variant = plan.get("responseGuard");var t: Dictionary = row.telemetry
-	if getv(g,"reason")!="endpoint_and_pinned_clear_branch_and_live_support_agree" or not near(getv(g,"epsilon"),1e-6,0) or not near(getv(g,"slideCount"),0,0) or getv(g,"observedSlides")!=[]: return false
-	if distance(getv(g,"actualFinal"),origin(row.after))>1e-6 or distance(getv(g,"expectedFinal"),plan.expectedFinal)>1e-6: return false
+	if not guard_operands(row,p): return false
+	if getv(g,"reason")!="endpoint_and_pinned_clear_branch_and_live_support_agree" or not near(getv(g,"slideCount"),0,0) or getv(g,"observedSlides")!=[]: return false
+	if distance(getv(g,"actualFinal"),origin(row.after))>g.epsilon or distance(getv(g,"expectedFinal"),plan.expectedFinal)>g.epsilon: return false
 	if t.get("beforePlanning")!=row.before or t.get("afterPlanning")!=row.before or t.get("afterParent")!=row.after or t.get("beforeParent")!=t.upAfter: return false
 	if not flag(t.get("upCollisionReturned"),false) or t.get("upContacts")!=[] or getv(t.get("upRequest"),"before")!=row.before: return false
 	var a: Array = origin(row.before);var b: Array = origin(t.upAfter)
-	if distance(t.actualUpTravel,[b[0]-a[0],b[1]-a[1],b[2]-a[2]])>1e-6: return false
+	if distance(t.actualUpTravel,[b[0]-a[0],b[1]-a[1],b[2]-a[2]])>g.epsilon: return false
 	var q: Variant = getv(g,"support");var identities: Variant = t.get("finalSupportIdentities")
 	if not getv(q,"contacts") is Array or not identities is Array or q.contacts.size()!=identities.size(): return false
 	var contacts: Array = []
@@ -230,7 +262,49 @@ static func guarded(row: Dictionary,p: Dictionary) -> bool:
 		if not c is Dictionary or not flag(getv(identity,"ridResolved"),true) or not near(getv(identity,"colliderId"),getv(c,"colliderId"),0) or not near(getv(identity,"colliderShapeIndex"),getv(c,"colliderShape"),0) or not near(getv(identity,"localShapeIndex"),getv(c,"localShape"),0): return false
 		var copy: Dictionary = c.duplicate();copy.colliderRid = getv(identity,"colliderRid");contacts.append(copy)
 	var query: Dictionary = q.duplicate();query.contacts = contacts
-	return support(query,p.targetRid)
+	return support(query,p.targetRid,row.after.transform,p.parameters,g.epsilon,plan.landingY,"actual-final-support")
+static func guard_operands(row: Dictionary,p: Dictionary) -> bool:
+	var plan: Dictionary = row.proposal;var g: Variant = plan.get("responseGuard");var t: Dictionary = row.telemetry
+	var after: Dictionary = row.after;var before: Dictionary = row.before;var params: Dictionary = p.parameters
+	var horizontal: Variant = plan.get("horizontalBudget");var raised: Variant = plan.get("raised");var start: Variant = plan.get("from");var expected: Variant = plan.get("expectedFinal")
+	if not vec(horizontal) or not transform(raised) or not transform(start) or not vec(expected) or not state(after) or not state(before): return false
+	var endpoint := [raised.origin[0]+horizontal[0],raised.origin[1]+horizontal[1],raised.origin[2]+horizontal[2]]
+	var epsilon := budget([start.origin,raised.origin,endpoint,expected,origin(after)])
+	if epsilon<0 or epsilon>params.margin/100 or not near(getv(g,"epsilon"),epsilon,0): return false
+	if not same_transform(start,before.transform,epsilon) or distance(origin(after),expected)>epsilon: return false
+	var axes: Variant = row.get("input")
+	if not vec(axes,2) or not flag(row.get("sprint"),false) or not flag(row.get("jump"),false) or not near(row.get("actualDelta"),1.0/60.0,1e-8): return false
+	var scale := maxf(1.0,sqrt(axes[0]*axes[0]+axes[1]*axes[1]))
+	var basis: Array = before.transform.basis
+	var requested: Array = []
+	for i in range(3): requested.append((basis[0][i]*axes[0]-basis[2][i]*axes[1])/scale*params.walk*row.actualDelta)
+	if distance(horizontal,requested)>epsilon: return false
+	if not near(after.get("slideCount"),0,0) or not near(getv(g,"slideCount"),0,0) or row.get("slides")!=[] or getv(g,"observedSlides")!=[]: return false
+	if not zero(after.get("platformVelocity")) or not zero(after.get("platformAngularVelocity")) or not flag(row.get("floorConstantSpeed"),false): return false
+	if not near(row.get("bodyRid"),params.get("bodyRid"),0) or not integer(row.get("bodyRid")) or row.bodyRid<=0: return false
+	if distance(getv(g,"lastMotion"),horizontal)>epsilon or distance(after.get("lastMotion"),horizontal)>epsilon: return false
+	if distance(getv(g,"lastMotion"),after.lastMotion)>epsilon: return false
+	var pos: Array = origin(after)
+	if sqrt(pow(pos[0]-endpoint[0],2)+pow(pos[2]-endpoint[2],2))>epsilon: return false
+	if not flag(after.get("grounded"),true) or not vec(after.get("floorNormal")) or after.floorNormal[1]<cos(params.floorAngle): return false
+	var request: Variant = t.get("upRequest");var up: Variant = plan.get("upMotion")
+	if not vec(up) or up[0]!=0 or up[2]!=0 or up[1]<=0 or up[1]>.25+params.margin: return false
+	if not same_transform(getv(request,"from"),before.transform,epsilon) or not same_transform(getv(request,"modeledRaised"),raised,epsilon) or distance(getv(request,"motion"),up)>epsilon: return false
+	if not near(getv(request,"bodyRid"),params.bodyRid,0) or not near(getv(request,"margin"),params.margin,epsilon) or not near(getv(request,"maxCollisions"),32,0) or not flag(getv(request,"testOnly"),false) or not flag(getv(request,"recoveryAsCollision"),false) or not flag(getv(request,"collideSeparationRay"),false): return false
+	var up_epsilon := budget([origin(before),raised.origin,expected])
+	if up_epsilon<0 or not near(getv(request,"epsilon"),up_epsilon,0) or not vec(origin(t.get("upAfter"))) or distance(origin(t.upAfter),raised.origin)>up_epsilon: return false
+	var travel: Variant = t.get("actualUpTravel")
+	if not vec(travel) or sqrt(travel[0]*travel[0]+travel[2]*travel[2])>.0001 or travel[1]-up[1]<-.0001 or travel[1]-up[1]>params.margin+.0001: return false
+	var from: Array = origin(before)
+	var actual := [pos[0]-from[0],pos[1]-from[1],pos[2]-from[2]]
+	if sqrt(actual[0]*actual[0]+actual[2]*actual[2])>distance(horizontal,[0,0,0])+.0001 or actual[0]*horizontal[0]+actual[2]*horizontal[2]<=0 or actual[1]<=0 or actual[1]+.0001>=.25 or absf(after.velocity[1])>.0001: return false
+	for value: Variant in [row.get("wholeFrameDelta"),plan.get("actualWholeFrameDelta"),t.get("wholeFrameDelta")]:
+		if distance(value,actual)>epsilon: return false
+	var fields := {"parentPositionDelta":"parentPositionDelta","parentRealVelocity":"parentRealVelocity","actualVelocity":"velocity"}
+	for key: String in fields:
+		if not vec(after.get(fields[key])): return false
+		if distance(plan.get(key),after[fields[key]])>epsilon: return false
+	return flag(plan.get("actualGrounded"),true)
 static func supervisor_ok(s: Dictionary,group: String,source: String,grant: String,engine: String,native_hash: String) -> bool:
 	var bindings := {"phase":"parity-admission-synthetic-v1","mode":"synthetic-controls","group":group,"sourceSha256":source,"grantSha256":grant,"engineSha256":engine,"nativeReceiptSha256":native_hash,"scope":"synthetic-admission"}
 	for key: String in bindings:

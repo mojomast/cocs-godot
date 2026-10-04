@@ -142,10 +142,17 @@ func sample(body: Walker, input: Vector2, jump: bool = false) -> Dictionary:
 		if row.afterQueries!=before: finish("baseline_query_mutation",true,1);return row
 	body.step(1.0/60.0,input,false,jump)
 	row.after = Observe.state(body);row.wholeFrameDelta = body.global_position-before.transform.origin;row.slides = Slides.capture(body)
+	row.bodyRid = body.get_rid();row.floorConstantSpeed = body.floor_constant_speed
 	row.candidateFault = ""
 	if body is Candidate:
 		var candidate := body as Candidate
 		row.proposal = candidate.last_step_proposal;row.lifecycle = candidate.lifecycle;row.telemetry = candidate.telemetry
+		# Serialization-only binding: frozen guard calls Proposal.sweep on this body.
+		if row.proposal.has("responseGuard") and row.proposal.responseGuard.has("support"):
+			row.proposal.responseGuard.support.bodyRid = body.get_rid()
+			# Pinned sweep creates fresh parameters and leaves both exclusion lists empty.
+			row.proposal.responseGuard.support.excludeBodies = []
+			row.proposal.responseGuard.support.excludeObjects = []
 		row.appliedUpCount = candidate.applied_up_count;row.responseGuardPassed = candidate.response_guard_passed;row.candidateFault = candidate.candidate_fault
 		active_profile.appliedUpCount = candidate.total_applied;active_profile.verifiedLifts = candidate.total_verified
 	row.returned = true
