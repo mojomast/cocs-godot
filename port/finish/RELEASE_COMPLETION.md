@@ -21,6 +21,9 @@ parent checks and seven file hashes verified. Eight baseline-only profiles compa
 .35/.15 references and .42 at .15/.18/.20 across both yaws. The dedicated package
 is being implemented source-only; new heights remain untested and no grant exists.
 See `map-variety/WALKER_BASELINE_DESIGN_REVIEW.md`.
+Implementation `3b2fb4cd` is under independent source review: seven-script closure,
+rise-derived fixtures/support, strict recorded-outcome validation and bounded
+supervisor. Producer reports 39 offline tests. No native stage or grant exists.
 
 **AJ confirmed the receipt-only hypothesis and released.**
 Delivery `bb403edf` / `bfb32d4e` passed independent review and is integrated through

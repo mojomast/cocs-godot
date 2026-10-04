@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**Baseline package `3b2fb4cd` is under independent review.** It implements the
+fixed eight-profile matrix with per-rise support/geometry, ordinary Walker only,
+strict outcome evidence and bounded supervision. Producer reports 39 offline tests;
+GDScript remains unrun and no heavy grant exists. Height selection and candidate
+continuation stay outside this package's authority.
+
 **Baseline characterization design approved/integrated as `5d8c2b94`.** Parent
 passed eighteen checks and seven hashes. The fixed eight-profile package is now
 being implemented source-only, with geometry and support derived per rise. New

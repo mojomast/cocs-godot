@@ -1,5 +1,23 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Baseline characterization implementation delivered for review
+
+**`3b2fb4cd`** implements the accepted fixed eight-profile matrix in a dedicated
+seven-script closure using unchanged Walker, with no candidate or step-up planner.
+Geometry/certificates derive from each rise. Ordinary telemetry and observational
+downward support queries feed Python/GDScript arrival, target-witnessed blocking,
+unresolved-at-cap and fault validators, retaining mixed steep-target/base contacts.
+
+Write-once preparation, consumed-before-launch supervision, bounded outputs and
+ownership audits are proposed without automatic selection or continuation. Producer
+reports **39 offline tests** (34 new plus five design replay), fifteen delivery
+hashes and preserved historical/production dependencies. Source receipt SHA is
+`9230f19f7a5317da3e9ec90d1c05eb11df8cd93f8da46280fa3e50da391523f6`.
+
+Independent review is active. New GDScript is unparsed/unrun; no native stage or
+grant exists. AK positive remains failed, all sixty map journeys remain unrun,
+184 static Vesper failures unresolved and production accounting open.
+
 **Radius diagnosis/design approved and integrated as `5d8c2b94`.** Parent passed
 eighteen offline/package checks and seven hashes. Independent review qualifies
 mixed-contact interpretation and accepts the fixed eight-profile design only.
