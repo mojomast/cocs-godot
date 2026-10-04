@@ -1,5 +1,14 @@
 # New Moth resources and Blender-authored map variety
 
+## Current checkpoint — AM fails final-support normal and releases
+
+**No heavy grant is active.** AM `8118900d` / `e300ab4f` passed prerequisites,
+then .42/.18/−45 candidate failed its47.476992° support normal against46°.
+Endpoint error is zero, but the applied lift is unverified. Parent verified60
+files/manifest and three empty audits/three groups; release is09:39:00.705920Z,
+lock checked09:44:30.996898Z. Review and source-only query diagnosis are active.
+No guard widening, retry, fallback or map execution is authorized.
+
 ## Current owner — calibrated synthetic campaign AM
 
 **MOTH-BLENDER-20261004-AM is the sole heavy grant**, Astra

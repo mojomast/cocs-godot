@@ -1,5 +1,26 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## AM delivered/released — final-support normal rejects .42 candidate
+
+**`8118900d` / `e300ab4f`** report negative PASS34/68 and inclined PASS4/8,
+then positive GROUP FAIL at .42/.18/−45 candidate frame550. The unchanged guard
+returns `invalid_final_support_normal_or_velocity`: fresh support normal47.476992°
+exceeds46° while collider velocity is zero. Endpoint error is zero against1 µm.
+One UP is applied and zero verified in the failed profile. Aggregate grounding and
+floor normal around45.65° do not replace this query requirement. Contact-plane
+agreement with .18 is offline arithmetic, not proof that later guard checks ran.
+
+Two .35 pairs pass individually; all three attempted baselines supply fresh120-
+response target-witnessed stalls. Positive census is three terminal pairs (two
+pass/one fail), six completed profiles (one failed), one pair/two profiles unrun.
+No retry, .20 fallback or source correction occurred. Independent review is active.
+
+Parent verified **60 files / 49,983,925 bytes**, the 13,282-byte manifest hash
+`f86b2f6eff59b70fed653a80ca01ce2d590ee07214247317e8c1a89d0419a026`, three measured
+empty audits/three groups and free lock at09:44:30.996898Z. Release is09:39:00.705920Z.
+No heavy grant remains. Source-only request/normal diagnosis is assigned, preserving
+guard thresholds and historical failures. Maps, static contacts and accounting remain open.
+
 ## Calibrated contract approved/integrated; AM authorized
 
 Independent review approved `3b03b390`, integrated as **`3dcdbb27`**. Parent
