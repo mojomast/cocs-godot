@@ -1,0 +1,118 @@
+{
+  "status": "SOURCE ONLY; GDScript unparsed/unrun; no staging or launch",
+  "base": "672f3377",
+  "AB": {
+    "producer": "5fb9ae68",
+    "manifestSha256": "27ef00702b95c74b54bba5d9c03030254e4e76a7875f6519ec6bfd97a976b2a6",
+    "filesVerified": 140,
+    "controlsSha256": "06ddce1f675c03d6ebcb9765fdd532b989252fac56e74cf7174251a9a6b66510",
+    "referenceSha256": "14010513a88710d4386e9def3e064e297487b05e54a9142d62b37cfd7cc5fbf7",
+    "sourceSha256": "5421c7369a5bd9ed8e068e17d588190b60faea8bc081db5f817803c80d981068",
+    "referenceRemainsFailed": true
+  },
+  "archives": {
+    "Z": {
+      "filesVerified": 253,
+      "manifestSha256": "288aaa809d4d655bd5037bec5eee7b6ea7dd8c824cb57d5382534a736cc89b38"
+    },
+    "AA": {
+      "filesVerified": 141,
+      "manifestSha256": "5e41067f590e79e54dd8b122840766630655a27595390f75b4213a9e0dc989b8"
+    }
+  },
+  "frozen": {
+    "X": {
+      "root": "/home/mojo/.tmp-on-disk/cocs-botanical-source-correction",
+      "inventorySha256": "440a1291201eaa3ee55f9c0218503ac4588028bfae7fee5c46364673bf94bd78",
+      "verifiedFiles": 600,
+      "mismatches": 0
+    },
+    "U": {
+      "root": "/home/mojo/.tmp-on-disk/cocs-map-variety-botanical-astra",
+      "inventorySha256": "ce0dd0ec8a87340cc31bfcb88cdfc7b11fb5aad1ce6efd317b9bb43ec22289ef",
+      "verifiedFiles": 264,
+      "mismatches": 0
+    }
+  },
+  "original15Dependencies": {
+    "game/core.mjs": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+    "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+    "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+    "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+    "game/spatial.mjs": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
+    "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
+    "game/operator-verbs.mjs": "357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e",
+    "game/spec-effects.mjs": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
+    "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "godot/exploration/walker.gd": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+    "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
+    "godot/world/session.gd": "32ff87d491dad9f47d555fa3eec701fbfbbfa47608075ebbc2796b5c291b549c",
+    "godot/multiplayer_worlds/demo.gd": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748"
+  },
+  "historicalReceiptsUnchanged": {
+    "tools/godot-multiplayer/new-maps/walker-step-up/driver-v2-provenance.json": "b74c830d6b0b1c6945bbb40c132741c41684a5092e2a8eb8f0085f6cdae56adf",
+    "tools/godot-multiplayer/new-maps/walker-step-up/overhang-v3-provenance.json": "72d20139cc08a9e618087e609aeabeb59a34895c0073e13918490e0538a92417",
+    "tools/godot-multiplayer/new-maps/walker-step-up/post-response-provenance.json": "186bdff98ef2726d1da639afc803db80e9bde2af82c5804d06c6d856eb49aa62",
+    "tools/godot-multiplayer/new-maps/walker-step-up/source-provenance.json": "412a19f5dc3a70e0b74e40c78b35a0966b72e297ecb169ee551834af498d7c1b",
+    "tools/godot-multiplayer/new-maps/walker-step-up/acceptance-plan.json": "d1d3fb7e75f41d1df0c64ecb7ceb5db757dbe2ee6c6a2bd33606d508fbedcc73"
+  },
+  "sourceTests": {
+    "new": 7,
+    "existing": 32
+  },
+  "grant": null,
+  "autoStart": false,
+  "queued": false,
+  "nativeStepAdmission": false,
+  "candidateMapWalksRun": 0,
+  "candidateMapWalksAllowed": false,
+  "productionPromotion": false,
+  "files": {
+    "godot/tests/walker_admission/candidate_telemetry_v4.gd": {
+      "sha256": "180f96d425a8ad9a58221c01ba2a9e6bb6d90a45a3a5c4c4b7676d3e15ea4a8c",
+      "bytes": 506
+    },
+    "godot/tests/walker_admission/driver_v4.gd": {
+      "sha256": "d9d4ea88ffa4ba8c3348c1834b3983bed276a4a484fc1c09abd27bb13d19cbc3",
+      "bytes": 10762
+    },
+    "godot/tests/walker_admission/fixtures_v4.gd": {
+      "sha256": "c4c175420aaca975acfa8ee277b2088796c2f0f8279751bbc8f2939154070e04",
+      "bytes": 2020
+    },
+    "godot/tests/walker_admission/slide_telemetry.gd": {
+      "sha256": "b7c04249dd44574c5c14627766983cb571542879b17c39afc458c115178b2df0",
+      "bytes": 884
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission/KinematicCollision3D.xml": {
+      "sha256": "d7a9b46cab494157839c454ee5da9cb2e5970743a4a5bf7e22de1aff1621a46e",
+      "bytes": 4881
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission/README.md": {
+      "sha256": "aab3dfa79a17c8347d22ad91f0394eba41955410f330356888aa854bc091b856",
+      "bytes": 8564
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission/api-reference.json": {
+      "sha256": "f7bdb2e343830b2fbcf0e7009d4592e4ff605cd3f56e5451c06489d63df437fd",
+      "bytes": 256
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission/phase.py": {
+      "sha256": "b10b80ed91113264c9aad1a097dcb6d9dea6a2070507e2e8ce154fb8a657b5bb",
+      "bytes": 630
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission/prepare.py": {
+      "sha256": "bbd5c689005b60340c6ae1764b89f85442a0aca81adb7be6cf62f987ef9b80cd",
+      "bytes": 3571
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission/run_group.py": {
+      "sha256": "b1c87eaf9fca69d5f81d2573f834fe567907ecb0866b2b3588209ae35e887df1",
+      "bytes": 3636
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission/test_admission.py": {
+      "sha256": "1b112d74c73cf095b0150c8984b306744ea1f0e5ad261a87e6fcb1b40768684a",
+      "bytes": 5695
+    }
+  }
+}
