@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**AF independently approved and integrated through `278f9dd2`:** Stage0 baseline
+query collection only. Parent passed 78 checks and all 24 hashes. The endpoint
+match supports a new source experiment, not positive-step acceptance. Astra is
+preparing a separately sealed single-response parity-candidate contract for review;
+no engine grant is active. Full review: `map-variety/WALKER_AF_REVIEW.md`.
+
 ## Current checkpoint — AF collection complete and released
 
 **No heavy grant is active.** AF `ad5d02b6` / `d3c17632` / `b80273a7` reports

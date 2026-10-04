@@ -11,10 +11,12 @@ Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
 **No active heavy grant. AF completed baseline-only collection and released.**
-Delivery `ad5d02b6` / `d3c17632` / `b80273a7` is under independent review. Parent
-verified 24 hashes and three measured empty audits/one group. Modeled query
-endpoints reproduce AE's discrepancy; no assist, causal proof or step admission
-follows. Parity-candidate and map execution remain unapproved.
+Delivery `ad5d02b6` / `d3c17632` / `b80273a7` passed independent collection-only
+review and is integrated through `278f9dd2`. Parent passed 78 checks and 24 hashes.
+Modeled query endpoints reproduce AE's discrepancy; no assist, unique causal proof
+or step admission follows. A separate single-response parity-candidate source
+contract is being prepared; candidate/map execution remains unapproved. See
+`map-variety/WALKER_AF_REVIEW.md`.
 
 **AE released after its first positive-pair failure.**
 Fresh inclined controls passed; an applied up sweep then failed endpoint agreement

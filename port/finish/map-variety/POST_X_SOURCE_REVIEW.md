@@ -1,5 +1,12 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**AF collection evidence approved and integrated through `278f9dd2`.** Parent
+passed 78 source/package checks and all 24 hashes. Independent replay confirms
+the modeled endpoints and baseline-only execution; no assisted response or support
+qualification follows. See `WALKER_AF_REVIEW.md`. A separate source-only task is
+preparing a sealed single-response parity-candidate contract. It requires fresh
+review and authorization; no heavy grant is active and AF cannot be broadened.
+
 ## AF delivered/released — baseline query collection review pending
 
 AF delivered **`ad5d02b6` / `d3c17632` / `b80273a7`**, reporting Stage0 collection
