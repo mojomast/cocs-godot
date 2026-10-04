@@ -1,0 +1,26 @@
+{
+  "grantId": "MOTH-BLENDER-20261004-AL",
+  "issuedUtc": "2026-10-04T08:44:05.865476+00:00",
+  "expiresUnix": 1791104045.8649895,
+  "sourceSha256": "8ddfd02d9fac88a5a5f6e3dcdb34f432a2654bbbfc9e045ab91949d8df1882a4",
+  "grantSha256": "f5fca7640bcb438c1a3b9d1c1895c9c30c0d485e1a41330a9c00278f63f4cfcd",
+  "engine": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "engineBytes": 137322608,
+  "phase": "baseline-characterization-v1",
+  "mode": "baseline-only",
+  "group": "radius-rise",
+  "allowedGroups": [
+    "radius-rise"
+  ],
+  "approvedSourceCommit": "3b2fb4cd",
+  "parentIntegration": "b5deca56",
+  "stage": "/home/mojo/.tmp-on-disk/cocs-walker-baseline-characterization-al/godot/tests/walker_baseline_characterization/baseline-characterization-al-01",
+  "maxEngineInvocations": 1,
+  "firstParseInsideSoleInvocation": true,
+  "retryAuthorized": false,
+  "correctionRerunAuthorized": false,
+  "selectionAuthorized": false,
+  "childDelegationAuthorized": false,
+  "AKRole": "failed-positive-lineage-not-admission"
+}

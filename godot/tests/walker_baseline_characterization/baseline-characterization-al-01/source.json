@@ -1,0 +1,105 @@
+{
+  "phase": "baseline-characterization-v1",
+  "mode": "baseline-only",
+  "group": "radius-rise",
+  "matrix": [
+    {
+      "radius": 0.35,
+      "rise": 0.15,
+      "yawDegrees": -45
+    },
+    {
+      "radius": 0.35,
+      "rise": 0.15,
+      "yawDegrees": 45
+    },
+    {
+      "radius": 0.42,
+      "rise": 0.15,
+      "yawDegrees": -45
+    },
+    {
+      "radius": 0.42,
+      "rise": 0.15,
+      "yawDegrees": 45
+    },
+    {
+      "radius": 0.42,
+      "rise": 0.18,
+      "yawDegrees": -45
+    },
+    {
+      "radius": 0.42,
+      "rise": 0.18,
+      "yawDegrees": 45
+    },
+    {
+      "radius": 0.42,
+      "rise": 0.2,
+      "yawDegrees": -45
+    },
+    {
+      "radius": 0.42,
+      "rise": 0.2,
+      "yawDegrees": 45
+    }
+  ],
+  "attempt": "baseline-characterization-al-01",
+  "files": {
+    "res://exploration/walker.gd": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+    "res://tests/walker_baseline_characterization/driver.gd": "8d07e2024a44dc3b4d3386228487f373ffedc4d3a0d791d061e17883dd8d5262",
+    "res://tests/walker_baseline_characterization/fixture.gd": "52ddc28cac854c7b80161d670369d93f2d0cfc1fa89ee96680423b9b213d489f",
+    "res://tests/walker_baseline_characterization/observe.gd": "8085da92e0386f18deacbc9817821ada2d30f3b44ace1e1070010673d4e53f24",
+    "res://tests/walker_baseline_characterization/policy.gd": "b67caaad7d2cd0b10a7e37da2185df3a9e13e877b593c77f14de928dcb41e1f6",
+    "res://ui/mouse_motion.gd": "1edc97f26ccf98a6c5f776bf72968cf5fd1258d129566006c0c3ae1222716581",
+    "res://ui/settings_access.gd": "2bb46c9e6ee5dabbdef7a4cd864bf4afcae2a3c8dd7be93d0180a907da7920e0",
+    "res://project.godot": "f52b2014f10f3314eb1afdcce157d398c3f6ab39dd36722a9f03677bc4892574"
+  },
+  "lineage": {
+    "AKManifestSha256": "827dd68b00c400b7ec17f9ab0e5a2067929277c3bb22e1681d38a1d5143a5ee1",
+    "AKPositiveSha256": "76130effe1da05bfc800fa8e14bea5b0382b87b130899a3cc1b52e2dab9bb6d7",
+    "role": "failed-positive-lineage-not-admission"
+  },
+  "hostInputs": {
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-run/frozen.py": "614c7389b339ccee189718141652e8b0ec2a0075584d62dc45f02fcf26a52780",
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-run/policy.py": "2a7c6f61ad8a9585b1ca740111b3f4ed903606847e6ffa9c73e05f2c9143ab2d",
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-run/prepare.py": "f1ce7929c31a22c8c1d2217f23ed02c9b288449473a4b2c04021cc703b2bdb81",
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-run/supervisor.py": "5cfcfeff649b8e9455542f643bac09180c5d8f979ac4f4d3ac99c8dd8d25b291",
+    "tools/godot-multiplayer/new-maps/walker-parity-response/policy.py": "118118284431fdd6c505ae9b480a314fd39b12ce3a2fdb6a2936de941638c3bc",
+    "tools/godot-multiplayer/new-maps/walker-parity-response/prepare.py": "2d8676025219662d322032fd46eb422771f89b420176eb863c6376079041f152",
+    "tools/godot-multiplayer/new-maps/walker-parity-response/supervisor.py": "fa0008bd30604fe05a0bbdfcaa9ee29f04ad554bcac92a3ffc1e7efc83b35f10"
+  },
+  "productionDependencies": {
+    "game/core.mjs": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+    "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+    "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+    "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+    "game/spatial.mjs": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
+    "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
+    "game/operator-verbs.mjs": "357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e",
+    "game/spec-effects.mjs": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
+    "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "godot/exploration/walker.gd": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+    "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
+    "godot/world/session.gd": "32ff87d491dad9f47d555fa3eec701fbfbbfa47608075ebbc2796b5c291b549c",
+    "godot/multiplayer_worlds/demo.gd": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748"
+  },
+  "approvedDesign": {
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization/README.md": "f8b13542a0c84a1ec09e34362f0e804b537ec3482688a4b4bc40d9c69a382b3a",
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization/comparison.json": "7efb2128c6e8378cf36c3147d1e04e4133c59c8dbc4df66f26119cebd38d2aaa",
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization/design.json": "ad9c90f1e7416e3c9f438c63534347d7daace737ebddd213e650c05511779e4d",
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization/frames.csv": "a9991b0fda5fb6238eb0925a586f6614ecd81c16e577835b52b4590fbb36d250",
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization/inspect_ak.py": "e77d4cbaf0149a742c8ffb9a41bf5254dbd4ea690af80b0e73aefcf191a80211",
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization/references.json": "5dcb38375358c034fd5f48a5c6aafe8c09651a04569e94478cedb59ea8d527ac",
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization/source-receipt.json": "1e4756296248757fe6398897ed0f8a9b2723ca29bdad576dff2eb390c10bc023",
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization/test_analysis.py": "3e8792fb0c26d4d173385b8f6c74b7e8decfb65244029698461bef82db7d189c"
+  },
+  "reviewPinsSha256": "9fbc188938327656f8be058ced73c8f8e65bd9eb78ca4d5d380179161269b28a",
+  "grant": null,
+  "autoStart": false,
+  "queued": false,
+  "queueIdentity": null,
+  "candidateAdmission": false
+}

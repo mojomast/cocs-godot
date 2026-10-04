@@ -1,0 +1,1440 @@
+{
+  "nativeReceiptPresent": true,
+  "nativeSha256": "f9e77adc174d3a4cc03b9ced716e5f89888ff2163217580bd1bd55cb9e17fc04",
+  "qualification": "Offline reconstruction of recorded operands only; aggregate floor state does not identify internal contact branch or unique backend cause.",
+  "selectedHeight": null,
+  "candidateAdmission": false,
+  "physicalCallCounts": null,
+  "profiles": [
+    {
+      "caseIndex": 0,
+      "spec": {
+        "radius": 0.35,
+        "rise": 0.15,
+        "yawDegrees": -45.0
+      },
+      "status": "completed",
+      "outcome": "blocked_with_target_witness",
+      "settleRecords": 20,
+      "inputRecords": 127,
+      "inflight": null,
+      "allReturnedOperandReplayValid": true,
+      "firstTargetSlide": {
+        "caseIndex": 0,
+        "radius": 0.35,
+        "rise": 0.15,
+        "yawDegrees": -45.0,
+        "settling": false,
+        "responseIndex": 7,
+        "frame": 29,
+        "usec": 709247,
+        "delta": 0.0166666666666667,
+        "position": [
+          0.212131947278976,
+          0.0166666638106108,
+          -0.212131947278976
+        ],
+        "along": -0.2999998768545422,
+        "wholeDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "wholeDistance": 0.0,
+        "parentDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "realVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "lastMotion": [
+          -0.0187825262546539,
+          0.0,
+          0.0187825262546539
+        ],
+        "grounded": true,
+        "onWall": true,
+        "targetSlideAngles": [
+          51.30689215669124
+        ],
+        "targetSlidePoints": [
+          [
+            0.0,
+            0.150000005960464,
+            0.0
+          ]
+        ],
+        "supportContactCount": 2,
+        "supportHit": true,
+        "supportAngles": [
+          0.0,
+          56.391617076466126
+        ],
+        "supportIdentities": [
+          {
+            "rid": 94489280512,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              0.212131947278976,
+              0.0,
+              -0.212131947278976
+            ]
+          },
+          {
+            "rid": 115964116994,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              -1.19209289550781e-07,
+              0.150000005960464,
+              -1.19209289550781e-07
+            ]
+          }
+        ],
+        "walkableSupportRids": [
+          94489280512
+        ],
+        "queryStateUnchanged": true,
+        "operandReplayValid": true,
+        "landingQualified": false,
+        "blockedResponseQualified": true,
+        "baseSupportQualified": true
+      },
+      "targetAngleMin": 51.30689215669124,
+      "targetAngleMax": 51.30689215669124,
+      "lastResponse": {
+        "caseIndex": 0,
+        "radius": 0.35,
+        "rise": 0.15,
+        "yawDegrees": -45.0,
+        "settling": false,
+        "responseIndex": 126,
+        "frame": 148,
+        "usec": 2696465,
+        "delta": 0.0166666666666667,
+        "position": [
+          0.212131947278976,
+          0.0166666638106108,
+          -0.212131947278976
+        ],
+        "along": -0.2999998768545422,
+        "wholeDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "wholeDistance": 0.0,
+        "parentDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "realVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "lastMotion": [
+          -0.0187825262546539,
+          0.0,
+          0.0187825262546539
+        ],
+        "grounded": true,
+        "onWall": true,
+        "targetSlideAngles": [
+          51.30689215669124
+        ],
+        "targetSlidePoints": [
+          [
+            0.0,
+            0.150000005960464,
+            0.0
+          ]
+        ],
+        "supportContactCount": 2,
+        "supportHit": true,
+        "supportAngles": [
+          0.0,
+          56.391617076466126
+        ],
+        "supportIdentities": [
+          {
+            "rid": 94489280512,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              0.212131947278976,
+              0.0,
+              -0.212131947278976
+            ]
+          },
+          {
+            "rid": 115964116994,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              -1.19209289550781e-07,
+              0.150000005960464,
+              -1.19209289550781e-07
+            ]
+          }
+        ],
+        "walkableSupportRids": [
+          94489280512
+        ],
+        "queryStateUnchanged": true,
+        "operandReplayValid": true,
+        "landingQualified": false,
+        "blockedResponseQualified": true,
+        "baseSupportQualified": true
+      },
+      "last120BlockedWitnesses": 120,
+      "lastThreeLandingQualified": 0,
+      "profileReplay": "blocked_with_target_witness"
+    },
+    {
+      "caseIndex": 1,
+      "spec": {
+        "radius": 0.35,
+        "rise": 0.15,
+        "yawDegrees": 45.0
+      },
+      "status": "completed",
+      "outcome": "blocked_with_target_witness",
+      "settleRecords": 20,
+      "inputRecords": 127,
+      "inflight": null,
+      "allReturnedOperandReplayValid": true,
+      "firstTargetSlide": {
+        "caseIndex": 1,
+        "radius": 0.35,
+        "rise": 0.15,
+        "yawDegrees": 45.0,
+        "settling": false,
+        "responseIndex": 7,
+        "frame": 176,
+        "usec": 3161419,
+        "delta": 0.0166666666666667,
+        "position": [
+          -0.212131947278976,
+          0.0166666638106108,
+          -0.212131947278976
+        ],
+        "along": -0.2999998768545422,
+        "wholeDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "wholeDistance": 0.0,
+        "parentDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "realVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "lastMotion": [
+          0.0187825262546539,
+          0.0,
+          0.0187825262546539
+        ],
+        "grounded": true,
+        "onWall": true,
+        "targetSlideAngles": [
+          51.30689215669124
+        ],
+        "targetSlidePoints": [
+          [
+            0.0,
+            0.150000005960464,
+            0.0
+          ]
+        ],
+        "supportContactCount": 2,
+        "supportHit": true,
+        "supportAngles": [
+          0.0,
+          56.391617076466126
+        ],
+        "supportIdentities": [
+          {
+            "rid": 137438953472,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              -0.212131947278976,
+              0.0,
+              -0.212131947278976
+            ]
+          },
+          {
+            "rid": 146028888066,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              -1.19209289550781e-07,
+              0.150000005960464,
+              1.19209289550781e-07
+            ]
+          }
+        ],
+        "walkableSupportRids": [
+          137438953472
+        ],
+        "queryStateUnchanged": true,
+        "operandReplayValid": true,
+        "landingQualified": false,
+        "blockedResponseQualified": true,
+        "baseSupportQualified": true
+      },
+      "targetAngleMin": 51.30689215669124,
+      "targetAngleMax": 51.30689215669124,
+      "lastResponse": {
+        "caseIndex": 1,
+        "radius": 0.35,
+        "rise": 0.15,
+        "yawDegrees": 45.0,
+        "settling": false,
+        "responseIndex": 126,
+        "frame": 295,
+        "usec": 5141676,
+        "delta": 0.0166666666666667,
+        "position": [
+          -0.212131947278976,
+          0.0166666638106108,
+          -0.212131947278976
+        ],
+        "along": -0.2999998768545422,
+        "wholeDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "wholeDistance": 0.0,
+        "parentDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "realVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "lastMotion": [
+          0.0187825262546539,
+          0.0,
+          0.0187825262546539
+        ],
+        "grounded": true,
+        "onWall": true,
+        "targetSlideAngles": [
+          51.30689215669124
+        ],
+        "targetSlidePoints": [
+          [
+            0.0,
+            0.150000005960464,
+            0.0
+          ]
+        ],
+        "supportContactCount": 2,
+        "supportHit": true,
+        "supportAngles": [
+          0.0,
+          56.391617076466126
+        ],
+        "supportIdentities": [
+          {
+            "rid": 137438953472,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              -0.212131947278976,
+              0.0,
+              -0.212131947278976
+            ]
+          },
+          {
+            "rid": 146028888066,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              -1.19209289550781e-07,
+              0.150000005960464,
+              1.19209289550781e-07
+            ]
+          }
+        ],
+        "walkableSupportRids": [
+          137438953472
+        ],
+        "queryStateUnchanged": true,
+        "operandReplayValid": true,
+        "landingQualified": false,
+        "blockedResponseQualified": true,
+        "baseSupportQualified": true
+      },
+      "last120BlockedWitnesses": 120,
+      "lastThreeLandingQualified": 0,
+      "profileReplay": "blocked_with_target_witness"
+    },
+    {
+      "caseIndex": 2,
+      "spec": {
+        "radius": 0.42,
+        "rise": 0.15,
+        "yawDegrees": -45.0
+      },
+      "status": "completed",
+      "outcome": "arrived",
+      "settleRecords": 20,
+      "inputRecords": 21,
+      "inflight": null,
+      "allReturnedOperandReplayValid": true,
+      "firstTargetSlide": {
+        "caseIndex": 2,
+        "radius": 0.42,
+        "rise": 0.15,
+        "yawDegrees": -45.0,
+        "settling": false,
+        "responseIndex": 6,
+        "frame": 322,
+        "usec": 5598102,
+        "delta": 0.0166666666666667,
+        "position": [
+          0.220974624156952,
+          0.0293711498379707,
+          -0.220974773168564
+        ],
+        "along": -0.3125054157901802,
+        "wholeDelta": [
+          -0.0618680119514465,
+          0.01270448602736,
+          0.0618678629398346
+        ],
+        "wholeDistance": 0.0884120316064837,
+        "parentDelta": [
+          -0.0618680119514465,
+          0.01270448602736,
+          0.0618678629398346
+        ],
+        "realVelocity": [
+          -3.71208047866821,
+          0.762269139289856,
+          3.71207165718079
+        ],
+        "lastMotion": [
+          0.00525190681219101,
+          0.01270448602736,
+          -0.00525204092264175
+        ],
+        "grounded": true,
+        "onWall": false,
+        "targetSlideAngles": [
+          46.55273250251933,
+          46.22969550799202
+        ],
+        "targetSlidePoints": [
+          [
+            0.0,
+            0.150000005960464,
+            0.0
+          ],
+          [
+            -3.57627868652344e-07,
+            0.150000005960464,
+            -3.57627868652344e-07
+          ]
+        ],
+        "supportContactCount": 2,
+        "supportHit": true,
+        "supportAngles": [
+          48.18898713495411,
+          0.0
+        ],
+        "supportIdentities": [
+          {
+            "rid": 176093659138,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              -4.76837158203125e-07,
+              0.150000005960464,
+              -4.76837158203125e-07
+            ]
+          },
+          {
+            "rid": 167503724544,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              0.223746925592422,
+              0.0,
+              -0.223747506737709
+            ]
+          }
+        ],
+        "walkableSupportRids": [
+          167503724544
+        ],
+        "queryStateUnchanged": true,
+        "operandReplayValid": true,
+        "landingQualified": false,
+        "blockedResponseQualified": false,
+        "baseSupportQualified": true
+      },
+      "targetAngleMin": 0.0,
+      "targetAngleMax": 46.55273250251933,
+      "lastResponse": {
+        "caseIndex": 2,
+        "radius": 0.42,
+        "rise": 0.15,
+        "yawDegrees": -45.0,
+        "settling": false,
+        "responseIndex": 20,
+        "frame": 336,
+        "usec": 5832644,
+        "delta": 0.0166666666666667,
+        "position": [
+          -0.712754607200623,
+          0.165570169687271,
+          0.712753057479858
+        ],
+        "along": 1.0079861363289673,
+        "wholeDelta": [
+          -0.0707106590270996,
+          0.0,
+          0.0707106590270996
+        ],
+        "wholeDistance": 0.09999997300046377,
+        "parentDelta": [
+          -0.0707106590270996,
+          0.0,
+          0.0707106590270996
+        ],
+        "realVelocity": [
+          -4.24263954162598,
+          0.0,
+          4.24263954162598
+        ],
+        "lastMotion": [
+          -0.070710688829422,
+          0.0,
+          0.070710688829422
+        ],
+        "grounded": true,
+        "onWall": false,
+        "targetSlideAngles": [
+          0.0
+        ],
+        "targetSlidePoints": [
+          [
+            -0.712754607200623,
+            0.150000005960464,
+            0.712753057479858
+          ]
+        ],
+        "supportContactCount": 1,
+        "supportHit": true,
+        "supportAngles": [
+          0.0
+        ],
+        "supportIdentities": [
+          {
+            "rid": 176093659138,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              -0.712754607200623,
+              0.150000005960464,
+              0.712753057479858
+            ]
+          }
+        ],
+        "walkableSupportRids": [
+          176093659138
+        ],
+        "queryStateUnchanged": true,
+        "operandReplayValid": true,
+        "landingQualified": true,
+        "blockedResponseQualified": false,
+        "baseSupportQualified": false
+      },
+      "last120BlockedWitnesses": 0,
+      "lastThreeLandingQualified": 3,
+      "profileReplay": "arrived"
+    },
+    {
+      "caseIndex": 3,
+      "spec": {
+        "radius": 0.42,
+        "rise": 0.15,
+        "yawDegrees": 45.0
+      },
+      "status": "completed",
+      "outcome": "arrived",
+      "settleRecords": 20,
+      "inputRecords": 21,
+      "inflight": null,
+      "allReturnedOperandReplayValid": true,
+      "firstTargetSlide": {
+        "caseIndex": 3,
+        "radius": 0.42,
+        "rise": 0.15,
+        "yawDegrees": 45.0,
+        "settling": false,
+        "responseIndex": 6,
+        "frame": 363,
+        "usec": 6274289,
+        "delta": 0.0166666666666667,
+        "position": [
+          -0.221157625317574,
+          0.0296376291662455,
+          -0.221157431602478
+        ],
+        "along": -0.3127639761690825,
+        "wholeDelta": [
+          0.0616850107908249,
+          0.0129709653556347,
+          0.0616852045059204
+        ],
+        "wholeDistance": 0.08819495990961435,
+        "parentDelta": [
+          0.0616850107908249,
+          0.0129709653556347,
+          0.0616852045059204
+        ],
+        "realVelocity": [
+          3.70110034942627,
+          0.77825790643692,
+          3.70111203193665
+        ],
+        "lastMotion": [
+          -0.00584922730922699,
+          0.0129709653556347,
+          -0.00584903359413147
+        ],
+        "grounded": true,
+        "onWall": false,
+        "targetSlideAngles": [
+          46.49767606938793,
+          46.227912546870066
+        ],
+        "targetSlidePoints": [
+          [
+            -1.19209289550781e-07,
+            0.150000005960464,
+            1.19209289550781e-07
+          ],
+          [
+            -1.19209289550781e-07,
+            0.150000005960464,
+            1.19209289550781e-07
+          ]
+        ],
+        "supportContactCount": 2,
+        "supportHit": true,
+        "supportAngles": [
+          48.18692067369298,
+          0.0
+        ],
+        "supportIdentities": [
+          {
+            "rid": 206158430210,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              -1.19209289550781e-07,
+              0.150000005960464,
+              1.19209289550781e-07
+            ]
+          },
+          {
+            "rid": 197568495616,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              -0.223765194416046,
+              0.0,
+              -0.223764970898628
+            ]
+          }
+        ],
+        "walkableSupportRids": [
+          197568495616
+        ],
+        "queryStateUnchanged": true,
+        "operandReplayValid": true,
+        "landingQualified": false,
+        "blockedResponseQualified": false,
+        "baseSupportQualified": true
+      },
+      "targetAngleMin": 0.0,
+      "targetAngleMax": 46.49767606938793,
+      "lastResponse": {
+        "caseIndex": 3,
+        "radius": 0.42,
+        "rise": 0.15,
+        "yawDegrees": 45.0,
+        "settling": false,
+        "responseIndex": 20,
+        "frame": 377,
+        "usec": 6508900,
+        "delta": 0.0166666666666667,
+        "position": [
+          0.712615251541138,
+          0.165551975369453,
+          0.712616205215454
+        ],
+        "along": 1.007790827832968,
+        "wholeDelta": [
+          0.0707106590270996,
+          0.0,
+          0.0707106590270996
+        ],
+        "wholeDistance": 0.09999997300046377,
+        "parentDelta": [
+          0.0707106590270996,
+          0.0,
+          0.0707106590270996
+        ],
+        "realVelocity": [
+          4.24263954162598,
+          0.0,
+          4.24263954162598
+        ],
+        "lastMotion": [
+          0.070710688829422,
+          0.0,
+          0.070710688829422
+        ],
+        "grounded": true,
+        "onWall": false,
+        "targetSlideAngles": [
+          0.0
+        ],
+        "targetSlidePoints": [
+          [
+            0.712615251541138,
+            0.150000005960464,
+            0.712616205215454
+          ]
+        ],
+        "supportContactCount": 1,
+        "supportHit": true,
+        "supportAngles": [
+          0.0
+        ],
+        "supportIdentities": [
+          {
+            "rid": 206158430210,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              0.712615251541138,
+              0.150000005960464,
+              0.712616205215454
+            ]
+          }
+        ],
+        "walkableSupportRids": [
+          206158430210
+        ],
+        "queryStateUnchanged": true,
+        "operandReplayValid": true,
+        "landingQualified": true,
+        "blockedResponseQualified": false,
+        "baseSupportQualified": false
+      },
+      "last120BlockedWitnesses": 0,
+      "lastThreeLandingQualified": 3,
+      "profileReplay": "arrived"
+    },
+    {
+      "caseIndex": 4,
+      "spec": {
+        "radius": 0.42,
+        "rise": 0.18,
+        "yawDegrees": -45.0
+      },
+      "status": "completed",
+      "outcome": "blocked_with_target_witness",
+      "settleRecords": 20,
+      "inputRecords": 126,
+      "inflight": null,
+      "allReturnedOperandReplayValid": true,
+      "firstTargetSlide": {
+        "caseIndex": 4,
+        "radius": 0.42,
+        "rise": 0.18,
+        "yawDegrees": -45.0,
+        "settling": false,
+        "responseIndex": 6,
+        "frame": 404,
+        "usec": 6957347,
+        "delta": 0.0166666666666667,
+        "position": [
+          0.282842636108398,
+          0.0166666638106108,
+          -0.282842636108398
+        ],
+        "along": -0.3999998920018545,
+        "wholeDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "wholeDistance": 0.0,
+        "parentDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "realVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "lastMotion": [
+          -0.0488898158073425,
+          0.0,
+          0.0488898158073425
+        ],
+        "grounded": true,
+        "onWall": true,
+        "targetSlideAngles": [
+          51.94542799842619
+        ],
+        "targetSlidePoints": [
+          [
+            -1.19209289550781e-07,
+            0.180000007152557,
+            -1.19209289550781e-07
+          ]
+        ],
+        "supportContactCount": 1,
+        "supportHit": true,
+        "supportAngles": [
+          0.0
+        ],
+        "supportIdentities": [
+          {
+            "rid": 227633266688,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              0.282842636108398,
+              0.0,
+              -0.282842636108398
+            ]
+          }
+        ],
+        "walkableSupportRids": [
+          227633266688
+        ],
+        "queryStateUnchanged": true,
+        "operandReplayValid": true,
+        "landingQualified": false,
+        "blockedResponseQualified": true,
+        "baseSupportQualified": true
+      },
+      "targetAngleMin": 51.94542799842619,
+      "targetAngleMax": 51.94542799842619,
+      "lastResponse": {
+        "caseIndex": 4,
+        "radius": 0.42,
+        "rise": 0.18,
+        "yawDegrees": -45.0,
+        "settling": false,
+        "responseIndex": 125,
+        "frame": 523,
+        "usec": 8944559,
+        "delta": 0.0166666666666667,
+        "position": [
+          0.282842636108398,
+          0.0166666638106108,
+          -0.282842636108398
+        ],
+        "along": -0.3999998920018545,
+        "wholeDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "wholeDistance": 0.0,
+        "parentDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "realVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "lastMotion": [
+          -0.0488898158073425,
+          0.0,
+          0.0488898158073425
+        ],
+        "grounded": true,
+        "onWall": true,
+        "targetSlideAngles": [
+          51.94542799842619
+        ],
+        "targetSlidePoints": [
+          [
+            -1.19209289550781e-07,
+            0.180000007152557,
+            -1.19209289550781e-07
+          ]
+        ],
+        "supportContactCount": 1,
+        "supportHit": true,
+        "supportAngles": [
+          0.0
+        ],
+        "supportIdentities": [
+          {
+            "rid": 227633266688,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              0.282842636108398,
+              0.0,
+              -0.282842636108398
+            ]
+          }
+        ],
+        "walkableSupportRids": [
+          227633266688
+        ],
+        "queryStateUnchanged": true,
+        "operandReplayValid": true,
+        "landingQualified": false,
+        "blockedResponseQualified": true,
+        "baseSupportQualified": true
+      },
+      "last120BlockedWitnesses": 120,
+      "lastThreeLandingQualified": 0,
+      "profileReplay": "blocked_with_target_witness"
+    },
+    {
+      "caseIndex": 5,
+      "spec": {
+        "radius": 0.42,
+        "rise": 0.18,
+        "yawDegrees": 45.0
+      },
+      "status": "completed",
+      "outcome": "blocked_with_target_witness",
+      "settleRecords": 20,
+      "inputRecords": 126,
+      "inflight": null,
+      "allReturnedOperandReplayValid": true,
+      "firstTargetSlide": {
+        "caseIndex": 5,
+        "radius": 0.42,
+        "rise": 0.18,
+        "yawDegrees": 45.0,
+        "settling": false,
+        "responseIndex": 6,
+        "frame": 550,
+        "usec": 9399468,
+        "delta": 0.0166666666666667,
+        "position": [
+          -0.282842636108398,
+          0.0166666638106108,
+          -0.282842636108398
+        ],
+        "along": -0.3999998920018545,
+        "wholeDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "wholeDistance": 0.0,
+        "parentDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "realVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "lastMotion": [
+          0.0488898158073425,
+          0.0,
+          0.0488898158073425
+        ],
+        "grounded": true,
+        "onWall": true,
+        "targetSlideAngles": [
+          51.94542799842619
+        ],
+        "targetSlidePoints": [
+          [
+            -1.19209289550781e-07,
+            0.180000007152557,
+            1.19209289550781e-07
+          ]
+        ],
+        "supportContactCount": 1,
+        "supportHit": true,
+        "supportAngles": [
+          0.0
+        ],
+        "supportIdentities": [
+          {
+            "rid": 257698037760,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              -0.282842636108398,
+              0.0,
+              -0.282842636108398
+            ]
+          }
+        ],
+        "walkableSupportRids": [
+          257698037760
+        ],
+        "queryStateUnchanged": true,
+        "operandReplayValid": true,
+        "landingQualified": false,
+        "blockedResponseQualified": true,
+        "baseSupportQualified": true
+      },
+      "targetAngleMin": 51.94542799842619,
+      "targetAngleMax": 51.94542799842619,
+      "lastResponse": {
+        "caseIndex": 5,
+        "radius": 0.42,
+        "rise": 0.18,
+        "yawDegrees": 45.0,
+        "settling": false,
+        "responseIndex": 125,
+        "frame": 669,
+        "usec": 11379750,
+        "delta": 0.0166666666666667,
+        "position": [
+          -0.282842636108398,
+          0.0166666638106108,
+          -0.282842636108398
+        ],
+        "along": -0.3999998920018545,
+        "wholeDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "wholeDistance": 0.0,
+        "parentDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "realVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "lastMotion": [
+          0.0488898158073425,
+          0.0,
+          0.0488898158073425
+        ],
+        "grounded": true,
+        "onWall": true,
+        "targetSlideAngles": [
+          51.94542799842619
+        ],
+        "targetSlidePoints": [
+          [
+            -1.19209289550781e-07,
+            0.180000007152557,
+            1.19209289550781e-07
+          ]
+        ],
+        "supportContactCount": 1,
+        "supportHit": true,
+        "supportAngles": [
+          0.0
+        ],
+        "supportIdentities": [
+          {
+            "rid": 257698037760,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              -0.282842636108398,
+              0.0,
+              -0.282842636108398
+            ]
+          }
+        ],
+        "walkableSupportRids": [
+          257698037760
+        ],
+        "queryStateUnchanged": true,
+        "operandReplayValid": true,
+        "landingQualified": false,
+        "blockedResponseQualified": true,
+        "baseSupportQualified": true
+      },
+      "last120BlockedWitnesses": 120,
+      "lastThreeLandingQualified": 0,
+      "profileReplay": "blocked_with_target_witness"
+    },
+    {
+      "caseIndex": 6,
+      "spec": {
+        "radius": 0.42,
+        "rise": 0.2,
+        "yawDegrees": -45.0
+      },
+      "status": "completed",
+      "outcome": "blocked_with_target_witness",
+      "settleRecords": 20,
+      "inputRecords": 126,
+      "inflight": null,
+      "allReturnedOperandReplayValid": true,
+      "firstTargetSlide": {
+        "caseIndex": 6,
+        "radius": 0.42,
+        "rise": 0.2,
+        "yawDegrees": -45.0,
+        "settling": false,
+        "responseIndex": 6,
+        "frame": 696,
+        "usec": 11830128,
+        "delta": 0.0166666666666667,
+        "position": [
+          0.282842636108398,
+          0.0166666638106108,
+          -0.282842636108398
+        ],
+        "along": -0.3999998920018545,
+        "wholeDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "wholeDistance": 0.0,
+        "parentDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "realVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "lastMotion": [
+          -0.0383936949074268,
+          0.0,
+          0.0383936949074268
+        ],
+        "grounded": true,
+        "onWall": true,
+        "targetSlideAngles": [
+          55.34578200249243
+        ],
+        "targetSlidePoints": [
+          [
+            -1.19209289550781e-07,
+            0.200000002980232,
+            -1.19209289550781e-07
+          ]
+        ],
+        "supportContactCount": 1,
+        "supportHit": true,
+        "supportAngles": [
+          0.0
+        ],
+        "supportIdentities": [
+          {
+            "rid": 287762808832,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              0.282842636108398,
+              0.0,
+              -0.282842636108398
+            ]
+          }
+        ],
+        "walkableSupportRids": [
+          287762808832
+        ],
+        "queryStateUnchanged": true,
+        "operandReplayValid": true,
+        "landingQualified": false,
+        "blockedResponseQualified": true,
+        "baseSupportQualified": true
+      },
+      "targetAngleMin": 55.34578200249243,
+      "targetAngleMax": 55.34578200249243,
+      "lastResponse": {
+        "caseIndex": 6,
+        "radius": 0.42,
+        "rise": 0.2,
+        "yawDegrees": -45.0,
+        "settling": false,
+        "responseIndex": 125,
+        "frame": 815,
+        "usec": 13817413,
+        "delta": 0.0166666666666667,
+        "position": [
+          0.282842636108398,
+          0.0166666638106108,
+          -0.282842636108398
+        ],
+        "along": -0.3999998920018545,
+        "wholeDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "wholeDistance": 0.0,
+        "parentDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "realVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "lastMotion": [
+          -0.0383936949074268,
+          0.0,
+          0.0383936949074268
+        ],
+        "grounded": true,
+        "onWall": true,
+        "targetSlideAngles": [
+          55.34578200249243
+        ],
+        "targetSlidePoints": [
+          [
+            -1.19209289550781e-07,
+            0.200000002980232,
+            -1.19209289550781e-07
+          ]
+        ],
+        "supportContactCount": 1,
+        "supportHit": true,
+        "supportAngles": [
+          0.0
+        ],
+        "supportIdentities": [
+          {
+            "rid": 287762808832,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              0.282842636108398,
+              0.0,
+              -0.282842636108398
+            ]
+          }
+        ],
+        "walkableSupportRids": [
+          287762808832
+        ],
+        "queryStateUnchanged": true,
+        "operandReplayValid": true,
+        "landingQualified": false,
+        "blockedResponseQualified": true,
+        "baseSupportQualified": true
+      },
+      "last120BlockedWitnesses": 120,
+      "lastThreeLandingQualified": 0,
+      "profileReplay": "blocked_with_target_witness"
+    },
+    {
+      "caseIndex": 7,
+      "spec": {
+        "radius": 0.42,
+        "rise": 0.2,
+        "yawDegrees": 45.0
+      },
+      "status": "completed",
+      "outcome": "blocked_with_target_witness",
+      "settleRecords": 20,
+      "inputRecords": 126,
+      "inflight": null,
+      "allReturnedOperandReplayValid": true,
+      "firstTargetSlide": {
+        "caseIndex": 7,
+        "radius": 0.42,
+        "rise": 0.2,
+        "yawDegrees": 45.0,
+        "settling": false,
+        "responseIndex": 6,
+        "frame": 842,
+        "usec": 14267471,
+        "delta": 0.0166666666666667,
+        "position": [
+          -0.282842636108398,
+          0.0166666638106108,
+          -0.282842636108398
+        ],
+        "along": -0.3999998920018545,
+        "wholeDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "wholeDistance": 0.0,
+        "parentDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "realVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "lastMotion": [
+          0.0383936949074268,
+          0.0,
+          0.0383936949074268
+        ],
+        "grounded": true,
+        "onWall": true,
+        "targetSlideAngles": [
+          55.34578200249243
+        ],
+        "targetSlidePoints": [
+          [
+            -1.19209289550781e-07,
+            0.200000002980232,
+            1.19209289550781e-07
+          ]
+        ],
+        "supportContactCount": 1,
+        "supportHit": true,
+        "supportAngles": [
+          0.0
+        ],
+        "supportIdentities": [
+          {
+            "rid": 317827579904,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              -0.282842636108398,
+              0.0,
+              -0.282842636108398
+            ]
+          }
+        ],
+        "walkableSupportRids": [
+          317827579904
+        ],
+        "queryStateUnchanged": true,
+        "operandReplayValid": true,
+        "landingQualified": false,
+        "blockedResponseQualified": true,
+        "baseSupportQualified": true
+      },
+      "targetAngleMin": 55.34578200249243,
+      "targetAngleMax": 55.34578200249243,
+      "lastResponse": {
+        "caseIndex": 7,
+        "radius": 0.42,
+        "rise": 0.2,
+        "yawDegrees": 45.0,
+        "settling": false,
+        "responseIndex": 125,
+        "frame": 961,
+        "usec": 16247759,
+        "delta": 0.0166666666666667,
+        "position": [
+          -0.282842636108398,
+          0.0166666638106108,
+          -0.282842636108398
+        ],
+        "along": -0.3999998920018545,
+        "wholeDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "wholeDistance": 0.0,
+        "parentDelta": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "realVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "lastMotion": [
+          0.0383936949074268,
+          0.0,
+          0.0383936949074268
+        ],
+        "grounded": true,
+        "onWall": true,
+        "targetSlideAngles": [
+          55.34578200249243
+        ],
+        "targetSlidePoints": [
+          [
+            -1.19209289550781e-07,
+            0.200000002980232,
+            1.19209289550781e-07
+          ]
+        ],
+        "supportContactCount": 1,
+        "supportHit": true,
+        "supportAngles": [
+          0.0
+        ],
+        "supportIdentities": [
+          {
+            "rid": 317827579904,
+            "shape": 0,
+            "localShape": 0,
+            "point": [
+              -0.282842636108398,
+              0.0,
+              -0.282842636108398
+            ]
+          }
+        ],
+        "walkableSupportRids": [
+          317827579904
+        ],
+        "queryStateUnchanged": true,
+        "operandReplayValid": true,
+        "landingQualified": false,
+        "blockedResponseQualified": true,
+        "baseSupportQualified": true
+      },
+      "last120BlockedWitnesses": 120,
+      "lastThreeLandingQualified": 0,
+      "profileReplay": "blocked_with_target_witness"
+    }
+  ]
+}

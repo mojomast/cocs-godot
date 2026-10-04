@@ -1,0 +1,37 @@
+{
+  "phase": "baseline-characterization-v1",
+  "mode": "baseline-only",
+  "group": "radius-rise",
+  "sourceSha256": "8ddfd02d9fac88a5a5f6e3dcdb34f432a2654bbbfc9e045ab91949d8df1882a4",
+  "grantSha256": "f5fca7640bcb438c1a3b9d1c1895c9c30c0d485e1a41330a9c00278f63f4cfcd",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "dependenciesSha256": "7ecbd6a2f300fbbc698eea47c47209ae710a64b57e02a72a4d63fd044d7c94e4",
+  "argv": [
+    "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--single-threaded-scene",
+    "--path",
+    "/home/mojo/.tmp-on-disk/cocs-walker-baseline-characterization-al/godot/tests/walker_baseline_characterization/baseline-characterization-al-01",
+    "--script",
+    "res://tests/walker_baseline_characterization/driver.gd",
+    "--",
+    "--group=radius-rise",
+    "--mode=baseline-only",
+    "--grant-id=MOTH-BLENDER-20261004-AL",
+    "--grant-sha256=f5fca7640bcb438c1a3b9d1c1895c9c30c0d485e1a41330a9c00278f63f4cfcd",
+    "--dependencies-sha256=7ecbd6a2f300fbbc698eea47c47209ae710a64b57e02a72a4d63fd044d7c94e4"
+  ],
+  "lockAcquiredUnix": 1791103456.394015,
+  "timeoutSeconds": 180,
+  "autoRetry": false,
+  "queued": false,
+  "releaseAudits": [],
+  "processGroupTrace": [],
+  "failed": true,
+  "releasedCleanly": false,
+  "completedCharacterization": false,
+  "environment": {
+    "LP_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  }
+}

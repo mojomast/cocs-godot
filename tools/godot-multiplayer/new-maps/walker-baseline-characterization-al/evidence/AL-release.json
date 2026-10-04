@@ -1,0 +1,62 @@
+{
+  "grant": "MOTH-BLENDER-20261004-AL",
+  "ownedGroups": [
+    {
+      "pid": 3528101,
+      "pgid": 3528101,
+      "startTicks": 628660036
+    }
+  ],
+  "releaseAudits": [
+    {
+      "utc": "2026-10-04T08:45:10.190346+00:00",
+      "measured": true,
+      "groups": [
+        {
+          "owned": {
+            "pid": 3528101,
+            "pgid": 3528101,
+            "startTicks": 628660036
+          },
+          "members": []
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-04T08:45:10.411386+00:00",
+      "measured": true,
+      "groups": [
+        {
+          "owned": {
+            "pid": 3528101,
+            "pgid": 3528101,
+            "startTicks": 628660036
+          },
+          "members": []
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-04T08:45:10.632368+00:00",
+      "measured": true,
+      "groups": [
+        {
+          "owned": {
+            "pid": 3528101,
+            "pgid": 3528101,
+            "startTicks": 628660036
+          },
+          "members": []
+        }
+      ]
+    }
+  ],
+  "lock": {
+    "available": true,
+    "measuredUtc": "2026-10-04T08:45:10.854044+00:00"
+  },
+  "releasedUtc": "2026-10-04T08:45:10.854070+00:00",
+  "remainingAuthorization": false,
+  "queuedWork": false,
+  "noFurtherEngineInvocations": true
+}

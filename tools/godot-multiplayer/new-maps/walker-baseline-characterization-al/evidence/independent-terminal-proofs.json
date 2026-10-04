@@ -1,0 +1,2229 @@
+{
+  "nativeSha256": "f9e77adc174d3a4cc03b9ced716e5f89888ff2163217580bd1bd55cb9e17fc04",
+  "qualification": "Independent arithmetic on terminal native operands; no unique backend or internal branch causal inference. No height selected.",
+  "selectedHeight": null,
+  "profiles": [
+    {
+      "caseIndex": 0,
+      "spec": {
+        "radius": 0.35,
+        "rise": 0.15,
+        "yawDegrees": -45.0
+      },
+      "recordedOutcome": "blocked_with_target_witness",
+      "independentTerminalProof": true,
+      "windowResponses": 120,
+      "firstFrame": 29,
+      "lastFrame": 148,
+      "maxWholeDisplacement": 0.0,
+      "alongMin": -0.2999998768545422,
+      "alongMax": -0.2999998768545422,
+      "baseRid": 94489280512,
+      "targetRid": 115964116994,
+      "baseWalkableContactsPerResponse": [
+        1
+      ],
+      "supportAngleRange": [
+        0.0,
+        56.391617076466126
+      ],
+      "targetSlideAngleRange": [
+        51.30689215669124,
+        51.30689215669124
+      ],
+      "targetHeadOnMinimum": 1.0,
+      "targetPointYRange": [
+        0.150000005960464,
+        0.150000005960464
+      ],
+      "landingFootprints": [],
+      "arrivalMaxPlaneError": null,
+      "bodyFinal": {
+        "basis": [
+          [
+            0.70710676908493,
+            0.0,
+            0.70710676908493
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            -0.70710676908493,
+            0.0,
+            0.70710676908493
+          ]
+        ],
+        "origin": [
+          0.212131947278976,
+          0.0166666638106108,
+          -0.212131947278976
+        ]
+      },
+      "finalQuery": {
+        "after": {
+          "floorNormal": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "grounded": true,
+          "lastMotion": [
+            -0.0187825262546539,
+            0.0,
+            0.0187825262546539
+          ],
+          "onCeiling": false,
+          "onWall": true,
+          "parentDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformAngularVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "realVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "resetCount": 1,
+          "slideCount": 1,
+          "transform": {
+            "basis": [
+              [
+                0.70710676908493,
+                0.0,
+                0.70710676908493
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                -0.70710676908493,
+                0.0,
+                0.70710676908493
+              ]
+            ],
+            "origin": [
+              0.212131947278976,
+              0.0166666638106108,
+              -0.212131947278976
+            ]
+          },
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "before": {
+          "floorNormal": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "grounded": true,
+          "lastMotion": [
+            -0.0187825262546539,
+            0.0,
+            0.0187825262546539
+          ],
+          "onCeiling": false,
+          "onWall": true,
+          "parentDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformAngularVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "realVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "resetCount": 1,
+          "slideCount": 1,
+          "transform": {
+            "basis": [
+              [
+                0.70710676908493,
+                0.0,
+                0.70710676908493
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                -0.70710676908493,
+                0.0,
+                0.70710676908493
+              ]
+            ],
+            "origin": [
+              0.212131947278976,
+              0.0166666638106108,
+              -0.212131947278976
+            ]
+          },
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "bodyRid": 124554051587,
+        "collideSeparationRay": true,
+        "contacts": [
+          {
+            "depth": 0.0206172652542591,
+            "localShape": 0,
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "path": "/root/@Node3D@2/BaselineBase",
+            "point": [
+              0.212131947278976,
+              0.0,
+              -0.212131947278976
+            ],
+            "rid": 94489280512,
+            "shape": 0,
+            "velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "depth": 0.00978699978441,
+            "localShape": 0,
+            "normal": [
+              0.58890700340271,
+              0.553513407707214,
+              -0.58890700340271
+            ],
+            "path": "/root/@Node3D@2/BaselineTarget",
+            "point": [
+              -1.19209289550781e-07,
+              0.150000005960464,
+              -1.19209289550781e-07
+            ],
+            "rid": 115964116994,
+            "shape": 0,
+            "velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "count": 2,
+        "excludeBodies": [],
+        "excludeObjects": [],
+        "from": {
+          "basis": [
+            [
+              0.70710676908493,
+              0.0,
+              0.70710676908493
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              -0.70710676908493,
+              0.0,
+              0.70710676908493
+            ]
+          ],
+          "origin": [
+            0.212131947278976,
+            0.0166666638106108,
+            -0.212131947278976
+          ]
+        },
+        "hit": true,
+        "margin": 0.0199999995529652,
+        "maxCollisions": 32,
+        "motion": [
+          0.0,
+          -0.0200999993830919,
+          0.0
+        ],
+        "recoveryAsCollision": true,
+        "remainder": [
+          0.0,
+          -0.000844042748212814,
+          0.0
+        ],
+        "safeFraction": 0.9580078125,
+        "travel": [
+          0.0,
+          -0.0172250252217054,
+          0.0
+        ],
+        "unsafeFraction": 0.9609375
+      }
+    },
+    {
+      "caseIndex": 1,
+      "spec": {
+        "radius": 0.35,
+        "rise": 0.15,
+        "yawDegrees": 45.0
+      },
+      "recordedOutcome": "blocked_with_target_witness",
+      "independentTerminalProof": true,
+      "windowResponses": 120,
+      "firstFrame": 176,
+      "lastFrame": 295,
+      "maxWholeDisplacement": 0.0,
+      "alongMin": -0.2999998768545422,
+      "alongMax": -0.2999998768545422,
+      "baseRid": 137438953472,
+      "targetRid": 146028888066,
+      "baseWalkableContactsPerResponse": [
+        1
+      ],
+      "supportAngleRange": [
+        0.0,
+        56.391617076466126
+      ],
+      "targetSlideAngleRange": [
+        51.30689215669124,
+        51.30689215669124
+      ],
+      "targetHeadOnMinimum": 1.0,
+      "targetPointYRange": [
+        0.150000005960464,
+        0.150000005960464
+      ],
+      "landingFootprints": [],
+      "arrivalMaxPlaneError": null,
+      "bodyFinal": {
+        "basis": [
+          [
+            0.70710676908493,
+            0.0,
+            -0.70710676908493
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.70710676908493,
+            0.0,
+            0.70710676908493
+          ]
+        ],
+        "origin": [
+          -0.212131947278976,
+          0.0166666638106108,
+          -0.212131947278976
+        ]
+      },
+      "finalQuery": {
+        "after": {
+          "floorNormal": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "grounded": true,
+          "lastMotion": [
+            0.0187825262546539,
+            0.0,
+            0.0187825262546539
+          ],
+          "onCeiling": false,
+          "onWall": true,
+          "parentDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformAngularVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "realVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "resetCount": 1,
+          "slideCount": 1,
+          "transform": {
+            "basis": [
+              [
+                0.70710676908493,
+                0.0,
+                -0.70710676908493
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.70710676908493,
+                0.0,
+                0.70710676908493
+              ]
+            ],
+            "origin": [
+              -0.212131947278976,
+              0.0166666638106108,
+              -0.212131947278976
+            ]
+          },
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "before": {
+          "floorNormal": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "grounded": true,
+          "lastMotion": [
+            0.0187825262546539,
+            0.0,
+            0.0187825262546539
+          ],
+          "onCeiling": false,
+          "onWall": true,
+          "parentDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformAngularVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "realVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "resetCount": 1,
+          "slideCount": 1,
+          "transform": {
+            "basis": [
+              [
+                0.70710676908493,
+                0.0,
+                -0.70710676908493
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.70710676908493,
+                0.0,
+                0.70710676908493
+              ]
+            ],
+            "origin": [
+              -0.212131947278976,
+              0.0166666638106108,
+              -0.212131947278976
+            ]
+          },
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "bodyRid": 154618822659,
+        "collideSeparationRay": true,
+        "contacts": [
+          {
+            "depth": 0.0206172652542591,
+            "localShape": 0,
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "path": "/root/@Node3D@6/BaselineBase",
+            "point": [
+              -0.212131947278976,
+              0.0,
+              -0.212131947278976
+            ],
+            "rid": 137438953472,
+            "shape": 0,
+            "velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "depth": 0.00978699978441,
+            "localShape": 0,
+            "normal": [
+              -0.58890700340271,
+              0.553513407707214,
+              -0.58890700340271
+            ],
+            "path": "/root/@Node3D@6/BaselineTarget",
+            "point": [
+              -1.19209289550781e-07,
+              0.150000005960464,
+              1.19209289550781e-07
+            ],
+            "rid": 146028888066,
+            "shape": 0,
+            "velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "count": 2,
+        "excludeBodies": [],
+        "excludeObjects": [],
+        "from": {
+          "basis": [
+            [
+              0.70710676908493,
+              0.0,
+              -0.70710676908493
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.70710676908493,
+              0.0,
+              0.70710676908493
+            ]
+          ],
+          "origin": [
+            -0.212131947278976,
+            0.0166666638106108,
+            -0.212131947278976
+          ]
+        },
+        "hit": true,
+        "margin": 0.0199999995529652,
+        "maxCollisions": 32,
+        "motion": [
+          0.0,
+          -0.0200999993830919,
+          0.0
+        ],
+        "recoveryAsCollision": true,
+        "remainder": [
+          0.0,
+          -0.000844042748212814,
+          0.0
+        ],
+        "safeFraction": 0.9580078125,
+        "travel": [
+          0.0,
+          -0.0172250252217054,
+          0.0
+        ],
+        "unsafeFraction": 0.9609375
+      }
+    },
+    {
+      "caseIndex": 2,
+      "spec": {
+        "radius": 0.42,
+        "rise": 0.15,
+        "yawDegrees": -45.0
+      },
+      "recordedOutcome": "arrived",
+      "independentTerminalProof": true,
+      "windowResponses": 3,
+      "firstFrame": 334,
+      "lastFrame": 336,
+      "maxWholeDisplacement": 0.09999997300046377,
+      "alongMin": 0.8079861903280392,
+      "alongMax": 1.0079861363289673,
+      "baseRid": 167503724544,
+      "targetRid": 176093659138,
+      "baseWalkableContactsPerResponse": [],
+      "supportAngleRange": [
+        0.0,
+        0.0
+      ],
+      "targetSlideAngleRange": null,
+      "targetHeadOnMinimum": null,
+      "targetPointYRange": null,
+      "landingFootprints": [
+        {
+          "frame": 334,
+          "along": 0.8079861903280392,
+          "lateral": 1.0958180612918866e-06,
+          "bodyY": 0.165570169687271,
+          "radius": 0.419999986886978,
+          "margin": 0.0199999995529652
+        },
+        {
+          "frame": 335,
+          "along": 0.9079861633285036,
+          "lateral": 1.0958180611808643e-06,
+          "bodyY": 0.165570169687271,
+          "radius": 0.419999986886978,
+          "margin": 0.0199999995529652
+        },
+        {
+          "frame": 336,
+          "along": 1.0079861363289673,
+          "lateral": 1.0958180619580205e-06,
+          "bodyY": 0.165570169687271,
+          "radius": 0.419999986886978,
+          "margin": 0.0199999995529652
+        }
+      ],
+      "arrivalMaxPlaneError": 5.960464011245392e-09,
+      "bodyFinal": {
+        "basis": [
+          [
+            0.70710676908493,
+            0.0,
+            0.70710676908493
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            -0.70710676908493,
+            0.0,
+            0.70710676908493
+          ]
+        ],
+        "origin": [
+          -0.712754607200623,
+          0.165570169687271,
+          0.712753057479858
+        ]
+      },
+      "finalQuery": {
+        "after": {
+          "floorNormal": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "grounded": true,
+          "lastMotion": [
+            -0.070710688829422,
+            0.0,
+            0.070710688829422
+          ],
+          "onCeiling": false,
+          "onWall": false,
+          "parentDelta": [
+            -0.0707106590270996,
+            0.0,
+            0.0707106590270996
+          ],
+          "platformAngularVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "realVelocity": [
+            -4.24263954162598,
+            0.0,
+            4.24263954162598
+          ],
+          "resetCount": 1,
+          "slideCount": 1,
+          "transform": {
+            "basis": [
+              [
+                0.70710676908493,
+                0.0,
+                0.70710676908493
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                -0.70710676908493,
+                0.0,
+                0.70710676908493
+              ]
+            ],
+            "origin": [
+              -0.712754607200623,
+              0.165570169687271,
+              0.712753057479858
+            ]
+          },
+          "velocity": [
+            -4.24264049530029,
+            0.0,
+            4.24264049530029
+          ]
+        },
+        "before": {
+          "floorNormal": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "grounded": true,
+          "lastMotion": [
+            -0.070710688829422,
+            0.0,
+            0.070710688829422
+          ],
+          "onCeiling": false,
+          "onWall": false,
+          "parentDelta": [
+            -0.0707106590270996,
+            0.0,
+            0.0707106590270996
+          ],
+          "platformAngularVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "realVelocity": [
+            -4.24263954162598,
+            0.0,
+            4.24263954162598
+          ],
+          "resetCount": 1,
+          "slideCount": 1,
+          "transform": {
+            "basis": [
+              [
+                0.70710676908493,
+                0.0,
+                0.70710676908493
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                -0.70710676908493,
+                0.0,
+                0.70710676908493
+              ]
+            ],
+            "origin": [
+              -0.712754607200623,
+              0.165570169687271,
+              0.712753057479858
+            ]
+          },
+          "velocity": [
+            -4.24264049530029,
+            0.0,
+            4.24264049530029
+          ]
+        },
+        "bodyRid": 184683593731,
+        "collideSeparationRay": true,
+        "contacts": [
+          {
+            "depth": 0.020288273692131,
+            "localShape": 0,
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "path": "/root/@Node3D@10/BaselineTarget",
+            "point": [
+              -0.712754607200623,
+              0.150000005960464,
+              0.712753057479858
+            ],
+            "rid": 176093659138,
+            "shape": 0,
+            "velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "count": 1,
+        "excludeBodies": [],
+        "excludeObjects": [],
+        "from": {
+          "basis": [
+            [
+              0.70710676908493,
+              0.0,
+              0.70710676908493
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              -0.70710676908493,
+              0.0,
+              0.70710676908493
+            ]
+          ],
+          "origin": [
+            -0.712754607200623,
+            0.165570169687271,
+            0.712753057479858
+          ]
+        },
+        "hit": true,
+        "margin": 0.0199999995529652,
+        "maxCollisions": 32,
+        "motion": [
+          0.0,
+          -0.0200999993830919,
+          0.0
+        ],
+        "recoveryAsCollision": true,
+        "remainder": [
+          0.0,
+          -0.00137402303516865,
+          0.0
+        ],
+        "safeFraction": 0.931640625,
+        "travel": [
+          0.0,
+          -0.0157406330108643,
+          0.0
+        ],
+        "unsafeFraction": 0.9375
+      }
+    },
+    {
+      "caseIndex": 3,
+      "spec": {
+        "radius": 0.42,
+        "rise": 0.15,
+        "yawDegrees": 45.0
+      },
+      "recordedOutcome": "arrived",
+      "independentTerminalProof": true,
+      "windowResponses": 3,
+      "firstFrame": 375,
+      "lastFrame": 377,
+      "maxWholeDisplacement": 0.09999997300046377,
+      "alongMin": 0.8077908818320398,
+      "alongMax": 1.007790827832968,
+      "baseRid": 197568495616,
+      "targetRid": 206158430210,
+      "baseWalkableContactsPerResponse": [],
+      "supportAngleRange": [
+        0.0,
+        0.0
+      ],
+      "targetSlideAngleRange": null,
+      "targetHeadOnMinimum": null,
+      "targetPointYRange": null,
+      "landingFootprints": [
+        {
+          "frame": 375,
+          "along": 0.8077908818320398,
+          "lateral": 6.743495764571783e-07,
+          "bodyY": 0.165551975369453,
+          "radius": 0.419999986886978,
+          "margin": 0.0199999995529652
+        },
+        {
+          "frame": 376,
+          "along": 0.9077908548325035,
+          "lateral": 6.743495758465556e-07,
+          "bodyY": 0.165551975369453,
+          "radius": 0.419999986886978,
+          "margin": 0.0199999995529652
+        },
+        {
+          "frame": 377,
+          "along": 1.007790827832968,
+          "lateral": 6.743495757355333e-07,
+          "bodyY": 0.165551975369453,
+          "radius": 0.419999986886978,
+          "margin": 0.0199999995529652
+        }
+      ],
+      "arrivalMaxPlaneError": 5.960464011245392e-09,
+      "bodyFinal": {
+        "basis": [
+          [
+            0.70710676908493,
+            0.0,
+            -0.70710676908493
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.70710676908493,
+            0.0,
+            0.70710676908493
+          ]
+        ],
+        "origin": [
+          0.712615251541138,
+          0.165551975369453,
+          0.712616205215454
+        ]
+      },
+      "finalQuery": {
+        "after": {
+          "floorNormal": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "grounded": true,
+          "lastMotion": [
+            0.070710688829422,
+            0.0,
+            0.070710688829422
+          ],
+          "onCeiling": false,
+          "onWall": false,
+          "parentDelta": [
+            0.0707106590270996,
+            0.0,
+            0.0707106590270996
+          ],
+          "platformAngularVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "realVelocity": [
+            4.24263954162598,
+            0.0,
+            4.24263954162598
+          ],
+          "resetCount": 1,
+          "slideCount": 1,
+          "transform": {
+            "basis": [
+              [
+                0.70710676908493,
+                0.0,
+                -0.70710676908493
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.70710676908493,
+                0.0,
+                0.70710676908493
+              ]
+            ],
+            "origin": [
+              0.712615251541138,
+              0.165551975369453,
+              0.712616205215454
+            ]
+          },
+          "velocity": [
+            4.24264049530029,
+            0.0,
+            4.24264049530029
+          ]
+        },
+        "before": {
+          "floorNormal": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "grounded": true,
+          "lastMotion": [
+            0.070710688829422,
+            0.0,
+            0.070710688829422
+          ],
+          "onCeiling": false,
+          "onWall": false,
+          "parentDelta": [
+            0.0707106590270996,
+            0.0,
+            0.0707106590270996
+          ],
+          "platformAngularVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "realVelocity": [
+            4.24263954162598,
+            0.0,
+            4.24263954162598
+          ],
+          "resetCount": 1,
+          "slideCount": 1,
+          "transform": {
+            "basis": [
+              [
+                0.70710676908493,
+                0.0,
+                -0.70710676908493
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.70710676908493,
+                0.0,
+                0.70710676908493
+              ]
+            ],
+            "origin": [
+              0.712615251541138,
+              0.165551975369453,
+              0.712616205215454
+            ]
+          },
+          "velocity": [
+            4.24264049530029,
+            0.0,
+            4.24264049530029
+          ]
+        },
+        "bodyRid": 214748364803,
+        "collideSeparationRay": true,
+        "contacts": [
+          {
+            "depth": 0.0199373215436935,
+            "localShape": 0,
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "path": "/root/@Node3D@14/BaselineTarget",
+            "point": [
+              0.712615251541138,
+              0.150000005960464,
+              0.712616205215454
+            ],
+            "rid": 206158430210,
+            "shape": 0,
+            "velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "count": 1,
+        "excludeBodies": [],
+        "excludeObjects": [],
+        "from": {
+          "basis": [
+            [
+              0.70710676908493,
+              0.0,
+              -0.70710676908493
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.70710676908493,
+              0.0,
+              0.70710676908493
+            ]
+          ],
+          "origin": [
+            0.712615251541138,
+            0.165551975369453,
+            0.712616205215454
+          ]
+        },
+        "hit": true,
+        "margin": 0.0199999995529652,
+        "maxCollisions": 32,
+        "motion": [
+          0.0,
+          -0.0200999993830919,
+          0.0
+        ],
+        "recoveryAsCollision": true,
+        "remainder": [
+          0.0,
+          -0.00172734446823597,
+          0.0
+        ],
+        "safeFraction": 0.9140625,
+        "travel": [
+          0.0,
+          -0.0153714865446091,
+          0.0
+        ],
+        "unsafeFraction": 0.919921875
+      }
+    },
+    {
+      "caseIndex": 4,
+      "spec": {
+        "radius": 0.42,
+        "rise": 0.18,
+        "yawDegrees": -45.0
+      },
+      "recordedOutcome": "blocked_with_target_witness",
+      "independentTerminalProof": true,
+      "windowResponses": 120,
+      "firstFrame": 404,
+      "lastFrame": 523,
+      "maxWholeDisplacement": 0.0,
+      "alongMin": -0.3999998920018545,
+      "alongMax": -0.3999998920018545,
+      "baseRid": 227633266688,
+      "targetRid": 236223201282,
+      "baseWalkableContactsPerResponse": [
+        1
+      ],
+      "supportAngleRange": [
+        0.0,
+        0.0
+      ],
+      "targetSlideAngleRange": [
+        51.94542799842619,
+        51.94542799842619
+      ],
+      "targetHeadOnMinimum": 1.0000000000000002,
+      "targetPointYRange": [
+        0.180000007152557,
+        0.180000007152557
+      ],
+      "landingFootprints": [],
+      "arrivalMaxPlaneError": null,
+      "bodyFinal": {
+        "basis": [
+          [
+            0.70710676908493,
+            0.0,
+            0.70710676908493
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            -0.70710676908493,
+            0.0,
+            0.70710676908493
+          ]
+        ],
+        "origin": [
+          0.282842636108398,
+          0.0166666638106108,
+          -0.282842636108398
+        ]
+      },
+      "finalQuery": {
+        "after": {
+          "floorNormal": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "grounded": true,
+          "lastMotion": [
+            -0.0488898158073425,
+            0.0,
+            0.0488898158073425
+          ],
+          "onCeiling": false,
+          "onWall": true,
+          "parentDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformAngularVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "realVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "resetCount": 1,
+          "slideCount": 1,
+          "transform": {
+            "basis": [
+              [
+                0.70710676908493,
+                0.0,
+                0.70710676908493
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                -0.70710676908493,
+                0.0,
+                0.70710676908493
+              ]
+            ],
+            "origin": [
+              0.282842636108398,
+              0.0166666638106108,
+              -0.282842636108398
+            ]
+          },
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "before": {
+          "floorNormal": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "grounded": true,
+          "lastMotion": [
+            -0.0488898158073425,
+            0.0,
+            0.0488898158073425
+          ],
+          "onCeiling": false,
+          "onWall": true,
+          "parentDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformAngularVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "realVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "resetCount": 1,
+          "slideCount": 1,
+          "transform": {
+            "basis": [
+              [
+                0.70710676908493,
+                0.0,
+                0.70710676908493
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                -0.70710676908493,
+                0.0,
+                0.70710676908493
+              ]
+            ],
+            "origin": [
+              0.282842636108398,
+              0.0166666638106108,
+              -0.282842636108398
+            ]
+          },
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "bodyRid": 244813135875,
+        "collideSeparationRay": true,
+        "contacts": [
+          {
+            "depth": 0.0199105925858021,
+            "localShape": 0,
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "path": "/root/@Node3D@18/BaselineBase",
+            "point": [
+              0.282842636108398,
+              0.0,
+              -0.282842636108398
+            ],
+            "rid": 227633266688,
+            "shape": 0,
+            "velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "count": 1,
+        "excludeBodies": [],
+        "excludeObjects": [],
+        "from": {
+          "basis": [
+            [
+              0.70710676908493,
+              0.0,
+              0.70710676908493
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              -0.70710676908493,
+              0.0,
+              0.70710676908493
+            ]
+          ],
+          "origin": [
+            0.282842636108398,
+            0.0166666638106108,
+            -0.282842636108398
+          ]
+        },
+        "hit": true,
+        "margin": 0.0199999995529652,
+        "maxCollisions": 32,
+        "motion": [
+          0.0,
+          -0.0200999993830919,
+          0.0
+        ],
+        "recoveryAsCollision": true,
+        "remainder": [
+          0.0,
+          -0.0016095694154501,
+          0.0
+        ],
+        "safeFraction": 0.919921875,
+        "travel": [
+          0.0,
+          -0.0164594985544682,
+          0.0
+        ],
+        "unsafeFraction": 0.92578125
+      }
+    },
+    {
+      "caseIndex": 5,
+      "spec": {
+        "radius": 0.42,
+        "rise": 0.18,
+        "yawDegrees": 45.0
+      },
+      "recordedOutcome": "blocked_with_target_witness",
+      "independentTerminalProof": true,
+      "windowResponses": 120,
+      "firstFrame": 550,
+      "lastFrame": 669,
+      "maxWholeDisplacement": 0.0,
+      "alongMin": -0.3999998920018545,
+      "alongMax": -0.3999998920018545,
+      "baseRid": 257698037760,
+      "targetRid": 266287972354,
+      "baseWalkableContactsPerResponse": [
+        1
+      ],
+      "supportAngleRange": [
+        0.0,
+        0.0
+      ],
+      "targetSlideAngleRange": [
+        51.94542799842619,
+        51.94542799842619
+      ],
+      "targetHeadOnMinimum": 1.0000000000000002,
+      "targetPointYRange": [
+        0.180000007152557,
+        0.180000007152557
+      ],
+      "landingFootprints": [],
+      "arrivalMaxPlaneError": null,
+      "bodyFinal": {
+        "basis": [
+          [
+            0.70710676908493,
+            0.0,
+            -0.70710676908493
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.70710676908493,
+            0.0,
+            0.70710676908493
+          ]
+        ],
+        "origin": [
+          -0.282842636108398,
+          0.0166666638106108,
+          -0.282842636108398
+        ]
+      },
+      "finalQuery": {
+        "after": {
+          "floorNormal": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "grounded": true,
+          "lastMotion": [
+            0.0488898158073425,
+            0.0,
+            0.0488898158073425
+          ],
+          "onCeiling": false,
+          "onWall": true,
+          "parentDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformAngularVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "realVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "resetCount": 1,
+          "slideCount": 1,
+          "transform": {
+            "basis": [
+              [
+                0.70710676908493,
+                0.0,
+                -0.70710676908493
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.70710676908493,
+                0.0,
+                0.70710676908493
+              ]
+            ],
+            "origin": [
+              -0.282842636108398,
+              0.0166666638106108,
+              -0.282842636108398
+            ]
+          },
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "before": {
+          "floorNormal": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "grounded": true,
+          "lastMotion": [
+            0.0488898158073425,
+            0.0,
+            0.0488898158073425
+          ],
+          "onCeiling": false,
+          "onWall": true,
+          "parentDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformAngularVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "realVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "resetCount": 1,
+          "slideCount": 1,
+          "transform": {
+            "basis": [
+              [
+                0.70710676908493,
+                0.0,
+                -0.70710676908493
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.70710676908493,
+                0.0,
+                0.70710676908493
+              ]
+            ],
+            "origin": [
+              -0.282842636108398,
+              0.0166666638106108,
+              -0.282842636108398
+            ]
+          },
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "bodyRid": 274877906947,
+        "collideSeparationRay": true,
+        "contacts": [
+          {
+            "depth": 0.0200283713638783,
+            "localShape": 0,
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "path": "/root/@Node3D@22/BaselineBase",
+            "point": [
+              -0.282842636108398,
+              0.0,
+              -0.282842636108398
+            ],
+            "rid": 257698037760,
+            "shape": 0,
+            "velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "count": 1,
+        "excludeBodies": [],
+        "excludeObjects": [],
+        "from": {
+          "basis": [
+            [
+              0.70710676908493,
+              0.0,
+              -0.70710676908493
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.70710676908493,
+              0.0,
+              0.70710676908493
+            ]
+          ],
+          "origin": [
+            -0.282842636108398,
+            0.0166666638106108,
+            -0.282842636108398
+          ]
+        },
+        "hit": true,
+        "margin": 0.0199999995529652,
+        "maxCollisions": 32,
+        "motion": [
+          0.0,
+          -0.0200999993830919,
+          0.0
+        ],
+        "recoveryAsCollision": true,
+        "remainder": [
+          0.0,
+          -0.00149179622530937,
+          0.0
+        ],
+        "safeFraction": 0.92578125,
+        "travel": [
+          0.0,
+          -0.0165772717446089,
+          0.0
+        ],
+        "unsafeFraction": 0.931640625
+      }
+    },
+    {
+      "caseIndex": 6,
+      "spec": {
+        "radius": 0.42,
+        "rise": 0.2,
+        "yawDegrees": -45.0
+      },
+      "recordedOutcome": "blocked_with_target_witness",
+      "independentTerminalProof": true,
+      "windowResponses": 120,
+      "firstFrame": 696,
+      "lastFrame": 815,
+      "maxWholeDisplacement": 0.0,
+      "alongMin": -0.3999998920018545,
+      "alongMax": -0.3999998920018545,
+      "baseRid": 287762808832,
+      "targetRid": 296352743426,
+      "baseWalkableContactsPerResponse": [
+        1
+      ],
+      "supportAngleRange": [
+        0.0,
+        0.0
+      ],
+      "targetSlideAngleRange": [
+        55.34578200249243,
+        55.34578200249243
+      ],
+      "targetHeadOnMinimum": 0.9999999999999999,
+      "targetPointYRange": [
+        0.200000002980232,
+        0.200000002980232
+      ],
+      "landingFootprints": [],
+      "arrivalMaxPlaneError": null,
+      "bodyFinal": {
+        "basis": [
+          [
+            0.70710676908493,
+            0.0,
+            0.70710676908493
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            -0.70710676908493,
+            0.0,
+            0.70710676908493
+          ]
+        ],
+        "origin": [
+          0.282842636108398,
+          0.0166666638106108,
+          -0.282842636108398
+        ]
+      },
+      "finalQuery": {
+        "after": {
+          "floorNormal": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "grounded": true,
+          "lastMotion": [
+            -0.0383936949074268,
+            0.0,
+            0.0383936949074268
+          ],
+          "onCeiling": false,
+          "onWall": true,
+          "parentDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformAngularVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "realVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "resetCount": 1,
+          "slideCount": 1,
+          "transform": {
+            "basis": [
+              [
+                0.70710676908493,
+                0.0,
+                0.70710676908493
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                -0.70710676908493,
+                0.0,
+                0.70710676908493
+              ]
+            ],
+            "origin": [
+              0.282842636108398,
+              0.0166666638106108,
+              -0.282842636108398
+            ]
+          },
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "before": {
+          "floorNormal": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "grounded": true,
+          "lastMotion": [
+            -0.0383936949074268,
+            0.0,
+            0.0383936949074268
+          ],
+          "onCeiling": false,
+          "onWall": true,
+          "parentDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformAngularVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "realVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "resetCount": 1,
+          "slideCount": 1,
+          "transform": {
+            "basis": [
+              [
+                0.70710676908493,
+                0.0,
+                0.70710676908493
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                -0.70710676908493,
+                0.0,
+                0.70710676908493
+              ]
+            ],
+            "origin": [
+              0.282842636108398,
+              0.0166666638106108,
+              -0.282842636108398
+            ]
+          },
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "bodyRid": 304942678019,
+        "collideSeparationRay": true,
+        "contacts": [
+          {
+            "depth": 0.0199105925858021,
+            "localShape": 0,
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "path": "/root/@Node3D@26/BaselineBase",
+            "point": [
+              0.282842636108398,
+              0.0,
+              -0.282842636108398
+            ],
+            "rid": 287762808832,
+            "shape": 0,
+            "velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "count": 1,
+        "excludeBodies": [],
+        "excludeObjects": [],
+        "from": {
+          "basis": [
+            [
+              0.70710676908493,
+              0.0,
+              0.70710676908493
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              -0.70710676908493,
+              0.0,
+              0.70710676908493
+            ]
+          ],
+          "origin": [
+            0.282842636108398,
+            0.0166666638106108,
+            -0.282842636108398
+          ]
+        },
+        "hit": true,
+        "margin": 0.0199999995529652,
+        "maxCollisions": 32,
+        "motion": [
+          0.0,
+          -0.0200999993830919,
+          0.0
+        ],
+        "recoveryAsCollision": true,
+        "remainder": [
+          0.0,
+          -0.0016095694154501,
+          0.0
+        ],
+        "safeFraction": 0.919921875,
+        "travel": [
+          0.0,
+          -0.0164594985544682,
+          0.0
+        ],
+        "unsafeFraction": 0.92578125
+      }
+    },
+    {
+      "caseIndex": 7,
+      "spec": {
+        "radius": 0.42,
+        "rise": 0.2,
+        "yawDegrees": 45.0
+      },
+      "recordedOutcome": "blocked_with_target_witness",
+      "independentTerminalProof": true,
+      "windowResponses": 120,
+      "firstFrame": 842,
+      "lastFrame": 961,
+      "maxWholeDisplacement": 0.0,
+      "alongMin": -0.3999998920018545,
+      "alongMax": -0.3999998920018545,
+      "baseRid": 317827579904,
+      "targetRid": 326417514498,
+      "baseWalkableContactsPerResponse": [
+        1
+      ],
+      "supportAngleRange": [
+        0.0,
+        0.0
+      ],
+      "targetSlideAngleRange": [
+        55.34578200249243,
+        55.34578200249243
+      ],
+      "targetHeadOnMinimum": 0.9999999999999999,
+      "targetPointYRange": [
+        0.200000002980232,
+        0.200000002980232
+      ],
+      "landingFootprints": [],
+      "arrivalMaxPlaneError": null,
+      "bodyFinal": {
+        "basis": [
+          [
+            0.70710676908493,
+            0.0,
+            -0.70710676908493
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.70710676908493,
+            0.0,
+            0.70710676908493
+          ]
+        ],
+        "origin": [
+          -0.282842636108398,
+          0.0166666638106108,
+          -0.282842636108398
+        ]
+      },
+      "finalQuery": {
+        "after": {
+          "floorNormal": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "grounded": true,
+          "lastMotion": [
+            0.0383936949074268,
+            0.0,
+            0.0383936949074268
+          ],
+          "onCeiling": false,
+          "onWall": true,
+          "parentDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformAngularVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "realVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "resetCount": 1,
+          "slideCount": 1,
+          "transform": {
+            "basis": [
+              [
+                0.70710676908493,
+                0.0,
+                -0.70710676908493
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.70710676908493,
+                0.0,
+                0.70710676908493
+              ]
+            ],
+            "origin": [
+              -0.282842636108398,
+              0.0166666638106108,
+              -0.282842636108398
+            ]
+          },
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "before": {
+          "floorNormal": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "grounded": true,
+          "lastMotion": [
+            0.0383936949074268,
+            0.0,
+            0.0383936949074268
+          ],
+          "onCeiling": false,
+          "onWall": true,
+          "parentDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformAngularVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "platformVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "realVelocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "resetCount": 1,
+          "slideCount": 1,
+          "transform": {
+            "basis": [
+              [
+                0.70710676908493,
+                0.0,
+                -0.70710676908493
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.70710676908493,
+                0.0,
+                0.70710676908493
+              ]
+            ],
+            "origin": [
+              -0.282842636108398,
+              0.0166666638106108,
+              -0.282842636108398
+            ]
+          },
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "bodyRid": 335007449091,
+        "collideSeparationRay": true,
+        "contacts": [
+          {
+            "depth": 0.0200283713638783,
+            "localShape": 0,
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "path": "/root/@Node3D@30/BaselineBase",
+            "point": [
+              -0.282842636108398,
+              0.0,
+              -0.282842636108398
+            ],
+            "rid": 317827579904,
+            "shape": 0,
+            "velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "count": 1,
+        "excludeBodies": [],
+        "excludeObjects": [],
+        "from": {
+          "basis": [
+            [
+              0.70710676908493,
+              0.0,
+              -0.70710676908493
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.70710676908493,
+              0.0,
+              0.70710676908493
+            ]
+          ],
+          "origin": [
+            -0.282842636108398,
+            0.0166666638106108,
+            -0.282842636108398
+          ]
+        },
+        "hit": true,
+        "margin": 0.0199999995529652,
+        "maxCollisions": 32,
+        "motion": [
+          0.0,
+          -0.0200999993830919,
+          0.0
+        ],
+        "recoveryAsCollision": true,
+        "remainder": [
+          0.0,
+          -0.00149179622530937,
+          0.0
+        ],
+        "safeFraction": 0.92578125,
+        "travel": [
+          0.0,
+          -0.0165772717446089,
+          0.0
+        ],
+        "unsafeFraction": 0.931640625
+      }
+    }
+  ]
+}

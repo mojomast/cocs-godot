@@ -1,0 +1,137 @@
+{
+  "scope": "AL delivery; this inventory self-excluded",
+  "files": {
+    "godot/tests/walker_baseline_characterization/baseline-characterization-al-01/exploration/walker.gd": {
+      "sha256": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+      "bytes": 4222
+    },
+    "godot/tests/walker_baseline_characterization/baseline-characterization-al-01/grant.json": {
+      "sha256": "f5fca7640bcb438c1a3b9d1c1895c9c30c0d485e1a41330a9c00278f63f4cfcd",
+      "bytes": 389
+    },
+    "godot/tests/walker_baseline_characterization/baseline-characterization-al-01/project.godot": {
+      "sha256": "f52b2014f10f3314eb1afdcce157d398c3f6ab39dd36722a9f03677bc4892574",
+      "bytes": 214
+    },
+    "godot/tests/walker_baseline_characterization/baseline-characterization-al-01/radius-rise-dependencies.json": {
+      "sha256": "7ecbd6a2f300fbbc698eea47c47209ae710a64b57e02a72a4d63fd044d7c94e4",
+      "bytes": 607
+    },
+    "godot/tests/walker_baseline_characterization/baseline-characterization-al-01/radius-rise-result.json": {
+      "sha256": "f9e77adc174d3a4cc03b9ced716e5f89888ff2163217580bd1bd55cb9e17fc04",
+      "bytes": 4343291
+    },
+    "godot/tests/walker_baseline_characterization/baseline-characterization-al-01/radius-rise-start.json": {
+      "sha256": "3f861423ca26ed57d8f1e3626bb5d81ec2b9b01d3a52a50fdda83aa111f7d730",
+      "bytes": 1454
+    },
+    "godot/tests/walker_baseline_characterization/baseline-characterization-al-01/radius-rise-supervisor.json": {
+      "sha256": "0e6b99eac0eb60336eaa325ff32607b94c28b45f7748cc6186987c54b400b303",
+      "bytes": 45632
+    },
+    "godot/tests/walker_baseline_characterization/baseline-characterization-al-01/radius-rise.log": {
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "bytes": 73
+    },
+    "godot/tests/walker_baseline_characterization/baseline-characterization-al-01/source.json": {
+      "sha256": "8ddfd02d9fac88a5a5f6e3dcdb34f432a2654bbbfc9e045ab91949d8df1882a4",
+      "bytes": 6023
+    },
+    "godot/tests/walker_baseline_characterization/baseline-characterization-al-01/tests/walker_baseline_characterization/driver.gd": {
+      "sha256": "8d07e2024a44dc3b4d3386228487f373ffedc4d3a0d791d061e17883dd8d5262",
+      "bytes": 9164
+    },
+    "godot/tests/walker_baseline_characterization/baseline-characterization-al-01/tests/walker_baseline_characterization/fixture.gd": {
+      "sha256": "52ddc28cac854c7b80161d670369d93f2d0cfc1fa89ee96680423b9b213d489f",
+      "bytes": 2447
+    },
+    "godot/tests/walker_baseline_characterization/baseline-characterization-al-01/tests/walker_baseline_characterization/observe.gd": {
+      "sha256": "8085da92e0386f18deacbc9817821ada2d30f3b44ace1e1070010673d4e53f24",
+      "bytes": 4432
+    },
+    "godot/tests/walker_baseline_characterization/baseline-characterization-al-01/tests/walker_baseline_characterization/policy.gd": {
+      "sha256": "b67caaad7d2cd0b10a7e37da2185df3a9e13e877b593c77f14de928dcb41e1f6",
+      "bytes": 14756
+    },
+    "godot/tests/walker_baseline_characterization/baseline-characterization-al-01/ui/mouse_motion.gd": {
+      "sha256": "1edc97f26ccf98a6c5f776bf72968cf5fd1258d129566006c0c3ae1222716581",
+      "bytes": 333
+    },
+    "godot/tests/walker_baseline_characterization/baseline-characterization-al-01/ui/settings_access.gd": {
+      "sha256": "2bb46c9e6ee5dabbdef7a4cd864bf4afcae2a3c8dd7be93d0180a907da7920e0",
+      "bytes": 1385
+    },
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-al/README.md": {
+      "sha256": "d6807580c39c0532f83eccf9831c81e108588a033b2b04731151b2123e41db01",
+      "bytes": 8758
+    },
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-al/audit_al.py": {
+      "sha256": "c5a9c4510831bae0fb64261befca7bd0115c8253e4626654dcf0a3ef35625695",
+      "bytes": 7644
+    },
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-al/evidence/AL-release.json": {
+      "sha256": "b0a4d153a5c78fe4464454f25ebb9041af13bab8a67965ba1925efc57719adea",
+      "bytes": 1270
+    },
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-al/evidence/after.json": {
+      "sha256": "daad1559b50a35cbbe896a081f301f9e7383c8fdbf01b21b15dfc1a4aea37ce0",
+      "bytes": 7497286
+    },
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-al/evidence/analysis.json": {
+      "sha256": "d1b99d374591bbb998d2c4226dbbb8f32da0c4d5182f10af6a263f5eebcfbcc6",
+      "bytes": 3467
+    },
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-al/evidence/approved-design-tests.log": {
+      "sha256": "da3d6452900460013e6fcc6c0d2efb50fea221237280c024276af7b5fb606c94",
+      "bytes": 103
+    },
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-al/evidence/authorization.json": {
+      "sha256": "e0fbad8a16ad0d2c69bb44a06e47cac8c5891dd9b4fb8d18eeb11168c39fad82",
+      "bytes": 1146
+    },
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-al/evidence/before.json": {
+      "sha256": "0c6c6158fd4c2daca1df273cba1f7480582775d3190fe54b95b336fb54ac4a8e",
+      "bytes": 7499039
+    },
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-al/evidence/command-history.md": {
+      "sha256": "cfb8acf874fa5c2bbc68705f7643eef1e58beb2d37c30536b3a8006592c20ac5",
+      "bytes": 3782
+    },
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-al/evidence/current-source-tests.log": {
+      "sha256": "f31111568d1b5cee209d70c6c5e979e946d98ab1c781f879186a11e513b40800",
+      "bytes": 134
+    },
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-al/evidence/execution-record.json": {
+      "sha256": "13dac51c9af5d95c9122d94f808aebac313881a5518bb81d93cb384df9cc6265",
+      "bytes": 4006
+    },
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-al/evidence/independent-terminal-proofs.json": {
+      "sha256": "968c5f8174664726c5568d558ee22088280105a81f522c10e94df6bde2dfbd82",
+      "bytes": 49864
+    },
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-al/evidence/native-detail.json": {
+      "sha256": "66c9d23dbefe9d310b7313b1c52b24e3ca2e0189cc5babd87121885b393a94a8",
+      "bytes": 34842
+    },
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-al/evidence/preservation.json": {
+      "sha256": "24f7655515fd024f400bb6e4816a36f158eec6db9431936c257cc0166e27798e",
+      "bytes": 606
+    },
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-al/evidence/response-chart.csv": {
+      "sha256": "22aa90ab8e648ccac06463e5c62ce17ced71fcddb2d1e5a4ffd76534ccf92d05",
+      "bytes": 492037
+    },
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-al/evidence/supervisor-command.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-al/independent_proofs.py": {
+      "sha256": "49d6c1f3e115853b9194ff9f4e4025bf23fd0ea9a04b74fa32a09a9d39afbf31",
+      "bytes": 5000
+    },
+    "tools/godot-multiplayer/new-maps/walker-baseline-characterization-al/inspect_al.py": {
+      "sha256": "613bd94eea769619033b932d5550b900ec364ce7224e70473d2cc73866a0b065",
+      "bytes": 4581
+    }
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "utc": "2026-10-04T08:45:23.323135+00:00",
+  "invocations": 1,
+  "nativeReceiptPresent": true,
+  "nativeStrictPythonReplay": true,
+  "nativeReturnCode": 0,
+  "supervisorFailed": false,
+  "releasedCleanly": true,
+  "partialCountersMayBeUnknown": false,
+  "physicalCallCounts": null,
+  "nativeOutcome": "collection_complete",
+  "nativeFaultCode": null,
+  "nativeSha256": "f9e77adc174d3a4cc03b9ced716e5f89888ff2163217580bd1bd55cb9e17fc04",
+  "supervisorSha256": "0e6b99eac0eb60336eaa325ff32607b94c28b45f7748cc6186987c54b400b303",
+  "logSha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+  "markers": [],
+  "records": [
+    {
+      "caseIndex": 0,
+      "spec": {
+        "radius": 0.35,
+        "rise": 0.15,
+        "yawDegrees": -45
+      },
+      "nativeStatus": "completed",
+      "outcome": "blocked_with_target_witness",
+      "settleReturnedRecords": 20,
+      "inputReturnedRecords": 127,
+      "qualification": "native records"
+    },
+    {
+      "caseIndex": 1,
+      "spec": {
+        "radius": 0.35,
+        "rise": 0.15,
+        "yawDegrees": 45
+      },
+      "nativeStatus": "completed",
+      "outcome": "blocked_with_target_witness",
+      "settleReturnedRecords": 20,
+      "inputReturnedRecords": 127,
+      "qualification": "native records"
+    },
+    {
+      "caseIndex": 2,
+      "spec": {
+        "radius": 0.42,
+        "rise": 0.15,
+        "yawDegrees": -45
+      },
+      "nativeStatus": "completed",
+      "outcome": "arrived",
+      "settleReturnedRecords": 20,
+      "inputReturnedRecords": 21,
+      "qualification": "native records"
+    },
+    {
+      "caseIndex": 3,
+      "spec": {
+        "radius": 0.42,
+        "rise": 0.15,
+        "yawDegrees": 45
+      },
+      "nativeStatus": "completed",
+      "outcome": "arrived",
+      "settleReturnedRecords": 20,
+      "inputReturnedRecords": 21,
+      "qualification": "native records"
+    },
+    {
+      "caseIndex": 4,
+      "spec": {
+        "radius": 0.42,
+        "rise": 0.18,
+        "yawDegrees": -45
+      },
+      "nativeStatus": "completed",
+      "outcome": "blocked_with_target_witness",
+      "settleReturnedRecords": 20,
+      "inputReturnedRecords": 126,
+      "qualification": "native records"
+    },
+    {
+      "caseIndex": 5,
+      "spec": {
+        "radius": 0.42,
+        "rise": 0.18,
+        "yawDegrees": 45
+      },
+      "nativeStatus": "completed",
+      "outcome": "blocked_with_target_witness",
+      "settleReturnedRecords": 20,
+      "inputReturnedRecords": 126,
+      "qualification": "native records"
+    },
+    {
+      "caseIndex": 6,
+      "spec": {
+        "radius": 0.42,
+        "rise": 0.2,
+        "yawDegrees": -45
+      },
+      "nativeStatus": "completed",
+      "outcome": "blocked_with_target_witness",
+      "settleReturnedRecords": 20,
+      "inputReturnedRecords": 126,
+      "qualification": "native records"
+    },
+    {
+      "caseIndex": 7,
+      "spec": {
+        "radius": 0.42,
+        "rise": 0.2,
+        "yawDegrees": 45
+      },
+      "nativeStatus": "completed",
+      "outcome": "blocked_with_target_witness",
+      "settleReturnedRecords": 20,
+      "inputReturnedRecords": 126,
+      "qualification": "native records"
+    }
+  ],
+  "selectedHeight": null,
+  "candidateAdmission": false,
+  "productionPromotion": false,
+  "nativeRetries": 0,
+  "sourceCorrections": 0,
+  "candidateMapJourneysRun": 0,
+  "productionMotionAccountingOpen": true,
+  "releasedUtc": "2026-10-04T08:45:10.854070+00:00"
+}

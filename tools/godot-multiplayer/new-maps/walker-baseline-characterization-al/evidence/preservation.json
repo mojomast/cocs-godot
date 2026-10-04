@@ -1,0 +1,29 @@
+{
+  "utc": "2026-10-04T08:45:23.418115+00:00",
+  "archives": {
+    "AF": 24,
+    "AE": 46,
+    "AD": 45,
+    "AB": 140,
+    "Z": 253,
+    "AA": 141,
+    "AC": 265,
+    "AG": 29,
+    "AH": 42,
+    "AI": 40,
+    "AJ": 23,
+    "AK": 51,
+    "X": 600,
+    "U": 264
+  },
+  "productionDependencies": 15,
+  "approvedDesignUnchanged": true,
+  "historicalProvenanceUnchanged": true,
+  "viewerUnchanged": true,
+  "sevenDisplaysUnchanged": true,
+  "historicalReceiptsUnchanged": true,
+  "preexistingSidecarsVerified": 30497,
+  "newSidecars": {},
+  "approvedDeliveryHashesVerified": 15,
+  "noCleanupPerformed": true
+}
