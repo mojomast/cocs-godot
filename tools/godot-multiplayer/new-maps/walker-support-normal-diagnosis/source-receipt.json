@@ -1,0 +1,121 @@
+{
+  "status": "Source-only diagnosis/design; no correction implemented",
+  "base": "fb377b21",
+  "approvedSourceParent": "3dcdbb27",
+  "branch": "astra/walker-support-normal-diagnosis",
+  "AMArchiveIndependentReview": "active; not superseded by diagnosis",
+  "AMManifestSha256": "f86b2f6eff59b70fed653a80ca01ce2d590ee07214247317e8c1a89d0419a026",
+  "AMNativeSha256": "779b00c88f53d6b4fcb9b171844769ffc2133e2d11c0bf3300419861b3a81a57",
+  "engineInvocations": 0,
+  "nativeParserImports": 0,
+  "nativeStages": 0,
+  "grants": 0,
+  "actualChildJobs": 0,
+  "runtimeSourceChanges": 0,
+  "focusedOfflineTestsPassed": 8,
+  "priorPreservation": {
+    "archives": {
+      "AF": 24,
+      "AE": 46,
+      "AD": 45,
+      "AB": 140,
+      "Z": 253,
+      "AA": 141,
+      "AC": 265,
+      "AG": 29,
+      "AH": 42,
+      "AI": 40,
+      "AJ": 23,
+      "AL": 33,
+      "AK": 51,
+      "X": 600,
+      "U": 264
+    },
+    "productionDependencies": 15,
+    "approvedDesignAndPriorSourcesUnchanged": true,
+    "historicalProvenanceUnchanged": true
+  },
+  "AMVerification": {
+    "AMEntries": 60,
+    "AMBytes": 49983925,
+    "manifestBytes": 13282,
+    "manifestSha256": "f86b2f6eff59b70fed653a80ca01ce2d590ee07214247317e8c1a89d0419a026",
+    "currentControlledPinsUnchanged": true
+  },
+  "sourceReferences": {
+    "godot/tests/walker_step_up/response_guard.gd": {
+      "sha256": "ff242f1c352755e3655666440731115911b59dc431f0ec7c37807e8c8ec281b0",
+      "bytes": 4299
+    },
+    "godot/tests/walker_step_up/sweep_proposal.gd": {
+      "sha256": "b253464820a84d8de7e1cfc5abf7d3852f392e055ac6e71d42ce6a678d538d41",
+      "bytes": 17360
+    },
+    "godot/tests/walker_snap_parity/query_pair.gd": {
+      "sha256": "91f427d0ea0d47e9397a7331dd49f798d8041d5d93e31e11331da6ad31a475f7",
+      "bytes": 3619
+    },
+    "godot/tests/walker_snap_parity/planner.gd": {
+      "sha256": "9d61d505822208aaacc03bbb8017d4458d068e5430389aa5849eae7b6fdf01e6",
+      "bytes": 3386
+    },
+    "godot/tests/walker_parity_response/planner.gd": {
+      "sha256": "7dadd0a3fb018de12afe867ff5a688663347e99bd6335f92353519d136e76b31",
+      "bytes": 992
+    },
+    "godot/tests/walker_parity_admission/candidate.gd": {
+      "sha256": "0aae2ac30347e21286e09fc1b8f1a6b8937f37aef447d99af083a12700261314",
+      "bytes": 9468
+    },
+    "godot/exploration/walker.gd": {
+      "sha256": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+      "bytes": 4222
+    }
+  },
+  "files": {
+    "tools/godot-multiplayer/new-maps/walker-support-normal-diagnosis/DESIGN.md": {
+      "sha256": "c55dc7d156a24a20f5615ecfdbb0fd2595ec3c85e1aadf7e483fedf6c7ff7126",
+      "bytes": 6638
+    },
+    "tools/godot-multiplayer/new-maps/walker-support-normal-diagnosis/README.md": {
+      "sha256": "3baf631b68faf820179b50c222a3495e6f5d504a6e80c64bb214d512dd5fb41f",
+      "bytes": 11121
+    },
+    "tools/godot-multiplayer/new-maps/walker-support-normal-diagnosis/analyze.py": {
+      "sha256": "944f5997fa588009f2392c224b0356c4939711674495ebb967e51475ab78620c",
+      "bytes": 6885
+    },
+    "tools/godot-multiplayer/new-maps/walker-support-normal-diagnosis/comparison.json": {
+      "sha256": "b2a40dd21ee67d484a678be91e90824758c5a94fad601011cf757c62bfcd6392",
+      "bytes": 93728
+    },
+    "tools/godot-multiplayer/new-maps/walker-support-normal-diagnosis/engine-references.json": {
+      "sha256": "c127d812f4b67dde8d74739b1287c236086d6c180b5d22ba8cc143298ad7f758",
+      "bytes": 12492
+    },
+    "tools/godot-multiplayer/new-maps/walker-support-normal-diagnosis/operands.csv": {
+      "sha256": "10f50035629c70b7387956a9003e6c9ed42ef785c8dfe1b708a7a6044eaca729",
+      "bytes": 12422
+    },
+    "tools/godot-multiplayer/new-maps/walker-support-normal-diagnosis/preservation.json": {
+      "sha256": "b3cfc9250606e33786f681cb468f248322032a1f717213252f76ed3965937774",
+      "bytes": 201
+    },
+    "tools/godot-multiplayer/new-maps/walker-support-normal-diagnosis/prior-preservation.json": {
+      "sha256": "5e64693e71e3015be81aef75302dc840ddd125eb6eb0b6323fb1afa4b8f1d2b7",
+      "bytes": 359
+    },
+    "tools/godot-multiplayer/new-maps/walker-support-normal-diagnosis/test_diagnosis.py": {
+      "sha256": "9b5634f331b44eae5dc0745231177087faec83d11a84e73323a1fd1969d70a32",
+      "bytes": 4516
+    }
+  },
+  "nativeAdmission": false,
+  "productionPromotion": false,
+  "physicalCallCounts": null,
+  "backendCauseUniquelyEstablished": false,
+  "preferredNextStep": "Separately reviewed fixed read-only predicted/actual endpoint down32 and zero-motion semantics comparison; no implementation or grant here",
+  "candidateMapJourneysUnrun": 60,
+  "staticVesperFailuresUnresolved": 184,
+  "productionAccountingOpen": true
+}
