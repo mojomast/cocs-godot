@@ -1,5 +1,13 @@
 # New Moth resources and Blender-authored map variety
 
+## Current owner — fixed baseline characterization AL
+
+**MOTH-BLENDER-20261004-AL is the sole heavy grant**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation **`b5deca56`**. The package passed
+independent review and 52 parent checks/fifteen hashes. One fixed eight-profile
+ordinary-Walker invocation is authorized, then inspect/audit/release. No retries,
+height selection, candidate continuation or maps. Unresolved is not blocked evidence.
+
 **Baseline package `3b2fb4cd` is under independent review.** It implements the
 fixed eight-profile matrix with per-rise support/geometry, ordinary Walker only,
 strict outcome evidence and bounded supervision. Producer reports 39 offline tests;

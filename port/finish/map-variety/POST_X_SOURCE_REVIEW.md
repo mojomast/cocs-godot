@@ -1,5 +1,25 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Baseline package approved/integrated; AL authorized
+
+Independent review approved `3b2fb4cd`, integrated as **`b5deca56`**. Parent
+passed **52 checks** (39 Python, thirteen package), fifteen delivery hashes and
+source-receipt identity. Seven-script ordinary-Walker closure, per-rise geometry,
+strict operand classifications and failure-safe ownership passed review.
+
+**MOTH-BLENDER-20261004-AL** is the sole heavy grant, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `b5deca56`. Free lock and only the
+preserved viewer were confirmed at 08:40:42.405361Z. One fixed eight-profile
+`baseline-characterization-v1` / `baseline-only` / `radius-rise` invocation is
+authorized, with 2,080-response cap and 170/180-second deadlines, then stop/release.
+
+Each blocked window requires all 120 grounded, target-witnessed stalled responses
+with qualified base support. Arrivals require actual-rise full-footprint support;
+unresolved-at-cap is not blocked. Fault stops remaining profiles. Mixed contacts
+and diagnostic engine floor allowance remain qualified. Selection stays null;
+no retries, candidate continuation or map work. AK remains failed and production
+accounting stays unresolved even if all characterization profiles complete.
+
 ## Baseline characterization implementation delivered for review
 
 **`3b2fb4cd`** implements the accepted fixed eight-profile matrix in a dedicated

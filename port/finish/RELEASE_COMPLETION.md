@@ -10,7 +10,13 @@ finishing and verifying the new candidate.
 Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
-**No active heavy grant. AK passed negatives/inclined, failed positive admission and released.**
+**Current heavy owner: fixed baseline characterization AL**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `b5deca56`. Source review passed;
+parent passed 52 checks and fifteen delivery hashes. One eight-profile baseline-only
+invocation is authorized, then inspect/audit/release. No retry, height selection,
+candidate continuation or maps.
+
+**AK passed negatives/inclined, failed positive admission and released.**
 Delivery `4b83de0b` / `c2e83163` / `50271f7c` passed independent review and is
 integrated through `241833ef`. Parent passed 156 checks and 51 hashes/manifest.
 Both .35 candidates reached the single synthetic tread goal; .42/−45° baseline
@@ -21,9 +27,9 @@ parent checks and seven file hashes verified. Eight baseline-only profiles compa
 .35/.15 references and .42 at .15/.18/.20 across both yaws. The dedicated package
 is being implemented source-only; new heights remain untested and no grant exists.
 See `map-variety/WALKER_BASELINE_DESIGN_REVIEW.md`.
-Implementation `3b2fb4cd` is under independent source review: seven-script closure,
-rise-derived fixtures/support, strict recorded-outcome validation and bounded
-supervisor. Producer reports 39 offline tests. No native stage or grant exists.
+Implementation `3b2fb4cd` passed review and is integrated as `b5deca56`: seven-script
+closure, rise-derived fixtures/support, strict outcomes and bounded supervision.
+AL permits characterization only; unresolved results cannot become blocked evidence.
 
 **AJ confirmed the receipt-only hypothesis and released.**
 Delivery `bb403edf` / `bfb32d4e` passed independent review and is integrated through
@@ -359,7 +365,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P through AK have released; no heavy grant is active.**
+**P through AK have released; AL owns fixed baseline characterization.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -400,6 +406,12 @@ are introduced without the user's renewed scope. The subsequent overnight
 directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
+
+**Active: `MOTH-BLENDER-20261004-AL`**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `b5deca56`. Phase
+`baseline-characterization-v1`, mode `baseline-only`, group `radius-rise` only.
+One fixed eight-profile invocation, 2,080-response maximum, 170/180-second bounds;
+stop and three measured release audits. No retry/selection/candidate/maps.
 
 **Released: `MOTH-BLENDER-20261004-AK`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8a355e98`. Three ordered groups,
