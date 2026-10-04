@@ -1,5 +1,16 @@
 # New Moth resources and Blender-authored map variety
 
+**Source follow-ups:** Parallax census `8f166beb` reports sixteen singular glyph
+tangent entries causing 48 mismatched corners on 32 faces. Independent review is
+checking that result and an explicit sixteen-entry geometric fallback proposal;
+Sol is separately tracing broader UV/normal-map conventions. No native waiver or
+expanded production patch is approved.
+
+Vesper `161f5e9e` is supported as experimental WIP, but native readiness is blocked
+by missing post-response endpoint/path/support agreement and an executable driver.
+Astra is correcting the guard and preparing reviewed control/reference/experiment
+execution. Details: `map-variety/POST_X_SOURCE_REVIEW.md`. No heavy grant is active.
+
 **Vesper swept-step proposal delivered source-only:** `161f5e9e` adds a test-only
 Walker subclass with explicit up/forward/down collision planning. Producer reports
 sixteen source tests and 940 tread-support checks. Native recovery/floor-snap

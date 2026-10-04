@@ -1,5 +1,46 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Current source reviews — native grants withheld
+
+**Vesper `161f5e9e`: experimental source/WIP only.** Independent review supports
+the unchanged production dependencies, sixteen tests and 940 actual quadrilateral
+tread certificates, but withholds native readiness. After the proved upward move,
+the subclass does not verify the parent's final endpoint/path or actual support
+against the certified landing. A proved displacement `[0,.12,.10]` can currently
+accept actual `[.04,.10,.08]` with grounded state, despite 0.04899 m endpoint error.
+A different support identity is also not rejected. This is a source predicate
+counterexample, not a native reproduction.
+
+Astra is adding explicit bounded post-response/path and collider/shape checks,
+negative regressions and an executable, versioned native driver. The current
+commit contains only a generated plan. Future driver review must enforce rejection
+controls, exact art binding, the unchanged reference's expected five passes/five
+failures, explicit authorization to continue, then experimental accepted-civic
+.35 m 10/10 before later groups. Proof faults, stalls, resets and identity drift
+must stop with accurate failed/unrun counts. The geometry oracle's four-edge loop
+also needs actual hull-length iteration before claiming non-quadrilateral coverage.
+Native recovery/snap and pre-lift movement-reporting limitations remain open.
+
+**Parallax census `8f166beb`: under independent review.** Producer reports
+155,553 node-scoped matches, 155,521 equivalent faces, 32 handedness-mismatched
+faces / 48 corner occurrences / sixteen unique entries, with no missing geometry
+or unresolved ambiguity. AA03/AA04 streams are byte-identical. The sixteen source
+entries have parallel N/T and zero binormals on nonzero-area, zero-UV-Jacobian
+glyph sides. Pinned Godot source reconstructs +1 from this singular frame, explaining
+the observed sign change without implicating tangent generation or octahedral
+direction perturbation alone.
+
+The proposed sixteen-entry glyph-extrusion fallback changes 64 BIN bytes within
+256 permitted positions, in memory only. It is an explicit geometric policy for
+singular UVs, not a unique UV-derived basis. All incident faces must agree. Old
+native data still fails against it. A separately reviewed successor contract and
+new native proof would be required; AA's three-corner contract stays immutable.
+
+Broader inherited orthogonality/UV-basis census findings are recorded separately.
+Sol is tracing authoring/export and normal-map channel conventions to determine
+their significance before any broader repair or shading claim. No heavy grant is
+active; both production proposals remain unmerged pending their focused reviews.
+
 ## Vesper swept-step source proposal received
 
 Astra delivered **`161f5e9e`** on `astra/walker-step-up-source`, based on
