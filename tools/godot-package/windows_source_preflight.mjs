@@ -11,7 +11,8 @@ import {finalResources} from './final_resources.mjs';
 import {fighterImports} from './fighter_imports.mjs';
 import {channelProduction,buildIntent} from './build_channel.mjs';
 import {WORLDS} from '../../port/multiplayer-worlds/catalog.mjs';
-import {MOVEMENT_CONTRACT,resolveSourceDerivative} from './source_derivative.mjs';
+import {MOVEMENT_CONTRACT} from './source_derivative.mjs';
+import {RACING_CONTRACT,resolveReviewedDerivative} from './racing_derivative.mjs';
 import {rejectAuthoringRuntime} from './authoring_resources.mjs';
 import {gitStagedResources,rejectStagedInputs} from './staged_resources.mjs';
 assert.equal(process.platform,'win32','Real Windows source preflight required');
@@ -28,7 +29,7 @@ const read=p=>{
   return cache.get(p);
 };
 const has=p=>paths.has(p),hash=b=>createHash('sha256').update(b).digest('hex');
-const lock=JSON.parse(read('port/contracts/source-lock.json')),derivative=resolveSourceDerivative(JSON.parse(read(MOVEMENT_CONTRACT)),read,(rev,p)=>git(['show',`${rev}:${p}`]),(a,b)=>git(['merge-base',a,b]).toString().trim()===a);
+const lock=JSON.parse(read('port/contracts/source-lock.json')),contractPath=has(RACING_CONTRACT)?RACING_CONTRACT:MOVEMENT_CONTRACT,derivative=resolveReviewedDerivative(JSON.parse(read(contractPath)),read,(rev,p)=>git(['show',`${rev}:${p}`]),(a,b)=>git(['merge-base',a,b]).toString().trim()===a);
 // Source-only generator check, with exact committed generator/output/operator bytes.
 for(const p of ['port/native-campaign/generate-core.mjs','port/native-campaign/core.generated.mjs','game/core.mjs','game/operator-verbs.mjs'])read(p);
 execFileSync(process.execPath,['port/native-campaign/generate-core.mjs','--check'],{cwd:root});

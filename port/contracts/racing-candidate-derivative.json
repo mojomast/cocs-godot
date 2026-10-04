@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "status": "source-candidate-not-native-acceptance",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "parent_contract": "port/contracts/movement-candidate-derivative.json",
+  "parent_derivative_commit": "91f58a1c5dcd85544574ba9cd11fcecd0d50d522",
+  "baseline_commit": "91f58a1c5dcd85544574ba9cd11fcecd0d50d522",
+  "derivative_commit": "9812edfaa3e90a3ca4204d1ec2168587d8d657fb",
+  "runtime_overrides": {
+    "game/race.mjs": {
+      "before": "1c448a0f00e3354dd6fa32190f85dcc6c31883f428b07193773fcd02bf2effba",
+      "after": "a50215f34f70e40fd4d20452d66aef221c32882cb8de131068c58c85f6524082"
+    }
+  }
+}
