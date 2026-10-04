@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**Single-response parity source delivered:** `d1f0889c` is under independent
+review. A separate sealed phase permits one attempt after the first eligible proof,
+with the original guard and a conservative modeled-forward check. Producer reports
+89 source tests passing. No engine grant exists; one guarded response would not
+establish landing, positive admission or production readiness. AF remains unchanged.
+
 **AF independently approved and integrated through `278f9dd2`:** Stage0 baseline
 query collection only. Parent passed 78 checks and all 24 hashes. The endpoint
 match supports a new source experiment, not positive-step acceptance. Astra is

@@ -17,6 +17,9 @@ Modeled query endpoints reproduce AE's discrepancy; no assist, unique causal pro
 or step admission follows. A separate single-response parity-candidate source
 contract is being prepared; candidate/map execution remains unapproved. See
 `map-variety/WALKER_AF_REVIEW.md`.
+Single-response contract `d1f0889c` is delivered for independent source review,
+with 89 producer tests reported passing. The new sealed phase limits execution to
+one parity attempt and preserves the original guard; no native grant is issued.
 
 **AE released after its first positive-pair failure.**
 Fresh inclined controls passed; an applied up sweep then failed endpoint agreement

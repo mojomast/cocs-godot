@@ -1,5 +1,28 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Single-response parity contract delivered for source review
+
+**`d1f0889c`**, based on `278f9dd2`, prepares a separate
+`parity-response-only-v1` / `single-response` / `parity-response` contract. It is
+unmerged and under independent review. The fixed .35 m / −45° synthetic fixture
+uses one body with unchanged Walker responses until the first eligible original
+proof, then allows one parity attempt, at most one UP call and one parent response,
+and stops on success, rejection or fault.
+
+The proposed candidate retains original clearance/application/guard/postconditions,
+adding a conservative forward6 requirement of exact requested travel and no contacts.
+Telemetry separates collection, UP count, parent response count and guard result;
+`positiveAdmission` remains false. A guarded response is not a full-tread landing.
+Modeled requests do not expose internal cancellation-wrapper arithmetic, and
+production pre-lift accounting remains unresolved.
+
+Preparation pins frozen AF24, fifteen production dependencies and a thirteen-script
+closure. AF's nine-script comparison contract stays immutable. The supervisor retains
+measured release audits and cleanup protections and adds fast-exit script-error
+checking. Producer reports **89 source tests** passing (24 new plus 65 prior).
+No native staging, grant or engine run exists; no heavy grant is active. All sixty
+candidate map journeys remain unrun.
+
 **AF collection evidence approved and integrated through `278f9dd2`.** Parent
 passed 78 source/package checks and all 24 hashes. Independent replay confirms
 the modeled endpoints and baseline-only execution; no assisted response or support
