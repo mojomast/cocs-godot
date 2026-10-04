@@ -11,10 +11,11 @@ Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
 **No active heavy grant. AL completed baseline characterization and released.**
-Delivery `75271920` / `068705de` is under independent review: eight complete
-profiles, six target-witnessed blocks and two ordinary arrivals, 960 responses.
-Parent verified 33 files/manifest and three empty audits/one group. No height
-selected or candidate feasibility established; no continuation/maps are authorized.
+Delivery `75271920` / `068705de` passed independent review and is integrated through
+`0d8822ee`. Parent passed 52 checks and 33 hashes/manifest. Eight profiles qualify:
+six blocked, two ordinary arrivals, 960 responses/support observations. Review selects
+.18 for the next .42 source fixture only; candidate feasibility remains unproved.
+Versioned admission source preparation is active. See `map-variety/WALKER_AL_REVIEW.md`.
 
 **AK passed negatives/inclined, failed positive admission and released.**
 Delivery `4b83de0b` / `c2e83163` / `50271f7c` passed independent review and is

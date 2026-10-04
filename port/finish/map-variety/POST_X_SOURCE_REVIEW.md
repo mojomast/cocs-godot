@@ -1,5 +1,12 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**AL characterization approved and integrated through `0d8822ee`.** Parent
+passed 52 checks and all 33 hashes/manifest. Independent review verifies all 960
+support observations and selects .18 for the next .42 source fixture, leaving
+the native null selection immutable. See `WALKER_AL_REVIEW.md`. A separately
+versioned admission proposal is assigned source-only; no candidate feasibility,
+fresh admission or execution grant follows.
+
 ## AL delivered/released — complete fixed baseline characterization
 
 **`75271920` / `068705de`** report one engine/supervisor exit0 invocation and

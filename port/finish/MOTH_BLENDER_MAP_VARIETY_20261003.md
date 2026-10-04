@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**AL independently approved/integrated through `0d8822ee`.** Parent passed 52
+checks and all 33 hashes/manifest. Review selects .18 for the .42 fixture in a
+new source proposal; the native report remains unmodified. Fresh paired admission
+and prerequisites are still required. Review: `map-variety/WALKER_AL_REVIEW.md`.
+The versioned package is being prepared source-only; no heavy grant is active.
+
 ## Current checkpoint — AL completed and released
 
 **No heavy grant is active.** AL `75271920` / `068705de` completed eight baseline
