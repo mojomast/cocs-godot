@@ -1,5 +1,15 @@
 # New Moth resources and Blender-authored map variety
 
+## Current checkpoint — AH stopped and released
+
+**No heavy grant is active.** AH `560fff1e` / `c3c922f9` / `22841f8c` reports
+34 negative pairs passing, followed by an inclined invocation failure with no
+native result receipt. Positive admission was unrun. Inclined internal counts and
+the rejecting branch remain unknown. Parent verified 42 hashes and three measured
+empty audits/two groups; release is 05:34:16.414998Z and lock availability was
+confirmed at 05:42:46.502081Z. Archive review and source-only admission diagnosis
+are active; no retry, promotion or map execution is authorized.
+
 ## Current owner — synthetic parity campaign AH
 
 **MOTH-BLENDER-20261004-AH is the sole heavy grant**, Astra

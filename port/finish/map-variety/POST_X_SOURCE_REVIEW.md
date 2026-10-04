@@ -1,5 +1,26 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## AH delivered/released — negatives pass; inclined invocation failed
+
+AH delivered helpers **`560fff1e` / `c3c922f9`** and evidence **`22841f8c`**.
+One negative invocation passed 34 pairs/68 profiles, with 1,284 settling and
+72 input responses (including jumps), 678 candidate ordinary responses, zero
+assists and paired kinematic agreement. Strict predecessor replay and an owner
+inspection checkpoint preceded the separate inclined invocation.
+
+That invocation exited Godot 2 / supervisor 1, with only the engine banner and
+**no native result receipt**. Host replay of negative/predecessor evidence still
+passes. The exact native rejection branch is untraced; internal inclined case/
+profile/call counts are unknown, not zero. Positive admission was not invoked
+(four pairs/eight profiles unrun). No correction, retry or continuation occurred.
+
+Parent verified **42 inventory files**, three measured empty audits/two groups,
+no survivors and lock availability at 05:42:46.502081Z. Explicit AH release is
+05:34:16.414998Z. Independent archive review is active. The producer is tracing
+the native initialization/predecessor predicates against frozen actual receipts
+source-only; no cause is accepted from the banner-only log. No heavy grant is
+active, and all sixty map journeys remain unrun.
+
 ## Synthetic contract approved/integrated; AH authorized
 
 Independent review approved **`8de9d63a` / `db144f7a` / `bb33f286`**, integrated
