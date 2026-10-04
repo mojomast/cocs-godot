@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**AI independently approved and integrated as `67450767` / `b72c2b32`.** Parent
+passed 160 checks and all 40 hashes plus the inventory's exact identity. The native
+policy gate is localized, its internal rejection remains unproved, and positive
+admission is unrun. Review: `map-variety/WALKER_AI_REVIEW.md`. No heavy grant is
+active; predicate diagnosis continues source-only and all sixty map walks are unrun.
+
 ## Current checkpoint — AI released; native policy gate identified
 
 **No heavy grant is active.** AI `cc2b72fd` / `0a644c92` passed negatives and

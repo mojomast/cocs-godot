@@ -1,5 +1,11 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**AI localized-failure archive approved and integrated through `b72c2b32`.**
+Parent passed 160 source/package checks and all 40 hashes plus manifest identity.
+Independent review confirms negatives PASS, inclined rejection at native policy
+driver gate, positive unauthorized/UNRUN. Internal subpredicate and counters remain
+unknown. See `WALKER_AI_REVIEW.md`. Deeper diagnosis is source-only; no heavy grant.
+
 ## AI delivered/released — native receipt-policy gate localized
 
 AI **`cc2b72fd` / `0a644c92`** reports negative controls PASS (34 pairs/68

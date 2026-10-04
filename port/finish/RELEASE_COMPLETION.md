@@ -11,11 +11,12 @@ Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
 **No active heavy grant. AI passed negatives, localized a native policy failure and released.**
-Delivery `cc2b72fd` / `0a644c92` is under review. Inclined admission emitted
-`predecessor.native_policy`; its internal failing predicate and case/call progress
-remain unknown. Positive admission was not authorized and remains unrun. Parent
-verified 40 files/manifest hash and three measured empty audits/two groups.
-Further predicate diagnosis is source-only; no retry/positive/map permission.
+Delivery `cc2b72fd` / `0a644c92` passed independent archive review and is integrated
+through `b72c2b32`. Parent passed 160 checks and all 40 hashes/manifest identity.
+Inclined admission emitted `predecessor.native_policy`; the internal predicate and
+case/call progress remain unknown. Positive admission remains unauthorized/unrun.
+Further diagnosis is source-only; no retry/positive/map permission. See
+`map-variety/WALKER_AI_REVIEW.md`.
 
 **AH passed negatives, failed its inclined invocation and released.**
 Delivery `560fff1e` / `c3c922f9` / `22841f8c` passed independent archive review
