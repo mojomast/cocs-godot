@@ -1,5 +1,34 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Swept-step WIP integrated; overhang control blocks native readiness
+
+Independent review approved `161f5e9e` / `556546e5` / `e16a5e1a` as isolated
+experimental WIP, integrated as **`e8f0a16b` / `faf0ff94` / `deebb1da`**. Parent
+passed all 24 portable tests and strict committed-Git shipping closure. Production
+Walker remains unchanged; no native or Vesper artifact approval follows.
+
+The original response-guard P1 is closed: exact bounded endpoint/forward-vector/
+down-axis agreement, zero parent slide collisions/platform motion, and fresh
+capsule support matching certified RID/shape/plane are required. Numeric limits
+are 1 µm minimum, about 61 µm at coordinate magnitude 66, and domain refusal at
+128 or above. Floor-snap contacts are not appended to parent slide records, so
+the conservative collision guard does not inherently preclude every valid snap.
+
+**Remaining fixture P1:** the forward overhang's lower/front corner at Y1.78/Z.12
+misses the intended raised-forward capsule sweep. At the nominal endpoint the
+distances are .375723/.445845 m for radii .35/.42, exceeding radius+margin
+.37/.44 by about 5.7–5.8 mm. The control therefore cannot justify its required
+`raised_path_blocked` result. Incidental recovery or a different rejection is not
+an acceptable substitute. Astra is correcting geometry and adding both-radius
+certificates for clear settled/up paths and obstructed forward travel.
+
+After correction and review, a new grant may cover **parse/setup → rejection
+controls → reference only**, with unexpected outcomes stopping. Candidate walks
+also require reviewed physical inclined-landing rejection and rotated-success
+controls, followed by actual results. Source preparation is assigned; no grant is
+active. The parent motion-reporting limitation, native recovery/snap behavior and
+all original static/native failures retain their existing status.
+
 **Latest follow-ups:** corrected provenance `4fe3df4e` + `8c43b112` passed
 independent review and is integrated through **`a52e37b0`**; parent reproduced its
 one analytic test/twelve texel subcases. This closes the incorrect convention-

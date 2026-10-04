@@ -1,5 +1,14 @@
 # Parallax singular-glyph policy — source approved, production contract pending
 
+**Successor contract delivered:** `81490089`, based on `1c661b95`, is under
+independent source review. It pins AA+16 with exact 64/256 BIN-byte bounds (69/304
+relative to X), verifies original packed-master provenance before new recipe
+embedding, and prepares fresh editable/reopen audits and node-scoped full native
+proof. The bridge specifies failed-AA-before versus successor-after with twelve
+matched cameras. Producer reports six source tests plus five frozen material tests
+passing and all 141 AA hashes unchanged. Actual master/artifact/grant remain null;
+autostart is disabled. AA-relative preservation is not authored-X appearance proof.
+
 ## Corrected provenance approved and integrated
 
 Independent re-review closed the provenance P1 and approved `4fe3df4e` followed

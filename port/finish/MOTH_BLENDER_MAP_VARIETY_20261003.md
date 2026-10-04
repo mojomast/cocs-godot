@@ -1,5 +1,19 @@
 # New Moth resources and Blender-authored map variety
 
+**AA-plus-16 production contract received:** `81490089` is under independent
+source review. Exact additional-entry preservation, packed-master provenance,
+fresh reopen, all 155,553 native faces / nineteen repaired entries, material proof
+and twelve matched capture views are prepared. Producer reports six source and
+five material tests passing; no successor artifact or engine grant exists.
+
+**Swept-step experimental sources integrated through `deebb1da`:** original
+post-response P1 is closed; parent passed 24 source tests and strict shipping
+closure. Native readiness remains blocked because the forward-overhang rejection
+fixture misses its intended sweep by about 5.8 mm. Astra is correcting it with
+both-radius geometry checks. A future first grant is limited to setup, rejection
+controls and reference walks; candidate groups additionally need inclined-landing
+and rotated-success controls. No native success or production promotion is claimed.
+
 **Corrected provenance integrated through `a52e37b0`:** independent review closed
 the diagnosis P1; parent reproduced the asymmetric analytic regression (twelve
 texel subcases). The corrected report proves a counterexample to the faulty

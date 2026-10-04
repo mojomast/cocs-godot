@@ -28,8 +28,12 @@ Convention report `4fe3df4e` and correction `8c43b112` passed re-review and are
 integrated through `a52e37b0`; parent reproduced the analytic regression. Image/UV
 origin conversion can preserve authored normal perturbations with retained supplied
 binormals. Raw derivative mismatch alone does not prove shading failure or justify
-a global sign/channel flip. AA authored appearance remains open. The Vesper
-post-response guard and executable driver are under source review; no grant is active.
+a global sign/channel flip. AA authored appearance remains open. Vesper's reviewed
+post-response guard/driver WIP is integrated through `deebb1da` with 24 source tests
+and strict shipping closure passing. A missed-overhang rejection fixture blocks
+native readiness; it is being corrected before a controls/reference-only grant.
+Candidate walks require additional inclined-landing and rotated-success controls.
+No heavy grant is active.
 
 **Vesper Z released after its first failed native group.**
 Delivery `eba8b633` / `dd4fbbb8` records five downhill landing passes, five uphill
