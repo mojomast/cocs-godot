@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**Synthetic receipt correction `db144f7a` received:** exact case census, recorded
+completion and consistent supervisor/audit evidence are under independent re-review.
+Producer reports 127 Python tests and rejection of both mocked incomplete-matrix
+attacks. The remaining readiness review is also required; sources stay unmerged,
+GDScript unrun and no heavy grant active.
+
 **Synthetic admission P1:** review reproduced supervisor success and next-group
 admission for duplicated unexecuted cases, plus acceptance of contradictory
 supervisor failure/audit fields. `8de9d63a` remains unmerged and not native-ready.

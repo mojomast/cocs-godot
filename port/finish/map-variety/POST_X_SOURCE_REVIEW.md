@@ -1,5 +1,18 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**Predecessor correction delivered:** `db144f7a` atop `8de9d63a` is under
+independent re-review, including the unfinished readiness review. Producer reports
+127 Python tests passing (38 suite plus 89 prior), exact ordered matrices and
+recorded profile-completion requirements. Both duplicated-empty and canonical-empty
+mocked results now reportedly fail the actual supervisor and next-group gate.
+
+The correction requires consistent phase/mode/bindings, exit 0, exact success
+flags, absent errors and three distinct ordered measured empty audits within the
+lock interval, retaining native SHA cross-links. Candidate/guard/planner and
+historical source-provenance bytes remain unchanged. Python/GDScript parity tests
+are structural, not native equivalence evidence. No integration or heavy grant
+is approved pending independent counterexample replay and remaining source review.
+
 ## Synthetic suite P1 — incomplete and contradictory predecessors accepted
 
 Independent review withholds integration/native readiness for **`8de9d63a`**.

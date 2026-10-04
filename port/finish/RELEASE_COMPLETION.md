@@ -24,6 +24,9 @@ Review of `8de9d63a` found a blocking receipt-validation gap: duplicated empty
 profiles and contradictory predecessor supervisor failures can unlock later groups.
 Matching Python/GDScript census, completion and exit/error/audit checks are being
 corrected before further review. The synthetic package remains unmerged.
+Correction `db144f7a` is delivered with 127 producer tests reported passing;
+independent counterexample replay and full remaining readiness review are active.
+No native execution follows from the corrective delivery alone.
 
 **AF completed baseline-only collection and released.**
 Delivery `ad5d02b6` / `d3c17632` / `b80273a7` passed independent collection-only
