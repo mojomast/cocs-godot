@@ -1,0 +1,66 @@
+{
+  "grant": "MOTH-BLENDER-20261004-AB",
+  "status": "RELEASED",
+  "owned": [
+    {
+      "pid": 1779130,
+      "pgid": 1779130,
+      "startTicks": 625769113
+    },
+    {
+      "pid": 1780793,
+      "pgid": 1780793,
+      "startTicks": 625771559
+    },
+    {
+      "pid": 1781702,
+      "pgid": 1781702,
+      "startTicks": 625772451
+    },
+    {
+      "pid": 1789235,
+      "pgid": 1789235,
+      "startTicks": 625778525
+    }
+  ],
+  "emptyAudits": [
+    {
+      "utc": "2026-10-04T00:45:06.921186+00:00",
+      "groups": {
+        "1779130": [],
+        "1780793": [],
+        "1781702": [],
+        "1789235": []
+      }
+    },
+    {
+      "utc": "2026-10-04T00:45:07.213238+00:00",
+      "groups": {
+        "1779130": [],
+        "1780793": [],
+        "1781702": [],
+        "1789235": []
+      }
+    },
+    {
+      "utc": "2026-10-04T00:45:07.503855+00:00",
+      "groups": {
+        "1779130": [],
+        "1780793": [],
+        "1781702": [],
+        "1789235": []
+      }
+    }
+  ],
+  "releasedUTC": "2026-10-04T00:45:07.795447+00:00",
+  "lockAvailableUTC": "2026-10-04T00:45:07.795521+00:00",
+  "viewer": {
+    "pid": 2598700,
+    "pgid": 2598689,
+    "startTicks": 522477875
+  },
+  "queuedHeavy": false,
+  "candidateWalksRun": 0,
+  "referenceOutcome": "failed:true referenceExpected:true exit1",
+  "noFurtherEngineWork": true
+}

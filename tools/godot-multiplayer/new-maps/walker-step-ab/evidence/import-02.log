@@ -1,0 +1,142 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (2 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | accepted.glb[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | candidate.glb[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (48 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   2% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   4% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   6% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   8% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  10% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  12% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  14% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  16% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  18% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  20% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  22% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  24% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  26% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  28% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  30% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  32% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  34% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  36% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  38% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  40% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  42% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  44% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  46% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  48% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  51% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  53% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  55% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  57% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  59% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  61% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  63% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  65% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  67% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  69% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  71% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  73% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  75% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  77% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  79% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  81% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  83% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  85% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  87% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  89% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  91% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  93% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  95% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing pre-reimport operations...[39m[0m
+[   0% ] [90m[1mpreload_reimporting_scene[22m | Started Preparing scenes for reload (1 steps)[39m[0m
+[   0% ] [90m[1mpreload_reimporting_scene[22m | Analyzing scene [empty][39m[0m
+[  50% ] [90m[1mpreload_reimporting_scene[22m | Preparation done.[39m[0m
+[92m[ DONE ][39m [1mpreload_reimporting_scene[22m
+[0m
+[   0% ] [90m[1mreimport[22m | candidate_masonry-coping-albedo-srgb.png[39m[0m
+[   2% ] [90m[1mreimport[22m | candidate_masonry-coping-roughness.png[39m[0m
+[   4% ] [90m[1mreimport[22m | candidate_masonry-coping-normal.png[39m[0m
+[   6% ] [90m[1mreimport[22m | candidate_viaduct-asphalt-albedo-srgb.png[39m[0m
+[   8% ] [90m[1mreimport[22m | candidate_viaduct-asphalt-roughness.png[39m[0m
+[  10% ] [90m[1mreimport[22m | candidate_viaduct-asphalt-normal.png[39m[0m
+[  12% ] [90m[1mreimport[22m | candidate_cobble-sett-albedo-srgb.png[39m[0m
+[  14% ] [90m[1mreimport[22m | candidate_cobble-sett-roughness.png[39m[0m
+[  16% ] [90m[1mreimport[22m | candidate_cobble-sett-normal.png[39m[0m
+[  18% ] [90m[1mreimport[22m | candidate_lime-plaster-albedo-srgb.png[39m[0m
+[  20% ] [90m[1mreimport[22m | candidate_lime-plaster-roughness.png[39m[0m
+[  22% ] [90m[1mreimport[22m | candidate_lime-plaster-normal.png[39m[0m
+[  24% ] [90m[1mreimport[22m | candidate_quay-damp-horizontal-albedo-srgb.png[39m[0m
+[  26% ] [90m[1mreimport[22m | candidate_quay-damp-horizontal-roughness.png[39m[0m
+[  28% ] [90m[1mreimport[22m | candidate_quay-damp-horizontal-normal.png[39m[0m
+[  30% ] [90m[1mreimport[22m | candidate_slate-shingle-albedo-srgb.png[39m[0m
+[  32% ] [90m[1mreimport[22m | candidate_slate-shingle-roughness.png[39m[0m
+[  34% ] [90m[1mreimport[22m | candidate_slate-shingle-normal.png[39m[0m
+[  36% ] [90m[1mreimport[22m | candidate_timber-weather-albedo-srgb.png[39m[0m
+[  38% ] [90m[1mreimport[22m | candidate_timber-weather-roughness.png[39m[0m
+[  40% ] [90m[1mreimport[22m | candidate_timber-weather-normal.png[39m[0m
+[  42% ] [90m[1mreimport[22m | candidate_ceramic-enamel-albedo-srgb.png[39m[0m
+[  44% ] [90m[1mreimport[22m | candidate_ceramic-enamel-roughness.png[39m[0m
+[  46% ] [90m[1mreimport[22m | candidate_ceramic-enamel-normal.png[39m[0m
+[  48% ] [90m[1mreimport[22m | accepted_MothLocal_quay.png[39m[0m
+[  51% ] [90m[1mreimport[22m | accepted_MothLocalNormal_quay.png[39m[0m
+[  53% ] [90m[1mreimport[22m | accepted_MothLocal_cobbles.png[39m[0m
+[  55% ] [90m[1mreimport[22m | accepted_MothLocalNormal_cobbles.png[39m[0m
+[  57% ] [90m[1mreimport[22m | accepted_MothLocal_asphalt.png[39m[0m
+[  59% ] [90m[1mreimport[22m | accepted_MothLocalNormal_asphalt.png[39m[0m
+[  61% ] [90m[1mreimport[22m | accepted_MothLocal_sandstone.png[39m[0m
+[  63% ] [90m[1mreimport[22m | accepted_MothLocalNormal_sandstone.png[39m[0m
+[  65% ] [90m[1mreimport[22m | accepted_MothLocal_brick.png[39m[0m
+[  67% ] [90m[1mreimport[22m | accepted_MothLocalNormal_brick.png[39m[0m
+[  69% ] [90m[1mreimport[22m | accepted_MothLocal_iron.png[39m[0m
+[  71% ] [90m[1mreimport[22m | accepted_MothLocalNormal_iron.png[39m[0m
+[  73% ] [90m[1mreimport[22m | accepted_MothLocal_slate.png[39m[0m
+[  75% ] [90m[1mreimport[22m | accepted_MothLocalNormal_slate.png[39m[0m
+[  77% ] [90m[1mreimport[22m | accepted_MothLocal_plaster.png[39m[0m
+[  79% ] [90m[1mreimport[22m | accepted_MothLocalNormal_plaster.png[39m[0m
+[  81% ] [90m[1mreimport[22m | candidate_terracotta-albedo-srgb.png[39m[0m
+[  83% ] [90m[1mreimport[22m | candidate_terracotta-roughness.png[39m[0m
+[  85% ] [90m[1mreimport[22m | candidate_terracotta-normal.png[39m[0m
+[  87% ] [90m[1mreimport[22m | candidate_oxidized-iron-albedo-srgb.png[39m[0m
+[  89% ] [90m[1mreimport[22m | candidate_oxidized-iron-roughness.png[39m[0m
+[  91% ] [90m[1mreimport[22m | candidate_oxidized-iron-normal.png[39m[0m
+[  93% ] [90m[1mreimport[22m | candidate.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  95% ] [90m[1mreimport[22m | accepted.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  97% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (48 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m

@@ -1,0 +1,122 @@
+{
+  "status": "verified expected FAILED reference; no traversal promotion",
+  "responseCount": 2686,
+  "settlingResponses": 200,
+  "downhillNongroundedResponses": 690,
+  "trials": [
+    {
+      "id": "civic:30.5:-1",
+      "passedLanding": true,
+      "responses": 410,
+      "stalled": 0,
+      "final": [
+        30.5000190734863,
+        12.0127096176147,
+        24.1351680755615
+      ]
+    },
+    {
+      "id": "civic:30.5:1",
+      "passedLanding": false,
+      "responses": 127,
+      "stalled": 120,
+      "final": [
+        30.5,
+        12.0166673660278,
+        24.7000026702881
+      ]
+    },
+    {
+      "id": "civic:31.25:-1",
+      "passedLanding": true,
+      "responses": 410,
+      "stalled": 0,
+      "final": [
+        31.2500400543213,
+        12.0100679397583,
+        24.1084842681885
+      ]
+    },
+    {
+      "id": "civic:31.25:1",
+      "passedLanding": false,
+      "responses": 127,
+      "stalled": 120,
+      "final": [
+        31.25,
+        12.0166673660278,
+        24.7000026702881
+      ]
+    },
+    {
+      "id": "civic:32:-1",
+      "passedLanding": true,
+      "responses": 411,
+      "stalled": 0,
+      "final": [
+        32.0,
+        12.0165510177612,
+        24.1280670166016
+      ]
+    },
+    {
+      "id": "civic:32:1",
+      "passedLanding": false,
+      "responses": 127,
+      "stalled": 120,
+      "final": [
+        32.0,
+        12.0166673660278,
+        24.7000026702881
+      ]
+    },
+    {
+      "id": "civic:32.75:-1",
+      "passedLanding": true,
+      "responses": 410,
+      "stalled": 0,
+      "final": [
+        32.75,
+        12.0006971359253,
+        24.0846309661865
+      ]
+    },
+    {
+      "id": "civic:32.75:1",
+      "passedLanding": false,
+      "responses": 127,
+      "stalled": 120,
+      "final": [
+        32.75,
+        12.0166673660278,
+        24.7000026702881
+      ]
+    },
+    {
+      "id": "civic:33.5:-1",
+      "passedLanding": true,
+      "responses": 410,
+      "stalled": 0,
+      "final": [
+        33.5,
+        12.0166330337524,
+        24.0962810516357
+      ]
+    },
+    {
+      "id": "civic:33.5:1",
+      "passedLanding": false,
+      "responses": 127,
+      "stalled": 120,
+      "final": [
+        33.5,
+        12.0166673660278,
+        24.7000026702881
+      ]
+    }
+  ],
+  "bothImportsVerified": true,
+  "candidateMapWalksRun": 0,
+  "candidateMapWalksUnrun": 60,
+  "traceLimitation": "slide shape field stores get_collider_shape Object, not index; first-tread collider name and RID retained; no postguard success claimed"
+}

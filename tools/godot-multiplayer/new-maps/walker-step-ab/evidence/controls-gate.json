@@ -1,0 +1,197 @@
+{
+  "passed": true,
+  "controls": 34,
+  "profileResponses": 68,
+  "settlingResponses": 1284,
+  "maximumPairPositionDifference": 0,
+  "overhangChecks": [
+    {
+      "radius": 0.35,
+      "experimental": false,
+      "foot": [
+        0.0,
+        0.0166666638106108,
+        -0.319999992847443
+      ],
+      "raisedQueryOrigin": [
+        0.0,
+        0.172130957245827,
+        -0.319999992847443
+      ],
+      "recovery": 0.002030938863753995,
+      "analyticClearancesAtNativePoses": [
+        0.13811196979162702,
+        0.06002631259747511,
+        -0.03099760324716459
+      ],
+      "nativeUpHit": false,
+      "nativeForwardHit": true,
+      "nativeContact": [
+        {
+          "collider": "/root/@Node3D@419/ForwardOverhang",
+          "colliderId": 140425301572,
+          "colliderShape": 0,
+          "depth": 0.0202358327805996,
+          "localShape": 0,
+          "normal": [
+            0.0,
+            -0.45135909318924,
+            -0.892342448234558
+          ],
+          "point": [
+            0.0,
+            1.78000009059906,
+            0.0800000131130219
+          ],
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "radius": 0.35,
+      "experimental": true,
+      "foot": [
+        0.0,
+        0.0166666638106108,
+        -0.319999992847443
+      ],
+      "raisedQueryOrigin": [
+        0.0,
+        0.172130957245827,
+        -0.319999992847443
+      ],
+      "recovery": 0.002030938863753995,
+      "analyticClearancesAtNativePoses": [
+        0.13811196979162702,
+        0.06002631259747511,
+        -0.03099760324716459
+      ],
+      "nativeUpHit": false,
+      "nativeForwardHit": true,
+      "nativeContact": [
+        {
+          "collider": "/root/@Node3D@425/ForwardOverhang",
+          "colliderId": 141616483896,
+          "colliderShape": 0,
+          "depth": 0.0202358327805996,
+          "localShape": 0,
+          "normal": [
+            0.0,
+            -0.45135909318924,
+            -0.892342448234558
+          ],
+          "point": [
+            0.0,
+            1.78000009059906,
+            0.0800000131130219
+          ],
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "radius": 0.42,
+      "experimental": false,
+      "foot": [
+        0.0,
+        0.0166666638106108,
+        -0.361999988555908
+      ],
+      "raisedQueryOrigin": [
+        0.0,
+        0.172130957245827,
+        -0.361999988555908
+      ],
+      "recovery": 0.002030938863753995,
+      "analyticClearancesAtNativePoses": [
+        0.14507130891670814,
+        0.05728089786156505,
+        -0.029039799125866832
+      ],
+      "nativeUpHit": false,
+      "nativeForwardHit": true,
+      "nativeContact": [
+        {
+          "collider": "/root/@Node3D@431/ForwardOverhang",
+          "colliderId": 142807666257,
+          "colliderShape": 0,
+          "depth": 0.0203859452158213,
+          "localShape": 0,
+          "normal": [
+            0.0,
+            -0.543044626712799,
+            -0.839703857898712
+          ],
+          "point": [
+            0.0,
+            1.78000009059906,
+            0.0800000131130219
+          ],
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "radius": 0.42,
+      "experimental": true,
+      "foot": [
+        0.0,
+        0.0166666638106108,
+        -0.361999988555908
+      ],
+      "raisedQueryOrigin": [
+        0.0,
+        0.172130957245827,
+        -0.361999988555908
+      ],
+      "recovery": 0.002030938863753995,
+      "analyticClearancesAtNativePoses": [
+        0.14507130891670814,
+        0.05728089786156505,
+        -0.029039799125866832
+      ],
+      "nativeUpHit": false,
+      "nativeForwardHit": true,
+      "nativeContact": [
+        {
+          "collider": "/root/@Node3D@437/ForwardOverhang",
+          "colliderId": 144032403001,
+          "colliderShape": 0,
+          "depth": 0.0203859452158213,
+          "localShape": 0,
+          "normal": [
+            0.0,
+            -0.543044626712799,
+            -0.839703857898712
+          ],
+          "point": [
+            0.0,
+            1.78000009059906,
+            0.0800000131130219
+          ],
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    }
+  ],
+  "sourceSha256": "5421c7369a5bd9ed8e068e17d588190b60faea8bc081db5f817803c80d981068",
+  "resultSha256": "06ddce1f675c03d6ebcb9765fdd532b989252fac56e74cf7174251a9a6b66510",
+  "scope": "negative-response controls only; no positive step-up admission",
+  "traceLimitation": "KinematicCollision3D get_collider_shape returns an Object; serialized legacy slide shape field is Freed Object after teardown, not a shape index. PhysicsTestMotion contact colliderShape indices remain numeric."
+}

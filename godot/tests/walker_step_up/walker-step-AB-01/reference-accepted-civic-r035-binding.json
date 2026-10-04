@@ -1,0 +1,92 @@
+{
+	"binding": {
+		"bindingReady": true,
+		"bothVariantsRuntimeVerified": true,
+		"runtimeGeometryHash": "27c71cc8895eab2ca3a0b5cae3c2b8f96ed9afd75db3deec4a5c96bd2f395ea7",
+		"scope": "exact JSON/art walk diagnostic only; Binder cleaned, no Weather or presentation lifecycle acceptance",
+		"selectedLoadedResourcePath": "res://tests/walker_step_up/walker-step-AB-01/accepted.glb",
+		"selectedVariant": "accepted",
+		"variants": {
+			"accepted": {
+				"artSha256": "6afe34c82d45f06c30dedc780f59ac6afa5200835b487d41705902d771fc0bfd",
+				"authorityPath": "res://tests/walker_step_up/walker-step-AB-01/accepted.json",
+				"authoritySha256": "e273264a789036b26bda83bf8e390c8ae53f78e4357da241ce4a49368e8af885",
+				"compressionDisabled": true,
+				"geometryHash": "27c71cc8895eab2ca3a0b5cae3c2b8f96ed9afd75db3deec4a5c96bd2f395ea7",
+				"importSidecarSha256": "7c0e7078ab5a744613863036d5e982b409a3cdc4b6f95ec512f78a682bbb633a",
+				"importUid": "uid://d1mjht4mpfe0a",
+				"importedResourcePath": "res://.godot/imported/accepted.glb-1c9bb150a6079b305896a8f29cbad617.scn",
+				"importedResourceSha256": "750fd9d8aca2ecf2fc4ee9c68c54c3ee06057842d5094084351909dc54517edb",
+				"instanceScenePath": "res://tests/walker_step_up/walker-step-AB-01/accepted.glb",
+				"loadedResourcePath": "res://tests/walker_step_up/walker-step-AB-01/accepted.glb",
+				"lodsDisabled": true,
+				"materials": [
+					"asphalt",
+					"brick",
+					"cobbles",
+					"glass",
+					"iron",
+					"letter",
+					"plaster",
+					"quay",
+					"sandstone",
+					"slate",
+					"water"
+				],
+				"meshInstances": 11,
+				"nonempty": true,
+				"recipeHash": "84aa9e5e7dd415fe9681a35c4bb03403e7b6b23b4713936039936af0cfa7c89f",
+				"runtimeArtReady": true,
+				"surfaces": 11,
+				"triangles": 54804
+			},
+			"candidate": {
+				"artSha256": "f859d49cc1b462b4a88e351d915518c49940ce24a7b8c2047c2d8f94f419e1db",
+				"authorityPath": "res://tests/walker_step_up/walker-step-AB-01/candidate.json",
+				"authoritySha256": "397cedc8f5583a229bb3f65ed94d9a8c74c30fd4132b57bd4e754299a47c67ec",
+				"compressionDisabled": true,
+				"geometryHash": "fd8e7134c8933e908336d7b0409c66bdc90f4adc03fcfc6e596d5b4579f1c740",
+				"importSidecarSha256": "a505fdfc5683b0e6d84e762e806284366667d68f2be5c91e341d4180336d838c",
+				"importUid": "uid://dvjcxrca6hvls",
+				"importedResourcePath": "res://.godot/imported/candidate.glb-b1d9b56267876d0cc7a6326ab6460692.scn",
+				"importedResourceSha256": "0b91b7aa2bb5787fe7077eb8dfbaf523ebcde6c0e1a7470bfeec1a420b67256d",
+				"instanceScenePath": "res://tests/walker_step_up/walker-step-AB-01/candidate.glb",
+				"loadedResourcePath": "res://tests/walker_step_up/walker-step-AB-01/candidate.glb",
+				"lodsDisabled": true,
+				"materials": [
+					"asphalt",
+					"brick",
+					"cobbles",
+					"glass",
+					"iron",
+					"letter",
+					"plaster",
+					"quay",
+					"sandstone",
+					"slate",
+					"vesper.awning",
+					"vesper.brick-era",
+					"vesper.coping",
+					"vesper.quay",
+					"vesper.slate",
+					"vesper.stall",
+					"water"
+				],
+				"meshInstances": 29,
+				"nonempty": true,
+				"recipeHash": "f22b863cab4caec974602b81548b11e7fd60e221d441e136c47c35df144220e2",
+				"runtimeArtReady": true,
+				"surfaces": 29,
+				"triangles": 64311
+			}
+		}
+	},
+	"clock": {
+		"frame": 1,
+		"hz": 60,
+		"physics": true,
+		"scale": 1.0,
+		"usec": 679765
+	},
+	"sourceSha256": "5421c7369a5bd9ed8e068e17d588190b60faea8bc081db5f817803c80d981068"
+}

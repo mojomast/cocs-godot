@@ -1,0 +1,12 @@
+{
+  "unchangedPreexistingDisplayProcesses": [
+    "2523017 2522902 Sun Sep 20 07:27:11 2026 Xvfb :99 -screen 0 1440x900x24 -nolisten tcp",
+    "2585873 2585868 Sun Sep 20 07:52:43 2026 Xvfb :99 -screen 0 1440x900x24 -nolisten tcp",
+    "3002226 3001069 Tue Sep 22 14:56:57 2026 Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix",
+    "3003879 3003347 Tue Sep 22 14:57:17 2026 Xvfb :91 -screen 0 1280x800x24 -nolisten tcp",
+    "3005999 3004479 Tue Sep 22 14:57:34 2026 Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix",
+    "3094547 3093474 Tue Sep 22 15:22:05 2026 Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix",
+    "3113490 3113486 Tue Sep 22 15:27:20 2026 Xvfb :78 -screen 0 1600x1000x24 -nolisten tcp"
+  ],
+  "noNewDisplayLaunched": true
+}

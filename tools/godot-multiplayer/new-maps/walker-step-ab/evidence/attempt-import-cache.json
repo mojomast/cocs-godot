@@ -1,0 +1,389 @@
+{
+  "files": {
+    "godot/.godot/imported/accepted.glb-1c9bb150a6079b305896a8f29cbad617.md5": {
+      "sha256": "3889bc680bd84853ad18aded34a726bfd42828da9bf81d586ebb40342b84198e",
+      "bytes": 91
+    },
+    "godot/.godot/imported/accepted.glb-1c9bb150a6079b305896a8f29cbad617.scn": {
+      "sha256": "750fd9d8aca2ecf2fc4ee9c68c54c3ee06057842d5094084351909dc54517edb",
+      "bytes": 1157446
+    },
+    "godot/.godot/imported/accepted_MothLocalNormal_asphalt.png-2161f5056ff3bca81c5158c7962c8f5d.ctex": {
+      "sha256": "a7676830aa553fce782a1716680562519e0f03c9e4243bc55f990a8b1d4b65f9",
+      "bytes": 6412
+    },
+    "godot/.godot/imported/accepted_MothLocalNormal_asphalt.png-2161f5056ff3bca81c5158c7962c8f5d.md5": {
+      "sha256": "3b1a3c5216c7b3b351ac0b5725173282c32d0767331cd96ccba8d2c4f93cb43b",
+      "bytes": 91
+    },
+    "godot/.godot/imported/accepted_MothLocalNormal_brick.png-96a5bf542e9b64693f071d605b2e86e8.ctex": {
+      "sha256": "a7676830aa553fce782a1716680562519e0f03c9e4243bc55f990a8b1d4b65f9",
+      "bytes": 6412
+    },
+    "godot/.godot/imported/accepted_MothLocalNormal_brick.png-96a5bf542e9b64693f071d605b2e86e8.md5": {
+      "sha256": "3b1a3c5216c7b3b351ac0b5725173282c32d0767331cd96ccba8d2c4f93cb43b",
+      "bytes": 91
+    },
+    "godot/.godot/imported/accepted_MothLocalNormal_cobbles.png-7ddba1078ed16c7ae232c663f73e9f80.ctex": {
+      "sha256": "a7676830aa553fce782a1716680562519e0f03c9e4243bc55f990a8b1d4b65f9",
+      "bytes": 6412
+    },
+    "godot/.godot/imported/accepted_MothLocalNormal_cobbles.png-7ddba1078ed16c7ae232c663f73e9f80.md5": {
+      "sha256": "3b1a3c5216c7b3b351ac0b5725173282c32d0767331cd96ccba8d2c4f93cb43b",
+      "bytes": 91
+    },
+    "godot/.godot/imported/accepted_MothLocalNormal_iron.png-2b08fc4bd1fea7d3c5f027d7fb458779.ctex": {
+      "sha256": "47f578e31382b41cef3141baf9dba6f5bf88549cd86f81518a9a2ebc7c291b60",
+      "bytes": 5956
+    },
+    "godot/.godot/imported/accepted_MothLocalNormal_iron.png-2b08fc4bd1fea7d3c5f027d7fb458779.md5": {
+      "sha256": "a0a1f2206713e477a8f20eb106a6e5b4f72e073ace70626d16424100f9abe1ec",
+      "bytes": 91
+    },
+    "godot/.godot/imported/accepted_MothLocalNormal_plaster.png-cf3ef72314091ef1ab567e1ffccdc9e5.ctex": {
+      "sha256": "a7676830aa553fce782a1716680562519e0f03c9e4243bc55f990a8b1d4b65f9",
+      "bytes": 6412
+    },
+    "godot/.godot/imported/accepted_MothLocalNormal_plaster.png-cf3ef72314091ef1ab567e1ffccdc9e5.md5": {
+      "sha256": "3b1a3c5216c7b3b351ac0b5725173282c32d0767331cd96ccba8d2c4f93cb43b",
+      "bytes": 91
+    },
+    "godot/.godot/imported/accepted_MothLocalNormal_quay.png-762429b68fa064cd42fb09dfae1ec0a7.ctex": {
+      "sha256": "a7676830aa553fce782a1716680562519e0f03c9e4243bc55f990a8b1d4b65f9",
+      "bytes": 6412
+    },
+    "godot/.godot/imported/accepted_MothLocalNormal_quay.png-762429b68fa064cd42fb09dfae1ec0a7.md5": {
+      "sha256": "3b1a3c5216c7b3b351ac0b5725173282c32d0767331cd96ccba8d2c4f93cb43b",
+      "bytes": 91
+    },
+    "godot/.godot/imported/accepted_MothLocalNormal_sandstone.png-9d2cb4951d98334631dc415c46ff24ed.ctex": {
+      "sha256": "a7676830aa553fce782a1716680562519e0f03c9e4243bc55f990a8b1d4b65f9",
+      "bytes": 6412
+    },
+    "godot/.godot/imported/accepted_MothLocalNormal_sandstone.png-9d2cb4951d98334631dc415c46ff24ed.md5": {
+      "sha256": "3b1a3c5216c7b3b351ac0b5725173282c32d0767331cd96ccba8d2c4f93cb43b",
+      "bytes": 91
+    },
+    "godot/.godot/imported/accepted_MothLocalNormal_slate.png-a643c1cd9e13a9e4f9a677a1bd81fd92.ctex": {
+      "sha256": "a7676830aa553fce782a1716680562519e0f03c9e4243bc55f990a8b1d4b65f9",
+      "bytes": 6412
+    },
+    "godot/.godot/imported/accepted_MothLocalNormal_slate.png-a643c1cd9e13a9e4f9a677a1bd81fd92.md5": {
+      "sha256": "3b1a3c5216c7b3b351ac0b5725173282c32d0767331cd96ccba8d2c4f93cb43b",
+      "bytes": 91
+    },
+    "godot/.godot/imported/accepted_MothLocal_asphalt.png-161b7769bd14367b731ccb2e77c8370d.ctex": {
+      "sha256": "80e475e078ad4ce6ea9e4d15c5d807aeb1dadde928fc9694c29def5b66852b43",
+      "bytes": 1070
+    },
+    "godot/.godot/imported/accepted_MothLocal_asphalt.png-161b7769bd14367b731ccb2e77c8370d.md5": {
+      "sha256": "2120dcdb39d93486b78a0d1585570d3629a15fc5b549e447a72aea93bd92da0f",
+      "bytes": 91
+    },
+    "godot/.godot/imported/accepted_MothLocal_brick.png-c391e6e7a824723a8687731750577cf3.ctex": {
+      "sha256": "c436827b2975c7de5eb9248d114858ce4d915519d50e23fb6799ea7a0f823c2a",
+      "bytes": 1870
+    },
+    "godot/.godot/imported/accepted_MothLocal_brick.png-c391e6e7a824723a8687731750577cf3.md5": {
+      "sha256": "66bc98fc40b3a4f4230b9c7b6c213b31d5c12a047169163fe2413a37ab917af8",
+      "bytes": 91
+    },
+    "godot/.godot/imported/accepted_MothLocal_cobbles.png-b98c9a471d66f622fdfddba149eb5421.ctex": {
+      "sha256": "bfa6832bbec2cf8d3b74f62fa36823c070503c9527dbc2ff2783d51a623856f0",
+      "bytes": 1512
+    },
+    "godot/.godot/imported/accepted_MothLocal_cobbles.png-b98c9a471d66f622fdfddba149eb5421.md5": {
+      "sha256": "c7a83663131d1312361ea3d7d796ecc28c2dd533aa6c95a1171f2d5502417683",
+      "bytes": 91
+    },
+    "godot/.godot/imported/accepted_MothLocal_iron.png-873fed6fdf1ec05b0134103964f0b0d5.ctex": {
+      "sha256": "85128d359f76fbf9e5111847ada3887e259d41b411f7c92ff0e178a30d16bc39",
+      "bytes": 410
+    },
+    "godot/.godot/imported/accepted_MothLocal_iron.png-873fed6fdf1ec05b0134103964f0b0d5.md5": {
+      "sha256": "8996add297a0b9f04ec5fd204a83868122d78ec462e798da16eb8534b046e174",
+      "bytes": 91
+    },
+    "godot/.godot/imported/accepted_MothLocal_plaster.png-2285dfb7b165d6d5049b7c580320a410.ctex": {
+      "sha256": "2c63263a50c961e36e00cbae908a133572db2a6ce6900d0f534976e4e9012b5b",
+      "bytes": 2624
+    },
+    "godot/.godot/imported/accepted_MothLocal_plaster.png-2285dfb7b165d6d5049b7c580320a410.md5": {
+      "sha256": "4691c697d9bd3ebe87b6d6ee1cfcd3f5cc53ffde45e801f6a8935cb2011372ed",
+      "bytes": 91
+    },
+    "godot/.godot/imported/accepted_MothLocal_quay.png-602f989eb771f8000d1a3bebf9bef8b9.ctex": {
+      "sha256": "4e7b315756bcb20b0af3da6e98a4b6d12bbb3e649896c53c1fa4110178693f7c",
+      "bytes": 1552
+    },
+    "godot/.godot/imported/accepted_MothLocal_quay.png-602f989eb771f8000d1a3bebf9bef8b9.md5": {
+      "sha256": "aa7a16313e63a7eaf76fce5f9e213c3c4a580603b9c448a66555b63c7242ca8a",
+      "bytes": 91
+    },
+    "godot/.godot/imported/accepted_MothLocal_sandstone.png-0edab3887e197249268f33ae6e16efe1.ctex": {
+      "sha256": "445fdfe4f3911492338b57f063975562f48d162a258a9a2f1d76f02b8d0d84a8",
+      "bytes": 2810
+    },
+    "godot/.godot/imported/accepted_MothLocal_sandstone.png-0edab3887e197249268f33ae6e16efe1.md5": {
+      "sha256": "8b024fe5140aedc51cfbd4254455c46ffa111471f446d87d64210cf5cbd0d70b",
+      "bytes": 91
+    },
+    "godot/.godot/imported/accepted_MothLocal_slate.png-d4d1af027bdf8f2ff639d836908e6800.ctex": {
+      "sha256": "e5e64a03e011197ecc2bc9e1d138f231aec2f9151c96e62b8505a7ffc9e7cd96",
+      "bytes": 596
+    },
+    "godot/.godot/imported/accepted_MothLocal_slate.png-d4d1af027bdf8f2ff639d836908e6800.md5": {
+      "sha256": "846de511d852b7521a8eab84f4b5876c61d315b73fbf3dcd27684788f792ce72",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate.glb-b1d9b56267876d0cc7a6326ab6460692.md5": {
+      "sha256": "2c4bbf68a9b3afe9bceaedef28fae70d327ad1d69ff14bc77cd8408df22d1407",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate.glb-b1d9b56267876d0cc7a6326ab6460692.scn": {
+      "sha256": "0b91b7aa2bb5787fe7077eb8dfbaf523ebcde6c0e1a7470bfeec1a420b67256d",
+      "bytes": 1319591
+    },
+    "godot/.godot/imported/candidate_ceramic-enamel-albedo-srgb.png-dd38d874d44e76dcb59c0fceb4cbda17.ctex": {
+      "sha256": "cad4fdc340b5f73e7f21023763c6c0984a559db5f549e3728270ffa3a052e494",
+      "bytes": 52212
+    },
+    "godot/.godot/imported/candidate_ceramic-enamel-albedo-srgb.png-dd38d874d44e76dcb59c0fceb4cbda17.md5": {
+      "sha256": "f040728e3b7be5eed9c6a313470ade8eea5f91815925f5b9c210ed02ac665547",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_ceramic-enamel-normal.png-32aad2dfdaab432d32d86b5985baf3f5.ctex": {
+      "sha256": "ae6e725658c4c1487a7930e7629a852ab4b2cb5e8767c68a57e3b8d4c8b6c933",
+      "bytes": 109744
+    },
+    "godot/.godot/imported/candidate_ceramic-enamel-normal.png-32aad2dfdaab432d32d86b5985baf3f5.md5": {
+      "sha256": "83b43cc08b22a8e1a9aa48941e43a00a54660d8955385bd24a1892127a65ee68",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_ceramic-enamel-roughness.png-bcd4ca65d0657a845ee2ff9b2a4704a6.ctex": {
+      "sha256": "30442c1d2a047be3c99e27d16603f4fc499c5e11aad2262c4762aa7e645cdb88",
+      "bytes": 41198
+    },
+    "godot/.godot/imported/candidate_ceramic-enamel-roughness.png-bcd4ca65d0657a845ee2ff9b2a4704a6.md5": {
+      "sha256": "eb367c246b82a33b81996578977f69230f4326d5802f48d21aaa69647ce47f0f",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_cobble-sett-albedo-srgb.png-4096c45bd328b5ac18e23ef72e3272d8.ctex": {
+      "sha256": "c999c4a058562404633fb34e4cdd812b68bf91f73bb0e43c51bd80fa6c973fbc",
+      "bytes": 92700
+    },
+    "godot/.godot/imported/candidate_cobble-sett-albedo-srgb.png-4096c45bd328b5ac18e23ef72e3272d8.md5": {
+      "sha256": "3f75415ebbb6220e166f3cbe432b40ef689c08beee529fa69f56c2f53b275080",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_cobble-sett-normal.png-f4038c5f193c36be3978b1df9d163a6d.ctex": {
+      "sha256": "33c8ea318adfba2dd07cdb25640a562f86d57ba3c3cf044d424d3b244f3cf364",
+      "bytes": 185864
+    },
+    "godot/.godot/imported/candidate_cobble-sett-normal.png-f4038c5f193c36be3978b1df9d163a6d.md5": {
+      "sha256": "ea2eab2529b42d60339e00f161dcf7b0b600596fc078e1aa15d48e62c8644684",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_cobble-sett-roughness.png-08b6bb6995e5ba07906967c1671a15f9.ctex": {
+      "sha256": "5cde10c44a0e74d7804a2ad82d847a8454b077440cff2798c6c754a8f517ff5d",
+      "bytes": 51186
+    },
+    "godot/.godot/imported/candidate_cobble-sett-roughness.png-08b6bb6995e5ba07906967c1671a15f9.md5": {
+      "sha256": "3055add840b84a755982cc5102baa83e7de1eb619691d730d4a5d15a459a0927",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_lime-plaster-albedo-srgb.png-e62bdbf5fc981af869b08c0765764187.ctex": {
+      "sha256": "aa6c8b3e4817a9f639defa90dcd56e01fe28206ac4aa798a6714db47b027f07f",
+      "bytes": 129740
+    },
+    "godot/.godot/imported/candidate_lime-plaster-albedo-srgb.png-e62bdbf5fc981af869b08c0765764187.md5": {
+      "sha256": "fc9d75be91d04055777c485799b321cac9207afcb4da71fe14e441fc1a7793fd",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_lime-plaster-normal.png-5269064bc7144f7cf137f74fbc17bf90.ctex": {
+      "sha256": "3abb58bdbc27b21d88e124bd2066524f638f2a21e8e423d88abefe0ad8af85d1",
+      "bytes": 128338
+    },
+    "godot/.godot/imported/candidate_lime-plaster-normal.png-5269064bc7144f7cf137f74fbc17bf90.md5": {
+      "sha256": "7f9dd6078dcf9313df703bd0d166afe41cf1445c00bd18a7fbe2c61425f02a9b",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_lime-plaster-roughness.png-a8bb6e8c5a41845d5faf58079a472f7d.ctex": {
+      "sha256": "da74ca31cec32ce3b921a605feaf071c4ee603137ea7dd18885ccc7132cd23d9",
+      "bytes": 63222
+    },
+    "godot/.godot/imported/candidate_lime-plaster-roughness.png-a8bb6e8c5a41845d5faf58079a472f7d.md5": {
+      "sha256": "06fa48f15d966ca5539a2741d55b62f6fcced8d0ead43f0ec547493e10a5f768",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_masonry-coping-albedo-srgb.png-a8f883dccb10f9938f5d4fe6150939e4.ctex": {
+      "sha256": "68fdaced3b88789b7f941692d2e2dd799055177462814abb7f4634aa1399bb00",
+      "bytes": 87892
+    },
+    "godot/.godot/imported/candidate_masonry-coping-albedo-srgb.png-a8f883dccb10f9938f5d4fe6150939e4.md5": {
+      "sha256": "78468bfc123e7c69fffd7033f6da94e33a07d9710f4641c3707e5ade29c28376",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_masonry-coping-normal.png-eb8413d76aac694ac520c2dbeb42108d.ctex": {
+      "sha256": "19db665d836ad202e4871c43c59bf661ed8651f78055db7c133f4d60dcfbb8f6",
+      "bytes": 125666
+    },
+    "godot/.godot/imported/candidate_masonry-coping-normal.png-eb8413d76aac694ac520c2dbeb42108d.md5": {
+      "sha256": "d21b53488dcf9bdd6b1f65ad47f1973c443f67734f5d5464f4bc8db574ee4682",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_masonry-coping-roughness.png-d6bdb1ed27a42fbc7c96d44f05d8d837.ctex": {
+      "sha256": "2ac0fcf78aa38616ddb20a66f068b748f9e1198a84ad2bd9ee70d78cbb14a888",
+      "bytes": 34782
+    },
+    "godot/.godot/imported/candidate_masonry-coping-roughness.png-d6bdb1ed27a42fbc7c96d44f05d8d837.md5": {
+      "sha256": "eaf05b3db15a70a88aae9fdfd8ff977dc05449dd3b9e52506c58bb9773c52c05",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_oxidized-iron-albedo-srgb.png-2d2d043742ef31929241cdd15c4a48a5.ctex": {
+      "sha256": "f4faae5cea78c0634c380f7533dc8d01bca3e93741f392937eab9c169d6f15c7",
+      "bytes": 101940
+    },
+    "godot/.godot/imported/candidate_oxidized-iron-albedo-srgb.png-2d2d043742ef31929241cdd15c4a48a5.md5": {
+      "sha256": "a8d5777143adb5c15b753c8832f0cb928ecb380aa75610cb1185215557cb49ee",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_oxidized-iron-normal.png-81eeff3fc81a8c5098f60c930a441e16.ctex": {
+      "sha256": "c2b1009d58e98dad286a47ce7709972b6719cc4c046012e72c0ebf46e5e3ef47",
+      "bytes": 148082
+    },
+    "godot/.godot/imported/candidate_oxidized-iron-normal.png-81eeff3fc81a8c5098f60c930a441e16.md5": {
+      "sha256": "be3574104e5ee41479f02af2bdaa490ec42c856ec060202769b5320a60347347",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_oxidized-iron-roughness.png-f2051a8a711abfaa40031aa7a653a360.ctex": {
+      "sha256": "949f4105c555b9191477b58384e1338ddb173c4b445ee9ea37053277ff0d57d4",
+      "bytes": 53542
+    },
+    "godot/.godot/imported/candidate_oxidized-iron-roughness.png-f2051a8a711abfaa40031aa7a653a360.md5": {
+      "sha256": "df797d496a2f8e902f6cb120a7228500fbc75d6a14a80847f546c6e7d0021968",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_quay-damp-horizontal-albedo-srgb.png-f6b7daa13ecbf3ef0d8b71808679cfd2.ctex": {
+      "sha256": "979caefec580aa89db771c54770d914d2bef4a6f67bc5a5c15bdbb005e71ed85",
+      "bytes": 78410
+    },
+    "godot/.godot/imported/candidate_quay-damp-horizontal-albedo-srgb.png-f6b7daa13ecbf3ef0d8b71808679cfd2.md5": {
+      "sha256": "522638cb60e7fa99fdf8f650c4f951745b25b21ab39fda86a2bff21ca7369678",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_quay-damp-horizontal-normal.png-169bdfcf78bfb5f830b1af24de749dbc.ctex": {
+      "sha256": "f7e5b40de391c44c973861ed0d707eccdac15a8bc933328e3497306e77269342",
+      "bytes": 47340
+    },
+    "godot/.godot/imported/candidate_quay-damp-horizontal-normal.png-169bdfcf78bfb5f830b1af24de749dbc.md5": {
+      "sha256": "ef9ac8ac2bf844f236277abda6f4dc264a0bf902a73dc5172d9baf03bb5a3508",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_quay-damp-horizontal-roughness.png-180610072733e8cdda0258cf97b24684.ctex": {
+      "sha256": "d5c55377c11c6accbce5ccbb66f7c721bc7e9827063d0ba8a6ba4b1d10867f8a",
+      "bytes": 26568
+    },
+    "godot/.godot/imported/candidate_quay-damp-horizontal-roughness.png-180610072733e8cdda0258cf97b24684.md5": {
+      "sha256": "008e1042af3825e6465dcb5416119d1de53c1d40a268b0af0f191cfa70430aa9",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_slate-shingle-albedo-srgb.png-2a3698d830c528e7d2bed9a55850591e.ctex": {
+      "sha256": "a57607a26f80386487fa0e2560b78b174a3abb23b7ead46eddef79b542e388a0",
+      "bytes": 71134
+    },
+    "godot/.godot/imported/candidate_slate-shingle-albedo-srgb.png-2a3698d830c528e7d2bed9a55850591e.md5": {
+      "sha256": "a5cf4d288eca06c0c8af1c0b4a543cf38feece9305a844711da5637fda7bf0b7",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_slate-shingle-normal.png-e62f30fc3771569fb4934b35f24f4077.ctex": {
+      "sha256": "96b8dedb8abe73ca77be3a583b7a6dec8726ecedea1078e36e2c0656f8e13d3b",
+      "bytes": 145634
+    },
+    "godot/.godot/imported/candidate_slate-shingle-normal.png-e62f30fc3771569fb4934b35f24f4077.md5": {
+      "sha256": "959114718a564720760f4058cb4ed38a2dff330a90198d782aff7be69ba36ebb",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_slate-shingle-roughness.png-95f54ccf992bdac8d4685a0a59a534ac.ctex": {
+      "sha256": "ee533dadada6c9abab88b54e2a09176bec7d34806ebd22208a2c6f98673a707b",
+      "bytes": 43728
+    },
+    "godot/.godot/imported/candidate_slate-shingle-roughness.png-95f54ccf992bdac8d4685a0a59a534ac.md5": {
+      "sha256": "a51c6386d65ca0ac456ed76b03b93492ad33e25501c7408404c070a8f1d1bbc0",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_terracotta-albedo-srgb.png-483e2f94c727e661fcd6af5dc3dfc191.ctex": {
+      "sha256": "b437e3f97fbf90ef7a4e30471e4abfedd26d675332663a56a7d7cad375db3246",
+      "bytes": 65070
+    },
+    "godot/.godot/imported/candidate_terracotta-albedo-srgb.png-483e2f94c727e661fcd6af5dc3dfc191.md5": {
+      "sha256": "66014bf07204d37f1d5834ba66d231aa13a68ec24c922acccd275c669c7dfade",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_terracotta-normal.png-7e13605144c4fb4279986cae36c2c442.ctex": {
+      "sha256": "1e71f8e502d1ac6badbd04e42fb67de0ab6f8733a478a4b8e2e7f311ed4a9446",
+      "bytes": 136516
+    },
+    "godot/.godot/imported/candidate_terracotta-normal.png-7e13605144c4fb4279986cae36c2c442.md5": {
+      "sha256": "2fb9aa29918b1c2de044102fb3c2a1bc38bd8eac43cd29150daa1fa05105e23b",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_terracotta-roughness.png-70db31b34aaa76e0c644bc880f3167c6.ctex": {
+      "sha256": "6cce2e8065e66b583ca03a5b69ab47aad76dd05f36d3f1108a536ab0d22b332b",
+      "bytes": 41168
+    },
+    "godot/.godot/imported/candidate_terracotta-roughness.png-70db31b34aaa76e0c644bc880f3167c6.md5": {
+      "sha256": "da97ec0947fe86c11896cdb1d4829519ecf3fe1a1c1662a75d41a1c2bff4af3f",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_timber-weather-albedo-srgb.png-c93f850a6d15c8c616fcc43ac5d1826f.ctex": {
+      "sha256": "e1ac8cbb7f05f5236d93503b2621d628d7e87bb893b727029d18401fec577b0d",
+      "bytes": 104754
+    },
+    "godot/.godot/imported/candidate_timber-weather-albedo-srgb.png-c93f850a6d15c8c616fcc43ac5d1826f.md5": {
+      "sha256": "ab8ae50e00f3a1a1af2b32fc0001579ac979ccce15dd5140f641f2ab29ff2b83",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_timber-weather-normal.png-33dedc1885983dcc4be1b9dd76b76a67.ctex": {
+      "sha256": "eef1d0b6291b21e5770ec6538de470450c2d68ab7433bec1bdc59095587bfee0",
+      "bytes": 130240
+    },
+    "godot/.godot/imported/candidate_timber-weather-normal.png-33dedc1885983dcc4be1b9dd76b76a67.md5": {
+      "sha256": "65bfad6fff388e324b1a911e30f0d500dae0d4ef4728da99df4abb37b3486496",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_timber-weather-roughness.png-24c174de7ed5ecffff0a6e3e493840ae.ctex": {
+      "sha256": "6623e98e5540cabed838f68e95ae13d1f960378a27ef510ab5a044c52f87e654",
+      "bytes": 43574
+    },
+    "godot/.godot/imported/candidate_timber-weather-roughness.png-24c174de7ed5ecffff0a6e3e493840ae.md5": {
+      "sha256": "6467a01ba28b55261d6f71385bc45c0beb58dac0bb1ca79838a2432c9ba2853b",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_viaduct-asphalt-albedo-srgb.png-7fca9a5382d3488107b7d8f3fd5da9fe.ctex": {
+      "sha256": "6b9988e4b9619d1b3bbdcb535fd3228e0f89b8456f4c8ced9d0f7403da8e7bfb",
+      "bytes": 150784
+    },
+    "godot/.godot/imported/candidate_viaduct-asphalt-albedo-srgb.png-7fca9a5382d3488107b7d8f3fd5da9fe.md5": {
+      "sha256": "3ae6094c3eb331d583fea624851ac77c820122fd6f3ec6395065c1ca1ec24c5e",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_viaduct-asphalt-normal.png-7b36e0fee3334d506486f14ab6fe6e40.ctex": {
+      "sha256": "f08b885eb1b0af3504c1aaaf60b34eff05fe2a4e645823f18da2bdb58a9aa613",
+      "bytes": 243006
+    },
+    "godot/.godot/imported/candidate_viaduct-asphalt-normal.png-7b36e0fee3334d506486f14ab6fe6e40.md5": {
+      "sha256": "cbe2cbf9b0f0005e07bb684fb643dafb5f11b9d1424cb546cc30754c187f74f1",
+      "bytes": 91
+    },
+    "godot/.godot/imported/candidate_viaduct-asphalt-roughness.png-8a98e1ebe4de574fc488ed822b0f6bed.ctex": {
+      "sha256": "ec387bc28a363219d0d2a277955f5b0b4a8dd2cfecc40550bdf0610f467c2b8e",
+      "bytes": 90378
+    },
+    "godot/.godot/imported/candidate_viaduct-asphalt-roughness.png-8a98e1ebe4de574fc488ed822b0f6bed.md5": {
+      "sha256": "e1ff001ec75fbf50d012e63e2c7fc40b927f68a0af7083bea83e9c305799ec92",
+      "bytes": 91
+    }
+  },
+  "count": 96
+}

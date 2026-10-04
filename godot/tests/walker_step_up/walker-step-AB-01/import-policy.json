@@ -1,0 +1,15 @@
+{
+  "status": "retained actual UIDs; authorized reimport still required",
+  "variants": {
+    "accepted": {
+      "uid": "uid://d1mjht4mpfe0a",
+      "beforeSha256": "678f46d3bf79edaa9a5a74ea4ba81b9764cebd95c20550ab5969fd7f92e59445",
+      "afterSha256": "7c0e7078ab5a744613863036d5e982b409a3cdc4b6f95ec512f78a682bbb633a"
+    },
+    "candidate": {
+      "uid": "uid://dvjcxrca6hvls",
+      "beforeSha256": "0c2f88b343d85b9acabc4279a3e64dde00305b0de816a1156fe8785c82f9104e",
+      "afterSha256": "a505fdfc5683b0e6d84e762e806284366667d68f2be5c91e341d4180336d838c"
+    }
+  }
+}

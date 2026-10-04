@@ -1,0 +1,22 @@
+{
+  "grant": "MOTH-BLENDER-20261004-AB",
+  "job": "import-01",
+  "timeoutSeconds": 900,
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "startUnix": 1791074547.1702464,
+  "releaseAudits": [],
+  "lockAcquiredUnix": 1791074547.1703784,
+  "argv": [
+    "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "/home/mojo/.tmp-on-disk/cocs-walker-step-ab/godot",
+    "--editor",
+    "--import"
+  ],
+  "owned": {
+    "pid": 1779130,
+    "pgid": 1779130,
+    "startTicks": 625769113
+  }
+}

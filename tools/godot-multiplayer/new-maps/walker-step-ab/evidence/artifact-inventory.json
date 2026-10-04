@@ -1,0 +1,570 @@
+{
+  "base": "8251b512",
+  "sourceToolingCommit": "0dd335b0",
+  "grant": "MOTH-BLENDER-20261004-AB",
+  "status": "released; negative controls passed and expected reference FAILED; no candidate walks",
+  "fileCount": 140,
+  "files": {
+    "godot/tests/walker_step_up/candidate_walker.gd.uid": {
+      "sha256": "120c47dc0a47dc2246545209e2ebe2d002bcae76ad304fb2cb984fbb3a478685",
+      "bytes": 19
+    },
+    "godot/tests/walker_step_up/controls_v2.gd.uid": {
+      "sha256": "103ffc76cb1ab8d95e64dc356e0cda2cbeeb089c4ff6cb80dfade28a3c6a3582",
+      "bytes": 20
+    },
+    "godot/tests/walker_step_up/driver_v2.gd.uid": {
+      "sha256": "b4c1fb2cf3ccdd58d0cf0ed36923945959be55c287530ba334ac1aa847799b76",
+      "bytes": 19
+    },
+    "godot/tests/walker_step_up/response_guard.gd.uid": {
+      "sha256": "82e27671d0feacf9c6cc0e425eaaaaf6aa1b910f9045362c3760fc0e7bc8ede0",
+      "bytes": 20
+    },
+    "godot/tests/walker_step_up/sweep_proposal.gd.uid": {
+      "sha256": "2ccc8679928c322eead81afb474a44d378a1f0f75c01b6790d29b9fd2a6929cb",
+      "bytes": 19
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted.glb": {
+      "sha256": "6afe34c82d45f06c30dedc780f59ac6afa5200835b487d41705902d771fc0bfd",
+      "bytes": 3647280
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted.glb.import": {
+      "sha256": "7c0e7078ab5a744613863036d5e982b409a3cdc4b6f95ec512f78a682bbb633a",
+      "bytes": 1069
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted.json": {
+      "sha256": "e273264a789036b26bda83bf8e390c8ae53f78e4357da241ce4a49368e8af885",
+      "bytes": 308903
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocalNormal_asphalt.png": {
+      "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "bytes": 6429
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocalNormal_asphalt.png.import": {
+      "sha256": "57d593034c264b47469d1c1b51646c71e7f5bf8881cc5d310d619da625fe3285",
+      "bytes": 1105
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocalNormal_brick.png": {
+      "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "bytes": 6429
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocalNormal_brick.png.import": {
+      "sha256": "c7f303403ff6d22517a7b3998ed072b45491153963187620d8acf7cc4014ca0a",
+      "bytes": 1099
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocalNormal_cobbles.png": {
+      "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "bytes": 6429
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocalNormal_cobbles.png.import": {
+      "sha256": "fa81b2424ca79794e6505bf5b93d7c7767f669e1e44a8bfa2acd31512bb871ff",
+      "bytes": 1105
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocalNormal_iron.png": {
+      "sha256": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
+      "bytes": 5817
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocalNormal_iron.png.import": {
+      "sha256": "155e74001a2a9bd0b7276e0dab7915462ee13399a787c223c45c442b87cdf3be",
+      "bytes": 1096
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocalNormal_plaster.png": {
+      "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "bytes": 6429
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocalNormal_plaster.png.import": {
+      "sha256": "3e59afcf6480c050cc955d4539e1e614b95c41ff1431f3711c0c8f8104d8cc0f",
+      "bytes": 1104
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocalNormal_quay.png": {
+      "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "bytes": 6429
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocalNormal_quay.png.import": {
+      "sha256": "e906f7f0937a49f237810867efd212c74bb6ba85af839873f040ee2df99f40fd",
+      "bytes": 1095
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocalNormal_sandstone.png": {
+      "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "bytes": 6429
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocalNormal_sandstone.png.import": {
+      "sha256": "0dfcf17c456bcd70403aa5e9451605b84f45c769eeac78e06abd0bdb31560e52",
+      "bytes": 1110
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocalNormal_slate.png": {
+      "sha256": "6b5ba102f1b7b789649eaa952de312325a8e2695fb449642ed7502293499a2b1",
+      "bytes": 6429
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocalNormal_slate.png.import": {
+      "sha256": "7239d8235a3a6235b07f8a51deb1f30a1dbc6705e50ccb6f4b8e91234d0e3d63",
+      "bytes": 1099
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocal_asphalt.png": {
+      "sha256": "1183cbca2fad5854765525cdf11444a2ec1e700d7825fcad1ab0bf36f02ca7d8",
+      "bytes": 1569
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocal_asphalt.png.import": {
+      "sha256": "2cf1e93f0a007071423017ce6f907f729932bb1ee17a98a24234fa4dd0744487",
+      "bytes": 1087
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocal_brick.png": {
+      "sha256": "b17fb5e5b7f1313c84bbdc31599e13df805711438bc279c99ce01f0674e93f69",
+      "bytes": 2630
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocal_brick.png.import": {
+      "sha256": "506842b0e6cde7c0b5a848360c0596b18a092777e6f2e8ad7501c9ffcf2ee6fa",
+      "bytes": 1081
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocal_cobbles.png": {
+      "sha256": "a08edc569defaf7beda76f8c5a3b99c76be688cd526253b9dcc0a7d5c6ad6255",
+      "bytes": 2359
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocal_cobbles.png.import": {
+      "sha256": "7fbf6154c513f18f120ab2a5fcaeec23d897a6ad1ca3bbd45a013bf9abf78509",
+      "bytes": 1087
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocal_iron.png": {
+      "sha256": "d38a1b6c9e5bf5c8213b5b6e6b29bc7e8407659c57df6e4b06f2ac8c905006b5",
+      "bytes": 524
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocal_iron.png.import": {
+      "sha256": "d537a48473fb4fad8e903a5a5fab256b074ddaa04b90c9d3e2b4dcd4f0d74ee1",
+      "bytes": 1078
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocal_plaster.png": {
+      "sha256": "c0f2391e421ed27f7850e8552b56d6929992ca8e6a5eafcc398099a1977c552b",
+      "bytes": 3270
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocal_plaster.png.import": {
+      "sha256": "a0873b796392a9112a6f564bb3c89a738416deca850f4fa27d3d3ddc06530aeb",
+      "bytes": 1087
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocal_quay.png": {
+      "sha256": "3f3b61fbc63dc243aabd06c7b4bedcf880777400629839d2d1ea744b798cbe15",
+      "bytes": 2228
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocal_quay.png.import": {
+      "sha256": "1ffc0a39f84b1967e4577cb18a7df9945e52158414f0cce5e64a8376ce452472",
+      "bytes": 1078
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocal_sandstone.png": {
+      "sha256": "d0cd8e9760bad826da4744c48a5046895f343c88ad39a46afa07d816afbe3ee1",
+      "bytes": 3419
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocal_sandstone.png.import": {
+      "sha256": "4ced9d2412d66c991b094f3e865a991ff1025c41ab1bb414e20a62be6c86e810",
+      "bytes": 1092
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocal_slate.png": {
+      "sha256": "d08d2214eaa02f364d6c50b6f036fa1f26116d0e0cb884e61aeffcef3de7d597",
+      "bytes": 811
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/accepted_MothLocal_slate.png.import": {
+      "sha256": "bc4daca5546a6a19c9fc4426c14cc9bfcd15c95ca1ce43a63a08ad41b00255f7",
+      "bytes": 1081
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate.glb": {
+      "sha256": "f859d49cc1b462b4a88e351d915518c49940ce24a7b8c2047c2d8f94f419e1db",
+      "bytes": 8159564
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate.glb.import": {
+      "sha256": "a505fdfc5683b0e6d84e762e806284366667d68f2be5c91e341d4180336d838c",
+      "bytes": 1072
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate.json": {
+      "sha256": "397cedc8f5583a229bb3f65ed94d9a8c74c30fd4132b57bd4e754299a47c67ec",
+      "bytes": 2482198
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_ceramic-enamel-albedo-srgb.png": {
+      "sha256": "226830e913f10906d054ee787b42d7c14eb58eaa855cb1833005edefc2d5c2bc",
+      "bytes": 47156
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_ceramic-enamel-albedo-srgb.png.import": {
+      "sha256": "ae534124a5e8634b0bb8adb5fe7419f822da83bbfc11197f8c5af40a5808d1a4",
+      "bytes": 1117
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_ceramic-enamel-normal.png": {
+      "sha256": "1f54ba17ab7f3a4b6632bdbb508731a4331202c51a9316632b49af1f59005d80",
+      "bytes": 133720
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_ceramic-enamel-normal.png.import": {
+      "sha256": "e27776edc7693b0b01dca47cf2f15e8bd49fe6a8b698043529b4c4474e7c7412",
+      "bytes": 1102
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_ceramic-enamel-roughness.png": {
+      "sha256": "71bde5b9fa079061ce35291730a2f385a9c7bbe709e5b9f546844ac6861694bb",
+      "bytes": 55437
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_ceramic-enamel-roughness.png.import": {
+      "sha256": "e6f86de90d635a99318bb72b38b7ecf37e047a1a2bb2d07235022dae44b00b52",
+      "bytes": 1111
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_cobble-sett-albedo-srgb.png": {
+      "sha256": "b36d2118321adad9c446b092593d95ae0066e80c79605974bb9085d5fb176e32",
+      "bytes": 73776
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_cobble-sett-albedo-srgb.png.import": {
+      "sha256": "fae2a84681a4ca958dd28710010fdfe1158c15c80e176f3383f579cb6a4190ac",
+      "bytes": 1108
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_cobble-sett-normal.png": {
+      "sha256": "0f81ac3722ca5aca9d0ee23c8e482590276e86b06b43950b8bb07d1340095491",
+      "bytes": 296899
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_cobble-sett-normal.png.import": {
+      "sha256": "eeff783336b415072bfdc86841a58d748222cb16ea7b9dfafd322950e4eb6237",
+      "bytes": 1093
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_cobble-sett-roughness.png": {
+      "sha256": "e032d7485f9088907d967da027264b5ac651b0744515c8f0f280af69126804de",
+      "bytes": 66365
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_cobble-sett-roughness.png.import": {
+      "sha256": "b08743a953ec93d8a6e8e944bacc8ce52b50e91ce59e63f957405a7fd8184ba3",
+      "bytes": 1102
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_lime-plaster-albedo-srgb.png": {
+      "sha256": "245c7716dd9f96a2903bb4c0e285e48c48117ff0d6eb336f9561e1e37c661396",
+      "bytes": 76082
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_lime-plaster-albedo-srgb.png.import": {
+      "sha256": "2e3159bfa767adfba3ed02dbf23de11b1e21fc9da186040c2bbfece4547f9f6b",
+      "bytes": 1111
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_lime-plaster-normal.png": {
+      "sha256": "d8630b11ec0b1baaaafefe6ca867e13577511fc3e0fc45fd546aa0b8e94930ef",
+      "bytes": 167240
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_lime-plaster-normal.png.import": {
+      "sha256": "cdefcd4ef274a65b0f562b95529a98cf29108ab4ee81075be49ec572af4abba1",
+      "bytes": 1095
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_lime-plaster-roughness.png": {
+      "sha256": "3a46b6b089ac7da0ca0f49f90301177513c611adef5d3a3383c119e861462b8d",
+      "bytes": 84115
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_lime-plaster-roughness.png.import": {
+      "sha256": "9ee67689431a63be4331cffef80d696590e70f0580815cf1a9ac1e80f285c5aa",
+      "bytes": 1104
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_masonry-coping-albedo-srgb.png": {
+      "sha256": "a3888e7190c86f73f6c3863b84610a34f1b6cc58d4384f6c77fc0d784d5f33d3",
+      "bytes": 57224
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_masonry-coping-albedo-srgb.png.import": {
+      "sha256": "1229bdc08462a74ec69216f1546ae7ecfe426fe4c9adcf300fdc0a9bd5c75724",
+      "bytes": 1116
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_masonry-coping-normal.png": {
+      "sha256": "2cf2332ced0e4af53cb86146d1a3cb9217678777cd3cdd7e5eef7ff3aa2da33d",
+      "bytes": 131879
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_masonry-coping-normal.png.import": {
+      "sha256": "7a6d2706e8eb080d55352aeda5b48d8f49d529231f55310ad0cec1036d123409",
+      "bytes": 1102
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_masonry-coping-roughness.png": {
+      "sha256": "ac19978333cc91117da8a23650dc1ed916fc3ae97ab6b1a5bfffe1e8669cae86",
+      "bytes": 48277
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_masonry-coping-roughness.png.import": {
+      "sha256": "eae316760885c8cff9892154a2e51d67fb7da22668b74911a2d9d80ea58efc87",
+      "bytes": 1111
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_oxidized-iron-albedo-srgb.png": {
+      "sha256": "4f794fd4eb20b706e4eda51cfc8533e5151b846bd73c5f251d9ab26d767f5914",
+      "bytes": 59980
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_oxidized-iron-albedo-srgb.png.import": {
+      "sha256": "66ec6f4bbb072237973df2acdb5a6c26828709e6a7de09f3067d673a60cbde5c",
+      "bytes": 1113
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_oxidized-iron-normal.png": {
+      "sha256": "db25a51dd6c649d7b155c51c64de0cb507306bf52641407581a850a79ffdc864",
+      "bytes": 198577
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_oxidized-iron-normal.png.import": {
+      "sha256": "5e66e18265b2fa4125e49bec33924bc4925f249b9d3db0bc9889fd0a170ee1a6",
+      "bytes": 1099
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_oxidized-iron-roughness.png": {
+      "sha256": "270e0a5d2c215abb5e51e37e4665c09e26698aa47563a6cdba80c996dbab0818",
+      "bytes": 74877
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_oxidized-iron-roughness.png.import": {
+      "sha256": "88f5ae0c10fd5b9d9f26b754a11d5200dc399d97970686da0a3310ec23e8525b",
+      "bytes": 1108
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_quay-damp-horizontal-albedo-srgb.png": {
+      "sha256": "2a46ae0a056798fd75405e2338079b049a6f74cfeb69c06f0e53197a14c30c38",
+      "bytes": 55318
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_quay-damp-horizontal-albedo-srgb.png.import": {
+      "sha256": "d88af4ad43791ad1e29a50ed16906f9e84b69391babc8bc3e2c6ba724a564e0c",
+      "bytes": 1135
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_quay-damp-horizontal-normal.png": {
+      "sha256": "833f87b0e6ab7e864e928c18a32a16edbe868c59d77fe29b34606a2043f1f75e",
+      "bytes": 36065
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_quay-damp-horizontal-normal.png.import": {
+      "sha256": "6256db7550ffca78dcaa7b2c5a46edb326159d1c6c83e75abbd5a4da514e1677",
+      "bytes": 1120
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_quay-damp-horizontal-roughness.png": {
+      "sha256": "3bbfdfe862f176ff29578078b67423e29f9c4a73aa11b597c6878bb47d05e586",
+      "bytes": 39834
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_quay-damp-horizontal-roughness.png.import": {
+      "sha256": "95f3bb6438e112090c8ed87357ed7bab664b3580865a9715514dabf517659d5c",
+      "bytes": 1129
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_slate-shingle-albedo-srgb.png": {
+      "sha256": "69974fba40f6c647c9a5e6c44ea26cfafa3e598516ef0107836ecf98efa0248a",
+      "bytes": 56839
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_slate-shingle-albedo-srgb.png.import": {
+      "sha256": "7eac78e4089df867980618fb43e0b94ceab630819072ce7b1b21e0f8fe54ca25",
+      "bytes": 1114
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_slate-shingle-normal.png": {
+      "sha256": "b9ed311dfd009e04771060ed8a06a053a53c83da7aaac3cd44a6f50dc3d598f4",
+      "bytes": 182277
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_slate-shingle-normal.png.import": {
+      "sha256": "15d849c6bb530e54058fcad664068011cbe49ba09e065f8a02aa0fcc0625fb6c",
+      "bytes": 1098
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_slate-shingle-roughness.png": {
+      "sha256": "bd90b5d264bfb164ccca8c02fbb4dfe166d0033b370ad306e8c1dd4a133c36d4",
+      "bytes": 57424
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_slate-shingle-roughness.png.import": {
+      "sha256": "df045d818fae6a12ee246e80c2431323384256489c37a3b123f8cf359baa6797",
+      "bytes": 1107
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_terracotta-albedo-srgb.png": {
+      "sha256": "19efdd03cd0bc98d04405f04c04b8b9ac1293ca0751103c4e4a11e9ab4b92124",
+      "bytes": 53680
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_terracotta-albedo-srgb.png.import": {
+      "sha256": "4ec2667fb167f505f2e1cc629d5fe065b510bc2aa446218106aeafeb3ba5be79",
+      "bytes": 1105
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_terracotta-normal.png": {
+      "sha256": "a82b4af6b637ecd74953a0f4af261acc637eab255e80f6117a231f5d0b564ca5",
+      "bytes": 174659
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_terracotta-normal.png.import": {
+      "sha256": "95a674dea37f0fd3abdbd842f69dda9244d82498f6613dfa5a36a784dfad8db2",
+      "bytes": 1089
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_terracotta-roughness.png": {
+      "sha256": "3d8531df0143abe737299e022b6ccd643092c9d1851b23973be0ab4ef2a7d0ef",
+      "bytes": 54081
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_terracotta-roughness.png.import": {
+      "sha256": "2a54d86cf929f840a86a2c70645d495b41b83983605dd4fca0e00e8d7a54d3a9",
+      "bytes": 1099
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_timber-weather-albedo-srgb.png": {
+      "sha256": "fb6bad65ce1a09efa1efbdbb20395056a2c3d6dd185fb30d9798b12a35065b43",
+      "bytes": 91585
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_timber-weather-albedo-srgb.png.import": {
+      "sha256": "ed7c647d7505d9b1e30b5f58871ad0eadc4dc6ecc73336c2bd7b922812454e24",
+      "bytes": 1117
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_timber-weather-normal.png": {
+      "sha256": "7a8f4b78d0c25eddb4def652c706110b27dceef69d8ff3c48f343abf41bd1a5b",
+      "bytes": 183882
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_timber-weather-normal.png.import": {
+      "sha256": "29fbcf5c720a83fc72d4e0ff40af3372583f8cb8c407a9691eb5e300c3083f2b",
+      "bytes": 1102
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_timber-weather-roughness.png": {
+      "sha256": "1afcc0cd04efbf07b7e96e9b48314f0cc9fa4d1385cb33bc0776c8aa07b27be8",
+      "bytes": 59142
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_timber-weather-roughness.png.import": {
+      "sha256": "0ce81586feb709d92fc7e912ebe88652c12a1a35e750d47b237d0123b803f141",
+      "bytes": 1111
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_viaduct-asphalt-albedo-srgb.png": {
+      "sha256": "509ca2ca6cfec8d3df4ebaf91487f78ba05d3960da9b3ba03f5598ad7f58de5b",
+      "bytes": 107685
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_viaduct-asphalt-albedo-srgb.png.import": {
+      "sha256": "d0b7fc6a25fc6e701c847138248834b57f4decbde49440f27feb2e1e7cc021fe",
+      "bytes": 1119
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_viaduct-asphalt-normal.png": {
+      "sha256": "697fd7497a1d8875dbcc834561ca4c7a313e45f831df0b6c63ff117106a92f87",
+      "bytes": 362575
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_viaduct-asphalt-normal.png.import": {
+      "sha256": "d530b95fcc7c03fa78ee72d012adeb6a01f6e1efd3b7f8904b53ff2123d9d0ba",
+      "bytes": 1104
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_viaduct-asphalt-roughness.png": {
+      "sha256": "b56d60e6e5e8588b28c2291c1b4db650840823c5f20fbde7f1d806e099a25558",
+      "bytes": 116567
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/candidate_viaduct-asphalt-roughness.png.import": {
+      "sha256": "8ec65c8c6de3268b59012cad62e38b03760785fd51c85cb7558cef4e34331f05",
+      "bytes": 1114
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/controls-result.json": {
+      "sha256": "06ddce1f675c03d6ebcb9765fdd532b989252fac56e74cf7174251a9a6b66510",
+      "bytes": 2567797
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/controls-supervisor.json": {
+      "sha256": "88da5d0e005b3bf92e577209237e92cd3e8fa79290ce3f5a3ff93c0c705f4804",
+      "bytes": 1069
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/controls-supervisor.log": {
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "bytes": 73
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/grant.json": {
+      "sha256": "51c5d0f771c51618cb36b52bb5b9bbc3b644322cb0f8770745341503f6af1ba0",
+      "bytes": 349
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/import-policy.json": {
+      "sha256": "f0ffe114449b918bce665ce13bb06f9185e69bea9176c6ec09ea369bd11471dd",
+      "bytes": 574
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/reference-accepted-civic-r035-binding.json": {
+      "sha256": "797d641d8837e687be131456bd7dbb8ac892689cb6655b6905be24b1285e57f7",
+      "bytes": 3414
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/reference-accepted-civic-r035-result.json": {
+      "sha256": "14010513a88710d4386e9def3e064e297487b05e54a9142d62b37cfd7cc5fbf7",
+      "bytes": 4149050
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/reference-accepted-civic-r035-supervisor.json": {
+      "sha256": "5268c99b29115f06ac486c3cf2cf4d167a48b3fe310d5d64136e36149e1b18bd",
+      "bytes": 1090
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/reference-accepted-civic-r035-supervisor.log": {
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "bytes": 73
+    },
+    "godot/tests/walker_step_up/walker-step-AB-01/source.json": {
+      "sha256": "5421c7369a5bd9ed8e068e17d588190b60faea8bc081db5f817803c80d981068",
+      "bytes": 24463
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/README.md": {
+      "sha256": "3161ef656d4f9af40514deda83d4670061bedaed83f687a0c3a24e2f652dc8b8",
+      "bytes": 8356
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/archive_ab.py": {
+      "sha256": "de0cd7ab983f8f5e942db1c5d353696c92616aaea80c7e68402680dd684f453b",
+      "bytes": 2838
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/check_controls.py": {
+      "sha256": "68dab5aa818f18241e2823a73c1bb2399b976681d87a56c98e21cd92f61bdfb0",
+      "bytes": 4597
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/check_reference.py": {
+      "sha256": "c90539af0f9bd34f11273574478e68e1e3d837f1981addf9900aa6f4c65afdcd",
+      "bytes": 3322
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/AB-release.json": {
+      "sha256": "ca9b60c47266cda5fdfe2d6d787103d8ab021deeabd63773bb40908e23c26b3e",
+      "bytes": 1341
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/attempt-import-cache.json": {
+      "sha256": "d14ab35dcccc4b9db9f4525fb62447856714af04b28605be84fae77e9734a4cb",
+      "bytes": 20622
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/attempt-import-cache.tar.gz": {
+      "sha256": "5d7759a43078dad05faaea8bc5ef30d0859be2d18d33de0e0e245210f6f43411",
+      "bytes": 4947061
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/baseline.json": {
+      "sha256": "9f3800b859a6c49477e00c567a342098dc6564108821e01969aa4d5fe98b08e0",
+      "bytes": 358400
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/cleanup.json": {
+      "sha256": "59714352959976638069652f108f380c849fbd00ad65ce9eb5700b6d8663f256",
+      "bytes": 181
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/controls-gate.json": {
+      "sha256": "5591f38ef922f949b7bf6a6550954c8d99f8e6173af9970a02d163672fc320fe",
+      "bytes": 4879
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/display-preservation.json": {
+      "sha256": "8de02f83fb2a9deaee88118ff9152dd6033d479caa8b038ee69902a572aaced3",
+      "bytes": 810
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/import-01-finished.json": {
+      "sha256": "7ecae72b085037cae230e6d40fc00eb976039c65592373c9243ce621304a30d3",
+      "bytes": 880
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/import-01-started.json": {
+      "sha256": "8be0e9e0dd63a9dbc58955e682fd04b7c23e0d37e4fb29e9b20ff3c0f1ae964c",
+      "bytes": 591
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/import-01.log": {
+      "sha256": "70a91e611047f74d4c7bceaa1c844d7beed1036527c66cc04b7f897953031bd6",
+      "bytes": 420508
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/import-02-finished.json": {
+      "sha256": "92dd0ec653dc58475a75122e7e72ae49118db1aabec0ecf5c7e30e70ffc13090",
+      "bytes": 881
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/import-02-started.json": {
+      "sha256": "3906839bab4e39502d6c2f603358dc95bf9d046fe8dcfca5d0dc9eea4fe7f91d",
+      "bytes": 591
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/import-02.log": {
+      "sha256": "e2859798be57311b40bc66e3df3a5256f8d24247be549d1d74bfa3a95e540d92",
+      "bytes": 9937
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/owned-unrelated-sidecars.json": {
+      "sha256": "34f0d67a18c7fa8642c8bc71ecc8400e1de273a6c99f3faba37676d2f39bc005",
+      "bytes": 122770
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/owned-unrelated-sidecars.tar.gz": {
+      "sha256": "a5d462ac512202372f5ddc098f99055a27f0666871a4292f02d3acc30b6bae64",
+      "bytes": 46643
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/preservation.json": {
+      "sha256": "cd42e512ac06fca74472f2866e1fecbc0df37d08756208f635792b7f89694c74",
+      "bytes": 2621
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/reference-analysis.json": {
+      "sha256": "0bd8d201c5b42f9cebf32f43e57c41a376aab8e1f2daca00ba4e389dc7dd0e83",
+      "bytes": 2526
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/source-initial/candidate_walker.gd": {
+      "sha256": "9d7707e1429486e0e6343eee765e0b57383e5c08c03c0fbd7f6780771fe72698",
+      "bytes": 3023
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/source-initial/controls_v2.gd": {
+      "sha256": "90e69221eecf657c6cd158e4db5cbbe89ebfce0440be1f7f00ec230ce9e88965",
+      "bytes": 3228
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/source-initial/driver_v2.gd": {
+      "sha256": "b38fc2bb5e2946b7de7fe13cdb711ca5071ab05582312b29113af567e45fad34",
+      "bytes": 15960
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/source-initial/response_guard.gd": {
+      "sha256": "ff242f1c352755e3655666440731115911b59dc431f0ec7c37807e8c8ec281b0",
+      "bytes": 4299
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/evidence/source-initial/sweep_proposal.gd": {
+      "sha256": "b253464820a84d8de7e1cfc5abf7d3852f392e055ac6e71d42ce6a678d538d41",
+      "bytes": 17360
+    },
+    "tools/godot-multiplayer/new-maps/walker-step-ab/import_job.py": {
+      "sha256": "9c91fbf6661d0a7570cbecb3a780173531cdefe920aa0e065278a49a3a22632d",
+      "bytes": 2180
+    }
+  },
+  "selfExcluded": true
+}
