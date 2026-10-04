@@ -10,7 +10,13 @@ finishing and verifying the new candidate.
 Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
-**No active heavy grant. AG delivered one guarded response and released.**
+**Current heavy owner: synthetic parity campaign AH**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `f860e426`. All source P1s passed
+review; parent passed 151 checks. Three ordered groups (34/4/4 pairs) require
+separate invocations and recorded passing-predecessor review checkpoints. Stop
+on any failure; no retry or map continuation. Production accounting remains open.
+
+**AG delivered one guarded response and released.**
 Delivery `c30c0e13` / `139f5618` / `362803a8` passed independent one-response
 review and is integrated through `5ac4dcb3`. Parent passed 102 checks and 29 hashes.
 Every guard/postcondition and fresh actual support pass; this is edge support,
@@ -305,7 +311,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P, Q, R, S, T, U, V, W, X, Y, Z, AA, AB, AC, AD, AE, AF and AG have released; no heavy grant is active.**
+**P, Q, R, S, T, U, V, W, X, Y, Z, AA, AB, AC, AD, AE, AF and AG have released; AH owns synthetic admission.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -346,6 +352,12 @@ are introduced without the user's renewed scope. The subsequent overnight
 directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
+
+**Active: `MOTH-BLENDER-20261004-AH`**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `f860e426`. One invocation each
+for negative controls, inclined rejection, then positive admission, conditional
+on complete passing same-grant/source/engine evidence review. No retry/maps.
+Retain all failures; final three measured empty audits and lock release required.
 
 **Released: `MOTH-BLENDER-20261004-AG`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `829aa08b`. Fresh setup and ONE

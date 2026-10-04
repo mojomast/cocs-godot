@@ -1,5 +1,31 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Synthetic contract approved/integrated; AH authorized
+
+Independent review approved **`8de9d63a` / `db144f7a` / `bb33f286`**, integrated
+as **`a1e8ff4f` / `c9587330` / `f860e426`**. All reviewed receipt/operand P1s are
+closed. Parent passed **151 checks**: 138 Python plus thirteen package checks.
+The reviewer independently rejected each support contradiction at both sites,
+replayed supervisor failures and accepted coherent predecessor/positive fixtures.
+AG's actual one-response operands remain valid offline, without treating it as
+a complete campaign. Runtime Python/GDScript equivalence is still untested.
+
+**MOTH-BLENDER-20261004-AH** is the sole heavy grant, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `f860e426`. Parent verified lock
+availability and only the preserved viewer at 05:25:44.997253Z. The new sealed
+synthetic phase authorizes three manually invoked groups in order: 34 negative
+pairs, four inclined pairs, four positive pairs. Before each later invocation,
+the owner must replay/inspect complete predecessor native and supervisor evidence
+and retain a hash-bound checkpoint under the same grant/source/engine.
+
+Each group has one 170/180-second invocation, then measured audits/reporting;
+any failure or uncertainty stops the campaign. No parser retry, source correction
+rerun or map continuation is authorized. Positive scope is full synthetic admission
+only. Three ordinary grounded responses continue input in the full-footprint region,
+not a stationary hold. Fatal counters may be incomplete; production motion
+accounting remains unresolved. Final release requires three empty audits across
+all owned groups and available lock. All sixty map journeys remain unrun.
+
 **Positive operand correction delivered:** `bb33f286` is under independent
 re-review. Producer reports both support sites bound to actual full transforms
 and live body RID, exact reviewed downward request parameters, finite ordered

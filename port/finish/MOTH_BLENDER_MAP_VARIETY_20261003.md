@@ -1,5 +1,15 @@
 # New Moth resources and Blender-authored map variety
 
+## Current owner — synthetic parity campaign AH
+
+**MOTH-BLENDER-20261004-AH is the sole heavy grant**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation **`f860e426`**. The three source
+commits passed independent review, closing receipt/operand P1s; parent passed
+151 checks. Negative34 → inclined4 → positive4 pairs are separately invoked,
+with mandatory passing-evidence review checkpoints under one sealed identity.
+Stop on any failure and after the campaign; no retries or map groups. Synthetic
+admission would not resolve production accounting or authorize map traversal.
+
 **Support/guard correction `bb33f286` is under focused re-review.** The producer
 reports actual-transform/RID binding, reviewed request/result checks, mandatory
 guard-operand validation and 138 Python tests passing. Physical guard and epsilon
