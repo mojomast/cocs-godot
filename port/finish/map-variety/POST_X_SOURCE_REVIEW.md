@@ -1,5 +1,31 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Snap-parity source review — baseline observation P1
+
+Independent review approves **`2b0f1f6a` as diagnosis/experimental WIP only**.
+It remains unmerged pending the observation correction and bounded-supervisor
+follow-up. All 46 portable tests pass in review; no native readiness is approved.
+
+`walker_snap_parity/diagnostic.gd` currently loads the candidate telemetry adapter
+for `original-query-observation`, instantiates it, then calls its step through
+`super.step_record()`. That path can apply the UP assist. The helper's read-only
+queries do not make the subsequent candidate response baseline-only.
+
+The producer must instantiate unchanged Baseline Walker, record actual pre-query
+state separately from hypothetical query transforms, collect proposal/comparison
+queries without moving the body, execute at most one baseline response, and stop
+at the first eligible comparison. Candidate-specific casts and expected-candidate-
+failure classification must be removed from this observation branch. The future
+ownership wrapper must admit only observation; candidate execution stays separate.
+
+Reviewed source confirms differences in forward contact capacity/recovery, snap
+length/contact capacity and travel projection. Float32 reconstruction retains AE's
+21.845102 µm discrepancy, without identifying a unique backend cause. The comparator
+records modeled parent-policy requests from predicted poses, not captured internal
+`move_and_slide()` calls. Parity planner/candidate remain WIP, with the original
+guard and epsilon unchanged. No heavy grant is active; positive admission, all
+sixty map journeys and production promotion remain unapproved.
+
 **AE failed evidence approved and integrated as `0b212499` / `41d32dcb`.** Parent
 passed 52 source/package checks and all 46 hashes. The physical pre-lift is proved,
 but zero lifts satisfy the complete guard. Planned foot below the tread is an

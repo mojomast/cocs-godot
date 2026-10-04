@@ -7,9 +7,8 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
-Parallax's reviewed AA-plus-16 contract is integrated as `3520bbdc`, with twelve
-parent source/material/shipping checks passing. AC is now authorized after verified
-AB release; actual successor/native evidence and authored-X appearance remain pending.
+Parallax AC is integrated with qualified staged-artifact approval through
+`388812d7`; authored-X appearance and broader release acceptance remain pending.
 
 **No active heavy grant. AE released after its first positive-pair failure.**
 Fresh inclined controls passed; an applied up sweep then failed endpoint agreement
@@ -19,6 +18,10 @@ verified 46 hashes and three empty audits/two groups. Independent failed-evidenc
 review approved integration through `41d32dcb`; parent passed 52 checks. Query-
 parity diagnosis remains source-only; no tolerance change is authorized. See
 `map-variety/WALKER_AE_REVIEW.md`.
+Snap-parity source `2b0f1f6a` passed diagnosis/WIP review with 46 portable tests,
+but baseline-only observation readiness is blocked: its driver instantiates the
+candidate and can apply UP. The producer is correcting the factory/collection path
+and completing bounded-supervisor wiring. No native grant or epsilon change.
 AC passed qualified independent artifact review and is integrated as `464604bb` /
 `388812d7`; parent passed nineteen checks and all 265 hashes. Complete mesh-local
 basis parity passes without waivers; appearance/final-art qualifications remain.

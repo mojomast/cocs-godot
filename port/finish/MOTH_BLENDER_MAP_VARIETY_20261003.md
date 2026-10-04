@@ -1,5 +1,13 @@
 # New Moth resources and Blender-authored map variety
 
+**Snap-parity observation P1:** independent review approves `2b0f1f6a` only as
+source diagnosis/WIP. Its observation branch instantiates the candidate and can
+apply UP, conflicting with the required baseline-only comparison. Astra is
+correcting that branch and completing the bounded ownership wrapper before focused
+re-review. The comparator itself is read-only, but its requests model parent policy
+at hypothetical poses. No native grant, epsilon change or positive admission is
+authorized; all sixty candidate map journeys remain unrun.
+
 **AE failed-experiment archive integrated through `41d32dcb`.** Independent review
 confirms fresh inclined PASS and first positive pair FAILED with one applied up
 sweep but zero guard-verified lifts. Parent passed 52 checks and all 46 hashes.
