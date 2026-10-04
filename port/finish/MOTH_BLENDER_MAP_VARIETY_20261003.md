@@ -1,5 +1,13 @@
 # New Moth resources and Blender-authored map variety
 
+## Current checkpoint — AL completed and released
+
+**No heavy grant is active.** AL `75271920` / `068705de` completed eight baseline
+profiles: .42/.15 arrived at both yaws; .35/.15, .42/.18 and .42/.20 blocked at
+both yaws. Parent verified 33 files/manifest and three empty audits/one group;
+release is 08:45:10.854070Z, lock checked at 08:53:51.357016Z. Evidence review
+precedes any height selection; candidate feasibility and admission remain unproved.
+
 ## Current owner — fixed baseline characterization AL
 
 **MOTH-BLENDER-20261004-AL is the sole heavy grant**, Astra

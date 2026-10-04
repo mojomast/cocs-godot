@@ -1,5 +1,21 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## AL delivered/released — complete fixed baseline characterization
+
+**`75271920` / `068705de`** report one engine/supervisor exit0 invocation and
+complete collection: eight profiles, six blocked, two arrived, zero unresolved/
+faulted/unrun. There are 160 settling plus 800 input responses. Both .35/.15
+profiles block at 127 inputs; both .42/.15 arrive at21; both .42/.18 and .42/.20
+block at126. All six 120-response blocked windows pass reported strict operand
+replay; arrivals have six qualifying landing responses and exclusive target support.
+
+Parent verified **33 files**, the 7,315-byte manifest hash
+`bef580de4e1605446425927bf9ee3f07dfb61992bfd6bb50af48369db7f738b5`, three measured
+empty audits/one group, no survivors and free lock at 08:53:51.357016Z. Release
+is 08:45:10.854070Z. Independent review is active; no heavy grant remains.
+No height is selected, candidate feasibility remains unproved and AK remains failed.
+All sixty map journeys, 184 static failures and production accounting remain open.
+
 ## Baseline package approved/integrated; AL authorized
 
 Independent review approved `3b2fb4cd`, integrated as **`b5deca56`**. Parent
