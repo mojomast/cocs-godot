@@ -1,0 +1,27 @@
+{
+  "sourceParent": "1c661b95",
+  "sourceTests": {
+    "passed": 6,
+    "mainSuiteSeconds": 159.616,
+    "additionalInMemoryStageTestSeconds": 33.595
+  },
+  "frozenR7MaterialTests": {
+    "passed": 5,
+    "seconds": 32.051
+  },
+  "finalChecks": [
+    "All Python parsed",
+    "Packed recipe construction succeeds",
+    "Frozen dependency lock verified",
+    "141 original AA manifest files byte-identical"
+  ],
+  "AAOriginalManifestSha256": "5e41067f590e79e54dd8b122840766630655a27595390f75b4213a9e0dc989b8",
+  "engineRuns": 0,
+  "actualArtifactsWritten": false,
+  "nativeEvidenceCreated": false,
+  "stageEngineValidation": "pending",
+  "actualArtifactSha256": null,
+  "actualMasterSha256": null,
+  "grant": null,
+  "autoStart": false
+}
