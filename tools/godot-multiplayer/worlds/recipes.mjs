@@ -141,8 +141,22 @@ function circuit(){
   const grid=Array.from({length:8},(_,i)=>({x:-58-7*Math.floor(i/2),z:-66+(i%2?4:-4),heading:Math.PI/2}));
   m.spawns=grid.map(p=>[p.x,p.z]);m.vehicles=grid.map((p,i)=>({id:`sirocco-${i}`,kind:'puma',x:p.x,z:p.z,y:0,yaw:p.heading}));
   for(let i=0;i<line.length;i++)trace(m,route(`sector-${i}`,12,[[line[i].x,line[i].z],[line[(i+1)%line.length].x,line[(i+1)%line.length].z]]));
-  m.race={centerline:line,gates,grid,boundary,itemBoxes:[1,3,5,7,9,11,13].map((i,n)=>({id:`sirocco-box-${n}`,...on(i,.5)})),
-    boostPads:[0,2,5,8,11].map((i,n)=>({id:`sirocco-pad-${n}`,...on(i,.3)})),coins:[0,2,4,6,8,10,12].flatMap(i=>[.35,.48,.61].map(t=>({id:`sirocco-coin-${i}-${t}`,...on(i,t,4)})))};
+  // Racing furniture tuned for four overtaking zones a lap: boost pads on the
+  // long straights and every corner exit, item-box rows across the start, east,
+  // north and west straights, and coin arcs along the inside of the fastest
+  // corners. Gate, checkpoint, grid and rail geometry are untouched.
+  const pads=[[0,.5,0],[0,.85,6],[2,.6,-5],[3,.4,5],[5,.5,-5],[7,.4,4],[8,.5,-5],[11,.5,5],[11,.85,-5],[13,.5,0]];
+  const boxRows=[[0,.35],[3,.5],[7,.6],[11,.4]];
+  const coinArcs=[
+    [[2,.3,6],[2,.5,3],[2,.7,0],[2,.9,-3]],
+    [[6,.3,-6],[6,.5,-3],[6,.7,0]],
+    [[10,.25,5],[10,.45,2.5],[10,.65,0],[10,.85,-2.5]],
+    [[13,.3,4],[13,.5,4],[0,.05,4]],
+  ];
+  m.race={centerline:line,gates,grid,boundary,
+    itemBoxes:boxRows.flatMap(([i,t],r)=>[-5,0,5].map((lane,k)=>({id:`sirocco-box-${r}-${k}`,...on(i,t,lane)}))),
+    boostPads:pads.map(([i,t,lane],n)=>({id:`sirocco-pad-${n}`,...on(i,t,lane)})),
+    coins:coinArcs.flatMap((arc,a)=>arc.map(([i,t,lane],k)=>({id:`sirocco-coin-${a}-${k}`,...on(i,t,lane)})))};
   // Scenic bridge runs ABOVE the road, has supports outside the 32-m ribbon.
   for(const z of [-25,25])solid(m,4,z,2,2,10,'bridge-pier','basalt');
   piece(m,'box',4,11,0,3,2,48,'iron');m.overhead=[{id:'spectator-overpass',x:4,z:0,w:3,d:48,minY:10,maxY:12}];
