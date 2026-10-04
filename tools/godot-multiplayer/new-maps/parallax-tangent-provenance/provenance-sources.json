@@ -1,0 +1,36 @@
+{
+  "scope": "Read-only source and analytic CPU regression; no engine, import, renderer or new artifact",
+  "baseCommit": "5916bc68",
+  "historicalFirstReportCommit": "4fe3df4e",
+  "artifactInputs": {
+    "XGlbSha256": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+    "AAGlbSha256": "95e9da98a45565ca2aae90858a9e5027d9123e4ffd1347da98d5de8573141cd5",
+    "mothSaltLimestoneNormalPngSha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6"
+  },
+  "pinnedReferences": {
+    "blenderVersion": "v4.5.14",
+    "installedExporter": {
+      "path": "io_scene_gltf2/blender/exp/primitive_extract.py",
+      "sha256": "884ba7f2691f1c69874c148a3058791b0621740dc5c7123799f6785fc3c87fa7",
+      "relevantLines": "1413-1425, 1494-1535"
+    },
+    "imageRowReader": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.5.14/source/blender/imbuf/intern/oiio/openimageio_support.cc",
+      "sha256": "11125d50c7cffcd595b26085042fc4c22c292ec6ebcd1bf9deba936aee6e6484",
+      "relevantLines": "118-128"
+    },
+    "normalMapShader": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.5.14/source/blender/gpu/shaders/material/gpu_shader_material_normal_map.glsl",
+      "sha256": "5f446445ddabf514396a892b04204da6c223f049d816ef687b943c165673c1d6",
+      "relevantExpression": "B = tangent.w * cross(g_data.Ni, tangent.xyz); outnormal = texnormal.x * tangent.xyz + texnormal.y * B + texnormal.z * g_data.Ni"
+    },
+    "godotVersion": "4.5.2-stable",
+    "godotSourcesSha256": {
+      "modules/gltf/gltf_document.cpp": "be5cd97ad0530eef4597240daa9012eed23847b39d8ebc8cc5333161ccb6951e",
+      "scene/resources/material.cpp": "d3a2778650924f51f1b228f4a61f2b0fce7e177784f2ac5b32a2ce2bc66c7c9f",
+      "drivers/gles3/shaders/scene.glsl": "2c35e86c547cacc463c8835621430256aabc05d46c1a3f1783312e7a71d47141",
+      "servers/rendering/renderer_rd/shaders/forward_clustered/scene_forward_clustered.glsl": "0e485aba3d4ac488f4f9778075d09dcda2679c700adb51a86975734e446d9d05"
+    }
+  },
+  "regression": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tools/godot-multiplayer/new-maps/parallax-tangent-provenance -p 'test_*.py' -v"
+}
