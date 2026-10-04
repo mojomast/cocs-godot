@@ -1,0 +1,22 @@
+{
+  "utc": "2026-10-04T05:38:53.623937+00:00",
+  "sourceBase": "f860e426",
+  "reviewPinsSha256": "fe72f92a6c09a74c4bdd4cf704fe7f9f831caf9554723b5955e9cf8286e043c2",
+  "reviewedSourceHostAnd15DependenciesMatch": true,
+  "stageScriptCount": 16,
+  "stageSourceReceiptSha256": "2bf47230230d4804507dd00257ce66b43adb72c30425af7872e6c5a5394ecbc0",
+  "grantSha256": "26b8d535721f8cf2a5513edf020a50aaedc50681a545e7f90ebf56e48bd25323",
+  "pythonTestsPassed": 138,
+  "testBreakdown": {
+    "parityAdmission": 49,
+    "parityResponse": 24,
+    "snapCompare": 18,
+    "snapParity": 8,
+    "admission": 7,
+    "stepUp": 32
+  },
+  "postReleaseTests": "Python only; mocked subprocess cases. No native engine/parser/import invocation after release.",
+  "nativeOutcomeNotOverriddenByTests": true,
+  "nativeSourceFixes": 0,
+  "nativeRetries": 0
+}

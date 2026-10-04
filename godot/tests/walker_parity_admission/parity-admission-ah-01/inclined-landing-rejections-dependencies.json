@@ -1,0 +1,13 @@
+{
+  "phase": "parity-admission-synthetic-v1",
+  "group": "inclined-landing-rejections",
+  "sourceSha256": "2bf47230230d4804507dd00257ce66b43adb72c30425af7872e6c5a5394ecbc0",
+  "grantSha256": "26b8d535721f8cf2a5513edf020a50aaedc50681a545e7f90ebf56e48bd25323",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "predecessors": {
+    "negative-controls": {
+      "resultSha256": "16ed25f39227d968fe08793083a7bdc12def96767812e1886e37eed8c2c252c9",
+      "supervisorSha256": "5a521547c29524ac445ae87a0fa4ec66a9d4bb4afea251171d522f8bfb0a28f7"
+    }
+  }
+}

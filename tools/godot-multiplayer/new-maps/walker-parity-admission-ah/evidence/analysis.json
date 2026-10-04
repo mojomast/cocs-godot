@@ -1,0 +1,302 @@
+{
+  "utc": "2026-10-04T05:36:59.958236+00:00",
+  "scope": "AH native synthetic campaign stopped on second invocation failure; no positive admission",
+  "sourceSha256": "2bf47230230d4804507dd00257ce66b43adb72c30425af7872e6c5a5394ecbc0",
+  "grantSha256": "26b8d535721f8cf2a5513edf020a50aaedc50681a545e7f90ebf56e48bd25323",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "supervisedInvocations": 2,
+  "nativeSourceCorrections": 0,
+  "retries": 0,
+  "groups": {
+    "negative-controls": {
+      "plannedPairs": 34,
+      "invocations": 1,
+      "passed": true,
+      "attemptedPairs": 34,
+      "completedPairs": 34,
+      "passedPairs": 34,
+      "failedPairs": 0,
+      "interruptedPairs": 0,
+      "unrunPairs": 0,
+      "attemptedProfiles": 68,
+      "completedProfiles": 68,
+      "failedProfiles": 0,
+      "interruptedProfiles": 0,
+      "unrunProfiles": 0,
+      "settlingRecords": 1284,
+      "inputRecordsIncludingJumpLaunches": 72,
+      "candidateOrdinaryResponses": 678,
+      "appliedUp": 0,
+      "verifiedLifts": 0,
+      "maxPairedPositionDifference": 0.0
+    },
+    "inclined-landing-rejections": {
+      "plannedPairs": 4,
+      "plannedProfiles": 8,
+      "invocations": 1,
+      "passed": false,
+      "returnCode": 2,
+      "nativeReceiptPresent": false,
+      "instrumentedCompletedPairs": 0,
+      "instrumentedCompletedProfiles": 0,
+      "attemptedPairs": null,
+      "failedPairs": null,
+      "interruptedPairs": null,
+      "unrunPairs": null,
+      "attemptedProfiles": null,
+      "failedProfiles": null,
+      "interruptedProfiles": null,
+      "unrunProfiles": null,
+      "physicalCalls": null,
+      "counterQualification": "No native receipt: internal trial/call counters unknown, not zero. All4 pairs and8 profiles unqualified. Group invocation failed; do not invent a failed trial."
+    },
+    "positive-step-admission": {
+      "plannedPairs": 4,
+      "plannedProfiles": 8,
+      "invocations": 0,
+      "attemptedPairs": 0,
+      "completedPairs": 0,
+      "passedPairs": 0,
+      "failedPairs": 0,
+      "interruptedPairs": 0,
+      "unrunPairs": 4,
+      "attemptedProfiles": 0,
+      "completedProfiles": 0,
+      "failedProfiles": 0,
+      "interruptedProfiles": 0,
+      "unrunProfiles": 8,
+      "passed": false,
+      "status": "unrun_due_to_prior_failure"
+    }
+  },
+  "firstFailure": {
+    "group": "inclined-landing-rejections",
+    "nativeReturnCode": 2,
+    "supervisorExitCode": 1,
+    "log": "Official4.5.2 banner only; no script/error lines",
+    "nativeResult": null,
+    "qualification": "Consistent with early initialization/admission exit; staged driver has silent quit(2) preflight branches before ready. Exact branch not traced. Host negative strict replay and predecessor dependency validation still pass. No source fix or engine probe performed."
+  },
+  "negativeR042PositiveOrdinaryDisplacements": [
+    {
+      "fixture": "ceiling-up",
+      "experimental": false,
+      "wholeFrameDelta": [
+        0.0,
+        0.0339999794960022,
+        0.0654968023300171
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "ceiling-up",
+      "experimental": true,
+      "wholeFrameDelta": [
+        0.0,
+        0.0339999794960022,
+        0.0654968023300171
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "overhang-forward",
+      "experimental": false,
+      "wholeFrameDelta": [
+        0.0,
+        0.0339999794960022,
+        0.0654968023300171
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "overhang-forward",
+      "experimental": true,
+      "wholeFrameDelta": [
+        0.0,
+        0.0339999794960022,
+        0.0654968023300171
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "narrow-width",
+      "experimental": false,
+      "wholeFrameDelta": [
+        0.0,
+        0.0345297530293465,
+        0.0659920573234558
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "narrow-width",
+      "experimental": true,
+      "wholeFrameDelta": [
+        0.0,
+        0.0345297530293465,
+        0.0659920573234558
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "narrow-depth",
+      "experimental": false,
+      "wholeFrameDelta": [
+        0.0,
+        0.0345221757888794,
+        0.066051572561264
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "narrow-depth",
+      "experimental": true,
+      "wholeFrameDelta": [
+        0.0,
+        0.0345221757888794,
+        0.066051572561264
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "hole",
+      "experimental": false,
+      "wholeFrameDelta": [
+        0.0,
+        0.0345297381281853,
+        0.0659920871257782
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "hole",
+      "experimental": true,
+      "wholeFrameDelta": [
+        0.0,
+        0.0345297381281853,
+        0.0659920871257782
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "lateral",
+      "experimental": false,
+      "wholeFrameDelta": [
+        0.0707106441259384,
+        0.012631731107831,
+        0.0582758784294128
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "lateral",
+      "experimental": true,
+      "wholeFrameDelta": [
+        0.0707106441259384,
+        0.012631731107831,
+        0.0582758784294128
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "jumping",
+      "experimental": false,
+      "wholeFrameDelta": [
+        0.0,
+        0.102777779102325,
+        0.100000023841858
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "jumping",
+      "experimental": true,
+      "wholeFrameDelta": [
+        0.0,
+        0.102777779102325,
+        0.100000023841858
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "tilted-body",
+      "experimental": false,
+      "wholeFrameDelta": [
+        6.43266560018674e-08,
+        0.0359194725751877,
+        0.0652664303779602
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "tilted-body",
+      "experimental": true,
+      "wholeFrameDelta": [
+        6.43266560018674e-08,
+        0.0359194725751877,
+        0.0652664303779602
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "transformed-parent",
+      "experimental": false,
+      "wholeFrameDelta": [
+        2.98023223876953e-08,
+        0.0345297455787659,
+        0.0659920275211334
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "transformed-parent",
+      "experimental": true,
+      "wholeFrameDelta": [
+        2.98023223876953e-08,
+        0.0345297455787659,
+        0.0659920275211334
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "moving-floor",
+      "experimental": false,
+      "wholeFrameDelta": [
+        0.00166663900017738,
+        0.0345298498868942,
+        0.0660318732261658
+      ],
+      "appliedUp": 0
+    },
+    {
+      "fixture": "moving-floor",
+      "experimental": true,
+      "wholeFrameDelta": [
+        0.00166663900017738,
+        0.0345298498868942,
+        0.0660318732261658
+      ],
+      "appliedUp": 0
+    }
+  ],
+  "predecessorReplayAfterFailure": {
+    "phase": "parity-admission-synthetic-v1",
+    "group": "inclined-landing-rejections",
+    "sourceSha256": "2bf47230230d4804507dd00257ce66b43adb72c30425af7872e6c5a5394ecbc0",
+    "grantSha256": "26b8d535721f8cf2a5513edf020a50aaedc50681a545e7f90ebf56e48bd25323",
+    "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+    "predecessors": {
+      "negative-controls": {
+        "resultSha256": "16ed25f39227d968fe08793083a7bdc12def96767812e1886e37eed8c2c252c9",
+        "supervisorSha256": "5a521547c29524ac445ae87a0fa4ec66a9d4bb4afea251171d522f8bfb0a28f7"
+      }
+    }
+  },
+  "positiveAdmission": false,
+  "nativeStepAdmission": false,
+  "productionPromotion": false,
+  "candidateMapWalks": 0,
+  "parentAccountingLimitationUnchanged": true,
+  "releaseUtc": "2026-10-04T05:34:16.414998+00:00",
+  "noEngineAfterRelease": true
+}

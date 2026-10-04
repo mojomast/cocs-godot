@@ -1,0 +1,173 @@
+{
+  "scope": "AH delivery; inventory self-excluded",
+  "files": {
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/exploration/walker.gd": {
+      "sha256": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+      "bytes": 4222
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/grant.json": {
+      "sha256": "26b8d535721f8cf2a5513edf020a50aaedc50681a545e7f90ebf56e48bd25323",
+      "bytes": 466
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/inclined-landing-rejections-dependencies.json": {
+      "sha256": "5bc0e79c0e3e637791b294d994649af68eecbc332458128c92627ebc7e89885e",
+      "bytes": 587
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/inclined-landing-rejections-start.json": {
+      "sha256": "e3996eeee34dc787e5d6ef95074c9e7f54587ea47dde003c3ba377134ba371a6",
+      "bytes": 1482
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/inclined-landing-rejections-supervisor.json": {
+      "sha256": "d10e80999852bc8e6f759d2ea87169b652b5779ad709f475a43e8bf28638b942",
+      "bytes": 4111
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/inclined-landing-rejections.log": {
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "bytes": 73
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/negative-controls-dependencies.json": {
+      "sha256": "1b0ecd6ca48e077b7fc2560e72cf5de839b9b0691cd8b3967509051cecabbf93",
+      "bytes": 358
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/negative-controls-result.json": {
+      "sha256": "16ed25f39227d968fe08793083a7bdc12def96767812e1886e37eed8c2c252c9",
+      "bytes": 9645594
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/negative-controls-start.json": {
+      "sha256": "ce172d737df12e1a4acf9a904bdacd9767fbd5b5c71e89c73e8be734fdefab7d",
+      "bytes": 1463
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/negative-controls-supervisor.json": {
+      "sha256": "5a521547c29524ac445ae87a0fa4ec66a9d4bb4afea251171d522f8bfb0a28f7",
+      "bytes": 62187
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/negative-controls.log": {
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "bytes": 73
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/project.godot": {
+      "sha256": "c366dc92671de8b71c2e52d4d61fa89b621390a9183090338316ad79bff0cf0d",
+      "bytes": 221
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/source.json": {
+      "sha256": "2bf47230230d4804507dd00257ce66b43adb72c30425af7872e6c5a5394ecbc0",
+      "bytes": 5579
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/tests/walker_admission/fixtures_v4.gd": {
+      "sha256": "c4c175420aaca975acfa8ee277b2088796c2f0f8279751bbc8f2939154070e04",
+      "bytes": 2020
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/tests/walker_admission/slide_telemetry.gd": {
+      "sha256": "b7c04249dd44574c5c14627766983cb571542879b17c39afc458c115178b2df0",
+      "bytes": 884
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/tests/walker_parity_admission/candidate.gd": {
+      "sha256": "0aae2ac30347e21286e09fc1b8f1a6b8937f37aef447d99af083a12700261314",
+      "bytes": 9468
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/tests/walker_parity_admission/driver.gd": {
+      "sha256": "31370f40c9c0e58b613e9231f6ab1ce74b64bf852aecfcee205b4de2033c5b19",
+      "bytes": 17752
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/tests/walker_parity_admission/evidence.gd": {
+      "sha256": "acbab472c5042bbe5d3d996fe45e9d71f1114dd24bc8f6316ba891bbaacdb96f",
+      "bytes": 26836
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/tests/walker_parity_admission/observe.gd": {
+      "sha256": "8a03fffa0cc46dcd34f83b9c811c781efb93b2b7f33fc4143d7526c7f9d2f5f8",
+      "bytes": 3591
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/tests/walker_parity_admission/policy.gd": {
+      "sha256": "6fab2f142b3b849b3902a506a54c95d31f19a7dfecbab0202acb1896572f757f",
+      "bytes": 4060
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/tests/walker_parity_response/planner.gd": {
+      "sha256": "7dadd0a3fb018de12afe867ff5a688663347e99bd6335f92353519d136e76b31",
+      "bytes": 992
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/tests/walker_snap_parity/planner.gd": {
+      "sha256": "9d61d505822208aaacc03bbb8017d4458d068e5430389aa5849eae7b6fdf01e6",
+      "bytes": 3386
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/tests/walker_snap_parity/query_pair.gd": {
+      "sha256": "91f427d0ea0d47e9397a7331dd49f798d8041d5d93e31e11331da6ad31a475f7",
+      "bytes": 3619
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/tests/walker_step_up/controls_v2.gd": {
+      "sha256": "90e69221eecf657c6cd158e4db5cbbe89ebfce0440be1f7f00ec230ce9e88965",
+      "bytes": 3228
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/tests/walker_step_up/response_guard.gd": {
+      "sha256": "ff242f1c352755e3655666440731115911b59dc431f0ec7c37807e8c8ec281b0",
+      "bytes": 4299
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/tests/walker_step_up/sweep_proposal.gd": {
+      "sha256": "b253464820a84d8de7e1cfc5abf7d3852f392e055ac6e71d42ce6a678d538d41",
+      "bytes": 17360
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/ui/mouse_motion.gd": {
+      "sha256": "1edc97f26ccf98a6c5f776bf72968cf5fd1258d129566006c0c3ae1222716581",
+      "bytes": 333
+    },
+    "godot/tests/walker_parity_admission/parity-admission-ah-01/ui/settings_access.gd": {
+      "sha256": "2bb46c9e6ee5dabbdef7a4cd864bf4afcae2a3c8dd7be93d0180a907da7920e0",
+      "bytes": 1385
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ah/README.md": {
+      "sha256": "ac76c9b624867051fa85c2f21b0e465c7c7f94586fba60dd763db37684497151",
+      "bytes": 7213
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ah/analyze.py": {
+      "sha256": "e99a9a11d1a1595c1b25dc41d5c88519da2d3fde41e8ac2ad3d22c8f0c07d4f8",
+      "bytes": 6210
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ah/audit_ah.py": {
+      "sha256": "ba0687f625c0c4e162db64e43f7d23e97f1d8e7ef8a33c82ef7e5e570129b398",
+      "bytes": 7230
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ah/evidence/AH-release.json": {
+      "sha256": "0de241ad4a0713e864e2545c03d92d8bf2df4e344f83c80dd68a307aba093861",
+      "bytes": 1874
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ah/evidence/after.json": {
+      "sha256": "8963008596d080207c2636d6b6ac2c4235b5c84d8d27d4b537af2d0805b20f9d",
+      "bytes": 5435260
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ah/evidence/analysis.json": {
+      "sha256": "c9c978db29c66abc39b424163cd21734a5ce59e2afd41ad691f1de9665502394",
+      "bytes": 7895
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ah/evidence/authorization.json": {
+      "sha256": "ecf1c2b00cd70f1b75f5e86296ceb2fdc7bd9de4c22883cdb042f9556d890a03",
+      "bytes": 1183
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ah/evidence/before.json": {
+      "sha256": "49c7a13287aa4ccadfe246b4940df34e2e60fc5c30b240619a459947f08951ff",
+      "bytes": 5472933
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ah/evidence/inclined-landing-rejections-checkpoint.json": {
+      "sha256": "c871c5770f8f95858d8ac49ca59ec4e1db0a8bafda5776c5822eb208b88c24b7",
+      "bytes": 923
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ah/evidence/inclined-landing-rejections-owner-review.json": {
+      "sha256": "a301a8e2c64907d3e4db3d7d28c529d34292d82aa08995218539dea75130607f",
+      "bytes": 1428
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ah/evidence/negative-controls-checkpoint.json": {
+      "sha256": "e51b8e0ca9a1e13c0538157ef72676baa4eba3b264369aebf3aa80d10d20f060",
+      "bytes": 28346
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ah/evidence/negative-controls-owner-review.json": {
+      "sha256": "4c80bb882cf069cab6fda9cde87db500302608d8e99858e4b1a371a7fb901e34",
+      "bytes": 1877
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ah/evidence/preservation.json": {
+      "sha256": "f3643012d89b682f3896bdf87ab4f926d3e425e00db8ef33b6d2729d2bdb20e0",
+      "bytes": 940
+    },
+    "tools/godot-multiplayer/new-maps/walker-parity-admission-ah/evidence/validation.json": {
+      "sha256": "57975879a6b15677a789415a96d10fe5bdc272e0ebbe705ebc60871695aba371",
+      "bytes": 828
+    }
+  }
+}

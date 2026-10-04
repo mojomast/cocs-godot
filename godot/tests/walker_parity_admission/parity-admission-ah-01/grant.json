@@ -1,0 +1,14 @@
+{
+  "phase": "parity-admission-synthetic-v1",
+  "mode": "synthetic-controls",
+  "allowedGroups": [
+    "negative-controls",
+    "inclined-landing-rejections",
+    "positive-step-admission"
+  ],
+  "grantId": "MOTH-BLENDER-20261004-AH",
+  "authorized": true,
+  "expiresUnix": 1791095461.281656,
+  "sourceSha256": "2bf47230230d4804507dd00257ce66b43adb72c30425af7872e6c5a5394ecbc0",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae"
+}

@@ -1,0 +1,30 @@
+{
+  "utc": "2026-10-04T05:31:01.485664+00:00",
+  "authority": "Explicit user sole heavy grant MOTH-BLENDER-20261004-AH",
+  "parentBase": "f860e426",
+  "helperCommit": "560fff1e",
+  "engine": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "sourceSha256": "2bf47230230d4804507dd00257ce66b43adb72c30425af7872e6c5a5394ecbc0",
+  "grantSha256": "26b8d535721f8cf2a5513edf020a50aaedc50681a545e7f90ebf56e48bd25323",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "expiresUnix": 1791095461.281656,
+  "groups": [
+    "negative-controls",
+    "inclined-landing-rejections",
+    "positive-step-admission"
+  ],
+  "mode": "synthetic-controls",
+  "phase": "parity-admission-synthetic-v1",
+  "maxInvocationsPerGroup": 1,
+  "orderedManualCheckpointsRequired": true,
+  "stopOnAnyFailure": true,
+  "noRetriesOrSourceCorrections": true,
+  "queued": false,
+  "mapsAuthorized": false,
+  "preserveViewer": {
+    "pid": 2598700,
+    "pgid": 2598689,
+    "startTicks": 522477875
+  },
+  "preflight": "16 scripts plus project; reviewed stage/host/dependency pins verified; AG29 AF24 lineage verified; engine not yet invoked"
+}

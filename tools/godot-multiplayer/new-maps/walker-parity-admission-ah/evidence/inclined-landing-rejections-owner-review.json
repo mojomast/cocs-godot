@@ -1,0 +1,15 @@
+{
+  "utc": "2026-10-04T05:38:53.623254+00:00",
+  "checkpointSha256": "c871c5770f8f95858d8ac49ca59ec4e1db0a8bafda5776c5822eb208b88c24b7",
+  "sourceSha256": "2bf47230230d4804507dd00257ce66b43adb72c30425af7872e6c5a5394ecbc0",
+  "grantSha256": "26b8d535721f8cf2a5513edf020a50aaedc50681a545e7f90ebf56e48bd25323",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "nativeSha256": null,
+  "supervisorSha256": "d10e80999852bc8e6f759d2ea87169b652b5779ad709f475a43e8bf28638b942",
+  "passed": false,
+  "continueAuthorized": false,
+  "decision": "Stop AH on second invocation failure; positive-step-admission unrun. No correction/retry.",
+  "inspection": "Engine exit2, wrapper exit1, no native JSON, banner-only log without script errors. Host strict negative receipt replay and exact predecessor dependency replay still pass. Frozen staged run() contains silent preflight quit(2) paths before ready=true, including predecessors(). Exact native rejection branch not instrumented; no unique cause asserted. Missing result cannot establish zero physical calls or trial counters.",
+  "accounting": "0 instrumented completed inclined profiles; attempted/failed/interrupted/unrun native counts unknown. All4 inclined pairs unqualified. Positive group never invoked:4 pairs/8 profiles unrun.",
+  "release": "Both owned groups empty in three final measured audits; AH released2026-10-04T05:34:16.414998Z."
+}

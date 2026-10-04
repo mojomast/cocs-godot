@@ -1,0 +1,35 @@
+{
+  "utc": "2026-10-04T05:36:59.958268+00:00",
+  "viewerUnchanged": true,
+  "displaysUnchanged": true,
+  "preexistingSidecarsVerified": 22242,
+  "newSidecars": {},
+  "archivesVerified": {
+    "AF": 24,
+    "AE": 46,
+    "AD": 45,
+    "AB": 140,
+    "Z": 253,
+    "AA": 141,
+    "AC": 265,
+    "AG": 29
+  },
+  "XUVerified": {
+    "X": {
+      "root": "/home/mojo/.tmp-on-disk/cocs-botanical-source-correction",
+      "inventorySha256": "440a1291201eaa3ee55f9c0218503ac4588028bfae7fee5c46364673bf94bd78",
+      "verifiedFiles": 600,
+      "mismatches": 0
+    },
+    "U": {
+      "root": "/home/mojo/.tmp-on-disk/cocs-map-variety-botanical-astra",
+      "inventorySha256": "ce0dd0ec8a87340cc31bfcb88cdfc7b11fb5aad1ce6efd317b9bb43ec22289ef",
+      "verifiedFiles": 264,
+      "mismatches": 0
+    }
+  },
+  "productionDependenciesVerified": 15,
+  "stageScriptsVerified": 16,
+  "historicalProvenanceVerified": true,
+  "noCleanupPerformed": true
+}
