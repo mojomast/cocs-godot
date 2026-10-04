@@ -1,5 +1,15 @@
 # New Moth resources and Blender-authored map variety
 
+## Current checkpoint — AG guarded response delivered and released
+
+**No heavy grant is active.** AG `c30c0e13` / `139f5618` / `362803a8` reports
+one guarded parity response passing with zero endpoint error and fresh certified
+support. Parent verified 29 hashes and three measured empty audits/one group;
+release is 03:26:30.169363Z and lock availability was checked at 03:33:12.948454Z.
+Independent evidence review is active. This is edge support, not completed landing
+or positive admission; whole-frame/parent accounting still differs. All sixty
+candidate map journeys remain unrun and broader execution is unapproved.
+
 ## Current owner — single-response parity diagnostic AG
 
 **MOTH-BLENDER-20261004-AG is the sole heavy grant**, Astra

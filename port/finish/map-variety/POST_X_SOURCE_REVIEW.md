@@ -1,5 +1,25 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## AG delivered/released — single guarded response review pending
+
+AG delivered **`c30c0e13` / `139f5618` / `362803a8`**, reporting one engine
+invocation, twenty settling/eight input responses, first eligibility at input
+eight/physics frame 29, and one attempt/UP/parent response. Both proofs and the
+complete unchanged guard pass with zero float32 endpoint error against 1 µm.
+The fresh actual-final-support query reports certified target shape/local shape 0,
+zero plane error and a 36.677329° support normal; its travel is not applied.
+
+This is one edge-supported response, not a tread landing or positive admission.
+Whole-frame Y displacement +.071089290 m differs from parent-only −.084375001 m
+and parent realVelocityY −5.0625 m/s; production accounting remains unresolved.
+Modeled queries are not internal parent-call traces, and unique AE causality is
+unproved. All sixty map journeys remain unrun.
+
+Parent verified **29 inventory hashes/sizes**, three measured empty audits/one
+group, no survivors and lock availability at 03:33:12.948454Z. Explicit release
+is 03:26:30.169363Z. Independent source/native-evidence review is active; delivery
+remains unmerged. No heavy grant is active and no broader execution is authorized.
+
 ## Single-response source approved/integrated; AG authorized
 
 Independent review approved `d1f0889c`, integrated as **`829aa08b`**, for one
