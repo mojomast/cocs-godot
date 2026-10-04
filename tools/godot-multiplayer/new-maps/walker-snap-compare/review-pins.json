@@ -1,0 +1,40 @@
+{
+  "AEManifestPath": "tools/godot-multiplayer/new-maps/walker-admission-ae/evidence/artifact-inventory.json",
+  "AEManifestSha256": "b1a4be3789341ca87bc4e24664c016bc5a95519806a8179e686a3fac5c0a1387",
+  "productionDependencies": {
+    "game/core.mjs": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+    "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+    "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+    "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+    "game/spatial.mjs": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
+    "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
+    "game/operator-verbs.mjs": "357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e",
+    "game/spec-effects.mjs": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
+    "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "godot/exploration/walker.gd": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+    "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
+    "godot/world/session.gd": "32ff87d491dad9f47d555fa3eec701fbfbbfa47608075ebbc2796b5c291b549c",
+    "godot/multiplayer_worlds/demo.gd": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748"
+  },
+  "stageInputs": {
+    "godot/tests/walker_snap_compare/policy.gd": "5aba27fffb949581aca0ab50892e2908bfaba73b9eba32b61c84bc06576befaf",
+    "godot/tests/walker_snap_compare/driver.gd": "912c7487e94bed572a08864189b1aa749b2d13e9d19a37627efc7d53fe5a1d16",
+    "godot/tests/walker_snap_parity/query_pair.gd": "91f427d0ea0d47e9397a7331dd49f798d8041d5d93e31e11331da6ad31a475f7",
+    "godot/tests/walker_step_up/sweep_proposal.gd": "b253464820a84d8de7e1cfc5abf7d3852f392e055ac6e71d42ce6a678d538d41",
+    "godot/tests/walker_admission/fixtures_v4.gd": "c4c175420aaca975acfa8ee277b2088796c2f0f8279751bbc8f2939154070e04",
+    "godot/tests/walker_admission/slide_telemetry.gd": "b7c04249dd44574c5c14627766983cb571542879b17c39afc458c115178b2df0",
+    "godot/exploration/walker.gd": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+    "godot/ui/settings_access.gd": "2bb46c9e6ee5dabbdef7a4cd864bf4afcae2a3c8dd7be93d0180a907da7920e0",
+    "godot/ui/mouse_motion.gd": "1edc97f26ccf98a6c5f776bf72968cf5fd1258d129566006c0c3ae1222716581"
+  },
+  "projectSha256": "0399a69a9aceb9284839b020bdbef3c7158651f72b99a3085b1448edec478436",
+  "historicalSourceCommit": "2b0f1f6a",
+  "baselineCorrectionCommit": "2e8fc0bc",
+  "hostInputs": {
+    "tools/godot-multiplayer/new-maps/walker-snap-compare/prepare.py": "68c3bde44e0ec8d2836644405c1e3acf51c3fe5efa92d9cb53d193d7e255e0d5",
+    "tools/godot-multiplayer/new-maps/walker-snap-compare/policy.py": "bb3fce22945ec3a4ad67bc68d433abf0786995f87dd50329ef9c57b668c8ea58",
+    "tools/godot-multiplayer/new-maps/walker-snap-compare/supervisor.py": "21d43a3309a33e661db2608b3f46f3b6b90b831771bcce91b5286777f473195b"
+  }
+}

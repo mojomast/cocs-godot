@@ -1,0 +1,132 @@
+{
+  "status": "SOURCE ONLY; new GDScript unparsed/unrun; no native attempt/grant or engine execution",
+  "base": "f86f5a7f",
+  "historicalPrototype": "2b0f1f6a",
+  "P1Correction": "2e8fc0bc",
+  "archives": {
+    "AE": {
+      "manifestSha256": "b1a4be3789341ca87bc4e24664c016bc5a95519806a8179e686a3fac5c0a1387",
+      "filesVerified": 46,
+      "root": "/home/mojo/.tmp-on-disk/cocs-walker-admission-ae"
+    },
+    "AD": {
+      "manifestSha256": "912a8d5a6346e194c66b501daaaf43574eee1bad6a1a9d9f3cc49c964263d6fe",
+      "filesVerified": 45,
+      "root": "/home/mojo/.tmp-on-disk/cocs-walker-admission-ad"
+    },
+    "AB": {
+      "manifestSha256": "27ef00702b95c74b54bba5d9c03030254e4e76a7875f6519ec6bfd97a976b2a6",
+      "filesVerified": 140,
+      "root": "/home/mojo/.tmp-on-disk/cocs-walker-step-ab"
+    },
+    "Z": {
+      "manifestSha256": "288aaa809d4d655bd5037bec5eee7b6ea7dd8c824cb57d5382534a736cc89b38",
+      "filesVerified": 253,
+      "root": "/home/mojo/.tmp-on-disk/cocs-vesper-native-z"
+    },
+    "AA": {
+      "manifestSha256": "5e41067f590e79e54dd8b122840766630655a27595390f75b4213a9e0dc989b8",
+      "filesVerified": 141,
+      "root": "/home/mojo/.tmp-on-disk/cocs-parallax-tangent-native-AA-20261003"
+    },
+    "AC": {
+      "manifestSha256": "c55d288008626ecb8a9ec99e005b4c9db52a8f3d55a6342e539c9602f706b386",
+      "filesVerified": 265,
+      "root": "/home/mojo/.tmp-on-disk/cocs-parallax-glyph-AC"
+    }
+  },
+  "frozen": {
+    "X": {
+      "root": "/home/mojo/.tmp-on-disk/cocs-botanical-source-correction",
+      "inventorySha256": "440a1291201eaa3ee55f9c0218503ac4588028bfae7fee5c46364673bf94bd78",
+      "verifiedFiles": 600,
+      "mismatches": 0
+    },
+    "U": {
+      "root": "/home/mojo/.tmp-on-disk/cocs-map-variety-botanical-astra",
+      "inventorySha256": "ce0dd0ec8a87340cc31bfcb88cdfc7b11fb5aad1ce6efd317b9bb43ec22289ef",
+      "verifiedFiles": 264,
+      "mismatches": 0
+    }
+  },
+  "original15Dependencies": {
+    "game/core.mjs": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+    "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+    "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+    "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+    "game/spatial.mjs": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
+    "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
+    "game/operator-verbs.mjs": "357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e",
+    "game/spec-effects.mjs": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
+    "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "godot/exploration/walker.gd": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+    "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
+    "godot/world/session.gd": "32ff87d491dad9f47d555fa3eec701fbfbbfa47608075ebbc2796b5c291b549c",
+    "godot/multiplayer_worlds/demo.gd": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748"
+  },
+  "preservedHistoricalArtifactHashes": {
+    "godot/tests/walker_snap_parity/candidate.gd": "1a99b2d2c451293f856463789643a5e598f98102a2a3a1251bee56caacd9b29f",
+    "godot/tests/walker_snap_parity/planner.gd": "9d61d505822208aaacc03bbb8017d4458d068e5430389aa5849eae7b6fdf01e6",
+    "godot/tests/walker_snap_parity/query_pair.gd": "91f427d0ea0d47e9397a7331dd49f798d8041d5d93e31e11331da6ad31a475f7",
+    "tools/godot-multiplayer/new-maps/walker-snap-parity/AE-witness.json": "651f5c4d897a3e2a3432a601436b46964b925fbe7b43f4d8722e3741e3571551",
+    "tools/godot-multiplayer/new-maps/walker-snap-parity/prepare.py": "9efc8488a88cdd84bd95c027b60683b4750e337dfc7d8bf60ceae57360da812b",
+    "tools/godot-multiplayer/new-maps/walker-snap-parity/test_parity.py": "50c0e4a5fb058ed7493efe06670df6ecf503e50194ff64b7b9cbb6d146e59cbe"
+  },
+  "historicalProvenanceBytesUnchanged": true,
+  "intentionalP1Corrections": [
+    "godot/tests/walker_snap_parity/diagnostic.gd",
+    "tools/godot-multiplayer/new-maps/walker-snap-parity/README.md",
+    "tools/godot-multiplayer/new-maps/walker-snap-parity/experiment-plan.json"
+  ],
+  "sourceTestsPassed": 59,
+  "testBreakdown": {
+    "stepUp": 32,
+    "admission": 7,
+    "parityIncludingP1": 8,
+    "compareWiring": 12
+  },
+  "scratchTestsOnly": "disposable Python unit fixtures; mocked child in supervisor control-flow tests; no runnable repository stage",
+  "grant": null,
+  "autoStart": false,
+  "queued": false,
+  "nativeStepAdmission": false,
+  "productionPromotion": false,
+  "candidateMapWalksRun": 0,
+  "files": {
+    "godot/tests/walker_snap_compare/driver.gd": {
+      "sha256": "912c7487e94bed572a08864189b1aa749b2d13e9d19a37627efc7d53fe5a1d16",
+      "bytes": 8266
+    },
+    "godot/tests/walker_snap_compare/policy.gd": {
+      "sha256": "5aba27fffb949581aca0ab50892e2908bfaba73b9eba32b61c84bc06576befaf",
+      "bytes": 1329
+    },
+    "tools/godot-multiplayer/new-maps/walker-snap-compare/README.md": {
+      "sha256": "8d7e1dd22f698d98a9bbb8f3a31530fcde75c481c1a004c37d2cc1d9a080fe3d",
+      "bytes": 6420
+    },
+    "tools/godot-multiplayer/new-maps/walker-snap-compare/policy.py": {
+      "sha256": "bb3fce22945ec3a4ad67bc68d433abf0786995f87dd50329ef9c57b668c8ea58",
+      "bytes": 1314
+    },
+    "tools/godot-multiplayer/new-maps/walker-snap-compare/prepare.py": {
+      "sha256": "68c3bde44e0ec8d2836644405c1e3acf51c3fe5efa92d9cb53d193d7e255e0d5",
+      "bytes": 6436
+    },
+    "tools/godot-multiplayer/new-maps/walker-snap-compare/review-pins.json": {
+      "sha256": "40fce3a166393fc1829939f112c025da08d44a10a628ee2d60408c332a92b583",
+      "bytes": 3344
+    },
+    "tools/godot-multiplayer/new-maps/walker-snap-compare/supervisor.py": {
+      "sha256": "21d43a3309a33e661db2608b3f46f3b6b90b831771bcce91b5286777f473195b",
+      "bytes": 7163
+    },
+    "tools/godot-multiplayer/new-maps/walker-snap-compare/test_compare.py": {
+      "sha256": "6614ceb022fc28732cc6dbe4f8a99d32ba73ed01689dae1f660b948015726507",
+      "bytes": 11751
+    }
+  },
+  "existingStagedDependenciesMatch2b0f1f6a": true
+}
