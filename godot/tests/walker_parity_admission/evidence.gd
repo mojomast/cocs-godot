@@ -136,7 +136,7 @@ static func profile(p: Dictionary,spec: Dictionary,group: String,experimental: b
 		if experimental:
 			var life: Variant = getv(row,"lifecycle");var up: Variant = getv(row,"appliedUpCount")
 			var accepted: Variant = getv(getv(life,"originalProof"),"accepted")
-			if not flag(getv(life,"returned"),true) or not near(getv(life,"frame"),row.frame,0) or not integer(up) or not up in [0,1] or not near(getv(life,"parentCalls"),1,0) or not accepted is bool: return false
+			if not flag(getv(life,"returned"),true) or not near(getv(life,"frame"),row.frame,0) or not integer(up) or (up != 0 and up != 1) or not near(getv(life,"parentCalls"),1,0) or not accepted is bool: return false
 			if not getv(life,"ordinary") is bool or life.ordinary==accepted: return false
 			ordinary = life.ordinary
 			if not accepted:
