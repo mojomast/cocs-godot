@@ -1,5 +1,14 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**Normal-map provenance review correction:** `4fe3df4e` integration is withheld.
+Its exporter/pixel facts pass, but UV-origin conversion can retain the authored
+normal-map perturbation with unchanged PNGs and supplied binormals. Raw exported-
+UV derivative disagreement is not sufficient evidence of incorrect shading.
+Sol is correcting the diagnosis and adding an asymmetric source-sample contract
+test. AA derivative-policy agreement is not independently proved appearance
+preservation. The sixteen-entry singular-glyph policy remains separate and approved;
+no global sign/channel flip or new engine grant follows.
+
 **Parallax glyph follow-up:** independent review approved `8f166beb` census and
 the bounded sixteen-entry geometric fallback as source policy; integrated
 `1c661b95` passes six parent tests, strict shipping closure and 141 AA hashes.

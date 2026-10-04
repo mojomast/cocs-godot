@@ -1,5 +1,32 @@
 # Parallax singular-glyph policy — source approved, production contract pending
 
+## Convention-report correction — integration withheld
+
+Independent review of `4fe3df4e` rejects its inference that the UV-V flip with
+retained handedness establishes a high-confidence shading-convention defect.
+The exporter/pixel facts and sampled derivative arithmetic are supported, but
+the complete image/basis conversion can preserve the authored perturbation.
+
+Blender's OpenImageIO reader uses a negative destination row stride; its normal-map
+shader applies positive green along `w * cross(N,T)`. Exporting `1-v` to glTF's
+upper-left texture origin can select the same unchanged PNG location while
+retaining that supplied binormal in Godot. No green inversion follows merely from
+changing the texture-address V coordinate. Moth's OpenGL +Y / rows-down, UV-up
+declaration is compatible with this path.
+
+For a Blender plane P(u,v)=(u,v,0), N=+Z, T=+X and w=+1, exported v'=1-v yields
+dP/dv'=−Y while supplied B stays +Y. The raw derivative test flags disagreement,
+yet corresponding positive-green samples perturb toward +Y in both pipelines.
+Flipping only w would reverse that perturbation. This defeats the report's broad
+defect inference without proving every actual source basis valid.
+
+Sol is correcting the report and preparing a source-only asymmetric-sample contract
+test before re-review. Unchanged PNG pixels prove absence of a channel rewrite,
+not an incorrect basis. AA's three saltstone corners match the selected derivative-
+basis policy; that alone is **not proof of authored appearance preservation**.
+The singular N/T glyph policy remains separately approved. Nonorthogonal, reversed-U
+and native-conversion findings remain distinct. No global W/green flip is authorized.
+
 **Convention investigation delivery:** `4fe3df4e` is under separate independent
 source review. It traces Blender's exported V flip, retained loop handedness,
 OpenGL +Y pack declaration, unchanged saltstone normal pixels and Godot shader

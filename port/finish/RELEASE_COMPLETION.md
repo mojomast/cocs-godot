@@ -24,6 +24,10 @@ are integrated as `1c661b95`; six tests and strict shipping closure pass. A sepa
 production contract is being prepared, with broader normal-map conventions still
 under investigation. No heavy grant or
 actual native success is claimed for either remedy.
+Convention report `4fe3df4e` is withheld pending a diagnosis correction: image/UV
+origin conversion can preserve authored normal perturbations with retained supplied
+binormals. Raw derivative mismatch alone does not prove shading failure or justify
+a global sign/channel flip. Sol is preparing a corrected source contract test.
 
 **Vesper Z released after its first failed native group.**
 Delivery `eba8b633` / `dd4fbbb8` records five downhill landing passes, five uphill

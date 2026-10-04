@@ -1,5 +1,13 @@
 # New Moth resources and Blender-authored map variety
 
+**Convention-report P1:** independent review withheld `4fe3df4e` integration.
+Blender's UV-origin/image-row conversion and retained supplied binormal can preserve
+the authored perturbation, so raw derivative sign disagreement does not prove a
+shading defect. Sol is correcting that inference and adding an asymmetric source
+contract test. AA's three-corner derivative policy does not alone prove appearance
+preservation. The separately approved sixteen-entry singular-glyph fallback is
+unchanged. No global tangent/texture flip or heavy grant is authorized.
+
 **Broader convention report delivered:** `4fe3df4e` traces the X authoring path,
 Blender UV-V export/handedness, pack normal-map declarations and Godot shader use.
 Its convention-mismatch interpretation is under independent source review before
