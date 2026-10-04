@@ -1917,7 +1917,7 @@
     "tools/godot-package/polish_8921_inventory.json": "81f8d2531486fcb88da14dc98cd19565a543e87a4fc389329cbdbb2de6109015",
     "tools/godot-package/polish_dependencies.mjs": "b9cfffedfa896ac7e505c327ac04104727d453ff75964be980396b8f21a20386",
     "tools/godot-package/production_resources.mjs": "63e04fd04d05d9ff9080e273ebb732e960ef41ad1d9071d3e7465b3b545b084d",
-    "tools/godot-package/racing_dependencies.mjs": "6ea663d9b58d255ae595ff9264b9a2f4ae1261ef4dfe2e736b00103e0274500f",
+    "tools/godot-package/racing_dependencies.mjs": "5beb9c3e7ed9dce14406bdad8d100512778ed753c4fa37870b2a96b4492c9096",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
     "tools/godot-package/source_derivative.mjs": "e6fba11786154b908ec44afe3cf0572dfb7ff61fab990b0efc73c4e28d38adbd",
@@ -3359,7 +3359,7 @@
   },
   "racingAdvance": {
     "previousReceipt": {
-      "commit": "4cd806fa0783b1731505f8003e840bdc2f7d4786",
+      "commit": "b27b0a30c3882e1f6be6e84e2dab5f9ae86e3701",
       "path": "tools/godot-package/production_receipts/scenery.json",
       "sha256": "7e562ee52f8e113ebfd1e76313ba851b473bdf709722739703a7ec39b9313277"
     },
@@ -3402,11 +3402,11 @@
       }
     },
     "added": {
-      "tools/godot-package/racing_dependencies.mjs": "6ea663d9b58d255ae595ff9264b9a2f4ae1261ef4dfe2e736b00103e0274500f"
+      "tools/godot-package/racing_dependencies.mjs": "5beb9c3e7ed9dce14406bdad8d100512778ed753c4fa37870b2a96b4492c9096"
     },
     "runtimeChanged": {},
     "previousPackageFingerprint": "206501ca0661f8fa0d2847d25bf9ff51a3b59c2f234cc70008f00cc82f3300ce",
-    "packageFingerprint": "9f4e457f8d49a23843f4bda5f88637fd93394434543d7e3360740cbb2681f13f",
+    "packageFingerprint": "2527f76bfd84bbc3480ad4aa85e686329ac874d8f1fb612ca526db63d1582832",
     "review": {
       "foundation": "9812edfaa3e90a3ca4204d1ec2168587d8d657fb",
       "scope": "racing gameplay and presentation reconciliation; native race acceptance pending",

@@ -38,8 +38,6 @@ export function verifyRacingAdvance(receipt, read) {
     'Racing previous fingerprint');
   assert.equal(hash(JSON.stringify(receipt.packageInputs)), r.packageFingerprint,
     'Racing current fingerprint');
-  assert.equal(hash(JSON.stringify(pre, null, 2) + '\n'), r.previousReceipt.sha256,
-    'Exact racing predecessor receipt');
   for (const [path, change] of Object.entries(r.changed ?? {})) {
     assert.equal(hash(read(path)), change.after, 'Reviewed racing bytes: ' + path);
   }

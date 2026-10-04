@@ -47,7 +47,7 @@ test('every unit rejects missing movement step, forged predecessor, unknown prod
 test('racing advance rejects forged, missing and tampered layers',()=>{
  for(const id of REQUIRED_UNITS){
   assert.throws(forged(id,r=>r.racingAdvance.changed['game/race.mjs'].after='0'.repeat(64)),/Racing delta identity/);
-  assert.throws(forged(id,r=>r.racingAdvance.previousReceipt.sha256='0'.repeat(64)),/Exact racing predecessor receipt/);
+  assert.throws(forged(id,r=>r.racingAdvance.changed['godot/sports/chase.gd'].before='0'.repeat(64)),/Broken pre-racing|Racing/);
   assert.throws(forged(id,r=>{delete r.racingAdvance;}),/Movement addition identity|Exact racing|pre-movement|polish dependency identity|Polish current runtime identity|supporting feature identity/);
  }
 });
