@@ -1,5 +1,20 @@
 # New Moth resources and Blender-authored map variety
 
+**Broader convention report delivered:** `4fe3df4e` traces the X authoring path,
+Blender UV-V export/handedness, pack normal-map declarations and Godot shader use.
+Its convention-mismatch interpretation is under independent source review before
+integration or broader repair. No global tangent/sign/texture change is approved;
+the sixteen-entry glyph policy and production-contract preparation remain separate.
+
+**Parallax census/fallback source policy approved and integrated as `1c661b95`.**
+Parent passed six source tests, strict shipping closure and all 141 frozen AA hashes.
+The sixteen-entry policy closes only the planned singular-frame repair scope;
+AA remains failed and no actual successor/native acceptance is granted. Independent
+review confirms 4,729 nonorthogonal entries would remain after the repair, with
+broader derivative/normal-map conventions under separate investigation. Review:
+`map-variety/PARALLAX_GLYPH_POLICY_REVIEW.md`. Astra is preparing the separately
+reviewable successor contract. No heavy grant is active.
+
 **Source follow-ups:** Parallax census `8f166beb` reports sixteen singular glyph
 tangent entries causing 48 mismatched corners on 32 faces. Independent review is
 checking that result and an explicit sixteen-entry geometric fallback proposal;

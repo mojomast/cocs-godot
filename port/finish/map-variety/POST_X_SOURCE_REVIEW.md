@@ -1,5 +1,12 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**Parallax glyph follow-up:** independent review approved `8f166beb` census and
+the bounded sixteen-entry geometric fallback as source policy; integrated
+`1c661b95` passes six parent tests, strict shipping closure and 141 AA hashes.
+The policy is not a uniquely derived UV basis and leaves 4,729 nonorthogonal
+entries. A new successor contract is being prepared before any production grant;
+broader conventions remain under investigation. See `PARALLAX_GLYPH_POLICY_REVIEW.md`.
+
 ## Current source reviews — native grants withheld
 
 **Vesper `161f5e9e`: experimental source/WIP only.** Independent review supports

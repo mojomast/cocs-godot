@@ -19,8 +19,10 @@ and Vesper step-up feasibility remain source/static only. See `map-variety/PARAL
 Vesper `161f5e9e` is approved only as experimental WIP; native readiness is withheld
 until post-response endpoint/path/support agreement and an executable driver are
 reviewed. Native recovery/snap and velocity-reporting remain open. Parallax census
-`8f166beb` and its sixteen-entry singular-glyph fallback are under source review,
-with broader normal-map conventions investigated separately. No heavy grant or
+`8f166beb` and its sixteen-entry singular-glyph fallback passed source review and
+are integrated as `1c661b95`; six tests and strict shipping closure pass. A separate
+production contract is being prepared, with broader normal-map conventions still
+under investigation. No heavy grant or
 actual native success is claimed for either remedy.
 
 **Vesper Z released after its first failed native group.**
