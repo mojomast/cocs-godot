@@ -2,7 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {initializeRace, stepRace, raceSnapshot, raceStandings, crossRaceGates, resetRaceRacer,
   ITEMS, CAR_RADIUS, MIN_CAR_SEPARATION, paceMultiplier, itemWeights, rollItem, resolveCarCollisions,
-  PACE_LEADER, PACE_TRAILER} from './race.mjs';
+  botControls, stepSlipstream,
+  PACE_LEADER, PACE_TRAILER, DRAFT_DURATION, DRAFT_COOLDOWN, DRAFT_BOOST_MIN} from './race.mjs';
 import {slowSkip} from './test-support.mjs';
 
 function fixture(count=2, bots=false, seed=7, extras={}) {
@@ -343,17 +344,25 @@ test('rubber-band pace is bounded and always helps the trailer',()=>{
   assert.equal(paceMultiplier(1),PACE_TRAILER);assert.equal(paceMultiplier(5),PACE_TRAILER);
   for(let i=0;i<=20;i++){const p=paceMultiplier(i/20);assert.ok(Number.isFinite(p)&&p>=PACE_LEADER&&p<=PACE_TRAILER);}
   assert.ok(paceMultiplier(0)<paceMultiplier(.5)&&paceMultiplier(.5)<paceMultiplier(1));
-  assert.ok(PACE_LEADER>=.93&&PACE_TRAILER<=1.11);
+  assert.equal(PACE_LEADER,1,'the leader is never artificially slowed');
+  assert.ok(PACE_TRAILER>=1.06&&PACE_TRAILER<=1.08);
 });
 
-test('contacts push apart symmetrically, kill closing speed, and respect geometry',()=>{
+test('the leader pace is not penalized by rank',()=>{
+  assert.equal(paceMultiplier(0),1);
+  assert.ok(paceMultiplier(1)>paceMultiplier(0)&&paceMultiplier(1)<=1.08);
+});
+
+test('contacts push apart, cap the rammer, and respect geometry',()=>{
   const m=fixture(2);stepRace(m,3,{inputs:{}});
   const a=m.vehicles[0],b=m.vehicles[1];
+  // a is the faster car behind, b is the slower car ahead.
   a.position={x:0,y:0,z:0};b.position={x:1,y:0,z:0};
-  a.velocity={x:6,z:0};b.velocity={x:-6,z:0};
+  a.velocity={x:12,z:0};b.velocity={x:4,z:0};
   assert.ok(resolveCarCollisions(m,m.race,2)>0);
   assert.ok(Math.hypot(a.position.x-b.position.x,a.position.z-b.position.z)>=MIN_CAR_SEPARATION-1e-6);
-  assert.ok((a.velocity.x-b.velocity.x)<=1e-9,'closing normal velocity removed');
+  assert.equal(b.velocity.x,4,'the car ahead keeps its speed');
+  assert.ok(a.velocity.x<b.velocity.x,'the rammer is capped below the leader');
   assert.ok(Number.isFinite(a.velocity.x)&&Number.isFinite(b.velocity.x));
   // A world-blocked push is rejected rather than clipping through geometry.
   a.position={x:0,y:0,z:0};b.position={x:.5,y:0,z:0};m.vehicleCollision=()=>false;
@@ -364,6 +373,24 @@ test('contacts push apart symmetrically, kill closing speed, and respect geometr
   // Reset-frozen cars are skipped entirely.
   m.vehicleCollision=next=>next;m.race.racers[1].resetWait=1;
   assert.equal(resolveCarCollisions(m,m.race,2),0);
+});
+
+test('a faster follower ramming a slower leader does not speed up the leader',()=>{
+  const m=fixture(2);stepRace(m,3,{inputs:{}});
+  const leader=m.vehicles[0],follower=m.vehicles[1];
+  leader.position={x:0,y:0,z:0};follower.position={x:-1,y:0,z:0};
+  leader.velocity={x:4,z:0};follower.velocity={x:12,z:0};
+  const leaderBefore=leader.velocity.x;
+  assert.ok(resolveCarCollisions(m,m.race,2)>0);
+  assert.equal(leader.velocity.x,leaderBefore,'leader speed is untouched by the ram');
+  assert.ok(follower.velocity.x<=leaderBefore,'follower may not exceed the leader');
+  assert.ok(Math.hypot(leader.position.x-follower.position.x,leader.position.z-follower.position.z)>=MIN_CAR_SEPARATION-1e-6);
+  // Equal-speed side-by-side scrapes stay essentially free.
+  leader.position={x:0,y:0,z:0};follower.position={x:0,y:0,z:1};
+  leader.velocity={x:8,z:0};follower.velocity={x:8,z:0};
+  assert.ok(resolveCarCollisions(m,m.race,2)>0);
+  assert.deepEqual([leader.velocity.x,leader.velocity.z],[8,0],'left car loses nothing');
+  assert.deepEqual([follower.velocity.x,follower.velocity.z],[8,0],'right car loses nothing');
 });
 
 test('collisions never duplicate or skip a racer gate/progress state',()=>{
@@ -391,4 +418,66 @@ test('a single-gate circuit never produces a NaN race progress',()=>{
   const racer={nextGate:0,passed:0,started:true,completedLaps:0,anchor:{x:0,z:0,heading:0},effects:{},checkpointAge:0,finishTime:null};
   crossRaceGates(state,racer,{x:0,z:0},{x:1,z:0},0,1);
   assert.ok(Number.isFinite(racer.progress),'progress stays finite when prev and next gates coincide');
+});
+
+test('slipstream builds under the cone, grants a boost, then cools down',()=>{
+  const m=fixture(2);stepRace(m,3,{inputs:{}});
+  const s=m.race,lead=m.vehicles[0],follow=m.vehicles[1],racer=s.racers[1];
+  const hold=()=>{
+    lead.position={x:0,y:0,z:0};follow.position={x:-5,y:0,z:0};
+    lead.heading=follow.heading=Math.PI/2;
+    lead.velocity={x:20,z:0};follow.velocity={x:20,z:0};
+    lead.speed=follow.speed=20;
+  };
+  for(let i=0;i<65;i++){hold();stepSlipstream(m,s,1/60);}
+  assert.equal(racer.effects.draft,DRAFT_DURATION,'draft boost granted after a full build');
+  assert.ok(racer.draftBoost>=DRAFT_BOOST_MIN&&racer.draftBoost<=1.18);
+  assert.ok(racer.draftCooldown>0&&racer.draftCooldown<=DRAFT_COOLDOWN);
+  assert.ok(raceSnapshot(s).standings.find(r=>r.actorId===1).effects.draft>0,'snapshot exposes DRAFT');
+  // During the cooldown the cone cannot rebuild, even while it is still held.
+  for(let i=0;i<120;i++){hold();stepSlipstream(m,s,1/60);}
+  assert.equal(racer.draftCharge,0,'cooldown blocks rebuilding');
+  assert.ok(racer.draftCooldown>0);
+  // Once the cooldown expires the held cone charges and fires again.
+  racer.effects.draft=0;
+  for(let i=0;i<200;i++){hold();stepSlipstream(m,s,1/60);}
+  assert.ok(racer.effects.draft>0,'draft fires again after the cooldown');
+});
+
+test('an active draft boost adds pace through the speed scale',()=>{
+  const run=draft=>{
+    const m=fixture(1);stepRace(m,3,{inputs:{}});
+    const r=m.race.racers[0],v=m.vehicles[0];
+    if(draft){r.effects.draft=DRAFT_DURATION;r.draftBoost=1.18;}
+    const start=v.position.x;stepRace(m,1,{x:1,yaw:-Math.PI/2});
+    return v.position.x-start;
+  };
+  assert.ok(run(true)>run(false),'the same car travels farther with draft');
+});
+
+test('bots hold full throttle on a straight and brake into a tight corner',()=>{
+  const m=fixture(1,true);stepRace(m,3,{inputs:{}});
+  const s=m.race,r=s.racers[0],v=m.vehicles[0];
+  s.centerline=[{x:0,z:0},{x:100,z:0},{x:100,z:100},{x:0,z:100}];
+  r.nextGate=1;r.botGate=1;r.mistake=0;
+  // Long straight, far from the corner: full throttle, no brake.
+  v.position={x:10,y:0,z:0};v.heading=Math.PI/2;v.speed=20;v.velocity={x:20,z:0};
+  const straight=botControls(m,s,r,v,1/60);
+  assert.equal(straight.throttle,1);
+  assert.notEqual(straight.brake,true);
+  // The tight 90-degree corner sits inside the look-ahead window: brake.
+  v.position={x:90,y:0,z:0};v.speed=20;v.velocity={x:20,z:0};r.prevError=0;
+  const corner=botControls(m,s,r,v,1/60);
+  assert.equal(corner.brake,true,'bot brakes for the tight corner');
+  assert.equal(corner.throttle,0);
+  assert.ok(corner.steer>=-1&&corner.steer<=1);
+});
+
+test('finalLap latches when the leader begins their last lap',()=>{
+  const m=fixture(1);stepRace(m,3,{inputs:{}});
+  const s=m.race,r=s.racers[0];
+  assert.equal(raceSnapshot(s).finalLap,false);
+  r.started=true;r.completedLaps=1;r.lap=2;r.progress=1;
+  stepRace(m,1/60,{inputs:{}});
+  assert.equal(raceSnapshot(s).finalLap,true,'the snapshot signals the final lap');
 });

@@ -9,16 +9,48 @@ export const ITEMS = ['turbo', 'shield', 'oil', 'pulse', 'mine', 'triple', 'bolt
 export const CAR_RADIUS = 1.7;
 export const MIN_CAR_SEPARATION = CAR_RADIUS * 2;
 
-// Rubber-band pace, indexed by normalized rank t (0 = leader, 1 = last). The
-// leader runs a little under stock pace so the pack can reel them in; the
-// trailer runs a little over so one bad corner is recoverable. The band is
-// deliberately small and clamped so skill, items, walls and contacts dominate.
-export const PACE_LEADER = 0.93;
-export const PACE_TRAILER = 1.10;
+// Distance/rank pace help, indexed by normalized rank t (0 = leader, 1 = last).
+// The leader runs stock pace (no artificial penalty); the trailer gets a small
+// transparent boost so one bad corner is recoverable. The band is deliberately
+// small and clamped so skill, items, walls, slipstream and contacts dominate.
+export const PACE_LEADER = 1.0;
+export const PACE_TRAILER = 1.07;
 export function paceMultiplier(t) {
   const rank = clamp(Number.isFinite(t) ? t : 0, 0, 1);
   return clamp(PACE_LEADER + (PACE_TRAILER - PACE_LEADER) * rank, PACE_LEADER, PACE_TRAILER);
 }
+
+// Slipstream. A racer tucked behind another inside a narrow cone builds draft
+// charge for DRAFT_BUILD seconds, then gets a short speed boost drawn from
+// match.random within [DRAFT_BOOST_MIN, DRAFT_BOOST_MAX]. After a boost the cone
+// must cool down before it can build again. Works for humans and bots and feeds
+// the existing speedScale composition (like item turbo).
+export const DRAFT_GAP_MIN = 3;
+export const DRAFT_GAP_MAX = 8;
+export const DRAFT_LATERAL = 2.4;
+export const DRAFT_HEADING_DOT = 0.9;
+export const DRAFT_SPEED_FRACTION = 0.7;
+export const DRAFT_BUILD = 1;
+export const DRAFT_DURATION = 1.2;
+export const DRAFT_COOLDOWN = 4;
+export const DRAFT_BOOST_MIN = 1.12;
+export const DRAFT_BOOST_MAX = 1.18;
+const DRAFT_TOP_SPEED = PUMA.speed;
+
+// Contact is asymmetric on purpose: the rammer (the car closing fastest along
+// the normal) is capped at the leader's own normal speed with a small penalty,
+// so dumping into the car ahead can never transfer speed to it. Equal-speed
+// side-by-side scrapes barely change either car.
+export const CONTACT_RAM_PENALTY = 0.97;
+
+// Bot corner speed: sample the authored centerline at increasing look-aheads
+// and solve targetSpeed = sqrt(maxLatAccel / curvature), so a bot actually
+// brakes into a tight corner instead of crawling through it on part throttle.
+const AI_MAX_LAT_ACCEL = 20;
+const AI_LOOKAHEADS = [8, 14, 20];
+const AI_MIN_TARGET_SPEED = 6;
+const AI_MISTAKE_CHANCE = 0.01;
+const AI_MISTAKE_TIME = 0.4;
 
 // Mystery boxes bend toward the back of the field: the leader mostly draws
 // defensive/denial items, the trailer mostly draws catch-up items. Linear blend
@@ -111,7 +143,7 @@ export function initializeRace(match) {
     winnerId: null, gates: track.gates.map(g => ({...g})), centerline: track.centerline,
     boxes: track.itemBoxes.map(b => ({...b, wait: 0})), hazards: [], serial: 0, racers: [],
     coins: (track.coins || []).map(c => ({...c, wait: 0})), boostPads: [...(track.boostPads || [])],
-    gridMinSeparation: Infinity, gridNudged: false, contacts: 0
+    gridMinSeparation: Infinity, gridNudged: false, contacts: 0, finalLap: false
   };
   // Authored grid slots are used as-is. If a future map ever packs them closer
   // than one car diameter we nudge them apart in-game (never editing the map)
@@ -143,9 +175,11 @@ export function initializeRace(match) {
     match.race.racers.push({actorId: actor.id, vehicleId: vehicle.id, lap: 1, completedLaps: 0,
       nextGate: 0, passed: 0, started: false, progress: -1, finishTime: null, item: null,
       coins: 0, boostPadWait: 0,
-      effects: {turbo: 0, shield: 0, slow: 0, star: 0}, resetWait: 0, stuck: 0, checkpointAge: 0,
+      effects: {turbo: 0, shield: 0, slow: 0, star: 0, draft: 0}, resetWait: 0, stuck: 0, checkpointAge: 0,
       anchor: {...grid}, useHeld: false, resetHeld: false,
-      skill: 0.95 + match.random() * 0.1, lane: match.random() * 6 - 3});
+      draftCharge: 0, draftCooldown: 0, draftBoost: DRAFT_BOOST_MIN,
+      botGate: 0, mistake: 0, mistakeLift: false, mistakeSteer: 0, prevError: 0,
+      skill: 0.92 + match.random() * 0.14, lane: match.random() * 6 - 3, phase: match.random() * Math.PI * 2});
   });
   return match.race;
 }
@@ -163,7 +197,7 @@ export function raceStandings(state) {
 export function raceSnapshot(state) {
   if (!state) return null;
   return {phase: state.phase, countdown: state.countdown, laps: state.laps, elapsed: state.elapsed,
-    winnerId: state.winnerId, standings: raceStandings(state),
+    finalLap: state.finalLap === true, winnerId: state.winnerId, standings: raceStandings(state),
     boxes: state.boxes.map(({id,x,z,wait}) => ({id,x,z,ready: wait <= 0})),
     coins: state.coins.map(({id,x,z,wait}) => ({id,x,z,ready: wait <= 0})),
     hazards: state.hazards.map(({id,x,z,ttl,type}) => ({id,x,z,ttl,type})), gates: state.gates.map(g => ({...g}))};
@@ -208,7 +242,8 @@ export function resetRaceRacer(match, racer) {
   respawnVehicle(vehicle, {x:a.x,y:0,z:a.z}, a.heading);
   takeVehicleSeat(vehicle,racer.actorId,'driver');
   racer.resetWait = 2; racer.stuck = 0; racer.checkpointAge = 0;
-  racer.effects.turbo = 0;
+  racer.effects.turbo = 0; racer.effects.draft = 0;
+  racer.draftCharge = 0; racer.draftCooldown = 0;
   const actor = match.actors.find(a => a.id === racer.actorId);
   actor.yaw = a.heading-Math.PI;
   match.syncVehicleActor(actor,vehicle);
@@ -216,28 +251,95 @@ export function resetRaceRacer(match, racer) {
   crossRaceGates(match.race,racer,vehicle.position,vehicle.position,match.race.elapsed,0);
 }
 
-function botControls(state, racer, vehicle) {
+export function botControls(match, state, racer, vehicle, dt=0) {
   const points = state.centerline, n = points.length;
+  if (n < 2) return {throttle: 1, steer: 0, sprint: false, fire: Boolean(racer.item)&&!racer.useHeld};
   const next = racer.nextGate, prev = (next+n-1)%n;
-  const a = points[prev], b = points[next], dx = b.x-a.x, dz = b.z-a.z, length = Math.hypot(dx,dz);
-  let along = clamp(((vehicle.position.x-a.x)*dx+(vehicle.position.z-a.z)*dz)/length,0,length);
-  let look = Math.max(5,Math.abs(vehicle.speed)*.65), index = prev, target;
-  for (let i=0;i<n;i++) {
-    const p = points[index], q = points[(index+1)%n], len = distance(p,q);
-    if (along+look <= len) { const t=(along+look)/len; target={x:p.x+(q.x-p.x)*t,z:p.z+(q.z-p.z)*t}; break; }
-    look -= len-along; along=0; index=(index+1)%n;
+  const a = points[prev], b = points[next], dx = b.x-a.x, dz = b.z-a.z, length = Math.hypot(dx,dz)||1e-6;
+  const along = clamp(((vehicle.position.x-a.x)*dx+(vehicle.position.z-a.z)*dz)/length,0,length);
+  // Walk the authored centerline from the car's projection. `advance` is an arc
+  // distance ahead and returns both the point and the segment heading.
+  const aheadAt = advance => {
+    let index = prev, pos = along;
+    for (let i=0;i<n;i++) {
+      const p = points[index], q = points[(index+1)%n], len = distance(p,q)||1e-6;
+      if (pos+advance <= len) { const t=(pos+advance)/len; return {x:p.x+(q.x-p.x)*t,z:p.z+(q.z-p.z)*t,h:Math.atan2(q.x-p.x,q.z-p.z)}; }
+      advance -= len-pos; pos=0; index=(index+1)%n;
+    }
+    return {x:b.x,z:b.z,h:Math.atan2(dx,dz)};
+  };
+  const speed = Math.abs(Number(vehicle.speed)||0), top = DRAFT_TOP_SPEED;
+  const baseHeading = Math.atan2(dx,dz);
+  // Tightest heading change across the sample distances sets the corner speed.
+  let curvature = 0;
+  for (const look of AI_LOOKAHEADS) {
+    const sample = aheadAt(look);
+    curvature = Math.max(curvature, Math.abs(angle(sample.h-baseHeading))/look);
   }
-  target ||= b;
+  const targetSpeed = clamp(Math.sqrt(AI_MAX_LAT_ACCEL/Math.max(curvature,1e-4)), AI_MIN_TARGET_SPEED, top);
+  // Rare deterministic mistake when a new gate is armed: a short throttle lift
+  // or a small steering wobble, seeded from match.random.
+  if (racer.botGate !== racer.nextGate) {
+    racer.botGate = racer.nextGate;
+    if (match.random() < AI_MISTAKE_CHANCE) { racer.mistake = AI_MISTAKE_TIME; racer.mistakeLift = match.random() < 0.5; racer.mistakeSteer = match.random()*0.5-0.25; }
+  }
+  racer.mistake = Math.max(0, (racer.mistake||0) - dt);
+  const steering = aheadAt(Math.max(5, speed*0.65));
   // Shift the lookahead target sideways along the racing line so seeded racers
-  // do not all chase the exact same geometric point.
-  const lane = Number.isFinite(racer.lane) ? racer.lane : 0;
-  if (lane && length > 1e-6) {
-    target = {x: target.x + (dz / length) * lane, z: target.z - (dx / length) * lane};
-  }
+  // do not all chase the exact same geometric point, and swing the lane by gate
+  // so the pack does not settle onto one fixed groove.
+  const lane = (Number.isFinite(racer.lane) ? racer.lane : 0) + 2.5*Math.sin((racer.nextGate||0)*0.7 + (racer.phase||0));
+  const target = lane ? {x:steering.x+Math.cos(steering.h)*lane, z:steering.z-Math.sin(steering.h)*lane} : steering;
   const error = angle(Math.atan2(target.x-vehicle.position.x,target.z-vehicle.position.z)-vehicle.heading);
-  const throttleBase = Math.abs(error)>1 ? .35 : .85;
-  return {throttle: clamp(throttleBase * (Number.isFinite(racer.skill) ? racer.skill : 1), 0, 1), steer: clamp(error*1.8,-1,1),
+  const derivative = dt > 0 ? (error-(racer.prevError||0))/dt : 0;
+  racer.prevError = error;
+  const braking = targetSpeed < top-1e-6 && speed > targetSpeed+0.5;
+  let throttle = braking ? 0 : 1, steer = clamp(error*1.8+derivative*0.06,-1,1);
+  if (racer.mistake > 0) {
+    if (racer.mistakeLift) throttle = 0;
+    else steer = clamp(steer+(racer.mistakeSteer||0),-1,1);
+  }
+  return {throttle, steer, brake: braking,
     sprint: Math.abs(error)<.08&&distance(vehicle.position,b)>18, fire: Boolean(racer.item)&&!racer.useHeld};
+}
+
+// Nearest car directly ahead inside the draft cone, or null. Uses the follower's
+// own forward/right frame, so a car only drafts what is genuinely in front.
+function draftLeader(match, state, racer) {
+  const vehicle = match.vehicleById(racer.vehicleId);
+  if (!vehicle || !Number.isFinite(vehicle.position?.x) || Math.abs(Number(vehicle.speed)||0) < DRAFT_TOP_SPEED*DRAFT_SPEED_FRACTION) return null;
+  const heading = Number(vehicle.heading)||0, fx = Math.sin(heading), fz = Math.cos(heading);
+  let best = null, bestGap = Infinity;
+  for (const other of state.racers) {
+    if (other === racer || other.actorId === racer.actorId) continue;
+    const ov = match.vehicleById(other.vehicleId);
+    if (!ov || !Number.isFinite(ov.position?.x) || Math.abs(Number(ov.speed)||0) < DRAFT_TOP_SPEED*DRAFT_SPEED_FRACTION) continue;
+    const oh = Number(ov.heading)||0;
+    if (fx*Math.sin(oh)+fz*Math.cos(oh) <= DRAFT_HEADING_DOT) continue;
+    const dx = ov.position.x-vehicle.position.x, dz = ov.position.z-vehicle.position.z;
+    const gap = dx*fx+dz*fz;
+    if (gap < DRAFT_GAP_MIN || gap > DRAFT_GAP_MAX || gap >= bestGap) continue;
+    if (Math.abs(dx*Math.cos(heading)-dz*Math.sin(heading)) > DRAFT_LATERAL) continue;
+    best = other; bestGap = gap;
+  }
+  return best;
+}
+
+// Advance draft charge/cooldown one physics step and grant the boost when the
+// cone has been held long enough. Granting draws its strength from match.random
+// so a fixed seed stays reproducible.
+export function stepSlipstream(match, state, dt) {
+  for (const racer of state.racers) {
+    if (racer.draftCooldown > 0) racer.draftCooldown = Math.max(0, racer.draftCooldown-dt);
+    if (racer.resetWait > 0 || racer.draftCooldown > 0 || !draftLeader(match, state, racer)) { racer.draftCharge = 0; continue; }
+    racer.draftCharge = (racer.draftCharge||0)+dt;
+    if (racer.draftCharge < DRAFT_BUILD) continue;
+    racer.draftCharge = 0;
+    racer.draftCooldown = DRAFT_COOLDOWN;
+    racer.draftBoost = DRAFT_BOOST_MIN + match.random()*(DRAFT_BOOST_MAX-DRAFT_BOOST_MIN);
+    racer.effects.draft = DRAFT_DURATION;
+    match.emit?.('race-draft', {actor: racer.actorId, boost: racer.draftBoost, pos: {...match.vehicleById(racer.vehicleId).position}});
+  }
 }
 
 function useItem(match, racer) {
@@ -280,10 +382,11 @@ export function stepRace(match, dt, inputs={}) {
     for (const hazard of state.hazards) hazard.ttl-=step;
     state.hazards=state.hazards.filter(h=>h.ttl>0);
     for (const r of state.racers) for (const effect of Object.keys(r.effects)) r.effects[effect]=Math.max(0,r.effects[effect]-step);
+    stepSlipstream(match, state, step);
     const ranks=rankFractions(state);
     for (const r of state.racers) {
       const actor=match.actors.find(a=>a.id===r.actorId), vehicle=match.vehicleById(r.vehicleId);
-      const external=given[actor.id], controls=external||(actor.bot?botControls(state,r,vehicle):{});
+      const external=given[actor.id], controls=external||(actor.bot?botControls(match,state,r,vehicle,step):{});
       if (Number.isFinite(controls.yaw)) actor.yaw=controls.yaw;
       const use=Boolean(controls.fire||controls.power), reset=Boolean(controls.interact);
       if (reset&&!r.resetHeld) resetRaceRacer(match,r);
@@ -297,10 +400,11 @@ export function stepRace(match, dt, inputs={}) {
       const throttle=automatic?controls.throttle:clamp(-(controls.x||0)*Math.sin(actor.yaw)-(controls.z||0)*Math.cos(actor.yaw),-1,1);
       const steer=automatic?controls.steer:clamp(-(controls.x||0)*Math.cos(actor.yaw)+(controls.z||0)*Math.sin(actor.yaw),-1,1);
       const itemScale=(r.effects.slow>0?.5:r.effects.turbo>0?1.6:1)*(r.effects.star>0?1.35:1);
+      const draftScale=r.effects.draft>0?(Number.isFinite(r.draftBoost)?r.draftBoost:DRAFT_BOOST_MIN):1;
       const coinScale=1+.012*clamp(r.coins,0,10);
       const skill=automatic&&Number.isFinite(r.skill)?r.skill:1;
-      const speedScale=clamp(itemScale*coinScale*paceMultiplier(rank)*skill,.1,2);
-      stepVehicle(vehicle,{throttle,steer,brake:controls.jump===true||controls.crouch===true,
+      const speedScale=clamp(itemScale*coinScale*paceMultiplier(rank)*skill*draftScale,.1,2);
+      stepVehicle(vehicle,{throttle,steer,brake:controls.brake===true||controls.jump===true||controls.crouch===true,
         boost:controls.sprint===true,speedScale,boostScale:speedScale,fire:false},step,
         next=>match.vehicleCollision(next,vehicle),()=>0);
       if (automatic) actor.yaw=vehicle.heading-Math.PI;
@@ -336,6 +440,11 @@ export function stepRace(match, dt, inputs={}) {
     state.contacts += resolveCarCollisions(match,state,2);
     // Resolve after every racer moved, using sub-tick crossing times, not actor order.
     const order=raceStandings(state);
+    // The final-lap flag latches once the current leader is on their last lap.
+    if (!state.finalLap && state.laps > 0) {
+      const leader=state.racers.find(r=>r.actorId===order[0]?.actorId);
+      if (leader && leader.lap >= state.laps) state.finalLap=true;
+    }
     if (order[0]?.finishTime!==null || state.elapsed>=match.config.timeLimit) {
       state.phase='finished'; state.winnerId=order[0]?.actorId??null;
       match.endMatch(order[0]?.finishTime!==null?'race-finish':'time');
@@ -396,16 +505,19 @@ function resolveCarPair(match, racerA, racerB) {
     if (full) gb = full;
   }
   if (!ga && !gb) return false;
-  // Remove the closing normal velocity (fully inelastic contact): both cars
-  // leave the contact at the same normal speed, so separation only grows.
+  // Contact never transfers speed to the car ahead. The rammer is the car
+  // closing fastest along the normal (measured toward the other car); it is
+  // capped at the leader's own normal speed with a small penalty, while the
+  // leader keeps its speed. Equal-speed side-by-side scrapes barely change
+  // either car, so separation is maintained without an artificial speed-up.
   if (va.velocity && vb.velocity) {
     const closing = (va.velocity.x - vb.velocity.x) * nx + (va.velocity.z - vb.velocity.z) * nz;
     if (closing > 0) {
       const vaN = va.velocity.x * nx + va.velocity.z * nz;
       const vbN = vb.velocity.x * nx + vb.velocity.z * nz;
-      const target = (vaN + vbN) / 2;
-      setNormalSpeed(va.velocity, nx, nz, target);
-      setNormalSpeed(vb.velocity, nx, nz, target);
+      // approachA = vaN (A toward B), approachB = -vbN (B toward A).
+      if (vaN + vbN >= 0) setNormalSpeed(va.velocity, nx, nz, vbN * CONTACT_RAM_PENALTY);
+      else setNormalSpeed(vb.velocity, nx, nz, vaN * CONTACT_RAM_PENALTY);
     }
   }
   if (ga) applyPlace(va, ga);
