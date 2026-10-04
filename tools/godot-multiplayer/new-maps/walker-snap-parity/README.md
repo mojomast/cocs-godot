@@ -9,8 +9,8 @@ AE is read only at `/home/mojo/.tmp-on-disk/cocs-walker-admission-ae`.
 The short planner query is not the parent snap query. Match the parent request
 and post-processing in a new test-only planner, keeping the **original endpoint
 tolerance and response guard unchanged**. First obtain paired read-only query
-results at the same predicted pose/body/frame while the original candidate
-still runs. Parent review of that evidence precedes testing the parity planner.
+results at the same predicted pose/body/frame while only unchanged Baseline
+Walker runs. Parent review of that evidence precedes testing the parity planner.
 No unique backend cause, engine defect or successful correction is established.
 
 AE's first positive case (.35, −45°) physically applied one UP move, then failed
@@ -150,17 +150,20 @@ correction or parent velocity overwrite is proposed.
   velocity or ground flags. No production mode flag.
 - `diagnostic.gd`: source-only single-case driver, .35/−45° flat fixture from the
   unchanged v4 geometry.20 settles, at most40 input responses; stop on the first
-  eligible response. Original-query observation retains any original guard
-  failure as failed. Parity success would mean only **one response matched**,
-  never completed positive admission or a map walk. Every candidate fault stops.
+  eligible response. Corrected original-query observation instantiates only
+  Baseline Walker, records actual pre-query state separately, then performs at
+  most one ordinary step. Collection success is not query agreement. The old
+  parity-candidate entry is now denied pending a separately reviewed contract.
 - `prepare.py`: future write-once source receipt, verifies all46 AE inventory
   files against `c0761dbe` and all15 production pins. Not invoked. No grant or
   launcher is created. An external bounded ownership supervisor still needs
   review/wiring before this experiment is execution-ready.
 
 `experiment-plan.json` has `grant:null`, `autoStart:false`, `queued:false`. Only
-`original-query-observation` and `snap-parity-candidate` are valid diagnostic
-groups. Unknown/map/reference groups and continuation permissions are denied.
+baseline query observation is currently proposed for invocation. The new
+`walker-snap-compare` wiring uses `snap-query-compare-only-v1`, mode `compare-only`,
+group `query-compare`; the original two-mode application contract is not admitted.
+Unknown/map/reference groups and continuation permissions are denied.
 The driver binds a future explicit grant to its source hash and expiry; it does
 not authorize itself. Parent review of the read-only comparison precedes any
 separate parity-candidate invocation. No new native authorization is requested
