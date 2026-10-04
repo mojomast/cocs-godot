@@ -1,5 +1,14 @@
 # New Moth resources and Blender-authored map variety
 
+## Current checkpoint — AJ confirms receipt hypothesis and releases
+
+**No heavy grant is active.** AJ `bb403edf` / `bfb32d4e` reports original-policy
+false, isolated-clone true, fifteen passing controls and seven rejected mutants.
+Parent verified 23 files/manifest identity and three empty audits/one group;
+release is 07:07:14.880139Z, free lock confirmed at 07:11:35.025158Z. Independent
+review is active and the campaign correction is being prepared source-only.
+Receipt confirmation is not movement admission; all sixty map journeys are unrun.
+
 ## Current owner — receipt-only probe AJ
 
 **MOTH-BLENDER-20261004-AJ is the sole heavy grant**, Astra

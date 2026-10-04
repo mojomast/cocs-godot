@@ -1,5 +1,22 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## AJ delivered/released — receipt-only confirmation under review
+
+**`bb403edf` / `bfb32d4e`** report one engine invocation with engine/supervisor
+exit 0, collection and hypothesis confirmation true. Original whole policy rejects;
+the exact one-clause clone accepts. All fifteen type controls agree, seven mutants
+reject, and 678/678 candidate records fail original membership. The helper observes
+FLOAT zero versus INT literals at case0/profile1/settle0, with checks
+`[true,true,true,false,true,true]`. This identifies an independently failing invariant,
+not the first executed historical branch.
+
+Parent verified **23 files** plus the 4,842-byte manifest hash
+`dc49cc762bb1eab492e480c429c3528d982154943f32332f9e0d35029d5a030f`, three measured
+empty audits/one group, no survivors and free lock at 07:11:35.025158Z. Release
+is 07:07:14.880139Z. Archive review is active. A narrow actual-validator correction
+is being prepared source-only, retaining finite-integer validation and frozen probe
+inputs. No heavy grant, campaign advancement, positive admission or map work.
+
 ## Receipt-only wrapper approved/integrated; AJ authorized
 
 Independent review approved `4a53f727`, integrated as **`b424af67`**. Parent

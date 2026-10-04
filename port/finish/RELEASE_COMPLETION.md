@@ -10,10 +10,11 @@ finishing and verifying the new candidate.
 Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
-**Current heavy owner: receipt-only probe AJ**, Astra
-`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `b424af67`. Independent wrapper review
-passed; parent passed 80 Python and thirteen package checks. One frozen-AI receipt
-probe is authorized, then stop/audit/release. No retry, campaign or map execution.
+**No active heavy grant. AJ confirmed the receipt-only hypothesis and released.**
+Delivery `bb403edf` / `bfb32d4e` is under independent evidence review. Original
+policy rejects and the isolated clone accepts, with 15 controls passing and seven
+mutants rejected. Parent verified 23 files and manifest identity, three empty audits
+and free lock. Campaign correction is being prepared source-only; no movement grant.
 
 **AI passed negatives, localized a native policy failure and released.**
 Delivery `cc2b72fd` / `0a644c92` passed independent archive review and is integrated
@@ -338,7 +339,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P through AI have released; AJ owns one receipt-only native probe.**
+**P through AJ have released; no heavy grant is active.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -380,11 +381,13 @@ directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
-**Active: `MOTH-BLENDER-20261004-AJ`**, Astra
+**Released: `MOTH-BLENDER-20261004-AJ`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `b424af67`. Phase
 `policy-receipt-probe-v1`, mode `frozen-receipt`, only `numeric-membership`.
 One invocation, 170/180-second bounds, three measured release audits; no retry,
 movement or campaign acceptance. Original campaign predicates remain unchanged.
+AJ released at 07:07:14.880139Z; parent verified 23 files/manifest identity,
+three measured empty audits/one group and lock availability at 07:11:35.025158Z.
 
 **Released: `MOTH-BLENDER-20261004-AI`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8478cd8c`. Fresh negative controls,
