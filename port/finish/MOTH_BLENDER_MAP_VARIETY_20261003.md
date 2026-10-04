@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**Receipt census P1 closed; positive operand validation still blocks readiness.**
+Review reproduced acceptance of support-query operands unrelated to the actual
+body and a contradictory forward-vector guard operand. Astra is correcting those
+serialized-evidence checks and adding isolated regressions; the runtime guard and
+tolerances remain unchanged. Synthetic sources stay unmerged with no engine grant.
+
 **Synthetic receipt correction `db144f7a` received:** exact case census, recorded
 completion and consistent supervisor/audit evidence are under independent re-review.
 Producer reports 127 Python tests and rejection of both mocked incomplete-matrix

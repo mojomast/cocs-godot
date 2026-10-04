@@ -1,5 +1,28 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Earlier receipt attacks closed; positive operand P1 remains
+
+Independent re-review confirms `db144f7a` rejects duplicated/empty matrices and
+contradictory predecessor exit/error/audit evidence. A valid synthetic predecessor
+chain passes, and all 34 historical AB baseline stage sequences pass offline
+compatibility checks. All 38 focused tests pass. Readiness is still withheld.
+
+**New reproduced P1:** Python/GDScript `evidence.support()` accepts serialized
+guard-support and arrival queries with origin `[999,999,999]`, upward motion,
+margin 42, zero contact capacity, incorrect flags and reversed safe/unsafe
+fractions, while body/contact summaries remain unchanged. It does not bind the
+query to actual final state or validate required request/result operands.
+Separately, a positive receipt with horizontal budget `[0,0,.1]` and guard
+lastMotion `[10,0,0]` still qualifies, contradicting mandatory forward agreement.
+
+These are evidence-validator gaps, not observed runtime-guard failures. The
+producer is binding support queries to actual post-response/arrival transforms,
+validating reviewed request parameters and finite ordered results/contact normals,
+and checking mandatory guard operands against proposal/response data. Isolated
+regressions must cover both query sites and forward-vector contradictions in
+matching Python/GDScript predicates. Runtime guard, tolerances and application
+order remain unchanged. The package stays unmerged; no heavy grant is active.
+
 **Predecessor correction delivered:** `db144f7a` atop `8de9d63a` is under
 independent re-review, including the unfinished readiness review. Producer reports
 127 Python tests passing (38 suite plus 89 prior), exact ordered matrices and
