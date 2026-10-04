@@ -17,7 +17,9 @@ native basis/material checks and subsequent matched captures are authorized.
 AB delivered `0dd335b0` / `5fb9ae68` and released: parent verified 140 hashes and
 three empty audits/four groups. Negative controls pass 34/34; reference preserves
 five downhill passes/five uphill failures. All sixty candidate map walks remain
-unrun. AB evidence review and next Vesper control preparation are source-only.
+unrun. AB evidence passed independent review and is integrated as `d7d56879` /
+`0a90f88d`, with 45 parent checks and all 140 hashes passing. See
+`map-variety/WALKER_AB_REVIEW.md`. Next Vesper control preparation is source-only.
 
 **Parallax AA released with full native approval blocked.**
 Delivery `b9c53e82`, integrated as failed evidence `dec159d4`, has reviewed build/reopen and native proof of the three

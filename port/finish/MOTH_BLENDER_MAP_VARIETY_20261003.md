@@ -1,5 +1,12 @@
 # New Moth resources and Blender-authored map variety
 
+**AB reviewed and integrated as `d7d56879` / `0a90f88d`:** negative controls PASS,
+unchanged reference EXPECTED FAIL. Parent passed 45 checks and all 140 inventory
+hashes. Independent review confirms all 34 negative pairs and exact reference
+five-pass/five-fail outcome; all sixty candidate walks remain unrun. Numeric shape
+telemetry is a future correction, not a rewrite of raw AB evidence. Review:
+`map-variety/WALKER_AB_REVIEW.md`. AC retains sole heavy ownership.
+
 ## Current owner — Parallax glyph production AC; AB released
 
 **MOTH-BLENDER-20261004-AC is the sole heavy grant**, Astra

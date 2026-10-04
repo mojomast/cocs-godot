@@ -1,5 +1,11 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**AB evidence integration complete:** independent review approves negative
+controls PASS / unchanged reference EXPECTED FAIL. Source/evidence selected as
+`d7d56879` / `0a90f88d`; parent passed 32 Python and thirteen Node checks and all
+140 hashes. Full review: `WALKER_AB_REVIEW.md`. No positive lift or candidate map
+acceptance follows. AC owns engines; next Vesper control work remains source-only.
+
 ## AB delivered; next controls source-only
 
 AB `0dd335b0` / `5fb9ae68` reports 34/34 negative controls passing and the exact
