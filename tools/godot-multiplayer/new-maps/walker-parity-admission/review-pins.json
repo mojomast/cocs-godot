@@ -5,9 +5,10 @@
     "godot/tests/walker_admission/fixtures_v4.gd": "c4c175420aaca975acfa8ee277b2088796c2f0f8279751bbc8f2939154070e04",
     "godot/tests/walker_admission/slide_telemetry.gd": "b7c04249dd44574c5c14627766983cb571542879b17c39afc458c115178b2df0",
     "godot/tests/walker_parity_admission/candidate.gd": "0aae2ac30347e21286e09fc1b8f1a6b8937f37aef447d99af083a12700261314",
-    "godot/tests/walker_parity_admission/driver.gd": "8e586c5551e43b4c2e3d00c317feaebad85bdc1e7a3110957412074fcf4ceab1",
+    "godot/tests/walker_parity_admission/driver.gd": "eeabd465d9f6501ee51077c3212a486489cae76c5e9386068f55ef9d10d5ccce",
+    "godot/tests/walker_parity_admission/evidence.gd": "a2a0bbb7a723efe3c838b7f1fdcbdd81c9a65b88427f37b88fcc15fa877772b2",
     "godot/tests/walker_parity_admission/observe.gd": "f282661ba08bb1754b05f166fd42849a3987799c36250704cb0e406313ff4b7b",
-    "godot/tests/walker_parity_admission/policy.gd": "9927ad8091cf3ad7e6dbffe8f8011c5041f4651beb0fd62c3cb6199921686ddc",
+    "godot/tests/walker_parity_admission/policy.gd": "6fab2f142b3b849b3902a506a54c95d31f19a7dfecbab0202acb1896572f757f",
     "godot/tests/walker_parity_response/planner.gd": "7dadd0a3fb018de12afe867ff5a688663347e99bd6335f92353519d136e76b31",
     "godot/tests/walker_snap_parity/planner.gd": "9d61d505822208aaacc03bbb8017d4458d068e5430389aa5849eae7b6fdf01e6",
     "godot/tests/walker_snap_parity/query_pair.gd": "91f427d0ea0d47e9397a7331dd49f798d8041d5d93e31e11331da6ad31a475f7",
@@ -18,10 +19,11 @@
     "godot/ui/settings_access.gd": "2bb46c9e6ee5dabbdef7a4cd864bf4afcae2a3c8dd7be93d0180a907da7920e0"
   },
   "hostInputs": {
+    "tools/godot-multiplayer/new-maps/walker-parity-admission/evidence.py": "81db9d2aaadb7550a822c37fb8b8a7ec83bcec356073c93a9890da2d1367bc9d",
     "tools/godot-multiplayer/new-maps/walker-parity-admission/frozen.py": "240d5a91eecb41c928e2ef1bedf03ab17f9187385d8566dd0b57c61fb0fb9bb2",
-    "tools/godot-multiplayer/new-maps/walker-parity-admission/policy.py": "4ce67bfec416d88f70f5094952560185e6a19fbcdcdf149af68df9b3d3dbb64b",
-    "tools/godot-multiplayer/new-maps/walker-parity-admission/prepare.py": "fa944d5473734a85d75d896797576c051a088d552f69eb24f634944873ed767b",
-    "tools/godot-multiplayer/new-maps/walker-parity-admission/supervisor.py": "938507d07aaad37d3c90d759f3be3124f4a806b3cee2a67a5af2cd630f3f700a",
+    "tools/godot-multiplayer/new-maps/walker-parity-admission/policy.py": "e49bc33ed9a9e0943b9aacab1b27bfe1679ea3cf8d76cbeccaf9519e29018eb7",
+    "tools/godot-multiplayer/new-maps/walker-parity-admission/prepare.py": "443478959955d475eeb5b6ce5c58795738ef0cb8513ab5e5a2d7b01ee52ecaa0",
+    "tools/godot-multiplayer/new-maps/walker-parity-admission/supervisor.py": "4a04386a32094a0d358bdd4ff758aa448ae763b536e0e999ddf96e68ed0c3d04",
     "tools/godot-multiplayer/new-maps/walker-parity-response/policy.py": "118118284431fdd6c505ae9b480a314fd39b12ce3a2fdb6a2936de941638c3bc",
     "tools/godot-multiplayer/new-maps/walker-parity-response/prepare.py": "2d8676025219662d322032fd46eb422771f89b420176eb863c6376079041f152",
     "tools/godot-multiplayer/new-maps/walker-parity-response/supervisor.py": "fa0008bd30604fe05a0bbdfcaa9ee29f04ad554bcac92a3ffc1e7efc83b35f10"

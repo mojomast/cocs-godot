@@ -1,5 +1,6 @@
 """Synthetic groups only; no native grant is supplied by this source package."""
 import math,re
+from evidence import campaign
 PHASE='parity-admission-synthetic-v1';MODE='synthetic-controls'
 GROUPS=['negative-controls','inclined-landing-rejections','positive-step-admission']
 COUNTS=dict(zip(GROUPS,[34,4,4]))
@@ -34,4 +35,4 @@ def successful(r,group,source_hash,grant_hash,engine_hash):
             if group==GROUPS[2]:
                 if j==0 and (p.get('outcome')!='expected_baseline_blocked' or p.get('reached') is not False or not count(p.get('appliedUpCount'),0) or not count(p.get('verifiedLifts'),0)):return False
                 if j==1 and (p.get('outcome')!='full_tread_guarded_arrival' or p.get('reached') is not True or type(p.get('verifiedLifts')) not in (int,float) or p['verifiedLifts']<1 or p.get('appliedUpCount')!=p['verifiedLifts']):return False
-    return True
+    return campaign(r,group)

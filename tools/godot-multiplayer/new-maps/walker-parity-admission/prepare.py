@@ -3,6 +3,7 @@ import argparse,re
 from pathlib import Path
 from frozen import files
 from policy import PHASE,MODE,GROUPS,COUNTS,successful
+from evidence import supervisor_ok
 load=files.load;write=files.write;sha=files.sha;digest=files.digest;relative=files.relative
 HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[3]
 PROJECT=files.PROJECT.replace('Single parity response experiment','Synthetic parity admission controls')
@@ -52,9 +53,7 @@ def dependencies(dest,group,source_hash,grant_hash,engine_hash):
         result=relative(dest,prior+'-result.json');supervisor=relative(dest,prior+'-supervisor.json')
         r=load(result);s=load(supervisor)
         if not successful(r,prior,source_hash,grant_hash,engine_hash):raise ValueError('incomplete/failed/unbound predecessor')
-        if s.get('failed') is not False or s.get('releasedCleanly') is not True or s.get('group')!=prior or s.get('sourceSha256')!=source_hash or s.get('grantSha256')!=grant_hash or s.get('engineSha256')!=engine_hash or s.get('nativeReceiptSha256')!=sha(result):raise ValueError('predecessor supervisor binding')
-        audits=s.get('releaseAudits',[])
-        if len(audits)!=3 or any(a.get('measured') is not True or a.get('members')!=[] for a in audits):raise ValueError('predecessor release incomplete')
+        if not supervisor_ok(s,prior,source_hash,grant_hash,engine_hash,sha(result)):raise ValueError('inconsistent predecessor supervisor')
         deps[prior]={'resultSha256':sha(result),'supervisorSha256':sha(supervisor)}
     return {'phase':PHASE,'group':group,'sourceSha256':source_hash,'grantSha256':grant_hash,'engineSha256':engine_hash,'predecessors':deps}
 if __name__=='__main__':

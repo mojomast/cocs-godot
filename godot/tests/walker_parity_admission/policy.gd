@@ -1,4 +1,5 @@
 extends RefCounted
+const Evidence = preload("evidence.gd")
 const PHASE := "parity-admission-synthetic-v1"
 const MODE := "synthetic-controls"
 const GROUPS := ["negative-controls","inclined-landing-rejections","positive-step-admission"]
@@ -50,4 +51,4 @@ static func successful(r: Dictionary, group: String, source_hash: String, grant_
 				if not p.get("reached") is bool: return false
 				if j==0 and (p.get("outcome")!="expected_baseline_blocked" or p.get("reached")!=false or not number(p.get("appliedUpCount"),0) or not number(p.get("verifiedLifts"),0)): return false
 				if j==1 and (p.get("outcome")!="full_tread_guarded_arrival" or p.get("reached")!=true or not (p.get("verifiedLifts") is int or p.get("verifiedLifts") is float) or p.verifiedLifts<1 or p.get("appliedUpCount")!=p.verifiedLifts): return false
-	return true
+	return Evidence.campaign(r,group)

@@ -5,12 +5,10 @@ import policy,supervisor
 from policy import PHASE,MODE,GROUPS,COUNTS,validate,successful
 from prepare import ROOT,HERE,PROJECT,build,validate_stage,load,sha,digest,dependencies
 from audit import check_lifecycle,lift_limit
+from receipt_fixtures import campaign_fixture,supervisor_fixture
 
 def passed(group,source='s',grant='g',engine='e'):
-    n=COUNTS[group]
-    return {'phase':PHASE,'mode':MODE,'group':group,'scope':'synthetic-admission','sourceSha256':source,'grantSha256':grant,'engineSha256':engine,'failed':False,'passed':True,'nativeStepAdmission':False,'productionPromotion':False,'positiveAdmission':group==GROUPS[2],
-        'attemptedPairs':n,'completedPairs':n,'passedPairs':n,'failedPairs':0,'interruptedPairs':0,'unrunPairs':0,'attemptedProfiles':2*n,'completedProfiles':2*n,'failedProfiles':0,'interruptedProfiles':0,'unrunProfiles':0,'candidateMapWalks':0,
-        'records':[{'caseIndex':i,'status':'passed','profiles':[{'status':'completed','experimental':bool(j),'appliedUpCount':1 if group==GROUPS[2] and j else 0,'verifiedLifts':1 if group==GROUPS[2] and j else 0,'reached':group==GROUPS[2] and bool(j),'outcome':'full_tread_guarded_arrival' if j else 'expected_baseline_blocked'} for j in range(2)]} for i in range(n)]}
+    return campaign_fixture(group,source,grant,engine)
 
 class PolicyTests(unittest.TestCase):
     def setUp(self):
@@ -81,7 +79,7 @@ class PreparationTests(unittest.TestCase):
         dest=self.build();self.assertEqual(dependencies(dest,GROUPS[0],'s','g','e')['predecessors'],{})
         with self.assertRaises(FileNotFoundError):dependencies(dest,GROUPS[1],'s','g','e')
         p=dest/(GROUPS[0]+'-result.json');s=dest/(GROUPS[0]+'-supervisor.json');r=passed(GROUPS[0]);p.write_text(json.dumps(r))
-        report={'group':GROUPS[0],'failed':False,'releasedCleanly':True,'sourceSha256':'s','grantSha256':'g','engineSha256':'e','nativeReceiptSha256':sha(p),'releaseAudits':[{'measured':True,'members':[]} for _ in range(3)]};s.write_text(json.dumps(report))
+        report=supervisor_fixture(native_hash=sha(p));s.write_text(json.dumps(report))
         self.assertEqual(len(dependencies(dest,GROUPS[1],'s','g','e')['predecessors']),1)
         for field,value in [('unrunPairs',1),('completedProfiles',67),('failed',True),('grantSha256','other')]:
             p.write_text(json.dumps({**r,field:value}));report['nativeReceiptSha256']=sha(p);s.write_text(json.dumps(report))
@@ -119,7 +117,7 @@ class LifecycleTests(unittest.TestCase):
 
 class SupervisorTests(unittest.TestCase):
     setUp=PreparationTests.setUp;tearDown=PreparationTests.tearDown;build=PreparationTests.build
-    def invoke(self,*,signal_error=None,audits=None,reused=False,write_error=False,deadline=False,held=False,fast_error=False):
+    def invoke(self,*,signal_error=None,audits=None,reused=False,write_error=False,deadline=False,held=False,fast_error=False,native_mutation=None,check_dependency=False):
         self.stage=self.root/'godot/tests/walker_parity_admission';self.stage.mkdir(parents=True);dest=self.build();engine=self.base/'binary';engine.write_bytes(b'nonexecutable mock')
         group=GROUPS[0];g={'phase':PHASE,'mode':MODE,'allowedGroups':[group],'grantId':'unit','authorized':True,'expiresUnix':9999999999,'sourceSha256':sha(dest/'source.json'),'engineSha256':sha(engine)};(dest/'grant.json').write_text(json.dumps(g))
         a=supervisor.parser().parse_args(['--fixture',str(dest),'--ag-root',str(self.base/'AG'),'--af-root',str(self.base/'AF'),'--engine',str(engine),'--group',group,'--mode',MODE,'--grant-id','unit','--grant-sha256',sha(dest/'grant.json')])
@@ -132,6 +130,8 @@ class SupervisorTests(unittest.TestCase):
             real_write(path,value)
         def done(**kwargs):
             r=passed(group,sha(dest/'source.json'),a.grant_sha256,sha(engine));r['dependenciesSha256']=sha(dest/(group+'-dependencies.json'));(dest/(group+'-result.json')).write_text(json.dumps(r))
+            if native_mutation:
+                native_mutation(r);(dest/(group+'-result.json')).write_text(json.dumps(r))
             if fast_error:(dest/(group+'.log')).write_text('SCRIPT ERROR: mock\n')
             return -9 if deadline else 0
         with contextlib.ExitStack() as stack:
@@ -154,6 +154,8 @@ class SupervisorTests(unittest.TestCase):
         self.assertEqual({n:supervisor.signal.getsignal(n) for n in handlers},handlers)
         with (self.base/'lock').open('a+') as other:fcntl.flock(other,fcntl.LOCK_EX|fcntl.LOCK_NB)
         r=json.loads(stderr.getvalue()) if write_error else load(dest/(group+'-supervisor.json'));self.assertEqual(len(r['releaseAudits']),3)
+        if check_dependency:
+            with self.assertRaises(ValueError):dependencies(dest,GROUPS[1],sha(dest/'source.json'),a.grant_sha256,sha(engine))
         return code,r
     def test_nonwaiting_lock(self):self.invoke(held=True)
     def test_deadline_cleanup_is_not_success(self):

@@ -1,5 +1,12 @@
 # Bounded synthetic parity admission — source proposal
 
+**Review correction:** [P1-CORRECTION.md](P1-CORRECTION.md) documents the follow-up
+to the blocking receipt-admission review of8de9d63a. Current validators require
+the ordered case census and recorded execution operands, and reject contradictory
+supervisor receipts. The original `source-provenance.json` remains historical;
+current seals/checks are in `p1-correction-receipt.json`. Full remaining readiness
+review is still required.
+
 Fresh branch `astra/walker-parity-admission` from `5ac4dcb3`. **Source only: no
 engine, parser/import, rendering, native attempt staging, server, child job,
 grant or automatic launch.** New GDScript remains unparsed/unrun. AG established
@@ -163,7 +170,7 @@ later parent response: the production reporting blocker remains unchanged.
 
 Future write-once `parity-admission-…` preparation requires explicit frozen AG29
 (`362803a8`) and AF24 (`b80273a7`) roots and verifies every hash/size. It verifies
-all15 production dependencies, all15 staged script inputs, new host code and
+all15 production dependencies, all16 staged script inputs, new host code and
 pinned reused AG host modules before writing. Minimal scripts/project only: no
 world GLBs, autoloads, engine copies, grants, queue or launch jobs. Symlinks,
 noncanonical/uppercase namespaces, existing attempts and unknown staged files

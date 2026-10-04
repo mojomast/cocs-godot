@@ -74,10 +74,7 @@ func predecessors(source_hash: String, engine_hash: String) -> bool:
 		if FileAccess.get_sha256(rpath)!=h.get("resultSha256") or FileAccess.get_sha256(spath)!=h.get("supervisorSha256"): return false
 		var r := Observe.read_json(rpath);var s := Observe.read_json(spath)
 		if not Policy.successful(r,prior,source_hash,grant_hash,engine_hash): return false
-		if s.get("failed")!=false or s.get("releasedCleanly")!=true or s.get("group")!=prior or s.get("sourceSha256")!=source_hash or s.get("grantSha256")!=grant_hash or s.get("engineSha256")!=engine_hash or s.get("nativeReceiptSha256")!=h.resultSha256: return false
-		if not s.get("releaseAudits") is Array or s.releaseAudits.size()!=3: return false
-		for audit: Dictionary in s.releaseAudits:
-			if audit.get("measured")!=true or audit.get("members")!=[]: return false
+		if not Policy.Evidence.supervisor_ok(s,prior,source_hash,grant_hash,engine_hash,h.resultSha256): return false
 	return true
 
 func run() -> void:
@@ -220,6 +217,7 @@ func traversals() -> void:
 			fixture.world.add_child(body);body.set_physics_process(false);body.set_spawn(fixture.start,spec.yaw)
 			if not begin_profile(experimental,body,fixture.world): return
 			active_profile.targetRid = fixture.topRid;active_profile.targetShape = 0
+			active_profile.target = {"rid":fixture.topRid,"shape":0,"path":str(fixture.top.get_path()),"faces":fixture.faces,"direction":fixture.direction,"normal":fixture.normal}
 			for tick in range(20):
 				await physics_frame
 				var r := sample(body,Vector2.ZERO);active_profile.settle.append(r)

@@ -4,6 +4,7 @@ from pathlib import Path
 from frozen import runtime
 from policy import PHASE,MODE,GROUPS,validate,successful
 from prepare import ROOT,HERE,load,write,sha,relative,validate_stage,lineage,dependencies
+from evidence import supervisor_ok
 LOCK=Path('/tmp/opencode/cocs-finish-acceptance.lock');EXTERNAL_SECONDS=180
 Once=runtime.Once
 def parser():
@@ -77,6 +78,8 @@ def main(a):
                     except Exception as error:runtime.cleanup_error(report,'restore_signal',error);report['failed']=True;report['releasedCleanly']=False
             if report['failed']:report['positiveAdmission']=False
             report['nativeStepAdmission']=False;report['productionPromotion']=False;report['scope']='synthetic-admission';report['lockReleasePendingUnix']=time.time()
+            if not report['failed'] and not supervisor_ok(report,a.group,source_hash,a.grant_sha256,engine_hash,report['nativeReceiptSha256']):
+                report['failed']=True;report['positiveAdmission']=False;report['supervisorError']='inconsistent_success_receipt'
             try:write(path('-supervisor.json'),report)
             except Exception as error:
                 runtime.cleanup_error(report,'write_result',error);report['failed']=True;report['positiveAdmission']=False
