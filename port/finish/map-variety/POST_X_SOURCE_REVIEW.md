@@ -1,5 +1,11 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**AM failed-positive archive approved/integrated through `ebbb7d20`.** Parent
+passed 43 checks and all 60 hashes/manifest identity. Independent review confirms
+normal failure after identity acceptance, with landing-plane check unreached.
+See `WALKER_AM_REVIEW.md`. Planner/final-support diagnosis remains source-only;
+no heavy grant, guard widening, fallback or retry is authorized.
+
 ## AM delivered/released — final-support normal rejects .42 candidate
 
 **`8118900d` / `e300ab4f`** report negative PASS34/68 and inclined PASS4/8,

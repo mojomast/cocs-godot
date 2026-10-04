@@ -11,11 +11,11 @@ Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
 **No active heavy grant. AM failed calibrated positive admission and released.**
-Delivery `8118900d` / `e300ab4f` is under independent review. Negative34 and
-inclined4 pass; .42/.18/−45 candidate fails the final-support normal check at
-47.476992° versus46°, despite zero endpoint error. One lift applied, zero verified
-for that profile. Parent verified 60 files/manifest and three empty audits/three
-groups. Support-normal diagnosis is source-only; no guard change or retry authorized.
+Delivery `8118900d` / `e300ab4f` passed review and is integrated through `ebbb7d20`.
+Parent passed 43 checks and all 60 hashes/manifest. Negative34 and inclined4 pass;
+.42/.18/−45 candidate fails support normal47.476992° versus46° despite zero
+endpoint error. Identity passed; plane guard was not reached. Source-only query
+diagnosis continues without guard changes or retry. See `map-variety/WALKER_AM_REVIEW.md`.
 
 **AL completed baseline characterization and released.**
 Delivery `75271920` / `068705de` passed independent review and is integrated through

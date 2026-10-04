@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**AM independently approved/integrated through `ebbb7d20`.** Parent passed 43
+checks and all 60 hashes/manifest. Final-support identity passed, normal failed,
+and plane guard was not reached; zero endpoint error does not waive the failure.
+Review: `map-variety/WALKER_AM_REVIEW.md`. Diagnosis stays source-only with no
+heavy grant, while all sixty map journeys and 184 static failures remain open.
+
 ## Current checkpoint — AM fails final-support normal and releases
 
 **No heavy grant is active.** AM `8118900d` / `e300ab4f` passed prerequisites,
