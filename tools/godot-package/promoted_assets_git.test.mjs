@@ -22,7 +22,7 @@ test('committed seven-unit promotion and import bytes validate independently of 
   const staged=gitStagedResources(cwd,commit);
   rejectStagedInputs([...Object.keys(result.resources),...Object.keys(result.raw)],staged);
   verifySourceState(cwd,JSON.parse(read('port/contracts/source-lock.json')).source_commit,
-    JSON.parse(read('port/contracts/movement-candidate-derivative.json')),{portCommit:commit});
+    JSON.parse(read('port/contracts/racing-candidate-derivative.json')),{portCommit:commit});
   assert.deepEqual(result.pending,[]);
   assert.throws(()=>productionResources({...options,worldIds:options.worldIds.slice(0,-1)}),/remain pending/);
   for(const id of ['abyssal-pressureworks','vesper-viaduct','scenery','robots','vehicles','parallax-interiors','stormglass-causeway']) {

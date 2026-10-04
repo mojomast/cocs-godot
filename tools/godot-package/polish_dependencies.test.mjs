@@ -6,6 +6,7 @@ import {createHash} from 'node:crypto';
 import {productionResources,REQUIREMENTS,REQUIRED_UNITS} from './production_resources.mjs';
 import {POLISH_INVENTORY,polishInventory,verifyOperatorFinishImports,L_SOURCE_CHANGE,L_EVIDENCE,lSupportingHash,O_SOURCE_CHANGE,O_EVIDENCE} from './polish_dependencies.mjs';
 import {movementSupportingHash} from './movement_dependencies.mjs';
+import {reverseRacing,racingSupportingHash} from './racing_dependencies.mjs';
 import {WORLDS} from '../../port/multiplayer-worlds/catalog.mjs';
 const read=p=>readFileSync(p),hash=b=>createHash('sha256').update(b).digest('hex');
 const options={read,has:existsSync,worldIds:Object.keys(WORLDS),strict:true};
@@ -16,7 +17,7 @@ function forged(id,mutate){
 }
 test('O preserves every prior producer/native/review field and advances only local Settings plus the verifier',()=>{
  for(const id of REQUIRED_UNITS){
-  const p=`tools/godot-package/production_receipts/${id}.json`,bytes=git('b17360c9',p),old=JSON.parse(bytes),now=JSON.parse(read(p));
+  const p=`tools/godot-package/production_receipts/${id}.json`,bytes=git('b17360c9',p),old=JSON.parse(bytes),now=reverseRacing(JSON.parse(read(p)),read);
   for(const [k,v]of Object.entries(old))if(k!=='packageInputs')assert.deepEqual(now[k],v,id+': '+k);
   assert.equal(now.oReviewAdvance.previousReceipt.sha256,hash(bytes));
   assert.deepEqual(now.oReviewAdvance.sourceChanged,O_SOURCE_CHANGE);
@@ -48,13 +49,13 @@ test('missing/forged O step, stale Settings, later source and altered final rece
 test('all seven strict closures bind exact 8921 snapshot, opaque shader, identity composition and scene compiler',()=>{
  assert.deepEqual(productionResources(options).pending,[]);
  assert.equal(Object.keys(s.changed).length,22);
- for(const [p,c]of Object.entries(s.changed)){assert.equal(hash(git(s.previous,p)),c.before);assert.equal(hash(git(s.foundation,p)),c.after);assert.equal(hash(read(p)),movementSupportingHash(p,lSupportingHash(p,c.after),read));}
+ for(const [p,c]of Object.entries(s.changed)){assert.equal(hash(git(s.previous,p)),c.before);assert.equal(hash(git(s.foundation,p)),c.after);assert.equal(hash(read(p)),racingSupportingHash(p,movementSupportingHash(p,lSupportingHash(p,c.after),read),JSON.parse(read('tools/godot-package/production_receipts/stormglass-causeway.json'))));}
  for(const [p,sha]of Object.entries(s.added))assert.equal(hash(git(s.foundation,p)),sha);
  for(const id of REQUIRED_UNITS){const r=JSON.parse(read(`tools/godot-package/production_receipts/${id}.json`));for(const p of ['godot/moth/surface_opaque.gdshader','godot/native_arenas/identity_environment.gd','tools/godot-multiplayer/generate-scenes.mjs'])assert.ok(r.packageInputs[p]);}
 });
 test('L appends one exact lobby correction while preserving the entire original polish review and all producer fields',()=>{
  for(const id of REQUIRED_UNITS){
-  const p=`tools/godot-package/production_receipts/${id}.json`,bytes=git('9cd1ac72',p),old=JSON.parse(bytes),now=JSON.parse(read(p));
+  const p=`tools/godot-package/production_receipts/${id}.json`,bytes=git('9cd1ac72',p),old=JSON.parse(bytes),now=reverseRacing(JSON.parse(read(p)),read);
   for(const [k,v]of Object.entries(old))if(k!=='packageInputs')assert.deepEqual(now[k],v,id+': '+k);
   assert.equal(now.lReviewAdvance.previousReceipt.sha256,hash(bytes));
   assert.deepEqual(now.lReviewAdvance.sourceChanged,L_SOURCE_CHANGE);
@@ -83,7 +84,7 @@ test('missing/forged L step, stale current dependency, future source and rewritt
 });
 test('all previous producer/native fields and histories are byte-identical in value; only one declared hook advances',()=>{
  for(const id of REQUIRED_UNITS){
-  const path=`tools/godot-package/production_receipts/${id}.json`,oldBytes=git(s.foundation,path),old=JSON.parse(oldBytes),now=JSON.parse(read(path));
+  const path=`tools/godot-package/production_receipts/${id}.json`,oldBytes=git(s.foundation,path),old=JSON.parse(oldBytes),raw=JSON.parse(read(path)),now=reverseRacing(raw,read);
   for(const [key,value]of Object.entries(old))if(!['packageInputs','runtimeHooks'].includes(key))assert.deepEqual(now[key],value,id+': '+key);
   assert.equal(now.polishAdvance.previousReceipt.sha256,hash(oldBytes));
   for(const [p,sha]of Object.entries(old.runtimeHooks))assert.equal(now.polishAdvance.runtimeChanged[p]?.before??now.runtimeHooks[p],sha);

@@ -10,13 +10,13 @@ import {verifySource} from '../godot-export/semantic.mjs';
 const read=p=>readFileSync(p),hash=b=>createHash('sha256').update(b).digest('hex');
 const git=(...args)=>execFileSync('git',args,{maxBuffer:128*1024*1024,stdio:['pipe','pipe','pipe']});
 const base='4cd806fa0783b1731505f8003e840bdc2f7d4786';
-const lock=JSON.parse(read('port/contracts/source-lock.json')),movement=JSON.parse(read('port/contracts/movement-candidate-derivative.json'));
+const lock=JSON.parse(read('port/contracts/source-lock.json')),movement=JSON.parse(read('port/contracts/movement-candidate-derivative.json')),racing=JSON.parse(read('port/contracts/racing-candidate-derivative.json'));
 test('886 authoring files exactly enumerate immutable 9dc08e53, including failed archives and hidden metadata',()=>{
  const files=authoringInventory(read),paths=git('ls-tree','-r','--name-only','-z',AUTHORING_COMMIT,'--','assets/moth/map-variety-20261003').toString().split('\0').filter(Boolean).sort();
  assert.deepEqual(Object.keys(files),paths);assert.equal(paths.length,886);
  assert.equal(Object.values(files).reduce((n,r)=>n+r.bytes,0),133726498);
  for(const p of paths){const b=git('show',`${AUTHORING_COMMIT}:${p}`);assert.equal(hash(b),files[p].sha256);assert.equal(b.length,files[p].bytes);}
- const resolved=verifySource(lock,movement);assert.equal(Object.keys(resolved.runtime_files).length,13);
+ const resolved=verifySource(lock,racing);assert.equal(Object.keys(resolved.runtime_files).length,14);
  for(const p of paths)assert.ok(!Object.hasOwn(resolved.runtime_files,p));
 });
 test('approved hash drift, missing inventory/entry and runtime shipping reject; old commit reads no ambient approval',()=>{
