@@ -1,0 +1,181 @@
+{
+  "phase": "snap-query-compare-only-v1",
+  "mode": "compare-only",
+  "group": "query-compare",
+  "argv": [
+    "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--single-threaded-scene",
+    "--path",
+    "/home/mojo/.tmp-on-disk/cocs-walker-snap-compare-af/godot/tests/walker_snap_compare/snap-compare-af-01",
+    "--script",
+    "res://tests/walker_snap_compare/driver.gd",
+    "--",
+    "--group=query-compare",
+    "--mode=compare-only",
+    "--grant-id=AF",
+    "--grant-sha256=a3cbae5b9f8e1270cca7f028c8f0d46bf5c8210023b889cd8a4c50eefa57b534"
+  ],
+  "grantSha256": "a3cbae5b9f8e1270cca7f028c8f0d46bf5c8210023b889cd8a4c50eefa57b534",
+  "sourceSha256": "c9ea66f2a6767b5b58db8f5e0942f1c9686bb21eaf692a04dae03122013d138d",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "lockAcquiredUnix": 1791081496.5353558,
+  "timeoutSeconds": 180,
+  "autoRetry": false,
+  "queued": false,
+  "releaseAudits": [
+    {
+      "utc": "2026-10-04T02:38:17.387106+00:00",
+      "members": [],
+      "measured": true
+    },
+    {
+      "utc": "2026-10-04T02:38:17.606429+00:00",
+      "members": [],
+      "measured": true
+    },
+    {
+      "utc": "2026-10-04T02:38:17.826038+00:00",
+      "members": [],
+      "measured": true
+    }
+  ],
+  "processGroupTrace": [
+    {
+      "unix": 1791081496.5365636,
+      "members": [
+        {
+          "pid": 2231222,
+          "pgid": 2231222,
+          "startTicks": 626464050
+        }
+      ]
+    },
+    {
+      "unix": 1791081496.6055613,
+      "members": [
+        {
+          "pid": 2231222,
+          "pgid": 2231222,
+          "startTicks": 626464050
+        }
+      ]
+    },
+    {
+      "unix": 1791081496.6744058,
+      "members": [
+        {
+          "pid": 2231222,
+          "pgid": 2231222,
+          "startTicks": 626464050
+        }
+      ]
+    },
+    {
+      "unix": 1791081496.7438862,
+      "members": [
+        {
+          "pid": 2231222,
+          "pgid": 2231222,
+          "startTicks": 626464050
+        }
+      ]
+    },
+    {
+      "unix": 1791081496.8129506,
+      "members": [
+        {
+          "pid": 2231222,
+          "pgid": 2231222,
+          "startTicks": 626464050
+        }
+      ]
+    },
+    {
+      "unix": 1791081496.8820958,
+      "members": [
+        {
+          "pid": 2231222,
+          "pgid": 2231222,
+          "startTicks": 626464050
+        }
+      ]
+    },
+    {
+      "unix": 1791081496.953964,
+      "members": [
+        {
+          "pid": 2231222,
+          "pgid": 2231222,
+          "startTicks": 626464050
+        }
+      ]
+    },
+    {
+      "unix": 1791081497.022932,
+      "members": [
+        {
+          "pid": 2231222,
+          "pgid": 2231222,
+          "startTicks": 626464050
+        }
+      ]
+    },
+    {
+      "unix": 1791081497.090548,
+      "members": [
+        {
+          "pid": 2231222,
+          "pgid": 2231222,
+          "startTicks": 626464050
+        }
+      ]
+    },
+    {
+      "unix": 1791081497.1624205,
+      "members": [
+        {
+          "pid": 2231222,
+          "pgid": 2231222,
+          "startTicks": 626464050
+        }
+      ]
+    },
+    {
+      "unix": 1791081497.2316754,
+      "members": [
+        {
+          "pid": 2231222,
+          "pgid": 2231222,
+          "startTicks": 626464050
+        }
+      ]
+    },
+    {
+      "unix": 1791081497.3011973,
+      "members": [
+        {
+          "pid": 2231222,
+          "pgid": 2231222,
+          "startTicks": 626464050
+        }
+      ]
+    }
+  ],
+  "environment": {
+    "LP_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "failed": false,
+  "owned": {
+    "pid": 2231222,
+    "pgid": 2231222,
+    "startTicks": 626464050
+  },
+  "returnCode": 0,
+  "releasedCleanly": true,
+  "comparisonCollected": true,
+  "queryAgreementQualified": false,
+  "nativeStepAdmission": false,
+  "lockReleasePendingUnix": 1791081498.0465891
+}

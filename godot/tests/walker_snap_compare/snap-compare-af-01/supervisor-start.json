@@ -1,0 +1,38 @@
+{
+  "phase": "snap-query-compare-only-v1",
+  "mode": "compare-only",
+  "group": "query-compare",
+  "argv": [
+    "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--single-threaded-scene",
+    "--path",
+    "/home/mojo/.tmp-on-disk/cocs-walker-snap-compare-af/godot/tests/walker_snap_compare/snap-compare-af-01",
+    "--script",
+    "res://tests/walker_snap_compare/driver.gd",
+    "--",
+    "--group=query-compare",
+    "--mode=compare-only",
+    "--grant-id=AF",
+    "--grant-sha256=a3cbae5b9f8e1270cca7f028c8f0d46bf5c8210023b889cd8a4c50eefa57b534"
+  ],
+  "grantSha256": "a3cbae5b9f8e1270cca7f028c8f0d46bf5c8210023b889cd8a4c50eefa57b534",
+  "sourceSha256": "c9ea66f2a6767b5b58db8f5e0942f1c9686bb21eaf692a04dae03122013d138d",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "lockAcquiredUnix": 1791081496.5353558,
+  "timeoutSeconds": 180,
+  "autoRetry": false,
+  "queued": false,
+  "releaseAudits": [],
+  "processGroupTrace": [],
+  "environment": {
+    "LP_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "failed": true,
+  "owned": {
+    "pid": 2231222,
+    "pgid": 2231222,
+    "startTicks": 626464050
+  }
+}

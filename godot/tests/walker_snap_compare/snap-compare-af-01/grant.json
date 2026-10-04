@@ -1,0 +1,12 @@
+{
+  "phase": "snap-query-compare-only-v1",
+  "mode": "compare-only",
+  "allowedGroups": [
+    "query-compare"
+  ],
+  "grantId": "AF",
+  "authorized": true,
+  "expiresUnix": 1791082386.880154,
+  "sourceSha256": "c9ea66f2a6767b5b58db8f5e0942f1c9686bb21eaf692a04dae03122013d138d",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae"
+}

@@ -1,0 +1,262 @@
+{
+  "status": "stage0 comparison collection success; no assisted response executed",
+  "records": 28,
+  "settleFrames": 20,
+  "inputResponses": 8,
+  "firstFrame": 2,
+  "lastFrame": 29,
+  "eligibleEvents": 1,
+  "queryBodyStateUnchangedAllRecords": true,
+  "consecutiveClock60HzTimeScale1": true,
+  "baselineWholeFrameEqualsParentDeltaAllRecords": true,
+  "sourceSha256": "c9ea66f2a6767b5b58db8f5e0942f1c9686bb21eaf692a04dae03122013d138d",
+  "grantSha256": "a3cbae5b9f8e1270cca7f028c8f0d46bf5c8210023b889cd8a4c50eefa57b534",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "rawTraceSha256": "252ca6f37b0d4a969752ca75259416c55056816c1383591023bb2c98598c0e5a",
+  "actualBodyBeforeQueries": {
+    "basis": [
+      [
+        0.70710676908493,
+        0.0,
+        0.70710676908493
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        -0.70710676908493,
+        0.0,
+        0.70710676908493
+      ]
+    ],
+    "origin": [
+      0.212131947278976,
+      0.0166666638106108,
+      -0.212131947278976
+    ]
+  },
+  "hypotheticalRaised": {
+    "basis": [
+      [
+        0.70710676908493,
+        0.0,
+        0.70710676908493
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        -0.70710676908493,
+        0.0,
+        0.70710676908493
+      ]
+    ],
+    "origin": [
+      0.212131947278976,
+      0.172130957245827,
+      -0.212131947278976
+    ]
+  },
+  "hypotheticalEdge": {
+    "basis": [
+      [
+        0.70710676908493,
+        0.0,
+        0.70710676908493
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        -0.70710676908493,
+        0.0,
+        0.70710676908493
+      ]
+    ],
+    "origin": [
+      0.141421258449554,
+      0.172130957245827,
+      -0.141421258449554
+    ]
+  },
+  "short32": {
+    "motion": [
+      0.0,
+      -0.175564289093018,
+      0.0
+    ],
+    "maxCollisions": 32,
+    "travel": [
+      0.0,
+      -0.0843531563878059,
+      0.0
+    ],
+    "safeFraction": 0.48046875,
+    "unsafeFraction": 0.484375,
+    "contactCount": 1,
+    "normalDegreesFromUp": [
+      34.86261583606683
+    ]
+  },
+  "modeledParentSnap4": {
+    "motion": [
+      0.0,
+      -0.300000011920929,
+      0.0
+    ],
+    "maxCollisions": 4,
+    "travel": [
+      0.0,
+      -0.0843750014901161,
+      0.0
+    ],
+    "safeFraction": 0.28125,
+    "unsafeFraction": 0.28515625,
+    "contactCount": 1,
+    "normalDegreesFromUp": [
+      34.91021188702534
+    ]
+  },
+  "modeledParentForward6": {
+    "motion": [
+      -0.0707106813788414,
+      0.0,
+      0.0707106813788414
+    ],
+    "maxCollisions": 6,
+    "travel": [
+      -0.0707106813788414,
+      0.0,
+      0.0707106813788414
+    ],
+    "safeFraction": 1.0,
+    "unsafeFraction": 1.0,
+    "contactCount": 0,
+    "normalDegreesFromUp": []
+  },
+  "rawTravelDeltaFullMinusShortFloat32": [
+    0.0,
+    -2.1845102310180664e-05,
+    0.0
+  ],
+  "rawTravelDeltaMicrometers": -21.845102310180664,
+  "shortExpectedEndpointFloat32": [
+    0.14142125844955444,
+    0.08777780085802078,
+    -0.14142125844955444
+  ],
+  "modeledProjectedFull4EndpointFloat32": [
+    0.14142125844955444,
+    0.0877559557557106,
+    -0.14142125844955444
+  ],
+  "historicalAEActualEndpointFloat32": [
+    0.14142125844955444,
+    0.0877559557557106,
+    -0.14142125844955444
+  ],
+  "modeledEndpointMatchesHistoricalAEAtFloat32": true,
+  "actualOrdinaryBaselineEndpoint": [
+    0.212131947278976,
+    0.0166666638106108,
+    -0.212131947278976
+  ],
+  "actualOrdinaryBaselineDelta": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "actualOrdinaryBaselineAccounting": {
+    "bodyTransform": {
+      "basis": [
+        [
+          0.70710676908493,
+          0.0,
+          0.70710676908493
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.70710676908493,
+          0.0,
+          0.70710676908493
+        ]
+      ],
+      "origin": [
+        0.212131947278976,
+        0.0166666638106108,
+        -0.212131947278976
+      ]
+    },
+    "floorNormal": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "grounded": true,
+    "lastMotion": [
+      -0.0187825262546539,
+      0.0,
+      0.0187825262546539
+    ],
+    "onCeiling": false,
+    "onWall": true,
+    "platformVelocity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "positionDelta": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "realVelocity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "resetCount": 1,
+    "slideCount": 1,
+    "velocity": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "liveBodyRid": 124554051587,
+  "liveShapeRid": 133143986178,
+  "targetRid": 115964116994,
+  "targetShape": 0,
+  "configuredPhysicsEngineSetting": "DEFAULT",
+  "backendImplementationVerified": false,
+  "internalParentTraceCaptured": false,
+  "assistedUpApplications": 0,
+  "actualUpliftSupportQualified": false,
+  "queryAgreementQualified": false,
+  "nativeStepAdmission": false,
+  "candidateMapWalksRun": 0,
+  "preservation": {
+    "sidecarsUnchanged": 3302,
+    "sidecarsDeleted": 0,
+    "cleanupPerformed": false,
+    "viewer": {
+      "pid": 2598700,
+      "pgid": 2598689,
+      "startTicks": 522477875
+    },
+    "displaysUnchanged": true,
+    "historicalArchivesUnchanged": true,
+    "all15DependenciesUnchanged": true
+  },
+  "limitation": "Matching modeled full4 endpoint to historical AE at float32 is evidence consistent with request-policy mismatch; simultaneous length/contact-limit changes do not isolate a unique cause, and baseline AF is not an actual lifted parent response."
+}

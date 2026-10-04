@@ -1,0 +1,16 @@
+{
+  "authorization": "MOTH-BLENDER-20261004-AF",
+  "grantId": "AF",
+  "issuedUtc": "2026-10-04T02:38:06.985707+00:00",
+  "grantSha256": "a3cbae5b9f8e1270cca7f028c8f0d46bf5c8210023b889cd8a4c50eefa57b534",
+  "sourceSha256": "c9ea66f2a6767b5b58db8f5e0942f1c9686bb21eaf692a04dae03122013d138d",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "enginePath": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "engineBytes": 137322608,
+  "maximumEngineInvocations": 1,
+  "separateParseImportInvocationAllowed": false,
+  "retryAllowed": false,
+  "baselineOnly": true,
+  "sourceToolingCommit": "ad5d02b6",
+  "parent": "4e4e0588"
+}

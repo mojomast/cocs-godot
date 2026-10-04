@@ -1,0 +1,38 @@
+{
+  "authorization": "MOTH-BLENDER-20261004-AF",
+  "released": true,
+  "utc": "2026-10-04T02:38:48.288924+00:00",
+  "lockAvailableUtc": "2026-10-04T02:38:48.288893+00:00",
+  "owned": {
+    "pid": 2231222,
+    "pgid": 2231222,
+    "startTicks": 626464050
+  },
+  "allOwnedGroups": [
+    2231222
+  ],
+  "supervisorReleaseAudits": [
+    {
+      "utc": "2026-10-04T02:38:17.387106+00:00",
+      "members": [],
+      "measured": true
+    },
+    {
+      "utc": "2026-10-04T02:38:17.606429+00:00",
+      "members": [],
+      "measured": true
+    },
+    {
+      "utc": "2026-10-04T02:38:17.826038+00:00",
+      "members": [],
+      "measured": true
+    }
+  ],
+  "additionalMembers": [],
+  "supervisorFailed": false,
+  "releasedCleanly": true,
+  "engineInvocations": 1,
+  "queued": false,
+  "retry": false,
+  "furtherHeavyWorkAuthorized": false
+}

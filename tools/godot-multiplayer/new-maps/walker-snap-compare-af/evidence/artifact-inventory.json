@@ -1,0 +1,101 @@
+{
+  "scope": "AF exact file inventory; excludes inventory itself",
+  "files": {
+    "godot/tests/walker_snap_compare/snap-compare-af-01/comparison-result.json": {
+      "sha256": "252ca6f37b0d4a969752ca75259416c55056816c1383591023bb2c98598c0e5a",
+      "bytes": 164625
+    },
+    "godot/tests/walker_snap_compare/snap-compare-af-01/exploration/walker.gd": {
+      "sha256": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+      "bytes": 4222
+    },
+    "godot/tests/walker_snap_compare/snap-compare-af-01/grant.json": {
+      "sha256": "a3cbae5b9f8e1270cca7f028c8f0d46bf5c8210023b889cd8a4c50eefa57b534",
+      "bytes": 365
+    },
+    "godot/tests/walker_snap_compare/snap-compare-af-01/project.godot": {
+      "sha256": "0399a69a9aceb9284839b020bdbef3c7158651f72b99a3085b1448edec478436",
+      "bytes": 217
+    },
+    "godot/tests/walker_snap_compare/snap-compare-af-01/source.json": {
+      "sha256": "c9ea66f2a6767b5b58db8f5e0942f1c9686bb21eaf692a04dae03122013d138d",
+      "bytes": 3621
+    },
+    "godot/tests/walker_snap_compare/snap-compare-af-01/supervisor-result.json": {
+      "sha256": "fda54290e7875a65e134dd0c2df4398a4a31a6990b885c7c817b8d0eda475587",
+      "bytes": 3901
+    },
+    "godot/tests/walker_snap_compare/snap-compare-af-01/supervisor-start.json": {
+      "sha256": "49e4eba04ff06871328af5dc268c1320454501c32597a052824b2992c19932de",
+      "bytes": 1216
+    },
+    "godot/tests/walker_snap_compare/snap-compare-af-01/supervisor.log": {
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "bytes": 73
+    },
+    "godot/tests/walker_snap_compare/snap-compare-af-01/tests/walker_admission/fixtures_v4.gd": {
+      "sha256": "c4c175420aaca975acfa8ee277b2088796c2f0f8279751bbc8f2939154070e04",
+      "bytes": 2020
+    },
+    "godot/tests/walker_snap_compare/snap-compare-af-01/tests/walker_admission/slide_telemetry.gd": {
+      "sha256": "b7c04249dd44574c5c14627766983cb571542879b17c39afc458c115178b2df0",
+      "bytes": 884
+    },
+    "godot/tests/walker_snap_compare/snap-compare-af-01/tests/walker_snap_compare/driver.gd": {
+      "sha256": "912c7487e94bed572a08864189b1aa749b2d13e9d19a37627efc7d53fe5a1d16",
+      "bytes": 8266
+    },
+    "godot/tests/walker_snap_compare/snap-compare-af-01/tests/walker_snap_compare/policy.gd": {
+      "sha256": "5aba27fffb949581aca0ab50892e2908bfaba73b9eba32b61c84bc06576befaf",
+      "bytes": 1329
+    },
+    "godot/tests/walker_snap_compare/snap-compare-af-01/tests/walker_snap_parity/query_pair.gd": {
+      "sha256": "91f427d0ea0d47e9397a7331dd49f798d8041d5d93e31e11331da6ad31a475f7",
+      "bytes": 3619
+    },
+    "godot/tests/walker_snap_compare/snap-compare-af-01/tests/walker_step_up/sweep_proposal.gd": {
+      "sha256": "b253464820a84d8de7e1cfc5abf7d3852f392e055ac6e71d42ce6a678d538d41",
+      "bytes": 17360
+    },
+    "godot/tests/walker_snap_compare/snap-compare-af-01/ui/mouse_motion.gd": {
+      "sha256": "1edc97f26ccf98a6c5f776bf72968cf5fd1258d129566006c0c3ae1222716581",
+      "bytes": 333
+    },
+    "godot/tests/walker_snap_compare/snap-compare-af-01/ui/settings_access.gd": {
+      "sha256": "2bb46c9e6ee5dabbdef7a4cd864bf4afcae2a3c8dd7be93d0180a907da7920e0",
+      "bytes": 1385
+    },
+    "tools/godot-multiplayer/new-maps/walker-snap-compare-af/README.md": {
+      "sha256": "34d1ec33e8ee3134dca2aa773beff1eae024b3e47b5503d4c3d7c21ae397a7ea",
+      "bytes": 7369
+    },
+    "tools/godot-multiplayer/new-maps/walker-snap-compare-af/analyze.py": {
+      "sha256": "8974dd2cb8ce1820355fdbe0f903da78e22e9c55fe551806c16af4e3c7cb8407",
+      "bytes": 8778
+    },
+    "tools/godot-multiplayer/new-maps/walker-snap-compare-af/evidence/after.json": {
+      "sha256": "983e21436f6a2bc363c784e543f47668bc2f6dbfaeaaa543b6a6ed2876a665b6",
+      "bytes": 1001076
+    },
+    "tools/godot-multiplayer/new-maps/walker-snap-compare-af/evidence/analysis.json": {
+      "sha256": "8c2dc42262fc3390a6cd0ac981d1c2ce48e92388a769e8278b209f095b02adf9",
+      "bytes": 5502
+    },
+    "tools/godot-multiplayer/new-maps/walker-snap-compare-af/evidence/authorization.json": {
+      "sha256": "b8def6fd411f707ddb793df9598c863e65689e614f377cb8bb2535a34b6af289",
+      "bytes": 701
+    },
+    "tools/godot-multiplayer/new-maps/walker-snap-compare-af/evidence/before.json": {
+      "sha256": "31f858435287a2409c6bb14fd386b07a090ba348a132d1c8e4089a93ca7e09a6",
+      "bytes": 1001078
+    },
+    "tools/godot-multiplayer/new-maps/walker-snap-compare-af/evidence/release.json": {
+      "sha256": "28aee308c517849520b6c035c330bbfb9157f496e0efa6acccf1006889056fa2",
+      "bytes": 837
+    },
+    "tools/godot-multiplayer/new-maps/walker-snap-compare-af/evidence.py": {
+      "sha256": "b115e5d191230aca4710daace837ec7f601c9dc75bf0bcf7329b5941d0bcfa72",
+      "bytes": 3615
+    }
+  }
+}
