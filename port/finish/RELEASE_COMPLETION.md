@@ -10,7 +10,12 @@ finishing and verifying the new candidate.
 Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
-**No active heavy grant. AE released after its first positive-pair failure.**
+**Current heavy owner: baseline-only query comparison AF**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `4e4e0588`. Independent review closed
+both P1s; parent passed 78 source/package checks. One fresh fixed-fixture comparison
+invocation is authorized, then stop/audit/release; no retry or candidate/map groups.
+
+**AE released after its first positive-pair failure.**
 Fresh inclined controls passed; an applied up sweep then failed endpoint agreement
 by 21.845102 µm against a 1 µm bound. No guard-verified lift or landing was accepted;
 three positive pairs/six profiles and all sixty map walks remain unrun. Parent
@@ -270,7 +275,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P, Q, R, S, T, U, V, W, X, Y, Z, AA, AB, AC, AD and AE have released; no heavy grant is active.**
+**P, Q, R, S, T, U, V, W, X, Y, Z, AA, AB, AC, AD and AE have released; AF owns baseline-only comparison.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -311,6 +316,11 @@ are introduced without the user's renewed scope. The subsequent overnight
 directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
+
+**Active: `MOTH-BLENDER-20261004-AF`**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `4e4e0588`. Fresh setup and one
+baseline-only comparison on .35 m / −45°, then stop and three measured release
+audits. No retry, assisted UP, parity candidate, reference or map groups.
 
 **Released: `MOTH-BLENDER-20261004-AE`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `5e0b373d`. Fresh inclined controls,

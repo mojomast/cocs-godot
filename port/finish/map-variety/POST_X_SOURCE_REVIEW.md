@@ -1,5 +1,27 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Compare-only sources approved/integrated; AF authorized
+
+Independent re-review approved `2b0f1f6a`, `2e8fc0bc`, `9b3b0c04`, `c3cd5833`
+in order, integrated as **`bd90f1d0` / `614e366c` / `ad72280b` / `4e4e0588`**.
+Both P1s are closed. Parent passed **78 checks**: 65 Python and thirteen package
+tests. The reviewer independently reproduced the disappearing-residual case:
+three measured empty audits, final receipt, restored handlers and lock held through
+receipt writing. A failed child remains failed even when cleanly released.
+
+At 2026-10-04T02:35:16.920854Z parent confirmed lock availability and only the
+preserved viewer. **MOTH-BLENDER-20261004-AF** is now the sole heavy grant,
+Astra `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `4e4e0588`. Scope: fresh
+`snap-compare-af-01` preparation and ONE reviewed baseline-only invocation, including
+first parsing, then stop/audit/release. No separate import/parser run, retry or
+candidate continuation is authorized.
+
+Phase `snap-query-compare-only-v1`, mode `compare-only`, group `query-compare`,
+fixed .35 m / −45° synthetic fixture. Only unchanged Walker runs. Requests model
+parent policy at hypothetical poses; `comparisonCollected` means collection only,
+not query equivalence, backend causality, uplift support or positive admission.
+All sixty candidate map walks remain unrun and production promotion unapproved.
+
 **Cleanup correction delivered:** `c3cd5833` is under focused independent
 re-review. It handles the disappearing-residual race, then requires three fresh
 membership audits; permission/ownership/audit/survivor errors remain failed and

@@ -1,5 +1,14 @@
 # New Moth resources and Blender-authored map variety
 
+## Current owner — baseline-only query comparison AF
+
+**MOTH-BLENDER-20261004-AF is the sole heavy grant**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation **`4e4e0588`**. Both source P1s passed
+independent re-review; parent passed 65 Python and thirteen package checks. One
+fresh compare-only invocation is authorized on the .35 m / −45° synthetic fixture,
+then stop/audit/release. No retry, assisted UP, parity candidate or map walks.
+Collection results will not establish query equivalence or positive admission.
+
 **Supervisor correction `c3cd5833` is under focused re-review.** Eighteen wiring
 tests reportedly pass, including the residual-exit race and cleanup/reporting
 failures. Release requires fresh audits rather than signal results, and handlers
