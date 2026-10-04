@@ -1,0 +1,12 @@
+{
+  "tag": "4.5.2-stable",
+  "urlPrefix": "https://raw.githubusercontent.com/godotengine/godot/4.5.2-stable/",
+  "qualification": "Read-only upstream source inspection, not executed native traces",
+  "files": {
+    "core/io/json.cpp": {"sha256":"e3378e96ecfef1cc2e4f934f7fd3288ece6dea0da81e851213c687534a7dd123","lines":"368-371","fact":"Numeric token parsed into double number; r_token.value = number, including integer-looking JSON tokens."},
+    "core/variant/variant_op.cpp": {"sha256":"6b032e1bbdc801dc2f76f59416e13b77460c53e00fef02b5ff7170f411fa5d0c","lines":"1004-1005","fact":"INT/ARRAY and FLOAT/ARRAY OP_IN register OperatorEvaluatorInArrayFind<int64_t, Array> and <double, Array>."},
+    "core/variant/variant_op.h": {"sha256":"e94cabf1f9512ddb738e29f479d028d297aed721015602149c37bd42de72e808","lines":"1372-1387","fact":"Both regular and validated evaluation call Array.find with the numeric operand."},
+    "core/variant/array.cpp": {"sha256":"313a4b9615184e6b55a294d2ab8a86d1ec8bd0706e761acf15eb8cff6d14ddee","lines":"360-380,488-492","fact":"Untyped Array.find compares elements using StringLikeVariantComparator; Array.has delegates to find."},
+    "core/variant/variant.cpp": {"sha256":"d2dfd2603e9e99729d3b9cedf6cc427f20c9b63510d1bfd338cddf86eb5dec5d","lines":"3169-3180,3393-3403","fact":"hash_compare immediately returns false for different Variant types. StringLikeVariantComparator only adds STRING/STRING_NAME cross-type equivalence, not INT/FLOAT."}
+  }
+}

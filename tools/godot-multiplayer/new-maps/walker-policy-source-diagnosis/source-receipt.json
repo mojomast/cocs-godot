@@ -1,0 +1,69 @@
+{
+  "base": "4ff538fe",
+  "branch": "astra/walker-policy-source-diagnosis",
+  "scope": "SOURCE ONLY; targeted type-membership diagnosis and unwired pure diagnostic helper",
+  "grant": null,
+  "engineInvocations": 0,
+  "nativeStaging": false,
+  "GDScriptParsed": false,
+  "nativeInternalPredicateMeasured": false,
+  "acceptanceChangesApplied": false,
+  "sourcePinsChanged": false,
+  "AIObservedGateOnly": "predecessor.native_policy",
+  "AHNativeBranchInferred": false,
+  "AIManifestSha256": "e9f57119b10ac400430573e59253d78e714832743855094013ecba57797abd96",
+  "AINegativeReceiptSha256": "708fda878f694b46c0ae1968aca653a206ac7b39e9f3af61e0807154cf2922f4",
+  "sourceModel": {
+    "location": "evidence.gd:139",
+    "expression": "not up in [0,1]",
+    "firstPointer": "/records/0/profiles/1/settle/0/appliedUpCount",
+    "actualJSONNumber": 0,
+    "modeledParsedType": "FLOAT",
+    "literalElementTypes": ["INT", "INT"],
+    "pinnedCppMembershipModel": false,
+    "pythonMembership": true,
+    "recordsWithModeledMismatch": 678,
+    "hostProfilesPass": 68,
+    "hostPolicyReplayPass": true,
+    "hostAllJSONNumbersDoubleReplayPass": true,
+    "largestJSONIntegerMagnitude": 2181843386370,
+    "allJSONIntegersBelow2pow53": true,
+    "qualification": "Concrete source semantic discrepancy; predicts a failing invariant but does not trace native first rejection"
+  },
+  "unchangedNativeSourceHashes": {
+    "policy.gd": "6fab2f142b3b849b3902a506a54c95d31f19a7dfecbab0202acb1896572f757f",
+    "evidence.gd": "acbab472c5042bbe5d3d996fe45e9d71f1114dd24bc8f6316ba891bbaacdb96f",
+    "driver.gd": "83e4bb4d9359066ce1a3041aa9c3e6e07284cb627d583068f849f41c60b3490e"
+  },
+  "verification": {
+    "pythonTestsPassed": 54,
+    "newTargetedTests": 5,
+    "existingAdmissionTests": 49,
+    "archivesVerifiedUnchanged": {"AI":40,"AH":42,"AG":29,"AF":24,"AE":46,"AD":45,"AB":140,"Z":253,"X":600,"U":264,"AA":141,"AC":265},
+    "productionDependenciesVerified": 15,
+    "historicalReceiptsAndPinsUnchanged": true,
+    "nativeValidityClaimFromPython": false
+  },
+  "diagnostic": {
+    "wiredIntoDriver": false,
+    "entrypoint": false,
+    "IOOrPhysicsCalls": false,
+    "scope": "Original failed policy; first independently failed negative profile; six lifecycle invariant booleans and bounded numeric Variant types/operands",
+    "firstExecutedBranchClaim": false,
+    "undeterminedFallback": true,
+    "acceptanceEffect": "none",
+    "probeWrapper": "design contract only; requires implementation review and separate explicit grant"
+  },
+  "positivePairsUnrun": 4,
+  "positiveProfilesUnrun": 8,
+  "candidateMapJourneysUnrun": 60,
+  "productionAccountingOpen": true,
+  "AIInclinedInternalCounters": null,
+  "files": {
+    "README.md": "271dbe3ffff745e97f12563aef6e42cf71f290e374e143d82ee2217174ee3d77",
+    "diagnostic.gd": "0a73ac7874798181bfa47bcb9e99509552391577f22b60fffcc60a71eb868bab",
+    "inspect_ai.py": "180646bf93fb4f58ce38792dcaaf2d9883682c6a68dc80a38c664c8a236a11c4",
+    "references.json": "4bf42687487ca9a2c971c025183cce71b61924c8ffff9ca36a841c9531ede13e",
+    "test_source.py": "3e300b42875b6e5708e1a2ae045b5eb64990b58b877fc4116a091e9b5614f130"
+  }
+}
