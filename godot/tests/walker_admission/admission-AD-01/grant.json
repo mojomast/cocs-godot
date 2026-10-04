@@ -1,0 +1,13 @@
+{
+  "grantId": "MOTH-BLENDER-20261004-AD",
+  "authorized": true,
+  "phase": "admission-controls-only-v4",
+  "allowedGroups": [
+    "inclined-landing-rejections"
+  ],
+  "expiresUnix": 1791080338.9879196,
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "sourceSha256": "7fbb6b836d9e6b2b31653e672d4811bfab596b09e6965a3aeb6bf33dac531886",
+  "autoStart": false,
+  "queued": false
+}

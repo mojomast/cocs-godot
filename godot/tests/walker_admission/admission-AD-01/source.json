@@ -1,0 +1,57 @@
+{
+  "phase": "admission-controls-only-v4",
+  "allowedGroups": [
+    "inclined-landing-rejections",
+    "positive-step-admission"
+  ],
+  "files": {
+    "res://tests/walker_admission/candidate_telemetry_v4.gd": "180f96d425a8ad9a58221c01ba2a9e6bb6d90a45a3a5c4c4b7676d3e15ea4a8c",
+    "res://tests/walker_admission/driver_v4.gd": "d9d4ea88ffa4ba8c3348c1834b3983bed276a4a484fc1c09abd27bb13d19cbc3",
+    "res://tests/walker_admission/fixtures_v4.gd": "c4c175420aaca975acfa8ee277b2088796c2f0f8279751bbc8f2939154070e04",
+    "res://tests/walker_admission/slide_telemetry.gd": "b7c04249dd44574c5c14627766983cb571542879b17c39afc458c115178b2df0",
+    "res://tests/walker_step_up/candidate_walker.gd": "9d7707e1429486e0e6343eee765e0b57383e5c08c03c0fbd7f6780771fe72698",
+    "res://tests/walker_step_up/controls_v2.gd": "90e69221eecf657c6cd158e4db5cbbe89ebfce0440be1f7f00ec230ce9e88965",
+    "res://tests/walker_step_up/driver_v2.gd": "b38fc2bb5e2946b7de7fe13cdb711ca5071ab05582312b29113af567e45fad34",
+    "res://tests/walker_step_up/response_guard.gd": "ff242f1c352755e3655666440731115911b59dc431f0ec7c37807e8c8ec281b0",
+    "res://tests/walker_step_up/sweep_proposal.gd": "b253464820a84d8de7e1cfc5abf7d3852f392e055ac6e71d42ce6a678d538d41",
+    "res://tests/new_maps/botanical_post_x/art_binding.gd": "ef44102c1c7c83e126101eda1431dab914109dc0576276f5d80ca59425db487a",
+    "res://exploration/walker.gd": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+    "res://multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
+    "res://world/session.gd": "32ff87d491dad9f47d555fa3eec701fbfbbfa47608075ebbc2796b5c291b549c",
+    "res://multiplayer_worlds/demo.gd": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748",
+    "res://tests/walker_admission/admission-AD-01/AB-source.json": "5421c7369a5bd9ed8e068e17d588190b60faea8bc081db5f817803c80d981068",
+    "res://tests/walker_admission/admission-AD-01/AB-controls-result.json": "06ddce1f675c03d6ebcb9765fdd532b989252fac56e74cf7174251a9a6b66510",
+    "res://tests/walker_admission/admission-AD-01/AB-reference-accepted-civic-r035-result.json": "14010513a88710d4386e9def3e064e297487b05e54a9142d62b37cfd7cc5fbf7"
+  },
+  "productionDependencies": {
+    "game/core.mjs": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+    "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+    "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+    "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+    "game/spatial.mjs": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
+    "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
+    "game/operator-verbs.mjs": "357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e",
+    "game/spec-effects.mjs": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
+    "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "godot/exploration/walker.gd": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+    "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
+    "godot/world/session.gd": "32ff87d491dad9f47d555fa3eec701fbfbbfa47608075ebbc2796b5c291b549c",
+    "godot/multiplayer_worlds/demo.gd": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748"
+  },
+  "abEvidenceVerified": true,
+  "abLineage": {
+    "producer": "5fb9ae68",
+    "manifestSha256": "27ef00702b95c74b54bba5d9c03030254e4e76a7875f6519ec6bfd97a976b2a6",
+    "filesVerified": 140,
+    "controlsSha256": "06ddce1f675c03d6ebcb9765fdd532b989252fac56e74cf7174251a9a6b66510",
+    "referenceSha256": "14010513a88710d4386e9def3e064e297487b05e54a9142d62b37cfd7cc5fbf7",
+    "sourceSha256": "5421c7369a5bd9ed8e068e17d588190b60faea8bc081db5f817803c80d981068",
+    "referenceRemainsFailed": true
+  },
+  "grant": null,
+  "queued": false,
+  "autoStart": false,
+  "candidateMapWalksAllowed": false
+}

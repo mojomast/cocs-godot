@@ -1,0 +1,190 @@
+{
+  "grant": "MOTH-BLENDER-20261004-AD",
+  "base": "8d5641fc",
+  "sourceToolingCommit": "2b1ff4d9",
+  "scope": "4 inclined rejection pairs passed; positive admission and map walks unrun; grant released",
+  "selfExcluded": true,
+  "fileCount": 45,
+  "files": {
+    "godot/tests/walker_admission/admission-AD-01/AB-controls-result.json": {
+      "sha256": "06ddce1f675c03d6ebcb9765fdd532b989252fac56e74cf7174251a9a6b66510",
+      "bytes": 2567797
+    },
+    "godot/tests/walker_admission/admission-AD-01/AB-reference-accepted-civic-r035-result.json": {
+      "sha256": "14010513a88710d4386e9def3e064e297487b05e54a9142d62b37cfd7cc5fbf7",
+      "bytes": 4149050
+    },
+    "godot/tests/walker_admission/admission-AD-01/AB-source.json": {
+      "sha256": "5421c7369a5bd9ed8e068e17d588190b60faea8bc081db5f817803c80d981068",
+      "bytes": 24463
+    },
+    "godot/tests/walker_admission/admission-AD-01/grant.json": {
+      "sha256": "ddbba1e5b4ce88d8c6501391fdebdc3e90a3b5febe0dda0998d1700e7020f339",
+      "bytes": 417
+    },
+    "godot/tests/walker_admission/admission-AD-01/inclined-landing-rejections-result.json": {
+      "sha256": "081b6c09d255633dfe68c849a4e4a49a9895befa082fdf6ae3cf1b852d0c5ee5",
+      "bytes": 8102049
+    },
+    "godot/tests/walker_admission/admission-AD-01/inclined-landing-rejections-supervisor.json": {
+      "sha256": "c1ba5a34beab9d24eea5bb4d8aa7149d84e23df43aac854f8a25a33ac28f2a73",
+      "bytes": 1076
+    },
+    "godot/tests/walker_admission/admission-AD-01/inclined-landing-rejections-supervisor.log": {
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "bytes": 73
+    },
+    "godot/tests/walker_admission/admission-AD-01/source.json": {
+      "sha256": "7fbb6b836d9e6b2b31653e672d4811bfab596b09e6965a3aeb6bf33dac531886",
+      "bytes": 4305
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission/prepare.py": {
+      "sha256": "780e5dc00ba569bf4a87db1bdeb1bc076cd2e78c7c7007877c6167c45a1f5261",
+      "bytes": 3602
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/README.md": {
+      "sha256": "995a113533075683cbaad362e223d1a090609f3b75cf3a1093a991783e59f036",
+      "bytes": 7249
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/analyze_ad.py": {
+      "sha256": "a634a2b75b16e0712b7e73fe81542d8f68ca7f560dccab434525ec06bb89e68f",
+      "bytes": 8023
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/AD-release.json": {
+      "sha256": "490a8643933a0c2103b7032f0e1f7550264f3a903fa4de75438916b45763954a",
+      "bytes": 826
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/baseline.json": {
+      "sha256": "66a6a19b4aeba602599fa0829c03ce2c4dcf2de60934520578ee0409a67f58fe",
+      "bytes": 457577
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/preservation.json": {
+      "sha256": "d27be09e46af25f95ff73193e626938516d44aec1b6d5afefe91d6e8327ab85d",
+      "bytes": 4940
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/game/config.mjs": {
+      "sha256": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+      "bytes": 40660
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/game/core.mjs": {
+      "sha256": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+      "bytes": 178745
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/game/data.mjs": {
+      "sha256": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+      "bytes": 12362
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/game/floor-lattice.mjs": {
+      "sha256": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+      "bytes": 13767
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/game/harness-profiles.mjs": {
+      "sha256": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
+      "bytes": 6850
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/game/movement.mjs": {
+      "sha256": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
+      "bytes": 71216
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/game/operator-verbs.mjs": {
+      "sha256": "357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e",
+      "bytes": 46629
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/game/spatial.mjs": {
+      "sha256": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
+      "bytes": 24300
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/game/spec-effects.mjs": {
+      "sha256": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
+      "bytes": 6861
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/game/terrain-bvh.mjs": {
+      "sha256": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+      "bytes": 15746
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/game/terrain.mjs": {
+      "sha256": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+      "bytes": 14481
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/godot/exploration/walker.gd": {
+      "sha256": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+      "bytes": 4222
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/godot/multiplayer_worlds/demo.gd": {
+      "sha256": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748",
+      "bytes": 11688
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/godot/multiplayer_worlds/map.gd": {
+      "sha256": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
+      "bytes": 5309
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/godot/tests/new_maps/botanical_post_x/art_binding.gd": {
+      "sha256": "ef44102c1c7c83e126101eda1431dab914109dc0576276f5d80ca59425db487a",
+      "bytes": 7559
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/godot/tests/walker_admission/candidate_telemetry_v4.gd": {
+      "sha256": "180f96d425a8ad9a58221c01ba2a9e6bb6d90a45a3a5c4c4b7676d3e15ea4a8c",
+      "bytes": 506
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/godot/tests/walker_admission/driver_v4.gd": {
+      "sha256": "d9d4ea88ffa4ba8c3348c1834b3983bed276a4a484fc1c09abd27bb13d19cbc3",
+      "bytes": 10762
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/godot/tests/walker_admission/fixtures_v4.gd": {
+      "sha256": "c4c175420aaca975acfa8ee277b2088796c2f0f8279751bbc8f2939154070e04",
+      "bytes": 2020
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/godot/tests/walker_admission/slide_telemetry.gd": {
+      "sha256": "b7c04249dd44574c5c14627766983cb571542879b17c39afc458c115178b2df0",
+      "bytes": 884
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/godot/tests/walker_step_up/candidate_walker.gd": {
+      "sha256": "9d7707e1429486e0e6343eee765e0b57383e5c08c03c0fbd7f6780771fe72698",
+      "bytes": 3023
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/godot/tests/walker_step_up/controls_v2.gd": {
+      "sha256": "90e69221eecf657c6cd158e4db5cbbe89ebfce0440be1f7f00ec230ce9e88965",
+      "bytes": 3228
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/godot/tests/walker_step_up/driver_v2.gd": {
+      "sha256": "b38fc2bb5e2946b7de7fe13cdb711ca5071ab05582312b29113af567e45fad34",
+      "bytes": 15960
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/godot/tests/walker_step_up/response_guard.gd": {
+      "sha256": "ff242f1c352755e3655666440731115911b59dc431f0ec7c37807e8c8ec281b0",
+      "bytes": 4299
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/godot/tests/walker_step_up/sweep_proposal.gd": {
+      "sha256": "b253464820a84d8de7e1cfc5abf7d3852f392e055ac6e71d42ce6a678d538d41",
+      "bytes": 17360
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-executed/godot/world/session.gd": {
+      "sha256": "32ff87d491dad9f47d555fa3eec701fbfbbfa47608075ebbc2796b5c291b549c",
+      "bytes": 49005
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-initial/candidate_telemetry_v4.gd": {
+      "sha256": "180f96d425a8ad9a58221c01ba2a9e6bb6d90a45a3a5c4c4b7676d3e15ea4a8c",
+      "bytes": 506
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-initial/driver_v4.gd": {
+      "sha256": "d9d4ea88ffa4ba8c3348c1834b3983bed276a4a484fc1c09abd27bb13d19cbc3",
+      "bytes": 10762
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-initial/fixtures_v4.gd": {
+      "sha256": "c4c175420aaca975acfa8ee277b2088796c2f0f8279751bbc8f2939154070e04",
+      "bytes": 2020
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-initial/slide_telemetry.gd": {
+      "sha256": "b7c04249dd44574c5c14627766983cb571542879b17c39afc458c115178b2df0",
+      "bytes": 884
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/source-tests.json": {
+      "sha256": "2ed426082de2ccffd05bfaf2158df7a4afea30c80426a930453c94b283b468dd",
+      "bytes": 906
+    },
+    "tools/godot-multiplayer/new-maps/walker-admission-ad/evidence/trace-analysis.json": {
+      "sha256": "ab0305873d4a9b774b9d33c0ed219450dfb4f3ea95ea416665a7880d1252a019",
+      "bytes": 10819
+    }
+  }
+}

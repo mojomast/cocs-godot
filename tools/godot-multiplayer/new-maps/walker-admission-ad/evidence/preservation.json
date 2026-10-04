@@ -1,0 +1,84 @@
+{
+  "AB": {
+    "producer": "5fb9ae68",
+    "manifestSha256": "27ef00702b95c74b54bba5d9c03030254e4e76a7875f6519ec6bfd97a976b2a6",
+    "filesVerified": 140,
+    "controlsSha256": "06ddce1f675c03d6ebcb9765fdd532b989252fac56e74cf7174251a9a6b66510",
+    "referenceSha256": "14010513a88710d4386e9def3e064e297487b05e54a9142d62b37cfd7cc5fbf7",
+    "sourceSha256": "5421c7369a5bd9ed8e068e17d588190b60faea8bc081db5f817803c80d981068",
+    "referenceRemainsFailed": true
+  },
+  "archives": {
+    "Z": {
+      "filesVerified": 253,
+      "manifestSha256": "288aaa809d4d655bd5037bec5eee7b6ea7dd8c824cb57d5382534a736cc89b38",
+      "root": "/home/mojo/.tmp-on-disk/cocs-vesper-native-z"
+    },
+    "AA": {
+      "filesVerified": 141,
+      "manifestSha256": "5e41067f590e79e54dd8b122840766630655a27595390f75b4213a9e0dc989b8",
+      "root": "/home/mojo/.tmp-on-disk/cocs-parallax-tangent-native-AA-20261003"
+    },
+    "AC": {
+      "filesVerified": 265,
+      "manifestSha256": "c55d288008626ecb8a9ec99e005b4c9db52a8f3d55a6342e539c9602f706b386",
+      "root": "/home/mojo/.tmp-on-disk/cocs-parallax-glyph-AC"
+    }
+  },
+  "frozen": {
+    "X": {
+      "root": "/home/mojo/.tmp-on-disk/cocs-botanical-source-correction",
+      "inventorySha256": "440a1291201eaa3ee55f9c0218503ac4588028bfae7fee5c46364673bf94bd78",
+      "verifiedFiles": 600,
+      "mismatches": 0
+    },
+    "U": {
+      "root": "/home/mojo/.tmp-on-disk/cocs-map-variety-botanical-astra",
+      "inventorySha256": "ce0dd0ec8a87340cc31bfcb88cdfc7b11fb5aad1ce6efd317b9bb43ec22289ef",
+      "verifiedFiles": 264,
+      "mismatches": 0
+    }
+  },
+  "original15Dependencies": {
+    "game/core.mjs": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+    "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+    "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+    "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+    "game/spatial.mjs": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
+    "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
+    "game/operator-verbs.mjs": "357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e",
+    "game/spec-effects.mjs": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
+    "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "godot/exploration/walker.gd": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+    "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
+    "godot/world/session.gd": "32ff87d491dad9f47d555fa3eec701fbfbbfa47608075ebbc2796b5c291b549c",
+    "godot/multiplayer_worlds/demo.gd": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748"
+  },
+  "onlyParentTrackedChange": [
+    "tools/godot-multiplayer/new-maps/walker-admission/prepare.py"
+  ],
+  "historicalSourceProvenanceUnchanged": {
+    "tools/godot-multiplayer/new-maps/walker-step-up/driver-v2-provenance.json": "b74c830d6b0b1c6945bbb40c132741c41684a5092e2a8eb8f0085f6cdae56adf",
+    "tools/godot-multiplayer/new-maps/walker-step-up/overhang-v3-provenance.json": "72d20139cc08a9e618087e609aeabeb59a34895c0073e13918490e0538a92417",
+    "tools/godot-multiplayer/new-maps/walker-step-up/post-response-provenance.json": "186bdff98ef2726d1da639afc803db80e9bde2af82c5804d06c6d856eb49aa62",
+    "tools/godot-multiplayer/new-maps/walker-step-up/source-provenance.json": "412a19f5dc3a70e0b74e40c78b35a0966b72e297ecb169ee551834af498d7c1b",
+    "tools/godot-multiplayer/new-maps/walker-admission/source-provenance.json": "41eebd88f0aa7699dd4a6824712e02225ee7c0c7f7075039273e2cdaded889d1"
+  },
+  "preexistingSidecarsUnchanged": 1597,
+  "newSidecars": 0,
+  "sidecarsDeleted": 0,
+  "preexistingDisplayProcesses": [
+    "2523017 2522902 Sun Sep 20 07:27:11 2026 Xvfb :99 -screen 0 1440x900x24 -nolisten tcp",
+    "2585873 2585868 Sun Sep 20 07:52:43 2026 Xvfb :99 -screen 0 1440x900x24 -nolisten tcp",
+    "3002226 3001069 Tue Sep 22 14:56:57 2026 Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix",
+    "3003879 3003347 Tue Sep 22 14:57:17 2026 Xvfb :91 -screen 0 1280x800x24 -nolisten tcp",
+    "3005999 3004479 Tue Sep 22 14:57:34 2026 Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix",
+    "3094547 3093474 Tue Sep 22 15:22:05 2026 Xvfb -displayfd 4 -screen 0 1600x1000x24 -nolisten tcp -nolisten unix",
+    "3113490 3113486 Tue Sep 22 15:27:20 2026 Xvfb :78 -screen 0 1600x1000x24 -nolisten tcp"
+  ],
+  "godotCacheExistedInitially": false,
+  "godotCacheExistsNow": false,
+  "externalFrozenTreesImported": false
+}

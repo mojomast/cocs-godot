@@ -1,0 +1,37 @@
+{
+  "runs": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/godot-multiplayer/new-maps/walker-admission",
+        "-p",
+        "test_*.py"
+      ],
+      "returnCode": 0,
+      "stdout": "",
+      "stderr": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.198s\n\nOK\n"
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/godot-multiplayer/new-maps/walker-step-up",
+        "-p",
+        "test_*.py"
+      ],
+      "returnCode": 0,
+      "stdout": "",
+      "stderr": "................................\n----------------------------------------------------------------------\nRan 32 tests in 0.165s\n\nOK\n"
+    }
+  ],
+  "scope": "Python source checks only; no engine"
+}
