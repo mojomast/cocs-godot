@@ -1,5 +1,29 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Synthetic suite P1 — incomplete and contradictory predecessors accepted
+
+Independent review withholds integration/native readiness for **`8de9d63a`**.
+All 26 supplied tests pass, but a mocked child supplying 34 repeated `no-input` /
+.35 cases, empty settling/responses and `never_executed` outcomes receives actual
+supervisor success and unlocks the inclined group. Current Python/GDScript success
+predicates omit exact case census and completed-profile evidence.
+
+The predecessor gate also accepts a correctly hash-linked receipt with exit −9,
+script-error stop reason, nonempty supervisor error and three identical audit
+timestamps when summary flags claim success/release. Phase/mode are unchecked.
+Hash linkage binds bytes but does not establish valid completion.
+
+The producer is adding matching Python/GDScript checks for exact ordered fixture/
+radius/yaw/profile identities, group-specific outcomes and recorded completion
+evidence, plus consistent predecessor phase/mode/group/hashes, exit 0, absent
+errors and three valid distinct measured empty audits. The original hash cross-link
+must remain. Regressions must exercise supervisor classification and next-group
+admission, including the reproduced duplicate/empty and contradictory cases.
+
+Reviewed AG application copies, guard/planner preservation and full-footprint goal
+remain supported, but do not close this acceptance gap. No engine grant is active;
+the source package remains unmerged and all sixty map journeys remain unrun.
+
 ## Parity synthetic-admission suite delivered for review
 
 **`8de9d63a`**, based on `5ac4dcb3`, prepares phase

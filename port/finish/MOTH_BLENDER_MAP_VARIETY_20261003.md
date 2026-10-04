@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**Synthetic admission P1:** review reproduced supervisor success and next-group
+admission for duplicated unexecuted cases, plus acceptance of contradictory
+supervisor failure/audit fields. `8de9d63a` remains unmerged and not native-ready.
+Astra is tightening exact-case/completion and predecessor validation in both
+Python and GDScript, with end-to-end mocked regressions. No heavy grant is active.
+
 **Parity synthetic suite delivered:** `8de9d63a` is under independent source
 review. It prepares separately invoked 34-pair negatives, four-pair inclined
 rejection and four-pair positive admission with same-grant predecessor proofs.

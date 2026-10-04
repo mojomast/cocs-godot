@@ -20,6 +20,10 @@ Synthetic-admission source `8de9d63a` is now under independent review, with 115
 producer tests reported passing. It prepares bounded negative/inclined/positive
 groups with strict predecessor receipts and full-footprint landing criteria.
 No new engine grant or map permission is issued.
+Review of `8de9d63a` found a blocking receipt-validation gap: duplicated empty
+profiles and contradictory predecessor supervisor failures can unlock later groups.
+Matching Python/GDScript census, completion and exit/error/audit checks are being
+corrected before further review. The synthetic package remains unmerged.
 
 **AF completed baseline-only collection and released.**
 Delivery `ad5d02b6` / `d3c17632` / `b80273a7` passed independent collection-only
