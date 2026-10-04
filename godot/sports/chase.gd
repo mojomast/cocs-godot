@@ -4,6 +4,13 @@ const CELL := 8.0
 const CLEARANCE := 0.35
 const MAX_BOXES := 4096
 const MAX_MEMBERSHIPS := 32768
+## Presentation-only speed FOV. Never feeds collision, obstruction or snapshots.
+const BASE_FOV := 70.0
+const SPEED_FOV_GAIN := 12.0
+const SPEED_FOV_FLOOR := 0.7
+const FOV_RATE := 4.0
+const BOOST_FOV_GAIN := 3.0
+const TOP_SPEED := {"puma":20.0,"hornet":36.0,"titan":13.0,"scout":30.0,"transport":17.0}
 var map_id := ""
 var boxes: Array[AABB] = []
 var cells: Dictionary = {}
@@ -17,6 +24,8 @@ var heading := 0.0
 var heading_velocity := 0.0
 var eye_velocity := Vector3.ZERO
 var target_velocity := Vector3.ZERO
+var fov := BASE_FOV
+var fov_velocity := 0.0
 var first_person := false
 
 func toggle_view() -> void:
@@ -33,6 +42,8 @@ func reset_motion() -> void:
 	eye_velocity = Vector3.ZERO
 	target_velocity = Vector3.ZERO
 	heading_velocity = 0.0
+	fov = BASE_FOV
+	fov_velocity = 0.0
 
 static func spring(current: Vector3, velocity: Vector3, desired: Vector3, dt: float, rate: float) -> Array:
 	var decay := exp(-rate * dt)
@@ -45,6 +56,15 @@ static func spring_angle(current: float, velocity: float, desired: float, dt: fl
 	var impulse := velocity + offset * rate
 	var decay := exp(-rate * dt)
 	return Vector2(wrapf(desired + (offset + impulse * dt) * decay, -PI, PI), (velocity - impulse * rate * dt) * decay)
+
+static func spring_value(current: float, velocity: float, desired: float, dt: float, rate: float) -> Vector2:
+	var offset := current - desired
+	var impulse := velocity + offset * rate
+	var decay := exp(-rate * dt)
+	return Vector2(desired + (offset + impulse * dt) * decay, (velocity - impulse * rate * dt) * decay)
+
+static func top_speed(kind: String) -> float:
+	return float(TOP_SPEED.get(kind, TOP_SPEED["puma"]))
 
 static func forward(yaw: float) -> Vector3:
 	return Vector3(sin(yaw), 0, cos(yaw))
@@ -142,6 +162,17 @@ func follow(v: Dictionary, delta: float, look_yaw: float = NAN, look_pitch: floa
 	var yaw: float = float(v.yaw)
 	var dt := clampf(delta, 0.0, 0.1)
 	var snap := not seeded or last.distance_to(p) > 8.0 or not is_finite(delta)
+	var speed := Vector2(float(v.get("vx", 0.0)), float(v.get("vz", 0.0))).length()
+	var fraction := clampf(speed / maxf(0.001, top_speed(str(v.get("kind", "puma")))), 0.0, 1.0)
+	var desired_fov := BASE_FOV + SPEED_FOV_GAIN * clampf((fraction - SPEED_FOV_FLOOR) / (1.0 - SPEED_FOV_FLOOR), 0.0, 1.0)
+	if v.get("boosting", false) == true: desired_fov += BOOST_FOV_GAIN
+	if snap or reduced:
+		fov = desired_fov
+		fov_velocity = 0.0
+	else:
+		var fov_step := spring_value(fov, fov_velocity, desired_fov, dt, FOV_RATE)
+		fov = fov_step.x
+		fov_velocity = fov_step.y
 	if snap:
 		heading = yaw
 		heading_velocity = 0.0
@@ -176,12 +207,12 @@ func follow(v: Dictionary, delta: float, look_yaw: float = NAN, look_pitch: floa
 		last = p
 		seeded = true
 		obstructed = false
-		return {"eye":eye, "target":target}
+		return {"eye":eye, "target":target, "fov":fov}
 	var distance := 10.5 if v.get("kind") == "hornet" else (11.0 if v.get("kind") == "titan" else (7.0 if v.get("kind") == "scout" else 9.0))
 	# A little more road ahead at speed, bounded so boost cannot fling the eye
 	# out of the obstruction query or turn reverse into a front-facing camera.
-	var speed := Vector2(float(v.get("vx", 0.0)), float(v.get("vz", 0.0))).length()
 	if is_finite(speed): distance += minf(speed * 0.04, 1.2)
+	if v.get("boosting", false) == true: distance += 0.6
 	var height := 5.0 if v.get("kind") != "scout" else 3.35
 	var desired := p - direction * distance + Vector3.UP * height
 	var aim := anchor + direction * 7.0
@@ -212,4 +243,4 @@ func follow(v: Dictionary, delta: float, look_yaw: float = NAN, look_pitch: floa
 		target = eye + direction * 7.0
 		target_velocity = Vector3.ZERO
 	last = p
-	return {"eye":eye,"target":target}
+	return {"eye":eye,"target":target,"fov":fov}
