@@ -1,5 +1,12 @@
 # New Moth resources and Blender-authored map variety
 
+**AA-plus-16 source contract approved and integrated as `3520bbdc`.** Parent passed
+six successor tests, five material tests and strict shipping closure. Independent
+review supports a separately granted build/reopen/native/capture attempt, preserving
+the explicit AA-relative and mesh-local proof limits. No actual successor exists.
+**AB retains sole heavy ownership** for Vesper controls/reference; Parallax awaits
+AB's verified release and a new explicit grant.
+
 ## Active grant AB — controls and unchanged reference only
 
 **MOTH-BLENDER-20261004-AB is the sole heavy grant**, Astra

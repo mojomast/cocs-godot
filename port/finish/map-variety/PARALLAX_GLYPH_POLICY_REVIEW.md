@@ -1,5 +1,38 @@
 # Parallax singular-glyph policy — source approved, production contract pending
 
+## Successor contract approved and integrated
+
+Independent review approved **`81490089`**, integrated as **`3520bbdc`**, for
+source integration and a separately authorized bounded production attempt. Parent
+passed six successor tests (180.829 s), five frozen material tests and strict
+committed-Git shipping closure: **twelve checks**. AB remains the sole heavy grant;
+no Parallax build is authorized yet.
+
+The reviewer independently confirmed the additional record spans do not alias
+other accessors or images, the reconstructed AA recipe matches both real receipts,
+and both historical AA editable exports pass the successor audit: 39 roots,
+155,553 world-space faces, zero position/normal/UV error and material equivalence.
+This does not claim a newly built or reopened master.
+
+Native source fixtures reject old AA arrays, wrong handedness and missing surfaces;
+synthetic successor arrays pass all 155,553 faces and nineteen repaired entries /
+51 occurrences. Node-scoped geometry keys are **exact**, intentionally failing
+closed rather than applying position fallback. Attribute multiset matching retains
+multiplicity; direction tolerances are unchanged and handedness has no waiver.
+Native scope is mesh-local, not imported world-transform parity.
+
+Generated stage references resolve in memory. Before is failed AA, after is the
+exact future successor, with one authority and twelve matched cameras including
+both glyph nodes. Explicit selected-art replacement and real Binder/Weather
+templates are prepared. Fourteen material sets and 39 channels remain mandatory.
+
+After a new grant: build, separate-process reopen, exact audits, isolated import/
+reimport with genuine UID/full-precision/LOD evidence, complete native basis and
+material gates, then captures/lifecycle. Failures remain evidence; no expansion
+or tolerance exception is approved. AA-relative preservation does not establish
+authored-X appearance equivalence; saltstone appearance and 4,729 nonorthogonal
+entries remain qualified. Queue/grant/artifact/master identities remain null.
+
 **Successor contract delivered:** `81490089`, based on `1c661b95`, is under
 independent source review. It pins AA+16 with exact 64/256 BIN-byte bounds (69/304
 relative to X), verifies original packed-master provenance before new recipe

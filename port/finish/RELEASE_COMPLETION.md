@@ -7,6 +7,10 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
+Parallax's reviewed AA-plus-16 contract is integrated as `3520bbdc`, with twelve
+parent source/material/shipping checks passing. It awaits AB release and a separate
+grant; no actual successor, authored-X appearance equivalence or native acceptance.
+
 **Current heavy owner: controls/reference AB**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8251b512`. Reviewed overhang/phase
 correction passed 32 source tests and strict shipping closure. Authorization covers

@@ -1,5 +1,11 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**Parallax next-production contract is approved:** `81490089` integrated as
+`3520bbdc`; parent passed twelve source/material/shipping checks. Exact node-scoped
+native geometry keys, all-face basis/material gates and fresh master provenance
+are prepared. Actual production awaits a new grant after AB release. See
+`PARALLAX_GLYPH_POLICY_REVIEW.md`; no appearance or artifact acceptance is inferred.
+
 ## AB authorized — first native controls/reference only
 
 Independent review approved `a208613b`, integrated as **`8251b512`**. Parent
