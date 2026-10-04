@@ -1,0 +1,1069 @@
+{
+  "utc": "2026-10-04T06:12:51.463195+00:00",
+  "group": "negative-controls",
+  "sourceSha256": "59b3d7fefd040fc006f6c8d2067ae35f56d583d2a603a14534d726b5b6cf088d",
+  "grantSha256": "3750e6dba14af411547f9880343bb72813ea5b35275d7e4db4c7737866e561f5",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "nativeSha256": "708fda878f694b46c0ae1968aca653a206ac7b39e9f3af61e0807154cf2922f4",
+  "supervisorSha256": "e516f4d8d7da3f1c816b7c345fa2a64c1930943005fa367dbaffd27a8469c082",
+  "logSha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+  "nativeStrictReplay": true,
+  "supervisorStrictReplay": true,
+  "logErrors": [],
+  "banner": [
+    "Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org",
+    ""
+  ],
+  "passed": true,
+  "records": [
+    {
+      "caseIndex": 0,
+      "spec": {
+        "id": "ceiling-up",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "up_blocked_or_lateral_recovery"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "up_blocked_or_lateral_recovery"
+        }
+      ]
+    },
+    {
+      "caseIndex": 1,
+      "spec": {
+        "id": "ceiling-up",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "up_blocked_or_lateral_recovery"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "up_blocked_or_lateral_recovery"
+        }
+      ]
+    },
+    {
+      "caseIndex": 2,
+      "spec": {
+        "id": "overhang-forward",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "raised_path_blocked"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "raised_path_blocked"
+        }
+      ]
+    },
+    {
+      "caseIndex": 3,
+      "spec": {
+        "id": "overhang-forward",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "raised_path_blocked"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "raised_path_blocked"
+        }
+      ]
+    },
+    {
+      "caseIndex": 4,
+      "spec": {
+        "id": "height-025",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_low_riser_band"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_low_riser_band"
+        }
+      ]
+    },
+    {
+      "caseIndex": 5,
+      "spec": {
+        "id": "height-025",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_low_riser_band"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_low_riser_band"
+        }
+      ]
+    },
+    {
+      "caseIndex": 6,
+      "spec": {
+        "id": "height-030",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_low_riser_band"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_low_riser_band"
+        }
+      ]
+    },
+    {
+      "caseIndex": 7,
+      "spec": {
+        "id": "height-030",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_low_riser_band"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_low_riser_band"
+        }
+      ]
+    },
+    {
+      "caseIndex": 8,
+      "spec": {
+        "id": "height-031",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_low_riser_band"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_low_riser_band"
+        }
+      ]
+    },
+    {
+      "caseIndex": 9,
+      "spec": {
+        "id": "height-031",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_low_riser_band"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_low_riser_band"
+        }
+      ]
+    },
+    {
+      "caseIndex": 10,
+      "spec": {
+        "id": "height-guard",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_low_riser_band"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_low_riser_band"
+        }
+      ]
+    },
+    {
+      "caseIndex": 11,
+      "spec": {
+        "id": "height-guard",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_low_riser_band"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_low_riser_band"
+        }
+      ]
+    },
+    {
+      "caseIndex": 12,
+      "spec": {
+        "id": "narrow-width",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "unsupported_or_narrow_landing"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "unsupported_or_narrow_landing"
+        }
+      ]
+    },
+    {
+      "caseIndex": 13,
+      "spec": {
+        "id": "narrow-width",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "unsupported_or_narrow_landing"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "unsupported_or_narrow_landing"
+        }
+      ]
+    },
+    {
+      "caseIndex": 14,
+      "spec": {
+        "id": "narrow-depth",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "unsupported_or_narrow_landing"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "unsupported_or_narrow_landing"
+        }
+      ]
+    },
+    {
+      "caseIndex": 15,
+      "spec": {
+        "id": "narrow-depth",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "unsupported_or_narrow_landing"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "unsupported_or_narrow_landing"
+        }
+      ]
+    },
+    {
+      "caseIndex": 16,
+      "spec": {
+        "id": "hole",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_continuous_flat_landing"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_continuous_flat_landing"
+        }
+      ]
+    },
+    {
+      "caseIndex": 17,
+      "spec": {
+        "id": "hole",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_continuous_flat_landing"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_continuous_flat_landing"
+        }
+      ]
+    },
+    {
+      "caseIndex": 18,
+      "spec": {
+        "id": "pit",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_bounded_riser"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_bounded_riser"
+        }
+      ]
+    },
+    {
+      "caseIndex": 19,
+      "spec": {
+        "id": "pit",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_bounded_riser"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_bounded_riser"
+        }
+      ]
+    },
+    {
+      "caseIndex": 20,
+      "spec": {
+        "id": "lateral",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "lateral_wall_or_corner"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "lateral_wall_or_corner"
+        }
+      ]
+    },
+    {
+      "caseIndex": 21,
+      "spec": {
+        "id": "lateral",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "lateral_wall_or_corner"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "lateral_wall_or_corner"
+        }
+      ]
+    },
+    {
+      "caseIndex": 22,
+      "spec": {
+        "id": "no-input",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_input"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_input"
+        }
+      ]
+    },
+    {
+      "caseIndex": 23,
+      "spec": {
+        "id": "no-input",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_input"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "no_input"
+        }
+      ]
+    },
+    {
+      "caseIndex": 24,
+      "spec": {
+        "id": "airborne",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 1,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_stationary_grounded_intent"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 1,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_stationary_grounded_intent"
+        }
+      ]
+    },
+    {
+      "caseIndex": 25,
+      "spec": {
+        "id": "airborne",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 1,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_stationary_grounded_intent"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 1,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_stationary_grounded_intent"
+        }
+      ]
+    },
+    {
+      "caseIndex": 26,
+      "spec": {
+        "id": "jumping",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 2,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_stationary_grounded_intent"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 2,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_stationary_grounded_intent"
+        }
+      ]
+    },
+    {
+      "caseIndex": 27,
+      "spec": {
+        "id": "jumping",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 2,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_stationary_grounded_intent"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 2,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "not_stationary_grounded_intent"
+        }
+      ]
+    },
+    {
+      "caseIndex": 28,
+      "spec": {
+        "id": "tilted-body",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "non_yaw_rotation"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "non_yaw_rotation"
+        }
+      ]
+    },
+    {
+      "caseIndex": 29,
+      "spec": {
+        "id": "tilted-body",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "non_yaw_rotation"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "non_yaw_rotation"
+        }
+      ]
+    },
+    {
+      "caseIndex": 30,
+      "spec": {
+        "id": "transformed-parent",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "transformed_parent"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "transformed_parent"
+        }
+      ]
+    },
+    {
+      "caseIndex": 31,
+      "spec": {
+        "id": "transformed-parent",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "transformed_parent"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "transformed_parent"
+        }
+      ]
+    },
+    {
+      "caseIndex": 32,
+      "spec": {
+        "id": "moving-floor",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "moving_platform"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "moving_platform"
+        }
+      ]
+    },
+    {
+      "caseIndex": 33,
+      "spec": {
+        "id": "moving-floor",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "moving_platform"
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "frames": 1,
+          "applied": 0,
+          "verified": 0,
+          "finalReason": "moving_platform"
+        }
+      ]
+    }
+  ],
+  "nativeCounters": {
+    "attemptedPairs": 34,
+    "attemptedProfiles": 68,
+    "completedPairs": 34,
+    "completedProfiles": 68,
+    "failedPairs": 0,
+    "failedProfiles": 0,
+    "interruptedPairs": 0,
+    "interruptedProfiles": 0,
+    "passedPairs": 34,
+    "unrunPairs": 0,
+    "unrunProfiles": 0
+  },
+  "notes": "Strict predicate replay only; owner must inspect raw records and save inspection notes before any next invocation.",
+  "nextDependencyReplay": {
+    "phase": "parity-admission-synthetic-v1",
+    "group": "inclined-landing-rejections",
+    "sourceSha256": "59b3d7fefd040fc006f6c8d2067ae35f56d583d2a603a14534d726b5b6cf088d",
+    "grantSha256": "3750e6dba14af411547f9880343bb72813ea5b35275d7e4db4c7737866e561f5",
+    "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+    "predecessors": {
+      "negative-controls": {
+        "resultSha256": "708fda878f694b46c0ae1968aca653a206ac7b39e9f3af61e0807154cf2922f4",
+        "supervisorSha256": "e516f4d8d7da3f1c816b7c345fa2a64c1930943005fa367dbaffd27a8469c082"
+      }
+    }
+  },
+  "admissionFailureLines": [],
+  "admissionDiagnostics": []
+}

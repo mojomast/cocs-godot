@@ -1,0 +1,40 @@
+{
+  "phase": "parity-admission-synthetic-v1",
+  "mode": "synthetic-controls",
+  "group": "inclined-landing-rejections",
+  "sourceSha256": "59b3d7fefd040fc006f6c8d2067ae35f56d583d2a603a14534d726b5b6cf088d",
+  "grantSha256": "3750e6dba14af411547f9880343bb72813ea5b35275d7e4db4c7737866e561f5",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "dependenciesSha256": "f8f72a8291c6914a1e5ec0bdd42a7e484ab9eb9fa3fe62bd62df666db5d0d8c8",
+  "argv": [
+    "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--single-threaded-scene",
+    "--path",
+    "/home/mojo/.tmp-on-disk/cocs-walker-parity-admission-ai/godot/tests/walker_parity_admission/parity-admission-ai-01",
+    "--script",
+    "res://tests/walker_parity_admission/driver.gd",
+    "--",
+    "--group=inclined-landing-rejections",
+    "--mode=synthetic-controls",
+    "--grant-id=MOTH-BLENDER-20261004-AI",
+    "--grant-sha256=3750e6dba14af411547f9880343bb72813ea5b35275d7e4db4c7737866e561f5",
+    "--dependencies-sha256=f8f72a8291c6914a1e5ec0bdd42a7e484ab9eb9fa3fe62bd62df666db5d0d8c8"
+  ],
+  "lockAcquiredUnix": 1791094442.2169175,
+  "timeoutSeconds": 180,
+  "autoRetry": false,
+  "queued": false,
+  "releaseAudits": [],
+  "processGroupTrace": [],
+  "failed": true,
+  "environment": {
+    "LP_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "owned": {
+    "pid": 2961807,
+    "pgid": 2961807,
+    "startTicks": 627758618
+  }
+}

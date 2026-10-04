@@ -1,0 +1,103 @@
+{
+  "utc": "2026-10-04T06:14:55.900928+00:00",
+  "scope": "AI bounded two-group native diagnostic campaign",
+  "groups": {
+    "negative-controls": {
+      "invocations": 1,
+      "plannedPairs": 34,
+      "nativeReturnCode": 0,
+      "failed": false,
+      "releasedCleanly": true,
+      "nativeReceiptPresent": true,
+      "instrumentedCompletedPairs": 34,
+      "instrumentedCompletedProfiles": 68,
+      "internalCounters": {
+        "attemptedPairs": 34,
+        "attemptedProfiles": 68,
+        "completedPairs": 34,
+        "completedProfiles": 68,
+        "failedPairs": 0,
+        "failedProfiles": 0,
+        "interruptedPairs": 0,
+        "interruptedProfiles": 0,
+        "passedPairs": 34,
+        "unrunPairs": 0,
+        "unrunProfiles": 0
+      },
+      "physicalCallCounts": {
+        "appliedUp": 0
+      }
+    },
+    "inclined-landing-rejections": {
+      "invocations": 1,
+      "plannedPairs": 4,
+      "nativeReturnCode": 2,
+      "failed": true,
+      "releasedCleanly": true,
+      "nativeReceiptPresent": false,
+      "instrumentedCompletedPairs": 0,
+      "instrumentedCompletedProfiles": 0,
+      "internalCounters": null,
+      "physicalCallCounts": null,
+      "qualification": "Internal attempted/completed/failed/interrupted/unrun and physical calls may be unknown on partial/fatal paths. Zero instrumented completion is not internal zero."
+    },
+    "positive-step-admission": {
+      "invocations": 0,
+      "plannedPairs": 4,
+      "attemptedPairs": 0,
+      "completedPairs": 0,
+      "passedPairs": 0,
+      "failedPairs": 0,
+      "interruptedPairs": 0,
+      "unrunPairs": 4,
+      "attemptedProfiles": 0,
+      "completedProfiles": 0,
+      "failedProfiles": 0,
+      "interruptedProfiles": 0,
+      "unrunProfiles": 8,
+      "status": "not_authorized"
+    }
+  },
+  "admissionDiagnostics": [
+    {
+      "group": "inclined-landing-rejections",
+      "verbatim": "ADMISSION_FAILURE {\"code\":\"predecessor.native_policy\",\"details\":{\"predecessor\":\"negative-controls\",\"predicate\":\"Policy.successful\"},\"exitCode\":2,\"failed\":true,\"group\":\"inclined-landing-rejections\",\"hashes\":{\"dependenciesSha256\":\"f8f72a8291c6914a1e5ec0bdd42a7e484ab9eb9fa3fe62bd62df666db5d0d8c8\",\"engineSha256\":\"5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae\",\"grantSha256\":\"3750e6dba14af411547f9880343bb72813ea5b35275d7e4db4c7737866e561f5\",\"predecessorNativeSha256\":\"708fda878f694b46c0ae1968aca653a206ac7b39e9f3af61e0807154cf2922f4\",\"predecessorSupervisorSha256\":\"e516f4d8d7da3f1c816b7c345fa2a64c1930943005fa367dbaffd27a8469c082\",\"sourceSha256\":\"59b3d7fefd040fc006f6c8d2067ae35f56d583d2a603a14534d726b5b6cf088d\"},\"mode\":\"synthetic-controls\",\"nativeCountersKnown\":false,\"phase\":\"parity-admission-synthetic-v1\",\"physicalCallCounts\":null,\"schema\":\"parity-admission-gate-failure-v1\",\"stage\":\"pre_world_admission\"}",
+      "parsed": {
+        "code": "predecessor.native_policy",
+        "details": {
+          "predecessor": "negative-controls",
+          "predicate": "Policy.successful"
+        },
+        "exitCode": 2,
+        "failed": true,
+        "group": "inclined-landing-rejections",
+        "hashes": {
+          "dependenciesSha256": "f8f72a8291c6914a1e5ec0bdd42a7e484ab9eb9fa3fe62bd62df666db5d0d8c8",
+          "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+          "grantSha256": "3750e6dba14af411547f9880343bb72813ea5b35275d7e4db4c7737866e561f5",
+          "predecessorNativeSha256": "708fda878f694b46c0ae1968aca653a206ac7b39e9f3af61e0807154cf2922f4",
+          "predecessorSupervisorSha256": "e516f4d8d7da3f1c816b7c345fa2a64c1930943005fa367dbaffd27a8469c082",
+          "sourceSha256": "59b3d7fefd040fc006f6c8d2067ae35f56d583d2a603a14534d726b5b6cf088d"
+        },
+        "mode": "synthetic-controls",
+        "nativeCountersKnown": false,
+        "phase": "parity-admission-synthetic-v1",
+        "physicalCallCounts": null,
+        "schema": "parity-admission-gate-failure-v1",
+        "stage": "pre_world_admission"
+      }
+    }
+  ],
+  "diagnosticQualification": "Code identifies driver gate only, not an internal Policy/Evidence subpredicate. Unknown native counters remain unknown.",
+  "sourceSha256": "59b3d7fefd040fc006f6c8d2067ae35f56d583d2a603a14534d726b5b6cf088d",
+  "grantSha256": "3750e6dba14af411547f9880343bb72813ea5b35275d7e4db4c7737866e561f5",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "positiveAdmission": false,
+  "nativeStepAdmission": false,
+  "productionPromotion": false,
+  "candidateMapJourneysRun": 0,
+  "productionAccountingStillOpen": true,
+  "releasedUtc": "2026-10-04T06:14:39.405496+00:00",
+  "nativeRetries": 0,
+  "nativeSourceCorrections": 0
+}

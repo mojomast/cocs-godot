@@ -1,0 +1,51 @@
+{
+  "utc": "2026-10-04T06:14:22.454949+00:00",
+  "group": "inclined-landing-rejections",
+  "sourceSha256": "59b3d7fefd040fc006f6c8d2067ae35f56d583d2a603a14534d726b5b6cf088d",
+  "grantSha256": "3750e6dba14af411547f9880343bb72813ea5b35275d7e4db4c7737866e561f5",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "nativeSha256": null,
+  "supervisorSha256": "41d4156a456d8203c59e82706c49c7c836044129652ea3bd56ffbc4d48d44a04",
+  "logSha256": "976b6e3f870f159ae492eb22a9db542cf7fbd5240a0231a69c0a4976af1b497d",
+  "nativeStrictReplay": false,
+  "supervisorStrictReplay": false,
+  "logErrors": [],
+  "banner": [
+    "Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org",
+    "",
+    "ADMISSION_FAILURE {\"code\":\"predecessor.native_policy\",\"details\":{\"predecessor\":\"negative-controls\",\"predicate\":\"Policy.successful\"},\"exitCode\":2,\"failed\":true,\"group\":\"inclined-landing-rejections\",\"hashes\":{\"dependenciesSha256\":\"f8f72a8291c6914a1e5ec0bdd42a7e484ab9eb9fa3fe62bd62df666db5d0d8c8\",\"engineSha256\":\"5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae\",\"grantSha256\":\"3750e6dba14af411547f9880343bb72813ea5b35275d7e4db4c7737866e561f5\",\"predecessorNativeSha256\":\"708fda878f694b46c0ae1968aca653a206ac7b39e9f3af61e0807154cf2922f4\",\"predecessorSupervisorSha256\":\"e516f4d8d7da3f1c816b7c345fa2a64c1930943005fa367dbaffd27a8469c082\",\"sourceSha256\":\"59b3d7fefd040fc006f6c8d2067ae35f56d583d2a603a14534d726b5b6cf088d\"},\"mode\":\"synthetic-controls\",\"nativeCountersKnown\":false,\"phase\":\"parity-admission-synthetic-v1\",\"physicalCallCounts\":null,\"schema\":\"parity-admission-gate-failure-v1\",\"stage\":\"pre_world_admission\"}"
+  ],
+  "passed": false,
+  "records": [],
+  "nativeCounters": {},
+  "notes": "Strict predicate replay only; owner must inspect raw records and save inspection notes before any next invocation.",
+  "admissionFailureLines": [
+    "ADMISSION_FAILURE {\"code\":\"predecessor.native_policy\",\"details\":{\"predecessor\":\"negative-controls\",\"predicate\":\"Policy.successful\"},\"exitCode\":2,\"failed\":true,\"group\":\"inclined-landing-rejections\",\"hashes\":{\"dependenciesSha256\":\"f8f72a8291c6914a1e5ec0bdd42a7e484ab9eb9fa3fe62bd62df666db5d0d8c8\",\"engineSha256\":\"5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae\",\"grantSha256\":\"3750e6dba14af411547f9880343bb72813ea5b35275d7e4db4c7737866e561f5\",\"predecessorNativeSha256\":\"708fda878f694b46c0ae1968aca653a206ac7b39e9f3af61e0807154cf2922f4\",\"predecessorSupervisorSha256\":\"e516f4d8d7da3f1c816b7c345fa2a64c1930943005fa367dbaffd27a8469c082\",\"sourceSha256\":\"59b3d7fefd040fc006f6c8d2067ae35f56d583d2a603a14534d726b5b6cf088d\"},\"mode\":\"synthetic-controls\",\"nativeCountersKnown\":false,\"phase\":\"parity-admission-synthetic-v1\",\"physicalCallCounts\":null,\"schema\":\"parity-admission-gate-failure-v1\",\"stage\":\"pre_world_admission\"}"
+  ],
+  "admissionDiagnostics": [
+    {
+      "code": "predecessor.native_policy",
+      "details": {
+        "predecessor": "negative-controls",
+        "predicate": "Policy.successful"
+      },
+      "exitCode": 2,
+      "failed": true,
+      "group": "inclined-landing-rejections",
+      "hashes": {
+        "dependenciesSha256": "f8f72a8291c6914a1e5ec0bdd42a7e484ab9eb9fa3fe62bd62df666db5d0d8c8",
+        "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+        "grantSha256": "3750e6dba14af411547f9880343bb72813ea5b35275d7e4db4c7737866e561f5",
+        "predecessorNativeSha256": "708fda878f694b46c0ae1968aca653a206ac7b39e9f3af61e0807154cf2922f4",
+        "predecessorSupervisorSha256": "e516f4d8d7da3f1c816b7c345fa2a64c1930943005fa367dbaffd27a8469c082",
+        "sourceSha256": "59b3d7fefd040fc006f6c8d2067ae35f56d583d2a603a14534d726b5b6cf088d"
+      },
+      "mode": "synthetic-controls",
+      "nativeCountersKnown": false,
+      "phase": "parity-admission-synthetic-v1",
+      "physicalCallCounts": null,
+      "schema": "parity-admission-gate-failure-v1",
+      "stage": "pre_world_admission"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "utc": "2026-10-04T06:13:46.194676+00:00",
+  "checkpointSha256": "23b328c4fe0a379d292526efec1f03ee3353f575aaf21c6ee54fe995e922a0cd",
+  "sourceSha256": "59b3d7fefd040fc006f6c8d2067ae35f56d583d2a603a14534d726b5b6cf088d",
+  "grantSha256": "3750e6dba14af411547f9880343bb72813ea5b35275d7e4db4c7737866e561f5",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "nativeSha256": "708fda878f694b46c0ae1968aca653a206ac7b39e9f3af61e0807154cf2922f4",
+  "supervisorSha256": "e516f4d8d7da3f1c816b7c345fa2a64c1930943005fa367dbaffd27a8469c082",
+  "passed": true,
+  "decision": "Proceed only to the separately invoked inclined group; stop after that invocation regardless of outcome. Positive never authorized.",
+  "inspection": {
+    "canonicalPairs": 34,
+    "completedProfiles": 68,
+    "settlingRecords": 1284,
+    "inputRecordsIncludingJumpLaunches": 72,
+    "candidateOrdinaryResponses": 678,
+    "appliedUp": 0,
+    "verifiedLifts": 0,
+    "maxPairedPositionDifference": 0,
+    "pairedVelocityAndGroundedExact": true,
+    "allClocksConsecutive60HzTimeScale1": true,
+    "resetCountOnePerProfile": true,
+    "mechanisms": "All17 fixtures x2 radii exact order inspected. Ceiling UP hit; overhang UP clear and forward hit, geometry frontZ~.0800000131. Height, narrow, hole, pit, lateral, input/jump/airborne/transform/platform mechanisms agree with frozen reasons at both radii. Source parameter predicates pass; no contradictory raw record observed. Radius.42 positive ordinary Y is not an assist.",
+    "log": "Official4.5.2 banner only, no errors or ADMISSION_FAILURE.",
+    "receipt": "Strict native and supervisor replay true; exact source/grant/engine/native hash linkage; return0 failedfalse errors empty; three distinct measured empty audits within lock interval; exact next-group dependency replay passed."
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "grant": "MOTH-BLENDER-20261004-AI",
+  "ownedGroups": [
+    {
+      "pid": 2961807,
+      "pgid": 2961807,
+      "startTicks": 627758618
+    },
+    {
+      "pid": 2956632,
+      "pgid": 2956632,
+      "startTicks": 627748650
+    }
+  ],
+  "releaseAudits": [
+    {
+      "utc": "2026-10-04T06:14:38.712292+00:00",
+      "measured": true,
+      "groups": [
+        {
+          "owned": {
+            "pid": 2961807,
+            "pgid": 2961807,
+            "startTicks": 627758618
+          },
+          "members": []
+        },
+        {
+          "owned": {
+            "pid": 2956632,
+            "pgid": 2956632,
+            "startTicks": 627748650
+          },
+          "members": []
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-04T06:14:38.941176+00:00",
+      "measured": true,
+      "groups": [
+        {
+          "owned": {
+            "pid": 2961807,
+            "pgid": 2961807,
+            "startTicks": 627758618
+          },
+          "members": []
+        },
+        {
+          "owned": {
+            "pid": 2956632,
+            "pgid": 2956632,
+            "startTicks": 627748650
+          },
+          "members": []
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-04T06:14:39.172620+00:00",
+      "measured": true,
+      "groups": [
+        {
+          "owned": {
+            "pid": 2961807,
+            "pgid": 2961807,
+            "startTicks": 627758618
+          },
+          "members": []
+        },
+        {
+          "owned": {
+            "pid": 2956632,
+            "pgid": 2956632,
+            "startTicks": 627748650
+          },
+          "members": []
+        }
+      ]
+    }
+  ],
+  "lock": {
+    "available": true,
+    "measuredUtc": "2026-10-04T06:14:39.405465+00:00"
+  },
+  "releasedUtc": "2026-10-04T06:14:39.405496+00:00",
+  "remainingAuthorization": false,
+  "queuedWork": false,
+  "noFurtherEngineInvocations": true
+}

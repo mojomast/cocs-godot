@@ -1,0 +1,26 @@
+{
+  "utc": "2026-10-04T06:12:11.398910+00:00",
+  "authority": "Explicit sole heavy grant MOTH-BLENDER-20261004-AI",
+  "parentBase": "8478cd8c",
+  "helperCommit": "cc2b72fd",
+  "engine": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "sourceSha256": "59b3d7fefd040fc006f6c8d2067ae35f56d583d2a603a14534d726b5b6cf088d",
+  "grantSha256": "3750e6dba14af411547f9880343bb72813ea5b35275d7e4db4c7737866e561f5",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "expiresUnix": 1791097931.1832263,
+  "allowedGroups": [
+    "negative-controls",
+    "inclined-landing-rejections"
+  ],
+  "phase": "parity-admission-synthetic-v1",
+  "mode": "synthetic-controls",
+  "maxInvocationsPerGroup": 1,
+  "negativeOwnerCheckpointRequired": true,
+  "stopAfterInclinedEvenIfPass": true,
+  "stopOnAnyFailure": true,
+  "positiveAuthorized": false,
+  "mapsAuthorized": false,
+  "noRetryOrSourceCorrection": true,
+  "queued": false,
+  "preflight": "Reviewed16-script closure plus project, host pins,15 production dependencies and AG29/AF24 lineage verified. AH42 preserved; no engine invocation before first supervised group."
+}
