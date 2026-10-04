@@ -1,0 +1,36 @@
+{
+  "status": "PASS: fresh AE inclined evidence reviewed before positive invocation",
+  "reviewUTC": "2026-10-04T01:37:06.043286+00:00",
+  "grantId": "MOTH-BLENDER-20261004-AE",
+  "grantSha256": "7bf49c2ab3ecb5e1178dbcd1b6d2414a7d19b13567642eccdefb2882bf719a93",
+  "sourceSha256": "3250c5bc6b967a63ea9ccbf62e50f2ed725b628ff75ee5dd5f7d107b1989e2f4",
+  "nativeResultSha256": "6a44b556f71feebb9a8c17bb14ebea15ce5739f309eca29ea83aed7ff0b7256b",
+  "replaySha256": "2f9ec0d27f3e74329a5b19fa128463888a4395a4a51c6dfacf2fc86018f06534",
+  "reviewedADAnalyzerSha256": "a634a2b75b16e0712b7e73fe81542d8f68ca7f560dccab434525ec06bb89e68f",
+  "adaptations": {
+    "godot/tests/walker_admission/admission-AD-01": "godot/tests/walker_admission/admission-ae-01",
+    "grant['allowedGroups']==['inclined-landing-rejections']": "grant['allowedGroups']==['inclined-landing-rejections','positive-step-admission']",
+    "evidence/trace-analysis.json": "evidence/inclined-replay.json"
+  },
+  "ABLineage": {
+    "producer": "5fb9ae68",
+    "manifestSha256": "27ef00702b95c74b54bba5d9c03030254e4e76a7875f6519ec6bfd97a976b2a6",
+    "filesVerified": 140,
+    "controlsSha256": "06ddce1f675c03d6ebcb9765fdd532b989252fac56e74cf7174251a9a6b66510",
+    "referenceSha256": "14010513a88710d4386e9def3e064e297487b05e54a9142d62b37cfd7cc5fbf7",
+    "sourceSha256": "5421c7369a5bd9ed8e068e17d588190b60faea8bc081db5f817803c80d981068",
+    "referenceRemainsFailed": true
+  },
+  "observations": [
+    "4/4 pairs; 8 completed profiles",
+    "1012 input responses and160 settling responses",
+    "960 exact no_continuous_flat_landing low-band/head-on target shape0 witnesses",
+    "All eight profiles end with120 stalls; no accepted proposal, applied lift, fault or reset",
+    "Native47-degree geometry; numeric RID/shape data; consecutive60Hz frames and timeScale1",
+    "Compared baseline/candidate positions, velocity, ground state, inputs and deltas agree exactly",
+    "Log contains only engine banner; no parser/runtime errors",
+    "Positive group absent at checkpoint"
+  ],
+  "positiveInvocationConditionSatisfied": true,
+  "mapWalksAuthorized": false
+}

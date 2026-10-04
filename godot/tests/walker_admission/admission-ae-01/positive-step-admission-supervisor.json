@@ -1,0 +1,41 @@
+{
+  "argv": [
+    "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "/home/mojo/.tmp-on-disk/cocs-walker-admission-ae/godot",
+    "--script",
+    "res://tests/walker_admission/driver_v4.gd",
+    "--",
+    "--fixture=res://tests/walker_admission/admission-ae-01/",
+    "--group=positive-step-admission",
+    "--grant-id=MOTH-BLENDER-20261004-AE",
+    "--grant-sha256=7bf49c2ab3ecb5e1178dbcd1b6d2414a7d19b13567642eccdefb2882bf719a93"
+  ],
+  "grantSha256": "7bf49c2ab3ecb5e1178dbcd1b6d2414a7d19b13567642eccdefb2882bf719a93",
+  "startUnix": 1791077849.8679972,
+  "timeoutSeconds": 180,
+  "releaseAudits": [
+    {
+      "unix": 1791077853.2882292,
+      "members": []
+    },
+    {
+      "unix": 1791077853.5118945,
+      "members": []
+    },
+    {
+      "unix": 1791077853.7332268,
+      "members": []
+    }
+  ],
+  "autoRetry": false,
+  "owned": {
+    "pid": 2017672,
+    "pgid": 2017672,
+    "startTicks": 626099383
+  },
+  "returnCode": 1,
+  "releasedCleanly": true,
+  "finishUnix": 1791077853.9548154
+}

@@ -1,0 +1,52 @@
+{
+  "grant": "MOTH-BLENDER-20261004-AE",
+  "status": "RELEASED",
+  "ownedGroups": [
+    {
+      "pid": 2011504,
+      "pgid": 2011504,
+      "startTicks": 626089179
+    },
+    {
+      "pid": 2017672,
+      "pgid": 2017672,
+      "startTicks": 626099383
+    }
+  ],
+  "emptyAudits": [
+    {
+      "utc": "2026-10-04T01:38:06.667173+00:00",
+      "groups": {
+        "2011504": [],
+        "2017672": []
+      }
+    },
+    {
+      "utc": "2026-10-04T01:38:06.909830+00:00",
+      "groups": {
+        "2011504": [],
+        "2017672": []
+      }
+    },
+    {
+      "utc": "2026-10-04T01:38:07.149985+00:00",
+      "groups": {
+        "2011504": [],
+        "2017672": []
+      }
+    }
+  ],
+  "releasedUTC": "2026-10-04T01:38:07.391307+00:00",
+  "lockAvailableUTC": "2026-10-04T01:38:07.391380+00:00",
+  "viewer": {
+    "pid": 2598700,
+    "pgid": 2598689,
+    "startTicks": 522477875
+  },
+  "importJobs": 0,
+  "nativeJobs": 2,
+  "positiveOutcome": "FAILED endpoint_differs_from_proof; stop first case",
+  "candidateMapWalksRun": 0,
+  "queuedHeavy": false,
+  "furtherEngineWork": false
+}

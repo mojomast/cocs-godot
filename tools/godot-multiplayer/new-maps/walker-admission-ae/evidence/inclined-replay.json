@@ -1,0 +1,433 @@
+{
+  "status": "native inclined rejection PASS only; no positive admission",
+  "attemptedPairs": 4,
+  "passedPairs": 4,
+  "completedProfiles": 8,
+  "failed": 0,
+  "unrunPairs": 0,
+  "inputResponses": 1012,
+  "settlingResponses": 160,
+  "qualifiedPolicyWitnesses": 960,
+  "numericSlideContactsVerified": 2108,
+  "maximumComparedPairError": 0,
+  "reasons": {
+    "no_bounded_riser": 52,
+    "no_continuous_flat_landing": 960
+  },
+  "profiles": [
+    {
+      "case": "0.35:-45.0",
+      "experimental": false,
+      "inputResponses": 127,
+      "settlingResponses": 20,
+      "surfaceTriangleAnglesDegrees": [
+        47.00000064928414,
+        47.000000649284154
+      ],
+      "contactNormalAnglesDegrees": [
+        51.3068948003669,
+        51.3068948003669
+      ],
+      "contactYRange": [
+        0.150000005960464,
+        0.150000005960464
+      ],
+      "firstWitness": {
+        "collider": "/root/@Node3D@300/InclinedLanding",
+        "colliderId": 123044105803,
+        "colliderShape": 0,
+        "depth": 0.0201669298112392,
+        "localShape": 0,
+        "normal": [
+          0.551900863647461,
+          0.625148773193359,
+          -0.551900863647461
+        ],
+        "point": [
+          0.0,
+          0.150000005960464,
+          0.0
+        ],
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "targetRid": 64905545777154,
+      "targetShapeIndex": 0,
+      "bodyRid": 64914135711747,
+      "capsuleRid": 64922725646338,
+      "finalPosition": [
+        0.212131947278976,
+        0.0166666638106108,
+        -0.212131947278976
+      ],
+      "stalledResponses": 120,
+      "policyWitnesses": 120
+    },
+    {
+      "case": "0.35:-45.0",
+      "experimental": true,
+      "inputResponses": 127,
+      "settlingResponses": 20,
+      "surfaceTriangleAnglesDegrees": [
+        47.00000064928414,
+        47.000000649284154
+      ],
+      "contactNormalAnglesDegrees": [
+        51.3068948003669,
+        51.3068948003669
+      ],
+      "contactYRange": [
+        0.150000005960464,
+        0.150000005960464
+      ],
+      "firstWitness": {
+        "collider": "/root/@Node3D@396/InclinedLanding",
+        "colliderId": 153209540169,
+        "colliderShape": 0,
+        "depth": 0.0201669298112392,
+        "localShape": 0,
+        "normal": [
+          0.551900863647461,
+          0.625148773193359,
+          -0.551900863647461
+        ],
+        "point": [
+          0.0,
+          0.150000005960464,
+          0.0
+        ],
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "targetRid": 104372000260098,
+      "targetShapeIndex": 0,
+      "bodyRid": 104380590194691,
+      "capsuleRid": 104389180129281,
+      "finalPosition": [
+        0.212131947278976,
+        0.0166666638106108,
+        -0.212131947278976
+      ],
+      "stalledResponses": 120,
+      "policyWitnesses": 120
+    },
+    {
+      "case": "0.35:45.0",
+      "experimental": false,
+      "inputResponses": 127,
+      "settlingResponses": 20,
+      "surfaceTriangleAnglesDegrees": [
+        47.00000064928414,
+        47.000000649284154
+      ],
+      "contactNormalAnglesDegrees": [
+        51.3068948003669,
+        51.3068948003669
+      ],
+      "contactYRange": [
+        0.150000005960464,
+        0.150000005960464
+      ],
+      "firstWitness": {
+        "collider": "/root/@Node3D@400/InclinedLanding",
+        "colliderId": 169064009276,
+        "colliderShape": 0,
+        "depth": 0.0201669298112392,
+        "localShape": 0,
+        "normal": [
+          -0.551900863647461,
+          0.625148773193359,
+          -0.551900863647461
+        ],
+        "point": [
+          0.0,
+          0.150000005960464,
+          0.0
+        ],
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "targetRid": 104402065031170,
+      "targetShapeIndex": 0,
+      "bodyRid": 104410654965763,
+      "capsuleRid": 104419244900353,
+      "finalPosition": [
+        -0.212131947278976,
+        0.0166666638106108,
+        -0.212131947278976
+      ],
+      "stalledResponses": 120,
+      "policyWitnesses": 120
+    },
+    {
+      "case": "0.35:45.0",
+      "experimental": true,
+      "inputResponses": 127,
+      "settlingResponses": 20,
+      "surfaceTriangleAnglesDegrees": [
+        47.00000064928414,
+        47.000000649284154
+      ],
+      "contactNormalAnglesDegrees": [
+        51.3068948003669,
+        51.3068948003669
+      ],
+      "contactYRange": [
+        0.150000005960464,
+        0.150000005960464
+      ],
+      "firstWitness": {
+        "collider": "/root/@Node3D@404/InclinedLanding",
+        "colliderId": 184918478417,
+        "colliderShape": 0,
+        "depth": 0.0201669298112392,
+        "localShape": 0,
+        "normal": [
+          -0.551900863647461,
+          0.625148773193359,
+          -0.551900863647461
+        ],
+        "point": [
+          0.0,
+          0.150000005960464,
+          0.0
+        ],
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "targetRid": 104432129802242,
+      "targetShapeIndex": 0,
+      "bodyRid": 104440719736835,
+      "capsuleRid": 104449309671424,
+      "finalPosition": [
+        -0.212131947278976,
+        0.0166666638106108,
+        -0.212131947278976
+      ],
+      "stalledResponses": 120,
+      "policyWitnesses": 120
+    },
+    {
+      "case": "0.42:-45.0",
+      "experimental": false,
+      "inputResponses": 126,
+      "settlingResponses": 20,
+      "surfaceTriangleAnglesDegrees": [
+        47.00000064928414,
+        47.000000649284154
+      ],
+      "contactNormalAnglesDegrees": [
+        46.999999220180015,
+        46.999999220180015
+      ],
+      "contactYRange": [
+        0.152396738529205,
+        0.152396738529205
+      ],
+      "firstWitness": {
+        "collider": "/root/@Node3D@408/InclinedLanding",
+        "colliderId": 200772947517,
+        "colliderShape": 0,
+        "depth": 0.0202030297368765,
+        "localShape": 0,
+        "normal": [
+          0.517145156860352,
+          0.681998372077942,
+          -0.517145156860352
+        ],
+        "point": [
+          -0.0015803836286068,
+          0.152396738529205,
+          0.0015803836286068
+        ],
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "targetRid": 104462194573314,
+      "targetShapeIndex": 0,
+      "bodyRid": 104470784507907,
+      "capsuleRid": 104479374442496,
+      "finalPosition": [
+        0.282842636108398,
+        0.0166666638106108,
+        -0.282842636108398
+      ],
+      "stalledResponses": 120,
+      "policyWitnesses": 120
+    },
+    {
+      "case": "0.42:-45.0",
+      "experimental": true,
+      "inputResponses": 126,
+      "settlingResponses": 20,
+      "surfaceTriangleAnglesDegrees": [
+        47.00000064928414,
+        47.000000649284154
+      ],
+      "contactNormalAnglesDegrees": [
+        46.999999220180015,
+        46.999999220180015
+      ],
+      "contactYRange": [
+        0.152396738529205,
+        0.152396738529205
+      ],
+      "firstWitness": {
+        "collider": "/root/@Node3D@412/InclinedLanding",
+        "colliderId": 216509976143,
+        "colliderShape": 0,
+        "depth": 0.0202030297368765,
+        "localShape": 0,
+        "normal": [
+          0.517145156860352,
+          0.681998372077942,
+          -0.517145156860352
+        ],
+        "point": [
+          -0.0015803836286068,
+          0.152396738529205,
+          0.0015803836286068
+        ],
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "targetRid": 104492259344386,
+      "targetShapeIndex": 0,
+      "bodyRid": 104500849278979,
+      "capsuleRid": 104509439213570,
+      "finalPosition": [
+        0.282842636108398,
+        0.0166666638106108,
+        -0.282842636108398
+      ],
+      "stalledResponses": 120,
+      "policyWitnesses": 120
+    },
+    {
+      "case": "0.42:45.0",
+      "experimental": false,
+      "inputResponses": 126,
+      "settlingResponses": 20,
+      "surfaceTriangleAnglesDegrees": [
+        47.00000064928414,
+        47.000000649284154
+      ],
+      "contactNormalAnglesDegrees": [
+        46.999999220180015,
+        46.999999220180015
+      ],
+      "contactYRange": [
+        0.152396738529205,
+        0.152396738529205
+      ],
+      "firstWitness": {
+        "collider": "/root/@Node3D@416/InclinedLanding",
+        "colliderId": 232247004748,
+        "colliderShape": 0,
+        "depth": 0.0202030297368765,
+        "localShape": 0,
+        "normal": [
+          -0.517145156860352,
+          0.681998372077942,
+          -0.517145156860352
+        ],
+        "point": [
+          0.0015803836286068,
+          0.152396738529205,
+          0.0015803836286068
+        ],
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "targetRid": 104522324115458,
+      "targetShapeIndex": 0,
+      "bodyRid": 104530914050051,
+      "capsuleRid": 104539503984642,
+      "finalPosition": [
+        -0.282842636108398,
+        0.0166666638106108,
+        -0.282842636108398
+      ],
+      "stalledResponses": 120,
+      "policyWitnesses": 120
+    },
+    {
+      "case": "0.42:45.0",
+      "experimental": true,
+      "inputResponses": 126,
+      "settlingResponses": 20,
+      "surfaceTriangleAnglesDegrees": [
+        47.00000064928414,
+        47.000000649284154
+      ],
+      "contactNormalAnglesDegrees": [
+        46.999999220180015,
+        46.999999220180015
+      ],
+      "contactYRange": [
+        0.152396738529205,
+        0.152396738529205
+      ],
+      "firstWitness": {
+        "collider": "/root/@Node3D@420/InclinedLanding",
+        "colliderId": 247984033355,
+        "colliderShape": 0,
+        "depth": 0.0202030297368765,
+        "localShape": 0,
+        "normal": [
+          -0.517145156860352,
+          0.681998372077942,
+          -0.517145156860352
+        ],
+        "point": [
+          0.0015803836286068,
+          0.152396738529205,
+          0.0015803836286068
+        ],
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "targetRid": 104552388886530,
+      "targetShapeIndex": 0,
+      "bodyRid": 104560978821123,
+      "capsuleRid": 104569568755713,
+      "finalPosition": [
+        -0.282842636108398,
+        0.0166666638106108,
+        -0.282842636108398
+      ],
+      "stalledResponses": 120,
+      "policyWitnesses": 120
+    }
+  ],
+  "nativeStepAdmission": false,
+  "positiveStepGroupsRun": 0,
+  "candidateMapWalksRun": 0,
+  "rawResultSha256": "6a44b556f71feebb9a8c17bb14ebea15ce5739f309eca29ea83aed7ff0b7256b",
+  "sourceSha256": "3250c5bc6b967a63ea9ccbf62e50f2ed725b628ff75ee5dd5f7d107b1989e2f4",
+  "scope": "flat-landing policy rejection on real 47-degree geometry; down-sweep floor-angle rejection and applied-step postguard not exercised"
+}

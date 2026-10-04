@@ -1,0 +1,122 @@
+{
+  "status": "FAILED positive admission; first pair stopped, no retry",
+  "counts": {
+    "plannedPairs": 4,
+    "attemptedPairs": 1,
+    "passedPairs": 0,
+    "failedPairs": 1,
+    "unrunPairs": 3,
+    "plannedProfiles": 8,
+    "attemptedProfiles": 2,
+    "baselineCompletedBlocked": 1,
+    "candidateFailedMidProfile": 1,
+    "unrunProfiles": 6,
+    "inputResponses": 135,
+    "settlingResponses": 40,
+    "acceptedProposals": 1,
+    "upSweepsApplied": 1,
+    "fullyGuardVerifiedLifts": 0
+  },
+  "case": {
+    "goal": 1.0,
+    "id": "0.35:-45.0",
+    "incline": 0.0,
+    "maxResponses": 240,
+    "radius": 0.35,
+    "start": -1.0,
+    "yaw": -0.785398163397448
+  },
+  "nativeFailureFrame": 176,
+  "candidateInputOrdinal": 8,
+  "expectedFinal": [
+    0.141421258449554,
+    0.0877778008580208,
+    -0.141421258449554
+  ],
+  "actualFinal": [
+    0.141421258449554,
+    0.0877559557557106,
+    -0.141421258449554
+  ],
+  "actualMinusExpected": [
+    0.0,
+    -2.1845102310194542e-05,
+    0.0
+  ],
+  "endpointDistance": 2.1845102310194542e-05,
+  "epsilon": 1e-06,
+  "errorBudgetRatio": 21.845102310194545,
+  "parentSlideCount": 0,
+  "plannedHorizontalVector": [
+    -0.0707106813788414,
+    0.0,
+    0.0707106813788414
+  ],
+  "actualParentLastMotion": [
+    -0.070710688829422,
+    0.0,
+    0.070710688829422
+  ],
+  "appliedUpTravel": [
+    0.0,
+    0.1554642934352162,
+    0.0
+  ],
+  "plannedDownMotion": [
+    0.0,
+    -0.175564289093018,
+    0.0
+  ],
+  "plannedDownTravel": [
+    0.0,
+    -0.0843531563878059,
+    0.0
+  ],
+  "plannedDownSafeFraction": 0.48046875,
+  "observedParentDownTravelY": -0.0843750014901164,
+  "existingParentSnapLength": 0.300000011920929,
+  "plannedSupportRid": 104372000260098,
+  "plannedSupportShape": 0,
+  "plannedDownContactNormal": [
+    0.404189735651016,
+    0.820524990558624,
+    -0.404189735651016
+  ],
+  "actualFinalCapsuleSupportVerified": false,
+  "finalSupportCaveat": "endpoint guard returned before live final capsule-support query. Ordinary centre ray hits AdmissionBaseFloor; it does not identify finite-capsule floor support.",
+  "wholeFrameDelta": [
+    -0.070710688829422,
+    0.0710892900824547,
+    0.070710688829422
+  ],
+  "parentPositionDelta": [
+    -0.070710688829422,
+    -0.0843750014901161,
+    0.070710688829422
+  ],
+  "parentRealVelocity": [
+    -4.24264097213745,
+    -5.0625,
+    4.24264097213745
+  ],
+  "actualVelocity": [
+    -4.24264049530029,
+    0.0,
+    4.24264049530029
+  ],
+  "groundedAfter": true,
+  "numericSlideContactsVerified": 288,
+  "sourceDifferenceRelevantToDiagnosis": {
+    "plannerDownLength": 0.175564289093018,
+    "plannerMaxCollisions": 32,
+    "parentSnapLength": 0.300000011920929,
+    "parentMaxCollisionsFromPinnedSource": 4,
+    "qualification": "Different downward query lengths/contact budgets are confirmed source facts; their exact contribution to backend rounding/contact search is not isolated by this run."
+  },
+  "nativeStepAdmission": false,
+  "productionPromotion": false,
+  "candidateMapWalksRun": 0,
+  "resultSha256": "11d4252f16d3234fc121dd066a72ef9f1d8c70eb322f2cc8bfd5e3266fcd0740",
+  "sourceSha256": "3250c5bc6b967a63ea9ccbf62e50f2ed725b628ff75ee5dd5f7d107b1989e2f4",
+  "grantSha256": "7bf49c2ab3ecb5e1178dbcd1b6d2414a7d19b13567642eccdefb2882bf719a93"
+}
