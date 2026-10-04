@@ -1,5 +1,12 @@
 # New Moth resources and Blender-authored map variety
 
+**Vesper admission controls source delivered:** `a38c38e4` prepares inclined-
+landing rejection and rotated positive-step admission at both radii, with numeric
+shape telemetry and explicit map-walk exclusion. Independent source/readiness
+review is active; seven new and 32 existing tests are reported passing. No positive
+native lift is claimed and all sixty candidate map walks remain unrun. AC retains
+the sole heavy grant for Parallax production.
+
 **AB reviewed and integrated as `d7d56879` / `0a90f88d`:** negative controls PASS,
 unchanged reference EXPECTED FAIL. Parent passed 45 checks and all 140 inventory
 hashes. Independent review confirms all 34 negative pairs and exact reference

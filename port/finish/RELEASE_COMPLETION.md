@@ -20,6 +20,9 @@ five downhill passes/five uphill failures. All sixty candidate map walks remain
 unrun. AB evidence passed independent review and is integrated as `d7d56879` /
 `0a90f88d`, with 45 parent checks and all 140 hashes passing. See
 `map-variety/WALKER_AB_REVIEW.md`. Next Vesper control preparation is source-only.
+Admission-control source `a38c38e4` is delivered for independent review: two groups
+cover inclined rejection and rotated positive steps at .35/.42 m. Positive lift
+and post-response success remain unproved; all map-walk groups stay unauthorized.
 
 **Parallax AA released with full native approval blocked.**
 Delivery `b9c53e82`, integrated as failed evidence `dec159d4`, has reviewed build/reopen and native proof of the three

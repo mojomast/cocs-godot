@@ -1,5 +1,28 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Admission controls delivered for independent source review
+
+`a38c38e4` prepares phase **`admission-controls-only-v4`**, allowing only
+`inclined-landing-rejections` and `positive-step-admission`. Both groups cover
+.35/.42 m radii at ±45°, totaling eight paired cases/sixteen profiles. World-baked
+collider vertices retain identity transforms. Candidate map-walk groups remain
+forbidden; no grant or staged attempt exists.
+
+The physical 47° landing has a .15 m leading edge and must reject specifically
+as `no_continuous_flat_landing` with an actual target contact. It tests the flat-
+landing policy, not the later floor-angle branch. Positive .15 m flat treads
+require the baseline's blocked outcome, at least one candidate lift accepted by
+the unchanged response guard, correct support RID/shape and grounded arrival.
+Ordinary upward movement or arrival without a verified lift cannot pass.
+
+New driver/diagnostic adapter use numeric `get_collider_shape_index()` alongside
+separate object descriptions, preserving original candidate/guard/v2 driver and
+raw AB records. Preparation/supervisor verify AB's 140-file lineage and reject
+map-walk groups, legacy fields and continuation flags. Producer reports seven new
+plus 32 existing source tests passing and all historical preservation checks.
+GDScript remains unparsed/unrun; independent source/native-readiness review is
+active. Positive admission and production motion reporting remain unproved.
+
 **AB evidence integration complete:** independent review approves negative
 controls PASS / unchanged reference EXPECTED FAIL. Source/evidence selected as
 `d7d56879` / `0a90f88d`; parent passed 32 Python and thirteen Node checks and all
