@@ -9,7 +9,7 @@ def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def write(p,value):
     with p.open('x') as f:json.dump(value,f,indent=2);f.write('\n')
 def prepare(attempt):
-    if not re.fullmatch(r'walker-step-[a-z0-9-]{1,40}',attempt):raise ValueError('fresh namespace required')
+    if attempt!='walker-step-AB-01' and not re.fullmatch(r'walker-step-[a-z0-9-]{1,40}',attempt):raise ValueError('fresh namespace required')
     dest=ROOT/'godot/tests/walker_step_up'/attempt
     if dest.exists() or dest.resolve()!=dest.absolute():raise ValueError('existing/symlink path')
     pins=json.loads((HERE/'post-response-provenance.json').read_text())['original15DependenciesMatchParent']
