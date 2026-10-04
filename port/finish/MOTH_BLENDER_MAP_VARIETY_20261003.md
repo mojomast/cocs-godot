@@ -1,5 +1,18 @@
 # New Moth resources and Blender-authored map variety
 
+## Current checkpoint — AD released; no heavy grant active
+
+AD delivered **`2b1ff4d9` / `6359debc`**, reporting four inclined pairs/eight
+profiles passing with 960 exact target/shape rejection witnesses and no applied
+lift. Parent verified **45 files**, three empty audits/one group and lock
+availability at 01:29:27.356783Z. Release is 01:20:05.706110Z. Independent evidence
+review is active; positive admission and all sixty map journeys remain unrun.
+
+Parallax AC's gallery now shows qualified independent staged approval. All
+**56 follow-up HTTP/hash checks** pass; 24 original PNGs, 25 source reports/receipts
+and the historical gallery manifest remain unchanged. Current review:
+<http://100.125.104.79:8796/parallax-ac/current-review-status.json>.
+
 **Parallax AC qualified artifact approval integrated:** tooling `464604bb`,
 artifacts **`388812d7`**. Independent review closes the complete native basis gate
 without waivers; parent passed nineteen checks and all 265 manifest hashes. New

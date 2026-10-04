@@ -1,5 +1,24 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## AD delivered/released — native inclined rejection review pending
+
+`2b1ff4d9` / `6359debc` reports all four physical inclined pairs/eight profiles
+passing: 1,012 input plus 160 settling responses, 960 exact rejection witnesses
+and 2,108 numeric slide/contact records. Target/shape-0 low-band head-on contacts
+produce `no_continuous_flat_landing` on approximately 47° geometry. No accepted
+proposal, lift, fault or unexpected reset is reported. This is flat-landing policy
+rejection, not down-sweep angle or successful post-lift validation.
+
+Parent verified all **45 inventory hashes/sizes**, three empty audits/one group,
+no survivors and lock availability at 01:29:27.356783Z. AD released at
+01:20:05.706110Z. Independent evidence review is active; delivery remains unmerged.
+No heavy grant is active and positive admission remains unrun.
+
+A later positive invocation must satisfy the reviewed **same-grant/source**
+inclined receipt prerequisite. AD's sealed negative-only authorization cannot be
+repurposed; a new grant must preserve that dependency, including a fresh inclined
+run if required. No reference or map-walk permission follows.
+
 **AD is authorized for inclined controls only**, from `8d5641fc`, following
 verified AC release. Fresh setup/imports then one `inclined-landing-rejections`
 invocation must end with release. Positive admission, reference and map-walk

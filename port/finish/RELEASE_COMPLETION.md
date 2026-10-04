@@ -11,10 +11,11 @@ Parallax's reviewed AA-plus-16 contract is integrated as `3520bbdc`, with twelve
 parent source/material/shipping checks passing. AC is now authorized after verified
 AB release; actual successor/native evidence and authored-X appearance remain pending.
 
-**Current heavy owner: inclined admission controls AD**, Astra
-`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8d5641fc`. Fresh setup/imports and
-one inclined-rejection group are authorized, then release. Positive admission and
-all map/reference walks are excluded pending subsequent evidence review/grant.
+**No active heavy grant. AD completed and released**, delivering `2b1ff4d9` /
+`6359debc`. Four inclined pairs/eight profiles report passing; parent verified
+45 hashes, three empty audits/one group and lock availability at 01:29:27Z.
+Independent evidence review is active. Positive admission and all map/reference
+walks remain excluded pending subsequent evidence review/grant.
 AC passed qualified independent artifact review and is integrated as `464604bb` /
 `388812d7`; parent passed nineteen checks and all 265 hashes. Complete mesh-local
 basis parity passes without waivers; appearance/final-art qualifications remain.
@@ -253,7 +254,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P, Q, R, S, T, U, V, W, X, Y, Z, AA, AB and AC have released; AD owns inclined controls.**
+**P, Q, R, S, T, U, V, W, X, Y, Z, AA, AB, AC and AD have released; no heavy grant is active.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -295,10 +296,12 @@ directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
-**Active: `MOTH-BLENDER-20261004-AD`**, Astra
+**Released: `MOTH-BLENDER-20261004-AD`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8d5641fc`. Fresh imports and one
 inclined-rejection group only; no positive/reference/map groups. Stop/release after
 the result, retain unexpected failures and partial traces. Three empty audits required.
+AD released at 01:20:05.706110Z; parent verified 45 inventory files and three empty
+audits/one group. Independent review of four passing inclined pairs remains pending.
 
 **Released: `MOTH-BLENDER-20261004-AC`**, Astra
 `ses_efd30e1f6ffeLbhHTPoh266kZW`, foundation `672f3377`. Reviewed AA-plus-16
