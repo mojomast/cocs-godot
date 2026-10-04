@@ -1,5 +1,24 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Admission gate diagnosis delivered — no cause established
+
+**`f1b4c0b6`** is under independent source review. Actual AH receipts pass strict
+Python replay, including JSON-number-as-double modeling. Timestamp collapse is
+unsupported: staged GDScript already restores six fractional digits, and actual
+audit gaps of 216,686/219,609 µs remain well above binary64 spacing. These are
+offline source-model checks, not measured native predicate execution.
+
+The proposal adds twenty stable, bounded stderr admission-failure labels while
+preserving exit 2 and all acceptance predicates. It distinguishes native receipt
+policy from supervisor receipt policy and retains unknown-counter qualification.
+It writes no diagnostic file or raw path/argument data. The supervisor treats the
+marker as failure even with a contradictory mocked exit-0/pass summary.
+
+Producer reports 147 Python tests (nine new plus 138 prior), preserved AH42 and
+historical dependencies/provenance. Changed GDScript remains unparsed/unrun.
+Source integration and fresh negative-prerequisite/inclined diagnostic readiness
+await review; no native grant, speculative predicate fix or positive execution.
+
 **AH stopped-campaign archive approved and integrated through `58138256`.**
 Helpers/analysis/evidence are `58138256` / `d1aa4b63` / `dcda8780`; parent passed
 138 Python and thirteen package checks and all 42 hashes. Independent classification

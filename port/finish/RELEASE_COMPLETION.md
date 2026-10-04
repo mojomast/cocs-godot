@@ -17,6 +17,9 @@ exit 2 produced no native receipt, so internal progress/counters remain unknown.
 Positive admission was unrun. Parent passed 151 checks and all 42 hashes. Admission
 diagnosis is source-only; no retry or map continuation. Production accounting remains
 open. See `map-variety/WALKER_AH_REVIEW.md`.
+Gate-diagnostic source `f1b4c0b6` is under independent review. Offline timestamp/
+numeric checks establish no native cause; bounded stderr labels preserve acceptance
+predicates and exit 2. Producer reports 147 tests. No native grant is active.
 
 **AG delivered one guarded response and released.**
 Delivery `c30c0e13` / `139f5618` / `362803a8` passed independent one-response

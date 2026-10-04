@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**Admission diagnostics `f1b4c0b6` delivered for review.** The rejecting native
+predicate remains unknown; offline checks do not support timestamp collapse.
+Twenty labeled stderr gates are proposed without changing acceptance predicates,
+with 147 producer Python tests reported passing. No heavy grant is active; any
+fresh diagnostic must bind new source/grant and rerun its negative prerequisites.
+
 **AH independently reviewed and fully integrated through `58138256`.** Parent
 passed 151 source/package checks and all 42 hashes. Negative34 pairs PASS;
 inclined invocation FAIL with internal counts unknown; positive4 pairs UNRUN.
