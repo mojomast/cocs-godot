@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**Radius diagnosis/design `cdc81f7a` is under review.** Godot's internal .01 rad
+floor allowance is consistent with the recorded .42 classification, while .35
+remains wall-like. Backend normal-generation causality is unproved. The proposed
+eight-profile baseline-only matrix includes fixed .18/.20 rises, not yet tested.
+No runnable characterization wrapper or heavy grant exists; guard limits stay intact.
+
 **AK independently approved and integrated through `241833ef`.** Parent passed
 156 checks and all 51 hashes/manifest. Two .35 pairs qualify single-tread arrival,
 while the positive group remains failed on .42 ordinary baseline arrival. Review:

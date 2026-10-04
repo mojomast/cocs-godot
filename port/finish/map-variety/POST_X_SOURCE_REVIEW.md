@@ -1,5 +1,25 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Radius diagnosis and fixed characterization design delivered
+
+**`cdc81f7a`** is under independent review. Source/trace analysis reports .35
+target contact normals at 51.306892° with blocked wall-like responses; .42/−45°
+first target normals are 46.552733° and 46.229696°, with grounded/non-wall body
+state and ordinary upward motion on frames404–408 before arrival at418.
+Pinned Godot source uses `floor_max_angle + .01 rad` (about 46.573° here).
+This supports the classification difference, not unique normal-generation or
+recovery/snap causality. Explicit candidate/support limits are not widened.
+
+The design fixes eight baseline profiles: .35/.15 at both yaws, and .42 at
+.15/.18/.20 at both yaws, capped at 2,080 responses without adaptive tuning or
+retries. New heights meet the planner's scalar rise bound but native blocking and
+candidate feasibility remain unproved. Selection requires later independent
+characterization review and a separate assist contract/grant.
+
+Producer reports five offline tests, seven delivery-file bindings and unchanged
+historical/production dependencies. No runtime, fixture or policy source changes;
+no engine invocation, staging or grant. AK remains failed and .42/+45° unrun.
+
 **AK archive approved and integrated through `241833ef`.** Parent passed 156
 checks and all 51 hashes/manifest identity. Negative34 and inclined4 pairs pass;
 positive group fails with two individually passing .35 pairs and three unrun
