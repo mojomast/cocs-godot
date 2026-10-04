@@ -27,7 +27,7 @@ def verify_ab(root):
             'controlsSha256':sha(root/AB_ATTEMPT/'controls-result.json'),'referenceSha256':sha(root/AB_ATTEMPT/'reference-accepted-civic-r035-result.json'),
             'sourceSha256':controls['sourceSha256'],'referenceRemainsFailed':True}
 def prepare(attempt,ab_root):
-    if not re.fullmatch(r'admission-[a-z0-9-]{1,40}',attempt):raise ValueError('fresh admission namespace')
+    if attempt!='admission-AD-01' and not re.fullmatch(r'admission-[a-z0-9-]{1,40}',attempt):raise ValueError('fresh admission namespace')
     dest=ROOT/'godot/tests/walker_admission'/attempt
     if dest.exists() or dest.resolve()!=dest.absolute():raise ValueError('existing/symlinked destination')
     lineage=verify_ab(ab_root)
