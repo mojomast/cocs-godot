@@ -1,5 +1,19 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**Positive operand correction delivered:** `bb33f286` is under independent
+re-review. Producer reports both support sites bound to actual full transforms
+and live body RID, exact reviewed downward request parameters, finite ordered
+results and exclusive valid target contacts. Guard validation now checks recorded
+endpoint/forward/budget/grounding/UP operands and original postconditions.
+
+Reported verification is **138 Python tests**: 49 suite plus 89 prior, including
+isolated mutations at both query sites and failed mocked-supervisor classification.
+Actual AG one-response operands, AB34 baseline predicates and AD4 inclined witnesses
+remain compatible offline. Runtime changes are reported as serialization only;
+guard/planners/epsilon and historical receipts remain unchanged. Structural parity
+tests do not establish native equivalence. Sources remain unmerged, and the full
+remaining readiness review must pass before any heavy authorization.
+
 ## Earlier receipt attacks closed; positive operand P1 remains
 
 Independent re-review confirms `db144f7a` rejects duplicated/empty matrices and

@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**Support/guard correction `bb33f286` is under focused re-review.** The producer
+reports actual-transform/RID binding, reviewed request/result checks, mandatory
+guard-operand validation and 138 Python tests passing. Physical guard and epsilon
+remain unchanged. No native grant or integration is approved yet; all sixty map
+journeys remain unrun.
+
 **Receipt census P1 closed; positive operand validation still blocks readiness.**
 Review reproduced acceptance of support-query operands unrelated to the actual
 body and a contradictory forward-vector guard operand. Astra is correcting those

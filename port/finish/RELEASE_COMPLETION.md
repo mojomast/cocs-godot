@@ -31,6 +31,8 @@ Re-review closed the original matrix/predecessor attacks but found a remaining
 positive-evidence P1: support queries are not bound to actual final state, and
 contradictory forward guard operands can qualify. Operand validation and regressions
 are in progress; runtime guard/tolerances are unchanged and readiness withheld.
+Follow-up `bb33f286` delivers the operand correction with 138 reported Python tests;
+independent attack replay and remaining readiness review are active. No native grant.
 
 **AF completed baseline-only collection and released.**
 Delivery `ad5d02b6` / `d3c17632` / `b80273a7` passed independent collection-only
