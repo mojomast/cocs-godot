@@ -1,5 +1,12 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**AD is authorized for inclined controls only**, from `8d5641fc`, following
+verified AC release. Fresh setup/imports then one `inclined-landing-rejections`
+invocation must end with release. Positive admission, reference and map-walk
+groups are not authorized. Parent will review the actual negative evidence before
+the separate positive invocation. Exact target/shape contact, constrained rejection,
+paired native responses and failure/interrupt accounting remain mandatory.
+
 ## Admission-control source approved and integrated
 
 Independent review approved `a38c38e4`, selected as **`1fb612ef`**, for source

@@ -1,5 +1,21 @@
 # Parallax singular-glyph policy — source approved, production contract pending
 
+## Actual AC delivered; independent review pending
+
+AC `cb769d81` / `ebca944d` produced GLB
+`0903dc4f8487ff9011204a63421a398b3f647bd8b5baca4d1552aa67d00a660b` (19,006,932 bytes)
+and master `3d5e9da74264a929e01b69f45d2c19e784d81d143516624b20e9a35c6a009fc5`
+(9,327,296 bytes). Producer reports build/fresh-reopen equivalence, all 155,553
+native faces passing, nineteen repaired entries/51 occurrences, fourteen field
+sets/39 channels and zero parallel native corners, with no waiver. All 24 matched
+captures/lifecycle checks and nine targeted rays completed. These reported results
+are under independent review; no artifact or authored-X appearance approval yet.
+
+Parent verified 265 manifest files and three empty release audits/twenty groups.
+AC is released; AD now owns the sole heavy slot for inclined controls only.
+AC images are being published separately with failed-AA-before labels and retained
+bad-view qualifications. Original AA and broader basis/appearance limits remain.
+
 **Production authorized as AC:** following parent verification of AB release,
 `MOTH-BLENDER-20261004-AC` is granted to Astra `ses_efd30e1f6ffeLbhHTPoh266kZW`
 from `672f3377`. Scope is the reviewed master/reopen/native/material sequence,

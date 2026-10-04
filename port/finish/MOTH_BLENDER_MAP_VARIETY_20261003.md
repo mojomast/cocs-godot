@@ -1,5 +1,30 @@
 # New Moth resources and Blender-authored map variety
 
+## Current owner — inclined controls AD; Parallax AC delivered/released
+
+**MOTH-BLENDER-20261004-AD is the sole heavy grant**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8d5641fc`. Authorized scope is fresh
+setup/imports and **only `inclined-landing-rejections`**, then release. Positive
+admission is not authorized in AD; parent will review the negative result before
+a separate invocation/grant. All reference/candidate-map walks remain excluded.
+
+AC delivered **`cb769d81` / `ebca944d`**. Parent verified all **265 manifest files**,
+supervisor receipt hash, three empty audits/twenty groups, no current survivors and
+lock availability at 01:16:15.627262Z. AC's supervisor released at 01:01:19.200999Z;
+final release receipt is 01:01:24.904000Z. Actual art SHA:
+`0903dc4f8487ff9011204a63421a398b3f647bd8b5baca4d1552aa67d00a660b`;
+master: `3d5e9da74264a929e01b69f45d2c19e784d81d143516624b20e9a35c6a009fc5`.
+
+Producer reports complete 155,553-face native parity, zero mismatches/missing/
+ambiguity/parallel native corners, nineteen repaired entries/51 occurrences and
+fourteen material sets/39 channels passing without waivers. Build/fresh reopen
+passes with zero editable world P/N/UV error and exact BIN bounds. Twenty-four
+original captures, all variant lifecycle checks (39 instances/fourteen roles),
+six aperture rays and three grade rays pass. Images retain constrained views and
+unresolved visual concerns. Independent artifact review and gallery publication
+are active; AC remains unmerged, with authored-X appearance and broader source-
+basis/manual/hosted/weather acceptance still qualified.
+
 **V4 admission controls approved and integrated as `1fb612ef`.** Parent passed
 forty source/shipping checks. A future grant may run inclined rejection, then
 positive admission only after reviewing passing inclined evidence, then stop.
