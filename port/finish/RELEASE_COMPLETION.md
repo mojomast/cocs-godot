@@ -7,7 +7,13 @@ finishing and verifying the new candidate.
 
 ## Active work and ownership
 
-**No active heavy grant. Parallax AA released with full native approval blocked.**
+**Current heavy owner: controls/reference AB**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8251b512`. Reviewed overhang/phase
+correction passed 32 source tests and strict shipping closure. Authorization covers
+fresh setup/imports, rejection controls, then unchanged reference only. Candidate
+map walks remain excluded; expected reference uphill failures remain failed evidence.
+
+**Parallax AA released with full native approval blocked.**
 Delivery `b9c53e82`, integrated as failed evidence `dec159d4`, has reviewed build/reopen and native proof of the three
 repaired corners, but all-face tangent verification fails on wayfinding geometry.
 A fresh import with tangent generation disabled reproduces it. Captures/rays/
@@ -33,7 +39,7 @@ post-response guard/driver WIP is integrated through `deebb1da` with 24 source t
 and strict shipping closure passing. A missed-overhang rejection fixture blocks
 native readiness; it is being corrected before a controls/reference-only grant.
 Candidate walks require additional inclined-landing and rotated-success controls.
-No heavy grant is active.
+AB now owns the limited controls/reference native sequence; results remain pending.
 
 **Vesper Z released after its first failed native group.**
 Delivery `eba8b633` / `dd4fbbb8` records five downhill landing passes, five uphill
@@ -228,7 +234,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P, Q, R, S, T, U, V, W, X, Y, Z and AA have released; no heavy grant is active.**
+**P, Q, R, S, T, U, V, W, X, Y, Z and AA have released; AB owns controls/reference.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -269,6 +275,12 @@ are introduced without the user's renewed scope. The subsequent overnight
 directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
+
+**Active: `MOTH-BLENDER-20261004-AB`**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8251b512`. Fresh setup/imports,
+34 paired rejection controls, then ten unchanged-reference walks only if controls
+pass. Preserve expected failed reference and all prior evidence; no candidate
+groups. Three empty owned-group audits and explicit release required.
 
 **Released: `MOTH-BLENDER-20261003-AA`**, Sol
 `ses_efd55bb5cffeJRWNA4xZq8O6cE`, foundation `d3a4c524`. Exact three-corner

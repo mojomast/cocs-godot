@@ -1,5 +1,30 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## AB authorized — first native controls/reference only
+
+Independent review approved `a208613b`, integrated as **`8251b512`**. Parent
+passed all 32 portable tests and strict committed-Git shipping closure. Corrected
+overhang extents and continuous finite-capsule certificates reproduce; expected
+reason remains exactly `raised_path_blocked`. Actual native poses must satisfy
+the source envelope; unexpected recovery/rejection stays a failure.
+
+At **2026-10-04T00:39:54.387249Z**, parent confirmed lock availability and only
+the preserved viewer. **MOTH-BLENDER-20261004-AB** is the sole heavy grant, owned
+by Astra `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8251b512`.
+
+Authorized sequence: fresh preparation/parsing/import policy and bounded imports;
+one rejection-controls invocation; then, only with acceptable same-grant/source
+controls evidence, one unchanged accepted-civic .35 reference invocation. Stop
+there. Phase `controls-reference-only-v3` rejects candidate groups, legacy group
+fields and continuation permissions. All sixty candidate-phase journeys stay unrun.
+
+Controls comprise 34 paired comparisons. The reference's expected five downhill
+landings/five uphill stalls must retain `failed:true`, `referenceExpected:true`,
+exit 1. Unexpected outcomes stop; the expected reference result is not Vesper
+acceptance. Inclined-landing rejection and rotated positive controls remain required
+before any later candidate phase. Native results are pending; three empty owned-
+group audits and explicit AB release are required after execution.
+
 **Controls-only correction delivered:** `a208613b` is under focused source review.
 The overhang front moves from Z.12 to Z.08, preserving its other extents and exact
 required `raised_path_blocked` reason. Producer reports continuous finite-box

@@ -1,5 +1,18 @@
 # New Moth resources and Blender-authored map variety
 
+## Active grant AB — controls and unchanged reference only
+
+**MOTH-BLENDER-20261004-AB is the sole heavy grant**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation **`8251b512`**. The overhang correction
+passed independent review and parent verification (32 source tests plus strict
+shipping closure). Parent confirmed lock availability and only the preserved viewer
+at 00:39:54.387249Z. Fresh parsing/imports, rejection controls and then the unchanged
+reference are authorized, stopping on unexpected outcomes and stopping after reference.
+
+Candidate map walks are excluded by both grant and phase allowlist. Expected
+reference five uphill failures remain failed evidence; no production movement or
+Vesper acceptance follows. Parallax successor contract review remains source-only.
+
 **Vesper overhang correction `a208613b` received:** source geometry now certifies
 clear up travel and obstructed raised-forward travel at both radii, with the exact
 rejection reason preserved. Driver and supervisor explicitly permit only controls
