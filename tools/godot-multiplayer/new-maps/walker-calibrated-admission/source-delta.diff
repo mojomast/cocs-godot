@@ -1,0 +1,201 @@
+--- godot/tests/walker_parity_admission/policy.gd
++++ godot/tests/walker_calibrated_admission/policy.gd
+@@ -3,2 +3,2 @@
+-const PHASE := "parity-admission-synthetic-v1"
+-const MODE := "synthetic-controls"
++const PHASE := "parity-admission-calibrated-v1"
++const MODE := "calibrated-controls"
+@@ -25 +25 @@
+-	return hash_valid(source_hash) and hash_valid(engine_hash) and g.sourceSha256==source_hash and g.engineSha256==engine_hash
++	return engine_hash==ENGINE and hash_valid(source_hash) and hash_valid(engine_hash) and g.sourceSha256==source_hash and g.engineSha256==engine_hash
+@@ -30 +30 @@
+-	if r.get("phase")!=PHASE or r.get("mode")!=MODE or r.get("group")!=group or r.get("scope")!="synthetic-admission": return false
++	if r.get("phase")!=PHASE or r.get("mode")!=MODE or r.get("group")!=group or r.get("scope")!="calibrated-admission": return false
+@@ -54,0 +55,3 @@
++
++const ENGINE := "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae"
++const LINEAGE := {"ALManifestSha256":"bef580de4e1605446425927bf9ee3f07dfb61992bfd6bb50af48369db7f738b5","AKManifestSha256":"827dd68b00c400b7ec17f9ab0e5a2067929277c3bb22e1681d38a1d5143a5ee1","selectionSha256":"bd236a0c7daced2beef950fe56361f5ffb1c20a521b2a8d65b9c5b586415c403","role":"selection-lineage-not-admission"}
+--- godot/tests/walker_parity_admission/evidence.gd
++++ godot/tests/walker_calibrated_admission/evidence.gd
+@@ -37,0 +38,2 @@
++	if group=="positive-step-admission":
++		for spec: Dictionary in rows: spec.rise = .15 if spec.radius==.35 else .18
+@@ -50 +52 @@
+-	return along>=spec.radius+.02 and along<=3-spec.radius-.02 and absf(cos(spec.yaw)*p[0]-sin(spec.yaw)*p[2])<=2-spec.radius-.02 and flag(s.grounded,true) and absf(p[1]-.15)<=.0201
++	return along>=spec.radius+.02 and along<=3-spec.radius-.02 and absf(cos(spec.yaw)*p[0]-sin(spec.yaw)*p[2])<=2-spec.radius-.02 and flag(s.grounded,true) and absf(p[1]-spec.rise)<=.0201
+@@ -148 +150 @@
+-				if not near(getv(plan,"supportRid"),p.get("targetRid"),0) or not near(getv(plan,"supportShape"),0,0) or not near(getv(plan,"landingY"),.15): return false
++				if not near(getv(plan,"supportRid"),p.get("targetRid"),0) or not near(getv(plan,"supportShape"),0,0) or not near(getv(plan,"landingY"),spec.rise): return false
+@@ -158 +160 @@
+-			stall = stall+1 if distance(row.wholeFrameDelta,[0,0,0])<.0001 else 0
++			stall = stall+1 if distance(row.wholeFrameDelta,[0,0,0])<.0001 and (negative or inclined or experimental or baseline_target(row,p.target)) else 0
+@@ -178 +180 @@
+-		if getv(final,"bodyBefore")!=last or getv(final,"bodyAfter")!=last or not near(getv(final,"epsilon"),budget([origin(last)]),0) or not support(getv(final,"query"),p.targetRid,last.transform,params,final.epsilon,.15,"fresh-full-tread-support"): return false
++		if getv(final,"bodyBefore")!=last or getv(final,"bodyAfter")!=last or not near(getv(final,"epsilon"),budget([origin(last)]),0) or not support(getv(final,"query"),p.targetRid,last.transform,params,final.epsilon,spec.rise,"fresh-full-tread-support"): return false
+@@ -189,2 +191,3 @@
+-	var back: float = .15+3*tan(deg_to_rad(spec.incline))
+-	var points := [[-2,.15,0],[-2,back,3],[2,back,3],[2,.15,0]]
++	var rise: float = spec.get("rise",.15)
++	var back: float = rise+3*tan(deg_to_rad(spec.incline))
++	var points := [[-2,rise,0],[-2,back,3],[2,back,3],[2,rise,0]]
+@@ -197 +200 @@
+-		if near(getv(g,"rid"),p.targetRid,0) and getv(g,"name")==("InclinedLanding" if spec.incline>0 else "PositiveTread"): return true
++		if near(getv(g,"rid"),p.targetRid,0) and getv(g,"name")==("InclinedLanding" if spec.incline>0 else "PositiveTread") and (spec.incline>0 or positive_mesh(g,t.faces)): return true
+@@ -309 +312 @@
+-	var bindings := {"phase":"parity-admission-synthetic-v1","mode":"synthetic-controls","group":group,"sourceSha256":source,"grantSha256":grant,"engineSha256":engine,"nativeReceiptSha256":native_hash,"scope":"synthetic-admission"}
++	var bindings := {"phase":"parity-admission-calibrated-v1","mode":"calibrated-controls","group":group,"sourceSha256":source,"grantSha256":grant,"engineSha256":engine,"nativeReceiptSha256":native_hash,"scope":"calibrated-admission"}
+@@ -339,0 +343,17 @@
++
++static func positive_mesh(g: Dictionary,faces: Array) -> bool:
++	var identity := {"origin":[0,0,0],"basis":[[1,0,0],[0,1,0],[0,0,1]]}
++	var data: Variant = g.get("shapeData")
++	if not same_transform(g.get("bodyTransform"),identity,1e-6) or not same_transform(g.get("offset"),identity,1e-6) or not zero(g.get("linearVelocity")) or not data is Dictionary or not flag(data.get("backface_collision"),true) or not data.get("faces") is Array or data.faces.size()!=6: return false
++	for i in 6:
++		if distance(data.faces[i],faces[i])>1e-6: return false
++	return true
++static func baseline_target(row: Dictionary,t: Dictionary) -> bool:
++	if not flag(getv(row.after,"grounded"),true): return false
++	for c: Variant in row.slides:
++		var n: Variant = getv(c,"normal");var point: Variant = getv(c,"point")
++		if not near(getv(c,"colliderRid"),t.rid,0) or not near(getv(c,"colliderShapeIndex"),0,0) or not vec(n) or not vec(point) or point[1]<=0 or point[1]>=.25: continue
++		if absf(distance(n,[0,0,0])-1)>=.0001 or absf(point[1]-t.faces[0][1])>1e-6: continue
++		var flat := sqrt(n[0]*n[0]+n[2]*n[2])
++		if flat>0 and -(n[0]*t.direction[0]+n[2]*t.direction[2])/flat>=.98: return true
++	return false
+--- godot/tests/walker_parity_admission/observe.gd
++++ godot/tests/walker_calibrated_admission/observe.gd
+@@ -33 +33 @@
+-	if not result.footprintInside or not body.is_on_floor() or absf(body.global_position.y-.15)>body.safe_margin+.0001: result.reason = "arrival_pose";return result
++	if not result.footprintInside or not body.is_on_floor() or absf(body.global_position.y-float(fixture.faces[0].y))>body.safe_margin+.0001: result.reason = "arrival_pose";return result
+--- godot/tests/walker_parity_admission/driver.gd
++++ godot/tests/walker_calibrated_admission/driver.gd
+@@ -3 +3 @@
+-const Candidate = preload("candidate.gd")
++const Candidate = preload("res://tests/walker_parity_admission/candidate.gd")
+@@ -9 +9 @@
+-const Fixtures = preload("res://tests/walker_admission/fixtures_v4.gd")
++const Fixtures = preload("fixtures.gd")
+@@ -22 +22 @@
+-var receipt := {"phase":Policy.PHASE,"mode":Policy.MODE,"scope":"synthetic-admission","failed":true,"passed":false,
++var receipt := {"phase":Policy.PHASE,"mode":Policy.MODE,"scope":"calibrated-admission","failed":true,"passed":false,
+@@ -115,0 +116,3 @@
++	if not config.get("positiveCases") is Array or config.positiveCases.size()!=4 or config.get("lineage")!=Policy.LINEAGE: fail_admission("source.calibrated_selection");return
++	for i in 4:
++		if not Policy.Evidence.spec_equal(config.positiveCases[i],Policy.Evidence.canonical(Policy.GROUPS[2])[i]): fail_admission("source.calibrated_census");return
+@@ -278 +281 @@
+-				active_profile.stallCount = int(active_profile.stallCount)+1 if r.wholeFrameDelta.length()<.0001 else 0
++				active_profile.stallCount = int(active_profile.stallCount)+1 if r.wholeFrameDelta.length()<.0001 and (experimental or spec.incline>0 or Policy.Evidence.baseline_target(Observe.encode(r),Observe.encode(active_profile.target))) else 0
+@@ -280 +283 @@
+-				if spec.incline==0 and ordinary and Observe.footprint(body,fixture) and body.is_on_floor() and absf(body.global_position.y-.15)<=body.safe_margin+.0001: active_profile.ordinaryLandingStreak += 1
++				if spec.incline==0 and ordinary and Observe.footprint(body,fixture) and body.is_on_floor() and absf(body.global_position.y-float(fixture.faces[0].y))<=body.safe_margin+.0001: active_profile.ordinaryLandingStreak += 1
+--- tools/godot-multiplayer/new-maps/walker-parity-admission/policy.py
++++ tools/godot-multiplayer/new-maps/walker-calibrated-admission/policy.py
+@@ -3,2 +3,2 @@
+-from evidence import campaign
+-PHASE='parity-admission-synthetic-v1';MODE='synthetic-controls'
++from .evidence import campaign
++PHASE='parity-admission-calibrated-v1';MODE='calibrated-controls'
+@@ -7,0 +8 @@
++ENGINE="5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae"
+@@ -8,0 +10 @@
++    if engine_hash!=ENGINE:raise ValueError("pinned engine")
+@@ -21 +23 @@
+-    if not isinstance(r,dict) or r.get('phase')!=PHASE or r.get('mode')!=MODE or r.get('group')!=group or r.get('scope')!='synthetic-admission':return False
++    if not isinstance(r,dict) or r.get('phase')!=PHASE or r.get('mode')!=MODE or r.get('group')!=group or r.get('scope')!='calibrated-admission':return False
+--- tools/godot-multiplayer/new-maps/walker-parity-admission/evidence.py
++++ tools/godot-multiplayer/new-maps/walker-calibrated-admission/evidence.py
+@@ -19 +19 @@
+-    return [{'id':str(r)+':'+str(deg),'radius':r,'yaw':math.radians(deg),'incline':47.0 if group=='inclined-landing-rejections' else 0.0,'start':-1.0,'goal':1.0,'maxResponses':240} for r in [.35,.42] for deg in [-45.0,45.0]]
++    return [{**({'rise':.15 if r==.35 else .18} if group=='positive-step-admission' else {}),'id':str(r)+':'+str(deg),'radius':r,'yaw':math.radians(deg),'incline':47.0 if group=='inclined-landing-rejections' else 0.0,'start':-1.0,'goal':1.0,'maxResponses':240} for r in [.35,.42] for deg in [-45.0,45.0]]
+@@ -25 +25 @@
+-    return spec['radius']+.02<=along<=3-spec['radius']-.02 and abs(math.cos(yaw)*x-math.sin(yaw)*z)<=2-spec['radius']-.02 and s['grounded'] is True and abs(y-.15)<=.0201
++    return spec['radius']+.02<=along<=3-spec['radius']-.02 and abs(math.cos(yaw)*x-math.sin(yaw)*z)<=2-spec['radius']-.02 and s['grounded'] is True and abs(y-spec['rise'])<=.0201
+@@ -71 +71,2 @@
+-    points=[[-2,.15,0],[-2,.15+3*math.tan(math.radians(spec['incline'])),3],[2,.15+3*math.tan(math.radians(spec['incline'])),3],[2,.15,0]]
++    rise=spec.get('rise',.15)
++    points=[[-2,rise,0],[-2,rise+3*math.tan(math.radians(spec['incline'])),3],[2,rise+3*math.tan(math.radians(spec['incline'])),3],[2,rise,0]]
+@@ -74 +75 @@
+-    return any(near(g.get('rid'),p['targetRid'],0) and g.get('name')==('InclinedLanding' if spec['incline'] else 'PositiveTread') for g in p['geometry'])
++    return any(near(g.get('rid'),p['targetRid'],0) and g.get('name')==('InclinedLanding' if spec['incline'] else 'PositiveTread') and (spec['incline']!=0 or positive_mesh(g,faces)) for g in p['geometry'])
+@@ -169 +170 @@
+-            if life.get('returned') is not True or not near(life.get('frame'),row['frame'],0) or not integer(up) or up not in (0,1) or not near(parent,1,0) or type(accepted) is not bool:return False
++            if life.get('returned') is not True or not near(life.get('frame'),row['frame'],0) or not integer(up) or (up != 0 and up != 1) or not near(parent,1,0) or type(accepted) is not bool:return False
+@@ -178 +179 @@
+-                if not near(plan.get('supportRid'),p['targetRid'],0) or not near(plan.get('supportShape'),0,0) or not near(plan.get('landingY'),.15):return False
++                if not near(plan.get('supportRid'),p['targetRid'],0) or not near(plan.get('supportShape'),0,0) or not near(plan.get('landingY'),spec['rise']):return False
+@@ -187 +188 @@
+-            stall=stall+1 if distance(row['wholeFrameDelta'],[0,0,0])<.0001 else 0
++            stall=stall+1 if distance(row['wholeFrameDelta'],[0,0,0])<.0001 and (negative or inclined or experimental or baseline_target(row,p['target'])) else 0
+@@ -207 +208 @@
+-        if final.get('bodyBefore')!=last or final.get('bodyAfter')!=last or not near(final.get('epsilon'),budget([origin(last)]),0) or not support(final.get('query'),p['targetRid'],last['transform'],params,final['epsilon'],.15,'fresh-full-tread-support'):return False
++        if final.get('bodyBefore')!=last or final.get('bodyAfter')!=last or not near(final.get('epsilon'),budget([origin(last)]),0) or not support(final.get('query'),p['targetRid'],last['transform'],params,final['epsilon'],spec['rise'],'fresh-full-tread-support'):return False
+@@ -231 +232 @@
+-        for k,v in [('phase','parity-admission-synthetic-v1'),('mode','synthetic-controls'),('group',group),('sourceSha256',source),('grantSha256',grant),('engineSha256',engine),('nativeReceiptSha256',native_hash)]:
++        for k,v in [('phase','parity-admission-calibrated-v1'),('mode','calibrated-controls'),('group',group),('sourceSha256',source),('grantSha256',grant),('engineSha256',engine),('nativeReceiptSha256',native_hash)]:
+@@ -235 +236 @@
+-        if not near(s.get('returnCode'),0,0) or s.get('scope')!='synthetic-admission':return False
++        if not near(s.get('returnCode'),0,0) or s.get('scope')!='calibrated-admission':return False
+@@ -255,0 +257,16 @@
++
++def positive_mesh(g,faces):
++    identity={'origin':[0,0,0],'basis':[[1,0,0],[0,1,0],[0,0,1]]}
++    data=g.get('shapeData')
++    return (same_transform(g.get('bodyTransform'),identity,1e-6) and same_transform(g.get('offset'),identity,1e-6)
++        and zero(g.get('linearVelocity')) and isinstance(data,dict) and data.get('backface_collision') is True
++        and isinstance(data.get('faces'),list) and len(data['faces'])==6 and all(distance(a,b)<=1e-6 for a,b in zip(data['faces'],faces)))
++def baseline_target(row,t):
++    if row['after'].get('grounded') is not True:return False
++    for c in row['slides']:
++        n=c.get('normal');point=c.get('point')
++        if not near(c.get('colliderRid'),t['rid'],0) or not near(c.get('colliderShapeIndex'),0,0) or not vec(n) or not vec(point) or not 0<point[1]<.25:continue
++        if abs(distance(n,[0,0,0])-1)>=.0001 or abs(point[1]-t['faces'][0][1])>1e-6:continue
++        flat=math.hypot(n[0],n[2])
++        if flat>0 and -(n[0]*t['direction'][0]+n[2]*t['direction'][2])/flat>=.98:return True
++    return False
+--- tools/godot-multiplayer/new-maps/walker-parity-admission/receipt_fixtures.py
++++ tools/godot-multiplayer/new-maps/walker-calibrated-admission/receipt_fixtures.py
+@@ -5 +5 @@
+-from evidence import canonical,IDS,REASONS
++from .evidence import canonical,IDS,REASONS
+@@ -10 +10 @@
+-def support_fixture(after,name):
++def support_fixture(after,name,rise=.15):
+@@ -16 +16 @@
+-    q['contacts']=[{'colliderRid':100,'colliderId':101,'colliderShape':0,'localShape':0,'point':[pos[0],.15,pos[2]],'normal':[0,1,0],'velocity':[0,0,0],'depth':0.}]
++    q['contacts']=[{'colliderRid':100,'colliderId':101,'colliderShape':0,'localShape':0,'point':[pos[0],rise,pos[2]],'normal':[0,1,0],'velocity':[0,0,0],'depth':0.}]
+@@ -22 +22 @@
+-    r={'phase':'parity-admission-synthetic-v1','mode':'synthetic-controls','group':group,'scope':'synthetic-admission','sourceSha256':source,'grantSha256':grant,'engineSha256':engine,'failed':False,'passed':True,'nativeStepAdmission':False,'productionPromotion':False,'positiveAdmission':not negative and not inclined,'attemptedPairs':n,'completedPairs':n,'passedPairs':n,'failedPairs':0,'interruptedPairs':0,'unrunPairs':0,'attemptedProfiles':2*n,'completedProfiles':2*n,'failedProfiles':0,'interruptedProfiles':0,'unrunProfiles':0,'candidateMapWalks':0,'records':[]}
++    r={'phase':'parity-admission-calibrated-v1','mode':'calibrated-controls','group':group,'scope':'calibrated-admission','sourceSha256':source,'grantSha256':grant,'engineSha256':engine,'failed':False,'passed':True,'nativeStepAdmission':False,'productionPromotion':False,'positiveAdmission':not negative and not inclined,'attemptedPairs':n,'completedPairs':n,'passedPairs':n,'failedPairs':0,'interruptedPairs':0,'unrunPairs':0,'attemptedProfiles':2*n,'completedProfiles':2*n,'failedProfiles':0,'interruptedProfiles':0,'unrunProfiles':0,'candidateMapWalks':0,'records':[]}
+@@ -31 +31 @@
+-            pair['profiles'].append(p);yaw=spec.get('yaw',0);direction=[math.sin(yaw),0,math.cos(yaw)]
++            pair['profiles'].append(p);rise=spec.get('rise',.15);yaw=spec.get('yaw',0);direction=[math.sin(yaw),0,math.cos(yaw)]
+@@ -33 +33 @@
+-                back=.15+3*math.tan(math.radians(spec['incline']));vertices=[[-2,.15,0],[-2,back,3],[2,back,3],[2,.15,0]]
++                back=rise+3*math.tan(math.radians(spec['incline']));vertices=[[-2,rise,0],[-2,back,3],[2,back,3],[2,rise,0]]
+@@ -36 +36 @@
+-                p['geometry']=[{'name':'InclinedLanding' if inclined else 'PositiveTread','rid':100}]
++                p['geometry']=[{'name':'InclinedLanding' if inclined else 'PositiveTread','rid':100,'bodyTransform':state([0,0,0])['transform'],'offset':state([0,0,0])['transform'],'linearVelocity':[0,0,0],'shapeData':{'backface_collision':True,'faces':copy.deepcopy(faces)}}]
+@@ -45 +45 @@
+-                if positive and active:pos=[direction[0]*(.1+.1*tick),.15,direction[2]*(.1+.1*tick)]
++                if positive and active:pos=[direction[0]*(.1+.1*tick),rise,direction[2]*(.1+.1*tick)]
+@@ -55,0 +56,2 @@
++                if not negative and not inclined and not experimental and active:
++                    row['slides']=[{'colliderRid':100,'colliderShapeIndex':0,'point':[0,rise,0],'normal':[-direction[0]*math.sqrt(.75),.5,-direction[2]*math.sqrt(.75)]}]
+@@ -60 +62 @@
+-                        plan.update(responseGuard={'passed':True},supportRid=100,supportShape=0,landingY=.15,expectedFinal=pos.copy())
++                        plan.update(responseGuard={'passed':True},supportRid=100,supportShape=0,landingY=rise,expectedFinal=pos.copy())
+@@ -62 +64 @@
+-                        q=support_fixture(after,'actual-final-support')
++                        q=support_fixture(after,'actual-final-support',rise)
+@@ -66 +68 @@
+-                        after.update(lastMotion=horizontal.copy(),parentPositionDelta=[horizontal[0],-.05,horizontal[2]],parentRealVelocity=[horizontal[0]*60,-3,horizontal[2]*60])
++                        after.update(lastMotion=horizontal.copy(),parentPositionDelta=[horizontal[0],rise-.2,horizontal[2]],parentRealVelocity=[horizontal[0]*60,(rise-.2)*60,horizontal[2]*60])
+@@ -74 +76 @@
+-                from evidence import footprint
++                from .evidence import footprint
+@@ -76 +78 @@
+-                p['finalSupport']={'passed':True,'footprintInside':True,'reason':'full_footprint_and_fresh_target_support','bodyBefore':after,'bodyAfter':after,'epsilon':1e-6,'query':support_fixture(after,'fresh-full-tread-support')}
++                p['finalSupport']={'passed':True,'footprintInside':True,'reason':'full_footprint_and_fresh_target_support','bodyBefore':after,'bodyAfter':after,'epsilon':1e-6,'query':support_fixture(after,'fresh-full-tread-support',rise)}
+@@ -79 +81 @@
+-    return {'phase':'parity-admission-synthetic-v1','mode':'synthetic-controls','group':group,'scope':'synthetic-admission','sourceSha256':source,'grantSha256':grant,'engineSha256':engine,'nativeReceiptSha256':native_hash,'failed':False,'releasedCleanly':True,'returnCode':0,'nativeOutcome':'negative_control_group_pass' if group=='negative-controls' else 'synthetic_group_pass','partialCountersMayBeUnknown':False,'nativeStepAdmission':False,'productionPromotion':False,'positiveAdmission':group=='positive-step-admission','owned':{'pid':123,'pgid':123,'startTicks':456},'lockAcquiredUnix':1791072000.,'lockReleasePendingUnix':1791072004.,'releaseAudits':[{'utc':f'2026-10-04T00:00:0{i}.000000+00:00','measured':True,'members':[]} for i in [1,2,3]]}
++    return {'phase':'parity-admission-calibrated-v1','mode':'calibrated-controls','group':group,'scope':'calibrated-admission','sourceSha256':source,'grantSha256':grant,'engineSha256':engine,'nativeReceiptSha256':native_hash,'failed':False,'releasedCleanly':True,'returnCode':0,'nativeOutcome':'negative_control_group_pass' if group=='negative-controls' else 'synthetic_group_pass','partialCountersMayBeUnknown':False,'nativeStepAdmission':False,'productionPromotion':False,'positiveAdmission':group=='positive-step-admission','owned':{'pid':123,'pgid':123,'startTicks':456},'lockAcquiredUnix':1791072000.,'lockReleasePendingUnix':1791072004.,'releaseAudits':[{'utc':f'2026-10-04T00:00:0{i}.000000+00:00','measured':True,'members':[]} for i in [1,2,3]]}

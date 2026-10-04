@@ -1,0 +1,29 @@
+{
+  "schema": "calibrated-positive-selection-v1",
+  "authority": "Explicit parent independent review after AL, user instruction in this session",
+  "parentBase": "0d8822ee",
+  "ALArchiveCommit": "068705de",
+  "ALHelpersCommit": "75271920",
+  "ALManifestSha256": "bef580de4e1605446425927bf9ee3f07dfb61992bfd6bb50af48369db7f738b5",
+  "ALManifestBytes": 7315,
+  "ALManifestEntries": 33,
+  "ALNativeSha256": "f9e77adc174d3a4cc03b9ced716e5f89888ff2163217580bd1bd55cb9e17fc04",
+  "ALSupportObservations": 960,
+  "ALBlockedWindowResponses": 720,
+  "ALArchivedSelectedHeight": null,
+  "selectionMadeHereByOwnerReview": {"radius":0.42,"rise":0.18},
+  "reason": "Smallest predeclared study height with both yaws qualified blocked and coherent references",
+  "positiveCases": [
+    {"radius":0.35,"rise":0.15,"yawDegrees":-45},
+    {"radius":0.35,"rise":0.15,"yawDegrees":45},
+    {"radius":0.42,"rise":0.18,"yawDegrees":-45},
+    {"radius":0.42,"rise":0.18,"yawDegrees":45}
+  ],
+  "fallbackHeight": null,
+  "candidateFeasibilityEstablished": false,
+  "nativeExecutionAuthorized": false,
+  "freshPairedBaselinesRequired": true,
+  "freshNegativePairsRequired": 34,
+  "freshInclinedPairsRequired": 4,
+  "ordinaryCapableRadius042Rise015IsPositiveAssistCase": false
+}

@@ -1,0 +1,69 @@
+{
+  "base": "0d8822ee",
+  "approvedAKSource": "8a355e98",
+  "AKArchive": "50271f7c",
+  "qualification": "Read-only exact-byte and textual method-body hashes; no parsing or execution",
+  "movementFiles": {
+    "godot/exploration/walker.gd": {
+      "currentSha256": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+      "frozenAKSha256": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+      "exactBytesEqual": true
+    },
+    "godot/tests/walker_parity_admission/candidate.gd": {
+      "currentSha256": "0aae2ac30347e21286e09fc1b8f1a6b8937f37aef447d99af083a12700261314",
+      "frozenAKSha256": "0aae2ac30347e21286e09fc1b8f1a6b8937f37aef447d99af083a12700261314",
+      "exactBytesEqual": true
+    },
+    "godot/tests/walker_parity_response/planner.gd": {
+      "currentSha256": "7dadd0a3fb018de12afe867ff5a688663347e99bd6335f92353519d136e76b31",
+      "frozenAKSha256": "7dadd0a3fb018de12afe867ff5a688663347e99bd6335f92353519d136e76b31",
+      "exactBytesEqual": true
+    },
+    "godot/tests/walker_snap_parity/planner.gd": {
+      "currentSha256": "9d61d505822208aaacc03bbb8017d4458d068e5430389aa5849eae7b6fdf01e6",
+      "frozenAKSha256": "9d61d505822208aaacc03bbb8017d4458d068e5430389aa5849eae7b6fdf01e6",
+      "exactBytesEqual": true
+    },
+    "godot/tests/walker_snap_parity/query_pair.gd": {
+      "currentSha256": "91f427d0ea0d47e9397a7331dd49f798d8041d5d93e31e11331da6ad31a475f7",
+      "frozenAKSha256": "91f427d0ea0d47e9397a7331dd49f798d8041d5d93e31e11331da6ad31a475f7",
+      "exactBytesEqual": true
+    },
+    "godot/tests/walker_step_up/response_guard.gd": {
+      "currentSha256": "ff242f1c352755e3655666440731115911b59dc431f0ec7c37807e8c8ec281b0",
+      "frozenAKSha256": "ff242f1c352755e3655666440731115911b59dc431f0ec7c37807e8c8ec281b0",
+      "exactBytesEqual": true
+    },
+    "godot/tests/walker_step_up/sweep_proposal.gd": {
+      "currentSha256": "b253464820a84d8de7e1cfc5abf7d3852f392e055ac6e71d42ce6a678d538d41",
+      "frozenAKSha256": "b253464820a84d8de7e1cfc5abf7d3852f392e055ac6e71d42ce6a678d538d41",
+      "exactBytesEqual": true
+    },
+    "godot/tests/walker_step_up/controls_v2.gd": {
+      "currentSha256": "90e69221eecf657c6cd158e4db5cbbe89ebfce0440be1f7f00ec230ce9e88965",
+      "frozenAKSha256": "90e69221eecf657c6cd158e4db5cbbe89ebfce0440be1f7f00ec230ce9e88965",
+      "exactBytesEqual": true
+    },
+    "godot/tests/walker_admission/fixtures_v4.gd": {
+      "currentSha256": "c4c175420aaca975acfa8ee277b2088796c2f0f8279751bbc8f2939154070e04",
+      "frozenAKSha256": "c4c175420aaca975acfa8ee277b2088796c2f0f8279751bbc8f2939154070e04",
+      "exactBytesEqual": true
+    }
+  },
+  "candidateMethodSha256": {
+    "configure": "31312022bbc839b93dca29348c27da2066738f53431cb0e6af4fda6c4e513f7c",
+    "step": "7dd6737486a26fb4e342c814d4bc4eb0b8d25f5627d7cc21f3f5032700972943",
+    "complete": "b6363793e45707115ee04213363fba7c16edcb41d2507b0ebe74c9c927b352b7",
+    "state": "50420601a5b0e6bf2f823c13deac8a211f6287978934316f04d99b4dfd9c21e9",
+    "up_contacts": "fc506ad8c6eedc3801935ba3188b8d739888df92eaaddf15ddd86ecf0eeecfed",
+    "apply_single_response": "8cd83340fa10fd06ed178d5459368c0c0868ca38d54a69dd6d393bc772f53b0f"
+  },
+  "unchangedNativeEvidenceMethodSha256": {
+    "guarded": "e70eb0ba42c90991cefafd80263fef7e28966380ba51f00a65d71782a8530a22",
+    "guard_operands": "80bb1aa3428a7baa7aad768b3cb67546f34382105823cde23dedcc85e2540288",
+    "support": "49caf00b9cdb5bb130c0d1bcfeeee95f5487b8105cacb2f7996259f07d52262e",
+    "budget": "ae7f14e9b021881925a518c66c8d2de599f203fe7d06bc2c2dcbda08e72c42a0"
+  },
+  "candidateMethodsModified": false,
+  "epsilonOrForwardGuardModified": false
+}

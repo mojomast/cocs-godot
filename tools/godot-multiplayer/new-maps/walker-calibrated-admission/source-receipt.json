@@ -1,0 +1,199 @@
+{
+  "status": "SOURCE ONLY; pending independent review; new GDScript unparsed and unexecuted",
+  "base": "0d8822ee",
+  "branch": "astra/walker-calibrated-admission",
+  "phase": "parity-admission-calibrated-v1",
+  "mode": "calibrated-controls",
+  "scope": "calibrated-admission",
+  "groups": [
+    "negative-controls",
+    "inclined-landing-rejections",
+    "positive-step-admission"
+  ],
+  "pairCounts": [
+    34,
+    4,
+    4
+  ],
+  "positiveCases": [
+    {
+      "radius": 0.35,
+      "rise": 0.15,
+      "yawDegrees": -45
+    },
+    {
+      "radius": 0.35,
+      "rise": 0.15,
+      "yawDegrees": 45
+    },
+    {
+      "radius": 0.42,
+      "rise": 0.18,
+      "yawDegrees": -45
+    },
+    {
+      "radius": 0.42,
+      "rise": 0.18,
+      "yawDegrees": 45
+    }
+  ],
+  "selectionAuthority": "Explicit parent post-AL review, recorded separately in selection.json",
+  "ALArchivedSelectedHeight": null,
+  "fallbackHeight": null,
+  "candidateFeasibilityEstablished": false,
+  "freshPairedBaselinesRequired": true,
+  "historicalPassesCanReplacePrerequisites": false,
+  "engineInvocations": 0,
+  "GDScriptParsed": false,
+  "nativeStagesCreated": 0,
+  "actualChildJobs": 0,
+  "grant": null,
+  "queuedWork": false,
+  "nativeScriptClosure": 17,
+  "newNativeScripts": 5,
+  "reusedNativeScripts": 12,
+  "candidateApplicationsModified": false,
+  "controllerPlannerResponseGuardModified": false,
+  "guardedAndGuardOperandsMethodBodiesModified": false,
+  "epsilonWidened": false,
+  "ordinaryRejectionAndTerminalParityFailureSemanticsModified": false,
+  "profileLiftCaps": {
+    "0.35": 9,
+    "0.42": 11
+  },
+  "canonicalCorrectedEvidenceSha256": "19b7c024e3f15a365cd0289bef45fc069f3908fd9325359dccffc556a3242be8",
+  "ALManifestSha256": "bef580de4e1605446425927bf9ee3f07dfb61992bfd6bb50af48369db7f738b5",
+  "AKManifestSha256": "827dd68b00c400b7ec17f9ab0e5a2067929277c3bb22e1681d38a1d5143a5ee1",
+  "ALSupportObservations": 960,
+  "ALBlockedWindowResponses": 720,
+  "testsPassed": {
+    "newCalibrated": 30,
+    "unchangedParityAdmission": 49,
+    "unchangedParityResponse": 24,
+    "unchangedSnapCompare": 18,
+    "unchangedSnapParity": 8,
+    "unchangedAdmission": 7,
+    "unchangedStepUp": 32,
+    "unchangedNumericCorrection": 5,
+    "unchangedBaselineCharacterizationRun": 34,
+    "unchangedBaselineDesign": 5,
+    "total": 212
+  },
+  "historicalOriginalEvidence40Suites": "Not rerun in corrected checkout; original pins preserved; current numeric-correction suite verifies historical preparer fails closed",
+  "newPreparationTests": "In-memory mocks only; no new attempt/stage",
+  "lifecycleTests": "Complete synthetic receipts; all child/process/signal operations mocked",
+  "archivesVerifiedUnchanged": {
+    "AL": 33,
+    "AK": 51,
+    "AJ": 23,
+    "AI": 40,
+    "AH": 42,
+    "AG": 29,
+    "AF": 24,
+    "AE": 46,
+    "AD": 45,
+    "AB": 140,
+    "Z": 253,
+    "X": 600,
+    "U": 264,
+    "AA": 141,
+    "AC": 265
+  },
+  "productionDependenciesVerifiedUnchanged": 15,
+  "priorControlledSourcesPinsAndEvidenceChanged": false,
+  "candidateMapJourneysUnrun": 60,
+  "staticVesperFailuresResolved": 0,
+  "productionMotionAccountingOpen": true,
+  "nativeStepAdmission": false,
+  "productionPromotion": false,
+  "files": {
+    "godot/tests/walker_calibrated_admission/driver.gd": {
+      "sha256": "13499f0982e5651ea0a65f720e96c5bb777ef0a6a2d2b04b4a48749558ba99c8",
+      "bytes": 20890
+    },
+    "godot/tests/walker_calibrated_admission/evidence.gd": {
+      "sha256": "2721251624d18bb702b2fbaf7e2153caa879fd7ddc08cc7f38546ef6a4cffe45",
+      "bytes": 28321
+    },
+    "godot/tests/walker_calibrated_admission/fixtures.gd": {
+      "sha256": "9cbf82cceff0a18c5cf3e60ebd661af9b2b8583aa3eb9279bedf7089d26eae63",
+      "bytes": 1731
+    },
+    "godot/tests/walker_calibrated_admission/observe.gd": {
+      "sha256": "b45e122622523d2b38b22d774303810e0c3d6bfd98ea1833184cba41c55db944",
+      "bytes": 3613
+    },
+    "godot/tests/walker_calibrated_admission/policy.gd": {
+      "sha256": "68e6d1e4a7ab6e8d4893b43c7127fa2a443fd911da35e7b5356f52fdaeebc127",
+      "bytes": 4488
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission/README.md": {
+      "sha256": "17829381ac67fe1a627f12e18b68f52c59725aa688054253761a55d604bbd1bd",
+      "bytes": 13014
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission/__init__.py": {
+      "sha256": "b18fd695df677cf8d922cd245dbd79228c84c7706b0e1fb7c5c211a099cae236",
+      "bytes": 80
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission/cli.py": {
+      "sha256": "c92684ff121ff72d70f9c92f6a55652c551f24240cd24e3fb4749c4a743086a4",
+      "bytes": 887
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission/derive_sources.py": {
+      "sha256": "ec638896086ac4e9d3766c5bb6cf1df8e7be95944357668cd53e7250af197b8c",
+      "bytes": 12394
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission/evidence.py": {
+      "sha256": "d403a92438d36b904ee02beca8dc3ae0452334f24f65b505553f4ef64017c379",
+      "bytes": 25468
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission/exact-movement-bindings.json": {
+      "sha256": "6f46e3a02d93ad15215ff9116aabc031bcab347d62d64f9a6033603cc6b0fe1f",
+      "bytes": 3668
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission/frozen.py": {
+      "sha256": "28e222cc221c6ff87ff69feb73931770f8fc582c414c010554a15eac31131a81",
+      "bytes": 856
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission/policy.py": {
+      "sha256": "cb942f30c4c0c61c968aa3209735a3dcd9e5339eba643f15db760fb399935554",
+      "bytes": 3895
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission/prepare.py": {
+      "sha256": "3666b350d92a0e5cf702b71791a5041a352a1dcf7129a81031382dcb9b3b334f",
+      "bytes": 5101
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission/receipt_fixtures.py": {
+      "sha256": "e74929eb5621cd9cbc9886dfb60608910e813276874686e2246e6965a687d5e9",
+      "bytes": 11029
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission/review-pins.json": {
+      "sha256": "9ba8eb3de9315109ac5b4f655d5d5edd3c3039313270545c18169ca2418e3776",
+      "bytes": 16365
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission/selection.json": {
+      "sha256": "bd236a0c7daced2beef950fe56361f5ffb1c20a521b2a8d65b9c5b586415c403",
+      "bytes": 1253
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission/source-delta.diff": {
+      "sha256": "d68173c1308cbd41da958112e050db345a1577144dd713992b810e2a0b22540d",
+      "bytes": 19788
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission/supervisor.py": {
+      "sha256": "21eb575d3cc993f63b6a7acef7b476cdcab021646a6a571b9ae9fd5b1707ded5",
+      "bytes": 8314
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission/test_calibrated.py": {
+      "sha256": "19599fcfe0cc5c2717ff5ac1848d5bd2729e3681f8a162ac7b5e99335a9a46b8",
+      "bytes": 10693
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission/test_supervisor.py": {
+      "sha256": "6d6d360b4854c556fd3029d90fca8c1d4c0f848b64ba60204a2e44d785562efd",
+      "bytes": 8073
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission/verify_preservation.py": {
+      "sha256": "8a8d24d5356abe874b40337596376016d6a96fa374a4d62e818c5b46f210b1fc",
+      "bytes": 2888
+    }
+  }
+}
