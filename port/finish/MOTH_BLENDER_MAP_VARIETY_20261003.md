@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**AK independently approved and integrated through `241833ef`.** Parent passed
+156 checks and all 51 hashes/manifest. Two .35 pairs qualify single-tread arrival,
+while the positive group remains failed on .42 ordinary baseline arrival. Review:
+`map-variety/WALKER_AK_REVIEW.md`. No heavy grant is active; source-only radius
+analysis continues and all sixty candidate map journeys remain unrun.
+
 ## Current checkpoint — AK stopped on ordinary baseline arrival
 
 **No heavy grant is active.** AK passed negative34 and inclined4 pairs; two .35

@@ -11,11 +11,11 @@ Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
 **No active heavy grant. AK passed negatives/inclined, failed positive admission and released.**
-Delivery `4b83de0b` / `c2e83163` / `50271f7c` is under independent review.
-Both .35 candidate profiles traversed the synthetic tread; .42/−45° baseline
+Delivery `4b83de0b` / `c2e83163` / `50271f7c` passed independent review and is
+integrated through `241833ef`. Parent passed 156 checks and 51 hashes/manifest.
+Both .35 candidates reached the single synthetic tread goal; .42/−45° baseline
 arrival violated the blocked-baseline requirement before its candidate ran.
-Parent verified 51 files/manifest identity and three empty audits/three groups.
-Radius-dependent baseline analysis is source-only; no retry/maps or admission waiver.
+Radius analysis is source-only; no retry/maps or waiver. See `map-variety/WALKER_AK_REVIEW.md`.
 
 **AJ confirmed the receipt-only hypothesis and released.**
 Delivery `bb403edf` / `bfb32d4e` passed independent review and is integrated through

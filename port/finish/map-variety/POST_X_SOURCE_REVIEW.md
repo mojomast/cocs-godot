@@ -1,5 +1,11 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**AK archive approved and integrated through `241833ef`.** Parent passed 156
+checks and all 51 hashes/manifest identity. Negative34 and inclined4 pairs pass;
+positive group fails with two individually passing .35 pairs and three unrun
+profiles. See `WALKER_AK_REVIEW.md`. Single-tread arrival is not map acceptance;
+radius-dependent fixture diagnosis stays source-only with no heavy grant.
+
 ## AK delivered/released — partial traversal success, positive group failed
 
 **`4b83de0b` / `c2e83163` / `50271f7c`** report negatives PASS34/68 and inclined
