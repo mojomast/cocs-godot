@@ -1,0 +1,83 @@
+{
+  "status": "SOURCE ONLY unparsed/unrun; focused review required before controls/reference grant",
+  "grant": null,
+  "autoStart": false,
+  "queued": false,
+  "allowedPhase": "controls-reference-only-v3",
+  "maximumAllowedGroups": [
+    "controls",
+    "reference-accepted-civic-r035"
+  ],
+  "candidateAdmission": "blocked until separately reviewed and native-proven inclined-rejection and rotated-success admission controls",
+  "original15Dependencies": {
+    "game/core.mjs": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+    "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
+    "game/terrain.mjs": "37fdacc8b120490254a15d5ec6bf7838f0a89ebe54ef6ead1675f909cbad456c",
+    "game/terrain-bvh.mjs": "3f9a696bb76fcaa8d1fc1f6579dddf8147e06377185f7ded6e087fc1f2c8e2f1",
+    "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
+    "game/spatial.mjs": "781d7494d9a19f826f5858c1ffbabe4967820762192b4022386aaf7a09c605c7",
+    "game/movement.mjs": "6ce986bf59ab5eb8fc67539e8e02b1ff62842f0e90b092dd786bd04e7604ffb0",
+    "game/operator-verbs.mjs": "357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e",
+    "game/spec-effects.mjs": "f49f39927877b24bfc7b9f50a56c86ca28d4e9a61a1cd04b838257971f74e01f",
+    "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
+    "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
+    "godot/exploration/walker.gd": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+    "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
+    "godot/world/session.gd": "32ff87d491dad9f47d555fa3eec701fbfbbfa47608075ebbc2796b5c291b549c",
+    "godot/multiplayer_worlds/demo.gd": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748"
+  },
+  "frozen": {
+    "X": {
+      "root": "/home/mojo/.tmp-on-disk/cocs-botanical-source-correction",
+      "inventorySha256": "440a1291201eaa3ee55f9c0218503ac4588028bfae7fee5c46364673bf94bd78",
+      "verifiedFiles": 600,
+      "mismatches": 0
+    },
+    "U": {
+      "root": "/home/mojo/.tmp-on-disk/cocs-map-variety-botanical-astra",
+      "inventorySha256": "ce0dd0ec8a87340cc31bfcb88cdfc7b11fb5aad1ce6efd317b9bb43ec22289ef",
+      "verifiedFiles": 264,
+      "mismatches": 0
+    }
+  },
+  "ZFilesVerified": 253,
+  "sourceTestsPassed": 32,
+  "historicalReceiptSha256": {
+    "source-provenance.json": "412a19f5dc3a70e0b74e40c78b35a0966b72e297ecb169ee551834af498d7c1b",
+    "preservation.json": "628b4f7cf0eb5b656d7402c7a7de669e28a46e81fc4dc66f50ac34b6edee4a8a",
+    "acceptance-plan.json": "d1d3fb7e75f41d1df0c64ecb7ceb5db757dbe2ee6c6a2bd33606d508fbedcc73",
+    "post-response-provenance.json": "186bdff98ef2726d1da639afc803db80e9bde2af82c5804d06c6d856eb49aa62",
+    "driver-v2-provenance.json": "b74c830d6b0b1c6945bbb40c132741c41684a5092e2a8eb8f0085f6cdae56adf"
+  },
+  "boxBounds": [
+    [
+      -2.0,
+      1.78,
+      0.08000000000000002
+    ],
+    [
+      2.0,
+      1.8800000000000001,
+      1.0
+    ]
+  ],
+  "robustClearanceBounds": {
+    "0.35": {
+      "upLower": 0.05363197471390192,
+      "forwardUpper": -0.029823516391858745
+    },
+    "0.42": {
+      "upLower": 0.04917445763244839,
+      "forwardUpper": -0.02768841878986709
+    }
+  },
+  "files": {
+    "godot/tests/walker_step_up/controls_v2.gd": "90e69221eecf657c6cd158e4db5cbbe89ebfce0440be1f7f00ec230ce9e88965",
+    "godot/tests/walker_step_up/driver_v2.gd": "b38fc2bb5e2946b7de7fe13cdb711ca5071ab05582312b29113af567e45fad34",
+    "tools/godot-multiplayer/new-maps/walker-step-up/run_group_v2.py": "81df98d08ee770a096c94f41c23aaa05f7a85c127383a040d771263345358ae1",
+    "tools/godot-multiplayer/new-maps/walker-step-up/grant_policy_v3.py": "3714f0369d6f7d4e7bdc96201310be3afe8a8689aac81bd18749f1061a6d74c7",
+    "tools/godot-multiplayer/new-maps/walker-step-up/test_grant_policy_v3.py": "ec88ee1de272429b452f7d9b0e6dbc088656240fe23c2c5502c8912fc2e2fe76",
+    "tools/godot-multiplayer/new-maps/walker-step-up/test_overhang_v3.py": "46d69ee90e50880d2282f6296c02bc0f5c16c978f5d7b3acb5fe89af3206d668",
+    "tools/godot-multiplayer/new-maps/walker-step-up/OVERHANG_V3_REVIEW.md": "18ab9dfaa0b06291728a2efe3849817e51f8f5e822cf1cbf2a2b7c58ef6da9dc"
+  }
+}

@@ -2,6 +2,7 @@
 import argparse,fcntl,hashlib,json,os,re,signal,subprocess,time
 from pathlib import Path
 from prepare_v2 import ROOT,write,digest
+from grant_policy_v3 import validate_phase
 LOCK=Path('/tmp/opencode/cocs-finish-acceptance.lock')
 def identity(pid):
     try:
@@ -19,7 +20,8 @@ def main(a):
     dest=Path(a.fixture).resolve(strict=True);engine=Path(a.engine).resolve(strict=True)
     if dest.parent!=ROOT/'godot/tests/walker_step_up' or not re.fullmatch('[a-z0-9-]+',a.group):raise ValueError('namespace')
     grant=dest/'grant.json';g=json.loads(grant.read_text());config=json.loads((dest/'source.json').read_text())
-    if digest(grant)!=a.grant_sha256 or g.get('grantId')!=a.grant_id or not g.get('authorized') or a.group not in g.get('groups',[]):raise ValueError('explicit grant receipt required')
+    if digest(grant)!=a.grant_sha256 or g.get('grantId')!=a.grant_id or not g.get('authorized'):raise ValueError('explicit grant receipt required')
+    validate_phase(g,a.group,a.continue_after_known_baseline_failure)
     if g.get('expiresUnix',0)<=time.time() or digest(engine)!=g.get('engineSha256'):raise ValueError('grant expired or binary identity mismatch')
     if a.group not in config['groups']:raise ValueError('one known group only')
     if a.continue_after_known_baseline_failure and not g.get('continueAfterKnownBaselineFailure'):raise ValueError('continuation not granted')

@@ -120,7 +120,17 @@ func run() -> void:
 	for path: String in config.files:
 		if FileAccess.get_sha256(path)!=config.files[path]: finish("source_identity_failure:"+path,true,2); return
 	var grant := read_json(directory+"grant.json")
-	if grant_id.is_empty() or grant_sha.length()!=64 or FileAccess.get_sha256(directory+"grant.json")!=grant_sha or grant.get("grantId")!=grant_id or not grant.get("authorized",false) or not group_id in grant.get("groups",[]): finish("explicit_grant_required",true,2); return
+	if grant_id.is_empty() or grant_sha.length()!=64 or FileAccess.get_sha256(directory+"grant.json")!=grant_sha or grant.get("grantId")!=grant_id or not grant.get("authorized",false): finish("explicit_grant_required",true,2); return
+	# Current source admission ends at the failed original reference. Candidate
+	# execution needs a later reviewed admission-controls phase, not just a flag.
+	if grant.get("phase")!="controls-reference-only-v3" or grant.has("groups") or continuation or grant.get("continueAfterKnownBaselineFailure",false): finish("phase_not_admitted",true,2); return
+	var allowed: Variant = grant.get("allowedGroups")
+	if not allowed is Array or allowed.is_empty() or not group_id in allowed: finish("explicit_allowed_groups_required",true,2); return
+	var seen := {}
+	for item: Variant in allowed:
+		if not item is String or not item in ["controls","reference-accepted-civic-r035"] or seen.has(item): finish("group_outside_current_phase",true,2); return
+		seen[item] = true
+	if float(grant.get("expiresUnix",0))<=Time.get_unix_time_from_system(): finish("grant_expired",true,2); return
 	var index: int = config.order.find(group_id)
 	var group: Dictionary = config.groups[group_id]
 	receipt.unrun = group.trials.size() if group_id!="controls" else Controls.cases().size()*2

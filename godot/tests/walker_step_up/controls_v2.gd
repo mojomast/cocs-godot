@@ -53,7 +53,9 @@ static func scene(id: String) -> Dictionary:
 			world.add_child(body)
 		else: box(world,Vector3(0,h*.5,depth*.5),Vector3(width,h,depth),"ControlTread")
 	if id=="ceiling-up": box(world,Vector3(0,1.95,-1.05),Vector3(4,.1,1.9),"LowCeiling")
-	if id=="overhang-forward": box(world,Vector3(0,1.83,.56),Vector3(4,.1,.88),"ForwardOverhang")
+	# Front face Z=.08, lower face Y=1.78. Source finite-box certificate
+	# proves up-clear / forward-blocked for both .35 and .42 capsule profiles.
+	if id=="overhang-forward": box(world,Vector3(0,1.83,.54),Vector3(4,.1,.92),"ForwardOverhang")
 	if id=="moving-floor": floor_body.constant_linear_velocity = Vector3(.1,0,0)
 	var reasons: Array = ["not_low_riser_band","strict_surface_rise_limit"]
 	match id:
