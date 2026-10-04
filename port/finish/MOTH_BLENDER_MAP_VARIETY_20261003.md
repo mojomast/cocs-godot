@@ -1,5 +1,12 @@
 # New Moth resources and Blender-authored map variety
 
+**Vesper overhang correction `a208613b` received:** source geometry now certifies
+clear up travel and obstructed raised-forward travel at both radii, with the exact
+rejection reason preserved. Driver and supervisor explicitly permit only controls
+and reference under the v3 phase. Thirty-two source tests are reported passing;
+independent readiness review is active before any limited native grant. Candidate
+walks remain unavailable pending additional control sources and actual results.
+
 **AA-plus-16 production contract received:** `81490089` is under independent
 source review. Exact additional-entry preservation, packed-master provenance,
 fresh reopen, all 155,553 native faces / nineteen repaired entries, material proof

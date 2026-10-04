@@ -1,5 +1,19 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**Controls-only correction delivered:** `a208613b` is under focused source review.
+The overhang front moves from Z.12 to Z.08, preserving its other extents and exact
+required `raised_path_blocked` reason. Producer reports continuous finite-box
+certificates for both radii: minimum up clearance 53.63/49.17 mm and forward
+intersection depth 29.82/27.69 mm under stated uncertainty. Old missed-control
+geometry is retained as a negative regression; these are source, not native results.
+
+Supervisor and driver require phase `controls-reference-only-v3` and explicit
+allowed groups restricted to controls and unchanged accepted-civic .35 reference.
+Candidate groups, legacy group fields and continuation flags reject. Thirty-two
+source tests are reported passing. Inclined-landing and rotated-success controls
+remain absent and required before any later candidate-walk admission. No heavy
+grant is active; first native readiness awaits this focused review.
+
 ## Swept-step WIP integrated; overhang control blocks native readiness
 
 Independent review approved `161f5e9e` / `556546e5` / `e16a5e1a` as isolated
