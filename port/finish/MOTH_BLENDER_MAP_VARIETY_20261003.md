@@ -1,5 +1,12 @@
 # New Moth resources and Blender-authored map variety
 
+**Corrected provenance integrated through `a52e37b0`:** independent review closed
+the diagnosis P1; parent reproduced the asymmetric analytic regression (twelve
+texel subcases). The corrected report proves a counterexample to the faulty
+inference, not full renderer equivalence. AA's authored normal-map appearance
+remains open. Vesper guard/driver follow-ups `556546e5` / `e16a5e1a` are under
+source review with 24 producer tests reported; no engine execution or heavy grant.
+
 **Corrected provenance delivered:** `8c43b112` is under focused independent review.
 It withdraws the unsupported shading-error inference, explains image-row/UV-origin
 conversion with retained supplied binormal, and adds a passing source-only

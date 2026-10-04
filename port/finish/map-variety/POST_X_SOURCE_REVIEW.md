@@ -1,5 +1,19 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**Latest follow-ups:** corrected provenance `4fe3df4e` + `8c43b112` passed
+independent review and is integrated through **`a52e37b0`**; parent reproduced its
+one analytic test/twelve texel subcases. This closes the incorrect convention-
+defect diagnosis, not AA appearance acceptance or renderer-equivalence proof.
+
+Vesper `556546e5` / `e16a5e1a` is under focused source review. It adds bounded
+endpoint/forward-vector/support-RID/shape agreement, faults on parent slide
+collisions after lift, and uses eight float32 ULPs with a 0.1 mm domain ceiling.
+The non-quad oracle now iterates all hull edges. An executable driver provides
+seventeen physical rejection fixtures at both radii, explicit reference-failure
+continuation authorization and strict experimental stops. Producer reports 24
+source tests passing; GDScript is unparsed/unrun, with steep-landing and rotated-
+success coverage gaps explicit. No native readiness or heavy grant is claimed.
+
 **Normal-map provenance review correction:** `4fe3df4e` integration is withheld.
 Its exporter/pixel facts pass, but UV-origin conversion can retain the authored
 normal-map perturbation with unchanged PNGs and supplied binormals. Raw exported-

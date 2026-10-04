@@ -1,5 +1,24 @@
 # Parallax singular-glyph policy — source approved, production contract pending
 
+## Corrected provenance approved and integrated
+
+Independent re-review closed the provenance P1 and approved `4fe3df4e` followed
+by `8c43b112`, integrated as **`715a7334` / `a52e37b0`**. The corrected current
+report is authoritative; the original interpretation remains in Git history.
+All five requested scope corrections are present. Parent reproduced the one
+analytic test covering twelve asymmetric row/column subcases.
+
+The reviewer independently confirmed each address function selects the expected
+PNG texel, both source hashes match official Blender v4.5.14, and wrong-row,
+W-only and green-only changes are meaningful negatives. The shared simplified
+TBN calculation makes this an analytic counterexample, **not independent renderer
+equivalence** or a model of full normal reconstruction, strength and filtering.
+
+AA face 11823's derivative-policy change reverses the green contribution relative
+to the two usable original X corners. **Authored appearance preservation remains
+open.** Corrected provenance approval authorizes no artifact acceptance, broader
+tangent repair or native execution. The singular-glyph policy remains separate.
+
 ## Convention-report correction — integration withheld
 
 **Corrective delivery `8c43b112` is under focused re-review.** The revised report
