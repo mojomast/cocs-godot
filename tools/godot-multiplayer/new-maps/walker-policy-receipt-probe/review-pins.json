@@ -1,0 +1,12 @@
+{
+  "status": "SOURCE PROPOSAL ONLY; no grant or native stage",
+  "hostFiles": {
+    "tools/godot-multiplayer/new-maps/walker-policy-receipt-probe/contract.py": "897f91683dc40401918e45302049bc037c41e3c01dec6caf35b7e0280d571ffc",
+    "tools/godot-multiplayer/new-maps/walker-policy-receipt-probe/driver.gd": "6931f781ebedc305ca173736489a55348816e9312a389117118fd474530847f6",
+    "tools/godot-multiplayer/new-maps/walker-policy-receipt-probe/ownership.py": "c86ee2548bf851914f09df816f0a9b663dae97b68b661c0a94c8cc3bd82e577c",
+    "tools/godot-multiplayer/new-maps/walker-policy-receipt-probe/prepare.py": "782b67f74b7340152f8f47dad918ecd717c68adb7b8d765b64bc67cf95e8a180",
+    "tools/godot-multiplayer/new-maps/walker-policy-receipt-probe/supervisor.py": "aa7eb36e54f50ec0571f3e7c5266621cd04058a98610286f2a9ef5c85bf42cad",
+    "tools/godot-multiplayer/new-maps/walker-parity-admission/review-pins.json": "cc2fbf0b2a8d03333b47ee37abb58e41bc7001c60ed7bbd72278c20e0530c5ee",
+    "tools/godot-multiplayer/new-maps/walker-policy-source-diagnosis/diagnostic.gd": "0a73ac7874798181bfa47bcb9e99509552391577f22b60fffcc60a71eb868bab"
+  }
+}
