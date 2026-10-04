@@ -1,5 +1,15 @@
 # New Moth resources and Blender-authored map variety
 
+## Current checkpoint — AF collection complete and released
+
+**No heavy grant is active.** AF `ad5d02b6` / `d3c17632` / `b80273a7` reports
+one successful baseline-only collection with no applied lift. Modeled query
+endpoints reproduce AE's 21.845102 µm discrepancy, without isolating a unique
+cause or proving stepping. Parent verified 24 hashes and three measured empty
+audits/one group; release is 02:38:48.288924Z and lock availability was confirmed
+at 02:46:14.142860Z. Independent review is active before integration or any
+parity-candidate grant. All sixty candidate map walks remain unrun.
+
 ## Current owner — baseline-only query comparison AF
 
 **MOTH-BLENDER-20261004-AF is the sole heavy grant**, Astra

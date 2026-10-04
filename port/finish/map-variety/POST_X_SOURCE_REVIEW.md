@@ -1,5 +1,24 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## AF delivered/released — baseline query collection review pending
+
+AF delivered **`ad5d02b6` / `d3c17632` / `b80273a7`**, reporting Stage0 collection
+success after one invocation, twenty settling frames and eight input responses.
+The first eligible comparison is frame 29; unchanged Walker applies no assist,
+query-state snapshots are unchanged and its ordinary response remains stalled.
+
+Short32 and modeled snap4 travel differ by −21.845102310180664 µm. Float32
+endpoints .08777780085802078 and .0877559557557106 match AE's historical predicted
+and actual Y respectively. This is consistent with request-policy mismatch, not
+unique causality or actual internal-call tracing. Query agreement and native step
+admission remain explicitly false; uplift support is unqualified.
+
+Parent verified **24 inventory files**, three measured empty audits/one group,
+no survivors and lock availability at 02:46:14.142860Z. Explicit release is
+02:38:48.288924Z. Independent source/evidence review is active; delivery remains
+unmerged. No heavy grant is active, and parity-candidate execution awaits separate
+review and authorization. All sixty map journeys remain unrun.
+
 ## Compare-only sources approved/integrated; AF authorized
 
 Independent re-review approved `2b0f1f6a`, `2e8fc0bc`, `9b3b0c04`, `c3cd5833`
