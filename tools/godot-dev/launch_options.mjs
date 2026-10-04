@@ -41,6 +41,16 @@ EXPERIENCES['multiplayer-worlds'].identity['gravemill-foundry'] = {scene:'res://
 EXPERIENCES['multiplayer-worlds'].modes['parallax-observatory'] = ['deathmatch','teamdeathmatch','ctf','koth','uplink','holdout'];
 EXPERIENCES['multiplayer-worlds'].identity['parallax-observatory'] = {scene:'res://multiplayer_worlds/demo.tscn',modes:EXPERIENCES['multiplayer-worlds'].modes['parallax-observatory']};
 
+// Preview exposure for the remaining authored worlds. Vesper's native stair
+// traversal caveat applies; every listed mode already has extracted-release
+// startup/wire coverage in the expansion verifier.
+EXPERIENCES['multiplayer-worlds'].modes['vesper-viaduct'] = ['deathmatch','teamdeathmatch','ctf','domination','koth','uplink'];
+EXPERIENCES['multiplayer-worlds'].identity['vesper-viaduct'] = {scene:'res://multiplayer_worlds/demo.tscn',modes:EXPERIENCES['multiplayer-worlds'].modes['vesper-viaduct']};
+EXPERIENCES['multiplayer-worlds'].modes['abyssal-pressureworks'] = ['deathmatch','teamdeathmatch','ctf','koth','domination','holdout'];
+EXPERIENCES['multiplayer-worlds'].identity['abyssal-pressureworks'] = {scene:'res://multiplayer_worlds/demo.tscn',modes:EXPERIENCES['multiplayer-worlds'].modes['abyssal-pressureworks']};
+EXPERIENCES['multiplayer-worlds'].modes['stormglass-causeway'] = ['puma-race'];
+EXPERIENCES['multiplayer-worlds'].identity['stormglass-causeway'] = {scene:'res://multiplayer_worlds/sports_demo.tscn',modes:EXPERIENCES['multiplayer-worlds'].modes['stormglass-causeway']};
+
 export const NATIVE_EXPERIENCES = {
   showcase: {scene:'res://showcase/demo.tscn'},
   'aurora-basin': {scene:'res://aurora_basin/demo.tscn'},

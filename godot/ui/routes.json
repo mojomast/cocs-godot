@@ -127,6 +127,15 @@
     },
     "parallax-observatory": {
       "name": "Parallax Observatory"
+    },
+    "vesper-viaduct": {
+      "name": "Vesper Viaduct"
+    },
+    "abyssal-pressureworks": {
+      "name": "Abyssal Pressureworks"
+    },
+    "stormglass-causeway": {
+      "name": "Stormglass Causeway"
     }
   },
   "routes": [
@@ -413,7 +422,7 @@
       "id": "multiplayer-worlds",
       "category": "play",
       "label": "Multiplayer Worlds",
-      "description": "Seven authored source-backed worlds: urban infantry, freight, alpine, Puma sports and LATTICE",
+      "description": "Ten authored source-backed worlds: urban infantry, freight, alpine, coastal race and LATTICE",
       "flags": [
         "--experience=multiplayer-worlds"
       ],
@@ -432,7 +441,10 @@
             "tern-archipelago",
             "helix-conservatory",
             "gravemill-foundry",
-            "parallax-observatory"
+            "parallax-observatory",
+            "vesper-viaduct",
+            "abyssal-pressureworks",
+            "stormglass-causeway"
           ],
           "default": "switchyard-ward"
         },
@@ -520,6 +532,25 @@
               "koth",
               "uplink",
               "holdout"
+            ],
+            "vesper-viaduct": [
+              "deathmatch",
+              "teamdeathmatch",
+              "ctf",
+              "domination",
+              "koth",
+              "uplink"
+            ],
+            "abyssal-pressureworks": [
+              "deathmatch",
+              "teamdeathmatch",
+              "ctf",
+              "koth",
+              "domination",
+              "holdout"
+            ],
+            "stormglass-causeway": [
+              "puma-race"
             ]
           },
           "default": "deathmatch"
@@ -550,6 +581,7 @@
         },
         "scope": {
           "maps": [
+            "abyssal-pressureworks",
             "breakwater-exchange",
             "copper-bowl",
             "gravemill-foundry",
@@ -557,11 +589,21 @@
             "parallax-observatory",
             "rainmarket-exchange",
             "sirocco-circuit",
+            "stormglass-causeway",
             "switchyard-ward",
             "tern-archipelago",
-            "thermal-divide"
+            "thermal-divide",
+            "vesper-viaduct"
           ],
           "modes_by_map": {
+            "abyssal-pressureworks": [
+              "ctf",
+              "deathmatch",
+              "domination",
+              "holdout",
+              "koth",
+              "teamdeathmatch"
+            ],
             "breakwater-exchange": [
               "assault",
               "combined-arms",
@@ -612,6 +654,9 @@
             "sirocco-circuit": [
               "puma-race"
             ],
+            "stormglass-causeway": [
+              "puma-race"
+            ],
             "switchyard-ward": [
               "armsrace",
               "assault",
@@ -639,6 +684,14 @@
               "instagib",
               "koth",
               "rockets",
+              "teamdeathmatch",
+              "uplink"
+            ],
+            "vesper-viaduct": [
+              "ctf",
+              "deathmatch",
+              "domination",
+              "koth",
               "teamdeathmatch",
               "uplink"
             ]

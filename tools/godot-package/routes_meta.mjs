@@ -50,6 +50,9 @@ export const MAP_NAMES = {
   'tern-archipelago': 'Tern Archipelago',
   'helix-conservatory': 'Helix Conservatory',
   'gravemill-foundry': 'Gravemill Foundry',
+  'vesper-viaduct': 'Vesper Viaduct',
+  'abyssal-pressureworks': 'Abyssal Pressureworks',
+  'stormglass-causeway': 'Stormglass Causeway',
 };
 
 // The three locked combat arenas (options.mjs EXPERIENCES combat/lobby/...).
@@ -135,9 +138,9 @@ export const ROUTES = [
   },
   {
     id: 'multiplayer-worlds', category: 'play', label: 'Multiplayer Worlds',
-    description: 'Seven authored source-backed worlds: urban infantry, freight, alpine, Puma sports and LATTICE',
+    description: 'Ten authored source-backed worlds: urban infantry, freight, alpine, coastal race and LATTICE',
     params: [
-      {key:'map',kind:'choice',label:'Map',values:['switchyard-ward','rainmarket-exchange','breakwater-exchange','thermal-divide','sirocco-circuit','copper-bowl','tern-archipelago','helix-conservatory','gravemill-foundry','parallax-observatory'],default:'switchyard-ward'},
+      {key:'map',kind:'choice',label:'Map',values:['switchyard-ward','rainmarket-exchange','breakwater-exchange','thermal-divide','sirocco-circuit','copper-bowl','tern-archipelago','helix-conservatory','gravemill-foundry','parallax-observatory','vesper-viaduct','abyssal-pressureworks','stormglass-causeway'],default:'switchyard-ward'},
       {key:'mode',kind:'choice',label:'Mode',values_by_map:{
         'parallax-observatory':['deathmatch','teamdeathmatch','ctf','koth','uplink','holdout'],
         'switchyard-ward':['deathmatch','teamdeathmatch','instagib','rockets','armsrace','ctf','domination','koth','uplink','holdout','assault'],
@@ -146,7 +149,10 @@ export const ROUTES = [
         'gravemill-foundry':['deathmatch','teamdeathmatch','domination','assault','payload','combined-arms'],
         'thermal-divide':['deathmatch','teamdeathmatch','instagib','rockets','armsrace','ctf','domination','koth','uplink','holdout','assault'],
         'sirocco-circuit':['puma-race'],'copper-bowl':['puma-soccer'],'tern-archipelago':['cocs','cocs-coop'],
-        'helix-conservatory':['deathmatch','teamdeathmatch','ctf','domination','koth']},default:'deathmatch'},
+        'helix-conservatory':['deathmatch','teamdeathmatch','ctf','domination','koth'],
+        'vesper-viaduct':['deathmatch','teamdeathmatch','ctf','domination','koth','uplink'],
+        'abyssal-pressureworks':['deathmatch','teamdeathmatch','ctf','koth','domination','holdout'],
+        'stormglass-causeway':['puma-race']},default:'deathmatch'},
       {key:'bots',kind:'range',label:'Bots',min:0,max:8,default:2,step:1},
     ],
   },
