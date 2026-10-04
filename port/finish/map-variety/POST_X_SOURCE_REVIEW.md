@@ -1,5 +1,28 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Single-response source approved/integrated; AG authorized
+
+Independent review approved `d1f0889c`, integrated as **`829aa08b`**, for one
+bounded first-native response. Parent passed **102 checks**: 89 Python and thirteen
+package tests. One continuous body, first-eligibility termination, live conservative
+queries, original application/guard/postconditions and sealed lifecycle passed
+source review. No production movement or epsilon changed.
+
+**MOTH-BLENDER-20261004-AG** is the sole heavy grant, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `829aa08b`. Parent verified lock
+availability and only the preserved viewer at 03:24:11.927376Z. Authorization is
+fresh setup and parsing within ONE `parity-response-only-v1` / `single-response`
+/ `parity-response` invocation on .35 m / −45° / .15 m synthetic geometry, then
+stop, three measured audits and release. No separate parser/import run or retry.
+
+At first eligible original proof, permit at most one UP call and one candidate
+parent response; parity rejection performs neither. Success, rejection and fault
+all terminate. Counters increment after physical calls return and are copied after
+candidate return: zeros in fatal/incomplete traces are not proof that no call
+occurred. Collection, guard result and clean process release remain separate.
+Even a passing response does not prove a landing or positive admission; all sixty
+map walks remain unrun and unauthorized.
+
 ## Single-response parity contract delivered for source review
 
 **`d1f0889c`**, based on `278f9dd2`, prepares a separate

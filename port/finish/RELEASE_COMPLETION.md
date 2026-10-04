@@ -10,7 +10,12 @@ finishing and verifying the new candidate.
 Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
-**No active heavy grant. AF completed baseline-only collection and released.**
+**Current heavy owner: single-response parity diagnostic AG**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `829aa08b`. Source review passed;
+parent verified 102 checks. One fixed .35 m / −45° synthetic response invocation
+is authorized, then stop/audit/release. No retry or map groups; guard unchanged.
+
+**AF completed baseline-only collection and released.**
 Delivery `ad5d02b6` / `d3c17632` / `b80273a7` passed independent collection-only
 review and is integrated through `278f9dd2`. Parent passed 78 checks and 24 hashes.
 Modeled query endpoints reproduce AE's discrepancy; no assist, unique causal proof
@@ -281,7 +286,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P, Q, R, S, T, U, V, W, X, Y, Z, AA, AB, AC, AD, AE and AF have released; no heavy grant is active.**
+**P, Q, R, S, T, U, V, W, X, Y, Z, AA, AB, AC, AD, AE and AF have released; AG owns the single-response diagnostic.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -322,6 +327,12 @@ are introduced without the user's renewed scope. The subsequent overnight
 directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
+
+**Active: `MOTH-BLENDER-20261004-AG`**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `829aa08b`. Fresh setup and ONE
+single-response invocation; at most one UP/candidate parent call, then measured
+audits/release. No retry, landing/admission campaign or map groups. Fatal counters
+may be partial; clean release does not convert a failed response into success.
 
 **Released: `MOTH-BLENDER-20261004-AF`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `4e4e0588`. Fresh setup and one

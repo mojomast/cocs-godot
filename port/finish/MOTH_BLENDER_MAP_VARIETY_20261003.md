@@ -1,5 +1,15 @@
 # New Moth resources and Blender-authored map variety
 
+## Current owner — single-response parity diagnostic AG
+
+**MOTH-BLENDER-20261004-AG is the sole heavy grant**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation **`829aa08b`**. The single-response
+contract passed independent review and 102 parent checks. One fixed-fixture
+invocation is authorized, then stop/audit/release; no retry or map continuation.
+The original 1 µm guard is unchanged. Fatal traces may have incomplete counters;
+zero counters then cannot prove absence of physical calls. A guarded response
+would not establish landing, positive admission or production readiness.
+
 **Single-response parity source delivered:** `d1f0889c` is under independent
 review. A separate sealed phase permits one attempt after the first eligible proof,
 with the original guard and a conservative modeled-forward check. Producer reports
