@@ -1,5 +1,12 @@
 # New Moth resources and Blender-authored map variety
 
+**Baseline observation P1 closed; cleanup race found:** independent review confirms
+the compare-only stage cannot apply an assist, but an exiting residual process can
+make supervisor `killpg` raise before release audits/receipt/handler restoration.
+The mock reproduction blocks native readiness despite 59 passing supplied tests.
+Astra is correcting finalization and adding the race regression. Sources remain
+unmerged; no native grant, parity-candidate execution or tolerance change is approved.
+
 **Baseline-only correction and runner delivered:** `2e8fc0bc` / `9b3b0c04`
 are under focused independent review. The producer reports 59 source tests and
 a sealed compare-only phase that cannot select the parity candidate. Native

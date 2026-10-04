@@ -1,5 +1,25 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Baseline P1 closed; supervisor finalization race blocks readiness
+
+Focused review closes the observation-controller P1 in `2e8fc0bc`. The new
+`9b3b0c04` comparison stage contains only unchanged Walker in its nine-script
+dependency closure, distinguishes actual/hypothetical poses and executes one
+ordinary response after collection. All 59 supplied source tests pass.
+
+**New reproduced P1:** `walker-snap-compare/supervisor.py:73–91` can lose release
+evidence if a residual owned group exits between identity checking and `killpg`.
+An unhandled `ProcessLookupError` in finalization skips all three audits, the final
+receipt and handler restoration. The reviewer reproduced this with mocks only:
+start receipt present, zero audits, no result receipt, lifetime lock available.
+
+The producer is correcting cleanup to re-audit after an already-disappeared group,
+preserve ownership restrictions and report other errors without false release.
+Final outcome reporting and handler restoration must survive cleanup exceptions;
+an explicit residual-exit regression is required. Sources remain unmerged and
+native readiness withheld until focused re-review. No heavy grant is active.
+Parity candidate, positive admission and all map journeys remain unapproved.
+
 ## Baseline correction and compare-only wiring under re-review
 
 Producer delivered **`2e8fc0bc` / `9b3b0c04`** atop `2b0f1f6a`. Focused

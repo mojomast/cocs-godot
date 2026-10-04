@@ -25,6 +25,10 @@ and completing bounded-supervisor wiring. No native grant or epsilon change.
 Follow-ups `2e8fc0bc` / `9b3b0c04` now deliver the Baseline correction and sealed
 compare-only runner, with 59 producer source tests reported passing. Independent
 re-review is active before integration or a limited native comparison grant.
+That review closed the baseline-only P1 but reproduced a supervisor cleanup race:
+an already-exited residual group can interrupt finalization before release audits
+and the result receipt. Correction and a mocked regression are in progress; the
+execution package remains unmerged and no native grant is authorized.
 AC passed qualified independent artifact review and is integrated as `464604bb` /
 `388812d7`; parent passed nineteen checks and all 265 hashes. Complete mesh-local
 basis parity passes without waivers; appearance/final-art qualifications remain.
