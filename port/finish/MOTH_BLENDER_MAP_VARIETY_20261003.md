@@ -1,5 +1,16 @@
 # New Moth resources and Blender-authored map variety
 
+## Current owner — paired admission experiment AE
+
+**MOTH-BLENDER-20261004-AE is the sole heavy grant**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `5e0b373d`. AD was independently
+approved and integrated as `52679750` / `5e0b373d`; parent passed 52 checks and
+45 hashes. AE uses a fresh supported lowercase namespace and new sealed grant:
+fresh inclined controls, explicit passing-evidence inspection/replay checkpoint,
+then separate positive controls under the same source/grant identity. Stop on
+unexpected outcomes and after the positive invocation. No map walks are authorized.
+AD's original negative-only grant and receipts remain immutable.
+
 ## Current checkpoint — AD released; no heavy grant active
 
 AD delivered **`2b1ff4d9` / `6359debc`**, reporting four inclined pairs/eight

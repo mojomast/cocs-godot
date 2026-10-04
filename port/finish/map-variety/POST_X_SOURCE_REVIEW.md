@@ -1,5 +1,25 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## AD integrated; AE conditional two-control sequence authorized
+
+AD passed independent review as **physical inclined rejection PASS only**, selected
+as `52679750` / **`5e0b373d`**. Parent passed 52 tests and all 45 inventory hashes.
+Full review: `WALKER_AD_REVIEW.md`. Positive admission remains unproved.
+
+After lock/preexisting-viewer verification at 01:33:37.126522Z, parent authorized
+**MOTH-BLENDER-20261004-AE**, Astra `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation
+`5e0b373d`. Fresh lowercase `admission-ae-01` uses the already-reviewed namespace
+rule; no new exception. One new sealed v4 grant permits only the two synthetic
+groups. Fresh inclined controls must pass; the owner must inspect and replay their
+actual evidence and retain a checkpoint report before a separate positive invocation
+under the same source/grant hash. Any uncertainty or failure stops the sequence.
+
+AD's grant/receipts remain unchanged. AE must stop after positive controls, retaining
+all expected/unexpected failures and partial-run accounting. No reference, map,
+sprint or production-promotion permission is granted. All sixty map journeys remain
+unrun, and production motion-reporting semantics remain open. AE is the sole heavy
+owner and must release with three empty audits and lock availability.
+
 ## AD delivered/released — native inclined rejection review pending
 
 `2b1ff4d9` / `6359debc` reports all four physical inclined pairs/eight profiles
